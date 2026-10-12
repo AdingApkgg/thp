@@ -1848,3 +1848,9 @@ ef471实际Launcher继续验证Player Data成绩/符卡切换及Music Room提示
 - 按用户要求补读thprac官方TH14源码，0x45286f写Esp+2c的激光记录/回放/恢复钩子与既有原版栈诊断地址一致；本机只读源码SHA c1c7e3108485b5a5c7159390b5dcff5cbaedf74a0015fc31d82628cbb21b55a5，记录th14-thprac-reference-observed-oct13.json。未执行第三方代码或给原版加其补丁，不把修复版回放稳定性当作未改原版等价证据。
 
 补记：按实际碰撞半径及整数位移预测的两条 Normal 路线（margin 0/3）均在第 55,146 帧、第五面 Game Over，4 次死亡、15 次实际符卡；没有引擎错误。保存原始报告、按键及控制器源码，不计作通关。
+
+- 新增原始魔理沙B Normal四面demo1原字节的独立原版进程对照3,901帧，30玩法字段及捕获对象窗口差异0，7,802启动视觉RNG字差异保留；th14-original-marisab-area-lifecycle-verified-oct13.json独立重算124,832原始字。仅私有demo0入口替换，原demo1录像SHA4859e6ce7f22e465aad9dcd0e43eba8e24ecb977d726443ad38608239e55e9de与原归档条目完全相同，未改变原作脚本/输入/游戏状态。
+- Normal咲夜A仅碰撞半径改进控制器产生与body-avoid完全相同356,200字节按键，第89,050帧六面GameOver；排除消弹退场对象并读取当前弹体尺寸的独立控制器第89,467帧六面GameOver，6死亡/23库存符卡、无引擎错误。所有失败证据保留，未标通关。
+
+- 未改原作咲夜A Normal一面demo2原字节另通过3,901帧原版进程回归，30玩法字段及捕获对象差异0、7,802启动视觉RNG字差异保留；th14-original-sakuyaa-normal-area-lifecycle-verified-oct13.json。两份新原始演示报告均逐一绑定原归档录像条目、私有入口归档清单、两层夹具、265核心文件与124,832完整状态字，仍不计原版整局。
+- live-bullet控制器增加仅普通输入的安全收集选项后第85,140帧六面GameOver，8死亡/31实际库存符卡；无引擎错误，失败完整保存，不计Normal通关。
