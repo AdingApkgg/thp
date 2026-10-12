@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "title": 16,
+  "completeGame": false,
+  "cases": 2304,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "403b3248e4ff3aec6b973393e3a3838a952532acb80a389af6d32902b635ba2f",
+  "maxError": 0,
+  "scope": "444e10 through4451ef before animation/damage allocation. Native visual RNG and402ff0 execute. State/timer/focus bits, both option families, beam cache, angle modes, random seed/calls exact; velocity tolerance2e-5 for x87 trig versus portable libm. Existing callbacks, allocation, delivery, subsequent motion/collision and full gameplay excluded.",
+  "sourceHashes": {
+    "tests/cpp/th16-shot-spawn-fixture.cpp": "efbf99244cf9678989c8df0abe15f38049e691a971b92cee39de42908d9e6ed5",
+    "cpp/game/ShotTh16.cpp": "4622ba7a5bbf7e8c040c201f2a1b91dc27f38fc7ed3f982231e4971e797a7d6f",
+    "cpp/game/ShotTh16.hpp": "ffd730b600b5104a15d806d3223b75d5adbeb22cdefe50ea325d0e51a05a29d6",
+    "cpp/game/ShtResource.cpp": "d3c3eb0103f4ea9eee6468c863a3ad8e9abb871f3245091290701ecb03161c9b",
+    "cpp/game/AnmManager.cpp": "6ec4cc2bb1f57c94fb281c9866b1f5c40cf13f50fec8539b58d32a9bb7b3a7f0"
+  },
+  "toolHashes": {
+    "tools/th16-shot-spawn-native.py": "e27b0d0d4c2835387b38511e9f1e722e24e531cdbd5c6a85b68aba25aea45c8f",
+    "tools/th16-shot-spawn-check.mjs": "b398dd1cd369e789471ba52aab72b8fd04dc5a05a346b3bfba7dd43f0dcd6ea0"
+  }
+}

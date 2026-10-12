@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "scope": "Selected ANM instruction state and all resource loading; not complete gameplay or renderer equivalence.",
+  "nativeExecutableSha256": "422f40aa176c9aab7d0178ce6033802b4143921a5e0e463ef99259ef6d100a58",
+  "nativeCases": 694,
+  "randomPolarCases": 250,
+  "results": [
+    {
+      "title": 13,
+      "passed": true,
+      "wasmSha256": "b6936eceacba9e411e26339a982609de6bdc210461a72ed6c55b32b9cc795f6b",
+      "resources": 68,
+      "scripts": 1961
+    },
+    {
+      "title": 12,
+      "passed": true,
+      "wasmSha256": "01d53670e11cb2cdc02cd3a324d3194f97969dd18e75d8ab662f2a53dd2ba861",
+      "resources": 0,
+      "scripts": 0
+    }
+  ],
+  "sourceHashes": {
+    "cpp/game/AnmInterpreter.cpp": "253d92d37ca8c0b7943a8e50f672b5cbbdef8808d4cdac71746eb55bfd605509",
+    "cpp/game/AnmVm.cpp": "ddf923bf1cc8d71b0bdf6f91a54b4b40f723d5a3023b295f2a8e0e833dcf5ad4",
+    "cpp/game/AnmGeometry.cpp": "876273a619274307c37a94faf74dce6948778f0f61cb32d344f447b35490fed5",
+    "cpp/game/Interpolation.cpp": "9524503fbad2810764253db4f56bd96c20551c24c6365932ba46cce169d84527",
+    "cpp/game/AnmResource.cpp": "ca6f5dbff0e5a5f8b6980354faf7165626a33cb7f88399987c8b573b30588947",
+    "cpp/game/AnmOpcodes.hpp": "5d63adde0beec027b466f7cba70127c69501c16a3ba2bb6eaf35cc8d23e84c8e",
+    "cpp/game/AnmVm.hpp": "975c4f4bc7cd9644b4bc627c1a20689f64de3c38569ce8593a864bf48349937d",
+    "cpp/game/AnmResource.hpp": "52e5699227e781dcc5048a1c2ec56de424dfc969ae344f278c07b84efad5b085",
+    "cpp/game/AnmGeometry.hpp": "57094d2208e31f9b5e934b019792a23d1ac40d3a088ecb5180a531737bf82787",
+    "cpp/game/Interpolation.hpp": "edbabf98f0aa2441bc725138d9fb6ff4908142998836ec3e3fc1c1f198e1d689",
+    "cpp/game/Timer.hpp": "e07169289db2407ce57c4191343ad6c9a5e3b2d543898439326520cfe1723ddb",
+    "cpp/game/Rng.hpp": "3865a40f2ec26f6462f5daa52e7bc8b7e5f42f2c3f6c88d0bfcf3d6c154f4d9b",
+    "cpp/game/Types.hpp": "f79c1ed7cb200413ef0dea75bf0d58842745b6b47182a97e496733c1d7bb2669",
+    "cpp/game/PortTitle.hpp": "5531b9b0a2364098ec023e09eddbf66907c392fb58a24e1a84c5bf7a9a033d2f",
+    "tests/cpp/th13-anm-fixture.cpp": "1fda2d5f4aad4c68a45e249049761ba8830b67a96fadec8ca6d3af63845bcdcc"
+  },
+  "toolHashes": {
+    "tools/th13-anm-native.py": "af515f00627d36253e17f3ec50e0eca18880b27c99d87ff7c18ba2bea2a478d6",
+    "tools/th13-anm-check.mjs": "aec1d54226bb3097f1e4583679c1124ccd46530d8b9dd4ab8fd2850342da5edd",
+    "tools/th-anm-handlers.py": "15f693b2cb7062705864c0a0c9d9bb9c7d1fcf8daeb8ff2dcf7630d7a6a459db"
+  }
+}

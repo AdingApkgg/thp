@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "cases": 128,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "ffe32857c753b7a6cd3304207109936271f101856febd54d7e61403f29d96652",
+  "sourceHashes": {
+    "cpp/game/EnemyTh14Commands.cpp": "d3a9f5133d733ea5bdb5cca2bd4bd0808f00f40ca195977486384378f19f41cc",
+    "cpp/game/EnemyState.cpp": "fbec31724649179e9772b17e0aa445070ae52264a70b07e1d7960ae0ca899bfb",
+    "cpp/game/EnemyState.hpp": "e6d8e0faab8e6c1ed60fb4e78dea7b42e292c7568baf95139771b6cc1523b60f",
+    "cpp/game/Interpolation.cpp": "57cd2806a28109745084fb2079edee055322ff3fd044f75fc4e4ec3305add125",
+    "cpp/game/Interpolation.hpp": "edbabf98f0aa2441bc725138d9fb6ff4908142998836ec3e3fc1c1f198e1d689",
+    "cpp/game/Movement.cpp": "ea823e71f48f15d1d5e038c4fa62b6a4dfcaa31b087ebc183e42ef2dd439cccb",
+    "tests/cpp/th14-enemy-player-copy-fixture.cpp": "abc58b1ad62f1adbffb6f9e6017d4b05d8d5bc9fcb622028ef725a27d875147e",
+    "tests/cpp/th14-enemy-movement-fixture.cpp": "27978ab051a703d7ae482fb0a7e8af38d8f44594cded54a1c42371a5201a53ad"
+  },
+  "toolHashes": {
+    "tools/th14-enemy-player-copy-native.py": "982439367aa4d5b6b04ebb1724238b0a3259bfc480cc85ed237e811b5cc50fcc",
+    "tools/th14-enemy-player-copy-check.mjs": "5575cbe9f8b2def09cdead0c1513aa87f12ef7096b2a73fc6642e143e92493d8"
+  },
+  "scope": "Actual retail 427199/4271c2 ECL 414/415 copying raw player XYZ into absolute/relative movement. Compares all four movement records and flags, signed zero, subnormal, NaN payload, infinities and finite values. No combine, velocity, interpolation or mode reset occurs. Player pointer boundary controlled; complete gameplay, GPU and remaining ECL commands excluded."
+}

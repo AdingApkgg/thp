@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "allocations": 240,
+  "updateFrames": 15360,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "3ff9afebede3144ee9a9d000ea917f93957acb0630c0aba13d5e854d98cc81ed",
+  "scope": "Retail 450270 rectangular damage-area allocation and actual 44e005..44e0fa pool clock loop. Partial occupancy/wrap, retained unrelated fields, flag masking, width/height, zero angular velocity and angle normalization, stationary XYZ, timer and retirement; 240 cases with 64 updates each. Movement helpers 403cd0/403df0 and memset are controlled boundaries; only stationary movement is supported by this normalized model. Full-pool native out-of-range return remains guarded. This verifies rectangle allocation and stationary retirement, not the full Bomb controller or moving damage areas.",
+  "sourceHashes": {
+    "tests/cpp/th14-damage-circle-fixture.cpp": "1d59047ed023af274b341b506a593560c6711f7b0a83eda0de1233c951d61364",
+    "cpp/game/ShotDamageTh14.cpp": "4820ab1886b6225e1934c5364fca300ff1a1e92e1516ef53f6a9048fb1b1536c",
+    "cpp/game/ShotDamageTh14.hpp": "6f0645727419adb8be160ffb4f5aeab46c94c352cd4e647e282dca5bcb1dc76a"
+  },
+  "toolHashes": {
+    "tools/th14-damage-rectangle-native.py": "08b0c4d05f5bcac08903cfdf213041b8cd096531233c726862bae3b915da0c8d",
+    "tools/th14-damage-circle-native.py": "59e641505c6f04ad566f84ebb4223280c3abd5621490b735ce932dda9709ea06",
+    "tools/th14-damage-rectangle-check.mjs": "953310084ca7a395250548647528f5ccc9f1978b147081f00e5ab941593fdcba"
+  }
+}

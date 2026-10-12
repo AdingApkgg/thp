@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "startCases": 12,
+  "tickCases": 720,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "daadd243232c521a09e010afa417ff91f98113a626704db82a93196333c1c094",
+  "scope": "Retail 412e80 startup and 412200 common update through actual 412fb0/4130e0 versus production BombController selection 3: spell flags/bonus, used-Bomb count, invincibility, raw animation position/scripts, common positional sound 44 and sound 49, clock rates, inactive/nonzero states, missing main animation and auxiliary interrupt, float acceleration/position, scale-derived radius, four-frame damage-circle request, frame-180 interrupt/cancel, frame-500/dialogue finish and reward-2 cancel requests. Empty native bullet/laser lists; ANM factories/audio/cancel delivery are controlled. Stock/HUD/common activation gate, actual bullet/laser effects, complete lifecycle and GPU pixels are separate.",
+  "sourceHashes": {
+    "tests/cpp/th14-sakuya-b-controller-fixture.cpp": "85f280e29bb5159cd6e9dae68a40250cbaa84ee0671c4b41b805217d8c4081de",
+    "cpp/game/BombController.cpp": "4d7fe71c50a7b0b7f31a1739e780766faef9b2f0955b4a2bf38f0f96285f9536",
+    "cpp/game/BombController.hpp": "5b54ffd44abae1882bd0eadd30ffcd57bcff840466026f6c84d54772e72fd080",
+    "cpp/game/PlayerMotion.cpp": "c1d3c36e07226eae33262ac63e8fb7ca27e177b78543c0fa8d0fdcdf6cba52ff",
+    "cpp/game/AnmManager.cpp": "74e295ed35846687274ecf6d868eb9f9a20746341e1f390e4da168e56754a759"
+  },
+  "toolHashes": {
+    "tools/th14-marisa-b-controller-native.py": "1baa332085647efc0a2d46a9e211a4e3114faf423013201e27ad65e621b8b320",
+    "tools/th14-marisa-b-controller-check.mjs": "cfae47472b019e722eaecbba3abdf4d8282b9375d97a8fe3bde96b617d4ebce7"
+  }
+}

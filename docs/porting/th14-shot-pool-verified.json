@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "operations": 1121,
+  "allocationAttempts": 1027,
+  "updates": 1744,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "0fc68637f50bc0c43968522c808d1f00953b31437983d41d225a99a30797d53d",
+  "scope": "Actual 44cdb7 initialization, 450e40 factory unlink and 451380 ascending-slot traversal/recycling. Covers exhaustion, failed factory requests, alternating and complete retirement, and reuse over repeated cycles. 4508f0 and 4510b0 are controlled result boundaries; ANM, individual shot lifecycle, damage-area order and full gameplay require separate checks.",
+  "sourceHashes": {
+    "tests/cpp/th14-shot-pool-fixture.cpp": "3b6f8805287401a3496c1dbdde23d91ae73efa7f425b5502399ead4e13d071d6",
+    "cpp/game/ShotPoolTh14.hpp": "fa8f9ce53b96a7f9a7d944e195d90a57c4a5a6f950b293f4168caa491e78deca",
+    "cpp/game/ShotManager.cpp": "04f9315e4e6560b7b11f80b3e88293d5fa58472dcaf9cee6038e21031fb49722"
+  }
+}

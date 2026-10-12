@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "url": "http://127.0.0.1:8133/",
+  "build": {
+    "bytes": 1770723,
+    "sha256": "a6154e96ef98a03decec4b2efc0f471f716c3fccfb0430010746c0fb5e7ee2a5"
+  },
+  "entries": [
+    {
+      "stage": 1,
+      "jobs": 6,
+      "start": "2026-10-10T19:21:25.640Z",
+      "end": "2026-10-10T19:21:25.707Z",
+      "pause": "2026-10-10T19:21:30.706Z",
+      "screenshot": "artifacts/th14/browser-transition-stage1-oct11.jpg"
+    },
+    {
+      "stage": 2,
+      "jobs": 5,
+      "start": "2026-10-10T19:21:39.960Z",
+      "end": "2026-10-10T19:21:40.007Z",
+      "pause": "2026-10-10T19:21:44.986Z",
+      "screenshot": "artifacts/th14/browser-transition-stage2-oct11.jpg"
+    },
+    {
+      "stage": 3,
+      "jobs": 5,
+      "start": "2026-10-10T19:22:10.263Z",
+      "end": "2026-10-10T19:22:10.308Z",
+      "pause": "2026-10-10T19:22:15.279Z",
+      "screenshot": "artifacts/th14/browser-transition-stage3-oct11.jpg"
+    },
+    {
+      "stage": 4,
+      "jobs": 6,
+      "start": "2026-10-10T19:23:06.565Z",
+      "end": "2026-10-10T19:23:06.613Z",
+      "pause": "2026-10-10T19:23:11.585Z",
+      "screenshot": "artifacts/th14/browser-transition-stage4-oct11.jpg"
+    },
+    {
+      "stage": 5,
+      "jobs": 5,
+      "start": "2026-10-10T19:23:22.383Z",
+      "end": "2026-10-10T19:23:22.421Z",
+      "pause": "2026-10-10T19:23:27.397Z",
+      "screenshot": "artifacts/th14/browser-transition-stage5-oct11.jpg"
+    },
+    {
+      "stage": 6,
+      "jobs": 6,
+      "start": "2026-10-10T19:23:54.147Z",
+      "end": "2026-10-10T19:23:54.181Z",
+      "pause": "2026-10-10T19:23:59.132Z",
+      "screenshot": "artifacts/th14/browser-transition-stage6-oct11.jpg"
+    }
+  ],
+  "completionRequests": [
+    {
+      "level": "info",
+      "message": "[transition-proof14] complete stage=1 frame=300",
+      "timestamp": "2026-10-10T19:21:39.898Z",
+      "url": "http://127.0.0.1:8133/app/shell.mjs"
+    },
+    {
+      "level": "info",
+      "message": "[transition-proof14] complete stage=2 frame=300",
+      "timestamp": "2026-10-10T19:22:10.193Z",
+      "url": "http://127.0.0.1:8133/app/shell.mjs"
+    },
+    {
+      "level": "info",
+      "message": "[transition-proof14] complete stage=3 frame=300",
+      "timestamp": "2026-10-10T19:23:06.482Z",
+      "url": "http://127.0.0.1:8133/app/shell.mjs"
+    },
+    {
+      "level": "info",
+      "message": "[transition-proof14] complete stage=4 frame=300",
+      "timestamp": "2026-10-10T19:23:22.310Z",
+      "url": "http://127.0.0.1:8133/app/shell.mjs"
+    },
+    {
+      "level": "info",
+      "message": "[transition-proof14] complete stage=5 frame=300",
+      "timestamp": "2026-10-10T19:23:53.982Z",
+      "url": "http://127.0.0.1:8133/app/shell.mjs"
+    }
+  ],
+  "ordinaryCollisions": true,
+  "invincibility": false,
+  "addedPower": false,
+  "indexedDbMounted": false,
+  "scope": "Normal Game Start / Normal difficulty / Reimu A selected through actual UI. Artificial completion request at each stage frame300; real CPU/GPU/template stage queues and preserved game session continue through stage6, with actual pause/resume at inspection boundaries. The temporary proof page never mounts the persistent browser save store. No native GPU pixel comparison, wall-clock comparison, natural campaign clear or complete gameplay equivalence.",
+  "sources": {
+    "runtimes/th12/th12_web/cpp/sdl/Application.cpp": "214017f2e173756cf665d8b2697f73202e94b007b73e140daf057d01099a2233",
+    "runtimes/th12/th12_web/sdl-runtime/shell-harness.mjs": "e9f45286f648d9814a924799080718f962ea08fc9b3173443faf1a394e44d471",
+    "tools/th14-transition-proof.html": "7abcd839fdf9e964c7d59050064527daa96f0c9ba021b453926339bf500d79a6",
+    "tools/th14-serve.mjs": "fb42847ed09b07f88f6d2f343ce884fad7c9d6b92f33dd4bd820d0b16e86d94b",
+    "artifacts/th14/browser-transition-logs-oct11.json": "ac43e05ab1521b7c3efa0b4cf7ba35a82651aace295d9094fe55e4809c750307"
+  }
+}

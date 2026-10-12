@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "cases": 432,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "c42ac6713980b59009df209eff05f54ecf4a252a5986b531c83c637c1d08b2ee",
+  "scope": "Complete retail 418140 ETEX 40000 dispatch with actual player-aim, normalization and polar helper instructions. Compares active mask/index, scalar speed/angle and all velocity components, and non-concurrent gate with active ETEX 4. Finite explicit/aim/preserve sentinels and bounded angle normalization included. EAX is an unspecified dispatcher residue and is not interpreted as a result. Motion/update, collision, ANM, sound and pixels are outside this local check.",
+  "sourceHashes": {
+    "tests/cpp/th14-bullet-heading-fixture.cpp": "0ab38abb78321aec78eb6a2c61be6d519fde28a4fb885f07110c53f58d7f9453",
+    "cpp/game/BulletTh14.cpp": "2c1a82d8bc1e0441a42735ffe60355fe224f7dda981696cba8e60dd5f276efed",
+    "cpp/game/Movement.cpp": "ea823e71f48f15d1d5e038c4fa62b6a4dfcaa31b087ebc183e42ef2dd439cccb"
+  },
+  "toolHashes": {
+    "tools/th14-bullet-heading-native.py": "b3775b2d7c440e0bc3a517a11a2415cfc1b0262bf61ae080f41aca1aa59e8bc5",
+    "tools/th14-bullet-heading-check.mjs": "7d0b28b8727ddb49884d713f51c4141a56b579c21bf049a07b403d023b2e1c95"
+  }
+}

@@ -1,0 +1,2252 @@
+{
+ "summary": {
+  "ran": 142,
+  "passing": 18,
+  "trapping": 68,
+  "wallsInPassingRows": 0,
+  "diedBeforeTests": 0,
+  "totals": {
+   "pass": 32,
+   "fail": 121
+  },
+  "leaks": {
+   "reported": 0,
+   "total": 0,
+   "scrubbed": 0
+  },
+  "topWalls": [
+   [
+    "0x472ca0 (unmapped 0x8)",
+    6
+   ],
+   [
+    "0x7e00880 (import undefined)",
+    3
+   ],
+   [
+    "0x405032 (unmapped 0x5c)",
+    3
+   ],
+   [
+    "0x4067e0 (unmapped 0x78)",
+    2
+   ],
+   [
+    "0x4616e4 (unmapped 0xbb0a5656)",
+    2
+   ],
+   [
+    "0x424df0 (unmapped 0x517c244c)",
+    2
+   ],
+   [
+    "0x4489f1 (unmapped 0x24)",
+    2
+   ],
+   [
+    "0x451ef0 (unmapped 0x38)",
+    1
+   ],
+   [
+    "0x40af98 (unmapped 0x3)",
+    1
+   ],
+   [
+    "0x40b224 (unmapped 0x4d8)",
+    1
+   ],
+   [
+    "0x409700 (unmapped 0x8)",
+    1
+   ],
+   [
+    "0x420a70 (unmapped 0x4b0c9015)",
+    1
+   ],
+   [
+    "0x462c14 (unmapped 0x0)",
+    1
+   ],
+   [
+    "0x41cfe0 (unmapped 0x1)",
+    1
+   ]
+  ]
+ },
+ "rows": [
+  {
+   "suite": "anm-geometry.test.mjs",
+   "pass": 3,
+   "fail": 0,
+   "code": 0,
+   "ms": 1199,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "anm-interpreter.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 642,
+   "wall": null,
+   "wallCounted": false,
+   "entry": "0x402520",
+   "calls": 7,
+   "message": "Error: RuntimeError: memory access out of bounds",
+   "leaks": null
+  },
+  {
+   "suite": "anm-projection.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 645,
+   "wall": null,
+   "wallCounted": false,
+   "entry": "0x11779ba",
+   "calls": 7,
+   "message": "Error: RuntimeError: memory access out of bounds",
+   "leaks": null
+  },
+  {
+   "suite": "anm-renderer-effects.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 707,
+   "wall": null,
+   "wallCounted": false,
+   "entry": "0x11779ba",
+   "calls": 7,
+   "message": "Error: RuntimeError: memory access out of bounds",
+   "leaks": null
+  },
+  {
+   "suite": "anm-renderer.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 657,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x38",
+    "pc": "0x451ef0",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x451ef0",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "anm-resource.test.mjs",
+   "pass": 1,
+   "fail": 0,
+   "code": 0,
+   "ms": 659,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "anm-scripts.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 637,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x78",
+    "pc": "0x4067e0",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x455a00",
+   "calls": 12,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "archive.test.mjs",
+   "pass": 1,
+   "fail": 0,
+   "code": 0,
+   "ms": 220072,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "ascii-text.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 656,
+   "wall": {
+    "at": "unmapped",
+    "address": "0xbb0a5656",
+    "pc": "0x4616e4",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x44ab40",
+   "calls": 13,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 7:",
+   "leaks": null
+  },
+  {
+   "suite": "battle-integration.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 278,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: ascii ANM",
+   "leaks": null
+  },
+  {
+   "suite": "bomb-controller.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 680,
+   "wall": null,
+   "wallCounted": false,
+   "entry": "0x406510",
+   "calls": 32,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 21:",
+   "leaks": null
+  },
+  {
+   "suite": "bullet-cancellation.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 873,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x3",
+    "pc": "0x40af98",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x40af90",
+   "calls": 18,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "bullet-conversion.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 713,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x4d8",
+    "pc": "0x40b224",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x40b210",
+   "calls": 18,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 7:",
+   "leaks": null
+  },
+  {
+   "suite": "bullet-launch.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 633,
+   "wall": null,
+   "wallCounted": false,
+   "entry": "0x40a250",
+   "calls": 7,
+   "message": "Error: RuntimeError: memory access out of bounds",
+   "leaks": null
+  },
+  {
+   "suite": "bullet-manager.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 632,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: spawn 0/0 bullet 0 offset 0xc cpp=8 native=0",
+   "leaks": null
+  },
+  {
+   "suite": "bullet-state.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 665,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x8",
+    "pc": "0x409700",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x409700",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "campaign-recording.test.mjs",
+   "pass": 0,
+   "fail": 0,
+   "code": 0,
+   "ms": 247,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "campaign-soak.test.mjs",
+   "pass": 0,
+   "fail": 0,
+   "code": 0,
+   "ms": 261,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "cancellation-integration.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 713,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x517c244c",
+    "pc": "0x424df0",
+    "size": 1
+   },
+   "wallCounted": true,
+   "entry": "0x424df0",
+   "calls": 18,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "communication.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 620,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x4b0c9015",
+    "pc": "0x420a70",
+    "size": 1
+   },
+   "wallCounted": true,
+   "entry": "0x420a70",
+   "calls": 8,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "config.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 627,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: defaults after original CRT initializer 48abf0",
+   "leaks": null
+  },
+  {
+   "suite": "controller-input.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 622,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x0",
+    "pc": "0x462c14",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x462a80",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "converted-laser-integration.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 276,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: ascii ANM",
+   "leaks": null
+  },
+  {
+   "suite": "converted-laser.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 671,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+   "leaks": null
+  },
+  {
+   "suite": "core-equivalence.test.mjs",
+   "pass": 0,
+   "fail": 0,
+   "code": 0,
+   "ms": 247,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "damage-area.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 625,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+   "leaks": null
+  },
+  {
+   "suite": "damage-protection.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 608,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+   "leaks": null
+  },
+  {
+   "suite": "dialogue.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 718,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x1",
+    "pc": "0x41cfe0",
+    "size": 1
+   },
+   "wallCounted": true,
+   "entry": "0x41cfe0",
+   "calls": 71,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "ecl-context.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 711,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x0",
+    "pc": "0x45d555",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x2004360",
+   "calls": 8353,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "ecl-control.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 665,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: call target +c",
+   "leaks": null
+  },
+  {
+   "suite": "ecl-interpreter.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 612,
+   "wall": {
+    "at": "unmapped",
+    "address": "0xb0",
+    "pc": "0x459e5e",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x45b860",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "ecl-resource.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 628,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x4",
+    "pc": "0x410e6d",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x4692e0",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "ending-session.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 265,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+   "leaks": null
+  },
+  {
+   "suite": "ending.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 652,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: ending script load failed",
+   "leaks": null
+  },
+  {
+   "suite": "enemy-animations.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 644,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x3f800000",
+    "pc": "0x3f800000",
+    "size": 1
+   },
+   "wallCounted": true,
+   "entry": "0x4154d0",
+   "calls": 12,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 8:",
+   "leaks": null
+  },
+  {
+   "suite": "enemy-callbacks-bullets.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 629,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+   "leaks": null
+  },
+  {
+   "suite": "enemy-callbacks.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 657,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x0",
+    "pc": "0x418170",
+    "size": 1
+   },
+   "wallCounted": true,
+   "entry": "0x418170",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "enemy-cancellation.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 624,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x8",
+    "pc": "0x4694f1",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x412990",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "enemy-commands.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 695,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x8",
+    "pc": "0x472ca0",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x4154d0",
+   "calls": 7,
+   "message": "Error: emulator fault at opcode 0x11a case 1: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "enemy-emitter-commands.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 678,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x8",
+    "pc": "0x472ca0",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x4154d0",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "enemy-frame.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 639,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x140",
+    "pc": "0x4615cc",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x411750",
+   "calls": 15,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "enemy-globals.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 611,
+   "wall": {
+    "at": "import",
+    "pc": "0x7e00c80"
+   },
+   "wallCounted": true,
+   "entry": "0x413230",
+   "calls": 7,
+   "message": "Error: RuntimeError: memory access out of bounds",
+   "leaks": null
+  },
+  {
+   "suite": "enemy-manager.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 672,
+   "wall": {
+    "at": "unmapped",
+    "address": "0xc",
+    "pc": "0x4108f7",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x4108f0",
+   "calls": 13,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 7:",
+   "leaks": null
+  },
+  {
+   "suite": "enemy-movement.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 687,
+   "wall": {
+    "at": "unmapped",
+    "address": "0xdc",
+    "pc": "0x4615dd",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x411750",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 7:",
+   "leaks": null
+  },
+  {
+   "suite": "enemy-phase.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 643,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x16c4",
+    "pc": "0x417b43",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x417b40",
+   "calls": 12007,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 7:",
+   "leaks": null
+  },
+  {
+   "suite": "enemy-script.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 600,
+   "wall": null,
+   "wallCounted": false,
+   "entry": "0x45d420",
+   "calls": 10,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 10:",
+   "leaks": null
+  },
+  {
+   "suite": "enemy-state-commands.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 636,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x64f1b534",
+    "pc": "0x461c50",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x4154d0",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "external-campaign.test.mjs",
+   "pass": 0,
+   "fail": 0,
+   "code": 0,
+   "ms": 234,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "fog-interpolation.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 660,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: mode=0 speed=1 duration=1 frame=0",
+   "leaks": null
+  },
+  {
+   "suite": "frame-statistics.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 622,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: window 0",
+   "leaks": null
+  },
+  {
+   "suite": "game-input.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 612,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x0",
+    "pc": "0x43b8f6",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x43b7e0",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "game-resources.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 282,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: ascii.anm",
+   "leaks": null
+  },
+  {
+   "suite": "game-session.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 276,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: ascii ANM",
+   "leaks": null
+  },
+  {
+   "suite": "graphics-math.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 589,
+   "wall": null,
+   "wallCounted": false,
+   "entry": "0x11733c7",
+   "calls": 7,
+   "message": "Error: RuntimeError: memory access out of bounds",
+   "leaks": null
+  },
+  {
+   "suite": "graphics-pipeline.test.mjs",
+   "pass": 1,
+   "fail": 0,
+   "code": 0,
+   "ms": 665,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "hud-notices.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 614,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x0",
+    "pc": "0x41f011",
+    "size": 1
+   },
+   "wallCounted": true,
+   "entry": "0x41f010",
+   "calls": 17,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "hud-score.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 614,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+   "leaks": null
+  },
+  {
+   "suite": "hud-text.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 622,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x130",
+    "pc": "0x4615cc",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x41c660",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "hud.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 617,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x1",
+    "pc": "0x41a6d0",
+    "size": 1
+   },
+   "wallCounted": true,
+   "entry": "0x41a6d0",
+   "calls": 19,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 7:",
+   "leaks": null
+  },
+  {
+   "suite": "image-resample.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 685,
+   "wall": {
+    "at": "import",
+    "pc": "0x7e01190"
+   },
+   "wallCounted": true,
+   "entry": "0x11fe107",
+   "calls": 7,
+   "message": "Error: RuntimeError: memory access out of bounds",
+   "leaks": null
+  },
+  {
+   "suite": "interpolation.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 643,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x4",
+    "pc": "0x458dcc",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x20030a0",
+   "calls": 3907,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "item-manager.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 682,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: sample 0 spawn item 0 +0x2c cpp=3f490fdb native=0",
+   "leaks": null
+  },
+  {
+   "suite": "item-rendering.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 644,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x371d1d1d",
+    "pc": "0x423f65",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x423f40",
+   "calls": 29,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "item-rewards.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 652,
+   "wall": {
+    "at": "unmapped",
+    "address": "0xd",
+    "pc": "0x423550",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x423550",
+   "calls": 18,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "keyboard-input.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 707,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: key sample 13",
+   "leaks": null
+  },
+  {
+   "suite": "laser-cut.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 655,
+   "wall": null,
+   "wallCounted": false,
+   "entry": "0x426230",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 10:",
+   "leaks": null
+  },
+  {
+   "suite": "laser-infinite.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 627,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: initialize 0/0 0x3c actual=0x41820000 expected=0x0",
+   "leaks": null
+  },
+  {
+   "suite": "laser-line.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 621,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: initialize 0/0 0x3c actual=0x41820000 expected=0xffffffff",
+   "leaks": null
+  },
+  {
+   "suite": "laser-manager.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 666,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x517c244c",
+    "pc": "0x424df0",
+    "size": 1
+   },
+   "wallCounted": true,
+   "entry": "0x424df0",
+   "calls": 18,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "laser-probe-cancel.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 640,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: probe 0 426fd0",
+   "leaks": null
+  },
+  {
+   "suite": "laser-state.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 608,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: constructor +0x20 cpp=6.839334230411707e-39 native=6.90445537264581e-39 bits=4a7948/4b2ed0",
+   "leaks": null
+  },
+  {
+   "suite": "menu-cursor.test.mjs",
+   "pass": 1,
+   "fail": 0,
+   "code": 0,
+   "ms": 688,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "modern-archives.test.mjs",
+   "pass": 7,
+   "fail": 0,
+   "code": 0,
+   "ms": 14717,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "movement.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 626,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x220",
+    "pc": "0x459542",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x459540",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 7:",
+   "leaks": null
+  },
+  {
+   "suite": "pause-end.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 649,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x97c",
+    "pc": "0x4377ae",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x42d560",
+   "calls": 19,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "pause-menu.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 672,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x83d90000",
+    "pc": "0x42c620",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x42c620",
+   "calls": 19,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "player-collision.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 636,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x6e890c6e",
+    "pc": "0x431e0a",
+    "size": 1
+   },
+   "wallCounted": true,
+   "entry": "0x431e00",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "player-frame.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 707,
+   "wall": {
+    "at": "import",
+    "pc": "0x7e00880"
+   },
+   "wallCounted": true,
+   "entry": "0x432cc0",
+   "calls": 39,
+   "message": "Error: Error: th12 called TerminateProcess",
+   "leaks": null
+  },
+  {
+   "suite": "player-initialization.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 637,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+   "leaks": null
+  },
+  {
+   "suite": "player-laser-collision.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 643,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x14",
+    "pc": "0x464a81",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x432070",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "player-motion.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 643,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x97cae8dd",
+    "pc": "0x45568c",
+    "size": 2
+   },
+   "wallCounted": true,
+   "entry": "0x455a00",
+   "calls": 35,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "player-options.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 603,
+   "wall": {
+    "at": "import",
+    "pc": "0x7e00880"
+   },
+   "wallCounted": true,
+   "entry": "0x432cc0",
+   "calls": 25,
+   "message": "Error: Error: th12 called TerminateProcess",
+   "leaks": null
+  },
+  {
+   "suite": "player-rendering.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 633,
+   "wall": {
+    "at": "unmapped",
+    "address": "0xcb20eadc",
+    "pc": "0x431c01",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x431bc0",
+   "calls": 27,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "recorded-session.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 281,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+   "leaks": null
+  },
+  {
+   "suite": "rectangle-cancellation.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 677,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x81",
+    "pc": "0x40b3a3",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x40b3a0",
+   "calls": 18,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "replay-codec.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 12633,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+   "leaks": null
+  },
+  {
+   "suite": "replay-entry.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 598,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x0",
+    "pc": "0x436f30",
+    "size": 1
+   },
+   "wallCounted": true,
+   "entry": "0x436f30",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "replay-recorder.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 606,
+   "wall": {
+    "at": "unmapped",
+    "address": "0xffffffa1",
+    "pc": "0x436420",
+    "size": 1
+   },
+   "wallCounted": true,
+   "entry": "0x436420",
+   "calls": 7,
+   "message": "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /REPLAY_OUTPUT_READY/. Input:",
+   "leaks": null
+  },
+  {
+   "suite": "replay.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 618,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: not a TH12 replay",
+   "leaks": null
+  },
+  {
+   "suite": "restart-session.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 293,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: ascii ANM",
+   "leaks": null
+  },
+  {
+   "suite": "rng.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 610,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x10",
+    "pc": "0x458bd2",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x458bc0",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "scene-camera.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 636,
+   "wall": null,
+   "wallCounted": false,
+   "entry": "0x430be0",
+   "calls": 7,
+   "message": "Error: RuntimeError: memory access out of bounds",
+   "leaks": null
+  },
+  {
+   "suite": "scene-compositor.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 635,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: initial composite 0",
+   "leaks": null
+  },
+  {
+   "suite": "scene-schedule.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 282,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: native callback priority order",
+   "leaks": null
+  },
+  {
+   "suite": "score-file.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 621,
+   "wall": {
+    "at": "unmapped",
+    "address": "0xa28",
+    "pc": "0x436baf",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x437660",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "score-popups.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 659,
+   "wall": {
+    "at": "unmapped",
+    "address": "0xbb0a5656",
+    "pc": "0x4616e4",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x44ab40",
+   "calls": 13,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 7:",
+   "leaks": null
+  },
+  {
+   "suite": "score-ranking.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 631,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: rank",
+   "leaks": null
+  },
+  {
+   "suite": "screen-deformation.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 651,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x5b",
+    "pc": "0x40e532",
+    "size": 1
+   },
+   "wallCounted": true,
+   "entry": "0x40e530",
+   "calls": 14,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "screen-fade.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 686,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x24",
+    "pc": "0x4489f1",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x4489e0",
+   "calls": 9,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "screen-shake.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 724,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x24",
+    "pc": "0x4489f1",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x4489e0",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "session-replays.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 269,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: not a TH12 replay",
+   "leaks": null
+  },
+  {
+   "suite": "session-resources.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 263,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+   "leaks": null
+  },
+  {
+   "suite": "shot-damage.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 645,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x78",
+    "pc": "0x4067e0",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x455a00",
+   "calls": 25,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "shot-manager.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 597,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x548be8dd",
+    "pc": "0x45568c",
+    "size": 2
+   },
+   "wallCounted": true,
+   "entry": "0x455a00",
+   "calls": 26,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "shot-resource.test.mjs",
+   "pass": 0,
+   "fail": 2,
+   "code": 1,
+   "ms": 678,
+   "wall": {
+    "at": "import",
+    "pc": "0x7e00880"
+   },
+   "wallCounted": true,
+   "entry": "0x4342f0",
+   "calls": 8,
+   "message": "Error: Error: th12 called TerminateProcess",
+   "leaks": null
+  },
+  {
+   "suite": "sound-effects.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 646,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:",
+   "leaks": null
+  },
+  {
+   "suite": "spell-animations.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 625,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+   "leaks": null
+  },
+  {
+   "suite": "spell-controller.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 621,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x0",
+    "pc": "0x40c652",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x40c650",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "spell-overlay.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 604,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+   "leaks": null
+  },
+  {
+   "suite": "spell-timing.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 654,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x4cc",
+    "pc": "0x40c314",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x40c310",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 7:",
+   "leaks": null
+  },
+  {
+   "suite": "stage-completion.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 641,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x7e890c7f",
+    "pc": "0x41d382",
+    "size": 1
+   },
+   "wallCounted": true,
+   "entry": "0x41d380",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "stage-culling.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 631,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x19b439a1",
+    "pc": "0x19b439a1",
+    "size": 1
+   },
+   "wallCounted": true,
+   "entry": "0x403950",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 8:",
+   "leaks": null
+  },
+  {
+   "suite": "stage-draw.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 646,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x5c",
+    "pc": "0x405032",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x405030",
+   "calls": 17,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 7:",
+   "leaks": null
+  },
+  {
+   "suite": "stage-ecl-integration.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 692,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: ascii ANM",
+   "leaks": null
+  },
+  {
+   "suite": "stage-integration.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 306,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: ascii ANM",
+   "leaks": null
+  },
+  {
+   "suite": "stage-passes.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 933,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x5c",
+    "pc": "0x405032",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x405030",
+   "calls": 17,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 7:",
+   "leaks": null
+  },
+  {
+   "suite": "stage-resources.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 373,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: stage 1",
+   "leaks": null
+  },
+  {
+   "suite": "stage-runtime.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 805,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x5c",
+    "pc": "0x405032",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x405030",
+   "calls": 17,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 7:",
+   "leaks": null
+  },
+  {
+   "suite": "stage-script.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 720,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: stage=1 rate=1 frame=0",
+   "leaks": null
+  },
+  {
+   "suite": "stage-transition.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 307,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: ascii ANM",
+   "leaks": null
+  },
+  {
+   "suite": "tasofro-archives.test.mjs",
+   "pass": 4,
+   "fail": 0,
+   "code": 0,
+   "ms": 58689,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "text-raster.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 686,
+   "wall": {
+    "at": "unmapped",
+    "address": "0xfffffffe",
+    "pc": "0x44ea56",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x44e8e0",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "texture-pixels.test.mjs",
+   "pass": 0,
+   "fail": 2,
+   "code": 1,
+   "ms": 724,
+   "wall": {
+    "at": "import",
+    "pc": "0x7e011b0"
+   },
+   "wallCounted": true,
+   "entry": "0x11fe107",
+   "calls": 7,
+   "message": "Error: RuntimeError: memory access out of bounds",
+   "leaks": null
+  },
+  {
+   "suite": "th12-aim-angle.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 688,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x8",
+    "pc": "0x472ca0",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x4154d0",
+   "calls": 7,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "th12-anm.test.mjs",
+   "pass": 1,
+   "fail": 0,
+   "code": 0,
+   "ms": 1757,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "th12-archive.test.mjs",
+   "pass": 1,
+   "fail": 0,
+   "code": 0,
+   "ms": 861,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "th12-ecl-coverage.test.mjs",
+   "pass": 1,
+   "fail": 0,
+   "code": 0,
+   "ms": 267,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "th12-ecl-opcodes.test.mjs",
+   "pass": 1,
+   "fail": 0,
+   "code": 0,
+   "ms": 282,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "th12-ecl.test.mjs",
+   "pass": 1,
+   "fail": 0,
+   "code": 0,
+   "ms": 572,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "th12-emitter-origin.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 639,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x8",
+    "pc": "0x472ca0",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x4154d0",
+   "calls": 7,
+   "message": "Error: emulator fault at 0x20d case 0 (index 0, x -990, y -1e+30): Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "th12-emitter-values.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 619,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x8",
+    "pc": "0x472ca0",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x4154d0",
+   "calls": 7,
+   "message": "Error: emulator fault at 0x259 case 0 (index 0): Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "th12-engine-boot.test.mjs",
+   "pass": 3,
+   "fail": 0,
+   "code": 0,
+   "ms": 916,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "th12-laser-commands.test.mjs",
+   "pass": 0,
+   "fail": 2,
+   "code": 1,
+   "ms": 631,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x8",
+    "pc": "0x472ca0",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x4154d0",
+   "calls": 7,
+   "message": "Error: emulator fault at 0x25c example 0: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "th12-msg.test.mjs",
+   "pass": 1,
+   "fail": 0,
+   "code": 0,
+   "ms": 1486,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "th12-noop-tables.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 334,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "AssertionError [ERR_ASSERTION]: 0x20d is past TH13's guard and does nothing there",
+   "leaks": null
+  },
+  {
+   "suite": "th12-rng.test.mjs",
+   "pass": 2,
+   "fail": 0,
+   "code": 0,
+   "ms": 688,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "th12-session-render.test.mjs",
+   "pass": 1,
+   "fail": 0,
+   "code": 0,
+   "ms": 994,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "th12-std.test.mjs",
+   "pass": 1,
+   "fail": 0,
+   "code": 0,
+   "ms": 450,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "th13-archive.test.mjs",
+   "pass": 1,
+   "fail": 0,
+   "code": 0,
+   "ms": 1021,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "title-selection.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "code": 1,
+   "ms": 645,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x14",
+    "pc": "0x454d25",
+    "size": 4
+   },
+   "wallCounted": true,
+   "entry": "0x43a0a5",
+   "calls": 40,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": null
+  },
+  {
+   "suite": "world-prefix-equivalence.test.mjs",
+   "pass": 0,
+   "fail": 0,
+   "code": 0,
+   "ms": 276,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  },
+  {
+   "suite": "world-replays.test.mjs",
+   "pass": 0,
+   "fail": 0,
+   "code": 0,
+   "ms": 273,
+   "wall": null,
+   "wallCounted": false,
+   "entry": null,
+   "calls": null,
+   "message": "",
+   "leaks": null
+  }
+ ]
+}

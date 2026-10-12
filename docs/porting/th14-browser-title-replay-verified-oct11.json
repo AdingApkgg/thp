@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "url": "http://127.0.0.1:8132/",
+  "wasmSha256": "dff59f27a44da0056473fbce02fb73658b8dc4ff92fc9cf08b447ecd2834e68f",
+  "bytes": 1770567,
+  "sourceHashesVerified": 145,
+  "checks": [
+    "Replay header97/ascii19, numbered page with 25 empty rows",
+    "Up wraps row1 to row25; two right inputs visit both User pages",
+    "third right wraps to numbered page retaining row25",
+    "confirm empty entry remains in Replay",
+    "cancel returns to main with Replay cursor preserved"
+  ],
+  "screenshots": [
+    "artifacts/th14/browser-replay-overview-oct11.jpg",
+    "artifacts/th14/browser-replay-user-page1-oct11.jpg",
+    "artifacts/th14/browser-replay-user-page2-oct11.jpg",
+    "artifacts/th14/browser-replay-wrap-empty-confirm-oct11.jpg",
+    "artifacts/th14/browser-replay-return-title-oct11.jpg"
+  ],
+  "logs": "artifacts/th14/browser-replay-logs-oct11.json",
+  "build": "artifacts/th14/sdl-title-replay-browser-build-oct11.json",
+  "scope": "Actual formal SDL browser and real keys/original resources; catalog empty. Browser screenshots verify empty catalog navigation/return, not nonempty playback. Controlled native and production serialization text tests cover loaded entries separately. No hidden unlock, artificial Clear or saved replay; no original GPU/audio equivalence."
+}

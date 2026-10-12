@@ -1,0 +1,328 @@
+{
+  "diagnosticEvidenceVerified": true,
+  "strictPixelsEqual": false,
+  "productionChanged": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "variants": [
+    {
+      "name": "sequential-eye",
+      "exactFrames": 2,
+      "differentChannels": 12314,
+      "maxDelta": 116,
+      "strictPixelsEqual": false
+    },
+    {
+      "name": "cpu-float-eye",
+      "exactFrames": 2,
+      "differentChannels": 2612,
+      "maxDelta": 100,
+      "strictPixelsEqual": false
+    },
+    {
+      "name": "cpu-double-eye",
+      "exactFrames": 2,
+      "differentChannels": 6129,
+      "maxDelta": 116,
+      "strictPixelsEqual": false
+    },
+    {
+      "name": "no-fog",
+      "exactFrames": 8,
+      "differentChannels": 10436,
+      "maxDelta": 115,
+      "strictPixelsEqual": false
+    },
+    {
+      "name": "no-depth",
+      "exactFrames": 2,
+      "differentChannels": 3158,
+      "maxDelta": 25,
+      "strictPixelsEqual": false
+    }
+  ],
+  "evidence": {
+    "artifacts/th14/stage-gpu-stream-replay/native.json": {
+      "bytes": 6748,
+      "sha256": "115123af74b9133297766d01284d5f9e4e077a2b290ab84916f74cf3a44040cd"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/build.json": {
+      "bytes": 1898,
+      "sha256": "0c3c81d9d95751ccb2d6d9c2203503051d512e28aae898699590e95a191a9b8c"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/sequential-eye/build.json": {
+      "bytes": 1798,
+      "sha256": "006564e41137a9855719ad49988e83adc4edc3b7d4a0a56aaa8a448731b69588"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/sequential-eye/browser-result.json": {
+      "bytes": 78979,
+      "sha256": "549d8e8ce044c32af8f59c45883062f1acf1a0045dc9ebadd206d8147e3bad82"
+    },
+    "tools/th14-stage-gpu-stream-transform-build.mjs": {
+      "bytes": 3698,
+      "sha256": "7ab827f124d03864e5499e91d35d57ce679a1a498d402501b309a810b23a59d0"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/sequential-eye/Renderer.cpp": {
+      "bytes": 29936,
+      "sha256": "46d874eb2ab77080f521b76f59da9d639216f67be920411d03427c0df4b7c6f6"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/sequential-eye/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/sequential-eye/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/sequential-eye/Shaders.hpp": {
+      "bytes": 3648,
+      "sha256": "26269c928465b128e73e678e1214f31e35f3d5620592540ac129dc91c7377953"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/sequential-eye/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/sequential-eye/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/sequential-eye/fixture.cpp": {
+      "bytes": 5693,
+      "sha256": "7d52f277eab6e0143d197d8b74d2454033e0fecb485a7df5cc13d4dc07303d6d"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/sequential-eye/gpu.wasm": {
+      "bytes": 763969,
+      "sha256": "83bdb644ff1490ff08091ae0c0e68bacae1cd497242078205e7288b5daab0402"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/sequential-eye/gpu.mjs": {
+      "bytes": 211781,
+      "sha256": "fed03f37d0fe97bce31b9db9408b78e01ecc3d132f8fa6faa30e0c763a60f8f3"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/native.bgra": {
+      "bytes": 25804800,
+      "sha256": "42f7c2c66012c6b283eac3c0620ba485591ea7bb419a70715dfdeef7ad62e978"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-float-eye/build.json": {
+      "bytes": 1797,
+      "sha256": "7f8ca0b40f8356edfb219cf28fa297c65f19e7d4192b0009b558cbe46fd970f9"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-float-eye/browser-result.json": {
+      "bytes": 45533,
+      "sha256": "d6fdbf79c1b4d8a13ed2628112d2353341cf4a93e3fd9d0cf68f51a80646743d"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-float-eye/Renderer.cpp": {
+      "bytes": 29936,
+      "sha256": "46d874eb2ab77080f521b76f59da9d639216f67be920411d03427c0df4b7c6f6"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-float-eye/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-float-eye/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-float-eye/Shaders.hpp": {
+      "bytes": 3646,
+      "sha256": "78f7648c27aa762c30493e6bf784baabdabdac63e2f683b2ed33470dca5aa252"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-float-eye/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-float-eye/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-float-eye/fixture.cpp": {
+      "bytes": 6169,
+      "sha256": "3f78adb571a885dfa1b37af99c38150a478ca004682b3e34fa0aa29ca8a54d19"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-float-eye/gpu.wasm": {
+      "bytes": 765095,
+      "sha256": "c98c02223c06263f8ce8f6617940fa42dddbe808697eb4773995db8286df4bbe"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-float-eye/gpu.mjs": {
+      "bytes": 211781,
+      "sha256": "bc49b2965d1f20cd6abb7c8ab6372e64d995c92527ab19bd9ec645fc09a89b2a"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-double-eye/build.json": {
+      "bytes": 1798,
+      "sha256": "336ca1169848b37729510ca84a579e7025e0e78801a1e8bb0d41fb2bc26424f9"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-double-eye/browser-result.json": {
+      "bytes": 63799,
+      "sha256": "f329b6a4cdd04e397b7fd4d3317eb95abd4399038766fcecb36e38445a8ba107"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-double-eye/Renderer.cpp": {
+      "bytes": 29936,
+      "sha256": "46d874eb2ab77080f521b76f59da9d639216f67be920411d03427c0df4b7c6f6"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-double-eye/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-double-eye/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-double-eye/Shaders.hpp": {
+      "bytes": 3646,
+      "sha256": "78f7648c27aa762c30493e6bf784baabdabdac63e2f683b2ed33470dca5aa252"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-double-eye/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-double-eye/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-double-eye/fixture.cpp": {
+      "bytes": 6174,
+      "sha256": "3f1d63089ce2c97c8e9a722d54f18720d761b15fb3b1478a4a8d1726ebc9aec9"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-double-eye/gpu.wasm": {
+      "bytes": 764970,
+      "sha256": "8a890350a673eb9e02e1bc7fb572300f574d14bb5e57ff72d37268d6a3b1893d"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-double-eye/gpu.mjs": {
+      "bytes": 211781,
+      "sha256": "bc49b2965d1f20cd6abb7c8ab6372e64d995c92527ab19bd9ec645fc09a89b2a"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-fog/build.json": {
+      "bytes": 1790,
+      "sha256": "f986890d10c36fd019b3f0af18a17c982a5e9eb56ac1cfa3b34cb897babc12fd"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-fog/browser-result.json": {
+      "bytes": 54785,
+      "sha256": "f022677371e92607a16ce5a898ddaad55b8ea640e888e41322ce8b3d6f1697c7"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-fog/Renderer.cpp": {
+      "bytes": 29936,
+      "sha256": "46d874eb2ab77080f521b76f59da9d639216f67be920411d03427c0df4b7c6f6"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-fog/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-fog/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-fog/Shaders.hpp": {
+      "bytes": 3646,
+      "sha256": "78f7648c27aa762c30493e6bf784baabdabdac63e2f683b2ed33470dca5aa252"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-fog/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-fog/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-fog/fixture.cpp": {
+      "bytes": 5813,
+      "sha256": "6d4f9f160c8bd88da35592273d79fda489a07a7fe0e2bba4a2f3dd3d5ce22bb1"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-fog/gpu.wasm": {
+      "bytes": 764041,
+      "sha256": "1ad6e1380d6d660dfed4cefd11fb89a2a3906cdcb677d00bf36d71c67a92e165"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-fog/gpu.mjs": {
+      "bytes": 211781,
+      "sha256": "fed03f37d0fe97bce31b9db9408b78e01ecc3d132f8fa6faa30e0c763a60f8f3"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-fog/native.json": {
+      "bytes": 7067,
+      "sha256": "a786450f617fd393ace0f37a90ef1ab2125faa494344a6e9d6b87e159a37ebe7"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-fog/native.bgra": {
+      "bytes": 25804800,
+      "sha256": "b5e1882532e735752d05858282d1b1259afcddb665a5413b813b20aea61416c1"
+    },
+    "tools/th14-stage-gpu-stream-no-fog-hal.py": {
+      "bytes": 8100,
+      "sha256": "87153d06364e8ea922bf2d8ad338d8afb475dc734bb123e8a44f66f982002f15"
+    },
+    "tools/th14-stage-gpu-stream-isolate-native.py": {
+      "bytes": 1573,
+      "sha256": "bb606abc96e088904807c5bbe0cc472a676aca873f2e120012b886f8208109a0"
+    },
+    "tools/th14-stage-gpu-stream-hal.py": {
+      "bytes": 7658,
+      "sha256": "8c61376c7900d6b0af49aa6395e7b58289b2363d62a8b601bc39b3507dd36613"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-depth/build.json": {
+      "bytes": 1792,
+      "sha256": "1331cdf5776b44fc581c964319d63364f990255af713792b83944143f00b75e3"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-depth/browser-result.json": {
+      "bytes": 53440,
+      "sha256": "82c263cf1f15e8b1855c39ae5f45692a74621fc96d646a0bf74a9e2f58b3f3a8"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-depth/Renderer.cpp": {
+      "bytes": 29936,
+      "sha256": "46d874eb2ab77080f521b76f59da9d639216f67be920411d03427c0df4b7c6f6"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-depth/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-depth/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-depth/Shaders.hpp": {
+      "bytes": 3646,
+      "sha256": "78f7648c27aa762c30493e6bf784baabdabdac63e2f683b2ed33470dca5aa252"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-depth/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-depth/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-depth/fixture.cpp": {
+      "bytes": 5861,
+      "sha256": "5fd70f10c9f6467fe51cae5844a472099d5d67000ad643bc132d0669a79ff8fd"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-depth/gpu.wasm": {
+      "bytes": 764041,
+      "sha256": "f6fd4e0a4a1b4ea00903d67176d02794529e1687d24c51eaae3ff63617bb8fae"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-depth/gpu.mjs": {
+      "bytes": 211781,
+      "sha256": "fed03f37d0fe97bce31b9db9408b78e01ecc3d132f8fa6faa30e0c763a60f8f3"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-depth/native.json": {
+      "bytes": 7071,
+      "sha256": "84d8891e010f0ffebb1aa58c0ed297b4c3e42487539f1f36c03d17d18f7a3ba4"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-depth/native.bgra": {
+      "bytes": 25804800,
+      "sha256": "9a480d4b2ec4448e35ef4c5609d26a368de0003c728515bf8f5931529af3d149"
+    },
+    "tools/th14-stage-gpu-stream-no-depth-hal.py": {
+      "bytes": 8114,
+      "sha256": "e69afdd6d93439f713f1de410d6bf52fce7057a1c9750e2a8b643e9d2ce955e4"
+    },
+    "runtimes/th14/th14_web/artifacts/sdl3-release/build.json": {
+      "bytes": 37704,
+      "sha256": "5a7b67fdb5014796ba0fce8ed975f570460104e0619d84e40e5fec291c63d68a"
+    },
+    "runtimes/th12/portable/sdl/Renderer.cpp": {
+      "bytes": 29936,
+      "sha256": "46d874eb2ab77080f521b76f59da9d639216f67be920411d03427c0df4b7c6f6"
+    },
+    "runtimes/th12/portable/sdl/Shaders.hpp": {
+      "bytes": 3646,
+      "sha256": "78f7648c27aa762c30493e6bf784baabdabdac63e2f683b2ed33470dca5aa252"
+    }
+  },
+  "toolSha256": "363b4ba7b31544a45ef808358dbb9a79d97daae2548087df3a17c86eeb9eb2b8",
+  "limits": "Five separate physical browser executions; each candidate remains a failure. The two state overrides have separately generated hidden HAL pixel references and are not game behavior. Candidate browser per-frame summaries, hashes and first32 differing channels are preserved; full candidate WebGL buffers have not been independently archived. Native reference bytes and all saved first differences are independently checked. Original production buffer has a separate byte-for-byte evidence checker. No successful matrix repair, entire game, or native process framebuffer claim."
+}

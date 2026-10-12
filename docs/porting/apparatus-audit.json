@@ -1,0 +1,66 @@
+{
+  "measuredAt": "2026-10-06",
+  "how": "git status --porcelain (directories collapsed), then -uall per tree, then git check-ignore -v on samples",
+  "entriesReported": 210,
+  "visibleRealFiles": 221,
+  "filesystemMeasureOverTheWholeSet": {
+    "files": 800,
+    "bytes": 69317013
+  },
+  "whyTheTwoNumbersDiffer": {
+    "ignoredAndThereforeInvisible": [
+      {
+        "rule": ".gitignore:14  **/artifacts/",
+        "example": "runtimes/th06nc/artifacts/cpp/th14-data/default.ecl"
+      },
+      {
+        "rule": ".gitignore:15  runtimes/*/th*_web/artifacts/",
+        "example": "runtimes/th14/th14_web/artifacts/sdl3/build.json"
+      },
+      {
+        "rule": ".gitignore:24  runtimes/*/th*_web/assets/sdl-native/music/",
+        "example": "assets/sdl-native/music/th128_08.ogg"
+      },
+      {
+        "rule": ".gitignore:50  __pycache__/",
+        "example": "tools/tests/__pycache__"
+      }
+    ],
+    "untrackedBeneathTheTwoBigTrees": {
+      "runtimes/th14": 1,
+      "runtimes/th06nc": 1
+    }
+  },
+  "theFinding": {
+    "statement": "the port apparatus was not in history while the records named it by hash",
+    "components": {
+      "records": 53,
+      "instruments": 87,
+      "th14PortUnitsAndFixturesAndTargetsAndShared": 81
+    }
+  },
+  "commits": [
+    "18b1eb6 the verification records of thirteen and fourteen (53 files, 9470 insertions)",
+    "a9c0dd4 the native probes and checkers (87 files: 44 python, 42 node, 5250 insertions)",
+    "0967a4b the TH14 port sources, their fixtures, the shared libraries and the runtime targets (82 files, 4112 insertions)"
+  ],
+  "after": {
+    "trackedModifications": 0,
+    "visibleUntracked": 0
+  },
+  "oneNameShapedMiss": {
+    "pattern": "^runtimes/th[0-9]+/target\\.json$",
+    "missedBecause": "TH06NC carries letters, not only digits",
+    "left": "runtimes/th06nc/target.json, 1590 bytes",
+    "foundBy": "listing the untracked set, not by reading the pattern"
+  },
+  "keepersonTheCommittedTree": {
+    "loader": "112 433 436 529 529 530",
+    "suites": {
+      "th12-noop-tables": "1/0",
+      "archive": "1/0",
+      "modern-archives": "7/0",
+      "tasofro-archives": "4/0"
+    }
+  }
+}

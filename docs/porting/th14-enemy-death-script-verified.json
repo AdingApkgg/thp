@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "cases": 24,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "6abdd51e630da1da395b3a7c597e5042544208a9236875b05f382222161de36b",
+  "scope": "Retail ECL 556 pointer setter 4287ac and actual death delivery tail 424c21..424c8b: release zero to three secondary contexts, run actual root reset 4211c0 and VM update 483e70/482380 at elapsed zero, clear death name once. Controlled native lookup returns synthetic subroutine and release calls are recorded. Port executes production 556 dispatch and enemy_death, checks drop-before-script order and cleared primary drop. Dirty stacks and three signed f32 locals agree across 24 cases. Unsupported death opcode propagates -2. Full death callback function pointers, lookup implementation, earlier sound/effect/drop delivery and complete gameplay are not covered by this proof.",
+  "sourceHashes": {
+    "tests/cpp/th14-enemy-death-script-fixture.cpp": "209cd0d1512ab2ba451c50641501b9f99ae715663653824b7a7cbd23503ca4fd",
+    "cpp/game/EnemyFrame.cpp": "e4b7af71943d4c3a1d588b911ad03364fd66e3a1a27039f67ffc998f10f36d5a",
+    "cpp/game/EnemyFrame.hpp": "70707b23db640197d8b55ab1ddfd79decacfa85650efbfdccfce8358433b28e6",
+    "cpp/game/EnemyState.cpp": "371bd24df789d194c9e84a8ab6924a9291bf6b911bc99855bb3f10e0f64c575a",
+    "cpp/game/EnemyState.hpp": "704a595392b51443db3f6e6826f3005e6d75b5c30f509685a163722af8990463",
+    "cpp/game/EnemyTh14Commands.cpp": "38f271da8f612ec7d60d4d78bcce5663b8ed31f551626184278db086d0a74a0f",
+    "cpp/game/EnemyManager.cpp": "85fd8754f44118ce0b2db837f42ba1f46ebf866190f99a64d500f91fa050ece6",
+    "cpp/game/EnemyScript.cpp": "90a877b6245ce53aa1c7ab1321010dee589cd3b7be7c9f0af14dd6f9e1c3a2e9",
+    "cpp/game/EclOwner.cpp": "0a1fc73e902704eec9e09045d54a2fe20c0a2fb49c9711f04aa0017e8ecbb5ff"
+  }
+}

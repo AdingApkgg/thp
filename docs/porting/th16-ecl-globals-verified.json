@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "cases": 352,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "bfa4248a945e01baee47e556a5f5bd68e399afe5fe06455348d080f75276136b",
+  "scope": "Actual retail VM 472030 runs push/store integer and float instructions 42..45 and subsequent integer/float global reads. Covers four manager integers -9926..-9923, eight manager floats -9922..-9915, four Boss integer and four Boss float destinations with Boss present/absent, and writable absolute/relative XY positions -9995..-9992. Native 423f80/424c10 writable-reference dispatch and 423810/424110 read dispatch execute without stubs; all 39 watched storage words and typed read results agree across 352 cases, including large signed integers, NaN/infinity and signed zero. Boss-missing writes fall back to owner storage while reads return zero. No claim about remaining globals, callbacks, complete gameplay or position recombination after writes.",
+  "sourceHashes": {
+    "tests/cpp/th16-ecl-globals-fixture.cpp": "02a6ddf28bbf2fd979dde9b3e8d9fada9345aac8cdf7cc770fa4e129e402c39c",
+    "cpp/game/EnemyState.cpp": "e1fbe2ef56d65ac48907f3aeefed0a450648c18544cdcfc247dee331aa667bec",
+    "cpp/game/EnemyState.hpp": "4338e45caee13aae878a7b35f34073d5433b478862634395a84931547b15cc00",
+    "cpp/game/EclContext.cpp": "3a4751af060e4c2b7d2cfc9207e70beae9b77e76c55567b5225053d06117c8c4",
+    "cpp/game/EclInterpreter.cpp": "49d1b58aaee9f9fe5fa2f0f37759250fbe1517a39139ee1f6ea5a1f31ac8cff8",
+    "cpp/game/EnemyScript.cpp": "fa769a667cab90629ea059c8b8db87be17ea3e32885af79efd42220c8dc2efd7"
+  }
+}

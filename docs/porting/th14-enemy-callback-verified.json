@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "cases": 288,
+  "visualInterruptCases": 84,
+  "damageGeometryCases": 384,
+  "damageSetterCases": 8,
+  "scaleCallbackCases": 22,
+  "freezeTimelines": 864,
+  "freezeTicks": 2592,
+  "scriptTagCases": 144,
+  "randomAccelerationCases": 108,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "b76b0cdfbf4ab2d7d1bd9e9fa00706fe2c3ac4d89f953c08a75eaee4a42bb85b",
+  "scope": "Retail callback 1 at 42c8a0. Active bullets with native +be8 script tag 1 only (independent of +c0e lifecycle state), strict radius/tie comparisons, selected coordinate outputs and unchanged outputs on no candidate; includes empty lists, infinity and NaN radii. Retail callback 2 at 42c990 is compared for wrapping integer + 7 and full-width pending interrupt storage. Optional ANM interrupt hooks are controlled native delivery boundaries; the port command checks exercise real 637 dispatch into callback 2 with a detached screen VM. Retail damage callback 42c9c0 is compared for animation slot 1 lookup, absent-animation clearing, rectangle/circle positions, scale multipliers, angle, call order and wrapping sum across 384 cases, including the incoming EDX damage contribution. ANM lookup and player damage 451430 are controlled boundaries. Real 633 routing/setter is compared for indices 0 and 1. The live player damage path currently accepts only unadvanced frames and empty shot/damage-area pools without bombs; populated pools are refused. Callbacks 3/4 scale request arguments at 42cae0/42caf0 are compared at controlled 4504c0; the body and selected consumers are proved separately in th14-player-scale-verified.json. Retail callback 5 at 42cb00 is compared for 864 three-tick active-list timelines, strict inner radius, inclusive outer radius, NaN/infinity behavior, wrapping dwell counter, transform-index 5/14 resets and ordered positional sound 40 calls. The sound delivery is controlled. Retail 418140 opcode 8000 script-tag writes are compared for 144 blocked/concurrent/index cases. Lifecycle state and coordinates are preserved by the callback; subsequent transform programs are not proved here. Retail callback 6 at 42cc70 rewrites five words of ETEX slot 1 on every active bullet, preserving other fields, cursor, active mask and lifecycle. 108 cases compare the real RNG 4034b0, active-list order, empty lists and wrapping RNG call count; the other RNG stream is checked untouched. The later ETEX 4 movement executor is not implemented or asserted. No claim for populated player damage, generic hook bodies, native screen-copy lifecycle or full boss behavior.",
+  "sourceHashes": {
+    "tests/cpp/th14-enemy-callback-fixture.cpp": "38b03cee44769439f7e9a772d9d1e7149ae3696d3085143a7d9e83392501f5a4",
+    "cpp/game/EnemyTh14Callbacks.cpp": "73f797a023c6a5dcba947f23c4f3b67e899cdfce657b372f9e3588eb2fcdc183",
+    "cpp/game/EnemyCommands.hpp": "5b114d89083d5363bc0cdc7f86410e648b7f6e511737f72882cd3699c9cf3539",
+    "cpp/game/GameBattle.hpp": "2a89b3c5058e88f85f0af824deb30c9f90d11d84a10d1a77ec40321fc850f8f1",
+    "cpp/game/BulletManager.hpp": "e8976e05e812ebc96d4f0301d5a6891bda68906a0e631b05fcbc2d7b8cb59c07",
+    "cpp/game/BulletManager.cpp": "52dfed2d82b3671f336705ee14efef8153b21560f0e9c986e5892661bc6374c9",
+    "cpp/game/BulletState.hpp": "623d05f9848836d0addeda93023abd09a8d505436810f517c43ec2c3c380f995",
+    "cpp/game/BulletTh14.cpp": "6ef2e92fe2e2a42ec857f4c1d3856136b6815f6355523685fbd4999f1c0aecb3",
+    "cpp/game/EnemyTh14Commands.cpp": "afb4f5abc09e245febbeeb76f591112a916131877ff61d290099df43f67f69c0",
+    "cpp/game/EnemyScript.cpp": "95853fb7516ce41654853115c64f78f1c4e46c22996602943cccb4a02a4e9cd9",
+    "cpp/game/EnemyCallbacks.cpp": "ff0fb5894c0edfc3968b80deedf8a1c2b097243c3f9b31cd59e2abb4c33f61ff",
+    "cpp/game/EnemyCallbacks.hpp": "69f0c6af362fd0aee2b675b3b1c978e6866b210696957515270b2cc988f9b189",
+    "cpp/game/AnmVm.cpp": "f6ea07e46ae7d1d9cba4f643b72c9161628dbff66575a981b4f8a74345a67d3f",
+    "cpp/game/AnmVm.hpp": "5c410805de54cc0fc32b91720c0346f3d3ebaec2f76365132980222798186e94",
+    "cpp/game/SceneCompositor.cpp": "86a41050584cd55a466c64157db2464258b9b500b9e5a441b2ece3534b567ce2",
+    "cpp/game/EnemyFrame.cpp": "294a9992644b07551ee7e3e9dfb0faffd0b9c2234f18d214b0cf8e47f2337d86",
+    "cpp/game/ShotManager.cpp": "769054b79a1adb97eee7c333b6ad1ac53957cb680e9d01c8d36d7424b7b842df",
+    "cpp/game/ShotManager.hpp": "4cdc23e17cd115cbf709f62911c72e0251d1649744ade04c887171f85dcbbc9a"
+  },
+  "toolHashes": {
+    "tools/th14-enemy-callback-native.py": "86aff9adaa72d7b300a6f84f6eec76faa5f38f279d15c90fa924d4b6a7b67353",
+    "tools/th14-enemy-callback-check.mjs": "9ecdae3da405ccca6ed3ccca35cb6d837d698116cea578ab1aa6bb21de48ec0e"
+  }
+}

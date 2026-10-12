@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {createHash} from 'node:crypto';
+const root=resolve(import.meta.dirname,'..'),sha=b=>createHash('sha256').update(b).digest('hex'),evidence={};
+const track=p=>{const b=readFileSync(resolve(root,p));evidence[p]={bytes:b.length,sha256:sha(b)};return b;},json=p=>JSON.parse(track(p));
+const observed=json('docs/porting/th14-gpu-stage-fog32-observed-oct12.json'),native=json('artifacts/th14/gpu-stage-fog/native.json');assert(observed.passed);assert.equal(observed.completeGame,false);assert.equal(observed.nativeEquivalent,false);assert.equal(native.cases.length,7104);assert.equal(native.behaviorFlags,64);
+assert.equal(observed.nativeReferenceSha256,evidence['artifacts/th14/gpu-stage-fog/native.json'].sha256);assert.equal(observed.requestSha256,sha(track('artifacts/th14/gpu-stage-fog32/requests.bin')));
+assert.equal(observed.helperSourceSha256,sha(track('tools/th14-stage-fog32-helper.cpp')));assert.equal(observed.toolSha256,sha(track('tools/th14-native-stage-fog32.py')));
+const helper=track('artifacts/th14/gpu-stage-fog32/fog32.exe');assert.equal(observed.helperSha256,sha(helper));assert.equal(helper.toString('ascii',0,2),'MZ');assert.equal(helper.readUInt16LE(helper.readUInt32LE(0x3c)+4),0x14c);
+for(const [p,h] of Object.entries(native.tools))assert.equal(sha(track('tools/'+p)),h);
+const pixels=track('artifacts/th14/gpu-stage-fog/native.bgra');assert.equal(sha(pixels),native.pixelsSha256);assert.equal(pixels.length,29097984);for(let i=0;i<native.cases.length;++i)assert.equal(sha(pixels.subarray(i*4096,(i+1)*4096)),native.cases[i].pixelsSha256);
+assert.equal(observed.d3d9Sha256,sha(readFileSync('C:/Windows/SysWOW64/d3d9.dll')));assert.equal(observed.x64D3d9Sha256,sha(readFileSync('C:/Windows/System32/d3d9.dll')));
+assert.deepEqual(observed.reports.map(r=>r.precision),[24,53,64]);let comparedCases=0,comparedBytes=0;
+for(const report of observed.reports){const b=track(`artifacts/th14/gpu-stage-fog32/readback-${report.precision}.bin`);assert.equal(b.length,pixels.length+20);assert.equal(b.readUInt32LE(0),7104);assert.equal(b.readUInt32LE(4),0x7f);assert.equal(b.readUInt32LE(8),{24:0x7f,53:0x27f,64:0x37f}[report.precision]);assert.equal(b.readUInt32LE(12),report.vendorId);assert.equal(b.readUInt32LE(16),report.deviceId);assert.equal(report.cases,7104);assert.equal(report.exactCases,7104);assert.equal(report.differences.length,0);assert.equal(report.bytes,pixels.length);assert.equal(sha(b.subarray(20)),report.pixelsSha256);assert(b.subarray(20).equals(pixels));comparedCases+=7104;comparedBytes+=pixels.length;}
+const references=json('artifacts/th14/reference-projects/fog/references.json');for(const r of references){assert(!r.error);const b=track('artifacts/th14/reference-projects/fog/'+r.name);assert.equal(b.length,r.bytes);assert.equal(sha(b),r.sha256);}
+const report={passed:true,completeGame:false,nativeEquivalent:false,comparedCases,comparedBytes,precisionModes:[24,53,64],evidence,toolSha256:sha(readFileSync(import.meta.filename)),scope:observed.scope,limits:'Independent hidden devices agree across x86/x64 and all three submitted x87 precision states. This rules out these reference differences for this exact input and current driver; it does not fix or waive the remaining WebGL fog differences. Wine/DXVK are static references, not executed native or portable proofs.'};
+writeFileSync(resolve(root,'docs/porting/th14-gpu-stage-fog32-evidence-verified-oct12.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:true,comparedCases,comparedBytes}));

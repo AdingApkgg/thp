@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "requestCases": 540,
+  "updateCases": 1080,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "5b641a088c2c4b6cb01002aabeb2d0de09afc615ed2bded895994467673d8927",
+  "scope": "Retail 4504c0 scale request, 44c270/4358e0 option interrupt delivery (47f140 and option rebuild 44f970 are controlled boundaries), and 44e1b4..44e8d5 body scale/blink, real 414140 interpolation and four XYZ collision/pickup regions. Flags, timer pointer preservation, 120-frame SSE interpolation and completed-duration behavior are compared bitwise. Infinity/NaN request handling is included. Full option recreation, projectile scaling, circular-hit scaling, death/stage resets and complete player lifecycle remain unverified.",
+  "sourceHashes": {
+    "tests/cpp/th14-player-scale-fixture.cpp": "5a0e8a9e8ffab40b6a2740c247ab75478e8904fbdcad3fc5dbe9a09654641321",
+    "cpp/game/PlayerFrame.cpp": "42af2e8ecfff71b31d57dc47d8c70290d408cb0b3ca677150388ec7105a6cfcf",
+    "cpp/game/PlayerFrame.hpp": "6990b0899513b34f83cfb1ac8ef7177e7a4e588ae8f820f6a4b37cf0dbb34fc3",
+    "cpp/game/EnemyCallbacks.cpp": "ff0fb5894c0edfc3968b80deedf8a1c2b097243c3f9b31cd59e2abb4c33f61ff",
+    "cpp/game/EnemyCallbacks.hpp": "69f0c6af362fd0aee2b675b3b1c978e6866b210696957515270b2cc988f9b189",
+    "cpp/game/GameBattle.hpp": "914fd441958300a40d5c0c76d0f6d619603e398738f11edeae3f7c5583c5748f",
+    "cpp/game/EnemyTh14Commands.cpp": "54327300015ef71c4fe6e3df3df1015ee9c7aa4e9b0a498652233911fe261515"
+  },
+  "toolHashes": {
+    "tools/th14-player-scale-native.py": "f46ca94fe3f6f4a54c7979276a4319ac69f9425b85756f2e30bda6d5b45d773d",
+    "tools/th14-player-scale-check.mjs": "bf53833256bb616755c8e553d1652cbafb8bc477fbf25b02ec241f7047a952f3"
+  }
+}

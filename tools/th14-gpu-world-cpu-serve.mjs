@@ -1,0 +1,10 @@
+import {createServer} from 'node:http';
+import {readFile} from 'node:fs/promises';
+import {resolve,extname} from 'node:path';
+const root=resolve(import.meta.dirname,'..'),out=resolve(root,'artifacts/th14/gpu-world-profiles');
+const names=['cpu-scale','cpu-exp','cpu-both','euler-base','euler-uniform','euler-reciprocal','reciprocal-uniform','euler-lerp','euler-reverse','euler-separate','euler-color','correct-lerp','correct-reverse','correct-separate'];
+const files=new Map([['/',resolve(root,'tools/th14-gpu-world-cpu.html')],...['native.json','native.bgra'].map(n=>['/'+n,resolve(out,n)])]);
+names.push('range-rsqrt','range-sqrt');
+names.push('linear-scaled','linear-mad','linear-cpu');
+for(const name of names)for(const file of ['gpu.mjs','gpu.wasm','build.json'])files.set('/'+name+'/'+file,resolve(out,name,file));
+createServer(async(req,res)=>{try{const file=files.get(new URL(req.url,'http://localhost').pathname);if(!file||!['GET','HEAD'].includes(req.method)){res.writeHead(404).end();return;}const bytes=await readFile(file);res.writeHead(200,{'Content-Type':({'.html':'text/html;charset=utf-8','.mjs':'text/javascript','.wasm':'application/wasm','.json':'application/json'})[extname(file)]||'application/octet-stream','Content-Length':bytes.length,'Cache-Control':'no-store'});res.end(req.method==='HEAD'?undefined:bytes);}catch(e){res.writeHead(500).end(e.message);}}).listen(8148,'127.0.0.1',()=>console.log('TH14 CPU fog uniforms http://127.0.0.1:8148/'));

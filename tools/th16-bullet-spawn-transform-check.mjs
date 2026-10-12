@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,mkdirSync,readdirSync} from 'node:fs';
+import {resolve,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {WASI} from 'node:wasi';
+import {nativePython} from './native-python.mjs';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..'),rt=resolve(root,'runtimes/th12/th12_web'),out=resolve(root,'artifacts/th16/bullet-spawn-transform-check');mkdirSync(out,{recursive:true});
+const env={...process.env,TEMP:out,TMP:out,TMPDIR:out};
+nativePython('tools/th16-bullet-spawn-transform-native.py',{cwd:root,stdio:'inherit',windowsHide:true});
+execFileSync(process.execPath,['runtimes/th13/th13_web/scripts/cpp/build-engine.mjs','--title','16'],{cwd:root,env,stdio:'inherit',windowsHide:true});
+const fixture='tests/cpp/th16-bullet-spawn-transform-fixture.cpp',dir=resolve(root,'runtimes/th13/th13_web/artifacts/cpp/objects-th16'),wasm=resolve(out,'spawn-transform.wasm');
+execFileSync(resolve(rt,'../tools/wasi-sdk-34.0-x86_64-windows/bin/clang++.exe'),['--target=wasm32-wasip1','-std=c++17','-O2','-ffp-contract=off','-fno-exceptions','-fno-rtti','-mexec-model=reactor','-Wl,--no-entry','-Wl,--export-memory','-DPORT_TITLE=16',fixture,...readdirSync(dir).filter(n=>n.endsWith('.o')).map(n=>resolve(dir,n)),'-o',wasm],{cwd:rt,env,stdio:'inherit',windowsHide:true});
+const bytes=readFileSync(wasm),wasi=new WASI({version:'preview1',args:[],env:{},preopens:{}}),{instance}=await WebAssembly.instantiate(bytes,{wasi_snapshot_preview1:wasi.wasiImport});wasi.initialize(instance);const c=instance.exports;
+const proof=JSON.parse(readFileSync(resolve(root,'artifacts/th16/bullet-spawn-transform-native.json'),'utf8'));
+for(const r of proof.cases){const data=Buffer.from(r.program,'hex'),p=c.allocate(data.length);new Uint8Array(c.memory.buffer,p,data.length).set(data);assert.equal(c.run(r.index,r.active,r.counter,r.angleBits,p),0,`case${r.n}`);assert.deepEqual(Array.from({length:4},(_,n)=>c.value(n)>>>0),r.output,`state${r.n}`);assert.equal(c.request_count(),r.requests.length);for(let n=0;n<r.requests.length;n++){const actual=Buffer.from(c.memory.buffer,c.request_address(n),0x380),expected=Buffer.from(r.requests[n],'hex');if(!actual.equals(expected)){let at=0;while(actual[at]===expected[at])at++;assert.fail(`case${r.n} request${n} byte+${at.toString(16)}: ${actual[at]} != ${expected[at]}`);}}assert.deepEqual(Array.from({length:c.event_count()},(_,n)=>[c.event(n,0)>>>0,c.event(n,1)>>>0]),r.events,`events${r.n}`);c.release(p);}
+const sha=b=>createHash('sha256').update(b).digest('hex');
+writeFileSync(resolve(root,'docs/porting/th16-bullet-spawn-transform-verified.json'),JSON.stringify({passed:true,title:16,completeGame:false,programs:proof.cases.length,requests:proof.cases.reduce((n,c)=>n+c.requests.length,0),nativeExecutableSha256:proof.executableSha256,scope:'Whole413860 ETEX8192 emitter request assembly, skipped metadata row, 32768 tag and finite65536 looping, concurrent blocking and existing shared loop counter. All0x380 request bytes, source index/counter/tag/active mask and ordered fire/cancel deliveries compared exactly. Retail aim and normalization execute. Factory414da0 and cancellation416840 are controlled; portable production fire/cancel handoffs connected, actual child allocations/trajectories not covered. Nonpositive infinite loop counts and programs exceeding4096 interpreter operations remain explicit execution limits; complete frame/game excluded.',wasmSha256:sha(bytes),sourceHashes:Object.fromEntries([fixture,'cpp/game/BulletTh16.cpp','cpp/game/BulletTh16.hpp','cpp/game/BulletState.hpp'].map(p=>[p,sha(readFileSync(resolve(rt,p)))]))},null,2)+'\n');
+console.log(`PASS ${proof.cases.length} TH16 spawn-transform programs / ${proof.cases.reduce((n,c)=>n+c.requests.length,0)} whole emitter requests`);

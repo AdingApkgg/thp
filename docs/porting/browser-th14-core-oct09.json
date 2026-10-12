@@ -1,0 +1,33 @@
+{
+  "verified": false,
+  "date": "2026-10-09",
+  "url": "http://127.0.0.1:8126/",
+  "title": "东方辉针城 · 移植验证",
+  "loadedBuild": {
+    "bytes": 1629857,
+    "sha256": "9a096435b51e40e05b40743105bbfba135af857747cf38c7fe8463a745a87f78",
+    "scope": "SDL build observed before later spell-background/553 changes; this is a dated browser record, not a claim of the latest complete game."
+  },
+  "normalStart": {
+    "verified": true,
+    "path": [
+      "Game Start",
+      "Normal",
+      "Reimu",
+      "Reimu A",
+      "Stage 1"
+    ],
+    "observedFailure": "battle update failed: -601 player update failed: 0 motion=0 shots=0 state=2 timer=3",
+    "screenshot": "artifacts/th14/browser-normal-core-oct09-updated.png"
+  },
+  "idleDemo": {
+    "observedFailure": "battle update failed: -1004 item update failed: 146",
+    "screenshot": "artifacts/th14/browser-demo-attraction-oct09.png"
+  },
+  "limitations": [
+    "Player death/drop path remains incomplete.",
+    "Ordinary automatic attraction and combo rewards remain incomplete.",
+    "HUD digits and text layout are visibly incorrect; synthetic notice checks do not establish font/pixel correctness.",
+    "Native replay and complete gameplay are not verified."
+  ]
+}

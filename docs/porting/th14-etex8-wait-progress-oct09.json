@@ -1,0 +1,198 @@
+{
+  "verified": false,
+  "scope": "TH14 implementation progress and controlled native comparisons; not full gameplay, native replay or GPU equivalence. Story and Extra runs fix player invulnerability.",
+  "implementedThisIncrement": [
+    "0x8 angular/speed acceleration",
+    "0x80 collision delay",
+    "0x10000 transform program jump",
+    "0x2000000 draw group",
+    "0x80000000 moving wait",
+    "0x4000000 movement/animation freeze"
+  ],
+  "proofs": {
+    "turn": {
+      "passed": true,
+      "cases": 432,
+      "frames": 41472,
+      "wasmSha256": "367fe3dd9860a635ba0b85fa187e3d8c0154884c9d31ce8c095ae7efe0582e0c"
+    },
+    "acceleration": {
+      "passed": true,
+      "cases": 432,
+      "frames": 41472,
+      "wasmSha256": "95e069688e092fefddbecb664a91a005eae8098853d77c534551401101fc996c"
+    },
+    "lifecycle": {
+      "passed": true,
+      "cases": 1032,
+      "frames": 28743,
+      "wasmSha256": "6e2060c1b25b26f4a512c000d78b8fc5e4ffec6810ce23e6036fec1342f7ec98"
+    }
+  },
+  "sessions": {
+    "story": {
+      "passed": true,
+      "combatIsolation": true,
+      "held": 9,
+      "sessionWasmSha256": "df0d7b3896b64273bff5d181a16485ce79607049bb9a02f8f22c3c8e7b538aee",
+      "rows": [
+        {
+          "stage": 1,
+          "currentStage": 0,
+          "stageFrame": 0,
+          "frames": 144257,
+          "phase": 5,
+          "phaseName": "ending",
+          "stageExit": 0,
+          "completedResult": 0,
+          "submissions": 23839726,
+          "error": "",
+          "errorStack": "",
+          "opcode": 308,
+          "eclDiagnostic": "",
+          "enemyError": "",
+          "enemyDrop": [],
+          "laserRequest": [],
+          "laserDiagnostic": [],
+          "playerDiagnostic": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "anmError": 0,
+          "itemCollectType": -1,
+          "bulletSkippedMask": 6291984,
+          "bulletUnsupportedNativeMask": 6291984,
+          "unsupportedNativeBulletTransforms": [
+            "0x10",
+            "0x200",
+            "0x200000",
+            "0x400000"
+          ],
+          "recentAnimations": [],
+          "lastResource": "staff.anm",
+          "termination": "phase-change"
+        }
+      ]
+    },
+    "extra": {
+      "passed": true,
+      "combatIsolation": true,
+      "held": 9,
+      "sessionWasmSha256": "df0d7b3896b64273bff5d181a16485ce79607049bb9a02f8f22c3c8e7b538aee",
+      "rows": [
+        {
+          "stage": 7,
+          "currentStage": 7,
+          "stageFrame": 40552,
+          "frames": 40553,
+          "phase": 3,
+          "phaseName": "game-over-or-results",
+          "stageExit": 2,
+          "completedResult": 1,
+          "submissions": 5339973,
+          "error": "",
+          "errorStack": "",
+          "opcode": 519,
+          "eclDiagnostic": "",
+          "enemyError": "",
+          "enemyDrop": [],
+          "laserRequest": [],
+          "laserDiagnostic": [],
+          "playerDiagnostic": [
+            0,
+            0,
+            0,
+            1,
+            40404,
+            1,
+            0,
+            0,
+            119
+          ],
+          "anmError": 0,
+          "itemCollectType": 9,
+          "bulletSkippedMask": 576,
+          "bulletUnsupportedNativeMask": 576,
+          "unsupportedNativeBulletTransforms": [
+            "0x40",
+            "0x200"
+          ],
+          "recentAnimations": [],
+          "lastResource": "st07mbs.ecl",
+          "termination": "phase-change"
+        }
+      ]
+    },
+    "normal": {
+      "passed": true,
+      "combatIsolation": false,
+      "held": 9,
+      "sessionWasmSha256": "df0d7b3896b64273bff5d181a16485ce79607049bb9a02f8f22c3c8e7b538aee",
+      "rows": [
+        {
+          "stage": 1,
+          "currentStage": 1,
+          "stageFrame": 1345,
+          "frames": 1346,
+          "phase": 3,
+          "phaseName": "game-over-or-results",
+          "stageExit": 0,
+          "completedResult": 0,
+          "submissions": 177421,
+          "error": "",
+          "errorStack": "",
+          "opcode": 308,
+          "eclDiagnostic": "",
+          "enemyError": "",
+          "enemyDrop": [],
+          "laserRequest": [],
+          "laserDiagnostic": [],
+          "playerDiagnostic": [
+            0,
+            0,
+            0,
+            2,
+            31,
+            0,
+            0,
+            0,
+            149
+          ],
+          "anmError": 0,
+          "itemCollectType": 9,
+          "bulletSkippedMask": 0,
+          "bulletUnsupportedNativeMask": 0,
+          "unsupportedNativeBulletTransforms": [],
+          "recentAnimations": [],
+          "lastResource": "st01mbs.ecl",
+          "termination": "phase-change"
+        }
+      ]
+    }
+  },
+  "sdl": {
+    "bytes": 1678525,
+    "sha256": "897dfa9334dbe561d130fb26d16fd3b21efa8a78cad48187a240a2c6f63cf3c2"
+  },
+  "remainingObservedNativeBulletTransforms": [
+    "0x10",
+    "0x40",
+    "0x200",
+    "0x200000",
+    "0x400000"
+  ],
+  "limitations": [
+    "Remaining native bullet handlers are explicitly reported as skipped compatibility, not verified behavior.",
+    "Controlled ANM/collision boundaries in lifecycle proof.",
+    "HUD/sprite pixels, Bomb, other weapons, complete death lifecycle and native replay validation remain open.",
+    "Other seven unported titles remain separate work."
+  ],
+  "browserReport": "docs/porting/browser-th14-etex8-wait-oct09.json"
+}

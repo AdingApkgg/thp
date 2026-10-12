@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "url": "http://127.0.0.1:8180/?game=th14",
+  "releaseSha256": "a765329908aaf597b267f2bcc888739d48d95bc089083ea8842f237fcc935c08",
+  "verifiedPackageFiles": 127,
+  "buildId": "ace3167cf9dd72896e23",
+  "browserWarningsOrErrors": 0,
+  "evidence": {
+    "docs/porting/th14-launcher-preview-prepared-oct11.json": {
+      "bytes": 36442,
+      "sha256": "7aded8cd39cdeecb488321ff8534af35587f964f1759d8e411bb4bcd574fa6f7"
+    },
+    "runtimes/th14/th14_web/artifacts/sdl3-release/build.json": {
+      "bytes": 37704,
+      "sha256": "1858a1b9484d204e4d33887ff4a1f9e4f55b5b70047af245681f83d61cdc6712"
+    },
+    "artifacts/th14/synchronous-text-launcher/initial-no-input-gameover.png": {
+      "bytes": 245500,
+      "sha256": "34719d6f0a82b0b087cb0b02919425f7d7becade28dad08efdb7548f7ba98c1e"
+    },
+    "artifacts/th14/synchronous-text-launcher/ordinary-retry-ranking.png": {
+      "bytes": 305352,
+      "sha256": "431c1065f643a61ef7dc207e51ac589e723ff7c07b92d1e5b692e65e1677aad8"
+    },
+    "artifacts/th14/synchronous-text-launcher/browser-logs.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "tools/th14-synchronous-text-launcher-check.mjs": {
+      "bytes": 2442,
+      "sha256": "c533c203ca7c5d681e362199d06575ec80a24aca82d8b5301a9b9429bd88e774"
+    }
+  },
+  "observations": {
+    "difficulty": "Normal",
+    "character": "Reimu",
+    "weapon": "A",
+    "stage": 1,
+    "initialGameOverScore": 11030,
+    "retryRankingScore": 149931,
+    "retryRankingPower": 2.77,
+    "retryRankingPointValue": 10290,
+    "retryRankingGraze": 35
+  },
+  "scope": "Physical ordinary Launcher launch, title/difficulty/character/weapon selection, first-stage battle, normal collision/game-over, retry with held firing/focus, subsequent game-over score-ranking/name-input screen. No diagnostic invulnerability or natural-clear/original whole-frame equivalence claim. Earlier filename ordinary-retry-paused.png was misleading: its image is score ranking, preserved and copied to ordinary-retry-ranking.png; this report does not claim a pause check."
+}

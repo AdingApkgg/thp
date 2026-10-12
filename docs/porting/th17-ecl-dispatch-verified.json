@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "title": "th17",
+  "scope": "The dispatch record of section 294, now with the port compared against it: the no-op predicate of every title against the column derived from that title's own executable, and this build asserted to answer with its own title. Handler semantics stay outside.",
+  "opcodes": 401,
+  "first": "0x12c",
+  "last": "0x2bc",
+  "handlers": 155,
+  "agreement": {
+    "agrees": 401,
+    "overlapping": 401
+  },
+  "executableSha256": "85cb011e2e43b316c8fa42a3c402565ecdf2f4379f3bab66d86bcb7beef8255f",
+  "executableBytes": 747520,
+  "transcribed": {
+    "file": "docs/porting/opcode-handlers.json",
+    "permitted": 702,
+    "jumpTable": "0x42661c",
+    "groupTable": "0x4268d0",
+    "targets": 173
+  },
+  "noopColumn": {
+    "file": "docs/porting/noop-opcodes.json",
+    "count": 6,
+    "source": "handler bodies disassembled from this title's executable"
+  },
+  "toolHashes": {
+    "tools/th-ecl-dispatch.py": "2a136fb7959e9f28284953603f2a30d4c0d89686c988f4c79318e60591c02afa",
+    "docs/porting/opcode-handlers.json": "de2f903ddb8df948a18cefc6a66c9cfc10aadf99246765e586f05639f09ce274",
+    "docs/porting/noop-opcodes.json": "5fef6d128d43850e93d78c616385799291716b85e6cf6e7a4207a86bdf520f94"
+  },
+  "portSide": {
+    "buildTitle": 17,
+    "query": "title_noop_opcode per title, runtime_noop_opcode for this build",
+    "column": "compared over every permitted opcode of all six titles, plus bands below and above each range",
+    "checks": 6675,
+    "noopAgreements": 2615,
+    "differingOpcodesAgainst": "th12",
+    "buildAnswersWithOwnTitle": true,
+    "wasmSha256": "6f800d877f156635023ad0adea302e196d9876a67fe9211aaaf56838bca198db",
+    "fixture": "tests/cpp/noop-title-fixture.cpp",
+    "sourceHashes": {
+      "tests/cpp/noop-title-fixture.cpp": "03bdfa991402a1dcf31f3f595fe5cec5ab13ecedd1059f777255b804ac424ed1",
+      "cpp/game/NoopOpcodes.hpp": "80a6631cb5a29de88e0c2d299ca04f4bb7ff8db1c22c78ca52e3131e34d6c317",
+      "cpp/game/PortTitle.hpp": "5531b9b0a2364098ec023e09eddbf66907c392fb58a24e1a84c5bf7a9a033d2f"
+    }
+  },
+  "nativeSide": {
+    "resolver": "tools/th-ecl-dispatch.py (the executable bytes, independent of the tables)",
+    "agrees": 401,
+    "overlapping": 401
+  }
+}

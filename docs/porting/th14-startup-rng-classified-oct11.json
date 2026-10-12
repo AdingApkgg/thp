@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "captureSha256": "0d60276d7a882c76719843d8c416abeac158b9b210c5ad9de8d205a8546b12f1",
+  "captureToolSha256": "51ec07287ecb95cbbbf08a023a1c45daf4134e9f951c41f1de199df029dbabd7",
+  "next32Calls": 552,
+  "counterCallsFromNext32": 1104,
+  "fontNext16Calls": 256,
+  "firstStageCounter": 1360,
+  "groups": [
+    {
+      "resource": "ascii.anm",
+      "script": 16,
+      "next32": 540,
+      "timerMinusOne": false
+    },
+    {
+      "resource": "effect.anm",
+      "script": 21,
+      "next32": 2,
+      "timerMinusOne": true
+    },
+    {
+      "resource": "effect.anm",
+      "script": 103,
+      "next32": 10,
+      "timerMinusOne": false
+    }
+  ],
+  "scope": "All552 visual next32 calls in one untouched isolated startup: ascii16 loading children540, effect21 template initialization2 at timer-1 and effect103 stage startup10. Valid EBP chains and resource/VM metadata separate template and runtime paths. Loading family duration is real-time dependent;45 children/1360 counter are observations of this capture, never production targets. Native clock value, loading time/GPU pixels and execution-order equality with browser excluded."
+}

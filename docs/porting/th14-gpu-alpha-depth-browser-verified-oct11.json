@@ -1,0 +1,140 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "cases": 2560,
+  "exactCases": 2560,
+  "comparedChannels": 10485760,
+  "differentChannels": 0,
+  "maxDelta": 0,
+  "distinctNativeImages": 11,
+  "occludingNativeCases": 168,
+  "flatNativeCases": 2392,
+  "selectiveDiscardPairs": 32,
+  "coverage": {
+    "depthFormats": [
+      "D16",
+      "D24S8"
+    ],
+    "depthCompareFunctions": 8,
+    "depthWriteStates": 2,
+    "frontDepths": [
+      0.25,
+      0.6000000238418579,
+      0.5999999642372131,
+      0.6000000834465027,
+      0.75
+    ],
+    "backDepth": 0.6000000238418579,
+    "alphaReferences": [
+      0,
+      1,
+      2,
+      128
+    ],
+    "alphaRanges": 2,
+    "filters": 2
+  },
+  "nativePixelsSha256": "066a1e07de3b1301d3330ae3b7ccc16b7271b1451be3da7a88a26974e6ebf00f",
+  "wasmSha256": "722d1577479b44374388ac62d5ca762c37cc5207b37798e21851019fd99752dc",
+  "evidence": {
+    "artifacts/th14/gpu-alpha-depth/native.json": {
+      "bytes": 784286,
+      "sha256": "99f8cd5370da3074faa179c5e8f4e5b1b1ee724a18160482ff5931999b72d1c2"
+    },
+    "artifacts/th14/gpu-alpha-depth/native.bgra": {
+      "bytes": 10485760,
+      "sha256": "066a1e07de3b1301d3330ae3b7ccc16b7271b1451be3da7a88a26974e6ebf00f"
+    },
+    "artifacts/th14/gpu-alpha-depth/build.json": {
+      "bytes": 2185,
+      "sha256": "1d107275a7eab7dac36af659aff5dfd053d54460e471d89a69c3427ccbd45bca"
+    },
+    "artifacts/th14/gpu-alpha-depth/gpu.mjs": {
+      "bytes": 211025,
+      "sha256": "822305d83fdf593f6d56f616f9a070a33f40e661ab2fd85205ddc82545078dae"
+    },
+    "artifacts/th14/gpu-alpha-depth/gpu.wasm": {
+      "bytes": 761128,
+      "sha256": "722d1577479b44374388ac62d5ca762c37cc5207b37798e21851019fd99752dc"
+    },
+    "artifacts/th14/gpu-alpha-depth/browser-result.json": {
+      "bytes": 2833,
+      "sha256": "fafb8b33fb706874ffd0074783660ad37ee60d6728107e718138f96257c97b6a"
+    },
+    "artifacts/th14/gpu-alpha-depth/browser.png": {
+      "bytes": 41296,
+      "sha256": "98135d01b1f28cba75ecd50573b88bc50fe2c82305bd978655027dd57f707529"
+    },
+    "artifacts/th14/gpu-alpha-depth/browser-logs.json": {
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-gpu-alpha-depth-fixture.cpp": {
+      "bytes": 2756,
+      "sha256": "43b92301da012dc8fa3e9dd72e112212b1dde53aefcd2e214ab2a106bb89fa7e"
+    },
+    "runtimes/th12/portable/sdl/Renderer.cpp": {
+      "bytes": 29396,
+      "sha256": "9bf8bc525bcf8d63b661e6bc5496e3925761b41ae886d44e2e4fcb8407066d68"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-gpu-raster-fixture.cpp": {
+      "bytes": 2249,
+      "sha256": "59aceebc47e01c15a5bfb5e3b6b04ce9af5d759a71b1186a897a854c0f262e71"
+    },
+    "runtimes/th12/portable/sdl/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "runtimes/th12/portable/sdl/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "runtimes/th12/portable/sdl/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "runtimes/th12/portable/sdl/Shaders.hpp": {
+      "bytes": 3646,
+      "sha256": "78f7648c27aa762c30493e6bf784baabdabdac63e2f683b2ed33470dca5aa252"
+    },
+    "runtimes/th12/portable/sdl/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "tools/th14-gpu-alpha-depth-build.mjs": {
+      "bytes": 2394,
+      "sha256": "f14d8ffde67c77ba900416d27962c913cb8abfbd8aa0b3b09f412ab330f0c056"
+    },
+    "tools/th14-gpu-alpha-depth.html": {
+      "bytes": 4523,
+      "sha256": "b8b7bd3594bd909691a36b33303ed99948787be42311e4f99c95d27ab86a1404"
+    },
+    "tools/th14-gpu-alpha-depth-serve.mjs": {
+      "bytes": 1067,
+      "sha256": "b21e8f6f0f6435e9b45609aad8c1a55c0b44d209d90be291fd845c06e1d713f0"
+    },
+    "tools/th14-gpu-raster-native.py": {
+      "bytes": 7489,
+      "sha256": "aaf5d4d5fb26c80a3c7d0649ac5778b628fa76b20a5cb1704dbc2a7fe0c32fc8"
+    },
+    "tools/th14-gpu-alpha-depth-native.py": {
+      "bytes": 8521,
+      "sha256": "a6a9d66e8c92dbbe9ca7998b99c188998610369539a2b284f106e9ae59f23a7d"
+    },
+    "tools/th14-gpu-alpha-depth-check.mjs": {
+      "bytes": 5435,
+      "sha256": "29b108daa0dc15ff98eab321be3d390d74aba23742583a5a907fb23a998b02e5"
+    },
+    "artifacts/th14/render-native.json": {
+      "bytes": 4149457,
+      "sha256": "96a9a3989e0f266cdc0fc4fd65a8d75b774ea85c2e5870622efe7669a9709040"
+    }
+  },
+  "scope": "Actual D3D9 HAL versus production SDL/WebGL: alpha-tested blended foreground with optional depth write, then opaque later layer; checks discarded fragments do not occlude",
+  "limits": [
+    "Uniform per-quad screen-space depth; no world-space perspective or arbitrary depth gradients",
+    "No original-game GPU draw-loop/full-frame capture or cross-device guarantee",
+    "TH14 1:1 and all unconverted works remain incomplete"
+  ]
+}

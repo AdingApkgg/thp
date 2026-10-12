@@ -1,0 +1,61 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "url": "http://127.0.0.1:8135/?game=th14",
+  "buildId": "d5a1eebbf0b9be7bb1ce",
+  "preparedPath": "runtimes/th14/th14_web/artifacts/launcher-preview/8e66fa41b0b62a74/release.json",
+  "preparedSha256": "82841efb98a6371588d31bf34be59d363aa51f5784cb378ce7bfaed79958c207",
+  "runtimeManifestSha256": "3446a38f5593d6ef8e7c95faf47a17cabf6206da986152edf3eee4c85dfe0708",
+  "nativeControls": {
+    "path": "docs/porting/th14-pause-controls-verified-oct11.json",
+    "sha256": "d3d38c1d38945b98635f40370ec44bc05748d965db7a62ee8fed574a818b5858"
+  },
+  "evidence": {
+    "artifacts/th14/browser-launcher-pause-confirm-fixed-oct11.png": {
+      "bytes": 205860,
+      "sha256": "2e340814bd020e6a8e40d6bfd138cdbb8074e6f2244d9e696cd4652976563e3d"
+    },
+    "artifacts/th14/browser-launcher-pause-manual-menu-oct11.png": {
+      "bytes": 207862,
+      "sha256": "f44189a595c5e11900445c7d1fef4e198d2870877e1632d7419336610e5c5757"
+    },
+    "artifacts/th14/browser-launcher-pause-manual-page-oct11.png": {
+      "bytes": 204977,
+      "sha256": "a25644d32b710fdc63364b0191fd0b726967df86a1fecc9446660e28779770d1"
+    },
+    "artifacts/th14/browser-launcher-pause-manual-return-oct11.png": {
+      "bytes": 207563,
+      "sha256": "03d9d98a7b292702e0d955601003304613bb1b7e2743de94b12249325c8e3585"
+    },
+    "artifacts/th14/browser-launcher-pause-restart-confirm-oct11.png": {
+      "bytes": 206204,
+      "sha256": "7c709b79eadbe5977555267706e2879514b6875deadee99e6c0b4b906cbafdb4"
+    },
+    "artifacts/th14/browser-launcher-pause-restarted-oct11.png": {
+      "bytes": 211969,
+      "sha256": "147714357e0f6b9a3d2638e8e004b933918e619f747c3b4599f87c0998feb8f3"
+    },
+    "artifacts/th14/browser-launcher-pause-fixed-logs-oct11.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "artifacts/th14/browser-launcher-pause-fixed-dom-oct11.txt": {
+      "bytes": 2233,
+      "sha256": "f80943e358b925f681fa7f6e3e38b762ef623778bb5c622b2dbcf959a377db38"
+    }
+  },
+  "observed": [
+    "Normal Reimu A ordinary stage1 pause with all five choices",
+    "Save Replay confirmation now visibly draws Yes and No; X with No selected returns to the same pause choice",
+    "Manual enters the seven-topic original resource menu, opens first text page and two X inputs return to pause with Manual selected",
+    "Restart opens confirmation; Up selects Yes; Z restarts actual stage1, followed by pause showing score0, lives2, bombs3 and power1.00",
+    "Current error/warn logs empty"
+  ],
+  "limits": [
+    "Only the first manual body page is observed in this release; prior title-manual seven-page observations are separate historical evidence",
+    "No new replay file was saved during this pause verification; earlier Launcher persistence/export/import report remains pinned to its earlier release",
+    "Native control fixture isolates ANM and audio services; browser observation is not GPU pixel or audible output equality",
+    "No full ordinary campaign, byte-exact config persistence, offline verification or whole-game native equivalence claim"
+  ]
+}

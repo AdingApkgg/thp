@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "initializations": 240,
+  "frames": 15054,
+  "cancellations": 840,
+  "deliveries": 3304,
+  "circleCuts": 1152,
+  "fragmentRequests": 80,
+  "rectangleCuts": 10368,
+  "rectangleFragments": 896,
+  "integratedFragments": 896,
+  "registryCases": 10368,
+  "collisionCases": 11664,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "f1c4251aaf109743331647017200f1af59a5bcd450204e0caf3cbb3786778728",
+  "scope": "Retail 43ddc0 state initialization, 43fd20 ETEX 80/400/100000 and 43e040 motion/lifecycle up to 43e27c; native timer increments. Retail 43f8f0 full cancellation including recorded effect/item deliveries. ANM binding/update, sound, effect allocation and item creation are boundaries. Retail 43f220 circular sampling/cut length and complete kind-0 fragment requests are compared; Retail 43e500 rectangular splitting compares count, retained length, effect/item deliveries and every byte of kind-0 fragment requests. Production sends both cut shapes to the kind-0 constructor; Real manager registry and kind-0 constructors run under controlled blank ANM scripts and compare every request, initial position/angle/length/width/speed/id, retained parent, active count and deliveries. Real animation scripts, later child lifecycle and pixels remain outside. Retail 43e300 collision geometry, graze clocks and 32x32 player-hit cut request are compared with collision/graze/rectangle consumer recorded boundaries. Warning steering, native resource ANM execution and pixels are outside this comparison. Negative externally seeded transform masks are refused.",
+  "sourceHashes": {
+    "tests/cpp/th14-laser-infinite-fixture.cpp": "382e8d5ac736552f25ea5a7a79601bb83da4c5d14d381777c36d0b5c9127896a",
+    "cpp/game/LaserInfiniteTh14.cpp": "d0a835f183e39ad28d76304b7a65faa87b8635c61076c4c82cf9c401aff7162b",
+    "cpp/game/LaserManager.cpp": "24899d5a9b66d42c58764047e1bdc1ec6d7506663643fd7790ecc1e50dc401b4",
+    "cpp/game/LaserManager.hpp": "bb55c3bb37c00d6d8a6c8c4f8058624059882ea41994679f7fba61822add5334",
+    "cpp/game/LaserState.hpp": "fa27a95e58ab98ed321d8fb6b3952685a0e091b97708e38511f82a98c485c17b"
+  },
+  "toolHashes": {
+    "tools/th14-laser-infinite-native.py": "2033362ca2f4c13ab148d14e2f61c97fd1ddf408fcff3c784094a53fb99f3374",
+    "tools/th14-laser-infinite-collision-native.py": "1e8c11a784b01e3658d9ba8b33e83ee0a7da9ad4622b8643442c63fb036014c0",
+    "tools/th14-laser-infinite-check.mjs": "4b09e25e0b858c7ba170c2378b0ea2b6f764c20538185083d64ae15208b5b04a"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "timelines": 192,
+  "frames": 20126,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "a2683e0010b81df40904aa275a1e6cdead098c661c2a3f9cc5ab0653a2fe006a",
+  "sourceHashes": {
+    "tests/cpp/th14-screen-fade-fixture.cpp": "87a8804cc60e2877fed9126de5d326a58ab9d8faec9911cc1fec69c869e6db05",
+    "cpp/game/ScreenFade.cpp": "6d856cde27cb90dacdd24d25b465e322e4005fe01ce8138ca396069f311f8db6",
+    "cpp/game/ScreenFade.hpp": "cca65d7f9a9a6b926f95cb6447e286554eb0153829cdbc87fe8f16c935bb7241",
+    "cpp/game/Timer.hpp": "e07169289db2407ce57c4191343ad6c9a5e3b2d543898439326520cfe1723ddb"
+  },
+  "toolHashes": {
+    "tools/th14-screen-fade-native.py": "28351f176126321da1679d0e0a0a40c51902f34dfe71e68f1a7734d6a779f3a8",
+    "tools/th14-screen-fade-check.mjs": "dab66cd156e62b3b6ed2cf5b6df378f007aa95d41b46b8ceef569e5c9e5506cb"
+  },
+  "scope": "Full retail 46c400 (type0/3) and 46c970 (type2/5) alpha/lifetime/timer callbacks, 8 durations including negative/zero, six rates including near-one branches, stopped requests and controlled game-control freeze. Compares return, alpha, previous/current/fractional words. Local lifetime fixture ignores one stop request to continue probing. Rate pointer valid; native registration, GPU, geometry and remaining effect types excluded."
+}

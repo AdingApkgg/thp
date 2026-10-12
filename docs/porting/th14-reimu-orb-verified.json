@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "isolatedFrames": 864,
+  "paths": 24,
+  "sequentialFrames": 4920,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "83cce0c5ddad42fc8fcb2d15c8d7b9f292fc585cfb047b87247a0af582d8da14",
+  "scope": "Retail 414510 orb motion including 42c310 nearest-target selection, target flags, orbit radius/anchor/angular rate, staggered detachment, atan2/sqrt, steering speed clamps, out-of-bounds slowing, native 403cd0/403df0 movement, retained linear z, hundredth-pixel floor, delta history and rate-sensitive clock. Only ANM lookup is controlled. Bomb controller, area ownership, damage, cancellation, allocation failure and GPU rendering are separate.",
+  "sourceHashes": {
+    "tests/cpp/th14-reimu-orb-fixture.cpp": "137fee4859c86e7334ffcd9ae3e0e4340112ee5d171ed70f2e56ac9086c07e4b",
+    "cpp/game/BombReimuTh14.cpp": "4cd374d04b0ebc50d7ebb2b085453769d666fdae159691a1cfd4b5a96012325c",
+    "cpp/game/Movement.cpp": "ea823e71f48f15d1d5e038c4fa62b6a4dfcaa31b087ebc183e42ef2dd439cccb",
+    "cpp/game/BombReimuTh14.hpp": "34213db7f6b5b67c4182320b6c154e5e9630a3582032d9f62f255ba246929d1b"
+  },
+  "toolHashes": {
+    "tools/th14-reimu-orb-native.py": "7651e38f7ef1168ed500c64fd670cd2e99741245d32348da605819aab25b6be2",
+    "tools/th14-reimu-orb-check.mjs": "da254bf34402f4ff4c8fea7e76b73efb15c3b3ee4615011463a49b0454fa4d6a"
+  }
+}

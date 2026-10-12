@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,mkdirSync,readdirSync} from 'node:fs';
+import {resolve,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {WASI} from 'node:wasi';
+import {nativePython} from './native-python.mjs';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..'),rt=resolve(root,'runtimes/th12/th12_web'),out=resolve(root,'artifacts/th16/enemy-script-switch-check');mkdirSync(out,{recursive:true});
+nativePython('tools/th16-enemy-script-switch-native.py',{cwd:root,stdio:'inherit',windowsHide:true});
+const env={...process.env,TEMP:out,TMP:out,TMPDIR:out};
+execFileSync(process.execPath,['runtimes/th13/th13_web/scripts/cpp/build-engine.mjs','--title','16'],{cwd:root,env,stdio:'inherit',windowsHide:true});
+const dir=resolve(root,'runtimes/th13/th13_web/artifacts/cpp/objects-th16'),wasm=resolve(out,'switch.wasm'),fixture='tests/cpp/th16-enemy-script-switch-fixture.cpp';
+execFileSync(resolve(rt,'../tools/wasi-sdk-34.0-x86_64-windows/bin/clang++.exe'),['--target=wasm32-wasip1','-std=c++17','-O2','-ffp-contract=off','-fno-exceptions','-fno-rtti','-mexec-model=reactor','-Wl,--no-entry','-Wl,--export-memory','-Wl,-z,stack-size=1048576','-DPORT_TITLE=16',fixture,...readdirSync(dir).filter(n=>n.endsWith('.o')).map(n=>resolve(dir,n)),'-o',wasm],{cwd:rt,env,stdio:'inherit',windowsHide:true});
+const bytes=readFileSync(wasm),wasi=new WASI({version:'preview1',args:[],env:{},preopens:{}}),{instance}=await WebAssembly.instantiate(bytes,{wasi_snapshot_preview1:wasi.wasiImport});wasi.initialize(instance);const c=instance.exports;
+const proof=JSON.parse(readFileSync(resolve(root,'artifacts/th16/enemy-script-switch-native.json'),'utf8'));
+for(const [n,r] of proof.cases.entries()){assert.equal(c.run_case(r.count,r.id,r.threads,r.dirty,Number(r.exists),r.duration,r.flags),0,`case${n}`);assert.deepEqual(Array.from({length:55},(_,n)=>c.value(n)>>>0),r.output,`case${n} ${JSON.stringify(r)}`);}
+const sha=b=>createHash('sha256').update(b).digest('hex');
+writeFileSync(resolve(root,'docs/porting/th16-enemy-script-switch-verified.json'),JSON.stringify({passed:true,title:16,completeGame:false,cases:proof.cases.length,nativeExecutableSha256:proof.executableSha256,scope:'Own422966 ECL800 with actual41a9c0 list lookup,41a4f0 thread release,41a5a0 reset and474890 selection. Argument resolver, deallocator and474740 name lookup controlled. Empty/one/two-member lists, zero/known/unmatched IDs including last-entry fallback,0-3 secondary threads, stack cursors and preserved local bytes,8 duration clears and preserved scalar current values, missing subroutine. Production EnemyScriptServices/EnemyManager dispatch executes. Caller distinct from target; self-switch and subsequent VM execution, exact allocator events, real resource name lookup and complete game excluded.',wasmSha256:sha(bytes),sourceHashes:Object.fromEntries(['cpp/game/EnemyManager.cpp','cpp/game/EnemyScript.cpp','cpp/game/EclOwner.cpp',fixture].map(n=>[n,sha(readFileSync(resolve(rt,n)))]))},null,2)+'\n');
+console.log(`PASS ${proof.cases.length} TH16 ECL800 script switch cases`);

@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+const root=resolve(import.meta.dirname,'..'),out=resolve(root,'artifacts/th14/gpu-raster'),sdk=resolve(root,'runtimes/th12/tools/emsdk');mkdirSync(out,{recursive:true});
+const python=process.env.EMSDK_PYTHON||'C:/Users/APKGG/AppData/Local/Programs/Python/Python314/python.exe';
+const sources=['runtimes/th12/th12_web/tests/cpp/th14-gpu-raster-fixture.cpp','runtimes/th12/portable/sdl/Renderer.cpp'];
+const flags=['-O2','-g0','-std=c++17','-ffp-contract=off','-fno-exceptions','-fno-rtti','--use-port=sdl3','--no-entry','-sDEFAULT_TO_CXX=1','-sMODULARIZE=1','-sEXPORT_ES6=1','-sENVIRONMENT=web','-sALLOW_MEMORY_GROWTH=1','-sMIN_WEBGL_VERSION=2','-sMAX_WEBGL_VERSION=2','-sGL_SUPPORT_AUTOMATIC_ENABLE_EXTENSIONS=0','-sEXPORTED_FUNCTIONS=_gpu_initialize,_gpu_error,_gpu_case','-sEXPORTED_RUNTIME_METHODS=HEAPU8'];
+execFileSync(python,[resolve(sdk,'upstream/emscripten/emcc.py'),...flags,...sources,'-o',resolve(out,'gpu.mjs')],{cwd:root,env:{...process.env,EM_CONFIG:resolve(sdk,'.emscripten'),EMSDK:sdk,TEMP:out,TMP:out,TMPDIR:out},stdio:'inherit',windowsHide:true});
+const sha=b=>createHash('sha256').update(b).digest('hex'),native=JSON.parse(readFileSync(resolve(out,'native.json')));assert.equal(native.generated,true);assert.equal(native.cases.length,192);
+const files=[...sources,'runtimes/th12/portable/sdl/Renderer.hpp','runtimes/th12/portable/sdl/AlphaConversion.hpp','runtimes/th12/portable/sdl/GraphicsState.hpp','runtimes/th12/portable/sdl/Shaders.hpp','runtimes/th12/portable/sdl/ResampleShader.hpp','tools/th14-gpu-raster-build.mjs','tools/th14-gpu-raster.html','tools/th14-gpu-raster-serve.mjs'];
+writeFileSync(resolve(out,'build.json'),JSON.stringify({built:true,completeGame:false,nativeEquivalent:false,sources:Object.fromEntries(files.map(n=>[n,sha(readFileSync(resolve(root,n)))])),wasmSha256:sha(readFileSync(resolve(out,'gpu.wasm'))),loaderSha256:sha(readFileSync(resolve(out,'gpu.mjs'))),nativeSha256:sha(readFileSync(resolve(out,'native.json'))),flags},null,2)+'\n');
+console.log('Built production SDL/WebGL renderer raster fixture');

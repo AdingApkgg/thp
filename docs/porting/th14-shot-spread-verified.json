@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "spawns": 210,
+  "updates": 240,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "169881e62b28bb2f7ab9792969b7748c2a1b7544fbb64b43b1fccbe1282fb0a9",
+  "scope": "Retail 452c10 spread spawn with actual visual RNG and 452e00 per-invocation active-shot acceleration. Compares angle wrapping at +/-pi, flags mask, visual RNG state/call count, untouched script RNG, state 0/1/2 and frozen/advanced clocks at rates 0/.5/1/1.25. Actual shot spawning, hit callback 4, area ownership, render and complete gameplay are separate.",
+  "sourceHashes": {
+    "tests/cpp/th14-shot-spread-fixture.cpp": "f26416e6cf8ab4dee28cf29cfa91ce07559cea3292a343ed83b38c88722f163b",
+    "cpp/game/ShotCallbacksTh14.cpp": "6998531bb898411941a0b2adccd8382b378e151ef10ba8d067fc22acb2381f66",
+    "cpp/game/Movement.cpp": "ea823e71f48f15d1d5e038c4fa62b6a4dfcaa31b087ebc183e42ef2dd439cccb",
+    "cpp/game/ShotManager.hpp": "ea0ff0af2356debd18171a3b062eaa3edd425a838875e85825ce396d75ab4cad",
+    "cpp/game/Rng.hpp": "3865a40f2ec26f6462f5daa52e7bc8b7e5f42f2c3f6c88d0bfcf3d6c154f4d9b"
+  },
+  "toolHashes": {
+    "tools/th14-shot-spread-native.py": "1a15966b0e71399ef485b508e634d75fb310bdb0445af9be78a34f06ab2fac92",
+    "tools/th14-shot-spread-check.mjs": "10c349fd5bb41cb3fd31719ce7b765cc9501d7542f5b5fdb6f7437955ef5bed0"
+  }
+}

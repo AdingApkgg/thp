@@ -1,0 +1,2739 @@
+{
+  "game": "th12",
+  "source": {
+    "interpreter": "th12-decomp FUN_004154d0 @ 0x4154d0 (173 cases, switch range 0x100..0x263)",
+    "routing": "runtimes/th12/th12_web/cpp/game/EnemyScript.cpp (TH11 numbers, needs re-derivation)",
+    "signatures": "docs/th12/ecl-opcodes.json"
+  },
+  "counts": {
+    "extendedIds": 222,
+    "casesInOriginal": 159,
+    "usedExtendedInTh12Dat": 112,
+    "byVerdict": {
+      "implemented": 134,
+      "implemented-collision": 43,
+      "collision": 3,
+      "unused": 37,
+      "noop-in-original": 1,
+      "todo": 4
+    }
+  },
+  "routedByTh11Table": true,
+  "refusedByEngine": [
+    278,
+    281,
+    321
+  ],
+  "entries": [
+    {
+      "id": 256,
+      "signature": "mffSSS",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 548,
+      "decompiled": "fallthrough",
+      "fallsThroughTo": 280,
+      "resolvesAs": "shared",
+      "engineHandles": [
+        "EnemyManager.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 257,
+      "signature": "mffSSS",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 135,
+      "decompiled": "shared",
+      "sharedLabel": "switchD_00415546_caseD_101",
+      "sharedBodyIsNoop": false,
+      "sharedBodyCalls": 3,
+      "engineHandles": [
+        "EnemyManager.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 258,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 301,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyAnimations.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 259,
+      "signature": "SS",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 192,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyAnimations.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 260,
+      "signature": "mffSSS",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 216,
+      "decompiled": "shared",
+      "sharedLabel": "switchD_00415546_caseD_104",
+      "sharedBodyIsNoop": false,
+      "sharedBodyCalls": 2,
+      "engineHandles": [
+        "EnemyManager.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 261,
+      "signature": "mffSSS",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 2,
+      "decompiled": "shared",
+      "sharedLabel": "switchD_00415546_caseD_105",
+      "sharedBodyIsNoop": false,
+      "sharedBodyCalls": 3,
+      "engineHandles": [
+        "EnemyManager.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 262,
+      "signature": "SS",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 261,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyAnimations.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 263,
+      "signature": "SS",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 121,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyAnimations.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 264,
+      "signature": "SS",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 9,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyAnimations.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 265,
+      "signature": "mffSSS",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 93,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyManager.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 266,
+      "signature": "mffSSS",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyManager.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 267,
+      "signature": "mffSSS",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 57,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyManager.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 268,
+      "signature": "mffSSS",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyManager.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 269,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 77,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyAnimations.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 270,
+      "signature": "mffSSSS",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 2,
+      "decompiled": "shared",
+      "sharedLabel": "switchD_00415546_caseD_10e",
+      "sharedBodyIsNoop": false,
+      "sharedBodyCalls": 3,
+      "engineHandles": [
+        "EnemyManager.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 271,
+      "signature": "mffSSSS",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyManager.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 272,
+      "signature": "SS",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyAnimations.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 273,
+      "signature": "SSf",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 2,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyAnimations.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 274,
+      "signature": "SS",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 25,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyAnimations.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 275,
+      "signature": "SS",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 33,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyAnimations.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 276,
+      "signature": "",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 1,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyAnimations.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 277,
+      "signature": "Sf",
+      "provenance": "th12_fmts",
+      "th11": "was \"ff\"",
+      "usedInTh12Dat": 34,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyAnimations.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 278,
+      "signature": "Sff",
+      "provenance": "th12_fmts",
+      "th11": "was \"S\"",
+      "usedInTh12Dat": 1,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "collision"
+    },
+    {
+      "id": 279,
+      "signature": "Sff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 43,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 280,
+      "signature": "mSSSSS",
+      "provenance": "th12_fmts",
+      "th11": "was \"ff\"",
+      "usedInTh12Dat": 4,
+      "decompiled": "shared",
+      "sharedLabel": "switchD_00415546_caseD_100",
+      "sharedBodyIsNoop": false,
+      "sharedBodyCalls": 4,
+      "engineHandles": [
+        "EnemyCommands.cpp",
+        "EnemyManager.cpp",
+        "EnemyScript.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 281,
+      "signature": "SS",
+      "provenance": "th12_fmts",
+      "th11": "was \"SSff\"",
+      "usedInTh12Dat": 40,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "collision"
+    },
+    {
+      "id": 282,
+      "signature": "ff",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 283,
+      "signature": "SSfS",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 284,
+      "signature": "ff",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 285,
+      "signature": "SSff",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 286,
+      "signature": "ff",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 287,
+      "signature": "SSff",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 288,
+      "signature": "ffff",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 289,
+      "signature": "SSfff",
+      "provenance": "th11_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 290,
+      "signature": "ffff",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 291,
+      "signature": "SSffS",
+      "provenance": "th11_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 292,
+      "signature": "SSf",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 293,
+      "signature": "SSf",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 294,
+      "signature": "",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 295,
+      "signature": "",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 296,
+      "signature": "SSf",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 297,
+      "signature": "ff",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 298,
+      "signature": "ff",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 299,
+      "signature": "ff",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 300,
+      "signature": "ff",
+      "provenance": "th12_fmts",
+      "th11": "was \"ffffff\"",
+      "usedInTh12Dat": 51,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 301,
+      "signature": "SSff",
+      "provenance": "th12_fmts",
+      "th11": "was \"ffffff\"",
+      "usedInTh12Dat": 220,
+      "decompiled": "fallthrough",
+      "fallsThroughTo": 303,
+      "resolvesAs": "inline",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 302,
+      "signature": "ff",
+      "provenance": "th12_fmts",
+      "th11": "was \"ffffff\"",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 303,
+      "signature": "SSff",
+      "provenance": "th12_fmts",
+      "th11": "was \"ffffff\"",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 304,
+      "signature": "ff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 241,
+      "decompiled": "fallthrough",
+      "fallsThroughTo": 306,
+      "resolvesAs": "fallthrough",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 305,
+      "signature": "SSff",
+      "provenance": "th12_fmts",
+      "th11": "was \"Sffffff\"",
+      "usedInTh12Dat": 216,
+      "decompiled": "fallthrough",
+      "fallsThroughTo": 307,
+      "resolvesAs": "fallthrough",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 306,
+      "signature": "ff",
+      "provenance": "th12_fmts",
+      "th11": "was \"Sffffff\"",
+      "usedInTh12Dat": 0,
+      "decompiled": "fallthrough",
+      "fallsThroughTo": 328,
+      "resolvesAs": "fallthrough",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 307,
+      "signature": "SSff",
+      "provenance": "th12_fmts",
+      "th11": "was \"\"",
+      "usedInTh12Dat": 0,
+      "decompiled": "fallthrough",
+      "fallsThroughTo": 329,
+      "resolvesAs": "fallthrough",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 308,
+      "signature": "ffff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 4,
+      "decompiled": "fallthrough",
+      "fallsThroughTo": 310,
+      "resolvesAs": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 309,
+      "signature": "SSfff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 3,
+      "decompiled": "fallthrough",
+      "fallsThroughTo": 311,
+      "resolvesAs": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 310,
+      "signature": "ffff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 7,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 311,
+      "signature": "SSfff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 22,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 312,
+      "signature": "SSf",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 55,
+      "decompiled": "fallthrough",
+      "fallsThroughTo": 313,
+      "resolvesAs": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 313,
+      "signature": "SSf",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 314,
+      "signature": "",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 315,
+      "signature": "",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 316,
+      "signature": "ff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "fallthrough",
+      "fallsThroughTo": 317,
+      "resolvesAs": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 317,
+      "signature": "fff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 318,
+      "signature": "ff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "fallthrough",
+      "fallsThroughTo": 319,
+      "resolvesAs": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 319,
+      "signature": "ff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 320,
+      "signature": "ffffff",
+      "provenance": "th12_fmts",
+      "th11": "was \"ff\"",
+      "usedInTh12Dat": 1,
+      "decompiled": "fallthrough",
+      "fallsThroughTo": 322,
+      "resolvesAs": "inline",
+      "engineHandles": [
+        "EnemyCommands.cpp",
+        "EnemyScript.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 321,
+      "signature": "SSfffff",
+      "provenance": "th12_fmts",
+      "th11": "was \"ff\"",
+      "usedInTh12Dat": 1,
+      "decompiled": "fallthrough",
+      "fallsThroughTo": 323,
+      "resolvesAs": "inline",
+      "engineHandles": [],
+      "verdict": "collision"
+    },
+    {
+      "id": 322,
+      "signature": "ffffff",
+      "provenance": "th12_fmts",
+      "th11": "was \"S\"",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 323,
+      "signature": "SSfffff",
+      "provenance": "th12_fmts",
+      "th11": "was \"S\"",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 324,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "was \"ffff\"",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 325,
+      "signature": "Sffffff",
+      "provenance": "th12_fmts",
+      "th11": "was \"\"",
+      "usedInTh12Dat": 11,
+      "decompiled": "fallthrough",
+      "fallsThroughTo": 326,
+      "resolvesAs": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 326,
+      "signature": "Sffffff",
+      "provenance": "th12_fmts",
+      "th11": "was \"\"",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 327,
+      "signature": "",
+      "provenance": "th12_fmts",
+      "th11": "was \"SS\"",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 328,
+      "signature": "ff",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 3,
+      "decompiled": "fallthrough",
+      "fallsThroughTo": 330,
+      "resolvesAs": "inline",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 329,
+      "signature": "Sfff",
+      "provenance": "th12_fmts",
+      "th11": "was \"\"",
+      "usedInTh12Dat": 1,
+      "decompiled": "fallthrough",
+      "fallsThroughTo": 331,
+      "resolvesAs": "inline",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 330,
+      "signature": "ff",
+      "provenance": "th12_fmts",
+      "th11": "was \"S\"",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 331,
+      "signature": "SSff",
+      "provenance": "th12_fmts",
+      "th11": "was \"S\"",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 332,
+      "signature": "S",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyLaserCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 333,
+      "signature": "",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 334,
+      "signature": "SSSm",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 335,
+      "signature": "S",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 336,
+      "signature": "S",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyManager.cpp",
+        "EnemyScript.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 337,
+      "signature": "SSS",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 338,
+      "signature": "S",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 339,
+      "signature": "",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 340,
+      "signature": "",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 341,
+      "signature": "Sm",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 342,
+      "signature": "SSSx",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 343,
+      "signature": "",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 344,
+      "signature": "S",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 345,
+      "signature": "",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyManager.cpp",
+        "EnemyScript.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 346,
+      "signature": "f",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 347,
+      "signature": "SfS",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 348,
+      "signature": "SSSx",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 349,
+      "signature": "ffff",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 350,
+      "signature": "ffffff",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 351,
+      "signature": "fff",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 352,
+      "signature": "SSSS",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 353,
+      "signature": "SSSSSS",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 354,
+      "signature": "SSS",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 355,
+      "signature": "SSSSS",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 356,
+      "signature": "fffff",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 357,
+      "signature": "SSSx",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 358,
+      "signature": "SSSx",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 359,
+      "signature": "SSSx",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 360,
+      "signature": "S",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 361,
+      "signature": "S",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 362,
+      "signature": "",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 363,
+      "signature": "",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 364,
+      "signature": "S",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 365,
+      "signature": "",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 366,
+      "signature": "SS",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 367,
+      "signature": "f",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 368,
+      "signature": "SSSS",
+      "provenance": "th10_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 369,
+      "signature": "S",
+      "provenance": "th11_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 370,
+      "signature": "S",
+      "provenance": "th11_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 371,
+      "signature": "S",
+      "provenance": "th11_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyManager.cpp",
+        "EnemyScript.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 400,
+      "signature": "ff",
+      "provenance": "th12_fmts",
+      "th11": "was \"S\"",
+      "usedInTh12Dat": 104,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 401,
+      "signature": "ff",
+      "provenance": "th12_fmts",
+      "th11": "was \"S\"",
+      "usedInTh12Dat": 136,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 402,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "was \"SSS\"",
+      "usedInTh12Dat": 208,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 403,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "was \"Sff\"",
+      "usedInTh12Dat": 16,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 404,
+      "signature": "ffff",
+      "provenance": "th12_fmts",
+      "th11": "was \"Sff\"",
+      "usedInTh12Dat": 68,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 405,
+      "signature": "",
+      "provenance": "th12_fmts",
+      "th11": "was \"Sff\"",
+      "usedInTh12Dat": 41,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 406,
+      "signature": "",
+      "provenance": "th12_fmts",
+      "th11": "was \"SSS\"",
+      "usedInTh12Dat": 132,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 407,
+      "signature": "SS",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 208,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 408,
+      "signature": "ff",
+      "provenance": "th12_fmts",
+      "th11": "was \"SSS\"",
+      "usedInTh12Dat": 71,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 409,
+      "signature": "",
+      "provenance": "th12_fmts",
+      "th11": "was \"SSSSSSff\"",
+      "usedInTh12Dat": 61,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 410,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "was \"\"",
+      "usedInTh12Dat": 146,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 411,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "was \"SS\"",
+      "usedInTh12Dat": 57,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 412,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "was \"SSffffSf\"",
+      "usedInTh12Dat": 37,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 413,
+      "signature": "",
+      "provenance": "th12_fmts",
+      "th11": "was \"SSSfffSSSSfS\"",
+      "usedInTh12Dat": 87,
+      "decompiled": "shared",
+      "sharedLabel": "switchD_00415546_caseD_19d",
+      "sharedBodyIsNoop": false,
+      "sharedBodyCalls": 1,
+      "engineHandles": [
+        "EnemyLaserCommands.cpp",
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 414,
+      "signature": "SSSm",
+      "provenance": "th12_fmts",
+      "th11": "was \"Sff\"",
+      "usedInTh12Dat": 117,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 415,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "was \"Sff\"",
+      "usedInTh12Dat": 71,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyLaserCommands.cpp",
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 416,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "was \"Sf\"",
+      "usedInTh12Dat": 328,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyManager.cpp",
+        "EnemyScript.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 417,
+      "signature": "SSS",
+      "provenance": "th12_fmts",
+      "th11": "was \"Sf\"",
+      "usedInTh12Dat": 23,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyScript.cpp",
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 418,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "was \"Sf\"",
+      "usedInTh12Dat": 48,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 419,
+      "signature": "",
+      "provenance": "th12_fmts",
+      "th11": "was \"Sf\"",
+      "usedInTh12Dat": 75,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 420,
+      "signature": "",
+      "provenance": "th12_fmts",
+      "th11": "was \"f\"",
+      "usedInTh12Dat": 19,
+      "decompiled": "noop",
+      "engineHandles": [
+        "EnemyLaserCommands.cpp",
+        "EnemyScript.cpp",
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "noop-in-original",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 421,
+      "signature": "Sm",
+      "provenance": "th12_fmts",
+      "th11": "was \"f\"",
+      "usedInTh12Dat": 9,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 422,
+      "signature": "SSSx",
+      "provenance": "th12_fmts",
+      "th11": "was \"Sffffff\"",
+      "usedInTh12Dat": 29,
+      "decompiled": "fallthrough",
+      "fallsThroughTo": 428,
+      "resolvesAs": "fallthrough",
+      "engineHandles": [
+        "EnemyEmitterCommands.cpp",
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 423,
+      "signature": "",
+      "provenance": "th12_fmts",
+      "th11": "was \"Sffffffffff\"",
+      "usedInTh12Dat": 86,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 424,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "was \"Sffff\"",
+      "usedInTh12Dat": 72,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 425,
+      "signature": "",
+      "provenance": "th12_fmts",
+      "th11": "was \"SSSSSSS\"",
+      "usedInTh12Dat": 89,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyEmitterCommands.cpp",
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 426,
+      "signature": "f",
+      "provenance": "th12_fmts",
+      "th11": "was \"SSSSSSSSSSS\"",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyEmitterCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 427,
+      "signature": "SfS",
+      "provenance": "th12_fmts",
+      "th11": "was \"SSSSS\"",
+      "usedInTh12Dat": 53,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyEmitterCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 428,
+      "signature": "SSSx",
+      "provenance": "th12_fmts",
+      "th11": "was \"SSffSfSf\"",
+      "usedInTh12Dat": 0,
+      "decompiled": "fallthrough",
+      "fallsThroughTo": 437,
+      "resolvesAs": "fallthrough",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 429,
+      "signature": "ffff",
+      "provenance": "th12_fmts",
+      "th11": "was \"SSSfffSSSSfS\"",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyLaserCommands.cpp",
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 430,
+      "signature": "ffffff",
+      "provenance": "th12_fmts",
+      "th11": "was \"Sff\"",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 431,
+      "signature": "fff",
+      "provenance": "th12_fmts",
+      "th11": "was \"SSffSfff\"",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyLaserCommands.cpp",
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 432,
+      "signature": "SSSS",
+      "provenance": "th12_fmts",
+      "th11": "was \"SSSfffSSSSfS\"",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyLaserCommands.cpp",
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 433,
+      "signature": "SSSSSS",
+      "provenance": "th12_fmts",
+      "th11": "was \"SSffSfff\"",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyLaserCommands.cpp",
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 434,
+      "signature": "SSS",
+      "provenance": "th12_fmts",
+      "th11": "was \"SSSfffSSSSfS\"",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyLaserCommands.cpp",
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 435,
+      "signature": "SSSSS",
+      "provenance": "th12_fmts",
+      "th11": "was \"Sffffffff\"",
+      "usedInTh12Dat": 155,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 436,
+      "signature": "fffff",
+      "provenance": "th12_fmts",
+      "th11": "was \"SSSSSSSSS\"",
+      "usedInTh12Dat": 36,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 437,
+      "signature": "SSSx",
+      "provenance": "th12_fmts",
+      "th11": "was \"Sff\"",
+      "usedInTh12Dat": 23,
+      "decompiled": "fallthrough",
+      "fallsThroughTo": 438,
+      "resolvesAs": "fallthrough",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 438,
+      "signature": "SSSx",
+      "provenance": "th12_fmts",
+      "th11": "was \"Sf\"",
+      "usedInTh12Dat": 2,
+      "decompiled": "fallthrough",
+      "fallsThroughTo": 439,
+      "resolvesAs": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 439,
+      "signature": "SSSx",
+      "provenance": "th12_fmts",
+      "th11": "was \"Sff\"",
+      "usedInTh12Dat": 26,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 440,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "was \"fS\"",
+      "usedInTh12Dat": 34,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 441,
+      "signature": "S",
+      "provenance": "th11_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 442,
+      "signature": "",
+      "provenance": "th12_fmts",
+      "th11": "was \"S\"",
+      "usedInTh12Dat": 3,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyLaserCommands.cpp",
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 443,
+      "signature": "",
+      "provenance": "th12_fmts",
+      "th11": "was \"S\"",
+      "usedInTh12Dat": 3,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 444,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 10,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 445,
+      "signature": "",
+      "provenance": "th12_fmts",
+      "th11": "was \"S\"",
+      "usedInTh12Dat": 73,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 446,
+      "signature": "Sf",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 1,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyLaserCommands.cpp",
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 447,
+      "signature": "f",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 6,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyLaserCommands.cpp",
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 448,
+      "signature": "SSSS",
+      "provenance": "th12_fmts",
+      "th11": "was \"S\"",
+      "usedInTh12Dat": 107,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented-collision",
+      "implementedNotRefused": true
+    },
+    {
+      "id": 449,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 450,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyManager.cpp",
+        "EnemyScript.cpp",
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 451,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 452,
+      "signature": "f",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 3,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 453,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 3,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 454,
+      "signature": "",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 7,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 455,
+      "signature": "SS",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 6,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 456,
+      "signature": "ffS",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 500,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "same",
+      "usedInTh12Dat": 307,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 501,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 325,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyEmitterCommands.cpp",
+        "EnemyScript.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 502,
+      "signature": "SSS",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 312,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyEmitterCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 503,
+      "signature": "Sff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 104,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyEmitterCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 504,
+      "signature": "Sff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 673,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyEmitterCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 505,
+      "signature": "Sff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 233,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyEmitterCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 506,
+      "signature": "SSS",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 122,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyEmitterCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 507,
+      "signature": "SS",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 239,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyEmitterCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 508,
+      "signature": "SSS",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 112,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyEmitterCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 509,
+      "signature": "SSSSSSff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 870,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyEmitterCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 510,
+      "signature": "",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 8,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 511,
+      "signature": "SS",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 10,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyEmitterCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 512,
+      "signature": "f",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 49,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 513,
+      "signature": "f",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 39,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 514,
+      "signature": "Sffffff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 515,
+      "signature": "Sffffffffff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 516,
+      "signature": "Sffff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 517,
+      "signature": "SSSSSSS",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 518,
+      "signature": "SSSSSSSSSSS",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 519,
+      "signature": "SSSSS",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 520,
+      "signature": "fff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 21,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 521,
+      "signature": "Sffffffff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 122,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyEmitterCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 522,
+      "signature": "SSSSSSSSS",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 123,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyEmitterCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 523,
+      "signature": "Sff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 22,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyEmitterCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 524,
+      "signature": "Sf",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 59,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyEmitterCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 525,
+      "signature": "Sff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 83,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyEmitterCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 526,
+      "signature": "fS",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 16,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 527,
+      "signature": "",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 528,
+      "signature": "",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 529,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 70,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 530,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 531,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 4,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 532,
+      "signature": "f",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 533,
+      "signature": "f",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 534,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 11,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 535,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 600,
+      "signature": "Sffff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 70,
+      "decompiled": "absent",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 601,
+      "signature": "SSSSSS",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 41,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyEmitterCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 602,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 98,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyStateCommands.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 603,
+      "signature": "SS",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 20,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "todo"
+    },
+    {
+      "id": 604,
+      "signature": "Sff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyLaserCommands.cpp",
+        "EnemyScript.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 605,
+      "signature": "Sff",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyLaserCommands.cpp",
+        "EnemyScript.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 606,
+      "signature": "Sf",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 607,
+      "signature": "Sf",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 608,
+      "signature": "Sf",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 3,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "todo"
+    },
+    {
+      "id": 609,
+      "signature": "Sf",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 0,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "unused"
+    },
+    {
+      "id": 610,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 8,
+      "decompiled": "inline",
+      "engineHandles": [
+        "EnemyLaserCommands.cpp",
+        "EnemyScript.cpp"
+      ],
+      "verdict": "implemented"
+    },
+    {
+      "id": 611,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 30,
+      "decompiled": "inline",
+      "engineHandles": [],
+      "verdict": "todo"
+    },
+    {
+      "id": 700,
+      "signature": "S",
+      "provenance": "th12_fmts",
+      "th11": "new",
+      "usedInTh12Dat": 24,
+      "decompiled": "absent",
+      "engineHandles": [],
+      "verdict": "todo"
+    }
+  ]
+}

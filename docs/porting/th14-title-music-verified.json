@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "tracks": 17,
+  "entries": 2,
+  "controls": 6120,
+  "boundaries": 4,
+  "requests": 2724,
+  "interpolations": 2308,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "870551a3541ae06be5c53265828d6b6ca98adda52bc72cfb65b6e41c3bc6c480",
+  "scope": "Actual retail461ee0 Music Room state machine, original musiccmt.txt parser and data, title/comment creation ids, hidden-title/spoiler text, cursor/scroll/prompt/play requests, single cursor pop on exit. ANM binding/lookup/interrupt/interpolation, font queue and archive/audio/file services controlled; no original waveform/GPU equivalence. Production loads original ANMs/musiccmt and compares state/cursor depth, entry script ids, all text bytes/styles, interpolation duration/mode/target, sounds and track/pause requests. Native initial animation bindings and interpolation scheduling controlled; actual audio playback/GPU pixels not proven.",
+  "sources": {
+    "runtimes/th12/th12_web/cpp/game/TitleMusic.cpp": "3b8325066cf5851189d21f7fddb1bc46b28fee30f741285fa99327c6e1cd1be5",
+    "runtimes/th12/th12_web/tests/cpp/th14-startup-fixture.cpp": "e172329d6cd581faf01b58bf7e50dcf4032bd7f07aa5e1bb507fbf9d683438cf",
+    "tools/th14-title-music-native.py": "0468ba22a43f7b5d4df9dc466b6f3084be6d2e125d1570cfa15789b6bf2baefa",
+    "tools/th14-title-music-check.mjs": "5d266435e677f715316606a8523fa5f59dd1293dd7b242c78804c0bf6cea6bce"
+  }
+}

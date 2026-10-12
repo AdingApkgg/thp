@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "url": "http://127.0.0.1:8164/?game=th14",
+  "preparedPath": "runtimes/th14/th14_web/artifacts/launcher-preview/278ee7f41fc26e3d-f866a481ebe2/release.json",
+  "preparedSha256": "1eee8a5875d77249a0a20ccee6200ef1ae2b9187ec60f7fc965cde797bdc1baa",
+  "buildId": "fc1e488ac3e9619107f9",
+  "wasmSha256": "278ee7f41fc26e3d2574cf8acf2dad64750bffcc6944b0f1b57871bccec823b5",
+  "evidence": {
+    "artifacts/th14/browser-dialogue-current-gameover-oct11.png": {
+      "bytes": 251049,
+      "sha256": "09f55e3dac89a521c193a27e7dbde814dfe8581fb2eb22ca67854e0a547f16ab"
+    },
+    "artifacts/th14/browser-dialogue-current-enemy-oct11.png": {
+      "bytes": 257863,
+      "sha256": "4df9dfc07b8e2c1a4cc39b4b4b558960dae64f37f024f66b79b64b71411e0193"
+    },
+    "artifacts/th14/browser-dialogue-current-player-oct11.png": {
+      "bytes": 283750,
+      "sha256": "d9fedb2614735e00cc837718f0b702f3e2ab362ae2972b1bfe445845649b33c5"
+    },
+    "artifacts/th14/browser-dialogue-current-ruby-oct11.png": {
+      "bytes": 261026,
+      "sha256": "c2d02a70c68f191e365488abb2b9724ae889761d93fec18d6f578d05d99b014c"
+    },
+    "artifacts/th14/browser-dialogue-current-boss-pause-oct11.png": {
+      "bytes": 246620,
+      "sha256": "d6c1d987e7a2c16c0497176377c513ff9eb071acfabb47012352cd470c99919f"
+    },
+    "artifacts/th14/browser-dialogue-current-dom-oct11.txt": {
+      "bytes": 2232,
+      "sha256": "91926364fce69133a447107856901f8aede9d1aadc2c35be7efca6c3a69eddae"
+    },
+    "artifacts/th14/browser-dialogue-current-logs-oct11.json": {
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  },
+  "proofs": {
+    "docs/porting/th14-dialogue-text-verified-oct11.json": "69070d501e197f09b9a679a3575cb2e6b5ff3fc62920eb1d8cf0fa941087e5a6",
+    "docs/porting/th14-dialogue-assets-regression-oct11.json": "967cec750fe52c956dc49e9a24b87cde9526489b349b5a8852eba46b21186eee",
+    "artifacts/th14/dialogue-corpus-observed-oct11.json": "9a965cd593fc14f46a8aff7259b5cbf9da907f7c67af3e84fa38d2b60bfc9151"
+  },
+  "observed": [
+    "Ordinary Game Start -> Easy -> Reimu -> weapon A reaches Stage1",
+    "Ordinary survival attempt ends at midboss; game-over image retained; in-game continue restores2 lives/3 bombs/full power and resumes same stage",
+    "Ordinary shot/movement/bomb inputs reach Stage1 Wakasagihime dialogue without diagnostic invulnerability or forced dialogue exports",
+    "Enemy two-line Japanese text bubble and both portraits rendered; Z switches to illuminated Reimu and dimmed enemy with player bubble",
+    "Next Z restores illuminated enemy and displays ruby above Japanese text; next confirmation retires dialogue portraits/bubble and begins boss attack",
+    "Warnings/errors empty"
+  ],
+  "limits": [
+    "Visible selected dialogue route only; no original full-frame pixel equivalence",
+    "Used in-game continue, so no normal survival clear claimed",
+    "Other90 MSG entries checked through actual Dialogue/ANM corpus fixture, without full FontDevice/GPU/gameplay in that fixture",
+    "Original handler comparisons retain documented controlled boundaries; TH14 1:1 and all remaining ports incomplete"
+  ],
+  "toolSha256": "7a9b6ebf9d20667dc74a587ede396add2c9d1897577832317331d0b8d5c6da03"
+}

@@ -1,0 +1,196 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "rows": [
+    {
+      "selection": 0,
+      "id": 0,
+      "stage": 1,
+      "error": "",
+      "retry": true,
+      "replayedFrames": 150,
+      "replayEnd": 4,
+      "completedDispatch": true
+    },
+    {
+      "selection": 0,
+      "id": 26,
+      "stage": 3,
+      "error": "",
+      "retry": true,
+      "replayedFrames": 150,
+      "replayEnd": 4,
+      "completedDispatch": true
+    },
+    {
+      "selection": 0,
+      "id": 119,
+      "stage": 7,
+      "error": "",
+      "retry": true,
+      "replayedFrames": 150,
+      "replayEnd": 4,
+      "completedDispatch": true
+    },
+    {
+      "selection": 1,
+      "id": 0,
+      "stage": 1,
+      "error": "",
+      "retry": true,
+      "replayedFrames": 150,
+      "replayEnd": 4,
+      "completedDispatch": true
+    },
+    {
+      "selection": 1,
+      "id": 26,
+      "stage": 3,
+      "error": "",
+      "retry": true,
+      "replayedFrames": 150,
+      "replayEnd": 4,
+      "completedDispatch": true
+    },
+    {
+      "selection": 1,
+      "id": 119,
+      "stage": 7,
+      "error": "",
+      "retry": true,
+      "replayedFrames": 150,
+      "replayEnd": 4,
+      "completedDispatch": true
+    },
+    {
+      "selection": 2,
+      "id": 0,
+      "stage": 1,
+      "error": "",
+      "retry": true,
+      "replayedFrames": 150,
+      "replayEnd": 4,
+      "completedDispatch": true
+    },
+    {
+      "selection": 2,
+      "id": 26,
+      "stage": 3,
+      "error": "",
+      "retry": true,
+      "replayedFrames": 150,
+      "replayEnd": 4,
+      "completedDispatch": true
+    },
+    {
+      "selection": 2,
+      "id": 119,
+      "stage": 7,
+      "error": "",
+      "retry": true,
+      "replayedFrames": 150,
+      "replayEnd": 4,
+      "completedDispatch": true
+    },
+    {
+      "selection": 3,
+      "id": 0,
+      "stage": 1,
+      "error": "",
+      "retry": true,
+      "replayedFrames": 150,
+      "replayEnd": 4,
+      "completedDispatch": true
+    },
+    {
+      "selection": 3,
+      "id": 26,
+      "stage": 3,
+      "error": "",
+      "retry": true,
+      "replayedFrames": 150,
+      "replayEnd": 4,
+      "completedDispatch": true
+    },
+    {
+      "selection": 3,
+      "id": 119,
+      "stage": 7,
+      "error": "",
+      "retry": true,
+      "replayedFrames": 150,
+      "replayEnd": 4,
+      "completedDispatch": true
+    },
+    {
+      "selection": 4,
+      "id": 0,
+      "stage": 1,
+      "error": "",
+      "retry": true,
+      "replayedFrames": 150,
+      "replayEnd": 4,
+      "completedDispatch": true
+    },
+    {
+      "selection": 4,
+      "id": 26,
+      "stage": 3,
+      "error": "",
+      "retry": true,
+      "replayedFrames": 150,
+      "replayEnd": 4,
+      "completedDispatch": true
+    },
+    {
+      "selection": 4,
+      "id": 119,
+      "stage": 7,
+      "error": "",
+      "retry": true,
+      "replayedFrames": 150,
+      "replayEnd": 4,
+      "completedDispatch": true
+    },
+    {
+      "selection": 5,
+      "id": 0,
+      "stage": 1,
+      "error": "",
+      "retry": true,
+      "replayedFrames": 150,
+      "replayEnd": 4,
+      "completedDispatch": true
+    },
+    {
+      "selection": 5,
+      "id": 26,
+      "stage": 3,
+      "error": "",
+      "retry": true,
+      "replayedFrames": 150,
+      "replayEnd": 4,
+      "completedDispatch": true
+    },
+    {
+      "selection": 5,
+      "id": 119,
+      "stage": 7,
+      "error": "",
+      "retry": true,
+      "replayedFrames": 150,
+      "replayEnd": 4,
+      "completedDispatch": true
+    }
+  ],
+  "wasmSha256": "84302764298208e40597367b705455687afd7f40257c74f1394e803969f02ba0",
+  "scope": "Production integration with original resources: six loadouts x three representative SpellPr cards, pause/resume, controlled failure and actual Retry, real ReplayRecorder encoding/Replay decoding with 150-frame compared spell/player/economy/control state and terminal marker, controlled completion dispatch without capture. Visual animation RNG is unrecorded and excluded. No artificial invulnerability/firepower; not natural capture, original replay-frame equality, complete combat state, end-menu name/save UI, GPU or full-game equivalence.",
+  "sources": {
+    "runtimes/th12/th12_web/cpp/game/GameSession.cpp": "de0ad372a6a56f3078001a8f501600fe2028fa6da60a2f85f1b920898604a22c",
+    "runtimes/th12/th12_web/cpp/game/GameBattle.cpp": "5d65ecaaf26bc58a631771c71c81bbeb609ada51e898a84fc83a0d68f0444961",
+    "runtimes/th12/th12_web/cpp/game/PauseEnd.cpp": "adf178b3f84566b5746d0330407306589cd925665c42c4bd458c8b3e29cbb754",
+    "runtimes/th12/th12_web/tests/cpp/th14-startup-fixture.cpp": "b7efd77244411d2e672aa823f063c39d88a8cc14118db7c18a2ffd67d1e26a28",
+    "tools/th14-spell-session-check.mjs": "6eb104e5965e2f49fc9931a834eb40fa8d0e4c992c47adf529d3871df020fc24"
+  }
+}

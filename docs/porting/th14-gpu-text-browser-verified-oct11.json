@@ -1,0 +1,80 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "cases": 640,
+  "textureCopies": 160,
+  "scratchCases": 80,
+  "comparedChannels": 34734080,
+  "comparedTextureBytes": 9984000,
+  "foregroundCases": 560,
+  "foregroundPixels": 548852,
+  "wasmSha256": "d25793ad74bd9c2b0dec80f55caf021eb546e3b9ac90bb97da3532cb62c6157c",
+  "evidence": {
+    "artifacts/th14/gpu-text/native.json": {
+      "bytes": 321567,
+      "sha256": "f1b867c332e3b862c23772659e1d71f85c2fe2c11f1a577996bdc7503896797e"
+    },
+    "artifacts/th14/gpu-text/native.bgra": {
+      "bytes": 34734080,
+      "sha256": "1f2468ba97a53f016f854845d2a8393678e42882681b605a28afc321a4543776"
+    },
+    "artifacts/th14/gpu-text/native-textures.bin": {
+      "bytes": 9984000,
+      "sha256": "093421c34217465fd0b41c7a801be00d24304900ece4fdaa4f237a9d11d413e0"
+    },
+    "artifacts/th14/gpu-text/build.json": {
+      "bytes": 3389,
+      "sha256": "25b38a74b2fbcc34a5de71d9517e180c273df4fb8989596b5089be70d65aee8e"
+    },
+    "artifacts/th14/gpu-text/gpu.wasm": {
+      "bytes": 769470,
+      "sha256": "d25793ad74bd9c2b0dec80f55caf021eb546e3b9ac90bb97da3532cb62c6157c"
+    },
+    "artifacts/th14/gpu-text/gpu.mjs": {
+      "bytes": 211182,
+      "sha256": "e517573d197dc55b9c6d9244471bb79e1fd943b5259ba03708094259922d44c7"
+    },
+    "artifacts/th14/gpu-text/browser-result.json": {
+      "bytes": 278616,
+      "sha256": "6a69a050ebff74be9e5dfee2feaab28b53dd8fcb0685323389ff82030e213ece"
+    },
+    "artifacts/th14/gpu-text/browser-logs.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "artifacts/th14/gpu-text/browser.png": {
+      "bytes": 82719,
+      "sha256": "26d2d81c3e2cfee854ac739fcf19828eac76ce313c135b75eeb47b4225022e8d"
+    }
+  },
+  "sources": {
+    "runtimes/th12/th12_web/cpp/game/TextRaster.cpp": "c29bc2fc87579164aa3768a6b9a4e3cb417e7c54d9526d0eda0272625d5dcd21",
+    "runtimes/th12/th12_web/cpp/game/GlyphAtlas.cpp": "acd99b80ce746f18be6cf86703af37d41258284e1d94876bcdac3b66bc347cc3",
+    "runtimes/th12/th12_web/cpp/game/ImageResample.cpp": "aafed3f7e360d762b8e429f7472ff9ee3f5e64009ff1e21fb57149a95860d797",
+    "runtimes/th12/th12_web/tests/cpp/th14-gpu-text-fixture.cpp": "7f8097134034b8cd68d80c1a855b6078adffafbb7f29043928a4c5e855d7d903",
+    "runtimes/th12/portable/sdl/Renderer.cpp": "46d874eb2ab77080f521b76f59da9d639216f67be920411d03427c0df4b7c6f6",
+    "runtimes/th12/th12_web/tests/cpp/th14-gpu-text-data.hpp": "b9a27ea77e24a0a5eb3af0feb8681d79fe392ce974712da3a10b1e8631402f2d",
+    "runtimes/th12/th12_web/cpp/game/TextRaster.hpp": "6be5ba7c6f6df501f6eaf72619b94073ddf5940278c69fdb331a68b2bd7972be",
+    "runtimes/th12/th12_web/cpp/game/GlyphAtlas.hpp": "56f4297af0410bb514a6997716312f598c74f9d7bbce0f12cc1cfa9710335665",
+    "runtimes/th12/th12_web/cpp/game/ImageResample.hpp": "92805525723d48143289d84fc078434cff40a77a352232763b8ab776537ce43c",
+    "runtimes/th12/th12_web/cpp/game/PortTitle.hpp": "5531b9b0a2364098ec023e09eddbf66907c392fb58a24e1a84c5bf7a9a033d2f",
+    "runtimes/th12/portable/sdl/Renderer.hpp": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249",
+    "runtimes/th12/portable/sdl/AlphaConversion.hpp": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5",
+    "runtimes/th12/portable/sdl/GraphicsState.hpp": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31",
+    "runtimes/th12/portable/sdl/Shaders.hpp": "78f7648c27aa762c30493e6bf784baabdabdac63e2f683b2ed33470dca5aa252",
+    "runtimes/th12/portable/sdl/ResampleShader.hpp": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134",
+    "tools/th14-gpu-text-build.mjs": "077b1fa1a904021677ed51eec1b61d70ab27240e232ec7c66aff3c57ee25d566",
+    "tools/th14-gpu-text-prepare.py": "7d996a1013c51716d55528e03b2ca5be0100dc9de25086ae65fc339259ab9271",
+    "tools/th14-gpu-text-native.py": "d5b6d2b133882390d7b48403d8c99e84c9e6f74abeda913cea8a9d8ca83ce40d",
+    "tools/th14-gpu-text-serve.mjs": "e4e79b1de13187bbf22af10e386826c0f2fa1978b794fa4154cccd4426ac5f09",
+    "tools/th14-gpu-text.html": "84eb1d32dc7880b6626b0ce96ede44f7572202e85744a30b23919ef3e4c203ab"
+  },
+  "scope": "Actual HAL HardwareVP and host64 D3DX9_43 upload of80 retail467ba0 scratch images using exact captured filter1 descriptors;160 ARGB4444/BGRA8 texture readbacks with untouched borders and640 controlled point/linear,1x/half-scale alpha-blended draws. Original32-bit upload/full draw loop, actual dialogue textures/frames, other machines and Unicode localization excluded. Production independent TextRaster/GlyphAtlas/ImageResample and SDL Renderer PORT_TITLE14 verified; CPU upload bytes equal actual D3DX texture readbacks and all selected GPU draw channels strict. This does not capture production FontDevice/GraphicsDevice changed delivery or original full ANM dialogue batch.",
+  "limits": [
+    "Host64 D3DX counterpart is tested; original32-bit COM delivery is not executed",
+    "Controlled texture size520x40 with retained borders, white diffuse, alphaGE1, ordinary blend, disabled depth/fog; no full dialogue/frame equivalence",
+    "Existing raster proof is preserved; this new fixture independently verifies current raster implementation",
+    "TH14 1:1 remains incomplete"
+  ]
+}

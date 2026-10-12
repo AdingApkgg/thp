@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "title": 16,
+  "completeGame": false,
+  "cases": 5940,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "ca63492f9dc9f071a7ca545560286b6a198024f7c87183a0a3a760819e6f6c7a",
+  "scope": "Actual complete403d30 circle/rotated rectangle and4049c0 two rotated rectangles; original helper calls and native math execute with no interception. Zero/nonzero dimensions, quadrants, strict/inclusive boundaries, rotated/different-angle rectangles and circle radii. Boolean output exact. Finite supplied inputs; NaN/infinity, other geometry and full gameplay excluded.",
+  "sourceHashes": {
+    "tests/cpp/th16-shot-geometry-fixture.cpp": "769800c14c12c2767ec52aad534c00e548d0bfd119dc63c307aae4a8366f9542",
+    "cpp/game/ShotTh16Geometry.cpp": "0be8d3b625ee3f4afee4bac3a629067c72786042fdb75446ff05cd7bc9c72d23",
+    "cpp/game/ShotTh16.hpp": "fe74086b85b713b86d147b64150859c83340a24cd78f3961ddf024161c3e99f5"
+  },
+  "toolHashes": {
+    "tools/th16-shot-geometry-native.py": "b737702ab9c75cd2db6b234ff891c887283a81793ec1a542c719cb06602b97d7",
+    "tools/th16-shot-geometry-check.mjs": "f43e5f28a8901b72d6cfa87f1bb953b5b2b2c5f1b2461e0b72345da1819d34e4"
+  }
+}

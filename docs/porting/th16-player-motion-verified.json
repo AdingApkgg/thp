@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "title": 16,
+  "completeGame": false,
+  "cases": 10368,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "6f7e01f32f5b271180f80ff0cfb01672cbdf682a8bf978593a8b6ff5fc1dee89",
+  "scope": "Complete441cf0 on keyboard movement, missing/enabled enemy manager, startup focus suppression, fixed-point wrapping, SSE rate/displacement/factor, clamps, body script changes, focus scale/cache/missing handles, recall clock/count reset and full charge effect countdown. ANM binder/tick/create/lookup/family interrupt delivery controlled. All option states inactive here; active442380 is separately proven. Touch, resources/draw, player lifecycle and full gameplay excluded.",
+  "sourceHashes": {
+    "tests/cpp/th16-player-motion-fixture.cpp": "942122c334452d38e815a07a0c5df8ba87f113d3e55e119e9db9e5fc05dee785",
+    "cpp/game/PlayerMotion.cpp": "b32a5d74087397cc3e5dd90822689775e112ded4044fd5965b7744b724815030",
+    "cpp/game/PlayerMotion.hpp": "1acb630179f2dc1391f18df043ff3057a7be00b503add7250673aa5822265b22",
+    "cpp/game/ShtResource.cpp": "d3c3eb0103f4ea9eee6468c863a3ad8e9abb871f3245091290701ecb03161c9b",
+    "cpp/game/AnmManager.cpp": "6ec4cc2bb1f57c94fb281c9866b1f5c40cf13f50fec8539b58d32a9bb7b3a7f0"
+  },
+  "toolHashes": {
+    "tools/th16-player-motion-native.py": "b5982d84b7b0c95f88de5c758de37e3a3dd2ada5bf35f7b8f02fadf1d545fcef",
+    "tools/th16-player-motion-check.mjs": "bb94aa443345c5057c69becb75d3ff0069b434b28579d5063cf22a642fe92d46"
+  }
+}

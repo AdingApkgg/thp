@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
+import {resolve,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {WASI} from 'node:wasi';
+import {nativePython} from './native-python.mjs';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..'),rt=resolve(root,'runtimes/th12/th12_web'),out=resolve(root,'artifacts/th16/easing-check');mkdirSync(out,{recursive:true});
+nativePython('tools/th16-easing-native.py',{cwd:root,stdio:'inherit',windowsHide:true});
+const proof=JSON.parse(readFileSync(resolve(root,'artifacts/th16/easing-native.json'),'utf8')),sources=['cpp/game/Interpolation.cpp','tests/cpp/th16-easing-fixture.cpp'],wasm=resolve(out,'easing.wasm');
+execFileSync(resolve(rt,'../tools/wasi-sdk-34.0-x86_64-windows/bin/clang++.exe'),['--target=wasm32-wasip1','-std=c++17','-O2','-ffp-contract=off','-fno-exceptions','-fno-rtti','-mexec-model=reactor','-Wl,--no-entry','-Wl,--export-memory','-DPORT_TITLE=16',...sources,'-o',wasm],{cwd:rt,stdio:'inherit',windowsHide:true,env:{...process.env,TEMP:out,TMP:out,TMPDIR:out}});
+const bytes=readFileSync(wasm),wasi=new WASI({version:'preview1',args:[],env:{},preopens:{}}),{instance}=await WebAssembly.instantiate(bytes,{wasi_snapshot_preview1:wasi.wasiImport});wasi.initialize(instance);const c=instance.exports;
+for(const r of proof.rows)assert.equal(c.run(...r.slice(0,3))>>>0,r[3],`easing ${r.slice(0,3)}`);
+const sha=b=>createHash('sha256').update(b).digest('hex'),tracked=[...sources,...['Interpolation','Timer','Types','PortTitle'].map(n=>`cpp/game/${n}.hpp`)];
+writeFileSync(resolve(root,'docs/porting/th16-easing-verified.json'),JSON.stringify({passed:true,title:16,completeGame:false,cases:proof.rows.length,scope:proof.scope,nativeExecutableSha256:proof.executableSha256,wasmSha256:sha(bytes),sourceHashes:Object.fromEntries(tracked.map(n=>[n,sha(readFileSync(resolve(rt,n)))])),toolHashes:Object.fromEntries(['tools/th16-easing-check.mjs','tools/th16-easing-native.py','tools/th-anm-handlers.py'].map(n=>[n,sha(readFileSync(resolve(root,n)))]))},null,2)+'\n');console.log(`PASS ${proof.rows.length} native TH16 easing cases`);

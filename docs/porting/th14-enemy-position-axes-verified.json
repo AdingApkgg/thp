@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "timelines": 4488,
+  "frames": 282709,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "137905e213bbf1e75d2cef43356ee43cfa6ebc0e72b1bd258a6e208c33b4a3d2",
+  "sourceHashes": {
+    "cpp/game/EnemyTh14Commands.cpp": "d3a9f5133d733ea5bdb5cca2bd4bd0808f00f40ca195977486384378f19f41cc",
+    "cpp/game/EnemyState.cpp": "fbec31724649179e9772b17e0aa445070ae52264a70b07e1d7960ae0ca899bfb",
+    "cpp/game/EnemyState.hpp": "e6d8e0faab8e6c1ed60fb4e78dea7b42e292c7568baf95139771b6cc1523b60f",
+    "cpp/game/Interpolation.cpp": "57cd2806a28109745084fb2079edee055322ff3fd044f75fc4e4ec3305add125",
+    "cpp/game/Interpolation.hpp": "edbabf98f0aa2441bc725138d9fb6ff4908142998836ec3e3fc1c1f198e1d689",
+    "cpp/game/Movement.cpp": "ea823e71f48f15d1d5e038c4fa62b6a4dfcaa31b087ebc183e42ef2dd439cccb",
+    "tests/cpp/th14-enemy-position-axes-fixture.cpp": "c1efd33feddd3d9c75429791ea8da3796585d06249ecef91198df0fed9c0377f",
+    "tests/cpp/th14-enemy-movement-fixture.cpp": "27978ab051a703d7ae482fb0a7e8af38d8f44594cded54a1c42371a5201a53ad"
+  },
+  "toolHashes": {
+    "tools/th14-enemy-position-axes-native.py": "d74584ee4975fdff31f6b25dd753f7f6082538d5e5951d685237579c5b189725",
+    "tools/th14-enemy-position-axes-check.mjs": "482099c4df5d9f93f41eef525197ffc5117c2d6e95c7f02bf502b8f2761e91b5"
+  },
+  "scope": "Actual retail 425eb6/426076/4261c6 ECL 434..439, 401/403 and 425/426/427 setup and complete 4230d0 movement/42cd40 position consumption. Single-mode mirrored offsets and independent XYZ modes including persisted common completion mode and third-axis mode; all 32 modes plus -1/80, zero/negative/7/35 durations, sentinels after offset arithmetic, retained clocks/flags, camera/clamp and three rates. Both bands seeded and compared, including clearing independent-axis flags when normal or Hermite setters replace the mode. Zero BSS tangent defaults. Argument getters and ANM lookup controlled; GPU and full campaign excluded."
+}

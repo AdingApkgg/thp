@@ -1,0 +1,130 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "changedFiles": [
+    "cpp/game/GameSessionResources.hpp",
+    "cpp/game/GameBattle.hpp",
+    "cpp/sdl/Application.cpp"
+  ],
+  "nativeRenderBitWrites": [
+    "0x47dc24",
+    "0x47dd54",
+    "0x47de6b"
+  ],
+  "nativeCallbackPriorities": {
+    "dialogue": 27,
+    "normalAnm": 29
+  },
+  "before": {
+    "actualFontWrites": 40,
+    "stateDifferences": 19,
+    "frameFinalAtlasEquality": true
+  },
+  "after": {
+    "actualFontWrites": 59,
+    "stateDifferences": 0,
+    "intermediateAtlasEquality": 59,
+    "selectedScreenEquality": 12
+  },
+  "actualSession": {
+    "routes": 90,
+    "frames": 70212,
+    "writes": 6096,
+    "fourTextVmFields": 152,
+    "errorPropagation": true
+  },
+  "legacyBuilds": [
+    {
+      "title": 12,
+      "bytes": 903005,
+      "sha256": "77133233ab29a56a6dfd2169697d50cf2ce42f819a607a427a37482cb93dd259"
+    },
+    {
+      "title": 13,
+      "bytes": 909578,
+      "sha256": "81578bd552c0175994ddbcb668865fcbe624c2bf56ed8fda03dac670dfb8e853"
+    }
+  ],
+  "release": {
+    "bytes": 1860915,
+    "sha256": "a765329908aaf597b267f2bcc888739d48d95bc089083ea8842f237fcc935c08"
+  },
+  "evidence": {
+    "docs/porting/th14-real-message-session-sync-verified-oct12.json": {
+      "bytes": 57519,
+      "sha256": "a59a32cfdaed6fada32bd09435a06e7098b87fa9c4f502c5dd474647f66fae4a"
+    },
+    "docs/porting/th14-dialogue-application-sync-message-scene-text-gpu-observed-oct12.json": {
+      "bytes": 76353,
+      "sha256": "e6bc86b5d28c9b24d8b35db475b90cef41a9cad9185d18961a94c02f727e2c92"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameSessionResources.hpp": {
+      "bytes": 3130,
+      "sha256": "18fce1473443b24707d49aba8a318cfeaed8929b471b120a21fce57bfe17587a"
+    },
+    "artifacts/th14/application-before-synchronous-text/runtimes/th12/th12_web/cpp/game/GameSessionResources.hpp": {
+      "bytes": 2882,
+      "sha256": "bc71048845b28067190e48cafde38262dd3fb00eb5cbe4072e985897425336c3"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameBattle.hpp": {
+      "bytes": 22177,
+      "sha256": "d950085e8ef7335819e0c2163b4ab50d856334a0a5778a7e23f4c003e3dd7244"
+    },
+    "artifacts/th14/application-before-synchronous-text/runtimes/th12/th12_web/cpp/game/GameBattle.hpp": {
+      "bytes": 22004,
+      "sha256": "44e6202972826e20a28b70242277b6eabd61fb0d4333669f6567a3a5a5f4ccd5"
+    },
+    "runtimes/th12/th12_web/cpp/sdl/Application.cpp": {
+      "bytes": 49415,
+      "sha256": "adaaa29718f779c51fe6c95608ef4032a09ef6a7d47edeafa90fbbd1b0b88a92"
+    },
+    "artifacts/th14/application-before-synchronous-text/runtimes/th12/th12_web/cpp/sdl/Application.cpp": {
+      "bytes": 48937,
+      "sha256": "d9e3df3cfd6dc6ab9ebf9f92f47e1266e3ceffcaef84e1a26e37b0585177d322"
+    },
+    "artifacts/th14/application-before-synchronous-text/docs/porting/th14-dialogue-application-message-scene-text-gpu-observed-oct12.json": {
+      "bytes": 78465,
+      "sha256": "f7e4cd194a209728e413c678e80d02955066b1a7afcc8feab807e98af8b87c57"
+    },
+    "artifacts/th14/dialogue-application-sync-message-scene-text/original-text-visibility-instructions.json": {
+      "bytes": 46280,
+      "sha256": "937e05607625d7f8d6d8aff82ab8f612d8eb825b7c3f3cc9ba47c907d8e468c5"
+    },
+    "artifacts/th14/native-synchronous-text-priorities-oct12.json": {
+      "bytes": 10784,
+      "sha256": "135cbfc51e293a18b4691a3100f26e588c69910f67e326144295cbea0d697f78"
+    },
+    "runtimes/th13/th13_web/artifacts/cpp/engine-th12-build.json": {
+      "bytes": 33155,
+      "sha256": "b5a5d2d4060d63bf99039fde4ab59cb130e6b70d5e967ae5a611d50c024a6e8a"
+    },
+    "runtimes/th13/th13_web/artifacts/cpp/engine-th13-build.json": {
+      "bytes": 33155,
+      "sha256": "546cd2c369d2d4b27ab75628b5c564b4813be2596cd569a3fc735163f70ec1b6"
+    },
+    "runtimes/th14/th14_web/artifacts/sdl3-release/build.json": {
+      "bytes": 37704,
+      "sha256": "1858a1b9484d204e4d33887ff4a1f9e4f55b5b70047af245681f83d61cdc6712"
+    },
+    "docs/porting/th14-launcher-runtime-prepared-oct11.json": {
+      "bytes": 50674,
+      "sha256": "9d2f563094b9a6756e05a74124230d6764bccee2838313d15ee7e6201a226d42"
+    },
+    "docs/porting/th14-launcher-preview-prepared-oct11.json": {
+      "bytes": 36442,
+      "sha256": "7aded8cd39cdeecb488321ff8534af35587f964f1759d8e411bb4bcd574fa6f7"
+    },
+    "tools/th14-synchronous-dialogue-text-check.mjs": {
+      "bytes": 5164,
+      "sha256": "456e532fca6512b23c893505686ca3ef0bcc8372a25a8403e96bcfc75a8a67a5"
+    }
+  },
+  "limits": [
+    "TH14 synchronous platform text dispatch only; headless consumers keep queued requests and other titles retain their existing text scheduling",
+    "Real native priority list measured at one untouched automatic demo first-player boundary; render-bit instructions copied from the checked original executable",
+    "First-stage two-route actual Application/FontDevice/ANM/GDI/HAL proof remains fixture-driven outside the full GameBattle world update",
+    "All90 actual GameSession routes use a controlled text-service boundary and explicit MSG starts; only the separately tested two-route fixture uses the actual Application sink",
+    "No complete-game/world-GPU/audio/native loading clock/natural-clear equivalence"
+  ]
+}

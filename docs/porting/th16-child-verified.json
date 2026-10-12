@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "title": 16,
+  "completeGame": false,
+  "cases": 252,
+  "scope": "Retail TH16 child factory, binder and first update with bounded synthetic templates.\n\nAllocator and registry insertion are controlled; original resource template copy,\ncleanup, creation/linking and child's interpreter execute. Resource compilation\ninto templates and actual registry implementation are not tested here.\n Production comparison uses real AnmManager creation and registry consumption. Scripts explicitly choose a layer; native precompiled template construction, default template layer, registry internals, teardown, inherited draw transform and GPU are outside this comparison.",
+  "factory": "0x46ed60",
+  "binder": "0x407b20",
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "cd6ba1e085d66c356ccf68a53abb2906d76201877ec74ac9bf67de256164b721",
+  "sourceHashes": {
+    "cpp/game/AnmVm.cpp": "18a1bf29a28e105c06be4173d407203408459fa25ce0364fe3dd6046cdc7c4c5",
+    "cpp/game/AnmResource.cpp": "7391cebdd1be0faa8ad9201352debef81b436543f2f6703d962bb4c504490c41",
+    "cpp/game/AnmInterpreter.cpp": "4e32fd542f9b1ec740e45e396eff728b26da98c67399b398ffd233ef3266bf3d",
+    "cpp/game/AnmGeometry.cpp": "6326e12e33f2cce4d9999ade1b241c25832c1323720df57a1094a6372c10db59",
+    "cpp/game/AnmManager.cpp": "6ec4cc2bb1f57c94fb281c9866b1f5c40cf13f50fec8539b58d32a9bb7b3a7f0",
+    "cpp/game/Interpolation.cpp": "57cd2806a28109745084fb2079edee055322ff3fd044f75fc4e4ec3305add125",
+    "tests/cpp/th16-child-fixture.cpp": "5b0583eb5294f54b50878b2ead6e41fd27636f6b9e994d680c46934114a15c8a",
+    "cpp/game/AnmVm.hpp": "5e630116a9e468e4ed5c6a7988ba514f10048f9763a625eef12df0e88704740b",
+    "cpp/game/AnmOpcodes.hpp": "37a6ef978bc43d0b62314294930444056f2632cd207246589752e14a8bb03691",
+    "cpp/game/AnmManager.hpp": "f75e3d216d4026122ea8e44a1b6c09ba8d51626a7a5ca3a4e499bcc1b905ad14",
+    "cpp/game/AnmResource.hpp": "1980c12e24cd4c85d5e271fc14f672dac12c81c202adcf10b607d013b0865a74",
+    "cpp/game/AnmGeometry.hpp": "b6a1cea487717d15bbcc8e7788d055f9ab345bd18f4583c1d8024521cede3f3c",
+    "cpp/game/AnmTrace.hpp": "ab2505e016f7439d50a5e09c7f3cff53b57bc68f7b93f4bc0afb23bee1155e89",
+    "cpp/game/Interpolation.hpp": "edbabf98f0aa2441bc725138d9fb6ff4908142998836ec3e3fc1c1f198e1d689",
+    "cpp/game/Timer.hpp": "e07169289db2407ce57c4191343ad6c9a5e3b2d543898439326520cfe1723ddb",
+    "cpp/game/Types.hpp": "f79c1ed7cb200413ef0dea75bf0d58842745b6b47182a97e496733c1d7bb2669",
+    "cpp/game/Rng.hpp": "c53231677e6b5ef755d7385f5d3e224e2e353757eec7f1110424a8d4f0073a9a",
+    "cpp/game/PortTitle.hpp": "5531b9b0a2364098ec023e09eddbf66907c392fb58a24e1a84c5bf7a9a033d2f",
+    "cpp/game/Th16AnmDispatch.hpp": "5702f6f59cca6a3a091f3a4b058f43e812a67311db792c133479bc52b954da28"
+  },
+  "toolHashes": {
+    "tools/th16-child-check.mjs": "81f779c33d3f4a901eaa9ebfe190d1d4712f67d3ea3b3763a2e2b54ab48270c7",
+    "tools/th16-child-native.py": "bf4560e337d31e8c905856843c24c6df46eff1c81b81f765629f00f7ff36c702",
+    "tools/th-anm-handlers.py": "07b7fc89a033c65dc95034a0c49e365e726a4123cdb5b8dd7967fa5e71e42363"
+  }
+}

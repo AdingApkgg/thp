@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {createHash} from 'node:crypto';
+const root=resolve(import.meta.dirname,'..'),read=n=>readFileSync(resolve(root,n)),sha=b=>createHash('sha256').update(b).digest('hex');
+const preparedPath='runtimes/th14/th14_web/artifacts/launcher-preview/8e66fa41b0b62a74/release.json',prepared=JSON.parse(read(preparedPath));
+const evidence=Object.fromEntries(['browser-launcher-config-before-refresh-oct11.png','browser-launcher-config-after-refresh-oct11.png','browser-launcher-config-logs-oct11.json'].map(n=>{const path='artifacts/th14/'+n,b=read(path);return [path,{bytes:b.length,sha256:sha(b)}];}));
+assert.deepEqual(JSON.parse(read('artifacts/th14/browser-launcher-config-logs-oct11.json')),[]);
+const controlsPath='docs/porting/th14-options-controls-verified-oct11.json',controls=JSON.parse(read(controlsPath));assert.equal(controls.passed,true);
+const report={passed:true,completeGame:false,nativeEquivalent:false,url:'http://127.0.0.1:8135/',preparedPath,preparedSha256:sha(read(preparedPath)),buildId:prepared.buildId,evidence,controls:{path:controlsPath,sha256:sha(read(controlsPath)),cases:controls.cases},observed:['Original Option menu changed BGM100/SE80 to95/75 using ordinary keyboard','Returned through actual Launcher navigation and reloaded the page','Relaunched installed TH14, ordinary automatic demo cancelled back to title','Option again visibly shows95/75; current error/warn logs empty'],limits:['Visible settings persistence, not comparison of all92 saved configuration bytes','This run does not export/import configuration or assert native filesystem behavior','1903 retail callback cases are separately controlled native comparisons, not browser pixels/audio-device equality']};
+writeFileSync(resolve(root,'docs/porting/th14-launcher-config-browser-observed-oct11.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:true,controls:controls.cases,evidenceFiles:3}));

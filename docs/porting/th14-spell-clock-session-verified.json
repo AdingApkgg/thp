@@ -1,0 +1,74 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "rows": [
+    {
+      "selection": 0,
+      "entryFrames": 103,
+      "frames": 23,
+      "encoded": 10006611,
+      "pausedClockStartUnchanged": true,
+      "resultMenuRecorded": true,
+      "replayTimePreserved": true
+    },
+    {
+      "selection": 1,
+      "entryFrames": 103,
+      "frames": 23,
+      "encoded": 10006611,
+      "pausedClockStartUnchanged": true,
+      "resultMenuRecorded": true,
+      "replayTimePreserved": true
+    },
+    {
+      "selection": 2,
+      "entryFrames": 103,
+      "frames": 23,
+      "encoded": 10006611,
+      "pausedClockStartUnchanged": true,
+      "resultMenuRecorded": true,
+      "replayTimePreserved": true
+    },
+    {
+      "selection": 3,
+      "entryFrames": 103,
+      "frames": 23,
+      "encoded": 10006611,
+      "pausedClockStartUnchanged": true,
+      "resultMenuRecorded": true,
+      "replayTimePreserved": true
+    },
+    {
+      "selection": 4,
+      "entryFrames": 103,
+      "frames": 23,
+      "encoded": 10006611,
+      "pausedClockStartUnchanged": true,
+      "resultMenuRecorded": true,
+      "replayTimePreserved": true
+    },
+    {
+      "selection": 5,
+      "entryFrames": 103,
+      "frames": 23,
+      "encoded": 10006611,
+      "pausedClockStartUnchanged": true,
+      "resultMenuRecorded": true,
+      "replayTimePreserved": true
+    }
+  ],
+  "archiveSha256": "57d84a5cbe82460931cca26f090a0fde7aef180889ce5bfe8315851fc97b0233",
+  "wasmSha256": "4c91637ffe1779e01d816f2551b1520be51b943283dcd3ed6ef7862b32f517ae",
+  "scope": "Six actual original-ECL first Hard SpellPr sessions with GameSession post-draw clock API: ordinary input until native ECL spell entry,20 active ticks, pause/resume retaining start time, controlled SpellController.end failure opening actual result menu, exact one finished record and actual ReplayRecorder/ReplayStageState saved time. External clock is deterministic and final spell boundary controlled; does not prove natural captures, browser timer resolution, native elapsed values on the same playthrough, full replay visual/audio/GPU equality.",
+  "sourceHashes": {
+    "tests/cpp/th14-spell-clock-session-fixture.cpp": "da36ff4437569f55d0e907163f88ab672cad1ee893971dd80b3a2aec40e60dd8",
+    "tests/cpp/th14-startup-fixture.cpp": "b7efd77244411d2e672aa823f063c39d88a8cc14118db7c18a2ffd67d1e26a28",
+    "cpp/game/SpellTiming.cpp": "b47cce01612c88caeebba8276aba03a349698eab08f45458955705fd5c460a5f",
+    "cpp/game/GameSession.cpp": "de0ad372a6a56f3078001a8f501600fe2028fa6da60a2f85f1b920898604a22c",
+    "cpp/game/GameSession.hpp": "e5b08b3144cd41f95bf12bf8f6f85e89403a9307b549143aea661cc79626773f",
+    "cpp/game/SpellController.cpp": "81fe40bca2c298344497aaafb491fb9c5ef5e2207cb1ea2d03f92e78d94709b3",
+    "cpp/sdl/Application.cpp": "d9e3df3cfd6dc6ab9ebf9f92f47e1266e3ceffcaef84e1a26e37b0585177d322"
+  },
+  "toolSha256": "63e03ab4e2e617e1d9308bb6102b3b094717610cdaecdda635952b5bddec660f"
+}

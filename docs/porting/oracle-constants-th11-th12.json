@@ -1,0 +1,71 @@
+{
+  "instrument": "tools/th-twin-global.py",
+  "method": "a constant is found the same way a global is: for every reference site, the twin of the window matches on its literal bytes, and the twin's bytes where the source carried the value are the counterpart. This catches the cases where cross-title movement is not an address: a structure grew between the titles, so the fixtures that allocate or copy it must use the title's own size.",
+  "checks": [
+    "the animation object: th11 0x434 -> th12 0x4b4 at 33 of 98 sites (runner-up 3), and 0x40253b in the template initialiser pushes exactly 0x4b4 before the memset"
+  ],
+  "rows": [
+    {
+      "source": "th11",
+      "sourceValue": "0x434",
+      "role": "animation object size (th12 clears 0x4b4 in the same function)",
+      "target": "th12",
+      "targetValue": "0x4b4",
+      "agreeingSites": 33,
+      "references": 98,
+      "candidates": [
+        {
+          "value": "0x4b4",
+          "sites": 33,
+          "of": 98
+        },
+        {
+          "value": "0x434",
+          "sites": 3,
+          "of": 98
+        },
+        {
+          "value": "0x96c",
+          "sites": 3,
+          "of": 98
+        },
+        {
+          "value": "0x4ec87",
+          "sites": 2,
+          "of": 98
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceValue": "0xac",
+      "role": "dialogue state size",
+      "target": "th12",
+      "targetValue": "0xac",
+      "agreeingSites": 61,
+      "references": 78,
+      "candidates": [
+        {
+          "value": "0xac",
+          "sites": 61,
+          "of": 78
+        },
+        {
+          "value": "0xb0",
+          "sites": 2,
+          "of": 78
+        },
+        {
+          "value": "0x4a4",
+          "sites": 2,
+          "of": 78
+        },
+        {
+          "value": "0xa6",
+          "sites": 2,
+          "of": 78
+        }
+      ]
+    }
+  ]
+}

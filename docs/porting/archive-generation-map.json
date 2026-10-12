@@ -1,0 +1,62 @@
+{
+  "question": "which version does the game path pass to Archive::open?",
+  "answer": "a generation, not the title number",
+  "code": {
+    "GameResources.cpp:20": "constexpr u32 archive_generation = kPortTitle==12?12u:(kPortTitle==13?13u:14u);",
+    "GameResources.cpp:30": "if (!archive.open(bytes, size, archive_generation)) return fail(\"invalid THA1 archive\");"
+  },
+  "mapping": {
+    "12": 12,
+    "13": 13,
+    "14": 14,
+    "16": 14,
+    "17": 14,
+    "18": 14,
+    "19": 14,
+    "rule": "everything that is not 12 or 13 maps to the 14 rows"
+  },
+  "suiteArgument": {
+    "source": "target.json dataArchives[\"thN.dat\"].pbgVersion",
+    "value": "the title number",
+    "note": "a naming the survey uses; the game never passes it"
+  },
+  "theyAgreeInEffect": "the line added in section 292 maps 16..19 to the th14 rows, which is exactly what else->14 does",
+  "perTitle": {
+    "12": {
+      "pbgVersion": 12,
+      "completeGame": false
+    },
+    "13": {
+      "pbgVersion": 13,
+      "completeGame": false
+    },
+    "14": {
+      "pbgVersion": 14,
+      "completeGame": false
+    },
+    "16": {
+      "pbgVersion": 16,
+      "completeGame": false
+    },
+    "17": {
+      "pbgVersion": 17,
+      "completeGame": false
+    },
+    "18": {
+      "pbgVersion": 18,
+      "completeGame": false
+    }
+  },
+  "checkers": {
+    "th12": [
+      "tools/th12-message-check.mjs",
+      "tools/th12-raw-offset-check.mjs"
+    ],
+    "th13": "8 checkers",
+    "th14": "30 checkers",
+    "th16": null,
+    "th17": null,
+    "th18": null
+  },
+  "next": "build the same per-module native-against-wasm checker for th16, th17 and th18"
+}

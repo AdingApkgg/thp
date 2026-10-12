@@ -1,0 +1,154 @@
+{
+  "passed": true,
+  "cases": 80,
+  "copies": 160,
+  "layoutCases": 5400,
+  "initializationCases": 30,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "726d2efea985d31542ad18d8eae8588c880476c0347d9fc8e89bfba5f6fc3e33",
+  "scope": "Actual retail467ba0 and 467020/466eb0/466b10 scratch processing, actual host Windows GDI TextOutA/CreateFontA. Allocation, memcpy, free, surface upload and resource/COM delivery controlled. Not a GPU or other-system-font proof. Compares all262144 scratch bytes/case. Native upload descriptors separately match copy dimensions/filter1; copy checks compare ARGB4444/BGRA8 bytes and untouched borders against native scratch data. Actual D3DX/GPU upload excluded. Actual retail47db50/47dc40/47dd70 wrapper execution. Vararg formatting is controlled literal bytes; downstream467ba0 intercepted. Compares physical pixel coordinates, font/color/outline/spacing/shadow, height<=8 delivery skip and VM dirty flag. Excludes actual formatter/GDI/GPU. Thirty retail467940 initialization states compare256 table bytes, visual seed/call rollover and bitmap format selection; DIB creation/font allocation controlled. All eight baked font descriptors match native creation/draw order; every font asset size/hash checked. Browser supports ARGB4444 only. Other552 startup ANM next32 calls and clock seed remain outside this proof; no padding or captured seed override.",
+  "sources": {
+    "tests/cpp/th14-text-raster-fixture.cpp": "ae169b162494c54831fa31af2def6473e7d07eff85683024444a16af77642ea7",
+    "cpp/game/TextRaster.cpp": "c29bc2fc87579164aa3768a6b9a4e3cb417e7c54d9526d0eda0272625d5dcd21",
+    "cpp/game/GlyphAtlas.cpp": "acd99b80ce746f18be6cf86703af37d41258284e1d94876bcdac3b66bc347cc3",
+    "cpp/game/ImageResample.cpp": "aafed3f7e360d762b8e429f7472ff9ee3f5e64009ff1e21fb57149a95860d797",
+    "cpp/game/GlyphAtlas.hpp": "56f4297af0410bb514a6997716312f598c74f9d7bbce0f12cc1cfa9710335665",
+    "cpp/game/ImageResample.hpp": "92805525723d48143289d84fc078434cff40a77a352232763b8ab776537ce43c",
+    "cpp/game/TextRaster.hpp": "6be5ba7c6f6df501f6eaf72619b94073ddf5940278c69fdb331a68b2bd7972be",
+    "cpp/game/TextLayoutTh14.hpp": "dffe94cd343c68a7027c2984d4ffa4f28bb58f7481ff9b1206b6a4c847e8ade2",
+    "cpp/game/FontBitmapTh14.hpp": "62b9ca1dbdd08b2d2ddaeb9c1f88541dc6e80348543cd83c14789e85fa8ad689",
+    "cpp/game/GameSession.cpp": "6ee43deede8fa7a70cce563ec62a79fe4ad2525ad6c87bdd8cd5662ddac7b5cb",
+    "cpp/game/GameSession.hpp": "7d010cae41f3606264d49b279a55eaf9002bbe9aa1601c05b5a3aafd66e7cae6",
+    "cpp/sdl/FontDevice.cpp": "0913b9e95a5584db1c5fa470f37e9f319cdc1c83100f761fd34b5931842742c2",
+    "cpp/sdl/FontDevice.hpp": "c00b317be5e23aab051e893c7ae752590603bb307bab3b5ccf7bc336894c4ecb",
+    "cpp/sdl/Application.cpp": "9cb387b244dd2639f4585bdceebc453780d9caf1b7c669eef6437343cac7f2ed"
+  },
+  "tools": {
+    "tools/th14-text-raster-check.mjs": "7c2092d595b11fa72a972e30c92e0cc26b95c9963110706bfd9af4847169465c",
+    "tools/th14-text-raster-native.py": "686d8cff6475ce9e56d10281976d87a004ab1b501d3b6e05c650abc80e09a6f0",
+    "tools/th14-text-layout-native.py": "ec9df079443284daf80b82c098188dff78838d164398faef27ca1ad1e7c221ad",
+    "tools/th14-font-initialization-native.py": "5cf662571cd28dbc69da0fd95d5cd351b1d4f641a20f402fa51ad1cfadc046d5",
+    "runtimes/th12/th12_web/scripts/prepare-fonts.mjs": "3e1b4f34e8c0bb198d04b0ed415f7ef6415a8c628515d877bf5eb7107004fb65"
+  },
+  "fontManifest": {
+    "format": "T11G-v2-RGB",
+    "source": "TH14 retail467940 CreateFontA exact parameters/raw CP932 face bytes, retail467ba0 font index order; offline host Windows GDI coverage. Font resolution depends on this host ANSI code page.",
+    "quality": 2,
+    "ansiCodePage": 936,
+    "resolvedFaces": [
+      "MS Mincho",
+      "MS Mincho",
+      "MS Mincho",
+      "MS Mincho",
+      "MS Mincho",
+      "MS Mincho",
+      "MS Mincho",
+      "MS Mincho"
+    ],
+    "fonts": [
+      [
+        32,
+        400,
+        "ＭＳ ゴシック"
+      ],
+      [
+        32,
+        600,
+        "ＭＳ 明朝"
+      ],
+      [
+        15,
+        700,
+        "ＭＳ ゴシック"
+      ],
+      [
+        15,
+        700,
+        "ＭＳ 明朝"
+      ],
+      [
+        40,
+        400,
+        "ＭＳ ゴシック"
+      ],
+      [
+        40,
+        600,
+        "ＭＳ 明朝"
+      ],
+      [
+        15,
+        700,
+        "ＭＳ ゴシック"
+      ],
+      [
+        15,
+        700,
+        "ＭＳ 明朝"
+      ]
+    ],
+    "coverageClasses": 6,
+    "fontSources": [
+      {
+        "file": "msgothic.ttc",
+        "sha256": "4bde3e6392b96910fb59094c6c1a4dbfae18fee78d0bf13dc30616837c4f95db"
+      },
+      {
+        "file": "msmincho.ttc",
+        "sha256": "ceb8d745001f56b61ce768d84172d35bdf68e498423c9320dcb22e7c900944c2"
+      }
+    ],
+    "files": [
+      {
+        "file": "cp932.bin",
+        "bytes": 131072,
+        "sha256": "57f4b3b047547cf44daa2186cca164b326ce064b137895bf417966f1053d1dc6"
+      },
+      {
+        "file": "blend4444.bin",
+        "bytes": 28672,
+        "sha256": "5a36218f839854a02391f8bf0b6b8bb0414074e4d8f577ed09a8c796a9ee7e92"
+      },
+      {
+        "file": "font0.bin",
+        "bytes": 19826527,
+        "sha256": "72a2c233e6ab8bad4fe408540c6f37151aa8a992e48b5d840200e33e4827e669"
+      },
+      {
+        "file": "font1.bin",
+        "bytes": 20558695,
+        "sha256": "c4ff2c2964cda41ee210bd634ad285d46cd898e86147d65306c18768e3cd2e5a"
+      },
+      {
+        "file": "font2.bin",
+        "bytes": 4269142,
+        "sha256": "01141cc6a8d992ff37d15b3c8853c5ae506fda6b1a31005bf3193351f96a200e"
+      },
+      {
+        "file": "font3.bin",
+        "bytes": 4269142,
+        "sha256": "94b6e1b3b6a1a100151ec9c2297700b304e447ec4a0941eeed11292af3b86ead"
+      },
+      {
+        "file": "font4.bin",
+        "bytes": 30524029,
+        "sha256": "d602fd630548432ae6ab6d3170e01e2a47bea37bbe61145dcc146cab4614dc6b"
+      },
+      {
+        "file": "font5.bin",
+        "bytes": 31432054,
+        "sha256": "2bfdfcc0627bd4fbde47ac306879a05885b40a4f399c58493ce65a79b580f7f6"
+      },
+      {
+        "file": "font6.bin",
+        "bytes": 4269142,
+        "sha256": "10c6d98fc944d6293629e29a8497f41e9f567e4031d26f6c1f622c08d08893bb"
+      },
+      {
+        "file": "font7.bin",
+        "bytes": 4269142,
+        "sha256": "135e9d5e09f278c0acfc901d8ebe70c6875a9e18f402ee6cff206f4c80989a98"
+      }
+    ]
+  }
+}

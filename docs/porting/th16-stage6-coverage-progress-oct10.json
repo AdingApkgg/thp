@@ -1,0 +1,130 @@
+{
+  "title": 16,
+  "completeGame": false,
+  "frameLimit": 6000,
+  "cases": [
+    {
+      "kind": "controlled-stage",
+      "stage": 6,
+      "difficulty": 0,
+      "forcedInvincibility": true,
+      "frames": 2312,
+      "phase": 1,
+      "error": "battle update failed: -1001 ECL opcode 601 at time 0.000000",
+      "resourceSlots": [
+        {
+          "name": "enemy.anm",
+          "valid": true
+        },
+        {
+          "name": "st06enm.anm",
+          "valid": true
+        },
+        {
+          "name": "",
+          "valid": true
+        },
+        {
+          "name": "",
+          "valid": true
+        }
+      ],
+      "stack": "Error: battle update failed: -1001 ECL opcode 601 at time 0.000000\n    at file:///H:/code/thp/tools/th16-stage-coverage-check.mjs:27:426",
+      "traceCode": 2601,
+      "lastArgument": 0,
+      "lastInstruction": {
+        "address": 119954240,
+        "bytes": [
+          0,
+          0,
+          0,
+          0,
+          89,
+          2,
+          20,
+          0,
+          0,
+          0,
+          255,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          42,
+          0,
+          20,
+          0,
+          0,
+          0,
+          193,
+          1
+        ]
+      },
+      "frameFailure": [
+        1,
+        103,
+        0,
+        0,
+        0,
+        -2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "spawnFailure": 0,
+      "failedSpawnName": "",
+      "lastOpcode": 601,
+      "bulletDiagnostic": [
+        1603,
+        1,
+        10,
+        4,
+        2,
+        2097152,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "battleDiagnostic": [
+        0,
+        0,
+        0,
+        601,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "archiveSha256": "c84e04181c1c08c80fb0eaba641cec9eb27244ac372749314bd886e3e5a4b64f",
+  "wasmSha256": "5540e58912af6281d90f6aa44a50d08b1f1aebb166fb1d59cb9c9a1523e601ae",
+  "scope": "Diagnostic only. Direct stage entries use forced invincibility and synthetic power/season energy to reveal later script gaps. Original demo cases use shipped replay data without forced invincibility. No native equivalence, natural stage progression or complete-game claim."
+}

@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-09",
+  "verified": false,
+  "url": "http://127.0.0.1:8126/",
+  "servedBuild": {
+    "bytes": 1711445,
+    "sha256": "f50ab9bffe9c536188a442fb9dd06f6087016a81986a70501e2f56ccff5f6941"
+  },
+  "servedAssetCheck": "Read-only HTTP GET /th11-harness.wasm returned 1,711,445 bytes with the same SHA-256 after the browser reload.",
+  "captures": [
+    {
+      "screenshot": "artifacts/th14/browser-hud-icons-start-oct09.jpg",
+      "sha256": "df9132a5fcb578d061291b86810a19e019660ba4a9c1e98425e023ff6eebf0ea",
+      "buildSha256": "893c8731be74843a805100835bf99148a33b93b28e414b09191b123c6989d4dd",
+      "stage": 1,
+      "frame": 186,
+      "fullLifeIcons": 2,
+      "fullBombIcons": 3,
+      "note": "Normal/Reimu A: initial stocks and completed icon fade."
+    },
+    {
+      "screenshot": "artifacts/th14/browser-hud-icons-bomb-oct09.jpg",
+      "sha256": "eaaec841a265fca0c629780b1f208de1a73d392cbe4b94d810992706b10acec6",
+      "buildSha256": "893c8731be74843a805100835bf99148a33b93b28e414b09191b123c6989d4dd",
+      "stage": 1,
+      "frame": 277,
+      "fullLifeIcons": 2,
+      "fullBombIcons": 3,
+      "note": "Reimu A attempt refused script 35; unchanged stock is a failure observation."
+    },
+    {
+      "screenshot": "artifacts/th14/browser-hud-icons-death-oct09.jpg",
+      "sha256": "ff51161c40c43ba1cc69c8c94ec1e7a65ed15564e3f9e11727f3b68a074d0c20",
+      "buildSha256": "893c8731be74843a805100835bf99148a33b93b28e414b09191b123c6989d4dd",
+      "stage": 1,
+      "frame": 998,
+      "fullLifeIcons": 0,
+      "fullBombIcons": 3,
+      "note": "Natural deaths reduce full life icons."
+    },
+    {
+      "screenshot": "artifacts/th14/browser-hud-icons-loss-oct09.jpg",
+      "sha256": "86ce95f58b60c5872a4f1fe6df7e2eeda408640f409ca875baebebee6e6a9fca",
+      "buildSha256": "893c8731be74843a805100835bf99148a33b93b28e414b09191b123c6989d4dd",
+      "stage": 1,
+      "frame": 1293,
+      "fullLifeIcons": 0,
+      "fullBombIcons": 3,
+      "note": "Natural game over; before the first Continue."
+    },
+    {
+      "screenshot": "artifacts/th14/browser-hud-icons-continue-oct09.jpg",
+      "sha256": "07dc3f5c0cb4eadded7481a386ef23827e0377ffbc189423d0e8c5e2339ca55c",
+      "buildSha256": "893c8731be74843a805100835bf99148a33b93b28e414b09191b123c6989d4dd",
+      "stage": 1,
+      "frame": 1462,
+      "fullLifeIcons": 2,
+      "fullBombIcons": 3,
+      "note": "First Continue preserves the battle; respawn restores three Bombs."
+    },
+    {
+      "screenshot": "artifacts/th14/browser-bomb-damage-marisa-oct09.jpg",
+      "sha256": "075c7f215a808ab293d228f7184d6aa9fda9f59e07eca7917459312381882b8b",
+      "buildSha256": "f50ab9bffe9c536188a442fb9dd06f6087016a81986a70501e2f56ccff5f6941",
+      "stage": 1,
+      "frame": 513,
+      "fullLifeIcons": 1,
+      "fullBombIcons": 2,
+      "note": "Frontend pause after the live Marisa A Bomb: two full Bomb icons, no collector abort."
+    },
+    {
+      "screenshot": "artifacts/th14/browser-bomb-damage-marisa-clean-oct09.jpg",
+      "sha256": "b7a3c058cb52e323bb1bbef5e952310e27c4967630c1e221352614a369dc6e5d",
+      "buildSha256": "f50ab9bffe9c536188a442fb9dd06f6087016a81986a70501e2f56ccff5f6941",
+      "stage": 1,
+      "frame": 905,
+      "fullLifeIcons": 1,
+      "fullBombIcons": 2,
+      "note": "Unobstructed live view: one full life icon, two full Bomb icons, one Bomb fragment. The inherited Bomb animation/cancellation is still incorrect."
+    }
+  ],
+  "consoleErrors": [],
+  "scope": "Observed browser rendering and real input only. Historical HUD captures use the earlier HUD-only build; current Marisa captures use the damage fix. No native replay, physical audio or GPU pixel-equivalence assertion. Five Bomb startups still fail and Marisa A effects remain inherited."
+}

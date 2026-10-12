@@ -1,0 +1,562 @@
+{
+  "diagnosticEvidenceVerified": true,
+  "strictPixelsEqual": false,
+  "productionChanged": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "variants": [
+    {
+      "name": "depth-fixed20",
+      "exactFrames": 2,
+      "differentChannels": 3707,
+      "maxDelta": 116,
+      "strictPixelsEqual": false
+    },
+    {
+      "name": "cpu-clip-depth-fixed20",
+      "exactFrames": 3,
+      "differentChannels": 695,
+      "maxDelta": 91,
+      "strictPixelsEqual": false
+    },
+    {
+      "name": "cpu-clip-eye-depth-fixed20",
+      "exactFrames": 3,
+      "differentChannels": 692,
+      "maxDelta": 91,
+      "strictPixelsEqual": false
+    },
+    {
+      "name": "cpu-clip-eye-dot-depth-fixed20",
+      "exactFrames": 3,
+      "differentChannels": 693,
+      "maxDelta": 91,
+      "strictPixelsEqual": false
+    },
+    {
+      "name": "cpu-clip-eye-pair-depth-fixed20",
+      "exactFrames": 3,
+      "differentChannels": 702,
+      "maxDelta": 91,
+      "strictPixelsEqual": false
+    },
+    {
+      "name": "cpu-reverse-depth-fixed20",
+      "exactFrames": 2,
+      "differentChannels": 2348,
+      "maxDelta": 81,
+      "strictPixelsEqual": false
+    },
+    {
+      "name": "cpu-reverse-eye-depth-fixed20",
+      "exactFrames": 2,
+      "differentChannels": 2344,
+      "maxDelta": 81,
+      "strictPixelsEqual": false
+    },
+    {
+      "name": "cpu-clip-viewport-depth-fixed20",
+      "exactFrames": 4,
+      "differentChannels": 2120,
+      "maxDelta": 1,
+      "strictPixelsEqual": false
+    },
+    {
+      "name": "cpu-eye-viewport-depth-fixed20",
+      "exactFrames": 4,
+      "differentChannels": 2117,
+      "maxDelta": 1,
+      "strictPixelsEqual": false
+    }
+  ],
+  "constantScreenDepth": [
+    {
+      "variant": "depth-trace",
+      "cases": 915,
+      "differentDepthValues": 268,
+      "strictDepthValuesEqual": false
+    },
+    {
+      "variant": "depth-fixed20",
+      "cases": 915,
+      "differentDepthValues": 0,
+      "strictDepthValuesEqual": true
+    }
+  ],
+  "evidence": {
+    "artifacts/th14/stage-gpu-stream-replay/native.json": {
+      "bytes": 6748,
+      "sha256": "115123af74b9133297766d01284d5f9e4e077a2b290ab84916f74cf3a44040cd"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/native.bgra": {
+      "bytes": 25804800,
+      "sha256": "42f7c2c66012c6b283eac3c0620ba485591ea7bb419a70715dfdeef7ad62e978"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/build.json": {
+      "bytes": 1898,
+      "sha256": "0c3c81d9d95751ccb2d6d9c2203503051d512e28aae898699590e95a191a9b8c"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/depth-fixed20/build.json": {
+      "bytes": 1906,
+      "sha256": "15c729b9d391b5fa1545c46de198806a0bd5ff20ed7e8f50999f1db2786d7a51"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/depth-fixed20/browser-result.json": {
+      "bytes": 54782,
+      "sha256": "48b72e0cf379799c38ca26ac0880f69d5cf8c0fd10a9dc305fc6b760538ca8b1"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/depth-trace/build.json": {
+      "bytes": 1894,
+      "sha256": "eaa14410b2158811c3667b4c2ec92e36dc236f76583c16dd01024ff980a60b12"
+    },
+    "tools/th14-stage-gpu-depth-candidate-build.mjs": {
+      "bytes": 2423,
+      "sha256": "d4d25312a9de0da10a51531d0aab015a77edc5251f6cc0965ab9825dc2131d63"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/depth-threshold/native.json": {
+      "bytes": 327862,
+      "sha256": "2703bec71048c680538ff533d9a81bd58855fe32582da65a10b32c90d98a66f0"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/depth-fixed20/Renderer.cpp": {
+      "bytes": 29936,
+      "sha256": "46d874eb2ab77080f521b76f59da9d639216f67be920411d03427c0df4b7c6f6"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/depth-fixed20/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/depth-fixed20/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/depth-fixed20/Shaders.hpp": {
+      "bytes": 3693,
+      "sha256": "46e8d13c48c3967b36592f3ebbe2468cdf2ed3bdfe98b1ce6c0bd1e92f95f7de"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/depth-fixed20/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/depth-fixed20/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/depth-fixed20/fixture.cpp": {
+      "bytes": 10029,
+      "sha256": "ff80684060aaf67fb34f143a1bec6304f7709c1027fc57f5241b5fa2a8010831"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/depth-fixed20/gpu.wasm": {
+      "bytes": 764108,
+      "sha256": "b2093035505d9e920c97e81cec0fc479268c95c38fab38b3cc0c47889c2b28ed"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/depth-fixed20/gpu.mjs": {
+      "bytes": 215788,
+      "sha256": "242b1ebeff2d2647034eb4fbb5e8a0c6278d32774b433f41251880d4ff5c7a63"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-depth-fixed20/build.json": {
+      "bytes": 1904,
+      "sha256": "3d0b01e2dcaac67e5a983b78d4cedc849336c777102c5c947e85562e27c87f5b"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-depth-fixed20/browser-result.json": {
+      "bytes": 34472,
+      "sha256": "12ec7aea347c10cd0d97a37e778fefb94118fb613b5283c69495aef442f04261"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-float-clip/build.json": {
+      "bytes": 1798,
+      "sha256": "a8b91e23ff527af65c892e8e8709ff943dd51d814280a08f5bff2be0567269b0"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-depth-fixed20/Renderer.cpp": {
+      "bytes": 30309,
+      "sha256": "a8e2c80ec30fbb668811fb7c8cd6da56c28ac13ad01ebd4d2c6ab8e82a21cee8"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-depth-fixed20/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-depth-fixed20/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-depth-fixed20/Shaders.hpp": {
+      "bytes": 3723,
+      "sha256": "c52c7b59aba84fbf9920e15a82a5b6de1876dc5ab3b0d3dc309d251b554b29c0"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-depth-fixed20/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-depth-fixed20/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-depth-fixed20/fixture.cpp": {
+      "bytes": 5711,
+      "sha256": "4b0ea74adcf97c87b288d72a6382a3754603269e86c257b3b8fe5c89b45b07f7"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-depth-fixed20/gpu.wasm": {
+      "bytes": 765504,
+      "sha256": "03cb063188f81ef86c3a3aff9fa9fbe4d18e2bc6958a5a4a955784f3787e496f"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-depth-fixed20/gpu.mjs": {
+      "bytes": 211781,
+      "sha256": "09ef10dcd776e160a3c379a9b31bf45cd66719edd047c3aaa6c80066294b6fe3"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-depth-fixed20/build.json": {
+      "bytes": 1810,
+      "sha256": "790776cc9535a5d738a52b5e37b8260de81df4341ee3f26873dd23a044e9c045"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-depth-fixed20/browser-result.json": {
+      "bytes": 34080,
+      "sha256": "92eaf3df43ca1419f766a011697119f1d5e8ebc97d703c2c4f8a20e5b3964714"
+    },
+    "tools/th14-stage-gpu-eye-candidate-build.mjs": {
+      "bytes": 3424,
+      "sha256": "4a9468e786850bcfcfc1c395985e8b405d35bc5c17757a6f57865a4fbc4f9946"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-depth-fixed20/Renderer.cpp": {
+      "bytes": 30360,
+      "sha256": "bd431c55fa8cffd3676de1e8fbafa22192e9982beaf24934db031f12661ede9f"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-depth-fixed20/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-depth-fixed20/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-depth-fixed20/Shaders.hpp": {
+      "bytes": 3732,
+      "sha256": "42f7f74c28b188d8f8c6eef4381e2a23398b077b7f65a1f92fa9867a2a618b6e"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-depth-fixed20/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-depth-fixed20/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-depth-fixed20/fixture.cpp": {
+      "bytes": 5711,
+      "sha256": "4b0ea74adcf97c87b288d72a6382a3754603269e86c257b3b8fe5c89b45b07f7"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-depth-fixed20/gpu.wasm": {
+      "bytes": 766008,
+      "sha256": "a439b702dfeb49fc64b59540c3893180076ec97e57da1d9888f2eb9161f762d7"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-depth-fixed20/gpu.mjs": {
+      "bytes": 211781,
+      "sha256": "1157330faa484d726cad5baf481246f9e5897e8460d533d30c9e543680ea3172"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-dot-depth-fixed20/build.json": {
+      "bytes": 1814,
+      "sha256": "b47160ebbf1e60333d16f526e78ce0e948ee8e09e331ef6ac50ae0a41d4612b1"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-dot-depth-fixed20/browser-result.json": {
+      "bytes": 34476,
+      "sha256": "486e1db02a6605bbe29e3da223b93ca14d9d56a33be295e525df150b8434f152"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-dot-depth-fixed20/Renderer.cpp": {
+      "bytes": 30360,
+      "sha256": "bd431c55fa8cffd3676de1e8fbafa22192e9982beaf24934db031f12661ede9f"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-dot-depth-fixed20/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-dot-depth-fixed20/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-dot-depth-fixed20/Shaders.hpp": {
+      "bytes": 4001,
+      "sha256": "4131651478ec7f3d416dd53d79e534f4c4aa9b8c4fbf7bd0e7919fa520408cd2"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-dot-depth-fixed20/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-dot-depth-fixed20/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-dot-depth-fixed20/fixture.cpp": {
+      "bytes": 5711,
+      "sha256": "4b0ea74adcf97c87b288d72a6382a3754603269e86c257b3b8fe5c89b45b07f7"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-dot-depth-fixed20/gpu.wasm": {
+      "bytes": 766293,
+      "sha256": "a3b411b8d8fefa6f7139cb195ba8d98521d253f8c846cb819c8c0e01d5ee8d79"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-dot-depth-fixed20/gpu.mjs": {
+      "bytes": 211781,
+      "sha256": "d645b5344bdc2c199c0931b93806300be913cbfe83fe8a8170cf942d1b2407b7"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-pair-depth-fixed20/build.json": {
+      "bytes": 1815,
+      "sha256": "e810299d79a671351a5f53dd39cbf11fe00e0cfbd24d2703690da8e9b34f7ab0"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-pair-depth-fixed20/browser-result.json": {
+      "bytes": 34870,
+      "sha256": "198bfef3ca1240913677ade35bf1a2923fa56f8ebca9cb9b533c3ddc44104650"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-pair-depth-fixed20/Renderer.cpp": {
+      "bytes": 30360,
+      "sha256": "bd431c55fa8cffd3676de1e8fbafa22192e9982beaf24934db031f12661ede9f"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-pair-depth-fixed20/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-pair-depth-fixed20/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-pair-depth-fixed20/Shaders.hpp": {
+      "bytes": 4001,
+      "sha256": "86ad5f4d42770ac5ac02b0267dedab676a865705b78a6fa2f50dd2618eecee13"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-pair-depth-fixed20/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-pair-depth-fixed20/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-pair-depth-fixed20/fixture.cpp": {
+      "bytes": 5711,
+      "sha256": "4b0ea74adcf97c87b288d72a6382a3754603269e86c257b3b8fe5c89b45b07f7"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-pair-depth-fixed20/gpu.wasm": {
+      "bytes": 766293,
+      "sha256": "c2bab1ffc1e4f36a03ba9ffb7c305d1002a195e4ba4bb30a636ed249c7ea0aa1"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-eye-pair-depth-fixed20/gpu.mjs": {
+      "bytes": 211781,
+      "sha256": "d645b5344bdc2c199c0931b93806300be913cbfe83fe8a8170cf942d1b2407b7"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-reverse-depth-fixed20/build.json": {
+      "bytes": 1899,
+      "sha256": "6a7b3ce99412b45f023a029b6a825176aef5ae9d5196d58e7a3ff5198785125d"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-reverse-depth-fixed20/browser-result.json": {
+      "bytes": 61331,
+      "sha256": "619ec5884a0640865cec697614923b8c346e80aed491d21bb1a2398172b84d29"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/clip-dot-reverse/build.json": {
+      "bytes": 1800,
+      "sha256": "e9103300fdfaa264af1b5d31ad413dc2040ead5a226aee6fa49e30681cee7e15"
+    },
+    "tools/th14-stage-gpu-reverse-depth-build.mjs": {
+      "bytes": 2885,
+      "sha256": "5b6f76eeae6cd798a08d5b98778b87092c12b76c557feb7d71c6a43f6269512a"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/world-uv-clip-dot-reverse/browser-result.json": {
+      "bytes": 2401,
+      "sha256": "211999c13c9c0fdf3ce21f8e1ad89c5cf9901d7dc86e32b883c105828778d3cd"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-reverse-depth-fixed20/Renderer.cpp": {
+      "bytes": 30309,
+      "sha256": "a8e2c80ec30fbb668811fb7c8cd6da56c28ac13ad01ebd4d2c6ab8e82a21cee8"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-reverse-depth-fixed20/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-reverse-depth-fixed20/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-reverse-depth-fixed20/Shaders.hpp": {
+      "bytes": 3976,
+      "sha256": "10fee6987d8fb9fbab93cd4c6171f5d20e9358c2ed69b358c14bc741edbac21e"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-reverse-depth-fixed20/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-reverse-depth-fixed20/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-reverse-depth-fixed20/fixture.cpp": {
+      "bytes": 5711,
+      "sha256": "4b0ea74adcf97c87b288d72a6382a3754603269e86c257b3b8fe5c89b45b07f7"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-reverse-depth-fixed20/gpu.wasm": {
+      "bytes": 765771,
+      "sha256": "9de96fa2d95ffdeec2f820a51406872ec346a6f7b13ea60ff8426f7f1b5fdd75"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-reverse-depth-fixed20/gpu.mjs": {
+      "bytes": 211781,
+      "sha256": "0a34b3cd240ce954ab8c45206363913e9e37711d5144e9f65a5fdce798fab5df"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-reverse-eye-depth-fixed20/build.json": {
+      "bytes": 1903,
+      "sha256": "7658db03398c4c297f8e86e7dd0f910bac76e800ce1543cbe4a8c0d8cf7c5e42"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-reverse-eye-depth-fixed20/browser-result.json": {
+      "bytes": 61468,
+      "sha256": "1d39eb0ae451965c173cf3f5d6996dcf4769cdcec27ae849a8e1cc2edf2d1f54"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-reverse-eye-depth-fixed20/Renderer.cpp": {
+      "bytes": 30360,
+      "sha256": "bd431c55fa8cffd3676de1e8fbafa22192e9982beaf24934db031f12661ede9f"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-reverse-eye-depth-fixed20/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-reverse-eye-depth-fixed20/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-reverse-eye-depth-fixed20/Shaders.hpp": {
+      "bytes": 3985,
+      "sha256": "f38201a8a32587aa767edca59d49308463a61724c5e0c30df6f9865eba3efb3a"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-reverse-eye-depth-fixed20/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-reverse-eye-depth-fixed20/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-reverse-eye-depth-fixed20/fixture.cpp": {
+      "bytes": 5711,
+      "sha256": "4b0ea74adcf97c87b288d72a6382a3754603269e86c257b3b8fe5c89b45b07f7"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-reverse-eye-depth-fixed20/gpu.wasm": {
+      "bytes": 766275,
+      "sha256": "4f1dbb14746dd869fd189ec8b26f42d05640be905c1f22c776d1eca2d7572d44"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-reverse-eye-depth-fixed20/gpu.mjs": {
+      "bytes": 211781,
+      "sha256": "734a5773a0513596b1a241bff4c07cdfbdeb1e17bee4698904cdc44eb1234ac4"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-viewport-depth-fixed20/build.json": {
+      "bytes": 1905,
+      "sha256": "616e069433a308dfc476ca22c9c378728eb34b5443d4574a96e57cd863212e6f"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-viewport-depth-fixed20/browser-result.json": {
+      "bytes": 39642,
+      "sha256": "ecd9ad74df0669080c1cc804fd161aa083bc349ddd0c3f69416452e16ee85ddf"
+    },
+    "tools/th14-stage-gpu-viewport-depth-build.mjs": {
+      "bytes": 2359,
+      "sha256": "74991e64313b5191d0c166c16e3389741b427042c90629e7dc65396308908643"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/world-uv-viewport-gpu-snap8/browser-result.json": {
+      "bytes": 2586,
+      "sha256": "7b0aebb0914f19d628b521b86702ee2f828d133673c02db3b23736d98a540282"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-viewport-depth-fixed20/Renderer.cpp": {
+      "bytes": 30309,
+      "sha256": "a8e2c80ec30fbb668811fb7c8cd6da56c28ac13ad01ebd4d2c6ab8e82a21cee8"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-viewport-depth-fixed20/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-viewport-depth-fixed20/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-viewport-depth-fixed20/Shaders.hpp": {
+      "bytes": 3863,
+      "sha256": "1825b474a8aad08d7a88f13be6ed224b1a8f38d0390e4a741806e77d8f8c2def"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-viewport-depth-fixed20/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-viewport-depth-fixed20/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-viewport-depth-fixed20/fixture.cpp": {
+      "bytes": 5711,
+      "sha256": "4b0ea74adcf97c87b288d72a6382a3754603269e86c257b3b8fe5c89b45b07f7"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-viewport-depth-fixed20/gpu.wasm": {
+      "bytes": 765652,
+      "sha256": "9ce78923e644384c7e790799af394fccbe9f63450ff924b471f0cd4c4e07209f"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-viewport-depth-fixed20/gpu.mjs": {
+      "bytes": 211781,
+      "sha256": "e6e4a6d3535fe355c0e302129d9c204b27bcd352e67dfa051a3463cfee034a94"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-eye-viewport-depth-fixed20/build.json": {
+      "bytes": 1904,
+      "sha256": "423ae52ec44cdcb4b50a5acbf49d6b812ba5a19c24ec21d2e3a9fc6621813c65"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-eye-viewport-depth-fixed20/browser-result.json": {
+      "bytes": 39775,
+      "sha256": "c2b2585a596db9c597a72ecc32a609a86a281287ed063231a1d9c1d849a2fc1b"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-eye-viewport-depth-fixed20/Renderer.cpp": {
+      "bytes": 30360,
+      "sha256": "bd431c55fa8cffd3676de1e8fbafa22192e9982beaf24934db031f12661ede9f"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-eye-viewport-depth-fixed20/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-eye-viewport-depth-fixed20/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-eye-viewport-depth-fixed20/Shaders.hpp": {
+      "bytes": 3872,
+      "sha256": "a0b24d5f9cf552cde56c5181ff3e74cdc0aafd6ceb6803df132d9d87a7cb3672"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-eye-viewport-depth-fixed20/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-eye-viewport-depth-fixed20/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-eye-viewport-depth-fixed20/fixture.cpp": {
+      "bytes": 5711,
+      "sha256": "4b0ea74adcf97c87b288d72a6382a3754603269e86c257b3b8fe5c89b45b07f7"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-eye-viewport-depth-fixed20/gpu.wasm": {
+      "bytes": 766158,
+      "sha256": "6c6d70f1b7a5a6b6283629d0346c8e2bc0152ba6d4ddff9acb342f0dd0434527"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-eye-viewport-depth-fixed20/gpu.mjs": {
+      "bytes": 211780,
+      "sha256": "0bc7fb39698183e8c40380d937ad976d3792482904eddc6c6cb4dee4aed318a0"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/depth-threshold/browser-production.json": {
+      "bytes": 79141,
+      "sha256": "b2af31e3bffde1d60e121ea5ceaa125a884f91d475e93cd6df04c3159efe5c11"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/depth-threshold/browser-candidate.json": {
+      "bytes": 79140,
+      "sha256": "d074ec81052ccc56d4daef892b13dd1e17ea22846f676b3848d38fdb0ca68c8e"
+    },
+    "tools/th14-stage-depth-quantization.html": {
+      "bytes": 3619,
+      "sha256": "16a3d806d92dc92ceb2c9655e65af7c52ca1a7950714a747880e59bfe0f4994b"
+    },
+    "runtimes/th14/th14_web/artifacts/sdl3-release/build.json": {
+      "bytes": 37704,
+      "sha256": "5a7b67fdb5014796ba0fce8ed975f570460104e0619d84e40e5fec291c63d68a"
+    },
+    "runtimes/th12/portable/sdl/Renderer.cpp": {
+      "bytes": 29936,
+      "sha256": "46d874eb2ab77080f521b76f59da9d639216f67be920411d03427c0df4b7c6f6"
+    },
+    "runtimes/th12/portable/sdl/Shaders.hpp": {
+      "bytes": 3646,
+      "sha256": "78f7648c27aa762c30493e6bf784baabdabdac63e2f683b2ed33470dca5aa252"
+    }
+  },
+  "toolSha256": "ac51c82d691b49a2762cde8a2df4d40358b89889882767808bb65a700a7c11e6",
+  "limits": "Physical browser constant-depth readback matches all915 native HAL inputs in the isolated candidate; production formula differs on268. World-scene candidates still fail strict color comparisons. Per-frame hashes/counts and first32 discrepancies retained, candidate full portable framebuffers not independently archived. Does not establish cross-device depth behavior, world interpolation accuracy, successful production repair or whole-game equivalence."
+}

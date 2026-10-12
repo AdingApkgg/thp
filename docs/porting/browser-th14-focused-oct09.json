@@ -1,0 +1,41 @@
+{
+  "verified": false,
+  "localUrl": "http://127.0.0.1:8126/",
+  "build": {
+    "bytes": 1676528,
+    "sha256": "15b081b6d1a19e33212edf8b85e14af1fe65e96b451b91db445276aadc4b0974"
+  },
+  "observations": [
+    {
+      "kind": "before-respawn-fix",
+      "result": "stopped",
+      "message": "battle update failed: -1001 ECL opcode 0 at time 0.000000",
+      "actualCause": "TH14 shot damage guard 13 while legacy respawn area is active; reproduced without fixture invulnerability at frame 446",
+      "screenshot": "H:/code/thp/artifacts/th14/browser-focused-normal-ecl0-oct09.jpg",
+      "build": {
+        "bytes": 1675390,
+        "sha256": "d14dec20f6a805eee09160e05c6939f27fc681b3953c32b5a1b20117e28f6247"
+      }
+    },
+    {
+      "kind": "after-respawn-fix",
+      "route": "Game Start -> Normal -> Reimu -> Reimu A",
+      "input": "20-second held Shift+Z after entering stage 1",
+      "stage": 1,
+      "observedRunningFrame": 1189,
+      "observedMenuFrame": 1345,
+      "statusText": "60 FPS stage=1 frame=1345 heapMB=512.0 allocs=326988912",
+      "engineError": null,
+      "screenshot": "H:/code/thp/artifacts/th14/browser-focused-respawn-fixed-oct09.jpg",
+      "build": {
+        "bytes": 1676528,
+        "sha256": "15b081b6d1a19e33212edf8b85e14af1fe65e96b451b91db445276aadc4b0974"
+      }
+    }
+  ],
+  "limits": [
+    "HUD digits and text visibly incorrect; some sprites remain incorrect",
+    "No normal full-game completion, pixel equivalence or native replay verification",
+    "First-stage fixed-position shooting ends in Game Over; this is not a clear"
+  ]
+}

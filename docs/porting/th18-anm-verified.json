@@ -1,0 +1,1275 @@
+{
+  "passed": false,
+  "classedOutComparisons": 0,
+  "nonzeroStatusesByOpcode": [],
+  "positionMismatchOpcodes": [],
+  "positionPairs": [],
+  "scope": "The context after each handler, at the next dispatch boundary. The native layout is TH18's own, so the mapping from its slots to port offsets is derived from the cases, not declared. No renderer and no complete-game equivalence is claimed.",
+  "nativeExecutableSha256": "5aeb74b19939a29a8cf06e4fe7777aaf9139e93478507e039f43318171020e9f",
+  "nativeCases": 1000,
+  "nativeCoverage": "the family list",
+  "nativeRealHandlers": 136,
+  "skippedFaultedCases": 0,
+  "nativeOpcodes": 25,
+  "measuredConstants": {
+    "loop": "0x4786e8",
+    "cookie": "0x48dc60",
+    "positionSlot": 44,
+    "floatConstant": "0x4b9418",
+    "snapshot": 1792,
+    "defaultHandler": "0x47b6f3",
+    "entries": 530,
+    "cookieCallers": 296,
+    "cookieRivals": [
+      [
+        296,
+        "0x48dc60"
+      ],
+      [
+        0,
+        "0x4a44e9"
+      ],
+      [
+        0,
+        "0x4a201d"
+      ],
+      [
+        0,
+        "0x45d62a"
+      ]
+    ],
+    "measuredFrom": "th18.exe",
+    "coverage": "the family list"
+  },
+  "derivedMapping": [
+    {
+      "nativeSlot": "0x18",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x1c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x2c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x54",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x58",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x4ac",
+      "distinctValues": 10,
+      "candidates": [
+        {
+          "port": "word+0x3b4",
+          "kind": "word"
+        }
+      ]
+    },
+    {
+      "nativeSlot": "0x4b0",
+      "distinctValues": 10,
+      "candidates": [
+        {
+          "port": "word+0x3b8",
+          "kind": "word"
+        }
+      ]
+    },
+    {
+      "nativeSlot": "0x524",
+      "distinctValues": 8,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x528",
+      "distinctValues": 8,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x534",
+      "distinctValues": 25,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x538",
+      "distinctValues": 25,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x550",
+      "distinctValues": 10,
+      "candidates": [
+        {
+          "port": "word+0x5c",
+          "kind": "word"
+        }
+      ]
+    },
+    {
+      "nativeSlot": "0x554",
+      "distinctValues": 10,
+      "candidates": []
+    }
+  ],
+  "derivedArrangement": {
+    "slots": [
+      "0x534",
+      "0x538"
+    ],
+    "changingNativeBits": 42,
+    "bitsWithARow": 31,
+    "settledByOneBit": 30,
+    "settledByTwoBits": 1,
+    "credibleBits": 22,
+    "credibleFromFlagChannels": 21,
+    "ambiguousBits": 9,
+    "ambiguousRows": [
+      "0x534:3",
+      "0x534:7",
+      "0x534:8",
+      "0x534:11",
+      "0x534:12",
+      "0x534:28",
+      "0x534:29",
+      "0x538:0",
+      "0x538:2"
+    ],
+    "unsettledBits": 11,
+    "unsettled": [
+      {
+        "slot": "0x534",
+        "nativeBit": 19,
+        "opcodes": []
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 22,
+        "opcodes": []
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 23,
+        "opcodes": []
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 24,
+        "opcodes": []
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 25,
+        "opcodes": []
+      },
+      {
+        "slot": "0x538",
+        "nativeBit": 3,
+        "opcodes": []
+      },
+      {
+        "slot": "0x538",
+        "nativeBit": 4,
+        "opcodes": []
+      },
+      {
+        "slot": "0x538",
+        "nativeBit": 5,
+        "opcodes": []
+      },
+      {
+        "slot": "0x538",
+        "nativeBit": 6,
+        "opcodes": []
+      },
+      {
+        "slot": "0x538",
+        "nativeBit": 18,
+        "opcodes": []
+      },
+      {
+        "slot": "0x538",
+        "nativeBit": 21,
+        "opcodes": []
+      }
+    ],
+    "channelsUsed": {
+      "flags": 15,
+      "live": 1,
+      "timer fractional": 3,
+      "title flags": 3,
+      "flags2": 10
+    },
+    "rows": [
+      {
+        "slot": "0x534",
+        "nativeBit": 0,
+        "kind": "two",
+        "byOpcode": [
+          {
+            "op": 310,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 0
+              },
+              {
+                "channel": "live",
+                "portBit": 0
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags",
+          "live"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 3,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 308,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 309,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "timer fractional"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 5,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 303,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 5
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 6,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 303,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 6
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 7,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 303,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 7
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 8,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 303,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 7
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 11,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 308,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "timer fractional"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 12,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 309,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "timer fractional"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 13,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 305,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 13
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 15,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 306,
+            "sources": [
+              {
+                "channel": "title flags",
+                "portBit": 15
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "title flags"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 17,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 423,
+            "sources": [
+              {
+                "channel": "title flags",
+                "portBit": 17
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "title flags"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 18,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 423,
+            "sources": [
+              {
+                "channel": "title flags",
+                "portBit": 18
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "title flags"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 26,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 302,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 25
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 27,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 302,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 26
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 28,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 302,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 27
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 29,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 302,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 27
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 30,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 302,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 29
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x538",
+        "nativeBit": 0,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 312,
+            "sources": [
+              {
+                "channel": "flags2",
+                "portBit": 9
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags2"
+        ]
+      },
+      {
+        "slot": "0x538",
+        "nativeBit": 1,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 312,
+            "sources": [
+              {
+                "channel": "flags2",
+                "portBit": 10
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags2"
+        ]
+      },
+      {
+        "slot": "0x538",
+        "nativeBit": 2,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 312,
+            "sources": [
+              {
+                "channel": "flags2",
+                "portBit": 9
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags2"
+        ]
+      },
+      {
+        "slot": "0x538",
+        "nativeBit": 9,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 424,
+            "sources": [
+              {
+                "channel": "flags2",
+                "portBit": 6
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags2"
+        ]
+      },
+      {
+        "slot": "0x538",
+        "nativeBit": 10,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 431,
+            "sources": [
+              {
+                "channel": "flags2",
+                "portBit": 7
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags2"
+        ]
+      },
+      {
+        "slot": "0x538",
+        "nativeBit": 11,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 432,
+            "sources": [
+              {
+                "channel": "flags2",
+                "portBit": 8
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags2"
+        ]
+      },
+      {
+        "slot": "0x538",
+        "nativeBit": 12,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 307,
+            "sources": [
+              {
+                "channel": "flags2",
+                "portBit": 9
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags2"
+        ]
+      },
+      {
+        "slot": "0x538",
+        "nativeBit": 13,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 311,
+            "sources": [
+              {
+                "channel": "flags2",
+                "portBit": 10
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags2"
+        ]
+      },
+      {
+        "slot": "0x538",
+        "nativeBit": 20,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 304,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 18
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x538",
+        "nativeBit": 22,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 313,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 4
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x538",
+        "nativeBit": 23,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 313,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 5
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x538",
+        "nativeBit": 24,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 313,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 6
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x538",
+        "nativeBit": 25,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 314,
+            "sources": [
+              {
+                "channel": "flags2",
+                "portBit": 22
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags2"
+        ]
+      },
+      {
+        "slot": "0x538",
+        "nativeBit": 27,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 315,
+            "sources": [
+              {
+                "channel": "flags2",
+                "portBit": 24
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags2"
+        ]
+      }
+    ],
+    "reading": "a bit is settled when one port channel bit reproduces its change in every case of the opcode that writes it, or when a pair of bits does; it is credible when the source bit is not also claimed by another native bit of that opcode"
+  },
+  "unmappedSlots": [
+    {
+      "nativeSlot": "0x18",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x1c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x2c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x54",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x58",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x524",
+      "distinctValues": 8,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x528",
+      "distinctValues": 8,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x534",
+      "distinctValues": 25,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x538",
+      "distinctValues": 25,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x554",
+      "distinctValues": 10,
+      "candidates": []
+    }
+  ],
+  "nearestNamedMemberPerUnmappedSlot": [
+    {
+      "nativeSlot": "0x18",
+      "closestMember": "flags",
+      "differingCases": 236,
+      "ofCases": 1000
+    },
+    {
+      "nativeSlot": "0x1c",
+      "closestMember": "flags2",
+      "differingCases": 379,
+      "ofCases": 1000
+    },
+    {
+      "nativeSlot": "0x2c",
+      "closestMember": "integer 1",
+      "differingCases": 996,
+      "ofCases": 1000
+    },
+    {
+      "nativeSlot": "0x54",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 1000
+    },
+    {
+      "nativeSlot": "0x58",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 1000
+    },
+    {
+      "nativeSlot": "0x524",
+      "closestMember": "title flags",
+      "differingCases": 102,
+      "ofCases": 1000
+    },
+    {
+      "nativeSlot": "0x528",
+      "closestMember": "title flags",
+      "differingCases": 102,
+      "ofCases": 1000
+    },
+    {
+      "nativeSlot": "0x534",
+      "closestMember": "title flags",
+      "differingCases": 252,
+      "ofCases": 1000
+    },
+    {
+      "nativeSlot": "0x538",
+      "closestMember": "title flags",
+      "differingCases": 494,
+      "ofCases": 1000
+    },
+    {
+      "nativeSlot": "0x554",
+      "closestMember": "title flags",
+      "differingCases": 104,
+      "ofCases": 1000
+    }
+  ],
+  "pointerInstallClass": {
+    "derivedFrom": "oracle advances",
+    "opcodes": [
+      6,
+      302,
+      303,
+      304,
+      305,
+      306,
+      307,
+      308,
+      309,
+      310,
+      311,
+      312,
+      313,
+      314,
+      315,
+      403,
+      405,
+      421,
+      423,
+      424,
+      431,
+      432,
+      437,
+      438,
+      507
+    ]
+  },
+  "positionClaim": "the position is the port's delta for every opcode that falls through; the pointer-install class above is excluded and counted",
+  "differencesByDescriptor": [],
+  "comparisons": 3000,
+  "differences": 0,
+  "firstDifferences": [],
+  "wasmSha256": "e0e412d33b1e854fa453cfef607239444b7cd898e13a081983a58246ee508728",
+  "resources": [
+    {
+      "name": "ascii.anm",
+      "result": 20,
+      "sprites": 715
+    },
+    {
+      "name": "ascii_960.anm",
+      "result": 20,
+      "sprites": 715
+    },
+    {
+      "name": "ascii1280.anm",
+      "result": 20,
+      "sprites": 715
+    },
+    {
+      "name": "trophy.anm",
+      "result": 13,
+      "sprites": 715
+    },
+    {
+      "name": "bullet.anm",
+      "result": 328,
+      "sprites": 715
+    },
+    {
+      "name": "effect.anm",
+      "result": 195,
+      "sprites": 715
+    },
+    {
+      "name": "enemy.anm",
+      "result": 261,
+      "sprites": 715
+    },
+    {
+      "name": "front.anm",
+      "result": 382,
+      "sprites": 715
+    },
+    {
+      "name": "help.anm",
+      "result": 10,
+      "sprites": 715
+    },
+    {
+      "name": "pl00.anm",
+      "result": 41,
+      "sprites": 715
+    },
+    {
+      "name": "pl01.anm",
+      "result": 47,
+      "sprites": 715
+    },
+    {
+      "name": "pl02.anm",
+      "result": 30,
+      "sprites": 715
+    },
+    {
+      "name": "pl03.anm",
+      "result": 29,
+      "sprites": 715
+    },
+    {
+      "name": "sig.anm",
+      "result": 2,
+      "sprites": 715
+    },
+    {
+      "name": "text.anm",
+      "result": 81,
+      "sprites": 715
+    },
+    {
+      "name": "title.anm",
+      "result": 174,
+      "sprites": 715
+    },
+    {
+      "name": "title_v.anm",
+      "result": 1,
+      "sprites": 715
+    },
+    {
+      "name": "ability.anm",
+      "result": 68,
+      "sprites": 715
+    },
+    {
+      "name": "abcard.anm",
+      "result": 18,
+      "sprites": 715
+    },
+    {
+      "name": "abmenu.anm",
+      "result": 19,
+      "sprites": 715
+    },
+    {
+      "name": "notice.anm",
+      "result": 5,
+      "sprites": 715
+    },
+    {
+      "name": "st01logo.anm",
+      "result": 8,
+      "sprites": 715
+    },
+    {
+      "name": "st01enm.anm",
+      "result": 19,
+      "sprites": 715
+    },
+    {
+      "name": "st01wl.anm",
+      "result": 6,
+      "sprites": 715
+    },
+    {
+      "name": "st02logo.anm",
+      "result": 8,
+      "sprites": 715
+    },
+    {
+      "name": "st02enm.anm",
+      "result": 19,
+      "sprites": 715
+    },
+    {
+      "name": "st02wl.anm",
+      "result": 4,
+      "sprites": 715
+    },
+    {
+      "name": "st03logo.anm",
+      "result": 8,
+      "sprites": 715
+    },
+    {
+      "name": "st03enm.anm",
+      "result": 18,
+      "sprites": 715
+    },
+    {
+      "name": "st03wl.anm",
+      "result": 4,
+      "sprites": 715
+    },
+    {
+      "name": "st04logo.anm",
+      "result": 8,
+      "sprites": 715
+    },
+    {
+      "name": "st04enm.anm",
+      "result": 20,
+      "sprites": 715
+    },
+    {
+      "name": "st04wl.anm",
+      "result": 6,
+      "sprites": 715
+    },
+    {
+      "name": "st05logo.anm",
+      "result": 8,
+      "sprites": 715
+    },
+    {
+      "name": "st05enm.anm",
+      "result": 19,
+      "sprites": 715
+    },
+    {
+      "name": "st05enm2.anm",
+      "result": 13,
+      "sprites": 715
+    },
+    {
+      "name": "st05wl.anm",
+      "result": 7,
+      "sprites": 715
+    },
+    {
+      "name": "st06logo.anm",
+      "result": 8,
+      "sprites": 715
+    },
+    {
+      "name": "st06enm.anm",
+      "result": 23,
+      "sprites": 715
+    },
+    {
+      "name": "st06wl.anm",
+      "result": 7,
+      "sprites": 715
+    },
+    {
+      "name": "st07logo.anm",
+      "result": 8,
+      "sprites": 715
+    },
+    {
+      "name": "st07enm.anm",
+      "result": 20,
+      "sprites": 715
+    },
+    {
+      "name": "st07wl.anm",
+      "result": 8,
+      "sprites": 715
+    },
+    {
+      "name": "e01.anm",
+      "result": 9,
+      "sprites": 715
+    },
+    {
+      "name": "e02.anm",
+      "result": 9,
+      "sprites": 715
+    },
+    {
+      "name": "e03.anm",
+      "result": 9,
+      "sprites": 715
+    },
+    {
+      "name": "e04.anm",
+      "result": 9,
+      "sprites": 715
+    },
+    {
+      "name": "e05.anm",
+      "result": 9,
+      "sprites": 715
+    },
+    {
+      "name": "e06.anm",
+      "result": 9,
+      "sprites": 715
+    },
+    {
+      "name": "e07.anm",
+      "result": 9,
+      "sprites": 715
+    },
+    {
+      "name": "e08.anm",
+      "result": 9,
+      "sprites": 715
+    },
+    {
+      "name": "e09.anm",
+      "result": 6,
+      "sprites": 715
+    },
+    {
+      "name": "e10.anm",
+      "result": 3,
+      "sprites": 715
+    },
+    {
+      "name": "e11.anm",
+      "result": 3,
+      "sprites": 715
+    },
+    {
+      "name": "e12.anm",
+      "result": 3,
+      "sprites": 715
+    },
+    {
+      "name": "staff.anm",
+      "result": 34,
+      "sprites": 715
+    }
+  ],
+  "sourceHashes": {
+    "cpp/game/AnmInterpreter.cpp": "253d92d37ca8c0b7943a8e50f672b5cbbdef8808d4cdac71746eb55bfd605509",
+    "cpp/game/AnmVm.cpp": "ddf923bf1cc8d71b0bdf6f91a54b4b40f723d5a3023b295f2a8e0e833dcf5ad4",
+    "cpp/game/AnmGeometry.cpp": "876273a619274307c37a94faf74dce6948778f0f61cb32d344f447b35490fed5",
+    "cpp/game/Interpolation.cpp": "9524503fbad2810764253db4f56bd96c20551c24c6365932ba46cce169d84527",
+    "cpp/game/AnmResource.cpp": "ca6f5dbff0e5a5f8b6980354faf7165626a33cb7f88399987c8b573b30588947",
+    "cpp/game/AnmOpcodes.hpp": "5d63adde0beec027b466f7cba70127c69501c16a3ba2bb6eaf35cc8d23e84c8e",
+    "cpp/game/AnmVm.hpp": "975c4f4bc7cd9644b4bc627c1a20689f64de3c38569ce8593a864bf48349937d",
+    "cpp/game/AnmResource.hpp": "52e5699227e781dcc5048a1c2ec56de424dfc969ae344f278c07b84efad5b085",
+    "cpp/game/AnmGeometry.hpp": "57094d2208e31f9b5e934b019792a23d1ac40d3a088ecb5180a531737bf82787",
+    "cpp/game/Interpolation.hpp": "edbabf98f0aa2441bc725138d9fb6ff4908142998836ec3e3fc1c1f198e1d689",
+    "cpp/game/Timer.hpp": "e07169289db2407ce57c4191343ad6c9a5e3b2d543898439326520cfe1723ddb",
+    "cpp/game/Rng.hpp": "3865a40f2ec26f6462f5daa52e7bc8b7e5f42f2c3f6c88d0bfcf3d6c154f4d9b",
+    "cpp/game/Types.hpp": "f79c1ed7cb200413ef0dea75bf0d58842745b6b47182a97e496733c1d7bb2669",
+    "cpp/game/PortTitle.hpp": "5531b9b0a2364098ec023e09eddbf66907c392fb58a24e1a84c5bf7a9a033d2f",
+    "tests/cpp/th18-anm-fixture.cpp": "49a94ab7ed268975fb8296297e11ccac1ff160109cddea89cc2f85b600a04523"
+  },
+  "toolHashes": {
+    "tools/th-anm-native-newer.py": "daaaff7e284164e6ae30cb8dd27c9d0ff60674485f9a2bacc5e73f2ed4536cee",
+    "tools/th18-anm-check.mjs": "5f7e1ed90aa8602fb3bfb7adc7e0ea0eae01e401e35c10a9357d905f074e465e",
+    "tools/th-anm-handlers.py": "15f693b2cb7062705864c0a0c9d9bb9c7d1fcf8daeb8ff2dcf7630d7a6a459db"
+  }
+}

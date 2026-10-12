@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {createHash} from 'node:crypto';
+const root=resolve(import.meta.dirname,'..'),build=JSON.parse(readFileSync(resolve(root,'runtimes/th14/th14_web/artifacts/sdl3/build.json'),'utf8')),sha=b=>createHash('sha256').update(b).digest('hex');
+assert.equal(build.sha256,'dff59f27a44da0056473fbce02fb73658b8dc4ff92fc9cf08b447ecd2834e68f');
+for(const [path,hash] of Object.entries(build.sources))assert.equal(sha(readFileSync(resolve(root,'runtimes/th12',path))),hash,path);
+const screenshots=['overview','user-page1','user-page2','wrap-empty-confirm','return-title'].map(n=>`artifacts/th14/browser-replay-${n}-oct11.jpg`);for(const path of screenshots)assert.ok(readFileSync(resolve(root,path)).length>10000);
+writeFileSync(resolve(root,'artifacts/th14/sdl-title-replay-browser-build-oct11.json'),JSON.stringify(build,null,2)+'\n');
+writeFileSync(resolve(root,'docs/porting/th14-browser-title-replay-verified-oct11.json'),JSON.stringify({passed:true,completeGame:false,nativeEquivalent:false,url:'http://127.0.0.1:8132/',wasmSha256:build.sha256,bytes:build.bytes,sourceHashesVerified:Object.keys(build.sources).length,checks:['Replay header97/ascii19, numbered page with 25 empty rows','Up wraps row1 to row25; two right inputs visit both User pages','third right wraps to numbered page retaining row25','confirm empty entry remains in Replay','cancel returns to main with Replay cursor preserved'],screenshots,logs:'artifacts/th14/browser-replay-logs-oct11.json',build:'artifacts/th14/sdl-title-replay-browser-build-oct11.json',scope:'Actual formal SDL browser and real keys/original resources; catalog empty. Browser screenshots verify empty catalog navigation/return, not nonempty playback. Controlled native and production serialization text tests cover loaded entries separately. No hidden unlock, artificial Clear or saved replay; no original GPU/audio equivalence.'},null,2)+'\n');console.log(`PASS ${Object.keys(build.sources).length} SDL source hashes; Replay browser evidence recorded`);

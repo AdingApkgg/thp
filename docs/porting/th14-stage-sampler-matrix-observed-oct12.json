@@ -1,0 +1,274 @@
+{
+  "diagnosticEvidenceVerified": true,
+  "productionChanged": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "nativeMatrixControls": [
+    {
+      "mode": "float",
+      "floatWords": 408,
+      "differentWords": 0,
+      "strictWordsEqual": true
+    },
+    {
+      "mode": "pair",
+      "floatWords": 408,
+      "differentWords": 46,
+      "strictWordsEqual": false
+    },
+    {
+      "mode": "double",
+      "floatWords": 408,
+      "differentWords": 139,
+      "strictWordsEqual": false
+    },
+    {
+      "mode": "viewproj",
+      "floatWords": 408,
+      "differentWords": 92,
+      "strictWordsEqual": false
+    }
+  ],
+  "gpuCornerControl": {
+    "corners": 84,
+    "floatWords": 336,
+    "differentWords": 0,
+    "strictWordsEqual": true
+  },
+  "evidence": {
+    "artifacts/th14/stage-gpu-stream-replay/sampler-uv/samples.rgba32f": {
+      "bytes": 1632,
+      "sha256": "8d7c2aacc7847a6ea9f9cde9d085cd6c65321c2db717a1ca81dc5365949108ec"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-float/generation.json": {
+      "bytes": 635,
+      "sha256": "0fe6c0f88506bf8b7624a6893a52b64adb7f3c01ca50dea187cf4bc72dda7a57"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-float/native.json": {
+      "bytes": 40446,
+      "sha256": "c190921eb29e2ca12b27cc8d694093a16c3e51939c83ab32c4df6c603e16998f"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-float/samples.rgba32f": {
+      "bytes": 1632,
+      "sha256": "8d7c2aacc7847a6ea9f9cde9d085cd6c65321c2db717a1ca81dc5365949108ec"
+    },
+    "tools/th14-stage-sampler-matrix-native.py": {
+      "bytes": 4754,
+      "sha256": "55c05ec146e9468c929b2b20277fec1a2fca04c1e1ddf5d77e6720aa02f8fd6f"
+    },
+    "tools/th14-stage-sampler-uv-hal.py": {
+      "bytes": 10476,
+      "sha256": "b3e677676867a3585185f413fe8a92b5354eaa4b182c52adcbd93204c814e207"
+    },
+    "tools/th14-stage-sampler-matrix-float-hal.py": {
+      "bytes": 12685,
+      "sha256": "c687b408fa4ba02f98da1b4ea3524ea5044045a0d54b2660e1a3b8b0bc7a690e"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-float/probe.vs.asm": {
+      "bytes": 108,
+      "sha256": "3552889a0f08eb75e0907ddaad04d8d89c4e9a0358da1c91afafe01d9c442eb9"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-float/probe.vso": {
+      "bytes": 112,
+      "sha256": "9310e0af7402835202f53efd36104e8de1bd35a9768a3cb37e879c601571414b"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-float/probe.asm": {
+      "bytes": 94,
+      "sha256": "603ce7c69faf87e05f923bacae2d4fbdb66069068238fb095be2feb95d00568d"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-float/probe.pso": {
+      "bytes": 108,
+      "sha256": "0896967f3ea1cb0655e9686fb635305f87f0eeeddc047f25d3b3b0b4b1aa441e"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-float/inputs.json": {
+      "bytes": 9053,
+      "sha256": "ea518f90b9a51f87bf7f1e7cb158a84fc935d9593028eedb3f66d3159675cbaa"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-pair/generation.json": {
+      "bytes": 636,
+      "sha256": "afb957b4eda4a461e0b3da991a61b8af572c953f6afafeb15c8bae4944a6d14a"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-pair/native.json": {
+      "bytes": 40438,
+      "sha256": "ad9fc758b2c017eed0427d36a9b0d98c5550e5570e8ed737b7a669f9c1ecda9b"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-pair/samples.rgba32f": {
+      "bytes": 1632,
+      "sha256": "e78031b1cf012e7434e47e96fa8fc64904203d8f27b89d96750d64348eb1ea42"
+    },
+    "tools/th14-stage-sampler-matrix-pair-hal.py": {
+      "bytes": 12682,
+      "sha256": "09c195701ae4bb130bd229d87d5fc384be653c23c0fa5219123ee6fd276be395"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-pair/probe.vs.asm": {
+      "bytes": 108,
+      "sha256": "3552889a0f08eb75e0907ddaad04d8d89c4e9a0358da1c91afafe01d9c442eb9"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-pair/probe.vso": {
+      "bytes": 112,
+      "sha256": "9310e0af7402835202f53efd36104e8de1bd35a9768a3cb37e879c601571414b"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-pair/probe.asm": {
+      "bytes": 94,
+      "sha256": "603ce7c69faf87e05f923bacae2d4fbdb66069068238fb095be2feb95d00568d"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-pair/probe.pso": {
+      "bytes": 108,
+      "sha256": "0896967f3ea1cb0655e9686fb635305f87f0eeeddc047f25d3b3b0b4b1aa441e"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-pair/inputs.json": {
+      "bytes": 9053,
+      "sha256": "ea518f90b9a51f87bf7f1e7cb158a84fc935d9593028eedb3f66d3159675cbaa"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-double/generation.json": {
+      "bytes": 639,
+      "sha256": "fb590159c854654827d7e1b625e3b6294f497adecf9e0993cf4c93df7d4a1a9a"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-double/native.json": {
+      "bytes": 40452,
+      "sha256": "bee6d28eb4aefaa3632ad147540731df73b27fe5bc88629d761b7a4968706392"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-double/samples.rgba32f": {
+      "bytes": 1632,
+      "sha256": "54f81b7bf9f4d48befccc648a32d824c344dfca8f66eb8ae084c7b5690a918a5"
+    },
+    "tools/th14-stage-sampler-matrix-double-hal.py": {
+      "bytes": 12688,
+      "sha256": "932c76ea8c5eea68ebb81a3111d3c62214d87639584b04aa3197b2e2673551a3"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-double/probe.vs.asm": {
+      "bytes": 108,
+      "sha256": "3552889a0f08eb75e0907ddaad04d8d89c4e9a0358da1c91afafe01d9c442eb9"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-double/probe.vso": {
+      "bytes": 112,
+      "sha256": "9310e0af7402835202f53efd36104e8de1bd35a9768a3cb37e879c601571414b"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-double/probe.asm": {
+      "bytes": 94,
+      "sha256": "603ce7c69faf87e05f923bacae2d4fbdb66069068238fb095be2feb95d00568d"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-double/probe.pso": {
+      "bytes": 108,
+      "sha256": "0896967f3ea1cb0655e9686fb635305f87f0eeeddc047f25d3b3b0b4b1aa441e"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-double/inputs.json": {
+      "bytes": 9053,
+      "sha256": "ea518f90b9a51f87bf7f1e7cb158a84fc935d9593028eedb3f66d3159675cbaa"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-viewproj/generation.json": {
+      "bytes": 640,
+      "sha256": "f355c4d7ecfd67be0b3a2714d9fb7fda01d5992d1ead88e0009baba4a853797f"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-viewproj/native.json": {
+      "bytes": 40452,
+      "sha256": "94580d4026056911f34f6b0bc1a2ea7d3f9b1c731ebf96d02eb4baf8a503a02d"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-viewproj/samples.rgba32f": {
+      "bytes": 1632,
+      "sha256": "d0fb9f0998fedfc48d3c75a9fd3a31132568e38eb89f9d8d43210c2ca11170cb"
+    },
+    "tools/th14-stage-sampler-matrix-viewproj-hal.py": {
+      "bytes": 12694,
+      "sha256": "29956f5f7c5710689a133b7b7c436f1c7361e1ccc8692fb9e2e410a80927b0c5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-viewproj/probe.vs.asm": {
+      "bytes": 108,
+      "sha256": "3552889a0f08eb75e0907ddaad04d8d89c4e9a0358da1c91afafe01d9c442eb9"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-viewproj/probe.vso": {
+      "bytes": 112,
+      "sha256": "9310e0af7402835202f53efd36104e8de1bd35a9768a3cb37e879c601571414b"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-viewproj/probe.asm": {
+      "bytes": 94,
+      "sha256": "603ce7c69faf87e05f923bacae2d4fbdb66069068238fb095be2feb95d00568d"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-viewproj/probe.pso": {
+      "bytes": 108,
+      "sha256": "0896967f3ea1cb0655e9686fb635305f87f0eeeddc047f25d3b3b0b4b1aa441e"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-matrix-viewproj/inputs.json": {
+      "bytes": 9053,
+      "sha256": "ea518f90b9a51f87bf7f1e7cb158a84fc935d9593028eedb3f66d3159675cbaa"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-corners/generation.json": {
+      "bytes": 70178,
+      "sha256": "bc8280acfe50ce3571cbeba5a7f731e74bf21b410589725f259fbd3745d77480"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-corners/native.json": {
+      "bytes": 55378,
+      "sha256": "fd5c4e7bfc396dddc56b0c98795cd65758bfa7570dd17eaed5c601a68a0275f9"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-corners/samples.rgba32f": {
+      "bytes": 1344,
+      "sha256": "6b06aebc185aa7babec73aee2f5c96e9e6b74453e99a945b9a7806d70073cad5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-corners/browser-result.json": {
+      "bytes": 88735,
+      "sha256": "81c50bc87201ffbb4faf8d0cf2fc582c0ef33e8af50d81424862237c69704c22"
+    },
+    "tools/th14-stage-sampler-corners-native.py": {
+      "bytes": 4169,
+      "sha256": "cd016cd102828041cd5b4dce852a600c5915a033ad4dda4e44b39bd7a3e893a1"
+    },
+    "tools/th14-stage-sampler-corners-hal.py": {
+      "bytes": 13787,
+      "sha256": "af875496e147b346f955e8d1af29a57a2808a6b5c8ffda40dd787b511109239e"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/sampler-corners/build.json": {
+      "bytes": 1832,
+      "sha256": "057e639860bd4d94f54b27c42c1638140d9c8f8f395de65db9ae852bdde509f5"
+    },
+    "tools/th14-stage-sampler-corners-build.mjs": {
+      "bytes": 2211,
+      "sha256": "94d5c50dae18959eb53eabdaec22e6ccdf2b68c2a13988a68b9b93ea4fd89666"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/clip-dot-webgl-matrix/build.json": {
+      "bytes": 1838,
+      "sha256": "c1936db4dd9efe25d38fec8e983a9976f8e1a797bb490ff33ee88fee5d9db6e6"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/sampler-corners/gpu.wasm": {
+      "bytes": 765799,
+      "sha256": "cdedec4ac3ccd93001db5a463dc36c31e231256955ae0ec90a69c96818508b62"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/sampler-corners/gpu.mjs": {
+      "bytes": 212993,
+      "sha256": "df1611f8c3a8b402939350b6c871bcd6d0be081c7c8d9e23b4432bcf26b46288"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/sampler-corners/Renderer.cpp": {
+      "bytes": 30309,
+      "sha256": "a8e2c80ec30fbb668811fb7c8cd6da56c28ac13ad01ebd4d2c6ab8e82a21cee8"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/sampler-corners/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/sampler-corners/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/sampler-corners/Shaders.hpp": {
+      "bytes": 3846,
+      "sha256": "b4432e0e556f35a6ca582a7254e0d3958b5fa1c220c1d4ad8ecb4d7d12e84b0a"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/sampler-corners/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/sampler-corners/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/sampler-corners/fixture.cpp": {
+      "bytes": 7040,
+      "sha256": "2bae78f13d8e8adbfd8d43e2fe9ff56a0289d0c51dba8c419f99586ce1365b73"
+    },
+    "tools/th14-stage-sampler-corners.html": {
+      "bytes": 4995,
+      "sha256": "e828574faea2ab0e69aa6aae86fb7bdec8eaa4de9b7c4ac59c9b5b7af7ccc1d8"
+    }
+  },
+  "toolSha256": "c5470f7583610003659ecee2f491107e7f4979664049ee12fbaf8c74f196f953",
+  "scope": "Selected102 pixel UV values: authored vs2 float P*(V*W) exactly matches FFP; other associations retain failures.84 captured source corners are tested with independent two-triangle probe geometry, fixed XYZ input stream and uniform varyings; all336 native/browser clip words match. Earlier four-vertex probes with retained long-strip counts are archived and excluded; no NaN probe is a production failure. Does not prove viewport/clipping/interpolation or whole-game equivalence."
+}

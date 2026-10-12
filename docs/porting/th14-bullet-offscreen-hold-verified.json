@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "cases": 10368,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "normalizerDllSha256": "0b28546be22c71834501f7d7185ede5d79742457331c7ee09efc14490dd64f5f",
+  "normalizerAddress": "0x101bafc4",
+  "wasmSha256": "f0f7e32e76e734f9370bd164589a8735c18484a57b9188cee9aa6af672ad4fa3",
+  "scope": "Actual retail 418140 ETEX 100 setup and 41a830 countdown, unscaled sprite visibility, four expanded corners, directional early completion and active-bit retirement. Native comparison executes pinned D3DX9_43 SSE normalization with controlled CPU-dispatch selection. Only resulting state is compared, not every normalization float or other CPU profiles. Whole-frame culling/order, animation and GPU pixels remain outside this comparison.",
+  "sourceHashes": {
+    "tests/cpp/th14-bullet-offscreen-hold-fixture.cpp": "b69c9769e1adc832b60c8f1027613ead996263d368fe1a0eb3d576abd0f5ef52",
+    "cpp/game/BulletTh14.cpp": "8fbf08af656aad99692229ab194a72fb961d1936075d93caf2c489f62d0bd997",
+    "cpp/game/BulletTh14.hpp": "358cc2bef47b8d89691a384e24e21c9cbb5a6ca2a1267772d3e8f3b0e14b1368"
+  },
+  "toolHashes": {
+    "tools/th14-bullet-offscreen-hold-native.py": "280eb6aec9792bde909f06a3b23d2befaae7306536b061b6df824e34c7c28571",
+    "tools/th14-bullet-offscreen-hold-check.mjs": "04da6b0126617845df627ad90b24e420bccca95299ec02d24b52c1c9c3de5588"
+  }
+}

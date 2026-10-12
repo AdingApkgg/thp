@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "title": 14,
+  "completeGame": false,
+  "characterBytes": 21144,
+  "settingsBytes": 1068,
+  "defaultCodecBytes": 21633,
+  "nonemptyCodecBytes": 21691,
+  "codecFiles": 2,
+  "defaultDecodedBytes": 149076,
+  "retailLoaderPassed": true,
+  "settingsCases": 24,
+  "insertions": 720,
+  "nameCommits": 108,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "916add424a4aeb2d96553ee4e5f393de43fd45f2d526390c30adc14b00c58535",
+  "scope": "Complete retail4567a0 character defaults: six ten-row rankings and120 spell index/difficulty defaults. Complete456b20 status defaults with494 gameplay next16 calls, incoming seed/counter boundaries and unsigned counter wrap; visual RNG confirmed untouched by native. Complete447e00 rankings: unsigned comparison, equal-score placement, row shifts, retained byte15, byte stage/continue, controlled timestamp and supplied timing ratio; all60 rows compared. 108 original44ac80 name commits compare all row and last-name bytes, including the terminating byte and retained tail. Original456f60 writer checksum/LZSS/encryption compared byte-for-byte for default and nonempty files; production native-file load/record-sync/save preserves all bytes, including97-byte names, ordinary/practice counters, Extra practice flags, best scores and opaque ranking bytes. Retail456de0 also loads the port file into all seven character records and settings. Allocator, free, memcpy, memset and timestamp are controlled boundaries; actual filesystem/browser persistence, menu consumers and complete startup excluded. Production ScoreFile now uses native TH14 storage and GameSession initializes settings with the gameplay RNG.",
+  "sourceHashes": {
+    "cpp/game/ScoreFile.cpp": "b3b1b445c3888dc69e8c54c5632a89ba279df4ce462672033f9f020bcdf47f1a",
+    "cpp/game/ScoreFile.hpp": "7c3844493999a84fa31aba3ab434e4a277ad4e39daf947f6d1f6daf942447941",
+    "cpp/game/SpellController.cpp": "81fe40bca2c298344497aaafb491fb9c5ef5e2207cb1ea2d03f92e78d94709b3",
+    "cpp/game/SpellController.hpp": "cbb3a2499477d0f08a3f8460659e2761850c350131d070400094ed112e3965a5",
+    "cpp/game/StageCompletion.cpp": "04fd162d2c2cf5de9ac0cd56ec760ebee2734a6c7b6064a0f92739d271d84082",
+    "cpp/game/StageCompletion.hpp": "92e0c0bb262a54994f0d9e817e30a655a90329bc1b1a1951e0f75531aa2dd6fb",
+    "cpp/game/GameSession.cpp": "d4abc54a6ea84770fd2fd9401b1b5772fd948d7ac4ecff68ad8cf3f3af646769",
+    "cpp/game/TitleOptions.cpp": "d9e8b29abcb8b7f874cb9b08bf40eed97e7ceb873590d84ed70ec3d621e5cf7d",
+    "cpp/game/TitleRecords.cpp": "1ceff2cd349e82d9b5c3b51e85328ca3318b010e596494ba8df4dd2ebe3fd499",
+    "cpp/game/TitleTh14.cpp": "23e8c175fa06ce1215d6349be8b574a5aeefc121d1b73a2f1ec300355e266817",
+    "cpp/game/TitleText.cpp": "a672efcf17751d0c842d56423ff0803df8d6325d57819e818aa9a3b1be266f97",
+    "cpp/game/PauseEnd.cpp": "3e7a11b5aef2cb40303b31ffbcea410c8f3f186d89f91cc62dea878a2eaca30b",
+    "cpp/game/Lzss.cpp": "7bf9b34043ee21f6e23244369069b2807314f3d7ddf7f37a556b34780afa4e48",
+    "cpp/game/Lzss.hpp": "df264a260821a4cbc8ec60e46b02f15ad0eb00bf998a8d6ad5260622f8224290",
+    "cpp/game/ResourceCrypt.cpp": "d57118f1114f3909c42a2e99e7df30e625f6563247a8118cd14bb9f68a0f97ef",
+    "cpp/game/ResourceCrypt.hpp": "dba560d8380ef04611c41da473972aaa30f9725afe9bdb49709b8dbfa9ccda27",
+    "tests/cpp/th14-score-fixture.cpp": "657306034afda880cfd9caf3b28e49076e99ae13c5b0287e6167ceddea0e1880"
+  },
+  "toolHashes": {
+    "tools/th14-score-native.py": "8ed4689277409ca9ec33d00272593b43251d09f7d6c4885d2eb540334f17ca3d",
+    "tools/th14-score-check.mjs": "7b9a904fe7fa7852636dde5477dee22c8eeb93f8d9fd8e687521e3e09867d16d"
+  }
+}

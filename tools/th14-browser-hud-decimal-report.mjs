@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {createHash} from 'node:crypto';
+const root=resolve(import.meta.dirname,'..'),sha=b=>createHash('sha256').update(b).digest('hex');
+const build=JSON.parse(readFileSync(resolve(root,'runtimes/th14/th14_web/artifacts/sdl3/build.json'),'utf8'));
+assert.equal(build.sha256,'9be50332397bb4f7ea7eb192f545ba285d4426af1eeb11180cecd82072970504');
+assert.equal(sha(readFileSync(resolve(root,'runtimes/th14/th14_web/artifacts/sdl3/th11-harness.wasm'))),build.sha256);
+for(const [path,hash] of Object.entries(build.sources))assert.equal(sha(readFileSync(resolve(root,'runtimes/th12',path))),hash,path);
+const evidence=['artifacts/th14/browser-boss-hud-decimal-fixed-oct11.png','artifacts/th14/browser-boss-hud-decimal-logs-oct11.json'];
+const logs=JSON.parse(readFileSync(resolve(root,evidence[1]),'utf8'));assert.equal(logs.filter(l=>l.level==='error').length,0);
+writeFileSync(resolve(root,'docs/porting/th14-browser-hud-decimal-verified-oct11.json'),JSON.stringify({passed:true,completeGame:false,nativeEquivalent:false,url:'http://127.0.0.1:8133/',build,persistentStoreMounted:false,artificialClear:false,forcedInvincibility:false,hiddenUnlockCode:true,spellId:0,difficulty:2,loadout:'Sakuya A',observations:['Fresh volatile session, frame300 auto-pause disabled, ordinary Player Data Sakuya A/Extra ORIONBEER and Spell Practice stage1/first card/Hard.','Actual original-ECL battle shows circular boss health display, Cirno name and HARD. Decimal is now next to animated integer countdown22 rather than detached in the upper-right corner; frame242 shows22.25 and live screenshot captured before host pause at268.','No artificial clear, invincibility or extra firepower. Captured250 console entries have no errors. Bottom Enemy label remains obscured by host controls and is not browser-verified here.'],scope:'Observed browser decimal-position correction with exact146 build source hashes. Does not establish native GPU/pixel/audio equality, whole-game equivalence or natural full-card capture.',evidence:Object.fromEntries(evidence.map(n=>[n,sha(readFileSync(resolve(root,n)))]))},null,2)+'\n');
+console.log(`PASS observed decimal HUD browser correction; ${Object.keys(build.sources).length} source hashes`);

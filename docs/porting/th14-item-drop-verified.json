@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "cases": 160,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "6226b435326e2b12c0df95aaffdbf4a69e3b06ce441854bf7d0e852f02803220",
+  "scope": "Both native and production item paths consume the 4db510 stream (animations.visual_rng) and preserve a seeded 4db508 ANM/shake stream. Retail ECL 509 4277fd -> 421560/4215b0 against production EnemyScriptServices dispatch and ItemManager::drop. Spell-practice mask 0x30==0x20 skips all side effects. Ordinary power/point types 1/2: initial signed RNG even for empty drops, per-item unit/random turns, polar scatter, wrapping angle, allocation order and clamped positions. Native loop emits types 1..12 but clears thirteen count words; the thirteenth nonzero word is tested. Native 4397b0 factory is controlled here; its actual type-1/2 pool allocation, timers and two ANM requests are measured separately in th14-item-verified.json. The port uses synthetic ANM scripts. Other item types, ordinary pickup/auto-attract combo rewards, resource animation pixels and complete gameplay remain unverified.",
+  "sourceHashes": {
+    "tests/cpp/th14-item-drop-fixture.cpp": "35c7293d6377525ce38ff40495bb87ebd1bfa27a3bbe3c57fbc33d91170a2ab4",
+    "cpp/game/ItemManager.hpp": "64ecbf1f155137a340c6c44c4c2768a52851e38ae43f59b0186c7e36520f3699",
+    "cpp/game/ItemManager.cpp": "ea2d30b776baa922ffa1ac0b3672446f5d32c8d2c278103becc1d0b6c3574acf",
+    "cpp/game/ItemTh14.cpp": "f5702ea394fab18ec22adf8efe437bab06687e10b4b6aa5d5bf01fab333c40be",
+    "cpp/game/EnemyScript.cpp": "90a877b6245ce53aa1c7ab1321010dee589cd3b7be7c9f0af14dd6f9e1c3a2e9",
+    "cpp/game/EnemyManager.cpp": "85fd8754f44118ce0b2db837f42ba1f46ebf866190f99a64d500f91fa050ece6"
+  }
+}

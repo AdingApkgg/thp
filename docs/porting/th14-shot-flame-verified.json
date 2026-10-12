@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "spawns": 210,
+  "updates": 5880,
+  "smallUpdates": 180,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "bca387eb725ccf919f27f4337eb63c0b7b4a2696998446831949f908fc09df76",
+  "scope": "Retail 452d20 spread without flag clearing, 452ca0 per-invocation slowing, age/flag-gated visual RNG sampling and area damage halving, and 452da0 slowing/age-3 interrupt independent of state/timer advancement. ANM interrupt delivery and the common update that subsequently copies shot damage are separate. No full-game claim.",
+  "sourceHashes": {
+    "tests/cpp/th14-shot-flame-fixture.cpp": "2cd5d991ca3d1ac29123ae29806cd316f49d066b919d8d0cc68c77ca50524ff4",
+    "cpp/game/ShotCallbacksTh14.cpp": "6998531bb898411941a0b2adccd8382b378e151ef10ba8d067fc22acb2381f66",
+    "cpp/game/Movement.cpp": "ea823e71f48f15d1d5e038c4fa62b6a4dfcaa31b087ebc183e42ef2dd439cccb",
+    "cpp/game/ShotManager.hpp": "ea0ff0af2356debd18171a3b062eaa3edd425a838875e85825ce396d75ab4cad"
+  }
+}

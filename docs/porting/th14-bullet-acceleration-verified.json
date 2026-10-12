@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "initializations": 432,
+  "frames": 41472,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "38e13d6b8a1ee71f3cdfe277be8d96c30c3eecee6f2d399b3cfce235fc30a4bb",
+  "scope": "Actual retail ETEX 4 setup 418140 and motion 419560, including real 44ee00 aim, 407170 angle normalization, 41bf40 polar, native atan2/sqrt and timer. Fixed acceleration vector, current-angle/aim sentinels, retained vector Z, zero/negative/one/60-frame durations, three rates, scalar speed then vector-derived speed and direction. Sound delivery is controlled. This helper proof does not verify full concurrent-transform scheduling, animation, gameplay collisions or complete trajectories.",
+  "sourceHashes": {
+    "tests/cpp/th14-bullet-acceleration-fixture.cpp": "74ba84ee6c9748d90abec263cfad00c7f13c4576f6577124b2b291a7ac9240a3",
+    "cpp/game/BulletTh14.cpp": "9de12fbd5f18eb7e719ed56f9b380519300a4038601d1801ee1ecf5e90984a15",
+    "cpp/game/BulletTh14.hpp": "8035e7a39ba4f20aee92bf2fb3f1c9cd5d405f997d67d0a6919d8076e80afe94",
+    "cpp/game/BulletState.hpp": "6a14491808441296de5bcdf198e2049a9bb448e7f04f27929a52488a92ddbbad",
+    "cpp/game/Movement.cpp": "ea823e71f48f15d1d5e038c4fa62b6a4dfcaa31b087ebc183e42ef2dd439cccb",
+    "cpp/game/Timer.hpp": "e07169289db2407ce57c4191343ad6c9a5e3b2d543898439326520cfe1723ddb"
+  },
+  "toolHashes": {
+    "tools/th14-bullet-acceleration-native.py": "4ae1e89a46f91fac109ac08409390e0980a59f1c8fc310c1d1ea49fe06300ac4",
+    "tools/th14-bullet-acceleration-check.mjs": "4356b68a84cd51ee5afe06e895e73ab36316a52c28cd6f288305bb77c30b0914"
+  }
+}

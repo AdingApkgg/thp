@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "cases": 216,
+  "effects": 2025,
+  "rectangleCases": 720,
+  "fragmentFactories": 72,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "466b7eab8956a5b2d0e831335df931b6e75948df465cb3993f5485a28cbfce2c",
+  "scope": "Retail 4436d0 full curve cancellation and 43aaf0 ECL 545 reset. Compares state, protection, offscreen clock and every-third-sample ANM script/position/flags requests. ANM pool allocation/binding/update/registration are boundaries; no native resource animation or pixels claim. Additionally integrates 442a00 request results through the production rotated-rectangle manager and real inherited-fragment factory under blank controlled ANM scripts; compares rewards/effects, parent clock/length/mark, registry count, all fragment request words, transform index and initial clock. Sample geometry and later fragment frames have independent proofs.",
+  "sourceHashes": {
+    "tests/cpp/th14-laser-curve-manager-fixture.cpp": "238d65635650177c79a84060c3426f0e60ace3828684549494fcc753f9be4227",
+    "cpp/game/LaserManager.cpp": "9e8756fa1727e23d3eac9f0bae1245baeb6c2d34dbc029adda71f4517ef1d043",
+    "cpp/game/LaserManager.hpp": "6cafafab36678aaff84c4ca03221333d4f21f90430717ac078580eb007a1d3c6",
+    "cpp/game/LaserState.hpp": "e85ad358f05675d7fa9d6c38128702431a9cb22514657ad552aa49c33a28293e",
+    "cpp/game/LaserCurveTh14Runtime.cpp": "6e16238219780b7928ad433f4528cad5e302100736498407f8d9a18b3b977263",
+    "cpp/game/GameBattle.hpp": "9f4d97e4e3c0f9a825a578e9004fc771f6d5cc226a858845a360e1d27572fee7",
+    "cpp/game/EnemyManager.cpp": "d00e6d1ff79fcbf1a103a880934f225e70ed3fc3ea82861e76fec5cdd701b1b3",
+    "cpp/game/LaserCurveTh14.cpp": "269a3f3155aed1e63a7355858d11703c8fe0fd50668f9291a7366b3238937a14",
+    "cpp/game/LaserCurveTh14.hpp": "9095b0ec1bec12e53e92b8e7b200c82e0c26f57879f586b5346024467e1c90dd"
+  },
+  "toolHashes": {
+    "tools/th14-laser-curve-manager-native.py": "4835db0b26180954a353cb5e6a90d0ef51d9121d075fb0c5cfd1c8eb0e2d3882",
+    "tools/th14-laser-curve-rectangle-native.py": "7b26cf98a5d508c5846b61353ed4d6f5d36dbf93a6879d2e794fbf496c774acd",
+    "tools/th14-laser-curve-manager-check.mjs": "6afc6e0b5ae2e0f90c1b458c99ec860593d346d537db439b89d93d7edf4df06a"
+  }
+}

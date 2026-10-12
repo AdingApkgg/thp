@@ -1,0 +1,42 @@
+{
+  "verified": false,
+  "date": "2026-10-09",
+  "url": "http://127.0.0.1:8126/",
+  "title": "东方辉针城 · 移植验证",
+  "loadedBuild": {
+    "bytes": 1634107,
+    "sha256": "e980d12c22be4bba92ae3b46364266a915c42e7b5cc022fe2091d1e94c3a8ea7",
+    "scope": "Local SDL harness rebuilt after the TH14 death-frame-3 drop correction and reloaded from the no-store localhost server. This is a scoped browser observation, not complete gameplay verification."
+  },
+  "normalStart": {
+    "verified": true,
+    "path": ["Game Start", "Normal", "Reimu", "Reimu A", "Stage 1"],
+    "invulnerabilityOverride": false,
+    "observations": [
+      "Stage 1 frame 350 rendered enemies and bullets.",
+      "Held shoot for 7 seconds; stage 1 frame 1044 rendered ordinary P drops and continued without the former state=2 timer=3 failure.",
+      "Later UI status showed 60 FPS stage=1 frame=1292 without an engine-error banner. The HUD layout remained visibly incorrect."
+    ],
+    "screenshot": "artifacts/th14/browser-normal-death-drop-oct09.png",
+    "screenshotStageFrame": 1292
+  },
+  "headlessNormalEntry": {
+    "requestedFrames": 30000,
+    "framesExecuted": 1293,
+    "stageFrame": 1292,
+    "phase": 3,
+    "error": "",
+    "scope": "Real archive, no held input, no invulnerability override. Stops on Game Over phase change; this does not mean 30000 frames completed or the stage was cleared."
+  },
+  "idleDemo": {
+    "observedFailure": "battle update failed: -1004 item update failed: 146",
+    "scope": "The new build still refuses unsupported ordinary automatic attraction."
+  },
+  "limitations": [
+    "Only death-frame-3 power and drop requests have native differential proof; full player hit/death/respawn and option reconstruction remain unverified.",
+    "Ordinary automatic attraction and combo rewards remain incomplete.",
+    "Stage 4 protected script progression still stops at ECL 711, whose kind 2 curved-laser consumer remains unsupported.",
+    "HUD digits and text layout are visibly incorrect.",
+    "Native replay, GPU pixel equivalence and complete gameplay remain unverified."
+  ]
+}

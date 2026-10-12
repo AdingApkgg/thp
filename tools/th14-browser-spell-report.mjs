@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {createHash} from 'node:crypto';
+const root=resolve(import.meta.dirname,'..'),build=JSON.parse(readFileSync(resolve(root,'runtimes/th14/th14_web/artifacts/sdl3/build.json'),'utf8')),sha=b=>createHash('sha256').update(b).digest('hex');
+assert.equal(build.sha256,'b0b75ee64f0efc0f9feb8887bd482f516aae0a635049a9aa8d31c20c83f8ed15');
+for(const [path,hash] of Object.entries(build.sources))assert.equal(sha(readFileSync(resolve(root,'runtimes/th12',path))),hash,path);
+const screenshots=['stage','select','locked-confirm','extra-stage','extra-last','return-title'].map(n=>`artifacts/th14/browser-spell-${n}-oct11.jpg`);for(const path of screenshots)assert.ok(readFileSync(resolve(root,path)).length>10000);
+writeFileSync(resolve(root,'artifacts/th14/sdl-title-spell-browser-build-oct11.json'),JSON.stringify(build,null,2)+'\n');
+writeFileSync(resolve(root,'docs/porting/th14-browser-title-spell-verified-oct11.json'),JSON.stringify({passed:true,completeGame:false,nativeEquivalent:false,url:'http://127.0.0.1:8132/',wasmSha256:build.sha256,bytes:build.bytes,sourceHashesVerified:Object.keys(build.sources).length,checks:['Actual Spell Practice entry: seven stages and ReimuA loadout','First stage: three groups, missing Easy/Normal entries, unknown IDs1/2 in Hard/Lunatic','Unseen-group confirmation stays in selector','Cancel back to stage; Up wraps Stage1 to Extra, Left wraps ReimuA to SakuyaB','Extra group1 Up wraps group12, only unknown ID120 remains','Cancel to stage then title retains Spell Practice selection'],screenshots,logs:'artifacts/th14/browser-spell-logs-oct11.json',build:'artifacts/th14/sdl-title-spell-browser-build-oct11.json',scope:'Actual formal browser, real keyboard and original resources. Persisted encountered spells are empty; no hidden unlock/artificial records. Difficulty selection/start requests have controlled native comparisons only; battle integration remains outstanding at this build. No original GPU/audio/full-game equivalence.'},null,2)+'\n');
+console.log(`PASS ${Object.keys(build.sources).length} SDL source hashes; Spell browser evidence recorded`);

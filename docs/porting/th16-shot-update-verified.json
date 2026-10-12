@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "title": 16,
+  "completeGame": false,
+  "cases": 3072,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "c499446e09de1b52cb2bc60205681c79b69c29af22296963f615e8eaebc125e1",
+  "maxError": 0,
+  "scope": "Complete4456d0 executes across256 slots with occupied index0/255. Native402ff0/403110 and447480 execute. State1/2, callback0/5/controlled nonzero skip, 15-frame geometry boundary/strict playfield edges/one visible corner, type2 geometry bypass, stale ANM, source sync conditional flags1, retirement, flag80 rotation/world position, timers/rates and preserved z velocity. ANM lookup/geometry/delete and security cookie controlled. Float tolerances4e-5 only propagate x87 trig differences. Movement modes1-4, resource callback dispatch/beam update, original pixels, damage collision and full gameplay excluded.",
+  "sourceHashes": {
+    "tests/cpp/th16-shot-update-fixture.cpp": "d4fbd0403bf6fccf191569f0b4fe2ad978e333d59d331d4edbc10db68fbed290",
+    "cpp/game/ShotTh16.cpp": "c372800d7d09531bf49fbe15c3a16e9400bc33c48c2b8018379b2bb04e9784db",
+    "cpp/game/ShotTh16.hpp": "b1b9a91979065071b185c22966ff5a40da71aa6d2e7bcfe89a6e71599eec391f",
+    "cpp/game/Movement.cpp": "ea823e71f48f15d1d5e038c4fa62b6a4dfcaa31b087ebc183e42ef2dd439cccb",
+    "cpp/game/AnmGeometry.cpp": "6326e12e33f2cce4d9999ade1b241c25832c1323720df57a1094a6372c10db59"
+  },
+  "toolHashes": {
+    "tools/th16-shot-update-native.py": "ee75fe0a40f31dcda32ef9b307008528927943c3689395e8a065b91e0631bdab",
+    "tools/th16-shot-update-check.mjs": "d4c4f77da2e8430ac023a2f5a5b0494af0ff0c58e20cde225c52e7c6347ed190"
+  }
+}

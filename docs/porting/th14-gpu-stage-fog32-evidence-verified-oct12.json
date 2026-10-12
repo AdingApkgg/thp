@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "comparedCases": 21312,
+  "comparedBytes": 87293952,
+  "precisionModes": [
+    24,
+    53,
+    64
+  ],
+  "evidence": {
+    "docs/porting/th14-gpu-stage-fog32-observed-oct12.json": {
+      "bytes": 2349,
+      "sha256": "185b33588072117834f5fc529f47cf52ae05ac914cb84c38a0e970c12429552a"
+    },
+    "artifacts/th14/gpu-stage-fog/native.json": {
+      "bytes": 2801261,
+      "sha256": "18bd0bdff6991e16d817b2ccc207d421d08accc4ac0dcfeaa37c9e9b52a0f042"
+    },
+    "artifacts/th14/gpu-stage-fog32/requests.bin": {
+      "bytes": 2046124,
+      "sha256": "75279a37cff028bbcb37f9ef540a44a1518d89ba5b393c64848aac63498cbdc1"
+    },
+    "tools/th14-stage-fog32-helper.cpp": {
+      "bytes": 5634,
+      "sha256": "8bca971ea26c0c70e673a267b083f7a80af1a597003260ff76c70f6d4beb54ad"
+    },
+    "tools/th14-native-stage-fog32.py": {
+      "bytes": 4507,
+      "sha256": "87b78fab1c5447d6e8d30fd061c194e695530755fe1a5a85a45dec86bf0b63f8"
+    },
+    "artifacts/th14/gpu-stage-fog32/fog32.exe": {
+      "bytes": 132096,
+      "sha256": "f9eed2b9c8b5a8c52a83ab40a67edad8a06c4d30a1d39cac6cecfe07d82a0290"
+    },
+    "tools/th14-gpu-raster-native.py": {
+      "bytes": 7489,
+      "sha256": "aaf5d4d5fb26c80a3c7d0649ac5778b628fa76b20a5cb1704dbc2a7fe0c32fc8"
+    },
+    "tools/th14-gpu-stage-fog-native.py": {
+      "bytes": 8480,
+      "sha256": "c0ba97e76c9bd3af7f0a6713462af6f6ea6b000c43ab5b474622af13fc310e99"
+    },
+    "artifacts/th14/gpu-stage-fog/native.bgra": {
+      "bytes": 29097984,
+      "sha256": "8a732be6f36d075fa15134cf6dab50883b11498c4ec21e72ddcc70797015bc82"
+    },
+    "artifacts/th14/gpu-stage-fog32/readback-24.bin": {
+      "bytes": 29098004,
+      "sha256": "e26243135bbee000a605ee4b83987e7c2c942dd45426daa800dec10406b1e898"
+    },
+    "artifacts/th14/gpu-stage-fog32/readback-53.bin": {
+      "bytes": 29098004,
+      "sha256": "435b6395d9a5234b9bcf79da573463e0a3cb0057fcc56c3f11f23589588291c6"
+    },
+    "artifacts/th14/gpu-stage-fog32/readback-64.bin": {
+      "bytes": 29098004,
+      "sha256": "06049e5592edfbd8183dd0137b33be1af33fd1b8db27d1bba64c036770c6a89a"
+    },
+    "artifacts/th14/reference-projects/fog/references.json": {
+      "bytes": 1329,
+      "sha256": "63d47b12d4ae24ec8c5b2531ed60489c6ae3da46dac3e3d62cb02248778c3800"
+    },
+    "artifacts/th14/reference-projects/fog/wine-glsl_shader.c": {
+      "bytes": 544990,
+      "sha256": "7c5ce38743e176b35f3eafef429efaf6912df060a2700e9f605a54ba77bbbae6"
+    },
+    "artifacts/th14/reference-projects/fog/dxvk-d3d9_fixed_function.cpp": {
+      "bytes": 7128,
+      "sha256": "7039b1816fd63b739ced18f7babf26d77a61eb50df2b8cfabaefec87f30a5bc6"
+    },
+    "artifacts/th14/reference-projects/fog/dxvk-d3d9_fixed_function.h": {
+      "bytes": 1773,
+      "sha256": "10a0f8baa83933949fb17af9ade4a44e35f587d1b9f068c822523cd8cbd63a8a"
+    },
+    "artifacts/th14/reference-projects/fog/d3d9_fixed_function_vert.vert": {
+      "bytes": 22759,
+      "sha256": "4ef012f3c0f633fb99beca4d5858e703578ee712d2ae26c5c451699b1b2e921d"
+    },
+    "artifacts/th14/reference-projects/fog/d3d9_fixed_function_frag.frag": {
+      "bytes": 103,
+      "sha256": "2a8a329d2c6f3fee8fd47e817d03e77da0af4b7ef528dd61e9e16b67bd6f1003"
+    }
+  },
+  "toolSha256": "274d61eb053eb7fb03f5a0a49edf1e6aafa2e43fdb378625340b3ee430ed0a4f",
+  "scope": "7104 independent hidden D3D9 HAL hardware vertex-processing scenes, same serialized matrix/vertex/texture/state bits as original STD endpoint x64 reference. x86 default device PC24 and controlled post-device PC53/PC64 compared strictly; excludes actual retail draw loop, driver portability, whole frame/audio/natural clear.",
+  "limits": "Independent hidden devices agree across x86/x64 and all three submitted x87 precision states. This rules out these reference differences for this exact input and current driver; it does not fix or waive the remaining WebGL fog differences. Wine/DXVK are static references, not executed native or portable proofs."
+}

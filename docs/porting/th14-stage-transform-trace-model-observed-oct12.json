@@ -1,0 +1,99 @@
+{
+  "diagnosticEvidenceVerified": true,
+  "productionChanged": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "baselineReproduced": true,
+  "instrumentationPreservesFinalFrames": false,
+  "changedFinalFrames": 7,
+  "draws": 1005,
+  "worldVertices": 26264,
+  "screenVerticesExcluded": 264,
+  "models": {
+    "fusedSequential": {
+      "zwDifferentWords": 0,
+      "xyDifferentWords": 287,
+      "fusedHalfPixelDifferentWords": 0,
+      "maxZWDelta": 0
+    },
+    "separateSequential": {
+      "zwDifferentWords": 4211,
+      "xyDifferentWords": 3669,
+      "fusedHalfPixelDifferentWords": 3421,
+      "maxZWDelta": 6.103515625e-05
+    }
+  },
+  "firstZWDiscrepancies": [],
+  "evidence": {
+    "artifacts/th14/stage-gpu-stream-replay/prepared.json": {
+      "bytes": 1254349,
+      "sha256": "924c7d2327bb996e552e094ce377a818b764019d4c86b3a407baa29c38ea9910"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/clip-transform-trace/browser-result.json": {
+      "bytes": 2738264,
+      "sha256": "f00155a1ce51b912237228a4a5dd890ed17e0f9e597e1f5043876606c89441a9"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-depth-fixed20/browser-current-control.json": {
+      "bytes": 34472,
+      "sha256": "12ec7aea347c10cd0d97a37e778fefb94118fb613b5283c69495aef442f04261"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-depth-fixed20/browser-result.json": {
+      "bytes": 34472,
+      "sha256": "12ec7aea347c10cd0d97a37e778fefb94118fb613b5283c69495aef442f04261"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/clip-transform-trace/positions.f32": {
+      "bytes": 424448,
+      "sha256": "9472730d40b8fc6604efd230ac177b05bf2782664caff130c3c3b57f4738486d"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/clip-transform-trace/build.json": {
+      "bytes": 1831,
+      "sha256": "677ff99609c21b2589abc8a28cc9bc971027e89cfa6e6d1c6a6803e2cbb165ce"
+    },
+    "tools/th14-stage-transform-trace-build.mjs": {
+      "bytes": 4814,
+      "sha256": "71cd7604e3a54b4be58979b89af4c32f94e0c5ff43ada6c807e46e048902fc50"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/clip-transform-trace/gpu.wasm": {
+      "bytes": 766111,
+      "sha256": "260ebed448fa516068534755a1684edd7dee3e83d44a18ac64aedf9e52c71ffe"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/clip-transform-trace/gpu.mjs": {
+      "bytes": 213745,
+      "sha256": "95e4f78da8a7cae5d2a42e58628dca8bb7fe1f1899d4014cced59f8fc4f1499f"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-depth-fixed20/build.json": {
+      "bytes": 1904,
+      "sha256": "3d0b01e2dcaac67e5a983b78d4cedc849336c777102c5c947e85562e27c87f5b"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/clip-transform-trace/Renderer.cpp": {
+      "bytes": 31468,
+      "sha256": "aca73fc81a644d4fe6250c88a24b5ab5aed711a03225ac313cddcd1e176ffcd6"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/clip-transform-trace/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/clip-transform-trace/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/clip-transform-trace/Shaders.hpp": {
+      "bytes": 3723,
+      "sha256": "c52c7b59aba84fbf9920e15a82a5b6de1876dc5ab3b0d3dc309d251b554b29c0"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/clip-transform-trace/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/clip-transform-trace/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/clip-transform-trace/fixture.cpp": {
+      "bytes": 6774,
+      "sha256": "452c60feb78ac1259691a53f6d9fd0abb1149b61a46f877548890abb6397d203"
+    }
+  },
+  "toolSha256": "b9910ec2aea24235e297795d2e835f820578c847d0f9fce2bf71e490d82a0da2",
+  "scope": "Instrumented WebGL program position outputs with a discarded point draw followed by original raster topology. Original baseline repeated and all frame hashes matched its previous run; instrumented color frames differ, so these positions cannot be attributed to the uninstrumented program. CPU dot models are diagnostics, not Native position readback."
+}

@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "cases": 36864,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "cfa3fb78aff422e4295c79c0f93be0caccb0fc4185c9316c4d03dc9159c27a83",
+  "scope": "Full retail 4510b0 common update with actual 403cd0/403df0 motion, 479560 quad geometry, strict corner bounds and age clock. ANM lookup/release, display globals and security cookie are controlled. Callbacks zero, homing 1 and delayed turn 8, states 1/2, linear movement mode zero, no extra animation. The actual callback bodies execute before movement and angle delivery. Compares retained velocity Z, rate-scaled XY, position/snap, missing-VM and corner-cull retirement, type-2/type-5 caches, flags, conditional damage-area writes, VM angle hint, raw position and clocks. Native IDs are normalized to existence. Free-list insertion, nonzero movement modes, remaining callback-specific updates, recursive ANM state and GPU pixels remain separate.",
+  "sourceHashes": {
+    "tests/cpp/th14-shot-update-fixture.cpp": "a0a63c6ad7e2a36f1947bf812acf4ccf440bed308412afa1730b7ff56f771c64",
+    "cpp/game/ShotManager.cpp": "969ef71a3c7ccbc9feb69f0816fca6955c6202a0614835ce5659cf9724cb3642",
+    "cpp/game/ShotManager.hpp": "ec76f51bc4e75c9ce6615d782bff90e5624330edd767f26a642e3197c61312b2",
+    "cpp/game/ShotTh14.cpp": "05c3d6e8fc115bd1f2885979615093b9907672f9149e4ec398c61fd1df9f02d1",
+    "cpp/game/Movement.cpp": "ea823e71f48f15d1d5e038c4fa62b6a4dfcaa31b087ebc183e42ef2dd439cccb",
+    "cpp/game/AnmGeometry.cpp": "876273a619274307c37a94faf74dce6948778f0f61cb32d344f447b35490fed5"
+  },
+  "toolHashes": {
+    "tools/th14-shot-update-native.py": "c22512e163a4462aa2f0a1878cba9e2b7075bb329753aad1cd7c64a82fd5c442",
+    "tools/th14-shot-update-check.mjs": "a3f63203d42938a72953490a32de0400410e553895c1f86020c9037f99deee95"
+  }
+}

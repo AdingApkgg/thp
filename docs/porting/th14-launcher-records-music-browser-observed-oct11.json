@@ -1,0 +1,85 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "url": "http://127.0.0.1:8135/?game=th14",
+  "buildId": "e73cf66aa578b0ec393a",
+  "preparedPath": "runtimes/th14/th14_web/artifacts/launcher-preview/ef471c9710e74642-27727d847ab3/release.json",
+  "preparedSha256": "db7153eeffddefc454603871c01c4d0bbbfe8bd90e3c87214bafae9493dd7f80",
+  "checks": {
+    "records": {
+      "path": "docs/porting/th14-records-verified.json",
+      "sha256": "02d2cfdb46c9b3b0962c78663698ea1e04ff482e0bd8d58acec26e9fadcb0577"
+    },
+    "records-text": {
+      "path": "docs/porting/th14-records-text-verified.json",
+      "sha256": "3d108931f30126376065bc5298696c1cc6a8cbd29ecdd221d6fb502c948d5b77"
+    },
+    "title-music": {
+      "path": "docs/porting/th14-title-music-verified.json",
+      "sha256": "93ac04879c2c2501ce50e30e9e30710500126421346d0393874c31e2659d675b"
+    }
+  },
+  "evidence": {
+    "artifacts/th14/browser-launcher-records-summary-oct11.png": {
+      "bytes": 234862,
+      "sha256": "539471d9273f25c7c8f3b85f6bffa6d7a45cdd0c7dd75b7efbd02958d056a9ed"
+    },
+    "artifacts/th14/browser-launcher-records-spells-oct11.png": {
+      "bytes": 249024,
+      "sha256": "9c9abdd8c18cd2136f8d0cb129370ff6cb8ccd692eb7852a0881a93bdcb1ee8b"
+    },
+    "artifacts/th14/browser-launcher-music-summary-oct11.png": {
+      "bytes": 216174,
+      "sha256": "23a643aac8a89ed893acd1e7046f03ebf84013f3e03e95d5be9440bbcf88abc1"
+    },
+    "artifacts/th14/browser-launcher-music-spoiler-oct11.png": {
+      "bytes": 225019,
+      "sha256": "8342241671004d5a867184b37404a311a64081c6a59f67a02523072101193197"
+    },
+    "artifacts/th14/browser-launcher-music-confirmed-oct11.png": {
+      "bytes": 236534,
+      "sha256": "36f25599e89e74d6cc3ed254de49140594ce4ed3bada6646c873dd3c3e78d37a"
+    },
+    "artifacts/th14/browser-launcher-music-last-oct11.png": {
+      "bytes": 234135,
+      "sha256": "679135cbc549a2528b1334440b2094bf6788d5a5ae8eb1e94c76a64c0bca87a9"
+    },
+    "artifacts/th14/browser-launcher-music-return-oct11.png": {
+      "bytes": 228810,
+      "sha256": "1a3956d143b3d471992a6e9e8fc0259797abe4c63fd07aab17e0fb60eae0c655"
+    },
+    "artifacts/th14/browser-launcher-records-music-logs-oct11.json": {
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "artifacts/th14/browser-launcher-records-music-dom-oct11.txt": {
+      "bytes": 2287,
+      "sha256": "1641d29feb4b89d5d3fe8cca8dce13f77f5ef999840b7589fcd0469205a3791c"
+    }
+  },
+  "score": {
+    "path": "artifacts/th14/launcher-score-check/8f002ee20efda4f6/production.raw",
+    "sha256": "c806a9ca9d5ab9cb7182c0550c4f570d7954c63ef3995bf48fe289580435e528",
+    "character": 0,
+    "playCount": 3,
+    "playFrames": 1009,
+    "clears": 0,
+    "visibleTime": "0:00:16"
+  },
+  "observed": [
+    "Player Data Normal/Reimu A shows3 plays,0:00:16 and0 clears matching previously exported/imported native-verified score",
+    "Z switches rankings to Normal spell page, includingNo.4/8/12/16/20/24/30/34/38/42",
+    "Music Room initially shows heard titles and unknown titles",
+    "UnknownNo.3 first confirmation shows original spoiler warning; second confirmation shows its original comments",
+    "Up from first track wraps toNo.17 and scrolls to the last ten tracks; comments retain the playing track",
+    "X returns to Main with Music Room selected",
+    "Current error/warn logs empty"
+  ],
+  "limits": [
+    "Browser screenshots confirm selected visible routes, not all native menu cases or GPU pixel equality",
+    "The score raw file comes from the prior actual export/import proof, not a new raw filesystem read from browser",
+    "Second confirmation verifies menu/comment flow; audio-device waveform/volume is not measured",
+    "Whole TH14 1:1 and all unconverted works remain incomplete"
+  ]
+}

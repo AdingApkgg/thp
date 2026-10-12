@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "url": "http://127.0.0.1:8159/?game=th14",
+  "buildId": "e69905de668f0d52a626",
+  "preparedPath": "runtimes/th14/th14_web/artifacts/launcher-preview/97e4c25956684416-a487016ccfd0/release.json",
+  "preparedSha256": "ae7b560a9490c80ed0a62d872ffad3caadcb551ca7b91715e1739d54289e7e8b",
+  "wasmSha256": "97e4c25956684416580e138f4dab6529a78cd4238cc071a027e44cf2e4e73a88",
+  "gpuProof": {
+    "path": "docs/porting/th14-gpu-screen-snap-production-verified-oct11.json",
+    "sha256": "7b7ef7f5cb8628b0737d5271f2b52d70f49b261238b175cf0fcac2405a5dc2bf"
+  },
+  "evidence": {
+    "artifacts/th14/browser-launcher-screen-snap-title-oct11.png": {
+      "bytes": 238677,
+      "sha256": "3341606c439c92aee6d4e2d85d8b16df12f11410d15782e7aebf350f0e6f59c9"
+    },
+    "artifacts/th14/browser-launcher-screen-snap-character-oct11.png": {
+      "bytes": 232148,
+      "sha256": "f7e9ff05e8f1f2e389eed6b5a33d30d768c1634dc5905c4b3d198d07676b5c7e"
+    },
+    "artifacts/th14/browser-launcher-screen-snap-equipment-b-oct11.png": {
+      "bytes": 213902,
+      "sha256": "d740922e7b06b1d5f3cffb1e06c18f24d5e4c41b9318688eb9f8893595face7e"
+    },
+    "artifacts/th14/browser-launcher-screen-snap-focus-pause-oct11.png": {
+      "bytes": 186894,
+      "sha256": "e46330ce3308139cd1af6741c5ca12965d15e1baabcf16158ce933ce2ce789e5"
+    },
+    "artifacts/th14/browser-launcher-screen-snap-stage-pause-oct11.png": {
+      "bytes": 205234,
+      "sha256": "7692e97b17e10d538e446749bbce5221d2960bad93e93858669dfb78de3ab5bc"
+    },
+    "artifacts/th14/browser-launcher-screen-snap-bomb-pause-oct11.png": {
+      "bytes": 213272,
+      "sha256": "91d4d3edb21122b7f06094f177adcfbc340f08195b0f736f7dfe1debbf874648"
+    },
+    "artifacts/th14/browser-launcher-screen-snap-restart-confirm-oct11.png": {
+      "bytes": 210543,
+      "sha256": "757b1ac6e20878d08427091cdce18da1fadf1d8ceed4b212493a22b427a6ae86"
+    },
+    "artifacts/th14/browser-launcher-screen-snap-stage-restarted-oct11.png": {
+      "bytes": 204033,
+      "sha256": "8c6d79d6a9f9d896a28b9e2b973f35a7dc17ac680e57c7791ba1a110790e4770"
+    },
+    "artifacts/th14/browser-launcher-screen-snap-logs-oct11.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "artifacts/th14/browser-launcher-screen-snap-dom-oct11.txt": {
+      "bytes": 2232,
+      "sha256": "f601e4ad96bcc493224f9b47bf422ab5d49085a0c8e214ebb2abed95b38441e3"
+    }
+  },
+  "observed": [
+    "Ordinary Game Start -> Normal -> Marisa -> weapon B reaches Stage1 without diagnostic invulnerability",
+    "Shift+Z+Right moves and renders focused shots; Escape opens the five-item pause menu",
+    "Ordinary Z produces visible laser and shots; initial HUD has2 lives,3 bombs,1.00 power and10,000 point value",
+    "Resume then X releases visible weapon-B bomb; bomb count changes3 to2; Escape pauses",
+    "Pause Up wraps to Give up and Retry; Z opens original Yes/No confirmation with default No",
+    "Up selects Yes and Z confirms; Stage1 restarts with2 lives,3 bombs,1.00 power,10,000 point value and0 score, recentred player; subsequent Z shows shots",
+    "Current warning/error logs empty"
+  ],
+  "limits": [
+    "Selected visible routes only; no original-game frame pixel equality established",
+    "Browser input timing affects gameplay; no survival, performance or complete campaign claim",
+    "The20,282 GPU cases are separate original-record/control fixtures, not a full retail GPU draw-loop capture",
+    "TH14 1:1 and all unconverted works remain incomplete"
+  ]
+}

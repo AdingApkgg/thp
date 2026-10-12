@@ -1,0 +1,554 @@
+{
+  "why": "the objective asks for six titles that run in a browser, and this is what each runtime directory holds: the engine tree its checker builds, the original it declares, its own completeness flag, the artifacts it carries and its launch script",
+  "method": "file scan of runtimes/thNN, with the checker path read out of the checker",
+  "engineTrees": {
+    "12": "runtimes/th12/th12_web with PORT_TITLE=12",
+    "13": "runtimes/th12/th12_web with PORT_TITLE=title",
+    "14": "runtimes/th12/th12_web with PORT_TITLE=14",
+    "16": "runtimes/th12/th12_web with PORT_TITLE=16",
+    "17": "runtimes/th12/th12_web with PORT_TITLE=17",
+    "18": "runtimes/th12/th12_web with PORT_TITLE=18"
+  },
+  "builders": {
+    "12": {
+      "path": "runtimes/th12/portable/build.mjs",
+      "declaredGame": "th11",
+      "exportPrefixes": [
+        "_th11"
+      ],
+      "exportsNamed": [
+        "_malloc",
+        "_free",
+        "_th11_validate_file",
+        "_th11_save_scores",
+        "_th11_save_replay",
+        "_th11_initialize"
+      ]
+    },
+    "13": null,
+    "14": null,
+    "16": null,
+    "17": null,
+    "18": null
+  },
+  "browserRuns": [
+    {
+      "kind": "th12-browser-run",
+      "url": "http://127.0.0.1:8113/",
+      "started": true,
+      "clicked": true,
+      "stageMax": 1,
+      "stageSequence": null,
+      "phaseMax": null,
+      "stageTransitions": 1,
+      "seconds": 1821,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "framesServed": 430251,
+      "playedSamples": null,
+      "playedFrameMax": null,
+      "record": "browser-run-campaign.json"
+    },
+    {
+      "kind": "th12-browser-run",
+      "url": "http://127.0.0.1:8113/",
+      "started": true,
+      "clicked": true,
+      "stageMax": 0,
+      "stageSequence": null,
+      "phaseMax": null,
+      "stageTransitions": 0,
+      "seconds": 71,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "framesServed": 15415,
+      "playedSamples": null,
+      "playedFrameMax": null,
+      "record": "browser-run-policy.json"
+    },
+    {
+      "kind": "th12-browser-run",
+      "url": "http://127.0.0.1:8113/",
+      "started": true,
+      "clicked": true,
+      "stageMax": 1,
+      "stageSequence": [
+        0,
+        1
+      ],
+      "phaseMax": 3,
+      "stageTransitions": 1,
+      "seconds": 60,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "framesServed": 377864,
+      "playedSamples": 84,
+      "playedFrameMax": 2085,
+      "record": "browser-run-th12-param.json"
+    },
+    {
+      "kind": "th12-browser-run",
+      "url": "http://127.0.0.1:8113/",
+      "started": true,
+      "clicked": true,
+      "stageMax": 5,
+      "stageSequence": [
+        0,
+        5
+      ],
+      "phaseMax": 1,
+      "stageTransitions": 1,
+      "seconds": 60,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "framesServed": 285825,
+      "playedSamples": 50,
+      "playedFrameMax": 1516,
+      "record": "browser-run-th13.json"
+    },
+    {
+      "kind": "th12-browser-run",
+      "url": "http://127.0.0.1:8113/",
+      "started": true,
+      "clicked": true,
+      "stageMax": 0,
+      "stageSequence": [
+        0
+      ],
+      "phaseMax": 0,
+      "stageTransitions": 0,
+      "seconds": 35,
+      "pageErrors": 0,
+      "consoleErrors": 1,
+      "framesServed": 374638,
+      "playedSamples": 0,
+      "playedFrameMax": 0,
+      "record": "browser-run-th14.json"
+    },
+    {
+      "kind": "th12-browser-run",
+      "url": "http://127.0.0.1:8113/",
+      "started": true,
+      "clicked": true,
+      "stageMax": null,
+      "stageSequence": [],
+      "phaseMax": 0,
+      "stageTransitions": 0,
+      "seconds": 4,
+      "pageErrors": 0,
+      "consoleErrors": 1,
+      "framesServed": 17446,
+      "playedSamples": 0,
+      "playedFrameMax": 0,
+      "record": "browser-run-th18.json"
+    },
+    {
+      "kind": "th12-browser-run",
+      "url": "http://127.0.0.1:8113/",
+      "started": true,
+      "clicked": true,
+      "stageMax": 1,
+      "stageSequence": null,
+      "phaseMax": null,
+      "stageTransitions": 1,
+      "seconds": 61,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "framesServed": 381209,
+      "playedSamples": 86,
+      "playedFrameMax": 2633,
+      "record": "browser-run.json"
+    },
+    {
+      "kind": "th12-browser-run",
+      "url": "http://127.0.0.1:8113/",
+      "started": true,
+      "clicked": true,
+      "stageMax": 6,
+      "stageSequence": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        0
+      ],
+      "phaseMax": 5,
+      "stageTransitions": 7,
+      "seconds": 1801,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "framesServed": 115165,
+      "playedSamples": 950,
+      "playedFrameMax": 15470,
+      "record": "browser-campaign-full.json"
+    }
+  ],
+  "browserReading": "the directory scan of the first version of this audit read shapes, and the playability evidence is not a shape: these records are runs, one of them through all six stages and the ending phase",
+  "oneEngineTree": {
+    "trees": [
+      "runtimes/th12/th12_web with PORT_TITLE=12",
+      "runtimes/th12/th12_web with PORT_TITLE=14",
+      "runtimes/th12/th12_web with PORT_TITLE=16",
+      "runtimes/th12/th12_web with PORT_TITLE=17",
+      "runtimes/th12/th12_web with PORT_TITLE=18",
+      "runtimes/th12/th12_web with PORT_TITLE=title"
+    ],
+    "titlesUsingIt": [
+      12,
+      13,
+      14,
+      16,
+      17,
+      18
+    ],
+    "reading": "the port lives once and the title is a build parameter"
+  },
+  "titles": [
+    {
+      "title": 12,
+      "runtimeDir": "runtimes/th12",
+      "web": true,
+      "declaredGame": "th12",
+      "executable": "th12.exe",
+      "completeGame": false,
+      "targetJson": "runtimes/th12/th12_web/target.json",
+      "readmeTitle": "东方地灵殿 1.00a · C++ / SDL3 网页版",
+      "subtrees": {
+        "cpp": {
+          "files": 213,
+          "bytes": 1065074
+        },
+        "tests": {
+          "files": 242,
+          "bytes": 1171959
+        },
+        "assets": {
+          "files": 26,
+          "bytes": 77753340
+        },
+        "artifacts": {
+          "files": 2043,
+          "bytes": 113393172
+        },
+        "reference": {
+          "files": 216,
+          "bytes": 75107197
+        },
+        "scripts": {
+          "files": 25,
+          "bytes": 131333
+        },
+        "sdl-runtime": {
+          "files": 11,
+          "bytes": 42796
+        },
+        "portable": {
+          "files": 0,
+          "bytes": 0
+        },
+        "launcher": {
+          "files": 138,
+          "bytes": 2186885
+        },
+        "docs": {
+          "files": 4,
+          "bytes": 17076
+        }
+      },
+      "launchScripts": [],
+      "deployment": false
+    },
+    {
+      "title": 13,
+      "runtimeDir": "runtimes/th13",
+      "web": true,
+      "declaredGame": "th13",
+      "executable": "th13.exe",
+      "completeGame": false,
+      "targetJson": "runtimes/th13/target.json",
+      "subtrees": {
+        "cpp": {
+          "files": 0,
+          "bytes": 0
+        },
+        "tests": {
+          "files": 0,
+          "bytes": 0
+        },
+        "assets": {
+          "files": 32,
+          "bytes": 69359804
+        },
+        "artifacts": {
+          "files": 1861,
+          "bytes": 104036723
+        },
+        "reference": {
+          "files": 0,
+          "bytes": 0
+        },
+        "scripts": {
+          "files": 4,
+          "bytes": 22448
+        },
+        "sdl-runtime": {
+          "files": 1,
+          "bytes": 1161
+        },
+        "portable": {
+          "files": 0,
+          "bytes": 0
+        },
+        "launcher": {
+          "files": 0,
+          "bytes": 0
+        },
+        "docs": {
+          "files": 0,
+          "bytes": 0
+        }
+      },
+      "launchScripts": [],
+      "deployment": false
+    },
+    {
+      "title": 14,
+      "runtimeDir": "runtimes/th14",
+      "web": true,
+      "declaredGame": "th14",
+      "executable": "th14.exe",
+      "completeGame": false,
+      "targetJson": "runtimes/th14/target.json",
+      "subtrees": {
+        "cpp": {
+          "files": 0,
+          "bytes": 0
+        },
+        "tests": {
+          "files": 0,
+          "bytes": 0
+        },
+        "assets": {
+          "files": 19,
+          "bytes": 56395649
+        },
+        "artifacts": {
+          "files": 249,
+          "bytes": 4514217
+        },
+        "reference": {
+          "files": 0,
+          "bytes": 0
+        },
+        "scripts": {
+          "files": 0,
+          "bytes": 0
+        },
+        "sdl-runtime": {
+          "files": 1,
+          "bytes": 1154
+        },
+        "portable": {
+          "files": 0,
+          "bytes": 0
+        },
+        "launcher": {
+          "files": 0,
+          "bytes": 0
+        },
+        "docs": {
+          "files": 0,
+          "bytes": 0
+        }
+      },
+      "launchScripts": [],
+      "deployment": false
+    },
+    {
+      "title": 16,
+      "runtimeDir": "runtimes/th16",
+      "web": true,
+      "declaredGame": "th16",
+      "executable": "th16.exe",
+      "completeGame": false,
+      "targetJson": "runtimes/th16/target.json",
+      "subtrees": {
+        "cpp": {
+          "files": 0,
+          "bytes": 0
+        },
+        "tests": {
+          "files": 0,
+          "bytes": 0
+        },
+        "assets": {
+          "files": 0,
+          "bytes": 0
+        },
+        "artifacts": {
+          "files": 22,
+          "bytes": 592232
+        },
+        "reference": {
+          "files": 0,
+          "bytes": 0
+        },
+        "scripts": {
+          "files": 0,
+          "bytes": 0
+        },
+        "sdl-runtime": {
+          "files": 0,
+          "bytes": 0
+        },
+        "portable": {
+          "files": 0,
+          "bytes": 0
+        },
+        "launcher": {
+          "files": 0,
+          "bytes": 0
+        },
+        "docs": {
+          "files": 0,
+          "bytes": 0
+        }
+      },
+      "launchScripts": [],
+      "deployment": false
+    },
+    {
+      "title": 17,
+      "runtimeDir": "runtimes/th17",
+      "web": true,
+      "declaredGame": "th17",
+      "executable": "th17.exe",
+      "completeGame": false,
+      "targetJson": "runtimes/th17/target.json",
+      "subtrees": {
+        "cpp": {
+          "files": 0,
+          "bytes": 0
+        },
+        "tests": {
+          "files": 0,
+          "bytes": 0
+        },
+        "assets": {
+          "files": 0,
+          "bytes": 0
+        },
+        "artifacts": {
+          "files": 22,
+          "bytes": 606376
+        },
+        "reference": {
+          "files": 0,
+          "bytes": 0
+        },
+        "scripts": {
+          "files": 0,
+          "bytes": 0
+        },
+        "sdl-runtime": {
+          "files": 0,
+          "bytes": 0
+        },
+        "portable": {
+          "files": 0,
+          "bytes": 0
+        },
+        "launcher": {
+          "files": 0,
+          "bytes": 0
+        },
+        "docs": {
+          "files": 0,
+          "bytes": 0
+        }
+      },
+      "launchScripts": [],
+      "deployment": false
+    },
+    {
+      "title": 18,
+      "runtimeDir": "runtimes/th18",
+      "web": true,
+      "declaredGame": "th18",
+      "executable": "th18.exe",
+      "completeGame": false,
+      "targetJson": "runtimes/th18/target.json",
+      "subtrees": {
+        "cpp": {
+          "files": 0,
+          "bytes": 0
+        },
+        "tests": {
+          "files": 0,
+          "bytes": 0
+        },
+        "assets": {
+          "files": 0,
+          "bytes": 0
+        },
+        "artifacts": {
+          "files": 22,
+          "bytes": 569852
+        },
+        "reference": {
+          "files": 0,
+          "bytes": 0
+        },
+        "scripts": {
+          "files": 0,
+          "bytes": 0
+        },
+        "sdl-runtime": {
+          "files": 0,
+          "bytes": 0
+        },
+        "portable": {
+          "files": 0,
+          "bytes": 0
+        },
+        "launcher": {
+          "files": 0,
+          "bytes": 0
+        },
+        "docs": {
+          "files": 0,
+          "bytes": 0
+        }
+      },
+      "launchScripts": [],
+      "deployment": false
+    }
+  ],
+  "readings": {
+    "completeGame": {
+      "12": false,
+      "13": false,
+      "14": false,
+      "16": false,
+      "17": false,
+      "18": false
+    },
+    "withCppSources": [
+      12
+    ],
+    "withAssets": [
+      12,
+      13,
+      14
+    ],
+    "withLaunchScript": [],
+    "withDeployment": []
+  },
+  "tool": {
+    "path": "tools/runtime-delivery-audit.py",
+    "sha256": "56a91d227afcc29913f0be336ed75abc"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "cases": 252,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "resources": {
+    "pl00a.sht": "7140070b80cf0e9112d7543e25ca3cd8018c0f2afd5732c304971331d9df71a2",
+    "pl00b.sht": "17244d2279f33b6ad7a6d7ee2583c2f66ef96a76df353e8fb24a8fb28d5fea90",
+    "pl01a.sht": "4bdc9e69febfd5a750cf242aa809a3ec7f24e11cd848b7f8ecf4fac9fee5f33e",
+    "pl01b.sht": "eaa4ffe175507a4db28ab552fb877c8dd4d2eba0e63305baa25c4739fbad854b",
+    "pl02a.sht": "3249371c753179a0ef12790e3c2554161459c747a23f219ca98447a6443e3044",
+    "pl02b.sht": "6750cae4b49782f9c2195c64f3b9ae562ff777af07bc70fd5325b69a5f5dec33"
+  },
+  "wasmSha256": "5cb68cc0e3f7908e5785031d07f08e935253a68239180261e9837805e5ed1f0f",
+  "scope": "Retail 44f970 versus production PlayerMotion on six original SHT formations. Controlled old option count with empty previous animation handles; power thresholds, focused/unfocused coordinates, integer SSE conversion, count/angle, option state/index/snap, creation order/script, initial origin/layer/y. ANM allocation/binding/update/lookup/interrupt are boundaries; actual resource animation evolution, existing animation family deletion, option movement and complete player lifecycle are separate.",
+  "sourceHashes": {
+    "tests/cpp/th14-options-fixture.cpp": "411e98db39ee61495bffdf5bc3b730e303574fd43a6293e8fec7ed8927cead49",
+    "cpp/game/PlayerMotion.cpp": "16b346b2bd4472befedbfa2589435893285a06309cc44c61302b0f3c3ad7c319",
+    "cpp/game/PlayerMotion.hpp": "1acb630179f2dc1391f18df043ff3057a7be00b503add7250673aa5822265b22",
+    "cpp/game/ShtResource.cpp": "d3c3eb0103f4ea9eee6468c863a3ad8e9abb871f3245091290701ecb03161c9b",
+    "cpp/game/AnmManager.cpp": "6ec4cc2bb1f57c94fb281c9866b1f5c40cf13f50fec8539b58d32a9bb7b3a7f0"
+  },
+  "toolHashes": {
+    "tools/th14-options-native.py": "39902952068c1633010be84f1cc61bb38d2657da3c2999b596a13ede3c603d76",
+    "tools/th14-options-check.mjs": "4f61663fb5cd92f84f0afeadc38ed3ec399612da4de8333450e6af2e08a2547e"
+  }
+}

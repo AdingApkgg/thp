@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "cases": 796,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "archiveSha256": "57d84a5cbe82460931cca26f090a0fde7aef180889ce5bfe8315851fc97b0233",
+  "wasmSha256": "ab5db524ecdf1adf84dcf2bba368acabbec06ee985e64298ebceee459b00a94b",
+  "scope": "Retail 44f7a0 hit, 44f5e0 death and 44dbd0..44dfd1 lifecycle dispatch compared to production PlayerFrame hit/die/update using original player/effect ANM resources. Checks effect script 28/27, sound 2 suppression, spell failure, lives, stock-only Bomb consumption via actual retail 412110, eight-frame deathbomb boundary, 30-frame loss/respawn, preserved fragments, 3-Bomb refill, 60-frame entry, fixed-point Y, exact SSE laser radii and circle/all cancellation arguments. Native movement, ANM, HUD, bullet/laser managers, death damage-area allocation and Bomb vtable effects are controlled boundaries; production runs real ANM while comparisons exclude their internal state. Native comparison stops before common update tail and accounts for production clock advancement. Excludes full Bomb behavior, GPU pixels, audio playback, replay and all-title equivalence.",
+  "sourceHashes": {
+    "tests/cpp/th14-player-lifecycle-fixture.cpp": "4f1a14a7536fc1925a9689a4fedb0335b48ad7e506a9ffa112816770b70aa80d",
+    "cpp/game/PlayerFrame.cpp": "c005d3fde8d7e5b8bdb0912ef0bf8200515271f8a50dcf209ffb6f8fb437e5c9",
+    "cpp/game/PlayerFrame.hpp": "ccf98be361f11c712313ca5f1db05132921ee8a17b923c04712cd58629e8ae63",
+    "cpp/game/PlayerMotion.cpp": "84ac53d86d7668c82fd832da19d9ef134d9c4554a5be8d05587f2952c6f1644c",
+    "cpp/game/PlayerMotion.hpp": "df8ed7e3d74b5702ad5cb0a4572df57a4993ee4a06212fc8a73b9828f1633c89",
+    "cpp/game/GameBattle.cpp": "f00b83b9b4c32bc1a9cef312dc2c2019573705e2e11006c6489b9dba6600a868",
+    "cpp/game/GameBattle.hpp": "afc5f8f0a8844934c2b0d4f97b1418eb32841ad2922fe2dee9590028baf5a205",
+    "cpp/game/BombController.cpp": "9b51bc3ca665d2d1e4488ddb0fa3244e9749ed0bea5e1f25cdd8db37006131b2",
+    "cpp/game/GameEconomy.hpp": "cd840df8c67e0284763b5dbc672bbd73b4eb6e75a195b3bdb7a2280206acedcc",
+    "cpp/game/Timer.hpp": "e07169289db2407ce57c4191343ad6c9a5e3b2d543898439326520cfe1723ddb"
+  },
+  "toolHashes": {
+    "tools/th14-player-lifecycle-native.py": "469b72ece516571e024a467e530a17b534c58b433e8cc7df1394c4d25c6986fa",
+    "tools/th14-player-lifecycle-check.mjs": "708aa630e3b99128c1baad24e21dedcc7068471de06a15c929d63e19e2490ab1"
+  }
+}

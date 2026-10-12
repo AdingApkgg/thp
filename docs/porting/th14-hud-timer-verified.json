@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "cases": 4000,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "38de33ac61b87c78d6e32cf4bc34b077a27fe125ec218c82fa3744fcdd010d30",
+  "scope": "Retail430033..430122 within valid visible boss countdown branch. All seconds0..99, previous -1/0/1/4/5/9/10/30/99/100 and both digit-resource presence bits. Exact interruption labels7/8/9, warning sounds11/12, sprites239+digit and previous_seconds writes; animation interrupt/sprite binding/audio services controlled. Excludes earlier visibility/colour/scaling branches, ANM execution, glyph pixels and full HUD callback. Production timer_th14 invoked with synthetic stopped digit scripts and one visible boss; position-hysteresis mode0/playerY400 keeps earlier selection branch inactive.",
+  "sources": {
+    "runtimes/th12/th12_web/tests/cpp/th14-hud-timer-fixture.cpp": "c2153a9aa1b2ec90c7e28449dfb1bbce9d709ed932ca2bcc4e1df7b06b8754b5",
+    "runtimes/th12/th12_web/cpp/game/Hud.cpp": "94c1f7960fbd3782761f05b0054419b4c6f5e899f48d77fd2adf1f458c314bc6",
+    "runtimes/th12/th12_web/cpp/game/HudTh14Boss.cpp": "14989a95bc5f1aa65f2d368db9aa85a837cb1c7542f5b0459d27f1ca666dc23d",
+    "tools/th14-hud-timer-native.py": "ff7ad50670888eda77aacfd15604552c397d2d603b3faaec0ded8f132ec584e9",
+    "tools/th14-hud-timer-check.mjs": "22a5098d1a6369f8b8a2057ebb7439232d1111c313cc5f04f370d8a7f7e7e2c2"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "url": "http://127.0.0.1:8138/?game=th14",
+  "buildId": "5c0d62890edc8b3d2061",
+  "preparedPath": "runtimes/th14/th14_web/artifacts/launcher-preview/dacea0d46e6a8822-6afd4e563e23/release.json",
+  "preparedSha256": "2bbc93d4ca4fc7ef37a0cfa38fabeb214cc0391763b788c086dbcb3052f8c217",
+  "wasmSha256": "dacea0d46e6a88221cef8c16782f5be40df6376e0471683839f9af6f0549d547",
+  "alphaProof": {
+    "path": "docs/porting/th14-gpu-alpha-browser-verified-oct11.json",
+    "sha256": "5cd2b93b87f820f9ebd584de14ee76d20b29aa51dd256ecf3c6153a0d17f827c"
+  },
+  "evidence": {
+    "artifacts/th14/browser-launcher-alpha-title-oct11.png": {
+      "bytes": 235407,
+      "sha256": "ce9a33318435a95ef3e092246fc1b08b44b2bfb462229715500ec01a87036184"
+    },
+    "artifacts/th14/browser-launcher-alpha-gameover-oct11.png": {
+      "bytes": 244645,
+      "sha256": "d7d097f1c1240635585b3c8003d0b7a8227e71d447d9aec0cf2ead31a743dd66"
+    },
+    "artifacts/th14/browser-launcher-alpha-focus-pause-oct11.png": {
+      "bytes": 248202,
+      "sha256": "524dd8299a692e84ae2c095b6601686526bd16ed3227b9f4ff4a4d07bfdb4daa"
+    },
+    "artifacts/th14/browser-launcher-alpha-restart-confirm-oct11.png": {
+      "bytes": 246832,
+      "sha256": "5695140c628e40c324a691c9f5ebfa2826594e06954a91882920129f0549dde0"
+    },
+    "artifacts/th14/browser-launcher-alpha-stage-restarted-oct11.png": {
+      "bytes": 222497,
+      "sha256": "d2ef6eadd01639210aa56fd257f1217299e4c355d56598f254f96e4c1e6578ce"
+    },
+    "artifacts/th14/browser-launcher-alpha-bomb-pause-oct11.png": {
+      "bytes": 227785,
+      "sha256": "61045d62bcc3d178a42e4b81a78ef0ecdaf97034344ff9f95ff7e8f7003e7d38"
+    },
+    "artifacts/th14/browser-launcher-alpha-logs-oct11.json": {
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "artifacts/th14/browser-launcher-alpha-dom-oct11.txt": {
+      "bytes": 2234,
+      "sha256": "65b62e01cb71cfced2b2a6019a0e2ae01cfb7e9fcaba41fe3fb5be605df718ed"
+    }
+  },
+  "observed": [
+    "Ordinary Game Start -> Normal -> Reimu -> weapon A reaches playable stage, without diagnostic invulnerability",
+    "Game Over selected Retry continues with2 lives and4.00 power, using an ordinary credit",
+    "Shift+Z+Right moves the player and renders focused shots; Escape opens the original five-item pause menu",
+    "Pause Give up and Retry shows original Yes/No confirmation; default No and Escape cancel it",
+    "Up selects Yes; confirmation restarts Stage1 with2 lives,3 bombs,1.00 power and10,000 point value; subsequent ordinary shots produce170 score",
+    "Resume then X releases weapon-A bomb; bomb count drops from3 to2 and actual effect is visible; Escape pauses",
+    "Current warning/error logs empty"
+  ],
+  "limits": [
+    "Screenshots and ordinary input establish these selected visible routes; they do not establish full native-frame pixel equality",
+    "Browser key automation and inter-call elapsed time affect gameplay; no survival, benchmark or full campaign claim",
+    "The8192 alpha-test scenes are a separate actual-GPU fixture, not an original-game GPU draw-loop capture",
+    "TH14 1:1 and all unconverted works remain incomplete"
+  ]
+}

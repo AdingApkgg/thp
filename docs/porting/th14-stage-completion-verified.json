@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "cases": 620,
+  "endingClockCases": 80,
+  "resultClockCases": 160,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "c62bb02bc11b6e7725be1fa550c659e33c8229a0b459c3b9699261677177e405",
+  "scope": "Retail436f90 and434c10 executed, with ANM allocation/binding/insertion, replay finalization/player callback and result/replay exit services controlled. Production StageCompletion compared for score/bonus, all48 practice pairs, capped clear and no-continue counters, next-stage/result/replay exit routes and actual ScoreFile serialization/reload. Includes every stage/difficulty, practice/replay, six equipment choices, signed overflow/unsigned score cap and counter boundaries. HUD result flag100 now compared explicitly. Retail42fdb0..42fe31 additionally checks160 result clock states with flags100/200/400 combinations, rates.25/.5/1/2 and signed frame boundaries: current/previous/fraction words and120-frame gate. Retail436620..436769 additionally proves80 unpaused ending-clock cases, integer wrap, frame180 fade request/type5/duration200/native draw registration73 and frame380 ending/title/replay requests; allocator/callback registration and replay exit are controlled. Does not prove GPU result animation or finalization services.",
+  "sourceHashes": {
+    "tests/cpp/th14-stage-completion-fixture.cpp": "6da756cb3124238a9342256805510c3657e1c2e4782d4f8fb55fe6ee48b1fd89",
+    "cpp/game/StageCompletion.cpp": "be5dc07e2e1fbf47d6b49036f22a70846f3373fa4643e2b8d9ee3f911654dd96",
+    "cpp/game/StageCompletion.hpp": "406c3ce486c2f3a590f17c9c03971583b166a67aea715aef7af2b8be8c499604",
+    "cpp/game/ScoreFile.cpp": "b3b1b445c3888dc69e8c54c5632a89ba279df4ce462672033f9f020bcdf47f1a",
+    "cpp/game/GameBattle.cpp": "5d65ecaaf26bc58a631771c71c81bbeb609ada51e898a84fc83a0d68f0444961",
+    "cpp/game/GameBattle.hpp": "8e4e974baa60bceb1207bfa766b9b321f0848dae917b4c243c03766132b0a0b3"
+  },
+  "toolHashes": {
+    "tools/th14-stage-completion-native.py": "795ab9a614b960656a525ce5d34cfd6cfd0f3f7b3a2d20ce309d78ad1490c96f",
+    "tools/th14-stage-completion-check.mjs": "87bf8923a724bba88af4669c66db0a6d9fad03e885288427dd5a65919e7a17f6"
+  }
+}

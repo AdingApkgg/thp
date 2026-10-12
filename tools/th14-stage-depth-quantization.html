@@ -1,0 +1,20 @@
+<!doctype html><meta charset="utf-8"><title>TH14 D16 constant-depth writes</title>
+<style>body{font:15px system-ui;background:#151c25;color:#dae5f0;margin:24px}a{color:#8cd3ff}pre{white-space:pre-wrap}button{padding:12px}</style>
+<h1>TH14 · D16 constant-depth writes</h1><p>915 float32 inputs · independent hidden HAL reference · diagnostic WebGL readback</p>
+<p>Authored screen quads only. Production unchanged. No world interpolation or whole-game claim.</p>
+<nav><a href="/depth-quantization?variant=depth-trace">production-depth</a> / <a href="/depth-quantization?variant=depth-fixed20">fixed20-candidate</a></nav>
+<button id="run">Run 915 depth inputs</button><p id="status">Ready</p><canvas id="canvas" width="640" height="480" style="width:160px;height:120px"></canvas><pre id="result"></pre>
+<script type="module">
+const variant=new URL(location.href).searchParams.get('variant')||'depth-trace';if(!['depth-trace','depth-fixed20'].includes(variant))throw Error('Unknown depth module');const prefix='/variants/'+variant;
+const create=(await import(prefix+'/gpu.mjs')).default,status=document.querySelector('#status'),result=document.querySelector('#result');const sha=async b=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',b)),v=>v.toString(16).padStart(2,'0')).join('');
+document.querySelector('#run').onclick=async()=>{document.querySelector('#run').disabled=true;try{
+ const [raw,build]=await Promise.all([fetch('/depth-threshold/native.json').then(r=>r.arrayBuffer()),fetch(prefix+'/build.json').then(r=>r.json())]);const native=JSON.parse(new TextDecoder().decode(raw)),module=await create({canvas:document.querySelector('#canvas'),locateFile:n=>prefix+'/'+n});if(!module._gpu_initialize())throw Error('GPU init');
+ const p=module._gpu_allocate(80),points=module._gpu_allocate(8),out=module._gpu_allocate(2),word=v=>new Uint32Array(new Float32Array([v]).buffer)[0];module.HEAPU8.set(new Uint8Array(new Int32Array([32,32]).buffer),points);
+ const samples=native.rows.find(r=>r.operation==='copyD16').samples,reports=[];let mismatches=0;
+ for(let i=0;i<samples.length;i++){const s=samples[i];module._gpu_begin();for(const [k,v] of [[7,1],[14,1],[15,0],[22,1],[23,8],[27,0],[28,0],[137,0]])if(!module._gpu_render_state(k,v))throw Error('State '+k);module._gpu_bind(0,0);module._gpu_fvf(0x44);
+  const vertices=new Uint32Array([word(0),word(0),s.inputWord,word(1),0xffffffff,word(64),word(0),s.inputWord,word(1),0xffffffff,word(0),word(64),s.inputWord,word(1),0xffffffff,word(64),word(64),s.inputWord,word(1),0xffffffff]);module.HEAPU8.set(new Uint8Array(vertices.buffer),p);if(!module._gpu_draw(5,2,20,p)||!module._gpu_depth(points,1,out))throw Error('Depth draw/read');const actual=new Uint16Array(module.HEAPU8.slice(out,out+2).buffer)[0];if(actual!==s.d16)mismatches++;reports.push({inputWord:s.inputWord,d3d9:s.d16,portable:actual});
+  if(i%100===0){status.textContent='Compared '+(i+1)+' / '+samples.length+' · '+mismatches+' differences';await new Promise(requestAnimationFrame);}
+ }
+ module._gpu_release(p);module._gpu_release(points);module._gpu_release(out);const report={diagnosticOnly:true,completeGame:false,nativeEquivalent:false,variant,cases:reports.length,differentDepthValues:mismatches,strictDepthValuesEqual:mismatches===0,nativeReportSha256:await sha(raw),wasmSha256:build.wasmSha256,reports};result.textContent=JSON.stringify(report,null,2);status.textContent='Completed · '+reports.length+' cases · '+mismatches+' different depth values';
+}catch(e){status.textContent='Failed';result.textContent=JSON.stringify({error:e.message,stack:e.stack},null,2);}};
+</script>

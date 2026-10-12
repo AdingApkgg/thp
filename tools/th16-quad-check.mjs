@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,mkdirSync,readdirSync} from 'node:fs';
+import {resolve,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {WASI} from 'node:wasi';
+import {nativePython} from './native-python.mjs';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..'),rt=resolve(root,'runtimes/th12/th12_web'),out=resolve(root,'artifacts/th16/quad-check');mkdirSync(out,{recursive:true});
+nativePython('tools/th16-quad-native.py',{cwd:root,stdio:'inherit',windowsHide:true});
+const env={...process.env,TEMP:out,TMP:out,TMPDIR:out};
+execFileSync(process.execPath,['runtimes/th13/th13_web/scripts/cpp/build-engine.mjs','--title','16'],{cwd:root,env,stdio:'inherit',windowsHide:true});
+const dir=resolve(root,'runtimes/th13/th13_web/artifacts/cpp/objects-th16'),wasm=resolve(out,'quad.wasm'),fixture='tests/cpp/th16-quad-fixture.cpp';
+execFileSync(resolve(rt,'../tools/wasi-sdk-34.0-x86_64-windows/bin/clang++.exe'),['--target=wasm32-wasip1','-std=c++17','-O2','-ffp-contract=off','-fno-exceptions','-fno-rtti','-mexec-model=reactor','-Wl,--no-entry','-Wl,--export-memory','-Wl,-z,stack-size=1048576','-DPORT_TITLE=16',fixture,...readdirSync(dir).filter(n=>n.endsWith('.o')).map(n=>resolve(dir,n)),'-o',wasm],{cwd:rt,env,stdio:'inherit',windowsHide:true});
+const bytes=readFileSync(wasm),wasi=new WASI({version:'preview1',args:[],env:{},preopens:{}}),{instance}=await WebAssembly.instantiate(bytes,{wasi_snapshot_preview1:wasi.wasiImport});wasi.initialize(instance);const c=instance.exports;
+const proof=JSON.parse(readFileSync(resolve(root,'artifacts/th16/quad-native.json'),'utf8'));
+const asFloat=n=>{const b=new ArrayBuffer(4);new Uint32Array(b)[0]=n;return new Float32Array(b)[0];};let maxError=0;
+for(const r of proof.cases){assert.equal(c.run_case(r.mode,r.resolution,r.origin,r.anchor,r.relation,r.rate),1);for(let n=0;n<12;n++){const actual=c.value(n)>>>0,expected=r.output[n]>>>0;if(actual!==expected){const a=asFloat(actual),e=asFloat(expected),error=Math.abs(a-e);maxError=Math.max(maxError,error);assert.ok(error<=.00006103515625,JSON.stringify({r,n,actual:a,expected:e,error}));}}}
+const sha=b=>createHash('sha256').update(b).digest('hex');
+writeFileSync(resolve(root,'docs/porting/th16-quad-verified.json'),JSON.stringify({passed:true,title:16,completeGame:false,cases:proof.cases.length,maxAbsoluteError:maxError,nativeExecutableSha256:proof.executableSha256,wasmSha256:sha(bytes),scope:'Full own465c40/4660b0 screen quads,406c40/406a70 live position transform and464dd0 rotation, bounded parent chains and angles. Separately vary scale parent+5b0 and transform parent+5ac, independent bit16, rotation bit23, resolution, origin, anchors, fractional/negative scales, pivot and rates. x87 trigonometry permits at most0.00006103515625 absolute vertex difference. Cookie boundary controlled. Native draw dispatcher/material/GPU and longer/cyclic parent chains excluded.',sourceHashes:Object.fromEntries(['cpp/game/AnmVm.cpp','cpp/game/AnmVm.hpp','cpp/game/AnmGeometry.cpp',fixture].map(n=>[n,sha(readFileSync(resolve(rt,n)))]))},null,2)+'\n');console.log(`PASS ${proof.cases.length} own TH16 quad cases; maximum absolute error ${maxError}`);

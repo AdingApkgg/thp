@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "cases": 70,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "b4008c5788c547eef51bd1bb1b609c2c5621b7778b5331257029f73386806a7d",
+  "scope": "Actual 421aa0 list lookup and ECL 432/433 copying current raw XYZ into absolute/relative movement, with no immediate combine or mode/velocity reset. Includes duplicate IDs (first match), unmatched nonzero IDs (last visited entry), list sizes 0..4, signed IDs, NaNs and signed zero payloads; production ECL variable-reference dispatch is used by the port. Native argument selection is a controlled wrapper calling actual 42a920 integer global getter for -9909 (parent ID); the port exercises that same reference. Native zero-ID/empty-list lookup returns null and subsequent command would crash; the port explicitly rejects that dereference without mutation. Manager spawn ordering, full native ECL VM, remaining movement commands and complete gameplay are unverified.",
+  "sourceHashes": {
+    "tests/cpp/th14-enemy-position-copy-fixture.cpp": "7fddc0342e980894dc353de82f78e5060bfa6e139e96775c8ab5cbc4eebeb359",
+    "cpp/game/EnemyManager.cpp": "85fd8754f44118ce0b2db837f42ba1f46ebf866190f99a64d500f91fa050ece6",
+    "cpp/game/EnemyScript.cpp": "90a877b6245ce53aa1c7ab1321010dee589cd3b7be7c9f0af14dd6f9e1c3a2e9",
+    "cpp/game/EnemyState.cpp": "371bd24df789d194c9e84a8ab6924a9291bf6b911bc99855bb3f10e0f64c575a"
+  }
+}

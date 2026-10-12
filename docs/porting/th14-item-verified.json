@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "ordinaryAllocationCases": 405,
+  "specialDropCases": 24,
+  "rewardCases": 407,
+  "tickCases": 240,
+  "drawCases": 36,
+  "exhaustionCalls": 4098,
+  "ordinaryCapacity": 600,
+  "cancelCapacity": 4096,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "d4b285fb62cb4b454c1ea2a94f3b0cca304c7e1f306832fa3588dd9e343d70a4",
+  "scope": "Both native and production item paths consume the 4db510 stream (animations.visual_rng) and preserve a seeded 4db508 ANM/shake stream. Retail 41d8c0 cancel free-list order, 41ae00 reward type 1 including strict f32 screen edges, actual 4034b0 RNG/439d80 polar math, wrapping counts and signed delay thresholds; 4,098 consecutive rewards exhaust the 4,096-slot pool and continue consuming RNG. Retail full 438550 tick covers cancel type 10 states 1/2/3/5, activation-frame skips, fall/homing, dead-player fallback, pickup counters and sound 37. Retail 439640 primary draw requests compare raw positions and the y=-8 indicator cutoff against synthetic command recording. Retail 4397b0 type 1..8 and special type 12 ordinary pool allocation, clamping, special-count wrapping/modulo-five conversion to 4/6, two ANM script requests and 439b50 effect-100/sound-74-or-48 delivery are compared. Includes full-pool special counter preservation. ANM cache/bind/tick/draw and zero-handle cleanup are controlled native boundaries; port scripts are synthetic. Retail full 438550 ordinary attraction compares 576 type 1/2/4/6 state 1/2/3/4 cases: character line edges, Bomb-first-60-tick and dialogue overrides, dead-player fallback, homing, delayed notice delivery, focused/unfocused proximity attraction at one-third speed, state-4 homing/promotion without combo refresh and eight-frame combo timer refresh/decrement. Combo collection/settlement is covered separately. Ordinary types 3/8 collection, reward helper modes 2/3, complete Bomb/HUD/replay attraction gating, auxiliary effects, real bullet.anm activation pixels and GPU equivalence remain unverified.",
+  "sourceHashes": {
+    "tests/cpp/th14-item-fixture.cpp": "fe73adb23ae8c24cd350838ab9680405580b3a08a496b24072f8d02a7e8ab127",
+    "cpp/game/ItemManager.hpp": "c0f3dfb503cc49756fc104cd677f72596e489a2a139eaa31c9b9313ca218b216",
+    "cpp/game/ItemManager.cpp": "810830b528d19e55558f18e89bd110ed97f6e57ce7967ac6d8a98e478d6bc6b9",
+    "cpp/game/ItemTh14.cpp": "149734d19459f35c197c60d42847865dd7672a4c15e4f935666bfe6732732a5a",
+    "cpp/game/ItemRewards.cpp": "a2df8fc6ad06730841524b5ae57465f08a6333719f219dae46514751f7f88fa8",
+    "cpp/game/GameEconomy.cpp": "e4c6f0920a56690ccda113dfa1ca9495ce395bcc49e5802dc73ce7a1ca51505c",
+    "cpp/game/BulletTh14.cpp": "6ef2e92fe2e2a42ec857f4c1d3856136b6815f6355523685fbd4999f1c0aecb3",
+    "cpp/game/BulletManager.hpp": "e8976e05e812ebc96d4f0301d5a6891bda68906a0e631b05fcbc2d7b8cb59c07",
+    "cpp/game/GameBattle.hpp": "2a89b3c5058e88f85f0af824deb30c9f90d11d84a10d1a77ec40321fc850f8f1",
+    "cpp/game/GameBattle.cpp": "44cfb0f0362a1e2366895fbca9e73a5c3ed560bec183282a2cf3c8023e0dc9de",
+    "cpp/game/GameEconomy.hpp": "38aa508a680895ec11f3bc8fb15ef92a6ae50ca30d4bfe72c9a0f736baaa005f"
+  },
+  "ordinaryAttractionCases": 576
+}

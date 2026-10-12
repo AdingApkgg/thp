@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "nativeTimelines": 18,
+  "nativeFrames": 864,
+  "scope": "TH14 effect-8 registration, initialization, pre-update, effective time rate, stopped VM callbacks and 80 generated vertices per frame. Allocation is a native boundary; device rendering and effect 7 are not asserted.",
+  "wasmSha256": "f4c5fadcb78b78479e31602bf71235e3f023115c698a1fea7f32e76b3a2daa1d",
+  "sourceHashes": {
+    "cpp/game/AnmVm.cpp": "ea8bb812259ae3ed10e9fdc940813b0e3cdbd48678e3116b13d460144805e691",
+    "cpp/game/AnmGeometry.cpp": "274afc6cdf65e168060fe0dca4ec62de80261383c9ebea8e65432fa9657a82c2",
+    "cpp/game/AnmManager.cpp": "5d6b20bd5aa72a82849b7de459a0b5e6e349e4876fb7ddeaa604f6796cac48fd",
+    "cpp/game/AnmInterpreter.cpp": "eb94221d8f7249a71d0a77998b1ba074203704c5dfd8605acfe2a6312ab353ab",
+    "cpp/game/AnmResource.cpp": "ca6f5dbff0e5a5f8b6980354faf7165626a33cb7f88399987c8b573b30588947",
+    "cpp/game/Interpolation.cpp": "733384f3b927b3f159d128a81eace6ba4a7e54d4ad8ee94bfff422abd3a41a98",
+    "tests/cpp/th14-ribbon-fixture.cpp": "38fce7eca491c29f39d22fc499b3c5534c4e5235bd38363b5d60d20d18f9b8ec",
+    "cpp/game/AnmVm.hpp": "64564a0101f2d4b1375aa6a2d72298b8c27e67b98887e17a990eef96112728f8",
+    "cpp/game/AnmGeometry.hpp": "57094d2208e31f9b5e934b019792a23d1ac40d3a088ecb5180a531737bf82787",
+    "cpp/game/AnmOpcodes.hpp": "238e9632deae6fedcfa8a4e66234e6dfe88e239dbfe525de0bc6926b1a3a7714",
+    "cpp/game/AnmManager.hpp": "f31b966e267eafc1a419cc8a64b716d4f3e571f76b9d941062007e884bdd717c",
+    "cpp/game/Rng.hpp": "3865a40f2ec26f6462f5daa52e7bc8b7e5f42f2c3f6c88d0bfcf3d6c154f4d9b"
+  },
+  "toolHashes": {
+    "tools/th14-ribbon-native.py": "4dee0183c0237f2a4380bbd59f250a34aa93c723725c6a4427be9135204ba132",
+    "tools/th14-ribbon-check.mjs": "d8c05b46023fb4c5a2fabfd469ffe5a6ec9cb76888d2078467c87ad7efff976c"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "title": 16,
+  "completeGame": false,
+  "cases": 512,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "c73d7f915b652c23343a1a521caf1608edd0992bebed1fafe7421fd6913b9136",
+  "maxError": 0,
+  "scope": "Entire256-record442a20..442b47 loop within player update, native402ff0/403110 and angle math execute with no interception. Seeded active records1/2/256, inactive/rectangle/circle/Bomb flags, linear movement, preserved z velocity, hundredth floor, radius growth/angular velocity, stamp reset, selector clamp, rates0/.5/1/1.5/null fallback at global1, fractional countdown and active expiry.37 words exact except2e-5 x87 velocity tolerance. Other movement modes and whole containing player update/Bomb lifecycle/full gameplay excluded.",
+  "sourceHashes": {
+    "tests/cpp/th16-damage-source-update-fixture.cpp": "7ddbdb7cb67a70dc3dcdb1e83abc52dc1e844e7d28af744e152ac727055dc47f",
+    "cpp/game/ShotTh16.cpp": "d181dda2cbed536822da69219d57238f75890a34baef5d464097efeefbb0a400",
+    "cpp/game/ShotTh16.hpp": "59a77f4104bc7472db1591488cd8d88dd0cc5cfa1796c5551dd177a802ed0566",
+    "cpp/game/PlayerFrame.cpp": "2146bbc221c9a11b4d584e4d1fac81acaa60ed19181e1f5b3d1068fe7c732ed4"
+  },
+  "toolHashes": {
+    "tools/th16-damage-source-update-native.py": "b91b6e5f077866162c87a290c4eba5abdaf2e33a2ad118bbc3bfe27c58d5b24f",
+    "tools/th16-damage-source-update-check.mjs": "80f575fc6c19b4599547272263a5faa931435bc089f68abf56dfe42f13ba593b"
+  }
+}

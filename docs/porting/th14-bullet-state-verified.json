@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "cases": 5934,
+  "frames": 194716,
+  "appearanceRecords": 43,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "normalizerDllSha256": "0b28546be22c71834501f7d7185ede5d79742457331c7ee09efc14490dd64f5f",
+  "normalizerAddress": "0x101bafc4",
+  "scope": "Also includes ETEX 1000000 enemy creation immediately, after a wait, concurrent with acceleration and after position interpolation completes; compares all 84 request bytes and the request count after each full native update. Also includes ETEX 40000 immediate heading/speed, ETEX 80000 persistent polar displacement alone and concurrent, and ETEX 20000 position interpolation for all 32 modes, relative/absolute, zero/one duration, concurrent turn and sequential wait. Includes ETEX 100 offscreen holds and ETEX 1000 screen wrap in the production frame path, alone and concurrent with acceleration, wait and size interpolation. TH14 spawn and transforms 1/2/4/8/10/40/200/200000/400000/800000, concurrent acceleration/speed-ramp/turn/bounce and sequential completion, collision-delay/group/jump controls, wait/freeze countdowns, all seven stop/turn modes, saved position/angle and shared visual RNG state, primary appearance switching across all 43 types with optional interrupt, 32 size interpolation modes, timers, movement and scaled offscreen lifetime. Native ETEX 100 executes pinned D3DX9_43 SSE normalization under controlled CPU dispatch. Native ANM initialization/binding/update and collision are explicit controlled boundaries; WASM uses a fixed stop script, sprite dimensions and no-hit collision adapter. Native gameplay collision, secondary ANM, other transforms and GPU pixels remain unverified.",
+  "wasmSha256": "2ff3da7929d2f7db14d878637994e64ee97dbe8d78949361c4e1b599690d0b2e",
+  "sourceHashes": {
+    "cpp/game/BulletTh14.cpp": "7d6b62826e4508d6f950767dc523baa71f0eef6ad73c919e380ff8ab4430672c",
+    "cpp/game/BulletTh14Launch.cpp": "f081116da8a89d7e25890072cfbe0c089d3746f51dc37a0f99a2577429c3a7bc",
+    "cpp/game/BulletManager.cpp": "c27cbb03e663b86f15418a4223925bc31273fcbef0277237ecad2d58a3ea9605",
+    "cpp/game/BulletState.hpp": "9404630c828de0840ff590c940b8229974841b5ce6d28875b91ad6b77991f108",
+    "cpp/game/Th14BulletTables.inc": "b236fc52135abbe19c71e554ef1f891cff577dcaf33e4ecdd54f5cd1c358b8b9",
+    "tests/cpp/th14-bullet-state-fixture.cpp": "0114da100739e0102b5b0d1018c4ed83b164eb586467544981b8e6827e0bd235"
+  },
+  "enemySpawnTimelines": 172,
+  "enemySpawnRequests": 154
+}

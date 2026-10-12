@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "cases": 392,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "abcb4bc176f3ca6ea3ecd4ed36cd8acd180c524b64d51fc729cc9bee2867aedb",
+  "scope": "Retail 434430 notice types 0..6 including captured/failed spell results, signed bonus division and 1,000/1,000,000 separator thresholds, scripts, sprites, handle replacement, zero initial positions/rotation and flag 200 before first update. Actual 47f6e0/47f520/47f560 and inline deletion traverse root children only when child.previous is null. Tests cover missing handles, existing roots, two children, and non-parent chain members. Failure preserves earlier bonus VMs and neither result closes the old spell-time VM. Resource binding/tick, ANM registry allocation/lookup and sprite binding are controlled native boundaries; the port uses synthetic stop scripts and sprites. Actual resource animations, font rendering, HUD text layout and GPU pixels are unverified. Retail 42edf6..42efb5 life/Bomb icon initialization uses scripts 29..36/37..44, zero positions/rotation and flag 200. Retail 434ef0/434fd0 display interrupts are compared for 54 signed count/fragment inputs, including wrapping fragment multiplication and 16-bit partial labels. Allocation, resource binding and first update remain controlled boundaries.",
+  "sourceHashes": {
+    "tests/cpp/th14-hud-notice-fixture.cpp": "5df7907a653fa4809ea3374864639962f6ff0b63627e56f073e86e9b4a46cafa",
+    "cpp/game/Hud.hpp": "f4819863eeaf57fc2b2868577b801ad12899b431d1ec26ce2e21d593a83c312c",
+    "cpp/game/Hud.cpp": "85ad9cfe7ab07ce39dc32eebe52663439482178aa0d43bb056e453dfd1b3dfc3",
+    "cpp/game/HudTh14Notice.cpp": "4343bc37d695c2927692e5a8070c2eaa517a8f5d8d79e94722552b74b16d1027",
+    "cpp/game/GameBattle.hpp": "914fd441958300a40d5c0c76d0f6d619603e398738f11edeae3f7c5583c5748f",
+    "cpp/game/EnemyManager.cpp": "94cbecf98adf041ac46bc59b6cad166f81abc7a8ccbaeefae537bbdcc282490e",
+    "cpp/game/GameEconomy.hpp": "38aa508a680895ec11f3bc8fb15ef92a6ae50ca30d4bfe72c9a0f736baaa005f"
+  },
+  "icons": 16,
+  "displayCases": 54
+}

@@ -1,0 +1,36 @@
+{
+  "measuredFrom": [
+    "b751_enemy-commands.log",
+    "b751_player-frame.log",
+    "b751_th12-aim-angle.log",
+    "b751_th12-emitter-origin.log",
+    "b751_th12-emitter-values.log",
+    "b751_th12-laser-commands.log"
+  ],
+  "meaning": "need = the ESP the path arrived with minus the slot the machine planted, at the first return site that path reached; the reserve a label needs is a PATH quantity - the same label arrived at two different sites with needs 0 and 12.",
+  "bySite": {
+    "0x4154d0@0x419650": [
+      0
+    ],
+    "0x44acd0@0x44ae97": [
+      0
+    ],
+    "0x44acd0@0x44ae9d": [
+      12
+    ]
+  },
+  "bySiteHits": {
+    "0x4154d0@0x419650": 3049,
+    "0x44acd0@0x44ae97": 1,
+    "0x44acd0@0x44ae9d": 1
+  },
+  "entries": {
+    "0x4154d0": 0,
+    "0x44acd0": 0
+  },
+  "ambiguousLabels": [
+    "0x44acd0"
+  ],
+  "entriesUnchangedFromPreviousFile": false,
+  "source": "TH_INTERIOR_DRIFT=1 on six suites; a label seen with two needs is the finding"
+}

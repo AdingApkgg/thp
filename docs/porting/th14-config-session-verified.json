@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "demo": 0,
+      "frames": 120,
+      "passed": true
+    },
+    {
+      "demo": 1,
+      "frames": 120,
+      "passed": true
+    },
+    {
+      "demo": 2,
+      "frames": 120,
+      "passed": true
+    }
+  ],
+  "automaticAttract": true,
+  "heldCancelCases": 9,
+  "bytesPreserved": 92,
+  "archiveSha256": "57d84a5cbe82460931cca26f090a0fde7aef180889ce5bfe8315851fc97b0233",
+  "wasmSha256": "63ba91f937f944f7a9818c39c4c8dad1f4f70a8d9c3b0cf46fd3606c5135a10b",
+  "scope": "Production GameSession replay/attract configuration isolation with all three original demos and real resources; all92 user bytes preserved during replay saves and restored on return to title. Original recorded config remains active during playback. Nine eight-frame held Return/Shoot/Bomb cancellation paths remain at Main without a second menu action. This is integration regression, not native config lifecycle or IndexedDB/browser proof.",
+  "sourceHashes": {
+    "tests/cpp/th14-config-session-fixture.cpp": "fd0941b501d619b0f6db50c5307bf72afd905af37eddd4606c24eb92d9bc73f7",
+    "cpp/game/GameSession.cpp": "b7e186bdde3820a943006d879cdd3e25577448c510f9703c313e8a24cda2cc8b",
+    "cpp/game/GameSession.hpp": "fed0a44b01885f6aede594e64c85c2c009a5eee0fc0c6e85b59258cb2af7ad4b",
+    "cpp/sdl/Application.cpp": "79d07df4bd061628f4372a48152acc04e8690c6103bff140e05d5b1ad6283518"
+  }
+}

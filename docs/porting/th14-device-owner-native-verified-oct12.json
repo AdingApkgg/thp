@@ -1,0 +1,1174 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "entry": "0x46b1a0",
+  "executableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "functionSha256": "5426db77a4a8e1647ee7e3bcc4fa67211a4464e23e9f393c17d93cd8063f0b81",
+  "toolSha256": "461409d52155ef8cabcad41faa4b5e63f36de055d0b063ddf3e4eb1256f632f4",
+  "sizeCandidates": [
+    [
+      640,
+      480
+    ],
+    [
+      960,
+      720
+    ],
+    [
+      1024,
+      768
+    ],
+    [
+      1152,
+      864
+    ],
+    [
+      1280,
+      960
+    ],
+    [
+      1280,
+      1024
+    ],
+    [
+      1600,
+      1024
+    ],
+    [
+      1600,
+      1200
+    ],
+    [
+      1920,
+      1080
+    ],
+    [
+      1920,
+      1200
+    ]
+  ],
+  "rows": [
+    {
+      "name": "hardware",
+      "failures": 0,
+      "flags": 0,
+      "requests": [
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 640,
+          "height": 480,
+          "result": 0
+        }
+      ],
+      "releases": [],
+      "refreshes": [
+        60
+      ],
+      "result": 0,
+      "selectedHardware": true,
+      "selectedDimensions": [
+        640,
+        480
+      ]
+    },
+    {
+      "name": "software-fallback",
+      "failures": 1,
+      "flags": 0,
+      "requests": [
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 640,
+          "height": 480,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 640,
+          "height": 480,
+          "result": 0
+        }
+      ],
+      "releases": [],
+      "refreshes": [
+        60
+      ],
+      "result": 0,
+      "selectedHardware": false,
+      "selectedDimensions": [
+        640,
+        480
+      ]
+    },
+    {
+      "name": "reference-fallback",
+      "failures": 2,
+      "flags": 0,
+      "requests": [
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 640,
+          "height": 480,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 640,
+          "height": 480,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 640,
+          "height": 480,
+          "result": 0
+        }
+      ],
+      "releases": [],
+      "refreshes": [
+        60
+      ],
+      "result": 0,
+      "selectedHardware": false,
+      "selectedDimensions": [
+        640,
+        480
+      ]
+    },
+    {
+      "name": "forced-reference",
+      "failures": 0,
+      "flags": 2,
+      "requests": [
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 640,
+          "height": 480,
+          "result": 0
+        }
+      ],
+      "releases": [],
+      "refreshes": [
+        60
+      ],
+      "result": 0,
+      "selectedHardware": false,
+      "selectedDimensions": [
+        640,
+        480
+      ]
+    },
+    {
+      "name": "next-resolution",
+      "failures": 3,
+      "flags": 0,
+      "requests": [
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 640,
+          "height": 480,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 640,
+          "height": 480,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 640,
+          "height": 480,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 960,
+          "height": 720,
+          "result": 0
+        }
+      ],
+      "releases": [],
+      "refreshes": [
+        60
+      ],
+      "result": 0,
+      "selectedHardware": true,
+      "selectedDimensions": [
+        960,
+        720
+      ]
+    },
+    {
+      "name": "create-all-failed",
+      "failures": 100,
+      "flags": 0,
+      "requests": [
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 640,
+          "height": 480,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 640,
+          "height": 480,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 640,
+          "height": 480,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 960,
+          "height": 720,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 960,
+          "height": 720,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 960,
+          "height": 720,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 1024,
+          "height": 768,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 1024,
+          "height": 768,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1024,
+          "height": 768,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 1152,
+          "height": 864,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 1152,
+          "height": 864,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1152,
+          "height": 864,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 1280,
+          "height": 960,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 1280,
+          "height": 960,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1280,
+          "height": 960,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 1280,
+          "height": 1024,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 1280,
+          "height": 1024,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1280,
+          "height": 1024,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 1600,
+          "height": 1024,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 1600,
+          "height": 1024,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1600,
+          "height": 1024,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 1600,
+          "height": 1200,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 1600,
+          "height": 1200,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1600,
+          "height": 1200,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 1920,
+          "height": 1080,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 1920,
+          "height": 1080,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1920,
+          "height": 1080,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 1920,
+          "height": 1200,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 1920,
+          "height": 1200,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1920,
+          "height": 1200,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 640,
+          "height": 480,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 640,
+          "height": 480,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 640,
+          "height": 480,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 960,
+          "height": 720,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 960,
+          "height": 720,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 960,
+          "height": 720,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 1024,
+          "height": 768,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 1024,
+          "height": 768,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1024,
+          "height": 768,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 1152,
+          "height": 864,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 1152,
+          "height": 864,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1152,
+          "height": 864,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 1280,
+          "height": 960,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 1280,
+          "height": 960,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1280,
+          "height": 960,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 1280,
+          "height": 1024,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 1280,
+          "height": 1024,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1280,
+          "height": 1024,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 1600,
+          "height": 1024,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 1600,
+          "height": 1024,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1600,
+          "height": 1024,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 1600,
+          "height": 1200,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 1600,
+          "height": 1200,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1600,
+          "height": 1200,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 1920,
+          "height": 1080,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 1920,
+          "height": 1080,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1920,
+          "height": 1080,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 1920,
+          "height": 1200,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "width": 1920,
+          "height": 1200,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1920,
+          "height": 1200,
+          "result": 2289436780
+        }
+      ],
+      "releases": [
+        "d3d"
+      ],
+      "refreshes": [],
+      "result": 4294967295,
+      "selectedHardware": false,
+      "selectedDimensions": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "forced-all-failed",
+      "failures": 100,
+      "flags": 2,
+      "requests": [
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 640,
+          "height": 480,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 960,
+          "height": 720,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1024,
+          "height": 768,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1152,
+          "height": 864,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1280,
+          "height": 960,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1280,
+          "height": 1024,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1600,
+          "height": 1024,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1600,
+          "height": 1200,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1920,
+          "height": 1080,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1920,
+          "height": 1200,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 640,
+          "height": 480,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 960,
+          "height": 720,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1024,
+          "height": 768,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1152,
+          "height": 864,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1280,
+          "height": 960,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1280,
+          "height": 1024,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1600,
+          "height": 1024,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1600,
+          "height": 1200,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1920,
+          "height": 1080,
+          "result": 2289436780
+        },
+        {
+          "reset": false,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "width": 1920,
+          "height": 1200,
+          "result": 2289436780
+        }
+      ],
+      "releases": [
+        "d3d"
+      ],
+      "refreshes": [],
+      "result": 4294967295,
+      "selectedHardware": false,
+      "selectedDimensions": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "reset",
+      "failures": 0,
+      "flags": 0,
+      "reset": true,
+      "requests": [
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 640,
+          "height": 480,
+          "result": 0
+        }
+      ],
+      "releases": [],
+      "refreshes": [
+        60
+      ],
+      "result": 0,
+      "selectedHardware": false,
+      "selectedDimensions": [
+        640,
+        480
+      ]
+    },
+    {
+      "name": "reset-next-resolution",
+      "failures": 1,
+      "flags": 0,
+      "reset": true,
+      "requests": [
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 640,
+          "height": 480,
+          "result": 2289436780
+        },
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 960,
+          "height": 720,
+          "result": 0
+        }
+      ],
+      "releases": [],
+      "refreshes": [
+        60
+      ],
+      "result": 0,
+      "selectedHardware": false,
+      "selectedDimensions": [
+        960,
+        720
+      ]
+    },
+    {
+      "name": "reset-all-failed",
+      "failures": 100,
+      "flags": 0,
+      "reset": true,
+      "requests": [
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 640,
+          "height": 480,
+          "result": 2289436780
+        },
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 960,
+          "height": 720,
+          "result": 2289436780
+        },
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 1024,
+          "height": 768,
+          "result": 2289436780
+        },
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 1152,
+          "height": 864,
+          "result": 2289436780
+        },
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 1280,
+          "height": 960,
+          "result": 2289436780
+        },
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 1280,
+          "height": 1024,
+          "result": 2289436780
+        },
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 1600,
+          "height": 1024,
+          "result": 2289436780
+        },
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 1600,
+          "height": 1200,
+          "result": 2289436780
+        },
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 1920,
+          "height": 1080,
+          "result": 2289436780
+        },
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 1920,
+          "height": 1200,
+          "result": 2289436780
+        },
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 640,
+          "height": 480,
+          "result": 2289436780
+        },
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 960,
+          "height": 720,
+          "result": 2289436780
+        },
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 1024,
+          "height": 768,
+          "result": 2289436780
+        },
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 1152,
+          "height": 864,
+          "result": 2289436780
+        },
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 1280,
+          "height": 960,
+          "result": 2289436780
+        },
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 1280,
+          "height": 1024,
+          "result": 2289436780
+        },
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 1600,
+          "height": 1024,
+          "result": 2289436780
+        },
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 1600,
+          "height": 1200,
+          "result": 2289436780
+        },
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 1920,
+          "height": 1080,
+          "result": 2289436780
+        },
+        {
+          "reset": true,
+          "deviceType": null,
+          "behaviorFlags": null,
+          "width": 1920,
+          "height": 1200,
+          "result": 2289436780
+        }
+      ],
+      "releases": [],
+      "refreshes": [],
+      "result": 4294967295,
+      "selectedHardware": false,
+      "selectedDimensions": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "refresh-retry",
+      "failures": 0,
+      "flags": 0,
+      "badRefresh": true,
+      "requests": [
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 640,
+          "height": 480,
+          "result": 0
+        },
+        {
+          "reset": false,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "width": 960,
+          "height": 720,
+          "result": 0
+        }
+      ],
+      "releases": [
+        "device"
+      ],
+      "refreshes": [
+        75,
+        60
+      ],
+      "result": 0,
+      "selectedHardware": true,
+      "selectedDimensions": [
+        960,
+        720
+      ]
+    }
+  ],
+  "scope": "Complete actual Supervisor device create/reset and resolution retry owner. Controlled COM HRESULTs, GetDC/GetDeviceCaps/ReleaseDC and log boundaries; requested logical640x480, refresh60/75. Default HAL hardware0x40, HAL software0x20 and REF software0x20 observed through full owner; no actual retail live device/thread FPU or driver success claim."
+}

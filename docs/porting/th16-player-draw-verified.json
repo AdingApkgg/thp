@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "title": 16,
+  "completeGame": false,
+  "cases": 90,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "4eb6ab2e8572c69079f342fb47ecdcfe6a4cc15ef7733763da89fa9727ad6e78",
+  "scope": "Full443730 versus productionPlayerFrame::draw, world position, origin bits preservation and all five life states. Native468490 rendering controlled; portable fixture body disabled. Rendering pixels, body resource evolution and full gameplay excluded.",
+  "sourceHashes": {
+    "tests/cpp/th16-player-draw-fixture.cpp": "3ba2ff96f7a767f7c1d7c2d623f3d00f9b831b242a9cbfd83e01eb99e4524c5b",
+    "cpp/game/PlayerFrame.cpp": "ebbd6a4ddadef9d0e7848887613edf2b215a310d4099ac650e9fb804eae26e04",
+    "cpp/game/PlayerFrame.hpp": "069824ce405418b9784074217af2a0fa8e8f3359f21882506ae14d718c1cb492",
+    "cpp/game/ShtResource.cpp": "d3c3eb0103f4ea9eee6468c863a3ad8e9abb871f3245091290701ecb03161c9b",
+    "cpp/game/AnmManager.cpp": "6ec4cc2bb1f57c94fb281c9866b1f5c40cf13f50fec8539b58d32a9bb7b3a7f0"
+  },
+  "toolHashes": {
+    "tools/th16-player-draw-native.py": "b5053c09e32cb56104bf1b29bff1d58ad9fdf3cb03ca0ff14e405c50fe104700",
+    "tools/th16-player-draw-check.mjs": "601c3be73dcec0b1e54112619a173a2c1df4c70575f8c309ebc7e7848edd08d7"
+  }
+}

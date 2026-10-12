@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "entries": 36,
+  "controls": 462,
+  "boundaries": 36,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "5fc70008fab78958e96b67d1f73e4cceb750b357e4f7cc4456ea3fb7c6bb2695",
+  "scope": "Full actual462c00 and463020: seven stage/six loadout selection, history, 10/20/6 clock gates, cancellation, resumed stage route. Real cursor/stack/timer helpers; ANM allocation/lookup/interrupt services controlled. Does not prove subsequent spell selection/difficulty/gameplay or rendered ANMs. Production binds original ANMs and compares root script creation, state/cursors/history/loadout/remembered stage/resume/sounds. ANM interrupt/GPU output not compared.",
+  "sources": {
+    "runtimes/th12/th12_web/cpp/game/TitleTh14.cpp": "35220fcaa0def5293f2af6c41c03d163d70b5fe307388e401649f60918ac76e3",
+    "runtimes/th12/th12_web/cpp/game/TitleMenu.cpp": "5e428b5f94f01a74538c12fea31f3af0c5f7e8102f0385ab48e4ce352e65d063",
+    "runtimes/th12/th12_web/cpp/game/TitleMenu.hpp": "daeec9df278c4b570c7bccefc1b7cc00871b99c31ae4512744599439c5c8db27",
+    "runtimes/th12/th12_web/tests/cpp/th14-startup-fixture.cpp": "18e3f6481931ec1ce23cfe4e92a6af50772287d742eba9232419c344a6ee5cc0",
+    "tools/th14-title-spell-stage-native.py": "f247027566ae3c158a87f5ee0bef8ff8a5517851f07bb12819fa2f0568fb9480",
+    "tools/th14-title-spell-stage-check.mjs": "06ad83c40b88d76f906cdfa7c3907363d5cddaaa8106ff2d0d855279975ad5a1"
+  }
+}

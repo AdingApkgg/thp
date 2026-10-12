@@ -1,0 +1,92 @@
+{
+  "how": "tools/anm-flag-slots.py walks the handlers and counts stores by displacement",
+  "title": 16,
+  "realHandlers": 134,
+  "default": "0x4629c8",
+  "vmRegister": "ebx",
+  "positionSlot": "0x28",
+  "byHandlers": {
+    "0x538": 110,
+    "0x530": 103,
+    "0x540": 81,
+    "0x534": 60,
+    "0x544": 34,
+    "0x4a0": 26,
+    "0x568": 26,
+    "0x494": 20,
+    "0x54c": 15,
+    "0x5e8": 13,
+    "0x51c": 12,
+    "0x548": 10,
+    "0x5b0": 9,
+    "0x5ac": 9,
+    "0x5b8": 8,
+    "0x5bc": 8,
+    "0x554": 8,
+    "0x520": 7,
+    "0x522": 6,
+    "0x521": 6
+  },
+  "samples": {
+    "0x538": [
+      "mov dword ptr [edi + 0x538], ecx",
+      "mov dword ptr [edi + 0x538], ecx",
+      "mov dword ptr [edi + 0x538], ecx"
+    ],
+    "0x530": [
+      "and dword ptr [ebx + 0x530], 0xfffffffe",
+      "and dword ptr [ebx + 0x530], 0xfffffffe",
+      "or dword ptr [ebx + 0x530], 0x4000"
+    ],
+    "0x540": [
+      "mov dword ptr [ebx + 0x540], eax",
+      "mov dword ptr [ebx + 0x540], eax",
+      "add eax, dword ptr [ecx]   (pointer)"
+    ],
+    "0x534": [
+      "xor dword ptr [ebx + 0x534], eax",
+      "xor dword ptr [ebx + 0x534], eax",
+      "mov dword ptr [ecx + 0x534], eax"
+    ],
+    "0x544": [
+      "mov dword ptr [ebx + 0x544], eax",
+      "mov dword ptr [ebx + 0x544], eax",
+      "mov dword ptr [ebx + 0x544], eax"
+    ],
+    "0x4a0": [
+      "mov dword ptr [eax], esi   (pointer)",
+      "mov dword ptr [eax], esi   (pointer)",
+      "add dword ptr [eax], esi   (pointer)"
+    ],
+    "0x568": [
+      "mov dword ptr [ecx], edi   (pointer)",
+      "mov dword ptr [ecx], edi   (pointer)",
+      "mov dword ptr [ecx], edi   (pointer)"
+    ],
+    "0x494": [
+      "mov dword ptr [ebx + 0x494], eax",
+      "mov dword ptr [ebx + 0x494], eax",
+      "mov dword ptr [ebx + 0x494], eax"
+    ],
+    "0x54c": [
+      "mov dword ptr [ebx + 0x54c], 0",
+      "mov dword ptr [ebx + 0x54c], 0",
+      "mov dword ptr [ebx + 0x54c], 0"
+    ],
+    "0x5e8": [
+      "mov dword ptr [ebx + 0x5e8], 0",
+      "mov dword ptr [esi + 0x5e8], eax",
+      "mov dword ptr [esi + 0x5e8], eax"
+    ],
+    "0x51c": [
+      "mov dword ptr [esi + 0x51c], ecx",
+      "mov dword ptr [esi + 0x51c], ecx",
+      "mov dword ptr [esi + 0x51c], ecx"
+    ],
+    "0x548": [
+      "mov dword ptr [ebx + 0x548], 0",
+      "mov dword ptr [ebx + 0x548], 0",
+      "mov dword ptr [ebx + 0x548], 0"
+    ]
+  }
+}

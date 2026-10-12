@@ -1,0 +1,146 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "strictPixelsEqual": true,
+  "cases": 8192,
+  "pixels": 8388608,
+  "channels": 33554432,
+  "maxDelta": 0,
+  "suites": [
+    {
+      "lowAlpha": false,
+      "cases": 4096,
+      "pixels": 4194304,
+      "channels": 16777216,
+      "nativeByteCompareChecks": 4194304,
+      "rendererInitMs": 66.19999998807907,
+      "pixelsSha256": "6e2df2eeb5474509b943d1257b0cac610a6b22fb99ec4e3015d4a7ed4c86566f"
+    },
+    {
+      "lowAlpha": true,
+      "cases": 4096,
+      "pixels": 4194304,
+      "channels": 16777216,
+      "nativeByteCompareChecks": 4194304,
+      "rendererInitMs": 75.69999998807907,
+      "pixelsSha256": "13efd0486f9d4a34acb4372c6eab80a0c202020b95ce5c47febf447d1a92bc93"
+    }
+  ],
+  "before": {
+    "exactCases": 2750,
+    "differentCases": 1346,
+    "differentChannels": 13484,
+    "maxDelta": 251,
+    "wasmSha256": "9344d7c3d5e8eba44f103327202e9a3199e00bbf6956a49c795949926ab32b6e"
+  },
+  "sources": {
+    "runtimes/th12/th12_web/tests/cpp/th14-gpu-alpha-fixture.cpp": "fb4c468d37b637863bcdb4151aca1b8d5cc1c62454f9c5353798a51a91c2271f",
+    "runtimes/th12/portable/sdl/Renderer.cpp": "9bf8bc525bcf8d63b661e6bc5496e3925761b41ae886d44e2e4fcb8407066d68",
+    "runtimes/th12/th12_web/tests/cpp/th14-gpu-raster-fixture.cpp": "59aceebc47e01c15a5bfb5e3b6b04ce9af5d759a71b1186a897a854c0f262e71",
+    "runtimes/th12/portable/sdl/Renderer.hpp": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249",
+    "runtimes/th12/portable/sdl/AlphaConversion.hpp": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5",
+    "runtimes/th12/portable/sdl/GraphicsState.hpp": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31",
+    "runtimes/th12/portable/sdl/Shaders.hpp": "78f7648c27aa762c30493e6bf784baabdabdac63e2f683b2ed33470dca5aa252",
+    "runtimes/th12/portable/sdl/ResampleShader.hpp": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134",
+    "tools/th14-gpu-alpha-build.mjs": "238146f43d4888ba542e0e502eb25ce07ac05243cdcf2585ead556da0959cc77",
+    "tools/th14-gpu-alpha.html": "1a16d20833acdcb043a7e126e892e09ca92045a7148c62302f0aea27d117d775",
+    "tools/th14-gpu-alpha-serve.mjs": "d51a89210175cdc5547fd3a85d469268823069cd9a98e4a54f1b5b41c5f7a799"
+  },
+  "evidence": {
+    "artifacts/th14/gpu-alpha/native.json": {
+      "bytes": 712049,
+      "sha256": "5317af325080ad00b51b040fe604f46c4ae86eb9afaeb86ac1893899e8a1b69e"
+    },
+    "artifacts/th14/gpu-alpha/native.bgra": {
+      "bytes": 16777216,
+      "sha256": "6e2df2eeb5474509b943d1257b0cac610a6b22fb99ec4e3015d4a7ed4c86566f"
+    },
+    "artifacts/th14/gpu-alpha/build.json": {
+      "bytes": 2296,
+      "sha256": "a10173195418ef615e366c6164114fa2cfeefdd14155e62afc20cf4f1a746ff4"
+    },
+    "artifacts/th14/gpu-alpha/gpu.wasm": {
+      "bytes": 763269,
+      "sha256": "d871b7cb434a78ba51b4644b6d618cc1ca7d418f76d38452c8f5ab0a0fdca521"
+    },
+    "artifacts/th14/gpu-alpha/gpu.mjs": {
+      "bytes": 211517,
+      "sha256": "a202674b5ea7651171be6126bcb70932df764626ae1d41159aa7a35b0428744b"
+    },
+    "artifacts/th14/gpu-alpha/browser-result.json": {
+      "bytes": 17911,
+      "sha256": "00089b22977624e0785537da0852d2ad194303db42bff9d34271a650ff8585bf"
+    },
+    "artifacts/th14/gpu-alpha/browser.png": {
+      "bytes": 163209,
+      "sha256": "e0b54ce6925eb540084893baa0e186ab75abd652585fe699598b90f3016671d6"
+    },
+    "artifacts/th14/gpu-alpha/browser-logs.json": {
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "artifacts/th14/gpu-alpha/browser-result-before.json": {
+      "bytes": 14668,
+      "sha256": "c3f4e5094b5361dfac3f1792229d19509f6fa78fdb0a70c2dd30a98d6caac757"
+    },
+    "artifacts/th14/gpu-alpha/browser-before.png": {
+      "bytes": 92385,
+      "sha256": "c8bd1664cf7283c0ecc7bf12e0dccd0ace1c2de4d3ea1a36c24c336f17199d61"
+    },
+    "artifacts/th14/gpu-alpha/before/build.json": {
+      "bytes": 2027,
+      "sha256": "9620bc5884ec96f92e78d5ebee5c4903bd1b7d55eee7f0e4712921477189ed6f"
+    },
+    "artifacts/th14/gpu-alpha/before/gpu.wasm": {
+      "bytes": 755453,
+      "sha256": "9344d7c3d5e8eba44f103327202e9a3199e00bbf6956a49c795949926ab32b6e"
+    },
+    "artifacts/th14/gpu-alpha/before/gpu.mjs": {
+      "bytes": 210771,
+      "sha256": "7c14033ef50ac4e9df02a7adfff0463aeac116a0129f8d3bb170b80920f85eec"
+    },
+    "artifacts/th14/gpu-alpha/before/Renderer.cpp": {
+      "bytes": 28460,
+      "sha256": "83a9bb962a221c0a7d400bfa647e9c0537df9e28e1d67f69500c605e8f91dc40"
+    },
+    "artifacts/th14/gpu-alpha/before/native.json": {
+      "bytes": 712027,
+      "sha256": "664f77322070856548afecd74a1167758dd46cd457fd5c85398005139eca2394"
+    },
+    "artifacts/th14/gpu-alpha/before/native.bgra": {
+      "bytes": 16777216,
+      "sha256": "6e2df2eeb5474509b943d1257b0cac610a6b22fb99ec4e3015d4a7ed4c86566f"
+    },
+    "artifacts/th14/gpu-alpha/before/th14-gpu-alpha-native.py": {
+      "bytes": 6129,
+      "sha256": "f9e1b3f3ac58a66d5ae36044a5217eecb1fcee263b439644dec5559d1b07f20c"
+    },
+    "artifacts/th14/gpu-alpha/browser-result-alpha-conversion.json": {
+      "bytes": 24742,
+      "sha256": "793485eed900708311bcd331767955f43c7eb24b303e03df71985d63c4b85cb6"
+    },
+    "artifacts/th14/gpu-alpha-low/native.json": {
+      "bytes": 712018,
+      "sha256": "37e174de39d7a46232120346fafcda51fd16eac2a615d598feaa549457287320"
+    },
+    "artifacts/th14/gpu-alpha-low/native.bgra": {
+      "bytes": 16777216,
+      "sha256": "13efd0486f9d4a34acb4372c6eab80a0c202020b95ce5c47febf447d1a92bc93"
+    },
+    "artifacts/th14/gpu-alpha-low/browser-result.json": {
+      "bytes": 17802,
+      "sha256": "7597eddb71466ef5e24c28b340ed16d981d02f48a575ae3d01164ff84a2145f6"
+    },
+    "artifacts/th14/gpu-alpha-low/browser.png": {
+      "bytes": 160841,
+      "sha256": "2acf58268c88ae1cfea34fbd89ba71be71843844320db145eb74cd6c2fdf162c"
+    }
+  },
+  "scope": "Actual production SDL/WebGL Renderer compared byte-for-byte against actual offscreen D3D9 HAL alpha-test images:8 compares x256 references x2 combiner operations x normal/0..3 texture alpha. Measured RGBA8 conversion boundaries are used by both generic and warmed production shaders. Original reference for the failing suite is unchanged.",
+  "limits": [
+    "Separate D3D9 fixture, not an original-game draw-loop or complete-frame capture",
+    "Current local D3D9 and WebGL devices only; other drivers, target formats, world/depth/fog/text/resampling and full TH14 1:1 remain unproved",
+    "Full game release integration is checked separately; this module is a raster diagnostic with no game simulation"
+  ]
+}

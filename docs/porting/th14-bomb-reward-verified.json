@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "cases": 1059,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "bcadead5b2ac35fdc6ca3efecc0912d945f51babf880cfe149d3a1600f0bfb14",
+  "scope": "Retail 41ae00 reward types 0/1/2/3 and unknown type 4 versus production ItemManager. Signed wrapping reward/spawn counters, every-fifth ordinary power allocation, spell gating, single/double cancel items, full/one/two-slot pools, RNG consumption, delay thresholds and nonfinite/edge positions. Actual native ordinary factory and reward pool execute; ANM resource delivery is controlled. Complete Bomb animation, time freeze and damage geometry remain unverified.",
+  "sourceHashes": {
+    "tests/cpp/th14-bomb-reward-fixture.cpp": "0f5f364a48e03a9c4c912a821561a677cd2e7a602eb9c7483079bef780475bd8",
+    "cpp/game/ItemManager.hpp": "73ce81a8ad7bb6483a6c208d48d31a6e003b4730a076300a0a09eb88181226f7",
+    "cpp/game/ItemManager.cpp": "810830b528d19e55558f18e89bd110ed97f6e57ce7967ac6d8a98e478d6bc6b9",
+    "cpp/game/ItemTh14.cpp": "032d93218fa9b1b30c6b75406749861c5f253b486a0e90b9a2bf1ace5f6122eb",
+    "cpp/game/BulletManager.hpp": "a0b56133c830f3d73510ad1375c21c4f270b72589a30e357e8f5115727963814",
+    "cpp/game/BulletTh14.cpp": "2eb7e1af01968a75003dadc0ed88143f21d3eb5665abb95547ba5e7a9c475b03",
+    "cpp/game/GameBattle.hpp": "de1a6bbd8a4e9934967106d9b8c756be2708c93c90d7092e04fa81b27ed1a087"
+  },
+  "toolHashes": {
+    "tools/th14-bomb-reward-native.py": "46533f27ec04d368e0a40c715671ef141974e8c49ab040e37d34a0e52547cc67",
+    "tools/th14-bomb-reward-check.mjs": "cb93b72514bf8759c551ef11a8c11ad319fc4f1e3eebef350d48c73f027d362b"
+  }
+}

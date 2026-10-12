@@ -1,0 +1,975 @@
+{
+  "instrument": "tools/th-twin-global.py",
+  "method": "a global has no instructions, so its counterpart is found through the code that reads it: for each reference site, the same engine function in the other title matches on its literal bytes, and the twin's bytes where the source held the address are the counterpart address. Sites that agree decide; candidates needing a fourth of the sites to agree are marked ready.",
+  "measuredWith": "--span 30 --sites 8 --scan 40 (window length 30, raw sites capped at 40 for speed; the decisive-site count is printed per row)",
+  "checks": [
+    "same-title: every decoded site returns the input address (th12 0x4b0c90)",
+    "the animation manager pointer th11 0x4c3268 (342 references) decodes to th12 0x4ce8cc at 89 sites against 1 for the runner-up"
+  ],
+  "rows": [
+    {
+      "source": "th11",
+      "sourceAddress": "0x4a3828",
+      "references": 10,
+      "target": "th12",
+      "targetAddress": "0x004aebf0",
+      "agreeingSites": 3,
+      "ready": true,
+      "candidates": [
+        {
+          "address": "0x004aebf0",
+          "sites": 3,
+          "of": 10
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4a5710",
+      "references": 40,
+      "target": "th12",
+      "targetAddress": null,
+      "agreeingSites": 0,
+      "ready": false,
+      "candidates": [],
+      "checkedSites": 0
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4a5714",
+      "references": 40,
+      "target": "th12",
+      "targetAddress": "0x0c900d8b",
+      "agreeingSites": 2,
+      "ready": false,
+      "candidates": [],
+      "checkedSites": 0
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4a5720",
+      "references": 40,
+      "target": "th12",
+      "targetAddress": "0x004b0ca8",
+      "agreeingSites": 7,
+      "ready": false,
+      "candidates": [],
+      "checkedSites": 0
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4a5728",
+      "references": 40,
+      "target": "th12",
+      "targetAddress": "0x004b0cb0",
+      "agreeingSites": 7,
+      "ready": false,
+      "candidates": [],
+      "checkedSites": 0
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4a5730",
+      "references": 21,
+      "target": "th12",
+      "targetAddress": "0x004b0cb8",
+      "agreeingSites": 2,
+      "ready": false,
+      "candidates": [],
+      "checkedSites": 0
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4a5738",
+      "references": 9,
+      "target": "th12",
+      "targetAddress": "0x0000048c",
+      "agreeingSites": 1,
+      "ready": false,
+      "candidates": [],
+      "checkedSites": 0
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4a5758",
+      "references": 40,
+      "target": "th12",
+      "targetAddress": "0x004b0ce0",
+      "agreeingSites": 6,
+      "ready": false,
+      "candidates": [
+        {
+          "address": "0x004b0ce0",
+          "sites": 1,
+          "of": 1
+        }
+      ],
+      "checkedSites": 1
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4a7948",
+      "references": 40,
+      "target": "th12",
+      "targetAddress": "0x004b2ed0",
+      "agreeingSites": 22,
+      "ready": true,
+      "candidates": [
+        {
+          "address": "0x004b2ed0",
+          "sites": 22,
+          "of": 22
+        }
+      ],
+      "checkedSites": 22
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4a8d58",
+      "references": 40,
+      "target": "th12",
+      "targetAddress": "0x004b43b8",
+      "agreeingSites": 0,
+      "ready": true,
+      "candidates": [],
+      "checkedSites": 0,
+      "derivedFrom": [
+        "0x004a8d5c",
+        "0x004a8d60",
+        "0x004a8d7c",
+        "0x004a8d80",
+        "0x004a8e88",
+        "0x004a8e94",
+        "0x004a8eb4"
+      ],
+      "derivation": "block shift 0x+b660 measured on 7 settled neighbour(s) inside 0x800; the row has no instruction-aligned, shape-matching site of its own"
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4a8d5c",
+      "references": 9,
+      "target": "th12",
+      "targetAddress": "0x004b43bc",
+      "agreeingSites": 3,
+      "ready": true,
+      "candidates": [
+        {
+          "address": "0x004b43bc",
+          "sites": 3,
+          "of": 9
+        },
+        {
+          "address": "0x00c06856",
+          "sites": 1,
+          "of": 9
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4a8d60",
+      "references": 17,
+      "target": "th12",
+      "targetAddress": "0x004b43c0",
+      "agreeingSites": 6,
+      "ready": true,
+      "candidates": [
+        {
+          "address": "0x004b43c0",
+          "sites": 6,
+          "of": 17
+        },
+        {
+          "address": "0x004b4514",
+          "sites": 1,
+          "of": 17
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4a8d7c",
+      "references": 40,
+      "target": "th12",
+      "targetAddress": "0x004b43dc",
+      "agreeingSites": 7,
+      "ready": true,
+      "candidates": [
+        {
+          "address": "0x004b43dc",
+          "sites": 7,
+          "of": 7
+        }
+      ],
+      "checkedSites": 7
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4a8d80",
+      "references": 18,
+      "target": "th12",
+      "targetAddress": "0x004b43e0",
+      "agreeingSites": 8,
+      "ready": true,
+      "candidates": [
+        {
+          "address": "0x004b43e0",
+          "sites": 8,
+          "of": 18
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4a8d84",
+      "references": 40,
+      "target": "th12",
+      "targetAddress": "0x004b43e4",
+      "agreeingSites": 0,
+      "ready": true,
+      "candidates": [],
+      "checkedSites": 0,
+      "derivedFrom": [
+        "0x004a8d5c",
+        "0x004a8d60",
+        "0x004a8d7c",
+        "0x004a8d80",
+        "0x004a8e88",
+        "0x004a8e94",
+        "0x004a8eb4"
+      ],
+      "derivation": "block shift 0x+b660 measured on 7 settled neighbour(s) inside 0x800; the row has no instruction-aligned, shape-matching site of its own"
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4a8d88",
+      "references": 4,
+      "target": "th12",
+      "targetAddress": "0x004b43e8",
+      "agreeingSites": 0,
+      "ready": true,
+      "candidates": [],
+      "checkedSites": 0,
+      "derivedFrom": [
+        "0x004a8d5c",
+        "0x004a8d60",
+        "0x004a8d7c",
+        "0x004a8d80",
+        "0x004a8e88",
+        "0x004a8e94",
+        "0x004a8eb4"
+      ],
+      "derivation": "block shift 0x+b660 measured on 7 settled neighbour(s) inside 0x800; the row has no instruction-aligned, shape-matching site of its own"
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4a8e88",
+      "references": 40,
+      "target": "th12",
+      "targetAddress": "0x004b44e8",
+      "agreeingSites": 2,
+      "ready": true,
+      "candidates": [
+        {
+          "address": "0x004b44e8",
+          "sites": 2,
+          "of": 2
+        }
+      ],
+      "checkedSites": 2
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4a8e94",
+      "references": 35,
+      "target": "th12",
+      "targetAddress": "0x004b44f4",
+      "agreeingSites": 3,
+      "ready": true,
+      "candidates": [
+        {
+          "address": "0x004b44f4",
+          "sites": 3,
+          "of": 3
+        }
+      ],
+      "checkedSites": 3
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4a8eb4",
+      "references": 40,
+      "target": "th12",
+      "targetAddress": "0x004b4514",
+      "agreeingSites": 2,
+      "ready": true,
+      "candidates": [
+        {
+          "address": "0x004b4514",
+          "sites": 2,
+          "of": 2
+        }
+      ],
+      "checkedSites": 2
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4a8ebc",
+      "references": 40,
+      "target": "th12",
+      "targetAddress": "0x004b451c",
+      "agreeingSites": 0,
+      "ready": true,
+      "candidates": [
+        {
+          "address": "0x004b451c",
+          "sites": 1,
+          "of": 1
+        }
+      ],
+      "checkedSites": 0,
+      "derivedFrom": [
+        "0x004a8d5c",
+        "0x004a8d60",
+        "0x004a8d7c",
+        "0x004a8d80",
+        "0x004a8e88",
+        "0x004a8e94",
+        "0x004a8eb4"
+      ],
+      "derivation": "block shift 0x+b660 measured on 7 settled neighbour(s) inside 0x800; the row has no instruction-aligned, shape-matching site of its own"
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4a8ec8",
+      "references": 30,
+      "target": "th12",
+      "targetAddress": "0x004b4528",
+      "agreeingSites": 0,
+      "ready": true,
+      "candidates": [],
+      "checkedSites": 0,
+      "derivedFrom": [
+        "0x004a8d5c",
+        "0x004a8d60",
+        "0x004a8d7c",
+        "0x004a8d80",
+        "0x004a8e88",
+        "0x004a8e94",
+        "0x004a8eb4"
+      ],
+      "derivation": "block shift 0x+b660 measured on 7 settled neighbour(s) inside 0x800; the row has no instruction-aligned, shape-matching site of its own"
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4c2ef8",
+      "references": 8,
+      "target": "th12",
+      "targetAddress": "0x004ce560",
+      "agreeingSites": 4,
+      "ready": true,
+      "candidates": [
+        {
+          "address": "0x004ce560",
+          "sites": 4,
+          "of": 8
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4c2f00",
+      "references": 40,
+      "target": "th12",
+      "targetAddress": "0x004a3ce0",
+      "agreeingSites": 3,
+      "ready": false,
+      "candidates": [
+        {
+          "address": "0x004ce568",
+          "sites": 1,
+          "of": 1
+        }
+      ],
+      "checkedSites": 1
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4c3234",
+      "references": 40,
+      "target": "th12",
+      "targetAddress": "0x004ce89c",
+      "agreeingSites": 1,
+      "ready": false,
+      "candidates": [],
+      "checkedSites": 0
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4c3268",
+      "references": 40,
+      "target": "th12",
+      "targetAddress": "0x004ce8cc",
+      "agreeingSites": 4,
+      "ready": true,
+      "candidates": [
+        {
+          "address": "0x004ce8cc",
+          "sites": 4,
+          "of": 4
+        }
+      ],
+      "checkedSites": 4
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4c3280",
+      "references": 40,
+      "target": "th12",
+      "targetAddress": "0x004ce8e8",
+      "agreeingSites": 2,
+      "ready": true,
+      "candidates": [
+        {
+          "address": "0x004ce8e8",
+          "sites": 2,
+          "of": 2
+        }
+      ],
+      "checkedSites": 2
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4c3288",
+      "references": 40,
+      "target": "th12",
+      "targetAddress": "0x004ce8f0",
+      "agreeingSites": 1,
+      "ready": true,
+      "candidates": [
+        {
+          "address": "0x004ce8f0",
+          "sites": 1,
+          "of": 1
+        }
+      ],
+      "checkedSites": 1,
+      "evidence": "settled by three independent supports rather than by the two-site rule: (1) one instruction-aligned shape-matching reference site agrees on 0x4ce8f0 (tools/th-twin-globals-table.py), (2) the behavioural proof from a failing run - bomb-controller writes a pointer through touch(0x4c3288) and the th12 code at 0x45fbff then dereferences [0x4ce8f0], which is 0 when the write lands at the untranslated th11 address, so the two addresses are the same global by behaviour, and (3) the shift +0xb668 measured on its settled neighbours 0x4c3280 -> 0x4ce8e8 and 0x4c3810 -> 0x4cee78",
+      "derivation": "behavioural correspondence at the trap site plus the neighbour shift; the site count alone (1) did not meet the two-site write condition"
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4c342c",
+      "references": 15,
+      "target": "th12",
+      "targetAddress": "0x004cea94",
+      "agreeingSites": 6,
+      "ready": true,
+      "candidates": [
+        {
+          "address": "0x004cea94",
+          "sites": 6,
+          "of": 15
+        },
+        {
+          "address": "0x004cea98",
+          "sites": 1,
+          "of": 15
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4c343c",
+      "references": 11,
+      "target": "th12",
+      "targetAddress": "0x004ceaa4",
+      "agreeingSites": 2,
+      "ready": false,
+      "candidates": [],
+      "checkedSites": 0
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4c37d8",
+      "references": 28,
+      "target": "th12",
+      "targetAddress": "0x004cee40",
+      "agreeingSites": 7,
+      "ready": true,
+      "candidates": [
+        {
+          "address": "0x004cee40",
+          "sites": 7,
+          "of": 28
+        },
+        {
+          "address": "0x0001b80e",
+          "sites": 1,
+          "of": 28
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4c37e4",
+      "references": 11,
+      "target": "th12",
+      "targetAddress": "0x004cee4c",
+      "agreeingSites": 3,
+      "ready": true,
+      "candidates": [
+        {
+          "address": "0x004cee4c",
+          "sites": 3,
+          "of": 11
+        },
+        {
+          "address": "0x0088ed4c",
+          "sites": 1,
+          "of": 11
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4c3808",
+      "references": 19,
+      "target": "th12",
+      "targetAddress": "0x00001074",
+      "agreeingSites": 1,
+      "ready": false,
+      "candidates": [],
+      "withdrawn": "the candidate 0x00001074 came from a twin site that is not an instruction start (th12 0x407b4d disassembles as int3 padding), so the emulator decoded noise; 0x1074 is also below the guest window and cannot be a global. The row stays as a candidate; touch() now skips unsettled rows and impossible targets, and eleven suites that wrote to 0x1074 read the fixture's own constant instead.",
+      "checkedSites": 0
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4c3810",
+      "references": 40,
+      "target": "th12",
+      "targetAddress": "0x004cee78",
+      "agreeingSites": 2,
+      "ready": true,
+      "candidates": [
+        {
+          "address": "0x004cee78",
+          "sites": 2,
+          "of": 2
+        }
+      ],
+      "checkedSites": 2
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4c93c0",
+      "references": 23,
+      "target": "th12",
+      "targetAddress": "0x004d49d0",
+      "agreeingSites": 4,
+      "ready": false,
+      "candidates": [],
+      "checkedSites": 0
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4c93cc",
+      "references": 8,
+      "target": "th12",
+      "targetAddress": "0x004d49dc",
+      "agreeingSites": 2,
+      "ready": true,
+      "candidates": [
+        {
+          "address": "0x004d49dc",
+          "sites": 2,
+          "of": 8
+        },
+        {
+          "address": "0x0c408bcc",
+          "sites": 1,
+          "of": 8
+        },
+        {
+          "address": "0x004d49d0",
+          "sites": 1,
+          "of": 8
+        }
+      ]
+    }
+  ],
+  "regionVote": [
+    {
+      "sourceRegion": "0x4a3000",
+      "targetRegion": "0x4a0000",
+      "rows": 1,
+      "decisiveSites": 3,
+      "deltaRange": [
+        "0xb3c8",
+        "0xb3c8"
+      ],
+      "evidence": [
+        {
+          "sourceAddress": "0x4a3828",
+          "targetAddress": "0x004aebf0",
+          "agreeingSites": 3,
+          "references": 10
+        }
+      ],
+      "orderPreserved": true
+    },
+    {
+      "sourceRegion": "0x4a5000",
+      "targetRegion": "0x0",
+      "rows": 1,
+      "decisiveSites": 1,
+      "deltaRange": [
+        "-0x4a52ac",
+        "-0x4a52ac"
+      ],
+      "evidence": [
+        {
+          "sourceAddress": "0x4a5738",
+          "targetAddress": "0x0000048c",
+          "agreeingSites": 1,
+          "references": 9
+        }
+      ],
+      "orderPreserved": true
+    },
+    {
+      "sourceRegion": "0x4a5000",
+      "targetRegion": "0x4b0000",
+      "rows": 4,
+      "decisiveSites": 22,
+      "deltaRange": [
+        "0xb588",
+        "0xb588"
+      ],
+      "evidence": [
+        {
+          "sourceAddress": "0x4a5720",
+          "targetAddress": "0x004b0ca8",
+          "agreeingSites": 7,
+          "references": 40
+        },
+        {
+          "sourceAddress": "0x4a5728",
+          "targetAddress": "0x004b0cb0",
+          "agreeingSites": 7,
+          "references": 40
+        },
+        {
+          "sourceAddress": "0x4a5730",
+          "targetAddress": "0x004b0cb8",
+          "agreeingSites": 2,
+          "references": 21
+        },
+        {
+          "sourceAddress": "0x4a5758",
+          "targetAddress": "0x004b0ce0",
+          "agreeingSites": 6,
+          "references": 40
+        }
+      ],
+      "orderPreserved": true
+    },
+    {
+      "sourceRegion": "0x4a5000",
+      "targetRegion": "0xc900000",
+      "rows": 1,
+      "decisiveSites": 2,
+      "deltaRange": [
+        "0xc45b677",
+        "0xc45b677"
+      ],
+      "evidence": [
+        {
+          "sourceAddress": "0x4a5714",
+          "targetAddress": "0x0c900d8b",
+          "agreeingSites": 2,
+          "references": 40
+        }
+      ],
+      "orderPreserved": true
+    },
+    {
+      "sourceRegion": "0x4a7000",
+      "targetRegion": "0x4b0000",
+      "rows": 1,
+      "decisiveSites": 8,
+      "deltaRange": [
+        "0xb588",
+        "0xb588"
+      ],
+      "evidence": [
+        {
+          "sourceAddress": "0x4a7948",
+          "targetAddress": "0x004b2ed0",
+          "agreeingSites": 8,
+          "references": 40
+        }
+      ],
+      "orderPreserved": true
+    },
+    {
+      "sourceRegion": "0x4a8000",
+      "targetRegion": "0x4b0000",
+      "rows": 11,
+      "decisiveSites": 71,
+      "deltaRange": [
+        "0xb660",
+        "0xb664"
+      ],
+      "evidence": [
+        {
+          "sourceAddress": "0x4a8d58",
+          "targetAddress": "0x004b43b8",
+          "agreeingSites": 8,
+          "references": 40
+        },
+        {
+          "sourceAddress": "0x4a8d5c",
+          "targetAddress": "0x004b43bc",
+          "agreeingSites": 3,
+          "references": 9
+        },
+        {
+          "sourceAddress": "0x4a8d60",
+          "targetAddress": "0x004b43c0",
+          "agreeingSites": 6,
+          "references": 17
+        },
+        {
+          "sourceAddress": "0x4a8d7c",
+          "targetAddress": "0x004b43dc",
+          "agreeingSites": 6,
+          "references": 40
+        },
+        {
+          "sourceAddress": "0x4a8d80",
+          "targetAddress": "0x004b43e0",
+          "agreeingSites": 8,
+          "references": 18
+        },
+        {
+          "sourceAddress": "0x4a8d84",
+          "targetAddress": "0x004b43e4",
+          "agreeingSites": 6,
+          "references": 40
+        },
+        {
+          "sourceAddress": "0x4a8e88",
+          "targetAddress": "0x004b44e8",
+          "agreeingSites": 8,
+          "references": 40
+        },
+        {
+          "sourceAddress": "0x4a8e94",
+          "targetAddress": "0x004b44f4",
+          "agreeingSites": 8,
+          "references": 35
+        },
+        {
+          "sourceAddress": "0x4a8eb4",
+          "targetAddress": "0x004b4514",
+          "agreeingSites": 4,
+          "references": 40
+        },
+        {
+          "sourceAddress": "0x4a8ebc",
+          "targetAddress": "0x004b451c",
+          "agreeingSites": 8,
+          "references": 40
+        },
+        {
+          "sourceAddress": "0x4a8ec8",
+          "targetAddress": "0x004b452c",
+          "agreeingSites": 6,
+          "references": 30
+        }
+      ],
+      "orderPreserved": true
+    },
+    {
+      "sourceRegion": "0x4a8000",
+      "targetRegion": "0x1030000",
+      "rows": 1,
+      "decisiveSites": 1,
+      "deltaRange": [
+        "0xb8cf05",
+        "0xb8cf05"
+      ],
+      "evidence": [
+        {
+          "sourceAddress": "0x4a8d88",
+          "targetAddress": "0x01035c8d",
+          "agreeingSites": 1,
+          "references": 4
+        }
+      ],
+      "orderPreserved": true
+    },
+    {
+      "sourceRegion": "0x4c2000",
+      "targetRegion": "0x4a0000",
+      "rows": 1,
+      "decisiveSites": 3,
+      "deltaRange": [
+        "-0x1f220",
+        "-0x1f220"
+      ],
+      "evidence": [
+        {
+          "sourceAddress": "0x4c2f00",
+          "targetAddress": "0x004a3ce0",
+          "agreeingSites": 3,
+          "references": 40
+        }
+      ],
+      "orderPreserved": true
+    },
+    {
+      "sourceRegion": "0x4c2000",
+      "targetRegion": "0x4c0000",
+      "rows": 1,
+      "decisiveSites": 4,
+      "deltaRange": [
+        "0xb668",
+        "0xb668"
+      ],
+      "evidence": [
+        {
+          "sourceAddress": "0x4c2ef8",
+          "targetAddress": "0x004ce560",
+          "agreeingSites": 4,
+          "references": 8
+        }
+      ],
+      "orderPreserved": true
+    },
+    {
+      "sourceRegion": "0x4c3000",
+      "targetRegion": "0x0",
+      "rows": 1,
+      "decisiveSites": 1,
+      "deltaRange": [
+        "-0x4c2794",
+        "-0x4c2794"
+      ],
+      "evidence": [
+        {
+          "sourceAddress": "0x4c3808",
+          "targetAddress": "0x00001074",
+          "agreeingSites": 1,
+          "references": 19
+        }
+      ],
+      "orderPreserved": true
+    },
+    {
+      "sourceRegion": "0x4c3000",
+      "targetRegion": "0x4c0000",
+      "rows": 9,
+      "decisiveSites": 43,
+      "deltaRange": [
+        "0xb664",
+        "0xb668"
+      ],
+      "evidence": [
+        {
+          "sourceAddress": "0x4c3234",
+          "targetAddress": "0x004ce89c",
+          "agreeingSites": 1,
+          "references": 40
+        },
+        {
+          "sourceAddress": "0x4c3268",
+          "targetAddress": "0x004ce8cc",
+          "agreeingSites": 7,
+          "references": 40
+        },
+        {
+          "sourceAddress": "0x4c3280",
+          "targetAddress": "0x004ce8e8",
+          "agreeingSites": 8,
+          "references": 40
+        },
+        {
+          "sourceAddress": "0x4c3288",
+          "targetAddress": "0x004ce8f0",
+          "agreeingSites": 8,
+          "references": 40
+        },
+        {
+          "sourceAddress": "0x4c342c",
+          "targetAddress": "0x004cea94",
+          "agreeingSites": 6,
+          "references": 15
+        },
+        {
+          "sourceAddress": "0x4c343c",
+          "targetAddress": "0x004ceaa4",
+          "agreeingSites": 2,
+          "references": 11
+        },
+        {
+          "sourceAddress": "0x4c37d8",
+          "targetAddress": "0x004cee40",
+          "agreeingSites": 7,
+          "references": 28
+        },
+        {
+          "sourceAddress": "0x4c37e4",
+          "targetAddress": "0x004cee4c",
+          "agreeingSites": 3,
+          "references": 11
+        },
+        {
+          "sourceAddress": "0x4c3810",
+          "targetAddress": "0x004cee78",
+          "agreeingSites": 1,
+          "references": 40
+        }
+      ],
+      "orderPreserved": true
+    },
+    {
+      "sourceRegion": "0x4c9000",
+      "targetRegion": "0x4d0000",
+      "rows": 2,
+      "decisiveSites": 6,
+      "deltaRange": [
+        "0xb610",
+        "0xb610"
+      ],
+      "evidence": [
+        {
+          "sourceAddress": "0x4c93c0",
+          "targetAddress": "0x004d49d0",
+          "agreeingSites": 4,
+          "references": 23
+        },
+        {
+          "sourceAddress": "0x4c93cc",
+          "targetAddress": "0x004d49dc",
+          "agreeingSites": 2,
+          "references": 8
+        }
+      ],
+      "orderPreserved": true
+    }
+  ],
+  "orderPreserved": false,
+  "calibration": {
+    "address": "0x4c3268",
+    "uncappedScan": "0x004ce8cc at 11/342 sites",
+    "references": 342,
+    "cappedScanRow": [
+      "0x004ce8cc"
+    ],
+    "note": "both scans must name the same address; the capped one is the row in this table"
+  },
+  "measurementNote": "with the raw-site cap a run ranks candidates by the first occurrences of a plain value in .text, so a single row is a candidate; the region vote and the order check across rows, and the calibration field (the one address the uncapped instrument is quoted on), are what the table asserts.",
+  "orderPreservedMajor": true
+}

@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
+import {resolve,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {WASI} from 'node:wasi';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..'),rt=resolve(root,'runtimes/th12/th12_web'),out=resolve(root,'artifacts/th16/effect-install-check');mkdirSync(out,{recursive:true});
+const python=process.env.TH_NATIVE_PYTHON;if(!python)throw Error('set TH_NATIVE_PYTHON');execFileSync(python,['tools/th16-anm-effect-install-native.py'],{cwd:root,stdio:'inherit',windowsHide:true});
+const proof=JSON.parse(readFileSync(resolve(root,'artifacts/th16/effect-install-native.json'),'utf8')),sources=['AnmVm','AnmResource','AnmInterpreter','AnmGeometry','AnmManager','Interpolation'].map(n=>`cpp/game/${n}.cpp`),fixture='tests/cpp/th16-anm-effect-install-fixture.cpp',wasm=resolve(out,'effects.wasm');
+execFileSync(resolve(rt,'../tools/wasi-sdk-34.0-x86_64-windows/bin/clang++.exe'),['--target=wasm32-wasip1','-std=c++17','-O2','-ffp-contract=off','-fno-strict-aliasing','-fno-exceptions','-fno-rtti','-mexec-model=reactor','-Wl,--no-entry','-Wl,--export-memory','-DPORT_TITLE=16',...sources,fixture,'-o',wasm],{cwd:rt,stdio:'inherit',windowsHide:true,env:{...process.env,TEMP:out,TMP:out,TMPDIR:out}});
+const bytes=readFileSync(wasm),wasi=new WASI({version:'preview1',args:[],env:{},preopens:{}}),{instance}=await WebAssembly.instantiate(bytes,{wasi_snapshot_preview1:wasi.wasiImport});wasi.initialize(instance);const c=instance.exports;
+for(const row of proof.rows){const label=JSON.stringify({flags:row.flags,flags2:row.flags2,refs:row.refs});assert.equal(c.run(row.flags,row.flags2,row.refs,1),0,label+' controlled stop');assert.equal(c.size(),row.size,label+' bytes');assert.equal(c.flags()>>>0,row.afterFlags,label+' flags');assert.equal(c.flags2()>>>0,row.afterFlags2,label+' flags2');row.selectors.forEach((n,i)=>assert.equal(c.selector(i),n,label+` selector ${i}`));row.words.forEach((n,i)=>assert.equal(c.word(i)>>>0,n,label+` allocation word ${i}`));assert.equal(c.next_update(),-1,label+' unimplemented particle callback fails explicitly');}
+for(const type of [0,2,3,-1,4])assert.equal(c.run(0,0,0,type),-1,`unsupported effect ${type}`);
+const sha=b=>createHash('sha256').update(b).digest('hex'),tracked=[...sources,fixture,...['AnmVm','AnmOpcodes','AnmManager','AnmResource','AnmGeometry','AnmTrace','Interpolation','Timer','Types','Rng','PortTitle','Th16AnmDispatch'].map(n=>`cpp/game/${n}.hpp`)];
+writeFileSync(resolve(root,'docs/porting/th16-anm-effect-install-verified.json'),JSON.stringify({passed:true,title:16,completeGame:false,cases:proof.rows.length,scope:proof.scope,nativeExecutableSha256:proof.executableSha256,wasmSha256:sha(bytes),sourceHashes:Object.fromEntries(tracked.map(n=>[n,sha(readFileSync(resolve(rt,n)))])),toolHashes:Object.fromEntries(['tools/th16-anm-effect-install-check.mjs','tools/th16-anm-effect-install-native.py','tools/th-anm-handlers.py'].map(n=>[n,sha(readFileSync(resolve(root,n)))]))},null,2)+'\n');console.log(`PASS ${proof.rows.length} native TH16 effect-1 installation cases (callbacks remain explicit errors)`);

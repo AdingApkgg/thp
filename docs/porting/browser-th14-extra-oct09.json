@@ -1,0 +1,62 @@
+{
+  "verified": false,
+  "date": "2026-10-09",
+  "url": "http://127.0.0.1:8126/",
+  "title": "东方辉针城 · 移植验证",
+  "latestLoadedBuild": {
+    "bytes": 1661230,
+    "sha256": "70353994922557fd523252939625e4a3a7da55e91d639f660b14d854ed6babee",
+    "scope": "Local SDL package rebuilt after MSG 32, ECL 568/564/802 and callback 6 parameter writes; reloaded from the no-store local server. Full gameplay remains unverified."
+  },
+  "normalStartEarlierBuild": {
+    "bytes": 1661018,
+    "sha256": "c85a04f714bc201e8d0c77eabea7f8e91edbd6ac702019b16c38a278e6aef84e",
+    "path": [
+      "Game Start",
+      "Normal",
+      "Reimu",
+      "Reimu A",
+      "Stage 1"
+    ],
+    "invulnerabilityOverride": false,
+    "shootInput": false,
+    "observedStageFrame": 1292,
+    "observedStatus": "60 FPS stage=1 frame=1292",
+    "engineErrorObserved": false,
+    "screenshot": "artifacts/th14/browser-extra-normal-oct09.jpg",
+    "scope": "Ordinary entry only. Stops advancing at the same frame as the prior headless Game Over observation; no completed stage or full lifecycle verification."
+  },
+  "latestIdleDemo": {
+    "stage": 3,
+    "lastObservedRunningFrame": 1819,
+    "observedStatus": "59 FPS stage=3 frame=1819",
+    "runningScreenshot": "artifacts/th14/browser-extra-demo-running-oct09.jpg",
+    "observedFailure": "battle update failed: -601 player update failed: 0 motion=0 shots=3 state=1 timer=295",
+    "failureScreenshot": "artifacts/th14/browser-extra-demo-blocker-oct09.jpg",
+    "scope": "Idle native demo visibly rendered ordinary P/point drops beyond the former item 146 blocker, then stopped at an unsupported shot spawn callback. Stage frame at failure was not exposed by the stopped UI."
+  },
+  "headlessFocusedShoot": {
+    "held": 9,
+    "invulnerabilityOverride": true,
+    "stage": 1,
+    "frame": 1737,
+    "error": "battle update failed: -601 player update failed: 0 motion=0 shots=3 state=1 timer=1738",
+    "sessionWasmSha256": "5272f230886c3263dc98483aed85d3f5c3756dd772ff74a3b353cabcbb4093f2"
+  },
+  "extraProgress": {
+    "invulnerabilityOverride": true,
+    "held": 0,
+    "frame": 68807,
+    "opcode": 703,
+    "passed": false,
+    "sessionWasmSha256": "5272f230886c3263dc98483aed85d3f5c3756dd772ff74a3b353cabcbb4093f2"
+  },
+  "limitations": [
+    "TH14 shot callbacks still use legacy selector semantics; focused shooting and the idle demo reproduce shots=3.",
+    "ECL 703 kind 1 laser request and consumer are unimplemented.",
+    "Callback 6 ETEX writes and RNG order are proved, but the later ETEX 4 motion consumer is not implemented.",
+    "Combo multiplier popup renderer, rotated shot damage, full bomb usage and normal player lifecycle are incomplete.",
+    "HUD digit/text layout and some rendered bullets are visibly incorrect.",
+    "Native replay, GPU pixel equivalence and complete gameplay remain unverified."
+  ]
+}

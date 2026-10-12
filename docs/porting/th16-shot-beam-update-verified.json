@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "title": 16,
+  "completeGame": false,
+  "cases": 8192,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "57f1eeda61c2c2439ccb33d7f7dcef0736d9f62afe4558afa49ee54d40f688ef",
+  "maxError": 0,
+  "scope": "Complete446260, original4476b0 trig executes. Both option families/fixed-point locations, near .001 angle smoothing versus snap/focus -pi/2, state2 early return, pan,512/18 length growth, own area center, VM flags/sprite size/texture scale, hit marker interrupt3, firing/count/life2/4/power cache/dialogue/manager gates, simultaneous interrupts3/1, cache clear and channel20 stop. ANM lookup/family interrupt and audio virtual/stop controlled; all occupied-area words exact except4e-5 native trig center tolerance. Beam hit callback, actual audio and full gameplay excluded.",
+  "sourceHashes": {
+    "tests/cpp/th16-shot-beam-update-fixture.cpp": "59a7433e52be842995dbba4c4da77c1048026d17a4cea3bd8c72bf5241c3b4f4",
+    "cpp/game/ShotTh16.cpp": "d22ceddb92059925aaadf5f6d281736cff1d10cf173fb2d5a50179166df08254",
+    "cpp/game/ShotTh16.hpp": "5b503cc040ee3291df07b7bf1a9b5a33799c1e8fc411b26f94e2c144ee79cbd2",
+    "cpp/game/ShotTh16Production.cpp": "b4455ae7c2ab3b4bc24b4772b80c89f0142a90a2a365a0e3aef9bc3dea7a95ff",
+    "cpp/game/ShotManager.hpp": "c753fe33ed34b4006934e88823b32123031ee2133f4ab66752051ea6b67799b1"
+  },
+  "toolHashes": {
+    "tools/th16-shot-beam-update-native.py": "280b93846b102a9791142b80e98c6df0730d8e446333aca6fd674ec626c99a80",
+    "tools/th16-shot-beam-update-check.mjs": "4bdf68dc303cee0e034edfb1d0642a07783c9fa12a73f0e33cfde32d0d6fddb6"
+  }
+}

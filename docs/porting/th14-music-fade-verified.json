@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "timelines": 48,
+  "ticks": 2760,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "b02a2ae8cdc46af45bbf9c2e2e8eb24f8b7af6b47e128574831e151a79b4f2d1",
+  "scope": "Whole481540 countdown/stop and481200 SSE master-volume setter with controlled DirectSound Stop/SetVolume. Eight nonnegative durations including zero, six master levels, terminal plus two inactive ticks. No asynchronous thread cadence, pause scheduling, PCM or device latency equivalence.",
+  "sources": {
+    "tests/cpp/th14-music-fade-fixture.cpp": "0b3c5d930ba4004db2460f9d9054ee55e3af6bd164061ee1e23816430e7b17e7",
+    "cpp/game/Th14MusicFade.hpp": "de4b25b5d08e610608c23f29f3da25a44ae009d91679a5e638db5583f79b9ac5",
+    "cpp/game/SoundEffects.cpp": "6a22e37def9e9889cdc4dee735cec29cc7f6933ed4ba8f1ac74600e2830e2a1d",
+    "cpp/sdl/AudioDevice.cpp": "d0aea4804e03450d474b0f1345fa62abd66f4aec96fb71c9cf7ca699bfe562df"
+  },
+  "tools": {
+    "tools/th14-music-fade-native.py": "6ef0c50c09acca94835a42843916b854261864e83ff9ba99521f8766ddcf66a6",
+    "tools/th14-music-fade-check.mjs": "1ec77250c89656b747bad2d2628b20cc0bcd69956129c873081ddb0a045fbf7c"
+  }
+}

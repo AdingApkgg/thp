@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "title": 16,
+  "completeGame": false,
+  "cases": 188,
+  "scope": "Retail opcodes 300/301 and complete sprite binder on synthetic valid resource banks. Callback is a controlled input-plus-one function. Actual global RNG executes with mutex disabled, positive bounds 1/3 and four seeds. Index selection, ASCII fallback, owner, timer stamp, sizes, UV and matrices; no renderer, invalid-bank, zero range or gameplay claim.",
+  "handlers": {
+    "300": "0x460ba9",
+    "301": "0x460f4b"
+  },
+  "rng": "0x402be0",
+  "binder": "0x45edb0",
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "7dc680fce8f5c2710c0d624a076f3bcaee249a83c10dff9c20c2f946071fcdca",
+  "sourceHashes": {
+    "cpp/game/AnmVm.cpp": "4f34738e97d426eb4022b85d319e69c25508df28c51f37a19023c6d5dd3c5726",
+    "cpp/game/AnmResource.cpp": "7391cebdd1be0faa8ad9201352debef81b436543f2f6703d962bb4c504490c41",
+    "cpp/game/AnmInterpreter.cpp": "4e32fd542f9b1ec740e45e396eff728b26da98c67399b398ffd233ef3266bf3d",
+    "cpp/game/AnmGeometry.cpp": "50a7f0cf1268993d70158ca979651ec21f953be3e5c42f069004a9db2234213f",
+    "cpp/game/Interpolation.cpp": "4e0b8aba6456a9ca55b2d93702a337b8307ed83edf7b24392ce189e291106c24",
+    "tests/cpp/th16-sprite-fixture.cpp": "31a0b71fb35c7efb51af373a04da5ca9d029e13db74997b0f75039cd4342b730",
+    "cpp/game/AnmVm.hpp": "104f9af27f6253ff0f7ab8cc70c7de865a59378dde5ef5f41b273e354769e91d",
+    "cpp/game/AnmOpcodes.hpp": "37a6ef978bc43d0b62314294930444056f2632cd207246589752e14a8bb03691",
+    "cpp/game/AnmResource.hpp": "1980c12e24cd4c85d5e271fc14f672dac12c81c202adcf10b607d013b0865a74",
+    "cpp/game/AnmGeometry.hpp": "b6a1cea487717d15bbcc8e7788d055f9ab345bd18f4583c1d8024521cede3f3c",
+    "cpp/game/Interpolation.hpp": "edbabf98f0aa2441bc725138d9fb6ff4908142998836ec3e3fc1c1f198e1d689",
+    "cpp/game/Timer.hpp": "e07169289db2407ce57c4191343ad6c9a5e3b2d543898439326520cfe1723ddb",
+    "cpp/game/Types.hpp": "f79c1ed7cb200413ef0dea75bf0d58842745b6b47182a97e496733c1d7bb2669",
+    "cpp/game/Rng.hpp": "c53231677e6b5ef755d7385f5d3e224e2e353757eec7f1110424a8d4f0073a9a",
+    "cpp/game/PortTitle.hpp": "5531b9b0a2364098ec023e09eddbf66907c392fb58a24e1a84c5bf7a9a033d2f",
+    "cpp/game/Th16AnmDispatch.hpp": "5702f6f59cca6a3a091f3a4b058f43e812a67311db792c133479bc52b954da28"
+  },
+  "toolHashes": {
+    "tools/th16-sprite-check.mjs": "a9f5ae46c6c864d2d36c7f01076c8749cb58174975b5aa11ec3486a2753932cd",
+    "tools/th16-sprite-native.py": "e4a155f6a5cadd2417513d16a52e545102d7e29653c93220fbc7aa727e7bb76b",
+    "tools/th-anm-handlers.py": "07b7fc89a033c65dc95034a0c49e365e726a4123cdb5b8dd7967fa5e71e42363"
+  }
+}

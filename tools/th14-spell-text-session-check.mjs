@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,mkdirSync,readdirSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {WASI} from 'node:wasi';
+const root=resolve(import.meta.dirname,'..'),rt=resolve(root,'runtimes/th12/th12_web'),out=resolve(root,'artifacts/th14/spell-text-session-check');mkdirSync(out,{recursive:true});const env={...process.env,TEMP:out,TMP:out,TMPDIR:out};
+execFileSync(process.execPath,['runtimes/th13/th13_web/scripts/cpp/build-engine.mjs','--title','14'],{cwd:root,env,stdio:'inherit',windowsHide:true});
+const fixture='tests/cpp/th14-spell-text-session-fixture.cpp',objects=resolve(root,'runtimes/th13/th13_web/artifacts/cpp/objects-th14'),path=resolve(out,'spell-text-session.wasm');
+execFileSync(resolve(rt,'../tools/wasi-sdk-34.0-x86_64-windows/bin/clang++.exe'),['--target=wasm32-wasip1','-DPORT_TITLE=14','-std=c++17','-O2','-ffp-contract=off','-fno-exceptions','-fno-rtti','-mexec-model=reactor','-Wl,--no-entry','-Wl,--export-memory','-Wl,-z,stack-size=1048576',fixture,...readdirSync(objects).filter(n=>n.endsWith('.o')).map(n=>resolve(objects,n)),'-o',path],{cwd:rt,env,stdio:'inherit',windowsHide:true});
+const bytes=readFileSync(path),wasi=new WASI({version:'preview1',args:[],env:{},preopens:{}}),{instance}=await WebAssembly.instantiate(bytes,{wasi_snapshot_preview1:wasi.wasiImport});wasi.initialize(instance);const c=instance.exports;
+const target=JSON.parse(readFileSync(resolve(root,'runtimes/th14/target.json'),'utf8')),dat=readFileSync(target.dataArchives['th14.dat'].path),p=c.allocate(dat.length);new Uint8Array(c.memory.buffer,p,dat.length).set(dat);assert.equal(c.open_archive(p,dat.length),1);
+const native=JSON.parse(readFileSync(resolve(root,'artifacts/th14/spell-text-native.json'),'utf8')),bits=x=>{const b=new ArrayBuffer(4);new Float32Array(b)[0]=x;return new Uint32Array(b)[0];},string=p=>{const b=new Uint8Array(c.memory.buffer);return new TextDecoder().decode(b.subarray(p,b.indexOf(0,p)));};let cases=0,requests=0;const selected=[];
+for(let selection=0;selection<6;++selection){const pool=native.rows.filter(r=>r.selection===selection&&r.runFlags===32&&r.live===1&&r.flags!==0),choice=[];
+ for(const predicate of [r=>r.flags===3&&r.attempts<100&&r.captures<100,r=>r.flags===1&&r.attempts>=100,r=>r.flags===3&&r.attempts<100&&r.captures>=100,r=>r.flags===1&&r.attempts<100&&r.captures<100]){const r=pool.find(predicate);assert.ok(r,`selection${selection}`);choice.push(r);}
+ assert.equal(c.spell_session_begin(1,0,selection,2),1,string(c.error()));for(let n=0;n<115;++n)assert.equal(c.tick(0),1,string(c.error()));
+ for(const r of choice){assert.equal(c.spell_text_setup(r.flags,r.bonus,r.captures,r.attempts,r.alpha,1),1);assert.equal(c.draw(),1,string(c.error()));assert.equal(c.spell_text_finite(),1);assert.equal(c.spell_text_count(),2);
+  for(const [i,q] of r.requests.entries()){assert.equal(string(c.spell_text_bytes(i)),q.text);assert.deepEqual(Array.from({length:8},(_,k)=>c.spell_text_word(i,k)>>>0),[...q.position.map(bits),q.color,q.font,q.passIndex,...q.scale.map(bits)]);++requests;}selected.push({selection,nativeId:r.id,actualEclId:0,text:r.requests.map(q=>q.text)});++cases;
+ }
+ // Request outputs do not depend on the ID when the selected record is seeded.
+ // Closing the real original title root tests the GameBattle liveness gate.
+ assert.equal(c.spell_text_setup(3,3000000,0,0,255,0),1);assert.equal(c.draw(),1);assert.equal(c.spell_text_count(),0);assert.equal(c.spell_text_handle(),0);++cases;
+}
+const sha=b=>createHash('sha256').update(b).digest('hex'),sources=[fixture,'tests/cpp/th14-startup-fixture.cpp','cpp/game/SpellController.cpp','cpp/game/GameBattle.cpp','cpp/game/GameSession.cpp','cpp/game/AsciiText.cpp','cpp/game/SceneSchedule.hpp'];writeFileSync(resolve(root,'docs/porting/th14-spell-text-session-verified.json'),JSON.stringify({passed:true,completeGame:false,nativeEquivalent:false,cases,requests,selected,archiveSha256:sha(dat),wasmSha256:sha(bytes),scope:'Six original first Hard SpellPr ECL entries, actual title roots and full GameSession.draw: four seeded record/flags/bonus/VM-alpha layouts per loadout, compared with original oracle bytes/position/color/font/pass/scale; close title VM -> no text and actual handle reset. Original ECL id0 is retained; oracle IDs differ with identical seeded record payload. Controls values/alpha/root deletion and checks finite draw data, not native whole-playthrough timing/GPU pixels.',sourceHashes:Object.fromEntries(sources.map(p=>[p,sha(readFileSync(resolve(rt,p)))])),toolSha256:sha(readFileSync(import.meta.filename))},null,2)+'\n');console.log(`PASS ${cases} actual SpellPr bonus/history/closed-title layouts; ${requests} requests`);

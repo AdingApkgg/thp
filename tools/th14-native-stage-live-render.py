@@ -1,0 +1,83 @@
+"""Observe complete original Stage passes with actual live resource-backed VMs.
+Host COM and batching are controlled; this records submissions, not HAL pixels.
+"""
+import importlib,struct,hashlib
+from unicorn import UC_HOOK_CODE
+from unicorn.x86_const import *
+
+def install(m,stage,manager):
+ base=0x78000000;stop=0x70000000;camera=0x4d9514;device=base+0xb000;table=base+0xc000
+ m.mem_map(base,0x100000)
+ # Stub addresses occupy the scratch region, separate from resource/callback memory.
+ stub=base
+ put=lambda p,v:m.mem_write(p,struct.pack('<I',v&0xffffffff));get=lambda p:struct.unpack('<I',m.mem_read(p,4))[0]
+ floats=lambda p,v:m.mem_write(p,struct.pack('<'+'f'*len(v),*v))
+ stack=base+0xff000
+ def run(entry,args=(),ecx=0):
+  m.mem_write(stack,struct.pack('<'+'I'*(len(args)+1),stop,*args));m.reg_write(UC_X86_REG_ESP,stack);m.reg_write(UC_X86_REG_ECX,ecx);m.reg_write(UC_X86_REG_MXCSR,0x1f80);m.reg_write(UC_X86_REG_FPCW,0x37f);m.reg_write(UC_X86_REG_FPSW,0);m.reg_write(UC_X86_REG_FPTAG,0xffff)
+  try:m.emu_start(entry,stop,count=2000000)
+  except Exception as e:raise RuntimeError(f'entry {entry:x} pc {m.reg_read(UC_X86_REG_EIP):x} sp {m.reg_read(UC_X86_REG_ESP):x} stack {bytes(m.mem_read(m.reg_read(UC_X86_REG_ESP),32)).hex()}') from e
+  assert m.reg_read(UC_X86_REG_EIP)==stop
+ dll=importlib.import_module('th12-pe').Image('C:/Windows/SysWOW64/d3dx9_43.dll')
+ pe=struct.unpack_from('<I',dll.data,0x3c)[0];export=dll.image_base+struct.unpack_from('<I',dll.data,pe+0x78)[0];functions,names,ordinals=[dll.image_base+dll.u32(export+x) for x in (28,32,36)];exports={}
+ for i in range(dll.u32(export+24)):
+  name=dll.cstring(dll.image_base+dll.u32(names+i*4),128);ordinal=struct.unpack('<H',dll.read(ordinals+i*2,2))[0];exports[name]=dll.image_base+dll.u32(functions+ordinal*4)
+ for slot,name in [(0x4b12d0,'D3DXMatrixTranslation'),(0x4b12f4,'D3DXVec3ProjectArray'),(0x4b12ec,'D3DXMatrixLookAtLH'),(0x4b12e8,'D3DXMatrixPerspectiveFovLH'),(0x4b12b8,'D3DXVec3Normalize'),(0x4b12d4,'D3DXMatrixMultiply')]:put(slot,exports[name])
+ image=importlib.import_module('th12-pe').Image('H:/Games/th/14/th14.exe')
+ for slot in range(0x4b12b0,0x4b1300,4):
+  rva=image.u32(slot)
+  if rva and not rva&0x80000000:
+   name=image.cstring(image.image_base+rva+2,128)
+   if name.startswith('D3DX'):assert name in exports;put(slot,exports[name])
+ clears=[];fade_requests=[];snapshots=[];events=[];states={};draws=[];draw_states=[];submissions=[];pending=[];matrices={};vertex_buffer=base+0xf000;vertex_table=base+0xf100;vertex_data=base+0x20000;geometry=base+0xa800;texture=base+0x9c00
+ def observe(uc,a,n,u):
+  sp=uc.reg_read(UC_X86_REG_ESP)
+  if a==stub+0x100:key,value=get(sp+8),get(sp+12);states[key]=value;events.append([key,value])
+  elif a==stub+0x110:matrices[get(sp+8)]=list(struct.unpack('<16I',m.mem_read(get(sp+12),64)))
+  elif a==stub+0x160:
+   count=get(sp+12);stride=get(sp+20);p=get(sp+16);assert get(sp+8)==5 and stride in (20,24)
+   if stride==20:
+    assert states['fvf']==0x44
+    submissions.append([3,states[14],states[28],count,*struct.unpack('<'+'I'*((count+2)*5),m.mem_read(p,(count+2)*stride))])
+   else:submissions.append([1,get(sp+8),count,stride,states[14],states[28],*[states[k] for k in (23,34,36,37)],*matrices[256],*matrices[16],*struct.unpack('<'+'I'*((count+2)*6),m.mem_read(p,(count+2)*stride))])
+  elif a==stub+0x170:states['fvf']=get(sp+8)
+  elif a==0x475f80:
+   pending.append(list(struct.unpack('<28I',m.mem_read(get(sp+4),112))));put(manager+0xbc81f0,len(pending))
+  elif a==0x475eb0:
+   for v in pending:submissions.append([0,states[14],states[28],*v])
+   pending.clear();put(manager+0xbc81f0,0)
+  elif a==stub+0x180:put(get(sp+24),vertex_buffer)
+  elif a==stub+0x190:put(get(sp+16),vertex_data)
+  elif a==stub+0x1c0:
+   count=get(sp+16);first=get(sp+12);assert get(sp+8)==5
+   submissions.append([2,get(sp+8),count,states[14],states[28],states[60],*[states[k] for k in (23,34,36,37)],*matrices[256],*matrices[16],*struct.unpack('<'+'I'*((count+2)*5),m.mem_read(vertex_data+first*20,(count+2)*20))])
+  elif a==stub+0x1d0:
+   p=get(sp+12);clears.append([get(sp+16),get(sp+20),*struct.unpack('<4i',m.mem_read(p,16))])
+  elif a==0x478f60:
+   pointer=get(sp+4);vms=get(stage+0x208);count=struct.unpack('<H',m.mem_read(get(stage+0x10)+2,2))[0]
+   if vms<=pointer<vms+count*0x5cc:index=(pointer-vms)//0x5cc
+   elif stage+0x20c<=pointer<stage+0x20c+8*0x5cc:index=0x80000000+(pointer-stage-0x20c)//0x5cc
+   else:raise AssertionError(hex(pointer))
+   draws.append(index);draw_states.append([index,states[14],states[28]])
+ for offset,address,cleanup in [(0xe4,stub+0x100,12),(0xb0,stub+0x110,12),(0xbc,stub+0x120,8),(0x114,stub+0x130,16),(0x104,stub+0x140,12),(0x10c,stub+0x150,16),(0x14c,stub+0x160,20),(0x164,stub+0x170,8)]:put(table+offset,address);m.mem_write(address,b'\xc2'+struct.pack('<H',cleanup));m.hook_add(UC_HOOK_CODE,observe,begin=address,end=address)
+ for address,cleanup in [(0x475eb0,0),(0x475f80,4),(0x4854a0,0),(stub+0x180,28),(stub+0x190,20),(stub+0x1a0,4),(stub+0x1b0,20),(stub+0x1c0,16)]:
+  m.mem_write(address,b'\xc2'+struct.pack('<H',cleanup) if cleanup else b'\xc3');m.hook_add(UC_HOOK_CODE,observe,begin=address,end=address)
+ m.hook_add(UC_HOOK_CODE,observe,begin=0x478f60,end=0x478f60)
+ put(table+0xac,stub+0x1d0);m.mem_write(stub+0x1d0,b'\xc2\x1c\x00');m.hook_add(UC_HOOK_CODE,observe,begin=stub+0x1d0,end=stub+0x1d0)
+ put(table+0x68,stub+0x180);put(vertex_buffer,vertex_table);put(vertex_table+0x2c,stub+0x190);put(vertex_table+0x30,stub+0x1a0);put(table+0x190,stub+0x1b0);put(table+0x144,stub+0x1c0)
+ put(device,table);put(0x4d8f68,device);put(0x4f56cc,manager);put(0x4f7a70,32);put(0x4f7a74,16);floats(0x4f7a6c,[1]);put(0x4f7a88,320);put(0x4f7a8c,16);put(0x4f7a80,320);put(0x4f7a84,16);put(0x4d9640,camera);run(0x47b9f0,(),manager)
+ def fields():return [get(stage+o) for o in (0x3094,0x4224,0x4228,0x422c,0x4230,0x3090,0x4218,0x421c,0x4220)]+[get(manager+0xff52d0),get(manager+0xff52cc),states[14],states[23],states[28],states.get(34,0),states.get(36,0),states.get(37,0)]
+ def reset():
+  m.mem_write(manager+0xbc8188,b'\xff'*16);put(manager+0xbc8198,0);put(manager+0xbc8184,0);put(manager+0xbc81f0,0)
+  run(0x475e60)
+  put(manager+0xff52d0,0);put(manager+0xff52cc,0x80808080);put(0x4d9964,0);put(0x4d9960,0)
+  states.clear();states.update({14:0,23:8,28:0,34:0,36:0,37:0x3f800000});pending.clear();matrices.clear()
+  m.mem_write(0x4fd218,bytes(112));[floats(0x4fd224+j*28,[1]) for j in range(4)]
+ def draw():
+  run(0x475e60)
+  assert get(manager+0xfe8200)==manager+0xf48200
+  submissions.clear();draws.clear();draw_states.clear();clears.clear();snapshots.clear()
+  run(0x40e2f0,ecx=stage);snapshots.extend(fields());run(0x40e790,ecx=stage);snapshots.extend(fields());run(0x475eb0)
+  words=sum(submissions,[]);binary=struct.pack('<'+'I'*len(words),*words)
+  return dict(records=[dict(type=s[0],words=len(s),header=s[:6],sha256=hashlib.sha256(struct.pack("<"+"I"*len(s),*s)).hexdigest()) for s in submissions],words=len(words),sha256=hashlib.sha256(binary).hexdigest(),strips=sum(s[0]==1 for s in submissions),worldQuads=sum(s[0]==2 for s in submissions),screenQuads=sum(s[0]==0 for s in submissions),snapshots=snapshots.copy(),drawStates=draw_states.copy(),clears=clears.copy())
+ return reset,draw

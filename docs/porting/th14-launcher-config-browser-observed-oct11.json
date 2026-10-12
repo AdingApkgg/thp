@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "url": "http://127.0.0.1:8135/",
+  "preparedPath": "runtimes/th14/th14_web/artifacts/launcher-preview/8e66fa41b0b62a74/release.json",
+  "preparedSha256": "82841efb98a6371588d31bf34be59d363aa51f5784cb378ce7bfaed79958c207",
+  "buildId": "d5a1eebbf0b9be7bb1ce",
+  "evidence": {
+    "artifacts/th14/browser-launcher-config-before-refresh-oct11.png": {
+      "bytes": 236582,
+      "sha256": "08784489f794de63d7f13851d4c957d310f91ec4d6c27df2dfb7bab86c856a99"
+    },
+    "artifacts/th14/browser-launcher-config-after-refresh-oct11.png": {
+      "bytes": 237296,
+      "sha256": "dd466f3ce2295b530b0bea74b7515d89fa31e29e2361885d1975527344f62c98"
+    },
+    "artifacts/th14/browser-launcher-config-logs-oct11.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    }
+  },
+  "controls": {
+    "path": "docs/porting/th14-options-controls-verified-oct11.json",
+    "sha256": "0e5d82d37d100d48205dd95807aabb2a16ff86b6d3f9d199915a5c5a661a4424",
+    "cases": 1903
+  },
+  "observed": [
+    "Original Option menu changed BGM100/SE80 to95/75 using ordinary keyboard",
+    "Returned through actual Launcher navigation and reloaded the page",
+    "Relaunched installed TH14, ordinary automatic demo cancelled back to title",
+    "Option again visibly shows95/75; current error/warn logs empty"
+  ],
+  "limits": [
+    "Visible settings persistence, not comparison of all92 saved configuration bytes",
+    "This run does not export/import configuration or assert native filesystem behavior",
+    "1903 retail callback cases are separately controlled native comparisons, not browser pixels/audio-device equality"
+  ]
+}

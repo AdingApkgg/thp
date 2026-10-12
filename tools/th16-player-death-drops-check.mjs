@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,mkdirSync,readdirSync} from 'node:fs';
+import {resolve,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {WASI} from 'node:wasi';
+import {nativePython} from './native-python.mjs';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..'),rt=resolve(root,'runtimes/th12/th12_web'),out=resolve(root,'artifacts/th16/player-death-drops-check');mkdirSync(out,{recursive:true});
+nativePython('tools/th16-player-death-drops-native.py',{cwd:root,stdio:'inherit',windowsHide:true});
+const env={...process.env,TEMP:out,TMP:out,TMPDIR:out};
+execFileSync(process.execPath,['runtimes/th13/th13_web/scripts/cpp/build-engine.mjs','--title','16'],{cwd:root,env,stdio:'inherit',windowsHide:true});
+const dir=resolve(root,'runtimes/th13/th13_web/artifacts/cpp/objects-th16'),wasm=resolve(out,'drops.wasm'),fixture='tests/cpp/th16-player-death-drops-fixture.cpp';
+execFileSync(resolve(rt,'../tools/wasi-sdk-34.0-x86_64-windows/bin/clang++.exe'),['--target=wasm32-wasip1','-std=c++17','-O2','-ffp-contract=off','-fno-exceptions','-fno-rtti','-mexec-model=reactor','-Wl,--no-entry','-Wl,--export-memory','-Wl,-z,stack-size=1048576','-DPORT_TITLE=16',fixture,...readdirSync(dir).filter(n=>n.endsWith('.o')).map(n=>resolve(dir,n)),'-o',wasm],{cwd:rt,env,stdio:'inherit',windowsHide:true});
+const bytes=readFileSync(wasm),wasi=new WASI({version:'preview1',args:[],env:{},preopens:{}}),{instance}=await WebAssembly.instantiate(bytes,{wasi_snapshot_preview1:wasi.wasiImport});wasi.initialize(instance);const c=instance.exports;
+const proof=JSON.parse(readFileSync(resolve(root,'artifacts/th16/player-death-drops-native.json'),'utf8'));let maximumError=0;
+const decode=bits=>new Float32Array(new Uint32Array([bits]).buffer)[0];
+for(const [index,r] of proof.cases.entries()){assert.equal(c.run_case(r.power,r.step,...r.position),1);assert.equal(c.power()>>>0,r.output);assert.equal(c.event_count(),7);for(let n=0;n<7;n++)for(let field=0;field<7;field++){const actual=c.event(n,field)>>>0,expected=r.events[n][field];if(field===4){const error=Math.abs(decode(actual)-decode(expected));maximumError=Math.max(maximumError,error);assert.ok(error<=.000002,`case${index} item${n} angle ${decode(actual)} != ${decode(expected)}`);}else assert.equal(actual,expected,`case${index} item${n} field${field}`);}assert.deepEqual(r.events[7],[100,0x610]);}
+const sha=b=>createHash('sha256').update(b).digest('hex');
+writeFileSync(resolve(root,'docs/porting/th16-player-death-drops-verified.json'),JSON.stringify({passed:true,title:16,completeGame:false,cases:proof.cases.length,itemRequests:proof.cases.length*7,maximumObservedAngleError:maximumError,nativeExecutableSha256:proof.executableSha256,scope:'Retail442724..442895 at death age3, original4052a0 angle executes. Signed half-step power reduction with minimum one step, seven type1 item requests with world XYZ, SSE spread angle and speed3. Item factory and4440e0 options rebuild are controlled; native rebuild ECX is observed as position pointer+610, its behavior excluded. Production scalar/drop consumer is connected before existing rebuild_options. Full death frame, allocation, respawn and full game excluded.',wasmSha256:sha(bytes),sourceHashes:Object.fromEntries(['cpp/game/PlayerTh16Life.cpp','cpp/game/PlayerTh16Life.hpp','cpp/game/PlayerFrame.cpp',fixture].map(n=>[n,sha(readFileSync(resolve(rt,n)))]))},null,2)+'\n');
+console.log(`PASS ${proof.cases.length} TH16 death-drop cases / ${proof.cases.length*7} items; angle max error ${maximumError}`);

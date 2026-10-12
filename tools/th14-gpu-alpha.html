@@ -1,0 +1,39 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>TH14 透明度裁剪像素对照</title>
+<style>body{background:#191c26;color:#eee;font:16px system-ui;margin:28px}button,input{font:inherit;padding:10px}canvas{image-rendering:pixelated}#canvas{width:160px;height:120px}#preview{width:512px;height:256px;display:block;margin:18px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:1100px}</style>
+<h1>TH14 透明度裁剪像素对照</h1><p>实际 Direct3D9 与生产 WebGL：八种比较、全部 256 个阈值、纹理／调制透明度。</p>
+<button id="run">运行 4096 场景</button><button id="low">运行低透明度 4096 场景</button><p id="status">等待运行</p><canvas id="preview" width="64" height="32"></canvas>
+<label>查看场景 <input id="case" type="number" min="0" max="4095" value="0"></label><button id="inspect">查看原版／移植像素</button><p id="caseStatus"></p><pre id="pixels"></pre>
+<canvas id="canvas" width="640" height="480"></canvas><pre id="result"></pre>
+<script type="module">
+import create from './gpu.mjs';
+const status=document.querySelector('#status'),button=document.querySelector('#run'),result=document.querySelector('#result'),ctx=document.querySelector('#preview').getContext('2d');
+const hex=async b=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',b)),n=>n.toString(16).padStart(2,'0')).join('');
+let core,native,expected,actual;
+function inspect(i){if(!native||i<0||i>=native.cases.length)return;const c=native.cases[i],a=actual.subarray(i*4096,(i+1)*4096),b=expected.subarray(i*4096,(i+1)*4096);for(const [x,data] of [[0,b],[32,a]]){const image=new ImageData(32,32);for(let j=0;j<4096;j+=4){image.data[j]=data[j+2];image.data[j+1]=data[j+1];image.data[j+2]=data[j];image.data[j+3]=255;}ctx.putImageData(image,x,0);}document.querySelector('#caseStatus').textContent=`场景 ${i}，透明度 ${c.operation?'调制':'纹理'}，比较 ${c.compare}，阈值 ${c.reference}；左 D3D9，右 WebGL`;document.querySelector('#pixels').textContent=JSON.stringify({index:i,nativeBGRA:Array.from(b),portableBGRA:Array.from(a)});}
+document.querySelector('#inspect').addEventListener('click',()=>inspect(Number(document.querySelector('#case').value)));
+async function runSuite(lowAlpha){button.disabled=true;document.querySelector('#low').disabled=true;try{
+ status.textContent='正在绘制并读取 GPU 像素';
+ const prefix=lowAlpha?'./native-low':'./native';const data=await Promise.all([fetch(prefix+'.json').then(r=>r.json()),fetch(prefix+'.bgra').then(r=>r.arrayBuffer()).then(b=>new Uint8Array(b)),fetch('./build.json').then(r=>r.json())]);[native,expected]=data;const build=data[2];
+ core??=await create({canvas:document.querySelector('#canvas')});const begin=performance.now();if(!core._gpu_initialize())throw Error('生产渲染器初始化失败');const rendererInitMs=performance.now()-begin;core._gpu_alpha_texture(lowAlpha?1:0);
+ const boundaries=Array.from(new Float32Array(core.HEAPU8.buffer,core._gpu_alpha_boundaries(),256));
+ actual=new Uint8Array(expected.length);const groups=[],differences=[];let exactCases=0,maxDelta=0,totalChannels=0;
+ for(let i=0;i<native.cases.length;i++){
+  const c=native.cases[i],p=core._gpu_alpha_case(c.operation,c.compare,c.reference);if(!p)throw Error('绘制场景失败'+i);
+  const pixels=new Uint8Array(core.HEAPU8.buffer,p,4096);actual.set(pixels,i*4096);let channels=0,max=0,first=null;
+  for(let j=0;j<4096;j++){const a=pixels[j],b=expected[i*4096+j],delta=Math.abs(a-b);if(delta){++channels;max=Math.max(max,delta);first??={x:Math.floor(j/4)%32,y:Math.floor(j/128),channel:j%4,portable:a,d3d9:b};}}
+  const group=c.operation*8+c.compare-1;groups[group]??={operation:c.operation,compare:c.compare,cases:0,exactCases:0,differentChannels:0,maxDelta:0};const g=groups[group];g.cases++;g.differentChannels+=channels;g.maxDelta=Math.max(g.maxDelta,max);if(!channels){exactCases++;g.exactCases++;}else if(differences.length<32)differences.push({index:i,...c,differentChannels:channels,maxDelta:max,first});
+  totalChannels+=channels;maxDelta=Math.max(maxDelta,max);
+ }
+ const alphaProbe=[],probeComparison=[],alphaConversion=[];
+ for(let op=0;op<2;op++){const p=core._gpu_alpha_probe(op,0);if(!p)throw Error('透明度浮点读取失败');const snapshot=new Uint8Array(core.HEAPU8.buffer,p,4096).slice(),view=new DataView(snapshot.buffer),base=(op*2048+1792)*4096;
+  const counts={operation:op,pixels:0,round255:0,floor255:0,floor256:0,first:[]};
+  for(let y=5;y<27;y++)for(let x=4;x<26;x++){const i=(y*32+x)*4,a=view.getFloat32(i,true),n=expected[base+i+3];counts.pixels++;if(Math.round(a*255)!==n){counts.round255++;if(counts.first.length<8)counts.first.push({x,y,a,n,round:Math.round(a*255)});}if(Math.floor(a*255)!==n)counts.floor255++;if(Math.min(255,Math.floor(a*256))!==n)counts.floor256++;}
+  for(const [mode,label] of [[1,'control'],[3,'manual']]){const q=core._gpu_alpha_probe(op,mode);if(!q)throw Error('透明度诊断对照失败');const control=new Uint8Array(core.HEAPU8.buffer,q,4096);counts[label+'DifferentChannels']=0;counts[label+'DifferentAlpha']=0;for(let i=0;i<4096;i++){const channel=i%4,j=channel===0?i+2:channel===2?i-2:i;if(control[j]!==expected[base+i]){counts[label+'DifferentChannels']++;if(channel===3)counts[label+'DifferentAlpha']++;}}}
+  const m=core._gpu_alpha_probe(op,4);if(!m)throw Error('精确采样浮点诊断失败');const manual=new DataView(core.HEAPU8.buffer,m,4096);counts.manualRoundDifferentAlpha=0;for(let y=5;y<27;y++)for(let x=4;x<26;x++){const i=(y*32+x)*4;if(Math.round(manual.getFloat32(i,true)*255)!==expected[base+i+3])counts.manualRoundDifferentAlpha++;}probeComparison.push(counts);
+  for(const [x,y] of [[10,11],[19,23],[19,21],[10,16],[19,16],[19,10],[10,22],[19,5]]){const i=(y*32+x)*4;alphaProbe.push({operation:op,x,y,floatBits:view.getUint32(i,true),floatAlpha:view.getFloat32(i,true),nativeOutputAlpha:expected[base+i+3],portableOutputAlpha:actual[base+i+3]});}}
+ for(const row of alphaProbe){const p=core._gpu_alpha_probe(0,7,row.floatAlpha);if(!p)throw Error('透明度输出转换诊断失败');const pixels=new Uint8Array(core.HEAPU8.buffer,p,4096);alphaConversion.push({...row,standaloneAlpha:pixels[(5*32+4)*4+3],round:Math.round(row.floatAlpha*255)});}
+ const report={completeGame:false,nativeEquivalent:false,lowAlpha,strictPixelsEqual:exactCases===native.cases.length,cases:native.cases.length,exactCases,maxDelta,differentChannels:totalChannels,nativePixelsSha256:await hex(expected),portablePixelsSha256:await hex(actual),wasmSha256:build.wasmSha256,rendererInitMs,boundaries,groups,firstDifferences:differences,alphaProbe,probeComparison,alphaConversion};
+ status.textContent=`已完成 ${report.cases} 场景；逐通道完全一致 ${exactCases}；最大差值 ${maxDelta}`;result.textContent=JSON.stringify(report,null,2);inspect(differences[0]?.index??0);
+ }catch(e){status.textContent='测试失败：'+e.message;result.textContent=String(e.stack||e);}finally{button.disabled=false;document.querySelector('#low').disabled=false;}}
+button.addEventListener('click',()=>runSuite(false));document.querySelector('#low').addEventListener('click',()=>runSuite(true));
+</script></html>

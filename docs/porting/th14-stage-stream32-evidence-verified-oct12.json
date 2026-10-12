@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "frames": 42,
+  "pixelBytes": 51609600,
+  "differentBytes": 0,
+  "evidence": {
+    "docs/porting/th14-stage-stream32-observed-oct12.json": {
+      "bytes": 16780,
+      "sha256": "166738cf931aa64dcf540f86ea289307d377fda5e32f7a1f11471f29091fb9c9"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/native.json": {
+      "bytes": 6748,
+      "sha256": "115123af74b9133297766d01284d5f9e4e077a2b290ab84916f74cf3a44040cd"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/prepared.json": {
+      "bytes": 1254349,
+      "sha256": "924c7d2327bb996e552e094ce377a818b764019d4c86b3a407baa29c38ea9910"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/native.bgra": {
+      "bytes": 25804800,
+      "sha256": "42f7c2c66012c6b283eac3c0620ba485591ea7bb419a70715dfdeef7ad62e978"
+    },
+    "artifacts/th14/stage-stream32/requests.bin": {
+      "bytes": 16222272,
+      "sha256": "364bf899bf7b9f9721eff3db4ca11f895a98a876d3c6e5e2580a52a5d2484b06"
+    },
+    "tools/th14-stage-stream32-helper.cpp": {
+      "bytes": 6852,
+      "sha256": "cdcdd4816734a5b64b3f47dbe8b7c8b65bf13789c4f9853c7c44a416c230fd14"
+    },
+    "tools/th14-native-stage-stream32.py": {
+      "bytes": 4764,
+      "sha256": "f026144f64385d2268dc215f6b096483f57f41cd25fd1b1e57e01428d7fcd119"
+    },
+    "artifacts/th14/stage-stream32/stream32.exe": {
+      "bytes": 137216,
+      "sha256": "ab62b035d9e95494e2017a29db847bd854ba765479e0a8bd1a789abdccc11950"
+    },
+    "artifacts/th14/stage-stream32/readback-24.bin": {
+      "bytes": 25805072,
+      "sha256": "df6cc58e889d9a7d917bf0a84fbddb7f94ddb1976ca06f26f20f1e835be37688"
+    },
+    "artifacts/th14/stage-stream32/readback-64.bin": {
+      "bytes": 25805072,
+      "sha256": "7867bc6050607cf97693631469bd9589b37f77bbdb5a180434ba0dac0c8d2eb6"
+    }
+  },
+  "toolSha256": "c471ec72414c3cd9be9e90880b44fda4c2c9c138dddab4ac752282f7fae65c98",
+  "scope": "Twenty-one retail registered Stage-queue sample streams at update0/599/1199; all 8400 native state/submission summaries rechecked before sampling. Exact recorded matrix/viewport/state/vertex bits and independent32 D3DX PC64 texture pixels. Unobserved device defaults explicitly controlled to the common game pipeline, D16 depth, 640x480 offscreen target, initial clear and actual ordered clear calls. Direct native draw calls replayed; intercepted screen-queue quads remain excluded and counted. No original process framebuffer, full native FFP initialization, Battle, audio or whole-game claim. x86 HAL reference uses identical serialized float bit patterns and uploaded bytes, no helper matrix arithmetic; default device PC24 and device-after FNINIT PC64, per-frame FPCW recorded. Process width and precision checked for this 21-frame direct-stream corpus only."
+}

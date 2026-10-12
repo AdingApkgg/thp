@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "parameterCases": 6,
+  "stageCases": 126,
+  "tailCases": 6480,
+  "tailPortCases": 12960,
+  "blinkCases": 576,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "archiveSha256": "57d84a5cbe82460931cca26f090a0fde7aef180889ce5bfe8315851fc97b0233",
+  "wasmSha256": "119bcbffb3619c5bbd140a13984260873ebea291b7efb7f6a2b3d368b2d98c8b",
+  "scope": "Own44c681..44c9dc table copies/initial bounds compared to all six production PlayerFrame initializers using original SHT/ANM resources. Complete44cc10 stage reset compares clocks, all33 movement-history entries, full-width life-fragment delivery, scale and known shot caches; ANM lookup, HUD and option factory controlled, pool links/option recreation/focus family retirement excluded. Own44e8d5..44ebda executes all three clocks and complete450fb0 firing cycle, with shot factory/update and ANM lookup boundaries; compares production clock/gate helper and actual ShotManager.fire including no TH11 warp restriction. Own44e0fa..44e1ac blink uses the same production color-mode helper; ANM VM execution excluded. Synthetic empty SHT groups in tail checks. Rank storage observed unchanged natively, whole-session rank scheduling not proven. No native campaign/GPU/pixel equivalence.",
+  "sourceHashes": {
+    "tests/cpp/th14-player-tail-fixture.cpp": "29275343fbfe81438d747b021cf9d9e09da3603f9d7a453e7d29985fc29e820e",
+    "cpp/game/PlayerFrame.cpp": "bfcc7c02e537dc30785d31165adfff4105cd97bf40453754a5bc63e2c7770241",
+    "cpp/game/PlayerFrame.hpp": "ccf98be361f11c712313ca5f1db05132921ee8a17b923c04712cd58629e8ae63",
+    "cpp/game/ShotSchedule.cpp": "9d2e78f65ad1daa535b2d2415c150c652aec06704f3d001b9fe43f9649f76951"
+  },
+  "toolHashes": {
+    "tools/th14-player-tail-native.py": "ffbf5c941f2852b56a078d8865679ca4555e3bf222533963043c2406f257bc1d",
+    "tools/th14-player-tail-check.mjs": "76c156e5fe3ce9bddd7b06ff682f704fa3f9c29b168617e481856edee8fc5ac4"
+  }
+}

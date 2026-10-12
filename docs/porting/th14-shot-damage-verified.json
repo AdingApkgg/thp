@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "cases": 12288,
+  "circularAreaCases": 6144,
+  "rectangularAreaCases": 6144,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "0a917b2a7ef97d9e56af43d598d1c3d4030c1535128bc0ad87b7ac7d784ec450",
+  "scope": "Actual 451430 collector with circular and rectangular damage areas, actual 404ca0 circle/rotated rectangle and 4061f0 rotated rectangle helpers and native math. Three occupied slots in a 256-slot pool; frame/period/probe/stamp gates, callback returns/order, accumulated damage, cap/score, area retirement and last-hit position. Bomb class inactive; callbacks supplied and recorded. Native pool allocation/movement, shot ownership and production callback effects are outside this proof. Production integrates attached-shot areas; Bomb/death areas and complete shot lifecycle remain unfinished.",
+  "sourceHashes": {
+    "tests/cpp/th14-shot-damage-fixture.cpp": "2ce39b3191d88f2adaaa6c6e7b87175f3afe785ec0ec521487a5e03bdf6821b5",
+    "cpp/game/ShotDamageTh14.cpp": "a063bc7179916295185143bc75083e46dcd1f6351d9719b6818beaf25749073f",
+    "cpp/game/ShotDamageTh14.hpp": "5c243a3def8f90c62b008737221e41c7ee5240d5c32a27489a4551e77111b288"
+  },
+  "toolHashes": {
+    "tools/th14-shot-damage-native.py": "212fe557c1bbe9d29041a3592440d4a87a534d0c48d79487cdddfad1fc092b71",
+    "tools/th14-shot-damage-check.mjs": "ae91b2f826c41aced073c30366db2e0c8d68f594ff5ce6a67ffa46207eecff32"
+  }
+}

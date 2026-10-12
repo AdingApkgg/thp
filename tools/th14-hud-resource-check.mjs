@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,mkdirSync,readdirSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {WASI} from 'node:wasi';
+const root=resolve(import.meta.dirname,'..'),rt=resolve(root,'runtimes/th12/th12_web'),out=resolve(root,'artifacts/th14/hud-resource-check');mkdirSync(out,{recursive:true});const env={...process.env,TEMP:out,TMP:out,TMPDIR:out};
+execFileSync(process.execPath,['runtimes/th13/th13_web/scripts/cpp/build-engine.mjs','--title','14'],{cwd:root,env,stdio:'inherit',windowsHide:true});
+const fixture='tests/cpp/th14-hud-resource-fixture.cpp',dir=resolve(root,'runtimes/th13/th13_web/artifacts/cpp/objects-th14'),wasm=resolve(out,'resource.wasm');
+execFileSync(resolve(rt,'../tools/wasi-sdk-34.0-x86_64-windows/bin/clang++.exe'),['--target=wasm32-wasip1','-std=c++17','-O2','-ffp-contract=off','-fno-exceptions','-fno-rtti','-mexec-model=reactor','-Wl,--no-entry','-Wl,-z,stack-size=1048576','-Wl,--export-memory','-DPORT_TITLE=14',fixture,...readdirSync(dir).filter(n=>n.endsWith('.o')).map(n=>resolve(dir,n)),'-o',wasm],{cwd:rt,env,stdio:'inherit',windowsHide:true});
+const bytes=readFileSync(wasm),wasi=new WASI({version:'preview1',args:[],env:{},preopens:{}}),{instance}=await WebAssembly.instantiate(bytes,{wasi_snapshot_preview1:wasi.wasiImport});wasi.initialize(instance);const c=instance.exports;
+const files=['front.anm','ascii.anm'].map(n=>`artifacts/archive-differential/th14-bBPoO0/${n}`);for(const [n,file] of files.entries()){const b=readFileSync(resolve(root,file)),p=c.allocate(b.length);new Uint8Array(c.memory.buffer,p,b.length).set(b);assert.equal(c.open(n,p,b.length),1);}
+assert.equal(c.begin(),1);assert.deepEqual([c.digit_layer(0),c.digit_layer(1)],[26,26]);const age=c.digit_age(0);assert.equal(c.tick(),1);assert.equal(c.digit_age(0),age+1,'hidden manager-owned digit updates once');
+c.configure(3,0,1000,400,1);const before=c.digit_age(0);assert.equal(c.tick(),1);assert.equal(c.digit_age(0),before+3,'first visible mode consumes two immediate updates plus manager tick');assert.equal(c.ring_count(),14);
+let submissions=0;for(let n=0;n<180;++n){assert.equal(c.tick(),1,`frame ${n}`);submissions+=c.render();assert.equal(c.render_finite(),1,`frame ${n} finite vertices`);assert.equal(c.ring_count(),14);}
+assert.ok(submissions>0);c.configure(3,0,250,80,1);assert.equal(c.tick(),1);assert.deepEqual([c.state(2),c.state(3)],[1,0],'primary circle hides within80, second at80 stays visible');
+c.configure(0,0,250,400,1);assert.equal(c.tick(),1);assert.equal(c.ring_count(),0);assert.deepEqual([c.state(0),c.state(1)],[0,0]);
+c.configure(3,0,750,400,0);assert.equal(c.tick(),1);assert.equal(c.ring_count(),14);assert.ok(c.render()>0);assert.equal(c.render_finite(),1);
+const sha=b=>createHash('sha256').update(b).digest('hex'),sources=[`runtimes/th12/th12_web/${fixture}`,'runtimes/th12/th12_web/cpp/game/Hud.cpp','runtimes/th12/th12_web/cpp/game/Hud.hpp','runtimes/th12/th12_web/cpp/game/HudTh14Boss.cpp','tools/th14-hud-resource-check.mjs'];
+writeFileSync(resolve(root,'docs/porting/th14-hud-resource-verified.json'),JSON.stringify({passed:true,completeGame:false,nativeEquivalent:false,frames:180,renderSubmissions:submissions,digitLayers:[26,26],wasmSha256:sha(bytes),scope:'Original front/ascii resource template preparation, manager-owned two countdown roots and fourteen boss ring roots, actual ANM/interpolation/geometry and renderer submission. Hidden digit increments once; initial visible mode adds two immediate updates. Four marker geometry positions, close/recreate and80-distance hide observed. Boss pointers/health/position input controlled; finite geometry is checked, not native vertex/pixel equality or GPU/audio output.',resourceHashes:Object.fromEntries(files.map(n=>[n,sha(readFileSync(resolve(root,n)))])),sources:Object.fromEntries(sources.map(n=>[n,sha(readFileSync(resolve(root,n)))]))},null,2)+'\n');console.log(`PASS 180 real HUD resource frames; ${submissions} render submissions`);

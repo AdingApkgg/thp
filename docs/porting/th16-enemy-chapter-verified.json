@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "title": 16,
+  "completeGame": false,
+  "eraseCases": 256,
+  "chapterCases": 24,
+  "deathCreditCases": 96,
+  "ecl570Cases": 96,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "scope": "Complete41d900 single-node erase preparation with death/memset boundaries: native protection mask,17 drop counts, spread, death reference, chapter credit and post-death flag. Native timer runs but is not compared here. Complete524 with argument sink and actual EnemyScriptServices routing, plus41d662 positive/current-chapter death-credit scalar and complete420410 ECL570 nonzero signed credits/current chapter/clear with actual EnemyScriptServices routing. Actual death, item factories, manager destruction, full enemy frame and gameplay excluded. Own ECL513 phase-clock reset and406190 ticks:24 timelines /960 frames; actual EnemyScriptServices routing. Native timer index0 is relocated to the production rate pointer. Complete4203ba ECL569 credit setter: old zero positive-only spawn addition, old one signed replacement/adjustment, other credits unchanged; signed wrapping and actual EnemyScriptServices route.",
+  "wasmSha256": "9f289a7f9294b45dd9cd8ad266953cccb760d3ff8a0d93229221473898f5cbc9",
+  "sourceHashes": {
+    "cpp/game/EnemyTh16Commands.cpp": "4f85725f3ba8feed6d16b3fd5e7102a904ef16a3ab80b00f653b3ed622d9ed3b",
+    "cpp/game/EnemyState.hpp": "5e12f092476d8801e31295770b616bb820792e44b7eb20c5509284869611316f",
+    "cpp/game/EnemyState.cpp": "6feb6233407317d0ce666217755589090baa81f20a62e13531f96869146b59b9",
+    "cpp/game/EnemyFrame.cpp": "2cd4a744465fdeb1c782a86465f31adfd233f7edf96a2e168a41c646b07581fc",
+    "cpp/game/EnemyScript.cpp": "eb37193703abead157c47f8fc1671ef35e0eca23a5e6ea83f8195b4a0c39b566",
+    "cpp/game/EnemyCommands.hpp": "c708bbbcd15579fbfdc1a93f03ecda89c0cda113f559f111f5d27780a05f85b3",
+    "cpp/game/Timer.hpp": "e07169289db2407ce57c4191343ad6c9a5e3b2d543898439326520cfe1723ddb",
+    "tests/cpp/th16-enemy-chapter-fixture.cpp": "85cc79fb36276675fbd79e87b922858a676bd23938efe10180ea5f92341cfb7b",
+    "cpp/game/EnemyManager.cpp": "bb0a9f11fa252bac9859fd8f5c770a96921e32e0d01f631954e93744df69f63b"
+  },
+  "phaseTimerTimelines": 24,
+  "phaseTimerFrames": 960,
+  "ecl569Cases": 216
+}

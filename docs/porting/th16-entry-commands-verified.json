@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "title": 16,
+  "completeGame": false,
+  "animations": 175,
+  "animation308": 25,
+  "animation307": 64,
+  "animation338": 256,
+  "deathScriptCopies": 24,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "scope": "Own41e118 ECL307 and own41dfc7 ECL338 execute their full positioned creation arms; ECL338 resolves dy,dx,rotation,script,file in native order and adds offsets with native float rounding; allocator, binder, first update and registry are controlled; actual production EnemyScriptServices routing with future-only synthetic ANM compares layer, flags2, XYZ, rotation and child mode and checks movement band remains untouched. Own41e22b ECL308 constructs then registers without lookup or extra tick. Own41e274 ECL339 request order: file/script resolution, construction, effect registration/lookup and repeated argument2 resolution after each VM tick; VM consumers controlled. Production own effect ledger and ANIM includes connected. Own421633 ECL556 exact NUL copy with remaining64 bytes preserved and no argument resolver. Limited to names <=63 bytes and <=4096 extra ticks; native unbounded inputs and full factory/death-script execution excluded.",
+  "wasmSha256": "0b3b0516fb2c838e2f26770785a1bf4e637c5f46ce1c0c70e4182a68d3d176cc",
+  "sourceHashes": {
+    "cpp/game/EnemyTh16Commands.cpp": "b3cabceaed985d1206cca3b35da5417b78c4969b62eb1b21c9a4a53af3088cdb",
+    "cpp/game/EnemyCommands.hpp": "a069fd4c0693dd645b83337959a6136d48abcf3284852becb542af85e1624dfd",
+    "cpp/game/EnemyState.hpp": "23ce089cbcf3f3fd239ecc80316cf07e18a748849c845781cffdad66bc1f7b95",
+    "cpp/game/EnemyAnimations.cpp": "29adb56ac20a3f0cded47b36f45036bab00698572df7f7b4fa1f3ead10be6d56",
+    "cpp/game/EnemyScript.cpp": "bed942631ef6316ec22adbe4a32b299fd05dbfed877f9843ce3bfe8360c4ff9f",
+    "cpp/game/GameResources.cpp": "47ac4881d9a7824cb96575e5a73f712bc8bd310ec5fc42276077b4b6e935e50c",
+    "cpp/game/GameBattle.cpp": "f00b83b9b4c32bc1a9cef312dc2c2019573705e2e11006c6489b9dba6600a868",
+    "tests/cpp/th16-entry-commands-fixture.cpp": "72b704a99efecb1f00e7d45bab52a5204a0ac7368542b1b399306db581307711"
+  }
+}

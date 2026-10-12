@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "baseEntries": 2,
+  "startupEntries": 324,
+  "combinedProductionCases": 648,
+  "logoCases": 768,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "adb79a86e871694a74ea08e2a44854a914e4bb79723288d4f477f10e40022459",
+  "scope": "Retail42ed3a..42edf6 base frame0 retained in HUD+120 and42f19e..42f430 demo94, separate retained overlay111, first-stage hint67 iff replay+94/continues zero, character1 Y148 otherwise128 after initial update. All script/flags200/origin/rotation words compared with missing/existing retained roots. ANM allocation/binding/first update/registration/lookup controlled; unrelated HUD icon/timer/logo/indicator/difficulty setup and real ANM/GPU excluded. Production control_mode maps actual replay/demo input, with demo treated as replay by the session. Production Hud::start_stage compares both block outputs across648 combinations with synthetic stopped ANM resources. Retail42f0cf..42f19e stage-logo resource script1, suppressed runtime8, flag40 demo or flag30==20 Spell Practice. Runtime modes0/8/9 and all low256 flag combinations. Resource locking disabled; ANM allocation/binding/first update/registration controlled. Logo script content, texture/GPU and thread synchronization excluded.",
+  "sources": {
+    "runtimes/th12/th12_web/tests/cpp/th14-hud-startup-fixture.cpp": "f867ee083fa58e05c22ecbd066cd2f8753181f6cdf9f0138f983bf5076190f43",
+    "runtimes/th12/th12_web/cpp/game/Hud.cpp": "94c1f7960fbd3782761f05b0054419b4c6f5e899f48d77fd2adf1f458c314bc6",
+    "runtimes/th12/th12_web/cpp/game/Hud.hpp": "e9a7d3dae6c14df3a8f17946d766bf5f760c0fda4bdef583c14af9b1a66b8ee1",
+    "tools/th14-hud-startup-native.py": "395b4e4325bc721451688d1a9afbad5ca58e70dd5d53280c16011664077ee3d2",
+    "tools/th14-hud-startup-check.mjs": "42ef1693d3890326f433f56d92ce9d1af45183d4fc6b05efaecf4cd5dd740f84"
+  }
+}

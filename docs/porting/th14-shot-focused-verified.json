@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "spawns": 180,
+  "updates": 2304,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "6d29e0d15a2fd536af9cebd75375b7878e898a78355b73e66a9ae857cc3828d8",
+  "scope": "451af0 spawn callback 2 and 451cd0 update callback 2 field writes. Actual retail nearest/id/flag checks, atan2, angle wrapping and timer operations; ANM lookup/interrupt are boundaries. Compares target/id, angle/speed, area flags/radius/growth, decay/steering clocks, VM flags/scales, state, shared cached power and damage; global Bomb states 0/1/2 and dialogue/life gates are included. Production connects normalized area parameters; separate hit/damage/reward reports cover those consumers. Native area allocation, generic shot lifecycle, other raw shot callbacks and full gameplay remain unverified.",
+  "sourceHashes": {
+    "tests/cpp/th14-shot-focused-fixture.cpp": "6d2002c830516e5326ef92da9a62df15bb0adaa66556108e0d034df28aaa6981",
+    "cpp/game/ShotTh14.cpp": "8cf98e342f2d660be0726bd6fed76f658745cb42ddf62a2fd646eed9ddd58de7",
+    "cpp/game/ShotManager.cpp": "d389d6b049b2f18871cfc471793bcea7bcb3324ca348820ea7a1ad4ed1b14821",
+    "cpp/game/ShotManager.hpp": "73dfca787b3c6c83cce784c4fd6513662f012c6b1c84aa7fd5fb5527b6ff2f0b",
+    "cpp/game/PlayerFrame.cpp": "f23229fcd240ccceb9ba38cdb4dc12f05103212766c814b309f16212b297cd4c"
+  },
+  "toolHashes": {
+    "tools/th14-shot-focused-native.py": "760b9e1b01f4cfc5a5b9d38f3b7f4ff37a1b78c5c70b02c8c69852b0e3648bb1",
+    "tools/th14-shot-focused-check.mjs": "e4bc37f7f9a33f5837d123f4f078fa8814be1312609f90eb4465e7686f862857"
+  }
+}

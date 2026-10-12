@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "url": "http://127.0.0.1:8132/",
+  "wasmSha256": "39a038aba8e5c10dfac4c7830aa728df4437aa5775befae6af1b669da1c9b830",
+  "bytes": 1770180,
+  "sourceHashesVerified": 145,
+  "checks": [
+    "Music Room header99 and ten visible list rows, original comments19..26",
+    "Up wraps first track to seventeenth and scrolls to rows8..17",
+    "unheard track first confirm displays spoiler warning",
+    "second confirm replaces warning with original staff theme comments",
+    "x returns to main, Music Room cursor preserved"
+  ],
+  "screenshots": [
+    "artifacts/th14/browser-music-overview-oct11.jpg",
+    "artifacts/th14/browser-music-unheard-prompt-oct11.jpg",
+    "artifacts/th14/browser-music-confirm-play-oct11.jpg",
+    "artifacts/th14/browser-music-return-title-oct11.jpg"
+  ],
+  "logs": "artifacts/th14/browser-music-logs-oct11.json",
+  "build": "artifacts/th14/sdl-title-music-browser-build-oct11.json",
+  "scope": "Actual formal SDL browser, original data/ANMs, real key navigation. No hidden unlock/test clears/replay saves; second confirmation performs ordinary in-game staff-track preview. Request-state/native tests and visual inspection do not prove captured waveform/original GPU pixels or overall1:1."
+}

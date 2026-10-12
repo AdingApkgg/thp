@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+const root=resolve(import.meta.dirname,'..'),out=resolve(root,'artifacts/th14/gpu-original-shapes/native-input'),sdk=resolve(root,'runtimes/th12/tools/emsdk');mkdirSync(out,{recursive:true});
+const rt='runtimes/th12/th12_web/',python=process.env.EMSDK_PYTHON||'C:/Users/APKGG/AppData/Local/Programs/Python/Python314/python.exe';
+const sources=['AnmVm','AnmResource','AnmInterpreter','AnmGeometry','AnmProjection','AnmRenderer','GraphicsMath','Interpolation','SceneCamera'].map(n=>rt+`cpp/game/${n}.cpp`).concat(rt+'tests/cpp/th14-gpu-original-shapes-input-fixture.cpp','runtimes/th12/portable/sdl/Renderer.cpp');
+const flags=['-O2','-g0','-std=c++17','-ffp-contract=off','-fno-exceptions','-fno-rtti','-DPORT_TITLE=14','--use-port=sdl3','--no-entry','-sDEFAULT_TO_CXX=1','-sMODULARIZE=1','-sEXPORT_ES6=1','-sENVIRONMENT=web','-sALLOW_MEMORY_GROWTH=1','-sMIN_WEBGL_VERSION=2','-sMAX_WEBGL_VERSION=2','-sGL_SUPPORT_AUTOMATIC_ENABLE_EXTENSIONS=0','-sEXPORTED_FUNCTIONS=_gpu_initialize,_gpu_error,_gpu_recorded_shape_case,_gpu_status,_gpu_draw_count','-sEXPORTED_RUNTIME_METHODS=HEAPU8'];
+execFileSync(python,[resolve(sdk,'upstream/emscripten/emcc.py'),...flags,...sources,'-o',resolve(out,'gpu.mjs')],{cwd:root,env:{...process.env,EM_CONFIG:resolve(sdk,'.emscripten'),EMSDK:sdk,TEMP:out,TMP:out,TMPDIR:out},stdio:'inherit',windowsHide:true});
+const sha=b=>createHash('sha256').update(b).digest('hex'),read=p=>readFileSync(resolve(root,p)),native=JSON.parse(read('artifacts/th14/gpu-original-shapes/native.json'));assert.equal(native.generated,true);assert.equal(native.cases.length,810);
+const geometry=JSON.parse(read('docs/porting/th14-gpu-original-quads-geometry-verified-oct11.json'));
+const files=[...sources,...Object.keys(geometry.sourceHashes).map(p=>rt+p),rt+'tests/cpp/th14-gpu-original-shapes-data.hpp',rt+'tests/cpp/th14-gpu-original-shapes-fixture.cpp',rt+'tests/cpp/th14-gpu-original-shapes-input-data.hpp','runtimes/th12/portable/sdl/Renderer.hpp','runtimes/th12/portable/sdl/AlphaConversion.hpp','runtimes/th12/portable/sdl/GraphicsState.hpp','runtimes/th12/portable/sdl/Shaders.hpp','runtimes/th12/portable/sdl/ResampleShader.hpp','tools/th14-gpu-original-shapes-input-build.mjs','tools/th14-gpu-original-shapes-input.html','tools/th14-gpu-original-shapes-input-serve.mjs'];
+writeFileSync(resolve(out,'build.json'),JSON.stringify({built:true,completeGame:false,nativeEquivalent:false,sources:Object.fromEntries([...new Set(files)].map(n=>[n,sha(read(n))])),wasmSha256:sha(readFileSync(resolve(out,'gpu.wasm'))),loaderSha256:sha(readFileSync(resolve(out,'gpu.mjs'))),nativeSha256:sha(read('artifacts/th14/gpu-original-shapes/native.json')),geometryProofSha256:sha(read('docs/porting/th14-gpu-original-quads-geometry-verified-oct11.json')),flags},null,2)+'\n');
+console.log('Built current production geometry to production SDL/WebGL quad fixture');

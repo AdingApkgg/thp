@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "nativeExecutableSha256": "422f40aa176c9aab7d0178ce6033802b4143921a5e0e463ef99259ef6d100a58",
+  "nativePositionCases": 240,
+  "nativeSpawnCases": 5,
+  "scope": "2D recursive ANM translation, creation registry selection, detached copies, live parent movement and parent retirement. Full 3D parent transforms and gameplay are not asserted.",
+  "results": [
+    {
+      "title": 13,
+      "passed": true,
+      "wasmSha256": "5d7ef79cd5e0df54ae97167cb9fa2445d21d0b28002545dd28c16a9448b04ffb"
+    },
+    {
+      "title": 12,
+      "passed": true,
+      "wasmSha256": "8454454d89db200a104ed6e463cebbe249a090f437e51bc009dff7ee3be0ee9a"
+    }
+  ],
+  "sourceHashes": {
+    "cpp/game/AnmVm.cpp": "ddf923bf1cc8d71b0bdf6f91a54b4b40f723d5a3023b295f2a8e0e833dcf5ad4",
+    "cpp/game/AnmResource.cpp": "ca6f5dbff0e5a5f8b6980354faf7165626a33cb7f88399987c8b573b30588947",
+    "cpp/game/AnmInterpreter.cpp": "eb94221d8f7249a71d0a77998b1ba074203704c5dfd8605acfe2a6312ab353ab",
+    "cpp/game/AnmManager.cpp": "5548af693e9b1f71fe1622654d27b7281398417a2c78ce720ae8164b3500e505",
+    "cpp/game/AnmGeometry.cpp": "876273a619274307c37a94faf74dce6948778f0f61cb32d344f447b35490fed5",
+    "cpp/game/Interpolation.cpp": "733384f3b927b3f159d128a81eace6ba4a7e54d4ad8ee94bfff422abd3a41a98",
+    "tests/cpp/th13-position-fixture.cpp": "4657a734b5db0d5da2ecbf628e7eafe22baf18cef633e7175fda436dfb5b365b",
+    "cpp/game/AnmVm.hpp": "ddfccb657cb0924a03a67e5ca28c48dcd6fb3dc5b965aeca30fd146ee5aee412",
+    "cpp/game/AnmManager.hpp": "ca5293092fa63aac32a723ed398a883dfb7c62f90334870e4e8a5d5b819099ea",
+    "cpp/game/AnmOpcodes.hpp": "238e9632deae6fedcfa8a4e66234e6dfe88e239dbfe525de0bc6926b1a3a7714"
+  },
+  "toolHashes": {
+    "tools/th13-position-native.py": "45f1fc39cb484936c62d766aa04fb51669f193fc8d450c131758b28eec0a6850",
+    "tools/th13-position-check.mjs": "483d502e2bdcb9acd68bbc805c7bd4c85563f0ea3a5632a574e39a98d90d355b"
+  }
+}

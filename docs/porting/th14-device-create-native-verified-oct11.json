@@ -1,0 +1,137 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "entry": "0x46b110",
+  "executableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "functionSha256": "3f43809bffd65386139ec5dc457dc175465063c91b169a7efae6d13a66009c58",
+  "toolSha256": "7df0ba6dadd8931fe461f2e522818e7005cf45910158371817d2485713497a4d",
+  "rows": [
+    {
+      "name": "hardware",
+      "configFlags": 0,
+      "requests": [
+        {
+          "adapter": 0,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "result": 0
+        }
+      ],
+      "returnValue": 0,
+      "selectedHardware": true,
+      "finalModeFlags": 165
+    },
+    {
+      "name": "software-fallback",
+      "configFlags": 0,
+      "requests": [
+        {
+          "adapter": 0,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "result": 2289436780
+        },
+        {
+          "adapter": 0,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "result": 0
+        }
+      ],
+      "returnValue": 0,
+      "selectedHardware": false,
+      "finalModeFlags": 164
+    },
+    {
+      "name": "reference-fallback",
+      "configFlags": 0,
+      "requests": [
+        {
+          "adapter": 0,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "result": 2289436780
+        },
+        {
+          "adapter": 0,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "result": 2289436780
+        },
+        {
+          "adapter": 0,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "result": 0
+        }
+      ],
+      "returnValue": 0,
+      "selectedHardware": false,
+      "finalModeFlags": 164
+    },
+    {
+      "name": "forced-reference",
+      "configFlags": 2,
+      "requests": [
+        {
+          "adapter": 0,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "result": 0
+        }
+      ],
+      "returnValue": 0,
+      "selectedHardware": false,
+      "finalModeFlags": 164
+    },
+    {
+      "name": "all-failed",
+      "configFlags": 0,
+      "requests": [
+        {
+          "adapter": 0,
+          "deviceType": 1,
+          "behaviorFlags": 64,
+          "result": 2289436780
+        },
+        {
+          "adapter": 0,
+          "deviceType": 1,
+          "behaviorFlags": 32,
+          "result": 2289436780
+        },
+        {
+          "adapter": 0,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "result": 2289436780
+        }
+      ],
+      "returnValue": 1,
+      "selectedHardware": false,
+      "finalModeFlags": 164
+    },
+    {
+      "name": "forced-reference-failed",
+      "configFlags": 2,
+      "requests": [
+        {
+          "adapter": 0,
+          "deviceType": 2,
+          "behaviorFlags": 32,
+          "result": 2289436780
+        }
+      ],
+      "returnValue": 1,
+      "selectedHardware": false,
+      "finalModeFlags": 164
+    }
+  ],
+  "scope": "Whole retail device-selection function; only CreateDevice COM return boundary controlled. Default HAL hardware vertex processing first, then HAL software, then REF software; explicit compatibility flag skips HAL.",
+  "limits": [
+    "Not an observed original-game live device creation",
+    "Controlled HRESULTs establish branch behavior, not driver success",
+    "Existing software-vertex GPU fixtures remain valid for that tested device mode only"
+  ]
+}

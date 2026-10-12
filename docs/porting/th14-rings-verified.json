@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "wordExact": true,
+  "wordDifferences": 0,
+  "maxAbsoluteDifference": 0,
+  "firstWordDifferences": [],
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "nativeAllocationCases": 60,
+  "nativeGeometryCases": 480,
+  "vertices": 7680,
+  "scope": "TH14 ring allocation sizes/reference arguments and modes 9/13/14/23/24 vertex buffers through the production geometry manager. Positions/UV/RHW use tolerance max(0.000004,abs(expected)*0.00000024); color words exact. Separate float-word audit records every difference. Native allocator is a recorded boundary. Device rendering is not asserted.",
+  "wasmSha256": "b3be746c0cc8f6822e4778929962e3039b755ce7f5a4b805003c0c27fd571ac8",
+  "sourceHashes": {
+    "cpp/game/AnmVm.cpp": "49b7114f614de4f7cb743487fa29fb6049f1e15f7135195abc0de501514a3c71",
+    "cpp/game/AnmGeometry.cpp": "6326e12e33f2cce4d9999ade1b241c25832c1323720df57a1094a6372c10db59",
+    "cpp/game/AnmManager.cpp": "7d2b90f75703117d6a87b409d3ecf23515294fadad79ffe06b263fe752bbb799",
+    "cpp/game/AnmInterpreter.cpp": "4e32fd542f9b1ec740e45e396eff728b26da98c67399b398ffd233ef3266bf3d",
+    "cpp/game/AnmResource.cpp": "7391cebdd1be0faa8ad9201352debef81b436543f2f6703d962bb4c504490c41",
+    "cpp/game/Interpolation.cpp": "57cd2806a28109745084fb2079edee055322ff3fd044f75fc4e4ec3305add125",
+    "tests/cpp/th14-rings-fixture.cpp": "a9bbd49e9f24bd8583dcd98067c641404c35df1c3a7d1d56d002f9deb9fbf12d",
+    "cpp/game/AnmVm.hpp": "f7f2aeaf6b3de13f7f3a0e4a47d1e8f5452bda86fd54d09ab1ee3fc95ea6bf01",
+    "cpp/game/AnmGeometry.hpp": "b6a1cea487717d15bbcc8e7788d055f9ab345bd18f4583c1d8024521cede3f3c",
+    "cpp/game/AnmOpcodes.hpp": "37a6ef978bc43d0b62314294930444056f2632cd207246589752e14a8bb03691",
+    "cpp/game/AnmManager.hpp": "77f2de3ff97f534be1514ceaefa1034b26fe8b9a9eb8e1876488571d89cd52e4"
+  },
+  "toolHashes": {
+    "tools/th14-rings-native.py": "3af77ec2f092c83d6e8019ec697725e7e3a718265aa39a6117c65c74680fe9bd",
+    "tools/th14-rings-check.mjs": "907deabb8c13b72b29b199971c76532cf8b8c4b81a2fe35f684f7b95607cf913"
+  }
+}

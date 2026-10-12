@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "startCases": 12,
+  "tickCases": 2592,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "daadd243232c521a09e010afa417ff91f98113a626704db82a93196333c1c094",
+  "scope": "Actual 415610 startup and 412200 common update through 415750/415a90, with controlled ANM lookup/factory, sound/item sinks and bullet/laser cancel delivery. Production selection 4 compared for spell fail, count, invincibility, script 16/19 requests, native player flag 8, active states 1/2, movement factor request, tracked position, scale decay, auxiliary age gate, hit-to-burst life/timer reset, interrupt 2, burst duration 60, missing main/auxiliary, frame 720/dialogue finish, three type-6 item positions and rates .5/1/1.25. Laser requests independently recorded natively and matched to bullet requests; production world callback represents the existing combined GameBattle delivery. Actual item rewards, moving player delta, ANM lifecycle/children, full firing and GPU pixels are separate.",
+  "sourceHashes": {
+    "tests/cpp/th14-sakuya-b-controller-fixture.cpp": "85f280e29bb5159cd6e9dae68a40250cbaa84ee0671c4b41b805217d8c4081de",
+    "cpp/game/BombController.cpp": "4d7fe71c50a7b0b7f31a1739e780766faef9b2f0955b4a2bf38f0f96285f9536",
+    "cpp/game/BombController.hpp": "5b54ffd44abae1882bd0eadd30ffcd57bcff840466026f6c84d54772e72fd080",
+    "cpp/game/PlayerMotion.cpp": "c1d3c36e07226eae33262ac63e8fb7ca27e177b78543c0fa8d0fdcdf6cba52ff",
+    "cpp/game/PlayerMotion.hpp": "5c2f96050884fefeccfb2f00abe34456e9b2a0a4154db29b711e3aa44b067f58",
+    "cpp/game/PlayerFrame.cpp": "6f96e1033d9ba1cd2c4086f177c3dd18a21cf26f475964dd6db3a781980da637",
+    "cpp/game/GameBattle.hpp": "e5fe782f0264daee225d731c07174e95ff840ec31a60ad6da70765c19e2fb978",
+    "cpp/game/EnemyAnimations.cpp": "550cc7e0ac2c0d10b2e561152b92a44eaf989cf16518ae4670fb47404ee302f4"
+  },
+  "toolHashes": {
+    "tools/th14-sakuya-a-controller-native.py": "fe00651de9c896da146eb0702df48ef8fabc208781227326fdb117744c04187a",
+    "tools/th14-sakuya-a-controller-check.mjs": "114d109eeb2754ce35eca82b692157a13345b4ca66cc9b1e1929a2867cbea170"
+  }
+}

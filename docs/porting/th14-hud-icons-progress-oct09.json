@@ -1,0 +1,112 @@
+{
+  "date": "2026-10-09",
+  "verified": false,
+  "scope": "TH14 bounded proofs: ETEX, end menus, ASCII/manual, Continue/HUD, player lifecycle, respawn filtering, decoder restoration, sixteen managed stock icons and active-Bomb damage collection. All-title, native replay, full Bomb effects, physical audio and GPU pixel equivalence remain unverified.",
+  "proofs": {
+    "th14-hud-icons": {
+      "report": "docs/porting/th14-hud-icons-verified.json",
+      "sha256": "861f5010a1a34b172c4e00e2fa26a3d59aae46c8fcfac5ed5c0f711cfc6a6600",
+      "passed": true,
+      "scope": "Retail front.anm scripts 29..44 execute through the full native 46fe50 interpreter for 181 frames each, with immediate/delayed stock interrupts, all fragment labels, RGB, alpha fades, clocks, layer and resolution flags, local position bits. Security-cookie check and sprite resource bind are controlled native boundaries. Production Hud manager registration, once-per-tick updates, layer 24 rendering, stock interrupts and unregister-on-destruction use the retail resource; sixteen sprites submit 96 screen vertices within the sidebar. Excludes full native HUD construction, pixel equivalence and physical GPU output."
+    },
+    "th14-hud-notice": {
+      "report": "docs/porting/th14-hud-notice-verified.json",
+      "sha256": "bff2fb536c755f559ede70b5735e285d8143715cbe702c655da6dca4d1dca3ac",
+      "passed": true,
+      "scope": "Retail 434430 notice types 0..6 including captured/failed spell results, signed bonus division and 1,000/1,000,000 separator thresholds, scripts, sprites, handle replacement, zero initial positions/rotation and flag 200 before first update. Actual 47f6e0/47f520/47f560 and inline deletion traverse root children only when child.previous is null. Tests cover missing handles, existing roots, two children, and non-parent chain members. Failure preserves earlier bonus VMs and neither result closes the old spell-time VM. Resource binding/tick, ANM registry allocation/lookup and sprite binding are controlled native boundaries; the port uses synthetic stop scripts and sprites. Actual resource animations, font rendering, HUD text layout and GPU pixels are unverified. Retail 42edf6..42efb5 life/Bomb icon initialization uses scripts 29..36/37..44, zero positions/rotation and flag 200. Retail 434ef0/434fd0 display interrupts are compared for 54 signed count/fragment inputs, including wrapping fragment multiplication and 16-bit partial labels. Allocation, resource binding and first update remain controlled boundaries."
+    },
+    "th14-hud-text": {
+      "report": "docs/porting/th14-hud-text-verified.json",
+      "sha256": "57fc98966c5c34414443f5bae7efa25bc465fae68a68588ce3dde53904f30937",
+      "passed": true,
+      "scope": "Retail 43144a..4318b6 HUD sidebar block, actual 40bb60/40bc70 grouping and 40bf20 glyph layout. Score/high-score comma thresholds and Continue suffix, life/bomb fragments including the 49-extend sentinel, power/fractions/max power, PIV and graze: glyph indices, positions, scale, colors and right alignment at resolution factor 1. CRT formatting/ASCII queue/atlas/GPU boundaries controlled. Excludes practice high-score selection, live HUD alpha source, result/spell/timer layouts, icons and pixels."
+    },
+    "th14-bomb-damage": {
+      "report": "docs/porting/th14-bomb-damage-verified.json",
+      "sha256": "483526b3b89d5e9a8be0a2e030c3636d5f3e625dc73bf11e74ca4f22f1569daa",
+      "passed": true,
+      "scope": "Actual six retail vtable +0xc methods return zero even for null/unmapped pointers; actual 451430 runs with all six active/inactive Bomb vtables, frame gates, empty pool or a ticking death circle. Production BombController::damage and ShotManager::damage_th14 preserve ordinary damage collection during an active Bomb; failed world delivery remains explicit. Controlled pool/death-area setup. Does not verify Bomb startup, animation, time stop, cancellation, Bomb-specific area creation, GPU pixels or full weapon behavior."
+    },
+    "th14-player-lifecycle": {
+      "report": "docs/porting/th14-player-lifecycle-verified.json",
+      "sha256": "33bd0adf0b0c231200b776fcb442e85cc46826f0b790fa27762a4e61195d7ce0",
+      "passed": true,
+      "scope": "Retail 44f7a0 hit, 44f5e0 death and 44dbd0..44dfd1 lifecycle dispatch compared to production PlayerFrame hit/die/update using original player/effect ANM resources. Checks effect script 28/27, sound 2 suppression, spell failure, lives, stock-only Bomb consumption via actual retail 412110, eight-frame deathbomb boundary, 30-frame loss/respawn, preserved fragments, 3-Bomb refill, 60-frame entry, fixed-point Y, exact SSE laser radii and circle/all cancellation arguments. Native movement, ANM, HUD, bullet/laser managers, death damage-area allocation and Bomb vtable effects are controlled boundaries; production runs real ANM while comparisons exclude their internal state. Native comparison stops before common update tail and accounts for production clock advancement. Excludes full Bomb behavior, GPU pixels, audio playback, replay and all-title equivalence."
+    },
+    "th14-end-session": {
+      "report": "docs/porting/th14-end-session-verified.json",
+      "sha256": "76141761e9741d3272d10866de4b5016420df333a4bff3b2063aa0c0fc9d4af1",
+      "passed": true,
+      "scope": "Production session/menu/ANM/render commands with retail archive: Title/Retry, seven-page manual round trip and three in-place Normal Continues. First loss is natural, later loss boundaries controlled. Preserves stage/frame/battle/player/enemy/bullet identity and recording clocks and verifies stock reset, four options and port respawn. PNG delivery at effects boundary; excludes native death lifecycle equivalence, audio, replay saving and GPU pixels."
+    }
+  },
+  "sdl": {
+    "wasm": "runtimes/th14/th14_web/artifacts/sdl3/th11-harness.wasm",
+    "bytes": 1711445,
+    "sha256": "f50ab9bffe9c536188a442fb9dd06f6087016a81986a70501e2f56ccff5f6941",
+    "buildLog": "artifacts/th14/bomb-damage-sdl-build.log"
+  },
+  "sharedEngineBuilds": [
+    {
+      "title": 12,
+      "bytes": 888669,
+      "sha256": "d23fe2ebf933977b1081a7f4e80762775c3a88d653caa521ff8123f92a37a5ef",
+      "report": "runtimes/th13/th13_web/artifacts/cpp/engine-th12-build.json",
+      "completeGame": false,
+      "sources": 117
+    },
+    {
+      "title": 13,
+      "bytes": 895105,
+      "sha256": "171ab4ac4a5865597706f8e050ae69279510ccb79b0910a6a95fc3b35dc060c3",
+      "report": "runtimes/th13/th13_web/artifacts/cpp/engine-th13-build.json",
+      "completeGame": false,
+      "sources": 117
+    }
+  ],
+  "browser": {
+    "report": "docs/porting/browser-th14-hud-icons-oct09.json",
+    "sha256": "88fa18091c4df0cf5a59a73a28091eba56d4b8a51cb616a1d788b7d39d63e4d4"
+  },
+  "references": {
+    "report": "docs/porting/th14-etex-reference-notes-oct09.json",
+    "sha256": "0d4e12d5768d9de394dc261efdc407de20752d46e2c6328d9a87f6780ef86e9e"
+  },
+  "regressions": {
+    "th12Tests": 4,
+    "th12Log": "artifacts/th14/bomb-damage-th12-session-regression.log",
+    "lifecycleCases": 796,
+    "sessionFrames": 2197
+  },
+  "bombDiagnostics": {
+    "before": {
+      "report": "artifacts/th14/bomb-activation-before-damage-fix.json",
+      "sha256": "e5cf5bdb57f25b593a988c3f686917a976f7e6ace9672d990a4c21688d898c0f"
+    },
+    "after": {
+      "report": "artifacts/th14/bomb-activation-repro.json",
+      "sha256": "c69eaf7b28b739322034a7324bcc09cffed0f73c1089c6778af93be8f0fe52ca"
+    },
+    "nativeStartup": {
+      "report": "artifacts/th14/bomb-start-native.json",
+      "sha256": "c7a8898cb7b75487d27eb90db488d01888f932e08e3cd62e62fff26e8af9e1e5"
+    },
+    "nativeStartupCases": 72,
+    "nativeStartupPortVerified": false,
+    "nativeDamage": {
+      "report": "artifacts/th14/bomb-damage-native.json",
+      "sha256": "70a1330cc8d1d3285a9ca74aef60691f66e27eaa5cb3818a05c69b5c1aa7b780"
+    },
+    "marisaAFollowupFrames": 360,
+    "completeBombVerified": false
+  },
+  "remaining": [
+    "Six complete TH14 Bomb effect paths remain unreconstructed: Reimu A/B, Marisa B and Sakuya A/B still refuse legacy scripts 35/33/43/47/58. Marisa A no longer aborts damage collection but its startup/animation/areas/cancellation are inherited and incorrect.",
+    "Sakuya B requires actual 110-frame bullet/laser time stop, frozen collision dispatch, radius-600 type-3 cancellation and double item delivery. Native startup evidence is not port verification.",
+    "Result/spell/timer HUD layouts, complete alpha integration and remaining sprite/pixel differences; sixteen sidebar stock icons now have bounded interpreter/registration/render proofs.",
+    "Complete player movement/options/invulnerability/area integration and native replay lifecycle; physical queued audio and native DirectSound PCM equality remain unverified.",
+    "Retail score/ranking container and replay saving; complete pause/result menus, D3DX PNG resampling/color quantization and full GPU comparison.",
+    "Other ETEX, manager bounds, kind-0 laser fragments and ordinary complete-game verification.",
+    "Other requested unported titles TH06nc/TH12/TH13/TH16/TH17/TH18/TH19 remain unfinished. Completed titles are excluded from port scope."
+  ]
+}

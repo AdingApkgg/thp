@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "cases": 600,
+  "scope": "Full41c800 start/end sampler, original CRT fmod/floor, rounding threshold, three-digit wrapped encoding, actual41bf60 replay checksum and invalid sentinel;20-entry recording/replay headers controlled. Only external46ac20 clock is replaced with a controlled double. Negative/zero/long and boundary times, varied flags/index/record values. Does not prove browser clock resolution, callback order, physical audio/GPU or natural card captures.",
+  "wasmSha256": "1826a6744ce873c268a12ec3241aa645599fabb6f54d8970d718a1c4b359b780",
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "sourceHashes": {
+    "cpp/game/SpellTiming.cpp": "b47cce01612c88caeebba8276aba03a349698eab08f45458955705fd5c460a5f",
+    "tests/cpp/th14-spell-timing-fixture.cpp": "284036550a2567c63b9b2276135f6a84469a49a6c78659f574ab795a9fa9587a",
+    "cpp/game/SpellTiming.hpp": "b27800fce5a41811b88ade4f92679e5ef3624ae3b32a8dbfdb30bc104a34a3b5"
+  },
+  "toolHashes": {
+    "tools/th14-spell-timing-check.mjs": "eefe1735177b220c8637d6e37ce15b5ae9cb1436c7bdae1a15a84ce48eed1ac9",
+    "tools/th14-spell-timing-native.py": "3395462327a04c79af029275c0b87d2109aa55076e3209a6d3d2fe42185c45be"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "bulletFrames": 1260,
+  "laserFrames": 1440,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "40eb9fb930c959d9772afd88eff198ca7df1f47ef00696fca3b3f015f96572f2",
+  "scope": "Actual retail bullet manager and laser manager freeze dispatch versus production managers. Bullet state-1/state-2 lifetime threshold, flags, no movement/ANM/auxiliary advance when frozen, continued lifetime/group/count and single graze. Actual kind-1/kind-2 collision virtuals and inert kind-3, frozen lifetime, graze clocks and geometric request order. ANM delivery, player collision result and graze delivery are controlled. Kind-0 finite lasers and complete Bomb lifecycle are separate.",
+  "sourceHashes": {
+    "tests/cpp/th14-time-freeze-fixture.cpp": "2f5389d68a6787620ee29e6f314fe18b937f62ca414b4b028e5122c2cad5ca43",
+    "cpp/game/BulletManager.hpp": "453393d8695db4655963a7219f600bcd2e49a22bf5eb4cacc283a723ec7ecc53",
+    "cpp/game/BulletManager.cpp": "40c6b0ca51e2f646b691754f6ca9632478ccf6b3a72a04cb29b6eff3af48cd08",
+    "cpp/game/BulletTh14.cpp": "b3e8bfad072a0238c6efb50767829be4acd6fc7da8aff4d96c8e869df4736e96",
+    "cpp/game/LaserManager.cpp": "9177d74ea0aa00f7171da0772b6acf7e1d16ab9d39e619de391e99d18c9b0212",
+    "cpp/game/LaserState.hpp": "be7ece4f6a99b10c7d8af83d5ef3ffbb5516afb0f426b6e7cc1b1cf7b3857875",
+    "cpp/game/LaserInfiniteTh14.cpp": "ec4cedb7dd3ea332e4c7da4c2d0fb0ccf71a8f4c04a391e9abb4682c38547fcc",
+    "cpp/game/LaserCurveTh14Runtime.cpp": "749f7c0b26b47025a6415f7202575bca98d2b0578f31de3e237330d28fa57ff9"
+  },
+  "toolHashes": {
+    "tools/th14-time-freeze-native.py": "e08d4b9d80d2d2fe59f43f08a1a6b48c2099baf191dd6e51cc13ba599f3ae7be",
+    "tools/th14-time-freeze-check.mjs": "3ccc8d3cf8e99c55628635933ac6ba9784b393a62b684100a8b615987c46e5e8"
+  }
+}

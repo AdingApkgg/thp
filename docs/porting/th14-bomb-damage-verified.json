@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "directCalls": 54,
+  "collectorCases": 48,
+  "bombCircleCases": 180,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "3e2c64ea801735b53ed3fcdee045ea93a15dd6cd095d343a0306fba60610bc89",
+  "scope": "Actual six retail vtable +0xc methods return zero even for null/unmapped pointers; actual 451430 runs with all six active/inactive Bomb vtables, frame gates, empty pool or a ticking death circle. Actual 450130 allocation, Bomb bit set and 44e005 stationary clock feed actual 451430, compared against production ShotManager::th14_bomb_circle plus damage_th14 for Marisa B duration-zero circles, rectangle edge/miss cases and three rates before/after expiry. Damage and score are compared; native Bomb output flag is recorded but not exposed by this production fixture. Failed world delivery remains explicit. Controlled player/ANM/Bomb state. Does not verify Bomb startup, animation, time stop, cancellation, GPU pixels or full weapon behavior.",
+  "sourceHashes": {
+    "tests/cpp/th14-bomb-damage-fixture.cpp": "9a64a12cfc19d1b76d74afa09b0cd97fd2a89e6bd6b8890e79f13c8db90bf665",
+    "cpp/game/BombController.cpp": "6bcc4c59fd33477cac474652717bcb2d94d67954ef7e1fc88808d9a02ea1f298",
+    "cpp/game/BombController.hpp": "4c6ff868ed576411e0ed90a5d20ec159e432d61ba54b3c4667cc89f9423065ed",
+    "cpp/game/ShotTh14.cpp": "20aa09fbf090b33b91ee2e93bd090cd68235fbae083aa2a481818297ababffc6",
+    "cpp/game/ShotManager.cpp": "2bb4ac1af3e33e1e35a1fdbb9a13aaee513dd426b82ed67e7a686d35a62aeb87",
+    "cpp/game/ShotManager.hpp": "ab26bcdf8bda7d83995aa160ccf9008f4d19baf3b37183dcd2d7bcab3480ac13",
+    "cpp/game/ShotDamageTh14.cpp": "e3373bbf735231a2562723bc73943292afd839e7a783fb27ac1ed15aa3902d3a",
+    "cpp/game/ShotDamageTh14.hpp": "8f6da0fb8ccf7f565ff572f957bec31da571c1c9af9aa427041bef3ec7ddc592"
+  },
+  "toolHashes": {
+    "tools/th14-bomb-damage-native.py": "0242a0c113d398c912a2f02442f575499122dd4af525c0ce16b095dd55cdab00",
+    "tools/th14-bomb-damage-check.mjs": "d2d97e5e7ba236d53c8a5d46d1452483f2a83f5f840833b69d7662e164528f28"
+  }
+}

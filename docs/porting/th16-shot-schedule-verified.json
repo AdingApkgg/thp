@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "title": 16,
+  "completeGame": false,
+  "cases": 2304,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "bced92e639a5b1b9e7732e21d2c1a1876a578ff62072d90735abe0285bf81c5c",
+  "scope": "Full4455d0 two-clock firing, stopped player lock reset, short and long clock starting/wrapping/stopping, rate and same-frame suppression, ordered445470 requests. Shot creation is a controlled boundary. Full shoot lifecycle and gameplay excluded.",
+  "sourceHashes": {
+    "tests/cpp/th16-shot-schedule-fixture.cpp": "ff5313673f405eeda2dc0f48118b9aac1778a22f6fd694bc7136403b043a1421",
+    "cpp/game/ShotSchedule.cpp": "302fbfa9b61b0231108cc831b14a5d2dfbfb6f232e404755d6a122ad19df1f95",
+    "cpp/game/ShotSchedule.hpp": "efdf6d52ddc892f620c4772be8a748e2d80392529df91195825bdb8873e2c1ba",
+    "cpp/game/ShtResource.cpp": "d3c3eb0103f4ea9eee6468c863a3ad8e9abb871f3245091290701ecb03161c9b",
+    "cpp/game/AnmManager.cpp": "6ec4cc2bb1f57c94fb281c9866b1f5c40cf13f50fec8539b58d32a9bb7b3a7f0"
+  },
+  "toolHashes": {
+    "tools/th16-shot-schedule-native.py": "02b1e3af238d919d12618d9e3a81645da4becd24806323bb6097ac551580d770",
+    "tools/th16-shot-schedule-check.mjs": "101b6ea98bcea2c2f417caeae9c3720fd523dc5bc09d258999475e0b6b784882"
+  }
+}

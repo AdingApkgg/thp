@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-09",
+  "verified": false,
+  "implemented": [
+    "Retail hit/death scripts 28/27 and sound 2, spell-failure gates, eight-frame deathbomb window, preserved PIV and stock-only Bomb consumption.",
+    "Respawn restores 3 Bombs while retaining fragments, 30/60-frame lifecycle, original fixed-point Y and laser/bullet request timing.",
+    "Production respawn selects TH14 active-list circle cancellation, excluding delayed/state-4 bullets and non-finite radius comparisons; state 3 frame 15 clears only lasers.",
+    "Continue preserves the stopped battle music decoder/cursor, including boss tracks and loop state; retry/title discard the saved voice."
+  ],
+  "proofs": {
+    "th14-player-lifecycle": {
+      "report": "docs/porting/th14-player-lifecycle-verified.json",
+      "sha256": "db755d87849f4bbbd5ef9ccc5250904b22554787315fcfd36d5ae1c0e1189cab",
+      "passed": true,
+      "scope": "Retail 44f7a0 hit, 44f5e0 death and 44dbd0..44dfd1 lifecycle dispatch compared to production PlayerFrame hit/die/update using original player/effect ANM resources. Checks effect script 28/27, sound 2 suppression, spell failure, lives, stock-only Bomb consumption via actual retail 412110, eight-frame deathbomb boundary, 30-frame loss/respawn, preserved fragments, 3-Bomb refill, 60-frame entry, fixed-point Y, exact SSE laser radii and circle/all cancellation arguments. Native movement, ANM, HUD, bullet/laser managers, death damage-area allocation and Bomb vtable effects are controlled boundaries; production runs real ANM while comparisons exclude their internal state. Native comparison stops before common update tail and accounts for production clock advancement. Excludes full Bomb behavior, GPU pixels, audio playback, replay and all-title equivalence."
+    },
+    "th14-player-death-drop": {
+      "report": "docs/porting/th14-player-death-drop-verified.json",
+      "sha256": "b94a14379a69a31753042450719eb2e74a02d1f8b922f49f77c72cf463e7587c",
+      "passed": true,
+      "scope": "Actual retail 44dda3..44de99 death-frame-3 power subtraction, signed clamp, native 44ed80/4a753a angle calculation and seven ordinary type-1 drop requests. Varies signed power/step boundaries, lives, signed zeros, ordinary positions and large-Y zero delta. Item allocation and option reconstruction are controlled boundaries; unused native item argument is excluded. Verifies the helper called by PORT_TITLE=14 PlayerFrame::death_frame, not the full player lifecycle, respawn, item physics or option reconstruction."
+    },
+    "th14-player-scale": {
+      "report": "docs/porting/th14-player-scale-verified.json",
+      "sha256": "d04ff3c7c7c473508e01407dd3bfae444c6e01b9c50a72398434c05b2493dd0d",
+      "passed": true,
+      "scope": "Retail 4504c0 scale request, 44c270/4358e0 option interrupt delivery (47f140 and option rebuild 44f970 are controlled boundaries), and 44e1b4..44e8d5 body scale/blink, real 414140 interpolation and four XYZ collision/pickup regions. Flags, timer pointer preservation, 120-frame SSE interpolation and completed-duration behavior are compared bitwise. Infinity/NaN request handling is included. Full option recreation, projectile scaling, circular-hit scaling, death/stage resets and complete player lifecycle remain unverified."
+    },
+    "th14-bullet-cancel": {
+      "report": "docs/porting/th14-bullet-cancel-verified.json",
+      "sha256": "5f2f5c4f3c47cb32602e24a82d96b61bbb9877b1c2a9d8ac94cc0dcfc7c96f68",
+      "passed": true,
+      "scope": "Also compares actual 41b3f0 respawn circle: strict state 1/2, mandatory collision-delay filtering and ordered COMISS radius inclusion, including signed zero, NaN and infinity. Production GameBattle::cancel_bullets selects this TH14 path rather than legacy circle/erase-enemy/spell protection. The actual battle wrapper is source-wired; this fixture tests the manager boundary, not full Application execution. Retail 41b2f0 circle eligibility and 41ac70 primary-VM cancellation: strict state 1/2 gate, inclusive radius edge, flags 0x200 suppression, interrupt/effect/sound/reward request order, half-rate displacement, state 4 and lifetime reset. All 360 reward-circle cases now execute, including 48 controlled item delivery requests. Actual retail 41ae00 reward type 1 allocation, RNG, bounds, delay, pool exhaustion and subsequent item numerics are measured separately by th14-item-verified.json. Retail 41b880 full 2,000-slot pool scan covers the first/last slots, state-4 recancellation and the no-op reward helper with argument zero. Actual ECL 613 dispatch is checked through the production services/manager route with empty lasers, and 60 ECL 515 timer setters execute actual 4278e5/408b00. Retail 515 sets damage immunity; it is not a cancellation alias. Delivery factories are controlled boundaries here. Secondary appearance VMs, lasers and GPU pixels remain unverified; ECL 615/616 still refuse nonempty laser lists."
+    },
+    "th14-music-restore": {
+      "report": "docs/porting/th14-music-restore-verified.json",
+      "sha256": "88aef12bb1afa7f21417fde213bc0b8220e6c034fcfe451b9682b452d616b119",
+      "passed": true,
+      "scope": "Retail 449e6c..449ea5 captures active filename and double playback time; 44aef0..44af2c requests the saved filename then the identical time. Controlled music-thread/device boundaries. Production AudioDevice uses actual miniaudio/Vorbis decoding and original-resource music files: all 18 tracks at two nonzero prefixes plus a stage-one loop-boundary case, result music between save/restore, exact decoder cursor and bit-identical next 1,024 stereo float PCM frames against uninterrupted playback. Pause/mute, discard and retry also checked. SDL device is a deterministic stub; excludes physical/queued audio timing, full Application transition execution, native DirectSound PCM equality and lossless original music. Existing OGG files are lossy; hashes pin these decoded inputs."
+    },
+    "th14-end-session": {
+      "report": "docs/porting/th14-end-session-verified.json",
+      "sha256": "fa7801ee204f1aa59759ebd4d637338245767481b7e10d2840456c7efde659b6",
+      "passed": true,
+      "scope": "Production session/menu/ANM/render commands with retail archive: Title/Retry, seven-page manual round trip and three in-place Normal Continues. First loss is natural, later loss boundaries controlled. Preserves stage/frame/battle/player/enemy/bullet identity and recording clocks and verifies stock reset, four options and port respawn. PNG delivery at effects boundary; excludes native death lifecycle equivalence, audio, replay saving and GPU pixels."
+    },
+    "th14-hud-notice": {
+      "report": "docs/porting/th14-hud-notice-verified.json",
+      "sha256": "c0a4805eeb5f4ee4ed0d082e6789eaf91910d5bf0251367051b13a5ae37905e6",
+      "passed": true,
+      "scope": "Retail 434430 notice types 0..6 including captured/failed spell results, signed bonus division and 1,000/1,000,000 separator thresholds, scripts, sprites, handle replacement, zero initial positions/rotation and flag 200 before first update. Actual 47f6e0/47f520/47f560 and inline deletion traverse root children only when child.previous is null. Tests cover missing handles, existing roots, two children, and non-parent chain members. Failure preserves earlier bonus VMs and neither result closes the old spell-time VM. Resource binding/tick, ANM registry allocation/lookup and sprite binding are controlled native boundaries; the port uses synthetic stop scripts and sprites. Actual resource animations, font rendering, HUD text layout and GPU pixels are unverified. Retail 42edf6..42efb5 life/Bomb icon initialization uses scripts 29..36/37..44, zero positions/rotation and flag 200. Retail 434ef0/434fd0 display interrupts are compared for 54 signed count/fragment inputs, including wrapping fragment multiplication and 16-bit partial labels. Allocation, resource binding and first update remain controlled boundaries."
+    },
+    "th14-item-pickup": {
+      "report": "docs/porting/th14-item-pickup-verified.json",
+      "sha256": "c60b27827b0635af5418770752b0b8d6bb7b1c58d060826ce664d5d9a1f11bf9",
+      "passed": true,
+      "scope": "Actual retail 4390c0/4394a0/439300/439220 small-power/point/large-power/full-power rewards for types 1/2/3/8, below the collection line and item state 1. Wrapping score and point-item count, power limits and option-level transitions, character collection thresholds, signed/wrapping height-dependent point score, and popup/audio/notification/option-rebuild requests. Controlled native delivery boundaries and recording port callbacks. Native 447bb0/447b70/447d00/447cc0 life-fragment/life/bomb-fragment/bomb awards compare actual field changes, cap 8, life threshold 3, bomb threshold 8, max-life conversion and ordered controlled HUD/audio/notice requests. Life/Bomb icon binding and display labels are proved separately in th14-hud-notice-verified.json; actual icon animation pixels remain unverified. Above-line/state-3 types 1/2/3/8 collection and combo accumulation compare retail 4390c0/4394a0/439300/439220 for 1,152 cases, including type-3 double score delivery at max power and type-8 max-point-value changes. Actual settlement tail 438dad..43907b compares 1,200 signed threshold/sum/timer/dialogue cases, including integer wrapping, popup multipliers/colors, positional sound 57, score caps and type 4/12 spawn delays. Popup and item-spawn deliveries are controlled boundaries; the fixture exercises the actual production ItemManager timer decrement and ItemRewards settlement. The life-fragment cases include the 49-extend sentinel transition at 4d5864. The live port records bonus-popup requests but the separate native five-slot bonus-text renderer is still unimplemented; actual option rebuild, popup animation, resource pixels and complete gameplay are unverified."
+    }
+  },
+  "sdl": {
+    "wasm": "runtimes/th14/th14_web/artifacts/sdl3/th11-harness.wasm",
+    "bytes": 1714709,
+    "sha256": "48dc8589ab60912cab44421784e948523aac1b76be4ba337ff2f6673d28e860c",
+    "buildLog": "artifacts/th14/player-lifecycle-music-sdl-build.log"
+  },
+  "sharedEngineBuilds": [
+    {
+      "title": 12,
+      "bytes": 888669,
+      "sha256": "d23fe2ebf933977b1081a7f4e80762775c3a88d653caa521ff8123f92a37a5ef",
+      "report": "runtimes/th13/th13_web/artifacts/cpp/engine-th12-build.json",
+      "completeGame": false,
+      "sources": 117
+    },
+    {
+      "title": 13,
+      "bytes": 895105,
+      "sha256": "171ab4ac4a5865597706f8e050ae69279510ccb79b0910a6a95fc3b35dc060c3",
+      "report": "runtimes/th13/th13_web/artifacts/cpp/engine-th13-build.json",
+      "completeGame": false,
+      "sources": 117
+    }
+  ],
+  "browserReport": "docs/porting/browser-th14-player-lifecycle-music-oct09.json",
+  "browserReportSha256": "d2330dfb84c0ddfc838b276c6492b2d9caa228e1daf8af9f4ae9698e16f665d5",
+  "references": "docs/porting/th14-etex-reference-notes-oct09.json",
+  "referencesSha256": "6f859d655527a7c85a6c3fe665cd3a3212df2a5e9385e075085c5f014d5d0f08",
+  "regressions": [
+    {
+      "title": 12,
+      "passed": true,
+      "tests": 4,
+      "log": "artifacts/th14/player-lifecycle-th12-session-regression.log"
+    },
+    {
+      "title": 11,
+      "passed": false,
+      "log": "artifacts/th14/player-lifecycle-legacy-regression.log",
+      "boundary": "Inherited player-frame test refuses TH11 ANM input at player-frame.test.mjs:23, before the PlayerFrame fixture is constructed. Not counted as a lifecycle regression pass; cause remains unresolved. TH12 fixture was rebuilt afterward."
+    }
+  ],
+  "remaining": [
+    "Result/spell/timer HUD layouts, live HUD alpha source, remaining icons/sprite mismatches and ordinary complete-game verification.",
+    "Complete player movement/options/invulnerability/ANM/damage-area integration and native replay lifecycle; physical queued audio and native DirectSound PCM equivalence remain unverified. Continue decoder restoration now has bounded request/PCM proofs.",
+    "Retail score/ranking container and replay saving; complete pause and result-menu equivalence.",
+    "Original D3DX PNG resampling/color quantization and full GPU pixel comparison.",
+    "Other ETEX, manager bounds setters, kind 0 laser fragments, bombs/other weapons and complete native collision/death behavior.",
+    "Other requested unported titles remain unfinished."
+  ],
+  "otherRequestedTitlesComplete": false
+}

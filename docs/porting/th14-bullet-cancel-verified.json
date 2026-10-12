@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "cases": 360,
+  "rewardCases": 360,
+  "rewardRequests": 48,
+  "delayedCircleCases": 810,
+  "allPoolCases": 120,
+  "eclAllPoolCases": 120,
+  "timerSetCases": 60,
+  "etexCancelCases": 2304,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "f6773912e063ff4a24927aa797a63f0a15420c0fef539d86e813d3cddbd2d7f3",
+  "scope": "Also compares 2304 actual 418140 ETEX 400 dispatch/cancellation cases: p equals 1 suppresses the effect, nonconcurrent active gating excludes bit 100, index advancement and all 41ac70 state/event writes are checked through the production environment and manager. Also compares actual 41b3f0 respawn circle: strict state 1/2, mandatory collision-delay filtering and ordered COMISS radius inclusion, including signed zero, NaN and infinity. Production GameBattle::cancel_bullets selects this TH14 path rather than legacy circle/erase-enemy/spell protection. The actual battle wrapper is source-wired; this fixture tests the manager boundary, not full Application execution. Retail 41b2f0 circle eligibility and 41ac70 primary-VM cancellation: strict state 1/2 gate, inclusive radius edge, flags 0x200 suppression, interrupt/effect/sound/reward request order, half-rate displacement, state 4 and lifetime reset. All 360 reward-circle cases now execute, including 48 controlled item delivery requests. Actual retail 41ae00 reward type 1 allocation, RNG, bounds, delay, pool exhaustion and subsequent item numerics are measured separately by th14-item-verified.json. Retail 41b880 full 2,000-slot pool scan covers the first/last slots, state-4 recancellation and the no-op reward helper with argument zero. Actual ECL 613 dispatch is checked through the production services/manager route with empty lasers, and 60 ECL 515 timer setters execute actual 4278e5/408b00. Retail 515 sets damage immunity; it is not a cancellation alias. Delivery factories are controlled boundaries here. Secondary appearance VMs, lasers and GPU pixels remain unverified; ECL 615/616 still refuse nonempty laser lists.",
+  "sourceHashes": {
+    "tests/cpp/th14-bullet-cancel-fixture.cpp": "0cf812569c2e0a6f84c6a378dd51d56c59cf11d609fb43b6a53ce7ae437e592e",
+    "cpp/game/BulletTh14.cpp": "e8a750042e8ca3991eccc9cf48844ab95df41d203b87911f050f4ce5938aea6c",
+    "cpp/game/BulletManager.cpp": "1ca1b2e9a1c714b114fc03989c4e4cfb2c2c147aa101cd26fec9907569ca6689",
+    "cpp/game/BulletManager.hpp": "f8ca01c51eba8a0be767d6836ab61ca3ec8190d2e882b3938f67dd13c190f8c4",
+    "cpp/game/PlayerFrame.cpp": "144e80ca42374065563e501a9ff7ab8bb6b4c7b96191be324638b5d35130db4d",
+    "cpp/game/EnemyManager.cpp": "94cbecf98adf041ac46bc59b6cad166f81abc7a8ccbaeefae537bbdcc282490e",
+    "cpp/game/EnemyScript.cpp": "2f7413aa8f13cdfdf8bc7ace41b24f933a8af15fed5710220c759e5089e00528",
+    "cpp/game/GameBattle.cpp": "3b16bd1f0c2cf8ebdcc0f89114f5e2ada97b1d17166e65bed9f1e8a2c50442f7"
+  }
+}

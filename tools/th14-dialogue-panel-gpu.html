@@ -1,0 +1,28 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>TH14 真实面板 GPU 对照</title>
+<style>body{background:#191c26;color:#eee;font:16px system-ui;margin:28px}button{font:inherit;padding:12px}canvas{image-rendering:pixelated}#canvas{width:640px;height:480px}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:1100px}</style>
+<h1>TH14 真实面板 GPU 对照</h1><p>16 种真实对话面板及子动画，288 条宽度／速率路线各选六帧。原作记录的顶点交付 Direct3D9，移植版独立执行工厂、全部前置动画帧和生产渲染器；使用原始 ANM 纹理。此页是受控面板检查，不是整作画面验收。</p>
+<button id="run">运行 1728 帧对照</button><p id="status">等待运行</p><canvas id="canvas" width="640" height="480"></canvas><pre id="result"></pre>
+<script type="module">
+import create from './gpu.mjs';
+const status=document.querySelector('#status'),button=document.querySelector('#run'),result=document.querySelector('#result');
+const hex=async b=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',b)),n=>n.toString(16).padStart(2,'0')).join('');
+button.addEventListener('click',async()=>{button.disabled=true;try{
+ status.textContent='加载真实面板纹理和原作 GPU 像素';
+ const [native,expected,build]=await Promise.all([fetch('./native.json').then(r=>r.json()),fetch('./native.bgra').then(r=>r.arrayBuffer()).then(b=>new Uint8Array(b)),fetch('./build.json').then(r=>r.json())]);
+ const core=await create({canvas:document.querySelector('#canvas')});if(!core._gpu_initialize())throw Error('生产渲染器初始化失败');
+ const resources=new Map();for(const name of Object.keys(native.resourceHashes)){const bytes=new Uint8Array(await fetch('/resources/'+name).then(r=>r.arrayBuffer()));if(await hex(bytes)!==native.resourceHashes[name])throw Error('资源哈希不符 '+name);resources.set(name,bytes);}
+ const actual=new Uint8Array(expected.length),rows=[];let lastRow=-1,frame=-1,loaded=null;let comparedFrames=0;
+ for(const c of native.cases){
+  if(lastRow!==c.row){if(loaded!==c.filename){const bytes=resources.get(c.filename),p=core._malloc(bytes.length);core.HEAPU8.set(bytes,p);const ok=core._load_resource(p,bytes.length);core._free(p);if(!ok)throw Error('面板加载失败 '+c.filename);loaded=c.filename;}const [resource,slot,rate,width,immediate]=c.input;if(!core._portrait_gpu_begin(slot,rate,width,immediate))throw Error('面板创建失败 '+c.row);lastRow=c.row;frame=-1;}
+  while(frame<c.frame){++frame;const event=c.events.find(e=>e.frame===frame);if(!core._portrait_gpu_step(event?event.label:-1))throw Error('动画更新失败 '+c.row+'/'+frame);++comparedFrames;}
+  const p=core._portrait_gpu_frame(...c.crop);if(!p)throw Error('GPU 绘制失败 '+c.index);const pixels=new Uint8Array(core.HEAPU8.buffer,p,c.size);actual.set(pixels,c.offset);let channels=0,max=0,first=null,foreground=0;
+  for(let j=0;j<c.size;j++){const a=pixels[j],b=expected[c.offset+j],delta=Math.abs(a-b);if(delta){++channels;max=Math.max(max,delta);first??={x:c.crop[0]+Math.floor(j/4)%c.crop[2],y:c.crop[1]+Math.floor(j/(c.crop[2]*4)),channel:j%4,portable:a,d3d9:b};}}
+  for(let j=0;j<c.size;j+=4)if(expected[c.offset+j]!==139||expected[c.offset+j+1]!==103||expected[c.offset+j+2]!==66||expected[c.offset+j+3]!==255)++foreground;
+  rows.push({index:c.index,row:c.row,input:c.input,frame:c.frame,crop:c.crop,drawCount:core._portrait_gpu_quads(),nativeDrawCount:c.drawCount,foregroundPixels:foreground,differentChannels:channels,maxDelta:max,first,pixelsSha256:await hex(pixels.slice())});
+  if(c.index%24===0){status.textContent=`已比较 ${c.index+1}/${native.cases.length} 帧`;await new Promise(resolve=>requestAnimationFrame(resolve));}
+ }
+ const gl=document.querySelector('#canvas').getContext('webgl2'),info=gl.getExtension('WEBGL_debug_renderer_info');
+ const report={completeGame:false,nativeEquivalent:false,strictPixelsEqual:rows.every(r=>!r.differentChannels),cases:rows.length,animatedFrames:comparedFrames,exactCases:rows.filter(r=>!r.differentChannels).length,renderedCases:rows.filter(r=>r.foregroundPixels>0).length,comparedChannels:expected.length,differentChannels:rows.reduce((n,r)=>n+r.differentChannels,0),maxDelta:Math.max(...rows.map(r=>r.maxDelta)),nativePixelsSha256:await hex(expected),portablePixelsSha256:await hex(actual),wasmSha256:build.wasmSha256,debugRenderer:info?gl.getParameter(info.UNMASKED_RENDERER_WEBGL):null,rows};
+ status.textContent=`已完成 ${report.cases} 帧；逐通道完全一致 ${report.exactCases}；实际绘制 ${report.renderedCases}；最大差值 ${report.maxDelta}`;result.textContent=JSON.stringify(report,null,2);
+ }catch(e){status.textContent='测试失败：'+e.message;result.textContent=String(e.stack||e);}finally{button.disabled=false;}});
+</script></html>

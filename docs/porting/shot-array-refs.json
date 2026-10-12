@@ -1,0 +1,98 @@
+{
+  "th12": {
+    "va": "0x004b3190",
+    "globals": [
+      "0x435b59",
+      "0x437680",
+      "0x4b0c90",
+      "0x4b0c94",
+      "0x4b3190",
+      "0x4ce8a8"
+    ],
+    "expression": [
+      "    0x00435b25  add     byte ptr [ebx], bh",
+      "    0x00435b2e  add     byte ptr [eax], al",
+      "    0x00435b47  mov     eax, dword ptr [eax*4 + 0x4b3190] <== array immediate"
+    ]
+  },
+  "th13": {
+    "va": "0x004c0b98",
+    "globals": [
+      "0x441dfa",
+      "0x441e2d",
+      "0x441e49",
+      "0x443e40",
+      "0x4be7b8",
+      "0x4be7bc",
+      "0x4c0b98",
+      "0x4dc668"
+    ],
+    "expression": [
+      "    0x00441e33  add     edx, dword ptr [0x4be7b8]",
+      "    0x00441e39  mov     eax, dword ptr [edx*4 + 0x4c0b98] <== array immediate"
+    ]
+  },
+  "th14": {
+    "va": "0x004d9f20",
+    "globals": [
+      "0x44c4cd",
+      "0x44c523",
+      "0x44ecc0",
+      "0x4d9f20",
+      "0x4db680",
+      "0x4f5828",
+      "0x4f582c"
+    ],
+    "expression": [
+      "    0x0044c4f5  add     byte ptr [eax], al",
+      "    0x0044c513  push    dword ptr [eax*4 + 0x4d9f20] <== array immediate"
+    ]
+  },
+  "th16": {
+    "va": "0x00492ca8",
+    "globals": [
+      "0x441097",
+      "0x443790",
+      "0x492ca8",
+      "0x4a57a4",
+      "0x4a57a8",
+      "0x4a6efc",
+      "0x4a6f00"
+    ],
+    "expression": [
+      "    0x0044103f  add     al, byte ptr [eax]",
+      "    0x0044105c  add     eax, dword ptr [0x4a57a4]",
+      "    0x00441062  push    dword ptr [eax*4 + 0x492ca8] <== array immediate"
+    ]
+  },
+  "th17": {
+    "va": "0x004a2128",
+    "globals": [
+      "0x4020d0",
+      "0x4464ee",
+      "0x4a2128",
+      "0x4b59f4",
+      "0x4b59f8"
+    ],
+    "expression": [
+      "    0x00446426  add     dword ptr [eax], eax",
+      "    0x00446449  add     eax, ecx",
+      "    0x0044644b  mov     ecx, dword ptr [eax*4 + 0x4a2128] <== array immediate"
+    ]
+  },
+  "th18": {
+    "va": "0x004b7088",
+    "globals": [
+      "0x402060",
+      "0x45a89e",
+      "0x4b7088",
+      "0x4cccf4",
+      "0x4cccf8"
+    ],
+    "expression": [
+      "    0x0045a7d3  add     al, 0",
+      "    0x0045a7eb  add     eax, dword ptr [0x4cccf4]",
+      "    0x0045a7f3  mov     ecx, dword ptr [eax*4 + 0x4b7088] <== array immediate"
+    ]
+  }
+}

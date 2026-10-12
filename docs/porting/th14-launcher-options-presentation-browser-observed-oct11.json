@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "url": "http://127.0.0.1:8135/?game=th14",
+  "buildId": "e73cf66aa578b0ec393a",
+  "preparedPath": "runtimes/th14/th14_web/artifacts/launcher-preview/ef471c9710e74642-27727d847ab3/release.json",
+  "preparedSha256": "db7153eeffddefc454603871c01c4d0bbbfe8bd90e3c87214bafae9493dd7f80",
+  "checks": {
+    "presentation": {
+      "path": "docs/porting/th14-options-presentation-verified-oct11.json",
+      "sha256": "be9ac61f3fb56e79222d3396703d9685878e55f69000d3e4381db5c4973f359a",
+      "cases": 9
+    },
+    "controls": {
+      "path": "docs/porting/th14-options-controls-verified-oct11.json",
+      "sha256": "5dc6fb1b9f9fe0b3e7a3f077bde088b73c21251a1d86b8b559b72c568005223f",
+      "cases": 1903
+    }
+  },
+  "before": {
+    "path": "artifacts/th14/options-presentation-check/before.json",
+    "sha256": "3afd25ac46ba13f62877af9c59f8dec72be5c3b7f587a9eb5fc4e90eff8622c5",
+    "failedTargets": 200
+  },
+  "evidence": {
+    "artifacts/th14/browser-launcher-options-presentation-bgm-oct11.png": {
+      "bytes": 237491,
+      "sha256": "0c4a51b403807e7e878b764dea4ce50fb5eb72a11624887432512c0436e33a04"
+    },
+    "artifacts/th14/browser-launcher-options-presentation-se-oct11.png": {
+      "bytes": 236869,
+      "sha256": "9aa37f9572396d8e902ed2161d7d925f504e310e59867c6b50a7a0f524441cbf"
+    },
+    "artifacts/th14/browser-launcher-options-presentation-quit-oct11.png": {
+      "bytes": 236671,
+      "sha256": "84827054eb4e7267169da681708d8623dccbcf4ac5104506d7cb87721b6b37dc"
+    },
+    "artifacts/th14/browser-launcher-options-presentation-logs-oct11.json": {
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "artifacts/th14/browser-launcher-options-presentation-dom-oct11.txt": {
+      "bytes": 2234,
+      "sha256": "e5ba1b0e5ff54cbe726c1a19531a346d293579e757c5bb331ac664ef7dd5eef6"
+    }
+  },
+  "observed": [
+    "Updated release starts in shared Launcher with runtimeEpoch2",
+    "Original Option menu shows persisted BGM95/SE75",
+    "BGM and SE selection and X-to-Quit are visible on this build",
+    "Current error/warn logs empty"
+  ],
+  "limits": [
+    "Labels30/31 in the original title.anm restore animation continuations; they do not implement row zoom",
+    "Native and production fixtures compare immediate animation targets; browser screenshots do not prove GPU pixel equality",
+    "No byte-level browser configuration export or physical controller evidence in this run",
+    "Full TH14 1:1 and all unconverted works remain incomplete"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "how": "tools/th-anm-handlers.py, extended to the three newer titles; each band located by the instructions of its own guard and each table read from the immediates that follow",
+  "bands": {
+    "first": "cmp eax,0xd6 (the whole low family)",
+    "second": "sub eax,0x12d; cmp eax,0x138 in TH16 and TH17, 0x139 in TH18"
+  },
+  "loadFailuresFoundByRunning": [
+    "the byte table is read with a seven-byte instruction (0f b6 + modrm + a 4-byte VA), not six",
+    "the jump through the group table names its register in the SIB byte index field, not in modrm",
+    "the code test belongs to a handler, not to the table address",
+    "a pattern built with %02x on 0x138 is three hex digits and is not a byte string",
+    "the else branch of the loaders chain was lost and then indented one level too deep"
+  ],
+  "agreementWithTheHandReadDisassembly": {
+    "th16": "the decoded rejection target 0x4629c8 is the address read from the ja in section 296"
+  },
+  "titles": {
+    "th16": {
+      "files": 54,
+      "usedNumbers": 91,
+      "inTable": 90,
+      "resolveToCode": 91,
+      "entries": 529,
+      "range": [
+        -1,
+        613
+      ],
+      "entriesInText": 529,
+      "default": "0x4629c8",
+      "executableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929"
+    },
+    "th17": {
+      "files": 53,
+      "usedNumbers": 92,
+      "inTable": 91,
+      "resolveToCode": 92,
+      "entries": 529,
+      "range": [
+        -1,
+        613
+      ],
+      "entriesInText": 529,
+      "default": "0x46a141",
+      "executableSha256": "85cb011e2e43b316c8fa42a3c402565ecdf2f4379f3bab66d86bcb7beef8255f"
+    },
+    "th18": {
+      "files": 56,
+      "usedNumbers": 96,
+      "inTable": 95,
+      "resolveToCode": 96,
+      "entries": 530,
+      "range": [
+        -1,
+        614
+      ],
+      "entriesInText": 530,
+      "default": "0x47b6f3",
+      "executableSha256": "5aeb74b19939a29a8cf06e4fe7777aaf9139e93478507e039f43318171020e9f"
+    }
+  }
+}

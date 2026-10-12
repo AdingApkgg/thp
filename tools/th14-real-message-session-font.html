@@ -1,0 +1,48 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>TH14 实际关卡与文字设备对照</title>
+<style>body{background:#191c26;color:#eee;font:16px system-ui;margin:28px}button{font:inherit;padding:12px}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:1100px}canvas{display:none}</style>
+<h1>TH14 实际关卡与文字设备对照</h1>
+<p>原始 DAT、真实 GameSession／关卡 ECL／录像读取与同步 FontDevice，七关六机体的 90 个对话入口。逐帧核对对话字段、四个文字 VM 和全部文字参数；七条已有原作 GDI 基准的路线另比较每次完整字图。入口由夹具显式触发，世界绘制命令被记录；此页不比较完整世界 GPU 图像、声音或自然通关。</p>
+<button id="run">运行全部 90 个入口</button><p id="status">等待运行</p><canvas id="canvas" width="640" height="480"></canvas><pre id="result"></pre>
+<script type="module">
+import create from './gpu.mjs';
+const status=document.querySelector('#status'),result=document.querySelector('#result'),button=document.querySelector('#run');
+const hash=async b=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',b)),n=>n.toString(16).padStart(2,'0')).join('');
+button.addEventListener('click',async()=>{button.disabled=true;try{
+ status.textContent='加载原版 DAT 与字体';
+ const [prepared,build,fonts,archive]=await Promise.all([fetch('./prepared.json').then(r=>r.json()),fetch('./build.json').then(r=>r.json()),fetch('/fonts/manifest.json').then(r=>r.json()),fetch('/archive.dat').then(r=>r.arrayBuffer()).then(b=>new Uint8Array(b))]);
+ if(archive.length!==prepared.archiveBytes||await hash(archive)!==prepared.archiveSha256)throw Error('DAT 哈希不符');
+ const core=await create({canvas:document.querySelector('#canvas')});core.FS.mkdir('/fonts');
+ for(const name of ['font0.bin','font1.bin','font2.bin','font3.bin','cp932.bin','blend4444.bin','font4.bin','font5.bin','font6.bin','font7.bin']){const b=new Uint8Array(await fetch('/fonts/'+name).then(r=>r.arrayBuffer())),f=fonts.files.find(f=>f.file===name);if(!f||b.length!==f.bytes||await hash(b)!==f.sha256)throw Error('字体哈希 '+name);core.FS.writeFile('/fonts/'+name,b);}
+ const text=p=>{const b=core.HEAPU8;return new TextDecoder().decode(b.subarray(p,b.indexOf(0,p)));},words=(p,n)=>Array.from(new Uint32Array(core.HEAPU8.buffer,p,n));
+ if(!core._font_initialize())throw Error('字体初始化 '+text(core._font_error()));
+ // Archive retains this backing allocation throughout all resource reads.
+ const p=core._allocate(archive.length);core.HEAPU8.set(archive,p);if(!core._open_archive(p,archive.length))throw Error('DAT 解析');
+ const equal=(a,b,label)=>{if(JSON.stringify(a)!==JSON.stringify(b))throw Error(label+' '+JSON.stringify({actual:a,original:b}));};
+ let frames=0,writes=0,atlasWrites=0;const routes=[],copies=[];
+ for(const [groupIndex,group] of prepared.groups.entries()){
+  status.textContent=`核对第 ${group.stage} 关／机体 ${group.selection}；已完成 ${routes.length}/90 入口、${frames} 帧、${writes} 次字图写入`;
+  const raw=new Uint8Array(await fetch('/oracles/'+group.file).then(r=>r.arrayBuffer()));if(raw.length!==group.bytes||await hash(raw)!==group.sha256)throw Error('原版基准哈希 '+group.file);const native=JSON.parse(new TextDecoder().decode(raw));
+  for(const r of native.rows){const [stage,selection,entry]=r.input;
+   if(!core._begin_session_message(stage,selection,entry,r.frames.length))throw Error('实际关卡入口 '+JSON.stringify(r.input)+' '+text(core._error()));
+   equal(words(core._message_text_state(),4*38),r.initial.flat(),'初始文字状态 '+r.input);
+   let comparedFrames=0;
+   for(const [frame,f] of r.frames.entries()){
+    const label=JSON.stringify({input:r.input,frame});const code=core._step_session_message();if(code!==f.status)throw Error('实际会话状态 '+label+' '+code+' '+text(core._error()));
+    if(!f.status)equal(words(core._message_state(),20),f.dialogue.slice(0,20),'对话字段 '+label);
+    equal(words(core._message_text_state(),4*38),f.textState.flat(),'文字动画 '+label);
+    const expected=f.writes.flatMap(w=>{const b=w.text?Uint8Array.from(w.text.match(/../g),h=>parseInt(h,16)):new Uint8Array();return [w.line,w.color,w.font>>>0,w.offset>>>0,w.spacing>>>0,w.plain,b.length,...b];});equal(words(core._message_writes(),core._message_write_words()),expected,'同步文字参数 '+label);
+    if(f.atlasHashes){if(core._atlas_count()!==f.atlasHashes.length)throw Error('逐次图集数量 '+label);for(const [write,wanted] of f.atlasHashes.entries()){const bytes=core._atlas_bytes(write);if(bytes!==2097152)throw Error('图集尺寸 '+label);const sha256=await hash(new Uint8Array(core.HEAPU8.buffer,core._atlas_data(write),bytes).slice());if(sha256!==wanted)throw Error('原作 GDI 图集 '+label+'/'+write);copies.push({input:r.input,frame,write,sha256,nativeSha256:wanted});++atlasWrites;}}
+    else if(core._atlas_count())throw Error('未选用 GDI 基准却捕获图集 '+label);
+    ++frames;++comparedFrames;writes+=f.writes.length;
+    if(core._session_phase()!==1){if(!f.effects.includes(3))throw Error('世界退出没有原版过关请求 '+label);break;}
+    if(frame%120===0)await new Promise(resolve=>requestAnimationFrame(resolve));
+   }
+   routes.push({input:r.input,comparedFrames,nativeFrames:r.frames.length,endedAtWorldExit:comparedFrames<r.frames.length,finalSessionPhase:core._session_phase(),finalBattleFrame:core._session_stage_frame(),originalSha256:group.originalSha256});
+  }
+ }
+ if(routes.length!==90||frames!==70212||writes!==6096||core._font_writes()!==writes||atlasWrites!==470)throw Error('总计不符');
+ const report={passed:true,completeGame:false,nativeEquivalent:false,routes:routes.length,frames,writes,actualFontWrites:core._font_writes(),atlasWrites,exactAtlases:copies.length,atlasBytes:atlasWrites*2097152,dialogueFields:20,textVmWordsPerFrame:4*38,wasmSha256:build.wasmSha256,archiveSha256:prepared.archiveSha256,rows:routes,copies};
+ result.textContent=JSON.stringify(report,null,2);status.textContent=`通过：90 入口、${frames} 帧、${writes} 次实际字图写入；${atlasWrites} 次原作完整字图全部相同；对话和文字动画字段差异 0`;
+ }catch(e){status.textContent='测试失败：'+e.message;result.textContent=String(e.stack||e);}finally{button.disabled=false;}
+});
+</script></html>

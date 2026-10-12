@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "nativeD3dxSha256": "0b28546be22c71834501f7d7185ede5d79742457331c7ee09efc14490dd64f5f",
+  "nativeTimelines": 12,
+  "nativeFrames": 864,
+  "childSnapshots": 69002,
+  "maxAbsoluteError": 0.00006103515625,
+  "scope": "TH14 effect-7 spawning, two Hermite legs, RNG, slowdown, interrupt 1, missing handles and deletion. Native child binding/registry/allocation boundaries are controlled; real D3DX9_43 SSE2 normalization executes. Fixture update order is not a scheduler proof. Floating vector comparisons allow the recorded numerical tolerance.",
+  "wasmSha256": "b73b4e345b6c267dcdbea38f79d7c4248d4807326e0771fbbf28299eb0ac1d08",
+  "sourceHashes": {
+    "cpp/game/AnmVm.cpp": "ea8bb812259ae3ed10e9fdc940813b0e3cdbd48678e3116b13d460144805e691",
+    "cpp/game/AnmGeometry.cpp": "876273a619274307c37a94faf74dce6948778f0f61cb32d344f447b35490fed5",
+    "cpp/game/AnmManager.cpp": "5548af693e9b1f71fe1622654d27b7281398417a2c78ce720ae8164b3500e505",
+    "cpp/game/AnmInterpreter.cpp": "eb94221d8f7249a71d0a77998b1ba074203704c5dfd8605acfe2a6312ab353ab",
+    "cpp/game/AnmResource.cpp": "ca6f5dbff0e5a5f8b6980354faf7165626a33cb7f88399987c8b573b30588947",
+    "cpp/game/Interpolation.cpp": "733384f3b927b3f159d128a81eace6ba4a7e54d4ad8ee94bfff422abd3a41a98",
+    "tests/cpp/th14-particles-fixture.cpp": "576845b84ddbd079b52e3dc685ed5f7da332d339ab0ca39a27df4ad2e0a70778",
+    "cpp/game/AnmVm.hpp": "4a29a9333c532264359ff4623025a16025e1ffe63f39c4913c3c2ceb019cc13d",
+    "cpp/game/AnmGeometry.hpp": "57094d2208e31f9b5e934b019792a23d1ac40d3a088ecb5180a531737bf82787",
+    "cpp/game/AnmOpcodes.hpp": "238e9632deae6fedcfa8a4e66234e6dfe88e239dbfe525de0bc6926b1a3a7714",
+    "cpp/game/AnmManager.hpp": "ca5293092fa63aac32a723ed398a883dfb7c62f90334870e4e8a5d5b819099ea",
+    "cpp/game/Rng.hpp": "3865a40f2ec26f6462f5daa52e7bc8b7e5f42f2c3f6c88d0bfcf3d6c154f4d9b"
+  },
+  "toolHashes": {
+    "tools/th14-particles-native.py": "e5a6abdcd375b17b889847dac558510c84ba92d832305d574275a00d2ba39403",
+    "tools/th14-particles-check.mjs": "e7e5943ebcd85869687f7c9ba6bed713782675e3ef4473468924f1c7082acdbc"
+  }
+}

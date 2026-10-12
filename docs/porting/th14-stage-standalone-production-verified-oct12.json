@@ -1,0 +1,187 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "changedFiles": [
+    "runtimes/th12/th12_web/cpp/game/Stage.hpp",
+    "runtimes/th12/th12_web/cpp/game/StageScript.cpp",
+    "runtimes/th12/th12_web/cpp/game/StageDraw.cpp"
+  ],
+  "scriptCases": 192,
+  "invisibleWholeLayerCases": 864,
+  "originalScriptTimelineFrames": 14400,
+  "visibleWholeLayerCases": 768,
+  "quads": 1872,
+  "exactFloatComponents": 44928,
+  "extendedStageFrames": 20400,
+  "legacyBuilds": [
+    {
+      "title": 12,
+      "bytes": 903005,
+      "sha256": "77133233ab29a56a6dfd2169697d50cf2ce42f819a607a427a37482cb93dd259"
+    },
+    {
+      "title": 13,
+      "bytes": 909578,
+      "sha256": "81578bd552c0175994ddbcb668865fcbe624c2bf56ed8fda03dac670dfb8e853"
+    }
+  ],
+  "release": {
+    "bytes": 1860864,
+    "sha256": "480fa390e0356ac44f0c97a4026fdcdd7673b60f250b612eb7419dcdb7bcac89"
+  },
+  "launcher": {
+    "url": "http://127.0.0.1:8184/?game=th14",
+    "files": 127,
+    "buildId": "4ce3c755ce5deb092243",
+    "browserWarningsOrErrors": 0
+  },
+  "evidence": {
+    "docs/porting/th14-stage-standalone-observed-oct12.json": {
+      "bytes": 27611,
+      "sha256": "fcc18dbae2e3bb47d7006d1421269a0b1fc96e1a871251c40f8880beb99bcbdc"
+    },
+    "docs/porting/th14-stage-standalone-render-observed-oct12.json": {
+      "bytes": 27523,
+      "sha256": "85bb2d89e9b9d0d81105f63900df58de51f96aa8a89d4f1c2057a9ea9a5f6f24"
+    },
+    "docs/porting/th14-stage-standalone-integration-verified-oct12.json": {
+      "bytes": 2172469,
+      "sha256": "60c4aa59dde60cb301ff2147634a52f9c3d9be6531f34aa85214a981e22d8833"
+    },
+    "docs/porting/th14-stage-layer-state-observed-oct12.json": {
+      "bytes": 27937,
+      "sha256": "5a7b589bb6080a44b832de624b656290d560b7398a62966067f21b37cf28b5c9"
+    },
+    "docs/porting/th14-stage-visibility-observed-oct12.json": {
+      "bytes": 51231,
+      "sha256": "6f619294d2476baaa7c8ce553359207e90f2a3f0a76375fc0ac3d8a79a082c7d"
+    },
+    "docs/porting/th14-stage-draw-integration-verified-oct12.json": {
+      "bytes": 914445,
+      "sha256": "5868d8f9b79350387a91ad0dcf11213ef9330f0e8dadf36395ee94d8c2c41188"
+    },
+    "docs/porting/th14-real-message-session-sync-verified-oct12.json": {
+      "bytes": 57519,
+      "sha256": "b4d095dd18a688514fcd7558b6c5fc0930ad3d71e0e9674645040edec6e69ea7"
+    },
+    "artifacts/th14/stage-standalone/native.json": {
+      "bytes": 1301344,
+      "sha256": "f94e89f6f732c950d187e861ca2f11a57376744b32c25e08cb096e8a8dd02c9f"
+    },
+    "tools/th14-stage-standalone-native.py": {
+      "bytes": 7700,
+      "sha256": "7dbde5a1a5bd00808161376eb26348ea6486a8bb4a3232e16e035e83bd624aa6"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-standalone-fixture.cpp": {
+      "bytes": 3886,
+      "sha256": "67d496554cecd9cd987d7b657e33018620adf885d2e6a6c8423dcbb9b54e882f"
+    },
+    "tools/th14-stage-standalone-check.mjs": {
+      "bytes": 4663,
+      "sha256": "7e5f51a10c5eae37cad64d7c7c401e898a45046da0791519f09bf82e7c3cb685"
+    },
+    "artifacts/th14/stage-standalone/standalone.wasm": {
+      "bytes": 788616,
+      "sha256": "aeae0cb17a228b998068bfc6cf362327918e31c0bac1319f6d4238d4ccda9449"
+    },
+    "artifacts/th14/stage-standalone-render/native.json": {
+      "bytes": 466957,
+      "sha256": "a3e8b6a74d7906c8948d75bc066a95a7fb8ab6494fff236449f221c410d66adf"
+    },
+    "tools/th14-stage-standalone-render-native.py": {
+      "bytes": 7398,
+      "sha256": "ee41d485500cba7444de36a493f28706fc462f36304791b8f4c6e8f3968e589c"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-standalone-render-fixture.cpp": {
+      "bytes": 3002,
+      "sha256": "c18e20a61cc8f11bb62ec3e4cc9ebd8f3cc924e291b553bb5e9d697464bac544"
+    },
+    "tools/th14-stage-standalone-render-check.mjs": {
+      "bytes": 4107,
+      "sha256": "82d3d1259962ce3785057b6388e36868c50376f42cf282dd21db0821c9746a26"
+    },
+    "artifacts/th14/stage-standalone-render/render.wasm": {
+      "bytes": 763897,
+      "sha256": "db710e46c526a7bc2e92a09e1fcba63c0f875ab0997f2a288eba2beffc3be165"
+    },
+    "artifacts/th14/stage-standalone-integration/stages.wasm": {
+      "bytes": 814155,
+      "sha256": "6b2365f59b6fe4e8851c0beb1ae1a81f6a33b8bcf36e9515f695eb260bc90826"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-standalone-integration-fixture.cpp": {
+      "bytes": 3789,
+      "sha256": "b9bc97cbc8cd2c12d57e1cf4c9c43849173b89d58e4e3c34f788e8f913ed7a22"
+    },
+    "tools/th14-stage-standalone-integration-check.mjs": {
+      "bytes": 5708,
+      "sha256": "99548f47a24d200a6f6afa0ade0e70c0d7a2efb73f290d6fd4cf1e1022e5d63c"
+    },
+    "artifacts/th14/stage-standalone/before-standalone-fix/observed.json": {
+      "bytes": 286961,
+      "sha256": "99a0234ec6a15312c81c0e1c7fd365a6dff4ef469b628285b2d1a77e1fa54699"
+    },
+    "artifacts/th14/stage-standalone/before-standalone-fix/native.json": {
+      "bytes": 108316,
+      "sha256": "2325f78c2ab8fa9c934d84c47c8968b612b67e91a4640ce1ccc8641c6e0c2cf5"
+    },
+    "artifacts/th14/stage-standalone/before-standalone-fix/Stage.hpp": {
+      "bytes": 3846,
+      "sha256": "64f1f536e6116317b6fb09390f38bb34871002deccd26e20140475623c902e97"
+    },
+    "artifacts/th14/stage-standalone/before-standalone-fix/StageScript.cpp": {
+      "bytes": 10727,
+      "sha256": "0ed157158b33e64846fccff40c3139c4dbb0469376873070ab326d941ad6b5fe"
+    },
+    "artifacts/th14/stage-standalone/before-standalone-fix/StageDraw.cpp": {
+      "bytes": 8930,
+      "sha256": "a00270c990e6274dd3dfb914a989dedc6a58afa7bbf42b764073a712a4a20ac8"
+    },
+    "artifacts/th14/stage-standalone/before-standalone-fix/standalone.wasm": {
+      "bytes": 775991,
+      "sha256": "6867441e66dfa13a84e2931b7d6c8df0a677ff687d3e72200a1264f2fd5d407e"
+    },
+    "runtimes/th14/th14_web/artifacts/sdl3-release/build.json": {
+      "bytes": 37704,
+      "sha256": "3964011d557a79f59f36ad2721d53cc0cb4524c361fa9d97b7be5338eda04ffd"
+    },
+    "runtimes/th14/th14_web/artifacts/sdl3-release/th11.wasm": {
+      "bytes": 1860864,
+      "sha256": "480fa390e0356ac44f0c97a4026fdcdd7673b60f250b612eb7419dcdb7bcac89"
+    },
+    "runtimes/th13/th13_web/artifacts/cpp/engine-th12-build.json": {
+      "bytes": 33155,
+      "sha256": "c0d5a68b5362756a6a42b53e16acc059826c465a14ea68c6a9674e612eb5ea56"
+    },
+    "runtimes/th13/th13_web/artifacts/cpp/engine-th13-build.json": {
+      "bytes": 33155,
+      "sha256": "2138820f872c98f0056828814b1d458488ab19019228c064f9ce70fe779e991c"
+    },
+    "docs/porting/th14-launcher-runtime-prepared-oct11.json": {
+      "bytes": 50674,
+      "sha256": "5f1babec0a41e838103bf9786597b94f94331c72bf177b90cf2bdd9de79e8292"
+    },
+    "docs/porting/th14-launcher-preview-prepared-oct11.json": {
+      "bytes": 36442,
+      "sha256": "41421d9a36dbc442f8187fb89d3b260d8c61f8a8d4f89eb268a18354d37678f8"
+    },
+    "artifacts/th14/stage-standalone-launcher/ordinary-start-paused.png": {
+      "bytes": 233519,
+      "sha256": "c312b6acee4adbde64e428c09b072c5131e7103a73651164c619dc50bb05ec7a"
+    },
+    "artifacts/th14/stage-standalone-launcher/browser-logs.json": {
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "tools/th14-stage-standalone-production-check.mjs": {
+      "bytes": 7409,
+      "sha256": "b7087c5ee7a09972f71a86c6c44479ddb746d2203ff7cf6a7dd126957acd9c89"
+    }
+  },
+  "limits": [
+    "Original standalone script initialization/update are controlled; all layer/cursor/time assignments run in the original full interpreter",
+    "Original40f2f0/4107b0 and478f60 run with real32 D3DX; synthetic empty-object stages, invisible and visible modes0..3, GPU batch/flush and COM boundaries controlled",
+    "Seven real resource stages20400 frames include original stage3/frame2978 layer2 and all stage6 standalone commands; native timeline comparison covers script state, not complete original ANM/world update",
+    "No native whole-stage/world GPU/audio, Ribbon effect cache divergence or natural clear proof; complete1:1 remains unfinished"
+  ]
+}

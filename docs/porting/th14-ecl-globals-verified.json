@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "cases": 352,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "6f13b02c3aa7c048a6b102e1652f1a156316f313220445352bf4aa4af9a61c7c",
+  "scope": "Actual retail VM 482380 runs push/store integer and float instructions 42..45 and subsequent integer/float global reads. Covers four manager integers -9926..-9923, eight manager floats -9922..-9915, four Boss integer and four Boss float destinations with Boss present/absent, and writable absolute/relative XY positions -9995..-9992. Native 42b0b0/42bcc0 writable-reference dispatch and 42a920/42b230 read dispatch execute without stubs; all 39 watched storage words and typed read results agree across 352 cases, including large signed integers, NaN/infinity and signed zero. Boss-missing writes fall back to owner storage while reads return zero. No claim about remaining globals, callbacks, complete gameplay or position recombination after writes. Also executes both integer/float read paths for -9906 and -9986 across every flags bit plus combined masks: mirror bit 19 and phase-timeout bit 24. 4112 full native VM reads cover -10000/-9999/-9998/-9987 over 514 deterministic seeds, comparing typed values and final seed/call count. Both -10000 paths mask the high bit before integer/float conversion; integer -9998 returns zero without consuming RNG. Other globals remain outside this proof.",
+  "sourceHashes": {
+    "tests/cpp/th14-ecl-globals-fixture.cpp": "07ba959f1b52fd018a34caf3840be9297d87184165d49875a6c4aba7a773f7cd",
+    "cpp/game/EnemyState.cpp": "758e748b43b6e1785795d9f867e1ce8bb53b509eede40711abb68bcfa4f86683",
+    "cpp/game/EnemyState.hpp": "a67775e4a3293d85a21903885af4aeb031db0da3a9c16f2e4883f6c3bcef65ae",
+    "cpp/game/EclContext.cpp": "3a4751af060e4c2b7d2cfc9207e70beae9b77e76c55567b5225053d06117c8c4",
+    "cpp/game/EclInterpreter.cpp": "64358a219e48f81fbebb8a302d01525c64986153b62c4c0e36aa32f585f6db10",
+    "cpp/game/EnemyScript.cpp": "bed942631ef6316ec22adbe4a32b299fd05dbfed877f9843ce3bfe8360c4ff9f"
+  },
+  "mirrorReadCases": 35,
+  "timeoutReadCases": 35,
+  "randomReadCases": 4112
+}

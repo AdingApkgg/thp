@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {WASI} from 'node:wasi';
+import {createHash} from 'node:crypto';
+const root=resolve(import.meta.dirname,'..'),bytes=readFileSync(resolve(root,'artifacts/th14/startup-session/startup.wasm')),wasi=new WASI({version:'preview1',args:[],env:{},preopens:{}}),{instance}=await WebAssembly.instantiate(bytes,{wasi_snapshot_preview1:wasi.wasiImport});wasi.initialize(instance);const c=instance.exports;
+const target=JSON.parse(readFileSync(resolve(root,'runtimes/th14/target.json'),'utf8')),archive=readFileSync(target.dataArchives['th14.dat'].path),p=c.allocate(archive.length);new Uint8Array(c.memory.buffer,p,archive.length).set(archive);assert.equal(c.open_archive(p,archive.length),1);
+const error=()=>{const m=new Uint8Array(c.memory.buffer),p=c.error();return new TextDecoder().decode(m.subarray(p,m.indexOf(0,p)));},v=n=>c.manual_session_value(n),tick=held=>{assert.equal(c.tick(held),1,error());assert.equal(c.draw(),1,error());},press=held=>{tick(held);tick(0);};let frames=0;
+const until=(predicate,label)=>{for(let n=0;n<240;++n){if(predicate())return;tick(0);++frames;}assert.fail(label+': '+JSON.stringify(Array.from({length:12},(_,n)=>v(n))));};
+assert.equal(c.manual_session_begin(),1);until(()=>v(1)===1&&v(2)===2,'main ready');
+for(let n=0;n<10&&v(11)!==8;++n)press(32);assert.equal(v(11),8);press(1);until(()=>v(3)===1&&v(5)===1&&v(7)>=20,'manual choices ready');assert.equal(v(10),0x43000000);
+const page=()=>v(3)===1&&v(5)===4&&v(7)>=20;
+press(1);until(page,'first page');assert.equal(v(6),0);assert.equal(v(8),1);
+for(let n=1;n<7;++n){press(32);until(()=>page()&&v(6)===n&&v(8)===n+1,`page${n+1}`);}
+const count=v(8);press(32);for(let n=0;n<30;++n)tick(0);assert.equal(v(6),6);assert.equal(v(8),count,'last page does not wrap');
+press(16);until(()=>page()&&v(6)===5&&v(8)===8,'previous page');press(2);until(()=>v(5)===1&&v(7)>=20,'return choices');
+press(32);assert.equal(v(6),6);press(32);assert.equal(v(6),0);press(16);assert.equal(v(6),6,'category wrap');press(1);until(()=>page()&&v(8)===9,'last category');
+press(2);until(()=>v(5)===1&&v(7)>=20,'return choices before exit');press(2);until(()=>v(1)===1&&v(3)===0&&v(9)===1,'exit releases help');assert.equal(v(11),8,'main retains Manual selection');
+until(()=>v(1)===1&&v(2)===2,'main reentry ready');press(1);until(()=>v(3)===1&&v(5)===1&&v(7)>=20,'second Manual entry');assert.equal(v(6),0);assert.equal(c.manual_session_reset(),1);assert.equal(v(3),0);assert.equal(v(9),2,'reset retires active help resource');
+const sha=b=>createHash('sha256').update(b).digest('hex'),images=Array.from({length:v(8)},(_,n)=>{const p=c.manual_session_image(n),b=Buffer.from(new Uint8Array(c.memory.buffer,p,c.manual_session_image_size(n)));return {bytes:b.length,sha256:sha(b),width:b.readUInt32BE(16),height:b.readUInt32BE(20)};});assert.equal(new Set(images.slice(0,7).map(r=>r.sha256)).size,7);assert.equal(images[7].sha256,images[5].sha256);assert.equal(images[8].sha256,images[6].sha256);
+writeFileSync(resolve(root,'docs/porting/th14-title-manual-session-verified.json'),JSON.stringify({passed:true,completeGame:false,nativeEquivalent:false,images,entries:2,releases:v(9),archiveSha256:sha(archive),wasmSha256:sha(bytes),scope:'Production GameSession/TitleMenu/help controller with actual original help.anm and seven original PNGs. Ordinary title inputs open Manual, forward seven pages, last-page bound, back, return categories, category wrap, exit to retained Manual selection, reopen, reset and two resource releases. Host image upload is controlled and captures PNG bytes/dimensions, so no decoded PNG resampling/GPU/pixel/audio or native asynchronous-thread equivalence.',sources:Object.fromEntries(['runtimes/th12/th12_web/cpp/game/GameSession.cpp','runtimes/th12/th12_web/cpp/game/TitleTh14.cpp','runtimes/th12/th12_web/cpp/game/PauseEnd.cpp','runtimes/th12/th12_web/tests/cpp/th14-startup-fixture.cpp','tools/th14-title-manual-session-check.mjs'].map(n=>[n,sha(readFileSync(resolve(root,n)))]))},null,2)+'\n');console.log('PASS title Manual: seven real PNGs, nine page uploads, wrap/back/reentry/reset and two releases');

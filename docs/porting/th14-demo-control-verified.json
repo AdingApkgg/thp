@@ -1,0 +1,72 @@
+{
+  "passed": true,
+  "nativeDecisions": 414,
+  "productionDecisions": 207,
+  "runs": [
+    {
+      "demo": 0,
+      "selection": [
+        0,
+        0,
+        1,
+        3
+      ],
+      "combatFrames": 3901,
+      "firstFadePlayerFrame": 3841,
+      "returnedToTitle": true
+    },
+    {
+      "demo": 1,
+      "selection": [
+        1,
+        1,
+        1,
+        4
+      ],
+      "combatFrames": 3901,
+      "firstFadePlayerFrame": 3841,
+      "returnedToTitle": true
+    },
+    {
+      "demo": 2,
+      "selection": [
+        2,
+        0,
+        1,
+        1
+      ],
+      "combatFrames": 3901,
+      "firstFadePlayerFrame": 3841,
+      "returnedToTitle": true
+    }
+  ],
+  "fadeDrawing": {
+    "attractTarget": 4,
+    "titleTarget": 0,
+    "priorities": [
+      48,
+      61,
+      67
+    ],
+    "eachDrawnOnce": true
+  },
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "archiveSha256": "57d84a5cbe82460931cca26f090a0fde7aef180889ce5bfe8315851fc97b0233",
+  "wasmSha256": "75d68da7557ce5b6ae84b00ae0bf1fe1417d0aacc012db77a2873280f774ad23",
+  "sourceHashes": {
+    "tests/cpp/th14-demo-control-fixture.cpp": "5cefbe877b822cd9c9b7df2acd8e8c45e6c780daf71ffe0b73ac46b1bdc661ac",
+    "tests/cpp/th14-replay-session-fixture.cpp": "b8bafe56bfc5eb4770b12c034d7fb2ba83ede223443985502ca56a78d9a9da35",
+    "tests/cpp/th14-session-fixture.cpp": "1f4c8b679e826c3d3bb48f02d576aae2f46dc87c79dacdd3cd831ade9c47e2cd",
+    "cpp/game/GameSession.cpp": "8fe7226323e20e9be636a28034e13787c34d2a7ad4621c93b3a91de7fa47c94d",
+    "cpp/game/GameSession.hpp": "cc524cf2774d1dec22fc499332a00c715e15b5a80c886c4267866fde815f9619",
+    "cpp/game/GameBattle.cpp": "7b5d451c297bbb771cbce5de3c458a5d1dccd91d51595e07cfc53a46b3631108",
+    "cpp/game/ScreenFade.cpp": "b9350c12d92f004483159c3902cafeb44372875e3dd9fd712ae7cf9a6d4f6932",
+    "cpp/game/ScreenFade.hpp": "cca65d7f9a9a6b926f95cb6447e286554eb0153829cdbc87fe8f16c935bb7241",
+    "cpp/game/SceneSchedule.hpp": "77d0744bb084fe14f78b4dd91974a82072932e1b85840f955f2a9472d646ac53"
+  },
+  "toolHashes": {
+    "tools/th14-demo-control-native.py": "861f8579cee6a58e7069f1a467713febf455b1ad0e02c42137d10a060c10dac9",
+    "tools/th14-demo-control-check.mjs": "c468ae8f811704dbda7bcdcd4665dce354686251831a26ddae2d261bb0f057e8"
+  },
+  "scope": "Retail 436c08..436c7b attract input/timeout decisions; fade factory recorded. Local production decision clock selected separately, with remaining battle flags zero. Three unmodified original replays run interactively for 3901 combat callbacks, first fade at player frame 3841, priority 48, then title. Mid/final fade quad commands verified once on intermediate target; controlled priority 61/67 drawing checked once on screen. No invulnerability or power injection. Does not prove GPU fade pixels, title loading wall time, system-specific transition target or other titles."
+}

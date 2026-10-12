@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "title": 16,
+  "completeGame": false,
+  "cases": 5120,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "ca134841603e0eeda674b347516e590d6f13ff1e5dfd01efc267722f7ae5d869",
+  "maxError": 0,
+  "scope": "Complete446870 beam hit and447320 freeze hit. Original404600 geometry, trig, sqrt, RNG,447550 scale interpolation,4173f0 position interpolation and445e20 default hit execute. ANM creation/lookup/family interrupt and effect registration controlled; successful allocation only. Geometry/effect float tolerance .001; counters, RNG seed/calls, colors, scale and default hit exact. Original pixels, allocator and full gameplay excluded.",
+  "sourceHashes": {
+    "tests/cpp/th16-shot-special-hit-fixture.cpp": "72a42d8e41f5c0da8b3f60cb8f602110e1b95504bad813a36aa5eca551c9fc64",
+    "cpp/game/ShotTh16.cpp": "d181dda2cbed536822da69219d57238f75890a34baef5d464097efeefbb0a400",
+    "cpp/game/ShotTh16Hit.cpp": "115211ecdc23558b41db44b8e7abf6e779b5c75ad1d78afb79c499a7c632c754",
+    "cpp/game/ShotTh16Geometry.cpp": "b42b83d9ea4dd4291dcb550c4fb263850d9e1b5d407637278dbfd812ec54869c",
+    "cpp/game/ShotTh16.hpp": "4f751811e420f4139418d6b475c666af3aa602e4353c74f48b3d87aac22772d0",
+    "cpp/game/ShotTh16Production.cpp": "427c0b351aeeceec9dec2d7d3446d95ceb73df5e50dd567a79f04d216a978f2a",
+    "cpp/game/ShotManager.hpp": "25e9bc6805470fb0f511e611c246adcaf8b80f49e57d2d0060b03eb2bacd611b"
+  },
+  "toolHashes": {
+    "tools/th16-shot-special-hit-native.py": "df17afae39fa920323c07bc72e5008430e64ff912b38485de1a91564bee67df4",
+    "tools/th16-shot-special-hit-check.mjs": "ca6b71aae66d250edd6c3f6e2c47d037717113e7022bdd9e0263a759988b6305"
+  }
+}

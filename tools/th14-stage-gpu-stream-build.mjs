@@ -1,0 +1,13 @@
+import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+const root=resolve(import.meta.dirname,'..'),out=resolve(root,'artifacts/th14/stage-gpu-stream-replay'),sdk=resolve(root,'runtimes/th12/tools/emsdk');mkdirSync(out,{recursive:true});
+const sha=b=>createHash('sha256').update(b).digest('hex');
+const sources=['runtimes/th12/th12_web/tests/cpp/th14-stage-gpu-stream-fixture.cpp','runtimes/th12/portable/sdl/Renderer.cpp'];
+const exports=['gpu_allocate','gpu_release','gpu_initialize','gpu_error','gpu_texture','gpu_begin','gpu_render_state','gpu_sampler','gpu_texture_stage','gpu_bind','gpu_fvf','gpu_matrix','gpu_viewport','gpu_clear','gpu_draw','gpu_read'];
+const flags=['-O2','-g0','-std=c++17','-ffp-contract=off','-fno-exceptions','-fno-rtti','-DPORT_TITLE=14','--use-port=sdl3','--no-entry','-sDEFAULT_TO_CXX=1','-sMODULARIZE=1','-sEXPORT_ES6=1','-sENVIRONMENT=web','-sALLOW_MEMORY_GROWTH=1','-sMIN_WEBGL_VERSION=2','-sMAX_WEBGL_VERSION=2','-sGL_SUPPORT_AUTOMATIC_ENABLE_EXTENSIONS=0','-sEXPORTED_FUNCTIONS='+exports.map(n=>'_'+n).join(','),'-sEXPORTED_RUNTIME_METHODS=HEAPU8'];
+execFileSync(process.env.EMSDK_PYTHON||'C:/Users/APKGG/AppData/Local/Programs/Python/Python314/python.exe',[resolve(sdk,'upstream/emscripten/emcc.py'),...flags,...sources,'-o',resolve(out,'gpu.mjs')],{cwd:root,env:{...process.env,EM_CONFIG:resolve(sdk,'.emscripten'),EMSDK:sdk,TEMP:out,TMP:out,TMPDIR:out},stdio:'inherit',windowsHide:true});
+const tracked=[...sources,...['Renderer.hpp','GraphicsState.hpp','Shaders.hpp','AlphaConversion.hpp','ResampleShader.hpp'].map(f=>'runtimes/th12/portable/sdl/'+f)];
+writeFileSync(resolve(out,'build.json'),JSON.stringify({diagnosticOnly:true,completeGame:false,nativeEquivalent:false,sources:Object.fromEntries(tracked.map(p=>[p,sha(readFileSync(resolve(root,p)))])),wasmSha256:sha(readFileSync(resolve(out,'gpu.wasm'))),loaderSha256:sha(readFileSync(resolve(out,'gpu.mjs'))),flags,toolSha256:sha(readFileSync(import.meta.filename))},null,2)+'\n');
+console.log('Built independent Stage stream fixture with current production renderer');

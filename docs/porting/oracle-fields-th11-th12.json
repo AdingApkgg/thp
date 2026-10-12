@@ -1,0 +1,310 @@
+{
+  "instrument": "tools/th-twin-fields.py",
+  "method": "Align one function's instruction streams in two titles (resyncing on shape, requiring the same bytes outside the numeric fields) and report every memory displacement that moved. A relocation of one function keeps its bytes and changes its operands, so an aligned pair whose only differences are numeric is the evidence that a field moved. The pairing quality and the alignment ratio are printed with every answer; the tool's self-check is the identical-title round trip.",
+  "checks": [
+    "self-check: source == target, address == address -> 0 moved displacements of 60 aligned pairs, alignment 1.000, operand-shape agreement 1.000",
+    "systematic frame shift as the alignment's own witness: the executor's frame is 8 bytes smaller in th12 (sub esp,0x310 -> 0x308) and six stack displacements each move by exactly -8",
+    "round 305 measured the laser manager pair and added 21 field rows carrying record=laser-manager; the rows from the enemy executor carry record=enemy-record, because a bare offset can name a field in two different records and the disagreement over nothing else is where that was seen"
+  ],
+  "note": "Measured so far on the enemy/ECL command executor (th11 0x412e30 <-> th12 0x004154d0). Both record fields the executor touches moved by the SAME +0x138, which is why one row can describe them together; whether every field of that record follows it needs further functions measured, and that is the next round's item.",
+  "rows": [
+    {
+      "source": "th11",
+      "sourceOffset": "0x1614",
+      "target": "th12",
+      "targetOffset": "0x174c",
+      "shift": "0x138",
+      "role": "enemy record: pointer to the enemy object the command acts on (the executor's first substantive instruction, `mov esi,[ebx+0x1614]` / `mov esi,[ebx+0x174c]`)",
+      "evidence": [
+        "aligned pair 0x412e72 -> 0x415512, `mov esi, dword ptr [ebx + 0x1614]` against `mov esi, dword ptr [ebx + 0x174c]`, all other bytes identical",
+        "acceptance by use: with the map absent the executor read 0 and died at pc=0x415518 (`mov eax,[esi+4]`, address 0x4)"
+      ],
+      "record": "enemy-record"
+    },
+    {
+      "source": "th11",
+      "sourceOffset": "0x1580",
+      "target": "th12",
+      "targetOffset": "0x16b8",
+      "shift": "0x138",
+      "role": "enemy record: the 32-bit state flags the executor tests (`test dword [ebx+0x1580],0x400000` against `test dword [ebx+0x16b8],0x2000000`)",
+      "evidence": [
+        "aligned pair 0x412ef1 -> 0x41558d; the flag immediate also moved (0x400000 -> 0x2000000), a constant of the same structure, and constants are reported separately by the tool (--constants)"
+      ],
+      "record": "enemy-record"
+    },
+    {
+      "source": "th11",
+      "sourceOffset": "0x440",
+      "target": "th12",
+      "targetOffset": "0x454",
+      "shift": "0x14",
+      "record": "laser-manager",
+      "role": "laser manager (the object a laser initialiser receives in ECX): lea edi,[ebx+0x440] / lea edi,[ebx+0x454] - the copied block's destination",
+      "evidence": [
+        "measured by tools/th-twin-fields.py on th11 0x4250b0 <-> th12 0x4287c0: 31 moved displacements over 69 aligned pairs, operand-shape agreement 1.000",
+        "the aligned pair is lea edi,[ebx+0x440] / lea edi,[ebx+0x454] - the copied block's destination"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceOffset": "0x464",
+      "target": "th12",
+      "targetOffset": "0x478",
+      "shift": "0x14",
+      "record": "laser-manager",
+      "role": "laser manager (the object a laser initialiser receives in ECX): mov ax,[ebx+0x464] / [ebx+0x478]",
+      "evidence": [
+        "measured by tools/th-twin-fields.py on th11 0x4250b0 <-> th12 0x4287c0: 31 moved displacements over 69 aligned pairs, operand-shape agreement 1.000",
+        "the aligned pair is mov ax,[ebx+0x464] / [ebx+0x478]"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceOffset": "0x466",
+      "target": "th12",
+      "targetOffset": "0x47a",
+      "shift": "0x14",
+      "record": "laser-manager",
+      "role": "laser manager (the object a laser initialiser receives in ECX): mov cx,[ebx+0x466] / [ebx+0x47a]",
+      "evidence": [
+        "measured by tools/th-twin-fields.py on th11 0x4250b0 <-> th12 0x4287c0: 31 moved displacements over 69 aligned pairs, operand-shape agreement 1.000",
+        "the aligned pair is mov cx,[ebx+0x466] / [ebx+0x47a]"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceOffset": "0x624",
+      "target": "th12",
+      "targetOffset": "0x63c",
+      "shift": "0x18",
+      "record": "laser-manager",
+      "role": "laser manager (the object a laser initialiser receives in ECX): lea esi,[ebx+0x624] / [ebx+0x63c] - the source of the copy",
+      "evidence": [
+        "measured by tools/th-twin-fields.py on th11 0x4250b0 <-> th12 0x4287c0: 31 moved displacements over 69 aligned pairs, operand-shape agreement 1.000",
+        "the aligned pair is lea esi,[ebx+0x624] / [ebx+0x63c] - the source of the copy"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceOffset": "0x43c",
+      "target": "th12",
+      "targetOffset": "0x450",
+      "shift": "0x14",
+      "record": "laser-manager",
+      "role": "laser manager (the object a laser initialiser receives in ECX): mov [ebx+0x43c],ax / [ebx+0x450],ax",
+      "evidence": [
+        "measured by tools/th-twin-fields.py on th11 0x4250b0 <-> th12 0x4287c0: 31 moved displacements over 69 aligned pairs, operand-shape agreement 1.000",
+        "the aligned pair is mov [ebx+0x43c],ax / [ebx+0x450],ax"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceOffset": "0x43e",
+      "target": "th12",
+      "targetOffset": "0x452",
+      "shift": "0x14",
+      "record": "laser-manager",
+      "role": "laser manager (the object a laser initialiser receives in ECX): mov [ebx+0x43e],cx / [ebx+0x452],cx",
+      "evidence": [
+        "measured by tools/th-twin-fields.py on th11 0x4250b0 <-> th12 0x4287c0: 31 moved displacements over 69 aligned pairs, operand-shape agreement 1.000",
+        "the aligned pair is mov [ebx+0x43e],cx / [ebx+0x452],cx"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceOffset": "0x474",
+      "target": "th12",
+      "targetOffset": "0x488",
+      "shift": "0x14",
+      "record": "laser-manager",
+      "role": "laser manager (the object a laser initialiser receives in ECX): mov ecx,[ecx+0x474] / [ecx+0x488] - the read the suite has been trapping on",
+      "evidence": [
+        "measured by tools/th-twin-fields.py on th11 0x4250b0 <-> th12 0x4287c0: 31 moved displacements over 69 aligned pairs, operand-shape agreement 1.000",
+        "the aligned pair is mov ecx,[ecx+0x474] / [ecx+0x488] - the read the suite has been trapping on"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceOffset": "0xa50",
+      "target": "th12",
+      "targetOffset": "0xae8",
+      "shift": "0x98",
+      "record": "laser-manager",
+      "role": "laser manager (the object a laser initialiser receives in ECX): mov [ebx+0xa50],0x425330 / [ebx+0xae8],0x428ac0 - a filled-in callback pair",
+      "evidence": [
+        "measured by tools/th-twin-fields.py on th11 0x4250b0 <-> th12 0x4287c0: 31 moved displacements over 69 aligned pairs, operand-shape agreement 1.000",
+        "the aligned pair is mov [ebx+0xa50],0x425330 / [ebx+0xae8],0x428ac0 - a filled-in callback pair"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceOffset": "0xa54",
+      "target": "th12",
+      "targetOffset": "0xaec",
+      "shift": "0x98",
+      "record": "laser-manager",
+      "role": "laser manager (the object a laser initialiser receives in ECX): mov [ebx+0xa54],ebx / [ebx+0xaec],ebx - the callback's context",
+      "evidence": [
+        "measured by tools/th-twin-fields.py on th11 0x4250b0 <-> th12 0x4287c0: 31 moved displacements over 69 aligned pairs, operand-shape agreement 1.000",
+        "the aligned pair is mov [ebx+0xa54],ebx / [ebx+0xaec],ebx - the callback's context"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceOffset": "0xa28",
+      "target": "th12",
+      "targetOffset": "0xab8",
+      "shift": "0x90",
+      "record": "laser-manager",
+      "role": "laser manager (the object a laser initialiser receives in ECX): mov ecx,[ebx+0xa28] / [ebx+0xab8], read and written back",
+      "evidence": [
+        "measured by tools/th-twin-fields.py on th11 0x4250b0 <-> th12 0x4287c0: 31 moved displacements over 69 aligned pairs, operand-shape agreement 1.000",
+        "the aligned pair is mov ecx,[ebx+0xa28] / [ebx+0xab8], read and written back"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceOffset": "0xa58",
+      "target": "th12",
+      "targetOffset": "0xaf0",
+      "shift": "0x98",
+      "record": "laser-manager",
+      "role": "laser manager (the object a laser initialiser receives in ECX): lea esi,[ebx+0xa58] / [ebx+0xaf0]",
+      "evidence": [
+        "measured by tools/th-twin-fields.py on th11 0x4250b0 <-> th12 0x4287c0: 31 moved displacements over 69 aligned pairs, operand-shape agreement 1.000",
+        "the aligned pair is lea esi,[ebx+0xa58] / [ebx+0xaf0]"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceOffset": "0x428",
+      "target": "th12",
+      "targetOffset": "0x444",
+      "shift": "0x1c",
+      "record": "laser-manager",
+      "role": "laser manager (the object a laser initialiser receives in ECX): mov [ebx+0x428],esi / [ebx+0x444],esi",
+      "evidence": [
+        "measured by tools/th-twin-fields.py on th11 0x4250b0 <-> th12 0x4287c0: 31 moved displacements over 69 aligned pairs, operand-shape agreement 1.000",
+        "the aligned pair is mov [ebx+0x428],esi / [ebx+0x444],esi"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceOffset": "0x430",
+      "target": "th12",
+      "targetOffset": "0x438",
+      "shift": "0x8",
+      "record": "laser-manager",
+      "role": "laser manager (the object a laser initialiser receives in ECX): mov [ebx+0x430],0x4a7948 / [ebx+0x438] - a constant that moved with the section",
+      "evidence": [
+        "measured by tools/th-twin-fields.py on th11 0x4250b0 <-> th12 0x4287c0: 31 moved displacements over 69 aligned pairs, operand-shape agreement 1.000",
+        "the aligned pair is mov [ebx+0x430],0x4a7948 / [ebx+0x438] - a constant that moved with the section"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceOffset": "0x434",
+      "target": "th12",
+      "targetOffset": "0xf6c",
+      "shift": "0xb38",
+      "record": "laser-manager",
+      "role": "laser manager (the object a laser initialiser receives in ECX): mov eax,[ebx+0x434] / [ebx+0xf6c] - the rate the fixture writes at touch(0x4a7948)",
+      "evidence": [
+        "measured by tools/th-twin-fields.py on th11 0x4250b0 <-> th12 0x4287c0: 31 moved displacements over 69 aligned pairs, operand-shape agreement 1.000",
+        "the aligned pair is mov eax,[ebx+0x434] / [ebx+0xf6c] - the rate the fixture writes at touch(0x4a7948)"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceOffset": "0x2c",
+      "target": "th12",
+      "targetOffset": "0x48",
+      "shift": "0x1c",
+      "record": "laser-manager",
+      "role": "laser manager (the object a laser initialiser receives in ECX): mov [ebx+0x2c],esi / [ebx+0x48],esi",
+      "evidence": [
+        "measured by tools/th-twin-fields.py on th11 0x4250b0 <-> th12 0x4287c0: 31 moved displacements over 69 aligned pairs, operand-shape agreement 1.000",
+        "the aligned pair is mov [ebx+0x2c],esi / [ebx+0x48],esi"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceOffset": "0x30",
+      "target": "th12",
+      "targetOffset": "0x44",
+      "shift": "0x14",
+      "record": "laser-manager",
+      "role": "laser manager (the object a laser initialiser receives in ECX): fst [ebx+0x30] / fst [ebx+0x44]",
+      "evidence": [
+        "measured by tools/th-twin-fields.py on th11 0x4250b0 <-> th12 0x4287c0: 31 moved displacements over 69 aligned pairs, operand-shape agreement 1.000",
+        "the aligned pair is fst [ebx+0x30] / fst [ebx+0x44]"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceOffset": "0x3c",
+      "target": "th12",
+      "targetOffset": "0x50",
+      "shift": "0x14",
+      "record": "laser-manager",
+      "role": "laser manager (the object a laser initialiser receives in ECX): mov [ebx+0x3c],ecx / [ebx+0x50],ecx",
+      "evidence": [
+        "measured by tools/th-twin-fields.py on th11 0x4250b0 <-> th12 0x4287c0: 31 moved displacements over 69 aligned pairs, operand-shape agreement 1.000",
+        "the aligned pair is mov [ebx+0x3c],ecx / [ebx+0x50],ecx"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceOffset": "0x40",
+      "target": "th12",
+      "targetOffset": "0x54",
+      "shift": "0x14",
+      "record": "laser-manager",
+      "role": "laser manager (the object a laser initialiser receives in ECX): mov [ebx+0x40],edx / [ebx+0x54],edx",
+      "evidence": [
+        "measured by tools/th-twin-fields.py on th11 0x4250b0 <-> th12 0x4287c0: 31 moved displacements over 69 aligned pairs, operand-shape agreement 1.000",
+        "the aligned pair is mov [ebx+0x40],edx / [ebx+0x54],edx"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceOffset": "0x44",
+      "target": "th12",
+      "targetOffset": "0x58",
+      "shift": "0x14",
+      "record": "laser-manager",
+      "role": "laser manager (the object a laser initialiser receives in ECX): mov [ebx+0x44],eax / [ebx+0x58],eax",
+      "evidence": [
+        "measured by tools/th-twin-fields.py on th11 0x4250b0 <-> th12 0x4287c0: 31 moved displacements over 69 aligned pairs, operand-shape agreement 1.000",
+        "the aligned pair is mov [ebx+0x44],eax / [ebx+0x58],eax"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceOffset": "0x44c",
+      "target": "th12",
+      "targetOffset": "0x47c",
+      "shift": "0x30",
+      "record": "laser-manager",
+      "role": "laser manager (the object a laser initialiser receives in ECX): fld [ebx+0x44c] / fld [ebx+0x47c]",
+      "evidence": [
+        "measured by tools/th-twin-fields.py on th11 0x4250b0 <-> th12 0x4287c0: 31 moved displacements over 69 aligned pairs, operand-shape agreement 1.000",
+        "the aligned pair is fld [ebx+0x44c] / fld [ebx+0x47c]"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceOffset": "0x64",
+      "target": "th12",
+      "targetOffset": "0x70",
+      "shift": "0xc",
+      "record": "laser-manager",
+      "role": "laser manager (the object a laser initialiser receives in ECX): fstp [ebx+0x64] / fstp [ebx+0x70]",
+      "evidence": [
+        "measured by tools/th-twin-fields.py on th11 0x4250b0 <-> th12 0x4287c0: 31 moved displacements over 69 aligned pairs, operand-shape agreement 1.000",
+        "the aligned pair is fstp [ebx+0x64] / fstp [ebx+0x70]"
+      ]
+    }
+  ]
+}

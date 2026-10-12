@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "frames": 5792,
+  "icons": 16,
+  "renderVertices": 96,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "resourceSha256": "24e963ebc65d78b7e50e85071524f861eba2e453808e4224358266256f4c9182",
+  "wasmSha256": "ea20d60d168a68a34013cdbd4f9c838a20786a528f27bf7943ef116a1e2a2934",
+  "scope": "Retail front.anm scripts 29..44 execute through the full native 46fe50 interpreter for 181 frames each, with immediate/delayed stock interrupts, all fragment labels, RGB, alpha fades, clocks, layer and resolution flags, local position bits. Security-cookie check and sprite resource bind are controlled native boundaries. Production Hud manager registration, once-per-tick updates, layer 24 rendering, stock interrupts and unregister-on-destruction use the retail resource; sixteen sprites submit 96 screen vertices within the sidebar. Excludes full native HUD construction, pixel equivalence and physical GPU output.",
+  "sourceHashes": {
+    "tests/cpp/th14-hud-icons-fixture.cpp": "50b00c78b20a573317f77deb3248f2757469c54aa0e8e2e806029f815126203c",
+    "cpp/game/Hud.hpp": "6fc5bbf336374a8970acd08af94497e6ed36cb17c5c492a3e61cc73b2f9763e1",
+    "cpp/game/Hud.cpp": "818b41a6f2c120807d91fef751c791a2b733bee66845c7fc4de469b244752221",
+    "cpp/game/AnmManager.cpp": "6ec4cc2bb1f57c94fb281c9866b1f5c40cf13f50fec8539b58d32a9bb7b3a7f0",
+    "cpp/game/AnmVm.cpp": "18a1bf29a28e105c06be4173d407203408459fa25ce0364fe3dd6046cdc7c4c5",
+    "cpp/game/AnmInterpreter.cpp": "4e32fd542f9b1ec740e45e396eff728b26da98c67399b398ffd233ef3266bf3d",
+    "cpp/game/AnmResource.cpp": "7391cebdd1be0faa8ad9201352debef81b436543f2f6703d962bb4c504490c41",
+    "cpp/game/AnmGeometry.cpp": "6326e12e33f2cce4d9999ade1b241c25832c1323720df57a1094a6372c10db59",
+    "cpp/game/AnmRenderer.cpp": "49ffcc1e744cf9e3b393133691867be47201eab56a68466278efb9fc37f7d351",
+    "cpp/game/SceneSchedule.hpp": "77d0744bb084fe14f78b4dd91974a82072932e1b85840f955f2a9472d646ac53"
+  },
+  "toolHashes": {
+    "tools/th14-hud-icons-native.py": "ce462d94e05df3354ca64a2b9ada2bf19cff1769eb3d306f0c7d619bea730a0f",
+    "tools/th14-hud-icons-check.mjs": "b519db14123222b7dacc762291a726fae02915870fc719b9a1ebbac374d5671b"
+  }
+}

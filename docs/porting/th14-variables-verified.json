@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "scope": "TH14 ANM integer/float reads and writable destination selection, including script/visual RNG; native globals are controlled fixture inputs.",
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "cases": 1992,
+  "rngSeeds": 65536,
+  "rngResults": 131072,
+  "wasmSha256": "44631f04ca968a2257108adcecf182c197f1eeacb737f2f0ef12b54f722b68ff",
+  "sourceHashes": {
+    "cpp/game/AnmVm.cpp": "eb11ffa89a1812bd30602c36b4573f71fbb8fa5bf6330dfdc09b77c6f9f35a85",
+    "cpp/game/AnmResource.cpp": "ca6f5dbff0e5a5f8b6980354faf7165626a33cb7f88399987c8b573b30588947",
+    "cpp/game/AnmInterpreter.cpp": "1abee6b372dc7c5067074f89f921c1e3eadc9fe24b8431ed0a02536da6aecbc5",
+    "cpp/game/AnmGeometry.cpp": "a7c0c03e4bd8f2c132beb78be67d234133310958c438bceb6c6e8ca1c455e6cd",
+    "cpp/game/Interpolation.cpp": "733384f3b927b3f159d128a81eace6ba4a7e54d4ad8ee94bfff422abd3a41a98",
+    "tests/cpp/th14-variables-fixture.cpp": "b310a2480d9252f1ca35c4a28402e0563f14508d8f71cdb992110cb90900ba82",
+    "cpp/game/AnmVm.hpp": "8fd6a478894d9f80a2b2ba4c7b42560b5678719d28477da1d6c7171abdaac2a8",
+    "cpp/game/AnmOpcodes.hpp": "aa09ae1c6428bd3e034c37b2c206d4afd5658047b35b692ce38cf07945d8ee1a",
+    "cpp/game/Rng.hpp": "3865a40f2ec26f6462f5daa52e7bc8b7e5f42f2c3f6c88d0bfcf3d6c154f4d9b"
+  },
+  "toolHashes": {
+    "tools/th14-variables-native.py": "450238dd62fc6a9061b3ee21020cbff221d3eb2f18d4452615c6df142cadb712",
+    "tools/th14-variables-check.mjs": "c597c3394e7a1be658558a581c4d2f4b5e85822c55a12495bebd6a264aa11fa1",
+    "tools/th-anm-handlers.py": "99622a7d27eeeac7881d71e8b6367f95c79b47f0f259e6bb2d31725decd07383"
+  }
+}

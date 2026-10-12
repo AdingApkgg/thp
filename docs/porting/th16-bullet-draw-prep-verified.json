@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "title": 16,
+  "completeGame": false,
+  "cases": 120,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "a1961d484a7f2b719985ac9a19edd0069c65560db11bc6ff908914053a9082c4",
+  "scope": "Retail primary bullet draw preparation block 412b62..412c02 compared with actual BulletManager::draw_group. Verifies entity XYZ copy and preserved script XYZ, rotation normalization/dirty flag, scale dirty flag, preserved ANM base scale and replacement of extra scale over 120 flag/angle/scale combinations. Native stops before GPU dispatch; WASM uses an invisible VM. This verifies preparation, not GPU pixels, culling or secondary ANM.",
+  "sourceHashes": {
+    "tests/cpp/th16-bullet-draw-prep-fixture.cpp": "02612d5c139b9c72a78f8e9ba3734c36c068f49c216ebb46200b42b76b72c0b9",
+    "cpp/game/BulletTh14.cpp": "8fbf08af656aad99692229ab194a72fb961d1936075d93caf2c489f62d0bd997",
+    "cpp/game/BulletTh14.hpp": "358cc2bef47b8d89691a384e24e21c9cbb5a6ca2a1267772d3e8f3b0e14b1368",
+    "cpp/game/BulletState.hpp": "c5165b6505fa4491efe4a12c460ce3142a534a51652268e0a05f636b9952ab03",
+    "cpp/game/Movement.cpp": "ea823e71f48f15d1d5e038c4fa62b6a4dfcaa31b087ebc183e42ef2dd439cccb",
+    "cpp/game/BulletManager.cpp": "aa6e25a520cfd9bd419c3d18167307307b23b19be09176f031c39c7deb99aee5"
+  },
+  "toolHashes": {
+    "tools/th16-bullet-draw-prep-native.py": "297f9f8803282314564145f051e2abaa48b7652b88e770521d9dac06c388706e",
+    "tools/th16-bullet-draw-prep-check.mjs": "69a14b633006a320891c2eee25f589ac99f74f2a34d01f50364518668f935436"
+  }
+}

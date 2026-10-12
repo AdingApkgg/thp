@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "allocations": 240,
+  "updateFrames": 15360,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "bd1838a0cfed354151bbec6f245c331d64fb2fa94ef5efaea55987377c2d4f3e",
+  "scope": "Retail 450130 circular damage-area allocation and actual 44e005..44e0fa pool clock loop. Partial occupancy/wrap, retained unrelated fields, flag masking, radius growth, angular velocity/normalization, stationary XYZ, timer and retirement; 240 cases with 64 updates each. Movement helpers 403cd0/403df0 and memset are controlled boundaries; only stationary movement is supported by this normalized model. Full-pool native out-of-range return remains guarded. This verifies the respawn damage-area request, not the full player death/respawn lifecycle.",
+  "sourceHashes": {
+    "tests/cpp/th14-damage-circle-fixture.cpp": "2f7dddf5e353c0ba7395374fa784466e40cca0bde3d77bcbce548cd82c1d0db6",
+    "cpp/game/ShotDamageTh14.cpp": "e3373bbf735231a2562723bc73943292afd839e7a783fb27ac1ed15aa3902d3a",
+    "cpp/game/ShotDamageTh14.hpp": "8f6da0fb8ccf7f565ff572f957bec31da571c1c9af9aa427041bef3ec7ddc592"
+  },
+  "toolHashes": {
+    "tools/th14-damage-circle-native.py": "5c568ed73584e09e71d17d24d64e722f02e2090ce7ce2af0d93bfcf4b6d8d0b2",
+    "tools/th14-damage-circle-check.mjs": "7e40c21d72a0e00d724e53db0b624164d1bc3c4d027340b925524a52d3fb5641"
+  }
+}

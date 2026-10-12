@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "nativeD3dxSha256": "0b28546be22c71834501f7d7185ede5d79742457331c7ee09efc14490dd64f5f",
+  "nativeQuadCases": 640,
+  "submittedVertices": 1024,
+  "nativeMaterialCases": 512,
+  "materialStateChecks": 1536,
+  "nativeStripCases": 576,
+  "stripVertices": 13440,
+  "nativeShapeCases": 810,
+  "shapeVertices": 5535,
+  "nativeWorldQuadCases": 768,
+  "nativeScreenStripCases": 480,
+  "screenStripVertices": 16256,
+  "scope": "TH14 native modes 0..3 through draw dispatcher and batch boundary: visibility, pixel rounding, rotation, UV, gradients, inherited color and global tint. All 16 blend selectors and sampler states. Modes 8/9/13/14/15/16/17/19/20/21/23/24 and effect 8 submit native vertices and transforms, including mode 8 native anchor buffer initialization; real D3DX baseline plus SSE2 table executes. Retail 478a10 pretransformed strips used by curve lasers are compared across 16 blend selectors, visibility states, prior depth states and 2/12/240 input vertices. D3D calls and GPU batch/flush are recording sinks; final raster equivalence is not asserted.",
+  "wasmSha256": "0e29b2509cbe94edb8edba3caede38149ebdc3d9fe07c37ea5fec728ebf09db1",
+  "sourceHashes": {
+    "cpp/game/AnmVm.cpp": "49b7114f614de4f7cb743487fa29fb6049f1e15f7135195abc0de501514a3c71",
+    "cpp/game/AnmResource.cpp": "7391cebdd1be0faa8ad9201352debef81b436543f2f6703d962bb4c504490c41",
+    "cpp/game/AnmInterpreter.cpp": "4e32fd542f9b1ec740e45e396eff728b26da98c67399b398ffd233ef3266bf3d",
+    "cpp/game/AnmGeometry.cpp": "6326e12e33f2cce4d9999ade1b241c25832c1323720df57a1094a6372c10db59",
+    "cpp/game/AnmProjection.cpp": "ac2e73f94a4ee47770a40c8549b6691ebe7696c05820e3d07d7b7817e751df59",
+    "cpp/game/AnmRenderer.cpp": "49ffcc1e744cf9e3b393133691867be47201eab56a68466278efb9fc37f7d351",
+    "cpp/game/GraphicsMath.cpp": "b159b3d617a522977c795351b5ff56338d5058b899ab984a590c8b50f8a9fd6e",
+    "cpp/game/Interpolation.cpp": "57cd2806a28109745084fb2079edee055322ff3fd044f75fc4e4ec3305add125",
+    "cpp/game/SceneCamera.cpp": "72a5b43fb397885086f65083cc13d22971bda2b7632c516df91301ed6d6c1e93",
+    "tests/cpp/th14-render-fixture.cpp": "f7169e565fc5060b23be91f6636efac04ce402f2ed687765048ffed995bd0f34",
+    "cpp/game/AnmVm.hpp": "f7f2aeaf6b3de13f7f3a0e4a47d1e8f5452bda86fd54d09ab1ee3fc95ea6bf01",
+    "cpp/game/AnmRenderer.hpp": "4dadf7c3c9de17f6959a23e373adb3d37f309588e9590ff923378ea0472013b5",
+    "tests/cpp/render-fixture.hpp": "3f8cf7447d8242d7e0b38ea19b30fad73951347ad0a9c370dc8a41593042cbae"
+  },
+  "toolHashes": {
+    "tools/th14-gpu-original-quads-geometry-native.py": "f1839e1bd7af291ecdaa2a7dd11dbe2c323b8ffeedb030346b48ddbe0694c4b7",
+    "tools/th14-gpu-original-quads-geometry-check.mjs": "9e6fea0f4330f02ee7341957b54aab90367b946985c628d338c066c254c6158a"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "cases": 90,
+  "frames": 7032,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "fa9f88d2eeaf9cf7c82b39d0e433909cb89a9a7e8b264a4ba38c6cfef2fac879",
+  "scope": "Full native 46cf60 phased shake update and actual timer/visual RNG. Production start_th14_hold/update compared for rise/hold/fall, zero rise/hold, signed amplitude, five clock rates, three seeds, stopped state, raw camera offsets and visual RNG seed/call count through removal. Active stage flags are controlled to zero; constructor/callback allocation and scaled render offsets are separate. Does not prove multi-effect callback ordering or GPU pixels.",
+  "sourceHashes": {
+    "tests/cpp/th14-screen-shake-fixture.cpp": "5e67a226558075f7fd73e9b04653bc3e301f48e2f26409089891869b730ed7bd",
+    "cpp/game/ScreenShake.cpp": "f5fc1d28ed49ad228791675ba83eb21f292d5e22903b1265d1f9ab36b41161bc",
+    "cpp/game/ScreenShake.hpp": "bb7f171c8c1c78a544113a8d90d1788f3cf3418a5c28e5a44b8b706d8d16a053",
+    "cpp/game/Timer.hpp": "e07169289db2407ce57c4191343ad6c9a5e3b2d543898439326520cfe1723ddb",
+    "cpp/game/Rng.hpp": "3865a40f2ec26f6462f5daa52e7bc8b7e5f42f2c3f6c88d0bfcf3d6c154f4d9b",
+    "cpp/game/GameBattle.cpp": "8831d6801fc582d1050bdbd62bae264ab73f3556ca34a667f62f74f633338845"
+  },
+  "toolHashes": {
+    "tools/th14-screen-shake-hold-native.py": "6c6ba6c99fc0a20c227e8669c73902224ec32fcfcfc2064ee386bd05655b0556",
+    "tools/th14-screen-shake-hold-check.mjs": "4a539903e0d8ece8685e646c59d775a963be59be59a80d6df580f8efa954bccc"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "cases": 4608,
+  "blendCases": 1920,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "019b34ba9d1b8208ec1c620a3de9e85e63e41f5d6ccb1c288a63de6dfe321e7d",
+  "scope": "Actual 418140 ETEX 1000 setup and 41a380 unscaled sprite-bound visibility, top/bottom/left/right wrap priority, counts/limits, sound call count and transform-bit completion. Also actual 418140 ETEX 100000 native-to-canonical blend mapping, gating and preservation of unrelated flags. Sound delivery is controlled. Whole BulletManager frame ordering, animation, rendering, other transforms and pixels are outside this comparison.",
+  "sourceHashes": {
+    "tests/cpp/th14-bullet-wrap-fixture.cpp": "0c827673523867de44bd85980a53a828fcfdfb038f3fdc56125b622820403410",
+    "cpp/game/BulletTh14.cpp": "8c0195b1d332c07ddd926cda29ef7d0778a800068244d02d306956f8c1cbe5a4",
+    "cpp/game/BulletTh14.hpp": "9589918d6c0f8d1b0ec2f6bcca75a0a9749f2540ee10efabf68bb4d30302b49a"
+  },
+  "toolHashes": {
+    "tools/th14-bullet-wrap-native.py": "e74abc7da7e0bf335fcb114a7828d94af2eb84c0389410efa96e7dd708fb6a3c",
+    "tools/th14-bullet-wrap-check.mjs": "17d8eb86e95fd84ae9b0a213d99a40078879c0d1c7f2f180ca49810dec339999"
+  }
+}

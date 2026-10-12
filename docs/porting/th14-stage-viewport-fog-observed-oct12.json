@@ -1,0 +1,190 @@
+{
+  "diagnosticEvidenceVerified": true,
+  "productionChanged": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "strictPixelsEqual": false,
+  "variants": [
+    {
+      "name": "viewport-no-fog",
+      "exactFrames": 12,
+      "differentChannels": 3769,
+      "maxDelta": 2,
+      "strictPixelsEqual": false
+    },
+    {
+      "name": "viewport-fog-product-sum",
+      "exactFrames": 5,
+      "differentChannels": 2110,
+      "maxDelta": 1,
+      "strictPixelsEqual": false
+    },
+    {
+      "name": "viewport-fog-product-subtract",
+      "exactFrames": 4,
+      "differentChannels": 2118,
+      "maxDelta": 1,
+      "strictPixelsEqual": false
+    }
+  ],
+  "evidence": {
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-no-fog/build.json": {
+      "bytes": 1799,
+      "sha256": "eec05836c63dad80bcbb83356b992c5a7db2148669957918bea6e71c0707f010"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-no-fog/browser-result.json": {
+      "bytes": 38986,
+      "sha256": "124c82cdcd6196733d7e6f61280e90239af5c67b33caf192fc763a0ddeee728b"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-fog/native.json": {
+      "bytes": 7067,
+      "sha256": "a786450f617fd393ace0f37a90ef1ab2125faa494344a6e9d6b87e159a37ebe7"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-fog/native.bgra": {
+      "bytes": 25804800,
+      "sha256": "b5e1882532e735752d05858282d1b1259afcddb665a5413b813b20aea61416c1"
+    },
+    "tools/th14-stage-gpu-viewport-fog-build.mjs": {
+      "bytes": 2552,
+      "sha256": "5799c2c76242a77a344101b3755b78300732a674e45b6218e8d156e65f0da1d7"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-eye-viewport-depth-fixed20/build.json": {
+      "bytes": 1904,
+      "sha256": "423ae52ec44cdcb4b50a5acbf49d6b812ba5a19c24ec21d2e3a9fc6621813c65"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-no-fog/Renderer.cpp": {
+      "bytes": 30360,
+      "sha256": "bd431c55fa8cffd3676de1e8fbafa22192e9982beaf24934db031f12661ede9f"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-no-fog/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-no-fog/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-no-fog/Shaders.hpp": {
+      "bytes": 3872,
+      "sha256": "a0b24d5f9cf552cde56c5181ff3e74cdc0aafd6ceb6803df132d9d87a7cb3672"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-no-fog/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-no-fog/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-no-fog/fixture.cpp": {
+      "bytes": 5742,
+      "sha256": "35e28f3c9a338154fb9a3d8bdb636c313b53db05decb4fbf4f452b57786b73bb"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-no-fog/gpu.wasm": {
+      "bytes": 766183,
+      "sha256": "22aa553fa71781cc56541126be9011b67efd5a8302fc9f4dbc2216d6d7eda291"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-no-fog/gpu.mjs": {
+      "bytes": 211780,
+      "sha256": "0bc7fb39698183e8c40380d937ad976d3792482904eddc6c6cb4dee4aed318a0"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fog-product-sum/build.json": {
+      "bytes": 1808,
+      "sha256": "3c962788e560aed28a15f460cd50404ee2896cae35abad7d342be663f4520f28"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fog-product-sum/browser-result.json": {
+      "bytes": 39235,
+      "sha256": "3e99bfe8374f6e9c7b1f66f31bd5eded7fe9065a126e1edac5d678653d3d8ba3"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/native.json": {
+      "bytes": 6748,
+      "sha256": "115123af74b9133297766d01284d5f9e4e077a2b290ab84916f74cf3a44040cd"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/native.bgra": {
+      "bytes": 25804800,
+      "sha256": "42f7c2c66012c6b283eac3c0620ba485591ea7bb419a70715dfdeef7ad62e978"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fog-product-sum/Renderer.cpp": {
+      "bytes": 30360,
+      "sha256": "bd431c55fa8cffd3676de1e8fbafa22192e9982beaf24934db031f12661ede9f"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fog-product-sum/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fog-product-sum/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fog-product-sum/Shaders.hpp": {
+      "bytes": 3893,
+      "sha256": "fb69ea10861246907eaaf56d5897d361a72eb08caa586d91a800371bd39d9855"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fog-product-sum/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fog-product-sum/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fog-product-sum/fixture.cpp": {
+      "bytes": 5711,
+      "sha256": "4b0ea74adcf97c87b288d72a6382a3754603269e86c257b3b8fe5c89b45b07f7"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fog-product-sum/gpu.wasm": {
+      "bytes": 766175,
+      "sha256": "9749b4dfad0a80e25933cbd4795095e489e9f815333b92534ed8f79d3795a3f4"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fog-product-sum/gpu.mjs": {
+      "bytes": 211781,
+      "sha256": "bbcab5a376ad3c58e9eacb1a9c3660e576d677c58e0ee3bfad9db4b83927e6a3"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fog-product-subtract/build.json": {
+      "bytes": 1813,
+      "sha256": "026872d63eaaa127e890c59de742ae66125e33ee640c7cbc718411baed20912f"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fog-product-subtract/browser-result.json": {
+      "bytes": 39777,
+      "sha256": "68e83132c8dc9ddef8f019b47cc4c1bbd4005a18616e79d853bcf3f76d82dee8"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fog-product-subtract/Renderer.cpp": {
+      "bytes": 30360,
+      "sha256": "bd431c55fa8cffd3676de1e8fbafa22192e9982beaf24934db031f12661ede9f"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fog-product-subtract/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fog-product-subtract/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fog-product-subtract/Shaders.hpp": {
+      "bytes": 3900,
+      "sha256": "ed0deda8fd481835071b20d870766a3049ff122f23ba3072e450818294f4dfab"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fog-product-subtract/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fog-product-subtract/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fog-product-subtract/fixture.cpp": {
+      "bytes": 5711,
+      "sha256": "4b0ea74adcf97c87b288d72a6382a3754603269e86c257b3b8fe5c89b45b07f7"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fog-product-subtract/gpu.wasm": {
+      "bytes": 766188,
+      "sha256": "6fa6085c38d657a1f5311accba5e24149f1318c044f2f56007b7dd6d44ee9f8b"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fog-product-subtract/gpu.mjs": {
+      "bytes": 211781,
+      "sha256": "893cd8bfa1c9ee294c68da339cd0620e59c9b814b04dca74cbb28694744f23ad"
+    }
+  },
+  "toolSha256": "7d1b6d523ab95e32dd3205166d610e3644d3cbbc677c1b67b43067044ac45916",
+  "limits": "Physical21-frame executions and Native references bound to modules, sources, counts/hashes and saved first32 differences. The no-fog run uses a separately produced no-fog HAL reference and is not original game behavior. All remain failed comparisons; complete candidate portable buffers are not independently archived. No successful fog repair or whole-game equivalence."
+}

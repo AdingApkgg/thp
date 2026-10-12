@@ -1,0 +1,35 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>TH14 文字纹理 GPU 对照</title>
+<style>body{background:#191c26;color:#eee;font:16px system-ui;margin:28px}button{font:inherit;padding:12px}canvas{image-rendering:pixelated}#canvas{width:320px;height:48px}#preview{display:block;margin:18px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:1100px}</style>
+<h1>TH14 文字纹理 GPU 对照</h1><p>原作 GDI 字图经实际 D3DX9 上传与 HAL 绘制；当前 C++ 独立生成文字并经生产 SDL/WebGL 绘制。80 字图、160 纹理上传、640 点／线性采样及缩放场景。不是完整原作游戏帧。</p>
+<button id="run">运行 640 场景</button><p id="status">等待运行</p><canvas id="preview" width="1040" height="160"></canvas><canvas id="canvas" width="640" height="96"></canvas><pre id="result"></pre>
+<script type="module">
+import create from './gpu.mjs';
+const status=document.querySelector('#status'),button=document.querySelector('#run'),result=document.querySelector('#result'),ctx=document.querySelector('#preview').getContext('2d');
+const hex=async b=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',b)),n=>n.toString(16).padStart(2,'0')).join('');
+let core;
+button.addEventListener('click',async()=>{button.disabled=true;try{
+ status.textContent='正在独立生成文字、上传纹理、绘制并读回 GPU';
+ const [native,expected,textures,build,manifest]=await Promise.all([fetch('./native.json').then(r=>r.json()),fetch('./native.bgra').then(r=>r.arrayBuffer()).then(b=>new Uint8Array(b)),fetch('./native-textures.bin').then(r=>r.arrayBuffer()).then(b=>new Uint8Array(b)),fetch('./build.json').then(r=>r.json()),fetch('./fonts/manifest.json').then(r=>r.json())]);
+ core??=await create({canvas:document.querySelector('#canvas')});
+ for(const [slot,name] of ['font0.bin','font1.bin','font2.bin','font3.bin','cp932.bin','blend4444.bin','font4.bin','font5.bin','font6.bin','font7.bin'].entries()){
+  const data=new Uint8Array(await fetch('./fonts/'+name).then(r=>r.arrayBuffer())),entry=manifest.files.find(r=>r.file===name);if(!entry||entry.bytes!==data.length||entry.sha256!==await hex(data))throw Error('字体哈希 '+name);
+  const p=core._gpu_allocate(data.length);core.HEAPU8.set(data,p);if(!core._gpu_load(slot,p,data.length))throw Error('字体载入 '+name);core._gpu_release(p);
+ }
+ if(!core._gpu_initialize())throw Error('生产渲染器初始化失败');
+ const actual=new Uint8Array(expected.length),copied=new Uint8Array(textures.length),rows=[],copies=[],scratch=[];let previews=0;
+ for(const c of native.cases){
+  const p=core._gpu_text_case(c.index);if(!p)throw Error('文字绘制失败 '+c.index);
+  const pixels=new Uint8Array(core.HEAPU8.buffer,p,c.size);actual.set(pixels,c.offset);let channels=0,max=0,first=null,foreground=0;
+  for(let j=0;j<c.size;j++){const a=pixels[j],b=expected[c.offset+j],delta=Math.abs(a-b);if(delta){++channels;max=Math.max(max,delta);first??={x:Math.floor(j/4)%c.crop[2],y:Math.floor(j/(c.crop[2]*4)),channel:j%4,portable:a,d3d9:b};}}
+  for(let j=0;j<c.size;j+=4)if(expected[c.offset+j]!==139||expected[c.offset+j+1]!==103||expected[c.offset+j+2]!==66||expected[c.offset+j+3]!==255)++foreground;
+  rows.push({index:c.index,textIndex:c.textIndex,format:c.format,filter:c.filter,scaling:c.scaling,crop:c.crop,foregroundPixels:foreground,differentChannels:channels,maxDelta:max,first,pixelsSha256:await hex(pixels.slice())});
+  if(c.index%4===0){const entry=native.copies[c.index/4],image=new Uint8Array(core.HEAPU8.buffer,core._gpu_upload_pixels(),entry.size);copied.set(image,entry.offset);let differentBytes=0;for(let j=0;j<entry.size;j++)if(image[j]!==textures[entry.offset+j])++differentBytes;copies.push({textIndex:c.textIndex,format:c.format,differentBytes,sha256:await hex(image.slice())});}
+  if(c.index%8===0)scratch.push({textIndex:c.textIndex,sha256:await hex(new Uint8Array(core.HEAPU8.buffer,core._gpu_scratch_pixels(),262144).slice())});
+  if(c.index%80===0&&previews<8){const image=new ImageData(c.crop[2],c.crop[3]);for(let j=0;j<c.size;j+=4){image.data[j]=pixels[j+2];image.data[j+1]=pixels[j+1];image.data[j+2]=pixels[j];image.data[j+3]=255;}ctx.putImageData(image,(previews%2)*520,Math.floor(previews/2)*40);++previews;}
+ }
+ const gl=document.querySelector('#canvas').getContext('webgl2'),info=gl.getExtension('WEBGL_debug_renderer_info');
+ const report={completeGame:false,nativeEquivalent:false,strictPixelsEqual:rows.every(r=>!r.differentChannels),cases:rows.length,exactCases:rows.filter(r=>!r.differentChannels).length,renderedCases:rows.filter(r=>r.foregroundPixels>0).length,maxDelta:Math.max(...rows.map(r=>r.maxDelta)),nativePixelsSha256:await hex(expected),portablePixelsSha256:await hex(actual),nativeTexturesSha256:await hex(textures),portableTexturesSha256:await hex(copied),wasmSha256:build.wasmSha256,debugRenderer:info?gl.getParameter(info.UNMASKED_RENDERER_WEBGL):null,copies,scratch,rows};
+ status.textContent=`已完成 ${report.cases} 场景；完全一致 ${report.exactCases}；实际绘制 ${report.renderedCases}；最大差值 ${report.maxDelta}；纹理上传 ${copies.filter(r=>!r.differentBytes).length}/${copies.length}`;
+ result.textContent=JSON.stringify(report,null,2);
+ }catch(e){status.textContent='测试失败：'+e.message;result.textContent=String(e.stack||e);}finally{button.disabled=false;}});
+</script></html>

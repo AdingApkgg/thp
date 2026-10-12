@@ -1,0 +1,16 @@
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+html=(ROOT/'tools/th14-gpu-text.html').read_text(encoding='utf8').replace('TH14 文字纹理 GPU 对照','TH14 FontDevice 文字交付 GPU 对照')
+html=html.replace("let core;","let core;")
+html=html.replace("core??=await create({canvas:document.querySelector('#canvas')});","core??=await create({canvas:document.querySelector('#canvas')});core.FS.mkdir('/fonts');")
+html=html.replace("const p=core._gpu_allocate(data.length);core.HEAPU8.set(data,p);if(!core._gpu_load(slot,p,data.length))throw Error('字体载入 '+name);core._gpu_release(p);","core.FS.writeFile('/fonts/'+name,data);")
+html=html.replace("if(!core._gpu_initialize())throw Error('生产渲染器初始化失败');","if(!core._gpu_initialize())throw Error('实际字体/渲染器初始化失败');")
+html=html.replace('copies=[],scratch=[]','copies=[]')
+html=html.replace("  if(c.index%8===0)scratch.push({textIndex:c.textIndex,sha256:await hex(new Uint8Array(core.HEAPU8.buffer,core._gpu_scratch_pixels(),262144).slice())});","")
+html=html.replace('scaling:c.scaling,crop:c.crop','scaling:c.scaling,writes:core._gpu_writes(),crop:c.crop')
+html=html.replace('copies,scratch,rows','copies,waitingRoutes:core._gpu_waiting_routes(),writes:core._gpu_writes(),rows')
+html=html.replace('不是完整原作游戏帧。','实际 FontDevice.text 连续交付同一纹理并经 GraphicsDevice.changed 更新；包括未就绪、格式失败、等待 sprite 与缺失资源路线。不是完整原作游戏帧。')
+(ROOT/'tools/th14-font-device-gpu.html').write_text(html,encoding='utf8')
+server=(ROOT/'tools/th14-gpu-text-serve.mjs').read_text().replace("'artifacts/th14/gpu-text'","'artifacts/th14/font-device-gpu'").replace('tools/th14-gpu-text.html','tools/th14-font-device-gpu.html').replace('8160','8161')
+(ROOT/'tools/th14-font-device-gpu-serve.mjs').write_text(server,encoding='utf8')
+print('Prepared actual FontDevice delivery UI')

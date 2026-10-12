@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,mkdirSync,readdirSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {WASI} from 'node:wasi';
+import {nativePython} from './native-python.mjs';
+const root=resolve('.'),rt=resolve(root,'runtimes/th12/th12_web'),out=resolve(root,'artifacts/th16/shot-geometry-check');mkdirSync(out,{recursive:true});
+const env={...process.env,TEMP:out,TMP:out,TMPDIR:out};nativePython('tools/th16-shot-geometry-native.py',{cwd:root,stdio:'inherit',windowsHide:true});
+execFileSync(process.execPath,['runtimes/th13/th13_web/scripts/cpp/build-engine.mjs','--title','16'],{cwd:root,env,stdio:'inherit',windowsHide:true});
+const fixture='tests/cpp/th16-shot-geometry-fixture.cpp',dir=resolve(root,'runtimes/th13/th13_web/artifacts/cpp/objects-th16'),wasm=resolve(out,'geometry.wasm');
+execFileSync(resolve(rt,'../tools/wasi-sdk-34.0-x86_64-windows/bin/clang++.exe'),['--target=wasm32-wasip1','-std=c++17','-O2','-ffp-contract=off','-fno-exceptions','-fno-rtti','-mexec-model=reactor','-Wl,--no-entry','-Wl,--export-memory','-DPORT_TITLE=16',fixture,...readdirSync(dir).filter(n=>n.endsWith('.o')).map(n=>resolve(dir,n)),'-o',wasm],{cwd:rt,env,stdio:'inherit',windowsHide:true});
+const bytes=readFileSync(wasm),wasi=new WASI({version:'preview1',args:[],env:{},preopens:{}}),{instance}=await WebAssembly.instantiate(bytes,{wasi_snapshot_preview1:wasi.wasiImport});wasi.initialize(instance);const c=instance.exports;
+const proof=JSON.parse(readFileSync(resolve(root,'artifacts/th16/shot-geometry-native.json'),'utf8'));
+for(const [index,r] of proof.rows.entries())assert.equal(c.run(...r.input),r.output,JSON.stringify({index,input:r.input}));
+const sha=b=>createHash('sha256').update(b).digest('hex');
+writeFileSync(resolve(root,'docs/porting/th16-shot-geometry-verified.json'),JSON.stringify({passed:true,title:16,completeGame:false,cases:proof.rows.length,nativeExecutableSha256:proof.executableSha256,wasmSha256:sha(bytes),scope:'Actual complete403d30 circle/rotated rectangle and4049c0 two rotated rectangles; original helper calls and native math execute with no interception. Zero/nonzero dimensions, quadrants, strict/inclusive boundaries, rotated/different-angle rectangles and circle radii. Boolean output exact. Finite supplied inputs; NaN/infinity, other geometry and full gameplay excluded.',sourceHashes:Object.fromEntries([fixture,'cpp/game/ShotTh16Geometry.cpp','cpp/game/ShotTh16.hpp'].map(s=>[s,sha(readFileSync(resolve(rt,s)))])),toolHashes:Object.fromEntries(['tools/th16-shot-geometry-native.py','tools/th16-shot-geometry-check.mjs'].map(s=>[s,sha(readFileSync(resolve(root,s)))]))},null,2)+'\n');
+console.log(`PASS: ${proof.rows.length} native TH16 shot geometry cases.`);

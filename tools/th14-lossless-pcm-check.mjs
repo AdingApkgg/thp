@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,mkdirSync,readdirSync,openSync,readSync,closeSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {WASI} from 'node:wasi';
+const root=resolve(import.meta.dirname,'..'),rt=resolve(root,'runtimes/th12/th12_web'),out=resolve(root,'artifacts/th14/lossless-pcm-check');mkdirSync(out,{recursive:true});const env={...process.env,TEMP:out,TMP:out,TMPDIR:out};
+const dir=resolve(root,'runtimes/th13/th13_web/artifacts/cpp/objects-th14'),wasm=resolve(out,'pcm.wasm'),fixture='tests/cpp/th14-direct-flac-fixture.cpp';
+execFileSync(resolve(rt,'../tools/wasi-sdk-34.0-x86_64-windows/bin/clang++.exe'),['--target=wasm32-wasip1','-std=c++17','-O2','-ffp-contract=off','-fno-exceptions','-fno-rtti','-mexec-model=reactor','-Wl,--no-entry','-Wl,--export-memory','-Wl,-z,stack-size=1048576','-DPORT_TITLE=14','-Itests/cpp/audio-shim',fixture,'cpp/sdl/AudioDevice.cpp','cpp/game/SoundEffects.cpp',...readdirSync(dir).filter(n=>n.endsWith('.o')&&n!=='cpp_game_SoundEffects.cpp.o').map(n=>resolve(dir,n)),'-o',wasm],{cwd:rt,env,stdio:'inherit',windowsHide:true});
+const bytes=readFileSync(wasm),musicDir=resolve(root,'runtimes/th14/th14_web/assets/sdl-native/music'),wasi=new WASI({version:'preview1',args:[],env:{},preopens:{'/music':musicDir}}),{instance}=await WebAssembly.instantiate(bytes,{wasi_snapshot_preview1:wasi.wasiImport});wasi.initialize(instance);const c=instance.exports;
+const target=JSON.parse(readFileSync(resolve(root,'runtimes/th14/target.json'),'utf8')),dat=readFileSync(target.dataArchives['th14.dat'].path),p=c.allocate(dat.length);new Uint8Array(c.memory.buffer,p,dat.length).set(dat);assert.equal(c.open_archive(p,dat.length),1);
+const error=()=>{const b=new Uint8Array(c.memory.buffer),p=c.error();return new TextDecoder().decode(b.subarray(p,b.indexOf(0,p)));};
+const archive=JSON.parse(readFileSync(resolve(root,'artifacts/archive-differential/th14.json'),'utf8')),formats=readFileSync(resolve(archive.extraction,'thbgm.fmt'));
+const catalog=readFileSync(resolve(rt,'cpp/game/MusicCatalog.hpp'),'utf8').match(/th14_music_tracks\[\]=\{([\s\S]*?)\};/)[1];
+const cues=Object.fromEntries([...catalog.matchAll(/\{(\d+),"([^"]+)"\}/g)].map(m=>[m[2],Number(m[1])]));
+const proof=JSON.parse(readFileSync(resolve(root,'docs/porting/th14-music-lossless-verified.json'),'utf8')),sha=b=>createHash('sha256').update(b).digest('hex'),source=openSync(target.dataArchives['thbgm.dat'].path,'r'),rows=[];let compared=0;
+try{
+ for(const track of proof.tracksVerified){
+  assert.equal(track.lossless,true);assert.equal(sha(readFileSync(resolve(musicDir,track.file))),track.encodedSha256);const stem=track.name.replace(/\.wav$/,''),cue=cues[stem];assert.ok(Number.isInteger(cue));c.stop_all();c.master(100);assert.equal(c.music(cue),1,error());assert.equal(c.direct_open(cue),1);
+  let format=-1;for(let n=0;n<18;++n)if(formats.subarray(n*52,n*52+16).toString().split('\0')[0]===track.name)format=n*52;assert.ok(format>=0);
+  const offset=formats.readUInt32LE(format+16),intro=formats.readUInt32LE(format+24)/4,total=formats.readUInt32LE(format+28)/4;assert.equal(total,track.frames);assert.equal(intro,track.loopFrame);
+  const pcm=Buffer.alloc(4096),expected=Buffer.alloc(8192);let read=0;const actualHash=createHash('sha256');
+  const compare=(at,n)=>{assert.equal(readSync(source,pcm,0,n*4,offset+at*4),n*4);for(let i=0;i<n*2;++i)expected.writeFloatLE(pcm.readInt16LE(i*2)/32768,i*4);const dp=c.direct_mix(n);if(at<total&&dp){const direct=Buffer.from(new Uint8Array(c.memory.buffer,dp,n*8));if(!direct.equals(expected.subarray(0,n*8)))console.log('direct decoder differs',stem,at); }const ptr=c.mix(n);assert.ok(ptr,error());const actual=Buffer.from(new Uint8Array(c.memory.buffer,ptr,n*8));if(!actual.equals(expected.subarray(0,n*8))){const differences=[];for(let i=0;i<n*2&&differences.length<8;++i)if(actual.readUInt32LE(i*4)!==expected.readUInt32LE(i*4))differences.push({index:i,input:pcm.readInt16LE(i*2),actual:actual.readFloatLE(i*4),expected:expected.readFloatLE(i*4)});console.log(JSON.stringify({stem,at,differences}));}assert.ok(actual.equals(expected.subarray(0,n*8)),`original PCM ${stem} frame ${at}`);actualHash.update(actual);compared+=n;};
+  while(read<total){const n=Math.min(1024,total-read);compare(read,n);read+=n;}
+  let at=intro;for(let n=0;n<16;++n){const count=Math.min(1024,total-at);compare(at,count);at+=count;if(at===total)at=intro;}
+  rows.push({cue,file:track.file,frames:total,loopFrame:intro,additionalLoopFrames:16384,mixedFloatPcmSha256:actualHash.digest('hex'),passed:true});console.log(`PASS ${stem} ${total} original PCM frames plus loop`);
+ }
+}finally{closeSync(source);}
+const files=[fixture,'tests/cpp/th14-audio-mixer-fixture.cpp','tests/cpp/th14-music-restore-fixture.cpp','tests/cpp/audio-shim/SDL3/SDL.h','cpp/sdl/AudioDevice.cpp','cpp/game/SoundEffects.cpp','cpp/game/Th14MusicFade.hpp','cpp/game/MusicCatalog.hpp'];
+writeFileSync(resolve(root,'docs/porting/th14-lossless-pcm-verified.json'),JSON.stringify({passed:true,completeGame:false,nativeEquivalent:false,tracks:rows.length,comparedStereoFrames:compared,rows,wasmSha256:sha(bytes),sourceArchiveSha256:proof.sourceArchiveSha256,formatSha256:sha(formats),sourceHashes:Object.fromEntries(files.map(p=>[p,sha(readFileSync(resolve(rt,p)))])),toolSha256:sha(readFileSync(import.meta.filename)),scope:'Production AudioDevice/miniaudio FLAC playback at unity volume compared bit-for-bit as stereo float32 against every original int16 PCM frame converted by /32768, all18 complete tracks plus16,384 frames beyond each original loop end. Original cue order, frame counts and intro/loop positions. SDL device stub;does not prove native DirectSound mixer/pan/resampling, hardware latency, browser asynchronous cadence or complete game equivalence.'},null,2)+'\n');console.log(`PASS ${rows.length} full original PCM tracks / ${compared} stereo frames`);

@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "cases": 49,
+  "routes": 35,
+  "musicFadeCases": 49,
+  "speakerResetCases": 48,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "b514101d30734a22787283a4c1815a9d14c0af21dc7fe46a5b68901c59acf73d",
+  "scope": "Retail MSG 2/20/31 stage and speaker resource/script selection, before ANM allocation. MSG 22/27 default and explicit music fade arguments are compared at the retail 445840 call boundary. Port MSG decoding and resource routing use real Dialogue/AnmManager with synthetic stop scripts. MSG 32 speaker/line reset writes and one portrait interrupt are compared through retail 433107..43369d with controlled ANM lookups. Retail allocation, ANM execution, other portrait expressions and speaker layout, HUD side effects and pixels are not asserted.",
+  "sourceHashes": {
+    "tests/cpp/th14-dialogue-assets-fixture.cpp": "b25d643056f8194e0acbfb4f51d77028869daf1a932d825fbe4ee9c7cb5d8545",
+    "cpp/game/Dialogue.cpp": "989e38d393631efa377426b926626ecc00b4907366cb9c4a4669fd8a9166773e",
+    "cpp/game/Dialogue.hpp": "3872479ec755307a1d226ae9e5060aeb697ae648e54646db6354f6266e733b9d",
+    "cpp/game/GameBattle.cpp": "44cfb0f0362a1e2366895fbca9e73a5c3ed560bec183282a2cf3c8023e0dc9de"
+  },
+  "toolHashes": {
+    "tools/th14-dialogue-assets-native.py": "037f0ba113e01f7751c84391ce532c62df1b51353aaa665508267b6bb9b1a39d",
+    "tools/th14-dialogue-assets-check.mjs": "6ba76ac0396b1a40b825f8d3a40fc5723dd574701f3120c29c623d19ec97d0dd"
+  }
+}

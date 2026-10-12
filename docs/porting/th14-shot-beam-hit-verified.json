@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "hits": 4032,
+  "negativeScratchEdges": 48,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "c68eefa001f6ee80d0549d51b5bd7bbefa37699497de524e0f180f47e0d89f00",
+  "scope": "Retail 452700 circular and rotated-rectangle hit clipping, +/-1000 finite-line fallback, area length, hit transitions, timer-gated 2-frame effect/4-frame damage, wrapping ordinary-hit count at native +184b4, endpoint/travel vector and retail 41be50 interpolation setup. Defined circle overlap inputs plus the actual demo frame-3430 circular edge with controlled negative stack scratch <= -8: its native clamped zero result and timer-gated effects/damage agree. Production uses zero on this undefined edge; arbitrary positive/uninitialized stack values are not equivalent or covered. ANM create/lookup/interrupt are controlled boundaries. Production interpolation delivery, GPU pixels and complete gameplay are separate.",
+  "sourceHashes": {
+    "tests/cpp/th14-shot-beam-hit-fixture.cpp": "4bd746d24693feedb2470c65d51a336aca4e03463720fd5498d02e9553bcfbef",
+    "cpp/game/ShotCallbacksTh14.cpp": "ca45e02b0ac112a2a8ea471ea448a462546fdca3aa1458fad9f25f206dd04a2f",
+    "cpp/game/Movement.cpp": "ea823e71f48f15d1d5e038c4fa62b6a4dfcaa31b087ebc183e42ef2dd439cccb",
+    "cpp/game/ShotManager.hpp": "00f3fc81fbfa65ae78a76aa93c3054b7fb64e4dda050d65e2df63b3627630c13"
+  }
+}

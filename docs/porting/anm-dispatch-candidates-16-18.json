@@ -1,0 +1,77 @@
+{
+  "question": "which bytes of TH16, TH17 and TH18 are their ANM dispatches?",
+  "anchorsDoNotTransfer": {
+    "tested": "th13/th14's ANM anchors, byte for byte, in the three executables",
+    "results": {
+      "opcode load + cmp (0fbf03 3d2c010000)": "none in any of the three",
+      "middle band (2d2d010000)": "th16 0x60046; th17/th18 present elsewhere but not adjacent",
+      "upper band (2d59020000)": "none in the three"
+    },
+    "conclusion": "the table shape has to be found per title, not copied from the previous title"
+  },
+  "eclTablesReproducedFromBytes": {
+    "method": "scan every jmp dword [reg*4+abs32] and keep the candidate whose resolved targets all land in .text",
+    "uniquePerTitle": true,
+    "th16": {
+      "site": "0x1d151",
+      "group": "0x422d70",
+      "jump": "0x422ab8",
+      "targets": 172
+    },
+    "th17": {
+      "site": "0x205c7",
+      "group": "0x4268d0",
+      "jump": "0x42661c",
+      "targets": 172
+    },
+    "th18": {
+      "site": "0x301d4",
+      "group": "0x4366f4",
+      "jump": "0x436438",
+      "targets": 174
+    },
+    "againstSection294": "identical to the recorded ECL jump and group tables for all three titles",
+    "meaning": "the transcription of section 294 is confirmed by an independent pass over the raw bytes"
+  },
+  "th16AnmBandReadInstructionByInstruction": [
+    "00460c46  sub  eax, 0x12d",
+    "00460c4b  cmp  eax, 0x138",
+    "00460c50  ja   0x4629c8",
+    "00460c56  movzx eax, byte ptr [eax + 0x462fa8]",
+    "00460c5d  jmp  dword ptr [eax*4 + 0x462e64]"
+  ],
+  "bandBaseSharedWithOlderTitles": {
+    "th13": "cmp 0xcf after sub 0x12d",
+    "th14": "cmp 0xd0 after sub 0x12d",
+    "th16": "cmp 0x138 after sub 0x12d",
+    "reading": "the same family base, a wider band"
+  },
+  "coverageOfEachTitlesOwnShippedAnmFiles": {
+    "how": "a fresh extraction of the title's archive and tools/th-anm-opcodes.py over it",
+    "th16": {
+      "files": 54,
+      "distinctOpcodeNumbers": 91,
+      "bestCandidate": "0x462e64",
+      "covered": 86
+    },
+    "th17": {
+      "files": 53,
+      "distinctOpcodeNumbers": 92,
+      "bestCandidate": "0x42661c",
+      "covered": 85
+    },
+    "th18": {
+      "files": 56,
+      "distinctOpcodeNumbers": 96,
+      "bestCandidate": "0x436438",
+      "covered": 90
+    }
+  },
+  "whyCoverageAloneDoesNotDecide": "the numbers a v8 title's files use reach into the same range the ECL family occupies, and every candidate here resolves to code, so coverage narrows the field without naming the site; the instructions do, and the two immediates of a site are its tables",
+  "marker": {
+    "observed": "markers {8: n} for all three titles",
+    "reading": "the shipped ANM files of TH16-18 are the newer marker, which is why the older anchors need not appear"
+  },
+  "accepted": false,
+  "next": "transcribe the remaining ANM bands of TH16 (the low band that loads the opcode, and the bands beside the one read here), add the three cases to tools/th-anm-handlers.py where it now raises, and then run an ANM-family checker of the th14 shape for each title"
+}

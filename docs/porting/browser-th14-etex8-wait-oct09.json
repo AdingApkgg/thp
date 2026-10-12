@@ -1,0 +1,53 @@
+{
+  "verified": false,
+  "url": "http://127.0.0.1:8126/",
+  "sdl": {
+    "bytes": 1678525,
+    "sha256": "897dfa9334dbe561d130fb26d16fd3b21efa8a78cad48187a240a2c6f63cf3c2"
+  },
+  "route": [
+    "Startup verification",
+    "Game Start",
+    "Normal",
+    "Reimu",
+    "Reimu A"
+  ],
+  "observations": [
+    {
+      "kind": "normal-gameplay",
+      "stage": 1,
+      "frame": 1176,
+      "fps": 61,
+      "input": "Shift+Z held for 20 seconds"
+    },
+    {
+      "kind": "normal-gameplay",
+      "stage": 1,
+      "frame": 1404,
+      "fps": 59,
+      "screenshot": "artifacts/th14/browser-etex8-wait-normal-oct09.jpg"
+    },
+    {
+      "kind": "later-input",
+      "stage": 1,
+      "frame": 578,
+      "fps": 60,
+      "input": "Shift+Z held for another 10 seconds",
+      "note": "Frame reset observed; the intervening menu/phase transition was not captured, so its cause is not verified."
+    },
+    {
+      "kind": "last-visible-state",
+      "stage": 1,
+      "frame": 1293,
+      "fps": 60,
+      "note": "Pause clicked; no page pause panel was visible. No successful pause or Game Over menu assertion."
+    }
+  ],
+  "consoleErrorsObserved": [],
+  "limitations": [
+    "Only short ordinary gameplay was visibly observed.",
+    "HUD digits and some sprites are incorrect.",
+    "No full story/Extra browser completion or pixel parity claim.",
+    "Game Over menu and pause interaction not verified in this run."
+  ]
+}

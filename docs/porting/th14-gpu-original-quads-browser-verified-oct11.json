@@ -1,0 +1,96 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "strictPixelsEqual": true,
+  "cases": 640,
+  "submittedCases": 256,
+  "renderedCases": 224,
+  "foregroundPixels": 1043583,
+  "channels": 11309368,
+  "maxDelta": 0,
+  "width": 640,
+  "height": 480,
+  "url": "http://127.0.0.1:8150/",
+  "debugRenderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 2080 Ti (0x00001E07) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "wasmSha256": "c4ff24f912b933d308003d23c3a5c8c78a41d836069431799f4e0df7a8c70f6f",
+  "files": {
+    "artifacts/th14/gpu-original-quads/prepared.json": {
+      "bytes": 213213,
+      "sha256": "68129e3cf9230da3ff0420fdb29c6f2a8cdebf9c7ff7679739e5e7954cdc97a1"
+    },
+    "artifacts/th14/gpu-original-quads/native.json": {
+      "bytes": 272029,
+      "sha256": "b4e0feafb87489b8282a021e0054fba735115392bf85a17982cd1eccdcfe4601"
+    },
+    "artifacts/th14/gpu-original-quads/native.bgra": {
+      "bytes": 11309368,
+      "sha256": "0ecbfc7b9c39c902b47de01e21e9287cdcce506e4f79a52e644b068810a6ec24"
+    },
+    "artifacts/th14/gpu-original-quads/build.json": {
+      "bytes": 3950,
+      "sha256": "db2523b3ae68621a88042971c9197532891b6864164d007d0c8f387bc9aedc2b"
+    },
+    "artifacts/th14/gpu-original-quads/gpu.mjs": {
+      "bytes": 212550,
+      "sha256": "23483f4ddd8fb012a5e2e31385f266694778f070face9f61232dbfda1edf0c09"
+    },
+    "artifacts/th14/gpu-original-quads/gpu.wasm": {
+      "bytes": 814272,
+      "sha256": "c4ff24f912b933d308003d23c3a5c8c78a41d836069431799f4e0df7a8c70f6f"
+    },
+    "artifacts/th14/gpu-original-quads/browser-result.json": {
+      "bytes": 295947,
+      "sha256": "2609584f93ad0a3c11482af7cd0d741ed5cfa21b2b238cd6faf2efb66deba16c"
+    },
+    "artifacts/th14/gpu-original-quads/browser.png": {
+      "bytes": 43897,
+      "sha256": "3446c31d9b7e5606f3583c6d44dd528a3dab3ea2363924d155a86c293832c631"
+    },
+    "artifacts/th14/gpu-original-quads/browser-logs.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "artifacts/th14/gpu-original-quads/geometry/native.json": {
+      "bytes": 4149457,
+      "sha256": "96a9a3989e0f266cdc0fc4fd65a8d75b774ea85c2e5870622efe7669a9709040"
+    },
+    "artifacts/th14/gpu-original-quads/geometry/th14.wasm": {
+      "bytes": 672947,
+      "sha256": "0e29b2509cbe94edb8edba3caede38149ebdc3d9fe07c37ea5fec728ebf09db1"
+    }
+  },
+  "sources": {
+    "runtimes/th12/th12_web/cpp/game/AnmVm.cpp": "49b7114f614de4f7cb743487fa29fb6049f1e15f7135195abc0de501514a3c71",
+    "runtimes/th12/th12_web/cpp/game/AnmResource.cpp": "7391cebdd1be0faa8ad9201352debef81b436543f2f6703d962bb4c504490c41",
+    "runtimes/th12/th12_web/cpp/game/AnmInterpreter.cpp": "4e32fd542f9b1ec740e45e396eff728b26da98c67399b398ffd233ef3266bf3d",
+    "runtimes/th12/th12_web/cpp/game/AnmGeometry.cpp": "6326e12e33f2cce4d9999ade1b241c25832c1323720df57a1094a6372c10db59",
+    "runtimes/th12/th12_web/cpp/game/AnmProjection.cpp": "ac2e73f94a4ee47770a40c8549b6691ebe7696c05820e3d07d7b7817e751df59",
+    "runtimes/th12/th12_web/cpp/game/AnmRenderer.cpp": "49ffcc1e744cf9e3b393133691867be47201eab56a68466278efb9fc37f7d351",
+    "runtimes/th12/th12_web/cpp/game/GraphicsMath.cpp": "b159b3d617a522977c795351b5ff56338d5058b899ab984a590c8b50f8a9fd6e",
+    "runtimes/th12/th12_web/cpp/game/Interpolation.cpp": "57cd2806a28109745084fb2079edee055322ff3fd044f75fc4e4ec3305add125",
+    "runtimes/th12/th12_web/cpp/game/SceneCamera.cpp": "72a5b43fb397885086f65083cc13d22971bda2b7632c516df91301ed6d6c1e93",
+    "runtimes/th12/th12_web/tests/cpp/th14-gpu-original-quads-fixture.cpp": "f9117b1a93cb2b7bfea3d6bda64ee3b1cfd619fc26ad325569754cb796e038ed",
+    "runtimes/th12/portable/sdl/Renderer.cpp": "9bf8bc525bcf8d63b661e6bc5496e3925761b41ae886d44e2e4fcb8407066d68",
+    "runtimes/th12/th12_web/tests/cpp/th14-render-fixture.cpp": "f7169e565fc5060b23be91f6636efac04ce402f2ed687765048ffed995bd0f34",
+    "runtimes/th12/th12_web/cpp/game/AnmVm.hpp": "f7f2aeaf6b3de13f7f3a0e4a47d1e8f5452bda86fd54d09ab1ee3fc95ea6bf01",
+    "runtimes/th12/th12_web/cpp/game/AnmRenderer.hpp": "4dadf7c3c9de17f6959a23e373adb3d37f309588e9590ff923378ea0472013b5",
+    "runtimes/th12/th12_web/tests/cpp/render-fixture.hpp": "3f8cf7447d8242d7e0b38ea19b30fad73951347ad0a9c370dc8a41593042cbae",
+    "runtimes/th12/th12_web/tests/cpp/th14-gpu-original-quads-data.hpp": "bfdb5eac149982a7aef1f8898cc13e4ca08ae63bf0bc9592294d11dff104dc44",
+    "runtimes/th12/portable/sdl/Renderer.hpp": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249",
+    "runtimes/th12/portable/sdl/AlphaConversion.hpp": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5",
+    "runtimes/th12/portable/sdl/GraphicsState.hpp": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31",
+    "runtimes/th12/portable/sdl/Shaders.hpp": "78f7648c27aa762c30493e6bf784baabdabdac63e2f683b2ed33470dca5aa252",
+    "runtimes/th12/portable/sdl/ResampleShader.hpp": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134",
+    "tools/th14-gpu-original-quads-build.mjs": "da8048a22a60e74cb0ed5d1e4c20b6519d151df06b5a747b853d5283b9761489",
+    "tools/th14-gpu-original-quads.html": "0a3e47fa6630554324094a8ef672822454cf112e2c11dd5e872c2bbca1756220",
+    "tools/th14-gpu-original-quads-serve.mjs": "d6d1da8d4f50f7132252dba395d7b5d504c9e65fd78d525c5d228970c58965db"
+  },
+  "limits": [
+    "Original retail draw dispatcher is executed with its batch boundary recorded; actual native batch implementation and full game draw loop are not captured",
+    "Recorded original four-corner geometry is rasterized as a D3D9 HAL hardware-vertex-processing strip; current production independently calculates six triangle vertices from the same ANM inputs and uses the unchanged production SDL/WebGL renderer",
+    "640 cases cover drawing modes 0..3, visibility, color modes, inherited transforms, tint, rotation, anchors and UV; 256 submit geometry and 224 produce on-screen foreground",
+    "Both devices use a synthetic 4x4 texture and controlled non-fog pipeline at the original 640x480 grid; crops include native bounding-box margins, without scaling",
+    "No complete original game frame, original texture/scene/text/depth/fog combination, original batch order or cross-device guarantee is asserted"
+  ]
+}

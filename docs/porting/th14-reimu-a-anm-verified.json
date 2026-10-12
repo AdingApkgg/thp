@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "frames": 2432,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "resourceSha256": "640e36891521e65c8e2aeb2cd2b9e9a31653d57368774392ae9de5beae46964a",
+  "wasmSha256": "e47624f32da9943cee2345fe6d82248d3488051bdd8ac85582ca9017eb979813",
+  "scope": "Full retail interpreter versus production on pl00.anm scripts 13/14/15/24 at rates .5/1/1.25 with interrupt 1 at frame 250. Compares sprite requests, primary color, layer, resolution flags, active bit, clocks, script position, scale, extra scale and rotation.z, and child requests. Native child delivery and geometry allocation are controlled; each child script is independently executed. Recursive rendering, allocator/registry behavior and GPU pixels remain separate.",
+  "sourceHashes": {
+    "tests/cpp/th14-sakuya-b-anm-fixture.cpp": "d468889b3051a0d95f92630022ec751cb2c130b14f0bd9949b2a4b97e31bd4bc",
+    "cpp/game/AnmVm.cpp": "f6ea07e46ae7d1d9cba4f643b72c9161628dbff66575a981b4f8a74345a67d3f",
+    "cpp/game/AnmInterpreter.cpp": "1be2880981e9912d504044fa9de850dcd08c5c4030885536633598d124aa913a",
+    "cpp/game/AnmManager.cpp": "74e295ed35846687274ecf6d868eb9f9a20746341e1f390e4da168e56754a759",
+    "cpp/game/AnmGeometry.cpp": "876273a619274307c37a94faf74dce6948778f0f61cb32d344f447b35490fed5",
+    "cpp/game/AnmResource.cpp": "7391cebdd1be0faa8ad9201352debef81b436543f2f6703d962bb4c504490c41"
+  },
+  "toolHashes": {
+    "tools/th14-reimu-a-anm-native.py": "875cf1157b305ce7165f8649c2b8145c9c669185ee661ad3d0ea1c7e2b4b6723",
+    "tools/th14-sakuya-b-anm-native.py": "856b2c8cbbc43a4adc931da32163079eba23e6f5b6f03bae5515ccc4f7d80e58",
+    "tools/th14-reimu-a-anm-check.mjs": "06fa46fee0b03c2ae66e70dceaea6d260836d9ed9f92af562a2b0114620f7c6b"
+  }
+}

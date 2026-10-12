@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "sourcePath": "artifacts/th14/launcher-exported-scoreth14-oct11.dat",
+  "bytes": 21638,
+  "sha256": "8f002ee20efda4f66e26a55457e2d8c3ee3be6504c406b0161dd5be662936384",
+  "decodedBytes": 149076,
+  "decodedSha256": "c806a9ca9d5ab9cb7182c0550c4f570d7954c63ef3995bf48fe289580435e528",
+  "out": "artifacts/th14/launcher-score-check/8f002ee20efda4f6",
+  "native": {
+    "passed": true,
+    "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+    "inputBytes": 21638,
+    "inputSha256": "8f002ee20efda4f66e26a55457e2d8c3ee3be6504c406b0161dd5be662936384",
+    "decodedBytes": 149076,
+    "decodedSha256": "c806a9ca9d5ab9cb7182c0550c4f570d7954c63ef3995bf48fe289580435e528",
+    "rewrittenSha256": "8f002ee20efda4f66e26a55457e2d8c3ee3be6504c406b0161dd5be662936384",
+    "scope": "Actual complete retail456de0 loader and456f60 writer (stopped before OS file write) consume/rewrite the Launcher-exported real browser score. All149076 decoded character/settings bytes and full encoded bytes match production. Allocator/free/memcpy/memset boundaries controlled; no native filesystem/GPU/whole-game equivalence."
+  },
+  "preparedPath": "runtimes/th14/th14_web/artifacts/launcher-preview/8e66fa41b0b62a74-159ce182d203/release.json",
+  "preparedSha256": "b382ef250b0d65d0deb2e25954b0e015693f2c1071db95d72eafd8596efb88e1",
+  "wasmSha256": "916add424a4aeb2d96553ee4e5f393de43fd45f2d526390c30adc14b00c58535",
+  "sourceHashes": {
+    "tests/cpp/th14-score-fixture.cpp": "657306034afda880cfd9caf3b28e49076e99ae13c5b0287e6167ceddea0e1880",
+    "cpp/game/ScoreFile.cpp": "b3b1b445c3888dc69e8c54c5632a89ba279df4ce462672033f9f020bcdf47f1a",
+    "cpp/game/ScoreFile.hpp": "7c3844493999a84fa31aba3ab434e4a277ad4e39daf947f6d1f6daf942447941",
+    "cpp/game/Lzss.cpp": "7bf9b34043ee21f6e23244369069b2807314f3d7ddf7f37a556b34780afa4e48",
+    "cpp/game/ResourceCrypt.cpp": "d57118f1114f3909c42a2e99e7df30e625f6563247a8118cd14bb9f68a0f97ef"
+  },
+  "scope": "Real Launcher UI score export after persisted ordinary play and configuration reload. Production decoding/record sync/re-encoding and original executable loader/writer byte equality; no whole-game/native filesystem/GPU claim."
+}

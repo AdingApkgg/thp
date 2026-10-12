@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "cases": 595,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "scope": "Retail VM waits, indexed stack argument reads, push/pop conversion, arithmetic/comparison/logic, negation and vector calculations. ECL 93 executes the actual retail VM with two signed random draws, polar XY, immediate/stack arguments, raw reference destinations and cleanup; 144 additional cases compare RNG seed/call count. Calls, threads, other globals, interpolation and complete ECL gameplay remain separate.",
+  "wasmSha256": "625bc827aafdfc9cf0a47a1472407107e631341006baab1f1a3d6b30651ac095",
+  "sourceHashes": {
+    "cpp/game/EclInterpreter.cpp": "64358a219e48f81fbebb8a302d01525c64986153b62c4c0e36aa32f585f6db10",
+    "cpp/game/EclContext.cpp": "3a4751af060e4c2b7d2cfc9207e70beae9b77e76c55567b5225053d06117c8c4",
+    "cpp/game/EclOwner.cpp": "d89a5b6c3ed78bec89e20264ed9d2549a89ab5183f12cf1d34cc502a5fc8542e",
+    "cpp/game/EclResource.cpp": "5482a55370100ae63d7d997c62943e903c8b4b82325b59e1fd6d0c33c97f4e25",
+    "tests/cpp/th14-ecl-vm-fixture.cpp": "07cb4b0784e4a567ce80f29d8572c18dc158ea0eaa982c706cf03fe42e0adea2",
+    "cpp/game/EclRoutes.hpp": "d656d43e2820e731c1670061e4e9ce65a98856512c700f46d5ca8d2900e5f6f0",
+    "cpp/game/Rng.hpp": "c53231677e6b5ef755d7385f5d3e224e2e353757eec7f1110424a8d4f0073a9a"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "timelines": 36,
+  "vertices": 31212,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "68016b67e84532db683c0c10ce08468abf6a7b664cb9e0191d1d55672143334d",
+  "scope": "Retail 424100 and 41f360 per-frame 17x17 deformation grid at logical 640x480, origin 320/16 and left edge 128; color, radius growth, phase updates, UV and edge clamping. D3DX normalization is a controlled numeric boundary. Sin/libm position tolerance max(2e-5,abs(expected)*1.2e-7); other fields exact. Native ANM strip creation/callback, disabled graphics path and GPU capture/draw are not asserted.",
+  "sourceHashes": {
+    "tests/cpp/th14-deformation-fixture.cpp": "95cc3626f56f1b2641bceb631e456ad4b65dcbe331a4bd3823fe815a2d94b56e",
+    "cpp/game/ScreenDeformation.cpp": "47fbdd9fc1c79ebc17af32d22ab71f8e8da3607c368c569a70773d03774690a5",
+    "cpp/game/EnemyTh14Commands.cpp": "b03cde800e77f792a688e15100c48eb350b32732cffde0912eeff72ba74f1ef2",
+    "cpp/game/GraphicsMath.cpp": "b159b3d617a522977c795351b5ff56338d5058b899ab984a590c8b50f8a9fd6e"
+  }
+}

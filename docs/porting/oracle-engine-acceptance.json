@@ -1,0 +1,1053 @@
+{
+  "instrument": "runtimes/th12/th12_web/tests/cpp/{trace-oracle-call,tmp-*-289}.mjs under tools/emsdk/node",
+  "subject": "which (entry address, first bytes, frame) combinations this npm Unicorn build accepts, measured one case per node process, because one wasm-side trap leaves every later call in the same process failing the same way (docs/porting/porting-plan.md section 67)",
+  "engine": "@alexaltea/unicorn-js under tools/unicorn/node_modules, x86-32, the harness machine from runtimes/th12/th12_web/scripts/native/machine.mjs (map 0x10000..0x08000000, stack 0x07efff00, returnAddress 0x07f00000)",
+  "cases": [
+    {
+      "entry": "0x402551",
+      "how": "m.call, fresh process",
+      "verdict": "wasm trap (RuntimeError: memory access out of bounds), zero code-hook events"
+    },
+    {
+      "entry": "0x402553",
+      "how": "m.call, fresh process",
+      "verdict": "same, zero events"
+    },
+    {
+      "entry": "0x402557",
+      "how": "m.call, fresh process",
+      "verdict": "same, zero events"
+    },
+    {
+      "entry": "0x40255a",
+      "how": "m.call, fresh process",
+      "verdict": "same, zero events"
+    },
+    {
+      "entry": "0x40255e",
+      "how": "m.call, fresh process",
+      "verdict": "same, zero events"
+    },
+    {
+      "entry": "0x402560",
+      "how": "m.call and raw emu_start, fresh processes",
+      "verdict": "same, zero events"
+    },
+    {
+      "entry": "0x402545",
+      "how": "m.call, fresh process",
+      "verdict": "wasm trap, three code-hook events first (0x402545, 0x402546, 0x402548)"
+    },
+    {
+      "entry": "0x40254c",
+      "how": "m.call, fresh process",
+      "verdict": "wasm trap, one event (the call itself); the memset runs first"
+    },
+    {
+      "entry": "0x402561",
+      "how": "m.call and raw emu_start, fresh processes",
+      "verdict": "ordinary emulation; the guest faults later on its own"
+    },
+    {
+      "entry": "0x402564 / 0x40256d",
+      "how": "m.call, fresh processes",
+      "verdict": "ordinary emulation"
+    },
+    {
+      "entry": "0x402520 with args 0, 1, 3, 4 and 5",
+      "how": "m.call, one fresh process each",
+      "verdict": "the same wasm trap every time, so the argument count is not the cause"
+    },
+    {
+      "entry": "0x402551 with the harness hooks deleted and a proper frame",
+      "how": "uc_emu_start(start, 0x07f00000, 0, 200000)",
+      "verdict": "wasm trap - no harness call() and no hook is in the path"
+    },
+    {
+      "entry": "0x402561 with the harness hooks deleted and a proper frame",
+      "how": "the same",
+      "verdict": "ordinary emulation"
+    },
+    {
+      "entry": "0x402520 with the harness hooks deleted and a proper frame",
+      "how": "the same",
+      "verdict": "wasm trap (it reaches the call and returns to 0x402551)"
+    },
+    {
+      "entry": "the 16 bytes at 0x402551 (d9 e8 8b 54 24 18 d9 56 40 8b 44 24 24 d9 56 44)",
+      "how": "copied to 0x2003010, +ret, raw emu_start with a proper frame",
+      "verdict": "ok, eip = the until value; the same bytes at 0x402551 trap"
+    },
+    {
+      "entry": "the 16 bytes at 0x402561 (d9 56 50 89 9e 30 04 00 00 d9 56 54 89 ae 34 04)",
+      "how": "the same",
+      "verdict": "wasm trap, so the first bytes matter in a copy as well"
+    },
+    {
+      "entry": "the 16 bytes at 0x40255e / 0x402573",
+      "how": "the same",
+      "verdict": "ordinary emulation (guest fault after the copied ret)"
+    },
+    {
+      "entry": "minimal forms at a scratch address: fst [esi+0x50]; ret | fld1; fst [esi+0x50]; ret | mov edx,[esp+0x18]; ret",
+      "how": "raw emu_start with a proper frame, one fresh process each; the first and third were run twice",
+      "verdict": "all ok, deterministically"
+    },
+    {
+      "entry": "memset 0x477420 with sizes 1, 0x10, 0xff, 0x100, 0x101, 0x200, 0x4b4",
+      "how": "m.call with args, fresh process",
+      "verdict": "all ok; the filler 0x48b39a and 0x48b343 also run when called on their own"
+    },
+    {
+      "entry": "m.call(0x402520) with the memset mounted as a host hook (fresh process)",
+      "how": "m.replace(0x477420, ...) with argc 3",
+      "verdict": "the trip traps, the code-hook trace reaches 0x477447 inside the memset body, and the host handler ran zero times"
+    },
+    {
+      "entry": "m.call(0x402520) with register snapshots",
+      "how": "code hooks over the memset and filler; the last snapshot is at 0x48b428 (the memset filler ret) with esp=0x7effed0, ebp already popped to 0",
+      "verdict": "the return address at that esp is 0x402551; the resume at 0x402551 is the case that fails on its own"
+    }
+  ],
+  "reads": [
+    "m.call(touch(0x402520)) is not the whole fixture problem: the argument contract of the initialiser is self-contained. Its own callers in th12 (e.g. the aligned site at 0x4011f7, found by tools/th-callers.py) push nothing themselves and set esi/edx; the version here tried args 0..5 with one process each and the outcome did not change.",
+    "tools/th-callers.py <exe> <va> lists a virtual address's raw e8 sites with the caller's code window; th12 has 33 raw hits for 0x402520, and the ones whose window disassembles cleanly are the usable ones."
+  ],
+  "limits": "every case is one measurement in one fresh process; only the minimal forms were repeated (twice each) of the accept cases. The acceptance is not yet a model: the same 16 bytes run from a copy and trap in place, while a different 16 bytes trap from a copy too, so the engine accepts or refuses on more than the instruction bytes alone.",
+  "runs": [
+    {
+      "command": "window",
+      "argv": [
+        "--from",
+        "0x402548",
+        "--to",
+        "0x402568",
+        "--mode",
+        "bare",
+        "--out",
+        "H:\\code\\thp\\docs\\porting\\oracle-engine-acceptance.json"
+      ],
+      "cases": 33,
+      "tally": {
+        "trap": 23,
+        "guest": 10
+      },
+      "results": [
+        {
+          "entry": "0x402548",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x402549",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x40254a",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x40254b",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "guest",
+          "detail": "Unicorn.js: Function uc_emu_start failed with code 21:"
+        },
+        {
+          "entry": "0x40254c",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x40254d",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "guest",
+          "detail": "Unicorn.js: Function uc_emu_start failed with code 21:"
+        },
+        {
+          "entry": "0x40254e",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "guest",
+          "detail": "Unicorn.js: Function uc_emu_start failed with code 8:"
+        },
+        {
+          "entry": "0x40254f",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "guest",
+          "detail": "Unicorn.js: Function uc_emu_start failed with code 8:"
+        },
+        {
+          "entry": "0x402550",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "guest",
+          "detail": "Unicorn.js: Function uc_emu_start failed with code 8:"
+        },
+        {
+          "entry": "0x402551",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x402552",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "guest",
+          "detail": "Unicorn.js: Function uc_emu_start failed with code 8:"
+        },
+        {
+          "entry": "0x402553",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x402554",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x402555",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x402556",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x402557",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x402558",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x402559",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x40255a",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x40255b",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x40255c",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x40255d",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x40255e",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x40255f",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x402560",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x402561",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "guest",
+          "detail": "Unicorn.js: Function uc_emu_start failed with code 8:"
+        },
+        {
+          "entry": "0x402562",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x402563",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "guest",
+          "detail": "Unicorn.js: Function uc_emu_start failed with code 8:"
+        },
+        {
+          "entry": "0x402564",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "guest",
+          "detail": "Unicorn.js: Function uc_emu_start failed with code 8:"
+        },
+        {
+          "entry": "0x402565",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x402566",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x402567",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        },
+        {
+          "entry": "0x402568",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "guest",
+          "detail": "Unicorn.js: Function uc_emu_start failed with code 6:"
+        }
+      ]
+    },
+    {
+      "command": "window",
+      "argv": [
+        "--from",
+        "0x402548",
+        "--to",
+        "0x402568",
+        "--mode",
+        "bare",
+        "--implant",
+        "c3",
+        "--out",
+        "H:\\code\\thp\\docs\\porting\\oracle-engine-acceptance.json"
+      ],
+      "cases": 33,
+      "tally": {
+        "ok": 33
+      },
+      "results": [
+        {
+          "entry": "0x402548",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402549",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x40254a",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x40254b",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x40254c",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x40254d",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x40254e",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x40254f",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402550",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402551",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402552",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402553",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402554",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402555",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402556",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402557",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402558",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402559",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x40255a",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x40255b",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x40255c",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x40255d",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x40255e",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x40255f",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402560",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402561",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402562",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402563",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402564",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402565",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402566",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402567",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402568",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        }
+      ]
+    },
+    {
+      "command": "case",
+      "argv": [
+        "--entry",
+        "0x402551",
+        "--mode",
+        "bare",
+        "--trace",
+        "24",
+        "--out",
+        "H:\\code\\thp\\docs\\porting\\oracle-engine-acceptance.json"
+      ],
+      "cases": 1,
+      "tally": {
+        "trap": 1
+      },
+      "results": [
+        {
+          "entry": "0x402551",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        }
+      ]
+    },
+    {
+      "command": "case",
+      "argv": [
+        "--entry",
+        "0x402553",
+        "--mode",
+        "bare",
+        "--trace",
+        "24",
+        "--out",
+        "H:\\code\\thp\\docs\\porting\\oracle-engine-acceptance.json"
+      ],
+      "cases": 1,
+      "tally": {
+        "trap": 1
+      },
+      "results": [
+        {
+          "entry": "0x402553",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        }
+      ]
+    },
+    {
+      "command": "case",
+      "argv": [
+        "--entry",
+        "0x402520",
+        "--mode",
+        "bare",
+        "--trace",
+        "24",
+        "--out",
+        "H:\\code\\thp\\docs\\porting\\oracle-engine-acceptance.json"
+      ],
+      "cases": 1,
+      "tally": {
+        "trap": 1
+      },
+      "results": [
+        {
+          "entry": "0x402520",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        }
+      ]
+    },
+    {
+      "command": "case",
+      "argv": [
+        "--entry",
+        "0x402561",
+        "--mode",
+        "bare",
+        "--trace",
+        "24",
+        "--out",
+        "H:\\code\\thp\\docs\\porting\\oracle-engine-acceptance.json"
+      ],
+      "cases": 1,
+      "tally": {
+        "guest": 1
+      },
+      "results": [
+        {
+          "entry": "0x402561",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "guest",
+          "detail": "Unicorn.js: Function uc_emu_start failed with code 8:"
+        }
+      ]
+    },
+    {
+      "command": "case",
+      "argv": [
+        "--entry",
+        "0x402551",
+        "--mode",
+        "bare",
+        "--limit",
+        "1",
+        "--trace",
+        "24",
+        "--out",
+        "H:\\code\\thp\\docs\\porting\\oracle-engine-acceptance.json"
+      ],
+      "cases": 1,
+      "tally": {
+        "trap": 1
+      },
+      "results": [
+        {
+          "entry": "0x402551",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        }
+      ]
+    },
+    {
+      "command": "case",
+      "argv": [
+        "--entry",
+        "0x402561",
+        "--mode",
+        "bare",
+        "--limit",
+        "1",
+        "--trace",
+        "24",
+        "--out",
+        "H:\\code\\thp\\docs\\porting\\oracle-engine-acceptance.json"
+      ],
+      "cases": 1,
+      "tally": {
+        "stopped": 1
+      },
+      "results": [
+        {
+          "entry": "0x402561",
+          "mode": "bare",
+          "implant": null,
+          "verdict": "stopped",
+          "detail": "eip=0x402564"
+        }
+      ]
+    },
+    {
+      "command": "case",
+      "argv": [
+        "--entry",
+        "0x402551",
+        "--mode",
+        "oracle",
+        "--limit",
+        "8",
+        "--trace",
+        "24",
+        "--out",
+        "H:\\code\\thp\\docs\\porting\\oracle-engine-acceptance.json"
+      ],
+      "cases": 1,
+      "tally": {
+        "trap": 1
+      },
+      "results": [
+        {
+          "entry": "0x402551",
+          "mode": "oracle",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        }
+      ]
+    },
+    {
+      "command": "prefix",
+      "argv": [
+        "--from",
+        "0x402551",
+        "--tail",
+        "",
+        "--out",
+        "H:\\code\\thp\\docs\\porting\\oracle-engine-acceptance.json"
+      ],
+      "cases": 10,
+      "tally": {
+        "ok": 10
+      },
+      "results": [
+        {
+          "entry": "0x402551",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402551",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402551",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402551",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402551",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402551",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402551",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402551",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402551",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        },
+        {
+          "entry": "0x402551",
+          "mode": "bare",
+          "implant": "c3",
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        }
+      ]
+    },
+    {
+      "command": "case",
+      "argv": [
+        "--entry",
+        "0x402520",
+        "--mode",
+        "oracle",
+        "--trace",
+        "8",
+        "--out",
+        "H:\\code\\thp\\docs\\porting\\oracle-engine-acceptance.json"
+      ],
+      "cases": 1,
+      "tally": {
+        "trap": 1
+      },
+      "results": [
+        {
+          "entry": "0x402520",
+          "mode": "oracle",
+          "implant": null,
+          "verdict": "trap",
+          "detail": "memory access out of bounds"
+        }
+      ]
+    },
+    {
+      "command": "case",
+      "argv": [
+        "--entry",
+        "0x45fc90",
+        "--mode",
+        "oracle",
+        "--trace",
+        "8",
+        "--out",
+        "H:\\code\\thp\\docs\\porting\\oracle-engine-acceptance.json"
+      ],
+      "cases": 1,
+      "tally": {
+        "ok": 1
+      },
+      "results": [
+        {
+          "entry": "0x45fc90",
+          "mode": "oracle",
+          "implant": null,
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        }
+      ]
+    },
+    {
+      "command": "case",
+      "argv": [
+        "--entry",
+        "0x4600a0",
+        "--mode",
+        "oracle",
+        "--trace",
+        "8",
+        "--out",
+        "H:\\code\\thp\\docs\\porting\\oracle-engine-acceptance.json"
+      ],
+      "cases": 1,
+      "tally": {
+        "ok": 1
+      },
+      "results": [
+        {
+          "entry": "0x4600a0",
+          "mode": "oracle",
+          "implant": null,
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        }
+      ]
+    },
+    {
+      "command": "case",
+      "argv": [
+        "--entry",
+        "0x44bf6a",
+        "--mode",
+        "oracle",
+        "--trace",
+        "8",
+        "--out",
+        "H:\\code\\thp\\docs\\porting\\oracle-engine-acceptance.json"
+      ],
+      "cases": 1,
+      "tally": {
+        "ok": 1
+      },
+      "results": [
+        {
+          "entry": "0x44bf6a",
+          "mode": "oracle",
+          "implant": null,
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        }
+      ]
+    },
+    {
+      "command": "case",
+      "argv": [
+        "--entry",
+        "0x460fe0",
+        "--mode",
+        "oracle",
+        "--trace",
+        "8",
+        "--out",
+        "H:\\code\\thp\\docs\\porting\\oracle-engine-acceptance.json"
+      ],
+      "cases": 1,
+      "tally": {
+        "ok": 1
+      },
+      "results": [
+        {
+          "entry": "0x460fe0",
+          "mode": "oracle",
+          "implant": null,
+          "verdict": "ok",
+          "detail": "eip=0x7f00000"
+        }
+      ]
+    },
+    {
+      "command": "case",
+      "argv": [
+        "--entry",
+        "0x4610d0",
+        "--mode",
+        "oracle",
+        "--trace",
+        "8",
+        "--out",
+        "H:\\code\\thp\\docs\\porting\\oracle-engine-acceptance.json"
+      ],
+      "cases": 1,
+      "tally": {
+        "guest": 1
+      },
+      "results": [
+        {
+          "entry": "0x4610d0",
+          "mode": "oracle",
+          "implant": null,
+          "verdict": "guest",
+          "detail": "Unicorn.js: Function uc_emu_start failed with code 7:"
+        }
+      ]
+    }
+  ]
+}

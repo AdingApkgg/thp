@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "title": 16,
+  "completeGame": false,
+  "cases": 4320,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "d8a8daa081308a2dbbb5190239fbb69160c4d6205d90f3b232d4f4c88feb7bf8",
+  "maxError": 0,
+  "scope": "Full444e10 and444b20 execute, native445ed0/446200/447450 execute. Both families, main script+5/season raw, option offsets, focus bits, beam cache, RNG, damage rectangle initialization and timer, allocation cursor wrap, callbacks0/1/2/4 and controlled rejection cleanup, beam sound20/period1/width0/shot flag clear, Cirno source callback2, raw-angle VM rotation flag80, positional sound24 and final world position. Native ANM406380/lookup/delete and audio are controlled boundaries. Float tolerances4e-5 only propagate native x87 trig differences. Native pool exhaustion, subsequent movement/collision and full gameplay excluded.",
+  "sourceHashes": {
+    "tests/cpp/th16-shot-factory-fixture.cpp": "b0001f23fb55f5131b8001b47c27682813b4b2b9127834c49711b58c998f41ac",
+    "cpp/game/ShotTh16.cpp": "d21f06e33178d3d76e8bb9afe40ca993addfc450d3c311be259a23b30fddfab8",
+    "cpp/game/ShotTh16.hpp": "3a134eacfc91d22ce4bbb6ea9996a16852a05ab679d7a050b7377931274cd980",
+    "cpp/game/ShotTh16Production.cpp": "03d92bb69a780771ec144f0cacc8fa87282db6e0e35ab5dde68576fc78179e95",
+    "cpp/game/ShtResource.cpp": "d3c3eb0103f4ea9eee6468c863a3ad8e9abb871f3245091290701ecb03161c9b",
+    "cpp/game/AnmManager.cpp": "960f9e04f62810bc5a593859a6df235b2fe9a24ca93ee4e598423bf7eef538a8"
+  },
+  "toolHashes": {
+    "tools/th16-shot-factory-native.py": "85200a04f48b5f3e82a586bae5551a6d9b71c3e8329785fc92a554214d19fac2",
+    "tools/th16-shot-factory-check.mjs": "9c0c531f6b9620e9c60cdbf8b2e19d2ef196cf3250b10b32cc2761a4488a5d3b"
+  }
+}

@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {createHash} from 'node:crypto';
+const root=resolve(import.meta.dirname,'..'),build=JSON.parse(readFileSync(resolve(root,'runtimes/th14/th14_web/artifacts/sdl3/build.json'),'utf8')),sha=b=>createHash('sha256').update(b).digest('hex');
+assert.equal(build.sha256,'1b5a49955c741606d703902936ab1227b4db04c0819e6139a9f96f967b8d2ee2');
+for(const [path,hash] of Object.entries(build.sources))assert.equal(sha(readFileSync(resolve(root,'runtimes/th12',path))),hash,path);
+const screenshots=['overview','locked-confirm','return-partner','return-title'].map(n=>`artifacts/th14/browser-practice-${n}-oct11.jpg`);for(const path of screenshots)assert.ok(readFileSync(resolve(root,path)).length>10000);
+writeFileSync(resolve(root,'artifacts/th14/sdl-title-practice-browser-build-oct11.json'),JSON.stringify(build,null,2)+'\n');
+writeFileSync(resolve(root,'docs/porting/th14-browser-title-practice-verified-oct11.json'),JSON.stringify({passed:true,completeGame:false,nativeEquivalent:false,url:'http://127.0.0.1:8132/',wasmSha256:build.sha256,bytes:build.bytes,sourceHashesVerified:Object.keys(build.sources).length,checks:['Normal/ReimuA via actual Practice Start/difficulty/player/weapon pages','Stage Select102 and six locked rows at original x320/y192+18n','Up wraps stage1 to stage6; confirm locked stage remains in selector','cancel returns to weapon, subsequent cancels return via player/rank to main with Practice Start selected'],screenshots,logs:'artifacts/th14/browser-practice-logs-oct11.json',build:'artifacts/th14/sdl-title-practice-browser-build-oct11.json',scope:'Actual formal browser and real keyboard/original resources; persisted practice flags all locked. No hidden unlock or artificial Clear. Successful practice request/numeric keys are controlled native/production checks, not browser gameplay proof. No original GPU/audio/full-game equivalence.'},null,2)+'\n');console.log(`PASS ${Object.keys(build.sources).length} SDL source hashes; Practice browser evidence recorded`);

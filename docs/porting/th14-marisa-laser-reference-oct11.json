@@ -1,0 +1,23 @@
+{
+  "reference": "https://github.com/touhouworldcup/thprac/blob/585fae1aad4b720f350655a44e3f2ec7fc0dfa25/thprac/src/thprac/thprac_th14.cpp",
+  "commit": "585fae1aad4b720f350655a44e3f2ec7fc0dfa25",
+  "sourceSha256": "c5a1e456b2174bb7b941bcf8126cf610e73b66b804d3cfba28ba2d1de8a85ec0",
+  "license": "MIT",
+  "licenseFile": "artifacts/th14/thprac-reference-LICENCE-oct11.txt",
+  "licenseSha256": "1056dbd420e0889f5bb9479f82b38bcfded26443d1107f2f4ea299d2f3eb8158",
+  "findings": {
+    "nativeHook": "45286f",
+    "scratch": "ESP+2c",
+    "records": [
+      "stage",
+      "frame",
+      "ordinal",
+      "float value",
+      "manual correction"
+    ],
+    "recordingBehavior": "THMarisaLaser logs the runtime scratch float and substitutes a saved/corrected value on matching stage/frame/ordinal during playback.",
+    "relationToPort": "Same native branch as production shot_th14_beam_hit fixed-zero fallback. Independent project confirms replay nondeterminism is addressed by recording runtime scratch rather than a universal geometric formula.",
+    "limitation": "Reference only; no thprac patch applied to original or imported into production. A zero-length result for one captured negative-scratch path does not prove arbitrary positive/nonfinite original scratch states or unmodified replay equivalence."
+  },
+  "nativeEquivalent": false
+}

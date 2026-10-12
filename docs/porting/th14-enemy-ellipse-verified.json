@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "timelines": 408,
+  "frames": 32346,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "528a6690ab37d76be6be1a7050cff6523a701c0a831749e7ed655c8571e28293",
+  "sourceHashes": {
+    "cpp/game/EnemyTh14Commands.cpp": "d3a9f5133d733ea5bdb5cca2bd4bd0808f00f40ca195977486384378f19f41cc",
+    "cpp/game/EnemyState.cpp": "fbec31724649179e9772b17e0aa445070ae52264a70b07e1d7960ae0ca899bfb",
+    "cpp/game/EnemyState.hpp": "e6d8e0faab8e6c1ed60fb4e78dea7b42e292c7568baf95139771b6cc1523b60f",
+    "cpp/game/Interpolation.cpp": "57cd2806a28109745084fb2079edee055322ff3fd044f75fc4e4ec3305add125",
+    "cpp/game/Interpolation.hpp": "edbabf98f0aa2441bc725138d9fb6ff4908142998836ec3e3fc1c1f198e1d689",
+    "cpp/game/Movement.cpp": "ea823e71f48f15d1d5e038c4fa62b6a4dfcaa31b087ebc183e42ef2dd439cccb",
+    "tests/cpp/th14-enemy-ellipse-fixture.cpp": "5b997245cc0757f12d62a97976511d5f8ae9030fb8d82e5c121ec67d36a9f8f7",
+    "tests/cpp/th14-enemy-orbit-fixture.cpp": "531034035badfbc9a16fda81c4c2ca9d2abc19dab3e8ae205a45dfaab6ea7147",
+    "tests/cpp/th14-enemy-movement-fixture.cpp": "27978ab051a703d7ae482fb0a7e8af38d8f44594cded54a1c42371a5201a53ad"
+  },
+  "toolHashes": {
+    "tools/th14-enemy-ellipse-native.py": "03687ae20622ca382c333df0e2ee56068b58db3ae759daf421336e40ed1c7969",
+    "tools/th14-enemy-ellipse-check.mjs": "9c7aed0186e56045f7c8466fbbdbef554a9462ef39bf630293b233b9e8c3ca65"
+  },
+  "scope": "Actual retail 426eee 421/423 setters and complete 4230d0 movement, scalar speed, paired radius/radial and dormant ellipse bands. Modes 0..31 plus -1/80 default behavior; negative/zero/positive durations, sentinel endpoints, movement nibbles, clamp/mirror/camera and rates 0.5/1/1.25. Zero BSS default tangents. Arguments and ANM lookup controlled. Native ellipse clocks remain configured without being sampled by 4230d0. Mode 4, independent angle bands, GPU and complete campaign excluded."
+}

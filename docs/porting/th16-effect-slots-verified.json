@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "title": 16,
+  "completeGame": false,
+  "timelines": 192,
+  "nativeCalls": 3072,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "scope": "Whole40e6c0 over valid cursor0..1023: following empty/live slot returns previous cursor; stale IDs cleared while scanning, wrap,1024-stale exhaustion and ordered VM lookup calls. Six initial table patterns, four cursors, eight seeds,16 registrations each. VM lookup controlled; table writes model446d36 and production beam hit calls own chooser. Other effect registration callers, disposal, full ANM lifecycle and full game excluded.",
+  "wasmSha256": "e01619de191c7ebdd4d0f1e0c1490e8b1933b7b8156544d33725cb87c3826632",
+  "sourceHashes": {
+    "cpp/game/EffectTh16Slots.cpp": "f750e65d6e16430395ff14e7ddad00172a95c7415b0095dbd8313748688c4343",
+    "cpp/game/EffectTh16Slots.hpp": "00daae745fe7a424397a063e33d6d0b6dd9af4f97f2649b7a1d71bf043c2e269",
+    "cpp/game/ShotTh16Production.cpp": "5ada004abe3fe6dba4c4621b8fc0c63224adcbdfe5a1904c35d1015e5ad05814",
+    "cpp/game/ShotManager.hpp": "bf561cd0be5e65d3cb192d2ab615394adbb7988c3ea08a73f7d1c26816bca71d",
+    "cpp/game/GameBattle.hpp": "1e7677515e1d92d3eb790cc478d28a30e57e9f02fa1d3c7a4ecbf321f5e25956",
+    "tests/cpp/th16-effect-slots-fixture.cpp": "b29cd8feac11499210bc71c632f1da2c161534f19895aa0e119522a830beaa95"
+  }
+}

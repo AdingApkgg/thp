@@ -1,0 +1,2885 @@
+{
+  "passed": false,
+  "classedOutComparisons": 520,
+  "nonzeroStatusesByOpcode": [],
+  "positionMismatchOpcodes": [],
+  "positionPairs": [
+    {
+      "advance_to_portDelta": "12 -> 12",
+      "cases": 4124
+    },
+    {
+      "advance_to_portDelta": "16 -> 16",
+      "cases": 40
+    }
+  ],
+  "scope": "The context after each handler, at the next dispatch boundary. The native layout is TH16's own, so the mapping from its slots to port offsets is derived from the cases, not declared. No renderer and no complete-game equivalence is claimed.",
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "nativeCases": 5640,
+  "nativeCoverage": "every real handler",
+  "nativeRealHandlers": 134,
+  "skippedFaultedCases": 956,
+  "nativeOpcodes": 141,
+  "measuredConstants": {
+    "loop": "0x45fb9a",
+    "cookie": "0x47499b",
+    "snapshot": 1792,
+    "positionSlot": 40,
+    "defaultHandler": "0x4629c8",
+    "entries": 529,
+    "measuredFrom": "th16.exe",
+    "coverage": "every real handler"
+  },
+  "derivedMapping": [
+    {
+      "nativeSlot": "0x18",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x1c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x28",
+      "distinctValues": 13,
+      "candidates": [
+        {
+          "port": "delta",
+          "kind": "delta",
+          "shift": 1879056384,
+          "where": "plain fall-through",
+          "classedOut": 520
+        }
+      ]
+    },
+    {
+      "nativeSlot": "0x2c",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x30",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x38",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x3c",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x44",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x48",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x50",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x54",
+      "distinctValues": 12,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x58",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x5c",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x60",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x64",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x68",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x6c",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x70",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x74",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x80",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x84",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0xa4",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0xc8",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0xd8",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0xdc",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0xe0",
+      "distinctValues": 12,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x120",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x130",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x134",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x138",
+      "distinctValues": 9,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x140",
+      "distinctValues": 8,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x150",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x160",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x164",
+      "distinctValues": 18,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x168",
+      "distinctValues": 9,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x1a8",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x1b8",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x1bc",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x1c0",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x1d8",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x1e8",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x1ec",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x1f0",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x21c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x22c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x230",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x234",
+      "distinctValues": 9,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x260",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x270",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x274",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x278",
+      "distinctValues": 9,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x2a4",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x2b4",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x2b8",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x2bc",
+      "distinctValues": 9,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x2fc",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x30c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x310",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x314",
+      "distinctValues": 9,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x32c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x33c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x340",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x344",
+      "distinctValues": 9,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x35c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x36c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x370",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x374",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x38c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x39c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x3a0",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x3a4",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x3c8",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x3cc",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x4a0",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x4ac",
+      "distinctValues": 10,
+      "candidates": [
+        {
+          "port": "word+0x3b4",
+          "kind": "word"
+        }
+      ]
+    },
+    {
+      "nativeSlot": "0x4b0",
+      "distinctValues": 10,
+      "candidates": [
+        {
+          "port": "word+0x3b8",
+          "kind": "word"
+        }
+      ]
+    },
+    {
+      "nativeSlot": "0x520",
+      "distinctValues": 23,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x524",
+      "distinctValues": 23,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x530",
+      "distinctValues": 36,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x534",
+      "distinctValues": 25,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x540",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x544",
+      "distinctValues": 10,
+      "candidates": [
+        {
+          "port": "word+0x5c",
+          "kind": "word"
+        }
+      ]
+    },
+    {
+      "nativeSlot": "0x548",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x550",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x5c4",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x5c8",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x5cc",
+      "distinctValues": 3,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x5d0",
+      "distinctValues": 3,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x5d4",
+      "distinctValues": 3,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x5d8",
+      "distinctValues": 2,
+      "candidates": []
+    }
+  ],
+  "derivedArrangement": {
+    "slots": [
+      "0x530",
+      "0x534"
+    ],
+    "changingNativeBits": 46,
+    "bitsWithARow": 36,
+    "settledByOneBit": 35,
+    "settledByTwoBits": 1,
+    "credibleBits": 24,
+    "credibleFromFlagChannels": 18,
+    "ambiguousBits": 12,
+    "ambiguousRows": [
+      "0x530:3",
+      "0x530:7",
+      "0x530:8",
+      "0x530:11",
+      "0x530:12",
+      "0x530:25",
+      "0x530:26",
+      "0x530:27",
+      "0x530:28",
+      "0x530:29",
+      "0x530:30",
+      "0x534:0"
+    ],
+    "unsettledBits": 10,
+    "unsettled": [
+      {
+        "slot": "0x530",
+        "nativeBit": 21,
+        "opcodes": []
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 22,
+        "opcodes": []
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 23,
+        "opcodes": []
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 24,
+        "opcodes": []
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 1,
+        "opcodes": []
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 2,
+        "opcodes": []
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 3,
+        "opcodes": []
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 4,
+        "opcodes": []
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 16,
+        "opcodes": []
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 19,
+        "opcodes": []
+      }
+    ],
+    "channelsUsed": {
+      "flags": 15,
+      "live": 1,
+      "timer fractional": 13,
+      "title flags": 3,
+      "flags2": 11
+    },
+    "rows": [
+      {
+        "slot": "0x530",
+        "nativeBit": 0,
+        "kind": "two",
+        "byOpcode": [
+          {
+            "op": 310,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 0
+              },
+              {
+                "channel": "live",
+                "portBit": 0
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags",
+          "live"
+        ]
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 1,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 316,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "timer fractional"
+        ]
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 2,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 401,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 410,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 411,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "timer fractional"
+        ]
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 3,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 308,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 309,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 402,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 412,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 434,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 435,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "timer fractional"
+        ]
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 4,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 429,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 430,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "timer fractional"
+        ]
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 5,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 303,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 5
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 6,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 303,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 6
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 7,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 303,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 7
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 8,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 303,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 7
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 11,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 308,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "timer fractional"
+        ]
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 12,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 309,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "timer fractional"
+        ]
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 13,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 305,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 13
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 15,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 306,
+            "sources": [
+              {
+                "channel": "title flags",
+                "portBit": 15
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "title flags"
+        ]
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 17,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 413,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 414,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 423,
+            "sources": [
+              {
+                "channel": "title flags",
+                "portBit": 17
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "timer fractional",
+          "title flags"
+        ]
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 18,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 423,
+            "sources": [
+              {
+                "channel": "title flags",
+                "portBit": 18
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "title flags"
+        ]
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 25,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 302,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 25
+              }
+            ]
+          },
+          {
+            "op": 604,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 607,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 611,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 612,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags",
+          "timer fractional"
+        ]
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 26,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 302,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 26
+              }
+            ]
+          },
+          {
+            "op": 605,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 608,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 611,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 612,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 613,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags",
+          "timer fractional"
+        ]
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 27,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 302,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 27
+              }
+            ]
+          },
+          {
+            "op": 606,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 607,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 608,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags",
+          "timer fractional"
+        ]
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 28,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 302,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 27
+              }
+            ]
+          },
+          {
+            "op": 612,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 613,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags",
+          "timer fractional"
+        ]
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 29,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 302,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 29
+              }
+            ]
+          },
+          {
+            "op": 603,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 604,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 605,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 606,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 607,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 608,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 611,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 612,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 613,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags",
+          "timer fractional"
+        ]
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 30,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 312,
+            "sources": [
+              {
+                "channel": "flags2",
+                "portBit": 9
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags2"
+        ]
+      },
+      {
+        "slot": "0x530",
+        "nativeBit": 31,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 312,
+            "sources": [
+              {
+                "channel": "flags2",
+                "portBit": 10
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags2"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 0,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 312,
+            "sources": [
+              {
+                "channel": "flags2",
+                "portBit": 9
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags2"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 7,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 424,
+            "sources": [
+              {
+                "channel": "flags2",
+                "portBit": 6
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags2"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 8,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 431,
+            "sources": [
+              {
+                "channel": "flags2",
+                "portBit": 7
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags2"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 9,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 432,
+            "sources": [
+              {
+                "channel": "flags2",
+                "portBit": 8
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags2"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 10,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 307,
+            "sources": [
+              {
+                "channel": "flags2",
+                "portBit": 9
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags2"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 11,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 311,
+            "sources": [
+              {
+                "channel": "flags2",
+                "portBit": 10
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags2"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 13,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 419,
+            "sources": [
+              {
+                "channel": "flags2",
+                "portBit": 12
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags2"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 18,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 304,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 18
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 20,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 313,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 4
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 21,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 313,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 5
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 22,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 313,
+            "sources": [
+              {
+                "channel": "flags",
+                "portBit": 6
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 23,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 314,
+            "sources": [
+              {
+                "channel": "flags2",
+                "portBit": 22
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags2"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 24,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 415,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 416,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 425,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          },
+          {
+            "op": 426,
+            "sources": [
+              {
+                "channel": "timer fractional",
+                "portBit": 0
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "timer fractional"
+        ]
+      },
+      {
+        "slot": "0x534",
+        "nativeBit": 25,
+        "kind": "one",
+        "byOpcode": [
+          {
+            "op": 315,
+            "sources": [
+              {
+                "channel": "flags2",
+                "portBit": 24
+              }
+            ]
+          }
+        ],
+        "channels": [
+          "flags2"
+        ]
+      }
+    ],
+    "reading": "a bit is settled when one port channel bit reproduces its change in every case of the opcode that writes it, or when a pair of bits does; it is credible when the source bit is not also claimed by another native bit of that opcode"
+  },
+  "unmappedSlots": [
+    {
+      "nativeSlot": "0x18",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x1c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x2c",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x30",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x38",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x3c",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x44",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x48",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x50",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x54",
+      "distinctValues": 12,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x58",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x5c",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x60",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x64",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x68",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x6c",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x70",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x74",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x80",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x84",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0xa4",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0xc8",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0xd8",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0xdc",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0xe0",
+      "distinctValues": 12,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x120",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x130",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x134",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x138",
+      "distinctValues": 9,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x140",
+      "distinctValues": 8,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x150",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x160",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x164",
+      "distinctValues": 18,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x168",
+      "distinctValues": 9,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x1a8",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x1b8",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x1bc",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x1c0",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x1d8",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x1e8",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x1ec",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x1f0",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x21c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x22c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x230",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x234",
+      "distinctValues": 9,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x260",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x270",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x274",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x278",
+      "distinctValues": 9,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x2a4",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x2b4",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x2b8",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x2bc",
+      "distinctValues": 9,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x2fc",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x30c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x310",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x314",
+      "distinctValues": 9,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x32c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x33c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x340",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x344",
+      "distinctValues": 9,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x35c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x36c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x370",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x374",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x38c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x39c",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x3a0",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x3a4",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x3c8",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x3cc",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x4a0",
+      "distinctValues": 11,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x520",
+      "distinctValues": 23,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x524",
+      "distinctValues": 23,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x530",
+      "distinctValues": 36,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x534",
+      "distinctValues": 25,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x540",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x548",
+      "distinctValues": 10,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x550",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x5c4",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x5c8",
+      "distinctValues": 2,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x5cc",
+      "distinctValues": 3,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x5d0",
+      "distinctValues": 3,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x5d4",
+      "distinctValues": 3,
+      "candidates": []
+    },
+    {
+      "nativeSlot": "0x5d8",
+      "distinctValues": 2,
+      "candidates": []
+    }
+  ],
+  "nearestNamedMemberPerUnmappedSlot": [
+    {
+      "nativeSlot": "0x18",
+      "closestMember": "flags",
+      "differingCases": 276,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x1c",
+      "closestMember": "flags2",
+      "differingCases": 411,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x2c",
+      "closestMember": "title flags",
+      "differingCases": 104,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x30",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x38",
+      "closestMember": "title flags",
+      "differingCases": 104,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x3c",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x44",
+      "closestMember": "title flags",
+      "differingCases": 104,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x48",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x50",
+      "closestMember": "title flags",
+      "differingCases": 144,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x54",
+      "closestMember": "title flags",
+      "differingCases": 146,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x58",
+      "closestMember": "title flags",
+      "differingCases": 104,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x5c",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x60",
+      "closestMember": "integer 0",
+      "differingCases": 4662,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x64",
+      "closestMember": "integer 1",
+      "differingCases": 4644,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x68",
+      "closestMember": "title flags",
+      "differingCases": 104,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x6c",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x70",
+      "closestMember": "title flags",
+      "differingCases": 408,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x74",
+      "closestMember": "title flags",
+      "differingCases": 346,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x80",
+      "closestMember": "title flags",
+      "differingCases": 104,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x84",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0xa4",
+      "closestMember": "title flags",
+      "differingCases": 146,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0xc8",
+      "closestMember": "title flags",
+      "differingCases": 226,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0xd8",
+      "closestMember": "title flags",
+      "differingCases": 226,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0xdc",
+      "closestMember": "title flags",
+      "differingCases": 218,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0xe0",
+      "closestMember": "title flags",
+      "differingCases": 226,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x120",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x130",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x134",
+      "closestMember": "title flags",
+      "differingCases": 104,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x138",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x140",
+      "closestMember": "title flags",
+      "differingCases": 102,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x150",
+      "closestMember": "title flags",
+      "differingCases": 146,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x160",
+      "closestMember": "title flags",
+      "differingCases": 146,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x164",
+      "closestMember": "title flags",
+      "differingCases": 144,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x168",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x1a8",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x1b8",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x1bc",
+      "closestMember": "title flags",
+      "differingCases": 104,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x1c0",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x1d8",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x1e8",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x1ec",
+      "closestMember": "title flags",
+      "differingCases": 104,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x1f0",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x21c",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x22c",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x230",
+      "closestMember": "title flags",
+      "differingCases": 104,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x234",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x260",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x270",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x274",
+      "closestMember": "title flags",
+      "differingCases": 104,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x278",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x2a4",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x2b4",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x2b8",
+      "closestMember": "title flags",
+      "differingCases": 104,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x2bc",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x2fc",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x30c",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x310",
+      "closestMember": "title flags",
+      "differingCases": 104,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x314",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x32c",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x33c",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x340",
+      "closestMember": "title flags",
+      "differingCases": 104,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x344",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x35c",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x36c",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x370",
+      "closestMember": "title flags",
+      "differingCases": 104,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x374",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x38c",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x39c",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x3a0",
+      "closestMember": "title flags",
+      "differingCases": 104,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x3a4",
+      "closestMember": "title flags",
+      "differingCases": 106,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x3c8",
+      "closestMember": "title flags",
+      "differingCases": 104,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x3cc",
+      "closestMember": "title flags",
+      "differingCases": 104,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x4a0",
+      "closestMember": "title flags",
+      "differingCases": 146,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x520",
+      "closestMember": "title flags",
+      "differingCases": 142,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x524",
+      "closestMember": "title flags",
+      "differingCases": 142,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x530",
+      "closestMember": "title flags",
+      "differingCases": 1126,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x534",
+      "closestMember": "title flags",
+      "differingCases": 680,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x540",
+      "closestMember": "title flags",
+      "differingCases": 332,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x548",
+      "closestMember": "title flags",
+      "differingCases": 104,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x550",
+      "closestMember": "title flags",
+      "differingCases": 332,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x5c4",
+      "closestMember": "title flags",
+      "differingCases": 68,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x5c8",
+      "closestMember": "title flags",
+      "differingCases": 68,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x5cc",
+      "closestMember": "title flags",
+      "differingCases": 70,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x5d0",
+      "closestMember": "title flags",
+      "differingCases": 70,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x5d4",
+      "closestMember": "title flags",
+      "differingCases": 70,
+      "ofCases": 4684
+    },
+    {
+      "nativeSlot": "0x5d8",
+      "closestMember": "title flags",
+      "differingCases": 68,
+      "ofCases": 4684
+    }
+  ],
+  "pointerInstallClass": {
+    "derivedFrom": "oracle advances",
+    "opcodes": [
+      201,
+      202,
+      203,
+      204,
+      205,
+      206,
+      207,
+      208,
+      209,
+      210,
+      211,
+      212,
+      213
+    ]
+  },
+  "positionClaim": "the position is the port's delta for every opcode that falls through; the pointer-install class above is excluded and counted",
+  "differencesByDescriptor": [],
+  "comparisons": 18216,
+  "differences": 0,
+  "firstDifferences": [],
+  "wasmSha256": "e6dc3e12764dba251da300647723d17a9df7e6270a0043217595b7bdd7440cc1",
+  "resources": [
+    {
+      "name": "ascii.anm",
+      "result": 20,
+      "sprites": 293
+    },
+    {
+      "name": "ascii_960.anm",
+      "result": 20,
+      "sprites": 293
+    },
+    {
+      "name": "ascii_1280.anm",
+      "result": 20,
+      "sprites": 293
+    },
+    {
+      "name": "bullet.anm",
+      "result": 324,
+      "sprites": 580
+    },
+    {
+      "name": "effect.anm",
+      "result": 198,
+      "sprites": 580
+    },
+    {
+      "name": "enemy.anm",
+      "result": 172,
+      "sprites": 580
+    },
+    {
+      "name": "front.anm",
+      "result": 248,
+      "sprites": 580
+    },
+    {
+      "name": "help.anm",
+      "result": 10,
+      "sprites": 580
+    },
+    {
+      "name": "pl00.anm",
+      "result": 27,
+      "sprites": 580
+    },
+    {
+      "name": "pl01.anm",
+      "result": 36,
+      "sprites": 580
+    },
+    {
+      "name": "pl02.anm",
+      "result": 17,
+      "sprites": 580
+    },
+    {
+      "name": "pl03.anm",
+      "result": 23,
+      "sprites": 580
+    },
+    {
+      "name": "pl00sub.anm",
+      "result": 5,
+      "sprites": 580
+    },
+    {
+      "name": "pl01sub.anm",
+      "result": 22,
+      "sprites": 580
+    },
+    {
+      "name": "pl02sub.anm",
+      "result": 5,
+      "sprites": 580
+    },
+    {
+      "name": "pl03sub.anm",
+      "result": 5,
+      "sprites": 580
+    },
+    {
+      "name": "pl04sub.anm",
+      "result": 5,
+      "sprites": 580
+    },
+    {
+      "name": "sig.anm",
+      "result": 2,
+      "sprites": 580
+    },
+    {
+      "name": "text.anm",
+      "result": 74,
+      "sprites": 580
+    },
+    {
+      "name": "title.anm",
+      "result": 287,
+      "sprites": 580
+    },
+    {
+      "name": "title_v.anm",
+      "result": 1,
+      "sprites": 580
+    },
+    {
+      "name": "st01logo.anm",
+      "result": 7,
+      "sprites": 580
+    },
+    {
+      "name": "st01enm.anm",
+      "result": 18,
+      "sprites": 580
+    },
+    {
+      "name": "st01wl.anm",
+      "result": 4,
+      "sprites": 580
+    },
+    {
+      "name": "st02logo.anm",
+      "result": 7,
+      "sprites": 580
+    },
+    {
+      "name": "st02enm.anm",
+      "result": 20,
+      "sprites": 580
+    },
+    {
+      "name": "st02wl.anm",
+      "result": 5,
+      "sprites": 580
+    },
+    {
+      "name": "st03logo.anm",
+      "result": 7,
+      "sprites": 580
+    },
+    {
+      "name": "st03enm.anm",
+      "result": 21,
+      "sprites": 580
+    },
+    {
+      "name": "st03wl.anm",
+      "result": 4,
+      "sprites": 580
+    },
+    {
+      "name": "st04logo.anm",
+      "result": 7,
+      "sprites": 580
+    },
+    {
+      "name": "st04enm.anm",
+      "result": 21,
+      "sprites": 580
+    },
+    {
+      "name": "st04wl.anm",
+      "result": 3,
+      "sprites": 580
+    },
+    {
+      "name": "st05logo.anm",
+      "result": 7,
+      "sprites": 580
+    },
+    {
+      "name": "st05enm.anm",
+      "result": 22,
+      "sprites": 580
+    },
+    {
+      "name": "st05enm2.anm",
+      "result": 9,
+      "sprites": 580
+    },
+    {
+      "name": "st05wl.anm",
+      "result": 13,
+      "sprites": 580
+    },
+    {
+      "name": "st06logo.anm",
+      "result": 7,
+      "sprites": 580
+    },
+    {
+      "name": "st06enm.anm",
+      "result": 23,
+      "sprites": 580
+    },
+    {
+      "name": "st06wl.anm",
+      "result": 27,
+      "sprites": 580
+    },
+    {
+      "name": "st07logo.anm",
+      "result": 7,
+      "sprites": 580
+    },
+    {
+      "name": "st07enm.anm",
+      "result": 21,
+      "sprites": 580
+    },
+    {
+      "name": "st07enm2.anm",
+      "result": 14,
+      "sprites": 580
+    },
+    {
+      "name": "st07enm3.anm",
+      "result": 12,
+      "sprites": 580
+    },
+    {
+      "name": "st07wl.anm",
+      "result": 13,
+      "sprites": 580
+    },
+    {
+      "name": "e01.anm",
+      "result": 9,
+      "sprites": 580
+    },
+    {
+      "name": "e02.anm",
+      "result": 9,
+      "sprites": 580
+    },
+    {
+      "name": "e03.anm",
+      "result": 9,
+      "sprites": 580
+    },
+    {
+      "name": "e04.anm",
+      "result": 9,
+      "sprites": 580
+    },
+    {
+      "name": "e05.anm",
+      "result": 9,
+      "sprites": 580
+    },
+    {
+      "name": "e06.anm",
+      "result": 9,
+      "sprites": 580
+    },
+    {
+      "name": "e07.anm",
+      "result": 9,
+      "sprites": 580
+    },
+    {
+      "name": "e08.anm",
+      "result": 9,
+      "sprites": 580
+    },
+    {
+      "name": "staff.anm",
+      "result": 37,
+      "sprites": 580
+    }
+  ],
+  "sourceHashes": {
+    "cpp/game/AnmInterpreter.cpp": "253d92d37ca8c0b7943a8e50f672b5cbbdef8808d4cdac71746eb55bfd605509",
+    "cpp/game/AnmVm.cpp": "ddf923bf1cc8d71b0bdf6f91a54b4b40f723d5a3023b295f2a8e0e833dcf5ad4",
+    "cpp/game/AnmGeometry.cpp": "876273a619274307c37a94faf74dce6948778f0f61cb32d344f447b35490fed5",
+    "cpp/game/Interpolation.cpp": "9524503fbad2810764253db4f56bd96c20551c24c6365932ba46cce169d84527",
+    "cpp/game/AnmResource.cpp": "ca6f5dbff0e5a5f8b6980354faf7165626a33cb7f88399987c8b573b30588947",
+    "cpp/game/AnmOpcodes.hpp": "5d63adde0beec027b466f7cba70127c69501c16a3ba2bb6eaf35cc8d23e84c8e",
+    "cpp/game/AnmVm.hpp": "975c4f4bc7cd9644b4bc627c1a20689f64de3c38569ce8593a864bf48349937d",
+    "cpp/game/AnmResource.hpp": "52e5699227e781dcc5048a1c2ec56de424dfc969ae344f278c07b84efad5b085",
+    "cpp/game/AnmGeometry.hpp": "57094d2208e31f9b5e934b019792a23d1ac40d3a088ecb5180a531737bf82787",
+    "cpp/game/Interpolation.hpp": "edbabf98f0aa2441bc725138d9fb6ff4908142998836ec3e3fc1c1f198e1d689",
+    "cpp/game/Timer.hpp": "e07169289db2407ce57c4191343ad6c9a5e3b2d543898439326520cfe1723ddb",
+    "cpp/game/Rng.hpp": "3865a40f2ec26f6462f5daa52e7bc8b7e5f42f2c3f6c88d0bfcf3d6c154f4d9b",
+    "cpp/game/Types.hpp": "f79c1ed7cb200413ef0dea75bf0d58842745b6b47182a97e496733c1d7bb2669",
+    "cpp/game/PortTitle.hpp": "5531b9b0a2364098ec023e09eddbf66907c392fb58a24e1a84c5bf7a9a033d2f",
+    "tests/cpp/th16-anm-fixture.cpp": "b9a6a12c40a56713024adc391e07dc800ad7edb581642e95da3f89f8dc65aaaa"
+  },
+  "toolHashes": {
+    "tools/th16-anm-native.py": "211890c01f3448e870637351413e7f022ef77c56dd59134d94cb4a631f0328b6",
+    "tools/th16-anm-check.mjs": "b7e820a6519fbea0c063e46f77e21f18a839c6e70c2e85ed5bf8dfe51a0cdfca",
+    "tools/th-anm-handlers.py": "15f693b2cb7062705864c0a0c9d9bb9c7d1fcf8daeb8ff2dcf7630d7a6a459db"
+  }
+}

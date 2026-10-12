@@ -1,0 +1,112 @@
+{
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "regions": [
+    {
+      "start": "0x4327cd",
+      "stop": "0x4327d7",
+      "bytes": "6a02ff7760e8d9c90400",
+      "instructions": [
+        {
+          "address": "0x4327cd",
+          "instruction": "push 2"
+        },
+        {
+          "address": "0x4327cf",
+          "instruction": "push dword ptr [edi + 0x60]"
+        },
+        {
+          "address": "0x4327d2",
+          "instruction": "call 0x47f1b0"
+        }
+      ]
+    },
+    {
+      "start": "0x4329d8",
+      "stop": "0x4329e2",
+      "bytes": "6a02ff7764e971fbffff",
+      "instructions": [
+        {
+          "address": "0x4329d8",
+          "instruction": "push 2"
+        },
+        {
+          "address": "0x4329da",
+          "instruction": "push dword ptr [edi + 0x64]"
+        },
+        {
+          "address": "0x4329dd",
+          "instruction": "jmp 0x432553"
+        }
+      ]
+    },
+    {
+      "start": "0x432553",
+      "stop": "0x432558",
+      "bytes": "e8e8cb0400",
+      "instructions": [
+        {
+          "address": "0x432553",
+          "instruction": "call 0x47f140"
+        }
+      ]
+    },
+    {
+      "start": "0x43292b",
+      "stop": "0x432935",
+      "bytes": "6a02ff7758e87bc80400",
+      "instructions": [
+        {
+          "address": "0x43292b",
+          "instruction": "push 2"
+        },
+        {
+          "address": "0x43292d",
+          "instruction": "push dword ptr [edi + 0x58]"
+        },
+        {
+          "address": "0x432930",
+          "instruction": "call 0x47f1b0"
+        }
+      ]
+    },
+    {
+      "start": "0x432b31",
+      "stop": "0x432b3b",
+      "bytes": "6a02ff775ce875c60400",
+      "instructions": [
+        {
+          "address": "0x432b31",
+          "instruction": "push 2"
+        },
+        {
+          "address": "0x432b33",
+          "instruction": "push dword ptr [edi + 0x5c]"
+        },
+        {
+          "address": "0x432b36",
+          "instruction": "call 0x47f1b0"
+        }
+      ]
+    }
+  ],
+  "counterexample": {
+    "input": [
+      4,
+      3,
+      0,
+      1
+    ],
+    "frame": 364,
+    "vm": 3,
+    "script": 1,
+    "fields": [
+      1,
+      4,
+      5,
+      9
+    ]
+  },
+  "portableProofSha256": "71e47a70abe4d0db82d2551ee0069b1e29b4ae11db69a39d7b8bb97f69782d05",
+  "passed": true,
+  "scope": "Original TH14 MSG17 first ruby synchronous47f1b0, second ruby deferred47f140; two body lines synchronous47f1b0. Full90 entry matrix after production repair."
+}

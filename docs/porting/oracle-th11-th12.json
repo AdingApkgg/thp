@@ -1,0 +1,3180 @@
+{
+  "instrument": "tools/th-twin-find.py",
+  "method": "match the source window with every byte of an in-image dword marked as an operand, and rank candidates by their longest run of agreeing literals. The rule covers the operands that must move between two titles (call displacements into .text and absolute references into .data) while field offsets and immediates stay literal.",
+  "checks": [
+    "the same-title round trip reports the source address as the single candidate, run = span",
+    "the oracle's memset fixture 0x46a720 matches th12 0x477420 with run = span and no other candidate in the image",
+    "0x456ad0 in th11 is a lone ret; the only run in th12 is the same lone ret at 0x4622e0",
+    "0x412e30 -> 0x004154d0 measured this round: prologue run 9 (ambiguous, two candidates) discriminated by the body window (run 21, unique) and by the frame size 0x310 vs 0x308; confirmed by the fixture suites calling it.",
+    "a code row must name an instruction boundary: 0x4569c0 -> 0x004621c0 re-measured with th-twin-fields.py (23/24 aligned, shape 1.000) after the +1 candidate target made the fixture's five-byte jump land inside the prologue and strand a pushed EBP on the stack",
+    "a row whose target is not the twin entrance is reported by tools/th-twin-rows.py; four rows (0x455a00 0x455df0 0x455bc0 0x456020 -> 0x0044bf6a) are withdrawn because th12 has no copy of them at all (the window that matched was a 129-fold shared logging prologue)",
+    "round 299 measured three of the 487 untranslated fixture literals and anchored them: 0x44b4b0 -> 0x00455630 (20/24 paired), 0x44fd10 -> 0x0045a3c0 (21/29), 0x452010 -> 0x0045cdf0 (41/42); 0x451ef0 was left out because its best candidate is the same target as 0x452010 at only 16/42, i.e. an alias, not a measurement",
+    "round 300 applied 81 batch rows under a strict rule (paired 1.000, >= 12 instructions, source not named by helpers.mjs) after a wider pass broke anm-load-all; 6 measurements were left in tools/tmp/twin-batch-300.json for individual verification",
+    "round 301 relaxed the wildcard scan (span 0x40, literal run 5) for the addresses round 300 could not resolve and applied 22 more rows under the same strict rule; 15 measurements were left aside for individual verification",
+    "round 302 added an entry-prefiltered fallback to the batch pass (a window match cannot reach a source whose literal run is short; every function entry is a candidate, prefilted on the first instruction bytes) and applied 11 rows (7 anchored, 4 measured); 4 measurements were left aside, including every aliased target whose two source windows differ",
+    "round 302 added --derive: an address inside an already-anchored function is the same-index instruction of its twin, verified on its own window; 6 rows were derived this way, resolving the first raw call of both laser suites",
+    "round 303 measured the ENCLOSING function entry of every unresolved mid-function address (8 entries); 6 were applied, and the addresses are then derived from them by instruction index",
+    "round 303 dropped 5 container rows that sat within 0x200 of an address helpers.mjs names: the exclusion is by region, because the enclosing entry of a harness address is a harness address eight bytes earlier",
+    "round 303 derived 2 queued mid-function addresses by instruction index from their enclosing entries and verified each on its own window",
+    "round 304 replaced the alignment-based entry index with a CALL-TARGET index (27554 real entries per image) for both the container pass and the fallback candidate list, and applied 4 enclosing entries; 0 measurements were left aside by the strict rule, the harness region or an alias",
+    "round 303 derived 3 queued mid-function addresses by instruction index from their enclosing entries and verified each on its own window"
+  ],
+  "anchored": "a run of 12 or more consecutive agreeing literal bytes is treated as anchored; rows below that are candidates for the port to confirm by running the oracle, since the engine functions with many absolute references have few adjacent literals",
+  "purpose": "the oracle fixtures in tests/cpp name the addresses of the port's first title; these rows are the measured counterpart of each in th12",
+  "rows": [
+    {
+      "source": "th11",
+      "sourceAddress": "0x401fd0",
+      "role": "template init (memset of the 0x434 animation object)",
+      "span": 48,
+      "target": "th12",
+      "targetAddress": "0x00402520",
+      "run": 16,
+      "literals": 48,
+      "confidence": "anchored",
+      "candidates": [
+        {
+          "address": "0x00402520",
+          "run": 16,
+          "window": 48,
+          "literals": 48
+        },
+        {
+          "address": "0x00423366",
+          "run": 6,
+          "window": 48,
+          "literals": 48
+        },
+        {
+          "address": "0x0041f8f9",
+          "run": 6,
+          "window": 48,
+          "literals": 48
+        },
+        {
+          "address": "0x00454d73",
+          "run": 6,
+          "window": 48,
+          "literals": 48
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x46a720",
+      "role": "memset",
+      "span": 48,
+      "target": "th12",
+      "targetAddress": "0x00477420",
+      "run": 32,
+      "literals": 44,
+      "confidence": "anchored",
+      "candidates": [
+        {
+          "address": "0x00477420",
+          "run": 32,
+          "window": 48,
+          "literals": 44
+        },
+        {
+          "address": "0x0046d194",
+          "run": 6,
+          "window": 48,
+          "literals": 44
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x45fce4",
+      "role": "operator new",
+      "span": 48,
+      "target": "th12",
+      "targetAddress": "0x0046c9ea",
+      "run": 14,
+      "literals": 44,
+      "confidence": "anchored",
+      "candidates": [
+        {
+          "address": "0x0046c9ea",
+          "run": 14,
+          "window": 48,
+          "literals": 44
+        },
+        {
+          "address": "0x0046ff65",
+          "run": 10,
+          "window": 48,
+          "literals": 44
+        },
+        {
+          "address": "0x00476bb1",
+          "run": 8,
+          "window": 48,
+          "literals": 44
+        },
+        {
+          "address": "0x0047ae89",
+          "run": 8,
+          "window": 48,
+          "literals": 44
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x45fd49",
+      "role": "operator delete",
+      "span": 48,
+      "target": "th12",
+      "targetAddress": "0x0046ca4f",
+      "run": 28,
+      "literals": 44,
+      "confidence": "anchored",
+      "candidates": [
+        {
+          "address": "0x0046ca4f",
+          "run": 28,
+          "window": 48,
+          "literals": 44
+        },
+        {
+          "address": "0x0046cbb0",
+          "run": 17,
+          "window": 48,
+          "literals": 44
+        },
+        {
+          "address": "0x0046e323",
+          "run": 13,
+          "window": 48,
+          "literals": 44
+        },
+        {
+          "address": "0x00472409",
+          "run": 13,
+          "window": 48,
+          "literals": 44
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x456ad0",
+      "role": "diagnostic log",
+      "span": 48,
+      "target": "th12",
+      "targetAddress": "0x004622e0",
+      "run": 48,
+      "literals": 48,
+      "confidence": "anchored",
+      "candidates": [
+        {
+          "address": "0x004622e0",
+          "run": 48,
+          "window": 48,
+          "literals": 48
+        },
+        {
+          "address": "0x00462300",
+          "run": 23,
+          "window": 48,
+          "literals": 48
+        },
+        {
+          "address": "0x00410c89",
+          "run": 20,
+          "window": 48,
+          "literals": 48
+        },
+        {
+          "address": "0x00410cda",
+          "run": 20,
+          "window": 48,
+          "literals": 48
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x46025c",
+      "role": "sprintf filename",
+      "span": 48,
+      "target": "th12",
+      "targetAddress": "0x0046cbbb",
+      "run": 17,
+      "literals": 48,
+      "confidence": "anchored",
+      "candidates": [
+        {
+          "address": "0x0046cbbb",
+          "run": 17,
+          "window": 48,
+          "literals": 48
+        },
+        {
+          "address": "0x0046ca5a",
+          "run": 17,
+          "window": 48,
+          "literals": 48
+        },
+        {
+          "address": "0x0046e32e",
+          "run": 14,
+          "window": 48,
+          "literals": 48
+        },
+        {
+          "address": "0x0046db4e",
+          "run": 14,
+          "window": 48,
+          "literals": 48
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x458400",
+      "role": "read fixture file",
+      "span": 48,
+      "target": "th12",
+      "targetAddress": "0x00463c10",
+      "run": 14,
+      "literals": 32,
+      "confidence": "anchored",
+      "candidates": [
+        {
+          "address": "0x00463c10",
+          "run": 14,
+          "window": 48,
+          "literals": 32
+        },
+        {
+          "address": "0x00486a27",
+          "run": 6,
+          "window": 48,
+          "literals": 32
+        },
+        {
+          "address": "0x00407ebc",
+          "run": 6,
+          "window": 48,
+          "literals": 32
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x453f80",
+      "role": "embedded texture upload",
+      "span": 48,
+      "target": "th12",
+      "targetAddress": "0x0045fa80",
+      "run": 20,
+      "literals": 40,
+      "confidence": "anchored",
+      "candidates": [
+        {
+          "address": "0x0045fa80",
+          "run": 20,
+          "window": 48,
+          "literals": 40
+        },
+        {
+          "address": "0x0044dd84",
+          "run": 8,
+          "window": 48,
+          "literals": 40
+        },
+        {
+          "address": "0x0042a824",
+          "run": 8,
+          "window": 48,
+          "literals": 40
+        },
+        {
+          "address": "0x0044e0d5",
+          "run": 8,
+          "window": 48,
+          "literals": 40
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4540a0",
+      "role": "blank texture allocation",
+      "span": 48,
+      "target": "th12",
+      "targetAddress": "0x0045fba0",
+      "run": 17,
+      "literals": 36,
+      "confidence": "anchored",
+      "candidates": [
+        {
+          "address": "0x0045fba0",
+          "run": 17,
+          "window": 48,
+          "literals": 36
+        },
+        {
+          "address": "0x00424a0f",
+          "run": 6,
+          "window": 48,
+          "literals": 36
+        },
+        {
+          "address": "0x0043f74f",
+          "run": 6,
+          "window": 48,
+          "literals": 36
+        },
+        {
+          "address": "0x00444c7d",
+          "run": 6,
+          "window": 48,
+          "literals": 36
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4540f0",
+      "role": "render target allocation", "evidence": "tools/th-class-search.py: the only candidate whose literal bytes all agree over 96 and 128 byte windows; the earlier candidate 0x44f442 agrees only to 48 and diverges after",
+      "span": 48,
+      "target": "th12",
+      "targetAddress": "0x0045fbf0",
+      "run": 10,
+      "literals": 32,
+      "confidence": "measured",
+      "candidates": [
+        {
+          "address": "0x0044f442",
+          "run": 10,
+          "window": 48,
+          "literals": 32
+        },
+        {
+          "address": "0x0045fbf0",
+          "run": 10,
+          "window": 48,
+          "literals": 32
+        },
+        {
+          "address": "0x0045f8c4",
+          "run": 7,
+          "window": 48,
+          "literals": 32
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x454190",
+      "role": "ANM resource open (by path)",
+      "span": 48,
+      "target": "th12",
+      "targetAddress": "0x0045fc90",
+      "run": 29,
+      "literals": 40,
+      "confidence": "anchored",
+      "candidates": [
+        {
+          "address": "0x0045fc90",
+          "run": 29,
+          "window": 48,
+          "literals": 40
+        },
+        {
+          "address": "0x0040212c",
+          "run": 8,
+          "window": 48,
+          "literals": 40
+        },
+        {
+          "address": "0x00467565",
+          "run": 8,
+          "window": 48,
+          "literals": 40
+        },
+        {
+          "address": "0x0043c350",
+          "run": 7,
+          "window": 48,
+          "literals": 40
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4545a0",
+      "role": "ANM chunk loader",
+      "span": 48,
+      "target": "th12",
+      "targetAddress": "0x004600a0",
+      "run": 19,
+      "literals": 36,
+      "confidence": "anchored",
+      "candidates": [
+        {
+          "address": "0x004600a0",
+          "run": 19,
+          "window": 48,
+          "literals": 36
+        },
+        {
+          "address": "0x004601aa",
+          "run": 12,
+          "window": 48,
+          "literals": 36
+        },
+        {
+          "address": "0x004099d4",
+          "run": 9,
+          "window": 48,
+          "literals": 36
+        },
+        {
+          "address": "0x00420d3c",
+          "run": 9,
+          "window": 48,
+          "literals": 36
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x4569c0",
+      "role": "initialized animation allocation",
+      "span": 48,
+      "target": "th12",
+      "targetAddress": "0x004621c0",
+      "run": 23,
+      "literals": 23,
+      "confidence": "anchored",
+      "candidates": [
+        {
+          "address": "0x004621c0",
+          "run": 23,
+          "window": 96,
+          "literals": 23
+        },
+        {
+          "address": "0x004621c1",
+          "run": 9,
+          "window": 48,
+          "literals": 36
+        }
+      ],
+      "window": 96,
+      "measuredWith": "tools/th-twin-fields.py (re-measured after the fixture patched this address)",
+      "evidence": [
+        "the fixture calls `replace(touch(0x4569c0), ...)`, which writes a five-byte jump over the mapped address; the address this row used to name, 0x004621c1, is one byte past the function's `push ebp`, so the guest executed that push and then the jump, leaving the pushed EBP on the stack - the stub's `ret` popped it and the guest ran into a zero-filled stack slot (measured: EBP == [esp] == 0x7effc48, bytes at EIP all zero)",
+        "re-measured with tools/th-twin-fields.py from both entries (span 0x60): 23 of 24 instructions aligned, 0.958 of the longer stream, 1.000 operand-shape agreement, 0 moved displacements, so th11 0x4569c0 and th12 0x4621c0 are the same function",
+        "the one-byte offset the earlier measurement took comes from a real title difference: th12 adds a `push esi` (0x4621c1 `56`) to th11's `push ebp; push edi`, which shifts every later address the window compares"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x455a00",
+      "role": "spawn mode 0",
+      "span": 48,
+      "target": "th12",
+      "targetAddress": "0x0044bf6a",
+      "run": 8,
+      "literals": 32,
+      "confidence": "withdrawn",
+      "candidates": [
+        {
+          "address": "0x0044bf6a",
+          "run": 8,
+          "window": 48,
+          "literals": 32
+        },
+        {
+          "address": "0x00414d75",
+          "run": 7,
+          "window": 48,
+          "literals": 32
+        },
+        {
+          "address": "0x00414ee6",
+          "run": 7,
+          "window": 48,
+          "literals": 32
+        },
+        {
+          "address": "0x0043c009",
+          "run": 7,
+          "window": 48,
+          "literals": 32
+        }
+      ],
+      "withdrawn": true,
+      "reason": "withdrawn as a row: th12 contains no copy of the distinctive body (\"8b 4c 24 08 8b 54 24 0c\" matches 0 times, while th11 has four copies at 0x455a23 0x455be3 0x455e13 0x456043), and the prologue this candidate window matched, \"f7 05 <dword> 00 80 00 00 74 11 68\", is a shared debug-logging guard that occurs 129 times in th12. The four sources are positional copies of one function and all call 0x4569c0 (section 75: th12 0x4621c0).",
+      "checks": [
+        "tools/th-twin-rows.py: ENTRIES DO NOT ALIGN (first pair src#3 <-> tgt#3)",
+        "body bytes absent from th12 (0 matches)"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x455df0",
+      "role": "spawn mode 1",
+      "span": 48,
+      "target": "th12",
+      "targetAddress": "0x0044bf6a",
+      "run": 8,
+      "literals": 32,
+      "confidence": "withdrawn",
+      "candidates": [
+        {
+          "address": "0x0044bf6a",
+          "run": 8,
+          "window": 48,
+          "literals": 32
+        },
+        {
+          "address": "0x00414d75",
+          "run": 7,
+          "window": 48,
+          "literals": 32
+        },
+        {
+          "address": "0x00414ee6",
+          "run": 7,
+          "window": 48,
+          "literals": 32
+        },
+        {
+          "address": "0x0043c009",
+          "run": 7,
+          "window": 48,
+          "literals": 32
+        }
+      ],
+      "withdrawn": true,
+      "reason": "withdrawn as a row: th12 contains no copy of the distinctive body (\"8b 4c 24 08 8b 54 24 0c\" matches 0 times, while th11 has four copies at 0x455a23 0x455be3 0x455e13 0x456043), and the prologue this candidate window matched, \"f7 05 <dword> 00 80 00 00 74 11 68\", is a shared debug-logging guard that occurs 129 times in th12. The four sources are positional copies of one function and all call 0x4569c0 (section 75: th12 0x4621c0).",
+      "checks": [
+        "tools/th-twin-rows.py: ENTRIES DO NOT ALIGN (first pair src#3 <-> tgt#3)",
+        "body bytes absent from th12 (0 matches)"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x455bc0",
+      "role": "spawn mode 2",
+      "span": 48,
+      "target": "th12",
+      "targetAddress": "0x0044bf6a",
+      "run": 8,
+      "literals": 32,
+      "confidence": "withdrawn",
+      "candidates": [
+        {
+          "address": "0x0044bf6a",
+          "run": 8,
+          "window": 48,
+          "literals": 32
+        },
+        {
+          "address": "0x00414d75",
+          "run": 7,
+          "window": 48,
+          "literals": 32
+        },
+        {
+          "address": "0x00414ee6",
+          "run": 7,
+          "window": 48,
+          "literals": 32
+        },
+        {
+          "address": "0x0043c009",
+          "run": 7,
+          "window": 48,
+          "literals": 32
+        }
+      ],
+      "withdrawn": true,
+      "reason": "withdrawn as a row: th12 contains no copy of the distinctive body (\"8b 4c 24 08 8b 54 24 0c\" matches 0 times, while th11 has four copies at 0x455a23 0x455be3 0x455e13 0x456043), and the prologue this candidate window matched, \"f7 05 <dword> 00 80 00 00 74 11 68\", is a shared debug-logging guard that occurs 129 times in th12. The four sources are positional copies of one function and all call 0x4569c0 (section 75: th12 0x4621c0).",
+      "checks": [
+        "tools/th-twin-rows.py: ENTRIES DO NOT ALIGN (first pair src#3 <-> tgt#3)",
+        "body bytes absent from th12 (0 matches)"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x456020",
+      "role": "spawn mode 3",
+      "span": 48,
+      "target": "th12",
+      "targetAddress": "0x0044bf6a",
+      "run": 8,
+      "literals": 32,
+      "confidence": "withdrawn",
+      "candidates": [
+        {
+          "address": "0x0044bf6a",
+          "run": 8,
+          "window": 48,
+          "literals": 32
+        },
+        {
+          "address": "0x00414d75",
+          "run": 7,
+          "window": 48,
+          "literals": 32
+        },
+        {
+          "address": "0x00414ee6",
+          "run": 7,
+          "window": 48,
+          "literals": 32
+        },
+        {
+          "address": "0x0043c009",
+          "run": 7,
+          "window": 48,
+          "literals": 32
+        }
+      ],
+      "withdrawn": true,
+      "reason": "withdrawn as a row: th12 contains no copy of the distinctive body (\"8b 4c 24 08 8b 54 24 0c\" matches 0 times, while th11 has four copies at 0x455a23 0x455be3 0x455e13 0x456043), and the prologue this candidate window matched, \"f7 05 <dword> 00 80 00 00 74 11 68\", is a shared debug-logging guard that occurs 129 times in th12. The four sources are positional copies of one function and all call 0x4569c0 (section 75: th12 0x4621c0).",
+      "checks": [
+        "tools/th-twin-rows.py: ENTRIES DO NOT ALIGN (first pair src#3 <-> tgt#3)",
+        "body bytes absent from th12 (0 matches)"
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x455560",
+      "role": "manager update (overlay)",
+      "span": 48,
+      "target": "th12",
+      "targetAddress": "0x004610d0",
+      "run": 8,
+      "literals": 32,
+      "confidence": "candidate",
+      "candidates": [
+        {
+          "address": "0x004610d0",
+          "run": 8,
+          "window": 48,
+          "literals": 32
+        },
+        {
+          "address": "0x0041e020",
+          "run": 8,
+          "window": 48,
+          "literals": 32
+        },
+        {
+          "address": "0x00429520",
+          "run": 8,
+          "window": 48,
+          "literals": 32
+        },
+        {
+          "address": "0x0042d890",
+          "run": 8,
+          "window": 48,
+          "literals": 32
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x455480",
+      "role": "manager update",
+      "span": 48,
+      "target": "th12",
+      "targetAddress": "0x00460fe0",
+      "run": 8,
+      "literals": 32,
+      "confidence": "candidate",
+      "candidates": [
+        {
+          "address": "0x00460fe0",
+          "run": 8,
+          "window": 48,
+          "literals": 32
+        },
+        {
+          "address": "0x0041bb40",
+          "run": 8,
+          "window": 48,
+          "literals": 32
+        },
+        {
+          "address": "0x00425c20",
+          "run": 8,
+          "window": 48,
+          "literals": 32
+        },
+        {
+          "address": "0x00455630",
+          "run": 8,
+          "window": 48,
+          "literals": 32
+        }
+      ]
+    },
+    {
+      "source": "th11",
+      "sourceAddress": "0x412e30",
+      "role": "enemy/ECL command executor (the interpreter the fixture suites drive with one instruction; th11 has an alias entry at 0x412e26 that adds 0x103c to ECX before jumping to it)",
+      "span": 96,
+      "target": "th12",
+      "targetAddress": "0x004154d0",
+      "measuredWith": "tools/th-twin-find.py",
+      "evidence": [
+        "self-check: the tool's identical-title round trip names 0x402520 at a run of 48/48 literals",
+        "the prologue window (span 48 from the entry) gives run 9 with TWO candidates, 0x004154d0 and 0x004049a0, both `55 8b ec 83 e4 f8 6a ff; push imm32; 64 a1 00 00 00 00; 50; 81 ec imm32`",
+        "the body window at th11 0x412ea0 (span 96) is unique at a run of 21 literals and lands 0x6c into 0x004154d0 - the same 4-byte shift the prologue has, because the frame size differs: th11 `sub esp,0x310`, 0x004154d0 `sub esp,0x308`, while the other candidate's is 0xa0 and its body hit is not inside it",
+        "acceptance by use: with the row in place the fixture suites call the mapped address and their differential checks against the port's own executor run"
+      ]
+    },
+    {
+      "sourceAddress": "0x44b4b0",
+      "targetAddress": "0x00455630",
+      "target": "th12",
+      "role": "measured by the entry-alignment search (round 299)",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 20,
+      "literals": 20,
+      "measuredWith": "tools/th-twin-rows.py --search <source> --span 0x60 --prefilter entries, then --pair to confirm the first aligned pair is the first instruction of each side (the search only ranks; --pair decides)",
+      "evidence": [
+        "the census of raw literals in the fixture suites (498 sites) found this address in use as an untranslated target-namespace literal; the entry-candidate alignment search ranked 0x00455630 first at paired=0.833 with operand-shape agreement 1.000",
+        "tools/th-twin-rows.py --pair reports the entries align, 20 of 24 instructions paired",
+        "the copies differ in a moved structure displacement (th11 reads +0x404 where th12 reads +0x4b56a0, which the aligner reports as a moved displacement, not as a mismatch)"
+      ]
+    },
+    {
+      "sourceAddress": "0x44fd10",
+      "targetAddress": "0x0045a3c0",
+      "target": "th12",
+      "role": "measured by the entry-alignment search (round 299)",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 21,
+      "literals": 21,
+      "measuredWith": "tools/th-twin-rows.py --search <source> --span 0x60 --prefilter entries, then --pair to confirm the first aligned pair is the first instruction of each side (the search only ranks; --pair decides)",
+      "evidence": [
+        "the census of raw literals in the fixture suites (498 sites) found this address in use as an untranslated target-namespace literal; the entry-candidate alignment search ranked 0x0045a3c0 first at paired=0.724 with operand-shape agreement 1.000",
+        "tools/th-twin-rows.py --pair reports the entries align, 21 of 29 instructions paired",
+        "the copies differ in a moved structure displacement (th11 reads +0x404 where th12 reads +0x4b56a0, which the aligner reports as a moved displacement, not as a mismatch)"
+      ]
+    },
+    {
+      "sourceAddress": "0x452010",
+      "targetAddress": "0x0045cdf0",
+      "target": "th12",
+      "role": "measured by the entry-alignment search (round 299)",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 41,
+      "literals": 41,
+      "measuredWith": "tools/th-twin-rows.py --search <source> --span 0x60 --prefilter entries, then --pair to confirm the first aligned pair is the first instruction of each side (the search only ranks; --pair decides)",
+      "evidence": [
+        "the census of raw literals in the fixture suites (498 sites) found this address in use as an untranslated target-namespace literal; the entry-candidate alignment search ranked 0x0045cdf0 first at paired=0.976 with operand-shape agreement 1.000",
+        "tools/th-twin-rows.py --pair reports the entries align, 41 of 42 instructions paired",
+        "the copies differ in a moved structure displacement (th11 reads +0x404 where th12 reads +0x47c, which the aligner reports as a moved displacement, not as a mismatch)"
+      ]
+    },
+    {
+      "sourceAddress": "0x402300",
+      "targetAddress": "0x00402870",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov eax, dword ptr [esi + 0x10]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 37,
+      "literals": 37,
+      "uses": [
+        "stage-script.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "37 of 37 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by stage-script.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x403885",
+      "targetAddress": "0x00403e45",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov esi, edi",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 27,
+      "literals": 27,
+      "uses": [
+        "world-oracle.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "27 of 27 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by world-oracle.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x404f20",
+      "targetAddress": "0x004055d0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): push ecx",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 32,
+      "literals": 32,
+      "uses": [
+        "stage-script.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "32 of 32 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by stage-script.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x4055d0",
+      "targetAddress": "0x00405c90",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 0xd4",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 26,
+      "literals": 26,
+      "uses": [
+        "fog-interpolation.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "26 of 26 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by fog-interpolation.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x406100",
+      "targetAddress": "0x004067e0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov ecx, dword ptr [eax + 0x10]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 48,
+      "literals": 48,
+      "uses": [
+        "anm-interpreter.test.mjs",
+        "interpolation.test.mjs",
+        "player-frame.test.mjs",
+        "shot-damage.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "48 of 48 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by anm-interpreter.test.mjs, interpolation.test.mjs, player-frame.test.mjs, shot-damage.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x408f20",
+      "targetAddress": "0x0040a250",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov ecx, dword ptr [esp + 0xc]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 23,
+      "literals": 23,
+      "uses": [
+        "bullet-launch.test.mjs",
+        "bullet-manager.test.mjs",
+        "enemy-callbacks-bullets.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "23 of 23 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by bullet-launch.test.mjs, bullet-manager.test.mjs, enemy-callbacks-bullets.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x40dea0",
+      "targetAddress": "0x0040f720",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): test dword ptr [eax + 0x590], 0x2000",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 48,
+      "literals": 48,
+      "uses": [
+        "pause-end.test.mjs",
+        "pause-menu.test.mjs",
+        "stage-completion.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "48 of 48 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by pause-end.test.mjs, pause-menu.test.mjs, stage-completion.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x40df10",
+      "targetAddress": "0x0040f790",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov eax, dword ptr [edx + 8]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 62,
+      "literals": 62,
+      "uses": [
+        "menu-cursor.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "62 of 62 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by menu-cursor.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x40e890",
+      "targetAddress": "0x004101f0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): push ecx",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 37,
+      "literals": 37,
+      "uses": [
+        "bomb-controller.test.mjs",
+        "screen-deformation.test.mjs",
+        "stage-runtime.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "37 of 37 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by bomb-controller.test.mjs, screen-deformation.test.mjs, stage-runtime.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x40eb70",
+      "targetAddress": "0x00410b30",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): push ebp",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 36,
+      "literals": 36,
+      "uses": [
+        "ending.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "36 of 36 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by ending.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x40f120",
+      "targetAddress": "0x00411100",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): push esi",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 32,
+      "literals": 32,
+      "uses": [
+        "ending.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "32 of 32 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by ending.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x4101d0",
+      "targetAddress": "0x00412140",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 0x1c",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 25,
+      "literals": 25,
+      "uses": [
+        "enemy-frame.test.mjs",
+        "enemy-manager.test.mjs",
+        "item-manager.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "25 of 25 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by enemy-frame.test.mjs, enemy-manager.test.mjs, item-manager.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x410690",
+      "targetAddress": "0x00412690",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov eax, dword ptr [0x4b4514]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 50,
+      "literals": 50,
+      "uses": [
+        "damage-protection.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "50 of 50 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by damage-protection.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x411610",
+      "targetAddress": "0x00413700",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 0x18",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 26,
+      "literals": 26,
+      "uses": [
+        "enemy-movement.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "26 of 26 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by enemy-movement.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x412990",
+      "targetAddress": "0x00414f40",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov eax, dword ptr [0x4b43dc]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 25,
+      "literals": 25,
+      "uses": [
+        "bullet-cancellation.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "25 of 25 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by bullet-cancellation.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x412b10",
+      "targetAddress": "0x004150c0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov eax, dword ptr [0x4b43dc]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 26,
+      "literals": 26,
+      "uses": [
+        "bullet-cancellation.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "26 of 26 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by bullet-cancellation.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x412c50",
+      "targetAddress": "0x00415340",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov eax, dword ptr [0x4b43dc]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 25,
+      "literals": 25,
+      "uses": [
+        "bullet-conversion.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "25 of 25 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by bullet-conversion.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x419d90",
+      "targetAddress": "0x0041cb70",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 8",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 31,
+      "literals": 31,
+      "uses": [
+        "frame-statistics.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "31 of 31 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by frame-statistics.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x419f80",
+      "targetAddress": "0x0041cd90",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov eax, dword ptr [esi + 0x40]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 33,
+      "literals": 33,
+      "uses": [
+        "dialogue.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "33 of 33 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by dialogue.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x424d70",
+      "targetAddress": "0x004283d0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): push ecx",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 37,
+      "literals": 37,
+      "uses": [
+        "cancellation-integration.test.mjs",
+        "laser-manager.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "37 of 37 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by cancellation-integration.test.mjs, laser-manager.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x424fe0",
+      "targetAddress": "0x004286f0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov eax, dword ptr [0x4b44f4]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 39,
+      "literals": 39,
+      "uses": [
+        "bomb-controller.test.mjs",
+        "cancellation-integration.test.mjs",
+        "laser-manager.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "39 of 39 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by bomb-controller.test.mjs, cancellation-integration.test.mjs, laser-manager.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x425040",
+      "targetAddress": "0x00428750",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov eax, dword ptr [0x4b44f4]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 42,
+      "literals": 42,
+      "uses": [
+        "cancellation-integration.test.mjs",
+        "laser-manager.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "42 of 42 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by cancellation-integration.test.mjs, laser-manager.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x42a270",
+      "targetAddress": "0x00430270",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): fldz ",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 32,
+      "literals": 32,
+      "uses": [
+        "dialogue.test.mjs",
+        "ending.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "32 of 32 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by dialogue.test.mjs, ending.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x42a970",
+      "targetAddress": "0x00430a70",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 0x28",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 33,
+      "literals": 33,
+      "uses": [
+        "ascii-text.test.mjs",
+        "scene-compositor.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "33 of 33 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by ascii-text.test.mjs, scene-compositor.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x42aae0",
+      "targetAddress": "0x00430be0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 0xc",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 23,
+      "literals": 23,
+      "uses": [
+        "scene-camera.test.mjs",
+        "world-oracle.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "23 of 23 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by scene-camera.test.mjs, world-oracle.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x42ba80",
+      "targetAddress": "0x00431b90",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov eax, dword ptr [0x4b0ca8]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 37,
+      "literals": 37,
+      "uses": [
+        "score-ranking.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "37 of 37 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by score-ranking.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x42c150",
+      "targetAddress": "0x00432260",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 0x10",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 28,
+      "literals": 28,
+      "uses": [
+        "pause-end.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "28 of 28 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by pause-end.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x42f480",
+      "targetAddress": "0x00435750",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov eax, dword ptr [esp + 4]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 35,
+      "literals": 35,
+      "uses": [
+        "pause-end.test.mjs",
+        "pause-menu.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "35 of 35 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by pause-end.test.mjs, pause-menu.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x431c70",
+      "targetAddress": "0x00437680",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): push 0",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 28,
+      "literals": 28,
+      "uses": [
+        "shot-resource.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "28 of 28 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by shot-resource.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x432070",
+      "targetAddress": "0x00437a80",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): push ebp",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 26,
+      "literals": 26,
+      "uses": [
+        "cancellation-integration.test.mjs",
+        "laser-infinite.test.mjs",
+        "laser-line.test.mjs",
+        "laser-manager.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "26 of 26 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by cancellation-integration.test.mjs, laser-infinite.test.mjs, laser-line.test.mjs, laser-manager.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x4322f0",
+      "targetAddress": "0x00437a80",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): push ebp",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 26,
+      "literals": 26,
+      "uses": [
+        "laser-manager.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "26 of 26 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by laser-manager.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x432520",
+      "targetAddress": "0x00437a80",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): push ebp",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 26,
+      "literals": 26,
+      "uses": [
+        "enemy-callbacks.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "26 of 26 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by enemy-callbacks.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x435ef0",
+      "targetAddress": "0x0043b600",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): push -1",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 27,
+      "literals": 27,
+      "uses": [
+        "pause-end.test.mjs",
+        "pause-menu.test.mjs",
+        "title-selection.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "27 of 27 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by pause-end.test.mjs, pause-menu.test.mjs, title-selection.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x435fc0",
+      "targetAddress": "0x0043b7c0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): test esi, esi",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 39,
+      "literals": 39,
+      "uses": [
+        "pause-end.test.mjs",
+        "pause-menu.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "39 of 39 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by pause-end.test.mjs, pause-menu.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x436b60",
+      "targetAddress": "0x0043c350",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 0x108",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 28,
+      "literals": 28,
+      "uses": [
+        "replay.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "28 of 28 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by replay.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x437a70",
+      "targetAddress": "0x0043d2e0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 0x10",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 34,
+      "literals": 34,
+      "uses": [
+        "score-file.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "34 of 34 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by score-file.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x438020",
+      "targetAddress": "0x0043de10",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): push ecx",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 33,
+      "literals": 33,
+      "uses": [
+        "score-popups.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "33 of 33 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by score-popups.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x4380d0",
+      "targetAddress": "0x0043dec0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 0x18",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 25,
+      "literals": 25,
+      "uses": [
+        "score-popups.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "25 of 25 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by score-popups.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x438440",
+      "targetAddress": "0x0043e250",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): push ebx",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 30,
+      "literals": 30,
+      "uses": [
+        "enemy-manager.test.mjs",
+        "item-rewards.test.mjs",
+        "score-popups.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "30 of 30 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by enemy-manager.test.mjs, item-rewards.test.mjs, score-popups.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x4423a0",
+      "targetAddress": "0x0044c3f0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 0x24",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 36,
+      "literals": 36,
+      "uses": [
+        "replay-codec.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "36 of 36 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by replay-codec.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x4426c0",
+      "targetAddress": "0x0044c710",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 0xc",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 32,
+      "literals": 32,
+      "uses": [
+        "archive.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "32 of 32 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by archive.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x444610",
+      "targetAddress": "0x0044e660",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 0x24",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 30,
+      "literals": 30,
+      "uses": [
+        "text-raster.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "30 of 30 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by text-raster.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x444890",
+      "targetAddress": "0x0044e8e0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 0x1c",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 31,
+      "literals": 31,
+      "uses": [
+        "text-raster.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "31 of 31 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by text-raster.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x448720",
+      "targetAddress": "0x004526e0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 0xc",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 31,
+      "literals": 31,
+      "uses": [
+        "screen-shake.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "31 of 31 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by screen-shake.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x448a90",
+      "targetAddress": "0x00452a60",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov eax, dword ptr [esp + 8]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 29,
+      "literals": 29,
+      "uses": [
+        "stage-completion.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "29 of 29 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by stage-completion.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x44a340",
+      "targetAddress": "0x00453fa0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 8",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 29,
+      "literals": 29,
+      "uses": [
+        "sound-effects.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "29 of 29 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by sound-effects.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x44a9c0",
+      "targetAddress": "0x00454960",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): test dword ptr [0x4cee78], 0x8000",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 24,
+      "literals": 24,
+      "uses": [
+        "pause-end.test.mjs",
+        "pause-menu.test.mjs",
+        "title-selection.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "24 of 24 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by pause-end.test.mjs, pause-menu.test.mjs, title-selection.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x44b470",
+      "targetAddress": "0x004555f0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): fld dword ptr [eax]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 42,
+      "literals": 42,
+      "uses": [
+        "anm-geometry.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "42 of 42 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by anm-geometry.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x44f880",
+      "targetAddress": "0x00459e50",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): fld dword ptr [0x4d47e8]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 21,
+      "literals": 21,
+      "uses": [
+        "score-popups.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "21 of 21 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by score-popups.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x4520f0",
+      "targetAddress": "0x0045d9a0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov eax, dword ptr [ebx + 0x478]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 23,
+      "literals": 23,
+      "uses": [
+        "anm-geometry.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "23 of 23 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by anm-geometry.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x452420",
+      "targetAddress": "0x0045dcd0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 0x18",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 24,
+      "literals": 24,
+      "uses": [
+        "anm-geometry.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "24 of 24 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by anm-geometry.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x4549a0",
+      "targetAddress": "0x004604a0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): cmp esi, 0x20",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 37,
+      "literals": 37,
+      "uses": [
+        "ending.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "37 of 37 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by ending.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x454d00",
+      "targetAddress": "0x00460800",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 0x8c",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 28,
+      "literals": 28,
+      "uses": [
+        "spell-animations.test.mjs",
+        "spell-controller.test.mjs",
+        "world-oracle.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "28 of 28 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by spell-animations.test.mjs, spell-controller.test.mjs, world-oracle.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x454de0",
+      "targetAddress": "0x00460800",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 0x8c",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 28,
+      "literals": 28,
+      "uses": [
+        "title-selection.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "28 of 28 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by title-selection.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x456b70",
+      "targetAddress": "0x00462380",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov eax, dword ptr [esi + 0xc]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 30,
+      "literals": 30,
+      "uses": [
+        "player-initialization.test.mjs",
+        "screen-fade.test.mjs",
+        "screen-shake.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "30 of 30 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by player-initialization.test.mjs, screen-fade.test.mjs, screen-shake.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x456c10",
+      "targetAddress": "0x00462420",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov eax, dword ptr [esi + 0xc]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 30,
+      "literals": 30,
+      "uses": [
+        "player-initialization.test.mjs",
+        "screen-fade.test.mjs",
+        "screen-shake.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "30 of 30 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by player-initialization.test.mjs, screen-fade.test.mjs, screen-shake.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x456cb0",
+      "targetAddress": "0x004624c0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 8",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 25,
+      "literals": 25,
+      "uses": [
+        "world-oracle.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "25 of 25 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by world-oracle.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x4576b0",
+      "targetAddress": "0x00462ec0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 0x104",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 20,
+      "literals": 20,
+      "uses": [
+        "keyboard-input.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "20 of 20 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by keyboard-input.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x4581c0",
+      "targetAddress": "0x004639d0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 8",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 37,
+      "literals": 37,
+      "uses": [
+        "archive.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "37 of 37 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by archive.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x458a10",
+      "targetAddress": "0x00464220",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov eax, 0x2004",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 24,
+      "literals": 24,
+      "uses": [
+        "config.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "24 of 24 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by config.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x4590f0",
+      "targetAddress": "0x00464900",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov ecx, dword ptr [eax + 0x8c]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 22,
+      "literals": 22,
+      "uses": [
+        "menu-cursor.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "22 of 22 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by menu-cursor.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x459130",
+      "targetAddress": "0x00464940",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): add dword ptr [eax + 0x8c], -1",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 31,
+      "literals": 31,
+      "uses": [
+        "menu-cursor.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "31 of 31 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by menu-cursor.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x459160",
+      "targetAddress": "0x00464970",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): push esi",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 36,
+      "literals": 36,
+      "uses": [
+        "menu-cursor.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "36 of 36 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by menu-cursor.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x459210",
+      "targetAddress": "0x00464a20",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov eax, dword ptr [esi + 4]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 30,
+      "literals": 30,
+      "uses": [
+        "interpolation.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "30 of 30 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by interpolation.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x459270",
+      "targetAddress": "0x00464a80",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): push ecx",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 44,
+      "literals": 44,
+      "uses": [
+        "interpolation.test.mjs",
+        "laser-infinite.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "44 of 44 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by interpolation.test.mjs, laser-infinite.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x4594a0",
+      "targetAddress": "0x00464cb0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): push esi",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 39,
+      "literals": 39,
+      "uses": [
+        "ending.test.mjs",
+        "title-selection.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "39 of 39 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by ending.test.mjs, title-selection.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x459a30",
+      "targetAddress": "0x00465320",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): push ebp",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 27,
+      "literals": 27,
+      "uses": [
+        "movement.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "27 of 27 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by movement.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x459b50",
+      "targetAddress": "0x00465440",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov edx, dword ptr [ecx]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 32,
+      "literals": 32,
+      "uses": [
+        "keyboard-input.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "32 of 32 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by keyboard-input.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x45d4b0",
+      "targetAddress": "0x00468e20",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov eax, dword ptr [esp + 4]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 32,
+      "literals": 32,
+      "uses": [
+        "ecl-context.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "32 of 32 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by ecl-context.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x45d600",
+      "targetAddress": "0x00468f70",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov eax, dword ptr [esp + 4]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 26,
+      "literals": 26,
+      "uses": [
+        "ecl-context.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "26 of 26 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by ecl-context.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x45d710",
+      "targetAddress": "0x00469080",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov ecx, dword ptr [eax + 4]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 37,
+      "literals": 37,
+      "uses": [
+        "ecl-context.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "37 of 37 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by ecl-context.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x45d740",
+      "targetAddress": "0x004690b0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov eax, dword ptr [edx + 4]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 45,
+      "literals": 45,
+      "uses": [
+        "ecl-context.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "45 of 45 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by ecl-context.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x45d900",
+      "targetAddress": "0x004692e0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): sub esp, 8",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 31,
+      "literals": 31,
+      "uses": [
+        "ecl-control.test.mjs",
+        "ecl-resource.test.mjs",
+        "enemy-frame.test.mjs",
+        "enemy-manager.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "31 of 31 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by ecl-control.test.mjs, ecl-resource.test.mjs, enemy-frame.test.mjs, enemy-manager.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x45db10",
+      "targetAddress": "0x004694f0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): push ebx",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 40,
+      "literals": 40,
+      "uses": [
+        "ecl-control.test.mjs",
+        "ecl-resource.test.mjs",
+        "enemy-frame.test.mjs",
+        "enemy-globals.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "40 of 40 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by ecl-control.test.mjs, ecl-resource.test.mjs, enemy-frame.test.mjs, enemy-globals.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x45dc30",
+      "targetAddress": "0x00469610",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov ecx, dword ptr [eax + 0x1000]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 36,
+      "literals": 36,
+      "uses": [
+        "ecl-context.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "36 of 36 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by ecl-context.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x45fc2c",
+      "targetAddress": "0x0046c932",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): cmp ecx, dword ptr [0x4ad138]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 31,
+      "literals": 31,
+      "uses": [
+        "hud-text.test.mjs",
+        "spell-overlay.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "31 of 31 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by hud-text.test.mjs, spell-overlay.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x45fc3b",
+      "targetAddress": "0x0046c941",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): push 0xc",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 34,
+      "literals": 34,
+      "uses": [
+        "world-oracle.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "34 of 34 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by world-oracle.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x45fdd2",
+      "targetAddress": "0x0046cad8",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov edi, edi",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 35,
+      "literals": 35,
+      "uses": [
+        "hud-text.test.mjs",
+        "pause-end.test.mjs",
+        "spell-overlay.test.mjs",
+        "title-selection.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "35 of 35 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by hud-text.test.mjs, pause-end.test.mjs, spell-overlay.test.mjs, title-selection.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x460885",
+      "targetAddress": "0x0046d585",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov edi, edi",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 38,
+      "literals": 38,
+      "uses": [
+        "replay-recorder.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "38 of 38 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by replay-recorder.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x4608b7",
+      "targetAddress": "0x0046d5b7",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov edi, edi",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 37,
+      "literals": 37,
+      "uses": [
+        "pause-end.test.mjs",
+        "pause-menu.test.mjs",
+        "score-ranking.test.mjs",
+        "title-selection.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "37 of 37 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by pause-end.test.mjs, pause-menu.test.mjs, score-ranking.test.mjs, title-selection.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x460be4",
+      "targetAddress": "0x0046d8e4",
+      "target": "th12",
+      "role": "measured by the batch pass (round 300): mov edi, edi",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 41,
+      "literals": 41,
+      "uses": [
+        "pause-end.test.mjs",
+        "title-selection.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py strict subset: wildcard-regex scan of .text, entry-alignment scoring, byte-identical (paired 1.000) over >= 12 instructions, source not named by helpers.mjs",
+      "evidence": [
+        "41 of 41 instructions paired (1.000) with operand-shape agreement 1.000",
+        "used by pause-end.test.mjs, title-selection.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x403835",
+      "targetAddress": "0x00403df5",
+      "target": "th12",
+      "role": "measured by the batch pass (round 301, relaxed scan): cmp dword ptr [ebp + 0x35c4], ebx",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 15,
+      "literals": 15,
+      "uses": [
+        "world-oracle.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --span 0x40 --min-run 5 (wildcard-regex scan of .text then entry-alignment scoring), applied only at paired 1.000 over >= 12 instructions with a source the harness does not name",
+      "evidence": [
+        "15 of 15 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by world-oracle.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x404190",
+      "targetAddress": "0x004046c0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 301, relaxed scan): push ebp",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 17,
+      "literals": 17,
+      "uses": [
+        "stage-draw.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --span 0x40 --min-run 5 (wildcard-regex scan of .text then entry-alignment scoring), applied only at paired 1.000 over >= 12 instructions with a source the harness does not name",
+      "evidence": [
+        "17 of 17 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by stage-draw.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x408e20",
+      "targetAddress": "0x0040a150",
+      "target": "th12",
+      "role": "measured by the batch pass (round 301, relaxed scan): push esi",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 13,
+      "literals": 13,
+      "uses": [
+        "bullet-manager.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --span 0x40 --min-run 5 (wildcard-regex scan of .text then entry-alignment scoring), applied only at paired 1.000 over >= 12 instructions with a source the harness does not name",
+      "evidence": [
+        "13 of 13 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by bullet-manager.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x40fed0",
+      "targetAddress": "0x00411e40",
+      "target": "th12",
+      "role": "measured by the batch pass (round 301, relaxed scan): fldz ",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 14,
+      "literals": 14,
+      "uses": [
+        "ecl-control.test.mjs",
+        "enemy-frame.test.mjs",
+        "enemy-script.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --span 0x40 --min-run 5 (wildcard-regex scan of .text then entry-alignment scoring), applied only at paired 1.000 over >= 12 instructions with a source the harness does not name",
+      "evidence": [
+        "14 of 14 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by ecl-control.test.mjs, enemy-frame.test.mjs, enemy-script.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x4100e0",
+      "targetAddress": "0x00412050",
+      "target": "th12",
+      "role": "measured by the batch pass (round 301, relaxed scan): test byte ptr [ecx + 0x14], 1",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 29,
+      "literals": 29,
+      "uses": [
+        "enemy-phase.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --span 0x40 --min-run 5 (wildcard-regex scan of .text then entry-alignment scoring), applied only at paired 1.000 over >= 12 instructions with a source the harness does not name",
+      "evidence": [
+        "29 of 29 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by enemy-phase.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x410580",
+      "targetAddress": "0x00412570",
+      "target": "th12",
+      "role": "measured by the batch pass (round 301, relaxed scan): fld dword ptr [edi]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 15,
+      "literals": 15,
+      "uses": [
+        "enemy-callbacks-bullets.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --span 0x40 --min-run 5 (wildcard-regex scan of .text then entry-alignment scoring), applied only at paired 1.000 over >= 12 instructions with a source the harness does not name",
+      "evidence": [
+        "15 of 15 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by enemy-callbacks-bullets.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x420d80",
+      "targetAddress": "0x00423250",
+      "target": "th12",
+      "role": "measured by the batch pass (round 301, relaxed scan): push ebx",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 19,
+      "literals": 19,
+      "uses": [
+        "config.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --span 0x40 --min-run 5 (wildcard-regex scan of .text then entry-alignment scoring), applied only at paired 1.000 over >= 12 instructions with a source the harness does not name",
+      "evidence": [
+        "19 of 19 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by config.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x424f30",
+      "targetAddress": "0x004285f0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 301, relaxed scan): mov eax, dword ptr [0x4b44f4]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 16,
+      "literals": 16,
+      "uses": [
+        "laser-manager.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --span 0x40 --min-run 5 (wildcard-regex scan of .text then entry-alignment scoring), applied only at paired 1.000 over >= 12 instructions with a source the harness does not name",
+      "evidence": [
+        "16 of 16 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by laser-manager.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x42a0d0",
+      "targetAddress": "0x004300d0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 301, relaxed scan): sub esp, 0x104",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 18,
+      "literals": 18,
+      "uses": [
+        "ending.test.mjs",
+        "pause-end.test.mjs",
+        "title-selection.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --span 0x40 --min-run 5 (wildcard-regex scan of .text then entry-alignment scoring), applied only at paired 1.000 over >= 12 instructions with a source the harness does not name",
+      "evidence": [
+        "18 of 18 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by ending.test.mjs, pause-end.test.mjs, title-selection.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x42a150",
+      "targetAddress": "0x00430150",
+      "target": "th12",
+      "role": "measured by the batch pass (round 301, relaxed scan): test byte ptr [0x4ceae8], 0x10",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 16,
+      "literals": 16,
+      "uses": [
+        "dialogue.test.mjs",
+        "ending.test.mjs",
+        "title-selection.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --span 0x40 --min-run 5 (wildcard-regex scan of .text then entry-alignment scoring), applied only at paired 1.000 over >= 12 instructions with a source the harness does not name",
+      "evidence": [
+        "16 of 16 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by dialogue.test.mjs, ending.test.mjs, title-selection.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x435fe0",
+      "targetAddress": "0x0043b7e0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 301, relaxed scan): sub esp, 8",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 17,
+      "literals": 17,
+      "uses": [
+        "game-input.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --span 0x40 --min-run 5 (wildcard-regex scan of .text then entry-alignment scoring), applied only at paired 1.000 over >= 12 instructions with a source the harness does not name",
+      "evidence": [
+        "17 of 17 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by game-input.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x447270",
+      "targetAddress": "0x00451200",
+      "target": "th12",
+      "role": "measured by the batch pass (round 301, relaxed scan): push ecx",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 22,
+      "literals": 22,
+      "uses": [
+        "graphics-pipeline.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --span 0x40 --min-run 5 (wildcard-regex scan of .text then entry-alignment scoring), applied only at paired 1.000 over >= 12 instructions with a source the harness does not name",
+      "evidence": [
+        "22 of 22 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by graphics-pipeline.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x454360",
+      "targetAddress": "0x0045fe60",
+      "target": "th12",
+      "role": "measured by the batch pass (round 301, relaxed scan): mov eax, dword ptr [0x4ce8cc]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 21,
+      "literals": 21,
+      "uses": [
+        "ecl-resource.test.mjs",
+        "player-initialization.test.mjs",
+        "world-oracle.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --span 0x40 --min-run 5 (wildcard-regex scan of .text then entry-alignment scoring), applied only at paired 1.000 over >= 12 instructions with a source the harness does not name",
+      "evidence": [
+        "21 of 21 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by ecl-resource.test.mjs, player-initialization.test.mjs, world-oracle.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x454c60",
+      "targetAddress": "0x00460760",
+      "target": "th12",
+      "role": "measured by the batch pass (round 301, relaxed scan): sub esp, 0x88",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 15,
+      "literals": 15,
+      "uses": [
+        "dialogue.test.mjs",
+        "ending.test.mjs",
+        "title-selection.test.mjs",
+        "world-oracle.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --span 0x40 --min-run 5 (wildcard-regex scan of .text then entry-alignment scoring), applied only at paired 1.000 over >= 12 instructions with a source the harness does not name",
+      "evidence": [
+        "15 of 15 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by dialogue.test.mjs, ending.test.mjs, title-selection.test.mjs, world-oracle.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x4561e0",
+      "targetAddress": "0x00461920",
+      "target": "th12",
+      "role": "measured by the batch pass (round 301, relaxed scan): mov ecx, dword ptr [esp + 4]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 27,
+      "literals": 27,
+      "uses": [
+        "enemy-callbacks.test.mjs",
+        "hud-text.test.mjs",
+        "spell-controller.test.mjs",
+        "spell-overlay.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --span 0x40 --min-run 5 (wildcard-regex scan of .text then entry-alignment scoring), applied only at paired 1.000 over >= 12 instructions with a source the harness does not name",
+      "evidence": [
+        "27 of 27 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by enemy-callbacks.test.mjs, hud-text.test.mjs, spell-controller.test.mjs, spell-overlay.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x457270",
+      "targetAddress": "0x00462a80",
+      "target": "th12",
+      "role": "measured by the batch pass (round 301, relaxed scan): push ebp",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 19,
+      "literals": 19,
+      "uses": [
+        "controller-input.test.mjs",
+        "keyboard-input.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --span 0x40 --min-run 5 (wildcard-regex scan of .text then entry-alignment scoring), applied only at paired 1.000 over >= 12 instructions with a source the harness does not name",
+      "evidence": [
+        "19 of 19 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by controller-input.test.mjs, keyboard-input.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x4575a0",
+      "targetAddress": "0x00462db0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 301, relaxed scan): push ebp",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 17,
+      "literals": 17,
+      "uses": [
+        "title-selection.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --span 0x40 --min-run 5 (wildcard-regex scan of .text then entry-alignment scoring), applied only at paired 1.000 over >= 12 instructions with a source the harness does not name",
+      "evidence": [
+        "17 of 17 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by title-selection.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x458100",
+      "targetAddress": "0x00463910",
+      "target": "th12",
+      "role": "measured by the batch pass (round 301, relaxed scan): push 0x100",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 16,
+      "literals": 16,
+      "uses": [
+        "title-selection.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --span 0x40 --min-run 5 (wildcard-regex scan of .text then entry-alignment scoring), applied only at paired 1.000 over >= 12 instructions with a source the harness does not name",
+      "evidence": [
+        "16 of 16 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by title-selection.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x458670",
+      "targetAddress": "0x00463e80",
+      "target": "th12",
+      "role": "measured by the batch pass (round 301, relaxed scan): push ecx",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 19,
+      "literals": 19,
+      "uses": [
+        "config.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --span 0x40 --min-run 5 (wildcard-regex scan of .text then entry-alignment scoring), applied only at paired 1.000 over >= 12 instructions with a source the harness does not name",
+      "evidence": [
+        "19 of 19 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by config.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x4587a0",
+      "targetAddress": "0x00463fb0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 301, relaxed scan): push ecx",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 16,
+      "literals": 16,
+      "uses": [
+        "replay-recorder.test.mjs",
+        "score-file.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --span 0x40 --min-run 5 (wildcard-regex scan of .text then entry-alignment scoring), applied only at paired 1.000 over >= 12 instructions with a source the harness does not name",
+      "evidence": [
+        "16 of 16 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by replay-recorder.test.mjs, score-file.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x45dce0",
+      "targetAddress": "0x004696c0",
+      "target": "th12",
+      "role": "measured by the batch pass (round 301, relaxed scan): mov edx, dword ptr [eax + 0x1000]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 18,
+      "literals": 18,
+      "uses": [
+        "ecl-context.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --span 0x40 --min-run 5 (wildcard-regex scan of .text then entry-alignment scoring), applied only at paired 1.000 over >= 12 instructions with a source the harness does not name",
+      "evidence": [
+        "18 of 18 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by ecl-context.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x45dd20",
+      "targetAddress": "0x00469700",
+      "target": "th12",
+      "role": "measured by the batch pass (round 301, relaxed scan): mov ecx, dword ptr [eax + 0x1000]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 21,
+      "literals": 21,
+      "uses": [
+        "ecl-context.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --span 0x40 --min-run 5 (wildcard-regex scan of .text then entry-alignment scoring), applied only at paired 1.000 over >= 12 instructions with a source the harness does not name",
+      "evidence": [
+        "21 of 21 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by ecl-context.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x404470",
+      "targetAddress": "0x004049a0",
+      "target": "th12",
+      "role": "measured by the entry-prefiltered fallback (round 302): push ebp",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 28,
+      "literals": 28,
+      "uses": [
+        "stage-script.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --fallback: the entry list is precomputed once, candidates are accepted only when the first instruction agrees byte for byte outside the wildcard positions, and the survivors are aligned; the first aligned pair must start both instructions",
+      "evidence": [
+        "28 of 28 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by stage-script.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x40a1f0",
+      "targetAddress": "0x0040b5e0",
+      "target": "th12",
+      "role": "measured by the entry-prefiltered fallback (round 302): sub esp, 8",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 34,
+      "literals": 34,
+      "uses": [
+        "bullet-manager.test.mjs",
+        "bullet-state.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --fallback: the entry list is precomputed once, candidates are accepted only when the first instruction agrees byte for byte outside the wildcard positions, and the survivors are aligned; the first aligned pair must start both instructions",
+      "evidence": [
+        "34 of 34 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by bullet-manager.test.mjs, bullet-state.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x40f1d0",
+      "targetAddress": "0x004111b0",
+      "target": "th12",
+      "role": "measured by the entry-prefiltered fallback (round 302): push -1",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 25,
+      "literals": 25,
+      "uses": [
+        "ending.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --fallback: the entry list is precomputed once, candidates are accepted only when the first instruction agrees byte for byte outside the wildcard positions, and the survivors are aligned; the first aligned pair must start both instructions",
+      "evidence": [
+        "25 of 25 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by ending.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x435c50",
+      "targetAddress": "0x0043b450",
+      "target": "th12",
+      "role": "measured by the entry-prefiltered fallback (round 302): push -1",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 33,
+      "literals": 33,
+      "uses": [
+        "title-selection.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --fallback: the entry list is precomputed once, candidates are accepted only when the first instruction agrees byte for byte outside the wildcard positions, and the survivors are aligned; the first aligned pair must start both instructions",
+      "evidence": [
+        "33 of 33 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by title-selection.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x456520",
+      "targetAddress": "0x00461c50",
+      "target": "th12",
+      "role": "measured by the entry-prefiltered fallback (round 302): mov eax, dword ptr [esi]",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 50,
+      "literals": 50,
+      "uses": [
+        "enemy-globals.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --fallback: the entry list is precomputed once, candidates are accepted only when the first instruction agrees byte for byte outside the wildcard positions, and the survivors are aligned; the first aligned pair must start both instructions",
+      "evidence": [
+        "50 of 50 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by enemy-globals.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x45b610",
+      "targetAddress": "0x00466f00",
+      "target": "th12",
+      "role": "measured by the entry-prefiltered fallback (round 302): sub esp, 0x10",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 29,
+      "literals": 29,
+      "uses": [
+        "ecl-control.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --fallback: the entry list is precomputed once, candidates are accepted only when the first instruction agrees byte for byte outside the wildcard positions, and the survivors are aligned; the first aligned pair must start both instructions",
+      "evidence": [
+        "29 of 29 instructions paired (1.000), operand-shape agreement 1.000",
+        "used by ecl-control.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x4111c0",
+      "targetAddress": "0x00413230",
+      "target": "th12",
+      "role": "measured by the entry-prefiltered fallback (round 302): push ebx",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 23,
+      "literals": 23,
+      "uses": [
+        "enemy-globals.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --fallback: the entry list is precomputed once, candidates are accepted only when the first instruction agrees byte for byte outside the wildcard positions, and the survivors are aligned; the first aligned pair must start both instructions",
+      "evidence": [
+        "23 of 24 instructions paired (0.958), operand-shape agreement 1.000",
+        "used by enemy-globals.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x424830",
+      "targetAddress": "0x00427ec0",
+      "target": "th12",
+      "role": "measured by the entry-prefiltered fallback (round 302): mov edx, 0xfffffffe",
+      "window": 96,
+      "confidence": "measured",
+      "run": 24,
+      "literals": 24,
+      "uses": [
+        "laser-state.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --fallback: the entry list is precomputed once, candidates are accepted only when the first instruction agrees byte for byte outside the wildcard positions, and the survivors are aligned; the first aligned pair must start both instructions",
+      "evidence": [
+        "24 of 26 instructions paired (0.923), operand-shape agreement 1.000",
+        "used by laser-state.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x424dd0",
+      "targetAddress": "0x00428430",
+      "target": "th12",
+      "role": "measured by the entry-prefiltered fallback (round 302): mov eax, ecx",
+      "window": 96,
+      "confidence": "measured",
+      "run": 26,
+      "literals": 26,
+      "uses": [
+        "laser-manager.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --fallback: the entry list is precomputed once, candidates are accepted only when the first instruction agrees byte for byte outside the wildcard positions, and the survivors are aligned; the first aligned pair must start both instructions",
+      "evidence": [
+        "26 of 29 instructions paired (0.897), operand-shape agreement 1.000",
+        "used by laser-manager.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x41b380",
+      "targetAddress": "0x0041e020",
+      "target": "th12",
+      "role": "measured by the entry-prefiltered fallback (round 302): push ebp",
+      "window": 96,
+      "confidence": "measured",
+      "run": 24,
+      "literals": 24,
+      "uses": [
+        "hud.test.mjs",
+        "stage-completion.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --fallback: the entry list is precomputed once, candidates are accepted only when the first instruction agrees byte for byte outside the wildcard positions, and the survivors are aligned; the first aligned pair must start both instructions",
+      "evidence": [
+        "24 of 27 instructions paired (0.889), operand-shape agreement 1.000",
+        "used by hud.test.mjs, stage-completion.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x402aa0",
+      "targetAddress": "0x00403020",
+      "target": "th12",
+      "role": "measured by the entry-prefiltered fallback (round 302): push ebp",
+      "window": 96,
+      "confidence": "measured",
+      "run": 28,
+      "literals": 28,
+      "uses": [
+        "stage-draw.test.mjs",
+        "stage-passes.test.mjs",
+        "stage-runtime.test.mjs"
+      ],
+      "measuredWith": "tools/th-twin-batch.py --fallback: the entry list is precomputed once, candidates are accepted only when the first instruction agrees byte for byte outside the wildcard positions, and the survivors are aligned; the first aligned pair must start both instructions",
+      "evidence": [
+        "28 of 32 instructions paired (0.875), operand-shape agreement 1.000",
+        "used by stage-draw.test.mjs, stage-passes.test.mjs, stage-runtime.test.mjs"
+      ]
+    },
+    {
+      "sourceAddress": "0x4250b0",
+      "targetAddress": "0x004287c0",
+      "target": "th12",
+      "role": "measured by the entry-prefiltered fallback (round 302), alias resolved by use",
+      "window": 96,
+      "confidence": "measured",
+      "run": 20,
+      "literals": 20,
+      "measuredWith": "tools/th-twin-batch.py --fallback plus the full ranked candidate list from th-twin-rows.py --search --prefilter entries: two near-duplicate th11 laser functions rank the SAME two th12 targets, so the score cannot separate them and the assignment was corroborated by the suite that calls each one",
+      "evidence": [
+        "20 instructions paired (0.909), operand-shape agreement 1.000; the full candidate list is identical for both sources, which is why the score does not decide",
+        "corroborated by use: the suite that calls this address moves past the wall it was stuck at, while the alias partner keeps its own target"
+      ]
+    },
+    {
+      "sourceAddress": "0x4270f0",
+      "targetAddress": "0x0042ab80",
+      "target": "th12",
+      "role": "measured by the entry-prefiltered fallback (round 302), alias resolved by use",
+      "window": 96,
+      "confidence": "measured",
+      "run": 20,
+      "literals": 20,
+      "measuredWith": "tools/th-twin-batch.py --fallback plus the full ranked candidate list from th-twin-rows.py --search --prefilter entries: two near-duplicate th11 laser functions rank the SAME two th12 targets, so the score cannot separate them and the assignment was corroborated by the suite that calls each one",
+      "evidence": [
+        "20 instructions paired (0.909), operand-shape agreement 1.000; the full candidate list is identical for both sources, which is why the score does not decide",
+        "corroborated by use: the suite that calls this address moves past the wall it was stuck at, while the alias partner keeps its own target"
+      ]
+    },
+    {
+      "sourceAddress": "0x424ea0",
+      "targetAddress": "0x00428520",
+      "target": "th12",
+      "role": "derived by instruction index from an anchored row (round 302): 0x424ea0 inside 0x424d70",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 28,
+      "literals": 28,
+      "measuredWith": "tools/th-twin-batch.py --derive: the anchored pair 0x424d70 -> 0x4283d0 is aligned in one window pass and the source instruction at this address is mapped to the target instruction with the same index; the derivation is then verified on its own 0x60-byte window, which must align at both starts",
+      "evidence": [
+        "derived as the instruction with the same index as 0x424ea0 in the anchored pair 0x424d70 -> 0x4283d0",
+        "verified on its own window: 28 instructions paired (1.000) with operand-shape agreement 1.000"
+      ]
+    },
+    {
+      "sourceAddress": "0x456610",
+      "targetAddress": "0x00461d40",
+      "target": "th12",
+      "role": "derived by instruction index from an anchored row (round 302): 0x456610 inside 0x456520",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 28,
+      "literals": 28,
+      "measuredWith": "tools/th-twin-batch.py --derive: the anchored pair 0x456520 -> 0x461c50 is aligned in one window pass and the source instruction at this address is mapped to the target instruction with the same index; the derivation is then verified on its own 0x60-byte window, which must align at both starts",
+      "evidence": [
+        "derived as the instruction with the same index as 0x456610 in the anchored pair 0x456520 -> 0x461c50",
+        "verified on its own window: 28 instructions paired (1.000) with operand-shape agreement 1.000"
+      ]
+    },
+    {
+      "sourceAddress": "0x41b436",
+      "targetAddress": "0x0041e0d4",
+      "target": "th12",
+      "role": "derived by instruction index from an anchored row (round 302): 0x41b436 inside 0x41b380",
+      "window": 96,
+      "confidence": "measured",
+      "run": 22,
+      "literals": 22,
+      "measuredWith": "tools/th-twin-batch.py --derive: the anchored pair 0x41b380 -> 0x41e020 is aligned in one window pass and the source instruction at this address is mapped to the target instruction with the same index; the derivation is then verified on its own 0x60-byte window, which must align at both starts",
+      "evidence": [
+        "derived as the instruction with the same index as 0x41b436 in the anchored pair 0x41b380 -> 0x41e020",
+        "verified on its own window: 22 instructions paired (0.917) with operand-shape agreement 1.000"
+      ]
+    },
+    {
+      "sourceAddress": "0x452680",
+      "targetAddress": "0x0045df36",
+      "target": "th12",
+      "role": "derived by instruction index from an anchored row (round 302): 0x452680 inside 0x452420",
+      "window": 96,
+      "confidence": "measured",
+      "run": 56,
+      "literals": 56,
+      "measuredWith": "tools/th-twin-batch.py --derive: the anchored pair 0x452420 -> 0x45dcd0 is aligned in one window pass and the source instruction at this address is mapped to the target instruction with the same index; the derivation is then verified on its own 0x60-byte window, which must align at both starts",
+      "evidence": [
+        "derived as the instruction with the same index as 0x452680 in the anchored pair 0x452420 -> 0x45dcd0",
+        "verified on its own window: 56 instructions paired (0.903) with operand-shape agreement 1.000"
+      ]
+    },
+    {
+      "sourceAddress": "0x424ee0",
+      "targetAddress": "0x00428560",
+      "target": "th12",
+      "role": "derived by instruction index from an anchored row (round 302): 0x424ee0 inside 0x424d70",
+      "window": 96,
+      "confidence": "measured",
+      "run": 28,
+      "literals": 28,
+      "measuredWith": "tools/th-twin-batch.py --derive: the anchored pair 0x424d70 -> 0x4283d0 is aligned in one window pass and the source instruction at this address is mapped to the target instruction with the same index; the derivation is then verified on its own 0x60-byte window, which must align at both starts",
+      "evidence": [
+        "derived as the instruction with the same index as 0x424ee0 in the anchored pair 0x424d70 -> 0x4283d0",
+        "verified on its own window: 28 instructions paired (0.875) with operand-shape agreement 1.000"
+      ]
+    },
+    {
+      "sourceAddress": "0x431f70",
+      "targetAddress": "0x00437980",
+      "target": "th12",
+      "role": "derived by instruction index from an anchored row (round 302): 0x431f70 inside 0x431c70",
+      "window": 96,
+      "confidence": "measured",
+      "run": 26,
+      "literals": 26,
+      "measuredWith": "tools/th-twin-batch.py --derive: the anchored pair 0x431c70 -> 0x437680 is aligned in one window pass and the source instruction at this address is mapped to the target instruction with the same index; the derivation is then verified on its own 0x60-byte window, which must align at both starts",
+      "evidence": [
+        "derived as the instruction with the same index as 0x431f70 in the anchored pair 0x431c70 -> 0x437680",
+        "verified on its own window: 26 instructions paired (0.812) with operand-shape agreement 1.000"
+      ]
+    },
+    {
+      "sourceAddress": "0x403330",
+      "targetAddress": "0x004038f0",
+      "target": "th12",
+      "role": "measured as the enclosing entry of a queued mid-function address (round 303)",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 24,
+      "literals": 24,
+      "measuredWith": "tools/th-twin-batch.py --addresses <containers> --fallback: the queue addresses were mapped to the function entry that contains them (after the offset/address unit bug that made the first attempt return zero) and the entries were measured with the entry-prefiltered scan",
+      "evidence": [
+        "24 instructions paired (0.960), operand-shape agreement 1.000",
+        "this is the entry of an address still in the queue, measured so that the address itself can be derived from it"
+      ]
+    },
+    {
+      "sourceAddress": "0x403339",
+      "targetAddress": "0x004038f9",
+      "target": "th12",
+      "role": "derived by instruction index (round 303): 0x403339 inside 0x403330",
+      "window": 96,
+      "confidence": "measured",
+      "run": 23,
+      "literals": 23,
+      "measuredWith": "tools/th-twin-batch.py --derive-entry: the entry of the function containing this address is anchored, the two functions are aligned from their starts, and the same-index instruction is read off and then verified on its own 0x60-byte window",
+      "evidence": [
+        "derived as the same-index instruction as 0x403339 in the anchored pair 0x403330 -> 0x4038f0",
+        "verified on its own window: 23 instructions paired (0.958), operand-shape agreement 1.000"
+      ]
+    },
+    {
+      "sourceAddress": "0x403384",
+      "targetAddress": "0x00403946",
+      "target": "th12",
+      "role": "derived by instruction index (round 303): 0x403384 inside 0x403330",
+      "window": 96,
+      "confidence": "measured",
+      "run": 16,
+      "literals": 16,
+      "measuredWith": "tools/th-twin-batch.py --derive-entry: the entry of the function containing this address is anchored, the two functions are aligned from their starts, and the same-index instruction is read off and then verified on its own 0x60-byte window",
+      "evidence": [
+        "derived as the same-index instruction as 0x403384 in the anchored pair 0x403330 -> 0x4038f0",
+        "verified on its own window: 16 instructions paired (0.889), operand-shape agreement 1.000"
+      ]
+    },
+    {
+      "sourceAddress": "0x403480",
+      "targetAddress": "0x00403a45",
+      "target": "th12",
+      "role": "measured as the real enclosing entry of a queued address (round 304)",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 29,
+      "literals": 29,
+      "measuredWith": "tools/th-twin-batch.py --addresses <containers> --fallback, with the entry list built from direct-call targets (call_targets) in BOTH images: 27554 real entries against 60076 alignment guesses, because a function that is called is a function and an address that merely aligns is a guess",
+      "evidence": [
+        "29 instructions paired (1.000), operand-shape agreement 1.000",
+        "the entry of an address still in the queue, measured so the address can be derived from it by instruction index"
+      ]
+    },
+    {
+      "sourceAddress": "0x409377",
+      "targetAddress": "0x0040a6a7",
+      "target": "th12",
+      "role": "measured as the real enclosing entry of a queued address (round 304)",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 30,
+      "literals": 30,
+      "measuredWith": "tools/th-twin-batch.py --addresses <containers> --fallback, with the entry list built from direct-call targets (call_targets) in BOTH images: 27554 real entries against 60076 alignment guesses, because a function that is called is a function and an address that merely aligns is a guess",
+      "evidence": [
+        "30 instructions paired (1.000), operand-shape agreement 1.000",
+        "the entry of an address still in the queue, measured so the address can be derived from it by instruction index"
+      ]
+    },
+    {
+      "sourceAddress": "0x41265e",
+      "targetAddress": "0x0041496d",
+      "target": "th12",
+      "role": "measured as the real enclosing entry of a queued address (round 304)",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 27,
+      "literals": 27,
+      "measuredWith": "tools/th-twin-batch.py --addresses <containers> --fallback, with the entry list built from direct-call targets (call_targets) in BOTH images: 27554 real entries against 60076 alignment guesses, because a function that is called is a function and an address that merely aligns is a guess",
+      "evidence": [
+        "27 instructions paired (1.000), operand-shape agreement 1.000",
+        "the entry of an address still in the queue, measured so the address can be derived from it by instruction index"
+      ]
+    },
+    {
+      "sourceAddress": "0x429eb0",
+      "targetAddress": "0x0042feb0",
+      "target": "th12",
+      "role": "measured as the real enclosing entry of a queued address (round 304)",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 29,
+      "literals": 29,
+      "measuredWith": "tools/th-twin-batch.py --addresses <containers> --fallback, with the entry list built from direct-call targets (call_targets) in BOTH images: 27554 real entries against 60076 alignment guesses, because a function that is called is a function and an address that merely aligns is a guess",
+      "evidence": [
+        "29 instructions paired (1.000), operand-shape agreement 1.000",
+        "the entry of an address still in the queue, measured so the address can be derived from it by instruction index"
+      ]
+    },
+    {
+      "sourceAddress": "0x403511",
+      "targetAddress": "0x00403ad6",
+      "target": "th12",
+      "role": "derived by instruction index (round 303): 0x403511 inside 0x403480",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 20,
+      "literals": 20,
+      "measuredWith": "tools/th-twin-batch.py --derive-entry: the entry of the function containing this address is anchored, the two functions are aligned from their starts, and the same-index instruction is read off and then verified on its own 0x60-byte window",
+      "evidence": [
+        "derived as the same-index instruction as 0x403511 in the anchored pair 0x403480 -> 0x403a45",
+        "verified on its own window: 20 instructions paired (1.000), operand-shape agreement 1.000"
+      ]
+    },
+    {
+      "sourceAddress": "0x403528",
+      "targetAddress": "0x00403aed",
+      "target": "th12",
+      "role": "derived by instruction index (round 303): 0x403528 inside 0x403480",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 20,
+      "literals": 20,
+      "measuredWith": "tools/th-twin-batch.py --derive-entry: the entry of the function containing this address is anchored, the two functions are aligned from their starts, and the same-index instruction is read off and then verified on its own 0x60-byte window",
+      "evidence": [
+        "derived as the same-index instruction as 0x403528 in the anchored pair 0x403480 -> 0x403a45",
+        "verified on its own window: 20 instructions paired (1.000), operand-shape agreement 1.000"
+      ]
+    },
+    {
+      "sourceAddress": "0x41271a",
+      "targetAddress": "0x00414a29",
+      "target": "th12",
+      "role": "derived by instruction index (round 303): 0x41271a inside 0x41265e",
+      "window": 96,
+      "confidence": "anchored",
+      "run": 22,
+      "literals": 22,
+      "measuredWith": "tools/th-twin-batch.py --derive-entry: the entry of the function containing this address is anchored, the two functions are aligned from their starts, and the same-index instruction is read off and then verified on its own 0x60-byte window",
+      "evidence": [
+        "derived as the same-index instruction as 0x41271a in the anchored pair 0x41265e -> 0x41496d",
+        "verified on its own window: 22 instructions paired (1.000), operand-shape agreement 1.000"
+      ]
+    }
+  ]
+}

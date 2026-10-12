@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,mkdirSync,readdirSync} from 'node:fs';
+import {resolve,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {WASI} from 'node:wasi';
+import {nativePython} from './native-python.mjs';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..'),rt=resolve(root,'runtimes/th12/th12_web'),out=resolve(root,'artifacts/th16/enemy-phase-check');mkdirSync(out,{recursive:true});
+nativePython('tools/th16-enemy-phase-native.py',{cwd:root,stdio:'inherit',windowsHide:true});
+const env={...process.env,TEMP:out,TMP:out,TMPDIR:out};
+execFileSync(process.execPath,['runtimes/th13/th13_web/scripts/cpp/build-engine.mjs','--title','16'],{cwd:root,env,stdio:'inherit',windowsHide:true});
+const dir=resolve(root,'runtimes/th13/th13_web/artifacts/cpp/objects-th16'),wasm=resolve(out,'enemy-phase.wasm'),fixture='tests/cpp/th16-enemy-phase-fixture.cpp';
+execFileSync(resolve(rt,'../tools/wasi-sdk-34.0-x86_64-windows/bin/clang++.exe'),['--target=wasm32-wasip1','-std=c++17','-O2','-ffp-contract=off','-fno-exceptions','-fno-rtti','-mexec-model=reactor','-Wl,--no-entry','-Wl,--export-memory','-Wl,-z,stack-size=1048576','-DPORT_TITLE=16',fixture,...readdirSync(dir).filter(n=>n.endsWith('.o')).map(n=>resolve(dir,n)),'-o',wasm],{cwd:rt,env,stdio:'inherit',windowsHide:true});
+const bytes=readFileSync(wasm),wasi=new WASI({version:'preview1',args:[],env:{},preopens:{}}),{instance}=await WebAssembly.instantiate(bytes,{wasi_snapshot_preview1:wasi.wasiImport});wasi.initialize(instance);const c=instance.exports;
+const proof=JSON.parse(readFileSync(resolve(root,'artifacts/th16/enemy-phase-native.json'),'utf8'));
+for(const r of proof.phaseCounts)assert.equal(c.phase_count(r.value)>>>0,r.output,'own540');
+for(const r of proof.drops){assert.equal(c.drop(r.op,...r.args),0);assert.deepEqual(Array.from({length:20},(_,n)=>c.drop_word(n)>>>0),r.output,JSON.stringify(r));}
+for(const r of proof.markers){assert.equal(c.marker(r.boss,r.index,r.maximum,r.amount,r.kind),0);assert.deepEqual(Array.from({length:32},(_,n)=>c.marker_word(n)>>>0),r.output,JSON.stringify(r));}
+for(const r of proof.interrupts){const kind=r.name==='unused'?0:r.name===''?1:r.name==='Boss01Nonspell01'?2:3;assert.equal(c.interrupt_case(r.op,r.index,r.health,r.time,kind),0);assert.deepEqual([c.interrupt_word(r.index,0)>>>0,c.interrupt_word(r.index,1)>>>0],r.output);for(let which=0;which<2;++which){let name='';for(let n=0;n<64;++n){const ch=c.interrupt_char(r.index,which,n);if(!ch)break;name+=String.fromCharCode(ch);}assert.equal(name,r.names[which],JSON.stringify(r));}}
+assert.equal(c.drop(507,18,3),-2);assert.equal(c.marker(4,0,100,50,1),-2);assert.equal(c.marker(0,4,100,50,1),-2);
+for(const r of proof.consumers){assert.equal(c.phase_case(r.path,r.index,r.health,r.clock,r.flags,r.credit,r.chapter,r.spellflags,r.elapsed,r.special),r.selection,JSON.stringify(r));assert.deepEqual(Array.from({length:24},(_,n)=>c.phase_word(n)>>>0),r.output,JSON.stringify(r));}
+const sha=b=>createHash('sha256').update(b).digest('hex');
+for(const r of proof.deformations){assert.equal(c.deformation_case(Number(r.old),r.target,r.color),0);assert.deepEqual(Array.from({length:6},(_,n)=>c.deformation_word(n)>>>0),r.output,JSON.stringify(r));assert.deepEqual(Array.from({length:c.deformation_event_count()},(_,n)=>c.deformation_event(n)>>>0),r.events,JSON.stringify(r));}
+writeFileSync(resolve(root,'docs/porting/th16-enemy-phase-verified.json'),JSON.stringify({passed:true,title:16,completeGame:false,dropSetters:proof.drops.length,bossMarkers:proof.markers.length,interruptConfigurations:proof.interrupts.length,nativeExecutableSha256:proof.executableSha256,scope:'Complete own507/508/510 bodies with argument resolver boundaries; own527 four measured indices in four 0x54-stride GUI boss rows, SSE float32 health conversion/division. Complete normal514 and521 execute original424e40/424eb0 string-copy consumers; production goes through EnemyScriptServices and retains copied names after instruction mutation. Spell-practice branch, indices outside measured marker range, actual HUD rendering and full enemy frame are excluded.',wasmSha256:sha(bytes),sourceHashes:Object.fromEntries(['cpp/game/EnemyTh16Commands.cpp','cpp/game/EnemyState.hpp','cpp/game/EnemyScript.cpp','cpp/game/EnemyCommands.hpp','cpp/game/EnemyManager.cpp',fixture].map(n=>[n,sha(readFileSync(resolve(rt,n)))]))},null,2)+'\n');
+const reportPath=resolve(root,'docs/porting/th16-enemy-phase-verified.json'),report=JSON.parse(readFileSync(reportPath,'utf8'));
+report.interruptConsumers=proof.consumers.length;report.scope+=' Complete424f00 health and425010 timed consumers including first-active selection, independent phase clock, countdown, chapter-credit signed wrapping and timeout/survival/bomb/bonus state. Full frame ordering and gameplay remain outside this comparison.';report.sourceHashes['cpp/game/EnemyPhase.cpp']=sha(readFileSync(resolve(rt,'cpp/game/EnemyPhase.cpp')));report.sourceHashes['cpp/game/EnemyFrame.cpp']=sha(readFileSync(resolve(rt,'cpp/game/EnemyFrame.cpp')));writeFileSync(reportPath,JSON.stringify(report,null,2)+'\n');
+console.log(`PASS ${proof.drops.length} own TH16 drop setters, ${proof.markers.length} boss markers, ${proof.interrupts.length} normal interrupt configurations and ${proof.consumers.length} phase consumers`);
+report.phaseCountCommands=proof.phaseCounts.length;report.deformationCommands=proof.deformations.length;report.scope+=' Own540 HUD stage count422536 with controlled argument resolver and production dispatch. Complete629 with actual argument resolvers controlled, measured destructor/constructor boundaries and original405480 zero-angle normalization; production dispatch compared.';writeFileSync(reportPath,JSON.stringify(report,null,2)+'\n');
+console.log(`PASS ${proof.deformations.length} own TH16 ECL629 deformation commands`);

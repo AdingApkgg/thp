@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "cases": 827,
+  "failures": [],
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "oraclePath": "artifacts/th14/keys-controls-native-oct11.json",
+  "oracleSha256": "311463863164f85b903ee9f5ce143755b96d7239442ff023add7f224ec0bbe59",
+  "wasmPath": "H:\\code\\thp\\artifacts\\th14\\keys-controls-check\\keys.wasm",
+  "wasmSha256": "82d3e38c2abb75d429e9e91d3f49935fe23c3c0f91884974e3a1cc8ffd0790be",
+  "sourceHashes": {
+    "tests/cpp/th14-keys-controls-fixture.cpp": "5c4a13aa1c2d619e81f051e6efaf8c5ccb9c3ad43c8d1d95e1e8ba28f466f449",
+    "cpp/game/TitleKeys.cpp": "927e105f850cb76c828cc9b0b289de3353fe1a29db92d4db00d55fd7132e4847",
+    "cpp/game/TitleMenu.hpp": "596d63e4fce2e0e7981a362e2e68ad44300f630fe2e9341eab9e7e69d695873d",
+    "cpp/game/TitleMenu.cpp": "db8fca88d804b05fada836801f07d66d5f7234059a290b111e4610b91d1d10cf",
+    "cpp/game/MenuCursor.cpp": "acbe07403cfbd9310ce742240023bb739695b8340d1a815c304ab6d0b020a112"
+  },
+  "toolHashes": {
+    "tools/th14-keys-controls-native.py": "79e60a5155d8dc05c4f7f8cab782978e15b444421bf0f1d73338c9bccee70e33",
+    "tools/th14-keys-controls-check.mjs": "4d68b3c8c9bc7c53225fd1d8025427c275805790c15176d27e3e752a369a7faa"
+  },
+  "scope": "Complete retail45c520 callback and unchanged45d3c0 button reassignment, real cursor/history/timer helpers. Controller31-byte input, ANM creation/interrupt/digit refresh45c800/presentation45d4c0, audio delivery and screen transition are controlled boundaries. Live controller table initially equals config, as at normal startup; OS controller polling and GPU pixels excluded."
+}

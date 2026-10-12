@@ -1,0 +1,30 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>TH14 形状源颜色浮点对照</title>
+<style>body{background:#191c26;color:#eee;font:16px system-ui;margin:28px}button{font:inherit;padding:12px}#canvas{width:160px;height:120px}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:1100px}</style>
+<h1>TH14 形状源颜色浮点对照</h1><p>关闭混合，读取真正的 Direct3D9 与 WebGL RGBA32F 目标。保留原着色器，单独测量源颜色插值；不代表混合后的 RGBA8 画面通过。</p>
+<button id="run">运行 810 浮点场景</button><p id="status">等待运行</p><canvas id="canvas" width="640" height="480"></canvas><pre id="result"></pre>
+<script type="module">
+import create from './gpu.mjs';
+const status=document.querySelector('#status'),button=document.querySelector('#run'),result=document.querySelector('#result');
+const hex=async b=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',b)),n=>n.toString(16).padStart(2,'0')).join('');
+let core;
+button.addEventListener('click',async()=>{button.disabled=true;try{
+ status.textContent='正在绘制未混合的浮点源颜色';
+ const [native,reference,maskBytes,build]=await Promise.all([fetch('./native.json').then(r=>r.json()),fetch('./native.rgba32f').then(r=>r.arrayBuffer()),fetch('./mask.bgra').then(r=>r.arrayBuffer()).then(b=>new Uint8Array(b)),fetch('./build.json').then(r=>r.json())]);
+ const expected=new Float32Array(reference),actual=new Uint8Array(reference.byteLength),rows=[],critical=[];
+ const criticalPoints=[[424,80,117],[434,80,117],[439,38,88],[449,38,88],[512,66,112],[522,66,112],[527,61,99],[537,61,99],[694,69,103],[704,69,103],[709,45,75],[719,45,75],[782,66,112],[792,66,112],[797,54,98],[807,54,98]];
+ core??=await create({canvas:document.querySelector('#canvas')});if(!core._gpu_initialize())throw Error('浮点渲染器初始化失败');
+ for(const c of native.cases){
+  const p=core._gpu_original_shape_case(c.index);if(!p)throw Error('绘制失败 '+c.index);
+  const floats=new Float32Array(core.HEAPU8.buffer,p,c.size/4),bytes=new Uint8Array(core.HEAPU8.buffer,p,c.size);actual.set(bytes,c.offset);
+  let differentFloats=0,maxDelta=0,foregroundPixels=0,first=null;const differencesByChannel=[0,0,0,0];
+  for(let pixel=0;pixel<c.size/16;++pixel){const m=c.offset/4+pixel*4;if(maskBytes[m]===139&&maskBytes[m+1]===103&&maskBytes[m+2]===66&&maskBytes[m+3]===255)continue;++foregroundPixels;
+   for(let channel=0;channel<4;++channel){const j=pixel*4+channel,a=floats[j],b=expected[c.offset/4+j];if(!Number.isFinite(a)||!Number.isFinite(b))throw Error('非有限浮点值');if(a!==b){++differentFloats;++differencesByChannel[channel];const delta=Math.abs(a-b);maxDelta=Math.max(maxDelta,delta);first??={x:c.crop[0]+pixel%c.crop[2],y:c.crop[1]+Math.floor(pixel/c.crop[2]),channel,portable:a,d3d9:b};}}
+  }
+  rows.push({index:c.index,mode:c.mode,anchor:c.anchor,parent:c.parent,resolution:c.resolution,crop:c.crop,foregroundPixels,differentFloats,differencesByChannel,maxDelta,first,pixelsSha256:await hex(bytes.slice())});
+  for(const [index,x,y] of criticalPoints)if(index===c.index){const j=((y-c.crop[1])*c.crop[2]+x-c.crop[0])*4;critical.push({index,x,y,portable:Array.from(floats.subarray(j,j+4)),d3d9:Array.from(expected.subarray(c.offset/4+j,c.offset/4+j+4))});}
+ }
+ const report={diagnosticOnly:true,shaderUnmodified:true,blendingEnabled:false,completeGame:false,nativeEquivalent:false,cases:rows.length,exactForegroundCases:rows.filter(r=>!r.differentFloats).length,differentFloats:rows.reduce((n,r)=>n+r.differentFloats,0),differencesByChannel:rows.reduce((v,r)=>v.map((n,i)=>n+r.differencesByChannel[i]),[0,0,0,0]),maxDelta:Math.max(...rows.map(r=>r.maxDelta)),nativePixelsSha256:await hex(reference),portablePixelsSha256:await hex(actual),wasmSha256:build.wasmSha256,critical,rows};
+ status.textContent=`已完成 ${report.cases} 浮点场景；前景逐位一致 ${report.exactForegroundCases}；不同浮点值 ${report.differentFloats}`;
+ result.textContent=JSON.stringify(report,null,2);
+ }catch(e){status.textContent='测试失败：'+e.message;result.textContent=String(e.stack||e);}finally{button.disabled=false;}});
+</script></html>

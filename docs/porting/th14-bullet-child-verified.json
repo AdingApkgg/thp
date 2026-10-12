@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "cases": 6048,
+  "requests": 5040,
+  "poolCases": 1456,
+  "capacityCases": 16,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "24a16d5ffa3ea75c2f62181cab8f1785947f2b323afac0b67e53d7479a29d11d",
+  "scope": "Actual 418140 ETEX 2000 paired-record dispatch, active/concurrent gating, exact 0x380 child emitter bytes, copied 18-record program, angle/speed sentinels, angle normalization, parent index and optional cancellation request. Child emission and parent cancellation are recorded boundaries; their launch/cancel behavior has separate proofs. Separately exercises the production child factory with controlled blank ANM, checking emitted child state and parent cancellation, including exhausted/one-slot-free pools. These integration cases are not native pool/recursion comparisons. Recursive ordering, whole-frame movement, animation and pixels remain outside this comparison.",
+  "sourceHashes": {
+    "tests/cpp/th14-bullet-child-fixture.cpp": "04f83d51a6808c9bd4b8231e3949cce74061599eba6a590c1b96deb7d2980826",
+    "cpp/game/BulletTh14.cpp": "1bf020089cb0c6a021a6fa12806c8c25bd22b2bf2a26a88c9007a5cfd5f0b6a0",
+    "cpp/game/BulletState.hpp": "cde25c89c7b7fc4add8fe5152b2913dc1a18ba836965e849787661b9d635c02e",
+    "cpp/game/BulletManager.hpp": "2ed0e886b1969e5e07fcaf4c0d1cd52c0fe3b0bf3bd6296041e080a2225d9425",
+    "cpp/game/BulletManager.cpp": "1ca1b2e9a1c714b114fc03989c4e4cfb2c2c147aa101cd26fec9907569ca6689",
+    "cpp/game/BulletTh14Launch.cpp": "f081116da8a89d7e25890072cfbe0c089d3746f51dc37a0f99a2577429c3a7bc"
+  },
+  "toolHashes": {
+    "tools/th14-bullet-child-native.py": "6603c40fea8a0c433159ba44365b796d7c22a191bb275d6501e1ba560fc15aa5",
+    "tools/th14-bullet-child-check.mjs": "e1ccf7508d6be8d66487e3639ea0ce44c7cc20231a0ca2f888a53cd02b76021e"
+  }
+}

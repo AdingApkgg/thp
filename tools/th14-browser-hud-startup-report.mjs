@@ -1,0 +1,9 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {createHash} from 'node:crypto';
+const root=resolve(import.meta.dirname,'..'),sha=b=>createHash('sha256').update(b).digest('hex');
+const build=JSON.parse(readFileSync(resolve(root,'runtimes/th14/th14_web/artifacts/sdl3/build.json'),'utf8'));assert.equal(build.sha256,'af81e4b44ed238318d27f7420f5dee5a267d6170a71c25af50c4e95cac97a480');
+assert.equal(sha(readFileSync(resolve(root,'runtimes/th14/th14_web/artifacts/sdl3/th11-harness.wasm'))),build.sha256);
+const evidence=['artifacts/th14/browser-hud-startup-normal-oct11.png','artifacts/th14/browser-hud-startup-demo-oct11.png','artifacts/th14/browser-hud-startup-normal-logs-oct11.json'];
+writeFileSync(resolve(root,'docs/porting/th14-browser-hud-startup-verified-oct11.json'),JSON.stringify({passed:true,completeGame:false,nativeEquivalent:false,url:'http://127.0.0.1:8132/',build,persistentStoreMounted:true,artificialClear:false,hiddenUnlockCode:false,forcedInvincibility:false,observations:['Actual Game Start/Normal/ReimuA entry, original-ECL stage1 shows Item Get Border Line at early frame38 and normal HUD/bullets at screenshot frame216.','Ordinary initial power100/lives2/bombs3; host pause preserves inspection, return via host title/start.','No-input title reaches original demo0 stage3 automatically; screenshot health readout frame1434 contains proper Demo Play script94, NORMAL label and live original replay battle.'],scope:'Browser presence/routing of startup HUD and original demo marker, with original local resources and formal save store; excludes native pixel/audio equality, full-game/campaign clear and IndexedDB reload proof.',evidence:Object.fromEntries(evidence.map(n=>[n,sha(readFileSync(resolve(root,n)))]))},null,2)+'\n');console.log('PASS observed browser normal HUD and original demo marker');

@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "frames": 1377,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "resourceSha256": "b4a3b5196891727c698e33720f238b6fb35a12ba8581495e721b25536a7786ee",
+  "wasmSha256": "8157fc94dac7e531c4251d4988a1622ba78f194629e9c7545e73cd7903dba49a",
+  "scope": "Full native interpreter versus production on retail pl02.anm scripts 20/21/22 through termination at rates .5/1/1.25: sprite, color, layer, resolution flags, active bit, clock, position, scale and extra scale. Native sprite binding and child creation are controlled; script-21 request for child 22 is checked and script 22 is independently executed. No GPU/pixel or full Bomb-controller equivalence is claimed.",
+  "sourceHashes": {
+    "tests/cpp/th14-sakuya-b-anm-fixture.cpp": "5eff603629c5cc3912308edd81ba2bee6e4c5734209dfe7e5119ec10e70f0283",
+    "cpp/game/AnmVm.cpp": "f6ea07e46ae7d1d9cba4f643b72c9161628dbff66575a981b4f8a74345a67d3f",
+    "cpp/game/AnmInterpreter.cpp": "894d3d0ee4517bd973c473d769375569c1a411715a887e015fb6ff7b9aaa49fc",
+    "cpp/game/AnmManager.cpp": "74e295ed35846687274ecf6d868eb9f9a20746341e1f390e4da168e56754a759",
+    "cpp/game/AnmGeometry.cpp": "876273a619274307c37a94faf74dce6948778f0f61cb32d344f447b35490fed5",
+    "cpp/game/AnmResource.cpp": "7391cebdd1be0faa8ad9201352debef81b436543f2f6703d962bb4c504490c41"
+  },
+  "toolHashes": {
+    "tools/th14-sakuya-b-anm-native.py": "d55af9b26f10573ebcf5d63397b6596e9ad4f9de278cf0826067f0f8254a4a1d",
+    "tools/th14-sakuya-b-anm-check.mjs": "0a1218ca79ac4bb175a9c9335fb386f50e8bc268ad035ed33947c790bbabcad7"
+  }
+}

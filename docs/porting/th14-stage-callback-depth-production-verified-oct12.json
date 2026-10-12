@@ -1,0 +1,315 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "changedFiles": [
+    "runtimes/th12/th12_web/cpp/game/AnmRenderer.hpp",
+    "runtimes/th12/th12_web/cpp/game/AnmRenderer.cpp",
+    "runtimes/th12/th12_web/cpp/game/StageDraw.cpp"
+  ],
+  "scriptCases": 192,
+  "invisibleWholeLayerCases": 864,
+  "originalScriptTimelineFrames": 14400,
+  "visibleWholeLayerCases": 768,
+  "quads": 1872,
+  "exactFloatComponents": 44928,
+  "extendedStageFrames": 20400,
+  "callbackCases": 6912,
+  "callbackStrips": 2304,
+  "standaloneCallbackCases": 768,
+  "standaloneCallbackStrips": 936,
+  "mixedCases": 15360,
+  "mixedStrips": 13520,
+  "mixedQuads": 14976,
+  "exactDataWords": 7467616,
+  "legacyBuilds": [
+    {
+      "title": 12,
+      "bytes": 903005,
+      "sha256": "77133233ab29a56a6dfd2169697d50cf2ce42f819a607a427a37482cb93dd259"
+    },
+    {
+      "title": 13,
+      "bytes": 909578,
+      "sha256": "81578bd552c0175994ddbcb668865fcbe624c2bf56ed8fda03dac670dfb8e853"
+    }
+  ],
+  "release": {
+    "bytes": 1861921,
+    "sha256": "dbac2c7caf79995a09a3af15d122cc145be9324067235c349ddf6dff7eaa4e54"
+  },
+  "launcher": {
+    "url": "http://127.0.0.1:8185/?game=th14",
+    "files": 127,
+    "buildId": "81eb78ddda527332126e",
+    "browserWarningsOrErrors": 0
+  },
+  "evidence": {
+    "docs/porting/th14-stage-standalone-observed-oct12.json": {
+      "bytes": 27611,
+      "sha256": "7bd226492ab63ae0c92ae070f0bbbea02a0e9577b695b29ecd6050dd57ce3af8"
+    },
+    "docs/porting/th14-stage-standalone-render-observed-oct12.json": {
+      "bytes": 27523,
+      "sha256": "cfa8159d2315fb4525de5b55daa21b9ee97c1d45a3d48caa25c60ce8671df259"
+    },
+    "docs/porting/th14-stage-standalone-integration-verified-oct12.json": {
+      "bytes": 2172469,
+      "sha256": "b87a890c58e8db07141b834c464e7eaca768ec81f13f628cb16c9a46657d9112"
+    },
+    "docs/porting/th14-stage-layer-state-observed-oct12.json": {
+      "bytes": 27937,
+      "sha256": "fdbc1d28b48a0f9cd4e2cb7aaad4a82ef2b532edde1dd13f3cfe84c55614a004"
+    },
+    "docs/porting/th14-stage-visibility-observed-oct12.json": {
+      "bytes": 51231,
+      "sha256": "f6a9fbbc0a73e404ab5178d7646f38d2a75ee31fc4ba9431ba458b490abdb2a8"
+    },
+    "docs/porting/th14-stage-draw-integration-verified-oct12.json": {
+      "bytes": 914445,
+      "sha256": "dc7ef67c6329c985d48e823f3bf038b02117e3f5872fd03cf9fbf35c47d9e754"
+    },
+    "docs/porting/th14-real-message-session-sync-verified-oct12.json": {
+      "bytes": 57519,
+      "sha256": "d0e6f5629996178b8c0de6ff921a6cde03b4bdda704ede7c4561ba36f006fe83"
+    },
+    "artifacts/th14/stage-standalone/native.json": {
+      "bytes": 1301344,
+      "sha256": "f94e89f6f732c950d187e861ca2f11a57376744b32c25e08cb096e8a8dd02c9f"
+    },
+    "tools/th14-stage-standalone-native.py": {
+      "bytes": 7700,
+      "sha256": "7dbde5a1a5bd00808161376eb26348ea6486a8bb4a3232e16e035e83bd624aa6"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-standalone-fixture.cpp": {
+      "bytes": 3886,
+      "sha256": "67d496554cecd9cd987d7b657e33018620adf885d2e6a6c8423dcbb9b54e882f"
+    },
+    "tools/th14-stage-standalone-check.mjs": {
+      "bytes": 4663,
+      "sha256": "7e5f51a10c5eae37cad64d7c7c401e898a45046da0791519f09bf82e7c3cb685"
+    },
+    "artifacts/th14/stage-standalone/standalone.wasm": {
+      "bytes": 789582,
+      "sha256": "b8524db029254c79e360e371639c25dd8c4380fe832da54bb018447679f0b3ae"
+    },
+    "artifacts/th14/stage-standalone-render/native.json": {
+      "bytes": 466957,
+      "sha256": "a3e8b6a74d7906c8948d75bc066a95a7fb8ab6494fff236449f221c410d66adf"
+    },
+    "tools/th14-stage-standalone-render-native.py": {
+      "bytes": 7398,
+      "sha256": "ee41d485500cba7444de36a493f28706fc462f36304791b8f4c6e8f3968e589c"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-standalone-render-fixture.cpp": {
+      "bytes": 3002,
+      "sha256": "c18e20a61cc8f11bb62ec3e4cc9ebd8f3cc924e291b553bb5e9d697464bac544"
+    },
+    "tools/th14-stage-standalone-render-check.mjs": {
+      "bytes": 4107,
+      "sha256": "82d3d1259962ce3785057b6388e36868c50376f42cf282dd21db0821c9746a26"
+    },
+    "artifacts/th14/stage-standalone-render/render.wasm": {
+      "bytes": 764865,
+      "sha256": "bc6b51d249aa8ab8f783c302bd161c3665b141e7fb14a9b5477b4952c94cae28"
+    },
+    "artifacts/th14/stage-standalone-integration/stages.wasm": {
+      "bytes": 815118,
+      "sha256": "1e02f46e52e0e915e902f648198a19bcf2fd9e9749f78c56bbd8ecd483d413cb"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-standalone-integration-fixture.cpp": {
+      "bytes": 3789,
+      "sha256": "b9bc97cbc8cd2c12d57e1cf4c9c43849173b89d58e4e3c34f788e8f913ed7a22"
+    },
+    "tools/th14-stage-standalone-integration-check.mjs": {
+      "bytes": 5708,
+      "sha256": "99548f47a24d200a6f6afa0ade0e70c0d7a2efb73f290d6fd4cf1e1022e5d63c"
+    },
+    "artifacts/th14/stage-standalone/before-standalone-fix/observed.json": {
+      "bytes": 286961,
+      "sha256": "99a0234ec6a15312c81c0e1c7fd365a6dff4ef469b628285b2d1a77e1fa54699"
+    },
+    "artifacts/th14/stage-standalone/before-standalone-fix/native.json": {
+      "bytes": 108316,
+      "sha256": "2325f78c2ab8fa9c934d84c47c8968b612b67e91a4640ce1ccc8641c6e0c2cf5"
+    },
+    "artifacts/th14/stage-standalone/before-standalone-fix/Stage.hpp": {
+      "bytes": 3846,
+      "sha256": "64f1f536e6116317b6fb09390f38bb34871002deccd26e20140475623c902e97"
+    },
+    "artifacts/th14/stage-standalone/before-standalone-fix/StageScript.cpp": {
+      "bytes": 10727,
+      "sha256": "0ed157158b33e64846fccff40c3139c4dbb0469376873070ab326d941ad6b5fe"
+    },
+    "artifacts/th14/stage-standalone/before-standalone-fix/StageDraw.cpp": {
+      "bytes": 8930,
+      "sha256": "a00270c990e6274dd3dfb914a989dedc6a58afa7bbf42b764073a712a4a20ac8"
+    },
+    "artifacts/th14/stage-standalone/before-standalone-fix/standalone.wasm": {
+      "bytes": 775991,
+      "sha256": "6867441e66dfa13a84e2931b7d6c8df0a677ff687d3e72200a1264f2fd5d407e"
+    },
+    "docs/porting/th14-stage-callback-depth-observed-oct12.json": {
+      "bytes": 28050,
+      "sha256": "ee810e2cf35dd712a4c6c44d566baa1c6d4da0ca2ef4a20f9186f0898155654c"
+    },
+    "artifacts/th14/stage-callback-depth/native.json": {
+      "bytes": 2693468,
+      "sha256": "e021ac316fe8f4b84947cc98cc6bfa92fc4951c13b79c3da21411247b7df5d5b"
+    },
+    "tools/th14-stage-callback-depth-native.py": {
+      "bytes": 7153,
+      "sha256": "852379f163727d2fc4e0b3d60ae7aec791057f8743a114b64768237acc377670"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-callback-depth-fixture.cpp": {
+      "bytes": 4023,
+      "sha256": "e5a927c8cffb9384b728e1c50baa0c2c98f3fa713bd7639313fdbce4237d5499"
+    },
+    "tools/th14-stage-callback-depth-check.mjs": {
+      "bytes": 3764,
+      "sha256": "88aad2b690c49b1d2067e9623ddd29058191028276f824dcc06dc6285ded465b"
+    },
+    "artifacts/th14/stage-callback-depth/layer.wasm": {
+      "bytes": 765474,
+      "sha256": "ef32934e4a09aab74235e254efd16e5135c81b8db3d805b57d3a00ed9f80299d"
+    },
+    "docs/porting/th14-stage-standalone-callback-observed-oct12.json": {
+      "bytes": 27649,
+      "sha256": "c6097709d0fed38e8177020e927c40ef6cb29cb14f64c59dc88e63090a579506"
+    },
+    "artifacts/th14/stage-standalone-callback/native.json": {
+      "bytes": 104826,
+      "sha256": "fc256d6851a051abc4d483bcc4860c03784c31670d3bfb6bf51b976645897a0d"
+    },
+    "tools/th14-stage-standalone-callback-native.py": {
+      "bytes": 7979,
+      "sha256": "8702a2328c6433defeb55220ca9b2d1ddb751d70722b2e8660b19da8059beb27"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-standalone-callback-fixture.cpp": {
+      "bytes": 2933,
+      "sha256": "c93a65e3c942772b2f77c5db04c5db5abc5b8be930cadb2bbde379b84c365b47"
+    },
+    "tools/th14-stage-standalone-callback-check.mjs": {
+      "bytes": 3426,
+      "sha256": "5a04aadceab076a1b60c710a24657be1e2411923f9ee640de33abbdcec3d3a90"
+    },
+    "artifacts/th14/stage-standalone-callback/callback.wasm": {
+      "bytes": 764810,
+      "sha256": "0697edf9e12e3b515a5601ed0f2f27e06ee758984b9d8cc0df6dafb18d7db122"
+    },
+    "docs/porting/th14-stage-mixed-render-observed-oct12.json": {
+      "bytes": 27772,
+      "sha256": "c81e9ff8b1c7fd646f8a1551c5f9186d6ed5caff6dc5db8aa003303c9032a564"
+    },
+    "artifacts/th14/stage-mixed-render/native.json": {
+      "bytes": 79381955,
+      "sha256": "6a31603527cb1a1cd7e4446aa3f26081af6a1d8b415ebf3095d16299a84a1fd8"
+    },
+    "tools/th14-stage-mixed-render-native.py": {
+      "bytes": 8734,
+      "sha256": "3eb6330dc08415cdd911713c331661b76eeb3f8cba647caf7d5cec7a55d8a826"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-mixed-render-fixture.cpp": {
+      "bytes": 3641,
+      "sha256": "90fb5a91ade2415fbdb0e72ebde8cbe0617cd52f60f084ee72783e7868920dc1"
+    },
+    "tools/th14-stage-mixed-render-check.mjs": {
+      "bytes": 3604,
+      "sha256": "44b3185ac95e9b4b87e41756eca725c19aca3a086ec9afc314220e2512c1a2af"
+    },
+    "artifacts/th14/stage-mixed-render/callback.wasm": {
+      "bytes": 765272,
+      "sha256": "07bdf11d5d6a8b24f06b1b50a2d127411c9d3e29f148d8ecd73d331b7b5a2fe9"
+    },
+    "artifacts/th14/stage-callback-depth/before-callback-cache-fix/observed.json": {
+      "bytes": 328163,
+      "sha256": "4a5732034008bb36246d468f221e0ef006c1f86a9d2078115e74aedf8eaad8bc"
+    },
+    "artifacts/th14/stage-callback-depth/before-callback-cache-fix/native.json": {
+      "bytes": 2693468,
+      "sha256": "a87aa38c4e12c2e77a3fe7886804ba846bbce95650c3bd0eb8fa609e98968987"
+    },
+    "artifacts/th14/stage-callback-depth/before-callback-cache-fix/StageDraw.cpp": {
+      "bytes": 9506,
+      "sha256": "add1d8400af7987b47f4a28a1ede275b228630a86caef65bf2e54e5901e15eea"
+    },
+    "artifacts/th14/stage-callback-depth/before-callback-cache-fix/AnmRenderer.cpp": {
+      "bytes": 24526,
+      "sha256": "d53c1f2ca9fa7b253c3059021c53f5e04deba9baae8b4a79aeccead17e4ef0a6"
+    },
+    "artifacts/th14/stage-callback-depth/before-callback-cache-fix/AnmRenderer.hpp": {
+      "bytes": 2181,
+      "sha256": "4dadf7c3c9de17f6959a23e373adb3d37f309588e9590ff923378ea0472013b5"
+    },
+    "artifacts/th14/stage-callback-depth/before-callback-cache-fix/layer.wasm": {
+      "bytes": 764506,
+      "sha256": "32c34a7ee20110ac87b126072adf42871dc9b5b19b5e33e305ec04e6e04c81af"
+    },
+    "artifacts/th14/stage-callback-depth/before-callback-cache-fix/native.py": {
+      "bytes": 7153,
+      "sha256": "0b8e3d5f8b1e1aa93dba742cd729daab897cb275e98ef96b1f3c6852f06097d2"
+    },
+    "artifacts/th14/stage-callback-depth/before-callback-cache-fix/check.mjs": {
+      "bytes": 3624,
+      "sha256": "26a3abfcdbef354d4b5ba0928fd1b3fd3fa3ba89ce6c0892f740c502b926ad94"
+    },
+    "artifacts/th14/stage-mixed-render/before-negative-zero-input-fix/observed.json": {
+      "bytes": 204037039,
+      "sha256": "721a3cbf5e8a8558955d8dd2183ee46e7dfe1899cc59ebcd39013f5c1b3539de"
+    },
+    "artifacts/th14/stage-mixed-render/before-negative-zero-input-fix/fixture.cpp": {
+      "bytes": 3636,
+      "sha256": "d0af594ba29cec1469ddac8961ccd683b42854906bab96c45edcff962fcbd6b8"
+    },
+    "artifacts/th14/stage-mixed-render/before-negative-zero-input-fix/callback.wasm": {
+      "bytes": 765260,
+      "sha256": "7fa622ee612915575b5504f0e0bd10c67d77e4d6111a8b53f86a3e16f34e74bf"
+    },
+    "artifacts/th14/stage-mixed-render/before-negative-zero-input-fix/check.mjs": {
+      "bytes": 3604,
+      "sha256": "44b3185ac95e9b4b87e41756eca725c19aca3a086ec9afc314220e2512c1a2af"
+    },
+    "runtimes/th14/th14_web/artifacts/sdl3-release/build.json": {
+      "bytes": 37704,
+      "sha256": "220dc3ea4732f85d609eef3a8d4fc80cbcde4803666946af20229f4a90915d92"
+    },
+    "runtimes/th14/th14_web/artifacts/sdl3-release/th11.wasm": {
+      "bytes": 1861921,
+      "sha256": "dbac2c7caf79995a09a3af15d122cc145be9324067235c349ddf6dff7eaa4e54"
+    },
+    "runtimes/th13/th13_web/artifacts/cpp/engine-th12-build.json": {
+      "bytes": 33155,
+      "sha256": "89253d5f0f753844f609e8616aef9a5b459124b06735ee3c0a153e017b681b7b"
+    },
+    "runtimes/th13/th13_web/artifacts/cpp/engine-th13-build.json": {
+      "bytes": 33155,
+      "sha256": "42b7e3b04b13aa5576da39358c813a94926eb0eb7415e520b35f02e60050291c"
+    },
+    "docs/porting/th14-launcher-runtime-prepared-oct11.json": {
+      "bytes": 50674,
+      "sha256": "54af27787dc6fd5873919392518a5adfc51b880f35dd644f8eee77bef29342c6"
+    },
+    "docs/porting/th14-launcher-preview-prepared-oct11.json": {
+      "bytes": 36442,
+      "sha256": "cffe282313a568f831381e9a830a1f2211202406f8a960cb7a2234a9ec815448"
+    },
+    "artifacts/th14/stage-callback-depth-launcher/ordinary-start-paused.png": {
+      "bytes": 246991,
+      "sha256": "1a36bffb5e113d93e15c671bc933a3144102bbc305826ee694d86a0152e55098"
+    },
+    "artifacts/th14/stage-callback-depth-launcher/browser-logs.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "tools/th14-stage-callback-depth-production-check.mjs": {
+      "bytes": 10726,
+      "sha256": "01c06e92ba637bc81e0996a93ae9d55d171841c0cfd9ab21de71363e0f697b0a"
+    }
+  },
+  "limits": [
+    "Original standalone script initialization/update are controlled; all layer/cursor/time assignments run in the original full interpreter",
+    "Original40f2f0/4107b0 and478f60 run with real32 D3DX; synthetic empty-object stages, invisible and visible modes0..3, GPU batch/flush and COM boundaries controlled",
+    "Seven real resource stages20400 frames include original stage3/frame2978 layer2 and all stage6 standalone commands; native timeline comparison covers script state, not complete original ANM/world update",
+    "Stage-scoped cache begins from actual pipeline state; full global Supervisor cache outside Stage is not established. Callback/mixed submissions use synthetic slots and controlled GPU/COM boundaries, no HAL pixels, whole original stage/world/audio or natural clear proof; complete1:1 remains unfinished"
+  ]
+}

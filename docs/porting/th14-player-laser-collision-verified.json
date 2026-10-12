@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "cases": 7200,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "b05606af4360fef43d302a64a5d713e240ac777d2be05e091f14ee569044dce8",
+  "scope": "Retail 44f0b0 geometry and collision-state result, including actual CRT sin/cos. Hit application 44f7a0 is a recorded boundary. Includes probe returning graze, bomb/state/invincibility gates. Does not verify death application, curve segment dispatch, cutting or graze delivery.",
+  "sourceHashes": {
+    "tests/cpp/th14-player-laser-collision-fixture.cpp": "26a6038035f5e0dd68569d5b7cee43be00fa2ee4d293192ecb630c374a64d74c",
+    "cpp/game/PlayerCollision.cpp": "b3dff58732a15f8beb7cccb2774ca85dd474f58e047abd82b132077b2e5f859f",
+    "cpp/game/PlayerCollision.hpp": "52388a89ef90b4837c3ecadbf10601fd1bc0ea0d955853393df6ccfde2fe6f8e"
+  },
+  "toolHashes": {
+    "tools/th14-player-laser-collision-native.py": "01811557b032aaf1de6d6c9101e8f8a73cf76eb41f61e27217d2c1dfc1c7e638",
+    "tools/th14-player-laser-collision-check.mjs": "6d987f1a31b93619ed55389cbb518ea44d631c105b1eae429f72f8d98928196b"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "title": 16,
+  "completeGame": false,
+  "cases": 13056,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "4de4b94c0d04aabf16f3a4144de6c8c78e4eaec9ebc9125b62ed6b96387c155e",
+  "scope": "Own42f4e0 single active item16 states1-5 (3840 cases) and cancel items9-14 states2/4 (9216 cases with pickup bounds kept outside the item path) with actual x87 polar and atan2, SSE movement, speed decay, falling, force attraction, focused/unfocused proximity attraction, boundary release, collection dispatch and clock/active count. ANM flags disabled and collection boundaries controlled; slowfall RNG, ordinary factory/reward bodies, season selection/release integration, draw and complete gameplay excluded.",
+  "sourceHashes": {
+    "cpp/game/ItemTh16.cpp": "05bd4a77139441a366be85e29b7b6f3bf65660315e984c73443a3e2bd9fdeee1",
+    "cpp/game/ItemManager.cpp": "a0dac66caa952b33ddb2046c352604078428e426b70098f255614d05db570759",
+    "cpp/game/ItemManager.hpp": "9f1c6b5a67e167a78813e4ca622aafcb7991b9ac0b7780292b4cefeb7c272dd5",
+    "cpp/game/GameBattle.cpp": "e732c9731da797582caeadde7d1209b0510a60f5406d83cb3ae2cec6d6e24b3c",
+    "tests/cpp/th16-item-update-fixture.cpp": "833da077eaaff50dbd3d29a8989d757a3a14641c6d9be1436fe0c8d3446420af"
+  }
+}

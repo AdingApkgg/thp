@@ -1,0 +1,29 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,mkdirSync,readdirSync} from 'node:fs';
+import {resolve,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {WASI} from 'node:wasi';
+import {nativePython} from './native-python.mjs';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..'),rt=resolve(root,'runtimes/th12/th12_web'),out=resolve(root,'artifacts/th14/item-pickup-check');mkdirSync(out,{recursive:true});
+const env={...process.env,TEMP:out,TMP:out,TMPDIR:out};
+nativePython('tools/th14-item-pickup-native.py',{cwd:root,stdio:'inherit',windowsHide:true});
+execFileSync(process.execPath,['runtimes/th13/th13_web/scripts/cpp/build-engine.mjs','--title','14'],{cwd:root,env,stdio:'inherit',windowsHide:true});
+const fixture='tests/cpp/th14-item-pickup-fixture.cpp',dir=resolve(root,'runtimes/th13/th13_web/artifacts/cpp/objects-th14'),wasm=resolve(out,'pickup.wasm');
+execFileSync(resolve(rt,'../tools/wasi-sdk-34.0-x86_64-windows/bin/clang++.exe'),['--target=wasm32-wasip1','-std=c++17','-O2','-ffp-contract=off','-fno-exceptions','-fno-rtti','-mexec-model=reactor','-Wl,--no-entry','-Wl,--export-memory','-DPORT_TITLE=14',fixture,...readdirSync(dir).filter(n=>n.endsWith('.o')).map(n=>resolve(dir,n)),'-o',wasm],{cwd:rt,env,stdio:'inherit',windowsHide:true});
+const bytes=readFileSync(wasm),wasi=new WASI({version:'preview1',args:[],env:{},preopens:{}}),{instance}=await WebAssembly.instantiate(bytes,{wasi_snapshot_preview1:wasi.wasiImport});wasi.initialize(instance);const c=instance.exports;
+const proof=JSON.parse(readFileSync(resolve(root,'artifacts/th14/item-pickup-native.json'),'utf8'));
+for(const [index,r] of proof.cases.entries()){
+ assert.equal(c.begin(...r.input),0,`case ${index}`);
+ assert.deepEqual(Array.from({length:6},(_,n)=>c.value(n)>>>0),r.result,`state ${index} ${r.input}`);
+ assert.deepEqual(Array.from({length:c.event_count()},(_,n)=>c.event_value(n)>>>0),r.events.flat(),`events ${index}`);
+}
+for(const r of proof.fragments){assert.equal(c.fragment(r.kind,...r.input),0,JSON.stringify(r));assert.deepEqual(Array.from({length:5},(_,n)=>c.fragment_value(n)>>>0),r.result,JSON.stringify(r));assert.deepEqual(Array.from({length:c.event_count()},(_,n)=>c.event_value(n)>>>0),r.events.flat(),JSON.stringify(r));}
+for(const r of proof.comboPickups){assert.equal(c.combo_pickup(...r.input),0,JSON.stringify(r));assert.deepEqual(Array.from({length:10},(_,n)=>c.combo_word(n)>>>0),r.result,JSON.stringify(r));assert.deepEqual(Array.from({length:c.event_count()},(_,n)=>c.event_value(n)>>>0),r.events.flat(),JSON.stringify(r));}
+for(const r of proof.settlements){assert.equal(c.settlement(...r.input),0,JSON.stringify(r));assert.deepEqual(Array.from({length:4},(_,n)=>c.settlement_word(n)>>>0),r.result,JSON.stringify(r));assert.deepEqual(Array.from({length:c.event_count()},(_,n)=>c.event_value(n)>>>0),r.events.flat(),JSON.stringify(r));}
+const sha=b=>createHash('sha256').update(b).digest('hex'),sources=[fixture,'cpp/game/ItemRewards.hpp','cpp/game/ItemRewards.cpp','cpp/game/Th14LifeFragments.hpp','cpp/game/GameEconomy.hpp','cpp/game/GameEconomy.cpp','cpp/game/ItemTh14.cpp','cpp/game/GameBattle.hpp'];
+const report={passed:true,cases:proof.cases.length,fragmentCases:proof.fragments.length,nativeExecutableSha256:proof.executableSha256,wasmSha256:sha(bytes),scope:'Actual retail 4390c0/4394a0/439300/439220 small-power/point/large-power/full-power rewards for types 1/2/3/8, below the collection line and item state 1. Wrapping score and point-item count, power limits and option-level transitions, character collection thresholds, signed/wrapping height-dependent point score, and popup/audio/notification/option-rebuild requests. Controlled native delivery boundaries and recording port callbacks. Native 447bb0/447b70/447d00/447cc0 life-fragment/life/bomb-fragment/bomb awards compare actual field changes, cap 8, life threshold 3, bomb threshold 8, max-life conversion and ordered controlled HUD/audio/notice requests. Life/Bomb icon binding and display labels are proved separately in th14-hud-notice-verified.json; actual icon animation pixels remain unverified. Above-line/state-3 collection combos remain explicitly unavailable; actual option rebuild, popup animation, resource pixels and complete gameplay are unverified.',sourceHashes:Object.fromEntries(sources.map(p=>[p,sha(readFileSync(resolve(rt,p)))]))};
+report.comboPickupCases=proof.comboPickups.length;report.comboSettlementCases=proof.settlements.length;
+report.scope=report.scope.replace('Above-line/state-3 collection combos remain explicitly unavailable;', 'Above-line/state-3 types 1/2/3/8 collection and combo accumulation compare retail 4390c0/4394a0/439300/439220 for 1,152 cases, including type-3 double score delivery at max power and type-8 max-point-value changes. Actual settlement tail 438dad..43907b compares 1,200 signed threshold/sum/timer/dialogue cases, including integer wrapping, popup multipliers/colors, positional sound 57, score caps and type 4/12 spawn delays. Popup and item-spawn deliveries are controlled boundaries; the fixture exercises the actual production ItemManager timer decrement and ItemRewards settlement. The life-fragment cases include the 49-extend sentinel transition at 4d5864. The live port records bonus-popup requests but the separate native five-slot bonus-text renderer is still unimplemented;');
+writeFileSync(resolve(root,'docs/porting/th14-item-pickup-verified.json'),JSON.stringify(report,null,2)+'\n');console.log(`PASS: ${report.cases} ordinary pickups; ${report.fragmentCases} fragment/whole-item cases; ${report.comboPickupCases} combo pickups; ${report.comboSettlementCases} settlements.`);

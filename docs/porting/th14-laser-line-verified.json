@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "initializations": 192,
+  "frames": 16089,
+  "cancellations": 840,
+  "deliveries": 5600,
+  "circleCuts": 1344,
+  "rectangleCuts": 4032,
+  "fragmentRequests": 208,
+  "integratedFragments": 208,
+  "registryCases": 5376,
+  "collisionCases": 3888,
+  "scaleCases": 243,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "f7203cb041c6a39ad97b2b99468b906cd0e633a73d37a82b55ed90215cf4fcaa",
+  "scope": "Retail 43aca0 state initialization, 43b060 ETEX 80/400/800/8000/10000/100000 and 43be20 growth/motion/offscreen retirement through 43c179, native clocks and 43da10 full cancel. Retail 43d300 circle and 43c500 rotated rectangle selection, retained-parent position/length/offset/mark and complete kind-0 fragment requests. Retail 43c250 geometry/graze clocks and player-hit rectangle request. ANM, sound, effects/items, player collision/graze and the player-hit rectangle consumer are recorded boundaries. Polar unwritten scratch Z is controlled zero. Production circle/rectangle registry integrations run real kind-0 constructors under controlled blank ANM scripts and compare every request and initial state. Full retail 43be20 entry also compares sprite width/height scale axes and the motion clock with recorded collision and ANM boundaries. Transform movement, real animation/update/draw sequencing and pixels remain outside this comparison.",
+  "sourceHashes": {
+    "tests/cpp/th14-laser-line-fixture.cpp": "85e8d4460c43507e5d5b2915cece9567e9d5b8543fc7888c0699a1edccde4682",
+    "cpp/game/LaserLineTh14.cpp": "fb845010a1c69a6246887b7a879cc3b3fba0b629a171d4980cf172aa12fe35c1",
+    "cpp/game/LaserManager.cpp": "229761c0414d79e24cedf4cb2b070dd93e484a7f2ede61ab0d86f0bab37b8e39",
+    "cpp/game/LaserManager.hpp": "2cc84e05ba3191d90f94dbbb895707b1dd5bdc3fe6a367cf32d90fd61f76bb5f",
+    "cpp/game/LaserState.hpp": "a81bc270664f55ae6690e13b7242d0384b530681fc52fbaeddad4a709f1c6543",
+    "cpp/game/EnemyTh14Commands.cpp": "b03cde800e77f792a688e15100c48eb350b32732cffde0912eeff72ba74f1ef2"
+  },
+  "toolHashes": {
+    "tools/th14-laser-line-native.py": "9bf28c339745ed6ec7f8b777551dfe172054a7edc67409ae2d56bb772a81ebfb",
+    "tools/th14-laser-line-collision-native.py": "22d4425fbdda3467961c5bed787d252e0761b5eb7a2eb195dcf1c685f1cecfab",
+    "tools/th14-laser-line-check.mjs": "83a813a331cce0d4052b4d56f65600641dc2d4e878986de38adb9715edcaa3ca"
+  }
+}

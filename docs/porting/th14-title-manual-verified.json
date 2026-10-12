@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "cases": 48,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "05b40626ab055a691f3a0cfad8dc74e9a6c339c0040ee243d9adbf3ad263a11e",
+  "scope": "Full original461d10 title Manual callback and458c80 state/timer helper, entry ascii19 only if absent plus title103/help factory, wait without exiting before help finished, finished cleanup/return Main and helpOrigin X128. ANM allocate/bind/tick/register, title creation/interrupt, help factory/destructor/free controlled. Help controller437c40 is proved separately; actual resource threads, GPU/font/PNG pixels and cursor history excluded. Production TitleMenu::update compares service requests/state/retained handles/create scripts/actual existing-root exit interrupts using synthetic ANM resources. Includes the production outer timer tick(+1), matching the native caller boundary after461d10; nonexistent-handle interrupt effects excluded.",
+  "sources": {
+    "runtimes/th12/th12_web/tests/cpp/th14-title-manual-fixture.cpp": "5d944a0ed049b3eb279c73f79d70b3f7b8ec4e7aa353cd649e12aeb132378c8e",
+    "runtimes/th12/th12_web/cpp/game/TitleMenu.hpp": "ec2c40f7cdab7fa503fb22331e2dce507ec9a6f9717ce73dd5d07ba72aa990e2",
+    "runtimes/th12/th12_web/cpp/game/TitleMenu.cpp": "db8fca88d804b05fada836801f07d66d5f7234059a290b111e4610b91d1d10cf",
+    "runtimes/th12/th12_web/cpp/game/TitleTh14.cpp": "930cd1701ab106a74c4d44b550db218df2998a02c01e632203221d1e8b453b15",
+    "tools/th14-title-manual-native.py": "95fd72dfd5f6555d21c6018293691139791713cd2cc5d020d46b806153035f70",
+    "tools/th14-title-manual-check.mjs": "1903934e62272ab99351923bfe3ac146760d86c6e73e081d464f2170837cf7f7"
+  }
+}

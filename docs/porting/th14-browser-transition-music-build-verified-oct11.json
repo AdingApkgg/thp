@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "url": "http://127.0.0.1:8132/",
+  "build": {
+    "bytes": 1770276,
+    "sha256": "eb5882c36ac91e43dedcbb2eb17f3ad33d02aaded08ad5a714c09e867d045c5a"
+  },
+  "clock": {
+    "level": "log",
+    "message": "[clock14] monotonic ticks=3777; initial seed=3777",
+    "timestamp": "2026-10-10T19:28:38.912Z",
+    "url": "http://127.0.0.1:8132/th11-harness.mjs"
+  },
+  "coreQueue": [
+    {
+      "level": "log",
+      "message": "[loading14] ascii script17 started; 9 resource uploads pending",
+      "timestamp": "2026-10-10T19:28:39.143Z",
+      "url": "http://127.0.0.1:8132/th11-harness.mjs"
+    },
+    {
+      "level": "log",
+      "message": "[loading14] resource uploads complete; interrupt1 delivered",
+      "timestamp": "2026-10-10T19:28:39.684Z",
+      "url": "http://127.0.0.1:8132/th11-harness.mjs"
+    }
+  ],
+  "stageQueue": [
+    {
+      "level": "log",
+      "message": "[loading14] stage entry; 5 resource uploads pending",
+      "timestamp": "2026-10-10T19:29:09.653Z",
+      "url": "http://127.0.0.1:8132/th11-harness.mjs"
+    },
+    {
+      "level": "log",
+      "message": "[loading14] resource uploads complete; interrupt1 delivered",
+      "timestamp": "2026-10-10T19:29:09.696Z",
+      "url": "http://127.0.0.1:8132/th11-harness.mjs"
+    }
+  ],
+  "visible": {
+    "stage": 3,
+    "frame": 311,
+    "fps": 59
+  },
+  "screenshot": "artifacts/th14/browser-transition-music-build-oct11.jpg",
+  "scope": "Current SDL build loaded through normal UI with persistent save store and actual core/first-demo stage queues. Screenshot confirms original stage3 attract gameplay. Stage6 music behavior checked separately using original controller instructions and production event boundaries, not proved by this stage3 browser image. No natural campaign, audio sample or GPU pixel equivalence.",
+  "sources": {
+    "artifacts/th14/browser-transition-music-logs-oct11.json": "e7ffdc80125f66e4737dff1a2f075a899060fc85df320a4a646a938a74ea8c58",
+    "runtimes/th12/th12_web/sdl-runtime/shell-harness.mjs": "e9f45286f648d9814a924799080718f962ea08fc9b3173443faf1a394e44d471"
+  }
+}

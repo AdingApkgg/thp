@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "cases": 270,
+  "hitSoundCases": 240,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "60a93903c5966f41519304a50b25dfa4591c574faed3af13bf15de5f295f5436",
+  "scope": "ECL 565 raw f32 ratio setter 427704 and actual 423b27..423b72 damage scaling: only bomb state 1 and ratio less than 1, signed i32-to-f32 rounding, CVTTSS2SI behavior, sound 36 for nonzero damage and nonpositive ratio. Includes ten ratio bit patterns (signed zero, NaN and infinities), nine signed damage values and three bomb states. Port constructor default ratio 1 matches retail 422fd5. Native argument getter and sound queue are controlled. Production ECL dispatch and shared scaling helper execute; ECL 553 hit-sound setter and actual 423f61..42407c consumer across 240 override/flags/spell/health cases also agree, including default sound 34 and low-health sound 35. Full shot accumulation, player damage, frame flash behavior, Bomb mechanics and complete gameplay remain unverified.",
+  "sourceHashes": {
+    "tests/cpp/th14-enemy-bomb-damage-fixture.cpp": "e869258ff56a1c1d6722086f2e85280bc6c891027a4bf63d552486696996102b",
+    "cpp/game/EnemyTh14Commands.cpp": "38f271da8f612ec7d60d4d78bcce5663b8ed31f551626184278db086d0a74a0f",
+    "cpp/game/EnemyCommands.hpp": "430efb18228ee438aff63138267edab377dd78491b733985155d175587ff991e",
+    "cpp/game/EnemyState.cpp": "371bd24df789d194c9e84a8ab6924a9291bf6b911bc99855bb3f10e0f64c575a",
+    "cpp/game/EnemyState.hpp": "704a595392b51443db3f6e6826f3005e6d75b5c30f509685a163722af8990463",
+    "cpp/game/EnemyFrame.cpp": "e4b7af71943d4c3a1d588b911ad03364fd66e3a1a27039f67ffc998f10f36d5a",
+    "cpp/game/EnemyScript.cpp": "90a877b6245ce53aa1c7ab1321010dee589cd3b7be7c9f0af14dd6f9e1c3a2e9"
+  }
+}

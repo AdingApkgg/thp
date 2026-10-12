@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "cases": 72,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "982fec35fccde11cbcf1bd8189f52855c3d8c86572b1dcaac1d493539a298e51",
+  "controlledPolarScratchZ": 0,
+  "scope": "Actual retail 414020 script RNG at 4db508, signed radius*16 and angle*pi, x87 polar and aim, script 58 request and return damage. Production ShotManager collector delivers callback 2 without a shot owner and matches effect request/script RNG seed/calls while guarding the untouched visual RNG at 4db510. Unwritten retail polar scratch z is controlled to zero; actual effect ANM, pool exhaustion and complete enemy flow are separate.",
+  "sourceHashes": {
+    "tests/cpp/th14-reimu-a-controller-fixture.cpp": "35422e5240f09ac72769a461a9ae9a15d3efc8f86db3bbd2b244763fa22735f4",
+    "cpp/game/ShotTh14.cpp": "462f4087a0e571b77f264b7f1a4aedc305effbb75ffcf0ee0d71482530ee5f24",
+    "cpp/game/ShotManager.hpp": "dbc180d71596a955e83e45729c0c92404fbffe81f59b05a30bef484adf1e136c",
+    "cpp/game/Rng.hpp": "3865a40f2ec26f6462f5daa52e7bc8b7e5f42f2c3f6c88d0bfcf3d6c154f4d9b"
+  }
+}

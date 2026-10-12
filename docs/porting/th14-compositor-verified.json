@@ -1,0 +1,136 @@
+{
+  "passed": true,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "nativeCompositorCallbacks": 10,
+  "nativeAnimationCallbacks": 32,
+  "scope": "Retail callback registration, four copy bindings at three display modes, camera viewports, layer ordering and target clear masks. Real text.anm is interpreted for copy draws; GPU/projection, alternate callback pointers and complete gameplay are outside this comparison.",
+  "modes": [
+    {
+      "width": 640,
+      "height": 480,
+      "bindings": [
+        59,
+        65,
+        62,
+        68
+      ],
+      "filters": [
+        1,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "width": 960,
+      "height": 720,
+      "bindings": [
+        60,
+        66,
+        63,
+        69
+      ],
+      "filters": [
+        1,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "width": 1280,
+      "height": 960,
+      "bindings": [
+        61,
+        67,
+        64,
+        70
+      ],
+      "filters": [
+        1,
+        1,
+        0,
+        1
+      ]
+    }
+  ],
+  "copyDraws": [
+    {
+      "copy": 0,
+      "draw": [
+        4,
+        3,
+        2,
+        115.5,
+        3.5,
+        0.18125000596046448,
+        0.008333333767950535
+      ]
+    },
+    {
+      "copy": 1,
+      "draw": [
+        3,
+        4,
+        2,
+        115.5,
+        3.5,
+        0.18125000596046448,
+        0.008333333767950535
+      ]
+    },
+    {
+      "copy": 2,
+      "draw": [
+        4,
+        3,
+        2,
+        115.5,
+        3.5,
+        0.18125000596046448,
+        0.008333333767950535
+      ]
+    },
+    {
+      "copy": 3,
+      "draw": [
+        0,
+        4,
+        2,
+        31.5,
+        15.5,
+        0.20000000298023224,
+        0.03333333507180214
+      ]
+    }
+  ],
+  "resourceHash": "bd3a65a871513c022f537778bbab0496e1f12d14b2b88f2811abd30b5f2f373f",
+  "wasmSha256": "3ccf1e62fa7e59aa25a682757d3ab522c8cebfb6fda7e37e7b2cfe8206353446",
+  "sourceHashes": {
+    "cpp/game/AnmVm.cpp": "ddf923bf1cc8d71b0bdf6f91a54b4b40f723d5a3023b295f2a8e0e833dcf5ad4",
+    "cpp/game/AnmResource.cpp": "ca6f5dbff0e5a5f8b6980354faf7165626a33cb7f88399987c8b573b30588947",
+    "cpp/game/AnmInterpreter.cpp": "eb94221d8f7249a71d0a77998b1ba074203704c5dfd8605acfe2a6312ab353ab",
+    "cpp/game/AnmManager.cpp": "5548af693e9b1f71fe1622654d27b7281398417a2c78ce720ae8164b3500e505",
+    "cpp/game/AnmGeometry.cpp": "876273a619274307c37a94faf74dce6948778f0f61cb32d344f447b35490fed5",
+    "cpp/game/AnmProjection.cpp": "ac2e73f94a4ee47770a40c8549b6691ebe7696c05820e3d07d7b7817e751df59",
+    "cpp/game/AnmRenderer.cpp": "b96496fca56e84a4efecc1fdf1c462ef5ae3b18d9e64ef3d8362dd1d278d5b58",
+    "cpp/game/GraphicsMath.cpp": "b159b3d617a522977c795351b5ff56338d5058b899ab984a590c8b50f8a9fd6e",
+    "cpp/game/Interpolation.cpp": "9524503fbad2810764253db4f56bd96c20551c24c6365932ba46cce169d84527",
+    "cpp/game/SceneCamera.cpp": "72a5b43fb397885086f65083cc13d22971bda2b7632c516df91301ed6d6c1e93",
+    "cpp/game/SceneCompositor.cpp": "d5a63afb95ff6ecce727d6a4beef4e8239c088f98012de7b381321b50996a6c5",
+    "tests/cpp/th14-compositor-fixture.cpp": "7ee5a0c85a8e6f257db1a11219c41ba63274739e711e999c1d3bab89e11b6649",
+    "cpp/game/SceneSchedule.hpp": "b13fbdf8bcb29c493579a0ae609190748269a8209cdee0c36f01ed4c52e0d054",
+    "cpp/game/SceneCompositor.hpp": "8a0370b333e1eeaa77a4bf45530e5eb4babbeb58db7e7683ec83199473fa3e50",
+    "cpp/game/AnmManager.hpp": "ca5293092fa63aac32a723ed398a883dfb7c62f90334870e4e8a5d5b819099ea",
+    "cpp/game/AnmRenderer.hpp": "796fdd548dd9bf35cc1ec69bf66da25aeefaf6c0cf631183bca99bf3cb3f7bc1",
+    "cpp/game/ZunGraphics.hpp": "9e3fd7bc59fb482dad01eea942c1cb491d5c56b6f287179a0ee706a291b146e7",
+    "cpp/game/GameSession.cpp": "f52d5eb52b887dab0a6ac81adfaf01efe668ca9c20bac004fe892f940f0cbc04",
+    "cpp/game/StageDraw.cpp": "b048fcf14d6e183e3dafff2fef68a8c512771132d2f25a0c87f4a4404ebfe751",
+    "cpp/sdl/GraphicsDevice.cpp": "b4fb5de14cbadf15ad6e00b349ebfed783975fb90b393badccc7f8db489504fb",
+    "tests/cpp/render-fixture.hpp": "84e42dc2bfc37e22b7fbb16a257dce78b81c370491ec282ab3faeda401c15cff"
+  },
+  "toolHashes": {
+    "tools/th14-compositor-native.py": "a28a9c84ce7d6f622bab663654239b6718ec56a49490508df53759fd05d7a4ce",
+    "tools/th14-compositor-check.mjs": "c4a08c3e7f5e99329c1769e5a46af83670180eb3e855c9affbc7bf6c018c2a81"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "cases": 4320,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "39e0a0eac09492895a711401fb0be273ac652d1e6a0ea6f60edc48304a47dbf2",
+  "scope": "Retail callbacks 2/5/7 (452240/4538b0/453910) with full native RNG versus production hit helper. Ordinary/focused counters, power and age increments, angle normalization twice, script-150 position/rotation and independently sampled RGBA. ANM allocation/binding/lookup and 451820 termination delivery are controlled; cleanup, reward timing, actual animations and full shot lifecycle are separate.",
+  "sourceHashes": {
+    "tests/cpp/th14-plain-shot-hit-fixture.cpp": "793ae27ea1ad3881cdcec5c7bd42ee35d44fdf37d6b1b8ed9f7d52c579631b08",
+    "cpp/game/ShotTh14.cpp": "bac4594ace635c252b15966808001990bb531421cc28d695dc2c6fa9651a1014",
+    "cpp/game/ShotManager.hpp": "4d6de01b056eedf638712dd25c980ecde09dd01cac70cbd5c87dc648b1e67d43",
+    "cpp/game/Rng.hpp": "3865a40f2ec26f6462f5daa52e7bc8b7e5f42f2c3f6c88d0bfcf3d6c154f4d9b"
+  },
+  "toolHashes": {
+    "tools/th14-plain-shot-hit-native.py": "95598be00ec5fd7e568bdd1073a32e1724db0b7a58a5884387b04b412514c47f",
+    "tools/th14-plain-shot-hit-check.mjs": "ff469420de6633e65f1daceb0f53e0d8c3f124387e034f71f7050920695080dc"
+  }
+}

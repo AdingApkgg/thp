@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "cases": 24,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "f83c96e030f91afca0dd67d8152bc445fcf8ec9c83b42511639e75e19ae11ffa",
+  "scope": "Actual own41d68a..41d6d9 death-subroutine consumer,41a4f0 secondary-context release,41a5a0 root reset and473bc0/472030 VM update at elapsed zero execute. Native name lookup and memory release are controlled. Production ECL556 copies its owned name, executes enemy_death after the controlled drop delivery, clears only the first name byte and resets the stack/threads.24 cases cover zero to three threads, dirty stacks and signed f32 locals. Unsupported557 propagates -2. Earlier sound/effect/drop/chapter operations, callbacks, natural stage progression and complete game excluded",
+  "sourceHashes": {
+    "tests/cpp/th16-enemy-death-script-fixture.cpp": "dd20d2462a72bf9bce9bd7bfc3e302d13a6c5cb7081632c593429e20b0b5791f",
+    "cpp/game/EnemyFrame.cpp": "5b0e33e15a1df154af0a6fcb1a4a7a25c0e31e54371c14c953c7d7770108aecb",
+    "cpp/game/EnemyFrame.hpp": "766e5aa3ea0f52fcc94b75d557b81db4a6de11445deb4b550e598493a8a7a908",
+    "cpp/game/EnemyState.cpp": "e1fbe2ef56d65ac48907f3aeefed0a450648c18544cdcfc247dee331aa667bec",
+    "cpp/game/EnemyState.hpp": "4338e45caee13aae878a7b35f34073d5433b478862634395a84931547b15cc00",
+    "cpp/game/EnemyTh14Commands.cpp": "b03cde800e77f792a688e15100c48eb350b32732cffde0912eeff72ba74f1ef2",
+    "cpp/game/EnemyManager.cpp": "bb0a9f11fa252bac9859fd8f5c770a96921e32e0d01f631954e93744df69f63b",
+    "cpp/game/EnemyScript.cpp": "fa769a667cab90629ea059c8b8db87be17ea3e32885af79efd42220c8dc2efd7",
+    "cpp/game/EclOwner.cpp": "0a1fc73e902704eec9e09045d54a2fe20c0a2fb49c9711f04aa0017e8ecbb5ff"
+  }
+}

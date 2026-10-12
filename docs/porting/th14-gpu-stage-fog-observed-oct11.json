@@ -1,0 +1,155 @@
+{
+  "diagnosticEvidenceVerified": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "strictPixelsEqual": false,
+  "productionChanged": false,
+  "originalStageFiles": 7,
+  "originalFogCommands": 170,
+  "uniqueFogEndpoints": 37,
+  "cases": 7104,
+  "nativePixelsSha256": "8a732be6f36d075fa15134cf6dab50883b11498c4ec21e72ddcc70797015bc82",
+  "variants": [
+    {
+      "name": "before",
+      "exactCases": 7095,
+      "differentChannels": 9,
+      "maxDelta": 1,
+      "strictPixelsEqual": false,
+      "buildSha256": "f4dbd418e77b027a4cee7ec9a8655788520652d150edd61023f0a82e3b52e26b",
+      "browserResultSha256": "b9bfff7a87b4263dea1a12996bdc92214b07b8d1865414aa9900821876ce7a9c",
+      "remainingCases": [
+        229,
+        261,
+        2127,
+        3087,
+        3855,
+        4070,
+        4623,
+        6543,
+        6735
+      ]
+    },
+    {
+      "name": "candidate",
+      "exactCases": 7095,
+      "differentChannels": 9,
+      "maxDelta": 1,
+      "strictPixelsEqual": false,
+      "buildSha256": "686d787f86646db9ac4513ba31d8849c65a7611d427f3ae071abb1e98c1d4080",
+      "browserResultSha256": "bff7be579f3a3bcb501ae6a774c0cbc8e11c63b178562924b3071da5d068e17f",
+      "remainingCases": [
+        2127,
+        2823,
+        2831,
+        3087,
+        3855,
+        4070,
+        4623,
+        6543,
+        6735
+      ]
+    },
+    {
+      "name": "rsqrt",
+      "exactCases": 7095,
+      "differentChannels": 9,
+      "maxDelta": 1,
+      "strictPixelsEqual": false,
+      "buildSha256": "f8ac84a8e93a3662426438e0a0c9f3e4d04a9c09dcdded933720399f50bd4acb",
+      "browserResultSha256": "843124b971d617ff1a47a10d68f04b2c09b8a0ee4a111aabb8509705f0aac56e",
+      "remainingCases": [
+        2127,
+        2823,
+        2831,
+        3087,
+        3855,
+        4070,
+        4623,
+        6543,
+        6735
+      ]
+    },
+    {
+      "name": "negative",
+      "exactCases": 7096,
+      "differentChannels": 8,
+      "maxDelta": 1,
+      "strictPixelsEqual": false,
+      "buildSha256": "11697da9ce1d7aea0aca106c26ec5febc1514bdc4e55b4a3ce32e32ea9b8f056",
+      "browserResultSha256": "353f5f3085441a6085763ad45150e1041054e38bc82863430ff5553952e29104",
+      "remainingCases": [
+        229,
+        261,
+        2127,
+        3087,
+        3855,
+        4623,
+        6543,
+        6735
+      ]
+    },
+    {
+      "name": "cpu",
+      "exactCases": 7094,
+      "differentChannels": 10,
+      "maxDelta": 1,
+      "strictPixelsEqual": false,
+      "buildSha256": "21cb0df33420d29e280da0e6f376b22cbb1a9ce218ef74ab6214a1097ec603d3",
+      "browserResultSha256": "51738dcff4360290033af9fc8ed1b5ddffffc53b049aeece6514e97855b1c422",
+      "remainingCases": [
+        229,
+        261,
+        860,
+        2127,
+        3087,
+        3855,
+        4070,
+        4623,
+        6543,
+        6735
+      ]
+    },
+    {
+      "name": "rcp-uniform",
+      "exactCases": 7095,
+      "differentChannels": 9,
+      "maxDelta": 1,
+      "strictPixelsEqual": false,
+      "buildSha256": "4456ae87ada8b0d3810b58f24154603ca36456cb0d89570184f5e7c7317d7d08",
+      "browserResultSha256": "24c137e7fa418ee3ce4846ac7f7d1122d141971d9582ef3f1608cc8669a4879f",
+      "remainingCases": [
+        2127,
+        2823,
+        2831,
+        3087,
+        3855,
+        4070,
+        4623,
+        6543,
+        6735
+      ]
+    },
+    {
+      "name": "rcp-barrier",
+      "exactCases": 7095,
+      "differentChannels": 9,
+      "maxDelta": 1,
+      "strictPixelsEqual": false,
+      "buildSha256": "5a893fa9e416617cb0c48db77c0397f77a052e2ad3aa07d8fbd73a883b8ec19f",
+      "browserResultSha256": "125a9305895a7314b845264eaf6bb68e92fec8f8586f35a8b85af57607a14a04",
+      "remainingCases": [
+        2127,
+        2823,
+        2831,
+        3087,
+        3855,
+        4070,
+        4623,
+        6543,
+        6735
+      ]
+    }
+  ],
+  "limits": "Checks independent scaled geometry using original STD endpoints, physical D3D9 pixels, complete case coverage and browser module/source bindings. This does not capture the native game draw loop or every fog interpolation frame. Failed candidates remain failed."
+}

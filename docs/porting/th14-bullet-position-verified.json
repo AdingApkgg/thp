@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "cases": 2048,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "8c79d6b2801a1c694ab6a722bc5bf92c05121adfc810fc0dc4cafcf3c259bc52",
+  "scope": "Complete retail 418140 ETEX 20000 setup and 41a4f0 through real 409bd0 interpolation. Compares absolute/relative destination, original scalar speed restore, scalar angle/velocity, outer and interpolation clocks, start/end/tangents/duration/mode, including 32 modes, rates 0/.5/1/1.25, durations -1/0/1/7 and 12 local updates. Controlled global tangents .125/-.25/.0625. Local helper does not apply the ordinary per-frame velocity movement; full-update call order needs separate integration. Collision, ANM and pixels excluded",
+  "sourceHashes": {
+    "tests/cpp/th14-bullet-position-fixture.cpp": "e6e2cb8ebeb6856ab5c737c284c8f88f3b9289851ebf2713dee78fcbdb4cdb65",
+    "cpp/game/BulletTh14.cpp": "a6a6cd9f82d8eb4bc9c14fc367578a4e03b7637b05e1ef0b4f62fd4fd10517ef",
+    "cpp/game/Movement.cpp": "ea823e71f48f15d1d5e038c4fa62b6a4dfcaa31b087ebc183e42ef2dd439cccb"
+  },
+  "toolHashes": {
+    "tools/th14-bullet-position-native.py": "cf9e84f858a73e0797a473adc3bcfa6217d87bb5a92beefb4f2ce04685d8ffdc",
+    "tools/th14-bullet-position-check.mjs": "d0cc860f75444d540fb0068f6cfcee2c83afc3f7c98c79314eecd616e6d6321f"
+  }
+}

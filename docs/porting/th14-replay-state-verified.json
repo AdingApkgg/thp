@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "snapshots": 396,
+  "productionRestores": 396,
+  "initialRoutes": 32,
+  "originalDemoEntries": 12,
+  "livePowerSteps": 24,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "scope": "Whole456050 playback-mode stage restore executes without hooks: all28 snapshot words and both RNG seeds, gameplay call reset and preserved visual call count across four unsigned counter values; production existing-controller restores, seven-stage indexing subset1/3/7, seed0/1/9630/ffff and 96 synthetic plus3 shipped replay headers with four visual-call counters each. Portable ReplayStageState mapped economy fields, unnamed snapshot preservation, position, weapon and spell times compared. Native44c600..44c628 power-step stores compared with actual production PlayerFrame initialization using all6 real SHT/ANM loadouts and raw steps40/80/100/200. 435ed0..435f50 initial/transition routing compared for 32 flags/counter combinations: first construction preserves visual seed/count; existing-controller routing runs actual456050. Resource construction is a controlled boundary for this local route. Twelve production original-asset demo entries also preserve incoming visual counts modulo 2^32 with unchanged seeded ANM initialization. Full replay-manager lifecycle, later game/RNG call order, native recorder/save, pixels and complete game excluded.",
+  "wasmSha256": "ff9c4a29eab874fb9a3116a47613ca312057e4cf6949fb3b2fce3d805b6bc4c6",
+  "sourceHashes": {
+    "cpp/game/Replay.cpp": "7678a83c7bb737f4fe816ce239a9fa1c0f12935b900aa29bfed98b9abc3cb17d",
+    "cpp/game/Replay.hpp": "c722098dec81f838c6ccaa74d50dc9840538d84b20c56f9e67bf40cd12f6378b",
+    "cpp/game/GameSession.cpp": "08d98496c9138d83d1b76322389cd27ea54b51ea906a271658d8eb3aa5821f5d",
+    "cpp/game/Rng.hpp": "c53231677e6b5ef755d7385f5d3e224e2e353757eec7f1110424a8d4f0073a9a",
+    "cpp/game/PlayerFrame.cpp": "bfcc7c02e537dc30785d31165adfff4105cd97bf40453754a5bc63e2c7770241",
+    "tests/cpp/th14-replay-state-fixture.cpp": "b13f947f25aa74e9547398cacde84e569e028c3ba6091210da300801b1fdf065",
+    "tests/cpp/th14-replay-session-fixture.cpp": "b8bafe56bfc5eb4770b12c034d7fb2ba83ede223443985502ca56a78d9a9da35"
+  }
+}

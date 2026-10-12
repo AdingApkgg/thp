@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "cases": 18720,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "988ad389bf50288c3228637f496ee20197eef9ee14a64c53888bd718c3a38cc5",
+  "scope": "Own TH16 443af0 geometry and collision-state result, including actual CRT sin/cos. Hit application 443f10 is a recorded boundary. Includes probe returning graze, dialogue/state/invincibility gates. Does not verify death application, curve segment dispatch, cutting or graze delivery.",
+  "sourceHashes": {
+    "tests/cpp/th16-player-laser-collision-fixture.cpp": "d68ccc3017fde16c8933c1a5e7445dfb45420dff9ef96818dca8d71959cd4d1c",
+    "cpp/game/PlayerCollision.cpp": "855f92f2b0161a34697862c7061ac8ee4cd13c66b7d1d1862ceb7feeea9b48df",
+    "cpp/game/PlayerCollision.hpp": "47e75ab3bb62b1885192e7576e695e484b7098140fbcf6da369520a3dab8eac3"
+  },
+  "toolHashes": {
+    "tools/th16-player-laser-collision-native.py": "3d0a1c7e208f082d75962a0d53ca68eaf41d6e82ff95a5e4dd8f1c8d8d004263",
+    "tools/th16-player-laser-collision-check.mjs": "6ba76d878e8f647360b389bec9905a6e6bcd3fe894087a30508b8d2c8adb7149"
+  }
+}

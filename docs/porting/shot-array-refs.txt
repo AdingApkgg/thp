@@ -1,0 +1,65 @@
+=== th12  shot array 0x004b3190  ['pl00a.sht', 'pl00b.sht', 'pl01a.sht', 'pl01b.sht', 'pl02a.sht', 'pl02b.sht']
+  H:/Games/th/12/th12.exe: .text 0x00401000..0x00497c00, array 0x004b3190, references: 1
+  0x00435b25  add     byte ptr [ebx], bh
+  0x00435b2e  add     byte ptr [eax], al
+  0x00435b30  mov     dword ptr [0x4ce8a8], ebp
+  0x00435b38  mov     ecx, dword ptr [0x4b0c90]
+  0x00435b3e  mov     edx, dword ptr [0x4b0c94]
+  0x00435b44  lea     eax, [edx + ecx*2]
+  0x00435b47  mov     eax, dword ptr [eax*4 + 0x4b3190] <== array immediate
+  0x00435b4e  mov     esi, edi
+
+=== th13  shot array 0x004c0b98  ['pl00a.sht', 'pl01a.sht', 'pl02a.sht', 'pl03a.sht']
+  H:/Games/th/13/th13.exe: .text 0x00401000..0x004a1400, array 0x004c0b98, references: 1
+  0x00441e16  mov     eax, dword ptr [0x4dc668]
+  0x00441e1f  mov     dword ptr [esi + 0x660], eax
+  0x00441e25  mov     dword ptr [0x4dc668], edi
+  0x00441e2d  mov     edx, dword ptr [0x4be7bc]
+  0x00441e33  add     edx, dword ptr [0x4be7b8]
+  0x00441e39  mov     eax, dword ptr [edx*4 + 0x4c0b98] <== array immediate
+  0x00441e49  push    esi
+
+=== th14  shot array 0x004d9f20  ['pl00a.sht', 'pl00b.sht', 'pl01a.sht', 'pl01b.sht', 'pl02a.sht', 'pl02b.sht']
+  H:/Games/th/14/th14.exe: .text 0x00401000..0x004b1000, array 0x004d9f20, references: 1
+  0x0044c4f3  mov     byte ptr [esi], al
+  0x0044c4f5  add     byte ptr [eax], al
+  0x0044c4f7  mov     dword ptr [0x4db680], 0
+  0x0044c503  mov     ecx, dword ptr [0x4f5828]
+  0x0044c509  mov     eax, dword ptr [0x4f582c]
+  0x0044c50e  lea     eax, [eax + ecx*2]
+  0x0044c511  mov     ecx, edi
+  0x0044c513  push    dword ptr [eax*4 + 0x4d9f20] <== array immediate
+
+=== th16  shot array 0x00492ca8  ['pl00.sht', 'pl02.sht', 'pl03.sht', 'pl01.sht']
+  H:/Games/th/16/th16.exe: .text 0x00401000..0x0048ae00, array 0x00492ca8, references: 1
+  0x0044103d  mov     edi, es
+  0x0044103f  add     al, byte ptr [eax]
+  0x00441041  mov     dword ptr [0x4a6f00], 0
+  0x0044104b  mov     dword ptr [0x4a6efc], 0
+  0x00441057  mov     eax, dword ptr [0x4a57a8]
+  0x0044105c  add     eax, dword ptr [0x4a57a4]
+  0x00441062  push    dword ptr [eax*4 + 0x492ca8] <== array immediate
+  0x00441069  push    ebx
+
+=== th17  shot array 0x004a2128  ['pl00a.sht', 'pl00b.sht', 'pl00c.sht', 'pl01a.sht', 'pl01b.sht', 'pl01c.sht', 'pl02a.sht', 'pl02b.sht', 'pl02c.sht']
+  H:/Games/th/17/th17.exe: .text 0x00401000..0x0049a000, array 0x004a2128, references: 1
+  0x00446426  add     dword ptr [eax], eax
+  0x00446428  mov     dword ptr [0x52a324], 0
+  0x00446437  mov     ecx, dword ptr [0x4b59f4]
+  0x0044643f  mov     eax, dword ptr [0x4b59f8]
+  0x00446444  push    0
+  0x00446446  lea     eax, [eax + ecx*2]
+  0x00446449  add     eax, ecx
+  0x0044644b  mov     ecx, dword ptr [eax*4 + 0x4a2128] <== array immediate
+  0x00446457  mov     edx, eax
+
+=== th18  shot array 0x004b7088  ['pl00.sht', 'pl01.sht', 'pl02.sht', 'pl03.sht']
+  H:/Games/th/18/th18.exe: .text 0x00401000..0x004ac800, array 0x004b7088, references: 1
+  0x0045a7d3  add     al, 0
+  0x0045a7d5  mov     dword ptr [0x570920], 0
+  0x0045a7e4  mov     eax, dword ptr [0x4cccf8]
+  0x0045a7eb  add     eax, dword ptr [0x4cccf4]
+  0x0045a7f1  push    0
+  0x0045a7f3  mov     ecx, dword ptr [eax*4 + 0x4b7088] <== array immediate
+  0x0045a7ff  mov     edx, eax
+

@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "frames": 2284,
+  "rows": [
+    {
+      "action": "Title",
+      "passed": true
+    },
+    {
+      "action": "Retry",
+      "passed": true
+    },
+    {
+      "action": "Manual",
+      "passed": true,
+      "pages": 7,
+      "pageLoads": 8,
+      "pageHashes": [
+        1196736888,
+        277853305,
+        4104121644,
+        400045041,
+        3425248288,
+        4153964450,
+        510127325
+      ],
+      "returnedToEndMenu": true,
+      "releasedResources": true
+    },
+    {
+      "action": "Continue",
+      "passed": true,
+      "firstLossFrame": 1293,
+      "naturalFirstLoss": true,
+      "rows": [
+        {
+          "count": 1,
+          "stage": 1,
+          "lossFrame": 1293,
+          "bullets": 29,
+          "preservedManagersAndClocks": true,
+          "respawned": true
+        },
+        {
+          "count": 2,
+          "stage": 1,
+          "lossFrame": 1399,
+          "bullets": 1,
+          "preservedManagersAndClocks": true,
+          "respawned": true
+        },
+        {
+          "count": 3,
+          "stage": 1,
+          "lossFrame": 1460,
+          "bullets": 3,
+          "preservedManagersAndClocks": true,
+          "respawned": true
+        }
+      ],
+      "limitEnforced": true,
+      "scoreNameEntries": 1
+    }
+  ],
+  "archiveSha256": "57d84a5cbe82460931cca26f090a0fde7aef180889ce5bfe8315851fc97b0233",
+  "wasmSha256": "7ff06a5b55b6da7701f488d31ed0f01e68bf07caac595a090d1eb437e16bbd39",
+  "scope": "Production session/menu/ANM/render commands with retail archive: Title/Retry, seven-page manual round trip and three in-place Normal Continues and keyboard-driven score name entry. First loss is natural, later loss boundaries controlled. Preserves stage/frame/battle/player/enemy/bullet identity and recording clocks and verifies stock reset, four options and port respawn. PNG delivery at effects boundary; excludes native death lifecycle equivalence, audio, replay saving and GPU pixels.",
+  "sourceHashes": {
+    "tests/cpp/th14-end-session-fixture.cpp": "af9866dc99e04edfd501bceeea36e872aa6b25a6230005532abcd1391bfc7b63",
+    "cpp/game/GameSession.cpp": "08d98496c9138d83d1b76322389cd27ea54b51ea906a271658d8eb3aa5821f5d",
+    "cpp/game/GameSession.hpp": "cc524cf2774d1dec22fc499332a00c715e15b5a80c886c4267866fde815f9619",
+    "cpp/game/ContinueTh14.cpp": "f163f963c8f53c7b503137961fbdb5be227dce30b27af81ec68ac4d4c5311080",
+    "cpp/game/ContinueTh14.hpp": "00ac0096914e90e43b9c8c85dcba2645b6b9ad843ccdfcf756443614984bc421",
+    "cpp/game/GameEconomy.hpp": "cd840df8c67e0284763b5dbc672bbd73b4eb6e75a195b3bdb7a2280206acedcc",
+    "cpp/game/PlayerFrame.cpp": "bfcc7c02e537dc30785d31165adfff4105cd97bf40453754a5bc63e2c7770241",
+    "cpp/game/PlayerFrame.hpp": "ccf98be361f11c712313ca5f1db05132921ee8a17b923c04712cd58629e8ae63",
+    "cpp/game/GameBattle.cpp": "7b5d451c297bbb771cbce5de3c458a5d1dccd91d51595e07cfc53a46b3631108",
+    "cpp/game/GameBattle.hpp": "e02f5da5acc369194727ce75494c9800ff8aac458f8d96d0c6f761a5edf88b1b",
+    "cpp/game/Hud.cpp": "818b41a6f2c120807d91fef751c791a2b733bee66845c7fc4de469b244752221",
+    "cpp/game/HudTh14Text.cpp": "5067c49467e5d4fe0b2c55ea33e6e67239b8377f7561f05ccb2d0be431f660ce",
+    "cpp/game/HudTh14Text.hpp": "9610c2b722529659525f87ab8246a14cf611bc8ae5ab4c0e3f2a7f077d06701b",
+    "cpp/game/Th14LifeFragments.hpp": "18fab2372922aaaed2bfdac8def0a72172d98c91afa36b30801a1f9d180858f3",
+    "cpp/game/ItemRewards.cpp": "154e30fe1626779c0d460be11fdc5f1f50cc56dac7fd49ff59d6d80657fb5b5f",
+    "cpp/game/PauseEnd.cpp": "3e7a11b5aef2cb40303b31ffbcea410c8f3f186d89f91cc62dea878a2eaca30b",
+    "cpp/game/PauseMenu.hpp": "872c63a99df90efbce00c14ecde088cd78677fdf185c2a9711c20c8f2c02eec6",
+    "cpp/game/ScoreFile.cpp": "4b1247abdb50677744dde40e88a7e57ec2d08111d831e376d0026398b169556c",
+    "cpp/game/ScoreFile.hpp": "7c3844493999a84fa31aba3ab434e4a277ad4e39daf947f6d1f6daf942447941",
+    "cpp/game/GameSessionResources.hpp": "7a3319053409e17f1825947bcc2b4142c9452f5af202233a9f51061cd0ac7317"
+  }
+}

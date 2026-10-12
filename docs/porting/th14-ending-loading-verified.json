@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "cases": 192,
+  "pendingFrames": 2592,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "908466db0d8de1ea59acc32aeb42cdf3f9c45d1594e0d155aa889b1a772f3ddc",
+  "scope": "Whole retail41ff70 ending callback/4202d0 opcode7, real420d20 loading wrapper and actual420c00 completion worker entry. Observes instructions, flags, line/color, frame count and all previous/current/fractional timer words during waits and resume; resource slot20..23 release/load, async worker request, loading root coordinates and interrupt1/handle clear. Thread dispatch, resource decoding/templates, ANM factory and interrupt delivery controlled. Actual worker scheduling, child ANM state, GPU and complete ending excluded. Production original e01.anm stays undecoded until the actual resource job; compares all fourteen callback/instruction/timer words and real loading root lifetime, then initializes actual slot templates before resume. Controlled service fixture, no GPU/audio or natural full ending proof. Browser uses one main-thread resource decode/upload/template job after a pending ending callback; complete native thread scheduling is excluded.",
+  "sources": {
+    "runtimes/th12/th12_web/cpp/game/Ending.cpp": "c939877ab0b6a82fa7fda73114539dbc50f242f426935b39d4f1c59339fc43f4",
+    "runtimes/th12/th12_web/cpp/game/Ending.hpp": "580d140b6788310e618a63dd21ca798482a2f4362f7bbf55ced25a7012f9206e",
+    "runtimes/th12/th12_web/cpp/game/GameSession.cpp": "1cdcfc40396cec4eb8afd26933479857646cf8818bb092670fe43c27ab31dabd",
+    "runtimes/th12/th12_web/cpp/game/GameSessionResources.hpp": "bc71048845b28067190e48cafde38262dd3fb00eb5cbe4072e985897425336c3",
+    "runtimes/th12/th12_web/cpp/sdl/Application.cpp": "a37f0902f56caa4a42e25a4795cb555e49bac2bd0c5a0b08641f886ea4bcfac0",
+    "runtimes/th12/th12_web/tests/cpp/th14-startup-fixture.cpp": "c8aa6657a6eb4a54c1506dd1e79fe8d53d0aab5cddbedc1c475bd0ec31eff5a1",
+    "tools/th14-ending-loading-native.py": "ba6459884d0a6bd1ebeb3fd06215e7b24fb64dbb341ab3e5ec06e6b63d0ce533",
+    "tools/th14-ending-loading-check.mjs": "c5c145b5e0e3bdff6af75adc7b093f2e9324d63d25530af52a14862e70041e53"
+  }
+}

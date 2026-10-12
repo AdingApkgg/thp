@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,mkdirSync,readdirSync} from 'node:fs';
+import {resolve,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {WASI} from 'node:wasi';
+import {nativePython} from './native-python.mjs';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..'),rt=resolve(root,'runtimes/th12/th12_web'),out=resolve(root,'artifacts/th16/enemy-factory-check');mkdirSync(out,{recursive:true});
+nativePython('tools/th16-enemy-factory-native.py',{cwd:root,stdio:'inherit',windowsHide:true});
+const env={...process.env,TEMP:out,TMP:out,TMPDIR:out};
+execFileSync(process.execPath,['runtimes/th13/th13_web/scripts/cpp/build-engine.mjs','--title','16'],{cwd:root,env,stdio:'inherit',windowsHide:true});
+const dir=resolve(root,'runtimes/th13/th13_web/artifacts/cpp/objects-th16'),wasm=resolve(out,'enemy-factory.wasm'),fixture='tests/cpp/th16-enemy-factory-fixture.cpp';
+execFileSync(resolve(rt,'../tools/wasi-sdk-34.0-x86_64-windows/bin/clang++.exe'),['--target=wasm32-wasip1','-std=c++17','-O2','-ffp-contract=off','-fno-exceptions','-fno-rtti','-mexec-model=reactor','-Wl,--no-entry','-Wl,--export-memory','-Wl,-z,stack-size=1048576','-DPORT_TITLE=16',fixture,...readdirSync(dir).filter(n=>n.endsWith('.o')).map(n=>resolve(dir,n)),'-o',wasm],{cwd:rt,env,stdio:'inherit',windowsHide:true});
+const bytes=readFileSync(wasm),wasi=new WASI({version:'preview1',args:[],env:{},preopens:{}}),{instance}=await WebAssembly.instantiate(bytes,{wasi_snapshot_preview1:wasi.wasiImport});wasi.initialize(instance);const c=instance.exports;
+const proof=JSON.parse(readFileSync(resolve(root,'artifacts/th16/enemy-factory-native.json'),'utf8'));
+for(const r of proof.cases){c.run_case(r.flags,r.mirrored,r.world,r.health,r.file,r.script,r.death);assert.deepEqual(Array.from({length:31},(_,n)=>c.value(n)>>>0),r.output,JSON.stringify(r));}
+const sha=b=>createHash('sha256').update(b).digest('hex');
+writeFileSync(resolve(root,'docs/porting/th16-enemy-factory-verified.json'),JSON.stringify({passed:true,title:16,completeGame:false,cases:proof.cases.length,nativeExecutableSha256:proof.executableSha256,scope:'Full retail41aa70 with controlled allocator, base constructor and first-frame boundaries. Compares parameter binding, flag masks, parent ID, time-drop defaults, chapter tag and post-frame death metadata. Base constructor, actual first-frame execution, death effects, item factories and full gameplay remain outside this proof.',wasmSha256:sha(bytes),sourceHashes:Object.fromEntries(['cpp/game/EnemyTh16Commands.cpp','cpp/game/EnemyState.hpp','cpp/game/EnemyState.cpp','cpp/game/EnemyManager.cpp','cpp/game/EnemyFrame.cpp','cpp/game/EnemyScript.cpp','cpp/game/EnemyCommands.hpp','cpp/game/Timer.hpp',fixture].map(n=>[n,sha(readFileSync(resolve(rt,n)))]))},null,2)+'\n');
+console.log(`PASS ${proof.cases.length} TH16 spawn binding and death metadata cases`);

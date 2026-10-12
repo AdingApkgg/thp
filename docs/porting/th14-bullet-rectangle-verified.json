@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "cases": 3840,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "00dabcdde27587439a3ec036db1a404c8b2144bd06b136de57185340951ce456",
+  "scope": "Actual retail 41b4f0 2000-slot pool traversal, strict state 1/2 and mandatory delay gate, scaled bullet circle against rotated rectangle and playfield rectangle, versus production cancel_rectangle_th14. First/last pool slots, four angles, four bullet scales and strip/corner/playfield edge positions. Native 41ac70 is a request sink; production real cancellation state change is observed. Reward delivery and post-cancel clocks are proved separately, not compared here. Does not prove laser rectangle cutting or full Bomb behavior.",
+  "sourceHashes": {
+    "tests/cpp/th14-bullet-cancel-fixture.cpp": "576184265596eeef5f391428a34b43c3cdde6965b12a8dd12a0a2cd13701c305",
+    "cpp/game/BulletTh14.cpp": "c91fc42819b1a3f6057ca386253072634af9c6d57c2b404efd752415d96e9b72",
+    "cpp/game/BulletManager.hpp": "f8ca01c51eba8a0be767d6836ab61ca3ec8190d2e882b3938f67dd13c190f8c4",
+    "cpp/game/ShotDamageTh14.cpp": "e3373bbf735231a2562723bc73943292afd839e7a783fb27ac1ed15aa3902d3a",
+    "cpp/game/BulletState.hpp": "6a14491808441296de5bcdf198e2049a9bb448e7f04f27929a52488a92ddbbad"
+  },
+  "toolHashes": {
+    "tools/th14-bullet-rectangle-native.py": "803678980efb4da4eb2c015ae041ff86b60f0b2e4f4fa2524090e68e25d2cde1",
+    "tools/th14-bullet-rectangle-check.mjs": "13642e2578f59fd75389b56495387c37dbe445d819bcbfe45b2ce65577f369ac"
+  }
+}

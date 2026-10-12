@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "cases": 792,
+  "itemRequests": 5544,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "10b2c19b66a0bc17834c0e9173c581c7b4c4c143786a671d3aabba17e8040e6e",
+  "scope": "Actual retail 44dda3..44de99 death-frame-3 power subtraction, signed clamp, native 44ed80/4a753a angle calculation and seven ordinary type-1 drop requests. Varies signed power/step boundaries, lives, signed zeros, ordinary positions and large-Y zero delta. Item allocation and option reconstruction are controlled boundaries; unused native item argument is excluded. Verifies the helper called by PORT_TITLE=14 PlayerFrame::death_frame, not the full player lifecycle, respawn, item physics or option reconstruction.",
+  "sourceHashes": {
+    "tests/cpp/th14-player-death-drop-fixture.cpp": "a804ef25f965ae85f1589fd5ab77b3448111ef0dced84b23dc98a263342a89d5",
+    "cpp/game/PlayerFrame.cpp": "42af2e8ecfff71b31d57dc47d8c70290d408cb0b3ca677150388ec7105a6cfcf",
+    "cpp/game/PlayerFrame.hpp": "6990b0899513b34f83cfb1ac8ef7177e7a4e588ae8f820f6a4b37cf0dbb34fc3",
+    "cpp/game/GameEconomy.hpp": "38aa508a680895ec11f3bc8fb15ef92a6ae50ca30d4bfe72c9a0f736baaa005f",
+    "cpp/game/GameBattle.hpp": "914fd441958300a40d5c0c76d0f6d619603e398738f11edeae3f7c5583c5748f"
+  },
+  "toolHashes": {
+    "tools/th14-player-death-drop-native.py": "c841e7724bbd50881b67c035346480e77c272085f3845993579d4543e95f15bc",
+    "tools/th14-player-death-drop-check.mjs": "da617c5a2b58e4d878f26c90f1b9360d065106fbf275cebc6953018af1213c36"
+  }
+}

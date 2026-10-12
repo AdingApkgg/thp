@@ -1,0 +1,116 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "changedFile": "runtimes/th12/th12_web/cpp/game/StageDraw.cpp",
+  "changes": [
+    "TH14 projects sixteen box points instead of twelve",
+    "TH14 updates both min/max bounds independently and accepts projected depth zero",
+    "TH14 distance cutoff follows per-operation SSE float32 rounding in (y*y+x*x)+z*z order"
+  ],
+  "visibilityCases": 55143,
+  "originalAssetCases": 54612,
+  "differences": 0,
+  "stageIntegrationFrames": 8400,
+  "actualSession": {
+    "routes": 90,
+    "frames": 70212,
+    "writes": 6096
+  },
+  "legacyBuilds": [
+    {
+      "title": 12,
+      "bytes": 903005,
+      "sha256": "77133233ab29a56a6dfd2169697d50cf2ce42f819a607a427a37482cb93dd259"
+    },
+    {
+      "title": 13,
+      "bytes": 909578,
+      "sha256": "81578bd552c0175994ddbcb668865fcbe624c2bf56ed8fda03dac670dfb8e853"
+    }
+  ],
+  "release": {
+    "bytes": 1860902,
+    "sha256": "ecabaadf51f4dcc6568b5a068ca81e450b156a7f23ff97095c5e0622f4b6f92a"
+  },
+  "launcher": {
+    "url": "http://127.0.0.1:8182/?game=th14",
+    "files": 127,
+    "buildId": "97e2a29357fd524c6b5b",
+    "browserWarningsOrErrors": 0,
+    "scope": "Physical ordinary start, Normal, ReimuA, stage1 battle and actual pause; no synthetic invulnerability or original whole-frame/natural-clear proof"
+  },
+  "evidence": {
+    "docs/porting/th14-stage-visibility-observed-oct12.json": {
+      "bytes": 51231,
+      "sha256": "b3a94907abcdeaabcb75383acb9f81a7f5226a12f975d84023e3ea8589488193"
+    },
+    "docs/porting/th14-stage-draw-integration-verified-oct12.json": {
+      "bytes": 914445,
+      "sha256": "6fc517f10026dfbfb6aa095ba70f87bc6ac259c5820b13e19831393eb16dd12b"
+    },
+    "docs/porting/th14-real-message-session-sync-verified-oct12.json": {
+      "bytes": 57519,
+      "sha256": "7c18ba71526215e3f091442bcc920d26b63a5a5a8273368e71baf12e98774ca5"
+    },
+    "artifacts/th14/stage-visibility/before-sixteen-points/observed.json": {
+      "bytes": 1828,
+      "sha256": "fc1391552aba5608ccd71cb7ced71b72c5cc647ff66cd522e07092fe5aa395c6"
+    },
+    "artifacts/th14/stage-visibility/before-rounded-distance/observed.json": {
+      "bytes": 87756,
+      "sha256": "e6cb7656dd39dfde9e8c905a4c39c78aab7de4942168e8645852fab77d0fcc00"
+    },
+    "artifacts/th14/stage-visibility/before-sixteen-points/StageDraw.cpp": {
+      "bytes": 8085,
+      "sha256": "2366ed17ddbe00343ae89ed9b8e75f0ee0a03dc6c09e1bec15b192dd292c6913"
+    },
+    "artifacts/th14/stage-visibility/before-rounded-distance/StageDraw.cpp": {
+      "bytes": 8141,
+      "sha256": "668a8c9a82a4e561471e9947aba1ca7ee732900c052093fa6de53aaede640238"
+    },
+    "runtimes/th14/th14_web/artifacts/sdl3-release/build.json": {
+      "bytes": 37704,
+      "sha256": "3898fdae11fdb8fb558a888dec5fefc0164cac31ad8e31f9c4a1c6abaf0e0d64"
+    },
+    "runtimes/th14/th14_web/artifacts/sdl3-release/th11.wasm": {
+      "bytes": 1860902,
+      "sha256": "ecabaadf51f4dcc6568b5a068ca81e450b156a7f23ff97095c5e0622f4b6f92a"
+    },
+    "runtimes/th13/th13_web/artifacts/cpp/engine-th12-build.json": {
+      "bytes": 33155,
+      "sha256": "8c04ea19aa55b4e50e27074236a33008fe5d3697c417dfd9e9fbaf7dce0da9a2"
+    },
+    "runtimes/th13/th13_web/artifacts/cpp/engine-th13-build.json": {
+      "bytes": 33155,
+      "sha256": "9fdbd211b674c78a60df7d577d8d11d1556d53dde07db6b60eaa28d781ca7eea"
+    },
+    "docs/porting/th14-launcher-runtime-prepared-oct11.json": {
+      "bytes": 50674,
+      "sha256": "8db6eecc117c08e25ff0c23fbe0a3f98d17bcfbe8d93534e8d7aea44c1e2f4d2"
+    },
+    "docs/porting/th14-launcher-preview-prepared-oct11.json": {
+      "bytes": 36442,
+      "sha256": "88406970e9aba2e668ff09248b957f7d45c68e9c1d40bf9bbe1a2e4a297442f0"
+    },
+    "artifacts/th14/stage-visibility-launcher/ordinary-start-paused.png": {
+      "bytes": 236819,
+      "sha256": "2af1758630a060cec1c08927a0862d13c5642ed1a866b85be73636c19f5803b9"
+    },
+    "artifacts/th14/stage-visibility-launcher/browser-logs.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "tools/th14-stage-visibility-production-check.mjs": {
+      "bytes": 5541,
+      "sha256": "5b065f452d37ed55980dbf00f81a64f85605050ec4dcaf4bf2dc9f693114553d"
+    }
+  },
+  "limits": [
+    "Stage culling is compared with the entire original40ebc0 plus actual pinned32 D3DX; both implementations receive identical matrices, so this does not establish whole native camera publication timing",
+    "Original STD instances sampled at123 camera states in two viewports;192 independent distance thresholds and339 identity/near-plane controls",
+    "Actual seven-stage production update/draw integration records geometry commands; no native whole-stage ANM/world GPU/audio equivalence",
+    "Current GameSession90-route regression retains manual MSG triggers, controlled replay input and original stage-complete-supported world exit boundary",
+    "Other titles retain previous culling semantics; TH12/TH13 compiled binaries unchanged; TH16 work remains parked"
+  ]
+}

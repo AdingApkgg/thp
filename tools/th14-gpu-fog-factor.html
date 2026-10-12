@@ -1,0 +1,22 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>TH14 雾颜色浮点诊断</title>
+<style>body{background:#191c26;color:#eee;font:16px system-ui;margin:28px}button{font:inherit;padding:10px}canvas{width:160px;height:120px}pre{white-space:pre-wrap;max-width:1100px}</style>
+<h1>TH14 雾颜色浮点诊断</h1><p>读取实际 D3D9 浮点目标与独立 WebGL 浮点位编码模块；仅诊断，生产代码未改动。</p>
+<button id="run">读取 384 场景的浮点颜色</button><p id="status">等待运行</p><div id="canvases"></div><pre id="result"></pre>
+<script type="module">
+const hex=async b=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',b)),n=>n.toString(16).padStart(2,'0')).join('');
+document.querySelector('#run').addEventListener('click',async()=>{const button=document.querySelector('#run'),status=document.querySelector('#status'),result=document.querySelector('#result');button.disabled=true;try{
+ const [native,bytes]=await Promise.all([fetch('./native.json').then(r=>r.json()),fetch('./native.rgba32f').then(r=>r.arrayBuffer())]);const expected=new DataView(bytes),groups=[],critical=[],controls=[];
+ for(const [channel,component] of ['fog'].entries()){
+  status.textContent='正在读取浮点通道 '+component;const create=(await import('./variants/float-'+component+'/gpu.mjs')).default,canvas=document.createElement('canvas');canvas.id='canvas';canvas.width=640;canvas.height=480;document.querySelector('#canvases').append(canvas);const core=await create({canvas});if(!core._gpu_initialize()){const p=core._gpu_error(),h=core.HEAPU8;let end=p;while(h[end])end++;throw Error('生产 Renderer 副本初始化失败：'+new TextDecoder().decode(h.subarray(p,end)));}
+  let differentFloats=0,maxDelta=0,compared=0;const first=[];
+  for(let i=0;i<native.cases.length;i++){
+   const c=native.cases[i],p=core._gpu_world_case(c.world,c.view,c.projection,c.textureTransform,c.fog,c.range,c.point);if(!p)throw Error('浮点位读取失败');const pixel=new Uint8Array(core.HEAPU8.buffer,p,4096),decoded=new Uint8Array(4096),v=new DataView(decoded.buffer);
+   for(let j=0;j<4096;j+=4){decoded[j]=pixel[j+2];decoded[j+1]=pixel[j+1];decoded[j+2]=pixel[j];decoded[j+3]=pixel[j+3];}
+   for(let j=0;j<1024;j++){if(expected.getFloat32(i*16384+j*16+12,true)===1)continue;const a=v.getFloat32(j*4,true),b=expected.getFloat32(i*16384+j*16+channel*4,true);if(!Number.isFinite(a))throw Error('浮点解码失败');compared++;const delta=Math.abs(a-b);if(a!==b){differentFloats++;maxDelta=Math.max(maxDelta,delta);if(first.length<8)first.push({index:i,x:j%32,y:Math.floor(j/32),native:b,portable:a,delta});}}
+   for(const [index,x,y] of [[91,7,19],[268,7,25]])if(i===index){const j=y*32+x;critical.push({index,x,y,channel:component,native:expected.getFloat32(i*16384+j*16+channel*4,true),portable:v.getFloat32(j*4,true)});}
+  }
+  groups.push({channel:component,compared,differentFloats,maxDelta,first});canvas.id='canvas-'+component;
+ }
+ const report={diagnosticOnly:true,completeGame:false,nativeEquivalent:false,cases:384,nativePixelsSha256:await hex(bytes),nativeOutputFormat:native.outputFormat,groups,critical};result.textContent=JSON.stringify(report,null,2);status.textContent='已读取雾系数通道';
+ }catch(e){status.textContent='诊断失败：'+e.message;result.textContent=String(e.stack||e);}finally{button.disabled=false;}});
+</script></html>

@@ -1,0 +1,2316 @@
+{
+  "executableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "completeGame": false,
+  "scope": "Original ANM, Supervisor, Stage, ASCII, player, bullet and spell constructor fragments execute 57 draw registrations. Node allocation/chain insertion are sinks. All39 ANM wrappers execute with camera preparation/application, viewport, state, flush and layer drawing at recorded boundaries; 78 cases include clean/dirty caches. Camera reset43cb10 executes viewport/mode/offset stores at three resolutions with matrix preparation controlled. Four compositor callbacks execute embedded-VM selection and A layer34; Stage foreground40a410..40a578 executes layer32/33 prefix. Copy binding43d9dc..43dc0f/22 selects four slots and filter at three resolutions with binder/update controlled. Matrices, full resource/script binding, stage geometry, other managers, device/GPU and full gameplay are excluded.",
+  "registrations": [
+    {
+      "priority": 5,
+      "callback": "0x46dd90",
+      "layer": 0
+    },
+    {
+      "priority": 7,
+      "callback": "0x46dda0",
+      "layer": 1
+    },
+    {
+      "priority": 9,
+      "callback": "0x46ddb0",
+      "layer": 2
+    },
+    {
+      "priority": 11,
+      "callback": "0x46ddc0",
+      "layer": 4
+    },
+    {
+      "priority": 10,
+      "callback": "0x46ddd0",
+      "layer": 3
+    },
+    {
+      "priority": 13,
+      "callback": "0x46de60",
+      "layer": 5
+    },
+    {
+      "priority": 16,
+      "callback": "0x46de70",
+      "layer": 6
+    },
+    {
+      "priority": 18,
+      "callback": "0x46de80",
+      "layer": 7
+    },
+    {
+      "priority": 20,
+      "callback": "0x46de90",
+      "layer": 8
+    },
+    {
+      "priority": 21,
+      "callback": "0x46dea0",
+      "layer": 9
+    },
+    {
+      "priority": 22,
+      "callback": "0x46deb0",
+      "layer": 10
+    },
+    {
+      "priority": 24,
+      "callback": "0x46dec0",
+      "layer": 11
+    },
+    {
+      "priority": 27,
+      "callback": "0x46df30",
+      "layer": 12
+    },
+    {
+      "priority": 28,
+      "callback": "0x46ded0",
+      "layer": 13
+    },
+    {
+      "priority": 31,
+      "callback": "0x46dee0",
+      "layer": 14
+    },
+    {
+      "priority": 32,
+      "callback": "0x46def0",
+      "layer": 15
+    },
+    {
+      "priority": 34,
+      "callback": "0x46df00",
+      "layer": 16
+    },
+    {
+      "priority": 36,
+      "callback": "0x46df10",
+      "layer": 17
+    },
+    {
+      "priority": 39,
+      "callback": "0x46df20",
+      "layer": 18
+    },
+    {
+      "priority": 42,
+      "callback": "0x46df40",
+      "layer": 19
+    },
+    {
+      "priority": 45,
+      "callback": "0x46e030",
+      "layer": 20
+    },
+    {
+      "priority": 46,
+      "callback": "0x46df50",
+      "layer": 21
+    },
+    {
+      "priority": 52,
+      "callback": "0x46df60",
+      "layer": 22
+    },
+    {
+      "priority": 54,
+      "callback": "0x46df70",
+      "layer": 23
+    },
+    {
+      "priority": 61,
+      "callback": "0x46dfb0",
+      "layer": 26
+    },
+    {
+      "priority": 62,
+      "callback": "0x46dfc0",
+      "layer": 27
+    },
+    {
+      "priority": 77,
+      "callback": "0x46dfa0",
+      "layer": 29
+    },
+    {
+      "priority": 79,
+      "callback": "0x46df80",
+      "layer": 30
+    },
+    {
+      "priority": 82,
+      "callback": "0x46df90",
+      "layer": 31
+    },
+    {
+      "priority": 59,
+      "callback": "0x46dfd0",
+      "layer": 25
+    },
+    {
+      "priority": 58,
+      "callback": "0x46e0d0",
+      "layer": 24
+    },
+    {
+      "priority": 64,
+      "callback": "0x46e180",
+      "layer": 28
+    },
+    {
+      "priority": 55,
+      "callback": "0x46e210",
+      "layer": 36
+    },
+    {
+      "priority": 60,
+      "callback": "0x46dfe0",
+      "layer": 37
+    },
+    {
+      "priority": 63,
+      "callback": "0x46dff0",
+      "layer": 38
+    },
+    {
+      "priority": 65,
+      "callback": "0x46e2b0",
+      "layer": 39
+    },
+    {
+      "priority": 78,
+      "callback": "0x46e000",
+      "layer": 40
+    },
+    {
+      "priority": 80,
+      "callback": "0x46e010",
+      "layer": 41
+    },
+    {
+      "priority": 83,
+      "callback": "0x46e020",
+      "layer": 42
+    }
+  ],
+  "wrapperCases": [
+    {
+      "callback": "0x46dd90",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          0,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46dd90",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          0,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46dda0",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          1,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46dda0",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          1,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46ddb0",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          2,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46ddb0",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          2,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46ddc0",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          4,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46ddc0",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          4,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46ddd0",
+      "dirty": 0,
+      "events": [
+        [
+          "cameraPrepare",
+          "0x4c168c"
+        ],
+        [
+          "camera",
+          "0x4c168c"
+        ],
+        [
+          "viewport",
+          "0x4c176c"
+        ],
+        [
+          "layer",
+          3,
+          3
+        ]
+      ],
+      "camera": 3,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46ddd0",
+      "dirty": 1,
+      "events": [
+        [
+          "cameraPrepare",
+          "0x4c168c"
+        ],
+        [
+          "camera",
+          "0x4c168c"
+        ],
+        [
+          "viewport",
+          "0x4c176c"
+        ],
+        [
+          "flush"
+        ],
+        [
+          "state",
+          28,
+          0
+        ],
+        [
+          "layer",
+          3,
+          3
+        ]
+      ],
+      "camera": 3,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46de60",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          5,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46de60",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          5,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46de70",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          6,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46de70",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          6,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46de80",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          7,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46de80",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          7,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46de90",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          8,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46de90",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          8,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46dea0",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          9,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46dea0",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          9,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46deb0",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          10,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46deb0",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          10,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46dec0",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          11,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46dec0",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          11,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46df30",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          12,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46df30",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          12,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46ded0",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          13,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46ded0",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          13,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46dee0",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          14,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46dee0",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          14,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46def0",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          15,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46def0",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          15,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46df00",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          16,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46df00",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          16,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46df10",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          17,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46df10",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          17,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46df20",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          18,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46df20",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          18,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46df40",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          19,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46df40",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          19,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46e030",
+      "dirty": 0,
+      "events": [
+        [
+          "camera",
+          "0x4c1434"
+        ],
+        [
+          "viewport",
+          "0x4c1514"
+        ],
+        [
+          "flush"
+        ],
+        [
+          "state",
+          23,
+          8
+        ],
+        [
+          "layer",
+          20,
+          1
+        ]
+      ],
+      "camera": 1,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46e030",
+      "dirty": 1,
+      "events": [
+        [
+          "camera",
+          "0x4c1434"
+        ],
+        [
+          "viewport",
+          "0x4c1514"
+        ],
+        [
+          "flush"
+        ],
+        [
+          "state",
+          14,
+          0
+        ],
+        [
+          "flush"
+        ],
+        [
+          "state",
+          23,
+          8
+        ],
+        [
+          "layer",
+          20,
+          1
+        ]
+      ],
+      "camera": 1,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46df50",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          21,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46df50",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          21,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46df60",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          22,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46df60",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          22,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46df70",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          23,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46df70",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          23,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46dfb0",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          26,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46dfb0",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          26,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46dfc0",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          27,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46dfc0",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          27,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46dfa0",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          29,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46dfa0",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          29,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46df80",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          30,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46df80",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          30,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46df90",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          31,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46df90",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          31,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46dfd0",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          25,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46dfd0",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          25,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46e0d0",
+      "dirty": 0,
+      "events": [
+        [
+          "camera",
+          "0x4c1560"
+        ],
+        [
+          "viewport",
+          "0x4c1640"
+        ],
+        [
+          "flush"
+        ],
+        [
+          "state",
+          23,
+          8
+        ],
+        [
+          "layer",
+          24,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "callback": "0x46e0d0",
+      "dirty": 1,
+      "events": [
+        [
+          "camera",
+          "0x4c1560"
+        ],
+        [
+          "viewport",
+          "0x4c1640"
+        ],
+        [
+          "flush"
+        ],
+        [
+          "state",
+          14,
+          0
+        ],
+        [
+          "flush"
+        ],
+        [
+          "state",
+          23,
+          8
+        ],
+        [
+          "layer",
+          24,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "callback": "0x46e180",
+      "dirty": 0,
+      "events": [
+        [
+          "camera",
+          "0x4c1308"
+        ],
+        [
+          "viewport",
+          "0x4c13e8"
+        ],
+        [
+          "layer",
+          28,
+          0
+        ],
+        [
+          "camera",
+          "0x4c1560"
+        ],
+        [
+          "viewport",
+          "0x4c1640"
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46e180",
+      "dirty": 1,
+      "events": [
+        [
+          "camera",
+          "0x4c1308"
+        ],
+        [
+          "viewport",
+          "0x4c13e8"
+        ],
+        [
+          "layer",
+          28,
+          0
+        ],
+        [
+          "camera",
+          "0x4c1560"
+        ],
+        [
+          "viewport",
+          "0x4c1640"
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46e210",
+      "dirty": 0,
+      "events": [
+        [
+          "camera",
+          "0x4c1560"
+        ],
+        [
+          "viewport",
+          "0x4c1640"
+        ],
+        [
+          "flush"
+        ],
+        [
+          "state",
+          23,
+          8
+        ],
+        [
+          "layer",
+          36,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46e210",
+      "dirty": 1,
+      "events": [
+        [
+          "camera",
+          "0x4c1560"
+        ],
+        [
+          "viewport",
+          "0x4c1640"
+        ],
+        [
+          "flush"
+        ],
+        [
+          "state",
+          14,
+          0
+        ],
+        [
+          "flush"
+        ],
+        [
+          "state",
+          23,
+          8
+        ],
+        [
+          "layer",
+          36,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46dfe0",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          37,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46dfe0",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          37,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46dff0",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          38,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46dff0",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          38,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46e2b0",
+      "dirty": 0,
+      "events": [
+        [
+          "camera",
+          "0x4c1308"
+        ],
+        [
+          "viewport",
+          "0x4c13e8"
+        ],
+        [
+          "layer",
+          39,
+          0
+        ],
+        [
+          "camera",
+          "0x4c1560"
+        ],
+        [
+          "viewport",
+          "0x4c1640"
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46e2b0",
+      "dirty": 1,
+      "events": [
+        [
+          "camera",
+          "0x4c1308"
+        ],
+        [
+          "viewport",
+          "0x4c13e8"
+        ],
+        [
+          "layer",
+          39,
+          0
+        ],
+        [
+          "camera",
+          "0x4c1560"
+        ],
+        [
+          "viewport",
+          "0x4c1640"
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46e000",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          40,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46e000",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          40,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46e010",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          41,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46e010",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          41,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46e020",
+      "dirty": 0,
+      "events": [
+        [
+          "layer",
+          42,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    },
+    {
+      "callback": "0x46e020",
+      "dirty": 1,
+      "events": [
+        [
+          "layer",
+          42,
+          2
+        ]
+      ],
+      "camera": 2,
+      "offset": [
+        123,
+        456
+      ]
+    }
+  ],
+  "otherRegistrationGroups": {
+    "compositor": [
+      {
+        "priority": 1,
+        "callback": "0x43d140"
+      },
+      {
+        "priority": 14,
+        "callback": "0x43d400"
+      },
+      {
+        "priority": 15,
+        "callback": "0x43d2f0"
+      },
+      {
+        "priority": 25,
+        "callback": "0x43d5a0"
+      },
+      {
+        "priority": 26,
+        "callback": "0x43d4a0"
+      },
+      {
+        "priority": 43,
+        "callback": "0x43d6f0"
+      },
+      {
+        "priority": 44,
+        "callback": "0x43d640"
+      },
+      {
+        "priority": 56,
+        "callback": "0x43d820"
+      },
+      {
+        "priority": 57,
+        "callback": "0x43d7c0"
+      },
+      {
+        "priority": 85,
+        "callback": "0x43d870"
+      }
+    ],
+    "stage": [
+      {
+        "priority": 3,
+        "callback": "0x40a7b0"
+      },
+      {
+        "priority": 6,
+        "callback": "0x40a7c0"
+      }
+    ],
+    "ascii": [
+      {
+        "priority": 81,
+        "callback": "0x408090"
+      },
+      {
+        "priority": 53,
+        "callback": "0x4080a0"
+      },
+      {
+        "priority": 66,
+        "callback": "0x4080b0"
+      }
+    ],
+    "player": [
+      {
+        "priority": 29,
+        "callback": "0x443730"
+      }
+    ],
+    "bullets": [
+      {
+        "priority": 37,
+        "callback": "0x412c80"
+      }
+    ],
+    "spell": [
+      {
+        "priority": 12,
+        "callback": "0x417ef0"
+      }
+    ]
+  },
+  "cameraResetCases": [
+    {
+      "width": 640,
+      "height": 480,
+      "cameras": [
+        {
+          "viewport": [
+            0,
+            0,
+            640,
+            480,
+            0.0,
+            1.0
+          ],
+          "mode": 2,
+          "offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "viewport": [
+            32,
+            16,
+            384,
+            448,
+            0.0,
+            1.0
+          ],
+          "mode": 0,
+          "offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "viewport": [
+            128,
+            16,
+            384,
+            448,
+            0.0,
+            1.0
+          ],
+          "mode": 1,
+          "offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "viewport": [
+            116,
+            4,
+            408,
+            472,
+            0.0,
+            1.0
+          ],
+          "mode": 3,
+          "offset": [
+            0,
+            0
+          ]
+        }
+      ],
+      "prepare": [
+        "0x4c1560",
+        "0x4c1308",
+        "0x4c1434",
+        "0x4c168c"
+      ]
+    },
+    {
+      "width": 960,
+      "height": 720,
+      "cameras": [
+        {
+          "viewport": [
+            0,
+            0,
+            960,
+            720,
+            0.0,
+            1.0
+          ],
+          "mode": 2,
+          "offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "viewport": [
+            48,
+            24,
+            576,
+            672,
+            0.0,
+            1.0
+          ],
+          "mode": 0,
+          "offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "viewport": [
+            192,
+            24,
+            576,
+            672,
+            0.0,
+            1.0
+          ],
+          "mode": 1,
+          "offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "viewport": [
+            276,
+            124,
+            408,
+            472,
+            0.0,
+            1.0
+          ],
+          "mode": 3,
+          "offset": [
+            0,
+            0
+          ]
+        }
+      ],
+      "prepare": [
+        "0x4c1560",
+        "0x4c1308",
+        "0x4c1434",
+        "0x4c168c"
+      ]
+    },
+    {
+      "width": 1280,
+      "height": 960,
+      "cameras": [
+        {
+          "viewport": [
+            0,
+            0,
+            1280,
+            960,
+            0.0,
+            1.0
+          ],
+          "mode": 2,
+          "offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "viewport": [
+            64,
+            32,
+            768,
+            896,
+            0.0,
+            1.0
+          ],
+          "mode": 0,
+          "offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "viewport": [
+            256,
+            32,
+            768,
+            896,
+            0.0,
+            1.0
+          ],
+          "mode": 1,
+          "offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "viewport": [
+            436,
+            244,
+            408,
+            472,
+            0.0,
+            1.0
+          ],
+          "mode": 3,
+          "offset": [
+            0,
+            0
+          ]
+        }
+      ],
+      "prepare": [
+        "0x4c1560",
+        "0x4c1308",
+        "0x4c1434",
+        "0x4c168c"
+      ]
+    }
+  ],
+  "compositeCases": [
+    {
+      "callback": "0x43d2f0",
+      "events": [
+        [
+          "state",
+          171,
+          1
+        ],
+        [
+          "state",
+          15,
+          0
+        ],
+        [
+          "flush"
+        ],
+        [
+          "state",
+          14,
+          0
+        ],
+        [
+          "camera",
+          "0x4c168c"
+        ],
+        [
+          "viewport",
+          "0x4c176c"
+        ],
+        [
+          "copy",
+          1879179264
+        ],
+        [
+          "layer",
+          34,
+          3
+        ],
+        [
+          "flush"
+        ],
+        [
+          "state",
+          15,
+          1
+        ]
+      ]
+    },
+    {
+      "callback": "0x43d4a0",
+      "events": [
+        [
+          "state",
+          171,
+          1
+        ],
+        [
+          "state",
+          15,
+          0
+        ],
+        [
+          "flush"
+        ],
+        [
+          "state",
+          14,
+          0
+        ],
+        [
+          "camera",
+          "0x4c168c"
+        ],
+        [
+          "viewport",
+          "0x4c176c"
+        ],
+        [
+          "copy",
+          1879183360
+        ],
+        [
+          "flush"
+        ],
+        [
+          "state",
+          15,
+          1
+        ]
+      ]
+    },
+    {
+      "callback": "0x43d640",
+      "events": [
+        [
+          "state",
+          171,
+          1
+        ],
+        [
+          "state",
+          15,
+          0
+        ],
+        [
+          "flush"
+        ],
+        [
+          "state",
+          14,
+          0
+        ],
+        [
+          "copy",
+          1879187456
+        ],
+        [
+          "flush"
+        ],
+        [
+          "state",
+          15,
+          1
+        ]
+      ]
+    },
+    {
+      "callback": "0x43d7c0",
+      "events": [
+        [
+          "state",
+          15,
+          0
+        ],
+        [
+          "copy",
+          1879191552
+        ],
+        [
+          "flush"
+        ],
+        [
+          "state",
+          15,
+          1
+        ]
+      ]
+    }
+  ],
+  "foregroundPrefix": [
+    [
+      "flush"
+    ],
+    [
+      "viewport",
+      "0x4c176c"
+    ],
+    [
+      "flush"
+    ],
+    [
+      "state",
+      28,
+      0
+    ],
+    [
+      "flush"
+    ],
+    [
+      "state",
+      14,
+      0
+    ],
+    [
+      "flush"
+    ],
+    [
+      "state",
+      23,
+      8
+    ],
+    [
+      "layer",
+      32,
+      3
+    ],
+    [
+      "flush"
+    ],
+    [
+      "state",
+      23,
+      4
+    ],
+    [
+      "layer",
+      33,
+      3
+    ]
+  ],
+  "copyBindingCases": [
+    {
+      "width": 640,
+      "events": [
+        [
+          "bind",
+          0,
+          59
+        ],
+        [
+          "update",
+          0
+        ],
+        [
+          "bind",
+          1,
+          65
+        ],
+        [
+          "update",
+          1
+        ],
+        [
+          "bind",
+          2,
+          62
+        ],
+        [
+          "update",
+          2
+        ],
+        [
+          "bind",
+          3,
+          68
+        ],
+        [
+          "update",
+          3
+        ]
+      ],
+      "flags2": [
+        4294967295,
+        4294967295,
+        4294967295,
+        4294967295
+      ]
+    },
+    {
+      "width": 960,
+      "events": [
+        [
+          "bind",
+          0,
+          60
+        ],
+        [
+          "update",
+          0
+        ],
+        [
+          "bind",
+          1,
+          66
+        ],
+        [
+          "update",
+          1
+        ],
+        [
+          "bind",
+          2,
+          63
+        ],
+        [
+          "update",
+          2
+        ],
+        [
+          "bind",
+          3,
+          69
+        ],
+        [
+          "update",
+          3
+        ]
+      ],
+      "flags2": [
+        4294967295,
+        4294967295,
+        4294965247,
+        4294967295
+      ]
+    },
+    {
+      "width": 1280,
+      "events": [
+        [
+          "bind",
+          0,
+          61
+        ],
+        [
+          "update",
+          0
+        ],
+        [
+          "bind",
+          1,
+          67
+        ],
+        [
+          "update",
+          1
+        ],
+        [
+          "bind",
+          2,
+          64
+        ],
+        [
+          "update",
+          2
+        ],
+        [
+          "bind",
+          3,
+          70
+        ],
+        [
+          "update",
+          3
+        ]
+      ],
+      "flags2": [
+        4294967295,
+        4294967295,
+        4294967295,
+        4294967295
+      ]
+    }
+  ]
+}

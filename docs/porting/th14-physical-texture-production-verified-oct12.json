@@ -1,0 +1,1479 @@
+{
+  "physicalTextures": {
+    "cases": 437,
+    "resources": 57,
+    "exactBytes": 130010432,
+    "axisTables": 51,
+    "exactWeightPairs": 48009,
+    "loader": "Original ASCII resource retained in its heap region and assigned to manager+191e4 for negative Sprite references; remaining resources load in a separate region. Selected foreign sprite pointers normalize to their owning ASCII table index. Actual original47d090 wrapper with controlled0x180 bypass of OS wait,47cff0/47ce40 resource allocation and file/chunk parsing,47d130 preload,47d230 progressive chunk loading and final template initialization,47d420 texture/sprite/script table construction and47d9e0 descriptor arithmetic, actual40cc90 VM constructor/46f3e0 binding/negative-time46fe50. Six rates, progress counter per actual chunk and completion, selected51 template words and RNG. All57 original ANM resources, embedded/blank/render-target GPU boundaries; exact original ANM bytes supplied by controlled402b00 file service, separate poisoned heap allocations, actual48f980 memset. Original complete47cb70 embedded/47cd40 blank/47cda0 render-target texture creation routines execute; logical scale1, requested actual physical dimensions, target/source formats, source/destination rectangles, row pitch/filter/source bytes captured at controlled D3DXCreateTexture/D3DXLoadSurfaceFromMemory/device CreateTexture. GetLevelDesc returns the exact requested physical dimensions; no hardware capability adjustments or actual upload/pixel conversion. filename formatting, logging and cookie check are controlled. Whole descriptor bytes retain pointer/reserved values for audit; portable comparison selects declared fields, excluding those bytes. Original progressive routine called explicitly without OS thread scheduling; no actual D3D resource upload, filesystem/DAT I/O, rendering/HAL/audio or complete1:1 claim. Portable fixture loads actual production TextureImage to derive physical dimensions and converts portable logical sprite coordinates to original physical representation, then compares17 descriptor words per sprite (texture pointer normalized to chunk index), script source IDs/offsets/lengths and all script bytes after explicitly translating original opcodes using the production canonical map. Pointer/reserved fields excluded.",
+    "scope": "Actual original32 D3DX9_43 CreateTexture/LoadSurfaceFromMemory on hidden D3D9 HAL managed textures, original TH14 captured requests at logical scale1, all57 resources, embedded and blank textures, exact packed readback. D3D9 default post-device24-bit FPU precision (requested pre-device53/64 recorded separately) and controlled zero unwritten borders/blank textures; render targets excluded. Helper executes original DLL API, not full-game COM or whole-frame/audio/natural clear proof.",
+    "beforeRoundingTextureDifferences": 243,
+    "regressions": 34
+  },
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "everyFrameStageAssetRenderRoutes": 7,
+  "everyFrameStageAssetRenderFrames": 8400,
+  "everyFrameStageAssetRenderExactWords": 30716776,
+  "everyFrameStageAssetRenderSubmissionWords": 59409734,
+  "queuedStageAssetRenderRoutes": 42,
+  "queuedStageAssetRenderFrames": 50400,
+  "queuedStageAssetRenderSamples": 126,
+  "queuedStageAssetRenderSubmissionWords": 634529,
+  "liveStageAssetRenderRoutes": 42,
+  "liveStageAssetRenderFrames": 50400,
+  "liveStageAssetRenderExactWords": 184300656,
+  "liveStageAssetRenderSamples": 126,
+  "liveStageAssetRenderSubmissionWords": 634529,
+  "scheduledStageAssetUpdateRoutes": 42,
+  "scheduledStageAssetUpdateFrames": 50400,
+  "scheduledStageAssetUpdateExactWords": 184300656,
+  "allAnmResourceLoaderResources": 57,
+  "allAnmResourceLoaderRoutes": 342,
+  "allAnmResourceLoaderDescriptorWords": 326196,
+  "allAnmResourceLoaderTemplateWords": 584604,
+  "allAnmResourceLoaderScriptBytes": 3708144,
+  "constructorStageAssetUpdateRoutes": 42,
+  "constructorStageAssetUpdateFrames": 50400,
+  "constructorStageAssetUpdateExactWords": 184300656,
+  "loadedStageAssetUpdateRoutes": 42,
+  "loadedStageAssetUpdateFrames": 50400,
+  "loadedStageAssetUpdateExactWords": 184300656,
+  "stageAssetUpdateRoutes": 42,
+  "stageAssetUpdateFrames": 50400,
+  "stageAssetUpdateExactWords": 184300656,
+  "resourceLoaderRoutes": 42,
+  "resourceLoaderDescriptorWords": 4284,
+  "resourceLoaderTemplateWords": 19140,
+  "resourceLoaderScriptBytes": 57312,
+  "changedFiles": [
+    "runtimes/th12/th12_web/cpp/game/AnmResource.hpp",
+    "runtimes/th12/th12_web/cpp/game/AnmResource.cpp",
+    "runtimes/th12/th12_web/cpp/game/TextureImage.cpp",
+    "runtimes/th12/th12_web/cpp/game/ImageResample.hpp",
+    "runtimes/th12/th12_web/cpp/game/ImageResample.cpp",
+    "runtimes/th12/th12_web/cpp/game/AnmRenderer.hpp",
+    "runtimes/th12/th12_web/cpp/game/AnmRenderer.cpp",
+    "runtimes/th12/th12_web/cpp/game/StageDraw.cpp",
+    "runtimes/th12/th12_web/cpp/game/ScreenFade.cpp",
+    "runtimes/th12/th12_web/cpp/game/AnmInterpreter.cpp",
+    "runtimes/th12/th12_web/cpp/game/Stage.cpp"
+  ],
+  "changedPlatformFiles": [
+    "runtimes/th12/th12_web/cpp/sdl/GraphicsDevice.cpp"
+  ],
+  "stageUpdateOrderCases": 72,
+  "stageUpdateOrderFrames": 1152,
+  "stageUpdateOrderBeforeDifferences": 192,
+  "stageCameraPublicationCases": 72,
+  "stageCameraPublicationFrames": 1152,
+  "stageCameraPublicationBeforeDifferences": 672,
+  "allBackgroundAnimationScripts": 62,
+  "allBackgroundAnimationCases": 372,
+  "allBackgroundAnimationFrames": 446400,
+  "allBackgroundAnimationExactWords": 68697144,
+  "backgroundAnimationCases": 246,
+  "backgroundAnimationFrames": 295200,
+  "backgroundAnimationExactWords": 16261092,
+  "backgroundAnimationResources": 5,
+  "backgroundAnimationBeforeDifferences": 7080,
+  "scriptCases": 192,
+  "invisibleWholeLayerCases": 864,
+  "originalScriptTimelineFrames": 14400,
+  "visibleWholeLayerCases": 768,
+  "quads": 1872,
+  "exactFloatComponents": 44928,
+  "extendedStageFrames": 20400,
+  "callbackCases": 6912,
+  "callbackStrips": 2304,
+  "standaloneCallbackCases": 768,
+  "standaloneCallbackStrips": 936,
+  "mixedCases": 15360,
+  "mixedStrips": 13520,
+  "mixedQuads": 14976,
+  "exactDataWords": 7467616,
+  "objectCases": 15360,
+  "objectWorldQuads": 1152,
+  "assetCases": 36288,
+  "assetWorldQuads": 32016,
+  "assetExactWords": 60187872,
+  "passStateCases": 6336,
+  "fadeRenderCases": 96,
+  "fadeLifecycleCases": 48,
+  "fadeLifecycleFrames": 1332,
+  "fadeLifecycleDraws": 1332,
+  "fadeLifecycleExactWords": 26640,
+  "fadePairCases": 288,
+  "fadePairFrames": 14340,
+  "fadePairDraws": 18678,
+  "fadePairExactWords": 373560,
+  "fadePairOverlapDrawFrames": 5044,
+  "fadeControlChainCases": 120,
+  "fadeControlChainFrames": 6036,
+  "fadeSessionRoutes": 12,
+  "fadeSessionFrames": 630,
+  "fadeSessionPausedFrames": 48,
+  "fadeSessionExactFields": 5040,
+  "fadeBeforeDifferences": 48,
+  "fullAssetPassProbeCases": 14,
+  "fullAssetPassProbeWords": 1137632,
+  "fullAssetPassCases": 12096,
+  "fullAssetPassStrips": 896448,
+  "fullAssetPassWorldQuads": 256128,
+  "fullAssetPassExactWords": 483825792,
+  "tintBeforeDifferences": 2304,
+  "repeatedTintBeforeDifferences": 640,
+  "legacyBuilds": [
+    {
+      "title": 12,
+      "bytes": 903005,
+      "sha256": "77133233ab29a56a6dfd2169697d50cf2ce42f819a607a427a37482cb93dd259"
+    },
+    {
+      "title": 13,
+      "bytes": 909578,
+      "sha256": "81578bd552c0175994ddbcb668865fcbe624c2bf56ed8fda03dac670dfb8e853"
+    }
+  ],
+  "release": {
+    "bytes": 1870342,
+    "sha256": "5a5a125e126cea578448f475fd0d5748136a133234deae5e10c3e47753e29a38"
+  },
+  "launcher": {
+    "url": "http://127.0.0.1:8190/?game=th14",
+    "files": 127,
+    "buildId": "7d9b8ef516a612827862",
+    "browserWarningsOrErrors": 0,
+    "browserFlow": "ordinary menu Normal/ReimuA stage1, shoot and pause; no injected gameplay state"
+  },
+  "evidence": {
+    "artifacts/th14/physical-texture-pixels/before-physical-texture-fix/objects.json": {
+      "bytes": 70866,
+      "sha256": "432758585a1f2177ce360427f39826956a7cbfbecdecf6f738d149fccd17cc39"
+    },
+    "docs/porting/th14-stage-standalone-observed-oct12.json": {
+      "bytes": 27611,
+      "sha256": "41ac3a09700fc1addbe0ea2bb1f2f3b21017bce0b19cb9e16ded807632b96f0e"
+    },
+    "docs/porting/th14-stage-standalone-render-observed-oct12.json": {
+      "bytes": 27523,
+      "sha256": "0da5df98a2b5537fa823370cf66a12932c92809ce95e3d6d6ceab1dc96e8347b"
+    },
+    "docs/porting/th14-stage-standalone-integration-verified-oct12.json": {
+      "bytes": 2172469,
+      "sha256": "ec1797ceec60c083b519e59cb1c9fe5a4351d3865766f675c43a86ced98aadd4"
+    },
+    "docs/porting/th14-stage-layer-state-observed-oct12.json": {
+      "bytes": 27937,
+      "sha256": "29f8f76d7bb0f288c47edf33356736baad5f0b36015aebfbfdbfed6b3f0aef11"
+    },
+    "docs/porting/th14-stage-visibility-observed-oct12.json": {
+      "bytes": 51231,
+      "sha256": "e221a78d57e09055125a63d321d1dcb32daea5dca7fe2760cee2992ff49d8bb9"
+    },
+    "docs/porting/th14-stage-draw-integration-verified-oct12.json": {
+      "bytes": 914445,
+      "sha256": "7ef47e3d55b69c315dcb574f025a158d4a050ab4674529a5c8e77ce8a5d3cb41"
+    },
+    "docs/porting/th14-real-message-session-sync-verified-oct12.json": {
+      "bytes": 57519,
+      "sha256": "5cc57951f354f6afa2618a924794db90a251bcb0661e97eeab26f1977e7caf68"
+    },
+    "artifacts/th14/stage-standalone/native.json": {
+      "bytes": 1301344,
+      "sha256": "f94e89f6f732c950d187e861ca2f11a57376744b32c25e08cb096e8a8dd02c9f"
+    },
+    "tools/th14-stage-standalone-native.py": {
+      "bytes": 7700,
+      "sha256": "7dbde5a1a5bd00808161376eb26348ea6486a8bb4a3232e16e035e83bd624aa6"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-standalone-fixture.cpp": {
+      "bytes": 3886,
+      "sha256": "67d496554cecd9cd987d7b657e33018620adf885d2e6a6c8423dcbb9b54e882f"
+    },
+    "tools/th14-stage-standalone-check.mjs": {
+      "bytes": 4663,
+      "sha256": "7e5f51a10c5eae37cad64d7c7c401e898a45046da0791519f09bf82e7c3cb685"
+    },
+    "artifacts/th14/stage-standalone/standalone.wasm": {
+      "bytes": 789678,
+      "sha256": "1dc27a4c99cce08601f5d21f9b3754d41e883f6bbe847aaffe2d2453eb1c5596"
+    },
+    "artifacts/th14/stage-standalone-render/native.json": {
+      "bytes": 466957,
+      "sha256": "a3e8b6a74d7906c8948d75bc066a95a7fb8ab6494fff236449f221c410d66adf"
+    },
+    "tools/th14-stage-standalone-render-native.py": {
+      "bytes": 7398,
+      "sha256": "ee41d485500cba7444de36a493f28706fc462f36304791b8f4c6e8f3968e589c"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-standalone-render-fixture.cpp": {
+      "bytes": 3002,
+      "sha256": "c18e20a61cc8f11bb62ec3e4cc9ebd8f3cc924e291b553bb5e9d697464bac544"
+    },
+    "tools/th14-stage-standalone-render-check.mjs": {
+      "bytes": 4107,
+      "sha256": "82d3d1259962ce3785057b6388e36868c50376f42cf282dd21db0821c9746a26"
+    },
+    "artifacts/th14/stage-standalone-render/render.wasm": {
+      "bytes": 764965,
+      "sha256": "4a1dac7e6000e2689256267e2d898d7dc30054cdbca501ceaa8e314d9dc31c19"
+    },
+    "artifacts/th14/stage-standalone-integration/stages.wasm": {
+      "bytes": 815263,
+      "sha256": "146dac2e0c73ed5b2d9faff4f1a8f69ca2a5190ba22b75fa6746d3a3726a1299"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-standalone-integration-fixture.cpp": {
+      "bytes": 3789,
+      "sha256": "b9bc97cbc8cd2c12d57e1cf4c9c43849173b89d58e4e3c34f788e8f913ed7a22"
+    },
+    "tools/th14-stage-standalone-integration-check.mjs": {
+      "bytes": 5708,
+      "sha256": "99548f47a24d200a6f6afa0ade0e70c0d7a2efb73f290d6fd4cf1e1022e5d63c"
+    },
+    "artifacts/th14/stage-standalone/before-standalone-fix/observed.json": {
+      "bytes": 286961,
+      "sha256": "99a0234ec6a15312c81c0e1c7fd365a6dff4ef469b628285b2d1a77e1fa54699"
+    },
+    "artifacts/th14/stage-standalone/before-standalone-fix/native.json": {
+      "bytes": 108316,
+      "sha256": "2325f78c2ab8fa9c934d84c47c8968b612b67e91a4640ce1ccc8641c6e0c2cf5"
+    },
+    "artifacts/th14/stage-standalone/before-standalone-fix/Stage.hpp": {
+      "bytes": 3846,
+      "sha256": "64f1f536e6116317b6fb09390f38bb34871002deccd26e20140475623c902e97"
+    },
+    "artifacts/th14/stage-standalone/before-standalone-fix/StageScript.cpp": {
+      "bytes": 10727,
+      "sha256": "0ed157158b33e64846fccff40c3139c4dbb0469376873070ab326d941ad6b5fe"
+    },
+    "artifacts/th14/stage-standalone/before-standalone-fix/StageDraw.cpp": {
+      "bytes": 8930,
+      "sha256": "a00270c990e6274dd3dfb914a989dedc6a58afa7bbf42b764073a712a4a20ac8"
+    },
+    "artifacts/th14/stage-standalone/before-standalone-fix/standalone.wasm": {
+      "bytes": 775991,
+      "sha256": "6867441e66dfa13a84e2931b7d6c8df0a677ff687d3e72200a1264f2fd5d407e"
+    },
+    "docs/porting/th14-stage-callback-depth-observed-oct12.json": {
+      "bytes": 28050,
+      "sha256": "f0e8003a5ccbf8d0160d38cb1b3f2897cb62820bfb3f15eb5c5dbdadb40d07c3"
+    },
+    "artifacts/th14/stage-callback-depth/native.json": {
+      "bytes": 2693468,
+      "sha256": "e021ac316fe8f4b84947cc98cc6bfa92fc4951c13b79c3da21411247b7df5d5b"
+    },
+    "tools/th14-stage-callback-depth-native.py": {
+      "bytes": 7153,
+      "sha256": "852379f163727d2fc4e0b3d60ae7aec791057f8743a114b64768237acc377670"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-callback-depth-fixture.cpp": {
+      "bytes": 4023,
+      "sha256": "e5a927c8cffb9384b728e1c50baa0c2c98f3fa713bd7639313fdbce4237d5499"
+    },
+    "tools/th14-stage-callback-depth-check.mjs": {
+      "bytes": 3764,
+      "sha256": "88aad2b690c49b1d2067e9623ddd29058191028276f824dcc06dc6285ded465b"
+    },
+    "artifacts/th14/stage-callback-depth/layer.wasm": {
+      "bytes": 765574,
+      "sha256": "3137b205453a647f38d99615cfab6955a70d96468032951d8ec4e5a63ff1197b"
+    },
+    "docs/porting/th14-stage-standalone-callback-observed-oct12.json": {
+      "bytes": 27649,
+      "sha256": "9ed97761c77c3dd6a5ae5ece21809d43e254e08ca97365c977a353548f6d087d"
+    },
+    "artifacts/th14/stage-standalone-callback/native.json": {
+      "bytes": 104826,
+      "sha256": "fc256d6851a051abc4d483bcc4860c03784c31670d3bfb6bf51b976645897a0d"
+    },
+    "tools/th14-stage-standalone-callback-native.py": {
+      "bytes": 7979,
+      "sha256": "8702a2328c6433defeb55220ca9b2d1ddb751d70722b2e8660b19da8059beb27"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-standalone-callback-fixture.cpp": {
+      "bytes": 2933,
+      "sha256": "c93a65e3c942772b2f77c5db04c5db5abc5b8be930cadb2bbde379b84c365b47"
+    },
+    "tools/th14-stage-standalone-callback-check.mjs": {
+      "bytes": 3426,
+      "sha256": "5a04aadceab076a1b60c710a24657be1e2411923f9ee640de33abbdcec3d3a90"
+    },
+    "artifacts/th14/stage-standalone-callback/callback.wasm": {
+      "bytes": 764910,
+      "sha256": "776c2cbb631944e0d028d4bdcf185f52fa11a95dfd1922a1d66fb2f3d1b9246e"
+    },
+    "docs/porting/th14-stage-mixed-render-observed-oct12.json": {
+      "bytes": 27772,
+      "sha256": "beebd7397d85201b8696cc2233b922d0ce04332c75a552237ba4054dc7d84b6f"
+    },
+    "artifacts/th14/stage-mixed-render/native.json": {
+      "bytes": 79381955,
+      "sha256": "6a31603527cb1a1cd7e4446aa3f26081af6a1d8b415ebf3095d16299a84a1fd8"
+    },
+    "tools/th14-stage-mixed-render-native.py": {
+      "bytes": 8734,
+      "sha256": "3eb6330dc08415cdd911713c331661b76eeb3f8cba647caf7d5cec7a55d8a826"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-mixed-render-fixture.cpp": {
+      "bytes": 3641,
+      "sha256": "90fb5a91ade2415fbdb0e72ebde8cbe0617cd52f60f084ee72783e7868920dc1"
+    },
+    "tools/th14-stage-mixed-render-check.mjs": {
+      "bytes": 3604,
+      "sha256": "44b3185ac95e9b4b87e41756eca725c19aca3a086ec9afc314220e2512c1a2af"
+    },
+    "artifacts/th14/stage-mixed-render/callback.wasm": {
+      "bytes": 765372,
+      "sha256": "9479706e521f2efc9194077c7c90a5af4b1d916d03f5a28bc681ef7ef3d767b5"
+    },
+    "artifacts/th14/stage-callback-depth/before-callback-cache-fix/observed.json": {
+      "bytes": 328163,
+      "sha256": "4a5732034008bb36246d468f221e0ef006c1f86a9d2078115e74aedf8eaad8bc"
+    },
+    "artifacts/th14/stage-callback-depth/before-callback-cache-fix/native.json": {
+      "bytes": 2693468,
+      "sha256": "a87aa38c4e12c2e77a3fe7886804ba846bbce95650c3bd0eb8fa609e98968987"
+    },
+    "artifacts/th14/stage-callback-depth/before-callback-cache-fix/StageDraw.cpp": {
+      "bytes": 9506,
+      "sha256": "add1d8400af7987b47f4a28a1ede275b228630a86caef65bf2e54e5901e15eea"
+    },
+    "artifacts/th14/stage-callback-depth/before-callback-cache-fix/AnmRenderer.cpp": {
+      "bytes": 24526,
+      "sha256": "d53c1f2ca9fa7b253c3059021c53f5e04deba9baae8b4a79aeccead17e4ef0a6"
+    },
+    "artifacts/th14/stage-callback-depth/before-callback-cache-fix/AnmRenderer.hpp": {
+      "bytes": 2181,
+      "sha256": "4dadf7c3c9de17f6959a23e373adb3d37f309588e9590ff923378ea0472013b5"
+    },
+    "artifacts/th14/stage-callback-depth/before-callback-cache-fix/layer.wasm": {
+      "bytes": 764506,
+      "sha256": "32c34a7ee20110ac87b126072adf42871dc9b5b19b5e33e305ec04e6e04c81af"
+    },
+    "artifacts/th14/stage-callback-depth/before-callback-cache-fix/native.py": {
+      "bytes": 7153,
+      "sha256": "0b8e3d5f8b1e1aa93dba742cd729daab897cb275e98ef96b1f3c6852f06097d2"
+    },
+    "artifacts/th14/stage-callback-depth/before-callback-cache-fix/check.mjs": {
+      "bytes": 3624,
+      "sha256": "26a3abfcdbef354d4b5ba0928fd1b3fd3fa3ba89ce6c0892f740c502b926ad94"
+    },
+    "artifacts/th14/stage-mixed-render/before-negative-zero-input-fix/observed.json": {
+      "bytes": 204037039,
+      "sha256": "721a3cbf5e8a8558955d8dd2183ee46e7dfe1899cc59ebcd39013f5c1b3539de"
+    },
+    "artifacts/th14/stage-mixed-render/before-negative-zero-input-fix/fixture.cpp": {
+      "bytes": 3636,
+      "sha256": "d0af594ba29cec1469ddac8961ccd683b42854906bab96c45edcff962fcbd6b8"
+    },
+    "artifacts/th14/stage-mixed-render/before-negative-zero-input-fix/callback.wasm": {
+      "bytes": 765260,
+      "sha256": "7fa622ee612915575b5504f0e0bd10c67d77e4d6111a8b53f86a3e16f34e74bf"
+    },
+    "artifacts/th14/stage-mixed-render/before-negative-zero-input-fix/check.mjs": {
+      "bytes": 3604,
+      "sha256": "44b3185ac95e9b4b87e41756eca725c19aca3a086ec9afc314220e2512c1a2af"
+    },
+    "docs/porting/th14-stage-object-render-observed-oct12.json": {
+      "bytes": 28046,
+      "sha256": "7733e3e2ff4dc174aa5d270e9427c7875f3317a6299b0e01a99100e25745caff"
+    },
+    "artifacts/th14/stage-object-render/native.json": {
+      "bytes": 62115452,
+      "sha256": "9223d7be710769c0d087ac0d85ae7f730f860d589c0fe9c6d70687361477a2cf"
+    },
+    "tools/th14-stage-object-render-native.py": {
+      "bytes": 8988,
+      "sha256": "4a405b2ad3fa547dafad0e83f2a323a565f420c395a6896d3ccb13a9351d7f53"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-object-render-fixture.cpp": {
+      "bytes": 4952,
+      "sha256": "905dc624c53a53ec67fbab38497d83ad48e8bcb943d76b75115844cd9635b384"
+    },
+    "tools/th14-stage-object-render-check.mjs": {
+      "bytes": 4155,
+      "sha256": "726d1d60412f36ed329da3e37a8a077ba7449abb7764e5ff6bce830e1ef504e4"
+    },
+    "artifacts/th14/stage-object-render/layer.wasm": {
+      "bytes": 766277,
+      "sha256": "7696cf44864420366ff4c649c01707648c565bc5c53328a9ddcc92d0f14eb3a5"
+    },
+    "docs/porting/th14-stage-asset-render-observed-oct12.json": {
+      "bytes": 28888,
+      "sha256": "f0c7e8f9b98eeba00b5231918d92f9f8feeb44de7d3450ff2ae8a94a34779899"
+    },
+    "artifacts/th14/stage-asset-render/native.json": {
+      "bytes": 43067863,
+      "sha256": "dc8bd59a209ba01125913294711c797b0f9e0dd4dc6004091ad8f5bc59560991"
+    },
+    "tools/th14-stage-asset-render-native.py": {
+      "bytes": 10621,
+      "sha256": "4426ec74c4d7d790eacd9434700a796a66eef6e34bbaa326be80627da656c53e"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-asset-render-fixture.cpp": {
+      "bytes": 5171,
+      "sha256": "f0812f96002f343a657e3b261e83a45748a5b2416d5558f797e8ccb7e6283c5e"
+    },
+    "tools/th14-stage-asset-render-check.mjs": {
+      "bytes": 4922,
+      "sha256": "4c4aea98dd77578e3ebea74eaa42d035831d36c7c11a2e1db2038c36323a098a"
+    },
+    "artifacts/th14/stage-asset-render/assets.wasm": {
+      "bytes": 776099,
+      "sha256": "9b508108c428b1cd67979ca97ca7f0f65294f5458712d09bc4231df973b93bcb"
+    },
+    "docs/porting/th14-stage-pass-state-observed-oct12.json": {
+      "bytes": 28132,
+      "sha256": "2b06121cbaa06536c6005c39ed4fe37d6284de69c12e53914ce1c25e5e60f16c"
+    },
+    "artifacts/th14/stage-pass-state/native.json": {
+      "bytes": 5102638,
+      "sha256": "f1a6eb78e4b8ab2023a707ea736e7b6b3270ce98a20d4dd9185e88383f70b882"
+    },
+    "tools/th14-stage-pass-state-native.py": {
+      "bytes": 9092,
+      "sha256": "4ea2f3f65c08a97baf3d3bef41bfcf6e001c3d5fa0593c0472098ba356c60ec2"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-pass-state-fixture.cpp": {
+      "bytes": 3275,
+      "sha256": "1c666040cf28562306f720d42959448e9d06a327a4d1ac011a82b7b1aa668bd0"
+    },
+    "tools/th14-stage-pass-state-check.mjs": {
+      "bytes": 3918,
+      "sha256": "33d02439035cb013fe81ee50034e3b11c3b5bde0800a18b94475896f83744371"
+    },
+    "artifacts/th14/stage-pass-state/passes.wasm": {
+      "bytes": 768432,
+      "sha256": "ae426ed55eaf4137fcf5cf805471b8da9bf5b1742b9c3ae2828e48dc208e0577"
+    },
+    "docs/porting/th14-stage-fade-render-observed-oct12.json": {
+      "bytes": 27577,
+      "sha256": "3a9558da561faed492fb46a58e9cc9bee064af5617b390f4461fb39c9a60920c"
+    },
+    "artifacts/th14/stage-fade-render/native.json": {
+      "bytes": 21900,
+      "sha256": "03182f18dd3f364a3bcf093856cbb123b4721d0feef7c2353a2a1d39f1269d3b"
+    },
+    "tools/th14-stage-fade-render-native.py": {
+      "bytes": 7031,
+      "sha256": "33467eb322ac5a51daa5c2acd716211d956dcf6bb101903c4faf624e06834be0"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-fade-render-fixture.cpp": {
+      "bytes": 1021,
+      "sha256": "d06e1747162b09bf7e86ed7226d28ea1b3332a2cf4064890265d1471cad7ade9"
+    },
+    "tools/th14-stage-fade-render-check.mjs": {
+      "bytes": 3512,
+      "sha256": "371dbff9f80d8acca76c8cb710e70bc9bb0cdbfb264b02e188e10436a6f2de4d"
+    },
+    "artifacts/th14/stage-fade-render/fade.wasm": {
+      "bytes": 673448,
+      "sha256": "41a101c7e28eeb648e9c44462fe8b9c368ad552815c2c765498e225f51109019"
+    },
+    "docs/porting/th14-stage-asset-pass-probe-observed-oct12.json": {
+      "bytes": 28883,
+      "sha256": "0ca0d3f96b55919cffad0fae6dbafe8b73292c342e6b2d61548be5fd28a86c34"
+    },
+    "artifacts/th14/stage-asset-pass-probe/native.json": {
+      "bytes": 43149,
+      "sha256": "28981f6cb954950bb85d3686e572ebe8c0024a585bfc41a3e250f515cabdd244"
+    },
+    "tools/th14-stage-asset-pass-probe-native.py": {
+      "bytes": 12472,
+      "sha256": "43b2bbddc5feabf51c65932e1d66c062f648b99f9e0dccd5b5913b4f6b7d033a"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-asset-pass-render-fixture.cpp": {
+      "bytes": 9816,
+      "sha256": "eb7d4539d27a13c53f05022273c8ca8489f681a72684b8e3ad81a93b94c405e7"
+    },
+    "tools/th14-stage-asset-pass-probe-check.mjs": {
+      "bytes": 5778,
+      "sha256": "9e1ec88454975c58698ad646320bb6fad380b99987aa6457471f1b06c419bbfc"
+    },
+    "artifacts/th14/stage-asset-pass-probe/assets.wasm": {
+      "bytes": 785267,
+      "sha256": "3e8b1dfc41bbd50d295b5296ed4088727a8c93c49ed9408b6a79f869e65f1f51"
+    },
+    "docs/porting/th14-stage-asset-pass-render-observed-oct12.json": {
+      "bytes": 28901,
+      "sha256": "cf78e454b4ebc51c3139b72ba1ac1f338b66f0e7c854f17a8106204cc4f9dd1d"
+    },
+    "artifacts/th14/stage-asset-pass-render/native.json": {
+      "bytes": 26798070,
+      "sha256": "daa27a193041758b90345508fc3adc3069d7ccbe4071e07e800604332e0cdc2c"
+    },
+    "tools/th14-stage-asset-pass-render-native.py": {
+      "bytes": 12542,
+      "sha256": "9d6fc80f2dd4920a4d0ddc6841a24e01b1cc1920d5e6f090b6cab0f4281cdf78"
+    },
+    "tools/th14-stage-asset-pass-render-check.mjs": {
+      "bytes": 5784,
+      "sha256": "eb95e7f4cd53e67f8d0693dad92eb3d9c8c14e95b371c24f35eec4298e65a890"
+    },
+    "artifacts/th14/stage-asset-pass-render/assets.wasm": {
+      "bytes": 785267,
+      "sha256": "3e8b1dfc41bbd50d295b5296ed4088727a8c93c49ed9408b6a79f869e65f1f51"
+    },
+    "artifacts/th14/stage-pass-state/before-tint-request-consumption-fix/observed.json": {
+      "bytes": 4798587,
+      "sha256": "3dadf6073ddbcfff9635a2ee77d6b87282ea0294b2d477a6b8edd991bdd91000"
+    },
+    "artifacts/th14/stage-pass-state/before-tint-request-consumption-fix/native.json": {
+      "bytes": 5102342,
+      "sha256": "5f8fdf39c8377d8ee68a69ec8d0e9d15035e54d0bcfd0d9805573424ebbc1427"
+    },
+    "artifacts/th14/stage-pass-state/before-tint-request-consumption-fix/StageDraw.cpp": {
+      "bytes": 9802,
+      "sha256": "43389943a36c104a08790f66e4d6b7920de76845a1ab408fd866c569d1ffdedf"
+    },
+    "artifacts/th14/stage-pass-state/before-tint-request-consumption-fix/passes.wasm": {
+      "bytes": 768360,
+      "sha256": "fbd7b1a116afa615ea9506f486789bad3eab5530af363cfa63c929b5a445c44e"
+    },
+    "artifacts/th14/stage-pass-state/before-tint-request-consumption-fix/fixture.cpp": {
+      "bytes": 3275,
+      "sha256": "1c666040cf28562306f720d42959448e9d06a327a4d1ac011a82b7b1aa668bd0"
+    },
+    "artifacts/th14/stage-pass-state/before-tint-request-consumption-fix/check.mjs": {
+      "bytes": 3918,
+      "sha256": "33d02439035cb013fe81ee50034e3b11c3b5bde0800a18b94475896f83744371"
+    },
+    "artifacts/th14/stage-pass-state/before-tint-request-consumption-fix/native.py": {
+      "bytes": 8870,
+      "sha256": "ed3c4a0b3208e0e36279e6d97f22e3cb90fa49fc5aca478cef7891b27ac7e839"
+    },
+    "artifacts/th14/stage-fade-render/before-native-screen-rectangle-fix/observed.json": {
+      "bytes": 72774,
+      "sha256": "3064b2b01a4f854e2b865e24725a5b8b2f871df5a41515b9124711aee4804eee"
+    },
+    "artifacts/th14/stage-fade-render/before-native-screen-rectangle-fix/native.json": {
+      "bytes": 9431,
+      "sha256": "1cf0723e634ab961cf4ae6aa5c00d61d5f1ce7d026f3f3381c3bb405cfe94c69"
+    },
+    "artifacts/th14/stage-fade-render/before-native-screen-rectangle-fix/ScreenFade.cpp": {
+      "bytes": 1511,
+      "sha256": "6d856cde27cb90dacdd24d25b465e322e4005fe01ce8138ca396069f311f8db6"
+    },
+    "artifacts/th14/stage-fade-render/before-native-screen-rectangle-fix/fixture.cpp": {
+      "bytes": 724,
+      "sha256": "9766710d27b7e4bdb5522b1a4a8be5d7911c86982a5bd35a2906855848f06179"
+    },
+    "artifacts/th14/stage-fade-render/before-native-screen-rectangle-fix/fade.wasm": {
+      "bytes": 673226,
+      "sha256": "2d7a7dac96f35115dd7d24e0bc0be11362759598b6586ff46cb4ac9d99d3052d"
+    },
+    "artifacts/th14/stage-fade-render/before-native-screen-rectangle-fix/native.py": {
+      "bytes": 6367,
+      "sha256": "5627e0395df3e0cb8a7b6cfa9a15d9d8bb74d6a30abf272048e1ab9bb99f77e1"
+    },
+    "artifacts/th14/stage-fade-render/before-native-screen-rectangle-fix/check.mjs": {
+      "bytes": 3049,
+      "sha256": "68071dd174382be3600618e9d928a2cd1313264753ac167b05d37f98e2b6df8b"
+    },
+    "docs/porting/th14-stage-fade-lifecycle-observed-oct12.json": {
+      "bytes": 28090,
+      "sha256": "d52084e717db3949f04ca4d097fdb03e90810604a83572ba08f777b9c5cd4e38"
+    },
+    "artifacts/th14/stage-fade-lifecycle/native.json": {
+      "bytes": 339675,
+      "sha256": "afe4220036d2f839a34e49a3dfcced9b3fcce2101f65415b6b8ac26eb4183abd"
+    },
+    "tools/th14-stage-fade-lifecycle-native.py": {
+      "bytes": 11152,
+      "sha256": "46b8cddfd86381358d3e7d44b724384afc56b434374d9bcee70df8627a2448b5"
+    },
+    "tools/th14-stage-fade-lifecycle-check.mjs": {
+      "bytes": 4608,
+      "sha256": "0dfc2ea7f8fcffecdea157b9a844c7ffbe25dc648e619e4c38e80815fc43f9c0"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-fade-lifecycle-fixture.cpp": {
+      "bytes": 2425,
+      "sha256": "caddf291daf7d3a7c758b650bb69faba2cd670f5d3a79251202f5eca65d7cf60"
+    },
+    "artifacts/th14/stage-fade-lifecycle/lifecycle.wasm": {
+      "bytes": 768273,
+      "sha256": "cc1f40be2b3925040a6777ff89201211ca4902def4c0cbf948b0fa13bcfe6ebd"
+    },
+    "artifacts/th14/stage-fade-lifecycle/before-original-callback-scheduler/observed.json": {
+      "bytes": 27959,
+      "sha256": "fc86b7e699f7c1961b1fcee2f457ee90ee88441f5dd503530a5d68a5e4c2ad24"
+    },
+    "artifacts/th14/stage-fade-lifecycle/before-original-callback-scheduler/native.json": {
+      "bytes": 338415,
+      "sha256": "939b219fede51bbfab5fb52365f2342f8c4df5f8a07f9da2bb06c6cdf2ca7bf2"
+    },
+    "artifacts/th14/stage-fade-lifecycle/before-original-callback-scheduler/native.py": {
+      "bytes": 10501,
+      "sha256": "649bef3c60e7d2dc4265246d0b1616e3c638df85ad5e9d6a8adbdd93a34363e4"
+    },
+    "artifacts/th14/stage-fade-lifecycle/before-original-callback-scheduler/check.mjs": {
+      "bytes": 4475,
+      "sha256": "a34a6df1043124fc0c40aa682dd7455c07a21187bcb867cbb47714fecb0a123d"
+    },
+    "artifacts/th14/stage-fade-lifecycle/before-original-callback-scheduler/fixture.cpp": {
+      "bytes": 2425,
+      "sha256": "caddf291daf7d3a7c758b650bb69faba2cd670f5d3a79251202f5eca65d7cf60"
+    },
+    "artifacts/th14/stage-fade-lifecycle/before-original-callback-scheduler/lifecycle.wasm": {
+      "bytes": 768173,
+      "sha256": "d098a5fa150863a89805bf8db18be9ea591eeeb47575ee95ec0a85f44e30035a"
+    },
+    "docs/porting/th14-stage-fade-pair-lifecycle-observed-oct12.json": {
+      "bytes": 28047,
+      "sha256": "eb21a79b89d7ec63f3cec3ccf14033908a56b0c1b38f4b78d00d87025fce6b55"
+    },
+    "artifacts/th14/stage-fade-pair-lifecycle/native.json": {
+      "bytes": 4742291,
+      "sha256": "45b5284d19b5201417a42b361c053abd3e761d3a740bd9716e4193ea6e4ba730"
+    },
+    "tools/th14-stage-fade-pair-lifecycle-native.py": {
+      "bytes": 12504,
+      "sha256": "abed9c992cd564b54cb8912ad66a2d6859025187034de7464de9130f4fc18db2"
+    },
+    "tools/th14-stage-fade-pair-lifecycle-check.mjs": {
+      "bytes": 5631,
+      "sha256": "fcfdec483bebcf08b2de2e96bb817f18a0e4150f55b6438d76fd6cca4615448e"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-fade-pair-lifecycle-fixture.cpp": {
+      "bytes": 2610,
+      "sha256": "ecce4bd956ee7f98bc6cd7c30292d8634bf59e242cb48ef0fa10eab1c181b41b"
+    },
+    "artifacts/th14/stage-fade-pair-lifecycle/pairs.wasm": {
+      "bytes": 767394,
+      "sha256": "52710dbdbb1ff445b4b43bf174ed9b39ed81d85a18b550e48b426d3df9b319c9"
+    },
+    "docs/porting/th14-stage-fade-control-chain-observed-oct12.json": {
+      "bytes": 28021,
+      "sha256": "c17bbc46e8420fc4db4eca9670722ec51ed75a758206b778993168344f91f2f8"
+    },
+    "artifacts/th14/stage-fade-control-chain/native.json": {
+      "bytes": 1948532,
+      "sha256": "a32934224657b4f6328895ea9b39a7ab7dbbaf8311d5d3e4e3361ead98718b43"
+    },
+    "tools/th14-stage-fade-control-chain-native.py": {
+      "bytes": 12177,
+      "sha256": "b5b353cc9ccde24af64a52ca66edd69b4d218d7331c6745398f52f324a69d9cd"
+    },
+    "tools/th14-stage-fade-control-chain-check.mjs": {
+      "bytes": 5242,
+      "sha256": "f5ea3326241628f38726cca1c526e05060474a2218522b0e24ed0da08bf320f7"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-fade-control-chain-fixture.cpp": {
+      "bytes": 229,
+      "sha256": "a15224614fd2aae6d58d0f430b9e921c81d3d8686e0560763f259c42498057c0"
+    },
+    "artifacts/th14/stage-fade-control-chain/control.wasm": {
+      "bytes": 768529,
+      "sha256": "8d697c6e74324465742c9957b0efe9c7b13aebfe354c190a322371b88d851d25"
+    },
+    "docs/porting/th14-stage-fade-session-observed-oct12.json": {
+      "bytes": 30284,
+      "sha256": "d3d7ab89a7f5a37e12ff92694f026255d4b2b9ad4aa4713b833f97e1b058eaf9"
+    },
+    "tools/th14-stage-fade-session-check.mjs": {
+      "bytes": 5860,
+      "sha256": "17b341445e3704da33893ff4399b36a7523feabf94e880f1d6b78fa99e8248a1"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-fade-session-fixture.cpp": {
+      "bytes": 1510,
+      "sha256": "a33431d553189e25eaf52c61d912592a7873ac88e60fa26d6ca61a07c10c25d9"
+    },
+    "artifacts/th14/stage-fade-session/session.wasm": {
+      "bytes": 1285624,
+      "sha256": "7fe10e0f81b8108986442296712f7e7286fa29cac6ffbb70efb31e43912ec072"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-session-fixture.cpp": {
+      "bytes": 9515,
+      "sha256": "1f4c8b679e826c3d3bb48f02d576aae2f46dc87c79dacdd3cd831ade9c47e2cd"
+    },
+    "runtimes/th12/th12_web/tests/cpp/render-fixture.hpp": {
+      "bytes": 2634,
+      "sha256": "3f8cf7447d8242d7e0b38ea19b30fad73951347ad0a9c370dc8a41593042cbae"
+    },
+    "docs/porting/th14-stage-asset-anm-observed-oct12.json": {
+      "bytes": 31777,
+      "sha256": "d919e0c0b467b76123a6b4eddcd0908de6fd10d875970b54272c4be5b0f0840f"
+    },
+    "artifacts/th14/stage-asset-anm/native.json": {
+      "bytes": 91543327,
+      "sha256": "7f49995b011bfebdec3825c113dfb073ccfe9123857c79e1766c70ff51b5beae"
+    },
+    "tools/th14-stage-asset-anm-native.py": {
+      "bytes": 6197,
+      "sha256": "369a64654dd82646cb461a6b140eefab18d9f0569f573f6becd50bd2e6d306b6"
+    },
+    "tools/th-anm-script-dump.py": {
+      "bytes": 2447,
+      "sha256": "27f9300d8aa6ed4217e7c275f22dd5d7956e459539ba4cc206b2c2810e668cf0"
+    },
+    "tools/th14-stage-asset-anm-check.mjs": {
+      "bytes": 4408,
+      "sha256": "b4c8a8953cb18090e8ed8ee084aaf80cb39dcb79e6df634034c4114b137cea27"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-asset-anm-fixture.cpp": {
+      "bytes": 2405,
+      "sha256": "9b0291158e285c401eab54fa51beee83661f27cac1dc06a7568b3530c1861118"
+    },
+    "artifacts/th14/stage-asset-anm/animations.wasm": {
+      "bytes": 741136,
+      "sha256": "b6a80637aaa69b18af7d718951b544497e28df65dcb1389c94097241fa700dc6"
+    },
+    "artifacts/th14/stage-asset-anm/before-native-animation-timing-fix/observed.json": {
+      "bytes": 1781064,
+      "sha256": "ff7dc646a3e47b78fad10e8ec0aacd3e25ea1392b59d87a22ff4badb3a29def9"
+    },
+    "artifacts/th14/stage-asset-anm/before-native-animation-timing-fix/native.json": {
+      "bytes": 9192538,
+      "sha256": "a11445d434d8577a3b04bb6aac1c0ead6e859976deb4887f417b0bcd9e443605"
+    },
+    "artifacts/th14/stage-asset-anm/before-native-animation-timing-fix/check.mjs": {
+      "bytes": 4176,
+      "sha256": "d2f882e9f18807fb0930b97fa83624ad14c7912766dc822eda93dcc08ffd2eb9"
+    },
+    "artifacts/th14/stage-asset-anm/before-native-animation-timing-fix/fixture.cpp": {
+      "bytes": 2405,
+      "sha256": "9b0291158e285c401eab54fa51beee83661f27cac1dc06a7568b3530c1861118"
+    },
+    "artifacts/th14/stage-asset-anm/before-native-animation-timing-fix/animations.wasm": {
+      "bytes": 741005,
+      "sha256": "3f1fa67fe5c9eec847d4f8a34de9b070a6aa96da4f8d567af3646cb54d06cac7"
+    },
+    "artifacts/th14/stage-asset-anm/before-native-animation-timing-fix/native.py": {
+      "bytes": 6195,
+      "sha256": "5b91eefe261c82fffe616e49438249d38ca03f831b4194d66947506ada16dcd2"
+    },
+    "artifacts/th14/stage-asset-anm/before-native-animation-timing-fix/AnmInterpreter.cpp": {
+      "bytes": 35735,
+      "sha256": "1d993a3ba700af27d4ed7d6d773a52a093616aa697be56b08170fdd1efbc48e0"
+    },
+    "docs/porting/th14-anm-verified.json": {
+      "bytes": 10424,
+      "sha256": "962ac3866ea88537a652c9ddd59f380a518f74c376231d63e15710242b1ba3b6"
+    },
+    "docs/porting/th14-stage-asset-anm-geometry-observed-oct12.json": {
+      "bytes": 28737,
+      "sha256": "7bcd7831927979c522747888fba731dcc82849e48c8a481d907476e8036e4632"
+    },
+    "artifacts/th14/stage-asset-anm-geometry/native.json": {
+      "bytes": 432508359,
+      "sha256": "fe934449303eae809513327345dbbf1c34dded8e5e148488f0db95428eed849a"
+    },
+    "tools/th14-stage-asset-anm-geometry-native.py": {
+      "bytes": 7049,
+      "sha256": "22d380dacc69ba5e94606d29f5a8edd9b2a010ae5816dbd0f724a44726088c5e"
+    },
+    "tools/th14-stage-asset-anm-geometry-check.mjs": {
+      "bytes": 4664,
+      "sha256": "2ff4d0db6ee22bfac8ce3921778ea85e6f2a818aa9ab15fc88d0d7d9ea3e263f"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-asset-anm-geometry-fixture.cpp": {
+      "bytes": 2609,
+      "sha256": "073b9c4b959949417a3ea9aeab444c6e6320ec62e1025ef28ed2b175e9412fd9"
+    },
+    "artifacts/th14/stage-asset-anm-geometry/animations.wasm": {
+      "bytes": 741218,
+      "sha256": "41d14eb0a7e9a3a4908c05b99fd02d8a99129c9ba5ec2dc59dcf01f906c815eb"
+    },
+    "docs/porting/th14-stage-asset-anm-ribbon-observed-oct12.json": {
+      "bytes": 28979,
+      "sha256": "bbc8b512e491ebc044cdc3fa053bb8f64f2625b642d243297731a16317069452"
+    },
+    "artifacts/th14/stage-asset-anm-ribbon/native.json": {
+      "bytes": 39426597,
+      "sha256": "e6f3a701f805aea5d478b3a6cc9bfbaa30f7977da4e4c35f31e785173a50f890"
+    },
+    "tools/th14-stage-asset-anm-ribbon-native.py": {
+      "bytes": 7300,
+      "sha256": "6dfb9549c9e9dd5a19802a684bb32f9439b5bc5fe4f80c3dfb645005bab60ec2"
+    },
+    "tools/th14-stage-asset-anm-ribbon-check.mjs": {
+      "bytes": 4652,
+      "sha256": "2baf228ccee017f012726fbe4b9e3f3e2c060f984be4e1fdd5c3e71fc4d174af"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-asset-anm-ribbon-fixture.cpp": {
+      "bytes": 2781,
+      "sha256": "9d7fba58e405a9f23662e8d18fac8f08e9684d26ece5d9b7d62866aba4aa14ff"
+    },
+    "artifacts/th14/stage-asset-anm-ribbon/animations.wasm": {
+      "bytes": 741270,
+      "sha256": "94abfcb819b5a33cf564ed9e8ec5d73fc264f4f90fd54c75f1c7cc3d9baa2f20"
+    },
+    "docs/porting/th14-stage-animation-update-order-observed-oct12.json": {
+      "bytes": 28044,
+      "sha256": "2882ea297b1cf555b13c13734c6991b0683cdff73fc55b27cb8aa7e79e422d80"
+    },
+    "artifacts/th14/stage-animation-update-order/native.json": {
+      "bytes": 2293700,
+      "sha256": "f23467c2beb8adcafdb2c4dca8053a53dc437c4e09b3ea23aad5b6608414ab5a"
+    },
+    "tools/th14-stage-animation-update-order-native.py": {
+      "bytes": 6863,
+      "sha256": "7b0ea8ebea8323234da10be5f5ae6212db31d0f7e1cb94fe6d6783efa241ce71"
+    },
+    "tools/th14-stage-animation-update-order-check.mjs": {
+      "bytes": 4183,
+      "sha256": "9e7a729075592b8a8ca26d105aeb6e4d3b29b35e09246d09487a513ef2f151af"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-animation-update-order-fixture.cpp": {
+      "bytes": 1494,
+      "sha256": "0a1524771ff9c6db23fcec7ddb956c8b695ced6769ca2d4b512f840f2cbc1a28"
+    },
+    "artifacts/th14/stage-animation-update-order/stage.wasm": {
+      "bytes": 763970,
+      "sha256": "2a686158e8e7e2df10048606987511e9bac109ea6791e6c05b692c54ee02b16c"
+    },
+    "artifacts/th14/stage-animation-update-order/before-standalone-update-order-fix/observed.json": {
+      "bytes": 3074447,
+      "sha256": "29ad38134a757648bdd23a6563f39d60dde32c2e41bbff652112ddc6f54c899b"
+    },
+    "artifacts/th14/stage-animation-update-order/before-standalone-update-order-fix/native.json": {
+      "bytes": 2293700,
+      "sha256": "f23467c2beb8adcafdb2c4dca8053a53dc437c4e09b3ea23aad5b6608414ab5a"
+    },
+    "artifacts/th14/stage-animation-update-order/before-standalone-update-order-fix/Stage.cpp": {
+      "bytes": 6686,
+      "sha256": "78ffc8d5e798c65c1feb546aed0a1a23d7c0af207e4aaf7693f609b8d4aa445d"
+    },
+    "artifacts/th14/stage-animation-update-order/before-standalone-update-order-fix/check.mjs": {
+      "bytes": 4183,
+      "sha256": "9e7a729075592b8a8ca26d105aeb6e4d3b29b35e09246d09487a513ef2f151af"
+    },
+    "artifacts/th14/stage-animation-update-order/before-standalone-update-order-fix/fixture.cpp": {
+      "bytes": 1494,
+      "sha256": "0a1524771ff9c6db23fcec7ddb956c8b695ced6769ca2d4b512f840f2cbc1a28"
+    },
+    "artifacts/th14/stage-animation-update-order/before-standalone-update-order-fix/stage.wasm": {
+      "bytes": 763940,
+      "sha256": "9cc5da39f35daf6545825be3a03955a4d4825954f27774a4b88f12e8543522c5"
+    },
+    "artifacts/th14/stage-animation-update-order/before-standalone-update-order-fix/native.py": {
+      "bytes": 6863,
+      "sha256": "7b0ea8ebea8323234da10be5f5ae6212db31d0f7e1cb94fe6d6783efa241ce71"
+    },
+    "docs/porting/th14-stage-camera-publication-observed-oct12.json": {
+      "bytes": 28259,
+      "sha256": "c24d2510c705bc0c0b6136a0e7d1ff1c3932598c61131f7a78ece15e49b6d3e9"
+    },
+    "artifacts/th14/stage-camera-publication/native.json": {
+      "bytes": 1999188,
+      "sha256": "5943938175d82a77ab32e9e253bed5a8059cfb47aecc23486fe9c6e531b37c14"
+    },
+    "tools/th14-stage-camera-publication-native.py": {
+      "bytes": 7294,
+      "sha256": "454f96d1ff71f10aa681d968b85cd2700bdede0c1cc8a99c5817e2ca66dc4b96"
+    },
+    "tools/th14-stage-camera-publication-check.mjs": {
+      "bytes": 4391,
+      "sha256": "a9807c18de19d9a36aa926b7f534b7fe0ba98b364b23340e861d0bd5a9b2049f"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-camera-publication-fixture.cpp": {
+      "bytes": 2265,
+      "sha256": "dc5483cf3af59692127ff357fdc568958fb66b3ba5ebe06a04465d5229316f19"
+    },
+    "artifacts/th14/stage-camera-publication/stage.wasm": {
+      "bytes": 765396,
+      "sha256": "85193067c3fc7a8c69f78736499289ceff99061335e6449813f0acc7afa3d434"
+    },
+    "artifacts/th14/stage-camera-publication/before-camera-publication-fix/observed.json": {
+      "bytes": 2118790,
+      "sha256": "e67cb2235b8d8e58aef9a2f36f8037f1e88aa2139ee0c9300fb2fa6f27dc75da"
+    },
+    "artifacts/th14/stage-camera-publication/before-camera-publication-fix/native.json": {
+      "bytes": 1999188,
+      "sha256": "5943938175d82a77ab32e9e253bed5a8059cfb47aecc23486fe9c6e531b37c14"
+    },
+    "artifacts/th14/stage-camera-publication/before-camera-publication-fix/Stage.cpp": {
+      "bytes": 6686,
+      "sha256": "78ffc8d5e798c65c1feb546aed0a1a23d7c0af207e4aaf7693f609b8d4aa445d"
+    },
+    "artifacts/th14/stage-camera-publication/before-camera-publication-fix/check.mjs": {
+      "bytes": 4391,
+      "sha256": "a9807c18de19d9a36aa926b7f534b7fe0ba98b364b23340e861d0bd5a9b2049f"
+    },
+    "artifacts/th14/stage-camera-publication/before-camera-publication-fix/fixture.cpp": {
+      "bytes": 2265,
+      "sha256": "dc5483cf3af59692127ff357fdc568958fb66b3ba5ebe06a04465d5229316f19"
+    },
+    "artifacts/th14/stage-camera-publication/before-camera-publication-fix/stage.wasm": {
+      "bytes": 765366,
+      "sha256": "250a089e2da76b05ae0e424a66c9e1f01d39ed9f352112c2dc58226af54c37f2"
+    },
+    "artifacts/th14/stage-camera-publication/before-camera-publication-fix/native.py": {
+      "bytes": 7294,
+      "sha256": "454f96d1ff71f10aa681d968b85cd2700bdede0c1cc8a99c5817e2ca66dc4b96"
+    },
+    "docs/porting/th14-stage-asset-update-observed-oct12.json": {
+      "bytes": 29257,
+      "sha256": "928aa4d96cb5d6d024861a55104a7e23e34380024057c6a2bba5b44cc2bced97"
+    },
+    "artifacts/th14/stage-asset-update/native.json": {
+      "bytes": 6127261,
+      "sha256": "4f7331a1fa5f6b8fe58028015d63d4489039eea3757a776d456f140a37a61442"
+    },
+    "tools/th14-stage-asset-update-native.py": {
+      "bytes": 9160,
+      "sha256": "8bd76a025218bcae747f2d507b951a56d60e4c9c79ff883c1851e944ca066b0b"
+    },
+    "tools/th14-stage-asset-update-check.mjs": {
+      "bytes": 4539,
+      "sha256": "f360ad4db71cc42dc8221530a14ca2f6369de5d078ac9cccd0338aa9986bf518"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-asset-update-fixture.cpp": {
+      "bytes": 2415,
+      "sha256": "87a497995291ac3f431895a760dcf83d2608287917f72fb16c4d599336cb7d50"
+    },
+    "artifacts/th14/stage-asset-update/stage.wasm": {
+      "bytes": 773502,
+      "sha256": "ff29a883c64ae28a364f783dd7829cb1e96c97f4ed76172d226414ea160ddcb0"
+    },
+    "artifacts/th14/stage-asset-update/states.bin": {
+      "bytes": 737202624,
+      "sha256": "9b329d9791c489e00c94ab7d994a4390e5e9417ff9c5cfa50fae9ba173c7ade1"
+    },
+    "docs/porting/th14-anm-resource-loader-observed-oct12.json": {
+      "bytes": 29521,
+      "sha256": "99b94cc0f8b33229deb9851a2441d9dfc3ae8f6a16d3358f5b79aa74ce5d35b3"
+    },
+    "artifacts/th14/anm-resource-loader/native.json": {
+      "bytes": 599046,
+      "sha256": "91a65b1a17777a3f0f502496a039ead3aac90ebca26293c2d610f72c03e365ab"
+    },
+    "tools/th14-anm-resource-loader-native.py": {
+      "bytes": 9169,
+      "sha256": "bceaab28b8fdfe7e9811eeb088a4d1d698732f5e502ef2be2955fb8dc79b0129"
+    },
+    "tools/th14-anm-resource-loader-check.mjs": {
+      "bytes": 5690,
+      "sha256": "fe2d792aac3897e18fc94b66bcd1e4ef51277270308347aa257da0208d1f7966"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-anm-resource-loader-fixture.cpp": {
+      "bytes": 1279,
+      "sha256": "ef01c43c357a824a0aceaf08b82ddbff38b0e89a61a0b18fba76c9563b46f126"
+    },
+    "artifacts/th14/anm-resource-loader/loader.wasm": {
+      "bytes": 742845,
+      "sha256": "e6452653e15f09d8ac62e2cae8aff5466abf24859c4589dc70dfac3a82e3ab7f"
+    },
+    "reference/th11-eagler/th11_web/tests/cpp/anm-oracle.mjs": {
+      "bytes": 3449,
+      "sha256": "274ec51446147a34e17996ff315e38d5b89291be4333e615da165dd1282b69d8"
+    },
+    "docs/porting/th14-stage-loaded-asset-update-observed-oct12.json": {
+      "bytes": 29578,
+      "sha256": "732e4a0c9defdcf34d70e424ddf678d77a36681284f9945b4c9c93fb410ae7de"
+    },
+    "artifacts/th14/stage-loaded-asset-update/native.json": {
+      "bytes": 6127664,
+      "sha256": "c996a33779488fafee153dae4d3949bd028a3e8bafb15b51258dcc87fafd4ed8"
+    },
+    "tools/th14-native-resource-loader.py": {
+      "bytes": 5290,
+      "sha256": "d6267fae67cc47a775231ddb68510bb1b37671884de6daac6f7043fa1cdb00c1"
+    },
+    "tools/th14-stage-loaded-asset-update-native.py": {
+      "bytes": 8851,
+      "sha256": "9e619e13e87740e8e7eece89df0083d8715b6089c4e0767c6ed78da82a845ac4"
+    },
+    "tools/th14-stage-loaded-asset-update-check.mjs": {
+      "bytes": 4666,
+      "sha256": "0f5b3f84b05ea3d04221cb2a5423490b4891f6d52169ecd10a1e33f29c5240a3"
+    },
+    "artifacts/th14/stage-loaded-asset-update/stage.wasm": {
+      "bytes": 773502,
+      "sha256": "ff29a883c64ae28a364f783dd7829cb1e96c97f4ed76172d226414ea160ddcb0"
+    },
+    "artifacts/th14/stage-loaded-asset-update/states.bin": {
+      "bytes": 737202624,
+      "sha256": "9b329d9791c489e00c94ab7d994a4390e5e9417ff9c5cfa50fae9ba173c7ade1"
+    },
+    "docs/porting/th14-stage-constructor-asset-update-observed-oct12.json": {
+      "bytes": 29931,
+      "sha256": "468d41942e26dfecd3e441001776a010372d5bfcc96495248cacfb8d6f18cdd7"
+    },
+    "artifacts/th14/stage-constructor-asset-update/native.json": {
+      "bytes": 6131083,
+      "sha256": "21ba747df8ad9000e7341cd623d3445a40ee0223f1bf065fe74e7dd7633c0246"
+    },
+    "tools/th14-native-stage-resource-loader.py": {
+      "bytes": 5392,
+      "sha256": "c983cb7f69446ab425ab0822d50a2bcb05695fc5cb8bf7281dfb73bc9e925194"
+    },
+    "tools/th14-stage-constructor-asset-update-native.py": {
+      "bytes": 9766,
+      "sha256": "6bd877ebca8d1b2477ba5b173e70990e14045dbe7a60ca455b6102997cee4561"
+    },
+    "tools/th14-stage-constructor-asset-update-check.mjs": {
+      "bytes": 4687,
+      "sha256": "dac80729f71b0c2807aae255681a885b7a370ec93f43f563e8d5f95366f50020"
+    },
+    "artifacts/th14/stage-constructor-asset-update/stage.wasm": {
+      "bytes": 773502,
+      "sha256": "ff29a883c64ae28a364f783dd7829cb1e96c97f4ed76172d226414ea160ddcb0"
+    },
+    "artifacts/th14/stage-constructor-asset-update/states.bin": {
+      "bytes": 737202624,
+      "sha256": "9b329d9791c489e00c94ab7d994a4390e5e9417ff9c5cfa50fae9ba173c7ade1"
+    },
+    "docs/porting/th14-stage-scheduled-asset-update-observed-oct12.json": {
+      "bytes": 30031,
+      "sha256": "44d5df7c46ee0f06284606fa4ad8d4e6d0bb25b47faae0ec005998257f7e0b41"
+    },
+    "artifacts/th14/stage-scheduled-asset-update/native.json": {
+      "bytes": 6131341,
+      "sha256": "a183d2e68aae7afe02afe06b268c31e5ade48d804fc4cc7a0b0d44bdf3092faa"
+    },
+    "tools/th14-stage-scheduled-asset-update-native.py": {
+      "bytes": 10436,
+      "sha256": "b4e332a66334d899a3237926fc11c32b074b3aa4e48bf4a09936acca2f479084"
+    },
+    "tools/th14-stage-scheduled-asset-update-check.mjs": {
+      "bytes": 4818,
+      "sha256": "42d7fd225bd4528c2583fb7a0c8c3a0b42093d022c1b718c9c865be421e8d5ab"
+    },
+    "artifacts/th14/stage-scheduled-asset-update/stage.wasm": {
+      "bytes": 773502,
+      "sha256": "ff29a883c64ae28a364f783dd7829cb1e96c97f4ed76172d226414ea160ddcb0"
+    },
+    "docs/porting/th14-anm-all-resource-loader-observed-oct12.json": {
+      "bytes": 33998,
+      "sha256": "cb122d0288c0abc65b195df9379622e6ae9934e770d14e181536ea7d15471462"
+    },
+    "artifacts/th14/anm-all-resource-loader/native.json": {
+      "bytes": 23272831,
+      "sha256": "50be33f9a75080ae586eecc667a0c78b37eb450d646096cd5b1e43efceab6f03"
+    },
+    "tools/th14-anm-all-resource-loader-native.py": {
+      "bytes": 10168,
+      "sha256": "1f7f764bb35cfcab74765c60cf0ec7ce22e5256c6003ecc136b150360ee932f6"
+    },
+    "tools/th14-anm-all-resource-loader-check.mjs": {
+      "bytes": 6060,
+      "sha256": "9cda0b1782618f3305c8d4bed4737eddf448e636511a3efb565521cfe14d83dc"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-anm-all-resource-loader-fixture.cpp": {
+      "bytes": 4037,
+      "sha256": "090359c5538a29bf5798927e54aeb20e7e232cc73470ed9b5d7ac509d2b82a95"
+    },
+    "artifacts/th14/anm-all-resource-loader/loader.wasm": {
+      "bytes": 742970,
+      "sha256": "f8de999488907258de4ae66041becee038a73ad2ad0bae680446eaf7f979b7fa"
+    },
+    "artifacts/th14/anm-all-resource-loader/before-ascii-environment/observed.json": {
+      "bytes": 36013,
+      "sha256": "f5ef6558821e6d91bf0617fcf5001bb19c58a00781501f88e58d9a7fa98834b1"
+    },
+    "artifacts/th14/anm-all-resource-loader/before-ascii-environment/native.json": {
+      "bytes": 23263352,
+      "sha256": "9f700655a955b1164020b7f9b3df55b4f3019e72256820219e07b15a0dbdc248"
+    },
+    "artifacts/th14/anm-all-resource-loader/before-ascii-environment/native.py": {
+      "bytes": 9582,
+      "sha256": "9a714ec1ddc7631800721c5de89fc7de6805a0dbf0cd347a5bbfe986b537d762"
+    },
+    "artifacts/th14/anm-all-resource-loader/before-ascii-environment/check.mjs": {
+      "bytes": 5861,
+      "sha256": "6e27cd3a0b5d2415bb14babd548b7e889b54ee7fd7a66e7a5352a922d6983523"
+    },
+    "artifacts/th14/anm-all-resource-loader/before-ascii-environment/fixture.cpp": {
+      "bytes": 3866,
+      "sha256": "8d60eab73dd212235e3a9fd09cb8d53cda0da7d0027278225cd0d269fc4a5342"
+    },
+    "artifacts/th14/anm-all-resource-loader/before-ascii-environment/loader.wasm": {
+      "bytes": 742904,
+      "sha256": "7ccad3064e3db584f05e72164f8b62d274089b7971570c96fe62203095b37cd5"
+    },
+    "docs/porting/th14-stage-live-asset-render-observed-oct12.json": {
+      "bytes": 30546,
+      "sha256": "19dad5702b6329ce0135866e65d9d147def36fdb1e0263f16fb34400aaa95a56"
+    },
+    "artifacts/th14/stage-live-asset-render/native.json": {
+      "bytes": 7027928,
+      "sha256": "668892b1fd29ef25d89bf34f1cb8a767d8969171266471a7dc440d42c1cb25bb"
+    },
+    "tools/th14-native-stage-live-render.py": {
+      "bytes": 7244,
+      "sha256": "b690dbb538f4c7dbbec955621704c28b87ba5f2dc54721b18cc957e01aed1552"
+    },
+    "tools/th14-stage-live-asset-render-native.py": {
+      "bytes": 10428,
+      "sha256": "17fb6545dc11063b1100176c8a7a64624ad690917066da9aac69d9cac65c2238"
+    },
+    "tools/th14-stage-live-asset-render-check.mjs": {
+      "bytes": 6556,
+      "sha256": "c6413f93607c4e2ff1d795250661fd59fece482141e61d47ec43fd9f5a26f9cf"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-live-asset-render-fixture.cpp": {
+      "bytes": 4157,
+      "sha256": "23824cf570791574b9adc240f23f3ef4cd8d7117f1b99c49836e1f0cd551a3d3"
+    },
+    "artifacts/th14/stage-live-asset-render/stage.wasm": {
+      "bytes": 807943,
+      "sha256": "83c82289a53c7b08e4e2255306d793e9ef14d5867f1eab32cc21e19c718cabe0"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-pass-graphics-fixture.hpp": {
+      "bytes": 2706,
+      "sha256": "572f0775cd5d45168fd9fe16dfb6f2fbc4959144611886a0fa6db74cd511d547"
+    },
+    "artifacts/th14/stage-live-asset-render/states.bin": {
+      "bytes": 737202624,
+      "sha256": "54f1d678037e76ac3f9f5b71e87399f74cff41967513e4c52d0f7495fc071fb5"
+    },
+    "artifacts/th14/stage-live-asset-render/before-original-frame-buffer-reset/observed.json": {
+      "bytes": 308098,
+      "sha256": "0eb789fc7ed51a72301d14a2a062189608fd67137b97839ccb9599c7b3e8c8aa"
+    },
+    "artifacts/th14/stage-live-asset-render/before-original-frame-buffer-reset/native.json": {
+      "bytes": 1463247,
+      "sha256": "602649e92ca093417ad0a04304e7ec9a434b8423b97e1f17dc435634c6c0eae3"
+    },
+    "artifacts/th14/stage-live-asset-render/before-original-frame-buffer-reset/renderer.py": {
+      "bytes": 7200,
+      "sha256": "c02eaaccf86bcedea7d97bba7f3fa8464a73ee833d14fc403fbde502b1e28a11"
+    },
+    "artifacts/th14/stage-live-asset-render/before-original-frame-buffer-reset/native.py": {
+      "bytes": 10354,
+      "sha256": "7e4ee99315dd80019d3a882b8f23517f82c476d4c646bf783e2c42ab8be8564f"
+    },
+    "artifacts/th14/stage-live-asset-render/before-original-frame-buffer-reset/check.mjs": {
+      "bytes": 6488,
+      "sha256": "c95029e206de8c56af25758b935b2a0b55e534caffbd85ac55daa417bad3e0b7"
+    },
+    "artifacts/th14/stage-live-asset-render/before-original-frame-buffer-reset/fixture.cpp": {
+      "bytes": 4157,
+      "sha256": "23824cf570791574b9adc240f23f3ef4cd8d7117f1b99c49836e1f0cd551a3d3"
+    },
+    "artifacts/th14/stage-live-asset-render/before-original-frame-buffer-reset/stage.wasm": {
+      "bytes": 807913,
+      "sha256": "8c7513043eded30a65c0cb114f3eba6a33aa54fddef6f6e262b8fb1e2976efbd"
+    },
+    "artifacts/th14/stage-live-asset-render/before-extended-live-timeline/observed.json": {
+      "bytes": 30541,
+      "sha256": "0d72debee38d2d0f1bebdbf5852021453b3bf1f89a77ee000be3a8300b378a95"
+    },
+    "artifacts/th14/stage-live-asset-render/before-extended-live-timeline/native.json": {
+      "bytes": 1500011,
+      "sha256": "d2ae9fcc20f69a4c4263806036788a760402b43a3e110e05d0049c969ce00aa5"
+    },
+    "artifacts/th14/stage-live-asset-render/before-extended-live-timeline/renderer.py": {
+      "bytes": 7244,
+      "sha256": "b690dbb538f4c7dbbec955621704c28b87ba5f2dc54721b18cc957e01aed1552"
+    },
+    "artifacts/th14/stage-live-asset-render/before-extended-live-timeline/native.py": {
+      "bytes": 10422,
+      "sha256": "0bd944225440690a07f2b7c0a097e760071945e0c760f95e7a0aa165af7f94a7"
+    },
+    "artifacts/th14/stage-live-asset-render/before-extended-live-timeline/check.mjs": {
+      "bytes": 6525,
+      "sha256": "cc17d40698e74a530eefef5c05db52ad5ffd11492bea6bffeae15d98c1bd7945"
+    },
+    "artifacts/th14/stage-live-asset-render/before-extended-live-timeline/fixture.cpp": {
+      "bytes": 4157,
+      "sha256": "23824cf570791574b9adc240f23f3ef4cd8d7117f1b99c49836e1f0cd551a3d3"
+    },
+    "artifacts/th14/stage-live-asset-render/before-extended-live-timeline/stage.wasm": {
+      "bytes": 807913,
+      "sha256": "8c7513043eded30a65c0cb114f3eba6a33aa54fddef6f6e262b8fb1e2976efbd"
+    },
+    "docs/porting/th14-stage-queued-live-asset-render-observed-oct12.json": {
+      "bytes": 30606,
+      "sha256": "082b87b73a806eeca25e3547dcfa832e47827a4cbfffd0bf9387c3563024e100"
+    },
+    "artifacts/th14/stage-queued-live-asset-render/native.json": {
+      "bytes": 7028139,
+      "sha256": "66832cbb2a17a0231970db50a68746f4496fa96a28e1743e2c5f6877ed6bed8e"
+    },
+    "tools/th14-native-stage-queued-live-render.py": {
+      "bytes": 7350,
+      "sha256": "81d29e8b6e261c06421dac54b40d125273edcaab6e9bd413ec5969df54a90f0d"
+    },
+    "tools/th14-stage-queued-live-asset-render-native.py": {
+      "bytes": 11100,
+      "sha256": "5d69996213ba75ccb266fd65e7bc10b360bac73f1a918eec8b6d3530c26dfc84"
+    },
+    "tools/th14-stage-queued-live-asset-render-check.mjs": {
+      "bytes": 6715,
+      "sha256": "9d3b23800ee8d1a7cde31f6e7894ded11a5226f7a0a415804c2196a57da4fbc9"
+    },
+    "artifacts/th14/stage-queued-live-asset-render/stage.wasm": {
+      "bytes": 807943,
+      "sha256": "83c82289a53c7b08e4e2255306d793e9ef14d5867f1eab32cc21e19c718cabe0"
+    },
+    "docs/porting/th14-stage-every-frame-live-asset-render-observed-oct12.json": {
+      "bytes": 30612,
+      "sha256": "613eb34f0e08fca07f8b92b7939e435a0e8f1b47c969a0a7079152b623b3f269"
+    },
+    "artifacts/th14/stage-every-frame-live-asset-render/native.json": {
+      "bytes": 82309713,
+      "sha256": "ab4c98f3001dc96067e9221760eaa0a558dac8dec927458414bcaf854f5a6bfe"
+    },
+    "tools/th14-stage-every-frame-live-asset-render-native.py": {
+      "bytes": 10476,
+      "sha256": "dc05b1205f613134f6fc421bc89453c041a83a403f3f8abc3dfaf6cf294c9999"
+    },
+    "tools/th14-stage-every-frame-live-asset-render-check.mjs": {
+      "bytes": 6568,
+      "sha256": "d7ec8e76455d48d313c17109fd8b1886e23691a935f70e53e6e2b069728444c1"
+    },
+    "artifacts/th14/stage-every-frame-live-asset-render/stage.wasm": {
+      "bytes": 807943,
+      "sha256": "83c82289a53c7b08e4e2255306d793e9ef14d5867f1eab32cc21e19c718cabe0"
+    },
+    "artifacts/th14/stage-every-frame-live-asset-render/states.bin": {
+      "bytes": 122867104,
+      "sha256": "f19ee92ba2bb7eebe1f68e9cc7f6cd292caf09df7b43dbfbf06e47241e68c7c0"
+    },
+    "docs/porting/th14-reference-address-crosscheck-oct12.json": {
+      "bytes": 4339,
+      "sha256": "87e3824b9702e825df7b93a940f059f4f5a16b36ee6612af0a460302b220cd4a"
+    },
+    "tools/th14-reference-address-crosscheck.py": {
+      "bytes": 2829,
+      "sha256": "515c2f2b6c5e8462a2aeb5890ce3056f393e3436dfcdb8b369f71fd30464607b"
+    },
+    "artifacts\\th14\\reference-projects\\parakit-offsets.py": {
+      "bytes": 114608,
+      "sha256": "34d7f120a8f6c388f0d3b0bee200b52cd3409f639f9cc3ce9f78ab55898c701e"
+    },
+    "artifacts\\th14\\reference-projects\\th-re-data-th14-funcs.json": {
+      "bytes": 47781,
+      "sha256": "5b7e6dcd3d0d028b01501e4e4568f4daca14eb4e0858400540a11002235bd625"
+    },
+    "runtimes/th14/th14_web/artifacts/sdl3-release/build.json": {
+      "bytes": 37704,
+      "sha256": "cb4afec63ab89771c0c9b74fc74026d0f345c8984f5f10a275e0aad79cb65847"
+    },
+    "runtimes/th14/th14_web/artifacts/sdl3-release/th11.wasm": {
+      "bytes": 1870342,
+      "sha256": "5a5a125e126cea578448f475fd0d5748136a133234deae5e10c3e47753e29a38"
+    },
+    "runtimes/th13/th13_web/artifacts/cpp/engine-th12-build.json": {
+      "bytes": 33155,
+      "sha256": "d75446c9af3aaa35436bed8720ebc01358fcbc3a4a2da5ca49d17da1d00a39e7"
+    },
+    "runtimes/th13/th13_web/artifacts/cpp/engine-th13-build.json": {
+      "bytes": 33155,
+      "sha256": "adcf6da5a4de9e2c04f904220b6fc17711a97aad10c9c916336b524daf9f18dd"
+    },
+    "docs/porting/th14-launcher-runtime-prepared-oct11.json": {
+      "bytes": 50674,
+      "sha256": "6caa3f3636ceb5506d65e536208541a9e1f9e78aa545a18be4ce5ee814efa055"
+    },
+    "docs/porting/th14-launcher-preview-prepared-oct11.json": {
+      "bytes": 36442,
+      "sha256": "dac9172302abfaf8b8b81d60d9c1af837a32bad1020fad3d807f016d6a9d5cdc"
+    },
+    "artifacts/th14/physical-texture-launcher/ordinary-start-paused.png": {
+      "bytes": 179905,
+      "sha256": "86990f6814e5b01a0b72c41cebe6885caed2a066122ae0b5094e9999bcfaf18b"
+    },
+    "artifacts/th14/physical-texture-launcher/browser-logs.json": {
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "tools/th14-physical-texture-production-check.mjs": {
+      "bytes": 64394,
+      "sha256": "1863b4f9b7da31f1483832b22f1bb2ea348b6d2beb1016d773070cc6c03706ac"
+    },
+    "artifacts/th14/anm-physical-resource-loader/native.json": {
+      "bytes": 24850068,
+      "sha256": "95691c2702b050cd2ebb9ce458423d89ebe26bf00bb3b5a3b369e8b4f73742d7"
+    },
+    "tools/th14-anm-physical-resource-loader-native.py": {
+      "bytes": 10692,
+      "sha256": "299e5f4e94f8a11f890c61486078a6f5d53a1a2da3adc8d618903445c70a432b"
+    },
+    "tools/th14-native-physical-texture-host.py": {
+      "bytes": 3093,
+      "sha256": "568f9a52af28b41a57d080905d15293e45ede9c85cdca0ceac81eeb7661724f5"
+    },
+    "docs/porting/th14-device-create-native-verified-oct11.json": {
+      "bytes": 3517,
+      "sha256": "c83d030104383cda340249bbc821b4fb3ec6f7b0176879e88aa5adfda54aa1f7"
+    },
+    "tools/th14-device-create-native.py": {
+      "bytes": 3656,
+      "sha256": "7df0ba6dadd8931fe461f2e522818e7005cf45910158371817d2485713497a4d"
+    },
+    "docs/porting/th14-physical-texture32-image-53-observed-oct12.json": {
+      "bytes": 32834,
+      "sha256": "04d05299a630faf47148b743a051b846460688588aad4b47c36eb8a66b167893"
+    },
+    "artifacts/th14/physical-texture32-pixels/53/native.json": {
+      "bytes": 149595,
+      "sha256": "34790b091a01b857aed69ad4a07062b40d5412ed419056bcf4508f8ef1d36472"
+    },
+    "artifacts/th14/physical-texture32-pixels/53/textures.bin": {
+      "bytes": 130010432,
+      "sha256": "7630dd0aeeebfe02ad097d8a1726527fbe45abad913d67b53e4eaf1f1d6aca90"
+    },
+    "artifacts/th14/physical-texture32-pixels/53/textures.wasm": {
+      "bytes": 687892,
+      "sha256": "dd4639474855568c91007d84872e21cbdef27e562c4cd48e4631e9147139df2d"
+    },
+    "tools/th14-physical-texture32-image-check.mjs": {
+      "bytes": 5731,
+      "sha256": "4e943cdb5e3da6441b39e6b1b8036f9d6d5e67ea3118e4f8910d4ca93eb31e4b"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-physical-texture-image-fixture.cpp": {
+      "bytes": 988,
+      "sha256": "4e7519b374a07543199a2488ec51a45cad91d3f2cebaad1762b26bfd425a54a9"
+    },
+    "tools/th14-native-physical-texture32-pixels.py": {
+      "bytes": 4944,
+      "sha256": "b0a761ded42ddd69dd04ac4f9a7d6a270999861cb0a5ee7a1edd20872e7fd47f"
+    },
+    "tools/th14-physical-texture32-helper.cpp": {
+      "bytes": 4186,
+      "sha256": "1363914c2ab1d9d8c99d2d0399dafc11a48a397444793a544c7c83e073fa1998"
+    },
+    "artifacts/th14/physical-texture-pixels/texture32.exe": {
+      "bytes": 132608,
+      "sha256": "9f8786cfb70640820c05ee1b912d4190541aae622c020fae68423cf579e5a3fa"
+    },
+    "artifacts/th14/physical-texture32-pixels/requests.bin": {
+      "bytes": 244936940,
+      "sha256": "47f0a61663c8c7aa8b17cf8a542ed478076cd6505500b6ad11d40c4cf2dea63a"
+    },
+    "docs/porting/th14-physical-texture32-image-64-observed-oct12.json": {
+      "bytes": 32834,
+      "sha256": "ecf6bda3f5ace487e87bc79bcd6ab416a37a443397822f7349dedae59365ac3e"
+    },
+    "artifacts/th14/physical-texture32-pixels/64/native.json": {
+      "bytes": 149595,
+      "sha256": "a20d4b82febdf0266dde0a022b497e6118820e7f84bc7e31f653290a97240dc3"
+    },
+    "artifacts/th14/physical-texture32-pixels/64/textures.bin": {
+      "bytes": 130010432,
+      "sha256": "7630dd0aeeebfe02ad097d8a1726527fbe45abad913d67b53e4eaf1f1d6aca90"
+    },
+    "artifacts/th14/physical-texture32-pixels/64/textures.wasm": {
+      "bytes": 687892,
+      "sha256": "dd4639474855568c91007d84872e21cbdef27e562c4cd48e4631e9147139df2d"
+    },
+    "docs/porting/th14-triangle-weights32-observed-oct12.json": {
+      "bytes": 27537,
+      "sha256": "20442a66e5d003837cee73204532ca9b01a28220d7951a896faefc318b3b1267"
+    },
+    "tools/th14-triangle-weights32-check.mjs": {
+      "bytes": 3547,
+      "sha256": "2fadb885973041a8eacede0de0447c3d71aa0d510a4d63d9ac47e69a361643c4"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-triangle-weights-fixture.cpp": {
+      "bytes": 521,
+      "sha256": "39a355dddc019982273b51531e0c84eb787830cea8fd7fd58eefe5256c8abee3"
+    },
+    "artifacts/th14/physical-texture32-pixels/weights.wasm": {
+      "bytes": 669839,
+      "sha256": "827ec0c859b498e3b596f50470dba0fb20d306fac798a68f688474debf53c96f"
+    },
+    "artifacts/th14/physical-texture32-pixels/weights32-native.json": {
+      "bytes": 3826648,
+      "sha256": "4ed0a1861d3432a53e90426d3215c874d0f3de74c6ad2dd93ea27aa85cae0d26"
+    },
+    "tools/th14-native-triangle-weights32.py": {
+      "bytes": 2544,
+      "sha256": "7d374015bbff167ec7cd931fc6cbdb190e5b20a580d2cf78a0194fd98181dd7a"
+    },
+    "tools/th14-triangle-weights32-helper.cpp": {
+      "bytes": 2469,
+      "sha256": "7c00454673a4ae96a04ac68126713547ef901fb9b182984e6921e1344540f06d"
+    },
+    "artifacts/th14/physical-texture32-pixels/weights32.exe": {
+      "bytes": 133120,
+      "sha256": "aee3ea6be03d44126812eb7004b8cdee7d81386891c67ebaf9de54a67aa4957c"
+    },
+    "artifacts/th14/physical-texture32-pixels/weights32.bin": {
+      "bytes": 481216,
+      "sha256": "aaee26601fa4228aea5a9168905b9993d3cef5ce089fbdf60a16054d80082df3"
+    },
+    "docs/porting/th14-anm-physical-resource-loader-observed-oct12.json": {
+      "bytes": 34659,
+      "sha256": "78ea9ce33c6eb0d81e5ed671cf02b9f85f56f938616dd89ca45039dae3ceff68"
+    },
+    "tools/th14-anm-physical-resource-loader-check.mjs": {
+      "bytes": 6558,
+      "sha256": "35cebb113862503e4564da1377b8cdb0bb0a5eb74dc8e869bd63255b14f607b6"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-anm-physical-resource-loader-fixture.cpp": {
+      "bytes": 1104,
+      "sha256": "6fb6fba2baac094d2e288e2cbe0a358daed81f8620d374c13690584d57b6afb7"
+    },
+    "artifacts/th14/anm-physical-resource-loader/loader.wasm": {
+      "bytes": 753251,
+      "sha256": "951715052f58baa542b25d5a467d65d396ba19b0500daac3b3fac5d902d9fca2"
+    },
+    "docs/porting/th14-physical-texture-regressions-oct12.json": {
+      "bytes": 14482,
+      "sha256": "a8ebf61743ef1217512635251a766975b29dc427ea5d2d77c19879e802d89d13"
+    },
+    "tools/th14-stage-layer-state-check.mjs": {
+      "bytes": 3379,
+      "sha256": "6b842e0f47b5d17beb93831c96cbac17ad342efd558a8b832716eb69f7f41f44"
+    },
+    "tools/th14-stage-draw-integration-check.mjs": {
+      "bytes": 4138,
+      "sha256": "756a14b8a6e96f24b5e234ac6546608ef6993f8fa1c89fd4e3f5e11218384740"
+    },
+    "tools/th14-stage-visibility-check.mjs": {
+      "bytes": 4724,
+      "sha256": "f1b84c3c0a53b7f2b34ea34bce384579fb052762e8629f06e741e0c8986c1487"
+    },
+    "tools/th14-real-message-session-sync-check.mjs": {
+      "bytes": 6212,
+      "sha256": "2fd27ab3f1950c3e26d5d0441af170241a171dfbb26a0f2604541441a064c6f6"
+    },
+    "artifacts/th14/dialogue-text-check/objects.json": {
+      "bytes": 70866,
+      "sha256": "7095a222638889df5e4a289368ad721e4b6f6d7fdefbda88b21cd98affc0ddc8"
+    },
+    "tools/th14-physical-texture-regressions.mjs": {
+      "bytes": 2877,
+      "sha256": "0fbbebb8b7c56b0ce11231d635d66c6b991f5756392a6cc9108186ea7ea6c809"
+    },
+    "artifacts/th14/physical-texture32-pixels/before-rounding-fix/observed.json": {
+      "bytes": 442924,
+      "sha256": "e91d9a3277b637eab2d3a365386905d52dc560f5c477ed460d9dce39886224ba"
+    },
+    "artifacts/th14/physical-texture32-pixels/before-rounding-fix/textures.wasm": {
+      "bytes": 687836,
+      "sha256": "ec26ebde3ea8d4d450162f4c1db0988bcb465e9eed2c32ef020ebe508f02f0e2"
+    },
+    "artifacts/th14/physical-texture32-pixels/before-rounding-fix/check.mjs": {
+      "bytes": 5731,
+      "sha256": "4e943cdb5e3da6441b39e6b1b8036f9d6d5e67ea3118e4f8910d4ca93eb31e4b"
+    },
+    "artifacts/th14/physical-texture32-pixels/before-rounding-fix/native.json": {
+      "bytes": 149416,
+      "sha256": "b24663fb49e92067174681a88a24ecc68a43f2112cf15470bdf7b8e36a4f5a08"
+    },
+    "artifacts/th14/physical-texture32-pixels/before-rounding-fix/ImageResample.cpp": {
+      "bytes": 6427,
+      "sha256": "c29a877c2ca107b11a9aea1b89edc867c55112ab90625cfee03e18ebb2d1f1af"
+    }
+  },
+  "limits": [
+    "Seven original STD and background ANM resources, complete40f170 object animation initialization and40d980 Stage update, actual full ANM/template/copy/interpreter and real32 D3DX normalization; normal rate1,1200 updates after initialization, every-frame actual40e2f0/40e790 background/foreground passes and real478f60 VM drawing with32 D3DX; actual401280 update queue. Selected Stage clocks/tint/published camera/layers/object flags, selected51 VM words plus complete geometry or selected606 Ribbon words, RNG. Stage constructed by actual40d300 and initialized by40d3d0/40f030, actual original STD byte copy/pointer relocation/object VM allocation and401570/401120/4011d0 callback registrations at update13/background3/foreground6; actual4013b0 draw queue executes priority3/40eb80 background and priority6/40eb90 foreground after every update; linked callback queues otherwise empty. ANM resource constructed by actual47d090/47cff0/47ce40/47d130/47d230/47d420/47d9e0 and actual40cc90/46f3e0/negative-time46fe50 template preparation in the same emulator before Stage initialization. Exact file bytes supplied by controlled file service; texture upload/GetLevelDesc controlled to header dimensions. Initial camera FOV/viewport and global stage number controlled, actual STD directory and callback node construction; controlled CRT allocation; actual475e60 resets original per-frame screen/shape vertex buffers; no OS asynchronous scheduling, filesystem/DAT I/O, COM and screen batching controlled; submitted vertices/world/UV matrices and selected render/pass state hashed strictly, no HAL, battle/audio/natural clear proof.",
+    "Seven original STD and background ANM resources, complete40f170 object animation initialization and40d980 Stage update, actual full ANM/template/copy/interpreter and real32 D3DX normalization; six rates,1200 updates after initialization, sampled actual40e2f0/40e790 background/foreground passes at update0/599/1199 and real478f60 VM drawing with32 D3DX; actual401280 update queue. Selected Stage clocks/tint/published camera/layers/object flags, selected51 VM words plus complete geometry or selected606 Ribbon words, RNG. Stage constructed by actual40d300 and initialized by40d3d0/40f030, actual original STD byte copy/pointer relocation/object VM allocation and401570/401120/4011d0 callback registrations at update13/background3/foreground6; actual4013b0 draw queue executes priority3/40eb80 background and priority6/40eb90 foreground; linked callback queues otherwise empty. ANM resource constructed by actual47d090/47cff0/47ce40/47d130/47d230/47d420/47d9e0 and actual40cc90/46f3e0/negative-time46fe50 template preparation in the same emulator before Stage initialization. Exact file bytes supplied by controlled file service; texture upload/GetLevelDesc controlled to header dimensions. Initial camera FOV/viewport and global stage number controlled, actual STD directory and callback node construction; controlled CRT allocation; actual475e60 resets original per-frame screen/shape vertex buffers; no OS asynchronous scheduling, filesystem/DAT I/O, COM and screen batching controlled; submitted vertices/world/UV matrices and selected render/pass state hashed strictly, no HAL, battle/audio/natural clear proof.",
+    "External reference data parsed as AST constants/JSON only, never executed. TH14 function labels and stage/rate/visual/replay RNG globals cross-checked against independently recovered native entry addresses. Annotation agreement is not an original execution or gameplay equivalence proof.",
+    "Seven original STD and background ANM resources, complete40f170 object animation initialization and40d980 Stage update, actual full ANM/template/copy/interpreter and real32 D3DX normalization; six rates,1200 updates after initialization, sampled actual40e2f0/40e790 background/foreground passes at update0/599/1199 and real478f60 VM drawing with32 D3DX; actual401280 update queue. Selected Stage clocks/tint/published camera/layers/object flags, selected51 VM words plus complete geometry or selected606 Ribbon words, RNG. Stage constructed by actual40d300 and initialized by40d3d0/40f030, actual original STD byte copy/pointer relocation/object VM allocation and401570/401120/4011d0 callback registrations at update13/background3/foreground6; linked callback queue otherwise empty, entry functions called explicitly. ANM resource constructed by actual47d090/47cff0/47ce40/47d130/47d230/47d420/47d9e0 and actual40cc90/46f3e0/negative-time46fe50 template preparation in the same emulator before Stage initialization. Exact file bytes supplied by controlled file service; texture upload/GetLevelDesc controlled to header dimensions. Initial camera FOV/viewport and global stage number controlled, actual STD directory and callback node construction; controlled CRT allocation; actual475e60 resets original per-frame screen/shape vertex buffers; no OS asynchronous scheduling, filesystem/DAT I/O, COM and screen batching controlled; submitted vertices/world/UV matrices and selected render/pass state hashed strictly, no HAL, battle/audio/natural clear proof.",
+    "Seven original STD and background ANM resources, complete40f170 object animation initialization and40d980 Stage update, actual full ANM/template/copy/interpreter and real32 D3DX normalization; six rates,1200 updates after initialization. Selected Stage clocks/tint/published camera/layers/object flags, selected51 VM words plus complete geometry or selected606 Ribbon words, RNG. Stage constructed by actual40d300 and initialized by40d3d0/40f030, actual original STD byte copy/pointer relocation/object VM allocation and401570/401120/4011d0 callback registrations at update13/background3/foreground6; linked callback queue otherwise empty, actual401280 update scheduler executes priority13 callback40eb70 to40d980 for every update; draw scheduler remains outside this proof. ANM resource constructed by actual47d090/47cff0/47ce40/47d130/47d230/47d420/47d9e0 and actual40cc90/46f3e0/negative-time46fe50 template preparation in the same emulator before Stage initialization. Exact file bytes supplied by controlled file service; texture upload/GetLevelDesc controlled to header dimensions. Initial camera FOV/viewport and global stage number controlled, actual STD directory and callback node construction; controlled CRT allocation; no OS asynchronous scheduling, filesystem/DAT I/O, Stage draw, HAL, battle/audio/natural clear proof.",
+    "Original ASCII resource retained in its heap region and assigned to manager+191e4 for negative Sprite references; remaining resources load in a separate region. Selected foreign sprite pointers normalize to their owning ASCII table index. Actual original47d090 wrapper with controlled0x180 bypass of OS wait,47cff0/47ce40 resource allocation and file/chunk parsing,47d130 preload,47d230 progressive chunk loading and final template initialization,47d420 texture/sprite/script table construction and47d9e0 descriptor arithmetic, actual40cc90 VM constructor/46f3e0 binding/negative-time46fe50. Six rates, progress counter per actual chunk and completion, selected51 template words and RNG. All57 original ANM resources, embedded/blank/render-target GPU boundaries; exact original ANM bytes supplied by controlled402b00 file service, separate poisoned heap allocations, actual48f980 memset. Embedded texture GPU creation and GetLevelDesc return original ANM header dimensions; filename formatting, logging and cookie check are controlled. Whole descriptor bytes retain pointer/reserved values for audit; portable comparison selects declared fields, excluding those bytes. Original progressive routine called explicitly without OS thread scheduling; no actual D3D resource upload, filesystem/DAT I/O, rendering/HAL/audio or complete1:1 claim. Portable fixture compares17 descriptor words per sprite (texture pointer normalized to chunk index), script source IDs/offsets/lengths and all script bytes after explicitly translating original opcodes using the production canonical map. Pointer/reserved fields excluded.",
+    "Seven original STD and background ANM resources, complete40f170 object animation initialization and40d980 Stage update, actual full ANM/template/copy/interpreter and real32 D3DX normalization; six rates,1200 updates after initialization. Selected Stage clocks/tint/published camera/layers/object flags, selected51 VM words plus complete geometry or selected606 Ribbon words, RNG. Stage constructed by actual40d300 and initialized by40d3d0/40f030, actual original STD byte copy/pointer relocation/object VM allocation and401570/401120/4011d0 callback registrations at update13/background3/foreground6; linked callback queue otherwise empty, entry functions called explicitly. ANM resource constructed by actual47d090/47cff0/47ce40/47d130/47d230/47d420/47d9e0 and actual40cc90/46f3e0/negative-time46fe50 template preparation in the same emulator before Stage initialization. Exact file bytes supplied by controlled file service; texture upload/GetLevelDesc controlled to header dimensions. Initial camera FOV/viewport and global stage number controlled, actual STD directory and callback node construction; controlled CRT allocation; no OS asynchronous scheduling, filesystem/DAT I/O, Stage draw, HAL, battle/audio/natural clear proof.",
+    "Seven original STD and background ANM resources, complete40f170 object animation initialization and40d980 Stage update, actual full ANM/template/copy/interpreter and real32 D3DX normalization; six rates,1200 updates after initialization. Selected Stage clocks/tint/published camera/layers/object flags, selected51 VM words plus complete geometry or selected606 Ribbon words, RNG. ANM resource constructed by actual47d090/47cff0/47ce40/47d130/47d230/47d420/47d9e0 and actual40cc90/46f3e0/negative-time46fe50 template preparation in the same emulator before Stage initialization. Exact file bytes supplied by controlled file service; texture upload/GetLevelDesc controlled to header dimensions. STD directory/pointer setup and callback nodes controlled, controlled CRT allocation; no OS asynchronous scheduling, filesystem/DAT I/O, Stage draw, HAL, battle/audio/natural clear proof.",
+    "Seven original STD and background ANM resources, complete40f170 object animation initialization and40d980 Stage update, actual full ANM/template/copy/interpreter and real32 D3DX normalization; six rates,1200 updates after initialization. Selected Stage clocks/tint/published camera/layers/object flags, selected51 VM words plus complete geometry or selected606 Ribbon words, RNG. Resource descriptors/directory/pointer setup and callback nodes controlled, controlled CRT allocation; no resource file loading, Stage draw, HAL, battle/audio/natural clear proof.",
+    "Actual original47d090 wrapper with controlled0x180 bypass of OS wait,47cff0/47ce40 resource allocation and file/chunk parsing,47d130 preload,47d230 progressive chunk loading and final template initialization,47d420 texture/sprite/script table construction and47d9e0 descriptor arithmetic, actual40cc90 VM constructor/46f3e0 binding/negative-time46fe50. Six rates, progress counter per actual chunk and completion, selected51 template words and RNG. Exact original background ANM bytes supplied by controlled402b00 file service, separate poisoned heap allocations, actual48f980 memset. Embedded texture GPU creation and GetLevelDesc return original ANM header dimensions; filename formatting, logging and cookie check are controlled. Whole descriptor bytes retain pointer/reserved values for audit; portable comparison selects declared fields, excluding those bytes. Original progressive routine called explicitly without OS thread scheduling; no actual D3D resource upload, filesystem/DAT I/O, rendering/HAL/audio or complete1:1 claim. Portable fixture compares17 descriptor words per sprite (texture pointer normalized to chunk index), script source IDs/offsets/lengths and all script bytes after explicitly translating original opcodes using the production canonical map. Pointer/reserved fields excluded.",
+    "Whole original40d980 Stage update, whole46fe50 embedded ANM, real32 D3DXVec3Normalize, original st01wl script0 templates and copy. Eight controlled live embedded VMs, zero ordinary objects, STD stop instruction, six rates and flags0/4/8 with fade29/30/59/60,16 updates each. Selected51 VM words plus Stage clocks/tint and published9 camera words, RNG. Zeroed FS/SEH scratch page mapped. Resource descriptors reconstructed, Stage setup and frozen fade clock controlled; no draw, complete original construction/world/audio/HAL proof.",
+    "Whole original40d980 Stage update, whole46fe50 embedded ANM, real32 D3DXVec3Normalize, st01wl resource templates and copy, controlled synthetic script0 assigning float variables from camera references10016/17/18; original script0 replaced explicitly. Eight controlled live embedded VMs, zero ordinary objects, STD stop instruction, six rates and flags0/4/8 with fade29/30/59/60,16 updates each. Selected51 VM words plus Stage clocks/tint and published9 camera words, RNG. Zeroed FS/SEH scratch page mapped. Resource descriptors reconstructed, Stage setup and frozen fade clock controlled; no draw, complete original construction/world/audio/HAL proof.",
+    "Original st01/02/03/05/06 background ANM scripts without508/609/610 owner/geometry factories. Whole46f3e0 binding, real memset, negative-time template initialization, whole40af00 copy and whole46fe50 for1200 updates or termination; whole46f1e0 sprite binding uses descriptor UV/size reconstructed from original ANM chunks. Six rates, selected raw VM fields and RNG words. Real original resource loader/sprite descriptor construction, child/geometry factories, rendering/world/HAL/audio are outside this proof; excluded scripts explicitly listed, no complete original ANM equivalence.",
+    "Original st04/07 background ANM scripts with609/610 geometry factories, controlled485540 allocation returning distinct poison-filled blocks, excluding508 owner effects. Whole46f3e0 binding, real memset, negative-time template initialization, whole40af00 copy and whole46fe50 for1200 updates or termination; whole46f1e0 sprite binding uses descriptor UV/size reconstructed from original ANM chunks. Six rates, selected raw VM fields and RNG words. Real original resource loader/sprite descriptor construction, child effects, rendering/world/HAL/audio are outside this proof; excluded scripts explicitly listed, no complete original ANM equivalence.",
+    "Original st02 background ANM script7 with508 effect8 initialization and whole native pre-update callback, mapped zeroed FS/SEH scratch page and controlled485540 allocation returning distinct poison-filled blocks, allocation returns poison-filled memory; compare602 vertex/step/angle words plus phase and three timer words; reserved bytes/pointers excluded. Whole46f3e0 binding, real memset, negative-time template initialization, whole40af00 copy and whole46fe50 for1200 updates or termination; whole46f1e0 sprite binding uses descriptor UV/size reconstructed from original ANM chunks. Six rates, selected raw VM fields and RNG words. Real original resource loader/sprite descriptor construction, child effects, rendering/world/HAL/audio are outside this proof; excluded scripts explicitly listed, no complete original ANM equivalence.",
+    "Stage type2/3 full rectangle vertex bits and retained viewport match the complete original draw callback in96 controlled cases; 48 further successful Stage creation cases execute original callback registration, update/draw chains, removal and destruction with exact effect state and vertex bits until both chains are empty; allocation/free, single-thread selection and COM remain controlled, 288 two-owner cases also compare actual linked-chain and callback order, all live effect fields and raw rectangles through creation gaps and final removal, with all six blocks freed once. Unrelated chains are empty; 120 controlled original priority11 game-control/priority16 fade chains also distinguish return3 skipping from fade timer freeze; actual original-resource GameSession.pause/update/resume in12 controlled requested-fade routes matches630 frames/48 paused ticks and5040 effect fields. Complete Session/world scheduling and HAL pixels are not established. Full seven-asset background/foreground geometry sweep covers12096 controlled cases with two consecutive pairs, exact vertices/matrices/depth comparison/fog parameters and selected state/clear/fade-attempt fields; VM states and COM/flush remain controlled",
+    "Two consecutive background/foreground pairs compare selected states, camera-entry states, clears and controlled fade request counts; empty original ANM/stage geometry for this pass-state proof. Seven actual STD resource geometries are tested separately with synthetic VM states and controlled COM/flush, full raw submission words and matrices hashed exactly; no whole original ANM update, HAL pixels or natural clear proof",
+    "Original standalone script initialization/update are controlled; all layer/cursor/time assignments run in the original full interpreter",
+    "Original40f2f0/4107b0 and478f60 run with real32 D3DX; synthetic empty-object stages, invisible and visible modes0..3, GPU batch/flush and COM boundaries controlled",
+    "Seven real resource stages20400 frames include original stage3/frame2978 layer2 and all stage6 standalone commands; native timeline comparison covers script state, not complete original ANM/world update",
+    "Stage-scoped cache begins from actual pipeline state; full global Supervisor cache outside Stage is not established. Callback/mixed submissions use synthetic slots and controlled GPU/COM boundaries, no HAL pixels, whole original stage/world/audio or natural clear proof; complete1:1 remains unfinished"
+  ]
+}

@@ -1,0 +1,1991 @@
+{
+  "game": "th12",
+  "source": "thtk thecl10.c th12_fmts[]",
+  "sourceUrl": "https://github.com/thpatch/thtk",
+  "note": "Opcode ids and argument grammars; argument names/semantics require the original binary.",
+  "flagCharCount": 8,
+  "grammar": {
+    "*": "repeat marker: preceding argument is a count",
+    "D": "thread descriptor",
+    "S": "signed integer",
+    "f": "float",
+    "m": "name/string reference",
+    "o": "byte offset relative to this instruction",
+    "t": "time value (float)",
+    "x": "unknown"
+  },
+  "count": 278,
+  "th11Comparison": {
+    "resolvedByIdForTh12Only": 69,
+    "coreIdsAddedBelow256": [],
+    "coreIdsChangedBelow256": [
+      {
+        "id": 89,
+        "th12": "fff",
+        "th11": "was \"SSS\""
+      }
+    ],
+    "idsTh11HadThatTh12DoesNot": []
+  },
+  "idBlocks": [
+    "0-1",
+    "10-17",
+    "21",
+    "40",
+    "42-45",
+    "50-89",
+    "256-371",
+    "400-456",
+    "500-535",
+    "600-611",
+    "700"
+  ],
+  "entries": [
+    {
+      "id": 0,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 1,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 10,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 11,
+      "signature": "m*D",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 12,
+      "signature": "ot",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 13,
+      "signature": "ot",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 14,
+      "signature": "ot",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 15,
+      "signature": "m*D",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 16,
+      "signature": "mS*D",
+      "parameters": 4,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 17,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 21,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 40,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 42,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 43,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 44,
+      "signature": "f",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 45,
+      "signature": "f",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 50,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 51,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 52,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 53,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 54,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 55,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 56,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 57,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 58,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 59,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 60,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 61,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 62,
+      "signature": "",
+      "parameters": 0,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 63,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 64,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 65,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 66,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 67,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 68,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 69,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 70,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 71,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 72,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 73,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 74,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 75,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 76,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 77,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 78,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 79,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 80,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 81,
+      "signature": "ffff",
+      "parameters": 4,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 82,
+      "signature": "f",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 83,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 84,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 85,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 86,
+      "signature": "fff",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 87,
+      "signature": "fffff",
+      "parameters": 5,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 88,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 89,
+      "signature": "fff",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "was \"SSS\""
+    },
+    {
+      "id": 256,
+      "signature": "mffSSS",
+      "parameters": 6,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 257,
+      "signature": "mffSSS",
+      "parameters": 6,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 258,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 259,
+      "signature": "SS",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 260,
+      "signature": "mffSSS",
+      "parameters": 6,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 261,
+      "signature": "mffSSS",
+      "parameters": 6,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 262,
+      "signature": "SS",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 263,
+      "signature": "SS",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 264,
+      "signature": "SS",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 265,
+      "signature": "mffSSS",
+      "parameters": 6,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 266,
+      "signature": "mffSSS",
+      "parameters": 6,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 267,
+      "signature": "mffSSS",
+      "parameters": 6,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 268,
+      "signature": "mffSSS",
+      "parameters": 6,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 269,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 270,
+      "signature": "mffSSSS",
+      "parameters": 7,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 271,
+      "signature": "mffSSSS",
+      "parameters": 7,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 272,
+      "signature": "SS",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 273,
+      "signature": "SSf",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 274,
+      "signature": "SS",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 275,
+      "signature": "SS",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 276,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 277,
+      "signature": "Sf",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "was \"ff\""
+    },
+    {
+      "id": 278,
+      "signature": "Sff",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "was \"S\""
+    },
+    {
+      "id": 279,
+      "signature": "Sff",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 280,
+      "signature": "mSSSSS",
+      "parameters": 6,
+      "from": "th12_fmts",
+      "th11": "was \"ff\""
+    },
+    {
+      "id": 281,
+      "signature": "SS",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "was \"SSff\""
+    },
+    {
+      "id": 282,
+      "signature": "ff",
+      "parameters": 2,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 283,
+      "signature": "SSfS",
+      "parameters": 4,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 284,
+      "signature": "ff",
+      "parameters": 2,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 285,
+      "signature": "SSff",
+      "parameters": 4,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 286,
+      "signature": "ff",
+      "parameters": 2,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 287,
+      "signature": "SSff",
+      "parameters": 4,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 288,
+      "signature": "ffff",
+      "parameters": 4,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 289,
+      "signature": "SSfff",
+      "parameters": 5,
+      "from": "th11_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 290,
+      "signature": "ffff",
+      "parameters": 4,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 291,
+      "signature": "SSffS",
+      "parameters": 5,
+      "from": "th11_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 292,
+      "signature": "SSf",
+      "parameters": 3,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 293,
+      "signature": "SSf",
+      "parameters": 3,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 294,
+      "signature": "",
+      "parameters": 0,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 295,
+      "signature": "",
+      "parameters": 0,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 296,
+      "signature": "SSf",
+      "parameters": 3,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 297,
+      "signature": "ff",
+      "parameters": 2,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 298,
+      "signature": "ff",
+      "parameters": 2,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 299,
+      "signature": "ff",
+      "parameters": 2,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 300,
+      "signature": "ff",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "was \"ffffff\""
+    },
+    {
+      "id": 301,
+      "signature": "SSff",
+      "parameters": 4,
+      "from": "th12_fmts",
+      "th11": "was \"ffffff\""
+    },
+    {
+      "id": 302,
+      "signature": "ff",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "was \"ffffff\""
+    },
+    {
+      "id": 303,
+      "signature": "SSff",
+      "parameters": 4,
+      "from": "th12_fmts",
+      "th11": "was \"ffffff\""
+    },
+    {
+      "id": 304,
+      "signature": "ff",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 305,
+      "signature": "SSff",
+      "parameters": 4,
+      "from": "th12_fmts",
+      "th11": "was \"Sffffff\""
+    },
+    {
+      "id": 306,
+      "signature": "ff",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "was \"Sffffff\""
+    },
+    {
+      "id": 307,
+      "signature": "SSff",
+      "parameters": 4,
+      "from": "th12_fmts",
+      "th11": "was \"\""
+    },
+    {
+      "id": 308,
+      "signature": "ffff",
+      "parameters": 4,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 309,
+      "signature": "SSfff",
+      "parameters": 5,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 310,
+      "signature": "ffff",
+      "parameters": 4,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 311,
+      "signature": "SSfff",
+      "parameters": 5,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 312,
+      "signature": "SSf",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 313,
+      "signature": "SSf",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 314,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 315,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 316,
+      "signature": "ff",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 317,
+      "signature": "fff",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 318,
+      "signature": "ff",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 319,
+      "signature": "ff",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 320,
+      "signature": "ffffff",
+      "parameters": 6,
+      "from": "th12_fmts",
+      "th11": "was \"ff\""
+    },
+    {
+      "id": 321,
+      "signature": "SSfffff",
+      "parameters": 7,
+      "from": "th12_fmts",
+      "th11": "was \"ff\""
+    },
+    {
+      "id": 322,
+      "signature": "ffffff",
+      "parameters": 6,
+      "from": "th12_fmts",
+      "th11": "was \"S\""
+    },
+    {
+      "id": 323,
+      "signature": "SSfffff",
+      "parameters": 7,
+      "from": "th12_fmts",
+      "th11": "was \"S\""
+    },
+    {
+      "id": 324,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "was \"ffff\""
+    },
+    {
+      "id": 325,
+      "signature": "Sffffff",
+      "parameters": 7,
+      "from": "th12_fmts",
+      "th11": "was \"\""
+    },
+    {
+      "id": 326,
+      "signature": "Sffffff",
+      "parameters": 7,
+      "from": "th12_fmts",
+      "th11": "was \"\""
+    },
+    {
+      "id": 327,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "was \"SS\""
+    },
+    {
+      "id": 328,
+      "signature": "ff",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 329,
+      "signature": "Sfff",
+      "parameters": 4,
+      "from": "th12_fmts",
+      "th11": "was \"\""
+    },
+    {
+      "id": 330,
+      "signature": "ff",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "was \"S\""
+    },
+    {
+      "id": 331,
+      "signature": "SSff",
+      "parameters": 4,
+      "from": "th12_fmts",
+      "th11": "was \"S\""
+    },
+    {
+      "id": 332,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 333,
+      "signature": "",
+      "parameters": 0,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 334,
+      "signature": "SSSm",
+      "parameters": 4,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 335,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 336,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 337,
+      "signature": "SSS",
+      "parameters": 3,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 338,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 339,
+      "signature": "",
+      "parameters": 0,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 340,
+      "signature": "",
+      "parameters": 0,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 341,
+      "signature": "Sm",
+      "parameters": 2,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 342,
+      "signature": "SSSx",
+      "parameters": 4,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 343,
+      "signature": "",
+      "parameters": 0,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 344,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 345,
+      "signature": "",
+      "parameters": 0,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 346,
+      "signature": "f",
+      "parameters": 1,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 347,
+      "signature": "SfS",
+      "parameters": 3,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 348,
+      "signature": "SSSx",
+      "parameters": 4,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 349,
+      "signature": "ffff",
+      "parameters": 4,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 350,
+      "signature": "ffffff",
+      "parameters": 6,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 351,
+      "signature": "fff",
+      "parameters": 3,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 352,
+      "signature": "SSSS",
+      "parameters": 4,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 353,
+      "signature": "SSSSSS",
+      "parameters": 6,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 354,
+      "signature": "SSS",
+      "parameters": 3,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 355,
+      "signature": "SSSSS",
+      "parameters": 5,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 356,
+      "signature": "fffff",
+      "parameters": 5,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 357,
+      "signature": "SSSx",
+      "parameters": 4,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 358,
+      "signature": "SSSx",
+      "parameters": 4,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 359,
+      "signature": "SSSx",
+      "parameters": 4,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 360,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 361,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 362,
+      "signature": "",
+      "parameters": 0,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 363,
+      "signature": "",
+      "parameters": 0,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 364,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 365,
+      "signature": "",
+      "parameters": 0,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 366,
+      "signature": "SS",
+      "parameters": 2,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 367,
+      "signature": "f",
+      "parameters": 1,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 368,
+      "signature": "SSSS",
+      "parameters": 4,
+      "from": "th10_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 369,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th11_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 370,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th11_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 371,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th11_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 400,
+      "signature": "ff",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "was \"S\""
+    },
+    {
+      "id": 401,
+      "signature": "ff",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "was \"S\""
+    },
+    {
+      "id": 402,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "was \"SSS\""
+    },
+    {
+      "id": 403,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "was \"Sff\""
+    },
+    {
+      "id": 404,
+      "signature": "ffff",
+      "parameters": 4,
+      "from": "th12_fmts",
+      "th11": "was \"Sff\""
+    },
+    {
+      "id": 405,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "was \"Sff\""
+    },
+    {
+      "id": 406,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "was \"SSS\""
+    },
+    {
+      "id": 407,
+      "signature": "SS",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 408,
+      "signature": "ff",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "was \"SSS\""
+    },
+    {
+      "id": 409,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "was \"SSSSSSff\""
+    },
+    {
+      "id": 410,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "was \"\""
+    },
+    {
+      "id": 411,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "was \"SS\""
+    },
+    {
+      "id": 412,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "was \"SSffffSf\""
+    },
+    {
+      "id": 413,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "was \"SSSfffSSSSfS\""
+    },
+    {
+      "id": 414,
+      "signature": "SSSm",
+      "parameters": 4,
+      "from": "th12_fmts",
+      "th11": "was \"Sff\""
+    },
+    {
+      "id": 415,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "was \"Sff\""
+    },
+    {
+      "id": 416,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "was \"Sf\""
+    },
+    {
+      "id": 417,
+      "signature": "SSS",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "was \"Sf\""
+    },
+    {
+      "id": 418,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "was \"Sf\""
+    },
+    {
+      "id": 419,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "was \"Sf\""
+    },
+    {
+      "id": 420,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "was \"f\""
+    },
+    {
+      "id": 421,
+      "signature": "Sm",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "was \"f\""
+    },
+    {
+      "id": 422,
+      "signature": "SSSx",
+      "parameters": 4,
+      "from": "th12_fmts",
+      "th11": "was \"Sffffff\""
+    },
+    {
+      "id": 423,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "was \"Sffffffffff\""
+    },
+    {
+      "id": 424,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "was \"Sffff\""
+    },
+    {
+      "id": 425,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "was \"SSSSSSS\""
+    },
+    {
+      "id": 426,
+      "signature": "f",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "was \"SSSSSSSSSSS\""
+    },
+    {
+      "id": 427,
+      "signature": "SfS",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "was \"SSSSS\""
+    },
+    {
+      "id": 428,
+      "signature": "SSSx",
+      "parameters": 4,
+      "from": "th12_fmts",
+      "th11": "was \"SSffSfSf\""
+    },
+    {
+      "id": 429,
+      "signature": "ffff",
+      "parameters": 4,
+      "from": "th12_fmts",
+      "th11": "was \"SSSfffSSSSfS\""
+    },
+    {
+      "id": 430,
+      "signature": "ffffff",
+      "parameters": 6,
+      "from": "th12_fmts",
+      "th11": "was \"Sff\""
+    },
+    {
+      "id": 431,
+      "signature": "fff",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "was \"SSffSfff\""
+    },
+    {
+      "id": 432,
+      "signature": "SSSS",
+      "parameters": 4,
+      "from": "th12_fmts",
+      "th11": "was \"SSSfffSSSSfS\""
+    },
+    {
+      "id": 433,
+      "signature": "SSSSSS",
+      "parameters": 6,
+      "from": "th12_fmts",
+      "th11": "was \"SSffSfff\""
+    },
+    {
+      "id": 434,
+      "signature": "SSS",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "was \"SSSfffSSSSfS\""
+    },
+    {
+      "id": 435,
+      "signature": "SSSSS",
+      "parameters": 5,
+      "from": "th12_fmts",
+      "th11": "was \"Sffffffff\""
+    },
+    {
+      "id": 436,
+      "signature": "fffff",
+      "parameters": 5,
+      "from": "th12_fmts",
+      "th11": "was \"SSSSSSSSS\""
+    },
+    {
+      "id": 437,
+      "signature": "SSSx",
+      "parameters": 4,
+      "from": "th12_fmts",
+      "th11": "was \"Sff\""
+    },
+    {
+      "id": 438,
+      "signature": "SSSx",
+      "parameters": 4,
+      "from": "th12_fmts",
+      "th11": "was \"Sf\""
+    },
+    {
+      "id": 439,
+      "signature": "SSSx",
+      "parameters": 4,
+      "from": "th12_fmts",
+      "th11": "was \"Sff\""
+    },
+    {
+      "id": 440,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "was \"fS\""
+    },
+    {
+      "id": 441,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th11_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 442,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "was \"S\""
+    },
+    {
+      "id": 443,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "was \"S\""
+    },
+    {
+      "id": 444,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 445,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "was \"S\""
+    },
+    {
+      "id": 446,
+      "signature": "Sf",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 447,
+      "signature": "f",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 448,
+      "signature": "SSSS",
+      "parameters": 4,
+      "from": "th12_fmts",
+      "th11": "was \"S\""
+    },
+    {
+      "id": 449,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 450,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 451,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 452,
+      "signature": "f",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 453,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 454,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 455,
+      "signature": "SS",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 456,
+      "signature": "ffS",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 500,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "same"
+    },
+    {
+      "id": 501,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 502,
+      "signature": "SSS",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 503,
+      "signature": "Sff",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 504,
+      "signature": "Sff",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 505,
+      "signature": "Sff",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 506,
+      "signature": "SSS",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 507,
+      "signature": "SS",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 508,
+      "signature": "SSS",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 509,
+      "signature": "SSSSSSff",
+      "parameters": 8,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 510,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 511,
+      "signature": "SS",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 512,
+      "signature": "f",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 513,
+      "signature": "f",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 514,
+      "signature": "Sffffff",
+      "parameters": 7,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 515,
+      "signature": "Sffffffffff",
+      "parameters": 11,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 516,
+      "signature": "Sffff",
+      "parameters": 5,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 517,
+      "signature": "SSSSSSS",
+      "parameters": 7,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 518,
+      "signature": "SSSSSSSSSSS",
+      "parameters": 11,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 519,
+      "signature": "SSSSS",
+      "parameters": 5,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 520,
+      "signature": "fff",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 521,
+      "signature": "Sffffffff",
+      "parameters": 9,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 522,
+      "signature": "SSSSSSSSS",
+      "parameters": 9,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 523,
+      "signature": "Sff",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 524,
+      "signature": "Sf",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 525,
+      "signature": "Sff",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 526,
+      "signature": "fS",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 527,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 528,
+      "signature": "",
+      "parameters": 0,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 529,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 530,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 531,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 532,
+      "signature": "f",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 533,
+      "signature": "f",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 534,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 535,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 600,
+      "signature": "Sffff",
+      "parameters": 5,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 601,
+      "signature": "SSSSSS",
+      "parameters": 6,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 602,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 603,
+      "signature": "SS",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 604,
+      "signature": "Sff",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 605,
+      "signature": "Sff",
+      "parameters": 3,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 606,
+      "signature": "Sf",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 607,
+      "signature": "Sf",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 608,
+      "signature": "Sf",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 609,
+      "signature": "Sf",
+      "parameters": 2,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 610,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 611,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "new"
+    },
+    {
+      "id": 700,
+      "signature": "S",
+      "parameters": 1,
+      "from": "th12_fmts",
+      "th11": "new"
+    }
+  ]
+}

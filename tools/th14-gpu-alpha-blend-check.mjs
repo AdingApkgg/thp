@@ -1,0 +1,26 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {createHash} from 'node:crypto';
+const root=resolve(import.meta.dirname,'..'),out='artifacts/th14/gpu-alpha-blend',read=n=>readFileSync(resolve(root,n)),sha=b=>createHash('sha256').update(b).digest('hex');
+const native=JSON.parse(read(out+'/native.json')),build=JSON.parse(read(out+'/build.json')),browser=JSON.parse(read(out+'/browser-result.json')),pixels=read(out+'/native.bgra');
+assert.equal(native.generated,true);assert.equal(native.cases.length,7168);assert.equal(pixels.length,7168*4096);assert.equal(sha(pixels),native.pixelsSha256);
+assert.equal(native.materialOracleSha256,sha(read('artifacts/th14/render-native.json')));assert.equal(native.nativeExecutableSha256,'f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353');
+for(const [name,hash] of Object.entries(native.tools))assert.equal(sha(read('tools/'+name)),hash,name);
+for(const [name,hash] of Object.entries(build.sources))assert.equal(sha(read(name)),hash,name);
+assert.equal(sha(read(out+'/gpu.wasm')),build.wasmSha256);assert.equal(sha(read(out+'/gpu.mjs')),build.loaderSha256);assert.equal(sha(read(out+'/native.json')),build.nativeSha256);
+const materials=JSON.parse(read('artifacts/th14/render-native.json')),recovered=new Map(materials.materials.filter(r=>r.u===0&&r.v===0&&r.point===0).map(r=>[r.blend,Object.fromEntries(r.events.filter(e=>e[0]==='state').map(e=>[e[1],e[2]]))]));
+const coverage=new Set(),images=new Set();let drawn=0;
+for(let i=0;i<native.cases.length;i++){const c=native.cases[i],image=pixels.subarray(i*4096,(i+1)*4096);assert.equal(sha(image),c.pixelsSha256);assert.ok(c.low===0||c.low===1);assert.ok(c.point===0||c.point===1);assert.ok(c.operation===0||c.operation===1);assert.ok(c.compare>=1&&c.compare<=8);assert.ok([0,1,2,3,31,128,255].includes(c.reference));
+ const state={19:5,20:6,171:1,...recovered.get(c.blend)};assert.deepEqual([c.source,c.destination,c.equation],[state[19],state[20],state[171]]);
+ const key=[c.low,c.blend,c.operation,c.compare,c.reference,c.point].join('/');assert.ok(!coverage.has(key));coverage.add(key);images.add(c.pixelsSha256);
+ if(c.compare===1)for(let p=0;p<image.length;p+=4)assert.equal(image.readUInt32LE(p),0xff42678b,'Never must preserve target');
+ let changed=0;for(let p=0;p<image.length;p+=4)if(image.readUInt32LE(p)!==0xff42678b)changed++;if(changed)drawn++;
+}
+assert.equal(coverage.size,7168);assert.ok(images.size>50);assert.ok(drawn>1000);
+assert.equal(browser.strictPixelsEqual,true);assert.equal(browser.cases,7168);assert.equal(browser.exactCases,7168);assert.equal(browser.maxDelta,0);assert.equal(browser.differentChannels,0);assert.equal(browser.nativePixelsSha256,native.pixelsSha256);assert.equal(browser.portablePixelsSha256,native.pixelsSha256);assert.equal(browser.wasmSha256,build.wasmSha256);assert.deepEqual(browser.firstDifferences,[]);
+assert.equal(browser.groups.length,16);for(let i=0;i<16;i++)assert.deepEqual(browser.groups[i],{blend:i,cases:448,exactCases:448,differentChannels:0,maxDelta:0});assert.deepEqual(JSON.parse(read(out+'/browser-logs.json')),[]);
+const files=['native.json','native.bgra','build.json','gpu.mjs','gpu.wasm','browser-result.json','browser.png','browser-logs.json'].map(n=>out+'/'+n).concat(Object.keys(build.sources),Object.keys(native.tools).map(n=>'tools/'+n),['tools/th14-gpu-alpha-blend-check.mjs','artifacts/th14/render-native.json']);
+const evidence=Object.fromEntries([...new Set(files)].map(path=>{const b=read(path);return [path,{bytes:b.length,sha256:sha(b)}];}));
+const report={passed:true,completeGame:false,nativeEquivalent:false,cases:7168,exactCases:7168,comparedChannels:pixels.length,differentChannels:0,maxDelta:0,distinctNativeImages:images.size,nonemptyNativeCases:drawn,coverage:{blendSelectors:16,compareFunctions:8,references:[0,1,2,3,31,128,255],alphaOperations:2,alphaRanges:2,filters:2},nativePixelsSha256:native.pixelsSha256,wasmSha256:build.wasmSha256,evidence,scope:'Simultaneous alpha testing and blending on actual D3D9 HAL versus production SDL/WebGL renderer; retail-derived blend state,32x32 deterministic fixtures',limits:['No original-game GPU draw-loop/full-frame capture','No depth, fog, world-space perspective or cross-device equivalence in these fixtures','TH14 1:1 and all unconverted works remain incomplete']};
+writeFileSync(resolve(root,'docs/porting/th14-gpu-alpha-blend-browser-verified-oct11.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:true,cases:7168,comparedChannels:pixels.length,distinctNativeImages:images.size,nonemptyNativeCases:drawn}));

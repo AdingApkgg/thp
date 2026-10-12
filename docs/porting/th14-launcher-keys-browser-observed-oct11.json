@@ -1,0 +1,80 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "url": "http://127.0.0.1:8135/?game=th14",
+  "buildId": "cf8174735dc0c496bf89",
+  "preparedPath": "runtimes/th14/th14_web/artifacts/launcher-preview/52bbe125e8b1217a-36df1ab2ecaa/release.json",
+  "preparedSha256": "15b280d89d45904036a1743111708027e0b222da268a7eeded39da7f09aede36",
+  "native": {
+    "controls": {
+      "path": "docs/porting/th14-keys-controls-verified-oct11.json",
+      "sha256": "2ccd8537ca0b310521ee707d12fcd4b9ddc1518b32adbdc8236d5534c5e82c72"
+    },
+    "display": {
+      "path": "docs/porting/th14-keys-display-verified-oct11.json",
+      "sha256": "5a1e94da28e0450f3f05480070fc0ecc53613aefc51f4152c0e90d40198a21ab"
+    }
+  },
+  "before": {
+    "path": "artifacts/th14/keys-controls-check/before.json",
+    "sha256": "78a476808e2db7fe78688cd7434f272bba7b85dfed856a89c97126d2664ab809",
+    "failedCases": 177,
+    "preparedPath": "runtimes/th14/th14_web/artifacts/launcher-preview/8e66fa41b0b62a74-159ce182d203/release.json",
+    "preparedSha256": "b382ef250b0d65d0deb2e25954b0e015693f2c1071db95d72eafd8596efb88e1",
+    "evidence": {
+      "artifacts/th14/browser-launcher-keys-before-oct11.png": {
+        "bytes": 239046,
+        "sha256": "85f4441599f32e067c1e0589552dbde1ae52f4065460ae5bbf8031e441614c78"
+      },
+      "artifacts/th14/browser-launcher-keys-before-wrap-oct11.png": {
+        "bytes": 238552,
+        "sha256": "936ffc4936346b8e782e5a1896b08b78bba7f899982d2429c0a75029469a01a7"
+      }
+    }
+  },
+  "evidence": {
+    "artifacts/th14/browser-launcher-keys-fixed-oct11.png": {
+      "bytes": 237929,
+      "sha256": "1e8f4ed1010ed0c18a7c567e05227bd45571b1cddcea53664101a5409574cc58"
+    },
+    "artifacts/th14/browser-launcher-keys-quit-wrap-oct11.png": {
+      "bytes": 237635,
+      "sha256": "5162ee735ae447e2d77786de0c626b5c265a981859663f91e4ddce256d8aaca9"
+    },
+    "artifacts/th14/browser-launcher-keys-default-oct11.png": {
+      "bytes": 235593,
+      "sha256": "f51225b203c327442169d9029672180058b7805c4f000765717dc4fe319e5bfe"
+    },
+    "artifacts/th14/browser-launcher-keys-cancel-return-oct11.png": {
+      "bytes": 237037,
+      "sha256": "c66a40f20fa02c2317c7fbf1ad1eef31dbf0f8c41518ad740a0590cecb6d15e3"
+    },
+    "artifacts/th14/browser-launcher-keys-confirm-return-oct11.png": {
+      "bytes": 237056,
+      "sha256": "5edfd0558e22abd7eab73bc0de179ee15aa3b691972252345e429bd136c67c79"
+    },
+    "artifacts/th14/browser-launcher-keys-fixed-logs-oct11.json": {
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "artifacts/th14/browser-launcher-keys-fixed-dom-oct11.txt": {
+      "bytes": 2232,
+      "sha256": "f601e4ad96bcc493224f9b47bf422ab5d49085a0c8e214ebb2abed95b38441e3"
+    }
+  },
+  "observed": [
+    "Original Key Config renders four editable rows with00/01/02/05 and Default/Quit in rows5/6",
+    "Up from Shot wraps directly to visible Quit",
+    "Default confirmation stays on Default with the saved four bindings",
+    "X on Quit returns to Option, whose initialization selects BGM Vol",
+    "Re-entering Key Config, Up then Z on Quit returns to Option",
+    "Current error/warn logs empty"
+  ],
+  "limits": [
+    "No physical controller is attached by this proof; button reassignment/swap and edited config differences are native-fixture evidence",
+    "Default and save/cancel browser routes use unchanged binding values; byte-level modified values are tested by the827-case fixture",
+    "Production row presentation targets have synthetic immediate-interrupt evidence, not native GPU pixel equality",
+    "Whole-game1:1 remains incomplete; this build precedes the subsequent Option presentation correction"
+  ]
+}

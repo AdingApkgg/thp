@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "rgbInterpolationTimelines": 1224,
+  "rgbInterpolationFrames": 19992,
+  "cases": 432,
+  "colorCases": 320,
+  "alphaInterpolationTimelines": 2448,
+  "alphaInterpolationFrames": 39984,
+  "scaleInterpolationTimelines": 816,
+  "scaleInterpolationFrames": 13328,
+  "scaleCases": 160,
+  "angledEffectCases": 189,
+  "rotations": 50,
+  "positions": 48,
+  "directions": 63,
+  "stageLogoCases": 48,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "scope": "TH14 ECL 326 RGB interpolation: 1224 timelines compare actual 42db70 setup and 473af0/473df0 dynamics for all 32 modes plus default -1/32, four duration cases, three rates and three RGB targets. Tangents are cleared, alpha is preserved, each Hermite product is truncated separately, RGB bytes wrap as in retail. TH14 ECL 325/327/331/336 color, alpha and layer setters: 320 native cases with slot bounds, missing handles, byte truncation, unchanged other channels and flags. ECL 328/332 primary/secondary alpha interpolation: 2448 timelines compare actual setters 42d9b0/42d900 and 473af0/474190 dynamics for all 32 modes plus default -1/32, negative/zero/one/35-frame durations, three rates and three start/target pairs; primary tangent clearing, secondary tangent preservation and blend-mode switch agree. Integer output is converted once after rounded SSE operations. TH14 ECL 330 scale interpolation: 816 timelines compare actual 42dd70 setup and 473af0/474750 dynamics and actual easing 4041a0 / sine 4a8020 against production ANM updates, all 32 retail modes and two default cases (-1, 32), negative/zero/one/35-frame durations, three rates and two targets; timer/start/end/tangents and scale bits agree. TH14 ECL 329/335 scale and scale-velocity setters (160 cases, slot bounds/stale handles, reverse argument read order and dirty flags), ECL 315 angled effect creation (189 cases, three resources, first ANM update before position/angle overwrite, signed zero/NaN/infinity), ECL 319 slot-local rotation, flags and stale-handle clearing; ECL 303/306/307/308/313/316/318 creation/replacement, base-script selection/restoration, flags, sixteen slots, layer/origin and first ANM update; sixteen-slot position synchronization, native direction changes and ECL 554 stage-logo guard/creation. Argument reads, allocation, resource binding and registry lookup are controlled boundaries. Complete resource template caching and alternate-mode frontend wiring are not covered. ECL 320 is the retail per-slot animation offset setter at 4253c0; X/Y raw float values and forced-zero Z agree, including sentinels, NaN and infinity. Tests traverse the production ECL route; the native argument readers are boundaries. ECL 337 at 425581: 189 actual handler/ANM first-update comparisons, XYZ position plus offsets and rotation installed before first update, including rotation overwritten by the script, signed zero, NaN and infinity; reverse argument read order [3,2,4,1,0]. Resource binding and allocation remain controlled boundaries.",
+  "legacyRouteRefusal": true,
+  "wasmSha256": "6c5c4881a18030a533ac69491ae5fbfcc4f760def1c83dc1ec39029cde56822a",
+  "sourceHashes": {
+    "tests/cpp/th14-enemy-animation-fixture.cpp": "2350c90ad1167155bcd31b20b8056dc06a4288b5a9c8cdf106b1ffb9f8e7b78a",
+    "cpp/game/Interpolation.cpp": "4e0b8aba6456a9ca55b2d93702a337b8307ed83edf7b24392ce189e291106c24",
+    "cpp/game/Interpolation.hpp": "edbabf98f0aa2441bc725138d9fb6ff4908142998836ec3e3fc1c1f198e1d689",
+    "cpp/game/AnmInterpreter.cpp": "894d3d0ee4517bd973c473d769375569c1a411715a887e015fb6ff7b9aaa49fc",
+    "cpp/game/EnemyAnimations.cpp": "550cc7e0ac2c0d10b2e561152b92a44eaf989cf16518ae4670fb47404ee302f4",
+    "cpp/game/EnemyScript.cpp": "8d6a1f28508d467abccc802531f23106efd3824de07c2adefb6ccee21bdd04e5",
+    "cpp/game/AnmManager.cpp": "74e295ed35846687274ecf6d868eb9f9a20746341e1f390e4da168e56754a759",
+    "cpp/game/AnmManager.hpp": "7eafba1fdf79bab1910de868305194b4264fca5abffd475853ec5ec9c7119d8d",
+    "cpp/game/EnemyState.hpp": "4f3830952729e84245f18ee5ea50d701d32e7b5cbbba12e7924d99eafc38f2b7"
+  },
+  "toolHashes": {
+    "tools/th14-enemy-animation-native.py": "7a9faba2289d9ac790759bb07c7eb607d39c3f73130c3fa72e78c9066057726a",
+    "tools/th14-enemy-animation-check.mjs": "3bbb2ec5c42d51502675aee835f395a30ad1d91a55058513f433183aaf8de0bb"
+  },
+  "offsetCases": 140,
+  "offsetEffectCases": 189
+}

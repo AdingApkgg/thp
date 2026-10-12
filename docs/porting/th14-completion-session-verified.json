@@ -1,0 +1,111 @@
+{
+  "passed": true,
+  "rows": [
+    {
+      "selection": 0,
+      "continues": 0,
+      "ending": "e01.msg",
+      "transitionFrames": 380,
+      "endingFrames": 3759,
+      "passed": true
+    },
+    {
+      "selection": 0,
+      "continues": 1,
+      "ending": "e07.msg",
+      "transitionFrames": 380,
+      "endingFrames": 137,
+      "passed": true
+    },
+    {
+      "selection": 1,
+      "continues": 0,
+      "ending": "e02.msg",
+      "transitionFrames": 380,
+      "endingFrames": 3741,
+      "passed": true
+    },
+    {
+      "selection": 1,
+      "continues": 1,
+      "ending": "e08.msg",
+      "transitionFrames": 380,
+      "endingFrames": 135,
+      "passed": true
+    },
+    {
+      "selection": 2,
+      "continues": 0,
+      "ending": "e03.msg",
+      "transitionFrames": 380,
+      "endingFrames": 3731,
+      "passed": true
+    },
+    {
+      "selection": 2,
+      "continues": 1,
+      "ending": "e09.msg",
+      "transitionFrames": 380,
+      "endingFrames": 137,
+      "passed": true
+    },
+    {
+      "selection": 3,
+      "continues": 0,
+      "ending": "e04.msg",
+      "transitionFrames": 380,
+      "endingFrames": 3743,
+      "passed": true
+    },
+    {
+      "selection": 3,
+      "continues": 1,
+      "ending": "e10.msg",
+      "transitionFrames": 380,
+      "endingFrames": 137,
+      "passed": true
+    },
+    {
+      "selection": 4,
+      "continues": 0,
+      "ending": "e05.msg",
+      "transitionFrames": 380,
+      "endingFrames": 3737,
+      "passed": true
+    },
+    {
+      "selection": 4,
+      "continues": 1,
+      "ending": "e11.msg",
+      "transitionFrames": 380,
+      "endingFrames": 137,
+      "passed": true
+    },
+    {
+      "selection": 5,
+      "continues": 0,
+      "ending": "e06.msg",
+      "transitionFrames": 380,
+      "endingFrames": 3739,
+      "passed": true
+    },
+    {
+      "selection": 5,
+      "continues": 1,
+      "ending": "e12.msg",
+      "transitionFrames": 380,
+      "endingFrames": 137,
+      "passed": true
+    }
+  ],
+  "archiveSha256": "57d84a5cbe82460931cca26f090a0fde7aef180889ce5bfe8315851fc97b0233",
+  "wasmSha256": "e25a5ff8248acf05369badfb1b2761d2d4c8cc8120c62e64cf8bae6ffd4040df",
+  "scope": "Original resources, actual GameBattle MSG21 completion and GameSession ending/staff/result route for six equipment choices with and without continues. Stage completion boundary is invoked directly; player invulnerability controls the brief stage-to-ending wait. Does not prove a natural full campaign, retail ending interpreter/timing/GPU equivalence or browser storage.",
+  "sourceHashes": {
+    "tests/cpp/th14-completion-session-fixture.cpp": "cbd33969e6455c293473acf50f32076b077ed1d10b446c7a8d434735aa1ca2bd",
+    "cpp/game/Ending.cpp": "c939877ab0b6a82fa7fda73114539dbc50f242f426935b39d4f1c59339fc43f4",
+    "cpp/game/StageCompletion.cpp": "be5dc07e2e1fbf47d6b49036f22a70846f3373fa4643e2b8d9ee3f911654dd96",
+    "cpp/game/GameBattle.cpp": "5d65ecaaf26bc58a631771c71c81bbeb609ada51e898a84fc83a0d68f0444961",
+    "cpp/game/GameSession.cpp": "d49674a6e9cd2f7aa53ec8284b01667ed3643e837c6e1c5bed919b226bf79f03"
+  }
+}

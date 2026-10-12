@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "title": 16,
+  "completeGame": false,
+  "cases": 10800,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "55b6b0fabe88b9638afd36d199b25446ba3c70a87d86e5c9b3b71fae47274608",
+  "scope": "Actual retail rectangle 4438c0 and circle 4439e0 versus production PlayerCollision: SSE edge/distance rounding, scaled radius, ordered/unordered comparisons, dialogue, probe, all player lifecycle states, invincibility and hit application. Native hit application is a recorded sink; complete game integration and laser geometry are separate.",
+  "sourceHashes": {
+    "tests/cpp/th16-player-bullet-collision-fixture.cpp": "fdeeeb3ce166c7f755db1c14eb0f5ca03e83b4683e20fc4291619b47851a6347",
+    "cpp/game/PlayerCollision.hpp": "47e75ab3bb62b1885192e7576e695e484b7098140fbcf6da369520a3dab8eac3",
+    "cpp/game/PlayerCollision.cpp": "8987616e9a64f2727909f4379955e1a21c34d0b8701bfd4fae4a80685faa0b2f"
+  },
+  "toolHashes": {
+    "tools/th16-player-bullet-collision-native.py": "511487ddfdf845363a92a2b2fd351676ca93c91d46eb73af103a1a4af609fb8f",
+    "tools/th16-player-bullet-collision-check.mjs": "fd340c5ab8c578b291ccb6c9d6ed50fcd18875edd2c9238694e174e1519d6d8f"
+  }
+}

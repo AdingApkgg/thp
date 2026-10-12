@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "url": "http://127.0.0.1:8132/",
+  "firstBuild": {
+    "wasmSha256": "bda10f6a119b8b020910a9d40fdc9e5bdc1d9fa0be9f2cad92b39a3ea30494ef",
+    "bytes": 1769859,
+    "screenshots": [
+      "artifacts/th14/browser-records-overview-oct11.jpg",
+      "artifacts/th14/browser-records-spells-oct11.jpg",
+      "artifacts/th14/browser-records-extra-last-page-oct11.jpg",
+      "artifacts/th14/browser-records-wrap-oct11.jpg",
+      "artifacts/th14/browser-records-return-title-oct11.jpg"
+    ],
+    "logs": "artifacts/th14/browser-records-logs-oct11.json"
+  },
+  "currentBuild": {
+    "wasmSha256": "39a038aba8e5c10dfac4c7830aa728df4437aa5775befae6af1b669da1c9b830",
+    "bytes": 1770180,
+    "sourceHashesVerified": 145,
+    "screenshot": "artifacts/th14/browser-records-current-build-oct11.jpg",
+    "build": "artifacts/th14/sdl-title-music-browser-build-oct11.json"
+  },
+  "checks": [
+    "Real main-menu key input selects Player Data",
+    "Reimu A/Normal overview and ten spell rows",
+    "Sakuya A/Extra last page contains only No.119/120 and eight blank rows",
+    "confirm wraps to overview, x exits to main with Player Data selected",
+    "After Music Room fix, same TitleRecords source rechecked in current browser build"
+  ],
+  "scope": "Formal SDL page reads existing user records. No hidden code/test unlock, artificial clears or replay saves entered. Real keyboard/screenshot inspection; no original GPU pixel comparison or full game equivalence."
+}

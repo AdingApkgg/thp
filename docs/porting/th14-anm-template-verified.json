@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "templates": 12,
+  "copies": 36,
+  "factories": 48,
+  "rawCases": 12,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "resourceSha256": "bbd7205654c87677c4a582fc5e99c2884e724f501b3d281c75bf207a76095559",
+  "wasmSha256": "254fc1b7fbd355a7adfee4dbb0d9c0c5f3d4c70612f65886493a376d46a94e99",
+  "scope": "Original effect.anm21: whole46f3e0 binding, resource-loader clock-1 setup, whole46fe50 negative-time initialization, three whole40af00 copies and first updates; whole46f520 raw binding observed before and after its real first interpreter update; whole47ee90 attached/47efc0 detached factories compare layer/flags2/live-parent/origin/rotation/child-position. Selected variables/colors/layer/transforms/random parameters/instruction/clocks and full RNG words. Sprite binding, memset, pool allocation and registry service controlled; geometry, arbitrary resources and GPU output excluded. Production initializes complete effect resource once; repeated script21 binding and first updates match without repeating negative-time random calls. Core and stage resources integrated; arbitrary-resource native state, geometry suffix and full campaign/GPU equivalence excluded.",
+  "sources": {
+    "AnmResource.hpp": "7723d8b09faeec2826a4175f2076f4e9d3a9cbce953545420d67cb39c2366c4d",
+    "AnmVm.hpp": "f7f2aeaf6b3de13f7f3a0e4a47d1e8f5452bda86fd54d09ab1ee3fc95ea6bf01",
+    "AnmVm.cpp": "49b7114f614de4f7cb743487fa29fb6049f1e15f7135195abc0de501514a3c71",
+    "AnmManager.hpp": "77f2de3ff97f534be1514ceaefa1034b26fe8b9a9eb8e1876488571d89cd52e4",
+    "AnmManager.cpp": "7d2b90f75703117d6a87b409d3ecf23515294fadad79ffe06b263fe752bbb799",
+    "GameSession.cpp": "9fcbcc23ae3bd76f17388d470da67649fbd1b124e858128ea2c00ee40ff91f60",
+    "GameSessionResources.hpp": "d424ce93bcdc4a9dda2f47d09847e93d822c5cfd763b73ec9f66b5ceed2fce0c",
+    "GameSessionResources.cpp": "8410ee7166a8236cff3d999e186921a9f998fba7a2f67e853791d6a384be7af5",
+    "Stage.cpp": "78ffc8d5e798c65c1feb546aed0a1a23d7c0af207e4aaf7693f609b8d4aa445d",
+    "PlayerMotion.cpp": "3687a4a69ebf7fe07d3d2167b703df2b93ca770ea329ea5cdc05f71e2dafd330",
+    "ItemManager.cpp": "d394a2746fbad691a00c063d9fd71b6755e908b7ebab17af30629f9025a0b7d1",
+    "ItemTh14.cpp": "1a86d88d6b88eba3ecba3a02b98183af1f948a38b1a686a0788bc25ded9241d7",
+    "Hud.cpp": "47194f439a4c0571726513edfbf67516fa993adf56061c7829f25abd59ab9ef9",
+    "SceneCompositor.cpp": "f0568596460b395c0bdd6c7379c7008a0de081cd250143217dfe030dba1e86fb",
+    "BombController.cpp": "4eb902aaaeb48413ad7a7f1c3e3c2e0bda6ed04e48f7dae1c6137a550e4c4fb7",
+    "Ending.cpp": "4cdce30a32045569d9d5c92acd1c3569e1fab1105ad4a0364457aba3de67b714",
+    "LaserLineTh14.cpp": "0e4cde4bc233b1668483a7d11bbef9143e7acfa923f91289d7b2e6748511e626",
+    "LaserInfiniteTh14.cpp": "35bbd953f57f2057f76622fc7adcab3baa36ddfe9c3ba9a110618372f285e646",
+    "LaserCurveTh14Runtime.cpp": "4d28ba331761e0de24e133904d6f2ede84e945eb8824e914ac36ac8c6f0e0557"
+  },
+  "tools": {
+    "tools/th14-anm-template-native.py": "de18059fc542ce741f5548a9f95210bec92272f64d6009c33f114532eb28dc5f",
+    "tools/th14-anm-template-check.mjs": "fdb97670d8b5f12ebbb080d46082ddf76087fbb6d9b293950cd2dc0180ff6cbd",
+    "runtimes/th12/th12_web/tests/cpp/th14-startup-fixture.cpp": "85375301009727b7ccf73444560e737163a7982cdee16f318f3a14588c1df8dd"
+  }
+}

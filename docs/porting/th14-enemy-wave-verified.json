@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "timelines": 840,
+  "frames": 30808,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "6e622ef5a054970c6a51f540f09664db8a66529bdc5f8f90ef923cb2b273e57a",
+  "sourceHashes": {
+    "cpp/game/EnemyTh14Commands.cpp": "d3a9f5133d733ea5bdb5cca2bd4bd0808f00f40ca195977486384378f19f41cc",
+    "cpp/game/EnemyState.cpp": "fbec31724649179e9772b17e0aa445070ae52264a70b07e1d7960ae0ca899bfb",
+    "cpp/game/EnemyState.hpp": "e6d8e0faab8e6c1ed60fb4e78dea7b42e292c7568baf95139771b6cc1523b60f",
+    "cpp/game/Interpolation.cpp": "57cd2806a28109745084fb2079edee055322ff3fd044f75fc4e4ec3305add125",
+    "cpp/game/Interpolation.hpp": "edbabf98f0aa2441bc725138d9fb6ff4908142998836ec3e3fc1c1f198e1d689",
+    "cpp/game/Movement.cpp": "ea823e71f48f15d1d5e038c4fa62b6a4dfcaa31b087ebc183e42ef2dd439cccb",
+    "tests/cpp/th14-enemy-wave-fixture.cpp": "25196a7fb7ff01eef5dede5abfaefe387f241aa1c85c8d12c9bc90d040337b03",
+    "tests/cpp/th14-enemy-movement-fixture.cpp": "27978ab051a703d7ae482fb0a7e8af38d8f44594cded54a1c42371a5201a53ad"
+  },
+  "toolHashes": {
+    "tools/th14-enemy-wave-native.py": "b5a4c7a276a040024b18fa258b4cc519c9f85b5dffefb4ced1036fedb215746c",
+    "tools/th14-enemy-wave-check.mjs": "b0631c6055509004e49f689df73a97067d0e19f81ccd83b477acdff6b56336c3"
+  },
+  "scope": "Actual retail 426d48 418/419 velocity setters and complete 4230d0 movement. Nibbles 0..4 with mode-four drifting anchor, phase and perpendicular sine displacement; four rates 0/0.5/1/1.25, sentinel velocity endpoints, camera and clamps. Native 418/419 falls through into the relative six-float ellipse setter; all six readable argument words are controlled. Extra native movement fields independently seeded and sampled. Position/scalar interpolation interaction covers real 401/403 and 445/447 setters followed by controlled restoration of the original movement nibble; all clocks/band fields and wave phase/anchor are compared. Modes 7/17/18/31 and -1/80, durations 1/7/35. Arguments and ANM lookup controlled; GPU and complete campaign excluded."
+}

@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "cases": 864,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "9c47ec80f0bc74e664683f3c1e717fa641fca42791ffb0bd927f361323f81836",
+  "scope": "Retail 410470 STD marker search, first matching opcode 16 before the negative-time sentinel, unchanged state when absent, next-instruction offset and timer/rate/flag updates. Direct stage interrupt and production ECL 630 routing both compared. Synthetic instruction streams; subsequent background execution, native ECL argument resolution and pixels are not asserted.",
+  "sourceHashes": {
+    "tests/cpp/th14-stage-interrupt-fixture.cpp": "a5286bf7675570a6d3c77ba4a13f45cfae5b458e38df16988b47a506523fc4e6",
+    "cpp/game/StageScript.cpp": "0ed157158b33e64846fccff40c3139c4dbb0469376873070ab326d941ad6b5fe",
+    "cpp/game/Timer.hpp": "e07169289db2407ce57c4191343ad6c9a5e3b2d543898439326520cfe1723ddb",
+    "cpp/game/EnemyTh14Commands.cpp": "c58fa85d9ef70de8e4f8936b1d91587b73ce18b8f8979157f202bd74f42ae835",
+    "cpp/game/EnemyScript.cpp": "f69b7f0912a8e4440b9402f48a8832202f9082c074c31afe4c211c50b5a381bd"
+  },
+  "toolHashes": {
+    "tools/th14-stage-interrupt-native.py": "17c1fcd0309f733616eab69733b6c2b959ca86e62db8904ef0d497013ed50165",
+    "tools/th14-stage-interrupt-check.mjs": "e42947dedc4968caf9068aa0451453b27d6a156442a410f0a676c3876766b7e8"
+  }
+}

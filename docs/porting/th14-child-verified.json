@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "scope": "Native TH14 child initialization, linking and first script update with allocation/binding/registry boundaries controlled. Production nested ownership test is not a native destructor comparison.",
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "cases": 84,
+  "nestedOwnershipRegression": true,
+  "wasmSha256": "d03013f700a0e81499c64a2fc9b2fad05d05e1551fedf81bbd1cdabcd3fb4823",
+  "sourceHashes": {
+    "cpp/game/AnmVm.cpp": "ea8bb812259ae3ed10e9fdc940813b0e3cdbd48678e3116b13d460144805e691",
+    "cpp/game/AnmResource.cpp": "ca6f5dbff0e5a5f8b6980354faf7165626a33cb7f88399987c8b573b30588947",
+    "cpp/game/AnmInterpreter.cpp": "eb94221d8f7249a71d0a77998b1ba074203704c5dfd8605acfe2a6312ab353ab",
+    "cpp/game/AnmGeometry.cpp": "274afc6cdf65e168060fe0dca4ec62de80261383c9ebea8e65432fa9657a82c2",
+    "cpp/game/AnmManager.cpp": "5d6b20bd5aa72a82849b7de459a0b5e6e349e4876fb7ddeaa604f6796cac48fd",
+    "cpp/game/Interpolation.cpp": "733384f3b927b3f159d128a81eace6ba4a7e54d4ad8ee94bfff422abd3a41a98",
+    "tests/cpp/th14-child-fixture.cpp": "626f422cf5399390c2d991ec01d23db5c242406cc30f94b1d9ef8aef017d70f9",
+    "cpp/game/AnmVm.hpp": "64564a0101f2d4b1375aa6a2d72298b8c27e67b98887e17a990eef96112728f8",
+    "cpp/game/AnmOpcodes.hpp": "238e9632deae6fedcfa8a4e66234e6dfe88e239dbfe525de0bc6926b1a3a7714",
+    "cpp/game/AnmManager.hpp": "f31b966e267eafc1a419cc8a64b716d4f3e571f76b9d941062007e884bdd717c"
+  },
+  "toolHashes": {
+    "tools/th14-child-native.py": "ae100e5eee3c28e7fe1694b4f7b93e5fb457d38bde477685eec4ae6ae8675cf1",
+    "tools/th14-child-check.mjs": "5c6db49feb5179e2ff61409644187cce1fa05bbe7d34d40dea5718ff855b0f80",
+    "tools/th-anm-handlers.py": "99622a7d27eeeac7881d71e8b6367f95c79b47f0f259e6bb2d31725decd07383"
+  }
+}

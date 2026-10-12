@@ -1,0 +1,11 @@
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+check=(ROOT/'tools/th14-gpu-text-check.mjs').read_text(encoding='utf8').replace("out='artifacts/th14/gpu-text/'","out='artifacts/th14/font-device-gpu/'").replace("'artifacts/th14/text-raster-native.json'","'artifacts/th14/font-device-raster-native.json'").replace("'tools/th14-gpu-text-native.py'","'tools/th14-font-device-gpu-native.py'")
+check=check.replace('assert.equal(browser.scratch.length,80);','assert.equal(browser.waitingRoutes,31);assert.equal(browser.writes,640);')
+check=check.replace("assert.deepEqual(browser.scratch[i],{textIndex:i,sha256:r.sha256});",'assert.equal(r.outline,0);assert.equal(r.spacing%2,0);')
+check=check.replace('assert.equal(b.pixelsSha256,c.pixelsSha256);','assert.equal(b.writes,i+1);assert.equal(b.pixelsSha256,c.pixelsSha256);')
+check=check.replace('th14-gpu-text-browser-verified-oct11.json','th14-font-device-gpu-browser-verified-oct11.json').replace('scratchCases:80','nativeScratchCases:80,deliveryWrites:640,deliveryBoundaryRoutes:5')
+check=check.replace('Production independent TextRaster/GlyphAtlas/ImageResample and SDL Renderer PORT_TITLE14 verified; CPU upload bytes equal actual D3DX texture readbacks and all selected GPU draw channels strict. This does not capture production FontDevice/GraphicsDevice changed delivery or original full ANM dialogue batch.','Actual production FontDevice.initialize/text, GraphicsDevice.preload/changed, TextRaster/GlyphAtlas/ImageResample and SDL Renderer PORT_TITLE14 verified. Five initialization/waiting/resource boundaries and640 sequential writes to two retained textures pass; CPU upload bytes equal actual D3DX texture readbacks and all selected GPU draw channels strict. Does not capture original complete ANM dialogue batch.')
+check=check.replace('Existing raster proof is preserved; this new fixture independently verifies current raster implementation','Existing raster proof is preserved; this new fixture independently executes original467ba0 for80 representable FontDevice inputs. Outline0 and even spacing reflect actual delivery; right/center alignment and full dialogue animation are not covered')
+(ROOT/'tools/th14-font-device-gpu-check.mjs').write_text(check,encoding='utf8')
+print('Prepared actual FontDevice delivery proof checker')

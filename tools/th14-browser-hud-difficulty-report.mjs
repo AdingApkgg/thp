@@ -1,0 +1,9 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {createHash} from 'node:crypto';
+const root=resolve(import.meta.dirname,'..'),sha=b=>createHash('sha256').update(b).digest('hex');
+const build=JSON.parse(readFileSync(resolve(root,'runtimes/th14/th14_web/artifacts/sdl3/build.json'),'utf8'));assert.equal(build.sha256,'a23313d1e74dcd20279781102e570e3ef4288a055efc00781db506ee1900a544');
+assert.equal(sha(readFileSync(resolve(root,'runtimes/th14/th14_web/artifacts/sdl3/th11-harness.wasm'))),build.sha256);
+const screenshot='artifacts/th14/browser-spell-hud-difficulty-fixed-oct11.png';
+writeFileSync(resolve(root,'docs/porting/th14-browser-hud-difficulty-verified-oct11.json'),JSON.stringify({passed:true,completeGame:false,nativeEquivalent:false,url:'http://127.0.0.1:8133/',build,persistentStoreMounted:false,artificialClear:false,forcedInvincibility:false,loadout:'Sakuya A',spellId:0,difficulty:2,observations:['Fresh volatile session uses normal Player Data hidden code and Spell Practice menus to select first card Hard.','Actual original-ECL battle screenshot at health-readout frame251 has HARD label and ordinary bullets; erroneous Challenge next stage and Get Spell Card Bonus notices absent.','Host pause used after screenshot to preserve inspection state.'],scope:'Observed browser correction of two wrong HUD notices and difficulty label only, without native pixel/audio equality or natural capture. Native40-entry request proof and separate replay regressions retained independently.',screenshot,screenshotSha256:sha(readFileSync(resolve(root,screenshot))),shellSha256:sha(readFileSync(resolve(root,'runtimes/th12/th12_web/sdl-runtime/shell-harness.mjs')))},null,2)+'\n');console.log('PASS observed browser HUD difficulty correction');

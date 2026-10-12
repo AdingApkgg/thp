@@ -1,0 +1,207 @@
+{
+  "diagnosticEvidenceVerified": true,
+  "productionChanged": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "naturalClear": {
+    "selection": 4,
+    "difficulty": 0,
+    "frames": 92137,
+    "deaths": 4,
+    "stockBombStarts": 19,
+    "invulnerabilityOverride": false,
+    "forcedProgression": false,
+    "phase": 5
+  },
+  "nativeDecodedFiles": 9,
+  "comparedFrames": 208272,
+  "comparedWords": 5415072,
+  "activeDifferentWords": 0,
+  "inactiveScoreDifferentWords": 16,
+  "results": [
+    {
+      "label": "attempt1",
+      "comparedFrames": 24350,
+      "activeDifferentWords": 0,
+      "inactiveScoreDifferentWords": 1
+    },
+    {
+      "label": "normal-reimub",
+      "comparedFrames": 40768,
+      "activeDifferentWords": 0,
+      "inactiveScoreDifferentWords": 0
+    },
+    {
+      "label": "easy-reimub",
+      "comparedFrames": 51398,
+      "activeDifferentWords": 0,
+      "inactiveScoreDifferentWords": 12
+    },
+    {
+      "label": "easy-sakuyaa",
+      "comparedFrames": 91756,
+      "activeDifferentWords": 0,
+      "inactiveScoreDifferentWords": 3
+    }
+  ],
+  "evidence": {
+    "docs/porting/th14-natural-replay-native-decode-observed-oct12.json": {
+      "bytes": 2601,
+      "sha256": "b331e1be0b1a9fc2ad18eead95233ce6c449b1152b74e44b1da0aaaa907f8415"
+    },
+    "tools/th14-natural-replay-decode-prepare.py": {
+      "bytes": 1371,
+      "sha256": "e019eae5862e2c55e650cdbd8adfe1af9479b1ae88a571c127f092e276b89d77"
+    },
+    "tools/th14-replay-native-decode.py": {
+      "bytes": 3448,
+      "sha256": "25665213041a4c6608a47672bdebec12a0ebadf66f22b960d34f224431010aa7"
+    },
+    "tools/th14-natural-replay-decode-native.py": {
+      "bytes": 3860,
+      "sha256": "5c33ef78fac5de166e4861abe4650a9bff03ac8229ba2604342b268a9601967f"
+    },
+    "artifacts/th14/natural-input/attempt1/ordinary-input.rpy": {
+      "bytes": 21166,
+      "sha256": "cde98af7e92db420353b971377a1b9c102badb24425823ebf8cbbbf6767e9d1a"
+    },
+    "artifacts/th14/natural-input/attempt2/ordinary-input.rpy": {
+      "bytes": 21195,
+      "sha256": "1281ca237c28109ad12b65143c5ad307a624a178eb4369ddd68aed0277bf3e1c"
+    },
+    "artifacts/th14/natural-input/attempt3/ordinary-input.rpy": {
+      "bytes": 25674,
+      "sha256": "f1433d94426c3fc8af813c71ad7db986c61ff7bab0d5408c92e7837745f05d2b"
+    },
+    "artifacts/th14/natural-input/easy-marisab/ordinary-input.rpy": {
+      "bytes": 52685,
+      "sha256": "54c627684cbd5004e2ecd3955e337a9de7578f1aadda3d3ba595a8c768a143b6"
+    },
+    "artifacts/th14/natural-input/easy-reimub/ordinary-input.rpy": {
+      "bytes": 48700,
+      "sha256": "fe62d789f7f27f228a24d68345ad10e8c2bfc352abe4d291d276d7eba7ef89c7"
+    },
+    "artifacts/th14/natural-input/easy-reimub-collection/ordinary-input.rpy": {
+      "bytes": 25219,
+      "sha256": "49a0c38a718c48218fe1d14ee05f67676ab444c1ad1b8bfac946215c583be960"
+    },
+    "artifacts/th14/natural-input/easy-sakuyaa/ordinary-input.rpy": {
+      "bytes": 88543,
+      "sha256": "934c44e830d1c511ffae92b3de7d038fdb53569baa6cf163d0e8094f41a7460f"
+    },
+    "artifacts/th14/natural-input/normal-reimub/ordinary-input.rpy": {
+      "bytes": 40066,
+      "sha256": "c4a9933e478306f0d577386497c995fe579d331a9dd5d47ee5c8c9d851026935"
+    },
+    "artifacts/th14/natural-input/normal-reimub-collection/ordinary-input.rpy": {
+      "bytes": 23999,
+      "sha256": "da3f30ecff0d85c78c4667cf4530402dd8aa57d6269ec39143fc7fb7c968e1a0"
+    },
+    "artifacts/th14/natural-input/easy-sakuyaa/report.json": {
+      "bytes": 36056,
+      "sha256": "13f853db6a5e461adc9ef302e19b9e8cfc07588776e2de23492bc46425573692"
+    },
+    "artifacts/th14/natural-input/easy-sakuyaa/natural.wasm": {
+      "bytes": 1309552,
+      "sha256": "663bfa2c209db7036d386921fb72371dc0a38fcf9cf1806beba6c6195d48870b"
+    },
+    "artifacts/th14/natural-input/easy-sakuyaa/held-keys.u32": {
+      "bytes": 368548,
+      "sha256": "335ae79d8aa8f7ad2f75e394d0ec7376cdbf2566b9a7b068198a53dafa6378eb"
+    },
+    "artifacts/th14/natural-input/easy-sakuyaa/fixture.cpp": {
+      "bytes": 5748,
+      "sha256": "e59a653cfe7b9768f5850f254a9f091cd61f57bd4cf18e162a271d3d73f083f2"
+    },
+    "artifacts/th14/natural-input/easy-sakuyaa/run-tool.mjs": {
+      "bytes": 5636,
+      "sha256": "ed16b37bc546b0acf14c8ce9baf68b333f13b4abb560cc0010167e6d4cbaa112"
+    },
+    "docs/porting/th14-natural-replay-observed-oct12.json": {
+      "bytes": 8767,
+      "sha256": "bff7b01cc3185271c9410c11c34d161e295f9c9b2c287dd24785d331b5502b7f"
+    },
+    "docs/porting/th14-natural-replay-easy-sakuyaa-observed-oct12.json": {
+      "bytes": 3005,
+      "sha256": "e30910c541dba7bc4263296191c90340f941be89df2e43e13cad0945cd2597d7"
+    },
+    "artifacts/th14/natural-input/attempt1/ordinary-state.u32": {
+      "bytes": 2532400,
+      "sha256": "6980e3833c1c68929e4bf736fc42d929722aaf5673bafd0c6ae917356df04ea3"
+    },
+    "artifacts/th14/natural-input/attempt1/playback-state.u32": {
+      "bytes": 2532400,
+      "sha256": "9937be8706ed8e9ae2fa1b20236b8ac9db20e6e040ad1585398c8da130f7e699"
+    },
+    "artifacts/th14/natural-input/attempt1/held-keys.u32": {
+      "bytes": 97400,
+      "sha256": "1be5667bb556276a74185eed9e731b824c8d925b6f3603c3522fc28b4fda3bb7"
+    },
+    "artifacts/th14/natural-input/attempt1/natural.wasm": {
+      "bytes": 1301502,
+      "sha256": "92955e687c20d3a60a982a6eba3001ed8b666ea313e2d6b3ae2f774026eb8d6c"
+    },
+    "artifacts/th14/natural-input/attempt1/recreated-replay.rpy": {
+      "bytes": 21166,
+      "sha256": "cde98af7e92db420353b971377a1b9c102badb24425823ebf8cbbbf6767e9d1a"
+    },
+    "artifacts/th14/natural-input/normal-reimub/ordinary-state.u32": {
+      "bytes": 4239872,
+      "sha256": "7aa081c9913263b152ed4d7c552121dc42db7afbffb96e05781bb66851aec481"
+    },
+    "artifacts/th14/natural-input/normal-reimub/playback-state.u32": {
+      "bytes": 4239872,
+      "sha256": "7aa081c9913263b152ed4d7c552121dc42db7afbffb96e05781bb66851aec481"
+    },
+    "artifacts/th14/natural-input/normal-reimub/held-keys.u32": {
+      "bytes": 163072,
+      "sha256": "cd19d72d420d70da34728f4493e9cffd7cf1f09f716ed793fbb6eb2598225495"
+    },
+    "artifacts/th14/natural-input/normal-reimub/natural.wasm": {
+      "bytes": 1301568,
+      "sha256": "e6e296d0e2211b4d59a28b0eafffeab239449e141f7576813a6b9f521eb0d263"
+    },
+    "artifacts/th14/natural-input/normal-reimub/recreated-replay.rpy": {
+      "bytes": 40066,
+      "sha256": "c4a9933e478306f0d577386497c995fe579d331a9dd5d47ee5c8c9d851026935"
+    },
+    "artifacts/th14/natural-input/easy-reimub/ordinary-state.u32": {
+      "bytes": 5345392,
+      "sha256": "08cceed4b3bc6ddac1549c66c5830142981b9aa68e415163a2ddc0e27a2b65b8"
+    },
+    "artifacts/th14/natural-input/easy-reimub/playback-state.u32": {
+      "bytes": 5345392,
+      "sha256": "cf70e4f81205108bb66e956c2deed028235942865e50f6efc5716b7490861026"
+    },
+    "artifacts/th14/natural-input/easy-reimub/held-keys.u32": {
+      "bytes": 205592,
+      "sha256": "52355af4a3dc3022b45c7c59238c5e964b88f8abd6e165e6e019e644c0818923"
+    },
+    "artifacts/th14/natural-input/easy-reimub/natural.wasm": {
+      "bytes": 1301568,
+      "sha256": "e6e296d0e2211b4d59a28b0eafffeab239449e141f7576813a6b9f521eb0d263"
+    },
+    "artifacts/th14/natural-input/easy-reimub/recreated-replay.rpy": {
+      "bytes": 48700,
+      "sha256": "fe62d789f7f27f228a24d68345ad10e8c2bfc352abe4d291d276d7eba7ef89c7"
+    },
+    "artifacts/th14/natural-input/easy-sakuyaa/ordinary-state.u32": {
+      "bytes": 9582248,
+      "sha256": "866525db488b0a249dcaf0f397aa27152960d79955841583dd69cd876e38e90d"
+    },
+    "artifacts/th14/natural-input/easy-sakuyaa/playback-state.u32": {
+      "bytes": 9542728,
+      "sha256": "5eba79d28fcd859439ac1b520f32e239a6c1ac8614c11a0b3f7cf26c3fc8939a"
+    },
+    "artifacts/th14/natural-input/easy-sakuyaa/recreated-replay.rpy": {
+      "bytes": 88543,
+      "sha256": "934c44e830d1c511ffae92b3de7d038fdb53569baa6cf163d0e8094f41a7460f"
+    },
+    "tools/th14-natural-replay-check.mjs": {
+      "bytes": 5328,
+      "sha256": "012bc406f88cf49d5071b539f0230ee15908344b562467dd2d7279b146cc96b5"
+    }
+  },
+  "toolSha256": "1f543d2b8432ce5a723c115683d1091a72e68c00ab84bd6cc02b33eac86a5288",
+  "scope": "Actual current-core ordinary-input six-stage clear to ending entry and archived ordinary replay roundtrips. All raw selected-state traces independently compared, inactive score restoration preserved. Native decrypt/decompress control verifies file bytes, not Native full gameplay. Headless recording graphics and deterministic host time; physical production GPU/audio and full ending lifecycle remain separate. Older ordinary producer tool hash is retained in its report; current checker verifies its raw traces independently."
+}

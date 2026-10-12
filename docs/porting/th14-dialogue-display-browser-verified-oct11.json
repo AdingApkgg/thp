@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "entries": 90,
+  "frames": 72012,
+  "confirmationInterval": 60,
+  "textRequests": 6096,
+  "fontWrites": 6096,
+  "gpuReadbacks": 3044,
+  "renderedPreviews": 84,
+  "layerDrawCalls": 2592432,
+  "wasmSha256": "8fab8db502bf25aba85ffd4b21f686bac6ce2bb4559a4c7ccfaaac5251973169",
+  "archiveSha256": "57d84a5cbe82460931cca26f090a0fde7aef180889ce5bfe8315851fc97b0233",
+  "evidence": {
+    "artifacts/th14/dialogue-display-browser-oct11.json": "64a03eef317b62be5c4061eafd1e27acb673ebfecab11b2199bf722647e1f8f6",
+    "artifacts/th14/dialogue-display-browser-oct11.png": "5ea846f836971911baaafbac8ebd6f79e472d0045b53fb0c922cb2fc23b44667",
+    "artifacts/th14/dialogue-display-browser-logs-oct11.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "tools/th14-dialogue-display-build.mjs": "71c946b498bc158c9c54a928e4c777ab676c302d2e798be06aa413997891de03",
+    "tools/th14-dialogue-display-serve.mjs": "8f8f0a9326d6f8f5e7a20b14b0922d92e8892c43766df8e377ec65d910e2b37e",
+    "tools/th14-dialogue-display.html": "ccaee639066b439d93aa9521a4d9b23eba4027036dcc374aed18430ecf3a9fda",
+    "tools/th14-dialogue-display-check.mjs": "eb831b9d6e647c568d809f0316f902a752c187bee489f4cacada580b01d27b9a",
+    "artifacts/th14/dialogue-display/build.json": "764385da68f0c5123b5fb64853dedb1ae4258fc7cd8de2e8c227aff8916d69da"
+  },
+  "scope": "All90 original MSG entries across seven stages/six shot selections through actual Dialogue, real ANM resources and updates, actual FontDevice/GraphicsDevice.changed and production Renderer. Confirm every60 frames allows bubble animations; draw all36 layers every frame; capture text-panel GPU target after writes and every30 frames. Original archive and10 font assets verified. Requests/panels agree with earlier engine-only corpus and actual font writes equal all6096 requests. The84 text-bearing entries retain non-background pixels; six stage6 completion entries issue no text requests or panels, matching the corpus; final Extra sisters bubble visibly inspected. Sound/music/stage-completion deliveries controlled, no original full-frame pixel equality, world/ECL/HUD/full-game lifecycle or survival claim.",
+  "retainedDiagnostics": [
+    "artifacts/th14/dialogue-display-before-core-upload-oct11.txt",
+    "artifacts/th14/dialogue-display-before-archive-lifetime",
+    "artifacts/th14/dialogue-display-every-tick"
+  ]
+}

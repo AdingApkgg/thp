@@ -1,0 +1,120 @@
+{
+  "passed": true,
+  "nativeExecutableSha256": "422f40aa176c9aab7d0178ce6033802b4143921a5e0e463ef99259ef6d100a58",
+  "scope": "Original Supervisor copy bindings, camera resets, target/copy callbacks, samplers, shape vertices, gradients and effect-5 draw state; matrix comparisons use zero rotations. No full-stage pixel or gameplay equivalence claim.",
+  "nativeCallbacks": 10,
+  "nativeAnchorVertices": 36,
+  "nativeAddressingCases": 16,
+  "nativeWorldTransforms": 12,
+  "nativeRectangles": 108,
+  "nativeCircles": 18,
+  "nativeVertexColors": 8,
+  "nativeRibbonDraws": 8,
+  "results": [
+    {
+      "title": 13,
+      "passed": true,
+      "copies": [
+        [
+          4,
+          3,
+          2,
+          127.5,
+          15.5,
+          0.20000000298023224,
+          0.03333333507180214
+        ],
+        [
+          3,
+          4,
+          2,
+          127.5,
+          15.5,
+          0.20000000298023224,
+          0.03333333507180214
+        ],
+        [
+          4,
+          3,
+          2,
+          127.5,
+          15.5,
+          0.20000000298023224,
+          0.03333333507180214
+        ],
+        [
+          0,
+          4,
+          2,
+          31.5,
+          15.5,
+          0.20000000298023224,
+          0.03333333507180214
+        ]
+      ],
+      "resourceHash": "a09f2fcab166f87781565fbabcafc5f8f671bbc5ab9527dea521b99ca0323c10",
+      "wasmSha256": "2f5e8238e87d8a21d5eb0a88829e9fa078b5ee1f3a63c54efdd83dfc2ee22b4f"
+    },
+    {
+      "title": 12,
+      "passed": true,
+      "copies": [
+        [
+          4,
+          3,
+          2,
+          31.5,
+          15.5,
+          0.05000000074505806,
+          0.03333333507180214
+        ],
+        [
+          3,
+          4,
+          2,
+          31.5,
+          15.5,
+          0.05000000074505806,
+          0.03333333507180214
+        ],
+        [
+          0,
+          3,
+          2,
+          31.5,
+          15.5,
+          0.05000000074505806,
+          0.03333333507180214
+        ]
+      ],
+      "resourceHash": "d152090dcbe1addca564981eaaf87af21f372a0366cb4d5e92bd447681e41cf3",
+      "wasmSha256": "131f03d9110d541efd37183981ed9642f8077a6b67b039a1986c78d7226eaf57"
+    }
+  ],
+  "sourceHashes": {
+    "cpp/game/AnmVm.cpp": "ddf923bf1cc8d71b0bdf6f91a54b4b40f723d5a3023b295f2a8e0e833dcf5ad4",
+    "cpp/game/AnmResource.cpp": "ca6f5dbff0e5a5f8b6980354faf7165626a33cb7f88399987c8b573b30588947",
+    "cpp/game/AnmInterpreter.cpp": "eb94221d8f7249a71d0a77998b1ba074203704c5dfd8605acfe2a6312ab353ab",
+    "cpp/game/AnmManager.cpp": "5548af693e9b1f71fe1622654d27b7281398417a2c78ce720ae8164b3500e505",
+    "cpp/game/AnmGeometry.cpp": "876273a619274307c37a94faf74dce6948778f0f61cb32d344f447b35490fed5",
+    "cpp/game/AnmProjection.cpp": "ac2e73f94a4ee47770a40c8549b6691ebe7696c05820e3d07d7b7817e751df59",
+    "cpp/game/AnmRenderer.cpp": "b96496fca56e84a4efecc1fdf1c462ef5ae3b18d9e64ef3d8362dd1d278d5b58",
+    "cpp/game/GraphicsMath.cpp": "b159b3d617a522977c795351b5ff56338d5058b899ab984a590c8b50f8a9fd6e",
+    "cpp/game/Interpolation.cpp": "733384f3b927b3f159d128a81eace6ba4a7e54d4ad8ee94bfff422abd3a41a98",
+    "cpp/game/SceneCamera.cpp": "131995417f977b9bf526035f6e2ec098adfa58eb48df06cfdfde2b2537720795",
+    "cpp/game/SceneCompositor.cpp": "d5a63afb95ff6ecce727d6a4beef4e8239c088f98012de7b381321b50996a6c5",
+    "tests/cpp/th13-compositor-fixture.cpp": "aa79c9021a40a16d3ddb7a1be187e434f2404d6da0a7f92f0ac22a52b92774e1",
+    "cpp/game/SceneSchedule.hpp": "b13fbdf8bcb29c493579a0ae609190748269a8209cdee0c36f01ed4c52e0d054",
+    "cpp/game/SceneCompositor.hpp": "8a0370b333e1eeaa77a4bf45530e5eb4babbeb58db7e7683ec83199473fa3e50",
+    "cpp/game/AnmManager.hpp": "ca5293092fa63aac32a723ed398a883dfb7c62f90334870e4e8a5d5b819099ea",
+    "cpp/game/AnmRenderer.hpp": "796fdd548dd9bf35cc1ec69bf66da25aeefaf6c0cf631183bca99bf3cb3f7bc1",
+    "cpp/game/AnmVm.hpp": "ddfccb657cb0924a03a67e5ca28c48dcd6fb3dc5b965aeca30fd146ee5aee412",
+    "cpp/game/AnmGeometry.hpp": "57094d2208e31f9b5e934b019792a23d1ac40d3a088ecb5180a531737bf82787",
+    "cpp/game/GameSession.cpp": "dcb35b38290ad59a4973178a224812b5a5c54b0a77bacb5cdd5c9c0a55cb51b9",
+    "cpp/game/StageDraw.cpp": "b048fcf14d6e183e3dafff2fef68a8c512771132d2f25a0c87f4a4404ebfe751"
+  },
+  "toolHashes": {
+    "tools/th13-compositor-native.py": "4042844f31db9072a23c45afe3b3ab0290d46dbbb09acd3da9aadc2dbfe0232b",
+    "tools/th13-compositor-check.mjs": "f8d994ab2df71b67409482e907822f1427050cfb928e9c508caf4e7202daecae"
+  }
+}

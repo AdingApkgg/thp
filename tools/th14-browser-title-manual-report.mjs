@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {createHash} from 'node:crypto';
+const root=resolve(import.meta.dirname,'..'),sha=b=>createHash('sha256').update(b).digest('hex');
+const build=JSON.parse(readFileSync(resolve(root,'runtimes/th14/th14_web/artifacts/sdl3/build.json'),'utf8'));
+assert.equal(build.sha256,'47faf1b96f6be26f8db023471a9d28fe52a1c8379a161361d0111a97889b5f81');
+assert.equal(sha(readFileSync(resolve(root,'runtimes/th14/th14_web/artifacts/sdl3/th11-harness.wasm'))),build.sha256);
+for(const [path,hash] of Object.entries(build.sources))assert.equal(sha(readFileSync(resolve(root,'runtimes/th12',path))),hash,path);
+const names=['choices',...Array.from({length:7},(_,i)=>`page${i+1}`),'last-bound','back-page','return-choices','wrap-page7','exit','reentry'];
+const evidence=[...names.map(n=>`artifacts/th14/browser-title-manual-${n}-oct11.png`),'artifacts/th14/browser-title-manual-logs-oct11.json'];
+const logs=JSON.parse(readFileSync(resolve(root,evidence.at(-1)),'utf8'));assert.equal(logs.filter(l=>l.level==='error').length,0);
+writeFileSync(resolve(root,'docs/porting/th14-browser-title-manual-verified-oct11.json'),JSON.stringify({passed:true,completeGame:false,nativeEquivalent:false,url:'http://127.0.0.1:8132/',build,persistentStoreMounted:true,artificialClear:false,hiddenUnlockCode:false,forcedInvincibility:false,observations:['Ordinary Main/Manual keyboard entry shows Title103 and seven help choices.','Original local help_01..07 PNG pages displayed in sequence; final page Down stays07, Up returns06.','Cancel returns choices retaining06; choices wrap07/01/07, confirmation displays07 again.','Cancel from page then choices returns Main retaining Manual; direct reentry resets the help choice to01.','After idle attract demo, host pause/title/start was used to repeat direct Manual exit/reentry; browser key presses were held120ms to ensure frame sampling.'],scope:'Observed browser routing, seven real page images, page boundaries, choice wrapping and exit/reentry. Source hashes match this build. Does not establish native GPU/pixel/audio equality, natural full-game clear, async resource equivalence or IndexedDB reload persistence.',evidence:Object.fromEntries(evidence.map(n=>[n,sha(readFileSync(resolve(root,n)))]))},null,2)+'\n');
+console.log(`PASS observed title Manual browser flow; ${Object.keys(build.sources).length} current source hashes`);

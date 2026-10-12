@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "cases": 2625,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "4589ceb49414eed9597cd843788c68200c829e8bd78052a9ab6a1e74bb7a3651",
+  "scope": "Exact retail 44d621..44d67a SSE displacement calculation compared with the helper called by production PlayerMotion. Negative scale -128, truncation, wrapping subtraction, int-to-float rounding and factor product across signed directions, nonintegral shifts, factors 0/.2/.33/1/1.25 and i32 edge values. Keyboard direction selection, focus, touch input, bounds, body transitions and complete movement order are separate.",
+  "sourceHashes": {
+    "tests/cpp/th14-reimu-a-controller-fixture.cpp": "35422e5240f09ac72769a461a9ae9a15d3efc8f86db3bbd2b244763fa22735f4",
+    "cpp/game/PlayerMotion.cpp": "16b346b2bd4472befedbfa2589435893285a06309cc44c61302b0f3c3ad7c319",
+    "cpp/game/PlayerMotion.hpp": "1acb630179f2dc1391f18df043ff3057a7be00b503add7250673aa5822265b22"
+  }
+}

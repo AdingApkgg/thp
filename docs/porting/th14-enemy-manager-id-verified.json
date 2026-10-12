@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "cases": 68,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "42ff91958c88a0eb5b7062e5ef7fc16e4b217bab3446372816b2a7b2e9fce91f",
+  "scope": "Actual 4222f0 reset clears the manager, reserves ID zero, leaves count zero and registers the manager. CRT memset is a recording boundary. Production constructor/reset verify the resulting next ID and registration. Does not prove other manager fields, occupied-list teardown, constructor callbacks, ID overflow allocation or snapshot callback phase.",
+  "sourceHashes": {
+    "tests/cpp/th14-enemy-manager-id-fixture.cpp": "30747eb0c55bb2f2ec17af37da1b7c235d05772cd36b8b0d18060af2714de78b",
+    "cpp/game/EnemyManager.hpp": "b67ec5a808a4ff07867c1420f3fd7efb43e95a58a5137e14f413ffec56b9d0be",
+    "cpp/game/EnemyManager.cpp": "d00e6d1ff79fcbf1a103a880934f225e70ed3fc3ea82861e76fec5cdd701b1b3"
+  }
+}

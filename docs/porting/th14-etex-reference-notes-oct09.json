@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-09",
+  "scope": "Public-source reference provenance for the TH14 ETEX increment; references provide research leads. Original local executable execution supplies the native comparisons.",
+  "references": [
+    {
+      "url": "https://github.com/Priw8/merlin",
+      "commit": "78be66982b7ed62681490a7e718a78925a69d0d5",
+      "files": [
+        "reference/merlin/merlin/th16/globals/etama.tecl",
+        "reference/merlin/merlin/th16/inline/etama.tecl"
+      ],
+      "application": "Used ETEX names, parameter roles, bounce wall masks, save/step mode descriptions and target-speed acceleration as leads for TH14 retail disassembly. TH16 mode 7 is not copied into TH14, whose dispatcher accepts only modes 0..6.",
+      "limit": "Documentation targets TH16/17; it is not TH14 correctness evidence.",
+      "fileSha256": {
+        "reference/merlin/merlin/th16/globals/etama.tecl": "89cbfa72f0494c17135c5f59bc9c32b0b88378e34b15cd3b0f86112df3337828",
+        "reference/merlin/merlin/th16/inline/etama.tecl": "f5cbc03d1a3a5efa366d3eefb19b6725b935010f31ccb9bf7c0aa3095bf3d5d5"
+      }
+    },
+    {
+      "url": "https://github.com/YomotsuHisami/th11",
+      "branch": "eagler",
+      "commit": "ad66d19cc7c0466d1a0e68f0ff8f1a095c6586bd",
+      "files": [
+        "reference/th11-eagler/th11_web/cpp/game/Hud.cpp",
+        "reference/th11-eagler/th11_web/cpp/game/PauseEnd.cpp",
+        "reference/th11-eagler/th11_web/cpp/game/PlayerFrame.cpp",
+        "reference/th11-eagler/th11_web/cpp/game/BombController.cpp"
+      ],
+      "application": "Reviewed existing bullet transform/motion separation and web-port architecture. Kept TH14 consumers isolated from the shared TH11/TH12 implementation. Also compared the inherited end-choice scheduler and HUD queue: its TH11 font/coordinates/formatting explain the prior TH14 mismatch. TH14 sidebar, five choices and manual behavior were separately recovered from TH14 retail execution. Reviewed TH11 player death/respawn and Bomb power consumption: these explain inherited TH14 lifecycle errors. TH14 hit/death effects, stock consumption, refill and laser-only first 30 respawn frames were recovered from TH14 retail instructions rather than copied across versions. HUD icon registration must follow TH14 manager-owned layer 24 rather than embedded TH11 VMs. Actual Bomb animation scripts and damage virtuals also differ; the shared TH11 Bomb controller remains a known incomplete path.",
+      "limit": "Opcode numbering differs from TH14, including 0x40 and 0x200000; code cannot be copied by matching opcode number.",
+      "fileSha256": {
+        "reference/th11-eagler/th11_web/cpp/game/Hud.cpp": "914d44f758364dbe5eeb59cd131274f8a287b3ea6e290ddde0aa29a3d97900c9",
+        "reference/th11-eagler/th11_web/cpp/game/PauseEnd.cpp": "b425ca64bd56dcedd4c6a429911563432e311ccc7cb35a38e48a079e8fd664ea",
+        "reference/th11-eagler/th11_web/cpp/game/PlayerFrame.cpp": "7ef311da9207bfbcb29b64c1c53fde36bc1c784d331d91623e553964296d142a",
+        "reference/th11-eagler/th11_web/cpp/game/BombController.cpp": "d6cebeca46fb87cdfe81a1d47547cdbe28429f702c5dfb6084f38e360c67f8e3"
+      }
+    },
+    {
+      "url": "https://github.com/11NU0/th12-decomp",
+      "commit": "ebdf8f26a4cde37442a158f5ca0b8e1781fa1aed",
+      "files": [
+        "reference/th12-decomp/README.md"
+      ],
+      "application": "Reviewed the distinction between delinked executable recovery, compilable functions and byte-matching decompilation; retained executable execution as the proof boundary.",
+      "limit": "Its README describes an incomplete decompilation. A buildable reference does not establish TH14 or browser equivalence.",
+      "fileSha256": {
+        "reference/th12-decomp/README.md": "70a1adc06fc18f541809ebec62c4b94c139db48777a63700c9faf6d777834ce6"
+      }
+    },
+    {
+      "url": "https://github.com/thpatch/thtk",
+      "commit": "892114a0fcaa0bbdaaecf3cb4ad56f758683fb40",
+      "files": [
+        "reference/thtk/README",
+        "reference/thtk/thanm/thanm.c"
+      ],
+      "application": "Reviewed the TH14 archive/ANM tooling and supported-title table while tracing retail front.anm scripts and Bomb resource script differences.",
+      "limit": "Resource formats and script inspection provide leads; neither the tool support table nor a decoded ANM establishes runtime, Bomb or pixel equivalence.",
+      "fileSha256": {
+        "reference/thtk/README": "cb86befaa431de396aa171c4564032d1bd99d7a3120631f124a64d709b059f7e",
+        "reference/thtk/thanm/thanm.c": "dd2a82d522f04c6b4b56e8dda683156208bb74033f99f5fc40bbb8b8d3cc71f6"
+      }
+    }
+  ],
+  "nativeExecutable": "H:/Games/th/14/th14.exe",
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353"
+}

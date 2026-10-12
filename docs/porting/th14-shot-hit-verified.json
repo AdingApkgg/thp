@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "cases": 4096,
+  "activeHits": 1363,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "70e3881ffca1c60f8cf88f18300cd135a0aff0680494f028c6d6840337eca909",
+  "scope": "Retail 452050 callback 1 gate, actual RNG/polar/angle math, speed writes, decay reset, focused-hit counter and damage return. Records interrupt 3, effect 149 arguments and sound 68 boundaries; native scratch stack initialized to zero (polar writes X/Y only). Production allocation/rendering/sound and the damage-area collector are outside this proof.",
+  "sourceHashes": {
+    "tests/cpp/th14-shot-hit-fixture.cpp": "12b8af46574e691bbcdcc25e90d74f5342091e036c3b64878d93c71cf9440361",
+    "cpp/game/ShotTh14.cpp": "8cf98e342f2d660be0726bd6fed76f658745cb42ddf62a2fd646eed9ddd58de7",
+    "cpp/game/ShotManager.hpp": "73dfca787b3c6c83cce784c4fd6513662f012c6b1c84aa7fd5fb5527b6ff2f0b",
+    "cpp/game/Rng.hpp": "3865a40f2ec26f6462f5daa52e7bc8b7e5f42f2c3f6c88d0bfcf3d6c154f4d9b"
+  },
+  "toolHashes": {
+    "tools/th14-shot-hit-native.py": "23ba64d516bd5b16acca9b4db91a09e3e56571dbe8d3e602ba5faa8236844913",
+    "tools/th14-shot-hit-check.mjs": "2e37cdf4dad6e407a573cfa1822739d2dfaaf8589564d4f9504967f878165348"
+  }
+}

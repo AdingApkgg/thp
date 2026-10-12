@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "title": 16,
+  "completeGame": false,
+  "cases": 1536,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "36a25c8ff9c9da1a60e447c30d9575156d05b5a6b66735a3ecb0bdf53a647a79",
+  "maxError": 0,
+  "scope": "Full420585 ECL509,41a720 drop and41d700 scatter. Original RNG402cb0/402c70/402cf0,426240 anisotropic trig and memset execute. Practice skip, time-scaled season count, nonzero primary,16 extra kinds, kind16 special speed/angle sequence,17 counts clear, native visual RNG seed/calls/order. Factory430960 controlled; original factories, death-path caller and full gameplay excluded. Ordinary position tolerance4e-5; remaining fields exact.",
+  "sourceHashes": {
+    "tests/cpp/th16-item-drop-fixture.cpp": "ef39f79314fd587e64b15621b21a93a1b3f7ff77fe53ba50ef24e355610b1054",
+    "cpp/game/ItemTh16Drop.cpp": "3b81443129f81580f823053ead8368cd2d49b94ba227b914414990c8023306df",
+    "cpp/game/ItemManager.hpp": "35a83614e0e36be693d0b480d6f0de0ddfcb6a43a0b3bbc645865cf42e1a0116",
+    "cpp/game/EnemyTh16Commands.cpp": "65b07e32b89c3fa132428253f0db5d2f7f77bc521a39dbc419ef74b15227cfff",
+    "cpp/game/EnemyManager.cpp": "9057ef3f2a7807b4a04540ac66b26a6e5f3a4e4b7a4b38c4ca7fd261c09d64df",
+    "cpp/game/EnemyScript.cpp": "341478e128b33392fae09c01680866ab793dfaa2b7037897861046bbe033d4e5"
+  },
+  "toolHashes": {
+    "tools/th16-item-drop-native.py": "e278b572ce0bcb433bc738f553e6573ab5d69c41714b19dd7c009af8cc30f840",
+    "tools/th16-item-drop-check.mjs": "053f001af654c860430104567172cb0556b02ded83bde46880046b6e9fd1f2c5"
+  }
+}

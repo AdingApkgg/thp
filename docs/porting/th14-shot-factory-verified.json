@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "cases": 1296,
+  "firingGateCases": 3456,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "6a4210fd15ace4e13922332031e175bbd7436b35f18bb8cccde261d0ef03762e",
+  "scope": "Full retail 4508f0 common factory with actual 403cd0 motion and 450270 rectangle allocation, controlled ANM binding/update/registry and memset boundaries, spawn callback zero. Production ShotManager.spawn compares retained flags/focus bit, age timer, cleared old motion, origin/options and integer conversion, 995/1000 angle modes, visual RNG with guarded script RNG, rate-scaled velocity, rounded offsets, type-2/type-3 caches, raw script+5, initial ANM angle hint/layer/position and bound area timer/damage/period/callback. Actual 450ed0 firing entry also covers interval/delay, focused group selection, zero/full availability and type-2/type-3 cached-power gates across three option slots, four powers and signed cached values. Only a single spec and one free node are supplied; free-list order, multiple-spec interactions, callback-specific factory effects, ANM script dynamics, subsequent updates and GPU pixels are separate.",
+  "sourceHashes": {
+    "tests/cpp/th14-shot-factory-fixture.cpp": "660204f212db8b26af120b208925030215f89206ccce6ca2d81072120e1e29b0",
+    "cpp/game/ShotManager.cpp": "04f9315e4e6560b7b11f80b3e88293d5fa58472dcaf9cee6038e21031fb49722",
+    "cpp/game/ShotManager.hpp": "aa603ba0a62fc2a563ad11a25142fb08a6ebb7d63f32037caf3b972cfaa375ec",
+    "cpp/game/ShotTh14.cpp": "165834bdbcbc67f2688364dfb7a339bfc53c55b32a2767d84bf43ae27fd70563",
+    "cpp/game/Movement.cpp": "ea823e71f48f15d1d5e038c4fa62b6a4dfcaa31b087ebc183e42ef2dd439cccb"
+  },
+  "toolHashes": {
+    "tools/th14-shot-factory-native.py": "31d1ea7cb3aa41e361e92fc092cc17b091c29136005f648e8fd60166f3a3c84e",
+    "tools/th14-shot-factory-check.mjs": "6a7c10cd9664dbd12ff52299ea3c70ef8723dddf47eb5dfadb25b6fbf3c48115"
+  }
+}

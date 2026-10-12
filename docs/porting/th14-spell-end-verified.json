@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "entries": 10,
+  "controls": 54,
+  "exits": 24,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "5fc70008fab78958e96b67d1f73e4cceb750b357e4f7cc4456ea3fb7c6bb2695",
+  "scope": "Complete retail44b0f0 callback for SpellPr failure/completion initialization, compact three choices, movement/repeat/cancel/confirm including empty replay-slot scan, and twelve-frame Title/Retry exits. Original44a170 record dispatch,44a0e0 exit cleanup and native cursors/input/timer execute. ANM/audio/save/file/slowdown services controlled; no replay serialization, name input, GPU or natural capture equivalence. Production uses original ANMs, compares root bindings, state/cursor/history/clock, sounds, unchanged score records and exit requests; opaque ANM interrupt/hide and file services are excluded.",
+  "sources": {
+    "runtimes/th12/th12_web/cpp/game/PauseEnd.cpp": "b5467dcf68975e26259e27bcf24562b928fd29547189e351f3fe1af343021005",
+    "runtimes/th12/th12_web/cpp/game/PauseMenu.cpp": "c0a583d7227b0bbb7b14cbba20874d096d67270505c2da3b02ff12bb1e385ffb",
+    "runtimes/th12/th12_web/tests/cpp/th14-startup-fixture.cpp": "18e3f6481931ec1ce23cfe4e92a6af50772287d742eba9232419c344a6ee5cc0",
+    "tools/th14-spell-end-native.py": "d738935833ff436581345b01bc3a6790c00a3eda3946c5e2e27dc98aa4912240",
+    "tools/th14-spell-end-check.mjs": "ebb571a07b3e8845f036ed253e92d715f7a2bbf5656233635ad41c87e7a7bd81"
+  }
+}

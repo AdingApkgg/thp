@@ -1,0 +1,1276 @@
+{
+  "title": 12,
+  "portMemberOffsets": [
+    {
+      "name": "id",
+      "offset": "0x0"
+    },
+    {
+      "name": "registry",
+      "offset": "0x4"
+    },
+    {
+      "name": "child",
+      "offset": "0x10"
+    },
+    {
+      "name": "draw next",
+      "offset": "0x1c"
+    },
+    {
+      "name": "layer",
+      "offset": "0x20"
+    },
+    {
+      "name": "rotation",
+      "offset": "0x24"
+    },
+    {
+      "name": "angular velocity",
+      "offset": "0x30"
+    },
+    {
+      "name": "scale",
+      "offset": "0x3c"
+    },
+    {
+      "name": "scale velocity",
+      "offset": "0x44"
+    },
+    {
+      "name": "sprite size",
+      "offset": "0x4c"
+    },
+    {
+      "name": "uv offset",
+      "offset": "0x54"
+    },
+    {
+      "name": "timer",
+      "offset": "0x5c"
+    },
+    {
+      "name": "uv",
+      "offset": "0x70"
+    },
+    {
+      "name": "position interpolation",
+      "offset": "0x90"
+    },
+    {
+      "name": "color interpolation",
+      "offset": "0xdc"
+    },
+    {
+      "name": "alpha interpolation",
+      "offset": "0x128"
+    },
+    {
+      "name": "rotation interpolation",
+      "offset": "0x154"
+    },
+    {
+      "name": "scale interpolation",
+      "offset": "0x1a0"
+    },
+    {
+      "name": "color2 interpolation",
+      "offset": "0x1dc"
+    },
+    {
+      "name": "alpha2 interpolation",
+      "offset": "0x228"
+    },
+    {
+      "name": "scroll x interpolation",
+      "offset": "0x254"
+    },
+    {
+      "name": "scroll y interpolation",
+      "offset": "0x280"
+    },
+    {
+      "name": "scroll velocity",
+      "offset": "0x2ac"
+    },
+    {
+      "name": "sprite matrix",
+      "offset": "0x2b4"
+    },
+    {
+      "name": "transform matrix",
+      "offset": "0x2f4"
+    },
+    {
+      "name": "uv matrix",
+      "offset": "0x334"
+    },
+    {
+      "name": "color",
+      "offset": "0x374"
+    },
+    {
+      "name": "secondary color",
+      "offset": "0x378"
+    },
+    {
+      "name": "pending interrupt",
+      "offset": "0x37c"
+    },
+    {
+      "name": "saved timer",
+      "offset": "0x380"
+    },
+    {
+      "name": "saved instruction",
+      "offset": "0x394"
+    },
+    {
+      "name": "sprite frame",
+      "offset": "0x398"
+    },
+    {
+      "name": "sprite index",
+      "offset": "0x39c"
+    },
+    {
+      "name": "file index",
+      "offset": "0x39e"
+    },
+    {
+      "name": "script index",
+      "offset": "0x3a2"
+    },
+    {
+      "name": "script begin",
+      "offset": "0x3a4"
+    },
+    {
+      "name": "instruction",
+      "offset": "0x3a8"
+    },
+    {
+      "name": "live",
+      "offset": "0x3a8"
+    },
+    {
+      "name": "sprite",
+      "offset": "0x3ac"
+    },
+    {
+      "name": "resource",
+      "offset": "0x3b0"
+    },
+    {
+      "name": "integer 0",
+      "offset": "0x3b4"
+    },
+    {
+      "name": "integers",
+      "offset": "0x3b4"
+    },
+    {
+      "name": "integer 1",
+      "offset": "0x3b8"
+    },
+    {
+      "name": "floats",
+      "offset": "0x3c4"
+    },
+    {
+      "name": "extra integers",
+      "offset": "0x3d4"
+    },
+    {
+      "name": "script position",
+      "offset": "0x3dc"
+    },
+    {
+      "name": "position",
+      "offset": "0x3e8"
+    },
+    {
+      "name": "child position",
+      "offset": "0x3f4"
+    },
+    {
+      "name": "geometry",
+      "offset": "0x400"
+    },
+    {
+      "name": "flags",
+      "offset": "0x404"
+    },
+    {
+      "name": "flags2",
+      "offset": "0x408"
+    },
+    {
+      "name": "title flags",
+      "offset": "0x40c"
+    },
+    {
+      "name": "reserved 418",
+      "offset": "0x418"
+    },
+    {
+      "name": "rectangle columns",
+      "offset": "0x41c"
+    },
+    {
+      "name": "rectangle rows",
+      "offset": "0x41d"
+    },
+    {
+      "name": "parent",
+      "offset": "0x420"
+    },
+    {
+      "name": "title effect",
+      "offset": "0x424"
+    },
+    {
+      "name": "reserved 430",
+      "offset": "0x430"
+    },
+    {
+      "name": "age",
+      "offset": "0xffffffff"
+    }
+  ],
+  "namedCandidates": {
+    "slots": [],
+    "of": 20
+  },
+  "namedElsewhere": {
+    "slots": 35,
+    "of": 35,
+    "why": "the rest of the gap: these reproduce their changes through the port fields named beside them, which is what makes them a seed or an edge matter rather than a layout gap",
+    "rows": [
+      {
+        "nativeSlot": "0x20",
+        "portNames": {
+          "layer": [
+            2,
+            5,
+            6,
+            7
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x6c",
+        "portNames": {
+          "timer+0x4": [
+            15,
+            16,
+            17,
+            18
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x70",
+        "portNames": {
+          "timer+0x4": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "timer+0x8": [
+            10
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0xcc",
+        "portNames": {
+          "position interpolation+0xc": [
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0xd8",
+        "portNames": {
+          "position interpolation+0xc": [
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x118",
+        "portNames": {
+          "color interpolation": [
+            1,
+            2,
+            4,
+            6
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x124",
+        "portNames": {
+          "color interpolation": [
+            1,
+            2,
+            4,
+            6
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x12c",
+        "portNames": {
+          "color interpolation+0x48": [
+            2,
+            3,
+            5,
+            6,
+            7
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x138",
+        "portNames": {
+          "alpha interpolation+0x4": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x144",
+        "portNames": {
+          "alpha interpolation": [
+            0,
+            1,
+            3,
+            5
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x150",
+        "portNames": {
+          "alpha interpolation": [
+            0,
+            1,
+            3,
+            5
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x190",
+        "portNames": {
+          "rotation interpolation+0xc": [
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x19c",
+        "portNames": {
+          "rotation interpolation+0xc": [
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x1a4",
+        "portNames": {
+          "rotation interpolation+0x48": [
+            2,
+            3,
+            5,
+            6,
+            7,
+            11,
+            12,
+            14,
+            15
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x1cc",
+        "portNames": {
+          "scale interpolation": [
+            23,
+            24,
+            25,
+            26
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x1d8",
+        "portNames": {
+          "scale interpolation": [
+            23,
+            24,
+            25,
+            26
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x1e0",
+        "portNames": {
+          "scale interpolation+0x38": [
+            2,
+            3,
+            5,
+            6,
+            7
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x254",
+        "portNames": {
+          "color2 interpolation": [
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x260",
+        "portNames": {
+          "color2 interpolation": [
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x268",
+        "portNames": {
+          "color2 interpolation+0x48": [
+            2,
+            3,
+            5,
+            6,
+            7
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x280",
+        "portNames": {
+          "alpha2 interpolation": [
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x28c",
+        "portNames": {
+          "alpha2 interpolation": [
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x294",
+        "portNames": {
+          "alpha2 interpolation+0x28": [
+            2,
+            3,
+            5,
+            6,
+            7
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x2ac",
+        "portNames": {
+          "scroll x interpolation+0x4": [
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x2b8",
+        "portNames": {
+          "scroll x interpolation+0x4": [
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x2c0",
+        "portNames": {
+          "scroll x interpolation+0x28": [
+            2,
+            3,
+            5,
+            6,
+            7,
+            11,
+            12,
+            14,
+            15
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x2d8",
+        "portNames": {
+          "scroll y interpolation+0x4": [
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x2e4",
+        "portNames": {
+          "scroll y interpolation+0x4": [
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x2ec",
+        "portNames": {
+          "scroll y interpolation+0x28": [
+            2,
+            3,
+            5,
+            6,
+            7,
+            11,
+            12,
+            14,
+            15
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x3bc",
+        "portNames": {
+          "color": [
+            14,
+            15
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x3c0",
+        "portNames": {
+          "secondary color": [
+            15
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x3c4",
+        "portNames": {}
+      },
+      {
+        "nativeSlot": "0x424",
+        "portNames": {
+          "script position+0x4": [
+            13,
+            14,
+            15,
+            16,
+            17
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x428",
+        "portNames": {
+          "script position+0x4": [
+            13,
+            14,
+            15,
+            16,
+            17
+          ]
+        }
+      },
+      {
+        "nativeSlot": "0x47c",
+        "portNames": {
+          "flags": [
+            4,
+            5,
+            6,
+            9,
+            10,
+            11,
+            13,
+            18,
+            19,
+            20,
+            21,
+            27,
+            28
+          ]
+        }
+      }
+    ]
+  },
+  "whyTheTwenty": "section 351: 585 of 1295 changing native bits of the 55 uncandidated slots are reproduced by some port bit, over 34 slots; the slots with none of their bits reproduced are the layout gap proper",
+  "wholeWordDeltaPass": {
+    "matchedAsAChange": 1,
+    "ofUnmapped": 55
+  },
+  "slots": [
+    {
+      "nativeSlot": "0x24",
+      "casesThatChangeIt": 39,
+      "writers": [
+        49
+      ],
+      "deltas": [
+        "0x1",
+        "0x2",
+        "0x3",
+        "0xf",
+        "0x10",
+        "0x11",
+        "0x12",
+        "0x13"
+      ],
+      "deltaDeterminedByArgument": [
+        19,
+        20
+      ],
+      "deltaDeterminedByVariant": [
+        20,
+        20
+      ],
+      "codeSideWriters": [],
+      "family": "step or timer: a constant the handler adds",
+      "portNames": {}
+    },
+    {
+      "nativeSlot": "0x28",
+      "casesThatChangeIt": 39,
+      "writers": [
+        49
+      ],
+      "deltas": [
+        "0x1",
+        "0x2",
+        "0x3",
+        "0xd",
+        "0x10",
+        "0x11",
+        "0x12",
+        "0x13"
+      ],
+      "deltaDeterminedByArgument": [
+        19,
+        20
+      ],
+      "deltaDeterminedByVariant": [
+        20,
+        20
+      ],
+      "codeSideWriters": [],
+      "family": "step or timer: a constant the handler adds",
+      "portNames": {}
+    },
+    {
+      "nativeSlot": "0x40",
+      "casesThatChangeIt": 79,
+      "writers": [
+        50,
+        61
+      ],
+      "deltas": [
+        "0x1",
+        "0x2",
+        "0x3",
+        "0xf",
+        "0x10",
+        "0x11",
+        "0x12",
+        "0x13"
+      ],
+      "deltaDeterminedByArgument": [
+        19,
+        21
+      ],
+      "deltaDeterminedByVariant": [
+        20,
+        21
+      ],
+      "codeSideWriters": [],
+      "family": "step or timer: a constant the handler adds",
+      "portNames": {}
+    },
+    {
+      "nativeSlot": "0x44",
+      "casesThatChangeIt": 79,
+      "writers": [
+        50,
+        62
+      ],
+      "deltas": [
+        "0x1",
+        "0x2",
+        "0x3",
+        "0xd",
+        "0x10",
+        "0x11",
+        "0x12",
+        "0x13"
+      ],
+      "deltaDeterminedByArgument": [
+        19,
+        21
+      ],
+      "deltaDeterminedByVariant": [
+        20,
+        21
+      ],
+      "codeSideWriters": [],
+      "family": "step or timer: a constant the handler adds",
+      "portNames": {}
+    },
+    {
+      "nativeSlot": "0x50",
+      "casesThatChangeIt": 39,
+      "writers": [
+        106
+      ],
+      "deltas": [
+        "0x1",
+        "0x2",
+        "0x3",
+        "0xf",
+        "0x10",
+        "0x11",
+        "0x12",
+        "0x13"
+      ],
+      "deltaDeterminedByArgument": [
+        19,
+        20
+      ],
+      "deltaDeterminedByVariant": [
+        20,
+        20
+      ],
+      "codeSideWriters": [],
+      "family": "step or timer: a constant the handler adds",
+      "portNames": {}
+    },
+    {
+      "nativeSlot": "0x54",
+      "casesThatChangeIt": 39,
+      "writers": [
+        106
+      ],
+      "deltas": [
+        "0x1",
+        "0x2",
+        "0x3",
+        "0xd",
+        "0x10",
+        "0x11",
+        "0x12",
+        "0x13"
+      ],
+      "deltaDeterminedByArgument": [
+        19,
+        20
+      ],
+      "deltaDeterminedByVariant": [
+        20,
+        20
+      ],
+      "codeSideWriters": [],
+      "family": "step or timer: a constant the handler adds",
+      "portNames": {}
+    },
+    {
+      "nativeSlot": "0x58",
+      "casesThatChangeIt": 234,
+      "writers": [
+        103,
+        104,
+        105,
+        108,
+        109,
+        110
+      ],
+      "deltas": [
+        "0x1",
+        "0x2",
+        "0x3",
+        "0xf",
+        "0x10",
+        "0x11",
+        "0x12",
+        "0x13"
+      ],
+      "deltaDeterminedByArgument": [
+        114,
+        120
+      ],
+      "deltaDeterminedByVariant": [
+        120,
+        120
+      ],
+      "codeSideWriters": [],
+      "family": "step or timer: a constant the handler adds",
+      "portNames": {}
+    },
+    {
+      "nativeSlot": "0x5c",
+      "casesThatChangeIt": 156,
+      "writers": [
+        103,
+        108,
+        109,
+        110
+      ],
+      "deltas": [
+        "0x1",
+        "0x2",
+        "0x3",
+        "0xd",
+        "0x10",
+        "0x11",
+        "0x12",
+        "0x13"
+      ],
+      "deltaDeterminedByArgument": [
+        76,
+        80
+      ],
+      "deltaDeterminedByVariant": [
+        80,
+        80
+      ],
+      "codeSideWriters": [],
+      "family": "step or timer: a constant the handler adds",
+      "portNames": {}
+    },
+    {
+      "nativeSlot": "0x68",
+      "casesThatChangeIt": 294,
+      "writers": [
+        4,
+        5,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "deltas": [
+        "0x1",
+        "0x2",
+        "0xc",
+        "0xf",
+        "0x10",
+        "0x11",
+        "0x12",
+        "0x13"
+      ],
+      "deltaDeterminedByArgument": [
+        19,
+        31
+      ],
+      "deltaDeterminedByVariant": [
+        25,
+        31
+      ],
+      "codeSideWriters": [],
+      "family": "step or timer: a constant the handler adds",
+      "portNames": {}
+    },
+    {
+      "nativeSlot": "0x74",
+      "casesThatChangeIt": 295,
+      "writers": [
+        4,
+        5,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "deltas": [
+        "0x4b2ed0"
+      ],
+      "deltaDeterminedByArgument": [
+        0,
+        12
+      ],
+      "deltaDeterminedByVariant": [
+        5,
+        12
+      ],
+      "codeSideWriters": [],
+      "family": "pointer constant: the handler installs an address",
+      "portNames": {}
+    },
+    {
+      "nativeSlot": "0x78",
+      "casesThatChangeIt": 295,
+      "writers": [
+        4,
+        5,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "deltas": [
+        "0x1"
+      ],
+      "deltaDeterminedByArgument": [
+        0,
+        12
+      ],
+      "deltaDeterminedByVariant": [
+        5,
+        12
+      ],
+      "codeSideWriters": [],
+      "family": "marker: the handler sets a single bit",
+      "portNames": {}
+    },
+    {
+      "nativeSlot": "0xe0",
+      "casesThatChangeIt": 38,
+      "writers": [
+        56,
+        100
+      ],
+      "deltas": [
+        "0x1",
+        "0x2",
+        "0x3",
+        "0xf",
+        "0x10",
+        "0x11",
+        "0x12",
+        "0x13"
+      ],
+      "deltaDeterminedByArgument": [
+        38,
+        38
+      ],
+      "deltaDeterminedByVariant": [
+        38,
+        38
+      ],
+      "codeSideWriters": [],
+      "family": "step or timer: a constant the handler adds",
+      "portNames": {}
+    },
+    {
+      "nativeSlot": "0x158",
+      "casesThatChangeIt": 58,
+      "writers": [
+        55,
+        58
+      ],
+      "deltas": [
+        "0x1",
+        "0x2",
+        "0x3",
+        "0xd",
+        "0xf",
+        "0x10",
+        "0x11",
+        "0x12"
+      ],
+      "deltaDeterminedByArgument": [
+        38,
+        39
+      ],
+      "deltaDeterminedByVariant": [
+        39,
+        39
+      ],
+      "codeSideWriters": [],
+      "family": "step or timer: a constant the handler adds",
+      "portNames": {}
+    },
+    {
+      "nativeSlot": "0x208",
+      "casesThatChangeIt": 40,
+      "writers": [
+        107
+      ],
+      "deltas": [
+        "0xffffffff"
+      ],
+      "deltaDeterminedByArgument": [
+        0,
+        1
+      ],
+      "deltaDeterminedByVariant": [
+        0,
+        1
+      ],
+      "codeSideWriters": [],
+      "family": "step or timer: a constant the handler adds",
+      "portNames": {}
+    },
+    {
+      "nativeSlot": "0x214",
+      "casesThatChangeIt": 40,
+      "writers": [
+        107
+      ],
+      "deltas": [
+        "0x4b2ed0"
+      ],
+      "deltaDeterminedByArgument": [
+        0,
+        1
+      ],
+      "deltaDeterminedByVariant": [
+        0,
+        1
+      ],
+      "codeSideWriters": [],
+      "family": "pointer constant: the handler installs an address",
+      "portNames": {}
+    },
+    {
+      "nativeSlot": "0x218",
+      "casesThatChangeIt": 40,
+      "writers": [
+        107
+      ],
+      "deltas": [
+        "0x1"
+      ],
+      "deltaDeterminedByArgument": [
+        0,
+        1
+      ],
+      "deltaDeterminedByVariant": [
+        0,
+        1
+      ],
+      "codeSideWriters": [],
+      "family": "marker: the handler sets a single bit",
+      "portNames": {}
+    },
+    {
+      "nativeSlot": "0x21c",
+      "casesThatChangeIt": 19,
+      "writers": [
+        107
+      ],
+      "deltas": [
+        "0x1",
+        "0x2",
+        "0x3",
+        "0xf",
+        "0x10",
+        "0x11",
+        "0x12",
+        "0x13"
+      ],
+      "deltaDeterminedByArgument": [
+        19,
+        19
+      ],
+      "deltaDeterminedByVariant": [
+        19,
+        19
+      ],
+      "codeSideWriters": [],
+      "family": "step or timer: a constant the handler adds",
+      "portNames": {}
+    },
+    {
+      "nativeSlot": "0x220",
+      "casesThatChangeIt": 39,
+      "writers": [
+        107
+      ],
+      "deltas": [
+        "0x1",
+        "0x2",
+        "0x3",
+        "0xd",
+        "0x10",
+        "0x11",
+        "0x12",
+        "0x13"
+      ],
+      "deltaDeterminedByArgument": [
+        16,
+        18
+      ],
+      "deltaDeterminedByVariant": [
+        17,
+        18
+      ],
+      "codeSideWriters": [],
+      "family": "mixed",
+      "portNames": {}
+    },
+    {
+      "nativeSlot": "0x3fc",
+      "casesThatChangeIt": 198,
+      "writers": [
+        5,
+        6,
+        8,
+        10,
+        18,
+        20,
+        104,
+        105
+      ],
+      "deltas": [
+        "0x1",
+        "0x2",
+        "0x3",
+        "0xd",
+        "0x10",
+        "0x11",
+        "0x12",
+        "0x13"
+      ],
+      "deltaDeterminedByArgument": [
+        38,
+        46
+      ],
+      "deltaDeterminedByVariant": [
+        46,
+        46
+      ],
+      "codeSideWriters": [],
+      "family": "step or timer: a constant the handler adds",
+      "portNames": {}
+    },
+    {
+      "nativeSlot": "0x480",
+      "casesThatChangeIt": 33,
+      "writers": [
+        87,
+        89,
+        99
+      ],
+      "deltas": [
+        "0x1",
+        "0x2",
+        "0x10"
+      ],
+      "deltaDeterminedByArgument": [
+        0,
+        3
+      ],
+      "deltaDeterminedByVariant": [
+        3,
+        3
+      ],
+      "codeSideWriters": [],
+      "family": "argument bits: the delta is a bit of the argument",
+      "portNames": {}
+    }
+  ],
+  "families": {
+    "argument bits: the delta is a bit of the argument": [
+      "0x480"
+    ],
+    "marker: the handler sets a single bit": [
+      "0x78",
+      "0x218"
+    ],
+    "mixed": [
+      "0x220"
+    ],
+    "pointer constant: the handler installs an address": [
+      "0x74",
+      "0x214"
+    ],
+    "step or timer: a constant the handler adds": [
+      "0x24",
+      "0x28",
+      "0x40",
+      "0x44",
+      "0x50",
+      "0x54",
+      "0x58",
+      "0x5c",
+      "0x68",
+      "0xe0",
+      "0x158",
+      "0x208",
+      "0x21c",
+      "0x3fc"
+    ]
+  },
+  "specReading": "a mirror for these slots has to place the title's own word at the original's offset and have the named handler write the named delta shape; the argument-determined rows say the value is a function of the instruction the case carries",
+  "provenance": {
+    "reader": "tools/anm-field-profile.py, corpus map now carries title 12",
+    "corpus": "artifacts/th12/anm-native.json",
+    "corpusSha256": null
+  }
+}

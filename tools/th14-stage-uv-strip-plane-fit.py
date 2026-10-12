@@ -1,0 +1,19 @@
+"""Estimate the two implicated long-strip triangles from full Native UV bytes."""
+import hashlib,json,struct,numpy as np
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1];BASE='artifacts/th14/stage-gpu-stream-replay/';evidence={};sha=lambda b:hashlib.sha256(b).hexdigest()
+def track(p):
+ b=(ROOT/p).read_bytes();evidence[p]=dict(bytes=len(b),sha256=sha(b));return b
+def read(p):return json.loads(track(p))
+g=read(BASE+'sampler-uv-strip/generation.json');raw=track(BASE+'sampler-uv-strip/full.rgba32f');assert sha(raw)==g['fullPixelsSha256'];native=read(BASE+'sampler-uv-strip/native.json');assert sha(raw)==native['frames'][0]['fullFloatFrameSha256']
+for key,p in [('generatorSha256','tools/th14-stage-sampler-uv-full-native.py'),('baseSourceSha256','tools/th14-stage-sampler-uv-hal.py'),('halSourceSha256','tools/th14-stage-sampler-uv-strip-hal.py'),('nativeSha256',BASE+'sampler-uv-strip/native.json'),('inputsSha256',BASE+'sampler-uv-strip/inputs.json')]:assert g[key]==sha(track(p))
+prepared=read(BASE+'prepared.json');f=next(f for f in prepared['frames'] if (f['stage'],f['frame'])==(2,1199));draw=[c for c in f['commands'] if c['kind']=='draw'][44];stride=draw['stride']//4;clip=read(BASE+'sampler-vertices/generation.json');vp=read(BASE+'viewport-arithmetic/generation.json');corners={c['corner']:c for c in clip['results'] if (c['stage'],c['frame'],c['draw'])==(2,1199,44)};viewports={c['corner']:c for c in vp['results'] if (c['stage'],c['frame'],c['draw'])==(2,1199,44)}
+value=lambda w:struct.unpack('<f',struct.pack('<I',w))[0];pixels=np.frombuffer(raw,dtype='<f4').reshape(480,640,4);y,x=np.indices((480,640));u=pixels[:,:,0].astype(np.float64);v=pixels[:,:,1].astype(np.float64);results=[]
+for start in (29,30):
+ ids=(start,start+1,start+2);tex=[list(map(value,draw['words'][i*stride+stride-2:i*stride+stride])) for i in ids];basis=np.array([[t[0] for t in tex],[t[1] for t in tex],[1,1,1]]);bary=np.linalg.inv(basis)@np.vstack((u.ravel(),v.ravel(),np.ones(640*480)));mask=(pixels[:,:,3].ravel()==1)&(bary.min(axis=0)>.03);xx=x.ravel()[mask]/640;yy=y.ravel()[mask]/480;uu=u.ravel()[mask];vv=v.ravel()[mask];assert len(xx)>30
+ one=np.ones_like(xx);zero=np.zeros_like(xx);a=np.vstack((np.column_stack((xx,yy,one,zero,zero,zero,-uu*xx,-uu*yy)),np.column_stack((zero,zero,zero,xx,yy,one,-vv*xx,-vv*yy))));coeff,_,rank,_=np.linalg.lstsq(a,np.concatenate((uu,vv)),rcond=None);assert rank==8;aa,bb,cc,dd,ee,ff,gg,hh=coeff;den=gg*xx+hh*yy+1;residual=max(np.max(np.abs((aa*xx+bb*yy+cc)/den-uu)),np.max(np.abs((dd*xx+ee*yy+ff)/den-vv)));vertices=[]
+ for i,(cu,cv) in zip(ids,tex):
+  pos=np.linalg.solve([[aa-cu*gg,bb-cu*hh],[dd-cv*gg,ee-cv*hh]],[cu-cc,cv-ff])*[640,480];snap=np.round(pos*256)/256;q=corners[i]['resultValues'];ideal=np.round(np.array([(q[0]/q[3]*.5+.5)*640,(-q[1]/q[3]*.5+.5)*480])*256)/256;authored=np.round(np.array(viewports[i]['nativeValues'][:2])*256)/256;vertices.append(dict(corner=i,estimatedXY=pos.tolist(),nearestSnap8XY=snap.tolist(),distanceToSnap8=(pos-snap).tolist(),doubleProjectionSnap8XY=ideal.tolist(),authoredReciprocalSnap8XY=authored.tolist()))
+ results.append(dict(triangle=ids,samples=len(xx),maxUVResidual=float(residual),conditionNumber=float(np.linalg.cond(a)),vertices=vertices))
+out=dict(diagnosticOnly=True,productionChanged=False,completeGame=False,nativeEquivalent=False,stage=2,frame=1199,draw=44,results=results,evidence=evidence,toolSha256=sha(Path(__file__).read_bytes()),numpyVersion=np.__version__,scope='Indirect rational-plane estimates from the two implicated long-strip triangles, with interior samples selected by source UV barycentrics. Native float rounding and extrapolation condition the estimates; this is not a direct screen-position readback or production correction.')
+(ROOT/'docs/porting/th14-stage-uv-strip-plane-fit-observed-oct12.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(results))

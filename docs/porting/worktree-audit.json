@@ -1,0 +1,59 @@
+{
+  "measuredAt": "2026-10-06",
+  "how": "git status --porcelain, parsed by status code; then git diff --numstat per path",
+  "trackedModifications": 87,
+  "byExtension": {
+    "cpp": 42,
+    "hpp": 30,
+    "mjs": 6,
+    "py": 5,
+    "json": 2,
+    "md": 2
+  },
+  "byPlace": {
+    "runtimes/th12": 73,
+    "runtimes/th13": 2,
+    "docs/porting (derived tables)": 2,
+    "tools (instruments)": 11,
+    "docs notes": 2
+  },
+  "wereRealWork": true,
+  "sampleDiff": {
+    "file": "runtimes/th12/th12_web/cpp/game/BombController.cpp",
+    "before": "n->value->pending_interrupt=label",
+    "after": "n->value->interrupt(label)"
+  },
+  "secondSample": {
+    "file": "runtimes/th12/th12_web/cpp/game/AnmGeometry.cpp",
+    "hunks": 3,
+    "firstHunk": "@@ -1,13 +1,73 @@",
+    "added": 215,
+    "removed": 14
+  },
+  "newestCommitOnASampledSourceBeforeThisRound": {
+    "commit": "b76abec",
+    "date": "2026-10-03",
+    "file": "runtimes/th12/th12_web/cpp/game/AnmRenderer.cpp"
+  },
+  "commits": [
+    "3fda7ea (77 files: 73 sources, the two derived tables, two th13 scripts)",
+    "5bab39c (10 files: 5 python readers, 3 node checkers, 3 more node checkers of the th13 group, 2 notes)"
+  ],
+  "proofOfDurability": {
+    "statement": "the committed content equals the content the keepers ran against",
+    "method": "git diff HEAD --numstat over all 87 paths, and git status --porcelain for stray staged changes",
+    "result": "no differing path; tracked modifications after the commits: zero"
+  },
+  "after": {
+    "trackedModifications": 0
+  },
+  "keepersonTheTree": {
+    "loader": "12 112/0x457c91, 13 433/0x464f24, 14 436/0x472ab9, 16 529/0x4629c8, 17 529/0x46a141, 18 530/0x47b6f3",
+    "suites": {
+      "th12-noop-tables": "1/0",
+      "archive": "1/0",
+      "modern-archives": "7/0",
+      "anm-geometry": "3/0"
+    }
+  }
+}

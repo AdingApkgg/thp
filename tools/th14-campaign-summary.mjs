@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {createHash} from 'node:crypto';
+const root=resolve(import.meta.dirname,'..'),rt=resolve(root,'runtimes/th12/th12_web'),sha=b=>createHash('sha256').update(b).digest('hex');
+const labels=['reimu-a-normal-handoff-oct11','reimu-b-normal-oct11','marisa-a-normal-oct11','marisa-b-normal-oct11','sakuya-a-normal-oct11','sakuya-b-normal-oct11'];
+const rows=labels.map((label,selection)=>{const path=`artifacts/th14/campaign-replay/${label}/result.json`,bytes=readFileSync(resolve(root,path)),r=JSON.parse(bytes);
+ assert.equal(r.passed,true,label);assert.equal(r.selection,selection);assert.equal(r.difficulty,1);assert.equal(r.phase,4);assert.equal(r.error,'');assert.deepEqual(r.transitions.map(x=>x.stage),[2,3,4,5,6]);
+ assert.equal(r.bulletSkippedMask,0);assert.equal(r.bulletUnsupportedNativeMask,0);assert(r.transitionDifferences.every(x=>x.field==='score'));assert.equal(r.comparedFrames,r.endingWaitBegins-1);
+ assert.equal(r.recordFrames.reduce((n,x)=>n+x,0),r.recordedFrames+1,'one terminal marker beyond recorded updates');
+ for(const [name,hash] of Object.entries(r.engineBuild.sourceHashes))assert.equal(sha(readFileSync(resolve(rt,name))),hash,'changed engine source '+name);
+ assert.equal(sha(readFileSync(resolve(root,`artifacts/th14/campaign-replay/${label}/campaign.rpy`))),r.replaySha256);
+ return {selection,path,reportSha256:sha(bytes),recordedUpdateFrames:r.recordedFrames,recordedInputFrames:r.recordFrames.reduce((n,x)=>n+x,0),comparedFrames:r.comparedFrames,recordFrames:r.recordFrames,transitions:r.transitions,transitionScoreLeadPoints:r.transitionDifferences.length,replaySha256:r.replaySha256,engineSha256:r.engineBuild.sha256,discardedRecordingChunks:0};
+});
+const native='docs/porting/th14-replay-start-verified.json';assert.equal(JSON.parse(readFileSync(resolve(root,native))).passed,true);
+const report={passed:true,completeGame:false,nativeEquivalent:false,cases:rows.length,recordedUpdateFrames:rows.reduce((n,r)=>n+r.recordedUpdateFrames,0),comparedFrames:rows.reduce((n,r)=>n+r.comparedFrames,0),rows,nativeRecordingSnapshotProof:{path:native,sha256:sha(readFileSync(resolve(root,native)))},toolSha256:sha(readFileSync(import.meta.filename)),scope:'All six loadouts at Normal, ordinary held fire/confirm with diagnostic invulnerability. Actual six-stage ECL completion to Ending, intact six-section record/save/decode/playback. Twenty-five selected gameplay fields strictly equal on active frames; only score lead allowed/reported in inactive handoff, as independently verified native recording snapshot timing. Native control mode ends replay at stage6 clear before live380-frame ending wait. No added power, artificial clear or recorder chunk removal. Not natural survival, native full combat/replay state or GPU/audio equivalence.'};
+writeFileSync(resolve(root,'docs/porting/th14-campaign-replay-all-observed-oct11.json'),JSON.stringify(report,null,2)+'\n');console.log(`PASS ${rows.length} intact six-stage campaign replays / ${report.comparedFrames} compared frames`);

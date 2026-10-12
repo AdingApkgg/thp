@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {execFileSync} from 'node:child_process';
+import {WASI} from 'node:wasi';
+import {createHash} from 'node:crypto';
+const root=resolve(import.meta.dirname,'..');
+if(!process.argv.includes('--skip-build'))execFileSync(process.execPath,['tools/th14-startup-session-check.mjs'],{cwd:root,stdio:'inherit',windowsHide:true});
+const bytes=readFileSync(resolve(root,'artifacts/th14/startup-session/startup.wasm')),wasi=new WASI({version:'preview1',args:[],env:{},preopens:{}}),{instance}=await WebAssembly.instantiate(bytes,{wasi_snapshot_preview1:wasi.wasiImport});wasi.initialize(instance);const c=instance.exports;
+const target=JSON.parse(readFileSync(resolve(root,'runtimes/th14/target.json'),'utf8')),archive=readFileSync(target.dataArchives['th14.dat'].path),p=c.allocate(archive.length);new Uint8Array(c.memory.buffer,p,archive.length).set(archive);assert.equal(c.open_archive(p,archive.length),1);assert.equal(c.open_title(),1);
+const native=JSON.parse(readFileSync(resolve(root,'artifacts/th14/records-text-native.json'),'utf8'));assert.equal(native.executableSha256,'f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353');
+const bits=x=>{const b=Buffer.alloc(4);b.writeFloatLE(x);return b.readUInt32LE();};let requests=0;
+for(const row of native.rows){assert.equal(c.records_probe_setup(row.selection,row.difficulty,row.page,2,17),1);const records=Buffer.from(row.records,'hex');new Uint8Array(c.memory.buffer,c.records_text_records(),records.length).set(records);c.records_text_stats(...row.stats);assert.equal(c.records_text_queue(),row.requests.length);
+ for(let i=0;i<row.requests.length;++i){const r=row.requests[i],p=c.results_text_bytes(i),mem=new Uint8Array(c.memory.buffer);assert.equal(Buffer.from(mem.subarray(p,mem.indexOf(0,p))).toString('hex'),r.text,`row${requests} text`);assert.deepEqual(Array.from({length:8},(_,n)=>c.results_text_value(i,n)>>>0),[...r.position.map(bits),r.color,r.shadow,r.font,...r.scale.map(bits)],`row${requests} layout`);++requests;}
+}
+const sha=b=>createHash('sha256').update(b).digest('hex');writeFileSync(resolve(root,'docs/porting/th14-records-text-verified.json'),JSON.stringify({passed:true,completeGame:false,nativeEquivalent:false,layouts:native.rows.length,requests,nativeExecutableSha256:native.executableSha256,wasmSha256:sha(bytes),scope:native.scope+' Production TitleMenu::queue_ascii compares every text byte and eight position/style words, six loadouts/five difficulties, overview/spell pages, timestamped/default rows, signed score/count/time limits. Calendar boundary UTC; full font/GPU/host timezone equivalence excluded.',sources:Object.fromEntries(['runtimes/th12/th12_web/cpp/game/TitleText.cpp','runtimes/th12/th12_web/tests/cpp/th14-startup-fixture.cpp','tools/th14-records-text-native.py','tools/th14-records-text-check.mjs'].map(n=>[n,sha(readFileSync(resolve(root,n)))]))},null,2)+'\n');console.log(`PASS ${native.rows.length} original Player Data text layouts, ${requests} ASCII requests with text/position/style exact`);

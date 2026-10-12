@@ -1,0 +1,38 @@
+{
+ "agreesWithPort": false,
+ "anchors": {
+  "0x412900": {
+   "meaning": "three dwords copied, a vector",
+   "offsets": [
+    1120,
+    1124,
+    1128
+   ]
+  },
+  "0x412920": {
+   "meaning": "one float stored",
+   "offsets": [
+    1136
+   ]
+  },
+  "0x412960": {
+   "meaning": "id compared while walking the list",
+   "offsets": [
+    128
+   ]
+  }
+ },
+ "highestOffsetTouched": "0x470",
+ "minimumSizeImplied": "0x474",
+ "objectSize": "0xfa4",
+ "port": {
+  "id": "0x6c",
+  "infiniteSize": "0xeb0",
+  "lineSize": "0xe8c",
+  "measuredBy": "tests/cpp/probe-laser-offsets.mjs",
+  "motion": "0x70",
+  "sizeof": "0x440"
+ },
+ "source": "displacements read from th12.exe by tools/th-laser-layout.py",
+ "why": "TH12 reaches 0x470, so its LaserState is at least 0x474 bytes; the port's is 0x440 with its id at 0x6c. The 0x25c..0x262 family writes position, speed and width fields whose TH12 offsets therefore have no counterpart in the port's struct, and guessing them would put the writes on the wrong fields. The family waits on rebuilding TH12's laser layout."
+}

@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "title": 16,
+  "completeGame": false,
+  "characterBytes": 21272,
+  "insertions": 1080,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "b1f927a48f0a5fa4b81dd1f5aaa3b9a262fa00c3aa56be81a77dd5fafdafc577",
+  "scope": "Complete own4493c0 character defaults, including all60 high-score rows and119 spell index/difficulty defaults, with memset controlled. Complete43e250 insertion with timestamp controlled and replay timing ratio supplied: unsigned comparison, equal-score placement,32-byte row shifts, retained byte15, byte stage/continue, name default, timestamp, slowdown and subseason. All60 rows compared after each insertion. Production accepts computed slowdown; real timing accumulation, disk codec, complete scorefile initialization, settings RNG and menu integration excluded.",
+  "sourceHashes": {
+    "cpp/game/ScoreFile.cpp": "3dbb7bdfebd8001f36587a42011f99472b193d8d8452ecf24583a3ccd2b16b26",
+    "cpp/game/ScoreFile.hpp": "97cebeb1a643d5d139e3f6d54c1759ef7feb2aaa453fe6196b31f2fb0d45e88d",
+    "tests/cpp/th16-score-fixture.cpp": "1f2cb866f1ed71dd72772252c543f0122e957b2c5d295ed04c395e37125af22d"
+  }
+}

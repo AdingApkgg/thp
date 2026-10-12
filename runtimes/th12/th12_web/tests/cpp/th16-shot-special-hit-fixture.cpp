@@ -1,0 +1,16 @@
+#include "../../cpp/game/ShotManager.hpp"
+using namespace th11;
+#define API(name) extern "C" __attribute__((export_name(#name)))
+static Th16ShotSpawn shot;static Th16DamageSources areas;static AnmVm vm,effect;static Rng random;static Th16BeamHit hit;static u32 kind,seed;static i32 damage;static float rotation;
+API(begin) i32 begin(u32 k,u32 s){
+ kind=k;seed=s;shot={};areas={};vm={};effect={};vm.initialize();effect.initialize();random={};random.seed=u16(seed*997+17);random.calls=9;
+ shot.animation=77;shot.damage_source=2;shot.state=1;shot.damage=13;shot.packed=seed&1?0x10000:0;shot.timer.current=std::array<i32,8>{-4,-1,0,1,2,4,8,9}[seed%8];shot.timer.previous=shot.timer.current-(seed&2?0:1);shot.hit_last_frame=bool(seed&4);shot.movement.speed=16;shot.movement.angle=std::array<float,4>{0,-.75f,-1.5707963705062866f,3.1415927410125732f}[(seed/8)%4];shot.movement.position={7.25f,300.5f,1.25f};
+ auto& a=areas.records[2];a.words[0]=7;a.words[6]=float_bits(std::array<float,4>{4,8,16,32}[(seed/32)%4]);a.words[29]=13;vm.pending_interrupt=7;effect.color=0xaabbccdd;effect.flags=0x100;
+ if(kind){rotation=shot_th16_freeze_angle(shot,random);shot_th16_freeze_finish(effect,random,nullptr);return shot_th16_default_hit(shot,areas,vm,damage);}
+ const Vec2 size{24,40};Th16DamageQuery q;q.position={7.25f+std::array<float,8>{-100,-20,0,20,100,250,-2,2}[(seed/128)%8],300.5f+std::array<float,4>{-40,-8,0,8}[(seed/1024)%4],0};q.size=seed&64?&size:nullptr;q.angle=std::array<float,3>{0,.5f,-1.25f}[(seed/256)%3];q.radius=std::array<float,3>{0,4,16}[(seed/64)%3];
+ if(!shot_th16_beam_hit(shot,a,q,hit))return 0;damage=hit.damage;if(hit.effect)shot_th16_beam_effect_setup(effect,hit,{},nullptr);return 1;
+}
+API(value) u32 value(u32 n){if(!kind){const u32 v[]={u32(damage),u32(shot.hit_this_frame),u32(shot.hit_last_frame),float_bits(shot.hitbox.x),areas.records[2].words[5]};return v[n];}auto& v=effect.scale_interpolation;const u32 a[]={u32(damage),u32(random.seed),random.calls,effect.color,u32(v.duration),u32(v.mode),float_bits(v.start[0]),float_bits(v.start[1]),float_bits(v.end[0]),float_bits(v.end[1]),u32(v.timer.previous),u32(v.timer.current),float_bits(v.timer.fractional),u32(shot.state),shot.damage_source,float_bits(shot.movement.position.z),float_bits(shot.movement.speed),areas.records[2].words[0],u32(vm.pending_interrupt)};return a[n];}
+API(count) u32 count(){return kind?1:u32(!(seed&4))+u32(hit.effect);}
+API(event) u32 event(u32 n,u32 k){if(!kind&&!(seed&4)){if(!n){const u32 v[]={0,77,2};return v[k];}--n;}const auto p=kind?Vec3{7.25f,300.5f,1.25f}:hit.position;const u32 a[]={1,kind?3u:(seed&1?2u:1u),kind?152u:(seed&1?2u:8u),float_bits(p.x),float_bits(p.y),float_bits(p.z),kind?float_bits(rotation):0u,0xffffffffu};return a[k];}
+API(interp) u32 interp(u32 n){auto& v=effect.position_interpolation;const u32 a[]={effect.flags,float_bits(effect.rotation.z),u32(v.duration),u32(v.mode),float_bits(v.start[0]),float_bits(v.start[1]),float_bits(v.start[2]),float_bits(v.end[0]),float_bits(v.end[1]),float_bits(v.end[2]),float_bits(v.initial_tangent[0]),float_bits(v.initial_tangent[1]),float_bits(v.initial_tangent[2]),float_bits(v.final_tangent[0]),float_bits(v.final_tangent[1]),float_bits(v.final_tangent[2]),u32(v.timer.previous),u32(v.timer.current),float_bits(v.timer.fractional)};return a[n];}

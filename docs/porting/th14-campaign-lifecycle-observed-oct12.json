@@ -1,0 +1,106 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "cases": 2,
+  "comparedFrames": 253316,
+  "activeComparedFrames": 252561,
+  "poolHashedBytes": 12414987032,
+  "rows": [
+    {
+      "label": "reimu-a-normal-lifecycle-oct12",
+      "reportSha256": "edd2558cf0cc333de03b003780bf2bca1942526299b2ac6e8958c681edf5c644",
+      "selection": 0,
+      "difficulty": 1,
+      "recordedFrames": 186169,
+      "comparedFrames": 185788,
+      "activeComparedFrames": 185033,
+      "poolHashedBytes": 6965473720,
+      "poolPeaks": {
+        "bullets": 1283,
+        "shots": 82,
+        "enemies": 93,
+        "items": 1164,
+        "lasers": 45,
+        "damageAreas": 59
+      },
+      "transitions": [
+        {
+          "frame": 17851,
+          "stage": 2
+        },
+        {
+          "frame": 40360,
+          "stage": 3
+        },
+        {
+          "frame": 69757,
+          "stage": 4
+        },
+        {
+          "frame": 106167,
+          "stage": 5
+        },
+        {
+          "frame": 142870,
+          "stage": 6
+        }
+      ],
+      "recordFrames": [
+        18001,
+        22509,
+        29397,
+        36410,
+        36703,
+        43150
+      ],
+      "decodedFrames": [
+        18001,
+        22509,
+        29397,
+        36410,
+        36703,
+        43150
+      ],
+      "inputPatternStats": null,
+      "replaySha256": "6585c127a7f70cace7ae1c693c0b830af93cb84c9fd106f1fabf09a71b203d9a",
+      "wasmSha256": "86a2ae1fe6772e3f7300f5a28945022204b993e9fb527b2552f947e53d3c4bf0"
+    },
+    {
+      "label": "marisa-b-extra-inputs-lifecycle-oct12",
+      "reportSha256": "dd5642dacc7968ac7fa6d86c47cf99a1eff010e2e474bb6e12f2556e98b134bf",
+      "selection": 3,
+      "difficulty": 4,
+      "recordedFrames": 67529,
+      "comparedFrames": 67528,
+      "activeComparedFrames": 67528,
+      "poolHashedBytes": 5449513312,
+      "poolPeaks": {
+        "bullets": 1395,
+        "shots": 42,
+        "enemies": 24,
+        "items": 1166,
+        "lasers": 82,
+        "damageAreas": 27
+      },
+      "transitions": [],
+      "recordFrames": [
+        67529
+      ],
+      "decodedFrames": [
+        67530
+      ],
+      "inputPatternStats": {
+        "keysSeen": 763,
+        "actualBombStarts": 5,
+        "focusedInputFrames": 33690,
+        "movementInputFrames": 24439,
+        "aboveCollectionLineFrames": 2685
+      },
+      "replaySha256": "dbe89aea25de74d5368a712e103e69375d7340de91cbe85d0f380f89b26b669a",
+      "wasmSha256": "cf3e4b89afeb88f2bbdc46c4f7edd8f0e296f35c1ecb971818c9a18369344cdb"
+    }
+  ],
+  "toolSha256": "d0c839bdc898eeef4f220899aaee9aa2c812a36be3dcb9b5edab815c2260c010",
+  "scope": "Current TH14 production engine and lifecycle changes: original retail archive ECL executes ReimuA six-stage Normal to ending and MarisaB Extra with movement/focus/stock-limited bombs to result, then actual recorder save/decode and replay. Every selected numerical pool field and gameplay field matches playback, including inactive handoffs on these two routes, with no transition exemptions observed. Six numerical pools include sampled laser curves and damage areas; render/ANM IDs/padding/addresses excluded. Invulnerability is diagnostic; no forced clear/power/recorder reset. This is self recording/playback consistency, not native original combat, complete replay state, whole game1:1, GPU/audio equality or natural survival."
+}

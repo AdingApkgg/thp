@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "files": [
+    {
+      "name": "pl00a.sht",
+      "sha256": "7140070b80cf0e9112d7543e25ca3cd8018c0f2afd5732c304971331d9df71a2"
+    },
+    {
+      "name": "pl00b.sht",
+      "sha256": "17244d2279f33b6ad7a6d7ee2583c2f66ef96a76df353e8fb24a8fb28d5fea90"
+    },
+    {
+      "name": "pl01a.sht",
+      "sha256": "4bdc9e69febfd5a750cf242aa809a3ec7f24e11cd848b7f8ecf4fac9fee5f33e"
+    },
+    {
+      "name": "pl01b.sht",
+      "sha256": "eaa4ffe175507a4db28ab552fb877c8dd4d2eba0e63305baa25c4739fbad854b"
+    },
+    {
+      "name": "pl02a.sht",
+      "sha256": "3249371c753179a0ef12790e3c2554161459c747a23f219ca98447a6443e3044"
+    },
+    {
+      "name": "pl02b.sht",
+      "sha256": "6750cae4b49782f9c2195c64f3b9ae562ff777af07bc70fd5325b69a5f5dec33"
+    }
+  ],
+  "groups": 60,
+  "shots": 283,
+  "negative": 48,
+  "samples": 65,
+  "voices": 76,
+  "scope": "All six native SHT loader outputs, preserving new header/shot fields and resolving callback selectors through the retail lookup tables for comparison. Actual shot callbacks/gameplay and audio scheduling remain separate work.",
+  "wasmSha256": "6deec53c4a089ab80160b67c912353eea1ed49d52784429092fec6a213354840",
+  "sourceHashes": {
+    "cpp/game/ShtResource.cpp": "3a2df5340ef87be6f22623140ad790e03fd1bbefbe0fff52446707fc4c1dc7c6",
+    "cpp/game/SoundEffects.cpp": "c567ca8626349b19254c5b2b2b5220de2edfe824529981cf22c9f7ae20d68c5a",
+    "tests/cpp/th14-resources-fixture.cpp": "45577644d79ed3b3a635f965cddfac9e621df30d13370e0aa9a1bf798032a6ab",
+    "cpp/game/ShtResource.hpp": "0a34a151c93fcec9ee6a7611275ecd89925a5d613ab1141f5e29eb7f7a973d85",
+    "cpp/game/SoundEffects.hpp": "91ed3e06dc1543b315a63443c77dd840435f91e18167325860a4adb0e8f4ad45",
+    "cpp/game/Th14AudioTables.inc": "dfe09604954ff5cebba6e0e4145893db2aed7abe6b8b62af82b8169174a22518"
+  },
+  "toolHashes": {
+    "tools/th14-sht-native.py": "ce7e34a9f22d6719ec0f281a203ea5a8e7a31bedbb9baa51be7977747797bd6d",
+    "tools/th14-resources-check.mjs": "ef6fc5a5347c7a8552f71b92226bafb239e0f14ef87fe1e0f4b818e14d908bb2"
+  }
+}

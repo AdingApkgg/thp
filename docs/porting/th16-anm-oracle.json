@@ -1,0 +1,82 @@
+{
+  "game": "th16",
+  "scope": "The whole context after each original handler, at the next dispatch boundary; offsets are this title's own, naming is deferred to the checker",
+  "executableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "measuredConstants": {
+    "loop": "0x45fb9a",
+    "cookie": "0x47499b",
+    "snapshot": 1792,
+    "positionSlot": 40,
+    "defaultHandler": "0x4629c8",
+    "entries": 529,
+    "measuredFrom": "th16.exe"
+  },
+  "howEachWasRead": {
+    "loop 0x45fb9a": "the address the default handler at 0x4629c8 jumps to: movzx eax,[edi+2]; add [ebx+0x28],eax; movss xmm1,[0x494720]; jmp 0x45fb9a",
+    "cookie 0x47499b": "the cmp-ecx-against-global check that handler bodies call, patched with ret; the same role th13 0x47a09f and th14 0x4854a0 play",
+    "the loop head": "0x45fb9a starts with mov esi,0x100 and then reads [ebx+0x1c], [ebx+0x24], [ebx+0x28] and [edi+4]"
+  },
+  "cases": 1280,
+  "opcodes": 32,
+  "defaultPathOpcodes": [
+    0,
+    439,
+    440,
+    617,
+    628,
+    633,
+    634
+  ],
+  "positionAdvance": [
+    12,
+    16
+  ],
+  "advanceOfOpcode312": [
+    16
+  ],
+  "slotsTouchedAcrossTheCorpus": [
+    24,
+    28,
+    40,
+    80,
+    84,
+    1196,
+    1200,
+    1312,
+    1316,
+    1328,
+    1332,
+    1348,
+    1352
+  ],
+  "everyOpcodeChangedSomething": true,
+  "behaviourSignaturesPerOpcode": [
+    4,
+    6,
+    8,
+    12
+  ],
+  "keptWholeContextBecause": {
+    "th16": "the flag word at 0x530",
+    "th13": "the colours at 0x528 and 0x52c",
+    "th14": "the colours at 0x534 and 0x538"
+  },
+  "slotsForTheChecker": {
+    "0x18": "context flags",
+    "0x1c": "source id",
+    "0x28": "position",
+    "0x50": "pair low",
+    "0x54": "pair high",
+    "0x4ac": "integer 0",
+    "0x4b0": "integer 1",
+    "0x520": "pair",
+    "0x524": "pair",
+    "0x530": "this title's flag word",
+    "0x534": "single word",
+    "0x544": "word written by opcode 6",
+    "0x548": "float written by opcode 6"
+  },
+  "probe": "tools/th16-anm-native.py",
+  "probeSha256": "a0000636c92484969f7ff16357a33b69c4e706d88929f522eae878680802aca7",
+  "artifact": "artifacts/th16/anm-native.json (4861610 bytes, kept out of history by the artifacts rule)"
+}

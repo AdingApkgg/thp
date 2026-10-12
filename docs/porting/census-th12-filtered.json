@@ -1,0 +1,44 @@
+{
+ "summary": {
+  "ran": 1,
+  "passing": 0,
+  "trapping": 1,
+  "totals": {
+   "pass": 0,
+   "fail": 1
+  },
+  "leaks": {
+   "reported": 1,
+   "total": 0,
+   "scrubbed": 0
+  },
+  "topWalls": [
+   [
+    "0x454ee1 (unmapped 0x11c)",
+    1
+   ]
+  ]
+ },
+ "rows": [
+  {
+   "suite": "bullet-manager.test.mjs",
+   "pass": 0,
+   "fail": 1,
+   "ms": 539,
+   "wall": {
+    "at": "unmapped",
+    "address": "0x11c",
+    "pc": "0x454ee1",
+    "size": 4
+   },
+   "entry": "0x40a250",
+   "calls": 18,
+   "message": "Error: Unicorn.js: Function uc_emu_start failed with code 6:",
+   "leaks": {
+    "leaks": 0,
+    "scrubbed": 0,
+    "processes": 1
+   }
+  }
+ ]
+}

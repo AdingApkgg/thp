@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "frames": 10093,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "resourceSha256": "f0d7df333b396cbf12d201d95ec83c8b03d9fa705189cf275eaf074085742e01",
+  "wasmSha256": "3fe8b637fe4619fad00e7774f3d50bc55d0931bd77a13417ff25804b9116898a",
+  "scope": "Full native interpreter versus production on retail pl01.anm scripts 28..34 through scheduled interrupt and termination at rates .5/1/1.25: primary color and  sprite, color, layer, resolution flags, active bit, clock, position, scale and extra scale. Native sprite binding and child creation are controlled; script-28 child requests 34/31/32/29/30 are checked; each child is independently executed with interrupt 1 at frame 500, auxiliary 33 at frame 180. Native geometry allocation is a controlled buffer; geometry vertices and secondary color are outside this proof. Sprite index is compared after a native binder request; script 28 never binds a sprite, so its initial observer sentinel is excluded. No GPU/pixel or full Bomb-controller equivalence is claimed.",
+  "sourceHashes": {
+    "tests/cpp/th14-sakuya-b-anm-fixture.cpp": "c1870d26b0b50c71bb83d7f2775014e4f41f5565b29b587426cfc26ec66ade87",
+    "cpp/game/AnmVm.cpp": "f6ea07e46ae7d1d9cba4f643b72c9161628dbff66575a981b4f8a74345a67d3f",
+    "cpp/game/AnmInterpreter.cpp": "1be2880981e9912d504044fa9de850dcd08c5c4030885536633598d124aa913a",
+    "cpp/game/AnmManager.cpp": "74e295ed35846687274ecf6d868eb9f9a20746341e1f390e4da168e56754a759",
+    "cpp/game/AnmGeometry.cpp": "876273a619274307c37a94faf74dce6948778f0f61cb32d344f447b35490fed5",
+    "cpp/game/AnmResource.cpp": "7391cebdd1be0faa8ad9201352debef81b436543f2f6703d962bb4c504490c41"
+  },
+  "toolHashes": {
+    "tools/th14-marisa-b-anm-native.py": "9861ee8412579b20db376b2d6eb61e86d79998ed96c38163133b0c3cdbc5cdbb",
+    "tools/th14-sakuya-b-anm-native.py": "6923748a77ae7219daac0188f67767273c674138be2887c5465d96a56277abd2",
+    "tools/th14-marisa-b-anm-check.mjs": "fef44bb0ba859b7a53912ce362a9a576cb37aaa39687ac85f6118de41d508f3e"
+  }
+}

@@ -1,0 +1,28 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>TH14 原作四角绘制对照</title>
+<style>body{background:#191c26;color:#eee;font:16px system-ui;margin:28px}button{font:inherit;padding:12px}canvas{image-rendering:pixelated}#canvas{width:160px;height:120px}#preview{width:960px;height:240px;display:block;margin:18px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:1100px}</style>
+<h1>TH14 原作四角绘制对照</h1><p>原作实际记录的四角顶点送入 Direct3D9；移植代码独立计算三角形并送入生产 SDL/WebGL。保留 640×480 像素网格，使用诊断纹理，不代表完整游戏帧。</p>
+<button id="run">运行 640 场景</button><p id="status">等待运行</p><canvas id="preview" width="960" height="240"></canvas><canvas id="canvas" width="640" height="480"></canvas><pre id="result"></pre>
+<script type="module">
+import create from './gpu.mjs';
+const status=document.querySelector('#status'),button=document.querySelector('#run'),result=document.querySelector('#result'),ctx=document.querySelector('#preview').getContext('2d');
+const hex=async b=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',b)),n=>n.toString(16).padStart(2,'0')).join('');
+let core;
+button.addEventListener('click',async()=>{button.disabled=true;try{
+ status.textContent='正在独立计算几何、绘制并读取 GPU 像素';
+ const [native,expected,build]=await Promise.all([fetch('./native.json').then(r=>r.json()),fetch('./native.bgra').then(r=>r.arrayBuffer()).then(b=>new Uint8Array(b)),fetch('./build.json').then(r=>r.json())]);
+ core??=await create({canvas:document.querySelector('#canvas')});if(!core._gpu_initialize())throw Error('生产渲染器初始化失败');
+ const actual=new Uint8Array(expected.length),rows=[];let previews=0;
+ for(const c of native.cases){
+  const p=core._gpu_original_quad_case(c.index);if(!p)throw Error('绘制场景失败 '+c.index);
+  const pixels=new Uint8Array(core.HEAPU8.buffer,p,c.size);actual.set(pixels,c.offset);let channels=0,max=0,first=null,foreground=0;
+  for(let j=0;j<c.size;j++){const a=pixels[j],b=expected[c.offset+j],delta=Math.abs(a-b);if(delta){++channels;max=Math.max(max,delta);first??={x:c.crop[0]+Math.floor(j/4)%c.crop[2],y:c.crop[1]+Math.floor(j/(c.crop[2]*4)),channel:j%4,portable:a,d3d9:b};}}
+  for(let j=0;j<c.size;j+=4)if(expected[c.offset+j]!==139||expected[c.offset+j+1]!==103||expected[c.offset+j+2]!==66||expected[c.offset+j+3]!==255)++foreground;
+  rows.push({index:c.index,mode:c.mode,colorMode:c.colorMode,relation:c.relation,tinted:c.tinted,visibility:c.visibility,sample:c.sample,crop:c.crop,status:core._gpu_status()>>>0,drawCount:core._gpu_draw_count(),foregroundPixels:foreground,differentChannels:channels,maxDelta:max,first,pixelsSha256:await hex(pixels.slice())});
+  if(c.drawCount&&previews<8&&c.index%4===0){const image=new ImageData(c.crop[2],c.crop[3]);for(let j=0;j<c.size;j+=4){image.data[j]=pixels[j+2];image.data[j+1]=pixels[j+1];image.data[j+2]=pixels[j];image.data[j+3]=255;}ctx.putImageData(image,(previews%8)*120,0);++previews;}
+ }
+ const gl=document.querySelector('#canvas').getContext('webgl2'),info=gl.getExtension('WEBGL_debug_renderer_info');
+ const report={completeGame:false,nativeEquivalent:false,strictPixelsEqual:rows.every(r=>!r.differentChannels),cases:rows.length,exactCases:rows.filter(r=>!r.differentChannels).length,renderedCases:rows.filter(r=>r.foregroundPixels>0).length,maxDelta:Math.max(...rows.map(r=>r.maxDelta)),nativePixelsSha256:await hex(expected),portablePixelsSha256:await hex(actual),wasmSha256:build.wasmSha256,debugRenderer:info?gl.getParameter(info.UNMASKED_RENDERER_WEBGL):null,rows};
+ status.textContent=`已完成 ${report.cases} 场景；逐通道完全一致 ${report.exactCases}；实际绘制 ${report.renderedCases}；最大差值 ${report.maxDelta}`;
+ result.textContent=JSON.stringify(report,null,2);
+ }catch(e){status.textContent='测试失败：'+e.message;result.textContent=String(e.stack||e);}finally{button.disabled=false;}});
+</script></html>

@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {createHash} from 'node:crypto';
+const root=resolve(import.meta.dirname,'..'),sha=b=>createHash('sha256').update(b).digest('hex');
+const build=JSON.parse(readFileSync(resolve(root,'runtimes/th14/th14_web/artifacts/sdl3/build.json'),'utf8'));
+assert.equal(build.sha256,'720869200e450cf0b7d7c9c6540d26fc2eb15f94b43dc8e2a1f88a2064c2bca7');
+assert.equal(sha(readFileSync(resolve(root,'runtimes/th14/th14_web/artifacts/sdl3/th11-harness.wasm'))),build.sha256);
+for(const [path,hash] of Object.entries(build.sources))assert.equal(sha(readFileSync(resolve(root,'runtimes/th12',path))),hash,path);
+const evidence=['artifacts/th14/browser-boss-hud-spell-oct11.png','artifacts/th14/browser-boss-hud-spell-live-oct11.png'];
+writeFileSync(resolve(root,'docs/porting/th14-browser-boss-hud-observed-oct11.json'),JSON.stringify({passed:true,completeGame:false,nativeEquivalent:false,url:'http://127.0.0.1:8133/',build,persistentStoreMounted:false,artificialClear:false,forcedInvincibility:false,hiddenUnlockCode:true,spellId:0,difficulty:2,loadout:'Sakuya A',observations:['Fresh volatile session; disabled frame300 auto-pause before starting. Normal Player Data Sakuya A/Extra ORIONBEER code, then ordinary Spell Practice stage1/first card/Hard.','Actual original-ECL battle has circular boss health display, Cirno name, integer countdown23 then22 and HARD label. Host pause preserves frames166/267/283; no artificial clear, invincibility or extra firepower.','Observed remaining visual defect: decimal countdown stays at legacy fixed right-hand coordinates, detached from integer countdown. This build is preserved as evidence before correction. Bottom Enemy marker is obscured by host controls and is not browser-verified here.'],scope:'Browser observations and exact build source hashes. Native module comparisons are separate proofs; this does not establish GPU pixels, audio, full natural capture or whole-game equivalence.',evidence:Object.fromEntries(evidence.map(n=>[n,sha(readFileSync(resolve(root,n)))]))},null,2)+'\n');
+console.log(`PASS observed boss HUD browser evidence; ${Object.keys(build.sources).length} source hashes; decimal defect retained`);

@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "frames": 5792,
+  "stockCases": 378,
+  "icons": 16,
+  "renderVertices": 96,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "resourceSha256": "62bee2373099a0ce5e9d76d2314d6451e56d212bcaf166bb8e95c0d341076a6b",
+  "wasmSha256": "5cf9f979fba9ea6a6b3d2245fb910372186b022741828be081b47e5a5f6cc859",
+  "scope": "Retail front.anm scripts 30..45 execute through the full native 45f980 interpreter for 181 frames each, with immediate/delayed stock interrupts, all fragment labels, RGB, alpha fades, clocks, layer and resolution flags, local position bits. Security-cookie check and sprite resource bind are controlled native boundaries. Production Hud manager registration, once-per-tick updates, layer 25 rendering, stock interrupts and unregister-on-destruction use the retail resource; sixteen sprites submit 96 screen vertices within the sidebar. Full42c280/42c390 stock delivery compares ordered labels at every slot across counts, fragment overflow, difficulty and extend tiers. Notice2/4 actual resources63/65 are integration observations; full notice factory/native HUD construction, pixel equivalence and physical GPU output excluded.",
+  "sourceHashes": {
+    "tests/cpp/th16-hud-icons-fixture.cpp": "e8e765241442bc5564c132faf935a7fdc20e28124184dd0cc8ab7ce0ebfb420a",
+    "cpp/game/Hud.hpp": "6fc5bbf336374a8970acd08af94497e6ed36cb17c5c492a3e61cc73b2f9763e1",
+    "cpp/game/Hud.cpp": "818b41a6f2c120807d91fef751c791a2b733bee66845c7fc4de469b244752221",
+    "cpp/game/AnmManager.cpp": "6ec4cc2bb1f57c94fb281c9866b1f5c40cf13f50fec8539b58d32a9bb7b3a7f0",
+    "cpp/game/AnmVm.cpp": "18a1bf29a28e105c06be4173d407203408459fa25ce0364fe3dd6046cdc7c4c5",
+    "cpp/game/AnmInterpreter.cpp": "4e32fd542f9b1ec740e45e396eff728b26da98c67399b398ffd233ef3266bf3d",
+    "cpp/game/AnmResource.cpp": "7391cebdd1be0faa8ad9201352debef81b436543f2f6703d962bb4c504490c41",
+    "cpp/game/AnmGeometry.cpp": "6326e12e33f2cce4d9999ade1b241c25832c1323720df57a1094a6372c10db59",
+    "cpp/game/AnmRenderer.cpp": "49ffcc1e744cf9e3b393133691867be47201eab56a68466278efb9fc37f7d351",
+    "cpp/game/SceneSchedule.hpp": "77d0744bb084fe14f78b4dd91974a82072932e1b85840f955f2a9472d646ac53"
+  },
+  "toolHashes": {
+    "tools/th16-hud-icons-native.py": "3760913dfcd2d7ed764632d5101857ec54155114c7095d35990660db097c32fc",
+    "tools/th16-hud-icons-check.mjs": "afc18ceb08f1ca65d1b6262b1968050b0759534834326269c2a5a6f7d8cc75bb"
+  }
+}

@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {createHash} from 'node:crypto';
+const root=resolve(import.meta.dirname,'..'),read=n=>readFileSync(resolve(root,n)),sha=b=>createHash('sha256').update(b).digest('hex');
+const preparedPath='runtimes/th14/th14_web/artifacts/launcher-preview/ef471c9710e74642-27727d847ab3/release.json',prepared=JSON.parse(read(preparedPath));assert.equal(prepared.passed,true);
+for(const [name,row] of Object.entries(prepared.files)){const b=readFileSync(resolve(prepared.site,name));assert.equal(b.length,row.bytes);assert.equal(sha(b),row.sha256);}
+const names=['bgm','se','quit'].map(n=>'browser-launcher-options-presentation-'+n+'-oct11.png').concat(['browser-launcher-options-presentation-logs-oct11.json','browser-launcher-options-presentation-dom-oct11.txt']);
+const evidence=Object.fromEntries(names.map(n=>{const path='artifacts/th14/'+n,b=read(path);return [path,{bytes:b.length,sha256:sha(b)}];}));assert.deepEqual(JSON.parse(read('artifacts/th14/browser-launcher-options-presentation-logs-oct11.json')),[]);
+const checks=Object.fromEntries(['presentation','controls'].map(kind=>{const path=`docs/porting/th14-options-${kind}-verified-oct11.json`,check=JSON.parse(read(path));assert.equal(check.passed,true);return [kind,{path,sha256:sha(read(path)),cases:check.routes??check.cases}];}));
+const beforePath='artifacts/th14/options-presentation-check/before.json',before=JSON.parse(read(beforePath));assert.equal(before.passed,false);assert.equal(before.failures.length,200);
+const report={passed:true,completeGame:false,nativeEquivalent:false,url:'http://127.0.0.1:8135/?game=th14',buildId:prepared.buildId,preparedPath,preparedSha256:sha(read(preparedPath)),checks,before:{path:beforePath,sha256:sha(read(beforePath)),failedTargets:200},evidence,observed:['Updated release starts in shared Launcher with runtimeEpoch2','Original Option menu shows persisted BGM95/SE75','BGM and SE selection and X-to-Quit are visible on this build','Current error/warn logs empty'],limits:['Labels30/31 in the original title.anm restore animation continuations; they do not implement row zoom','Native and production fixtures compare immediate animation targets; browser screenshots do not prove GPU pixel equality','No byte-level browser configuration export or physical controller evidence in this run','Full TH14 1:1 and all unconverted works remain incomplete']};
+writeFileSync(resolve(root,'docs/porting/th14-launcher-options-presentation-browser-observed-oct11.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:true,buildId:prepared.buildId,files:Object.keys(prepared.files).length,evidenceFiles:names.length}));

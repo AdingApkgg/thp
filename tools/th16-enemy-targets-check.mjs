@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,mkdirSync,readdirSync} from 'node:fs';
+import {resolve,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {WASI} from 'node:wasi';
+import {nativePython} from './native-python.mjs';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..'),rt=resolve(root,'runtimes/th12/th12_web'),out=resolve(root,'artifacts/th16/enemy-targets-check');mkdirSync(out,{recursive:true});
+nativePython('tools/th16-enemy-targets-native.py',{cwd:root,stdio:'inherit',windowsHide:true});
+const env={...process.env,TEMP:out,TMP:out,TMPDIR:out};
+execFileSync(process.execPath,['runtimes/th13/th13_web/scripts/cpp/build-engine.mjs','--title','16'],{cwd:root,env,stdio:'inherit',windowsHide:true});
+const dir=resolve(root,'runtimes/th13/th13_web/artifacts/cpp/objects-th16'),wasm=resolve(out,'targets.wasm'),fixture='tests/cpp/th16-enemy-targets-fixture.cpp';
+execFileSync(resolve(rt,'../tools/wasi-sdk-34.0-x86_64-windows/bin/clang++.exe'),['--target=wasm32-wasip1','-std=c++17','-O2','-ffp-contract=off','-fno-exceptions','-fno-rtti','-mexec-model=reactor','-Wl,--no-entry','-Wl,--export-memory','-Wl,-z,stack-size=1048576','-DPORT_TITLE=16',fixture,...readdirSync(dir).filter(n=>n.endsWith('.o')).map(n=>resolve(dir,n)),'-o',wasm],{cwd:rt,env,stdio:'inherit',windowsHide:true});
+const bytes=readFileSync(wasm),wasi=new WASI({version:'preview1',args:[],env:{},preopens:{}}),{instance}=await WebAssembly.instantiate(bytes,{wasi_snapshot_preview1:wasi.wasiImport});wasi.initialize(instance);const c=instance.exports;
+const proof=JSON.parse(readFileSync(resolve(root,'artifacts/th16/enemy-targets-native.json'),'utf8'));
+const fbits=value=>new Uint32Array(new Float32Array([value]).buffer)[0];
+for(const r of proof.cases){const pointer=c.allocate(Math.max(4,r.entries.length*20));try{new Uint32Array(c.memory.buffer,pointer,r.entries.length*5).set(r.entries.flatMap(e=>[e.id,e.flags,...e.position.map(fbits)]));c.run_case(r.entries.length,pointer,...r.point,r.radius,r.target);assert.deepEqual(Array.from({length:3},(_,n)=>c.value(n)>>>0),r.output.map(x=>x>>>0),`case${r.n}`);}finally{c.release(pointer);}}
+const sha=b=>createHash('sha256').update(b).digest('hex');
+writeFileSync(resolve(root,'docs/porting/th16-enemy-targets-verified.json'),JSON.stringify({passed:true,title:16,completeGame:false,cases:proof.cases.length,wholeNativeCalls:proof.cases.length*3,nativeExecutableSha256:proof.executableSha256,scope:'Whole425240 nearest,41a980 valid and41b540 lookup execute with real linked lists and no helper hooks. Empty/8-member lists, zero/duplicate/missing IDs, first tie, strict radius, protected flags and unmatched-nonzero lookup fallback. Connected to production homing targets. Whole enemy lifecycle, homing allocation and full game excluded.',wasmSha256:sha(bytes),sourceHashes:Object.fromEntries(['cpp/game/EnemyTh16Targets.cpp','cpp/game/EnemyTh16Targets.hpp','cpp/game/ShotTh16Production.cpp',fixture].map(n=>[n,sha(readFileSync(resolve(rt,n)))]))},null,2)+'\n');
+console.log(`PASS ${proof.cases.length} TH16 target cases / ${proof.cases.length*3} native calls`);

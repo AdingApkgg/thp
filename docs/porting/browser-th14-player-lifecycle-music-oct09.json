@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-09",
+  "verified": false,
+  "url": "http://127.0.0.1:8126/",
+  "servedBuild": {
+    "bytes": 1714709,
+    "sha256": "48dc8589ab60912cab44421784e948523aac1b76be4ba337ff2f6673d28e860c"
+  },
+  "selection": {
+    "difficulty": "Normal",
+    "character": "Reimu",
+    "weapon": "A"
+  },
+  "observations": [
+    {
+      "buildSha256": "6b2418ecc0875486d5fd959d0841aa45ef182d90f7983f701ba6f15a1160104d",
+      "lossFrame": 1293,
+      "pausedScreenshotFrame": 1847,
+      "note": "Earlier lifecycle build before audio restoration; historical capture."
+    },
+    {
+      "buildSha256": "48dc8589ab60912cab44421784e948523aac1b76be4ba337ff2f6673d28e860c",
+      "lossFrame": 1293,
+      "firstContinueObservedFrame": 1390,
+      "pausedAXFrame": 1781,
+      "pausedScreenshotFrame": 1786,
+      "sameStage": 1,
+      "scoreTextAfterContinue": "149,531",
+      "consoleErrors": [],
+      "note": "Natural loss and end-menu Continue, then frontend pause. The restored-music branch did not abort the live session. No audible/physical cursor or GPU equivalence assertion."
+    }
+  ],
+  "screenshots": {
+    "artifacts/th14/browser-lifecycle-loss-oct09.jpg": "0bc91433278b8c55a5a4e538cd6d019889e00c098de36bae0acfc8d01c31ddb6",
+    "artifacts/th14/browser-lifecycle-continue-oct09.jpg": "650c2ceef06a0171c7de285303d8348dfe8ec57baa4acbcc153c2a2ecce9458c",
+    "artifacts/th14/browser-lifecycle-music-loss-oct09.jpg": "29269776d34f94841c27ba621b7aa71765ee4063f83b5bd1768579d5da2f8ad3",
+    "artifacts/th14/browser-lifecycle-music-continue-oct09.jpg": "c14a0bb36abdfc424a504195a1588432c4c745db53fd12167455233585ba6dd9"
+  },
+  "sourceHashes": {
+    "cpp/game/PlayerFrame.cpp": "42af2e8ecfff71b31d57dc47d8c70290d408cb0b3ca677150388ec7105a6cfcf",
+    "cpp/game/PlayerFrame.hpp": "6990b0899513b34f83cfb1ac8ef7177e7a4e588ae8f820f6a4b37cf0dbb34fc3",
+    "cpp/game/GameBattle.cpp": "6de5ba5aa3c94737a7f545db477cf6442b6055fb86b07c36bca951de859b9dc4",
+    "cpp/game/GameBattle.hpp": "914fd441958300a40d5c0c76d0f6d619603e398738f11edeae3f7c5583c5748f",
+    "cpp/game/BulletTh14.cpp": "c8671102788a979a9310c21979a97912186048a1a03554429c5dece0d2b84427",
+    "cpp/game/BulletManager.hpp": "be9059ecf21858e6ebd1480999bff8098217735f941f5a37a84fcd0861b55b4e",
+    "cpp/sdl/Application.cpp": "375332eb79cd90a068638861b20e36a73bc8d5a409141365b2aab108a5b03c6d",
+    "cpp/sdl/AudioDevice.cpp": "00ab5c4183a6d7c77de385f85f31b32f03fda9fab571d40d06c4b27e83d3faeb",
+    "cpp/sdl/AudioDevice.hpp": "5b98ce08338f1e1df42efff5c85acd73c1382fa84eb780d7bb8828cb73cf99e5"
+  },
+  "limits": [
+    "Browser UI is a production smoke check, not native state or pixel/audio comparison.",
+    "Stock/fragments/death clocks are checked by the independent lifecycle/session fixtures; missing icon pixels prevent reading the stocks from this capture.",
+    "Original music restoration requests and actual decoder/PCM continuation are measured separately."
+  ]
+}

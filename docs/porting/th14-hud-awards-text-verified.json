@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "cases": 2109,
+  "requests": 8739,
+  "glyphs": 35454,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "adbd8191c7f291c5bc8310a701e2e92757b3bea4f2205455ed43138de5261762",
+  "scope": "Full431140..43144a result/spell-time text block; real40bb60 comma grouping,42e980 signed encoded-time validation and40bf20 glyph layout. Live/absent/stale result/time handles, show flag and spell-manager gates; bonus unsigned grouping thresholds, frame signed division/999 cap, valid encoded seconds0/59/99/100/120/933/934/999 (including the934 wrap), old/new replay sentinels and invalid encodings. ASCII delivery/CRT/ANM lookup-retirement/atlas/GPU are boundaries. Glyph indices, X/Y/color/filter at resolution1; does not prove native VM retirement lifecycle or pixels. Production th14_hud_awards called with result/time liveness booleans from controlled handle/manager conditions; grouped result center translated to left queue origin and all glyph X/Y words exact. Queue byte/font/pass/color compared. Missing-handle lifecycle is not asserted; actual Hud.queue_text wiring and real GameSession draw require separate integration.",
+  "sourceHashes": {
+    "cpp/game/HudTh14Text.cpp": "2288becc9654903b4431553a7bea129434e56dcd6208118346a622804838faea",
+    "cpp/game/AsciiText.cpp": "9a5f0eefcc5973a1f04a55d975b25ff28c2b20bbc0abbc5b10d41a3564b36788",
+    "cpp/game/AnmVm.cpp": "49b7114f614de4f7cb743487fa29fb6049f1e15f7135195abc0de501514a3c71",
+    "cpp/game/SpellTiming.cpp": "b47cce01612c88caeebba8276aba03a349698eab08f45458955705fd5c460a5f",
+    "tests/cpp/th14-hud-text-fixture.cpp": "cc94c978299227c6ff3fa63010dd680317d7491a44041fce9962a23caecba311",
+    "cpp/game/HudTh14Text.hpp": "f574df2d26dade171575eec13f6e96d3f54d4722f70dc8166caa9347db2e0ff1",
+    "cpp/game/Hud.cpp": "a9edec4ed2891651cf2087b0a4454586d482508c566ed795f2f3935ce90a950a",
+    "cpp/game/SpellTiming.hpp": "b27800fce5a41811b88ade4f92679e5ef3624ae3b32a8dbfdb30bc104a34a3b5"
+  },
+  "toolHashes": {
+    "tools/th14-hud-awards-text-native.py": "8df1147a0e8a015e5ebc75e5b31f8c4b92b6b2b4b34fed5f38199bdbab7a89ea",
+    "tools/th14-hud-awards-text-check.mjs": "e047c00690e033915d5b926e7a1aae7cad9785bef76229227848d81bf91e9327"
+  }
+}

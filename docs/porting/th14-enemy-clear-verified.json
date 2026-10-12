@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "spawnMetadataCases": 1425,
+  "clearingCases": 144,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "f9e9b293cc18d6a2eb5c2e526cb1e4c2f0274cac101eea5d8cf85bc96bfe91f7",
+  "scope": "TH14 post-spawn death metadata and ECL 525 three-enemy traversal, eligibility mask, thirteen-count drop reset, zero-drop RNG, sound/effect delivery order and manager timer. Native 424cb0, 424af0 and zero-count 4215b0 execute; sound and effect factory are controlled delivery boundaries. Optional death subroutine/callback paths, nonzero item drops and GPU rendering are not covered. ECL 516 sound ID and source X delivery are verified at the native audio queue boundary. ECL 523 inactive-spell guard and enemy health flag clear are verified; active-spell ending is verified separately by th14-spell-verified.json and result animation requests by th14-hud-notice-verified.json. ECL 545 executes the retail empty-list laser reset; nonempty laser lists are explicitly refused.",
+  "sourceHashes": {
+    "tests/cpp/th14-enemy-clear-fixture.cpp": "ee8adb7bf3a19ea74bcb49b8dddc9abbbabda4591eb3c65112000ee7fc5f6b7c",
+    "cpp/game/EnemyManager.cpp": "85fd8754f44118ce0b2db837f42ba1f46ebf866190f99a64d500f91fa050ece6",
+    "cpp/game/EnemyTh14Commands.cpp": "38f271da8f612ec7d60d4d78bcce5663b8ed31f551626184278db086d0a74a0f",
+    "cpp/game/EnemyAnimations.cpp": "9f1a6a20a1b8043a134eab8bd737e98251d260b4590e50a9fb3f4062df4a6f21",
+    "cpp/game/EnemyFrame.cpp": "e4b7af71943d4c3a1d588b911ad03364fd66e3a1a27039f67ffc998f10f36d5a",
+    "cpp/game/AnmManager.cpp": "74e295ed35846687274ecf6d868eb9f9a20746341e1f390e4da168e56754a759",
+    "cpp/game/EnemyState.hpp": "704a595392b51443db3f6e6826f3005e6d75b5c30f509685a163722af8990463"
+  },
+  "sound516Cases": 30,
+  "inactiveSpell523Cases": 30,
+  "emptyLaser545": true
+}

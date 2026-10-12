@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "cases": 192,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "9ddeabfa04b05a98dae353eeb5d22e4632a4b6dcb778fac042dd06a6a3cc6e77",
+  "scope": "Complete retail 418140 ETEX 80000 setup and 41a750 motion: active mask/index, position, scalar speed/angle, velocity, timer, polar slot fields, duration. Preserves native reset-to-zero timer and expiry mask FFFFFFF6. After setup, controlled active bits 1/8 exercise that mask. Durations -1/0 compare local motion only: they retain 80000 and cause native full-update retry to loop, so no full-update equivalence claim for those durations. Rates 0/.5/1/1.25 and explicit extreme angles compared. Animation, collision and pixels excluded",
+  "sourceHashes": {
+    "tests/cpp/th14-bullet-polar-move-fixture.cpp": "aebe37f337527f97bcbef5f614c6ae0cf3fef9da1f8ec1526b237e4bfb775c46",
+    "cpp/game/BulletTh14.cpp": "3aa46203aac28294b326b5562912120e9ace4b04eab2e3f3b6a2dad1c2cacef5",
+    "cpp/game/Movement.cpp": "ea823e71f48f15d1d5e038c4fa62b6a4dfcaa31b087ebc183e42ef2dd439cccb"
+  },
+  "toolHashes": {
+    "tools/th14-bullet-polar-move-native.py": "a6bc7619b6b698ad96eda350ecc0337b5f13dc2877386a564f171086cb95d969",
+    "tools/th14-bullet-polar-move-check.mjs": "f13a831fdb42c18b1982a0c0c11b5ef802f27a9786ea3e1741c7990e8411ecea"
+  }
+}

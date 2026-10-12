@@ -1,0 +1,131 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "changedFile": "runtimes/th12/th12_web/cpp/game/StageDraw.cpp",
+  "changes": [
+    "TH14 starts each layer with fog enabled and includes mode23 with mode8",
+    "TH14 writes the requested primitive depth mask before drawing",
+    "TH14 ends each layer with depth writes disabled"
+  ],
+  "wholeLayerCases": 3456,
+  "visibilityCases": 55143,
+  "stageIntegrationFrames": 8400,
+  "actualSession": {
+    "routes": 90,
+    "frames": 70212,
+    "writes": 6096
+  },
+  "legacyBuilds": [
+    {
+      "title": 12,
+      "bytes": 903005,
+      "sha256": "77133233ab29a56a6dfd2169697d50cf2ce42f819a607a427a37482cb93dd259"
+    },
+    {
+      "title": 13,
+      "bytes": 909578,
+      "sha256": "81578bd552c0175994ddbcb668865fcbe624c2bf56ed8fda03dac670dfb8e853"
+    }
+  ],
+  "release": {
+    "bytes": 1860916,
+    "sha256": "7fe482a6d4b44409258c23b65651db59ce13bff7b4af1b89e863954864a86e25"
+  },
+  "launcher": {
+    "url": "http://127.0.0.1:8183/?game=th14",
+    "files": 127,
+    "buildId": "1fe58c82d1b63592535e",
+    "browserWarningsOrErrors": 0
+  },
+  "evidence": {
+    "docs/porting/th14-stage-layer-state-observed-oct12.json": {
+      "bytes": 27937,
+      "sha256": "c2db6f8b583f88211d1b2e0b585999bdf73e9a9f5268b015e9f493c2ce6b803f"
+    },
+    "docs/porting/th14-stage-visibility-observed-oct12.json": {
+      "bytes": 51231,
+      "sha256": "51c6901a577e41c9b64cebabea089d95e9d6bd147a32f3e8db41b190fbfd3d5e"
+    },
+    "docs/porting/th14-stage-draw-integration-verified-oct12.json": {
+      "bytes": 914445,
+      "sha256": "1ae907546906e9b06d0411904ed764060b2313f680f38c91ff6e20983d711d64"
+    },
+    "docs/porting/th14-real-message-session-sync-verified-oct12.json": {
+      "bytes": 57519,
+      "sha256": "b6dde2814ad34374253e2f04075130ab50c7c187624b2ff4e37456cff08a2861"
+    },
+    "artifacts/th14/stage-layer-state/native.json": {
+      "bytes": 1060389,
+      "sha256": "a5e6578cca476262bbb91468f3d491e6d70831b46a05de5f908d572d632736ab"
+    },
+    "tools/th14-stage-layer-state-native.py": {
+      "bytes": 6145,
+      "sha256": "f60422816e21e027d59532dbd7a6a766014cf6b92e9abd83db6c276b92062fa3"
+    },
+    "artifacts/th14/stage-layer-state/layer.wasm": {
+      "bytes": 762698,
+      "sha256": "a25fa1b374afd68eac408c414c44a10a0f69f1789b21f476324b950ceda383aa"
+    },
+    "tools/th14-stage-layer-state-check.mjs": {
+      "bytes": 3379,
+      "sha256": "6b842e0f47b5d17beb93831c96cbac17ad342efd558a8b832716eb69f7f41f44"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-layer-state-fixture.cpp": {
+      "bytes": 3087,
+      "sha256": "baa1f6aa00d53ffd445b2d93e4990c33f0978bc85b5869c9d629bd4b5da091d7"
+    },
+    "artifacts/th14/stage-layer-state/before-layer-state-fix/draw-boundary-observed.json": {
+      "bytes": 1567683,
+      "sha256": "3680d193624402d758033f77bb2a46b847c07f27e8b6020f0d0c64145153c41a"
+    },
+    "artifacts/th14/stage-layer-state/before-layer-state-fix/StageDraw.cpp": {
+      "bytes": 8602,
+      "sha256": "2faa1b2be1de9af00faa21abcc6f00b22242d2931eb112b6b9066b8189586f34"
+    },
+    "runtimes/th14/th14_web/artifacts/sdl3-release/build.json": {
+      "bytes": 37704,
+      "sha256": "4399da786e139b4a8bb938e8c5acdce8b84086b78a594328140c423599a0e263"
+    },
+    "runtimes/th14/th14_web/artifacts/sdl3-release/th11.wasm": {
+      "bytes": 1860916,
+      "sha256": "7fe482a6d4b44409258c23b65651db59ce13bff7b4af1b89e863954864a86e25"
+    },
+    "runtimes/th13/th13_web/artifacts/cpp/engine-th12-build.json": {
+      "bytes": 33155,
+      "sha256": "ae58f7975bc1f3e5ec23ce306e208491008280ab927f24f16d903276873376f3"
+    },
+    "runtimes/th13/th13_web/artifacts/cpp/engine-th13-build.json": {
+      "bytes": 33155,
+      "sha256": "90991bbf886467a394d720a781a6214b57c47c4183841558b0127c47833b2c23"
+    },
+    "docs/porting/th14-launcher-runtime-prepared-oct11.json": {
+      "bytes": 50674,
+      "sha256": "7cdfd40a9d979477e288c2439dcb4d04e364dc17ae32f61c7e09a24076f188ae"
+    },
+    "docs/porting/th14-launcher-preview-prepared-oct11.json": {
+      "bytes": 36442,
+      "sha256": "7cf90810db45fefaab3fc29db61c86219b4bcdd72fab0e6e570e65a443a3cbe2"
+    },
+    "artifacts/th14/stage-layer-state-launcher/ordinary-start-paused.png": {
+      "bytes": 255465,
+      "sha256": "40c4f309568ee64be20faf55ac2c72b4711af53585934bdd2faf54392d9d5815"
+    },
+    "artifacts/th14/stage-layer-state-launcher/browser-logs.json": {
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "tools/th14-stage-layer-state-production-check.mjs": {
+      "bytes": 5924,
+      "sha256": "a63660e37e1a92fc5e08e57055a55bdf5c7180cc7c29211276349e84efb6bcf2"
+    }
+  },
+  "limits": [
+    "Full original40f2f0 and4107b0 run; all eight standalone slots empty and VMs invisible, no visible geometry, draw callbacks, Ribbon effect cache divergence, native whole-stage/world GPU/audio proof",
+    "Linker wrapper only observes depth/fog at production AnmRenderer.draw entry then calls the real production function; native draw entry observed without replacing its body",
+    "Three families cover empty/single/two submissions, mode0/4/8/23/24/31, twelve layers and initial depth/fog states",
+    "Seven original stages8400-frame update/draw and90-route actual GameSession regressions retain their controlled boundaries",
+    "Physical ordinary Launcher start/Normal/ReimuA/stage1/pause only; no natural survival/clear or original whole-frame equivalence claim",
+    "Other titles retain their prior layer semantics; TH12/TH13 newly compiled binaries unchanged"
+  ]
+}

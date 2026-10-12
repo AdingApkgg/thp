@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "startCases": 12,
+  "tickCases": 756,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "770fd6e72d5adfd2fef37b4e4f904ee94f4ead624c9a83243066bf75bdc3cff2",
+  "scope": "Retail 412490 startup and 412200 update through actual 412680, with controlled empty ANM child list, ANM creation/lookup, shake allocation, audio and rectangle-area allocation. Production selection 2 compares spell flags/bonus, count, invincibility, script 19/27 requests, phased shake 3/60/240/30, raw position, player flag 4, movement factor, rotation-before-turn ordering, three-frame damage requests, native x87 polar and cumulative z, inactive/nonzero states, rates .5/1/1.25, missing main/auxiliary interrupt and frame >300 finish. Child-position math, bullet/laser cancellation, complete lifecycle, stock/common activation gate and GPU pixels are separate.",
+  "sourceHashes": {
+    "tests/cpp/th14-sakuya-b-controller-fixture.cpp": "6014d52752dd2013d64406175cbfe89f46cef89555d8caf8fa2ef6a6db39b491",
+    "cpp/game/BombController.cpp": "9e06f483f52946312070c4f0eb0a0f18a621ada731939ccbff8cc668d2694e12",
+    "cpp/game/BombController.hpp": "ab9a412f81fec015b0b6b279334796287745a7c81f40cef933c0107daeef83be",
+    "cpp/game/PlayerMotion.cpp": "c1d3c36e07226eae33262ac63e8fb7ca27e177b78543c0fa8d0fdcdf6cba52ff",
+    "cpp/game/AnmManager.cpp": "74e295ed35846687274ecf6d868eb9f9a20746341e1f390e4da168e56754a759"
+  },
+  "toolHashes": {
+    "tools/th14-marisa-a-controller-native.py": "b19468e5b433019fb82b9d463f972c1dc19f2b5d8236e2d3aff9eca5324ff3aa",
+    "tools/th14-sakuya-b-controller-native.py": "01d90fe98ea9ca07bdcb6ec12e356437b161cea886e6df041598407f3d0715ca",
+    "tools/th14-marisa-a-controller-check.mjs": "fe4893d19da462f0a22acb54cb3468b85ce7ff7d56436c00a0dc7c916513f1bd"
+  }
+}

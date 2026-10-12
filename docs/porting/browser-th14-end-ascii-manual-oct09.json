@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-09",
+  "verified": false,
+  "url": "http://127.0.0.1:8126/",
+  "scope": "Visible browser observations, not native full-game or pixel-equivalence proof.",
+  "observations": [
+    {
+      "buildSha256": "494dcdda95a3950177593aaebf6ef46ead6b8120b4d52930bdd6686c95b52e8a",
+      "actions": "Normal / Reimu A: natural loss at stage 1 frame 1293; five original end choices, readable score glyphs, manual categories, page 1, Down to page 2, cancel back to categories and end choices.",
+      "consoleErrors": []
+    },
+    {
+      "buildSha256": "86a12c8b9340692ee4befe05fbacf41fb31236249e5f521eaa49dc7de115e6ba",
+      "actions": "Reloaded current build, Normal / Reimu A, natural loss at stage 1 frame 1293. Confirmed Continue, battle resumed and later paused at stage 1 frame 1807. Score suffix 1 visible.",
+      "consoleErrors": [],
+      "beforeFrame": 1293,
+      "afterFrame": 1807,
+      "stage": 1,
+      "stayedInBattle": true
+    },
+    {
+      "buildSha256": "996b9366162326d8c36a9e3abb37a2c1733807eeea4779129822432df870876d",
+      "actions": "Reloaded final HUD build, exited auto-attract demonstration, selected Game Start / Normal / Reimu / A. Natural loss at stage 1 frame 1293. Sidebar showed 10,000,000 high score, 97,720 score, 1.25 / 4.00 power, 50,000 PIV, 14 graze and 0/3, 0/8 fragments. Opened seven-category manual and first original PNG page, returned via categories to end menu.",
+      "consoleErrors": [],
+      "stage": 1,
+      "frame": 1293,
+      "manualReturnedToEndMenu": true
+    }
+  ],
+  "screenshots": {
+    "browser-end-ascii-gameplay-oct09.jpg": {
+      "path": "artifacts/th14/browser-end-ascii-gameplay-oct09.jpg",
+      "sha256": "4bb8cf4c9110a8f83a54a28cc6fb7903e7e18d2239d41f544ea42668bfe147ba"
+    },
+    "browser-manual-menu-oct09.jpg": {
+      "path": "artifacts/th14/browser-manual-menu-oct09.jpg",
+      "sha256": "d92428a5dcb027a11486dd59d9d7a02ca57f053934e41ee904687a6aaf51ec1e"
+    },
+    "browser-manual-page1-oct09.jpg": {
+      "path": "artifacts/th14/browser-manual-page1-oct09.jpg",
+      "sha256": "fdfdf3612300e761a98d19f4082b2a645c14c41e91ecf9a4c29a77c59974a53e"
+    },
+    "browser-manual-page2-oct09.jpg": {
+      "path": "artifacts/th14/browser-manual-page2-oct09.jpg",
+      "sha256": "ace27566de6a1fabf465566862c589ca83faa88852877f6e7ee12310592db36e"
+    },
+    "browser-before-continue-oct09.jpg": {
+      "path": "artifacts/th14/browser-before-continue-oct09.jpg",
+      "sha256": "d80e2693bbd22a9ac443ed87cfa197f2289171d416f44cf661077a5d5fde0c5b"
+    },
+    "browser-after-continue-oct09.jpg": {
+      "path": "artifacts/th14/browser-after-continue-oct09.jpg",
+      "sha256": "286d45550b631198b1b7fe822aa3f3d7f3f7567f55107e7df3af9800016f8605"
+    },
+    "browser-hud-text-oct09.jpg": {
+      "path": "artifacts/th14/browser-hud-text-oct09.jpg",
+      "sha256": "71c57175f9fb7098141a16ff53cc1ff615b0b308e518d9a9a13cd2f718c42639"
+    },
+    "browser-hud-manual-page1-oct09.jpg": {
+      "path": "artifacts/th14/browser-hud-manual-page1-oct09.jpg",
+      "sha256": "bea0dab1e090cea395798c3f07d9eac73da6f281f6b1f4fbab2b4be14579defe"
+    },
+    "browser-final-hud-menu-oct09.jpg": {
+      "path": "artifacts/th14/browser-final-hud-menu-oct09.jpg",
+      "sha256": "cff24301a1ab0578d80b275b2d405742b70313233e8e66680b0ec786e56ff493"
+    }
+  },
+  "limitations": [
+    "Earlier builds used the wrong sidebar formatting; final build fixes the demonstrated counters. Remaining icons/sprite mismatches, result/spell/timer layouts and live native HUD alpha remain unverified.",
+    "The later screenshot is paused; it cannot prove native counter values or every intermediate frame.",
+    "Full playthrough, replay equivalence, GPU pixels and music cursor restoration are not verified."
+  ],
+  "sourceHashes": {
+    "cpp/game/GameSession.cpp": "ef06df10f3d878e674188e100a140b2375b401a12ce1075caec4f1e9e5351011",
+    "cpp/game/ContinueTh14.cpp": "f163f963c8f53c7b503137961fbdb5be227dce30b27af81ec68ac4d4c5311080",
+    "cpp/game/PauseEnd.cpp": "db13b1e917c7be242a33f8aeb926fece952d41e156538ce9d53c0bc3574a3840",
+    "cpp/game/AsciiText.cpp": "9a5f0eefcc5973a1f04a55d975b25ff28c2b20bbc0abbc5b10d41a3564b36788",
+    "cpp/sdl/GraphicsDevice.cpp": "fd49ef659696db757b4e5b7d6fffd83295191c4863b014b93418e5ffdabc51b0",
+    "cpp/sdl/Application.cpp": "39487766390a467e9b8bad8eea9a9fcb35cd9f23ea5f4633f491426ab84ccebb",
+    "cpp/game/Hud.cpp": "458f1604f7e1e1cf3a3e3d00f4ceedfb68d80936f8842f1e438fa413b973af87",
+    "cpp/game/HudTh14Text.cpp": "5067c49467e5d4fe0b2c55ea33e6e67239b8377f7561f05ccb2d0be431f660ce",
+    "cpp/game/HudTh14Text.hpp": "9610c2b722529659525f87ab8246a14cf611bc8ae5ab4c0e3f2a7f077d06701b",
+    "cpp/game/Th14LifeFragments.hpp": "18fab2372922aaaed2bfdac8def0a72172d98c91afa36b30801a1f9d180858f3",
+    "cpp/game/ItemRewards.cpp": "648f7bf6e4004ce332900d779444ca6ebd76973d818a6753213373282feb9917"
+  }
+}

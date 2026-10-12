@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "factoryCases": 144,
+  "timelines": 64,
+  "frames": 832,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "4b125ca9a512d2fd8f6d28e7f47d0963bbe0172c184fff99a68f781134ca1a54",
+  "scope": "Retail 43a750 kind 3 uses actual ctor 43a940 / initializer 443920 and vtable 4be364: update 443c50, draw 443c60 and collision/spatial cancel methods return zero in this executable. This is a registry object, not a visible curved laser. Compares capacity 256, issued-id wrap, request-overwritten object id, copied request, 512 history values, position/scalars, timer and native cancel flags through actual manager 43a570/43a670 and cancel 443cb0. Allocation/free/memset are controlled host-library boundaries. No claim for other laser kinds, GPU pixels or all lasers.",
+  "sourceHashes": {
+    "tests/cpp/th14-laser-shell-fixture.cpp": "e1d5cca9c46c087b81addadc2021d06854c3deb9fbedc9466609a3081daaa275",
+    "cpp/game/LaserManager.cpp": "7f334897ffb8a97dbdda54f19a802b2339a98fbc14e83e81b98affab05f9d02f",
+    "cpp/game/LaserManager.hpp": "2a639f78301729c88384cba04956beefe2c90607aab4306f1e3f5453d9e2b198",
+    "cpp/game/LaserState.cpp": "d47452fe86a7fb7b66a5c86c41e4d991950c41cfe7a819afb9d5c5c2cdcea209",
+    "cpp/game/LaserState.hpp": "899762f3d20ae2316e04e175fb91b02dd0a8aa04b4de51cd8fad82becedf5c43",
+    "cpp/game/EnemyTh14Commands.cpp": "38f271da8f612ec7d60d4d78bcce5663b8ed31f551626184278db086d0a74a0f",
+    "cpp/game/Timer.hpp": "e07169289db2407ce57c4191343ad6c9a5e3b2d543898439326520cfe1723ddb"
+  },
+  "toolHashes": {
+    "tools/th14-laser-shell-native.py": "c7c5946d7652203c4549da5edb45248256dc26928cee51103192fc2f437b60bf",
+    "tools/th14-laser-shell-check.mjs": "759de9ea7576e188ba5dd2fe112cb474da2bdccf22084e045bf0090ecc4745be"
+  }
+}

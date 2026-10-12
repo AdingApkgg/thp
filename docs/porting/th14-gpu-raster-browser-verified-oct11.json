@@ -1,0 +1,70 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "strictPixelsEqual": true,
+  "cases": 192,
+  "pixels": 196608,
+  "channels": 786432,
+  "maxDelta": 0,
+  "distinctImages": 90,
+  "renderedPixelsRange": [
+    149,
+    484
+  ],
+  "url": "http://127.0.0.1:8136/",
+  "wasmSha256": "ed8d632746a09b9fa51d19d1b5b41a783538d18f4909f19b43ebb432ed45ef23",
+  "files": {
+    "artifacts/th14/gpu-raster/native.json": {
+      "bytes": 49575,
+      "sha256": "ab351f3ed096c8983ab29587d43c648b4132fe015db321a7104c51bc5385a0c9"
+    },
+    "artifacts/th14/gpu-raster/native.bgra": {
+      "bytes": 786432,
+      "sha256": "b99d9a75e29bd60efa7f0c29df7f15c5b50121dc5666b582ab05be79ddf73363"
+    },
+    "artifacts/th14/gpu-raster/build.json": {
+      "bytes": 2011,
+      "sha256": "56768599c111a1ec47665a2c5924316649ac9f39b4760e4630118756e7b54991"
+    },
+    "artifacts/th14/gpu-raster/gpu.mjs": {
+      "bytes": 210801,
+      "sha256": "8cd96e268b3e24ab7f405db48a682050089054cf6d9ec99f574020c31251c5d7"
+    },
+    "artifacts/th14/gpu-raster/gpu.wasm": {
+      "bytes": 757957,
+      "sha256": "ed8d632746a09b9fa51d19d1b5b41a783538d18f4909f19b43ebb432ed45ef23"
+    },
+    "artifacts/th14/gpu-raster/browser-result.json": {
+      "bytes": 34755,
+      "sha256": "ee78b85e0895375bfda693b8db573dbfa8d452c9c4838fe8a08ab1b3d6e2a5d4"
+    },
+    "artifacts/th14/gpu-raster/browser.png": {
+      "bytes": 38365,
+      "sha256": "77786db37e0e259d426a0b52a1fbfb0dac7045245f3e0a7c925d5d753c44847e"
+    },
+    "artifacts/th14/gpu-raster/browser-logs.json": {
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  },
+  "sources": {
+    "runtimes/th12/th12_web/tests/cpp/th14-gpu-raster-fixture.cpp": "59aceebc47e01c15a5bfb5e3b6b04ce9af5d759a71b1186a897a854c0f262e71",
+    "runtimes/th12/portable/sdl/Renderer.cpp": "9bf8bc525bcf8d63b661e6bc5496e3925761b41ae886d44e2e4fcb8407066d68",
+    "runtimes/th12/portable/sdl/Renderer.hpp": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249",
+    "runtimes/th12/portable/sdl/AlphaConversion.hpp": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5",
+    "runtimes/th12/portable/sdl/GraphicsState.hpp": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31",
+    "runtimes/th12/portable/sdl/Shaders.hpp": "78f7648c27aa762c30493e6bf784baabdabdac63e2f683b2ed33470dca5aa252",
+    "runtimes/th12/portable/sdl/ResampleShader.hpp": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134",
+    "tools/th14-gpu-raster-build.mjs": "14595874597797effee46571f6294e73a41e8ecf2ef5f02e55f093a484542278",
+    "tools/th14-gpu-raster.html": "102a3e705930c36338b530832269029aabe306833c0e90f797505bda89728cac",
+    "tools/th14-gpu-raster-serve.mjs": "7ce980d5092ff0c59d1e9559309486977464f78b0f2b7112c14142b115586909"
+  },
+  "limits": [
+    "Actual original-game D3D9 material values are drawn by a separate offscreen D3D9 HAL fixture; the original game draw loop is not captured",
+    "Portable pixels come from the actual unchanged production SDL/WebGL Renderer and shaders, not a CPU rasterizer",
+    "Coverage: sixteen blend selectors, point/linear filters, repeat/clamp/mirror addresses, two subpixel positions, four corner colors and a 4x4 texture",
+    "No alpha-test, depth, world transform, fog, text, resampling, complete game frame or other GPU/driver guarantee",
+    "Browser result is saved from the visible diagnostic page; all source, native reference and module hashes are checked"
+  ]
+}

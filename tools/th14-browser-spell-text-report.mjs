@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {createHash} from 'node:crypto';
+const root=resolve(import.meta.dirname,'..'),sha=b=>createHash('sha256').update(b).digest('hex');
+const build=JSON.parse(readFileSync(resolve(root,'runtimes/th14/th14_web/artifacts/sdl3/build.json'),'utf8'));
+assert.equal(build.sha256,'e810eab1fad5b3ed43032f3d4f155a724ff13f3af32b9fdc7e7c115df9b783c4');
+assert.equal(sha(readFileSync(resolve(root,'runtimes/th14/th14_web/artifacts/sdl3/th11-harness.wasm'))),build.sha256);
+for(const [p,h] of Object.entries(build.sources))assert.equal(sha(readFileSync(resolve(root,'runtimes/th12',p))),h,p);
+const evidence=['artifacts/th14/browser-spell-text-active-oct11.png','artifacts/th14/browser-spell-text-logs-oct11.json'];
+const logs=JSON.parse(readFileSync(resolve(root,evidence[1]),'utf8'));assert.equal(logs.filter(x=>x.level==='error').length,0);
+writeFileSync(resolve(root,'docs/porting/th14-browser-spell-text-observed-oct11.json'),JSON.stringify({passed:true,completeGame:false,nativeEquivalent:false,url:'http://127.0.0.1:8133/',build,persistentStoreMounted:false,artificialClear:false,forcedInvincibility:false,extraFirepower:false,hiddenUnlockCode:true,observations:['Reloaded temporary store and entered SakuyaA/Extra Player Data; original nine-key code used through keyboard.','Ordinary Spell Practice stage1/card1/Hard entry; Shift+Z input then host pause at251. Screenshot shows Bonus7000000, History00/01, Cirno name/ring, HARD and attached22.90 countdown.','Captured logs contain zero errors. This is a browser observation of the pass2 build, not native pixel or natural capture proof.'],scope:'Actual browser ordinary menu/ECL/draw integration of latest spell bonus/history render-pass fix. Native request/glyph and controlled actual-session comparisons are separate reports. No full-game, GPU/audio or natural-clear equivalence claim.',evidence:Object.fromEntries(evidence.map(p=>[p,sha(readFileSync(resolve(root,p)))]))},null,2)+'\n');
+console.log('PASS browser spell bonus/history observation;146 current source hashes');

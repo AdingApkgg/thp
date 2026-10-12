@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
+import {resolve,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {WASI} from 'node:wasi';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..'),rt=resolve(root,'runtimes/th12/th12_web'),out=resolve(root,'artifacts/th16/sprite-check');mkdirSync(out,{recursive:true});
+const python=process.env.TH_NATIVE_PYTHON;if(!python)throw Error('set TH_NATIVE_PYTHON');execFileSync(python,['tools/th16-sprite-native.py'],{cwd:root,stdio:'inherit',windowsHide:true});
+const proof=JSON.parse(readFileSync(resolve(root,'artifacts/th16/sprite-native.json'),'utf8')),sources=['AnmVm','AnmResource','AnmInterpreter','AnmGeometry','Interpolation'].map(n=>`cpp/game/${n}.cpp`),fixture='tests/cpp/th16-sprite-fixture.cpp',wasm=resolve(out,'sprites.wasm');
+execFileSync(resolve(rt,'../tools/wasi-sdk-34.0-x86_64-windows/bin/clang++.exe'),['--target=wasm32-wasip1','-std=c++17','-O2','-ffp-contract=off','-fno-strict-aliasing','-fno-exceptions','-fno-rtti','-mexec-model=reactor','-Wl,--no-entry','-Wl,--export-memory','-DPORT_TITLE=16',...sources,fixture,'-o',wasm],{cwd:rt,stdio:'inherit',windowsHide:true,env:{...process.env,TEMP:out,TMP:out,TMPDIR:out}});
+const bytes=readFileSync(wasm),wasi=new WASI({version:'preview1',args:[],env:{},preopens:{}}),{instance}=await WebAssembly.instantiate(bytes,{wasi_snapshot_preview1:wasi.wasiImport});wasi.initialize(instance);const c=instance.exports;
+for(const row of proof.cases){const label=`sprite ${row.value} refs ${row.refs} callback ${row.callback} frame ${row.frame}`;assert.equal(c.run(row.value,row.refs,row.callback,row.frame,row.op,row.bound,row.seed),0,label+' controlled stop');assert.deepEqual(Array.from({length:5},(_,i)=>c.word(i)),[row.index,+row.fallback,+row.ownerUnchanged,+row.visible,row.spriteFrame],label);assert.deepEqual(Array.from({length:58},(_,i)=>c.real(i)),[...row.size,...row.uv,...row.matrix,...row.transform,...row.uvMatrix],label+' geometry');assert.deepEqual([c.rng(0),c.rng(1)],[row.rngSeed,row.rngCalls],label+' RNG');}
+const sha=b=>createHash('sha256').update(b).digest('hex'),tracked=[...sources,fixture,...['AnmVm','AnmOpcodes','AnmResource','AnmGeometry','Interpolation','Timer','Types','Rng','PortTitle','Th16AnmDispatch'].map(n=>`cpp/game/${n}.hpp`)];
+writeFileSync(resolve(root,'docs/porting/th16-sprite-verified.json'),JSON.stringify({passed:true,title:16,completeGame:false,cases:proof.cases.length,scope:proof.scope,handlers:proof.handlers,rng:proof.rng,binder:proof.binder,nativeExecutableSha256:proof.executableSha256,wasmSha256:sha(bytes),sourceHashes:Object.fromEntries(tracked.map(n=>[n,sha(readFileSync(resolve(rt,n)))])),toolHashes:Object.fromEntries(['tools/th16-sprite-check.mjs','tools/th16-sprite-native.py','tools/th-anm-handlers.py'].map(n=>[n,sha(readFileSync(resolve(root,n)))]))},null,2)+'\n');console.log(`PASS ${proof.cases.length} native TH16 sprite bindings`);

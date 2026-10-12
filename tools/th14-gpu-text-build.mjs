@@ -1,0 +1,12 @@
+import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+const root=resolve(import.meta.dirname,'..'),out=resolve(root,'artifacts/th14/gpu-text'),sdk=resolve(root,'runtimes/th12/tools/emsdk'),rt='runtimes/th12/th12_web/';mkdirSync(out,{recursive:true});
+const sources=['TextRaster','GlyphAtlas','ImageResample'].map(n=>rt+`cpp/game/${n}.cpp`).concat(rt+'tests/cpp/th14-gpu-text-fixture.cpp','runtimes/th12/portable/sdl/Renderer.cpp');
+const flags=['-O2','-g0','-std=c++17','-ffp-contract=off','-fno-exceptions','-fno-rtti','-DPORT_TITLE=14','--use-port=sdl3','--no-entry','-sDEFAULT_TO_CXX=1','-sMODULARIZE=1','-sEXPORT_ES6=1','-sENVIRONMENT=web','-sALLOW_MEMORY_GROWTH=1','-sMIN_WEBGL_VERSION=2','-sMAX_WEBGL_VERSION=2','-sGL_SUPPORT_AUTOMATIC_ENABLE_EXTENSIONS=0','-sEXPORTED_FUNCTIONS=_gpu_initialize,_gpu_text_case,_gpu_allocate,_gpu_release,_gpu_load,_gpu_upload_pixels,_gpu_scratch_pixels','-sEXPORTED_RUNTIME_METHODS=HEAPU8'];
+execFileSync(process.env.EMSDK_PYTHON||'C:/Users/APKGG/AppData/Local/Programs/Python/Python314/python.exe',[resolve(sdk,'upstream/emscripten/emcc.py'),...flags,...sources,'-o',resolve(out,'gpu.mjs')],{cwd:root,env:{...process.env,EM_CONFIG:resolve(sdk,'.emscripten'),EMSDK:sdk,TEMP:out,TMP:out,TMPDIR:out},stdio:'inherit',windowsHide:true});
+const sha=b=>createHash('sha256').update(b).digest('hex'),read=p=>readFileSync(resolve(root,p));
+const files=[...sources,rt+'tests/cpp/th14-gpu-text-data.hpp',...['TextRaster.hpp','GlyphAtlas.hpp','ImageResample.hpp','PortTitle.hpp'].map(n=>rt+'cpp/game/'+n),...['Renderer.hpp','AlphaConversion.hpp','GraphicsState.hpp','Shaders.hpp','ResampleShader.hpp'].map(n=>'runtimes/th12/portable/sdl/'+n),...['build.mjs','prepare.py','native.py','serve.mjs','html'].map(n=>'tools/th14-gpu-text-'+n).map(n=>n.endsWith('-html')?n.replace('-html','.html'):n)];
+writeFileSync(resolve(out,'build.json'),JSON.stringify({built:true,completeGame:false,nativeEquivalent:false,sources:Object.fromEntries(files.map(n=>[n,sha(read(n))])),wasmSha256:sha(readFileSync(resolve(out,'gpu.wasm'))),loaderSha256:sha(readFileSync(resolve(out,'gpu.mjs'))),nativeSha256:sha(readFileSync(resolve(out,'native.json'))),fontManifestSha256:sha(read('runtimes/th14/th14_web/assets/sdl-native/fonts/manifest.json')),flags},null,2)+'\n');
+console.log('Built production TH14 text raster and SDL GPU fixture');

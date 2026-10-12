@@ -1,0 +1,108 @@
+{
+  "passed": true,
+  "nativeEquivalent": false,
+  "completeGame": false,
+  "rows": [
+    {
+      "focused": false,
+      "power": 40,
+      "frames": 1200,
+      "draws": 40,
+      "maxFlying": 0,
+      "maxAttached": 0,
+      "maxExploding": 0,
+      "maxSlowed": 0,
+      "maxCircles": 0
+    },
+    {
+      "focused": false,
+      "power": 80,
+      "frames": 1200,
+      "draws": 40,
+      "maxFlying": 0,
+      "maxAttached": 0,
+      "maxExploding": 0,
+      "maxSlowed": 0,
+      "maxCircles": 0
+    },
+    {
+      "focused": false,
+      "power": 120,
+      "frames": 1200,
+      "draws": 40,
+      "maxFlying": 0,
+      "maxAttached": 0,
+      "maxExploding": 0,
+      "maxSlowed": 0,
+      "maxCircles": 0
+    },
+    {
+      "focused": false,
+      "power": 160,
+      "frames": 1200,
+      "draws": 40,
+      "maxFlying": 0,
+      "maxAttached": 0,
+      "maxExploding": 0,
+      "maxSlowed": 0,
+      "maxCircles": 0
+    },
+    {
+      "focused": true,
+      "power": 40,
+      "frames": 1200,
+      "draws": 40,
+      "maxFlying": 10,
+      "maxAttached": 10,
+      "maxExploding": 10,
+      "maxSlowed": 2,
+      "maxCircles": 10
+    },
+    {
+      "focused": true,
+      "power": 80,
+      "frames": 1200,
+      "draws": 40,
+      "maxFlying": 14,
+      "maxAttached": 14,
+      "maxExploding": 14,
+      "maxSlowed": 2,
+      "maxCircles": 14
+    },
+    {
+      "focused": true,
+      "power": 120,
+      "frames": 1200,
+      "draws": 40,
+      "maxFlying": 18,
+      "maxAttached": 18,
+      "maxExploding": 18,
+      "maxSlowed": 3,
+      "maxCircles": 18
+    },
+    {
+      "focused": true,
+      "power": 160,
+      "frames": 1200,
+      "draws": 40,
+      "maxFlying": 22,
+      "maxAttached": 22,
+      "maxExploding": 22,
+      "maxSlowed": 2,
+      "maxCircles": 22
+    }
+  ],
+  "archiveSha256": "57d84a5cbe82460931cca26f090a0fde7aef180889ce5bfe8315851fc97b0233",
+  "wasmSha256": "d4822c8a1ba09407a0aa8557a8e1fd78a20d1aa2ee6e81fab8bfcb633501f7fa",
+  "scope": "Actual retail Sakuya A SHT/ANM/ECL in stage 1, focused/unfocused firing at controlled power 40/80/120/160, refreshed invulnerability. Checks per-frame total and attached counters against live type-5 shot phases, flying/attachment/explosion, enemy slowdown and positive-radius period-2 callback circles. Excludes natural gameplay, native flow equivalence, replay, audio and GPU pixels.",
+  "sourceHashes": {
+    "cpp/game/ShotSakuyaTh14.cpp": "01bd0da188570d162c10edcd43747df098826f42cc57fae1f3e0acbc71276be6",
+    "cpp/game/ShotManager.cpp": "3107c37020b1b15e90a977da739ff661ea4c89f7dd995e150a5e367af1be595c",
+    "cpp/game/ShotManager.hpp": "dbc180d71596a955e83e45729c0c92404fbffe81f59b05a30bef484adf1e136c",
+    "cpp/game/ShotTh14.cpp": "66b9f9d0c46c1e3e1c8d619ecbb0012a818a944dc3acd921ad296d6e7d8da862",
+    "cpp/game/EnemyFrame.cpp": "3ca140d7f9e7c53e530482d539e81a8081b77375fd0b6e7a8fd474dbdf059a61",
+    "cpp/game/EnemyState.hpp": "f99512129b7be4abe4d9bb0ea8e15e3e12357705140e1761647f3662cecfc1ac",
+    "cpp/game/GameBattle.hpp": "306498d3664b5bbac1190a81286e463f2268a2ee001469a6c5aa4562a49678b3",
+    "tests/cpp/th14-end-session-fixture.cpp": "665ab714343a5b646ad438f777afed8c026d95551676cdbab7be9b55c10580ed"
+  }
+}

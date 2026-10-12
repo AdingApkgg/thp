@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "cases": 15,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "scope": "Whole retail456050 record allocation and playback restore plus455ed0 recording activation. Original28-word/position/weapon/header stores execute; allocator/memset/input/FPS storage and keyboard reset controlled. Synthetic globals differ across a controlled handoff boundary: allocation leaves snapshot zero, activation copies later values, playback restores those values before the wait. Does not simulate the native handoff callbacks or prove complete recorder/replay, combat or rendering equivalence. Production ReplayRecorder.start_stage later-entry headers compared byte-for-byte with the native activation output.",
+  "wasmSha256": "4acced65eb0ee3b4681cf6985cd0ec1baf3bad249308b31350b150c0766a24cd",
+  "sources": {
+    "tests/cpp/th14-replay-start-fixture.cpp": "1f8e7ae9d79fdd68d20405404d9a53af8bf18dbbf7a60e29bc0e651e5582861e",
+    "cpp/game/Replay.cpp": "7678a83c7bb737f4fe816ce239a9fa1c0f12935b900aa29bfed98b9abc3cb17d",
+    "cpp/game/ReplayRecorder.cpp": "609cd8ac701578aeeef1989345cd63e8c1b37d4575a85539fe173251756450b6",
+    "cpp/game/ResourceCrypt.cpp": "d57118f1114f3909c42a2e99e7df30e625f6563247a8118cd14bb9f68a0f97ef",
+    "cpp/game/Lzss.cpp": "7bf9b34043ee21f6e23244369069b2807314f3d7ddf7f37a556b34780afa4e48",
+    "cpp/game/Replay.hpp": "c722098dec81f838c6ccaa74d50dc9840538d84b20c56f9e67bf40cd12f6378b",
+    "cpp/game/ReplayRecorder.hpp": "1ba401416c12d04a6f2c94801c0f6d76c366f5da4d3d6719df1e9f137ba142fb"
+  },
+  "tools": {
+    "tools/th14-replay-start-native.py": "77aec7376b4bdfa330b6303573c121351261f37149fcd720775ad1ecb574db68",
+    "tools/th14-replay-start-check.mjs": "1c290434a65fe8cff02be36a6c626e73dfb5123d43f4d576de6fea18b17dbda4"
+  }
+}

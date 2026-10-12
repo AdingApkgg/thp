@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "queueCases": 1218,
+  "outputCases": 836,
+  "musicVolumeCases": 1530,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "0d9732291240cf460d9a7490a31267be16d52cde66c89a29929b6021cc14eaf7",
+  "scope": "Whole46e3d0 enqueue,46e470 positioned and nonnegative46e550 stop. Complete46ea0c..46eae5 queue processing and whole46eb30 play wrapper with controlled DirectSound COM status/stop/position/pan/volume/play outputs. All76 valid voice IDs,60 aggregation cap, full12-slot queue, mixed stopped/requeued entries, float pan and eight master-volume inputs, disabled/missing-buffer/stop states. Whole481200 music-volume setter covers102 master levels and15 base/fade volume values. Voice records resolve IDs as46f190; enqueue metadata preserves raw table indexing. No invalid native voice indexing, music controller/thread scheduling, COM failures or PCM/device equivalence claim.",
+  "sources": {
+    "tests/cpp/th14-sound-queue-fixture.cpp": "8fb93e2ea95f7d3ae5202d9f7b6602b2b584327820e76a3f44160dd8dd614aa9",
+    "cpp/game/SoundEffects.hpp": "0c4e1edcfea79a3ba8738351c1d13159fb7d65a53557eef763c41142560c6dc6",
+    "cpp/game/SoundEffects.cpp": "6a22e37def9e9889cdc4dee735cec29cc7f6933ed4ba8f1ac74600e2830e2a1d",
+    "cpp/game/Th14AudioTables.inc": "732729af26f7187a38dfbb9c56ad418ab6e24bd79fcd0cc9dde5e7831521f8f7",
+    "cpp/sdl/AudioDevice.cpp": "0b5895ba539eb2e331187aa191ae2eb49791b3ab46161efbde751844f0dde274"
+  },
+  "tools": {
+    "tools/th14-sound-queue-native.py": "831d50df62f03157d98a1799d060ea08d63e6e4dc7b5f739ef455ac344dac4b0",
+    "tools/th14-sound-queue-check.mjs": "eb12b38d4863716d0e68e6867368771e5e64724a7d5c82e20d49b9bc112599ec"
+  }
+}

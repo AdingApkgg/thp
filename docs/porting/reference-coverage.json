@@ -1,0 +1,275 @@
+{
+  "checkedAt": "2026-10-03T22:56:31.579087+00:00",
+  "scope": "Only user-supplied directories in port-scope.json, excluding published titles; TH06 New Classic is a separate target. Metadata availability only.",
+  "sites": [
+    {
+      "url": "https://api.steinsgateon.com/",
+      "catalog": "https://api.steinsgateon.com/release-catalog.json",
+      "manifest": "https://api.steinsgateon.com/host-manifest.json",
+      "games": {
+        "th15": {
+          "revision": "th15-06ad14051027a0b2",
+          "descriptor": "./packages/th15/package.json",
+          "runtime": "./runtime/th15/th15.html"
+        }
+      }
+    },
+    {
+      "url": "https://touhou.vip/",
+      "catalog": "https://touhou.vip/release-catalog.json",
+      "manifest": "https://touhou.vip/host-manifest.json",
+      "games": {
+        "th06": {
+          "revision": "0fdb4ee3acc78b2a",
+          "descriptor": "th06.package.json",
+          "runtime": "runtime/th06/67be4524066a23a17bd6fb084abf58899462447248331fb9081e66b27c0a7110/th06.html?hosted=1"
+        },
+        "th07": {
+          "revision": "7a883a4d2c571d80",
+          "descriptor": "th07.package.json",
+          "runtime": "runtime/th07/3e3ee232b3a8e90b1e5bb748339bc7da57b6a3918c8952c281ff9f33cfa80351/th07.html?hosted=1"
+        },
+        "th08": {
+          "revision": "a9c7cc3da83f815b",
+          "descriptor": "th08.package.json",
+          "runtime": "runtime/th08/e348a1a136a580fc10c5c113b914ae872b6d8ed7a8390df4020660b7da94833b/th08.html?hosted=1"
+        },
+        "th09": {
+          "revision": "8c8f7d94f8bde075",
+          "descriptor": "th09.package.json",
+          "runtime": "runtime/th09/019cff34ca616e013ce1b3ad4c93b4f9dfda142d8e4a004f312f23531c022fd1/th09.html?hosted=1"
+        },
+        "th10": {
+          "revision": "877c5cbdd7edefb5",
+          "descriptor": "th10.package.json",
+          "runtime": "runtime/th10/65e84a2f42889226a5fb78a4435aa2075a08292f66d29648db4478fd830cfef1/th10.html?hosted=1"
+        },
+        "th11": {
+          "revision": "b23071f1ba10db5a",
+          "descriptor": "th11.package.json",
+          "runtime": "runtime/th11/579fb3dfe690006a26bd7fb5e99163056df594eb4454ed6f6edf08a28e3dfa65/th11.html?hosted=1"
+        }
+      }
+    },
+    {
+      "url": "https://beta.touhou.vip/",
+      "catalog": "https://beta.touhou.vip/release-catalog.json",
+      "manifest": "https://beta.touhou.vip/host-manifest.json",
+      "games": {
+        "th06": {
+          "revision": "0fdb4ee3acc78b2a",
+          "descriptor": "th06.package.json",
+          "runtime": "runtime/th06/9456c43a52fcbd719ba5afc20723e5dc6b335917b2e085bd953a4d17430bab62/th06.html?hosted=1"
+        },
+        "th07": {
+          "revision": "7a883a4d2c571d80",
+          "descriptor": "th07.package.json",
+          "runtime": "runtime/th07/97e4351781d16182269b2de8566b8e302dc0737f14ce0b8059543e3590f01215/th07.html?hosted=1"
+        },
+        "th08": {
+          "revision": "22b099ec8988b960",
+          "descriptor": "th08.package.json",
+          "runtime": "runtime/th08/1548cdd29a8c725403e7a9518081c1561257be2c6bf10dc1cc8e1b3c8e40c50b/th08.html?hosted=1"
+        },
+        "th09": {
+          "revision": "8c8f7d94f8bde075",
+          "descriptor": "th09.package.json",
+          "runtime": "runtime/th09/4fc243d91b9b6774d90f049c64f7c81b512b0321f90ae59b841e30a44f13ba9a/th09.html?hosted=1"
+        },
+        "th10": {
+          "revision": "70c7e5217be1bd82",
+          "descriptor": "th10.package.json",
+          "runtime": "runtime/th10/2e0246c2d20f37b8faf7a53a1a82fc88ef73d1201077e4fde29f2c8a76133d37/th10.html?hosted=1"
+        },
+        "th11": {
+          "revision": "47411e65e75a7ec3",
+          "descriptor": "th11.package.json",
+          "runtime": "runtime/th11/d9dcda0e326f855b38d398ff173159a29a4e4c3d2d22814cf3b6b66e4395f48d/th11.html?hosted=1"
+        },
+        "th20": {
+          "revision": "cd771593d64d506e",
+          "descriptor": "th20.package.json",
+          "runtime": "runtime/th20/40fe49d1b5838f847e287950d8740c263f26b3dad359c377ad03a56aa1af1e87/th20.html?hosted=1"
+        }
+      }
+    }
+  ],
+  "titles": [
+    {
+      "game": "th06",
+      "category": "windows-mainline",
+      "publishedBy": [
+        "https://touhou.vip/",
+        "https://beta.touhou.vip/"
+      ],
+      "missingFromReferences": false,
+      "localDirectory": "H:\\Games\\th\\06",
+      "localExecutable": "H:\\Games\\th\\06\\th06.exe",
+      "workspaceTarget": false
+    },
+    {
+      "game": "th06nc",
+      "category": "windows-variant",
+      "publishedBy": [],
+      "missingFromReferences": true,
+      "localDirectory": "H:\\Games\\th\\06nc",
+      "localExecutable": "H:\\Games\\th\\06nc\\th06nc.exe",
+      "workspaceTarget": false
+    },
+    {
+      "game": "th07",
+      "category": "windows-mainline",
+      "publishedBy": [
+        "https://touhou.vip/",
+        "https://beta.touhou.vip/"
+      ],
+      "missingFromReferences": false,
+      "localDirectory": "H:\\Games\\th\\07",
+      "localExecutable": "H:\\Games\\th\\07\\th07.exe",
+      "workspaceTarget": false
+    },
+    {
+      "game": "th08",
+      "category": "windows-mainline",
+      "publishedBy": [
+        "https://touhou.vip/",
+        "https://beta.touhou.vip/"
+      ],
+      "missingFromReferences": false,
+      "localDirectory": "H:\\Games\\th\\08",
+      "localExecutable": "H:\\Games\\th\\08\\th08.exe",
+      "workspaceTarget": false
+    },
+    {
+      "game": "th09",
+      "category": "windows-mainline",
+      "publishedBy": [
+        "https://touhou.vip/",
+        "https://beta.touhou.vip/"
+      ],
+      "missingFromReferences": false,
+      "localDirectory": "H:\\Games\\th\\09",
+      "localExecutable": "H:\\Games\\th\\09\\th09.exe",
+      "workspaceTarget": false
+    },
+    {
+      "game": "th10",
+      "category": "windows-mainline",
+      "publishedBy": [
+        "https://touhou.vip/",
+        "https://beta.touhou.vip/"
+      ],
+      "missingFromReferences": false,
+      "localDirectory": "H:\\Games\\th\\10",
+      "localExecutable": "H:\\Games\\th\\10\\th10.exe",
+      "workspaceTarget": false
+    },
+    {
+      "game": "th11",
+      "category": "windows-mainline",
+      "publishedBy": [
+        "https://touhou.vip/",
+        "https://beta.touhou.vip/"
+      ],
+      "missingFromReferences": false,
+      "localDirectory": "H:\\Games\\th\\11",
+      "localExecutable": "H:\\Games\\th\\11\\th11.exe",
+      "workspaceTarget": false
+    },
+    {
+      "game": "th12",
+      "category": "windows-mainline",
+      "publishedBy": [],
+      "missingFromReferences": true,
+      "localDirectory": "H:\\Games\\th\\12",
+      "localExecutable": "H:\\Games\\th\\12\\th12.exe",
+      "workspaceTarget": true
+    },
+    {
+      "game": "th13",
+      "category": "windows-mainline",
+      "publishedBy": [],
+      "missingFromReferences": true,
+      "localDirectory": "H:\\Games\\th\\13",
+      "localExecutable": "H:\\Games\\th\\13\\th13.exe",
+      "workspaceTarget": true
+    },
+    {
+      "game": "th14",
+      "category": "windows-mainline",
+      "publishedBy": [],
+      "missingFromReferences": true,
+      "localDirectory": "H:\\Games\\th\\14",
+      "localExecutable": "H:\\Games\\th\\14\\th14.exe",
+      "workspaceTarget": true
+    },
+    {
+      "game": "th15",
+      "category": "windows-mainline",
+      "publishedBy": [
+        "https://api.steinsgateon.com/"
+      ],
+      "missingFromReferences": false,
+      "localDirectory": "H:\\Games\\th\\15",
+      "localExecutable": "H:\\Games\\th\\15\\th15.exe",
+      "workspaceTarget": false
+    },
+    {
+      "game": "th16",
+      "category": "windows-mainline",
+      "publishedBy": [],
+      "missingFromReferences": true,
+      "localDirectory": "H:\\Games\\th\\16",
+      "localExecutable": "H:\\Games\\th\\16\\th16.exe",
+      "workspaceTarget": true
+    },
+    {
+      "game": "th17",
+      "category": "windows-mainline",
+      "publishedBy": [],
+      "missingFromReferences": true,
+      "localDirectory": "H:\\Games\\th\\17",
+      "localExecutable": "H:\\Games\\th\\17\\th17.exe",
+      "workspaceTarget": true
+    },
+    {
+      "game": "th18",
+      "category": "windows-mainline",
+      "publishedBy": [],
+      "missingFromReferences": true,
+      "localDirectory": "H:\\Games\\th\\18",
+      "localExecutable": "H:\\Games\\th\\18\\th18.exe",
+      "workspaceTarget": true
+    },
+    {
+      "game": "th19",
+      "category": "windows-mainline",
+      "publishedBy": [],
+      "missingFromReferences": true,
+      "localDirectory": "H:\\Games\\th\\19",
+      "localExecutable": "H:\\Games\\th\\19\\th19.exe",
+      "workspaceTarget": true
+    },
+    {
+      "game": "th20",
+      "category": "windows-mainline",
+      "publishedBy": [
+        "https://beta.touhou.vip/"
+      ],
+      "missingFromReferences": false,
+      "localDirectory": "H:\\Games\\th\\20",
+      "localExecutable": null,
+      "workspaceTarget": false
+    }
+  ],
+  "missing": [
+    "th06nc",
+    "th12",
+    "th13",
+    "th14",
+    "th16",
+    "th17",
+    "th18",
+    "th19"
+  ]
+}

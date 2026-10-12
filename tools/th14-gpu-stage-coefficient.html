@@ -1,0 +1,21 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>TH14 原着色器 RGBA32F 对照</title>
+<style>body{background:#191c26;color:#eee;font:16px system-ui;margin:28px}button{font:inherit;padding:10px}canvas{width:160px;height:120px}pre{white-space:pre-wrap;max-width:1100px}</style>
+<h1>TH14 原着色器 RGBA32F 对照</h1><p>独立诊断直接输出雾系数；原生白色纹理因子、黑色雾色读取同一系数。修改片元输出仅作定位，不作为未修改着色器的整幅颜色证明。</p>
+<nav><a href="/stage-coefficient">生产原式</a> / <a href="/stage-coefficient?variant=coefficient-candidate">指数与雾色候选</a></nav>
+<button id="run">直接读取 7104 场景浮点颜色</button><p id="status">等待运行</p><canvas id="canvas" width="640" height="480"></canvas><pre id="result"></pre>
+<script type="module">
+const variant=new URLSearchParams(location.search).get('variant')||'coefficient-before';if(!['coefficient-before','coefficient-candidate'].includes(variant))throw Error('未知模块');
+const hex=async b=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',b)),n=>n.toString(16).padStart(2,'0')).join('');
+document.querySelector('#run').addEventListener('click',async()=>{const button=document.querySelector('#run'),status=document.querySelector('#status'),result=document.querySelector('#result');button.disabled=true;try{
+ const [native,bytes,build]=await Promise.all([fetch('./stage-coefficient/native.json').then(r=>r.json()),fetch('./stage-coefficient/native.rgba32f').then(r=>r.arrayBuffer()),fetch('./stage/'+variant+'/build.json').then(r=>r.json())]);const expected=new DataView(bytes),groups=Array.from({length:4},(_,i)=>({channel:'rgba'[i],compared:0,differentFloats:0,maxDelta:0,first:[]})),critical=[];
+ const create=(await import('./stage/'+variant+'/gpu.mjs')).default,core=await create({canvas:document.querySelector('#canvas')});if(!core._gpu_initialize())throw Error('浮点目标初始化失败');
+ const points=[[2127,25,10],[2823,16,14],[2831,16,14],[3087,25,10],[3855,25,10],[4070,13,5],[4623,25,10],[6543,25,10],[6735,25,10]],actual=new Uint8Array(bytes.byteLength);let exactCases=0;
+ for(let i=0;i<native.cases.length;i++){
+  const c=native.cases[i],p=core._gpu_stage_direct_float_case(c.profile,c.world,c.view,c.projection,c.textureTransform,c.fog,c.range,c.point);if(!p)throw Error('浮点绘制/读取错误 '+i);const pixel=new Uint8Array(core.HEAPU8.buffer,p,16384),v=new DataView(pixel.buffer,pixel.byteOffset,16384);actual.set(pixel,i*16384);let differences=0;
+  for(let j=0;j<1024;j++){const off=i*16384+j*16;if(expected.getFloat32(off+12,true)===1)continue;for(let ch=0;ch<4;ch++){const g=groups[ch],a=v.getFloat32(j*16+ch*4,true),b=expected.getFloat32(off+ch*4,true);if(!Number.isFinite(a))throw Error('非法浮点输出');g.compared++;const delta=Math.abs(a-b);if(a!==b){differences++;g.differentFloats++;g.maxDelta=Math.max(g.maxDelta,delta);if(g.first.length<4)g.first.push({index:i,x:j%32,y:Math.floor(j/32),native:b,portable:a,delta});}}}
+  if(!differences)exactCases++;
+  for(const [index,x,y] of points)if(i===index){const j=y*32+x;critical.push({index,x,y,fog:c.fog,native:Array.from({length:4},(_,ch)=>expected.getFloat32(i*16384+j*16+ch*4,true)),portable:Array.from({length:4},(_,ch)=>v.getFloat32(j*16+ch*4,true))});}
+ }
+ result.textContent=JSON.stringify({variant,diagnosticOnly:true,completeGame:false,nativeEquivalent:false,shaderUnmodifiedFromBase:false,shaderSha256:build.shaderSha256,cases:native.cases.length,exactForegroundCases:exactCases,vertexProcessing:native.vertexProcessing,nativePixelsSha256:await hex(bytes),portablePixelsSha256:await hex(actual),wasmSha256:build.wasmSha256,groups,critical},null,2);status.textContent='已直接读取 7104 场景 RGBA32F';
+ }catch(e){status.textContent='诊断失败：'+e.message;result.textContent=String(e.stack||e);}finally{button.disabled=false;}});
+</script></html>

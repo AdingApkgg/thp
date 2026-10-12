@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "title": 16,
+  "completeGame": false,
+  "cases": 288,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "726b46abe4f808fad41a25d480b6f6015829ff60afba1313ed9fd4e1b203a3ce",
+  "scope": "Full445d40 default branch and445e20, original main/season packed lookup and owners0/255 execute. Native ANM lookup controlled with valid VM; optional VM interrupt callback absent. Z .1, interrupt1, speed multiplier, state2, VM position, source active flag and source ID clear; signed returned damage. All fields exact. Missing VM/area guards reject unsafe cases; extra/beam/freeze callbacks, full collision delivery and original pixels excluded.",
+  "sourceHashes": {
+    "tests/cpp/th16-shot-hit-fixture.cpp": "acccdc3cb5f5b8af9f2360142f08cc239242347fab51da22107e95713212595f",
+    "cpp/game/ShotTh16.cpp": "2ea54ff1516113d518b3989b6af47cbe670c37a37c0fdd98aac89b576bac5a7a",
+    "cpp/game/ShotTh16.hpp": "548338c9390afa2ac709a4ca932cc9f435d94b1e55b8293e1630daad02493517",
+    "cpp/game/AnmVm.cpp": "18a1bf29a28e105c06be4173d407203408459fa25ce0364fe3dd6046cdc7c4c5"
+  },
+  "toolHashes": {
+    "tools/th16-shot-hit-native.py": "d8c728fd9dbf17017994e459175f60c43d5cfa34bc64395fca5245ada9174abb",
+    "tools/th16-shot-hit-check.mjs": "6ee0ea75e899da4c49e9de8ec0d6153bc00cc21380b4d917116d908ac5f7e377"
+  }
+}

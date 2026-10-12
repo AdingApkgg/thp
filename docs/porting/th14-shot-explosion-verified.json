@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "hits": 144,
+  "movingCircleFrames": 3456,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "901a6f9059cdc17e6bc71dbdff54d9c3dfcce11b6a0db762396f38916fcbc0e5",
+  "scope": "Retail 452e20 callback 4 plus actual 450130 allocation and 44e005 moving-circle updates. Compares circle 24/1/20/period4, original area deactivation, slot removal, shot state 2/speed2, copied mode-zero movement including retained velocity.z, counters 184b8/184bc with unsigned wrap, returned damage, native polar/floor, radius and countdown at rates 0/.5/1/1.25 through expiry. ANM/audio are controlled native boundaries; production delivery ordering, other movement modes, pool exhaustion, reward prelude and complete shot lifecycle are separate.",
+  "sourceHashes": {
+    "tests/cpp/th14-shot-explosion-fixture.cpp": "948c75527fbc4ed8019b0c138ee77928a05314c60bb6f6fa5ccc791338f41eab",
+    "cpp/game/ShotCallbacksTh14.cpp": "e9fa715af45c0ec7187f8859870fbb0534e92bb92b9b85788ddb8b0b77e34f2c",
+    "cpp/game/ShotDamageTh14.cpp": "a063bc7179916295185143bc75083e46dcd1f6351d9719b6818beaf25749073f",
+    "cpp/game/Movement.cpp": "ea823e71f48f15d1d5e038c4fa62b6a4dfcaa31b087ebc183e42ef2dd439cccb",
+    "cpp/game/ShotManager.hpp": "19197e514f880212836e178b1551e9319653a9214c5384e9016cf258e3f1a252",
+    "cpp/game/ShotDamageTh14.hpp": "5c243a3def8f90c62b008737221e41c7ee5240d5c32a27489a4551e77111b288"
+  },
+  "toolHashes": {
+    "tools/th14-shot-explosion-native.py": "1710efedf7303f9ac8e3e4bf316f424c7dbea5124bf4b6bc11ae75cbf5fcbd5b",
+    "tools/th14-shot-explosion-check.mjs": "ebb62cd37920bead8ebffec641ff959f2857d39e0334af07fa59aac9bc613a14"
+  }
+}

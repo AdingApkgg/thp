@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {execFileSync} from 'node:child_process';
+import {WASI} from 'node:wasi';
+import {createHash} from 'node:crypto';
+const root=resolve(import.meta.dirname,'..');
+if(!process.argv.includes('--skip-build'))execFileSync(process.execPath,['tools/th14-startup-session-check.mjs'],{cwd:root,stdio:'inherit',windowsHide:true});
+const bytes=readFileSync(resolve(root,'artifacts/th14/startup-session/startup.wasm')),wasi=new WASI({version:'preview1',args:[],env:{},preopens:{}}),{instance}=await WebAssembly.instantiate(bytes,{wasi_snapshot_preview1:wasi.wasiImport});wasi.initialize(instance);const c=instance.exports;
+const target=JSON.parse(readFileSync(resolve(root,'runtimes/th14/target.json'),'utf8')),archive=readFileSync(target.dataArchives['th14.dat'].path),p=c.allocate(archive.length);new Uint8Array(c.memory.buffer,p,archive.length).set(archive);assert.equal(c.open_archive(p,archive.length),1);assert.equal(c.open_title(),1);
+const native=JSON.parse(readFileSync(resolve(root,'artifacts/th14/results-native.json'),'utf8'));assert.equal(native.executableSha256,'f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353');
+const value=n=>c.results_probe_value(n),hex=p=>Buffer.from(new Uint8Array(c.memory.buffer,p,9)).toString('hex');
+const compare=(r,fields)=>{for(const [name,index] of fields)assert.equal(value(index),r[name],name);};
+const shared=[['screen',0],['substate',1],['selected',2],['nameSelected',3],['nameLength',4],['unranked',5]];
+for(const row of native.init){assert.equal(c.results_probe_setup(row.selection,row.difficulty,0,14,0,0),1);c.results_probe_rank(row.rank);assert.equal(c.results_probe_tick(0,0),1);compare(row.result,shared);assert.equal(hex(c.results_probe_name_bytes()),row.result.name);assert.equal(value(6),17);
+ const created=Array.from({length:value(9)},(_,n)=>({script:c.results_probe_creation(n,0),file:c.results_probe_creation(n,2),depth:c.results_probe_creation(n,4)})).filter(x=>!x.depth);
+ assert.deepEqual(created.map(x=>[x.file===2?'ascii':'create',x.script]),row.result.events.filter(e=>['ascii','create'].includes(e[0])));
+}
+for(const row of native.exits){assert.equal(c.results_probe_setup(row.selection,row.difficulty,row.continues,14,3,row.timer),1);assert.equal(c.results_probe_tick(0,0),1);compare(row.result,[['screen',0],['substate',1],['selected',2]]);assert.equal(value(6),row.result.events.find(e=>e[0]==='music')?.[1]??-1);}
+for(const row of native.names){assert.equal(c.results_probe_setup(0,1,0,14,2,17),1);c.results_probe_name(row.selected,row.length);assert.equal(c.results_probe_tick(row.pressed,0),1);compare(row.result,shared);assert.equal(hex(c.results_probe_name_bytes()),row.result.name);assert.equal(hex(c.results_probe_saved_name()),row.result.savedName);assert.deepEqual(Array.from({length:value(7)},(_,n)=>value(8)),row.result.events.filter(e=>e[0]==='sound').map(e=>e[1]));}
+for(const row of native.replay){assert.equal(c.results_probe_setup(0,1,0,15,row.substate,row.timer),1);assert.equal(c.results_probe_tick(row.pressed,0),1);compare(row.result,[['screen',0],['substate',1],['selected',2]]);assert.equal(value(6),row.result.events.find(e=>e[0]==='music')?.[1]??-1);if(!row.substate)assert.equal(value(11),1,'ReplaySave uses real title101');}
+const sha=b=>createHash('sha256').update(b).digest('hex');writeFileSync(resolve(root,'docs/porting/th14-results-verified.json'),JSON.stringify({passed:true,completeGame:false,nativeEquivalent:false,entries:native.init.length,exits:native.exits.length,names:native.names.length,replayBoundaries:native.replay.length,nativeExecutableSha256:native.executableSha256,wasmSha256:sha(bytes),scope:native.scope+' Production compares real original-resource top-level creation scripts, menu states/name bytes/default-name writes, routing and sound/music requests. Native score insertion controlled; production uses real ScoreFile insertion. Actual callback caller clock update and GPU excluded.',sources:Object.fromEntries(['runtimes/th12/th12_web/cpp/game/TitleResults.cpp','runtimes/th12/th12_web/tests/cpp/th14-startup-fixture.cpp','tools/th14-results-native.py','tools/th14-results-check.mjs'].map(n=>[n,sha(readFileSync(resolve(root,n)))]))},null,2)+'\n');console.log(`PASS ${native.init.length} original Results entries, ${native.exits.length} exits, ${native.names.length} name inputs, ${native.replay.length} ReplaySave boundaries`);

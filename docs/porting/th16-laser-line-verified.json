@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "initializations": 256,
+  "frames": 18516,
+  "cancellations": 840,
+  "deliveries": 5600,
+  "collisionCases": 1296,
+  "circleCuts": 1344,
+  "rectangleCuts": 4032,
+  "fragmentRequests": 208,
+  "integratedFragments": 208,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "e751ad093bd72a8884ca70a4764b6ed35b6a03adc52e64c501e17c8327e3626b",
+  "scope": "Own431b30 state initialization and432f40 motion through4333ae, ETEX1/4/8/16/80/100/400/800/1000/8000/10000/100000/80000000, clocks and434cd0 full cancellation. Native433510 collision geometry, graze projection/clocks and hit rectangle requests. ANM, sound, effects/rewards, player probe/hit and rectangle consumer controlled. Polar unwritten scratchZ controlled zero. Own434730 circles/433860 rotated rectangles and358-byte fragments also execute. Production fragment registry/initialization uses controlled blankANM. Effect/reward registration and pixel equivalence remain unverified; other ETEX and full game are not covered.",
+  "sourceHashes": {
+    "tests/cpp/th16-laser-line-fixture.cpp": "844c1c2a8adc685589aa112ca6cc9e3f1f2e8ec9de18a4013f976f05a475aa1a",
+    "cpp/game/LaserLineTh16.cpp": "dd6728cd8d4b97b6dc6a958907d01188fb39bff8d4073b9a685dc0f767f609b9",
+    "cpp/game/LaserCutTh16.cpp": "73eb6855a2904925cfdaf36819f87a901b0c749661e2979103f9cdd670e12a97",
+    "cpp/game/LaserManager.cpp": "229761c0414d79e24cedf4cb2b070dd93e484a7f2ede61ab0d86f0bab37b8e39",
+    "cpp/game/LaserManager.hpp": "2cc84e05ba3191d90f94dbbb895707b1dd5bdc3fe6a367cf32d90fd61f76bb5f",
+    "cpp/game/LaserState.hpp": "a81bc270664f55ae6690e13b7242d0384b530681fc52fbaeddad4a709f1c6543"
+  }
+}

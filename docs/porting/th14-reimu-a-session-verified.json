@@ -1,0 +1,114 @@
+{
+  "passed": true,
+  "nativeEquivalent": false,
+  "completeGame": false,
+  "rows": [
+    {
+      "focused": false,
+      "firing": false,
+      "ticks": 1633,
+      "draws": 55,
+      "ended": true,
+      "minX": -22.4140625,
+      "maxX": 3.2265625,
+      "maxShift": 12,
+      "areaSamples": 1000,
+      "periods": [
+        10,
+        1
+      ],
+      "liveAreas": [
+        4,
+        3,
+        2,
+        1
+      ],
+      "distinctAreaTransforms": 54,
+      "phase": 3
+    },
+    {
+      "focused": false,
+      "firing": true,
+      "ticks": 1644,
+      "draws": 55,
+      "ended": true,
+      "minX": -22.4140625,
+      "maxX": 3.2265625,
+      "maxShift": 12,
+      "areaSamples": 1000,
+      "periods": [
+        10,
+        1
+      ],
+      "liveAreas": [
+        4,
+        3,
+        2,
+        1
+      ],
+      "distinctAreaTransforms": 54,
+      "phase": 3
+    },
+    {
+      "focused": true,
+      "firing": false,
+      "ticks": 1405,
+      "draws": 47,
+      "ended": true,
+      "minX": -22.4140625,
+      "maxX": 3.2265625,
+      "maxShift": 12,
+      "areaSamples": 1000,
+      "periods": [
+        10,
+        1
+      ],
+      "liveAreas": [
+        4,
+        3,
+        2,
+        1
+      ],
+      "distinctAreaTransforms": 54,
+      "phase": 3
+    },
+    {
+      "focused": true,
+      "firing": true,
+      "ticks": 1694,
+      "draws": 57,
+      "ended": true,
+      "minX": -22.4140625,
+      "maxX": 3.2265625,
+      "maxShift": 12,
+      "areaSamples": 1000,
+      "periods": [
+        10,
+        1
+      ],
+      "liveAreas": [
+        4,
+        3,
+        2,
+        1
+      ],
+      "distinctAreaTransforms": 54,
+      "phase": 3
+    }
+  ],
+  "archiveSha256": "57d84a5cbe82460931cca26f090a0fde7aef180889ce5bfe8315851fc97b0233",
+  "wasmSha256": "d4822c8a1ba09407a0aa8557a8e1fd78a20d1aa2ee6e81fab8bfcb633501f7fa",
+  "scope": "Actual default Normal stage-1 retail GameSession, Reimu A focused/unfocused and firing/not firing, Bomb at tick 180, no stock/power/invulnerability top-up. Checks stock consumption, four 300-damage callback areas, native period changes, staggered expiry, varied animation-driven transforms, automatic lateral displacement, >=250 finish and flag cleanup, and graphics submissions. Excludes native call-order, GPU pixels, undefined native polar z and later-stage laser consumers.",
+  "sourceHashes": {
+    "cpp/game/GameSession.cpp": "ef06df10f3d878e674188e100a140b2375b401a12ce1075caec4f1e9e5351011",
+    "cpp/game/GameBattle.cpp": "3b16bd1f0c2cf8ebdcc0f89114f5e2ada97b1d17166e65bed9f1e8a2c50442f7",
+    "cpp/game/GameBattle.hpp": "306498d3664b5bbac1190a81286e463f2268a2ee001469a6c5aa4562a49678b3",
+    "cpp/game/BombController.cpp": "9b51bc3ca665d2d1e4488ddb0fa3244e9749ed0bea5e1f25cdd8db37006131b2",
+    "cpp/game/BombController.hpp": "938d8406738c6e5da09b5313cc55251e1a5e78e5cb7a593eb0d2f664796b6b0d",
+    "cpp/game/ShotTh14.cpp": "66b9f9d0c46c1e3e1c8d619ecbb0012a818a944dc3acd921ad296d6e7d8da862",
+    "cpp/game/ShotManager.hpp": "dbc180d71596a955e83e45729c0c92404fbffe81f59b05a30bef484adf1e136c",
+    "cpp/game/PlayerMotion.cpp": "a907527e7d3e6a0ec1ed38359fb5c26c549b5cd2ed611c09095717573ba40f06",
+    "cpp/game/PlayerFrame.cpp": "144e80ca42374065563e501a9ff7ab8bb6b4c7b96191be324638b5d35130db4d",
+    "tests/cpp/th14-end-session-fixture.cpp": "665ab714343a5b646ad438f777afed8c026d95551676cdbab7be9b55c10580ed"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "browserUrl": "http://127.0.0.1:8132/",
+  "wasmSha256": "da1dc139bf0de99808194a8f04950c3ef2d445d83e39d4c11a1c475c0afb92bf",
+  "wasmBytes": 1766784,
+  "observedState": "title stage0/frame1559/60FPS after core upload queue",
+  "screenshot": {
+    "path": "artifacts/th14/browser-core-loading-oct11.jpg",
+    "sha256": "a66faf9f0f299b563dd5eec4016cea13db484c5f8a8d55e15c29d0398f610a2f"
+  },
+  "logs": {
+    "path": "artifacts/th14/browser-core-loading-logs-oct11.json",
+    "sha256": "15bbb9c98a915d8f3124963de3ba27eac22caea79a003065e98ce4817a1a2a91"
+  },
+  "latestBoot": [
+    {
+      "level": "log",
+      "message": "[clock14] monotonic ticks=3914; initial seed=3914",
+      "timestamp": "2026-10-10T18:51:31.588Z",
+      "url": "http://127.0.0.1:8132/th11-harness.mjs"
+    },
+    {
+      "level": "log",
+      "message": "[loading14] ascii script17 started; 9 resource uploads pending",
+      "timestamp": "2026-10-10T18:51:31.951Z",
+      "url": "http://127.0.0.1:8132/th11-harness.mjs"
+    },
+    {
+      "level": "log",
+      "message": "[loading14] resource uploads complete; interrupt1 delivered",
+      "timestamp": "2026-10-10T18:51:32.136Z",
+      "url": "http://127.0.0.1:8132/th11-harness.mjs"
+    }
+  ],
+  "scope": "Actual browser reload of deferred core template/title initialization, nine uploads complete and title running. CPU decode remains synchronous. No captured loading pixels or native wallclock/GPU/audio/complete campaign equivalence."
+}

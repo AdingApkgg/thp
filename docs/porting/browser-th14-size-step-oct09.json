@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-09",
+  "verified": false,
+  "url": "http://127.0.0.1:8126/",
+  "sdlWasmSha256": "30227454e1cfc59c1e45400c7a5c125b99920c34b2e8172a4efcfdc46218ff9b",
+  "observations": [
+    "Normal / Reimu A entered stage 1.",
+    "HUD glyphs and some sprites were incorrect.",
+    "End choices were not accepted; the legacy script 98 displayed Extend instead of the retail TH14 menu. This was diagnosed and corrected in the subsequent end-menu increment."
+  ],
+  "screenshots": [
+    {
+      "path": "artifacts/th14/browser-size-step-normal-oct09.jpg",
+      "sha256": "665ffd3072408186d1898a007605f098f240715177a8c2d8aacdbd655adc0c6b",
+      "caption": "Ordinary run, stage 1 frame 1293; before ASCII/end-menu fixes."
+    }
+  ],
+  "followup": "docs/porting/th14-end-ascii-manual-progress-oct09.json",
+  "limitations": [
+    "Not a 1:1 restoration or ordinary full-game acceptance.",
+    "The screenshot does not capture the later Extend observation.",
+    "Do not overwrite browser-run-th14.json, which belongs to the other verification task."
+  ]
+}

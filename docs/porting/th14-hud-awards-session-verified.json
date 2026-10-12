@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "cases": 42,
+  "submissions": 810,
+  "life": [
+    {
+      "selection": 0,
+      "timeAnimationRetiredAt": 170
+    },
+    {
+      "selection": 1,
+      "timeAnimationRetiredAt": 170
+    },
+    {
+      "selection": 2,
+      "timeAnimationRetiredAt": 170
+    },
+    {
+      "selection": 3,
+      "timeAnimationRetiredAt": 170
+    },
+    {
+      "selection": 4,
+      "timeAnimationRetiredAt": 170
+    },
+    {
+      "selection": 5,
+      "timeAnimationRetiredAt": 170
+    }
+  ],
+  "archiveSha256": "57d84a5cbe82460931cca26f090a0fde7aef180889ce5bfe8315851fc97b0233",
+  "wasmSha256": "490c9dcb6bafeef187eef0a978c54542a0763ba1b14e8731d96747499e2d58a0",
+  "scope": "Actual GameSession.begin/draw with original archive, six loadouts, real front112 result and front95 time roots, GameBattle.hud_input and Hud.queue_text. Compares seven native-oracle conditions per loadout including absent/stale VM, hidden show flag, invalid encoding and1000-second frame cap, all request bytes/position/color/font/pass/scale. Real ANM retirement and stale time show-flag reset observed. Reward/time inputs and VM alpha controlled; no artificial campaign-clear claim. Full draw finite submissions are checked, not native GPU/pixel/audio equality.",
+  "sourceHashes": {
+    "tests/cpp/th14-hud-awards-session-fixture.cpp": "e12160ec4e29fe143d19c7023485d0c25fdf743ac3ca6bcba611b5114268b31e",
+    "tests/cpp/th14-session-fixture.cpp": "1f4c8b679e826c3d3bb48f02d576aae2f46dc87c79dacdd3cd831ade9c47e2cd",
+    "cpp/game/GameBattle.cpp": "5d65ecaaf26bc58a631771c71c81bbeb609ada51e898a84fc83a0d68f0444961",
+    "cpp/game/GameSession.cpp": "de0ad372a6a56f3078001a8f501600fe2028fa6da60a2f85f1b920898604a22c",
+    "cpp/game/Hud.cpp": "a9edec4ed2891651cf2087b0a4454586d482508c566ed795f2f3935ce90a950a",
+    "cpp/game/HudTh14Text.cpp": "2288becc9654903b4431553a7bea129434e56dcd6208118346a622804838faea",
+    "cpp/game/SpellTiming.cpp": "b47cce01612c88caeebba8276aba03a349698eab08f45458955705fd5c460a5f",
+    "cpp/game/HudTh14Notice.cpp": "4343bc37d695c2927692e5a8070c2eaa517a8f5d8d79e94722552b74b16d1027",
+    "cpp/game/AsciiText.cpp": "9a5f0eefcc5973a1f04a55d975b25ff28c2b20bbc0abbc5b10d41a3564b36788",
+    "cpp/game/SceneSchedule.hpp": "77d0744bb084fe14f78b4dd91974a82072932e1b85840f955f2a9472d646ac53"
+  },
+  "toolSha256": "0081011420cc0e7378c60f722f29acd51455e1ee48f1038487be341fd65d7728"
+}

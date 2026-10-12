@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "title": 16,
+  "completeGame": false,
+  "cases": 1920,
+  "nativeExecutableSha256": "c11776019f083978e66027e7394dafb1fb9543afca986f28049a49417e341929",
+  "wasmSha256": "30671210d953e4f37c9640950f6e21f70b3a36efaabd1ab086ce08d48dd9080f",
+  "scope": "Complete442380: both main/season arrays, focused targets, flags2 recall,30-frame exit, integer wrapping and signed division interpolation, snap, missing handles and exact SSE coordinates. Per-option callbacks zero; VM lookup and family interrupts controlled. Actual child callback delivery, animation resources, body movement and complete player lifecycle excluded.",
+  "sourceHashes": {
+    "tests/cpp/th16-option-motion-fixture.cpp": "99263f497af43ab4308d77ef78b275716edefd6504b6400b4c6b1eef1abda618",
+    "cpp/game/PlayerMotion.cpp": "e4aa8fcf79a01e13e66ded6c4bffd6f13606808e7cdaa7cf33fba406e8d0a371",
+    "cpp/game/PlayerMotion.hpp": "99b5516b8cda40fd10b8f2aa2389428100d3aa007b608d261d64a0d739704be5",
+    "cpp/game/ShtResource.cpp": "d3c3eb0103f4ea9eee6468c863a3ad8e9abb871f3245091290701ecb03161c9b",
+    "cpp/game/AnmManager.cpp": "6ec4cc2bb1f57c94fb281c9866b1f5c40cf13f50fec8539b58d32a9bb7b3a7f0"
+  },
+  "toolHashes": {
+    "tools/th16-option-motion-native.py": "dcff8eca7bc0dc834549f6791dfdb0c70619188d73eff6ae3835c18fed7d13d1",
+    "tools/th16-option-motion-check.mjs": "4e3c6457112e2f320f35159d39b7b63f8b1560b5c1251ba09ad437468ea16131"
+  }
+}

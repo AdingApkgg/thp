@@ -1,0 +1,462 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "title": 14,
+  "productionChange": "Snap transformed screen coordinates to the measured 8-bit subpixel grid using round-to-even before clip-space conversion; compile-time limited to PORT_TITLE=14",
+  "strictPixelsEqual": true,
+  "cases": 20282,
+  "comparedChannels": 98497920,
+  "suites": [
+    {
+      "suite": "shapes",
+      "cases": 810,
+      "comparedChannels": 8298080,
+      "nonemptyNativeCases": 810,
+      "strictPixelsEqual": true,
+      "wasmSha256": "4405f61c073ca417e2690c6c871108a38600602c3d2a668923c76c4d15341786"
+    },
+    {
+      "suite": "quads",
+      "cases": 640,
+      "comparedChannels": 11309368,
+      "nonemptyNativeCases": 224,
+      "strictPixelsEqual": true,
+      "wasmSha256": "c87d32f917305bea09ec78791306fd9d4edbc1b1b5c41dea4f17acbe31945d60"
+    },
+    {
+      "suite": "grid",
+      "cases": 720,
+      "comparedChannels": 4703720,
+      "nonemptyNativeCases": 720,
+      "strictPixelsEqual": true,
+      "wasmSha256": "d4c81f3fb68c9a889850f773f9085a44946d0e6bdd0fb9e03bb039e009a3f309"
+    },
+    {
+      "suite": "raster",
+      "cases": 192,
+      "comparedChannels": 786432,
+      "nonemptyNativeCases": 192,
+      "strictPixelsEqual": true,
+      "wasmSha256": "76cc66e59c694a1112710042283b92a113b3427a493d486d5ac6df0f8e1f6738"
+    },
+    {
+      "suite": "alpha",
+      "cases": 4096,
+      "comparedChannels": 16777216,
+      "nonemptyNativeCases": 3108,
+      "strictPixelsEqual": true,
+      "wasmSha256": "2b6cd96d08b865fb24d0879f1eb8bdb9be6bd3b72d02ca2b38bba9d285b17e0f"
+    },
+    {
+      "suite": "alpha-low",
+      "cases": 4096,
+      "comparedChannels": 16777216,
+      "strictPixelsEqual": true,
+      "wasmSha256": "2b6cd96d08b865fb24d0879f1eb8bdb9be6bd3b72d02ca2b38bba9d285b17e0f"
+    },
+    {
+      "suite": "alpha-blend",
+      "cases": 7168,
+      "comparedChannels": 29360128,
+      "nonemptyNativeCases": 4434,
+      "strictPixelsEqual": true,
+      "wasmSha256": "4ac48b300702da65d667466e1c423b76f49c14b95decd469bca58f3a4bb38b1a"
+    },
+    {
+      "suite": "alpha-depth",
+      "cases": 2560,
+      "comparedChannels": 10485760,
+      "nonemptyNativeCases": 2560,
+      "strictPixelsEqual": true,
+      "wasmSha256": "276f27cae869cdfed19597577665afb608ca73894de37090af28a812d8383cff"
+    }
+  ],
+  "historicalBaselineManifest": "artifacts/th14/screen-snap-baseline/manifest.json",
+  "diagnosticProof": "docs/porting/th14-gpu-screen-snap-diagnostic-observed-oct11.json",
+  "evidence": {
+    "artifacts/th14/gpu-screen-snap-production/shapes/build.json": {
+      "bytes": 3597,
+      "sha256": "7362d7a05fcba9e0ce4eb2dce127a5cf3f97e2c35cfb023e8995ad5e4a87760d"
+    },
+    "artifacts/th14/gpu-original-shapes/native.json": {
+      "bytes": 307654,
+      "sha256": "28891ca99ea41998cb14dfe7b9ce934558578d27cccbafdb1fbf2f42525ac5ce"
+    },
+    "artifacts/th14/gpu-original-shapes/native.bgra": {
+      "bytes": 8298080,
+      "sha256": "0b99906919d6b7a2ed7c5305bd768a5cd122b0acda0d01ff0bf5d594a2412065"
+    },
+    "artifacts/th14/gpu-screen-snap-production/shapes/browser-result.json": {
+      "bytes": 339465,
+      "sha256": "18b58134fd2519d17ab39bf13be143472559c279fb9508441ddfc2811b9af0db"
+    },
+    "artifacts/th14/gpu-screen-snap-production/shapes/gpu.wasm": {
+      "bytes": 820478,
+      "sha256": "4405f61c073ca417e2690c6c871108a38600602c3d2a668923c76c4d15341786"
+    },
+    "artifacts/th14/gpu-screen-snap-production/shapes/gpu.mjs": {
+      "bytes": 212554,
+      "sha256": "510f86d99912c58199da2282c97a1588f838a9d1b118849620985ce765d86348"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmVm.cpp": {
+      "bytes": 10572,
+      "sha256": "49b7114f614de4f7cb743487fa29fb6049f1e15f7135195abc0de501514a3c71"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmResource.cpp": {
+      "bytes": 7683,
+      "sha256": "7391cebdd1be0faa8ad9201352debef81b436543f2f6703d962bb4c504490c41"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmInterpreter.cpp": {
+      "bytes": 35310,
+      "sha256": "4e32fd542f9b1ec740e45e396eff728b26da98c67399b398ffd233ef3266bf3d"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmGeometry.cpp": {
+      "bytes": 22621,
+      "sha256": "6326e12e33f2cce4d9999ade1b241c25832c1323720df57a1094a6372c10db59"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmProjection.cpp": {
+      "bytes": 6070,
+      "sha256": "ac2e73f94a4ee47770a40c8549b6691ebe7696c05820e3d07d7b7817e751df59"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmRenderer.cpp": {
+      "bytes": 24193,
+      "sha256": "49ffcc1e744cf9e3b393133691867be47201eab56a68466278efb9fc37f7d351"
+    },
+    "runtimes/th12/th12_web/cpp/game/GraphicsMath.cpp": {
+      "bytes": 2830,
+      "sha256": "b159b3d617a522977c795351b5ff56338d5058b899ab984a590c8b50f8a9fd6e"
+    },
+    "runtimes/th12/th12_web/cpp/game/Interpolation.cpp": {
+      "bytes": 8585,
+      "sha256": "57cd2806a28109745084fb2079edee055322ff3fd044f75fc4e4ec3305add125"
+    },
+    "runtimes/th12/th12_web/cpp/game/SceneCamera.cpp": {
+      "bytes": 1195,
+      "sha256": "72a5b43fb397885086f65083cc13d22971bda2b7632c516df91301ed6d6c1e93"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-gpu-original-shapes-fixture.cpp": {
+      "bytes": 2309,
+      "sha256": "139ff552b3fdbadca66990678fe8461104d857a68c993f9826ce2e15d2ce68ad"
+    },
+    "runtimes/th12/portable/sdl/Renderer.cpp": {
+      "bytes": 29936,
+      "sha256": "46d874eb2ab77080f521b76f59da9d639216f67be920411d03427c0df4b7c6f6"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-render-fixture.cpp": {
+      "bytes": 9082,
+      "sha256": "f7169e565fc5060b23be91f6636efac04ce402f2ed687765048ffed995bd0f34"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmVm.hpp": {
+      "bytes": 8670,
+      "sha256": "f7f2aeaf6b3de13f7f3a0e4a47d1e8f5452bda86fd54d09ab1ee3fc95ea6bf01"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmRenderer.hpp": {
+      "bytes": 2181,
+      "sha256": "4dadf7c3c9de17f6959a23e373adb3d37f309588e9590ff923378ea0472013b5"
+    },
+    "runtimes/th12/th12_web/tests/cpp/render-fixture.hpp": {
+      "bytes": 2634,
+      "sha256": "3f8cf7447d8242d7e0b38ea19b30fad73951347ad0a9c370dc8a41593042cbae"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-gpu-original-shapes-data.hpp": {
+      "bytes": 27672,
+      "sha256": "2c2eaba187029d9b6ad69101fe73af7586a04eaf3a5574a4101b5bbc720e44c0"
+    },
+    "runtimes/th12/portable/sdl/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "runtimes/th12/portable/sdl/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "runtimes/th12/portable/sdl/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "runtimes/th12/portable/sdl/Shaders.hpp": {
+      "bytes": 3646,
+      "sha256": "78f7648c27aa762c30493e6bf784baabdabdac63e2f683b2ed33470dca5aa252"
+    },
+    "runtimes/th12/portable/sdl/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/gpu-screen-snap-production/shapes/browser-logs.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "artifacts/th14/gpu-screen-snap-production/shapes/browser.png": {
+      "bytes": 43466,
+      "sha256": "1df4e5599076472a8120dd1f339e97c9f8aa54fe90959de2decc959caaedf293"
+    },
+    "artifacts/th14/gpu-screen-snap-production/quads/build.json": {
+      "bytes": 3593,
+      "sha256": "918ee1a3c5e4dfcef692746a44a0a5ba491ef1bf6f3f4d2634c9c75e496dbc23"
+    },
+    "artifacts/th14/gpu-original-quads/native.json": {
+      "bytes": 272029,
+      "sha256": "b4e0feafb87489b8282a021e0054fba735115392bf85a17982cd1eccdcfe4601"
+    },
+    "artifacts/th14/gpu-original-quads/native.bgra": {
+      "bytes": 11309368,
+      "sha256": "0ecbfc7b9c39c902b47de01e21e9287cdcce506e4f79a52e644b068810a6ec24"
+    },
+    "artifacts/th14/gpu-screen-snap-production/quads/browser-result.json": {
+      "bytes": 295947,
+      "sha256": "d29ce2046b9eace268f6c9c8829933b76b71259e9b38bcd83be340536778462c"
+    },
+    "artifacts/th14/gpu-screen-snap-production/quads/gpu.wasm": {
+      "bytes": 814661,
+      "sha256": "c87d32f917305bea09ec78791306fd9d4edbc1b1b5c41dea4f17acbe31945d60"
+    },
+    "artifacts/th14/gpu-screen-snap-production/quads/gpu.mjs": {
+      "bytes": 212550,
+      "sha256": "a1aafeec93561a5195acc638822fd296a3231562d8e5214b2ec285afb77c3845"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-gpu-original-quads-fixture.cpp": {
+      "bytes": 2672,
+      "sha256": "f9117b1a93cb2b7bfea3d6bda64ee3b1cfd619fc26ad325569754cb796e038ed"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-gpu-original-quads-data.hpp": {
+      "bytes": 23416,
+      "sha256": "bfdb5eac149982a7aef1f8898cc13e4ca08ae63bf0bc9592294d11dff104dc44"
+    },
+    "artifacts/th14/gpu-screen-snap-production/quads/browser-logs.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "artifacts/th14/gpu-screen-snap-production/quads/browser.png": {
+      "bytes": 29414,
+      "sha256": "f1414b481b570f28b7213160b770bdb10fa7f97d0a38fd14d9b4c31a37f471a2"
+    },
+    "artifacts/th14/gpu-screen-snap-production/grid/build.json": {
+      "bytes": 3631,
+      "sha256": "f05adf98b1603d13cb7a82cb6f4873a55a3669721a4ad6180e52dff235ff668d"
+    },
+    "artifacts/th14/gpu-screen-grid/native.json": {
+      "bytes": 997843,
+      "sha256": "ab0ad823b719ad840800b46e04e3cea8ccb005834e5ee761264ed4195965df6f"
+    },
+    "artifacts/th14/gpu-screen-grid/native.bgra": {
+      "bytes": 4703720,
+      "sha256": "4c54bd6f8e9dfc792d53f6e9e3a47616c4c921d4e277088df869b73d7c2daad8"
+    },
+    "artifacts/th14/gpu-screen-snap-production/grid/browser-result.json": {
+      "bytes": 314887,
+      "sha256": "2edd4bd98ec5e587f3393860e24204615e409f0f2ccc84db8c3cb1eecd12ff26"
+    },
+    "artifacts/th14/gpu-screen-snap-production/grid/gpu.wasm": {
+      "bytes": 915869,
+      "sha256": "d4c81f3fb68c9a889850f773f9085a44946d0e6bdd0fb9e03bb039e009a3f309"
+    },
+    "artifacts/th14/gpu-screen-snap-production/grid/gpu.mjs": {
+      "bytes": 212666,
+      "sha256": "d1d92bc4fce1130f9206479e3250cfe4ba2183cdf54c600f3f08abb10191601d"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-gpu-screen-grid-fixture.cpp": {
+      "bytes": 1060,
+      "sha256": "525dba740db73054ebe7b68b07fd61862f00aaaa7de840bb53aba34a94492ff2"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-gpu-screen-grid-data.hpp": {
+      "bytes": 209224,
+      "sha256": "14439589e8803fd6807f1339b67298834980acfd4341bdfeaa582d32b065670e"
+    },
+    "artifacts/th14/gpu-screen-snap-production/grid/browser-logs.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "artifacts/th14/gpu-screen-snap-production/grid/browser.png": {
+      "bytes": 42643,
+      "sha256": "fb8a6bc65b74a146aeaae2491bf5062f28682664e9d355a568d437728074a7c4"
+    },
+    "artifacts/th14/gpu-screen-snap-production/raster/build.json": {
+      "bytes": 1795,
+      "sha256": "fe7ced82da4c7b483d1ba254608a37d88bfc3efa5e417fb49f179fd62046faa8"
+    },
+    "artifacts/th14/gpu-raster/native.json": {
+      "bytes": 49575,
+      "sha256": "ab351f3ed096c8983ab29587d43c648b4132fe015db321a7104c51bc5385a0c9"
+    },
+    "artifacts/th14/gpu-raster/native.bgra": {
+      "bytes": 786432,
+      "sha256": "b99d9a75e29bd60efa7f0c29df7f15c5b50121dc5666b582ab05be79ddf73363"
+    },
+    "artifacts/th14/gpu-screen-snap-production/raster/browser-result.json": {
+      "bytes": 34756,
+      "sha256": "d0063fc2d4b147ff385c7d38a03b46da9779ee6533b17ed489a6e1d22b4628f0"
+    },
+    "artifacts/th14/gpu-screen-snap-production/raster/gpu.wasm": {
+      "bytes": 758345,
+      "sha256": "76cc66e59c694a1112710042283b92a113b3427a493d486d5ac6df0f8e1f6738"
+    },
+    "artifacts/th14/gpu-screen-snap-production/raster/gpu.mjs": {
+      "bytes": 210801,
+      "sha256": "002827f969a6cde9a03be57659884c1fac349e7e0fb294151cc0aa800e3995c1"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-gpu-raster-fixture.cpp": {
+      "bytes": 2249,
+      "sha256": "59aceebc47e01c15a5bfb5e3b6b04ce9af5d759a71b1186a897a854c0f262e71"
+    },
+    "artifacts/th14/gpu-screen-snap-production/raster/browser-logs.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "artifacts/th14/gpu-screen-snap-production/raster/browser.png": {
+      "bytes": 23869,
+      "sha256": "17e29845ae43b4f733be7148e385155c31820fdfa974a6f86c8290c743c6ad14"
+    },
+    "artifacts/th14/gpu-screen-snap-production/alpha/build.json": {
+      "bytes": 2082,
+      "sha256": "15c6dec3b4447ba2ef12d4204df00fb407099fc6ec3264ab72522e5af7022276"
+    },
+    "artifacts/th14/gpu-alpha/native.json": {
+      "bytes": 712049,
+      "sha256": "5317af325080ad00b51b040fe604f46c4ae86eb9afaeb86ac1893899e8a1b69e"
+    },
+    "artifacts/th14/gpu-alpha/native.bgra": {
+      "bytes": 16777216,
+      "sha256": "6e2df2eeb5474509b943d1257b0cac610a6b22fb99ec4e3015d4a7ed4c86566f"
+    },
+    "artifacts/th14/gpu-screen-snap-production/alpha/browser-result.json": {
+      "bytes": 17912,
+      "sha256": "f34a138247d91cab9e52d095119246babc2e38d6d7d4c0d7d5df0469c4d3ebfa"
+    },
+    "artifacts/th14/gpu-screen-snap-production/alpha/gpu.wasm": {
+      "bytes": 763657,
+      "sha256": "2b6cd96d08b865fb24d0879f1eb8bdb9be6bd3b72d02ca2b38bba9d285b17e0f"
+    },
+    "artifacts/th14/gpu-screen-snap-production/alpha/gpu.mjs": {
+      "bytes": 211517,
+      "sha256": "4664885e293bb79b8ddfbd812fa4764e6c3007b0f7ac2fa7f6b0d99e4ee0b3c1"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-gpu-alpha-fixture.cpp": {
+      "bytes": 5376,
+      "sha256": "fb4c468d37b637863bcdb4151aca1b8d5cc1c62454f9c5353798a51a91c2271f"
+    },
+    "artifacts/th14/gpu-screen-snap-production/alpha/browser-logs.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "artifacts/th14/gpu-screen-snap-production/alpha/browser.png": {
+      "bytes": 27509,
+      "sha256": "eee9fdff321617cbe56a6adc520e02de7e2c7da6908c0466f92381ffc2841dcf"
+    },
+    "artifacts/th14/gpu-alpha-low/native.json": {
+      "bytes": 712018,
+      "sha256": "37e174de39d7a46232120346fafcda51fd16eac2a615d598feaa549457287320"
+    },
+    "artifacts/th14/gpu-alpha-low/native.bgra": {
+      "bytes": 16777216,
+      "sha256": "13efd0486f9d4a34acb4372c6eab80a0c202020b95ce5c47febf447d1a92bc93"
+    },
+    "artifacts/th14/gpu-screen-snap-production/alpha/browser-low-result.json": {
+      "bytes": 17788,
+      "sha256": "9c84e3fe78fc2b5f487da78a1e466898467e03f015bf763ad781e6db116f160a"
+    },
+    "artifacts/th14/gpu-screen-snap-production/alpha/browser-low.png": {
+      "bytes": 90372,
+      "sha256": "1d7dbe07a188a665ca69c1c20d5ff892c814143650ea9d7e1959b4d4e7ca33a4"
+    },
+    "artifacts/th14/gpu-screen-snap-production/alpha-blend/build.json": {
+      "bytes": 1953,
+      "sha256": "e858727cf1b8db738dcc494980fa20c9c7613d6d990b860015b9765f4f9c11fc"
+    },
+    "artifacts/th14/gpu-alpha-blend/native.json": {
+      "bytes": 2116793,
+      "sha256": "3166b6c72350f347337e79aefb07b5ee03c3b7feb4731e87ec401b5a82d37bbf"
+    },
+    "artifacts/th14/gpu-alpha-blend/native.bgra": {
+      "bytes": 29360128,
+      "sha256": "c1f790046a83f22f2250b95847255aa10424dd459461d87c78060a35b2caa08f"
+    },
+    "artifacts/th14/gpu-screen-snap-production/alpha-blend/browser-result.json": {
+      "bytes": 2504,
+      "sha256": "3df490933a45f893277806fcc0ac010269b4ba856e046fb7e646e06779d6de45"
+    },
+    "artifacts/th14/gpu-screen-snap-production/alpha-blend/gpu.wasm": {
+      "bytes": 760734,
+      "sha256": "4ac48b300702da65d667466e1c423b76f49c14b95decd469bca58f3a4bb38b1a"
+    },
+    "artifacts/th14/gpu-screen-snap-production/alpha-blend/gpu.mjs": {
+      "bytes": 210913,
+      "sha256": "238e384559a58e1e346bbacac9f38168b9b023417f89e6f68fbf0860332224e3"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-gpu-alpha-blend-fixture.cpp": {
+      "bytes": 1829,
+      "sha256": "9601eaff12ab028f5d020916bbba61b644797bf28fbe36340852b48a07509155"
+    },
+    "artifacts/th14/gpu-screen-snap-production/alpha-blend/browser-logs.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "artifacts/th14/gpu-screen-snap-production/alpha-blend/browser.png": {
+      "bytes": 32857,
+      "sha256": "fe1ff55821afe3ea1add17f571562fca49ef5572a72aa6c83f5a8c981626552c"
+    },
+    "artifacts/th14/gpu-screen-snap-production/alpha-depth/build.json": {
+      "bytes": 1959,
+      "sha256": "f9af3b172bf9ae04516732f874f6d5ba96b98aa4159ba8853ea1cc3367302a42"
+    },
+    "artifacts/th14/gpu-alpha-depth/native.json": {
+      "bytes": 784286,
+      "sha256": "99f8cd5370da3074faa179c5e8f4e5b1b1ee724a18160482ff5931999b72d1c2"
+    },
+    "artifacts/th14/gpu-alpha-depth/native.bgra": {
+      "bytes": 10485760,
+      "sha256": "066a1e07de3b1301d3330ae3b7ccc16b7271b1451be3da7a88a26974e6ebf00f"
+    },
+    "artifacts/th14/gpu-screen-snap-production/alpha-depth/browser-result.json": {
+      "bytes": 2834,
+      "sha256": "b464b05ff18fae7cf1115feb5d5a593390a0d6e769db8a94640e64848a2d36e6"
+    },
+    "artifacts/th14/gpu-screen-snap-production/alpha-depth/gpu.wasm": {
+      "bytes": 761517,
+      "sha256": "276f27cae869cdfed19597577665afb608ca73894de37090af28a812d8383cff"
+    },
+    "artifacts/th14/gpu-screen-snap-production/alpha-depth/gpu.mjs": {
+      "bytes": 211025,
+      "sha256": "2efbe2019012a902f5fbb9d6f2980abac819a65a4525c438b4f952e05dbc629f"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-gpu-alpha-depth-fixture.cpp": {
+      "bytes": 2756,
+      "sha256": "43b92301da012dc8fa3e9dd72e112212b1dde53aefcd2e214ab2a106bb89fa7e"
+    },
+    "artifacts/th14/gpu-screen-snap-production/alpha-depth/browser-logs.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "artifacts/th14/gpu-screen-snap-production/alpha-depth/browser.png": {
+      "bytes": 37412,
+      "sha256": "75796ad3ece2f3a15fdb3436a77e96df5f872732f9e73c8b3258df0a735b79e8"
+    },
+    "tools/th14-gpu-screen-snap-production-build.mjs": {
+      "bytes": 3384,
+      "sha256": "f4aabd878e89c39b10a19f641816e78074be3ae62f97063f6eccdd7757c9d339"
+    },
+    "tools/th14-gpu-screen-snap-production-serve.mjs": {
+      "bytes": 1876,
+      "sha256": "16691300075ba30fbe38761b51a27a467ab3799670a82a05a5b48185088dccc0"
+    },
+    "tools/th14-gpu-screen-snap-production-check.mjs": {
+      "bytes": 6727,
+      "sha256": "ece07115ecb2cfc52ebd6409ce4df6c1c5a1a267e743e80a0b55b6abd31eb19b"
+    },
+    "docs/porting/th14-gpu-screen-snap-diagnostic-observed-oct11.json": {
+      "bytes": 47458,
+      "sha256": "9080392c9f9e7047350d6421a596f1e12112f9c2fa93e9f644400b5f0ae48b67"
+    },
+    "artifacts/th14/screen-snap-baseline/manifest.json": {
+      "bytes": 4042,
+      "sha256": "d80f6a9f62073079e32f751203f722806f746b2b6072115f364826520d908035"
+    }
+  },
+  "limits": [
+    "Actual current production renderer and production geometry fixtures are compiled with PORT_TITLE=14 and drawn in the real browser; these remain independent controlled GPU fixtures",
+    "810 native-recorded shapes and640 quads,720 derived subpixel/reciprocal-W cases and18112 alpha/blend/depth/sampler cases; some original recorded quads are intentionally culled or outside the viewport",
+    "Native full batch loop, full game frames, text, combined scene/fog/texture ordering and other GPU/driver equivalence remain unproved",
+    "Separate unblended float candidate comparison establishes foreground interpolation only; its full clear-pixel RGBA32F hashes remain different",
+    "Other titles retain the previous vertex shader; this is not a completed TH14 or multi-game port"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "cases": 1920,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "9d4650df0831fa9bc76e5f4661d1927b4c9c2288c7f919564804245fbd1b794a",
+  "scope": "ECL 802 retail 429a9e..429c28 executes actual 421120 secondary release, 4211c0 root reset and 484b80 selection. Argument read, deallocation and name lookup are controlled boundaries. Three boss slots, caller-slot exclusion, absent owners, negative health, absent names, eight-slot range samples and zero/two secondary contexts are covered. Production dispatch uses real EnemyManager and ECL owners with immediate/local references; script selection does not execute the new subroutine or consume the interrupt. Invalid indices are rejected by the port rather than reading outside retail storage. Native lookup implementation, future script execution, actual gameplay and GPU pixels are outside scope.",
+  "sourceHashes": {
+    "tests/cpp/th14-boss-interrupt-fixture.cpp": "66441ae6546bfb0be1fb473e4498cf6abf2e6f1967c0067c2818b7c9d5942168",
+    "cpp/game/EnemyManager.cpp": "94cbecf98adf041ac46bc59b6cad166f81abc7a8ccbaeefae537bbdcc282490e",
+    "cpp/game/EnemyScript.cpp": "95853fb7516ce41654853115c64f78f1c4e46c22996602943cccb4a02a4e9cd9",
+    "cpp/game/EclOwner.cpp": "0a1fc73e902704eec9e09045d54a2fe20c0a2fb49c9711f04aa0017e8ecbb5ff"
+  },
+  "toolHashes": {
+    "tools/th14-boss-interrupt-native.py": "1548594786d1a79fda03a2b8327109510c3480ec727262755361038072ff9f9e",
+    "tools/th14-boss-interrupt-check.mjs": "b108c6b2f3fe21db23b1a2d71493d9d9f2d4822cbb18cc7b78a0f5d042844f08"
+  }
+}
