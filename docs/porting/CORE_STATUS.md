@@ -1824,3 +1824,18 @@ ef471实际Launcher继续验证Player Data成绩/符卡切换及Music Room提示
 - Easy咲夜A完成六关自然进入结局：92,137帧，4次真实死亡、19次实际库存符卡、无无敌覆盖/强制击破，bullet skipped/unsupported均0。完整88543字节录像与所有held按键保存natural-input/easy-sakuyaa；实际库存随拾取/死亡/关卡结算变化。继续该录像完整回放、原作解码以及正式浏览器流程补证，未据此声明整作1:1、Normal自然通关或GPU/音频等价，TH16仍后置。
 
 - 2026-10-12 发布补证：四条普通输入录像共208,272帧、5,415,072个选定状态字；活动字段差0，非激活换关得分差16保留。九份录像原作解密/解压对照通过。Easy咲夜A自然进入e05后普通输入3,737帧经过ending/staff返回成绩页14，ending-evidence-check绑定265源码/头、模块与输入。Normal咲夜A46,780帧第四面Game Over，未见引擎错误，不标通关。正式浏览器六面回放后观察到回放列表，未据此声称逐帧原作一致；完整1:1仍未完成。GitHub源码快照范围见../GITHUB_RELEASE.md。
+
+- 2026-10-13：TH14固定顶点输出与CPU融合/分离位置控制的21帧全部仍695通道、最大91，未采纳；完整25,804,800字节WebGL缓冲已通过DOM诊断导出保存，独立复算全部差异。仅第3关599帧(631,315)一个像素差值超过1。自然通关后普通成绩录名、录像保存请求和返回Main流程通过：成绩文件22,382字节、149,076解码字节均由原作456de0/456f60加载/重写严格一致；通关和无续关计数各1。生产核心未改，完整1:1仍未完成。
+
+- 2026-10-13 后续生产修正：咲夜 A 已销毁目标保留退休标记，在原版拒绝旧 ID 的这一帧跳过重新获取；此前提前选取新敌人导致一面 14,013 个玩法状态字和 8,456 个对象差异。修正后该原版实际回放 3,901 帧无玩法或详细对象差异。GameInput 新增 update_normalized，TH14 回放按前后 held 重算边沿，避免保存的 pressed/released 和自动低速再次归一化影响输入；原版 455180/41e710 的 360 组案例通过，六面首帧 pressed 由 0 修正为 520。10,752 组手柄、键位配置和结局计时回归通过。
+- 当前核心普通输入 Easy 咲夜 A 自然通关 92,607 帧、3 次死亡、16 次库存符卡；完整按键重跑生成同一 89,334 字节录像。实际回放 92,226 帧活动对照、26 字段无差异，7 个非激活换关得分差异保留，结尾等待另记。新版自然结局→成绩录名→录像保存请求→Main 及原版成绩文件加载/重写均重新验证通过。失败的 margin90/margin360 控制器路线完整保留，不按失败改游戏规则。
+- 当前核心一面/六面原版窗口共 7,802 帧，完整原始 249,664 状态字已独立重算；30 个玩法字段零差异，15,604 个 startup scriptSeed/scriptCalls 字差异保留。生产者另检查捕获的详细对象窗口；不声称原版完整六面、图像或音频一致。报告 th14-natural-native-traces-verified-oct13.json、th14-natural-current-replay-verified-oct13.json、th14-natural-storage-easy-sakuyaa-deathbomb-verified-oct13.json。
+- 新正式 SDL 模块 0e32d61c06a11ed0b63670e19e918abcc20bc7fc165166503d0efd7abc6cafd8，1,871,149 字节；冻结 Launcher buildId 3f28d40af19dd451cb49。普通菜单 Easy/咲夜A/第一面、低速射击和暂停通过，浏览器 warning/error=0；截图 artifacts/th14/current-release-browser/ordinary-easy-sakuyaa-paused.png。本轮渲染器未修改，旧 0a59 纹理/像素报告仍保留其原构建绑定。TH14 优先、TH16 后置，完整 1:1 未完成。
+
+- 后续二面原作窗口发现第3,329帧起额外玩法RNG消耗与重复敌人；详细捕获定位ECL -9908原版42a920/42b230调用4219b0，实时遍历manager+d0，排除flags&0x31或damage_immunity.current>0的敌人。新增实际列表读取，385组双入口原版测试通过；二面3,901帧从2,768玩法字/1,084详细对象差异修正为0，失败及细化窗口原始记录全部保留。旧0e32核心/265源码/141对象归档engine-before-filtered-count-fix。
+- 修正后新普通输入Easy咲夜A自然六面通关92,262帧、3死亡/16库存符卡；新完整录像SHA ab6f94450050fd32da822042af8a9f1aee229127ebe8b13afabf4288a2e41f6a。实际回放91,881帧活动26字段独立逐字复算无差异，5个非激活换关得分字差异保留，结束等待始于91,882帧。结局/staff3,737帧后正常录名/保存/Main和原版22,382编码/149,076解码成绩字节对照均重跑通过。当前核心一至四面及六面各3,901帧玩法/捕获详细对象无差异，异步启动视觉RNG继续保留；第五面正在捕获。不计原版不间断整局、GPU/音频等价。
+- 当前正式SDL模块49081bcb69c041c252e7c4c3ebb395a76ec2a80bfc226f30888347b11560cf81，1,871,359字节；冻结Launcher buildId f8159502c4b69353a414，构建和源码闸门通过，最新浏览器复验继续。新证据th14-enemy-target-count-verified-oct13.json、th14-natural-current-replay-count-fix-verified-oct13.json、th14-natural-storage-easy-sakuyaa-count-fix-verified-oct13.json。
+
+- 五面原版窗口3,095帧保持失败：第2,176帧先出现score差1，详细捕获明确slot227在Native转state2而移植仍state1，该敌人HP Native2/移植16、命中奖励+5差异。完整及2,251帧详细失败原始数据均保留；追加伤害区域只读捕获继续，不据此猜改碰撞公式。当前Normal咲夜A普通输入64,371帧第五面GameOver，4死亡/15库存符卡、无引擎错误，未标通关。
+
+- 49081 正式构建的新端口8196浏览器复验：原始私有DATA新安装、普通菜单Normal/灵梦A/第一面、低速射击与正常暂停通过；新源console warning/error=0。旧8195源一次App Shell更新检查警告完整保留，不作为新源日志；截图fresh-origin-normal-reimua-paused.jpg。th14-current-release-browser-verified-oct13.json绑定265核心相关文件与冻结127文件，包含旧警告原文，仅短流程观察，不计自然完整浏览器通关或IndexedDB成绩回载。

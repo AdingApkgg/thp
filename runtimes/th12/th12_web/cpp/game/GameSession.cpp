@@ -430,8 +430,11 @@ bool GameSession::update(const GameSessionInput& input) {
             if(recorded.end_marker){playback_ended=true;return false;}
             edges.held=recorded.held;edges.pressed=recorded.pressed;edges.released=recorded.released;
 #if PORT_TITLE == 14
-            // Playback supplies normalized game keys; retain its recorded edges.
-            game_input.update(recorded.held);
+            // Retail455180 loads all three words, then41e710 recomputes the
+            // edges from the current/previous normalized masks. Saved edges
+            // can refer to a preceding stage when playback starts mid-run.
+            game_input.update_normalized(recorded.held);
+            edges.pressed=game_input.pressed;edges.released=game_input.released;
 #endif
             auto& motion=battle->player_input.movement;motion.touch_mode=recorded.touch_mode;motion.touch_x=recorded.touch_x;motion.touch_y=recorded.touch_y;
         }else{

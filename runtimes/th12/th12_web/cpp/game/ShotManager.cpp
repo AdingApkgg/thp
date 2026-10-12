@@ -306,7 +306,7 @@ bool ShotManager::update(){
 }
 void ShotManager::invalidate_target(Enemy* e)noexcept{if(locked_target==e){locked_target=nullptr;target_locked=0;}for(auto& s:shots){if(s.target==e){
 #if PORT_TITLE == 14
-    if(s.spec&&u32(s.spec->update)==1)s.th14_homing_target_retired=true;
+    if(s.spec&&(u32(s.spec->update)==1||u32(s.spec->update)==7))s.th14_homing_target_retired=true;
 #endif
     s.target=nullptr;
     }

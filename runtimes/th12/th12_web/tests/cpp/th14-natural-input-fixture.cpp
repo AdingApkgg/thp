@@ -8,6 +8,8 @@ static u32 natural_keys=0,natural_frames=0,natural_bombs=0,natural_deaths=0,natu
 static i32 natural_previous_life=0;
 static float natural_danger=0;
 static bool natural_collection_enabled=false;
+static float natural_bomb_clearance=90.f;
+API(natural_bomb_margin) void natural_bomb_margin(float margin){natural_bomb_clearance=margin;}
 API(natural_config) void natural_config(u32 flags){natural_collection_enabled=(flags&1)!=0;}
 API(natural_begin) u32 natural_begin(u32 selection,u32 difficulty){
  natural_keys=natural_frames=natural_bombs=natural_deaths=natural_bomb_requests=0;natural_previous_life=0;natural_danger=0;
@@ -53,7 +55,7 @@ API(natural_tick) u32 natural_tick(){
   }}
   held|=chosen;natural_danger=best_clearance;
   const bool active_bomb=session.battle->bomb&&session.battle->bomb->state.active;
-  if((player.state.life_state==4||(best_clearance<90&&player.state.invincibility.current<=0))&&!active_bomb&&session.economy.th14_bombs>0&&(session.game_input.held&2)==0){held|=2;++natural_bomb_requests;}
+  if((player.state.life_state==4||(best_clearance<natural_bomb_clearance&&player.state.invincibility.current<=0))&&!active_bomb&&session.economy.th14_bombs>0&&(session.game_input.held&2)==0){held|=2;++natural_bomb_requests;}
  }
  // Release fire for one frame periodically so dialog confirmation gets a real
  // edge from GameInput, rather than injecting its pressed/repeat fields.

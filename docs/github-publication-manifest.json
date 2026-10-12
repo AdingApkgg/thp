@@ -1,12 +1,12 @@
 {
-  "date": "2026-10-12",
+  "date": "2026-10-13",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
   "sourceCommit": "e442e4862498bc8aae982fb614c89f446568f1a1",
   "files": [
     {
       "path": ".gitignore",
-      "bytes": 1649,
-      "sha256": "4792abdd205d2f80260a80df5d6a6322901cfd9f7f7dddd27b41702c920e82d2"
+      "bytes": 1648,
+      "sha256": "010da80c245ac5e0b130d3b2b3b6279dfec6d7d039867ffe949093b1a867c448"
     },
     {
       "path": "README.md",
@@ -25,8 +25,8 @@
     },
     {
       "path": "docs/GITHUB_RELEASE.md",
-      "bytes": 2637,
-      "sha256": "cf1372ca072dd06506945323538b0a28c08c695af9489ab57762c13ed002827b"
+      "bytes": 4160,
+      "sha256": "389af86a36e55978f89ecba8323dbee4268d5a191747dc7f230f2fb80904a4c2"
     },
     {
       "path": "docs/HANDOVER.md",
@@ -40,8 +40,8 @@
     },
     {
       "path": "docs/porting/CORE_STATUS.md",
-      "bytes": 344176,
-      "sha256": "ba976c80a9eb9be5f615fab10d74bc6590b6993445ef80194e03765886b7617e"
+      "bytes": 349221,
+      "sha256": "e2188d0a981c6589c0ebb6c0d80347ee782af9adc0041d1f1a6f33fab9410ae2"
     },
     {
       "path": "docs/porting/TH06NC_FORMATS.md",
@@ -976,12 +976,17 @@
     {
       "path": "docs/porting/th14-controller-input-verified.json",
       "bytes": 875,
-      "sha256": "3b0ee9c1bf16a86f8072362320648db96a6dac6b8ca20d9ea66cc06503a92ac2"
+      "sha256": "1f2156c48b8dc33a683aaa8d54d32210bdf9946eae110d6198d6cf03280567df"
     },
     {
       "path": "docs/porting/th14-core-loading-verified.json",
       "bytes": 8342,
       "sha256": "b72c1e1787b4d248511bafd8e0ee82012a165939862dc692b298484dc0717ec3"
+    },
+    {
+      "path": "docs/porting/th14-current-release-browser-verified-oct13.json",
+      "bytes": 90570,
+      "sha256": "3f204ec9a2f0390d02e93a86d1a91d82690dece38628f2510193ee0b4737a6cc"
     },
     {
       "path": "docs/porting/th14-custom-replay-native-extended-observed-oct11.json",
@@ -1251,7 +1256,7 @@
     {
       "path": "docs/porting/th14-ending-timing-verified.json",
       "bytes": 2081,
-      "sha256": "3a498f1463a5543a521f8907acd3359c8f657e132fdff57dcdaa41b0e67b9b44"
+      "sha256": "f16d5749692a721f9349afcc7783f0013ff5819eac62e78f42a1ae035d51d76f"
     },
     {
       "path": "docs/porting/th14-enemy-animation-verified.json",
@@ -1337,6 +1342,11 @@
       "path": "docs/porting/th14-enemy-state-verified.json",
       "bytes": 3027,
       "sha256": "1a0fb1438a014eeff1c862031828055c63e24e09aa3099a4cd074332e674116c"
+    },
+    {
+      "path": "docs/porting/th14-enemy-target-count-verified-oct13.json",
+      "bytes": 35088,
+      "sha256": "77431157f5a775e604ead1d7295fcd6aa153066b8957c5a0171d36ca0abf909f"
     },
     {
       "path": "docs/porting/th14-enemy-wave-verified.json",
@@ -1576,7 +1586,7 @@
     {
       "path": "docs/porting/th14-keys-session-verified-oct11.json",
       "bytes": 3136,
-      "sha256": "ddd3274fe5edcbb820d18a09366678d73ecc457769e9294d8e986b2413336fe3"
+      "sha256": "648b9769a123668c025d152655cd044c56cd0181de6be34b38da4e31c5f73d9c"
     },
     {
       "path": "docs/porting/th14-laser-control-verified.json",
@@ -1666,7 +1676,7 @@
     {
       "path": "docs/porting/th14-launcher-preview-prepared-oct11.json",
       "bytes": 36442,
-      "sha256": "5fac70ca425a2d209e6972842fae220e9035824287039541329a2428592ba7bd"
+      "sha256": "6d0c9170f9752c72bf0de83116af9d39fe9dd1e139e0b8a00993319ebee9e247"
     },
     {
       "path": "docs/porting/th14-launcher-records-music-browser-observed-oct11.json",
@@ -1676,7 +1686,7 @@
     {
       "path": "docs/porting/th14-launcher-runtime-prepared-oct11.json",
       "bytes": 50674,
-      "sha256": "edc539473909096d672286a82fe6c083c28ddab330ddf755e053c34abd4057b4"
+      "sha256": "8c7573eadd818eeeb00b23948c13df6d007a281a483810a006f7a0ce7e8c3de3"
     },
     {
       "path": "docs/porting/th14-launcher-saved-replay-observed-oct11.json",
@@ -1784,6 +1794,26 @@
       "sha256": "65ba84c135cc29e8626b0ba5b5fa68f5b99465669a5d22c0d1d21d94001f763b"
     },
     {
+      "path": "docs/porting/th14-natural-current-replay-count-fix-verified-oct13.json",
+      "bytes": 47479,
+      "sha256": "e96afc42fa75bc281fa83879b4b2f07742594a946683fe7a2515530a26590b32"
+    },
+    {
+      "path": "docs/porting/th14-natural-current-replay-easy-sakuyaa-count-fix-observed-oct13.json",
+      "bytes": 38152,
+      "sha256": "693d4c1639f5c43bbb73f2a7ec86739dfbea5a29459d44824743d6c7facbab1f"
+    },
+    {
+      "path": "docs/porting/th14-natural-current-replay-easy-sakuyaa-deathbomb-observed-oct13.json",
+      "bytes": 38964,
+      "sha256": "00197026b9ea2ba646cac3d1af6b525eef5ab238e4df5515334104fe66119ad0"
+    },
+    {
+      "path": "docs/porting/th14-natural-current-replay-verified-oct13.json",
+      "bytes": 47480,
+      "sha256": "131ab88ab9f392b4bbcaebc5c107852fa2cf2b03d57598ccb450d646a373004b"
+    },
+    {
       "path": "docs/porting/th14-natural-ending-verified-oct12.json",
       "bytes": 47835,
       "sha256": "c3b78e1d858a44f3cc65206d04dd6f0791a75da430ee4057ae41dd001aa98d83"
@@ -1792,6 +1822,16 @@
       "path": "docs/porting/th14-natural-evidence-verified-oct12.json",
       "bytes": 8706,
       "sha256": "48654e27aa931a923b385eef4844e57c62d8d308588178cc7c3d38e7fbfc6473"
+    },
+    {
+      "path": "docs/porting/th14-natural-native-count-fix-traces-verified-oct13.json",
+      "bytes": 51160,
+      "sha256": "801172554c11656653ed3c235816584f8f93122016c8fe01aaad95ef0bbdc5cd"
+    },
+    {
+      "path": "docs/porting/th14-natural-native-traces-verified-oct13.json",
+      "bytes": 47810,
+      "sha256": "374eceb5adda1b6abbff034f7c6954c8e098eb023704ebb5d5177e8e2f406eb6"
     },
     {
       "path": "docs/porting/th14-natural-replay-easy-sakuyaa-observed-oct12.json",
@@ -1804,9 +1844,134 @@
       "sha256": "b331e1be0b1a9fc2ad18eead95233ce6c449b1152b74e44b1da0aaaa907f8415"
     },
     {
+      "path": "docs/porting/th14-natural-replay-native-easy-sakuyaa-edges-observed-oct13.json",
+      "bytes": 861851,
+      "sha256": "fc8af1f0b1d18dca7dac47bdd59a7648b5672d293c9a67a25cfb19b85dcbd480"
+    },
+    {
+      "path": "docs/porting/th14-natural-replay-native-easy-sakuyaa-observed-oct13.json",
+      "bytes": 37102388,
+      "sha256": "c8617ed5665b5fbfb7176bdb72b5bfecd850295264dea4b1b23fb4e1e5d6e827"
+    },
+    {
+      "path": "docs/porting/th14-natural-replay-native-easy-sakuyaa-target-fix-observed-oct13.json",
+      "bytes": 861851,
+      "sha256": "331c28c66ac70507ff6f3f63961b1949859a29ab67862cadf20a214c9dc775a9"
+    },
+    {
+      "path": "docs/porting/th14-natural-replay-native-trace-easy-sakuyaa-native-trace-observed-oct13.json",
+      "bytes": 862632,
+      "sha256": "064b7ef121951fb09d44c0541d12dcb60af27044a042ab2c7ceb1c9a64cf969a"
+    },
+    {
+      "path": "docs/porting/th14-natural-replay-native-trace-easy-sakuyaa-stage1-count-fix-trace-observed-oct13.json",
+      "bytes": 862632,
+      "sha256": "96cd317e4589563656a2324c7087f3f8016f391db33f462b607fe8826b2cc516"
+    },
+    {
+      "path": "docs/porting/th14-natural-replay-native-trace-easy-sakuyaa-stage2-count-fix-trace-observed-oct13.json",
+      "bytes": 865050,
+      "sha256": "6113d4c541e275429b08eb4da96a5151c1905f66b90c8f1b59f981660002bcb1"
+    },
+    {
+      "path": "docs/porting/th14-natural-replay-native-trace-easy-sakuyaa-stage2-detail-native-trace-observed-oct13.json",
+      "bytes": 1427250,
+      "sha256": "71fa7e8355d2ab9215068178b798ea2a5bb977174f94d8baa4a08959a8dff484"
+    },
+    {
+      "path": "docs/porting/th14-natural-replay-native-trace-easy-sakuyaa-stage2-native-trace-observed-oct13.json",
+      "bytes": 1707641,
+      "sha256": "989f2558acbb5c1fab5ad0f3b43810a16b80cc8192a2e97340ab42e09e63415e"
+    },
+    {
+      "path": "docs/porting/th14-natural-replay-native-trace-easy-sakuyaa-stage2-rng-native-trace-observed-oct13.json",
+      "bytes": 1427250,
+      "sha256": "65e49ebcd58e1c29ba82414b35d5c00acc74980472360a23810745515c53a18c"
+    },
+    {
+      "path": "docs/porting/th14-natural-replay-native-trace-easy-sakuyaa-stage2-rng-particles-trace-observed-oct13.json",
+      "bytes": 1427250,
+      "sha256": "53af4cf04e450a8c0066166751dab506a2741406a8cd5f7d78802f77a2817d91"
+    },
+    {
+      "path": "docs/porting/th14-natural-replay-native-trace-easy-sakuyaa-stage3-count-fix-trace-observed-oct13.json",
+      "bytes": 864588,
+      "sha256": "f6818c927e1135c40d6400282d087e4844906a3bc0df726ce9ff99687e4ba6ee"
+    },
+    {
+      "path": "docs/porting/th14-natural-replay-native-trace-easy-sakuyaa-stage4-count-fix-trace-observed-oct13.json",
+      "bytes": 861795,
+      "sha256": "619fa83a2da87b5c96160ec8f624e559402daa44c72ba3f25cc3c125c1a41340"
+    },
+    {
+      "path": "docs/porting/th14-natural-replay-native-trace-easy-sakuyaa-stage5-area-native-trace-observed-oct13.json",
+      "bytes": 1036152,
+      "sha256": "d9f23938cd86bb97305254a2314e638fd361a111b0b2bb99b3197418525993eb"
+    },
+    {
+      "path": "docs/porting/th14-natural-replay-native-trace-easy-sakuyaa-stage5-count-fix-trace-observed-oct13.json",
+      "bytes": 5212526,
+      "sha256": "ee2976604a6ebf1602001145778f0a4115a816c54ae2a0757586e318cc6a4f12"
+    },
+    {
+      "path": "docs/porting/th14-natural-replay-native-trace-easy-sakuyaa-stage5-detail-native-trace-observed-oct13.json",
+      "bytes": 799916,
+      "sha256": "97cb642344ad86e19ea31c748176affd71779c9ecdafa325d7382e5665922792"
+    },
+    {
+      "path": "docs/porting/th14-natural-replay-native-trace-easy-sakuyaa-stage6-count-fix-trace-observed-oct13.json",
+      "bytes": 863182,
+      "sha256": "1cd05546c15824c1180f4a3ea086137b0ad35b9a6c452dad3fb87dea4fbf4662"
+    },
+    {
+      "path": "docs/porting/th14-natural-replay-native-trace-easy-sakuyaa-stage6-native-trace-observed-oct13.json",
+      "bytes": 863182,
+      "sha256": "f67bb5c5a9e5aa29c17120847fce838fc4e1071233dbe7f255bdb4ff17b77404"
+    },
+    {
       "path": "docs/porting/th14-natural-replay-observed-oct12.json",
       "bytes": 8767,
       "sha256": "bff7b01cc3185271c9410c11c34d161e295f9c9b2c287dd24785d331b5502b7f"
+    },
+    {
+      "path": "docs/porting/th14-natural-stage-replay-native-easy-sakuyaa-stage6-edges-observed-oct13.json",
+      "bytes": 862444,
+      "sha256": "27f531a1f525dc6256a6a4a61763e44f23d888e16175beba5fcdb73cc8835278"
+    },
+    {
+      "path": "docs/porting/th14-natural-stage-replay-native-easy-sakuyaa-stage6-observed-oct13.json",
+      "bytes": 862541,
+      "sha256": "e6e45b777db914761ee053dc6c159a8d908ba4e0a165ca2802da118d4ff6a221"
+    },
+    {
+      "path": "docs/porting/th14-natural-storage-easy-sakuyaa-count-fix-observed-oct13.json",
+      "bytes": 3513,
+      "sha256": "de7217907be0dd3bfff384bd5a916d950c1d47bde0988c99444e957b3b97e62e"
+    },
+    {
+      "path": "docs/porting/th14-natural-storage-easy-sakuyaa-count-fix-verified-oct13.json",
+      "bytes": 51823,
+      "sha256": "410b6a3ec9df656ef9ddeedb872c9dd1b300fa8fbe37e694f2a9d1c00a9a5a31"
+    },
+    {
+      "path": "docs/porting/th14-natural-storage-easy-sakuyaa-deathbomb-observed-oct13.json",
+      "bytes": 3513,
+      "sha256": "ba0ccb0493b0dcc76f2f1ee3ed34d7dcdc665500cfa8511b5afd6a1d8eca77cd"
+    },
+    {
+      "path": "docs/porting/th14-natural-storage-easy-sakuyaa-deathbomb-verified-oct13.json",
+      "bytes": 51823,
+      "sha256": "daa1a1784756ae2d0cc83a93b947fd3686cfd8bfbb375b4858d8322459351040"
+    },
+    {
+      "path": "docs/porting/th14-natural-storage-observed-oct13.json",
+      "bytes": 3476,
+      "sha256": "6ba4ce0c1d4a19dd57fddf23dbc9691c2a2b1103dce10d2286b4c77542b1f354"
+    },
+    {
+      "path": "docs/porting/th14-natural-storage-verified-oct13.json",
+      "bytes": 51686,
+      "sha256": "95c1efc6440b0d5ee681a8ba41460052d2dbbe21bd19bfc822594de8bf030655"
     },
     {
       "path": "docs/porting/th14-options-controls-verified-oct11.json",
@@ -2029,6 +2194,11 @@
       "sha256": "37d4c69cc6dc26fa1a1db624e54730ccb8a06cacf2d9669a485286b37c029db4"
     },
     {
+      "path": "docs/porting/th14-replay-input-edges-verified-oct13.json",
+      "bytes": 1216,
+      "sha256": "07ec0e5e2c3cc87772a797b0eee306855b05ee0c2614efc8b9a2b45efabcb196"
+    },
+    {
       "path": "docs/porting/th14-replay-native-decode-verified.json",
       "bytes": 19469,
       "sha256": "2539148334c3cf86b0f5979b46a949f4d6bba55c63d0ff5d605127a3370d798c"
@@ -2186,7 +2356,7 @@
     {
       "path": "docs/porting/th14-shot-homing-verified.json",
       "bytes": 1970,
-      "sha256": "d5c9df18697657ec0038391418ccee0f77f244688b786d2ea05bd91f6ef0e3bd"
+      "sha256": "5881f3100775cd840c3b956fbbea9c857cd6f844540bb760c02ab1805ad87582"
     },
     {
       "path": "docs/porting/th14-shot-pool-verified.json",
@@ -2206,7 +2376,7 @@
     {
       "path": "docs/porting/th14-shot-sakuya-verified.json",
       "bytes": 1433,
-      "sha256": "9b734b3d6af2d596f06199ec9fcde4a6673686832ff80bd2bec51edb94369601"
+      "sha256": "8df83d764fb9a3ba56a2fe1bf35931d8c3f8cb485be0af3dc250eb3c428ad0fb"
     },
     {
       "path": "docs/porting/th14-shot-spread-session-verified.json",
@@ -2539,9 +2709,19 @@
       "sha256": "0bdd851eaeaad0351eed0bb2900826f186d4ca05d39a2f25334ebbecc0fa303c"
     },
     {
+      "path": "docs/porting/th14-stage-position-cpu-observed-oct13.json",
+      "bytes": 9556,
+      "sha256": "a2c0bda1dd8a14700e7d33dad45b83b0d69ed7c2aa5357df61005f21cf45bc45"
+    },
+    {
       "path": "docs/porting/th14-stage-position-fence-observed-oct12.json",
       "bytes": 8751,
       "sha256": "f9bc8996bc88d24640ce0278466d14862b4e9d7912c4893c8ec722ab0cf687ab"
+    },
+    {
+      "path": "docs/porting/th14-stage-process-vertices-observed-oct13.json",
+      "bytes": 3736,
+      "sha256": "4e2e6cf16da2ed31eb82829509d314f9c230136c462e7e53e9c25ce3b6a866b6"
     },
     {
       "path": "docs/porting/th14-stage-queued-live-asset-render-observed-oct12.json",
@@ -4100,8 +4280,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/EnemyManager.cpp",
-      "bytes": 27052,
-      "sha256": "d00e6d1ff79fcbf1a103a880934f225e70ed3fc3ea82861e76fec5cdd701b1b3"
+      "bytes": 27229,
+      "sha256": "606a4ee4ab540a0a169e3978d4ef6c38618f5926db7e6498769f12912a8a7728"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/EnemyManager.hpp",
@@ -4125,13 +4305,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/EnemyState.cpp",
-      "bytes": 18373,
-      "sha256": "fbec31724649179e9772b17e0aa445070ae52264a70b07e1d7960ae0ca899bfb"
+      "bytes": 18944,
+      "sha256": "b9331f542ed6cab546acd2c1331b8bb36cf010f7f298009052fc10b677d77259"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/EnemyState.hpp",
-      "bytes": 17286,
-      "sha256": "e6d8e0faab8e6c1ed60fb4e78dea7b42e292c7568baf95139771b6cc1523b60f"
+      "bytes": 17388,
+      "sha256": "98039dc45137454a4884a4c80af349773a894cc7b97413b15900450c1e93c904"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/EnemyStateCommands.cpp",
@@ -4255,13 +4435,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameInput.cpp",
-      "bytes": 2230,
-      "sha256": "9f21fa466930b7414cddc88b63cef71a234c1c20dd0d0ca3688853cd5173d950"
+      "bytes": 2394,
+      "sha256": "7c6bd87bde99c9a7dbc7e4f176d76fd16d76284d76810e26f628fc026d04472b"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameInput.hpp",
-      "bytes": 876,
-      "sha256": "327903da4a9d19797df06fd750fffd3f90dbf7a59b60ded4d9bc6d5cd6df7605"
+      "bytes": 965,
+      "sha256": "6d3500f2cc120413e85c4018c87693837b2286dad0c97d2d03b55456f1d12fc6"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameResources.cpp",
@@ -4275,8 +4455,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "bytes": 42287,
-      "sha256": "d65c298d11c8d733a540d001d8b692ad8698f92c29c53c6b39f28b2d0fe4cbd8"
+      "bytes": 42530,
+      "sha256": "390aa9efdc92b3b8885caebade137ddf5f48e3775588f5bdb9ef77491a79eadd"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.hpp",
@@ -4745,8 +4925,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotManager.cpp",
-      "bytes": 22131,
-      "sha256": "04f9315e4e6560b7b11f80b3e88293d5fa58472dcaf9cee6038e21031fb49722"
+      "bytes": 22157,
+      "sha256": "9537dc25be315f894e8c514f2860b8530c856a33bf5335e95cdda084d98b3d64"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotManager.hpp",
@@ -4760,8 +4940,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotSakuyaTh14.cpp",
-      "bytes": 6524,
-      "sha256": "cb8d8fe83513d503e303b344683c0aab0598a885584e50b67b6ac0c46ebc0fe6"
+      "bytes": 6924,
+      "sha256": "fdaae3a35c98bdec50f2fa03949dc84d55a3283c5d3b0111500d8313fdd72a51"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotSchedule.cpp",
@@ -7724,6 +7904,11 @@
       "sha256": "077d87f517056229e98650b2824527d274c6fdfecdfadd8df97613275b8b4f0f"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-enemy-target-count-fixture.cpp",
+      "bytes": 908,
+      "sha256": "997802c4c5449168a0a269257a1aadb4bde6fd416612d698dcf066aed13409ad"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-enemy-wave-fixture.cpp",
       "bytes": 536,
       "sha256": "25196a7fb7ff01eef5dede5abfaefe387f241aa1c85c8d12c9bc90d040337b03"
@@ -8030,8 +8215,18 @@
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-natural-input-fixture.cpp",
-      "bytes": 5748,
-      "sha256": "e59a653cfe7b9768f5850f254a9f091cd61f57bd4cf18e162a271d3d73f083f2"
+      "bytes": 5906,
+      "sha256": "5a73b28845fa3f706a49b67524ba1eee39a379cf54bd185aa2fdd31b6663be97"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-natural-shot-diagnostic-fixture.cpp",
+      "bytes": 615,
+      "sha256": "584b2bcfba5348bcd068424341b5b4a09962b970134faf83aaf2cdd6f8d6eac6"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-natural-storage-fixture.cpp",
+      "bytes": 1331,
+      "sha256": "bbea4fbc22b2d91bd09cab98e3565f1caae515b4350c306f62d138bf1bdb34c6"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-options-controls-fixture.cpp",
@@ -8159,9 +8354,19 @@
       "sha256": "f7169e565fc5060b23be91f6636efac04ce402f2ed687765048ffed995bd0f34"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-replay-input-edges-fixture.cpp",
+      "bytes": 396,
+      "sha256": "d888732e9246284847f7b1a501e95db0476fea7b817c7d85d80b6e9fb4c6b83c"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-replay-session-fixture.cpp",
       "bytes": 1413,
       "sha256": "b8bafe56bfc5eb4770b12c034d7fb2ba83ede223443985502ca56a78d9a9da35"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-replay-stage-slice-fixture.cpp",
+      "bytes": 1852,
+      "sha256": "6c4969155c57f13dbc4ffbe3d77e313afc50b8c919026306854d3288a07a8558"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-replay-start-fixture.cpp",
@@ -8502,6 +8707,46 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-stage-visibility-fixture.cpp",
       "bytes": 1161,
       "sha256": "d7ccc8fe12c2aa2659cfbbc82bb4565b101ea0cb5d0d218130bf5ce6314c60e4"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-stage2-detail-reference-fixture.cpp",
+      "bytes": 8752,
+      "sha256": "a3bdb9f02acd38a2b0f719d1255cd45a4cf14e41bed269ffa7a0962a6e5d5b79"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-stage2-detail-replay-fixture.cpp",
+      "bytes": 301,
+      "sha256": "49febc2ef60727dc8dc8eccef4466a465266ddb0e31e586c11691d0380f5830d"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-stage2-rng-reference-fixture.cpp",
+      "bytes": 9299,
+      "sha256": "b2b4fc2dec044f426d862a7866a4664e59953dc48db7d05fe4fae2c44c451037"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-stage2-rng-replay-fixture.cpp",
+      "bytes": 366,
+      "sha256": "e2fab83ed0f435abf517a8c5f4a7718dbc29a5725c068bec8bb47c6a49166c36"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-stage5-area-reference-fixture.cpp",
+      "bytes": 8882,
+      "sha256": "9788a6e300418c641447ff4c9e3f3b16e6668d48a2aa7c736cbe05732c11da42"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-stage5-area-replay-fixture.cpp",
+      "bytes": 299,
+      "sha256": "6457f1f5ee47a1a3f688987bdc6cd214ac7fc2357e745381646e51161ddf69ef"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-stage5-detail-reference-fixture.cpp",
+      "bytes": 8838,
+      "sha256": "8b1cdb1d8bd6eb0ebbb2999ce638a883edc810085d67d82cebc02fa1b1680de4"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-stage5-detail-replay-fixture.cpp",
+      "bytes": 301,
+      "sha256": "31f0c913fcb984dff5eb3d66516a0d983821b2421c704dc666fe97f6a4a6c2f0"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-startup-fixture.cpp",
@@ -11389,6 +11634,11 @@
       "sha256": "1d97ca58920fbc07cb0719a6ef7e31a8ade18a1f3a899989941e5236bdfc7175"
     },
     {
+      "path": "tools/th14-current-release-browser-evidence-check.mjs",
+      "bytes": 3170,
+      "sha256": "567db90a95690c485d68e915cdd184d3ab743e6d5739ccc8ab65b3096cde1e1e"
+    },
+    {
       "path": "tools/th14-custom-replay-reference-check.mjs",
       "bytes": 7675,
       "sha256": "5c9f3b99437784d637cea0765c982087e77026390ab8a34dea8f4a99091c629c"
@@ -12252,6 +12502,16 @@
       "path": "tools/th14-enemy-state-native.py",
       "bytes": 14184,
       "sha256": "6f492312db1cd411cfbe81c8be2b66e8d46629ea9310c059e3acddfdaa50ff16"
+    },
+    {
+      "path": "tools/th14-enemy-target-count-check.mjs",
+      "bytes": 2786,
+      "sha256": "f17ceffac2a2eb5b6ca699be518e8b8f4bfadfb6dc50dd971eafceb831eee171"
+    },
+    {
+      "path": "tools/th14-enemy-target-count-native.py",
+      "bytes": 2555,
+      "sha256": "fd6ebca25f062e638f316db33b07d730fdfa80ddc040e45ae3a45c069bb3c225"
     },
     {
       "path": "tools/th14-enemy-wave-check.mjs",
@@ -13509,9 +13769,19 @@
       "sha256": "29080390c713556d288c37bff2edcf447ad1fba6d37674525831c0e8476f934c"
     },
     {
+      "path": "tools/th14-native-area-window-capture.py",
+      "bytes": 32386,
+      "sha256": "c3b8891e241d708b5aa456dc9aec9d063068cdb3e03cb61234c453eea9a4e7e0"
+    },
+    {
       "path": "tools/th14-native-campaign-assets.mjs",
       "bytes": 4785,
       "sha256": "b90d3fd6cd7338d0264c9649e6724a13cc5491ceb50f389ef1c072c9838285f0"
+    },
+    {
+      "path": "tools/th14-native-detail-window-capture.py",
+      "bytes": 32327,
+      "sha256": "cebf6a9a3aa780266d4b9472db13206e5d4ca4c454b299e6c3e9e455daac1e8b"
     },
     {
       "path": "tools/th14-native-fog-shader.py",
@@ -13594,6 +13864,11 @@
       "sha256": "f026144f64385d2268dc215f6b096483f57f41cd25fd1b1e57e01428d7fcd119"
     },
     {
+      "path": "tools/th14-native-stage2-detail-capture.py",
+      "bytes": 32019,
+      "sha256": "d9e1696171947e467d1e969502f53dc7e2488b745d5ea02b9ba38dd21655a373"
+    },
+    {
       "path": "tools/th14-native-texture-fpu-capture.py",
       "bytes": 10907,
       "sha256": "c381f094e46e4f5c2e2c1c7675f24d165892ba78c66eb4f409dde1c6144327d6"
@@ -13614,6 +13889,31 @@
       "sha256": "7d374015bbff167ec7cd931fc6cbdb190e5b20a580d2cf78a0194fd98181dd7a"
     },
     {
+      "path": "tools/th14-natural-count-fix-replay-evidence-check.mjs",
+      "bytes": 3341,
+      "sha256": "8bdc62116b2468233cf8bfab688a8d5d6e9eb12b48c3da63c6946be73882fc6e"
+    },
+    {
+      "path": "tools/th14-natural-count-fix-storage-evidence-check.mjs",
+      "bytes": 3801,
+      "sha256": "ea3dbc4e5b3d27936a5500cf524c7115f74503135da36c3da76d8d8463b4f6a6"
+    },
+    {
+      "path": "tools/th14-natural-current-replay-check.mjs",
+      "bytes": 6557,
+      "sha256": "ddda0904d6cf57a0a79d0bf23e9a6d7b0c1e9494a00646a3ad2bb16abb8de01e"
+    },
+    {
+      "path": "tools/th14-natural-current-replay-evidence-check.mjs",
+      "bytes": 3324,
+      "sha256": "be019ab5b056d07d38f0365b34969919f4874fbcfaa13e79a45c1f86d4a62d41"
+    },
+    {
+      "path": "tools/th14-natural-current-storage-evidence-check.mjs",
+      "bytes": 3801,
+      "sha256": "a52e75a9a63f892b5d792b9f6f6cecc18d80c55bb61e8ba844deba4a6456056c"
+    },
+    {
       "path": "tools/th14-natural-ending-check.mjs",
       "bytes": 4634,
       "sha256": "7b7a658a11a5b0c2e2320c2a1d51c3ed106d4a1561a5f50b44ec4b312f88d172"
@@ -13630,8 +13930,13 @@
     },
     {
       "path": "tools/th14-natural-input-run.mjs",
-      "bytes": 5636,
-      "sha256": "ed16b37bc546b0acf14c8ce9baf68b333f13b4abb560cc0010167e6d4cbaa112"
+      "bytes": 5813,
+      "sha256": "d5819924bc527ef763d26e71836ca9558bd164eef65c1dae519cb0eb06e32504"
+    },
+    {
+      "path": "tools/th14-natural-native-trace-evidence-check.mjs",
+      "bytes": 3870,
+      "sha256": "fd9b194c38531e924081ba7b0414b71a9fba5c4ae59d2ba79080e66a35c5829b"
     },
     {
       "path": "tools/th14-natural-replay-check.mjs",
@@ -13647,6 +13952,41 @@
       "path": "tools/th14-natural-replay-decode-prepare.py",
       "bytes": 1371,
       "sha256": "e019eae5862e2c55e650cdbd8adfe1af9479b1ae88a571c127f092e276b89d77"
+    },
+    {
+      "path": "tools/th14-natural-replay-reference-check.mjs",
+      "bytes": 8041,
+      "sha256": "30db39dd12bec8efad5770f1e7041847fb4a13dc255daa4b7ec95fb7dd7413b1"
+    },
+    {
+      "path": "tools/th14-natural-replay-reference-trace-check.mjs",
+      "bytes": 8636,
+      "sha256": "1e5c8fbf71696f26d091ca4d0937cda29ba5f7f3d2440464dc7f56a9e8a995f8"
+    },
+    {
+      "path": "tools/th14-natural-score-native.py",
+      "bytes": 3607,
+      "sha256": "562b89984695c7611d712294ad839ebfeaec0844be61be6f51db71f8505b8581"
+    },
+    {
+      "path": "tools/th14-natural-shot-diagnostic.mjs",
+      "bytes": 4668,
+      "sha256": "ce6d3e9f2b496cb4095a34e30ea99fd92bbba0b1225d06c2308c950cf01eb54d"
+    },
+    {
+      "path": "tools/th14-natural-stage-replay-reference-check.mjs",
+      "bytes": 8172,
+      "sha256": "39cf7ab58f91834703471193f8e040e489584a0f949f649f25203bba1def5db9"
+    },
+    {
+      "path": "tools/th14-natural-storage-check.mjs",
+      "bytes": 9251,
+      "sha256": "e2fc9b722c62d0cf3d2417b2afa44474fd8d2097631ab6459c7a76e79560f0de"
+    },
+    {
+      "path": "tools/th14-natural-storage-evidence-check.mjs",
+      "bytes": 3745,
+      "sha256": "225a8beae1fe9450d3606cfd03da191278fdcda4acd7e0cec6e56d4f0f1d7991"
     },
     {
       "path": "tools/th14-options-check.mjs",
@@ -14029,6 +14369,16 @@
       "sha256": "3881f200e21b909e103a53dc84fdeda3e64dfe8e532fc0282a4d9f877c909c88"
     },
     {
+      "path": "tools/th14-replay-input-edges-check.mjs",
+      "bytes": 2620,
+      "sha256": "6a4e596479c17bb4a8f92c2398f0558500da5966934be1e5a26df350ea7a08d2"
+    },
+    {
+      "path": "tools/th14-replay-input-edges-native.py",
+      "bytes": 2519,
+      "sha256": "8d80a71f2c1f6f77f7ff4cb62a57f7f49d91398c28b204b4235da3d1bd6c6e3f"
+    },
+    {
       "path": "tools/th14-replay-native-decode.py",
       "bytes": 3448,
       "sha256": "25665213041a4c6608a47672bdebec12a0ebadf66f22b960d34f224431010aa7"
@@ -14037,6 +14387,11 @@
       "path": "tools/th14-replay-session-check.mjs",
       "bytes": 4390,
       "sha256": "5dc667a08c07fbc15cd9898e0b2b0439d5414071fc942d6319d9bd1ea54c0da3"
+    },
+    {
+      "path": "tools/th14-replay-stage-slice.mjs",
+      "bytes": 2991,
+      "sha256": "13b44396e8898567d19fe6d6edf924baaffa527b9f0406985a1afb15f196f151"
     },
     {
       "path": "tools/th14-replay-start-check.mjs",
@@ -14970,8 +15325,8 @@
     },
     {
       "path": "tools/th14-stage-gpu-stream-serve.mjs",
-      "bytes": 4837,
-      "sha256": "b17bedc563be04589837569fadb3000174db30c6373a2176c50322655442c49a"
+      "bytes": 4970,
+      "sha256": "dc73cc9824c2707c335abd254fafea6febbd15a474becaa7bdb8772e9b06f651"
     },
     {
       "path": "tools/th14-stage-gpu-stream-transform-build.mjs",
@@ -14985,8 +15340,8 @@
     },
     {
       "path": "tools/th14-stage-gpu-stream.html",
-      "bytes": 13033,
-      "sha256": "44f4e33b6543300b6f16ab977ae467fe9c097e61d134115ad179f3dc956a06e1"
+      "bytes": 13967,
+      "sha256": "9b7f85874e3b3c331606d890865b56a22f6e5d5a1121345dc1f48df0f8a0ab59"
     },
     {
       "path": "tools/th14-stage-gpu-viewport-depth-build.mjs",
@@ -15099,6 +15454,16 @@
       "sha256": "4ea2f3f65c08a97baf3d3bef41bfcf6e001c3d5fa0593c0472098ba356c60ec2"
     },
     {
+      "path": "tools/th14-stage-position-cpu-build.mjs",
+      "bytes": 3819,
+      "sha256": "ee72fca73e03a40a1d76018c2e846301b8df646898627e9d38a68fc9265265e1"
+    },
+    {
+      "path": "tools/th14-stage-position-cpu-check.mjs",
+      "bytes": 4331,
+      "sha256": "ebdece713de543bd0884efee9beab34ffd1c050712afc8660fdd6ff1a3707558"
+    },
+    {
       "path": "tools/th14-stage-position-fence-build.mjs",
       "bytes": 2755,
       "sha256": "5556e74b538508c05280efb4979a0ee593aed4c10d46d3aab0a3a32daef47341"
@@ -15107,6 +15472,26 @@
       "path": "tools/th14-stage-position-fence-check.mjs",
       "bytes": 2957,
       "sha256": "eda218fd06555a41bdf5efb1634a3c23de4be91dc5289af188c3c0a865cd5aed"
+    },
+    {
+      "path": "tools/th14-stage-process-vertices-check.py",
+      "bytes": 2849,
+      "sha256": "e5add6b68e75ec1965c8cf6c52714e50b8ce871ac939c63632733287e37a4217"
+    },
+    {
+      "path": "tools/th14-stage-process-vertices-hal.py",
+      "bytes": 10053,
+      "sha256": "8c3416858e0738009bfd5c77e2bca309e6630dc7c2b4837bc92f59d39078b305"
+    },
+    {
+      "path": "tools/th14-stage-process-vertices-native.py",
+      "bytes": 6131,
+      "sha256": "4aab622462e37283c681dc07c226781a7293009ee4d5422a94b346fd29b09169"
+    },
+    {
+      "path": "tools/th14-stage-process-vertices-replay-hal.py",
+      "bytes": 10452,
+      "sha256": "386c246f1bbafabbd0b8c6cb0058cce40ea32fe5a6db8af5ee8022ba4fff1499"
     },
     {
       "path": "tools/th14-stage-queued-live-asset-render-check.mjs",
@@ -15567,6 +15952,26 @@
       "path": "tools/th14-stage-world-viewport-build.mjs",
       "bytes": 4380,
       "sha256": "731a2c29bc9082c403991151e3a81ac653b42645457af529865ffa0ef4baeeed"
+    },
+    {
+      "path": "tools/th14-stage2-detail-replay-trace-check.mjs",
+      "bytes": 8639,
+      "sha256": "d8bf8fb5340a92359fff68385f5054dadad446aa5e69f658ac8413c710c8b833"
+    },
+    {
+      "path": "tools/th14-stage2-rng-replay-trace-check.mjs",
+      "bytes": 8780,
+      "sha256": "dea0d7b1ec8b4617e5559a9665821698f30f0050085ae30e6f2e4415b3b4e9d5"
+    },
+    {
+      "path": "tools/th14-stage5-area-replay-trace-check.mjs",
+      "bytes": 8728,
+      "sha256": "b0e5ecfaf9868565891862576f1188ba71ee7a67dbdc01af798f9d260d25faeb"
+    },
+    {
+      "path": "tools/th14-stage5-detail-replay-trace-check.mjs",
+      "bytes": 8639,
+      "sha256": "8bb52d6c1be7fe2a3bbb95f35df7867aa58c5e5ce60297d2962b966496cbcb6a"
     },
     {
       "path": "tools/th14-startup-session-check.mjs",

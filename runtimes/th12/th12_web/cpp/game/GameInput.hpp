@@ -17,5 +17,8 @@ struct GameInput {
 #endif
     u32 auto_focus_frames=0;
     void update(u32 keys,bool auto_focus=false)noexcept;
+    void update_normalized(u32 keys)noexcept;
+private:
+    void update_counts()noexcept;
 };
 }

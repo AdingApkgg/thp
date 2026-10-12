@@ -6,10 +6,17 @@
 #include "SpellController.hpp"
 #include "ScreenShake.hpp"
 namespace th11 {
-EnemyManager::EnemyManager(EclProgram& p,EnemyEnvironment& e,EnemyCommandEnvironment& c,EnemyFrameWorld& w):program(&p),environment(e),commands(c),world(w){timer.set(0,&environment.rate);commands.manager=this;}
+EnemyManager::EnemyManager(EclProgram& p,EnemyEnvironment& e,EnemyCommandEnvironment& c,EnemyFrameWorld& w):program(&p),environment(e),commands(c),world(w){timer.set(0,&environment.rate);commands.manager=this;
+#if PORT_TITLE == 14
+    environment.th14_enemy_list=&first;
+#endif
+}
 EnemyManager::~EnemyManager(){
     for(auto& [key,entry]:entries)entry->enemy.script.release_threads(entry->script);
     if(commands.manager==this)commands.manager=nullptr;
+#if PORT_TITLE == 14
+    if(environment.th14_enemy_list==&first)environment.th14_enemy_list=nullptr;
+#endif
 }
 Enemy* EnemyManager::spawn(const char* name,const EnemySpawn& parameters){
 #if PORT_TITLE == 16

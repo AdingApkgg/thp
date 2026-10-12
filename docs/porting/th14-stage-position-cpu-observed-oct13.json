@@ -1,0 +1,202 @@
+{
+  "diagnosticEvidenceVerified": true,
+  "productionChanged": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "variants": [
+    {
+      "name": "position-invariant",
+      "frames": 21,
+      "parentHashesEqual": true,
+      "differentChannels": 695,
+      "maxDelta": 91,
+      "exactFrames": 3
+    },
+    {
+      "name": "position-cpu-fused",
+      "frames": 21,
+      "parentHashesEqual": true,
+      "differentChannels": 695,
+      "maxDelta": 91,
+      "exactFrames": 3
+    },
+    {
+      "name": "position-cpu-separated",
+      "frames": 21,
+      "parentHashesEqual": true,
+      "differentChannels": 695,
+      "maxDelta": 91,
+      "exactFrames": 3
+    }
+  ],
+  "completePortablePixelBytesVerified": 25804800,
+  "completePortablePixelDifferentChannels": 695,
+  "evidence": {
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-depth-fixed20/browser-current-control.json": {
+      "bytes": 34472,
+      "sha256": "12ec7aea347c10cd0d97a37e778fefb94118fb613b5283c69495aef442f04261"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/native.json": {
+      "bytes": 6748,
+      "sha256": "115123af74b9133297766d01284d5f9e4e077a2b290ab84916f74cf3a44040cd"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/native.bgra": {
+      "bytes": 25804800,
+      "sha256": "42f7c2c66012c6b283eac3c0620ba485591ea7bb419a70715dfdeef7ad62e978"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-invariant/build.json": {
+      "bytes": 1940,
+      "sha256": "5a9b37a8d50a97c00d3765691111bbce42b59406ab8d2eb96b1d898552186739"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-invariant/browser-result.json": {
+      "bytes": 34467,
+      "sha256": "b11d930857aa5d8e6651bdf2c925af594a3d5e34c67eaacbd595081aa9ed4f5d"
+    },
+    "tools/th14-stage-position-cpu-build.mjs": {
+      "bytes": 3819,
+      "sha256": "ee72fca73e03a40a1d76018c2e846301b8df646898627e9d38a68fc9265265e1"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/cpu-clip-depth-fixed20/build.json": {
+      "bytes": 1904,
+      "sha256": "3d0b01e2dcaac67e5a983b78d4cedc849336c777102c5c947e85562e27c87f5b"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-invariant/gpu.wasm": {
+      "bytes": 765531,
+      "sha256": "82decfc53107ebc921c7da2517f263306ac64d84190c83620c345f9f8b70587e"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-invariant/gpu.mjs": {
+      "bytes": 211781,
+      "sha256": "a165c69648e20e1ff44311ad4cfefa635355a3a4922d35229bb6481f7b2cf5e8"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-invariant/Renderer.cpp": {
+      "bytes": 30309,
+      "sha256": "a8e2c80ec30fbb668811fb7c8cd6da56c28ac13ad01ebd4d2c6ab8e82a21cee8"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-invariant/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-invariant/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-invariant/Shaders.hpp": {
+      "bytes": 3746,
+      "sha256": "19dd6ecc6b109c359aa600fef16ff2494a3418f3f79bf9444595e6ac74a6e750"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-invariant/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-invariant/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-invariant/fixture.cpp": {
+      "bytes": 5711,
+      "sha256": "4b0ea74adcf97c87b288d72a6382a3754603269e86c257b3b8fe5c89b45b07f7"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-fused/build.json": {
+      "bytes": 1973,
+      "sha256": "557f994ce6dc0c7881a6f7f7172a7127124884b5a9de8ce41e030c46f3a86472"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-fused/browser-result.json": {
+      "bytes": 34467,
+      "sha256": "18c9a0da11571ce7cf72a8bf3ea67c9055300598eabd87303ca900061da8c848"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/viewport-fma-scene/build.json": {
+      "bytes": 1925,
+      "sha256": "fff8fec5fee048bb9be1efa2c41108476f617d82770440fc2876b80d5bf7eed1"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-fused/gpu.wasm": {
+      "bytes": 767324,
+      "sha256": "4208c53b98165edb0843dfbfaa04d17d5607bc77309144b55bb113341b49fbf7"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-fused/gpu.mjs": {
+      "bytes": 212992,
+      "sha256": "61772e0a7ee9f66deeb5df2d65e54309bde7f5cff45de4df7e7d44d9129600ae"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-fused/Renderer.cpp": {
+      "bytes": 31398,
+      "sha256": "6835c01435e8fc5a085fe6ca6b590091f25656447873a1308d4b400f132a6653"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-fused/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-fused/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-fused/Shaders.hpp": {
+      "bytes": 3678,
+      "sha256": "5ac229ffae41aab4e06a915ea22a16d73e41767cdb03af735aae745b63d34675"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-fused/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-fused/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-fused/fixture.cpp": {
+      "bytes": 7040,
+      "sha256": "2bae78f13d8e8adbfd8d43e2fe9ff56a0289d0c51dba8c419f99586ce1365b73"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-separated/build.json": {
+      "bytes": 1977,
+      "sha256": "dcf927e29f678bda006c9048df1e177874cd230ced5f0a64a5cb7569fe72e038"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-separated/browser-result.json": {
+      "bytes": 34471,
+      "sha256": "a9fb0132e413b0a603b2e9599f623e75a441e597bd56372edad6c8e00b897196"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-separated/gpu.wasm": {
+      "bytes": 767305,
+      "sha256": "4c6b0056c33a1cb0fd01b7fbe4c61a3c2638ce0bb1fb9ab9d31e767c938552a6"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-separated/gpu.mjs": {
+      "bytes": 212992,
+      "sha256": "61772e0a7ee9f66deeb5df2d65e54309bde7f5cff45de4df7e7d44d9129600ae"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-separated/Renderer.cpp": {
+      "bytes": 31366,
+      "sha256": "85878b51ed0952b9c59d1f7c2f003bf327e86f2cbcd649f4eb3f14b3798d0419"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-separated/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-separated/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-separated/Shaders.hpp": {
+      "bytes": 3678,
+      "sha256": "5ac229ffae41aab4e06a915ea22a16d73e41767cdb03af735aae745b63d34675"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-separated/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-separated/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-separated/fixture.cpp": {
+      "bytes": 7040,
+      "sha256": "2bae78f13d8e8adbfd8d43e2fe9ff56a0289d0c51dba8c419f99586ce1365b73"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/position-cpu-separated/webgl.bgra": {
+      "bytes": 25804800,
+      "sha256": "ed5fbb4994857b1ac217363f26aa22fd2c9d73ceba979ed5bc8e9c6121ac7c0e"
+    },
+    "tools/th14-stage-gpu-stream.html": {
+      "bytes": 13967,
+      "sha256": "9b7f85874e3b3c331606d890865b56a22f6e5d5a1121345dc1f48df0f8a0ab59"
+    }
+  },
+  "toolSha256": "ebdece713de543bd0884efee9beab34ffd1c050712afc8660fdd6ff1a3707558",
+  "scope": "Invariant vertex-output control and CPU fused/separated half-pixel controls with fused sequential vertex dot, no viewport snapping. All21 frame hashes remain identical to the reproduced parent candidate; no pixel repair. Both complete Native and CPU-separated portable buffers independently archived and all byte differences recomputed; other two candidates retain frame hashes and selected differences only. No original-process framebuffer or whole-game equivalence."
+}

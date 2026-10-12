@@ -1,0 +1,90 @@
+{
+  "diagnosticEvidenceVerified": true,
+  "productionChanged": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "rows": [
+    {
+      "processedVertexReplay": false,
+      "capturedVertices": 4,
+      "differentChannels": 0,
+      "first": [],
+      "instrumentationPreservesFinalFrame": true
+    },
+    {
+      "processedVertexReplay": true,
+      "capturedVertices": 4,
+      "differentChannels": 1,
+      "first": [
+        {
+          "x": 109,
+          "y": 420,
+          "channel": 1,
+          "actual": 104,
+          "reference": 103
+        }
+      ],
+      "instrumentationPreservesFinalFrame": false
+    }
+  ],
+  "evidence": {
+    "artifacts/th14/stage-gpu-stream-replay/process-vertices/report.json": {
+      "bytes": 1835,
+      "sha256": "aae0643a51311166ad1b6240609e9f31dfb8ae069ab0aa35f06235a4bdc44dd0"
+    },
+    "tools/th14-stage-process-vertices-native.py": {
+      "bytes": 6131,
+      "sha256": "4aab622462e37283c681dc07c226781a7293009ee4d5422a94b346fd29b09169"
+    },
+    "tools/th14-stage-gpu-stream-hal.py": {
+      "bytes": 7658,
+      "sha256": "8c61376c7900d6b0af49aa6395e7b58289b2363d62a8b601bc39b3507dd36613"
+    },
+    "tools/th14-stage-process-vertices-hal.py": {
+      "bytes": 10053,
+      "sha256": "8c3416858e0738009bfd5c77e2bca309e6630dc7c2b4837bc92f59d39078b305"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/native.json": {
+      "bytes": 6748,
+      "sha256": "115123af74b9133297766d01284d5f9e4e077a2b290ab84916f74cf3a44040cd"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/native.bgra": {
+      "bytes": 25804800,
+      "sha256": "42f7c2c66012c6b283eac3c0620ba485591ea7bb419a70715dfdeef7ad62e978"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/process-vertices/native.bgra": {
+      "bytes": 1228800,
+      "sha256": "6da8ae90d430f5ac20d576dac8a704349c494468682d9f05686aadc350ae52a1"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/process-vertices/processed-vertices.bin": {
+      "bytes": 112,
+      "sha256": "f6f4d19e5d9ce0aab6ce57d3958fadf6cf87819cf2a7f540e1685c40cbdfa1db"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/process-vertices-no-fog-replay/report.json": {
+      "bytes": 1835,
+      "sha256": "967c1dbfe32f4dfeb081fff8a5b9966bd9695462fc4856adf58e18868135cd9f"
+    },
+    "tools/th14-stage-process-vertices-replay-hal.py": {
+      "bytes": 10452,
+      "sha256": "386c246f1bbafabbd0b8c6cb0058cce40ea32fe5a6db8af5ee8022ba4fff1499"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-fog/native.json": {
+      "bytes": 7067,
+      "sha256": "a786450f617fd393ace0f37a90ef1ab2125faa494344a6e9d6b87e159a37ebe7"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/variants/no-fog/native.bgra": {
+      "bytes": 25804800,
+      "sha256": "b5e1882532e735752d05858282d1b1259afcddb665a5413b813b20aea61416c1"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/process-vertices-no-fog-replay/native.bgra": {
+      "bytes": 1228800,
+      "sha256": "788d3615364a4d85957a25afed26ec5cf2523d80e21103cfe4a7259a446453ea"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/process-vertices-no-fog-replay/processed-vertices.bin": {
+      "bytes": 112,
+      "sha256": "f6f4d19e5d9ce0aab6ce57d3958fadf6cf87819cf2a7f540e1685c40cbdfa1db"
+    }
+  },
+  "toolSha256": "e5add6b68e75ec1965c8cf6c52714e50b8ce871ac939c63632733287e37a4217",
+  "scope": "Independent hidden HAL ProcessVertices probe, one four-vertex draw. Original draw control exactly preserves complete original frame; returned-vertex no-fog replay has one color-channel difference, retained. This API does not establish actual raster vertex equivalence; no pixel repair or original-process framebuffer."
+}

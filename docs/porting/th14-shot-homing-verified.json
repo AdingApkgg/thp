@@ -3,13 +3,13 @@
   "cases": 8192,
   "delayedTurnCases": 216,
   "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
-  "wasmSha256": "aa0827cb2fcd27976438bd708d5fb27d852a924c178325708720d107a91c5c9f",
+  "wasmSha256": "2855807e7b190884174c52b233b0649d83274e0a3bfec8cc6d0f32aa9a3e9027",
   "scope": "Actual retail 4518d0 homing with original 42c310 nearest search, 421a60 ID existence, atan2 and double angle normalization; no helper stubs. Controlled enemy list/object layouts. Compares manager absence, missing target IDs, flagged targets, list order/ties, radius-256 strict edge, age-60 gate, speed caps and SSE turn arithmetic. Retail 4538f0 delayed turn also covers signed age/tail edges and both states. Production helpers are wired into ShotManager update callbacks 1 and 8; common factory/linear update have separate proofs. Full ECL lifecycle, native pointer ownership, all weapon timelines, replay and GPU pixels are separate. Additionally compares the actual ShotManager.invalidate_target path and the following homing update against a retail stale pointer whose ID is absent from a nonempty live list: one validation frame precedes target reacquisition. This avoids dereferencing freed port objects.",
   "sourceHashes": {
     "tests/cpp/th14-shot-homing-fixture.cpp": "f5504f7b66fe5acdc7a253673de6d336b5f860e7b619b97e9f36f23013f5c2e0",
-    "cpp/game/ShotManager.cpp": "5a10e94a83d0d81f483bfd6163ad451ab399ef9feecf0f978e6543e19e970261",
-    "cpp/game/ShotManager.hpp": "168d09470c0a73a90e1d19f8ca7349d4c1de91e52e6c83ba36d6568b92e7586b",
-    "cpp/game/ShotTh14.cpp": "3fac01af88262a2570ee3129295ea66cc3828b7e1b411f2bf8a7a890d4055a9c",
+    "cpp/game/ShotManager.cpp": "9537dc25be315f894e8c514f2860b8530c856a33bf5335e95cdda084d98b3d64",
+    "cpp/game/ShotManager.hpp": "aa603ba0a62fc2a563ad11a25142fb08a6ebb7d63f32037caf3b972cfaa375ec",
+    "cpp/game/ShotTh14.cpp": "165834bdbcbc67f2688364dfb7a339bfc53c55b32a2767d84bf43ae27fd70563",
     "cpp/game/Movement.cpp": "ea823e71f48f15d1d5e038c4fa62b6a4dfcaa31b087ebc183e42ef2dd439cccb"
   },
   "toolHashes": {

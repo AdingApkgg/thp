@@ -25,7 +25,11 @@ bool shot_th14_sakuya_update(ShotState& s,ShotPlayer& p,Th14DamageArea& area,Anm
     out={};if(!s.spec)return false;const u32 phase=(s.th14_shot_flags>>2)&15;
     if(!phase){const i32 age=s.timer.current,threshold=signed_bits(s.spec->native_tail[0]);
         if(age<threshold){
-            if(!p.th14_enemy_manager)s.target=nullptr;
+            if(!p.th14_enemy_manager){s.target=nullptr;s.th14_homing_target_retired=false;}
+            // Retail452ff0 retains the old pointer until421a60 rejects its ID,
+            // then skips acquisition/aiming for this update. The enemy object
+            // is already freed here, so retain that validation frame as a flag.
+            else if(s.th14_homing_target_retired){s.th14_homing_target_retired=false;s.target=nullptr;s.th14_target_id=0;}
             else if(!s.target){s.target=nearest(enemies,s.movement.position);if(s.target)s.th14_target_id=u32(s.target->state.instance_id);}
             if(s.target){if(!find(enemies,s.th14_target_id)){s.target=nullptr;s.th14_target_id=0;}
                 else{const auto q=s.target->state.current.position;const float x=q.x-s.movement.position.x,y=q.y-s.movement.position.y;s.movement.angle=normalize_angle(float(std::atan2(double(y),double(x))));}}

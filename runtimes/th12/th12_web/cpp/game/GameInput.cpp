@@ -27,6 +27,12 @@ void GameInput::update(u32 keys,bool auto_focus)noexcept{
         if(!(held&1))auto_focus_frames=0;
         else if(++auto_focus_frames>7){held|=8;auto_focus_frames=8;}
     }else if((keys&9)==9&&counts[0]<5&&counts[3]<5)held|=0x400;
+    update_counts();
+}
+void GameInput::update_normalized(u32 keys)noexcept{
+    previous=held;held=keys;update_counts();
+}
+void GameInput::update_counts()noexcept{
     long_repeat=short_repeat=0;
     for(u32 bit=0;bit<32;++bit){const u32 mask=1u<<bit;
 #if PORT_TITLE == 14

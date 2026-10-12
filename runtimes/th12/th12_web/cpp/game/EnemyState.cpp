@@ -201,6 +201,17 @@ float* EnemyGlobals::float_reference(i32 id){
     if(id>=-9935&&id<=-9932)return enemy.extra_floats+(id+9935);
     return nullptr;
 }
+#if PORT_TITLE == 14
+i32 EnemyEnvironment::th14_targetable_enemy_count()const noexcept{
+    // Retail4219b0 walks the live manager list on every ECL -9908 read.
+    i32 result=0;
+    for(auto* node=th14_enemy_list?*th14_enemy_list:nullptr;node;node=node->next){
+        const auto& state=node->value->state;
+        if(!(state.flags&0x31)&&state.damage_immunity.current<=0)++result;
+    }
+    return result;
+}
+#endif
 double EnemyGlobals::floating(i32 id){
 #if PORT_TITLE == 16
     if(id>=-9926&&id<=-9923)return float(environment.th16_shared_integers[id+9926]);
@@ -208,6 +219,7 @@ double EnemyGlobals::floating(i32 id){
 #endif
 #if PORT_TITLE == 14
     if(id>=-9926&&id<=-9923)return float(environment.th14_shared_integers[id+9926]);
+    if(id==-9908)return float(environment.th14_targetable_enemy_count());
     if(id==-9906)return (enemy.flags>>19)&1u;
     // Retail reads return zero with no Boss, although writable references
     // fall back to this enemy's storage (42b11e / 42bd32).
@@ -251,6 +263,7 @@ i32 EnemyGlobals::integer(i32 id){
 #endif
 #if PORT_TITLE == 14
     if(!environment.boss&&((id>=-9943&&id<=-9940)||(id>=-9939&&id<=-9936)))return 0;
+    if(id==-9908)return environment.th14_targetable_enemy_count();
     if(id==-9909)return signed_bits(enemy.parent_instance_id); // 42ad9c, object +11e8.
 #endif
     if constexpr(kPortTitle==14||kPortTitle==16)if(id==-9907)return environment.spell_practice_id;

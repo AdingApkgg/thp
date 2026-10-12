@@ -234,6 +234,8 @@ struct EnemyEnvironment {
 #if PORT_TITLE == 14
     // Retail enemy manager +2c..38 and +3c..58, shared by all owners.
     i32 th14_shared_integers[4]{};float th14_shared_floats[8]{};
+    EnemyLink* const* th14_enemy_list=nullptr;
+    i32 th14_targetable_enemy_count()const noexcept;
     // Optional read-only reference instrumentation, before an ECL RNG read.
     void (*th14_random_read)(i32 id,i32 enemy,u32 calls)=nullptr;
 #endif
