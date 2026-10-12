@@ -29,7 +29,8 @@ bool ShotManager::on_spawn(ShotState& s,i32){
     switch(u32(s.spec->spawn)){
     case 0:return true;
     case 1:s.target=nullptr;s.th14_target_id=0;return true;
-    case 2:{auto* vm=animations.find(s.animation);return vm&&shot_th14_focused_spawn(s,player,*vm,world.enemies,&animations.rate);}
+    case 2:{auto* vm=animations.find(s.animation);if(!vm||!shot_th14_focused_spawn(s,player,*vm,world.enemies,&animations.rate))return false;
+        if(s.th14_area_slot<256){auto& a=th14_areas[s.th14_area_slot];a.flags|=2;a.radius=s.th14_area_radius;}return true;}
     case 3:if(s.th14_area_slot>=256)return false;shot_th14_beam_spawn(s,th14_areas[s.th14_area_slot]);return world.sound(20,player.position.x);
     case 4:shot_th14_spread_spawn(s,animations.visual_rng);return true;
     case 5:shot_th14_flame_spawn(s,animations.visual_rng);return true;
@@ -126,7 +127,7 @@ i32 ShotManager::spawn(const ShotSpec& spec,i32 firing_frame,const Vec3& origin)
 #endif
     if(!on_spawn(s,firing_frame)){
 #if PORT_TITLE == 14
-        if(u32(spec.spawn)==6){s.state=0;s.th14_area_flags&=~1u;sync_th14_area(s);if(auto* a=animations.find(s.animation))a->flags2|=0x20;s.animation=0;return -1;}
+        if(u32(spec.spawn)==6){s.state=0;s.th14_area_flags&=~1u;if(s.th14_area_slot<256)th14_areas[s.th14_area_slot].flags&=~1u;if(auto* a=animations.find(s.animation))a->flags2|=0x20;s.animation=0;return -1;}
 #endif
         last_error=3;return -2;
     }
@@ -193,7 +194,10 @@ bool ShotManager::on_update(ShotState& s){
     if(u32(s.spec->update)==8){shot_th14_delayed_turn(s);return true;}
     if(u32(s.spec->update)==1){shot_th14_homing_update(s,player.th14_enemy_manager,world.enemies);return true;}
     if(u32(s.spec->update)==2){if(s.state==2)return true;auto* vm=animations.find(s.animation);if(!vm)return false;
+        const i32 previous_power=player.th14_cached_power;
         const i32 result=shot_th14_focused_update(s,player,*vm,world.enemies,resource,schedule.timer.current>=0,&animations.rate);
+        if(s.th14_area_slot<256){auto& area=th14_areas[s.th14_area_slot];if(result==1)area.flags&=~1u;
+            else if(result==0&&previous_power!=player.th14_cached_power)area.radius=s.th14_area_radius;}
         if(result==1)interrupt(s.animation,1);return result>=0;
     }
     if(u32(s.spec->update)>1)return false;
@@ -271,7 +275,7 @@ bool ShotManager::update(){
         if(!a){s.state=0;erase(s.extra_animation);s.animation=s.extra_animation=0;
 #if PORT_TITLE == 14
             if(s.spec->type==5){player.th14_cached_power=wrapping_sub(player.th14_cached_power,1);if(s.th14_shot_flags&0x3c)player.th14_attached_count=wrapping_sub(player.th14_attached_count,1);}
-            s.th14_area_flags&=~1u;sync_th14_area(s);
+            s.th14_area_flags&=~1u;if(s.th14_area_slot<256)th14_areas[s.th14_area_slot].flags&=~1u;
 #endif
             continue;}
         if(s.spec->type!=(kPortTitle==14?3:4)&&s.timer.current>=10){
@@ -286,7 +290,7 @@ bool ShotManager::update(){
             if(outside(p,width,height)&&!(s.spec->type==2&&p.x>-224&&p.x<224&&p.y>=-32)){erase(s.animation);s.animation=0;s.state=0;
 #endif
 #if PORT_TITLE == 14
-                s.th14_area_flags&=~1u;sync_th14_area(s);if(s.spec->type==2)player.th14_cached_power=0;
+                s.th14_area_flags&=~1u;if(s.th14_area_slot<256)th14_areas[s.th14_area_slot].flags&=~1u;if(s.spec->type==2)player.th14_cached_power=0;
                 if(s.spec->type==5){player.th14_cached_power=wrapping_sub(player.th14_cached_power,1);if(s.th14_shot_flags&0x3c)player.th14_attached_count=wrapping_sub(player.th14_attached_count,1);}
 #endif
                 continue;}

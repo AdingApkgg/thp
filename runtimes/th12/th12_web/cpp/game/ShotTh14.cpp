@@ -117,9 +117,10 @@ bool ShotManager::bind_th14_area(ShotState& s){
     return true;
 }
 void ShotManager::sync_th14_area(ShotState& s)noexcept{
-    if(s.th14_area_slot>=256)return;auto& a=th14_areas[s.th14_area_slot];a.flags=s.th14_area_flags;
+    if(s.th14_area_slot>=256)return;auto& a=th14_areas[s.th14_area_slot];
+    // 4512af..4512ef writes geometry through a retained pointer, even when
+    // another shot has reused it. Flags/radius belong to their callbacks.
     if(s.state&&(s.th14_shot_flags&1)){a.angle=s.movement.angle;a.damage=s.damage;a.position=s.movement.position;a.size=s.spec->hitbox;}
-    if(s.state&&(a.flags&2))a.radius=s.th14_area_radius;
 }
 void ShotManager::update_th14_areas()noexcept{
     for(auto& a:th14_areas)th14_damage_tick(a);
