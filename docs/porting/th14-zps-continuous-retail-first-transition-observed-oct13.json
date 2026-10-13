@@ -1,0 +1,91 @@
+{
+  "diagnosticOnly": true,
+  "passed": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "physicalInvocationOrder": true,
+  "loadingCallbacksIncluded": true,
+  "comparedCallbacks": 10000,
+  "rawWords": 320000,
+  "stages": {
+    "1": 9669,
+    "2": 331
+  },
+  "gameplayDifferences": 6,
+  "fieldDifferenceCounts": {
+    "visualSeed": 9997,
+    "visualCalls": 10000,
+    "gameplayCalls": 6
+  },
+  "firstDifferences": {
+    "visualSeed": {
+      "index": 0,
+      "stage": 1,
+      "stageFrame": 1,
+      "field": "visualSeed",
+      "port": 47358,
+      "native": 26353
+    },
+    "visualCalls": {
+      "index": 0,
+      "stage": 1,
+      "stageFrame": 1,
+      "field": "visualCalls",
+      "port": 280,
+      "native": 1360
+    },
+    "gameplayCalls": {
+      "index": 9669,
+      "stage": 2,
+      "stageFrame": 0,
+      "field": "gameplayCalls",
+      "port": 0,
+      "native": 49987
+    }
+  },
+  "nativeCaptureTimedOut": false,
+  "nativeElapsedSeconds": 205.585,
+  "nativeCaseInitialization": {
+    "address": "0x4f58b8",
+    "before": 64,
+    "after": 0,
+    "replayManagerMode": 1,
+    "afterReadOnlyBootstrap": true,
+    "beforeFirstPlayerInstruction": true,
+    "wordWrites": 1,
+    "originalInstructionAddress": "0x459bcf",
+    "originalInstructionHex": "8325b8584f00bf",
+    "scope": "One explicit warm Replay mode initialization matching the original AND flag effect; not ordinary menu/loader startup."
+  },
+  "candidatePlaybackEnded": true,
+  "allDifferences": {
+    "path": "artifacts/th14/public-replay-playback/zps-normal-transition-input-oct13/continuous-retail-differences.json",
+    "bytes": 1852022,
+    "sha256": "db8b5e69f526f014fd6a5bb33e3dfbd925123847089b0eec19a009d56fcb7f1d"
+  },
+  "sourceFilesVerified": 265,
+  "bindings": [
+    {
+      "path": "artifacts/th14/native-stored-warm-zps-continuous-first-transition2-oct13/reference.json",
+      "bytes": 71587141,
+      "sha256": "70dcb86eb7171bcf3b7634df0c298c26b303439aedd4deffe91e703cb4b1d0d0"
+    },
+    {
+      "path": "artifacts/th14/public-replay-playback/zps-normal-transition-input-oct13/report.json",
+      "bytes": 55923,
+      "sha256": "619130845d7f8bb27b9347691c9ea9b36923ce4e89e197b4b303079cb07156a5"
+    },
+    {
+      "path": "artifacts/th14/public-replay-playback/zps-normal-transition-input-oct13/selected-state.u32",
+      "bytes": 12290048,
+      "sha256": "bd053c69b99a35b46fd1a4b86a23bb35931a1e8b188ede09f9607294a2704795"
+    },
+    {
+      "path": "artifacts/th14/public-replay-playback/zps-normal-transition-input-oct13/public-replay.wasm",
+      "bytes": 1298233,
+      "sha256": "a8a068bd66b1b045b42cdc540140cd916e3cac97cefd6d1c6a5bb0c87acabaae"
+    }
+  ],
+  "verifierSha256": "a82922e33c4aaceb2567068b11e665375b413f9e967533481771e351454b43e5",
+  "scope": "Every continuous original retail callback is paired in physical order with production, including inactive loading, stage-clock resets, repeated clocks and transition-boundary rows. No stage slicing, resynchronization, input/RNG fixes in the oracle, row removal or masking of gameplay differences. All raw32 differences retained with digest. One declared initial warm replay flag clear remains; this prefix does not certify ordinary menu startup, whole-game completion, object-owner memory, pixels/audio or storage."
+}

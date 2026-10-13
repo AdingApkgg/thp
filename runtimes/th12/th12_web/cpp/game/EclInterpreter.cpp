@@ -31,7 +31,9 @@ float pop_float(EclStack& s){u32 b;EclValueType t;if(!s.pop(b,t)){report_ecl_und
 void push_integer(EclStack& s,i32 v){s.push(EclValueType::Integer,u32(v));}
 void push_float(EclStack& s,float v){s.push(EclValueType::Float,float_bits(v));}
 template<class T>T& destination(T* p){if(!p)__builtin_trap();return *p;}
-const EclInstruction* advance(const EclInstruction* p,u32 n){return reinterpret_cast<const EclInstruction*>(reinterpret_cast<const u8*>(p)+n);}
+// Jump operands are signed relative offsets; a backwards jump must subtract
+// bytes directly, rather than form an overflowing unsigned pointer first.
+const EclInstruction* advance(const EclInstruction* p,u32 n){return reinterpret_cast<const EclInstruction*>(reinterpret_cast<const u8*>(p)+signed_bits(n));}
 float normalize(float value){constexpr double pi=3.1415927410125732421875,tau=6.283185482025146484375;u32 loops=0;while(value>pi){value=float(double(value)-tau);if(loops++>32)break;}while(value<-pi){value=float(double(value)+tau);if(loops++>32)break;}return value;}
 void diagnostic(EclContext& context,EclServices& services){
     const char* cursor=reinterpret_cast<const char*>(context.instruction)+20;u32 index=1,descriptor=0;

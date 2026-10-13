@@ -423,7 +423,13 @@ bool GameSession::update(const GameSessionInput& input) {
     if(battle_attached) {
         if(!battle)return fail("battle lifetime missing");
         bool playback_ended=false;
+        const bool stage_was_active=battle->stage_active;
         const bool updated=battle->update([&]{
+#if PORT_TITLE == 14
+        // Original436a40 ->455ed0 ->456170 clears input hold/repeat state
+        // at activation, before the first incoming-stage Replay callback.
+        if(!stage_was_active&&battle->stage_active)game_input={};
+#endif
         if(state.replay){
             if(battle->stage_active&&playback.selected_stage()!=state.stage&&!playback.select(state.stage))return fail("replay activation stage missing");
             const auto recorded=playback.tick();

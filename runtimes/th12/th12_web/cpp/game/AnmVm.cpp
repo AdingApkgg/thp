@@ -176,8 +176,8 @@ i32* AnmVm::integer_destination(i32* argument) noexcept {
 #if PORT_TITLE == 14
     if(*argument==10029)return &random_bound;
 #endif
-    if(*argument>=10000&&*argument<=10003)return integers+*argument-10000;
-    if(*argument==10008||*argument==10009)return extra_integers+*argument-10008;return argument;
+    if(*argument>=10000&&*argument<=10003)return integers+(*argument-10000);
+    if(*argument==10008||*argument==10009)return extra_integers+(*argument-10008);return argument;
 }
 float* AnmVm::float_destination(float* argument) noexcept {
 #if PORT_TITLE == 14
@@ -186,7 +186,7 @@ float* AnmVm::float_destination(float* argument) noexcept {
     if(value==10027)return &random_scale.x;if(value==10028)return &random_scale.y;
     if(value==10033)return &extra_floats.x;if(value==10034)return &extra_floats.y;if(value==10035)return &extra_floats.z;
 #endif
-    const i32 id=truncate_int(*argument);if(id>=10004&&id<=10007)return floats+id-10004;
+    const i32 id=truncate_int(*argument);if(id>=10004&&id<=10007)return floats+(id-10004);
     if(id==10013)return &script_position.x;if(id==10014)return &script_position.y;if(id==10015)return &script_position.z;return argument;
 }
 }

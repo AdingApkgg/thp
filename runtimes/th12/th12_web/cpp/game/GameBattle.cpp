@@ -150,6 +150,12 @@ bool GameBattle::finish_stage_loading(){
 }
 bool GameBattle::enter_stage_transition(u32 number){
 #endif
+#if PORT_TITLE == 14
+    // Original4358e0 sets Player+182d4 bit2 and interrupts both option
+    // VMs with3 before the incoming stage becomes active.
+    player->th14_scale.flags|=2;
+    player->motion.recall_options(true);
+#endif
     if(dialogue)dialogue->clear();dialogue.reset();bomb.reset();
     if(!enemies.reset(resources.stage->timeline)){last_error=-1001;return false;}
     animations.retire_resource(resources.core.enemy);

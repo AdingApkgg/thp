@@ -27,7 +27,7 @@ touhou.vip 的每一部作品都是一个独立的 **可移植 C++ 重建 Runtim
 
 ## 当前状态
 
-当前仅推进 TH14，其他作品后置，进度表只标 TH14。最新核心修正六面符卡伤害除数、ECL 阶段计时读取及随全局倍率推进的关卡时钟。独立暖启动的六个分关共95,266次原版回调，30玩法字段和捕获对象窗口差0；视觉RNG差异保留。完整玩家录像在当前生产核心连续播放96,016帧后正常结束，无GameOver或未支持弹幕。连续活动帧对照保留五个关卡首帧pressed差异，750个加载回调单独保留；原版六面采样未达到请求预算，仍不是不间断原版整局通过或1:1。当前收据见[六面检查点](docs/porting/th14-zps-normal-six-stage-current-checkpoint-oct13.json)，详细范围见[发布说明](docs/GITHUB_RELEASE.md)、[核心记录](docs/porting/CORE_STATUS.md)和[方法调整](docs/porting/TH14_METHOD.md)。
+当前仅推进 TH14，其他作品后置，进度表只标 TH14。独立原版已不间断采到六关96,016次回调；与当前生产完整录像逐次对照，29个选定玩法字段相同，仍保留25个加载期间玩法RNG计数字差及视觉RNG差，报告没有标全字段通过。当前源码完整录像另通过 AddressSanitizer、UndefinedBehaviorSanitizer；六个暖启动分关的30玩法字段和捕获对象窗口也重跑通过。普通启动/结局、完整图像、音频、存储及其他自机/难度仍未验收，整作1:1尚未完成。当前数据见[不间断原版对照](docs/porting/th14-zps-continuous-retail-full-observed-oct13.json)，范围见[发布说明](docs/GITHUB_RELEASE.md)、[核心记录](docs/porting/CORE_STATUS.md)和[方法调整](docs/porting/TH14_METHOD.md)。
 
 ## 素材与许可
 

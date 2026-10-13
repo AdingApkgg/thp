@@ -5,6 +5,7 @@ import {readFileSync,writeFileSync,mkdirSync,existsSync} from 'node:fs';
 import {resolve,dirname} from 'node:path';
 import {createHash} from 'node:crypto';
 const root=resolve(import.meta.dirname,'..'),shared=resolve(root,'runtimes/th12/th12_web'),rt=resolve(root,'runtimes/th14/th14_web'),sha=b=>createHash('sha256').update(b).digest('hex');
+const at=process.argv.indexOf('--report'),reportName=at<0?'th14-launcher-runtime-prepared-oct11.json':process.argv[at+1];assert(/^[a-z0-9-]+\.json$/.test(reportName));
 const json=p=>JSON.parse(readFileSync(p)),build=json(resolve(rt,'artifacts/sdl3-release/build.json'));
 assert.equal(build.title,14);assert.equal(build.releaseProfile,true);assert.equal(build.completeGame,false);assert.equal(build.kind,'th14-sdl3-web-release');
 for(const group of [build.sources,build.headers])for(const [name,hash] of Object.entries(group))assert.equal(sha(readFileSync(resolve(root,'runtimes/th12',name))),hash,'stale release '+name);
@@ -38,4 +39,4 @@ const write=(name,bytes)=>{const path=resolve(out,name);mkdirSync(dirname(path),
 for(const [name,bytes] of pending)write(name,bytes);
 write('runtime-files.json',Buffer.from(JSON.stringify({schema:'eagler-touhou/runtime-directory/1',game:'th14',files},null,2)+'\n'));
 const report={passed:true,completeGame:false,nativeEquivalent:false,out,build,files,exports,toolSha256:sha(readFileSync(import.meta.filename)),sourceShellSha256:sha(readFileSync(resolve(shared,'sdl-runtime/shell.mjs'))),scope:'Frozen release Runtime for eagler-touhou/1 managed DATA, original TH14 save/config/replay paths,10 fonts and18 lossless FLAC tracks. Historical th11 C ABI retained; only internal archive filename bridged by a filesystem alias. No diagnostic force-stage/invulnerability/completion exports. Not yet browser-validated Host integration or complete/native-equivalent game.'};
-writeFileSync(resolve(root,'docs/porting/th14-launcher-runtime-prepared-oct11.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:true,out,files:Object.keys(files).length,resources:resources.length,bytes:build.bytes,sha256:build.sha256}));
+writeFileSync(resolve(root,'docs/porting',reportName),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:true,out,files:Object.keys(files).length,resources:resources.length,bytes:build.bytes,sha256:build.sha256}));

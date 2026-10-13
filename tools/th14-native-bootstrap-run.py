@@ -294,6 +294,23 @@ def main():
     allowed += [(base, base + module['size']) for base, module in modules.items() if module['name'].lower() == 'd3dx9_43.dll']
     allowed += native_leaves
     known_locks = {0x4f56d0,0x4f57a8,0x4f57d8,0x4f5748,0x4f57c0}
+    completed_resource_worker=None
+    if opt.native_scene_flow:
+        # Original445b00/445bc0 serialize the actual resource-worker
+        # registration via this fixed initialized game critical section.
+        lock=0x4f5760;debug=get(lock)
+        state=[get(lock+offset) for offset in (4,8,12,16,20)]
+        initialized_without_debug=(debug==0xffffffff and state==[0xffffffff,0,0,0,0x20007d0])
+        if not initialized_without_debug and (not debug or debug==0xffffffff or get(debug+12)!=lock or state[:3]!=[0xffffffff,0,0]):
+            raise RuntimeError('Unobserved resource-worker registration lock layout.')
+        known_locks.add(lock)
+        words=[get(0x4d98ec+offset) for offset in range(0,28,4)]
+        # Independent own-child queries at first Player and after later-stage
+        # loading observe this exact owner shape signaled with exit code0.
+        # Admit only the captured handle; a newly created worker is separate.
+        if not words[1] or not words[2] or words[0]!=0 or words[3:]!=[1,0,0,0x4360d0]:
+            raise RuntimeError('Unobserved completed captured resource worker layout.')
+        completed_resource_worker=dict(owner=0x4d98ec,handle=words[1],threadId=words[2],waited=False,closed=False)
     if opt.host_resource_directory:
         # Original 402b17/402c57 serializes the archive/resource cache with
         # this fixed game-owned critical section (counter 4f580a). This
@@ -412,6 +429,7 @@ def main():
     clock_schedule = {'returnedWithoutPresent':0}
     heap_state = {'next': 0x30000000, 'live': {}, 'free': {}, 'capturedFreed': set()}
     captured_segments = []
+    captured_virtual_blocks = {}
     if opt.host_heap:
         m.mem_map(0x30000000,0x8000000,UC_PROT_READ | UC_PROT_WRITE)
         # Identify captured classic NT heap segments from their real signature,
@@ -423,6 +441,30 @@ def main():
                 owner,first,last = [get(base + offset) for offset in (24,36,40)]
                 if base <= first < last:
                     captured_segments.append(dict(base=base,heap=owner,first=first,last=last))
+        # The actual captured ntdll RtlSizeHeap separately verifies these
+        # virtual-list blocks and their sizes. They are not segment entries:
+        # BusyBlock.Size is byte overhead, not 8-byte allocation units.
+        for owner in sorted({segment['heap'] for segment in captured_segments}):
+            if get(owner+0x60)!=0xeeffeeff or get(owner+0x4c)!=0x100000:
+                raise RuntimeError('Unobserved captured NT heap layout.')
+            head=owner+0x9c;node=get(head);previous=head;seen=set()
+            while node!=head:
+                if node in seen or len(seen)>=256 or get(node+4)!=previous:
+                    raise RuntimeError('Invalid captured virtual heap list.')
+                seen.add(node)
+                region=next((r for r in manifest['regions'] if r['base']==node and r['kind']==0x20000),None)
+                commit,reserve=get(node+0x10),get(node+0x14)
+                encoded=bytes(m.mem_read(node+0x18,8))
+                header=struct.pack('<I',get(node+0x18)^get(owner+0x50))
+                overhead,flags,checksum=struct.unpack('<HBB',header)
+                if (not region or commit%4096 or reserve%4096 or not 32<=overhead<commit<=0x2000000
+                        or region['bytes']!=commit or node+commit>region['allocation']+reserve
+                        or not flags&1 or checksum!=header[0]^header[1]^header[2]):
+                    raise RuntimeError('Unobserved captured virtual heap descriptor.')
+                captured_virtual_blocks[node+32]=dict(heap=owner,node=node,head=head,commit=commit,reserve=reserve,
+                                                       payload=commit-overhead,encoded=encoded,regionBytes=region['bytes'])
+                previous,node=node,get(node)
+            if get(head+4)!=previous:raise RuntimeError('Invalid captured virtual heap tail.')
     gpu_methods = {
         0xa4: ('BeginScene',1), 0xa8: ('EndScene',1),
         0xe4: ('SetRenderState',3), 0xb0: ('SetTransform',3),
@@ -506,6 +548,23 @@ def main():
         del recent[:-24]
         if address not in native_tls_blocks and not any(first <= address < last for first, last in allowed):
             names = imports.get(address, [])
+            if completed_resource_worker and names==['KERNEL32.dll!WaitForSingleObject']:
+                sp=uc.reg_read(UC_X86_REG_ESP);worker=completed_resource_worker
+                if get(sp+4)==worker['handle']:
+                    if worker['closed'] or get(sp)!=0x403bd7 or get(sp+8)!=200 or get(worker['owner']+4)!=worker['handle']:
+                        raise RuntimeError('Unobserved completed resource-worker wait protocol.')
+                    worker['waited']=True
+                    host_calls.append(dict(name='KERNEL32.WaitForSingleObject.completedResourceWorker',handle=hex(worker['handle']),
+                                           owner='0x4d98ec',timeoutMs=200,result=0,scope='Only pinned captured completed worker; no generic wait success or new worker execution skipped.'))
+                    uc.reg_write(UC_X86_REG_EAX,0);uc.reg_write(UC_X86_REG_ESP,sp+12);uc.reg_write(UC_X86_REG_EIP,get(sp));return
+            if completed_resource_worker and names==['KERNEL32.dll!CloseHandle']:
+                sp=uc.reg_read(UC_X86_REG_ESP);worker=completed_resource_worker
+                if get(sp+4)==worker['handle']:
+                    if not worker['waited'] or worker['closed'] or get(sp)!=0x403c1d:
+                        raise RuntimeError('Unobserved completed resource-worker close protocol.')
+                    worker['closed']=True
+                    host_calls.append(dict(name='KERNEL32.CloseHandle.completedResourceWorker',handle=hex(worker['handle']),owner='0x4d98ec'))
+                    uc.reg_write(UC_X86_REG_EAX,1);uc.reg_write(UC_X86_REG_ESP,sp+8);uc.reg_write(UC_X86_REG_EIP,get(sp));return
             if resource_directory and names == ['KERNEL32.dll!SetCurrentDirectoryA']:
                 sp = uc.reg_read(UC_X86_REG_ESP)
                 requested = string(get(sp+4))
@@ -621,6 +680,24 @@ def main():
             if opt.host_heap and names == ['KERNEL32.dll!HeapFree']:
                 sp = uc.reg_read(UC_X86_REG_ESP)
                 handle,flags,pointer = [get(sp + offset) for offset in (4,8,12)]
+                virtual=captured_virtual_blocks.get(pointer)
+                if virtual:
+                    node=virtual['node'];following,previous=get(node),get(node+4)
+                    if (flags or handle!=virtual['heap'] or pointer in heap_state['capturedFreed']
+                            or bytes(uc.mem_read(node+0x18,8))!=virtual['encoded']
+                            or (get(node+0x10),get(node+0x14))!=(virtual['commit'],virtual['reserve'])
+                            or get(following+4)!=node or get(previous)!=node):
+                        raise RuntimeError('Captured virtual heap free has wrong owner, descriptor or live links.')
+                    uc.mem_write(previous,struct.pack('<I',following));uc.mem_write(following+4,struct.pack('<I',previous))
+                    heap_state['capturedFreed'].add(pointer);del captured_virtual_blocks[pointer]
+                    # This entire captured committed region belongs to one
+                    # list-backed block. Do not recycle it as a small segment
+                    # slot; an accidental later read must fault in the clone.
+                    uc.mem_unmap(node,virtual['regionBytes'])
+                    host_calls.append(dict(name='KERNEL32.HeapFree.capturedVirtual',heap=hex(handle),pointer=hex(pointer),
+                                           bytes=virtual['payload'],commit=virtual['commit'],reserve=virtual['reserve'],
+                                           originalCaller=hex(get(sp)),virtualListOwnershipVerified=True,regionUnmapped=True))
+                    uc.reg_write(UC_X86_REG_EAX,1);uc.reg_write(UC_X86_REG_ESP,sp+16);uc.reg_write(UC_X86_REG_EIP,get(sp));return
                 allocation = heap_state['live'].get(pointer)
                 captured = None
                 if not flags and allocation is None and pointer not in heap_state['capturedFreed']:
@@ -661,6 +738,13 @@ def main():
             if opt.host_gpu_commands:
                 sp = uc.reg_read(UC_X86_REG_ESP)
                 if get(sp + 4) == device:
+                    if address==get(device_table+0x14) and get(sp)==0x4365ac:
+                        # Original GameControl constructor checks its device
+                        # before registering the actual next-stage callbacks.
+                        # This logical no-output host has no device-loss path.
+                        host_calls.append(dict(name='IDirect3DDevice9.TestCooperativeLevel',device=hex(device),
+                                               result=0,originalCaller='0x4365ac',logicalHealthyDeviceOnly=True))
+                        uc.reg_write(UC_X86_REG_EAX,0);uc.reg_write(UC_X86_REG_ESP,sp+8);uc.reg_write(UC_X86_REG_EIP,get(sp));return
                     method = next((value for offset,value in gpu_methods.items() if get(device_table + offset) == address), None)
                     if method:
                         name, argc = method
@@ -985,6 +1069,7 @@ def main():
                   virtualResourceDirectory=dict(enabled=opt.host_resource_directory,initialDirectory=resource_directory,currentDirectory=directory_state['current'],allowedCapturedDirectories=directory_state['allowed'],actualHostDirectoryChanged=False),
                   virtualScoreFile=dict(enabled=opt.host_score_file,bytes=len(score_file['data']),writes=score_file['writes'],handleOpen=score_file['open'],sha256=SHA(score_file['data']),actualHostGameFileChanged=False,persistenceVerified=False),
                   capturedCrtLocks=dict(enabled=opt.host_crt_locks,table='0x4d16f0',entries=crt_locks,unknownLocksAccepted=False),
+                  capturedCompletedResourceWorker=completed_resource_worker,
                   gdiHost=gdi_host['summary']() if gdi_host else None,
                   hostExecutableBoundaries=[dict(address='0x480a00',kind='Wave audio device-buffer load',functionPrefixSha256=SHA(image.read(0x480a00,64)))] if opt.host_wave_load else [],
                   bgmFileHost=dict(enabled=opt.host_bgm_file,handles=len(bgm_positions),readOnly=True),
