@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 import struct
 from unicorn import UC_HOOK_CODE
-from unicorn.x86_const import UC_X86_REG_EAX, UC_X86_REG_ESP, UC_X86_REG_EIP
+from unicorn.x86_const import UC_X86_REG_EAX, UC_X86_REG_ECX, UC_X86_REG_ESP, UC_X86_REG_EIP
 
 
 def install(m,root,log):
@@ -52,6 +52,7 @@ def install(m,root,log):
     old_font = select(dc,fonts[0])
     selected = handles[0]
     textures,surfaces,uploads = set(),{},[]
+    anm_textures,anm_texture_releases = {},[]
     screen_sources,screen_copies = set(),[]
     arena = 0x41000000
     m.mem_map(arena,0x10000)
@@ -79,6 +80,28 @@ def install(m,root,log):
         if not texture or not get(texture):raise ValueError('Invalid texture at original screen-copy GetSurfaceLevel call.')
         textures.add(texture)
     m.hook_add(UC_HOOK_CODE,observe_screen_texture,begin=0x47e0b7,end=0x47e0b7)
+    def observe_anm_destructor(uc,address,length,user):
+        # Original 47d830 owns these 24-byte texture entries, and 47d8b1
+        # releases each nonnull texture before clearing that original slot.
+        owner,manager = uc.reg_read(UC_X86_REG_ECX),get(0x4f56cc)
+        if owner not in [get(manager+0xbc7b0c+index*4) for index in range(26)]:
+            raise ValueError('ANM destructor is not owned by an original manager slot.')
+        if not get(owner+0x108):return
+        count = struct.unpack('<i',uc.mem_read(owner+0x110,4))[0]
+        entries = get(owner+0x124)
+        if not 0 <= count <= 4096 or count and not entries:
+            raise ValueError('Unbounded original ANM texture entries.')
+        for index in range(count):
+            slot = entries+index*0x18
+            texture = get(slot)
+            if not texture:continue
+            if not get(texture) or not get(get(texture)+8):
+                raise ValueError('Original ANM texture has no Release entry.')
+            if texture in anm_textures:
+                raise ValueError('Duplicate original ANM texture owner.')
+            anm_textures[texture] = dict(owner=owner,slot=slot)
+        log.append(dict(name='TH14.originalAnmDestructorTextures',owner=hex(owner),count=count,logicalGpuOnly=True))
+    m.hook_add(UC_HOOK_CODE,observe_anm_destructor,begin=0x47d830,end=0x47d830)
     def release(uc,address,length,user):
         surface = get(uc.reg_read(UC_X86_REG_ESP)+4)
         if surface not in surfaces:raise ValueError('Unknown logical atlas surface release.')
@@ -141,6 +164,19 @@ def install(m,root,log):
             log.append(dict(name='GDI32.'+name,font=hex(selected),realLocalGdi=True))
             ret(result,argc);return True
         texture = get(sp+4)
+        if texture in anm_textures and address == get(get(texture)+8):
+            record = anm_textures[texture]
+            if get(sp)!=0x47d8b4 or get(record['slot'])!=texture:
+                raise ValueError('Unobserved ANM texture Release caller/owner slot.')
+            if texture in surfaces.values():
+                raise ValueError('ANM texture released with a live logical surface.')
+            del anm_textures[texture];textures.discard(texture)
+            event = dict(name='IDirect3DTexture9.Release.anm',texture=hex(texture),owner=hex(record['owner']),
+                         slot=hex(record['slot']),logicalGpuOnly=True,physicalRefcountCertified=False)
+            anm_texture_releases.append(event);log.append(event)
+            # The original caller does not use EAX. Original slot clearing,
+            # free/destructors and next-stage construction still execute.
+            ret(0,1);return True
         if texture in textures and address == get(get(texture)+0x48):
             if get(sp+8):raise ValueError('Glyph atlas level is not zero.')
             surface = arena+0x1000+(len(uploads)+len(screen_copies))*16
@@ -155,4 +191,5 @@ def install(m,root,log):
         select(dc,old_bitmap);delete_object(bitmap);delete_dc(dc)
     return dict(handle=handle,close=close,sourceBytes=source_bytes,summary=lambda:dict(realLocalGdi=True,fontInitializationSha256=hashlib.sha256(font_bytes).hexdigest(),
                 toolSha256=hashlib.sha256(source_bytes).hexdigest(),uploads=len(uploads),screenCopies=len(screen_copies),logicalAtlasOnly=True,
+                anmTextureReleases=len(anm_texture_releases),pendingAnmTextureReleases=len(anm_textures),physicalRefcountsCertified=False,
                 renderedPixelsCertified=False))

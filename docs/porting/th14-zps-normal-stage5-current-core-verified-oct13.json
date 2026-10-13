@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "ordinaryMenuLoaderVerified": false,
+  "stage": 5,
+  "comparedFrames": 19052,
+  "rawWords": 609664,
+  "gameplayDifferences": 0,
+  "retainedStartupVisualWords": 38104,
+  "sourceFilesVerified": 265,
+  "capturedObjectDifferencesReportedByProducer": 0,
+  "nativeCaseInitialization": {
+    "address": "0x4f58b8",
+    "before": 68,
+    "after": 4,
+    "replayManagerMode": 1,
+    "afterReadOnlyBootstrap": true,
+    "beforeFirstPlayerInstruction": true,
+    "wordWrites": 1,
+    "originalInstructionAddress": "0x459bcf",
+    "originalInstructionHex": "8325b8584f00bf",
+    "scope": "One explicit warm Replay mode initialization matching the original AND flag effect; not ordinary menu/loader startup."
+  },
+  "nativeSelectionChanged": true,
+  "nativeNextSelection": [
+    2,
+    0,
+    1,
+    6
+  ],
+  "verifierSha256": "cf8297fe8d06d3c2f359e6536eccb3ac4fe1edac99747ab7b28291b49207a2ac",
+  "bindings": [
+    {
+      "path": "artifacts/th14/native-stored-warm-zps-normal-stage5-oct13/reference.json",
+      "bytes": 131204137,
+      "sha256": "1081f759edc9b8d94cf898a917f2588334caa86191cf425570c7a5e4c300d740"
+    },
+    {
+      "path": "docs/porting/th14-natural-replay-native-trace-zps-normal-stage5-final-core-oct13-observed-oct13.json",
+      "bytes": 4135526,
+      "sha256": "626bcf451685a28aa816548da6fdf3b0d64ed77cb2a411dfd0210eb121e9d21f"
+    },
+    {
+      "path": "artifacts/th14/custom-replay-reference/zps-normal-stage5-final-core-oct13/reference.wasm",
+      "bytes": 1297048,
+      "sha256": "c523719536889785724477785692a1ae49aeb842c554f47b96483f3aa1637cef"
+    }
+  ],
+  "scope": "Independent recomputation of raw32 production versus warm retail data-only stage samples. Only two startup visual RNG columns differ, with all raw differences retained. Native keeps later-stage flag4 and clears attract bit40 once; no stock/health/input/RNG edits. Captured object windows are producer checks. This does not certify original backend64, uninterrupted loading/transition, full original clear or graphics/audio/browser storage."
+}

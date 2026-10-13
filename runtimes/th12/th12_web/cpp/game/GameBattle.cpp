@@ -64,6 +64,9 @@ bool GameBattle::create_deformation(EnemyState& e){auto effect=std::make_unique<
 bool GameBattle::initialize(i32 character,i32 subtype,i32 difficulty) {
     if(!player_selection_valid(character,subtype)||difficulty<0||difficulty>4)return unavailable("invalid battle selection");
     initialized=false;last_error=0;frame=0;error.clear();events.clear();
+#if PORT_TITLE == 14
+    th14_control_clock.set(0,&animations.rate);
+#endif
     completion.mode.stage=i32(resources.stage_number);completion.mode.selection=character*2+subtype;
     if(replaying)spell_timing.records=replay_entry.spell_times;
     enemy_environment.character=character;enemy_environment.subtype=subtype;
@@ -199,6 +202,9 @@ bool GameBattle::enter_stage_transition(u32 number){
     completion.mode.stage=i32(number);completion.state.exit=StageExit::None;
     hud.prepare_stage();countdown_seconds=-1;
     transition_timer.set(0,&animations.rate);frame=0;
+#if PORT_TITLE == 14
+    th14_control_clock.set(0,&animations.rate);
+#endif
     transitioning=true;transition_started=false;stage_active=false;
     return true;
 }
@@ -216,6 +222,9 @@ bool GameBattle::activate_stage(){
     stage_active=true;events.push_back({BattleEventKind::StageMusic,i32(resources.stage_number)});
     // TH14 436b98..436ba5 resets the clock at activation; legacy 42068b.
     frame=0;transition_timer.set(0,&animations.rate);
+#if PORT_TITLE == 14
+    th14_control_clock.set(0,&animations.rate);
+#endif
     return true;
 }
 bool GameBattle::stage_control(){
@@ -300,11 +309,21 @@ bool GameBattle::update(const std::function<bool()>& sample_input) {
     // callback plays at activation and has no clock300 music-resume branch.
     if(kPortTitle!=14&&control_running&&!demo&&resources.stage_number==6&&frame==300)events.push_back({BattleEventKind::MusicResume});
     if(control_running)hud.score.update(economy.score_units);
-    if(control_running&&frame>=90&&player&&!(dialogue&&dialogue->active))communication.update(economy,player->motion.state.position.y);
+    const i32 elapsed_control_frame=
+#if PORT_TITLE == 14
+        th14_control_clock.current;
+#else
+        i32(frame);
+#endif
+    if(control_running&&elapsed_control_frame>=90&&player&&!(dialogue&&dialogue->active))communication.update(economy,player->motion.state.position.y);
     if(control_running)enemy_commands.section_frame=wrapping_add(enemy_commands.section_frame,1);
     // 436cd7..436cfe advances all four detached screen-copy VMs at
     // game-control priority 11 in TH14. Enemy callback 2 interrupts VM4 later.
     if(!compositor.update()){last_error=-1005;error="screen compositor animation update";return false;}
+#if PORT_TITLE == 14
+    // Native436d10 ticks controller+10 before Replay/player callbacks.
+    if(control_running)th14_control_clock.tick();
+#endif
     // Original replay/input callbacks run after game control (priority 10),
     // which selects the incoming stage's stream at activation, before players.
     if(sample_input&&!sample_input())return false;

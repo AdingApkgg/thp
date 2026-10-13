@@ -102,6 +102,18 @@ public:
     ScoreFile* th14_scores=nullptr;
 #endif
     u32 frame=0;
+#if PORT_TITLE == 14
+    // Native controller+10 is rate-scaled; frame counts physical updates
+    // for Replay recording and remains independent of global slowdown.
+    Timer th14_control_clock;
+#endif
+    i32 control_frame()const noexcept{
+#if PORT_TITLE == 14
+        return th14_control_clock.current;
+#else
+        return wrapping_add(i32(frame),1);
+#endif
+    }
     // Diagnostic: every unit of damage the player's shots have dealt this stage, so a run's kill rate can be read
     // off directly instead of inferred from when enemies happen to disappear.
     u32 damage_total=0;

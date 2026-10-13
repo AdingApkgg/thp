@@ -23,6 +23,9 @@ def main():
     capture_fires = '--capture-fires' in sys.argv
     if capture_fires:
         sys.argv.remove('--capture-fires')
+    capture_combat = '--capture-combat' in sys.argv
+    if capture_combat:
+        sys.argv.remove('--capture-combat')
     output = (ROOT/sys.argv[sys.argv.index('--output')+1]).resolve()
     assert output.is_relative_to(ROOT/'artifacts/th14')
     capture = importlib.import_module('th14-native-session-capture')
@@ -43,6 +46,13 @@ def main():
     assert source.count(needle) == 1
     prefix="row.setdefault('bulletCollisionExtras',[]).append([bullet,*[word(off) for off in (0xbf8,0xbfc)]])\n                    "
     source = source.replace(needle,prefix+needle)
+    if capture_combat:
+        old="if row['stageFrame'] <= 1000 or 1200 <= row['stageFrame'] <= 1400 or 2920 <= row['stageFrame'] <= 2950 or 3000 <= row['stageFrame'] <= 3120 or 3690 <= row['stageFrame'] <= 3705:"
+        assert source.count(old)==1
+        source=source.replace(old,f"if {first} <= row['stageFrame'] <= {last}:")
+        old="if 3000 <= row['stageFrame'] <= 3120:"
+        assert source.count(old)==1
+        source=source.replace(old,f"if {first} <= row['stageFrame'] <= {last}:")
     if capture_fires:
         for old, new in (("row['selection']==[2,0,1,1]", "row['selection']==[2,0,1,5]"),
                          ('if frame<=350:',f'if {first}<=frame<={last}:')):
@@ -68,7 +78,7 @@ def main():
             report['lateCollisionObserver'] = dict(first=first,last=last,
                 originalCaptureMainSha256=SHA(original.encode()),
                 instrumentedCaptureMainSha256=SHA(source.encode()),
-                toolSha256=SHA(observer_source),fireObservationEnabled=capture_fires,
+                toolSha256=SHA(observer_source),fireObservationEnabled=capture_fires,combatObservationEnabled=capture_combat,
                 scope='Capture-side memory reads only; no guest gameplay or input changes. Bullet addresses are diagnostic identities, not normalized object-equivalence fields.')
             output.write_text(json.dumps(report,indent=2)+'\n')
             (output.parent/'capture-observer-source.py').write_bytes(observer_source)

@@ -24,9 +24,9 @@ static void observe_reference(const GameBattle& b){
  reference_next_id_value=b.enemies.total_created;
  const auto& p=*b.player;const auto& e=b.economy;
  u32 live=0;for(u32 n=0;n<256;++n)if(p.shots.at(n).state)++live;
- // Retail game control has already advanced its stage timer at priority 11;
- // GameBattle::frame counts completed updates and advances at the end.
- const i32 fields[]={wrapping_add(i32(b.frame),1),i32(p.input.movement.held),i32(p.input.movement.pressed),
+ // Retail's rate-scaled controller clock has advanced at priority11;
+ // physical Replay frame ordinals are separate and do not repeat.
+ const i32 fields[]={b.control_frame(),i32(p.input.movement.held),i32(p.input.movement.pressed),
   p.motion.state.x,p.motion.state.y,p.state.life_state,p.state.state_timer.current,
   p.state.transition_timer.current,p.state.th14_shooting_age.current,p.state.invincibility.current,
   p.shots.schedule.timer.current,p.motion.state.weapon_mode,

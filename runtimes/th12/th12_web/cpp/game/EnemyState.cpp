@@ -240,7 +240,8 @@ double EnemyGlobals::floating(i32 id){
     case -9993:case -9973:return enemy.relative.position.x;case -9992:case -9972:return enemy.relative.position.y;
     case -9991:case -9965:return environment.player_position.x;case -9990:case -9964:return environment.player_position.y;
     case -9989:return aim_angle(enemy.current.position,environment.player_position);
-    case -9988:return enemy.lifetime.fractional;
+    // TH14 42b352 reads enemy+14b4: phase timer fractional, not lifetime.
+    case -9988:return kPortTitle==14?enemy.timer_2bc.fractional:enemy.lifetime.fractional;
     case -9986:return (enemy.flags>>(kPortTitle==14?24:20))&1;
     case -9971:return enemy.absolute.angle;case -9970:return enemy.relative.angle;
     case -9969:return enemy.absolute.speed;case -9968:return enemy.relative.speed;
@@ -275,7 +276,8 @@ i32 EnemyGlobals::integer(i32 id){
 #endif
         {const u32 value=environment.rng().next32();return signed_bits(kPortTitle==14?value&0x7fffffffu:value);}
     case -9998:case -9989:case -9956:case -9955:return 0;
-    case -9988:return enemy.lifetime.current;
+    // TH14 42aa00 reads enemy+14b0: phase timer current.
+    case -9988:return kPortTitle==14?enemy.timer_2bc.current:enemy.lifetime.current;
     case -9961:return environment.animation_sprite?environment.animation_sprite(enemy.animations[0],environment.animation_user):0;
     default:return truncate_int(floating(id));
     }

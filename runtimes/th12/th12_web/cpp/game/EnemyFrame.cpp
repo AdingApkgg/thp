@@ -117,7 +117,9 @@ i32 enemy_frame(EnemyScriptServices& script,EnemyFrameWorld& world){
             if(resistant_sound&&!world.sound(36,e.current.position.x))return -2;
         }
         if(!enlarged&&damage){
-            if((world.spell_flags&0x21)==0x21)damage/=7;
+            // TH14 423b8a..423b9b is signed division by30 (88888889,
+            // add numerator, SAR4), before the independent health scaling.
+            if((world.spell_flags&0x21)==0x21)damage/=kPortTitle==14?30:7;
             if(!(e.flags&0x10)&&e.damage_immunity.current<=0)e.take_damage(damage);
 #if PORT_TITLE == 16
             else e.th16_damage_total=wrapping_add(e.th16_damage_total,damage);

@@ -27,7 +27,7 @@ touhou.vip 的每一部作品都是一个独立的 **可移植 C++ 重建 Runtim
 
 ## 当前状态
 
-当前仅推进 TH14，其他作品后置，进度表只标 TH14。最新核心补回换关分配池重建，并修正弹幕换外观漏掉的首次ANM更新。前五面独立原版分关对照共72,344帧的30玩法字段及捕获对象窗口差0；连续播放72,339个已采样帧只剩四个关卡首帧按键边沿差异，视觉RNG差异和五个未采样换关末帧保留。完整播放仍在第89,957帧六面GameOver，尚未验证不间断原版六关或达到1:1。旧核心自然通关记录不能套用到当前版本。详见 [`docs/GITHUB_RELEASE.md`](docs/GITHUB_RELEASE.md)、[`docs/porting/CORE_STATUS.md`](docs/porting/CORE_STATUS.md) 与[方法调整](docs/porting/TH14_METHOD.md)。
+当前仅推进 TH14，其他作品后置，进度表只标 TH14。最新核心修正六面符卡伤害除数、ECL 阶段计时读取及随全局倍率推进的关卡时钟。独立暖启动的六个分关共95,266次原版回调，30玩法字段和捕获对象窗口差0；视觉RNG差异保留。完整玩家录像在当前生产核心连续播放96,016帧后正常结束，无GameOver或未支持弹幕。连续活动帧对照保留五个关卡首帧pressed差异，750个加载回调单独保留；原版六面采样未达到请求预算，仍不是不间断原版整局通过或1:1。当前收据见[六面检查点](docs/porting/th14-zps-normal-six-stage-current-checkpoint-oct13.json)，详细范围见[发布说明](docs/GITHUB_RELEASE.md)、[核心记录](docs/porting/CORE_STATUS.md)和[方法调整](docs/porting/TH14_METHOD.md)。
 
 ## 素材与许可
 

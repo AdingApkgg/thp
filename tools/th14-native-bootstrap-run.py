@@ -319,6 +319,13 @@ def main():
     resource_directory = string(0x4f5a45) if opt.host_resource_directory else None
     if resource_directory and not Path(resource_directory).resolve().is_relative_to(ROOT/'artifacts/th14'):
         raise ValueError('Captured resource directory is not our private test workspace.')
+    directory_state={'current':resource_directory,'allowed':[]}
+    if resource_directory:
+        reference_setup=json.loads((directory/'reference.json').read_text(encoding='utf-8'))
+        owned_work=Path(reference_setup['appdata']).resolve().parent
+        if not owned_work.is_relative_to(ROOT/'artifacts/th14') or SHA((owned_work/'th14.exe').read_bytes())!=manifest['executableSha256']:
+            raise ValueError('Captured owned resource workspace/executable identity changed.')
+        directory_state['allowed']=[str(Path(resource_directory).resolve()),str(owned_work)]
     sound_buffers = {get(0x4f95dc + index * 24) for index in range(96)} - {0}
     score_file = dict(data=bytearray(),open=False,handle=0x7f150000,writes=0)
     sound_storage = {'next':0x42000000,'buffers':{},'locks':{}}
@@ -502,24 +509,26 @@ def main():
             if resource_directory and names == ['KERNEL32.dll!SetCurrentDirectoryA']:
                 sp = uc.reg_read(UC_X86_REG_ESP)
                 requested = string(get(sp+4))
-                if Path(requested).resolve() != Path(resource_directory).resolve():
+                if str(Path(requested).resolve()) not in directory_state['allowed']:
+                    failure.update(kind='UNOBSERVED_VIRTUAL_RESOURCE_DIRECTORY',directory=requested,caller=hex(get(sp)))
                     raise RuntimeError('Unobserved virtual resource directory request.')
+                directory_state['current']=requested
                 host_calls.append(dict(name='KERNEL32.SetCurrentDirectoryA.virtual',directory=requested,actualHostDirectoryChanged=False))
                 uc.reg_write(UC_X86_REG_EAX,1);uc.reg_write(UC_X86_REG_ESP,sp+8);uc.reg_write(UC_X86_REG_EIP,get(sp));return
             if resource_directory and names == ['KERNEL32.dll!GetCurrentDirectoryA']:
                 sp = uc.reg_read(UC_X86_REG_ESP)
                 capacity,destination = get(sp+4),get(sp+8)
-                data = resource_directory.encode('ascii')+b'\0'
+                data = directory_state['current'].encode('ascii')+b'\0'
                 result = len(data)
                 if capacity >= len(data):
                     if not destination:raise RuntimeError('Missing virtual directory output buffer.')
                     uc.mem_write(destination,data);result -= 1
-                host_calls.append(dict(name='KERNEL32.GetCurrentDirectoryA.virtual',capacity=capacity,returned=result,directory=resource_directory))
+                host_calls.append(dict(name='KERNEL32.GetCurrentDirectoryA.virtual',capacity=capacity,returned=result,directory=directory_state['current']))
                 uc.reg_write(UC_X86_REG_EAX,result);uc.reg_write(UC_X86_REG_ESP,sp+12);uc.reg_write(UC_X86_REG_EIP,get(sp));return
             if resource_directory and names == ['KERNEL32.dll!SetEnvironmentVariableA']:
                 sp = uc.reg_read(UC_X86_REG_ESP)
                 name,value = string(get(sp+4)),string(get(sp+8))
-                if name != '='+Path(resource_directory).drive.upper() or Path(value).resolve() != Path(resource_directory).resolve():
+                if name != '='+Path(directory_state['current']).drive.upper() or Path(value).resolve() != Path(directory_state['current']).resolve():
                     raise RuntimeError('Unobserved virtual drive-directory environment request.')
                 host_calls.append(dict(name='KERNEL32.SetEnvironmentVariableA.virtualDrive',variable=name,directory=value,actualHostEnvironmentChanged=False))
                 uc.reg_write(UC_X86_REG_EAX,1);uc.reg_write(UC_X86_REG_ESP,sp+12);uc.reg_write(UC_X86_REG_EIP,get(sp));return
@@ -973,7 +982,7 @@ def main():
                                  initialSceneRequest=initial_scene_request,observedSceneRequest=get(0x4d964c),supervisorRequestsIgnored=False),
                   modeInitialization=mode_initialization,
                   nativeSceneFlow=dict(enabled=opt.native_scene_flow,events=scene_events,requestWrites=0,originalSupervisorExecutes=True),
-                  virtualResourceDirectory=dict(enabled=opt.host_resource_directory,directory=resource_directory,actualHostDirectoryChanged=False),
+                  virtualResourceDirectory=dict(enabled=opt.host_resource_directory,initialDirectory=resource_directory,currentDirectory=directory_state['current'],allowedCapturedDirectories=directory_state['allowed'],actualHostDirectoryChanged=False),
                   virtualScoreFile=dict(enabled=opt.host_score_file,bytes=len(score_file['data']),writes=score_file['writes'],handleOpen=score_file['open'],sha256=SHA(score_file['data']),actualHostGameFileChanged=False,persistenceVerified=False),
                   capturedCrtLocks=dict(enabled=opt.host_crt_locks,table='0x4d16f0',entries=crt_locks,unknownLocksAccepted=False),
                   gdiHost=gdi_host['summary']() if gdi_host else None,
