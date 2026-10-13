@@ -67,11 +67,13 @@ def main():
     parser.add_argument('--native-scene-flow',action='store_true',help='Let the original registered supervisor execute observed game-to-next-stage requests; unknown/title requests still stop.')
     parser.add_argument('--host-resource-directory',action='store_true',help='Virtualize only SetCurrentDirectoryA to the captured owned test directory; no actual host working-directory change.')
     parser.add_argument('--host-crt-locks',action='store_true',help='Serialized protocol for nonnull captured entries in the pinned original CRT lock table; incompatible with the five-lock compiled host.')
+    parser.add_argument('--host-score-file',action='store_true',help='Bounded in-memory scoreth14.dat output from original code; no real game/AppData file write or persistence claim.')
     opt = parser.parse_args()
     if not 1 <= opt.call_timeout_ms <= 60000 or opt.instructions < 0:
         raise ValueError('Invalid explicit native call budget.')
     if not 1 <= opt.max_idle_frames <= 10000:raise ValueError('Invalid idle frame budget.')
     if opt.host_crt_locks and opt.fast_lock_host:raise ValueError('Captured CRT lock service requires uncompiled lock observation.')
+    if opt.host_score_file and not opt.host_resource_directory:raise ValueError('Virtual score output requires the explicitly isolated virtual directory.')
     directory = (ROOT / opt.snapshot).resolve()
     if not directory.is_relative_to((ROOT / 'artifacts/th14').resolve()):
         raise ValueError('Private snapshot must be in workspace artifacts/th14.')
@@ -318,6 +320,7 @@ def main():
     if resource_directory and not Path(resource_directory).resolve().is_relative_to(ROOT/'artifacts/th14'):
         raise ValueError('Captured resource directory is not our private test workspace.')
     sound_buffers = {get(0x4f95dc + index * 24) for index in range(96)} - {0}
+    score_file = dict(data=bytearray(),open=False,handle=0x7f150000,writes=0)
     sound_storage = {'next':0x42000000,'buffers':{},'locks':{}}
     bgm_file,bgm_data,bgm_positions = None,None,{}
     bgm_open_paths,bgm_handle_counter = set(),{'next':0x7f140000}
@@ -367,8 +370,11 @@ def main():
             for buffer in buffers:
                 if not buffer or not get(buffer):raise RuntimeError('Invalid original wave COM owner.')
                 sound_buffers.add(buffer)
-            host_calls.append(dict(name='TH14.originalWaveStopOwner',owner=hex(owner),buffers=[hex(buffer) for buffer in buffers]))
+            host_calls.append(dict(name='TH14.originalWaveVolumeOwner' if address==0x481200 else 'TH14.originalWaveStopOwner',owner=hex(owner),buffers=[hex(buffer) for buffer in buffers]))
         m.hook_add(UC_HOOK_CODE,observe_wave_owner,begin=0x481280,end=0x481280)
+        # 481200 volume/fade visits the same owned Wave buffer array before
+        # Stop/Refill may register it (observed at stage5 frame10359).
+        m.hook_add(UC_HOOK_CODE,observe_wave_owner,begin=0x481200,end=0x481200)
         def observe_wave_refill(uc,address,size,user):
             owner,sp = uc.reg_read(UC_X86_REG_ECX),uc.reg_read(UC_X86_REG_ESP)
             buffer,capacity = get(sp+4),get(owner+8)
@@ -517,6 +523,31 @@ def main():
                     raise RuntimeError('Unobserved virtual drive-directory environment request.')
                 host_calls.append(dict(name='KERNEL32.SetEnvironmentVariableA.virtualDrive',variable=name,directory=value,actualHostEnvironmentChanged=False))
                 uc.reg_write(UC_X86_REG_EAX,1);uc.reg_write(UC_X86_REG_ESP,sp+12);uc.reg_write(UC_X86_REG_EIP,get(sp));return
+            if opt.host_score_file and names == ['KERNEL32.dll!CreateFileA']:
+                sp=uc.reg_read(UC_X86_REG_ESP)
+                values=[get(sp+4+index*4) for index in range(7)]
+                if get(sp)==0x402eba and string(values[0])=='scoreth14.dat':
+                    if values[1:]!=[0x40000000,1,0,2,0x80,0] or score_file['open']:
+                        raise RuntimeError('Unobserved score create/ownership protocol.')
+                    score_file['data'].clear();score_file['open']=True
+                    host_calls.append(dict(name='KERNEL32.CreateFileA.score',path='scoreth14.dat',handle=hex(score_file['handle']),output='bounded in-memory file',actualHostFileChanged=False))
+                    uc.reg_write(UC_X86_REG_EAX,score_file['handle']);uc.reg_write(UC_X86_REG_ESP,sp+32);uc.reg_write(UC_X86_REG_EIP,get(sp));return
+            if opt.host_score_file and names in (['KERNEL32.dll!WriteFile'],['KERNEL32.dll!CloseHandle']):
+                sp=uc.reg_read(UC_X86_REG_ESP)
+                if get(sp+4)==score_file['handle']:
+                    if not score_file['open']:raise RuntimeError('Closed score handle used.')
+                    if names==['KERNEL32.dll!WriteFile']:
+                        pointer,count,written,overlapped=[get(sp+offset) for offset in (8,12,16,20)]
+                        if not written or overlapped or not 0<count<=0x80000 or len(score_file['data'])+count>0x80000:
+                            raise RuntimeError('Unobserved or unbounded score write protocol.')
+                        data=bytes(uc.mem_read(pointer,count));position=len(score_file['data'])
+                        score_file['data'].extend(data);score_file['writes']+=1
+                        uc.mem_write(written,struct.pack('<I',count));argc=5
+                        host_calls.append(dict(name='KERNEL32.WriteFile.score',position=position,bytes=count,sha256=SHA(data),actualHostFileChanged=False))
+                    else:
+                        score_file['open']=False;argc=1
+                        host_calls.append(dict(name='KERNEL32.CloseHandle.score',bytes=len(score_file['data']),sha256=SHA(score_file['data']),actualHostFileChanged=False))
+                    uc.reg_write(UC_X86_REG_EAX,1);uc.reg_write(UC_X86_REG_ESP,sp+4+argc*4);uc.reg_write(UC_X86_REG_EIP,get(sp));return
             if bgm_data is not None and names == ['KERNEL32.dll!CreateFileA']:
                 sp = uc.reg_read(UC_X86_REG_ESP)
                 path,access,share,security,creation,attributes,template = [get(sp+4+index*4) for index in range(7)]
@@ -943,6 +974,7 @@ def main():
                   modeInitialization=mode_initialization,
                   nativeSceneFlow=dict(enabled=opt.native_scene_flow,events=scene_events,requestWrites=0,originalSupervisorExecutes=True),
                   virtualResourceDirectory=dict(enabled=opt.host_resource_directory,directory=resource_directory,actualHostDirectoryChanged=False),
+                  virtualScoreFile=dict(enabled=opt.host_score_file,bytes=len(score_file['data']),writes=score_file['writes'],handleOpen=score_file['open'],sha256=SHA(score_file['data']),actualHostGameFileChanged=False,persistenceVerified=False),
                   capturedCrtLocks=dict(enabled=opt.host_crt_locks,table='0x4d16f0',entries=crt_locks,unknownLocksAccepted=False),
                   gdiHost=gdi_host['summary']() if gdi_host else None,
                   hostExecutableBoundaries=[dict(address='0x480a00',kind='Wave audio device-buffer load',functionPrefixSha256=SHA(image.read(0x480a00,64)))] if opt.host_wave_load else [],

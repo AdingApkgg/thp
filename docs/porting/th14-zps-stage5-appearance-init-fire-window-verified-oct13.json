@@ -1,0 +1,27 @@
+{
+  "diagnosticOnly": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "emissionCalls": 117,
+  "emissionWords": 26793,
+  "emissionDifferentWords": 0,
+  "emissionDifferences": [],
+  "comparedBulletFrames": 331,
+  "bulletDifferentFrames": 0,
+  "bulletDifferences": [],
+  "sourceFilesVerified": 265,
+  "bindings": [
+    {
+      "path": "artifacts/th14/native-stored-warm-zps-stage5-fire-oct13/reference.json",
+      "bytes": 123619151,
+      "sha256": "e3a8a4dc1ba6aee0f533f193d22c4433921ee4c4e119d78b8e1ab7ec1fa921ef"
+    },
+    {
+      "path": "artifacts/th14/late-fire-candidate/zps-normal-stage5-appearance-init-oct13/observations.json",
+      "bytes": 7638573,
+      "sha256": "b8f9321bbdb34529bd77247833070f10f35fc56ce9034c024329c468da2aec47"
+    }
+  ],
+  "verifierSha256": "00587b0ecc05c8a7b9042ddb2c42a764eec3c2a6c0ff0ee1d4fcb9479e8c37b0",
+  "scope": "All original emission parameters, live rate, player coordinates and exclusion values compared as raw229 words per call. Every bullet record compared as exact16-word multisets over the full331-frame window; no matching tolerance. Native warm case and read-only debugger instrumentation are declared. Linker interposition forwards unchanged arguments to the actual production function. Window equality is not whole-game, native transition, graphics/audio or object-memory equivalence."
+}

@@ -1,0 +1,91 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "ordinaryMenuLoaderVerified": false,
+  "date": "2026-10-13",
+  "verifierSha256": "03760b2bb646029427468921a9dbd0270675c2ab9404182f9f8aaa9921320820",
+  "nativeCaseInitialization": {
+    "address": "0x4f58b8",
+    "before": 64,
+    "after": 0,
+    "replayManagerMode": 1,
+    "afterReadOnlyBootstrap": true,
+    "beforeFirstPlayerInstruction": true,
+    "wordWrites": 1,
+    "originalInstructionAddress": "0x459bcf",
+    "originalInstructionHex": "8325b8584f00bf",
+    "scope": "One explicit warm Replay mode initialization matching the original AND flag effect; not ordinary menu/loader startup."
+  },
+  "originalSavedTextBytesEqual": true,
+  "backendFrames": 9669,
+  "backendWords": 618816,
+  "backendDifferentWords": 0,
+  "productionRawWords": 309408,
+  "productionGameplayDifferences": 0,
+  "backendRequestedRunComplete": false,
+  "backendStatus": "INCOMPLETE",
+  "backendStopFailure": {
+    "kind": "NATIVE_SCENE_REQUEST_REQUIRES_SERVICE",
+    "request": 12,
+    "initial": 7,
+    "capturedFrames": 9669,
+    "scope": "Original supervisor request retained; unknown/title flow cannot be ignored."
+  },
+  "retainedStartupVisualWords": 19338,
+  "sourceFilesVerified": 265,
+  "capturedObjectDifferencesReportedByProducer": 0,
+  "bindings": [
+    {
+      "path": "artifacts/th14/native-stored-warm-zps-normal-stage1-oct13/manifest.json",
+      "bytes": 151458,
+      "sha256": "379b9dcaa50cad551c7e63d22188ee360924cfb59fac11c62f6ee10474781479"
+    },
+    {
+      "path": "artifacts/th14/native-stored-warm-zps-normal-stage1-oct13/reference.json",
+      "bytes": 68201929,
+      "sha256": "54e69d79d381ea9c264a61bdf694475e9343a2f3410569d6c20ad9d05f4ef116"
+    },
+    {
+      "path": "artifacts/th14/native-stored-warm-zps-normal-stage1-oct13/runs/a8e014c182d0-1791890793074002500/receipt.json",
+      "bytes": 89290,
+      "sha256": "7a3b2c359f4d7822e45a087973ecd2a896b377dd420a71e3e4052325c5b36eb6"
+    },
+    {
+      "path": "artifacts/th14/native-stored-warm-zps-normal-stage1-oct13/runs/a8e014c182d0-1791890793074002500/provider.py",
+      "bytes": 63612,
+      "sha256": "a8e014c182d066893fc86fbe0792581829f95e86ea3edd93bae9475d7fe4c24b"
+    },
+    {
+      "path": "artifacts/th14/native-stored-warm-zps-normal-stage1-oct13/runs/a8e014c182d0-1791890793074002500/gdi-host.py",
+      "bytes": 9521,
+      "sha256": "a275943beb9b6dbb5cf626eddba89651ee79bd4200666de365a0531ce1af9c78"
+    },
+    {
+      "path": "artifacts/th14/native-stored-warm-zps-normal-stage1-oct13/runs/a8e014c182d0-1791890793074002500/original-prefix.jsonl",
+      "bytes": 4403530,
+      "sha256": "befb7b0980869fabb6264492f86c3910ad075da662a8086f32fe2b5b4a8b6fad"
+    },
+    {
+      "path": "docs/porting/th14-natural-replay-native-trace-zps-normal-stage1-appearance-init-oct13-observed-oct13.json",
+      "bytes": 2101308,
+      "sha256": "9ceec74129d851f847d03e9e05cf4d783284e5e6f0dca519671f94c17a5bedf3"
+    },
+    {
+      "path": "artifacts/th14/custom-replay-reference/zps-normal-stage1-appearance-init-oct13/reference.wasm",
+      "bytes": 1296782,
+      "sha256": "a4e95b618fb950f63e227d98c5db118cf18c5aeb8d9591913d3733ffb5cbb7b4"
+    }
+  ],
+  "nativeRequestedCountNotReached": true,
+  "nativeSelectionChanged": true,
+  "nativeNextSelection": [
+    2,
+    0,
+    1,
+    2
+  ],
+  "nativeNextStageObserved": true,
+  "nativeElapsedSeconds": 199.765,
+  "scope": "Independent declared warm retail case: all 64 backend words per Player boundary recomputed without masks/resynchronization; production raw32 words separately recomputed, only startup visual RNG words differ. Captured object windows are producer checks, not independent all-entity equivalence. One original attract flag case initialization on each side is explicit. Native timedOut is the legacy requested-count-not-reached flag, not an elapsed-time assertion. Actual next-stage selection is reported separately; no ordinary menu/loader startup, original six-stage clear, full replay termination, actual GPU/audio/browser storage or complete-game equivalence claimed."
+}

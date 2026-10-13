@@ -91,7 +91,7 @@ i32 bullet_th14_start_transforms(BulletState& b,BulletEnvironment& e)noexcept{
         case 2:b.vm.interrupt(i16(t.p)+7);b.state=2;retreat(b);break;
         // 4185e2 writes the collision delay, with no active-transform bit.
         case 0x80:b.collision_delay=t.p;break;
-        // 418645 resets/binds the appearance without advancing its ANM program.
+        // 418645 resets/binds the appearance, including46f520's first ANM update.
         case 0x200:
             if(!e.change_appearance(b,t.p,t.q&0x7fff,(t.q&0x8000)!=0))return -2;
             break;

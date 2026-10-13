@@ -71,7 +71,9 @@ bool BulletManager::change_appearance(BulletState& b,i32 type,i32 color,bool int
     return appearance_th16(b,type,u32(color)|(interrupt?0x8000u:0u));
 #endif
 #if PORT_TITLE == 14
-    if(!appearance_th14(b,type,color,interrupt,false))return false;
+    // ETEX200 calls46f520 at4186df; that binder executes46fe50 at46f637.
+    // Its initial sprite/timer update precedes this frame's wrap and culling.
+    if(!appearance_th14(b,type,color,interrupt))return false;
     const auto& a=th14_bullet_appearances[type];b.draw_group=a.group;
     // ETEX 200's effect-5 branch assigns 12; spawn preserves the old slot.
     if(a.effect==5)b.cancel_effect=12;
