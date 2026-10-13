@@ -766,7 +766,13 @@ bool GameBattle::start_dialogue(i32 id){
         if(id==-2){error="TH16 ending/results request is not yet implemented";return false;}
     }
     if(!dialogue||!dialogue->begin(resources.stage->messages[stage_dialogue_index(u32(enemy_environment.character),u32(enemy_environment.subtype))],id)){if(dialogue)error=dialogue->error;return false;}
-    if constexpr(kPortTitle==14||kPortTitle==16)return true; // ECL 518 owns the subsequent clears.
+    if constexpr(kPortTitle==14){
+        // Retail MSG constructor 4320b1..4320c4 cancels bullets/lasers
+        // and calls 424cb0 before ECL 518 repeats those calls at 42882f.
+        // Even empty drops consume RNG, so these two clears cannot merge.
+        return bullets.cancel_all_th14()&&lasers.cancel_all(false,false)&&enemies.erase_stage_enemies();
+    }
+    if constexpr(kPortTitle==16)return true;
     // 41cfe0 uses 40b5c0; ECL 415ade then uses the distinct 40b3a0
     // rectangle conversion. Already-cancelled bullets are excluded.
     if(!bullets.cancel_all(false,cancellation)||!lasers.cancel_all(false,false)||!enemies.erase_stage_enemies())return false;

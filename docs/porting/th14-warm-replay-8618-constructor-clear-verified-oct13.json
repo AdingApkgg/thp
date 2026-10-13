@@ -1,0 +1,74 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "ordinaryMenuLoaderVerified": false,
+  "date": "2026-10-13",
+  "verifierSha256": "78ff33af25140d7068dc7a4e01afcb2957a4c21fe12542d2522aacad0f6e3df4",
+  "nativeCaseInitialization": {
+    "address": "0x4f58b8",
+    "before": 64,
+    "after": 0,
+    "replayManagerMode": 1,
+    "afterReadOnlyBootstrap": true,
+    "beforeFirstPlayerInstruction": true,
+    "wordWrites": 1,
+    "originalInstructionAddress": "0x459bcf",
+    "originalInstructionHex": "8325b8584f00bf",
+    "scope": "One explicit warm Replay mode initialization matching the original AND flag effect; not ordinary menu/loader startup."
+  },
+  "originalSavedTextBytesEqual": true,
+  "backendFrames": 8618,
+  "backendWords": 551552,
+  "backendDifferentWords": 0,
+  "productionRawWords": 275776,
+  "productionGameplayDifferences": 0,
+  "retainedStartupVisualWords": 17236,
+  "sourceFilesVerified": 265,
+  "capturedObjectDifferencesReportedByProducer": 0,
+  "bindings": [
+    {
+      "path": "artifacts/th14/native-stored-warm-normal-stage1-oct13/manifest.json",
+      "bytes": 151452,
+      "sha256": "4ab8d3049c71ef89d6e71ec3913453afbc6b47cc32f5b3f740a5f63d9b08d6cf"
+    },
+    {
+      "path": "artifacts/th14/native-stored-warm-normal-stage1-oct13/reference.json",
+      "bytes": 63700520,
+      "sha256": "9166fcc4d005be5d707a57c8a822ae3cae793ee91388c6a0114f4f04f4e436d6"
+    },
+    {
+      "path": "artifacts/th14/native-stored-warm-normal-stage1-oct13/runs/7d4ff31d8aeb-1791889034543133300/receipt.json",
+      "bytes": 89094,
+      "sha256": "f903278515dff1c96ba2397d995fc89b6b2493f2d63e86fa523d39fd43c494d2"
+    },
+    {
+      "path": "artifacts/th14/native-stored-warm-normal-stage1-oct13/runs/7d4ff31d8aeb-1791889034543133300/provider.py",
+      "bytes": 61322,
+      "sha256": "7d4ff31d8aeb19d13af561a540cfad0d1b11ee4c6d84874d3288d466ff588a2e"
+    },
+    {
+      "path": "artifacts/th14/native-stored-warm-normal-stage1-oct13/runs/7d4ff31d8aeb-1791889034543133300/gdi-host.py",
+      "bytes": 9521,
+      "sha256": "a275943beb9b6dbb5cf626eddba89651ee79bd4200666de365a0531ce1af9c78"
+    },
+    {
+      "path": "artifacts/th14/native-stored-warm-normal-stage1-oct13/runs/7d4ff31d8aeb-1791889034543133300/original-prefix.jsonl",
+      "bytes": 3804937,
+      "sha256": "a3da8ea33677c95e2e4eda1bc01ab21048126aa21eaceb7911f5a8f5199584f8"
+    },
+    {
+      "path": "docs/porting/th14-natural-replay-native-trace-warm-normal-8618-constructor-clear-observed-oct13.json",
+      "bytes": 1875559,
+      "sha256": "92aba398c6f17ef205a788ec0f0b74d6e28d636aa8e08ca292e3b7ba9bf65082"
+    },
+    {
+      "path": "artifacts/th14/custom-replay-reference/warm-normal-8618-constructor-clear/reference.wasm",
+      "bytes": 1296575,
+      "sha256": "64b0b0941890b819055badd6cb37e5241498392bb2b282ae3d1f92a4f15a8371"
+    }
+  ],
+  "nativeTimedOut": true,
+  "nativeElapsedSeconds": 752.222,
+  "scope": "Independent declared warm retail case: all 64 backend words per Player boundary recomputed without masks/resynchronization; production raw32 words separately recomputed, only startup visual RNG words differ. Captured object windows are producer checks, not independent all-entity equivalence. One original attract flag case initialization on each side is explicit. The old recording reaches native GameOver/desynchronization, and native capture times out before requested count. No ordinary menu/loader startup, original six-stage clear, replay termination, actual GPU/audio/browser storage or complete-game equivalence claimed."
+}

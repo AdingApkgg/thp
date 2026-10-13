@@ -1,0 +1,72 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "date": "2026-10-13",
+  "verifierSha256": "c1521527d6054db1389ce577e0d1776efc1aa32bc7519444eff247a16e7e3bc9",
+  "executableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "bindings": [
+    {
+      "path": "artifacts/th14/native-bootstrap-normal-3901-oct13/manifest.json",
+      "bytes": 149939,
+      "sha256": "35382b3fa80ce2504ab38e9c27ad97b48234c17efcc2710f55f3fed89db5743b"
+    },
+    {
+      "path": "artifacts/th14/native-bootstrap-normal-3901-oct13/reference.json",
+      "bytes": 35829927,
+      "sha256": "0714686e8dd2ca19ca0596f6f4122b6246ea2abc56b4249aabcb43e59db9faf6"
+    },
+    {
+      "path": "artifacts/th14/native-bootstrap-normal-3901-oct13/runs/a4850a4f6b69-1791884112573848300/provider.py",
+      "bytes": 46316,
+      "sha256": "a4850a4f6b69cfaa43f336a2603e2921296acf3a482c19fcb35d845a43200c8b"
+    },
+    {
+      "path": "tools/th14-native-backend-reference-oct13.py",
+      "bytes": 46316,
+      "sha256": "a4850a4f6b69cfaa43f336a2603e2921296acf3a482c19fcb35d845a43200c8b"
+    },
+    {
+      "path": "artifacts/th14/native-bootstrap-normal-3901-oct13/runs/a4850a4f6b69-1791884112573848300/receipt.json",
+      "bytes": 87077,
+      "sha256": "afc1975548ff4a389c1da6f281843a950fae450d1e3f11c9c13fb6a87059be70"
+    },
+    {
+      "path": "artifacts/th14/native-bootstrap-normal-3901-oct13/runs/a4850a4f6b69-1791884112573848300/original-prefix.jsonl",
+      "bytes": 1676080,
+      "sha256": "038480f62be905a56cdc8f27606d5e2e2aa346013c9579400a4094ec8033d924"
+    },
+    {
+      "path": "docs/porting/th14-natural-replay-native-trace-normal-bootstrap-3901-observed-oct13.json",
+      "bytes": 862597,
+      "sha256": "ff5f5d69592f1fefe8ce4b9349f694122b2fee07517f3d57db11f22c5057ad80"
+    },
+    {
+      "path": "artifacts/th14/custom-replay-reference/normal-bootstrap-3901/reference.wasm",
+      "bytes": 1296538,
+      "sha256": "0db04c7cfbf56407e317040ee242254a6d8e404a1440b5ca268909b21f1b7342"
+    }
+  ],
+  "comparedFrames": 3901,
+  "groupsPerFrame": 15,
+  "wordsPerFrame": 64,
+  "comparedWords": 249664,
+  "differingWords": 0,
+  "originalGameTextBytesEqual": true,
+  "originalGameCodeReplacements": 0,
+  "hostGpuBoundaryThunks": 15,
+  "hostLockBoundaryThunks": 2,
+  "capturedHeapBlocksChecked": 2,
+  "originalFrameStackReused": true,
+  "supervisorRequestsIgnored": false,
+  "elapsedSeconds": 110.337,
+  "scope": "Independent real-process versus original-code backend prefix comparison: all 249664 declared state words including both RNG streams are equal, without masks or resynchronization. Complete saved original text bytes match retail. Explicit compiled graphics/lock host ABI bodies and source archive are bound. Attract boundary still returns to title; no ordinary fresh Replay bootstrap, six-stage clear, all-owner fingerprint, actual HAL pixels, audio or browser-storage equivalence claimed. Production 32-word core trace independently recomputed: only 7802 startup visual RNG words differ; 30 gameplay fields equal. Object windows remain producer checks rather than independently recomputed entity streams.",
+  "productionCore": {
+    "comparedFrames": 3901,
+    "rawWords": 124832,
+    "gameplayDifferences": 0,
+    "retainedStartupVisualRngWords": 7802,
+    "sourceFiles": 265,
+    "capturedObjectDifferencesReportedByProducer": 0
+  }
+}

@@ -27,7 +27,7 @@ touhou.vip 的每一部作品都是一个独立的 **可移植 C++ 重建 Runtim
 
 ## 当前状态
 
-当前范围和已验证结果见 [`docs/GITHUB_RELEASE.md`](docs/GITHUB_RELEASE.md) 与 [`docs/porting/CORE_STATUS.md`](docs/porting/CORE_STATUS.md)。当前优先 TH14，TH16 后置。Easy 咲夜 A 已通过普通输入自然完成六面及无头结局流程；这不等于 Normal 通关或整作 1:1 完成。旧路线图及交接文档保留历史记录，以当前核心状态为准。
+当前仅推进 TH14，其他作品后置，进度表只标 TH14。最新核心修正了对话启动漏掉的一次清理；8,618 帧独立原版暖启动基准的30个玩法字段及已捕获对象窗口无差异，启动视觉RNG差异仍保留。旧核心的 Easy/Normal 自然通关记录不能直接套用到修正后的核心。完整原版六关、图像、音频及浏览器存储验收尚未完成。详见 [`docs/GITHUB_RELEASE.md`](docs/GITHUB_RELEASE.md)、[`docs/porting/CORE_STATUS.md`](docs/porting/CORE_STATUS.md) 与[方法调整](docs/porting/TH14_METHOD.md)。
 
 ## 素材与许可
 
