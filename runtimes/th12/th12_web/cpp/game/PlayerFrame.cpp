@@ -124,6 +124,7 @@ bool PlayerFrame::start_stage(){
     state.state_timer.set(0,&animations.rate);state.transition_timer.set(0,&animations.rate);
     motion.state.transition_timer=0;
 #if PORT_TITLE == 14
+    shots.start_stage_th14();
     // 44cc10 also resets +6b4 and all 33 movement-history entries.
     state.th14_shooting_age.set(0,&animations.rate);
     for(auto& p:motion.state.th14_history)p={motion.state.x,motion.state.y};

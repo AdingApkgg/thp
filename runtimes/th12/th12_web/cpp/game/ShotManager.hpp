@@ -150,6 +150,9 @@ public:
     bool update();
     bool damage(const Vec3&,const Vec2&,bool frame_advanced,GameEconomy&,i32& result);
 #if PORT_TITLE == 14
+    // 44cdb7..44ce1d rebuilds the free list, retaining shot records;
+    // 44d04e resets the damage-area allocation cursor, retaining areas.
+    void start_stage_th14()noexcept;
     bool th14_empty_damage(bool frame_advanced,i32& result)const noexcept;
     bool damage_th14(Vec3,const Vec2*,float radius,float angle,bool frame_advanced,GameEconomy&,i32&,u32 argument=0,u32 stamp=0);
     void update_th14_areas()noexcept;

@@ -41,6 +41,7 @@ class HostLog:
 
 
 def main():
+    provider_source = Path(__file__).read_bytes()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--snapshot', required=True)
     parser.add_argument('--instructions', type=int, default=5000000)
@@ -53,20 +54,24 @@ def main():
     parser.add_argument('--host-input-none', action='store_true', help='Explicit virtual keyboard with no physical keys; native replay supplies gameplay input.')
     parser.add_argument('--host-gpu-commands', action='store_true', help='Explicit D3D device state/submit host; no rendered pixel equivalence.')
     parser.add_argument('--native-win32-tls', action='store_true', help='Execute captured, export-identified Win32 TLS getters; unknown callees still fail.')
-    parser.add_argument('--host-clock-60', action='store_true', help='Explicit 60 Hz diagnostic QPC clock tied to completed Present commands.')
+    parser.add_argument('--host-clock-60', action='store_true', help='Explicit 60 Hz diagnostic QPC clock for returned original frames, including frames with skipped Present.')
     parser.add_argument('--fast-host-hooks', action='store_true', help='Observe external executable ranges only; validate against the full-hook control.')
     parser.add_argument('--host-heap', action='store_true', help='Explicit bounded Windows heap service; allocation contents/lifetimes remain diagnostic boundaries.')
     parser.add_argument('--fast-gpu-host', action='store_true', help='Compile explicit no-output D3D boundary thunks; compare complete gameplay rows against the recorded full-host control.')
     parser.add_argument('--fast-lock-host', action='store_true', help='Compile the same checked single-thread lock protocol; preserve registers and flags.')
     parser.add_argument('--native-call-stack', action='store_true', help='Reuse the original captured frame entry slot instead of a synthetic call stack.')
-    parser.add_argument('--case-mode', choices=('captured','stored-replay'), default='captured', help='Experimental mode-only initialization on the warm bootstrap; not a fresh ordinary Replay/menu proof.')
+    parser.add_argument('--case-mode', choices=('captured','stored-replay','stored-later-stage'), default='captured', help='Experimental mode-only initialization on the warm bootstrap; later-stage case retains bit4. Not a fresh ordinary Replay/menu proof.')
     parser.add_argument('--host-gdi', action='store_true', help='Use real local GDI for the captured font descriptors; GPU atlas upload remains logical.')
     parser.add_argument('--host-wave-load', action='store_true', help='Explicit silent Wave device-buffer loading boundary; original music command queue remains active, audio equivalence excluded.')
     parser.add_argument('--host-bgm-file', action='store_true', help='Read-only Win32 seek/read service for original wave-owned thbgm.dat handles only.')
+    parser.add_argument('--native-scene-flow',action='store_true',help='Let the original registered supervisor execute observed game-to-next-stage requests; unknown/title requests still stop.')
+    parser.add_argument('--host-resource-directory',action='store_true',help='Virtualize only SetCurrentDirectoryA to the captured owned test directory; no actual host working-directory change.')
+    parser.add_argument('--host-crt-locks',action='store_true',help='Serialized protocol for nonnull captured entries in the pinned original CRT lock table; incompatible with the five-lock compiled host.')
     opt = parser.parse_args()
     if not 1 <= opt.call_timeout_ms <= 60000 or opt.instructions < 0:
         raise ValueError('Invalid explicit native call budget.')
     if not 1 <= opt.max_idle_frames <= 10000:raise ValueError('Invalid idle frame budget.')
+    if opt.host_crt_locks and opt.fast_lock_host:raise ValueError('Captured CRT lock service requires uncompiled lock observation.')
     directory = (ROOT / opt.snapshot).resolve()
     if not directory.is_relative_to((ROOT / 'artifacts/th14').resolve()):
         raise ValueError('Private snapshot must be in workspace artifacts/th14.')
@@ -243,21 +248,24 @@ def main():
     native_frame_caller = get(native_frame_sp)
     initial_scene_request = get(0x4d964c)
     mode_initialization = None
-    if opt.case_mode == 'stored-replay':
+    if opt.case_mode in ('stored-replay','stored-later-stage'):
         flags = get(0x4f58b8)
         manager = get(0x4db688)
-        if flags != 0x40 or not manager or get(manager + 0x10) != 1:
+        expected_flags = 0x44 if opt.case_mode == 'stored-later-stage' else 0x40
+        if flags != expected_flags or not manager or get(manager + 0x10) != 1:
             raise RuntimeError('Mode-only experiment requires the captured ordinary-playback manager and pure attract flag.')
+        if opt.case_mode == 'stored-later-stage' and not 2 <= get(0x4f58a4) <= 7:
+            raise RuntimeError('Later-stage case must retain an observed original stage2..7.')
         instruction = image.read(0x459bcf,7)
         if instruction != bytes.fromhex('8325b8584f00bf'):
             raise RuntimeError('Original title attract-clear instruction changed.')
         context_saved = m.context_save()
         m.emu_start(0x459bcf,0x459bd6,count=1)
-        if get(0x4f58b8) != 0:
+        if get(0x4f58b8) != flags & ~0x40:
             raise RuntimeError('Original mode clear did not execute.')
         m.context_restore(context_saved)
-        mode_initialization = dict(before=flags,after=0,replayManagerMode=1,instruction=hex(0x459bcf),
-                                   scope='Only original title attract-clear instruction executes as case initialization on an already warm first-stage bootstrap. It does not reconstruct ordinary menu/loader startup; no stock/health/input/RNG edits. No matching real-process baseline for this changed mode is claimed.')
+        mode_initialization = dict(before=flags,after=flags & ~0x40,replayManagerMode=1,instruction=hex(0x459bcf),
+                                   scope='Only original title attract-clear instruction executes as case initialization on a warm stage bootstrap; later-stage bit4 is retained. No stock/health/input/RNG edits. This does not reconstruct ordinary menu/loader startup; only an explicitly paired independent case baseline can certify its declared sampled fields.')
     if opt.phase in ('scheduler', 'draw', 'next-player', 'next-player-draw', 'loop'):
         # At an unexecuted push-ebp player entry, EBP is still the real
         # dispatcher frame. Its caller is preserved in the native stack.
@@ -267,9 +275,48 @@ def main():
         # one word beyond that saved ESI in the real dispatcher entry stack.
         target = get(m.reg_read(UC_X86_REG_EBP) + 12)
     recent, failure, host_calls, callbacks = [], {}, HostLog(), []
+    scene_events = []
+    if opt.native_scene_flow:
+        if not mode_initialization:raise ValueError('Native stage flow currently requires the explicit stored Replay case.')
+        if image.u32(0x446b68+12*4) != 0x446a8d:
+            raise RuntimeError('Pinned next-stage supervisor branch changed.')
+        def observe_supervisor(uc,address,size,user):
+            owner = uc.reg_read(UC_X86_REG_ECX)
+            if owner != 0x4d8f60:raise RuntimeError('Unexpected original supervisor owner.')
+            current,requested = get(owner+0x6e8),get(owner+0x6ec)
+            if current != requested:
+                event=dict(kind='ORIGINAL_SUPERVISOR_ENTRY',current=current,requested=requested,address=hex(address))
+                scene_events.append(event);host_calls.append(dict(name='TH14.originalSceneSupervisor',**event))
+        m.hook_add(UC_HOOK_CODE,observe_supervisor,begin=0x446930,end=0x446930)
     allowed = [(image.image_base, image.image_base + get(image.image_base + struct.unpack_from('<I', image.data, 0x3c)[0] + 0x50))]
     allowed += [(base, base + module['size']) for base, module in modules.items() if module['name'].lower() == 'd3dx9_43.dll']
     allowed += native_leaves
+    known_locks = {0x4f56d0,0x4f57a8,0x4f57d8,0x4f5748,0x4f57c0}
+    if opt.host_resource_directory:
+        # Original 402b17/402c57 serializes the archive/resource cache with
+        # this fixed game-owned critical section (counter 4f580a). This
+        # admits only that pinned lock; resource reads remain unimplemented.
+        known_locks.add(0x4f5700)
+    crt_locks = []
+    if opt.host_crt_locks:
+        # 4940ba/49423e index this exact eight-byte CRT lock table.
+        # Only locks already initialized in the retail snapshot are admitted.
+        for index in range(36):
+            pointer = get(0x4d16f0+index*8)
+            if not pointer:continue
+            debug = get(pointer)
+            state = [get(pointer+offset) for offset in (4,8,12,16,20)]
+            # Modern Windows captures these CRT locks with no debug object.
+            # The sentinel, full initialized idle state, spin4000 and original
+            # table membership are all required; an arbitrary lock is not admitted.
+            no_debug = debug == 0xffffffff and state == [0xffffffff,0,0,0,0xfa0] and get(0x4d16f4+index*8) in (0,1)
+            with_debug = debug not in (0,0xffffffff) and get(debug+4) == pointer
+            if not no_debug and not with_debug:
+                raise RuntimeError('Captured CRT lock is not a verified initialized native table entry.')
+            known_locks.add(pointer);crt_locks.append(dict(index=index,pointer=hex(pointer),debugInfo=hex(debug),initialState=state))
+    resource_directory = string(0x4f5a45) if opt.host_resource_directory else None
+    if resource_directory and not Path(resource_directory).resolve().is_relative_to(ROOT/'artifacts/th14'):
+        raise ValueError('Captured resource directory is not our private test workspace.')
     sound_buffers = {get(0x4f95dc + index * 24) for index in range(96)} - {0}
     sound_storage = {'next':0x42000000,'buffers':{},'locks':{}}
     bgm_file,bgm_data,bgm_positions = None,None,{}
@@ -349,6 +396,7 @@ def main():
     clock_epoch = struct.unpack('<d', m.mem_read(0x4f7aa8, 8))[0]
     clock_elapsed = struct.unpack('<d', m.mem_read(0x4f5a18 + 0x2078, 8))[0]
     presentation = {'frames': 0}
+    clock_schedule = {'returnedWithoutPresent':0}
     heap_state = {'next': 0x30000000, 'live': {}, 'free': {}, 'capturedFreed': set()}
     captured_segments = []
     if opt.host_heap:
@@ -445,6 +493,30 @@ def main():
         del recent[:-24]
         if address not in native_tls_blocks and not any(first <= address < last for first, last in allowed):
             names = imports.get(address, [])
+            if resource_directory and names == ['KERNEL32.dll!SetCurrentDirectoryA']:
+                sp = uc.reg_read(UC_X86_REG_ESP)
+                requested = string(get(sp+4))
+                if Path(requested).resolve() != Path(resource_directory).resolve():
+                    raise RuntimeError('Unobserved virtual resource directory request.')
+                host_calls.append(dict(name='KERNEL32.SetCurrentDirectoryA.virtual',directory=requested,actualHostDirectoryChanged=False))
+                uc.reg_write(UC_X86_REG_EAX,1);uc.reg_write(UC_X86_REG_ESP,sp+8);uc.reg_write(UC_X86_REG_EIP,get(sp));return
+            if resource_directory and names == ['KERNEL32.dll!GetCurrentDirectoryA']:
+                sp = uc.reg_read(UC_X86_REG_ESP)
+                capacity,destination = get(sp+4),get(sp+8)
+                data = resource_directory.encode('ascii')+b'\0'
+                result = len(data)
+                if capacity >= len(data):
+                    if not destination:raise RuntimeError('Missing virtual directory output buffer.')
+                    uc.mem_write(destination,data);result -= 1
+                host_calls.append(dict(name='KERNEL32.GetCurrentDirectoryA.virtual',capacity=capacity,returned=result,directory=resource_directory))
+                uc.reg_write(UC_X86_REG_EAX,result);uc.reg_write(UC_X86_REG_ESP,sp+12);uc.reg_write(UC_X86_REG_EIP,get(sp));return
+            if resource_directory and names == ['KERNEL32.dll!SetEnvironmentVariableA']:
+                sp = uc.reg_read(UC_X86_REG_ESP)
+                name,value = string(get(sp+4)),string(get(sp+8))
+                if name != '='+Path(resource_directory).drive.upper() or Path(value).resolve() != Path(resource_directory).resolve():
+                    raise RuntimeError('Unobserved virtual drive-directory environment request.')
+                host_calls.append(dict(name='KERNEL32.SetEnvironmentVariableA.virtualDrive',variable=name,directory=value,actualHostEnvironmentChanged=False))
+                uc.reg_write(UC_X86_REG_EAX,1);uc.reg_write(UC_X86_REG_ESP,sp+12);uc.reg_write(UC_X86_REG_EIP,get(sp));return
             if bgm_data is not None and names == ['KERNEL32.dll!CreateFileA']:
                 sp = uc.reg_read(UC_X86_REG_ESP)
                 path,access,share,security,creation,attributes,template = [get(sp+4+index*4) for index in range(7)]
@@ -539,7 +611,7 @@ def main():
                 if clock_frequency <= 0:
                     raise RuntimeError('Captured QPC frequency invalid.')
                 sp = uc.reg_read(UC_X86_REG_ESP)
-                counter = clock_base + round((clock_epoch + clock_elapsed + presentation['frames'] / 60) * clock_frequency)
+                counter = clock_base + round((clock_epoch + clock_elapsed + (presentation['frames']+clock_schedule['returnedWithoutPresent']) / 60) * clock_frequency)
                 uc.mem_write(get(sp + 4), struct.pack('<q', counter))
                 host_calls.append(dict(name='KERNEL32.QueryPerformanceCounter', counter=counter, presents=presentation['frames']))
                 uc.reg_write(UC_X86_REG_EAX, 1)
@@ -662,8 +734,8 @@ def main():
             if opt.host_critical_sections and len(names) == 1 and names[0] in supported:
                 sp = uc.reg_read(UC_X86_REG_ESP)
                 lock = get(sp + 4)
-                if lock not in (0x4f56d0, 0x4f57a8, 0x4f57d8, 0x4f5748, 0x4f57c0):
-                    failure.update(kind='UNOBSERVED_LOCK', address=hex(lock), state=[get(lock + offset) for offset in (4, 8, 12)])
+                if lock not in known_locks:
+                    failure.update(kind='UNOBSERVED_LOCK', address=hex(lock), caller=hex(get(sp)), state=[get(lock + offset) for offset in (4, 8, 12)])
                     uc.emu_stop()
                     return
                 before = [get(lock + offset) for offset in (4, 8, 12)]
@@ -735,11 +807,11 @@ def main():
     if opt.phase == 'loop':
         if not 1 <= opt.frames <= 200000:
             raise ValueError('Explicit prefix frame budget outside allowed range.')
-        run_directory = directory / 'runs' / (SHA(Path(__file__).read_bytes())[:12] + '-' + str(time.time_ns()))
+        run_directory = directory / 'runs' / (SHA(provider_source)[:12] + '-' + str(time.time_ns()))
         run_directory.mkdir(parents=True)
-        (run_directory / 'provider.py').write_bytes(Path(__file__).read_bytes())
+        (run_directory / 'provider.py').write_bytes(provider_source)
         if opt.host_gdi:
-            (run_directory/'gdi-host.py').write_bytes((ROOT/'tools/th14-native-gdi-host.py').read_bytes())
+            (run_directory/'gdi-host.py').write_bytes(gdi_host['sourceBytes'])
         row_stream = (run_directory / 'original-prefix.jsonl').open('x', encoding='utf-8', newline='\n')
         def player_observed(uc, address, size, user):
             row = state_row()
@@ -754,8 +826,11 @@ def main():
     comparison = None
     elapsed_start = time.monotonic()
     try:
+        presents_before = presentation['frames']
         m.emu_start(start, target, timeout=opt.call_timeout_ms*1000,count=opt.instructions)
         if opt.phase == 'loop' and not failure and m.reg_read(UC_X86_REG_EIP) == target:
+            if opt.host_clock_60 and presentation['frames'] == presents_before:
+                clock_schedule['returnedWithoutPresent'] += 1
             arena = 0x60000000
             if not opt.native_call_stack:
                 m.mem_map(arena, 0x100000)
@@ -768,17 +843,30 @@ def main():
                 m.mem_write(sp, struct.pack('<I', target))
                 m.reg_write(UC_X86_REG_ESP, sp)
                 m.reg_write(UC_X86_REG_ECX, 0x4f5a18)
+                presents_before = presentation['frames']
                 m.emu_start(0x46a720, target, timeout=opt.call_timeout_ms*1000,count=opt.instructions)
                 frame_calls += 1
+                if opt.host_clock_60 and not failure and m.reg_read(UC_X86_REG_EIP) == target and presentation['frames'] == presents_before:
+                    clock_schedule['returnedWithoutPresent'] += 1
                 idle_calls = 0 if len(rows) != previous_rows else idle_calls+1
                 if not failure and m.reg_read(UC_X86_REG_EIP) not in (target, start):
                     failure.update(kind='FRAME_DID_NOT_RETURN', pc=hex(m.reg_read(UC_X86_REG_EIP)))
                     break
                 request = get(0x4d964c)
                 if not failure and len(rows) < opt.frames and request != initial_scene_request:
-                    failure.update(kind='NATIVE_SCENE_REQUEST_REQUIRES_SERVICE',request=request,initial=initial_scene_request,
-                                   capturedFrames=len(rows),scope='Original outer supervisor request retained; cannot ignore it to extend attract playback.')
-                    break
+                    if opt.native_scene_flow and initial_scene_request == 7 and request == 12:
+                        controller = get(0x4db558)
+                        next_stage,constructor_parameter = get(0x4f58a4),get(controller+0x94)
+                        previous_stage = rows[-1]['selection'][3]
+                        if not 2 <= next_stage <= 7 or next_stage != previous_stage+1 or constructor_parameter > 7:
+                            raise RuntimeError('Original next-stage request does not advance the observed stage.')
+                        if not scene_events or scene_events[-1].get('kind') != 'ORIGINAL_SUPERVISOR_PENDING':
+                            scene_events.append(dict(kind='ORIGINAL_SUPERVISOR_PENDING',request=request,nextStage=next_stage,constructorParameter=constructor_parameter,capturedFrames=len(rows),
+                                scope='Request unchanged; next genuine dispatcher executes original 444890 -> 446930 -> 446a8d, including actual destruction/constructor calls.'))
+                    else:
+                        failure.update(kind='NATIVE_SCENE_REQUEST_REQUIRES_SERVICE',request=request,initial=initial_scene_request,
+                                       capturedFrames=len(rows),scope='Original supervisor request retained; unknown/title flow cannot be ignored.')
+                        break
                 if not failure and len(rows) < opt.frames and idle_calls >= opt.max_idle_frames:
                     failure.update(kind='ORIGINAL_PLAYER_BOUNDARY_NOT_REACHED',consecutiveReturnedFrames=idle_calls,
                                    capturedFrames=len(rows),sceneRequest=request,scope='Original callbacks stopped providing Player boundaries; idle calls cannot extend the gameplay prefix.')
@@ -832,7 +920,7 @@ def main():
         returned = len(rows) == opt.frames and not error and not failure
     status = (('CASE_PREFIX_CAPTURED' if mode_initialization else 'PREFIX_CAPTURED') if opt.phase == 'loop' else opt.phase.upper() + '_RETURNED') if returned else 'INCOMPLETE'
     result = dict(status=status, completeGame=False,
-                  nativeEquivalent=False, sourceSha256=SHA(Path(__file__).read_bytes()),
+                  nativeEquivalent=False, sourceSha256=SHA(provider_source),
                   manifestSha256=SHA((directory / 'manifest.json').read_bytes()),
                   start=hex(start), phase=opt.phase, actualCaller=hex(target), playerCaller=hex(player_caller), instructionBudget=opt.instructions,
                   callTimeoutMs=opt.call_timeout_ms,
@@ -842,7 +930,8 @@ def main():
                   boundaryComparison=comparison, drawOmitted=opt.phase == 'next-player',
                   teb=hex(teb), fsSelector=fs_selector,
                   nativeTlsFunctions=native_tls_functions,
-                  clockHost=dict(enabled=opt.host_clock_60, frequency=clock_frequency, base=clock_base, epoch=clock_epoch, initialElapsed=clock_elapsed, completedPresents=presentation['frames']),
+                  clockHost=dict(enabled=opt.host_clock_60, frequency=clock_frequency, base=clock_base, epoch=clock_epoch, initialElapsed=clock_elapsed,
+                                 completedPresents=presentation['frames'],returnedWithoutPresent=clock_schedule['returnedWithoutPresent']),
                   updateCallbacksObserved=callbacks,
                   fastHostHooks=opt.fast_host_hooks, nativeMemoryProtections=True,
                   heapHost=dict(enabled=opt.host_heap,allocatedEnd=heap_state['next'],liveAllocations=len(heap_state['live']),
@@ -852,6 +941,9 @@ def main():
                   frameCall=dict(useCapturedStack=opt.native_call_stack,originalEntrySp=hex(native_frame_sp),originalCaller=hex(native_frame_caller),
                                  initialSceneRequest=initial_scene_request,observedSceneRequest=get(0x4d964c),supervisorRequestsIgnored=False),
                   modeInitialization=mode_initialization,
+                  nativeSceneFlow=dict(enabled=opt.native_scene_flow,events=scene_events,requestWrites=0,originalSupervisorExecutes=True),
+                  virtualResourceDirectory=dict(enabled=opt.host_resource_directory,directory=resource_directory,actualHostDirectoryChanged=False),
+                  capturedCrtLocks=dict(enabled=opt.host_crt_locks,table='0x4d16f0',entries=crt_locks,unknownLocksAccepted=False),
                   gdiHost=gdi_host['summary']() if gdi_host else None,
                   hostExecutableBoundaries=[dict(address='0x480a00',kind='Wave audio device-buffer load',functionPrefixSha256=SHA(image.read(0x480a00,64)))] if opt.host_wave_load else [],
                   bgmFileHost=dict(enabled=opt.host_bgm_file,handles=len(bgm_positions),readOnly=True),

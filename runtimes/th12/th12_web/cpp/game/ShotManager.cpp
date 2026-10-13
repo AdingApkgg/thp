@@ -15,6 +15,12 @@ ShotManager::ShotManager(ShtResource& s,AnmResource& a,AnmManager& m,ShotWorld& 
     th16_schedule.regular.set(-1,&m.rate);th16_schedule.long_timer.set(-1,&m.rate);
 #endif
 }
+#if PORT_TITLE == 14
+void ShotManager::start_stage_th14()noexcept{
+    th14_shot_pool=Th14ShotPool{};
+    th14_area_cursor=0;
+}
+#endif
 void ShotManager::interrupt(u32 id,i16 label){family(animations.find(id),[&](AnmVm& a){a.interrupt(label);});}
 void ShotManager::erase(u32 id){family(animations.find(id),[](AnmVm& a){if constexpr(kPortTitle==14)a.flags2|=0x20;else a.flags|=0x4000000;});}
 Enemy* ShotManager::nearest(Vec3 p,float radius)const noexcept{

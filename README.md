@@ -27,7 +27,7 @@ touhou.vip 的每一部作品都是一个独立的 **可移植 C++ 重建 Runtim
 
 ## 当前状态
 
-当前仅推进 TH14，其他作品后置，进度表只标 TH14。最新核心修正了对话启动漏掉的一次清理；8,618 帧独立原版暖启动基准的30个玩法字段及已捕获对象窗口无差异，启动视觉RNG差异仍保留。旧核心的 Easy/Normal 自然通关记录不能直接套用到修正后的核心。完整原版六关、图像、音频及浏览器存储验收尚未完成。详见 [`docs/GITHUB_RELEASE.md`](docs/GITHUB_RELEASE.md)、[`docs/porting/CORE_STATUS.md`](docs/porting/CORE_STATUS.md) 与[方法调整](docs/porting/TH14_METHOD.md)。
+当前仅推进 TH14，其他作品后置，进度表只标 TH14。最新核心补回原版换关时的自机子弹空闲链表重建及伤害区域分配游标归零。公开玩家录像连续播放的前四面已与独立原版分关基线对照：53,288 个已采样帧的玩法状态只剩三个关卡首帧按键边沿差异，视觉RNG差异保留，四个换关末帧未采样。连续播放仍在第72,316帧五面GameOver，尚未验证不间断原版六关或达到1:1。旧核心的自然通关记录不能直接套用到修正后的核心。详见 [`docs/GITHUB_RELEASE.md`](docs/GITHUB_RELEASE.md)、[`docs/porting/CORE_STATUS.md`](docs/porting/CORE_STATUS.md) 与[方法调整](docs/porting/TH14_METHOD.md)。
 
 ## 素材与许可
 

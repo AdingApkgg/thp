@@ -15,6 +15,7 @@ GPU_ABI=importlib.import_module('th14-native-backend-prefix-check').GPU_ABI
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     for name in ('snapshot','backend-receipt','portable-report','label','output'):parser.add_argument('--'+name,required=True)
+    parser.add_argument('--allow-next-stage-boundary',action='store_true',help='Verify only the saved prefix when the backend explicitly stopped at native next-stage request12; never mark the requested run complete.')
     args=parser.parse_args()
     directory,receipt_path,portable_path,output=[(ROOT/name).resolve() for name in (args.snapshot,args.backend_receipt,args.portable_report,args.output)]
     assert directory.is_relative_to(ROOT/'artifacts/th14') and receipt_path.is_relative_to(directory)
@@ -23,13 +24,17 @@ def main():
     bind=lambda path:dict(path=str(path.relative_to(ROOT)).replace('\\','/'),bytes=path.stat().st_size,sha256=SHA(path.read_bytes()))
     manifest,reference,receipt,portable=[read(path) for path in (directory/'manifest.json',directory/'reference.json',receipt_path,portable_path)]
     init=reference['caseInitialization']
-    assert init==manifest['caseInitialization'] and init['address']=='0x4f58b8' and (init['before'],init['after'],init['wordWrites'],init['replayManagerMode'])==(0x40,0,1,1)
+    later=reference['frames'][0]['selection'][3]>1
+    before,after=(0x44,4) if later else (0x40,0)
+    capture_name='th14-native-stored-stage-bootstrap-capture.py' if later else 'th14-native-stored-bootstrap-capture.py'
+    wrapper_name='th14-warm-stage-retail-prefix-check.mjs' if later else 'th14-warm-retail-prefix-check.mjs'
+    assert init==manifest['caseInitialization'] and init['address']=='0x4f58b8' and (init['before'],init['after'],init['wordWrites'],init['replayManagerMode'])==(before,after,1,1)
     assert init['afterReadOnlyBootstrap'] and init['beforeFirstPlayerInstruction']
     assert reference['childGameStateOverrides']==manifest['childGameStateOverrides']==1
     assert not reference['ordinaryMenuLoaderVerified'] and not manifest['ordinaryMenuLoaderVerified']
     assert reference['error']=='' and reference['noInputInjection'] and not reference['completeGame']
     assert not manifest['completeGame'] and manifest['privateOriginalResources']
-    for name,key in (('th14-native-stored-bootstrap-capture.py','warmReplayCaptureToolSha256'),('th14-native-bootstrap-capture.py','bootstrapToolSha256'),('th14-native-session-capture.py','captureToolSha256')):
+    for name,key in ((capture_name,'warmReplayCaptureToolSha256'),('th14-native-bootstrap-capture.py','bootstrapToolSha256'),('th14-native-session-capture.py','captureToolSha256')):
         assert SHA((ROOT/'tools'/name).read_bytes())==manifest[key]
     assert reference['warmReplayCaptureToolSha256']==manifest['warmReplayCaptureToolSha256']
     assert SHA((directory/'memory.bin.gz').read_bytes())==manifest['memorySha256']
@@ -49,11 +54,18 @@ def main():
     get=lambda address:struct.unpack('<I',saved(address,4))[0]
     section=next(s for s in image.sections if s[0]=='.text')
     assert saved(section[1],section[4])==image.data[section[3]:section[3]+section[4]]
-    assert get(0x4f58b8)==0x40 and get(get(0x4db688)+0x10)==1
-    assert receipt['status']=='CASE_PREFIX_CAPTURED' and not receipt['error'] and not receipt['failure']
+    assert get(0x4f58b8)==before and get(get(0x4db688)+0x10)==1
+    assert not receipt['error']
+    if args.allow_next_stage_boundary:
+        assert receipt['status']=='INCOMPLETE' and receipt['failure']['kind']=='NATIVE_SCENE_REQUEST_REQUIRES_SERVICE'
+        assert receipt['failure']['request']==receipt['frameCall']['observedSceneRequest']==12
+        assert reference['selectionChanged'] and reference['nextSelection'][:3]==reference['frames'][0]['selection'][:3]
+        assert reference['nextSelection'][3]==reference['frames'][0]['selection'][3]+1
+    else:
+        assert receipt['status']=='CASE_PREFIX_CAPTURED' and not receipt['failure']
     assert receipt['manifestSha256']==SHA((directory/'manifest.json').read_bytes())
     assert receipt['gameStateOverrides']==1 and not receipt['stackRepairs'] and not receipt['nativeEquivalent'] and not receipt['completeGame']
-    assert (receipt['modeInitialization']['before'],receipt['modeInitialization']['after'],receipt['modeInitialization']['instruction'])==(64,0,'0x459bcf')
+    assert (receipt['modeInitialization']['before'],receipt['modeInitialization']['after'],receipt['modeInitialization']['instruction'])==(before,after,'0x459bcf')
     assert receipt['frameCall']['useCapturedStack'] and not receipt['frameCall']['supervisorRequestsIgnored']
     provider,gdi=receipt_path.parent/'provider.py',receipt_path.parent/'gdi-host.py'
     assert SHA(provider.read_bytes())==receipt['sourceSha256'] and SHA(gdi.read_bytes())==receipt['gdiHost']['toolSha256']
@@ -73,7 +85,9 @@ def main():
     assert SHA(rows_path.read_bytes())==receipt['prefixCapture']['sha256']
     rows=[json.loads(line) for line in rows_path.read_text().splitlines()]
     count=len(rows)
-    assert count==len(reference['frames'])==reference['capturedFrames']==receipt['prefixCapture']['capturedFrames']==receipt['prefixCapture']['requestedFrames']
+    assert count==len(reference['frames'])==reference['capturedFrames']==receipt['prefixCapture']['capturedFrames']
+    assert receipt['prefixCapture']['requestedFrames']>=count
+    if not args.allow_next_stage_boundary:assert receipt['prefixCapture']['requestedFrames']==count
     for index,(row,native) in enumerate(zip(rows,reference['frames'])):
         assert row['index']==native['index']==index and row['stageFrame']==native['stageFrame']==index+1
         assert set(row)==set(FIELDS)|{'index'}
@@ -83,7 +97,7 @@ def main():
     assert portable['nativeCaseInitialization']==init and portable['nativeTraceSha256']==SHA((directory/'reference.json').read_bytes())
     assert portable['nativeWarmCaptureToolSha256']==manifest['warmReplayCaptureToolSha256']
     assert SHA((ROOT/'tools/th14-natural-replay-reference-trace-check.mjs').read_bytes())==portable['toolSha256']
-    assert SHA((ROOT/'tools/th14-warm-retail-prefix-check.mjs').read_bytes())==portable['warmCaseWrapperSha256']
+    assert SHA((ROOT/'tools'/wrapper_name).read_bytes())==portable['warmCaseWrapperSha256']
     artifact=ROOT/'artifacts/th14/custom-replay-reference'/args.label
     actual_bytes,expected_bytes=[(artifact/name).read_bytes() for name in ('portable-state.u32','native-state.u32')]
     assert len(actual_bytes)==len(expected_bytes)==count*32*4
@@ -101,13 +115,19 @@ def main():
     assert len(portable['engineBuild']['sourceHashes'])==265 and SHA((artifact/'reference.wasm').read_bytes())==portable['wasmSha256']
     for name,key in (('th14-custom-replay-reference-fixture.cpp','fixtureSha256'),('th14-session-reference-fixture.cpp','includedFixtureSha256')):
         assert SHA((runtime/'tests/cpp'/name).read_bytes())==portable[key]
+    next_selection=reference.get('nextSelection')
+    observed_next_stage=bool(reference['selectionChanged'] and next_selection
+        and next_selection[:3]==reference['frames'][0]['selection'][:3]
+        and next_selection[3]==reference['frames'][0]['selection'][3]+1)
     result=dict(passed=True,completeGame=False,nativeEquivalent=False,ordinaryMenuLoaderVerified=False,date='2026-10-13',
         verifierSha256=SHA(Path(__file__).read_bytes()),nativeCaseInitialization=init,originalSavedTextBytesEqual=True,
         backendFrames=count,backendWords=count*64,backendDifferentWords=0,productionRawWords=count*32,productionGameplayDifferences=0,
+        backendRequestedRunComplete=receipt['status']=='CASE_PREFIX_CAPTURED',backendStatus=receipt['status'],backendStopFailure=receipt['failure'],
         retainedStartupVisualWords=len(differences),sourceFilesVerified=265,capturedObjectDifferencesReportedByProducer=len(portable['detailDifferences']),
         bindings=[bind(path) for path in (directory/'manifest.json',directory/'reference.json',receipt_path,provider,gdi,rows_path,portable_path,artifact/'reference.wasm')],
-        nativeTimedOut=reference['timedOut'],nativeElapsedSeconds=reference['elapsedSeconds'],
-        scope='Independent declared warm retail case: all 64 backend words per Player boundary recomputed without masks/resynchronization; production raw32 words separately recomputed, only startup visual RNG words differ. Captured object windows are producer checks, not independent all-entity equivalence. One original attract flag case initialization on each side is explicit. The old recording reaches native GameOver/desynchronization, and native capture times out before requested count. No ordinary menu/loader startup, original six-stage clear, replay termination, actual GPU/audio/browser storage or complete-game equivalence claimed.')
+        nativeRequestedCountNotReached=reference['timedOut'],nativeSelectionChanged=reference['selectionChanged'],nativeNextSelection=next_selection,
+        nativeNextStageObserved=observed_next_stage,nativeElapsedSeconds=reference['elapsedSeconds'],
+        scope='Independent declared warm retail case: all 64 backend words per Player boundary recomputed without masks/resynchronization; production raw32 words separately recomputed, only startup visual RNG words differ. Captured object windows are producer checks, not independent all-entity equivalence. One original attract flag case initialization on each side is explicit. Native timedOut is the legacy requested-count-not-reached flag, not an elapsed-time assertion. Actual next-stage selection is reported separately; no ordinary menu/loader startup, original six-stage clear, full replay termination, actual GPU/audio/browser storage or complete-game equivalence claimed.')
     output.write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({key:result[key] for key in ('passed','backendFrames','backendWords','backendDifferentWords','productionGameplayDifferences','retainedStartupVisualWords')}))
 

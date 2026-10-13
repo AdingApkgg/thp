@@ -13,6 +13,7 @@ from unicorn.x86_const import UC_X86_REG_EAX, UC_X86_REG_ESP, UC_X86_REG_EIP
 
 
 def install(m,root,log):
+    source_bytes = Path(__file__).read_bytes()
     get = lambda p: struct.unpack('<I',m.mem_read(p,4))[0]
     put = lambda p,v: m.mem_write(p,struct.pack('<I',v & 0xffffffff))
     width,height,size = [get(p) for p in (0x4d9aec,0x4d9af0,0x4d9af4)]
@@ -41,7 +42,8 @@ def install(m,root,log):
     if not bitmap or not dc or not bits.value:raise C.WinError(C.get_last_error())
     old_bitmap = select(dc,bitmap)
     font_path = root/'artifacts/th14/font-initialization-native.json'
-    descriptors = json.loads(font_path.read_text())['rows'][0]['fonts']
+    font_bytes = font_path.read_bytes()
+    descriptors = json.loads(font_bytes)['rows'][0]['fonts']
     fonts = [create_font(*row['args'],bytes.fromhex(row['face'])) for row in descriptors]
     if not all(fonts):raise C.WinError(C.get_last_error())
     handles = [get(address) for address in (0x4fd61c,0x4fd62c,0x4fd620,0x4fd630,0x4fd624,0x4fd628,0x4fd634,0x4fd638)]
@@ -151,6 +153,6 @@ def install(m,root,log):
         select(dc,old_font)
         for font in fonts:delete_object(font)
         select(dc,old_bitmap);delete_object(bitmap);delete_dc(dc)
-    return dict(handle=handle,close=close,summary=lambda:dict(realLocalGdi=True,fontInitializationSha256=hashlib.sha256(font_path.read_bytes()).hexdigest(),
-                toolSha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),uploads=len(uploads),screenCopies=len(screen_copies),logicalAtlasOnly=True,
+    return dict(handle=handle,close=close,sourceBytes=source_bytes,summary=lambda:dict(realLocalGdi=True,fontInitializationSha256=hashlib.sha256(font_bytes).hexdigest(),
+                toolSha256=hashlib.sha256(source_bytes).hexdigest(),uploads=len(uploads),screenCopies=len(screen_copies),logicalAtlasOnly=True,
                 renderedPixelsCertified=False))

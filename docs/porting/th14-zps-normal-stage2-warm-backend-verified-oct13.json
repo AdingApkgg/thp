@@ -1,0 +1,85 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "ordinaryMenuLoaderVerified": false,
+  "date": "2026-10-13",
+  "verifierSha256": "03760b2bb646029427468921a9dbd0270675c2ab9404182f9f8aaa9921320820",
+  "nativeCaseInitialization": {
+    "address": "0x4f58b8",
+    "before": 68,
+    "after": 4,
+    "replayManagerMode": 1,
+    "afterReadOnlyBootstrap": true,
+    "beforeFirstPlayerInstruction": true,
+    "wordWrites": 1,
+    "originalInstructionAddress": "0x459bcf",
+    "originalInstructionHex": "8325b8584f00bf",
+    "scope": "One explicit warm Replay mode initialization matching the original AND flag effect; not ordinary menu/loader startup."
+  },
+  "originalSavedTextBytesEqual": true,
+  "backendFrames": 12054,
+  "backendWords": 771456,
+  "backendDifferentWords": 0,
+  "productionRawWords": 385728,
+  "productionGameplayDifferences": 0,
+  "backendRequestedRunComplete": true,
+  "backendStatus": "CASE_PREFIX_CAPTURED",
+  "backendStopFailure": {},
+  "retainedStartupVisualWords": 24108,
+  "sourceFilesVerified": 265,
+  "capturedObjectDifferencesReportedByProducer": 0,
+  "bindings": [
+    {
+      "path": "artifacts/th14/native-stored-warm-zps-normal-stage2b-oct13/manifest.json",
+      "bytes": 150931,
+      "sha256": "0fbc73bed2b053ff6ce30cb5e56a60ca83953aa30565aae78a0675d921f7d09e"
+    },
+    {
+      "path": "artifacts/th14/native-stored-warm-zps-normal-stage2b-oct13/reference.json",
+      "bytes": 86292246,
+      "sha256": "fde8aa4e444a941eb6f2a72bef32773bb10d9b7ada98e02bbe3a6f7a1d97211a"
+    },
+    {
+      "path": "artifacts/th14/native-stored-warm-zps-normal-stage2b-oct13/runs/6e0ebfbeb1fb-1791892660909998100/receipt.json",
+      "bytes": 89407,
+      "sha256": "192e37d3bc7dad30811544d2c61ff15149a925a9299adfe2fde302872254bb86"
+    },
+    {
+      "path": "artifacts/th14/native-stored-warm-zps-normal-stage2b-oct13/runs/6e0ebfbeb1fb-1791892660909998100/provider.py",
+      "bytes": 67388,
+      "sha256": "6e0ebfbeb1fbc4f714efbcb7a9e2e3b92735e8b0c83d49c8e293d6336e8ce96e"
+    },
+    {
+      "path": "artifacts/th14/native-stored-warm-zps-normal-stage2b-oct13/runs/6e0ebfbeb1fb-1791892660909998100/gdi-host.py",
+      "bytes": 9595,
+      "sha256": "3f3d49cf9162aa4ec19eeaca167be516153731c9831b75b226d978b2252e8567"
+    },
+    {
+      "path": "artifacts/th14/native-stored-warm-zps-normal-stage2b-oct13/runs/6e0ebfbeb1fb-1791892660909998100/original-prefix.jsonl",
+      "bytes": 5572376,
+      "sha256": "a90b62e5befa894e63b9f42e0b7b3d987f5316467fe64673d5f13c4d1da3a71a"
+    },
+    {
+      "path": "docs/porting/th14-natural-replay-native-trace-zps-normal-stage2-dialogue-clear-observed-oct13.json",
+      "bytes": 2619680,
+      "sha256": "0d4b39dba9e59edcb388ded680ef7ea61577c693ab4ccffa7ad5042f3c615eae"
+    },
+    {
+      "path": "artifacts/th14/custom-replay-reference/zps-normal-stage2-dialogue-clear/reference.wasm",
+      "bytes": 1296575,
+      "sha256": "64b0b0941890b819055badd6cb37e5241498392bb2b282ae3d1f92a4f15a8371"
+    }
+  ],
+  "nativeRequestedCountNotReached": true,
+  "nativeSelectionChanged": true,
+  "nativeNextSelection": [
+    2,
+    0,
+    1,
+    3
+  ],
+  "nativeNextStageObserved": true,
+  "nativeElapsedSeconds": 239.666,
+  "scope": "Independent declared warm retail case: all 64 backend words per Player boundary recomputed without masks/resynchronization; production raw32 words separately recomputed, only startup visual RNG words differ. Captured object windows are producer checks, not independent all-entity equivalence. One original attract flag case initialization on each side is explicit. Native timedOut is the legacy requested-count-not-reached flag, not an elapsed-time assertion. Actual next-stage selection is reported separately; no ordinary menu/loader startup, original six-stage clear, full replay termination, actual GPU/audio/browser storage or complete-game equivalence claimed."
+}
