@@ -173,12 +173,15 @@ def main():
             imports.setdefault(get(image.image_base + iat + index * 4), []).append(f'{dll}!{name}')
             index += 1
         descriptor += 20
-    # Execute exact captured Win32 leaf instructions rather than replacing the
-    # native TEB getters. Any different implementation remains unsupported.
+    # Execute exact captured Win32 leaf instructions rather than replacing
+    # their behavior. Any different implementation remains unsupported.
     leaf_getters = {
         'KERNEL32.dll!GetLastError': bytes.fromhex('64a134000000c3'),
         'KERNEL32.dll!GetCurrentThreadId': bytes.fromhex('64a124000000c3'),
         'KERNEL32.dll!GetCurrentProcessId': bytes.fromhex('64a120000000c3'),
+        # Original48bcaa CRT environment reference acquisition calls this
+        # captured lock-XADD leaf during actual _beginthreadex initialization.
+        'KERNEL32.dll!InterlockedIncrement': bytes.fromhex('8bff558bec8b4d0833c040f00fc101405dc20400'),
     }
     native_leaves = []
     for address,names in imports.items():

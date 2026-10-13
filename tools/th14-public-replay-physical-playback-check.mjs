@@ -9,7 +9,7 @@ import {WASI} from 'node:wasi';
 const root=resolve(import.meta.dirname,'..'),rt=resolve(root,'runtimes/th12/th12_web'),sha=b=>createHash('sha256').update(b).digest('hex');
 const replayPath=resolve(root,process.argv[2]),label=process.argv[3];assert(/^[a-z0-9-]{1,64}$/.test(label));
 const out=resolve(root,'artifacts/th14/public-replay-playback',label);mkdirSync(out,{recursive:true});
-const replay=readFileSync(replayPath),metadata=JSON.parse(readFileSync(resolve(replayPath,'../th14_udzp05-source.json')));assert.equal(sha(replay),metadata.sha256);
+const replay=readFileSync(replayPath),metadata=JSON.parse(readFileSync(replayPath.replace(/\.rpy$/,'-source.json')));assert.equal(sha(replay),metadata.sha256);
 const build=JSON.parse(readFileSync(resolve(root,'runtimes/th13/th13_web/artifacts/cpp/engine-th14-build.json')));
 for(const [name,digest] of Object.entries(build.sourceHashes))assert.equal(sha(readFileSync(resolve(rt,name))),digest,name);
 const fixture='tests/cpp/th14-public-replay-physical-fixture.cpp',objects=resolve(root,'runtimes/th13/th13_web/artifacts/cpp/objects-th14'),wasm=resolve(out,'public-replay.wasm');

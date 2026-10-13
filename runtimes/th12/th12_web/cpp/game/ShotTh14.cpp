@@ -44,18 +44,22 @@ bool shot_th14_focused_spawn(ShotState& s,const ShotPlayer& player,AnmVm& vm,Ene
 }
 i32 shot_th14_focused_update(ShotState& s,ShotPlayer& player,AnmVm& vm,EnemyLink* enemies,const ShtResource& resource,bool firing,const float* rate)noexcept{
     if(s.state==2)return 0;
-    if(s.timer.current>=10&&!s.target){s.target=nearest(enemies,s.movement.position,320.f);if(s.target)s.th14_target_id=u32(s.target->state.instance_id);}
+    // 451cf8..451d49 searches only when the retained pointer was null on
+    // entry. A destroyed target still reaches the later identity check at
+    // 451e53..451fc7; preserve that ordering without a dangling C++ pointer.
+    if(s.timer.current>=10&&!s.target&&!s.th14_homing_target_retired){s.target=nearest(enemies,s.movement.position,320.f);if(s.target)s.th14_target_id=u32(s.target->state.instance_id);}
     const auto terminate=[&](){s.state=2;s.th14_area_flags&=~1u;player.th14_cached_power=0;return 1;};
     if(player.th14_shooting_blocked||player.state==2||player.special_active==1)return terminate();
     if(player.focused&&firing)s.th14_steering.set(0,rate);
-    else{s.th14_steering.tick();if(!s.target||s.th14_steering.current>=12)return terminate();}
+    else{s.th14_steering.tick();if((!s.target&&!s.th14_homing_target_retired)||s.th14_steering.current>=12)return terminate();}
     if(!player.power_step)return -2;const i32 power=player.power/player.power_step;
     if(player.th14_cached_power!=power){
         if(!scale(vm,power))return -2;const i32 group=resource.header.max_power_level+1+power;
         if(group<0||u32(group)>=resource.groups.size()||resource.groups[group].shots.size()<3)return -2;
         const auto& spec=resource.groups[group].shots[2];s.th14_area_radius=spec.hitbox.x;s.damage=spec.damage;player.th14_cached_power=power;
     }
-    if(s.target&&(!exists(enemies,s.th14_target_id)||(s.target->state.flags&0xc000021u))){s.target=nullptr;s.th14_target_id=0;}
+    if(s.th14_homing_target_retired){s.th14_homing_target_retired=false;s.target=nullptr;s.th14_target_id=0;}
+    else if(s.target&&(!exists(enemies,s.th14_target_id)||(s.target->state.flags&0xc000021u))){s.target=nullptr;s.th14_target_id=0;}
     if(s.th14_decay.current>4){
         float speed=s.th14_saved_speed;
         if(s.target){

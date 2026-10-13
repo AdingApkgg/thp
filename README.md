@@ -27,7 +27,7 @@ touhou.vip 的每一部作品都是一个独立的 **可移植 C++ 重建 Runtim
 
 ## 当前状态
 
-当前仅推进 TH14，其他作品后置，进度表只标 TH14。独立原版已不间断采到六关96,016次回调；与当前生产完整录像逐次对照，29个选定玩法字段相同，仍保留25个加载期间玩法RNG计数字差及视觉RNG差，报告没有标全字段通过。当前源码完整录像另通过 AddressSanitizer、UndefinedBehaviorSanitizer；六个暖启动分关的30玩法字段和捕获对象窗口也重跑通过。普通启动/结局、完整图像、音频、存储及其他自机/难度仍未验收，整作1:1尚未完成。当前数据见[不间断原版对照](docs/porting/th14-zps-continuous-retail-full-observed-oct13.json)，范围见[发布说明](docs/GITHUB_RELEASE.md)、[核心记录](docs/porting/CORE_STATUS.md)和[方法调整](docs/porting/TH14_METHOD.md)。
+当前仅推进TH14，进度表只标TH14。最新修正灵梦A追踪目标销毁后的更新顺序，独立原版Extra前6,000帧玩法字段与另一份碰撞窗口通过。完整公开输入在生产核心中咲夜A Normal96,016帧、灵梦B Lunatic98,074帧自然结束；灵梦A Lunatic/Extra仍会稍后GameOver，继续定位。Normal不间断原版对照保留25个加载期间玩法RNG计数字差和70个对象编号字差，视觉差异也保留；全程ASAN/UBSan再次通过。整作1:1尚未完成，普通原版完整流程、图像、音频、存储和其他自机/难度仍须验证。详见[当前检查点](docs/porting/th14-retired-target-current-checkpoint-oct14.json)、[发布说明](docs/GITHUB_RELEASE.md)和[方法调整](docs/porting/TH14_METHOD.md)。
 
 ## 素材与许可
 

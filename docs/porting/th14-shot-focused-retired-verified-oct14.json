@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "spawns": 180,
+  "updates": 2304,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wasmSha256": "696e853f6fc4e16b918ce78d678f547f60f61a33776efe72416c992f13963e8f",
+  "scope": "451af0 spawn callback 2 and 451cd0 update callback 2 field writes. Actual retail nearest/id/flag checks, atan2, angle wrapping and timer operations; ANM lookup/interrupt are boundaries. Compares target/id, angle/speed, area flags/radius/growth, decay/steering clocks, VM flags/scales, state, shared cached power and damage; global Bomb states 0/1/2 and dialogue/life gates are included. All update cases retain native pointer/id74 while the manager contains only a distinct id73; the port represents freed-pointer presence with the retirement marker, and compares all20 resulting normalized fields. Production connects normalized area parameters; separate hit/damage/reward reports cover those consumers. Native area allocation, generic shot lifecycle, other raw shot callbacks and full gameplay remain unverified.",
+  "sourceHashes": {
+    "tests/cpp/th14-shot-focused-retired-fixture.cpp": "1cdeed25916e92abd73dfa0e27ff052d598ea9bd15dba901c19cdc52e9da974d",
+    "cpp/game/ShotTh14.cpp": "0d72cb164dbdbde7ef887e076b168ca05ef3ac0d026c63d7e7a632f472472fb5",
+    "cpp/game/ShotManager.cpp": "74bfd1485790e0843f89d5b4a2f6cddea329246df17df73b9fcceca4da4b5729",
+    "cpp/game/ShotManager.hpp": "ca3111b4b5cfbc0b677a806d2cc749e3ff186cd1dd16e07b63381c156f1d7b67",
+    "cpp/game/PlayerFrame.cpp": "ac90ce7b383e5fcf97555b00bf277dda13f9c65a74901ea186dddbd8715b630c"
+  },
+  "toolHashes": {
+    "tools/th14-shot-focused-retired-native.py": "5a8f96bd768a2e0a88fe08c5a5cd6d5794bbae9d46436192ec9164241c4c31c1",
+    "tools/th14-shot-focused-retired-check.mjs": "c765d15d0e6df10860eda5b649167ada5062b30df6cd3f7915e7d54335195545"
+  }
+}
