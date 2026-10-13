@@ -1850,7 +1850,17 @@ ef471实际Launcher继续验证Player Data成绩/符卡切换及Music Room提示
 补记：按实际碰撞半径及整数位移预测的两条 Normal 路线（margin 0/3）均在第 55,146 帧、第五面 Game Over，4 次死亡、15 次实际符卡；没有引擎错误。保存原始报告、按键及控制器源码，不计作通关。
 
 - 新增原始魔理沙B Normal四面demo1原字节的独立原版进程对照3,901帧，30玩法字段及捕获对象窗口差异0，7,802启动视觉RNG字差异保留；th14-original-marisab-area-lifecycle-verified-oct13.json独立重算124,832原始字。仅私有demo0入口替换，原demo1录像SHA4859e6ce7f22e465aad9dcd0e43eba8e24ecb977d726443ad38608239e55e9de与原归档条目完全相同，未改变原作脚本/输入/游戏状态。
-- Normal咲夜A仅碰撞半径改进控制器产生与body-avoid完全相同356,200字节按键，第89,050帧六面GameOver；排除消弹退场对象并读取当前弹体尺寸的独立控制器第89,467帧六面GameOver，6死亡/23库存符卡、无引擎错误。所有失败证据保留，未标通关。
+- Normal咲夜A仅敌人身体避让半径改进控制器产生与body-avoid完全相同356,200字节按键，第89,050帧六面GameOver；排除消弹退场对象的独立控制器第89,467帧六面GameOver，6死亡/23库存符卡、无引擎错误。所有失败证据保留，未标通关。
 
 - 未改原作咲夜A Normal一面demo2原字节另通过3,901帧原版进程回归，30玩法字段及捕获对象差异0、7,802启动视觉RNG字差异保留；th14-original-sakuyaa-normal-area-lifecycle-verified-oct13.json。两份新原始演示报告均逐一绑定原归档录像条目、私有入口归档清单、两层夹具、265核心文件与124,832完整状态字，仍不计原版整局。
 - live-bullet控制器增加仅普通输入的安全收集选项后第85,140帧六面GameOver，8死亡/31实际库存符卡；无引擎错误，失败完整保存，不计Normal通关。
+
+- 更正前次控制器描述：scale-radius实际只更新敌人身体避让半径，live-bullet实际仍用固定弹幕半径；原文字替换没有命中不带f后缀的常量。失败夹具/模块及输入保持原样，不据此宣称已覆盖弹体缩放。本次另新增actual-hitbox和geometry-risk独立夹具，明确按生产flags40缩放及flags10圆/矩形选择读取实际尺寸。
+
+- Normal失败只读诊断：94,901帧路线和89,467帧路线重现录像逐字节相同；后者最后死亡在放大自机生存符clock1961/timeout2700、自机radius32.3999977/scale3、敌人health1/flags4093005c；前者已通过该阶段，最后死亡时最终符clock2822/7200、敌人health340/8000、自机radius3。不能据health1推断卡关；th14-natural-normal-failure-verified-oct13.json绑定报告/源码/模块/按键/录像，并明确未独立重算全部诊断字或认定具体碰撞对象。
+- 原版42bf70生存符状态另84组unit对照通过：health1/flags4093005c，clock1961/2699/2700/2701/7199/7200/7201、timeout2700/7200、spell49/4b/9、bomb0/1；23字状态全部匹配。th14-survival-phase-verified-oct13.json，边界单元范围，不计原版完整阶段执行。
+- 当前核心Normal咲夜A仅普通按键自然六面通关95,614帧，5死亡/22实际库存符卡，skipped/unsupported=0，无错误；新策略只根据真实flags10+health<=1免伤生存状态停止追随Boss位置，读取flags40弹体缩放和flags10圆形/矩形几何，无生产规则变更。profile normal-sakuyaa-survival-aim保留natural.wasm、两份原始源码、95614个held字、95,564字节录像SHA1dd45a2d2b0e0247880b231e71d9ec6f4ae7b692a3705b136d7b170fc9791a46。
+- Normal当前普通输入重新生成相同录像，并实际回放95,233帧/2,476,058个选定状态字，活动差0，10个非激活换关得分差保留；95234帧真实ending-wait结束回放，live继续到95614帧自然ending。th14-natural-current-replay-normal-survival-aim-verified-oct13.json独立重算全部26字，不把换关字段泛化忽略。
+- Normal自然e05结局及3737帧普通shoot/Ctrl的结局/staff后正常成绩录名、回放保存请求和Main通过；22,379编码字节/149,076解码字节与原版456de0/456f60完整加载和重写一致。Normal [4][1]通关/无续关计数1，Easy [4][0]计数0，Normal结局设置位11验证。th14-natural-storage-normal-sakuyaa-survival-aim-verified-oct13.json和th14-normal-natural-clear-verified-oct13.json绑定当前265核心文件。仍不计原版不间断六面、GPU/音频或浏览器IndexedDB完整整局。
+
+- 新Normal自然通关整份录像的独立原版吸引演示测试：请求最多12,500帧，实际第一面3,901帧后切换至Normal魔理沙B四面，elapsed134.21秒、selectionChanged=true；旧capturer的timedOut布尔指未达到requestedFrames，不能误述成260秒实际计时超时。30玩法字段和捕获对象窗口无差异、7,802启动视觉RNG字差保留，独立重算124,832字通过。th14-normal-native-long-trace-verified-oct13.json按实际3,901帧记账；未取得原版整局换关或第一面完整通关证据。
