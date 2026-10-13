@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "date": "2026-10-13",
+  "sourceSha256": "1b8cc6de10aefdbb158fc744bc9fa99bae245198dde4911ba4aaddfb921c53c2",
+  "executableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "bindings": [
+    {
+      "path": "artifacts/th14/native-bootstrap-normal-512-oct13/manifest.json",
+      "bytes": 149684,
+      "sha256": "26a289c5cfbc102b18db1dd73f8d644dcef2749e68a96ed167c1f5cda8f49237"
+    },
+    {
+      "path": "artifacts/th14/native-bootstrap-normal-512-oct13/reference.json",
+      "bytes": 8089760,
+      "sha256": "bb1ddc2809ec5e53d04f0c11da31063c68a0d87336eaca67caa3c3c5e5435293"
+    },
+    {
+      "path": "artifacts/th14/native-bootstrap-normal-512-oct13/runs/d08476e83559-1791881093951924400/receipt.json",
+      "bytes": 112894,
+      "sha256": "22fe9b60246f364f622c82dc89bc9dcd1fdbd897344450a65215e72d48f67dba"
+    },
+    {
+      "path": "artifacts/th14/native-bootstrap-normal-512-oct13/runs/d08476e83559-1791881093951924400/original-prefix.jsonl",
+      "bytes": 208980,
+      "sha256": "a36912f411e6724c4bcb8774c8ecc4e0bb243b226f9385c458fd19fc849346da"
+    },
+    {
+      "path": "artifacts/th14/native-bootstrap-normal-512-oct13/runs/d08476e83559-1791881218584933300/receipt.json",
+      "bytes": 112937,
+      "sha256": "4fa983219c498cc32f6da378876b6979d62145517f569c2441d21ab491161113"
+    },
+    {
+      "path": "artifacts/th14/native-bootstrap-normal-512-oct13/runs/d08476e83559-1791881218584933300/original-prefix.jsonl",
+      "bytes": 208980,
+      "sha256": "a36912f411e6724c4bcb8774c8ecc4e0bb243b226f9385c458fd19fc849346da"
+    },
+    {
+      "path": "docs/porting/th14-natural-replay-native-trace-normal-bootstrap-512-observed-oct13.json",
+      "bytes": 142914,
+      "sha256": "014f0f5afa82ceec2959be59bf4f61ea5d8d4d051570aa7570f3d5f03f679f26"
+    },
+    {
+      "path": "artifacts/th14/custom-replay-reference/normal-bootstrap-512/reference.wasm",
+      "bytes": 1296538,
+      "sha256": "0db04c7cfbf56407e317040ee242254a6d8e404a1440b5ca268909b21f1b7342"
+    }
+  ],
+  "nativeBackend": {
+    "comparedFrames": 512,
+    "groupsPerFrame": 15,
+    "wordsPerFrame": 64,
+    "comparedWords": 32768,
+    "differingWords": 0,
+    "fullAndFastRowsEqual": true,
+    "hostCommandsEqual": true,
+    "hostCommands": 522989,
+    "fullSeconds": 77.634,
+    "fastSeconds": 30.307
+  },
+  "productionCore": {
+    "comparedFrames": 512,
+    "rawWords": 16384,
+    "gameplayDifferences": 0,
+    "retainedStartupVisualRngWords": 1024,
+    "capturedObjectDifferencesReportedByProducer": 0,
+    "sourceFiles": 265
+  },
+  "scope": "Independent byte/hash and state recomputation for a 512-sample before-player prefix. Real retail process baseline and original-executable emulator match all 64 declared words with no masks. Observation optimization also preserves full rows and ordered host command digest. Current production-core 32-word trace separately retains 1024 startup visual RNG differences. Object details are producer checks, not independently recomputed here. Original text bytes match. Full ordinary Replay bootstrap, cross-stage services, complete campaign termination, all-owner state, HAL pixels, audio and browser storage remain unverified."
+}

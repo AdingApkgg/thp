@@ -1,0 +1,86 @@
+<!doctype html><meta charset="utf-8"><title>TH14 recorded Stage GPU streams</title>
+<style>body{font:14px system-ui;background:#151c25;color:#dae5f0;margin:24px}button{padding:12px;font:inherit}canvas{display:block;background:#090d12;width:640px;height:480px}pre{white-space:pre-wrap;max-width:1100px}a{color:#8cd3ff}</style>
+<h1>TH14 · Recorded Stage direct draws</h1>
+<p>21 frames · seven original STD / ANM resources · current production renderer · strict byte comparison</p>
+<p>Independent HAL reference. Device defaults are controlled. Intercepted screen-queue quads are excluded and counted. No complete-game or original-process-framebuffer claim.</p>
+<nav><a href="/?variant=native-depth-mulw">native-depth-mulw</a> / <a href="/?variant=native-depth-divw">native-depth-divw</a></nav><nav><a href="/">production</a> / <a href="/?variant=sequential-eye">sequential-eye</a> / <a href="/?variant=cpu-float-eye">cpu-float-eye</a> / <a href="/?variant=cpu-double-eye">cpu-double-eye</a> / <a href="/?variant=no-fog">no-fog</a> / <a href="/?variant=no-depth">no-depth</a> / <a href="/?variant=pixel-trace">pixel-trace</a> / <a href="/?variant=unbatched-control">unbatched-control</a> / <a href="/?variant=cpu-float-clip">cpu-float-clip</a> / <a href="/?variant=cpu-pair-clip">cpu-pair-clip</a></nav>
+<nav><a href="/?variant=cpu-viewproj-clip">cpu-viewproj-clip</a> / <a href="/?variant=clip-dot-separate">clip-dot-separate</a> / <a href="/?variant=clip-dot-pair">clip-dot-pair</a> / <a href="/?variant=clip-dot-reverse">clip-dot-reverse</a></nav>
+<nav><a href="/?variant=depth-always-trace">depth-always-trace</a> / <a href="/?variant=depth-trace">depth-trace</a> / <a href="/?variant=depth-fixed20">depth-fixed20</a> / <a href="/?variant=cpu-clip-depth-fixed20">cpu-clip-depth-fixed20</a></nav>
+<nav><a href="/?variant=cpu-clip-eye-depth-fixed20">cpu-clip-eye-depth-fixed20</a> / <a href="/?variant=cpu-clip-eye-dot-depth-fixed20">cpu-clip-eye-dot-depth-fixed20</a> / <a href="/?variant=cpu-clip-eye-pair-depth-fixed20">cpu-clip-eye-pair-depth-fixed20</a></nav>
+<nav><a href="/?variant=cpu-reverse-depth-fixed20">cpu-reverse-depth-fixed20</a> / <a href="/?variant=cpu-reverse-eye-depth-fixed20">cpu-reverse-eye-depth-fixed20</a></nav>
+<nav><a href="/?variant=cpu-clip-viewport-depth-fixed20">cpu-clip-viewport-depth-fixed20</a> / <a href="/?variant=cpu-eye-viewport-depth-fixed20">cpu-eye-viewport-depth-fixed20</a></nav>
+<nav><a href="/?variant=viewport-no-fog">viewport-no-fog</a> / <a href="/?variant=viewport-fog-product-sum">viewport-fog-product-sum</a> / <a href="/?variant=viewport-fog-product-subtract">viewport-fog-product-subtract</a></nav>
+<nav><a href="/?variant=viewport-color-trace">viewport-color-trace</a></nav>
+<nav><a href="/?variant=position-matrix-fence">position-matrix-fence</a> / <a href="/?variant=position-half-fence">position-half-fence</a> / <a href="/?variant=position-both-fence">position-both-fence</a></nav><nav><a href="/?variant=clip-transform-trace">clip-transform-trace</a></nav><nav><a href="/?variant=viewport-scale-scene">viewport-scale-scene</a> / <a href="/?variant=viewport-scale-no-fog">viewport-scale-no-fog</a></nav><nav><a href="/?variant=viewport-reciprocal-scene">viewport-reciprocal-scene</a> / <a href="/?variant=viewport-reciprocal-no-fog">viewport-reciprocal-no-fog</a></nav><nav><a href="/?variant=viewport-mad-scene">viewport-mad-scene</a> / <a href="/?variant=viewport-mad-no-fog">viewport-mad-no-fog</a></nav><nav><a href="/?variant=viewport-fma-scene">viewport-fma-scene</a> / <a href="/?variant=viewport-fma-no-fog">viewport-fma-no-fog</a></nav>
+<nav><a href="/?variant=position-invariant">position-invariant</a> / <a href="/?variant=position-cpu-fused">position-cpu-fused</a> / <a href="/?variant=position-cpu-separated">position-cpu-separated</a></nav>
+<button id="run">Run 21 recorded frames</button><p id="status">Ready</p>
+<canvas id="canvas" width="640" height="480" style="width:160px;height:120px"></canvas>
+<p><a id="download" hidden download="th14-stage-stream-webgl.bgra">Download WebGL pixels</a></p>
+<p>First recorded frame: WebGL (left) / independent D3D9 HAL (right)</p>
+<div style="display:flex;gap:12px"><canvas id="portable-preview" width="640" height="480" style="width:480px;height:360px"></canvas><canvas id="native-preview" width="640" height="480" style="width:480px;height:360px"></canvas></div><pre id="result"></pre><details id="raw-pixels"><summary>Complete BGRA pixel buffer (base64 chunks)</summary></details>
+<script type="module">
+const variant=new URL(location.href).searchParams.get('variant')||'production';
+if(!['native-depth-mulw','native-depth-divw','production','sequential-eye','cpu-float-eye','cpu-double-eye','no-fog','no-depth','pixel-trace','unbatched-control','cpu-float-clip','cpu-pair-clip','cpu-viewproj-clip','clip-dot-separate','clip-dot-pair','clip-dot-reverse','depth-trace','depth-fixed20','cpu-clip-depth-fixed20','depth-always-trace','cpu-clip-eye-depth-fixed20','cpu-clip-eye-dot-depth-fixed20','cpu-clip-eye-pair-depth-fixed20','cpu-reverse-depth-fixed20','cpu-reverse-eye-depth-fixed20','cpu-clip-viewport-depth-fixed20','cpu-eye-viewport-depth-fixed20','viewport-no-fog','viewport-fog-product-sum','viewport-fog-product-subtract','viewport-color-trace','viewport-fma-scene','viewport-fma-no-fog','viewport-mad-scene','viewport-mad-no-fog','viewport-reciprocal-scene','viewport-reciprocal-no-fog','viewport-scale-scene','viewport-scale-no-fog','clip-transform-trace','position-invariant','position-cpu-fused','position-cpu-separated','position-matrix-fence','position-half-fence','position-both-fence'].includes(variant))throw Error('Unknown variant');
+const prefix=variant==='viewport-color-trace'?'/variants/viewport-no-fog':['production','pixel-trace'].includes(variant)?'':'/variants/'+variant;
+const nativePrefix=variant==='viewport-color-trace'?'/viewport-color-trace':['viewport-no-fog','viewport-fma-no-fog','viewport-mad-no-fog','viewport-reciprocal-no-fog','viewport-scale-no-fog'].includes(variant)?'/variants/no-fog':variant==='depth-always-trace'?'/depth-always-trace':['no-fog','no-depth'].includes(variant)?prefix:'';
+const createModule=(await import(prefix+'/gpu.mjs')).default;
+const canvas=document.querySelector('#canvas'),status=document.querySelector('#status'),result=document.querySelector('#result'),button=document.querySelector('#run');
+const sha=async bytes=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),b=>b.toString(16).padStart(2,'0')).join('');
+button.onclick=async()=>{
+ button.disabled=true;
+ try{
+  const [prepared,native,build,nativePixels,moduleBytes]=await Promise.all([fetch('/prepared.json').then(r=>r.json()),fetch(nativePrefix+'/native.json').then(r=>r.json()),fetch(prefix+'/build.json').then(r=>r.json()),fetch(nativePrefix+'/native.bgra').then(r=>r.arrayBuffer()),fetch(prefix+'/gpu.wasm').then(r=>r.arrayBuffer())]);
+  const check=(v,message)=>{if(!v)throw Error(message);};
+  check(await sha(nativePixels)===native.pixelsSha256,'Native pixel SHA');check(await sha(moduleBytes)===build.wasmSha256,'Module SHA');
+  const traceNative=['pixel-trace','depth-trace','depth-always-trace','viewport-color-trace'].includes(variant)?await fetch('/'+variant+'/trace.json').then(r=>r.json()):null;
+  const selectedFrames=traceNative?prepared.frames.filter(f=>traceNative.frames.some(r=>r.stage===f.stage&&r.frame===f.frame)):prepared.frames;
+  const module=await createModule({canvas,locateFile:n=>prefix+'/'+n});
+  check(module._gpu_initialize(),'GPU initialization: '+module._gpu_error());
+  function words(values,fn){const bytes=new Uint32Array(values),p=module._gpu_allocate(bytes.byteLength);check(p,'allocation');try{module.HEAPU8.set(new Uint8Array(bytes.buffer),p);return fn(p);}finally{module._gpu_release(p);}}
+  for(const t of prepared.textures){
+   const bytes=new Uint8Array(await fetch('/'+t.file).then(r=>r.arrayBuffer()));check(await sha(bytes)===t.sha256,'Texture SHA '+t.file);
+   const p=module._gpu_allocate(bytes.length);check(p,'texture allocation');module.HEAPU8.set(bytes,p);
+   check(module._gpu_texture(t.handle,t.width,t.height,t.format,t.pitch,p,bytes.length),'Texture '+t.file);
+  }
+  let transformCaptures=[];function execute(c){
+   let ok=0;
+   switch(c.kind){
+    case 'renderState':ok=module._gpu_render_state(c.key,c.value);break;
+    case 'samplerState':ok=module._gpu_sampler(c.sampler,c.key,c.value);break;
+    case 'textureStageState':ok=module._gpu_texture_stage(c.stage,c.key,c.value);break;
+    case 'texture':ok=module._gpu_bind(c.sampler,c.handle);break;
+    case 'fvf':ok=module._gpu_fvf(c.value);break;
+    case 'transform':ok=words(c.words,p=>module._gpu_matrix(c.key,p));break;
+    case 'viewport':ok=words(c.words,p=>module._gpu_viewport(p));break;
+    case 'clear':ok=words(c.rectangles,p=>module._gpu_clear(c.flags,c.color,c.depthWord,c.stencil,p,c.rectangles.length/4));break;
+    case 'draw':ok=words(c.words,p=>module._gpu_draw(c.topology,c.count,c.stride,p));if(variant==='clip-transform-trace'){const vertexCount=module._gpu_tf_count(),bytes=vertexCount*16,p=module._gpu_allocate(bytes);try{check(module._gpu_tf_read(p,bytes),'Transform feedback');transformCaptures.push({drawIndex:transformCaptures.length,count:c.count,stride:c.stride,vertexCount,words:Array.from(new Uint32Array(module.HEAPU8.slice(p,p+bytes).buffer))});}finally{module._gpu_release(p);}}break;
+    case 'controlledScreenQueue':case 'controlledScreenFlush':ok=1;break;
+    default:throw Error('Unhandled command '+c.kind);
+   }
+   check(ok,'Rejected command '+JSON.stringify(c));
+  }
+  const reports=[],reference=new Uint8Array(nativePixels),portablePixels=new Uint8Array(reference.length);let exact=0,differentChannels=0,maxDelta=0;
+  for(let i=0;i<selectedFrames.length;i++){
+   transformCaptures=[];const frame=selectedFrames[i],target=native.frames.find(n=>n.stage===frame.stage&&n.frame===frame.frame);check(target,'Frame order');
+   const trace=traceNative?.frames.find(n=>n.stage===frame.stage&&n.frame===frame.frame),tracedDraws=[],depthSamples=[];
+   const sample=()=>{const p=module._gpu_read();check(p,'trace read');const colors=trace.points.map(([x,y])=>Array.from(module.HEAPU8.subarray(p+(y*640+x)*4,p+(y*640+x)*4+4)));if(['depth-trace','depth-always-trace'].includes(variant)){const out=module._gpu_allocate(trace.points.length*2);try{words(trace.points.flat(),ptr=>check(module._gpu_depth(ptr,trace.points.length,out),'depth read'));depthSamples.push({d16:Array.from(new Uint16Array(module.HEAPU8.slice(out,out+trace.points.length*2).buffer))});}finally{module._gpu_release(out);}}return colors;};
+   check(module._gpu_begin(),'begin');for(const c of frame.initialState)execute(c);const initialColors=trace?sample():undefined;
+   for(let ci=0;ci<frame.commands.length;ci++){const c=frame.commands[ci];execute(c);if(trace&&c.kind==='draw')tracedDraws.push({commandIndex:ci,drawIndex:tracedDraws.length,colors:sample()});}
+   const p=module._gpu_read();check(p,'read');const actual=module.HEAPU8.slice(p,p+target.bytes),expected=reference.subarray(target.offset,target.offset+target.bytes);
+   portablePixels.set(actual,target.offset);
+   if(i===0)for(const [id,raw] of [['portable-preview',actual],['native-preview',expected]]){const rgba=new Uint8ClampedArray(raw.length);for(let j=0;j<raw.length;j+=4){rgba[j]=raw[j+2];rgba[j+1]=raw[j+1];rgba[j+2]=raw[j];rgba[j+3]=raw[j+3];}document.getElementById(id).getContext('2d').putImageData(new ImageData(rgba,640,480),0,0);}
+   let channels=0,delta=0;const first=[];
+   for(let j=0;j<actual.length;j++)if(actual[j]!==expected[j]){channels++;delta=Math.max(delta,Math.abs(actual[j]-expected[j]));if(first.length<32)first.push({x:(j>>2)%640,y:Math.floor(j/(640*4)),channel:j%4,portable:actual[j],d3d9:expected[j]});}
+   if(!channels)exact++;differentChannels+=channels;maxDelta=Math.max(maxDelta,delta);
+   const actualSha=await sha(actual);if(trace)check(actualSha===trace.portableFinalSha256,'Readback barriers changed WebGL final output');
+   reports.push({stage:frame.stage,frame:frame.frame,directDraws:frame.directDraws,controlledScreenQuadsExcluded:frame.controlledScreenQuadsExcluded,differentChannels:channels,maxDelta:delta,portableSha256:actualSha,nativeSha256:target.sha256,first,...(variant==='clip-transform-trace'?{transformCaptures}:{}),...(trace?{points:trace.points,beforeDraws:initialColors,tracedDraws,...(['depth-trace','depth-always-trace'].includes(variant)?{depthSamples}: {})}: {})});
+   status.textContent='Compared '+(i+1)+' / '+selectedFrames.length+' · '+exact+' exact · '+differentChannels+' differing channels';
+   await new Promise(requestAnimationFrame);
+  }
+  const download=document.querySelector('#download');download.href=URL.createObjectURL(new Blob([portablePixels],{type:'application/octet-stream'}));download.hidden=false;
+  const rawContainer=document.querySelector('#raw-pixels');for(const old of rawContainer.querySelectorAll('textarea'))old.remove();for(let off=0;off<portablePixels.length;off+=262144){const end=Math.min(off+262144,portablePixels.length);let value='';for(let p=off;p<end;p+=32768)value+=String.fromCharCode(...portablePixels.subarray(p,Math.min(p+32768,end)));const field=document.createElement('textarea');field.readOnly=true;field.rows=1;field.setAttribute('aria-label','BGRA bytes '+off+' to '+end);field.textContent=btoa(value);rawContainer.append(field);}
+  const report={diagnosticOnly:true,completeGame:false,nativeEquivalent:false,backendVersion:10,variant,frames:reports.length,strictPixelsEqual:exact===reports.length,exactFrames:exact,differentChannels,maxDelta,nativePixelsSha256:native.pixelsSha256,portablePixelsSha256:await sha(portablePixels),wasmSha256:build.wasmSha256,reports,scope:native.scope};
+  result.textContent=JSON.stringify(report,null,2);status.textContent='Completed · '+exact+'/'+reports.length+' exact · '+differentChannels+' differing channels · max '+maxDelta;
+ }catch(e){status.textContent='Failed';result.textContent=JSON.stringify({error:e.message,stack:e.stack},null,2);}
+};
+</script>

@@ -1,0 +1,46 @@
+# TH14 推进方法调整（2026-10-13）
+
+最终目标仍为 TH14 完整 1:1；TH16 和其他作品后置。本文没有把当前状态标为完成。
+
+## 已完成项目采用的方法
+
+| 项目 | 可复用的推进方式 | 其公开完成范围的限制 |
+| --- | --- | --- |
+| [TH06 portable](https://github.com/GensokyoClub/th06/tree/portable) | 在已有反编译上集中替换平台、输入、渲染接口，保留游戏行为 | 可移植、可玩与逐像素一致不是同一项验收 |
+| [TH07 reallyportable](https://github.com/some100/th07/tree/reallyportable) | 复用 TH06 架构和其他作品的资源工具，统一 SDL/OpenGL/浏览器入口 | README 仍记录文字尺寸等差异 |
+| [TH08 Replay Verifier](https://github.com/YomotsuHisami/th08/blob/eagler/tools/replay-verifier/README.md) | 原版执行生成固定、内容寻址的基准；Demo 快速检查，整局 Lunatic/Extra 长回归；候选不能重写基准 | 图像验收单独进行；原版工具和正常候选回归分开 |
+| [TH11 Replay Verifier](https://github.com/YomotsuHisami/th11/blob/eagler/tools/replay-verifier/README.md) / [RESULTS](https://github.com/YomotsuHisami/th11/blob/eagler/tools/replay-verifier/RESULTS.md) | 原版 Unicorn 执行真实管理器、ECL、调度器及换关；Demo 读到终止标记，整局和 Extra 固定回放 | 所列状态字段有明确范围；浏览器图像、音频和存储仍单独验收 |
+| [TH10 Replay Verifier](https://github.com/YomotsuHisami/th10/blob/eagler/tools/replay-verifier/README.md) | 原版 JIT/Present 生成内容寻址基准，保留游戏自己的 Demo 顺序；日常候选不能更新期望值 | 实际吸引演示生命周期和完整保存录像是不同的验证通道 |
+| [TH15 Replay Verifier](https://github.com/YomotsuHisami/th15/blob/eagler/tools/replay-verifier/RESULTS.md) | 三份 Demo、魔理沙 Lunatic 和 Extra 共225,582 tick；原版进程另交叉核对执行后端；逐关完成收据必须存在 | 标准状态门只覆盖13个玩法字；长回放逐关恢复，前端换关、其他自机池/ANM差异、图像、音频和存储另验 |
+
+最新进度表已于本次查读，上游文件 blob 为 `e79a65f467fc9609a262b2d4a5d6f053dbc5af2b`，最近相关提交为 `7aa48a428fbda1c965c4df730a0da0263db8e17e`。不能根据表中 Done 推断整作逐字段、逐像素一致。
+
+## 进行中项目的参考
+
+| 项目 | 已读证据及适用做法 | 限制 |
+| --- | --- | --- |
+| [TH20](https://github.com/Oracatt/Touhou20) | 最新 README 与 SOURCE_GAME_RUNTIME：先建立完整源码生产图并实际运行，用 ASAN、异常调用栈、原地址证据修复注册时序、迭代器释放后写入和分配/释放配对；修改后重新绑定源码和跨关复测 | 老 RECONSTRUCTION_ROADMAP 的“未链接”状态已落后于最新运行报告；现有可构建/跨关记录仍不等于整局1:1。历史 native_bridge 不是最终完整源码产物 |
+| TH19 | [进度表](https://github.com/YomotsuHisami/eagler-touhou/blob/main/docs/TOUHOU_PROGRESS.md) 仅链接 Idle233333 作者主页。检查其公开仓库后暂未发现 TH19 技术源码 | 不能把其无关公开仓库当成 TH19 实现；不根据进度徽章推测实现方案 |
+| [TH075](https://github.com/N0zoM1z0/th075) | 另一个公开的萃梦想重建项目，使用固定 EXE 身份、函数来源账本、完整调用依赖和冷构建字节比较；工具和解码器也固定版本 | 不是进度表中 SteinsGateON 的同一份项目；当前函数匹配不能推断整作完成 |
+| [TH095](https://github.com/N0zoM1z0/th095) / [TH105](https://github.com/N0zoM1z0/th105) | 将来源分类、源码存在、严格字节匹配、整程序构建和可玩流程分别统计；完整流程与死亡/失败/Retry/存档/Replay另验 | TH095 广内容视频用了独立测试无死亡启动器；正常版流程单独测试。这个视频不能作为本项目自然通关或整局等价证据 |
+
+TH14 据此增加的工作重点：完整帧回归、实际对象生命周期与内存诊断、生产编译依赖的来源绑定，以及正常流程测试。不会把参考项目自己的补丁、验证字段掩码或特殊测试输入默认为 TH14 原作行为。
+
+上述资料是方法参考，不是 TH14 已通过的证据。TH11 的地址、字段掩码、宿主服务和补救逻辑不能直接沿用到 TH14。
+
+## 当前工作的瓶颈
+
+1. 原版实际进程捕获走吸引演示，3900 帧退出限制了长回归。分关窗口无法替代完整换关与整局。
+2. GPU 独立候选过多。在完整原版回放基准未建立时，反复缩小少量像素差异占用了主线时间。
+3. 普通输入控制器调参有助于取得自然录像，但这是测试素材生产，不等于移植核心的进度。
+4. 现有大量单元证明不能自动相加成为整作等价；每次核心修改仍需要完整基准回归。
+
+## 执行顺序与约束
+
+第一优先建立 TH14 原版完整回放执行和不可覆盖的基准。先利用已验证的原版入口和真实进程初始化快照，列出每个宿主边界；原版游戏代码继续执行。未支持的调用必须停止并报告，禁止通用返回成功、修复栈或用候选结果补齐。只读快照启动本身不算整局通过。
+
+随后建立快速原始 Demo 检查和长 Normal 六关检查，再扩大到六自机、难度与 Extra。只接受真实终止和有序换关；崩溃、预算耗尽或只捕获前缀统一标 INCOMPLETE。不能裁剪、重新同步、改 RNG 或让候选生成原版基准。
+
+玩法完整回归稳定后，继续严格图像、音频、菜单、成绩及浏览器持久化验收。失败的 GPU 候选保留来源和数据，不进入生产渲染器，不把误差很小描述成像素一致。
+
+目前 Easy/Normal 咲夜 A 自然通关和移植内部完整录像回归已通过；原版六面短窗口已通过；原版不间断整局、完整图像、音频及浏览器存储验收仍未完成。详情仍以 CORE_STATUS 与各报告的实际范围为准。
