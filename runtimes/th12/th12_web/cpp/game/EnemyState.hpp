@@ -132,10 +132,11 @@ struct EnemyState {
     // Native enemy data +4034, initialized to 1 by 422fd5.
     struct Th14WaveMovement {Vec3 anchor;float phase;};
     float th14_bomb_damage_ratio=1;
-    float th14_hitbox_angle=0; // Native data +120, ECL 564 / rotated shot damage.
     const char* th14_death_script=nullptr; // Native data +4108, ECL 556.
     Vec3 animation_offsets[16]{};
     i32 animation_parents[16]{};
+    // Native +120 is shared by ECL564, animation velocity orientation and
+    // rotated shot collision. Keep one value for all three consumers.
     float animation_angle=0;
     // Native entity +1470/+1474, consumed by 424af0's death-effect angle.
     Vec2 death_reference{};
@@ -226,8 +227,8 @@ static_assert(offsetof(EnemyState,script_owner)==0x1630);
 // and it is a member for the same reason indexed_values is.
 // The two native triples at +0x3dd8/+0x3e98 (0x180) replace the two role-named arrays the port
 // used to keep in their place, and 0x2be's 0x354-byte request is the only new storage.
-static_assert(sizeof(EnemyState)==0x16b8+0x140+4+0x9c+(kPortTitle==14?504+0x39c0+0x374+12+64:kPortTitle==16?148+4*sizeof(FloatInterpolator)+sizeof(Timer)+1024+0x39c0:0));
-static_assert(sizeof(Enemy)==0x26f4+0x140+4+0x9c+sizeof(EclContext)-0x1024+(kPortTitle==14?504+0x39c0+0x374+12+64:kPortTitle==16?148+4*sizeof(FloatInterpolator)+sizeof(Timer)+1024+0x39c0:0));
+static_assert(sizeof(EnemyState)==0x16b8+0x140+4+0x9c+(kPortTitle==14?500+0x39c0+0x374+12+64:kPortTitle==16?148+4*sizeof(FloatInterpolator)+sizeof(Timer)+1024+0x39c0:0));
+static_assert(sizeof(Enemy)==0x26f4+0x140+4+0x9c+sizeof(EclContext)-0x1024+(kPortTitle==14?500+0x39c0+0x374+12+64:kPortTitle==16?148+4*sizeof(FloatInterpolator)+sizeof(Timer)+1024+0x39c0:0));
 struct EnemyEnvironment {
     Rng random;float rate=1;Vec3 player_position,camera_delta;
     i32 rank=0,difficulty=0,character=0,subtype=0,shared_integers[3]{},enemy_count=0;

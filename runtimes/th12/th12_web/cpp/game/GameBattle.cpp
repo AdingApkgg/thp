@@ -508,7 +508,7 @@ bool GameBattle::shot_damage(EnemyState& e,i32& out) {
 #if PORT_TITLE == 14
         // Retail 423a3e..423a7f: bit 1000 selects the rectangle pointer;
         // an unset bit passes a null size and half the hitbox width as radius.
-        player->shots.damage_th14(e.current.position,e.flags&0x1000?&e.hitbox:nullptr,e.flags&0x1000?0:e.hitbox.x*.5f,e.flags&0x1000?e.th14_hitbox_angle:0,timer.previous!=timer.current,economy,out,u32(e.instance_id),u32(e.instance_id));
+        player->shots.damage_th14(e.current.position,e.flags&0x1000?&e.hitbox:nullptr,e.flags&0x1000?0:e.hitbox.x*.5f,e.flags&0x1000?e.animation_angle:0,timer.previous!=timer.current,economy,out,u32(e.instance_id),u32(e.instance_id));
 #elif PORT_TITLE == 16
         player->shots.damage_th16({e.current.position,e.flags&0x1000?nullptr:&e.hitbox,e.flags&0x1000?e.hitbox.x*.5f:0,0,timer.previous!=timer.current,false,u32(e.instance_id),0},out);
 #else
@@ -529,6 +529,19 @@ i32 GameBattle::apply_collision(PlayerCollisionResult result) {
 }
 bool GameBattle::player_collision(EnemyState& e,float radius,i32& out) {
     if(!player)return false;
+#if PORT_TITLE == 14
+    if(e.flags&0x1000){
+        // 423dad..423e8b uses a rotated finite laser-shaped body. The
+        // start comes from root-VM rotation+pi/2, while the query angle is
+        // the shared enemy+120 field; these can differ within an update.
+        const auto* vm=animations.find(e.animation_handle(0));if(!vm)return false;
+        const float angle=normalize_angle(vm->rotation.z+1.5707963705062866f);
+        const float half=e.collision_box.y*.5f;
+        const float sine=float(std::sin(double(angle))),cosine=float(std::cos(double(angle)));
+        const Vec3 start{e.current.position.x-sine*half,e.current.position.y+cosine*half,e.current.position.z};
+        out=collision(start,e.animation_angle,e.collision_box.x,e.collision_box.y);return out>=0;
+    }
+#endif
     auto shape=player->collision();shape.dialogue_active=dialogue&&dialogue->active;
     out=apply_collision(shape.circle({e.current.position.x,e.current.position.y},radius));return out>=0;
 }
@@ -685,7 +698,14 @@ bool GameBattle::th14_curve_graze(Vec3 contact){
 bool GameBattle::communication_reward(i32 amount) { communication.reward(economy,amount,&animations.rate);return true; }
 bool GameBattle::reward_graze() {constexpr i32 amounts[]={800,500,500,500,500};return communication_reward(amounts[economy.difficulty]);}
 bool GameBattle::graze_reward() {constexpr i32 amounts[]={500,400,300,200,200};return communication_reward(amounts[economy.difficulty]);}
-bool GameBattle::graze(EnemyState& e) {return register_graze()&&visual(e.current.position,156)&&reward_graze()&&sound(28,e.current.position.x,true);}
+bool GameBattle::graze(EnemyState& e) {
+#if PORT_TITLE == 14
+    // 423eb3..423ebe passes Player+5e0 to the shared450410 consumer.
+    return player&&th14_curve_graze(player->motion.state.position);
+#else
+    return register_graze()&&visual(e.current.position,156)&&reward_graze()&&sound(28,e.current.position.x,true);
+#endif
+}
 bool GameBattle::cancel_bullets(const Vec3* center,float radius,bool skip_delayed) {
 #if PORT_TITLE == 14
     // Player 44dc88 uses 41b3f0, always filtering delayed bullets and

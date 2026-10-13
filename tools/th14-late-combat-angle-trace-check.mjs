@@ -29,7 +29,7 @@ fixtureSource=fixtureSource.replace('reference[0]>=3000&&reference[0]<=3120',`re
 for(const name of ['th14-custom-replay-reference-fixture.cpp','th14-physical-replay-reference-fixture.cpp'])fixtureSource+='\n'+readFileSync(resolve(rt,'tests/cpp',name),'utf8').split('\n').slice(1).join('\n');
 fixtureSource=fixtureSource.replace('static std::vector<u32> reference_shots,','static std::vector<u32> reference_angles;\nstatic std::vector<u32> reference_shots,');
 fixtureSource=fixtureSource.replace(' reference_shots.clear();',' reference_angles.clear();reference_shots.clear();');
-fixtureSource=fixtureSource.replace('const auto& s=node->value->state;','const auto& s=node->value->state;reference_angles.push_back(float_word(s.th14_hitbox_angle));');
+fixtureSource=fixtureSource.replace('const auto& s=node->value->state;','const auto& s=node->value->state;reference_angles.push_back(float_word(s.animation_angle));');
 fixtureSource+='\nAPI(reference_angle_data) const u32* reference_angle_data(){return reference_angles.data();}\nAPI(reference_angle_words) u32 reference_angle_words(){return u32(reference_angles.size());}\n';
 writeFileSync(fixture,fixtureSource);
 

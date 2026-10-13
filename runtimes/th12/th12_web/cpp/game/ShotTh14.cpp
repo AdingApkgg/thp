@@ -48,7 +48,9 @@ i32 shot_th14_focused_update(ShotState& s,ShotPlayer& player,AnmVm& vm,EnemyLink
     // entry. A destroyed target still reaches the later identity check at
     // 451e53..451fc7; preserve that ordering without a dangling C++ pointer.
     if(s.timer.current>=10&&!s.target&&!s.th14_homing_target_retired){s.target=nearest(enemies,s.movement.position,320.f);if(s.target)s.th14_target_id=u32(s.target->state.instance_id);}
-    const auto terminate=[&](){s.state=2;s.th14_area_flags&=~1u;player.th14_cached_power=0;return 1;};
+    // 452033 clears the retained area pointer. Later VM retirement must
+    // not clear a new shot's reused damage-area record.
+    const auto terminate=[&](){s.state=2;s.th14_area_flags&=~1u;s.th14_area_slot=256;player.th14_cached_power=0;return 1;};
     if(player.th14_shooting_blocked||player.state==2||player.special_active==1)return terminate();
     if(player.focused&&firing)s.th14_steering.set(0,rate);
     else{s.th14_steering.tick();if((!s.target&&!s.th14_homing_target_retired)||s.th14_steering.current>=12)return terminate();}

@@ -131,5 +131,5 @@ API(rate_word) u32 rate_word(u32 n){return float_bits(n?rate_target:environment.
 API(hitbox_angle_case) u32 hitbox_angle_case(u32 value,u32 refs){
  enemy={};world={};alignas(4) u8 bytes[20]{};auto* ins=reinterpret_cast<EclInstruction*>(bytes);ins->opcode=564;ins->length=20;ins->references=u16(refs);
  EclContext c;c.instruction=ins;c.stack.frame_base=32;const u32 offset=0;std::memcpy(bytes+16,refs?&offset:&value,4);std::memcpy(c.stack.data+32,&value,4);
- return enemy_th14_state_command(enemy,c,globals,world)==0?float_bits(enemy.th14_hitbox_angle):0x12345678;
+ return enemy_th14_state_command(enemy,c,globals,world)==0?float_bits(enemy.animation_angle):0x12345678;
 }

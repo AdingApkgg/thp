@@ -521,7 +521,7 @@ i32 enemy_th14_state_command(EnemyState& e,EclContext& c,EnemyGlobals& g,EnemyCo
     case 542:if(!world.spells)return -2;world.spells->invalidate_capture();return 0; // 4289fb, spell +7c bit 3.
     case 567:if(!world.spells)return -2;world.spells->title_orientation(i(0));return 0; // 428a13 -> 421c90.
     case 568:e.health_flags=(e.health_flags&~1u)|(u32(i(0))&1u);return 0; // 4289cb.
-    case 564:e.th14_hitbox_angle=f(0);return 0; // 4276ee: raw f32, no normalization.
+    case 564:e.animation_angle=f(0);return 0; // 4276ee: shared +120, raw f32.
     case 548:{
         // 429812 reads all four counts, selects by difficulty, then rewinds
         // the current ECL thread using a signed-int-to-f32 conversion.

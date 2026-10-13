@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "ordinaryMenuLoaderVerified": false,
+  "stage": 2,
+  "comparedFrames": 12029,
+  "rawWords": 384928,
+  "gameplayDifferences": 0,
+  "retainedStartupVisualWords": 24058,
+  "sourceFilesVerified": 265,
+  "capturedObjectDifferencesReportedByProducer": 0,
+  "nativeCaseInitialization": {
+    "address": "0x4f58b8",
+    "before": 68,
+    "after": 4,
+    "replayManagerMode": 1,
+    "afterReadOnlyBootstrap": true,
+    "beforeFirstPlayerInstruction": true,
+    "wordWrites": 1,
+    "originalInstructionAddress": "0x459bcf",
+    "originalInstructionHex": "8325b8584f00bf",
+    "scope": "One explicit warm Replay mode initialization matching the original AND flag effect; not ordinary menu/loader startup."
+  },
+  "nativeSelectionChanged": true,
+  "nativeNextSelection": [
+    0,
+    0,
+    3,
+    3
+  ],
+  "nativeCaptureTimedOut": true,
+  "physicalInvocationOrder": true,
+  "repeatedStageClockRows": 0,
+  "verifierSha256": "1a9973618c8293662d73717cb5816695a353e43431c24ee615cae2f494b8cd54",
+  "bindings": [
+    {
+      "path": "artifacts/th14/native-zps-reimua-lunatic-stage2-oct14/reference.json",
+      "bytes": 83562772,
+      "sha256": "5d4102a798ffeef34184df7878bc054630ddd40cf25a9a6db4a41da56c7e1d5c"
+    },
+    {
+      "path": "docs/porting/th14-physical-replay-native-trace-zps-reimua-lunatic-stage2-release-area-oct14-observed-oct13.json",
+      "bytes": 2614743,
+      "sha256": "8978a3d0ce6a403eaf243b663cd94c37cd3017bc3e810f7ecaed225f3fe9684e"
+    },
+    {
+      "path": "artifacts/th14/custom-replay-reference/zps-reimua-lunatic-stage2-release-area-oct14/reference.wasm",
+      "bytes": 1297309,
+      "sha256": "38af93a68b837d08b4dcccd20604c10fb36c6f6e226e37a002e1b0c30b86993b"
+    }
+  ],
+  "scope": "Independent recomputation of every raw32 production word versus every warm retail callback in physical order, including repeated stage clocks; no rows trimmed or merged. Only two startup visual RNG columns differ, with all raw differences retained. Native keeps later-stage flag4 and clears attract bit40 once; no stock/health/input/RNG edits. Captured object windows are producer checks. This does not certify original backend64, uninterrupted loading/transition, full original clear or graphics/audio/browser storage."
+}

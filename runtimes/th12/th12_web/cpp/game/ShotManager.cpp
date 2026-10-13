@@ -200,9 +200,9 @@ bool ShotManager::on_update(ShotState& s){
     if(u32(s.spec->update)==8){shot_th14_delayed_turn(s);return true;}
     if(u32(s.spec->update)==1){shot_th14_homing_update(s,player.th14_enemy_manager,world.enemies);return true;}
     if(u32(s.spec->update)==2){if(s.state==2)return true;auto* vm=animations.find(s.animation);if(!vm)return false;
-        const i32 previous_power=player.th14_cached_power;
+        const i32 previous_power=player.th14_cached_power;const u32 previous_area=s.th14_area_slot;
         const i32 result=shot_th14_focused_update(s,player,*vm,world.enemies,resource,schedule.timer.current>=0,&animations.rate);
-        if(s.th14_area_slot<256){auto& area=th14_areas[s.th14_area_slot];if(result==1)area.flags&=~1u;
+        if(previous_area<256){auto& area=th14_areas[previous_area];if(result==1)area.flags&=~1u;
             else if(result==0&&previous_power!=player.th14_cached_power)area.radius=s.th14_area_radius;}
         if(result==1)interrupt(s.animation,1);return result>=0;
     }

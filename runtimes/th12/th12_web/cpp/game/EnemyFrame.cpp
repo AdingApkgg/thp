@@ -140,11 +140,14 @@ i32 enemy_frame(EnemyScriptServices& script,EnemyFrameWorld& world){
         }
     }
     if constexpr(kPortTitle!=16)if(const char* name=e.check_interrupts(phase))transition(name);
-    if(!(e.flags&0x22)&&e.collision_immunity.current<=0&&!(e.flags&0x400000)){
+    if(!(e.flags&0x22)&&e.collision_immunity.current<=0&&!(e.flags&(kPortTitle==14?0x4000000u:0x400000u))){
         if constexpr(kPortTitle==16)trace_point=9016;
         if(u32(e.collision_callback)){if(!world.collision_callback(e))return -2;}
         else{ i32 collision=0;if(!world.player_collision(e,float(double(e.collision_box.x)*.5),collision))return -2;
-            if((e.flags&0x200)&&collision==2&&e.lifetime.current%3==0&&!world.graze(e))return -2;
+            // 423ea1..423ebe uses phase+2c0 modulo6, then450410, rather
+            // than the legacy lifetime modulo3 and communication reward.
+            const i32 graze_clock=kPortTitle==14?e.timer_2bc.current:e.lifetime.current;
+            if((e.flags&0x200)&&collision==2&&graze_clock%(kPortTitle==14?6:3)==0&&!world.graze(e))return -2;
         }
     }
     if constexpr(kPortTitle!=14)if(!animations->update_direction(e)){if constexpr(kPortTitle==16)trace_point=9018;return -2;}
