@@ -2,6 +2,8 @@
 
 TH14 最新修正（2026-10-15）：屏幕相机使用原版 FOV 和视口起点，四相机的 52 个参数字及 128 个矩阵字与本轮原码记录一致。新 SDL `3083772c…` 已在本机静音预览显示标题和 Normal Demo。[修正与验证范围](docs/porting/TH14_SCREEN_CAMERA_FIX_OCT15.md)、[当前进度](docs/porting/CORE_STATUS.md)。整作 1:1 继续施工，其他作品不占坑。
 
+本机普通预览默认使用 `node tools/th14-serve-launcher-v2.mjs`，保持 `http://localhost:8208/`，音乐与音效静音；已有服务运行时直接复用。直接运行和本地包也有默认静音入口，只有显式 `--sound` 才有声。[本机入口说明](docs/porting/TH14_LOCAL_QUIET_DEFAULT_OCT15.md)。
+
 下方 2026-10-14 的加载、整局及像素记录保留修改前版本范围，不自动作为本次相机修正的整局通过。
 
 <!-- th14-staged-loader-current:start -->

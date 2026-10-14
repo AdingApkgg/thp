@@ -1,0 +1,125 @@
+{
+  "observationVerified": true,
+  "checkerStartedGpu": false,
+  "checkerStartedBrowser": false,
+  "checkerStartedNative": false,
+  "checkerStartedAudio": false,
+  "newCompilers": 0,
+  "actualProducerDraws": 2,
+  "actualProducerCompleted": true,
+  "comparedFullGpuTfWordsPerArm": 1404,
+  "aTfCopyDifferentWords": 0,
+  "bTfDifferentWordsFromA": 0,
+  "bUvDifferentWordsFromInput": 0,
+  "bBridgeDifferentWordsFromNativeInput": 468,
+  "aGpuTfSha256": "34f2aeca54896dc327c99e9dbb82d4eae4b44df87cafe7be21919ec2ef2b0a66",
+  "bGpuTfSha256": "34f2aeca54896dc327c99e9dbb82d4eae4b44df87cafe7be21919ec2ef2b0a66",
+  "comparedPixelWordsPerArm": 1228800,
+  "aPixelsDifferentWordsFromFrozenBrowser": 0,
+  "bPixelsDifferentWordsFromA": 0,
+  "aPixelsSha256": "5f4cf12dd953bd8ae849030d7446fa2133274e5057df99e2cc601139f01c8f7c",
+  "bPixelsSha256": "5f4cf12dd953bd8ae849030d7446fa2133274e5057df99e2cc601139f01c8f7c",
+  "eachArmAgainstFrozenNative": {
+    "comparedWords": 1228800,
+    "differentWords": 327,
+    "differentByComponent": [
+      164,
+      163,
+      0,
+      0
+    ],
+    "coverageDifferences": 0,
+    "maxAbsoluteDelta": 6.312131881713867e-05
+  },
+  "differentPixelCount": 164,
+  "differenceBoundsXminXmaxYminYmax": [
+    520,
+    542,
+    90,
+    99
+  ],
+  "scope": {
+    "originalFfpClipCaptured": false,
+    "nativeAuthoredVs2ClipObserved": true,
+    "hostClipFitting": false,
+    "hostPixelOracle": false,
+    "productionChanged": false,
+    "completeGame": false,
+    "nativeEquivalent": false
+  },
+  "conclusion": "Both real GPU arms emit byte-identical1404-word gl_Position/UV buffers and1228800-word UV pixel buffers. The unchanged measured Native authored VS2 q4, through the actual current Y/halfpixel bridge, is therefore compatible with the current TF coordinates on this geometry. Replacing the coordinates under this declaration does not remove the327-word cross-API UV residual. This rules out this tested q4 substitution as a pixel repair; it does not measure original FFP clip or uniquely assign the cause to matrix multiplication, vertex generation, raster setup, clipping, perspective interpolation or the coordinate bridge.",
+  "textureConclusion": "The isolated output is UV itself; texture addressing/filtering cannot directly account for these327 UV-output words. The separate880 production-color residuals remain unresolved.",
+  "nextSingleExperiment": "Measure per-triangle ownership with the same78 TRIANGLES and unchanged Native authored q4/current GPU bridge: repeat an exact integer triangleId+1 in the UV attribute of each triangle’s three vertices, keeping all clip4/w/order/perspective inputs fixed. Actual Native and WebGL GPU outputs must be saved. Validate covered values lie within0.25 of one of1..78 before decoding; retain raw residuals. Compare complete ownership and especially the164 differing pixels. Ownership differences support edge/overdraw assignment involvement; complete ownership equality excludes this authored geometry’s triangle ownership as a cause and leaves within-triangle setup/interpolation/convention unresolved. This is a proposed unexecuted diagnostic, not a claim about original FFP.",
+  "sourceBindings": [
+    {
+      "path": "artifacts/th14/render-gap-next-oct15/inputs.json",
+      "bytes": 4157,
+      "sha256": "74364df0954bd25af763ef4da300996b284604ba7dd90c1f815a07ebc684654c"
+    },
+    {
+      "path": "artifacts/th14/render-gap-next-oct15/workspace-descriptor.json",
+      "bytes": 3106,
+      "sha256": "ac5d999ec9947c401716df831f257bd5c1a136dad0f7937fc5eeb86ac9266e51"
+    },
+    {
+      "path": "artifacts/th14/render-gap-next-oct15/run.mjs",
+      "bytes": 12358,
+      "sha256": "32b522072ab880fab40f28e42ad554101a7a4a863ca0b84e56a21e67dd149259"
+    },
+    {
+      "path": "artifacts/th14/render-gap-next-oct15/measured-production-vertex.glsl.txt",
+      "bytes": 1910,
+      "sha256": "50a6dd94a691aad09dad03249de3ee18f8deb79fc2d1665a87867abd09423103"
+    },
+    {
+      "path": "artifacts/th14/render-gap-next-oct15/current-tf.f32",
+      "bytes": 5616,
+      "sha256": "34f2aeca54896dc327c99e9dbb82d4eae4b44df87cafe7be21919ec2ef2b0a66"
+    },
+    {
+      "path": "artifacts/th14/render-gap-next-oct15/native-authored.f32",
+      "bytes": 5616,
+      "sha256": "90c7677d75f4bcdd8d8231fad2badf435a9df430633023809110d73f31fb94fb"
+    },
+    {
+      "path": "artifacts/th14/render-gap-next-oct15/capture/report.json",
+      "bytes": 160356,
+      "sha256": "fc4185b391ceb7565ed4fca41723b3e6ee0515fd4d7615e67058a4b481763f61"
+    },
+    {
+      "path": "artifacts/th14/render-gap-next-oct15/capture/a-tf.f32",
+      "bytes": 5616,
+      "sha256": "34f2aeca54896dc327c99e9dbb82d4eae4b44df87cafe7be21919ec2ef2b0a66"
+    },
+    {
+      "path": "artifacts/th14/render-gap-next-oct15/capture/b-tf.f32",
+      "bytes": 5616,
+      "sha256": "34f2aeca54896dc327c99e9dbb82d4eae4b44df87cafe7be21919ec2ef2b0a66"
+    },
+    {
+      "path": "artifacts/th14/render-gap-next-oct15/capture/a-pixels.rgba32f",
+      "bytes": 4915200,
+      "sha256": "5f4cf12dd953bd8ae849030d7446fa2133274e5057df99e2cc601139f01c8f7c"
+    },
+    {
+      "path": "artifacts/th14/render-gap-next-oct15/capture/b-pixels.rgba32f",
+      "bytes": 4915200,
+      "sha256": "5f4cf12dd953bd8ae849030d7446fa2133274e5057df99e2cc601139f01c8f7c"
+    },
+    {
+      "path": "artifacts/th14/stage-current-residual-native-uv-fe406-oct14/frame-000.rgba32f",
+      "bytes": 4915200,
+      "sha256": "694d88acb22e1fcae7565d26f8d868acff92be9fb45d84da71f8915725389d0b"
+    },
+    {
+      "path": "artifacts/th14/stage-production-clip-no-finite-guard-oct14/uv/capture/frame-003.rgba32f",
+      "bytes": 4915200,
+      "sha256": "5f4cf12dd953bd8ae849030d7446fa2133274e5057df99e2cc601139f01c8f7c"
+    }
+  ],
+  "checkerBinding": {
+    "path": "artifacts/th14/render-gap-next-oct15/check-observed.py",
+    "bytes": 8642,
+    "sha256": "e0122f61e312e8a66e19cbd56240d884090870b346466bd340876651a50cd1b8"
+  }
+}

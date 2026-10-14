@@ -10,8 +10,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 9947,
-      "sha256": "6e30c55a3387b136b4c92ae4d5bc30e1a0885c64e555e8587ee78eb2b4b96a63"
+      "bytes": 10275,
+      "sha256": "6c94551e6b25a50e5b3abf566757fc0ae9da57119b736f20169693a53b65adae"
     },
     {
       "path": "docs/ARCHITECTURE.md",
@@ -40,13 +40,18 @@
     },
     {
       "path": "docs/porting/CORE_STATUS.md",
-      "bytes": 395994,
-      "sha256": "34fe08a72b6f36affe0f2bf887bfb3a24b69c3e19f992d32cc39ddcf74d0ceb3"
+      "bytes": 396957,
+      "sha256": "d5b41082cdc3427623ee1cce5598b65cbe9826cca80a706abae2ec4822ceb5c8"
     },
     {
       "path": "docs/porting/TH06NC_FORMATS.md",
       "bytes": 2834,
       "sha256": "b5dd37c28b228114d1bf0fe1a3aaeb8fa1c3f109010d809baa575991ee203757"
+    },
+    {
+      "path": "docs/porting/TH14_LOCAL_QUIET_DEFAULT_OCT15.md",
+      "bytes": 2160,
+      "sha256": "90654932d6300e6d9afc59aaf06fab72bc53deae2df77968211297eef52fe75a"
     },
     {
       "path": "docs/porting/TH14_LOCAL_WORKSPACE_CURRENT_SERVER.md",
@@ -60,8 +65,8 @@
     },
     {
       "path": "docs/porting/TH14_SCREEN_CAMERA_FIX_OCT15.md",
-      "bytes": 2608,
-      "sha256": "a3d2fb2619a632549ca20133892adcfecca74934746776ea47a35c263eb454ad"
+      "bytes": 3244,
+      "sha256": "292f438b3124d3e35a5f7889f45e5fbee40bd704a2fce9780a23037597f0126d"
     },
     {
       "path": "docs/porting/TH14_STAGED_LOADER.md",
@@ -2174,6 +2179,11 @@
       "sha256": "02427cc5384558e06befb3afdaae93b44ddc05f0a7cf06c0dee615add2ca325e"
     },
     {
+      "path": "docs/porting/th14-local-quiet-default-observed-oct15.json",
+      "bytes": 5003,
+      "sha256": "1d479c2f7ee862e6155a37a31ce5e089e2bab4ec902dd278a96ebde0edf48eb2"
+    },
+    {
       "path": "docs/porting/th14-local-workspace-current-server-verified-oct14.json",
       "bytes": 2295,
       "sha256": "60ffe301b08a602d286906552011db79952ebccdcf58b0ec4cdb0c7a1f065828"
@@ -3359,6 +3369,11 @@
       "sha256": "f7c2c3991d3503b8854948adfd71f3fe46254e485a564bf118ee87499dd61269"
     },
     {
+      "path": "docs/porting/th14-render-gap-pass-through-observed-oct15.json",
+      "bytes": 5924,
+      "sha256": "f5a108f2cbe394a8094be495443c6224eaf85ff823b1002df98ee7408f5acf99"
+    },
+    {
       "path": "docs/porting/th14-render-setup-native-observed-oct11.json",
       "bytes": 14464,
       "sha256": "e809dc5162aa746f8709dd7f5d5e210ea9b2c0bda656de2c60109799c909b378"
@@ -3552,6 +3567,11 @@
       "path": "docs/porting/th14-screen-camera-production-build-observed-oct15.json",
       "bytes": 3773,
       "sha256": "4d26be9b14fbbf22279b3e8e7f3b5d56bf0c5557befc8b2198c80bfe833c3ee1"
+    },
+    {
+      "path": "docs/porting/th14-screen-camera-resolutions-observed-oct15.json",
+      "bytes": 18782,
+      "sha256": "c544bc2e3554ca90e652efbc79b553e950f06a2f2f13b269c31212c0613c265d"
     },
     {
       "path": "docs/porting/th14-screen-fade-verified.json",
@@ -15949,6 +15969,11 @@
       "sha256": "c9dce7fcce25fe73c1ecc0e7db96f8d9b3dced8ad2c900fcca3c13ad7b3773ca"
     },
     {
+      "path": "tools/th14-local-audio-policy.mjs",
+      "bytes": 3940,
+      "sha256": "25e76f56ebe37eca6a8edccb7202433010c15ed6632027bed5f274c0567b804e"
+    },
+    {
       "path": "tools/th14-local-quiet-audio.js",
       "bytes": 2853,
       "sha256": "216745e0d5459c0546e3fed01866092e67f40c383380dd47c5aafa5bac4a134c"
@@ -17219,6 +17244,11 @@
       "sha256": "5bc1b208f773272430ce09051ca6faab4427528e01db3788f8779596c82ed912"
     },
     {
+      "path": "tools/th14-screen-camera-resolutions-evidence-check-oct15.py",
+      "bytes": 18209,
+      "sha256": "4631b99837e25e1e8a7a312313444d2cb9f430bf826f8410b33f918dbb2c48ba"
+    },
+    {
       "path": "tools/th14-screen-fade-check.mjs",
       "bytes": 3272,
       "sha256": "dab66cd156e62b3b6ed2cf5b6df378f007aa95d41b46b8ceef569e5c9e5506cb"
@@ -17254,14 +17284,29 @@
       "sha256": "1770d709a980f567e6a6012b483421cebf8003afb4978071d66c1ae37b7773ca"
     },
     {
+      "path": "tools/th14-serve-launcher-v2.mjs",
+      "bytes": 1361,
+      "sha256": "25514db7a80fd4426296348695d573bb1db915a402cbbb1afa369437482cf6b8"
+    },
+    {
       "path": "tools/th14-serve-launcher.mjs",
       "bytes": 2343,
       "sha256": "2c1a4e9a90c85332ad13ec5fe5a42226adc7927ec52e7ef702e03687fcf1c728"
     },
     {
+      "path": "tools/th14-serve-package-v2.mjs",
+      "bytes": 1318,
+      "sha256": "20283a97270b8694da722a121bd97a6ac33eeff268fa805af7161def4efccc7a"
+    },
+    {
       "path": "tools/th14-serve-package.mjs",
       "bytes": 1870,
       "sha256": "0239be3d0c7a23371d2672eb5c50c27daf784f0740cc52dd0fc4dbf961bf19f2"
+    },
+    {
+      "path": "tools/th14-serve-v2.mjs",
+      "bytes": 2370,
+      "sha256": "eb7e5a0a87e5e04dc8ac2e952bf980ae67fac48693de900d86459bf03ba51f95"
     },
     {
       "path": "tools/th14-serve-workspace-current.mjs",
@@ -19167,6 +19212,11 @@
       "path": "tools/th14-staged-loader-wait-predicate-check.py",
       "bytes": 8638,
       "sha256": "718a32ecd8e5776d63345ad9b4231773c6e73fa8883bb401e627227e19038f39"
+    },
+    {
+      "path": "tools/th14-startup-camera-resolution-control.mjs",
+      "bytes": 14437,
+      "sha256": "a95994723d5e78ddb75a8dc870fe4d251df41206e54741d6cce2158dd476ab19"
     },
     {
       "path": "tools/th14-startup-camera-same-input-math-check.mjs",

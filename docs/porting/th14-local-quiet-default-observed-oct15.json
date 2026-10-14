@@ -1,0 +1,143 @@
+{
+  "handlerChecksPassed": true,
+  "results": [
+    {
+      "name": "launcher",
+      "htmlResponses": [
+        {
+          "url": "/about.html",
+          "originalBytes": 1102,
+          "quietBytes": 1153,
+          "quietBeforeFirstScript": true,
+          "headLengthVerified": true,
+          "explicitSoundOriginalBytes": true
+        },
+        {
+          "url": "/faq.html",
+          "originalBytes": 1722,
+          "quietBytes": 1773,
+          "quietBeforeFirstScript": true,
+          "headLengthVerified": true,
+          "explicitSoundOriginalBytes": true
+        },
+        {
+          "url": "/index.html",
+          "originalBytes": 73015,
+          "quietBytes": 73066,
+          "quietBeforeFirstScript": true,
+          "headLengthVerified": true,
+          "explicitSoundOriginalBytes": true
+        },
+        {
+          "url": "/migrate.html",
+          "originalBytes": 708,
+          "quietBytes": 759,
+          "quietBeforeFirstScript": true,
+          "headLengthVerified": true,
+          "explicitSoundOriginalBytes": true
+        },
+        {
+          "url": "/runtime/th14/th14.html",
+          "originalBytes": 506,
+          "quietBytes": 557,
+          "quietBeforeFirstScript": true,
+          "headLengthVerified": true,
+          "explicitSoundOriginalBytes": true
+        },
+        {
+          "url": "/",
+          "originalBytes": 73015,
+          "quietBytes": 73066,
+          "quietBeforeFirstScript": true,
+          "headLengthVerified": true,
+          "explicitSoundOriginalBytes": true
+        }
+      ],
+      "defaultQuiet": true,
+      "defaultPort": 8208,
+      "resourceCount": 129
+    },
+    {
+      "name": "integration",
+      "htmlResponses": [
+        {
+          "url": "/",
+          "originalBytes": 1178,
+          "quietBytes": 1229,
+          "quietBeforeFirstScript": true,
+          "headLengthVerified": true,
+          "explicitSoundOriginalBytes": true
+        }
+      ],
+      "defaultQuiet": true,
+      "defaultPort": 8208,
+      "resourceCount": 39
+    },
+    {
+      "name": "package",
+      "htmlResponses": [
+        {
+          "url": "/index.html",
+          "originalBytes": 1178,
+          "quietBytes": 1229,
+          "quietBeforeFirstScript": true,
+          "headLengthVerified": true,
+          "explicitSoundOriginalBytes": true
+        },
+        {
+          "url": "/",
+          "originalBytes": 1178,
+          "quietBytes": 1229,
+          "quietBeforeFirstScript": true,
+          "headLengthVerified": true,
+          "explicitSoundOriginalBytes": true
+        }
+      ],
+      "defaultQuiet": true,
+      "defaultPort": 8208,
+      "resourceCount": 40
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "tools/th14-local-audio-policy.mjs",
+      "bytes": 3940,
+      "sha256": "25e76f56ebe37eca6a8edccb7202433010c15ed6632027bed5f274c0567b804e"
+    },
+    {
+      "path": "tools/th14-serve-launcher-v2.mjs",
+      "bytes": 1361,
+      "sha256": "25514db7a80fd4426296348695d573bb1db915a402cbbb1afa369437482cf6b8"
+    },
+    {
+      "path": "tools/th14-serve-package-v2.mjs",
+      "bytes": 1318,
+      "sha256": "20283a97270b8694da722a121bd97a6ac33eeff268fa805af7161def4efccc7a"
+    },
+    {
+      "path": "tools/th14-serve-v2.mjs",
+      "bytes": 2370,
+      "sha256": "eb7e5a0a87e5e04dc8ac2e952bf980ae67fac48693de900d86459bf03ba51f95"
+    }
+  ],
+  "frozenSourcesUnchanged": {
+    "tools/th14-local-quiet-audio.js": "216745e0d5459c0546e3fed01866092e67f40c383380dd47c5aafa5bac4a134c",
+    "tools/th14-serve-launcher.mjs": "2c1a4e9a90c85332ad13ec5fe5a42226adc7927ec52e7ef702e03687fcf1c728",
+    "tools/th14-serve.mjs": "fef86db0e9f6caa1cd6d75cfbe5a4707a00832913538f3d03cc2aeda5b72cb9f",
+    "tools/th14-serve-package.mjs": "0239be3d0c7a23371d2672eb5c50c27daf784f0740cc52dd0fc4dbf961bf19f2",
+    "tools/th14-serve-workspace-current.mjs": "36accd68398804cb03803d2bc28d4f01d4d199633bba1536e32b6c33a5f07293",
+    "tools/th14-serve-workspace-diagnostics.mjs": "7f18a9cc7fc3be0516135a0cee23af70c64050394cfffd2ae35169fb06ae8a48"
+  },
+  "packageManifestSha256": "59f285d272d714e2148bd4ba3097f56213fa694f2dda08cdb21336d79a002931",
+  "packageServerSha256": "0239be3d0c7a23371d2672eb5c50c27daf784f0740cc52dd0fc4dbf961bf19f2",
+  "packageInventoryEntries": 39,
+  "actualHttpRequests": 0,
+  "listenerStarted": false,
+  "browserExecuted": false,
+  "audioDevicesOpened": 0,
+  "originalGameFilesWritten": 0,
+  "mixerChanged": false,
+  "securitySettingsChanged": false,
+  "systemVolumeChanged": false,
+  "scope": "Actual preview handlers invoked with recording responses. All mapped HTML responses checked for injection before the first script, exact HEAD length, explicit --sound original bytes, quiet endpoint, frozen-resource rejection and unchanged old inputs. Existing live8208 uses the previously browser-observed same frozen adapter; these new v2 servers are not newly browser/PCM tested. Package inventory is preserved, not exhaustively rehashed; no listener, game, sound device or system preference is changed."
+}

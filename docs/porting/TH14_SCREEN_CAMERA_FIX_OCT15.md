@@ -10,4 +10,6 @@ TH14 的 `SceneCamera::screen()` 已改用相机自身的 FOV，并把视口起�
 
 127 文件新版预览已在原 `http://localhost:8208/` 地址实际启动，显示标题及 Normal Demo Play。游戏 iframe 与外层页面均显示“本机测试静音”，捕获的警告／错误为零。初次沙箱服务不可达及错误标签页的失败如实保留，随后复用已授权的同一回环服务并新建测试标签页，原游戏页未刷新。按键后的图片仍显示 Demo，未据此认定普通新游戏菜单流程通过。[浏览器观察](th14-screen-camera-browser-observed-oct15.json)。
 
+随后新增 960×720、1280×960 两个分辨率对照。每组重新映射原 EXE 与固定 D3DX，仅输入配置字 16／20，真实执行 Supervisor 构造、尺寸计算和四相机重置；八次 D3DX 数学调用都完成原返回，矩阵有限，随机数区域未改变。生产 `SceneCamera::screen()` 的同输入比较各得到 52 个参数字、128 个矩阵字零差，共 104／256 字。此对照仍使用明确声明的 FPCW／MXCSR 与模拟执行环境，不证明这两个分辨率的浏览器画面、原生 CPU 或完整冷启动。[分辨率对照收据](th14-screen-camera-resolutions-observed-oct15.json)。
+
 此前加载生命周期、整局回放及像素记录保留原版本范围，不能自动继承为本次相机修正的整局通过。当前仍为 `completeGame=false`、`nativeEquivalent=false`。

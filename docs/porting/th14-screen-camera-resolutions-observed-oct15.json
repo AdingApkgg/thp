@@ -1,0 +1,504 @@
+{
+  "schema": "th14-screen-camera-resolution-observation-v1",
+  "evidenceVerified": true,
+  "comparisonPassed": true,
+  "originalEntryOrder": [
+    "0x101bc521",
+    "0x447a40",
+    "0x46ae40",
+    "0x4465e0"
+  ],
+  "originalThisOrder": [
+    "0x0",
+    "0x4d8f60",
+    "0x4f5a18",
+    "0x4d8f60"
+  ],
+  "declaredConfigurationAddress": "0x4f7a54",
+  "declaredFpuState": {
+    "fpcw": 895,
+    "mxcsr": 8064,
+    "nativeMeasured": false
+  },
+  "profiles": [
+    {
+      "label": "960",
+      "declaredConfigWord": 16,
+      "generatedDimensions": {
+        "width": 960,
+        "height": 720,
+        "scaleWord": 1069547520
+      },
+      "originalCodeHookObservations": 3309,
+      "phaseCodeHookObservations": [
+        93,
+        696,
+        41,
+        2479
+      ],
+      "originalMathCalls": 8,
+      "originalMathReturnsVerified": 8,
+      "originalMatricesFinite": true,
+      "originalRngMemoryUnchanged": true,
+      "originalRngWritesObserved": 0,
+      "cameraCount": 4,
+      "cameraInputWords": 32,
+      "comparedParameterWords": 52,
+      "comparedMatrixWords": 128,
+      "parameterDifferences": [],
+      "matrixDifferences": [],
+      "parameterDifferenceCount": 0,
+      "matrixDifferenceCount": 0,
+      "parameterBytes": 208,
+      "parameterSha256": "76b296207baa56688514b5ca0e568868f806e7a64ca30abcfba95cecf2ad8d6e",
+      "matrixBytes": 512,
+      "matrixSha256": "7748218416decf3b6457b7ebe56dfcf1288a5d5ac0108cb16355a1fac4bed820"
+    },
+    {
+      "label": "1280",
+      "declaredConfigWord": 20,
+      "generatedDimensions": {
+        "width": 1280,
+        "height": 960,
+        "scaleWord": 1073741824
+      },
+      "originalCodeHookObservations": 3304,
+      "phaseCodeHookObservations": [
+        93,
+        696,
+        36,
+        2479
+      ],
+      "originalMathCalls": 8,
+      "originalMathReturnsVerified": 8,
+      "originalMatricesFinite": true,
+      "originalRngMemoryUnchanged": true,
+      "originalRngWritesObserved": 0,
+      "cameraCount": 4,
+      "cameraInputWords": 32,
+      "comparedParameterWords": 52,
+      "comparedMatrixWords": 128,
+      "parameterDifferences": [],
+      "matrixDifferences": [],
+      "parameterDifferenceCount": 0,
+      "matrixDifferenceCount": 0,
+      "parameterBytes": 208,
+      "parameterSha256": "305b5f0bd3bb672f701ecdf5cdbebb64c545be8f0543aa8b6d5977f21a2a7976",
+      "matrixBytes": 512,
+      "matrixSha256": "0d287c42025bbace09b4652186f1c765f09d60b97d1ce2ccb555884f81a38941"
+    }
+  ],
+  "cameraCount": 8,
+  "comparedParameterWords": 104,
+  "comparedMatrixWords": 256,
+  "parameterWordMeaning": "Forwarded math call boundaries: Eye3,At3,Up3 and Perspective FOV/aspect/near/far4 per camera. These13 are distinct from original camera position/FOV/viewport/mode/offset metadata13.",
+  "sourceBindings": [
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/SceneCamera.cpp",
+      "bytes": 1803,
+      "sha256": "6fc589bd7c47f0757f22ebb33ee2d6647a5b53543c189d802b6781d6dbe3a391"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/SceneCamera.hpp",
+      "bytes": 639,
+      "sha256": "9424135e0548ea6de3194ea4ba773241f3bce66b38de64ca2d438ac6e8b7c6a0"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/AnmProjection.hpp",
+      "bytes": 579,
+      "sha256": "0f91867c9aaf6e232c4d74b83ea673c5ccb5626a96ca44018e8aa56ee7b768e7"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/AnmGeometry.hpp",
+      "bytes": 2150,
+      "sha256": "b6a1cea487717d15bbcc8e7788d055f9ab345bd18f4583c1d8024521cede3f3c"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/AnmVm.hpp",
+      "bytes": 8937,
+      "sha256": "c7e11045554dcc7cfbc3a6795335d3777e9e53d567248b5e106f04e6927b8791"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/AnmResource.hpp",
+      "bytes": 2838,
+      "sha256": "f2b35e13c4438c278f23d77f6cffc7e9cd30209dfd8386060052c20852765226"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/Types.hpp",
+      "bytes": 613,
+      "sha256": "f79c1ed7cb200413ef0dea75bf0d58842745b6b47182a97e496733c1d7bb2669"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/AnmTrace.hpp",
+      "bytes": 1617,
+      "sha256": "ab2505e016f7439d50a5e09c7f3cff53b57bc68f7b93f4bc0afb23bee1155e89"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/PortTitle.hpp",
+      "bytes": 741,
+      "sha256": "5531b9b0a2364098ec023e09eddbf66907c392fb58a24e1a84c5bf7a9a033d2f"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/Interpolation.hpp",
+      "bytes": 1204,
+      "sha256": "edbabf98f0aa2441bc725138d9fb6ff4908142998836ec3e3fc1c1f198e1d689"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/Timer.hpp",
+      "bytes": 1125,
+      "sha256": "e07169289db2407ce57c4191343ad6c9a5e3b2d543898439326520cfe1723ddb"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/Rng.hpp",
+      "bytes": 1127,
+      "sha256": "c53231677e6b5ef755d7385f5d3e224e2e353757eec7f1110424a8d4f0073a9a"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/GraphicsMath.hpp",
+      "bytes": 753,
+      "sha256": "cb76e5e81cc5d368bb75ecc4bf361858f62af4839289bc316702c078d5b4ad3c"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/FogInterpolation.hpp",
+      "bytes": 610,
+      "sha256": "42e4c9a0c2b89feee912ea71d7104c99097d401db340a990235d43b592129f24"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/GraphicsMath.cpp",
+      "bytes": 2830,
+      "sha256": "b159b3d617a522977c795351b5ff56338d5058b899ab984a590c8b50f8a9fd6e"
+    }
+  ],
+  "currentFrozenSourceByteIdentical": true,
+  "compilerFlags": [
+    "-O2",
+    "-ffp-contract=off",
+    "-DPORT_TITLE=14"
+  ],
+  "moduleAbi": {
+    "importCount": 0,
+    "exports": [
+      {
+        "name": "memory",
+        "kind": "memory"
+      },
+      {
+        "name": "_initialize",
+        "kind": "function"
+      },
+      {
+        "name": "input_buffer",
+        "kind": "function"
+      },
+      {
+        "name": "parameter_buffer",
+        "kind": "function"
+      },
+      {
+        "name": "matrix_buffer",
+        "kind": "function"
+      },
+      {
+        "name": "run_screen",
+        "kind": "function"
+      }
+    ]
+  },
+  "producerRecordedExecutionCounts": {
+    "originalProfiles": 2,
+    "portableCompiles": 1,
+    "portableWasiInstances": 1,
+    "portableScreenCalls": 8,
+    "portableMathCalls": 16
+  },
+  "reviewerExecutionCounts": {
+    "originalX86": 0,
+    "unicorn": 0,
+    "wasi": 0,
+    "compiler": 0,
+    "nativeProcesses": 0,
+    "browser": 0,
+    "audio": 0
+  },
+  "bindings": [
+    {
+      "path": "C:/Windows/SysWOW64/D3DX9_43.dll",
+      "bytes": 1998168,
+      "sha256": "0b28546be22c71834501f7d7185ede5d79742457331c7ee09efc14490dd64f5f"
+    },
+    {
+      "path": "H:/Games/th/14/th14.exe",
+      "bytes": 897536,
+      "sha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353"
+    },
+    {
+      "path": "artifacts/th14/callback-registry-static-review-oct14/camera-origin-disassembly.txt",
+      "bytes": 8787,
+      "sha256": "804b342c883918fa3dbcfac59893709e3e061859f0d40a3e69087e3c7a843f5c"
+    },
+    {
+      "path": "artifacts/th14/screen-camera-resolution-original-prepared-oct15/d3dx_image.py",
+      "bytes": 9534,
+      "sha256": "f3d24d183a34fb352eb4dbeda795b02ba30115d2280bc10549c4197c062bcbf4"
+    },
+    {
+      "path": "artifacts/th14/screen-camera-resolution-original-prepared-oct15/fixture.py",
+      "bytes": 23292,
+      "sha256": "accad932eefea4705cc0fd99ddcbb530c6c5a361c0c3bb1c8b16c9a1c7f0722c"
+    },
+    {
+      "path": "artifacts/th14/screen-camera-resolution-original-prepared-oct15/inputs.json",
+      "bytes": 7215,
+      "sha256": "f9eb51af4c10c30fe971ada1ab1da4a3ab08fb7aaba06820d150ec874637aab5"
+    },
+    {
+      "path": "artifacts/th14/screen-camera-resolution-original-prepared-oct15/plan.json",
+      "bytes": 3901,
+      "sha256": "c610fceed824b16550aca81f857480fcb2cf42d98e3b66811c7ee71a434113c1"
+    },
+    {
+      "path": "artifacts/th14/screen-camera-resolution-original-prepared-oct15/run-oct15/report.json",
+      "bytes": 2108417,
+      "sha256": "d79675d0d21bf0a856d3c217a9b426873d37b5177284f113d4474da735c5c580"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/fixture.cpp",
+      "bytes": 2632,
+      "sha256": "23cb8060c6320a06d5c4d933f99a2d8204d52ad4d00906c7426bf0f2425beaba"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/plan.json",
+      "bytes": 12137,
+      "sha256": "af34fb9714931850c3a92c7b21d786dce35b5db0a78703f61b274a7b6d068198"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/run-oct15/1280-matrices.u32",
+      "bytes": 512,
+      "sha256": "0d287c42025bbace09b4652186f1c765f09d60b97d1ce2ccb555884f81a38941"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/run-oct15/1280-parameters.u32",
+      "bytes": 208,
+      "sha256": "305b5f0bd3bb672f701ecdf5cdbebb64c545be8f0543aa8b6d5977f21a2a7976"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/run-oct15/960-matrices.u32",
+      "bytes": 512,
+      "sha256": "7748218416decf3b6457b7ebe56dfcf1288a5d5ac0108cb16355a1fac4bed820"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/run-oct15/960-parameters.u32",
+      "bytes": 208,
+      "sha256": "76b296207baa56688514b5ca0e568868f806e7a64ca30abcfba95cecf2ad8d6e"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/run-oct15/inputs.json",
+      "bytes": 7826,
+      "sha256": "b1bb80c1c44f923944de5fe78a221efa0ae84b1f4d24d2b8371c27ad22db15d8"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/run-oct15/report.json",
+      "bytes": 13589,
+      "sha256": "be6390edd235a7fe53c9d22f5099a06b8f3591b03d0b367b388064ed3d770b4b"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/run-oct15/screen.wasm",
+      "bytes": 24567,
+      "sha256": "2ff232b3f702aa3bec92ab971d4d598b6fd84615605e9297ed616a7b20f4e0ec"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/source/cpp/game/AnmGeometry.hpp",
+      "bytes": 2150,
+      "sha256": "b6a1cea487717d15bbcc8e7788d055f9ab345bd18f4583c1d8024521cede3f3c"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/source/cpp/game/AnmProjection.hpp",
+      "bytes": 579,
+      "sha256": "0f91867c9aaf6e232c4d74b83ea673c5ccb5626a96ca44018e8aa56ee7b768e7"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/source/cpp/game/AnmResource.hpp",
+      "bytes": 2838,
+      "sha256": "f2b35e13c4438c278f23d77f6cffc7e9cd30209dfd8386060052c20852765226"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/source/cpp/game/AnmTrace.hpp",
+      "bytes": 1617,
+      "sha256": "ab2505e016f7439d50a5e09c7f3cff53b57bc68f7b93f4bc0afb23bee1155e89"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/source/cpp/game/AnmVm.hpp",
+      "bytes": 8937,
+      "sha256": "c7e11045554dcc7cfbc3a6795335d3777e9e53d567248b5e106f04e6927b8791"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/source/cpp/game/FogInterpolation.hpp",
+      "bytes": 610,
+      "sha256": "42e4c9a0c2b89feee912ea71d7104c99097d401db340a990235d43b592129f24"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/source/cpp/game/GraphicsMath.cpp",
+      "bytes": 2830,
+      "sha256": "b159b3d617a522977c795351b5ff56338d5058b899ab984a590c8b50f8a9fd6e"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/source/cpp/game/GraphicsMath.hpp",
+      "bytes": 753,
+      "sha256": "cb76e5e81cc5d368bb75ecc4bf361858f62af4839289bc316702c078d5b4ad3c"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/source/cpp/game/Interpolation.hpp",
+      "bytes": 1204,
+      "sha256": "edbabf98f0aa2441bc725138d9fb6ff4908142998836ec3e3fc1c1f198e1d689"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/source/cpp/game/PortTitle.hpp",
+      "bytes": 741,
+      "sha256": "5531b9b0a2364098ec023e09eddbf66907c392fb58a24e1a84c5bf7a9a033d2f"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/source/cpp/game/Rng.hpp",
+      "bytes": 1127,
+      "sha256": "c53231677e6b5ef755d7385f5d3e224e2e353757eec7f1110424a8d4f0073a9a"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/source/cpp/game/SceneCamera.cpp",
+      "bytes": 1803,
+      "sha256": "6fc589bd7c47f0757f22ebb33ee2d6647a5b53543c189d802b6781d6dbe3a391"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/source/cpp/game/SceneCamera.hpp",
+      "bytes": 639,
+      "sha256": "9424135e0548ea6de3194ea4ba773241f3bce66b38de64ca2d438ac6e8b7c6a0"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/source/cpp/game/Timer.hpp",
+      "bytes": 1125,
+      "sha256": "e07169289db2407ce57c4191343ad6c9a5e3b2d543898439326520cfe1723ddb"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-resolution-control-prepared-oct15/source/cpp/game/Types.hpp",
+      "bytes": 613,
+      "sha256": "f79c1ed7cb200413ef0dea75bf0d58842745b6b47182a97e496733c1d7bb2669"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-screen-correction-prepared-oct14/fixture.cpp",
+      "bytes": 2632,
+      "sha256": "23cb8060c6320a06d5c4d933f99a2d8204d52ad4d00906c7426bf0f2425beaba"
+    },
+    {
+      "path": "artifacts/th14/startup-camera-screen-correction-prepared-oct14/plan.json",
+      "bytes": 23979,
+      "sha256": "c1dfc5d7206632ffff857e227eef72b3ccb7b43be611220922d9b70d9680eb7d"
+    },
+    {
+      "path": "artifacts/th14/startup-viewport-original-owner-prefix-prepared-oct14/fixture.py",
+      "bytes": 59547,
+      "sha256": "f16c2e11214065bf043d233efa6921dd588f6566e1e970e0529c8466832c115e"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/AnmGeometry.hpp",
+      "bytes": 2150,
+      "sha256": "b6a1cea487717d15bbcc8e7788d055f9ab345bd18f4583c1d8024521cede3f3c"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/AnmProjection.hpp",
+      "bytes": 579,
+      "sha256": "0f91867c9aaf6e232c4d74b83ea673c5ccb5626a96ca44018e8aa56ee7b768e7"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/AnmResource.hpp",
+      "bytes": 2838,
+      "sha256": "f2b35e13c4438c278f23d77f6cffc7e9cd30209dfd8386060052c20852765226"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/AnmTrace.hpp",
+      "bytes": 1617,
+      "sha256": "ab2505e016f7439d50a5e09c7f3cff53b57bc68f7b93f4bc0afb23bee1155e89"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/AnmVm.hpp",
+      "bytes": 8937,
+      "sha256": "c7e11045554dcc7cfbc3a6795335d3777e9e53d567248b5e106f04e6927b8791"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/FogInterpolation.hpp",
+      "bytes": 610,
+      "sha256": "42e4c9a0c2b89feee912ea71d7104c99097d401db340a990235d43b592129f24"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/GraphicsMath.cpp",
+      "bytes": 2830,
+      "sha256": "b159b3d617a522977c795351b5ff56338d5058b899ab984a590c8b50f8a9fd6e"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/GraphicsMath.hpp",
+      "bytes": 753,
+      "sha256": "cb76e5e81cc5d368bb75ecc4bf361858f62af4839289bc316702c078d5b4ad3c"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/Interpolation.hpp",
+      "bytes": 1204,
+      "sha256": "edbabf98f0aa2441bc725138d9fb6ff4908142998836ec3e3fc1c1f198e1d689"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/PortTitle.hpp",
+      "bytes": 741,
+      "sha256": "5531b9b0a2364098ec023e09eddbf66907c392fb58a24e1a84c5bf7a9a033d2f"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/Rng.hpp",
+      "bytes": 1127,
+      "sha256": "c53231677e6b5ef755d7385f5d3e224e2e353757eec7f1110424a8d4f0073a9a"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/SceneCamera.cpp",
+      "bytes": 1803,
+      "sha256": "6fc589bd7c47f0757f22ebb33ee2d6647a5b53543c189d802b6781d6dbe3a391"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/SceneCamera.hpp",
+      "bytes": 639,
+      "sha256": "9424135e0548ea6de3194ea4ba773241f3bce66b38de64ca2d438ac6e8b7c6a0"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/Timer.hpp",
+      "bytes": 1125,
+      "sha256": "e07169289db2407ce57c4191343ad6c9a5e3b2d543898439326520cfe1723ddb"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/Types.hpp",
+      "bytes": 613,
+      "sha256": "f79c1ed7cb200413ef0dea75bf0d58842745b6b47182a97e496733c1d7bb2669"
+    },
+    {
+      "path": "tools/th14-native-d3dx-declared-image-oct14.py",
+      "bytes": 9534,
+      "sha256": "f3d24d183a34fb352eb4dbeda795b02ba30115d2280bc10549c4197c062bcbf4"
+    },
+    {
+      "path": "tools/th14-screen-camera-resolutions-evidence-check-oct15.py",
+      "bytes": 18209,
+      "sha256": "4631b99837e25e1e8a7a312313444d2cb9f430bf826f8410b33f918dbb2c48ba"
+    },
+    {
+      "path": "tools/th14-startup-camera-resolution-control.mjs",
+      "bytes": 14437,
+      "sha256": "a95994723d5e78ddb75a8dc870fe4d251df41206e54741d6cce2158dd476ab19"
+    },
+    {
+      "path": "tools/wasi-sdk-34.0-x86_64-windows/bin/clang++.exe",
+      "bytes": 61012992,
+      "sha256": "945cba19ec5c002628bb7d226d21a443198e5da5d9e5430fd2f61b9f143d5309"
+    }
+  ],
+  "productionChanged": false,
+  "nativeCpuMeasured": false,
+  "nativeEquivalent": false,
+  "gpuPixelsVerified": false,
+  "allResolutionsVerified": false,
+  "allCameraModesVerified": false,
+  "completeColdStart": false,
+  "completeGame": false,
+  "scope": "Independent readonly bytes/hash/ABI and complete raw word comparisons of two already executed supported-resolution controls. Original PE/D3DX pure functions execute in Unicorn with declared configuration and FPCW037f/MXCSR1f80, pinned dispatch baseline and controlled frames; this is not a Native CPU/process/cold-start measurement. Current source-identical SceneCamera.screen and GraphicsMath were compiled once into a tiny forwarding-observer reactor and called for four cameras per profile in one WASI instance. Physical208-byte parameter and512-byte matrix outputs per profile were checked word-for-word against genuine original D3DX return records. No original/current fixture is reexecuted by this verifier. No640 verdict, production engine screen execution, Renderer/GPU pixels, UI at960/1280, arbitrary camera inputs, all modes/resolutions or whole-game1:1 is inherited or established."
+}
