@@ -25,6 +25,15 @@
 下列状态表、旧差异区间及 API 拆分是本轮合入前的冻结计划。其“当前未实施／未修改核心”措辞按历史上下文保留，不能读作现在的状态；诊断窗口仍不得成为等待常量。
 <!-- th14-staged-loader-current:end -->
 
+<!-- th14-staged-capture-browser-scope -->
+后续在同一核心上修正了启动器更新通知早于 state 初始化的问题，并重建启动器包。固定浏览器地址使用 `http://localhost:8208/`，音乐和音效默认静音；127.0.0.1 和其他端口属于不同存储来源，后续不混用。当前地址通过普通游戏菜单保存了新录像 A，完整刷新后仍可见；选择一面后完成 6 项资源上传并观察到自动返回列表。日志报告该录像 1,240 字节，未导出其字节或测量播放帧数，不能推断完整存储、全部模式或整作 1:1。历史初始化错误完整保留，新启动窗口无新增错误。[修复及回归](th14-launcher-state-initialization-verified-oct14.json)、[本次浏览器观察](th14-staged-capture-browser-post-statefix-observed-oct14.json)、[当前本机预览入口](TH14_LOCAL_WORKSPACE_CURRENT_SERVER.md)。
+
+<!-- th14-local-quiet-diagnostics-oct14 -->
+本机诊断沿用 `http://localhost:8208/` 并默认静音，固定清单入口只开放当前实验的有限读写路径，保留现有存档。实际 Color21／UV23 观察取得每模式 70 份 shader 转译字符串；44 个输出哈希与此前物理采样相同，颜色仍有 880 个通道差异，7 组原版完整 UV 缓冲仍有 5,292 个字差、覆盖差异 0。转译字符串不是最终 DXBC／硬件指令，不能据此认定运算融合或像素舍入原因。[实际 shader 观察](th14-stage-angle-shaders-observed-oct14.json)。
+
+实际音频混音器在私有无声接口中完成 15 组原版整数命令对照，整块／分块与队列／直接命令共 245,760 个比较字一致，未调用播放输出。12 组独立声像／音量规范控制中有 4 组浮点字差，最大绝对误差约 `2.98e-8`，失败结果保留；此处没有原版 DirectSound PCM 对照。[无声内存采样](th14-audio-offline-pcm-observed-oct14.json)。整作 `completeGame=false`、`nativeEquivalent=false` 继续保持。
+
+
 ## 历史记录 · 本轮前的冻结证据与计划
 
 2026-10-14，只读实施清单。当前正式SDL/浏览器检查点尚在冻结；未修改核心C++。新增 [差异映射](th14-staged-loader-current-gap-map-verified-oct14.json) 重算全部90793对raw32，并保留已独立核验的所有object差异；捕获语义和源码接点详见 [宿主边界审计](TH14_STAGED_LOADER_HOST_BOUNDARY.md)。

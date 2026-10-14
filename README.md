@@ -23,6 +23,15 @@
 最终正式 SDL 为 1,890,810 字节，SHA-256 `64b46da7c4aa1af2426d024c176e8c77b9ecae5a3da13a1eeea6c648ee82ca54`，146 源码／149 头文件绑定。本机预览固定 `8208`，HTML 使用独立静音适配；发布包音频逻辑不变。最终 64b46 模块的完整浏览器流程和持久化仍待验证，旧版短录像保存／播放证据保持历史版本，不能继承为本轮通过。[本机固定预览说明](docs/porting/TH14_WORKSPACE_SERVER.md)。全部自机／难度、普通原版完整流程、图像／音频、浏览器持久化与剩余加载差异继续验收；`completeGame=false`、`nativeEquivalent=false` 保持。
 <!-- th14-staged-loader-current:end -->
 
+<!-- th14-staged-capture-browser-scope -->
+后续在同一核心上修正了启动器更新通知早于 state 初始化的问题，并重建启动器包。固定浏览器地址使用 `http://localhost:8208/`，音乐和音效默认静音；127.0.0.1 和其他端口属于不同存储来源，后续不混用。当前地址通过普通游戏菜单保存了新录像 A，完整刷新后仍可见；选择一面后完成 6 项资源上传并观察到自动返回列表。日志报告该录像 1,240 字节，未导出其字节或测量播放帧数，不能推断完整存储、全部模式或整作 1:1。历史初始化错误完整保留，新启动窗口无新增错误。[修复及回归](docs/porting/th14-launcher-state-initialization-verified-oct14.json)、[本次浏览器观察](docs/porting/th14-staged-capture-browser-post-statefix-observed-oct14.json)、[当前本机预览入口](docs/porting/TH14_LOCAL_WORKSPACE_CURRENT_SERVER.md)。
+
+<!-- th14-local-quiet-diagnostics-oct14 -->
+本机诊断沿用 `http://localhost:8208/` 并默认静音，固定清单入口只开放当前实验的有限读写路径，保留现有存档。实际 Color21／UV23 观察取得每模式 70 份 shader 转译字符串；44 个输出哈希与此前物理采样相同，颜色仍有 880 个通道差异，7 组原版完整 UV 缓冲仍有 5,292 个字差、覆盖差异 0。转译字符串不是最终 DXBC／硬件指令，不能据此认定运算融合或像素舍入原因。[实际 shader 观察](docs/porting/th14-stage-angle-shaders-observed-oct14.json)。
+
+实际音频混音器在私有无声接口中完成 15 组原版整数命令对照，整块／分块与队列／直接命令共 245,760 个比较字一致，未调用播放输出。12 组独立声像／音量规范控制中有 4 组浮点字差，最大绝对误差约 `2.98e-8`，失败结果保留；此处没有原版 DirectSound PCM 对照。[无声内存采样](docs/porting/th14-audio-offline-pcm-observed-oct14.json)。整作 `completeGame=false`、`nativeEquivalent=false` 继续保持。
+
+
 把东方 Project 原作 **TH06nc / TH12 / TH13 / TH14 / TH16 / TH17 / TH18 / TH19** 按「源码重建」路线移植到网页端，目标为完整 1:1 还原；目前仍在施工，尚未完成整作验收。
 
 架构、协议和验收方法对齐 [touhou.vip](https://touhou.vip/)（[eagler-touhou](https://github.com/YomotsuHisami/eagler-touhou)）及其关联仓库。
