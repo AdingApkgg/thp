@@ -1,0 +1,121 @@
+{
+  "diagnosticOnly": true,
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "physicalInvocationOrder": true,
+  "loadingCallbacksIncluded": true,
+  "comparedCallbacks": 39458,
+  "rawWords": 1262656,
+  "stages": {
+    "7": 39458
+  },
+  "gameplayDifferences": 0,
+  "fieldDifferenceCounts": {
+    "visualSeed": 39458,
+    "visualCalls": 39458
+  },
+  "firstDifferences": {
+    "visualSeed": {
+      "index": 0,
+      "stage": 7,
+      "stageFrame": 1,
+      "field": "visualSeed",
+      "port": 14061,
+      "native": 51928
+    },
+    "visualCalls": {
+      "index": 0,
+      "stage": 7,
+      "stageFrame": 1,
+      "field": "visualCalls",
+      "port": 274,
+      "native": 1354
+    }
+  },
+  "remainingGameplayDifferencesCount": 0,
+  "firstRemainingGameplayDifferences": [],
+  "equalSelectedGameplayFields": [
+    "stageFrame",
+    "held",
+    "pressed",
+    "x",
+    "y",
+    "lifeState",
+    "stateAge",
+    "transitionAge",
+    "shootingAge",
+    "invincibility",
+    "shotAge",
+    "focused",
+    "score",
+    "graze",
+    "pointValue",
+    "power",
+    "lives",
+    "lifePieces",
+    "bombs",
+    "bombPieces",
+    "rank",
+    "gameplaySeed",
+    "gameplayCalls",
+    "enemyCount",
+    "shots",
+    "character",
+    "subtype",
+    "difficulty",
+    "stage",
+    "scaleFlags"
+  ],
+  "allRemainingGameplayDifferencesDuringInactiveLoading": true,
+  "nativeCaptureTimedOut": false,
+  "nativeElapsedSeconds": 697.779,
+  "nativeCaseInitialization": {
+    "address": "0x4f58b8",
+    "before": 64,
+    "after": 0,
+    "replayManagerMode": 1,
+    "afterReadOnlyBootstrap": true,
+    "beforeFirstPlayerInstruction": true,
+    "wordWrites": 1,
+    "originalInstructionAddress": "0x459bcf",
+    "originalInstructionHex": "8325b8584f00bf",
+    "scope": "One explicit warm Replay mode initialization matching the original AND flag effect; not ordinary menu/loader startup."
+  },
+  "candidatePlaybackEnded": true,
+  "allDifferences": {
+    "path": "artifacts/th14/public-replay-playback/zps-reimua-extra-hit-effects-oct14/continuous-retail-differences.json",
+    "bytes": 7467486,
+    "sha256": "61b5f50c7d86be033c87f65efea59a578ea7f78ada016acc82b33e212d03c2ed"
+  },
+  "sourceFilesVerified": 265,
+  "bindings": [
+    {
+      "path": "artifacts/th14/native-zps-reimua-extra-full-oct14/reference.json",
+      "bytes": 256402546,
+      "sha256": "b09526cfc903147b5a76e87df59e320cd2af2ceacbcece60b95ededd56c16655"
+    },
+    {
+      "path": "artifacts/th14/public-replay-playback/zps-reimua-extra-hit-effects-oct14/report.json",
+      "bytes": 39724,
+      "sha256": "a7fb3b15ae1b7d9f050a11e7da46089b2dcb6eeb3496c85ae4b5895cacf64d32"
+    },
+    {
+      "path": "artifacts/th14/public-replay-playback/zps-reimua-extra-hit-effects-oct14/selected-state.u32",
+      "bytes": 5050624,
+      "sha256": "e798415744087726d6bb8a7e57b8c579501e88e23f6cd03d32ace0a7779b27b9"
+    },
+    {
+      "path": "artifacts/th14/public-replay-playback/zps-reimua-extra-hit-effects-oct14/callback-active.u8",
+      "bytes": 39458,
+      "sha256": "babc23d0049007e620534d53040571af21d8fd5709e5e137d6622c52d3de6c5c"
+    },
+    {
+      "path": "artifacts/th14/public-replay-playback/zps-reimua-extra-hit-effects-oct14/public-replay.wasm",
+      "bytes": 1298133,
+      "sha256": "c53a63e70db14494b3495c5f0df8bbede3d486390ff2e6201838c1b21a342b1a"
+    }
+  ],
+  "verifierSha256": "dd5c90c5d07b3e06b8f4f08feba1a0194f9339c288601469024cf6cd8d095092",
+  "scope": "Every continuous original retail callback is paired in physical order with production, including inactive loading, stage-clock resets, repeated clocks and transition-boundary rows. No stage slicing, resynchronization, input/RNG fixes in the oracle, row removal or masking of gameplay differences. All raw32 differences retained with digest. One declared initial warm replay flag clear remains; this prefix does not certify ordinary menu startup, whole-game completion, object-owner memory, pixels/audio or storage."
+}

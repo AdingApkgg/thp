@@ -1,0 +1,1384 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "productionModified": false,
+  "sourceFilesVerified": 265,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "matchedFactoryControls": 14,
+  "cases": [
+    {
+      "name": "reimu-bomb-hit",
+      "resource": "effect.anm",
+      "script": 58,
+      "file": 8,
+      "nativeLayer": -1,
+      "beforeLayer": 0,
+      "site": "0x41411f",
+      "beforeLiveLayer": 20,
+      "nativeLiveLayer": 20,
+      "factoryArgumentDiffers": true,
+      "liveLayerDiffers": false
+    },
+    {
+      "name": "curve-graze",
+      "resource": "effect.anm",
+      "script": 24,
+      "file": 8,
+      "nativeLayer": -1,
+      "beforeLayer": 0,
+      "site": "0x4504a9",
+      "beforeLiveLayer": 0,
+      "nativeLiveLayer": 18,
+      "factoryArgumentDiffers": true,
+      "liveLayerDiffers": true
+    },
+    {
+      "name": "item-spawn-notice",
+      "resource": "effect.anm",
+      "script": 100,
+      "file": 8,
+      "nativeLayer": -1,
+      "beforeLayer": 0,
+      "site": "0x439b9a",
+      "beforeLiveLayer": 16,
+      "nativeLiveLayer": 16,
+      "factoryArgumentDiffers": true,
+      "liveLayerDiffers": false
+    },
+    {
+      "name": "player-death",
+      "resource": "effect.anm",
+      "script": 27,
+      "file": 8,
+      "nativeLayer": -1,
+      "beforeLayer": 0,
+      "site": "0x44f60d",
+      "beforeLiveLayer": 0,
+      "nativeLiveLayer": 18,
+      "factoryArgumentDiffers": true,
+      "liveLayerDiffers": true
+    },
+    {
+      "name": "player-hit",
+      "resource": "effect.anm",
+      "script": 28,
+      "file": 8,
+      "nativeLayer": -1,
+      "beforeLayer": 0,
+      "site": "0x44f7df",
+      "beforeLiveLayer": 0,
+      "nativeLiveLayer": 18,
+      "factoryArgumentDiffers": true,
+      "liveLayerDiffers": true
+    },
+    {
+      "name": "bullet-cancel",
+      "resource": "bullet.anm",
+      "script": 199,
+      "file": 7,
+      "nativeLayer": -1,
+      "beforeLayer": 0,
+      "site": "0x41acf9",
+      "beforeLiveLayer": 0,
+      "nativeLiveLayer": 21,
+      "factoryArgumentDiffers": true,
+      "liveLayerDiffers": true
+    },
+    {
+      "name": "player-focus-correct-control",
+      "resource": "effect.anm",
+      "script": 26,
+      "file": 8,
+      "nativeLayer": 14,
+      "beforeLayer": 14,
+      "site": "0x44d4ef",
+      "beforeLiveLayer": 14,
+      "nativeLiveLayer": 14,
+      "factoryArgumentDiffers": false,
+      "liveLayerDiffers": false
+    }
+  ],
+  "observations": [
+    {
+      "name": "bullet-cancel",
+      "argument": "beforeLayer",
+      "requestedLayer": 0,
+      "rootLayer": 0,
+      "visualCalls": 2,
+      "rootScript": 199,
+      "children": []
+    },
+    {
+      "name": "bullet-cancel",
+      "argument": "nativeLayer",
+      "requestedLayer": -1,
+      "rootLayer": 21,
+      "visualCalls": 2,
+      "rootScript": 199,
+      "children": []
+    },
+    {
+      "name": "curve-graze",
+      "argument": "beforeLayer",
+      "requestedLayer": 0,
+      "rootLayer": 0,
+      "visualCalls": 4,
+      "rootScript": 24,
+      "children": []
+    },
+    {
+      "name": "curve-graze",
+      "argument": "nativeLayer",
+      "requestedLayer": -1,
+      "rootLayer": 18,
+      "visualCalls": 4,
+      "rootScript": 24,
+      "children": []
+    },
+    {
+      "name": "item-spawn-notice",
+      "argument": "beforeLayer",
+      "requestedLayer": 0,
+      "rootLayer": 16,
+      "visualCalls": 0,
+      "rootScript": 100,
+      "children": []
+    },
+    {
+      "name": "item-spawn-notice",
+      "argument": "nativeLayer",
+      "requestedLayer": -1,
+      "rootLayer": 16,
+      "visualCalls": 0,
+      "rootScript": 100,
+      "children": []
+    },
+    {
+      "name": "player-death",
+      "argument": "beforeLayer",
+      "requestedLayer": 0,
+      "rootLayer": 0,
+      "visualCalls": 48,
+      "rootScript": 27,
+      "children": [
+        {
+          "script": 31,
+          "layer": 21
+        },
+        {
+          "script": 32,
+          "layer": 21
+        },
+        {
+          "script": 29,
+          "layer": 0
+        },
+        {
+          "script": 29,
+          "layer": 0
+        },
+        {
+          "script": 29,
+          "layer": 0
+        },
+        {
+          "script": 29,
+          "layer": 0
+        },
+        {
+          "script": 29,
+          "layer": 0
+        },
+        {
+          "script": 29,
+          "layer": 0
+        }
+      ]
+    },
+    {
+      "name": "player-death",
+      "argument": "nativeLayer",
+      "requestedLayer": -1,
+      "rootLayer": 18,
+      "visualCalls": 48,
+      "rootScript": 27,
+      "children": [
+        {
+          "script": 31,
+          "layer": 21
+        },
+        {
+          "script": 32,
+          "layer": 21
+        },
+        {
+          "script": 29,
+          "layer": 18
+        },
+        {
+          "script": 29,
+          "layer": 18
+        },
+        {
+          "script": 29,
+          "layer": 18
+        },
+        {
+          "script": 29,
+          "layer": 18
+        },
+        {
+          "script": 29,
+          "layer": 18
+        },
+        {
+          "script": 29,
+          "layer": 18
+        }
+      ]
+    },
+    {
+      "name": "player-focus-correct-control",
+      "argument": "beforeLayer",
+      "requestedLayer": 14,
+      "rootLayer": 14,
+      "visualCalls": 0,
+      "rootScript": 26,
+      "children": [
+        {
+          "script": 25,
+          "layer": 18
+        }
+      ]
+    },
+    {
+      "name": "player-focus-correct-control",
+      "argument": "nativeLayer",
+      "requestedLayer": 14,
+      "rootLayer": 14,
+      "visualCalls": 0,
+      "rootScript": 26,
+      "children": [
+        {
+          "script": 25,
+          "layer": 18
+        }
+      ]
+    },
+    {
+      "name": "player-hit",
+      "argument": "beforeLayer",
+      "requestedLayer": 0,
+      "rootLayer": 0,
+      "visualCalls": 24,
+      "rootScript": 28,
+      "children": [
+        {
+          "script": 29,
+          "layer": 18
+        },
+        {
+          "script": 29,
+          "layer": 18
+        },
+        {
+          "script": 30,
+          "layer": 18
+        }
+      ]
+    },
+    {
+      "name": "player-hit",
+      "argument": "nativeLayer",
+      "requestedLayer": -1,
+      "rootLayer": 18,
+      "visualCalls": 24,
+      "rootScript": 28,
+      "children": [
+        {
+          "script": 29,
+          "layer": 18
+        },
+        {
+          "script": 29,
+          "layer": 18
+        },
+        {
+          "script": 30,
+          "layer": 18
+        }
+      ]
+    },
+    {
+      "name": "reimu-bomb-hit",
+      "argument": "beforeLayer",
+      "requestedLayer": 0,
+      "rootLayer": 20,
+      "visualCalls": 128,
+      "rootScript": 58,
+      "children": [
+        {
+          "script": 145,
+          "layer": 20
+        },
+        {
+          "script": 143,
+          "layer": 21
+        },
+        {
+          "script": 42,
+          "layer": 20
+        },
+        {
+          "script": 42,
+          "layer": 20
+        },
+        {
+          "script": 42,
+          "layer": 20
+        },
+        {
+          "script": 42,
+          "layer": 20
+        },
+        {
+          "script": 42,
+          "layer": 20
+        },
+        {
+          "script": 41,
+          "layer": 20
+        },
+        {
+          "script": 41,
+          "layer": 20
+        }
+      ]
+    },
+    {
+      "name": "reimu-bomb-hit",
+      "argument": "nativeLayer",
+      "requestedLayer": -1,
+      "rootLayer": 20,
+      "visualCalls": 128,
+      "rootScript": 58,
+      "children": [
+        {
+          "script": 145,
+          "layer": 20
+        },
+        {
+          "script": 143,
+          "layer": 21
+        },
+        {
+          "script": 42,
+          "layer": 20
+        },
+        {
+          "script": 42,
+          "layer": 20
+        },
+        {
+          "script": 42,
+          "layer": 20
+        },
+        {
+          "script": 42,
+          "layer": 20
+        },
+        {
+          "script": 42,
+          "layer": 20
+        },
+        {
+          "script": 41,
+          "layer": 20
+        },
+        {
+          "script": 41,
+          "layer": 20
+        }
+      ]
+    }
+  ],
+  "nativeFactoryInstructions": {
+    "reimuBombHit": [
+      {
+        "address": "0x4140a5",
+        "bytes": "6a00",
+        "mnemonic": "push",
+        "operands": "0"
+      },
+      {
+        "address": "0x4140a7",
+        "bytes": "6a00",
+        "mnemonic": "push",
+        "operands": "0"
+      },
+      {
+        "address": "0x4140a9",
+        "bytes": "6aff",
+        "mnemonic": "push",
+        "operands": "-1"
+      },
+      {
+        "address": "0x4140ab",
+        "bytes": "f30f11442430",
+        "mnemonic": "movss",
+        "operands": "dword ptr [esp + 0x30], xmm0"
+      },
+      {
+        "address": "0x4140b1",
+        "bytes": "f30f104604",
+        "mnemonic": "movss",
+        "operands": "xmm0, dword ptr [esi + 4]"
+      },
+      {
+        "address": "0x4140b6",
+        "bytes": "f30f58442434",
+        "mnemonic": "addss",
+        "operands": "xmm0, dword ptr [esp + 0x34]"
+      },
+      {
+        "address": "0x4140bc",
+        "bytes": "f30f11442434",
+        "mnemonic": "movss",
+        "operands": "dword ptr [esp + 0x34], xmm0"
+      },
+      {
+        "address": "0x4140c2",
+        "bytes": "f30f104608",
+        "mnemonic": "movss",
+        "operands": "xmm0, dword ptr [esi + 8]"
+      },
+      {
+        "address": "0x4140c7",
+        "bytes": "f30f58442438",
+        "mnemonic": "addss",
+        "operands": "xmm0, dword ptr [esp + 0x38]"
+      },
+      {
+        "address": "0x4140cd",
+        "bytes": "f30f11442438",
+        "mnemonic": "movss",
+        "operands": "dword ptr [esp + 0x38], xmm0"
+      },
+      {
+        "address": "0x4140d3",
+        "bytes": "f30f1044241c",
+        "mnemonic": "movss",
+        "operands": "xmm0, dword ptr [esp + 0x1c]"
+      },
+      {
+        "address": "0x4140d9",
+        "bytes": "0f5ac0",
+        "mnemonic": "cvtps2pd",
+        "operands": "xmm0, xmm0"
+      },
+      {
+        "address": "0x4140dc",
+        "bytes": "f20f1144241c",
+        "mnemonic": "movsd",
+        "operands": "qword ptr [esp + 0x1c], xmm0"
+      },
+      {
+        "address": "0x4140e2",
+        "bytes": "f30f10442424",
+        "mnemonic": "movss",
+        "operands": "xmm0, dword ptr [esp + 0x24]"
+      },
+      {
+        "address": "0x4140e8",
+        "bytes": "dd44241c",
+        "mnemonic": "fld",
+        "operands": "qword ptr [esp + 0x1c]"
+      },
+      {
+        "address": "0x4140ec",
+        "bytes": "0f5ac0",
+        "mnemonic": "cvtps2pd",
+        "operands": "xmm0, xmm0"
+      },
+      {
+        "address": "0x4140ef",
+        "bytes": "f20f11442424",
+        "mnemonic": "movsd",
+        "operands": "qword ptr [esp + 0x24], xmm0"
+      },
+      {
+        "address": "0x4140f5",
+        "bytes": "dd442424",
+        "mnemonic": "fld",
+        "operands": "qword ptr [esp + 0x24]"
+      },
+      {
+        "address": "0x4140f9",
+        "bytes": "e83c340900",
+        "mnemonic": "call",
+        "operands": "0x4a753a"
+      },
+      {
+        "address": "0x4140fe",
+        "bytes": "d95c2424",
+        "mnemonic": "fstp",
+        "operands": "dword ptr [esp + 0x24]"
+      },
+      {
+        "address": "0x414102",
+        "bytes": "d9442424",
+        "mnemonic": "fld",
+        "operands": "dword ptr [esp + 0x24]"
+      },
+      {
+        "address": "0x414106",
+        "bytes": "8d442430",
+        "mnemonic": "lea",
+        "operands": "eax, [esp + 0x30]"
+      },
+      {
+        "address": "0x41410a",
+        "bytes": "51",
+        "mnemonic": "push",
+        "operands": "ecx"
+      },
+      {
+        "address": "0x41410b",
+        "bytes": "8b0d3cb54d00",
+        "mnemonic": "mov",
+        "operands": "ecx, dword ptr [0x4db53c]"
+      },
+      {
+        "address": "0x414111",
+        "bytes": "d91c24",
+        "mnemonic": "fstp",
+        "operands": "dword ptr [esp]"
+      },
+      {
+        "address": "0x414114",
+        "bytes": "50",
+        "mnemonic": "push",
+        "operands": "eax"
+      },
+      {
+        "address": "0x414115",
+        "bytes": "8b4910",
+        "mnemonic": "mov",
+        "operands": "ecx, dword ptr [ecx + 0x10]"
+      },
+      {
+        "address": "0x414118",
+        "bytes": "6a3a",
+        "mnemonic": "push",
+        "operands": "0x3a"
+      },
+      {
+        "address": "0x41411a",
+        "bytes": "8d442430",
+        "mnemonic": "lea",
+        "operands": "eax, [esp + 0x30]"
+      },
+      {
+        "address": "0x41411e",
+        "bytes": "50",
+        "mnemonic": "push",
+        "operands": "eax"
+      },
+      {
+        "address": "0x41411f",
+        "bytes": "e8ecab0600",
+        "mnemonic": "call",
+        "operands": "0x47ed10"
+      }
+    ],
+    "graze": [
+      {
+        "address": "0x450469",
+        "bytes": "6a00",
+        "mnemonic": "push",
+        "operands": "0"
+      },
+      {
+        "address": "0x45046b",
+        "bytes": "6aff",
+        "mnemonic": "push",
+        "operands": "-1"
+      },
+      {
+        "address": "0x45046d",
+        "bytes": "51",
+        "mnemonic": "push",
+        "operands": "ecx"
+      },
+      {
+        "address": "0x45046e",
+        "bytes": "f30f5915b0194c00",
+        "mnemonic": "mulss",
+        "operands": "xmm2, dword ptr [0x4c19b0]"
+      },
+      {
+        "address": "0x450476",
+        "bytes": "f30f590db0194c00",
+        "mnemonic": "mulss",
+        "operands": "xmm1, dword ptr [0x4c19b0]"
+      },
+      {
+        "address": "0x45047e",
+        "bytes": "8b0d3cb54d00",
+        "mnemonic": "mov",
+        "operands": "ecx, dword ptr [0x4db53c]"
+      },
+      {
+        "address": "0x450484",
+        "bytes": "c7042400000000",
+        "mnemonic": "mov",
+        "operands": "dword ptr [esp], 0"
+      },
+      {
+        "address": "0x45048b",
+        "bytes": "8b4910",
+        "mnemonic": "mov",
+        "operands": "ecx, dword ptr [ecx + 0x10]"
+      },
+      {
+        "address": "0x45048e",
+        "bytes": "8d45f0",
+        "mnemonic": "lea",
+        "operands": "eax, [ebp - 0x10]"
+      },
+      {
+        "address": "0x450491",
+        "bytes": "50",
+        "mnemonic": "push",
+        "operands": "eax"
+      },
+      {
+        "address": "0x450492",
+        "bytes": "6a18",
+        "mnemonic": "push",
+        "operands": "0x18"
+      },
+      {
+        "address": "0x450494",
+        "bytes": "8d4508",
+        "mnemonic": "lea",
+        "operands": "eax, [ebp + 8]"
+      },
+      {
+        "address": "0x450497",
+        "bytes": "50",
+        "mnemonic": "push",
+        "operands": "eax"
+      },
+      {
+        "address": "0x450498",
+        "bytes": "f30f1155f0",
+        "mnemonic": "movss",
+        "operands": "dword ptr [ebp - 0x10], xmm2"
+      },
+      {
+        "address": "0x45049d",
+        "bytes": "f30f114df4",
+        "mnemonic": "movss",
+        "operands": "dword ptr [ebp - 0xc], xmm1"
+      },
+      {
+        "address": "0x4504a2",
+        "bytes": "c745f800000000",
+        "mnemonic": "mov",
+        "operands": "dword ptr [ebp - 8], 0"
+      },
+      {
+        "address": "0x4504a9",
+        "bytes": "e862e80200",
+        "mnemonic": "call",
+        "operands": "0x47ed10"
+      }
+    ],
+    "itemNotice": [
+      {
+        "address": "0x439b76",
+        "bytes": "6a00",
+        "mnemonic": "push",
+        "operands": "0"
+      },
+      {
+        "address": "0x439b78",
+        "bytes": "6a00",
+        "mnemonic": "push",
+        "operands": "0"
+      },
+      {
+        "address": "0x439b7a",
+        "bytes": "6aff",
+        "mnemonic": "push",
+        "operands": "-1"
+      },
+      {
+        "address": "0x439b7c",
+        "bytes": "51",
+        "mnemonic": "push",
+        "operands": "ecx"
+      },
+      {
+        "address": "0x439b7d",
+        "bytes": "8b0d3cb54d00",
+        "mnemonic": "mov",
+        "operands": "ecx, dword ptr [0x4db53c]"
+      },
+      {
+        "address": "0x439b83",
+        "bytes": "c7042400000000",
+        "mnemonic": "mov",
+        "operands": "dword ptr [esp], 0"
+      },
+      {
+        "address": "0x439b8a",
+        "bytes": "8b4910",
+        "mnemonic": "mov",
+        "operands": "ecx, dword ptr [ecx + 0x10]"
+      },
+      {
+        "address": "0x439b8d",
+        "bytes": "8d86ac0b0000",
+        "mnemonic": "lea",
+        "operands": "eax, [esi + 0xbac]"
+      },
+      {
+        "address": "0x439b93",
+        "bytes": "50",
+        "mnemonic": "push",
+        "operands": "eax"
+      },
+      {
+        "address": "0x439b94",
+        "bytes": "6a64",
+        "mnemonic": "push",
+        "operands": "0x64"
+      },
+      {
+        "address": "0x439b96",
+        "bytes": "8d45fc",
+        "mnemonic": "lea",
+        "operands": "eax, [ebp - 4]"
+      },
+      {
+        "address": "0x439b99",
+        "bytes": "50",
+        "mnemonic": "push",
+        "operands": "eax"
+      },
+      {
+        "address": "0x439b9a",
+        "bytes": "e871510400",
+        "mnemonic": "call",
+        "operands": "0x47ed10"
+      }
+    ],
+    "death": [
+      {
+        "address": "0x44f5e7",
+        "bytes": "6a00",
+        "mnemonic": "push",
+        "operands": "0"
+      },
+      {
+        "address": "0x44f5e9",
+        "bytes": "6a00",
+        "mnemonic": "push",
+        "operands": "0"
+      },
+      {
+        "address": "0x44f5eb",
+        "bytes": "6aff",
+        "mnemonic": "push",
+        "operands": "-1"
+      },
+      {
+        "address": "0x44f5ed",
+        "bytes": "51",
+        "mnemonic": "push",
+        "operands": "ecx"
+      },
+      {
+        "address": "0x44f5ee",
+        "bytes": "8bf9",
+        "mnemonic": "mov",
+        "operands": "edi, ecx"
+      },
+      {
+        "address": "0x44f5f0",
+        "bytes": "8b0d3cb54d00",
+        "mnemonic": "mov",
+        "operands": "ecx, dword ptr [0x4db53c]"
+      },
+      {
+        "address": "0x44f5f6",
+        "bytes": "c7042400000000",
+        "mnemonic": "mov",
+        "operands": "dword ptr [esp], 0"
+      },
+      {
+        "address": "0x44f5fd",
+        "bytes": "8b4910",
+        "mnemonic": "mov",
+        "operands": "ecx, dword ptr [ecx + 0x10]"
+      },
+      {
+        "address": "0x44f600",
+        "bytes": "8d87e0050000",
+        "mnemonic": "lea",
+        "operands": "eax, [edi + 0x5e0]"
+      },
+      {
+        "address": "0x44f606",
+        "bytes": "50",
+        "mnemonic": "push",
+        "operands": "eax"
+      },
+      {
+        "address": "0x44f607",
+        "bytes": "6a1b",
+        "mnemonic": "push",
+        "operands": "0x1b"
+      },
+      {
+        "address": "0x44f609",
+        "bytes": "8d45fc",
+        "mnemonic": "lea",
+        "operands": "eax, [ebp - 4]"
+      },
+      {
+        "address": "0x44f60c",
+        "bytes": "50",
+        "mnemonic": "push",
+        "operands": "eax"
+      },
+      {
+        "address": "0x44f60d",
+        "bytes": "e8fef60200",
+        "mnemonic": "call",
+        "operands": "0x47ed10"
+      }
+    ],
+    "hit": [
+      {
+        "address": "0x44f7bb",
+        "bytes": "6a00",
+        "mnemonic": "push",
+        "operands": "0"
+      },
+      {
+        "address": "0x44f7bd",
+        "bytes": "6a00",
+        "mnemonic": "push",
+        "operands": "0"
+      },
+      {
+        "address": "0x44f7bf",
+        "bytes": "6aff",
+        "mnemonic": "push",
+        "operands": "-1"
+      },
+      {
+        "address": "0x44f7c1",
+        "bytes": "51",
+        "mnemonic": "push",
+        "operands": "ecx"
+      },
+      {
+        "address": "0x44f7c2",
+        "bytes": "8b0d3cb54d00",
+        "mnemonic": "mov",
+        "operands": "ecx, dword ptr [0x4db53c]"
+      },
+      {
+        "address": "0x44f7c8",
+        "bytes": "c7042400000000",
+        "mnemonic": "mov",
+        "operands": "dword ptr [esp], 0"
+      },
+      {
+        "address": "0x44f7cf",
+        "bytes": "8b4910",
+        "mnemonic": "mov",
+        "operands": "ecx, dword ptr [ecx + 0x10]"
+      },
+      {
+        "address": "0x44f7d2",
+        "bytes": "8d87e0050000",
+        "mnemonic": "lea",
+        "operands": "eax, [edi + 0x5e0]"
+      },
+      {
+        "address": "0x44f7d8",
+        "bytes": "50",
+        "mnemonic": "push",
+        "operands": "eax"
+      },
+      {
+        "address": "0x44f7d9",
+        "bytes": "6a1c",
+        "mnemonic": "push",
+        "operands": "0x1c"
+      },
+      {
+        "address": "0x44f7db",
+        "bytes": "8d45fc",
+        "mnemonic": "lea",
+        "operands": "eax, [ebp - 4]"
+      },
+      {
+        "address": "0x44f7de",
+        "bytes": "50",
+        "mnemonic": "push",
+        "operands": "eax"
+      },
+      {
+        "address": "0x44f7df",
+        "bytes": "e82cf50200",
+        "mnemonic": "call",
+        "operands": "0x47ed10"
+      }
+    ],
+    "bulletCancellation": [
+      {
+        "address": "0x41acd3",
+        "bytes": "6a00",
+        "mnemonic": "push",
+        "operands": "0"
+      },
+      {
+        "address": "0x41acd5",
+        "bytes": "6a00",
+        "mnemonic": "push",
+        "operands": "0"
+      },
+      {
+        "address": "0x41acd7",
+        "bytes": "6aff",
+        "mnemonic": "push",
+        "operands": "-1"
+      },
+      {
+        "address": "0x41acd9",
+        "bytes": "51",
+        "mnemonic": "push",
+        "operands": "ecx"
+      },
+      {
+        "address": "0x41acda",
+        "bytes": "8d87c00b0000",
+        "mnemonic": "lea",
+        "operands": "eax, [edi + 0xbc0]"
+      },
+      {
+        "address": "0x41ace0",
+        "bytes": "c7042400000000",
+        "mnemonic": "mov",
+        "operands": "dword ptr [esp], 0"
+      },
+      {
+        "address": "0x41ace7",
+        "bytes": "50",
+        "mnemonic": "push",
+        "operands": "eax"
+      },
+      {
+        "address": "0x41ace8",
+        "bytes": "51",
+        "mnemonic": "push",
+        "operands": "ecx"
+      },
+      {
+        "address": "0x41ace9",
+        "bytes": "8b0d30b54d00",
+        "mnemonic": "mov",
+        "operands": "ecx, dword ptr [0x4db530]"
+      },
+      {
+        "address": "0x41acef",
+        "bytes": "8d45fc",
+        "mnemonic": "lea",
+        "operands": "eax, [ebp - 4]"
+      },
+      {
+        "address": "0x41acf2",
+        "bytes": "8b89ccf69b00",
+        "mnemonic": "mov",
+        "operands": "ecx, dword ptr [ecx + 0x9bf6cc]"
+      },
+      {
+        "address": "0x41acf8",
+        "bytes": "50",
+        "mnemonic": "push",
+        "operands": "eax"
+      },
+      {
+        "address": "0x41acf9",
+        "bytes": "e812400600",
+        "mnemonic": "call",
+        "operands": "0x47ed10"
+      }
+    ],
+    "bulletResourceLoader": [
+      {
+        "address": "0x416110",
+        "bytes": "57",
+        "mnemonic": "push",
+        "operands": "edi"
+      },
+      {
+        "address": "0x416111",
+        "bytes": "689cd84b00",
+        "mnemonic": "push",
+        "operands": "0x4bd89c"
+      },
+      {
+        "address": "0x416116",
+        "bytes": "6a07",
+        "mnemonic": "push",
+        "operands": "7"
+      },
+      {
+        "address": "0x416118",
+        "bytes": "8bf9",
+        "mnemonic": "mov",
+        "operands": "edi, ecx"
+      },
+      {
+        "address": "0x41611a",
+        "bytes": "e8716f0600",
+        "mnemonic": "call",
+        "operands": "0x47d090"
+      },
+      {
+        "address": "0x41611f",
+        "bytes": "8987ccf69b00",
+        "mnemonic": "mov",
+        "operands": "dword ptr [edi + 0x9bf6cc], eax"
+      }
+    ],
+    "focusControl": [
+      {
+        "address": "0x44d48c",
+        "bytes": "e81f280300",
+        "mnemonic": "call",
+        "operands": "0x47fcb0"
+      },
+      {
+        "address": "0x44d491",
+        "bytes": "8bf0",
+        "mnemonic": "mov",
+        "operands": "esi, eax"
+      },
+      {
+        "address": "0x44d493",
+        "bytes": "6a1a",
+        "mnemonic": "push",
+        "operands": "0x1a"
+      },
+      {
+        "address": "0x44d495",
+        "bytes": "56",
+        "mnemonic": "push",
+        "operands": "esi"
+      },
+      {
+        "address": "0x44d496",
+        "bytes": "8bcb",
+        "mnemonic": "mov",
+        "operands": "ecx, ebx"
+      },
+      {
+        "address": "0x44d498",
+        "bytes": "e863dafbff",
+        "mnemonic": "call",
+        "operands": "0x40af00"
+      },
+      {
+        "address": "0x44d49d",
+        "bytes": "8b4e1c",
+        "mnemonic": "mov",
+        "operands": "ecx, dword ptr [esi + 0x1c]"
+      },
+      {
+        "address": "0x44d4a0",
+        "bytes": "81e1fffffbff",
+        "mnemonic": "and",
+        "operands": "ecx, 0xfffbffff"
+      },
+      {
+        "address": "0x44d4a6",
+        "bytes": "81c900020200",
+        "mnemonic": "or",
+        "operands": "ecx, 0x20200"
+      },
+      {
+        "address": "0x44d4ac",
+        "bytes": "c744241c00000000",
+        "mnemonic": "mov",
+        "operands": "dword ptr [esp + 0x1c], 0"
+      },
+      {
+        "address": "0x44d4b4",
+        "bytes": "c744242000000000",
+        "mnemonic": "mov",
+        "operands": "dword ptr [esp + 0x20], 0"
+      },
+      {
+        "address": "0x44d4bc",
+        "bytes": "f30f7e44241c",
+        "mnemonic": "movq",
+        "operands": "xmm0, qword ptr [esp + 0x1c]"
+      },
+      {
+        "address": "0x44d4c2",
+        "bytes": "894e1c",
+        "mnemonic": "mov",
+        "operands": "dword ptr [esi + 0x1c], ecx"
+      },
+      {
+        "address": "0x44d4c5",
+        "bytes": "c744242400000000",
+        "mnemonic": "mov",
+        "operands": "dword ptr [esp + 0x24], 0"
+      },
+      {
+        "address": "0x44d4cd",
+        "bytes": "8b442424",
+        "mnemonic": "mov",
+        "operands": "eax, dword ptr [esp + 0x24]"
+      },
+      {
+        "address": "0x44d4d1",
+        "bytes": "660fd6869c050000",
+        "mnemonic": "movq",
+        "operands": "qword ptr [esi + 0x59c], xmm0"
+      },
+      {
+        "address": "0x44d4d9",
+        "bytes": "8bce",
+        "mnemonic": "mov",
+        "operands": "ecx, esi"
+      },
+      {
+        "address": "0x44d4db",
+        "bytes": "c746240e000000",
+        "mnemonic": "mov",
+        "operands": "dword ptr [esi + 0x24], 0xe"
+      },
+      {
+        "address": "0x44d4e2",
+        "bytes": "8986a4050000",
+        "mnemonic": "mov",
+        "operands": "dword ptr [esi + 0x5a4], eax"
+      },
+      {
+        "address": "0x44d4e8",
+        "bytes": "c7465000000000",
+        "mnemonic": "mov",
+        "operands": "dword ptr [esi + 0x50], 0"
+      },
+      {
+        "address": "0x44d4ef",
+        "bytes": "e85c290200",
+        "mnemonic": "call",
+        "operands": "0x46fe50"
+      },
+      {
+        "address": "0x44d4f4",
+        "bytes": "56",
+        "mnemonic": "push",
+        "operands": "esi"
+      },
+      {
+        "address": "0x44d4f5",
+        "bytes": "8d44241c",
+        "mnemonic": "lea",
+        "operands": "eax, [esp + 0x1c]"
+      },
+      {
+        "address": "0x44d4f9",
+        "bytes": "50",
+        "mnemonic": "push",
+        "operands": "eax"
+      },
+      {
+        "address": "0x44d4fa",
+        "bytes": "e891130300",
+        "mnemonic": "call",
+        "operands": "0x47e890"
+      }
+    ],
+    "negativeFactoryLayerRetention": [
+      {
+        "address": "0x47ed4b",
+        "bytes": "ff750c",
+        "mnemonic": "push",
+        "operands": "dword ptr [ebp + 0xc]"
+      },
+      {
+        "address": "0x47ed4e",
+        "bytes": "8bcf",
+        "mnemonic": "mov",
+        "operands": "ecx, edi"
+      },
+      {
+        "address": "0x47ed50",
+        "bytes": "56",
+        "mnemonic": "push",
+        "operands": "esi"
+      },
+      {
+        "address": "0x47ed51",
+        "bytes": "e8aac1f8ff",
+        "mnemonic": "call",
+        "operands": "0x40af00"
+      },
+      {
+        "address": "0x47ed56",
+        "bytes": "814e1c00020000",
+        "mnemonic": "or",
+        "operands": "dword ptr [esi + 0x1c], 0x200"
+      },
+      {
+        "address": "0x47ed5d",
+        "bytes": "8b4d18",
+        "mnemonic": "mov",
+        "operands": "ecx, dword ptr [ebp + 0x18]"
+      },
+      {
+        "address": "0x47ed60",
+        "bytes": "8b461c",
+        "mnemonic": "mov",
+        "operands": "eax, dword ptr [esi + 0x1c]"
+      },
+      {
+        "address": "0x47ed63",
+        "bytes": "85c9",
+        "mnemonic": "test",
+        "operands": "ecx, ecx"
+      },
+      {
+        "address": "0x47ed65",
+        "bytes": "7815",
+        "mnemonic": "js",
+        "operands": "0x47ed7c"
+      },
+      {
+        "address": "0x47ed67",
+        "bytes": "894e24",
+        "mnemonic": "mov",
+        "operands": "dword ptr [esi + 0x24], ecx"
+      },
+      {
+        "address": "0x47ed6a",
+        "bytes": "83f917",
+        "mnemonic": "cmp",
+        "operands": "ecx, 0x17"
+      },
+      {
+        "address": "0x47ed6d",
+        "bytes": "7f0d",
+        "mnemonic": "jg",
+        "operands": "0x47ed7c"
+      },
+      {
+        "address": "0x47ed6f",
+        "bytes": "25fffffbff",
+        "mnemonic": "and",
+        "operands": "eax, 0xfffbffff"
+      },
+      {
+        "address": "0x47ed74",
+        "bytes": "0d00000200",
+        "mnemonic": "or",
+        "operands": "eax, 0x20000"
+      },
+      {
+        "address": "0x47ed79",
+        "bytes": "89461c",
+        "mnemonic": "mov",
+        "operands": "dword ptr [esi + 0x1c], eax"
+      }
+    ]
+  },
+  "originalLoaderHelperSha256": "1f7f764bb35cfcab74765c60cf0ec7ce22e5256c6003ecc136b150360ee932f6",
+  "generatedProbeSourceSha256": "70f22ee1bf0bfd306dc99af9f353538ff84b0127af6669087feff3dfe15be1bd",
+  "bindings": [
+    {
+      "path": "artifacts/th14/effect-template-layer-oct14/before-GameBattle.hpp",
+      "bytes": 22711,
+      "sha256": "9945da1ef1c84ec674f097f6f3c5f80e6668da11da83298dfd26cd3106849ecd"
+    },
+    {
+      "path": "artifacts/th14/effect-template-layer-oct14/before-GameBattle.cpp",
+      "bytes": 51504,
+      "sha256": "ba9d1d31501b9ab2fcf2fce97d6251b6399a5668e36310e5a820975ae44bf5e9"
+    },
+    {
+      "path": "artifacts/th14/effect-template-layer-oct14/layer-fixture.cpp",
+      "bytes": 1293,
+      "sha256": "0962751c9587e1b6d38f28332c18f71d715c4959909d8cec6e3cf273ca796ad5"
+    },
+    {
+      "path": "artifacts/th14/effect-template-layer-oct14/layer.wasm",
+      "bytes": 737723,
+      "sha256": "067f8a22457b36060b2742db29f71217609e0b9137dc20f5b09636b0751823d9"
+    },
+    {
+      "path": "artifacts/th14/effect-template-layer-oct14/layer-check.mjs",
+      "bytes": 2363,
+      "sha256": "db7f9713b1f2c458002b9d2216708b75af37335f9a82d0b1aefb8681723324b2"
+    },
+    {
+      "path": "artifacts/th14/effect-template-layer-oct14/portable.json",
+      "bytes": 5047,
+      "sha256": "378571a7f36ac4b39b3808255584fed1e2ebe46a43c035dc8641bbb2d43ccf5b"
+    },
+    {
+      "path": "artifacts/th14/effect-template-layer-oct14/compile-inputs.json",
+      "bytes": 46376,
+      "sha256": "d9f87899728dd0a91bb05334d63c832eafe042ac2564b4669965f7c752af0397"
+    },
+    {
+      "path": "artifacts/th14/effect-template-layer-oct14/native.json",
+      "bytes": 5351,
+      "sha256": "28c46a738883e86b55430f7f2bbde8c17f4d8a2e048c251be7f93f60ba76f75c"
+    },
+    {
+      "path": "runtimes/th13/th13_web/artifacts/cpp/engine-th14-build.json",
+      "bytes": 33155,
+      "sha256": "bb35282e3f08891a306972bab95718994fa405c11c739d0af2f38b99956e7270"
+    },
+    {
+      "path": "tools/th14-anm-all-resource-loader-native.py",
+      "bytes": 10168,
+      "sha256": "1f7f764bb35cfcab74765c60cf0ec7ce22e5256c6003ecc136b150360ee932f6"
+    },
+    {
+      "path": "docs/porting/th14-hit-effect-resource-verified-oct14.json",
+      "bytes": 40947,
+      "sha256": "f7842511f4b4958020be7134e4ad5ebc0d1cc9f1ddd1e7b4880f9e7b27facf0a"
+    },
+    {
+      "path": "tools/th14-hit-effect-resource-evidence-check.py",
+      "bytes": 13507,
+      "sha256": "85e5a4e2db1624d177125252a36f856948ad987ea188532263bf632cad44980e"
+    },
+    {
+      "path": "artifacts/archive-differential/th14.json",
+      "bytes": 33614,
+      "sha256": "4cd201cae19e606e6ac258bf2241a9bb7ae9adde811bae9c3ff7d1513ffcdf78"
+    },
+    {
+      "path": "artifacts/th14/public-replay-playback/zps-reimua-lunatic-hit-effects-oct14/report.json",
+      "bytes": 54616,
+      "sha256": "720abb8dea6a84478a43eb3a1f0cef86235361b80600300409b936f2f68ba1b6"
+    }
+  ],
+  "toolSha256": "31b25d84dc1efa8e1c10bcdbc441729c51c8a1d1d39570d69ebb281cbfd13e0c",
+  "scope": "Own-executable effect/cancellation factory parameters and resource stores are verified per callsite. Actual original resource loader/templates and47ed10/40af00/46fe50/47e890 compare14 fresh direct production AnmManager controls with real ANM, declared zero origin/rotation and identical explicit RNG inputs. VM allocation/file/GPU services are controlled; resource slot3 is shared solely in the isolated probes. Before GameBattle source snapshots prove its arguments; whole GameBattle execution is not asserted. Four measured retained-template live-layer errors affect graze24, death27, hit28 and bullet cancellation199. ReimuBomb58 and itemNotice100 have differing factory arguments but their time0 layer instruction already restores20/16, so these controls show no live-layer failure. Focus26 explicitly uses14 and remains a correct control. No blanket layer change, campaign/pixel/audio/owner or whole-game1:1 claim."
+}

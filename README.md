@@ -27,7 +27,7 @@ touhou.vip 的每一部作品都是一个独立的 **可移植 C++ 重建 Runtim
 
 ## 当前状态
 
-当前仅推进TH14，进度表只标TH14。修正追踪弹复用伤害区域的growth残留后，灵梦A Lunatic完整90,793次生产回调自然结束；独立原版全程复算29个选定玩法字段一致，25处加载玩法计数、视觉RNG及27处活动区域记录差异仍保留。灵梦A Extra39,458次原版回调的30玩法字段差0，咲夜A Normal96,016帧、灵梦B Lunatic98,074帧自然结束，四份输入ASAN／UBSan通过。浏览器普通录像保存、刷新、468帧自动播放及自然返回已观察验证。加载生命周期、全部对象、普通原版完整流程、所有自机／难度、图像／音频及整作1:1继续施工。详见[当前源码检查点](docs/porting/th14-focused-growth-current-checkpoint-oct14.json)、[发布说明](docs/GITHUB_RELEASE.md)及[方法调整](docs/porting/TH14_METHOD.md)。
+当前仅推进TH14，进度表只标TH14。命中特效资源与伤害区域owner保留语义已修正；灵梦A Lunatic90,793次生产回调自然结束，独立原版全程29选定玩法字段相同，25处加载计数、72处加载编号、8处原版Z原始字及视觉差仍保留。灵梦A Extra39,458次原版回调的30玩法字段差0，另Normal96,016／灵梦B Lunatic98,074帧自然结束，四份输入ASAN／UBSan通过。当前普通Normal结局／成绩编解码、录制／回放和浏览器旧录像播放已重验。加载生命周期、全部模式、图像／音频与整作1:1继续施工。详见[当前源码检查点](docs/porting/th14-hit-effects-current-checkpoint-oct14.json)、[发布说明](docs/GITHUB_RELEASE.md)及[方法调整](docs/porting/TH14_METHOD.md)。
 
 ## 素材与许可
 

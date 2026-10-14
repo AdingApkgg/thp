@@ -133,23 +133,25 @@ void ShotManager::update_th14_areas()noexcept{
 }
 bool ShotManager::th14_death_area(Vec3 p){
     u32 index=0;if(!th14_damage_circle(th14_areas,th14_area_cursor,p,32,16,30,150,&animations.rate,index)){last_error=15;return false;}
-    th14_area_owners[index]=nullptr;return true;
+    // 450130/450270 clear the callback at+a0 but retain its argument at+9c.
+    // Shot records have stable pool storage, including retired records.
+    return true;
 }
 bool ShotManager::th14_bomb_circle(Vec3 p,float radius,float growth,i32 duration,i32 damage){
     u32 index=0;if(!th14_damage_circle(th14_areas,th14_area_cursor,p,radius,growth,duration,damage,&animations.rate,index)){last_error=15;return false;}
-    th14_areas[index].flags|=4;th14_area_owners[index]=nullptr;return true;
+    th14_areas[index].flags|=4;return true;
 }
 bool ShotManager::th14_bomb_orb_area(Vec3 p,u32& index){
     if(!th14_damage_circle(th14_areas,th14_area_cursor,p,56,0,9999,15,&animations.rate,index)){last_error=15;return false;}
-    auto& a=th14_areas[index];a.flags|=4;a.period=3;a.maximum=300;th14_area_owners[index]=nullptr;return true;
+    auto& a=th14_areas[index];a.flags|=4;a.period=3;a.maximum=300;return true;
 }
 bool ShotManager::th14_bomb_rectangle(Vec3 p,Vec2 size,float angle,i32 duration,i32 damage){
     u32 index=0;if(!th14_damage_rectangle(th14_areas,th14_area_cursor,p,size,angle,duration,damage,&animations.rate,index)){last_error=15;return false;}
-    th14_areas[index].flags|=4;th14_area_owners[index]=nullptr;return true;
+    th14_areas[index].flags|=4;return true;
 }
 bool ShotManager::th14_reimu_bomb_area(Vec3 p,Vec2 size,i32 duration,u32& index){
     if(!th14_damage_rectangle(th14_areas,th14_area_cursor,p,size,0,duration,300,&animations.rate,index)){last_error=15;return false;}
-    auto& a=th14_areas[index];a.flags|=4;a.period=10;a.callback=2;th14_area_owners[index]=nullptr;return true;
+    auto& a=th14_areas[index];a.flags|=4;a.period=10;a.callback=2;return true;
 }
 void shot_th14_reimu_bomb_hit(const Th14DamageArea& a,Vec3 hit,Rng& rng,Vec3& position,float& angle)noexcept{
     // Retail 414020 consumes two signed script-RNG units, then aims the effect

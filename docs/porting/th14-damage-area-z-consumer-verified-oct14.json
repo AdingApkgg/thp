@@ -1,0 +1,858 @@
+{
+  "diagnosticEvidenceVerified": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "collectorAddress": "0x451430",
+  "collectorFunctionBytes": 816,
+  "collectorFunctionSha256": "de274f0c783d960f34f44ae68987173e0c4d4265c6e11975363071a36f578632",
+  "collectorCases": 48,
+  "originalInstructionsUnmodified": true,
+  "controlledCallbacksDisabled": true,
+  "controlledBombClassInactive": true,
+  "stationaryAreaPositionXY": [
+    0,
+    100
+  ],
+  "stationaryTargetPositionXY": [
+    0,
+    100
+  ],
+  "areaRadius": 56,
+  "areaRectangleSize": [
+    128,
+    96
+  ],
+  "targetCircleRadius": 16,
+  "targetRectangleSize": [
+    32,
+    32
+  ],
+  "areaAngle": 0,
+  "targetAngle": 0,
+  "advancedFrame": true,
+  "probe": false,
+  "damageCap": 9999,
+  "damage": 150,
+  "period": 1,
+  "previousTimer": 7,
+  "currentTimer": 8,
+  "allDamageAndScoreIndependentOfTestedZWords": true,
+  "targetZReadCount": 0,
+  "areaZReadInstructions": [
+    "0x45168b"
+  ],
+  "areaZCopiedToLastHitOutput": true,
+  "observableZOutputRetained": true,
+  "instructions": [
+    {
+      "address": "0x45168b",
+      "hex": "8b46c0",
+      "assembly": "mov eax, dword ptr [esi - 0x40]"
+    },
+    {
+      "address": "0x45168e",
+      "hex": "660fd602",
+      "assembly": "movq qword ptr [edx], xmm0"
+    },
+    {
+      "address": "0x451692",
+      "hex": "894208",
+      "assembly": "mov dword ptr [edx + 8], eax"
+    }
+  ],
+  "rows": [
+    {
+      "areaShape": "rectangle",
+      "targetShape": "circle",
+      "areaFlags": 1,
+      "areaZWord": 0,
+      "targetZWord": 0,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        0
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "circle",
+      "areaFlags": 1,
+      "areaZWord": 0,
+      "targetZWord": 1065353216,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        0
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "circle",
+      "areaFlags": 1,
+      "areaZWord": 0,
+      "targetZWord": 2143289344,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        0
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "circle",
+      "areaFlags": 1,
+      "areaZWord": 5092616,
+      "targetZWord": 0,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        5092616
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "circle",
+      "areaFlags": 1,
+      "areaZWord": 5092616,
+      "targetZWord": 1065353216,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        5092616
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "circle",
+      "areaFlags": 1,
+      "areaZWord": 5092616,
+      "targetZWord": 2143289344,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        5092616
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "circle",
+      "areaFlags": 1,
+      "areaZWord": 366010528,
+      "targetZWord": 0,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        366010528
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "circle",
+      "areaFlags": 1,
+      "areaZWord": 366010528,
+      "targetZWord": 1065353216,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        366010528
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "circle",
+      "areaFlags": 1,
+      "areaZWord": 366010528,
+      "targetZWord": 2143289344,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        366010528
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "circle",
+      "areaFlags": 1,
+      "areaZWord": 2143289344,
+      "targetZWord": 0,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        2143289344
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "circle",
+      "areaFlags": 1,
+      "areaZWord": 2143289344,
+      "targetZWord": 1065353216,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        2143289344
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "circle",
+      "areaFlags": 1,
+      "areaZWord": 2143289344,
+      "targetZWord": 2143289344,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        2143289344
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "rectangle",
+      "areaFlags": 1,
+      "areaZWord": 0,
+      "targetZWord": 0,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        0
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "rectangle",
+      "areaFlags": 1,
+      "areaZWord": 0,
+      "targetZWord": 1065353216,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        0
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "rectangle",
+      "areaFlags": 1,
+      "areaZWord": 0,
+      "targetZWord": 2143289344,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        0
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "rectangle",
+      "areaFlags": 1,
+      "areaZWord": 5092616,
+      "targetZWord": 0,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        5092616
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "rectangle",
+      "areaFlags": 1,
+      "areaZWord": 5092616,
+      "targetZWord": 1065353216,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        5092616
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "rectangle",
+      "areaFlags": 1,
+      "areaZWord": 5092616,
+      "targetZWord": 2143289344,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        5092616
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "rectangle",
+      "areaFlags": 1,
+      "areaZWord": 366010528,
+      "targetZWord": 0,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        366010528
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "rectangle",
+      "areaFlags": 1,
+      "areaZWord": 366010528,
+      "targetZWord": 1065353216,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        366010528
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "rectangle",
+      "areaFlags": 1,
+      "areaZWord": 366010528,
+      "targetZWord": 2143289344,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        366010528
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "rectangle",
+      "areaFlags": 1,
+      "areaZWord": 2143289344,
+      "targetZWord": 0,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        2143289344
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "rectangle",
+      "areaFlags": 1,
+      "areaZWord": 2143289344,
+      "targetZWord": 1065353216,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        2143289344
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "rectangle",
+      "targetShape": "rectangle",
+      "areaFlags": 1,
+      "areaZWord": 2143289344,
+      "targetZWord": 2143289344,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        2143289344
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "circle",
+      "areaFlags": 3,
+      "areaZWord": 0,
+      "targetZWord": 0,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        0
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "circle",
+      "areaFlags": 3,
+      "areaZWord": 0,
+      "targetZWord": 1065353216,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        0
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "circle",
+      "areaFlags": 3,
+      "areaZWord": 0,
+      "targetZWord": 2143289344,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        0
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "circle",
+      "areaFlags": 3,
+      "areaZWord": 5092616,
+      "targetZWord": 0,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        5092616
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "circle",
+      "areaFlags": 3,
+      "areaZWord": 5092616,
+      "targetZWord": 1065353216,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        5092616
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "circle",
+      "areaFlags": 3,
+      "areaZWord": 5092616,
+      "targetZWord": 2143289344,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        5092616
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "circle",
+      "areaFlags": 3,
+      "areaZWord": 366010528,
+      "targetZWord": 0,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        366010528
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "circle",
+      "areaFlags": 3,
+      "areaZWord": 366010528,
+      "targetZWord": 1065353216,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        366010528
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "circle",
+      "areaFlags": 3,
+      "areaZWord": 366010528,
+      "targetZWord": 2143289344,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        366010528
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "circle",
+      "areaFlags": 3,
+      "areaZWord": 2143289344,
+      "targetZWord": 0,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        2143289344
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "circle",
+      "areaFlags": 3,
+      "areaZWord": 2143289344,
+      "targetZWord": 1065353216,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        2143289344
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "circle",
+      "areaFlags": 3,
+      "areaZWord": 2143289344,
+      "targetZWord": 2143289344,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        2143289344
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "rectangle",
+      "areaFlags": 3,
+      "areaZWord": 0,
+      "targetZWord": 0,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        0
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "rectangle",
+      "areaFlags": 3,
+      "areaZWord": 0,
+      "targetZWord": 1065353216,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        0
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "rectangle",
+      "areaFlags": 3,
+      "areaZWord": 0,
+      "targetZWord": 2143289344,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        0
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "rectangle",
+      "areaFlags": 3,
+      "areaZWord": 5092616,
+      "targetZWord": 0,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        5092616
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "rectangle",
+      "areaFlags": 3,
+      "areaZWord": 5092616,
+      "targetZWord": 1065353216,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        5092616
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "rectangle",
+      "areaFlags": 3,
+      "areaZWord": 5092616,
+      "targetZWord": 2143289344,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        5092616
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "rectangle",
+      "areaFlags": 3,
+      "areaZWord": 366010528,
+      "targetZWord": 0,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        366010528
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "rectangle",
+      "areaFlags": 3,
+      "areaZWord": 366010528,
+      "targetZWord": 1065353216,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        366010528
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "rectangle",
+      "areaFlags": 3,
+      "areaZWord": 366010528,
+      "targetZWord": 2143289344,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        366010528
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "rectangle",
+      "areaFlags": 3,
+      "areaZWord": 2143289344,
+      "targetZWord": 0,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        2143289344
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "rectangle",
+      "areaFlags": 3,
+      "areaZWord": 2143289344,
+      "targetZWord": 1065353216,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        2143289344
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    },
+    {
+      "areaShape": "circle",
+      "targetShape": "rectangle",
+      "areaFlags": 3,
+      "areaZWord": 2143289344,
+      "targetZWord": 2143289344,
+      "returnedDamage": 150,
+      "bombOutput": 0,
+      "lastHitWords": [
+        0,
+        1120403456,
+        2143289344
+      ],
+      "scoreUnits": 2,
+      "accumulatedDamage": 150
+    }
+  ],
+  "bindings": {
+    "tools/th-anm-handlers.py": {
+      "bytes": 8656,
+      "sha256": "07b7fc89a033c65dc95034a0c49e365e726a4123cdb5b8dd7967fa5e71e42363"
+    },
+    "tools/th12-pe.py": {
+      "bytes": 10363,
+      "sha256": "8363a43f72706bc933c7e04517178a6ba07b3c81aaf9a155be9326acbae77306"
+    },
+    "runtimes/th12/th12_web/cpp/game/ShotDamageTh14.cpp": {
+      "bytes": 6524,
+      "sha256": "a063bc7179916295185143bc75083e46dcd1f6351d9719b6818beaf25749073f"
+    },
+    "runtimes/th12/th12_web/cpp/game/ShotTh14.cpp": {
+      "bytes": 17212,
+      "sha256": "4d8b65a6b9baba8ae1d6b03c30b56c88976c3d4e12108d80614d5d43e553f0bd"
+    }
+  },
+  "emulatorVersions": {
+    "unicorn": "2.1.4",
+    "capstone": "5.0.7"
+  },
+  "verifierSha256": "609f1fe76b2f3273cc9020b1614fe32e336ff36427137d048df26b6f8ee85441",
+  "scope": "48 controlled original451430 collector calls execute original collision helpers with stationary overlapping circular/rectangular areas and circular/rectangular targets. AreaZ varies across zero, two captured raw words and quietNaN; targetZ varies across zero,1.0 and quietNaN. Selected damage, score and accumulated damage are identical, and targetZ is never read in these calls. AreaZ is read at45168b and copied to caller lastHit+8 at451692, so Z is still observable output and is not globally unused. Original executable instructions are unmodified. Area callbacks are disabled, Bomb class inactive, angles zero and frame advanced; this is not all geometry, callback/effect/render, owner-memory, ordinary startup or whole-game equivalence. The8 continuous-native Z failures remain unmodified in their separate source-bound reports; this experiment neither copies host pointer bits into production nor masks those failures."
+}

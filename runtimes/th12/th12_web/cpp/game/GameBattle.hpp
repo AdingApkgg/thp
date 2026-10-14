@@ -217,7 +217,9 @@ public:
     bool th14_spawn_enemy(const char* name,const EnemySpawn& value)override{return enemies.spawn(name,value)!=nullptr;}
     bool callback_th14_player_scale(float value)override{return player&&player->set_th14_scale(value);}
     bool th14_hit_item(i32 type,Vec3 p,float angle,float speed)override{return items.spawn(type,p,0xffffffff,angle,speed)==0;}
-    bool th14_hit_effect(Vec3 p,float angle)override{return animations.create(resources.core.bullet,149,7,0,false,false,&p,nullptr,nullptr,false,&angle)!=nullptr;}
+    // Native VisualManager+10 owns effect.anm; +14 owns bullet.anm.
+    // 452183 passes layer -1 so effect149 retains its template layer/children.
+    bool th14_hit_effect(Vec3 p,float angle)override{return animations.create(resources.core.effect,149,8,-1,false,false,&p,nullptr,nullptr,false,&angle)!=nullptr;}
     bool th14_beam_pan(i32 pan)override{events.push_back({BattleEventKind::SoundPan,20,pan});return true;}
     bool th14_beam_stop()override{events.push_back({BattleEventKind::StopSound,20});return true;}
     bool th14_knife_slowdown(Enemy& e,float delta)override{shot_th14_sakuya_slowdown(e.state,delta,spell_flags,spell_id);return true;}
@@ -229,7 +231,7 @@ public:
         std::memcpy(v.initial_tangent,&start,12);std::memcpy(v.final_tangent,&start,12);return true;
     }
     bool th14_plain_hit_effect(Vec3 p,float angle,u32 color)override{
-        auto* vm=animations.create(resources.core.bullet,150,7,0,false,false,&p,nullptr,nullptr,false,&angle);
+        auto* vm=animations.create(resources.core.effect,150,8,-1,false,false,&p,nullptr,nullptr,false,&angle);
         if(!vm)return false;vm->color=color;return true;
     }
     bool th14_bomb_dialogue()const override{return dialogue&&dialogue->active;}
