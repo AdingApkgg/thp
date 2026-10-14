@@ -1,0 +1,65 @@
+{
+  "observationVerified": true,
+  "checkerStartedGpu": false,
+  "checkerStartedBrowser": false,
+  "checkerStartedNative": false,
+  "checkerStartedAudio": false,
+  "comparedFloatWords": 1228800,
+  "differentFloatWords": 116,
+  "differentByComponent": [
+    116,
+    0,
+    0,
+    0
+  ],
+  "maxAbsoluteFloatDelta": 2.288818359375e-05,
+  "decodedIdDifferences": 0,
+  "coverageDifferences": 0,
+  "differenceBoundsXminXmaxYminYmax": [
+    520,
+    542,
+    90,
+    99
+  ],
+  "differencesByDecodedTriangleId": {
+    "72": 34,
+    "74": 37,
+    "73": 45
+  },
+  "rawDifferentPixelsAtOld164UvLocations": 116,
+  "rawDifferentPixelsOutsideOldUvLocations": 0,
+  "nativeMaximumDistanceFromInteger": 1.52587890625e-05,
+  "browserMaximumDistanceFromInteger": 2.288818359375e-05,
+  "conclusion": "The complete decoded triangle ownership agrees, but the actual float buffers are not byte-identical:116 U words differ within the same decoded triangle identities. This preserves the measured numerical residual for a constant-per-triangle varying. It does not uniquely identify raster setup, perspective interpolation, a coordinate convention or an actual GPU instruction sequence; original FFP clip remains unmeasured.",
+  "originalFfpClipCaptured": false,
+  "productionChanged": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "sourceBindings": [
+    {
+      "path": "artifacts/th14/triangle-ownership-prepared-oct15/native/run-oct15/b-full.rgba32f",
+      "bytes": 4915200,
+      "sha256": "f91e64d81d39c6bd02d2225622caf33fff5c0907475aac1c8ca42904cbf5826d"
+    },
+    {
+      "path": "artifacts/th14/triangle-ownership-guarded-oct15/browser/capture/b-pixels.rgba32f",
+      "bytes": 4915200,
+      "sha256": "4da8b7fbda26c9002b8b4b2503f0fcbb6b5e26305786000270dae93105a7d200"
+    },
+    {
+      "path": "docs/porting/th14-triangle-ownership-guarded-observed-oct15.json",
+      "bytes": 34870,
+      "sha256": "8ee1ffa689691145ad81e3eae50b60763b62cecf962b4d0fa8405019123f53ca"
+    }
+  ],
+  "checkerBinding": {
+    "path": "artifacts/th14/triangle-ownership-guarded-oct15/check-raw-floats.py",
+    "bytes": 4887,
+    "sha256": "eb937cf96db308437e3bfc3cf2dd3fd43c7d2c3a4ef84f16e7854bc89d56cef9"
+  },
+  "privateDifferenceBinding": {
+    "path": "artifacts/th14/triangle-ownership-guarded-oct15/raw-ownership-float-differences.json",
+    "bytes": 41200,
+    "sha256": "e09488ed90f8ffc0139720c86ffbedd0d968c769e92f04f98e90a48069148db1"
+  }
+}

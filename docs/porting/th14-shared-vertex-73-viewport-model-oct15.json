@@ -1,0 +1,216 @@
+{
+  "observationVerified": true,
+  "newGpuExecutions": 0,
+  "newNativeExecutions": 0,
+  "newBrowserExecutions": 0,
+  "newAudioExecutions": 0,
+  "newCompilers": 0,
+  "actualExpandedMapping": {
+    "71": [
+      72,
+      71,
+      73
+    ],
+    "72": [
+      72,
+      73,
+      74
+    ],
+    "73": [
+      74,
+      73,
+      75
+    ]
+  },
+  "uniqueSharedSourceVertex": 73,
+  "sharedExpandedSlots": [
+    215,
+    217,
+    220
+  ],
+  "native73Words": [
+    1135417750,
+    1135062187,
+    1141039260,
+    1141498615
+  ],
+  "actualGl73Words": [
+    1135445989,
+    3282508183,
+    1141039260,
+    1141498615
+  ],
+  "native73Float32": [
+    346.19989013671875,
+    335.3489685058594,
+    523.509521484375,
+    551.5463256835938
+  ],
+  "actualGl73Float32": [
+    347.0616760253906,
+    -334.1999206542969,
+    523.509521484375,
+    551.5463256835938
+  ],
+  "nativeAndGlDuplicateSource73CopiesByteEqualWithinEachApi": true,
+  "source73Models": {
+    "doubleNativePlusHalf": [
+      521.360670599959,
+      94.57616968229526
+    ],
+    "doubleGl": [
+      521.3606675567571,
+      94.5761666390934
+    ],
+    "nativeRnDivSeparate": [
+      521.3606567382812,
+      94.576171875
+    ],
+    "nativeRnRcpSeparate": [
+      521.3606567382812,
+      94.576171875
+    ],
+    "nativeRnDivFused": [
+      521.3606567382812,
+      94.576171875
+    ],
+    "nativeRnRcpFused": [
+      521.3606567382812,
+      94.576171875
+    ],
+    "nativeHomogeneousSeparate": [
+      521.3607177734375,
+      94.57618713378906
+    ],
+    "nativeHomogeneousFused": [
+      521.3606567382812,
+      94.57617950439453
+    ],
+    "glRnDivSeparate": [
+      521.3606567382812,
+      94.57615661621094
+    ],
+    "glRnRcpSeparate": [
+      521.3606567382812,
+      94.57615661621094
+    ],
+    "glRnDivFused": [
+      521.3606567382812,
+      94.57616424560547
+    ],
+    "glRnRcpFused": [
+      521.3606567382812,
+      94.57616424560547
+    ]
+  },
+  "source73Y256Midpoint": 94.576171875,
+  "source73YMidpointDistanceByModel": {
+    "doubleNativePlusHalf": -2.1927047413328182e-06,
+    "doubleGl": -5.235906598954898e-06,
+    "nativeRnDivSeparate": 0.0,
+    "nativeRnRcpSeparate": 0.0,
+    "nativeRnDivFused": 0.0,
+    "nativeRnRcpFused": 0.0,
+    "nativeHomogeneousSeparate": 1.52587890625e-05,
+    "nativeHomogeneousFused": 7.62939453125e-06,
+    "glRnDivSeparate": -1.52587890625e-05,
+    "glRnRcpSeparate": -1.52587890625e-05,
+    "glRnDivFused": -7.62939453125e-06,
+    "glRnRcpFused": -7.62939453125e-06
+  },
+  "neighboringSources": [
+    {
+      "sourceVertex": 71,
+      "nativeWords": [
+        1135479756,
+        1135404962,
+        1141007304,
+        1141466779
+      ],
+      "actualGlWords": [
+        1135507896,
+        3282851091,
+        1141007304,
+        1141466779
+      ]
+    },
+    {
+      "sourceVertex": 72,
+      "nativeWords": [
+        1136627097,
+        1135009774,
+        1141044146,
+        1141503483
+      ],
+      "actualGlWords": [
+        1136655351,
+        3282455750,
+        1141044146,
+        1141503483
+      ]
+    },
+    {
+      "sourceVertex": 74,
+      "nativeWords": [
+        1136568754,
+        1134666139,
+        1141076182,
+        1141535399
+      ],
+      "actualGlWords": [
+        1136597108,
+        3282111982,
+        1141076182,
+        1141535399
+      ]
+    },
+    {
+      "sourceVertex": 75,
+      "nativeWords": [
+        1135359408,
+        1134718552,
+        1141071296,
+        1141530531
+      ],
+      "actualGlWords": [
+        1135387747,
+        3282164415,
+        1141071296,
+        1141530531
+      ]
+    }
+  ],
+  "conclusion": "The three differing triangles have exactly one common recorded source vertex73. Its model Y is close to a1/256 midpoint. Some declared RN32 viewport orders produce an exact tie while others remain below it; the binary64 Native-comparison and GL models are both below. This identifies a specific unfitted rounding-boundary hypothesis, not an actual measured viewport coordinate, snapped vertex, GPU instruction sequence or unique cause. No output clip, pixel oracle or production correction is generated.",
+  "originalFfpClipMeasured": false,
+  "actualHardwareViewportCaptured": false,
+  "subpixelGranularityProved": false,
+  "productionChanged": false,
+  "completeGame": false,
+  "primaryReferenceScope": "Microsoft viewport geometry and Direct3D integer pixel-center convention were read; neither specifies these exact RN32 hardware orders. Official Khronos glViewport page was unavailable via the tool; GL arithmetic here is a declared mathematical model constrained by actual recorded640x480/LOWER_LEFT/ZERO_TO_ONE state.",
+  "primaryReferences": [
+    "https://learn.microsoft.com/en-us/windows/win32/direct3d9/viewports-and-clipping",
+    "https://learn.microsoft.com/en-us/windows/win32/direct3d9/directly-mapping-texels-to-pixels"
+  ],
+  "sourceBindings": [
+    {
+      "path": "artifacts/th14/triangle-weights-prepared-oct15/native/inputs.json",
+      "bytes": 52122,
+      "sha256": "c7e217440742056e36c1121fae8ea1c9c6e27892f58ff591366d4af58383b6d0"
+    },
+    {
+      "path": "artifacts/th14/triangle-weights-raw-oct15/browser/capture/a-tf.f32",
+      "bytes": 5616,
+      "sha256": "34f2aeca54896dc327c99e9dbb82d4eae4b44df87cafe7be21919ec2ef2b0a66"
+    }
+  ],
+  "checkerBinding": {
+    "path": "artifacts/th14/shared-vertex-73-oct15/check-models.py",
+    "bytes": 8681,
+    "sha256": "e00c09cb65c8dbff9a8ff06e70bdc42060d04eb75d69b0f95fef4392241c0cc4"
+  },
+  "privateModelBinding": {
+    "path": "artifacts/th14/shared-vertex-73-oct15/declared-models.json",
+    "bytes": 57074,
+    "sha256": "23d94cebb5ebe8b61563ddfc11667d3cc8509931c4d6f1e2b37638d604092318"
+  }
+}

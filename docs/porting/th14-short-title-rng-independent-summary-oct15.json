@@ -1,0 +1,202 @@
+{
+  "independentStoredRawAudit": true,
+  "producerExecutedByChecker": false,
+  "callbacks": 527,
+  "firstStageCallbacks": 48,
+  "records": 1878,
+  "rawBytes": 165264,
+  "rawSha256": "19d4d0ab8394ff247f2efe86538328ebee96f0b666e842d31179df241aa86209",
+  "ordinalFailures": 0,
+  "primitiveMathFailures": 0,
+  "sameFamilyRecordChainGaps": 0,
+  "callbackBoundaryFailures": 0,
+  "overflow": false,
+  "constructor": {
+    "fontNext16": 256,
+    "scoreNext16": 494,
+    "failedWorkerConstructorSemanticallyMatchesAfterPointerNormalization": true
+  },
+  "postConstructor": {
+    "scriptAnmVisualNext32": 1128,
+    "visualGameplayPrimitives": 0,
+    "phaseCounts": {
+      "3": 60,
+      "5": 2,
+      "7": 1056,
+      "6": 10
+    },
+    "contextGroups": [
+      {
+        "section": "coreBoot",
+        "phase": 3,
+        "file": 2,
+        "script": 16,
+        "internalOpcode": 23,
+        "count": 18
+      },
+      {
+        "section": "coreBoot",
+        "phase": 3,
+        "file": 2,
+        "script": 16,
+        "internalOpcode": 25,
+        "count": 9
+      },
+      {
+        "section": "coreBoot",
+        "phase": 3,
+        "file": 2,
+        "script": 16,
+        "internalOpcode": 49,
+        "count": 9
+      },
+      {
+        "section": "coreBoot",
+        "phase": 5,
+        "file": 8,
+        "script": 21,
+        "internalOpcode": 26,
+        "count": 2
+      },
+      {
+        "section": "firstStageBoot",
+        "phase": 3,
+        "file": 2,
+        "script": 16,
+        "internalOpcode": 23,
+        "count": 12
+      },
+      {
+        "section": "firstStageBoot",
+        "phase": 3,
+        "file": 2,
+        "script": 16,
+        "internalOpcode": 25,
+        "count": 6
+      },
+      {
+        "section": "firstStageBoot",
+        "phase": 3,
+        "file": 2,
+        "script": 16,
+        "internalOpcode": 49,
+        "count": 6
+      },
+      {
+        "section": "firstStageBoot",
+        "phase": 6,
+        "file": 8,
+        "script": 101,
+        "internalOpcode": 23,
+        "count": 7
+      },
+      {
+        "section": "firstStageBoot",
+        "phase": 6,
+        "file": 8,
+        "script": 101,
+        "internalOpcode": 53,
+        "count": 3
+      },
+      {
+        "section": "firstStageNormal",
+        "phase": 7,
+        "file": 8,
+        "script": 101,
+        "internalOpcode": 23,
+        "count": 77
+      },
+      {
+        "section": "firstStageNormal",
+        "phase": 7,
+        "file": 8,
+        "script": 101,
+        "internalOpcode": 53,
+        "count": 33
+      },
+      {
+        "section": "titleNormal",
+        "phase": 7,
+        "file": 2,
+        "script": 18,
+        "internalOpcode": 23,
+        "count": 430
+      },
+      {
+        "section": "titleNormal",
+        "phase": 7,
+        "file": 2,
+        "script": 18,
+        "internalOpcode": 25,
+        "count": 258
+      },
+      {
+        "section": "titleNormal",
+        "phase": 7,
+        "file": 2,
+        "script": 18,
+        "internalOpcode": 49,
+        "count": 258
+      }
+    ]
+  },
+  "directBoundaryWrites": [
+    {
+      "callback": 479,
+      "family": "visualGameplay",
+      "expectedAfterPrimitives": [
+        16822,
+        494
+      ],
+      "observedAfter": [
+        16822,
+        0
+      ]
+    }
+  ],
+  "directWriteSource": "GameSession::activate_stage records gameplay seed then resets gameplay calls for ordinary play; no script seed reset is present at this first-stage activation.",
+  "final": {
+    "scriptAnmVisualCalls": 2512,
+    "scriptAnmVisualSeed": 55508,
+    "visualGameplayCalls": 0,
+    "visualGameplaySeed": 16822
+  },
+  "archiveLifetime": {
+    "oldWorkerReleasedBorrowedSourceBeforeGameSession": true,
+    "productionApplicationOwnsArchiveVector": true,
+    "correctedRuntimeReportedCompleteRetainedDatHashMatch": true,
+    "datBytes": 90776747,
+    "datSha256": "57d84a5cbe82460931cca26f090a0fde7aef180889ce5bfe8315851fc97b0233",
+    "independentCheckerCannotReobserveExitedWasmMemory": true
+  },
+  "noProducerDevices": {
+    "audioDevices": 0,
+    "nativeProcesses": 0,
+    "physicalGpu": false,
+    "compilersStartedInLifetimeRunner": 0
+  },
+  "scope": "Stored primitive math, chronology and caller contexts for fixed 60Hz headless manual Title -> Normal/Reimu A -> first 48 stage callbacks. Context opcodes are port-internal decoded opcodes. No Native startup1336 counter oracle, native caller equality, full SDL/audio/GPU or whole-game equivalence. Failed callback0 trace remains preserved. Runtime DAT memory hash is an attestation in the bound report, not a new memory observation by this checker.",
+  "bindings": [
+    {
+      "path": "docs/porting/th14-short-title-rng-independent-receipt-oct15.json",
+      "bytes": 8999,
+      "sha256": "88e2529cf5646c4afa12a1d4dbc881fdccad789c9e30c5f14dee6124a5808676"
+    },
+    {
+      "path": "artifacts/th14/short-title-rng-independent-audit-oct15/ordinal-groups.json",
+      "bytes": 42461,
+      "sha256": "41d90c8cd918c6787e7424f13532c312abd7822163069b797fac8c0fe9826ef4"
+    },
+    {
+      "path": "artifacts/th14/short-title-rng-independent-audit-oct15/check-records.py",
+      "bytes": 11018,
+      "sha256": "81f36ce43748bddee3b146adda6417d9dc009ac9ca7e585e9052a9b0847e90a2"
+    },
+    {
+      "path": "artifacts/th14/short-title-rng-independent-audit-oct15/check-receipt.py",
+      "bytes": 2203,
+      "sha256": "73a850bc3414777fdbdfb62644c09bdcb8c25aadf010e7172e91171f5ea7f385"
+    }
+  ],
+  "checkerWriteObservation": "The first checker validated all records and wrote the detailed receipt, then its final stdout path formatter rejected a relative __file__. No producer failed or reran. The original checker still passes its read-only mode; this wrapper independently rechecks its saved receipt and ordinal groups and resolves its own path before printing."
+}

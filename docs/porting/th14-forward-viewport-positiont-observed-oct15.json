@@ -1,0 +1,239 @@
+{
+  "schema": "th14-forward-viewport-positiont-observation-v1",
+  "evidenceVerified": true,
+  "result": "FAILED_DECLARED_MODEL_COMPATIBILITY",
+  "aControlFullMatchesFrozenNative": true,
+  "aFullBytes": 4915200,
+  "aFullSha256": "694d88acb22e1fcae7565d26f8d868acff92be9fb45d84da71f8915725389d0b",
+  "bFullBytes": 4915200,
+  "bFullSha256": "e7cb633b27c67d21dd40009eda0a8ca3d00c2208caf37d6c97540c2f5879a6ab",
+  "comparedWords": 1228800,
+  "bDifferentWords": 1315,
+  "bDifferentWordsByChannel": [
+    702,
+    612,
+    0,
+    1
+  ],
+  "bDifferentPixels": 873,
+  "differentPixelBoundingBox": {
+    "xMin": 526,
+    "xMax": 576,
+    "yMin": 0,
+    "yMax": 88
+  },
+  "nativeCoveredPixels": 2438,
+  "modelCoveredPixels": 2439,
+  "coverageDifferences": 1,
+  "coverageDifferencePositions": [
+    {
+      "x": 550,
+      "y": 74,
+      "nativeCovered": false,
+      "modelCovered": true
+    }
+  ],
+  "commonCoveredDifferentWordsByChannel": [
+    701,
+    611,
+    0,
+    0
+  ],
+  "finiteOutputGate": true,
+  "formatGate": true,
+  "comparisonEligible": true,
+  "declaredModelCompatibilitySupported": false,
+  "uniqueViewportCauseEstablished": false,
+  "validatesPrebiasSnapGlCandidate": false,
+  "measuredNativeViewportOrRhw": false,
+  "modelOperations": [
+    "f32(qx/qw),f32(*320),f32(+320)",
+    "f32(qy/qw),f32(*-240),f32(+240)",
+    "f32(qz/qw)",
+    "f32(1/qw)"
+  ],
+  "declarationA": "POSITION0/FLOAT4 +TEXCOORD0/FLOAT2/MOVVS2",
+  "declarationB": "POSITIONT9/FLOAT4 +TEXCOORD0/FLOAT2/VSNULL",
+  "reusedPixelShaderContainsUnusedTexld": true,
+  "noTextureCreatedOrBound": true,
+  "privateCompleteAnalysis": {
+    "path": "artifacts/th14/stage-forward-viewport-positiont-observed-oct15/analysis.json",
+    "bytes": 532966,
+    "sha256": "572703eef98fc8db108952b9a998603125e626913f56dacbea314258ff729f2e"
+  },
+  "bindings": [
+    {
+      "path": "C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/shared/d3d9.h",
+      "bytes": 164262,
+      "sha256": "df78083ee8e75e6d3851422f6aa8abf6213e349f22bf27e7f161e98e8d90df04"
+    },
+    {
+      "path": "C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/shared/d3d9types.h",
+      "bytes": 91050,
+      "sha256": "ce75dc368d5f37506ada4c32062a96ab4d4894fead5d21ad5844fc9f0a2e62c2"
+    },
+    {
+      "path": "C:/Windows/System32/d3d9.dll",
+      "bytes": 1799712,
+      "sha256": "9c2343d50ab0e219d6526be5c419b2c5dc62e88c30444c936927001e3bdc89e6"
+    },
+    {
+      "path": "C:/Windows/System32/kernel32.dll",
+      "bytes": 861984,
+      "sha256": "4f7e85e01b521aa002692b1e868bee9a3a9ba19b815ce5d16d2e959fb0289feb"
+    },
+    {
+      "path": "C:/Windows/System32/user32.dll",
+      "bytes": 1974768,
+      "sha256": "f285937030bcb325cad39ee5be4818f6666241229adeadea4ff1ae469dfd7ef3"
+    },
+    {
+      "path": "artifacts/th14/stage-current-residual-native-uv-fe406-oct14/frame-000.rgba32f",
+      "bytes": 4915200,
+      "sha256": "694d88acb22e1fcae7565d26f8d868acff92be9fb45d84da71f8915725389d0b"
+    },
+    {
+      "path": "artifacts/th14/stage-current-residual-native-uv-fe406-oct14/probe.pso",
+      "bytes": 108,
+      "sha256": "0896967f3ea1cb0655e9686fb635305f87f0eeeddc047f25d3b3b0b4b1aa441e"
+    },
+    {
+      "path": "artifacts/th14/stage-forward-viewport-positiont-prepared-oct15/native/fixture.py",
+      "bytes": 21862,
+      "sha256": "0d19e305e528c330fd54f30a3c16009dc14fdebd16a294ea08c5c26149757bef"
+    },
+    {
+      "path": "artifacts/th14/stage-forward-viewport-positiont-prepared-oct15/native/inputs.json",
+      "bytes": 93770,
+      "sha256": "9e813010b2a04ba4dcf0921b8d5594151be81dc857e4aa0b1d3f39ad5f6b89b8"
+    },
+    {
+      "path": "artifacts/th14/stage-forward-viewport-positiont-prepared-oct15/native/plan.json",
+      "bytes": 5575,
+      "sha256": "170fcae3ebcfbd9353f56e849885f4e5d5ab4f1804ae344ccec8240edc8f47da"
+    },
+    {
+      "path": "artifacts/th14/stage-forward-viewport-positiont-prepared-oct15/native/run-oct15/a-full.rgba32f",
+      "bytes": 4915200,
+      "sha256": "694d88acb22e1fcae7565d26f8d868acff92be9fb45d84da71f8915725389d0b"
+    },
+    {
+      "path": "artifacts/th14/stage-forward-viewport-positiont-prepared-oct15/native/run-oct15/b-full.rgba32f",
+      "bytes": 4915200,
+      "sha256": "e7cb633b27c67d21dd40009eda0a8ca3d00c2208caf37d6c97540c2f5879a6ab"
+    },
+    {
+      "path": "artifacts/th14/stage-forward-viewport-positiont-prepared-oct15/native/run-oct15/inputs-bound.json",
+      "bytes": 104706,
+      "sha256": "cd4a2a9f0af4c904a6ca47e9b2dab6d7acbae078a23c20e42b8bf1bc90c0041d"
+    },
+    {
+      "path": "artifacts/th14/stage-forward-viewport-positiont-prepared-oct15/native/run-oct15/loaded-system-libraries.json",
+      "bytes": 234,
+      "sha256": "22cedefe4b5f8def09fb616b38b45f8a26e7d4ce591ed4b61d26701e63e1c3f2"
+    },
+    {
+      "path": "artifacts/th14/stage-forward-viewport-positiont-prepared-oct15/native/run-oct15/report.json",
+      "bytes": 6637,
+      "sha256": "a6c607a6892f20897a9f4a9c78b4790faae068aa3c181253c760ac80961a258b"
+    },
+    {
+      "path": "artifacts/th14/stage-native-constant-clip-transfer-prepared-oct14/fixture.py",
+      "bytes": 13267,
+      "sha256": "7781951477afd8b2f47ad4aea3cd5cd87c58ead369c81de5042397fdc63ea2de"
+    },
+    {
+      "path": "artifacts/th14/stage-native-constant-clip-transfer-prepared-oct14/inputs.json",
+      "bytes": 158537,
+      "sha256": "b3182bd597ac21fcf15a776849ddac020f17d4ebf88a7e9f75569c61605230d3"
+    },
+    {
+      "path": "artifacts/th14/stage-native-constant-clip-transfer-prepared-oct14/native-corner-bindings.json",
+      "bytes": 62383,
+      "sha256": "2edfbaa7670419dbfe19f655a376ae427ecaf93d373f18cb05107d89a4273c37"
+    },
+    {
+      "path": "artifacts/th14/stage-native-constant-clip-transfer-prepared-oct14/receipt.json",
+      "bytes": 1703,
+      "sha256": "27f47f5c08ac1d9351aaba9e59e9fef30de8d743be63c3d468fc92ec2b58d4ae"
+    },
+    {
+      "path": "artifacts/th14/stage-native-constant-clip-transfer-prepared-oct14/run-oct14/report.json",
+      "bytes": 2017,
+      "sha256": "f93876005426b5603763a4c9f24069bef3a75f500eb14a0b424d42dc3da1b8b9"
+    },
+    {
+      "path": "artifacts/th14/stage-tf-native-transport-prepared-oct14/run-oct14/direct-mov.vso",
+      "bytes": 56,
+      "sha256": "4492a4ee0899facce08dc0962b6b9fa43c609bcce544fd1bed84163f28de59e6"
+    },
+    {
+      "path": "artifacts/th14/stage-transform-feedback-arithmetic-oct14/source-input-binding.json",
+      "bytes": 112037,
+      "sha256": "f3cc5983a6f2db8ac6f6fc068a6696d7371977e79b9c3a2d162cf1ec2c80cccb"
+    },
+    {
+      "path": "artifacts/th14/stage-transform-feedback-compact-oct14/capture/uv-report.json",
+      "bytes": 759999,
+      "sha256": "727d76bf4ad13ecb2822f2c59a8b8ba989eb4ad53c8335280376d7f180e89075"
+    },
+    {
+      "path": "artifacts/th14/stage-transform-feedback-compact-oct14/capture/vertices-234.f32",
+      "bytes": 5616,
+      "sha256": "34f2aeca54896dc327c99e9dbb82d4eae4b44df87cafe7be21919ec2ef2b0a66"
+    },
+    {
+      "path": "artifacts/th14/triangle-ownership-prepared-oct15/native/fixture.py",
+      "bytes": 18054,
+      "sha256": "69d88b917ffa6cbc2b4318f10c5fd5229b6f52170d5757ba411b0a4101801fb0"
+    },
+    {
+      "path": "artifacts/th14/triangle-ownership-prepared-oct15/native/inputs.json",
+      "bytes": 51896,
+      "sha256": "e9342e80b1077b5e942eddb36d0926350ff77ed0e1cc1b86e05546add203d55b"
+    },
+    {
+      "path": "artifacts/th14/triangle-weights-prepared-oct15/native/fixture.py",
+      "bytes": 21151,
+      "sha256": "819eecf59dfe796764fe561034dee2850eab39c4f91daef769426171ba889c82"
+    },
+    {
+      "path": "artifacts/th14/triangle-weights-prepared-oct15/native/inputs.json",
+      "bytes": 52122,
+      "sha256": "c7e217440742056e36c1121fae8ea1c9c6e27892f58ff591366d4af58383b6d0"
+    },
+    {
+      "path": "docs/porting/th14-stage-native-constant-clip-transfer-observed-oct14.json",
+      "bytes": 6548,
+      "sha256": "86d122fd773cbc05718717a296e38b4b796d4f9ee8a926ec39e5ed275a6ff292"
+    },
+    {
+      "path": "tools/th14-forward-viewport-positiont-evidence-check-oct15.py",
+      "bytes": 11396,
+      "sha256": "fbb6f15fff2abd6ab74a69518163d469a58a7700bd6db2f1fde410e617634908"
+    }
+  ],
+  "producerObservedCounts": {
+    "drawAttempts": 2,
+    "successfulDrawCalls": 2,
+    "presentCalls": 0,
+    "audioDevicesOpened": 0,
+    "audioPlayed": false,
+    "retailProcessesStarted": 0,
+    "shaderAssemblies": 0,
+    "cleanupApiCalls": 4,
+    "cleanupErrors": 0
+  },
+  "reviewerExecutionCounts": {
+    "native": 0,
+    "gpu": 0,
+    "compiler": 0,
+    "browser": 0,
+    "audio": 0
+  },
+  "originalFfpClipCaptured": false,
+  "nativeEquivalent": false,
+  "completeGame": false,
+  "productionChanged": false,
+  "scope": "Independent readonly source/input/report pins and full4915200-byte A/B comparisons. NewA reproduced immutable694d. NewB is a declared generic CPU RN32 forward viewport/z/rhw model submitted as POSITIONT, not an actual Native viewport/rhw capture. Its1315-word and1-coverage differences remain failure; finite/format/comparisonEligible are not a compatibility pass. Source73 or viewport alone is not isolated by this transfer: geometry setup, reciprocal/rhw rounding and interpolation may differ as a combined boundary. This negative cannot validate a prebias-snap GL candidate or infer a unique hardware/ISA cause. No additional Native/GPU/fixture/compiler/browser/audio execution or frozen/production changes occurred. Complete raw buffers and difference indices remain private; this public receipt contains only pins and bounded statistics."
+}

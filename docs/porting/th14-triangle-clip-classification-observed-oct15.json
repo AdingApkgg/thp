@@ -1,0 +1,918 @@
+{
+  "observationVerified": true,
+  "newGpuExecutions": 0,
+  "newNativeExecutions": 0,
+  "newBrowserExecutions": 0,
+  "newAudioExecutions": 0,
+  "newCompilers": 0,
+  "triangleCount": 78,
+  "sourceVertices": 234,
+  "planeOrder": [
+    "left_x_plus_w",
+    "right_w_minus_x",
+    "bottom_y_plus_w",
+    "top_w_minus_y",
+    "near_z",
+    "far_w_minus_z"
+  ],
+  "insideRule": "All six plane values nonnegative; strictlyInside requires all positive. Crossing means mixed positive/negative. Touching records exact binary64 zero. AllOutside means all three negative for one plane.",
+  "coordinateScope": "Native inputs are unchanged measured authored VS2 q4, not original per-attribute FFP clip. GL inputs are actual GPU gl_Position after the measured Y/halfpixel bridge; actual clip-control uses LOWER_LEFT/ZERO_TO_ONE. Read-only binary64 classification is a declared-plane model, not observed hardware clipper execution.",
+  "nativeOverview": {
+    "crossingTriangles": [
+      {
+        "triangleZeroBased": 36,
+        "triangleId": 37,
+        "planes": [
+          "top_w_minus_y"
+        ]
+      },
+      {
+        "triangleZeroBased": 37,
+        "triangleId": 38,
+        "planes": [
+          "top_w_minus_y"
+        ]
+      }
+    ],
+    "touchingTriangles": [],
+    "allOutsideTriangles": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35
+    ],
+    "strictlyInsideTriangles": [
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77
+    ],
+    "minimumW": 481.9163818359375,
+    "maximumW": 557.6746826171875
+  },
+  "glOverview": {
+    "crossingTriangles": [
+      {
+        "triangleZeroBased": 36,
+        "triangleId": 37,
+        "planes": [
+          "bottom_y_plus_w"
+        ]
+      },
+      {
+        "triangleZeroBased": 37,
+        "triangleId": 38,
+        "planes": [
+          "bottom_y_plus_w"
+        ]
+      }
+    ],
+    "touchingTriangles": [],
+    "allOutsideTriangles": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35
+    ],
+    "strictlyInsideTriangles": [
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77
+    ],
+    "minimumW": 481.9163818359375,
+    "maximumW": 557.6746826171875
+  },
+  "focusTriangles": [
+    {
+      "triangleZeroBased": 71,
+      "triangleId": 72,
+      "constantIdFloatDifferences": 34,
+      "native": {
+        "triangleZeroBased": 71,
+        "triangleId": 72,
+        "vertices": [
+          {
+            "vertexIndex": 213,
+            "words": [
+              1136627097,
+              1135009774,
+              1141044146,
+              1141503483
+            ],
+            "float32Values": [
+              383.1062316894531,
+              333.74945068359375,
+              523.8077392578125,
+              551.8434448242188
+            ],
+            "planeValuesDouble": [
+              934.9496765136719,
+              168.73721313476562,
+              885.5928955078125,
+              218.093994140625,
+              523.8077392578125,
+              28.03570556640625
+            ],
+            "planeSigns": [
+              "+",
+              "+",
+              "+",
+              "+",
+              "+",
+              "+"
+            ]
+          },
+          {
+            "vertexIndex": 214,
+            "words": [
+              1135479756,
+              1135404962,
+              1141007304,
+              1141466779
+            ],
+            "float32Values": [
+              348.0921630859375,
+              345.80963134765625,
+              521.55908203125,
+              549.6032104492188
+            ],
+            "planeValuesDouble": [
+              897.6953735351562,
+              201.51104736328125,
+              895.412841796875,
+              203.7935791015625,
+              521.55908203125,
+              28.04412841796875
+            ],
+            "planeSigns": [
+              "+",
+              "+",
+              "+",
+              "+",
+              "+",
+              "+"
+            ]
+          },
+          {
+            "vertexIndex": 215,
+            "words": [
+              1135417750,
+              1135062187,
+              1141039260,
+              1141498615
+            ],
+            "float32Values": [
+              346.19989013671875,
+              335.3489685058594,
+              523.509521484375,
+              551.5463256835938
+            ],
+            "planeValuesDouble": [
+              897.7462158203125,
+              205.346435546875,
+              886.8952941894531,
+              216.19735717773438,
+              523.509521484375,
+              28.03680419921875
+            ],
+            "planeSigns": [
+              "+",
+              "+",
+              "+",
+              "+",
+              "+",
+              "+"
+            ]
+          }
+        ],
+        "crossingPlanes": [],
+        "touchingPlanes": [],
+        "allOutsidePlanes": [],
+        "strictlyInsideAllPlanes": true
+      },
+      "gl": {
+        "triangleZeroBased": 71,
+        "triangleId": 72,
+        "vertices": [
+          {
+            "vertexIndex": 213,
+            "words": [
+              1136655351,
+              3282455750,
+              1141044146,
+              1141503483
+            ],
+            "float32Values": [
+              383.9684753417969,
+              -332.59979248046875,
+              523.8077392578125,
+              551.8434448242188
+            ],
+            "planeValuesDouble": [
+              935.8119201660156,
+              167.87496948242188,
+              219.24365234375,
+              884.4432373046875,
+              523.8077392578125,
+              28.03570556640625
+            ],
+            "planeSigns": [
+              "+",
+              "+",
+              "+",
+              "+",
+              "+",
+              "+"
+            ]
+          },
+          {
+            "vertexIndex": 214,
+            "words": [
+              1135507896,
+              3282851091,
+              1141007304,
+              1141466779
+            ],
+            "float32Values": [
+              348.950927734375,
+              -344.6646423339844,
+              521.55908203125,
+              549.6032104492188
+            ],
+            "planeValuesDouble": [
+              898.5541381835938,
+              200.65228271484375,
+              204.93856811523438,
+              894.2678527832031,
+              521.55908203125,
+              28.04412841796875
+            ],
+            "planeSigns": [
+              "+",
+              "+",
+              "+",
+              "+",
+              "+",
+              "+"
+            ]
+          },
+          {
+            "vertexIndex": 215,
+            "words": [
+              1135445989,
+              3282508183,
+              1141039260,
+              1141498615
+            ],
+            "float32Values": [
+              347.0616760253906,
+              -334.1999206542969,
+              523.509521484375,
+              551.5463256835938
+            ],
+            "planeValuesDouble": [
+              898.6080017089844,
+              204.48464965820312,
+              217.34640502929688,
+              885.7462463378906,
+              523.509521484375,
+              28.03680419921875
+            ],
+            "planeSigns": [
+              "+",
+              "+",
+              "+",
+              "+",
+              "+",
+              "+"
+            ]
+          }
+        ],
+        "crossingPlanes": [],
+        "touchingPlanes": [],
+        "allOutsidePlanes": [],
+        "strictlyInsideAllPlanes": true
+      }
+    },
+    {
+      "triangleZeroBased": 72,
+      "triangleId": 73,
+      "constantIdFloatDifferences": 45,
+      "native": {
+        "triangleZeroBased": 72,
+        "triangleId": 73,
+        "vertices": [
+          {
+            "vertexIndex": 216,
+            "words": [
+              1136627097,
+              1135009774,
+              1141044146,
+              1141503483
+            ],
+            "float32Values": [
+              383.1062316894531,
+              333.74945068359375,
+              523.8077392578125,
+              551.8434448242188
+            ],
+            "planeValuesDouble": [
+              934.9496765136719,
+              168.73721313476562,
+              885.5928955078125,
+              218.093994140625,
+              523.8077392578125,
+              28.03570556640625
+            ],
+            "planeSigns": [
+              "+",
+              "+",
+              "+",
+              "+",
+              "+",
+              "+"
+            ]
+          },
+          {
+            "vertexIndex": 217,
+            "words": [
+              1135417750,
+              1135062187,
+              1141039260,
+              1141498615
+            ],
+            "float32Values": [
+              346.19989013671875,
+              335.3489685058594,
+              523.509521484375,
+              551.5463256835938
+            ],
+            "planeValuesDouble": [
+              897.7462158203125,
+              205.346435546875,
+              886.8952941894531,
+              216.19735717773438,
+              523.509521484375,
+              28.03680419921875
+            ],
+            "planeSigns": [
+              "+",
+              "+",
+              "+",
+              "+",
+              "+",
+              "+"
+            ]
+          },
+          {
+            "vertexIndex": 218,
+            "words": [
+              1136568754,
+              1134666139,
+              1141076182,
+              1141535399
+            ],
+            "float32Values": [
+              381.32574462890625,
+              323.2625427246094,
+              525.7630615234375,
+              553.7914428710938
+            ],
+            "planeValuesDouble": [
+              935.1171875,
+              172.4656982421875,
+              877.0539855957031,
+              230.52890014648438,
+              525.7630615234375,
+              28.02838134765625
+            ],
+            "planeSigns": [
+              "+",
+              "+",
+              "+",
+              "+",
+              "+",
+              "+"
+            ]
+          }
+        ],
+        "crossingPlanes": [],
+        "touchingPlanes": [],
+        "allOutsidePlanes": [],
+        "strictlyInsideAllPlanes": true
+      },
+      "gl": {
+        "triangleZeroBased": 72,
+        "triangleId": 73,
+        "vertices": [
+          {
+            "vertexIndex": 216,
+            "words": [
+              1136655351,
+              3282455750,
+              1141044146,
+              1141503483
+            ],
+            "float32Values": [
+              383.9684753417969,
+              -332.59979248046875,
+              523.8077392578125,
+              551.8434448242188
+            ],
+            "planeValuesDouble": [
+              935.8119201660156,
+              167.87496948242188,
+              219.24365234375,
+              884.4432373046875,
+              523.8077392578125,
+              28.03570556640625
+            ],
+            "planeSigns": [
+              "+",
+              "+",
+              "+",
+              "+",
+              "+",
+              "+"
+            ]
+          },
+          {
+            "vertexIndex": 217,
+            "words": [
+              1135445989,
+              3282508183,
+              1141039260,
+              1141498615
+            ],
+            "float32Values": [
+              347.0616760253906,
+              -334.1999206542969,
+              523.509521484375,
+              551.5463256835938
+            ],
+            "planeValuesDouble": [
+              898.6080017089844,
+              204.48464965820312,
+              217.34640502929688,
+              885.7462463378906,
+              523.509521484375,
+              28.03680419921875
+            ],
+            "planeSigns": [
+              "+",
+              "+",
+              "+",
+              "+",
+              "+",
+              "+"
+            ]
+          },
+          {
+            "vertexIndex": 218,
+            "words": [
+              1136597108,
+              3282111982,
+              1141076182,
+              1141535399
+            ],
+            "float32Values": [
+              382.1910400390625,
+              -322.10882568359375,
+              525.7630615234375,
+              553.7914428710938
+            ],
+            "planeValuesDouble": [
+              935.9824829101562,
+              171.60040283203125,
+              231.6826171875,
+              875.9002685546875,
+              525.7630615234375,
+              28.02838134765625
+            ],
+            "planeSigns": [
+              "+",
+              "+",
+              "+",
+              "+",
+              "+",
+              "+"
+            ]
+          }
+        ],
+        "crossingPlanes": [],
+        "touchingPlanes": [],
+        "allOutsidePlanes": [],
+        "strictlyInsideAllPlanes": true
+      }
+    },
+    {
+      "triangleZeroBased": 73,
+      "triangleId": 74,
+      "constantIdFloatDifferences": 37,
+      "native": {
+        "triangleZeroBased": 73,
+        "triangleId": 74,
+        "vertices": [
+          {
+            "vertexIndex": 219,
+            "words": [
+              1136568754,
+              1134666139,
+              1141076182,
+              1141535399
+            ],
+            "float32Values": [
+              381.32574462890625,
+              323.2625427246094,
+              525.7630615234375,
+              553.7914428710938
+            ],
+            "planeValuesDouble": [
+              935.1171875,
+              172.4656982421875,
+              877.0539855957031,
+              230.52890014648438,
+              525.7630615234375,
+              28.02838134765625
+            ],
+            "planeSigns": [
+              "+",
+              "+",
+              "+",
+              "+",
+              "+",
+              "+"
+            ]
+          },
+          {
+            "vertexIndex": 220,
+            "words": [
+              1135417750,
+              1135062187,
+              1141039260,
+              1141498615
+            ],
+            "float32Values": [
+              346.19989013671875,
+              335.3489685058594,
+              523.509521484375,
+              551.5463256835938
+            ],
+            "planeValuesDouble": [
+              897.7462158203125,
+              205.346435546875,
+              886.8952941894531,
+              216.19735717773438,
+              523.509521484375,
+              28.03680419921875
+            ],
+            "planeSigns": [
+              "+",
+              "+",
+              "+",
+              "+",
+              "+",
+              "+"
+            ]
+          },
+          {
+            "vertexIndex": 221,
+            "words": [
+              1135359408,
+              1134718552,
+              1141071296,
+              1141530531
+            ],
+            "float32Values": [
+              344.41943359375,
+              324.862060546875,
+              525.46484375,
+              553.4943237304688
+            ],
+            "planeValuesDouble": [
+              897.9137573242188,
+              209.07489013671875,
+              878.3563842773438,
+              228.63226318359375,
+              525.46484375,
+              28.02947998046875
+            ],
+            "planeSigns": [
+              "+",
+              "+",
+              "+",
+              "+",
+              "+",
+              "+"
+            ]
+          }
+        ],
+        "crossingPlanes": [],
+        "touchingPlanes": [],
+        "allOutsidePlanes": [],
+        "strictlyInsideAllPlanes": true
+      },
+      "gl": {
+        "triangleZeroBased": 73,
+        "triangleId": 74,
+        "vertices": [
+          {
+            "vertexIndex": 219,
+            "words": [
+              1136597108,
+              3282111982,
+              1141076182,
+              1141535399
+            ],
+            "float32Values": [
+              382.1910400390625,
+              -322.10882568359375,
+              525.7630615234375,
+              553.7914428710938
+            ],
+            "planeValuesDouble": [
+              935.9824829101562,
+              171.60040283203125,
+              231.6826171875,
+              875.9002685546875,
+              525.7630615234375,
+              28.02838134765625
+            ],
+            "planeSigns": [
+              "+",
+              "+",
+              "+",
+              "+",
+              "+",
+              "+"
+            ]
+          },
+          {
+            "vertexIndex": 220,
+            "words": [
+              1135445989,
+              3282508183,
+              1141039260,
+              1141498615
+            ],
+            "float32Values": [
+              347.0616760253906,
+              -334.1999206542969,
+              523.509521484375,
+              551.5463256835938
+            ],
+            "planeValuesDouble": [
+              898.6080017089844,
+              204.48464965820312,
+              217.34640502929688,
+              885.7462463378906,
+              523.509521484375,
+              28.03680419921875
+            ],
+            "planeSigns": [
+              "+",
+              "+",
+              "+",
+              "+",
+              "+",
+              "+"
+            ]
+          },
+          {
+            "vertexIndex": 221,
+            "words": [
+              1135387747,
+              3282164415,
+              1141071296,
+              1141530531
+            ],
+            "float32Values": [
+              345.2842712402344,
+              -323.7089538574219,
+              525.46484375,
+              553.4943237304688
+            ],
+            "planeValuesDouble": [
+              898.7785949707031,
+              208.21005249023438,
+              229.78536987304688,
+              877.2032775878906,
+              525.46484375,
+              28.02947998046875
+            ],
+            "planeSigns": [
+              "+",
+              "+",
+              "+",
+              "+",
+              "+",
+              "+"
+            ]
+          }
+        ],
+        "crossingPlanes": [],
+        "touchingPlanes": [],
+        "allOutsidePlanes": [],
+        "strictlyInsideAllPlanes": true
+      }
+    }
+  ],
+  "constantIdDifferentWords": 116,
+  "differencesByTriangleId": {
+    "72": 34,
+    "73": 45,
+    "74": 37
+  },
+  "focusNearPlaneRange": [
+    521.55908203125,
+    525.7630615234375
+  ],
+  "focusFarPlaneMarginRange": [
+    28.02838134765625,
+    28.04412841796875
+  ],
+  "focusStrictlyInsideNativeAndGl": true,
+  "focusCrossesNearPlane": false,
+  "focusCrossesFarPlane": false,
+  "focusCrossesAnyDeclaredPlane": false,
+  "conclusion": "All three triangles carrying the116 constant-ID residuals (IDs72/73/74) are strictly inside every declared plane in both authored Native q4 and actual GL clip coordinates. Their z is521.559..525.763 and w-z is28.028..28.044. The hypothesis that these triangles uniquely cross the near plane is contradicted by these archived inputs. Other crossing triangles are listed independently; no near-plane isolation GPU experiment is prepared from this negative result. This does not measure original FFP clip or uniquely assign an interpolation/hardware cause.",
+  "nextExperimentPrepared": false,
+  "originalFfpClipCaptured": false,
+  "productionChanged": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "sourceBindings": [
+    {
+      "path": "artifacts/th14/triangle-ownership-prepared-oct15/native/inputs.json",
+      "bytes": 51896,
+      "sha256": "e9342e80b1077b5e942eddb36d0926350ff77ed0e1cc1b86e05546add203d55b"
+    },
+    {
+      "path": "artifacts/th14/triangle-ownership-guarded-oct15/browser/capture/a-tf.f32",
+      "bytes": 5616,
+      "sha256": "34f2aeca54896dc327c99e9dbb82d4eae4b44df87cafe7be21919ec2ef2b0a66"
+    },
+    {
+      "path": "artifacts/th14/render-gap-next-oct15/capture/b-tf.f32",
+      "bytes": 5616,
+      "sha256": "34f2aeca54896dc327c99e9dbb82d4eae4b44df87cafe7be21919ec2ef2b0a66"
+    },
+    {
+      "path": "docs/porting/th14-triangle-ownership-float-words-observed-oct15.json",
+      "bytes": 2435,
+      "sha256": "cc7d4decfa08fe210c4868d1fab846180ac7fa52c720f6f1f65b971d7ff016b5"
+    },
+    {
+      "path": "artifacts/th14/triangle-ownership-guarded-oct15/raw-ownership-float-differences.json",
+      "bytes": 41200,
+      "sha256": "e09488ed90f8ffc0139720c86ffbedd0d968c769e92f04f98e90a48069148db1"
+    }
+  ],
+  "checkerBinding": {
+    "path": "artifacts/th14/triangle-clip-classification-oct15/check-clips.py",
+    "bytes": 7468,
+    "sha256": "15f3b92c013051570bcaa5f197c53d5661edba226b962a6ba2b1279fa5a4b24d"
+  },
+  "privateClassificationBinding": {
+    "path": "artifacts/th14/triangle-clip-classification-oct15/classification.json",
+    "bytes": 180070,
+    "sha256": "fed18119e597e6c84d7c24f0a4397e206c269c641aeba80d735a87772907040b"
+  }
+}

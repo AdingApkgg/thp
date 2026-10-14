@@ -1,0 +1,153 @@
+{
+  "independentStoredArtifactAudit": true,
+  "producerExecutedByChecker": false,
+  "status": "Expected INCOMPLETE at first unsupported new-worker FLS/TLS boundary",
+  "processExitObservation": {
+    "plannedExitCode": 2,
+    "toolReportedExitCode": 1,
+    "source": "Parent tool result notification; not an independently observed exit by this stored-only checker",
+    "differencePreserved": true
+  },
+  "mainPrefix": {
+    "frames": 9669,
+    "byteDifferences": 0,
+    "sha256": "befb7b0980869fabb6264492f86c3910ad075da662a8086f32fe2b5b4a8b6fad"
+  },
+  "creation": {
+    "kind": "DECLARED_CREATE_PENDING_WORKER",
+    "arguments": [
+      0,
+      0,
+      4741957,
+      805614480,
+      0,
+      5085428
+    ],
+    "caller": "0x485a59",
+    "returnedHandle": 2132148224,
+    "tidBefore": 47024,
+    "tidAfter": 2,
+    "espBefore": 1764696,
+    "espAfter": 1764724,
+    "originalCallback": 4415696,
+    "originalParameter": 0,
+    "actualOsThreadCreated": false,
+    "callbackInstructionsExecuted": 0
+  },
+  "publication": {
+    "kind": "ORIGINAL_OWNER_HANDLE_PUBLISHED",
+    "pc": "0x445b65",
+    "owner": 5085420,
+    "words": [
+      0,
+      2132148224,
+      2,
+      0,
+      1,
+      0,
+      4415696
+    ],
+    "hostOwnerHandleWrites": 0,
+    "mainInstructionNotExecuted": true
+  },
+  "mainPausedAt": "0x445b65",
+  "mainFsSelector": 83,
+  "workerFsSelector": 91,
+  "workerCodeObservations": 8,
+  "workerStop": {
+    "kind": "WORKER_UNSUPPORTED_FLS_TLS_BOUNDARY",
+    "thread": "worker2",
+    "address": "0x749835a0",
+    "names": [
+      "KERNEL32.dll!FlsGetValue"
+    ],
+    "caller": "0x48bed8",
+    "firstArgument": 5,
+    "fakeSuccessReturned": false,
+    "mainFlsBorrowed": false
+  },
+  "workerCallbackExecuted": false,
+  "workerCompleted": false,
+  "mainAdvancedAfterPublish": false,
+  "ownerCompletedActiveAtReport": [
+    0,
+    1
+  ],
+  "contextRestoreScope": "The bound helper executes full context_restore then compares listed CPU/FP-control/XMM/FS metadata. Empty producer error and restored main PC are consistent with that gate passing; complete FPU internals are not separately serialized.",
+  "physicalOsThreadCreated": false,
+  "actualAudioPlayed": false,
+  "stackRepairs": 0,
+  "mainGdi": {
+    "realLocalGdi": true,
+    "uploads": 60,
+    "toolSha256": "55ae10fc46e5d7e619058f10ea72ad0ebcbd0276707136098f3dd8788a238288"
+  },
+  "scope": "Same warm9669 before-player rows reproduced byte-for-byte; one declared CreateThread return/TID and actual original owner publication; independent guest worker CRT prefix stops before unsupported FLS success. Main actual GDI is retained, so the whole run is not pure Unicorn or no Native API calls. No OS thread, retail launch, audio, worker Sleep/elapsed-time/completion, scheduler parity, cold title or whole-game equivalence is established.",
+  "bindings": [
+    {
+      "path": "artifacts/th14/native-stored-warm-zps-normal-stage1-oct13/runs/6f91e206612a-1791907128945029900/receipt.json",
+      "bytes": 121587,
+      "sha256": "fa8aae3307c107fe967b6209f43b359c6f0c6d8485233acfad97c51be6cd30be"
+    },
+    {
+      "path": "artifacts/th14/warm-cooperative-worker-prepared-oct15/run-oct15/receipt.json",
+      "bytes": 126179,
+      "sha256": "b107658d3605c32e16cdffe06dc4a77407fb393cf41e1537e7a697d52de65b85"
+    },
+    {
+      "path": "artifacts/th14/native-stored-warm-zps-normal-stage1-oct13/runs/6f91e206612a-1791907128945029900/original-prefix.jsonl",
+      "bytes": 4403530,
+      "sha256": "befb7b0980869fabb6264492f86c3910ad075da662a8086f32fe2b5b4a8b6fad"
+    },
+    {
+      "path": "artifacts/th14/warm-cooperative-worker-prepared-oct15/run-oct15/original-prefix.jsonl",
+      "bytes": 4403530,
+      "sha256": "befb7b0980869fabb6264492f86c3910ad075da662a8086f32fe2b5b4a8b6fad"
+    },
+    {
+      "path": "artifacts/th14/warm-cooperative-worker-prepared-oct15/inputs.json",
+      "bytes": 9290,
+      "sha256": "e1e6dc1915ce1b700a5dfafdb8daaa6a15cf9cd75cdf5b40996d1c8c3b490b4b"
+    },
+    {
+      "path": "artifacts/th14/warm-cooperative-worker-prepared-oct15/plan.json",
+      "bytes": 6060,
+      "sha256": "5bc55da7abcbf2c74b8198d445f96eb7a1b5eb2208f4135bcfbeec20f36a4d3c"
+    },
+    {
+      "path": "artifacts/th14/warm-cooperative-worker-prepared-oct15/fixture.py",
+      "bytes": 84021,
+      "sha256": "41f17e7e320595bb6d2bc5348e04ceb57511a82adc15e6502bfddbe085a485be"
+    },
+    {
+      "path": "artifacts/th14/warm-cooperative-worker-prepared-oct15/cooperative_worker.py",
+      "bytes": 18182,
+      "sha256": "fbaac20e3e823fedb6f845313e906548aad9ea7d25dba17de633a40368951f6d"
+    },
+    {
+      "path": "artifacts/th14/warm-cooperative-worker-prepared-oct15/provider-base.py",
+      "bytes": 80967,
+      "sha256": "6f91e206612af75e0b51042922089b9b36865dcc7450f433652bc45514a6a499"
+    },
+    {
+      "path": "artifacts/th14/warm-cooperative-worker-prepared-oct15/th14-native-gdi-host.py",
+      "bytes": 12086,
+      "sha256": "55ae10fc46e5d7e619058f10ea72ad0ebcbd0276707136098f3dd8788a238288"
+    },
+    {
+      "path": "artifacts/th14/warm-cooperative-worker-prepared-oct15/th12-pe.py",
+      "bytes": 10363,
+      "sha256": "8363a43f72706bc933c7e04517178a6ba07b3c81aaf9a155be9326acbae77306"
+    },
+    {
+      "path": "artifacts/th14/warm-cooperative-worker-prepared-oct15/source-edits.json",
+      "bytes": 2397,
+      "sha256": "b50d4ee97045ee6296a38ff35ffbf1879cebab8bb30170b6b06598c707977db6"
+    },
+    {
+      "path": "artifacts/th14/cooperative-worker-independent-review-oct15/check-observed.py",
+      "bytes": 8036,
+      "sha256": "6d0248be6dafff487817e7e04414037ed427b6c1639dbf9fed89fd9b7bd998c5"
+    }
+  ]
+}
