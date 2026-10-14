@@ -27,7 +27,7 @@ touhou.vip 的每一部作品都是一个独立的 **可移植 C++ 重建 Runtim
 
 ## 当前状态
 
-当前仅推进TH14，进度表只标TH14。灵梦A Extra完整39,458帧与独立原版不间断复算，30个选定玩法字段差0，视觉差异保留；新修正目标失效顺序、共享旋转字段、敌人擦弹/身体判定及伤害区域指针清除。灵梦A Lunatic已从二面推进到五面，仍会失败，继续定位。咲夜A Normal96,016帧、灵梦B Lunatic98,074帧生产播放自然结束，Normal原版加载差异仍完整保留。当前普通Normal通关/结局/成绩与原版完整存档编解码已重验，图像/音频、普通原版完整流程、浏览器存储及整作1:1尚未完成。详见[Extra完整对照](docs/porting/th14-extra-continuous-retail-release-area-observed-oct14.json)、[发布说明](docs/GITHUB_RELEASE.md)及[方法调整](docs/porting/TH14_METHOD.md)。
+当前仅推进TH14，进度表只标TH14。修正追踪弹复用伤害区域的growth残留后，灵梦A Lunatic完整90,793次生产回调自然结束；独立原版全程复算29个选定玩法字段一致，25处加载玩法计数、视觉RNG及27处活动区域记录差异仍保留。灵梦A Extra39,458次原版回调的30玩法字段差0，咲夜A Normal96,016帧、灵梦B Lunatic98,074帧自然结束，四份输入ASAN／UBSan通过。浏览器普通录像保存、刷新、468帧自动播放及自然返回已观察验证。加载生命周期、全部对象、普通原版完整流程、所有自机／难度、图像／音频及整作1:1继续施工。详见[当前源码检查点](docs/porting/th14-focused-growth-current-checkpoint-oct14.json)、[发布说明](docs/GITHUB_RELEASE.md)及[方法调整](docs/porting/TH14_METHOD.md)。
 
 ## 素材与许可
 

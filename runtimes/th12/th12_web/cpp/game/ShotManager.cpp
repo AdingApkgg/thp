@@ -36,7 +36,9 @@ bool ShotManager::on_spawn(ShotState& s,i32){
     case 0:return true;
     case 1:s.target=nullptr;s.th14_target_id=0;return true;
     case 2:{auto* vm=animations.find(s.animation);if(!vm||!shot_th14_focused_spawn(s,player,*vm,world.enemies,&animations.rate))return false;
-        if(s.th14_area_slot<256){auto& a=th14_areas[s.th14_area_slot];a.flags|=2;a.radius=s.th14_area_radius;}return true;}
+        // 451b31..451b3a writes both radius and growth through the retained
+        // area pointer. Reused death/Bomb records can still have growth16.
+        if(s.th14_area_slot<256){auto& a=th14_areas[s.th14_area_slot];a.flags|=2;a.radius=s.th14_area_radius;a.growth=s.th14_area_growth;}return true;}
     case 3:if(s.th14_area_slot>=256)return false;shot_th14_beam_spawn(s,th14_areas[s.th14_area_slot]);return world.sound(20,player.position.x);
     case 4:shot_th14_spread_spawn(s,animations.visual_rng);return true;
     case 5:shot_th14_flame_spawn(s,animations.visual_rng);return true;

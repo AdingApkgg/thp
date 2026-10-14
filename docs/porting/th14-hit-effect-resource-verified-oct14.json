@@ -1,0 +1,1648 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "beforeProductionHeaderSha256": "96c4fe64c133a57af4f8beff18b68120ddc44d8d74ba5907c6aa9fa1eeb115ca",
+  "nativeResourceOwnership": {
+    "visualManagerGlobal": "0x4db53c",
+    "bulletOffset": "0x14",
+    "bulletFileId": 7,
+    "effectOffset": "0x10",
+    "effectFileId": 8,
+    "loaderInstructions": [
+      {
+        "address": "0x41eb80",
+        "bytes": "57",
+        "mnemonic": "push",
+        "operands": "edi"
+      },
+      {
+        "address": "0x41eb81",
+        "bytes": "689cd84b00",
+        "mnemonic": "push",
+        "operands": "0x4bd89c"
+      },
+      {
+        "address": "0x41eb86",
+        "bytes": "6a07",
+        "mnemonic": "push",
+        "operands": "7"
+      },
+      {
+        "address": "0x41eb88",
+        "bytes": "8bf9",
+        "mnemonic": "mov",
+        "operands": "edi, ecx"
+      },
+      {
+        "address": "0x41eb8a",
+        "bytes": "e801e50500",
+        "mnemonic": "call",
+        "operands": "0x47d090"
+      },
+      {
+        "address": "0x41eb8f",
+        "bytes": "894714",
+        "mnemonic": "mov",
+        "operands": "dword ptr [edi + 0x14], eax"
+      },
+      {
+        "address": "0x41eb92",
+        "bytes": "85c0",
+        "mnemonic": "test",
+        "operands": "eax, eax"
+      },
+      {
+        "address": "0x41eb94",
+        "bytes": "7517",
+        "mnemonic": "jne",
+        "operands": "0x41ebad"
+      },
+      {
+        "address": "0x41eb96",
+        "bytes": "68fcda4b00",
+        "mnemonic": "push",
+        "operands": "0x4bdafc"
+      },
+      {
+        "address": "0x41eb9b",
+        "bytes": "68506f4d00",
+        "mnemonic": "push",
+        "operands": "0x4d6f50"
+      },
+      {
+        "address": "0x41eba0",
+        "bytes": "e85b45feff",
+        "mnemonic": "call",
+        "operands": "0x403100"
+      },
+      {
+        "address": "0x41eba5",
+        "bytes": "83c408",
+        "mnemonic": "add",
+        "operands": "esp, 8"
+      },
+      {
+        "address": "0x41eba8",
+        "bytes": "83c8ff",
+        "mnemonic": "or",
+        "operands": "eax, 0xffffffff"
+      },
+      {
+        "address": "0x41ebab",
+        "bytes": "5f",
+        "mnemonic": "pop",
+        "operands": "edi"
+      },
+      {
+        "address": "0x41ebac",
+        "bytes": "c3",
+        "mnemonic": "ret",
+        "operands": ""
+      },
+      {
+        "address": "0x41ebad",
+        "bytes": "689cda4b00",
+        "mnemonic": "push",
+        "operands": "0x4bda9c"
+      },
+      {
+        "address": "0x41ebb2",
+        "bytes": "6a08",
+        "mnemonic": "push",
+        "operands": "8"
+      },
+      {
+        "address": "0x41ebb4",
+        "bytes": "e8d7e40500",
+        "mnemonic": "call",
+        "operands": "0x47d090"
+      },
+      {
+        "address": "0x41ebb9",
+        "bytes": "894710",
+        "mnemonic": "mov",
+        "operands": "dword ptr [edi + 0x10], eax"
+      },
+      {
+        "address": "0x41ebbc",
+        "bytes": "85c0",
+        "mnemonic": "test",
+        "operands": "eax, eax"
+      },
+      {
+        "address": "0x41ebbe",
+        "bytes": "74d6",
+        "mnemonic": "je",
+        "operands": "0x41eb96"
+      }
+    ]
+  },
+  "nativeHitFactories": {
+    "focused": {
+      "resource": "effect.anm",
+      "script": 149,
+      "layer": -1,
+      "instructions": [
+        {
+          "address": "0x452161",
+          "bytes": "6a00",
+          "mnemonic": "push",
+          "operands": "0"
+        },
+        {
+          "address": "0x452163",
+          "bytes": "6a00",
+          "mnemonic": "push",
+          "operands": "0"
+        },
+        {
+          "address": "0x452165",
+          "bytes": "6aff",
+          "mnemonic": "push",
+          "operands": "-1"
+        },
+        {
+          "address": "0x452167",
+          "bytes": "51",
+          "mnemonic": "push",
+          "operands": "ecx"
+        },
+        {
+          "address": "0x452168",
+          "bytes": "8b0d3cb54d00",
+          "mnemonic": "mov",
+          "operands": "ecx, dword ptr [0x4db53c]"
+        },
+        {
+          "address": "0x45216e",
+          "bytes": "f30f110c24",
+          "mnemonic": "movss",
+          "operands": "dword ptr [esp], xmm1"
+        },
+        {
+          "address": "0x452173",
+          "bytes": "8b4910",
+          "mnemonic": "mov",
+          "operands": "ecx, dword ptr [ecx + 0x10]"
+        },
+        {
+          "address": "0x452176",
+          "bytes": "8d45ec",
+          "mnemonic": "lea",
+          "operands": "eax, [ebp - 0x14]"
+        },
+        {
+          "address": "0x452179",
+          "bytes": "50",
+          "mnemonic": "push",
+          "operands": "eax"
+        },
+        {
+          "address": "0x45217a",
+          "bytes": "6895000000",
+          "mnemonic": "push",
+          "operands": "0x95"
+        },
+        {
+          "address": "0x45217f",
+          "bytes": "8d45f8",
+          "mnemonic": "lea",
+          "operands": "eax, [ebp - 8]"
+        },
+        {
+          "address": "0x452182",
+          "bytes": "50",
+          "mnemonic": "push",
+          "operands": "eax"
+        },
+        {
+          "address": "0x452183",
+          "bytes": "e888cb0200",
+          "mnemonic": "call",
+          "operands": "0x47ed10"
+        },
+        {
+          "address": "0x452188",
+          "bytes": "837e1c1e",
+          "mnemonic": "cmp",
+          "operands": "dword ptr [esi + 0x1c], 0x1e"
+        }
+      ]
+    },
+    "plain": {
+      "resource": "effect.anm",
+      "script": 150,
+      "layer": -1,
+      "instructions": [
+        {
+          "address": "0x4522e7",
+          "bytes": "6a00",
+          "mnemonic": "push",
+          "operands": "0"
+        },
+        {
+          "address": "0x4522e9",
+          "bytes": "6a00",
+          "mnemonic": "push",
+          "operands": "0"
+        },
+        {
+          "address": "0x4522eb",
+          "bytes": "6aff",
+          "mnemonic": "push",
+          "operands": "-1"
+        },
+        {
+          "address": "0x4522ed",
+          "bytes": "51",
+          "mnemonic": "push",
+          "operands": "ecx"
+        },
+        {
+          "address": "0x4522ee",
+          "bytes": "8b0d3cb54d00",
+          "mnemonic": "mov",
+          "operands": "ecx, dword ptr [0x4db53c]"
+        },
+        {
+          "address": "0x4522f4",
+          "bytes": "f30f110c24",
+          "mnemonic": "movss",
+          "operands": "dword ptr [esp], xmm1"
+        },
+        {
+          "address": "0x4522f9",
+          "bytes": "8b4910",
+          "mnemonic": "mov",
+          "operands": "ecx, dword ptr [ecx + 0x10]"
+        },
+        {
+          "address": "0x4522fc",
+          "bytes": "8d4754",
+          "mnemonic": "lea",
+          "operands": "eax, [edi + 0x54]"
+        },
+        {
+          "address": "0x4522ff",
+          "bytes": "50",
+          "mnemonic": "push",
+          "operands": "eax"
+        },
+        {
+          "address": "0x452300",
+          "bytes": "6896000000",
+          "mnemonic": "push",
+          "operands": "0x96"
+        },
+        {
+          "address": "0x452305",
+          "bytes": "8d45fc",
+          "mnemonic": "lea",
+          "operands": "eax, [ebp - 4]"
+        },
+        {
+          "address": "0x452308",
+          "bytes": "50",
+          "mnemonic": "push",
+          "operands": "eax"
+        },
+        {
+          "address": "0x452309",
+          "bytes": "e802ca0200",
+          "mnemonic": "call",
+          "operands": "0x47ed10"
+        }
+      ]
+    }
+  },
+  "nativeFactoryTemplateLayerInstructions": [
+    {
+      "address": "0x47ed4b",
+      "bytes": "ff750c",
+      "mnemonic": "push",
+      "operands": "dword ptr [ebp + 0xc]"
+    },
+    {
+      "address": "0x47ed4e",
+      "bytes": "8bcf",
+      "mnemonic": "mov",
+      "operands": "ecx, edi"
+    },
+    {
+      "address": "0x47ed50",
+      "bytes": "56",
+      "mnemonic": "push",
+      "operands": "esi"
+    },
+    {
+      "address": "0x47ed51",
+      "bytes": "e8aac1f8ff",
+      "mnemonic": "call",
+      "operands": "0x40af00"
+    },
+    {
+      "address": "0x47ed56",
+      "bytes": "814e1c00020000",
+      "mnemonic": "or",
+      "operands": "dword ptr [esi + 0x1c], 0x200"
+    },
+    {
+      "address": "0x47ed5d",
+      "bytes": "8b4d18",
+      "mnemonic": "mov",
+      "operands": "ecx, dword ptr [ebp + 0x18]"
+    },
+    {
+      "address": "0x47ed60",
+      "bytes": "8b461c",
+      "mnemonic": "mov",
+      "operands": "eax, dword ptr [esi + 0x1c]"
+    },
+    {
+      "address": "0x47ed63",
+      "bytes": "85c9",
+      "mnemonic": "test",
+      "operands": "ecx, ecx"
+    },
+    {
+      "address": "0x47ed65",
+      "bytes": "7815",
+      "mnemonic": "js",
+      "operands": "0x47ed7c"
+    },
+    {
+      "address": "0x47ed67",
+      "bytes": "894e24",
+      "mnemonic": "mov",
+      "operands": "dword ptr [esi + 0x24], ecx"
+    },
+    {
+      "address": "0x47ed6a",
+      "bytes": "83f917",
+      "mnemonic": "cmp",
+      "operands": "ecx, 0x17"
+    },
+    {
+      "address": "0x47ed6d",
+      "bytes": "7f0d",
+      "mnemonic": "jg",
+      "operands": "0x47ed7c"
+    },
+    {
+      "address": "0x47ed6f",
+      "bytes": "25fffffbff",
+      "mnemonic": "and",
+      "operands": "eax, 0xfffbffff"
+    },
+    {
+      "address": "0x47ed74",
+      "bytes": "0d00000200",
+      "mnemonic": "or",
+      "operands": "eax, 0x20000"
+    },
+    {
+      "address": "0x47ed79",
+      "bytes": "89461c",
+      "mnemonic": "mov",
+      "operands": "dword ptr [esi + 0x1c], eax"
+    }
+  ],
+  "nativeFactoryRetainsTemplateLayerWhenNegative": true,
+  "beforeProductionHitFactories": {
+    "focused": {
+      "resource": "bullet.anm",
+      "script": 149,
+      "file": 7,
+      "layer": 0
+    },
+    "plain": {
+      "resource": "bullet.anm",
+      "script": 150,
+      "file": 7,
+      "layer": 0
+    }
+  },
+  "originalScripts": [
+    {
+      "resource": "bullet.anm",
+      "resourceSha256": "f7eafe455afd8d6202228f2b79c32f43c533f2475bf3e3962f2eb7bd2e21da0c",
+      "script": 149,
+      "sourceId": 149,
+      "scriptSha256": "d9ca7d74c3f0fce4844b2b22769c3a1cf808de34372a9b3a0bdf47b66b8dcb3d",
+      "commands": [
+        {
+          "offset": 0,
+          "opcode": 302,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "01000000"
+        },
+        {
+          "offset": 12,
+          "opcode": 304,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "14000000"
+        },
+        {
+          "offset": 24,
+          "opcode": 404,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "4000000040000000ff000000"
+        },
+        {
+          "offset": 44,
+          "opcode": 300,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "0f020000"
+        },
+        {
+          "offset": 56,
+          "opcode": 403,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "40000000"
+        },
+        {
+          "offset": 68,
+          "opcode": 117,
+          "time": 0,
+          "references": 3,
+          "argumentsHex": "00501c4600701c4666666640"
+        },
+        {
+          "offset": 88,
+          "opcode": 117,
+          "time": 0,
+          "references": 3,
+          "argumentsHex": "00541c4600701c4666666640"
+        },
+        {
+          "offset": 108,
+          "opcode": 400,
+          "time": 0,
+          "references": 3,
+          "argumentsHex": "00501c4600541c4600000000"
+        },
+        {
+          "offset": 128,
+          "opcode": 402,
+          "time": 0,
+          "references": 0,
+          "argumentsHex": "9a99993e9a99993e"
+        },
+        {
+          "offset": 144,
+          "opcode": 412,
+          "time": 0,
+          "references": 0,
+          "argumentsHex": "10000000000000003d0ad73e3d0ad73e"
+        },
+        {
+          "offset": 168,
+          "opcode": 401,
+          "time": 0,
+          "references": 4,
+          "argumentsHex": "000000000000000000681c46"
+        },
+        {
+          "offset": 188,
+          "opcode": 300,
+          "time": 2,
+          "references": 0,
+          "argumentsHex": "10020000"
+        },
+        {
+          "offset": 200,
+          "opcode": 300,
+          "time": 4,
+          "references": 0,
+          "argumentsHex": "11020000"
+        },
+        {
+          "offset": 212,
+          "opcode": 300,
+          "time": 6,
+          "references": 0,
+          "argumentsHex": "12020000"
+        },
+        {
+          "offset": 224,
+          "opcode": 300,
+          "time": 8,
+          "references": 0,
+          "argumentsHex": "13020000"
+        },
+        {
+          "offset": 236,
+          "opcode": 300,
+          "time": 10,
+          "references": 0,
+          "argumentsHex": "14020000"
+        },
+        {
+          "offset": 248,
+          "opcode": 300,
+          "time": 12,
+          "references": 0,
+          "argumentsHex": "15020000"
+        },
+        {
+          "offset": 260,
+          "opcode": 300,
+          "time": 14,
+          "references": 0,
+          "argumentsHex": "16020000"
+        },
+        {
+          "offset": 272,
+          "opcode": 1,
+          "time": 16,
+          "references": 0,
+          "argumentsHex": ""
+        },
+        {
+          "offset": 280,
+          "opcode": -1,
+          "time": 0,
+          "references": 0,
+          "declaredLength": 0,
+          "argumentsHex": ""
+        }
+      ]
+    },
+    {
+      "resource": "bullet.anm",
+      "resourceSha256": "f7eafe455afd8d6202228f2b79c32f43c533f2475bf3e3962f2eb7bd2e21da0c",
+      "script": 150,
+      "sourceId": 150,
+      "scriptSha256": "7e855fa977d0ff4ddd812bd40f8f672d698b7dc9e594579132397a495341f374",
+      "commands": [
+        {
+          "offset": 0,
+          "opcode": 302,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "01000000"
+        },
+        {
+          "offset": 12,
+          "opcode": 304,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "15000000"
+        },
+        {
+          "offset": 24,
+          "opcode": 404,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "4000000040000000ff000000"
+        },
+        {
+          "offset": 44,
+          "opcode": 303,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "01000000"
+        },
+        {
+          "offset": 56,
+          "opcode": 300,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "0f020000"
+        },
+        {
+          "offset": 68,
+          "opcode": 403,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "e0000000"
+        },
+        {
+          "offset": 80,
+          "opcode": 117,
+          "time": 0,
+          "references": 3,
+          "argumentsHex": "00501c4600701c4666666640"
+        },
+        {
+          "offset": 100,
+          "opcode": 117,
+          "time": 0,
+          "references": 3,
+          "argumentsHex": "00541c4600701c4666666640"
+        },
+        {
+          "offset": 120,
+          "opcode": 400,
+          "time": 0,
+          "references": 3,
+          "argumentsHex": "00501c4600541c4600000000"
+        },
+        {
+          "offset": 140,
+          "opcode": 402,
+          "time": 0,
+          "references": 0,
+          "argumentsHex": "9a99993e9a99993e"
+        },
+        {
+          "offset": 156,
+          "opcode": 412,
+          "time": 0,
+          "references": 0,
+          "argumentsHex": "10000000000000006666e63e6666e63e"
+        },
+        {
+          "offset": 180,
+          "opcode": 401,
+          "time": 0,
+          "references": 4,
+          "argumentsHex": "000000000000000000681c46"
+        },
+        {
+          "offset": 200,
+          "opcode": 300,
+          "time": 2,
+          "references": 0,
+          "argumentsHex": "10020000"
+        },
+        {
+          "offset": 212,
+          "opcode": 300,
+          "time": 4,
+          "references": 0,
+          "argumentsHex": "11020000"
+        },
+        {
+          "offset": 224,
+          "opcode": 300,
+          "time": 6,
+          "references": 0,
+          "argumentsHex": "12020000"
+        },
+        {
+          "offset": 236,
+          "opcode": 300,
+          "time": 8,
+          "references": 0,
+          "argumentsHex": "13020000"
+        },
+        {
+          "offset": 248,
+          "opcode": 300,
+          "time": 10,
+          "references": 0,
+          "argumentsHex": "14020000"
+        },
+        {
+          "offset": 260,
+          "opcode": 300,
+          "time": 12,
+          "references": 0,
+          "argumentsHex": "15020000"
+        },
+        {
+          "offset": 272,
+          "opcode": 300,
+          "time": 14,
+          "references": 0,
+          "argumentsHex": "16020000"
+        },
+        {
+          "offset": 284,
+          "opcode": 1,
+          "time": 16,
+          "references": 0,
+          "argumentsHex": ""
+        },
+        {
+          "offset": 292,
+          "opcode": -1,
+          "time": 0,
+          "references": 0,
+          "declaredLength": 0,
+          "argumentsHex": ""
+        }
+      ]
+    },
+    {
+      "resource": "effect.anm",
+      "resourceSha256": "bbd7205654c87677c4a582fc5e99c2884e724f501b3d281c75bf207a76095559",
+      "script": 143,
+      "sourceId": 143,
+      "scriptSha256": "9c80145532fb2cd1fdb43fa0b5e80ac07429f40f34f7b107240de63271b9868d",
+      "commands": [
+        {
+          "offset": 0,
+          "opcode": 421,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "01000000"
+        },
+        {
+          "offset": 12,
+          "opcode": 302,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "01000000"
+        },
+        {
+          "offset": 24,
+          "opcode": 304,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "15000000"
+        },
+        {
+          "offset": 36,
+          "opcode": 313,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "02000000"
+        },
+        {
+          "offset": 48,
+          "opcode": 436,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "0000004200000000"
+        },
+        {
+          "offset": 64,
+          "opcode": 403,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "80000000"
+        },
+        {
+          "offset": 76,
+          "opcode": 300,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "28000000"
+        },
+        {
+          "offset": 88,
+          "opcode": 509,
+          "time": 0,
+          "references": 0,
+          "argumentsHex": ""
+        },
+        {
+          "offset": 96,
+          "opcode": 404,
+          "time": 0,
+          "references": 7,
+          "argumentsHex": "102700001127000012270000"
+        },
+        {
+          "offset": 116,
+          "opcode": 400,
+          "time": 0,
+          "references": 3,
+          "argumentsHex": "00c41c4600c81c4600000000"
+        },
+        {
+          "offset": 136,
+          "opcode": 101,
+          "time": 0,
+          "references": 3,
+          "argumentsHex": "00b01c4600cc1c46"
+        },
+        {
+          "offset": 152,
+          "opcode": 401,
+          "time": 0,
+          "references": 5,
+          "argumentsHex": "00681c460000000000681c46"
+        },
+        {
+          "offset": 172,
+          "opcode": 120,
+          "time": 0,
+          "references": 3,
+          "argumentsHex": "132700002627000002000000"
+        },
+        {
+          "offset": 192,
+          "opcode": 204,
+          "time": 0,
+          "references": 1,
+          "argumentsHex": "1327000000000000f800000000000000"
+        },
+        {
+          "offset": 216,
+          "opcode": 101,
+          "time": 0,
+          "references": 1,
+          "argumentsHex": "005c1c460000803f"
+        },
+        {
+          "offset": 232,
+          "opcode": 200,
+          "time": 0,
+          "references": 0,
+          "argumentsHex": "0801000000000000"
+        },
+        {
+          "offset": 248,
+          "opcode": 101,
+          "time": 0,
+          "references": 1,
+          "argumentsHex": "005c1c46000080bf"
+        },
+        {
+          "offset": 264,
+          "opcode": 402,
+          "time": 0,
+          "references": 2,
+          "argumentsHex": "0000803f005c1c46"
+        },
+        {
+          "offset": 280,
+          "opcode": 300,
+          "time": 2,
+          "references": 0,
+          "argumentsHex": "29000000"
+        },
+        {
+          "offset": 292,
+          "opcode": 300,
+          "time": 4,
+          "references": 0,
+          "argumentsHex": "2a000000"
+        },
+        {
+          "offset": 304,
+          "opcode": 300,
+          "time": 6,
+          "references": 0,
+          "argumentsHex": "2b000000"
+        },
+        {
+          "offset": 316,
+          "opcode": 300,
+          "time": 8,
+          "references": 0,
+          "argumentsHex": "2c000000"
+        },
+        {
+          "offset": 328,
+          "opcode": 300,
+          "time": 10,
+          "references": 0,
+          "argumentsHex": "2d000000"
+        },
+        {
+          "offset": 340,
+          "opcode": 300,
+          "time": 12,
+          "references": 0,
+          "argumentsHex": "2e000000"
+        },
+        {
+          "offset": 352,
+          "opcode": 300,
+          "time": 14,
+          "references": 0,
+          "argumentsHex": "2f000000"
+        },
+        {
+          "offset": 364,
+          "opcode": 300,
+          "time": 16,
+          "references": 0,
+          "argumentsHex": "30000000"
+        },
+        {
+          "offset": 376,
+          "opcode": 300,
+          "time": 18,
+          "references": 0,
+          "argumentsHex": "31000000"
+        },
+        {
+          "offset": 388,
+          "opcode": 300,
+          "time": 20,
+          "references": 0,
+          "argumentsHex": "32000000"
+        },
+        {
+          "offset": 400,
+          "opcode": 300,
+          "time": 22,
+          "references": 0,
+          "argumentsHex": "33000000"
+        },
+        {
+          "offset": 412,
+          "opcode": 1,
+          "time": 24,
+          "references": 0,
+          "argumentsHex": ""
+        },
+        {
+          "offset": 420,
+          "opcode": -1,
+          "time": 0,
+          "references": 0,
+          "declaredLength": 0,
+          "argumentsHex": ""
+        }
+      ]
+    },
+    {
+      "resource": "effect.anm",
+      "resourceSha256": "bbd7205654c87677c4a582fc5e99c2884e724f501b3d281c75bf207a76095559",
+      "script": 149,
+      "sourceId": 149,
+      "scriptSha256": "ab5a28b8a8bcd071ae51a6607b9cc8635e3b291b02bcb856c4e507c93050e46b",
+      "commands": [
+        {
+          "offset": 0,
+          "opcode": 403,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "00000000"
+        },
+        {
+          "offset": 12,
+          "opcode": 302,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "01000000"
+        },
+        {
+          "offset": 24,
+          "opcode": 304,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "15000000"
+        },
+        {
+          "offset": 36,
+          "opcode": 402,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "0000803f000080bf"
+        },
+        {
+          "offset": 52,
+          "opcode": 436,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "000000c200000000"
+        },
+        {
+          "offset": 68,
+          "opcode": 402,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "0000403f0000403f"
+        },
+        {
+          "offset": 84,
+          "opcode": 100,
+          "time": -1,
+          "references": 1,
+          "argumentsHex": "10270000ff000000"
+        },
+        {
+          "offset": 100,
+          "opcode": 100,
+          "time": -1,
+          "references": 1,
+          "argumentsHex": "1127000000000000"
+        },
+        {
+          "offset": 116,
+          "opcode": 100,
+          "time": -1,
+          "references": 1,
+          "argumentsHex": "1227000000000000"
+        },
+        {
+          "offset": 132,
+          "opcode": 130,
+          "time": -1,
+          "references": 7,
+          "argumentsHex": "00581c46005c1c4600a41c4600000042"
+        },
+        {
+          "offset": 156,
+          "opcode": 100,
+          "time": -1,
+          "references": 1,
+          "argumentsHex": "1827000002000000"
+        },
+        {
+          "offset": 172,
+          "opcode": 101,
+          "time": -1,
+          "references": 1,
+          "argumentsHex": "00501c4600000000"
+        },
+        {
+          "offset": 188,
+          "opcode": 101,
+          "time": -1,
+          "references": 1,
+          "argumentsHex": "00541c4600000000"
+        },
+        {
+          "offset": 204,
+          "opcode": 119,
+          "time": -1,
+          "references": 1,
+          "argumentsHex": "00cc1c46db0f494000002041"
+        },
+        {
+          "offset": 224,
+          "opcode": 131,
+          "time": 0,
+          "references": 3,
+          "argumentsHex": "00c41c4600c81c460000000000008041"
+        },
+        {
+          "offset": 248,
+          "opcode": 103,
+          "time": 0,
+          "references": 3,
+          "argumentsHex": "00c41c4600501c46"
+        },
+        {
+          "offset": 264,
+          "opcode": 103,
+          "time": 0,
+          "references": 3,
+          "argumentsHex": "00c81c4600541c46"
+        },
+        {
+          "offset": 280,
+          "opcode": 103,
+          "time": 0,
+          "references": 3,
+          "argumentsHex": "00501c4600581c46"
+        },
+        {
+          "offset": 296,
+          "opcode": 103,
+          "time": 0,
+          "references": 3,
+          "argumentsHex": "00541c46005c1c46"
+        },
+        {
+          "offset": 312,
+          "opcode": 107,
+          "time": 0,
+          "references": 1,
+          "argumentsHex": "00cc1c466666a63f"
+        },
+        {
+          "offset": 328,
+          "opcode": 500,
+          "time": 0,
+          "references": 0,
+          "argumentsHex": "8f000000"
+        },
+        {
+          "offset": 340,
+          "opcode": 201,
+          "time": 7,
+          "references": 1,
+          "argumentsHex": "18270000e000000000000000"
+        },
+        {
+          "offset": 360,
+          "opcode": 1,
+          "time": 37,
+          "references": 0,
+          "argumentsHex": ""
+        },
+        {
+          "offset": 368,
+          "opcode": -1,
+          "time": 0,
+          "references": 0,
+          "declaredLength": 0,
+          "argumentsHex": ""
+        }
+      ]
+    },
+    {
+      "resource": "effect.anm",
+      "resourceSha256": "bbd7205654c87677c4a582fc5e99c2884e724f501b3d281c75bf207a76095559",
+      "script": 150,
+      "sourceId": 150,
+      "scriptSha256": "c10f166e67786084b98ca5089fab3bd9cba0a1150ae7df45cb78171069318f4c",
+      "commands": [
+        {
+          "offset": 0,
+          "opcode": 421,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "01000000"
+        },
+        {
+          "offset": 12,
+          "opcode": 302,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "01000000"
+        },
+        {
+          "offset": 24,
+          "opcode": 304,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "13000000"
+        },
+        {
+          "offset": 36,
+          "opcode": 300,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "34000000"
+        },
+        {
+          "offset": 48,
+          "opcode": 303,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "01000000"
+        },
+        {
+          "offset": 60,
+          "opcode": 412,
+          "time": -1,
+          "references": 0,
+          "argumentsHex": "14000000000000000000004000000040"
+        },
+        {
+          "offset": 84,
+          "opcode": 300,
+          "time": 2,
+          "references": 0,
+          "argumentsHex": "35000000"
+        },
+        {
+          "offset": 96,
+          "opcode": 300,
+          "time": 4,
+          "references": 0,
+          "argumentsHex": "36000000"
+        },
+        {
+          "offset": 108,
+          "opcode": 300,
+          "time": 6,
+          "references": 0,
+          "argumentsHex": "37000000"
+        },
+        {
+          "offset": 120,
+          "opcode": 300,
+          "time": 8,
+          "references": 0,
+          "argumentsHex": "38000000"
+        },
+        {
+          "offset": 132,
+          "opcode": 300,
+          "time": 10,
+          "references": 0,
+          "argumentsHex": "39000000"
+        },
+        {
+          "offset": 144,
+          "opcode": 300,
+          "time": 12,
+          "references": 0,
+          "argumentsHex": "3a000000"
+        },
+        {
+          "offset": 156,
+          "opcode": 300,
+          "time": 14,
+          "references": 0,
+          "argumentsHex": "3b000000"
+        },
+        {
+          "offset": 168,
+          "opcode": 300,
+          "time": 16,
+          "references": 0,
+          "argumentsHex": "3c000000"
+        },
+        {
+          "offset": 180,
+          "opcode": 1,
+          "time": 18,
+          "references": 0,
+          "argumentsHex": ""
+        },
+        {
+          "offset": 188,
+          "opcode": -1,
+          "time": 0,
+          "references": 0,
+          "declaredLength": 0,
+          "argumentsHex": ""
+        }
+      ]
+    }
+  ],
+  "nativeAnimationObservations": [
+    {
+      "resource": "bullet.anm",
+      "script": 149,
+      "timeline": [
+        {
+          "update": 0,
+          "visualCallsConsumed": 6,
+          "layer": 20,
+          "childScripts": []
+        },
+        {
+          "update": 1,
+          "visualCallsConsumed": 0,
+          "layer": 20,
+          "childScripts": []
+        },
+        {
+          "update": 2,
+          "visualCallsConsumed": 0,
+          "layer": 20,
+          "childScripts": []
+        },
+        {
+          "update": 3,
+          "visualCallsConsumed": 0,
+          "layer": 20,
+          "childScripts": []
+        },
+        {
+          "update": 4,
+          "visualCallsConsumed": 0,
+          "layer": 20,
+          "childScripts": []
+        },
+        {
+          "update": 5,
+          "visualCallsConsumed": 0,
+          "layer": 20,
+          "childScripts": []
+        },
+        {
+          "update": 6,
+          "visualCallsConsumed": 0,
+          "layer": 20,
+          "childScripts": []
+        },
+        {
+          "update": 7,
+          "visualCallsConsumed": 0,
+          "layer": 20,
+          "childScripts": []
+        },
+        {
+          "update": 8,
+          "visualCallsConsumed": 0,
+          "layer": 20,
+          "childScripts": []
+        },
+        {
+          "update": 9,
+          "visualCallsConsumed": 0,
+          "layer": 20,
+          "childScripts": []
+        }
+      ]
+    },
+    {
+      "resource": "bullet.anm",
+      "script": 150,
+      "timeline": [
+        {
+          "update": 0,
+          "visualCallsConsumed": 6,
+          "layer": 21,
+          "childScripts": []
+        },
+        {
+          "update": 1,
+          "visualCallsConsumed": 0,
+          "layer": 21,
+          "childScripts": []
+        },
+        {
+          "update": 2,
+          "visualCallsConsumed": 0,
+          "layer": 21,
+          "childScripts": []
+        },
+        {
+          "update": 3,
+          "visualCallsConsumed": 0,
+          "layer": 21,
+          "childScripts": []
+        },
+        {
+          "update": 4,
+          "visualCallsConsumed": 0,
+          "layer": 21,
+          "childScripts": []
+        },
+        {
+          "update": 5,
+          "visualCallsConsumed": 0,
+          "layer": 21,
+          "childScripts": []
+        },
+        {
+          "update": 6,
+          "visualCallsConsumed": 0,
+          "layer": 21,
+          "childScripts": []
+        },
+        {
+          "update": 7,
+          "visualCallsConsumed": 0,
+          "layer": 21,
+          "childScripts": []
+        },
+        {
+          "update": 8,
+          "visualCallsConsumed": 0,
+          "layer": 21,
+          "childScripts": []
+        },
+        {
+          "update": 9,
+          "visualCallsConsumed": 0,
+          "layer": 21,
+          "childScripts": []
+        }
+      ]
+    },
+    {
+      "resource": "effect.anm",
+      "script": 149,
+      "timeline": [
+        {
+          "update": 0,
+          "visualCallsConsumed": 10,
+          "layer": 21,
+          "childScripts": [
+            143
+          ]
+        },
+        {
+          "update": 1,
+          "visualCallsConsumed": 0,
+          "layer": 21,
+          "childScripts": [
+            143
+          ]
+        },
+        {
+          "update": 2,
+          "visualCallsConsumed": 0,
+          "layer": 21,
+          "childScripts": [
+            143
+          ]
+        },
+        {
+          "update": 3,
+          "visualCallsConsumed": 0,
+          "layer": 21,
+          "childScripts": [
+            143
+          ]
+        },
+        {
+          "update": 4,
+          "visualCallsConsumed": 0,
+          "layer": 21,
+          "childScripts": [
+            143
+          ]
+        },
+        {
+          "update": 5,
+          "visualCallsConsumed": 0,
+          "layer": 21,
+          "childScripts": [
+            143
+          ]
+        },
+        {
+          "update": 6,
+          "visualCallsConsumed": 0,
+          "layer": 21,
+          "childScripts": [
+            143
+          ]
+        },
+        {
+          "update": 7,
+          "visualCallsConsumed": 10,
+          "layer": 21,
+          "childScripts": [
+            143,
+            143
+          ]
+        },
+        {
+          "update": 8,
+          "visualCallsConsumed": 0,
+          "layer": 21,
+          "childScripts": [
+            143,
+            143
+          ]
+        },
+        {
+          "update": 9,
+          "visualCallsConsumed": 0,
+          "layer": 21,
+          "childScripts": [
+            143,
+            143
+          ]
+        }
+      ]
+    },
+    {
+      "resource": "effect.anm",
+      "script": 150,
+      "timeline": [
+        {
+          "update": 0,
+          "visualCallsConsumed": 0,
+          "layer": 19,
+          "childScripts": []
+        },
+        {
+          "update": 1,
+          "visualCallsConsumed": 0,
+          "layer": 19,
+          "childScripts": []
+        },
+        {
+          "update": 2,
+          "visualCallsConsumed": 0,
+          "layer": 19,
+          "childScripts": []
+        },
+        {
+          "update": 3,
+          "visualCallsConsumed": 0,
+          "layer": 19,
+          "childScripts": []
+        },
+        {
+          "update": 4,
+          "visualCallsConsumed": 0,
+          "layer": 19,
+          "childScripts": []
+        },
+        {
+          "update": 5,
+          "visualCallsConsumed": 0,
+          "layer": 19,
+          "childScripts": []
+        },
+        {
+          "update": 6,
+          "visualCallsConsumed": 0,
+          "layer": 19,
+          "childScripts": []
+        },
+        {
+          "update": 7,
+          "visualCallsConsumed": 0,
+          "layer": 19,
+          "childScripts": []
+        },
+        {
+          "update": 8,
+          "visualCallsConsumed": 0,
+          "layer": 19,
+          "childScripts": []
+        },
+        {
+          "update": 9,
+          "visualCallsConsumed": 0,
+          "layer": 19,
+          "childScripts": []
+        }
+      ]
+    }
+  ],
+  "firstRuntimeIncrementDifference": 358,
+  "beforePhysicalCallbacks": [
+    {
+      "index": 358,
+      "stage": 1,
+      "stageFrame": 359,
+      "portVisualIncrement": 10,
+      "nativeVisualIncrement": 14
+    },
+    {
+      "index": 364,
+      "stage": 1,
+      "stageFrame": 365,
+      "portVisualIncrement": 10,
+      "nativeVisualIncrement": 20
+    },
+    {
+      "index": 366,
+      "stage": 1,
+      "stageFrame": 367,
+      "portVisualIncrement": 30,
+      "nativeVisualIncrement": 34
+    },
+    {
+      "index": 372,
+      "stage": 1,
+      "stageFrame": 373,
+      "portVisualIncrement": 0,
+      "nativeVisualIncrement": 10
+    }
+  ],
+  "focusedRuntimeDeficitExplanation": {
+    "creation": {
+      "nativeEffect149Calls": 10,
+      "wrongBullet149Calls": 6,
+      "missingVisualCalls": 4
+    },
+    "update7": {
+      "nativeSecondChild143Calls": 10,
+      "wrongBullet149Calls": 0,
+      "missingVisualCalls": 10
+    },
+    "repeatingFirstHitOffsets": [
+      358,
+      364,
+      366,
+      372
+    ],
+    "fullCampaignAfterFixComparisonStillRequired": true
+  },
+  "startupAbsoluteDifference": {
+    "portCalls": 280,
+    "nativeCalls": 1336,
+    "differentClockAndLoadingDurationRetained": true
+  },
+  "originalLoaderHelperSha256": "1f7f764bb35cfcab74765c60cf0ec7ce22e5256c6003ecc136b150360ee932f6",
+  "generatedProbeSourceSha256": "df09521312ab1c155b970a36dee077ad86774182ce97d130897542d9306f8fbc",
+  "bindings": [
+    {
+      "path": "artifacts/archive-differential/th14.json",
+      "bytes": 33614,
+      "sha256": "4cd201cae19e606e6ac258bf2241a9bb7ae9adde811bae9c3ff7d1513ffcdf78"
+    },
+    {
+      "path": "artifacts/th14/public-replay-playback/zps-reimua-lunatic-focused-growth-oct14/selected-state.u32",
+      "bytes": 11621504,
+      "sha256": "e1645a03aebf4c32704a4c281876681a46db12fb35c72d8b02df123d3db517d9"
+    },
+    {
+      "path": "artifacts/th14/public-replay-playback/zps-reimua-lunatic-focused-growth-oct14/report.json",
+      "bytes": 54616,
+      "sha256": "97c08bbecd9b942cb9929356298a2ec756a101bfd808533427b636e90e7b4db7"
+    },
+    {
+      "path": "artifacts/th14/native-zps-reimua-lunatic-full-oct14/reference.compact.json",
+      "bytes": 171578323,
+      "sha256": "81178393c3e9bb952c59a2d2cedcf456e7bf9f7d1651062986b7d282e97349fb"
+    },
+    {
+      "path": "artifacts/th14/hit-effect-resource-oct14/before-GameBattle.hpp",
+      "bytes": 22558,
+      "sha256": "96c4fe64c133a57af4f8beff18b68120ddc44d8d74ba5907c6aa9fa1eeb115ca"
+    },
+    {
+      "path": "artifacts/th14/hit-effect-resource-oct14/native-animation-observations.json",
+      "bytes": 5693,
+      "sha256": "4ffce59c5c99dff58f961235c75f53a3ba26e33f2104e57e1b47f3f00d07d141"
+    },
+    {
+      "path": "tools/th-anm-script-dump.py",
+      "bytes": 2447,
+      "sha256": "27f9300d8aa6ed4217e7c275f22dd5d7956e459539ba4cc206b2c2810e668cf0"
+    }
+  ],
+  "toolSha256": "85e5a4e2db1624d177125252a36f856948ad987ea188532263bf632cad44980e",
+  "scope": "Original VisualManager resource load stores, filenames and focused/plain hit factory arguments prove effect.anm file8 and retained template layer (-1). Actual original progressive ANM loader, VM copy and interpreter consume10 calls when effect149 spawns child143 at creation and update7; effect150 consumes0. Wrong bullet149/150 consume6 at creation. The first intact-production/native runtime call-increment differences are retained as before evidence, separately from differing startup clock/loading effects. Native emulation controls file/GPU services through the existing helper and controls child VM allocation only; original ANM scripts, interpreter, template copy, factories and registry remain unmodified. No full campaign visual equality, ordinary startup, pixel/audio or complete1:1 claim."
+}
