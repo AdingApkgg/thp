@@ -21,6 +21,11 @@ bool GameSession::save_scores(std::vector<u8>& out){if(!title)scores.write_recor
 
 namespace {
 bool clear_animations(AnmManager& manager) {
+#if PORT_TITLE == 14
+    // Whole-session/direct-stage replacement cancels old copy requests.
+    // Ordinary VM clear and overlapping NextStage retain the queue.
+    manager.retire_deferred_captures_without_target();
+#endif
     manager.clear();
     return true;
 }
@@ -62,6 +67,9 @@ void GameSession::reset_state() noexcept {
     title.reset();title_ascii.reset();title_fades.effects.clear();
     compositor.reset();
     clear_animations(animations);
+#if PORT_TITLE == 14
+    resources.cancel_stage_loading();
+#endif
     if constexpr(kPortTitle==14||kPortTitle==16)animations.fallback_sprites=nullptr;
     state={};
     state.phase=GameSessionPhase::title;
@@ -151,6 +159,9 @@ bool GameSession::start_stage(GameResources& source, u32 stage) {
     if(stage<1||stage>7) return fail("TH11 stage outside 1..7");
     battle.reset();
     if(!clear_animations(animations)) return fail("ANM stage transition failed");
+#if PORT_TITLE == 14
+    resources.cancel_stage_loading();
+#endif
     if(!resources.load_stage(source,stage)) return fail(resources.error.c_str());
     resources.retire_previous();
     if(!compositor.stage_start())return fail("screen compositor stage reset failed");
@@ -271,6 +282,11 @@ bool GameSession::update(const GameSessionInput& input) {
     if(state.phase==GameSessionPhase::finished) return true;
 #if PORT_TITLE == 14
     if(state.phase==GameSessionPhase::loading)return true;
+    if(battle&&battle->pending_stage){
+        // Only the first actual deferred copy slot guards worker entry;
+        // graphics upload readiness is a separate resource phase boundary.
+        if(!battle->pump_stage_loading(stage_load_clock(),animations.first_deferred_capture_file_index(),stage_load_host_flags))return fail(battle->error.c_str());
+    }
 #endif
     GameSessionInput edges=input;
     edges.pressed|=input.held&~last_held;
@@ -470,6 +486,27 @@ bool GameSession::update(const GameSessionInput& input) {
         if(battle->completion.state.exit==StageExit::NextStage){
             const u32 next=u32(battle->completion.state.next_stage);
             auto& gameplay_rng=kPortTitle==14?animations.visual_rng:animations.script_rng;
+#if PORT_TITLE == 14
+            if(!state.replay){recording.spell_times(battle->spell_timing.records);recording_active=false;}
+            if(state.replay){
+                if(!playback.stage(next)){state.phase=GameSessionPhase::finished;return true;}
+                battle->replay_entry.read(playback.header(next));
+            }
+            auto initialize=[this](){
+                auto& rng=animations.visual_rng;
+                if(!state.replay){recording_seed=rng.seed;rng.calls=0;animations.script_rng.seed=u16(recording_seed);}
+                else{
+                    battle->replay_entry.restore(economy,rng,false,&animations.script_rng);
+                    battle->enemy_environment.spell_practice_id=battle->replay_entry.th14_practice_mode;
+                    battle->hud.score.continues=battle->replay_entry.continues;
+                    battle->player->state.minimum_point_value=signed_bits(battle->replay_entry.th14_globals[10]);
+                }
+                return true;
+            };
+            if(!source||!battle->next_stage(*source,next,std::move(initialize))){error="stage transition failed: "+battle->error;return false;}
+            state.stage=next;state.frame=0;
+            if(!battle->pump_stage_loading(stage_load_clock(),animations.first_deferred_capture_file_index(),stage_load_host_flags))return fail(battle->error.c_str());
+#else
             if(!state.replay){recording.spell_times(battle->spell_timing.records);recording_active=false;recording_seed=gameplay_rng.seed;gameplay_rng.calls=0;}
 #if PORT_TITLE == 14
             if(!state.replay)animations.script_rng.seed=u16(recording_seed);
@@ -490,6 +527,7 @@ bool GameSession::update(const GameSessionInput& input) {
             state.stage=next;state.frame=0;
 #if PORT_TITLE == 14
             if(battle->pending_stage){state.phase=GameSessionPhase::loading;return true;}
+#endif
 #endif
         }
     } else if(!animations.update(false)) return fail("ANM update failed");

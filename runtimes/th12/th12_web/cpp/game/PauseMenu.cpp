@@ -94,7 +94,11 @@ bool PauseMenu::update_th16(u32 pressed,u32 repeat){
     bullet_th16_clock(timer,animations.rate);bullet_th16_clock(elapsed,animations.rate);return true;
 }
 #endif
+#if PORT_TITLE == 14
+bool PauseMenu::create_backdrop(bool immediate_capture){
+#else
 bool PauseMenu::create_backdrop(){
+#endif
 #if PORT_TITLE == 16
     auto* vm=th16_overlay(text,52,0); // Own43ef20 prefix through43ef60.
 #else
@@ -105,7 +109,13 @@ bool PauseMenu::create_backdrop(){
 #endif
     if(!vm){error="pause capture animation creation failed";return false;}
     if constexpr(kPortTitle==14)vm->flags2&=~0x6000u;
-    background_animation=vm->id;capture_requested=true;return true;
+    background_animation=vm->id;
+#if PORT_TITLE == 14
+    capture_requested=immediate_capture;
+#else
+    capture_requested=true;
+#endif
+    return true;
 }
 void PauseMenu::family(u32 id,i32 label){
     auto* vm=animations.find(id);if(!vm)return;vm->interrupt(i16(label));

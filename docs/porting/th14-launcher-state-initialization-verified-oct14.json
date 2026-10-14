@@ -1,0 +1,44 @@
+{
+  "launcherStateInitializationVerified": true,
+  "productionGameChanged": false,
+  "frozenPackagesChanged": false,
+  "appShellNotificationsPreserved": true,
+  "appShellRegistrationLogicChanged": false,
+  "loggerSuppression": false,
+  "quietAudioChanged": false,
+  "browserExecuted": false,
+  "assertions": 26,
+  "actualSource": {
+    "path": "H:\\code\\thp\\runtimes\\th12\\th12_web\\launcher\\src\\launcher\\app.mts",
+    "beforeSha256": "423a534a57c5d051c906bd3c7ff56a28595f5e3c60e5ee38c58bbe1917ce376b",
+    "sha256": "e13bf9de16d886f5cf1a234e3caf869724823685b1d0a2e2aad05ffea026af91",
+    "onlyUnchangedStateRelocationAndTwoComments": true
+  },
+  "clientSource": {
+    "path": "H:\\code\\thp\\runtimes\\th12\\th12_web\\launcher\\src\\launcher\\app-shell-client.mts",
+    "sha256": "ce4b4c17bfd87271a62496a98a8395cf0f100e1842cc88fc772c4a34efc47b64"
+  },
+  "baseline": {
+    "report": "H:\\code\\thp\\docs\\porting\\th14-launcher-preview-prepared-staged-capture-oct14.json",
+    "reportSha256": "32d6cddb27ba22d655cb3cdb6615956f53164f69e7771106499089eed37c2fe7",
+    "app": "H:\\code\\thp\\runtimes\\th14\\th14_web\\artifacts\\launcher-preview\\64b46da7c4aa1af2-65b2ee0438e5\\site\\assets\\launcher\\app.mjs",
+    "appSha256": "5087e42a90c6eb4123c9737754f5c8519410f99c07b68f7b18e6abd5c5267e00"
+  },
+  "retainedFailure": {
+    "name": "ReferenceError",
+    "message": "Cannot access 'state' before initialization",
+    "trigger": "Actual frozen App Shell updatefound/installed callback while migration await is unresolved",
+    "appSha256": "5087e42a90c6eb4123c9737754f5c8519410f99c07b68f7b18e6abd5c5267e00"
+  },
+  "cases": [
+    "installed callback during migration await",
+    "already waiting registration",
+    "running game defers reload until exit",
+    "update failure remains visible and logged"
+  ],
+  "toolSha256": "df60674915e3dd3f9ed9ed83e4a565cafdd6612b2f417452c93ff4913e272d40",
+  "typeStrippingRuntime": "v24.12.0",
+  "retainedSetupFailure": "First unit setup attempted the unavailable classic TypeScript API from the local TypeScript7 package; MODULE_NOT_FOUND occurred before any regression case or receipt. The unit now uses built-in Node type erasure.",
+  "requiresFreshLauncherPackage": true,
+  "scope": "Actual source bootstrap/state/render snippets are executed in their original order around the real first top-level-await position, using the actual unmodified App Shell client and declared Service Worker/DOM/scheduler dependencies. Frozen module reproduces TDZ; corrected source retains notices, reload deferral and warning delivery. No browser, service, game build, audio hook or frozen package is modified or verified by this unit."
+}

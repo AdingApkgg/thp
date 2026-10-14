@@ -23,6 +23,20 @@ bool PauseMenu::th16_end_choices(){
     family(menu_animation,i32(i16(cursor.selected+7)));return true;
 }
 #endif
+#if PORT_TITLE == 14
+bool PauseMenu::create_deferred_backdrop_th14(){
+ auto& queue=animations.deferred_captures;
+ if(!create_backdrop(false))return false;
+ auto* vm=animations.find(background_animation);
+ if(!vm||vm->resource!=&text||!vm->sprite){error="TH14 deferred text52 sprite missing";return false;}
+ const auto& sprite=*vm->sprite;
+ DeferredCaptureRequestTh14 request;
+ request.file_index=i32(vm->file_index);request.texture_index=i32(sprite.texture);
+ request.source={32,16,384,448};
+ request.destination={i32(sprite.x),i32(sprite.y),i32(sprite.width),i32(sprite.height)};
+ queue.enqueue(request);return true;
+}
+#endif
 void PauseMenu::visible(bool value){
     if(auto* vm=animations.find(menu_animation)){
         if(value)vm->flags|=2;else vm->flags&=~2u;
@@ -44,7 +58,15 @@ bool PauseMenu::begin_end(bool is_practice,bool cleared){
     // 44b16c creates only the compact choices after its ten-frame delay.
     if(spell_practice_id>=0&&completed)return true;
 #endif
+#if PORT_TITLE == 14
+    //449d30 death uses448bf0 ImmediatePause, in all run flag branches.
+    //449f20 completion queues only flags0/normal Extra at entry. Completed
+    //StagePractice waits for31's80-frame handler; SpellPractice has no copy.
+    if(!completed){if(!create_backdrop())return false;}
+    else if(!practice){if(!create_deferred_backdrop_th14())return false;}
+#else
     if(!create_backdrop())return false;
+#endif
     if constexpr(kPortTitle==14){
 #if PORT_TITLE == 14
         if(spell_practice_id<0)scores.settings[0x37]=1;
@@ -76,6 +98,12 @@ void PauseMenu::end_menu(u32 pressed,u32 repeat){
     case 12:case 20:
         if(timer.current>=10&&(pressed&0x80001)){sounds.push_back(10);family(menu_animation,2);transition(state+1);}break;
     case 13:case 21:
+#if PORT_TITLE == 14
+        if(practice&&completed&&spell_practice_id<0){
+            if(timer.current<80)break;
+            if(!create_deferred_backdrop_th14())return;
+        }else
+#endif
         if(timer.current<10)break;
         if(!practice){
             const i32 rank=scores.insert_score(selection,difficulty,result_score,stage==7&&completed?8:stage,continues,timestamp,slowdown);

@@ -1,5 +1,30 @@
 # 移植核心接手记录 · 2026-10-14
 
+<!-- th14-staged-loader-current:start -->
+## TH14 当前阶段 · 实际加载与四槽捕获（2026-10-14）
+
+当前只推进 TH14，整作 1:1 未完成。加载生命周期已合入生产：267 个游戏核心文件、141 个 WASI 对象重新绑定并实跑，未继承私有 v2/v3 的整局通过结果。[本轮汇总检查点](th14-staged-loader-current-checkpoint-oct14.json)。
+
+普通换关使用真实单调时间的 60ms 最小等待，按 HUD、Scene、新 Enemy owner、ECL 的顺序完成真实资源工作；SDL 队列执行实际上传。原 HUD result 的 120 与随后 transition 的 30 保留，60ms 等待与 HUD 更新重叠，不能再串行叠加一轮 120。内置四槽 capture 队列直接提供首槽状态，0 也表示 busy；DeferredEnd 在 postDraw 消费。完整 session 重置和直接换关替换先取消延迟 capture，普通 ANM clear 仍保留队列。复制成功才更新目标纹理 revision，ANM material cache 的 invalidate 继续保留。
+
+| 新生产回放 | 物理回调 | 独立 Native 所选玩法字差 | 视觉 RNG 字差 |
+| --- | ---: | ---: | ---: |
+| 灵梦 A Lunatic | 90,793 | 10（非活跃加载期） | 181,570 |
+| 灵梦 B Lunatic | 98,074 | 尚无对应完整 Native 基线 | 尚无对应完整 Native 基线 |
+| 灵梦 A Extra | 39,458 | 0 | 78,916 |
+| 咲夜 A Normal | 96,016 | 10（非活跃加载期） | 192,016 |
+
+四份不可变输入均在当前无窗口生产核心结束，并重新通过不恢复错误的 ASAN／UBSan；测试明确注入 60Hz 单调时钟，在成功 draw 后执行无目标 capture 退役，不作为 Native 线程时间或实际 GPU 上传证明。Lunatic 新完整对象采集和另一份生产回放的 raw32 字节完全相同；65 项对象差异仍失败，包括 57 项非活跃加载期 enemyNextId 和 8 项活跃伤害区域 Z 原始字差。三处详细窗口位于四、五、六面，各 71 个活跃回调；其余所选玩法字段相同，但所有视觉字差与完整失败数组保留。Native 的 90,793 次采集预算不等于普通原版结局／完整终止。[本轮 raw32 与完整对象复算](th14-staged-loader-production-raw-evidence-verified-oct14.json)。
+
+当前普通按键 Normal 重新执行 95,220 帧进入 e05，经过 3,737 帧结局／staff 和实际成绩、录像保存请求返回 Main。22,379 编码字节／149,076 解码字节与原版成绩 loader／writer 的完整编解码边界相同。此证明覆盖无窗口生产流程及编解码，未覆盖普通原版整局菜单／结局、Native 文件系统或浏览器 IndexedDB 持久化。[当前普通流程与成绩边界](th14-natural-storage-normal-sakuyaa-staged-loader-oct14-observed-oct14.json)。
+
+延迟复制的独立浏览器候选实测 8 个完整缓冲，共 5,242,880 字节，与实际 original32 D3D9 HAL／D3DX 输出及修改前 WebGL 输出均零差；另有 null resource、null texture 与明确标注的 false-return adapter 三组退役控制。输入是声明的合成后缓冲，使用真实 text52 的 512×512 RGB565 目标与矩形／格式控制；不是完整游戏帧、全部格式、实际 GL 错误／HRESULT 映射或音频等价证明。当前 helper 与已测候选逐字节一致。[独立复制像素及成功 dirty 证据](th14-deferred-capture-success-dirty-verified-oct14.json)。
+
+最终正式 SDL 为 1,890,810 字节，SHA-256 `64b46da7c4aa1af2426d024c176e8c77b9ecae5a3da13a1eeea6c648ee82ca54`，146 源码／149 头文件绑定。本机预览固定 `8208`，HTML 使用独立静音适配；发布包音频逻辑不变。最终 64b46 模块的完整浏览器流程和持久化仍待验证，旧版短录像保存／播放证据保持历史版本，不能继承为本轮通过。[本机固定预览说明](TH14_WORKSPACE_SERVER.md)。全部自机／难度、普通原版完整流程、图像／音频、浏览器持久化与剩余加载差异继续验收；`completeGame=false`、`nativeEquivalent=false` 保持。
+<!-- th14-staged-loader-current:end -->
+
+## 历史记录 · 本轮前的冻结证据与计划
+
 当前仅推进TH14，整作1:1未完成。本次将独立原版HAL对照成立的float32矩阵组合与半像素运算用于实际渲染源码，保留原有实例化、world／eye／fog和其他作品路径。当前21个完整颜色缓冲的差异由旧基线3,887通道降至880，最大差100；3个整帧一致。23个孤立UV／coverage样本中20个完整hash一致。原版实际完整RGBA32F现有7幅，其中4幅逐字相同，另外3幅合计5,292个UV字差，覆盖差0，全部失败保留。[当前检查点](th14-clip-pause-current-checkpoint-oct14.json)。
 
 有限值条件分支曾使实际颜色差退回6,940通道，已独立隔离并撤下；失败构建和报告仍保留。显式row-dot对照没有改善，也未采用。当前实现只声称所捕获实际矩阵／viewport域的改善，不把少量UV控制或间接拟合坐标当作全场景通过；没有注入原版矩阵、拟合坐标、固定varying或强制flush。[当前生产图形证据](th14-stage-production-clip-current-source-verified-oct14.json)、[失败分支](th14-stage-production-clip-scaled-bias-observed-oct14.json)。

@@ -11,6 +11,9 @@ bool core_error(std::string& error,const char* message) { error=message; return 
 }
 
 bool GameSessionResources::load_core(GameResources& source) {
+#if PORT_TITLE == 14
+    if(incoming_stage)return core_error(error,"cancel pending TH14 stage before core replacement");
+#endif
     if(core_source==&source)return true;
     error.clear(); stage_number=0;
     // The resource carries the reason it failed, which for an ANM is the opcode of the title's numbering the
@@ -92,6 +95,9 @@ bool GameSessionResources::prepare_core(){
 #endif
 
 bool GameSessionResources::load_stage(GameResources& source,u32 number) {
+#if PORT_TITLE == 14
+    if(incoming_stage)return core_error(error,"cancel pending TH14 stage before resource replacement");
+#endif
     auto next=std::make_unique<StageResources>();
     if(!source.load_stage(number,*next)){error="stage resource "+last_resource+": "+source.error();return false;}
     if(effects&&!effects->prepare(*next)){effects->release(*next);error="stage graphics preparation: "+effects->last_error();return false;}
@@ -103,6 +109,56 @@ bool GameSessionResources::load_stage(GameResources& source,u32 number) {
     return true;
 }
 #if PORT_TITLE == 14
+bool GameSessionResources::begin_stage_loading(u32 number){
+    if(number<2||number>6||incoming_stage)return core_error(error,"TH14 pending stage outside next-stage boundary");
+    pending_stage=std::make_unique<StageResources>();incoming_stage=pending_stage.get();
+    pending_number=number;stage_number=number;incoming_stage->stage_number=number;
+    decoded_phases=requested_phases=ready_phases=0;error.clear();return true;
+}
+GameSessionResources::PhaseResult GameSessionResources::advance_stage_phase(GameResources& source,StageResourceEffects::Phase phase,u32 selection){
+    if(!incoming_stage){error="TH14 incoming resource owner missing";return PhaseResult::Failed;}
+    const u32 mask=1u<<u32(phase);
+    if(ready_phases&mask)return PhaseResult::Ready;
+    if(!(decoded_phases&mask)){
+        const bool decoded=phase==StageResourceEffects::Phase::Hud?source.load_stage_hud(pending_number,*incoming_stage,selection):
+            phase==StageResourceEffects::Phase::Scene?source.load_stage_scene(pending_number,*incoming_stage):source.load_stage_timeline(pending_number,*incoming_stage);
+        if(!decoded){error="stage resource "+last_resource+": "+source.error();return PhaseResult::Failed;}
+        decoded_phases|=mask;
+    }
+    if(!(requested_phases&mask)){
+        // A failing preparation may already own partial textures or queued
+        // references; cancellation must include that attempted phase.
+        requested_phases|=mask;
+        if(effects&&!effects->prepare_stage_phase(*incoming_stage,phase)){error="stage graphics phase preparation: "+effects->last_error();return PhaseResult::Failed;}
+    }
+    if(effects&&!effects->stage_phase_ready(phase))return PhaseResult::Waiting;
+    if(animation_manager){auto& a=*animation_manager;bool prepared=true;
+        if(phase==StageResourceEffects::Phase::Hud)prepared=a.prepare_resource(incoming_stage->logo,6);
+        else if(phase==StageResourceEffects::Phase::Scene)prepared=a.prepare_resource(incoming_stage->background,u16((pending_number&1)+3));
+        else{
+            prepared=a.prepare_resource(incoming_stage->enemies,9);
+            for(u32 i=0;prepared&&i<incoming_stage->ecl_animations.size();++i)
+                if(!incoming_stage->ecl_animation_names[i].empty())prepared=a.prepare_resource(incoming_stage->ecl_animations[i],u16(10+i));
+        }
+        if(!prepared){error=a.last_error_text();return PhaseResult::Failed;}
+    }
+    ready_phases|=mask;return PhaseResult::Ready;
+}
+bool GameSessionResources::publish_stage_scene(){
+    if(!pending_stage||!(ready_phases&(1u<<u32(StageResourceEffects::Phase::Scene))))return core_error(error,"TH14 incoming scene not prepared");
+    retire_previous();previous_stage=std::move(stage);stage=std::move(pending_stage);
+    return incoming_stage==stage.get();
+}
+void GameSessionResources::finish_stage_parts(){
+    if(incoming_stage&&effects)effects->finish_stage_phases(*incoming_stage,requested_phases);
+    incoming_stage=nullptr;pending_number=0;
+}
+void GameSessionResources::cancel_stage_loading(){
+    if(!incoming_stage)return;
+    if(effects&&requested_phases)effects->cancel_stage_phases(*incoming_stage,requested_phases);
+    incoming_stage=nullptr;pending_stage.reset();pending_number=0;
+    decoded_phases=requested_phases=ready_phases=0;
+}
 bool GameSessionResources::prepare_stage(){
     if(animation_manager){auto& a=*animation_manager;
         if(!a.prepare_resource(stage->background,u16((stage_number&1)+3))||!a.prepare_resource(stage->logo,6)||!a.prepare_resource(stage->enemies,9)){error=a.last_error_text();return false;}

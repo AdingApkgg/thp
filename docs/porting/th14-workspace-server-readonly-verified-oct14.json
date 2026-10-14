@@ -1,0 +1,150 @@
+{
+  "readOnlyVerified": true,
+  "serverStarted": false,
+  "networkRequests": 0,
+  "assertions": 93,
+  "origin": "http://127.0.0.1:8208",
+  "report": "th14-launcher-preview-prepared-staged-loader-oct14.json",
+  "reportSha256": "7475da7bd2413fa6ecd639b25582a25f9de9611fe236a27b2790bc6c144c92ec",
+  "declaredRejectedRequests": [
+    "The expression evaluated to a falsy value:\n\n  assert(typeof raw === 'string' && raw.startsWith('/') && !raw.startsWith('//') && !raw.includes('#'))\n",
+    "The expression evaluated to a falsy value:\n\n  assert(typeof raw === 'string' && raw.startsWith('/') && !raw.startsWith('//') && !raw.includes('#'))\n",
+    "The expression evaluated to a falsy value:\n\n  assert(path.split('/').every(s => s !== '.' && s !== '..'))\n",
+    "The expression evaluated to a falsy value:\n\n  assert(path.split('/').every(s => s !== '.' && s !== '..'))\n",
+    "The expression evaluated to a falsy value:\n\n  assert(!/%(?:2f|5c)/i.test(rawPath))\n",
+    "The expression evaluated to a falsy value:\n\n  assert(!path.includes('\\\\') && !path.includes('%') && !path.includes('\\0'))\n",
+    "URI malformed",
+    "Changed diagnostic upstream file\n+ actual - expected\n\n+ '0360e438378b2907b725c4afdebba939e6feea06c34534929b47396133bc3171'\n- 'cce566df85f1a53e5edf14349da1742a7fd6ed09afeeb9f22e36ad1cf3487f61'\n",
+    "Changed frozen file: H:\\code\\thp\\runtimes\\th14\\th14_web\\artifacts\\launcher-preview\\1d9be34c44ab25a8-c9c42c785e6c\\site\\index.html\n+ actual - expected\n\n+ '8ecfe6c769935546e74d877e600cfb28033649a4c869e311edec844ddb21fe4a'\n- '0000000000000000000000000000000000000000000000000000000000000000'\n"
+  ],
+  "launcherFiles": 127,
+  "servedManifestIncluded": 128,
+  "mappings": [
+    {
+      "mount": "/checks/deferred-copy-success/",
+      "upstream": "http://127.0.0.1:8254",
+      "getPaths": [
+        "/",
+        "/native.json",
+        "/source.bgra",
+        "/native-000.pixels",
+        "/native-001.pixels",
+        "/native-002.pixels",
+        "/native-003.pixels",
+        "/native-004.pixels",
+        "/native-005.pixels",
+        "/native-006.pixels",
+        "/native-007.pixels",
+        "/webgl-build.json",
+        "/capture.mjs",
+        "/capture.wasm"
+      ],
+      "postPaths": [
+        "/capture/report.json",
+        "/capture/portable-000.pixels",
+        "/capture/portable-001.pixels",
+        "/capture/portable-002.pixels",
+        "/capture/portable-003.pixels",
+        "/capture/portable-004.pixels",
+        "/capture/portable-005.pixels",
+        "/capture/portable-006.pixels",
+        "/capture/portable-007.pixels"
+      ],
+      "sourceHtmlSha256": "1d943ae221aef02b03028db28eca2bbb96460cabf421907c49572826345c0dc1",
+      "rewrittenHtmlSha256": "c1b722b7f424d3ec540d718a5be7e0996f7a91fca2034c7521f70aefb00f45b6",
+      "originalHtmlRecoveredExactly": true,
+      "silentHtml": true,
+      "files": [
+        {
+          "path": "/",
+          "bytes": 4528,
+          "sha256": "1d943ae221aef02b03028db28eca2bbb96460cabf421907c49572826345c0dc1"
+        },
+        {
+          "path": "/native.json",
+          "bytes": 17277,
+          "sha256": "6c38fdefee1b420dad58f8df3fa917169cdfe8eb8bd0ba6c6745a9fbe2193958"
+        },
+        {
+          "path": "/source.bgra",
+          "bytes": 1228800,
+          "sha256": "d52b17ac8ac930806e7419e84e717d8ab7daf3f4fc142f77a40f4e3ac6cffcaa"
+        },
+        {
+          "path": "/native-000.pixels",
+          "bytes": 524288,
+          "sha256": "cd095101b742d839afb6e0481f6c5a0d36e84ee33655796312d550e7a2683475"
+        },
+        {
+          "path": "/native-001.pixels",
+          "bytes": 524288,
+          "sha256": "ed7329e720f422a70242352a53afe1f29bae86586a27f6faa35fa635854e11e7"
+        },
+        {
+          "path": "/native-002.pixels",
+          "bytes": 524288,
+          "sha256": "6bbaaafe10990c94d64e59648c41e935d6c51d84dc1dc1db5e5393c79d4c08b8"
+        },
+        {
+          "path": "/native-003.pixels",
+          "bytes": 524288,
+          "sha256": "52b536720c9e81d9bfc84c9027eef4dffd8e421d7c50432769f7f4f712c57956"
+        },
+        {
+          "path": "/native-004.pixels",
+          "bytes": 524288,
+          "sha256": "0e2717196d3a844f41e2ea60b89891479356462d5cdb02633de8e189df2356a1"
+        },
+        {
+          "path": "/native-005.pixels",
+          "bytes": 524288,
+          "sha256": "7a14befd51b92e31ff2d03ae6b32d3ecb7752c487257eb3f901d44a2e169fc9e"
+        },
+        {
+          "path": "/native-006.pixels",
+          "bytes": 1048576,
+          "sha256": "2e1753e3acce5054f99b0f48ea844c8e67e9f867d634864a89d772dfd4c4bcbd"
+        },
+        {
+          "path": "/native-007.pixels",
+          "bytes": 1048576,
+          "sha256": "290dfebb01fcfa7a601414a63e230cdf923754361b92fd817bbb0793d9590c40"
+        },
+        {
+          "path": "/webgl-build.json",
+          "bytes": 52453,
+          "sha256": "4f9c31d09516fd5bd0567e4afbe5d436a28d5f9bf612d688841bfcc2c659d0b8"
+        },
+        {
+          "path": "/capture.mjs",
+          "bytes": 210919,
+          "sha256": "309f8f25ad39d274cea7d19c2ca867d279bfda122a55f2f5542d10da27bf115d"
+        },
+        {
+          "path": "/capture.wasm",
+          "bytes": 762906,
+          "sha256": "cce566df85f1a53e5edf14349da1742a7fd6ed09afeeb9f22e36ad1cf3487f61"
+        }
+      ]
+    }
+  ],
+  "quietAudio": {
+    "scriptSha256": "216745e0d5459c0546e3fed01866092e67f40c383380dd47c5aafa5bac4a134c",
+    "htmlFiles": 6,
+    "parentAndRuntimeHtmlCovered": true,
+    "declaredUnitAssertions": 31,
+    "finalDestinationGain": 0,
+    "normalGraphAndAudioParamPreserved": true,
+    "overloadIndicesReturnAndDisconnectPreserved": true,
+    "offlineRenderingPreserved": true,
+    "dependency": "Declared AudioNode/AudioParam/DOM recorder, no hardware audio",
+    "browserExecuted": false,
+    "officialReferences": [
+      "https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/connect",
+      "https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/disconnect",
+      "https://developer.mozilla.org/en-US/docs/Web/API/GainNode"
+    ]
+  },
+  "toolSha256": "18ebc5a34401dd57b07305d1135edc851885835b28c0a5efc7fd5d634cf619ca",
+  "scope": "No server opened or stopped, no POST written or network request sent. Declared request/response units exercise the actual handler and fixed mapping; upstream HTTP/browser execution remains a separate check."
+}

@@ -128,6 +128,23 @@ bool EnemyManager::reset(EclProgram& next){
 #endif
     environment.boss=nullptr;return true;
 }
+#if PORT_TITLE == 14
+bool EnemyManager::retire(){
+    while(first)if(!destroy(*first->value))return false;
+    first=last=nullptr;count=0;total_created=0;program=nullptr;
+    environment.enemy_count=0;environment.boss=nullptr;
+    for(auto& boss:commands.bosses)boss=nullptr;
+    if(commands.manager==this)commands.manager=nullptr;
+    if(environment.th14_enemy_list==&first)environment.th14_enemy_list=nullptr;
+    return true;
+}
+bool EnemyManager::initialize_empty(EclProgram& next){
+    if(owner_present()||count||first||last)return false;
+    if(!reset(next))return false;
+    commands.manager=this;environment.th14_enemy_list=&first;
+    return true;
+}
+#endif
 bool EnemyManager::update(){
     if(last_error)return false;
     for(auto* node=first;node;){auto* next=node->next;auto& enemy=*node->value;auto& entry=*entries.at(&enemy);

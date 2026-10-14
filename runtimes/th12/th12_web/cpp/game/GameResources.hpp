@@ -45,6 +45,11 @@ public:
     bool open_sht(const std::string& name, ShtResource& output);
     bool load_ecl(const std::string& name, EclProgram& output);
     bool load_stage(u32 stage, StageResources& output);
+#if PORT_TITLE == 14
+    bool load_stage_hud(u32 stage,StageResources& output,u32 dialogue_selection);
+    bool load_stage_scene(u32 stage,StageResources& output);
+    bool load_stage_timeline(u32 stage,StageResources& output);
+#endif
     bool animation(u32 slot, const std::string& name) override;
     const std::string& error() const noexcept { return last_error; }
     u32 resource_count() const noexcept { return u32(archive.entries.size()); }

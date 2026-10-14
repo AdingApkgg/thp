@@ -2,6 +2,9 @@
 #include "AnmGeometry.hpp"
 #include "AnmTrace.hpp"
 #include "PortTitle.hpp"
+#if PORT_TITLE == 14
+#include "DeferredCaptureQueueTh14.hpp"
+#endif
 #include <array>
 #include <memory>
 #include <string>
@@ -81,6 +84,16 @@ private:
     AnmVm::Node* heads[2]{},*tails[2]{};
     std::array<AnmVm*,kPortTitle==16?43:kPortTitle==14?36:kPortTitle==13?33:31> layers{};
     u32 next_id=0,spawn_depth=0;
+#if PORT_TITLE == 14
+public:
+    // Native capture records belong to this manager, not to a menu, a
+    // staged resource job, or a GPU completion counter. VM clear preserves it.
+    DeferredCaptureQueueTh14 deferred_captures;
+    i32 first_deferred_capture_file_index()const noexcept{return deferred_captures.first_file_index();}
+    // Headless has no copy target. This explicitly retires request records,
+    // never simulates Native GPU completion or a hardware/resource fence.
+    void retire_deferred_captures_without_target(){deferred_captures.consume([](const auto&){});}
+#endif
 };
 // Provenance of every animation creation, so a VM found on a render layer can be traced to the call
 // that put it there. kind: 0 script, 1 layer, 2 file id, 3 resource present, 4 spawn depth, 5 vm id.

@@ -522,6 +522,23 @@ function renderServerStatusNote(_snapshot?: Readonly<AppShellClientState>) {
   note.textContent = text;
 }
 
+// App Shell notifications may run while top-level package migration awaits.
+// Initialize their Launcher state before starting registration.
+const state: LauncherState = {
+  game: "th11", hasSelection: false, music: "ogg-stream", ready: false, launched: false, replayViewer: false,
+  musicPreferenceExplicit: false,
+  musicPreference: "ogg-stream",
+  request: 0, pending: new Map(), source: "", sourceIdentity: "", mobileOpen: false,
+  product: "th11", options: { ...defaultOptions }, language: "ja", lessMotion: false, runtimeVariant: "normal",
+  netplay: {
+    url: "",
+    player: 0, playerCount: 2, seed: 19005, difficulty: 1,
+    iceServers: [{ urls: ["stun:stun.cloudflare.com:3478"] }],
+    loadouts: [{ character: 0, shot: 0 }, { character: 1, shot: 0 }, { character: 2, shot: 0 }],
+    spectator: false, spectatorId: "", spectatorCount: 0,
+  }
+};
+
 // The App Shell client owns Service Worker registration/update lifecycle. It is
 // independent of game/package loading; the Launcher only supplies UI callbacks
 // and the rule that an already-running Runtime blocks automatic page reload.
@@ -927,20 +944,6 @@ if (typeof window.AudioContext !== "function" && typeof launcherWindow.webkitAud
 }
 const webAudioAvailable = typeof window.AudioContext === "function";
 
-const state: LauncherState = {
-  game: "th11", hasSelection: false, music: "ogg-stream", ready: false, launched: false, replayViewer: false,
-  musicPreferenceExplicit: false,
-  musicPreference: "ogg-stream",
-  request: 0, pending: new Map(), source: "", sourceIdentity: "", mobileOpen: false,
-  product: "th11", options: { ...defaultOptions }, language: "ja", lessMotion: false, runtimeVariant: "normal",
-  netplay: {
-    url: "",
-    player: 0, playerCount: 2, seed: 19005, difficulty: 1,
-    iceServers: [{ urls: ["stun:stun.cloudflare.com:3478"] }],
-    loadouts: [{ character: 0, shot: 0 }, { character: 1, shot: 0 }, { character: 2, shot: 0 }],
-    spectator: false, spectatorId: "", spectatorCount: 0,
-  }
-};
 const productIds = new Set<ProductId>(PRODUCT_IDS);
 const isMultiplayerProduct = (product: ProductId = state.product) => isMultiplayerProductId(product);
 const mpDifficultyMax = (product: ProductId = state.product) => multiplayerConfigForProduct(product)?.difficultyMax ?? 0;

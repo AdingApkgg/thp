@@ -23,6 +23,12 @@ public:
     EnemyState* th16_boss(u32 slot)const noexcept;
     bool destroy(Enemy&);
     bool reset(EclProgram&);
+#if PORT_TITLE == 14
+    bool retire();
+    bool initialize_empty(EclProgram&);
+    bool owner_present()const noexcept{return commands.manager==this;}
+    const EclProgram* bound_timeline()const noexcept{return program;}
+#endif
     bool update();
     bool erase_stage_enemies(bool matching_tag=false,u32 tag=0);
     bool cancel_circle(Vec3 center,float radius,bool reward,bool convert=false);

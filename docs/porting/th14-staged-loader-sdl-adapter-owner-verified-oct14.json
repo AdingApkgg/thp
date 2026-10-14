@@ -1,0 +1,51 @@
+{
+  "privateActualAdapterOwnershipVerified": true,
+  "productionChanged": false,
+  "productionVerified": false,
+  "nativeEquivalent": false,
+  "completeGame": false,
+  "gpuExecuted": false,
+  "resultWords": [
+    0,
+    69,
+    0,
+    2
+  ],
+  "exactApplicationMethods": [
+    {
+      "sha256": "68539cbeb13649292dc1d30abef5a84d0e78117304b57876c5fd24c37c4bd126",
+      "source": "bool prepare(StageResources& stage)override{\r\n        renderer.flush();\r\n        graphics.error.clear();\r\n#if PORT_TITLE == 14\r\n        // First entry waits before battle construction; later entries keep\r\n        // the existing world until the incoming resources are ready.\r\n        {\r\n            boot_uploads.clear();boot_upload_index=0;\r\n            boot_stage_owner=&stage;\r\n            boot_uploads={{&stage.background,u16((stage.stage_number&1)+3)},{&stage.logo,6},{&stage.enemies,9}};\r\n            for(u32 i=0;i<stage.ecl_animations.size();++i)if(!stage.ecl_animation_names[i].empty())boot_uploads.push_back({&stage.ecl_animations[i],u16(10+i)});\r\n            if(!boot_uploads.empty()){\r\n                if(!boot_loading.begin(session.animations,session.resources.core.ascii)){graphics.error=\"TH14 stage loading animation creation failed\";return false;}\r\n                std::printf(\"[loading14] stage entry; %u resource uploads pending\\n\",u32(boot_uploads.size()));\r\n                return true;\r\n            }\r\n        }\r\n#endif\r\n        for(auto* file:{&stage.background,&stage.logo,&stage.enemies})if(!graphics.preload(*file)){error=graphics.error;return false;}\r\n#if PORT_TITLE == 14 || PORT_TITLE == 16\r\n        for(auto& file:stage.ecl_animations)if(!graphics.preload(file)){error=graphics.error;return false;}\r\n#endif\r\n        return true;\r\n    }"
+    },
+    {
+      "sha256": "9c72a828ae8ece19c58db24207afbd341efe6597115606753bc9c6d760a1f9b1",
+      "source": "bool prepare_stage_phase(StageResources& stage,StageResourceEffects::Phase phase)override{\r\n        renderer.flush();graphics.error.clear();\r\n        if(!stage_uploads.begin(stage,phase)){graphics.error=\"TH14 stage upload owner still pending\";return false;}\r\n        return true;\r\n    }"
+    },
+    {
+      "sha256": "8a985581b787b7c1f816184c33a12748d9611f2cf29ba562fa70fcc6b98c938d",
+      "source": "bool stage_phase_ready(StageResourceEffects::Phase phase)const override{return stage_uploads.ready(phase);}"
+    },
+    {
+      "sha256": "dda0c5555bba7976f9a3b7741807ecba8ed678e69aef60ff521add28506dd018",
+      "source": "void finish_stage_phases(StageResources& stage,u32)override{stage_uploads.finish(stage);}"
+    },
+    {
+      "sha256": "846398b4a0f2cbfdb5847ea0d2c65c101af72b6189f41f55d2503db0c8c513ca",
+      "source": "void cancel_stage_phases(StageResources& stage,u32)override{\r\n        // Queued raw resource references must disappear before GPU teardown\r\n        // or StageResources destruction. release also covers boot ownership.\r\n        stage_uploads.cancel(stage);release(stage);\r\n    }"
+    },
+    {
+      "sha256": "38d25042332aaf1544fe6a6e62d07882a9e35be5abb06e873cf1c16cc435566c",
+      "source": "void release(StageResources& stage)override{\r\n#if PORT_TITLE == 14\r\n        stage_uploads.cancel(stage);\r\n        if(boot_stage_owner==&stage){boot_uploads.clear();boot_upload_index=0;boot_stage_owner=nullptr;boot_loading.finish(session.animations);}\r\n#endif\r\n        renderer.flush();renderer.invalidate();\r\n        for(auto* file:{&stage.background,&stage.logo,&stage.enemies})graphics.unload(*file);\r\n#if PORT_TITLE == 14 || PORT_TITLE == 16\r\n        for(auto& file:stage.ecl_animations)graphics.unload(file);\r\n#endif\r\n    }"
+    }
+  ],
+  "exactTickBlock": {
+    "sha256": "5ffa69a37cf4d9fdf757f4a378d9eabdaa6ed629354d59744bae232f5fd1f959",
+    "source": "if(stage_uploads.pending()){\r\n            renderer.flush();graphics.error.clear();\r\n            if(!stage_uploads.advance([&](const auto& job){return graphics.preload(*job.resource);})){\r\n                error=graphics.error.empty()?\"TH14 staged resource upload failed\":graphics.error;return false;\r\n            }\r\n            // A successful stage upload continues through the normal session,\r\n            // Player/HUD/old Stage callbacks and draw below, without a second\r\n            // ANM update or a loading-frame return.\r\n        }"
+  },
+  "applicationSha256": "d535683bde16f25caaccc9b583dd5fae9d8d5711df1205e460ab4fb689d11860",
+  "frozenSourceSha256": "d754a50cc94ea8d962b13e595555dba17a6c3621cfda1dbb6eed8772dc446eed",
+  "helperSha256": "8b96e3d4c129f85aba6db02d9594e7abcf8026568c23d6c463865961fe071907",
+  "fixtureSha256": "2a8a33789e7e2aa30237e7bc1a4b8d56814321f7ca9b7ba1c36f475f7eca26f2",
+  "wasmSha256": "63df6e4c9e5327e334a501cfb21f52676effbf41f70e4abfa60eadda19e60d40",
+  "toolSha256": "22e26db6f2d66710d7b3eb56572ff25fde2904f9868d968f7839849a288bb39e",
+  "scope": "Exact frozen Application stage/boot prepare-ready, finish, cancel and release methods plus actual stage upload tick block are extracted unchanged and independently compiled with the real StageUploads helper. Recording graphics/renderer/loading callbacks are declared unit dependencies. Tests verify true job progression, no successful stage-frame early return/extra ANM update, partial failure references retained, wrong owner harmless, both boot/stage raw resource pointers removed before unload and owner destruction. No graphics pixels, actual GL/browser execution, Native resource timing or1:1 claim."
+}

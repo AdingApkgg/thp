@@ -58,7 +58,11 @@ private:
     AnmManager& animations;AnmResource& text;AnmResource& front;ScoreFile& scores;
     void transition(i32 next){state=next;timer.set(0,&animations.rate);}
     void family(u32 id,i32 label);
+    #if PORT_TITLE == 14
+    bool create_backdrop(bool immediate_capture=true);
+    #else
     bool create_backdrop();
+    #endif
     void choose(i32 script);
     void move(u32 keys,i32 base);
     void escape(u32 pressed);
@@ -67,6 +71,7 @@ private:
     void show_end_choices(i32 script,i32 next,i32 count);
     void visible(bool value);
 #if PORT_TITLE == 14
+    bool create_deferred_backdrop_th14();
     void manual_choices();
     bool manual_create(i32);
 #endif

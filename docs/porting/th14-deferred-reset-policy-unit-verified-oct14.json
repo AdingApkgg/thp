@@ -1,0 +1,877 @@
+{
+  "privateResetPolicyVerified": true,
+  "productionChanged": false,
+  "productionVerified": false,
+  "nativeEquivalent": false,
+  "completeGame": false,
+  "cases": [
+    {
+      "operation": "direct unrecorded stage3",
+      "words": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        4294967295,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "queueCancelled": true,
+      "ordinaryManagerClearRetainsQueue": false
+    },
+    {
+      "operation": "new begin stage1",
+      "words": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        4294967295,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "queueCancelled": true,
+      "ordinaryManagerClearRetainsQueue": false
+    },
+    {
+      "operation": "open_title",
+      "words": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        4294967295,
+        0,
+        0,
+        0,
+        1,
+        0,
+        2
+      ],
+      "queueCancelled": true,
+      "ordinaryManagerClearRetainsQueue": false
+    },
+    {
+      "operation": "ordinary manager.clear",
+      "words": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        3
+      ],
+      "queueCancelled": false,
+      "ordinaryManagerClearRetainsQueue": true
+    }
+  ],
+  "originalV3SourceManifestSha256": "d754a50cc94ea8d962b13e595555dba17a6c3621cfda1dbb6eed8772dc446eed",
+  "sourceChanges": [
+    "th12/th12_web/cpp/game/GameSession.cpp"
+  ],
+  "sourceBindings": [
+    {
+      "path": "tools/th14-deferred-reset-policy-unit-check.mjs",
+      "bytes": 7303,
+      "sha256": "a0d6c949204fc428bd8bacb7fdfa197858991fe8be38e3898d0240b58a866825"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/fixture.cpp",
+      "bytes": 1803,
+      "sha256": "f9e428ef396ec2c237ceaed13f6fe1a57f175f30ba712df17012068b2a99242d"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/source/runtimes/th12/th12_web/cpp/game/GameSession.cpp",
+      "bytes": 44830,
+      "sha256": "f13cc3cd1b16347da1af1cc61d2e6ac69b141a44988edbc9321280f68742945e"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/reset-policy-unit.wasm",
+      "bytes": 1439911,
+      "sha256": "04ccaff7e2cd1d83ca6798b01c30901fd476cebe6d771808b1bc2b426eeeb522"
+    },
+    {
+      "path": "runtimes/th12/tools/wasi-sdk-34.0-x86_64-windows/bin/clang++.exe",
+      "bytes": 61012992,
+      "sha256": "945cba19ec5c002628bb7d226d21a443198e5da5d9e5430fd2f61b9f143d5309"
+    },
+    {
+      "path": "artifacts/th14/staged-loader-integration-oct14/cancel-v3/frozen-source.json",
+      "bytes": 138895,
+      "sha256": "d754a50cc94ea8d962b13e595555dba17a6c3621cfda1dbb6eed8772dc446eed"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/source/runtimes/th12/th12_web/cpp/game/PauseEnd.cpp",
+      "bytes": 13843,
+      "sha256": "616ee5feeae5cdb25c14d7995d555d79e9c268edf2c3d911d1925151315a6ff0"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/source/runtimes/th12/th12_web/cpp/game/AnmManager.cpp",
+      "bytes": 18059,
+      "sha256": "6943719effbaa0889f988db890d2ad7da66401dec676eba6e367b0ad9dfba980"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/source/runtimes/th12/th12_web/cpp/game/AnmManager.hpp",
+      "bytes": 5653,
+      "sha256": "f6a0bd79cde0256f7fa0d0d8de425662b87f4e60622c909f579581c71f001bba"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/source/runtimes/th12/th12_web/cpp/game/DeferredCaptureQueueTh14.hpp",
+      "bytes": 919,
+      "sha256": "c4d33520b739d6302a18b622303b6aa94f3b6db46d2baf8906a1679936a79913"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/prepared-build.json",
+      "bytes": 107577,
+      "sha256": "57885cfa79d3a4c76895a4f6323c0e1c254fbd131ff5fc78d27b73cd31f1fc54"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/failed-first-run.json",
+      "bytes": 819,
+      "sha256": "70293f4dba75569ceab49835874f31c3aaf9f05455cdffc3245ae91714818251"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/failed-first-run-tool.mjs",
+      "bytes": 6365,
+      "sha256": "25a63eed6ed26527d49816c0b8a95f522b0a7ee929c3534724c2a7e7826d089c"
+    }
+  ],
+  "objects": [
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_AnmGeometry.cpp.o",
+      "bytes": 13083,
+      "sha256": "9bca33ae245aeb2101fa8a1bfeb94db4d13597d55e883d115f23cb389a453823"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_AnmInterpreter.cpp.o",
+      "bytes": 21773,
+      "sha256": "d119d25d4380ce387d3c58b97164d4dd43572ba6dfabafd654fa54b87309c203"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_AnmManager.cpp.o",
+      "bytes": 130600,
+      "sha256": "414495dbd97a9134256e0d13b6d3f65b75f276ed2b41c7bab863dd21634cc736"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_AnmProjection.cpp.o",
+      "bytes": 3952,
+      "sha256": "45da957323a487d8b878895e236f7c8d0f7d2d72d44bf7c82c49821623845703"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_AnmRenderer.cpp.o",
+      "bytes": 22328,
+      "sha256": "13e7f24d1067cc7cf153a54c1eb4056e57d69f60a5a662de03b514d76155e86d"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_AnmResource.cpp.o",
+      "bytes": 17140,
+      "sha256": "8b28400a9cc366dfc0600eb203c0b9b36aead3e17d84d132ff6fffe878b2acb6"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_AnmVm.cpp.o",
+      "bytes": 6013,
+      "sha256": "a1ae0a24b858e9769dd0b9a9489f17684bd7fab9e9d88e8fd08a49740906c598"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_Archive.cpp.o",
+      "bytes": 11958,
+      "sha256": "eee3dc2952a29b47d85c3a9a7c1fd7257473240538a81b8a0d53838de10f09bf"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_AsciiText.cpp.o",
+      "bytes": 5021,
+      "sha256": "26ea89c2948f1505940d238f90597d1ae2aef6e3cf256f92d6755f09e010b654"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_BombController.cpp.o",
+      "bytes": 22445,
+      "sha256": "f6aec0082a37f515fc60b6f284f30969495e48a9589ba11b34a6edf9b36d0de8"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_BombReimuTh14.cpp.o",
+      "bytes": 1877,
+      "sha256": "d141cb43cc2856a516a6050f88febaa7c9fb2465bd219f1170c70652b0a4b2ed"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_BulletAppearance.cpp.o",
+      "bytes": 7011,
+      "sha256": "a17239c06f9d239b338e67c92132f35347e13b7d4a0973f9cb750ca781848320"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_BulletLaunch.cpp.o",
+      "bytes": 1779,
+      "sha256": "2da26b4903642c84bfc0fc3de23ff6ececfa88d27c7ea0bf44d86a3005fd775e"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_BulletManager.cpp.o",
+      "bytes": 11629,
+      "sha256": "0abc9a7d660e5dd84ba35f32f1359bd23ef8ff4dccb62a46ea539404a2c30466"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_BulletMotion.cpp.o",
+      "bytes": 4780,
+      "sha256": "f2f6327f6cae6e7aa1c5d2261e3f620468c26ddf0e38356cfa802351ee1f7323"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_BulletTh14.cpp.o",
+      "bytes": 31029,
+      "sha256": "0a9156bc8a1f3c254236af8be29bcd2eabba7ca8f347b711fc450ecee3cd917c"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_BulletTh14Launch.cpp.o",
+      "bytes": 1969,
+      "sha256": "0b68804bd91466f67200ed13bd27351fc0db61570a70d5fdc5ec9b049111e61a"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_BulletTh16.cpp.o",
+      "bytes": 17065,
+      "sha256": "111fdc81812b1d64932564716c20bae7eb3b290d6b6200fd1b37523e275dff8a"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_BulletTh16Launch.cpp.o",
+      "bytes": 1969,
+      "sha256": "18ed1322007c4df5fb009346039835d57e4136f97c4e8ceb1660263983c70236"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_BulletTransforms.cpp.o",
+      "bytes": 3309,
+      "sha256": "5dc579451f07299a1b2aeba3fc2db9e18c69d306b8bbbc997dc7ae7477df1560"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_Communication.cpp.o",
+      "bytes": 888,
+      "sha256": "56675d7cae625106ddd0e54f3896e767237911f3040397359dc2229d67208fc5"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ContinueTh14.cpp.o",
+      "bytes": 575,
+      "sha256": "dabdf82eb57e64f7b0a5a7660355bc853e17a53bdaab5b21620ea56726b6939c"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_DamageArea.cpp.o",
+      "bytes": 2516,
+      "sha256": "cd37d236b0bd9769f561bd01ab9f65da73f5cbab231b444f0e5589f846432c08"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_Dialogue.cpp.o",
+      "bytes": 21195,
+      "sha256": "42c8afcfb4eadb2d3e3879c110635daa342b24bca5879eef6d19079db4a8ed37"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EclContext.cpp.o",
+      "bytes": 4170,
+      "sha256": "b664db1c5e9674c9db1c39cc5d93623920ae2a45ff425e512dea448ae86d5b39"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EclInterpreter.cpp.o",
+      "bytes": 9245,
+      "sha256": "c7bd8c2854cee2bcad5e313718d79f972d68926617ecee8ad0e7b596e547e69c"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EclOwner.cpp.o",
+      "bytes": 2909,
+      "sha256": "46f4cfb623943006b67ca3e2bd161fc2221f5055c331bd41161b346f8cdee56c"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EclResource.cpp.o",
+      "bytes": 14541,
+      "sha256": "b4a0ba5cc82dd69b30e5aa2d6550e0a986a844a68708f62e1ddaae6e0757e38b"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EffectTh16Slots.cpp.o",
+      "bytes": 614,
+      "sha256": "96ea57e8df86473558dad6b03f7dec2842ffc2101f77cd1e6d7cc82b77af0bfd"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_Ending.cpp.o",
+      "bytes": 29133,
+      "sha256": "797c69441939833b646fbca223b6d3bab9ce74c3535615f6b1044b8d885b5517"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EnemyAnimations.cpp.o",
+      "bytes": 7802,
+      "sha256": "8ed20db93e768700f838853c3814b042b7ebf4da5662ca22ce9fe0e549569151"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EnemyCallbacks.cpp.o",
+      "bytes": 8165,
+      "sha256": "608d1d8f7bc3b6e83e4a46ef3220f3b7f24e5f6bd23ffb20309015081aa469c9"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EnemyCommands.cpp.o",
+      "bytes": 6088,
+      "sha256": "7f394c50f04e3bfa07a3a0418fe2a49d6b1037b35b458409c0750fc66578f36f"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EnemyEmitterCommands.cpp.o",
+      "bytes": 4346,
+      "sha256": "60df4a9b0f5770acba9c0ba50214b0ec48034e809954b078e672259bdd4569b1"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EnemyFrame.cpp.o",
+      "bytes": 5434,
+      "sha256": "4cd3e8726929263da26055806554d2b3e499f3a4c8746bae195a9629894f8319"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EnemyLaserCommands.cpp.o",
+      "bytes": 3437,
+      "sha256": "d47d0dc985966cb285b1606122952a32d94a5d06759b042204fc418ff9f754f7"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EnemyManager.cpp.o",
+      "bytes": 19970,
+      "sha256": "4ffeebe4aa5b9c0d68aac503a7502d10a42dc929e501e5c4c7dc14b36d738b77"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EnemyPhase.cpp.o",
+      "bytes": 1577,
+      "sha256": "1de756c6b1d1f83c5418c32752aa1229efde638be9716d4159b6458703367f9a"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EnemyScript.cpp.o",
+      "bytes": 9273,
+      "sha256": "7cc283354b5e55feb6f1d867cd86ce8cba8768eff2546635494ed9b2b93ebe52"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EnemyState.cpp.o",
+      "bytes": 6930,
+      "sha256": "320063490e3bd7a0fb4b5917f0cd19b6d06ff0769cf32d05c26141a1f8bb0ad2"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EnemyStateCommands.cpp.o",
+      "bytes": 14376,
+      "sha256": "7365e34b25db665256ed221fad7cf5494c3d0e43836819a4699688070246ba41"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EnemyTh14Callbacks.cpp.o",
+      "bytes": 1448,
+      "sha256": "7a5e3f658d0896b1f5bcf687225baf4b9133f60cad9d9b19f29697aa6ba306cf"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EnemyTh14Commands.cpp.o",
+      "bytes": 22839,
+      "sha256": "ebbc7f79ab130fc8b495e27921575530eac93328a2abf8406c8a256f5b5918b7"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EnemyTh14Emitter.cpp.o",
+      "bytes": 2313,
+      "sha256": "b29f0c16b12fb5972355a6470633a13b810ee55c01025740a7e2b1186c584ca2"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EnemyTh14Fire.cpp.o",
+      "bytes": 1075,
+      "sha256": "0028bea6eeaa1d6680ffcd9ac495f0e3f874d3ceead8c040d4ab630590dcae7f"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EnemyTh16Commands.cpp.o",
+      "bytes": 3380,
+      "sha256": "79107d500bf6ac08e5ce201088dc2ed99ae3c210122b7d1b3f2ce382e8da465a"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EnemyTh16Emitter.cpp.o",
+      "bytes": 470,
+      "sha256": "4cb5ddc11468e0a8e23dc1075a8f76366cbcea5b306917baf3f39408d22c507d"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EnemyTh16Fire.cpp.o",
+      "bytes": 640,
+      "sha256": "02eec6294e35ca04adf83b446356817c8079ee9303f6d37307437bafcfb43853"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EnemyTh16Movement.cpp.o",
+      "bytes": 3147,
+      "sha256": "07c53eca89bb4db2aae14743288ef48552a5bf35502f194f63c25ab7aa9f0b26"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_EnemyTh16Targets.cpp.o",
+      "bytes": 771,
+      "sha256": "6acb64bad3623d4efcf9a74e7787615244d120d8cdba2289f2f370b81e0106d8"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_FogInterpolation.cpp.o",
+      "bytes": 3238,
+      "sha256": "d82736cae176de68e402e14c4498146f85d71005770e5ad1d3f384f92f1bc9e7"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_FrameStatistics.cpp.o",
+      "bytes": 1909,
+      "sha256": "9fbb8564ea990edbef770b2b4eed55f9bc546657304b993f7263fff8110e4731"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_GameBattle.cpp.o",
+      "bytes": 135553,
+      "sha256": "c3fdba39eb5e819de37e04d1489124da7cd72c29370935ae1b1bd31f0df87f2c"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_GameConfig.cpp.o",
+      "bytes": 884,
+      "sha256": "ae95f5410036b46916e34b60a792376d86afdeef6e6cf4b8ce38bab3ab66db60"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_GameEconomy.cpp.o",
+      "bytes": 938,
+      "sha256": "a6cc1baedcd2364ff3154af420fc23d6940f8d27f388d057cc787fc7c2da48ab"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_GameInput.cpp.o",
+      "bytes": 2140,
+      "sha256": "b24b6be43fb716ab8a6017e03f3db55a4a9397ced1f42c42d0c9f8700a5baef8"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_GameResources.cpp.o",
+      "bytes": 31535,
+      "sha256": "8b078958fee7e9750570fd22a154c7aca7d85f89f16c5f947506bd9354b0a160"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_GameSession.cpp.o",
+      "bytes": 62059,
+      "sha256": "f617ccff43e84a0ea6395a87fe3634fb1ed64df587dea2e43300102fb00cd63e"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_GameSessionResources.cpp.o",
+      "bytes": 22432,
+      "sha256": "386f854a020359cc46849a4bdac8a29b7c1da8fd3a77fdb20de4f14221040c61"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_GlyphAtlas.cpp.o",
+      "bytes": 4042,
+      "sha256": "1cbb8d777472bf1abe9e537cfe6a24e26f41942ec270c11bf339b0f7c02960e1"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_GraphicsMath.cpp.o",
+      "bytes": 3161,
+      "sha256": "b45422812f422be635dd8f0863a0553ea00253bd26ab2914aa781df099e8ee22"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_Hud.cpp.o",
+      "bytes": 13483,
+      "sha256": "4c0221304602297ed2c1fbca359078bdb2cfae21fa309ed818c97d596ab4efe4"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_HudTh14Boss.cpp.o",
+      "bytes": 6458,
+      "sha256": "5cb26a2147715b5de153360842ce1bcfc1b1834be1a692686e8d0318ce5f11b3"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_HudTh14Notice.cpp.o",
+      "bytes": 2090,
+      "sha256": "c239ed11a3664825db8014222442ba2ccbd684d473f0795fbbf73787fb21c1ae"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_HudTh14Text.cpp.o",
+      "bytes": 5757,
+      "sha256": "4d8e7cd5cc6e7bbfcbd8cf8d8ebdc14014d7669637da918d200a6633ccf741d4"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ImageResample.cpp.o",
+      "bytes": 12476,
+      "sha256": "aefd84412bdf87cb961a705c78b45376bed5660691e81447a8ac93e624a969e1"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_Interpolation.cpp.o",
+      "bytes": 5999,
+      "sha256": "bd18c887025d6cff3a463034a55d67881c4f2c97c05b68137af7553d47b97737"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ItemManager.cpp.o",
+      "bytes": 6923,
+      "sha256": "97fe6f9535eee3633eb0b40e92bf0cf45a6f345b44104209ca1262ae7dd38775"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ItemRewards.cpp.o",
+      "bytes": 5703,
+      "sha256": "ad937ddecc828962d0b11dfa805c9ccf76ade9d9056d4b7622ad6094b45bc111"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ItemTh14.cpp.o",
+      "bytes": 7432,
+      "sha256": "a6dc77190b1ef78e54a0c97dfee63bdf0ab90d69381149708858b2012b041679"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ItemTh16.cpp.o",
+      "bytes": 335,
+      "sha256": "07c084e6bd92d751fc33919d27c47b90f0ced127d1061b0f64fc4c9b683a4cfc"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ItemTh16Drop.cpp.o",
+      "bytes": 335,
+      "sha256": "07c084e6bd92d751fc33919d27c47b90f0ced127d1061b0f64fc4c9b683a4cfc"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_LaserCurveTh14.cpp.o",
+      "bytes": 13851,
+      "sha256": "fc2e56510f6cd193f79ecea4ebeeea91101bcde66f99b76df9d118496dc68e11"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_LaserCurveTh14Runtime.cpp.o",
+      "bytes": 8092,
+      "sha256": "8a72de09ab6e8760aa467f5d8d38440239257e98fffe4a0568ad58b78f3430a9"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_LaserCut.cpp.o",
+      "bytes": 3575,
+      "sha256": "71de802e372f05863a7db010c07b8e432e1243757172d5ac0dc972e01dfccd17"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_LaserCutTh16.cpp.o",
+      "bytes": 335,
+      "sha256": "07c084e6bd92d751fc33919d27c47b90f0ced127d1061b0f64fc4c9b683a4cfc"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_LaserInfinite.cpp.o",
+      "bytes": 4117,
+      "sha256": "ad760b8b98f1de5fa56ccf888031832247bca27a213d8dd657e69292bf2597a9"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_LaserInfiniteCut.cpp.o",
+      "bytes": 3942,
+      "sha256": "070539fc22532e6d6fc7895f3c7ab4b52025366e5e400d3c2785a1b9fc65b2f0"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_LaserInfiniteTh14.cpp.o",
+      "bytes": 9544,
+      "sha256": "5dde13c1f011ba1608a977432377e67a078b3e43eae22c867b0df339db439034"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_LaserLine.cpp.o",
+      "bytes": 4806,
+      "sha256": "215f21e1dc2e639c59d3fa2bf2b702054d1540bcb389955e2e1384f58c9b4854"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_LaserLineTh14.cpp.o",
+      "bytes": 11507,
+      "sha256": "b4d6f0f92c92e8b1b83e9f85a19381dbf55409334f3b89d8ae61f07c26a0847d"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_LaserLineTh16.cpp.o",
+      "bytes": 335,
+      "sha256": "07c084e6bd92d751fc33919d27c47b90f0ced127d1061b0f64fc4c9b683a4cfc"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_LaserManager.cpp.o",
+      "bytes": 25792,
+      "sha256": "4ab78dfa2c7f90dd566d765869670b3beb8db6ccb4b10064f632b37df01281ae"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_LaserState.cpp.o",
+      "bytes": 4944,
+      "sha256": "5b949e6e19b61109d6b03acc8130cf8ae0795b4479711dc25556dd5775482399"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_Localization.cpp.o",
+      "bytes": 632,
+      "sha256": "4de2094bcc5162f6d7e374d44ee3569a3ecbd0145cc0dd2f197182f668ef8c39"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_Lzss.cpp.o",
+      "bytes": 8624,
+      "sha256": "fd0a76fa9b2e2e8c2046429565dad3511b76a3f2382624d809e6b2ea6ab1281e"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_MenuCursor.cpp.o",
+      "bytes": 1476,
+      "sha256": "e648d57ffd93444fb731c35799618308e14d18d80b1a7cb5f93ff9a710a10667"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_Movement.cpp.o",
+      "bytes": 2428,
+      "sha256": "6acf4ecd6d75fc095717a20a06d73465f0953fe691f6a3d2b7dd3a9d67571336"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_PauseEnd.cpp.o",
+      "bytes": 12754,
+      "sha256": "d7f7b5220f32d206e714a3a200c1ba654be55dfb56556dcd548291ff55724459"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_PauseMenu.cpp.o",
+      "bytes": 7916,
+      "sha256": "8b6e1af58943d26e8ede5c64072e0fbf084a27311d8a277b7af9111f8a4d30d7"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_PauseReplay.cpp.o",
+      "bytes": 5343,
+      "sha256": "d1b3c615ef01b8212233ebffe36860ab49188b47c1d741e076fc238d7882565d"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_PauseText.cpp.o",
+      "bytes": 6884,
+      "sha256": "26acc4c79ec9932462dfc73cc7c224c87e42ec94921998e2b5c0037016d8f171"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_PlayerCollision.cpp.o",
+      "bytes": 1596,
+      "sha256": "7b43ddbffc92995192b9efe019f748e05c079a10e8589b9e225ec05eb7375eda"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_PlayerFrame.cpp.o",
+      "bytes": 15782,
+      "sha256": "034279c277e1b0ac53dcbea655c4b9355854512f056d8d2944dce84d62e519db"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_PlayerMotion.cpp.o",
+      "bytes": 12018,
+      "sha256": "14e1430bcb0e8e80970a861ab6050f834814b6386cb51700b696aa249736b792"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_PlayerTh16Life.cpp.o",
+      "bytes": 2482,
+      "sha256": "1a29a029b647133067108adff2448e41c5255b06782baccd3f67827adbfe8428"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_Replay.cpp.o",
+      "bytes": 10308,
+      "sha256": "affe140ab230f013e907fa79c4d6eee5ce5ba15eb2d7da56d63e89f8851f846b"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ReplayRecorder.cpp.o",
+      "bytes": 12432,
+      "sha256": "c4e2353e75e7680a2c63dc7317266cb14c212dda87adf24d133f355416d3d378"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ResourceCrypt.cpp.o",
+      "bytes": 2437,
+      "sha256": "246f39f58215aeb6593e201d2a48e26a4ce572f61ea23f7a3199c54cd66e5316"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_SceneCamera.cpp.o",
+      "bytes": 1811,
+      "sha256": "71ad210f62b5b471d2e1d4c1120c71dde957863a8e6d4a90940b93b29bd5c67f"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_SceneCompositor.cpp.o",
+      "bytes": 11697,
+      "sha256": "7f06fa89f75ab0bd3c5f40d3385ee42d4e3f3dfbb3c1835a7b585028e242d5ff"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ScoreFile.cpp.o",
+      "bytes": 10690,
+      "sha256": "dceac7f4a0a396293e2dd0118d98c43279a42e82d3e6bf80ff753e5bb9a6f825"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ScorePopups.cpp.o",
+      "bytes": 5726,
+      "sha256": "16079048e7ed8f70f29a3c1e186e7c1539d4f50293dfd160e72d0f2cce7c2d1f"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ScreenDeformation.cpp.o",
+      "bytes": 7038,
+      "sha256": "a1fdf73f0726b26a7cd22513f5fe83231eed5bdd5f8c349fe3704469ea14c541"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ScreenFade.cpp.o",
+      "bytes": 1695,
+      "sha256": "580d48d07c467d248f28a201f7f652bda849b97b72d6a202d5a7ffbaccde1635"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ScreenShake.cpp.o",
+      "bytes": 1265,
+      "sha256": "20374a462181ba4e3b09f4bcbbdc9abc5d68b7564cc895649aa92f23f0fed63b"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_SeasonTh16.cpp.o",
+      "bytes": 2312,
+      "sha256": "fb06c218a393545886c8f6e74b435ebf7e3724b8c0fa53517c7af87456eeab86"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ShotCallbacksTh14.cpp.o",
+      "bytes": 4963,
+      "sha256": "02c584b0731630dc3aaf3062015e4385b15ec6de22799a01a0d6abfa0a9b50df"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ShotDamageTh14.cpp.o",
+      "bytes": 6243,
+      "sha256": "3fc556f99e539fa9f95e4b9e705a315d1cbd3bc5bc29d5dc7725659ace141116"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ShotManager.cpp.o",
+      "bytes": 12591,
+      "sha256": "7e669821429bb49b02f5d91fa17bb4a2800ea9ab0d2acc04739076e22cb20233"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ShotSakuyaTh14.cpp.o",
+      "bytes": 4832,
+      "sha256": "28276c39f0ccb2a8a8f905cc5560fc43089c9adefcbca09eb453be85a68c74ce"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ShotSchedule.cpp.o",
+      "bytes": 1111,
+      "sha256": "67857adfeaaaed00b712953d9d6938a161649775723b361f657654b5a630bc0f"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ShotTh14.cpp.o",
+      "bytes": 13680,
+      "sha256": "1c09f2719fe4c12bcabe1a3d3fae0ed4773026e7320dbdd2831592418b2adcb8"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ShotTh16.cpp.o",
+      "bytes": 335,
+      "sha256": "07c084e6bd92d751fc33919d27c47b90f0ced127d1061b0f64fc4c9b683a4cfc"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ShotTh16Geometry.cpp.o",
+      "bytes": 335,
+      "sha256": "07c084e6bd92d751fc33919d27c47b90f0ced127d1061b0f64fc4c9b683a4cfc"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ShotTh16Hit.cpp.o",
+      "bytes": 335,
+      "sha256": "07c084e6bd92d751fc33919d27c47b90f0ced127d1061b0f64fc4c9b683a4cfc"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ShotTh16Production.cpp.o",
+      "bytes": 335,
+      "sha256": "07c084e6bd92d751fc33919d27c47b90f0ced127d1061b0f64fc4c9b683a4cfc"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_ShtResource.cpp.o",
+      "bytes": 6690,
+      "sha256": "db8c7e9c0c0a58e9cb3dc04232e7e0234d7cd39e8dca9b59aeca19934f721199"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_SoundEffects.cpp.o",
+      "bytes": 8622,
+      "sha256": "82125fa41bcc577a95489a9269b88dc55214025b0dc9aec7ac56d5b87692ec58"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_SpellController.cpp.o",
+      "bytes": 4565,
+      "sha256": "9d6d18b5e90ca3442711480161b59c58ab152b8aaa418ddfbb44e77ce794308d"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_SpellTh14Visuals.cpp.o",
+      "bytes": 2633,
+      "sha256": "68b0e49bda58609ef548243a053a510a693945aa57c22832adfd551bb929e60a"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_SpellTh16Visuals.cpp.o",
+      "bytes": 554,
+      "sha256": "e10f2c4678ad78dc1eff031a1da3e40d0c41254213780c8bb5f16e0bdb32f5ce"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_SpellTiming.cpp.o",
+      "bytes": 1139,
+      "sha256": "8d47b2c77eeb98426e1b971cfd2f0f9b4d6ff282b36ba7eb631afef63fddc55f"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_Stage.cpp.o",
+      "bytes": 17210,
+      "sha256": "7401c206078e438ac6383ea5c9fcfbd697e35ad9d74453a0c24155abdca89d9c"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_StageCompletion.cpp.o",
+      "bytes": 1883,
+      "sha256": "d453a56c982566fc7099d5f6337c7a127aab73c0eb6f77426c43eee7c720c6d4"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_StageDraw.cpp.o",
+      "bytes": 9241,
+      "sha256": "cb4e76fae462dbafb58d2f9f850f6c167f897f41b017b415c114145167f9b6cb"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_StageResource.cpp.o",
+      "bytes": 14112,
+      "sha256": "916a7f5ce961fbe0f0942a0c06a17cd74b4ec33d30584f4d9c41008e6ac3b280"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_StageScript.cpp.o",
+      "bytes": 6498,
+      "sha256": "b9cf67fa095c435460e729870fd14cd9a39f3ca622d4190d49087e5c36250763"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_TextRaster.cpp.o",
+      "bytes": 5464,
+      "sha256": "e82653fc59008f2439629f725c094923fa7d3b78297c8cf10dc1c5ecd488eb02"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_TextureImage.cpp.o",
+      "bytes": 7965,
+      "sha256": "66cba930e8050a2db0e0a790c09b1c9bf3f5ef6866b572e992bbb760cadf0580"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_TitleKeys.cpp.o",
+      "bytes": 5234,
+      "sha256": "3e22498956b75b62ac0bc68077a9ee40cfd2f38abac02052164af4f775f2dc14"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_TitleMenu.cpp.o",
+      "bytes": 6510,
+      "sha256": "0d930ba319dce197a13e8cf1621ac8b25d8e79df5fd47185a003105ac447e383"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_TitleMusic.cpp.o",
+      "bytes": 18224,
+      "sha256": "40575d6b4923b8300ad64549f8b06e1795ffea04cb01360557d4aa23114d7233"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_TitleOptions.cpp.o",
+      "bytes": 6774,
+      "sha256": "04ee2e43e7874b7b6c85c9930a9bf3d56fe4d91e71636e10bf368cd326c1b57d"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_TitleRecords.cpp.o",
+      "bytes": 10939,
+      "sha256": "6d7e142c47853c96d59a592b1f2f1c7b39f324edda2c749f8bc9ffffb3f404e5"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_TitleReplay.cpp.o",
+      "bytes": 5399,
+      "sha256": "7a02e29bcdff00906727a426b4d9b774a7fddb23c9ac0c57db7c55a5fb861958"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_TitleResults.cpp.o",
+      "bytes": 7121,
+      "sha256": "946b1a49adbd824d39c16912f9c32e41ac655513af6fad4ffea75aa9717739e0"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_TitleSelection.cpp.o",
+      "bytes": 586,
+      "sha256": "c24d3ee5bf5a74d38c12b46a31bcac5b8d65c9027c2cbe5749cd59768689dd68"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_TitleText.cpp.o",
+      "bytes": 13541,
+      "sha256": "8003c91807993e26d40cc2fbc3b62efd53b5ddf93087f88425268fb82c4f30e1"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_TitleTh14.cpp.o",
+      "bytes": 24181,
+      "sha256": "852f82fb6f472d626bdd42ae8397dd03bf8e750586817c91e6aacea243d3f10b"
+    },
+    {
+      "path": "artifacts/th14/deferred-reset-policy-unit-oct14/objects/cpp_game_Trace.cpp.o",
+      "bytes": 430,
+      "sha256": "4ea6fdd6b1ea94caa12ecb240afd9ae7d83de19de339e9d014bef3286ab9773c"
+    }
+  ],
+  "compilerFlags": [
+    "--target=wasm32-wasip1",
+    "-DPORT_TITLE=14",
+    "-std=c++17",
+    "-O2",
+    "-g0",
+    "-ffp-contract=off",
+    "-fno-strict-aliasing",
+    "-fno-exceptions",
+    "-fno-rtti"
+  ],
+  "archiveSha256": "57d84a5cbe82460931cca26f090a0fde7aef180889ce5bfe8315851fc97b0233",
+  "actualGraphicsCopyExecuted": false,
+  "scope": "Four independent real-DAT GameSession/PauseEnd units. Declared begin_end(false,true) constructs actual text52 and enqueues one actual deferred file0 copy; no postDraw occurs before direct stage3, fresh begin stage1 or open_title. The isolated one-hunk full-session/direct-stage clear_animations policy cancels those records; unchanged ordinary AnmManager.clear still preserves them. No actual game clear, Native pooled-VM destruction cancellation, graphics copy, screenshot/pixels, full loader or production execution claim."
+}

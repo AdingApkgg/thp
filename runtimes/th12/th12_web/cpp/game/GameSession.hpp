@@ -16,6 +16,9 @@
 #include "FontBitmapTh14.hpp"
 #include <string>
 #include <memory>
+#if PORT_TITLE == 14
+#include <chrono>
+#endif
 
 namespace th11 {
 
@@ -112,6 +115,9 @@ public:
 #if PORT_TITLE == 14
     // Retail Supervisor samples41c800 after rendering while SpellManager lives.
     bool sample_spell_clock(double now);
+    std::function<u64()> stage_load_clock=[](){return u64(std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now().time_since_epoch()).count());};
+    u32 stage_load_host_flags=0;
+    void request_host_close(){stage_load_host_flags=(stage_load_host_flags&~0x100u)|0x80u;}
 #endif
     bool pause();
     bool resume();

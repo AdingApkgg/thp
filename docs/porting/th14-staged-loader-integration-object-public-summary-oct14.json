@@ -1,0 +1,172 @@
+{
+  "publicDerivedSummaryVerified": true,
+  "sourceOnly": true,
+  "historicalPrivatePrototype": true,
+  "historicalRevision": "private-controlled-v1",
+  "appliesToPrivateV3": false,
+  "appliesToCurrentProduction": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "comparisonPassed": false,
+  "originalFullEvidence": {
+    "path": "docs/porting/th14-staged-loader-integration-object-verified-oct14.json",
+    "bytes": 26998667,
+    "sha256": "4a95913494cb887e4027b0c4f8bc618ea431ef19e2de4d77d0a10e651b2766a0",
+    "privateOnly": true,
+    "includedInPublicSourceRelease": false
+  },
+  "comparedCallbacks": 90793,
+  "nativeCapturedCallbacks": 90793,
+  "requestedComparisonCallbackBudget": 90793,
+  "remainingNativeCallbacks": 0,
+  "nativeOrdinaryTerminalVerified": false,
+  "historicalPrototypeTerminalPhase": 4,
+  "rawGameplayDifferences": 10,
+  "rawVisualDifferences": 181570,
+  "retainedDetailDifferences": 65,
+  "inactiveLoadingEnemyNextIdDifferences": 57,
+  "activeDamageAreaDifferences": 8,
+  "activeAreaChangedColumns": [
+    8
+  ],
+  "activeAreaChangedColumnCounts": {
+    "8": 8
+  },
+  "gameplayDifferenceFields": {
+    "replayCalls": 10
+  },
+  "visualDifferenceFields": {
+    "scriptSeed": 90777,
+    "scriptCalls": 90793
+  },
+  "differenceArrays": {
+    "differences": {
+      "count": 10,
+      "canonicalJsonSha256": "f3a0a9ab6a2947c1f11bfd43bf871e1674f22acf1c9a40fdaddd65e7cbe08e63",
+      "first": [
+        {
+          "index": 9732,
+          "stage": 2,
+          "frame": 0,
+          "field": "replayCalls",
+          "port": 0,
+          "native": 66446
+        }
+      ],
+      "last": [
+        {
+          "index": 69205,
+          "stage": 6,
+          "frame": 0,
+          "field": "replayCalls",
+          "port": 0,
+          "native": 130771
+        }
+      ],
+      "fullArrayIncluded": false,
+      "fullArrayRetainedPrivately": true
+    },
+    "detailDifferences": {
+      "count": 65,
+      "canonicalJsonSha256": "0b53b352accc414fc5bd3de8e054a383f831377830e75f11e341a19edb8925a1",
+      "first": [
+        {
+          "index": 9732,
+          "stage": 2,
+          "frame": 0,
+          "kind": "enemyNextId",
+          "portValueSha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+          "nativeValueSha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+        }
+      ],
+      "last": [
+        {
+          "index": 69219,
+          "stage": 6,
+          "frame": 0,
+          "kind": "enemyNextId",
+          "portValueSha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+          "nativeValueSha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+        }
+      ],
+      "fullArrayIncluded": false,
+      "fullArrayRetainedPrivately": true
+    },
+    "startupVisualDifferences": {
+      "count": 181570,
+      "canonicalJsonSha256": "5eef7d6fa33ca5c6bd33c11f539ec74d34c279fb82a5e4e6653285fb8aab1bf7",
+      "first": [
+        {
+          "index": 0,
+          "stage": 1,
+          "frame": 1,
+          "field": "scriptSeed",
+          "port": 47358,
+          "native": 30931
+        }
+      ],
+      "last": [
+        {
+          "index": 90792,
+          "stage": 6,
+          "frame": 21293,
+          "field": "scriptCalls",
+          "port": 5033812,
+          "native": 5039428
+        }
+      ],
+      "fullArrayIncluded": false,
+      "fullArrayRetainedPrivately": true
+    }
+  },
+  "canonicalArrayDigestEncoding": "UTF-8 compact JSON, original array/object key order; ensure_ascii=false; no trailing newline.",
+  "physicalInvocationOrder": true,
+  "inactiveLoadingCallbacksRetained": true,
+  "lateObservationWindow": [
+    15820,
+    15890
+  ],
+  "absentPlayerObservationCount": 0,
+  "clockMode": "Declared60Hz monotonic clock, not captured Native worker time",
+  "nativeCaseInitialization": {
+    "address": "0x4f58b8",
+    "before": 64,
+    "after": 0,
+    "replayManagerMode": 1,
+    "afterReadOnlyBootstrap": true,
+    "beforeFirstPlayerInstruction": true,
+    "wordWrites": 1,
+    "originalInstructionAddress": "0x459bcf",
+    "originalInstructionHex": "8325b8584f00bf",
+    "scope": "One explicit warm Replay mode initialization matching the original AND flag effect; not ordinary menu/loader startup."
+  },
+  "sourceReportedFlags": {
+    "privatePrototype": true,
+    "productionVerified": false,
+    "captureQueueIntegrated": false,
+    "gpuPrepared": false,
+    "passed": false
+  },
+  "historicalPrivateSourceFiles": 265,
+  "historicalPrivateSourceHashesSha256": "ab2e0a4fef21cdf26295a9083cae8572de6a729ef61b67e77247f6ec0951ed83",
+  "originalSourceReferences": {
+    "rawDetailPath": "H:\\code\\thp\\artifacts\\th14\\staged-loader-integration-oct14\\objects-playback\\private-controlled-v1\\portable-details.json",
+    "rawDetailSha256": "7268d8167c3ae4117ed3930c0bd718bc6b8f22aaa021ebba4dacaa6c5e1545cc",
+    "portableStateSha256": "4c588894d74c7c96e51f4c4126c00075f8d7ca2bc15d819bff058e6f03749eb7",
+    "nativeStateSha256": "488d9c4e03a817b6532b2ded28b7fe412c1898b62eddb788f63f9b571f89e5b0",
+    "nativeTracePath": "H:\\code\\thp\\artifacts\\th14\\native-zps-reimua-lunatic-full-oct14\\reference.compact.json",
+    "nativeTraceSha256": "81178393c3e9bb952c59a2d2cedcf456e7bf9f7d1651062986b7d282e97349fb",
+    "archiveManifestSha256": "8805d253c22552807d3fa2798d32f9581c36aa1aec281b13afad0ea6199406cd",
+    "replaySha256": "0f82baec9b33288dea80ccd1121e068444d3d80a7c45c3c2a934e642e16a4689",
+    "wasmSha256": "785d336149466d6c3b01c12476e3b5db8b34f4d96452e427c0292163b9a39048",
+    "toolSha256": "9443d4b56191cd6f6f6c4151202298c1d27132d7668e461aa2b6f022433ba638"
+  },
+  "raw32BuffersIncluded": false,
+  "rawGpuBuffersIncluded": false,
+  "originalGameAssetsIncluded": false,
+  "originalReportModified": false,
+  "publicationTreeModifiedByThisTool": false,
+  "networkRequests": 0,
+  "producerSha256": "4d27c7ddbeeacb7cace5521a2767a319a6343923097df515420ea52c064c2638",
+  "scope": "Derived metadata summary of the frozen private-controlled-v1 experiment only. All10 gameplay,181570 visual and65 object failures remain failed and their complete original arrays remain private, identified by exact source-file and canonical-array digests. Only one first and one last example per difference family is included; detail examples carry hashes rather than complete object arrays. No raw32/GPU buffer, original EXE/DAT/RPY/WASM/font/music or encoded asset payload is published by this summary. Private v3 and current267-source production evidence are separate; this historical run, declared60Hz clock and Native capture budget are not upgraded to current production, Native ordinary terminal, pixels/audio/storage or whole-game1:1. Publication exclusions and manifest/copy changes are handled separately by ROOT."
+}

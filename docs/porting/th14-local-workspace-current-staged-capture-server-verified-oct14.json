@@ -1,0 +1,39 @@
+{
+  "readOnlyVerified": true,
+  "serverStarted": false,
+  "networkRequests": 0,
+  "actualEvidenceWrites": 0,
+  "browserExecuted": false,
+  "assertions": 26,
+  "origin": "http://127.0.0.1:8208",
+  "report": "th14-launcher-preview-prepared-staged-capture-oct14.json",
+  "reportSha256": "32d6cddb27ba22d655cb3cdb6615956f53164f69e7771106499089eed37c2fe7",
+  "adaptedPath": "/app-shell-sw.js",
+  "adaptedMethods": [
+    "GET",
+    "HEAD"
+  ],
+  "publishedSw": {
+    "path": "H:\\code\\thp\\runtimes\\th14\\th14_web\\artifacts\\launcher-preview\\64b46da7c4aa1af2-65b2ee0438e5\\site\\app-shell-sw.js",
+    "bytes": 14782,
+    "sha256": "d6530de679cf6f6346c02c2f3264d001b8051c8cacf4557a6434f7c5c605cffa"
+  },
+  "localSw": {
+    "bytes": 228,
+    "sha256": "06c5d1da2457eaaa6679998896b4ad70647e50d84e559526e82b0e08017e5c70",
+    "source": "// TH14 local workspace passthrough; never packaged for release.\nself.addEventListener('install', event => event.waitUntil(self.skipWaiting()));\nself.addEventListener('activate', event => event.waitUntil(self.clients.claim()));\n",
+    "installSkipWaiting": true,
+    "activateClientsClaim": true,
+    "fetchListener": false,
+    "cacheDeletion": false,
+    "saveDeletion": false
+  },
+  "frozenSources": {
+    "th14-serve-workspace.mjs": "18ebc5a34401dd57b07305d1135edc851885835b28c0a5efc7fd5d634cf619ca",
+    "th14-serve-workspace-direct.mjs": "d62f6d696fbd425f87084f5ffd5fbc6852b839d162187a5c4356493145bf020c",
+    "th14-serve-workspace-links.mjs": "102872ea4908e7b364460160d56825b989dc8579ea151381d12c6977dba934e8",
+    "th14-local-quiet-audio.js": "216745e0d5459c0546e3fed01866092e67f40c383380dd47c5aafa5bac4a134c"
+  },
+  "toolSha256": "36accd68398804cb03803d2bc28d4f01d4d199633bba1536e32b6c33a5f07293",
+  "scope": "Local response adapter only; each SW request verifies the untouched frozen published file before serving the passthrough worker. All other requests and fixed POST persistence remain delegated to the frozen direct handler. Declared event/HTTP units do not prove browser takeover or physical execution. No existing server, cache, save, evidence or release source is changed."
+}

@@ -147,6 +147,69 @@ bool GameResources::load_stage(u32 stage, StageResources& output) {
     return true;
 }
 
+#if PORT_TITLE == 14
+bool GameResources::load_stage_hud(u32 stage,StageResources& output,u32 dialogue_selection) {
+    if(stage<1||stage>7)return fail("stage outside TH14 range");
+    if(dialogue_selection>=stage_files.dialogue_count||dialogue_selection>=output.messages.size())
+        return fail("dialogue selection outside TH14 range");
+    last_error.clear();output.stage_number=stage;
+    char name[64];std::vector<u8> bytes;
+    std::snprintf(name,sizeof name,stage_files.logo,stage);
+    if(!read(name,bytes))return false;
+    if(!output.logo.open(bytes.data(),u32(bytes.size())))
+        return fail((std::string(name)+": "+(output.logo.detail.empty()?"invalid ANM resource":output.logo.detail)).c_str());
+    for(auto& message:output.messages)message.clear();
+    stage_dialogue_name(name,sizeof name,stage,dialogue_selection);
+    return read(name,output.messages[dialogue_selection]);
+}
+
+bool GameResources::load_stage_scene(u32 stage,StageResources& output) {
+    if(stage<1||stage>7)return fail("stage outside TH14 range");
+    last_error.clear();output.stage_number=stage;
+    char name[64];std::vector<u8> bytes;
+    std::snprintf(name,sizeof name,stage_files.scene,stage);
+    if(!read(name,bytes))return false;
+    if(!output.scene.open(bytes.data(),u32(bytes.size())))return fail(output.scene.error.c_str());
+    std::snprintf(name,sizeof name,stage_files.background,stage);
+    if(!read(name,bytes))return false;
+    if(!output.background.open(bytes.data(),u32(bytes.size())))
+        return fail((std::string(name)+": "+(output.background.detail.empty()?"invalid ANM resource":output.background.detail)).c_str());
+    return true;
+}
+
+bool GameResources::load_stage_timeline(u32 stage,StageResources& output) {
+    if(stage<1||stage>7)return fail("stage outside TH14 range");
+    last_error.clear();output.stage_number=stage;
+    char name[64];std::vector<u8> bytes;
+    std::snprintf(name,sizeof name,stage_files.enemies,stage);
+    if(!read(name,bytes))return false;
+    if(!output.enemies.open(bytes.data(),u32(bytes.size())))
+        return fail((std::string(name)+": "+(output.enemies.detail.empty()?"invalid ANM resource":output.enemies.detail)).c_str());
+    std::snprintf(name,sizeof name,stage_files.timeline,stage);
+    if(!load_ecl(name,output.timeline))return false;
+    output.ecl_animation_names={};
+    for(const auto& file:output.timeline.files){
+        if(file->animations.size()>output.ecl_animations.size())return fail("ECL animation slot limit");
+        for(u32 i=0;i<file->animations.size();++i)output.ecl_animation_names[i]=file->animations[i];
+    }
+    for(u32 i=0;i<output.ecl_animations.size();++i){
+        output.ecl_animations[i]={};
+        if(output.ecl_animation_names[i].empty())continue;
+        if(!read(output.ecl_animation_names[i],bytes))return false;
+        if(!output.ecl_animations[i].open(bytes.data(),u32(bytes.size())))
+            return fail((output.ecl_animation_names[i]+": "+(output.ecl_animations[i].detail.empty()?"invalid ANM resource":output.ecl_animations[i].detail)).c_str());
+    }
+    output.boss_programs.clear();
+    for(const char* suffix:{stage_files.boss,stage_files.midboss}){
+        std::snprintf(name,sizeof name,suffix,stage);
+        if(!has(name))continue;
+        output.boss_programs.emplace_back();
+        if(!load_ecl(name,output.boss_programs.back()))return false;
+    }
+    return true;
+}
+#endif
+
 bool GameResources::animation(u32 slot, const std::string& name) {
     if (slot >= animations.size() || !has(name)) return fail("missing ECL animation");
     animations[slot] = name;

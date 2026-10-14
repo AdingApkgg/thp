@@ -56,6 +56,20 @@ struct StageResourceEffects {
     // its own error text so a graphics failure is not flattened into a generic
     // "stage graphics preparation".
     virtual const std::string& last_error() const {static const std::string none;return none;}
+#if PORT_TITLE == 14
+    enum class Phase:u32 {Hud,Scene,Timeline};
+    virtual bool prepare_stage_phase(StageResources& stage,Phase phase){
+        if(phase==Phase::Hud)return prepare_animation(stage.logo);
+        if(phase==Phase::Scene)return prepare_animation(stage.background);
+        if(!prepare_animation(stage.enemies))return false;
+        for(u32 i=0;i<stage.ecl_animations.size();++i)
+            if(!stage.ecl_animation_names[i].empty()&&!prepare_animation(stage.ecl_animations[i]))return false;
+        return true;
+    }
+    virtual bool stage_phase_ready(Phase)const{return true;}
+    virtual void cancel_stage_phases(StageResources& stage,u32){release(stage);}
+    virtual void finish_stage_phases(StageResources&,u32){}
+#endif
 };
 class GameSessionResources {
 public:
@@ -76,6 +90,14 @@ public:
     bool prepare_core();
     bool load_core_job(u32 index);
     bool prepare_stage();
+    enum class PhaseResult:u32 {Waiting,Ready,Failed};
+    bool begin_stage_loading(u32 number);
+    PhaseResult advance_stage_phase(GameResources&,StageResourceEffects::Phase,u32 dialogue_selection);
+    bool publish_stage_scene();
+    void finish_stage_parts();
+    // Call after Battle/ANM retirement, before replacing resource ownership.
+    void cancel_stage_loading();
+    StageResources* loading_bundle()const noexcept{return incoming_stage;}
 #endif
     bool load_stage(GameResources& source,u32 number);
     void retire_previous();
@@ -84,6 +106,9 @@ private:
 #if PORT_TITLE == 14
     bool core_deferred=false;
     u16 core_loaded_jobs=0;
+    std::unique_ptr<StageResources> pending_stage;
+    StageResources* incoming_stage=nullptr;
+    u32 pending_number=0,decoded_phases=0,requested_phases=0,ready_phases=0;
 #endif
 };
 

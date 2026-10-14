@@ -131,22 +131,105 @@ bool GameBattle::stage_result_animation(){
 bool GameBattle::next_stage(GameResources& source,u32 number){
     if(transitioning||number<2||number>6)return false;
 #if PORT_TITLE == 14
-    if(pending_stage)return false;
-#endif
+    return next_stage(source,number,{});
+#else
     // TH14 4360e0 retains the world on the next-stage path; legacy 41fe10.
     // Stage-local
     // scripts and animations are retired before replacing their owners.
     if(!resources.load_stage(source,number)){error=resources.error;return false;}
+#endif
 #if PORT_TITLE == 14
-    if(resources.effects&&!resources.effects->stage_ready()){pending_stage=number;return true;}
-    return enter_stage_transition(number);
+}
+namespace {
+struct BattleStageActions final:prototype::StageActions {
+    GameBattle& battle;explicit BattleStageActions(GameBattle& b):battle(b){}
+    bool retire_owner()override{return battle.retire_stage_owner();}
+    bool enter_work_and_initialize()override{return battle.initialize_stage_work();}
+    prototype::Work prepare_hud()override{return battle.prepare_stage_hud();}
+    prototype::Work prepare_scene()override{return battle.prepare_stage_scene();}
+    bool publish_empty_owner()override{return battle.publish_stage_owner();}
+    prototype::Work prepare_timeline()override{return battle.prepare_stage_timeline();}
+};
+prototype::Work phase_work(GameSessionResources::PhaseResult result){
+    return result==GameSessionResources::PhaseResult::Waiting?prototype::Work::Waiting:
+        result==GameSessionResources::PhaseResult::Ready?prototype::Work::Ready:prototype::Work::Failed;
+}
+}
+bool GameBattle::next_stage(GameResources& source,u32 number,std::function<bool()> initialize){
+    if(transitioning||pending_stage||number<2||number>6)return false;
+    pending_stage=number;next_stage_source=&source;next_stage_initializer=std::move(initialize);
+    BattleStageActions actions(*this);
+    if(!stage_loader.request(actions,false)){error="TH14 staged owner retirement failed";return false;}
+    if(!resources.begin_stage_loading(number)){error=resources.error;return false;}
+    stage_active=false;transitioning=true;transition_started=false;
+    completion.state.exit=StageExit::None;completion.mode.stage=i32(number);
+    transition_timer.set(0,&animations.rate);th14_control_clock.set(0,&animations.rate);frame=0;
+    // The result_timer continues from StageCompletion::complete; the resource
+    // wait and work overlap that existing120 ticks, rather than restarting it.
+    player->th14_scale.flags|=2;player->motion.recall_options(true);
+    outgoing_stage=std::move(stage);
+    return true;
+}
+bool GameBattle::pump_stage_loading(u64 now,i32 first_capture_index,u32 supervisor_flags){
+    if(!pending_stage)return true;
+    BattleStageActions actions(*this);
+    if(!stage_loader.pump(actions,now,first_capture_index,supervisor_flags)){
+        if(error.empty())error=resources.error.empty()?"TH14 staged loader stopped":resources.error;return false;
+    }
+    return true;
+}
+bool GameBattle::retire_stage_owner(){return enemies.retire();}
+bool GameBattle::initialize_stage_work(){
+    if(!compositor.stage_start()){error="TH14 worker copy0 reset failed";return false;}
+    if(next_stage_initializer&&!next_stage_initializer())return false;
+    next_stage_initializer={};
+    if(dialogue)dialogue->clear();dialogue.reset();bomb.reset();
+    animations.retire_resource(resources.core.enemy);
+    if(auto* old=resources.stage.get()){
+        animations.retire_resource(old->enemies);animations.retire_resource(old->logo);
+        for(auto& file:old->ecl_animations)animations.retire_resource(file);
+    }
+    for(auto id:spell_titles)enemy_animations.erase(id);
+    enemy_animations.erase(spell_circle);spell_circle=0;
+    enemy_animations.erase(th14_spell_background);th14_spell_background=0;
+    for(auto& id:spell_titles)id=0;
+    for(auto& vm:spell_backgrounds){animations.release_geometry(vm);vm.initialize();}
+    spell_flags=0;spell_elapsed=spell_bonus=spell_id=0;
+    spell_timing={};if(replaying)spell_timing.records=replay_entry.spell_times;
+    enemy_commands.stage_section=0;enemy_commands.section_frame=0;
+    for(auto& value:enemy_environment.shared_integers)value=0;
+    shakes.effects.clear();shakes.offset={};items.reset();animations.rate=enemy_environment.rate=1;
+    economy.communication=0;communication.reset(&animations.rate);return true;
+}
+prototype::Work GameBattle::prepare_stage_hud(){
+    const auto result=resources.advance_stage_phase(*next_stage_source,StageResourceEffects::Phase::Hud,u32(enemy_environment.character*2+enemy_environment.subtype));
+    if(result==GameSessionResources::PhaseResult::Ready){hud.prepare_stage();countdown_seconds=-1;}
+    return phase_work(result);
+}
+prototype::Work GameBattle::prepare_stage_scene(){
+    const auto result=resources.advance_stage_phase(*next_stage_source,StageResourceEffects::Phase::Scene,0);
+    if(result!=GameSessionResources::PhaseResult::Ready)return phase_work(result);
+    auto* incoming=resources.loading_bundle();if(!incoming){error="TH14 incoming scene bundle missing";return prototype::Work::Failed;}
+    stage=std::make_unique<Stage>(animations,incoming->background,resources.core.text,compositor.clear_color,u16((pending_stage&1)+3));
+    stage->active_camera=&compositor.world_camera;
+    if(!stage->initialize(incoming->scene,pending_stage,compositor.world_camera,false)){error=stage->error;return prototype::Work::Failed;}
+    if(!resources.publish_stage_scene()){error=resources.error;return prototype::Work::Failed;}
+    enemy_commands.stage=stage.get();return prototype::Work::Ready;
+}
+bool GameBattle::publish_stage_owner(){return enemies.initialize_empty(resources.stage->timeline);}
+prototype::Work GameBattle::prepare_stage_timeline(){
+    const auto result=resources.advance_stage_phase(*next_stage_source,StageResourceEffects::Phase::Timeline,0);
+    if(result!=GameSessionResources::PhaseResult::Ready)return phase_work(result);
+    for(u32 i=0;i<resources.stage->ecl_animations.size();++i)
+        enemy_animations.resources[i+2]={resources.stage->ecl_animation_names[i].empty()?nullptr:&resources.stage->ecl_animations[i],u16(10+i)};
+    enemy_animations.stage_logo_resource={&resources.stage->logo,6};
+    create_dialogue();spells.stage=pending_stage;
+    bomb=std::make_unique<BombController>(animations,resources.core.players[enemy_environment.character],*player,*this,7,&resources.core.text);
+    bomb->selection=enemy_environment.character*2+enemy_environment.subtype;
+    resources.finish_stage_parts();pending_stage=0;next_stage_source=nullptr;return prototype::Work::Ready;
 }
 bool GameBattle::finish_stage_loading(){
-    if(!pending_stage||(resources.effects&&!resources.effects->stage_ready()))return false;
-    const u32 number=pending_stage;
-    if(!resources.prepare_stage())return false;
-    if(!enter_stage_transition(number))return false;
-    pending_stage=0;return true;
+    return !pending_stage;
 }
 bool GameBattle::enter_stage_transition(u32 number){
 #endif
@@ -219,11 +302,17 @@ bool GameBattle::activate_stage(){
     if(!player->start_stage())return false;
     if(replaying&&!player->restore_replay_position(replay_entry))return false;
     items.reset();
+#if PORT_TITLE == 14
+    if(!enemies.owner_present())return false;
+#else
     if(!enemies.reset(resources.stage->timeline))return false;
+#endif
     animations.retire_resource(resources.core.enemy);animations.retire_resource(resources.stage->enemies);
     lasers.clear();enemy_commands.section_frame=0;
     if(!spawn_root())return false;
+#if PORT_TITLE != 14
     if(!compositor.stage_start())return false;
+#endif
     if(!hud.start_stage(resources.stage->logo,hud_input(),false,false,completion.mode.control_mode)){error="HUD stage activation";return false;}
     stage_active=true;events.push_back({BattleEventKind::StageMusic,i32(resources.stage_number)});
     // TH14 436b98..436ba5 resets the clock at activation; legacy 42068b.
@@ -235,6 +324,9 @@ bool GameBattle::activate_stage(){
 }
 bool GameBattle::stage_control(){
     if(!transitioning)return true;
+#if PORT_TITLE == 14
+    if(pending_stage)return true;
+#endif
     if(!completion.result_delay_elapsed())return true;
     if(!transition_started){
         enemy_animations.interrupt(result_animation,1);
@@ -256,7 +348,13 @@ void GameBattle::set_input(const GameSessionInput& input) {
     th14_dialogue_fire_frames=input.dialogue_fire_frames;
 #endif
     player_input.movement.held=input.held;player_input.movement.pressed=input.pressed;
-    player_input.movement.enemy_manager=true;player_input.movement.enemies=enemies.count!=0;
+    player_input.movement.enemy_manager=
+#if PORT_TITLE == 14
+        enemies.owner_present();
+#else
+        true;
+#endif
+    player_input.movement.enemies=enemies.count!=0;
     // Legacy name: movement.bomb represents HUD +4438 (dialogue), not the
     // bomb key or the separate special-attack controller +3c.
     player_input.movement.bomb=dialogue&&dialogue->active;

@@ -1,0 +1,43 @@
+{
+  "readOnlyVerified": true,
+  "serverStarted": false,
+  "networkRequests": 0,
+  "actualEvidenceWrites": 0,
+  "browserExecuted": false,
+  "assertions": 26,
+  "origin": "http://127.0.0.1:8208",
+  "report": "th14-launcher-preview-prepared-staged-loader-oct14.json",
+  "reportSha256": "7475da7bd2413fa6ecd639b25582a25f9de9611fe236a27b2790bc6c144c92ec",
+  "adaptedPath": "/app-shell-sw.js",
+  "adaptedMethods": [
+    "GET",
+    "HEAD"
+  ],
+  "publishedSw": {
+    "path": "H:\\code\\thp\\runtimes\\th14\\th14_web\\artifacts\\launcher-preview\\1d9be34c44ab25a8-c9c42c785e6c\\site\\app-shell-sw.js",
+    "bytes": 14782,
+    "sha256": "094c4887e4f7580458b7e871c063e8d7a1817f3cfa61f525d8a3d4e682ad19f1"
+  },
+  "localSw": {
+    "bytes": 228,
+    "sha256": "06c5d1da2457eaaa6679998896b4ad70647e50d84e559526e82b0e08017e5c70",
+    "source": "// TH14 local workspace passthrough; never packaged for release.\nself.addEventListener('install', event => event.waitUntil(self.skipWaiting()));\nself.addEventListener('activate', event => event.waitUntil(self.clients.claim()));\n",
+    "installSkipWaiting": true,
+    "activateClientsClaim": true,
+    "fetchListener": false,
+    "cacheDeletion": false,
+    "saveDeletion": false
+  },
+  "frozenSources": {
+    "th14-serve-workspace.mjs": "18ebc5a34401dd57b07305d1135edc851885835b28c0a5efc7fd5d634cf619ca",
+    "th14-serve-workspace-direct.mjs": "d62f6d696fbd425f87084f5ffd5fbc6852b839d162187a5c4356493145bf020c",
+    "th14-serve-workspace-links.mjs": "102872ea4908e7b364460160d56825b989dc8579ea151381d12c6977dba934e8",
+    "th14-local-quiet-audio.js": "216745e0d5459c0546e3fed01866092e67f40c383380dd47c5aafa5bac4a134c"
+  },
+  "toolSha256": "36accd68398804cb03803d2bc28d4f01d4d199633bba1536e32b6c33a5f07293",
+  "scope": "Local response adapter only; each SW request verifies the untouched frozen published file before serving the passthrough worker. All other requests and fixed POST persistence remain delegated to the frozen direct handler. Declared event/HTTP units do not prove browser takeover or physical execution. No existing server, cache, save, evidence or release source is changed.",
+  "readme": {
+    "path": "docs/porting/TH14_LOCAL_WORKSPACE_CURRENT_SERVER.md",
+    "sha256": "b5156c848c85384d443788ff9de40e9b26b23b5f6d500fcc9b3a2ccfd2f38a75"
+  }
+}

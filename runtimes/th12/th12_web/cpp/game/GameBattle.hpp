@@ -24,6 +24,9 @@
 #include "SceneCompositor.hpp"
 #include "StageCompletion.hpp"
 #include "Hud.hpp"
+#if PORT_TITLE == 14
+#include "StagedLoaderPrototype.hpp"
+#endif
 #if PORT_TITLE == 16
 #include "EffectTh16Slots.hpp"
 #endif
@@ -133,6 +136,17 @@ public:
     bool next_stage(GameResources&,u32);
 #if PORT_TITLE == 14
     u32 pending_stage=0;
+    prototype::StagedLoader stage_loader;
+    GameResources* next_stage_source=nullptr;
+    std::function<bool()> next_stage_initializer;
+    bool next_stage(GameResources&,u32,std::function<bool()>);
+    bool pump_stage_loading(u64 now,i32 first_capture_index,u32 supervisor_flags);
+    bool retire_stage_owner();
+    bool initialize_stage_work();
+    prototype::Work prepare_stage_hud();
+    prototype::Work prepare_stage_scene();
+    bool publish_stage_owner();
+    prototype::Work prepare_stage_timeline();
     bool finish_stage_loading();
     bool enter_stage_transition(u32);
 #endif

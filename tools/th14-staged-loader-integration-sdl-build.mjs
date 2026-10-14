@@ -1,0 +1,31 @@
+// Build only a frozen private source tree into a revision-specific SDL directory.
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,readdirSync,mkdirSync,existsSync} from 'node:fs';
+import {resolve,relative} from 'node:path';
+import {createHash} from 'node:crypto';
+import {spawn} from 'node:child_process';
+const root=resolve(import.meta.dirname,'..'),revision=process.env.TH14_STAGED_REVISION;assert(/^cancel-v\d+$/.test(revision||''));
+const home=resolve(root,'artifacts/th14/staged-loader-integration-oct14',revision),rt=resolve(home,'source/runtimes/th12/th12_web'),workspace=resolve(rt,'..'),sdk=resolve(root,'runtimes/th12/tools/emsdk'),emcc=resolve(sdk,'upstream/emscripten/emcc.py'),out=resolve(home,'sdl-release'),objects=resolve(out,'objects');mkdirSync(objects,{recursive:true});
+const python=process.env.EMSDK_PYTHON||'C:/Users/APKGG/AppData/Local/Programs/Python/Python314/python.exe';
+const sha=b=>createHash('sha256').update(b).digest('hex'),frozenBytes=readFileSync(resolve(home,'frozen-source.json')),frozen=JSON.parse(frozenBytes);
+function verify(){for(const row of frozen.files)assert.equal(sha(readFileSync(resolve(home,'source/runtimes',row.path))),row.sha256,row.path);}
+verify();
+const env={...process.env,EM_CONFIG:resolve(sdk,'.emscripten'),EMSDK:sdk,EMCC_CORES:'3',TEMP:objects,TMP:objects,TMPDIR:objects};
+const flags=['-DPORT_TITLE=14','-O2','-g0','--profiling-funcs','-std=c++17','-ffp-contract=off','-fno-strict-aliasing','-fno-exceptions','-fno-rtti','-DTH_NATIVE_PLATFORM=1','-DTH11_DEVELOPMENT_HARNESS=0','--use-port=sdl3'];
+const files=(folder,filter)=>readdirSync(folder,{withFileTypes:true}).flatMap(row=>row.isDirectory()?files(resolve(folder,row.name),filter):filter(row.name)?[resolve(folder,row.name)]:[]);
+const source=[...files(resolve(rt,'cpp/game'),n=>n.endsWith('.cpp')),...files(resolve(rt,'cpp/sdl'),n=>n.endsWith('.cpp')),resolve(workspace,'portable/sdl/Renderer.cpp')];
+const headers=[...files(resolve(rt,'cpp'),n=>/\.(h|hpp|inc)$/.test(n)),...files(resolve(workspace,'portable'),n=>/\.(h|hpp|inc)$/.test(n))].sort();
+const headerHash=sha(Buffer.concat(headers.map(p=>readFileSync(p)))),sourceHashes=Object.fromEntries(source.map(p=>[relative(root,p).replaceAll('\\','/'),sha(readFileSync(p))]));
+const run=args=>new Promise((accept,reject)=>{const p=spawn(python,[emcc,...args],{cwd:rt,env,windowsHide:true,stdio:['ignore','pipe','pipe']});let log='';for(const stream of[p.stdout,p.stderr])stream.on('data',b=>{log+=b;process.stdout.write(b);});p.on('error',reject);p.on('exit',code=>code?reject(Error(log)):accept());});
+const compiled=[];let cursor=0;
+await Promise.all(Array.from({length:3},async()=>{while(cursor<source.length){const i=cursor++,p=source[i],name=relative(workspace,p).replaceAll('\\','_').replaceAll('/','_'),object=resolve(objects,name+'.o'),key=sha(Buffer.from(JSON.stringify(flags)+headerHash+sha(readFileSync(p))));
+ if(!existsSync(object)||!existsSync(object+'.key')||readFileSync(object+'.key','utf8')!==key){await run([...flags,'-c',p,'-o',object]);writeFileSync(object+'.key',key);}compiled[i]=object;
+}}));
+const anchors=new Set();for(const p of source)for(const m of readFileSync(p,'utf8').matchAll(/EMSCRIPTEN_KEEPALIVE[^;{]*?\b(th\d+_\w+)\s*\(/g))anchors.add(m[1]);
+const names=['validate_file','save_scores','save_replay','initialize','last_resource','music_enabled','audio_statistics','return_title','restart','error','frame','phase','pause','resume','loop_start','loop_stop','loop_pause','key','keys_clear','touch','touch_cancel','touch_options','touch_controls','touch_stick'];
+const functions=['_malloc','_free',...names.map(n=>'_th11_'+n)];for(const n of names)assert(anchors.has('th11_'+n),n);
+const loader=resolve(out,'th14.mjs');
+await run([...flags,'--no-entry','-sDEFAULT_TO_CXX=1','-sMODULARIZE=1','-sEXPORT_ES6=1','-sENVIRONMENT=web,worker','-sALLOW_MEMORY_GROWTH=1','-sSTACK_SIZE=1048576','-sINITIAL_MEMORY=536870912','-sMAXIMUM_MEMORY=1073741824','-sFILESYSTEM=1','-lidbfs.js','-sEXPORTED_RUNTIME_METHODS=FS,IDBFS,HEAPU8,HEAP32,HEAPU32','-sINVOKE_RUN=0','-sEXIT_RUNTIME=0','-sMIN_WEBGL_VERSION=2','-sMAX_WEBGL_VERSION=2','-sGL_SUPPORT_AUTOMATIC_ENABLE_EXTENSIONS=0','-sEXPORTED_FUNCTIONS='+functions.join(','),...compiled,'-o',loader]);
+verify();
+const wasm=readFileSync(loader.replace('.mjs','.wasm')),report={privateSdlBuildPassed:true,productionChanged:false,productionVerified:false,nativeEquivalent:false,completeGame:false,revision,frozenSourceSha256:sha(frozenBytes),sourceHashes,headers:Object.fromEntries(headers.map(p=>[relative(root,p).replaceAll('\\','/'),sha(readFileSync(p))])),objectHashes:Object.fromEntries(compiled.map(p=>[relative(root,p).replaceAll('\\','/'),sha(readFileSync(p))])),wasmBytes:wasm.length,wasmSha256:sha(wasm),loaderSha256:sha(readFileSync(loader)),toolSha256:sha(readFileSync(import.meta.filename)),scope:'Final frozen private GameSession/Battle, real SDL StageUploads adapter and intrinsic deferred-capture providers compile/link to SDL release. No ROOT/shared object writes. Compilation proves actual adapter source compatibility; browser rendering, GPU execution/pixels, native host timing, audio and production1:1 equality remain separate.'};
+writeFileSync(resolve(out,'build.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({privateSdlBuildPassed:true,revision,wasmBytes:wasm.length,wasmSha256:report.wasmSha256}));

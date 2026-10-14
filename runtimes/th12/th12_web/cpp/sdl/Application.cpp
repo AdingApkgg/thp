@@ -1,6 +1,8 @@
 #include "GraphicsDevice.hpp"
 #if PORT_TITLE == 14
 #include "PauseCaptureTh14.hpp"
+#include "ApplicationCaptureTh14.hpp"
+#include "StageUploadsTh14.hpp"
 #endif
 #include "AudioDevice.hpp"
 #include "FontDevice.hpp"
@@ -138,13 +140,20 @@ struct Application:StageResourceEffects
     struct ResourceUpload {AnmResource* resource;u16 file;};
     std::vector<ResourceUpload> boot_uploads;
     u32 boot_upload_index=0;
+    StageResources* boot_stage_owner=nullptr;
+    StageUploadsTh14 stage_uploads;
     bool core_loading_done=false;
 #endif
     std::string error;
     // Lines whose plate had no sprite when they arrived, held until the plate's own walk binds one.
     std::vector<DialogueText> waiting_text;
 
-    Application():renderer(graphics) {session.resources.effects=this;}
+    Application():renderer(graphics) {
+        session.resources.effects=this;
+#if PORT_TITLE == 14
+        session.stage_load_clock=[](){return u64(SDL_GetTicksNS());};
+#endif
+    }
     void reset_frame_window(){frame_statistics.window_start=double(SDL_GetTicks())*.001;frame_statistics.frames=0;}
     bool read_file(const char* path,std::vector<u8>& data,u32 limit){
         SDL_IOStream* io=SDL_IOFromFile(path,"rb");if(!io)return false;const auto size=SDL_GetIOSize(io);
@@ -278,6 +287,7 @@ struct Application:StageResourceEffects
         // the existing world until the incoming resources are ready.
         {
             boot_uploads.clear();boot_upload_index=0;
+            boot_stage_owner=&stage;
             boot_uploads={{&stage.background,u16((stage.stage_number&1)+3)},{&stage.logo,6},{&stage.enemies,9}};
             for(u32 i=0;i<stage.ecl_animations.size();++i)if(!stage.ecl_animation_names[i].empty())boot_uploads.push_back({&stage.ecl_animations[i],u16(10+i)});
             if(!boot_uploads.empty()){
@@ -296,6 +306,18 @@ struct Application:StageResourceEffects
 #if PORT_TITLE == 14
     bool core_ready()const override{return core_loading_done;}
     bool stage_ready()const override{return boot_uploads.empty();}
+    bool prepare_stage_phase(StageResources& stage,StageResourceEffects::Phase phase)override{
+        renderer.flush();graphics.error.clear();
+        if(!stage_uploads.begin(stage,phase)){graphics.error="TH14 stage upload owner still pending";return false;}
+        return true;
+    }
+    bool stage_phase_ready(StageResourceEffects::Phase phase)const override{return stage_uploads.ready(phase);}
+    void finish_stage_phases(StageResources& stage,u32)override{stage_uploads.finish(stage);}
+    void cancel_stage_phases(StageResources& stage,u32)override{
+        // Queued raw resource references must disappear before GPU teardown
+        // or StageResources destruction. release also covers boot ownership.
+        stage_uploads.cancel(stage);release(stage);
+    }
     bool defer_ending_loading()const override{return true;}
     bool begin_ending_loading()override{
         if(!boot_loading.begin(session.animations,session.resources.core.ascii)){graphics.error="TH14 ending loading animation creation failed";return false;}
@@ -305,6 +327,10 @@ struct Application:StageResourceEffects
 #endif
     const std::string& last_error()const override{return graphics.error;}
     void release(StageResources& stage)override{
+#if PORT_TITLE == 14
+        stage_uploads.cancel(stage);
+        if(boot_stage_owner==&stage){boot_uploads.clear();boot_upload_index=0;boot_stage_owner=nullptr;boot_loading.finish(session.animations);}
+#endif
         renderer.flush();renderer.invalidate();
         for(auto* file:{&stage.background,&stage.logo,&stage.enemies})graphics.unload(*file);
 #if PORT_TITLE == 14 || PORT_TITLE == 16
@@ -360,6 +386,7 @@ struct Application:StageResourceEffects
         if(!boot_loading.begin(session.animations,core.ascii)){error="TH14 loading animation creation failed";return false;}
         boot_uploads={{&core.effect,8},{&core.bullet,7},{&core.enemy,9},{&core.front,5},{&core.title,24},{&core.title_variant,25},{&core.players[0],7},{&core.players[1],7},{&core.players[2],7}};
         boot_upload_index=0;std::printf("[loading14] ascii script17 started; %u resource uploads pending\n",u32(boot_uploads.size()));
+        boot_stage_owner=nullptr;
 #else
 #if PORT_TITLE == 16
         if(!graphics.preload(core.effect)){error=graphics.error;return false;}
@@ -382,6 +409,7 @@ struct Application:StageResourceEffects
 #if PORT_TITLE == 14
         if(!core_loading_done){if(!session.resources.prepare_core()){error=session.resources.error;return false;}core_loading_done=true;}
         boot_loading.finish(session.animations);boot_uploads.clear();boot_upload_index=0;
+        boot_stage_owner=nullptr;stage_uploads.cancel_all();
 #endif
         if(!save_scores())return false;session.recording_timestamp=u64(std::time(nullptr));
         renderer.invalidate();
@@ -419,6 +447,15 @@ struct Application:StageResourceEffects
     bool tick(u32 held,bool pause_key=false) {
         if(!initialize())return false;
 #if PORT_TITLE == 14
+        if(stage_uploads.pending()){
+            renderer.flush();graphics.error.clear();
+            if(!stage_uploads.advance([&](const auto& job){return graphics.preload(*job.resource);})){
+                error=graphics.error.empty()?"TH14 staged resource upload failed":graphics.error;return false;
+            }
+            // A successful stage upload continues through the normal session,
+            // Player/HUD/old Stage callbacks and draw below, without a second
+            // ANM update or a loading-frame return.
+        }
         if(boot_upload_index<boot_uploads.size()){
             if(!session.animations.update(true)||!session.animations.update(false)){error="TH14 loading ANM update failed";return false;}
             const auto job=boot_uploads[boot_upload_index];
@@ -428,6 +465,7 @@ struct Application:StageResourceEffects
             if(++boot_upload_index==boot_uploads.size()){
                 core_loading_done=true;
                 boot_loading.finish(session.animations);boot_uploads.clear();boot_upload_index=0;
+                boot_stage_owner=nullptr;
                 std::printf("[loading14] resource uploads complete; interrupt1 delivered\n");reset_frame_window();
                 if(session.state.phase==GameSessionPhase::loading){
                     const bool existing_battle=bool(session.battle);
@@ -490,7 +528,7 @@ struct Application:StageResourceEffects
                 const auto& sprite=*vm->sprite;const u32 target=graphics.texture(*vm->resource,sprite.texture);renderer.flush();
                 i32 from[]={32,16,416,464};u32 source=GraphicsDevice::screen;
 #if PORT_TITLE == 14
-                const auto capture=th14_pause_capture_source(session);
+                const auto capture=th14_immediate_capture_source(session);
                 std::copy(capture.rectangle,capture.rectangle+4,from);
                 if(capture.text_intermediate){source=graphics.texture(session.resources.core.text,3);if(!source){error="Pause capture source texture missing";return false;}}
 #endif
@@ -510,6 +548,9 @@ struct Application:StageResourceEffects
         frame_statistics.sample(double(SDL_GetTicks())*.001,after==GameSessionPhase::stage&&session.battle&&session.battle->stage_active&&!session.state.replay);
         frame_text.clear();const auto label=frame_statistics.label();frame_text.add(label.text.c_str(),label.position,label.style);
         if(!session.draw(renderer,&frame_text)){error=session.error;return false;}
+#if PORT_TITLE == 14
+        th14_consume_deferred_captures(session.animations.deferred_captures,session,graphics,renderer);
+#endif
         graphics.present();
 #if PORT_TITLE == 14
         // 46a6d7/46a933 call41c800 whenever the spell manager is alive,
@@ -580,6 +621,9 @@ void cancel_touch(){
 }
 bool sample_and_tick(){
     SDL_Event event;while(SDL_PollEvent(&event)){
+#if PORT_TITLE == 14
+        if(event.type==SDL_EVENT_WINDOW_CLOSE_REQUESTED||event.type==SDL_EVENT_QUIT)app.session.request_host_close();
+#endif
         // SDL owns gestures that start on the canvas; the browser bridge only
         // forwards gestures originating outside it, avoiding double delivery.
         if(event.type==SDL_EVENT_FINGER_CANCELED){cancel_touch();continue;}
