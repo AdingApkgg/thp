@@ -366,7 +366,8 @@ public:
     bool player_effect(Vec3 p,i32 script)override{const float rotation=0;return animations.create(resources.core.effect,script,8,0xffffffff,false,false,&p,nullptr,nullptr,false,&rotation,0x2400)!=nullptr;}
 #endif
 #if PORT_TITLE == 14
-    bool player_effect(Vec3 p,i32 script)override{return animations.create(resources.core.effect,script,8,0,false,false,&p)!=nullptr;}
+    // 44f60d/44f7df retain the effect27/28 template layer (18).
+    bool player_effect(Vec3 p,i32 script)override{return animations.create(resources.core.effect,script,8,u32(-1),false,false,&p)!=nullptr;}
     u32 player_focus()override{auto* vm=animations.create(resources.core.effect,26,8,14,false,false,nullptr,nullptr,nullptr,true);return vm?vm->id:0;}
 #endif
     bool attract_items() override { items.attract_all(); return true; }

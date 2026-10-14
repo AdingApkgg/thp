@@ -1,5 +1,19 @@
 # 移植核心接手记录 · 2026-10-14
 
+当前仅推进TH14，整作1:1尚未完成。本次修正真实模板层差异：擦弹effect24、死亡／中弹effect27／28和消弹bullet199均保留原版模板层。此前layer=0使24／27／28实际落到0，199落到0；原版分别为18和21。当前七个实际生产调用用例已对照原版；focus26的14保持正确，effect58／100第0帧会设为20／16，不把传入参数差异误报为实际绘制层错误。[当前源码检查点](th14-template-layer-current-checkpoint-oct14.json)。
+
+当前四份完整输入均自然结束，非恢复ASAN／UBSan检查通过：灵梦A Lunatic90,793、灵梦B Lunatic98,074、咲夜A Normal96,016和灵梦A Extra39,458帧。独立原版灵梦A Lunatic实际采集90,793次Player回调，无超时；29个选定玩法字段全程一致，25处加载玩法计数差、181,570个视觉RNG字差及80个对象差（72处加载编号、8处原版Z字）完整保留。原版采集预算不是普通原版结局／完整终止证明。Extra30个选定玩法字段差0，78,916个视觉字差保留；Normal29个玩法字段一致，25处加载计数差保留。灵梦B尚无完整独立原版基线。[完整对象复算](th14-template-layer-full-combat-verified-oct14.json)。
+
+当前普通Normal95,220帧进入e05结局，经3,737帧结局／staff、成绩和录像保存请求返回Main；22,379编码字节／149,076解码字节与实际原版成绩编解码一致。当前重新录制与旧归档录像字节相同，94,839×26个状态字的激活期间差0，10个加载期得分差逐项保留。普通原版进程完整结局、staff、菜单流程仍未验证。[普通流程与存档](th14-natural-storage-normal-sakuyaa-template-layer-oct14-verified-oct14.json)、[录制回放](th14-natural-current-replay-normal-template-layer-verified-oct14.json)。
+
+正式SDL1,872,163字节，SHA-256 `fe4061f1103e0cd51351e24c11cad4f0cb99e13ae63750262ac3fcfe29bf50e8`，146源码／144头文件及127个冻结站点文件绑定。浏览器新版读取此前保存的slot01 A，468帧自动播放并自然返回；录像保存版本保持如实标注。保留此前两条Service Worker更新检查警告；本次启动／播放未新增警告，捕获错误0。[浏览器观察](th14-template-layer-browser-flow-verified-oct14.json)。
+
+启动器外壳预缓存由125项419,134,626字节减为97项4,284,044字节，排除原版字体／音乐的预缓存；全部28项资源仍照常部署并声明，DATA与资源未删改。冻结文件、外壳脚本及六次本机HTTP响应逐字节核对通过，不称完整游戏离线验收通过。[打包验证](th14-app-shell-precache-current-verified-oct14.json)。原版启动时钟的实际内存字与六个受控时钟返回值也已核对：浏览器使用自己的单调时钟，不能把原版seed或调用数复制进整局输入以消除差异。[启动时钟证据](th14-startup-platform-clock-verified-oct14.json)。
+
+加载线程／owner生命周期、视觉随机数、普通原版完整流程、全部自机／难度、全局图像／音频和完整浏览器存储继续施工。新渲染对照单独采集当前源代码基线；旧版本的像素或视觉增量结果不自动继承。本检查点保持completeGame=false、nativeEquivalent=false，其他作品不占坑。
+
+## 命中特效检查点（043ee24版本）
+
 当前仅推进TH14，整作1:1尚未完成。本次修正两类原版差异：命中特效应从effect.anm创建149／150、保留模板层，先前误用了bullet.anm；伤害区域分配器只清callback，保留旧owner参数，先前多清了owner。源码、WASI／SDL、四份完整输入、原版复算、普通结局／存档及浏览器观察统一绑定在[当前检查点](th14-hit-effects-current-checkpoint-oct14.json)。
 
 灵梦A Lunatic完整90,793次生产回调自然结束；独立原版采集达到同样90,793次Player回调预算，无超时，但不称原版普通结局／完整终止通过。29个选定玩法字段全程一致，25处非激活加载玩法计数差及181,570个视觉RNG字差完整保留。对象差异由99降为80：72处加载敌人编号、8处五面Z原始字差。owner元数据差已消除，Z仍保持失败；原版受控碰撞用例不受这些Z影响，但会复制Z到lastHit，不能泛称无用或硬编码主机栈内容。[完整对象复算](th14-hit-effects-full-combat-verified-oct14.json)。

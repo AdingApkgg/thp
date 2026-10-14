@@ -1,0 +1,3308 @@
+{
+  "diagnosticCheckpointVerified": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "sourceFilesVerified": 265,
+  "sourceHashes": {
+    "cpp/game/AnmGeometry.cpp": "6326e12e33f2cce4d9999ade1b241c25832c1323720df57a1094a6372c10db59",
+    "cpp/game/AnmInterpreter.cpp": "1ba8bfb924a2e7b5f34e4f8dc72705d7cb7222410ddb25c5a61bdcedf1a72a6e",
+    "cpp/game/AnmManager.cpp": "6943719effbaa0889f988db890d2ad7da66401dec676eba6e367b0ad9dfba980",
+    "cpp/game/AnmProjection.cpp": "ac2e73f94a4ee47770a40c8549b6691ebe7696c05820e3d07d7b7817e751df59",
+    "cpp/game/AnmRenderer.cpp": "eefd3362120f2c1dadac30875d1fe716608e56b22ecdd2fe5dbb3baaa33a17ce",
+    "cpp/game/AnmResource.cpp": "d1979f79190528263fa5fb67b0dbb6dd497c604c4cb8cb96efe18b7348111a8e",
+    "cpp/game/AnmVm.cpp": "9cb9853b9a235e96cd4458586458b62151563d46aacc710863985b49350bd974",
+    "cpp/game/Archive.cpp": "18ddd5a4b212d02c13d79d3b2958889bb3513301c1ed7656825822f77e21d8fe",
+    "cpp/game/AsciiText.cpp": "9a5f0eefcc5973a1f04a55d975b25ff28c2b20bbc0abbc5b10d41a3564b36788",
+    "cpp/game/BombController.cpp": "4eb902aaaeb48413ad7a7f1c3e3c2e0bda6ed04e48f7dae1c6137a550e4c4fb7",
+    "cpp/game/BombReimuTh14.cpp": "4cd374d04b0ebc50d7ebb2b085453769d666fdae159691a1cfd4b5a96012325c",
+    "cpp/game/BulletAppearance.cpp": "01789552e5a03f3713a21f0ec60796aa5c93dc2f63e1488e97ce1f3218fbc69e",
+    "cpp/game/BulletLaunch.cpp": "23cb53eddde04b9a5ff8905f331433820035448a5c48c1d3bfb2ba84d8022a25",
+    "cpp/game/BulletManager.cpp": "bb29fbc9466a079009f1fca05eff7ad5f3e84546aa9b7316bd664bf4dc531567",
+    "cpp/game/BulletMotion.cpp": "9d5f3d80f433c0b4d5370d0821711daafd49d93c87712452d6d1aea447a97510",
+    "cpp/game/BulletTh14.cpp": "e87bec8532f767fb9b857d0aaab0f9ea4151df76a701e22ce4571e625427935f",
+    "cpp/game/BulletTh14Launch.cpp": "f081116da8a89d7e25890072cfbe0c089d3746f51dc37a0f99a2577429c3a7bc",
+    "cpp/game/BulletTh16.cpp": "7a4d88e12cf38e48f0f6934aeee7dfef08a74173d60fc0aff19b08e9aff9d159",
+    "cpp/game/BulletTh16Launch.cpp": "4dc208fb28c2cc7e823a9f9380b0b865919acfb0cb0d7a4714c8627ad09c61ef",
+    "cpp/game/BulletTransforms.cpp": "a7e3e2779dd446c5a3958040d3b1502088d1160ad9ec494bf61466cbbe29e954",
+    "cpp/game/Communication.cpp": "440d6d45ef77dee26e55c65ed47575f19015253e8d541ffd986d09adec21ca1f",
+    "cpp/game/ContinueTh14.cpp": "f163f963c8f53c7b503137961fbdb5be227dce30b27af81ec68ac4d4c5311080",
+    "cpp/game/DamageArea.cpp": "f41c484dc5761c873f317d9c3834f05f045b5f8dac5a3d9905bd2e0b7e4e8e7e",
+    "cpp/game/Dialogue.cpp": "95e55a7a0fda7d7a6770c4ed5bd590892dcc9d4ff5c5f2f261de906c832b59eb",
+    "cpp/game/EclContext.cpp": "3a4751af060e4c2b7d2cfc9207e70beae9b77e76c55567b5225053d06117c8c4",
+    "cpp/game/EclInterpreter.cpp": "8c66178dfe4da8f88ff2e8d0177dd9585d4ed297e64628c3825976985c594739",
+    "cpp/game/EclOwner.cpp": "d89a5b6c3ed78bec89e20264ed9d2549a89ab5183f12cf1d34cc502a5fc8542e",
+    "cpp/game/EclResource.cpp": "5482a55370100ae63d7d997c62943e903c8b4b82325b59e1fd6d0c33c97f4e25",
+    "cpp/game/EffectTh16Slots.cpp": "f750e65d6e16430395ff14e7ddad00172a95c7415b0095dbd8313748688c4343",
+    "cpp/game/Ending.cpp": "c939877ab0b6a82fa7fda73114539dbc50f242f426935b39d4f1c59339fc43f4",
+    "cpp/game/EnemyAnimations.cpp": "0fb7ce88926a1666f59a66595773c9121d37498e022ea09764877a55d2fb3eb3",
+    "cpp/game/EnemyCallbacks.cpp": "7d32da2fa7ad31e8e4a8ec47c7ace4787d2dea6194087ad432770451ccc9a47e",
+    "cpp/game/EnemyCommands.cpp": "8c7c820ee0ad0794d122ba15bd3688709b8395fef23914cb456b59e5fd2dd5cd",
+    "cpp/game/EnemyEmitterCommands.cpp": "4e4cfeb50a74bf689a93c34392639b2f0c563f9c96208ecf1a5aa7deeb7a279d",
+    "cpp/game/EnemyFrame.cpp": "5ffa340514320cf05aa5e5a2f91284b6c563b9bbb50238873e5413b20bb4d367",
+    "cpp/game/EnemyLaserCommands.cpp": "58ce9be705b0165c86301f1edadf696f95cfe65974a7f9b4546083df82700fb5",
+    "cpp/game/EnemyManager.cpp": "606a4ee4ab540a0a169e3978d4ef6c38618f5926db7e6498769f12912a8a7728",
+    "cpp/game/EnemyPhase.cpp": "3b022ab8b46cd62de8789417344e46b5541656387a9009625ea82c727278acf8",
+    "cpp/game/EnemyScript.cpp": "bed942631ef6316ec22adbe4a32b299fd05dbfed877f9843ce3bfe8360c4ff9f",
+    "cpp/game/EnemyState.cpp": "b4500aff6bde7136099e08ec38851ce31f7186724e2982d9a0bc9affc09f60f2",
+    "cpp/game/EnemyStateCommands.cpp": "b03434294ecbfc13b3504c7d96fac48d7fd9f0caf4821b846285cea5a03f1464",
+    "cpp/game/EnemyTh14Callbacks.cpp": "73f797a023c6a5dcba947f23c4f3b67e899cdfce657b372f9e3588eb2fcdc183",
+    "cpp/game/EnemyTh14Commands.cpp": "30af40abb797b255a1682f4f69e4bca96dd07197be7897b9454f864f0cb5fef9",
+    "cpp/game/EnemyTh14Emitter.cpp": "c42d5428da9b41d0570243aa565e84c9b52a4c8db24e72d1cc7811a70ad417c2",
+    "cpp/game/EnemyTh14Fire.cpp": "5d441a37465f7d1fb53a4a9ef98e1ba386161e775f6a3a042b14767fd7be4084",
+    "cpp/game/EnemyTh16Commands.cpp": "b3cabceaed985d1206cca3b35da5417b78c4969b62eb1b21c9a4a53af3088cdb",
+    "cpp/game/EnemyTh16Emitter.cpp": "f47fccb61f2305cf8a6f49842c3b018ad868a9daf6e2c7cc5fe5af359ee6f8eb",
+    "cpp/game/EnemyTh16Fire.cpp": "f4d895b8b60ba4ffbf0a24ba8754dfd421bce2855281c89c0a2cafde78983df1",
+    "cpp/game/EnemyTh16Movement.cpp": "58d99bedf6bbf9ca1f3f9c6b5c31d6ba8b565222b29db69b4ac95766a2b925a6",
+    "cpp/game/EnemyTh16Targets.cpp": "f5054b90faad931c2f279d7156932334be9d730a25f7d89a834a6cb93d38e933",
+    "cpp/game/FogInterpolation.cpp": "b34a1c498084f208ec12b0a9a5cbdaeac11d887190d73dc840dafc5957c9e94f",
+    "cpp/game/FrameStatistics.cpp": "af32c458123197aed3e43f06cfff6e5c7d7ff6a668549da47d27411a985d2495",
+    "cpp/game/GameBattle.cpp": "7d2a5de8170825c2a07310fec57dffb2eed5182c69148c15498176186968c3a2",
+    "cpp/game/GameConfig.cpp": "4bd2d4c225c2cb270e4edf5af7ce347776daaaee2d09fada74c54d378ca9c613",
+    "cpp/game/GameEconomy.cpp": "4900ac63b30cf5919096594ee3729bebcec7046d71104413b31fda088cb19641",
+    "cpp/game/GameInput.cpp": "7c6bd87bde99c9a7dbc7e4f176d76fd16d76284d76810e26f628fc026d04472b",
+    "cpp/game/GameResources.cpp": "44a9e70c5c3b1ec449b8f1473c7ca427d62204478bc9c160945c93898c949e72",
+    "cpp/game/GameSession.cpp": "eea69a2962af31961ebf9d2d7da7e1c365de83609029b67db22d0eddf2b1c17a",
+    "cpp/game/GameSessionResources.cpp": "e477764d887e4e3cd380b5923482acd5070ca718e7ae86fdf55687486b720f73",
+    "cpp/game/GlyphAtlas.cpp": "acd99b80ce746f18be6cf86703af37d41258284e1d94876bcdac3b66bc347cc3",
+    "cpp/game/GraphicsMath.cpp": "b159b3d617a522977c795351b5ff56338d5058b899ab984a590c8b50f8a9fd6e",
+    "cpp/game/Hud.cpp": "a9edec4ed2891651cf2087b0a4454586d482508c566ed795f2f3935ce90a950a",
+    "cpp/game/HudTh14Boss.cpp": "14989a95bc5f1aa65f2d368db9aa85a837cb1c7542f5b0459d27f1ca666dc23d",
+    "cpp/game/HudTh14Notice.cpp": "4343bc37d695c2927692e5a8070c2eaa517a8f5d8d79e94722552b74b16d1027",
+    "cpp/game/HudTh14Text.cpp": "2288becc9654903b4431553a7bea129434e56dcd6208118346a622804838faea",
+    "cpp/game/ImageResample.cpp": "3f90c8f9a2e31bfc6cc65fd0f75310410b0bc0d3123e79fdac0a8df31293f109",
+    "cpp/game/Interpolation.cpp": "57cd2806a28109745084fb2079edee055322ff3fd044f75fc4e4ec3305add125",
+    "cpp/game/ItemManager.cpp": "d394a2746fbad691a00c063d9fd71b6755e908b7ebab17af30629f9025a0b7d1",
+    "cpp/game/ItemRewards.cpp": "154e30fe1626779c0d460be11fdc5f1f50cc56dac7fd49ff59d6d80657fb5b5f",
+    "cpp/game/ItemTh14.cpp": "1a86d88d6b88eba3ecba3a02b98183af1f948a38b1a686a0788bc25ded9241d7",
+    "cpp/game/ItemTh16.cpp": "05bd4a77139441a366be85e29b7b6f3bf65660315e984c73443a3e2bd9fdeee1",
+    "cpp/game/ItemTh16Drop.cpp": "3b81443129f81580f823053ead8368cd2d49b94ba227b914414990c8023306df",
+    "cpp/game/LaserCurveTh14.cpp": "269a3f3155aed1e63a7355858d11703c8fe0fd50668f9291a7366b3238937a14",
+    "cpp/game/LaserCurveTh14Runtime.cpp": "4d28ba331761e0de24e133904d6f2ede84e945eb8824e914ac36ac8c6f0e0557",
+    "cpp/game/LaserCut.cpp": "b00405c0c14ef28a507368acb49e7451735809c6813f490f8c358baf4b6f7e9f",
+    "cpp/game/LaserCutTh16.cpp": "73eb6855a2904925cfdaf36819f87a901b0c749661e2979103f9cdd670e12a97",
+    "cpp/game/LaserInfinite.cpp": "eeed57d321158d275e489697d2840d0ccde46a635702b54cc8e31d933de18ab7",
+    "cpp/game/LaserInfiniteCut.cpp": "922397f494aae885912b760c68a6eacdba30c4e8bba61643058cade7ad2a263d",
+    "cpp/game/LaserInfiniteTh14.cpp": "35bbd953f57f2057f76622fc7adcab3baa36ddfe9c3ba9a110618372f285e646",
+    "cpp/game/LaserLine.cpp": "85030486035d071e282decfffe5b327075a3e692bcb230fb1ac57763b2992fa0",
+    "cpp/game/LaserLineTh14.cpp": "0e4cde4bc233b1668483a7d11bbef9143e7acfa923f91289d7b2e6748511e626",
+    "cpp/game/LaserLineTh16.cpp": "dd6728cd8d4b97b6dc6a958907d01188fb39bff8d4073b9a685dc0f767f609b9",
+    "cpp/game/LaserManager.cpp": "9e8756fa1727e23d3eac9f0bae1245baeb6c2d34dbc029adda71f4517ef1d043",
+    "cpp/game/LaserState.cpp": "d47452fe86a7fb7b66a5c86c41e4d991950c41cfe7a819afb9d5c5c2cdcea209",
+    "cpp/game/Localization.cpp": "1caa741af2e43f9ecc1110873cf4c34e1e8467e1eef7b74dff05850fc08b299d",
+    "cpp/game/Lzss.cpp": "7bf9b34043ee21f6e23244369069b2807314f3d7ddf7f37a556b34780afa4e48",
+    "cpp/game/MenuCursor.cpp": "acbe07403cfbd9310ce742240023bb739695b8340d1a815c304ab6d0b020a112",
+    "cpp/game/Movement.cpp": "ea823e71f48f15d1d5e038c4fa62b6a4dfcaa31b087ebc183e42ef2dd439cccb",
+    "cpp/game/PauseEnd.cpp": "adf178b3f84566b5746d0330407306589cd925665c42c4bd458c8b3e29cbb754",
+    "cpp/game/PauseMenu.cpp": "4fef2c94f7635ae49507bc1d35dc4205e78193c7f3a84c6a5db5b2fe5da389b8",
+    "cpp/game/PauseReplay.cpp": "a12735f8e7fda3b1e326166e07d9136dc5f8b96ac7887bc0b188e1e4b139b317",
+    "cpp/game/PauseText.cpp": "10c1a0d69b5b6cfdaf169bd92165b3fb440fc73d8d4c9b68b927d49ee768fd93",
+    "cpp/game/PlayerCollision.cpp": "855f92f2b0161a34697862c7061ac8ee4cd13c66b7d1d1862ceb7feeea9b48df",
+    "cpp/game/PlayerFrame.cpp": "ac90ce7b383e5fcf97555b00bf277dda13f9c65a74901ea186dddbd8715b630c",
+    "cpp/game/PlayerMotion.cpp": "3687a4a69ebf7fe07d3d2167b703df2b93ca770ea329ea5cdc05f71e2dafd330",
+    "cpp/game/PlayerTh16Life.cpp": "dae2284839580d2027b2f8307c8179892b6ab97a40997e77f7970853a2558a44",
+    "cpp/game/Replay.cpp": "7678a83c7bb737f4fe816ce239a9fa1c0f12935b900aa29bfed98b9abc3cb17d",
+    "cpp/game/ReplayRecorder.cpp": "609cd8ac701578aeeef1989345cd63e8c1b37d4575a85539fe173251756450b6",
+    "cpp/game/ResourceCrypt.cpp": "d57118f1114f3909c42a2e99e7df30e625f6563247a8118cd14bb9f68a0f97ef",
+    "cpp/game/SceneCamera.cpp": "72a5b43fb397885086f65083cc13d22971bda2b7632c516df91301ed6d6c1e93",
+    "cpp/game/SceneCompositor.cpp": "f0568596460b395c0bdd6c7379c7008a0de081cd250143217dfe030dba1e86fb",
+    "cpp/game/ScoreFile.cpp": "b3b1b445c3888dc69e8c54c5632a89ba279df4ce462672033f9f020bcdf47f1a",
+    "cpp/game/ScorePopups.cpp": "5219939add97f51005b08db6fd6f422cc5ad906c567140f8bae27632be6f2561",
+    "cpp/game/ScreenDeformation.cpp": "47fbdd9fc1c79ebc17af32d22ab71f8e8da3607c368c569a70773d03774690a5",
+    "cpp/game/ScreenFade.cpp": "b82489990677036d1c7184fd19f74e9fb8217a09454ecf379b214feb503f4ac7",
+    "cpp/game/ScreenShake.cpp": "e6a87ffdc3edad1c8bd98b5031b13bc3c43247588e76b692562774a31c7ecb6b",
+    "cpp/game/SeasonTh16.cpp": "f1859130696c3a90914a763c915468d7d017a27acc867395e48e39117482c038",
+    "cpp/game/ShotCallbacksTh14.cpp": "ca45e02b0ac112a2a8ea471ea448a462546fdca3aa1458fad9f25f206dd04a2f",
+    "cpp/game/ShotDamageTh14.cpp": "a063bc7179916295185143bc75083e46dcd1f6351d9719b6818beaf25749073f",
+    "cpp/game/ShotManager.cpp": "1d85e0adeddec2b2167094c1eee0307652e074650b89ea3b34011388f275861a",
+    "cpp/game/ShotSakuyaTh14.cpp": "fdaae3a35c98bdec50f2fa03949dc84d55a3283c5d3b0111500d8313fdd72a51",
+    "cpp/game/ShotSchedule.cpp": "9d2e78f65ad1daa535b2d2415c150c652aec06704f3d001b9fe43f9649f76951",
+    "cpp/game/ShotTh14.cpp": "4d8b65a6b9baba8ae1d6b03c30b56c88976c3d4e12108d80614d5d43e553f0bd",
+    "cpp/game/ShotTh16.cpp": "ea3d4679fd14ccadba9289493dd6a829d6278a75dcb8601b7381094a21696063",
+    "cpp/game/ShotTh16Geometry.cpp": "b42b83d9ea4dd4291dcb550c4fb263850d9e1b5d407637278dbfd812ec54869c",
+    "cpp/game/ShotTh16Hit.cpp": "115211ecdc23558b41db44b8e7abf6e779b5c75ad1d78afb79c499a7c632c754",
+    "cpp/game/ShotTh16Production.cpp": "2ca6036d19170a755a02c3f6061076a3772d1be1e73319eadb21847c43bd1e7f",
+    "cpp/game/ShtResource.cpp": "d3c3eb0103f4ea9eee6468c863a3ad8e9abb871f3245091290701ecb03161c9b",
+    "cpp/game/SoundEffects.cpp": "6a22e37def9e9889cdc4dee735cec29cc7f6933ed4ba8f1ac74600e2830e2a1d",
+    "cpp/game/SpellController.cpp": "b622821b209b98d6c3353da3416f2585478728391d207b67884688506b752277",
+    "cpp/game/SpellTh14Visuals.cpp": "4056520c7cd2ff9867b74b18583b73c90d14cf689e45b686add221c67884caf3",
+    "cpp/game/SpellTh16Visuals.cpp": "ced358ca36239c716efb0e8abf47f20a0d87fe1a5a27da529e3489dcffb1c343",
+    "cpp/game/SpellTiming.cpp": "b47cce01612c88caeebba8276aba03a349698eab08f45458955705fd5c460a5f",
+    "cpp/game/Stage.cpp": "1666ac9bd4aeac26db0564ba16848ec5c2145782fc103f36c2dd931bec9ed394",
+    "cpp/game/StageCompletion.cpp": "be5dc07e2e1fbf47d6b49036f22a70846f3373fa4643e2b8d9ee3f911654dd96",
+    "cpp/game/StageDraw.cpp": "0dd619d9f36ef976909e243f6e3956f019668ddf0cc308d610243856d7cbb2b2",
+    "cpp/game/StageResource.cpp": "c5bc8f8f793fc1ccd6c73d5e5b9b238e48de7e35fab7d81fe27df5b335a335c7",
+    "cpp/game/StageScript.cpp": "ee28283c182d25f9d8cefcf3ff11444bb8ba02d04f4841a4535c9db18a5e32a7",
+    "cpp/game/TextRaster.cpp": "c29bc2fc87579164aa3768a6b9a4e3cb417e7c54d9526d0eda0272625d5dcd21",
+    "cpp/game/TextureImage.cpp": "7882a7bf4492c54eb7b31a592f46d65ab65311e1278e0a038ed6b5f1d87ec2f8",
+    "cpp/game/TitleKeys.cpp": "82a837f2dfe486c90470c2d14b30a15cc8da99f88cfac1c13738e69cdda7dfea",
+    "cpp/game/TitleMenu.cpp": "db8fca88d804b05fada836801f07d66d5f7234059a290b111e4610b91d1d10cf",
+    "cpp/game/TitleMusic.cpp": "3b8325066cf5851189d21f7fddb1bc46b28fee30f741285fa99327c6e1cd1be5",
+    "cpp/game/TitleOptions.cpp": "98bc86f4787e0c807545c4d4e21e619c3c7e41f2c3be22879df1604241662f4f",
+    "cpp/game/TitleRecords.cpp": "5564019b8bee3efe0e610d5ab56cf0f1d1adeb3d8484dee5346359a0d741d5b8",
+    "cpp/game/TitleReplay.cpp": "1b6c800c79f9bc40acf0bd3451034d81cd45638b8a3d9a9a530ddc0b048f3add",
+    "cpp/game/TitleResults.cpp": "8f7e9a7061b39075745960f11ba822a4af745bf7c7c4788c96e62a6994430b4e",
+    "cpp/game/TitleSelection.cpp": "9fcb4a0ecfeed24128cb080141fb673ef8e7053e8816c9c433d8b2f365d58672",
+    "cpp/game/TitleText.cpp": "f047fae4f010ff120f49a8e3f9d7701beed813533f355b1b12f7896b12e0687b",
+    "cpp/game/TitleTh14.cpp": "930cd1701ab106a74c4d44b550db218df2998a02c01e632203221d1e8b453b15",
+    "cpp/game/Trace.cpp": "043160954f83a0dd612566a175a982b7368ff639769b9a799f4df753db048f9c",
+    "cpp/game/AnmGeometry.hpp": "b6a1cea487717d15bbcc8e7788d055f9ab345bd18f4583c1d8024521cede3f3c",
+    "cpp/game/AnmManager.hpp": "77f2de3ff97f534be1514ceaefa1034b26fe8b9a9eb8e1876488571d89cd52e4",
+    "cpp/game/AnmOpcodes.hpp": "37a6ef978bc43d0b62314294930444056f2632cd207246589752e14a8bb03691",
+    "cpp/game/AnmProjection.hpp": "0f91867c9aaf6e232c4d74b83ea673c5ccb5626a96ca44018e8aa56ee7b768e7",
+    "cpp/game/AnmRenderer.hpp": "f3ddc24a3c1922e65266d84606b55eb70998dab6e233b04623636f238ec8ae96",
+    "cpp/game/AnmResource.hpp": "f2b35e13c4438c278f23d77f6cffc7e9cd30209dfd8386060052c20852765226",
+    "cpp/game/AnmTrace.hpp": "ab2505e016f7439d50a5e09c7f3cff53b57bc68f7b93f4bc0afb23bee1155e89",
+    "cpp/game/AnmVm.hpp": "c7e11045554dcc7cfbc3a6795335d3777e9e53d567248b5e106f04e6927b8791",
+    "cpp/game/Archive.hpp": "6a89a3b3ff5fa6f3c56efc01398ada4906fd021699a78b43a13220f75a90933a",
+    "cpp/game/AsciiText.hpp": "af013693401d3f214df85a0344c2a37d58af6a9641c03c4c7bd718eb3be3dee3",
+    "cpp/game/BombController.hpp": "938d8406738c6e5da09b5313cc55251e1a5e78e5cb7a593eb0d2f664796b6b0d",
+    "cpp/game/BombReimuTh14.hpp": "34213db7f6b5b67c4182320b6c154e5e9630a3582032d9f62f255ba246929d1b",
+    "cpp/game/BulletAppearance.hpp": "c40e4b1a79f2c1dbf89806494b24a1a356099f8404f6a0029eb7a9445dc23c7c",
+    "cpp/game/BulletEmitter.hpp": "2aa5f499550e568c89601fe88e6560cd3783b646924fda33d74c8fac7926e1f7",
+    "cpp/game/BulletLaunch.hpp": "56e858640b41bf9b7df9449cc09656673f260acc175925c2c17248748abedac3",
+    "cpp/game/BulletManager.hpp": "e9e97f327838e0cc3a986ad46ac78833dfd2e7b8ef949f3a9d113bcc585cf43b",
+    "cpp/game/BulletState.hpp": "9404630c828de0840ff590c940b8229974841b5ce6d28875b91ad6b77991f108",
+    "cpp/game/BulletTh14.hpp": "0c1748b5fba0a461a94402d9dd0a772a7313504fcdb85583261739d7f64e0207",
+    "cpp/game/BulletTh16.hpp": "e2a3839bc1d6104ff2c503ed6cf74372e75e09ba9679a58bc02476a777d99442",
+    "cpp/game/ClockSeedTh14.hpp": "1e1929040710677a212b41462060981ba868349a43c47257b3539d1835ac9250",
+    "cpp/game/Communication.hpp": "5a35535dd86b0f3a72776c32c9694b9e5d3b954614b3dbe30f2b3c0ce0d810dc",
+    "cpp/game/ContinueTh14.hpp": "00ac0096914e90e43b9c8c85dcba2645b6b9ad843ccdfcf756443614984bc421",
+    "cpp/game/DamageArea.hpp": "04a62c3f04497823f8f4e5a9ba4eaf2f6d49021543177aad94e18f426382a5d5",
+    "cpp/game/Dialogue.hpp": "cc4286ec7456f55fb704acccbed1cab157a3cfb4835360eb55b7bbec7600be45",
+    "cpp/game/EclContext.hpp": "4904ed0605d1a6b81d0af493989babed12bd8a4e30496d6ca688bb52b6f30b69",
+    "cpp/game/EclOwner.hpp": "6a1ceb725de22fe6357e29c3a6328c1da3416bdd960040a4ba76224bcda0a2b8",
+    "cpp/game/EclResource.hpp": "9d54309de9d4df895847edea7ce31de26d122ef6be60898535d56c5e0bde76bc",
+    "cpp/game/EclRoutes.hpp": "d656d43e2820e731c1670061e4e9ce65a98856512c700f46d5ca8d2900e5f6f0",
+    "cpp/game/EclTrap.hpp": "89d05e2d83af851be54bc08e095377e78cbfbbae1be90c144777dac1a6e0d131",
+    "cpp/game/EffectTh16Slots.hpp": "00daae745fe7a424397a063e33d6d0b6dd9af4f97f2649b7a1d71bf043c2e269",
+    "cpp/game/Ending.hpp": "580d140b6788310e618a63dd21ca798482a2f4362f7bbf55ced25a7012f9206e",
+    "cpp/game/EnemyAnimations.hpp": "d3bfcbdfed05e00be2aa8d99d59e541b09e90e2dcac8df8f7927d23e56c6df43",
+    "cpp/game/EnemyCallbacks.hpp": "1de8ec26a95077a2871157cfbf0210bfaa3a211ba2572b363a5f18119cdd75c2",
+    "cpp/game/EnemyCommands.hpp": "a069fd4c0693dd645b83337959a6136d48abcf3284852becb542af85e1624dfd",
+    "cpp/game/EnemyFrame.hpp": "766e5aa3ea0f52fcc94b75d557b81db4a6de11445deb4b550e598493a8a7a908",
+    "cpp/game/EnemyManager.hpp": "b67ec5a808a4ff07867c1420f3fd7efb43e95a58a5137e14f413ffec56b9d0be",
+    "cpp/game/EnemyScript.hpp": "f418983c051e04f7ee40b6995d05b3f9e2ba7d2c0a84b2e559be8b4979ade3d8",
+    "cpp/game/EnemyState.hpp": "95ae3d8ecc600a73ff8c0425b8b474d667647f0e12bb001e957da6e7ca466568",
+    "cpp/game/EnemyTh14Emitter.hpp": "c0838e7a908e67c2ac79c8ae03daae916951ae1babda4e2c34085ada16ff7d46",
+    "cpp/game/EnemyTh16Emitter.hpp": "916183243254a1f71fa3f4cf6b4e92797a90cdcd45e65bf79aa87f1ab90b2950",
+    "cpp/game/EnemyTh16Targets.hpp": "8a8ba1ea672cad7e0e58eee19f49865db370b4ca17033c096b5d77e5d734cc04",
+    "cpp/game/FogInterpolation.hpp": "42e4c9a0c2b89feee912ea71d7104c99097d401db340a990235d43b592129f24",
+    "cpp/game/FontBitmapTh14.hpp": "62b9ca1dbdd08b2d2ddaeb9c1f88541dc6e80348543cd83c14789e85fa8ad689",
+    "cpp/game/FrameStatistics.hpp": "36529d01902d0d9ef68a4af0024c722ed25633214ca83d2a65207a21e12e6fca",
+    "cpp/game/GameBattle.hpp": "72aa93bc054aeee2824f53a5d4f388a8037bbfb5da86c99cf2b3be036277c851",
+    "cpp/game/GameConfig.hpp": "9fb4628fdb3a846fd9a304c1420991795d5223ef5fc8d720bc5164f5475f054a",
+    "cpp/game/GameEconomy.hpp": "cd840df8c67e0284763b5dbc672bbd73b4eb6e75a195b3bdb7a2280206acedcc",
+    "cpp/game/GameInput.hpp": "6d3500f2cc120413e85c4018c87693837b2286dad0c97d2d03b55456f1d12fc6",
+    "cpp/game/GameResources.hpp": "665c970dfa949be6435b68fc4001a9962b351e0959e0ab8fe463dc782b897d50",
+    "cpp/game/GameSession.hpp": "2944b82196cee50d8c23f68133fee503af801140ebef4b78dea947eb391381c2",
+    "cpp/game/GameSessionResources.hpp": "18fce1473443b24707d49aba8a318cfeaed8929b471b120a21fce57bfe17587a",
+    "cpp/game/GlyphAtlas.hpp": "56f4297af0410bb514a6997716312f598c74f9d7bbce0f12cc1cfa9710335665",
+    "cpp/game/GraphicsMath.hpp": "cb76e5e81cc5d368bb75ecc4bf361858f62af4839289bc316702c078d5b4ad3c",
+    "cpp/game/Hud.hpp": "e9a7d3dae6c14df3a8f17946d766bf5f760c0fda4bdef583c14af9b1a66b8ee1",
+    "cpp/game/HudTh14Text.hpp": "f574df2d26dade171575eec13f6e96d3f54d4722f70dc8166caa9347db2e0ff1",
+    "cpp/game/ImageResample.hpp": "feb1304db723421eaf180aa75386d75bf5de8cee40f6cc41e1fedc6e38089810",
+    "cpp/game/Interpolation.hpp": "edbabf98f0aa2441bc725138d9fb6ff4908142998836ec3e3fc1c1f198e1d689",
+    "cpp/game/ItemManager.hpp": "5a7a69ed9d76d35460734d29dc9b440f696f379ff74859077d17d4add16beeeb",
+    "cpp/game/ItemRewards.hpp": "ab6591602b9af5e22c60371a8298dbc2793f1e675f033d99d222910d1b066a94",
+    "cpp/game/LaserCurveTh14.hpp": "9095b0ec1bec12e53e92b8e7b200c82e0c26f57879f586b5346024467e1c90dd",
+    "cpp/game/LaserManager.hpp": "6cafafab36678aaff84c4ca03221333d4f21f90430717ac078580eb007a1d3c6",
+    "cpp/game/LaserState.hpp": "e85ad358f05675d7fa9d6c38128702431a9cb22514657ad552aa49c33a28293e",
+    "cpp/game/LoadingTh14.hpp": "6636b4bee849b0f7bd514fa9126d3e6bd8b0960b03b09bb835d1d0a90270260f",
+    "cpp/game/Localization.hpp": "a6a0fbaa055fde480ba6e909b872089acd1966be1292e6261b1328656a067a33",
+    "cpp/game/Lzss.hpp": "df264a260821a4cbc8ec60e46b02f15ad0eb00bf998a8d6ad5260622f8224290",
+    "cpp/game/MenuCursor.hpp": "77f3b2da217ab9a312563d39bd5f0fe341db01fae409d132a187992dd213f5c6",
+    "cpp/game/Movement.hpp": "1e7aa978bb48ee2a23e781273b945e5bff0674ff8731d83c15ffddd30a5e599f",
+    "cpp/game/MusicCatalog.hpp": "6140437daa966fd346b89daec86503d0fbd70a142dd771d4ffacc0e46c230a80",
+    "cpp/game/NoopOpcodes.hpp": "80a6631cb5a29de88e0c2d299ca04f4bb7ff8db1c22c78ca52e3131e34d6c317",
+    "cpp/game/PauseMenu.hpp": "2de1e538d04f8dd40827a6a33b56edca473996c058c6d2458a8496c9b06d3604",
+    "cpp/game/PlayerCollision.hpp": "47e75ab3bb62b1885192e7576e695e484b7098140fbcf6da369520a3dab8eac3",
+    "cpp/game/PlayerFrame.hpp": "ccf98be361f11c712313ca5f1db05132921ee8a17b923c04712cd58629e8ae63",
+    "cpp/game/PlayerMotion.hpp": "df8ed7e3d74b5702ad5cb0a4572df57a4993ee4a06212fc8a73b9828f1633c89",
+    "cpp/game/PlayerTh16Life.hpp": "ad4753a62f4b4ec1990e71de4642c17efb90aa4ae062a87fb7b62b5bcb75ffbd",
+    "cpp/game/PortTitle.hpp": "5531b9b0a2364098ec023e09eddbf66907c392fb58a24e1a84c5bf7a9a033d2f",
+    "cpp/game/Replay.hpp": "c722098dec81f838c6ccaa74d50dc9840538d84b20c56f9e67bf40cd12f6378b",
+    "cpp/game/ReplayMenu.hpp": "22b6021d8638de32abcb4da3fb11501842f24be1401075625267e548d0ee8513",
+    "cpp/game/ReplayRecorder.hpp": "1ba401416c12d04a6f2c94801c0f6d76c366f5da4d3d6719df1e9f137ba142fb",
+    "cpp/game/ResourceCrypt.hpp": "dba560d8380ef04611c41da473972aaa30f9725afe9bdb49709b8dbfa9ccda27",
+    "cpp/game/Rng.hpp": "c53231677e6b5ef755d7385f5d3e224e2e353757eec7f1110424a8d4f0073a9a",
+    "cpp/game/SceneCamera.hpp": "9424135e0548ea6de3194ea4ba773241f3bce66b38de64ca2d438ac6e8b7c6a0",
+    "cpp/game/SceneCompositor.hpp": "67a53f725d8ef8813bc1ddf69f8bed78519c7ad8f939ac2ab227bce5974004c4",
+    "cpp/game/SceneSchedule.hpp": "77d0744bb084fe14f78b4dd91974a82072932e1b85840f955f2a9472d646ac53",
+    "cpp/game/ScoreFile.hpp": "7c3844493999a84fa31aba3ab434e4a277ad4e39daf947f6d1f6daf942447941",
+    "cpp/game/ScorePopups.hpp": "8bbaf7d8f3b8c427d42e9ddd26ce56310ebacff633797f69fbe77613e7ae1e25",
+    "cpp/game/ScreenDeformation.hpp": "22786f41f32e9e2ac01d0457595db80917500d6eee8137ab6496bd9672b6aaf2",
+    "cpp/game/ScreenFade.hpp": "cca65d7f9a9a6b926f95cb6447e286554eb0153829cdbc87fe8f16c935bb7241",
+    "cpp/game/ScreenShake.hpp": "bb7f171c8c1c78a544113a8d90d1788f3cf3418a5c28e5a44b8b706d8d16a053",
+    "cpp/game/SeasonTh16.hpp": "f1151a70526f0548842f67c78e37efcc840210fa1cd3255a551ba751fe05506f",
+    "cpp/game/ShotDamageTh14.hpp": "5c243a3def8f90c62b008737221e41c7ee5240d5c32a27489a4551e77111b288",
+    "cpp/game/ShotFiles.hpp": "768a6de513a5e95745dfb2866c9408054ffb28970a6b28cd053b4a05e13397c0",
+    "cpp/game/ShotManager.hpp": "ca3111b4b5cfbc0b677a806d2cc749e3ff186cd1dd16e07b63381c156f1d7b67",
+    "cpp/game/ShotPoolTh14.hpp": "fa8f9ce53b96a7f9a7d944e195d90a57c4a5a6f950b293f4168caa491e78deca",
+    "cpp/game/ShotSchedule.hpp": "efdf6d52ddc892f620c4772be8a748e2d80392529df91195825bdb8873e2c1ba",
+    "cpp/game/ShotTh16.hpp": "b22ef1bea42bb5186acf0583e710b355cdccd5fa1c08c0bbcdccb1f60050e7d1",
+    "cpp/game/ShtResource.hpp": "d4e6050c8797c896f80bb7b983147a09cfa3704b81914e96519dd83ed53bcebe",
+    "cpp/game/SoundEffects.hpp": "0c4e1edcfea79a3ba8738351c1d13159fb7d65a53557eef763c41142560c6dc6",
+    "cpp/game/SpellController.hpp": "cbb3a2499477d0f08a3f8460659e2761850c350131d070400094ed112e3965a5",
+    "cpp/game/SpellMenuTh14.hpp": "97542bac25fd4a96705305254907508e64520622042c2ff5fc8f70d95403e64d",
+    "cpp/game/SpellTh14Visuals.hpp": "6c6b169e531e72216de022a724c6026314207b1bb9582c15eaaba572c926208b",
+    "cpp/game/SpellTh16Visuals.hpp": "212653a21164ca92848d7711adc9fe102cea7cfffa320a6fe1b31f5df53e56be",
+    "cpp/game/SpellTiming.hpp": "b27800fce5a41811b88ade4f92679e5ef3624ae3b32a8dbfdb30bc104a34a3b5",
+    "cpp/game/Stage.hpp": "88c37ea23dd9b886e4d218921a00efff574edadced73b55b278c187293ce77c4",
+    "cpp/game/StageCompletion.hpp": "406c3ce486c2f3a590f17c9c03971583b166a67aea715aef7af2b8be8c499604",
+    "cpp/game/StageFiles.hpp": "4d54c88a6a7e8683f096a182358b08469c7f4a53e00a6c45dbfa39320044431c",
+    "cpp/game/StageResource.hpp": "7e31c2ff2c0a190283733376a1d48c81e6cba2263f013150b81a7df667cca555",
+    "cpp/game/TextLayoutTh14.hpp": "dffe94cd343c68a7027c2984d4ffa4f28bb58f7481ff9b1206b6a4c847e8ade2",
+    "cpp/game/TextRaster.hpp": "6be5ba7c6f6df501f6eaf72619b94073ddf5940278c69fdb331a68b2bd7972be",
+    "cpp/game/TextureImage.hpp": "9e5df7d53d6a58440fc826e170bd3c32aeb3f2995d4115fda05ab656ddaa3aad",
+    "cpp/game/Th12NoopOpcodes.hpp": "80f6788d13559776bbaeacb294edf738a29bedf3917ff7c1c346d3fc03647989",
+    "cpp/game/Th14AudioTables.inc": "732729af26f7187a38dfbb9c56ad418ab6e24bd79fcd0cc9dde5e7831521f8f7",
+    "cpp/game/Th14BulletTables.inc": "b236fc52135abbe19c71e554ef1f891cff577dcaf33e4ecdd54f5cd1c358b8b9",
+    "cpp/game/Th14LifeFragments.hpp": "18fab2372922aaaed2bfdac8def0a72172d98c91afa36b30801a1f9d180858f3",
+    "cpp/game/Th14MusicFade.hpp": "de4b25b5d08e610608c23f29f3da25a44ae009d91679a5e638db5583f79b9ac5",
+    "cpp/game/Th16AnmDispatch.hpp": "5702f6f59cca6a3a091f3a4b058f43e812a67311db792c133479bc52b954da28",
+    "cpp/game/Th16AudioTables.inc": "dc649adad094e3f4fe4529f864de7a74acbca2a5cc84a798d58cfa9319f171ab",
+    "cpp/game/Th16BulletTables.inc": "7d9d516582ce11b96fa5cc95933d2c626434eabd0222d2a79e691e24dab9058e",
+    "cpp/game/Th17AudioTables.inc": "adbc7253a2c9eb259f10e9d92e2650ce904bba7dd3d65177795b325d3f885be4",
+    "cpp/game/Th18AudioTables.inc": "25e5c4da671ed3505add773e5cc84f0325306e8822f4534d187ec50fe890ba7d",
+    "cpp/game/Timer.hpp": "e07169289db2407ce57c4191343ad6c9a5e3b2d543898439326520cfe1723ddb",
+    "cpp/game/TitleMenu.hpp": "596d63e4fce2e0e7981a362e2e68ad44300f630fe2e9341eab9e7e69d695873d",
+    "cpp/game/Trace.hpp": "47c177bee90ec630d7938ecc615e6eb44446f2285948044faf6d37977a26370d",
+    "cpp/game/Types.hpp": "f79c1ed7cb200413ef0dea75bf0d58842745b6b47182a97e496733c1d7bb2669",
+    "cpp/game/ZunGraphics.hpp": "9e3fd7bc59fb482dad01eea942c1cb491d5c56b6f287179a0ee706a291b146e7"
+  },
+  "cases": [
+    {
+      "title": "SakuyaA Normal",
+      "frames": 96016,
+      "stage": 6,
+      "candidatePlaybackEnded": true,
+      "gameOver": false,
+      "nativeEquivalent": false,
+      "replaySha256": "333ddf3b33001880072f42d23de13ec568c235fabda13c4c4d66c6bd815a7025"
+    },
+    {
+      "title": "ReimuB Lunatic",
+      "frames": 98074,
+      "stage": 6,
+      "candidatePlaybackEnded": true,
+      "gameOver": false,
+      "nativeEquivalent": false,
+      "replaySha256": "0933998a8c49f242aadb9f30d015a3a9361edfb6b2cdfb844285518ebaa0726d"
+    },
+    {
+      "title": "ReimuA Lunatic",
+      "frames": 90793,
+      "stage": 6,
+      "candidatePlaybackEnded": true,
+      "gameOver": false,
+      "nativeEquivalent": false,
+      "replaySha256": "0f82baec9b33288dea80ccd1121e068444d3d80a7c45c3c2a934e642e16a4689"
+    },
+    {
+      "title": "ReimuA Extra",
+      "frames": 39458,
+      "stage": 7,
+      "candidatePlaybackEnded": true,
+      "gameOver": false,
+      "nativeEquivalent": false,
+      "replaySha256": "362e9c87873c64f71fcb48b27c62177d8ab9d350f62dc79d9e6abbb7ad2af511"
+    }
+  ],
+  "lunaticNativeCaptureBudget": 90793,
+  "lunaticNativeCapturedCallbacks": 90793,
+  "lunaticNativeOrdinaryTerminalVerified": false,
+  "lunaticEqualGameplayFields": 29,
+  "lunaticLoadingGameplayDifferences": 25,
+  "lunaticAbsoluteVisualDifferences": 181570,
+  "lunaticRetainedDetailDifferences": 80,
+  "lunaticLoadingEnemyNextIdDifferences": 72,
+  "lunaticActiveAreaZWordDifferences": 8,
+  "lunaticActiveAreaOwnerMetadataDifferences": 0,
+  "originalZConsumerControlCases": 48,
+  "originalAreaZOutputRemainsObservable": true,
+  "actualProductionTemplateLayerCallerCases": 7,
+  "originalTemplateLayerFactoryControlsReused": 14,
+  "frozenClockStoreControls": 6,
+  "nativeBootstrapClockDirectlyObserved": true,
+  "clockCampaignSeedOrCounterChanged": false,
+  "clockRelevantCurrentSourcesEqualFrozenSnapshots": true,
+  "historicalImmutableReceipts": {
+    "docs/porting/th14-hit-effects-current-checkpoint-oct14.json": {
+      "bytes": 140515,
+      "sha256": "2c02ee2b411869e555bb2b48abfb8d2c794250425e15d6e4cd62010dc5c54c45",
+      "currentSourcePassClaimed": false
+    },
+    "docs/porting/th14-hit-effect-current-visual-verified-oct14.json": {
+      "bytes": 11007,
+      "sha256": "13dc2c25a5ec6ff745281abc599eb425389f38bf29f53d031be7bf57cc263e17",
+      "currentSourcePassClaimed": false
+    },
+    "docs/porting/th14-bullet-cancel-visual-fanout-verified-oct14.json": {
+      "bytes": 19771,
+      "sha256": "a57d780aaf05a9441bb53842b80bfbe26259eb3e031d1e4a8818483941818a58",
+      "currentSourcePassClaimed": false
+    }
+  },
+  "normalNativeCallbacks": 96016,
+  "normalEqualGameplayFields": 29,
+  "normalLoadingGameplayDifferences": 25,
+  "extraNativeCallbacks": 39458,
+  "extraEqualGameplayFields": 30,
+  "extraGameplayDifferences": 0,
+  "extraAbsoluteVisualDifferences": 78916,
+  "ordinaryNaturalInputFrames": 95220,
+  "ordinaryEndingFrames": 3737,
+  "ordinaryScoreBytes": 22379,
+  "ordinaryDecodedScoreBytes": 149076,
+  "ordinaryRecordedReplayActiveDifferentWords": 0,
+  "ordinaryRecordedReplayInactiveScoreDifferentWords": 10,
+  "sanitizerCases": [
+    {
+      "title": "SakuyaA Normal",
+      "frames": 96016,
+      "passed": true
+    },
+    {
+      "file": "th14_udzp01.rpy",
+      "replaySha256": "0f82baec9b33288dea80ccd1121e068444d3d80a7c45c3c2a934e642e16a4689",
+      "frames": 90793,
+      "stage": 6,
+      "sanitizerPassed": true,
+      "candidatePlaybackEnded": true,
+      "gameOver": false,
+      "errors": []
+    },
+    {
+      "file": "th14_udzp02.rpy",
+      "replaySha256": "0933998a8c49f242aadb9f30d015a3a9361edfb6b2cdfb844285518ebaa0726d",
+      "frames": 98074,
+      "stage": 6,
+      "sanitizerPassed": true,
+      "candidatePlaybackEnded": true,
+      "gameOver": false,
+      "errors": []
+    },
+    {
+      "file": "th14_udzp07.rpy",
+      "replaySha256": "362e9c87873c64f71fcb48b27c62177d8ab9d350f62dc79d9e6abbb7ad2af511",
+      "frames": 39458,
+      "stage": 7,
+      "sanitizerPassed": true,
+      "candidatePlaybackEnded": true,
+      "gameOver": false,
+      "errors": []
+    }
+  ],
+  "browserReplayFrames": 468,
+  "browserRecordedUnderPreviousBuild": true,
+  "browserPersistenceAcrossBuildUpdateObserved": true,
+  "browserConsoleWarnings": 2,
+  "browserConsoleErrors": 0,
+  "browserCurrentLaunchWarnings": 0,
+  "browserCurrentLaunchErrors": 0,
+  "appShellPrecacheEntries": 97,
+  "appShellPrecacheBytes": 4284044,
+  "originalGameResourcesPreserved": 28,
+  "fullGameOfflineVerified": false,
+  "retainedWarningCauseEstablished": false,
+  "sdl": {
+    "bytes": 1872163,
+    "sha256": "fe4061f1103e0cd51351e24c11cad4f0cb99e13ae63750262ac3fcfe29bf50e8",
+    "sources": 146,
+    "headers": 144
+  },
+  "publicEvidenceReceipts": {
+    "docs/porting/th14-template-layer-full-combat-verified-oct14.json": {
+      "bytes": 105660,
+      "sha256": "cdc07224cb8a3dbd3fb7ad4d2e0e30df0aa7b0cd8356511a0490cafcc353d0b2"
+    },
+    "docs/porting/th14-damage-area-z-consumer-verified-oct14.json": {
+      "bytes": 20506,
+      "sha256": "4936deff24524551f2b158582a6914aeb77bb4869bdc136c83fc477349a82a09"
+    },
+    "docs/porting/th14-effect-template-layer-current-verified-oct14.json": {
+      "bytes": 13556,
+      "sha256": "21255f0a6ffdcc27ebcb866c2be5e642ab26b0037a5f57a5a855874ce8b9ccf3"
+    },
+    "docs/porting/th14-startup-platform-clock-verified-oct14.json": {
+      "bytes": 9354,
+      "sha256": "32e4d4f0142e8f0068ec0dfae2ac115ae116539dc024c7f506661148c449407e"
+    },
+    "docs/porting/th14-normal-continuous-template-layer-oct14.json": {
+      "bytes": 5586,
+      "sha256": "d71c49d8b2d86ec9fe95d5126ac8cac7e9a65edd9f93a775cfd8a1bfc45d868d"
+    },
+    "docs/porting/th14-extra-continuous-template-layer-oct14.json": {
+      "bytes": 4093,
+      "sha256": "1a61c8b100f189d14a733a0d49523bf3449f5a6f444aa5197dd13288cac34668"
+    },
+    "docs/porting/th14-natural-storage-normal-sakuyaa-template-layer-oct14-verified-oct14.json": {
+      "bytes": 52050,
+      "sha256": "ef9cad4aeb3c8c8f4ce452d540fadafd611ce1a178e048ca6ddc8ed1bb33238c"
+    },
+    "docs/porting/th14-natural-current-replay-normal-template-layer-verified-oct14.json": {
+      "bytes": 49447,
+      "sha256": "1107160857eb393916822612d7f335c80313a296dc1542cfd0c69a069702fec0"
+    },
+    "docs/porting/th14-sanitized-replay-template-layer-oct14-observed-oct13.json": {
+      "bytes": 27917,
+      "sha256": "cf08e801970d18a00e61a3f1a7c422156a86d6e644f804390d7b3f3ba2de9092"
+    },
+    "docs/porting/th14-sanitized-input-parity-matrix-template-layer-oct14-observed-oct14.json": {
+      "bytes": 28847,
+      "sha256": "49ee98b66290f8807857ea9cc3fc15a025398b14089e5c2436094379767b3689"
+    },
+    "docs/porting/th14-template-layer-browser-flow-verified-oct14.json": {
+      "bytes": 95790,
+      "sha256": "0e6020e4b1f215ec7d61245f11056c6dd6fac7c8baa41a2f46f85a0ce41f0293"
+    },
+    "docs/porting/th14-launcher-runtime-prepared-template-layer-oct14.json": {
+      "bytes": 50674,
+      "sha256": "06d0240bcb957c2034a9319211468a5c836eff6b1c3853ab4c87a1f2801cc3ec"
+    },
+    "docs/porting/th14-launcher-preview-prepared-template-layer-shell-oct14.json": {
+      "bytes": 36442,
+      "sha256": "b4d3ef6f43aa4ebb737374be5eb89041245a5ed906266894fcb31ced12aa2d93"
+    },
+    "docs/porting/th14-app-shell-precache-current-verified-oct14.json": {
+      "bytes": 89175,
+      "sha256": "1bb3818d91eca85149af4c9a34c55e0382a6d9d20b600694772221c75f14286b"
+    }
+  },
+  "bindings": {
+    "runtimes/th13/th13_web/artifacts/cpp/engine-th14-build.json": {
+      "bytes": 33155,
+      "sha256": "639b2af3132297185805bcbd8b37cf8372b408eebd967491d8f5813e932ac3a8"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmGeometry.cpp": {
+      "bytes": 22621,
+      "sha256": "6326e12e33f2cce4d9999ade1b241c25832c1323720df57a1094a6372c10db59"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmInterpreter.cpp": {
+      "bytes": 36805,
+      "sha256": "1ba8bfb924a2e7b5f34e4f8dc72705d7cb7222410ddb25c5a61bdcedf1a72a6e"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmManager.cpp": {
+      "bytes": 18059,
+      "sha256": "6943719effbaa0889f988db890d2ad7da66401dec676eba6e367b0ad9dfba980"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmProjection.cpp": {
+      "bytes": 6070,
+      "sha256": "ac2e73f94a4ee47770a40c8549b6691ebe7696c05820e3d07d7b7817e751df59"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmRenderer.cpp": {
+      "bytes": 25250,
+      "sha256": "eefd3362120f2c1dadac30875d1fe716608e56b22ecdd2fe5dbb3baaa33a17ce"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmResource.cpp": {
+      "bytes": 7753,
+      "sha256": "d1979f79190528263fa5fb67b0dbb6dd497c604c4cb8cb96efe18b7348111a8e"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmVm.cpp": {
+      "bytes": 10666,
+      "sha256": "9cb9853b9a235e96cd4458586458b62151563d46aacc710863985b49350bd974"
+    },
+    "runtimes/th12/th12_web/cpp/game/Archive.cpp": {
+      "bytes": 6815,
+      "sha256": "18ddd5a4b212d02c13d79d3b2958889bb3513301c1ed7656825822f77e21d8fe"
+    },
+    "runtimes/th12/th12_web/cpp/game/AsciiText.cpp": {
+      "bytes": 5354,
+      "sha256": "9a5f0eefcc5973a1f04a55d975b25ff28c2b20bbc0abbc5b10d41a3564b36788"
+    },
+    "runtimes/th12/th12_web/cpp/game/BombController.cpp": {
+      "bytes": 27757,
+      "sha256": "4eb902aaaeb48413ad7a7f1c3e3c2e0bda6ed04e48f7dae1c6137a550e4c4fb7"
+    },
+    "runtimes/th12/th12_web/cpp/game/BombReimuTh14.cpp": {
+      "bytes": 3112,
+      "sha256": "4cd374d04b0ebc50d7ebb2b085453769d666fdae159691a1cfd4b5a96012325c"
+    },
+    "runtimes/th12/th12_web/cpp/game/BulletAppearance.cpp": {
+      "bytes": 12952,
+      "sha256": "01789552e5a03f3713a21f0ec60796aa5c93dc2f63e1488e97ce1f3218fbc69e"
+    },
+    "runtimes/th12/th12_web/cpp/game/BulletLaunch.cpp": {
+      "bytes": 2430,
+      "sha256": "23cb53eddde04b9a5ff8905f331433820035448a5c48c1d3bfb2ba84d8022a25"
+    },
+    "runtimes/th12/th12_web/cpp/game/BulletManager.cpp": {
+      "bytes": 17587,
+      "sha256": "bb29fbc9466a079009f1fca05eff7ad5f3e84546aa9b7316bd664bf4dc531567"
+    },
+    "runtimes/th12/th12_web/cpp/game/BulletMotion.cpp": {
+      "bytes": 5418,
+      "sha256": "9d5f3d80f433c0b4d5370d0821711daafd49d93c87712452d6d1aea447a97510"
+    },
+    "runtimes/th12/th12_web/cpp/game/BulletTh14.cpp": {
+      "bytes": 30228,
+      "sha256": "e87bec8532f767fb9b857d0aaab0f9ea4151df76a701e22ce4571e625427935f"
+    },
+    "runtimes/th12/th12_web/cpp/game/BulletTh14Launch.cpp": {
+      "bytes": 2473,
+      "sha256": "f081116da8a89d7e25890072cfbe0c089d3746f51dc37a0f99a2577429c3a7bc"
+    },
+    "runtimes/th12/th12_web/cpp/game/BulletTh16.cpp": {
+      "bytes": 30944,
+      "sha256": "7a4d88e12cf38e48f0f6934aeee7dfef08a74173d60fc0aff19b08e9aff9d159"
+    },
+    "runtimes/th12/th12_web/cpp/game/BulletTh16Launch.cpp": {
+      "bytes": 2520,
+      "sha256": "4dc208fb28c2cc7e823a9f9380b0b865919acfb0cb0d7a4714c8627ad09c61ef"
+    },
+    "runtimes/th12/th12_web/cpp/game/BulletTransforms.cpp": {
+      "bytes": 4293,
+      "sha256": "a7e3e2779dd446c5a3958040d3b1502088d1160ad9ec494bf61466cbbe29e954"
+    },
+    "runtimes/th12/th12_web/cpp/game/Communication.cpp": {
+      "bytes": 767,
+      "sha256": "440d6d45ef77dee26e55c65ed47575f19015253e8d541ffd986d09adec21ca1f"
+    },
+    "runtimes/th12/th12_web/cpp/game/ContinueTh14.cpp": {
+      "bytes": 736,
+      "sha256": "f163f963c8f53c7b503137961fbdb5be227dce30b27af81ec68ac4d4c5311080"
+    },
+    "runtimes/th12/th12_web/cpp/game/DamageArea.cpp": {
+      "bytes": 2206,
+      "sha256": "f41c484dc5761c873f317d9c3834f05f045b5f8dac5a3d9905bd2e0b7e4e8e7e"
+    },
+    "runtimes/th12/th12_web/cpp/game/Dialogue.cpp": {
+      "bytes": 27125,
+      "sha256": "95e55a7a0fda7d7a6770c4ed5bd590892dcc9d4ff5c5f2f261de906c832b59eb"
+    },
+    "runtimes/th12/th12_web/cpp/game/EclContext.cpp": {
+      "bytes": 5016,
+      "sha256": "3a4751af060e4c2b7d2cfc9207e70beae9b77e76c55567b5225053d06117c8c4"
+    },
+    "runtimes/th12/th12_web/cpp/game/EclInterpreter.cpp": {
+      "bytes": 15563,
+      "sha256": "8c66178dfe4da8f88ff2e8d0177dd9585d4ed297e64628c3825976985c594739"
+    },
+    "runtimes/th12/th12_web/cpp/game/EclOwner.cpp": {
+      "bytes": 4590,
+      "sha256": "d89a5b6c3ed78bec89e20264ed9d2549a89ab5183f12cf1d34cc502a5fc8542e"
+    },
+    "runtimes/th12/th12_web/cpp/game/EclResource.cpp": {
+      "bytes": 3981,
+      "sha256": "5482a55370100ae63d7d997c62943e903c8b4b82325b59e1fd6d0c33c97f4e25"
+    },
+    "runtimes/th12/th12_web/cpp/game/EffectTh16Slots.cpp": {
+      "bytes": 454,
+      "sha256": "f750e65d6e16430395ff14e7ddad00172a95c7415b0095dbd8313748688c4343"
+    },
+    "runtimes/th12/th12_web/cpp/game/Ending.cpp": {
+      "bytes": 10702,
+      "sha256": "c939877ab0b6a82fa7fda73114539dbc50f242f426935b39d4f1c59339fc43f4"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyAnimations.cpp": {
+      "bytes": 22759,
+      "sha256": "0fb7ce88926a1666f59a66595773c9121d37498e022ea09764877a55d2fb3eb3"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyCallbacks.cpp": {
+      "bytes": 11767,
+      "sha256": "7d32da2fa7ad31e8e4a8ec47c7ace4787d2dea6194087ad432770451ccc9a47e"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyCommands.cpp": {
+      "bytes": 19471,
+      "sha256": "8c7c820ee0ad0794d122ba15bd3688709b8395fef23914cb456b59e5fd2dd5cd"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyEmitterCommands.cpp": {
+      "bytes": 18743,
+      "sha256": "4e4cfeb50a74bf689a93c34392639b2f0c563f9c96208ecf1a5aa7deeb7a279d"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyFrame.cpp": {
+      "bytes": 11653,
+      "sha256": "5ffa340514320cf05aa5e5a2f91284b6c563b9bbb50238873e5413b20bb4d367"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyLaserCommands.cpp": {
+      "bytes": 11266,
+      "sha256": "58ce9be705b0165c86301f1edadf696f95cfe65974a7f9b4546083df82700fb5"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyManager.cpp": {
+      "bytes": 27229,
+      "sha256": "606a4ee4ab540a0a169e3978d4ef6c38618f5926db7e6498769f12912a8a7728"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyPhase.cpp": {
+      "bytes": 4748,
+      "sha256": "3b022ab8b46cd62de8789417344e46b5541656387a9009625ea82c727278acf8"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyScript.cpp": {
+      "bytes": 22938,
+      "sha256": "bed942631ef6316ec22adbe4a32b299fd05dbfed877f9843ce3bfe8360c4ff9f"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyState.cpp": {
+      "bytes": 19160,
+      "sha256": "b4500aff6bde7136099e08ec38851ce31f7186724e2982d9a0bc9affc09f60f2"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyStateCommands.cpp": {
+      "bytes": 46826,
+      "sha256": "b03434294ecbfc13b3504c7d96fac48d7fd9f0caf4821b846285cea5a03f1464"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyTh14Callbacks.cpp": {
+      "bytes": 2211,
+      "sha256": "73f797a023c6a5dcba947f23c4f3b67e899cdfce657b372f9e3588eb2fcdc183"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyTh14Commands.cpp": {
+      "bytes": 44147,
+      "sha256": "30af40abb797b255a1682f4f69e4bca96dd07197be7897b9454f864f0cb5fef9"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyTh14Emitter.cpp": {
+      "bytes": 3221,
+      "sha256": "c42d5428da9b41d0570243aa565e84c9b52a4c8db24e72d1cc7811a70ad417c2"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyTh14Fire.cpp": {
+      "bytes": 1039,
+      "sha256": "5d441a37465f7d1fb53a4a9ef98e1ba386161e775f6a3a042b14767fd7be4084"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyTh16Commands.cpp": {
+      "bytes": 16808,
+      "sha256": "b3cabceaed985d1206cca3b35da5417b78c4969b62eb1b21c9a4a53af3088cdb"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyTh16Emitter.cpp": {
+      "bytes": 3109,
+      "sha256": "f47fccb61f2305cf8a6f49842c3b018ad868a9daf6e2c7cc5fe5af359ee6f8eb"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyTh16Fire.cpp": {
+      "bytes": 2739,
+      "sha256": "f4d895b8b60ba4ffbf0a24ba8754dfd421bce2855281c89c0a2cafde78983df1"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyTh16Movement.cpp": {
+      "bytes": 15554,
+      "sha256": "58d99bedf6bbf9ca1f3f9c6b5c31d6ba8b565222b29db69b4ac95766a2b925a6"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyTh16Targets.cpp": {
+      "bytes": 1157,
+      "sha256": "f5054b90faad931c2f279d7156932334be9d730a25f7d89a834a6cb93d38e933"
+    },
+    "runtimes/th12/th12_web/cpp/game/FogInterpolation.cpp": {
+      "bytes": 2071,
+      "sha256": "b34a1c498084f208ec12b0a9a5cbdaeac11d887190d73dc840dafc5957c9e94f"
+    },
+    "runtimes/th12/th12_web/cpp/game/FrameStatistics.cpp": {
+      "bytes": 848,
+      "sha256": "af32c458123197aed3e43f06cfff6e5c7d7ff6a668549da47d27411a985d2495"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameBattle.cpp": {
+      "bytes": 51655,
+      "sha256": "7d2a5de8170825c2a07310fec57dffb2eed5182c69148c15498176186968c3a2"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameConfig.cpp": {
+      "bytes": 2193,
+      "sha256": "4bd2d4c225c2cb270e4edf5af7ce347776daaaee2d09fada74c54d378ca9c613"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameEconomy.cpp": {
+      "bytes": 1950,
+      "sha256": "4900ac63b30cf5919096594ee3729bebcec7046d71104413b31fda088cb19641"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameInput.cpp": {
+      "bytes": 2394,
+      "sha256": "7c6bd87bde99c9a7dbc7e4f176d76fd16d76284d76810e26f628fc026d04472b"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameResources.cpp": {
+      "bytes": 7261,
+      "sha256": "44a9e70c5c3b1ec449b8f1473c7ca427d62204478bc9c160945c93898c949e72"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameSession.cpp": {
+      "bytes": 42838,
+      "sha256": "eea69a2962af31961ebf9d2d7da7e1c365de83609029b67db22d0eddf2b1c17a"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameSessionResources.cpp": {
+      "bytes": 6890,
+      "sha256": "e477764d887e4e3cd380b5923482acd5070ca718e7ae86fdf55687486b720f73"
+    },
+    "runtimes/th12/th12_web/cpp/game/GlyphAtlas.cpp": {
+      "bytes": 3931,
+      "sha256": "acd99b80ce746f18be6cf86703af37d41258284e1d94876bcdac3b66bc347cc3"
+    },
+    "runtimes/th12/th12_web/cpp/game/GraphicsMath.cpp": {
+      "bytes": 2830,
+      "sha256": "b159b3d617a522977c795351b5ff56338d5058b899ab984a590c8b50f8a9fd6e"
+    },
+    "runtimes/th12/th12_web/cpp/game/Hud.cpp": {
+      "bytes": 23662,
+      "sha256": "a9edec4ed2891651cf2087b0a4454586d482508c566ed795f2f3935ce90a950a"
+    },
+    "runtimes/th12/th12_web/cpp/game/HudTh14Boss.cpp": {
+      "bytes": 7870,
+      "sha256": "14989a95bc5f1aa65f2d368db9aa85a837cb1c7542f5b0459d27f1ca666dc23d"
+    },
+    "runtimes/th12/th12_web/cpp/game/HudTh14Notice.cpp": {
+      "bytes": 2106,
+      "sha256": "4343bc37d695c2927692e5a8070c2eaa517a8f5d8d79e94722552b74b16d1027"
+    },
+    "runtimes/th12/th12_web/cpp/game/HudTh14Text.cpp": {
+      "bytes": 4322,
+      "sha256": "2288becc9654903b4431553a7bea129434e56dcd6208118346a622804838faea"
+    },
+    "runtimes/th12/th12_web/cpp/game/ImageResample.cpp": {
+      "bytes": 7689,
+      "sha256": "3f90c8f9a2e31bfc6cc65fd0f75310410b0bc0d3123e79fdac0a8df31293f109"
+    },
+    "runtimes/th12/th12_web/cpp/game/Interpolation.cpp": {
+      "bytes": 8585,
+      "sha256": "57cd2806a28109745084fb2079edee055322ff3fd044f75fc4e4ec3305add125"
+    },
+    "runtimes/th12/th12_web/cpp/game/ItemManager.cpp": {
+      "bytes": 9533,
+      "sha256": "d394a2746fbad691a00c063d9fd71b6755e908b7ebab17af30629f9025a0b7d1"
+    },
+    "runtimes/th12/th12_web/cpp/game/ItemRewards.cpp": {
+      "bytes": 15262,
+      "sha256": "154e30fe1626779c0d460be11fdc5f1f50cc56dac7fd49ff59d6d80657fb5b5f"
+    },
+    "runtimes/th12/th12_web/cpp/game/ItemTh14.cpp": {
+      "bytes": 8578,
+      "sha256": "1a86d88d6b88eba3ecba3a02b98183af1f948a38b1a686a0788bc25ded9241d7"
+    },
+    "runtimes/th12/th12_web/cpp/game/ItemTh16.cpp": {
+      "bytes": 7014,
+      "sha256": "05bd4a77139441a366be85e29b7b6f3bf65660315e984c73443a3e2bd9fdeee1"
+    },
+    "runtimes/th12/th12_web/cpp/game/ItemTh16Drop.cpp": {
+      "bytes": 1998,
+      "sha256": "3b81443129f81580f823053ead8368cd2d49b94ba227b914414990c8023306df"
+    },
+    "runtimes/th12/th12_web/cpp/game/LaserCurveTh14.cpp": {
+      "bytes": 11818,
+      "sha256": "269a3f3155aed1e63a7355858d11703c8fe0fd50668f9291a7366b3238937a14"
+    },
+    "runtimes/th12/th12_web/cpp/game/LaserCurveTh14Runtime.cpp": {
+      "bytes": 6645,
+      "sha256": "4d28ba331761e0de24e133904d6f2ede84e945eb8824e914ac36ac8c6f0e0557"
+    },
+    "runtimes/th12/th12_web/cpp/game/LaserCut.cpp": {
+      "bytes": 3628,
+      "sha256": "b00405c0c14ef28a507368acb49e7451735809c6813f490f8c358baf4b6f7e9f"
+    },
+    "runtimes/th12/th12_web/cpp/game/LaserCutTh16.cpp": {
+      "bytes": 3429,
+      "sha256": "73eb6855a2904925cfdaf36819f87a901b0c749661e2979103f9cdd670e12a97"
+    },
+    "runtimes/th12/th12_web/cpp/game/LaserInfinite.cpp": {
+      "bytes": 5885,
+      "sha256": "eeed57d321158d275e489697d2840d0ccde46a635702b54cc8e31d933de18ab7"
+    },
+    "runtimes/th12/th12_web/cpp/game/LaserInfiniteCut.cpp": {
+      "bytes": 3922,
+      "sha256": "922397f494aae885912b760c68a6eacdba30c4e8bba61643058cade7ad2a263d"
+    },
+    "runtimes/th12/th12_web/cpp/game/LaserInfiniteTh14.cpp": {
+      "bytes": 12207,
+      "sha256": "35bbd953f57f2057f76622fc7adcab3baa36ddfe9c3ba9a110618372f285e646"
+    },
+    "runtimes/th12/th12_web/cpp/game/LaserLine.cpp": {
+      "bytes": 5262,
+      "sha256": "85030486035d071e282decfffe5b327075a3e692bcb230fb1ac57763b2992fa0"
+    },
+    "runtimes/th12/th12_web/cpp/game/LaserLineTh14.cpp": {
+      "bytes": 12619,
+      "sha256": "0e4cde4bc233b1668483a7d11bbef9143e7acfa923f91289d7b2e6748511e626"
+    },
+    "runtimes/th12/th12_web/cpp/game/LaserLineTh16.cpp": {
+      "bytes": 10752,
+      "sha256": "dd6728cd8d4b97b6dc6a958907d01188fb39bff8d4073b9a685dc0f767f609b9"
+    },
+    "runtimes/th12/th12_web/cpp/game/LaserManager.cpp": {
+      "bytes": 20614,
+      "sha256": "9e8756fa1727e23d3eac9f0bae1245baeb6c2d34dbc029adda71f4517ef1d043"
+    },
+    "runtimes/th12/th12_web/cpp/game/LaserState.cpp": {
+      "bytes": 6241,
+      "sha256": "d47452fe86a7fb7b66a5c86c41e4d991950c41cfe7a819afb9d5c5c2cdcea209"
+    },
+    "runtimes/th12/th12_web/cpp/game/Localization.cpp": {
+      "bytes": 6378,
+      "sha256": "1caa741af2e43f9ecc1110873cf4c34e1e8467e1eef7b74dff05850fc08b299d"
+    },
+    "runtimes/th12/th12_web/cpp/game/Lzss.cpp": {
+      "bytes": 4459,
+      "sha256": "7bf9b34043ee21f6e23244369069b2807314f3d7ddf7f37a556b34780afa4e48"
+    },
+    "runtimes/th12/th12_web/cpp/game/MenuCursor.cpp": {
+      "bytes": 1885,
+      "sha256": "acbe07403cfbd9310ce742240023bb739695b8340d1a815c304ab6d0b020a112"
+    },
+    "runtimes/th12/th12_web/cpp/game/Movement.cpp": {
+      "bytes": 1900,
+      "sha256": "ea823e71f48f15d1d5e038c4fa62b6a4dfcaa31b087ebc183e42ef2dd439cccb"
+    },
+    "runtimes/th12/th12_web/cpp/game/PauseEnd.cpp": {
+      "bytes": 12607,
+      "sha256": "adf178b3f84566b5746d0330407306589cd925665c42c4bd458c8b3e29cbb754"
+    },
+    "runtimes/th12/th12_web/cpp/game/PauseMenu.cpp": {
+      "bytes": 13953,
+      "sha256": "4fef2c94f7635ae49507bc1d35dc4205e78193c7f3a84c6a5db5b2fe5da389b8"
+    },
+    "runtimes/th12/th12_web/cpp/game/PauseReplay.cpp": {
+      "bytes": 2751,
+      "sha256": "a12735f8e7fda3b1e326166e07d9136dc5f8b96ac7887bc0b188e1e4b139b317"
+    },
+    "runtimes/th12/th12_web/cpp/game/PauseText.cpp": {
+      "bytes": 7102,
+      "sha256": "10c1a0d69b5b6cfdaf169bd92165b3fb440fc73d8d4c9b68b927d49ee768fd93"
+    },
+    "runtimes/th12/th12_web/cpp/game/PlayerCollision.cpp": {
+      "bytes": 4767,
+      "sha256": "855f92f2b0161a34697862c7061ac8ee4cd13c66b7d1d1862ceb7feeea9b48df"
+    },
+    "runtimes/th12/th12_web/cpp/game/PlayerFrame.cpp": {
+      "bytes": 24353,
+      "sha256": "ac90ce7b383e5fcf97555b00bf277dda13f9c65a74901ea186dddbd8715b630c"
+    },
+    "runtimes/th12/th12_web/cpp/game/PlayerMotion.cpp": {
+      "bytes": 29146,
+      "sha256": "3687a4a69ebf7fe07d3d2167b703df2b93ca770ea329ea5cdc05f71e2dafd330"
+    },
+    "runtimes/th12/th12_web/cpp/game/PlayerTh16Life.cpp": {
+      "bytes": 3364,
+      "sha256": "dae2284839580d2027b2f8307c8179892b6ab97a40997e77f7970853a2558a44"
+    },
+    "runtimes/th12/th12_web/cpp/game/Replay.cpp": {
+      "bytes": 14351,
+      "sha256": "7678a83c7bb737f4fe816ce239a9fa1c0f12935b900aa29bfed98b9abc3cb17d"
+    },
+    "runtimes/th12/th12_web/cpp/game/ReplayRecorder.cpp": {
+      "bytes": 5912,
+      "sha256": "609cd8ac701578aeeef1989345cd63e8c1b37d4575a85539fe173251756450b6"
+    },
+    "runtimes/th12/th12_web/cpp/game/ResourceCrypt.cpp": {
+      "bytes": 3228,
+      "sha256": "d57118f1114f3909c42a2e99e7df30e625f6563247a8118cd14bb9f68a0f97ef"
+    },
+    "runtimes/th12/th12_web/cpp/game/SceneCamera.cpp": {
+      "bytes": 1195,
+      "sha256": "72a5b43fb397885086f65083cc13d22971bda2b7632c516df91301ed6d6c1e93"
+    },
+    "runtimes/th12/th12_web/cpp/game/SceneCompositor.cpp": {
+      "bytes": 10254,
+      "sha256": "f0568596460b395c0bdd6c7379c7008a0de081cd250143217dfe030dba1e86fb"
+    },
+    "runtimes/th12/th12_web/cpp/game/ScoreFile.cpp": {
+      "bytes": 11219,
+      "sha256": "b3b1b445c3888dc69e8c54c5632a89ba279df4ce462672033f9f020bcdf47f1a"
+    },
+    "runtimes/th12/th12_web/cpp/game/ScorePopups.cpp": {
+      "bytes": 4840,
+      "sha256": "5219939add97f51005b08db6fd6f422cc5ad906c567140f8bae27632be6f2561"
+    },
+    "runtimes/th12/th12_web/cpp/game/ScreenDeformation.cpp": {
+      "bytes": 8364,
+      "sha256": "47fbdd9fc1c79ebc17af32d22ab71f8e8da3607c368c569a70773d03774690a5"
+    },
+    "runtimes/th12/th12_web/cpp/game/ScreenFade.cpp": {
+      "bytes": 1809,
+      "sha256": "b82489990677036d1c7184fd19f74e9fb8217a09454ecf379b214feb503f4ac7"
+    },
+    "runtimes/th12/th12_web/cpp/game/ScreenShake.cpp": {
+      "bytes": 1528,
+      "sha256": "e6a87ffdc3edad1c8bd98b5031b13bc3c43247588e76b692562774a31c7ecb6b"
+    },
+    "runtimes/th12/th12_web/cpp/game/SeasonTh16.cpp": {
+      "bytes": 2130,
+      "sha256": "f1859130696c3a90914a763c915468d7d017a27acc867395e48e39117482c038"
+    },
+    "runtimes/th12/th12_web/cpp/game/ShotCallbacksTh14.cpp": {
+      "bytes": 8591,
+      "sha256": "ca45e02b0ac112a2a8ea471ea448a462546fdca3aa1458fad9f25f206dd04a2f"
+    },
+    "runtimes/th12/th12_web/cpp/game/ShotDamageTh14.cpp": {
+      "bytes": 6524,
+      "sha256": "a063bc7179916295185143bc75083e46dcd1f6351d9719b6818beaf25749073f"
+    },
+    "runtimes/th12/th12_web/cpp/game/ShotManager.cpp": {
+      "bytes": 23071,
+      "sha256": "1d85e0adeddec2b2167094c1eee0307652e074650b89ea3b34011388f275861a"
+    },
+    "runtimes/th12/th12_web/cpp/game/ShotSakuyaTh14.cpp": {
+      "bytes": 6924,
+      "sha256": "fdaae3a35c98bdec50f2fa03949dc84d55a3283c5d3b0111500d8313fdd72a51"
+    },
+    "runtimes/th12/th12_web/cpp/game/ShotSchedule.cpp": {
+      "bytes": 2872,
+      "sha256": "9d2e78f65ad1daa535b2d2415c150c652aec06704f3d001b9fe43f9649f76951"
+    },
+    "runtimes/th12/th12_web/cpp/game/ShotTh14.cpp": {
+      "bytes": 17212,
+      "sha256": "4d8b65a6b9baba8ae1d6b03c30b56c88976c3d4e12108d80614d5d43e553f0bd"
+    },
+    "runtimes/th12/th12_web/cpp/game/ShotTh16.cpp": {
+      "bytes": 14509,
+      "sha256": "ea3d4679fd14ccadba9289493dd6a829d6278a75dcb8601b7381094a21696063"
+    },
+    "runtimes/th12/th12_web/cpp/game/ShotTh16Geometry.cpp": {
+      "bytes": 5232,
+      "sha256": "b42b83d9ea4dd4291dcb550c4fb263850d9e1b5d407637278dbfd812ec54869c"
+    },
+    "runtimes/th12/th12_web/cpp/game/ShotTh16Hit.cpp": {
+      "bytes": 3304,
+      "sha256": "115211ecdc23558b41db44b8e7abf6e779b5c75ad1d78afb79c499a7c632c754"
+    },
+    "runtimes/th12/th12_web/cpp/game/ShotTh16Production.cpp": {
+      "bytes": 9242,
+      "sha256": "2ca6036d19170a755a02c3f6061076a3772d1be1e73319eadb21847c43bd1e7f"
+    },
+    "runtimes/th12/th12_web/cpp/game/ShtResource.cpp": {
+      "bytes": 8721,
+      "sha256": "d3c3eb0103f4ea9eee6468c863a3ad8e9abb871f3245091290701ecb03161c9b"
+    },
+    "runtimes/th12/th12_web/cpp/game/SoundEffects.cpp": {
+      "bytes": 8643,
+      "sha256": "6a22e37def9e9889cdc4dee735cec29cc7f6933ed4ba8f1ac74600e2830e2a1d"
+    },
+    "runtimes/th12/th12_web/cpp/game/SpellController.cpp": {
+      "bytes": 7934,
+      "sha256": "b622821b209b98d6c3353da3416f2585478728391d207b67884688506b752277"
+    },
+    "runtimes/th12/th12_web/cpp/game/SpellTh14Visuals.cpp": {
+      "bytes": 2286,
+      "sha256": "4056520c7cd2ff9867b74b18583b73c90d14cf689e45b686add221c67884caf3"
+    },
+    "runtimes/th12/th12_web/cpp/game/SpellTh16Visuals.cpp": {
+      "bytes": 2391,
+      "sha256": "ced358ca36239c716efb0e8abf47f20a0d87fe1a5a27da529e3489dcffb1c343"
+    },
+    "runtimes/th12/th12_web/cpp/game/SpellTiming.cpp": {
+      "bytes": 1897,
+      "sha256": "b47cce01612c88caeebba8276aba03a349698eab08f45458955705fd5c460a5f"
+    },
+    "runtimes/th12/th12_web/cpp/game/Stage.cpp": {
+      "bytes": 7028,
+      "sha256": "1666ac9bd4aeac26db0564ba16848ec5c2145782fc103f36c2dd931bec9ed394"
+    },
+    "runtimes/th12/th12_web/cpp/game/StageCompletion.cpp": {
+      "bytes": 4707,
+      "sha256": "be5dc07e2e1fbf47d6b49036f22a70846f3373fa4643e2b8d9ee3f911654dd96"
+    },
+    "runtimes/th12/th12_web/cpp/game/StageDraw.cpp": {
+      "bytes": 10027,
+      "sha256": "0dd619d9f36ef976909e243f6e3956f019668ddf0cc308d610243856d7cbb2b2"
+    },
+    "runtimes/th12/th12_web/cpp/game/StageResource.cpp": {
+      "bytes": 4220,
+      "sha256": "c5bc8f8f793fc1ccd6c73d5e5b9b238e48de7e35fab7d81fe27df5b335a335c7"
+    },
+    "runtimes/th12/th12_web/cpp/game/StageScript.cpp": {
+      "bytes": 10919,
+      "sha256": "ee28283c182d25f9d8cefcf3ff11444bb8ba02d04f4841a4535c9db18a5e32a7"
+    },
+    "runtimes/th12/th12_web/cpp/game/TextRaster.cpp": {
+      "bytes": 4697,
+      "sha256": "c29bc2fc87579164aa3768a6b9a4e3cb417e7c54d9526d0eda0272625d5dcd21"
+    },
+    "runtimes/th12/th12_web/cpp/game/TextureImage.cpp": {
+      "bytes": 7035,
+      "sha256": "7882a7bf4492c54eb7b31a592f46d65ab65311e1278e0a038ed6b5f1d87ec2f8"
+    },
+    "runtimes/th12/th12_web/cpp/game/TitleKeys.cpp": {
+      "bytes": 2797,
+      "sha256": "82a837f2dfe486c90470c2d14b30a15cc8da99f88cfac1c13738e69cdda7dfea"
+    },
+    "runtimes/th12/th12_web/cpp/game/TitleMenu.cpp": {
+      "bytes": 9397,
+      "sha256": "db8fca88d804b05fada836801f07d66d5f7234059a290b111e4610b91d1d10cf"
+    },
+    "runtimes/th12/th12_web/cpp/game/TitleMusic.cpp": {
+      "bytes": 7754,
+      "sha256": "3b8325066cf5851189d21f7fddb1bc46b28fee30f741285fa99327c6e1cd1be5"
+    },
+    "runtimes/th12/th12_web/cpp/game/TitleOptions.cpp": {
+      "bytes": 4982,
+      "sha256": "98bc86f4787e0c807545c4d4e21e619c3c7e41f2c3be22879df1604241662f4f"
+    },
+    "runtimes/th12/th12_web/cpp/game/TitleRecords.cpp": {
+      "bytes": 6834,
+      "sha256": "5564019b8bee3efe0e610d5ab56cf0f1d1adeb3d8484dee5346359a0d741d5b8"
+    },
+    "runtimes/th12/th12_web/cpp/game/TitleReplay.cpp": {
+      "bytes": 2623,
+      "sha256": "1b6c800c79f9bc40acf0bd3451034d81cd45638b8a3d9a9a530ddc0b048f3add"
+    },
+    "runtimes/th12/th12_web/cpp/game/TitleResults.cpp": {
+      "bytes": 5047,
+      "sha256": "8f7e9a7061b39075745960f11ba822a4af745bf7c7c4788c96e62a6994430b4e"
+    },
+    "runtimes/th12/th12_web/cpp/game/TitleSelection.cpp": {
+      "bytes": 5841,
+      "sha256": "9fcb4a0ecfeed24128cb080141fb673ef8e7053e8816c9c433d8b2f365d58672"
+    },
+    "runtimes/th12/th12_web/cpp/game/TitleText.cpp": {
+      "bytes": 8899,
+      "sha256": "f047fae4f010ff120f49a8e3f9d7701beed813533f355b1b12f7896b12e0687b"
+    },
+    "runtimes/th12/th12_web/cpp/game/TitleTh14.cpp": {
+      "bytes": 18028,
+      "sha256": "930cd1701ab106a74c4d44b550db218df2998a02c01e632203221d1e8b453b15"
+    },
+    "runtimes/th12/th12_web/cpp/game/Trace.cpp": {
+      "bytes": 70,
+      "sha256": "043160954f83a0dd612566a175a982b7368ff639769b9a799f4df753db048f9c"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmGeometry.hpp": {
+      "bytes": 2150,
+      "sha256": "b6a1cea487717d15bbcc8e7788d055f9ab345bd18f4583c1d8024521cede3f3c"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmManager.hpp": {
+      "bytes": 4996,
+      "sha256": "77f2de3ff97f534be1514ceaefa1034b26fe8b9a9eb8e1876488571d89cd52e4"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmOpcodes.hpp": {
+      "bytes": 35046,
+      "sha256": "37a6ef978bc43d0b62314294930444056f2632cd207246589752e14a8bb03691"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmProjection.hpp": {
+      "bytes": 579,
+      "sha256": "0f91867c9aaf6e232c4d74b83ea673c5ccb5626a96ca44018e8aa56ee7b768e7"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmRenderer.hpp": {
+      "bytes": 2529,
+      "sha256": "f3ddc24a3c1922e65266d84606b55eb70998dab6e233b04623636f238ec8ae96"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmResource.hpp": {
+      "bytes": 2838,
+      "sha256": "f2b35e13c4438c278f23d77f6cffc7e9cd30209dfd8386060052c20852765226"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmTrace.hpp": {
+      "bytes": 1617,
+      "sha256": "ab2505e016f7439d50a5e09c7f3cff53b57bc68f7b93f4bc0afb23bee1155e89"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmVm.hpp": {
+      "bytes": 8937,
+      "sha256": "c7e11045554dcc7cfbc3a6795335d3777e9e53d567248b5e106f04e6927b8791"
+    },
+    "runtimes/th12/th12_web/cpp/game/Archive.hpp": {
+      "bytes": 967,
+      "sha256": "6a89a3b3ff5fa6f3c56efc01398ada4906fd021699a78b43a13220f75a90933a"
+    },
+    "runtimes/th12/th12_web/cpp/game/AsciiText.hpp": {
+      "bytes": 759,
+      "sha256": "af013693401d3f214df85a0344c2a37d58af6a9641c03c4c7bd718eb3be3dee3"
+    },
+    "runtimes/th12/th12_web/cpp/game/BombController.hpp": {
+      "bytes": 3361,
+      "sha256": "938d8406738c6e5da09b5313cc55251e1a5e78e5cb7a593eb0d2f664796b6b0d"
+    },
+    "runtimes/th12/th12_web/cpp/game/BombReimuTh14.hpp": {
+      "bytes": 595,
+      "sha256": "34213db7f6b5b67c4182320b6c154e5e9630a3582032d9f62f255ba246929d1b"
+    },
+    "runtimes/th12/th12_web/cpp/game/BulletAppearance.hpp": {
+      "bytes": 321,
+      "sha256": "c40e4b1a79f2c1dbf89806494b24a1a356099f8404f6a0029eb7a9445dc23c7c"
+    },
+    "runtimes/th12/th12_web/cpp/game/BulletEmitter.hpp": {
+      "bytes": 1780,
+      "sha256": "2aa5f499550e568c89601fe88e6560cd3783b646924fda33d74c8fac7926e1f7"
+    },
+    "runtimes/th12/th12_web/cpp/game/BulletLaunch.hpp": {
+      "bytes": 834,
+      "sha256": "56e858640b41bf9b7df9449cc09656673f260acc175925c2c17248748abedac3"
+    },
+    "runtimes/th12/th12_web/cpp/game/BulletManager.hpp": {
+      "bytes": 4940,
+      "sha256": "e9e97f327838e0cc3a986ad46ac78833dfd2e7b8ef949f3a9d113bcc585cf43b"
+    },
+    "runtimes/th12/th12_web/cpp/game/BulletState.hpp": {
+      "bytes": 3101,
+      "sha256": "9404630c828de0840ff590c940b8229974841b5ce6d28875b91ad6b77991f108"
+    },
+    "runtimes/th12/th12_web/cpp/game/BulletTh14.hpp": {
+      "bytes": 1159,
+      "sha256": "0c1748b5fba0a461a94402d9dd0a772a7313504fcdb85583261739d7f64e0207"
+    },
+    "runtimes/th12/th12_web/cpp/game/BulletTh16.hpp": {
+      "bytes": 3115,
+      "sha256": "e2a3839bc1d6104ff2c503ed6cf74372e75e09ba9679a58bc02476a777d99442"
+    },
+    "runtimes/th12/th12_web/cpp/game/ClockSeedTh14.hpp": {
+      "bytes": 308,
+      "sha256": "1e1929040710677a212b41462060981ba868349a43c47257b3539d1835ac9250"
+    },
+    "runtimes/th12/th12_web/cpp/game/Communication.hpp": {
+      "bytes": 499,
+      "sha256": "5a35535dd86b0f3a72776c32c9694b9e5d3b954614b3dbe30f2b3c0ce0d810dc"
+    },
+    "runtimes/th12/th12_web/cpp/game/ContinueTh14.hpp": {
+      "bytes": 152,
+      "sha256": "00ac0096914e90e43b9c8c85dcba2645b6b9ad843ccdfcf756443614984bc421"
+    },
+    "runtimes/th12/th12_web/cpp/game/DamageArea.hpp": {
+      "bytes": 731,
+      "sha256": "04a62c3f04497823f8f4e5a9ba4eaf2f6d49021543177aad94e18f426382a5d5"
+    },
+    "runtimes/th12/th12_web/cpp/game/Dialogue.hpp": {
+      "bytes": 4049,
+      "sha256": "cc4286ec7456f55fb704acccbed1cab157a3cfb4835360eb55b7bbec7600be45"
+    },
+    "runtimes/th12/th12_web/cpp/game/EclContext.hpp": {
+      "bytes": 3372,
+      "sha256": "4904ed0605d1a6b81d0af493989babed12bd8a4e30496d6ca688bb52b6f30b69"
+    },
+    "runtimes/th12/th12_web/cpp/game/EclOwner.hpp": {
+      "bytes": 1125,
+      "sha256": "6a1ceb725de22fe6357e29c3a6328c1da3416bdd960040a4ba76224bcda0a2b8"
+    },
+    "runtimes/th12/th12_web/cpp/game/EclResource.hpp": {
+      "bytes": 1559,
+      "sha256": "9d54309de9d4df895847edea7ce31de26d122ef6be60898535d56c5e0bde76bc"
+    },
+    "runtimes/th12/th12_web/cpp/game/EclRoutes.hpp": {
+      "bytes": 8856,
+      "sha256": "d656d43e2820e731c1670061e4e9ce65a98856512c700f46d5ca8d2900e5f6f0"
+    },
+    "runtimes/th12/th12_web/cpp/game/EclTrap.hpp": {
+      "bytes": 852,
+      "sha256": "89d05e2d83af851be54bc08e095377e78cbfbbae1be90c144777dac1a6e0d131"
+    },
+    "runtimes/th12/th12_web/cpp/game/EffectTh16Slots.hpp": {
+      "bytes": 270,
+      "sha256": "00daae745fe7a424397a063e33d6d0b6dd9af4f97f2649b7a1d71bf043c2e269"
+    },
+    "runtimes/th12/th12_web/cpp/game/Ending.hpp": {
+      "bytes": 2022,
+      "sha256": "580d140b6788310e618a63dd21ca798482a2f4362f7bbf55ced25a7012f9206e"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyAnimations.hpp": {
+      "bytes": 1429,
+      "sha256": "d3bfcbdfed05e00be2aa8d99d59e541b09e90e2dcac8df8f7927d23e56c6df43"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyCallbacks.hpp": {
+      "bytes": 2321,
+      "sha256": "1de8ec26a95077a2871157cfbf0210bfaa3a211ba2572b363a5f18119cdd75c2"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyCommands.hpp": {
+      "bytes": 9443,
+      "sha256": "a069fd4c0693dd645b83337959a6136d48abcf3284852becb542af85e1624dfd"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyFrame.hpp": {
+      "bytes": 2428,
+      "sha256": "766e5aa3ea0f52fcc94b75d557b81db4a6de11445deb4b550e598493a8a7a908"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyManager.hpp": {
+      "bytes": 2083,
+      "sha256": "b67ec5a808a4ff07867c1420f3fd7efb43e95a58a5137e14f413ffec56b9d0be"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyScript.hpp": {
+      "bytes": 2583,
+      "sha256": "f418983c051e04f7ee40b6995d05b3f9e2ba7d2c0a84b2e559be8b4979ade3d8"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyState.hpp": {
+      "bytes": 17452,
+      "sha256": "95ae3d8ecc600a73ff8c0425b8b474d667647f0e12bb001e957da6e7ca466568"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyTh14Emitter.hpp": {
+      "bytes": 840,
+      "sha256": "c0838e7a908e67c2ac79c8ae03daae916951ae1babda4e2c34085ada16ff7d46"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyTh16Emitter.hpp": {
+      "bytes": 1039,
+      "sha256": "916183243254a1f71fa3f4cf6b4e92797a90cdcd45e65bf79aa87f1ab90b2950"
+    },
+    "runtimes/th12/th12_web/cpp/game/EnemyTh16Targets.hpp": {
+      "bytes": 236,
+      "sha256": "8a8ba1ea672cad7e0e58eee19f49865db370b4ca17033c096b5d77e5d734cc04"
+    },
+    "runtimes/th12/th12_web/cpp/game/FogInterpolation.hpp": {
+      "bytes": 610,
+      "sha256": "42e4c9a0c2b89feee912ea71d7104c99097d401db340a990235d43b592129f24"
+    },
+    "runtimes/th12/th12_web/cpp/game/FontBitmapTh14.hpp": {
+      "bytes": 544,
+      "sha256": "62b9ca1dbdd08b2d2ddaeb9c1f88541dc6e80348543cd83c14789e85fa8ad689"
+    },
+    "runtimes/th12/th12_web/cpp/game/FrameStatistics.hpp": {
+      "bytes": 418,
+      "sha256": "36529d01902d0d9ef68a4af0024c722ed25633214ca83d2a65207a21e12e6fca"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameBattle.hpp": {
+      "bytes": 22783,
+      "sha256": "72aa93bc054aeee2824f53a5d4f388a8037bbfb5da86c99cf2b3be036277c851"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameConfig.hpp": {
+      "bytes": 720,
+      "sha256": "9fb4628fdb3a846fd9a304c1420991795d5223ef5fc8d720bc5164f5475f054a"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameEconomy.hpp": {
+      "bytes": 1792,
+      "sha256": "cd840df8c67e0284763b5dbc672bbd73b4eb6e75a195b3bdb7a2280206acedcc"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameInput.hpp": {
+      "bytes": 965,
+      "sha256": "6d3500f2cc120413e85c4018c87693837b2286dad0c97d2d03b55456f1d12fc6"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameResources.hpp": {
+      "bytes": 2616,
+      "sha256": "665c970dfa949be6435b68fc4001a9962b351e0959e0ab8fe463dc782b897d50"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameSession.hpp": {
+      "bytes": 5194,
+      "sha256": "2944b82196cee50d8c23f68133fee503af801140ebef4b78dea947eb391381c2"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameSessionResources.hpp": {
+      "bytes": 3130,
+      "sha256": "18fce1473443b24707d49aba8a318cfeaed8929b471b120a21fce57bfe17587a"
+    },
+    "runtimes/th12/th12_web/cpp/game/GlyphAtlas.hpp": {
+      "bytes": 459,
+      "sha256": "56f4297af0410bb514a6997716312f598c74f9d7bbce0f12cc1cfa9710335665"
+    },
+    "runtimes/th12/th12_web/cpp/game/GraphicsMath.hpp": {
+      "bytes": 753,
+      "sha256": "cb76e5e81cc5d368bb75ecc4bf361858f62af4839289bc316702c078d5b4ad3c"
+    },
+    "runtimes/th12/th12_web/cpp/game/Hud.hpp": {
+      "bytes": 3649,
+      "sha256": "e9a7d3dae6c14df3a8f17946d766bf5f760c0fda4bdef583c14af9b1a66b8ee1"
+    },
+    "runtimes/th12/th12_web/cpp/game/HudTh14Text.hpp": {
+      "bytes": 334,
+      "sha256": "f574df2d26dade171575eec13f6e96d3f54d4722f70dc8166caa9347db2e0ff1"
+    },
+    "runtimes/th12/th12_web/cpp/game/ImageResample.hpp": {
+      "bytes": 704,
+      "sha256": "feb1304db723421eaf180aa75386d75bf5de8cee40f6cc41e1fedc6e38089810"
+    },
+    "runtimes/th12/th12_web/cpp/game/Interpolation.hpp": {
+      "bytes": 1204,
+      "sha256": "edbabf98f0aa2441bc725138d9fb6ff4908142998836ec3e3fc1c1f198e1d689"
+    },
+    "runtimes/th12/th12_web/cpp/game/ItemManager.hpp": {
+      "bytes": 5273,
+      "sha256": "5a7a69ed9d76d35460734d29dc9b440f696f379ff74859077d17d4add16beeeb"
+    },
+    "runtimes/th12/th12_web/cpp/game/ItemRewards.hpp": {
+      "bytes": 1436,
+      "sha256": "ab6591602b9af5e22c60371a8298dbc2793f1e675f033d99d222910d1b066a94"
+    },
+    "runtimes/th12/th12_web/cpp/game/LaserCurveTh14.hpp": {
+      "bytes": 1711,
+      "sha256": "9095b0ec1bec12e53e92b8e7b200c82e0c26f57879f586b5346024467e1c90dd"
+    },
+    "runtimes/th12/th12_web/cpp/game/LaserManager.hpp": {
+      "bytes": 4704,
+      "sha256": "6cafafab36678aaff84c4ca03221333d4f21f90430717ac078580eb007a1d3c6"
+    },
+    "runtimes/th12/th12_web/cpp/game/LaserState.hpp": {
+      "bytes": 9502,
+      "sha256": "e85ad358f05675d7fa9d6c38128702431a9cb22514657ad552aa49c33a28293e"
+    },
+    "runtimes/th12/th12_web/cpp/game/LoadingTh14.hpp": {
+      "bytes": 904,
+      "sha256": "6636b4bee849b0f7bd514fa9126d3e6bd8b0960b03b09bb835d1d0a90270260f"
+    },
+    "runtimes/th12/th12_web/cpp/game/Localization.hpp": {
+      "bytes": 683,
+      "sha256": "a6a0fbaa055fde480ba6e909b872089acd1966be1292e6261b1328656a067a33"
+    },
+    "runtimes/th12/th12_web/cpp/game/Lzss.hpp": {
+      "bytes": 1223,
+      "sha256": "df264a260821a4cbc8ec60e46b02f15ad0eb00bf998a8d6ad5260622f8224290"
+    },
+    "runtimes/th12/th12_web/cpp/game/MenuCursor.hpp": {
+      "bytes": 555,
+      "sha256": "77f3b2da217ab9a312563d39bd5f0fe341db01fae409d132a187992dd213f5c6"
+    },
+    "runtimes/th12/th12_web/cpp/game/Movement.hpp": {
+      "bytes": 501,
+      "sha256": "1e7aa978bb48ee2a23e781273b945e5bff0674ff8731d83c15ffddd30a5e599f"
+    },
+    "runtimes/th12/th12_web/cpp/game/MusicCatalog.hpp": {
+      "bytes": 6131,
+      "sha256": "6140437daa966fd346b89daec86503d0fbd70a142dd771d4ffacc0e46c230a80"
+    },
+    "runtimes/th12/th12_web/cpp/game/NoopOpcodes.hpp": {
+      "bytes": 5992,
+      "sha256": "80a6631cb5a29de88e0c2d299ca04f4bb7ff8db1c22c78ca52e3131e34d6c317"
+    },
+    "runtimes/th12/th12_web/cpp/game/PauseMenu.hpp": {
+      "bytes": 2813,
+      "sha256": "2de1e538d04f8dd40827a6a33b56edca473996c058c6d2458a8496c9b06d3604"
+    },
+    "runtimes/th12/th12_web/cpp/game/PlayerCollision.hpp": {
+      "bytes": 765,
+      "sha256": "47e75ab3bb62b1885192e7576e695e484b7098140fbcf6da369520a3dab8eac3"
+    },
+    "runtimes/th12/th12_web/cpp/game/PlayerFrame.hpp": {
+      "bytes": 4158,
+      "sha256": "ccf98be361f11c712313ca5f1db05132921ee8a17b923c04712cd58629e8ae63"
+    },
+    "runtimes/th12/th12_web/cpp/game/PlayerMotion.hpp": {
+      "bytes": 3975,
+      "sha256": "df8ed7e3d74b5702ad5cb0a4572df57a4993ee4a06212fc8a73b9828f1633c89"
+    },
+    "runtimes/th12/th12_web/cpp/game/PlayerTh16Life.hpp": {
+      "bytes": 1052,
+      "sha256": "ad4753a62f4b4ec1990e71de4642c17efb90aa4ae062a87fb7b62b5bcb75ffbd"
+    },
+    "runtimes/th12/th12_web/cpp/game/PortTitle.hpp": {
+      "bytes": 741,
+      "sha256": "5531b9b0a2364098ec023e09eddbf66907c392fb58a24e1a84c5bf7a9a033d2f"
+    },
+    "runtimes/th12/th12_web/cpp/game/Replay.hpp": {
+      "bytes": 9111,
+      "sha256": "c722098dec81f838c6ccaa74d50dc9840538d84b20c56f9e67bf40cd12f6378b"
+    },
+    "runtimes/th12/th12_web/cpp/game/ReplayMenu.hpp": {
+      "bytes": 133,
+      "sha256": "22b6021d8638de32abcb4da3fb11501842f24be1401075625267e548d0ee8513"
+    },
+    "runtimes/th12/th12_web/cpp/game/ReplayRecorder.hpp": {
+      "bytes": 899,
+      "sha256": "1ba401416c12d04a6f2c94801c0f6d76c366f5da4d3d6719df1e9f137ba142fb"
+    },
+    "runtimes/th12/th12_web/cpp/game/ResourceCrypt.hpp": {
+      "bytes": 1099,
+      "sha256": "dba560d8380ef04611c41da473972aaa30f9725afe9bdb49709b8dbfa9ccda27"
+    },
+    "runtimes/th12/th12_web/cpp/game/Rng.hpp": {
+      "bytes": 1127,
+      "sha256": "c53231677e6b5ef755d7385f5d3e224e2e353757eec7f1110424a8d4f0073a9a"
+    },
+    "runtimes/th12/th12_web/cpp/game/SceneCamera.hpp": {
+      "bytes": 639,
+      "sha256": "9424135e0548ea6de3194ea4ba773241f3bce66b38de64ca2d438ac6e8b7c6a0"
+    },
+    "runtimes/th12/th12_web/cpp/game/SceneCompositor.hpp": {
+      "bytes": 1335,
+      "sha256": "67a53f725d8ef8813bc1ddf69f8bed78519c7ad8f939ac2ab227bce5974004c4"
+    },
+    "runtimes/th12/th12_web/cpp/game/SceneSchedule.hpp": {
+      "bytes": 8719,
+      "sha256": "77d0744bb084fe14f78b4dd91974a82072932e1b85840f955f2a9472d646ac53"
+    },
+    "runtimes/th12/th12_web/cpp/game/ScoreFile.hpp": {
+      "bytes": 2781,
+      "sha256": "7c3844493999a84fa31aba3ab434e4a277ad4e39daf947f6d1f6daf942447941"
+    },
+    "runtimes/th12/th12_web/cpp/game/ScorePopups.hpp": {
+      "bytes": 1214,
+      "sha256": "8bbaf7d8f3b8c427d42e9ddd26ce56310ebacff633797f69fbe77613e7ae1e25"
+    },
+    "runtimes/th12/th12_web/cpp/game/ScreenDeformation.hpp": {
+      "bytes": 1011,
+      "sha256": "22786f41f32e9e2ac01d0457595db80917500d6eee8137ab6496bd9672b6aaf2"
+    },
+    "runtimes/th12/th12_web/cpp/game/ScreenFade.hpp": {
+      "bytes": 938,
+      "sha256": "cca65d7f9a9a6b926f95cb6447e286554eb0153829cdbc87fe8f16c935bb7241"
+    },
+    "runtimes/th12/th12_web/cpp/game/ScreenShake.hpp": {
+      "bytes": 1370,
+      "sha256": "bb7f171c8c1c78a544113a8d90d1788f3cf3418a5c28e5a44b8b706d8d16a053"
+    },
+    "runtimes/th12/th12_web/cpp/game/SeasonTh16.hpp": {
+      "bytes": 706,
+      "sha256": "f1151a70526f0548842f67c78e37efcc840210fa1cd3255a551ba751fe05506f"
+    },
+    "runtimes/th12/th12_web/cpp/game/ShotDamageTh14.hpp": {
+      "bytes": 1460,
+      "sha256": "5c243a3def8f90c62b008737221e41c7ee5240d5c32a27489a4551e77111b288"
+    },
+    "runtimes/th12/th12_web/cpp/game/ShotFiles.hpp": {
+      "bytes": 7018,
+      "sha256": "768a6de513a5e95745dfb2866c9408054ffb28970a6b28cd053b4a05e13397c0"
+    },
+    "runtimes/th12/th12_web/cpp/game/ShotManager.hpp": {
+      "bytes": 9168,
+      "sha256": "ca3111b4b5cfbc0b677a806d2cc749e3ff186cd1dd16e07b63381c156f1d7b67"
+    },
+    "runtimes/th12/th12_web/cpp/game/ShotPoolTh14.hpp": {
+      "bytes": 721,
+      "sha256": "fa8f9ce53b96a7f9a7d944e195d90a57c4a5a6f950b293f4168caa491e78deca"
+    },
+    "runtimes/th12/th12_web/cpp/game/ShotSchedule.hpp": {
+      "bytes": 1111,
+      "sha256": "efdf6d52ddc892f620c4772be8a748e2d80392529df91195825bdb8873e2c1ba"
+    },
+    "runtimes/th12/th12_web/cpp/game/ShotTh16.hpp": {
+      "bytes": 4374,
+      "sha256": "b22ef1bea42bb5186acf0583e710b355cdccd5fa1c08c0bbcdccb1f60050e7d1"
+    },
+    "runtimes/th12/th12_web/cpp/game/ShtResource.hpp": {
+      "bytes": 1959,
+      "sha256": "d4e6050c8797c896f80bb7b983147a09cfa3704b81914e96519dd83ed53bcebe"
+    },
+    "runtimes/th12/th12_web/cpp/game/SoundEffects.hpp": {
+      "bytes": 1646,
+      "sha256": "0c4e1edcfea79a3ba8738351c1d13159fb7d65a53557eef763c41142560c6dc6"
+    },
+    "runtimes/th12/th12_web/cpp/game/SpellController.hpp": {
+      "bytes": 2315,
+      "sha256": "cbb3a2499477d0f08a3f8460659e2761850c350131d070400094ed112e3965a5"
+    },
+    "runtimes/th12/th12_web/cpp/game/SpellMenuTh14.hpp": {
+      "bytes": 1661,
+      "sha256": "97542bac25fd4a96705305254907508e64520622042c2ff5fc8f70d95403e64d"
+    },
+    "runtimes/th12/th12_web/cpp/game/SpellTh14Visuals.hpp": {
+      "bytes": 552,
+      "sha256": "6c6b169e531e72216de022a724c6026314207b1bb9582c15eaaba572c926208b"
+    },
+    "runtimes/th12/th12_web/cpp/game/SpellTh16Visuals.hpp": {
+      "bytes": 422,
+      "sha256": "212653a21164ca92848d7711adc9fe102cea7cfffa320a6fe1b31f5df53e56be"
+    },
+    "runtimes/th12/th12_web/cpp/game/SpellTiming.hpp": {
+      "bytes": 581,
+      "sha256": "b27800fce5a41811b88ade4f92679e5ef3624ae3b32a8dbfdb30bc104a34a3b5"
+    },
+    "runtimes/th12/th12_web/cpp/game/Stage.hpp": {
+      "bytes": 4057,
+      "sha256": "88c37ea23dd9b886e4d218921a00efff574edadced73b55b278c187293ce77c4"
+    },
+    "runtimes/th12/th12_web/cpp/game/StageCompletion.hpp": {
+      "bytes": 2195,
+      "sha256": "406c3ce486c2f3a590f17c9c03971583b166a67aea715aef7af2b8be8c499604"
+    },
+    "runtimes/th12/th12_web/cpp/game/StageFiles.hpp": {
+      "bytes": 6231,
+      "sha256": "4d54c88a6a7e8683f096a182358b08469c7f4a53e00a6c45dbfa39320044431c"
+    },
+    "runtimes/th12/th12_web/cpp/game/StageResource.hpp": {
+      "bytes": 926,
+      "sha256": "7e31c2ff2c0a190283733376a1d48c81e6cba2263f013150b81a7df667cca555"
+    },
+    "runtimes/th12/th12_web/cpp/game/TextLayoutTh14.hpp": {
+      "bytes": 825,
+      "sha256": "dffe94cd343c68a7027c2984d4ffa4f28bb58f7481ff9b1206b6a4c847e8ade2"
+    },
+    "runtimes/th12/th12_web/cpp/game/TextRaster.hpp": {
+      "bytes": 497,
+      "sha256": "6be5ba7c6f6df501f6eaf72619b94073ddf5940278c69fdb331a68b2bd7972be"
+    },
+    "runtimes/th12/th12_web/cpp/game/TextureImage.hpp": {
+      "bytes": 643,
+      "sha256": "9e5df7d53d6a58440fc826e170bd3c32aeb3f2995d4115fda05ab656ddaa3aad"
+    },
+    "runtimes/th12/th12_web/cpp/game/Th12NoopOpcodes.hpp": {
+      "bytes": 1886,
+      "sha256": "80f6788d13559776bbaeacb294edf738a29bedf3917ff7c1c346d3fc03647989"
+    },
+    "runtimes/th12/th12_web/cpp/game/Th14AudioTables.inc": {
+      "bytes": 2670,
+      "sha256": "732729af26f7187a38dfbb9c56ad418ab6e24bd79fcd0cc9dde5e7831521f8f7"
+    },
+    "runtimes/th12/th12_web/cpp/game/Th14BulletTables.inc": {
+      "bytes": 10568,
+      "sha256": "b236fc52135abbe19c71e554ef1f891cff577dcaf33e4ecdd54f5cd1c358b8b9"
+    },
+    "runtimes/th12/th12_web/cpp/game/Th14LifeFragments.hpp": {
+      "bytes": 280,
+      "sha256": "18fab2372922aaaed2bfdac8def0a72172d98c91afa36b30801a1f9d180858f3"
+    },
+    "runtimes/th12/th12_web/cpp/game/Th14MusicFade.hpp": {
+      "bytes": 540,
+      "sha256": "de4b25b5d08e610608c23f29f3da25a44ae009d91679a5e638db5583f79b9ac5"
+    },
+    "runtimes/th12/th12_web/cpp/game/Th16AnmDispatch.hpp": {
+      "bytes": 819,
+      "sha256": "5702f6f59cca6a3a091f3a4b058f43e812a67311db792c133479bc52b954da28"
+    },
+    "runtimes/th12/th12_web/cpp/game/Th16AudioTables.inc": {
+      "bytes": 1399,
+      "sha256": "dc649adad094e3f4fe4529f864de7a74acbca2a5cc84a798d58cfa9319f171ab"
+    },
+    "runtimes/th12/th12_web/cpp/game/Th16BulletTables.inc": {
+      "bytes": 10780,
+      "sha256": "7d9d516582ce11b96fa5cc95933d2c626434eabd0222d2a79e691e24dab9058e"
+    },
+    "runtimes/th12/th12_web/cpp/game/Th17AudioTables.inc": {
+      "bytes": 1435,
+      "sha256": "adbc7253a2c9eb259f10e9d92e2650ce904bba7dd3d65177795b325d3f885be4"
+    },
+    "runtimes/th12/th12_web/cpp/game/Th18AudioTables.inc": {
+      "bytes": 1483,
+      "sha256": "25e5c4da671ed3505add773e5cc84f0325306e8822f4534d187ec50fe890ba7d"
+    },
+    "runtimes/th12/th12_web/cpp/game/Timer.hpp": {
+      "bytes": 1125,
+      "sha256": "e07169289db2407ce57c4191343ad6c9a5e3b2d543898439326520cfe1723ddb"
+    },
+    "runtimes/th12/th12_web/cpp/game/TitleMenu.hpp": {
+      "bytes": 5118,
+      "sha256": "596d63e4fce2e0e7981a362e2e68ad44300f630fe2e9341eab9e7e69d695873d"
+    },
+    "runtimes/th12/th12_web/cpp/game/Trace.hpp": {
+      "bytes": 318,
+      "sha256": "47c177bee90ec630d7938ecc615e6eb44446f2285948044faf6d37977a26370d"
+    },
+    "runtimes/th12/th12_web/cpp/game/Types.hpp": {
+      "bytes": 613,
+      "sha256": "f79c1ed7cb200413ef0dea75bf0d58842745b6b47182a97e496733c1d7bb2669"
+    },
+    "runtimes/th12/th12_web/cpp/game/ZunGraphics.hpp": {
+      "bytes": 1147,
+      "sha256": "9e3fd7bc59fb482dad01eea942c1cb491d5c56b6f287179a0ee706a291b146e7"
+    },
+    "artifacts/th14/public-replay-playback/zps-normal-template-layer-oct14/report.json": {
+      "bytes": 55923,
+      "sha256": "005ef75cb75279c7e65e5d987710b28794a6f246230d319c078a925283483504"
+    },
+    "artifacts/th14/public-replay-playback/zps-normal-template-layer-oct14/selected-state.u32": {
+      "bytes": 12290048,
+      "sha256": "bd053c69b99a35b46fd1a4b86a23bb35931a1e8b188ede09f9607294a2704795"
+    },
+    "artifacts/th14/public-replay-playback/zps-normal-template-layer-oct14/callback-active.u8": {
+      "bytes": 96016,
+      "sha256": "c6cb566d72a29e1b08bd542b01ee8d7e208191add39bb70755725bb6b9485711"
+    },
+    "artifacts/th14/public-replay-playback/zps-normal-template-layer-oct14/public-replay.wasm": {
+      "bytes": 1298133,
+      "sha256": "2c12be2c9bf6777034346cc52883ddca9e1a0fcf656c32f6bf6bc7ba95f95053"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-public-replay-physical-fixture.cpp": {
+      "bytes": 1286,
+      "sha256": "bed23173be9179f828bf2f5faee78fee18e7853afb4583f2a4ae2354fc0f4323"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-custom-replay-reference-fixture.cpp": {
+      "bytes": 290,
+      "sha256": "9e8ec3271b63ef4d0c3629042d784dd0c5bc5f59595c8bcbffa4c5d7a9874764"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-session-reference-fixture.cpp": {
+      "bytes": 8687,
+      "sha256": "b5bb0b73a001bf729564b3ec9273e6035de425d9ae62c374818725c32daedd7b"
+    },
+    "tools/th14-public-replay-physical-playback-check.mjs": {
+      "bytes": 6084,
+      "sha256": "8de9825ad1b0160065f5824ddbcb901a721c5dc8237fcf08644e5b628f289755"
+    },
+    "artifacts/th14/public-replay-playback/zps-reimub-lunatic-template-layer-oct14/report.json": {
+      "bytes": 56466,
+      "sha256": "9454aa4464896642ccc3c57e1ddb5d119157114bb42dcde60e9af44bbce7be6c"
+    },
+    "artifacts/th14/public-replay-playback/zps-reimub-lunatic-template-layer-oct14/selected-state.u32": {
+      "bytes": 12553472,
+      "sha256": "a72cef5e0adc3a39127a6be3c6edcf9d22655ae83bea34e451cf107b37c6008b"
+    },
+    "artifacts/th14/public-replay-playback/zps-reimub-lunatic-template-layer-oct14/callback-active.u8": {
+      "bytes": 98074,
+      "sha256": "37ca90357d5db2adf3eea20464040ed1ac6f2832c11e97e3b8f186e19468d1ae"
+    },
+    "artifacts/th14/public-replay-playback/zps-reimub-lunatic-template-layer-oct14/public-replay.wasm": {
+      "bytes": 1298133,
+      "sha256": "2c12be2c9bf6777034346cc52883ddca9e1a0fcf656c32f6bf6bc7ba95f95053"
+    },
+    "artifacts/th14/public-replay-playback/zps-reimua-lunatic-template-layer-oct14/report.json": {
+      "bytes": 54616,
+      "sha256": "25c9467c1a0be2f524a7b30e5e2501574cf07183a3ff88864783ecfd1ee40387"
+    },
+    "artifacts/th14/public-replay-playback/zps-reimua-lunatic-template-layer-oct14/selected-state.u32": {
+      "bytes": 11621504,
+      "sha256": "7b3a6a3b4bb830ee9ac21550bd641ba9e30a44a2323a3ccb04865cf7de8c5c5c"
+    },
+    "artifacts/th14/public-replay-playback/zps-reimua-lunatic-template-layer-oct14/callback-active.u8": {
+      "bytes": 90793,
+      "sha256": "8019f5f98e9ca7a5d67d476ec195b77162fa35bc39829b32778cc514bd1bd195"
+    },
+    "artifacts/th14/public-replay-playback/zps-reimua-lunatic-template-layer-oct14/public-replay.wasm": {
+      "bytes": 1298133,
+      "sha256": "2c12be2c9bf6777034346cc52883ddca9e1a0fcf656c32f6bf6bc7ba95f95053"
+    },
+    "artifacts/th14/public-replay-playback/zps-reimua-extra-template-layer-oct14/report.json": {
+      "bytes": 39724,
+      "sha256": "0f370daee83c692a3bbe8fb75c838f2dbba38ba5867d6cfd24993370666cf508"
+    },
+    "artifacts/th14/public-replay-playback/zps-reimua-extra-template-layer-oct14/selected-state.u32": {
+      "bytes": 5050624,
+      "sha256": "e798415744087726d6bb8a7e57b8c579501e88e23f6cd03d32ace0a7779b27b9"
+    },
+    "artifacts/th14/public-replay-playback/zps-reimua-extra-template-layer-oct14/callback-active.u8": {
+      "bytes": 39458,
+      "sha256": "babc23d0049007e620534d53040571af21d8fd5709e5e137d6622c52d3de6c5c"
+    },
+    "artifacts/th14/public-replay-playback/zps-reimua-extra-template-layer-oct14/public-replay.wasm": {
+      "bytes": 1298133,
+      "sha256": "2c12be2c9bf6777034346cc52883ddca9e1a0fcf656c32f6bf6bc7ba95f95053"
+    },
+    "docs/porting/th14-template-layer-full-combat-verified-oct14.json": {
+      "bytes": 105660,
+      "sha256": "cdc07224cb8a3dbd3fb7ad4d2e0e30df0aa7b0cd8356511a0490cafcc353d0b2"
+    },
+    "docs/porting/th14-continuous-late-native-trace-zps-reimua-lunatic-full-template-layer-oct14-observed-oct13.json": {
+      "bytes": 26953702,
+      "sha256": "5ee79648319b3ffb98af997e5c971eb0c1d51df6ac612fde26a2340c03b0704a"
+    },
+    "artifacts/th14/native-zps-reimua-lunatic-full-oct14/reference.compact.json": {
+      "bytes": 171578323,
+      "sha256": "81178393c3e9bb952c59a2d2cedcf456e7bf9f7d1651062986b7d282e97349fb"
+    },
+    "artifacts/th14/custom-replay-reference/zps-reimua-lunatic-full-template-layer-oct14/portable-details.json": {
+      "bytes": 143678490,
+      "sha256": "b4f365558704a06a2e9e00d39995b7f77195211acc86735f0eb58c0553decf66"
+    },
+    "artifacts/th14/native-zps-reimua-lunatic-full-oct14/reference.compact.compact-receipt.json": {
+      "bytes": 757,
+      "sha256": "a207578a7d38f11c0c091bc53e0681ef52f31366f0827dcd6aab6eebab68246d"
+    },
+    "artifacts/th14/native-zps-reimua-lunatic-full-oct14/reference.json": {
+      "bytes": 555975899,
+      "sha256": "bdb03ee1bb7801a6f5db4b54bbf7a3743833e79282268ac827108b0ab5d110cd"
+    },
+    "tools/th14-native-trace-compact.py": {
+      "bytes": 1538,
+      "sha256": "df33e540ba58171cdf357fa2a3fd0f15ac7b9705ce454aa0fae087beddd2c0c8"
+    },
+    "tools/th14-native-session-capture.py": {
+      "bytes": 31982,
+      "sha256": "87bf9cabb347cc926b36576c8ad8da4bfccbd2fbbf5a142e26a69bee9482be6c"
+    },
+    "tools/th14-native-stored-bootstrap-capture.py": {
+      "bytes": 5544,
+      "sha256": "4302365bd973bcbeaba3cb280f81f406427166881454ed8afb3fab6ad96aa6bb"
+    },
+    "tools/th14-native-first-loader-angle-capture.py": {
+      "bytes": 5140,
+      "sha256": "8707dfbd82353284a739f99254411defc523d6fe6a3e1df29ff2ca8cb0d910b4"
+    },
+    "tools/th14-continuous-late-combat-trace-check.mjs": {
+      "bytes": 13432,
+      "sha256": "bb21ef5f3bd6321170b671ab40c4e0d25cd3d2c95f064198df2e4668a58c81da"
+    },
+    "artifacts/th14/custom-replay-reference/zps-reimua-lunatic-full-template-layer-oct14/reference.wasm": {
+      "bytes": 1298401,
+      "sha256": "7b50915527b8ca54b2ac89862ec59f1ce89eb239907fac37d35ff7e48b3b8a01"
+    },
+    "artifacts/th14/custom-replay-reference/zps-reimua-lunatic-full-template-layer-oct14/late-combat-fixture.cpp": {
+      "bytes": 10364,
+      "sha256": "4807f7f9f7d520b76e643c87fcd7619d9c5f83a8dca4dc016452c9e7a9f6c1af"
+    },
+    "artifacts/th14/native-campaign-assets/57d84a5cbe82-0f82baec9b33/manifest.json": {
+      "bytes": 67587,
+      "sha256": "8805d253c22552807d3fa2798d32f9581c36aa1aec281b13afad0ea6199406cd"
+    },
+    "artifacts/th14/public-replay-reference/th14_udzp01.rpy": {
+      "bytes": 78535,
+      "sha256": "0f82baec9b33288dea80ccd1121e068444d3d80a7c45c3c2a934e642e16a4689"
+    },
+    "artifacts/th14/custom-replay-reference/zps-reimua-lunatic-full-template-layer-oct14/portable-state.u32": {
+      "bytes": 11621504,
+      "sha256": "7b3a6a3b4bb830ee9ac21550bd641ba9e30a44a2323a3ccb04865cf7de8c5c5c"
+    },
+    "artifacts/th14/custom-replay-reference/zps-reimua-lunatic-full-template-layer-oct14/native-state.u32": {
+      "bytes": 11621504,
+      "sha256": "488d9c4e03a817b6532b2ded28b7fe412c1898b62eddb788f63f9b571f89e5b0"
+    },
+    "tools/th14-template-layer-full-combat-evidence-check.py": {
+      "bytes": 16181,
+      "sha256": "9bb97a060d652ea2e4d167fecc479cd0da818beddb163296d6a28534771dbe7d"
+    },
+    "docs/porting/th14-damage-area-z-consumer-verified-oct14.json": {
+      "bytes": 20506,
+      "sha256": "4936deff24524551f2b158582a6914aeb77bb4869bdc136c83fc477349a82a09"
+    },
+    "tools/th-anm-handlers.py": {
+      "bytes": 8656,
+      "sha256": "07b7fc89a033c65dc95034a0c49e365e726a4123cdb5b8dd7967fa5e71e42363"
+    },
+    "tools/th12-pe.py": {
+      "bytes": 10363,
+      "sha256": "8363a43f72706bc933c7e04517178a6ba07b3c81aaf9a155be9326acbae77306"
+    },
+    "tools/th14-damage-area-z-consumer-evidence-check.py": {
+      "bytes": 8075,
+      "sha256": "609f1fe76b2f3273cc9020b1614fe32e336ff36427137d048df26b6f8ee85441"
+    },
+    "docs/porting/th14-effect-template-layer-current-verified-oct14.json": {
+      "bytes": 13556,
+      "sha256": "21255f0a6ffdcc27ebcb866c2be5e642ab26b0037a5f57a5a855874ce8b9ccf3"
+    },
+    "docs/porting/th14-effect-template-layer-verified-oct14.json": {
+      "bytes": 34511,
+      "sha256": "0077b2f9a4e7e07b1f5e908ee96165c41efb596c7e5ab1ae9a627e85d0306ce7"
+    },
+    "artifacts/th14/effect-template-layer-oct14/native.json": {
+      "bytes": 5351,
+      "sha256": "28c46a738883e86b55430f7f2bbde8c17f4d8a2e048c251be7f93f60ba76f75c"
+    },
+    "runtimes/th14/target.json": {
+      "bytes": 771,
+      "sha256": "131c9af4169e933b6d29ee83a33657155416f717cb4b97cb09427eddc06606af"
+    },
+    "tools/th14-effect-template-layer-evidence-check.py": {
+      "bytes": 16614,
+      "sha256": "31b25d84dc1efa8e1c10bcdbc441729c51c8a1d1d39570d69ebb281cbfd13e0c"
+    },
+    "artifacts/th14/effect-template-layer-current-oct14/caller-fixture.cpp": {
+      "bytes": 2121,
+      "sha256": "8d3f43b4ab6598a5243f7f4a07f42d2e0576dd8a55c34d12da83fbeac4ee2bd8"
+    },
+    "artifacts/th14/effect-template-layer-current-oct14/caller.wasm": {
+      "bytes": 1290783,
+      "sha256": "a579802e6c5736b10894c9f50b03c38317e2de41ebbfcc75687cf4da7bc96777"
+    },
+    "artifacts/th14/effect-template-layer-current-oct14/caller-check.mjs": {
+      "bytes": 2527,
+      "sha256": "17e838b3367d0f8deee0d2ebafa1f37d5c544976c8dfbd1b740cfe512d756457"
+    },
+    "artifacts/th14/effect-template-layer-current-oct14/observations.json": {
+      "bytes": 6476,
+      "sha256": "895a941ec38cd6ec67909e15c0440045a629c326b21c5ee617838137ac36a801"
+    },
+    "artifacts/th14/effect-template-layer-current-oct14/compile-inputs.json": {
+      "bytes": 46395,
+      "sha256": "532e6bbc93b4b8666b7254a12e96f54ce4a7ca96b69bc7a5f6bf193f52450542"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-session-fixture.cpp": {
+      "bytes": 9515,
+      "sha256": "1f4c8b679e826c3d3bb48f02d576aae2f46dc87c79dacdd3cd831ade9c47e2cd"
+    },
+    "runtimes/th12/th12_web/tests/cpp/render-fixture.hpp": {
+      "bytes": 2634,
+      "sha256": "3f8cf7447d8242d7e0b38ea19b30fad73951347ad0a9c370dc8a41593042cbae"
+    },
+    "artifacts/th14/effect-template-layer-current-oct14/before-retained-archive-buffer/caller-fixture.cpp": {
+      "bytes": 2121,
+      "sha256": "8d3f43b4ab6598a5243f7f4a07f42d2e0576dd8a55c34d12da83fbeac4ee2bd8"
+    },
+    "artifacts/th14/effect-template-layer-current-oct14/before-retained-archive-buffer/caller.wasm": {
+      "bytes": 1290783,
+      "sha256": "a579802e6c5736b10894c9f50b03c38317e2de41ebbfcc75687cf4da7bc96777"
+    },
+    "artifacts/th14/effect-template-layer-current-oct14/before-retained-archive-buffer/caller-check.mjs": {
+      "bytes": 2540,
+      "sha256": "4e2930c07d2c23b35e19340bbbe656829381759c9880fc1f797c38e70a537883"
+    },
+    "artifacts/th14/effect-template-layer-current-oct14/before-retained-archive-buffer/compile-inputs.json": {
+      "bytes": 46395,
+      "sha256": "532e6bbc93b4b8666b7254a12e96f54ce4a7ca96b69bc7a5f6bf193f52450542"
+    },
+    "artifacts/th14/effect-template-layer-current-oct14/before-retained-archive-buffer/evidence-check.py": {
+      "bytes": 11320,
+      "sha256": "cf1d8c3955365b20f77bbdba3c2086999cbd75b5e62a556bea7209dbde65b1a2"
+    },
+    "artifacts/th14/effect-template-layer-current-oct14/before-retained-archive-buffer/failure.json": {
+      "bytes": 318,
+      "sha256": "994c1edd2fb57d952a214d463795fafb5374016fad6c661b84a68639eb754c6a"
+    },
+    "tools/th14-effect-template-layer-current-evidence-check.py": {
+      "bytes": 12010,
+      "sha256": "d22630a5dc888929554e0b2b436f7daa51b0017dadee9880d352e10eedefd283"
+    },
+    "docs/porting/th14-startup-platform-clock-verified-oct14.json": {
+      "bytes": 9354,
+      "sha256": "32e4d4f0142e8f0068ec0dfae2ac115ae116539dc024c7f506661148c449407e"
+    },
+    "artifacts/th14/native-zps-reimua-lunatic-full-oct14/manifest.json": {
+      "bytes": 151447,
+      "sha256": "4809fb68ffaddc790dee617b6047e40bccd3adc451f67ddfc2d7e29c858a174e"
+    },
+    "artifacts/th14/native-zps-reimua-lunatic-full-oct14/memory.bin.gz": {
+      "bytes": 116317093,
+      "sha256": "3b14e00179ee02c2c26c86cccc0e017f53d2d4ebc2310e2d3415db5d23016ac7"
+    },
+    "artifacts/th14/public-replay-playback/zps-reimua-lunatic-hit-effects-oct14/report.json": {
+      "bytes": 54616,
+      "sha256": "720abb8dea6a84478a43eb3a1f0cef86235361b80600300409b936f2f68ba1b6"
+    },
+    "artifacts/th14/public-replay-playback/zps-reimua-lunatic-hit-effects-oct14/selected-state.u32": {
+      "bytes": 11621504,
+      "sha256": "7b3a6a3b4bb830ee9ac21550bd641ba9e30a44a2323a3ccb04865cf7de8c5c5c"
+    },
+    "artifacts/th14/startup-platform-clock-oct14/native.json": {
+      "bytes": 1057,
+      "sha256": "5b9edd38f677c641b86423a755474484334b5b9e80cf4d5661167c7b8dbcf319"
+    },
+    "artifacts/th14/startup-platform-clock-oct14/source-snapshots.json": {
+      "bytes": 938,
+      "sha256": "542a1e39a25f28977e4420ff7c098866d18f8b4daefe5642a9f2d6f515ddb3b8"
+    },
+    "tools/th14-clock-native.py": {
+      "bytes": 2084,
+      "sha256": "2cd6b5c7306683d3f77d86f4bf7dc5c64bdd7fd39ac5e931cdd0026af44220bf"
+    },
+    "tools/th14-clock-check.mjs": {
+      "bytes": 2866,
+      "sha256": "61154f9bfb5aa403eb8325d5bd64b2ff81315ffb49d88f78e4cc41a912d1efbf"
+    },
+    "artifacts/th14/startup-platform-clock-oct14/sources/cpp/game/ClockSeedTh14.hpp": {
+      "bytes": 308,
+      "sha256": "1e1929040710677a212b41462060981ba868349a43c47257b3539d1835ac9250"
+    },
+    "artifacts/th14/startup-platform-clock-oct14/sources/cpp/game/FontBitmapTh14.hpp": {
+      "bytes": 544,
+      "sha256": "62b9ca1dbdd08b2d2ddaeb9c1f88541dc6e80348543cd83c14789e85fa8ad689"
+    },
+    "artifacts/th14/startup-platform-clock-oct14/sources/cpp/game/Rng.hpp": {
+      "bytes": 1127,
+      "sha256": "c53231677e6b5ef755d7385f5d3e224e2e353757eec7f1110424a8d4f0073a9a"
+    },
+    "artifacts/th14/startup-platform-clock-oct14/sources/cpp/game/Types.hpp": {
+      "bytes": 613,
+      "sha256": "f79c1ed7cb200413ef0dea75bf0d58842745b6b47182a97e496733c1d7bb2669"
+    },
+    "artifacts/th14/startup-platform-clock-oct14/sources/cpp/game/PortTitle.hpp": {
+      "bytes": 741,
+      "sha256": "5531b9b0a2364098ec023e09eddbf66907c392fb58a24e1a84c5bf7a9a033d2f"
+    },
+    "artifacts/th14/startup-platform-clock-oct14/sources/cpp/game/GameSession.cpp": {
+      "bytes": 42838,
+      "sha256": "eea69a2962af31961ebf9d2d7da7e1c365de83609029b67db22d0eddf2b1c17a"
+    },
+    "artifacts/th14/startup-platform-clock-oct14/sources/cpp/game/GameSession.hpp": {
+      "bytes": 5194,
+      "sha256": "2944b82196cee50d8c23f68133fee503af801140ebef4b78dea947eb391381c2"
+    },
+    "artifacts/th14/startup-platform-clock-oct14/sources/cpp/sdl/Application.cpp": {
+      "bytes": 49558,
+      "sha256": "dbbd7769076363cd881498d9b5033af0d3d13a40b1300c1c3f4a462ce9e21e3a"
+    },
+    "artifacts/th14/startup-platform-clock-oct14/sources/tests/cpp/th14-session-fixture.cpp": {
+      "bytes": 9515,
+      "sha256": "1f4c8b679e826c3d3bb48f02d576aae2f46dc87c79dacdd3cd831ade9c47e2cd"
+    },
+    "artifacts/th14/startup-platform-clock-oct14/clock-fixture.cpp": {
+      "bytes": 319,
+      "sha256": "cf677bb7b791d945411820fa0f63e999878bb4e3a1b959695c1335c04ec83f3b"
+    },
+    "artifacts/th14/startup-platform-clock-oct14/clock.wasm": {
+      "bytes": 1146,
+      "sha256": "8709f722b76f4b2c517f3bacbe7a1b7ffbf075f26c0e58ac2de449cb46b832ca"
+    },
+    "artifacts/th14/startup-platform-clock-oct14/clock-check.mjs": {
+      "bytes": 666,
+      "sha256": "fc7fb9d92f0873b692dc9ee4aa7f5becc39d6cc97d7895e1585f5a487d3f36a0"
+    },
+    "artifacts/th14/startup-platform-clock-oct14/portable.json": {
+      "bytes": 694,
+      "sha256": "4cd967356c6943d651d7540ac6330c9b1de0af1cd45804b406a30096a71a2619"
+    },
+    "tools/th14-startup-platform-clock-evidence-check.py": {
+      "bytes": 13324,
+      "sha256": "c3cf1dea9416a7f7aa945e04600873ec7ecc944cd8ec9de2d6d8d80355fc1da3"
+    },
+    "runtimes/th12/th12_web/cpp/sdl/Application.cpp": {
+      "bytes": 49558,
+      "sha256": "dbbd7769076363cd881498d9b5033af0d3d13a40b1300c1c3f4a462ce9e21e3a"
+    },
+    "docs/porting/th14-hit-effects-current-checkpoint-oct14.json": {
+      "bytes": 140515,
+      "sha256": "2c02ee2b411869e555bb2b48abfb8d2c794250425e15d6e4cd62010dc5c54c45"
+    },
+    "docs/porting/th14-hit-effect-current-visual-verified-oct14.json": {
+      "bytes": 11007,
+      "sha256": "13dc2c25a5ec6ff745281abc599eb425389f38bf29f53d031be7bf57cc263e17"
+    },
+    "docs/porting/th14-bullet-cancel-visual-fanout-verified-oct14.json": {
+      "bytes": 19771,
+      "sha256": "a57d780aaf05a9441bb53842b80bfbe26259eb3e031d1e4a8818483941818a58"
+    },
+    "docs/porting/th14-normal-continuous-template-layer-oct14.json": {
+      "bytes": 5586,
+      "sha256": "d71c49d8b2d86ec9fe95d5126ac8cac7e9a65edd9f93a775cfd8a1bfc45d868d"
+    },
+    "artifacts/th14/native-stored-warm-zps-continuous-long-oct13/reference-compact.json": {
+      "bytes": 210778651,
+      "sha256": "e231684e172328c0b78d00410cbc3321be6068158cc2889e9e9e80d01dfb694f"
+    },
+    "tools/th14-continuous-retail-compact-evidence-check.py": {
+      "bytes": 6473,
+      "sha256": "dd5c90c5d07b3e06b8f4f08feba1a0194f9339c288601469024cf6cd8d095092"
+    },
+    "docs/porting/th14-extra-continuous-template-layer-oct14.json": {
+      "bytes": 4093,
+      "sha256": "1a61c8b100f189d14a733a0d49523bf3449f5a6f444aa5197dd13288cac34668"
+    },
+    "artifacts/th14/native-zps-reimua-extra-full-oct14/reference.json": {
+      "bytes": 256402546,
+      "sha256": "b09526cfc903147b5a76e87df59e320cd2af2ceacbcece60b95ededd56c16655"
+    },
+    "artifacts/th14/public-replay-playback/zps-normal-template-layer-oct14/continuous-retail-differences.json": {
+      "bytes": 18269704,
+      "sha256": "f2ac32fcfba7b2a976e1b42a8b8449124320d80d86594e1e59aae622632c14ba"
+    },
+    "artifacts/th14/public-replay-playback/zps-reimua-extra-template-layer-oct14/continuous-retail-differences.json": {
+      "bytes": 7467486,
+      "sha256": "61b5f50c7d86be033c87f65efea59a578ea7f78ada016acc82b33e212d03c2ed"
+    },
+    "docs/porting/th14-natural-storage-normal-sakuyaa-template-layer-oct14-verified-oct14.json": {
+      "bytes": 52050,
+      "sha256": "ef9cad4aeb3c8c8f4ce452d540fadafd611ce1a178e048ca6ddc8ed1bb33238c"
+    },
+    "artifacts/th14/natural-input/normal-sakuyaa-template-layer-oct14/post-storage/report.json": {
+      "bytes": 3526,
+      "sha256": "336c1339e44450f0fe60052bae4895014fc488e5216c3d69074bb7d6e16d727a"
+    },
+    "artifacts/th14/natural-input/normal-sakuyaa-template-layer-oct14/post-storage/storage.wasm": {
+      "bytes": 1313666,
+      "sha256": "1d516b3dd95edc95412e7347274f011ceea18a926d38a66fe9fc666c1465e525"
+    },
+    "artifacts/th14/natural-input/normal-sakuyaa-template-layer-oct14/held-keys.u32": {
+      "bytes": 380880,
+      "sha256": "13d5472fc4b3fa636349aa2ef37192bcea983bf021d204a3c54e5dc7800666e8"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-normal-natural-storage-fixture.cpp": {
+      "bytes": 1353,
+      "sha256": "d11e13231a3d44ccdb54c665ba1f4e7f5a81ab4aa017b720ee18e773b301ab93"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-natural-input-fixture.cpp": {
+      "bytes": 5906,
+      "sha256": "5a73b28845fa3f706a49b67524ba1eee39a379cf54bd185aa2fdd31b6663be97"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-natural-ending-fixture.cpp": {
+      "bytes": 565,
+      "sha256": "ef66da853450555d1ebbb6e2f201ea81e171a63c5a55b628b927d8d4120fd7d5"
+    },
+    "tools/th14-normal-natural-storage-check.mjs": {
+      "bytes": 9263,
+      "sha256": "561962f24bb7291382a5ac53c80a51257d0779f504135b4b0887732c15fcb1db"
+    },
+    "tools/th14-natural-score-native.py": {
+      "bytes": 3607,
+      "sha256": "562b89984695c7611d712294ad839ebfeaec0844be61be6f51db71f8505b8581"
+    },
+    "artifacts/th14/natural-input/normal-sakuyaa-template-layer-oct14/post-storage/scoreth14.dat": {
+      "bytes": 22379,
+      "sha256": "fba71b0b88772d7950e327f410d0f967b6ac7a5028ed70930a323ec344fa8b25"
+    },
+    "artifacts/th14/natural-input/normal-sakuyaa-template-layer-oct14/post-storage/production.raw": {
+      "bytes": 149076,
+      "sha256": "719dcc97134b18d7b73e54c6278e4599c916c4ab57b63087232e353029918188"
+    },
+    "artifacts/th14/natural-input/normal-sakuyaa-template-layer-oct14/post-storage/before-serialization.raw": {
+      "bytes": 149076,
+      "sha256": "9e597fdc977c8f18ca9c7a4cf4c0830d1f0675dd3a1ab1c750f3be972824ebe7"
+    },
+    "artifacts/th14/natural-input/normal-sakuyaa-template-layer-oct14/post-storage/native.json": {
+      "bytes": 1032,
+      "sha256": "93f642e8db0cee9240d05178dc10669d85ffad8fb80d4b1ace214cd33845832b"
+    },
+    "tools/th14-browser-score-native.py": {
+      "bytes": 3359,
+      "sha256": "56309948ab3d3d2ef270bb0534dc765e6b4d76da989494c965a98ef0eb6ce3e1"
+    },
+    "artifacts/th14/natural-input/normal-sakuyaa-template-layer-oct14/post-storage/retail-loaded.raw": {
+      "bytes": 149076,
+      "sha256": "719dcc97134b18d7b73e54c6278e4599c916c4ab57b63087232e353029918188"
+    },
+    "artifacts/th14/natural-input/normal-sakuyaa-template-layer-oct14/post-storage/retail-rewritten.dat": {
+      "bytes": 22379,
+      "sha256": "fba71b0b88772d7950e327f410d0f967b6ac7a5028ed70930a323ec344fa8b25"
+    },
+    "artifacts/th14/natural-input/normal-sakuyaa-template-layer-oct14/post-storage/menu-saved.rpy": {
+      "bytes": 94150,
+      "sha256": "0faadb79c5cdab9a56f7651b06da0b6325b2316a83ba7bd3b0763d232224e5de"
+    },
+    "tools/th14-normal-template-layer-storage-evidence-check.mjs": {
+      "bytes": 4054,
+      "sha256": "b7428cd5521afd12e48c6f31a9687fdcd440fb757384c0e112ea1a8600c02574"
+    },
+    "docs/porting/th14-natural-current-replay-normal-template-layer-verified-oct14.json": {
+      "bytes": 49447,
+      "sha256": "1107160857eb393916822612d7f335c80313a296dc1542cfd0c69a069702fec0"
+    },
+    "docs/porting/th14-natural-current-replay-normal-sakuyaa-template-layer-oct14-observed-oct13.json": {
+      "bytes": 40184,
+      "sha256": "de4caba468dab6acb555165ed5438c5172894579e7fb720e3475df04257516eb"
+    },
+    "tools/th14-natural-current-replay-check.mjs": {
+      "bytes": 6557,
+      "sha256": "ddda0904d6cf57a0a79d0bf23e9a6d7b0c1e9494a00646a3ad2bb16abb8de01e"
+    },
+    "artifacts/th14/natural-input/normal-sakuyaa-template-layer-oct14/current-ordinary-state.u32": {
+      "bytes": 9902880,
+      "sha256": "08e81560408c46f1f7de4b44f505e6cc4cbd74cc0c7ea68463de0c5514184326"
+    },
+    "artifacts/th14/natural-input/normal-sakuyaa-template-layer-oct14/current-playback-state.u32": {
+      "bytes": 9863360,
+      "sha256": "85fc68a4824cc17a225c71dd572b40ab1300e960f33e4a54c42470f8824e4fe8"
+    },
+    "artifacts/th14/natural-input/normal-sakuyaa-template-layer-oct14/current-replay.wasm": {
+      "bytes": 1310931,
+      "sha256": "3c09bbb8f737a0f1178e610217f38dbb333980bd4021025da593658ee5c91936"
+    },
+    "artifacts/th14/natural-input/normal-sakuyaa-template-layer-oct14/current-recreated-replay.rpy": {
+      "bytes": 94156,
+      "sha256": "0a6bbda468d87014188ea7b3ce50c8c1b5bc52aeb1fe2dfa6b6416d53af8b474"
+    },
+    "artifacts/th14/natural-input/normal-sakuyaa-template-layer-oct14/ordinary-input.rpy": {
+      "bytes": 94156,
+      "sha256": "0a6bbda468d87014188ea7b3ce50c8c1b5bc52aeb1fe2dfa6b6416d53af8b474"
+    },
+    "tools/th14-normal-template-layer-replay-evidence-check.mjs": {
+      "bytes": 3567,
+      "sha256": "9fe04275215347ba34ce15146056ba8bbc2c30f5adc187801a8f80dff32b4567"
+    },
+    "docs/porting/th14-sanitized-replay-template-layer-oct14-observed-oct13.json": {
+      "bytes": 27917,
+      "sha256": "cf08e801970d18a00e61a3f1a7c422156a86d6e644f804390d7b3f3ba2de9092"
+    },
+    "tools/th14-sanitized-replay-check.mjs": {
+      "bytes": 6066,
+      "sha256": "3c5a7f89bb8ef5217a7c9a2820b4737471998a24e431c7f3f78fab902b72c553"
+    },
+    "docs/porting/th14-sanitized-input-parity-matrix-template-layer-oct14-observed-oct14.json": {
+      "bytes": 28847,
+      "sha256": "49ee98b66290f8807857ea9cc3fc15a025398b14089e5c2436094379767b3689"
+    },
+    "tools/th14-sanitized-template-layer-matrix-check.mjs": {
+      "bytes": 4739,
+      "sha256": "048f8a5bc725d68db2fb8634f2a42fbe6783fb4b3588b9c0ec99572f2fc1c05f"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/compile-build.json": {
+      "bytes": 52949,
+      "sha256": "2ed903436c11983a05ef092c80b9a243cfdeeed3a824e27a9c56912e34be0ab5"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/sanitized.mjs": {
+      "bytes": 184772,
+      "sha256": "18044bd4c2d2a78cc8aaa446fc0b6e092c856ed8e84fd2c5c012cf074f7b1423"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/sanitized.wasm": {
+      "bytes": 16858357,
+      "sha256": "1852eb185c86509a56172ecc8aaa64c351b9e2e0563c7bcd9b4ad72e87173876"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_AnmGeometry.cpp.o": {
+      "bytes": 127487,
+      "sha256": "02e720216d838cd81ebc59201563e32953fa1832eff158ccd0288a1812867441"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_AnmInterpreter.cpp.o": {
+      "bytes": 180825,
+      "sha256": "c75f288428171f7f83b67433455796978f9540488fe0cacfd64db81666ee4999"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_AnmManager.cpp.o": {
+      "bytes": 759579,
+      "sha256": "447f4c631f60112cd652428e13f5ba1dd68a1061b251f13452d099946a9a3ac5"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_AnmProjection.cpp.o": {
+      "bytes": 49584,
+      "sha256": "acc287ef99862da1a7a16ab16f3a207127c262d13958e4dda02d5c2f41f626c3"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_AnmRenderer.cpp.o": {
+      "bytes": 254892,
+      "sha256": "2b443ed06df3efb6d4bcb649fc4290bd266665149264a020c4918877011e9f26"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_AnmResource.cpp.o": {
+      "bytes": 424295,
+      "sha256": "457e35619c7770cb0700c67f748c3db0b36c201f59968bfaaeaa24573cb2795c"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_AnmVm.cpp.o": {
+      "bytes": 93527,
+      "sha256": "725b1e5f7909bcda9aa90abd9458db25bcdbb38e206c9ae896e3b505b2e5ca03"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_Archive.cpp.o": {
+      "bytes": 286640,
+      "sha256": "f5b7d63614f211ef20cd421c6d9ce6110f4172789044f6def5724296b65624af"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_AsciiText.cpp.o": {
+      "bytes": 169155,
+      "sha256": "6c1902751417422edec3ffc5ec4a962a5b8896db83b2d2ba3c4ecb6ca7f7455e"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_BombController.cpp.o": {
+      "bytes": 289828,
+      "sha256": "d67d56cffba50e08b95730b1173a3e0b9c56d403c2cf9283b51217961f5e632a"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_BombReimuTh14.cpp.o": {
+      "bytes": 48729,
+      "sha256": "7daf7ca0a64918a7c9ee3246a9f93d0e827520d64d7bb0d3ba3b2e5e6bd50910"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_BulletAppearance.cpp.o": {
+      "bytes": 36571,
+      "sha256": "c21e533ba3adb506ef64db644ca5dd5062ddc41570d8cf06e2506bff6ec9d473"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_BulletLaunch.cpp.o": {
+      "bytes": 16866,
+      "sha256": "f4786472dcfc598c5d9e286e17585a9d441d426a319b25e6c5ce82c41b2a96c0"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_BulletManager.cpp.o": {
+      "bytes": 125635,
+      "sha256": "090ceb083b8fbd5c46809152900dc04178f0d138297f7dfb3b93d7d74423746a"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_BulletMotion.cpp.o": {
+      "bytes": 65204,
+      "sha256": "179c419271a2e2da8bec319a5eba08043f81e893a4f122fb55330dae003eda1e"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_BulletTh14.cpp.o": {
+      "bytes": 201275,
+      "sha256": "564452d3dbcc91beb1fed3a471ae2d1f743b5a5e969171c6694b98688a4fea00"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_BulletTh14Launch.cpp.o": {
+      "bytes": 22512,
+      "sha256": "ab666e6da6a5754b84e064bd739fdd8d69aa6e9b15449c44cf7bdabfe0b41662"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_BulletTh16.cpp.o": {
+      "bytes": 81822,
+      "sha256": "b7662888a5c5e104a09282a68bab7f3e6edb2885827207c63d026b125734f484"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_BulletTh16Launch.cpp.o": {
+      "bytes": 22512,
+      "sha256": "0242b87f89fd59ca9dbd924ed8e733479fb6fa7b63e737a8b2cc2e6369325947"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_BulletTransforms.cpp.o": {
+      "bytes": 58748,
+      "sha256": "b3422f74de2d4b740b48c86e47c43983219f1e9bf9818a20ae5c04b90f594ae1"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_Communication.cpp.o": {
+      "bytes": 29755,
+      "sha256": "490f83286a7fcbb4e71313bc250d136862abdaff09472217c47bf8a36a4204b8"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ContinueTh14.cpp.o": {
+      "bytes": 24692,
+      "sha256": "74ae531a683affb0d03917056076c84b5b327f284a2160d6d20a4273b46bbcd4"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_DamageArea.cpp.o": {
+      "bytes": 43649,
+      "sha256": "5f0a4e9b4dd3c65b8cfaadbac2c168c862bd3792477711dccf0baf0aed7f6959"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_Dialogue.cpp.o": {
+      "bytes": 284159,
+      "sha256": "d4f0547448f5a8caa9547d5275a60779d37a6361df07b64288e9ff4f841d52ae"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EclContext.cpp.o": {
+      "bytes": 54754,
+      "sha256": "47f05a9f319063815d7d9b85f57afd2e5d6f2448783ffbde027e231da3fbe12e"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EclInterpreter.cpp.o": {
+      "bytes": 74080,
+      "sha256": "3d9479d882c683f7a903d79d49fb03a3389b3737fe558cdf70d79aec25ad2434"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EclOwner.cpp.o": {
+      "bytes": 50888,
+      "sha256": "9e3c7de5f7e4f3dd89a45a38283ed2606745170526e48432e6ae2b815ac72008"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EclResource.cpp.o": {
+      "bytes": 535831,
+      "sha256": "27e0bbcc05f95d0d4b9404bdd07d1438b12795d330a9978ecee124b8d72353e3"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EffectTh16Slots.cpp.o": {
+      "bytes": 25991,
+      "sha256": "c096b17749c931f55f09c6b98bab027fcf004f654a6995d6591cf1e772ebe450"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_Ending.cpp.o": {
+      "bytes": 752201,
+      "sha256": "0852bcc37bc8e0bf9bd3c1eca82fc00ae19c53d6dcbc8f7917aa917bce7161a0"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EnemyAnimations.cpp.o": {
+      "bytes": 131200,
+      "sha256": "e4b66638e2448e8a12e2a3ad41bb62835f897cdd8d8b8b5569cd4f36eb6c7036"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EnemyCallbacks.cpp.o": {
+      "bytes": 110536,
+      "sha256": "f2fd8cded7d706b495ab4fea9c41c8e39e7b8f81e7ae6ab5a381c83827bd850e"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EnemyCommands.cpp.o": {
+      "bytes": 88580,
+      "sha256": "72a1d3687963a7933c64da633813611eee8dce5bf9d994309472a52ccb1581d9"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EnemyEmitterCommands.cpp.o": {
+      "bytes": 64933,
+      "sha256": "4c09f474ce8e89992828c72546aa5d3dce2317b7056950c9bfb335149d9c6eea"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EnemyFrame.cpp.o": {
+      "bytes": 76978,
+      "sha256": "dae2b06cd8678a21eb9cf98110de36a3ec0965f0edef945d1e1c828e9c6f17b7"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EnemyLaserCommands.cpp.o": {
+      "bytes": 63979,
+      "sha256": "fc822a1b32d237846f0abd1532027ad0cfd491fd742d459f3d55d150608ae515"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EnemyManager.cpp.o": {
+      "bytes": 373324,
+      "sha256": "1d56f31b6c023a4b37dbca47ae01d7c2a23885bcf8ff99b4d5069103df088858"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EnemyPhase.cpp.o": {
+      "bytes": 45471,
+      "sha256": "dcdb0af809ee4d530e68fc64f904986346569c5fe12851281b60c0ed1f3cad12"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EnemyScript.cpp.o": {
+      "bytes": 70692,
+      "sha256": "66c33d1237de282aa655e8b707082e2f0d9ee0a4cae75b1a30ad959199012962"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EnemyState.cpp.o": {
+      "bytes": 96082,
+      "sha256": "9f9d3baaafca70c7bc10859474373fcba6cd2e9bc1734631c8663f80417a5537"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EnemyStateCommands.cpp.o": {
+      "bytes": 234884,
+      "sha256": "2f8f2b3ecd9578f6f79c66d4bc7b9599e3981aeff42e306c80fcf99d9e824d39"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EnemyTh14Callbacks.cpp.o": {
+      "bytes": 52623,
+      "sha256": "431607bca1bb08506bcb684da72d1756f39538a30ee39001f87d8c4388629a87"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EnemyTh14Commands.cpp.o": {
+      "bytes": 246099,
+      "sha256": "879d09b36722714d44d53470592147c02eaf43a044bb95b0f627a5f79d77d657"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EnemyTh14Emitter.cpp.o": {
+      "bytes": 48670,
+      "sha256": "afbf56ae96bacb644575c64b652ef6db55a7d9cb794b6377c97e1fa2a8eb409b"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EnemyTh14Fire.cpp.o": {
+      "bytes": 42638,
+      "sha256": "d1595768870811cc9b4fc1c28a54710a4ab711565f3e1b5eccf3934107f2f4e2"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EnemyTh16Commands.cpp.o": {
+      "bytes": 48766,
+      "sha256": "f558c543fdf820f426be3112b1dcb3e14d52782682fad2aafb4ea881bc4defc9"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EnemyTh16Emitter.cpp.o": {
+      "bytes": 34428,
+      "sha256": "f61021922f96601ead190e5d4f24a345140a3893c557adacde45fac3a2a607d8"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EnemyTh16Fire.cpp.o": {
+      "bytes": 35229,
+      "sha256": "96058b4ed0dc3730897cbe80c6c3615ef71426267d4ee56b083884f39e02e6ed"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EnemyTh16Movement.cpp.o": {
+      "bytes": 53858,
+      "sha256": "8510876b849e43505fda903c65db5359b7a5c77fd16044e8387feec9f1f04c7f"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_EnemyTh16Targets.cpp.o": {
+      "bytes": 39690,
+      "sha256": "0a3b4666439f6efb50db8e8d4b0102acc76d80d2d6feb6a2ba62de7a673a138e"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_FogInterpolation.cpp.o": {
+      "bytes": 27311,
+      "sha256": "1e1221cdedd9e76ae08bbc7c004cd4e98d8f6598d2396b9526c7c095dd1d0519"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_FrameStatistics.cpp.o": {
+      "bytes": 80603,
+      "sha256": "9284122b73ef7c29429177bde34375f1390aac248cae9c3c87721c1ea7dc1d32"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_GameBattle.cpp.o": {
+      "bytes": 1503276,
+      "sha256": "6d23aaffb574755edfac2999da87ea56e5edf7c192c2c70ac34b208b85b6702f"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_GameConfig.cpp.o": {
+      "bytes": 31551,
+      "sha256": "21895c953a8b3b5ff6c9d108a1f4f8d75e240ec73b36b7cb0df5eae56a46e074"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_GameEconomy.cpp.o": {
+      "bytes": 28395,
+      "sha256": "f3989dca24ce3d9f3309fd17d013de67941132f3a5d5c6d7040370486971b42e"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_GameInput.cpp.o": {
+      "bytes": 37269,
+      "sha256": "5df3b6bbf8a4f9bc22a56bcb2bd4b69c57522c3bd5830dbc1e28c0fcb842ff9d"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_GameResources.cpp.o": {
+      "bytes": 587044,
+      "sha256": "f388181e6da318fd9c77678e17f95e056035121a3be4e0d0ea7bc6a35f2ee9af"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_GameSession.cpp.o": {
+      "bytes": 1521747,
+      "sha256": "bffd879c1fc4186dd5d973bc151c62bf2811458cb3b788dead27e4715a17b0fd"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_GameSessionResources.cpp.o": {
+      "bytes": 560008,
+      "sha256": "5b98ca03b86ad3dc438d026017ee085a38306da14c2e488b48fbf6bdf6c9e1e9"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_GlyphAtlas.cpp.o": {
+      "bytes": 110381,
+      "sha256": "f76555e401ce08367f0554349d63d07aa2809f7ea940b2a40cb4f3da4dee8971"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_GraphicsMath.cpp.o": {
+      "bytes": 45513,
+      "sha256": "b24ce39b7ea15ddb538c1a29b2498c694a46587b54db0e7e5bf17a241a43d510"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_Hud.cpp.o": {
+      "bytes": 122740,
+      "sha256": "bb3219fbcb10f3bfeaab4b679233a961f72249570b65ad781d318ebfc396ceec"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_HudTh14Boss.cpp.o": {
+      "bytes": 91174,
+      "sha256": "74acd7f869ea95599c191749bdc98743e674fbd43a8d36922a692e5d64e164f2"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_HudTh14Notice.cpp.o": {
+      "bytes": 44273,
+      "sha256": "3763053e5d27344cba54481beb0e954dfd6ee082b7158d0738ebbbde8a21ca25"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_HudTh14Text.cpp.o": {
+      "bytes": 47645,
+      "sha256": "8ffa4d913058de7cf3f58a585e71f1213c11a9066c81e768d04ba9c72c17ae6e"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ImageResample.cpp.o": {
+      "bytes": 374487,
+      "sha256": "f56312a34b5bd89cceb16e72d4ff7318d56c3bdcf60248b49ce9cca65ebf0f14"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_Interpolation.cpp.o": {
+      "bytes": 62564,
+      "sha256": "b7e4694a27d17d056509689b5a3cfd77da362e3558b9acab86b3ab16a89261b0"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ItemManager.cpp.o": {
+      "bytes": 73702,
+      "sha256": "ebef44318b780346e8a4f05bf255dea88058cef95f2469872236db1aef882ca9"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ItemRewards.cpp.o": {
+      "bytes": 74326,
+      "sha256": "a2efeec55c9326a44523f1180c2d140f7636aad8881ed13374a5dee0f74dd9d4"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ItemTh14.cpp.o": {
+      "bytes": 84533,
+      "sha256": "a3bf30b971890ee6b9b1b92970be64abb57b74e65eade9c023652076d082bc74"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ItemTh16.cpp.o": {
+      "bytes": 21292,
+      "sha256": "51e5949ca07877fdc5d6d0a57d6f5850d45170c2a9666ab2b22838d3806e67de"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ItemTh16Drop.cpp.o": {
+      "bytes": 21296,
+      "sha256": "210393512b6c8df4e8cf16e3a6c8a28142b8c0a7cfa375161e8a75d7ac08bee5"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_LaserCurveTh14.cpp.o": {
+      "bytes": 385724,
+      "sha256": "f7fada83f4b6eb156105fd68f8f707dcdbc18bd3ec788c982e51dda3a7c32c7c"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_LaserCurveTh14Runtime.cpp.o": {
+      "bytes": 162520,
+      "sha256": "a15200ed53d169d39dbcf8eac8f19ec4b0fd870d24847a3f5a8e705d5f2b856f"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_LaserCut.cpp.o": {
+      "bytes": 59237,
+      "sha256": "66d4c462ca0ba5497e1dc5f996639cd605f1d82fd85c9bac99fa28ca62a04183"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_LaserCutTh16.cpp.o": {
+      "bytes": 21296,
+      "sha256": "2a6710621c4f38b0f35077d6c0dacc727061eaaf38417c102f2e8545580c055b"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_LaserInfinite.cpp.o": {
+      "bytes": 59961,
+      "sha256": "98be8711f16bd6d58b570da23bf737e841e4656b4d6e324308f78f344ec4a2a3"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_LaserInfiniteCut.cpp.o": {
+      "bytes": 61296,
+      "sha256": "426b2ee5065d2d562e59c17f9e04014ec89c725b9b64a42be63c906e8674c19f"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_LaserInfiniteTh14.cpp.o": {
+      "bytes": 161099,
+      "sha256": "dd390803a01b2f4f92acda4eebd9da444c6cb87e1acaf096efa5ee52b3e5f568"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_LaserLine.cpp.o": {
+      "bytes": 61737,
+      "sha256": "d1f922ac351086b64162409f00f217fd4879380cc8745ee582f6c05c6e5184bc"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_LaserLineTh14.cpp.o": {
+      "bytes": 169084,
+      "sha256": "3000cbca2605816341787fbe3902cc23b4a48ce978d348b44a15dac80f77c64a"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_LaserLineTh16.cpp.o": {
+      "bytes": 21297,
+      "sha256": "24e4873a114819cc3bf376163fb11af7d641c07bdacdf7ea0032f6c4c0139d08"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_LaserManager.cpp.o": {
+      "bytes": 295796,
+      "sha256": "f14ec6ae0028ff97c615a088e86ac7fa904eeeb201e856bf8356f631b5b05d54"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_LaserState.cpp.o": {
+      "bytes": 76537,
+      "sha256": "da458ba969d5fe211dced5e5963900965dbd7838cad54d4cc64550d836094fbe"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_Localization.cpp.o": {
+      "bytes": 22839,
+      "sha256": "7e91414e4707c25b85b71c21ddb3c978d9dc6e1b56f1906f6489bad0bcf770d8"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_Lzss.cpp.o": {
+      "bytes": 120686,
+      "sha256": "a07ee12b7b4a6aaf392de6e73ed8461782563160b3355e64e1711f185c89242c"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_MenuCursor.cpp.o": {
+      "bytes": 36591,
+      "sha256": "61c97ed32ca8b86dad90a6555a4cdcea4b9654e2286bf90df48821f8b52d2571"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_Movement.cpp.o": {
+      "bytes": 21020,
+      "sha256": "ebed0ae3495837c305264da55c2e181b1eeb3602596d012ad88ae6d7c665aeab"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_PauseEnd.cpp.o": {
+      "bytes": 204311,
+      "sha256": "b406581ae067bc8bf1bcbbcc98928c87437b3986776f38769de39815c2d2c3e9"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_PauseMenu.cpp.o": {
+      "bytes": 197341,
+      "sha256": "79dc361951c6f29f86b9166ed97d69b9643a659673acc572cb96a5f958f6b02f"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_PauseReplay.cpp.o": {
+      "bytes": 126661,
+      "sha256": "d0ada17fd26b3e38a7fd9cd5220585cd228fc65658f527dde99008caf1e3bc54"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_PauseText.cpp.o": {
+      "bytes": 87721,
+      "sha256": "7e59bec4bc41dd2b115dc7487f92b2ddcb1cdaa5957c75b1f7d9d5e132004d92"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_PlayerCollision.cpp.o": {
+      "bytes": 23882,
+      "sha256": "db6f397c1b0e7c0df0f1905378f3fed497c35436ef6d74dd3ca7db8cac479483"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_PlayerFrame.cpp.o": {
+      "bytes": 195185,
+      "sha256": "67e72e4f110a864722da6bcff64b5905d29c5048e0a5efd5b6e4d2b1116a3dd8"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_PlayerMotion.cpp.o": {
+      "bytes": 151115,
+      "sha256": "9d529993a91d806e5c25db8c61b720397e57d1540f9202a441fd109df4427d5a"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_PlayerTh16Life.cpp.o": {
+      "bytes": 44679,
+      "sha256": "0a05517cfcb31a7c8c8c449d426ec8cd55e1ced7928befff06835ec694a10737"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_Replay.cpp.o": {
+      "bytes": 349358,
+      "sha256": "f8b6ddaa6a15021a12423f060615d0d3cc8b24d4151e2393cd86681bd1fb513a"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ReplayRecorder.cpp.o": {
+      "bytes": 338182,
+      "sha256": "477e271ecc3de486ba9f0c224bb6b3eceb29a785df3ca1ad5d064e5719d6c0d0"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ResourceCrypt.cpp.o": {
+      "bytes": 32798,
+      "sha256": "fdbc9c862472f655f62e20ef64a1bd8af742f8b2dca7b6640f90d8663a8242e7"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_SceneCamera.cpp.o": {
+      "bytes": 28707,
+      "sha256": "a8f0157a6d8e38b7611c07645cdd09d676b73f6c27521d3607403d7766ee1622"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_SceneCompositor.cpp.o": {
+      "bytes": 208862,
+      "sha256": "eb5ce678ec5753995298fb1cf6220c731379da7bd5e8ef23fe0e157ff54e7a7e"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ScoreFile.cpp.o": {
+      "bytes": 250111,
+      "sha256": "f2678128ed5e811903f5a81a41d1f51b54bff23de2a049fcb770037ff3c2d56d"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ScorePopups.cpp.o": {
+      "bytes": 153174,
+      "sha256": "2e0c8225e30f317dfec591bd8e39e3ae1c751ac559839c874431779a1711ea74"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ScreenDeformation.cpp.o": {
+      "bytes": 228193,
+      "sha256": "f60fb6e848fa1255a0c441858efa606ec3e1fbb0ec42189187f390b780ee717f"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ScreenFade.cpp.o": {
+      "bytes": 39038,
+      "sha256": "b7f5c5400b9d4ca99a577829da03c33ec4c9cba15cb35ff4e1a9d59461462457"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ScreenShake.cpp.o": {
+      "bytes": 32018,
+      "sha256": "30b491568f9e6d91559d23c03a8f1582c1355af4cd68fb6c7909facc2ed89f1d"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_SeasonTh16.cpp.o": {
+      "bytes": 42337,
+      "sha256": "ff79d36d866c0f26a093ba7772dab3ad37019bc46ab3050553c82bf92cb9c9c1"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ShotCallbacksTh14.cpp.o": {
+      "bytes": 95538,
+      "sha256": "7e36af6beef49739a117d36825f80edd7eed4e859465ab92e9729c74f744f374"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ShotDamageTh14.cpp.o": {
+      "bytes": 79440,
+      "sha256": "ac29af48eee13be84d7fc693c3bfc84ea6fc75e369fc7bedaff51003e17453c8"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ShotManager.cpp.o": {
+      "bytes": 188300,
+      "sha256": "73620ad9776953e5fbdf1840bac9635d34ce63cc32b873b17b3da1cc52267afd"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ShotSakuyaTh14.cpp.o": {
+      "bytes": 93576,
+      "sha256": "84618a3ea60ff4c755617209762c86026a08a1fadf75b44f873eb851516fd610"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ShotSchedule.cpp.o": {
+      "bytes": 31013,
+      "sha256": "33726d65657cdc608fd68fd35f5f834d95ac98b13f6abf6ce0508f55c2ec4ff8"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ShotTh14.cpp.o": {
+      "bytes": 200226,
+      "sha256": "ef80401e47ea55e0b499ef56cab316c1207c264c592e3c311f6e522e7b5653c2"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ShotTh16.cpp.o": {
+      "bytes": 21258,
+      "sha256": "cb6805424bcde5ebb56883b39b6913b00a5a941297fb86fd3a4ad828f9178ed5"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ShotTh16Geometry.cpp.o": {
+      "bytes": 21266,
+      "sha256": "7770b53dea4c96ffd2e51204f76035a9ca841aeb614537441c684f8ee3d2343b"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ShotTh16Hit.cpp.o": {
+      "bytes": 21261,
+      "sha256": "2f62f962806733ddaead925a840855545840c034b2640ec1053f50294cbd714c"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ShotTh16Production.cpp.o": {
+      "bytes": 21268,
+      "sha256": "8efd6627c25d7e6e19ff3e664de2e8a4ed64b23ea3765a79d354488578eff2a9"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_ShtResource.cpp.o": {
+      "bytes": 186304,
+      "sha256": "b9a51620d78f808f902c8b438c7347ae7c7288dfd91ca1a9a5fa85c8ee0a2c7e"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_SoundEffects.cpp.o": {
+      "bytes": 49748,
+      "sha256": "20256103eca372e23150f4d0d823256d5095b70b25928893084855ec2ffa14a5"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_SpellController.cpp.o": {
+      "bytes": 72160,
+      "sha256": "3d8515dc9cd2dcbb42acb3d11f3cfdd60c49c2ae615be5e175e4e2ab5e8608e1"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_SpellTh14Visuals.cpp.o": {
+      "bytes": 55448,
+      "sha256": "fe99a139966c34b92562f3f217999a1cf5358d6b3326b8216330e4b496e243bf"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_SpellTh16Visuals.cpp.o": {
+      "bytes": 22661,
+      "sha256": "ba80152b40378162b1391462bcee26aa85284e07cb0eb7011e9295536a25d0b5"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_SpellTiming.cpp.o": {
+      "bytes": 31353,
+      "sha256": "70c4387486fd372dc2d800f0cf188c1709aaf37a73b585bbaae5f263bfd1b357"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_Stage.cpp.o": {
+      "bytes": 453099,
+      "sha256": "93fdfc64adba089886b921a7f7a58e6025505090ec12eb15e48388259b9b2bf1"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_StageCompletion.cpp.o": {
+      "bytes": 57110,
+      "sha256": "88a96ae5ac72d4edbc523c95e2e3ce096e29c2cc999591bd62fa66bb64b87dd5"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_StageDraw.cpp.o": {
+      "bytes": 204517,
+      "sha256": "e18cdf1bf4dc800a19a50fdba168fd3fd10194201c806ec7f313fc4566ae959a"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_StageResource.cpp.o": {
+      "bytes": 436902,
+      "sha256": "fb4a9c364aac6ae099b9cebdff8b39a075a2a6a6b7873cd6380fd30768eef343"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_StageScript.cpp.o": {
+      "bytes": 86332,
+      "sha256": "7d91111103376903584d54a0b846b652d8ecb83617210a0215e3bcfd2c82618c"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_TextRaster.cpp.o": {
+      "bytes": 235358,
+      "sha256": "68217de35defeb733fec739b0d7c9c4acdf3084d8f9498a18b48a8c07237c5a0"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_TextureImage.cpp.o": {
+      "bytes": 196880,
+      "sha256": "002a7440b9ac14ceaf25ae953a370792ec71a81690673f00b7297b2b0a13f8fc"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_TitleKeys.cpp.o": {
+      "bytes": 115329,
+      "sha256": "03746a8e692ed442f30210de20d9693879181be466f9de050a3e6e09d50204b2"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_TitleMenu.cpp.o": {
+      "bytes": 166131,
+      "sha256": "4e333b7138b0e61f4fabd97eaa105a1b9ed8a41d5ca1b087ea81a7db3ba7f933"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_TitleMusic.cpp.o": {
+      "bytes": 358009,
+      "sha256": "3393e653987fef68a229084b2f52a545fbd8f9914185f48abda841790535df5b"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_TitleOptions.cpp.o": {
+      "bytes": 127159,
+      "sha256": "86b5412b70df069888d759908281fde71d30dfbb706923e290986067d8ced898"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_TitleRecords.cpp.o": {
+      "bytes": 252203,
+      "sha256": "3fc808e98e30ad2e94e293cf37b5225875f1d945948de37791767ea184aad068"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_TitleReplay.cpp.o": {
+      "bytes": 133188,
+      "sha256": "10ed74d87966ce31c96401ada59525ce0a63f7c50ba63972c1dcc1dac66f112f"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_TitleResults.cpp.o": {
+      "bytes": 148719,
+      "sha256": "83910dd005151a944168716ad5a19fa4b47958efa76bafbca74a28e6b184b490"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_TitleSelection.cpp.o": {
+      "bytes": 22524,
+      "sha256": "733c305ca6052ca952326196bb24eda4bfbe693a19b8335c70939f7869718deb"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_TitleText.cpp.o": {
+      "bytes": 270098,
+      "sha256": "80fef8afb5759c4018a9ecb93776f5229fb3cc656c39f3b2c3a98d8cfc14e90b"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_TitleTh14.cpp.o": {
+      "bytes": 337535,
+      "sha256": "16199744800ba7300c59dab3f0e9839a4db8999ac95ab23d250660a472ccb1b0"
+    },
+    "artifacts/th14/sanitized-replay/template-layer-oct14/objects/cpp_game_Trace.cpp.o": {
+      "bytes": 5284,
+      "sha256": "6ac05ad61487f6732705062741d9c4f6525c2a00258e45809b9c50decaf04869"
+    },
+    "docs/porting/th14-template-layer-browser-flow-verified-oct14.json": {
+      "bytes": 95790,
+      "sha256": "0e6020e4b1f215ec7d61245f11056c6dd6fac7c8baa41a2f46f85a0ce41f0293"
+    },
+    "runtimes/th14/th14_web/artifacts/sdl3-release/build.json": {
+      "bytes": 37704,
+      "sha256": "54dd5c36c785ea95dd5f30080f18a6ad48b6e558ed6dd60d360c8d963b2591c1"
+    },
+    "runtimes/th12/portable/input/KeyboardMap.inc": {
+      "bytes": 3307,
+      "sha256": "b0f05f6e6fb968719611b74f59a6725e0605c01781a61c6a8df7f6e1f3865b9c"
+    },
+    "runtimes/th12/portable/input/MotionTrack.hpp": {
+      "bytes": 8636,
+      "sha256": "6863c32d4dd01981ea94b924ba81aaccfcd003af4a7310802d6606dad1a8f26b"
+    },
+    "runtimes/th12/portable/input/TouchController.hpp": {
+      "bytes": 7390,
+      "sha256": "39bac867a6c1a4b76ecf300d392387102a9cbecb27be739d6511c2bd5fce8366"
+    },
+    "runtimes/th12/portable/sdl/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "runtimes/th12/portable/sdl/AssetPixelFormat.hpp": {
+      "bytes": 1264,
+      "sha256": "5653937bc3857013326a95420effa3d1200469a48a65303cb2915772086cb894"
+    },
+    "runtimes/th12/portable/sdl/FrameCadence.hpp": {
+      "bytes": 593,
+      "sha256": "1b2a610ac172de2089b4cd6551e88b04d36fb4030da93526a4442cefa8cdbed8"
+    },
+    "runtimes/th12/portable/sdl/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "runtimes/th12/portable/sdl/LegacyGraphics.hpp": {
+      "bytes": 2484,
+      "sha256": "1063442d4db5d48ca263d7cc002be079d06c0eb60d7c030a9964ff46ef48ded0"
+    },
+    "runtimes/th12/portable/sdl/PresentationCadence.hpp": {
+      "bytes": 939,
+      "sha256": "3c4f5b4f0847a08eff16a0c385fa33a5de12c21acdbaf299dc994f4b29e3498d"
+    },
+    "runtimes/th12/portable/sdl/RenderCommands.hpp": {
+      "bytes": 3098,
+      "sha256": "b24e9b186442cca6f15bbc1f4869ead79ed4c675cb728030096369b272969f8e"
+    },
+    "runtimes/th12/portable/sdl/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "runtimes/th12/portable/sdl/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "runtimes/th12/portable/sdl/Shaders.hpp": {
+      "bytes": 3646,
+      "sha256": "78f7648c27aa762c30493e6bf784baabdabdac63e2f683b2ed33470dca5aa252"
+    },
+    "runtimes/th12/portable/sdl/third_party/miniaudio.h": {
+      "bytes": 4108098,
+      "sha256": "9397e68c8f316b3341afa24ed2141d848695e1d392b0a4fd142361670d62293c"
+    },
+    "runtimes/th12/portable/sdl/third_party/stb_image.h": {
+      "bytes": 222898,
+      "sha256": "3e08556d97b2e07881df61b72aceb1e89d8c43f70354155749da4c37bde62a6a"
+    },
+    "runtimes/th12/portable/sdl/third_party/stb_vorbis.h": {
+      "bytes": 192790,
+      "sha256": "4c7cb2ff1f7011e9d67950446b7eb9ca044f2e464d76bfbb0b84dd2e23e65636"
+    },
+    "runtimes/th12/th12_web/cpp/sdl/AudioDevice.hpp": {
+      "bytes": 967,
+      "sha256": "1127fef63baee00a3443e305a1023e5a62b0862a1e1ee938ed5a51dd3035456f"
+    },
+    "runtimes/th12/th12_web/cpp/sdl/FontDevice.hpp": {
+      "bytes": 1104,
+      "sha256": "c00b317be5e23aab051e893c7ae752590603bb307bab3b5ccf7bc336894c4ecb"
+    },
+    "runtimes/th12/th12_web/cpp/sdl/GraphicsDevice.hpp": {
+      "bytes": 2396,
+      "sha256": "a05ac479625d4e8d2d57819fcf93b134e0f30e74e591c6e6e35320461597b0ed"
+    },
+    "runtimes/th12/th12_web/cpp/sdl/ThcrapLayout.hpp": {
+      "bytes": 2824,
+      "sha256": "4df79808e61818600f8957b8d099be1cdd245ba322d01642cd1105591a4b529b"
+    },
+    "runtimes/th12/th12_web/cpp/sdl/AudioDevice.cpp": {
+      "bytes": 11299,
+      "sha256": "d0aea4804e03450d474b0f1345fa62abd66f4aec96fb71c9cf7ca699bfe562df"
+    },
+    "runtimes/th12/th12_web/cpp/sdl/FontDevice.cpp": {
+      "bytes": 11954,
+      "sha256": "0913b9e95a5584db1c5fa470f37e9f319cdc1c83100f761fd34b5931842742c2"
+    },
+    "runtimes/th12/th12_web/cpp/sdl/GraphicsDevice.cpp": {
+      "bytes": 8610,
+      "sha256": "0e1b2ac3a3867e11fcf304dffd6dd911005353acaafd06092778a185120d91f7"
+    },
+    "runtimes/th12/portable/sdl/Renderer.cpp": {
+      "bytes": 29936,
+      "sha256": "46d874eb2ab77080f521b76f59da9d639216f67be920411d03427c0df4b7c6f6"
+    },
+    "runtimes/th14/th14_web/artifacts/sdl3-release/th11.wasm": {
+      "bytes": 1872163,
+      "sha256": "fe4061f1103e0cd51351e24c11cad4f0cb99e13ae63750262ac3fcfe29bf50e8"
+    },
+    "docs/porting/th14-launcher-runtime-prepared-template-layer-oct14.json": {
+      "bytes": 50674,
+      "sha256": "06d0240bcb957c2034a9319211468a5c836eff6b1c3853ab4c87a1f2801cc3ec"
+    },
+    "docs/porting/th14-launcher-preview-prepared-template-layer-shell-oct14.json": {
+      "bytes": 36442,
+      "sha256": "b4d3ef6f43aa4ebb737374be5eb89041245a5ed906266894fcb31ced12aa2d93"
+    },
+    "artifacts/th14/browser-template-layer-oct14/replay-list-after-update.jpg": {
+      "bytes": 260338,
+      "sha256": "c370ecac47d300e799cd2ca6e6fe8db11d5830b37c4625b8feb6a6b1beebb762"
+    },
+    "artifacts/th14/browser-template-layer-oct14/replay-playing.jpg": {
+      "bytes": 182901,
+      "sha256": "826af9d873f9a3585cdb1319d6dde083390103eb16cc53acba0d5c18507853bd"
+    },
+    "artifacts/th14/browser-template-layer-oct14/replay-returned.jpg": {
+      "bytes": 259569,
+      "sha256": "f17ce5413c4697cc5e70e3041cff296ef8a6be37424bcb0182d5c796f70324db"
+    },
+    "artifacts/th14/browser-template-layer-oct14/console.json": {
+      "bytes": 24861,
+      "sha256": "07aa952b807dffad4ca74935b92317c5464955bafec80829d64a4aa580619890"
+    },
+    "docs/porting/th14-app-shell-precache-current-verified-oct14.json": {
+      "bytes": 89175,
+      "sha256": "1bb3818d91eca85149af4c9a34c55e0382a6d9d20b600694772221c75f14286b"
+    },
+    "docs/porting/th14-browser-saved-replay-native-codec-oct14.json": {
+      "bytes": 1842,
+      "sha256": "abbdc20f0eabc25bab0542ef6d31de02517a8a9bfce19964a3cb31a945666dd7"
+    },
+    "artifacts/th14/browser-focused-growth-oct14/browser-normal-recording.rpy": {
+      "bytes": 631,
+      "sha256": "408db7f618959816b186a1cd3232d8e8b8e8813fd142aa765120dc3fb99f8a13"
+    },
+    "tools/th14-browser-saved-replay-native-codec-check.py": {
+      "bytes": 4790,
+      "sha256": "a84b31dd940164622a7c7e706f246679945045970d68e4306ab194c91f1bbea0"
+    },
+    "tools/th14-template-layer-browser-flow-evidence-check.mjs": {
+      "bytes": 5396,
+      "sha256": "87848784e25b6285006d64840a6956b54edb0f623d7098d8207c7fda21ba32ea"
+    },
+    "docs/porting/th14-app-shell-precache-verified-oct14.json": {
+      "bytes": 64084,
+      "sha256": "8fdf65823daf0e0493e195a685c58563ed06aa29a50a53e5b2f83f943c6f7000"
+    },
+    "tools/th14-app-shell-precache-evidence-check.py": {
+      "bytes": 12631,
+      "sha256": "9500b2af083741033e06a451b3555074ee065d5a49c0aab15ba76cb93ff5ac60"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/app-shell-sw.js": {
+      "bytes": 14782,
+      "sha256": "b8a5ed0f317385d322a4458392b2ab34b6d4a251b4cab43853c8fb13213f5ce6"
+    },
+    "runtimes/th12/th12_web/launcher/src/app-shell-sw.js": {
+      "bytes": 3398,
+      "sha256": "0d2842acfa639469aa684c2ec943f220dd490e31af2ddaa785102a27c10bda91"
+    },
+    "tools/th14-package-launcher.mjs": {
+      "bytes": 10257,
+      "sha256": "8a8b29d7b1d975df2638cf6ca7146a593493b6082ddcf809b70a4df2caf26885"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-runtime/fe4061f1103e0cd5-22b127d8d3ca/resources.json": {
+      "bytes": 5479,
+      "sha256": "0a09f2dae20d36eae51eb23f2dee1d202796f42cde7e08ee974263369082136f"
+    },
+    "tools/th14-package-runtime.mjs": {
+      "bytes": 6448,
+      "sha256": "54b30eb6ad49c0cdcf766e046338bb9368cfeeaaa16ce435788f6e36d3de5d80"
+    },
+    "tools/th14-app-shell-precache-current-evidence-check.py": {
+      "bytes": 10428,
+      "sha256": "fc1a6b8aece7574a4bcf76da918604caa842402f0fcc241dc1d8dd2bd350a0bc"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/CHANGELOG.txt": {
+      "bytes": 77,
+      "sha256": "8254f5b09162179fc1f9e3374c2adbae13557ae12493fbdf59ef7b794fcaaa3e"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/LICENSE-launcher.txt": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/NOTICE.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/THIRD-PARTY-NOTICES.txt": {
+      "bytes": 202,
+      "sha256": "f0a1854aeedc03a336714a6c6b28da37455f17ecd3216ab144a24babd52a2d7e"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/about.css": {
+      "bytes": 1710,
+      "sha256": "926e725396285ab9fbc35b4699cabf412893794e8386e863e46e6235da0f2983"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/about.html": {
+      "bytes": 1102,
+      "sha256": "9fcac227f6ba1ce8d7d4fe7e8a3ce0ff14fa83ba279800ae656c229f3934dc37"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/app.js": {
+      "bytes": 36,
+      "sha256": "14a918e750eea30c528407d1606a2ad861abf15ec2e89c5d2ca6257b36f13fc5"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/contracts/host-manifest.mjs": {
+      "bytes": 6957,
+      "sha256": "744e23f0c0e1f88f2205f3c1fc138c1ee29271472a32aee1e64017166b724efc"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/contracts/product-catalog.mjs": {
+      "bytes": 8409,
+      "sha256": "3dfbb105189eb2621b7331d34e1ab679acae71a2966d212ce310e27724c35f22"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/contracts/release-catalog.mjs": {
+      "bytes": 1497,
+      "sha256": "c9eef67f7dab7bb24eccf76b423eeb171a0e9e011d8f6a903e9a9a1b8bf9a3e2"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/contracts/resource-mode.mjs": {
+      "bytes": 335,
+      "sha256": "c3e434538c68b6684f47ee8c0f444c45f1c753ca25fd412bbaea583c6eadf5b2"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/contracts/runtime-protocol.mjs": {
+      "bytes": 1780,
+      "sha256": "c427df208f74845c4df137c2bc3aa2c4150d2265d5a527b5bf2f15fc843ed901"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/fonts/OFL-ChillRoundGothic.txt": {
+      "bytes": 4354,
+      "sha256": "ca5917526cee797a8eb698da3e10f355671c19aafd43e3cf44ced0425355c391"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/fonts/OFL-Unifont.txt": {
+      "bytes": 4591,
+      "sha256": "b135fab712684e6b1b26f890f51c22bf80cb34453da26a4013407dde5a049102"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/fonts/OFL-YatraOne.txt": {
+      "bytes": 4344,
+      "sha256": "f9f84b02bf8dabffb0244ae8736f8309b90c8f1c5e429cfbda6ce41a404f0df9"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/fonts/chill-round-gothic-site-bold.woff2": {
+      "bytes": 146352,
+      "sha256": "ea808b8fb1a76e098d8931fd56fe1c0ad86ab128ba1c90845ea0e2ef75265508"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/fonts/chill-round-gothic-site-heavy.woff2": {
+      "bytes": 3912,
+      "sha256": "940be9d0b1c695773f100b2f1cfb60b090e99f3632f784054c78d45d3a789c80"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/fonts/chill-round-gothic-site-medium.woff2": {
+      "bytes": 144388,
+      "sha256": "ad4b5d8c51a8b773be684acfdd4e556d7e20e890e83fafc122dc32bfd094d10d"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/fonts/touhou98.woff2": {
+      "bytes": 9416,
+      "sha256": "fa0087199674045dfc6dd9fd161d93035478f9aa139a06f362a0e35547a68091"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/fonts/unifont-site.woff2": {
+      "bytes": 23504,
+      "sha256": "4b44849d2424a813ae33e031304c21874ce1633aff0d51398fa1eda071ef9ee8"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/fonts/yatra-one-latin.woff2": {
+      "bytes": 18568,
+      "sha256": "efcdf4e36d87eb7d497afb6e4d66c49478dd6826b2cc9ae036d894a713eaa419"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/app-shell-client.mjs": {
+      "bytes": 3889,
+      "sha256": "fe27cb48531f00b264b39ccf1213927238423b4571034f5efb1cce0a0827d7fa"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/app.mjs": {
+      "bytes": 345425,
+      "sha256": "5087e42a90c6eb4123c9737754f5c8519410f99c07b68f7b18e6abd5c5267e00"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/changelog.mjs": {
+      "bytes": 7996,
+      "sha256": "733360531c4001cfc5315580cf4cfdef4583735c4ebeb18dc246bdcd8edf6103"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/game-preferences.mjs": {
+      "bytes": 7255,
+      "sha256": "d1d53362fd6616349679624a6ee7ecc07828246ab0e91ca4f897fb5f5f2f8266"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/game-zoom.mjs": {
+      "bytes": 7252,
+      "sha256": "f1a2ac81c18b962a65c380cb992df9697a74b42d053e0689b2e2fa74e4a5b31b"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/i18n.mjs": {
+      "bytes": 33429,
+      "sha256": "70a7c7ca837ec5f3bfdfc1974231a6fe3d4dc62cc2199f5fd9de032a504d858b"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/language-catalog.mjs": {
+      "bytes": 4096,
+      "sha256": "1fd6f4d0fec1c74596be2fb7200e7d91c907ac0729fbf58babb40a9a0c1c2579"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/language-pack-validation.mjs": {
+      "bytes": 2437,
+      "sha256": "d497b9289bb7a33691801afddc329e68cee91dba503dea595b6f2f3588d3cca6"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/multiplayer-identity.mjs": {
+      "bytes": 3329,
+      "sha256": "51f6ed641a8e5a5d70b00917980edfa1148854222a33cfbe5577cd83a7bb4bf5"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/multiplayer-lobby-snapshot.mjs": {
+      "bytes": 2623,
+      "sha256": "95e5d3c2a615152ec4e0b98c01b36124c36138c3b8ffbde19fb8c9343a7b8359"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/multiplayer-preferences.mjs": {
+      "bytes": 1971,
+      "sha256": "ee8a51526867c3c65edc5fe95961911a914f7772745595645614c124c5516134"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/multiplayer-relay-url.mjs": {
+      "bytes": 1525,
+      "sha256": "0916e3206395621d1ebcb0d82a157aa3c760142db86f87f001dea50bbe32cec8"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/multiplayer-room-session.mjs": {
+      "bytes": 2751,
+      "sha256": "60b6bcd12822af94e667a1725383f07524843cb9e4d553cec76d123b16a7c55e"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/multiplayer-runtime-options.mjs": {
+      "bytes": 2248,
+      "sha256": "88957a41ee816ba1ffed2ce1e2bd33e4cf5f8b6a53ec2a9c10f40f0aeff958b3"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/multiplayer-spectator-rail-position.mjs": {
+      "bytes": 2079,
+      "sha256": "7ab578c8f2fe8aeb92c576a25671a1156f85ccecdfa32c20131bbf28c8ce835e"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/music-availability.mjs": {
+      "bytes": 2536,
+      "sha256": "88434a8abf26478a9bfc732e95d3ac3ad7865c4cb7afae38c6f26d700034695a"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/network-activity.mjs": {
+      "bytes": 10198,
+      "sha256": "8f0489ad4a175e507da6f5934450b27163b6045b2170614b33733813ddf746ee"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/remote-metadata.mjs": {
+      "bytes": 882,
+      "sha256": "5f70dd8c99c466fa4c193ee23e454b96c5a796e9685fe65deb82675074b012fe"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/replay-files.mjs": {
+      "bytes": 3754,
+      "sha256": "027919533cdf5eb59570518c7717cd5b9cc8a0238e743547060f0be17a28d953"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/route-state.mjs": {
+      "bytes": 5258,
+      "sha256": "fa4af031d5548070e7e33fb95bf66641baeec4391b564022bf2d630516307ad6"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/runtime-diagnostics-model.mjs": {
+      "bytes": 8155,
+      "sha256": "18d22b709fc0229be8b81fee2d3434e67d531da40ebf9f10e12b4fa28f6eff34"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/runtime-generation-lease.mjs": {
+      "bytes": 1120,
+      "sha256": "540792ba3950bc6aa529339404bb77f9542db178840c1e73f67a602975ba707f"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/runtime-preparation.mjs": {
+      "bytes": 3726,
+      "sha256": "d2b3f136794ebb7671ad69b25897bf03574aca8f3d6ee080e80c0cb85ee0f99b"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/sha256.mjs": {
+      "bytes": 3512,
+      "sha256": "a78ab9a4a59db8d34abe9a26afd00f54d1f8e0a86d45bc0ae4769f7d75bf4a9c"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/site-notice.mjs": {
+      "bytes": 10352,
+      "sha256": "fdc763a7f1fb46b4c90e4f2c2b24114b777588d30fe95c828a48b98bd08ff55c"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/touch-layout-editor-state.mjs": {
+      "bytes": 3531,
+      "sha256": "85f4a72d7f0a0ed0d2a27d448f452d8b98a5f599bbf8704ba61f543903227afe"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/touch-layout-model.mjs": {
+      "bytes": 7189,
+      "sha256": "7cda2ab1a649de1083659c82dd900159e11aff9d25a3333edbef58f6ebaa6e38"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/launcher/touch-runtime-protocol.mjs": {
+      "bytes": 1440,
+      "sha256": "c504f2a50296441f029b7b4edc0229561a14f4a651aafb8ea8ab0ad6aab77e4b"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/notice-bilibili.svg": {
+      "bytes": 1159,
+      "sha256": "f4874d4b046470cca2f71277963330d7e65d0e64f96db60eb89cfaa249470da3"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/notice-github.svg": {
+      "bytes": 678,
+      "sha256": "ccdcb426d996a3814d23ee7e31027d6893265518a53a6b24c1e72589f0f461f1"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/notice-qq.svg": {
+      "bytes": 507,
+      "sha256": "a1d41b033040bd9a02eb03a47c5546bd3613ccda177c73e6afe750f18143f17d"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/notice-touhou-cloud.png": {
+      "bytes": 23262,
+      "sha256": "8fa084c92d17a6943d1e5aaf54b18c2b546ce2708adca3407b41d347a9f3007d"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/th11-card.png": {
+      "bytes": 571410,
+      "sha256": "57add9cc4fa6493cae196a1ecb5e277290a70af04cc4d226b88c8c6fc06e8b57"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/th14-icon.svg": {
+      "bytes": 224,
+      "sha256": "3929bb501f70dfa1f8572231a493d12d1085cd59e23610dfd01fa2f41bb3556e"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/assets/touch-rotate-landscape.webp": {
+      "bytes": 141862,
+      "sha256": "1c3c108d68d3509b8ebd3c96843dd4e6afc8bf863911923cd2be6fda6a34f378"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/faq.html": {
+      "bytes": 1722,
+      "sha256": "021e8de41a8eaa5130d784fbd44d5ee59f0eac38b7c8bedbfda984df7d302292"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/host-manifest.json": {
+      "bytes": 952,
+      "sha256": "df1e72f31690e03632964ba813b896a432e00c87594f871a626059242aeff4d0"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/index.html": {
+      "bytes": 73015,
+      "sha256": "8ecfe6c769935546e74d877e600cfb28033649a4c869e311edec844ddb21fe4a"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/legacy/legacy-game-pack.mjs": {
+      "bytes": 7787,
+      "sha256": "12d1fae238e7ad91667e9489fe9630bc2bba19e919c37474a1c275555f7270ff"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/legacy/legacy-import-storage.mjs": {
+      "bytes": 13463,
+      "sha256": "fa0fea9cc130d5e5c1a0fcb914f5f6d6260e5845c7d39a9e154e5ec1d2901580"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/legacy/legacy-package-adapter.mjs": {
+      "bytes": 8168,
+      "sha256": "29b9c16ac4649963911e7eb6502fd399fdf76643c8303c8edfd80b5715d9e121"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/manifest.json": {
+      "bytes": 370,
+      "sha256": "030d2515c141a6a92f73b62046169462f986562fd71c43dc31d5fe6b37acb50c"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/migrate.html": {
+      "bytes": 708,
+      "sha256": "accad34b7ee8e17a4c03087ede53d74eb7ca3ff7eb5aedde26bae9cbd71548b2"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/native-audio.js": {
+      "bytes": 614,
+      "sha256": "d5459ce4618134c6919c537002c1755ffdaa8604d4e5e15f8b09562b3bf082df"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/package/package-descriptor.mjs": {
+      "bytes": 8220,
+      "sha256": "869a3089d4ba8e2a54acabe64e7160bfcfe4bfc6adb75b201acef865f44d7021"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/package/package-generation.mjs": {
+      "bytes": 4278,
+      "sha256": "2d76de52b27c70000bc2d86738a5ff3579bc7ed4ad243e0def64d12b4a857adf"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/package/package-installer.mjs": {
+      "bytes": 6863,
+      "sha256": "a00e6501aa3cb945cd60ddac7fb2aca9d6297af6a111fb149a71c1af66457b3d"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/package/package-launcher.mjs": {
+      "bytes": 6788,
+      "sha256": "bbc93dd44b98fd8cc63cefe7d2dadb2baa60810471d6b9327180d867db2ce09b"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/package/package-mutation-queue.mjs": {
+      "bytes": 616,
+      "sha256": "29e3e5a3ed72613df5b1919b3499865e65e62a7e4424ea077c5aa87e1cba1585"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/package/package-store.mjs": {
+      "bytes": 16831,
+      "sha256": "38b3c2545c4779ad5dbbeb6c19bbed582f3bf6ebd9437138264cd9e057c378f5"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/package/package-zip.mjs": {
+      "bytes": 1372,
+      "sha256": "4342cb82cdfec10b30d0ab8dbbe9846f9231f9c1f8c55fda7668dcc57a33ab42"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/package/stored-zip.mjs": {
+      "bytes": 5237,
+      "sha256": "981b0ebd4664aec77278aa9f15761eda66cab2b5fedb872f29e0a9176ebdf60d"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/packages/th14/package.json": {
+      "bytes": 613,
+      "sha256": "16f6a9cf984b8a3ce5d9c69ba0ceb1bd2f34ddcf77cfa8ff7aab363f61ea268f"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/packages/th14/th14.data": {
+      "bytes": 90776747,
+      "sha256": "57d84a5cbe82460931cca26f090a0fde7aef180889ce5bfe8315851fc97b0233"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/product-catalog.mjs": {
+      "bytes": 56,
+      "sha256": "98ac6d3824929d6af977c906e0c1381515602a01336218dd45de1f44e8b2fb1e"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/release-catalog.json": {
+      "bytes": 192,
+      "sha256": "e2ada59f02dbbcbcd056224005d10dfee1f2bab737f91f8b61a91f7ddda646dc"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/release-catalog.mjs": {
+      "bytes": 56,
+      "sha256": "c00569fba7516cf0c6ea7f023460a370b8c59170f29fff2aaab1decfac37b3ad"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/directory-keyboard.mjs": {
+      "bytes": 6345,
+      "sha256": "77394cea8730d203f95ba4c38daaf542a78a4219985ce4f1cee65a4351250243"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/eagler-host.mjs": {
+      "bytes": 9315,
+      "sha256": "059ad46d0e9058e82a9c001c25cee4fc489a2c259a8d4d87b4a72e1e0513dec4"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/fonts/blend4444.bin": {
+      "bytes": 28672,
+      "sha256": "5a36218f839854a02391f8bf0b6b8bb0414074e4d8f577ed09a8c796a9ee7e92"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/fonts/cp932.bin": {
+      "bytes": 131072,
+      "sha256": "57f4b3b047547cf44daa2186cca164b326ce064b137895bf417966f1053d1dc6"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/fonts/font0.bin": {
+      "bytes": 19826527,
+      "sha256": "72a2c233e6ab8bad4fe408540c6f37151aa8a992e48b5d840200e33e4827e669"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/fonts/font1.bin": {
+      "bytes": 20558695,
+      "sha256": "c4ff2c2964cda41ee210bd634ad285d46cd898e86147d65306c18768e3cd2e5a"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/fonts/font2.bin": {
+      "bytes": 4269142,
+      "sha256": "01141cc6a8d992ff37d15b3c8853c5ae506fda6b1a31005bf3193351f96a200e"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/fonts/font3.bin": {
+      "bytes": 4269142,
+      "sha256": "94b6e1b3b6a1a100151ec9c2297700b304e447ec4a0941eeed11292af3b86ead"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/fonts/font4.bin": {
+      "bytes": 30524029,
+      "sha256": "d602fd630548432ae6ab6d3170e01e2a47bea37bbe61145dcc146cab4614dc6b"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/fonts/font5.bin": {
+      "bytes": 31432054,
+      "sha256": "2bfdfcc0627bd4fbde47ac306879a05885b40a4f399c58493ce65a79b580f7f6"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/fonts/font6.bin": {
+      "bytes": 4269142,
+      "sha256": "10c6d98fc944d6293629e29a8497f41e9f567e4031d26f6c1f622c08d08893bb"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/fonts/font7.bin": {
+      "bytes": 4269142,
+      "sha256": "135e9d5e09f278c0acfc901d8ebe70c6875a9e18f402ee6cff206f4c80989a98"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/keyboard.mjs": {
+      "bytes": 1297,
+      "sha256": "df5ff6e6ed6bd2921a09d50c236741a05a73d39c9ac906428c10bc8043e87334"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/managed.css": {
+      "bytes": 733,
+      "sha256": "de937f099fb554673b3d5602482e9d753097a3d8b78b267baa59d25080db95da"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/manifest.json": {
+      "bytes": 591,
+      "sha256": "ae7c79f4ad7871ad7a27843f95c29d48ee70aa216e5e0f764e9aa934f65bf2b6"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/motion-replay.mjs": {
+      "bytes": 815,
+      "sha256": "3643a3cf65aa7e2340a498a6da03b976875b63570b74c583c13169d57fd8dc5d"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/music/th128_08.flac": {
+      "bytes": 4944538,
+      "sha256": "e1375c116500042b8590f94c2b7750c3d55162a439b33496a67d40d785b9e4f9"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/music/th14_01.flac": {
+      "bytes": 13701885,
+      "sha256": "18156083697b017973f160fc4970a9026ea6c9810ceb96c2055759ec1cb50600"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/music/th14_02.flac": {
+      "bytes": 11849328,
+      "sha256": "b25481e7b45fdca53fa173b2ddfe9f13080d03b606e7b44ca97ec032619838e5"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/music/th14_03.flac": {
+      "bytes": 12125958,
+      "sha256": "eb02d4dda4e7d9dfaa630354ab7ead7ba37e88416c366b643b3f024e27afdef8"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/music/th14_04.flac": {
+      "bytes": 12161517,
+      "sha256": "5f06c41a66acffca815f068b1bb8cb5f4ecac8283f712654acdb33d6f2c41ab2"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/music/th14_05.flac": {
+      "bytes": 14313486,
+      "sha256": "de47628e07c03ea44e47508c4a624b0485c0227056f91555899449dca33b75fe"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/music/th14_06.flac": {
+      "bytes": 19739737,
+      "sha256": "ff31598fe748e9e3ca971b9ebb441bcdca59ae35d37af1247a30a7ab6bb859f3"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/music/th14_07.flac": {
+      "bytes": 15651834,
+      "sha256": "0f4a0a1ce99d420d0af478f08707623129ad24846637c331879976863c77f52b"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/music/th14_09.flac": {
+      "bytes": 25572618,
+      "sha256": "3bc5af281bddb7bb8b5480ef8f169480693135e968490fff6fd191902e772a8b"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/music/th14_10.flac": {
+      "bytes": 19158497,
+      "sha256": "ca200488d8f737a0a158083e240dbfaf9eb5ecec337caed873fc7afca2c63e90"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/music/th14_11.flac": {
+      "bytes": 20076828,
+      "sha256": "939bf1ad26895474486210cd328f7b35486e55ba09fc2dbf2439c340f44fcdc6"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/music/th14_12.flac": {
+      "bytes": 18601057,
+      "sha256": "0b5430c0f882080a1bd9ff86704fa8b52301b6907ad56184ed2d2916c9ffd960"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/music/th14_14.flac": {
+      "bytes": 12744116,
+      "sha256": "d591c2e5ef74e38964d11d7bb2a3b9352004a18ffb57dcc14befa60e6e0520ec"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/music/th14_15.flac": {
+      "bytes": 31188154,
+      "sha256": "6c88aa9d3553cfd10f256bcc265791cc52b938c77dd35a742dd7762496576ebf"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/music/th14_16.flac": {
+      "bytes": 10070292,
+      "sha256": "0b7d540d5ff1927337fa945d76437afebeda1739396a886e58fe86719368141d"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/music/th14_17.flac": {
+      "bytes": 9380291,
+      "sha256": "b6442637d54767fbdee50c0d7b3fa9e6fadf57ccb3a0b3b7b433709e60c7d31a"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/music/th14_18.flac": {
+      "bytes": 18407749,
+      "sha256": "238ed9201e57f7ed7567b2ec73c4d20679cf4ace1993661cef9848bdedfa2070"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/music/th14_19.flac": {
+      "bytes": 25585080,
+      "sha256": "9ae76b6c99f3d8026e1621d782a8bfe187309be43164bc4018519d7536356f82"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/resources.json": {
+      "bytes": 5479,
+      "sha256": "0a09f2dae20d36eae51eb23f2dee1d202796f42cde7e08ee974263369082136f"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/runtime-epoch.mjs": {
+      "bytes": 340,
+      "sha256": "e82fecd59b600c3978a516389c159b1a0a2c6b551b949dca3a82de5d5c505b4f"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/runtime-files.json": {
+      "bytes": 5672,
+      "sha256": "937878041cb438804392e9811f178e2b43038c843442c737bd3dad4443cb1dba"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/shell.mjs": {
+      "bytes": 12975,
+      "sha256": "fe28eca9db4beb40e57db8ae2e38a283b6f324600baaadd916ba979c4b2e8e74"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/th14-sdl.mjs": {
+      "bytes": 226521,
+      "sha256": "63fe02a0394640c6d7e9dde652b48421bc0fb13c2bc36722e15869263864f513"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/th14-sdl.wasm": {
+      "bytes": 1872163,
+      "sha256": "fe4061f1103e0cd51351e24c11cad4f0cb99e13ae63750262ac3fcfe29bf50e8"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/runtime/th14/th14.html": {
+      "bytes": 506,
+      "sha256": "e1243bf446ac310c44e4353a2ce71ad58764251f62084d73d5715169454cd1bd"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/site.webmanifest": {
+      "bytes": 428,
+      "sha256": "6c5bba78dc2148ef7f7dba09b07ac5b8344178669bfa38c46882f37c2f17588e"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/styles.css": {
+      "bytes": 157348,
+      "sha256": "0345e0d50a13619b55d62e457aee4fa371f0b4c3fe037985bb04e07c483877da"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/touch-guide.css": {
+      "bytes": 19121,
+      "sha256": "2ebfef666092b447ae9d45687d62f53232e8e37b1cb94c343e200ce7e7a71f7c"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/vendor/fflate.LICENSE": {
+      "bytes": 1069,
+      "sha256": "0a1df3a083d0c010560aa342e87959c8c1070e6fd54545741f083f22d0c8b551"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/vendor/fflate.min.js": {
+      "bytes": 33044,
+      "sha256": "462ef8041fc970e3615a20a9dd2b2e3047a073b2da729ef4f02b634bba8b7b83"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/vendor/webaudio-tinysynth.LICENSE": {
+      "bytes": 11357,
+      "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1"
+    },
+    "runtimes/th14/th14_web/artifacts/launcher-preview/fe4061f1103e0cd5-a1976aae9085/site/vendor/webaudio-tinysynth.min.js": {
+      "bytes": 42859,
+      "sha256": "864269534ada22f57da86884d8c8dd5f4c71ca3658c584f8a35d781965dff1ab"
+    }
+  },
+  "toolSha256": "39e921de290dedf01eaa650037ca9aabc544f2ea2d5150850bcf5de0d8d60228",
+  "scope": "Current graze24, player death27/hit28 and bullet cancellation199 preserve original template layers through factory layer -1. Seven actual production caller controls load the original full archive and agree with the independently frozen Native root layer/file/script controls; these controlled API triggers are not ordinary collision/menu or pixel proof. Four intact public inputs finish current production and nonrecovering ASAN/UBSan. Native Lunatic reaches its requested 90,793 capture budget, not a certified ordinary Native terminal. Current 25 loading gameplay-call, 72 loading enemyNextId, 8 active raw area Z and 181,570 absolute visual differences remain unmasked; Extra retains 78,916 absolute visual differences. The original ReimuA path reads an unwritten third polar output word, while the actual stack writers of the 8 captured Z values remain unknown. Existing controlled Z evidence retains observable lastHit output. Six original clock-store controls and a directly observed bootstrap clock are bound to frozen sources, with the relevant current files independently confirmed unchanged; campaign seeds/counters and loading counts are not corrected to match the oracle. Prior hit-effects visual-increment/fanout/checkpoint facts are explicitly immutable historical receipts, not current-source passes. App Shell precaches 97 shell/runtime entries totaling 4,284,044 bytes; all 28 game font/music resources and managed DATA remain deployed. This does not establish warning causality or full-game offline behavior. Current ordinary clear/ending/storage/replay and current browser evidence are separately bound, with every observed warning and inactive score difference retained. All modes, ordinary Native startup/loading, full owner memory, visual RNG, pixels/audio and whole-game 1:1 remain unfinished."
+}

@@ -46,7 +46,10 @@ json('manifest.json',{game:'th14',version:'1.00b-reconstruction-preview',complet
 copy('LICENSE-launcher.txt',resolve(launcher,'LICENSE'));
 write('THIRD-PARTY-NOTICES.txt','Original game/assets: Team Shanghai Alice / ZUN. Private local reference assets.\nLauncher: YomotsuHisami/eagler-touhou, GPL-3.0-or-later.\nSDL3: zlib. Emscripten: MIT/UIUC. miniaudio: public domain/MIT.\n');
 write('CHANGELOG.txt','辉针城 WEB：本机源码重建预览，完整原版等价尚未完成。\n');
-const precache=[...pendingFiles.keys()].filter(n=>n!=='files.json'&&n!=='app-shell-sw.js'&&!n.startsWith('packages/'));
+// Original game fonts/music remain deployed Runtime resources, outside the
+// App Shell cache just like managed DATA. Host UI fonts and Runtime code stay
+// in the shell manifest; this does not certify complete offline game loading.
+const precache=[...pendingFiles.keys()].filter(n=>n!=='files.json'&&n!=='app-shell-sw.js'&&!n.startsWith('packages/')&&!/^runtime\/[^/]+\/(?:music|fonts)\//.test(n));
 const entries=[{url:'./',revision:sha(pendingFiles.get('index.html'))},...precache.sort().map(n=>({url:n,revision:sha(pendingFiles.get(n))}))],buildId=sha(Buffer.from(JSON.stringify(entries))).slice(0,20);
 if(existsSync(resolve(launcher,'src/app-shell-sw.js')))write('app-shell-sw.js',readFileSync(resolve(launcher,'src/app-shell-sw.js'),'utf8').replaceAll('__APP_SHELL_BUILD_ID__',buildId).replace('self.__WB_MANIFEST',JSON.stringify(entries)));
 const files=Object.fromEntries([...pendingFiles.keys()].sort().map(name=>[name,{bytes:pendingFiles.get(name).length,sha256:sha(pendingFiles.get(name))}]));json('files.json',Object.fromEntries(Object.entries(files).map(([name,r])=>[name,r.sha256])));

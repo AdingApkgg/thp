@@ -1,0 +1,504 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "productionModifiedByVerifier": false,
+  "sourceFilesVerified": 265,
+  "actualProductionCallerCases": 7,
+  "fullOriginalArchiveSha256": "57d84a5cbe82460931cca26f090a0fde7aef180889ce5bfe8315851fc97b0233",
+  "originalNativeFactoryControlsReused": 14,
+  "observations": [
+    {
+      "case": {
+        "kind": 0,
+        "name": "reimu-bomb-hit",
+        "script": 58,
+        "file": 8,
+        "layer": 20,
+        "call": "GameBattle::th14_reimu_bomb_hit_effect"
+      },
+      "root": {
+        "script": 58,
+        "file": 8,
+        "layer": 20,
+        "depth": 0,
+        "parentPresent": 0
+      },
+      "created": [
+        {
+          "script": 58,
+          "file": 8,
+          "layer": 20,
+          "depth": 0,
+          "parentPresent": 0
+        },
+        {
+          "script": 145,
+          "file": 8,
+          "layer": 20,
+          "depth": 1,
+          "parentPresent": 0
+        },
+        {
+          "script": 143,
+          "file": 8,
+          "layer": 21,
+          "depth": 2,
+          "parentPresent": 1
+        },
+        {
+          "script": 42,
+          "file": 8,
+          "layer": 20,
+          "depth": 1,
+          "parentPresent": 0
+        },
+        {
+          "script": 42,
+          "file": 8,
+          "layer": 20,
+          "depth": 1,
+          "parentPresent": 0
+        },
+        {
+          "script": 42,
+          "file": 8,
+          "layer": 20,
+          "depth": 1,
+          "parentPresent": 0
+        },
+        {
+          "script": 42,
+          "file": 8,
+          "layer": 20,
+          "depth": 1,
+          "parentPresent": 0
+        },
+        {
+          "script": 42,
+          "file": 8,
+          "layer": 20,
+          "depth": 1,
+          "parentPresent": 0
+        },
+        {
+          "script": 41,
+          "file": 8,
+          "layer": 20,
+          "depth": 1,
+          "parentPresent": 0
+        },
+        {
+          "script": 41,
+          "file": 8,
+          "layer": 20,
+          "depth": 1,
+          "parentPresent": 0
+        }
+      ],
+      "context": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "case": {
+        "kind": 1,
+        "name": "curve-graze",
+        "script": 24,
+        "file": 8,
+        "layer": 18,
+        "call": "GameBattle::th14_curve_graze with real initialized PlayerFrame"
+      },
+      "root": {
+        "script": 24,
+        "file": 8,
+        "layer": 18,
+        "depth": 0,
+        "parentPresent": 0
+      },
+      "created": [
+        {
+          "script": 24,
+          "file": 8,
+          "layer": 18,
+          "depth": 0,
+          "parentPresent": 0
+        }
+      ],
+      "context": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "case": {
+        "kind": 2,
+        "name": "item-spawn-notice",
+        "script": 100,
+        "file": 8,
+        "layer": 16,
+        "call": "GameBattle::item_th14_spawn_notice"
+      },
+      "root": {
+        "script": 100,
+        "file": 8,
+        "layer": 16,
+        "depth": 0,
+        "parentPresent": 0
+      },
+      "created": [
+        {
+          "script": 100,
+          "file": 8,
+          "layer": 16,
+          "depth": 0,
+          "parentPresent": 0
+        }
+      ],
+      "context": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "case": {
+        "kind": 3,
+        "name": "player-death",
+        "script": 27,
+        "file": 8,
+        "layer": 18,
+        "call": "PlayerFrame::die -> GameBattle::player_effect"
+      },
+      "root": {
+        "script": 27,
+        "file": 8,
+        "layer": 18,
+        "depth": 0,
+        "parentPresent": 0
+      },
+      "created": [
+        {
+          "script": 27,
+          "file": 8,
+          "layer": 18,
+          "depth": 0,
+          "parentPresent": 0
+        },
+        {
+          "script": 31,
+          "file": 8,
+          "layer": 21,
+          "depth": 1,
+          "parentPresent": 0
+        },
+        {
+          "script": 32,
+          "file": 8,
+          "layer": 21,
+          "depth": 2,
+          "parentPresent": 1
+        },
+        {
+          "script": 29,
+          "file": 8,
+          "layer": 18,
+          "depth": 1,
+          "parentPresent": 0
+        },
+        {
+          "script": 29,
+          "file": 8,
+          "layer": 18,
+          "depth": 1,
+          "parentPresent": 0
+        },
+        {
+          "script": 29,
+          "file": 8,
+          "layer": 18,
+          "depth": 1,
+          "parentPresent": 0
+        },
+        {
+          "script": 29,
+          "file": 8,
+          "layer": 18,
+          "depth": 1,
+          "parentPresent": 0
+        },
+        {
+          "script": 29,
+          "file": 8,
+          "layer": 18,
+          "depth": 1,
+          "parentPresent": 0
+        },
+        {
+          "script": 29,
+          "file": 8,
+          "layer": 18,
+          "depth": 1,
+          "parentPresent": 0
+        }
+      ],
+      "context": [
+        1,
+        2,
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "case": {
+        "kind": 4,
+        "name": "player-hit",
+        "script": 28,
+        "file": 8,
+        "layer": 18,
+        "call": "PlayerFrame::hit -> GameBattle::player_effect"
+      },
+      "root": {
+        "script": 28,
+        "file": 8,
+        "layer": 18,
+        "depth": 0,
+        "parentPresent": 0
+      },
+      "created": [
+        {
+          "script": 28,
+          "file": 8,
+          "layer": 18,
+          "depth": 0,
+          "parentPresent": 0
+        },
+        {
+          "script": 29,
+          "file": 8,
+          "layer": 18,
+          "depth": 1,
+          "parentPresent": 1
+        },
+        {
+          "script": 29,
+          "file": 8,
+          "layer": 18,
+          "depth": 1,
+          "parentPresent": 1
+        },
+        {
+          "script": 30,
+          "file": 8,
+          "layer": 18,
+          "depth": 1,
+          "parentPresent": 1
+        }
+      ],
+      "context": [
+        1,
+        4,
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "case": {
+        "kind": 5,
+        "name": "bullet-cancel",
+        "script": 199,
+        "file": 7,
+        "layer": 21,
+        "call": "BulletManager::spawn_th14(type2/color6) -> cancel_th14 -> GameBattle::effect/visual"
+      },
+      "root": {
+        "script": 199,
+        "file": 7,
+        "layer": 21,
+        "depth": 0,
+        "parentPresent": 0
+      },
+      "created": [
+        {
+          "script": 199,
+          "file": 7,
+          "layer": 21,
+          "depth": 0,
+          "parentPresent": 0
+        }
+      ],
+      "context": [
+        1,
+        1,
+        0,
+        199,
+        4,
+        2
+      ]
+    },
+    {
+      "case": {
+        "kind": 6,
+        "name": "player-focus-correct-control",
+        "script": 26,
+        "file": 8,
+        "layer": 14,
+        "call": "GameBattle::player_focus"
+      },
+      "root": {
+        "script": 26,
+        "file": 8,
+        "layer": 14,
+        "depth": 0,
+        "parentPresent": 0
+      },
+      "created": [
+        {
+          "script": 26,
+          "file": 8,
+          "layer": 14,
+          "depth": 0,
+          "parentPresent": 0
+        },
+        {
+          "script": 25,
+          "file": 8,
+          "layer": 18,
+          "depth": 1,
+          "parentPresent": 1
+        }
+      ],
+      "context": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    }
+  ],
+  "nativeExpectedLayers": {
+    "reimu-bomb-hit": 20,
+    "curve-graze": 18,
+    "item-spawn-notice": 16,
+    "player-death": 18,
+    "player-hit": 18,
+    "bullet-cancel": 21,
+    "player-focus-correct-control": 14
+  },
+  "diagnosticSetupBeforeFailure": {
+    "path": "artifacts/th14/effect-template-layer-current-oct14/before-retained-archive-buffer/failure.json",
+    "cause": "The first diagnostic harness released the borrowed archive buffer before stage loading; corrected harness retains it."
+  },
+  "bindings": [
+    {
+      "path": "docs/porting/th14-effect-template-layer-verified-oct14.json",
+      "bytes": 34511,
+      "sha256": "0077b2f9a4e7e07b1f5e908ee96165c41efb596c7e5ab1ae9a627e85d0306ce7"
+    },
+    {
+      "path": "artifacts/th14/effect-template-layer-oct14/native.json",
+      "bytes": 5351,
+      "sha256": "28c46a738883e86b55430f7f2bbde8c17f4d8a2e048c251be7f93f60ba76f75c"
+    },
+    {
+      "path": "runtimes/th13/th13_web/artifacts/cpp/engine-th14-build.json",
+      "bytes": 33155,
+      "sha256": "639b2af3132297185805bcbd8b37cf8372b408eebd967491d8f5813e932ac3a8"
+    },
+    {
+      "path": "runtimes/th14/target.json",
+      "bytes": 771,
+      "sha256": "131c9af4169e933b6d29ee83a33657155416f717cb4b97cb09427eddc06606af"
+    },
+    {
+      "path": "tools/th14-effect-template-layer-evidence-check.py",
+      "bytes": 16614,
+      "sha256": "31b25d84dc1efa8e1c10bcdbc441729c51c8a1d1d39570d69ebb281cbfd13e0c"
+    },
+    {
+      "path": "artifacts/th14/effect-template-layer-current-oct14/caller-fixture.cpp",
+      "bytes": 2121,
+      "sha256": "8d3f43b4ab6598a5243f7f4a07f42d2e0576dd8a55c34d12da83fbeac4ee2bd8"
+    },
+    {
+      "path": "artifacts/th14/effect-template-layer-current-oct14/caller.wasm",
+      "bytes": 1290783,
+      "sha256": "a579802e6c5736b10894c9f50b03c38317e2de41ebbfcc75687cf4da7bc96777"
+    },
+    {
+      "path": "artifacts/th14/effect-template-layer-current-oct14/caller-check.mjs",
+      "bytes": 2527,
+      "sha256": "17e838b3367d0f8deee0d2ebafa1f37d5c544976c8dfbd1b740cfe512d756457"
+    },
+    {
+      "path": "artifacts/th14/effect-template-layer-current-oct14/observations.json",
+      "bytes": 6476,
+      "sha256": "895a941ec38cd6ec67909e15c0440045a629c326b21c5ee617838137ac36a801"
+    },
+    {
+      "path": "artifacts/th14/effect-template-layer-current-oct14/compile-inputs.json",
+      "bytes": 46395,
+      "sha256": "532e6bbc93b4b8666b7254a12e96f54ce4a7ca96b69bc7a5f6bf193f52450542"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-session-fixture.cpp",
+      "bytes": 9515,
+      "sha256": "1f4c8b679e826c3d3bb48f02d576aae2f46dc87c79dacdd3cd831ade9c47e2cd"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/render-fixture.hpp",
+      "bytes": 2634,
+      "sha256": "3f8cf7447d8242d7e0b38ea19b30fad73951347ad0a9c370dc8a41593042cbae"
+    },
+    {
+      "path": "artifacts/th14/effect-template-layer-current-oct14/before-retained-archive-buffer/caller-fixture.cpp",
+      "bytes": 2121,
+      "sha256": "8d3f43b4ab6598a5243f7f4a07f42d2e0576dd8a55c34d12da83fbeac4ee2bd8"
+    },
+    {
+      "path": "artifacts/th14/effect-template-layer-current-oct14/before-retained-archive-buffer/caller.wasm",
+      "bytes": 1290783,
+      "sha256": "a579802e6c5736b10894c9f50b03c38317e2de41ebbfcc75687cf4da7bc96777"
+    },
+    {
+      "path": "artifacts/th14/effect-template-layer-current-oct14/before-retained-archive-buffer/caller-check.mjs",
+      "bytes": 2540,
+      "sha256": "4e2930c07d2c23b35e19340bbbe656829381759c9880fc1f797c38e70a537883"
+    },
+    {
+      "path": "artifacts/th14/effect-template-layer-current-oct14/before-retained-archive-buffer/compile-inputs.json",
+      "bytes": 46395,
+      "sha256": "532e6bbc93b4b8666b7254a12e96f54ce4a7ca96b69bc7a5f6bf193f52450542"
+    },
+    {
+      "path": "artifacts/th14/effect-template-layer-current-oct14/before-retained-archive-buffer/evidence-check.py",
+      "bytes": 11320,
+      "sha256": "cf1d8c3955365b20f77bbdba3c2086999cbd75b5e62a556bea7209dbde65b1a2"
+    },
+    {
+      "path": "artifacts/th14/effect-template-layer-current-oct14/before-retained-archive-buffer/failure.json",
+      "bytes": 318,
+      "sha256": "994c1edd2fb57d952a214d463795fafb5374016fad6c661b84a68639eb754c6a"
+    }
+  ],
+  "toolSha256": "d22630a5dc888929554e0b2b436f7daa51b0017dadee9880d352e10eedefd283",
+  "scope": "Seven fresh production GameSessions load the complete unchanged original archive and initialize an actual stage1 ReimuA Lunatic PlayerFrame. Existing actual GameBattle/PlayerFrame/BulletManager callers create the observed VMs; no direct ANM factory substitution, layer overwrite, RNG/health override or fullcampaign mutation. Curve graze uses the live player; death/hit traverse PlayerFrame to GameBattle; cancellation spawns a real type2/color6 bullet whose original table selects199, then cancel_th14 calls the live GameBattle visual service and changes its lifecycle to4. Actual root live layer/file/script is compared to the frozen independently executed original factory controls. Unchanged focus26 remains14, Bomb58 remains20 and notice100 remains16. API triggers are declared controlled integration inputs, not an ordinary collision/menu/1cc capture. Native factory baseline uses controlled services/resource slot3 and different positions; only the declared root layer/file routing is asserted here. All owner bytes, full runtime schedules, pixels/audio, browser ordinary flows and whole-game1:1 remain separate."
+}

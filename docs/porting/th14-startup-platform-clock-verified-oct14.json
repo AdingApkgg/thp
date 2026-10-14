@@ -1,0 +1,273 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "productionClockFixNeeded": false,
+  "campaignSeedOrCounterChanged": false,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "clockImport": {
+    "iat": "0x4b12a0",
+    "provider": "WINMM.dll",
+    "function": "timeGetTime"
+  },
+  "nativeInstructions": [
+    {
+      "address": "0x444a19",
+      "bytes": "ff15a0124b00",
+      "mnemonic": "call",
+      "operands": "dword ptr [0x4b12a0]"
+    },
+    {
+      "address": "0x444a1f",
+      "bytes": "a388964d00",
+      "mnemonic": "mov",
+      "operands": "dword ptr [0x4d9688], eax"
+    },
+    {
+      "address": "0x444a24",
+      "bytes": "66a310b54d00",
+      "mnemonic": "mov",
+      "operands": "word ptr [0x4db510], ax"
+    },
+    {
+      "address": "0x444a2a",
+      "bytes": "66a308b54d00",
+      "mnemonic": "mov",
+      "operands": "word ptr [0x4db508], ax"
+    }
+  ],
+  "nativeFontAfterClockInstructions": [
+    {
+      "address": "0x444a9d",
+      "bytes": "e84e6f0300",
+      "mnemonic": "call",
+      "operands": "0x47b9f0"
+    },
+    {
+      "address": "0x444aa2",
+      "bytes": "e8992e0200",
+      "mnemonic": "call",
+      "operands": "0x467940"
+    }
+  ],
+  "controlledHostTimeCases": [
+    {
+      "ticks": 0,
+      "apiCalls": 1,
+      "storedFullClock": 0,
+      "rngWords": [
+        1126236160,
+        97,
+        305397760,
+        2147483745
+      ]
+    },
+    {
+      "ticks": 1,
+      "apiCalls": 1,
+      "storedFullClock": 1,
+      "rngWords": [
+        1126236161,
+        97,
+        305397761,
+        2147483745
+      ]
+    },
+    {
+      "ticks": 65535,
+      "apiCalls": 1,
+      "storedFullClock": 65535,
+      "rngWords": [
+        1126301695,
+        97,
+        305463295,
+        2147483745
+      ]
+    },
+    {
+      "ticks": 65536,
+      "apiCalls": 1,
+      "storedFullClock": 65536,
+      "rngWords": [
+        1126236160,
+        97,
+        305397760,
+        2147483745
+      ]
+    },
+    {
+      "ticks": 571471221,
+      "apiCalls": 1,
+      "storedFullClock": 571471221,
+      "rngWords": [
+        1126298997,
+        97,
+        305460597,
+        2147483745
+      ]
+    },
+    {
+      "ticks": 4294967295,
+      "apiCalls": 1,
+      "storedFullClock": 4294967295,
+      "rngWords": [
+        1126301695,
+        97,
+        305463295,
+        2147483745
+      ]
+    }
+  ],
+  "matchedClockStoreCases": 6,
+  "directBootstrapClockObservation": {
+    "address": "0x4d9688",
+    "bytesHex": "75f50f22",
+    "ticks": 571471221,
+    "low16Seed": 62837,
+    "inferredFromRng": false,
+    "verifiedRegion": {
+      "base": 5070848,
+      "bytes": 24576,
+      "offset": 1781760,
+      "allocation": 4194304,
+      "protect": 4,
+      "kind": 16777216,
+      "sha256": "6f4093c4a84338b84086637591759c9b2ddc3bdf5ab3431dc2b285f23f7529eb"
+    },
+    "firstStageStreams": [
+      30931,
+      0,
+      1336,
+      31193,
+      0,
+      0
+    ]
+  },
+  "productionEntryPoints": {
+    "browser": "Application calls performance.now() unsigned32 and explicitly constructs GameSession(initial_ticks).",
+    "headlessPhysicalReplay": "th14-session-fixture.cpp static GameSession uses the explicit constructor default initial_ticks=0.",
+    "constructorOrder": [
+      "seed both streams from low16 initial_ticks",
+      "256 font noise samples on visual stream",
+      "score defaults on gameplay stream"
+    ],
+    "firstHeadlessStageVisualRng": {
+      "seed": 47358,
+      "calls": 280
+    }
+  },
+  "bindings": [
+    {
+      "path": "artifacts/th14/native-zps-reimua-lunatic-full-oct14/manifest.json",
+      "bytes": 151447,
+      "sha256": "4809fb68ffaddc790dee617b6047e40bccd3adc451f67ddfc2d7e29c858a174e"
+    },
+    {
+      "path": "artifacts/th14/native-zps-reimua-lunatic-full-oct14/memory.bin.gz",
+      "bytes": 116317093,
+      "sha256": "3b14e00179ee02c2c26c86cccc0e017f53d2d4ebc2310e2d3415db5d23016ac7"
+    },
+    {
+      "path": "artifacts/th14/native-zps-reimua-lunatic-full-oct14/reference.compact.json",
+      "bytes": 171578323,
+      "sha256": "81178393c3e9bb952c59a2d2cedcf456e7bf9f7d1651062986b7d282e97349fb"
+    },
+    {
+      "path": "artifacts/th14/public-replay-playback/zps-reimua-lunatic-hit-effects-oct14/report.json",
+      "bytes": 54616,
+      "sha256": "720abb8dea6a84478a43eb3a1f0cef86235361b80600300409b936f2f68ba1b6"
+    },
+    {
+      "path": "artifacts/th14/public-replay-playback/zps-reimua-lunatic-hit-effects-oct14/selected-state.u32",
+      "bytes": 11621504,
+      "sha256": "7b3a6a3b4bb830ee9ac21550bd641ba9e30a44a2323a3ccb04865cf7de8c5c5c"
+    },
+    {
+      "path": "artifacts/th14/startup-platform-clock-oct14/native.json",
+      "bytes": 1057,
+      "sha256": "5b9edd38f677c641b86423a755474484334b5b9e80cf4d5661167c7b8dbcf319"
+    },
+    {
+      "path": "artifacts/th14/startup-platform-clock-oct14/source-snapshots.json",
+      "bytes": 938,
+      "sha256": "542a1e39a25f28977e4420ff7c098866d18f8b4daefe5642a9f2d6f515ddb3b8"
+    },
+    {
+      "path": "tools/th14-clock-native.py",
+      "bytes": 2084,
+      "sha256": "2cd6b5c7306683d3f77d86f4bf7dc5c64bdd7fd39ac5e931cdd0026af44220bf"
+    },
+    {
+      "path": "tools/th14-clock-check.mjs",
+      "bytes": 2866,
+      "sha256": "61154f9bfb5aa403eb8325d5bd64b2ff81315ffb49d88f78e4cc41a912d1efbf"
+    },
+    {
+      "path": "artifacts/th14/startup-platform-clock-oct14/sources/cpp/game/ClockSeedTh14.hpp",
+      "bytes": 308,
+      "sha256": "1e1929040710677a212b41462060981ba868349a43c47257b3539d1835ac9250"
+    },
+    {
+      "path": "artifacts/th14/startup-platform-clock-oct14/sources/cpp/game/FontBitmapTh14.hpp",
+      "bytes": 544,
+      "sha256": "62b9ca1dbdd08b2d2ddaeb9c1f88541dc6e80348543cd83c14789e85fa8ad689"
+    },
+    {
+      "path": "artifacts/th14/startup-platform-clock-oct14/sources/cpp/game/Rng.hpp",
+      "bytes": 1127,
+      "sha256": "c53231677e6b5ef755d7385f5d3e224e2e353757eec7f1110424a8d4f0073a9a"
+    },
+    {
+      "path": "artifacts/th14/startup-platform-clock-oct14/sources/cpp/game/Types.hpp",
+      "bytes": 613,
+      "sha256": "f79c1ed7cb200413ef0dea75bf0d58842745b6b47182a97e496733c1d7bb2669"
+    },
+    {
+      "path": "artifacts/th14/startup-platform-clock-oct14/sources/cpp/game/PortTitle.hpp",
+      "bytes": 741,
+      "sha256": "5531b9b0a2364098ec023e09eddbf66907c392fb58a24e1a84c5bf7a9a033d2f"
+    },
+    {
+      "path": "artifacts/th14/startup-platform-clock-oct14/sources/cpp/game/GameSession.cpp",
+      "bytes": 42838,
+      "sha256": "eea69a2962af31961ebf9d2d7da7e1c365de83609029b67db22d0eddf2b1c17a"
+    },
+    {
+      "path": "artifacts/th14/startup-platform-clock-oct14/sources/cpp/game/GameSession.hpp",
+      "bytes": 5194,
+      "sha256": "2944b82196cee50d8c23f68133fee503af801140ebef4b78dea947eb391381c2"
+    },
+    {
+      "path": "artifacts/th14/startup-platform-clock-oct14/sources/cpp/sdl/Application.cpp",
+      "bytes": 49558,
+      "sha256": "dbbd7769076363cd881498d9b5033af0d3d13a40b1300c1c3f4a462ce9e21e3a"
+    },
+    {
+      "path": "artifacts/th14/startup-platform-clock-oct14/sources/tests/cpp/th14-session-fixture.cpp",
+      "bytes": 9515,
+      "sha256": "1f4c8b679e826c3d3bb48f02d576aae2f46dc87c79dacdd3cd831ade9c47e2cd"
+    },
+    {
+      "path": "artifacts/th14/startup-platform-clock-oct14/clock-fixture.cpp",
+      "bytes": 319,
+      "sha256": "cf677bb7b791d945411820fa0f63e999878bb4e3a1b959695c1335c04ec83f3b"
+    },
+    {
+      "path": "artifacts/th14/startup-platform-clock-oct14/clock.wasm",
+      "bytes": 1146,
+      "sha256": "8709f722b76f4b2c517f3bacbe7a1b7ffbf075f26c0e58ac2de449cb46b832ca"
+    },
+    {
+      "path": "artifacts/th14/startup-platform-clock-oct14/clock-check.mjs",
+      "bytes": 666,
+      "sha256": "fc7fb9d92f0873b692dc9ee4aa7f5becc39d6cc97d7895e1585f5a487d3f36a0"
+    },
+    {
+      "path": "artifacts/th14/startup-platform-clock-oct14/portable.json",
+      "bytes": 694,
+      "sha256": "4cd967356c6943d651d7540ac6330c9b1de0af1cd45804b406a30096a71a2619"
+    }
+  ],
+  "toolSha256": "c3cf1dea9416a7f7aa945e04600873ec7ecc944cd8ec9de2d6d8d80355fc1da3",
+  "scope": "The actual read-only bootstrap memory region directly records native timeGetTime result571471221 and low16 seed62837; this evidence does not derive the clock from inverse RNG. Its region SHA is verified. Original444a19 invokes the identified WINMM IAT and444a1f/24/2a store the full clock and both low16 seeds before444aa2 calls font initialization. Six explicit controlled API returns match the frozen production ClockSeedTh14 function, preserving reserved/call words; only the isolated API boundary is controlled. Current browser Application already passes its real performance.now clock to GameSession before font/score initialization. Full headless campaign fixtures intentionally use constructor default0; different clock origins and loading completion durations explain why absolute visual startup states differ. No production clock change, copying captured62837/1336, forced loading count, campaign reseeding, altered historical comparison, full startup scheduler/pixels/audio or whole-game1:1 claim."
+}

@@ -600,7 +600,8 @@ bool GameBattle::visual(Vec3 p,i32 script) {
     // flags2 bit10 established before the first script update.
     const float rotation=0;return animations.create(resources.core.bullet,script,7,u32(-1),false,false,&p,nullptr,nullptr,false,&rotation,0x400)!=nullptr;
 #elif PORT_TITLE == 14
-    return animations.create(resources.core.bullet,script,7,0,false,false,&p)!=nullptr;
+    // 41acf9 preserves the cancellation script's template layer (199:21).
+    return animations.create(resources.core.bullet,script,7,u32(-1),false,false,&p)!=nullptr;
 #else
     p.x=float(double(p.x)+224);p.y=float(double(p.y)+16);return animations.create(resources.core.bullet,script,6,22,false,false,&p)!=nullptr;
 #endif
@@ -691,7 +692,8 @@ bool GameBattle::register_graze() { if(economy.graze<99999999)++economy.graze;re
 #if PORT_TITLE == 14
 bool GameBattle::th14_curve_graze(Vec3 contact){
     if(!player)return false;const Vec3 position=th14_graze(economy,player->motion.state.position,contact);
-    if(!animations.create(resources.core.effect,24,8,0,false,false,&position))return false;
+    // 4504a9 passes -1; effect24 keeps its template layer18.
+    if(!animations.create(resources.core.effect,24,8,u32(-1),false,false,&position))return false;
     sound(42,contact.x,true);return true;
 }
 #endif
