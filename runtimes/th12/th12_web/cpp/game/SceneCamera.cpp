@@ -14,9 +14,19 @@ void SceneCamera::perspective(){
     right=GraphicsMath::normalize(GraphicsMath::cross(kPortTitle==13||kPortTitle==14?reserved24:direction,up));
 }
 void SceneCamera::screen(){
+#if PORT_TITLE == 14
+    // Retail446250 includes viewport origins and uses the camera's own FOV.
+    // The center keeps a floating half; only the distance uses height>>1.
+    const float width=float(viewport.width),height=float(viewport.height);
+    const float x=float(width*.5f+float(viewport.x)),y=float(height*.5f+float(viewport.y));
+    const float tangent=float(std::tan(double(float(fov*.5f)))),distance=float(float(viewport.height>>1)/tangent);
+    view=GraphicsMath::look_at({x,y,distance},{x,y,0},{0,-1,0});
+    projection=GraphicsMath::perspective(fov,float(width/height),1,10000);
+#else
     const float width=float(viewport.width),height=float(viewport.height),x=float(double(width)*.5),y=float(double(height)*.5);
     const float tangent=float(std::tan(double(0.15707963705062866f))),distance=float(double(y)/tangent);
     view=GraphicsMath::look_at({x,y,distance},{x,y,0},{0,-1,0});
     projection=GraphicsMath::perspective(0.3141592741012573f,float(double(width)/height),1,10000);
+#endif
 }
 }

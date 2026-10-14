@@ -1,0 +1,161 @@
+{
+  "observedControlVerified": true,
+  "correctedParametersBitwiseEqual": true,
+  "correctedMatricesBitwiseEqual": true,
+  "cameras": 4,
+  "comparedParameterU32": 52,
+  "comparedMatrixU32": 128,
+  "beforeDifferencesRetained": {
+    "parameters": 20,
+    "matrices": 26
+  },
+  "afterDifferences": {
+    "parameters": 0,
+    "matrices": 0
+  },
+  "results": [
+    {
+      "mode": "before",
+      "parameterDifferences": 20,
+      "matrixDifferences": 26,
+      "wasm": {
+        "path": "H:/code/thp/artifacts/th14/startup-camera-screen-correction-prepared-oct14/run-oct14/before.wasm",
+        "bytes": 18895,
+        "sha256": "07afbe5b45c2ed520f2748b9d7eadd854ec1f12b5a25cba3e6aa1f744cfd0963"
+      },
+      "parameterOutput": {
+        "path": "H:/code/thp/artifacts/th14/startup-camera-screen-correction-prepared-oct14/run-oct14/before-parameters.u32",
+        "bytes": 208,
+        "sha256": "39d8c8a862868489c05a3ea9460cfca206dde9dacd9d141360fc03eb1fa365a6"
+      },
+      "matrixOutput": {
+        "path": "H:/code/thp/artifacts/th14/startup-camera-screen-correction-prepared-oct14/run-oct14/before-matrices.u32",
+        "bytes": 512,
+        "sha256": "338acd05304571c8bed40722965bc546bb2a1a079c1a7626e97df1c498b9d7bb"
+      },
+      "importsIndependentlyParsed": 0,
+      "exportsIndependentlyParsed": 6
+    },
+    {
+      "mode": "after",
+      "parameterDifferences": 0,
+      "matrixDifferences": 0,
+      "wasm": {
+        "path": "H:/code/thp/artifacts/th14/startup-camera-screen-correction-prepared-oct14/run-oct14/after.wasm",
+        "bytes": 24567,
+        "sha256": "2ff232b3f702aa3bec92ab971d4d598b6fd84615605e9297ed616a7b20f4e0ec"
+      },
+      "parameterOutput": {
+        "path": "H:/code/thp/artifacts/th14/startup-camera-screen-correction-prepared-oct14/run-oct14/after-parameters.u32",
+        "bytes": 208,
+        "sha256": "207668a0deed2d45b077c59f2fd3203f2d16dad89dec4174c24fd3eea77f33e6"
+      },
+      "matrixOutput": {
+        "path": "H:/code/thp/artifacts/th14/startup-camera-screen-correction-prepared-oct14/run-oct14/after-matrices.u32",
+        "bytes": 512,
+        "sha256": "933e8a50280f1896c768dc1bfebf2769be751aa70abffbae684a8c8b3a23a8db"
+      },
+      "importsIndependentlyParsed": 0,
+      "exportsIndependentlyParsed": 6
+    }
+  ],
+  "sourceCustody": {
+    "productionFilesChanged": 1,
+    "beforeSource": {
+      "path": "H:/code/thp/artifacts/th14/startup-camera-screen-correction-prepared-oct14/before/cpp/game/SceneCamera.cpp",
+      "bytes": 1195,
+      "sha256": "72a5b43fb397885086f65083cc13d22971bda2b7632c516df91301ed6d6c1e93"
+    },
+    "correctedProductionSource": {
+      "path": "H:/code/thp/runtimes/th12/th12_web/cpp/game/SceneCamera.cpp",
+      "bytes": 1803,
+      "sha256": "6fc589bd7c47f0757f22ebb33ee2d6647a5b53543c189d802b6781d6dbe3a391"
+    },
+    "minimalFrozenDependenciesVerified": 15,
+    "onlySceneCameraSourceDiffers": true,
+    "nonTh14OriginalScreenBranchByteEqual": true,
+    "nonScreenOriginalPrefixByteEqual": true,
+    "graphicsMathUnchangedSha256": "b159b3d617a522977c795351b5ff56338d5058b899ab984a590c8b50f8a9fd6e",
+    "productionObjectsRebuiltByControl": 0
+  },
+  "inputCustody": {
+    "originalArgumentsVectorsAndMatricesCopiedExactly": true,
+    "existingOriginalResetViewportRow": {
+      "width": 640,
+      "height": 480,
+      "scale": 1
+    },
+    "freshOriginalD3dxOutputOwnerMappingVerified": true,
+    "noVertexOriginAdjustment": true
+  },
+  "declaredOriginalD3dxFpu": {
+    "fpcw": 895,
+    "mxcsr": 8064,
+    "nativeMeasured": false
+  },
+  "actualControlExecutionCounts": {
+    "compiles": 2,
+    "wasi": 2,
+    "originalX86": 0,
+    "nativeProcesses": 0,
+    "browser": 0,
+    "audio": 0
+  },
+  "observerExecutionCounts": {
+    "compiles": 0,
+    "wasi": 0,
+    "originalX86": 0,
+    "nativeProcesses": 0,
+    "browser": 0,
+    "audio": 0
+  },
+  "bindings": [
+    {
+      "path": "H:/code/thp/artifacts/th14/startup-camera-screen-correction-prepared-oct14/run-oct14/report.json",
+      "bytes": 18298,
+      "sha256": "3c003b4c37067ddb2aef49f8eac99ba76e44f63e1cbd219458a8d99ef70204c1"
+    },
+    {
+      "path": "H:/code/thp/artifacts/th14/startup-camera-screen-correction-prepared-oct14/inputs.json",
+      "bytes": 8918,
+      "sha256": "f98edb7a1a82f55a6ca38fd1d66adb4edaf7a2d5d8dd1e5b68b00de9b3109bfd"
+    },
+    {
+      "path": "H:/code/thp/artifacts/th14/startup-camera-screen-correction-prepared-oct14/plan.json",
+      "bytes": 23979,
+      "sha256": "c1dfc5d7206632ffff857e227eef72b3ccb7b43be611220922d9b70d9680eb7d"
+    },
+    {
+      "path": "H:/code/thp/artifacts/th14/startup-camera-screen-correction-prepared-oct14/preparation-receipt.json",
+      "bytes": 2627,
+      "sha256": "bc688eaaba634146d5eb8bcba8a7793fddf134bcbeeb86c684f6e54157dc527f"
+    },
+    {
+      "path": "H:/code/thp/artifacts/th14/startup-camera-screen-correction-prepared-oct14/fixture.cpp",
+      "bytes": 2632,
+      "sha256": "23cb8060c6320a06d5c4d933f99a2d8204d52ad4d00906c7426bf0f2425beaba"
+    },
+    {
+      "path": "H:/code/thp/tools/th14-startup-camera-screen-correction-check.mjs",
+      "bytes": 6254,
+      "sha256": "2ee5889e9c0b67a9a318068fa3ac55a0589c703171624796bfa228c515755e06"
+    },
+    {
+      "path": "H:/code/thp/artifacts/th14/startup-viewport-original-owner-prefix-prepared-oct14/run-oct14/report.json",
+      "bytes": 1124436,
+      "sha256": "ea77520cdab9bfb35ba0905b416f42c78af597b401bbfd13c8715424b6a3341e"
+    },
+    {
+      "path": "H:/code/thp/artifacts/th14/compositor-native.json",
+      "bytes": 22523,
+      "sha256": "58ebaee7017efca37b5e2dd09ed11aefef1c4c7541b5ae3d3dbc97ef4923ca51"
+    }
+  ],
+  "otherTitleRuntimeExecuted": false,
+  "sceneCompositorConstructionCompared": false,
+  "rendererOrGpuCompared": false,
+  "nativeEquivalent": false,
+  "completeColdStart": false,
+  "completeGame": false,
+  "scope": "Four direct calls to the real production SceneCamera.screen() at the original reset640x480/scale1 viewport/FOV fields. Forwarding linker observers record52 raw parameter words and execute unchanged GraphicsMath; corrected parameters and128 matrix words match all pinned-original D3DX baseline words at declared FPCW37f/MXCSR1f80. The old20/26 parameter/matrix differences remain intact. This observer performs only byte/hash/word and WASM ABI reads. No claim of measured Native CPU overlay, other-title runtime, full SceneCompositor construction, rendering/GPU, rebuilt/published production runtime, complete cold startup or whole-game1:1."
+}

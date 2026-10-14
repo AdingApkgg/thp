@@ -1,0 +1,114 @@
+{
+  "schema": "th14-screen-camera-production-build-observed-v1",
+  "status": "compiled-isolated-build-observed",
+  "tool": {
+    "path": "H:/code/thp/tools/th14-screen-camera-production-build-observed-oct15.py",
+    "bytes": 8890,
+    "sha256": "1f991a9c4d1b6eadc4ea1440377298493213ce6e5e9d67c83e4c09a6e59937ca"
+  },
+  "preparedBuild": {
+    "path": "H:/code/thp/artifacts/th14/screen-camera-production-build-oct14/prepared.json",
+    "bytes": 243225,
+    "sha256": "3965227b5d3094520cae5db2ceb459a16fabd8e4071a6385c11272c701826da8"
+  },
+  "actualBuildResult": {
+    "path": "H:/code/thp/artifacts/th14/screen-camera-production-build-oct14/build-result.json",
+    "bytes": 229508,
+    "sha256": "26fc6f89e33f19bcc48b57d58ebb8582fdc79688c0166d27b01a620e5a5dfb09"
+  },
+  "parameterControl": {
+    "path": "H:/code/thp/docs/porting/th14-startup-camera-screen-correction-observed-oct14.json",
+    "bytes": 6474,
+    "sha256": "ed9ff1350ed47fdd138353ab2ce4ec1408fd0e53fe6021d802e7dcfbf2e994c3"
+  },
+  "verifiedBindings": {
+    "path": "H:/code/thp/artifacts/th14/screen-camera-production-build-observed-oct15/verified-bindings.json",
+    "bytes": 460955,
+    "sha256": "a89a8a4ae5b7e601fe8703e9925d6fdf170f5280cbc11eef4e8c0527c812def8"
+  },
+  "bindingCount": 1995,
+  "sourceFiles": 267,
+  "sourceChanges": [
+    "cpp/game/SceneCamera.cpp"
+  ],
+  "unchangedSourceFiles": 266,
+  "engineObjects": 141,
+  "sdlObjects": 146,
+  "objectChanges": {
+    "engine": [
+      "cpp_game_SceneCamera.cpp.o"
+    ],
+    "sdl": [
+      "th12_web_cpp_game_SceneCamera.cpp.o"
+    ]
+  },
+  "keyChanges": {
+    "engine": [
+      "cpp_game_SceneCamera.cpp.o"
+    ],
+    "sdl": [
+      "th12_web_cpp_game_SceneCamera.cpp.o"
+    ]
+  },
+  "interfaces": {
+    "engine": {
+      "importCount": 5,
+      "exportCount": 2,
+      "nameKindDifferences": 0
+    },
+    "sdl": {
+      "importCount": 426,
+      "exportCount": 74,
+      "nameKindDifferences": 0
+    }
+  },
+  "interfaceComparisonScope": "Import module/name/kind and export name/kind. No behavioral or signature reinterpretation.",
+  "modulePins": {
+    "engine": {
+      "before": {
+        "path": "H:/code/thp/runtimes/th13/th13_web/artifacts/cpp/engine-th14.wasm",
+        "bytes": 1159792,
+        "sha256": "af6e502c5835767565a0b3e048c391025c59e8b93e5f9f900529b1948b00305b"
+      },
+      "after": {
+        "path": "H:/code/thp/artifacts/th14/screen-camera-production-build-oct14/engine/engine-th14.wasm",
+        "bytes": 1159792,
+        "sha256": "af6e502c5835767565a0b3e048c391025c59e8b93e5f9f900529b1948b00305b"
+      },
+      "byteIdentical": true
+    },
+    "sdl": {
+      "before": {
+        "path": "H:/code/thp/runtimes/th14/th14_web/artifacts/sdl3-release/th11.wasm",
+        "bytes": 1890810,
+        "sha256": "64b46da7c4aa1af2426d024c176e8c77b9ecae5a3da13a1eeea6c648ee82ca54"
+      },
+      "after": {
+        "path": "H:/code/thp/artifacts/th14/screen-camera-production-build-oct14/sdl/th11.wasm",
+        "bytes": 1890843,
+        "sha256": "3083772c3d52e981dfd5dacd37960d9bf35ffc7acf441f247422981a3b0eb7ea"
+      },
+      "byteIdentical": false
+    }
+  },
+  "linkedEngineByteIdentical": true,
+  "sdlModuleChanged": true,
+  "releaseProfile": true,
+  "oldPreparedInputPinsReverified": 879,
+  "oldArtifactPinsStable": true,
+  "oldOutputsOverwritten": false,
+  "scope": {
+    "compilerExecutedByCollector": false,
+    "wasmCompiledByCollector": false,
+    "wasmInstantiated": false,
+    "runtimeExecuted": false,
+    "audioPlayed": false,
+    "nativeExecuted": false,
+    "engineObjectChangeDoesNotProveLinkedScreenBehaviorExecuted": true,
+    "completeGame": false,
+    "nativeEquivalent": false,
+    "browserVerifiedByThisReceipt": false,
+    "oldFullReplayOrPixelProofInherited": false,
+    "fullGameOr1to1Claim": false
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-14",
+  "date": "2026-10-15",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
   "sourceCommit": "e442e4862498bc8aae982fb614c89f446568f1a1",
   "files": [
@@ -10,8 +10,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 9402,
-      "sha256": "667acb90fbf9948197d57c5b9123998f860b74a10c3243b69b463677c3754b62"
+      "bytes": 9947,
+      "sha256": "6e30c55a3387b136b4c92ae4d5bc30e1a0885c64e555e8587ee78eb2b4b96a63"
     },
     {
       "path": "docs/ARCHITECTURE.md",
@@ -40,8 +40,8 @@
     },
     {
       "path": "docs/porting/CORE_STATUS.md",
-      "bytes": 395201,
-      "sha256": "9ae372eec3d42320cf2d687316ffa1cd7ce4197b6fe9ad1479cb3a9f65c0ec49"
+      "bytes": 395994,
+      "sha256": "34fe08a72b6f36affe0f2bf887bfb3a24b69c3e19f992d32cc39ddcf74d0ceb3"
     },
     {
       "path": "docs/porting/TH06NC_FORMATS.md",
@@ -57,6 +57,11 @@
       "path": "docs/porting/TH14_METHOD.md",
       "bytes": 36934,
       "sha256": "8d22494d093017d996ef9ecbe8ed27c8b17cd0f5926a810041dda3f27e94e1d0"
+    },
+    {
+      "path": "docs/porting/TH14_SCREEN_CAMERA_FIX_OCT15.md",
+      "bytes": 2608,
+      "sha256": "a3d2fb2619a632549ca20133892adcfecca74934746776ea47a35c263eb454ad"
     },
     {
       "path": "docs/porting/TH14_STAGED_LOADER.md",
@@ -3539,6 +3544,16 @@
       "sha256": "ad148aa35bc0d07dc4487490dfcb4eeef8078d69def65ddb469c2fb7077570a4"
     },
     {
+      "path": "docs/porting/th14-screen-camera-browser-observed-oct15.json",
+      "bytes": 3263,
+      "sha256": "459b033d1dc84cdd43ed970c1e4dacecb3a0b58c0397f9776cbf1ddfb04efdb8"
+    },
+    {
+      "path": "docs/porting/th14-screen-camera-production-build-observed-oct15.json",
+      "bytes": 3773,
+      "sha256": "4d26be9b14fbbf22279b3e8e7f3b5d56bf0c5557befc8b2198c80bfe833c3ee1"
+    },
+    {
       "path": "docs/porting/th14-screen-fade-verified.json",
       "bytes": 1353,
       "sha256": "396899ed6f9103c07f7146f8f22d4b40afab02d6cf18658dbd578779931e7edc"
@@ -4347,6 +4362,16 @@
       "path": "docs/porting/th14-staged-loader-wait-predicate-verified-oct14.json",
       "bytes": 80297,
       "sha256": "ae6fc5db4033a29633d88fc2079b52d7e539a3ee2c75f76dd1d34d6344d7fd31"
+    },
+    {
+      "path": "docs/porting/th14-startup-camera-same-input-math-observed-oct14.json",
+      "bytes": 5999,
+      "sha256": "36fd70e501cd2f9396676c77e84920c067c95f1c4d7c095a01ade1e879f9bbd9"
+    },
+    {
+      "path": "docs/porting/th14-startup-camera-screen-correction-observed-oct14.json",
+      "bytes": 6474,
+      "sha256": "ed9ff1350ed47fdd138353ab2ce4ec1408fd0e53fe6021d802e7dcfbf2e994c3"
     },
     {
       "path": "docs/porting/th14-startup-platform-clock-verified-oct14.json",
@@ -6545,8 +6570,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/SceneCamera.cpp",
-      "bytes": 1195,
-      "sha256": "72a5b43fb397885086f65083cc13d22971bda2b7632c516df91301ed6d6c1e93"
+      "bytes": 1803,
+      "sha256": "6fc589bd7c47f0757f22ebb33ee2d6647a5b53543c189d802b6781d6dbe3a391"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/SceneCamera.hpp",
@@ -16544,6 +16569,11 @@
       "sha256": "03b7cf0dca1f539d9cdbc84572ee176ef91a53f62fc907927d2b50007e8b7f76"
     },
     {
+      "path": "tools/th14-package-runtime-from-build-oct14.mjs",
+      "bytes": 7169,
+      "sha256": "51bee87f821d6f3ba4431bf569a6eb9c3194e810da0e5a55c6e997dee9e74ae4"
+    },
+    {
       "path": "tools/th14-package-runtime.mjs",
       "bytes": 6448,
       "sha256": "54b30eb6ad49c0cdcf766e046338bb9368cfeeaaa16ce435788f6e36d3de5d80"
@@ -17182,6 +17212,11 @@
       "path": "tools/th14-score-popup-native.py",
       "bytes": 6027,
       "sha256": "8e879c2fba088496bbce611ffd6cad3d0f788662d80af2463fd22a117dac1606"
+    },
+    {
+      "path": "tools/th14-screen-camera-production-build-oct14.mjs",
+      "bytes": 10901,
+      "sha256": "5bc1b208f773272430ce09051ca6faab4427528e01db3788f8779596c82ed912"
     },
     {
       "path": "tools/th14-screen-fade-check.mjs",
@@ -19134,6 +19169,26 @@
       "sha256": "718a32ecd8e5776d63345ad9b4231773c6e73fa8883bb401e627227e19038f39"
     },
     {
+      "path": "tools/th14-startup-camera-same-input-math-check.mjs",
+      "bytes": 5449,
+      "sha256": "e0d8ceddbc439de6c292f3b3a6cf5a6175746070240db5c2c7870bbbe539ab2f"
+    },
+    {
+      "path": "tools/th14-startup-camera-same-input-math-prepare.py",
+      "bytes": 8245,
+      "sha256": "f19c2ba37a7aeafa65965489323383e4f3eabda2c7a2b6c1ba652f85838d49f4"
+    },
+    {
+      "path": "tools/th14-startup-camera-screen-correction-check.mjs",
+      "bytes": 6254,
+      "sha256": "2ee5889e9c0b67a9a318068fa3ac55a0589c703171624796bfa228c515755e06"
+    },
+    {
+      "path": "tools/th14-startup-camera-screen-correction-prepare.py",
+      "bytes": 11378,
+      "sha256": "3f66ccd2c446ff741036d08ffc3d03844eb4387a070a01d50ce11f25289cd4e8"
+    },
+    {
       "path": "tools/th14-startup-platform-clock-evidence-check.py",
       "bytes": 13324,
       "sha256": "c3cf1dea9416a7f7aa945e04600873ec7ecc944cd8ec9de2d6d8d80355fc1da3"
@@ -20563,5 +20618,14 @@
       "sha256": "4a95913494cb887e4027b0c4f8bc618ea431ef19e2de4d77d0a10e651b2766a0",
       "reason": "Dense private per-callback visual trace. Original remains local and immutable; publish th14-staged-loader-integration-object-public-summary-oct14.json instead."
     }
-  ]
+  ],
+  "latestIncrement": {
+    "basePublishedCommit": "a29d26d47859c752a094d780e48ad7b4d5633f50",
+    "title": "TH14 screen camera FOV and viewport-origin correction",
+    "changedSourceAndMetadataFiles": 14,
+    "completeGame": false,
+    "nativeEquivalent": false,
+    "validatedSdlSha256": "3083772c3d52e981dfd5dacd37960d9bf35ffc7acf441f247422981a3b0eb7ea",
+    "gameAssetsAdded": false
+  }
 }

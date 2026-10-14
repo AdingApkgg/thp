@@ -1,0 +1,165 @@
+{
+  "observedControlVerified": true,
+  "sameInputBitwiseEqual": true,
+  "caseCount": 8,
+  "lookAtCases": 4,
+  "perspectiveCases": 4,
+  "comparedU32": 128,
+  "differenceCount": 0,
+  "outputBytes": 512,
+  "outputSha256": "933e8a50280f1896c768dc1bfebf2769be751aa70abffbae684a8c8b3a23a8db",
+  "inputCustody": {
+    "actualArgumentsAndVectorsCopiedExactly": true,
+    "originalReturnedRegistersPreserved": true,
+    "originalCallReturnsVerified": true,
+    "originalMathHostResultWrites": 0,
+    "inputWords": 96,
+    "inputBytes": 384,
+    "noFloatReconstructionOrInputCorrection": true
+  },
+  "originalMathProfile": {
+    "declaredFpuState": {
+      "fpcw": 895,
+      "mxcsr": 8064,
+      "nativeMeasured": false
+    },
+    "pinnedD3dx": {
+      "path": "C:/Windows/SysWOW64/D3DX9_43.dll",
+      "bytes": 1998168,
+      "sha256": "0b28546be22c71834501f7d7185ede5d79742457331c7ee09efc14490dd64f5f",
+      "base": 268435456
+    },
+    "dispatchBaseline": {
+      "src": 270311824,
+      "dest": 270311528,
+      "bytes": 296,
+      "sha256": "4d7eb0d8f6882c7cc6a0de6544394177914f1f6cb49c2bc03606607111093647",
+      "declaredHostBaselineCopy": true
+    },
+    "nativeCpuMeasured": false
+  },
+  "frozenSourceCustody": {
+    "minimalDependencyFilesVerifiedNow": 10,
+    "originalAndFrozenBytesEqual": true,
+    "requiredBindingFilesVerifiedNow": 18,
+    "productionBasisPreviouslyVerifiedSources": 267,
+    "productionBasisPreviouslyVerifiedObjects": 141,
+    "productionObjectsLinked": 0,
+    "translationUnits": 2,
+    "compilerFlags": [
+      "--target=wasm32-wasip1",
+      "-std=c++17",
+      "-O2",
+      "-ffp-contract=off",
+      "-fno-exceptions",
+      "-fno-rtti",
+      "-mexec-model=reactor"
+    ]
+  },
+  "wasmAbi": {
+    "importsIndependentlyParsed": 0,
+    "exportsIndependentlyParsed": [
+      {
+        "name": "memory",
+        "kind": "memory"
+      },
+      {
+        "name": "_initialize",
+        "kind": "function"
+      },
+      {
+        "name": "input_buffer",
+        "kind": "function"
+      },
+      {
+        "name": "output_buffer",
+        "kind": "function"
+      },
+      {
+        "name": "run_math",
+        "kind": "function"
+      }
+    ]
+  },
+  "actualControlExecutionCounts": {
+    "compiles": 1,
+    "wasi": 1,
+    "originalX86": 0,
+    "nativeProcesses": 0,
+    "browser": 0,
+    "audio": 0
+  },
+  "observerExecutionCounts": {
+    "compiles": 0,
+    "wasi": 0,
+    "originalX86": 0,
+    "nativeProcesses": 0,
+    "browser": 0,
+    "audio": 0
+  },
+  "bindings": [
+    {
+      "path": "H:/code/thp/artifacts/th14/startup-camera-same-input-math-prepared-oct14/run-oct14/report.json",
+      "bytes": 4106,
+      "sha256": "743e9bc47523eb8413cc5535197f14f1e275eae097dafe5c1f3b5cf10cbb8c0c"
+    },
+    {
+      "path": "H:/code/thp/artifacts/th14/startup-camera-same-input-math-prepared-oct14/inputs.json",
+      "bytes": 13495,
+      "sha256": "9f29c3cd887a149c4abf7c79370a22fb650f20a6e4df4f192de8fe1cfdbe4dae"
+    },
+    {
+      "path": "H:/code/thp/artifacts/th14/startup-camera-same-input-math-prepared-oct14/plan.json",
+      "bytes": 11118,
+      "sha256": "84d0d07cc3c735c04fac4743f8f8f87b5d2652177c7f489ca6a5b10f220e5c8e"
+    },
+    {
+      "path": "H:/code/thp/artifacts/th14/startup-camera-same-input-math-prepared-oct14/preparation-receipt.json",
+      "bytes": 2091,
+      "sha256": "82c5dd8edbeec6037af80541a080741b15a7a5b92759b571ecbdd24b117e85cf"
+    },
+    {
+      "path": "H:/code/thp/artifacts/th14/startup-camera-same-input-math-prepared-oct14/current-production-bindings.json",
+      "bytes": 83995,
+      "sha256": "0f2447bad30d4129209206c052b2849a48118196bf8524d56f5b336de17fd72f"
+    },
+    {
+      "path": "H:/code/thp/artifacts/th14/startup-camera-same-input-math-prepared-oct14/fixture.cpp",
+      "bytes": 1043,
+      "sha256": "669749881f1d06ffbfa7e51708a7e3ff5c0c90b57f8cde236f8cb9c6d13fb30c"
+    },
+    {
+      "path": "H:/code/thp/tools/th14-startup-camera-same-input-math-prepare.py",
+      "bytes": 8245,
+      "sha256": "f19c2ba37a7aeafa65965489323383e4f3eabda2c7a2b6c1ba652f85838d49f4"
+    },
+    {
+      "path": "H:/code/thp/tools/th14-startup-camera-same-input-math-check.mjs",
+      "bytes": 5449,
+      "sha256": "e0d8ceddbc439de6c292f3b3a6cf5a6175746070240db5c2c7870bbbe539ab2f"
+    },
+    {
+      "path": "H:/code/thp/artifacts/th14/startup-viewport-original-owner-prefix-prepared-oct14/run-oct14/report.json",
+      "bytes": 1124436,
+      "sha256": "ea77520cdab9bfb35ba0905b416f42c78af597b401bbfd13c8715424b6a3341e"
+    },
+    {
+      "path": "H:/code/thp/artifacts/th14/startup-camera-same-input-math-prepared-oct14/run-oct14/math.wasm",
+      "bytes": 20868,
+      "sha256": "7da29458ac4e214750de2153d6f5c017be36d8eecd9bddeb3f3db9edd74f7aee"
+    },
+    {
+      "path": "H:/code/thp/artifacts/th14/startup-camera-same-input-math-prepared-oct14/run-oct14/current-matrices.u32",
+      "bytes": 512,
+      "sha256": "933e8a50280f1896c768dc1bfebf2769be751aa70abffbae684a8c8b3a23a8db"
+    }
+  ],
+  "defaultScreenInputsCompared": false,
+  "sceneCompositorInitializationCompared": false,
+  "rendererOrGpuCompared": false,
+  "productionChanged": false,
+  "nativeEquivalent": false,
+  "completeColdStart": false,
+  "completeGame": false,
+  "scope": "Eight identical observed raw32 input cases: current frozen GraphicsMath LookAt/Perspective agrees in all128u32 with outputs from the pinned original D3DX declared dispatch baseline at FPCW37f/MXCSR1f80. This passive observer rechecks original input custody, full output words, frozen source bindings and the WASM closed ABI without executing any runtime. The original profile is controlled and not a measured Native CPU overlay; current WASI/libm is compared only at these eight inputs. No claim of default SceneCamera/SceneCompositor input equality, renderer/GPU equality, complete CRT/process cold start or whole-game1:1. Current267/141 production provenance is retained from the preparation manifest; only the10 frozen math dependencies and listed bindings are revalidated here."
+}
