@@ -1,0 +1,6972 @@
+{
+  "diagnosticEvidenceVerified": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "productionChanged": false,
+  "candidateLabel": "Sourcefe406-sequential-clip-homogeneous-diagnostic-oct14",
+  "sourceBindings": {
+    "runtimes/th12/portable/sdl/Renderer.cpp": {
+      "bytes": 29936,
+      "sha256": "46d874eb2ab77080f521b76f59da9d639216f67be920411d03427c0df4b7c6f6"
+    },
+    "runtimes/th12/portable/sdl/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "runtimes/th12/portable/sdl/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "runtimes/th12/portable/sdl/Shaders.hpp": {
+      "bytes": 3646,
+      "sha256": "78f7648c27aa762c30493e6bf784baabdabdac63e2f683b2ed33470dca5aa252"
+    },
+    "runtimes/th12/portable/sdl/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "runtimes/th12/portable/sdl/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-gpu-stream-fixture.cpp": {
+      "bytes": 5715,
+      "sha256": "a28294ab1106fc4ef0380781b8af7ba8f5b4cf17059c707985e2837845a37f2d"
+    }
+  },
+  "fullNativeControls": 4,
+  "fullControlVertices": 92,
+  "fullControlQuadVertices": 12,
+  "fullControlStripVertices": 80,
+  "fullControlNegativeW": 0,
+  "fullControlZeroW": 0,
+  "cpuClipXYDifferencesFromOriginalBias": 102,
+  "cpuScreenDifferencesFromNormalizedFirst": 115,
+  "operationOrder": [
+    "Retain current clip matrix-vector operation and y flip.",
+    "Binary32 model scale=round(round(extent*0.5)/w).",
+    "Binary32 model screen=round(round(clipXY+w)*scale).",
+    "Binary32 model add half pixel, divide extent, multiply2, subtract1, multiplyw.",
+    "Keep z/w, depth formula, eye/fog, original vertices/varyings and renderer batching."
+  ],
+  "runtimeDataBoundary": "Only original world/view/projection inputs, source vertex and runtime viewport enter candidate. No captured Native clip words, inferred snap coordinates, per-draw index, stage/frame, pixel-specific number, or explicit grid rounding enters runtime.",
+  "exactRealAlgebra": "For w!=0 and extent!=0: (((x+w)*(extent/2/w)+1/2)/extent*2-1)*w = x+w/extent. Algebraic equality does not imply equality after binary32 rounding.",
+  "mathematicalCPUModels": [
+    {
+      "stage": 2,
+      "frame": 1199,
+      "draw": 44,
+      "vertices": 80,
+      "primitiveCount": 78,
+      "stride": 24,
+      "fvf": 322,
+      "viewportWords": [
+        0,
+        0,
+        640,
+        480,
+        0,
+        1065353216
+      ],
+      "computedClipMatrixWords": [
+        1075034771,
+        0,
+        0,
+        0,
+        0,
+        1068510536,
+        1063638483,
+        1063581998,
+        0,
+        3224382792,
+        1055249875,
+        1055193390,
+        1133755027,
+        1126031839,
+        1142187489,
+        1142642538
+      ],
+      "rows": [
+        {
+          "vertex": 0,
+          "sourceWords": [
+            1090519040,
+            0,
+            3276275712,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1134360124,
+            1144069080,
+            1140582399,
+            1141177108
+          ],
+          "retainedYFlipWords": [
+            1134360124,
+            3291552728
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1134387358,
+            3291534572
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058669018,
+            1055326918
+          ],
+          "sumBeforeScaleWords": [
+            1146320434,
+            3274736400
+          ],
+          "screenHomogeneousWords": [
+            1140747587,
+            3265218605
+          ],
+          "screenNormalizedFirstWords": [
+            1140747587,
+            3265218606
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1140763971,
+            3265153069
+          ],
+          "divisionByExtentWords": [
+            1061928399,
+            3190347141
+          ],
+          "scaleByTwoWords": [
+            1070317007,
+            3198735749
+          ],
+          "subtractOneWords": [
+            1058503582,
+            3215603041
+          ],
+          "candidateClipXYWords": [
+            1134387359,
+            3291534571
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 1,
+          "sourceWords": [
+            3238002688,
+            0,
+            3276275712,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133149930,
+            1144069080,
+            1140582399,
+            1141177108
+          ],
+          "retainedYFlipWords": [
+            1133149930,
+            3291552728
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133177164,
+            3291534572
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058669018,
+            1055326918
+          ],
+          "sumBeforeScaleWords": [
+            1145715337,
+            3274736400
+          ],
+          "screenHomogeneousWords": [
+            1140019546,
+            3265218605
+          ],
+          "screenNormalizedFirstWords": [
+            1140019544,
+            3265218606
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1140035930,
+            3265153069
+          ],
+          "divisionByExtentWords": [
+            1061345966,
+            3190347141
+          ],
+          "scaleByTwoWords": [
+            1069734574,
+            3198735749
+          ],
+          "subtractOneWords": [
+            1057338716,
+            3215603041
+          ],
+          "candidateClipXYWords": [
+            1133177165,
+            3291534571
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 2,
+          "sourceWords": [
+            1088369823,
+            0,
+            3276022318,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1134282609,
+            1143894697,
+            1140639273,
+            1141205439
+          ],
+          "retainedYFlipWords": [
+            1134282609,
+            3291378345
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1134309932,
+            3291360130
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058636313,
+            1055277862
+          ],
+          "sumBeforeScaleWords": [
+            1146310008,
+            3273925544
+          ],
+          "screenHomogeneousWords": [
+            1140681053,
+            3264455447
+          ],
+          "screenNormalizedFirstWords": [
+            1140681053,
+            3264455448
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1140697437,
+            3264389911
+          ],
+          "divisionByExtentWords": [
+            1061875172,
+            3189533106
+          ],
+          "scaleByTwoWords": [
+            1070263780,
+            3197921714
+          ],
+          "subtractOneWords": [
+            1058397128,
+            3215399532
+          ],
+          "candidateClipXYWords": [
+            1134309932,
+            3291360129
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 3,
+          "sourceWords": [
+            3239077296,
+            0,
+            3276022318,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133072415,
+            1143894697,
+            1140639273,
+            1141205439
+          ],
+          "retainedYFlipWords": [
+            1133072415,
+            3291378345
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133099738,
+            3291360130
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058636313,
+            1055277862
+          ],
+          "sumBeforeScaleWords": [
+            1145704910,
+            3273925544
+          ],
+          "screenHomogeneousWords": [
+            1139955370,
+            3264455447
+          ],
+          "screenNormalizedFirstWords": [
+            1139955371,
+            3264455448
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1139971754,
+            3264389911
+          ],
+          "divisionByExtentWords": [
+            1061294626,
+            3189533106
+          ],
+          "scaleByTwoWords": [
+            1069683234,
+            3197921714
+          ],
+          "subtractOneWords": [
+            1057236036,
+            3215399532
+          ],
+          "candidateClipXYWords": [
+            1133099738,
+            3291360129
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 4,
+          "sourceWords": [
+            1085972419,
+            0,
+            3275771108,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1134196143,
+            1143721816,
+            1140695656,
+            1141233525
+          ],
+          "retainedYFlipWords": [
+            1134196143,
+            3291205464
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1134223554,
+            3291187190
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058604100,
+            1055229542
+          ],
+          "sumBeforeScaleWords": [
+            1146294860,
+            3273121676
+          ],
+          "screenHomogeneousWords": [
+            1140609768,
+            3263703732
+          ],
+          "screenNormalizedFirstWords": [
+            1140609770,
+            3263703730
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1140626152,
+            3263638196
+          ],
+          "divisionByExtentWords": [
+            1061818144,
+            3188731277
+          ],
+          "scaleByTwoWords": [
+            1070206752,
+            3197119885
+          ],
+          "subtractOneWords": [
+            1058283072,
+            3215199075
+          ],
+          "candidateClipXYWords": [
+            1134223553,
+            3291187190
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 5,
+          "sourceWords": [
+            3240275998,
+            0,
+            3275771108,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132985949,
+            1143721816,
+            1140695656,
+            1141233525
+          ],
+          "retainedYFlipWords": [
+            1132985949,
+            3291205464
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133013360,
+            3291187190
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058604100,
+            1055229542
+          ],
+          "sumBeforeScaleWords": [
+            1145689764,
+            3273121676
+          ],
+          "screenHomogeneousWords": [
+            1139886410,
+            3263703732
+          ],
+          "screenNormalizedFirstWords": [
+            1139886410,
+            3263703730
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1139902794,
+            3263638196
+          ],
+          "divisionByExtentWords": [
+            1061239458,
+            3188731277
+          ],
+          "scaleByTwoWords": [
+            1069628066,
+            3197119885
+          ],
+          "subtractOneWords": [
+            1057125700,
+            3215199075
+          ],
+          "candidateClipXYWords": [
+            1133013361,
+            3291187190
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 6,
+          "sourceWords": [
+            1083797437,
+            0,
+            3275517929,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1134117699,
+            1143547581,
+            1140752482,
+            1141261831
+          ],
+          "retainedYFlipWords": [
+            1134117699,
+            3291031229
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1134145198,
+            3291012896
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058571843,
+            1055181157
+          ],
+          "sumBeforeScaleWords": [
+            1146283944,
+            3272311512
+          ],
+          "screenHomogeneousWords": [
+            1140543568,
+            3262733458
+          ],
+          "screenNormalizedFirstWords": [
+            1140543570,
+            3262733458
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1140559952,
+            3262602386
+          ],
+          "divisionByExtentWords": [
+            1061765184,
+            3187928347
+          ],
+          "scaleByTwoWords": [
+            1070153792,
+            3196316955
+          ],
+          "subtractOneWords": [
+            1058177152,
+            3214998343
+          ],
+          "candidateClipXYWords": [
+            1134145196,
+            3291012897
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 7,
+          "sourceWords": [
+            3241363490,
+            0,
+            3275517929,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132907504,
+            1143547581,
+            1140752482,
+            1141261831
+          ],
+          "retainedYFlipWords": [
+            1132907504,
+            3291031229
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132935003,
+            3291012896
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058571843,
+            1055181157
+          ],
+          "sumBeforeScaleWords": [
+            1145678847,
+            3272311512
+          ],
+          "screenHomogeneousWords": [
+            1139822536,
+            3262733458
+          ],
+          "screenNormalizedFirstWords": [
+            1139822537,
+            3262733458
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1139838920,
+            3262602386
+          ],
+          "divisionByExtentWords": [
+            1061188358,
+            3187928347
+          ],
+          "scaleByTwoWords": [
+            1069576966,
+            3196316955
+          ],
+          "subtractOneWords": [
+            1057023500,
+            3214998343
+          ],
+          "candidateClipXYWords": [
+            1132935001,
+            3291012897
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 8,
+          "sourceWords": [
+            1080815108,
+            0,
+            3275266052,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1134033856,
+            1143374241,
+            1140809016,
+            1141289992
+          ],
+          "retainedYFlipWords": [
+            1134033856,
+            3290857889
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1134061443,
+            3290839498
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058539956,
+            1055133327
+          ],
+          "sumBeforeScaleWords": [
+            1146270184,
+            3271453896
+          ],
+          "screenHomogeneousWords": [
+            1140474684,
+            3261245274
+          ],
+          "screenNormalizedFirstWords": [
+            1140474684,
+            3261245271
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1140491068,
+            3261114202
+          ],
+          "divisionByExtentWords": [
+            1061710077,
+            3186598257
+          ],
+          "scaleByTwoWords": [
+            1070098685,
+            3194986865
+          ],
+          "subtractOneWords": [
+            1058066938,
+            3214799918
+          ],
+          "candidateClipXYWords": [
+            1134061442,
+            3290839497
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 9,
+          "sourceWords": [
+            3242525823,
+            0,
+            3275266052,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132823662,
+            1143374241,
+            1140809016,
+            1141289992
+          ],
+          "retainedYFlipWords": [
+            1132823662,
+            3290857889
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132851249,
+            3290839498
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058539956,
+            1055133327
+          ],
+          "sumBeforeScaleWords": [
+            1145665087,
+            3271453896
+          ],
+          "screenHomogeneousWords": [
+            1139755952,
+            3261245274
+          ],
+          "screenNormalizedFirstWords": [
+            1139755953,
+            3261245271
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1139772336,
+            3261114202
+          ],
+          "divisionByExtentWords": [
+            1061135091,
+            3186598257
+          ],
+          "scaleByTwoWords": [
+            1069523699,
+            3194986865
+          ],
+          "subtractOneWords": [
+            1056869324,
+            3214799918
+          ],
+          "candidateClipXYWords": [
+            1132851247,
+            3290839497
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 10,
+          "sourceWords": [
+            1076373762,
+            0,
+            3275013260,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133953764,
+            1143200272,
+            1140858221,
+            1141318255
+          ],
+          "retainedYFlipWords": [
+            1133953764,
+            3290683920
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133981440,
+            3290665470
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058508158,
+            1055085629
+          ],
+          "sumBeforeScaleWords": [
+            1146258401,
+            3269836040
+          ],
+          "screenHomogeneousWords": [
+            1140408392,
+            3259761207
+          ],
+          "screenNormalizedFirstWords": [
+            1140408392,
+            3259761208
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1140424776,
+            3259630135
+          ],
+          "divisionByExtentWords": [
+            1061657043,
+            3185015252
+          ],
+          "scaleByTwoWords": [
+            1070045651,
+            3193403860
+          ],
+          "subtractOneWords": [
+            1057960870,
+            3214602042
+          ],
+          "candidateClipXYWords": [
+            1133981439,
+            3290665469
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 11,
+          "sourceWords": [
+            3243636160,
+            0,
+            3275013260,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132743569,
+            1143200272,
+            1140858221,
+            1141318255
+          ],
+          "retainedYFlipWords": [
+            1132743569,
+            3290683920
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132771245,
+            3290665470
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058508158,
+            1055085629
+          ],
+          "sumBeforeScaleWords": [
+            1145653304,
+            3269836040
+          ],
+          "screenHomogeneousWords": [
+            1139691954,
+            3259761207
+          ],
+          "screenNormalizedFirstWords": [
+            1139691953,
+            3259761208
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1139708338,
+            3259630135
+          ],
+          "divisionByExtentWords": [
+            1061083893,
+            3185015252
+          ],
+          "scaleByTwoWords": [
+            1069472501,
+            3193403860
+          ],
+          "subtractOneWords": [
+            1056664532,
+            3214602042
+          ],
+          "candidateClipXYWords": [
+            1132771246,
+            3290665469
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 12,
+          "sourceWords": [
+            1069992544,
+            0,
+            3274760750,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133872495,
+            1143026497,
+            1140886559,
+            1141346486
+          ],
+          "retainedYFlipWords": [
+            1133872495,
+            3290510145
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133900259,
+            3290491636
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058476598,
+            1055038289
+          ],
+          "sumBeforeScaleWords": [
+            1146245998,
+            3268219992
+          ],
+          "screenHomogeneousWords": [
+            1140341848,
+            3258288226
+          ],
+          "screenNormalizedFirstWords": [
+            1140341847,
+            3258288224
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1140358232,
+            3258157154
+          ],
+          "divisionByExtentWords": [
+            1061603808,
+            3183444073
+          ],
+          "scaleByTwoWords": [
+            1069992416,
+            3191832681
+          ],
+          "subtractOneWords": [
+            1057854400,
+            3214405645
+          ],
+          "candidateClipXYWords": [
+            1133900260,
+            3290491636
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 13,
+          "sourceWords": [
+            3244762804,
+            0,
+            3274760750,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132662301,
+            1143026497,
+            1140886559,
+            1141346486
+          ],
+          "retainedYFlipWords": [
+            1132662301,
+            3290510145
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132690065,
+            3290491636
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058476598,
+            1055038289
+          ],
+          "sumBeforeScaleWords": [
+            1145640900,
+            3268219992
+          ],
+          "screenHomogeneousWords": [
+            1139627685,
+            3258288226
+          ],
+          "screenNormalizedFirstWords": [
+            1139627686,
+            3258288224
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1139644069,
+            3258157154
+          ],
+          "divisionByExtentWords": [
+            1061032478,
+            3183444073
+          ],
+          "scaleByTwoWords": [
+            1069421086,
+            3191832681
+          ],
+          "subtractOneWords": [
+            1056458872,
+            3214405645
+          ],
+          "candidateClipXYWords": [
+            1132690065,
+            3290491636
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 14,
+          "sourceWords": [
+            1051771504,
+            0,
+            3274510842,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133781139,
+            1142854512,
+            1140914605,
+            1141374427
+          ],
+          "retainedYFlipWords": [
+            1133781139,
+            3290338160
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133808990,
+            3290319593
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058445559,
+            1054991730
+          ],
+          "sumBeforeScaleWords": [
+            1146228260,
+            3266620584
+          ],
+          "screenHomogeneousWords": [
+            1140269976,
+            3256839599
+          ],
+          "screenNormalizedFirstWords": [
+            1140269977,
+            3256839598
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1140286360,
+            3256708527
+          ],
+          "divisionByExtentWords": [
+            1061546310,
+            3181898870
+          ],
+          "scaleByTwoWords": [
+            1069934918,
+            3190287478
+          ],
+          "subtractOneWords": [
+            1057739404,
+            3214212495
+          ],
+          "candidateClipXYWords": [
+            1133808989,
+            3290319593
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 15,
+          "sourceWords": [
+            3246029292,
+            0,
+            3274510842,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132570945,
+            1142854512,
+            1140914605,
+            1141374427
+          ],
+          "retainedYFlipWords": [
+            1132570945,
+            3290338160
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132598796,
+            3290319593
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058445559,
+            1054991730
+          ],
+          "sumBeforeScaleWords": [
+            1145623164,
+            3266620584
+          ],
+          "screenHomogeneousWords": [
+            1139558055,
+            3256839599
+          ],
+          "screenNormalizedFirstWords": [
+            1139558053,
+            3256839598
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1139574439,
+            3256708527
+          ],
+          "divisionByExtentWords": [
+            1060976774,
+            3181898870
+          ],
+          "scaleByTwoWords": [
+            1069365382,
+            3190287478
+          ],
+          "subtractOneWords": [
+            1056236056,
+            3214212495
+          ],
+          "candidateClipXYWords": [
+            1132598800,
+            3290319593
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 16,
+          "sourceWords": [
+            3209705536,
+            0,
+            3274259935,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133693507,
+            1142681841,
+            1140942762,
+            1141402479
+          ],
+          "retainedYFlipWords": [
+            1133693507,
+            3290165489
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133721446,
+            3290146863
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058414591,
+            1054945279
+          ],
+          "sumBeforeScaleWords": [
+            1146212496,
+            3265014800
+          ],
+          "screenHomogeneousWords": [
+            1140200667,
+            3255394306
+          ],
+          "screenNormalizedFirstWords": [
+            1140200668,
+            3255394304
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1140217051,
+            3255263234
+          ],
+          "divisionByExtentWords": [
+            1061490863,
+            3180357225
+          ],
+          "scaleByTwoWords": [
+            1069879471,
+            3188745833
+          ],
+          "subtractOneWords": [
+            1057628510,
+            3214019789
+          ],
+          "candidateClipXYWords": [
+            1133721444,
+            3290146863
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 17,
+          "sourceWords": [
+            3246817730,
+            0,
+            3274259935,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132483312,
+            1142681841,
+            1140942762,
+            1141402479
+          ],
+          "retainedYFlipWords": [
+            1132483312,
+            3290165489
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132511251,
+            3290146863
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058414591,
+            1054945279
+          ],
+          "sumBeforeScaleWords": [
+            1145607399,
+            3265014800
+          ],
+          "screenHomogeneousWords": [
+            1139490978,
+            3255394306
+          ],
+          "screenNormalizedFirstWords": [
+            1139490978,
+            3255394304
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1139507362,
+            3255263234
+          ],
+          "divisionByExtentWords": [
+            1060923112,
+            3180357225
+          ],
+          "scaleByTwoWords": [
+            1069311720,
+            3188745833
+          ],
+          "subtractOneWords": [
+            1056021408,
+            3214019789
+          ],
+          "candidateClipXYWords": [
+            1132511250,
+            3290146863
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 18,
+          "sourceWords": [
+            3220613120,
+            0,
+            3274008156,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133609274,
+            1142508569,
+            1140971018,
+            1141430629
+          ],
+          "retainedYFlipWords": [
+            1133609274,
+            3289992217
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133637301,
+            3289973533
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058383710,
+            1054898957
+          ],
+          "sumBeforeScaleWords": [
+            1146198530,
+            3263403424
+          ],
+          "screenHomogeneousWords": [
+            1140133719,
+            3253126231
+          ],
+          "screenNormalizedFirstWords": [
+            1140133720,
+            3253126228
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1140150103,
+            3252864087
+          ],
+          "divisionByExtentWords": [
+            1061437305,
+            3178357375
+          ],
+          "scaleByTwoWords": [
+            1069825913,
+            3186745983
+          ],
+          "subtractOneWords": [
+            1057521394,
+            3213827624
+          ],
+          "candidateClipXYWords": [
+            1133637300,
+            3289973533
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 19,
+          "sourceWords": [
+            3247401600,
+            0,
+            3274008156,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132336080,
+            1142508569,
+            1140971018,
+            1141430629
+          ],
+          "retainedYFlipWords": [
+            1132336080,
+            3289992217
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132392133,
+            3289973533
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058383710,
+            1054898957
+          ],
+          "sumBeforeScaleWords": [
+            1145593433,
+            3263403424
+          ],
+          "screenHomogeneousWords": [
+            1139426258,
+            3253126231
+          ],
+          "screenNormalizedFirstWords": [
+            1139426258,
+            3253126228
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1139442642,
+            3252864087
+          ],
+          "divisionByExtentWords": [
+            1060871336,
+            3178357375
+          ],
+          "scaleByTwoWords": [
+            1069259944,
+            3186745983
+          ],
+          "subtractOneWords": [
+            1055814304,
+            3213827624
+          ],
+          "candidateClipXYWords": [
+            1132392132,
+            3289973533
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 20,
+          "sourceWords": [
+            3225531840,
+            0,
+            3273756114,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133526095,
+            1142335115,
+            1140999303,
+            1141458808
+          ],
+          "retainedYFlipWords": [
+            1133526095,
+            3289818763
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133554210,
+            3289800020
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058352991,
+            1054852879
+          ],
+          "sumBeforeScaleWords": [
+            1146185120,
+            3260412208
+          ],
+          "screenHomogeneousWords": [
+            1140067787,
+            3250258804
+          ],
+          "screenNormalizedFirstWords": [
+            1140067787,
+            3250258798
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1140084171,
+            3249996660
+          ],
+          "divisionByExtentWords": [
+            1061384559,
+            3175298786
+          ],
+          "scaleByTwoWords": [
+            1069773167,
+            3183687394
+          ],
+          "subtractOneWords": [
+            1057415902,
+            3213636462
+          ],
+          "candidateClipXYWords": [
+            1133554210,
+            3289800020
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 21,
+          "sourceWords": [
+            3247978168,
+            0,
+            3273756114,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132169720,
+            1142335115,
+            1140999303,
+            1141458808
+          ],
+          "retainedYFlipWords": [
+            1132169720,
+            3289818763
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132225950,
+            3289800020
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058352991,
+            1054852879
+          ],
+          "sumBeforeScaleWords": [
+            1145580022,
+            3260412208
+          ],
+          "screenHomogeneousWords": [
+            1139362540,
+            3250258804
+          ],
+          "screenNormalizedFirstWords": [
+            1139362541,
+            3250258798
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1139378924,
+            3249996660
+          ],
+          "divisionByExtentWords": [
+            1060820362,
+            3175298786
+          ],
+          "scaleByTwoWords": [
+            1069208970,
+            3183687394
+          ],
+          "subtractOneWords": [
+            1055610408,
+            3213636462
+          ],
+          "candidateClipXYWords": [
+            1132225949,
+            3289800020
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 22,
+          "sourceWords": [
+            3229781724,
+            0,
+            3273503220,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133446432,
+            1142161076,
+            1141027684,
+            1141487082
+          ],
+          "retainedYFlipWords": [
+            1133446432,
+            3289644724
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133474635,
+            3289625922
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058322361,
+            1054806934
+          ],
+          "sumBeforeScaleWords": [
+            1146173562,
+            3257175200
+          ],
+          "screenHomogeneousWords": [
+            1140004250,
+            3247399702
+          ],
+          "screenNormalizedFirstWords": [
+            1140004251,
+            3247399708
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1140020634,
+            3247137558
+          ],
+          "divisionByExtentWords": [
+            1061333730,
+            3172249077
+          ],
+          "scaleByTwoWords": [
+            1069722338,
+            3180637685
+          ],
+          "subtractOneWords": [
+            1057314244,
+            3213445855
+          ],
+          "candidateClipXYWords": [
+            1133474635,
+            3289625922
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 23,
+          "sourceWords": [
+            3248530359,
+            0,
+            3273503220,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132010395,
+            1142161076,
+            1141027684,
+            1141487082
+          ],
+          "retainedYFlipWords": [
+            1132010395,
+            3289644724
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132066801,
+            3289625922
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058322361,
+            1054806934
+          ],
+          "sumBeforeScaleWords": [
+            1145568465,
+            3257175200
+          ],
+          "screenHomogeneousWords": [
+            1139301214,
+            3247399702
+          ],
+          "screenNormalizedFirstWords": [
+            1139301214,
+            3247399708
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1139317598,
+            3247137558
+          ],
+          "divisionByExtentWords": [
+            1060771301,
+            3172249077
+          ],
+          "scaleByTwoWords": [
+            1069159909,
+            3180637685
+          ],
+          "subtractOneWords": [
+            1055414164,
+            3213445855
+          ],
+          "candidateClipXYWords": [
+            1132066801,
+            3289625922
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 24,
+          "sourceWords": [
+            3231968892,
+            0,
+            3273250143,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133367548,
+            1141986911,
+            1141056086,
+            1141515377
+          ],
+          "retainedYFlipWords": [
+            1133367548,
+            3289470559
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133395840,
+            3289451698
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058291900,
+            1054761242
+          ],
+          "sumBeforeScaleWords": [
+            1146162415,
+            3253091776
+          ],
+          "screenHomogeneousWords": [
+            1139941550,
+            3242721505
+          ],
+          "screenNormalizedFirstWords": [
+            1139941550,
+            3242721500
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1139957934,
+            3242197217
+          ],
+          "divisionByExtentWords": [
+            1061283570,
+            3167538621
+          ],
+          "scaleByTwoWords": [
+            1069672178,
+            3175927229
+          ],
+          "subtractOneWords": [
+            1057213924,
+            3213256302
+          ],
+          "candidateClipXYWords": [
+            1133395840,
+            3289451698
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 25,
+          "sourceWords": [
+            3249077151,
+            0,
+            3273250143,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1131852628,
+            1141986911,
+            1141056086,
+            1141515377
+          ],
+          "retainedYFlipWords": [
+            1131852628,
+            3289470559
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1131909211,
+            3289451698
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058291900,
+            1054761242
+          ],
+          "sumBeforeScaleWords": [
+            1145557318,
+            3253091776
+          ],
+          "screenHomogeneousWords": [
+            1139240711,
+            3242721505
+          ],
+          "screenNormalizedFirstWords": [
+            1139240712,
+            3242721500
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1139257095,
+            3242197217
+          ],
+          "divisionByExtentWords": [
+            1060722898,
+            3167538621
+          ],
+          "scaleByTwoWords": [
+            1069111506,
+            3175927229
+          ],
+          "subtractOneWords": [
+            1055220552,
+            3213256302
+          ],
+          "candidateClipXYWords": [
+            1131909208,
+            3289451698
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 26,
+          "sourceWords": [
+            3234036040,
+            0,
+            3272996083,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133292993,
+            1141812069,
+            1141084597,
+            1141543782
+          ],
+          "retainedYFlipWords": [
+            1133292993,
+            3289295717
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133321373,
+            3289276797
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058261512,
+            1054715659
+          ],
+          "sumBeforeScaleWords": [
+            1146153542,
+            3246587872
+          ],
+          "screenHomogeneousWords": [
+            1139881675,
+            3236094190
+          ],
+          "screenNormalizedFirstWords": [
+            1139881674,
+            3236094192
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1139898059,
+            3235045614
+          ],
+          "divisionByExtentWords": [
+            1061235670,
+            3160469485
+          ],
+          "scaleByTwoWords": [
+            1069624278,
+            3168858093
+          ],
+          "subtractOneWords": [
+            1057118124,
+            3213067200
+          ],
+          "candidateClipXYWords": [
+            1133321374,
+            3289276797
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 27,
+          "sourceWords": [
+            3249593938,
+            0,
+            3272996083,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1131703518,
+            1141812069,
+            1141084597,
+            1141543782
+          ],
+          "retainedYFlipWords": [
+            1131703518,
+            3289295717
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1131760279,
+            3289276797
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058261512,
+            1054715659
+          ],
+          "sumBeforeScaleWords": [
+            1145548446,
+            3246587872
+          ],
+          "screenHomogeneousWords": [
+            1139183030,
+            3236094190
+          ],
+          "screenNormalizedFirstWords": [
+            1139183028,
+            3236094192
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1139199414,
+            3235045614
+          ],
+          "divisionByExtentWords": [
+            1060676754,
+            3160469485
+          ],
+          "scaleByTwoWords": [
+            1069065362,
+            3168858093
+          ],
+          "subtractOneWords": [
+            1055035976,
+            3213067200
+          ],
+          "candidateClipXYWords": [
+            1131760286,
+            3289276797
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 28,
+          "sourceWords": [
+            3236383048,
+            0,
+            3272744408,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133208345,
+            1141638869,
+            1141112841,
+            1141571920
+          ],
+          "retainedYFlipWords": [
+            1133208345,
+            3289122517
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133236813,
+            3289103538
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058231596,
+            1054670785
+          ],
+          "sumBeforeScaleWords": [
+            1146139356,
+            3229794944
+          ],
+          "screenHomogeneousWords": [
+            1139816519,
+            3219243921
+          ],
+          "screenNormalizedFirstWords": [
+            1139816520,
+            3219244016
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1139832903,
+            3215049617
+          ],
+          "divisionByExtentWords": [
+            1061183545,
+            3140258902
+          ],
+          "scaleByTwoWords": [
+            1069572153,
+            3148647510
+          ],
+          "subtractOneWords": [
+            1057013874,
+            3212881036
+          ],
+          "candidateClipXYWords": [
+            1133236814,
+            3289103538
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 29,
+          "sourceWords": [
+            3250180690,
+            0,
+            3272744408,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1131534221,
+            1141638869,
+            1141112841,
+            1141571920
+          ],
+          "retainedYFlipWords": [
+            1131534221,
+            3289122517
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1131591158,
+            3289103538
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058231596,
+            1054670785
+          ],
+          "sumBeforeScaleWords": [
+            1145534259,
+            3229794944
+          ],
+          "screenHomogeneousWords": [
+            1139120030,
+            3219243921
+          ],
+          "screenNormalizedFirstWords": [
+            1139120030,
+            3219244016
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1139136414,
+            3215049617
+          ],
+          "divisionByExtentWords": [
+            1060626354,
+            3140258902
+          ],
+          "scaleByTwoWords": [
+            1069014962,
+            3148647510
+          ],
+          "subtractOneWords": [
+            1054834376,
+            3212881036
+          ],
+          "candidateClipXYWords": [
+            1131591160,
+            3289103538
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 30,
+          "sourceWords": [
+            3238304144,
+            0,
+            3272491632,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133128185,
+            1141464910,
+            1141141209,
+            1141600182
+          ],
+          "retainedYFlipWords": [
+            1133128185,
+            3288948558
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133156742,
+            3288929520
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058201733,
+            1054625992
+          ],
+          "sumBeforeScaleWords": [
+            1146127538,
+            1090787840
+          ],
+          "screenHomogeneousWords": [
+            1139754268,
+            1080254479
+          ],
+          "screenNormalizedFirstWords": [
+            1139754268,
+            1080254456
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1139770652,
+            1082241032
+          ],
+          "divisionByExtentWords": [
+            1061133744,
+            1007310174
+          ],
+          "scaleByTwoWords": [
+            1069522352,
+            1015698782
+          ],
+          "subtractOneWords": [
+            1056863936,
+            3212553557
+          ],
+          "candidateClipXYWords": [
+            1133156741,
+            3288929520
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 31,
+          "sourceWords": [
+            3250736328,
+            0,
+            3272491632,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1131373901,
+            1141464910,
+            1141141209,
+            1141600182
+          ],
+          "retainedYFlipWords": [
+            1131373901,
+            3288948558
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1131431014,
+            3288929520
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058201733,
+            1054625992
+          ],
+          "sumBeforeScaleWords": [
+            1145522441,
+            1090787840
+          ],
+          "screenHomogeneousWords": [
+            1139059933,
+            1080254479
+          ],
+          "screenNormalizedFirstWords": [
+            1139059933,
+            1080254456
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1139076317,
+            1082241032
+          ],
+          "divisionByExtentWords": [
+            1060578276,
+            1007310174
+          ],
+          "scaleByTwoWords": [
+            1068966884,
+            1015698782
+          ],
+          "subtractOneWords": [
+            1054642064,
+            3212553557
+          ],
+          "candidateClipXYWords": [
+            1131431012,
+            3288929520
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 32,
+          "sourceWords": [
+            3239500702,
+            0,
+            3272240382,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133041873,
+            1141292002,
+            1141169405,
+            1141628272
+          ],
+          "retainedYFlipWords": [
+            1133041873,
+            3288775650
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133070517,
+            3288756554
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058172235,
+            1054581744
+          ],
+          "sumBeforeScaleWords": [
+            1146112472,
+            1101279680
+          ],
+          "screenHomogeneousWords": [
+            1139688979,
+            1091362741
+          ],
+          "screenNormalizedFirstWords": [
+            1139688980,
+            1091362737
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1139705363,
+            1091887029
+          ],
+          "divisionByExtentWords": [
+            1061081513,
+            1017039997
+          ],
+          "scaleByTwoWords": [
+            1069470121,
+            1025428605
+          ],
+          "subtractOneWords": [
+            1056655012,
+            3212186424
+          ],
+          "candidateClipXYWords": [
+            1133070517,
+            3288756554
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 33,
+          "sourceWords": [
+            3251334607,
+            0,
+            3272240382,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1131201278,
+            1141292002,
+            1141169405,
+            1141628272
+          ],
+          "retainedYFlipWords": [
+            1131201278,
+            3288775650
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1131258567,
+            3288756554
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058172235,
+            1054581744
+          ],
+          "sumBeforeScaleWords": [
+            1145507376,
+            1101279680
+          ],
+          "screenHomogeneousWords": [
+            1138996773,
+            1091362741
+          ],
+          "screenNormalizedFirstWords": [
+            1138996772,
+            1091362737
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1139013157,
+            1091887029
+          ],
+          "divisionByExtentWords": [
+            1060527748,
+            1017039997
+          ],
+          "scaleByTwoWords": [
+            1068916356,
+            1025428605
+          ],
+          "subtractOneWords": [
+            1054439952,
+            3212186424
+          ],
+          "candidateClipXYWords": [
+            1131258568,
+            3288756554
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 34,
+          "sourceWords": [
+            3240567942,
+            0,
+            3271986866,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132964890,
+            1141117535,
+            1141197856,
+            1141656616
+          ],
+          "retainedYFlipWords": [
+            1132964890,
+            3288601183
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132993623,
+            3288582028
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058142652,
+            1054537371
+          ],
+          "sumBeforeScaleWords": [
+            1146102325,
+            1107532944
+          ],
+          "screenHomogeneousWords": [
+            1139629268,
+            1096885302
+          ],
+          "screenNormalizedFirstWords": [
+            1139629270,
+            1096885302
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1139645652,
+            1097409590
+          ],
+          "divisionByExtentWords": [
+            1061033744,
+            1022930729
+          ],
+          "scaleByTwoWords": [
+            1069422352,
+            1031319337
+          ],
+          "subtractOneWords": [
+            1056463936,
+            3211818253
+          ],
+          "candidateClipXYWords": [
+            1132993621,
+            3288582027
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 35,
+          "sourceWords": [
+            3251868227,
+            0,
+            3271986866,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1131047311,
+            1141117535,
+            1141197856,
+            1141656616
+          ],
+          "retainedYFlipWords": [
+            1131047311,
+            3288601183
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1131104777,
+            3288582028
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058142652,
+            1054537371
+          ],
+          "sumBeforeScaleWords": [
+            1145497228,
+            1107532944
+          ],
+          "screenHomogeneousWords": [
+            1138939195,
+            1096885302
+          ],
+          "screenNormalizedFirstWords": [
+            1138939196,
+            1096885302
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1138955579,
+            1097409590
+          ],
+          "divisionByExtentWords": [
+            1060481686,
+            1022930729
+          ],
+          "scaleByTwoWords": [
+            1068870294,
+            1031319337
+          ],
+          "subtractOneWords": [
+            1054255704,
+            3211818253
+          ],
+          "candidateClipXYWords": [
+            1131104776,
+            3288582027
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 36,
+          "sourceWords": [
+            3241702106,
+            0,
+            3271734488,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132883079,
+            1140943851,
+            1141226179,
+            1141684833
+          ],
+          "retainedYFlipWords": [
+            1132883079,
+            3288427499
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132911900,
+            3288408285
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058113383,
+            1054493467
+          ],
+          "sumBeforeScaleWords": [
+            1146089636,
+            1110763360
+          ],
+          "screenHomogeneousWords": [
+            1139567249,
+            1100628507
+          ],
+          "screenNormalizedFirstWords": [
+            1139567250,
+            1100628508
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1139583633,
+            1100890651
+          ],
+          "divisionByExtentWords": [
+            1060984129,
+            1026084620
+          ],
+          "scaleByTwoWords": [
+            1069372737,
+            1034473228
+          ],
+          "subtractOneWords": [
+            1056265476,
+            3211453982
+          ],
+          "candidateClipXYWords": [
+            1132911899,
+            3288408285
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 37,
+          "sourceWords": [
+            3252435309,
+            0,
+            3271734488,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1130883689,
+            1140943851,
+            1141226179,
+            1141684833
+          ],
+          "retainedYFlipWords": [
+            1130883689,
+            3288427499
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130941331,
+            3288408285
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058113383,
+            1054493467
+          ],
+          "sumBeforeScaleWords": [
+            1145484539,
+            1110763360
+          ],
+          "screenHomogeneousWords": [
+            1138879287,
+            1100628507
+          ],
+          "screenNormalizedFirstWords": [
+            1138879288,
+            1100628508
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1138895671,
+            1100890651
+          ],
+          "divisionByExtentWords": [
+            1060433759,
+            1026084620
+          ],
+          "scaleByTwoWords": [
+            1068822367,
+            1034473228
+          ],
+          "subtractOneWords": [
+            1054063996,
+            3211453982
+          ],
+          "candidateClipXYWords": [
+            1130941327,
+            3288408285
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 38,
+          "sourceWords": [
+            3242739366,
+            0,
+            3271403853,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132808258,
+            1140687410,
+            1141254684,
+            1141713231
+          ],
+          "retainedYFlipWords": [
+            1132808258,
+            3288171058
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132837168,
+            3288132512
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058084107,
+            1054449552
+          ],
+          "sumBeforeScaleWords": [
+            1146080624,
+            1114014560
+          ],
+          "screenHomogeneousWords": [
+            1139509474,
+            1103361290
+          ],
+          "screenNormalizedFirstWords": [
+            1139509474,
+            1103361290
+          ],
+          "screenWordDifferences": 0,
+          "halfPixelAdditionWords": [
+            1139525858,
+            1103623434
+          ],
+          "divisionByExtentWords": [
+            1060937909,
+            1028999588
+          ],
+          "scaleByTwoWords": [
+            1069326517,
+            1037388196
+          ],
+          "subtractOneWords": [
+            1056080596,
+            3211089612
+          ],
+          "candidateClipXYWords": [
+            1132837169,
+            3288132512
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 39,
+          "sourceWords": [
+            3252953939,
+            0,
+            3271403853,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1130734048,
+            1140687410,
+            1141254684,
+            1141713231
+          ],
+          "retainedYFlipWords": [
+            1130734048,
+            3288171058
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130791868,
+            3288132512
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058084107,
+            1054449552
+          ],
+          "sumBeforeScaleWords": [
+            1145475527,
+            1114014560
+          ],
+          "screenHomogeneousWords": [
+            1138823624,
+            1103361290
+          ],
+          "screenNormalizedFirstWords": [
+            1138823624,
+            1103361290
+          ],
+          "screenWordDifferences": 0,
+          "halfPixelAdditionWords": [
+            1138840008,
+            1103623434
+          ],
+          "divisionByExtentWords": [
+            1060389229,
+            1028999588
+          ],
+          "scaleByTwoWords": [
+            1068777837,
+            1037388196
+          ],
+          "subtractOneWords": [
+            1053885876,
+            3211089612
+          ],
+          "candidateClipXYWords": [
+            1130791869,
+            3288132512
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 40,
+          "sourceWords": [
+            3243637034,
+            0,
+            3270891713,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132743506,
+            1140334960,
+            1141283421,
+            1141741860
+          ],
+          "retainedYFlipWords": [
+            1132743506,
+            3287818608
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132772505,
+            3287779942
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058054773,
+            1054405552
+          ],
+          "sumBeforeScaleWords": [
+            1146076877,
+            1116488544
+          ],
+          "screenHomogeneousWords": [
+            1139457618,
+            1106099387
+          ],
+          "screenNormalizedFirstWords": [
+            1139457618,
+            1106099390
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1139474002,
+            1106361531
+          ],
+          "divisionByExtentWords": [
+            1060896424,
+            1031859505
+          ],
+          "scaleByTwoWords": [
+            1069285032,
+            1040248113
+          ],
+          "subtractOneWords": [
+            1055914656,
+            3210724532
+          ],
+          "candidateClipXYWords": [
+            1132772505,
+            3287779942
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 41,
+          "sourceWords": [
+            3253402773,
+            0,
+            3270891713,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1130604544,
+            1140334960,
+            1141283421,
+            1141741860
+          ],
+          "retainedYFlipWords": [
+            1130604544,
+            3287818608
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130662543,
+            3287779942
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058054773,
+            1054405552
+          ],
+          "sumBeforeScaleWords": [
+            1145471780,
+            1116488544
+          ],
+          "screenHomogeneousWords": [
+            1138773884,
+            1106099387
+          ],
+          "screenNormalizedFirstWords": [
+            1138773884,
+            1106099390
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1138790268,
+            1106361531
+          ],
+          "divisionByExtentWords": [
+            1060349437,
+            1031859505
+          ],
+          "scaleByTwoWords": [
+            1068738045,
+            1040248113
+          ],
+          "subtractOneWords": [
+            1053726708,
+            3210724532
+          ],
+          "candidateClipXYWords": [
+            1130662543,
+            3287779942
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 42,
+          "sourceWords": [
+            3244633388,
+            0,
+            3270382432,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132671636,
+            1139984478,
+            1141311998,
+            1141770330
+          ],
+          "retainedYFlipWords": [
+            1132671636,
+            3287468126
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132700724,
+            3287429342
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058025782,
+            1054362065
+          ],
+          "sumBeforeScaleWords": [
+            1146069412,
+            1118118232
+          ],
+          "screenHomogeneousWords": [
+            1139402156,
+            1108050880
+          ],
+          "screenNormalizedFirstWords": [
+            1139402156,
+            1108050879
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1139418540,
+            1108181952
+          ],
+          "divisionByExtentWords": [
+            1060852054,
+            1033302767
+          ],
+          "scaleByTwoWords": [
+            1069240662,
+            1041691375
+          ],
+          "subtractOneWords": [
+            1055737176,
+            3210363716
+          ],
+          "candidateClipXYWords": [
+            1132700724,
+            3287429341
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 43,
+          "sourceWords": [
+            3253900950,
+            0,
+            3270382432,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1130460804,
+            1139984478,
+            1141311998,
+            1141770330
+          ],
+          "retainedYFlipWords": [
+            1130460804,
+            3287468126
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130518981,
+            3287429342
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1058025782,
+            1054362065
+          ],
+          "sumBeforeScaleWords": [
+            1145464315,
+            1118118232
+          ],
+          "screenHomogeneousWords": [
+            1138720513,
+            1108050880
+          ],
+          "screenNormalizedFirstWords": [
+            1138720512,
+            1108050879
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1138736897,
+            1108181952
+          ],
+          "divisionByExtentWords": [
+            1060306740,
+            1033302767
+          ],
+          "scaleByTwoWords": [
+            1068695348,
+            1041691375
+          ],
+          "subtractOneWords": [
+            1053555920,
+            3210363716
+          ],
+          "candidateClipXYWords": [
+            1130518982,
+            3287429341
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 44,
+          "sourceWords": [
+            3245643734,
+            0,
+            3269873582,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132598757,
+            1139634292,
+            1141340551,
+            1141798776
+          ],
+          "retainedYFlipWords": [
+            1132598757,
+            3287117940
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132627934,
+            3287079037
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057996991,
+            1054318879
+          ],
+          "sumBeforeScaleWords": [
+            1146061418,
+            1119746544
+          ],
+          "screenHomogeneousWords": [
+            1139346476,
+            1109394554
+          ],
+          "screenNormalizedFirstWords": [
+            1139346477,
+            1109394553
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1139362860,
+            1109525626
+          ],
+          "divisionByExtentWords": [
+            1060807510,
+            1034736019
+          ],
+          "scaleByTwoWords": [
+            1069196118,
+            1043124627
+          ],
+          "subtractOneWords": [
+            1055559000,
+            3210005403
+          ],
+          "candidateClipXYWords": [
+            1132627932,
+            3287079037
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 45,
+          "sourceWords": [
+            3254406123,
+            0,
+            3269873582,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1130315044,
+            1139634292,
+            1141340551,
+            1141798776
+          ],
+          "retainedYFlipWords": [
+            1130315044,
+            3287117940
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130373398,
+            3287079037
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057996991,
+            1054318879
+          ],
+          "sumBeforeScaleWords": [
+            1145456321,
+            1119746544
+          ],
+          "screenHomogeneousWords": [
+            1138666910,
+            1109394554
+          ],
+          "screenNormalizedFirstWords": [
+            1138666910,
+            1109394553
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1138683294,
+            1109525626
+          ],
+          "divisionByExtentWords": [
+            1060263858,
+            1034736019
+          ],
+          "scaleByTwoWords": [
+            1068652466,
+            1043124627
+          ],
+          "subtractOneWords": [
+            1053384392,
+            3210005403
+          ],
+          "candidateClipXYWords": [
+            1130373401,
+            3287079037
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 46,
+          "sourceWords": [
+            3246549987,
+            0,
+            3269366475,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132521939,
+            1139285306,
+            1141369006,
+            1141827124
+          ],
+          "retainedYFlipWords": [
+            1132521939,
+            3286768954
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132551205,
+            3286729933
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057968474,
+            1054276103
+          ],
+          "sumBeforeScaleWords": [
+            1146051358,
+            1121369272
+          ],
+          "screenHomogeneousWords": [
+            1139288981,
+            1110725500
+          ],
+          "screenNormalizedFirstWords": [
+            1139288980,
+            1110725499
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1139305365,
+            1110856572
+          ],
+          "divisionByExtentWords": [
+            1060761514,
+            1036155695
+          ],
+          "scaleByTwoWords": [
+            1069150122,
+            1044544303
+          ],
+          "subtractOneWords": [
+            1055375016,
+            3209650484
+          ],
+          "candidateClipXYWords": [
+            1132551206,
+            3286729933
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 47,
+          "sourceWords": [
+            3254859250,
+            0,
+            3269366475,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1130161408,
+            1139285306,
+            1141369006,
+            1141827124
+          ],
+          "retainedYFlipWords": [
+            1130161408,
+            3286768954
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130219940,
+            3286729933
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057968474,
+            1054276103
+          ],
+          "sumBeforeScaleWords": [
+            1145446260,
+            1121369272
+          ],
+          "screenHomogeneousWords": [
+            1138611471,
+            1110725500
+          ],
+          "screenNormalizedFirstWords": [
+            1138611471,
+            1110725499
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1138627855,
+            1110856572
+          ],
+          "divisionByExtentWords": [
+            1060219506,
+            1036155695
+          ],
+          "scaleByTwoWords": [
+            1068608114,
+            1044544303
+          ],
+          "subtractOneWords": [
+            1053206984,
+            3209650484
+          ],
+          "candidateClipXYWords": [
+            1130219940,
+            3286729933
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 48,
+          "sourceWords": [
+            3247116653,
+            0,
+            3268861689,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132418296,
+            1138937916,
+            1141397330,
+            1141855342
+          ],
+          "retainedYFlipWords": [
+            1132418296,
+            3286421564
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132469542,
+            3286382425
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057940258,
+            1054233779
+          ],
+          "sumBeforeScaleWords": [
+            1146038700,
+            1122984576
+          ],
+          "screenHomogeneousWords": [
+            1139229142,
+            1112042379
+          ],
+          "screenNormalizedFirstWords": [
+            1139229142,
+            1112042379
+          ],
+          "screenWordDifferences": 0,
+          "halfPixelAdditionWords": [
+            1139245526,
+            1112173451
+          ],
+          "divisionByExtentWords": [
+            1060713643,
+            1037560366
+          ],
+          "scaleByTwoWords": [
+            1069102251,
+            1045948974
+          ],
+          "subtractOneWords": [
+            1055183532,
+            3209299316
+          ],
+          "candidateClipXYWords": [
+            1132469542,
+            3286382425
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 49,
+          "sourceWords": [
+            3255142582,
+            0,
+            3268861689,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1129997908,
+            1138937916,
+            1141397330,
+            1141855342
+          ],
+          "retainedYFlipWords": [
+            1129997908,
+            3286421564
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130056616,
+            3286382425
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057940258,
+            1054233779
+          ],
+          "sumBeforeScaleWords": [
+            1145433603,
+            1122984576
+          ],
+          "screenHomogeneousWords": [
+            1138553668,
+            1112042379
+          ],
+          "screenNormalizedFirstWords": [
+            1138553668,
+            1112042379
+          ],
+          "screenWordDifferences": 0,
+          "halfPixelAdditionWords": [
+            1138570052,
+            1112173451
+          ],
+          "divisionByExtentWords": [
+            1060173264,
+            1037560366
+          ],
+          "scaleByTwoWords": [
+            1068561872,
+            1045948974
+          ],
+          "subtractOneWords": [
+            1053022016,
+            3209299316
+          ],
+          "candidateClipXYWords": [
+            1130056615,
+            3286382425
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 50,
+          "sourceWords": [
+            3247632183,
+            0,
+            3268353489,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132269548,
+            1138588178,
+            1141425846,
+            1141883752
+          ],
+          "retainedYFlipWords": [
+            1132269548,
+            3286071826
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132328433,
+            3286032569
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057912021,
+            1054191424
+          ],
+          "sumBeforeScaleWords": [
+            1146029923,
+            1124342140
+          ],
+          "screenHomogeneousWords": [
+            1139173673,
+            1113360197
+          ],
+          "screenNormalizedFirstWords": [
+            1139173673,
+            1113360197
+          ],
+          "screenWordDifferences": 0,
+          "halfPixelAdditionWords": [
+            1139190057,
+            1113491269
+          ],
+          "divisionByExtentWords": [
+            1060669268,
+            1038966038
+          ],
+          "scaleByTwoWords": [
+            1069057876,
+            1047354646
+          ],
+          "subtractOneWords": [
+            1055006032,
+            3208947898
+          ],
+          "candidateClipXYWords": [
+            1132328432,
+            3286032569
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 51,
+          "sourceWords": [
+            3255400348,
+            0,
+            3268353489,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1129849160,
+            1138588178,
+            1141425846,
+            1141883752
+          ],
+          "retainedYFlipWords": [
+            1129849160,
+            3286071826
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1129908045,
+            3286032569
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057912021,
+            1054191424
+          ],
+          "sumBeforeScaleWords": [
+            1145424826,
+            1124342140
+          ],
+          "screenHomogeneousWords": [
+            1138500236,
+            1113360197
+          ],
+          "screenNormalizedFirstWords": [
+            1138500237,
+            1113360197
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1138516620,
+            1113491269
+          ],
+          "divisionByExtentWords": [
+            1060130518,
+            1038966038
+          ],
+          "scaleByTwoWords": [
+            1068519126,
+            1047354646
+          ],
+          "subtractOneWords": [
+            1052851032,
+            3208947898
+          ],
+          "candidateClipXYWords": [
+            1129908042,
+            3286032569
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 52,
+          "sourceWords": [
+            3248198881,
+            0,
+            3267848706,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132106038,
+            1138240790,
+            1141454171,
+            1141911970
+          ],
+          "retainedYFlipWords": [
+            1132106038,
+            3285724438
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132165100,
+            3285685063
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057884143,
+            1054149607
+          ],
+          "sumBeforeScaleWords": [
+            1146017264,
+            1125149788
+          ],
+          "screenHomogeneousWords": [
+            1139114536,
+            1114661311
+          ],
+          "screenNormalizedFirstWords": [
+            1139114536,
+            1114661312
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1139130920,
+            1114792383
+          ],
+          "divisionByExtentWords": [
+            1060621958,
+            1040270643
+          ],
+          "scaleByTwoWords": [
+            1069010566,
+            1048659251
+          ],
+          "subtractOneWords": [
+            1054816792,
+            3208600934
+          ],
+          "candidateClipXYWords": [
+            1132165098,
+            3285685063
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 53,
+          "sourceWords": [
+            3255683696,
+            0,
+            3267848706,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1129685649,
+            1138240790,
+            1141454171,
+            1141911970
+          ],
+          "retainedYFlipWords": [
+            1129685649,
+            3285724438
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1129744711,
+            3285685063
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057884143,
+            1054149607
+          ],
+          "sumBeforeScaleWords": [
+            1145412166,
+            1125149788
+          ],
+          "screenHomogeneousWords": [
+            1138443109,
+            1114661311
+          ],
+          "screenNormalizedFirstWords": [
+            1138443110,
+            1114661312
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1138459493,
+            1114792383
+          ],
+          "divisionByExtentWords": [
+            1060084817,
+            1040270643
+          ],
+          "scaleByTwoWords": [
+            1068473425,
+            1048659251
+          ],
+          "subtractOneWords": [
+            1052668228,
+            3208600934
+          ],
+          "candidateClipXYWords": [
+            1129744709,
+            3285685063
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 54,
+          "sourceWords": [
+            3248792917,
+            0,
+            3267345891,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1131934639,
+            1137894758,
+            1141482385,
+            1141940078
+          ],
+          "retainedYFlipWords": [
+            1131934639,
+            3285378406
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1131993876,
+            3285338914
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057856539,
+            1054108201
+          ],
+          "sumBeforeScaleWords": [
+            1146002522,
+            1125954284
+          ],
+          "screenHomogeneousWords": [
+            1139053621,
+            1115817255
+          ],
+          "screenNormalizedFirstWords": [
+            1139053621,
+            1115817254
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1139070005,
+            1115882791
+          ],
+          "divisionByExtentWords": [
+            1060573226,
+            1040957755
+          ],
+          "scaleByTwoWords": [
+            1068961834,
+            1049346363
+          ],
+          "subtractOneWords": [
+            1054621864,
+            3208257378
+          ],
+          "candidateClipXYWords": [
+            1131993875,
+            3285338913
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 55,
+          "sourceWords": [
+            3255980714,
+            0,
+            3267345891,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1129514250,
+            1137894758,
+            1141482385,
+            1141940078
+          ],
+          "retainedYFlipWords": [
+            1129514250,
+            3285378406
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1129573487,
+            3285338914
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057856539,
+            1054108201
+          ],
+          "sumBeforeScaleWords": [
+            1145397424,
+            1125954284
+          ],
+          "screenHomogeneousWords": [
+            1138384185,
+            1115817255
+          ],
+          "screenNormalizedFirstWords": [
+            1138384186,
+            1115817254
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1138400569,
+            1115882791
+          ],
+          "divisionByExtentWords": [
+            1060037678,
+            1040957755
+          ],
+          "scaleByTwoWords": [
+            1068426286,
+            1049346363
+          ],
+          "subtractOneWords": [
+            1052479672,
+            3208257378
+          ],
+          "candidateClipXYWords": [
+            1129573486,
+            3285338913
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 56,
+          "sourceWords": [
+            3249446050,
+            0,
+            3266847678,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1131746188,
+            1137551892,
+            1141510341,
+            1141967929
+          ],
+          "retainedYFlipWords": [
+            1131746188,
+            3285035540
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1131805600,
+            3284995932
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057829348,
+            1054067414
+          ],
+          "sumBeforeScaleWords": [
+            1145983260,
+            1126751420
+          ],
+          "screenHomogeneousWords": [
+            1138988483,
+            1116451770
+          ],
+          "screenNormalizedFirstWords": [
+            1138988483,
+            1116451770
+          ],
+          "screenWordDifferences": 0,
+          "halfPixelAdditionWords": [
+            1139004867,
+            1116517306
+          ],
+          "divisionByExtentWords": [
+            1060521116,
+            1041634571
+          ],
+          "scaleByTwoWords": [
+            1068909724,
+            1050023179
+          ],
+          "subtractOneWords": [
+            1054413424,
+            3207918970
+          ],
+          "candidateClipXYWords": [
+            1131805597,
+            3284995932
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 57,
+          "sourceWords": [
+            3256307281,
+            0,
+            3266847678,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1129325800,
+            1137551892,
+            1141510341,
+            1141967929
+          ],
+          "retainedYFlipWords": [
+            1129325800,
+            3285035540
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1129385212,
+            3284995932
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057829348,
+            1054067414
+          ],
+          "sumBeforeScaleWords": [
+            1145378163,
+            1126751420
+          ],
+          "screenHomogeneousWords": [
+            1138321010,
+            1116451770
+          ],
+          "screenNormalizedFirstWords": [
+            1138321010,
+            1116451770
+          ],
+          "screenWordDifferences": 0,
+          "halfPixelAdditionWords": [
+            1138337394,
+            1116517306
+          ],
+          "divisionByExtentWords": [
+            1059987138,
+            1041634571
+          ],
+          "scaleByTwoWords": [
+            1068375746,
+            1050023179
+          ],
+          "subtractOneWords": [
+            1052277512,
+            3207918970
+          ],
+          "candidateClipXYWords": [
+            1129385213,
+            3284995932
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 58,
+          "sourceWords": [
+            3250103514,
+            0,
+            3266349821,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1131556488,
+            1137209272,
+            1141538276,
+            1141995760
+          ],
+          "retainedYFlipWords": [
+            1131556488,
+            3284692920
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1131616074,
+            3284653196
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057802335,
+            1054026895
+          ],
+          "sumBeforeScaleWords": [
+            1145963666,
+            1127547984
+          ],
+          "screenHomogeneousWords": [
+            1138923392,
+            1117082128
+          ],
+          "screenNormalizedFirstWords": [
+            1138923392,
+            1117082128
+          ],
+          "screenWordDifferences": 0,
+          "halfPixelAdditionWords": [
+            1138939776,
+            1117147664
+          ],
+          "divisionByExtentWords": [
+            1060469043,
+            1042306953
+          ],
+          "scaleByTwoWords": [
+            1068857651,
+            1050695561
+          ],
+          "subtractOneWords": [
+            1054205132,
+            3207582780
+          ],
+          "candidateClipXYWords": [
+            1131616071,
+            3284653197
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 59,
+          "sourceWords": [
+            3256636013,
+            0,
+            3266349821,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1129136100,
+            1137209272,
+            1141538276,
+            1141995760
+          ],
+          "retainedYFlipWords": [
+            1129136100,
+            3284692920
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1129195686,
+            3284653196
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057802335,
+            1054026895
+          ],
+          "sumBeforeScaleWords": [
+            1145358569,
+            1127547984
+          ],
+          "screenHomogeneousWords": [
+            1138257867,
+            1117082128
+          ],
+          "screenNormalizedFirstWords": [
+            1138257867,
+            1117082128
+          ],
+          "screenWordDifferences": 0,
+          "halfPixelAdditionWords": [
+            1138274251,
+            1117147664
+          ],
+          "divisionByExtentWords": [
+            1059936623,
+            1042306953
+          ],
+          "scaleByTwoWords": [
+            1068325231,
+            1050695561
+          ],
+          "subtractOneWords": [
+            1052075452,
+            3207582780
+          ],
+          "candidateClipXYWords": [
+            1129195682,
+            3284653197
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 60,
+          "sourceWords": [
+            3250813746,
+            0,
+            3265856515,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1131351563,
+            1136869783,
+            1141565957,
+            1142023337
+          ],
+          "retainedYFlipWords": [
+            1131351563,
+            3284353431
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1131411321,
+            3284313592
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057775724,
+            1053986979
+          ],
+          "sumBeforeScaleWords": [
+            1145940012,
+            1128337270
+          ],
+          "screenHomogeneousWords": [
+            1138854620,
+            1117703106
+          ],
+          "screenNormalizedFirstWords": [
+            1138854621,
+            1117703106
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1138871004,
+            1117768642
+          ],
+          "divisionByExtentWords": [
+            1060414026,
+            1042969329
+          ],
+          "scaleByTwoWords": [
+            1068802634,
+            1051357937
+          ],
+          "subtractOneWords": [
+            1053985064,
+            3207251592
+          ],
+          "candidateClipXYWords": [
+            1131411322,
+            3284313593
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 61,
+          "sourceWords": [
+            3256991129,
+            0,
+            3265856515,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1128931174,
+            1136869783,
+            1141565957,
+            1142023337
+          ],
+          "retainedYFlipWords": [
+            1128931174,
+            3284353431
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1128990932,
+            3284313592
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057775724,
+            1053986979
+          ],
+          "sumBeforeScaleWords": [
+            1145334914,
+            1128337270
+          ],
+          "screenHomogeneousWords": [
+            1138191013,
+            1117703106
+          ],
+          "screenNormalizedFirstWords": [
+            1138191014,
+            1117703106
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1138207397,
+            1117768642
+          ],
+          "divisionByExtentWords": [
+            1059883140,
+            1042969329
+          ],
+          "scaleByTwoWords": [
+            1068271748,
+            1051357937
+          ],
+          "subtractOneWords": [
+            1051861520,
+            3207251592
+          ],
+          "candidateClipXYWords": [
+            1128990926,
+            3284313593
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 62,
+          "sourceWords": [
+            3251527986,
+            0,
+            3265363571,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1131145482,
+            1136530543,
+            1141593617,
+            1142050893
+          ],
+          "retainedYFlipWords": [
+            1131145482,
+            3284014191
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1131205412,
+            3283974238
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057749287,
+            1053947322
+          ],
+          "sumBeforeScaleWords": [
+            1145916048,
+            1129125974
+          ],
+          "screenHomogeneousWords": [
+            1138785938,
+            1118320060
+          ],
+          "screenNormalizedFirstWords": [
+            1138785937,
+            1118320060
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1138802322,
+            1118385596
+          ],
+          "divisionByExtentWords": [
+            1060359080,
+            1043627413
+          ],
+          "scaleByTwoWords": [
+            1068747688,
+            1052016021
+          ],
+          "subtractOneWords": [
+            1053765280,
+            3206922550
+          ],
+          "candidateClipXYWords": [
+            1131205416,
+            3283974238
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 63,
+          "sourceWords": [
+            3257348249,
+            0,
+            3265363571,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1128725093,
+            1136530543,
+            1141593617,
+            1142050893
+          ],
+          "retainedYFlipWords": [
+            1128725093,
+            3284014191
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1128785023,
+            3283974238
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057749287,
+            1053947322
+          ],
+          "sumBeforeScaleWords": [
+            1145310950,
+            1129125974
+          ],
+          "screenHomogeneousWords": [
+            1138124238,
+            1118320060
+          ],
+          "screenNormalizedFirstWords": [
+            1138124238,
+            1118320060
+          ],
+          "screenWordDifferences": 0,
+          "halfPixelAdditionWords": [
+            1138140622,
+            1118385596
+          ],
+          "divisionByExtentWords": [
+            1059829720,
+            1043627413
+          ],
+          "scaleByTwoWords": [
+            1068218328,
+            1052016021
+          ],
+          "subtractOneWords": [
+            1051647840,
+            3206922550
+          ],
+          "candidateClipXYWords": [
+            1128785022,
+            3283974238
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 64,
+          "sourceWords": [
+            3252277820,
+            0,
+            3264873941,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1130929130,
+            1136193584,
+            1141621091,
+            1142078264
+          ],
+          "retainedYFlipWords": [
+            1130929130,
+            3283677232
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130989231,
+            3283637165
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057723176,
+            1053908156
+          ],
+          "sumBeforeScaleWords": [
+            1145889330,
+            1129909376
+          ],
+          "screenHomogeneousWords": [
+            1138714926,
+            1118929364
+          ],
+          "screenNormalizedFirstWords": [
+            1138714927,
+            1118929365
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1138731310,
+            1118994900
+          ],
+          "divisionByExtentWords": [
+            1060302270,
+            1044277338
+          ],
+          "scaleByTwoWords": [
+            1068690878,
+            1052665946
+          ],
+          "subtractOneWords": [
+            1053538040,
+            3206597587
+          ],
+          "candidateClipXYWords": [
+            1130989225,
+            3283637165
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 65,
+          "sourceWords": [
+            3257723166,
+            0,
+            3264873941,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1128508741,
+            1136193584,
+            1141621091,
+            1142078264
+          ],
+          "retainedYFlipWords": [
+            1128508741,
+            3283677232
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1128568842,
+            3283637165
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057723176,
+            1053908156
+          ],
+          "sumBeforeScaleWords": [
+            1145284233,
+            1129909376
+          ],
+          "screenHomogeneousWords": [
+            1138055111,
+            1118929364
+          ],
+          "screenNormalizedFirstWords": [
+            1138055112,
+            1118929365
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1138071495,
+            1118994900
+          ],
+          "divisionByExtentWords": [
+            1059774418,
+            1044277338
+          ],
+          "scaleByTwoWords": [
+            1068163026,
+            1052665946
+          ],
+          "subtractOneWords": [
+            1051426632,
+            3206597587
+          ],
+          "candidateClipXYWords": [
+            1128568837,
+            3283637165
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 66,
+          "sourceWords": [
+            3253047192,
+            0,
+            3264386210,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1130707141,
+            1135857932,
+            1141648459,
+            1142105529
+          ],
+          "retainedYFlipWords": [
+            1130707141,
+            3283341580
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130767413,
+            3283301399
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057697314,
+            1053869364
+          ],
+          "sumBeforeScaleWords": [
+            1145861098,
+            1130689740
+          ],
+          "screenHomogeneousWords": [
+            1138642832,
+            1119532869
+          ],
+          "screenNormalizedFirstWords": [
+            1138642833,
+            1119532868
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1138659216,
+            1119598405
+          ],
+          "divisionByExtentWords": [
+            1060244595,
+            1044921076
+          ],
+          "scaleByTwoWords": [
+            1068633203,
+            1053309684
+          ],
+          "subtractOneWords": [
+            1053307340,
+            3206275718
+          ],
+          "candidateClipXYWords": [
+            1130767408,
+            3283301399
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 67,
+          "sourceWords": [
+            3258107852,
+            0,
+            3264386210,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1128286752,
+            1135857932,
+            1141648459,
+            1142105529
+          ],
+          "retainedYFlipWords": [
+            1128286752,
+            3283341580
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1128347024,
+            3283301399
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057697314,
+            1053869364
+          ],
+          "sumBeforeScaleWords": [
+            1145256001,
+            1130689740
+          ],
+          "screenHomogeneousWords": [
+            1137984883,
+            1119532869
+          ],
+          "screenNormalizedFirstWords": [
+            1137984883,
+            1119532868
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1138001267,
+            1119598405
+          ],
+          "divisionByExtentWords": [
+            1059718236,
+            1044921076
+          ],
+          "scaleByTwoWords": [
+            1068106844,
+            1053309684
+          ],
+          "subtractOneWords": [
+            1051201904,
+            3206275718
+          ],
+          "candidateClipXYWords": [
+            1128347023,
+            3283301399
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 68,
+          "sourceWords": [
+            3253770036,
+            0,
+            3263894050,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1130498576,
+            1135519232,
+            1141676075,
+            1142133042
+          ],
+          "retainedYFlipWords": [
+            1130498576,
+            3283002880
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130559020,
+            3282962584
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057671365,
+            1053830440
+          ],
+          "sumBeforeScaleWords": [
+            1145836470,
+            1131477192
+          ],
+          "screenHomogeneousWords": [
+            1138574681,
+            1120138404
+          ],
+          "screenNormalizedFirstWords": [
+            1138574682,
+            1120138403
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1138591065,
+            1120203940
+          ],
+          "divisionByExtentWords": [
+            1060190074,
+            1045566980
+          ],
+          "scaleByTwoWords": [
+            1068578682,
+            1053955588
+          ],
+          "subtractOneWords": [
+            1053089256,
+            3205952766
+          ],
+          "candidateClipXYWords": [
+            1130559017,
+            3282962584
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 69,
+          "sourceWords": [
+            3258469274,
+            0,
+            3263894050,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1128078188,
+            1135519232,
+            1141676075,
+            1142133042
+          ],
+          "retainedYFlipWords": [
+            1128078188,
+            3283002880
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1128138632,
+            3282962584
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057671365,
+            1053830440
+          ],
+          "sumBeforeScaleWords": [
+            1145231373,
+            1131477192
+          ],
+          "screenHomogeneousWords": [
+            1137918603,
+            1120138404
+          ],
+          "screenNormalizedFirstWords": [
+            1137918603,
+            1120138403
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1137934987,
+            1120203940
+          ],
+          "divisionByExtentWords": [
+            1059665212,
+            1045566980
+          ],
+          "scaleByTwoWords": [
+            1068053820,
+            1053955588
+          ],
+          "subtractOneWords": [
+            1050989808,
+            3205952766
+          ],
+          "candidateClipXYWords": [
+            1128138629,
+            3282962584
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 70,
+          "sourceWords": [
+            3254488238,
+            0,
+            3263401465,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1130291352,
+            1135180240,
+            1141703715,
+            1142160578
+          ],
+          "retainedYFlipWords": [
+            1130291352,
+            3282663888
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130351968,
+            3282623478
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057645542,
+            1053791704
+          ],
+          "sumBeforeScaleWords": [
+            1145812200,
+            1132265320
+          ],
+          "screenHomogeneousWords": [
+            1138507270,
+            1120741019
+          ],
+          "screenNormalizedFirstWords": [
+            1138507270,
+            1120741020
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1138523654,
+            1120806555
+          ],
+          "divisionByExtentWords": [
+            1060136146,
+            1046209770
+          ],
+          "scaleByTwoWords": [
+            1068524754,
+            1054598378
+          ],
+          "subtractOneWords": [
+            1052873544,
+            3205631371
+          ],
+          "candidateClipXYWords": [
+            1130351972,
+            3282623478
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 71,
+          "sourceWords": [
+            3258828375,
+            0,
+            3263401465,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1127870963,
+            1135180240,
+            1141703715,
+            1142160578
+          ],
+          "retainedYFlipWords": [
+            1127870963,
+            3282663888
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1127931579,
+            3282623478
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057645542,
+            1053791704
+          ],
+          "sumBeforeScaleWords": [
+            1145207103,
+            1132265320
+          ],
+          "screenHomogeneousWords": [
+            1137853055,
+            1120741019
+          ],
+          "screenNormalizedFirstWords": [
+            1137853054,
+            1120741020
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1137869439,
+            1120806555
+          ],
+          "divisionByExtentWords": [
+            1059612774,
+            1046209770
+          ],
+          "scaleByTwoWords": [
+            1068001382,
+            1054598378
+          ],
+          "subtractOneWords": [
+            1050780056,
+            3205631371
+          ],
+          "candidateClipXYWords": [
+            1127931584,
+            3282623478
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 72,
+          "sourceWords": [
+            3255026001,
+            0,
+            3262661843,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1130065182,
+            1134845581,
+            1141731002,
+            1142187762
+          ],
+          "retainedYFlipWords": [
+            1130065182,
+            3282329229
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130125968,
+            3282288705
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057620191,
+            1053753679
+          ],
+          "sumBeforeScaleWords": [
+            1145782842,
+            1132752727
+          ],
+          "screenHomogeneousWords": [
+            1138435273,
+            1121332585
+          ],
+          "screenNormalizedFirstWords": [
+            1138435273,
+            1121332585
+          ],
+          "screenWordDifferences": 0,
+          "halfPixelAdditionWords": [
+            1138451657,
+            1121398121
+          ],
+          "divisionByExtentWords": [
+            1060078548,
+            1046840773
+          ],
+          "scaleByTwoWords": [
+            1068467156,
+            1055229381
+          ],
+          "subtractOneWords": [
+            1052643152,
+            3205315870
+          ],
+          "candidateClipXYWords": [
+            1130125968,
+            3282288706
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 73,
+          "sourceWords": [
+            3259220305,
+            0,
+            3262661843,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1127644794,
+            1134845581,
+            1141731002,
+            1142187762
+          ],
+          "retainedYFlipWords": [
+            1127644794,
+            3282329229
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1127705580,
+            3282288705
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057620191,
+            1053753679
+          ],
+          "sumBeforeScaleWords": [
+            1145177744,
+            1132752727
+          ],
+          "screenHomogeneousWords": [
+            1137782885,
+            1121332585
+          ],
+          "screenNormalizedFirstWords": [
+            1137782887,
+            1121332585
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1137799269,
+            1121398121
+          ],
+          "divisionByExtentWords": [
+            1059556638,
+            1046840773
+          ],
+          "scaleByTwoWords": [
+            1067945246,
+            1055229381
+          ],
+          "subtractOneWords": [
+            1050555512,
+            3205315870
+          ],
+          "candidateClipXYWords": [
+            1127705576,
+            3282288706
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 74,
+          "sourceWords": [
+            3255444369,
+            0,
+            3261700344,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1129823756,
+            1134514734,
+            1141757977,
+            1142214637
+          ],
+          "retainedYFlipWords": [
+            1129823756,
+            3281998382
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1129884709,
+            3281957746
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057595269,
+            1053716295
+          ],
+          "sumBeforeScaleWords": [
+            1145749360,
+            1133137324
+          ],
+          "screenHomogeneousWords": [
+            1138359698,
+            1121914173
+          ],
+          "screenNormalizedFirstWords": [
+            1138359697,
+            1121914172
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1138376082,
+            1121979709
+          ],
+          "divisionByExtentWords": [
+            1060018088,
+            1047461134
+          ],
+          "scaleByTwoWords": [
+            1068406696,
+            1055849742
+          ],
+          "subtractOneWords": [
+            1052401312,
+            3205005689
+          ],
+          "candidateClipXYWords": [
+            1129884711,
+            3281957746
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 75,
+          "sourceWords": [
+            3259638673,
+            0,
+            3261700344,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1127403368,
+            1134514734,
+            1141757977,
+            1142214637
+          ],
+          "retainedYFlipWords": [
+            1127403368,
+            3281998382
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1127464321,
+            3281957746
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057595269,
+            1053716295
+          ],
+          "sumBeforeScaleWords": [
+            1145144263,
+            1133137324
+          ],
+          "screenHomogeneousWords": [
+            1137709110,
+            1121914173
+          ],
+          "screenNormalizedFirstWords": [
+            1137709110,
+            1121914172
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1137725494,
+            1121979709
+          ],
+          "divisionByExtentWords": [
+            1059497618,
+            1047461134
+          ],
+          "scaleByTwoWords": [
+            1067886226,
+            1055849742
+          ],
+          "subtractOneWords": [
+            1050319432,
+            3205005689
+          ],
+          "candidateClipXYWords": [
+            1127464327,
+            3281957746
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 76,
+          "sourceWords": [
+            3255890435,
+            0,
+            3260751378,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1129566347,
+            1134188198,
+            1141784602,
+            1142241162
+          ],
+          "retainedYFlipWords": [
+            1129566347,
+            3281671846
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1129627466,
+            3281631100
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057570804,
+            1053679599
+          ],
+          "sumBeforeScaleWords": [
+            1145711533,
+            1133516910
+          ],
+          "screenHomogeneousWords": [
+            1138280386,
+            1122485048
+          ],
+          "screenNormalizedFirstWords": [
+            1138280387,
+            1122485048
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1138296770,
+            1122550584
+          ],
+          "divisionByExtentWords": [
+            1059954638,
+            1048070067
+          ],
+          "scaleByTwoWords": [
+            1068343246,
+            1056458675
+          ],
+          "subtractOneWords": [
+            1052147512,
+            3204701222
+          ],
+          "candidateClipXYWords": [
+            1129627463,
+            3281631099
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 77,
+          "sourceWords": [
+            3260084739,
+            0,
+            3260751378,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1127145958,
+            1134188198,
+            1141784602,
+            1142241162
+          ],
+          "retainedYFlipWords": [
+            1127145958,
+            3281671846
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1127207077,
+            3281631100
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057570804,
+            1053679599
+          ],
+          "sumBeforeScaleWords": [
+            1145106436,
+            1133516910
+          ],
+          "screenHomogeneousWords": [
+            1137631562,
+            1122485048
+          ],
+          "screenNormalizedFirstWords": [
+            1137631562,
+            1122485048
+          ],
+          "screenWordDifferences": 0,
+          "halfPixelAdditionWords": [
+            1137647946,
+            1122550584
+          ],
+          "divisionByExtentWords": [
+            1059435579,
+            1048070067
+          ],
+          "scaleByTwoWords": [
+            1067824187,
+            1056458675
+          ],
+          "subtractOneWords": [
+            1050071276,
+            3204701222
+          ],
+          "candidateClipXYWords": [
+            1127207075,
+            3281631099
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 78,
+          "sourceWords": [
+            3256318829,
+            0,
+            3259794304,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1129319136,
+            1133858874,
+            1141811453,
+            1142267913
+          ],
+          "retainedYFlipWords": [
+            1129319136,
+            3281342522
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1129380422,
+            3281301664
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057546266,
+            1053642791
+          ],
+          "sumBeforeScaleWords": [
+            1145676481,
+            1133899736
+          ],
+          "screenHomogeneousWords": [
+            1138204147,
+            1123057668
+          ],
+          "screenNormalizedFirstWords": [
+            1138204147,
+            1123057667
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1138220531,
+            1123123204
+          ],
+          "divisionByExtentWords": [
+            1059893647,
+            1048628431
+          ],
+          "scaleByTwoWords": [
+            1068282255,
+            1057017039
+          ],
+          "subtractOneWords": [
+            1051903548,
+            3204343394
+          ],
+          "candidateClipXYWords": [
+            1129380422,
+            3281301664
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 79,
+          "sourceWords": [
+            3260513133,
+            0,
+            3259794304,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1126898747,
+            1133858874,
+            1141811453,
+            1142267913
+          ],
+          "retainedYFlipWords": [
+            1126898747,
+            3281342522
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1126960033,
+            3281301664
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1057546266,
+            1053642791
+          ],
+          "sumBeforeScaleWords": [
+            1145071384,
+            1133899736
+          ],
+          "screenHomogeneousWords": [
+            1137557093,
+            1123057668
+          ],
+          "screenNormalizedFirstWords": [
+            1137557092,
+            1123057667
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1137573477,
+            1123123204
+          ],
+          "divisionByExtentWords": [
+            1059376004,
+            1048628431
+          ],
+          "scaleByTwoWords": [
+            1067764612,
+            1057017039
+          ],
+          "subtractOneWords": [
+            1049832976,
+            3204343394
+          ],
+          "candidateClipXYWords": [
+            1126960035,
+            3281301664
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        }
+      ]
+    },
+    {
+      "stage": 3,
+      "frame": 599,
+      "draw": 11,
+      "vertices": 4,
+      "primitiveCount": 2,
+      "stride": 20,
+      "fvf": 258,
+      "viewportWords": [
+        0,
+        0,
+        640,
+        480,
+        0,
+        1065353216
+      ],
+      "computedClipMatrixWords": [
+        1034899710,
+        3166555662,
+        987205471,
+        987152494,
+        1060625995,
+        1082885052,
+        3199904798,
+        3199858921,
+        1019750304,
+        1066204618,
+        1064665501,
+        1064605165,
+        1132295939,
+        1155901410,
+        1156577067,
+        1156763852
+      ],
+      "rows": [
+        {
+          "vertex": 0,
+          "sourceWords": [
+            3271557120,
+            3271557120,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1125552846,
+            1151354091,
+            1156957647,
+            1157143005
+          ],
+          "retainedYFlipWords": [
+            1125552846,
+            3298837739
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1125756500,
+            3298803797
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1042596626,
+            1039606939
+          ],
+          "sumBeforeScaleWords": [
+            1158002203,
+            1144039908
+          ],
+          "screenHomogeneousWords": [
+            1135353113,
+            1118473518
+          ],
+          "screenNormalizedFirstWords": [
+            1135353113,
+            1118473517
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1135369497,
+            1118539054
+          ],
+          "divisionByExtentWords": [
+            1057612820,
+            1043791102
+          ],
+          "scaleByTwoWords": [
+            1066001428,
+            1052179710
+          ],
+          "subtractOneWords": [
+            1033781568,
+            3206840705
+          ],
+          "candidateClipXYWords": [
+            1125756500,
+            3298803796
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 1,
+          "sourceWords": [
+            1124073472,
+            3271557120,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1126989038,
+            1151305501,
+            1156961096,
+            1157146441
+          ],
+          "retainedYFlipWords": [
+            1126989038,
+            3298789149
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1127192735,
+            3298755200
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1042594349,
+            1039603523
+          ],
+          "sumBeforeScaleWords": [
+            1158093683,
+            1144143960
+          ],
+          "screenHomogeneousWords": [
+            1135468463,
+            1118571591
+          ],
+          "screenNormalizedFirstWords": [
+            1135468463,
+            1118571591
+          ],
+          "screenWordDifferences": 0,
+          "halfPixelAdditionWords": [
+            1135484847,
+            1118637127
+          ],
+          "divisionByExtentWords": [
+            1057705100,
+            1043895713
+          ],
+          "scaleByTwoWords": [
+            1066093708,
+            1052284321
+          ],
+          "subtractOneWords": [
+            1035258048,
+            3206788400
+          ],
+          "candidateClipXYWords": [
+            1127192733,
+            3298755200
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 2,
+          "sourceWords": [
+            3271557120,
+            1124073472,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1135032460,
+            1159062612,
+            1156193038,
+            1156381263
+          ],
+          "retainedYFlipWords": [
+            1135032460,
+            3306546260
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1135129526,
+            3306530082
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1043126237,
+            1040294374
+          ],
+          "sumBeforeScaleWords": [
+            1158374457,
+            3288021348
+          ],
+          "screenHomogeneousWords": [
+            1136409024,
+            3263065496
+          ],
+          "screenNormalizedFirstWords": [
+            1136409023,
+            3263065498
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1136425408,
+            3262934424
+          ],
+          "divisionByExtentWords": [
+            1058457549,
+            3188105434
+          ],
+          "scaleByTwoWords": [
+            1066846157,
+            3196494042
+          ],
+          "subtractOneWords": [
+            1043742312,
+            3215042614
+          ],
+          "candidateClipXYWords": [
+            1135129529,
+            3306530082
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 3,
+          "sourceWords": [
+            1124073472,
+            1124073472,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1135750556,
+            1159038316,
+            1156196487,
+            1156384699
+          ],
+          "retainedYFlipWords": [
+            1135750556,
+            3306521964
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1135847644,
+            3306505783
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1043123732,
+            1040292495
+          ],
+          "sumBeforeScaleWords": [
+            1158465937,
+            3287813236
+          ],
+          "screenHomogeneousWords": [
+            1136529797,
+            3262851089
+          ],
+          "screenNormalizedFirstWords": [
+            1136529797,
+            3262851088
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1136546181,
+            3262720017
+          ],
+          "divisionByExtentWords": [
+            1058554167,
+            3187991083
+          ],
+          "scaleByTwoWords": [
+            1066942775,
+            3196379691
+          ],
+          "subtractOneWords": [
+            1044515256,
+            3215014027
+          ],
+          "candidateClipXYWords": [
+            1135847643,
+            3306505783
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        }
+      ]
+    },
+    {
+      "stage": 3,
+      "frame": 599,
+      "draw": 68,
+      "vertices": 4,
+      "primitiveCount": 2,
+      "stride": 20,
+      "fvf": 258,
+      "viewportWords": [
+        0,
+        0,
+        640,
+        480,
+        0,
+        1065353216
+      ],
+      "computedClipMatrixWords": [
+        1035141453,
+        998162349,
+        3122641997,
+        3122602740,
+        3188105590,
+        1083083659,
+        3200075406,
+        3200028889,
+        1019750287,
+        1066204618,
+        1064665501,
+        1064605165,
+        1136921199,
+        1100854611,
+        1135728704,
+        1136668036
+      ],
+      "rows": [
+        {
+          "vertex": 0,
+          "sourceWords": [
+            3271557120,
+            3271557120,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1137106044,
+            3288972728,
+            1137281806,
+            1138215313
+          ],
+          "retainedYFlipWords": [
+            1137106044,
+            1141489080
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1137128141,
+            1141503811
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1061015813,
+            1057905860
+          ],
+          "sumBeforeScaleWords": [
+            1146049286,
+            1148560000
+          ],
+          "screenHomogeneousWords": [
+            1142536594,
+            1141414181
+          ],
+          "screenNormalizedFirstWords": [
+            1142536595,
+            1141414181
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1142544786,
+            1141422373
+          ],
+          "divisionByExtentWords": [
+            1064708330,
+            1066522254
+          ],
+          "scaleByTwoWords": [
+            1073096938,
+            1074910862
+          ],
+          "subtractOneWords": [
+            1064063444,
+            1067691292
+          ],
+          "candidateClipXYWords": [
+            1137128139,
+            1141503810
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 1,
+          "sourceWords": [
+            1124073472,
+            3271557120,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1137839249,
+            3288956424,
+            1137276694,
+            1138210221
+          ],
+          "retainedYFlipWords": [
+            1137839249,
+            1141472776
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1137861338,
+            1141487502
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1061020294,
+            1057909220
+          ],
+          "sumBeforeScaleWords": [
+            1146413343,
+            1148541150
+          ],
+          "screenHomogeneousWords": [
+            1142810258,
+            1141406919
+          ],
+          "screenNormalizedFirstWords": [
+            1142810258,
+            1141406919
+          ],
+          "screenWordDifferences": 0,
+          "halfPixelAdditionWords": [
+            1142818450,
+            1141415111
+          ],
+          "divisionByExtentWords": [
+            1065146192,
+            1066514508
+          ],
+          "scaleByTwoWords": [
+            1073534800,
+            1074903116
+          ],
+          "subtractOneWords": [
+            1064939168,
+            1067675800
+          ],
+          "candidateClipXYWords": [
+            1137861338,
+            1141487501
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 2,
+          "sourceWords": [
+            3271557120,
+            1124073472,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1136003149,
+            1142118750,
+            1134180714,
+            1135125851
+          ],
+          "retainedYFlipWords": [
+            1136003149,
+            3289602398
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1136020418,
+            3289590885
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1064493103,
+            1060513828
+          ],
+          "sumBeforeScaleWords": [
+            1143953108,
+            3279690434
+          ],
+          "screenHomogeneousWords": [
+            1143364001,
+            3274924686
+          ],
+          "screenNormalizedFirstWords": [
+            1143364000,
+            3274924685
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1143372193,
+            3274891918
+          ],
+          "divisionByExtentWords": [
+            1065692698,
+            3200176006
+          ],
+          "scaleByTwoWords": [
+            1074081306,
+            3208564614
+          ],
+          "subtractOneWords": [
+            1066032180,
+            3219089347
+          ],
+          "candidateClipXYWords": [
+            1136020417,
+            3289590885
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 3,
+          "sourceWords": [
+            1124073472,
+            1124073472,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1136736354,
+            1142135054,
+            1134175602,
+            1135120759
+          ],
+          "retainedYFlipWords": [
+            1136736354,
+            3289618702
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1136753615,
+            3289607194
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1064500440,
+            1060519330
+          ],
+          "sumBeforeScaleWords": [
+            1144317164,
+            3279765834
+          ],
+          "screenHomogeneousWords": [
+            1143714577,
+            3274983779
+          ],
+          "screenNormalizedFirstWords": [
+            1143714578,
+            3274983780
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1143722769,
+            3274951011
+          ],
+          "divisionByExtentWords": [
+            1065973159,
+            3200239039
+          ],
+          "scaleByTwoWords": [
+            1074361767,
+            3208627647
+          ],
+          "subtractOneWords": [
+            1066593102,
+            3219120864
+          ],
+          "candidateClipXYWords": [
+            1136753614,
+            3289607195
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        }
+      ]
+    },
+    {
+      "stage": 3,
+      "frame": 1199,
+      "draw": 45,
+      "vertices": 4,
+      "primitiveCount": 2,
+      "stride": 20,
+      "fvf": 258,
+      "viewportWords": [
+        0,
+        0,
+        640,
+        480,
+        0,
+        1065353216
+      ],
+      "computedClipMatrixWords": [
+        1035149781,
+        3109450777,
+        3112608535,
+        3112575446,
+        3138063108,
+        1083134638,
+        3199447453,
+        3199403291,
+        1019181439,
+        1065721526,
+        1064743547,
+        1064682918,
+        3272742228,
+        3260800654,
+        1127899951,
+        1129820224
+      ],
+      "rows": [
+        {
+          "vertex": 0,
+          "sourceWords": [
+            3271557120,
+            3271557120,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            3273458156,
+            3290238698,
+            1130846208,
+            1132608756
+          ],
+          "retainedYFlipWords": [
+            3273458156,
+            1142755050
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            3273431483,
+            1142763941
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1067270174,
+            1064034349
+          ],
+          "sumBeforeScaleWords": [
+            1120858104,
+            1147022692
+          ],
+          "screenHomogeneousWords": [
+            1123957247,
+            1145878074
+          ],
+          "screenNormalizedFirstWords": [
+            1123957246,
+            1145878073
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1124022783,
+            1145886266
+          ],
+          "divisionByExtentWords": [
+            1045180006,
+            1071283740
+          ],
+          "scaleByTwoWords": [
+            1053568614,
+            1079672348
+          ],
+          "subtractOneWords": [
+            3206146253,
+            1075478044
+          ],
+          "candidateClipXYWords": [
+            3273431483,
+            1142763942
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 1,
+          "sourceWords": [
+            1124073472,
+            3271557120,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            3271990705,
+            3290239556,
+            1130841900,
+            1132606610
+          ],
+          "retainedYFlipWords": [
+            3271990705,
+            1142755908
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            3271964039,
+            1142764797
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1067272765,
+            1064038236
+          ],
+          "sumBeforeScaleWords": [
+            1123784422,
+            1147022477
+          ],
+          "screenHomogeneousWords": [
+            1125815425,
+            1145881249
+          ],
+          "screenNormalizedFirstWords": [
+            1125815425,
+            1145881249
+          ],
+          "screenWordDifferences": 0,
+          "halfPixelAdditionWords": [
+            1125848193,
+            1145889441
+          ],
+          "divisionByExtentWords": [
+            1048060110,
+            1071287126
+          ],
+          "scaleByTwoWords": [
+            1056448718,
+            1079675734
+          ],
+          "subtractOneWords": [
+            3204706201,
+            1075481430
+          ],
+          "candidateClipXYWords": [
+            3271964039,
+            1142764796
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 2,
+          "sourceWords": [
+            3271557120,
+            1124073472,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            3273493751,
+            1140954738,
+            1124958002,
+            1126889307
+          ],
+          "retainedYFlipWords": [
+            3273493751,
+            3288438386
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            3273476244,
+            3288432550
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1072665688,
+            1068740418
+          ],
+          "sumBeforeScaleWords": [
+            1096197696,
+            3282940214
+          ],
+          "screenHomogeneousWords": [
+            1103683992,
+            3287536547
+          ],
+          "screenNormalizedFirstWords": [
+            1103683990,
+            3287536549
+          ],
+          "screenWordDifferences": 2,
+          "halfPixelAdditionWords": [
+            1103946136,
+            3287520163
+          ],
+          "divisionByExtentWords": [
+            1025763245,
+            3212961879
+          ],
+          "scaleByTwoWords": [
+            1034151853,
+            3221350487
+          ],
+          "subtractOneWords": [
+            3211494154,
+            3225544791
+          ],
+          "candidateClipXYWords": [
+            3273476244,
+            3288432550
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 3,
+          "sourceWords": [
+            1124073472,
+            1124073472,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            3272026300,
+            1140953880,
+            1124953694,
+            1126885015
+          ],
+          "retainedYFlipWords": [
+            3272026300,
+            3288437528
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            3272008800,
+            3288431695
+          ],
+          "clipWPositive": true,
+          "scaleWords": [
+            1072671705,
+            1068744931
+          ],
+          "sumBeforeScaleWords": [
+            1108277100,
+            3282940644
+          ],
+          "screenHomogeneousWords": [
+            1116068086,
+            3287543275
+          ],
+          "screenNormalizedFirstWords": [
+            1116068086,
+            3287543276
+          ],
+          "screenWordDifferences": 1,
+          "halfPixelAdditionWords": [
+            1116133622,
+            3287526891
+          ],
+          "divisionByExtentWords": [
+            1037549962,
+            3212965467
+          ],
+          "scaleByTwoWords": [
+            1045938570,
+            3221354075
+          ],
+          "subtractOneWords": [
+            3209301918,
+            3225548379
+          ],
+          "candidateClipXYWords": [
+            3272008800,
+            3288431694
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        }
+      ]
+    }
+  ],
+  "capturedInputDomainEvidencePath": "artifacts/th14/stage-current-graphics-fe406-oct14/world-w-domain-analysis.json",
+  "priorFusedCPUDomainEvidence": {
+    "diagnosticOnly": true,
+    "worldSubmittedVertices": 11148,
+    "negativeW": 283,
+    "zeroW": 0,
+    "nearZeroBelow1e-4": 0,
+    "mixedSignDraws": 34,
+    "minimumW": -379.46636962890625,
+    "maximumW": 3156.986572265625,
+    "examples": [
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 1,
+        "vertex": 2,
+        "clip": [
+          257.511474609375,
+          484.70745849609375,
+          -45.73229217529297,
+          -15.560806274414062
+        ]
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 1,
+        "vertex": 3,
+        "clip": [
+          279.90380859375,
+          484.70745849609375,
+          -45.73229217529297,
+          -15.560806274414062
+        ]
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 3,
+        "vertex": 3,
+        "clip": [
+          314.81085205078125,
+          590.3485107421875,
+          -30.734718322753906,
+          -0.619476318359375
+        ]
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 43,
+        "vertex": 0,
+        "clip": [
+          515.02294921875,
+          324.4798278808594,
+          -103.19081115722656,
+          -72.8038330078125
+        ]
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 43,
+        "vertex": 1,
+        "clip": [
+          201.53073120117188,
+          324.4798278808594,
+          -103.19081115722656,
+          -72.8038330078125
+        ]
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 47,
+        "vertex": 0,
+        "clip": [
+          -515.02294921875,
+          -316.4142150878906,
+          -117.56047058105469,
+          -87.11961364746094
+        ]
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 47,
+        "vertex": 1,
+        "clip": [
+          -201.53073120117188,
+          -316.4142150878906,
+          -117.56047058105469,
+          -87.11961364746094
+        ]
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 47,
+        "vertex": 2,
+        "clip": [
+          -515.02294921875,
+          -476.6383361816406,
+          -31.371959686279297,
+          -1.2543144226074219
+        ]
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 47,
+        "vertex": 3,
+        "clip": [
+          -201.53073120117188,
+          -476.6383361816406,
+          -31.371959686279297,
+          -1.2543144226074219
+        ]
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 48,
+        "vertex": 0,
+        "clip": [
+          515.02294921875,
+          -423.2417907714844,
+          -60.09532165527344,
+          -29.86996078491211
+        ]
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 48,
+        "vertex": 1,
+        "clip": [
+          201.53073120117188,
+          -423.2417907714844,
+          -60.09532165527344,
+          -29.86996078491211
+        ]
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 49,
+        "vertex": 0,
+        "clip": [
+          -515.02294921875,
+          -743.6936645507812,
+          -31.365331649780273,
+          -1.247711181640625
+        ]
+      }
+    ],
+    "capturedViewportWords": [
+      [
+        0,
+        0,
+        640,
+        480,
+        0,
+        1065353216
+      ]
+    ],
+    "scope": "CPU sequential combined matrices plus fused vector-dot model over every original world vertex in the21 recorded frames; not direct GPU output."
+  },
+  "independentSequentialCPUDomain": {
+    "worldSubmittedVertices": 11148,
+    "negativeW": 283,
+    "zeroW": 0,
+    "mixedSignDraws": 34,
+    "minimumW": -379.46636962890625,
+    "maximumW": 3156.986572265625,
+    "scope": "Independent strict binary32 CPU sequential matrix and vector-dot model over original source vertices; not observed GPU clip outputs."
+  },
+  "officialViewportReference": "https://learn.microsoft.com/en-us/windows/win32/direct3d9/viewports-and-clipping",
+  "officialViewportBoundary": "Microsoft describes a viewport matrix that scales/translates homogeneous vertices and flips y before conversion to non-homogeneous coordinates. This motivates the algebra; it does not specify host or GPU floating-point instruction order.",
+  "zeroNegativeWBoundary": "Current diagnostic is unguarded and w0 division/reconstruction is undefined. Actual captured mixed-sign/negative-w primitives exist; no production adoption is justified. A separate generic w<=0 fallback to original homogeneous XY+bias must be verified if this candidate has benefits. Full92 controls have no zero w; this is not absence in all possible gameplay.",
+  "evidence": {
+    "artifacts/th14/stage-gpu-stream-replay/prepared.json": {
+      "bytes": 1254349,
+      "sha256": "924c7d2327bb996e552e094ce377a818b764019d4c86b3a407baa29c38ea9910"
+    },
+    "docs/porting/th14-stage-current-graphics-observed-oct14.json": {
+      "bytes": 169102,
+      "sha256": "76592c8caf52a2c55376e14ae500f7710d7bb1e7275a3d5bc989650e607b181a"
+    },
+    "artifacts/th14/stage-current-sequential-clip-homogeneous-fe406-oct14/color/build.json": {
+      "bytes": 4568,
+      "sha256": "7096f2fff885416f704d3e05fcb2b314d092eb9fc13dd05afb5b2896210d4baf"
+    },
+    "artifacts/th14/stage-current-sequential-clip-homogeneous-fe406-oct14/sources.json": {
+      "bytes": 2613,
+      "sha256": "5a4aefa0ac4c3f88d792ea4f63cff4f838a83fa12cad33a9f79a9717e84f8d56"
+    },
+    "artifacts/th14/stage-current-sequential-clip-homogeneous-fe406-oct14/color/Shaders.hpp": {
+      "bytes": 4094,
+      "sha256": "44b149ea09777f62d6ee22dc71af08092a4a0a70e16bb65efd2924ab9faf789a"
+    },
+    "artifacts/th14/stage-current-sequential-clip-homogeneous-fe406-oct14/color/Renderer.cpp": {
+      "bytes": 31186,
+      "sha256": "febd4d1129ffacc4e50c25c9882bd2b67664ef02f07d291c8aeb5fc0588d5255"
+    },
+    "artifacts/th14/stage-current-sequential-clip-homogeneous-fe406-oct14/color/ClipComposition.hpp": {
+      "bytes": 867,
+      "sha256": "211e22ecd4e9b5dff87965b09b3dff80af879219d3e3e80a5dd3ef6cfe6bbb63"
+    },
+    "artifacts/th14/stage-current-sequential-clip-homogeneous-fe406-oct14/uv/build.json": {
+      "bytes": 4597,
+      "sha256": "c02c5661a7fee9a2a684efcad2c8cded4ec01585f59b8293e4c0a043bef40c8a"
+    },
+    "artifacts/th14/stage-current-sequential-clip-homogeneous-fe406-oct14/uv/Shaders.hpp": {
+      "bytes": 4110,
+      "sha256": "b55688dc6244996ea00cf8782a0cd44324f11ccef6c9fdce31b7605e165b020f"
+    },
+    "artifacts/th14/stage-current-sequential-clip-homogeneous-fe406-oct14/uv/Renderer.cpp": {
+      "bytes": 31186,
+      "sha256": "febd4d1129ffacc4e50c25c9882bd2b67664ef02f07d291c8aeb5fc0588d5255"
+    },
+    "artifacts/th14/stage-current-sequential-clip-homogeneous-fe406-oct14/uv/ClipComposition.hpp": {
+      "bytes": 867,
+      "sha256": "211e22ecd4e9b5dff87965b09b3dff80af879219d3e3e80a5dd3ef6cfe6bbb63"
+    },
+    "tools/th14-stage-current-sequential-clip-homogeneous-build.mjs": {
+      "bytes": 10205,
+      "sha256": "1a2d017e2d2a241c42b0d6d976eccac9ce409e934ce7bc4eb9c8409f6e973f9a"
+    },
+    "artifacts/th14/stage-current-graphics-fe406-oct14/world-w-domain-analysis.json": {
+      "bytes": 3313,
+      "sha256": "5a3a8d5817840b75ba987754de26cdb151224ef531586ab1729dabd51b3efdd0"
+    }
+  },
+  "toolSha256": "c0b95c3d6707fde4cd434a34f86aae9e024fcfc315f0657955780bba029cac51",
+  "limits": "Strict binary32 sequential CPU dot/divide models and exact Fraction algebra only. GLSL compiler may reassociate, fuse and use its permitted division error. Mathematical predicted clips are not observed GPU outputs, and no transform feedback or actual hardware clip capture is added. Native per-pixel equivalence requires the separate21color/23UV physical browser captures; gameplay/whole-memory/pixels/audio/loading1:1 remain pending."
+}

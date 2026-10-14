@@ -1,4 +1,7 @@
 #include "GraphicsDevice.hpp"
+#if PORT_TITLE == 14
+#include "PauseCaptureTh14.hpp"
+#endif
 #include "AudioDevice.hpp"
 #include "FontDevice.hpp"
 #include "../game/MusicCatalog.hpp"
@@ -485,8 +488,14 @@ struct Application:StageResourceEffects
             if(menu.capture_requested){
                 auto* vm=session.animations.find(menu.background_animation);if(!vm||!vm->sprite||!vm->resource){error="Pause screenshot sprite missing";return false;}
                 const auto& sprite=*vm->sprite;const u32 target=graphics.texture(*vm->resource,sprite.texture);renderer.flush();
-                const i32 from[]={32,16,416,464},to[]={i32(sprite.x),i32(sprite.y),i32(sprite.x+sprite.width),i32(sprite.y+sprite.height)};
-                if(!graphics.backend.resample(GraphicsDevice::screen,from,target,to,nullptr,0,0)){error="Pause GPU capture failed";return false;}
+                i32 from[]={32,16,416,464};u32 source=GraphicsDevice::screen;
+#if PORT_TITLE == 14
+                const auto capture=th14_pause_capture_source(session);
+                std::copy(capture.rectangle,capture.rectangle+4,from);
+                if(capture.text_intermediate){source=graphics.texture(session.resources.core.text,3);if(!source){error="Pause capture source texture missing";return false;}}
+#endif
+                const i32 to[]={i32(sprite.x),i32(sprite.y),i32(sprite.x+sprite.width),i32(sprite.y+sprite.height)};
+                if(!graphics.backend.resample(source,from,target,to,nullptr,0,0)){error="Pause GPU capture failed";return false;}
                 graphics.changed(target);renderer.invalidate();menu.capture_requested=false;
             }
             if(menu.scan_requested)scan_replays();

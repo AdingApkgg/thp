@@ -1,0 +1,4727 @@
+{
+  "diagnosticEvidenceVerified": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "productionChanged": false,
+  "candidateLabel": "Sourcefe406-sequential-clip-scaled-bias-diagnostic-oct14",
+  "sourceBindings": {
+    "runtimes/th12/portable/sdl/Renderer.cpp": {
+      "bytes": 29936,
+      "sha256": "46d874eb2ab77080f521b76f59da9d639216f67be920411d03427c0df4b7c6f6"
+    },
+    "runtimes/th12/portable/sdl/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "runtimes/th12/portable/sdl/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "runtimes/th12/portable/sdl/Shaders.hpp": {
+      "bytes": 3646,
+      "sha256": "78f7648c27aa762c30493e6bf784baabdabdac63e2f683b2ed33470dca5aa252"
+    },
+    "runtimes/th12/portable/sdl/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "runtimes/th12/portable/sdl/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-gpu-stream-fixture.cpp": {
+      "bytes": 5715,
+      "sha256": "a28294ab1106fc4ef0380781b8af7ba8f5b4cf17059c707985e2837845a37f2d"
+    }
+  },
+  "fullNativeControls": 4,
+  "fullControlVertices": 92,
+  "fullControlQuadVertices": 12,
+  "fullControlStripVertices": 80,
+  "fullControlNegativeW": 0,
+  "fullControlZeroW": 0,
+  "cpuClipXYDifferencesFromOriginalBias": 78,
+  "operationOrder": [
+    "Retain current clip matrix-vector operation and y flip.",
+    "Binary32 model product=round(clipXY*extent).",
+    "Binary32 model numerator=round(product+clipW).",
+    "Binary32 model correctedClip=round(numerator/extent), with no division by clipW.",
+    "Keep z/w, depth formula, eye/fog, original vertices/varyings and renderer batching."
+  ],
+  "runtimeDataBoundary": "Only original world/view/projection inputs, source vertex and runtime viewport enter candidate. No captured Native clip words, inferred snap coordinates, per-draw index, stage/frame, pixel-specific number, or explicit grid rounding enters runtime.",
+  "exactRealAlgebra": "For finite w including zero and extent!=0: (x*extent+w)/extent = x+w/extent. Algebraic equality does not imply equality after binary32 rounding.",
+  "mathematicalCPUModels": [
+    {
+      "stage": 2,
+      "frame": 1199,
+      "draw": 44,
+      "vertices": 80,
+      "primitiveCount": 78,
+      "stride": 24,
+      "fvf": 322,
+      "viewportWords": [
+        0,
+        0,
+        640,
+        480,
+        0,
+        1065353216
+      ],
+      "computedClipMatrixWords": [
+        1075034771,
+        0,
+        0,
+        0,
+        0,
+        1068510536,
+        1063638483,
+        1063581998,
+        0,
+        3224382792,
+        1055249875,
+        1055193390,
+        1133755027,
+        1126031839,
+        1142187489,
+        1142642538
+      ],
+      "rows": [
+        {
+          "vertex": 0,
+          "sourceWords": [
+            1090519040,
+            0,
+            3276275712,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1134360124,
+            1144069080,
+            1140582399,
+            1141177108
+          ],
+          "retainedYFlipWords": [
+            1134360124,
+            3291552728
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1134387358,
+            3291534572
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1212429259,
+            3366324762
+          ],
+          "numeratorWords": [
+            1212463302,
+            3366307740
+          ],
+          "candidateClipXYWords": [
+            1134387358,
+            3291534571
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 1,
+          "sourceWords": [
+            3238002688,
+            0,
+            3276275712,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133149930,
+            1144069080,
+            1140582399,
+            1141177108
+          ],
+          "retainedYFlipWords": [
+            1133149930,
+            3291552728
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133177164,
+            3291534572
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1210916516,
+            3366324762
+          ],
+          "numeratorWords": [
+            1210950559,
+            3366307740
+          ],
+          "candidateClipXYWords": [
+            1133177164,
+            3291534571
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 2,
+          "sourceWords": [
+            1088369823,
+            0,
+            3276022318,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1134282609,
+            1143894697,
+            1140639273,
+            1141205439
+          ],
+          "retainedYFlipWords": [
+            1134282609,
+            3291378345
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1134309932,
+            3291360130
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1212332365,
+            3366161278
+          ],
+          "numeratorWords": [
+            1212366519,
+            3366144201
+          ],
+          "candidateClipXYWords": [
+            1134309932,
+            3291360129
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 3,
+          "sourceWords": [
+            3239077296,
+            0,
+            3276022318,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133072415,
+            1143894697,
+            1140639273,
+            1141205439
+          ],
+          "retainedYFlipWords": [
+            1133072415,
+            3291378345
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133099738,
+            3291360130
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1210819623,
+            3366161278
+          ],
+          "numeratorWords": [
+            1210853777,
+            3366144201
+          ],
+          "candidateClipXYWords": [
+            1133099738,
+            3291360129
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 4,
+          "sourceWords": [
+            1085972419,
+            0,
+            3275771108,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1134196143,
+            1143721816,
+            1140695656,
+            1141233525
+          ],
+          "retainedYFlipWords": [
+            1134196143,
+            3291205464
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1134223554,
+            3291187190
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1212224283,
+            3365999202
+          ],
+          "numeratorWords": [
+            1212258546,
+            3365982070
+          ],
+          "candidateClipXYWords": [
+            1134223554,
+            3291187189
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 5,
+          "sourceWords": [
+            3240275998,
+            0,
+            3275771108,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132985949,
+            1143721816,
+            1140695656,
+            1141233525
+          ],
+          "retainedYFlipWords": [
+            1132985949,
+            3291205464
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133013360,
+            3291187190
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1210711540,
+            3365999202
+          ],
+          "numeratorWords": [
+            1210745803,
+            3365982070
+          ],
+          "candidateClipXYWords": [
+            1133013359,
+            3291187189
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 6,
+          "sourceWords": [
+            1083797437,
+            0,
+            3275517929,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1134117699,
+            1143547581,
+            1140752482,
+            1141261831
+          ],
+          "retainedYFlipWords": [
+            1134117699,
+            3291031229
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1134145198,
+            3291012896
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1212126228,
+            3365835857
+          ],
+          "numeratorWords": [
+            1212160602,
+            3365818670
+          ],
+          "candidateClipXYWords": [
+            1134145198,
+            3291012896
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 7,
+          "sourceWords": [
+            3241363490,
+            0,
+            3275517929,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132907504,
+            1143547581,
+            1140752482,
+            1141261831
+          ],
+          "retainedYFlipWords": [
+            1132907504,
+            3291031229
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132935003,
+            3291012896
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1210613484,
+            3365835857
+          ],
+          "numeratorWords": [
+            1210647858,
+            3365818670
+          ],
+          "candidateClipXYWords": [
+            1132935003,
+            3291012896
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 8,
+          "sourceWords": [
+            1080815108,
+            0,
+            3275266052,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1134033856,
+            1143374241,
+            1140809016,
+            1141289992
+          ],
+          "retainedYFlipWords": [
+            1134033856,
+            3290857889
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1134061443,
+            3290839498
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1212021424,
+            3365673351
+          ],
+          "numeratorWords": [
+            1212055908,
+            3365656109
+          ],
+          "candidateClipXYWords": [
+            1134061443,
+            3290839498
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 9,
+          "sourceWords": [
+            3242525823,
+            0,
+            3275266052,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132823662,
+            1143374241,
+            1140809016,
+            1141289992
+          ],
+          "retainedYFlipWords": [
+            1132823662,
+            3290857889
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132851249,
+            3290839498
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1210508682,
+            3365673351
+          ],
+          "numeratorWords": [
+            1210543166,
+            3365656109
+          ],
+          "candidateClipXYWords": [
+            1132851250,
+            3290839498
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 10,
+          "sourceWords": [
+            1076373762,
+            0,
+            3275013260,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133953764,
+            1143200272,
+            1140858221,
+            1141318255
+          ],
+          "retainedYFlipWords": [
+            1133953764,
+            3290683920
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133981440,
+            3290665470
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1211921309,
+            3365510255
+          ],
+          "numeratorWords": [
+            1211955903,
+            3365492958
+          ],
+          "candidateClipXYWords": [
+            1133981439,
+            3290665470
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 11,
+          "sourceWords": [
+            3243636160,
+            0,
+            3275013260,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132743569,
+            1143200272,
+            1140858221,
+            1141318255
+          ],
+          "retainedYFlipWords": [
+            1132743569,
+            3290683920
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132771245,
+            3290665470
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1210408565,
+            3365510255
+          ],
+          "numeratorWords": [
+            1210443159,
+            3365492958
+          ],
+          "candidateClipXYWords": [
+            1132771244,
+            3290665470
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 12,
+          "sourceWords": [
+            1069992544,
+            0,
+            3274760750,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133872495,
+            1143026497,
+            1140886559,
+            1141346486
+          ],
+          "retainedYFlipWords": [
+            1133872495,
+            3290510145
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133900259,
+            3290491636
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1211819723,
+            3365347341
+          ],
+          "numeratorWords": [
+            1211854428,
+            3365329989
+          ],
+          "candidateClipXYWords": [
+            1133900259,
+            3290491636
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 13,
+          "sourceWords": [
+            3244762804,
+            0,
+            3274760750,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132662301,
+            1143026497,
+            1140886559,
+            1141346486
+          ],
+          "retainedYFlipWords": [
+            1132662301,
+            3290510145
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132690065,
+            3290491636
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1210306980,
+            3365347341
+          ],
+          "numeratorWords": [
+            1210341685,
+            3365329989
+          ],
+          "candidateClipXYWords": [
+            1132690065,
+            3290491636
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 14,
+          "sourceWords": [
+            1051771504,
+            0,
+            3274510842,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133781139,
+            1142854512,
+            1140914605,
+            1141374427
+          ],
+          "retainedYFlipWords": [
+            1133781139,
+            3290338160
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133808990,
+            3290319593
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1211705528,
+            3365186105
+          ],
+          "numeratorWords": [
+            1211740342,
+            3365168698
+          ],
+          "candidateClipXYWords": [
+            1133808990,
+            3290319593
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 15,
+          "sourceWords": [
+            3246029292,
+            0,
+            3274510842,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132570945,
+            1142854512,
+            1140914605,
+            1141374427
+          ],
+          "retainedYFlipWords": [
+            1132570945,
+            3290338160
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132598796,
+            3290319593
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1210192785,
+            3365186105
+          ],
+          "numeratorWords": [
+            1210227599,
+            3365168698
+          ],
+          "candidateClipXYWords": [
+            1132598796,
+            3290319593
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 16,
+          "sourceWords": [
+            3209705536,
+            0,
+            3274259935,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133693507,
+            1142681841,
+            1140942762,
+            1141402479
+          ],
+          "retainedYFlipWords": [
+            1133693507,
+            3290165489
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133721446,
+            3290146863
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1211595988,
+            3365024226
+          ],
+          "numeratorWords": [
+            1211630911,
+            3365006764
+          ],
+          "candidateClipXYWords": [
+            1133721446,
+            3290146863
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 17,
+          "sourceWords": [
+            3246817730,
+            0,
+            3274259935,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132483312,
+            1142681841,
+            1140942762,
+            1141402479
+          ],
+          "retainedYFlipWords": [
+            1132483312,
+            3290165489
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132511251,
+            3290146863
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1210083244,
+            3365024226
+          ],
+          "numeratorWords": [
+            1210118167,
+            3365006764
+          ],
+          "candidateClipXYWords": [
+            1132511250,
+            3290146863
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 18,
+          "sourceWords": [
+            3220613120,
+            0,
+            3274008156,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133609274,
+            1142508569,
+            1140971018,
+            1141430629
+          ],
+          "retainedYFlipWords": [
+            1133609274,
+            3289992217
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133637301,
+            3289973533
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1211490696,
+            3364861783
+          ],
+          "numeratorWords": [
+            1211525729,
+            3364844266
+          ],
+          "candidateClipXYWords": [
+            1133637300,
+            3289973532
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 19,
+          "sourceWords": [
+            3247401600,
+            0,
+            3274008156,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132336080,
+            1142508569,
+            1140971018,
+            1141430629
+          ],
+          "retainedYFlipWords": [
+            1132336080,
+            3289992217
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132392133,
+            3289973533
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1209977954,
+            3364861783
+          ],
+          "numeratorWords": [
+            1210012987,
+            3364844266
+          ],
+          "candidateClipXYWords": [
+            1132392133,
+            3289973532
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 20,
+          "sourceWords": [
+            3225531840,
+            0,
+            3273756114,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133526095,
+            1142335115,
+            1140999303,
+            1141458808
+          ],
+          "retainedYFlipWords": [
+            1133526095,
+            3289818763
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133554210,
+            3289800020
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1211386723,
+            3364699170
+          ],
+          "numeratorWords": [
+            1211421866,
+            3364681598
+          ],
+          "candidateClipXYWords": [
+            1133554210,
+            3289800019
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 21,
+          "sourceWords": [
+            3247978168,
+            0,
+            3273756114,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132169720,
+            1142335115,
+            1140999303,
+            1141458808
+          ],
+          "retainedYFlipWords": [
+            1132169720,
+            3289818763
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132225950,
+            3289800020
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1209873979,
+            3364699170
+          ],
+          "numeratorWords": [
+            1209909122,
+            3364681598
+          ],
+          "candidateClipXYWords": [
+            1132225949,
+            3289800019
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 22,
+          "sourceWords": [
+            3229781724,
+            0,
+            3273503220,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133446432,
+            1142161076,
+            1141027684,
+            1141487082
+          ],
+          "retainedYFlipWords": [
+            1133446432,
+            3289644724
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133474635,
+            3289625922
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1211287144,
+            3364536009
+          ],
+          "numeratorWords": [
+            1211322398,
+            3364518382
+          ],
+          "candidateClipXYWords": [
+            1133474635,
+            3289625922
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 23,
+          "sourceWords": [
+            3248530359,
+            0,
+            3273503220,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132010395,
+            1142161076,
+            1141027684,
+            1141487082
+          ],
+          "retainedYFlipWords": [
+            1132010395,
+            3289644724
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132066801,
+            3289625922
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1209774401,
+            3364536009
+          ],
+          "numeratorWords": [
+            1209809655,
+            3364518382
+          ],
+          "candidateClipXYWords": [
+            1132066802,
+            3289625922
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 24,
+          "sourceWords": [
+            3231968892,
+            0,
+            3273250143,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133367548,
+            1141986911,
+            1141056086,
+            1141515377
+          ],
+          "retainedYFlipWords": [
+            1133367548,
+            3289470559
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133395840,
+            3289451698
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1211188539,
+            3364372729
+          ],
+          "numeratorWords": [
+            1211223903,
+            3364355047
+          ],
+          "candidateClipXYWords": [
+            1133395839,
+            3289451698
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 25,
+          "sourceWords": [
+            3249077151,
+            0,
+            3273250143,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1131852628,
+            1141986911,
+            1141056086,
+            1141515377
+          ],
+          "retainedYFlipWords": [
+            1131852628,
+            3289470559
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1131909211,
+            3289451698
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1209675796,
+            3364372729
+          ],
+          "numeratorWords": [
+            1209711160,
+            3364355047
+          ],
+          "candidateClipXYWords": [
+            1131909210,
+            3289451698
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 26,
+          "sourceWords": [
+            3234036040,
+            0,
+            3272996083,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133292993,
+            1141812069,
+            1141084597,
+            1141543782
+          ],
+          "retainedYFlipWords": [
+            1133292993,
+            3289295717
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133321373,
+            3289276797
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1211095345,
+            3364208815
+          ],
+          "numeratorWords": [
+            1211130820,
+            3364191077
+          ],
+          "candidateClipXYWords": [
+            1133321373,
+            3289276797
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 27,
+          "sourceWords": [
+            3249593938,
+            0,
+            3272996083,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1131703518,
+            1141812069,
+            1141084597,
+            1141543782
+          ],
+          "retainedYFlipWords": [
+            1131703518,
+            3289295717
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1131760279,
+            3289276797
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1209582603,
+            3364208815
+          ],
+          "numeratorWords": [
+            1209618078,
+            3364191077
+          ],
+          "candidateClipXYWords": [
+            1131760278,
+            3289276797
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 28,
+          "sourceWords": [
+            3236383048,
+            0,
+            3272744408,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133208345,
+            1141638869,
+            1141112841,
+            1141571920
+          ],
+          "retainedYFlipWords": [
+            1133208345,
+            3289122517
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133236813,
+            3289103538
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1210989535,
+            3364046440
+          ],
+          "numeratorWords": [
+            1211025120,
+            3364028647
+          ],
+          "candidateClipXYWords": [
+            1133236813,
+            3289103538
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 29,
+          "sourceWords": [
+            3250180690,
+            0,
+            3272744408,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1131534221,
+            1141638869,
+            1141112841,
+            1141571920
+          ],
+          "retainedYFlipWords": [
+            1131534221,
+            3289122517
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1131591158,
+            3289103538
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1209476792,
+            3364046440
+          ],
+          "numeratorWords": [
+            1209512377,
+            3364028647
+          ],
+          "candidateClipXYWords": [
+            1131591157,
+            3289103538
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 30,
+          "sourceWords": [
+            3238304144,
+            0,
+            3272491632,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133128185,
+            1141464910,
+            1141141209,
+            1141600182
+          ],
+          "retainedYFlipWords": [
+            1133128185,
+            3288948558
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133156742,
+            3288929520
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1210889335,
+            3363883353
+          ],
+          "numeratorWords": [
+            1210925031,
+            3363865505
+          ],
+          "candidateClipXYWords": [
+            1133156742,
+            3288929520
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 31,
+          "sourceWords": [
+            3250736328,
+            0,
+            3272491632,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1131373901,
+            1141464910,
+            1141141209,
+            1141600182
+          ],
+          "retainedYFlipWords": [
+            1131373901,
+            3288948558
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1131431014,
+            3288929520
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1209376592,
+            3363883353
+          ],
+          "numeratorWords": [
+            1209412288,
+            3363865505
+          ],
+          "candidateClipXYWords": [
+            1131431014,
+            3288929520
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 32,
+          "sourceWords": [
+            3239500702,
+            0,
+            3272240382,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1133041873,
+            1141292002,
+            1141169405,
+            1141628272
+          ],
+          "retainedYFlipWords": [
+            1133041873,
+            3288775650
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1133070517,
+            3288756554
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1210781445,
+            3363610696
+          ],
+          "numeratorWords": [
+            1210817250,
+            3363574891
+          ],
+          "candidateClipXYWords": [
+            1133070517,
+            3288756554
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 33,
+          "sourceWords": [
+            3251334607,
+            0,
+            3272240382,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1131201278,
+            1141292002,
+            1141169405,
+            1141628272
+          ],
+          "retainedYFlipWords": [
+            1131201278,
+            3288775650
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1131258567,
+            3288756554
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1209268703,
+            3363610696
+          ],
+          "numeratorWords": [
+            1209304508,
+            3363574891
+          ],
+          "candidateClipXYWords": [
+            1131258566,
+            3288756554
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 34,
+          "sourceWords": [
+            3240567942,
+            0,
+            3271986866,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132964890,
+            1141117535,
+            1141197856,
+            1141656616
+          ],
+          "retainedYFlipWords": [
+            1132964890,
+            3288601183
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132993623,
+            3288582028
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1210685216,
+            3363283570
+          ],
+          "numeratorWords": [
+            1210721132,
+            3363247654
+          ],
+          "candidateClipXYWords": [
+            1132993622,
+            3288582028
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 35,
+          "sourceWords": [
+            3251868227,
+            0,
+            3271986866,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1131047311,
+            1141117535,
+            1141197856,
+            1141656616
+          ],
+          "retainedYFlipWords": [
+            1131047311,
+            3288601183
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1131104777,
+            3288582028
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1209172473,
+            3363283570
+          ],
+          "numeratorWords": [
+            1209208389,
+            3363247654
+          ],
+          "candidateClipXYWords": [
+            1131104776,
+            3288582028
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 36,
+          "sourceWords": [
+            3241702106,
+            0,
+            3271734488,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132883079,
+            1140943851,
+            1141226179,
+            1141684833
+          ],
+          "retainedYFlipWords": [
+            1132883079,
+            3288427499
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132911900,
+            3288408285
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1210582953,
+            3362957913
+          ],
+          "numeratorWords": [
+            1210618979,
+            3362921887
+          ],
+          "candidateClipXYWords": [
+            1132911900,
+            3288408285
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 37,
+          "sourceWords": [
+            3252435309,
+            0,
+            3271734488,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1130883689,
+            1140943851,
+            1141226179,
+            1141684833
+          ],
+          "retainedYFlipWords": [
+            1130883689,
+            3288427499
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130941331,
+            3288408285
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1209070210,
+            3362957913
+          ],
+          "numeratorWords": [
+            1209106236,
+            3362921887
+          ],
+          "candidateClipXYWords": [
+            1130941331,
+            3288408285
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 38,
+          "sourceWords": [
+            3242739366,
+            0,
+            3271403853,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132808258,
+            1140687410,
+            1141254684,
+            1141713231
+          ],
+          "retainedYFlipWords": [
+            1132808258,
+            3288171058
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132837168,
+            3288132512
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1210489426,
+            3362630159
+          ],
+          "numeratorWords": [
+            1210525563,
+            3362594022
+          ],
+          "candidateClipXYWords": [
+            1132837167,
+            3288132512
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 39,
+          "sourceWords": [
+            3252953939,
+            0,
+            3271403853,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1130734048,
+            1140687410,
+            1141254684,
+            1141713231
+          ],
+          "retainedYFlipWords": [
+            1130734048,
+            3288171058
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130791868,
+            3288132512
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1208976684,
+            3362630159
+          ],
+          "numeratorWords": [
+            1209012821,
+            3362594022
+          ],
+          "candidateClipXYWords": [
+            1130791867,
+            3288132512
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 40,
+          "sourceWords": [
+            3243637034,
+            0,
+            3270891713,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132743506,
+            1140334960,
+            1141283421,
+            1141741860
+          ],
+          "retainedYFlipWords": [
+            1132743506,
+            3287818608
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132772505,
+            3287779942
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1210408486,
+            3362299737
+          ],
+          "numeratorWords": [
+            1210444735,
+            3362263488
+          ],
+          "candidateClipXYWords": [
+            1132772505,
+            3287779942
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 41,
+          "sourceWords": [
+            3253402773,
+            0,
+            3270891713,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1130604544,
+            1140334960,
+            1141283421,
+            1141741860
+          ],
+          "retainedYFlipWords": [
+            1130604544,
+            3287818608
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130662543,
+            3287779942
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1208895744,
+            3362299737
+          ],
+          "numeratorWords": [
+            1208931993,
+            3362263488
+          ],
+          "candidateClipXYWords": [
+            1130662542,
+            3287779942
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 42,
+          "sourceWords": [
+            3244633388,
+            0,
+            3270382432,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132671636,
+            1139984478,
+            1141311998,
+            1141770330
+          ],
+          "retainedYFlipWords": [
+            1132671636,
+            3287468126
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132700724,
+            3287429342
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1210318649,
+            3361971160
+          ],
+          "numeratorWords": [
+            1210355009,
+            3361934800
+          ],
+          "candidateClipXYWords": [
+            1132700724,
+            3287429342
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 43,
+          "sourceWords": [
+            3253900950,
+            0,
+            3270382432,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1130460804,
+            1139984478,
+            1141311998,
+            1141770330
+          ],
+          "retainedYFlipWords": [
+            1130460804,
+            3287468126
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130518981,
+            3287429342
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1208805906,
+            3361971160
+          ],
+          "numeratorWords": [
+            1208842266,
+            3361934800
+          ],
+          "candidateClipXYWords": [
+            1130518979,
+            3287429342
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 44,
+          "sourceWords": [
+            3245643734,
+            0,
+            3269873582,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132598757,
+            1139634292,
+            1141340551,
+            1141798776
+          ],
+          "retainedYFlipWords": [
+            1132598757,
+            3287117940
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132627934,
+            3287079037
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1210227550,
+            3361642861
+          ],
+          "numeratorWords": [
+            1210264021,
+            3361606390
+          ],
+          "candidateClipXYWords": [
+            1132627934,
+            3287079038
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 45,
+          "sourceWords": [
+            3254406123,
+            0,
+            3269873582,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1130315044,
+            1139634292,
+            1141340551,
+            1141798776
+          ],
+          "retainedYFlipWords": [
+            1130315044,
+            3287117940
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130373398,
+            3287079037
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1208714806,
+            3361642861
+          ],
+          "numeratorWords": [
+            1208751277,
+            3361606390
+          ],
+          "candidateClipXYWords": [
+            1130373397,
+            3287079038
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 46,
+          "sourceWords": [
+            3246549987,
+            0,
+            3269366475,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132521939,
+            1139285306,
+            1141369006,
+            1141827124
+          ],
+          "retainedYFlipWords": [
+            1132521939,
+            3286768954
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132551205,
+            3286729933
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1210131528,
+            3361315686
+          ],
+          "numeratorWords": [
+            1210168110,
+            3361279104
+          ],
+          "candidateClipXYWords": [
+            1132551205,
+            3286729933
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 47,
+          "sourceWords": [
+            3254859250,
+            0,
+            3269366475,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1130161408,
+            1139285306,
+            1141369006,
+            1141827124
+          ],
+          "retainedYFlipWords": [
+            1130161408,
+            3286768954
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130219940,
+            3286729933
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1208618784,
+            3361315686
+          ],
+          "numeratorWords": [
+            1208655366,
+            3361279104
+          ],
+          "candidateClipXYWords": [
+            1130219939,
+            3286729933
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 48,
+          "sourceWords": [
+            3247116653,
+            0,
+            3268861689,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132418296,
+            1138937916,
+            1141397330,
+            1141855342
+          ],
+          "retainedYFlipWords": [
+            1132418296,
+            3286421564
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132469542,
+            3286382425
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1210029339,
+            3360990008
+          ],
+          "numeratorWords": [
+            1210066031,
+            3360953316
+          ],
+          "candidateClipXYWords": [
+            1132469542,
+            3286382426
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 49,
+          "sourceWords": [
+            3255142582,
+            0,
+            3268861689,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1129997908,
+            1138937916,
+            1141397330,
+            1141855342
+          ],
+          "retainedYFlipWords": [
+            1129997908,
+            3286421564
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130056616,
+            3286382425
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1208516596,
+            3360990008
+          ],
+          "numeratorWords": [
+            1208553288,
+            3360953316
+          ],
+          "candidateClipXYWords": [
+            1130056614,
+            3286382426
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 50,
+          "sourceWords": [
+            3247632183,
+            0,
+            3268353489,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132269548,
+            1138588178,
+            1141425846,
+            1141883752
+          ],
+          "retainedYFlipWords": [
+            1132269548,
+            3286071826
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132328433,
+            3286032569
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1209936372,
+            3360662129
+          ],
+          "numeratorWords": [
+            1209973175,
+            3360625326
+          ],
+          "candidateClipXYWords": [
+            1132328434,
+            3286032570
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 51,
+          "sourceWords": [
+            3255400348,
+            0,
+            3268353489,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1129849160,
+            1138588178,
+            1141425846,
+            1141883752
+          ],
+          "retainedYFlipWords": [
+            1129849160,
+            3286071826
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1129908045,
+            3286032569
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1208423629,
+            3360662129
+          ],
+          "numeratorWords": [
+            1208460432,
+            3360625326
+          ],
+          "candidateClipXYWords": [
+            1129908045,
+            3286032570
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 52,
+          "sourceWords": [
+            3248198881,
+            0,
+            3267848706,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1132106038,
+            1138240790,
+            1141454171,
+            1141911970
+          ],
+          "retainedYFlipWords": [
+            1132106038,
+            3285724438
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1132165100,
+            3285685063
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1209834178,
+            3360336453
+          ],
+          "numeratorWords": [
+            1209871092,
+            3360299539
+          ],
+          "candidateClipXYWords": [
+            1132165101,
+            3285685063
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 53,
+          "sourceWords": [
+            3255683696,
+            0,
+            3267848706,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1129685649,
+            1138240790,
+            1141454171,
+            1141911970
+          ],
+          "retainedYFlipWords": [
+            1129685649,
+            3285724438
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1129744711,
+            3285685063
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1208321435,
+            3360336453
+          ],
+          "numeratorWords": [
+            1208358349,
+            3360299539
+          ],
+          "candidateClipXYWords": [
+            1129744712,
+            3285685063
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 54,
+          "sourceWords": [
+            3248792917,
+            0,
+            3267345891,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1131934639,
+            1137894758,
+            1141482385,
+            1141940078
+          ],
+          "retainedYFlipWords": [
+            1131934639,
+            3285378406
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1131993876,
+            3285338914
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1209727053,
+            3360012048
+          ],
+          "numeratorWords": [
+            1209764076,
+            3359975025
+          ],
+          "candidateClipXYWords": [
+            1131993875,
+            3285338915
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 55,
+          "sourceWords": [
+            3255980714,
+            0,
+            3267345891,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1129514250,
+            1137894758,
+            1141482385,
+            1141940078
+          ],
+          "retainedYFlipWords": [
+            1129514250,
+            3285378406
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1129573487,
+            3285338914
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1208214310,
+            3360012048
+          ],
+          "numeratorWords": [
+            1208251333,
+            3359975025
+          ],
+          "candidateClipXYWords": [
+            1129573486,
+            3285338915
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 56,
+          "sourceWords": [
+            3249446050,
+            0,
+            3266847678,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1131746188,
+            1137551892,
+            1141510341,
+            1141967929
+          ],
+          "retainedYFlipWords": [
+            1131746188,
+            3285035540
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1131805600,
+            3284995932
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1209609272,
+            3359690611
+          ],
+          "numeratorWords": [
+            1209646404,
+            3359653479
+          ],
+          "candidateClipXYWords": [
+            1131805600,
+            3284995933
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 57,
+          "sourceWords": [
+            3256307281,
+            0,
+            3266847678,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1129325800,
+            1137551892,
+            1141510341,
+            1141967929
+          ],
+          "retainedYFlipWords": [
+            1129325800,
+            3285035540
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1129385212,
+            3284995932
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1208096529,
+            3359690611
+          ],
+          "numeratorWords": [
+            1208133661,
+            3359653479
+          ],
+          "candidateClipXYWords": [
+            1129385211,
+            3284995933
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 58,
+          "sourceWords": [
+            3250103514,
+            0,
+            3266349821,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1131556488,
+            1137209272,
+            1141538276,
+            1141995760
+          ],
+          "retainedYFlipWords": [
+            1131556488,
+            3284692920
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1131616074,
+            3284653196
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1209490709,
+            3359369404
+          ],
+          "numeratorWords": [
+            1209527950,
+            3359332163
+          ],
+          "candidateClipXYWords": [
+            1131616074,
+            3284653196
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 59,
+          "sourceWords": [
+            3256636013,
+            0,
+            3266349821,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1129136100,
+            1137209272,
+            1141538276,
+            1141995760
+          ],
+          "retainedYFlipWords": [
+            1129136100,
+            3284692920
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1129195686,
+            3284653196
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1207977966,
+            3359369404
+          ],
+          "numeratorWords": [
+            1208015207,
+            3359332163
+          ],
+          "candidateClipXYWords": [
+            1129195685,
+            3284653196
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 60,
+          "sourceWords": [
+            3250813746,
+            0,
+            3265856515,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1131351563,
+            1136869783,
+            1141565957,
+            1142023337
+          ],
+          "retainedYFlipWords": [
+            1131351563,
+            3284353431
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1131411321,
+            3284313592
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1209362631,
+            3359051134
+          ],
+          "numeratorWords": [
+            1209399980,
+            3359013785
+          ],
+          "candidateClipXYWords": [
+            1131411322,
+            3284313593
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 61,
+          "sourceWords": [
+            3256991129,
+            0,
+            3265856515,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1128931174,
+            1136869783,
+            1141565957,
+            1142023337
+          ],
+          "retainedYFlipWords": [
+            1128931174,
+            3284353431
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1128990932,
+            3284313592
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1207740224,
+            3359051134
+          ],
+          "numeratorWords": [
+            1207814921,
+            3359013785
+          ],
+          "candidateClipXYWords": [
+            1128990932,
+            3284313593
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 62,
+          "sourceWords": [
+            3251527986,
+            0,
+            3265363571,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1131145482,
+            1136530543,
+            1141593617,
+            1142050893
+          ],
+          "retainedYFlipWords": [
+            1131145482,
+            3284014191
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1131205412,
+            3283974238
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1209233830,
+            3358733096
+          ],
+          "numeratorWords": [
+            1209271286,
+            3358695640
+          ],
+          "candidateClipXYWords": [
+            1131205411,
+            3283974238
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 63,
+          "sourceWords": [
+            3257348249,
+            0,
+            3265363571,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1128725093,
+            1136530543,
+            1141593617,
+            1142050893
+          ],
+          "retainedYFlipWords": [
+            1128725093,
+            3284014191
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1128785023,
+            3283974238
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1207482622,
+            3358733096
+          ],
+          "numeratorWords": [
+            1207557535,
+            3358695640
+          ],
+          "candidateClipXYWords": [
+            1128785023,
+            3283974238
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 64,
+          "sourceWords": [
+            3252277820,
+            0,
+            3264873941,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1130929130,
+            1136193584,
+            1141621091,
+            1142078264
+          ],
+          "retainedYFlipWords": [
+            1130929130,
+            3283677232
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130989231,
+            3283637165
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1209098610,
+            3358417197
+          ],
+          "numeratorWords": [
+            1209136173,
+            3358379634
+          ],
+          "candidateClipXYWords": [
+            1130989230,
+            3283637165
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 65,
+          "sourceWords": [
+            3257723166,
+            0,
+            3264873941,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1128508741,
+            1136193584,
+            1141621091,
+            1142078264
+          ],
+          "retainedYFlipWords": [
+            1128508741,
+            3283677232
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1128568842,
+            3283637165
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1207212182,
+            3358417197
+          ],
+          "numeratorWords": [
+            1207287308,
+            3358379634
+          ],
+          "candidateClipXYWords": [
+            1128568842,
+            3283637165
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 66,
+          "sourceWords": [
+            3253047192,
+            0,
+            3264386210,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1130707141,
+            1135857932,
+            1141648459,
+            1142105529
+          ],
+          "retainedYFlipWords": [
+            1130707141,
+            3283341580
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130767413,
+            3283301399
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1208959867,
+            3358102523
+          ],
+          "numeratorWords": [
+            1208997537,
+            3358064853
+          ],
+          "candidateClipXYWords": [
+            1130767413,
+            3283301398
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 67,
+          "sourceWords": [
+            3258107852,
+            0,
+            3264386210,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1128286752,
+            1135857932,
+            1141648459,
+            1142105529
+          ],
+          "retainedYFlipWords": [
+            1128286752,
+            3283341580
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1128347024,
+            3283301399
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1206934696,
+            3358102523
+          ],
+          "numeratorWords": [
+            1207010035,
+            3358064853
+          ],
+          "candidateClipXYWords": [
+            1128347023,
+            3283301398
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 68,
+          "sourceWords": [
+            3253770036,
+            0,
+            3263894050,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1130498576,
+            1135519232,
+            1141676075,
+            1142133042
+          ],
+          "retainedYFlipWords": [
+            1130498576,
+            3283002880
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130559020,
+            3282962584
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1208829514,
+            3357784992
+          ],
+          "numeratorWords": [
+            1208867291,
+            3357747215
+          ],
+          "candidateClipXYWords": [
+            1130559019,
+            3282962585
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 69,
+          "sourceWords": [
+            3258469274,
+            0,
+            3263894050,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1128078188,
+            1135519232,
+            1141676075,
+            1142133042
+          ],
+          "retainedYFlipWords": [
+            1128078188,
+            3283002880
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1128138632,
+            3282962584
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1206673991,
+            3357784992
+          ],
+          "numeratorWords": [
+            1206749545,
+            3357747215
+          ],
+          "candidateClipXYWords": [
+            1128138631,
+            3282962585
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 70,
+          "sourceWords": [
+            3254488238,
+            0,
+            3263401465,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1130291352,
+            1135180240,
+            1141703715,
+            1142160578
+          ],
+          "retainedYFlipWords": [
+            1130291352,
+            3282663888
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130351968,
+            3282623478
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1208699999,
+            3357467187
+          ],
+          "numeratorWords": [
+            1208737884,
+            3357429302
+          ],
+          "candidateClipXYWords": [
+            1130351968,
+            3282623477
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 71,
+          "sourceWords": [
+            3258828375,
+            0,
+            3263401465,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1127870963,
+            1135180240,
+            1141703715,
+            1142160578
+          ],
+          "retainedYFlipWords": [
+            1127870963,
+            3282663888
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1127931579,
+            3282623478
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1206414960,
+            3357467187
+          ],
+          "numeratorWords": [
+            1206490730,
+            3357429302
+          ],
+          "candidateClipXYWords": [
+            1127931579,
+            3282623477
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 72,
+          "sourceWords": [
+            3255026001,
+            0,
+            3262661843,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1130065182,
+            1134845581,
+            1141731002,
+            1142187762
+          ],
+          "retainedYFlipWords": [
+            1130065182,
+            3282329229
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1130125968,
+            3282288705
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1208558643,
+            3357153444
+          ],
+          "numeratorWords": [
+            1208596634,
+            3357115453
+          ],
+          "candidateClipXYWords": [
+            1130125968,
+            3282288705
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 73,
+          "sourceWords": [
+            3259220305,
+            0,
+            3262661843,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1127644794,
+            1134845581,
+            1141731002,
+            1142187762
+          ],
+          "retainedYFlipWords": [
+            1127644794,
+            3282329229
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1127705580,
+            3282288705
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1206132248,
+            3357153444
+          ],
+          "numeratorWords": [
+            1206208230,
+            3357115453
+          ],
+          "candidateClipXYWords": [
+            1127705579,
+            3282288705
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 74,
+          "sourceWords": [
+            3255444369,
+            0,
+            3261700344,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1129823756,
+            1134514734,
+            1141757977,
+            1142214637
+          ],
+          "retainedYFlipWords": [
+            1129823756,
+            3281998382
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1129884709,
+            3281957746
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1208407752,
+            3356843275
+          ],
+          "numeratorWords": [
+            1208445848,
+            3356805179
+          ],
+          "candidateClipXYWords": [
+            1129884710,
+            3281957746
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 75,
+          "sourceWords": [
+            3259638673,
+            0,
+            3261700344,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1127403368,
+            1134514734,
+            1141757977,
+            1142214637
+          ],
+          "retainedYFlipWords": [
+            1127403368,
+            3281998382
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1127464321,
+            3281957746
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1205830466,
+            3356843275
+          ],
+          "numeratorWords": [
+            1205906658,
+            3356805179
+          ],
+          "candidateClipXYWords": [
+            1127464322,
+            3281957746
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 76,
+          "sourceWords": [
+            3255890435,
+            0,
+            3260751378,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1129566347,
+            1134188198,
+            1141784602,
+            1142241162
+          ],
+          "retainedYFlipWords": [
+            1129566347,
+            3281671846
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1129627466,
+            3281631100
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1208246871,
+            3356537148
+          ],
+          "numeratorWords": [
+            1208285071,
+            3356498948
+          ],
+          "candidateClipXYWords": [
+            1129627467,
+            3281631100
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 77,
+          "sourceWords": [
+            3260084739,
+            0,
+            3260751378,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1127145958,
+            1134188198,
+            1141784602,
+            1142241162
+          ],
+          "retainedYFlipWords": [
+            1127145958,
+            3281671846
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1127207077,
+            3281631100
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1205508704,
+            3356537148
+          ],
+          "numeratorWords": [
+            1205585103,
+            3356498948
+          ],
+          "candidateClipXYWords": [
+            1127207078,
+            3281631100
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 78,
+          "sourceWords": [
+            3256318829,
+            0,
+            3259794304,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1129319136,
+            1133858874,
+            1141811453,
+            1142267913
+          ],
+          "retainedYFlipWords": [
+            1129319136,
+            3281342522
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1129380422,
+            3281301664
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1208092364,
+            3356228406
+          ],
+          "numeratorWords": [
+            1208130668,
+            3356190102
+          ],
+          "candidateClipXYWords": [
+            1129380422,
+            3281301664
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 79,
+          "sourceWords": [
+            3260513133,
+            0,
+            3259794304,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1126898747,
+            1133858874,
+            1141811453,
+            1142267913
+          ],
+          "retainedYFlipWords": [
+            1126898747,
+            3281342522
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1126960033,
+            3281301664
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1205199690,
+            3356228406
+          ],
+          "numeratorWords": [
+            1205276298,
+            3356190102
+          ],
+          "candidateClipXYWords": [
+            1126960034,
+            3281301664
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        }
+      ]
+    },
+    {
+      "stage": 3,
+      "frame": 599,
+      "draw": 11,
+      "vertices": 4,
+      "primitiveCount": 2,
+      "stride": 20,
+      "fvf": 258,
+      "viewportWords": [
+        0,
+        0,
+        640,
+        480,
+        0,
+        1065353216
+      ],
+      "computedClipMatrixWords": [
+        1034899710,
+        3166555662,
+        987205471,
+        987152494,
+        1060625995,
+        1082885052,
+        3199904798,
+        3199858921,
+        1019750304,
+        1066204618,
+        1064665501,
+        1064605165,
+        1132295939,
+        1155901410,
+        1156577067,
+        1156763852
+      ],
+      "rows": [
+        {
+          "vertex": 0,
+          "sourceWords": [
+            3271557120,
+            3271557120,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1125552846,
+            1151354091,
+            1156957647,
+            1157143005
+          ],
+          "retainedYFlipWords": [
+            1125552846,
+            3298837739
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1125756500,
+            3298803797
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1203517314,
+            3373678748
+          ],
+          "numeratorWords": [
+            1203771881,
+            3373646927
+          ],
+          "candidateClipXYWords": [
+            1125756500,
+            3298803796
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 1,
+          "sourceWords": [
+            1124073472,
+            3271557120,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1126989038,
+            1151305501,
+            1156961096,
+            1157146441
+          ],
+          "retainedYFlipWords": [
+            1126989038,
+            3298789149
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1127192735,
+            3298755200
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1205312554,
+            3373633195
+          ],
+          "numeratorWords": [
+            1205567175,
+            3373601367
+          ],
+          "candidateClipXYWords": [
+            1127192735,
+            3298755199
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 2,
+          "sourceWords": [
+            3271557120,
+            1124073472,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1135032460,
+            1159062612,
+            1156193038,
+            1156381263
+          ],
+          "retainedYFlipWords": [
+            1135032460,
+            3306546260
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1135129526,
+            3306530082
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1213269679,
+            3381429775
+          ],
+          "numeratorWords": [
+            1213391012,
+            3381414608
+          ],
+          "candidateClipXYWords": [
+            1135129526,
+            3306530082
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 3,
+          "sourceWords": [
+            1124073472,
+            1124073472,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1135750556,
+            1159038316,
+            1156196487,
+            1156384699
+          ],
+          "retainedYFlipWords": [
+            1135750556,
+            3306521964
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1135847644,
+            3306505783
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1214167299,
+            3381406997
+          ],
+          "numeratorWords": [
+            1214288658,
+            3381391827
+          ],
+          "candidateClipXYWords": [
+            1135847643,
+            3306505782
+          ],
+          "clipXYWordDifferences": 2,
+          "exactRealAlgebraEquivalent": true
+        }
+      ]
+    },
+    {
+      "stage": 3,
+      "frame": 599,
+      "draw": 68,
+      "vertices": 4,
+      "primitiveCount": 2,
+      "stride": 20,
+      "fvf": 258,
+      "viewportWords": [
+        0,
+        0,
+        640,
+        480,
+        0,
+        1065353216
+      ],
+      "computedClipMatrixWords": [
+        1035141453,
+        998162349,
+        3122641997,
+        3122602740,
+        3188105590,
+        1083083659,
+        3200075406,
+        3200028889,
+        1019750287,
+        1066204618,
+        1064665501,
+        1064605165,
+        1136921199,
+        1100854611,
+        1135728704,
+        1136668036
+      ],
+      "rows": [
+        {
+          "vertex": 0,
+          "sourceWords": [
+            3271557120,
+            3271557120,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1137106044,
+            3288972728,
+            1137281806,
+            1138215313
+          ],
+          "retainedYFlipWords": [
+            1137106044,
+            1141489080
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1137128141,
+            1141503811
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1215861659,
+            1216422364
+          ],
+          "numeratorWords": [
+            1215889280,
+            1216436174
+          ],
+          "candidateClipXYWords": [
+            1137128141,
+            1141503810
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 1,
+          "sourceWords": [
+            1124073472,
+            3271557120,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1137839249,
+            3288956424,
+            1137276694,
+            1138210221
+          ],
+          "retainedYFlipWords": [
+            1137839249,
+            1141472776
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1137861338,
+            1141487502
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1216563163,
+            1216407080
+          ],
+          "numeratorWords": [
+            1216576968,
+            1216420885
+          ],
+          "candidateClipXYWords": [
+            1137861338,
+            1141487502
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 2,
+          "sourceWords": [
+            3271557120,
+            1124073472,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1136003149,
+            1142118750,
+            1134180714,
+            1135125851
+          ],
+          "retainedYFlipWords": [
+            1136003149,
+            3289602398
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1136020418,
+            3289590885
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1214483040,
+            3364496328
+          ],
+          "numeratorWords": [
+            1214504627,
+            3364485535
+          ],
+          "candidateClipXYWords": [
+            1136020418,
+            3289590885
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 3,
+          "sourceWords": [
+            1124073472,
+            1124073472,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            1136736354,
+            1142135054,
+            1134175602,
+            1135120759
+          ],
+          "retainedYFlipWords": [
+            1136736354,
+            3289618702
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            1136753615,
+            3289607194
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            1215399546,
+            3364511613
+          ],
+          "numeratorWords": [
+            1215421123,
+            3364500825
+          ],
+          "candidateClipXYWords": [
+            1136753615,
+            3289607195
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        }
+      ]
+    },
+    {
+      "stage": 3,
+      "frame": 1199,
+      "draw": 45,
+      "vertices": 4,
+      "primitiveCount": 2,
+      "stride": 20,
+      "fvf": 258,
+      "viewportWords": [
+        0,
+        0,
+        640,
+        480,
+        0,
+        1065353216
+      ],
+      "computedClipMatrixWords": [
+        1035149781,
+        3109450777,
+        3112608535,
+        3112575446,
+        3138063108,
+        1083134638,
+        3199447453,
+        3199403291,
+        1019181439,
+        1065721526,
+        1064743547,
+        1064682918,
+        3272742228,
+        3260800654,
+        1127899951,
+        1129820224
+      ],
+      "rows": [
+        {
+          "vertex": 0,
+          "sourceWords": [
+            3271557120,
+            3271557120,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            3273458156,
+            3290238698,
+            1130846208,
+            1132608756
+          ],
+          "retainedYFlipWords": [
+            3273458156,
+            1142755050
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            3273431483,
+            1142763941
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            3351528039,
+            1217609211
+          ],
+          "numeratorWords": [
+            3351494698,
+            1217617546
+          ],
+          "candidateClipXYWords": [
+            3273431483,
+            1142763940
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 1,
+          "sourceWords": [
+            1124073472,
+            3271557120,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            3271990705,
+            3290239556,
+            1130841900,
+            1132606610
+          ],
+          "retainedYFlipWords": [
+            3271990705,
+            1142755908
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            3271964039,
+            1142764797
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            3349693725,
+            1217610016
+          ],
+          "numeratorWords": [
+            3349660392,
+            1217618349
+          ],
+          "candidateClipXYWords": [
+            3271964038,
+            1142764797
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 2,
+          "sourceWords": [
+            3271557120,
+            1124073472,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            3273493751,
+            1140954738,
+            1124958002,
+            1126889307
+          ],
+          "retainedYFlipWords": [
+            3273493751,
+            3288438386
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            3273476244,
+            3288432550
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            3351572533,
+            3362978326
+          ],
+          "numeratorWords": [
+            3351550649,
+            3362967384
+          ],
+          "candidateClipXYWords": [
+            3273476244,
+            3288432550
+          ],
+          "clipXYWordDifferences": 0,
+          "exactRealAlgebraEquivalent": true
+        },
+        {
+          "vertex": 3,
+          "sourceWords": [
+            1124073472,
+            1124073472,
+            0,
+            1065353216
+          ],
+          "sequentialCPUClipWords": [
+            3272026300,
+            1140953880,
+            1124953694,
+            1126885015
+          ],
+          "retainedYFlipWords": [
+            3272026300,
+            3288437528
+          ],
+          "viewportWords": [
+            0,
+            0,
+            640,
+            480,
+            0,
+            1065353216
+          ],
+          "originalHomogeneousBiasWords": [
+            3272008800,
+            3288431695
+          ],
+          "clipWPositive": true,
+          "scaledProductWords": [
+            3349738219,
+            3362976717
+          ],
+          "numeratorWords": [
+            3349716344,
+            3362965779
+          ],
+          "candidateClipXYWords": [
+            3272008800,
+            3288431694
+          ],
+          "clipXYWordDifferences": 1,
+          "exactRealAlgebraEquivalent": true
+        }
+      ]
+    }
+  ],
+  "capturedInputDomainEvidencePath": "artifacts/th14/stage-current-graphics-fe406-oct14/world-w-domain-analysis.json",
+  "priorFusedCPUDomainEvidence": {
+    "diagnosticOnly": true,
+    "worldSubmittedVertices": 11148,
+    "negativeW": 283,
+    "zeroW": 0,
+    "nearZeroBelow1e-4": 0,
+    "mixedSignDraws": 34,
+    "minimumW": -379.46636962890625,
+    "maximumW": 3156.986572265625,
+    "examples": [
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 1,
+        "vertex": 2,
+        "clip": [
+          257.511474609375,
+          484.70745849609375,
+          -45.73229217529297,
+          -15.560806274414062
+        ]
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 1,
+        "vertex": 3,
+        "clip": [
+          279.90380859375,
+          484.70745849609375,
+          -45.73229217529297,
+          -15.560806274414062
+        ]
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 3,
+        "vertex": 3,
+        "clip": [
+          314.81085205078125,
+          590.3485107421875,
+          -30.734718322753906,
+          -0.619476318359375
+        ]
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 43,
+        "vertex": 0,
+        "clip": [
+          515.02294921875,
+          324.4798278808594,
+          -103.19081115722656,
+          -72.8038330078125
+        ]
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 43,
+        "vertex": 1,
+        "clip": [
+          201.53073120117188,
+          324.4798278808594,
+          -103.19081115722656,
+          -72.8038330078125
+        ]
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 47,
+        "vertex": 0,
+        "clip": [
+          -515.02294921875,
+          -316.4142150878906,
+          -117.56047058105469,
+          -87.11961364746094
+        ]
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 47,
+        "vertex": 1,
+        "clip": [
+          -201.53073120117188,
+          -316.4142150878906,
+          -117.56047058105469,
+          -87.11961364746094
+        ]
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 47,
+        "vertex": 2,
+        "clip": [
+          -515.02294921875,
+          -476.6383361816406,
+          -31.371959686279297,
+          -1.2543144226074219
+        ]
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 47,
+        "vertex": 3,
+        "clip": [
+          -201.53073120117188,
+          -476.6383361816406,
+          -31.371959686279297,
+          -1.2543144226074219
+        ]
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 48,
+        "vertex": 0,
+        "clip": [
+          515.02294921875,
+          -423.2417907714844,
+          -60.09532165527344,
+          -29.86996078491211
+        ]
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 48,
+        "vertex": 1,
+        "clip": [
+          201.53073120117188,
+          -423.2417907714844,
+          -60.09532165527344,
+          -29.86996078491211
+        ]
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "draw": 49,
+        "vertex": 0,
+        "clip": [
+          -515.02294921875,
+          -743.6936645507812,
+          -31.365331649780273,
+          -1.247711181640625
+        ]
+      }
+    ],
+    "capturedViewportWords": [
+      [
+        0,
+        0,
+        640,
+        480,
+        0,
+        1065353216
+      ]
+    ],
+    "scope": "CPU sequential combined matrices plus fused vector-dot model over every original world vertex in the21 recorded frames; not direct GPU output."
+  },
+  "independentSequentialCPUDomain": {
+    "worldSubmittedVertices": 11148,
+    "negativeW": 283,
+    "zeroW": 0,
+    "mixedSignDraws": 34,
+    "minimumW": -379.46636962890625,
+    "maximumW": 3156.986572265625,
+    "scope": "Independent strict binary32 CPU sequential matrix and vector-dot model over original source vertices; not observed GPU clip outputs."
+  },
+  "officialViewportReference": "https://learn.microsoft.com/en-us/windows/win32/direct3d9/viewports-and-clipping",
+  "officialViewportBoundary": "Microsoft describes a viewport matrix that scales/translates homogeneous vertices and flips y before conversion to non-homogeneous coordinates. This motivates the algebra; it does not specify host or GPU floating-point instruction order.",
+  "zeroNegativeWBoundary": "No division by w occurs; zero/negative w does not create a new division domain failure. Actual34 mixed-sign and283 negative-w source-input CPU cases exist. The multiplication of clipXY*extent can overflow outside the actual captured finite domain; unchanged-bias fallback requires a separate controlled GPU candidate before production if needed. The6 constructed finite CPU controls are mathematical checks, not physical shader or Native captures.",
+  "scaledIntermediateDomain": {
+    "vertices": 11148,
+    "maximumAbsScaledProduct": 2024478.25,
+    "maximumAbsNumerator": 2026769.0,
+    "allActualProductsAndNumeratorsFinite": true
+  },
+  "constructedCPUZeroNegativeWControls": [
+    {
+      "clipXYWord": 1065353216,
+      "clipWWord": 0,
+      "extentWord": 1142947840,
+      "oldBiasWord": 1065353216,
+      "newScaledBiasWord": 1065353216,
+      "finite": true
+    },
+    {
+      "clipXYWord": 3212836864,
+      "clipWWord": 0,
+      "extentWord": 1139802112,
+      "oldBiasWord": 3212836864,
+      "newScaledBiasWord": 3212836864,
+      "finite": true
+    },
+    {
+      "clipXYWord": 1065353216,
+      "clipWWord": 3212836864,
+      "extentWord": 1142947840,
+      "oldBiasWord": 1065327002,
+      "newScaledBiasWord": 1065327002,
+      "finite": true
+    },
+    {
+      "clipXYWord": 3212836864,
+      "clipWWord": 3212836864,
+      "extentWord": 1139802112,
+      "oldBiasWord": 3212854340,
+      "newScaledBiasWord": 3212854340,
+      "finite": true
+    },
+    {
+      "clipXYWord": 0,
+      "clipWWord": 1065353216,
+      "extentWord": 1142947840,
+      "oldBiasWord": 986500301,
+      "newScaledBiasWord": 986500301,
+      "finite": true
+    },
+    {
+      "clipXYWord": 1073741824,
+      "clipWWord": 1065353216,
+      "extentWord": 1139802112,
+      "oldBiasWord": 1073750562,
+      "newScaledBiasWord": 1073750562,
+      "finite": true
+    }
+  ],
+  "evidence": {
+    "artifacts/th14/stage-gpu-stream-replay/prepared.json": {
+      "bytes": 1254349,
+      "sha256": "924c7d2327bb996e552e094ce377a818b764019d4c86b3a407baa29c38ea9910"
+    },
+    "docs/porting/th14-stage-current-graphics-observed-oct14.json": {
+      "bytes": 169102,
+      "sha256": "76592c8caf52a2c55376e14ae500f7710d7bb1e7275a3d5bc989650e607b181a"
+    },
+    "artifacts/th14/stage-current-sequential-clip-scaled-bias-fe406-oct14/color/build.json": {
+      "bytes": 4526,
+      "sha256": "b7147fafa05bad0a32d2e9bb927828c344fea1046132d4c1b5f81ff2b6dc3271"
+    },
+    "artifacts/th14/stage-current-sequential-clip-scaled-bias-fe406-oct14/sources.json": {
+      "bytes": 2628,
+      "sha256": "c5810a021dce60796ddd90152b4cd901e63c53650168b2dcd5c99f8847b8475d"
+    },
+    "artifacts/th14/stage-current-sequential-clip-scaled-bias-fe406-oct14/color/Shaders.hpp": {
+      "bytes": 3976,
+      "sha256": "e148aa0839e4ee2e3fcc4fbc6609a751d9ac6c623409b8bee4811eb5c50d48bf"
+    },
+    "artifacts/th14/stage-current-sequential-clip-scaled-bias-fe406-oct14/color/Renderer.cpp": {
+      "bytes": 31186,
+      "sha256": "febd4d1129ffacc4e50c25c9882bd2b67664ef02f07d291c8aeb5fc0588d5255"
+    },
+    "artifacts/th14/stage-current-sequential-clip-scaled-bias-fe406-oct14/color/ClipComposition.hpp": {
+      "bytes": 867,
+      "sha256": "211e22ecd4e9b5dff87965b09b3dff80af879219d3e3e80a5dd3ef6cfe6bbb63"
+    },
+    "artifacts/th14/stage-current-sequential-clip-scaled-bias-fe406-oct14/uv/build.json": {
+      "bytes": 4555,
+      "sha256": "ef93e180c6725d60f92e0da2ce3b44dce8cd34e3f951bab8578e8114483a3591"
+    },
+    "artifacts/th14/stage-current-sequential-clip-scaled-bias-fe406-oct14/uv/Shaders.hpp": {
+      "bytes": 3992,
+      "sha256": "2f5752cc4f1c458e9db6cff2e681f5d51b0d2af1456c7a6d2596d356179c0e3a"
+    },
+    "artifacts/th14/stage-current-sequential-clip-scaled-bias-fe406-oct14/uv/Renderer.cpp": {
+      "bytes": 31186,
+      "sha256": "febd4d1129ffacc4e50c25c9882bd2b67664ef02f07d291c8aeb5fc0588d5255"
+    },
+    "artifacts/th14/stage-current-sequential-clip-scaled-bias-fe406-oct14/uv/ClipComposition.hpp": {
+      "bytes": 867,
+      "sha256": "211e22ecd4e9b5dff87965b09b3dff80af879219d3e3e80a5dd3ef6cfe6bbb63"
+    },
+    "tools/th14-stage-current-sequential-clip-scaled-bias-build.mjs": {
+      "bytes": 10060,
+      "sha256": "9b75b2266dd2b2c85405ace06b686d838c7948e2a618ee7900b053dff0d55576"
+    },
+    "artifacts/th14/stage-current-graphics-fe406-oct14/world-w-domain-analysis.json": {
+      "bytes": 3313,
+      "sha256": "5a3a8d5817840b75ba987754de26cdb151224ef531586ab1729dabd51b3efdd0"
+    }
+  },
+  "toolSha256": "cb119c77b68a414c4756f69c57da8aa762a0d070f2e8e5b1faac3a972ae05a0c",
+  "limits": "Strict binary32 sequential CPU dot/divide models and exact Fraction algebra only. GLSL compiler may reassociate, fuse and use its permitted division error. Mathematical predicted clips are not observed GPU outputs, and no transform feedback or actual hardware clip capture is added. Native per-pixel equivalence requires the separate21color/23UV physical browser captures; gameplay/whole-memory/pixels/audio/loading1:1 remain pending."
+}

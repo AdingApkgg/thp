@@ -1,5 +1,19 @@
 # 移植核心接手记录 · 2026-10-14
 
+当前仅推进TH14，整作1:1未完成。本次将独立原版HAL对照成立的float32矩阵组合与半像素运算用于实际渲染源码，保留原有实例化、world／eye／fog和其他作品路径。当前21个完整颜色缓冲的差异由旧基线3,887通道降至880，最大差100；3个整帧一致。23个孤立UV／coverage样本中20个完整hash一致。原版实际完整RGBA32F现有7幅，其中4幅逐字相同，另外3幅合计5,292个UV字差，覆盖差0，全部失败保留。[当前检查点](th14-clip-pause-current-checkpoint-oct14.json)。
+
+有限值条件分支曾使实际颜色差退回6,940通道，已独立隔离并撤下；失败构建和报告仍保留。显式row-dot对照没有改善，也未采用。当前实现只声称所捕获实际矩阵／viewport域的改善，不把少量UV控制或间接拟合坐标当作全场景通过；没有注入原版矩阵、拟合坐标、固定varying或强制flush。[当前生产图形证据](th14-stage-production-clip-current-source-verified-oct14.json)、[失败分支](th14-stage-production-clip-scaled-bias-observed-oct14.json)。
+
+普通Pause在真实对话存活时改取text.anm纹理3、源矩形128,16,512,464，其他普通Pause保持后缓冲32,16,416,464，并保留原版ImmediatePause的draw前时点。原版GUI+194完整MSG构造／更新／结束写入、6个独立源／矩形用例及真实Dialogue生命周期均核对。DeferredEnd的postDraw时序和实际截图像素仍未证明。[暂停来源修正](th14-pause-dialogue-capture-verified-oct14.json)。
+
+265个游戏核心源码和703条历史证据绑定（约2.17GB）重新逐字节核对，保持不变；四份完整headless／ASAN输入和普通Normal结局／存档／回放证据仅在这份未改核心范围复用，没有称为本次重跑或新渲染验收。灵梦A Lunatic90,793次独立原版回调仍有29个选定玩法字段一致，25个加载计数、72个加载编号、8个原版Z字及181,570个视觉字差保留。原版采集预算仍不等于普通原版结局／完整终止证明。其他自机／难度与整作视觉、音频继续施工。
+
+当前正式SDL为1,874,327字节、SHA-256 `2515c719895fc0c2e61c3a329f928c76af6a433b679abead90793abfee36bef4`，146源码／145头文件绑定，无诊断生产入口。冻结站点127文件，外壳预缓存97项且少于5MiB，全部28项原版字体／音乐和DATA仍完整部署。浏览器新版读取旧slot01 A、自动播放468帧并自然返回；旧录像的保存版本不改写。保留2条历史Service Worker警告，当前启动／播放无新增警告或错误，不称完整游戏离线、成绩持久化或完整浏览器通关已经验证。[浏览器流程](th14-clip-pause-browser-flow-verified-oct14.json)。
+
+下一主线是实际加载生命周期：换关请求不造截图，等待现存首capture槽、真实60ms单调时间，再按copy0 interrupt2／header RNG初始化／HUD／Stage／新Enemy发布／ECL的原版顺序执行。25个计数提前清零和72个owner缺席差已映射，原版窗口长度只作诊断，不成为等待常量。当前准备中的原型尚未合入生产。[最小实施清单](TH14_STAGED_LOADER_MINIMUM_IMPLEMENTATION.md)。completeGame=false、nativeEquivalent=false保持；其他作品不占坑。
+
+## 模板层检查点（ff39edb版本）
+
 当前仅推进TH14，整作1:1尚未完成。本次修正真实模板层差异：擦弹effect24、死亡／中弹effect27／28和消弹bullet199均保留原版模板层。此前layer=0使24／27／28实际落到0，199落到0；原版分别为18和21。当前七个实际生产调用用例已对照原版；focus26的14保持正确，effect58／100第0帧会设为20／16，不把传入参数差异误报为实际绘制层错误。[当前源码检查点](th14-template-layer-current-checkpoint-oct14.json)。
 
 当前四份完整输入均自然结束，非恢复ASAN／UBSan检查通过：灵梦A Lunatic90,793、灵梦B Lunatic98,074、咲夜A Normal96,016和灵梦A Extra39,458帧。独立原版灵梦A Lunatic实际采集90,793次Player回调，无超时；29个选定玩法字段全程一致，25处加载玩法计数差、181,570个视觉RNG字差及80个对象差（72处加载编号、8处原版Z字）完整保留。原版采集预算不是普通原版结局／完整终止证明。Extra30个选定玩法字段差0，78,916个视觉字差保留；Normal29个玩法字段一致，25处加载计数差保留。灵梦B尚无完整独立原版基线。[完整对象复算](th14-template-layer-full-combat-verified-oct14.json)。

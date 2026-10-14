@@ -1,0 +1,5856 @@
+{
+  "diagnosticEvidenceVerified": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "productionChanged": false,
+  "label": "Sourcefe406-sequential-clip-snap8-diagnostic-oct14",
+  "sourceBindings": {
+    "runtimes/th12/portable/sdl/Renderer.cpp": {
+      "bytes": 29936,
+      "sha256": "46d874eb2ab77080f521b76f59da9d639216f67be920411d03427c0df4b7c6f6"
+    },
+    "runtimes/th12/portable/sdl/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "runtimes/th12/portable/sdl/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "runtimes/th12/portable/sdl/Shaders.hpp": {
+      "bytes": 3646,
+      "sha256": "78f7648c27aa762c30493e6bf784baabdabdac63e2f683b2ed33470dca5aa252"
+    },
+    "runtimes/th12/portable/sdl/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "runtimes/th12/portable/sdl/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-gpu-stream-fixture.cpp": {
+      "bytes": 5715,
+      "sha256": "a28294ab1106fc4ef0380781b8af7ba8f5b4cf17059c707985e2837845a37f2d"
+    }
+  },
+  "gpu": {
+    "vendor": "Google Inc. (NVIDIA)",
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 2080 Ti (0x00001E07) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "shadingLanguageVersion": "WebGL GLSL ES 3.00 (OpenGL ES GLSL ES 3.0 Chromium)",
+    "subpixelBits": 4,
+    "clipControlAvailable": true,
+    "clipOrigin": 36001,
+    "clipDepthMode": 37727,
+    "clipLowerLeft": 36001,
+    "clipZeroToOne": 37727,
+    "colorBufferFloatAvailable": true
+  },
+  "clipDiagnostics": {
+    "color": {
+      "regularMatrices": 516,
+      "instanceBatches": 92,
+      "instanceMatrices": 445,
+      "maxVertexAttribs": 16
+    },
+    "uv": {
+      "regularMatrices": 23,
+      "instanceBatches": 0,
+      "instanceMatrices": 0,
+      "maxVertexAttribs": 16
+    }
+  },
+  "compilerFlags": {
+    "color": [
+      "-O2",
+      "-g0",
+      "-std=c++17",
+      "-ffp-contract=off",
+      "-fno-exceptions",
+      "-fno-rtti",
+      "-DPORT_TITLE=14",
+      "--use-port=sdl3",
+      "--no-entry",
+      "-sDEFAULT_TO_CXX=1",
+      "-sMODULARIZE=1",
+      "-sEXPORT_ES6=1",
+      "-sENVIRONMENT=web",
+      "-sALLOW_MEMORY_GROWTH=1",
+      "-sMIN_WEBGL_VERSION=2",
+      "-sMAX_WEBGL_VERSION=2",
+      "-sGL_SUPPORT_AUTOMATIC_ENABLE_EXTENSIONS=0",
+      "-sEXPORTED_RUNTIME_METHODS=HEAPU8",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-sEXPORTED_FUNCTIONS=_gpu_allocate,_gpu_release,_gpu_initialize,_gpu_error,_gpu_texture,_gpu_begin,_gpu_render_state,_gpu_sampler,_gpu_texture_stage,_gpu_bind,_gpu_fvf,_gpu_matrix,_gpu_viewport,_gpu_clear,_gpu_draw,_gpu_read,_gpu_clip_regular_count,_gpu_clip_instance_batches,_gpu_clip_instance_count"
+    ],
+    "uv": [
+      "-O2",
+      "-g0",
+      "-std=c++17",
+      "-ffp-contract=off",
+      "-fno-exceptions",
+      "-fno-rtti",
+      "-DPORT_TITLE=14",
+      "--use-port=sdl3",
+      "--no-entry",
+      "-sDEFAULT_TO_CXX=1",
+      "-sMODULARIZE=1",
+      "-sEXPORT_ES6=1",
+      "-sENVIRONMENT=web",
+      "-sALLOW_MEMORY_GROWTH=1",
+      "-sMIN_WEBGL_VERSION=2",
+      "-sMAX_WEBGL_VERSION=2",
+      "-sGL_SUPPORT_AUTOMATIC_ENABLE_EXTENSIONS=0",
+      "-sEXPORTED_RUNTIME_METHODS=HEAPU8",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-sEXPORTED_FUNCTIONS=_gpu_allocate,_gpu_release,_gpu_initialize,_gpu_error,_gpu_texture,_gpu_begin,_gpu_render_state,_gpu_sampler,_gpu_texture_stage,_gpu_bind,_gpu_fvf,_gpu_matrix,_gpu_viewport,_gpu_clear,_gpu_draw,_gpu_read,_gpu_clip_regular_count,_gpu_clip_instance_batches,_gpu_clip_instance_count,_gpu_float_begin,_gpu_float_read"
+    ]
+  },
+  "color": {
+    "frames": 21,
+    "directDraws": 1005,
+    "pixelBytes": 25804800,
+    "exactFrames": 3,
+    "differentChannels": 2515,
+    "maxDelta": 100,
+    "strictPixelsEqual": false,
+    "rows": [
+      {
+        "index": 0,
+        "stage": 1,
+        "frame": 0,
+        "differentChannels": 1,
+        "maxDelta": 1,
+        "strictPixelsEqual": false,
+        "portableSha256": "074326031fdc89da298ff5e461224c9b6dc1d43e5bae3d34fb714f501e35a256",
+        "nativeSha256": "26f863b5d4303034d023c1047c2f0a68fb4006dc6dba8eec86db236718970d6e",
+        "first": [
+          {
+            "x": 61,
+            "y": 204,
+            "channel": 0,
+            "portable": 139,
+            "native": 138
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "stage": 1,
+        "frame": 599,
+        "differentChannels": 5,
+        "maxDelta": 1,
+        "strictPixelsEqual": false,
+        "portableSha256": "cc7b5bc62f18edaba8e3ac26809401c475333867efd9e0de642575a1c8011f6b",
+        "nativeSha256": "450ceaceaecd90fafe3ed224ec6e0c7a533f7eafae1bbdacbee93533ae9ae4a4",
+        "first": [
+          {
+            "x": 283,
+            "y": 37,
+            "channel": 1,
+            "portable": 215,
+            "native": 216
+          },
+          {
+            "x": 81,
+            "y": 153,
+            "channel": 0,
+            "portable": 197,
+            "native": 196
+          },
+          {
+            "x": 562,
+            "y": 197,
+            "channel": 2,
+            "portable": 127,
+            "native": 126
+          },
+          {
+            "x": 149,
+            "y": 291,
+            "channel": 1,
+            "portable": 129,
+            "native": 128
+          },
+          {
+            "x": 629,
+            "y": 312,
+            "channel": 1,
+            "portable": 115,
+            "native": 114
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "stage": 1,
+        "frame": 1199,
+        "differentChannels": 881,
+        "maxDelta": 1,
+        "strictPixelsEqual": false,
+        "portableSha256": "9cd5386d7c6a3049378276e2f4c5c0ffe37c98d88d988d4bdbfcf2aa3e9c85e7",
+        "nativeSha256": "1950771f4374ef672998960f004de09323d0be6ff0694b15242691389f2c9822",
+        "first": [
+          {
+            "x": 15,
+            "y": 79,
+            "channel": 1,
+            "portable": 148,
+            "native": 147
+          },
+          {
+            "x": 20,
+            "y": 128,
+            "channel": 2,
+            "portable": 121,
+            "native": 120
+          },
+          {
+            "x": 290,
+            "y": 128,
+            "channel": 2,
+            "portable": 157,
+            "native": 156
+          },
+          {
+            "x": 425,
+            "y": 128,
+            "channel": 2,
+            "portable": 153,
+            "native": 152
+          },
+          {
+            "x": 235,
+            "y": 139,
+            "channel": 2,
+            "portable": 117,
+            "native": 116
+          },
+          {
+            "x": 59,
+            "y": 151,
+            "channel": 1,
+            "portable": 136,
+            "native": 135
+          },
+          {
+            "x": 113,
+            "y": 161,
+            "channel": 0,
+            "portable": 158,
+            "native": 159
+          },
+          {
+            "x": 113,
+            "y": 161,
+            "channel": 1,
+            "portable": 131,
+            "native": 132
+          },
+          {
+            "x": 113,
+            "y": 161,
+            "channel": 3,
+            "portable": 208,
+            "native": 207
+          },
+          {
+            "x": 119,
+            "y": 162,
+            "channel": 0,
+            "portable": 163,
+            "native": 164
+          },
+          {
+            "x": 119,
+            "y": 162,
+            "channel": 3,
+            "portable": 205,
+            "native": 204
+          },
+          {
+            "x": 104,
+            "y": 164,
+            "channel": 0,
+            "portable": 162,
+            "native": 163
+          },
+          {
+            "x": 104,
+            "y": 164,
+            "channel": 2,
+            "portable": 110,
+            "native": 111
+          },
+          {
+            "x": 104,
+            "y": 164,
+            "channel": 3,
+            "portable": 212,
+            "native": 211
+          },
+          {
+            "x": 120,
+            "y": 164,
+            "channel": 3,
+            "portable": 206,
+            "native": 205
+          },
+          {
+            "x": 126,
+            "y": 165,
+            "channel": 0,
+            "portable": 135,
+            "native": 136
+          },
+          {
+            "x": 126,
+            "y": 165,
+            "channel": 1,
+            "portable": 106,
+            "native": 107
+          },
+          {
+            "x": 126,
+            "y": 165,
+            "channel": 2,
+            "portable": 104,
+            "native": 105
+          },
+          {
+            "x": 126,
+            "y": 165,
+            "channel": 3,
+            "portable": 202,
+            "native": 201
+          },
+          {
+            "x": 85,
+            "y": 166,
+            "channel": 2,
+            "portable": 106,
+            "native": 107
+          },
+          {
+            "x": 85,
+            "y": 166,
+            "channel": 3,
+            "portable": 208,
+            "native": 207
+          },
+          {
+            "x": 87,
+            "y": 166,
+            "channel": 2,
+            "portable": 103,
+            "native": 104
+          },
+          {
+            "x": 87,
+            "y": 166,
+            "channel": 3,
+            "portable": 213,
+            "native": 212
+          },
+          {
+            "x": 133,
+            "y": 167,
+            "channel": 3,
+            "portable": 211,
+            "native": 212
+          },
+          {
+            "x": 89,
+            "y": 169,
+            "channel": 0,
+            "portable": 152,
+            "native": 153
+          },
+          {
+            "x": 89,
+            "y": 169,
+            "channel": 1,
+            "portable": 130,
+            "native": 131
+          },
+          {
+            "x": 89,
+            "y": 169,
+            "channel": 2,
+            "portable": 120,
+            "native": 121
+          },
+          {
+            "x": 89,
+            "y": 169,
+            "channel": 3,
+            "portable": 206,
+            "native": 205
+          },
+          {
+            "x": 49,
+            "y": 170,
+            "channel": 0,
+            "portable": 171,
+            "native": 172
+          },
+          {
+            "x": 49,
+            "y": 170,
+            "channel": 1,
+            "portable": 143,
+            "native": 144
+          },
+          {
+            "x": 49,
+            "y": 170,
+            "channel": 3,
+            "portable": 211,
+            "native": 210
+          },
+          {
+            "x": 68,
+            "y": 172,
+            "channel": 3,
+            "portable": 212,
+            "native": 211
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "stage": 2,
+        "frame": 0,
+        "differentChannels": 579,
+        "maxDelta": 1,
+        "strictPixelsEqual": false,
+        "portableSha256": "72693b135154e090898838398b4b5e714428f2054321a54839d4048ee6eb95fe",
+        "nativeSha256": "0a0a8fd40751e853f8753a22c99b85fe275f8beba70ca39af0fafcb32f566fa2",
+        "first": [
+          {
+            "x": 500,
+            "y": 58,
+            "channel": 1,
+            "portable": 136,
+            "native": 137
+          },
+          {
+            "x": 550,
+            "y": 116,
+            "channel": 1,
+            "portable": 127,
+            "native": 128
+          },
+          {
+            "x": 282,
+            "y": 172,
+            "channel": 2,
+            "portable": 63,
+            "native": 64
+          },
+          {
+            "x": 36,
+            "y": 224,
+            "channel": 0,
+            "portable": 115,
+            "native": 116
+          },
+          {
+            "x": 40,
+            "y": 236,
+            "channel": 2,
+            "portable": 78,
+            "native": 79
+          },
+          {
+            "x": 41,
+            "y": 238,
+            "channel": 0,
+            "portable": 100,
+            "native": 99
+          },
+          {
+            "x": 24,
+            "y": 251,
+            "channel": 0,
+            "portable": 93,
+            "native": 92
+          },
+          {
+            "x": 59,
+            "y": 251,
+            "channel": 0,
+            "portable": 83,
+            "native": 84
+          },
+          {
+            "x": 61,
+            "y": 256,
+            "channel": 2,
+            "portable": 65,
+            "native": 64
+          },
+          {
+            "x": 32,
+            "y": 259,
+            "channel": 2,
+            "portable": 93,
+            "native": 92
+          },
+          {
+            "x": 32,
+            "y": 261,
+            "channel": 1,
+            "portable": 151,
+            "native": 152
+          },
+          {
+            "x": 55,
+            "y": 268,
+            "channel": 2,
+            "portable": 66,
+            "native": 67
+          },
+          {
+            "x": 80,
+            "y": 270,
+            "channel": 0,
+            "portable": 81,
+            "native": 82
+          },
+          {
+            "x": 25,
+            "y": 274,
+            "channel": 0,
+            "portable": 110,
+            "native": 109
+          },
+          {
+            "x": 20,
+            "y": 275,
+            "channel": 1,
+            "portable": 146,
+            "native": 147
+          },
+          {
+            "x": 41,
+            "y": 276,
+            "channel": 1,
+            "portable": 103,
+            "native": 104
+          },
+          {
+            "x": 79,
+            "y": 278,
+            "channel": 1,
+            "portable": 97,
+            "native": 98
+          },
+          {
+            "x": 57,
+            "y": 282,
+            "channel": 1,
+            "portable": 101,
+            "native": 100
+          },
+          {
+            "x": 24,
+            "y": 283,
+            "channel": 2,
+            "portable": 83,
+            "native": 82
+          },
+          {
+            "x": 65,
+            "y": 288,
+            "channel": 1,
+            "portable": 119,
+            "native": 118
+          },
+          {
+            "x": 20,
+            "y": 291,
+            "channel": 0,
+            "portable": 93,
+            "native": 92
+          },
+          {
+            "x": 60,
+            "y": 292,
+            "channel": 0,
+            "portable": 98,
+            "native": 99
+          },
+          {
+            "x": 32,
+            "y": 294,
+            "channel": 1,
+            "portable": 138,
+            "native": 137
+          },
+          {
+            "x": 19,
+            "y": 297,
+            "channel": 0,
+            "portable": 105,
+            "native": 106
+          },
+          {
+            "x": 41,
+            "y": 298,
+            "channel": 1,
+            "portable": 116,
+            "native": 117
+          },
+          {
+            "x": 53,
+            "y": 299,
+            "channel": 0,
+            "portable": 79,
+            "native": 80
+          },
+          {
+            "x": 67,
+            "y": 299,
+            "channel": 2,
+            "portable": 58,
+            "native": 59
+          },
+          {
+            "x": 22,
+            "y": 300,
+            "channel": 0,
+            "portable": 97,
+            "native": 98
+          },
+          {
+            "x": 89,
+            "y": 300,
+            "channel": 1,
+            "portable": 114,
+            "native": 113
+          },
+          {
+            "x": 34,
+            "y": 301,
+            "channel": 2,
+            "portable": 61,
+            "native": 60
+          },
+          {
+            "x": 62,
+            "y": 301,
+            "channel": 1,
+            "portable": 131,
+            "native": 130
+          },
+          {
+            "x": 20,
+            "y": 306,
+            "channel": 2,
+            "portable": 81,
+            "native": 82
+          }
+        ]
+      },
+      {
+        "index": 4,
+        "stage": 2,
+        "frame": 599,
+        "differentChannels": 31,
+        "maxDelta": 1,
+        "strictPixelsEqual": false,
+        "portableSha256": "c36486ff7c65e52c0ce7fdce0189c03ebf3d933c8316d9446a1f66a95f88b941",
+        "nativeSha256": "263afa016f30aae9decb8e124622e1fb4e840163e3b4c4ff7a1990f557d79409",
+        "first": [
+          {
+            "x": 555,
+            "y": 33,
+            "channel": 0,
+            "portable": 107,
+            "native": 108
+          },
+          {
+            "x": 555,
+            "y": 33,
+            "channel": 1,
+            "portable": 176,
+            "native": 177
+          },
+          {
+            "x": 558,
+            "y": 33,
+            "channel": 0,
+            "portable": 99,
+            "native": 100
+          },
+          {
+            "x": 550,
+            "y": 35,
+            "channel": 2,
+            "portable": 101,
+            "native": 100
+          },
+          {
+            "x": 550,
+            "y": 35,
+            "channel": 3,
+            "portable": 232,
+            "native": 231
+          },
+          {
+            "x": 485,
+            "y": 72,
+            "channel": 2,
+            "portable": 79,
+            "native": 80
+          },
+          {
+            "x": 485,
+            "y": 72,
+            "channel": 3,
+            "portable": 202,
+            "native": 203
+          },
+          {
+            "x": 481,
+            "y": 74,
+            "channel": 2,
+            "portable": 100,
+            "native": 99
+          },
+          {
+            "x": 481,
+            "y": 74,
+            "channel": 3,
+            "portable": 230,
+            "native": 229
+          },
+          {
+            "x": 624,
+            "y": 153,
+            "channel": 0,
+            "portable": 120,
+            "native": 119
+          },
+          {
+            "x": 624,
+            "y": 153,
+            "channel": 3,
+            "portable": 235,
+            "native": 234
+          },
+          {
+            "x": 629,
+            "y": 155,
+            "channel": 0,
+            "portable": 112,
+            "native": 113
+          },
+          {
+            "x": 629,
+            "y": 155,
+            "channel": 2,
+            "portable": 96,
+            "native": 97
+          },
+          {
+            "x": 629,
+            "y": 155,
+            "channel": 3,
+            "portable": 224,
+            "native": 225
+          },
+          {
+            "x": 631,
+            "y": 159,
+            "channel": 2,
+            "portable": 79,
+            "native": 80
+          },
+          {
+            "x": 631,
+            "y": 159,
+            "channel": 3,
+            "portable": 202,
+            "native": 203
+          },
+          {
+            "x": 624,
+            "y": 162,
+            "channel": 2,
+            "portable": 84,
+            "native": 83
+          },
+          {
+            "x": 622,
+            "y": 164,
+            "channel": 0,
+            "portable": 106,
+            "native": 105
+          },
+          {
+            "x": 622,
+            "y": 164,
+            "channel": 3,
+            "portable": 210,
+            "native": 209
+          },
+          {
+            "x": 449,
+            "y": 179,
+            "channel": 1,
+            "portable": 148,
+            "native": 149
+          },
+          {
+            "x": 593,
+            "y": 192,
+            "channel": 1,
+            "portable": 179,
+            "native": 178
+          },
+          {
+            "x": 592,
+            "y": 193,
+            "channel": 1,
+            "portable": 180,
+            "native": 181
+          },
+          {
+            "x": 599,
+            "y": 196,
+            "channel": 1,
+            "portable": 182,
+            "native": 181
+          },
+          {
+            "x": 599,
+            "y": 196,
+            "channel": 3,
+            "portable": 199,
+            "native": 198
+          },
+          {
+            "x": 593,
+            "y": 198,
+            "channel": 0,
+            "portable": 71,
+            "native": 72
+          },
+          {
+            "x": 593,
+            "y": 198,
+            "channel": 1,
+            "portable": 166,
+            "native": 167
+          },
+          {
+            "x": 596,
+            "y": 199,
+            "channel": 2,
+            "portable": 52,
+            "native": 51
+          },
+          {
+            "x": 368,
+            "y": 209,
+            "channel": 1,
+            "portable": 160,
+            "native": 161
+          },
+          {
+            "x": 556,
+            "y": 226,
+            "channel": 1,
+            "portable": 130,
+            "native": 131
+          },
+          {
+            "x": 462,
+            "y": 229,
+            "channel": 1,
+            "portable": 110,
+            "native": 111
+          },
+          {
+            "x": 49,
+            "y": 319,
+            "channel": 1,
+            "portable": 87,
+            "native": 88
+          }
+        ]
+      },
+      {
+        "index": 5,
+        "stage": 2,
+        "frame": 1199,
+        "differentChannels": 16,
+        "maxDelta": 1,
+        "strictPixelsEqual": false,
+        "portableSha256": "3e253da1b9c647036cccaf52c370431176f8445a5eae7f8f6e223543701429a5",
+        "nativeSha256": "fc2551fa77abcbb22aee597350849910cb285ef44a3a560c0e4b784c92d9d7f6",
+        "first": [
+          {
+            "x": 465,
+            "y": 0,
+            "channel": 0,
+            "portable": 97,
+            "native": 98
+          },
+          {
+            "x": 465,
+            "y": 0,
+            "channel": 1,
+            "portable": 185,
+            "native": 186
+          },
+          {
+            "x": 469,
+            "y": 1,
+            "channel": 2,
+            "portable": 71,
+            "native": 70
+          },
+          {
+            "x": 469,
+            "y": 1,
+            "channel": 3,
+            "portable": 196,
+            "native": 195
+          },
+          {
+            "x": 466,
+            "y": 2,
+            "channel": 0,
+            "portable": 85,
+            "native": 84
+          },
+          {
+            "x": 466,
+            "y": 2,
+            "channel": 2,
+            "portable": 69,
+            "native": 68
+          },
+          {
+            "x": 467,
+            "y": 5,
+            "channel": 0,
+            "portable": 98,
+            "native": 97
+          },
+          {
+            "x": 467,
+            "y": 5,
+            "channel": 1,
+            "portable": 174,
+            "native": 173
+          },
+          {
+            "x": 472,
+            "y": 5,
+            "channel": 0,
+            "portable": 125,
+            "native": 124
+          },
+          {
+            "x": 472,
+            "y": 5,
+            "channel": 3,
+            "portable": 246,
+            "native": 245
+          },
+          {
+            "x": 468,
+            "y": 6,
+            "channel": 3,
+            "portable": 209,
+            "native": 210
+          },
+          {
+            "x": 346,
+            "y": 195,
+            "channel": 1,
+            "portable": 185,
+            "native": 186
+          },
+          {
+            "x": 345,
+            "y": 196,
+            "channel": 3,
+            "portable": 149,
+            "native": 148
+          },
+          {
+            "x": 352,
+            "y": 215,
+            "channel": 3,
+            "portable": 178,
+            "native": 179
+          },
+          {
+            "x": 325,
+            "y": 376,
+            "channel": 1,
+            "portable": 94,
+            "native": 95
+          },
+          {
+            "x": 79,
+            "y": 388,
+            "channel": 1,
+            "portable": 80,
+            "native": 81
+          }
+        ]
+      },
+      {
+        "index": 6,
+        "stage": 3,
+        "frame": 0,
+        "differentChannels": 0,
+        "maxDelta": 0,
+        "strictPixelsEqual": true,
+        "portableSha256": "87d47abdafbf979c909d7ea6ca5cdd4dffee18323ad8c66faacca8ff10196a62",
+        "nativeSha256": "87d47abdafbf979c909d7ea6ca5cdd4dffee18323ad8c66faacca8ff10196a62",
+        "first": []
+      },
+      {
+        "index": 7,
+        "stage": 3,
+        "frame": 599,
+        "differentChannels": 91,
+        "maxDelta": 93,
+        "strictPixelsEqual": false,
+        "portableSha256": "2f1d6d158a88028d0ef8196493d8273fabd2b71832cc32f579866e47208ff8e6",
+        "nativeSha256": "6da8ae90d430f5ac20d576dac8a704349c494468682d9f05686aadc350ae52a1",
+        "first": [
+          {
+            "x": 196,
+            "y": 7,
+            "channel": 0,
+            "portable": 19,
+            "native": 0
+          },
+          {
+            "x": 196,
+            "y": 7,
+            "channel": 1,
+            "portable": 41,
+            "native": 43
+          },
+          {
+            "x": 196,
+            "y": 7,
+            "channel": 3,
+            "portable": 195,
+            "native": 255
+          },
+          {
+            "x": 198,
+            "y": 12,
+            "channel": 0,
+            "portable": 44,
+            "native": 43
+          },
+          {
+            "x": 198,
+            "y": 12,
+            "channel": 1,
+            "portable": 107,
+            "native": 105
+          },
+          {
+            "x": 198,
+            "y": 12,
+            "channel": 2,
+            "portable": 52,
+            "native": 51
+          },
+          {
+            "x": 198,
+            "y": 12,
+            "channel": 3,
+            "portable": 255,
+            "native": 250
+          },
+          {
+            "x": 204,
+            "y": 40,
+            "channel": 0,
+            "portable": 155,
+            "native": 171
+          },
+          {
+            "x": 204,
+            "y": 40,
+            "channel": 1,
+            "portable": 102,
+            "native": 112
+          },
+          {
+            "x": 204,
+            "y": 40,
+            "channel": 2,
+            "portable": 58,
+            "native": 64
+          },
+          {
+            "x": 204,
+            "y": 40,
+            "channel": 3,
+            "portable": 232,
+            "native": 255
+          },
+          {
+            "x": 196,
+            "y": 41,
+            "channel": 3,
+            "portable": 241,
+            "native": 244
+          },
+          {
+            "x": 198,
+            "y": 46,
+            "channel": 3,
+            "portable": 255,
+            "native": 253
+          },
+          {
+            "x": 630,
+            "y": 46,
+            "channel": 0,
+            "portable": 31,
+            "native": 66
+          },
+          {
+            "x": 630,
+            "y": 46,
+            "channel": 1,
+            "portable": 49,
+            "native": 121
+          },
+          {
+            "x": 630,
+            "y": 46,
+            "channel": 2,
+            "portable": 9,
+            "native": 54
+          },
+          {
+            "x": 626,
+            "y": 49,
+            "channel": 0,
+            "portable": 27,
+            "native": 78
+          },
+          {
+            "x": 626,
+            "y": 49,
+            "channel": 1,
+            "portable": 38,
+            "native": 131
+          },
+          {
+            "x": 626,
+            "y": 49,
+            "channel": 2,
+            "portable": 11,
+            "native": 73
+          },
+          {
+            "x": 626,
+            "y": 49,
+            "channel": 3,
+            "portable": 232,
+            "native": 255
+          },
+          {
+            "x": 622,
+            "y": 52,
+            "channel": 1,
+            "portable": 65,
+            "native": 70
+          },
+          {
+            "x": 622,
+            "y": 52,
+            "channel": 2,
+            "portable": 22,
+            "native": 24
+          },
+          {
+            "x": 622,
+            "y": 52,
+            "channel": 3,
+            "portable": 233,
+            "native": 255
+          },
+          {
+            "x": 350,
+            "y": 59,
+            "channel": 3,
+            "portable": 171,
+            "native": 170
+          },
+          {
+            "x": 456,
+            "y": 60,
+            "channel": 0,
+            "portable": 81,
+            "native": 90
+          },
+          {
+            "x": 456,
+            "y": 60,
+            "channel": 1,
+            "portable": 30,
+            "native": 45
+          },
+          {
+            "x": 456,
+            "y": 60,
+            "channel": 2,
+            "portable": 10,
+            "native": 15
+          },
+          {
+            "x": 456,
+            "y": 60,
+            "channel": 3,
+            "portable": 252,
+            "native": 255
+          },
+          {
+            "x": 532,
+            "y": 67,
+            "channel": 0,
+            "portable": 99,
+            "native": 94
+          },
+          {
+            "x": 532,
+            "y": 67,
+            "channel": 2,
+            "portable": 13,
+            "native": 14
+          },
+          {
+            "x": 532,
+            "y": 67,
+            "channel": 3,
+            "portable": 214,
+            "native": 223
+          },
+          {
+            "x": 227,
+            "y": 76,
+            "channel": 3,
+            "portable": 251,
+            "native": 217
+          }
+        ]
+      },
+      {
+        "index": 8,
+        "stage": 3,
+        "frame": 1199,
+        "differentChannels": 323,
+        "maxDelta": 100,
+        "strictPixelsEqual": false,
+        "portableSha256": "eaf02acf777b8d447ec9a40d63b03e7ad5728fa6d83ebd5bafb62418fdc83e4a",
+        "nativeSha256": "2fab65634d2b64a26c530cf4d683f484495cbac632d42dfdf9d9db9eb1c426cd",
+        "first": [
+          {
+            "x": 72,
+            "y": 0,
+            "channel": 1,
+            "portable": 102,
+            "native": 100
+          },
+          {
+            "x": 72,
+            "y": 0,
+            "channel": 2,
+            "portable": 43,
+            "native": 42
+          },
+          {
+            "x": 72,
+            "y": 0,
+            "channel": 3,
+            "portable": 255,
+            "native": 249
+          },
+          {
+            "x": 83,
+            "y": 0,
+            "channel": 1,
+            "portable": 106,
+            "native": 105
+          },
+          {
+            "x": 83,
+            "y": 0,
+            "channel": 3,
+            "portable": 255,
+            "native": 252
+          },
+          {
+            "x": 65,
+            "y": 9,
+            "channel": 3,
+            "portable": 228,
+            "native": 233
+          },
+          {
+            "x": 76,
+            "y": 9,
+            "channel": 0,
+            "portable": 92,
+            "native": 93
+          },
+          {
+            "x": 76,
+            "y": 9,
+            "channel": 1,
+            "portable": 126,
+            "native": 128
+          },
+          {
+            "x": 76,
+            "y": 9,
+            "channel": 2,
+            "portable": 69,
+            "native": 70
+          },
+          {
+            "x": 76,
+            "y": 9,
+            "channel": 3,
+            "portable": 251,
+            "native": 255
+          },
+          {
+            "x": 88,
+            "y": 11,
+            "channel": 1,
+            "portable": 63,
+            "native": 64
+          },
+          {
+            "x": 88,
+            "y": 11,
+            "channel": 3,
+            "portable": 249,
+            "native": 255
+          },
+          {
+            "x": 99,
+            "y": 11,
+            "channel": 0,
+            "portable": 43,
+            "native": 44
+          },
+          {
+            "x": 99,
+            "y": 11,
+            "channel": 3,
+            "portable": 192,
+            "native": 198
+          },
+          {
+            "x": 121,
+            "y": 11,
+            "channel": 0,
+            "portable": 52,
+            "native": 53
+          },
+          {
+            "x": 121,
+            "y": 11,
+            "channel": 1,
+            "portable": 50,
+            "native": 48
+          },
+          {
+            "x": 121,
+            "y": 11,
+            "channel": 2,
+            "portable": 13,
+            "native": 12
+          },
+          {
+            "x": 121,
+            "y": 11,
+            "channel": 3,
+            "portable": 237,
+            "native": 236
+          },
+          {
+            "x": 118,
+            "y": 12,
+            "channel": 1,
+            "portable": 51,
+            "native": 67
+          },
+          {
+            "x": 118,
+            "y": 12,
+            "channel": 2,
+            "portable": 11,
+            "native": 23
+          },
+          {
+            "x": 118,
+            "y": 12,
+            "channel": 3,
+            "portable": 196,
+            "native": 199
+          },
+          {
+            "x": 481,
+            "y": 15,
+            "channel": 0,
+            "portable": 60,
+            "native": 66
+          },
+          {
+            "x": 481,
+            "y": 15,
+            "channel": 1,
+            "portable": 26,
+            "native": 30
+          },
+          {
+            "x": 481,
+            "y": 15,
+            "channel": 3,
+            "portable": 252,
+            "native": 207
+          },
+          {
+            "x": 70,
+            "y": 19,
+            "channel": 1,
+            "portable": 36,
+            "native": 35
+          },
+          {
+            "x": 70,
+            "y": 19,
+            "channel": 3,
+            "portable": 255,
+            "native": 248
+          },
+          {
+            "x": 81,
+            "y": 19,
+            "channel": 0,
+            "portable": 67,
+            "native": 64
+          },
+          {
+            "x": 81,
+            "y": 19,
+            "channel": 1,
+            "portable": 128,
+            "native": 123
+          },
+          {
+            "x": 81,
+            "y": 19,
+            "channel": 2,
+            "portable": 63,
+            "native": 61
+          },
+          {
+            "x": 81,
+            "y": 19,
+            "channel": 3,
+            "portable": 255,
+            "native": 244
+          },
+          {
+            "x": 119,
+            "y": 19,
+            "channel": 0,
+            "portable": 42,
+            "native": 49
+          },
+          {
+            "x": 119,
+            "y": 19,
+            "channel": 1,
+            "portable": 47,
+            "native": 52
+          }
+        ]
+      },
+      {
+        "index": 9,
+        "stage": 4,
+        "frame": 0,
+        "differentChannels": 2,
+        "maxDelta": 1,
+        "strictPixelsEqual": false,
+        "portableSha256": "5a4d3b34edf3f8969de8fa3bd14714c78fb74377526721bc1f505dad2a8078f7",
+        "nativeSha256": "bb9ea0bd80541f3272725b45acfd795317a556a1ca6657ecbcb0474c39e53310",
+        "first": [
+          {
+            "x": 569,
+            "y": 334,
+            "channel": 0,
+            "portable": 25,
+            "native": 24
+          },
+          {
+            "x": 254,
+            "y": 438,
+            "channel": 0,
+            "portable": 4,
+            "native": 3
+          }
+        ]
+      },
+      {
+        "index": 10,
+        "stage": 4,
+        "frame": 599,
+        "differentChannels": 6,
+        "maxDelta": 1,
+        "strictPixelsEqual": false,
+        "portableSha256": "746715e0077bc957171fe5e21c2e5731ac56215087574e0381d9d472e67ea267",
+        "nativeSha256": "d02084159b3042ff23fa99cbca60489d3e8edd158461c606b97b199fb5d92cff",
+        "first": [
+          {
+            "x": 399,
+            "y": 7,
+            "channel": 0,
+            "portable": 53,
+            "native": 54
+          },
+          {
+            "x": 307,
+            "y": 168,
+            "channel": 0,
+            "portable": 27,
+            "native": 26
+          },
+          {
+            "x": 136,
+            "y": 176,
+            "channel": 2,
+            "portable": 17,
+            "native": 18
+          },
+          {
+            "x": 552,
+            "y": 189,
+            "channel": 0,
+            "portable": 59,
+            "native": 60
+          },
+          {
+            "x": 498,
+            "y": 360,
+            "channel": 0,
+            "portable": 35,
+            "native": 36
+          },
+          {
+            "x": 10,
+            "y": 378,
+            "channel": 0,
+            "portable": 46,
+            "native": 45
+          }
+        ]
+      },
+      {
+        "index": 11,
+        "stage": 4,
+        "frame": 1199,
+        "differentChannels": 401,
+        "maxDelta": 1,
+        "strictPixelsEqual": false,
+        "portableSha256": "600ad10bfc07b765ff99956ac3a95bdb63168f0df2faa6c5dbad0d0b393e6591",
+        "nativeSha256": "c9b339af8a1f1e5c3cafd31846edfcd746691d5c265163dec5a2d07627c8bb1c",
+        "first": [
+          {
+            "x": 164,
+            "y": 12,
+            "channel": 0,
+            "portable": 45,
+            "native": 46
+          },
+          {
+            "x": 512,
+            "y": 12,
+            "channel": 1,
+            "portable": 97,
+            "native": 98
+          },
+          {
+            "x": 50,
+            "y": 110,
+            "channel": 0,
+            "portable": 73,
+            "native": 74
+          },
+          {
+            "x": 248,
+            "y": 144,
+            "channel": 0,
+            "portable": 92,
+            "native": 93
+          },
+          {
+            "x": 103,
+            "y": 147,
+            "channel": 2,
+            "portable": 46,
+            "native": 47
+          },
+          {
+            "x": 305,
+            "y": 150,
+            "channel": 1,
+            "portable": 7,
+            "native": 8
+          },
+          {
+            "x": 619,
+            "y": 150,
+            "channel": 1,
+            "portable": 20,
+            "native": 19
+          },
+          {
+            "x": 214,
+            "y": 152,
+            "channel": 0,
+            "portable": 44,
+            "native": 45
+          },
+          {
+            "x": 288,
+            "y": 153,
+            "channel": 1,
+            "portable": 26,
+            "native": 25
+          },
+          {
+            "x": 332,
+            "y": 156,
+            "channel": 0,
+            "portable": 100,
+            "native": 99
+          },
+          {
+            "x": 335,
+            "y": 157,
+            "channel": 0,
+            "portable": 102,
+            "native": 103
+          },
+          {
+            "x": 287,
+            "y": 158,
+            "channel": 0,
+            "portable": 88,
+            "native": 87
+          },
+          {
+            "x": 294,
+            "y": 158,
+            "channel": 0,
+            "portable": 66,
+            "native": 67
+          },
+          {
+            "x": 195,
+            "y": 162,
+            "channel": 0,
+            "portable": 42,
+            "native": 41
+          },
+          {
+            "x": 229,
+            "y": 163,
+            "channel": 0,
+            "portable": 92,
+            "native": 91
+          },
+          {
+            "x": 364,
+            "y": 163,
+            "channel": 0,
+            "portable": 78,
+            "native": 77
+          },
+          {
+            "x": 365,
+            "y": 164,
+            "channel": 0,
+            "portable": 78,
+            "native": 79
+          },
+          {
+            "x": 194,
+            "y": 165,
+            "channel": 0,
+            "portable": 39,
+            "native": 40
+          },
+          {
+            "x": 286,
+            "y": 165,
+            "channel": 0,
+            "portable": 89,
+            "native": 88
+          },
+          {
+            "x": 295,
+            "y": 166,
+            "channel": 0,
+            "portable": 80,
+            "native": 81
+          },
+          {
+            "x": 287,
+            "y": 167,
+            "channel": 2,
+            "portable": 56,
+            "native": 57
+          },
+          {
+            "x": 268,
+            "y": 168,
+            "channel": 1,
+            "portable": 7,
+            "native": 8
+          },
+          {
+            "x": 209,
+            "y": 169,
+            "channel": 0,
+            "portable": 42,
+            "native": 43
+          },
+          {
+            "x": 238,
+            "y": 170,
+            "channel": 2,
+            "portable": 34,
+            "native": 35
+          },
+          {
+            "x": 237,
+            "y": 171,
+            "channel": 1,
+            "portable": 13,
+            "native": 14
+          },
+          {
+            "x": 302,
+            "y": 171,
+            "channel": 1,
+            "portable": 30,
+            "native": 29
+          },
+          {
+            "x": 347,
+            "y": 171,
+            "channel": 0,
+            "portable": 87,
+            "native": 88
+          },
+          {
+            "x": 168,
+            "y": 172,
+            "channel": 2,
+            "portable": 30,
+            "native": 29
+          },
+          {
+            "x": 172,
+            "y": 173,
+            "channel": 0,
+            "portable": 65,
+            "native": 64
+          },
+          {
+            "x": 215,
+            "y": 173,
+            "channel": 1,
+            "portable": 6,
+            "native": 7
+          },
+          {
+            "x": 216,
+            "y": 173,
+            "channel": 1,
+            "portable": 9,
+            "native": 10
+          },
+          {
+            "x": 303,
+            "y": 174,
+            "channel": 0,
+            "portable": 84,
+            "native": 83
+          }
+        ]
+      },
+      {
+        "index": 12,
+        "stage": 5,
+        "frame": 0,
+        "differentChannels": 0,
+        "maxDelta": 0,
+        "strictPixelsEqual": true,
+        "portableSha256": "a8dcf27decc57af8ed7c0cfbe6eea864f76d4829ff569695c54b6a6bb12fa9e8",
+        "nativeSha256": "a8dcf27decc57af8ed7c0cfbe6eea864f76d4829ff569695c54b6a6bb12fa9e8",
+        "first": []
+      },
+      {
+        "index": 13,
+        "stage": 5,
+        "frame": 599,
+        "differentChannels": 17,
+        "maxDelta": 12,
+        "strictPixelsEqual": false,
+        "portableSha256": "a9f075fe66d6872d3615071267898ee3056f3e1ccebcea3e62a3a12ff69537df",
+        "nativeSha256": "3079b43444d4e3766a5a8593daa9379ca50cd4e1323551d9908b49ab09805e45",
+        "first": [
+          {
+            "x": 207,
+            "y": 280,
+            "channel": 0,
+            "portable": 6,
+            "native": 10
+          },
+          {
+            "x": 207,
+            "y": 280,
+            "channel": 1,
+            "portable": 22,
+            "native": 31
+          },
+          {
+            "x": 207,
+            "y": 280,
+            "channel": 2,
+            "portable": 39,
+            "native": 51
+          },
+          {
+            "x": 208,
+            "y": 280,
+            "channel": 0,
+            "portable": 6,
+            "native": 10
+          },
+          {
+            "x": 208,
+            "y": 280,
+            "channel": 1,
+            "portable": 22,
+            "native": 31
+          },
+          {
+            "x": 208,
+            "y": 280,
+            "channel": 2,
+            "portable": 40,
+            "native": 50
+          },
+          {
+            "x": 377,
+            "y": 333,
+            "channel": 0,
+            "portable": 9,
+            "native": 4
+          },
+          {
+            "x": 377,
+            "y": 333,
+            "channel": 1,
+            "portable": 18,
+            "native": 15
+          },
+          {
+            "x": 377,
+            "y": 333,
+            "channel": 2,
+            "portable": 33,
+            "native": 24
+          },
+          {
+            "x": 190,
+            "y": 343,
+            "channel": 0,
+            "portable": 7,
+            "native": 17
+          },
+          {
+            "x": 190,
+            "y": 343,
+            "channel": 2,
+            "portable": 35,
+            "native": 44
+          },
+          {
+            "x": 171,
+            "y": 344,
+            "channel": 0,
+            "portable": 11,
+            "native": 13
+          },
+          {
+            "x": 171,
+            "y": 344,
+            "channel": 1,
+            "portable": 31,
+            "native": 19
+          },
+          {
+            "x": 171,
+            "y": 344,
+            "channel": 2,
+            "portable": 43,
+            "native": 34
+          },
+          {
+            "x": 97,
+            "y": 348,
+            "channel": 0,
+            "portable": 5,
+            "native": 7
+          },
+          {
+            "x": 97,
+            "y": 348,
+            "channel": 1,
+            "portable": 12,
+            "native": 20
+          },
+          {
+            "x": 97,
+            "y": 348,
+            "channel": 2,
+            "portable": 20,
+            "native": 30
+          }
+        ]
+      },
+      {
+        "index": 14,
+        "stage": 5,
+        "frame": 1199,
+        "differentChannels": 5,
+        "maxDelta": 4,
+        "strictPixelsEqual": false,
+        "portableSha256": "1cc0578c515eca8d7d33d16784b7685ae6a373394ba12ee4899630105f3a1a9e",
+        "nativeSha256": "1ff31d3ffa1aa1612159b892f6b46676a256e1bd69b214251ec3755a05a45aa7",
+        "first": [
+          {
+            "x": 180,
+            "y": 164,
+            "channel": 2,
+            "portable": 37,
+            "native": 38
+          },
+          {
+            "x": 487,
+            "y": 179,
+            "channel": 0,
+            "portable": 4,
+            "native": 8
+          },
+          {
+            "x": 487,
+            "y": 179,
+            "channel": 1,
+            "portable": 36,
+            "native": 34
+          },
+          {
+            "x": 487,
+            "y": 179,
+            "channel": 2,
+            "portable": 58,
+            "native": 59
+          },
+          {
+            "x": 58,
+            "y": 201,
+            "channel": 1,
+            "portable": 196,
+            "native": 195
+          }
+        ]
+      },
+      {
+        "index": 15,
+        "stage": 6,
+        "frame": 0,
+        "differentChannels": 0,
+        "maxDelta": 0,
+        "strictPixelsEqual": true,
+        "portableSha256": "41f15816881c89e2b8199f07245277e03d6575a2f31074e95f807ba610cceb18",
+        "nativeSha256": "41f15816881c89e2b8199f07245277e03d6575a2f31074e95f807ba610cceb18",
+        "first": []
+      },
+      {
+        "index": 16,
+        "stage": 6,
+        "frame": 599,
+        "differentChannels": 1,
+        "maxDelta": 1,
+        "strictPixelsEqual": false,
+        "portableSha256": "a1bad0635a5af122bfc561e7e03113d0ba83af91e3624b5d6ef82b4810bf8840",
+        "nativeSha256": "d8be2bcc532592d38fd31fac11148292077ca461ffd3f5488c9dc37cabff7901",
+        "first": [
+          {
+            "x": 513,
+            "y": 85,
+            "channel": 2,
+            "portable": 35,
+            "native": 36
+          }
+        ]
+      },
+      {
+        "index": 17,
+        "stage": 6,
+        "frame": 1199,
+        "differentChannels": 7,
+        "maxDelta": 8,
+        "strictPixelsEqual": false,
+        "portableSha256": "a9208829fff45953f83dda242bdbe9abf092032655b4734c4f5f1d9966dfd0ef",
+        "nativeSha256": "349b8f117eabf9eb3c3f8679ead9b80370912bf30f9d4246432ac860a8435f08",
+        "first": [
+          {
+            "x": 290,
+            "y": 347,
+            "channel": 0,
+            "portable": 6,
+            "native": 11
+          },
+          {
+            "x": 290,
+            "y": 347,
+            "channel": 1,
+            "portable": 22,
+            "native": 26
+          },
+          {
+            "x": 290,
+            "y": 347,
+            "channel": 2,
+            "portable": 34,
+            "native": 33
+          },
+          {
+            "x": 227,
+            "y": 361,
+            "channel": 0,
+            "portable": 1,
+            "native": 9
+          },
+          {
+            "x": 227,
+            "y": 361,
+            "channel": 1,
+            "portable": 15,
+            "native": 21
+          },
+          {
+            "x": 227,
+            "y": 361,
+            "channel": 2,
+            "portable": 24,
+            "native": 30
+          },
+          {
+            "x": 281,
+            "y": 427,
+            "channel": 1,
+            "portable": 15,
+            "native": 16
+          }
+        ]
+      },
+      {
+        "index": 18,
+        "stage": 7,
+        "frame": 0,
+        "differentChannels": 2,
+        "maxDelta": 1,
+        "strictPixelsEqual": false,
+        "portableSha256": "1d754a82c657723efa04366658783cdad6b40230b38c95962cd0bc5190e058a8",
+        "nativeSha256": "7894a71074972fe8c374c070c9f9c9b959d3b85337a2294ed79a0a299c9fb392",
+        "first": [
+          {
+            "x": 166,
+            "y": 264,
+            "channel": 2,
+            "portable": 1,
+            "native": 2
+          },
+          {
+            "x": 112,
+            "y": 418,
+            "channel": 0,
+            "portable": 12,
+            "native": 11
+          }
+        ]
+      },
+      {
+        "index": 19,
+        "stage": 7,
+        "frame": 599,
+        "differentChannels": 2,
+        "maxDelta": 1,
+        "strictPixelsEqual": false,
+        "portableSha256": "b1f612d6eb8d53d1b3c1ca7ac1a100b2814266556d79274ca2039fe4ba95f15c",
+        "nativeSha256": "8b076915e68ca1e9e6a9d91c7c139aecdb199228696a15cc4c85ff7bf6d9247e",
+        "first": [
+          {
+            "x": 546,
+            "y": 248,
+            "channel": 1,
+            "portable": 19,
+            "native": 20
+          },
+          {
+            "x": 170,
+            "y": 350,
+            "channel": 2,
+            "portable": 62,
+            "native": 63
+          }
+        ]
+      },
+      {
+        "index": 20,
+        "stage": 7,
+        "frame": 1199,
+        "differentChannels": 145,
+        "maxDelta": 1,
+        "strictPixelsEqual": false,
+        "portableSha256": "f71c8dbdad560a7a9121efd09b616943a938b50a257cda3ed064db05b2fb6102",
+        "nativeSha256": "130d6fed2144041d7611179392066c02ecac8c231a441d78f8e68ff5e451b79f",
+        "first": [
+          {
+            "x": 632,
+            "y": 91,
+            "channel": 2,
+            "portable": 97,
+            "native": 98
+          },
+          {
+            "x": 624,
+            "y": 93,
+            "channel": 0,
+            "portable": 137,
+            "native": 136
+          },
+          {
+            "x": 624,
+            "y": 93,
+            "channel": 2,
+            "portable": 109,
+            "native": 108
+          },
+          {
+            "x": 639,
+            "y": 97,
+            "channel": 0,
+            "portable": 133,
+            "native": 134
+          },
+          {
+            "x": 639,
+            "y": 97,
+            "channel": 1,
+            "portable": 76,
+            "native": 77
+          },
+          {
+            "x": 639,
+            "y": 97,
+            "channel": 2,
+            "portable": 126,
+            "native": 127
+          },
+          {
+            "x": 632,
+            "y": 99,
+            "channel": 2,
+            "portable": 119,
+            "native": 120
+          },
+          {
+            "x": 628,
+            "y": 101,
+            "channel": 0,
+            "portable": 148,
+            "native": 149
+          },
+          {
+            "x": 622,
+            "y": 102,
+            "channel": 2,
+            "portable": 130,
+            "native": 129
+          },
+          {
+            "x": 637,
+            "y": 102,
+            "channel": 2,
+            "portable": 114,
+            "native": 115
+          },
+          {
+            "x": 620,
+            "y": 103,
+            "channel": 0,
+            "portable": 150,
+            "native": 149
+          },
+          {
+            "x": 630,
+            "y": 103,
+            "channel": 0,
+            "portable": 151,
+            "native": 150
+          },
+          {
+            "x": 630,
+            "y": 103,
+            "channel": 3,
+            "portable": 194,
+            "native": 193
+          },
+          {
+            "x": 633,
+            "y": 103,
+            "channel": 1,
+            "portable": 96,
+            "native": 97
+          },
+          {
+            "x": 634,
+            "y": 103,
+            "channel": 0,
+            "portable": 140,
+            "native": 141
+          },
+          {
+            "x": 634,
+            "y": 103,
+            "channel": 2,
+            "portable": 135,
+            "native": 136
+          },
+          {
+            "x": 636,
+            "y": 103,
+            "channel": 2,
+            "portable": 122,
+            "native": 121
+          },
+          {
+            "x": 619,
+            "y": 104,
+            "channel": 1,
+            "portable": 91,
+            "native": 92
+          },
+          {
+            "x": 619,
+            "y": 104,
+            "channel": 2,
+            "portable": 168,
+            "native": 169
+          },
+          {
+            "x": 620,
+            "y": 105,
+            "channel": 0,
+            "portable": 155,
+            "native": 156
+          },
+          {
+            "x": 623,
+            "y": 105,
+            "channel": 1,
+            "portable": 107,
+            "native": 108
+          },
+          {
+            "x": 623,
+            "y": 105,
+            "channel": 2,
+            "portable": 139,
+            "native": 140
+          },
+          {
+            "x": 626,
+            "y": 105,
+            "channel": 0,
+            "portable": 158,
+            "native": 159
+          },
+          {
+            "x": 626,
+            "y": 105,
+            "channel": 2,
+            "portable": 156,
+            "native": 157
+          },
+          {
+            "x": 632,
+            "y": 105,
+            "channel": 1,
+            "portable": 103,
+            "native": 104
+          },
+          {
+            "x": 632,
+            "y": 105,
+            "channel": 2,
+            "portable": 157,
+            "native": 158
+          },
+          {
+            "x": 619,
+            "y": 106,
+            "channel": 0,
+            "portable": 148,
+            "native": 147
+          },
+          {
+            "x": 619,
+            "y": 106,
+            "channel": 2,
+            "portable": 136,
+            "native": 135
+          },
+          {
+            "x": 616,
+            "y": 107,
+            "channel": 2,
+            "portable": 127,
+            "native": 128
+          },
+          {
+            "x": 623,
+            "y": 108,
+            "channel": 2,
+            "portable": 168,
+            "native": 169
+          },
+          {
+            "x": 624,
+            "y": 108,
+            "channel": 0,
+            "portable": 148,
+            "native": 149
+          },
+          {
+            "x": 624,
+            "y": 108,
+            "channel": 2,
+            "portable": 122,
+            "native": 123
+          }
+        ]
+      }
+    ]
+  },
+  "uv": {
+    "primaryDraws": 21,
+    "extraCoverageControls": 2,
+    "portableFullBufferBytes": 113049600,
+    "nativeFullBufferCases": 4,
+    "primaryFullHashMatches": 1,
+    "extraControlFullHashMatches": 2,
+    "physicalSamplePoints": 105,
+    "physicalSampleFloatWords": 420,
+    "differentSampleWords": 183,
+    "allNativeFullCaseWordDifferences": 1021,
+    "strictFullBufferHashesEqual": false,
+    "rows": [
+      {
+        "index": 0,
+        "stage": 1,
+        "frame": 1199,
+        "draw": 16,
+        "role": "selected21",
+        "strictFullBufferHashEqual": false,
+        "portableSha256": "4fcd07f35a620874bae21f36c3cda0763a7a2e5eb37abc48e5d3c77daf77d0c6",
+        "nativeSha256": "53efbebc00ba2ca41b8c0fa33eb0df7216d8b5846f01a4c085b2af3f0878f8fa",
+        "portableCovered": 99454,
+        "samples": [
+          {
+            "x": 113,
+            "y": 161,
+            "differentWords": 2,
+            "nativeWords": [
+              1058117036,
+              1033223776,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1058117008,
+              1033222279,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 119,
+            "y": 162,
+            "differentWords": 2,
+            "nativeWords": [
+              1058364457,
+              1033627926,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1058364430,
+              1033626436,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 104,
+            "y": 164,
+            "differentWords": 2,
+            "nativeWords": [
+              1057780262,
+              1034434036,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1057780234,
+              1034432559,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 120,
+            "y": 164,
+            "differentWords": 2,
+            "nativeWords": [
+              1058418896,
+              1034434036,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1058418871,
+              1034432559,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 126,
+            "y": 165,
+            "differentWords": 2,
+            "nativeWords": [
+              1058665375,
+              1034836000,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1058665349,
+              1034834528,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 85,
+            "y": 166,
+            "differentWords": 2,
+            "nativeWords": [
+              1057038805,
+              1035237239,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1057038772,
+              1035235771,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 87,
+            "y": 166,
+            "differentWords": 2,
+            "nativeWords": [
+              1057118490,
+              1035237239,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1057118458,
+              1035235771,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 133,
+            "y": 167,
+            "differentWords": 2,
+            "nativeWords": [
+              1058957965,
+              1035637753,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1058957941,
+              1035636294,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 89,
+            "y": 169,
+            "differentWords": 2,
+            "nativeWords": [
+              1057223011,
+              1036436622,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1057222982,
+              1036435175,
+              0,
+              1065353216
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": false
+      },
+      {
+        "index": 1,
+        "stage": 2,
+        "frame": 0,
+        "draw": 2,
+        "role": "selected21",
+        "strictFullBufferHashEqual": false,
+        "portableSha256": "3416c7515ab5f426369a3b657e0278f520e65673465b2a3c7c4187e23997cb88",
+        "nativeSha256": "8c14a48a4607d326e683f4a361f451300b124a065138d875ff8f6c0f291b8a5d",
+        "portableCovered": 132857,
+        "samples": [
+          {
+            "x": 46,
+            "y": 222,
+            "differentWords": 1,
+            "nativeWords": [
+              1074365251,
+              1085821854,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1074365247,
+              1085821854,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 27,
+            "y": 234,
+            "differentWords": 1,
+            "nativeWords": [
+              1073730432,
+              1085566725,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1073730412,
+              1085566725,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 50,
+            "y": 236,
+            "differentWords": 1,
+            "nativeWords": [
+              1074613952,
+              1085524607,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1074613947,
+              1085524607,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 33,
+            "y": 248,
+            "differentWords": 1,
+            "nativeWords": [
+              1074063179,
+              1085274287,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1074063167,
+              1085274287,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 59,
+            "y": 251,
+            "differentWords": 1,
+            "nativeWords": [
+              1075050307,
+              1085212337,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1075050301,
+              1085212337,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 53,
+            "y": 254,
+            "differentWords": 1,
+            "nativeWords": [
+              1074847428,
+              1085150637,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1074847420,
+              1085150637,
+              0,
+              1065353216
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": false
+      },
+      {
+        "index": 2,
+        "stage": 2,
+        "frame": 0,
+        "draw": 3,
+        "role": "selected21",
+        "strictFullBufferHashEqual": false,
+        "portableSha256": "f4311edfb88fe07538d0d2aea3dd431834fbff85567f658c36840af2afaa4e53",
+        "nativeSha256": "7cdaf262346be9b96f8a6833d6ac67cacec769cfd8c9fec1d9ed9b62fe7f843e",
+        "portableCovered": 132857,
+        "samples": [
+          {
+            "x": 31,
+            "y": 234,
+            "differentWords": 2,
+            "nativeWords": [
+              1057610013,
+              1086091852,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1057609978,
+              1086091853,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 45,
+            "y": 247,
+            "differentWords": 1,
+            "nativeWords": [
+              1060075790,
+              1085820120,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1060075756,
+              1085820120,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 38,
+            "y": 252,
+            "differentWords": 1,
+            "nativeWords": [
+              1059174162,
+              1085716870,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1059174117,
+              1085716870,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 32,
+            "y": 261,
+            "differentWords": 1,
+            "nativeWords": [
+              1058540305,
+              1085532758,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1058540246,
+              1085532758,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 37,
+            "y": 261,
+            "differentWords": 1,
+            "nativeWords": [
+              1059278113,
+              1085532758,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1059278059,
+              1085532758,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 90,
+            "y": 261,
+            "differentWords": 1,
+            "nativeWords": [
+              1066226048,
+              1085532758,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1066226045,
+              1085532758,
+              0,
+              1065353216
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": false
+      },
+      {
+        "index": 3,
+        "stage": 2,
+        "frame": 599,
+        "draw": 47,
+        "role": "selected21",
+        "strictFullBufferHashEqual": false,
+        "portableSha256": "eb941217cabc0d86f0c386d3668bcf63d4433bb463ef191940c880ea69e4c3f2",
+        "nativeSha256": "694d88acb22e1fcae7565d26f8d868acff92be9fb45d84da71f8915725389d0b",
+        "portableCovered": 2438,
+        "samples": [
+          {
+            "x": 555,
+            "y": 33,
+            "differentWords": 2,
+            "nativeWords": [
+              1056076080,
+              1058782592,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1056076804,
+              1058782494,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 558,
+            "y": 33,
+            "differentWords": 2,
+            "nativeWords": [
+              1051602697,
+              1058774032,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1051603381,
+              1058773939,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 550,
+            "y": 35,
+            "differentWords": 2,
+            "nativeWords": [
+              1059700099,
+              1058947497,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1059700459,
+              1058947396,
+              0,
+              1065353216
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": false
+      },
+      {
+        "index": 4,
+        "stage": 2,
+        "frame": 599,
+        "draw": 44,
+        "role": "selected21",
+        "strictFullBufferHashEqual": false,
+        "portableSha256": "4901c1f0218530dbdd0484e5e4b39dc089d3aaaea2c27a580ff8c22cafe5d149",
+        "nativeSha256": "5707a34ac398126393cdffd5a7158a77817e1b3e41fc4a7f255b797ab8bd7906",
+        "portableCovered": 2512,
+        "samples": [
+          {
+            "x": 485,
+            "y": 72,
+            "differentWords": 2,
+            "nativeWords": [
+              1054969592,
+              1061877897,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1054970483,
+              1061877899,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 481,
+            "y": 74,
+            "differentWords": 2,
+            "nativeWords": [
+              1058162004,
+              1062050712,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1058163650,
+              1062050718,
+              0,
+              1065353216
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": false
+      },
+      {
+        "index": 5,
+        "stage": 2,
+        "frame": 599,
+        "draw": 20,
+        "role": "selected21",
+        "strictFullBufferHashEqual": false,
+        "portableSha256": "9d46ea8a77d412e39c478bc0ecde336282a35567df050297114cd553260ae568",
+        "nativeSha256": "2e07ca57f8be24211dcd7b7a1902b5c675e7365d68f2a64313c28eb2e6ee4a72",
+        "portableCovered": 17068,
+        "samples": [
+          {
+            "x": 624,
+            "y": 153,
+            "differentWords": 2,
+            "nativeWords": [
+              1059362616,
+              1049232570,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1059363072,
+              1049232574,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 629,
+            "y": 155,
+            "differentWords": 2,
+            "nativeWords": [
+              1057662829,
+              1049346117,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1057663321,
+              1049346121,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 631,
+            "y": 159,
+            "differentWords": 2,
+            "nativeWords": [
+              1055894620,
+              1049592769,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1055895625,
+              1049592773,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 624,
+            "y": 162,
+            "differentWords": 2,
+            "nativeWords": [
+              1057834718,
+              1049797729,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1057835302,
+              1049797733,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 622,
+            "y": 164,
+            "differentWords": 2,
+            "nativeWords": [
+              1058039752,
+              1049928953,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1058040167,
+              1049928957,
+              0,
+              1065353216
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": false
+      },
+      {
+        "index": 6,
+        "stage": 2,
+        "frame": 599,
+        "draw": 26,
+        "role": "selected21",
+        "strictFullBufferHashEqual": false,
+        "portableSha256": "0600298a8b120b7282a4bf44d8a08ef0bc097480dd65d54290794a4f983c1fa9",
+        "nativeSha256": "34b324d64ae808e626cb83ee62408fdc30e73671c4a8af939c36f242b46fce25",
+        "portableCovered": 9192,
+        "samples": [
+          {
+            "x": 593,
+            "y": 192,
+            "differentWords": 2,
+            "nativeWords": [
+              1058994205,
+              1059272679,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1058993634,
+              1059272677,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 592,
+            "y": 193,
+            "differentWords": 2,
+            "nativeWords": [
+              1059207317,
+              1059317411,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1059206765,
+              1059317410,
+              0,
+              1065353216
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": false
+      },
+      {
+        "index": 7,
+        "stage": 2,
+        "frame": 1199,
+        "draw": 44,
+        "role": "selected21",
+        "strictFullBufferHashEqual": false,
+        "portableSha256": "6cbd01715102ce2e3d4f3f83a548789f9af2d03cac32d20910a92329446d0cca",
+        "nativeSha256": "31d24262473af1526e12daa01db218558fd395fcc29a824a45947e7d4ec1bc69",
+        "portableCovered": 2484,
+        "samples": [
+          {
+            "x": 465,
+            "y": 0,
+            "differentWords": 2,
+            "nativeWords": [
+              1060276616,
+              1052209255,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1060276259,
+              1052209460,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 469,
+            "y": 1,
+            "differentWords": 2,
+            "nativeWords": [
+              1056712847,
+              1052366853,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1056711719,
+              1052367174,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 466,
+            "y": 2,
+            "differentWords": 2,
+            "nativeWords": [
+              1058934729,
+              1052524635,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1058933963,
+              1052525074,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 467,
+            "y": 5,
+            "differentWords": 2,
+            "nativeWords": [
+              1057286214,
+              1053000727,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1057285377,
+              1053001178,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 472,
+            "y": 5,
+            "differentWords": 2,
+            "nativeWords": [
+              1049682685,
+              1053000727,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1049680997,
+              1053001178,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 468,
+            "y": 6,
+            "differentWords": 2,
+            "nativeWords": [
+              1055430237,
+              1053160382,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1055429001,
+              1053160716,
+              0,
+              1065353216
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": true,
+        "nativeCovered": 2484,
+        "coverageDifferences": 0,
+        "differentUVOnCommonCoverage": 380,
+        "allDifferentFloatWords": 380,
+        "maxUVDelta": 6.39650970697403e-05,
+        "first": [
+          {
+            "x": 459,
+            "y": 0,
+            "channel": 0,
+            "native": 0.9800111055374146,
+            "portable": 0.9799900054931641
+          },
+          {
+            "x": 459,
+            "y": 0,
+            "channel": 1,
+            "native": 0.35827943682670593,
+            "portable": 0.3582855463027954
+          },
+          {
+            "x": 460,
+            "y": 0,
+            "channel": 0,
+            "native": 0.9329110980033875,
+            "portable": 0.9328899383544922
+          },
+          {
+            "x": 460,
+            "y": 0,
+            "channel": 1,
+            "native": 0.35827943682670593,
+            "portable": 0.3582855463027954
+          },
+          {
+            "x": 461,
+            "y": 0,
+            "channel": 0,
+            "native": 0.8858111500740051,
+            "portable": 0.8857899308204651
+          },
+          {
+            "x": 461,
+            "y": 0,
+            "channel": 1,
+            "native": 0.35827943682670593,
+            "portable": 0.3582855463027954
+          },
+          {
+            "x": 462,
+            "y": 0,
+            "channel": 0,
+            "native": 0.8387110829353333,
+            "portable": 0.8386898636817932
+          },
+          {
+            "x": 462,
+            "y": 0,
+            "channel": 1,
+            "native": 0.35827943682670593,
+            "portable": 0.3582855463027954
+          },
+          {
+            "x": 463,
+            "y": 0,
+            "channel": 0,
+            "native": 0.7916110754013062,
+            "portable": 0.7915897965431213
+          },
+          {
+            "x": 463,
+            "y": 0,
+            "channel": 1,
+            "native": 0.35827943682670593,
+            "portable": 0.3582855463027954
+          },
+          {
+            "x": 464,
+            "y": 0,
+            "channel": 0,
+            "native": 0.744511067867279,
+            "portable": 0.7444897294044495
+          },
+          {
+            "x": 464,
+            "y": 0,
+            "channel": 1,
+            "native": 0.35827943682670593,
+            "portable": 0.3582855463027954
+          },
+          {
+            "x": 465,
+            "y": 0,
+            "channel": 0,
+            "native": 0.697411060333252,
+            "portable": 0.6973897814750671
+          },
+          {
+            "x": 465,
+            "y": 0,
+            "channel": 1,
+            "native": 0.35827943682670593,
+            "portable": 0.3582855463027954
+          },
+          {
+            "x": 466,
+            "y": 0,
+            "channel": 0,
+            "native": 0.6503149271011353,
+            "portable": 0.6502935886383057
+          },
+          {
+            "x": 466,
+            "y": 0,
+            "channel": 1,
+            "native": 0.35827943682670593,
+            "portable": 0.3582855463027954
+          },
+          {
+            "x": 467,
+            "y": 0,
+            "channel": 0,
+            "native": 0.6032251119613647,
+            "portable": 0.6032036542892456
+          },
+          {
+            "x": 467,
+            "y": 0,
+            "channel": 1,
+            "native": 0.35827943682670593,
+            "portable": 0.3582855463027954
+          },
+          {
+            "x": 468,
+            "y": 0,
+            "channel": 0,
+            "native": 0.5561352372169495,
+            "portable": 0.5561137795448303
+          },
+          {
+            "x": 468,
+            "y": 0,
+            "channel": 1,
+            "native": 0.35827943682670593,
+            "portable": 0.3582855463027954
+          },
+          {
+            "x": 469,
+            "y": 0,
+            "channel": 0,
+            "native": 0.5090453624725342,
+            "portable": 0.509023904800415
+          },
+          {
+            "x": 469,
+            "y": 0,
+            "channel": 1,
+            "native": 0.35827943682670593,
+            "portable": 0.3582855463027954
+          },
+          {
+            "x": 470,
+            "y": 0,
+            "channel": 0,
+            "native": 0.46195554733276367,
+            "portable": 0.46193403005599976
+          },
+          {
+            "x": 470,
+            "y": 0,
+            "channel": 1,
+            "native": 0.35827943682670593,
+            "portable": 0.3582855463027954
+          },
+          {
+            "x": 471,
+            "y": 0,
+            "channel": 0,
+            "native": 0.414865642786026,
+            "portable": 0.4148440957069397
+          },
+          {
+            "x": 471,
+            "y": 0,
+            "channel": 1,
+            "native": 0.35827943682670593,
+            "portable": 0.3582855463027954
+          },
+          {
+            "x": 472,
+            "y": 0,
+            "channel": 0,
+            "native": 0.3677757978439331,
+            "portable": 0.3677542209625244
+          },
+          {
+            "x": 472,
+            "y": 0,
+            "channel": 1,
+            "native": 0.35827943682670593,
+            "portable": 0.3582855463027954
+          },
+          {
+            "x": 473,
+            "y": 0,
+            "channel": 0,
+            "native": 0.3206859230995178,
+            "portable": 0.32066431641578674
+          },
+          {
+            "x": 473,
+            "y": 0,
+            "channel": 1,
+            "native": 0.35827943682670593,
+            "portable": 0.3582855463027954
+          },
+          {
+            "x": 474,
+            "y": 0,
+            "channel": 0,
+            "native": 0.2735960781574249,
+            "portable": 0.27357444167137146
+          },
+          {
+            "x": 474,
+            "y": 0,
+            "channel": 1,
+            "native": 0.35827943682670593,
+            "portable": 0.3582855463027954
+          }
+        ]
+      },
+      {
+        "index": 8,
+        "stage": 2,
+        "frame": 1199,
+        "draw": 16,
+        "role": "selected21",
+        "strictFullBufferHashEqual": false,
+        "portableSha256": "ca9caefc5501ff050c58ea78521dd141370fb0b32da78c65a3b192a18b5099cd",
+        "nativeSha256": "93c75dca4dab69efc15aebad9c110700f1f37c7d223ddb8a6d232ef256e13528",
+        "portableCovered": 3407,
+        "samples": [
+          {
+            "x": 342,
+            "y": 142,
+            "differentWords": 2,
+            "nativeWords": [
+              1051190963,
+              1068348926,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1051189977,
+              1068348924,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 341,
+            "y": 154,
+            "differentWords": 2,
+            "nativeWords": [
+              1049525285,
+              1063636822,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1049524447,
+              1063636818,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 348,
+            "y": 163,
+            "differentWords": 2,
+            "nativeWords": [
+              1054706753,
+              1058271252,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1054705451,
+              1058271247,
+              0,
+              1065353216
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": false
+      },
+      {
+        "index": 9,
+        "stage": 2,
+        "frame": 1199,
+        "draw": 14,
+        "role": "selected21",
+        "strictFullBufferHashEqual": false,
+        "portableSha256": "6ad2369b8d3a4e079d0d8f6e3a6ed6dd320b4e916cb95d6e1be5fb659c1346a7",
+        "nativeSha256": "e7730a0248d9511fdcd2274be1db22c49a2be73187bfed89f2989e3ccef261d6",
+        "portableCovered": 13405,
+        "samples": [
+          {
+            "x": 345,
+            "y": 196,
+            "differentWords": 1,
+            "nativeWords": [
+              1050177051,
+              1080270776,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1050176489,
+              1080270776,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 352,
+            "y": 215,
+            "differentWords": 1,
+            "nativeWords": [
+              1054025088,
+              1078176985,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1054024556,
+              1078176985,
+              0,
+              1065353216
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": false
+      },
+      {
+        "index": 10,
+        "stage": 3,
+        "frame": 599,
+        "draw": 11,
+        "role": "selected21",
+        "strictFullBufferHashEqual": false,
+        "portableSha256": "308524823f33371080b5f4397bad17ac736eb0e28cd1134cea140daac2430cb2",
+        "nativeSha256": "158962a97bd085623161bbd043b1aad76845e9b65b593c36a1ed4d262c7272f5",
+        "portableCovered": 321,
+        "samples": [
+          {
+            "x": 364,
+            "y": 4,
+            "differentWords": 2,
+            "nativeWords": [
+              1058253413,
+              1057984308,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1058260590,
+              1057984346,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 361,
+            "y": 11,
+            "differentWords": 2,
+            "nativeWords": [
+              1044175917,
+              1057163142,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1044210636,
+              1057163188,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 358,
+            "y": 25,
+            "differentWords": 2,
+            "nativeWords": [
+              1044774895,
+              1054195235,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1044803204,
+              1054195310,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 357,
+            "y": 30,
+            "differentWords": 2,
+            "nativeWords": [
+              1046268767,
+              1053060765,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1046294780,
+              1053060833,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 355,
+            "y": 40,
+            "differentWords": 2,
+            "nativeWords": [
+              1048923525,
+              1050780780,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1048934224,
+              1050780835,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 354,
+            "y": 42,
+            "differentWords": 2,
+            "nativeWords": [
+              1037995446,
+              1050294715,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1038036273,
+              1050294769,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 354,
+            "y": 46,
+            "differentWords": 2,
+            "nativeWords": [
+              1051628289,
+              1049415118,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1051637607,
+              1049415167,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 354,
+            "y": 47,
+            "differentWords": 2,
+            "nativeWords": [
+              1053580085,
+              1049194865,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1053589179,
+              1049194912,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 355,
+            "y": 47,
+            "differentWords": 2,
+            "nativeWords": [
+              1059772224,
+              1049242102,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1059776797,
+              1049242150,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 353,
+            "y": 49,
+            "differentWords": 2,
+            "nativeWords": [
+              1048387501,
+              1048706654,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1048404702,
+              1048706698,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 353,
+            "y": 53,
+            "differentWords": 2,
+            "nativeWords": [
+              1056300102,
+              1047069994,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1056307808,
+              1047070073,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 350,
+            "y": 59,
+            "differentWords": 2,
+            "nativeWords": [
+              1019001054,
+              1044125717,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1019100484,
+              1044125780,
+              0,
+              1065353216
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": true,
+        "nativeCovered": 321,
+        "coverageDifferences": 0,
+        "differentUVOnCommonCoverage": 641,
+        "allDifferentFloatWords": 641,
+        "maxUVDelta": 0.0005927383899688721,
+        "first": [
+          {
+            "x": 363,
+            "y": 0,
+            "channel": 0,
+            "native": 0.08312640339136124,
+            "portable": 0.08371768891811371
+          },
+          {
+            "x": 363,
+            "y": 0,
+            "channel": 1,
+            "native": 0.5848912596702576,
+            "portable": 0.5848943591117859
+          },
+          {
+            "x": 364,
+            "y": 0,
+            "channel": 0,
+            "native": 0.347306489944458,
+            "portable": 0.3478992283344269
+          },
+          {
+            "x": 364,
+            "y": 0,
+            "channel": 1,
+            "native": 0.5862749814987183,
+            "portable": 0.5862781405448914
+          },
+          {
+            "x": 365,
+            "y": 0,
+            "channel": 0,
+            "native": 0.6115448474884033,
+            "portable": 0.6119375228881836
+          },
+          {
+            "x": 365,
+            "y": 0,
+            "channel": 1,
+            "native": 0.587660014629364,
+            "portable": 0.5876620411872864
+          },
+          {
+            "x": 366,
+            "y": 0,
+            "channel": 0,
+            "native": 0.875799298286438,
+            "portable": 0.8759250044822693
+          },
+          {
+            "x": 366,
+            "y": 0,
+            "channel": 1,
+            "native": 0.589045524597168,
+            "portable": 0.5890461802482605
+          },
+          {
+            "x": 363,
+            "y": 1,
+            "channel": 0,
+            "native": 0.14035512506961823,
+            "portable": 0.14093998074531555
+          },
+          {
+            "x": 363,
+            "y": 1,
+            "channel": 1,
+            "native": 0.5785226225852966,
+            "portable": 0.5785256624221802
+          },
+          {
+            "x": 364,
+            "y": 1,
+            "channel": 0,
+            "native": 0.40461885929107666,
+            "portable": 0.4052051603794098
+          },
+          {
+            "x": 364,
+            "y": 1,
+            "channel": 1,
+            "native": 0.5799068212509155,
+            "portable": 0.5799099206924438
+          },
+          {
+            "x": 365,
+            "y": 1,
+            "channel": 0,
+            "native": 0.6689569354057312,
+            "portable": 0.669291615486145
+          },
+          {
+            "x": 365,
+            "y": 1,
+            "channel": 1,
+            "native": 0.5812926888465881,
+            "portable": 0.5812944173812866
+          },
+          {
+            "x": 366,
+            "y": 1,
+            "channel": 0,
+            "native": 0.9332950711250305,
+            "portable": 0.933362603187561
+          },
+          {
+            "x": 366,
+            "y": 1,
+            "channel": 1,
+            "native": 0.5826786756515503,
+            "portable": 0.5826789736747742
+          },
+          {
+            "x": 363,
+            "y": 2,
+            "channel": 0,
+            "native": 0.19762033224105835,
+            "portable": 0.19819873571395874
+          },
+          {
+            "x": 363,
+            "y": 2,
+            "channel": 1,
+            "native": 0.572149932384491,
+            "portable": 0.5721529722213745
+          },
+          {
+            "x": 364,
+            "y": 2,
+            "channel": 0,
+            "native": 0.4619790017604828,
+            "portable": 0.4625228941440582
+          },
+          {
+            "x": 364,
+            "y": 2,
+            "channel": 1,
+            "native": 0.5735349059104919,
+            "portable": 0.5735377073287964
+          },
+          {
+            "x": 365,
+            "y": 2,
+            "channel": 0,
+            "native": 0.726405680179596,
+            "portable": 0.7266823053359985
+          },
+          {
+            "x": 365,
+            "y": 2,
+            "channel": 1,
+            "native": 0.5749213099479675,
+            "portable": 0.5749228000640869
+          },
+          {
+            "x": 366,
+            "y": 2,
+            "channel": 0,
+            "native": 0.9908275008201599,
+            "portable": 0.9908368587493896
+          },
+          {
+            "x": 366,
+            "y": 2,
+            "channel": 1,
+            "native": 0.5763077735900879,
+            "portable": 0.5763078331947327
+          },
+          {
+            "x": 363,
+            "y": 3,
+            "channel": 0,
+            "native": 0.2549220025539398,
+            "portable": 0.25549396872520447
+          },
+          {
+            "x": 363,
+            "y": 3,
+            "channel": 1,
+            "native": 0.5657731294631958,
+            "portable": 0.5657761096954346
+          },
+          {
+            "x": 364,
+            "y": 3,
+            "channel": 0,
+            "native": 0.519380509853363,
+            "portable": 0.5198664665222168
+          },
+          {
+            "x": 364,
+            "y": 3,
+            "channel": 1,
+            "native": 0.5671588778495789,
+            "portable": 0.5671614408493042
+          },
+          {
+            "x": 365,
+            "y": 3,
+            "channel": 0,
+            "native": 0.7838910222053528,
+            "portable": 0.7841095924377441
+          },
+          {
+            "x": 365,
+            "y": 3,
+            "channel": 1,
+            "native": 0.568545937538147,
+            "portable": 0.5685470700263977
+          },
+          {
+            "x": 362,
+            "y": 4,
+            "channel": 0,
+            "native": 0.04774051159620285,
+            "portable": 0.04830458015203476
+          },
+          {
+            "x": 362,
+            "y": 4,
+            "channel": 1,
+            "native": 0.5580065250396729,
+            "portable": 0.5580094456672668
+          }
+        ]
+      },
+      {
+        "index": 11,
+        "stage": 3,
+        "frame": 1199,
+        "draw": 34,
+        "role": "selected21",
+        "strictFullBufferHashEqual": false,
+        "portableSha256": "032c60b67c64e48be3b0176df03318ff78f94b50be6cfbbfad6e702e1ea2738f",
+        "nativeSha256": "3b739e1b9512524b002dca24a3aafbf5f4ac92849efee6c50df00e276e9fb4f1",
+        "portableCovered": 1808,
+        "samples": [
+          {
+            "x": 433,
+            "y": 130,
+            "differentWords": 1,
+            "nativeWords": [
+              1055738996,
+              1050771308,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1055738996,
+              1050771401,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 433,
+            "y": 161,
+            "differentWords": 2,
+            "nativeWords": [
+              1055701218,
+              1046250652,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1055701222,
+              1046250930,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 434,
+            "y": 161,
+            "differentWords": 1,
+            "nativeWords": [
+              1058482581,
+              1046243438,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1058482581,
+              1046243605,
+              0,
+              1065353216
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": false
+      },
+      {
+        "index": 12,
+        "stage": 3,
+        "frame": 1199,
+        "draw": 138,
+        "role": "selected21",
+        "strictFullBufferHashEqual": true,
+        "portableSha256": "283ef6832f18ced49323abae0d0ddcf75dc8f07dd657dc9b3deae3df25ef2774",
+        "nativeSha256": "283ef6832f18ced49323abae0d0ddcf75dc8f07dd657dc9b3deae3df25ef2774",
+        "portableCovered": 37114,
+        "samples": [
+          {
+            "x": 45,
+            "y": 300,
+            "differentWords": 0,
+            "nativeWords": [
+              1061521216,
+              1059743308,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1061521216,
+              1059743308,
+              0,
+              1065353216
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": false
+      },
+      {
+        "index": 13,
+        "stage": 3,
+        "frame": 1199,
+        "draw": 93,
+        "role": "selected21",
+        "strictFullBufferHashEqual": false,
+        "portableSha256": "bb4e6bb14ba0e0176150f593c03dc3c9f2e262d53f01b6f2690d71634c992d14",
+        "nativeSha256": "e5befe7d5544d09afba1b92b82649412c7c8138d3cacaf328660e8cf73a8c55f",
+        "portableCovered": 85730,
+        "samples": [
+          {
+            "x": 39,
+            "y": 374,
+            "differentWords": 2,
+            "nativeWords": [
+              1064329568,
+              1074942623,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1064329566,
+              1074942624,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 158,
+            "y": 383,
+            "differentWords": 2,
+            "nativeWords": [
+              1066453742,
+              1074955741,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1066453743,
+              1074955744,
+              0,
+              1065353216
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": false
+      },
+      {
+        "index": 14,
+        "stage": 3,
+        "frame": 1199,
+        "draw": 94,
+        "role": "selected21",
+        "strictFullBufferHashEqual": false,
+        "portableSha256": "4b724a53de820e64888c3d2de7d1fd0f5529c60f520089982a29f4d880a1e149",
+        "nativeSha256": "fbf6428075cdd35286908a844e1496f1b3decce1d721f19bf5b9bffe00098412",
+        "portableCovered": 95811,
+        "samples": [
+          {
+            "x": 479,
+            "y": 374,
+            "differentWords": 2,
+            "nativeWords": [
+              1067450173,
+              1072574986,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1067450176,
+              1072574988,
+              0,
+              1065353216
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": false
+      },
+      {
+        "index": 15,
+        "stage": 3,
+        "frame": 1199,
+        "draw": 95,
+        "role": "selected21",
+        "strictFullBufferHashEqual": false,
+        "portableSha256": "f84671dbd2810ca0d1ac1af76931e891bdb85fcc7ebf1332b71fce1f53f0fe52",
+        "nativeSha256": "3d674ff796acc4f283ef8fd06703378a2d53d6d3cbe103d0c870b164b9863954",
+        "portableCovered": 116300,
+        "samples": [
+          {
+            "x": 47,
+            "y": 380,
+            "differentWords": 2,
+            "nativeWords": [
+              1069665570,
+              1074073631,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1069665568,
+              1074073633,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 71,
+            "y": 380,
+            "differentWords": 2,
+            "nativeWords": [
+              1069927046,
+              1074098846,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1069927043,
+              1074098848,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 7,
+            "y": 384,
+            "differentWords": 2,
+            "nativeWords": [
+              1069269441,
+              1073982941,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1069269439,
+              1073982944,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 46,
+            "y": 390,
+            "differentWords": 2,
+            "nativeWords": [
+              1069729133,
+              1073949278,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1069729130,
+              1073949280,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 67,
+            "y": 390,
+            "differentWords": 2,
+            "nativeWords": [
+              1069952747,
+              1073970271,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1069952743,
+              1073970272,
+              0,
+              1065353216
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": false
+      },
+      {
+        "index": 16,
+        "stage": 4,
+        "frame": 599,
+        "draw": 9,
+        "role": "selected21",
+        "strictFullBufferHashEqual": false,
+        "portableSha256": "947ce94edb2514f23b9c2c3c71f189f7b1ad2534c87580e3a034dc10d5af885c",
+        "nativeSha256": "3deb52ccf909ce3a9379b91ecf006c46b41b1b2a6ff9eb580b505ea595b9da54",
+        "portableCovered": 82005,
+        "samples": [
+          {
+            "x": 0,
+            "y": 300,
+            "differentWords": 2,
+            "nativeWords": [
+              1083889265,
+              1088288350,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1083889262,
+              1088288349,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 3,
+            "y": 358,
+            "differentWords": 2,
+            "nativeWords": [
+              1084699975,
+              1088395024,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1084699964,
+              1088395022,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 4,
+            "y": 365,
+            "differentWords": 2,
+            "nativeWords": [
+              1084807954,
+              1088404183,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1084807945,
+              1088404182,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 1,
+            "y": 368,
+            "differentWords": 1,
+            "nativeWords": [
+              1084822835,
+              1088431060,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1084822825,
+              1088431060,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 18,
+            "y": 380,
+            "differentWords": 2,
+            "nativeWords": [
+              1085160049,
+              1088342644,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1085160043,
+              1088342643,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 0,
+            "y": 385,
+            "differentWords": 2,
+            "nativeWords": [
+              1085056533,
+              1088476952,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1085056521,
+              1088476953,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 14,
+            "y": 385,
+            "differentWords": 2,
+            "nativeWords": [
+              1085194096,
+              1088382025,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1085194088,
+              1088382023,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 9,
+            "y": 387,
+            "differentWords": 1,
+            "nativeWords": [
+              1085173717,
+              1088421020,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1085173709,
+              1088421020,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 14,
+            "y": 391,
+            "differentWords": 1,
+            "nativeWords": [
+              1085283282,
+              1088396001,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1085283275,
+              1088396001,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 3,
+            "y": 397,
+            "differentWords": 2,
+            "nativeWords": [
+              1085260980,
+              1088485092,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1085260973,
+              1088485094,
+              0,
+              1065353216
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": false
+      },
+      {
+        "index": 17,
+        "stage": 4,
+        "frame": 1199,
+        "draw": 41,
+        "role": "selected21",
+        "strictFullBufferHashEqual": false,
+        "portableSha256": "03f8767c30cfa8c7b245b763c2b10fd93d64f079e5b933e593a61da2e45b06fc",
+        "nativeSha256": "5744c0510c6e450eb146c4d60f6c3a5f6f6fa5378b63d841abab80924313f5c5",
+        "portableCovered": 74895,
+        "samples": [
+          {
+            "x": 345,
+            "y": 143,
+            "differentWords": 1,
+            "nativeWords": [
+              1074342238,
+              1082366527,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1074342242,
+              1082366527,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 332,
+            "y": 151,
+            "differentWords": 2,
+            "nativeWords": [
+              1074527958,
+              1082483379,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1074527968,
+              1082483378,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 346,
+            "y": 158,
+            "differentWords": 2,
+            "nativeWords": [
+              1074803280,
+              1082353343,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1074803298,
+              1082353342,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 311,
+            "y": 162,
+            "differentWords": 2,
+            "nativeWords": [
+              1074772018,
+              1082673936,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1074772035,
+              1082673935,
+              0,
+              1065353216
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": false
+      },
+      {
+        "index": 18,
+        "stage": 4,
+        "frame": 1199,
+        "draw": 29,
+        "role": "selected21",
+        "strictFullBufferHashEqual": false,
+        "portableSha256": "dcfdb6aded180d47f86e983bd27542861718f5c18c35f68ef9f04e1d3cffcf29",
+        "nativeSha256": "fef1898c46478aa05a7cef64b69b0e95d93ea728ac178a8b144493bcc00a58cc",
+        "portableCovered": 75046,
+        "samples": [
+          {
+            "x": 144,
+            "y": 149,
+            "differentWords": 2,
+            "nativeWords": [
+              1075159693,
+              1076779935,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1075159696,
+              1076779936,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 179,
+            "y": 150,
+            "differentWords": 2,
+            "nativeWords": [
+              1075327071,
+              1076191770,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1075327079,
+              1076191772,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 212,
+            "y": 151,
+            "differentWords": 2,
+            "nativeWords": [
+              1075468958,
+              1075620534,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1075468962,
+              1075620536,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 197,
+            "y": 152,
+            "differentWords": 2,
+            "nativeWords": [
+              1075459289,
+              1075886368,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1075459302,
+              1075886370,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 170,
+            "y": 154,
+            "differentWords": 2,
+            "nativeWords": [
+              1075408854,
+              1076356967,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1075408866,
+              1076356970,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 138,
+            "y": 156,
+            "differentWords": 2,
+            "nativeWords": [
+              1075339286,
+              1076903840,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1075339296,
+              1076903842,
+              0,
+              1065353216
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": false
+      },
+      {
+        "index": 19,
+        "stage": 4,
+        "frame": 1199,
+        "draw": 13,
+        "role": "selected21",
+        "strictFullBufferHashEqual": false,
+        "portableSha256": "fb8d796ad9d60e14cc881932b0f1ffc1288d22404116c82b2a1d876440038097",
+        "nativeSha256": "4be44af1a6aedc20a006c81ebd6adf12c3855e336076fbd54f47a67f7adeb6c6",
+        "portableCovered": 85930,
+        "samples": [
+          {
+            "x": 219,
+            "y": 158,
+            "differentWords": 2,
+            "nativeWords": [
+              1079450264,
+              1075457240,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1079450275,
+              1075457241,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 217,
+            "y": 162,
+            "differentWords": 2,
+            "nativeWords": [
+              1079561370,
+              1075499986,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1079561384,
+              1075499987,
+              0,
+              1065353216
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": false
+      },
+      {
+        "index": 20,
+        "stage": 7,
+        "frame": 1199,
+        "draw": 51,
+        "role": "selected21",
+        "strictFullBufferHashEqual": false,
+        "portableSha256": "50c1222b50ce6234eebb5d7c69d12e4f56e344ee03caf0a8eba9d61fdf9f77e3",
+        "nativeSha256": "6a9d7a7e509e98c8ca040616befda43d24fe032103ba4344ddaa05f3c609cfd7",
+        "portableCovered": 20928,
+        "samples": [
+          {
+            "x": 632,
+            "y": 91,
+            "differentWords": 2,
+            "nativeWords": [
+              1062040090,
+              1076789230,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1062040341,
+              1076789205,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 624,
+            "y": 93,
+            "differentWords": 2,
+            "nativeWords": [
+              1060285186,
+              1076883446,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1060285367,
+              1076883427,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 639,
+            "y": 97,
+            "differentWords": 2,
+            "nativeWords": [
+              1062166518,
+              1076515756,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1062166974,
+              1076515710,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 632,
+            "y": 99,
+            "differentWords": 2,
+            "nativeWords": [
+              1060612308,
+              1076588929,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1060612713,
+              1076588888,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 628,
+            "y": 101,
+            "differentWords": 2,
+            "nativeWords": [
+              1059564656,
+              1076609783,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1059565047,
+              1076609744,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 622,
+            "y": 102,
+            "differentWords": 2,
+            "nativeWords": [
+              1058334026,
+              1076691419,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1058334359,
+              1076691386,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 637,
+            "y": 102,
+            "differentWords": 2,
+            "nativeWords": [
+              1060942960,
+              1076418136,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1060943445,
+              1076418084,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 620,
+            "y": 103,
+            "differentWords": 2,
+            "nativeWords": [
+              1057803530,
+              1076702049,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1057803854,
+              1076702017,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 630,
+            "y": 103,
+            "differentWords": 2,
+            "nativeWords": [
+              1059561597,
+              1076519848,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1059562030,
+              1076519800,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 633,
+            "y": 103,
+            "differentWords": 2,
+            "nativeWords": [
+              1060080908,
+              1076462938,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1060081362,
+              1076462890,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 634,
+            "y": 103,
+            "differentWords": 2,
+            "nativeWords": [
+              1060253194,
+              1076444059,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1060253654,
+              1076444010,
+              0,
+              1065353216
+            ]
+          },
+          {
+            "x": 636,
+            "y": 103,
+            "differentWords": 2,
+            "nativeWords": [
+              1060596545,
+              1076406434,
+              0,
+              1065353216
+            ],
+            "portableWords": [
+              1060597017,
+              1076406382,
+              0,
+              1065353216
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": false
+      },
+      {
+        "index": 21,
+        "stage": 3,
+        "frame": 599,
+        "draw": 68,
+        "role": "depthAlwaysCoverageControl",
+        "strictFullBufferHashEqual": true,
+        "portableSha256": "afab861fd813fe0b2089563f13f29d1c90b5e89d8f068449e44d4cfc5a38fde0",
+        "nativeSha256": "afab861fd813fe0b2089563f13f29d1c90b5e89d8f068449e44d4cfc5a38fde0",
+        "portableCovered": 2804,
+        "samples": [
+          {
+            "x": 631,
+            "y": 315,
+            "differentWords": 0,
+            "nativeWords": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "portableWords": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": true,
+        "nativeCovered": 2804,
+        "coverageDifferences": 0,
+        "differentUVOnCommonCoverage": 0,
+        "allDifferentFloatWords": 0,
+        "maxUVDelta": 0.0,
+        "first": []
+      },
+      {
+        "index": 22,
+        "stage": 3,
+        "frame": 1199,
+        "draw": 45,
+        "role": "depthAlwaysCoverageControl",
+        "strictFullBufferHashEqual": true,
+        "portableSha256": "0c0b2cd3f52e83b77c5c1c59b34e78033abed0c8c967ff6dc8593ea5abf8085f",
+        "nativeSha256": "0c0b2cd3f52e83b77c5c1c59b34e78033abed0c8c967ff6dc8593ea5abf8085f",
+        "portableCovered": 16235,
+        "samples": [
+          {
+            "x": 125,
+            "y": 378,
+            "differentWords": 0,
+            "nativeWords": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "portableWords": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "x": 114,
+            "y": 214,
+            "differentWords": 0,
+            "nativeWords": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "portableWords": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "nativeFullBytesAvailable": true,
+        "nativeCovered": 16235,
+        "coverageDifferences": 0,
+        "differentUVOnCommonCoverage": 0,
+        "allDifferentFloatWords": 0,
+        "maxUVDelta": 0.0,
+        "first": []
+      }
+    ]
+  },
+  "evidence": {
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/sources.json": {
+      "bytes": 2600,
+      "sha256": "722656119b1b85249ed69efbb10c85792e1b084a223f90a36863bcc45e6c9a29"
+    },
+    "tools/th14-stage-current-sequential-clip-snap8-build.mjs": {
+      "bytes": 10032,
+      "sha256": "c62730af65a253401b28d05f182282866723c950e130d87fcdebf3013fd9e93c"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/source/Renderer.cpp": {
+      "bytes": 29936,
+      "sha256": "46d874eb2ab77080f521b76f59da9d639216f67be920411d03427c0df4b7c6f6"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/source/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/source/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/source/Shaders.hpp": {
+      "bytes": 3646,
+      "sha256": "78f7648c27aa762c30493e6bf784baabdabdac63e2f683b2ed33470dca5aa252"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/source/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/source/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/source/fixture.cpp": {
+      "bytes": 5693,
+      "sha256": "7d52f277eab6e0143d197d8b74d2454033e0fecb485a7df5cc13d4dc07303d6d"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/prepared.json": {
+      "bytes": 1254349,
+      "sha256": "924c7d2327bb996e552e094ce377a818b764019d4c86b3a407baa29c38ea9910"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/native.json": {
+      "bytes": 6748,
+      "sha256": "115123af74b9133297766d01284d5f9e4e077a2b290ab84916f74cf3a44040cd"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/native.bgra": {
+      "bytes": 25804800,
+      "sha256": "42f7c2c66012c6b283eac3c0620ba485591ea7bb419a70715dfdeef7ad62e978"
+    },
+    "tools/th14-stage-gpu-stream-hal.py": {
+      "bytes": 7658,
+      "sha256": "8c61376c7900d6b0af49aa6395e7b58289b2363d62a8b601bc39b3507dd36613"
+    },
+    "tools/th14-gpu-raster-native.py": {
+      "bytes": 7489,
+      "sha256": "aaf5d4d5fb26c80a3c7d0649ac5778b628fa76b20a5cb1704dbc2a7fe0c32fc8"
+    },
+    "artifacts/th14/stage-gpu-stream-with-initial/native.json": {
+      "bytes": 82683936,
+      "sha256": "4285e41732d27b9e7307928d45da2c55a027ba69fb81dec43c197761b343ed46"
+    },
+    "tools/th14-stage-gpu-stream-native.py": {
+      "bytes": 13126,
+      "sha256": "85191a938c681a37c7f8f2f8644eeeaf71e85f3d9921e8f2b9b36f73e3fd80be"
+    },
+    "tools/th14-native-stage-gpu-stream.py": {
+      "bytes": 9519,
+      "sha256": "ed73a59d6c70209c3fb3588d08432722e84bce135ec24359dfcf79b8f120d3f9"
+    },
+    "tools/th14-native-stage-fpu-resource-loader.py": {
+      "bytes": 5532,
+      "sha256": "b1a3a8bc5d96ce08b8390256d9e0565d667de00f21fae48d8555c56e40741100"
+    },
+    "tools/th-anm-script-dump.py": {
+      "bytes": 2447,
+      "sha256": "27f9300d8aa6ed4217e7c275f22dd5d7956e459539ba4cc206b2c2810e668cf0"
+    },
+    "tools/th14-stage-gpu-stream-input.py": {
+      "bytes": 4907,
+      "sha256": "c8b6b27aa25d4af4ef62fefd8a1bd147ae0ef1c4c15770fb42945e8bcfe90ef1"
+    },
+    "artifacts/th14/stage-gpu-stream-with-initial/stage-1-frame-0.json": {
+      "bytes": 14462,
+      "sha256": "f55587301aa175c2d9267e7a47298928311071a0dd95c15f4da0c2d349fe8a3d"
+    },
+    "artifacts/th14/stage-gpu-stream-with-initial/stage-1-frame-599.json": {
+      "bytes": 30946,
+      "sha256": "a3e9069f7f28c64e0d366ff9f5737b4574cc51a3b1b6616cea2de944d8a081e2"
+    },
+    "artifacts/th14/stage-gpu-stream-with-initial/stage-1-frame-1199.json": {
+      "bytes": 29178,
+      "sha256": "51fe817d3ce7a4ca07a5a48aeaaefdab39a1dea43a4854c0e9cff5348b7729da"
+    },
+    "artifacts/th14/stage-gpu-stream-with-initial/stage-2-frame-0.json": {
+      "bytes": 25213,
+      "sha256": "27379f319ec381db202f65ace29d4c5fd2b9bca4ae1691a6f45d7bbf0bce7369"
+    },
+    "artifacts/th14/stage-gpu-stream-with-initial/stage-2-frame-599.json": {
+      "bytes": 152669,
+      "sha256": "d6f52a7e8486dfafc41ddbc66fd3659b9636cc9e60ed050f9d4dee4892c77d07"
+    },
+    "artifacts/th14/stage-gpu-stream-with-initial/stage-2-frame-1199.json": {
+      "bytes": 152266,
+      "sha256": "78885b4d4f00131f5ecb26b154a3da520da776ef1c52dced6fc8cb4293827f9d"
+    },
+    "artifacts/th14/stage-gpu-stream-with-initial/stage-3-frame-0.json": {
+      "bytes": 79747,
+      "sha256": "430c06cd6b0b6254c014511b8916f1e5dc7db6546401223dec1f90b61d31fd0d"
+    },
+    "artifacts/th14/stage-gpu-stream-with-initial/stage-3-frame-599.json": {
+      "bytes": 271672,
+      "sha256": "2b481eced76a018aaf6274001cdee83cb0f925c8575bc2e7a315b10b57db4082"
+    },
+    "artifacts/th14/stage-gpu-stream-with-initial/stage-3-frame-1199.json": {
+      "bytes": 197542,
+      "sha256": "66a415e3f4be9e135ee7b976c967fc6245ba2c09b8e5596324e8beabf024256d"
+    },
+    "artifacts/th14/stage-gpu-stream-with-initial/stage-4-frame-0.json": {
+      "bytes": 63223,
+      "sha256": "b688114fbbfab2ad15cfe5c44876eba28f3c6a008a3e40dbc7222f46ca18c44d"
+    },
+    "artifacts/th14/stage-gpu-stream-with-initial/stage-4-frame-599.json": {
+      "bytes": 211324,
+      "sha256": "9dace83c400f75755fcce6cc88dfde45f803141d23d7b5c721beb93cf3b2db51"
+    },
+    "artifacts/th14/stage-gpu-stream-with-initial/stage-4-frame-1199.json": {
+      "bytes": 211326,
+      "sha256": "4d5b439996cc938b76934bdd7dccdf63f12bff8cb990e090f65059f81ff0c203"
+    },
+    "artifacts/th14/stage-gpu-stream-with-initial/stage-5-frame-0.json": {
+      "bytes": 15137,
+      "sha256": "c3ef593caf59c3cb336ab9e7bdb8a133e92df3a84180561ab81aa34b375b8f67"
+    },
+    "artifacts/th14/stage-gpu-stream-with-initial/stage-5-frame-599.json": {
+      "bytes": 67897,
+      "sha256": "36e7772f77d0917a0665bd54d7747df0f1d6f9c1b75bcbda33121e6d5c7031d8"
+    },
+    "artifacts/th14/stage-gpu-stream-with-initial/stage-5-frame-1199.json": {
+      "bytes": 70569,
+      "sha256": "00e28173071b5bafb6d0e5efbbb8f1edb15d638b30e0e5751189686766d79967"
+    },
+    "artifacts/th14/stage-gpu-stream-with-initial/stage-6-frame-0.json": {
+      "bytes": 15105,
+      "sha256": "822d104109ef34a9d3791f36ee17ea6637571d1587ccde9e467c7f1509b497f2"
+    },
+    "artifacts/th14/stage-gpu-stream-with-initial/stage-6-frame-599.json": {
+      "bytes": 36611,
+      "sha256": "1c6317360c06a8d448290a4c41b4b3bb76254f2b3fd4b46c916978a5ba9a8a14"
+    },
+    "artifacts/th14/stage-gpu-stream-with-initial/stage-6-frame-1199.json": {
+      "bytes": 30993,
+      "sha256": "c9df70e203d3168a36d14b335fbcf0866dca0cb1cc04dce75476e8c21b402762"
+    },
+    "artifacts/th14/stage-gpu-stream-with-initial/stage-7-frame-0.json": {
+      "bytes": 84180,
+      "sha256": "afed5d5de4c309746ebe5f4f59f7695926165ba27cb3c246d4b9bd7a0ace7447"
+    },
+    "artifacts/th14/stage-gpu-stream-with-initial/stage-7-frame-599.json": {
+      "bytes": 200483,
+      "sha256": "ea8f2020445e1de513b38ee72aee9cab1ab27779ad020481c44b9053c94bb9e1"
+    },
+    "artifacts/th14/stage-gpu-stream-with-initial/stage-7-frame-1199.json": {
+      "bytes": 276024,
+      "sha256": "f5117177458dbb7cec87669ddaad6ca3654c2d04376bcff70b0738ff81717cd3"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-2.bin": {
+      "bytes": 131072,
+      "sha256": "67c8ac2fe4c72cc1284aa95bd3ddf659e1eced4a1a4b61bec9f745d95e1def04"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-3.bin": {
+      "bytes": 131072,
+      "sha256": "cfb066e91c77fabbd2ca438760f090eb1fd9330e1e4bc5d95bde500b7762bb78"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-4.bin": {
+      "bytes": 131072,
+      "sha256": "330ea7ab828d61eadc992ad0efcdc3092d079083379f5405b77831afd813540f"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-5.bin": {
+      "bytes": 131072,
+      "sha256": "5ff59e71330a4fa9a739a9d9ab4f608cf0a98b323998974451ca8cebd43b1a7f"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-6.bin": {
+      "bytes": 262144,
+      "sha256": "de8ee993eaa6a14f2704c161e3262eaba9d25fa3857585909bc5c06e14555779"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-7.bin": {
+      "bytes": 262144,
+      "sha256": "76bb3fe270fa051eeb9e18bb3d7818c36125021fe6bfc11bda7cb630524dca25"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-8.bin": {
+      "bytes": 262144,
+      "sha256": "d8036a4f3751a065deca1265e232d05747a08a20b824c32cb696a89247bc15c1"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-9.bin": {
+      "bytes": 65536,
+      "sha256": "dca2cd5724e89ffc60bb90aaa2f35568995086286e850b72086bc80ea2b7757d"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-10.bin": {
+      "bytes": 1048576,
+      "sha256": "228a91ac10cb7ef9c386e096f8baa32ced6989c56a87a44335e0bd303c7c6a04"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-11.bin": {
+      "bytes": 32768,
+      "sha256": "fce6ddbd3639204929fdd566549c3bcce692d26e9fb0b0cdc944a78917827be5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-12.bin": {
+      "bytes": 16384,
+      "sha256": "19ce5747737d037863b2a9f0d0d673530d6cbd5a17984d71267f8a8817fa486d"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-13.bin": {
+      "bytes": 262144,
+      "sha256": "8574bd659b426260fd58ae5566b4a498a066a89f0e8002b2003d57f7ff928b9f"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-14.bin": {
+      "bytes": 524288,
+      "sha256": "fa6f23e55ee591320823d0d6f2f40b2b09e6e12a0ea0adb068ee7670a411f3d4"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-15.bin": {
+      "bytes": 32768,
+      "sha256": "bb47007193330bc4b85af05723886e879e29902479395fb2386f403208d37b96"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-16.bin": {
+      "bytes": 262144,
+      "sha256": "82a32154ecb5f1d65affe4c6b08bd05375d9f9fea92678601061628ace8c646f"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-17.bin": {
+      "bytes": 1048576,
+      "sha256": "79270d613d8cfe82239665fdef2163c40607f64c59332c645e8efea20f6d4428"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-18.bin": {
+      "bytes": 262144,
+      "sha256": "a53a6eb5d91c045564809ae5ae3ab3dbf34b22f014bbc0ba364aa51311abf29f"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-19.bin": {
+      "bytes": 262144,
+      "sha256": "fb179e76b797d118afb3e125a4fad9555555b888ab4aae1376a7dd62bd9cec7d"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-20.bin": {
+      "bytes": 262144,
+      "sha256": "628e25bebc8d195855f195c733d9619d917b4db2775d62c6b5ad188ef07547c5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-21.bin": {
+      "bytes": 1048576,
+      "sha256": "fb665796912fdaa255a1dcb75e4282f07e02b466df99e11f0f3dcb1322b6a7eb"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-22.bin": {
+      "bytes": 1048576,
+      "sha256": "0fca9b9bf94859d35668a89329eb99f3c02e03fac0459bc4f641f90e1d9b7be6"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-23.bin": {
+      "bytes": 32768,
+      "sha256": "97cce82b7366e97fa32c6ece9271bbdf97f9e6bf45270dd8939fc2d847b87637"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-24.bin": {
+      "bytes": 1048576,
+      "sha256": "d37657e0262d2ab1de0bf116fd394a6baf66651d1a3c6966ffd9eea9b9b92324"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-25.bin": {
+      "bytes": 16384,
+      "sha256": "a69072d9e7ba90cc92f2d71264f7cd6d286f8eee81bc7f284757c461e99e99b9"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-26.bin": {
+      "bytes": 1048576,
+      "sha256": "a738ba42ccadca3e9c6acf04d6320bcad9d86bdf75b3a3a6fcbe9bb2ec4d0081"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-27.bin": {
+      "bytes": 1048576,
+      "sha256": "0fca9b9bf94859d35668a89329eb99f3c02e03fac0459bc4f641f90e1d9b7be6"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-28.bin": {
+      "bytes": 32768,
+      "sha256": "97cce82b7366e97fa32c6ece9271bbdf97f9e6bf45270dd8939fc2d847b87637"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-29.bin": {
+      "bytes": 1048576,
+      "sha256": "0dbaca2ac28637ed9cf0355c90d0d4a2e252eb9beeee1bd4c53a560c023c078f"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-30.bin": {
+      "bytes": 16384,
+      "sha256": "a69072d9e7ba90cc92f2d71264f7cd6d286f8eee81bc7f284757c461e99e99b9"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-31.bin": {
+      "bytes": 1048576,
+      "sha256": "9920f989fef00c2029b6dcd20ff58e2eaefbf7ad1bbf08890b948d5cd3464fa0"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-32.bin": {
+      "bytes": 1048576,
+      "sha256": "b0a3d22eac8e109933f16a7e04e80050d765a3c5bee04c01df9c41a31e2e358a"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-33.bin": {
+      "bytes": 1048576,
+      "sha256": "441ffd1a2870f8f19a2785186f9a4b1d43379259d68344351871ab0523d853ab"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-34.bin": {
+      "bytes": 262144,
+      "sha256": "a53a6eb5d91c045564809ae5ae3ab3dbf34b22f014bbc0ba364aa51311abf29f"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-35.bin": {
+      "bytes": 262144,
+      "sha256": "fa4d8d3a8d583ca8384f44978cbb6fe1b6bbee3802e7c0462cffce23b2ab5165"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/texture-36.bin": {
+      "bytes": 262144,
+      "sha256": "628e25bebc8d195855f195c733d9619d917b4db2775d62c6b5ad188ef07547c5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-uv/native.json": {
+      "bytes": 40401,
+      "sha256": "2a1d45fa7c8f3720e4fc7806bebdd3450d0bdac9c2ebee4b3b35a5532220a2e0"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-uv/samples.rgba32f": {
+      "bytes": 1632,
+      "sha256": "8d7c2aacc7847a6ea9f9cde9d085cd6c65321c2db717a1ca81dc5365949108ec"
+    },
+    "tools/th14-stage-sampler-uv-hal.py": {
+      "bytes": 10476,
+      "sha256": "b3e677676867a3585185f413fe8a92b5354eaa4b182c52adcbd93204c814e207"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-uv/generation.json": {
+      "bytes": 626,
+      "sha256": "a2e4b2a6c4cbbe1a13d15d31b0c4300412bde1d8803af06ca9673e453f954286"
+    },
+    "tools/th14-stage-sampler-uv-native.py": {
+      "bytes": 1389,
+      "sha256": "3cc646db5dab065d80c8b2e59604e0692f6d5aa06b1448682cb1dca489388730"
+    },
+    "tools/th14-stage-sampler-raw-hal.py": {
+      "bytes": 10420,
+      "sha256": "1b9570b69371cb6f9c581039d9d6d18455fa677a4406b9e925b1168085c49255"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-uv/inputs.json": {
+      "bytes": 9053,
+      "sha256": "ea518f90b9a51f87bf7f1e7cb158a84fc935d9593028eedb3f66d3159675cbaa"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-uv/probe.asm": {
+      "bytes": 94,
+      "sha256": "603ce7c69faf87e05f923bacae2d4fbdb66069068238fb095be2feb95d00568d"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-uv/probe.pso": {
+      "bytes": 108,
+      "sha256": "0896967f3ea1cb0655e9686fb635305f87f0eeeddc047f25d3b3b0b4b1aa441e"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv-cases.json": {
+      "bytes": 44493,
+      "sha256": "6b152392346fc611102b9817f8854e5def38c3c6d6a36277364fd37faadcf4f4"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/world-uv/native.rgba32f": {
+      "bytes": 9830400,
+      "sha256": "fcf6dca75603530c31b2ce94d549aad083345b9cebf652c027615d9192166a76"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/world-uv/native.json": {
+      "bytes": 1623,
+      "sha256": "d7f9d985bd09f85feffb4c8fdef8dbc06ee82694d5c2c88bc26f10a03eedfedc"
+    },
+    "tools/th14-stage-world-uv-hal.py": {
+      "bytes": 10023,
+      "sha256": "2a3384eceb0a12878cae5755b1261baabfea8cf09551d5494b1f348396ce38ce"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-uv-worst/full.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "158962a97bd085623161bbd043b1aad76845e9b65b593c36a1ed4d262c7272f5"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-uv-worst/native.json": {
+      "bytes": 5301,
+      "sha256": "195dc09083094a1df0c7cd5263665385a994615aa9b2e40dbdf7851f9b60aa5a"
+    },
+    "tools/th14-stage-sampler-uv-worst-hal.py": {
+      "bytes": 10533,
+      "sha256": "74b20360785add24a88646dcbb3e23369c9786bf1bd9e9b75519f536bf034001"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-uv-strip/full.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "31d24262473af1526e12daa01db218558fd395fcc29a824a45947e7d4ec1bc69"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/sampler-uv-strip/native.json": {
+      "bytes": 3324,
+      "sha256": "4c643c8408d6709d9355cd2932541279806ea846183689ae76120723bbeca62b"
+    },
+    "tools/th14-stage-sampler-uv-strip-hal.py": {
+      "bytes": 10533,
+      "sha256": "2b658acfca46251d4979d0ba5867f084d6edef1ce34c0e606c544f9bd8a98fe7"
+    },
+    "tools/th14-stage-sequential-clip-snap8-serve.mjs": {
+      "bytes": 5428,
+      "sha256": "f37a122e9106b71e21880320e1ffc2f6bf91ea6310083ebd4c036a629795f754"
+    },
+    "tools/th14-stage-sequential-clip-snap8.html": {
+      "bytes": 9590,
+      "sha256": "0c3e79b8132680230ed1dd7cca964d0d952e2bdc813e701ba40b579a4c349305"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/build.json": {
+      "bytes": 4435,
+      "sha256": "50e79cfb7ed7a2c57fb131e4d02a18fbfc04838d44d9c3265c79affa502c5987"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/capture/report.json": {
+      "bytes": 51806,
+      "sha256": "b349721ca08c4fa6e0f130d035b81d17056d12340a0176fe3b81bdc60744496a"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/gpu.wasm": {
+      "bytes": 766138,
+      "sha256": "69c30ca0cf3f39ab9e26d8c845142e6f638c66888f61c618ffc98f6564a78e7d"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/gpu.mjs": {
+      "bytes": 212157,
+      "sha256": "83a130b0540a52d252bd4a6e79d31d2d422ec5aada77f6da0306b075033e6924"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/Renderer.cpp": {
+      "bytes": 31186,
+      "sha256": "febd4d1129ffacc4e50c25c9882bd2b67664ef02f07d291c8aeb5fc0588d5255"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/Shaders.hpp": {
+      "bytes": 4102,
+      "sha256": "ac012946dfa7ba242bea4e5e8f8f97aea9176f238f6928016ab4be2717541336"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/fixture.cpp": {
+      "bytes": 5693,
+      "sha256": "7d52f277eab6e0143d197d8b74d2454033e0fecb485a7df5cc13d4dc07303d6d"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/ClipComposition.hpp": {
+      "bytes": 867,
+      "sha256": "211e22ecd4e9b5dff87965b09b3dff80af879219d3e3e80a5dd3ef6cfe6bbb63"
+    },
+    "artifacts/th14/stage-current-graphics-fe406-oct14/color/fixture.cpp": {
+      "bytes": 5693,
+      "sha256": "7d52f277eab6e0143d197d8b74d2454033e0fecb485a7df5cc13d4dc07303d6d"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/build.json": {
+      "bytes": 4464,
+      "sha256": "6dd7b9b265f7299d5e8eff4644a3c240768f47e5cbf2746fe0289523b35debbe"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/report.json": {
+      "bytes": 88537,
+      "sha256": "8443e1563860ffbf015673ac1f02e2016445914b2e0d9313ba4bcc43559545b4"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/gpu.wasm": {
+      "bytes": 766318,
+      "sha256": "788501e024cced03f64b28e43837f249343eaf386fbdf63baeac429882e11621"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/gpu.mjs": {
+      "bytes": 213372,
+      "sha256": "3df253b1c204f1cb77ef7aa87940b4e8ad781543bf3823abf5c23dbb4b35c009"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/Renderer.cpp": {
+      "bytes": 31186,
+      "sha256": "febd4d1129ffacc4e50c25c9882bd2b67664ef02f07d291c8aeb5fc0588d5255"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/Renderer.hpp": {
+      "bytes": 4167,
+      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/Shaders.hpp": {
+      "bytes": 4118,
+      "sha256": "8225c6c620a536f12535fe76704e0f0464174853d1a973afa7c68cd616fdf625"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/fixture.cpp": {
+      "bytes": 7022,
+      "sha256": "311a634503f4f82e02425481f3c9ebc29f25ecb935e8fb26d3987cf8868fcc75"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/ClipComposition.hpp": {
+      "bytes": 867,
+      "sha256": "211e22ecd4e9b5dff87965b09b3dff80af879219d3e3e80a5dd3ef6cfe6bbb63"
+    },
+    "artifacts/th14/stage-current-graphics-fe406-oct14/uv/fixture.cpp": {
+      "bytes": 7022,
+      "sha256": "311a634503f4f82e02425481f3c9ebc29f25ecb935e8fb26d3987cf8868fcc75"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/capture/frame-000.bgra": {
+      "bytes": 1228800,
+      "sha256": "074326031fdc89da298ff5e461224c9b6dc1d43e5bae3d34fb714f501e35a256"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/capture/frame-001.bgra": {
+      "bytes": 1228800,
+      "sha256": "cc7b5bc62f18edaba8e3ac26809401c475333867efd9e0de642575a1c8011f6b"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/capture/frame-002.bgra": {
+      "bytes": 1228800,
+      "sha256": "9cd5386d7c6a3049378276e2f4c5c0ffe37c98d88d988d4bdbfcf2aa3e9c85e7"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/capture/frame-003.bgra": {
+      "bytes": 1228800,
+      "sha256": "72693b135154e090898838398b4b5e714428f2054321a54839d4048ee6eb95fe"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/capture/frame-004.bgra": {
+      "bytes": 1228800,
+      "sha256": "c36486ff7c65e52c0ce7fdce0189c03ebf3d933c8316d9446a1f66a95f88b941"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/capture/frame-005.bgra": {
+      "bytes": 1228800,
+      "sha256": "3e253da1b9c647036cccaf52c370431176f8445a5eae7f8f6e223543701429a5"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/capture/frame-006.bgra": {
+      "bytes": 1228800,
+      "sha256": "87d47abdafbf979c909d7ea6ca5cdd4dffee18323ad8c66faacca8ff10196a62"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/capture/frame-007.bgra": {
+      "bytes": 1228800,
+      "sha256": "2f1d6d158a88028d0ef8196493d8273fabd2b71832cc32f579866e47208ff8e6"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/capture/frame-008.bgra": {
+      "bytes": 1228800,
+      "sha256": "eaf02acf777b8d447ec9a40d63b03e7ad5728fa6d83ebd5bafb62418fdc83e4a"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/capture/frame-009.bgra": {
+      "bytes": 1228800,
+      "sha256": "5a4d3b34edf3f8969de8fa3bd14714c78fb74377526721bc1f505dad2a8078f7"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/capture/frame-010.bgra": {
+      "bytes": 1228800,
+      "sha256": "746715e0077bc957171fe5e21c2e5731ac56215087574e0381d9d472e67ea267"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/capture/frame-011.bgra": {
+      "bytes": 1228800,
+      "sha256": "600ad10bfc07b765ff99956ac3a95bdb63168f0df2faa6c5dbad0d0b393e6591"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/capture/frame-012.bgra": {
+      "bytes": 1228800,
+      "sha256": "a8dcf27decc57af8ed7c0cfbe6eea864f76d4829ff569695c54b6a6bb12fa9e8"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/capture/frame-013.bgra": {
+      "bytes": 1228800,
+      "sha256": "a9f075fe66d6872d3615071267898ee3056f3e1ccebcea3e62a3a12ff69537df"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/capture/frame-014.bgra": {
+      "bytes": 1228800,
+      "sha256": "1cc0578c515eca8d7d33d16784b7685ae6a373394ba12ee4899630105f3a1a9e"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/capture/frame-015.bgra": {
+      "bytes": 1228800,
+      "sha256": "41f15816881c89e2b8199f07245277e03d6575a2f31074e95f807ba610cceb18"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/capture/frame-016.bgra": {
+      "bytes": 1228800,
+      "sha256": "a1bad0635a5af122bfc561e7e03113d0ba83af91e3624b5d6ef82b4810bf8840"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/capture/frame-017.bgra": {
+      "bytes": 1228800,
+      "sha256": "a9208829fff45953f83dda242bdbe9abf092032655b4734c4f5f1d9966dfd0ef"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/capture/frame-018.bgra": {
+      "bytes": 1228800,
+      "sha256": "1d754a82c657723efa04366658783cdad6b40230b38c95962cd0bc5190e058a8"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/capture/frame-019.bgra": {
+      "bytes": 1228800,
+      "sha256": "b1f612d6eb8d53d1b3c1ca7ac1a100b2814266556d79274ca2039fe4ba95f15c"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/capture/frame-020.bgra": {
+      "bytes": 1228800,
+      "sha256": "f71c8dbdad560a7a9121efd09b616943a938b50a257cda3ed064db05b2fb6102"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-000.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "4fcd07f35a620874bae21f36c3cda0763a7a2e5eb37abc48e5d3c77daf77d0c6"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-001.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "3416c7515ab5f426369a3b657e0278f520e65673465b2a3c7c4187e23997cb88"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-002.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "f4311edfb88fe07538d0d2aea3dd431834fbff85567f658c36840af2afaa4e53"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-003.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "eb941217cabc0d86f0c386d3668bcf63d4433bb463ef191940c880ea69e4c3f2"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-004.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "4901c1f0218530dbdd0484e5e4b39dc089d3aaaea2c27a580ff8c22cafe5d149"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-005.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "9d46ea8a77d412e39c478bc0ecde336282a35567df050297114cd553260ae568"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-006.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "0600298a8b120b7282a4bf44d8a08ef0bc097480dd65d54290794a4f983c1fa9"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-007.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "6cbd01715102ce2e3d4f3f83a548789f9af2d03cac32d20910a92329446d0cca"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-008.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "ca9caefc5501ff050c58ea78521dd141370fb0b32da78c65a3b192a18b5099cd"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-009.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "6ad2369b8d3a4e079d0d8f6e3a6ed6dd320b4e916cb95d6e1be5fb659c1346a7"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-010.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "308524823f33371080b5f4397bad17ac736eb0e28cd1134cea140daac2430cb2"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-011.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "032c60b67c64e48be3b0176df03318ff78f94b50be6cfbbfad6e702e1ea2738f"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-012.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "283ef6832f18ced49323abae0d0ddcf75dc8f07dd657dc9b3deae3df25ef2774"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-013.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "bb4e6bb14ba0e0176150f593c03dc3c9f2e262d53f01b6f2690d71634c992d14"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-014.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "4b724a53de820e64888c3d2de7d1fd0f5529c60f520089982a29f4d880a1e149"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-015.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "f84671dbd2810ca0d1ac1af76931e891bdb85fcc7ebf1332b71fce1f53f0fe52"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-016.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "947ce94edb2514f23b9c2c3c71f189f7b1ad2534c87580e3a034dc10d5af885c"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-017.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "03f8767c30cfa8c7b245b763c2b10fd93d64f079e5b933e593a61da2e45b06fc"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-018.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "dcfdb6aded180d47f86e983bd27542861718f5c18c35f68ef9f04e1d3cffcf29"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-019.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "fb8d796ad9d60e14cc881932b0f1ffc1288d22404116c82b2a1d876440038097"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-020.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "50c1222b50ce6234eebb5d7c69d12e4f56e344ee03caf0a8eba9d61fdf9f77e3"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-021.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "afab861fd813fe0b2089563f13f29d1c90b5e89d8f068449e44d4cfc5a38fde0"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/capture/frame-022.rgba32f": {
+      "bytes": 4915200,
+      "sha256": "0c0b2cd3f52e83b77c5c1c59b34e78033abed0c8c967ff6dc8593ea5abf8085f"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/uv/full-native-word-differences.bin": {
+      "bytes": 16336,
+      "sha256": "283b94391624f95db637b461df9a7af05e2ea1c2bf29da9361c76892e4492726"
+    },
+    "artifacts/th14/stage-current-sequential-clip-snap8-fe406-oct14/color/portable.bgra": {
+      "bytes": 25804800,
+      "sha256": "dd99f58b4eeda312a3313525e978349f7614489363b41e30b4d8d892348ff8b8"
+    },
+    "docs/porting/th14-stage-current-graphics-observed-oct14.json": {
+      "bytes": 169102,
+      "sha256": "76592c8caf52a2c55376e14ae500f7710d7bb1e7275a3d5bc989650e607b181a"
+    },
+    "docs/porting/th14-stage-sequential-clip-observed-oct14.json": {
+      "bytes": 147503,
+      "sha256": "beefbb9f16ce786ac4cecd3bf19acbb5d7ecc7c2a2a8ce8d061f29a4859199ab"
+    }
+  },
+  "toolSha256": "a6ae981349634b6e49535b4f6c35e0fba980b3177633b9c5e0e96754a5a41833",
+  "numpyVersion": "2.5.3",
+  "limits": "Independent CPU sequential binary32 projection*(view*world) candidate changes only the private clip path. Per-instance derived clip matrices use each original world; original model/factor and eye/fog paths remain. Original D16 and clip control retain current semantics; the independent candidate adds uniform roundEven viewport snap8 for world vertices. GLSL matrix-vector operation remains GPU arithmetic, not a captured Native result or forced constant varying. UV fragment output alone changes and alpha/depth/blend/fog disable only in UV isolation. All 21 original draw hashes and sample words are independent Native references. Complete Native pixels exist for two primary draws and two additional controls; other19 full per-pixel comparisons are unavailable. Every portable buffer and every Native-available difference is retained. Hidden HAL references, driver-specific diagnostics, no production or whole-game equivalence.",
+  "baselineComparison": {
+    "baselineReport": "docs/porting/th14-stage-current-graphics-observed-oct14.json",
+    "colorDifferentChannelsBefore": 3887,
+    "colorDifferentChannelsAfter": 2515,
+    "colorRows": [
+      {
+        "stage": 1,
+        "frame": 0,
+        "before": 1,
+        "after": 1
+      },
+      {
+        "stage": 1,
+        "frame": 599,
+        "before": 10,
+        "after": 5
+      },
+      {
+        "stage": 1,
+        "frame": 1199,
+        "before": 881,
+        "after": 881
+      },
+      {
+        "stage": 2,
+        "frame": 0,
+        "before": 3,
+        "after": 579
+      },
+      {
+        "stage": 2,
+        "frame": 599,
+        "before": 320,
+        "after": 31
+      },
+      {
+        "stage": 2,
+        "frame": 1199,
+        "before": 2,
+        "after": 16
+      },
+      {
+        "stage": 3,
+        "frame": 0,
+        "before": 9,
+        "after": 0
+      },
+      {
+        "stage": 3,
+        "frame": 599,
+        "before": 308,
+        "after": 91
+      },
+      {
+        "stage": 3,
+        "frame": 1199,
+        "before": 859,
+        "after": 323
+      },
+      {
+        "stage": 4,
+        "frame": 0,
+        "before": 2,
+        "after": 2
+      },
+      {
+        "stage": 4,
+        "frame": 599,
+        "before": 524,
+        "after": 6
+      },
+      {
+        "stage": 4,
+        "frame": 1199,
+        "before": 435,
+        "after": 401
+      },
+      {
+        "stage": 5,
+        "frame": 0,
+        "before": 0,
+        "after": 0
+      },
+      {
+        "stage": 5,
+        "frame": 599,
+        "before": 123,
+        "after": 17
+      },
+      {
+        "stage": 5,
+        "frame": 1199,
+        "before": 216,
+        "after": 5
+      },
+      {
+        "stage": 6,
+        "frame": 0,
+        "before": 0,
+        "after": 0
+      },
+      {
+        "stage": 6,
+        "frame": 599,
+        "before": 17,
+        "after": 1
+      },
+      {
+        "stage": 6,
+        "frame": 1199,
+        "before": 17,
+        "after": 7
+      },
+      {
+        "stage": 7,
+        "frame": 0,
+        "before": 2,
+        "after": 2
+      },
+      {
+        "stage": 7,
+        "frame": 599,
+        "before": 2,
+        "after": 2
+      },
+      {
+        "stage": 7,
+        "frame": 1199,
+        "before": 156,
+        "after": 145
+      }
+    ],
+    "primaryFullHashMatchesBefore": 10,
+    "primaryFullHashMatchesAfter": 1,
+    "sampleWordDifferencesBefore": 95,
+    "sampleWordDifferencesAfter": 183,
+    "allFullNativeWordDifferencesBefore": 38650,
+    "allFullNativeWordDifferencesAfter": 1021,
+    "fullNativeRows": [
+      {
+        "stage": 2,
+        "frame": 1199,
+        "draw": 44,
+        "coverageBefore": 0,
+        "coverageAfter": 0,
+        "allFloatWordsBefore": 0,
+        "allFloatWordsAfter": 380
+      },
+      {
+        "stage": 3,
+        "frame": 599,
+        "draw": 11,
+        "coverageBefore": 0,
+        "coverageAfter": 0,
+        "allFloatWordsBefore": 569,
+        "allFloatWordsAfter": 641
+      },
+      {
+        "stage": 3,
+        "frame": 599,
+        "draw": 68,
+        "coverageBefore": 1,
+        "coverageAfter": 0,
+        "allFloatWordsBefore": 5611,
+        "allFloatWordsAfter": 0
+      },
+      {
+        "stage": 3,
+        "frame": 1199,
+        "draw": 45,
+        "coverageBefore": 3,
+        "coverageAfter": 0,
+        "allFloatWordsBefore": 32470,
+        "allFloatWordsAfter": 0
+      }
+    ]
+  },
+  "unsnappedComparison": {
+    "reportPath": "docs/porting/th14-stage-sequential-clip-observed-oct14.json",
+    "colorDifferentChannelsBefore": 1091,
+    "colorDifferentChannelsAfter": 2515,
+    "primaryFullHashMatchesBefore": 15,
+    "primaryFullHashMatchesAfter": 1,
+    "extraControlFullHashMatchesBefore": 1,
+    "extraControlFullHashMatchesAfter": 2,
+    "sampleWordDifferencesBefore": 53,
+    "sampleWordDifferencesAfter": 183,
+    "allFullNativeWordDifferencesBefore": 5206,
+    "allFullNativeWordDifferencesAfter": 1021
+  }
+}

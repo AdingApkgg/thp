@@ -27,7 +27,7 @@ touhou.vip 的每一部作品都是一个独立的 **可移植 C++ 重建 Runtim
 
 ## 当前状态
 
-当前仅推进TH14，进度表只标TH14。已修正命中特效资源、伤害区域growth／owner及擦弹／死亡／消弹的真实模板层。四份完整输入和ASAN／UBSan通过；灵梦A Lunatic90,793次独立原版回调的29个玩法字段一致，仍保留加载计数／编号、原版Z字和视觉差。普通Normal结局、原版成绩编解码、录制回放及新版浏览器旧录像播放已重验。启动器外壳预缓存减至约4MiB，原版资源保持完整部署。加载生命周期、全部模式、图像／音频与整作1:1继续施工。详见[当前源码检查点](docs/porting/th14-template-layer-current-checkpoint-oct14.json)、[发布说明](docs/GITHUB_RELEASE.md)及[方法调整](docs/porting/TH14_METHOD.md)。
+当前仅推进TH14，进度表只标TH14。已合入原版矩阵组合／半像素修正和对话暂停截图来源修正；实际21个颜色缓冲差由3,887通道降至880，23个UV样本中20个完整hash一致，失败完整保留。游戏核心265文件未变，四份完整输入、ASAN及普通流程证据仅在该核心范围复用；新版浏览器旧录像自动播放已重验。加载生命周期、全部模式、图像／音频与整作1:1继续施工。详见[当前检查点](docs/porting/th14-clip-pause-current-checkpoint-oct14.json)、[发布说明](docs/GITHUB_RELEASE.md)和[加载实施清单](docs/porting/TH14_STAGED_LOADER_MINIMUM_IMPLEMENTATION.md)。
 
 ## 素材与许可
 

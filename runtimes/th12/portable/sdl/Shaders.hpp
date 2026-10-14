@@ -1,5 +1,47 @@
 #pragma once
 namespace touhou::sdl {
+#if defined(PORT_TITLE) && PORT_TITLE == 14
+// Preserve the original model/eye path for fog. Clip matrices are composed in
+// C++ for each original world; only the homogeneous half-pixel bias changes.
+inline constexpr const char* vertexSource=R"GLSL(#version 300 es
+precision highp float;
+layout(location=0) in vec4 position;
+layout(location=1) in vec4 diffuse;
+layout(location=2) in vec2 uv;
+layout(location=3) in vec4 specular;
+layout(location=4) in vec4 instanceWorld0;
+layout(location=5) in vec4 instanceWorld1;
+layout(location=6) in vec4 instanceWorld2;
+layout(location=7) in vec4 instanceWorld3;
+layout(location=8) in vec4 instanceFactor;
+layout(location=9) in vec4 instanceClip0;
+layout(location=10) in vec4 instanceClip1;
+layout(location=11) in vec4 instanceClip2;
+layout(location=12) in vec4 instanceClip3;
+uniform mat4 world,view,projection,textureMatrix,clipMatrix;
+uniform vec4 factor;
+uniform vec4 viewport;
+uniform bool transformed,textureTransform,fogEnabled,rangeFog;
+uniform bool instanced;
+uniform int fogMode;
+uniform vec3 fogParams;
+out vec4 vColor,vSpecular;
+out vec2 vUV;
+out float vFog;
+flat out vec4 vFactor;
+void main(){
+  mat4 model=instanced?mat4(instanceWorld0,instanceWorld1,instanceWorld2,instanceWorld3):world;
+  vec4 eye=view*model*vec4(position.xyz,1.0);
+  if(transformed){vec2 xy=(position.xy-viewport.xy+vec2(.5))/viewport.zw;gl_Position=vec4(xy.x*2.0-1.0,xy.y*2.0-1.0,position.z*2.0-1.0,1.0)/position.w;}
+  else {mat4 composed=instanced?mat4(instanceClip0,instanceClip1,instanceClip2,instanceClip3):clipMatrix;gl_Position=composed*vec4(position.xyz,1.0);gl_Position.y=-gl_Position.y;vec2 numerator=gl_Position.xy*viewport.zw+vec2(gl_Position.w);gl_Position.xy=numerator/viewport.zw;gl_Position.z=gl_Position.z*2.0-gl_Position.w;}
+  vColor=diffuse.bgra;vSpecular=specular.bgra;
+  vFactor=instanced?instanceFactor.bgra:factor;
+  vUV=textureTransform&&!transformed?(textureMatrix*vec4(uv,1.0,0.0)).xy:uv;
+  float z=rangeFog?length(eye.xyz):abs(eye.z);
+  float fog=fogMode==1?exp(-fogParams.z*z):fogMode==2?exp(-pow(fogParams.z*z,2.0)):(fogParams.y-z)/(fogParams.y-fogParams.x);
+  vFog=fogEnabled?(transformed?specular.a:fog):1.0;
+})GLSL";
+#else
 inline constexpr const char* vertexSource=R"GLSL(#version 300 es
 precision highp float;
 layout(location=0) in vec4 position;
@@ -34,6 +76,7 @@ void main(){
   float fog=fogMode==1?exp(-fogParams.z*z):fogMode==2?exp(-pow(fogParams.z*z,2.0)):(fogParams.y-z)/(fogParams.y-fogParams.x);
   vFog=fogEnabled?(transformed?specular.a:fog):1.0;
 })GLSL";
+#endif
 inline constexpr const char* fragmentSource=R"GLSL(#version 300 es
 precision highp float;
 in vec4 vColor,vSpecular;in vec2 vUV;in float vFog;

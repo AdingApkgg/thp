@@ -22,6 +22,22 @@ struct DrawStateCache {
  PipelineState pipeline{};Viewport viewport{};bool valid=false,has_viewport=false;
 } drawState;
 constexpr std::array<float,16> identity{1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1};
+#if defined(PORT_TITLE) && PORT_TITLE == 14
+// Fixed-function matrix composition rounds every product and partial sum to
+// binary32 before the next term. Volatile stores retain that order at -O3.
+std::array<float,16> th14_multiply(const std::array<float,16>& a,const std::array<float,16>& b){
+ std::array<float,16> result{};
+ for(int col=0;col<4;++col)for(int row=0;row<4;++row){
+  volatile float product=a[row]*b[col*4];volatile float sum=product;
+  for(int k=1;k<4;++k){product=a[k*4+row]*b[col*4+k];sum=sum+product;}
+  result[col*4+row]=sum;
+ }
+ return result;
+}
+std::array<float,16> th14_clip(const std::array<float,16>& world,const std::array<float,16>& view,const std::array<float,16>& projection){
+ return th14_multiply(projection,th14_multiply(view,world));
+}
+#endif
 float bits(u32 n){float f;std::memcpy(&f,&n,4);return f;}
 std::array<float,4> color(u32 n){return {float(n>>16&255)/255,float(n>>8&255)/255,float(n&255)/255,float(n>>24)/255};}
 void replace(std::string& s,const std::string& a,const std::string& b){size_t p=0;while((p=s.find(a,p))!=std::string::npos){s.replace(p,a.size(),b);p+=b.size();}}
@@ -102,8 +118,13 @@ void Renderer::select(const State& s){
   if(version==8)replace(source,"gl_FragDepth=depth16?(floor(scaled)+floor(fract(scaled)-gl_FragCoord.z+0.5))/65535.0:gl_FragCoord.z;","");
   Program p;p.id=glCreateProgram();GLuint fs=shader(GL_FRAGMENT_SHADER,source);glAttachShader(p.id,vertex);glAttachShader(p.id,fs);glLinkProgram(p.id);glDeleteShader(fs);GLint linked=0;glGetProgramiv(p.id,GL_LINK_STATUS,&linked);if(!linked){char log[2048];glGetProgramInfoLog(p.id,sizeof(log),nullptr,log);std::fprintf(stderr,"SDL program: %s\n",log);std::abort();}
   if(version==10){glUseProgram(p.id);glUniform4fv(glGetUniformLocation(p.id,"alphaBoundary[0]"),64,alphaBoundaries.data());glUseProgram(currentProgram);}
+#if defined(PORT_TITLE) && PORT_TITLE == 14
+  const char* names[]{"viewport","transformed","textureTransform","instanced","world","view","projection","textureMatrix","fogEnabled","rangeFog","fogMode","fogParams","fogColor","hasTexture","factor","colorOp","colorArg1","colorArg2","alphaOp","alphaArg1","alphaArg2","alphaTest","alphaRef","alphaFunc","depth16","tex","clipMatrix"};
+  for(int i=0;i<27;i++)p.uniforms[i].location=glGetUniformLocation(p.id,names[i]);it=programs.emplace(key,p).first;
+#else
   const char* names[]{"viewport","transformed","textureTransform","instanced","world","view","projection","textureMatrix","fogEnabled","rangeFog","fogMode","fogParams","fogColor","hasTexture","factor","colorOp","colorArg1","colorArg2","alphaOp","alphaArg1","alphaArg2","alphaTest","alphaRef","alphaFunc","depth16","tex"};
   for(int i=0;i<26;i++)p.uniforms[i].location=glGetUniformLocation(p.id,names[i]);it=programs.emplace(key,p).first;
+#endif
  }
  program=&it->second;if(currentProgram!=program->id){glUseProgram(program->id);currentProgram=program->id;}
 }
@@ -159,6 +180,9 @@ void Renderer::issue(const State& d,Topology primitive,u32 count,const void* dat
  GPU* texture=d.texture?&surface(d.texture):nullptr;auto& g=target(d.target,d.depth);const auto& v=d.viewport;
  if(!drawState.has_viewport||std::memcmp(&drawState.viewport,&v,sizeof(v))){glViewport(v.x,v.y,v.width,v.height);glDepthRangef(v.min,v.max);drawState.viewport=v;drawState.has_viewport=true;}select(d);
  float vp[]{float(v.x),float(v.y),float(v.width),float(v.height)};uniform(0,4,vp);const bool transformed=d.layout.screen;
+#if defined(PORT_TITLE) && PORT_TITLE == 14
+ if(!transformed&&!instance){auto clip=th14_clip(d.matrix[0],d.matrix[1],d.matrix[2]);uniform(26,16,clip.data());}
+#endif
  integer(1,transformed);integer(2,p.textureTransform);integer(3,!!instance);for(int i=0;i<4;i++)uniform(4+i,16,d.matrix[i].data());
  integer(8,p.fog);integer(9,p.rangeFog);integer(10,u32(p.fogMode));float fog[]{p.fogNear,p.fogFar,p.fogDensity};uniform(11,3,fog);uniform(12,4,color(p.fogColor).data());integer(13,!!texture);uniform(14,4,color(p.textureFactor).data());
  auto arg=[](Argument a){return int(u32(a.source)|(a.complement?16u:0u)|(a.alphaOnly?32u:0u));};
@@ -198,13 +222,32 @@ glEnableVertexAttribArray(0);glVertexAttribPointer(0,transformed?4:3,GL_FLOAT,fa
  if(d.layout.uv!=VertexAttributes::absent){glEnableVertexAttribArray(2);glVertexAttribPointer(2,2,GL_FLOAT,false,d.stride,reinterpret_cast<void*>(base+d.layout.uv));}else{glDisableVertexAttribArray(2);glVertexAttrib2f(2,0,0);}
  }
  constexpr GLenum modes[]{GL_POINTS,GL_LINES,GL_LINE_STRIP,GL_TRIANGLES,GL_TRIANGLE_STRIP,GL_TRIANGLE_FAN};const GLenum mode=modes[u32(primitive)];const u32 n=vertex_count(primitive,count);
- if(instance){u32 b=upload(instances,GL_ARRAY_BUFFER,instance,instanceSize,65536);
+ if(instance){
+#if defined(PORT_TITLE) && PORT_TITLE == 14
+ // Keep each original world/factor record and append its derived clip matrix.
+ // The queue remains 68B; only the submitted instance buffer gains the matrix.
+ const u32 records=instanceSize/68;std::vector<u8> expanded(records*132);
+ const auto* input=static_cast<const u8*>(instance);
+ for(u32 record=0;record<records;++record){
+  std::array<float,16> model{};std::memcpy(model.data(),input+record*68,64);
+  auto clip=th14_clip(model,d.matrix[1],d.matrix[2]);
+  std::memcpy(expanded.data()+record*132,input+record*68,68);
+  std::memcpy(expanded.data()+record*132+68,clip.data(),64);
+ }
+ u32 b=upload(instances,GL_ARRAY_BUFFER,expanded.data(),u32(expanded.size()),65536);
+#else
+ u32 b=upload(instances,GL_ARRAY_BUFFER,instance,instanceSize,65536);
+#endif
 #ifdef __EMSCRIPTEN__
  if(setup){
 #else
  {
 #endif
+#if defined(PORT_TITLE) && PORT_TITLE == 14
+ for(int i=0;i<4;i++){glEnableVertexAttribArray(4+i);glVertexAttribPointer(4+i,4,GL_FLOAT,false,132,reinterpret_cast<void*>(b+i*16));glVertexAttribDivisor(4+i,1);glEnableVertexAttribArray(9+i);glVertexAttribPointer(9+i,4,GL_FLOAT,false,132,reinterpret_cast<void*>(b+68+i*16));glVertexAttribDivisor(9+i,1);}glEnableVertexAttribArray(8);glVertexAttribPointer(8,4,GL_UNSIGNED_BYTE,true,132,reinterpret_cast<void*>(b+64));glVertexAttribDivisor(8,1);}
+#else
  for(int i=0;i<4;i++){glEnableVertexAttribArray(4+i);glVertexAttribPointer(4+i,4,GL_FLOAT,false,68,reinterpret_cast<void*>(b+i*16));glVertexAttribDivisor(4+i,1);}glEnableVertexAttribArray(8);glVertexAttribPointer(8,4,GL_UNSIGNED_BYTE,true,68,reinterpret_cast<void*>(b+64));glVertexAttribDivisor(8,1);}
+#endif
  glDrawArraysInstanced(mode,0,n,instanceSize/68);}
  else if(index){u32 b=upload(indices,GL_ELEMENT_ARRAY_BUFFER,index,n*(indexFormat==IndexType::UInt16?2:4),65536);glDrawElements(mode,n,indexFormat==IndexType::UInt16?GL_UNSIGNED_SHORT:GL_UNSIGNED_INT,reinterpret_cast<void*>(b));}
  else glDrawArrays(mode,0,n);g.rendered=true;
