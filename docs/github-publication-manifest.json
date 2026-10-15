@@ -40,13 +40,18 @@
     },
     {
       "path": "docs/porting/CORE_STATUS.md",
-      "bytes": 404226,
-      "sha256": "e8c616ee11ec5212c0747362947348305745fa0c5d9c0c780549449c672eab95"
+      "bytes": 405310,
+      "sha256": "1d71fb6e0453ea119a18cf1c80b0ade8a68a4bd93d2bc406d7fc5840c5cbc1da"
     },
     {
       "path": "docs/porting/TH06NC_FORMATS.md",
       "bytes": 2834,
       "sha256": "b5dd37c28b228114d1bf0fe1a3aaeb8fa1c3f109010d809baa575991ee203757"
+    },
+    {
+      "path": "docs/porting/TH14_CURRENT_QUEUE_FULL_PLAYBACKS_OCT15.md",
+      "bytes": 2914,
+      "sha256": "6a33abc908eb517e0408f58d439b7f89487307bac3bf5bbad5fe39d7de040075"
     },
     {
       "path": "docs/porting/TH14_LOCAL_QUIET_DEFAULT_OCT15.md",
@@ -1172,6 +1177,11 @@
       "path": "docs/porting/th14-current-browser-flow-verified-oct14.json",
       "bytes": 89970,
       "sha256": "a1dfab228accea46d9e876f89820f76ff7cb13796ac42af1473d0cf2f586d163"
+    },
+    {
+      "path": "docs/porting/th14-current-queue-full-playbacks-observed-oct15.json",
+      "bytes": 18326,
+      "sha256": "5be5ce10fb2db63a814efdee85a3d71e88c528bc66a654133be349e29f8aa084"
     },
     {
       "path": "docs/porting/th14-current-release-browser-verified-oct13.json",
@@ -13754,6 +13764,11 @@
       "sha256": "ca6dd742aaee3082472c2020496fa03b2b44013f31eeae28f90e77d5b16af78a"
     },
     {
+      "path": "tools/th14-current-queue-playback-evidence-check-oct15.py",
+      "bytes": 14795,
+      "sha256": "01db37a064038e6a7fb470034b1a64fb8b87046cc11680eaae6ee8e28d69a6d9"
+    },
+    {
       "path": "tools/th14-current-release-browser-evidence-check.mjs",
       "bytes": 3170,
       "sha256": "567db90a95690c485d68e915cdd184d3ab743e6d5739ccc8ab65b3096cde1e1e"
@@ -20825,15 +20840,15 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "c788f919f3252be4c0c71d20592b4106d57d2862",
-    "title": "TH14 ordinary stage-two loading callback-boundary evidence",
+    "basePublishedCommit": "19747b3b2a551694db71ccaf77dae87aca51e601",
+    "title": "TH14 current production chunk queue four full replay runs",
     "changedSourceAndMetadataFiles": 4,
     "completeGame": false,
     "nativeEquivalent": false,
     "productionGameCodeChanged": false,
     "gameAssetsAdded": false,
-    "selectedGameplayWordDifferences": 0,
-    "ownerPresenceDifferences": 0,
+    "candidateReplayEnds": 4,
+    "inactiveGameplayCallCountDifferences": 20,
     "visualDifferencesRetained": true
   }
 }
