@@ -11,9 +11,11 @@ assert(at>=0&&!existsSync(resolve(root,'docs/porting',reportName)), 'Explicit un
 const buildAt=process.argv.indexOf('--build-directory');
 assert(buildAt>=0&&process.argv[buildAt+1], 'Explicit new workspace build directory required');
 const buildDirectory=resolve(root,process.argv[buildAt+1]);
-const allowedBuildRoot=resolve(root,'artifacts/th14/stage-chunk-sdl-build-oct15');
-const buildRelative=relative(allowedBuildRoot,buildDirectory);
-assert(buildRelative&&!isAbsolute(buildRelative)&&!buildRelative.startsWith('..'), 'Only the stage-chunk build accepted');
+const allowedBuildDirectories=[
+  'artifacts/th14/stage-chunk-sdl-build-oct15/sdl-release',
+  'artifacts/th14/stage-timeline-anm-sdl-build-oct15/sdl-release',
+].map(path=>resolve(root,path));
+assert(allowedBuildDirectories.includes(buildDirectory), 'Only bound TH14 stage upload builds accepted');
 const json=p=>JSON.parse(readFileSync(p)),build=json(resolve(buildDirectory,'build.json'));
 assert.equal(build.title,14);assert.equal(build.releaseProfile,true);assert.equal(build.completeGame,false);assert.equal(build.kind,'th14-sdl3-web-release');
 for(const group of [build.sources,build.headers])for(const [name,hash] of Object.entries(group))assert.equal(sha(readFileSync(resolve(root,'runtimes/th12',name))),hash,'stale release '+name);

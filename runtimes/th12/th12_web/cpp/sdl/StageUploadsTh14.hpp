@@ -26,7 +26,8 @@ public:
         case Phase::Hud:next[count++]={&stage.logo,6};break;
         case Phase::Scene:next[count++]={&stage.background,u16((stage.stage_number&1)+3)};break;
         case Phase::Timeline:
-            next[count++]={&stage.enemies,9};
+            // 42256a loads exactly the ECL ANIM list at file 10+i.
+            // stage.enemies is a legacy duplicate, not another native upload.
             for(u32 i=0;i<stage.ecl_animations.size();++i)
                 if(!stage.ecl_animation_names[i].empty())next[count++]={&stage.ecl_animations[i],u16(10+i)};
             break;
