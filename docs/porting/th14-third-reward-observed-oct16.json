@@ -1,0 +1,926 @@
+{
+  "schema": "th14-third-reward-evidence-v1",
+  "storedEvidenceVerified": true,
+  "producerExecutedByChecker": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "productionSourceChanges": [
+    "runtimes/th12/th12_web/cpp/game/ShotTh14.cpp"
+  ],
+  "nativeUnitCases": 1920,
+  "oldRewardCases": 1440,
+  "beforeDifferentCases": 960,
+  "afterDifferentCases": 0,
+  "playbacks": [
+    {
+      "key": "reimua",
+      "callbacks": 90793,
+      "naturalReplayEof": true,
+      "gameOver": false
+    },
+    {
+      "key": "reimub",
+      "callbacks": 98074,
+      "naturalReplayEof": true,
+      "gameOver": false
+    },
+    {
+      "key": "extra",
+      "callbacks": 39458,
+      "naturalReplayEof": true,
+      "gameOver": false
+    },
+    {
+      "key": "sakuyaa",
+      "callbacks": 96016,
+      "naturalReplayEof": true,
+      "gameOver": false
+    },
+    {
+      "key": "normal",
+      "callbacks": 104587,
+      "naturalReplayEof": true,
+      "gameOver": false
+    },
+    {
+      "key": "marisabextra",
+      "callbacks": 422,
+      "naturalReplayEof": false,
+      "gameOver": true
+    },
+    {
+      "key": "sakuyaaextra",
+      "callbacks": 35721,
+      "naturalReplayEof": true,
+      "gameOver": false
+    },
+    {
+      "key": "reimualunatic",
+      "callbacks": 89325,
+      "naturalReplayEof": true,
+      "gameOver": false
+    },
+    {
+      "key": "sakuya-b",
+      "callbacks": 108270,
+      "naturalReplayEof": true,
+      "gameOver": false
+    },
+    {
+      "key": "marisa-a",
+      "callbacks": 104236,
+      "naturalReplayEof": true,
+      "gameOver": false
+    },
+    {
+      "key": "marisa-b",
+      "callbacks": 113877,
+      "naturalReplayEof": true,
+      "gameOver": false
+    }
+  ],
+  "totalCallbacks": 880779,
+  "naturalReplayEofCases": 10,
+  "earlyGameOverPrefixCases": 1,
+  "newMarisaBBeforeCallbacks": 6688,
+  "newMarisaBAfterCallbacks": 113877,
+  "matchedNativePrefixCallbacks": 29088,
+  "prefixSelectedGameplayDifferences": 0,
+  "detailedNativeRows": 211,
+  "detailedNativeWords": 130725,
+  "detailedNativeDifferences": 0,
+  "sanitizedCallbacks": 326383,
+  "sanitizedRecompiledObjects": 1,
+  "sanitizedVerifiedReusedObjects": 140,
+  "sdlWasmSha256": "7e42a509065676ece981f2e8e5e7ce9a86d2960d02149398b1c0c0316c15f088",
+  "longOriginalObservation": {
+    "requestedFrames": 113880,
+    "requestedSeconds": 2200,
+    "capturedFrames": 27751,
+    "timedOut": true,
+    "wholeOriginalComparisonPassed": false,
+    "firstActiveSelectedGameplayDifference": {
+      "index": 14277,
+      "stage": 2,
+      "stageFrame": 1575,
+      "field": "score",
+      "portable": 1411732,
+      "native": 1411731
+    }
+  },
+  "broadMatrix": {
+    "inputs": 30,
+    "casesExecuted": 30,
+    "totalCallbacks": 2815037,
+    "naturalReplayEof": 26,
+    "earlyGameOver": 3,
+    "frameBudgetReached": 1,
+    "wholeOriginalOrSanitizedMatrix": false,
+    "longReplayControl": {
+      "passed": true,
+      "initialFrameBudget": 200000,
+      "newFrameBudget": 260000,
+      "callbacks": 238611,
+      "naturalReplayEof": true,
+      "first200000Raw32AndActivityAndOwnerBytesEqual": true,
+      "gameplayCodeChanged": false,
+      "forcedProgression": false
+    },
+    "finalAfterLongReplay": {
+      "inputs": 30,
+      "naturalReplayEof": 27,
+      "earlyGameOver": 3,
+      "frameBudgetReached": 0,
+      "selectedFinalRunCallbacks": 2853648,
+      "totalCallbacksIncludingOriginalCappedRun": 3053648
+    }
+  },
+  "browser": {
+    "sameOrigin": "http://localhost:8208",
+    "quietByDefault": true,
+    "singleOwnerReplayFullReloadAndUiExportByteEqual": true,
+    "concurrentOldWriterDataLossObserved": true,
+    "multiTabProtectionFixed": false,
+    "completeBrowserReplayVerified": false
+  },
+  "graphics": {
+    "productionGraphicsChanged": false,
+    "genericYCandidateRejected": true,
+    "matrixActualNativeDraws": 12,
+    "matrixActualWebGlDraws": 13,
+    "heldOutYEighthCandidateDifferentWords": 322,
+    "wOffsetCandidateDifferentWords": 374
+  },
+  "bindings": {
+    "artifacts/th14/third-reward-core-build-oct16/build-result.json": {
+      "bytes": 62632,
+      "sha256": "af394734b99ad4c2c2afeecc14b1160a299d8ca3d35d4cc3ade05a8ee2897f44"
+    },
+    "artifacts/th14/third-reward-sdl-build-oct16/build.json": {
+      "bytes": 56723,
+      "sha256": "d1ac5a1b1847dccc9177c60fcea6de321e61c6d6fa2d248f8eff7edaa8568123"
+    },
+    "artifacts/th14/third-reward-sdl-build-oct16/th11.wasm": {
+      "bytes": 1892012,
+      "sha256": "7e42a509065676ece981f2e8e5e7ce9a86d2960d02149398b1c0c0316c15f088"
+    },
+    "artifacts/th14/shot-third-reward-native-oct16.json": {
+      "bytes": 1783274,
+      "sha256": "c42380fedda27b6c9dd3c23ce61817038bb96df18e971043368dff025340d0cb"
+    },
+    "artifacts/th14/shot-rewards-native.json": {
+      "bytes": 1052688,
+      "sha256": "a87c778e2bb17070f208b554a281f50d564d474df27041ce599a0dfc8fe7db4f"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/build.json": {
+      "bytes": 14963,
+      "sha256": "b89b410394781a6c6d4afdb6dceb7119246444fe610833f59c8bec2a5597df73"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/run.mjs": {
+      "bytes": 7286,
+      "sha256": "cf94b8d970f23735ef1e8b600e65b02dd079a797b410f2fa6459b4c570a43e25"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/regression-suite.json": {
+      "bytes": 1973,
+      "sha256": "52ae043d39925bbf0cf674101eb46487b8a83efe1c47c8af8b5f5546d3dbaaa1"
+    },
+    "artifacts/th14/third-reward-sanitized-oct16.mjs": {
+      "bytes": 7099,
+      "sha256": "cf03970558ef3bc65e9e20d54c7eb928a9248a65b56f6b92a71288ccff3962ff"
+    },
+    "artifacts/th14/third-reward-sanitized-oct16/report.json": {
+      "bytes": 43175,
+      "sha256": "e1910255d5ba0df3c8392b01703774635025c85ab1187740bd4e040853a5ad8f"
+    },
+    "artifacts/th14/third-reward-sanitized-oct16/probe.wasm": {
+      "bytes": 17248244,
+      "sha256": "7d55afda3e6afe7de3f9c7755107c54b5e8a6129d8fb905a2a8a78ab4e3e1326"
+    },
+    "artifacts/th14/missing-shots-direct-intake-oct16/native-codec-receipt.json": {
+      "bytes": 6710,
+      "sha256": "fb80884ee77164935e36b51dca0214b4a811cd935b32f6cee0c1b55f2d7f19db"
+    },
+    "artifacts/th14/marisa-b-normal-direct-intake-oct16/native-codec-receipt.json": {
+      "bytes": 3613,
+      "sha256": "f03aadaee5eb649498cb0be654165307422da966c093c052ad3eb4644b284765"
+    },
+    "docs/porting/th14-launcher-runtime-third-reward-oct16.json": {
+      "bytes": 102941,
+      "sha256": "f9ecf9aec80a1bce0d008a469e497e5696c59b1a4d9a26a911f198a6de69370d"
+    },
+    "docs/porting/th14-launcher-site-third-reward-oct16.json": {
+      "bytes": 36442,
+      "sha256": "a47fd146ce430950a5b396a9f64cfd07198a6b7e68f67998ec55f387b40fdb31"
+    },
+    "tools/th14-shot-third-reward-native-oct16.py": {
+      "bytes": 3405,
+      "sha256": "4abe6019b12b24116a044488e004f4c196dfebd3c4171cbffda9c2eafa430ac2"
+    },
+    "tools/th14-shot-third-reward-check-oct16.mjs": {
+      "bytes": 4237,
+      "sha256": "5f857e16c03c1ae9d0406168ee647341abd70dbc34a86637482beb050a4b2a85"
+    },
+    "tools/th14-third-reward-core-build-oct16.mjs": {
+      "bytes": 3926,
+      "sha256": "f0220cd2a7ec4ae7be86c457fe24efcc4c498757fb06b489d0f8a316eef79298"
+    },
+    "tools/th14-third-reward-sdl-build-oct16.mjs": {
+      "bytes": 5088,
+      "sha256": "2a7c9897f6a9676ed81e387bc73fcd02c8071cdd5e8456df96fee24a407375b5"
+    },
+    "tools/th14-package-third-reward-runtime-oct16.mjs": {
+      "bytes": 7321,
+      "sha256": "d91243134243ba9e7d444c0b096b0003b268565f8e01c6c7d4c4b278834af688"
+    },
+    "tools/th14-staged-loader-production-raw-evidence-check.py": {
+      "bytes": 24206,
+      "sha256": "5bd3b16dbda27ba2a4fa3487e933768a905efe3755e2281ac6dce7ed278d1141"
+    },
+    "artifacts/th14/viewport-y-matrix-oct16/comparison.json": {
+      "bytes": 17864,
+      "sha256": "a4497c54ebe25df50a2b6abc21b191cd795564be92842c0d158bfde372e77444"
+    },
+    "artifacts/th14/viewport-y-matrix-oct16/native-matrix.json": {
+      "bytes": 2378,
+      "sha256": "aab5758b401a20701ec8e330f3b2dbc7fb343e040215102f2dd423cc8899ee40"
+    },
+    "artifacts/th14/viewport-y-matrix-oct16/browser/capture/report.json": {
+      "bytes": 18816,
+      "sha256": "024f44e9d01765f9abd74c8746f37801d4a9cadc3721fa7abdd2f8d2d5c05556"
+    },
+    "artifacts/th14/third-reward-preview-oct16/single-owner-persistence.json": {
+      "bytes": 426,
+      "sha256": "292a6d7c302b44c36ba1467b8e2ae636bb5f062a076720f60e0b7f0ea0028990"
+    },
+    "artifacts/th14/third-reward-preview-oct16/persisted-download.rpy": {
+      "bytes": 101428,
+      "sha256": "2f3a61e72e1bd14a1cecc934d805106f31f6b55a830ae4a9f1d94207098d2bf0"
+    },
+    "artifacts/th14/third-reward-preview-oct16/marisa-b-imported.jpg": {
+      "bytes": 29975,
+      "sha256": "59a26683f00b94bb521104427a9937a8968e7d04962e37e11dd2aa4ecf7adb0b"
+    },
+    "artifacts/th14/third-reward-preview-oct16/replay-missing-after-reload.jpg": {
+      "bytes": 28128,
+      "sha256": "baed0cf0fee252f1d3648f075f3dc531584f148f36cefabdf0b155832a6a6c4d"
+    },
+    "artifacts/th14/third-reward-preview-oct16/single-owner-after-reload.jpg": {
+      "bytes": 29975,
+      "sha256": "59a26683f00b94bb521104427a9937a8968e7d04962e37e11dd2aa4ecf7adb0b"
+    },
+    "artifacts/th14/marisa-b-normal-full-native-oct16/reference.json": {
+      "bytes": 182558597,
+      "sha256": "39a56163a43a6cf156c18e2df8bb96807377423bd762c41ee4a9fcabf3b95974"
+    },
+    "artifacts/th14/third-reward-full-native-comparison-oct16/marisa-b/comparison.json": {
+      "bytes": 6732,
+      "sha256": "6701da43c5ef31c0540495931b9c4db110ff9589e5650641f16b207413e3fc1c"
+    },
+    "artifacts/th14/third-reward-full-native-comparison-oct16/marisa-b/all-raw-word-differences.jsonl": {
+      "bytes": 17677957,
+      "sha256": "f6cf3759ec3eac27667e908f485e2ce2fa6f4da30cda1d7df32142c12e8814bb"
+    },
+    "artifacts/th14/third-reward-full-native-comparison-oct16/marisa-b/all-gameplay-differences.json": {
+      "bytes": 12740382,
+      "sha256": "799b7a3bafc50fb636f10afa0d2287f66a3e372e586e39cfc1a2414e8286c08b"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/batch-completed.json": {
+      "bytes": 7745,
+      "sha256": "5bd1acde909a5bc1dc01219a57b2c7c7ce597d68b0f04bb393320d9208d30b1f"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/inputs/native-codec-receipt.json": {
+      "bytes": 88863,
+      "sha256": "c4033b4b8a902f3c5b2f25443c72377d9123098c0370a44f51f8a194a85312ab"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/reimua/receipt.json": {
+      "bytes": 17351,
+      "sha256": "30e424bdd38be5d332794d0493872ceba65718a15c464b8ea6ad618969806789"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/reimua/selected-state.u32": {
+      "bytes": 11621504,
+      "sha256": "4c588894d74c7c96e51f4c4126c00075f8d7ca2bc15d819bff058e6f03749eb7"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/reimua/callback-active.u8": {
+      "bytes": 90793,
+      "sha256": "8019f5f98e9ca7a5d67d476ec195b77162fa35bc39829b32778cc514bd1bd195"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/reimua/enemy-owner.u8": {
+      "bytes": 90793,
+      "sha256": "752bb3314ed2ae90dc678e1e934369394635021b10a3379ebfcb693feaab877c"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/reimua/queue.json": {
+      "bytes": 1896,
+      "sha256": "fcb7338b45040fa03a1a4ccb8951075d3b1e71ae104e2bf7617a774f919ae4ea"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/reimua/selected-state.u32": {
+      "bytes": 11621504,
+      "sha256": "4c588894d74c7c96e51f4c4126c00075f8d7ca2bc15d819bff058e6f03749eb7"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/reimua/callback-active.u8": {
+      "bytes": 90793,
+      "sha256": "8019f5f98e9ca7a5d67d476ec195b77162fa35bc39829b32778cc514bd1bd195"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/reimua/enemy-owner.u8": {
+      "bytes": 90793,
+      "sha256": "752bb3314ed2ae90dc678e1e934369394635021b10a3379ebfcb693feaab877c"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/reimub/receipt.json": {
+      "bytes": 17353,
+      "sha256": "13237ad33c6e56ab8b04128d585bcb519cf9eb202cdd4a389cf2f1a081d545f1"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/reimub/selected-state.u32": {
+      "bytes": 12553472,
+      "sha256": "ec7b84add5a53aa8a4b9137f5f18ad9e6a08b3f9c931874e787263c8dad8d141"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/reimub/callback-active.u8": {
+      "bytes": 98074,
+      "sha256": "37ca90357d5db2adf3eea20464040ed1ac6f2832c11e97e3b8f186e19468d1ae"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/reimub/enemy-owner.u8": {
+      "bytes": 98074,
+      "sha256": "7016711238d5ba2761fee01e7900fb650f69d6f179ac2b80b774b874181142b5"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/reimub/queue.json": {
+      "bytes": 1923,
+      "sha256": "f1a3f66cc9b44608002c54d1b82711afce2437676efd45da37676c2b464fb0cc"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/reimub/selected-state.u32": {
+      "bytes": 12553472,
+      "sha256": "ec7b84add5a53aa8a4b9137f5f18ad9e6a08b3f9c931874e787263c8dad8d141"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/reimub/callback-active.u8": {
+      "bytes": 98074,
+      "sha256": "37ca90357d5db2adf3eea20464040ed1ac6f2832c11e97e3b8f186e19468d1ae"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/reimub/enemy-owner.u8": {
+      "bytes": 98074,
+      "sha256": "7016711238d5ba2761fee01e7900fb650f69d6f179ac2b80b774b874181142b5"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/extra/receipt.json": {
+      "bytes": 16696,
+      "sha256": "d31b39f669b793daf3ebf3db6fd51ea7828ec1608e379843152fbcd522d9d8c8"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/extra/selected-state.u32": {
+      "bytes": 5050624,
+      "sha256": "e798415744087726d6bb8a7e57b8c579501e88e23f6cd03d32ace0a7779b27b9"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/extra/callback-active.u8": {
+      "bytes": 39458,
+      "sha256": "babc23d0049007e620534d53040571af21d8fd5709e5e137d6622c52d3de6c5c"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/extra/enemy-owner.u8": {
+      "bytes": 39458,
+      "sha256": "babc23d0049007e620534d53040571af21d8fd5709e5e137d6622c52d3de6c5c"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/extra/queue.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/extra/selected-state.u32": {
+      "bytes": 5050624,
+      "sha256": "e798415744087726d6bb8a7e57b8c579501e88e23f6cd03d32ace0a7779b27b9"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/extra/callback-active.u8": {
+      "bytes": 39458,
+      "sha256": "babc23d0049007e620534d53040571af21d8fd5709e5e137d6622c52d3de6c5c"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/extra/enemy-owner.u8": {
+      "bytes": 39458,
+      "sha256": "babc23d0049007e620534d53040571af21d8fd5709e5e137d6622c52d3de6c5c"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/sakuyaa/receipt.json": {
+      "bytes": 17352,
+      "sha256": "0ce7e0709435d198deeb8b592f405169d725bd61051d4370a716e473e96fefc6"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/sakuyaa/selected-state.u32": {
+      "bytes": 12290048,
+      "sha256": "9de97598247429f526241c896d76c48575315393da2bd750694cea1e3b4d336f"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/sakuyaa/callback-active.u8": {
+      "bytes": 96016,
+      "sha256": "c6cb566d72a29e1b08bd542b01ee8d7e208191add39bb70755725bb6b9485711"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/sakuyaa/enemy-owner.u8": {
+      "bytes": 96016,
+      "sha256": "acb4cbb38e42d1cc4f1cefd4ce4d0df88d66364f2c4c1ea7e28f8f625d6daa7b"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/sakuyaa/queue.json": {
+      "bytes": 1896,
+      "sha256": "56ab0a61c68f8462b2e7877d00349b9d8a6f3c0c70d7f13d84018b27ce39ec04"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/sakuyaa/selected-state.u32": {
+      "bytes": 12290048,
+      "sha256": "9de97598247429f526241c896d76c48575315393da2bd750694cea1e3b4d336f"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/sakuyaa/callback-active.u8": {
+      "bytes": 96016,
+      "sha256": "c6cb566d72a29e1b08bd542b01ee8d7e208191add39bb70755725bb6b9485711"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/sakuyaa/enemy-owner.u8": {
+      "bytes": 96016,
+      "sha256": "acb4cbb38e42d1cc4f1cefd4ce4d0df88d66364f2c4c1ea7e28f8f625d6daa7b"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/normal/receipt.json": {
+      "bytes": 17354,
+      "sha256": "e8651494d963c018150a0f89652aaf76a2280f1c032e5e4afe85648ad30ef70c"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/normal/selected-state.u32": {
+      "bytes": 13387136,
+      "sha256": "8ad86ad49f2f3eacf1171d84c0c365e00c2baa87ea758f273a77413c7afa4e12"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/normal/callback-active.u8": {
+      "bytes": 104587,
+      "sha256": "fa569677ba623361bdfa933c5cbc05d4f81873adfcb3b6f406309f1a276f091d"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/normal/enemy-owner.u8": {
+      "bytes": 104587,
+      "sha256": "214064d0d5f6817dfd61a2ccee16416e9657070b8072ffa33dada46425743a8f"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/normal/queue.json": {
+      "bytes": 1923,
+      "sha256": "0714305708a534a527c01bb1479997a904dfa36de2ee923264ebae1859261ba7"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/normal/selected-state.u32": {
+      "bytes": 13387136,
+      "sha256": "8ad86ad49f2f3eacf1171d84c0c365e00c2baa87ea758f273a77413c7afa4e12"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/normal/callback-active.u8": {
+      "bytes": 104587,
+      "sha256": "fa569677ba623361bdfa933c5cbc05d4f81873adfcb3b6f406309f1a276f091d"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/normal/enemy-owner.u8": {
+      "bytes": 104587,
+      "sha256": "214064d0d5f6817dfd61a2ccee16416e9657070b8072ffa33dada46425743a8f"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/marisabextra/receipt.json": {
+      "bytes": 16698,
+      "sha256": "e406391c2779d0c7a14276b4628c6c5604ddf8369615fb02a96c26d268b0a635"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/marisabextra/selected-state.u32": {
+      "bytes": 54016,
+      "sha256": "a5e656c3a723a44c627b71b032f5f947e9c87f2beb17f40cfdc1d71ea6ebd48a"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/marisabextra/callback-active.u8": {
+      "bytes": 422,
+      "sha256": "f0890a6cc411f1a1b29cfb86520f7f8a6783b4e6c02e5b870658333a0ab0fbb4"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/marisabextra/enemy-owner.u8": {
+      "bytes": 422,
+      "sha256": "f0890a6cc411f1a1b29cfb86520f7f8a6783b4e6c02e5b870658333a0ab0fbb4"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/marisabextra/queue.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/marisabextra/selected-state.u32": {
+      "bytes": 54016,
+      "sha256": "a5e656c3a723a44c627b71b032f5f947e9c87f2beb17f40cfdc1d71ea6ebd48a"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/marisabextra/callback-active.u8": {
+      "bytes": 422,
+      "sha256": "f0890a6cc411f1a1b29cfb86520f7f8a6783b4e6c02e5b870658333a0ab0fbb4"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/marisabextra/enemy-owner.u8": {
+      "bytes": 422,
+      "sha256": "f0890a6cc411f1a1b29cfb86520f7f8a6783b4e6c02e5b870658333a0ab0fbb4"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/sakuyaaextra/receipt.json": {
+      "bytes": 16703,
+      "sha256": "0ecc955e66d452c4da531fe4978c0c1225504d6acc3191dce9a84abb6195c078"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/sakuyaaextra/selected-state.u32": {
+      "bytes": 4572288,
+      "sha256": "715b61f0130a42aa9093087a40cd1dfec7b1515ba4e0e6e8cdb8be1d1c1219e9"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/sakuyaaextra/callback-active.u8": {
+      "bytes": 35721,
+      "sha256": "a505b173ce99d805c9d5bb7f1e3abb5a7b7ef65cc4aea9be778722bdd51a0a90"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/sakuyaaextra/enemy-owner.u8": {
+      "bytes": 35721,
+      "sha256": "a505b173ce99d805c9d5bb7f1e3abb5a7b7ef65cc4aea9be778722bdd51a0a90"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/sakuyaaextra/queue.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/sakuyaaextra/selected-state.u32": {
+      "bytes": 4572288,
+      "sha256": "715b61f0130a42aa9093087a40cd1dfec7b1515ba4e0e6e8cdb8be1d1c1219e9"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/sakuyaaextra/callback-active.u8": {
+      "bytes": 35721,
+      "sha256": "a505b173ce99d805c9d5bb7f1e3abb5a7b7ef65cc4aea9be778722bdd51a0a90"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/sakuyaaextra/enemy-owner.u8": {
+      "bytes": 35721,
+      "sha256": "a505b173ce99d805c9d5bb7f1e3abb5a7b7ef65cc4aea9be778722bdd51a0a90"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/reimualunatic/receipt.json": {
+      "bytes": 17358,
+      "sha256": "ae40ade381a432f456726e399868fabe38b2811b271801e63fa5cf547ea772b6"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/reimualunatic/selected-state.u32": {
+      "bytes": 11433600,
+      "sha256": "f55aad779f1ddbc3549a9aead52f65f481df9a71aa2111abf825d5b2f0042871"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/reimualunatic/callback-active.u8": {
+      "bytes": 89325,
+      "sha256": "294249e7bbd6165208bfefe3a280eabd65ed7268afda397250e2e2063717503d"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/reimualunatic/enemy-owner.u8": {
+      "bytes": 89325,
+      "sha256": "f9fbb80edf58318ded429ea0baad51dbe1875cdd0a6df86ac3e53d76d1ea80d7"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/reimualunatic/queue.json": {
+      "bytes": 1896,
+      "sha256": "df7b699676e12623f262c16cd995592e1a63868eab25db1614c8816f35a21e21"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/reimualunatic/selected-state.u32": {
+      "bytes": 11433600,
+      "sha256": "f55aad779f1ddbc3549a9aead52f65f481df9a71aa2111abf825d5b2f0042871"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/reimualunatic/callback-active.u8": {
+      "bytes": 89325,
+      "sha256": "294249e7bbd6165208bfefe3a280eabd65ed7268afda397250e2e2063717503d"
+    },
+    "artifacts/th14/constructor-hit-playbacks-oct15/reimualunatic/enemy-owner.u8": {
+      "bytes": 89325,
+      "sha256": "f9fbb80edf58318ded429ea0baad51dbe1875cdd0a6df86ac3e53d76d1ea80d7"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/sakuya-b/receipt.json": {
+      "bytes": 17357,
+      "sha256": "d029a5f1decc6aba6e6883379ebc7192a896bf315774f1a2af39351ae3bc8a00"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/sakuya-b/selected-state.u32": {
+      "bytes": 13858560,
+      "sha256": "9c7fd70c0adfe7db788566976dcf91c70d347cddfe7bc31e91aa5c60cb38f98c"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/sakuya-b/callback-active.u8": {
+      "bytes": 108270,
+      "sha256": "002fa937cdf76538797997505392e07bcdb9ed871371141adc5dbd1354a00dce"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/sakuya-b/enemy-owner.u8": {
+      "bytes": 108270,
+      "sha256": "773ec7233a65f2caf1ec403c56f5d8bdf72349d0a5b4e5baa8455455979b1a33"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/sakuya-b/queue.json": {
+      "bytes": 1923,
+      "sha256": "337c73655d568999e5e0eb7f9454e6074f6426c097242582117da1877ba38d78"
+    },
+    "artifacts/th14/missing-shots-playbacks-oct16/sakuya-b/selected-state.u32": {
+      "bytes": 13858560,
+      "sha256": "9c7fd70c0adfe7db788566976dcf91c70d347cddfe7bc31e91aa5c60cb38f98c"
+    },
+    "artifacts/th14/missing-shots-playbacks-oct16/sakuya-b/callback-active.u8": {
+      "bytes": 108270,
+      "sha256": "002fa937cdf76538797997505392e07bcdb9ed871371141adc5dbd1354a00dce"
+    },
+    "artifacts/th14/missing-shots-playbacks-oct16/sakuya-b/enemy-owner.u8": {
+      "bytes": 108270,
+      "sha256": "773ec7233a65f2caf1ec403c56f5d8bdf72349d0a5b4e5baa8455455979b1a33"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/marisa-a/receipt.json": {
+      "bytes": 17357,
+      "sha256": "950b93200e90c94b70e0aacc33d342bbc52c386c814557bfefe599f10ac64a1b"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/marisa-a/selected-state.u32": {
+      "bytes": 13342208,
+      "sha256": "32f34855efbe8cf89991521500bc68cf7908686f7dafa63d49c535211f544443"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/marisa-a/callback-active.u8": {
+      "bytes": 104236,
+      "sha256": "b963a5e8b67dee5f731cc9619c6d539d3927f2571e7e31f1bdff1221cd8f8c7a"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/marisa-a/enemy-owner.u8": {
+      "bytes": 104236,
+      "sha256": "723c25714e2c13b64cd131584008cf879fab2f7219dd919d7974d306a7ae4f55"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/marisa-a/queue.json": {
+      "bytes": 1923,
+      "sha256": "563a35ca4ae001f8704eab144af4936e1c512110ef388b9b97fb9ee350898cc7"
+    },
+    "artifacts/th14/missing-shots-playbacks-oct16/marisa-a/selected-state.u32": {
+      "bytes": 13342208,
+      "sha256": "32f34855efbe8cf89991521500bc68cf7908686f7dafa63d49c535211f544443"
+    },
+    "artifacts/th14/missing-shots-playbacks-oct16/marisa-a/callback-active.u8": {
+      "bytes": 104236,
+      "sha256": "b963a5e8b67dee5f731cc9619c6d539d3927f2571e7e31f1bdff1221cd8f8c7a"
+    },
+    "artifacts/th14/missing-shots-playbacks-oct16/marisa-a/enemy-owner.u8": {
+      "bytes": 104236,
+      "sha256": "723c25714e2c13b64cd131584008cf879fab2f7219dd919d7974d306a7ae4f55"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/marisa-b/receipt.json": {
+      "bytes": 17357,
+      "sha256": "4bc4ac50181e1b9fa250655f7e346a4261e21eb2e2c17e0926b87c4c708de4f5"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/marisa-b/selected-state.u32": {
+      "bytes": 14576256,
+      "sha256": "caee20c1fd105e85b0a90270431bcc1270454f07cff253310e3cc8ed6dcda3ff"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/marisa-b/callback-active.u8": {
+      "bytes": 113877,
+      "sha256": "3b048a2348062e21ec18b8e96a7c5f11c0128a6ce7422787d592f2295345a802"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/marisa-b/enemy-owner.u8": {
+      "bytes": 113877,
+      "sha256": "ffa6a58020e6483d61b30cd3e29fef0cfaf903ae261d64c54e48e3d2487c7163"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/marisa-b/queue.json": {
+      "bytes": 1923,
+      "sha256": "1f0489b5e3132f8ab8a133849179a72001f3bb4e4491eb6ec10ccf15e4b01ee2"
+    },
+    "artifacts/th14/new-shot-native-prefixes-oct16/sakuya-b/reference.json": {
+      "bytes": 76266634,
+      "sha256": "7b3f5160eb2f1053e34e96dd5abe772b0f3a945f967ec0d98cacacb905c8114e"
+    },
+    "artifacts/th14/third-reward-prefix-comparisons-oct16/sakuya-b/comparison.json": {
+      "bytes": 1455,
+      "sha256": "6b9d3d4f4f4f480742121ac169de338485047c4573c9d2b1cae19bf49ec88eae"
+    },
+    "artifacts/th14/third-reward-prefix-comparisons-oct16/sakuya-b/all-raw-word-differences.jsonl": {
+      "bytes": 3186285,
+      "sha256": "cdbfa4e9fbf9a3fc85b28984e340728d5577cb33b2d0b22bd56cf6fb3438b3a9"
+    },
+    "artifacts/th14/third-reward-prefix-comparisons-oct16/sakuya-b/all-gameplay-differences.json": {
+      "bytes": 4,
+      "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f"
+    },
+    "artifacts/th14/third-reward-prefix-comparisons-oct16/sakuya-b/unpaired-rows.json": {
+      "bytes": 687629,
+      "sha256": "e8069492f89b027668fdd9465454e0a91b9d8b2e0ab8629197831b065ca73d4c"
+    },
+    "artifacts/th14/new-shot-native-serial-oct16/marisa-a/reference.json": {
+      "bytes": 75243397,
+      "sha256": "dc7a1c68215405ea18907b2388e564b5d871bc73c3910989dd07dbe456154d8d"
+    },
+    "artifacts/th14/third-reward-prefix-comparisons-oct16/marisa-a/comparison.json": {
+      "bytes": 1455,
+      "sha256": "64312f9efdf8ecd15a51b621f7850bda320b11a9118a39522ef7322ae28b3115"
+    },
+    "artifacts/th14/third-reward-prefix-comparisons-oct16/marisa-a/all-raw-word-differences.jsonl": {
+      "bytes": 3081985,
+      "sha256": "a8df2e91ba1f8bd5b6628c4caf0f49de92f5fe7df51fff32634189aa303723fb"
+    },
+    "artifacts/th14/third-reward-prefix-comparisons-oct16/marisa-a/all-gameplay-differences.json": {
+      "bytes": 4,
+      "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f"
+    },
+    "artifacts/th14/third-reward-prefix-comparisons-oct16/marisa-a/unpaired-rows.json": {
+      "bytes": 657891,
+      "sha256": "6d061ed4d3187980abb886c0deee88ff7c9713f3d1f64197f75d9d81b0a062a6"
+    },
+    "artifacts/th14/new-shot-native-serial-oct16/marisa-b/reference.json": {
+      "bytes": 50534088,
+      "sha256": "caac1ceb36928de2258abaa82cb3d5f9ac7c4f91aedbae25dc39dde990b4fc1e"
+    },
+    "artifacts/th14/third-reward-prefix-comparisons-oct16/marisa-b/comparison.json": {
+      "bytes": 1454,
+      "sha256": "189855d1280962800a335e6bc8098a704fc736ac861b2c60f3e2e29196270856"
+    },
+    "artifacts/th14/third-reward-prefix-comparisons-oct16/marisa-b/all-raw-word-differences.jsonl": {
+      "bytes": 1979429,
+      "sha256": "fa4365bf59ca6b64adb77b1de4c6b7ad37c46d7c7d5ae83957adac43d586283f"
+    },
+    "artifacts/th14/third-reward-prefix-comparisons-oct16/marisa-b/all-gameplay-differences.json": {
+      "bytes": 4,
+      "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f"
+    },
+    "artifacts/th14/third-reward-prefix-comparisons-oct16/marisa-b/unpaired-rows.json": {
+      "bytes": 759060,
+      "sha256": "8be90a5b19e77819747d8eb6df4d3c6a5a484ef583a966d6c376150c0fe93855"
+    },
+    "artifacts/th14/shot-third-reward-check-oct16/before/receipt.json": {
+      "bytes": 1088,
+      "sha256": "a54f7e5c6bce8eadb8b2e4e8e983b251b8215d48b552ef55caf8e0aa9e1d916f"
+    },
+    "artifacts/th14/shot-third-reward-check-oct16/before/all-differences.json": {
+      "bytes": 1445355,
+      "sha256": "47109bd1e89365267b9fca3cbb63ee3e6d76c4907b6c7d1e40aac3d5834a22bc"
+    },
+    "artifacts/th14/shot-third-reward-check-oct16/after/receipt.json": {
+      "bytes": 1084,
+      "sha256": "3f32517a192bd83f433d26856d6c1953373cc61a0431531a1efec43d31b7f43a"
+    },
+    "artifacts/th14/shot-third-reward-check-oct16/after/all-differences.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "artifacts/th14/missing-shots-direct-intake-oct16/sakuya-b.rpy": {
+      "bytes": 92726,
+      "sha256": "34bd96e7c7b0af56e9eeddcfc61b39c40d41db753f3aa3ecae85a9e87cb58ec1"
+    },
+    "artifacts/th14/missing-shots-direct-intake-oct16/sakuya-b-source.json": {
+      "bytes": 2778,
+      "sha256": "041b519c3edae30c8bfafbda51e968d8ba49303a741df5e01572faf87eb0aef6"
+    },
+    "artifacts/th14/third-reward-sanitized-oct16/sakuya-b.state.u32": {
+      "bytes": 13858560,
+      "sha256": "9c7fd70c0adfe7db788566976dcf91c70d347cddfe7bc31e91aa5c60cb38f98c"
+    },
+    "artifacts/th14/third-reward-sanitized-oct16/sakuya-b.active.u8": {
+      "bytes": 108270,
+      "sha256": "002fa937cdf76538797997505392e07bcdb9ed871371141adc5dbd1354a00dce"
+    },
+    "artifacts/th14/third-reward-sanitized-oct16/sakuya-b.owners.u8": {
+      "bytes": 108270,
+      "sha256": "773ec7233a65f2caf1ec403c56f5d8bdf72349d0a5b4e5baa8455455979b1a33"
+    },
+    "artifacts/th14/missing-shots-direct-intake-oct16/marisa-a.rpy": {
+      "bytes": 91577,
+      "sha256": "724c78a013ab8334f14fc7ddd995b01308e16dd20ef19a2c8fd73a20fb02258c"
+    },
+    "artifacts/th14/missing-shots-direct-intake-oct16/marisa-a-source.json": {
+      "bytes": 2788,
+      "sha256": "0c728b77b2ad7d74b23acb09a2e54ac8ac12cb1ca8bd09524ba200d2bc7389c6"
+    },
+    "artifacts/th14/third-reward-sanitized-oct16/marisa-a.state.u32": {
+      "bytes": 13342208,
+      "sha256": "32f34855efbe8cf89991521500bc68cf7908686f7dafa63d49c535211f544443"
+    },
+    "artifacts/th14/third-reward-sanitized-oct16/marisa-a.active.u8": {
+      "bytes": 104236,
+      "sha256": "b963a5e8b67dee5f731cc9619c6d539d3927f2571e7e31f1bdff1221cd8f8c7a"
+    },
+    "artifacts/th14/third-reward-sanitized-oct16/marisa-a.owners.u8": {
+      "bytes": 104236,
+      "sha256": "723c25714e2c13b64cd131584008cf879fab2f7219dd919d7974d306a7ae4f55"
+    },
+    "artifacts/th14/marisa-b-normal-direct-intake-oct16/marisa-b.rpy": {
+      "bytes": 101428,
+      "sha256": "2f3a61e72e1bd14a1cecc934d805106f31f6b55a830ae4a9f1d94207098d2bf0"
+    },
+    "artifacts/th14/marisa-b-normal-direct-intake-oct16/marisa-b-source.json": {
+      "bytes": 2794,
+      "sha256": "1904131f9d383d8a555f87eb55262d8349ca10ae3c8dc005c9c7a1cf272cb41f"
+    },
+    "artifacts/th14/third-reward-sanitized-oct16/marisa-b.state.u32": {
+      "bytes": 14576256,
+      "sha256": "caee20c1fd105e85b0a90270431bcc1270454f07cff253310e3cc8ed6dcda3ff"
+    },
+    "artifacts/th14/third-reward-sanitized-oct16/marisa-b.active.u8": {
+      "bytes": 113877,
+      "sha256": "3b048a2348062e21ec18b8e96a7c5f11c0128a6ce7422787d592f2295345a802"
+    },
+    "artifacts/th14/third-reward-sanitized-oct16/marisa-b.owners.u8": {
+      "bytes": 113877,
+      "sha256": "ffa6a58020e6483d61b30cd3e29fef0cfaf903ae261d64c54e48e3d2487c7163"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/marisa-b/native-detail-comparison.json": {
+      "bytes": 452,
+      "sha256": "37fad2bd93a2fc65e77581912356f8d67783253d72fa2c4519fdd09418919570"
+    },
+    "artifacts/th14/third-reward-playbacks-oct16/marisa-b/details.json": {
+      "bytes": 955398,
+      "sha256": "061ec1b39430e84ecda171e690acf80d5849acffab125d9e94ab345413cd835a"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/marisaa-easy/receipt.json": {
+      "bytes": 17027,
+      "sha256": "a549c8c50030ff01c6e2405ff000250930db84ca069ea1c07db9d159ce42a6bf"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/reimua-easy/receipt.json": {
+      "bytes": 17420,
+      "sha256": "dc86cd3ccaeef425d48c0effaa90ad7c620f9cb451a7e0ee06b60b2a12ffdae6"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/marisab-easy/receipt.json": {
+      "bytes": 17423,
+      "sha256": "55e1a639791d501d99b80bb5ef61f9b87e3b2bd233dea26261305a8d7c9e6483"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/reimub-easy/receipt.json": {
+      "bytes": 17426,
+      "sha256": "9b2895c3e2a8a938270c42df84dbafac8943a331ff09f6edad8c06b292ce4b40"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/sakuyaa-easy/receipt.json": {
+      "bytes": 17425,
+      "sha256": "4a64abca8dbb1451920414f8c83d6187691dbc776e3e23a0d90af951eb2fca3a"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/reimua-normal/receipt.json": {
+      "bytes": 17420,
+      "sha256": "d0ff9bfda9d9fde4a69bae9c978d70fa3aa4c6623ced8af8b99653240ae8e23d"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/sakuyab-easy/receipt.json": {
+      "bytes": 17423,
+      "sha256": "2be97c866776fba670ab27cca982bdbc467fe771236db606f0c7e064000b63de"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/reimub-normal/receipt.json": {
+      "bytes": 17292,
+      "sha256": "c5aa63848f6bfed3c88521b97a757107b2c22abab1d8357455fffc3200275379"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/marisab-normal/receipt.json": {
+      "bytes": 17425,
+      "sha256": "1da3e3d64d100db5117eec562e8e3bf16b19e52c0d335d12571b4d0548b5603b"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/marisaa-normal/receipt.json": {
+      "bytes": 17425,
+      "sha256": "c8bc836df2ad3d1cb7928260c44acf6b91eafb267b6a3e3300bab6c2a6658d01"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/sakuyaa-normal/receipt.json": {
+      "bytes": 17425,
+      "sha256": "b32f2abd192c5c9507b94846cc40b0f696d00b08d81562b6bf88668c96fe4f34"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/reimua-hard/receipt.json": {
+      "bytes": 17420,
+      "sha256": "c0b9d797808ac013e0fd026d46ee3709e72a7040edb7954c80c9f398dc106e6d"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/sakuyab-normal/receipt.json": {
+      "bytes": 17425,
+      "sha256": "17c7fe79d6a48604b4521b5f31bebaed83a4750f4ce998335be9435a69d5751f"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/reimub-hard/receipt.json": {
+      "bytes": 17422,
+      "sha256": "c5d17909f03bbbf94576c5e6c738f6520d98b272685929d828d0c21072609066"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/marisaa-hard/receipt.json": {
+      "bytes": 17423,
+      "sha256": "c7eb325b2f389ea064f236a93627c6f80d496e6eca04f9b3c6a7cf55a029a95e"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/marisab-hard/receipt.json": {
+      "bytes": 17423,
+      "sha256": "101f2318bc0a83fe25247aafca6b16c98db7e53c6fc089049ed2f9b8a6cdd0eb"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/sakuyaa-hard/receipt.json": {
+      "bytes": 17419,
+      "sha256": "828310a5676609d395ca595da302376a09da6aa801c1ce01da9215fb259ede0c"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/reimua-lunatic/receipt.json": {
+      "bytes": 17421,
+      "sha256": "e42a0597f1367528ce4a6aaade61cc7b51752478c536e8cd29cb68c0581954a4"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/reimub-lunatic/receipt.json": {
+      "bytes": 17425,
+      "sha256": "3125c6bc696d14afd59d6cb14557b24a5393e9e1ee8398fe981d3893c1806e8c"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/sakuyab-hard/receipt.json": {
+      "bytes": 17423,
+      "sha256": "db36936cae345384c57747bdee8b3c633aa7db10b5797d96a3f7c332e24732f0"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/sakuyaa-lunatic/receipt.json": {
+      "bytes": 17422,
+      "sha256": "b67a3a5f1c97b0a5772b82fd9d3eda756af3ae4017b94b630dd1747954a88818"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/marisaa-lunatic/receipt.json": {
+      "bytes": 17425,
+      "sha256": "f3e583729335d821b965ce0b38c470b51825e9865c58d09cc564af850c2c45a1"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/marisab-lunatic/receipt.json": {
+      "bytes": 17294,
+      "sha256": "bf6d5d147a45f9be8d9aff9ef8fdfb6c4a508d2b0183f1e104ddcc8d1fc4c37f"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/reimua-extra/receipt.json": {
+      "bytes": 16765,
+      "sha256": "43b14e154a1cd806f171101c930354c2a1c6fc20ba3d1f9a6c74cea80184eae1"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/reimub-extra/receipt.json": {
+      "bytes": 16765,
+      "sha256": "02c3aa42077584d28d06d873281afaf01a05e1f8ea4061b3260246646d414702"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/marisaa-extra/receipt.json": {
+      "bytes": 16766,
+      "sha256": "9c563d4aa212a286de380f51f5de8db9026e9384b9c7a20f1ca9bfadd22badeb"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/sakuyab-lunatic/receipt.json": {
+      "bytes": 17426,
+      "sha256": "90670290d300ff9224593e9855841d32ace03cf3b392d0dccac29c69efb5c5e7"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/marisab-extra/receipt.json": {
+      "bytes": 16766,
+      "sha256": "6efff224842ae0e6245f6b78cffec6b85d7657c1ffe7b93f8d7982df564ee21e"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/sakuyaa-extra/receipt.json": {
+      "bytes": 16766,
+      "sha256": "6640511dfdec9a15c1caecc1c97697f7104a3267f95a5b78fecdfccf0c65486a"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/playbacks/sakuyab-extra/receipt.json": {
+      "bytes": 16765,
+      "sha256": "e070f2a7e8b2d69dbe9010bf58d2e11fd88fe093e106256cea61614bc2279f63"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/long-replay-comparison.json": {
+      "bytes": 261,
+      "sha256": "1e9d0f028f638e4e22fda3b57d7c9db1b952369775f0a35fc63f535fda40720a"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/long-playbacks/reimub-easy/receipt.json": {
+      "bytes": 17426,
+      "sha256": "c314bb150787756fbc54ed3fcd097e80b6910a34d75777d8777f1ab13689dccb"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/long-playbacks/reimub-easy/selected-state.u32": {
+      "bytes": 30542208,
+      "sha256": "5bbc4b8c94ae312859f574b4ac008cfc393fb759c3b55115e137a8e8237f823e"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/long-playbacks/reimub-easy/callback-active.u8": {
+      "bytes": 238611,
+      "sha256": "efc926963dac310467ab18dd487291ef5e6069916486cab6bee0f4ce064e3b88"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/long-playbacks/reimub-easy/enemy-owner.u8": {
+      "bytes": 238611,
+      "sha256": "6159fb9973655cfecd36f8a3709f8e4168d27fca5d32ca4d42f8d7e3ebc00f9d"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/long-playbacks/reimub-easy/queue.json": {
+      "bytes": 1980,
+      "sha256": "2ddac63c98ca2e55b4e067c98a489209f0e3c036d2e0fb58bec75ad3028dae32"
+    }
+  },
+  "checkerSha256": "d9052a1defd49da95afaffd57ba29940a0b47091bcb61ce448dd085b3bc1c778",
+  "scope": "The missing third hit-reward consumer is restored and locally validated. Ten specific inputs reach natural EOF in the current real-queue core; ten prior inputs remain raw-byte identical. Original machine-code/full-pool unit and three finite original prefixes pass selected gameplay comparisons; every visual difference is retained. A longer actual original observation diverges in stage2 and ends at27751 captures before timing out; no whole-original success. Thirty additional public inputs retain all failures and the frame-budget cap. Three sanitizer runs reuse140 bound unchanged instrumented units and recompile the changed unit. Single-owner browser replay import/export survives a full reload; stale concurrent writer protection and complete browser playback remain unresolved. Graphics/audio and whole-game1:1 are not certified."
+}

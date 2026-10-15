@@ -1,0 +1,34 @@
+// Rebuild the complete current SDL release after restoring the third hit-reward consumer.
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,mkdirSync,copyFileSync,existsSync} from 'node:fs';
+import {resolve,dirname,relative} from 'node:path';
+import {createHash} from 'node:crypto';
+import {spawn} from 'node:child_process';
+const root=resolve(import.meta.dirname,'..'),workspace=resolve(root,'runtimes/th12');
+const base=resolve(root,'artifacts/th14/constructor-hit-sdl-build-oct15');
+const out=resolve(root,'artifacts/th14/third-reward-sdl-build-oct16');
+const read=p=>readFileSync(p),sha=b=>createHash('sha256').update(b).digest('hex');
+assert.deepEqual(process.argv.slice(2),['--execute']);assert(!existsSync(out));mkdirSync(out);
+const beforeBytes=read(resolve(base,'build.json')),before=JSON.parse(beforeBytes);
+assert.equal(sha(read(resolve(base,'th11.wasm'))),before.wasmSha256);
+const sourceHashes=Object.fromEntries(Object.keys(before.sourceHashes).map(n=>[n,sha(read(resolve(workspace,n)))]));
+const headerHashes=Object.fromEntries(Object.keys(before.headerHashes).map(n=>[n,sha(read(resolve(workspace,n)))]));
+assert.deepEqual(Object.keys(sourceHashes).filter(n=>sourceHashes[n]!==before.sourceHashes[n]).sort(),['th12_web/cpp/game/ShotTh14.cpp']);
+assert.deepEqual(Object.keys(headerHashes).filter(n=>headerHashes[n]!==before.headerHashes[n]).sort(),[]);
+for(const n of [...Object.keys(sourceHashes),...Object.keys(headerHashes)]){const dest=resolve(out,'source',n);mkdirSync(dirname(dest),{recursive:true});copyFileSync(resolve(workspace,n),dest,1);}
+const sdk=resolve(workspace,'tools/emsdk'),emcc=resolve(sdk,'upstream/emscripten/emcc.py');
+const python='C:/Users/APKGG/AppData/Local/Programs/Python/Python314/python.exe';
+const flags=['-O2','-g0','--profiling-funcs','-std=c++17','-ffp-contract=off','-fno-strict-aliasing','-fno-exceptions','-fno-rtti','-DTH_NATIVE_PLATFORM=1','-DTH11_DEVELOPMENT_HARNESS=0','-DPORT_TITLE=14','--use-port=sdl3'];
+const objects=resolve(out,'objects');mkdirSync(objects);
+const env={...process.env,EM_CONFIG:resolve(sdk,'.emscripten'),EMSDK:sdk,EMCC_CORES:'3',TEMP:objects,TMP:objects,TMPDIR:objects};
+const run=(args,log)=>new Promise((accept,reject)=>{const p=spawn(python,[emcc,...args],{cwd:resolve(out,'source/th12_web'),env,windowsHide:true,stdio:['ignore','pipe','pipe']});let output='';for(const s of[p.stdout,p.stderr])s.on('data',b=>{output+=b;});p.on('error',reject);p.on('close',code=>{writeFileSync(log,output,{flag:'wx'});code?reject(Error(output)):accept();});});
+const names=Object.keys(sourceHashes),paths=names.map(n=>resolve(objects,n.replaceAll('/','_')+'.o'));let cursor=0,completed=0;
+await Promise.all(Array.from({length:3},async()=>{while(cursor<names.length){const i=cursor++,n=names[i];await run([...flags,'-c',resolve(out,'source',n),'-o',paths[i]],paths[i]+'.log');if(++completed%30===0)console.log(JSON.stringify({sdlCompiled:completed,total:names.length}));}}));
+const exported=['_malloc','_free',...['validate_file','save_scores','save_replay','initialize','last_resource','music_enabled','audio_statistics','return_title','restart','error','frame','phase','pause','resume','loop_start','loop_stop','loop_pause','key','keys_clear','touch','touch_cancel','touch_options','touch_controls','touch_stick'].map(n=>'_th11_'+n)];
+const loader=resolve(out,'th11.mjs');
+await run([...flags,'--no-entry','-sDEFAULT_TO_CXX=1','-sMODULARIZE=1','-sEXPORT_ES6=1','-sENVIRONMENT=web,worker','-sALLOW_MEMORY_GROWTH=1','-sSTACK_SIZE=1048576','-sINITIAL_MEMORY=536870912','-sMAXIMUM_MEMORY=1073741824','-sFILESYSTEM=1','-lidbfs.js','-sEXPORTED_RUNTIME_METHODS=FS,IDBFS,HEAPU8,HEAP32,HEAPU32','-sINVOKE_RUN=0','-sEXIT_RUNTIME=0','-sMIN_WEBGL_VERSION=2','-sMAX_WEBGL_VERSION=2','-sGL_SUPPORT_AUTOMATIC_ENABLE_EXTENSIONS=0','-sEXPORTED_FUNCTIONS='+exported.join(','),...paths,'-o',loader],resolve(out,'link.log'));
+for(const[n,value]of Object.entries({...sourceHashes,...headerHashes}))assert.equal(sha(read(resolve(workspace,n))),value,n);
+const wasm=read(resolve(out,'th11.wasm')),module=new WebAssembly.Module(wasm),oldModule=new WebAssembly.Module(read(resolve(base,'th11.wasm')));
+assert.deepEqual(WebAssembly.Module.exports(module),WebAssembly.Module.exports(oldModule));assert.deepEqual(WebAssembly.Module.imports(module),WebAssembly.Module.imports(oldModule));
+const report={compiled:true,releaseProfile:true,title:14,sourceHashes,headerHashes,recompiledSources:names,sourceFiles:names.length,objectHashes:Object.fromEntries(paths.map(p=>[relative(out,p).replaceAll('\\','/'),sha(read(p))])),baseBuildSha256:sha(beforeBytes),toolSha256:sha(read(import.meta.filename)),wasmBytes:wasm.length,wasmSha256:sha(wasm),loaderSha256:sha(read(loader)),exportsUnchanged:true,importsUnchanged:true,actualAudioPlayed:false,runtimeExecuted:false,completeGame:false,nativeEquivalent:false};
+writeFileSync(resolve(out,'build.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({compiled:true,objects:paths.length,wasmSha256:report.wasmSha256}));

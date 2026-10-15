@@ -174,6 +174,12 @@ bool shot_th14_hit_rewards(ShotPlayer& player,Rng& rng,Vec3 p,ShotWorld& world)n
         const float speed=rng.unit()*1.2000000476837158f;
         const float angle=rng.signed_unit()*.5235987901687622f-1.5707963705062866f;
         if(!world.th14_hit_item(9,p,angle,speed+1.f))return false;player.th14_focused_hits-=100;
+    }
+    // 454091..454274 consumes the explosive-shot power counter after both
+    // preceding reward loops, without drawing RNG, even when its pool is full.
+    while(signed_bits(player.th14_hits_184bc)>=100){
+        if(!world.th14_hit_item(1,p,-1.5707963705062866f,2.200000047683716f))return false;
+        player.th14_hits_184bc-=100;
     }return true;
 }
 bool ShotManager::hit(u32 j,Th14DamageArea& area,const Vec3& p,const Vec2* size,float radius,float angle,i32& out){

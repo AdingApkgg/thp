@@ -40,8 +40,8 @@
     },
     {
       "path": "docs/porting/CORE_STATUS.md",
-      "bytes": 407438,
-      "sha256": "3dfbe4487dfa0fd19ce0ff62c13c5f01938fe553032054f5bf0ae8f2f6ec3a59"
+      "bytes": 408741,
+      "sha256": "4206f0778038ced193626cf2680342b5bb505a4b806830bf09f0f03671cbb0eb"
     },
     {
       "path": "docs/porting/TH06NC_FORMATS.md",
@@ -127,6 +127,11 @@
       "path": "docs/porting/TH14_STARTUP_RNG_TRACE_OCT14.md",
       "bytes": 7155,
       "sha256": "c9852e37a5732d32c5488222f1acc7fbcc0fb90638da9eae57bca47ca9a2a239"
+    },
+    {
+      "path": "docs/porting/TH14_THIRD_HIT_REWARD_FIX_OCT16.md",
+      "bytes": 4625,
+      "sha256": "c233b3d737bef6837fd5662c6eec57ed186a5b7150d8d0f34511a01dab67a8ec"
     },
     {
       "path": "docs/porting/TH14_VERTEX_OUTPUT_DIAGNOSTIC_OCT14.md",
@@ -2214,6 +2219,11 @@
       "sha256": "06d0240bcb957c2034a9319211468a5c836eff6b1c3853ab4c87a1f2801cc3ec"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-third-reward-oct16.json",
+      "bytes": 102941,
+      "sha256": "f9ecf9aec80a1bce0d008a469e497e5696c59b1a4d9a26a911f198a6de69370d"
+    },
+    {
       "path": "docs/porting/th14-launcher-saved-replay-observed-oct11.json",
       "bytes": 3126,
       "sha256": "56eff2064a55d0406c12378648cca79edb61fefd5b7d89585ad806b02786a366"
@@ -2232,6 +2242,11 @@
       "path": "docs/porting/th14-launcher-site-constructor-hit-oct15.json",
       "bytes": 36442,
       "sha256": "3aa3c395fb7fbe3a43d3f5951075ae4911250d799c6496682417887ff1fa5820"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-third-reward-oct16.json",
+      "bytes": 36442,
+      "sha256": "a47fd146ce430950a5b396a9f64cfd07198a6b7e68f67998ec55f387b40fdb31"
     },
     {
       "path": "docs/porting/th14-launcher-state-initialization-verified-oct14.json",
@@ -4584,6 +4599,11 @@
       "sha256": "16b6e33515e6886855cb5979a4ea73e16f79e18a94859749306a7e5aee7c9405"
     },
     {
+      "path": "docs/porting/th14-third-reward-observed-oct16.json",
+      "bytes": 42996,
+      "sha256": "217782e67c23acb00e2ae7df17fb52ec099e008685294ae8e2bb93c9dd9752c9"
+    },
+    {
       "path": "docs/porting/th14-thprac-reference-observed-oct13.json",
       "bytes": 829,
       "sha256": "b877ed5c537a78b5a2a52930e4a074e5eefadeaf3c2da49f3ae60805173d1151"
@@ -6865,8 +6885,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotTh14.cpp",
-      "bytes": 17415,
-      "sha256": "65e63bcec9dfd77a02ec2a513eadabe4429945cb7bddb26944daf561f6f9ad6e"
+      "bytes": 17757,
+      "sha256": "5f75052cceb4e941d0bb040c3ca3dc00f995af014f4844b039954f4bedc3f95f"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotTh16.cpp",
@@ -10557,6 +10577,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-shot-spread-fixture.cpp",
       "bytes": 916,
       "sha256": "f26416e6cf8ab4dee28cf29cfa91ce07559cea3292a343ed83b38c88722f163b"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-shot-third-reward-fixture.cpp",
+      "bytes": 1130,
+      "sha256": "b290000db40784e6ea057a7a8f58d385d3d0acb55c0e7f5414842356ff7699de"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-shot-update-fixture.cpp",
@@ -16804,6 +16829,11 @@
       "sha256": "54b30eb6ad49c0cdcf766e046338bb9368cfeeaaa16ce435788f6e36d3de5d80"
     },
     {
+      "path": "tools/th14-package-third-reward-runtime-oct16.mjs",
+      "bytes": 7321,
+      "sha256": "d91243134243ba9e7d444c0b096b0003b268565f8e01c6c7d4c4b278834af688"
+    },
+    {
       "path": "tools/th14-particles-check.mjs",
       "bytes": 4432,
       "sha256": "e7e5943ebcd85869687f7c9ba6bed713782675e3ef4473468924f1c7082acdbc"
@@ -17717,6 +17747,16 @@
       "path": "tools/th14-shot-spread-session-check.mjs",
       "bytes": 3687,
       "sha256": "9843c19f8f5c0bf591fa2f88cc2b7b5b8b28c13c4732448ccf9b0fc7ba181b84"
+    },
+    {
+      "path": "tools/th14-shot-third-reward-check-oct16.mjs",
+      "bytes": 4237,
+      "sha256": "5f857e16c03c1ae9d0406168ee647341abd70dbc34a86637482beb050a4b2a85"
+    },
+    {
+      "path": "tools/th14-shot-third-reward-native-oct16.py",
+      "bytes": 3405,
+      "sha256": "4abe6019b12b24116a044488e004f4c196dfebd3c4171cbffda9c2eafa430ac2"
     },
     {
       "path": "tools/th14-shot-update-check.mjs",
@@ -19567,6 +19607,21 @@
       "path": "tools/th14-texture-precision-production-check.mjs",
       "bytes": 65191,
       "sha256": "93981dd880ac4b1831a732ce519ce48c06b481dcee7a45d164015f7b436ad9f8"
+    },
+    {
+      "path": "tools/th14-third-reward-core-build-oct16.mjs",
+      "bytes": 3926,
+      "sha256": "f0220cd2a7ec4ae7be86c457fe24efcc4c498757fb06b489d0f8a316eef79298"
+    },
+    {
+      "path": "tools/th14-third-reward-evidence-check-oct16.py",
+      "bytes": 5593,
+      "sha256": "d9052a1defd49da95afaffd57ba29940a0b47091bcb61ce448dd085b3bc1c778"
+    },
+    {
+      "path": "tools/th14-third-reward-sdl-build-oct16.mjs",
+      "bytes": 5088,
+      "sha256": "2a7c9897f6a9676ed81e387bc73fcd02c8071cdd5e8456df96fee24a407375b5"
     },
     {
       "path": "tools/th14-time-freeze-check.mjs",
