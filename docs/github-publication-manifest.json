@@ -40,8 +40,8 @@
     },
     {
       "path": "docs/porting/CORE_STATUS.md",
-      "bytes": 409787,
-      "sha256": "d63d423d7eda63be664fbe2c37e8ab3565e8dc53930c7c81e94ece431ab4a0f7"
+      "bytes": 410960,
+      "sha256": "d9cf3185af702a11ae1b71711574bebf5177903f0a1c40fb56a2aa1ce2ec5d48"
     },
     {
       "path": "docs/porting/TH06NC_FORMATS.md",
@@ -77,6 +77,11 @@
       "path": "docs/porting/TH14_METHOD.md",
       "bytes": 36934,
       "sha256": "8d22494d093017d996ef9ecbe8ed27c8b17cd0f5926a810041dda3f27e94e1d0"
+    },
+    {
+      "path": "docs/porting/TH14_NEXT_STAGE_LOADING_FAMILY_FIX_OCT16.md",
+      "bytes": 5747,
+      "sha256": "dae490529145d2fa71584f3ac4a68035a8b6da6117ab6eb5dfc676d94ae490c1"
     },
     {
       "path": "docs/porting/TH14_ORDINARY_STAGE_LOADING_OCT15.md",
@@ -2164,6 +2169,11 @@
       "sha256": "402c3c00caef4780f9c9932691ee6f70114a1817445d332ee04c57288072c699"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-loading-family-oct16.json",
+      "bytes": 103572,
+      "sha256": "3b4b058ee13a69ea0c3441f34b7203db0b8ec900e5040046d87449ad796d52b7"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-prepared-clip-pause-oct14.json",
       "bytes": 50789,
       "sha256": "347fdd467cffaa7deda34812b14518fcaa33763fd99d931a66386bf729c297c2"
@@ -2254,6 +2264,11 @@
       "sha256": "3aa3c395fb7fbe3a43d3f5951075ae4911250d799c6496682417887ff1fa5820"
     },
     {
+      "path": "docs/porting/th14-launcher-site-loading-family-oct16.json",
+      "bytes": 37038,
+      "sha256": "3f7abba78f81266cbc303fac5e7939ec497b0b1c06d61b52a26f1226d20e6afd"
+    },
+    {
       "path": "docs/porting/th14-launcher-site-save-delta-oct16.json",
       "bytes": 36937,
       "sha256": "5231a4047a69ee115a7aaeeb6533b4085d5606ed9e2f8b2db794383055f11b66"
@@ -2277,6 +2292,11 @@
       "path": "docs/porting/th14-loader-supervisor-flags-verified-oct14.json",
       "bytes": 34219,
       "sha256": "e6eefdb633788f57f06a8e8eeb8f25bc0eb77be8d0cb43ff053ba6e6116179b5"
+    },
+    {
+      "path": "docs/porting/th14-loading-family-observed-oct16.json",
+      "bytes": 377950,
+      "sha256": "8f730f19a9bf4fb847e340948e1159df541fd7980f1450a88bde8a6dac50191d"
     },
     {
       "path": "docs/porting/th14-loading-lifecycle-verified-oct14.json",
@@ -6355,13 +6375,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "bytes": 57566,
-      "sha256": "41b941a4caca7e110811c5d34a752270a30d92126b254960eccab79287db7993"
+      "bytes": 57771,
+      "sha256": "05ba16a1462c873522cafc20e4abbe990fba677462b6e28a7916bb9a177ae2c4"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
-      "bytes": 23388,
-      "sha256": "7a6082b7901750d4308feb97c075c48bb2ae7fdc1e8a012c647a4cbece3f0331"
+      "bytes": 23446,
+      "sha256": "62fb7ab0d7daf32b2865ca8113b1d4c5c25a8c8f36a8fc152da548ce756cde5a"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameConfig.cpp",
@@ -16194,6 +16214,16 @@
       "sha256": "a370232cdda0fdcb30946e67b1436b280c54544e73e24a70ac7d0662489db681"
     },
     {
+      "path": "tools/th14-loading-family-evidence-check-oct16.py",
+      "bytes": 8615,
+      "sha256": "8284660647fbd1c7ba4af10cd8dbc0683e36734ce058f42642fb4094d8fb8560"
+    },
+    {
+      "path": "tools/th14-loading-family-save-delta-browser-check-oct16.mjs",
+      "bytes": 7314,
+      "sha256": "7b329dba73835510000f42da8718ec0d609b81a1a201ea57de6941ad9cdd43fd"
+    },
+    {
       "path": "tools/th14-loading-lifecycle-evidence-check.py",
       "bytes": 22945,
       "sha256": "3bdb0bb46d5bd86084d1d562879b985420a74517a7c4ffbabdd54d09285ca269"
@@ -16837,6 +16867,16 @@
       "path": "tools/th14-package-launcher.mjs",
       "bytes": 10257,
       "sha256": "8a8b29d7b1d975df2638cf6ca7146a593493b6082ddcf809b70a4df2caf26885"
+    },
+    {
+      "path": "tools/th14-package-loading-family-runtime-oct16.mjs",
+      "bytes": 10830,
+      "sha256": "b0ffbf82073a904e6b3b200b3e170816b1a522418bd18684526a3a228190a81f"
+    },
+    {
+      "path": "tools/th14-package-loading-family-site-oct16.mjs",
+      "bytes": 5279,
+      "sha256": "443f41d758c25060774632f6c7386c3d23c76ec191a00342e8b70ab736f7384f"
     },
     {
       "path": "tools/th14-package-local.mjs",

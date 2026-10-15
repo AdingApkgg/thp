@@ -26,6 +26,7 @@
 #include "Hud.hpp"
 #if PORT_TITLE == 14
 #include "StagedLoaderPrototype.hpp"
+#include "LoadingTh14.hpp"
 #endif
 #if PORT_TITLE == 16
 #include "EffectTh16Slots.hpp"
@@ -137,6 +138,7 @@ public:
 #if PORT_TITLE == 14
     u32 pending_stage=0;
     prototype::StagedLoader stage_loader;
+    LoadingTh14 stage_loading;
     GameResources* next_stage_source=nullptr;
     std::function<bool()> next_stage_initializer;
     bool next_stage(GameResources&,u32,std::function<bool()>);

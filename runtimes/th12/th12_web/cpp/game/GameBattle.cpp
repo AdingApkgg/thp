@@ -168,6 +168,7 @@ bool GameBattle::next_stage(GameResources& source,u32 number,std::function<bool(
     // wait and work overlap that existing120 ticks, rather than restarting it.
     player->th14_scale.flags|=2;player->motion.recall_options(true);
     outgoing_stage=std::move(stage);
+    if(!stage_loading.begin(animations,resources.core.ascii)){error="TH14 next-stage loading animation creation failed";return false;}
     return true;
 }
 bool GameBattle::pump_stage_loading(u64 now,i32 first_capture_index,u32 supervisor_flags){
@@ -314,6 +315,9 @@ bool GameBattle::activate_stage(){
     if(!compositor.stage_start())return false;
 #endif
     if(!hud.start_stage(resources.stage->logo,hud_input(),false,false,completion.mode.control_mode)){error="HUD stage activation";return false;}
+#if PORT_TITLE == 14
+    stage_loading.finish(animations);
+#endif
     stage_active=true;events.push_back({BattleEventKind::StageMusic,i32(resources.stage_number)});
     // TH14 436b98..436ba5 resets the clock at activation; legacy 42068b.
     frame=0;transition_timer.set(0,&animations.rate);
