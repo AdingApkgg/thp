@@ -102,26 +102,50 @@ bool GraphicsDevice::initialize(){
     SDL_SetHint(SDL_HINT_EMSCRIPTEN_KEYBOARD_ELEMENT,"#canvas");
     if(!backend.initialize()){error=backend.error();return false;}SDL_SetWindowTitle(SDL_GL_GetCurrentWindow(),kPortTitle==16?"东方天空璋":kPortTitle==14?"东方辉针城 · 移植验证":"Touhou 11");backend.state.target=screen;backend.state.depth=depth;initialize_game_pipeline();return true;
 }
-bool GraphicsDevice::preload(AnmResource& file,bool low_color){
-    if(resources.find(&file)!=resources.end())return true;
-    std::vector<u32> handles;handles.reserve(file.textures.size());
-    for(u32 index=0;index<file.textures.size();++index){const auto& source=file.textures[index];Texture texture;
+bool GraphicsDevice::prepare_texture(AnmResource& file,u32 index,u32& handle,bool low_color){
+    const auto& source=file.textures[index];Texture texture;
 #if defined(TH_ENABLE_THCRAP)
-        AnmTexture override_texture;
-        const AnmTexture& selected=patched_texture(file,source,index,override_texture)?override_texture:source;
+    AnmTexture override_texture;
+    const AnmTexture& selected=patched_texture(file,source,index,override_texture)?override_texture:source;
 #else
-        const AnmTexture& selected=source;
+    const AnmTexture& selected=source;
 #endif
-        const bool loaded=texture.image.load(selected,low_color
+    const bool loaded=texture.image.load(selected,low_color
 #if PORT_TITLE == 14
             ,texture_high_precision&&*texture_high_precision
 #endif
-        );
-        if(!loaded){error="Unable to prepare ANM texture: "+source.name+" ("+texture.image.failure+")";for(const auto id:handles){backend.release(id);textures.erase(id);}return false;}
-        const auto id=next_handle++;textures.emplace(id,std::move(texture));handles.push_back(id);backend.prepare(id);
+    );
+    if(!loaded){error="Unable to prepare ANM texture: "+source.name+" ("+texture.image.failure+")";return false;}
+    handle=next_handle++;textures.emplace(handle,std::move(texture));backend.prepare(handle);return true;
+}
+bool GraphicsDevice::preload(AnmResource& file,bool low_color){
+    auto found=resources.find(&file);
+    if(found!=resources.end()&&found->second.size()==file.textures.size())return true;
+    std::vector<u32> handles;
+    if(found!=resources.end()){handles=std::move(found->second);resources.erase(found);}
+    handles.reserve(file.textures.size());
+    for(u32 index=u32(handles.size());index<file.textures.size();++index){
+        u32 handle=0;
+        if(!prepare_texture(file,index,handle,low_color)){
+            backend.flush();for(const auto id:handles){backend.release(id);textures.erase(id);}return false;
+        }
+        handles.push_back(handle);
     }
     resources.emplace(&file,std::move(handles));return true;
 }
+#if PORT_TITLE == 14
+bool GraphicsDevice::preload_chunk(AnmResource& file,u32 index,bool low_color){
+    auto& handles=resources[&file];
+    if(file.textures.empty()&&index==0)return true;
+    if(index>=file.textures.size()||index>handles.size()){
+        error="TH14 ANM texture chunks requested out of order";return false;
+    }
+    if(index<handles.size())return true;
+    u32 handle=0;
+    if(!prepare_texture(file,index,handle,low_color))return false;
+    handles.push_back(handle);return true;
+}
+#endif
 void GraphicsDevice::unload(const AnmResource& file){
     auto it=resources.find(&file);if(it==resources.end())return;backend.flush();for(u32 id:it->second){backend.release(id);textures.erase(id);}resources.erase(it);
 }

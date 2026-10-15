@@ -1,5 +1,7 @@
 # thp — 东方原作 Web 移植工作区
 
+TH14 新增修正（2026-10-15）：后续关卡上传改为每次处理一个 ANM 块，最后一块成功后才结束资源阶段。41 项队列／纹理检查与实际 SDL 编译通过，新版 `f99190c2…` 已在本机静音预览显示 Normal Demo；后续完整换关、原版异步时序与整作 1:1 仍待验证。[修正范围与证据](docs/porting/TH14_STAGE_CHUNK_UPLOAD_FIX_OCT15.md)。
+
 TH14 最新修正（2026-10-15）：屏幕相机使用原版 FOV 和视口起点，四相机的 52 个参数字及 128 个矩阵字与本轮原码记录一致。新 SDL `3083772c…` 已在本机静音预览显示标题和 Normal Demo。[修正与验证范围](docs/porting/TH14_SCREEN_CAMERA_FIX_OCT15.md)、[当前进度](docs/porting/CORE_STATUS.md)。整作 1:1 继续施工，其他作品不占坑。
 
 本机普通预览默认使用 `node tools/th14-serve-launcher-v2.mjs`，保持 `http://localhost:8208/`，音乐与音效静音；已有服务运行时直接复用。直接运行和本地包也有默认静音入口，只有显式 `--sound` 才有声。[本机入口说明](docs/porting/TH14_LOCAL_QUIET_DEFAULT_OCT15.md)。

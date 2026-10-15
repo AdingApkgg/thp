@@ -12,7 +12,7 @@ namespace th11::sdl {
 class StageUploadsTh14 {
 public:
     using Phase = StageResourceEffects::Phase;
-    struct Job { AnmResource* resource=nullptr; u16 file=0; };
+    struct Job { AnmResource* resource=nullptr; u16 file=0; u32 chunk=0; };
 
     bool begin(StageResources& stage,Phase phase) {
         if(owner_) {
@@ -47,7 +47,11 @@ public:
         // A failure can follow partial texture preparation. Keep this job and
         // every subsequent resource reference until the host cancels owner_.
         if(!std::forward<Prepare>(prepare)(jobs_[cursor_])) {failed_=true;return false;}
-        jobs_[cursor_]={};++cursor_;
+        // Original 47d720 calls 47d230 once: one ANM chunk per pump.
+        // The last chunk also initializes templates and clears the file wait.
+        auto& job=jobs_[cursor_];
+        if(++job.chunk<job.resource->textures.size())return true;
+        job={};++cursor_;
         return true;
     }
 

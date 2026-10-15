@@ -449,7 +449,7 @@ struct Application:StageResourceEffects
 #if PORT_TITLE == 14
         if(stage_uploads.pending()){
             renderer.flush();graphics.error.clear();
-            if(!stage_uploads.advance([&](const auto& job){return graphics.preload(*job.resource);})){
+            if(!stage_uploads.advance([&](const auto& job){return graphics.preload_chunk(*job.resource,job.chunk);})){ 
                 error=graphics.error.empty()?"TH14 staged resource upload failed":graphics.error;return false;
             }
             // A successful stage upload continues through the normal session,

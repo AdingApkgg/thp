@@ -11,6 +11,7 @@ class GraphicsDevice final:public ZunGraphics {
     std::map<const AnmResource*,std::vector<u32>> resources;
     u32 next_handle=3;
     static touhou::sdl::Surface resolve(void*,u32);
+    bool prepare_texture(AnmResource&,u32,u32&,bool);
 public:
     // Profile 10 selects shared float-alpha/D16 precision and world-quad
     // instancing. It is a precision profile, not a Windows graphics API.
@@ -21,6 +22,7 @@ public:
     bool preload(AnmResource&,bool low_color=false);
 #if PORT_TITLE == 14
     const bool* texture_high_precision=nullptr;
+    bool preload_chunk(AnmResource&,u32,bool low_color=false);
     bool manual_image(AnmResource&,u32,const u8*,u32);
 #endif
     void unload(const AnmResource&);
