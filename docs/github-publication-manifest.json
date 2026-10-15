@@ -40,8 +40,8 @@
     },
     {
       "path": "docs/porting/CORE_STATUS.md",
-      "bytes": 408741,
-      "sha256": "4206f0778038ced193626cf2680342b5bb505a4b806830bf09f0f03671cbb0eb"
+      "bytes": 409787,
+      "sha256": "d63d423d7eda63be664fbe2c37e8ab3565e8dc53930c7c81e94ece431ab4a0f7"
     },
     {
       "path": "docs/porting/TH06NC_FORMATS.md",
@@ -82,6 +82,11 @@
       "path": "docs/porting/TH14_ORDINARY_STAGE_LOADING_OCT15.md",
       "bytes": 2916,
       "sha256": "78f4b029f947b81ef65edd38fd9893bef00b0956f432c6503a9c89d70ee59642"
+    },
+    {
+      "path": "docs/porting/TH14_SAVE_DELTA_FIX_OCT16.md",
+      "bytes": 4114,
+      "sha256": "4d36dc608bb03ec2457ff3d2919a5465bb7e033cc722e3cae330f28813de49c8"
     },
     {
       "path": "docs/porting/TH14_SCREEN_CAMERA_FIX_OCT15.md",
@@ -2219,6 +2224,11 @@
       "sha256": "06d0240bcb957c2034a9319211468a5c836eff6b1c3853ab4c87a1f2801cc3ec"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-save-delta-oct16.json",
+      "bytes": 103214,
+      "sha256": "fb5ae4619c1b987204276884af8fa8c9cd06fa3624cc450c11503b34e40b938a"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-third-reward-oct16.json",
       "bytes": 102941,
       "sha256": "f9ecf9aec80a1bce0d008a469e497e5696c59b1a4d9a26a911f198a6de69370d"
@@ -2242,6 +2252,11 @@
       "path": "docs/porting/th14-launcher-site-constructor-hit-oct15.json",
       "bytes": 36442,
       "sha256": "3aa3c395fb7fbe3a43d3f5951075ae4911250d799c6496682417887ff1fa5820"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-save-delta-oct16.json",
+      "bytes": 36937,
+      "sha256": "5231a4047a69ee115a7aaeeb6533b4085d5606ed9e2f8b2db794383055f11b66"
     },
     {
       "path": "docs/porting/th14-launcher-site-third-reward-oct16.json",
@@ -3642,6 +3657,11 @@
       "path": "docs/porting/th14-sanitized-replay-transition-input-oct13-observed-oct13.json",
       "bytes": 27917,
       "sha256": "1c360e2ee58135385816de8b653e7d83fc0bb77eabcf0f22fc81f31a32ace22a"
+    },
+    {
+      "path": "docs/porting/th14-save-delta-observed-oct16.json",
+      "bytes": 5732,
+      "sha256": "d9149709063093f2f33566f137b96c3c4f00b970cfe280f8a83284ac0f9137b5"
     },
     {
       "path": "docs/porting/th14-score-legacy-regression.json",
@@ -11469,6 +11489,11 @@
       "sha256": "7b6630b7107c79963448a86dfaf87c9e7e16f56d37c29297b99d3e8c693e3a93"
     },
     {
+      "path": "runtimes/th14/th14_web/browser-save-delta.mjs",
+      "bytes": 4262,
+      "sha256": "c44463fb394ca57dbf1a3a925cb44f2a2cfa4a9da4e5a441c751d7cc9cf66a55"
+    },
+    {
       "path": "runtimes/th14/th14_web/sdl-runtime/th14.html",
       "bytes": 1178,
       "sha256": "98630bb056437ee0f0428797f13bb8461293186a76d76fa4794eae98ebe2ba86"
@@ -16829,6 +16854,16 @@
       "sha256": "54b30eb6ad49c0cdcf766e046338bb9368cfeeaaa16ce435788f6e36d3de5d80"
     },
     {
+      "path": "tools/th14-package-save-delta-runtime-v3-oct16.mjs",
+      "bytes": 10643,
+      "sha256": "9b6a8316c07f7d97add337b6082fd0176a9c3662a98a6bb4d14c51358b9ed2d7"
+    },
+    {
+      "path": "tools/th14-package-save-delta-site-oct16.mjs",
+      "bytes": 5012,
+      "sha256": "9a18436bfe7588f9145d3ef4efaf372d4330e44c717cdc6c0cfac1a801fea59f"
+    },
+    {
       "path": "tools/th14-package-third-reward-runtime-oct16.mjs",
       "bytes": 7321,
       "sha256": "d91243134243ba9e7d444c0b096b0003b268565f8e01c6c7d4c4b278834af688"
@@ -17442,6 +17477,21 @@
       "path": "tools/th14-sanitized-template-layer-matrix-check.mjs",
       "bytes": 4739,
       "sha256": "048f8a5bc725d68db2fb8634f2a42fbe6783fb4b3588b9c0ec99572f2fc1c05f"
+    },
+    {
+      "path": "tools/th14-save-delta-browser-check-oct16.mjs",
+      "bytes": 7244,
+      "sha256": "ce07207b4b9c0725f9e0e59e4139aa4331a195a7be3ae0dfb59ca4fa2d075aed"
+    },
+    {
+      "path": "tools/th14-save-delta-check-oct16.html",
+      "bytes": 794,
+      "sha256": "e2b224bacba0adb4b7863e6b8f7adb5928115da45426f058fb94ec28f7b5fa59"
+    },
+    {
+      "path": "tools/th14-save-delta-evidence-check-oct16.py",
+      "bytes": 3862,
+      "sha256": "fab20e717b7c0d346661abaf0f293fdc18bc88615bc36d69c0dfdb627cf5c726"
     },
     {
       "path": "tools/th14-score-check.mjs",
