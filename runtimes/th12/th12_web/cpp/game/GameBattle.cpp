@@ -606,7 +606,7 @@ bool GameBattle::shot_damage(EnemyState& e,i32& out) {
 #if PORT_TITLE == 14
         // Retail 423a3e..423a7f: bit 1000 selects the rectangle pointer;
         // an unset bit passes a null size and half the hitbox width as radius.
-        player->shots.damage_th14(e.current.position,e.flags&0x1000?&e.hitbox:nullptr,e.flags&0x1000?0:e.hitbox.x*.5f,e.flags&0x1000?e.animation_angle:0,timer.previous!=timer.current,economy,out,u32(e.instance_id),u32(e.instance_id));
+        player->shots.damage_th14(e.current.position,e.flags&0x1000?&e.hitbox:nullptr,e.flags&0x1000?0:e.hitbox.x*.5f,e.flags&0x1000?e.animation_angle:0,timer.previous!=timer.current,economy,out,u32(e.instance_id),u32(e.instance_id),e.script_owner);
 #elif PORT_TITLE == 16
         player->shots.damage_th16({e.current.position,e.flags&0x1000?nullptr:&e.hitbox,e.flags&0x1000?e.hitbox.x*.5f:0,0,timer.previous!=timer.current,false,u32(e.instance_id),0},out);
 #else

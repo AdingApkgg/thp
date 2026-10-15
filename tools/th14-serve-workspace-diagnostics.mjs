@@ -185,7 +185,7 @@ function defaultWriter(state, rule, bytes) {
   return commitCapture(state, rule, bytes);
 }
 function visibleLink(bytes, mount) {
-  const html = bytes.toString('utf8'), nav = `<nav id="th14-workspace-diagnostic" aria-label="本机诊断" style="position:fixed;top:12px;right:12px;z-index:2147483646;padding:10px 14px;background:#17212df2;font:14px system-ui"><a href="${mount}" style="color:#d9edff">本机诊断</a></nav>`;
+  const html = bytes.toString('utf8'), nav = `<nav id="th14-workspace-diagnostic" aria-label="本机诊断" style="position:fixed;bottom:12px;left:12px;z-index:2147483646;padding:10px 14px;background:#17212df2;font:14px system-ui"><a href="${mount}" style="color:#d9edff">本机诊断</a></nav>`;
   assert(/<\/body\s*>/i.test(html)); return Buffer.from(html.replace(/<\/body\s*>/i, match => nav + match));
 }
 export function createDiagnosticWorkspaceHandler(state, writer = defaultWriter) {

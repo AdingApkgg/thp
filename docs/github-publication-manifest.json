@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-15",
+  "date": "2026-10-16",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
   "sourceCommit": "e442e4862498bc8aae982fb614c89f446568f1a1",
   "files": [
@@ -40,13 +40,18 @@
     },
     {
       "path": "docs/porting/CORE_STATUS.md",
-      "bytes": 405310,
-      "sha256": "1d71fb6e0453ea119a18cf1c80b0ade8a68a4bd93d2bc406d7fc5840c5cbc1da"
+      "bytes": 406530,
+      "sha256": "957e31a86702b061d16c9d5dc160d2e4880e30cb627fa8ce8a3805bdc0c45277"
     },
     {
       "path": "docs/porting/TH06NC_FORMATS.md",
       "bytes": 2834,
       "sha256": "b5dd37c28b228114d1bf0fe1a3aaeb8fa1c3f109010d809baa575991ee203757"
+    },
+    {
+      "path": "docs/porting/TH14_CONSTRUCTOR_HIT_FIX_OCT15.md",
+      "bytes": 3589,
+      "sha256": "8995a785f9d3b45d37389025f5b42c3314f4790424f1719599ba8950bcba8422"
     },
     {
       "path": "docs/porting/TH14_CURRENT_QUEUE_FULL_PLAYBACKS_OCT15.md",
@@ -1104,6 +1109,11 @@
       "sha256": "d24bdb4c9ea3dadfd3b3c772e2bea67ee6f0a21d01a15b056f18348b9bd21143"
     },
     {
+      "path": "docs/porting/th14-constructor-hit-observed-oct15.json",
+      "bytes": 18812,
+      "sha256": "73aaffb049261f97f6cc242d76e7ef372404afa0ce61762837f04816a0ddb90d"
+    },
+    {
       "path": "docs/porting/th14-continue-verified.json",
       "bytes": 1004,
       "sha256": "31e52585fe896b717fc2eff700970a5c9db6246a0135c4694af9dd2c7448fcc7"
@@ -2064,6 +2074,11 @@
       "sha256": "86d271418e0c09f05ec48794cfc0665ea9bd9f0003ac92efac903d8c4db747f4"
     },
     {
+      "path": "docs/porting/th14-launcher-preview-prepared-constructor-hit-oct15.json",
+      "bytes": 102944,
+      "sha256": "59338d05e7b6187ad4843198b6035335e6826d39755f77fd3bb3a84f0fc29999"
+    },
+    {
       "path": "docs/porting/th14-launcher-preview-prepared-current-oct13.json",
       "bytes": 36442,
       "sha256": "20f424a38fd9820f767e9a0a435192ebbbe7efc323690c16c7371dd5442ed249"
@@ -2202,6 +2217,11 @@
       "path": "docs/porting/th14-launcher-screen-snap-browser-observed-oct11.json",
       "bytes": 3605,
       "sha256": "d2ebebe005d174df7b6e1d2193fffee160d788dd8c0942afa68ee4d807a82a89"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-constructor-hit-oct15.json",
+      "bytes": 36442,
+      "sha256": "3aa3c395fb7fbe3a43d3f5951075ae4911250d799c6496682417887ff1fa5820"
     },
     {
       "path": "docs/porting/th14-launcher-state-initialization-verified-oct14.json",
@@ -3677,6 +3697,11 @@
       "path": "docs/porting/th14-shot-beam-verified.json",
       "bytes": 1137,
       "sha256": "b0d54443b25646641f618a4653e30628fa1e7d24cb3dcfc385722874102c045a"
+    },
+    {
+      "path": "docs/porting/th14-shot-constructor-target-verified-oct15.json",
+      "bytes": 1628,
+      "sha256": "7116c8d26eac8ee64b1c9cafc54e2875a83c5d11a60bffd879a07305018d2a5c"
     },
     {
       "path": "docs/porting/th14-shot-damage-verified.json",
@@ -6280,13 +6305,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "bytes": 57551,
-      "sha256": "d081918e31bc5fd6d1fc48101438c370c1e8522ddafadd4c32a349eb29ec5c14"
+      "bytes": 57566,
+      "sha256": "41b941a4caca7e110811c5d34a752270a30d92126b254960eccab79287db7993"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
-      "bytes": 23373,
-      "sha256": "aa6ef3f600b7d5d1680c57d840edb60bbc5832125f3d66bb9a5c65c2ec52995a"
+      "bytes": 23388,
+      "sha256": "7a6082b7901750d4308feb97c075c48bb2ae7fdc1e8a012c647a4cbece3f0331"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameConfig.cpp",
@@ -6805,8 +6830,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotManager.hpp",
-      "bytes": 9168,
-      "sha256": "ca3111b4b5cfbc0b677a806d2cc749e3ff186cd1dd16e07b63381c156f1d7b67"
+      "bytes": 9259,
+      "sha256": "bed6956c6ef55a32cc2ddc12ad2fa5390c87102c08f958da33f3b99f65b0e67f"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotPoolTh14.hpp",
@@ -6815,8 +6840,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotSakuyaTh14.cpp",
-      "bytes": 6924,
-      "sha256": "fdaae3a35c98bdec50f2fa03949dc84d55a3283c5d3b0111500d8313fdd72a51"
+      "bytes": 7114,
+      "sha256": "3b396e73c601dac12437fc1e816b2cab8b3e6101c9bf47c70fa752393c313049"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotSchedule.cpp",
@@ -6830,8 +6855,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotTh14.cpp",
-      "bytes": 17212,
-      "sha256": "4d8b65a6b9baba8ae1d6b03c30b56c88976c3d4e12108d80614d5d43e553f0bd"
+      "bytes": 17415,
+      "sha256": "65e63bcec9dfd77a02ec2a513eadabe4429945cb7bddb26944daf561f6f9ad6e"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotTh16.cpp",
@@ -10454,6 +10479,11 @@
       "sha256": "4bd746d24693feedb2470c65d51a336aca4e03463720fd5498d02e9553bcfbef"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-shot-constructor-target-fixture.cpp",
+      "bytes": 585,
+      "sha256": "a13a1eac9ef588262f9acf3ec32eabf67b6826ed7c1998d972f168cba5a28fb0"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-shot-damage-fixture.cpp",
       "bytes": 1807,
       "sha256": "2ce39b3191d88f2adaaa6c6e7b87175f3afe785ec0ec521487a5e03bdf6821b5"
@@ -13699,6 +13729,21 @@
       "sha256": "c865b81033b57937807272505a4367325e282176814baf4521109a52d9c8819b"
     },
     {
+      "path": "tools/th14-constructor-hit-core-build-oct15.mjs",
+      "bytes": 4006,
+      "sha256": "c1b1b7482a3ed841e01fbd80273b164cffb91fd2f467e5ef9ead540f0f0c2ed0"
+    },
+    {
+      "path": "tools/th14-constructor-hit-evidence-check-oct15.py",
+      "bytes": 17063,
+      "sha256": "6024ffa87cc1355d14879452f1cb5f494dca293bd4fd05cd26659dbfd6aa1382"
+    },
+    {
+      "path": "tools/th14-constructor-hit-sdl-build-oct15.mjs",
+      "bytes": 5193,
+      "sha256": "4c0b303b11b3c2b8fb641fc0309dc602592bfe3fc979734dc42442b8e8f1fec3"
+    },
+    {
       "path": "tools/th14-continue-check.mjs",
       "bytes": 2720,
       "sha256": "dc06cd6ee095e0bcc522d89534d99c55ad01703109f3d7005ffb835cdb96c8be"
@@ -16719,6 +16764,11 @@
       "sha256": "5971a9369c5898f39d286f0c5d97c4cd10e9a3e56a0ab91ed35595303593ba15"
     },
     {
+      "path": "tools/th14-package-constructor-hit-runtime-oct15.mjs",
+      "bytes": 7326,
+      "sha256": "5d44459936f0a8bdcb9d42191d585bfeee97fcdf60e7fcc5dce09768e1938e83"
+    },
+    {
       "path": "tools/th14-package-launcher.mjs",
       "bytes": 10257,
       "sha256": "8a8b29d7b1d975df2638cf6ca7146a593493b6082ddcf809b70a4df2caf26885"
@@ -17450,8 +17500,8 @@
     },
     {
       "path": "tools/th14-serve-workspace-diagnostics.mjs",
-      "bytes": 23074,
-      "sha256": "7f18a9cc7fc3be0516135a0cee23af70c64050394cfffd2ae35169fb06ae8a48"
+      "bytes": 23076,
+      "sha256": "77b47a059d927e9dc6dd9e53cb6553cfc87bf02d30c4676f18b76d72507a4c56"
     },
     {
       "path": "tools/th14-serve-workspace-direct.mjs",
@@ -17507,6 +17557,16 @@
       "path": "tools/th14-shot-beam-native.py",
       "bytes": 4405,
       "sha256": "0480bcdf0ee534db4ec54a4f7a1ea05b9fee37c2bd015c7e328d0c046f1454f6"
+    },
+    {
+      "path": "tools/th14-shot-constructor-target-check-oct15.mjs",
+      "bytes": 4552,
+      "sha256": "ad5f51bd94578064e81f10e05e5f38450b8461e300331d76895ed01de8c1ad14"
+    },
+    {
+      "path": "tools/th14-shot-constructor-target-native-oct15.py",
+      "bytes": 3998,
+      "sha256": "0a0a04d9d64c13763437627189925f4f4aeb5e7221470c770e1c5de37662d93e"
     },
     {
       "path": "tools/th14-shot-damage-check.mjs",

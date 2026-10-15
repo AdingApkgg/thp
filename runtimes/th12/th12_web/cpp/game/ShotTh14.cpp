@@ -194,7 +194,7 @@ bool ShotManager::hit(u32 j,Th14DamageArea& area,const Vec3& p,const Vec2* size,
         out=effect.damage;return true;
     }
     if(s.spec->extra_callback==6){Th14SakuyaHit effect;
-        if(!shot_th14_sakuya_hit(s,player,area,p,size,radius,world.enemies,effect)){last_error=9;return false;}
+        if(!shot_th14_sakuya_hit(s,player,area,p,size,radius,world.enemies,effect,th14_damage_target)){last_error=9;return false;}
         if(effect.interrupt)interrupt(s.animation,i16(effect.interrupt));
         if(effect.sound&&!world.sound(effect.sound,s.movement.position.x)){last_error=4;return false;}
         if(effect.attachment){if(!world.th14_knife_slowdown(*effect.attachment,effect.slowdown)){last_error=14;return false;}auto& slowdown=effect.attachment->state.th14_knife_slowdown;if(slowdown>.8999999761581421f)slowdown=.8999999761581421f;}
@@ -224,7 +224,9 @@ bool ShotManager::hit(u32 j,Th14DamageArea& area,const Vec3& p,const Vec2* size,
     interrupt(s.animation,1);s.movement.position.z=.1f;s.state=2;s.movement.speed*=.125f;vm->position=s.movement.position;
     area.flags&=~1u;s.th14_area_flags&=~1u;s.th14_area_slot=256;out=s.damage;return true;
 }
-bool ShotManager::damage_th14(Vec3 p,const Vec2* size,float radius,float angle,bool advanced,GameEconomy& economy,i32& out,u32 argument,u32 stamp){
+bool ShotManager::damage_th14(Vec3 p,const Vec2* size,float radius,float angle,bool advanced,GameEconomy& economy,i32& out,u32 argument,u32 stamp,Enemy* hit_target){
+    struct TargetScope {Enemy*& slot;Enemy* previous;~TargetScope(){slot=previous;}} scope{th14_damage_target,th14_damage_target};
+    th14_damage_target=hit_target;
     out=0;if(!advanced)return true;
     if(player.special_active){
         i32 direct=0;

@@ -57,7 +57,7 @@ bool shot_th14_sakuya_update(ShotState& s,ShotPlayer& p,Th14DamageArea& area,Anm
     }
     s.th14_steering.tick();return true;
 }
-bool shot_th14_sakuya_hit(ShotState& s,ShotPlayer& p,Th14DamageArea& area,Vec3 target,const Vec2* size,float radius,EnemyLink* enemies,Th14SakuyaHit& out)noexcept{
+bool shot_th14_sakuya_hit(ShotState& s,ShotPlayer& p,Th14DamageArea& area,Vec3 target,const Vec2* size,float radius,EnemyLink* enemies,Th14SakuyaHit& out,Enemy* hit_target)noexcept{
     out={};if(!s.spec)return false;const u32 phase=(s.th14_shot_flags>>2)&15;
     if(!phase){
         out.interrupt=6;out.sound=64;s.th14_shot_flags=(s.th14_shot_flags&0xffffffc7u)|4;s.movement.speed=0;
@@ -69,7 +69,9 @@ bool shot_th14_sakuya_hit(ShotState& s,ShotPlayer& p,Th14DamageArea& area,Vec3 t
             const float amount=radius*.699999988079071f+distance,sn2=float(std::sin(double(s.movement.angle))),cs2=float(std::cos(double(s.movement.angle)));
             s.movement.position={origin.x+amount*cs2,origin.y+amount*sn2,origin.z+amount*0.f};
         }
-        s.target=find(enemies,area.argument);if(s.target){auto& e=s.target->state;s.th14_target_id=u32(e.instance_id);const auto q=e.current.position,at=s.movement.position;s.th14_attachment_offset={at.x-q.x,at.y-q.y,at.z-q.z};
+        // 453798 reads the actual hit enemy from the callback argument. A
+        // constructor can receive damage before joining the manager list.
+        s.target=hit_target?hit_target:find(enemies,area.argument);if(s.target){auto& e=s.target->state;s.th14_target_id=u32(e.instance_id);const auto q=e.current.position,at=s.movement.position;s.th14_attachment_offset={at.x-q.x,at.y-q.y,at.z-q.z};
             out.attachment=s.target;out.slowdown=tail_float(*s.spec,5);e.th14_attached_knives=wrapping_add(e.th14_attached_knives,1);}
     }else if(phase==2&&s.timer.current!=s.timer.previous&&s.timer.current%2==0){
         if(!p.power_step)return false;const i32 power=p.power/p.power_step;constexpr u32 reward[]={15,10,12,14,18};if(u32(power)>=5)return false;

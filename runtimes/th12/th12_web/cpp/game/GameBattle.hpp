@@ -268,7 +268,7 @@ public:
     EnemyLink* th14_bomb_enemies()const override{return enemies.first;}
     bool callback_th14_damage(const EnemyState& e,Vec3 p,const Vec2* size,float radius,float angle,i32& out)override{
         if(!player)return false;const auto& timer=player->state.state_timer;
-        return player->shots.damage_th14(p,size,radius,angle,timer.previous!=timer.current,economy,out,u32(e.instance_id),u32(e.instance_id));
+        return player->shots.damage_th14(p,size,radius,angle,timer.previous!=timer.current,economy,out,u32(e.instance_id),u32(e.instance_id),e.script_owner);
     }
 #endif
     AnmVm* callback_animation(u32& id)override{return enemy_animations.lookup(id);}

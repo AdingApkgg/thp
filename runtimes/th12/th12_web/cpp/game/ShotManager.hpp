@@ -82,7 +82,7 @@ i32 shot_th14_sakuya_spawn(ShotState&,ShotPlayer&,const float*)noexcept;
 struct Th14SakuyaUpdate {i32 interrupt=0,level=0,sound=0;bool explode=false,retired=false;Enemy* release=nullptr;float slowdown=0;};
 bool shot_th14_sakuya_update(ShotState&,ShotPlayer&,Th14DamageArea&,AnmVm*,EnemyLink*,bool,const float*,Th14SakuyaUpdate&)noexcept;
 struct Th14SakuyaHit {i32 interrupt=0,sound=0,damage=0;Enemy* attachment=nullptr;float slowdown=0;};
-bool shot_th14_sakuya_hit(ShotState&,ShotPlayer&,Th14DamageArea&,Vec3,const Vec2*,float,EnemyLink*,Th14SakuyaHit&)noexcept;
+bool shot_th14_sakuya_hit(ShotState&,ShotPlayer&,Th14DamageArea&,Vec3,const Vec2*,float,EnemyLink*,Th14SakuyaHit&,Enemy* hit_target=nullptr)noexcept;
 void shot_th14_sakuya_slowdown(EnemyState&,float,u32,i32)noexcept;
 #endif
 struct ShotWorld {
@@ -154,7 +154,7 @@ public:
     // 44d04e resets the damage-area allocation cursor, retaining areas.
     void start_stage_th14()noexcept;
     bool th14_empty_damage(bool frame_advanced,i32& result)const noexcept;
-    bool damage_th14(Vec3,const Vec2*,float radius,float angle,bool frame_advanced,GameEconomy&,i32&,u32 argument=0,u32 stamp=0);
+    bool damage_th14(Vec3,const Vec2*,float radius,float angle,bool frame_advanced,GameEconomy&,i32&,u32 argument=0,u32 stamp=0,Enemy* hit_target=nullptr);
     void update_th14_areas()noexcept;
     bool th14_death_area(Vec3);
     bool th14_bomb_circle(Vec3,float radius,float growth,i32 duration,i32 damage);
@@ -180,6 +180,7 @@ private:
     std::array<Th14DamageArea,256> th14_areas{};
     Th14ShotPool th14_shot_pool;
     std::array<ShotState*,256> th14_area_owners{};u32 th14_area_cursor=0;
+    Enemy* th14_damage_target=nullptr;
     bool hit(u32,Th14DamageArea&,const Vec3&,const Vec2*,float,float,i32&)override;
     bool bind_th14_area(ShotState&);
     void sync_th14_area(ShotState&)noexcept;
