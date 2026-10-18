@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-16",
+  "date": "2026-10-18",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
   "sourceCommit": "e442e4862498bc8aae982fb614c89f446568f1a1",
   "files": [
@@ -40,8 +40,8 @@
     },
     {
       "path": "docs/porting/CORE_STATUS.md",
-      "bytes": 410960,
-      "sha256": "d9cf3185af702a11ae1b71711574bebf5177903f0a1c40fb56a2aa1ce2ec5d48"
+      "bytes": 411958,
+      "sha256": "fd9e87490776a8c2a7015905a6eae78456d22846e195ce585aff06f451557b78"
     },
     {
       "path": "docs/porting/TH06NC_FORMATS.md",
@@ -87,6 +87,11 @@
       "path": "docs/porting/TH14_ORDINARY_STAGE_LOADING_OCT15.md",
       "bytes": 2916,
       "sha256": "78f4b029f947b81ef65edd38fd9893bef00b0956f432c6503a9c89d70ee59642"
+    },
+    {
+      "path": "docs/porting/TH14_SAVE_BYTE_VIEWS_FIX_OCT18.md",
+      "bytes": 2859,
+      "sha256": "05f8f1e2c3ae93f019352ab625a55d7467da5a736b2037694d7213b99ee9728c"
     },
     {
       "path": "docs/porting/TH14_SAVE_DELTA_FIX_OCT16.md",
@@ -2234,6 +2239,11 @@
       "sha256": "06d0240bcb957c2034a9319211468a5c836eff6b1c3853ab4c87a1f2801cc3ec"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-save-byte-views-oct18.json",
+      "bytes": 103656,
+      "sha256": "6106dbd68c5135a8c005c7d8a57157897663759ec896a4f46da9f3525576d554"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-save-delta-oct16.json",
       "bytes": 103214,
       "sha256": "fb5ae4619c1b987204276884af8fa8c9cd06fa3624cc450c11503b34e40b938a"
@@ -2267,6 +2277,11 @@
       "path": "docs/porting/th14-launcher-site-loading-family-oct16.json",
       "bytes": 37038,
       "sha256": "3f7abba78f81266cbc303fac5e7939ec497b0b1c06d61b52a26f1226d20e6afd"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-save-byte-views-oct18.json",
+      "bytes": 36910,
+      "sha256": "0aada9ba711e71d932449dbaa71b9eaa70959d65a44999e12f485713f1c3ab1d"
     },
     {
       "path": "docs/porting/th14-launcher-site-save-delta-oct16.json",
@@ -3677,6 +3692,11 @@
       "path": "docs/porting/th14-sanitized-replay-transition-input-oct13-observed-oct13.json",
       "bytes": 27917,
       "sha256": "1c360e2ee58135385816de8b653e7d83fc0bb77eabcf0f22fc81f31a32ace22a"
+    },
+    {
+      "path": "docs/porting/th14-save-byte-views-observed-oct18.json",
+      "bytes": 7409,
+      "sha256": "0f149da9bc3b49c4870ea26adbafde70b1baf7995f89ea02a8eec3f62c1f73e1"
     },
     {
       "path": "docs/porting/th14-save-delta-observed-oct16.json",
@@ -11510,8 +11530,8 @@
     },
     {
       "path": "runtimes/th14/th14_web/browser-save-delta.mjs",
-      "bytes": 4262,
-      "sha256": "c44463fb394ca57dbf1a3a925cb44f2a2cfa4a9da4e5a441c751d7cc9cf66a55"
+      "bytes": 4747,
+      "sha256": "a899ac238872df29802d45ac36b75350ebb91c9e81515fdac8f532f65ce637d1"
     },
     {
       "path": "runtimes/th14/th14_web/sdl-runtime/th14.html",
@@ -16894,6 +16914,16 @@
       "sha256": "54b30eb6ad49c0cdcf766e046338bb9368cfeeaaa16ce435788f6e36d3de5d80"
     },
     {
+      "path": "tools/th14-package-save-byte-views-runtime-oct18.mjs",
+      "bytes": 10914,
+      "sha256": "1e3f3579802cd4cfe94ecdf67c5bf57f03d84e5c920d6da35cc21cea5ab4bb2b"
+    },
+    {
+      "path": "tools/th14-package-save-byte-views-site-oct18.mjs",
+      "bytes": 5262,
+      "sha256": "2830cd59053b4e3b037b3c88e7df8c867c36a968895a2bdbd847125b636d8cdc"
+    },
+    {
       "path": "tools/th14-package-save-delta-runtime-v3-oct16.mjs",
       "bytes": 10643,
       "sha256": "9b6a8316c07f7d97add337b6082fd0176a9c3662a98a6bb4d14c51358b9ed2d7"
@@ -17517,6 +17547,21 @@
       "path": "tools/th14-sanitized-template-layer-matrix-check.mjs",
       "bytes": 4739,
       "sha256": "048f8a5bc725d68db2fb8634f2a42fbe6783fb4b3588b9c0ec99572f2fc1c05f"
+    },
+    {
+      "path": "tools/th14-save-byte-views-browser-check-oct18.mjs",
+      "bytes": 10005,
+      "sha256": "4db1043289465be7f58f6c72ebc9d8a82b5d14ef7b408f7561c4b7d9381a52a4"
+    },
+    {
+      "path": "tools/th14-save-byte-views-check-oct18.html",
+      "bytes": 854,
+      "sha256": "1f10cb7593f7fde1933d8ef358a1470b4ddc9a285c1194fa025784d6cae20ed4"
+    },
+    {
+      "path": "tools/th14-save-byte-views-evidence-check-oct18.py",
+      "bytes": 5630,
+      "sha256": "89e172098fa7ff31ffea86ff92ad8d308d0b242d004f6204fda1602617df2889"
     },
     {
       "path": "tools/th14-save-delta-browser-check-oct16.mjs",

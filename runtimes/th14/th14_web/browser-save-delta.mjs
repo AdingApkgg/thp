@@ -2,11 +2,19 @@
 // delete files that another same-origin runtime imported after our initial load.
 export function createTh14SaveDelta({snapshot,openDatabase,storeName='FILE_DATA'}) {
  let baseline=new Map(),loaded=false,queue=Promise.resolve();
- const copy=entry=>({...entry,timestamp:new Date(+entry.timestamp),...(entry.contents?{contents:new Uint8Array(entry.contents)}:{})});
+ // Historical IDBFS entries may use Int8Array. Compare the underlying bytes,
+ // so -128 and128 describe the same stored byte; preserve offset and length.
+ const bytes=contents=>{
+  if(ArrayBuffer.isView(contents))return new Uint8Array(contents.buffer,contents.byteOffset,contents.byteLength);
+  if(contents instanceof ArrayBuffer)return new Uint8Array(contents);
+  if(Array.isArray(contents))return Uint8Array.from(contents);
+  throw Error('Invalid TH14 save contents');
+ };
+ const copy=entry=>({...entry,timestamp:new Date(+entry.timestamp),...(entry.contents?{contents:new Uint8Array(bytes(entry.contents))}:{})});
  const equal=(a,b)=>{
   if(!a||!b||a.mode!==b.mode||a.link!==b.link)return false;
   if(!!a.contents!==!!b.contents)return false;
-  if(a.contents){if(a.contents.length!==b.contents.length)return false;for(let i=0;i<a.contents.length;++i)if(a.contents[i]!==b.contents[i])return false;}
+  if(a.contents){const x=bytes(a.contents),y=bytes(b.contents);if(x.length!==y.length)return false;for(let i=0;i<x.length;++i)if(x[i]!==y[i])return false;}
   return true;
  };
  const capture=async()=>{
