@@ -140,6 +140,11 @@ void Renderer::select(const State& s){
   if(version==10){replace(source,"uniform float alphaRef;","uniform float alphaRef;\nuniform vec4 alphaBoundary[64];\nfloat alpha_boundary(int n){return alphaBoundary[n/4][n%4];}");replace(source,"float a=c.a*255.0,ref=floor(alphaRef*255.0+.5);","int byteAlpha=clamp(int(floor(c.a*255.0+.5)),0,255);if(c.a<alpha_boundary(byteAlpha))--byteAlpha;else if(byteAlpha<255&&c.a>=alpha_boundary(byteAlpha+1))++byteAlpha;float a=float(byteAlpha),ref=floor(alphaRef*255.0+.5);");}
   if(version==8)replace(source,"float a=c.a*255.0","float a=floor(c.a*255.0+.5)");
   if(version==8)replace(source,"gl_FragDepth=depth16?(floor(scaled)+floor(fract(scaled)-gl_FragCoord.z+0.5))/65535.0:gl_FragCoord.z;","");
+#if defined(PORT_TITLE) && PORT_TITLE == 14
+  // Installed D3D9 D16 conversion: truncate to twenty fractional bits,
+  // then round the sixteen-bit result to nearest with ties downward.
+  if(version==10){replace(source,"float scaled=gl_FragCoord.z*65536.0;","float quantized=floor(gl_FragCoord.z*1048576.0)/1048576.0;float scaled=quantized*65536.0;");replace(source,"floor(fract(scaled)-gl_FragCoord.z+0.5)","ceil(fract(scaled)-quantized-0.5)");}
+#endif
   Program p;p.id=glCreateProgram();GLuint fs=shader(GL_FRAGMENT_SHADER,source);glAttachShader(p.id,vertex);glAttachShader(p.id,fs);glLinkProgram(p.id);glDeleteShader(fs);GLint linked=0;glGetProgramiv(p.id,GL_LINK_STATUS,&linked);if(!linked){char log[2048];glGetProgramInfoLog(p.id,sizeof(log),nullptr,log);std::fprintf(stderr,"SDL program: %s\n",log);std::abort();}
   if(version==10){glUseProgram(p.id);glUniform4fv(glGetUniformLocation(p.id,"alphaBoundary[0]"),64,alphaBoundaries.data());glUseProgram(currentProgram);}
 #if defined(PORT_TITLE) && PORT_TITLE == 14
