@@ -13,6 +13,9 @@ struct EnemyFrameWorld {
     i32 countdown_seconds=0,countdown_hundredths=0,spell_elapsed=0,spell_bonus=0,shared_spell_state=0;
     virtual ~EnemyFrameWorld()=default;
     virtual bool shot_damage(EnemyState&,i32&){return false;}
+#if PORT_TITLE == 14
+    virtual bool th14_damage_dialogue()const{return false;}
+#endif
     virtual bool player_collision(EnemyState&,float,i32&){return false;}
     virtual bool tick_callback(EnemyState&,i32&){return false;}
     virtual bool damage_callback(EnemyState&,i32&){return false;}

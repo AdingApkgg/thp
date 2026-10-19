@@ -251,6 +251,9 @@ public:
         if(!vm)return false;vm->color=color;return true;
     }
     bool th14_bomb_dialogue()const override{return dialogue&&dialogue->active;}
+#if PORT_TITLE == 14
+    bool th14_damage_dialogue()const override{return dialogue&&dialogue->active;}
+#endif
     bool th14_reimu_bomb_hit_effect(Vec3 p,float angle)override{
         return animations.create(resources.core.effect,58,8,0,false,false,&p,nullptr,nullptr,false,&angle)!=nullptr;
     }

@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-18",
+  "date": "2026-10-19",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
   "sourceCommit": "e442e4862498bc8aae982fb614c89f446568f1a1",
   "files": [
@@ -40,8 +40,8 @@
     },
     {
       "path": "docs/porting/CORE_STATUS.md",
-      "bytes": 411958,
-      "sha256": "fd9e87490776a8c2a7015905a6eae78456d22846e195ce585aff06f451557b78"
+      "bytes": 412881,
+      "sha256": "cfd83729da3e1caa225f7dc98e719ccdfe55e96eb415c59e64cf64b82c893159"
     },
     {
       "path": "docs/porting/TH06NC_FORMATS.md",
@@ -62,6 +62,11 @@
       "path": "docs/porting/TH14_CURRENT_QUEUE_FULL_PLAYBACKS_OCT15.md",
       "bytes": 2914,
       "sha256": "6a33abc908eb517e0408f58d439b7f89487307bac3bf5bbad5fe39d7de040075"
+    },
+    {
+      "path": "docs/porting/TH14_DIALOGUE_DAMAGE_FIX_OCT19.md",
+      "bytes": 2897,
+      "sha256": "2a4638bd0a49fad3d8c7efc798aeeef7ddeb3164261972e60344cb16a814123c"
     },
     {
       "path": "docs/porting/TH14_LOCAL_QUIET_DEFAULT_OCT15.md",
@@ -2174,6 +2179,11 @@
       "sha256": "402c3c00caef4780f9c9932691ee6f70114a1817445d332ee04c57288072c699"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-dialogue-damage-oct19.json",
+      "bytes": 103690,
+      "sha256": "3b750bcc4f1a5172f575101b1784b8b079b079cb5fd8559adc9a53259dccf30e"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-loading-family-oct16.json",
       "bytes": 103572,
       "sha256": "3b4b058ee13a69ea0c3441f34b7203db0b8ec900e5040046d87449ad796d52b7"
@@ -2272,6 +2282,11 @@
       "path": "docs/porting/th14-launcher-site-constructor-hit-oct15.json",
       "bytes": 36442,
       "sha256": "3aa3c395fb7fbe3a43d3f5951075ae4911250d799c6496682417887ff1fa5820"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-dialogue-damage-oct19.json",
+      "bytes": 36929,
+      "sha256": "c8bf01be4d731fd2f1e00e12210f02b892448eb6fed42122aaa029506b0b2b4c"
     },
     {
       "path": "docs/porting/th14-launcher-site-loading-family-oct16.json",
@@ -6255,13 +6270,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/EnemyFrame.cpp",
-      "bytes": 11653,
-      "sha256": "5ffa340514320cf05aa5e5a2f91284b6c563b9bbb50238873e5413b20bb4d367"
+      "bytes": 12067,
+      "sha256": "59cd4e242d9295c3c13b5805514510ddbfe3d753f7f3bc8223cbfd4ad245885e"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/EnemyFrame.hpp",
-      "bytes": 2428,
-      "sha256": "766e5aa3ea0f52fcc94b75d557b81db4a6de11445deb4b550e598493a8a7a908"
+      "bytes": 2564,
+      "sha256": "bbc9afeadb594e7410f4d9ed38176246fc0d89364033d7946bdfa03ba8e5537d"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/EnemyLaserCommands.cpp",
@@ -6400,8 +6415,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
-      "bytes": 23446,
-      "sha256": "62fb7ab0d7daf32b2865ca8113b1d4c5c25a8c8f36a8fc152da548ce756cde5a"
+      "bytes": 23561,
+      "sha256": "907bbae52a4bfcfbfc6479d111e50d8684456a3d5861e57fa98f4100e894df91"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameConfig.cpp",
@@ -16882,6 +16897,16 @@
       "path": "tools/th14-package-constructor-hit-runtime-oct15.mjs",
       "bytes": 7326,
       "sha256": "5d44459936f0a8bdcb9d42191d585bfeee97fcdf60e7fcc5dce09768e1938e83"
+    },
+    {
+      "path": "tools/th14-package-dialogue-damage-runtime-oct19.mjs",
+      "bytes": 4686,
+      "sha256": "457ee14a638c3b10d661e84c4596990f0724f86a44879676df55455979edbb7d"
+    },
+    {
+      "path": "tools/th14-package-dialogue-damage-site-oct19.mjs",
+      "bytes": 5247,
+      "sha256": "ec8e72507c42fa79d221f8082db933d460eee13e3a0bfcea31f7f91dc7a5240e"
     },
     {
       "path": "tools/th14-package-launcher.mjs",

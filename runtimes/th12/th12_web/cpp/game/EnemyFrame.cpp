@@ -111,6 +111,11 @@ i32 enemy_frame(EnemyScriptServices& script,EnemyFrameWorld& world){
         if(u32(e.damage_callback)?!world.damage_callback(e,damage):!world.shot_damage(e,damage)){if constexpr(kPortTitle==16)trace_point=9022;return -2;}
 #endif
         if(world.player_state==0||world.player_state==2)damage/=5;
+#if PORT_TITLE == 14
+        // Retail423ad2..423ae2 collects hits/callbacks first, then zeroes
+        // damage while the live dialogue owner at4db550+194 is present.
+        if(world.th14_damage_dialogue())damage=0;
+#endif
         if((world.spell_flags&1)&&world.spell_id>=0x9e&&world.spell_id<=0xa1&&(world.special_active||world.special_ending)&&!(world.player_flags&4))damage/=5;
         if constexpr(kPortTitle==14){
             bool resistant_sound=false;damage=enemy_th14_bomb_damage(e,damage,world.special_active,resistant_sound);
