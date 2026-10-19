@@ -40,8 +40,8 @@
     },
     {
       "path": "docs/porting/CORE_STATUS.md",
-      "bytes": 414194,
-      "sha256": "6eb35ce52ea979d92971f79c0d8ec9e6d687a7505b6c98cddbb6b7169aea1815"
+      "bytes": 415122,
+      "sha256": "d8801d05e6ad36a4f8e9c502d9be23105810884c9ce0302e843f14eebf4ee259"
     },
     {
       "path": "docs/porting/TH06NC_FORMATS.md",
@@ -102,6 +102,11 @@
       "path": "docs/porting/TH14_ORDINARY_STAGE_LOADING_OCT15.md",
       "bytes": 2916,
       "sha256": "78f4b029f947b81ef65edd38fd9893bef00b0956f432c6503a9c89d70ee59642"
+    },
+    {
+      "path": "docs/porting/TH14_PRIMITIVE_VIEWPORT_FIX_OCT19.md",
+      "bytes": 3938,
+      "sha256": "43dee0b448404b2939507a40e50893e04e9beb960a8a4315279326aac52460b3"
     },
     {
       "path": "docs/porting/TH14_SAVE_BYTE_VIEWS_FIX_OCT18.md",
@@ -2264,6 +2269,11 @@
       "sha256": "06d0240bcb957c2034a9319211468a5c836eff6b1c3853ab4c87a1f2801cc3ec"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-primitive-viewport-oct19.json",
+      "bytes": 103812,
+      "sha256": "2d65bc1c6010f04fb954eafc0074988bc9dc7c7ef835811da9cf9be2d10123ac"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-save-byte-views-oct18.json",
       "bytes": 103656,
       "sha256": "6106dbd68c5135a8c005c7d8a57157897663759ec896a4f46da9f3525576d554"
@@ -2307,6 +2317,11 @@
       "path": "docs/porting/th14-launcher-site-loading-family-oct16.json",
       "bytes": 37038,
       "sha256": "3f7abba78f81266cbc303fac5e7939ec497b0b1c06d61b52a26f1226d20e6afd"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-primitive-viewport-oct19.json",
+      "bytes": 36976,
+      "sha256": "c86c2923d244de9a539d72068ceb85da547837f401e1e45821f40cfe6c8f0e06"
     },
     {
       "path": "docs/porting/th14-launcher-site-save-byte-views-oct18.json",
@@ -3397,6 +3412,11 @@
       "path": "docs/porting/th14-position-verified.json",
       "bytes": 1542,
       "sha256": "5b95b3f71b53e26b25a85dfbccbc47dacba649c81a096f6d178ada4d1ef04fe6"
+    },
+    {
+      "path": "docs/porting/th14-primitive-viewport-observed-oct19.json",
+      "bytes": 140625,
+      "sha256": "2839fbe0fc701bf6a216ccacbf5ad066b255a13446b5007fc11a40bbaa9d81cc"
     },
     {
       "path": "docs/porting/th14-production-clip-title-isolation-verified-oct14.json",
@@ -5890,8 +5910,8 @@
     },
     {
       "path": "runtimes/th12/portable/sdl/Renderer.cpp",
-      "bytes": 32621,
-      "sha256": "870f63113839a8b0a30969e7cc775b07e075f1692e165933307ad11a388db5e2"
+      "bytes": 35288,
+      "sha256": "3b89c56d9e55001bd8e7a41f7f9364d8fb930103413f693a44c057c2c341044f"
     },
     {
       "path": "runtimes/th12/portable/sdl/Renderer.hpp",
@@ -5905,8 +5925,8 @@
     },
     {
       "path": "runtimes/th12/portable/sdl/Shaders.hpp",
-      "bytes": 5831,
-      "sha256": "b1b62c917e3d787bb4401500e0f8098d962994cc9be526dd4aabcd73325f2bd4"
+      "bytes": 6185,
+      "sha256": "2e4a0b06da45e98e5babae05c29a6da7fa2dfe9ec4a73c39d2f7e3008f182193"
     },
     {
       "path": "runtimes/th12/portable/sdl/third_party/miniaudio.LICENSE",
@@ -16944,6 +16964,16 @@
       "sha256": "03b7cf0dca1f539d9cdbc84572ee176ef91a53f62fc907927d2b50007e8b7f76"
     },
     {
+      "path": "tools/th14-package-primitive-viewport-runtime-oct19.mjs",
+      "bytes": 4940,
+      "sha256": "6df22fd1074cea0292b774a3bf702a1625b97cefb39ef91a992f3e8f74d67b0d"
+    },
+    {
+      "path": "tools/th14-package-primitive-viewport-site-oct19.mjs",
+      "bytes": 5297,
+      "sha256": "12babdf04db8e1ebb1890a3ff2a2e73a6a00b931e2d4ff114b83b636208384b7"
+    },
+    {
       "path": "tools/th14-package-runtime-from-build-oct14.mjs",
       "bytes": 7169,
       "sha256": "51bee87f821d6f3ba4431bf569a6eb9c3194e810da0e5a55c6e997dee9e74ae4"
@@ -17197,6 +17227,11 @@
       "path": "tools/th14-prepare-music.py",
       "bytes": 4031,
       "sha256": "8ed5e6c41b6f06e6c95786c5f2d123bb346abd2a404849d6963be0b73867505a"
+    },
+    {
+      "path": "tools/th14-primitive-viewport-evidence-check-oct19.py",
+      "bytes": 9954,
+      "sha256": "a30477846e2eb1ecddb65a504fd0cc90153acde49921dcf141b4069811da9fb4"
     },
     {
       "path": "tools/th14-production-clip-title-isolation-evidence-check.py",
@@ -21155,15 +21190,19 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "88da9c69ef2c0506b240b6f2c9fa1f382849cb26",
-    "title": "TH14 nonzero homogeneous viewport boundary counterexample",
-    "changedSourceAndMetadataFiles": 3,
+    "basePublishedCommit": "b1edab9cba15612f963dc7cea447752193fc51db",
+    "title": "TH14 conservative whole-primitive viewport compatibility",
+    "changedSourceAndMetadataFiles": 10,
     "completeGame": false,
     "nativeEquivalent": false,
-    "productionGameCodeChanged": false,
+    "productionGraphicsChanged": true,
+    "productionGameplayChanged": false,
     "gameAssetsAdded": false,
-    "allHomogeneousVectorsNonzero": true,
-    "candidateCoverageRegressions": 2,
-    "viewportCandidatesAccepted": 0
+    "colorDifferencesBefore": 880,
+    "colorDifferencesAfter": 818,
+    "exactUvBuffers": 22,
+    "totalUvBuffers": 23,
+    "oldPassingRegressions": 0,
+    "sdlWasmSha256": "9e01f35d99a13325543c6329a02cdbdd73919bd6a66ec66846bef3a8d3d556d8"
   }
 }

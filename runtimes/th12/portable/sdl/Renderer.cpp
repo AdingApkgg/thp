@@ -38,6 +38,29 @@ std::array<float,16> th14_clip(const std::array<float,16>& world,const std::arra
  return th14_multiply(projection,th14_multiply(view,world));
 }
 #endif
+
+#if defined(PORT_TITLE) && PORT_TITLE == 14
+bool th14_primitive_inside(const float* vertices,u32 stride,u32 first,u32 count,const std::array<float,16>& clip,const Viewport& viewport){
+ // Enclose binary32 dot products under reassociation/FMA and flush-to-zero.
+ // Eight full float epsilons exceed the seven-operation gamma bound. Keep
+ // subnormal inputs, potential overflow and every uncertain plane unchanged.
+ constexpr double epsilon=0x1p-23,minimum=0x1p-126,maximum=0x1.fffffep127;
+ if(!viewport.width||!viewport.height)return false;
+ for(float c:clip)if(!std::isfinite(c)||(c!=0&&std::abs(double(c))<minimum))return false;
+ for(u32 i=first;i<first+count;++i){float p[3];std::memcpy(p,reinterpret_cast<const u8*>(vertices)+i*stride,12);
+  for(float c:p)if(!std::isfinite(c)||(c!=0&&std::abs(double(c))<minimum))return false;
+  double q[4]{},error[4]{};
+  for(u32 row=0;row<4;++row){double magnitude=0;for(u32 col=0;col<4;++col){const double product=double(clip[col*4+row])*(col==3?1.:double(p[col]));q[row]+=product;magnitude+=std::abs(product);}
+   if(!std::isfinite(magnitude)||magnitude>maximum*.25)return false;
+   error[row]=8.*epsilon*magnitude+8.*minimum;
+  }
+  if((std::abs(q[0])+error[0])*std::max(1.,double(float(viewport.width))*.5)>maximum*.25||(std::abs(q[1])+error[1])*std::max(1.,double(float(viewport.height))*.5)>maximum*.25)return false;
+  const double lowW=q[3]-error[3];
+  if(!(lowW>0&&std::abs(q[0])+error[0]<lowW&&std::abs(q[1])+error[1]<lowW&&q[2]-error[2]>0&&q[2]+error[2]<lowW))return false;
+ }
+ return true;
+}
+#endif
 float bits(u32 n){float f;std::memcpy(&f,&n,4);return f;}
 std::array<float,4> color(u32 n){return {float(n>>16&255)/255,float(n>>8&255)/255,float(n&255)/255,float(n>>24)/255};}
 void replace(std::string& s,const std::string& a,const std::string& b){size_t p=0;while((p=s.find(a,p))!=std::string::npos){s.replace(p,a.size(),b);p+=b.size();}}
@@ -210,7 +233,17 @@ void Renderer::issue(const State& d,Topology primitive,u32 count,const void* dat
  const std::array<u32,6> layoutKey{d.stride,u32(d.layout.screen),d.layout.diffuse,d.layout.specular,d.layout.uv,u32(!!instance)};
  auto& vao=layouts[layoutKey];const bool setup=!vao;
  if(setup)glGenVertexArrays(1,&vao);if(currentLayout!=vao){glBindVertexArray(vao);currentLayout=vao;}
- const u32 base=upload(vertices,GL_ARRAY_BUFFER,data,size,1048576);
+ 
+#if defined(PORT_TITLE) && PORT_TITLE == 14
+ if(!instance){
+  if(!transformed&&!index&&primitive==Topology::Triangles){
+   const u32 submitted=vertex_count(primitive,count);std::vector<float> eligibility(submitted,0.f);const auto clip=th14_clip(d.matrix[0],d.matrix[1],d.matrix[2]);
+   for(u32 i=0;i+2<submitted;i+=3)if(th14_primitive_inside(static_cast<const float*>(data),d.stride,i,3,clip,d.viewport))eligibility[i]=eligibility[i+1]=eligibility[i+2]=1.f;
+   const u32 flagBase=upload(instances,GL_ARRAY_BUFFER,eligibility.data(),u32(eligibility.size()*4),65536);glEnableVertexAttribArray(13);glVertexAttribPointer(13,1,GL_FLOAT,false,4,reinterpret_cast<void*>(flagBase));glVertexAttribDivisor(13,0);
+  }else{glDisableVertexAttribArray(13);glVertexAttrib1f(13,0.f);glVertexAttribDivisor(13,0);}
+ }
+#endif
+const u32 base=upload(vertices,GL_ARRAY_BUFFER,data,size,1048576);
 #ifdef __EMSCRIPTEN__
  if(setup){
 #else
@@ -226,13 +259,14 @@ glEnableVertexAttribArray(0);glVertexAttribPointer(0,transformed?4:3,GL_FLOAT,fa
 #if defined(PORT_TITLE) && PORT_TITLE == 14
  // Keep each original world/factor record and append its derived clip matrix.
  // The queue remains 68B; only the submitted instance buffer gains the matrix.
- const u32 records=instanceSize/68;std::vector<u8> expanded(records*132);
+ const u32 records=instanceSize/68;std::vector<u8> expanded(records*136);
  const auto* input=static_cast<const u8*>(instance);
  for(u32 record=0;record<records;++record){
   std::array<float,16> model{};std::memcpy(model.data(),input+record*68,64);
   auto clip=th14_clip(model,d.matrix[1],d.matrix[2]);
-  std::memcpy(expanded.data()+record*132,input+record*68,68);
-  std::memcpy(expanded.data()+record*132+68,clip.data(),64);
+  std::memcpy(expanded.data()+record*136,input+record*68,68);
+  std::memcpy(expanded.data()+record*136+68,clip.data(),64);
+  const float eligible=th14_primitive_inside(static_cast<const float*>(data),d.stride,0,4,clip,d.viewport)?1.f:0.f;std::memcpy(expanded.data()+record*136+132,&eligible,4);
  }
  u32 b=upload(instances,GL_ARRAY_BUFFER,expanded.data(),u32(expanded.size()),65536);
 #else
@@ -244,7 +278,7 @@ glEnableVertexAttribArray(0);glVertexAttribPointer(0,transformed?4:3,GL_FLOAT,fa
  {
 #endif
 #if defined(PORT_TITLE) && PORT_TITLE == 14
- for(int i=0;i<4;i++){glEnableVertexAttribArray(4+i);glVertexAttribPointer(4+i,4,GL_FLOAT,false,132,reinterpret_cast<void*>(b+i*16));glVertexAttribDivisor(4+i,1);glEnableVertexAttribArray(9+i);glVertexAttribPointer(9+i,4,GL_FLOAT,false,132,reinterpret_cast<void*>(b+68+i*16));glVertexAttribDivisor(9+i,1);}glEnableVertexAttribArray(8);glVertexAttribPointer(8,4,GL_UNSIGNED_BYTE,true,132,reinterpret_cast<void*>(b+64));glVertexAttribDivisor(8,1);}
+ for(int i=0;i<4;i++){glEnableVertexAttribArray(4+i);glVertexAttribPointer(4+i,4,GL_FLOAT,false,136,reinterpret_cast<void*>(b+i*16));glVertexAttribDivisor(4+i,1);glEnableVertexAttribArray(9+i);glVertexAttribPointer(9+i,4,GL_FLOAT,false,136,reinterpret_cast<void*>(b+68+i*16));glVertexAttribDivisor(9+i,1);}glEnableVertexAttribArray(8);glVertexAttribPointer(8,4,GL_UNSIGNED_BYTE,true,136,reinterpret_cast<void*>(b+64));glVertexAttribDivisor(8,1);glEnableVertexAttribArray(13);glVertexAttribPointer(13,1,GL_FLOAT,false,136,reinterpret_cast<void*>(b+132));glVertexAttribDivisor(13,1);}
 #else
  for(int i=0;i<4;i++){glEnableVertexAttribArray(4+i);glVertexAttribPointer(4+i,4,GL_FLOAT,false,68,reinterpret_cast<void*>(b+i*16));glVertexAttribDivisor(4+i,1);}glEnableVertexAttribArray(8);glVertexAttribPointer(8,4,GL_UNSIGNED_BYTE,true,68,reinterpret_cast<void*>(b+64));glVertexAttribDivisor(8,1);}
 #endif
