@@ -40,10 +40,10 @@ std::array<float,16> th14_clip(const std::array<float,16>& world,const std::arra
 #endif
 
 #if defined(PORT_TITLE) && PORT_TITLE == 14
-bool th14_primitive_inside(const float* vertices,u32 stride,u32 first,u32 count,const std::array<float,16>& clip,const Viewport& viewport){
+bool th14_primitive_projectable(const float* vertices,u32 stride,u32 first,u32 count,const std::array<float,16>& clip,const Viewport& viewport){
  // Enclose binary32 dot products under reassociation/FMA and flush-to-zero.
  // Eight full float epsilons exceed the seven-operation gamma bound. Keep
- // subnormal inputs, potential overflow and every uncertain plane unchanged.
+ // subnormal inputs, potential overflow and uncertain W/depth boundaries unchanged. Side clipping is eligible only as a complete primitive.
  constexpr double epsilon=0x1p-23,minimum=0x1p-126,maximum=0x1.fffffep127;
  if(!viewport.width||!viewport.height)return false;
  for(float c:clip)if(!std::isfinite(c)||(c!=0&&std::abs(double(c))<minimum))return false;
@@ -56,7 +56,8 @@ bool th14_primitive_inside(const float* vertices,u32 stride,u32 first,u32 count,
   }
   if((std::abs(q[0])+error[0])*std::max(1.,double(float(viewport.width))*.5)>maximum*.25||(std::abs(q[1])+error[1])*std::max(1.,double(float(viewport.height))*.5)>maximum*.25)return false;
   const double lowW=q[3]-error[3];
-  if(!(lowW>0&&std::abs(q[0])+error[0]<lowW&&std::abs(q[1])+error[1]<lowW&&q[2]-error[2]>0&&q[2]+error[2]<lowW))return false;
+  if(!(lowW>0&&q[2]-error[2]>0&&q[2]+error[2]<lowW))return false;
+  if((std::abs(q[0])+error[0])*std::max(1.,double(float(viewport.width))*.5)/lowW>maximum/1024.||(std::abs(q[1])+error[1])*std::max(1.,double(float(viewport.height))*.5)/lowW>maximum/1024.)return false;
  }
  return true;
 }
@@ -238,7 +239,7 @@ void Renderer::issue(const State& d,Topology primitive,u32 count,const void* dat
  if(!instance){
   if(!transformed&&!index&&primitive==Topology::Triangles){
    const u32 submitted=vertex_count(primitive,count);std::vector<float> eligibility(submitted,0.f);const auto clip=th14_clip(d.matrix[0],d.matrix[1],d.matrix[2]);
-   for(u32 i=0;i+2<submitted;i+=3)if(th14_primitive_inside(static_cast<const float*>(data),d.stride,i,3,clip,d.viewport))eligibility[i]=eligibility[i+1]=eligibility[i+2]=1.f;
+   for(u32 i=0;i+2<submitted;i+=3)if(th14_primitive_projectable(static_cast<const float*>(data),d.stride,i,3,clip,d.viewport))eligibility[i]=eligibility[i+1]=eligibility[i+2]=1.f;
    const u32 flagBase=upload(instances,GL_ARRAY_BUFFER,eligibility.data(),u32(eligibility.size()*4),65536);glEnableVertexAttribArray(13);glVertexAttribPointer(13,1,GL_FLOAT,false,4,reinterpret_cast<void*>(flagBase));glVertexAttribDivisor(13,0);
   }else{glDisableVertexAttribArray(13);glVertexAttrib1f(13,0.f);glVertexAttribDivisor(13,0);}
  }
@@ -266,7 +267,7 @@ glEnableVertexAttribArray(0);glVertexAttribPointer(0,transformed?4:3,GL_FLOAT,fa
   auto clip=th14_clip(model,d.matrix[1],d.matrix[2]);
   std::memcpy(expanded.data()+record*136,input+record*68,68);
   std::memcpy(expanded.data()+record*136+68,clip.data(),64);
-  const float eligible=th14_primitive_inside(static_cast<const float*>(data),d.stride,0,4,clip,d.viewport)?1.f:0.f;std::memcpy(expanded.data()+record*136+132,&eligible,4);
+  const float eligible=th14_primitive_projectable(static_cast<const float*>(data),d.stride,0,4,clip,d.viewport)?1.f:0.f;std::memcpy(expanded.data()+record*136+132,&eligible,4);
  }
  u32 b=upload(instances,GL_ARRAY_BUFFER,expanded.data(),u32(expanded.size()),65536);
 #else
