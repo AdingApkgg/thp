@@ -40,8 +40,8 @@
     },
     {
       "path": "docs/porting/CORE_STATUS.md",
-      "bytes": 412881,
-      "sha256": "cfd83729da3e1caa225f7dc98e719ccdfe55e96eb415c59e64cf64b82c893159"
+      "bytes": 414065,
+      "sha256": "a83d79dcbb79f5fa5ae8535b1f2f6f1c0e758b8c12a49f6424a25fb8f24ab662"
     },
     {
       "path": "docs/porting/TH06NC_FORMATS.md",
@@ -77,6 +77,16 @@
       "path": "docs/porting/TH14_LOCAL_WORKSPACE_CURRENT_SERVER.md",
       "bytes": 1692,
       "sha256": "d732ea48583359846d4c648ec965d214adbf6e120f28f03f1d152927cf66eceb"
+    },
+    {
+      "path": "docs/porting/TH14_MARISAB_FULL_NATIVE_OCT19.md",
+      "bytes": 2546,
+      "sha256": "f713dbea93af192b1207ed85dfeb0f7b126e2ea864ce95d1bf38427a98a6e841"
+    },
+    {
+      "path": "docs/porting/TH14_MARISA_LASER_INVESTIGATION_OCT19.md",
+      "bytes": 3977,
+      "sha256": "405c18601fe53731da3a9bf513216921ad7f4585107c054d84e690504f762475"
     },
     {
       "path": "docs/porting/TH14_METHOD.md",
@@ -157,6 +167,11 @@
       "path": "docs/porting/TH14_VERTEX_OUTPUT_DIAGNOSTIC_OCT14.md",
       "bytes": 6709,
       "sha256": "30b3c5ebafdd5ef6360b479a0cc24669105eb11e82223fb4077cae9f2146970d"
+    },
+    {
+      "path": "docs/porting/TH14_VIEWPORT_CANDIDATES_OCT19.md",
+      "bytes": 3424,
+      "sha256": "a78ba5527572c28a0cf4f493c688b6e39ec716be5212a3d7ef5c9bf9d933c886"
     },
     {
       "path": "docs/porting/TH14_WORKER_RESOURCE_CONTINUATION_OCT15.md",
@@ -19964,6 +19979,11 @@
       "sha256": "450238dd62fc6a9061b3ee21020cbff221d3eb2f18d4452615c6df142cadb712"
     },
     {
+      "path": "tools/th14-viewport-candidate-evidence-check-oct19.py",
+      "bytes": 8246,
+      "sha256": "233a237c547dfce03fd76bc82968567a0cf4923f4fe38c378e68109c2fa686a1"
+    },
+    {
       "path": "tools/th14-warm-replay-evidence-check.py",
       "bytes": 11962,
       "sha256": "03760b2bb646029427468921a9dbd0270675c2ab9404182f9f8aaa9921320820"
@@ -21130,15 +21150,16 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "19747b3b2a551694db71ccaf77dae87aca51e601",
-    "title": "TH14 current production chunk queue four full replay runs",
-    "changedSourceAndMetadataFiles": 4,
+    "basePublishedCommit": "e42d984314043023b998930fe9df66898dc619cd",
+    "title": "TH14 full MarisaB native interval and rejected viewport candidates",
+    "changedSourceAndMetadataFiles": 5,
     "completeGame": false,
     "nativeEquivalent": false,
     "productionGameCodeChanged": false,
     "gameAssetsAdded": false,
-    "candidateReplayEnds": 4,
-    "inactiveGameplayCallCountDifferences": 20,
-    "visualDifferencesRetained": true
+    "nativePhysicalCallbacksCompared": 89235,
+    "activeSelectedNonvisualWordDifferences": 0,
+    "viewportCandidatesAccepted": 0,
+    "visualAndLoadingDifferencesRetained": true
   }
 }
