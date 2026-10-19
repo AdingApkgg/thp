@@ -40,8 +40,8 @@
     },
     {
       "path": "docs/porting/CORE_STATUS.md",
-      "bytes": 414065,
-      "sha256": "a83d79dcbb79f5fa5ae8535b1f2f6f1c0e758b8c12a49f6424a25fb8f24ab662"
+      "bytes": 414194,
+      "sha256": "6eb35ce52ea979d92971f79c0d8ec9e6d687a7505b6c98cddbb6b7169aea1815"
     },
     {
       "path": "docs/porting/TH06NC_FORMATS.md",
@@ -170,8 +170,8 @@
     },
     {
       "path": "docs/porting/TH14_VIEWPORT_CANDIDATES_OCT19.md",
-      "bytes": 3424,
-      "sha256": "a78ba5527572c28a0cf4f493c688b6e39ec716be5212a3d7ef5c9bf9d933c886"
+      "bytes": 4531,
+      "sha256": "f9addd93cde9120c809df2c955e2522988c811b0e2e18e61441726480d9f0390"
     },
     {
       "path": "docs/porting/TH14_WORKER_RESOURCE_CONTINUATION_OCT15.md",
@@ -19984,6 +19984,11 @@
       "sha256": "233a237c547dfce03fd76bc82968567a0cf4923f4fe38c378e68109c2fa686a1"
     },
     {
+      "path": "tools/th14-viewport-valid-boundary-evidence-check-oct19.py",
+      "bytes": 4156,
+      "sha256": "32f4ec93021933d67d906ba143966337afdfeb318ddc1116aeeb1a0c8ac0e8d1"
+    },
+    {
       "path": "tools/th14-warm-replay-evidence-check.py",
       "bytes": 11962,
       "sha256": "03760b2bb646029427468921a9dbd0270675c2ab9404182f9f8aaa9921320820"
@@ -21150,16 +21155,15 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "e42d984314043023b998930fe9df66898dc619cd",
-    "title": "TH14 full MarisaB native interval and rejected viewport candidates",
-    "changedSourceAndMetadataFiles": 5,
+    "basePublishedCommit": "88da9c69ef2c0506b240b6f2c9fa1f382849cb26",
+    "title": "TH14 nonzero homogeneous viewport boundary counterexample",
+    "changedSourceAndMetadataFiles": 3,
     "completeGame": false,
     "nativeEquivalent": false,
     "productionGameCodeChanged": false,
     "gameAssetsAdded": false,
-    "nativePhysicalCallbacksCompared": 89235,
-    "activeSelectedNonvisualWordDifferences": 0,
-    "viewportCandidatesAccepted": 0,
-    "visualAndLoadingDifferencesRetained": true
+    "allHomogeneousVectorsNonzero": true,
+    "candidateCoverageRegressions": 2,
+    "viewportCandidatesAccepted": 0
   }
 }
