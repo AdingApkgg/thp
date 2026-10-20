@@ -148,6 +148,9 @@ void Renderer::select(const State& s){
   // then round the sixteen-bit result to nearest with ties downward.
   if(version==10){replace(source,"float scaled=gl_FragCoord.z*65536.0;","float quantized=floor(gl_FragCoord.z*1048576.0)/1048576.0;float scaled=quantized*65536.0;");replace(source,"floor(fract(scaled)-gl_FragCoord.z+0.5)","ceil(fract(scaled)-quantized-0.5)");}
 #endif
+#if defined(PORT_TITLE) && PORT_TITLE == 14
+  if(version==10)replace(source,"c.rgb=mix(fogColor.rgb,c.rgb,clamp(vFog,0.0,1.0));","{float f=clamp(vFog,0.0,1.0);vec3 rest=fogColor.rgb-fogColor.rgb*f;c.rgb=c.rgb*f+rest;}");
+#endif
   Program p;p.id=glCreateProgram();GLuint fs=shader(GL_FRAGMENT_SHADER,source);glAttachShader(p.id,vertex);glAttachShader(p.id,fs);glLinkProgram(p.id);glDeleteShader(fs);GLint linked=0;glGetProgramiv(p.id,GL_LINK_STATUS,&linked);if(!linked){char log[2048];glGetProgramInfoLog(p.id,sizeof(log),nullptr,log);std::fprintf(stderr,"SDL program: %s\n",log);std::abort();}
   if(version==10){glUseProgram(p.id);glUniform4fv(glGetUniformLocation(p.id,"alphaBoundary[0]"),64,alphaBoundaries.data());glUseProgram(currentProgram);}
 #if defined(PORT_TITLE) && PORT_TITLE == 14
@@ -224,7 +227,13 @@ void Renderer::issue(const State& d,Topology primitive,u32 count,const void* dat
 #else
  for(int i=0;i<4;i++)uniform(4+i,16,d.matrix[i].data());
 #endif
- integer(8,p.fog);integer(9,p.rangeFog);integer(10,u32(p.fogMode));float fog[]{p.fogNear,p.fogFar,p.fogDensity};uniform(11,3,fog);uniform(12,4,color(p.fogColor).data());integer(13,!!texture);uniform(14,4,color(p.textureFactor).data());
+ integer(8,p.fog);integer(9,p.rangeFog);integer(10,u32(p.fogMode));float fog[]{p.fogNear,p.fogFar,p.fogDensity};uniform(11,3,fog);
+#if defined(PORT_TITLE) && PORT_TITLE == 14
+ if(version==10){auto fogColor=color(p.fogColor);constexpr float reciprocal=1.f/255.f;for(int i=0;i<3;++i){volatile float channel=float((p.fogColor>>(16-i*8))&255u)*reciprocal;fogColor[i]=channel;}uniform(12,4,fogColor.data());}else uniform(12,4,color(p.fogColor).data());
+#else
+ uniform(12,4,color(p.fogColor).data());
+#endif
+integer(13,!!texture);uniform(14,4,color(p.textureFactor).data());
  auto arg=[](Argument a){return int(u32(a.source)|(a.complement?16u:0u)|(a.alphaOnly?32u:0u));};
  integer(15,u32(p.color.operation));integer(16,arg(p.color.first));integer(17,arg(p.color.second));integer(18,u32(p.alpha.operation));integer(19,arg(p.alpha.first));integer(20,arg(p.alpha.second));integer(21,p.alphaTest);float alpha=float(p.alphaReference)/255;uniform(22,1,&alpha);integer(23,u32(p.alphaCompare));integer(24,version==10&&p.depthTest&&d.depth&&resolve(owner,d.depth).format==PixelFormat::Depth16);
  if(texture){
