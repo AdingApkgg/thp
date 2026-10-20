@@ -478,9 +478,13 @@ bool GameBattle::update(const std::function<bool()>& sample_input) {
 #if PORT_TITLE == 14
         ,th14_dialogue_skip_frames,th14_dialogue_fire_frames
 #endif
-    );if(result<0){last_error=-1007;if(error.empty())error=dialogue->error+" MSG opcode "+std::to_string(dialogue->last_opcode);return false;}if(result){if(enemy_commands.stage_section)enemy_commands.section_frame=0;enemy_commands.stage_section=0;}else dialogue->state.elapsed.tick();}
+    );if(result<0){last_error=-1007;if(error.empty())error=dialogue->error+" MSG opcode "+std::to_string(dialogue->last_opcode);return false;}if(result){
+#if PORT_TITLE != 14
+        if(enemy_commands.stage_section)enemy_commands.section_frame=0;enemy_commands.stage_section=0;
+#endif
+    }else dialogue->state.elapsed.tick();}
 #if PORT_TITLE == 14
-    // 41ee80 at 27 finishes dialogue before 431a40 at 28 observes boss state.
+    // Retail430d6b..430dfe retires dialogue before the boss HUD observes state.
     if(!hud.update(hud_input())){last_error=-1010;error="HUD update";return false;}
 #endif
     if(!hud.finish_update(hud_input())){last_error=-1010;error="HUD indicator update";return false;}

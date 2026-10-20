@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-19",
+  "date": "2026-10-20",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
   "sourceCommit": "e442e4862498bc8aae982fb614c89f446568f1a1",
   "files": [
@@ -40,8 +40,8 @@
     },
     {
       "path": "docs/porting/CORE_STATUS.md",
-      "bytes": 416837,
-      "sha256": "22edf5f1f66d0223cdb5937289619a4b7228e885539bd013cbe91baaa921b7c6"
+      "bytes": 417615,
+      "sha256": "d40f20eb5a6765ea07f749f2e5a05a07940de92bd6be611ffe458e234b8f7708"
     },
     {
       "path": "docs/porting/TH06NC_FORMATS.md",
@@ -67,6 +67,16 @@
       "path": "docs/porting/TH14_DIALOGUE_DAMAGE_FIX_OCT19.md",
       "bytes": 2897,
       "sha256": "2a4638bd0a49fad3d8c7efc798aeeef7ddeb3164261972e60344cb16a814123c"
+    },
+    {
+      "path": "docs/porting/TH14_DIALOGUE_SECTION_FIX_OCT20.md",
+      "bytes": 3085,
+      "sha256": "b66c5131bcf0d55e92170c138caca5663bb9f34f96dd1ba888e845e271e29e91"
+    },
+    {
+      "path": "docs/porting/TH14_FIXED20_DEPTH_FIX_OCT19.md",
+      "bytes": 2622,
+      "sha256": "9f1561d8260b4c1060edcb3bfa88895a799ba9d63f009fa9d0a1e442da5b076e"
     },
     {
       "path": "docs/porting/TH14_LOCAL_QUIET_DEFAULT_OCT15.md",
@@ -102,6 +112,11 @@
       "path": "docs/porting/TH14_ORDINARY_STAGE_LOADING_OCT15.md",
       "bytes": 2916,
       "sha256": "78f4b029f947b81ef65edd38fd9893bef00b0956f432c6503a9c89d70ee59642"
+    },
+    {
+      "path": "docs/porting/TH14_POSITIVE_W_VIEWPORT_FIX_OCT19.md",
+      "bytes": 3651,
+      "sha256": "ce0e2d73d34eb91cafd70b3692ff4c9de3422b292abf80f50a9387f65cfbecb7"
     },
     {
       "path": "docs/porting/TH14_PRIMITIVE_VIEWPORT_FIX_OCT19.md",
@@ -1514,6 +1529,11 @@
       "sha256": "0f439937431477d05100e13207cab339899b85297cb33f98a5d973f4c8ea7d89"
     },
     {
+      "path": "docs/porting/th14-dialogue-section-observed-oct20.json",
+      "bytes": 322700,
+      "sha256": "ede552c0665ca044db2612bc3e266284cad959377d602f7e0f24b63299e091db"
+    },
+    {
       "path": "docs/porting/th14-dialogue-session-timing-verified-oct11.json",
       "bytes": 31742,
       "sha256": "6390db84e847800aa4dfcc6377383b694b745d6086b7f1b8debe55a9194b2227"
@@ -1762,6 +1782,11 @@
       "path": "docs/porting/th14-extra-reimu-b-campaign-oct10.json",
       "bytes": 31566,
       "sha256": "7a043322485a0f1f2e82589bfabb1ea48bc52f36f993128d05627891e2e956fd"
+    },
+    {
+      "path": "docs/porting/th14-fixed20-depth-observed-oct19.json",
+      "bytes": 178304,
+      "sha256": "49974b0b40a5d96c58e11a44c683b3a7885a33714910492661386a89a13c2a7a"
     },
     {
       "path": "docs/porting/th14-flow-verified.json",
@@ -2204,9 +2229,24 @@
       "sha256": "3b750bcc4f1a5172f575101b1784b8b079b079cb5fd8559adc9a53259dccf30e"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-dialogue-section-oct20.json",
+      "bytes": 103665,
+      "sha256": "eefe1eb8bcf8072f4eaa077cc659efa61b213feab5ae4b218d544e441be04109"
+    },
+    {
+      "path": "docs/porting/th14-launcher-runtime-fixed20-depth-oct19.json",
+      "bytes": 103757,
+      "sha256": "a51ef8c35ce092fa439a955be626a494a52b665a9e3f58dac8ebcbe9a55ae937"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-loading-family-oct16.json",
       "bytes": 103572,
       "sha256": "3b4b058ee13a69ea0c3441f34b7203db0b8ec900e5040046d87449ad796d52b7"
+    },
+    {
+      "path": "docs/porting/th14-launcher-runtime-positive-w-viewport-oct19.json",
+      "bytes": 103768,
+      "sha256": "73d92640558eb0cd07c7e6a8c3d33b2e51c4b67ba2d86e120244504b32e36056"
     },
     {
       "path": "docs/porting/th14-launcher-runtime-prepared-clip-pause-oct14.json",
@@ -2314,9 +2354,24 @@
       "sha256": "c8bf01be4d731fd2f1e00e12210f02b892448eb6fed42122aaa029506b0b2b4c"
     },
     {
+      "path": "docs/porting/th14-launcher-site-dialogue-section-oct20.json",
+      "bytes": 36943,
+      "sha256": "e8120517f8bfae315dae5aa038748c8d4c3132952f70d1059c53b374e42627b7"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-fixed20-depth-oct19.json",
+      "bytes": 36954,
+      "sha256": "06fde71923fce98f6d9819cfac710dec6bea317844cee455730fd4ad4804ca11"
+    },
+    {
       "path": "docs/porting/th14-launcher-site-loading-family-oct16.json",
       "bytes": 37038,
       "sha256": "3f7abba78f81266cbc303fac5e7939ec497b0b1c06d61b52a26f1226d20e6afd"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-positive-w-viewport-oct19.json",
+      "bytes": 36975,
+      "sha256": "6bb0487cdd88e69e821241525690aa5a641711669801fc71406bd7a1bb1e3fa0"
     },
     {
       "path": "docs/porting/th14-launcher-site-primitive-viewport-oct19.json",
@@ -3412,6 +3467,11 @@
       "path": "docs/porting/th14-position-verified.json",
       "bytes": 1542,
       "sha256": "5b95b3f71b53e26b25a85dfbccbc47dacba649c81a096f6d178ada4d1ef04fe6"
+    },
+    {
+      "path": "docs/porting/th14-positive-w-viewport-observed-oct19.json",
+      "bytes": 191244,
+      "sha256": "94ec4619f4f5e84a3ad1cda2a6b84f4c8da38bf0e4d9a94788ed4ac496363789"
     },
     {
       "path": "docs/porting/th14-primitive-viewport-observed-oct19.json",
@@ -6445,8 +6505,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "bytes": 57771,
-      "sha256": "05ba16a1462c873522cafc20e4abbe990fba677462b6e28a7916bb9a177ae2c4"
+      "bytes": 57819,
+      "sha256": "a1dd749ecac345143a6f4ae3efaa948423a763a7a319f75db8c51e4004fa8698"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
@@ -14654,6 +14714,11 @@
       "sha256": "5d623289751740590ce9a1f0c03d8b50a6dcc98431bb0298feb413c69d536901"
     },
     {
+      "path": "tools/th14-dialogue-section-evidence-check-oct20.py",
+      "bytes": 5393,
+      "sha256": "f71c4221a2a3aae614d0379db8294f22f62c260456c485b8114d394a62183593"
+    },
+    {
       "path": "tools/th14-dialogue-session-timing-check.mjs",
       "bytes": 4192,
       "sha256": "926fbffae405efc8b7876fea7c7a6af6254293dfa3a27828b9a20bcad6bcb60c"
@@ -15017,6 +15082,11 @@
       "path": "tools/th14-extra-late-combat-reference-trace-check.mjs",
       "bytes": 9377,
       "sha256": "9f584acb32ac49aeb755339d6ee0ed45556c408738190e62a5b9a3c8ebf5d6fe"
+    },
+    {
+      "path": "tools/th14-fixed20-depth-evidence-check-oct19.py",
+      "bytes": 9734,
+      "sha256": "908d613b81dc499d9a70375723607021f37954fe3db185b6c71c5779f09d12f0"
     },
     {
       "path": "tools/th14-flow-check.mjs",
@@ -16944,6 +17014,26 @@
       "sha256": "ec8e72507c42fa79d221f8082db933d460eee13e3a0bfcea31f7f91dc7a5240e"
     },
     {
+      "path": "tools/th14-package-dialogue-section-runtime-oct20.mjs",
+      "bytes": 4857,
+      "sha256": "36710c69a33e929a15762428e6329724d278a619caa7e09bc840988f785b76fa"
+    },
+    {
+      "path": "tools/th14-package-dialogue-section-site-oct20.mjs",
+      "bytes": 5244,
+      "sha256": "c558cba9c64d30d84ba2731ceaa7f2d43fa985c2bea5aa44059dbb8f39d8e8fe"
+    },
+    {
+      "path": "tools/th14-package-fixed20-depth-runtime-oct19.mjs",
+      "bytes": 4991,
+      "sha256": "67119c7283eaa4eb3613357278b7611ba5f8fbb955419d37685bdfd8decc8121"
+    },
+    {
+      "path": "tools/th14-package-fixed20-depth-site-oct19.mjs",
+      "bytes": 5258,
+      "sha256": "3959a1d6196c0c0120f684b932cdd825226cb467011c6f4078acb2eab3c038bf"
+    },
+    {
       "path": "tools/th14-package-launcher.mjs",
       "bytes": 10257,
       "sha256": "8a8b29d7b1d975df2638cf6ca7146a593493b6082ddcf809b70a4df2caf26885"
@@ -16962,6 +17052,16 @@
       "path": "tools/th14-package-local.mjs",
       "bytes": 4757,
       "sha256": "03b7cf0dca1f539d9cdbc84572ee176ef91a53f62fc907927d2b50007e8b7f76"
+    },
+    {
+      "path": "tools/th14-package-positive-w-viewport-runtime-oct19.mjs",
+      "bytes": 5005,
+      "sha256": "ea1827ea729ed3409f878c9a0989443acc8cda106a023602809f3bf90fecd21b"
+    },
+    {
+      "path": "tools/th14-package-positive-w-viewport-site-oct19.mjs",
+      "bytes": 5284,
+      "sha256": "bd729bb714b43f014fafe0e77999056dc438879e3eef55261e49b160fa3349a0"
     },
     {
       "path": "tools/th14-package-primitive-viewport-runtime-oct19.mjs",
@@ -17217,6 +17317,11 @@
       "path": "tools/th14-position-native.py",
       "bytes": 4271,
       "sha256": "b3362d16a30a0202ba8cdc3b5735be06eee842610eb477652ff65df690d0c12b"
+    },
+    {
+      "path": "tools/th14-positive-w-viewport-evidence-check-oct19.py",
+      "bytes": 11039,
+      "sha256": "1c88a163f042d1b7684ab3cd3acc21553753f3c12b5fbc4ebeca814fabda7454"
     },
     {
       "path": "tools/th14-prepare-lossless-music.py",
@@ -21167,76 +21272,6 @@
       "path": "tools/vendor-fzstd.py",
       "bytes": 1415,
       "sha256": "18245fc17d17e80a6861d55c9e24ad0299b9700e05b20a96a544cc67a51208a2"
-    },
-    {
-      "path": "docs/porting/TH14_POSITIVE_W_VIEWPORT_FIX_OCT19.md",
-      "bytes": 3651,
-      "sha256": "ce0e2d73d34eb91cafd70b3692ff4c9de3422b292abf80f50a9387f65cfbecb7"
-    },
-    {
-      "path": "docs/porting/th14-positive-w-viewport-observed-oct19.json",
-      "bytes": 191244,
-      "sha256": "94ec4619f4f5e84a3ad1cda2a6b84f4c8da38bf0e4d9a94788ed4ac496363789"
-    },
-    {
-      "path": "docs/porting/th14-launcher-runtime-positive-w-viewport-oct19.json",
-      "bytes": 103768,
-      "sha256": "73d92640558eb0cd07c7e6a8c3d33b2e51c4b67ba2d86e120244504b32e36056"
-    },
-    {
-      "path": "docs/porting/th14-launcher-site-positive-w-viewport-oct19.json",
-      "bytes": 36975,
-      "sha256": "6bb0487cdd88e69e821241525690aa5a641711669801fc71406bd7a1bb1e3fa0"
-    },
-    {
-      "path": "tools/th14-positive-w-viewport-evidence-check-oct19.py",
-      "bytes": 11039,
-      "sha256": "1c88a163f042d1b7684ab3cd3acc21553753f3c12b5fbc4ebeca814fabda7454"
-    },
-    {
-      "path": "tools/th14-package-positive-w-viewport-runtime-oct19.mjs",
-      "bytes": 5005,
-      "sha256": "ea1827ea729ed3409f878c9a0989443acc8cda106a023602809f3bf90fecd21b"
-    },
-    {
-      "path": "tools/th14-package-positive-w-viewport-site-oct19.mjs",
-      "bytes": 5284,
-      "sha256": "bd729bb714b43f014fafe0e77999056dc438879e3eef55261e49b160fa3349a0"
-    },
-    {
-      "path": "docs/porting/TH14_FIXED20_DEPTH_FIX_OCT19.md",
-      "bytes": 2622,
-      "sha256": "9f1561d8260b4c1060edcb3bfa88895a799ba9d63f009fa9d0a1e442da5b076e"
-    },
-    {
-      "path": "docs/porting/th14-fixed20-depth-observed-oct19.json",
-      "bytes": 178304,
-      "sha256": "49974b0b40a5d96c58e11a44c683b3a7885a33714910492661386a89a13c2a7a"
-    },
-    {
-      "path": "docs/porting/th14-launcher-runtime-fixed20-depth-oct19.json",
-      "bytes": 103757,
-      "sha256": "a51ef8c35ce092fa439a955be626a494a52b665a9e3f58dac8ebcbe9a55ae937"
-    },
-    {
-      "path": "docs/porting/th14-launcher-site-fixed20-depth-oct19.json",
-      "bytes": 36954,
-      "sha256": "06fde71923fce98f6d9819cfac710dec6bea317844cee455730fd4ad4804ca11"
-    },
-    {
-      "path": "tools/th14-fixed20-depth-evidence-check-oct19.py",
-      "bytes": 9734,
-      "sha256": "908d613b81dc499d9a70375723607021f37954fe3db185b6c71c5779f09d12f0"
-    },
-    {
-      "path": "tools/th14-package-fixed20-depth-runtime-oct19.mjs",
-      "bytes": 4991,
-      "sha256": "67119c7283eaa4eb3613357278b7611ba5f8fbb955419d37685bdfd8decc8121"
-    },
-    {
-      "path": "tools/th14-package-fixed20-depth-site-oct19.mjs",
-      "bytes": 5258,
-      "sha256": "3959a1d6196c0c0120f684b932cdd825226cb467011c6f4078acb2eab3c038bf"
     }
   ],
   "excluded": [
