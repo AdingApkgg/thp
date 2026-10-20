@@ -15,3 +15,6 @@ inline bool SDL_PauseAudioStreamDevice(SDL_AudioStream*){return true;}
 inline int SDL_GetAudioStreamQueued(SDL_AudioStream*){return 0;}
 inline bool SDL_PutAudioStreamData(SDL_AudioStream*,const void*,int){return true;}
 inline const char* SDL_GetError(){return "SDL test boundary";}
+
+// Legacy tests freeze the clock; positive-time Native comparisons use an explicit clock shim.
+inline std::uint64_t SDL_GetTicksNS(){return 0;}

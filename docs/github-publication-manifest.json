@@ -40,8 +40,8 @@
     },
     {
       "path": "docs/porting/CORE_STATUS.md",
-      "bytes": 417615,
-      "sha256": "d40f20eb5a6765ea07f749f2e5a05a07940de92bd6be611ffe458e234b8f7708"
+      "bytes": 418447,
+      "sha256": "143a632ecdb0d03413b1ac6769243c22b3f61cf6184b329cc3196de3066bc416"
     },
     {
       "path": "docs/porting/TH06NC_FORMATS.md",
@@ -102,6 +102,11 @@
       "path": "docs/porting/TH14_METHOD.md",
       "bytes": 36934,
       "sha256": "8d22494d093017d996ef9ecbe8ed27c8b17cd0f5926a810041dda3f27e94e1d0"
+    },
+    {
+      "path": "docs/porting/TH14_MUSIC_CLOCK_FIX_OCT20.md",
+      "bytes": 4135,
+      "sha256": "fded076b40e9637ce8d5e1a90ef3b0bfacce29cdcf089dce4ab0e691a2d1728c"
     },
     {
       "path": "docs/porting/TH14_NEXT_STAGE_LOADING_FAMILY_FIX_OCT16.md",
@@ -2244,6 +2249,11 @@
       "sha256": "3b4b058ee13a69ea0c3441f34b7203db0b8ec900e5040046d87449ad796d52b7"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-music-clock-oct20.json",
+      "bytes": 103778,
+      "sha256": "72a0dece3d9ac39128288fa8e44686de0ae0e9b67080a566df3f0887edcc339c"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-positive-w-viewport-oct19.json",
       "bytes": 103768,
       "sha256": "73d92640558eb0cd07c7e6a8c3d33b2e51c4b67ba2d86e120244504b32e36056"
@@ -2369,6 +2379,11 @@
       "sha256": "3f7abba78f81266cbc303fac5e7939ec497b0b1c06d61b52a26f1226d20e6afd"
     },
     {
+      "path": "docs/porting/th14-launcher-site-music-clock-oct20.json",
+      "bytes": 37066,
+      "sha256": "d2ce1023d9027cfc57fb24b01aff3a6522b49b8e6b56cfc39061178191c32d2a"
+    },
+    {
       "path": "docs/porting/th14-launcher-site-positive-w-viewport-oct19.json",
       "bytes": 36975,
       "sha256": "6bb0487cdd88e69e821241525690aa5a641711669801fc71406bd7a1bb1e3fa0"
@@ -2492,6 +2507,11 @@
       "path": "docs/porting/th14-math-verified.json",
       "bytes": 1679,
       "sha256": "c9f3db2a4febd3d7720fddc12df6e63aeeb78b2684c6eb29b6823431c496ad85"
+    },
+    {
+      "path": "docs/porting/th14-music-clock-observed-oct20.json",
+      "bytes": 297502,
+      "sha256": "653ba129cf7524a1ed1646ab4ed6c15bcc3d431cb5d317f70c578b388c4f2f0e"
     },
     {
       "path": "docs/porting/th14-music-fade-verified.json",
@@ -7365,8 +7385,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/sdl/AudioDevice.cpp",
-      "bytes": 11299,
-      "sha256": "d0aea4804e03450d474b0f1345fa62abd66f4aec96fb71c9cf7ca699bfe562df"
+      "bytes": 13694,
+      "sha256": "2a44afe6eb48ecbe11786e8f5822f577bfbe331db22112f8d49904717375c131"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/sdl/AudioDevice.hpp",
@@ -8620,8 +8640,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/audio-shim/SDL3/SDL.h",
-      "bytes": 1040,
-      "sha256": "b4cbf2a4a2fe3a6457547b09c34e0687b756903e333b35daf9b2f73c88d83227"
+      "bytes": 1185,
+      "sha256": "25edc66a7fea29096aff6822c5eaf29e906af8e85c1d1a2286f65f1c1fb65adf"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/battle-integration.test.mjs",
@@ -16454,6 +16474,11 @@
       "sha256": "06741b36837df2238256729bdb8ce82ba5ab9e7babc4994be9314a3e3e3a4a30"
     },
     {
+      "path": "tools/th14-music-clock-evidence-check-oct20.py",
+      "bytes": 6304,
+      "sha256": "817e726a1b87067389419e50890850973ab69b86c8308dc222624fc9a18ee848"
+    },
+    {
       "path": "tools/th14-music-fade-check.mjs",
       "bytes": 2547,
       "sha256": "1ec77250c89656b747bad2d2628b20cc0bcd69956129c873081ddb0a045fbf7c"
@@ -17052,6 +17077,16 @@
       "path": "tools/th14-package-local.mjs",
       "bytes": 4757,
       "sha256": "03b7cf0dca1f539d9cdbc84572ee176ef91a53f62fc907927d2b50007e8b7f76"
+    },
+    {
+      "path": "tools/th14-package-music-clock-runtime-oct20.mjs",
+      "bytes": 4981,
+      "sha256": "d6f889b6a32633ec84bf91cbf4e0baefa36f533fb42ca694588de98af2149538"
+    },
+    {
+      "path": "tools/th14-package-music-clock-site-oct20.mjs",
+      "bytes": 5398,
+      "sha256": "19e90b3c03cef90e1332bb11ddb36777259e5d37563d80882e087ddfca3f44e4"
     },
     {
       "path": "tools/th14-package-positive-w-viewport-runtime-oct19.mjs",
