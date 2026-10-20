@@ -1,13 +1,33 @@
-# TH14 当前本机入口
+# TH14 当前本机入口 · 2026-10-20
+
+当前静音预览固定使用 `http://localhost:8208/?game=th14`，启动命令更新为：
+
+```powershell
+node tools/th14-serve-workspace-diagnostics.mjs --report th14-launcher-site-native-fog-mix-oct20.json --descriptor artifacts/th14/save-conflict-observe-oct16/descriptor.json --descriptor-sha256 3fbb87653355b16e2586a2ca833386f688da72378e069a5840f351e48c4cd085
+```
+
+命令不负责停止已有服务；不要重复启动同端口服务或改用其他来源。当前本地进程身份收据为 `artifacts/th14/native-fog-mix-preview-oct20/server-start.json`，切换前已核对原进程可执行文件、完整参数和创建时间。HTTP 完整模块已核对 SHA-256 `5be4ae71992f45b66d327ef4feb1e1d41409127681c362bd74a62cea199cd15d`，运行时 40 文件、站点 127 文件，146 个 SDL 对象新编译。
+
+实际预览保持“本机测试静音”和 `0ms SP`，四份旧录像保留，普通 Replay 菜单播放灵梦 B Normal 二面，当前警告／错误 0；没有清存档或缓存，未称浏览器自然 Replay EOF。源码、清单和限制见[当前片元雾修正](TH14_NATIVE_FOG_MIX_FIX_OCT20.md)、[当前站点清单](th14-launcher-site-native-fog-mix-oct20.json)。整作 1:1 仍未达成。
+
+## 历史入口和诊断范围 · 2026-10-15
+
+以下命令、模块与“当前”描述均指当时冻结记录，不是今天的默认包，不能继承为今天的检查结果。
 
 当前本机预览使用 `tools/th14-serve-workspace-diagnostics.mjs`。它复用冻结的 current 服务与静音脚本，监听 `127.0.0.1:8208`，按固定清单挂载当前诊断。
 
 ```powershell
-node tools/th14-serve-workspace-diagnostics.mjs --report th14-launcher-preview-prepared-staged-capture-state-oct14.json --descriptor artifacts/th14/stage-angle-shader-diagnostic-oct14/workspace-descriptor.json --descriptor-sha256 26b31b5d2b7159bce273524e1c1e0dfe9ff2779d6444a787b55430fb5b6ce94d --check
+node tools/th14-serve-workspace-diagnostics.mjs --report th14-launcher-preview-prepared-screen-camera-oct15.json --descriptor artifacts/th14/triangle-weights-raw-oct15/workspace-descriptor.json --descriptor-sha256 7a3b1f431080dac76372cea8ca8621ce44fddbc63fc3cd129027615071ae3836
 ```
 
-去掉 `--check` 才启动服务。入口不会停止已有服务。浏览器固定打开 `http://localhost:8208/`，不要混用 `127.0.0.1` 或其他端口，以保留同一来源的授权和存档。
+上述命令启动服务，入口不会停止已有服务。浏览器固定打开 `http://localhost:8208/`，不要混用 `127.0.0.1` 或其他端口，以保留同一来源的授权和存档。此独立 JS 诊断没有 WASM，旧通用 `--check` 内置的 WASM 必须存在检查会失败；此前坐标传递清单的这项失败和独立只读 9 GET／5 POST 检查均保留原范围，不继承为当前清单验收。当前新清单已通过实际浏览器读取和捕获。
 
-`/app-shell-sw.js` 的 GET/HEAD 先核验发布文件原 SHA，再返回本机专用 worker：install 调用 `skipWaiting()`，activate 调用 `clients.claim()`，无 fetch 拦截。它不删除 cache、IndexedDB 或存档；发布 SW 文件未编辑，适配源不写入发布目录。当前诊断只允许清单中的 54 个 GET 与 2 个 JSON POST，旧诊断写入入口关闭。结果只能独占创建，或以相同哈希重试；[清单接口说明](TH14_WORKSPACE_DIAGNOSTICS_GATEWAY.md)列出路径及范围。
+`/app-shell-sw.js` 的 GET/HEAD 先核验发布文件原 SHA，再返回本机专用 worker：install 调用 `skipWaiting()`，activate 调用 `clients.claim()`，无 fetch 拦截。它不删除 cache、IndexedDB 或存档；发布 SW 文件未编辑，适配源不写入发布目录。当前透视属性基诊断只允许清单中的 8 个 GET 与 5 个 POST，其中报告限 2 MiB，两臂各有固定 5,616 字节顶点缓冲和 4,915,200 字节像素缓冲；旧诊断写入入口关闭。网关原全局大小限制未修改，结果只能独占创建，或以相同哈希重试；[清单接口说明](TH14_WORKSPACE_DIAGNOSTICS_GATEWAY.md)列出路径及范围。
 
 早期只读收据为 `th14-local-workspace-current-server-verified-oct14.json`，仅证明当时的模拟响应与事件接线。后续实际浏览器已显示新诊断入口和静音标记，并在完整刷新后读取新保存的录像 A；范围见 [修复后观察](th14-staged-capture-browser-post-statefix-observed-oct14.json)。音乐和音效默认静音；该适配只用于本机测试，不作为音频等价证明。
+
+此前摘要页的 UV 模式已实际运行，范围见[历史摘要页观察](th14-stage-transform-feedback-summary-browser-observed-oct14.json)。当前 `/checks/render-gap-pass-through/` 已实际完成两次绘制：A 完整复现旧浏览器顶点和像素；B 使用测得的 Native authored VS2 坐标与当前 GPU 坐标桥接，输出的全部顶点与像素仍与 A 相同，327 个 UV 字差保留，覆盖差为零。页面只显示短摘要，完整数据保存在私有产物目录。此坐标并非原固定管线 clip 的直接捕获，整作 1:1 未完成。
+
+当前默认运行包为屏幕相机参数修正后的 `3083772c…`。新增标签页已实际显示标题和 Normal Demo，内外静音标记可见；旧游戏页保持原状态。该浏览器观察不继承旧版完整录像或图像通过结果，详见[相机修正](TH14_SCREEN_CAMERA_FIX_OCT15.md)。服务需要本机回环套接字权限；编译和矩阵比较均在普通工作区权限中完成。
+
+当前 `/checks/triangle-weights-raw/` 已实际完成控制与属性基两次绘制，保存两个完整 4,915,200 字节像素缓冲及两个顶点缓冲，捕获警告／错误为空，静音标记可见。独立对照仍有 328 个权重字差，覆盖差为零；原值不作归一化、四舍五入或夹取。[实际权重范围](th14-triangle-weights-receipt-oct15.json)。原生侧同为两个独立隐藏绘制，不启动原版游戏、Present 或音频；正常清理成功，超时清理未实际触发。
