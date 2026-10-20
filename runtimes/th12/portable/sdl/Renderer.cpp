@@ -88,6 +88,9 @@ bool Renderer::initialize(){
  if(version==10&&!measure_alpha_boundaries(alphaBoundaries)){failure="RGBA8 alpha conversion measurement failed";return false;}
  std::string source=vertexSource;
 #if defined(PORT_TITLE) && PORT_TITLE == 14
+ if(version==10){replace(source,"uniform vec3 fogParams;","uniform vec3 fogParams;uniform vec3 fogLinear;");replace(source,"(fogParams.y-z)/(fogParams.y-fogParams.x)","(fogLinear.z>0.5?fogLinear.x-z*fogLinear.y:(fogParams.y-z)/(fogParams.y-fogParams.x))");}
+#endif
+#if defined(PORT_TITLE) && PORT_TITLE == 14
  // Retail screen vertices are snapped to an eight-bit subpixel grid. Doing
  // that before the clip-space conversion preserves midpoint neighbors that
  // otherwise collapse onto a tie during the viewport divide. Native HAL
@@ -148,8 +151,8 @@ void Renderer::select(const State& s){
   Program p;p.id=glCreateProgram();GLuint fs=shader(GL_FRAGMENT_SHADER,source);glAttachShader(p.id,vertex);glAttachShader(p.id,fs);glLinkProgram(p.id);glDeleteShader(fs);GLint linked=0;glGetProgramiv(p.id,GL_LINK_STATUS,&linked);if(!linked){char log[2048];glGetProgramInfoLog(p.id,sizeof(log),nullptr,log);std::fprintf(stderr,"SDL program: %s\n",log);std::abort();}
   if(version==10){glUseProgram(p.id);glUniform4fv(glGetUniformLocation(p.id,"alphaBoundary[0]"),64,alphaBoundaries.data());glUseProgram(currentProgram);}
 #if defined(PORT_TITLE) && PORT_TITLE == 14
-  const char* names[]{"viewport","transformed","textureTransform","instanced","world","view","projection","textureMatrix","fogEnabled","rangeFog","fogMode","fogParams","fogColor","hasTexture","factor","colorOp","colorArg1","colorArg2","alphaOp","alphaArg1","alphaArg2","alphaTest","alphaRef","alphaFunc","depth16","tex","clipMatrix"};
-  for(int i=0;i<27;i++)p.uniforms[i].location=glGetUniformLocation(p.id,names[i]);it=programs.emplace(key,p).first;
+  const char* names[]{"viewport","transformed","textureTransform","instanced","world","view","projection","textureMatrix","fogEnabled","rangeFog","fogMode","fogParams","fogColor","hasTexture","factor","colorOp","colorArg1","colorArg2","alphaOp","alphaArg1","alphaArg2","alphaTest","alphaRef","alphaFunc","depth16","tex","clipMatrix","fogLinear"};
+  for(int i=0;i<28;i++)p.uniforms[i].location=glGetUniformLocation(p.id,names[i]);it=programs.emplace(key,p).first;
 #else
   const char* names[]{"viewport","transformed","textureTransform","instanced","world","view","projection","textureMatrix","fogEnabled","rangeFog","fogMode","fogParams","fogColor","hasTexture","factor","colorOp","colorArg1","colorArg2","alphaOp","alphaArg1","alphaArg2","alphaTest","alphaRef","alphaFunc","depth16","tex"};
   for(int i=0;i<26;i++)p.uniforms[i].location=glGetUniformLocation(p.id,names[i]);it=programs.emplace(key,p).first;
@@ -212,7 +215,15 @@ void Renderer::issue(const State& d,Topology primitive,u32 count,const void* dat
 #if defined(PORT_TITLE) && PORT_TITLE == 14
  if(!transformed&&!instance){auto clip=th14_clip(d.matrix[0],d.matrix[1],d.matrix[2]);uniform(26,16,clip.data());}
 #endif
- integer(1,transformed);integer(2,p.textureTransform);integer(3,!!instance);for(int i=0;i<4;i++)uniform(4+i,16,d.matrix[i].data());
+ integer(1,transformed);integer(2,p.textureTransform);integer(3,!!instance);
+#if defined(PORT_TITLE) && PORT_TITLE == 14
+ const bool nativeFog=version==10&&p.fog&&!p.rangeFog&&p.fogMode==FogMode::Linear&&std::isfinite(p.fogNear)&&std::isfinite(p.fogFar)&&p.fogNear!=p.fogFar;
+ if(nativeFog){const auto eye=th14_multiply(d.matrix[1],d.matrix[0]);uniform(4,16,eye.data());uniform(5,16,identity.data());uniform(6,16,d.matrix[2].data());uniform(7,16,d.matrix[3].data());}
+ else {for(int i=0;i<4;i++)uniform(4+i,16,d.matrix[i].data());}
+ float fogLinear[3]{};if(nativeFog){volatile float range=p.fogFar-p.fogNear;volatile float scale=1.f/range;volatile float bias=p.fogFar*scale;fogLinear[0]=bias;fogLinear[1]=scale;fogLinear[2]=1.f;}uniform(27,3,fogLinear);
+#else
+ for(int i=0;i<4;i++)uniform(4+i,16,d.matrix[i].data());
+#endif
  integer(8,p.fog);integer(9,p.rangeFog);integer(10,u32(p.fogMode));float fog[]{p.fogNear,p.fogFar,p.fogDensity};uniform(11,3,fog);uniform(12,4,color(p.fogColor).data());integer(13,!!texture);uniform(14,4,color(p.textureFactor).data());
  auto arg=[](Argument a){return int(u32(a.source)|(a.complement?16u:0u)|(a.alphaOnly?32u:0u));};
  integer(15,u32(p.color.operation));integer(16,arg(p.color.first));integer(17,arg(p.color.second));integer(18,u32(p.alpha.operation));integer(19,arg(p.alpha.first));integer(20,arg(p.alpha.second));integer(21,p.alphaTest);float alpha=float(p.alphaReference)/255;uniform(22,1,&alpha);integer(23,u32(p.alphaCompare));integer(24,version==10&&p.depthTest&&d.depth&&resolve(owner,d.depth).format==PixelFormat::Depth16);
@@ -271,6 +282,7 @@ glEnableVertexAttribArray(0);glVertexAttribPointer(0,transformed?4:3,GL_FLOAT,fa
   std::array<float,16> model{};std::memcpy(model.data(),input+record*68,64);
   auto clip=th14_clip(model,d.matrix[1],d.matrix[2]);
   std::memcpy(expanded.data()+record*136,input+record*68,68);
+  if(nativeFog){const auto eye=th14_multiply(d.matrix[1],model);std::memcpy(expanded.data()+record*136,eye.data(),64);}
   std::memcpy(expanded.data()+record*136+68,clip.data(),64);
   const float eligible=th14_primitive_projectable(static_cast<const float*>(data),d.stride,0,4,clip,d.viewport)?1.f:0.f;std::memcpy(expanded.data()+record*136+132,&eligible,4);
  }
