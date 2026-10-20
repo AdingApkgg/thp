@@ -130,6 +130,18 @@ void PauseMenu::move(u32 keys,i32 base){
     if(cursor.previous!=cursor.selected){family(menu_animation,base+cursor.selected);sounds.push_back(kPortTitle==14?10:12);}
 }
 void PauseMenu::escape(u32 pressed){if(pressed&256){cursor.select(0);family(background_animation,1);family(menu_animation,1);transition(4);}}
+#if PORT_TITLE == 14
+bool PauseMenu::begin_replay_end(){
+    // Retail448ef0 enters the forced replay menu before enabling pause rate1.
+    replay=true;transition(2);elapsed.set(0,&animations.rate);forced_exit=0;
+    sounds.clear();action=PauseAction::None;cursor.disabled_count=0;
+    if(!create_backdrop())return false;
+    auto* menu=animations.create(front,131,5,0,true);
+    if(!menu){error="replay end menu creation failed";return false;}
+    menu->flags2&=~0x6000u;menu_animation=menu->id;family(menu_animation,3);
+    return true;
+}
+#endif
 bool PauseMenu::begin(bool playback){
 #if PORT_TITLE == 16
     replay=playback;transition(1);elapsed.set(0,&animations.rate);th16_substate=0;sounds.clear();action=PauseAction::None;

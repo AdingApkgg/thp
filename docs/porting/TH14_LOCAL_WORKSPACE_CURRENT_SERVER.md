@@ -1,14 +1,14 @@
-# TH14 当前本机入口 · 2026-10-20
+# TH14 当前本机入口 · 2026-10-21
 
 当前静音预览固定使用 `http://localhost:8208/?game=th14`，启动命令更新为：
 
 ```powershell
-node tools/th14-serve-workspace-diagnostics.mjs --report th14-launcher-site-native-fog-mix-oct20.json --descriptor artifacts/th14/save-conflict-observe-oct16/descriptor.json --descriptor-sha256 3fbb87653355b16e2586a2ca833386f688da72378e069a5840f351e48c4cd085
+node tools/th14-serve-workspace-diagnostics.mjs --report th14-launcher-site-replay-resume-final-oct21.json --descriptor artifacts/th14/save-conflict-observe-oct16/descriptor.json --descriptor-sha256 3fbb87653355b16e2586a2ca833386f688da72378e069a5840f351e48c4cd085
 ```
 
-命令不负责停止已有服务；不要重复启动同端口服务或改用其他来源。当前本地进程身份收据为 `artifacts/th14/native-fog-mix-preview-oct20/server-start.json`，切换前已核对原进程可执行文件、完整参数和创建时间。HTTP 完整模块已核对 SHA-256 `5be4ae71992f45b66d327ef4feb1e1d41409127681c362bd74a62cea199cd15d`，运行时 40 文件、站点 127 文件，146 个 SDL 对象新编译。
+命令不负责停止已有服务；不要重复启动同端口服务或改用其他来源。当前进程身份收据为 `artifacts/th14/replay-resume-final-preview-oct21/server-start.json`，切换前已核对原进程可执行文件、完整参数和创建时间。HTTP 完整模块已核对 SHA-256 `02669f7731b7e774e59974b798e7b129fe3470187e10bc0e6e11e72eb2900b6e`，运行时 40 文件、站点 127 文件。146 对象来自冻结全新构建及经过哈希核验的增量构建；最后的标题隔离改动单独编译，证明最终对象与已测模块逐字节相同，没有借旧源哈希冒充当前源码。
 
-实际预览保持“本机测试静音”和 `0ms SP`，四份旧录像保留，普通 Replay 菜单播放灵梦 B Normal 二面，当前警告／错误 0；没有清存档或缓存，未称浏览器自然 Replay EOF。源码、清单和限制见[当前片元雾修正](TH14_NATIVE_FOG_MIX_FIX_OCT20.md)、[当前站点清单](th14-launcher-site-native-fog-mix-oct20.json)。整作 1:1 仍未达成。
+实际预览保持“本机测试静音”和 `0ms SP`；四份旧录像保留，已通过普通管理窗口增加本轮测试录像，列表共五份，没有清存档或缓存。当前模块已通过普通菜单实际观察自然 GameOver、续关、普通暂停、恢复、返回标题，以及魔理沙 B Lunatic 从五面自然进入强制结束菜单、Escape 不能取消、确认返回录像列表，警告／错误为空；[浏览器收据](th14-pause-replay-browser-observed-oct21.json)限定实际范围，不继承旧模块结果。新导入文件再次完整刷新后的持久化和最终浏览器重新播放尚未在该收据中验收。源码与范围见[暂停／结束菜单修正](TH14_REPLAY_END_SOUND_FIX_OCT21.md)、[当前站点清单](th14-launcher-site-replay-resume-final-oct21.json)。整作 1:1 仍未达成。
 
 ## 历史入口和诊断范围 · 2026-10-15
 

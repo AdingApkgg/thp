@@ -213,6 +213,12 @@ bool GameSession::activate_stage(){
     battle->th14_audio_flags=config.bytes[0x38];battle->th14_scores=&scores;
 #endif
     battle->replaying=state.replay;battle->demo=state.demo;battle->replay_entry=entry;
+#if PORT_TITLE == 14
+    battle->on_game_over=[this](bool replay){
+        if(replay)return !interactive||pause();
+        return open_result(false);
+    };
+#endif
     battle->completion.mode.control_mode=state.replay||state.demo;
     battle->completion.mode.replay_mode=state.replay?1:0;
     battle->completion.mode.practice=state.practice&&!state.replay;battle->completion.mode.replay_practice=state.practice&&state.replay;
@@ -291,6 +297,9 @@ bool GameSession::update(const GameSessionInput& input) {
     GameSessionInput edges=input;
     edges.pressed|=input.held&~last_held;
     edges.released|=last_held&~input.held;
+#if PORT_TITLE == 14
+    bool overlay_already_updated=false;
+#endif
     const bool pause_edge=input.pause&&!last_pause;
     const bool confirm_edge=(edges.pressed&0x101u)!=0;
     last_held=input.held;
@@ -309,12 +318,20 @@ bool GameSession::update(const GameSessionInput& input) {
         ++state.frame;return true;
     }
     if(pause_edge&&state.phase==GameSessionPhase::stage&&!state.demo&&state.frame>29) {
+#if PORT_TITLE == 14
+        // Overlay registry8 precedes the PauseMenu9 callback even on entry.
+        if(!animations.update(true))return fail("pause entry overlay update failed");
+#endif
         menu_input.update((input.held&~256u)|((input.held&256)?0x80000:0)|256);
         return pause();
     }
     if(state.phase==GameSessionPhase::paused||state.phase==GameSessionPhase::game_over){
         if(!pause_menu)return fail("pause menu lifetime missing");
         menu_input.update((input.held&~256u)|((input.held&256)?0x80000:0)|(input.pause?256:0));
+#if PORT_TITLE == 14
+        // Retail47aac5 registers overlay8 before448080's menu9 callback.
+        if(!animations.update(true))return fail("pause ANM update failed");
+#endif
         if(!pause_menu->update(menu_input.pressed,menu_input.long_repeat))return fail(pause_menu->error.c_str());
 #if PORT_TITLE == 14
         auto& menu=*pause_menu;
@@ -335,24 +352,38 @@ bool GameSession::update(const GameSessionInput& input) {
             animations.retire_resource(*menu.manual_resource);
         }
 #endif
+#if PORT_TITLE != 14
         if(!animations.update(true))return fail("pause ANM update failed");
+#endif
 #if PORT_TITLE == 14
         if(menu.manual_finished&&menu.manual_resource&&!animations.references(*menu.manual_resource)){
             if(resources.effects)resources.effects->release_animation(*menu.manual_resource);menu.manual_resource.reset();
         }
 #endif
         switch(pause_menu->action){
-        case PauseAction::Resume:return resume();
+        case PauseAction::Resume:
+#if PORT_TITLE == 14
+            if(!resume())return false;
+            overlay_already_updated=true;break;
+#else
+            return resume();
+#endif
         case PauseAction::Title:return return_to_title();
         case PauseAction::Restart:return restart_run(false);
         case PauseAction::Continue:
 #if PORT_TITLE == 14
-            return continue_run_th14();
+            if(!continue_run_th14())return false;
+            overlay_already_updated=true;break;
 #else
             return restart_run(true);
 #endif
         default:break;
-        }return true;
+        }
+#if PORT_TITLE == 14
+        if(!overlay_already_updated)return true;
+#else
+        return true;
+#endif
     }
     if(state.phase==GameSessionPhase::title) {
         if(!title||!source)return fail("title lifetime missing");
@@ -471,12 +502,29 @@ bool GameSession::update(const GameSessionInput& input) {
         edges.dialogue_fire_frames=game_input.held_frames[0];
 #endif
         battle->set_input(edges);return true;
-        });
+        }
+#if PORT_TITLE == 14
+        ,overlay_already_updated
+#endif
+        );
         if(playback_ended){if(interactive)return return_to_title();state.phase=GameSessionPhase::finished;return true;}
         if(!updated) { if(error.empty())error="battle update failed: "+std::to_string(battle->last_error)+" "+battle->error; return false; }
         for(const auto& event:battle->events)if(event.kind==BattleEventKind::BossMusic||(event.kind==BattleEventKind::StageMusic&&!state.demo))scores.settings[0x26+stage_music(event.value,event.kind==BattleEventKind::BossMusic)]=1;
         if(!state.replay&&battle->stage_active){auto* counter=scores.characters[state.character*2+state.subtype].data()+ScoreFile::play_time_offset;i32 n;std::memcpy(&n,counter,4);if(n<215999999){++n;std::memcpy(counter,&n,4);}}
-        if(battle->game_over_requested){if(state.replay){if(interactive)return return_to_title();state.phase=GameSessionPhase::finished;return true;}return open_result(false);}
+        if(battle->game_over_requested){
+            if(state.phase==GameSessionPhase::paused||state.phase==GameSessionPhase::game_over)return true;
+            if(state.replay){
+                if(interactive){
+#if PORT_TITLE == 14
+                    return pause();
+#else
+                    return return_to_title();
+#endif
+                }
+                state.phase=GameSessionPhase::finished;return true;
+            }
+            return open_result(false);
+        }
 #if PORT_TITLE == 14
         if(battle->th14_spell_result_requested){if(state.replay){if(interactive)return return_to_title();state.phase=GameSessionPhase::finished;return true;}return open_result(true);}
 #endif
@@ -542,9 +590,22 @@ bool GameSession::pause() {
 #if PORT_TITLE == 14
     pause_menu->spell_practice_id=state.spell_practice_id;
 #endif
-    paused_rate=animations.rate;animations.rate=1;
-    if(!pause_menu->begin(state.replay))return fail(pause_menu->error.c_str());
-    state.phase=GameSessionPhase::paused;
+    paused_rate=animations.rate;
+#if PORT_TITLE == 14
+    const bool replay_end=state.replay&&battle&&battle->game_over_requested;
+    if(replay_end){
+        if(!pause_menu->begin_replay_end())return fail(pause_menu->error.c_str());
+        // This entry has no physical Pause edge to initialize menu input.
+        menu_input.update((last_held&~256u)|((last_held&256u)?0x80000u:0u)|(last_pause?256u:0u));
+    }else
+#endif
+    {
+#if PORT_TITLE != 14
+        animations.rate=1;
+#endif
+        if(!pause_menu->begin(state.replay))return fail(pause_menu->error.c_str());
+    }
+    animations.rate=1;state.phase=GameSessionPhase::paused;
     return true;
 }
 
@@ -565,8 +626,12 @@ bool GameSession::open_result(bool completed){
     pause_menu->selection=state.character;pause_menu->th16_subseason=state.subtype;
     pause_menu->th16_continues_remaining=state.difficulty<4?5-pause_menu->continues:0;
 #endif
-    paused_rate=animations.rate;animations.rate=1;
+    paused_rate=animations.rate;
+#if PORT_TITLE != 14
+    animations.rate=1;
+#endif
     if(!pause_menu->begin_end(state.practice,completed))return fail(pause_menu->error.c_str());
+    animations.rate=1;
     state.phase=GameSessionPhase::game_over;menu_input.update(last_held);return true;
 }
 
@@ -604,6 +669,8 @@ bool GameSession::restart_run(bool continuation){
 #if PORT_TITLE == 14
 bool GameSession::continue_run_th14(){
     if(state.phase!=GameSessionPhase::game_over||!battle||!battle->player)return fail("TH14 continue requires a live battle");
+    // Retail44a165 restores the old rate before44ae10 refreshes HUD/options.
+    animations.rate=paused_rate;battle->events.push_back({BattleEventKind::PauseResume,1});
     // 44ae10 restores counters in place. Keep the dead player's lifecycle,
     // stage scripts, enemies, bullets and recording at the same frame.
     battle->hud.display_bombs(2,economy.th14_bomb_fragments);
@@ -613,13 +680,17 @@ bool GameSession::continue_run_th14(){
     battle->hud.display_bombs(economy.th14_bombs,economy.th14_bomb_fragments);
     battle->game_over_requested=false;
     // PauseEnd already interrupts the capture and choice families with 1.
-    pause_menu.reset();animations.rate=paused_rate;state.phase=GameSessionPhase::stage;
+    pause_menu.reset();state.phase=GameSessionPhase::stage;
     return true;
 }
 #endif
 
 bool GameSession::resume() {
     if(state.phase!=GameSessionPhase::paused) return false;
+#if PORT_TITLE == 14
+    // Preserve an intervening resume even if this frame immediately pauses again.
+    if(battle)battle->events.push_back({BattleEventKind::PauseResume,0});
+#endif
     if(pause_menu){for(const auto id:{pause_menu->background_animation,pause_menu->menu_animation})if(auto* vm=animations.find(id)){
         vm->interrupt(1);if(!vm->child.previous)for(auto* n=vm->child.next;n;n=n->next)n->value->interrupt(1);
     }}

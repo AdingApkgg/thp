@@ -38,7 +38,11 @@
 namespace th11 {
 struct GameSessionInput;
 class ScoreFile;
-enum class BattleEventKind {Sound,Popup,Notification,Lives,Death,GameOver,SpellTitle,SpellResult,BossMusic,MusicFade,StopSound,StageMusic,MusicResume,Bombs,ComboPopup,SoundPan,MusicStop};
+enum class BattleEventKind {Sound,Popup,Notification,Lives,Death,GameOver,SpellTitle,SpellResult,BossMusic,MusicFade,StopSound,StageMusic,MusicResume,Bombs,ComboPopup,SoundPan,MusicStop
+#if PORT_TITLE == 14
+    ,PauseResume
+#endif
+};
 struct BattleEvent {
     BattleEventKind kind;
     i32 value=0,extra=0;
@@ -152,7 +156,11 @@ public:
     bool finish_stage_loading();
     bool enter_stage_transition(u32);
 #endif
-    bool update(const std::function<bool()>& sample_input={});
+    bool update(const std::function<bool()>& sample_input={}
+#if PORT_TITLE == 14
+        ,bool overlay_already_updated=false
+#endif
+    );
     bool draw(AnmRenderer&,SceneDrawKind);
     bool spawn_root();
     void set_input(const GameSessionInput&);
@@ -413,6 +421,9 @@ public:
     bool record_death() override;
     bool enemy_death() override;
     bool game_over(bool) override;
+#if PORT_TITLE == 14
+    std::function<bool(bool)> on_game_over;
+#endif
 private:
     bool stage_control();
     bool activate_stage();

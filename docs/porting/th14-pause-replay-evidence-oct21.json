@@ -1,0 +1,323 @@
+{
+  "title": "TH14 pause / replay evidence, 2026-10-21",
+  "passed": true,
+  "passedScope": "The named receipt checks and current nine-source hash bindings pass within the scopes below. This is not whole-game or browser acceptance.",
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "browserAcceptancePending": true,
+  "productionSourceSha256": {
+    "runtimes/th12/th12_web/cpp/game/GameBattle.cpp": "17a53bb1712181de6cb76edbdd94dc3faeae637407e88e59a8495e351fff3aa7",
+    "runtimes/th12/th12_web/cpp/game/GameBattle.hpp": "96bd8f1467c6b5144317b3a4606599ca17fb5adfc4e9ad1d2497f63349b2cb60",
+    "runtimes/th12/th12_web/cpp/game/GameSession.cpp": "d7911f0ca3bf7d6e51fea6cb5d53b2f0c0e43f1072e72fa289cad2944d86a0f9",
+    "runtimes/th12/th12_web/cpp/game/PauseMenu.cpp": "16c60d06a55c0d7c5af465a4b27ff052939da8c0ae575a992bd7f61363ebf490",
+    "runtimes/th12/th12_web/cpp/game/PauseMenu.hpp": "9ce3a99fdde34ad624c28f7ca9afcfe263fddc0dcc6f4a6a6224bd74de51125b",
+    "runtimes/th12/th12_web/cpp/game/SoundEffects.cpp": "a38d8ee72d1525f9af1846c0d80eef108e20f194b6147547b4659c987af65a08",
+    "runtimes/th12/th12_web/cpp/sdl/Application.cpp": "635752cfc0cf9b8c00895eade3d0c8e45940ce8f34f9265a8c5541d77f7fb553",
+    "runtimes/th12/th12_web/cpp/sdl/AudioDevice.cpp": "d3cf6e58ad7f4caceb5f00f0debfa5c3c929f37580410b7b341e3ecaa3f61943",
+    "runtimes/th12/th12_web/cpp/sdl/AudioDevice.hpp": "ac49a2720cf26bb4f960baa010da749d7ab15a37a42f9d9db973c9b0c4cd92c3"
+  },
+  "finalBuild": {
+    "sdlWasmSha256": "02669f7731b7e774e59974b798e7b129fe3470187e10bc0e6e11e72eb2900b6e",
+    "sdlLoaderSha256": "416037a306ae3db3ca2c592a2b4081d4cd6679210c7d86018fb0c5f9682f9e70",
+    "coreWasmSha256": "20210e7d6c6dc34435bc6f6132e91328324cdd07ffff6dfbfa5de9b16336231b",
+    "replayProbeWasmSha256": "8f5ff94ccf62158d270a2ee6afd73605b312e025cab63b380bdc2faca56028ab",
+    "guardSourceSha256": "17a53bb1712181de6cb76edbdd94dc3faeae637407e88e59a8495e351fff3aa7",
+    "reuseBasis": {
+      "changedSource": "GameBattle.cpp title14 if-constexpr replaced by preprocessor guard",
+      "identicalSdlObjects": 146,
+      "identicalCoreObjects": 141,
+      "sdlModuleAndLoaderIdentical": true,
+      "coreAndReplayProbeIdentical": true,
+      "newReplayExecutionsAfterGuard": 0,
+      "receipts": [
+        "finalMachineEquivalence",
+        "resumeAndCompositeMachineEquivalence"
+      ]
+    }
+  },
+  "actualReplay": {
+    "input": "Intact MarisaB Lunatic replay; no health/death/RNG/progression injection",
+    "naturalGameOverPlayerCallback": 89235,
+    "cases": [
+      {
+        "mode": "noninteractive",
+        "physicalTicks": 89235,
+        "playerCallbacks": 89235,
+        "priorPortableRaw32PrefixBytes": 11422080,
+        "prefixDifferentBytes": 0,
+        "errors": 0
+      },
+      {
+        "mode": "title",
+        "physicalTicks": 89368,
+        "playerCallbacks": 89235,
+        "priorPortableRaw32PrefixBytes": 11422080,
+        "prefixDifferentBytes": 0,
+        "errors": 0
+      },
+      {
+        "mode": "restart",
+        "physicalTicks": 89400,
+        "playerCallbacks": 89265,
+        "priorPortableRaw32PrefixBytes": 11422080,
+        "prefixDifferentBytes": 0,
+        "errors": 0
+      }
+    ],
+    "finalCodeEvidence": "Three actual event-core executions reused after independent byte equality of final guard objects and probe; not three new runs.",
+    "receipts": [
+      "actualReplayRuns",
+      "finalMachineEquivalence",
+      "replay_noninteractive",
+      "replay_title",
+      "replay_restart"
+    ]
+  },
+  "nativeComparison": {
+    "initialization": "Original-process warm startup / attract initialization. Ordinary cold-start equivalence is not established.",
+    "executableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+    "menuEntries": 120,
+    "mappedFieldsPerEntry": 10,
+    "menuDifferentFields": 0,
+    "boundary": "Native448300 entry i maps to Portable post-GameOver tick89235+i, i=0..119; posttick89355 is retained unpaired.",
+    "postPlayerRaw32": {
+      "pairs": 120,
+      "comparedWords": 3840,
+      "exactNonvisualWords": 3600,
+      "differentVisualWords": 240,
+      "differentFields": {
+        "visualSeed": 120,
+        "visualCalls": 120
+      },
+      "originalDirectCaseVisualCallsOffset": -1080
+    },
+    "scope": "The120x10 numeric comparison and direct post32 are retained prior component evidence. The final-machine-linked P2 combination below independently preserves3600 nonvisual equalities and240 visual differences. No seed normalization or claim of all ANM objects/pixels matching.",
+    "receipts": [
+      "nativeMenuComparison",
+      "nativePostPlayerComparison",
+      "sameTickResumeGameOver"
+    ]
+  },
+  "resume": {
+    "cases": [
+      {
+        "input": "escape",
+        "resumeTick": 85,
+        "fiveCounters": [
+          60,
+          61
+        ],
+        "overlayUpdates": 1,
+        "normalUpdates": 1,
+        "frontAge": [
+          24,
+          25
+        ],
+        "backdropTimer": [
+          41,
+          42
+        ],
+        "portableControlPrefixWords": 2272,
+        "differentWords": 0
+      },
+      {
+        "input": "confirm",
+        "resumeTick": 85,
+        "fiveCounters": [
+          60,
+          61
+        ],
+        "overlayUpdates": 1,
+        "normalUpdates": 1,
+        "frontAge": [
+          24,
+          25
+        ],
+        "backdropTimer": [
+          41,
+          42
+        ],
+        "portableControlPrefixWords": 2272,
+        "differentWords": 0
+      }
+    ],
+    "receipts": [
+      "ordinaryResume",
+      "resumeAndCompositeMachineEquivalence"
+    ]
+  },
+  "continue": {
+    "input": "Ordinary Stage1 ReimuA Lunatic, default config, replay=false; all gameplay input zero until natural loss.",
+    "naturalLossTick": 964,
+    "confirmTick": 976,
+    "continueTick": 988,
+    "followingTicks": 10,
+    "sameTickDelta": {
+      "sessionFrame": 1,
+      "battleFrame": 1,
+      "controlFrame": 1,
+      "playerCallbacks": 1,
+      "recordingFrames": 1
+    },
+    "anmUpdates": {
+      "normal": 1,
+      "overlay": 1
+    },
+    "beforePlayerEconomy": {
+      "lives": 2,
+      "bombs": 2,
+      "power": 400,
+      "scoreUnits": 0,
+      "continues": 1
+    },
+    "playerTransition": {
+      "lifeBefore": 2,
+      "timerBefore": 31,
+      "lifeAfter": 0,
+      "timerAfter": 1,
+      "bombsAfter": 3
+    },
+    "finalCodeEvidence": "Actual new execution linked against all141 hash-verified final title-guard core objects. Only the fixture was compiled. Non1 rate ordering has static evidence only.",
+    "resumePresentationEvent": [
+      17,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "presentationQueueConsumedEachTick": true,
+    "receipts": [
+      "naturalContinue",
+      "continueRateAddresses"
+    ]
+  },
+  "p2SameTickResumeGameOver": {
+    "resolved": true,
+    "pauseTick": 89235,
+    "confirmTick": 89247,
+    "combinedTick": 89259,
+    "phaseBeforeAndAfter": "paused",
+    "menuModes": [
+      4,
+      2
+    ],
+    "orderedEvents": [
+      "PauseResume(value0)",
+      "GameOver(value1)",
+      "positioned Sound21"
+    ],
+    "overlayUpdates": 1,
+    "normalUpdates": 1,
+    "exactPriorPortablePrefixWords": 2855520,
+    "prefixDifferentWords": 0,
+    "nativeMenuPairs": 120,
+    "exactNativeNonvisualWords": 3600,
+    "retainedNativeVisualDifferentWords": 240,
+    "followingMenuEventsEmpty": true,
+    "presentationQueueConsumedEachTick": true,
+    "scope": "Physical Pause/Confirm with intact replay, read-only game observations. Actual SDL audio and original Native physical-pause combination were not executed by this fixture.",
+    "receipts": [
+      "sameTickResumeGameOver",
+      "resumeAndCompositeMachineEquivalence"
+    ]
+  },
+  "audio": {
+    "silentPcmCases": 156,
+    "mixedFrames": 5231553,
+    "pausedResumeVoiceCases": 76,
+    "naturallyEndedVoiceCases": 74,
+    "nativeCommandControlCases": 12,
+    "nativeVoiceStateControls": 912,
+    "nativeQueueCases": 912,
+    "scope": "Production mixer continuity in silent memory and controlled original command/queue boundaries; no hardware output or original DirectSound PCM equivalence.",
+    "receipt": "silentPcm"
+  },
+  "legacyCompile": {
+    "passingChecks": 10,
+    "titles": [
+      12,
+      13
+    ],
+    "actualSdl3Checks": 6,
+    "priorWasiSilentSdlChecks": 4,
+    "guardRetryCount": 2,
+    "retainedPassingChecks": 8,
+    "originalFailuresPreserved": true,
+    "linked": false,
+    "runtimeExecuted": false,
+    "receipt": "legacyCompile"
+  },
+  "evidenceReceipts": {
+    "finalMachineEquivalence": {
+      "path": "artifacts/th14/replay-resume-title-guard-integration-oct21/verification.json",
+      "sha256": "0e1fe8aa42cf9f6b75d9fd1cf14545c092ca3d26d1f07521f02eb4fae4a6729c"
+    },
+    "finalSdlBuild": {
+      "path": "artifacts/th14/replay-resume-title-guard-sdl-oct21/build.json",
+      "sha256": "4b34235c17812e2234cc68ee0229368eda8b1eadfd24cdf69a372508275597b9"
+    },
+    "finalCoreBuild": {
+      "path": "artifacts/th14/replay-resume-title-guard-core-oct21/build-result.json",
+      "sha256": "ec6b32462ba6631b00e39da941feed234c7d9831e078e184e5fbd8d2e6316918"
+    },
+    "actualReplayRuns": {
+      "path": "artifacts/th14/replay-resume-audio-event-integration-oct21/verification.json",
+      "sha256": "bc370f9ea917d80417ce40462d32ceb1f3bfd7c408ce2803879e427fda0422b5"
+    },
+    "nativeMenuComparison": {
+      "path": "artifacts/th14/replay-forced-end-control-oct21/menu-comparison-bound-receipt.json",
+      "sha256": "1fe214060e1c170afbc206acda72a558cb21940ebf9d557850946774b749cd30"
+    },
+    "nativePostPlayerComparison": {
+      "path": "artifacts/th14/replay-gameover-post32-oct21/verification.json",
+      "sha256": "de7d28f85ebfd9b140df9e792c0f578700266145ce12c6776edb1f3af9bd0f3e"
+    },
+    "ordinaryResume": {
+      "path": "artifacts/th14/normal-pause-resume-audio-event-oct21/verification.json",
+      "sha256": "dd2dc7ca0b30a20103c5c344b0631920ff9399a13f12c0f4e12e8c32883230e7"
+    },
+    "resumeAndCompositeMachineEquivalence": {
+      "path": "artifacts/th14/pause-resume-gameover-composite-oct21/current-source-object-equivalence.json",
+      "sha256": "2e35e0293c030077572884ba50b6d6655fdcdd38f4bb95c0c2fad8235d7d6a80"
+    },
+    "naturalContinue": {
+      "path": "artifacts/th14/natural-continue-audio-event-oct21/verification.json",
+      "sha256": "553d73fc4fda2e41bada42bc00be7d45fbd189478a99de806079bdb885eab722"
+    },
+    "sameTickResumeGameOver": {
+      "path": "artifacts/th14/pause-resume-gameover-composite-oct21/verification.json",
+      "sha256": "32d86ef0c0f14551e38f7e54f0bf85a38c6ef1c7c3339f569eebc221d7b134a3"
+    },
+    "silentPcm": {
+      "path": "artifacts/th14/sound-pause-pcm-v2-oct21/verification.json",
+      "sha256": "da5a77cd8fe1bf5088097ca8d6dbb1d325ec7877980ddc6c4192620f0d8e09b9"
+    },
+    "legacyCompile": {
+      "path": "artifacts/th14/legacy-pause-resume-compile-oct21/guard-fixed/verification.json",
+      "sha256": "dc9127996cffed7c7ffd26e1c61fde24339387d26fca2958a62fdf2a276634ea"
+    },
+    "schedulerAddresses": {
+      "path": "artifacts/th14/replay-forced-end-control-oct21/pause-scheduler-static.json",
+      "sha256": "732278f85bef80b903bc7a69cbd7ffecb4459f8ea23b51a3c945ea67dd822727"
+    },
+    "continueRateAddresses": {
+      "path": "artifacts/th14/replay-forced-end-control-oct21/continue-rate-static.json",
+      "sha256": "9a542722864ea9ca5d8db6481081993a44c950f9d045cb75441046abf4c0ea29"
+    },
+    "replay_noninteractive": {
+      "path": "artifacts/th14/replay-resume-audio-event-integration-oct21/noninteractive/receipt.json",
+      "sha256": "62b5caec5bb1b142b6b4bdba37438142364f822d3beff6689432eb7cd5aad9df"
+    },
+    "replay_title": {
+      "path": "artifacts/th14/replay-resume-audio-event-integration-oct21/title/receipt.json",
+      "sha256": "2b5bcce870413baa273224157b2f910af8e00f3e869eb9fca32292b0242ebf84"
+    },
+    "replay_restart": {
+      "path": "artifacts/th14/replay-resume-audio-event-integration-oct21/restart/receipt.json",
+      "sha256": "4524e2e6928108ba42c2df1727bdb125ca24fd0720711f4f1c759855c295971c"
+    }
+  },
+  "publicationBoundary": "Private receipt references and hashes only. No original executable/assets, large raw captures, or thcpp reference material copied. Browser acceptance remains pending."
+}

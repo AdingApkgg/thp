@@ -51,6 +51,9 @@ public:
     PauseAction action=PauseAction::None;
     std::string error;
     bool begin(bool replay=false);
+#if PORT_TITLE == 14
+    bool begin_replay_end();
+#endif
     bool begin_end(bool practice=false,bool completed=false);
     bool update(u32 pressed,u32 repeat);
     void queue_ascii(AsciiText&)const;

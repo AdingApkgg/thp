@@ -188,7 +188,11 @@ struct Application:StageResourceEffects
     bool stage_music_held()const{return kPortTitle!=14&&session.state.stage==6&&session.battle&&session.battle->frame<300&&!session.state.demo;}
     bool music_follows_pause()const{
 #if PORT_TITLE == 14
-        if(session.state.spell_practice_id>=0)return false;
+        if(session.state.spell_practice_id>=0){
+            // Retail448ef0 pauses music even for a forced replay exit.
+            const auto* menu=session.pause_menu.get();
+            if(!menu||!menu->replay||(menu->state!=2&&!menu->forced_exit))return false;
+        }
 #endif
         return !stage_music_held();
     }
@@ -202,14 +206,43 @@ struct Application:StageResourceEffects
         if(!audio.music(stage_music(stage))){error=audio.error;return false;}
         audio.pause_music(kPortTitle!=14&&stage==6);return true;
     }
-    bool pause(){if(!session.pause())return false;if(music_follows_pause())audio.pause_music(true);return true;}
-    bool resume(){if(!session.resume())return false;if(music_follows_pause())audio.pause_music(false);return true;}
-    bool audio_events(){
+    bool pause(){if(!session.pause())return false;
+#if PORT_TITLE == 14
+        audio.pause_sounds(true);
+#endif
+        if(music_follows_pause())audio.pause_music(true);return true;}
+    bool resume(){if(!session.resume())return false;
+#if PORT_TITLE == 14
+        audio.pause_sounds(false);
+#endif
+        if(music_follows_pause())audio.pause_music(false);
+#if PORT_TITLE == 14
+        return audio_events();
+#else
+        return true;
+#endif
+    }
+#if PORT_TITLE == 14
+    bool game_over_audio(bool replay){
+        audio.pause_sounds(true);
+        if(replay){if(music_follows_pause())audio.pause_music(true);}
+        else if(session.state.spell_practice_id<0){
+            audio.save_music();audio.pause_music(false);
+            if(!audio.music(17)){error=audio.error;return false;}
+        }
+        return true;
+    }
+#endif
+    bool audio_events(bool result_entry=false){
         if(session.ending){auto& ending=*session.ending;for(const auto sound:ending.sounds)audio.effects.enqueue(sound);
             if(ending.music_request>=0){audio.pause_music(false);if(!audio.music(ending.music_request)){error=audio.error;return false;}}
             if(ending.music_fade>=0)audio.fade_music(ending.music_fade);
         }
+#if PORT_TITLE != 14
         if(session.pause_menu){for(const auto sound:session.pause_menu->sounds)audio.effects.enqueue(sound);session.pause_menu->sounds.clear();}
+#else
+        const auto menu_sounds=[this](){if(session.pause_menu){for(const auto sound:session.pause_menu->sounds)audio.effects.enqueue(sound);session.pause_menu->sounds.clear();}};
+#endif
         if(session.title){
             for(const auto sound:session.title->sounds)audio.effects.enqueue(sound);
             if(session.title->music_pause)audio.pause_music(true);
@@ -218,13 +251,30 @@ struct Application:StageResourceEffects
             if(session.title->volume_changed){audio.music_volume=session.config.music_volume();audio.effects.master_volume=session.config.sound_volume();audio.refresh_volume();}
             session.title->sounds.clear();
         }
-        if(!session.battle)return true;
+        if(!session.battle){
+#if PORT_TITLE == 14
+            menu_sounds();
+#endif
+            return true;}
         for(const auto& event:session.battle->events){
             switch(event.kind){
             case BattleEventKind::Sound:
                 if(event.positional)audio.effects.positioned(event.value,event.position.x);else audio.effects.enqueue(event.value);
                 break;
             case BattleEventKind::StopSound:audio.effects.stop(event.value);break;
+#if PORT_TITLE == 14
+            // Retail4373b0 clears only sounds queued before the Player death callback.
+            case BattleEventKind::GameOver:
+                if(!game_over_audio(event.value!=0))return false;
+                menu_sounds();break;
+            case BattleEventKind::PauseResume:
+                audio.pause_sounds(false);
+                if(event.value){
+                    if(!audio.restore_music()){error="Continue battle music restoration failed";return false;}
+                    audio.discard_saved_music();
+                }else if(music_follows_pause())audio.pause_music(false);
+                break;
+#endif
             case BattleEventKind::SoundPan:audio.effects.pan(event.value,event.extra);break;
             case BattleEventKind::StageMusic:if(!play_stage_music(event.value))return false;break;
             case BattleEventKind::BossMusic:
@@ -235,7 +285,13 @@ struct Application:StageResourceEffects
             default:break;
             }
         }
-        session.battle->events.clear();return true;
+        session.battle->events.clear();
+#if PORT_TITLE == 14
+        // A completed result enters after the battle callbacks, without a death marker.
+        if(result_entry&&!game_over_audio(false))return false;
+        menu_sounds();
+#endif
+        return true;
     }
 #if PORT_TITLE == 14
     DialogueEffects* dialogue_text_device()override{return this;}
@@ -405,6 +461,9 @@ struct Application:StageResourceEffects
     }
 
     bool restart(u32 stage=1,i32 character=0,i32 subtype=0,i32 difficulty=1) {
+#if PORT_TITLE == 14
+        audio.discard_paused_sounds();
+#endif
         if(!initialize())return false;
 #if PORT_TITLE == 14
         if(!core_loading_done){if(!session.resources.prepare_core()){error=session.resources.error;return false;}core_loading_done=true;}
@@ -495,24 +554,43 @@ struct Application:StageResourceEffects
         }
 #endif
         const auto after=session.state.phase;
+#if PORT_TITLE == 14
+        const bool death_event=session.battle&&std::any_of(session.battle->events.begin(),session.battle->events.end(),[](const auto& event){return event.kind==BattleEventKind::GameOver;});
+        const bool resume_event=session.battle&&std::any_of(session.battle->events.begin(),session.battle->events.end(),[](const auto& event){return event.kind==BattleEventKind::PauseResume;});
+        const bool was_menu=before==GameSessionPhase::paused||before==GameSessionPhase::game_over;
+        const bool is_menu=after==GameSessionPhase::paused||after==GameSessionPhase::game_over;
+        if(was_menu&&!is_menu&&!resume_event)audio.discard_paused_sounds();
+        if(!was_menu&&after==GameSessionPhase::paused&&!death_event)audio.pause_sounds(true);
+#endif
         if(before!=GameSessionPhase::stage&&after==GameSessionPhase::stage&&session.state.frame==0)frame_statistics.reset_run();
         if(session.pause_menu)session.pause_menu->slowdown=frame_statistics.slowdown();
         if(session.title&&session.title->screen==TitleScreen::Results)session.title->result_slowdown=frame_statistics.slowdown();
-        if(before!=GameSessionPhase::stage&&after==GameSessionPhase::stage){
+        if(before!=GameSessionPhase::stage&&after==GameSessionPhase::stage
+#if PORT_TITLE == 14
+            &&!resume_event
+#endif
+        ){
             if(before==GameSessionPhase::paused&&session.state.frame!=0){if(music_follows_pause())audio.pause_music(false);}
             else if(kPortTitle==14&&before==GameSessionPhase::game_over&&session.state.frame!=0){
                 if(!audio.restore_music()){error="Continue battle music restoration failed";return false;}
             }
             else{audio.effects.reset();if(!play_stage_music(session.state.stage,true))return false;}
         }
-        if(kPortTitle==14&&before==GameSessionPhase::game_over&&after!=GameSessionPhase::game_over)audio.discard_saved_music();
-        if(before!=GameSessionPhase::paused&&after==GameSessionPhase::paused&&music_follows_pause())audio.pause_music(true);
+        if(kPortTitle==14&&before==GameSessionPhase::game_over&&after!=GameSessionPhase::game_over
+#if PORT_TITLE == 14
+            &&!resume_event
+#endif
+        )audio.discard_saved_music();
+        if(before!=GameSessionPhase::paused&&after==GameSessionPhase::paused&&music_follows_pause()
+#if PORT_TITLE == 14
+            &&!death_event
+#endif
+        )audio.pause_music(true);
         if(before!=GameSessionPhase::game_over&&after==GameSessionPhase::game_over){
             session.pause_menu->timestamp=u64(std::time(nullptr));
-#if PORT_TITLE == 14
-            if(session.state.spell_practice_id<0)
+#if PORT_TITLE != 14
+            audio.pause_music(false);if(!audio.music(17)){error=audio.error;return false;}
 #endif
-            {if(kPortTitle==14)audio.save_music();audio.pause_music(false);if(!audio.music(17)){error=audio.error;return false;}}
         }
         if(before==GameSessionPhase::ending&&session.title)session.title->result_timestamp=u64(std::time(nullptr));
         if(session.title&&session.title->replay_scan_requested)scan_replays();
@@ -543,7 +621,11 @@ struct Application:StageResourceEffects
 #if PORT_TITLE != 14
         if(session.battle&&after==GameSessionPhase::stage&&!session.battle->spell_timing.update(session.battle->spell_flags,session.battle->spells.frame_count,double(SDL_GetTicks())*.001,session.state.replay)){error="Invalid spell timing state";return false;}
 #endif
-        if(!audio_events()||!text_events())return false;
+        if(!audio_events(
+#if PORT_TITLE == 14
+            before!=GameSessionPhase::game_over&&after==GameSessionPhase::game_over&&!death_event
+#endif
+        )||!text_events())return false;
         audio.update();audio.pump();
         frame_statistics.sample(double(SDL_GetTicks())*.001,after==GameSessionPhase::stage&&session.battle&&session.battle->stage_active&&!session.state.replay);
         frame_text.clear();const auto label=frame_statistics.label();frame_text.add(label.text.c_str(),label.position,label.style);
@@ -560,6 +642,9 @@ struct Application:StageResourceEffects
         return true;
     }
     bool return_to_title(){
+#if PORT_TITLE == 14
+        audio.discard_paused_sounds();
+#endif
         if(!save_scores())return false;
         if(!session.return_to_title()){error=session.error;return false;}
         if constexpr(kPortTitle==14)audio.discard_saved_music();

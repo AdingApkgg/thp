@@ -1,12 +1,16 @@
 # thp — 东方原作 Web 移植工作区
 
+TH14 当前修正（2026-10-21）：补齐 Replay 自然 GameOver 菜单，修正暂停动画顺序、同帧恢复／续关及音效停住与恢复。三条长回放相对旧移植基线的 89,235 次回调前缀零差；原版菜单、普通恢复、自然续关和同帧再次失败组合均有独立验证，视觉 RNG 差异保留。整作 1:1 继续施工，只标 TH14。[本轮范围](docs/porting/TH14_REPLAY_END_SOUND_FIX_OCT21.md)、[证据摘要](docs/porting/th14-pause-replay-evidence-oct21.json)、[当前静音入口](docs/porting/TH14_LOCAL_WORKSPACE_CURRENT_SERVER.md)。
+
+以下早期记录保留各自版本的范围，不自动继承为当前模块通过。
+
 TH14 最新核验（2026-10-15）：原码已完成二面资源回调并请求 CRT 线程退出，随后记录到两个二面 Player 入口及主循环返回。`enemy.anm`／`st02enm.anm` 的 12,673 个选定字与当前核心零差，三个 ECL 包含文件的 44,040 字节独立核对零差。此次补充证据，生产游戏代码及 SDL 未改；实际并发、当前 C++ 整帧、GPU／音频及整作 1:1 继续核验。[范围与收据](docs/porting/TH14_STAGE2_CALLBACK_RETURN_OCT15.md)。
 
 TH14 最新修正（2026-10-15）：后续关卡逐块上传，并只排入实际 ECL ANIM 列表，二面对照队列由 35 块改为 19 块，去掉 16 个重复块。43 项队列／纹理检查通过，背景模板等 531 个选定字与当前核心零差；新版 `78d3d19b…` 已在本机静音预览显示 Normal Demo。后续完整换关、原版异步时序与整作 1:1 仍待验证。[修正范围与证据](docs/porting/TH14_STAGE_TIMELINE_ANM_FIX_OCT15.md)。
 
 TH14 最新修正（2026-10-15）：屏幕相机使用原版 FOV 和视口起点，四相机的 52 个参数字及 128 个矩阵字与本轮原码记录一致。新 SDL `3083772c…` 已在本机静音预览显示标题和 Normal Demo。[修正与验证范围](docs/porting/TH14_SCREEN_CAMERA_FIX_OCT15.md)、[当前进度](docs/porting/CORE_STATUS.md)。整作 1:1 继续施工，其他作品不占坑。
 
-本机普通预览默认使用 `node tools/th14-serve-launcher-v2.mjs`，保持 `http://localhost:8208/`，音乐与音效静音；已有服务运行时直接复用。直接运行和本地包也有默认静音入口，只有显式 `--sound` 才有声。[本机入口说明](docs/porting/TH14_LOCAL_QUIET_DEFAULT_OCT15.md)。
+本机普通预览固定使用 `http://localhost:8208/`，音乐与音效静音；按[当前入口说明](docs/porting/TH14_LOCAL_WORKSPACE_CURRENT_SERVER.md)启动，已有服务运行时直接复用。旧命令、包及结果按对应日期保留。
 
 下方 2026-10-14 的加载、整局及像素记录保留修改前版本范围，不自动作为本次相机修正的整局通过。
 

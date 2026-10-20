@@ -1,0 +1,113 @@
+{
+  "title": "TH14 final muted browser flow observed, 2026-10-21",
+  "observed": true,
+  "origin": "http://localhost:8208",
+  "url": "http://localhost:8208/?game=th14",
+  "liveStartUtc": "2026-10-20T22:02:56.776Z",
+  "replayStartUtc": "2026-10-20T22:15:43.551Z",
+  "replayEndObservedUtc": "2026-10-20T22:19:59.641Z",
+  "replayReturnObservedUtc": "2026-10-20T22:20:51.363Z",
+  "ordinaryGame": "ReimuA Lunatic, ordinary Game Start and zero gameplay input",
+  "ordinaryContinueObserved": true,
+  "ordinaryPauseResumeObserved": true,
+  "ordinaryReturnTitleObserved": true,
+  "replay": "MarisaB Lunatic, imported via ordinary management dialog, selected Stage 5 in Replay list",
+  "replayEndMenuObserved": true,
+  "escapeBlockedObserved": true,
+  "returnedReplayListObserved": true,
+  "finalBrowserRestartObserved": false,
+  "existingReplayFilesPreserved": 4,
+  "totalReplayFilesAfterImport": 5,
+  "storageCleared": false,
+  "muted": true,
+  "audioDiagnostic": "0ms SP",
+  "logs": [],
+  "exactEofObserved": false,
+  "exactPhysicalTickCountObserved": false,
+  "pixelEqualityClaim": false,
+  "nativePcmEqualityClaim": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "wasmSha256": "02669f7731b7e774e59974b798e7b129fe3470187e10bc0e6e11e72eb2900b6e",
+  "browser": "ChatGPT in-app Chromium 155 on Windows",
+  "observationSha256": "16cc1b73085f1f181d82da1665010f2b10e4dd509da409e0b47d1b5f01c53ffe",
+  "boundReports": {
+    "th14-launcher-runtime-replay-resume-final-oct21.json": {
+      "bytes": 116162,
+      "sha256": "db577c4fe11cc7967461dd077ff18341920ca987559e0e4e32b7764e56b3e402"
+    },
+    "th14-launcher-site-replay-resume-final-oct21.json": {
+      "bytes": 37440,
+      "sha256": "3867c31ef4dea132381d8bd0900280f499c7b53c12f7f5d2aca19489e82d550b"
+    },
+    "th14-pause-replay-evidence-oct21.json": {
+      "bytes": 12597,
+      "sha256": "5e77c7ceefbcba993f8c62c8dc7779934e9776f0cfaaebd795fdfdd6db0c05e4"
+    }
+  },
+  "evidenceBindings": [
+    {
+      "path": "artifacts/th14/replay-resume-final-preview-oct21/five-replays.png",
+      "bytes": 38586,
+      "sha256": "c7452033632c3015883fd52c05cea2d1f8c40a8c51f0bbce3e1d1dd1a706e57a"
+    },
+    {
+      "path": "artifacts/th14/replay-resume-final-preview-oct21/live-natural-gameover.png",
+      "bytes": 225994,
+      "sha256": "930fc7befc823df5bb15cf00054d6c32fb9ed5b6960e108e8cc2b9707a577e0d"
+    },
+    {
+      "path": "artifacts/th14/replay-resume-final-preview-oct21/live-continued.png",
+      "bytes": 244691,
+      "sha256": "21a517c1b8d176095cf28b7f36be0e790db9bb4ea31bb18d5f1151b460f4fdb1"
+    },
+    {
+      "path": "artifacts/th14/replay-resume-final-preview-oct21/live-regular-pause.png",
+      "bytes": 238590,
+      "sha256": "c497d125ef9094104ea4eff23d1e02d70fc696835d2c6e65b03213cffc77c708"
+    },
+    {
+      "path": "artifacts/th14/replay-resume-final-preview-oct21/live-regular-resumed.png",
+      "bytes": 288096,
+      "sha256": "581f7d075e398d76fe7e8de34d4c5451d9c297221a57ddd431262c54cd731e79"
+    },
+    {
+      "path": "artifacts/th14/replay-resume-final-preview-oct21/live-returned-title.png",
+      "bytes": 103234,
+      "sha256": "d2d3566df3069a4cc0c1f9729444b51fc287011f47775b32965acd4fcdeb3b64"
+    },
+    {
+      "path": "artifacts/th14/replay-resume-final-preview-oct21/replay-stage5-started.png",
+      "bytes": 245207,
+      "sha256": "828b0e56e16b5fcbe7376fa7bf282338fa0a1c653f380aaec53378253b3868fd"
+    },
+    {
+      "path": "artifacts/th14/replay-resume-final-preview-oct21/replay-natural-end-menu.png",
+      "bytes": 276077,
+      "sha256": "ceea78c1a4bfde06ee690591eb12c2c906cefbacb17b71ce89ca42d3f0de898f"
+    },
+    {
+      "path": "artifacts/th14/replay-resume-final-preview-oct21/replay-end-escape-blocked.png",
+      "bytes": 276087,
+      "sha256": "738432ad57e3513586c0daba575a7dd997d57e92ee7c27a42fb17e0b913da4be"
+    },
+    {
+      "path": "artifacts/th14/replay-resume-final-preview-oct21/replay-returned-list.png",
+      "bytes": 264772,
+      "sha256": "d3709357fdd2b582bc8d97ff346dbdb00cb79c75c7bf6dc60d3906292b336ec7"
+    },
+    {
+      "path": "artifacts/th14/replay-resume-final-preview-oct21/final-ax.txt",
+      "bytes": 1474,
+      "sha256": "5f98dba899b4c68fd8371da32ba5f327079b0b532313ef72ab3ee3f413d4553a"
+    }
+  ],
+  "limits": [
+    "Observed ordinary browser transitions only; no original-game frame or PCM equality claim.",
+    "No exact EOF or physical tick count inferred from screenshots.",
+    "Final browser PlayAgain not executed here; final core Title and Restart paths were independently executed.",
+    "Four existing replay entries survived the final reload. New replay import was observed; new-import persistence after another full reload was not tested.",
+    "The prior core evidence receipt remains immutable with browserAcceptancePending=true; this is the separate subsequent browser observation.",
+    "Frozen background effects visible under pause/end menus remain outside this flow acceptance."
+  ]
+}

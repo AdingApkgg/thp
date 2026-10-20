@@ -14,6 +14,9 @@ public:
     bool music(i32 track);bool music_file(const char*);void fade_music(i32 frames=240);void pause_music(bool);
     i32 current_music()const noexcept;
     bool save_music();bool restore_music();void discard_saved_music();
+#if PORT_TITLE == 14
+    void pause_sounds(bool);void discard_paused_sounds();
+#endif
     void refresh_volume();void update();void pump();void suspend(bool);
     bool mix(float*,u32 frames);
     void sound_stop(u32)override;void sound_position(u32,u32)override;

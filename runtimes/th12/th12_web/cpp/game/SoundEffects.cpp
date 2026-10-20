@@ -105,7 +105,12 @@ void SoundEffects::queue(i32 id,i32 pan){
 #else
             state.metadata[id]=sound_definitions[id].metadata;
 #endif
-            state.pans[n][0]=pan;state.counts[n]=wrapping_add(state.counts[n],1);return;}
+            state.pans[n][0]=pan;
+            // Retail46e458/46e502 replace the count when reusing a queue slot.
+            // Pause clears only indices[0], so its old count can still be nonzero.
+            if constexpr(kPortTitle==14)state.counts[n]=1;
+            else state.counts[n]=wrapping_add(state.counts[n],1);
+            return;}
         if(state.indices[n]==id){if(state.counts[n]>=0&&state.counts[n]<(kPortTitle==14?60:128))state.pans[n][state.counts[n]++]=pan;return;}
     }
 }

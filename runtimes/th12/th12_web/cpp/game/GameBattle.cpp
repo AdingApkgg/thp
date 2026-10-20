@@ -404,12 +404,25 @@ bool GameBattle::spawn_root() {
     // MainSub00 is only the first wave and must not replace this controller.
     return enemies.spawn("main",EnemySpawn{})!=nullptr;
 }
-bool GameBattle::update(const std::function<bool()>& sample_input) {
+bool GameBattle::update(const std::function<bool()>& sample_input
+#if PORT_TITLE == 14
+    ,bool overlay_already_updated
+#endif
+) {
     if(!initialized||last_error)return false;
-    events.clear();dialogue_text_requests.clear();
+#if PORT_TITLE == 14
+    // Menu9 may have queued Resume/Continue events before controller11.
+    if(!overlay_already_updated)
+#endif
+    events.clear();
+    dialogue_text_requests.clear();
     // TH14 live registry: overlay ANM 8, game control 11, replay 12, stage 13,
     // score 17, player 18, Bomb 20, enemies 21, lasers 22, bullets 23, items 24,
     // spell 26, dialogue 27, HUD 28, normal ANM 29. Effects run before score.
+#if PORT_TITLE == 14
+    // Resume at priority9 continues this frame; overlay8 has already run.
+    if(!overlay_already_updated)
+#endif
     if(!animations.update(true)){last_error=-1005;if(error.empty())error="overlay animation update: "+animations.last_error_text();return false;}
     if(!stage_control()){last_error=-1009;return false;}
     const bool control_running=!transitioning||transition_started;
@@ -793,7 +806,14 @@ bool GameBattle::enemy_death() {
     enemy_environment.shared_integers[0]=wrapping_add(enemy_environment.shared_integers[0],1);
     enemy_environment.shared_integers[2]=0;return true;
 }
-bool GameBattle::game_over(bool replay) {game_over_requested=true;events.push_back({BattleEventKind::GameOver,i32(replay)});return true;}
+bool GameBattle::game_over(bool replay) {
+    game_over_requested=true;events.push_back({BattleEventKind::GameOver,i32(replay)});
+#if PORT_TITLE == 14
+    // 44defc/44df05 opens the menu before the remaining Player updates.
+    if(on_game_over)return on_game_over(replay);
+#endif
+    return true;
+}
 bool GameBattle::register_graze() { if(economy.graze<99999999)++economy.graze;return true; }
 #if PORT_TITLE == 14
 bool GameBattle::th14_curve_graze(Vec3 contact){
@@ -919,12 +939,12 @@ bool GameBattle::start_dialogue(i32 id){
         if(id==-2){error="TH16 ending/results request is not yet implemented";return false;}
     }
     if(!dialogue||!dialogue->begin(resources.stage->messages[stage_dialogue_index(u32(enemy_environment.character),u32(enemy_environment.subtype))],id)){if(dialogue)error=dialogue->error;return false;}
-    if constexpr(kPortTitle==14){
+#if PORT_TITLE == 14
         // Retail MSG constructor 4320b1..4320c4 cancels bullets/lasers
         // and calls 424cb0 before ECL 518 repeats those calls at 42882f.
         // Even empty drops consume RNG, so these two clears cannot merge.
         return bullets.cancel_all_th14()&&lasers.cancel_all(false,false)&&enemies.erase_stage_enemies();
-    }
+#endif
     if constexpr(kPortTitle==16)return true;
     // 41cfe0 uses 40b5c0; ECL 415ade then uses the distinct 40b3a0
     // rectangle conversion. Already-cancelled bullets are excluded.

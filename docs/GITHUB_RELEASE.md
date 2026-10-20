@@ -1,5 +1,9 @@
 # GitHub 源码发布 · 2026-10-14
 
+## TH14 当前源码检查点（2026-10-21）
+
+本轮发布九个生产文件的回放结束菜单、暂停／恢复／续关调度及音效暂停修正，最终 SDL 模块 `02669f77…` 的构建和核心测试独立绑定；原版资产、可执行文件、合作方参考会话与私有完整跟踪不随源码发布。当前只标 TH14 进行中，整作 1:1 尚未完成。历史记录保持原版本范围。[本轮说明](porting/TH14_REPLAY_END_SOUND_FIX_OCT21.md)、[公开证据摘要](porting/th14-pause-replay-evidence-oct21.json)、[当前静音入口](porting/TH14_LOCAL_WORKSPACE_CURRENT_SERVER.md)。
+
 <!-- th14-staged-loader-current:start -->
 ## TH14 当前阶段 · 实际加载与四槽捕获（2026-10-14）
 

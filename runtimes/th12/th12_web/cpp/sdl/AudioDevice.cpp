@@ -50,6 +50,7 @@ struct AudioDevice::Impl {
     std::vector<u8> formats;i32 track=-1,saved_track=-1,fade=0,fade_total=0;mutable u32 stats[14]{};
 #if PORT_TITLE == 14
     Th14MusicFade music_fade;
+    std::array<bool,sound_voice_count> paused_sounds{};bool sounds_paused=false;
 #endif
     ~Impl(){music.reset();saved_music.reset();for(auto& sound:sounds)sound.reset();if(stream)SDL_DestroyAudioStream(stream);if(engine_ready)ma_engine_uninit(&engine);}
     bool attach(Voice& v){
@@ -134,6 +135,24 @@ void AudioDevice::fade_music(i32 frames){auto& a=*impl;
     a.fade=a.fade_total=std::max(0,frames);if(!frames&&a.music)ma_sound_stop(&a.music->sound);
 #endif
 }
+#if PORT_TITLE == 14
+void AudioDevice::pause_sounds(bool paused){auto& a=*impl;if(a.sounds_paused==paused)return;a.sounds_paused=paused;
+    if(paused){
+        // Retail4373b0 clears only the queue sentinel, preserving its metadata.
+        effects.state.indices[0]=-1;
+        for(u32 n=0;n<sound_voice_count;++n){auto* voice=a.sounds[n].get();
+            a.paused_sounds[n]=voice&&ma_sound_is_playing(&voice->sound);
+            if(voice)ma_sound_stop(&voice->sound);
+        }
+    }else{
+        // Retail449020 resumes saved playing voices without rewinding them.
+        // Menu sounds can reuse a voice while paused; its current cursor wins.
+        for(u32 n=0;n<sound_voice_count;++n)if(a.paused_sounds[n]&&a.sounds[n])ma_sound_start(&a.sounds[n]->sound);
+        a.paused_sounds.fill(false);
+    }
+}
+void AudioDevice::discard_paused_sounds(){impl->paused_sounds.fill(false);impl->sounds_paused=false;}
+#endif
 void AudioDevice::pause_music(bool paused){auto& a=*impl;if(!a.music||a.music_paused==paused)return;a.music_paused=paused;
 #if PORT_TITLE == 14
     if(paused)a.music->time.pause_started=a.clock();
