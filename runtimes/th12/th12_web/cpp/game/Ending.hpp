@@ -8,6 +8,7 @@
 #include <map>
 namespace th11 {
 struct StageResourceEffects;
+struct GameInput;
 // Ending MSG and staff.msg use their own timed interpreter (TH14:4202d0),
 // independent of the stage dialogue VM.
 class Ending {
@@ -31,6 +32,11 @@ public:
     void record_progress(i32 selection,i32 level,i32 continues);
     bool update(u32 held,u32 pressed,u32 shoot_frames=0);
     bool tick(u32 held,u32 pressed,u32 shoot_frames=0);
+#if PORT_TITLE == 14
+    // Return-code6 predicate only; the session repeats the whole callback chain.
+    bool repeat_requested(u32 held,u32 shoot_frames=0)const noexcept;
+    bool dispatch(GameInput&,u32 raw);
+#endif
 #if PORT_TITLE == 14
     StageResourceEffects* effects=nullptr;
     bool resource_loading()const{return pending_resource;}

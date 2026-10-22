@@ -1,0 +1,221 @@
+{
+  "schema": "th14.title-ending.public-evidence.v1",
+  "status": "source-and-sdl-build-verified-browser-pending",
+  "preparedUtc": "2026-10-20T22:39:00.202870+00:00",
+  "title": "TH14 标题切换与结局回调顺序修复",
+  "productionSources": {
+    "cpp/game/GameSession.cpp": {
+      "sha256": "05ec3a587e3e53bbd7cb275102fe0264fdd81586806e3ea97a177d4fdb8cb7cf",
+      "productionMatchesVerifiedCandidate": true
+    },
+    "cpp/game/Ending.cpp": {
+      "sha256": "4e91f2de791882feaaa34ace8ca85b8671aafc6b28b72b0ca5948a41964dafca",
+      "productionMatchesVerifiedCandidate": true
+    },
+    "cpp/game/Ending.hpp": {
+      "sha256": "8943936e4c059975804b7dc1a6c5743a9ee1ee0b1d227473c8374712080442cd",
+      "productionMatchesVerifiedCandidate": true
+    }
+  },
+  "memberLayoutChanged": false,
+  "behaviorChanges": [
+    {
+      "area": "标题切换",
+      "behavior": "Title6 发出开始、回放或演示请求后，完成当前回调轮次的 overlay8 和 normal29；下一次 Supervisor1 入口再切换场景。退出路径保持原有时序。"
+    },
+    {
+      "area": "结局进入与退出",
+      "behavior": "完成关卡时保留当前回调轮次，下一入口创建 Ending 并在同一轮执行首个 Ending31；结局变为 inactive 后，下一入口创建 Results 并执行 Title6。"
+    },
+    {
+      "area": "结局快进",
+      "behavior": "按 overlay8、fade16、normal29、Ending31 的顺序调度。原版返回6要求从注册链头重新执行；移植中的结局分派相应重复输入计数、ANM、fade和解释器更新，而非仅重复解释器。"
+    }
+  ],
+  "verifiedCoverage": {
+    "title": {
+      "routes": [
+        "Replay",
+        "Start",
+        "Demo",
+        "Quit"
+      ],
+      "physicalTicks": 2975,
+      "requestToTransitionTicks": {
+        "Replay": [
+          275,
+          276
+        ],
+        "Start": [
+          308,
+          309
+        ],
+        "Demo": [
+          1800,
+          1801
+        ],
+        "Quit": 229
+      },
+      "recordsAndVmWindowsEqualToPriorTitleCandidate": true
+    },
+    "originalCodeComponent": {
+      "controlledCases": 32,
+      "physicalTicks": 96,
+      "perPassComparisons": 672,
+      "differentComparedWords": 0,
+      "usesOriginalRegistryAndCallbacks": true,
+      "controlledBoundaries": [
+        "短 MSG 脚本",
+        "每个物理 tick 内固定输入快照",
+        "分配与系统服务边界"
+      ],
+      "sampledScope": "输入边沿/连续计数、Ending字段、真实ANM脚本VM与fade字段"
+    },
+    "naturalCampaign": {
+      "selection": 4,
+      "difficulty": 0,
+      "generatedVsFixedReplayEqualTicks": 92829,
+      "candidateVsPreviousCoreEqualPrefixTicks": 92827,
+      "comparisonWordsPerTick": 24,
+      "endingEntryTick": 92829,
+      "firstClear": {
+        "seen": 3,
+        "fastForward": false,
+        "inactiveTick": 96804,
+        "resultsTick": 96805
+      },
+      "secondClearAfterProductionSaveLoad": {
+        "sameCombatPrefixTicks": 92828,
+        "seen": 0,
+        "firstFastForwardTick": 93243,
+        "sixPassTicks": 1,
+        "twelvePassTicks": 297,
+        "allMultiPassEndFramesDivisibleBy12": true,
+        "allMultiPassFinalPressedZero": true,
+        "inactiveTick": 93541,
+        "resultsTick": 93542
+      },
+      "scorePersistence": "首轮自然通关结算后调用生产 save_scores，将原样字节经生产 load_scores 载入新的实例；没有直接修改 seen 或完成状态。"
+    }
+  },
+  "preservedFailures": [
+    {
+      "path": "artifacts/th14/title-ending-dispatch-candidate-oct21/natural-run/receipt.json",
+      "description": "历史92137按键在旧发布核心和候选均于10089 tick结束。相对10/12核心首个40字段差异出现在638 tick；不归因于此次结局改动。",
+      "sha256": "0e6d6cacff5a44a60a671a8dfc59c144f72526f73d976a28a2f8d075671eec3b"
+    },
+    {
+      "path": "artifacts/th14/title-ending-dispatch-candidate-oct21/fresh-candidate/receipt.json",
+      "description": "首轮真实结局完成，但旧测试错误要求首次通关必须快进；原失败保留，独立复算确认 seen3 应禁止快进。",
+      "sha256": "ce7e558e4dd35605ff32a038beac001edd3dbd920b36b5bb63b7fba919849c99"
+    },
+    {
+      "path": "artifacts/th14/title-ending-dispatch-candidate-oct21/fresh-second-play/receipt.json",
+      "description": "同一实例内第二次自适应挑战在六面GameOver；该尝试没有通关。后续生产存档保存/加载测试为另一个独立成功见证。",
+      "sha256": "2caef7a68062fb3ee56c69f5f5a55391ae7ff2b0a896adc9faf5875654ee301b"
+    }
+  ],
+  "runtimeArtifact": {
+    "newSdlBuildStatus": "independently-hash-verified",
+    "newSdlBuildReceipt": {
+      "path": "artifacts/th14/title-ending-scheduler-sdl-oct21/build.json",
+      "sha256": "e95c1af0744bad54d0495f400b6809e7c5b3b896cd12aa25dc2f0f387368ac0f",
+      "bytes": 76273
+    },
+    "independentVerification": {
+      "path": "artifacts/th14/title-ending-public-evidence-oct21/sdl-independent-verification.json",
+      "sha256": "cf4cadb47ceaa86a44579fd14f8e1b9cc287e14046277d7f630d65e74754d4c8",
+      "bytes": 3948
+    },
+    "wasmSha256": "0e1ba6d1531edb51cfcf3f45aa0e01c4221788716369154470c95834d114a4bd",
+    "wasmBytes": 1902898,
+    "loaderSha256": "9b3b775105b5adb0a6077729ce2b29f3941b4608408e347e4369da9baaa76b03",
+    "sourcesFrozen": 146,
+    "headersFrozen": 149,
+    "freshLinkedObjects": 2,
+    "reusedLinkedObjects": 144,
+    "headerDependentControlCompiles": 2,
+    "headerDependentControlObjectsByteEqual": true,
+    "projectLocalIncludeClosureFiles": 295,
+    "actualCompilerDependencyFiles": 4,
+    "importsUnchanged": true,
+    "exportsUnchanged": true,
+    "browserValidated": false,
+    "browserAcceptanceForThisModule": "not-yet-verified",
+    "priorBrowserAcceptanceInherited": false
+  },
+  "limitations": [
+    "比较覆盖指定24/40字段和受控VM，不等于所有战斗对象逐字一致。",
+    "自然通关使用普通开始接口；真实标题菜单输入路线另行验证。",
+    "WASI验证使用记录绘图后端，没有实测物理GPU或音频。",
+    "结局分派在一个宿主tick内使用固定输入快照；原系统可能在重复回调中重新采样。",
+    "新SDL模块已独立核验构建与依赖；浏览器验收尚未完成，不继承此前02669模块的验收。",
+    "不宣称TH14已经完成全局1:1还原。"
+  ],
+  "handoff": {
+    "path": "artifacts/th14/title-ending-dispatch-candidate-oct21/handoff-final.json",
+    "sha256": "e51c399c54be73d795e6c42ef25f3de38c18e95bbdc531355cb822968fbb9853"
+  },
+  "evidence": [
+    {
+      "path": "artifacts/th14/title-callback-scheduler-static-oct21/report.json",
+      "sha256": "1e386fd1e0b77ec3fde9e0e6e4370d35a5040a62608af1cf7bb91c20a6e643fc"
+    },
+    {
+      "path": "artifacts/th14/ending-callback-order-static-oct21/report.json",
+      "sha256": "901e16caff2a6fc84ea665cbfd7ff91048f7c0891c3ad71f13d911d4deac6cf9"
+    },
+    {
+      "path": "artifacts/th14/ending-dispatch-candidate-oct21/verification.json",
+      "sha256": "1ed56d18112839d2d3b9414e2b273f7a1df81e6ff650066f95a89d6f1c1ae9d0"
+    },
+    {
+      "path": "artifacts/th14/title-ending-dispatch-review-oct21/review.json",
+      "sha256": "3f5709971788c796c2bb3a24d0a8098e54f4cbb8d4cf925d93feb82acad05e22"
+    },
+    {
+      "path": "artifacts/th14/natural-ending-conditions-audit-oct21/verification.json",
+      "sha256": "cb6f68c3998cadca367f4956f9930b547f3023fcb041903dabb3f486b3d9f4fa"
+    },
+    {
+      "path": "artifacts/th14/title-ending-title-routes-oct21/verification.json",
+      "sha256": "b723790f4a5b39e86348ae39b1d0b95328e18daa510e109724ec8934ebdea391"
+    },
+    {
+      "path": "artifacts/th14/natural-ending-fresh-audit-oct21/verification.json",
+      "sha256": "04aba831b84b224a18beb6b05d8975ddeb4823ad0c41946e67f28ae25a568a83"
+    },
+    {
+      "path": "artifacts/th14/title-ending-dispatch-candidate-oct21/natural-build-v2.json",
+      "sha256": "83022c5ec24575e06ae4b7ec0c9f2015a54d2665ab95dd989c8f9d4ab18738fc"
+    },
+    {
+      "path": "artifacts/th14/title-ending-dispatch-candidate-oct21/persist-build.json",
+      "sha256": "a1848f9d5a37ac45924b4d263d35b824608e4c8678ca26dfe0afe7a34d3eda01"
+    },
+    {
+      "path": "artifacts/th14/title-ending-dispatch-candidate-oct21/persisted-natural-ending/verification.json",
+      "sha256": "8e3025c70c125bcda92ad06e60667b2b59605e2e23b582ed1f15d1c76fa5bf9a"
+    },
+    {
+      "path": "artifacts/th14/title-ending-dispatch-candidate-oct21/legacy-final-syntax.json",
+      "sha256": "1903bc060c06c4e93b794603f4f9d8ae1132d316c1236f2549d3b070ad726938"
+    },
+    {
+      "path": "artifacts/th14/persisted-natural-ending-independent-oct21/verification.json",
+      "sha256": "6024860617237a617b065b50a4bf55e29aeeb6725bd9035d6a38bc2d9fec8026"
+    },
+    {
+      "path": "artifacts/th14/title-ending-scheduler-sdl-oct21/header-proof/verification.json",
+      "sha256": "ceb1838158c4e876b662394b7d4e2ae61ce4a86899a1d7d8d06282322b38045a",
+      "bytes": 39702
+    },
+    {
+      "path": "artifacts/th14/title-ending-public-evidence-oct21/sdl-independent-verification.json",
+      "sha256": "cf4cadb47ceaa86a44579fd14f8e1b9cc287e14046277d7f630d65e74754d4c8",
+      "bytes": 3948
+    }
+  ],
+  "contentsPolicy": "仅收据相对路径、哈希及摘要；不附原游戏资源、按键流或原始内存/观测转储。",
+  "finalizedUtc": "2026-10-20T22:41:40.558365+00:00"
+}

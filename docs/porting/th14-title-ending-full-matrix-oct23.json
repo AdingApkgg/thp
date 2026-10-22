@@ -1,0 +1,1762 @@
+{
+  "title": "TH14 combined Title and Ending complete replay regression, independently checked 2026-10-23",
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "productionSources": {
+    "runtimes/th12/th12_web/cpp/game/GameSession.cpp": "05ec3a587e3e53bbd7cb275102fe0264fdd81586806e3ea97a177d4fdb8cb7cf",
+    "runtimes/th12/th12_web/cpp/game/Ending.cpp": "4e91f2de791882feaaa34ace8ca85b8671aafc6b28b72b0ca5948a41964dafca",
+    "runtimes/th12/th12_web/cpp/game/Ending.hpp": "8943936e4c059975804b7dc1a6c5743a9ee1ee0b1d227473c8374712080442cd"
+  },
+  "coreWasmSha256": "a9412430ed23b6a92102b2be95ebbfe207a6048fb8b6c69fa00415e3f90b4cb1",
+  "coreObjects": 141,
+  "sourceFiles": 267,
+  "currentRootSourcesMatched": 266,
+  "frozenPublishedCryptSha256": "d57118f1114f3909c42a2e99e7df30e625f6563247a8118cd14bb9f68a0f97ef",
+  "rootCryptReadOrChanged": false,
+  "matrixCases": 30,
+  "actualFullRuns": 32,
+  "matrixCallbacks": 2885731,
+  "comparedRaw32Words": 92343392,
+  "raw32DifferentWords": 0,
+  "naturalReplayEofCases": 28,
+  "naturalGameOverCases": 2,
+  "interactiveMenuCases": 2,
+  "allRawActiveOwnerQueueByteEqualPrior02669": true,
+  "independentVerification": {
+    "path": "artifacts/th14/title-ending-full-matrix-oct21/verification.json",
+    "sha256": "9fdee3a28257f35fd41d5f42668e63c8ffc6b42352ecda77e275eaf298f51a6d",
+    "bindings": 1588,
+    "verifierSha256": "8718eb454aae09ae847f80b8ccec96d0ce75c2a9dde7fb861f8888a9efb54f6a"
+  },
+  "cases": [
+    {
+      "key": "reimua-easy",
+      "mode": "noninteractive",
+      "callbacks": 100074,
+      "physicalTicks": 100074,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 12809472,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "89e8cafd55c7d622429f5cdda631e99b59266d40aab7ff3265b4a01cab5ef5b2",
+          "baselineSha256": "89e8cafd55c7d622429f5cdda631e99b59266d40aab7ff3265b4a01cab5ef5b2"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 100074,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "423648df2a75fd3d8a9c98a5ec7866e4682b7632bed4f47cd8be130e983e8b75",
+          "baselineSha256": "423648df2a75fd3d8a9c98a5ec7866e4682b7632bed4f47cd8be130e983e8b75"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 100074,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "b78a0a1f2eac6558832b849775850ac0162663da981d0871fc7681427c4c7ed7",
+          "baselineSha256": "b78a0a1f2eac6558832b849775850ac0162663da981d0871fc7681427c4c7ed7"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1896,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "77ff256d1f6788484ed3536aa87d1893ebf4a30a090045e1aae9e717e46ca3b4",
+          "baselineSha256": "77ff256d1f6788484ed3536aa87d1893ebf4a30a090045e1aae9e717e46ca3b4"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "marisaa-easy",
+      "mode": "noninteractive",
+      "callbacks": 33522,
+      "physicalTicks": 33522,
+      "naturalReplayEof": false,
+      "gameOver": true,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 4290816,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "5ec8f178469e078173c5881c30ed77faf22498ed8255278a56cab52de7d95989",
+          "baselineSha256": "5ec8f178469e078173c5881c30ed77faf22498ed8255278a56cab52de7d95989"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 33522,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "1fb02fd414df069267ab5862ab2c8380130fda53eaff7a89c77d2aba01349c69",
+          "baselineSha256": "1fb02fd414df069267ab5862ab2c8380130fda53eaff7a89c77d2aba01349c69"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 33522,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "9bf50bb6dce3081424c6644f2047a0c27c249196e566524b92df7eb9c69e3261",
+          "baselineSha256": "9bf50bb6dce3081424c6644f2047a0c27c249196e566524b92df7eb9c69e3261"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 661,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "9cd33c9bcb7be0b103ad99607941f09c13083ac3db3a152f3c3deaeeb3ba07b2",
+          "baselineSha256": "9cd33c9bcb7be0b103ad99607941f09c13083ac3db3a152f3c3deaeeb3ba07b2"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "reimub-easy",
+      "mode": "noninteractive",
+      "callbacks": 238611,
+      "physicalTicks": 238611,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 30542208,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "9d5befc5f029aad42cfe746e666bdc8ca0c9ff007ade6de2a96538885860c5bd",
+          "baselineSha256": "9d5befc5f029aad42cfe746e666bdc8ca0c9ff007ade6de2a96538885860c5bd"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 238611,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "efc926963dac310467ab18dd487291ef5e6069916486cab6bee0f4ce064e3b88",
+          "baselineSha256": "efc926963dac310467ab18dd487291ef5e6069916486cab6bee0f4ce064e3b88"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 238611,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "6159fb9973655cfecd36f8a3709f8e4168d27fca5d32ca4d42f8d7e3ebc00f9d",
+          "baselineSha256": "6159fb9973655cfecd36f8a3709f8e4168d27fca5d32ca4d42f8d7e3ebc00f9d"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1980,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "2ddac63c98ca2e55b4e067c98a489209f0e3c036d2e0fb58bec75ad3028dae32",
+          "baselineSha256": "2ddac63c98ca2e55b4e067c98a489209f0e3c036d2e0fb58bec75ad3028dae32"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "marisab-easy",
+      "mode": "noninteractive",
+      "callbacks": 106773,
+      "physicalTicks": 106773,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 13666944,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "3fc9e75b60b17d77977bb5205b0099fdae4c67832219c05b3e8756f6c64cfdc8",
+          "baselineSha256": "3fc9e75b60b17d77977bb5205b0099fdae4c67832219c05b3e8756f6c64cfdc8"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 106773,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "75ec6bdbce1e3627864809ef573f0e8442d05f1e486bb35f2c67558da8d1f126",
+          "baselineSha256": "75ec6bdbce1e3627864809ef573f0e8442d05f1e486bb35f2c67558da8d1f126"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 106773,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "fdf4481395a79bbaf8da3f419580164948ff0fbfcd6843b77ec300fe68686fd3",
+          "baselineSha256": "fdf4481395a79bbaf8da3f419580164948ff0fbfcd6843b77ec300fe68686fd3"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1923,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "13dcf275a3abbf23244d5ad5f2bd319e279b437d9eb6cb2eb7e6083107f0b096",
+          "baselineSha256": "13dcf275a3abbf23244d5ad5f2bd319e279b437d9eb6cb2eb7e6083107f0b096"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "sakuyaa-easy",
+      "mode": "noninteractive",
+      "callbacks": 127903,
+      "physicalTicks": 127903,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 16371584,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "0c8f5418cd4da35ba868ff663a0eef75f662580a4e1f01b99c48e92a9a66fdbd",
+          "baselineSha256": "0c8f5418cd4da35ba868ff663a0eef75f662580a4e1f01b99c48e92a9a66fdbd"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 127903,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "a5e18a3bc734ebd7f03db26762bb42e51921baba55ccb8ccf87e23130d4cc333",
+          "baselineSha256": "a5e18a3bc734ebd7f03db26762bb42e51921baba55ccb8ccf87e23130d4cc333"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 127903,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "752296d2be0b566e3391e3b71be3b01e878d4aff59a7b41f5a6b28a55b3798a7",
+          "baselineSha256": "752296d2be0b566e3391e3b71be3b01e878d4aff59a7b41f5a6b28a55b3798a7"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1954,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "f011b1896aad0ff298d96220a4dc324677c2a4e2041755af6c7aafe08d4d63d8",
+          "baselineSha256": "f011b1896aad0ff298d96220a4dc324677c2a4e2041755af6c7aafe08d4d63d8"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "sakuyab-easy",
+      "mode": "noninteractive",
+      "callbacks": 106749,
+      "physicalTicks": 106749,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 13663872,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "51dfbdac947e3100beb55895cac67edca3d9cd697dfcae8f5ea458bc17fa178f",
+          "baselineSha256": "51dfbdac947e3100beb55895cac67edca3d9cd697dfcae8f5ea458bc17fa178f"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 106749,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "462f92485fd7e7d07a4494a785d5d90534e0f7f7364abdd0b53b05f6ef4b2417",
+          "baselineSha256": "462f92485fd7e7d07a4494a785d5d90534e0f7f7364abdd0b53b05f6ef4b2417"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 106749,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "d82e2c47edd00e5c5e9ea1739c095e2957eea60b12745ac0a1050a58db9a242d",
+          "baselineSha256": "d82e2c47edd00e5c5e9ea1739c095e2957eea60b12745ac0a1050a58db9a242d"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1923,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "f7135e9549e50096bae286aa6de1d21debb10fb4eb22fd3a5b24fb1f6ac5d104",
+          "baselineSha256": "f7135e9549e50096bae286aa6de1d21debb10fb4eb22fd3a5b24fb1f6ac5d104"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "reimua-normal",
+      "mode": "noninteractive",
+      "callbacks": 85035,
+      "physicalTicks": 85035,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 10884480,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "fe6f76796cd0aae9ae1a97b358b2d360f1ad8a18120fbd820237fd1a42cb0c4f",
+          "baselineSha256": "fe6f76796cd0aae9ae1a97b358b2d360f1ad8a18120fbd820237fd1a42cb0c4f"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 85035,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "8dcdebeb30a8ca4aa2d62d24f10770715004feb7b602bec5d6aa152381f3bbb6",
+          "baselineSha256": "8dcdebeb30a8ca4aa2d62d24f10770715004feb7b602bec5d6aa152381f3bbb6"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 85035,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "c1ef7d8085ebfb21d91c37b51fade26cbec088963d286eb6e601e332c9832233",
+          "baselineSha256": "c1ef7d8085ebfb21d91c37b51fade26cbec088963d286eb6e601e332c9832233"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1896,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "673db7f486757be33fe3d88c8554352e3f67fca44c6b473d798ba82831936d99",
+          "baselineSha256": "673db7f486757be33fe3d88c8554352e3f67fca44c6b473d798ba82831936d99"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "reimub-normal",
+      "mode": "noninteractive",
+      "callbacks": 122005,
+      "physicalTicks": 122005,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 15616640,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "c84ddad332c0c5eb358de1b51022cb53631c8c4bf70a06431169218f6a4cf725",
+          "baselineSha256": "c84ddad332c0c5eb358de1b51022cb53631c8c4bf70a06431169218f6a4cf725"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 122005,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "7e07b06b43a08afa1b189d3affa3555f6d6c84ba87df4c53688f1d51f590e4ce",
+          "baselineSha256": "7e07b06b43a08afa1b189d3affa3555f6d6c84ba87df4c53688f1d51f590e4ce"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 122005,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "adaca9a0c467a052f0e0dc9649d1bd22e1bfad408b1d689e65541fa160241dd7",
+          "baselineSha256": "adaca9a0c467a052f0e0dc9649d1bd22e1bfad408b1d689e65541fa160241dd7"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1923,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "563e920ff05a4ea529bf24417cba25af2abf23a385204ffceee10aba894a062d",
+          "baselineSha256": "563e920ff05a4ea529bf24417cba25af2abf23a385204ffceee10aba894a062d"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "marisaa-normal",
+      "mode": "noninteractive",
+      "callbacks": 104236,
+      "physicalTicks": 104236,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 13342208,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "8f6c0847ccd836cca811666e35e1459352b90f0175874e0d86e6f3c622b30e2d",
+          "baselineSha256": "8f6c0847ccd836cca811666e35e1459352b90f0175874e0d86e6f3c622b30e2d"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 104236,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "b963a5e8b67dee5f731cc9619c6d539d3927f2571e7e31f1bdff1221cd8f8c7a",
+          "baselineSha256": "b963a5e8b67dee5f731cc9619c6d539d3927f2571e7e31f1bdff1221cd8f8c7a"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 104236,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "723c25714e2c13b64cd131584008cf879fab2f7219dd919d7974d306a7ae4f55",
+          "baselineSha256": "723c25714e2c13b64cd131584008cf879fab2f7219dd919d7974d306a7ae4f55"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1923,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "563a35ca4ae001f8704eab144af4936e1c512110ef388b9b97fb9ee350898cc7",
+          "baselineSha256": "563a35ca4ae001f8704eab144af4936e1c512110ef388b9b97fb9ee350898cc7"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "marisab-normal",
+      "mode": "noninteractive",
+      "callbacks": 113877,
+      "physicalTicks": 113877,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 14576256,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "89a886e25591b420071352291514279ea4bdef9af9d0a76939184766f14506ea",
+          "baselineSha256": "89a886e25591b420071352291514279ea4bdef9af9d0a76939184766f14506ea"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 113877,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "3b048a2348062e21ec18b8e96a7c5f11c0128a6ce7422787d592f2295345a802",
+          "baselineSha256": "3b048a2348062e21ec18b8e96a7c5f11c0128a6ce7422787d592f2295345a802"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 113877,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "ffa6a58020e6483d61b30cd3e29fef0cfaf903ae261d64c54e48e3d2487c7163",
+          "baselineSha256": "ffa6a58020e6483d61b30cd3e29fef0cfaf903ae261d64c54e48e3d2487c7163"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1923,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "1f0489b5e3132f8ab8a133849179a72001f3bb4e4491eb6ec10ccf15e4b01ee2",
+          "baselineSha256": "1f0489b5e3132f8ab8a133849179a72001f3bb4e4491eb6ec10ccf15e4b01ee2"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "sakuyaa-normal",
+      "mode": "noninteractive",
+      "callbacks": 104802,
+      "physicalTicks": 104802,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 13414656,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "1e43ff3dce94d90dae47e5b012809c2abb013f9255c2f6a842fc631f3cf3b838",
+          "baselineSha256": "1e43ff3dce94d90dae47e5b012809c2abb013f9255c2f6a842fc631f3cf3b838"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 104802,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "f21bd830936e1c807a1fd81b1e1ab15b93ee07da87c4f94279808dcfbcbd1ffa",
+          "baselineSha256": "f21bd830936e1c807a1fd81b1e1ab15b93ee07da87c4f94279808dcfbcbd1ffa"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 104802,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "0cb15011d2874824a8434368034ade42b0a2e85830d7bd31264c3bf5641056ef",
+          "baselineSha256": "0cb15011d2874824a8434368034ade42b0a2e85830d7bd31264c3bf5641056ef"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1923,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "e7336e4ef745fdfec06384feaccad82d3035963ccbdd3a9a61e6c17005240c77",
+          "baselineSha256": "e7336e4ef745fdfec06384feaccad82d3035963ccbdd3a9a61e6c17005240c77"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "reimua-hard",
+      "mode": "noninteractive",
+      "callbacks": 95678,
+      "physicalTicks": 95678,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 12246784,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "892a73592b50ad43f468b42ceddca8d837ddb15482c2258f1d777cb879355f3e",
+          "baselineSha256": "892a73592b50ad43f468b42ceddca8d837ddb15482c2258f1d777cb879355f3e"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 95678,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "5ae8611c19b0b04ea28041f24160d6b8db7dc47f8d84cd69f78f963947406bb3",
+          "baselineSha256": "5ae8611c19b0b04ea28041f24160d6b8db7dc47f8d84cd69f78f963947406bb3"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 95678,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "6166ac4f61590a5ce66ef51f3778fc6e9f1089e77263cde7c6cc40eb7683ea73",
+          "baselineSha256": "6166ac4f61590a5ce66ef51f3778fc6e9f1089e77263cde7c6cc40eb7683ea73"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1923,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "9648c84177acb6cdef94d8624ea18d38d87566dbc9a310187504541e2aed774a",
+          "baselineSha256": "9648c84177acb6cdef94d8624ea18d38d87566dbc9a310187504541e2aed774a"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "sakuyab-normal",
+      "mode": "noninteractive",
+      "callbacks": 112201,
+      "physicalTicks": 112201,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 14361728,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "cc32effa2f16ba42dcc4bde70d244f87e240a5e445b09a6f94e87f900241a660",
+          "baselineSha256": "cc32effa2f16ba42dcc4bde70d244f87e240a5e445b09a6f94e87f900241a660"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 112201,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "ddbedd1eb09999b92383f72b1adc779bf3196fab0b22c2e4450a7ec02c405149",
+          "baselineSha256": "ddbedd1eb09999b92383f72b1adc779bf3196fab0b22c2e4450a7ec02c405149"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 112201,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "4ed0f5152b42115c49c5564839deac700f8ea53328b8784469b0c2d10dd708c0",
+          "baselineSha256": "4ed0f5152b42115c49c5564839deac700f8ea53328b8784469b0c2d10dd708c0"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1923,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "ad9d530cad58c9e309d674e638edbdda19b4871d99aef070ba770dbb85da33c6",
+          "baselineSha256": "ad9d530cad58c9e309d674e638edbdda19b4871d99aef070ba770dbb85da33c6"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "marisaa-hard",
+      "mode": "noninteractive",
+      "callbacks": 115317,
+      "physicalTicks": 115317,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 14760576,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "55776d5221b00ee08724419bfa402e23e6564cf6db7eb1d5cab52cc032ecc228",
+          "baselineSha256": "55776d5221b00ee08724419bfa402e23e6564cf6db7eb1d5cab52cc032ecc228"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 115317,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "1d47f9601aa9030ad65216afe18231126e006985cb709963078e688799500e97",
+          "baselineSha256": "1d47f9601aa9030ad65216afe18231126e006985cb709963078e688799500e97"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 115317,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "d3cdc512ea3e9dffd10e468bb959cd9a2341627e58565b01a706ee062903c23c",
+          "baselineSha256": "d3cdc512ea3e9dffd10e468bb959cd9a2341627e58565b01a706ee062903c23c"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1923,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "f2beb5496e6174ddad4eb1f1ee5f093dc8732534ca6bbf7cd058c601d29c2f83",
+          "baselineSha256": "f2beb5496e6174ddad4eb1f1ee5f093dc8732534ca6bbf7cd058c601d29c2f83"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "reimub-hard",
+      "mode": "noninteractive",
+      "callbacks": 106910,
+      "physicalTicks": 106910,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 13684480,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "4771b456748aa9fa58f3a11d7488a58783776c97fc3f010a873fbd43e741f8aa",
+          "baselineSha256": "4771b456748aa9fa58f3a11d7488a58783776c97fc3f010a873fbd43e741f8aa"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 106910,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "7290a5a040fee64eb967297d57f5040c86fdbfdd2813c48fba0d778180d4cc49",
+          "baselineSha256": "7290a5a040fee64eb967297d57f5040c86fdbfdd2813c48fba0d778180d4cc49"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 106910,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "4b9328349e34ac4f5e3ed726bcb395f54c9ea95f8a29ba6ce2846b37d1ca8c8f",
+          "baselineSha256": "4b9328349e34ac4f5e3ed726bcb395f54c9ea95f8a29ba6ce2846b37d1ca8c8f"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1923,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "fd3182946675530fc00cc73a6cd0f8cce2958dd9a427b4f97e6a8e9faf6a4835",
+          "baselineSha256": "fd3182946675530fc00cc73a6cd0f8cce2958dd9a427b4f97e6a8e9faf6a4835"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "sakuyaa-hard",
+      "mode": "noninteractive",
+      "callbacks": 96569,
+      "physicalTicks": 96569,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 12360832,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "c5ad19c2d48fec0f6105b3c4ddcf2242397408f8814d49467c4f06cfff2bd035",
+          "baselineSha256": "c5ad19c2d48fec0f6105b3c4ddcf2242397408f8814d49467c4f06cfff2bd035"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 96569,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "08c4371e8d4a3eaf9910c42423b8027e78af7249693a613b812b6fdcadcd77db",
+          "baselineSha256": "08c4371e8d4a3eaf9910c42423b8027e78af7249693a613b812b6fdcadcd77db"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 96569,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "31bb0e2682e8016d5f28e8f155ba0d0a700a8bddbc11b10f7aca9a61a484b601",
+          "baselineSha256": "31bb0e2682e8016d5f28e8f155ba0d0a700a8bddbc11b10f7aca9a61a484b601"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1896,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "f968e60213d9d815cc9e5cad134fbe98063f92ff323e055232a3cc2a932f08ef",
+          "baselineSha256": "f968e60213d9d815cc9e5cad134fbe98063f92ff323e055232a3cc2a932f08ef"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "marisab-hard",
+      "mode": "noninteractive",
+      "callbacks": 119048,
+      "physicalTicks": 119048,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 15238144,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "cec905b439c95a96f1317a9673b20be28ba0119c28ee6dc252bf54952bd39c6b",
+          "baselineSha256": "cec905b439c95a96f1317a9673b20be28ba0119c28ee6dc252bf54952bd39c6b"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 119048,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "3e006eb3ceefe8591b2f7de2f7b6df62353c5c0fa815f1873997209aa7cbba5c",
+          "baselineSha256": "3e006eb3ceefe8591b2f7de2f7b6df62353c5c0fa815f1873997209aa7cbba5c"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 119048,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "f1c2f6ce5e51dd641091c1c2ed5aa8f2da6213b8346eef55cf522a0dfb0aa4f2",
+          "baselineSha256": "f1c2f6ce5e51dd641091c1c2ed5aa8f2da6213b8346eef55cf522a0dfb0aa4f2"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1923,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "408290152b6908ba1acff39a7ffb812460e519a91b2889af984134653167c64a",
+          "baselineSha256": "408290152b6908ba1acff39a7ffb812460e519a91b2889af984134653167c64a"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "reimua-lunatic",
+      "mode": "noninteractive",
+      "callbacks": 86343,
+      "physicalTicks": 86343,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 11051904,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "674ed7f45af05d244989fc0ee3d50359f5bd22e93c9effb12e148d2c131c5872",
+          "baselineSha256": "674ed7f45af05d244989fc0ee3d50359f5bd22e93c9effb12e148d2c131c5872"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 86343,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "39caef6c53a0af63a8e104db37513d2c372a358e11489fc3cd48d9db8a18c3ed",
+          "baselineSha256": "39caef6c53a0af63a8e104db37513d2c372a358e11489fc3cd48d9db8a18c3ed"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 86343,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "4539ee0b3536d814cebc8d98ac7726778b97148c1db458a71dc56e8938561f7d",
+          "baselineSha256": "4539ee0b3536d814cebc8d98ac7726778b97148c1db458a71dc56e8938561f7d"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1896,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "3ab44dad050aeaaeb3b881ee78ce3fea1d90babb99647125fd0017a7b7ba720c",
+          "baselineSha256": "3ab44dad050aeaaeb3b881ee78ce3fea1d90babb99647125fd0017a7b7ba720c"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "sakuyab-hard",
+      "mode": "noninteractive",
+      "callbacks": 122796,
+      "physicalTicks": 122796,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 15717888,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "40d1d68dd45fe2c798f7076c36e37ad9bba676a3d28fb775be8d46a6c17d6c60",
+          "baselineSha256": "40d1d68dd45fe2c798f7076c36e37ad9bba676a3d28fb775be8d46a6c17d6c60"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 122796,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "f08ba43b2a7f5f809f46e98a171992e37af1e828dab39420a6925ab4dcf3773f",
+          "baselineSha256": "f08ba43b2a7f5f809f46e98a171992e37af1e828dab39420a6925ab4dcf3773f"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 122796,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "8d8756acb980667ce3d96a87bc2aa19f43a6e669923febea4621a142900e140c",
+          "baselineSha256": "8d8756acb980667ce3d96a87bc2aa19f43a6e669923febea4621a142900e140c"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1923,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "ef47973e0f68e24496953f68fe9763478a5bbe14d4e9a0edb9a196c83ae7f6f1",
+          "baselineSha256": "ef47973e0f68e24496953f68fe9763478a5bbe14d4e9a0edb9a196c83ae7f6f1"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "reimub-lunatic",
+      "mode": "noninteractive",
+      "callbacks": 103888,
+      "physicalTicks": 103888,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 13297664,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "bd1930e0781a5dd9d679bcbf8941a3f5a321d2e5c4201fd494dcc8d3b61743fa",
+          "baselineSha256": "bd1930e0781a5dd9d679bcbf8941a3f5a321d2e5c4201fd494dcc8d3b61743fa"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 103888,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "2261a0fc3c34fd9109048cc7ff52777054c90908d22e93689fd19aa740f2e253",
+          "baselineSha256": "2261a0fc3c34fd9109048cc7ff52777054c90908d22e93689fd19aa740f2e253"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 103888,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "5a3c3a2e968a769e1f6feece617b58305f9f9afd77d3b850b115a0a483af6ee7",
+          "baselineSha256": "5a3c3a2e968a769e1f6feece617b58305f9f9afd77d3b850b115a0a483af6ee7"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1923,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "476394cc5c9381f04dcb55f3f3929b5da9287bd85f2fe24b61a62b8d848cfc13",
+          "baselineSha256": "476394cc5c9381f04dcb55f3f3929b5da9287bd85f2fe24b61a62b8d848cfc13"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "marisaa-lunatic",
+      "mode": "noninteractive",
+      "callbacks": 106740,
+      "physicalTicks": 106740,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 13662720,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "e00fcfe345855b0ede711cd0d54dead2b0b772def3a17e83cda5e7760387c3b4",
+          "baselineSha256": "e00fcfe345855b0ede711cd0d54dead2b0b772def3a17e83cda5e7760387c3b4"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 106740,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "4ba2f724c65311a65caf3d7d3a419167d37dae8bfb619f6d89458117138d83ad",
+          "baselineSha256": "4ba2f724c65311a65caf3d7d3a419167d37dae8bfb619f6d89458117138d83ad"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 106740,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "de7f3846d82be5ec66402836647c9cc1233270fcf8622a19e649e77bc3a8498c",
+          "baselineSha256": "de7f3846d82be5ec66402836647c9cc1233270fcf8622a19e649e77bc3a8498c"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1923,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "3f23f9d5202368ef5f93527ac78a635a24daa663f882643aafe50a354969545d",
+          "baselineSha256": "3f23f9d5202368ef5f93527ac78a635a24daa663f882643aafe50a354969545d"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "marisab-lunatic",
+      "mode": "noninteractive",
+      "callbacks": 89235,
+      "physicalTicks": 89235,
+      "naturalReplayEof": false,
+      "gameOver": true,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 11422080,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "d3056571aeb958b807d9cc08aa30ef809d3782f50422c4ea3171d850b2a19194",
+          "baselineSha256": "d3056571aeb958b807d9cc08aa30ef809d3782f50422c4ea3171d850b2a19194"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 89235,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "9aa147b90e085225d02a83b7ab74c7c438558e2fe121671b14e1cd534a0005d8",
+          "baselineSha256": "9aa147b90e085225d02a83b7ab74c7c438558e2fe121671b14e1cd534a0005d8"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 89235,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "8bdd7f5d3b414ed0ae10635ffcc8b29b856fe7a2e6cb3ea90f194289b75efd30",
+          "baselineSha256": "8bdd7f5d3b414ed0ae10635ffcc8b29b856fe7a2e6cb3ea90f194289b75efd30"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1524,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "a29f313632a2290eebf4e3eb672edc58a0e27b9e392f53387dff1369a8423306",
+          "baselineSha256": "a29f313632a2290eebf4e3eb672edc58a0e27b9e392f53387dff1369a8423306"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "sakuyaa-lunatic",
+      "mode": "noninteractive",
+      "callbacks": 84952,
+      "physicalTicks": 84952,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 10873856,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "8fd1c045b86cb205d2a1bff8b2b120521303c4bb1ce660213432ac27f668b882",
+          "baselineSha256": "8fd1c045b86cb205d2a1bff8b2b120521303c4bb1ce660213432ac27f668b882"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 84952,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "ffbfa4273eebefaed4ae491c33342da7dd3f4a5c317d99d116aead705b03bd93",
+          "baselineSha256": "ffbfa4273eebefaed4ae491c33342da7dd3f4a5c317d99d116aead705b03bd93"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 84952,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "68312290d2ddce9c8feecedfbb46f54904d95bb8673896471e76a4b0f2f08c3f",
+          "baselineSha256": "68312290d2ddce9c8feecedfbb46f54904d95bb8673896471e76a4b0f2f08c3f"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1896,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "5398d60f81a9a6245e1b7ebc8ed4309ebdae2a363caf49796fe083bc8d7b791b",
+          "baselineSha256": "5398d60f81a9a6245e1b7ebc8ed4309ebdae2a363caf49796fe083bc8d7b791b"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "reimua-extra",
+      "mode": "noninteractive",
+      "callbacks": 38403,
+      "physicalTicks": 38403,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 4915584,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "fb23c716ed910c347cf4383d3c6dacd65180a2bb6638eb8a8a6ca818b3a92a79",
+          "baselineSha256": "fb23c716ed910c347cf4383d3c6dacd65180a2bb6638eb8a8a6ca818b3a92a79"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 38403,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "f356bab24148b42eebf8381c9d0936db13887981d68b5cf8631cc5769dfdeb26",
+          "baselineSha256": "f356bab24148b42eebf8381c9d0936db13887981d68b5cf8631cc5769dfdeb26"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 38403,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "f356bab24148b42eebf8381c9d0936db13887981d68b5cf8631cc5769dfdeb26",
+          "baselineSha256": "f356bab24148b42eebf8381c9d0936db13887981d68b5cf8631cc5769dfdeb26"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 3,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+          "baselineSha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "reimub-extra",
+      "mode": "noninteractive",
+      "callbacks": 46936,
+      "physicalTicks": 46936,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 6007808,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "95449ab467ffc1e39854af98d71d156a885456c4fc1f2e26da68cdd7936f0f9a",
+          "baselineSha256": "95449ab467ffc1e39854af98d71d156a885456c4fc1f2e26da68cdd7936f0f9a"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 46936,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "6e4ccc80b52b741f0bf66232bc56130ff74c0d56ade0ebede94fc227a4953da5",
+          "baselineSha256": "6e4ccc80b52b741f0bf66232bc56130ff74c0d56ade0ebede94fc227a4953da5"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 46936,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "6e4ccc80b52b741f0bf66232bc56130ff74c0d56ade0ebede94fc227a4953da5",
+          "baselineSha256": "6e4ccc80b52b741f0bf66232bc56130ff74c0d56ade0ebede94fc227a4953da5"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 3,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+          "baselineSha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "sakuyab-lunatic",
+      "mode": "noninteractive",
+      "callbacks": 126709,
+      "physicalTicks": 126709,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 16218752,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "f1975e5b8fd701600e08e345bf82e2c4168489bd169f258b5604787a9efcb3ce",
+          "baselineSha256": "f1975e5b8fd701600e08e345bf82e2c4168489bd169f258b5604787a9efcb3ce"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 126709,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "54726480f1df07748bec69371e7f82de05518a1d5f91390b37b0127f958c8d87",
+          "baselineSha256": "54726480f1df07748bec69371e7f82de05518a1d5f91390b37b0127f958c8d87"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 126709,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "76ef88cf4c21245c9e008484133d1d181aeddfa1941732971784558c1fa06dcf",
+          "baselineSha256": "76ef88cf4c21245c9e008484133d1d181aeddfa1941732971784558c1fa06dcf"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1923,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "52feb2ea52bde3f0c35f4c83f1b92cf1caf1f6660cd0416c86cfe684600fcca6",
+          "baselineSha256": "52feb2ea52bde3f0c35f4c83f1b92cf1caf1f6660cd0416c86cfe684600fcca6"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "marisaa-extra",
+      "mode": "noninteractive",
+      "callbacks": 46391,
+      "physicalTicks": 46391,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 5938048,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "e8b961208f597d74ca86db08e252dfa0be60994abc29e7f04b37133fb2e18816",
+          "baselineSha256": "e8b961208f597d74ca86db08e252dfa0be60994abc29e7f04b37133fb2e18816"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 46391,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "6adb1ac165807a798b06b27dfa46f86d2d256f7892323cf231500e8afcaf29d0",
+          "baselineSha256": "6adb1ac165807a798b06b27dfa46f86d2d256f7892323cf231500e8afcaf29d0"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 46391,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "6adb1ac165807a798b06b27dfa46f86d2d256f7892323cf231500e8afcaf29d0",
+          "baselineSha256": "6adb1ac165807a798b06b27dfa46f86d2d256f7892323cf231500e8afcaf29d0"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 3,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+          "baselineSha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "sakuyaa-extra",
+      "mode": "noninteractive",
+      "callbacks": 38977,
+      "physicalTicks": 38977,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 4989056,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "2e5c580d9f9dd56033a082eb1a4a42acec8ff5a33b31cd89e45b87f12346dcbb",
+          "baselineSha256": "2e5c580d9f9dd56033a082eb1a4a42acec8ff5a33b31cd89e45b87f12346dcbb"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 38977,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "8c822183f7a3660f7f936e18b2c624b48746220d2ad8e37b38292d57b9a9112e",
+          "baselineSha256": "8c822183f7a3660f7f936e18b2c624b48746220d2ad8e37b38292d57b9a9112e"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 38977,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "8c822183f7a3660f7f936e18b2c624b48746220d2ad8e37b38292d57b9a9112e",
+          "baselineSha256": "8c822183f7a3660f7f936e18b2c624b48746220d2ad8e37b38292d57b9a9112e"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 3,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+          "baselineSha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "marisab-extra",
+      "mode": "noninteractive",
+      "callbacks": 54114,
+      "physicalTicks": 54114,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 6926592,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "f642af976bf744c8765d5ea081fc9044d80d657f3f422c0ca713e84fa121e9e6",
+          "baselineSha256": "f642af976bf744c8765d5ea081fc9044d80d657f3f422c0ca713e84fa121e9e6"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 54114,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "f5d25715f40caff71046cb50e3f435ceb7681b9e697c153c04c2718b1c5d22db",
+          "baselineSha256": "f5d25715f40caff71046cb50e3f435ceb7681b9e697c153c04c2718b1c5d22db"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 54114,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "f5d25715f40caff71046cb50e3f435ceb7681b9e697c153c04c2718b1c5d22db",
+          "baselineSha256": "f5d25715f40caff71046cb50e3f435ceb7681b9e697c153c04c2718b1c5d22db"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 3,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+          "baselineSha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "marisaa-easy",
+      "mode": "interactive-menu",
+      "callbacks": 33522,
+      "physicalTicks": 33642,
+      "naturalReplayEof": false,
+      "gameOver": true,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 4290816,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "5ec8f178469e078173c5881c30ed77faf22498ed8255278a56cab52de7d95989",
+          "baselineSha256": "5ec8f178469e078173c5881c30ed77faf22498ed8255278a56cab52de7d95989"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 33522,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "1fb02fd414df069267ab5862ab2c8380130fda53eaff7a89c77d2aba01349c69",
+          "baselineSha256": "1fb02fd414df069267ab5862ab2c8380130fda53eaff7a89c77d2aba01349c69"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 33522,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "9bf50bb6dce3081424c6644f2047a0c27c249196e566524b92df7eb9c69e3261",
+          "baselineSha256": "9bf50bb6dce3081424c6644f2047a0c27c249196e566524b92df7eb9c69e3261"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 661,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "9cd33c9bcb7be0b103ad99607941f09c13083ac3db3a152f3c3deaeeb3ba07b2",
+          "baselineSha256": "9cd33c9bcb7be0b103ad99607941f09c13083ac3db3a152f3c3deaeeb3ba07b2"
+        }
+      ],
+      "menu": {
+        "entries": 121,
+        "zeroInputFollowups": 120,
+        "entryMode": 2,
+        "choiceReadyAfterTicks": 11,
+        "finalMode": 3,
+        "forcedExit": 1,
+        "cursor": 1,
+        "disabledCount": 3,
+        "combatFrozen": true,
+        "prior02669ComparedFields": [
+          0,
+          1,
+          2,
+          5,
+          6,
+          7,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          30,
+          31,
+          32,
+          33,
+          35,
+          37,
+          38,
+          39
+        ],
+        "prior02669DifferentFields": 0
+      }
+    },
+    {
+      "key": "sakuyab-extra",
+      "mode": "noninteractive",
+      "callbacks": 50937,
+      "physicalTicks": 50937,
+      "naturalReplayEof": true,
+      "gameOver": false,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 6519936,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "7d0e175082a3f743e420e8b80338f4001bd102dd9c8e9239270b7147950b557f",
+          "baselineSha256": "7d0e175082a3f743e420e8b80338f4001bd102dd9c8e9239270b7147950b557f"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 50937,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "b92aaa87e3c8383c06ec9146b5b7bf3ef5d8a07b3e8d9756ea137822a4464fc4",
+          "baselineSha256": "b92aaa87e3c8383c06ec9146b5b7bf3ef5d8a07b3e8d9756ea137822a4464fc4"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 50937,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "b92aaa87e3c8383c06ec9146b5b7bf3ef5d8a07b3e8d9756ea137822a4464fc4",
+          "baselineSha256": "b92aaa87e3c8383c06ec9146b5b7bf3ef5d8a07b3e8d9756ea137822a4464fc4"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 3,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+          "baselineSha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        }
+      ],
+      "menu": null
+    },
+    {
+      "key": "marisab-lunatic",
+      "mode": "interactive-menu",
+      "callbacks": 89235,
+      "physicalTicks": 89355,
+      "naturalReplayEof": false,
+      "gameOver": true,
+      "comparisons": [
+        {
+          "file": "selected-state.u32",
+          "comparedBytes": 11422080,
+          "differentBytes": 0,
+          "differentWords": 0,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "d3056571aeb958b807d9cc08aa30ef809d3782f50422c4ea3171d850b2a19194",
+          "baselineSha256": "d3056571aeb958b807d9cc08aa30ef809d3782f50422c4ea3171d850b2a19194"
+        },
+        {
+          "file": "callback-active.u8",
+          "comparedBytes": 89235,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "9aa147b90e085225d02a83b7ab74c7c438558e2fe121671b14e1cd534a0005d8",
+          "baselineSha256": "9aa147b90e085225d02a83b7ab74c7c438558e2fe121671b14e1cd534a0005d8"
+        },
+        {
+          "file": "enemy-owner.u8",
+          "comparedBytes": 89235,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "8bdd7f5d3b414ed0ae10635ffcc8b29b856fe7a2e6cb3ea90f194289b75efd30",
+          "baselineSha256": "8bdd7f5d3b414ed0ae10635ffcc8b29b856fe7a2e6cb3ea90f194289b75efd30"
+        },
+        {
+          "file": "queue.json",
+          "comparedBytes": 1524,
+          "differentBytes": 0,
+          "differentWords": null,
+          "lengthDifference": 0,
+          "byteEqualPrior02669": true,
+          "sha256": "a29f313632a2290eebf4e3eb672edc58a0e27b9e392f53387dff1369a8423306",
+          "baselineSha256": "a29f313632a2290eebf4e3eb672edc58a0e27b9e392f53387dff1369a8423306"
+        }
+      ],
+      "menu": {
+        "entries": 121,
+        "zeroInputFollowups": 120,
+        "entryMode": 2,
+        "choiceReadyAfterTicks": 11,
+        "finalMode": 3,
+        "forcedExit": 1,
+        "cursor": 1,
+        "disabledCount": 3,
+        "combatFrozen": true,
+        "prior02669ComparedFields": [
+          0,
+          1,
+          2,
+          5,
+          6,
+          7,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          30,
+          31,
+          32,
+          33,
+          35,
+          37,
+          38,
+          39
+        ],
+        "prior02669DifferentFields": 0
+      }
+    }
+  ],
+  "scope": "Actual complete combined Title/Ending core Portable regression: 30 intact input runs against Oct20 and prior02669 raw32/active/owner/queue outputs, plus two independent natural GameOver replays with 120 zero-input menu followups. Menu observer predicates fixed before execution. Preserves 28 EOF and two GameOver outcomes. This does not exercise natural live-game Ending or assert original, browser, visual/audio or whole-game equivalence.",
+  "limits": [
+    "Portable regression against immutable Oct20 and preceding02669 output, not original-game equivalence.",
+    "The replay matrix excludes ordinary live-game Ending; that path has separate natural clear and original component receipts.",
+    "No browser, GPU, audio-device or whole-game equivalence inherited from these headless runs."
+  ]
+}

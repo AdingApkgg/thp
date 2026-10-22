@@ -287,6 +287,29 @@ bool GameSession::update(const GameSessionInput& input) {
     if(!error.empty()) return false;
     if(state.phase==GameSessionPhase::finished) return true;
 #if PORT_TITLE == 14
+    // HUD28 and Ending31 post scene requests after Supervisor1 has run.
+    // Create the next scene here, then dispatch its callbacks in this pass.
+    if(state.phase==GameSessionPhase::stage&&battle&&battle->completion.state.exit==StageExit::Ending){
+        if(!open_ending())return false;
+    }
+    if(state.phase==GameSessionPhase::ending&&ending&&!ending->active){
+        if(!open_results())return false;
+    }
+    // Supervisor1 consumes requests posted by Title6 on the preceding pass.
+    // Keep that request pass alive through overlay8 and normal ANM29.
+    if(state.phase==GameSessionPhase::title&&title){
+        if(!source)return fail("title lifetime missing");
+        if(title->start_requested){const auto choice=title->selection;return begin(*source,choice.stage,choice.character,choice.partner,choice.difficulty,false,false,(choice.flags&16)!=0);}
+        if(title->replay_start_requested){auto entry=title->replay_files[title->replay_file];last_replay_file=title->replay_file;const u32 stage=title->replay_stage+1;
+            if(entry->file.empty()&&(!resources.effects||!resources.effects->read_replay(entry->path,entry->file)))return fail("selected replay could not be loaded");
+            return begin_replay(*source,entry->file.data(),u32(entry->file.size()),stage);}
+        if(title_idle>=1800){
+            const DemoPlaylist playlist=demo_playlist();const auto path=std::string(playlist.names[demo_index<playlist.step?demo_index:0]);
+            demo_index=(demo_index+1)%playlist.step;title_idle=0;std::vector<u8> bytes;
+            if(!source->read(path,bytes))return fail("original demo resource missing");
+            return begin_replay(*source,bytes.data(),u32(bytes.size()),0,true);
+        }
+    }
     if(state.phase==GameSessionPhase::loading)return true;
     if(battle&&battle->pending_stage){
         // Only the first actual deferred copy slot guards worker entry;
@@ -306,15 +329,15 @@ bool GameSession::update(const GameSessionInput& input) {
     last_pause=input.pause;
     if(state.phase==GameSessionPhase::ending){
         if(!ending)return fail("ending lifetime missing");
-        game_input.update((input.held&~256u)|((input.held&256)?0x80000:0));
 #if PORT_TITLE == 14
-        const u32 shoot_frames=game_input.held_frames[0];
+        const u32 raw=(input.held&~256u)|((input.held&256)?0x80000:0)|(input.pause?256:0);
+        if(!ending->dispatch(game_input,raw))return fail(ending->error.c_str());
 #else
-        const u32 shoot_frames=0;
-#endif
-        if(!ending->tick(game_input.held,game_input.pressed,shoot_frames))return fail(ending->error.c_str());
+        game_input.update((input.held&~256u)|((input.held&256)?0x80000:0));
+        if(!ending->tick(game_input.held,game_input.pressed,0))return fail(ending->error.c_str());
         if(!ending->active)return open_results();
         if(!animations.update(true)||!animations.update(false))return fail("ending ANM update failed");
+#endif
         ++state.frame;return true;
     }
     if(pause_edge&&state.phase==GameSessionPhase::stage&&!state.demo&&state.frame>29) {
@@ -389,6 +412,7 @@ bool GameSession::update(const GameSessionInput& input) {
         if(!title||!source)return fail("title lifetime missing");
         const u32 raw=(input.held&~256u)|((input.held&256)?0x80000:0)|(input.pause?256:0);
         if(title->screen==TitleScreen::Main){++title_idle;if(raw)title_idle=0;
+#if PORT_TITLE != 14
             if(title_idle>=1800){const DemoPlaylist playlist=demo_playlist();
                 const auto path=std::string(playlist.names[demo_index<playlist.step?demo_index:0]);
                 std::printf("[demo] list entry %u of %u: %s\n", demo_index, playlist.step,
@@ -400,6 +424,7 @@ bool GameSession::update(const GameSessionInput& input) {
                 std::fflush(stdout);
                 return begin_replay(*source,bytes.data(),u32(bytes.size()),0,true);
             }
+#endif
         }
         game_input.update(raw);title->held=raw;
 #if PORT_TITLE == 14
@@ -431,10 +456,12 @@ bool GameSession::update(const GameSessionInput& input) {
         config=title->config;
         if(title->fade_requested)title_fades.start(5,32,0,61,&animations.rate);
         title_fades.update();
+#if PORT_TITLE != 14
         if(title->start_requested){const auto choice=title->selection;return begin(*source,choice.stage,choice.character,choice.partner,choice.difficulty,false,false,(choice.flags&16)!=0);}
         if(title->replay_start_requested){auto entry=title->replay_files[title->replay_file];last_replay_file=title->replay_file;const u32 stage=title->replay_stage+1;
             if(entry->file.empty()&&(!resources.effects||!resources.effects->read_replay(entry->path,entry->file)))return fail("selected replay could not be loaded");
             return begin_replay(*source,entry->file.data(),u32(entry->file.size()),stage);}
+#endif
         if(!animations.update(true)||!animations.update(false)) return fail("title ANM update failed");
 #if PORT_TITLE == 14
         if(title->manual_release_requested&&title_manual&&title_manual->manual_resource&&!animations.references(*title_manual->manual_resource)){
@@ -442,7 +469,11 @@ bool GameSession::update(const GameSessionInput& input) {
             title_manual.reset();title->manual_release_requested=false;title->manual_finished=false;
         }
 #endif
-        if(title->screen==TitleScreen::Exit)state.phase=GameSessionPhase::finished;
+        if(title->screen==TitleScreen::Exit
+#if PORT_TITLE == 14
+           &&!title->start_requested&&!title->replay_start_requested&&title_idle<1800
+#endif
+        )state.phase=GameSessionPhase::finished;
         ++state.frame;
         return true;
     }
@@ -529,7 +560,9 @@ bool GameSession::update(const GameSessionInput& input) {
         if(battle->th14_spell_result_requested){if(state.replay){if(interactive)return return_to_title();state.phase=GameSessionPhase::finished;return true;}return open_result(true);}
 #endif
         if(battle->completion.state.exit==StageExit::Results)return open_result(true);
+#if PORT_TITLE != 14
         if(battle->completion.state.exit==StageExit::Ending)return open_ending();
+#endif
         if(battle->completion.state.exit==StageExit::Title||battle->completion.state.exit==StageExit::ReplayEnd){if(interactive)return return_to_title();state.phase=GameSessionPhase::finished;return true;}
         if(battle->completion.state.exit==StageExit::NextStage){
             const u32 next=u32(battle->completion.state.next_stage);

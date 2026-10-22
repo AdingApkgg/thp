@@ -1,5 +1,9 @@
 # GitHub 源码发布 · 2026-10-14
 
+## TH14 标题／结局源码检查点（2026-10-23）
+
+本轮更新 GameSession、Ending 两个实现与 Ending 方法声明，修复标题切换时机、结局回调顺序、快进整链更新和成绩页切换。新模块 `0e1ba6d1…` 有独立构建与自然通关证据，完整 30 份录像回归保留旧基线输出；原版资产与私有跟踪不随源码发布。其他作品不新增占位，整作 1:1 仍未完成。[修正说明](porting/TH14_TITLE_ENDING_SCHEDULER_FIX_OCT21.md)、[新版回归](porting/th14-title-ending-full-matrix-oct23.json)。
+
 ## TH14 当前源码检查点（2026-10-21）
 
 本轮发布九个生产文件的回放结束菜单、暂停／恢复／续关调度及音效暂停修正，最终 SDL 模块 `02669f77…` 的构建和核心测试独立绑定；原版资产、可执行文件、合作方参考会话与私有完整跟踪不随源码发布。当前只标 TH14 进行中，整作 1:1 尚未完成。历史记录保持原版本范围。[本轮说明](porting/TH14_REPLAY_END_SOUND_FIX_OCT21.md)、[公开证据摘要](porting/th14-pause-replay-evidence-oct21.json)、[当前静音入口](porting/TH14_LOCAL_WORKSPACE_CURRENT_SERVER.md)。

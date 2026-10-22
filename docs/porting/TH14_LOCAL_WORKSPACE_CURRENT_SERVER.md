@@ -1,4 +1,16 @@
-# TH14 当前本机入口 · 2026-10-21
+# TH14 当前本机入口 · 2026-10-23
+
+当前固定静音入口为 `http://localhost:8208/?game=th14`，使用标题／结局调度修正后的模块 `0e1ba6d1531edb51cfcf3f45aa0e01c4221788716369154470c95834d114a4bd`（1,902,898 字节）。启动命令：
+
+```powershell
+node tools/th14-serve-workspace-diagnostics.mjs --report th14-launcher-site-title-ending-scheduler-oct21.json --descriptor artifacts/th14/save-conflict-observe-oct16/descriptor.json --descriptor-sha256 3fbb87653355b16e2586a2ca833386f688da72378e069a5840f351e48c4cd085
+```
+
+不重复启动已占用端口。当前进程、HTTP 完整模块和适配检查记录位于本机 `artifacts/th14/title-ending-preview-oct23/`。当前站点只读检查通过；通用诊断 `--check` 因既有 save-conflict 描述符没有独立诊断 WASM 条目而失败，记录保留，不能把它称作通过。HTTP 实测验证的是游戏模块及静音／本机透传 worker。无缓存或存档清除。旧五份录像仍在，普通管理导出新增录像的完整 114,005 字节 SHA 与原导入相同。
+
+当前模块已实际完成普通开局、暂停、返回标题、五面回放自然结束菜单与返回录像列表，警告／错误为空；[独立浏览器记录](th14-title-ending-browser-observed-oct23.json)不宣称浏览器完整结局或原版像素／音频等价。源码、自然通关和新版完整回放范围见[标题／结局修正](TH14_TITLE_ENDING_SCHEDULER_FIX_OCT21.md)、[新版回归](th14-title-ending-full-matrix-oct23.json)。整作 1:1 未完成。
+
+## 历史入口 · 2026-10-21
 
 当前静音预览固定使用 `http://localhost:8208/?game=th14`，启动命令更新为：
 

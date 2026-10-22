@@ -1,0 +1,1087 @@
+{
+  "schema": "th14.pause-replay-full-matrix.v1",
+  "date": "2026-10-21",
+  "passed": true,
+  "passedScope": "Independent verification of 30 actual complete Portable regression runs and two valid interactive menu captures. Runner observer failures below remain preserved; this is not original-game equivalence.",
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "sourceBinding": {
+    "publishedCommit": "dd79e69ca83977802cf102c2f813c86255a9566e",
+    "publishedCommitUrl": "https://github.com/AdingApkgg/thp/commit/dd79e69ca83977802cf102c2f813c86255a9566e",
+    "all267FrozenCoreSourcesByteEqualPublished": true,
+    "coreSourceFiles": 267,
+    "coreSourceHashesCanonicalSha256": "f2b7c0ea4c258e23a688cb0ab9167a9c71f45e7d07510cce74480334335a9ecb",
+    "coreObjects": 141,
+    "coreObjectHashesCanonicalSha256": "8764e40796272b63008d5edc14a196fa7b877129357a23adea8e9892302f83a6",
+    "coreBuildPath": "artifacts/th14/replay-resume-title-guard-core-oct21/build-result.json",
+    "coreBuildSha256": "ec6b32462ba6631b00e39da941feed234c7d9831e078e184e5fbd8d2e6316918",
+    "probeWasmSha256": "8f5ff94ccf62158d270a2ee6afd73605b312e025cab63b380bdc2faca56028ab",
+    "correspondingSdlWasmSha256": "02669f7731b7e774e59974b798e7b129fe3470187e10bc0e6e11e72eb2900b6e",
+    "recompilationForMatrix": false
+  },
+  "comparison": {
+    "baseline": "Frozen Oct20 dialogue-section Portable full playbacks",
+    "inputCount": 30,
+    "callbacks": 2885731,
+    "raw32Fields": 32,
+    "raw32Words": 92343392,
+    "raw32DifferentWords": 0,
+    "activeOwnerQueueWholeFilesByteEqual": true,
+    "naturalReplayEofCases": 28,
+    "naturalGameOverCases": 2,
+    "existingGameOverInputs": [
+      "marisaa-easy",
+      "marisab-lunatic"
+    ],
+    "host": "Declared 60 Hz monotonic and spell clocks, real stage upload queue and texture decoding, RecordingGraphics with explicit no-target capture retirement; no actual GPU/audio device.",
+    "noHealthRngProgressionOrReplayMutation": true
+  },
+  "cases": [
+    {
+      "input": "reimua-easy",
+      "inputSha256": "1d1b7da60739afc9b6d1ee5eb143e2a59e6a29b712096871874fa7bd72391a5d",
+      "callbacks": 100074,
+      "physicalTicks": 100074,
+      "terminal": "EOF",
+      "terminalStage": 6,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 3202368,
+        "differentWords": 0,
+        "bytes": 12809472,
+        "sha256": "89e8cafd55c7d622429f5cdda631e99b59266d40aab7ff3265b4a01cab5ef5b2",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 100074,
+        "sha256": "423648df2a75fd3d8a9c98a5ec7866e4682b7632bed4f47cd8be130e983e8b75",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 100074,
+        "sha256": "b78a0a1f2eac6558832b849775850ac0162663da981d0871fc7681427c4c7ed7",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1896,
+        "sha256": "77ff256d1f6788484ed3536aa87d1893ebf4a30a090045e1aae9e717e46ca3b4",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "marisaa-easy",
+      "inputSha256": "aec3b3045be9a0ddd4e7e4005182a9561e97f9d3f66f7f93a81397a1b614ec92",
+      "callbacks": 33522,
+      "physicalTicks": 33522,
+      "terminal": "GameOver",
+      "terminalStage": 3,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 1072704,
+        "differentWords": 0,
+        "bytes": 4290816,
+        "sha256": "5ec8f178469e078173c5881c30ed77faf22498ed8255278a56cab52de7d95989",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 33522,
+        "sha256": "1fb02fd414df069267ab5862ab2c8380130fda53eaff7a89c77d2aba01349c69",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 33522,
+        "sha256": "9bf50bb6dce3081424c6644f2047a0c27c249196e566524b92df7eb9c69e3261",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 661,
+        "sha256": "9cd33c9bcb7be0b103ad99607941f09c13083ac3db3a152f3c3deaeeb3ba07b2",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "reimub-easy",
+      "inputSha256": "ce4cf5a131e3527548d5c7a8ad0312ccaf2b663524bf653426f7ec958bfbeafd",
+      "callbacks": 238611,
+      "physicalTicks": 238611,
+      "terminal": "EOF",
+      "terminalStage": 6,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 7635552,
+        "differentWords": 0,
+        "bytes": 30542208,
+        "sha256": "9d5befc5f029aad42cfe746e666bdc8ca0c9ff007ade6de2a96538885860c5bd",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 238611,
+        "sha256": "efc926963dac310467ab18dd487291ef5e6069916486cab6bee0f4ce064e3b88",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 238611,
+        "sha256": "6159fb9973655cfecd36f8a3709f8e4168d27fca5d32ca4d42f8d7e3ebc00f9d",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1980,
+        "sha256": "2ddac63c98ca2e55b4e067c98a489209f0e3c036d2e0fb58bec75ad3028dae32",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "marisab-easy",
+      "inputSha256": "cca4f177759078077817981c90c7e36e28ce4f3917a022ae9c0bd7cedd8a1848",
+      "callbacks": 106773,
+      "physicalTicks": 106773,
+      "terminal": "EOF",
+      "terminalStage": 6,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 3416736,
+        "differentWords": 0,
+        "bytes": 13666944,
+        "sha256": "3fc9e75b60b17d77977bb5205b0099fdae4c67832219c05b3e8756f6c64cfdc8",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 106773,
+        "sha256": "75ec6bdbce1e3627864809ef573f0e8442d05f1e486bb35f2c67558da8d1f126",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 106773,
+        "sha256": "fdf4481395a79bbaf8da3f419580164948ff0fbfcd6843b77ec300fe68686fd3",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1923,
+        "sha256": "13dcf275a3abbf23244d5ad5f2bd319e279b437d9eb6cb2eb7e6083107f0b096",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "sakuyaa-easy",
+      "inputSha256": "2b40f5d77b22df2f893f97c7a60f46a632ae536732b76bb143eaa1618e045042",
+      "callbacks": 127903,
+      "physicalTicks": 127903,
+      "terminal": "EOF",
+      "terminalStage": 6,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 4092896,
+        "differentWords": 0,
+        "bytes": 16371584,
+        "sha256": "0c8f5418cd4da35ba868ff663a0eef75f662580a4e1f01b99c48e92a9a66fdbd",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 127903,
+        "sha256": "a5e18a3bc734ebd7f03db26762bb42e51921baba55ccb8ccf87e23130d4cc333",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 127903,
+        "sha256": "752296d2be0b566e3391e3b71be3b01e878d4aff59a7b41f5a6b28a55b3798a7",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1954,
+        "sha256": "f011b1896aad0ff298d96220a4dc324677c2a4e2041755af6c7aafe08d4d63d8",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "sakuyab-easy",
+      "inputSha256": "e98fc11baae2d58c9cdaee6a5f8f94e0504340eba6685c7187550168a415624f",
+      "callbacks": 106749,
+      "physicalTicks": 106749,
+      "terminal": "EOF",
+      "terminalStage": 6,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 3415968,
+        "differentWords": 0,
+        "bytes": 13663872,
+        "sha256": "51dfbdac947e3100beb55895cac67edca3d9cd697dfcae8f5ea458bc17fa178f",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 106749,
+        "sha256": "462f92485fd7e7d07a4494a785d5d90534e0f7f7364abdd0b53b05f6ef4b2417",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 106749,
+        "sha256": "d82e2c47edd00e5c5e9ea1739c095e2957eea60b12745ac0a1050a58db9a242d",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1923,
+        "sha256": "f7135e9549e50096bae286aa6de1d21debb10fb4eb22fd3a5b24fb1f6ac5d104",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "reimua-normal",
+      "inputSha256": "d9674bb030cafc7782195f37db269837012045bf29cec1c54be63667964720d8",
+      "callbacks": 85035,
+      "physicalTicks": 85035,
+      "terminal": "EOF",
+      "terminalStage": 6,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 2721120,
+        "differentWords": 0,
+        "bytes": 10884480,
+        "sha256": "fe6f76796cd0aae9ae1a97b358b2d360f1ad8a18120fbd820237fd1a42cb0c4f",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 85035,
+        "sha256": "8dcdebeb30a8ca4aa2d62d24f10770715004feb7b602bec5d6aa152381f3bbb6",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 85035,
+        "sha256": "c1ef7d8085ebfb21d91c37b51fade26cbec088963d286eb6e601e332c9832233",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1896,
+        "sha256": "673db7f486757be33fe3d88c8554352e3f67fca44c6b473d798ba82831936d99",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "reimub-normal",
+      "inputSha256": "c48412a95f0fe9f685d97574e8ab0655d41e44ff9c41fda7bf788589b1b29c74",
+      "callbacks": 122005,
+      "physicalTicks": 122005,
+      "terminal": "EOF",
+      "terminalStage": 6,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 3904160,
+        "differentWords": 0,
+        "bytes": 15616640,
+        "sha256": "c84ddad332c0c5eb358de1b51022cb53631c8c4bf70a06431169218f6a4cf725",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 122005,
+        "sha256": "7e07b06b43a08afa1b189d3affa3555f6d6c84ba87df4c53688f1d51f590e4ce",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 122005,
+        "sha256": "adaca9a0c467a052f0e0dc9649d1bd22e1bfad408b1d689e65541fa160241dd7",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1923,
+        "sha256": "563e920ff05a4ea529bf24417cba25af2abf23a385204ffceee10aba894a062d",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "marisaa-normal",
+      "inputSha256": "724c78a013ab8334f14fc7ddd995b01308e16dd20ef19a2c8fd73a20fb02258c",
+      "callbacks": 104236,
+      "physicalTicks": 104236,
+      "terminal": "EOF",
+      "terminalStage": 6,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 3335552,
+        "differentWords": 0,
+        "bytes": 13342208,
+        "sha256": "8f6c0847ccd836cca811666e35e1459352b90f0175874e0d86e6f3c622b30e2d",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 104236,
+        "sha256": "b963a5e8b67dee5f731cc9619c6d539d3927f2571e7e31f1bdff1221cd8f8c7a",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 104236,
+        "sha256": "723c25714e2c13b64cd131584008cf879fab2f7219dd919d7974d306a7ae4f55",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1923,
+        "sha256": "563a35ca4ae001f8704eab144af4936e1c512110ef388b9b97fb9ee350898cc7",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "marisab-normal",
+      "inputSha256": "2f3a61e72e1bd14a1cecc934d805106f31f6b55a830ae4a9f1d94207098d2bf0",
+      "callbacks": 113877,
+      "physicalTicks": 113877,
+      "terminal": "EOF",
+      "terminalStage": 6,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 3644064,
+        "differentWords": 0,
+        "bytes": 14576256,
+        "sha256": "89a886e25591b420071352291514279ea4bdef9af9d0a76939184766f14506ea",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 113877,
+        "sha256": "3b048a2348062e21ec18b8e96a7c5f11c0128a6ce7422787d592f2295345a802",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 113877,
+        "sha256": "ffa6a58020e6483d61b30cd3e29fef0cfaf903ae261d64c54e48e3d2487c7163",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1923,
+        "sha256": "1f0489b5e3132f8ab8a133849179a72001f3bb4e4491eb6ec10ccf15e4b01ee2",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "sakuyaa-normal",
+      "inputSha256": "c8070bac53dbf525d5c8cb9f7193da6ae362911b11ada8b77b015744b6563a47",
+      "callbacks": 104802,
+      "physicalTicks": 104802,
+      "terminal": "EOF",
+      "terminalStage": 6,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 3353664,
+        "differentWords": 0,
+        "bytes": 13414656,
+        "sha256": "1e43ff3dce94d90dae47e5b012809c2abb013f9255c2f6a842fc631f3cf3b838",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 104802,
+        "sha256": "f21bd830936e1c807a1fd81b1e1ab15b93ee07da87c4f94279808dcfbcbd1ffa",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 104802,
+        "sha256": "0cb15011d2874824a8434368034ade42b0a2e85830d7bd31264c3bf5641056ef",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1923,
+        "sha256": "e7336e4ef745fdfec06384feaccad82d3035963ccbdd3a9a61e6c17005240c77",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "reimua-hard",
+      "inputSha256": "c177ab2b6e79e880cb44fd95320e9b1f18425a795be9f0fecd28c19d23e3662c",
+      "callbacks": 95678,
+      "physicalTicks": 95678,
+      "terminal": "EOF",
+      "terminalStage": 6,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 3061696,
+        "differentWords": 0,
+        "bytes": 12246784,
+        "sha256": "892a73592b50ad43f468b42ceddca8d837ddb15482c2258f1d777cb879355f3e",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 95678,
+        "sha256": "5ae8611c19b0b04ea28041f24160d6b8db7dc47f8d84cd69f78f963947406bb3",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 95678,
+        "sha256": "6166ac4f61590a5ce66ef51f3778fc6e9f1089e77263cde7c6cc40eb7683ea73",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1923,
+        "sha256": "9648c84177acb6cdef94d8624ea18d38d87566dbc9a310187504541e2aed774a",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "sakuyab-normal",
+      "inputSha256": "207d061ec91066147693297669625a29aa4f3b264b98577a723b52ea69b665e8",
+      "callbacks": 112201,
+      "physicalTicks": 112201,
+      "terminal": "EOF",
+      "terminalStage": 6,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 3590432,
+        "differentWords": 0,
+        "bytes": 14361728,
+        "sha256": "cc32effa2f16ba42dcc4bde70d244f87e240a5e445b09a6f94e87f900241a660",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 112201,
+        "sha256": "ddbedd1eb09999b92383f72b1adc779bf3196fab0b22c2e4450a7ec02c405149",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 112201,
+        "sha256": "4ed0f5152b42115c49c5564839deac700f8ea53328b8784469b0c2d10dd708c0",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1923,
+        "sha256": "ad9d530cad58c9e309d674e638edbdda19b4871d99aef070ba770dbb85da33c6",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "marisaa-hard",
+      "inputSha256": "a8fa5b99a3fd665fac36d0cef9062dec282e322d133f3ed55d61a95fd88899e7",
+      "callbacks": 115317,
+      "physicalTicks": 115317,
+      "terminal": "EOF",
+      "terminalStage": 6,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 3690144,
+        "differentWords": 0,
+        "bytes": 14760576,
+        "sha256": "55776d5221b00ee08724419bfa402e23e6564cf6db7eb1d5cab52cc032ecc228",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 115317,
+        "sha256": "1d47f9601aa9030ad65216afe18231126e006985cb709963078e688799500e97",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 115317,
+        "sha256": "d3cdc512ea3e9dffd10e468bb959cd9a2341627e58565b01a706ee062903c23c",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1923,
+        "sha256": "f2beb5496e6174ddad4eb1f1ee5f093dc8732534ca6bbf7cd058c601d29c2f83",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "reimub-hard",
+      "inputSha256": "c5db55756f58ed10281c6e4232a36873fb099a1b9567dc74b107f5a76e8ffc2b",
+      "callbacks": 106910,
+      "physicalTicks": 106910,
+      "terminal": "EOF",
+      "terminalStage": 6,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 3421120,
+        "differentWords": 0,
+        "bytes": 13684480,
+        "sha256": "4771b456748aa9fa58f3a11d7488a58783776c97fc3f010a873fbd43e741f8aa",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 106910,
+        "sha256": "7290a5a040fee64eb967297d57f5040c86fdbfdd2813c48fba0d778180d4cc49",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 106910,
+        "sha256": "4b9328349e34ac4f5e3ed726bcb395f54c9ea95f8a29ba6ce2846b37d1ca8c8f",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1923,
+        "sha256": "fd3182946675530fc00cc73a6cd0f8cce2958dd9a427b4f97e6a8e9faf6a4835",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "sakuyaa-hard",
+      "inputSha256": "49927152c4dfaf804d475b2aae1b0a2847d5ffcd408668662e12bcd7c92e863f",
+      "callbacks": 96569,
+      "physicalTicks": 96569,
+      "terminal": "EOF",
+      "terminalStage": 6,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 3090208,
+        "differentWords": 0,
+        "bytes": 12360832,
+        "sha256": "c5ad19c2d48fec0f6105b3c4ddcf2242397408f8814d49467c4f06cfff2bd035",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 96569,
+        "sha256": "08c4371e8d4a3eaf9910c42423b8027e78af7249693a613b812b6fdcadcd77db",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 96569,
+        "sha256": "31bb0e2682e8016d5f28e8f155ba0d0a700a8bddbc11b10f7aca9a61a484b601",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1896,
+        "sha256": "f968e60213d9d815cc9e5cad134fbe98063f92ff323e055232a3cc2a932f08ef",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "marisab-hard",
+      "inputSha256": "74b5e618a893f8d0d675442cf865158007f74d4f305d1e522e71c9fdddad4f28",
+      "callbacks": 119048,
+      "physicalTicks": 119048,
+      "terminal": "EOF",
+      "terminalStage": 6,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 3809536,
+        "differentWords": 0,
+        "bytes": 15238144,
+        "sha256": "cec905b439c95a96f1317a9673b20be28ba0119c28ee6dc252bf54952bd39c6b",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 119048,
+        "sha256": "3e006eb3ceefe8591b2f7de2f7b6df62353c5c0fa815f1873997209aa7cbba5c",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 119048,
+        "sha256": "f1c2f6ce5e51dd641091c1c2ed5aa8f2da6213b8346eef55cf522a0dfb0aa4f2",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1923,
+        "sha256": "408290152b6908ba1acff39a7ffb812460e519a91b2889af984134653167c64a",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "reimua-lunatic",
+      "inputSha256": "97d4551123de6a57dbe90193c490ed54e7e28b47ea9ced14c85e0506773422f9",
+      "callbacks": 86343,
+      "physicalTicks": 86343,
+      "terminal": "EOF",
+      "terminalStage": 6,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 2762976,
+        "differentWords": 0,
+        "bytes": 11051904,
+        "sha256": "674ed7f45af05d244989fc0ee3d50359f5bd22e93c9effb12e148d2c131c5872",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 86343,
+        "sha256": "39caef6c53a0af63a8e104db37513d2c372a358e11489fc3cd48d9db8a18c3ed",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 86343,
+        "sha256": "4539ee0b3536d814cebc8d98ac7726778b97148c1db458a71dc56e8938561f7d",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1896,
+        "sha256": "3ab44dad050aeaaeb3b881ee78ce3fea1d90babb99647125fd0017a7b7ba720c",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "sakuyab-hard",
+      "inputSha256": "866bf6bac02e1c2b9067dacce6705dc71a512eeb2755106474be492a2d23dcdc",
+      "callbacks": 122796,
+      "physicalTicks": 122796,
+      "terminal": "EOF",
+      "terminalStage": 6,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 3929472,
+        "differentWords": 0,
+        "bytes": 15717888,
+        "sha256": "40d1d68dd45fe2c798f7076c36e37ad9bba676a3d28fb775be8d46a6c17d6c60",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 122796,
+        "sha256": "f08ba43b2a7f5f809f46e98a171992e37af1e828dab39420a6925ab4dcf3773f",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 122796,
+        "sha256": "8d8756acb980667ce3d96a87bc2aa19f43a6e669923febea4621a142900e140c",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1923,
+        "sha256": "ef47973e0f68e24496953f68fe9763478a5bbe14d4e9a0edb9a196c83ae7f6f1",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "reimub-lunatic",
+      "inputSha256": "eb7a90b6a97d5322d19509bbb7028376d5e894de3e74916eeeaab31cc88467b7",
+      "callbacks": 103888,
+      "physicalTicks": 103888,
+      "terminal": "EOF",
+      "terminalStage": 6,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 3324416,
+        "differentWords": 0,
+        "bytes": 13297664,
+        "sha256": "bd1930e0781a5dd9d679bcbf8941a3f5a321d2e5c4201fd494dcc8d3b61743fa",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 103888,
+        "sha256": "2261a0fc3c34fd9109048cc7ff52777054c90908d22e93689fd19aa740f2e253",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 103888,
+        "sha256": "5a3c3a2e968a769e1f6feece617b58305f9f9afd77d3b850b115a0a483af6ee7",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1923,
+        "sha256": "476394cc5c9381f04dcb55f3f3929b5da9287bd85f2fe24b61a62b8d848cfc13",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "marisaa-lunatic",
+      "inputSha256": "7f34279b8b03abdb1c12b37e0645610fd8ac0480b1a2b5dd9e2a0bb86132de56",
+      "callbacks": 106740,
+      "physicalTicks": 106740,
+      "terminal": "EOF",
+      "terminalStage": 6,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 3415680,
+        "differentWords": 0,
+        "bytes": 13662720,
+        "sha256": "e00fcfe345855b0ede711cd0d54dead2b0b772def3a17e83cda5e7760387c3b4",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 106740,
+        "sha256": "4ba2f724c65311a65caf3d7d3a419167d37dae8bfb619f6d89458117138d83ad",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 106740,
+        "sha256": "de7f3846d82be5ec66402836647c9cc1233270fcf8622a19e649e77bc3a8498c",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1923,
+        "sha256": "3f23f9d5202368ef5f93527ac78a635a24daa663f882643aafe50a354969545d",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "marisab-lunatic",
+      "inputSha256": "77e7192d52bb2d76113a1c3a3686a0c919d3e12a3b7f42dc18697ce820d93b07",
+      "callbacks": 89235,
+      "physicalTicks": 89235,
+      "terminal": "GameOver",
+      "terminalStage": 5,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 2855520,
+        "differentWords": 0,
+        "bytes": 11422080,
+        "sha256": "d3056571aeb958b807d9cc08aa30ef809d3782f50422c4ea3171d850b2a19194",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 89235,
+        "sha256": "9aa147b90e085225d02a83b7ab74c7c438558e2fe121671b14e1cd534a0005d8",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 89235,
+        "sha256": "8bdd7f5d3b414ed0ae10635ffcc8b29b856fe7a2e6cb3ea90f194289b75efd30",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1524,
+        "sha256": "a29f313632a2290eebf4e3eb672edc58a0e27b9e392f53387dff1369a8423306",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "sakuyaa-lunatic",
+      "inputSha256": "890bcf6be90cbef072c525a96a012920d3958d0e8fcd00d1c75b59f12c1b9af8",
+      "callbacks": 84952,
+      "physicalTicks": 84952,
+      "terminal": "EOF",
+      "terminalStage": 6,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 2718464,
+        "differentWords": 0,
+        "bytes": 10873856,
+        "sha256": "8fd1c045b86cb205d2a1bff8b2b120521303c4bb1ce660213432ac27f668b882",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 84952,
+        "sha256": "ffbfa4273eebefaed4ae491c33342da7dd3f4a5c317d99d116aead705b03bd93",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 84952,
+        "sha256": "68312290d2ddce9c8feecedfbb46f54904d95bb8673896471e76a4b0f2f08c3f",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1896,
+        "sha256": "5398d60f81a9a6245e1b7ebc8ed4309ebdae2a363caf49796fe083bc8d7b791b",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "reimua-extra",
+      "inputSha256": "869e4270b2b22ed563136c09f8856aa6117a6a7796dbeb0e4d1802b38381f7f6",
+      "callbacks": 38403,
+      "physicalTicks": 38403,
+      "terminal": "EOF",
+      "terminalStage": 7,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 1228896,
+        "differentWords": 0,
+        "bytes": 4915584,
+        "sha256": "fb23c716ed910c347cf4383d3c6dacd65180a2bb6638eb8a8a6ca818b3a92a79",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 38403,
+        "sha256": "f356bab24148b42eebf8381c9d0936db13887981d68b5cf8631cc5769dfdeb26",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 38403,
+        "sha256": "f356bab24148b42eebf8381c9d0936db13887981d68b5cf8631cc5769dfdeb26",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 3,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "reimub-extra",
+      "inputSha256": "3979ae43be068d2fff96ddf432d0363e9677b8c39e9901ea3c49331c4858aca1",
+      "callbacks": 46936,
+      "physicalTicks": 46936,
+      "terminal": "EOF",
+      "terminalStage": 7,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 1501952,
+        "differentWords": 0,
+        "bytes": 6007808,
+        "sha256": "95449ab467ffc1e39854af98d71d156a885456c4fc1f2e26da68cdd7936f0f9a",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 46936,
+        "sha256": "6e4ccc80b52b741f0bf66232bc56130ff74c0d56ade0ebede94fc227a4953da5",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 46936,
+        "sha256": "6e4ccc80b52b741f0bf66232bc56130ff74c0d56ade0ebede94fc227a4953da5",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 3,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "sakuyab-lunatic",
+      "inputSha256": "243183a9e278c8ef653cc0ffee4d01c46e8346dbfff34b979bae3fbd782c4a29",
+      "callbacks": 126709,
+      "physicalTicks": 126709,
+      "terminal": "EOF",
+      "terminalStage": 6,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 4054688,
+        "differentWords": 0,
+        "bytes": 16218752,
+        "sha256": "f1975e5b8fd701600e08e345bf82e2c4168489bd169f258b5604787a9efcb3ce",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 126709,
+        "sha256": "54726480f1df07748bec69371e7f82de05518a1d5f91390b37b0127f958c8d87",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 126709,
+        "sha256": "76ef88cf4c21245c9e008484133d1d181aeddfa1941732971784558c1fa06dcf",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 1923,
+        "sha256": "52feb2ea52bde3f0c35f4c83f1b92cf1caf1f6660cd0416c86cfe684600fcca6",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "marisaa-extra",
+      "inputSha256": "89c0c5fd0c201698735d5e0ea55dc3b3edba7d5e4e2327010b662d2668f6004a",
+      "callbacks": 46391,
+      "physicalTicks": 46391,
+      "terminal": "EOF",
+      "terminalStage": 7,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 1484512,
+        "differentWords": 0,
+        "bytes": 5938048,
+        "sha256": "e8b961208f597d74ca86db08e252dfa0be60994abc29e7f04b37133fb2e18816",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 46391,
+        "sha256": "6adb1ac165807a798b06b27dfa46f86d2d256f7892323cf231500e8afcaf29d0",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 46391,
+        "sha256": "6adb1ac165807a798b06b27dfa46f86d2d256f7892323cf231500e8afcaf29d0",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 3,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "sakuyaa-extra",
+      "inputSha256": "c93a499bfa1409aba4f6708d3478a10c6a4a0fb0239b97356209a0b616bee8fd",
+      "callbacks": 38977,
+      "physicalTicks": 38977,
+      "terminal": "EOF",
+      "terminalStage": 7,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 1247264,
+        "differentWords": 0,
+        "bytes": 4989056,
+        "sha256": "2e5c580d9f9dd56033a082eb1a4a42acec8ff5a33b31cd89e45b87f12346dcbb",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 38977,
+        "sha256": "8c822183f7a3660f7f936e18b2c624b48746220d2ad8e37b38292d57b9a9112e",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 38977,
+        "sha256": "8c822183f7a3660f7f936e18b2c624b48746220d2ad8e37b38292d57b9a9112e",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 3,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "marisab-extra",
+      "inputSha256": "a3078d31892b5fb2f08de3c0b58da55db383eb575b00d463e1d79c0cc979186f",
+      "callbacks": 54114,
+      "physicalTicks": 54114,
+      "terminal": "EOF",
+      "terminalStage": 7,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 1731648,
+        "differentWords": 0,
+        "bytes": 6926592,
+        "sha256": "f642af976bf744c8765d5ea081fc9044d80d657f3f422c0ca713e84fa121e9e6",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 54114,
+        "sha256": "f5d25715f40caff71046cb50e3f435ceb7681b9e697c153c04c2718b1c5d22db",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 54114,
+        "sha256": "f5d25715f40caff71046cb50e3f435ceb7681b9e697c153c04c2718b1c5d22db",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 3,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "baselineByteEqual": true
+      }
+    },
+    {
+      "input": "sakuyab-extra",
+      "inputSha256": "b3f5e7d00a46c7b33a77645e12fb72f70d601a239b34c894c38dc42c41f6ae10",
+      "callbacks": 50937,
+      "physicalTicks": 50937,
+      "terminal": "EOF",
+      "terminalStage": 7,
+      "raw32": {
+        "fieldsPerCallback": 32,
+        "comparedWords": 1629984,
+        "differentWords": 0,
+        "bytes": 6519936,
+        "sha256": "7d0e175082a3f743e420e8b80338f4001bd102dd9c8e9239270b7147950b557f",
+        "baselineByteEqual": true
+      },
+      "active": {
+        "bytes": 50937,
+        "sha256": "b92aaa87e3c8383c06ec9146b5b7bf3ef5d8a07b3e8d9756ea137822a4464fc4",
+        "baselineByteEqual": true
+      },
+      "owner": {
+        "bytes": 50937,
+        "sha256": "b92aaa87e3c8383c06ec9146b5b7bf3ef5d8a07b3e8d9756ea137822a4464fc4",
+        "baselineByteEqual": true
+      },
+      "queue": {
+        "bytes": 3,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "baselineByteEqual": true
+      }
+    }
+  ],
+  "interactiveMenuControls": [
+    {
+      "input": "marisaa-easy",
+      "inputSha256": "aec3b3045be9a0ddd4e7e4005182a9561e97f9d3f66f7f93a81397a1b614ec92",
+      "naturalGameOverCallback": 33522,
+      "entries": 121,
+      "zeroInputFollowups": 120,
+      "sessionPhase": 2,
+      "sessionPhaseName": "paused",
+      "introTicksInclusive": [
+        0,
+        10
+      ],
+      "introMenuState": 2,
+      "introForcedExit": 0,
+      "introCursor": 0,
+      "introChoiceCount": 0,
+      "introDisabledCount": 0,
+      "readyTicksInclusive": [
+        11,
+        120
+      ],
+      "readyMenuState": 3,
+      "readyForcedExit": 1,
+      "readyCursor": 1,
+      "readyChoiceCount": 5,
+      "readyDisabledCount": 3,
+      "combatFrozen": true,
+      "fullReplayPrefixByteEqual": true,
+      "independentlyVerified": true,
+      "runnerReportedPassed": false,
+      "runnerPredicateError": "v2 captured the correct 121 rows, but required the final cursor/disabled count during the initial mode2 animation too; independent verification explicitly checks both phases instead. No output changed or additional game execution performed.",
+      "receiptPath": "artifacts/th14/pause-replay-full-matrix-oct21/interactive-menu-v2/marisaa-easy/receipt.json",
+      "receiptSha256": "da3fd7d2daeb8a21bafd982c0b3f9322ccec91f91c7996dd1361fb1c1d7d4ddb",
+      "followupsSha256": "76f5b7dede591b1cb0b54a4aeb576874e020a437274330035c6140ef203ac24b"
+    },
+    {
+      "input": "marisab-lunatic",
+      "inputSha256": "77e7192d52bb2d76113a1c3a3686a0c919d3e12a3b7f42dc18697ce820d93b07",
+      "naturalGameOverCallback": 89235,
+      "entries": 121,
+      "zeroInputFollowups": 120,
+      "sessionPhase": 2,
+      "sessionPhaseName": "paused",
+      "introTicksInclusive": [
+        0,
+        10
+      ],
+      "introMenuState": 2,
+      "introForcedExit": 0,
+      "introCursor": 0,
+      "introChoiceCount": 0,
+      "introDisabledCount": 0,
+      "readyTicksInclusive": [
+        11,
+        120
+      ],
+      "readyMenuState": 3,
+      "readyForcedExit": 1,
+      "readyCursor": 1,
+      "readyChoiceCount": 5,
+      "readyDisabledCount": 3,
+      "combatFrozen": true,
+      "fullReplayPrefixByteEqual": true,
+      "independentlyVerified": true,
+      "runnerReportedPassed": false,
+      "runnerPredicateError": "v2 captured the correct 121 rows, but required the final cursor/disabled count during the initial mode2 animation too; independent verification explicitly checks both phases instead. No output changed or additional game execution performed.",
+      "receiptPath": "artifacts/th14/pause-replay-full-matrix-oct21/interactive-menu-v2/marisab-lunatic/receipt.json",
+      "receiptSha256": "4dd64987e2147399b44111ac77c7340ad5ebee7612a134f8c929a52eff04bdfe",
+      "followupsSha256": "fbb274a5919a159816164d628b06e3ab21eadd363ffdbb48da42dd2743d83e90"
+    }
+  ],
+  "retainedInitialObserverFailures": [
+    {
+      "input": "marisaa-easy",
+      "physicalTicks": 200000,
+      "callbacks": 33522,
+      "reportedPassed": false,
+      "cause": "Initial observer looked for GameSessionPhase::game_over(3), but forced Replay end is GameSessionPhase::paused(2). Original outputs and code preserved.",
+      "retainedScope": "Full replay raw32/active/owner/queue equal the old baseline; final read-only snapshot is the ready forced menu. No 121-row entry/followup capture was produced because the wrong phase predicate never stopped the loop.",
+      "fullReplayPrefixByteEqual": true,
+      "finalPhase": 2,
+      "finalMenuState": 3,
+      "receiptPath": "artifacts/th14/pause-replay-full-matrix-oct21/interactive-menu/marisaa-easy/receipt.json",
+      "receiptSha256": "f58002ba48700f884fc086411bc79a4e3d87b44f81e31bb055aff4d69bd79a2a"
+    },
+    {
+      "input": "marisab-lunatic",
+      "physicalTicks": 200000,
+      "callbacks": 89235,
+      "reportedPassed": false,
+      "cause": "Initial observer looked for GameSessionPhase::game_over(3), but forced Replay end is GameSessionPhase::paused(2). Original outputs and code preserved.",
+      "retainedScope": "Full replay raw32/active/owner/queue equal the old baseline; final read-only snapshot is the ready forced menu. No 121-row entry/followup capture was produced because the wrong phase predicate never stopped the loop.",
+      "fullReplayPrefixByteEqual": true,
+      "finalPhase": 2,
+      "finalMenuState": 3,
+      "receiptPath": "artifacts/th14/pause-replay-full-matrix-oct21/interactive-menu/marisab-lunatic/receipt.json",
+      "receiptSha256": "e8a1ef0fb59aa927c52a7e80a7df963fccb84be18ae8909295acc43eb092628b"
+    }
+  ],
+  "executionCounts": {
+    "actualFullReplayExecutions": 34,
+    "verifiedMatrixExecutions": 30,
+    "validMenuCaptureExecutions": 2,
+    "retainedInitialObserverExecutions": 2
+  },
+  "evidence": {
+    "verificationPath": "artifacts/th14/pause-replay-full-matrix-oct21/verification.json",
+    "verificationSha256": "9063f811e2b5a26a639cb75f83aecf166d3f73fc5cad6ac935a2ea78efa74c7c",
+    "fullBindingCount": 1180,
+    "fullBindingsCanonicalSha256": "123bfd8e3c0ae7be6ebc9df9007602d7bdcc5ede135793f72f2657d3477fa113",
+    "canonicalEncoding": "UTF-8 JSON, ensure_ascii=false, sorted object keys, compact separators, original array order",
+    "all1180FilesIndependentlyRehashedForPublication": true,
+    "verifierSha256": "c67f4d26aa7bbd2bb06d83200c5812a5542c66ac48fccfbf51309d313d0d8a92"
+  },
+  "publicationBoundary": "Hashes and compact results only. No original executable, replay bytes, game resources, raw traces or local reference conversations are published. Cold-start, original full gameplay, pixels, audio and browser acceptance are outside this matrix."
+}

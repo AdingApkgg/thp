@@ -1,5 +1,7 @@
 # thp — 东方原作 Web 移植工作区
 
+TH14 当前修正（2026-10-23）：标题开始／回放请求在当帧动画完成后切换；结局按原回调顺序执行，快进重跑动画、淡入淡出及输入计数，完成后下一入口进入成绩页。两次普通按键自然通关、真实进度保存／读取及 30 份完整回放回归通过；回放与旧移植基线的 92,343,392 个所选状态字零差异。整作 1:1 仍未完成，只推进 TH14，预览静音。[修正范围](docs/porting/TH14_TITLE_ENDING_SCHEDULER_FIX_OCT21.md)、[新版完整回归](docs/porting/th14-title-ending-full-matrix-oct23.json)、[当前本机入口](docs/porting/TH14_LOCAL_WORKSPACE_CURRENT_SERVER.md)。
+
 TH14 当前修正（2026-10-21）：补齐 Replay 自然 GameOver 菜单，修正暂停动画顺序、同帧恢复／续关及音效停住与恢复。三条长回放相对旧移植基线的 89,235 次回调前缀零差；原版菜单、普通恢复、自然续关和同帧再次失败组合均有独立验证，视觉 RNG 差异保留。整作 1:1 继续施工，只标 TH14。[本轮范围](docs/porting/TH14_REPLAY_END_SOUND_FIX_OCT21.md)、[证据摘要](docs/porting/th14-pause-replay-evidence-oct21.json)、[当前静音入口](docs/porting/TH14_LOCAL_WORKSPACE_CURRENT_SERVER.md)。
 
 以下早期记录保留各自版本的范围，不自动继承为当前模块通过。

@@ -1,4 +1,5 @@
 #include "Ending.hpp"
+#include "GameInput.hpp"
 #include "MusicCatalog.hpp"
 #include "GameSessionResources.hpp"
 #include <cstdio>
@@ -151,9 +152,36 @@ bool Ending::update(u32 held,u32 pressed,u32 shoot_frames){
     }
     if(!blocked)time.tick();elapsed.tick();++frames;return true;
 }
+#if PORT_TITLE == 14
+bool Ending::repeat_requested(u32 held,u32 shoot_frames)const noexcept{
+    return active&&!(flags&4)&&!(seen&2)&&(flags&2)&&
+        ((held&512)||((held&1)&&shoot_frames>=20))&&i32(frames)%12;
+}
+bool Ending::dispatch(GameInput& input,u32 raw){
+    std::vector<DialogueText> text;
+    std::vector<i32> audio;
+    i32 music=-1,fade=-1;
+    do{
+        // Supervisor1 resamples on every return6 restart. This host snapshot
+        // stays fixed within dispatch, while pressed and hold counters advance.
+        input.update_normalized(raw);
+        if(!animations.update(true))return fail("ending overlay ANM update failed");
+        fades.update();
+        if(!animations.update(false))return fail("ending normal ANM update failed");
+        if(!update(input.held,input.pressed,input.held_frames[0]))return false;
+        text.insert(text.end(),text_requests.begin(),text_requests.end());
+        audio.insert(audio.end(),sounds.begin(),sounds.end());
+        if(music_request>=0)music=music_request;
+        if(music_fade>=0)fade=music_fade;
+    }while(repeat_requested(input.held,input.held_frames[0]));
+    text_requests=std::move(text);sounds=std::move(audio);
+    music_request=music;music_fade=fade;
+    return true;
+}
+#endif
 bool Ending::tick(u32 held,u32 pressed,u32 shoot_frames){
-    // Callback TH14:41ff70 returns 6 to restart the chain before its later ANM and
-    // fade callbacks. Seen staff rolls advance to the next multiple of 12.
+    // Isolated interpreter convenience API. TH14 session dispatch uses update and
+    // repeat_requested so input, ANM and fades run again before callback31.
     std::vector<DialogueText> text;std::vector<i32> audio;i32 music=-1,fade=-1;
     do{
         if(!update(held,pressed,shoot_frames))return false;

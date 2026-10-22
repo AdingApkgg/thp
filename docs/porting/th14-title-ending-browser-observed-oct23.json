@@ -1,0 +1,111 @@
+{
+  "title": "TH14 Title/Ending module ordinary browser observation, 2026-10-23",
+  "observed": true,
+  "date": "2026-10-23",
+  "url": "http://localhost:8208/?game=th14",
+  "wasmSha256": "0e1ba6d1531edb51cfcf3f45aa0e01c4221788716369154470c95834d114a4bd",
+  "ordinaryStartObserved": true,
+  "ordinaryGame": "ReimuA Normal, ordinary menu input",
+  "ordinaryPauseObserved": true,
+  "ordinaryReturnTitleObserved": true,
+  "replayStartUtc": "2026-10-22T17:55:50.572Z",
+  "replay": "Deam MarisaB Lunatic, selected Stage5 through ordinary Replay menus",
+  "replayEndMenuObserved": true,
+  "escapeBlockedObserved": true,
+  "returnedReplayListObserved": true,
+  "replayRestartObserved": false,
+  "retainedReplayFilesVisible": 5,
+  "retainedReplayExportByteEqual": true,
+  "muted": true,
+  "audioDiagnostic": "0ms SP",
+  "logs": [],
+  "browserEndingObserved": false,
+  "browserFullCampaignObserved": false,
+  "exactEofObserved": false,
+  "exactPhysicalTickCountObserved": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "moduleBytes": 1902898,
+  "retainedReplayExportSha256": "77e7192d52bb2d76113a1c3a3686a0c919d3e12a3b7f42dc18697ce820d93b07",
+  "retainedReplayExportBytes": 114005,
+  "evidenceBindings": [
+    {
+      "path": "artifacts/th14/title-ending-preview-oct23/browser-observation.json",
+      "bytes": 944,
+      "sha256": "2df60eafa09fc5b974d57f338b3d7c346d736ea0f3200e79ae2026018956fac8"
+    },
+    {
+      "path": "artifacts/th14/title-ending-preview-oct23/http-check.json",
+      "bytes": 265,
+      "sha256": "2d765eb30443a331234c175f6444d149b49c7298b01830971844ed4b1370c3e1"
+    },
+    {
+      "path": "artifacts/th14/title-ending-preview-oct23/current-readonly-check.json",
+      "bytes": 2164,
+      "sha256": "e2b2ec6bc5dd6d52ba5d68175434a2acdb682607be217d16d9756e36c96802ba"
+    },
+    {
+      "path": "artifacts/th14/title-ending-preview-oct23/diagnostic-check-limitation.json",
+      "bytes": 604,
+      "sha256": "ba0be7154ccdfd859f5c3acef7c94ab88d42882344edfc7c0b52c9476dbfe6a9"
+    },
+    {
+      "path": "artifacts/th14/title-ending-preview-oct23/retained-replay-export.json",
+      "bytes": 411,
+      "sha256": "3dd59fda2486a884d9443ae5e904a612502c2bc767541a45369ab64c5f35763c"
+    },
+    {
+      "path": "artifacts/th14/title-ending-preview-oct23/retained-five-replays.png",
+      "bytes": 38531,
+      "sha256": "ec25f7396c6225ca6b9ee86ec18439ab1c5851f65fb0625445a37e112c493d8d"
+    },
+    {
+      "path": "artifacts/th14/title-ending-preview-oct23/ordinary-started.png",
+      "bytes": 232174,
+      "sha256": "2e3bf8cf610149d90eef09539097c1a1873a4ba25f96253f97e79440c2950754"
+    },
+    {
+      "path": "artifacts/th14/title-ending-preview-oct23/ordinary-pause.png",
+      "bytes": 213157,
+      "sha256": "b6da1bfed99238d4b5a072e3bebb206ff159d2639d2e94d8f43f28e6a4756e73"
+    },
+    {
+      "path": "artifacts/th14/title-ending-preview-oct23/ordinary-returned-title.png",
+      "bytes": 227877,
+      "sha256": "a8f6f054fb115f3b56110165addad41464f18a53770a14afc3eb31b063c4f38c"
+    },
+    {
+      "path": "artifacts/th14/title-ending-preview-oct23/replay-stage5-progress.png",
+      "bytes": 249366,
+      "sha256": "acf0abfd255faf71d8e9c0753d3e0a271095d2294be6d253595dd5fbb78bceb4"
+    },
+    {
+      "path": "artifacts/th14/title-ending-preview-oct23/replay-end-menu.png",
+      "bytes": 276183,
+      "sha256": "69553d89fbd5a3ca6205ceaaa0d1603a12aca9456d0c201b07fade34795f46a9"
+    },
+    {
+      "path": "artifacts/th14/title-ending-preview-oct23/replay-escape-blocked.png",
+      "bytes": 276181,
+      "sha256": "930a5a3ba97633475a450863a75c17fe56c6c4b0dbc2cc336cb96872b80da311"
+    },
+    {
+      "path": "artifacts/th14/title-ending-preview-oct23/replay-returned-list.png",
+      "bytes": 261326,
+      "sha256": "598dc07dc4a580bbc865120b38a6c97c494e7f49389e8b1a4612150b4f17ec98"
+    },
+    {
+      "path": "artifacts/th14/title-ending-preview-oct23/final-ax.txt",
+      "bytes": 1393,
+      "sha256": "5e86bc7e0ffc94bba0ed95c05cf3b18a956b8e1b049775946e3240cc5393afee"
+    }
+  ],
+  "scope": "Ordinary browser GameStart, pause, return to Title, Replay Stage5 natural GameOver, forced menu Escape rejection and return to Replay list. The existing imported replay was exported via the visible management UI and its complete bytes match the original import.",
+  "limits": [
+    "No browser natural Ending or complete live campaign acceptance inherited from WASI runs.",
+    "No new-module browser PlayAgain execution; prior02669 restart observation stays version-specific.",
+    "No original pixels, DirectSound PCM, exact EOF or callback count inferred from screenshots.",
+    "The immutable source/build evidence retains browser-pending status; this is the separate later observation.",
+    "Generic descriptor self-check fails because save-conflict has no diagnostic WASM; retained failure is distinct from passed packaged-site and actual HTTP checks."
+  ]
+}

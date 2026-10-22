@@ -1,0 +1,54 @@
+{
+  "title": "TH14 subsequent browser Replay restart and retained import, 2026-10-21",
+  "observed": true,
+  "wasmSha256": "02669f7731b7e774e59974b798e7b129fe3470187e10bc0e6e11e72eb2900b6e",
+  "origin": "http://localhost:8208",
+  "reloaded": true,
+  "allFiveReplayFilesVisibleAfterFullReload": true,
+  "newImportVisibleAfterFullReload": true,
+  "newImport": "th14_ud0003.rpy",
+  "downloadedBytesCompared": false,
+  "ordinaryReplayStage": 5,
+  "replayStartUtc": "2026-10-20T22:34:34.164Z",
+  "replayEndMenuObserved": true,
+  "playAgainSelectedViaDownAndConfirm": true,
+  "restartedGameplayObserved": true,
+  "restartObservedUtc": "2026-10-20T22:41:53.380Z",
+  "exactRestartPhysicalTickObserved": false,
+  "muted": true,
+  "logs": [],
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "pixelEqualityClaim": false,
+  "priorObservationSha256": "d0790aec7bf2989feba9f63da6b2a25a388ce281b731766344246ac17316aaea",
+  "localObservationSha256": "dd94cb0982021d1e9cae66ac54df8df346ee8bc442bcc6d32b6c2dad7073d689",
+  "evidenceBindings": [
+    {
+      "path": "artifacts/th14/replay-resume-final-preview-oct21/five-replays-after-full-reload.png",
+      "bytes": 38604,
+      "sha256": "12b4f4b606a7ccde51eed004118b006f9f6148c654b3446130cc408ad17b90c0"
+    },
+    {
+      "path": "artifacts/th14/replay-resume-final-preview-oct21/five-replays-after-full-reload-ax.txt",
+      "bytes": 910,
+      "sha256": "fdcbf7d29572d0ac968601dbe49a6ddf178de095ed734cb5261eb4b53b217f43"
+    },
+    {
+      "path": "artifacts/th14/replay-resume-final-preview-oct21/reload-replay-natural-end-menu.png",
+      "bytes": 276210,
+      "sha256": "693c52e4f118ccaa568d18d08d5b26982a539491b9d1c541902cd75a7deb6e7c"
+    },
+    {
+      "path": "artifacts/th14/replay-resume-final-preview-oct21/final-play-again-restarted.png",
+      "bytes": 243638,
+      "sha256": "52ad6a146dd087198a7cc79d5679f963ac57afaac1bac120a7e8c835d02dbfb6"
+    }
+  ],
+  "scope": "Subsequent ordinary browser verification of the published02669 module. Full reload retains all five visible replay entries including the new import; that replay naturally enters the Stage5 forced end menu, then Down/Confirm actually restarts gameplay. Existing observation remains immutable.",
+  "limits": [
+    "No byte export comparison of IndexedDB replay contents.",
+    "No exact EOF/callback count inferred from images.",
+    "No Native pixels, DirectSound PCM or whole-game equivalence claim.",
+    "Does not validate the subsequent0e1ba6 Title/Ending module."
+  ]
+}
