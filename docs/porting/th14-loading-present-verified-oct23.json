@@ -1,0 +1,132 @@
+{
+  "date": "2026-10-23",
+  "passed": true,
+  "sourceSha256": "6d350542911c48022925c90a645d76ba2a8a4078325eba1c040395b8825ec344",
+  "wasmSha256": "28e099b7b3437d9a39aa5bbd6e0e9c638fcc4222667eaf74c8365461a698b04c",
+  "loaderSha256": "9b3b775105b5adb0a6077729ce2b29f3941b4608408e347e4369da9baaa76b03",
+  "wasmBytes": 1903409,
+  "compileProfile": "SDL3 release, PORT_TITLE=14",
+  "changedTranslationUnits": 1,
+  "verifiedReusedTranslationUnits": 145,
+  "importsUnchanged": true,
+  "exportsUnchanged": true,
+  "rootResourceCryptExcluded": true,
+  "browser": {
+    "validated": true,
+    "url": "http://localhost:8210/?game=th14",
+    "browser": "Chromium 155.0.0.0",
+    "runtimeVariant": "normal",
+    "quiet": true,
+    "steps": [
+      "Launch with managed data",
+      "Normal attract Demo",
+      "Game Start",
+      "Normal difficulty",
+      "Reimu",
+      "Weapon B: no bewitched weapon",
+      "Stage 1 rendered",
+      "Pause menu",
+      "Return to Title confirmation",
+      "Title rendered again"
+    ],
+    "errorsAndWarnings": [],
+    "loadingEvents": [
+      {
+        "level": "log",
+        "message": "[loading14] ascii script17 started; 9 resource uploads pending",
+        "timestamp": "2026-10-22T22:59:15.513Z",
+        "url": "http://localhost:8210/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] resource uploads complete; interrupt1 delivered",
+        "timestamp": "2026-10-22T22:59:16.266Z",
+        "url": "http://localhost:8210/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] stage entry; 5 resource uploads pending",
+        "timestamp": "2026-10-22T22:59:46.228Z",
+        "url": "http://localhost:8210/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] resource uploads complete; interrupt1 delivered",
+        "timestamp": "2026-10-22T22:59:46.324Z",
+        "url": "http://localhost:8210/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] stage entry; 6 resource uploads pending",
+        "timestamp": "2026-10-22T23:01:21.368Z",
+        "url": "http://localhost:8210/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] resource uploads complete; interrupt1 delivered",
+        "timestamp": "2026-10-22T23:01:21.449Z",
+        "url": "http://localhost:8210/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] stage entry; 6 resource uploads pending",
+        "timestamp": "2026-10-22T23:02:01.356Z",
+        "url": "http://localhost:8210/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] resource uploads complete; interrupt1 delivered",
+        "timestamp": "2026-10-22T23:02:01.425Z",
+        "url": "http://localhost:8210/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] stage entry; 6 resource uploads pending",
+        "timestamp": "2026-10-22T23:07:47.905Z",
+        "url": "http://localhost:8210/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] resource uploads complete; interrupt1 delivered",
+        "timestamp": "2026-10-22T23:07:47.975Z",
+        "url": "http://localhost:8210/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] stage entry; 5 resource uploads pending",
+        "timestamp": "2026-10-22T23:09:04.324Z",
+        "url": "http://localhost:8210/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] resource uploads complete; interrupt1 delivered",
+        "timestamp": "2026-10-22T23:09:04.385Z",
+        "url": "http://localhost:8210/runtime/th14/th14-sdl.mjs"
+      }
+    ],
+    "proofs": [
+      {
+        "name": "browser-normal-demo.jpg",
+        "bytes": 192521,
+        "sha256": "a92afa23d38942e4c998eaad41895dc49aec8f85cd07cbf944adef17214d8757"
+      },
+      {
+        "name": "browser-normal-reimu-b-pause.jpg",
+        "bytes": 210157,
+        "sha256": "b269e64e0bcc245274318bec76c2281d676d47c7c1f767f8aafd9e8a8664089c"
+      },
+      {
+        "name": "browser-returned-title.jpg",
+        "bytes": 187282,
+        "sha256": "c5d9bf55f1052328046813909f238bbdbc9ebf5a695d2310f18ef2999f564246"
+      }
+    ]
+  },
+  "change": "TH14 boot resource callbacks now draw, consume deferred captures, present, and sample spell timing before the early return that holds session advancement.",
+  "originalSigStartupImplemented": false,
+  "everyLoadingFrameCaptured": false,
+  "fullCampaignRetested": false,
+  "nativeEquivalent": false,
+  "completeGame": false,
+  "scope": "Browser smoke acceptance for the compiled loading-present change. No inherited full replay matrix, all-selection, exact loading-pixel, audio-output or Native scheduling equivalence. Existing8210 QA origin only; the prior8208 preview and saves remain unchanged."
+}

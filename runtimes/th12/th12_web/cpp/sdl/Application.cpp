@@ -534,6 +534,12 @@ struct Application:StageResourceEffects
                     if(!audio_events()||!text_events())return false;
                 }
             }
+            // Resource work still owns a physical draw/present callback.
+            // Keep session/input advancement held while its loading ANM draws.
+            if(!session.draw(renderer,&frame_text)){error=session.error;return false;}
+            th14_consume_deferred_captures(session.animations.deferred_captures,session,graphics,renderer);
+            graphics.present();
+            if(!session.sample_spell_clock(double(SDL_GetTicksNS())*1e-9)){error="Invalid spell timing state";return false;}
             return true;
         }
 #endif

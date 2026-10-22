@@ -1,5 +1,7 @@
 # thp — 东方原作 Web 移植工作区
 
+TH14 加载绘制修正（2026-10-23）：启动资源分支提前返回前补齐绘制、延迟捕获和呈现。新版 SDL 在独立静音地址完成 Normal 灵梦 B 第一关进入、暂停和返回标题检查，浏览器无错误／警告；sig 完整启动与整作 1:1 继续施工。旧 8208 预览仍保留。[修正范围](docs/porting/TH14_LOADING_PRESENT_FIX_OCT23.md)、[验证摘要](docs/porting/th14-loading-present-verified-oct23.json)。
+
 TH14 启动顺序修正（2026-10-23）：按原版记录，将 ascii/text 的模板准备和启动上传改为 ascii → text。9 组延迟加载与自然标题到 Demo 的 1921 帧基线对照通过；原码检查已跑过 text 两个真实渲染目标。sig 完整启动流程、原版绘制与整作 1:1 仍未完成，静音预览保留旧模块。[修正范围](docs/porting/TH14_STARTUP_RESOURCE_ORDER_OCT23.md)、[验证摘要](docs/porting/th14-startup-resource-order-verified-oct23.json)。
 
 TH14 当前修正（2026-10-23）：标题开始／回放请求在当帧动画完成后切换；结局按原回调顺序执行，快进重跑动画、淡入淡出及输入计数，完成后下一入口进入成绩页。两次普通按键自然通关、真实进度保存／读取及 30 份完整回放回归通过；回放与旧移植基线的 92,343,392 个所选状态字零差异。整作 1:1 仍未完成，只推进 TH14，预览静音。[修正范围](docs/porting/TH14_TITLE_ENDING_SCHEDULER_FIX_OCT21.md)、[新版完整回归](docs/porting/th14-title-ending-full-matrix-oct23.json)、[当前本机入口](docs/porting/TH14_LOCAL_WORKSPACE_CURRENT_SERVER.md)。
