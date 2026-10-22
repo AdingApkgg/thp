@@ -137,7 +137,7 @@ struct Application:StageResourceEffects
     bool initialized=false;
 #if PORT_TITLE == 14
     LoadingTh14 boot_loading;
-    struct ResourceUpload {AnmResource* resource;u16 file;};
+    struct ResourceUpload {AnmResource* resource;u16 file;u32 chunk=0;};
     std::vector<ResourceUpload> boot_uploads;
     u32 boot_upload_index=0;
     StageResources* boot_stage_owner=nullptr;
@@ -440,7 +440,7 @@ struct Application:StageResourceEffects
         // follow script17's own clock, never a captured RNG count.
         for(auto* file:{&core.ascii,&core.text})if(!graphics.preload(*file)){error=graphics.error;return false;}
         if(!boot_loading.begin(session.animations,core.ascii)){error="TH14 loading animation creation failed";return false;}
-        boot_uploads={{&core.effect,8},{&core.bullet,7},{&core.enemy,9},{&core.front,5},{&core.title,24},{&core.title_variant,25},{&core.players[0],7},{&core.players[1],7},{&core.players[2],7}};
+        boot_uploads={{&core.front,5},{&core.bullet,7},{&core.effect,8},{&core.enemy,9},{&core.title,24},{&core.title_variant,25},{&core.players[0],7},{&core.players[1],7},{&core.players[2],7}};
         boot_upload_index=0;std::printf("[loading14] ascii script17 started; %u resource uploads pending\n",u32(boot_uploads.size()));
         boot_stage_owner=nullptr;
 #else
@@ -516,12 +516,16 @@ struct Application:StageResourceEffects
             // ANM update or a loading-frame return.
         }
         if(boot_upload_index<boot_uploads.size()){
-            if(!session.animations.update(true)||!session.animations.update(false)){error="TH14 loading ANM update failed";return false;}
-            const auto job=boot_uploads[boot_upload_index];
+            auto& job=boot_uploads[boot_upload_index];
             if(!core_loading_done&&!session.resources.load_core_job(boot_upload_index)){error=session.resources.error;return false;}
-            if(!graphics.preload(*job.resource)){error=graphics.error;return false;}
-            if(!session.animations.prepare_resource(*job.resource,job.file)){error=session.animations.last_error_text();return false;}
-            if(++boot_upload_index==boot_uploads.size()){
+            // Original resource priority1 pumps one chunk. Its final chunk
+            // prepares templates before the priority29/30 ANM callbacks.
+            if(!graphics.preload_chunk(*job.resource,job.chunk)){error=graphics.error;return false;}
+            const bool resource_ready=++job.chunk>=job.resource->textures.size();
+            if(resource_ready&&!session.animations.prepare_resource(*job.resource,job.file)){error=session.animations.last_error_text();return false;}
+            if(resource_ready)std::printf("[loading14] file %u ready after %u chunk callbacks\n",u32(job.file),job.chunk);
+            if(!session.animations.update(true)||!session.animations.update(false)){error="TH14 loading ANM update failed";return false;}
+            if(resource_ready&&++boot_upload_index==boot_uploads.size()){
                 core_loading_done=true;
                 boot_loading.finish(session.animations);boot_uploads.clear();boot_upload_index=0;
                 boot_stage_owner=nullptr;

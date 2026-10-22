@@ -1,0 +1,933 @@
+{
+  "date": "2026-10-23",
+  "passed": true,
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/sdl/Application.cpp": "2ca3329b5b556c11e488f2e82a308d05a2f7a1ad09663fd09383a84fc3f0329c",
+    "runtimes/th12/th12_web/cpp/game/GameSessionResources.cpp": "c6df91cbf6bf06193e52909119fe15f8ce60ba4a7a71963f9e18aecfb36aa3f7",
+    "runtimes/th12/th12_web/tests/cpp/th14-startup-fixture.cpp": "11c2a5a87da89c70fa3cc4d2ef0ce7d3b7f5eff730e0bf61303a4b55d11fc83e",
+    "tools/th14-core-loading-check.mjs": "26f71ce45d1c05506ca669a3eecf52f9533160a91b4666d092c7b07455eda194"
+  },
+  "wasmSha256": "5f534614058a5522ed941cd861b5aa696f2648986dad730b52e4cbf01a82924d",
+  "loaderSha256": "2c5a22f3268d7ce89959605a0e6ec85df28fd388e5a6999ed5113926a1788d2e",
+  "wasmBytes": 1903753,
+  "recompiledSdlSources": 2,
+  "verifiedReusedSdlSources": 144,
+  "importsUnchanged": true,
+  "exportsUnchanged": true,
+  "rootResourceCryptExcluded": true,
+  "coreLoading": {
+    "passed": true,
+    "cases": 9,
+    "wasmSha256": "265325638b39d475bfe50a2e67d99e78a27b0c6cb21ec2f78111c92113482c67",
+    "fixtureSha256": "11c2a5a87da89c70fa3cc4d2ef0ce7d3b7f5eff730e0bf61303a4b55d11fc83e",
+    "scope": "Existing core loading checks against the corrected resource order, for three clock inputs and three delays. Actual SDL chunk callbacks require the separate browser test; original resource/ANM RNG trace is checked separately."
+  },
+  "originalRngComponent": {
+    "passed": true,
+    "updates": 34,
+    "initialRng": [
+      57045,
+      256,
+      0,
+      0
+    ],
+    "samples": [
+      {
+        "checkpoint": 24,
+        "resource": "text.anm",
+        "entryChunk": 1,
+        "returnChunk": 2,
+        "native": [
+          47358,
+          280,
+          0,
+          0
+        ],
+        "portable": [
+          47358,
+          280,
+          0,
+          0
+        ],
+        "nativeReportSha256": "55929e7eded05399d021dea6b0be0c1ffde914f3ed61ad6b67e8b453a9d936bd"
+      },
+      {
+        "checkpoint": 26,
+        "resource": "text.anm",
+        "entryChunk": 2,
+        "returnChunk": 3,
+        "native": [
+          47358,
+          280,
+          0,
+          0
+        ],
+        "portable": [
+          47358,
+          280,
+          0,
+          0
+        ],
+        "nativeReportSha256": "005488b4eba6ed0478ac253327b01440e4b03eccb3431a1d5fda632b6b153e71"
+      },
+      {
+        "checkpoint": 28,
+        "resource": "text.anm",
+        "entryChunk": 3,
+        "returnChunk": 4,
+        "native": [
+          47358,
+          280,
+          0,
+          0
+        ],
+        "portable": [
+          47358,
+          280,
+          0,
+          0
+        ],
+        "nativeReportSha256": "96feb1d1a19ba04a9f6db783b36c6c05e81fb9590800fa9afedc01f6e3828160"
+      },
+      {
+        "checkpoint": 30,
+        "resource": "text.anm",
+        "entryChunk": 4,
+        "returnChunk": 0,
+        "native": [
+          47358,
+          280,
+          0,
+          0
+        ],
+        "portable": [
+          47358,
+          280,
+          0,
+          0
+        ],
+        "nativeReportSha256": "259a07f1137211672f98bbb6db6c3523e475653081c23e3f896a4b728340b150"
+      },
+      {
+        "checkpoint": 38,
+        "resource": "front.anm",
+        "entryChunk": 1,
+        "returnChunk": 2,
+        "native": [
+          33690,
+          304,
+          0,
+          0
+        ],
+        "portable": [
+          33690,
+          304,
+          0,
+          0
+        ],
+        "nativeReportSha256": "548479ad71f12b0331d9554d56b77fbc3084ac6b0f4865d4b78b7ecea2aaa4eb"
+      },
+      {
+        "checkpoint": 40,
+        "resource": "front.anm",
+        "entryChunk": 2,
+        "returnChunk": 3,
+        "native": [
+          33690,
+          304,
+          0,
+          0
+        ],
+        "portable": [
+          33690,
+          304,
+          0,
+          0
+        ],
+        "nativeReportSha256": "550afd9bc18ae8163fb6911360c59baecf0b48d925d6033b35e1947222065f39"
+      },
+      {
+        "checkpoint": 42,
+        "resource": "front.anm",
+        "entryChunk": 3,
+        "returnChunk": 4,
+        "native": [
+          33690,
+          304,
+          0,
+          0
+        ],
+        "portable": [
+          33690,
+          304,
+          0,
+          0
+        ],
+        "nativeReportSha256": "67149b2386e5c580a3fdf4f6a2ba8d10dea0e1aec4d759e1e0dddc80a7ad2eae"
+      },
+      {
+        "checkpoint": 44,
+        "resource": "front.anm",
+        "entryChunk": 4,
+        "returnChunk": 5,
+        "native": [
+          33690,
+          304,
+          0,
+          0
+        ],
+        "portable": [
+          33690,
+          304,
+          0,
+          0
+        ],
+        "nativeReportSha256": "da8933600ce79f5681ee8ba5118066df24faadf4ee04e6472a61d6eb41fcbeb1"
+      },
+      {
+        "checkpoint": 46,
+        "resource": "front.anm",
+        "entryChunk": 5,
+        "returnChunk": 6,
+        "native": [
+          39920,
+          328,
+          0,
+          0
+        ],
+        "portable": [
+          39920,
+          328,
+          0,
+          0
+        ],
+        "nativeReportSha256": "e59856e565ad309d3acfdb93eed76d1b41695487aeb3002f90ce7863e690c751"
+      },
+      {
+        "checkpoint": 48,
+        "resource": "front.anm",
+        "entryChunk": 6,
+        "returnChunk": 7,
+        "native": [
+          39920,
+          328,
+          0,
+          0
+        ],
+        "portable": [
+          39920,
+          328,
+          0,
+          0
+        ],
+        "nativeReportSha256": "b36b6a07187031071c5d4f9e06ec2e499d3c2a16838bc7caa41d8dab896891f1"
+      },
+      {
+        "checkpoint": 50,
+        "resource": "front.anm",
+        "entryChunk": 7,
+        "returnChunk": 8,
+        "native": [
+          39920,
+          328,
+          0,
+          0
+        ],
+        "portable": [
+          39920,
+          328,
+          0,
+          0
+        ],
+        "nativeReportSha256": "6400a56444ed2b6cce96cd4700be7d230216682344df6283f90471eb7c0585b9"
+      },
+      {
+        "checkpoint": 52,
+        "resource": "front.anm",
+        "entryChunk": 8,
+        "returnChunk": 0,
+        "native": [
+          39920,
+          328,
+          0,
+          0
+        ],
+        "portable": [
+          39920,
+          328,
+          0,
+          0
+        ],
+        "nativeReportSha256": "9b1a9eaec7a87b1375f67c5a9d2d9d2b76424e4cbd7f19d749632bc33746374a"
+      },
+      {
+        "checkpoint": 58,
+        "resource": "bullet.anm",
+        "entryChunk": 1,
+        "returnChunk": 2,
+        "native": [
+          5078,
+          352,
+          0,
+          0
+        ],
+        "portable": [
+          5078,
+          352,
+          0,
+          0
+        ],
+        "nativeReportSha256": "4b705b8106ec545e600ee917047e4dbc929e75ac770bcc7260606533b5ba599b"
+      },
+      {
+        "checkpoint": 60,
+        "resource": "bullet.anm",
+        "entryChunk": 2,
+        "returnChunk": 3,
+        "native": [
+          5078,
+          352,
+          0,
+          0
+        ],
+        "portable": [
+          5078,
+          352,
+          0,
+          0
+        ],
+        "nativeReportSha256": "d64ded77727f207ec76b741ad692753e0a5344170a609bee7d98ab4ebcc10752"
+      },
+      {
+        "checkpoint": 62,
+        "resource": "bullet.anm",
+        "entryChunk": 3,
+        "returnChunk": 4,
+        "native": [
+          5078,
+          352,
+          0,
+          0
+        ],
+        "portable": [
+          5078,
+          352,
+          0,
+          0
+        ],
+        "nativeReportSha256": "73fd5270fa84433002bf11a43f4f1b448f6a478b02fd32a0a57f02c9e61a1aff"
+      },
+      {
+        "checkpoint": 64,
+        "resource": "bullet.anm",
+        "entryChunk": 4,
+        "returnChunk": 5,
+        "native": [
+          5078,
+          352,
+          0,
+          0
+        ],
+        "portable": [
+          5078,
+          352,
+          0,
+          0
+        ],
+        "nativeReportSha256": "2f19e591d072b8c1ac202661a8856bc5f78b61af198eb1e265b5ce85b62cd7e4"
+      },
+      {
+        "checkpoint": 66,
+        "resource": "bullet.anm",
+        "entryChunk": 5,
+        "returnChunk": 6,
+        "native": [
+          23186,
+          376,
+          0,
+          0
+        ],
+        "portable": [
+          23186,
+          376,
+          0,
+          0
+        ],
+        "nativeReportSha256": "0092411eb634387f52fe506edf7e1601bf5dfe96d04fd0fa87d51a55f95f03aa"
+      },
+      {
+        "checkpoint": 68,
+        "resource": "bullet.anm",
+        "entryChunk": 6,
+        "returnChunk": 7,
+        "native": [
+          23186,
+          376,
+          0,
+          0
+        ],
+        "portable": [
+          23186,
+          376,
+          0,
+          0
+        ],
+        "nativeReportSha256": "8d81d7a2b55d86a318f7dc218053b839643246c237edabf527296efac85a3fb0"
+      },
+      {
+        "checkpoint": 70,
+        "resource": "bullet.anm",
+        "entryChunk": 7,
+        "returnChunk": 8,
+        "native": [
+          23186,
+          376,
+          0,
+          0
+        ],
+        "portable": [
+          23186,
+          376,
+          0,
+          0
+        ],
+        "nativeReportSha256": "eadf0245ea4c8b5e157319893a1e12764fea2d48e2978634afcc3a11d0abc70c"
+      },
+      {
+        "checkpoint": 72,
+        "resource": "bullet.anm",
+        "entryChunk": 8,
+        "returnChunk": 9,
+        "native": [
+          23186,
+          376,
+          0,
+          0
+        ],
+        "portable": [
+          23186,
+          376,
+          0,
+          0
+        ],
+        "nativeReportSha256": "061245557796f51704a6e6508732bc7b03037b969c8555e363b6d3f479e44f15"
+      },
+      {
+        "checkpoint": 74,
+        "resource": "bullet.anm",
+        "entryChunk": 9,
+        "returnChunk": 0,
+        "native": [
+          37213,
+          400,
+          0,
+          0
+        ],
+        "portable": [
+          37213,
+          400,
+          0,
+          0
+        ],
+        "nativeReportSha256": "d8962c444762608ce779fbbe1874a570d7e10f44805beccb8a32f563933eb7d8"
+      },
+      {
+        "checkpoint": 80,
+        "resource": "effect.anm",
+        "entryChunk": 1,
+        "returnChunk": 2,
+        "native": [
+          37213,
+          400,
+          0,
+          0
+        ],
+        "portable": [
+          37213,
+          400,
+          0,
+          0
+        ],
+        "nativeReportSha256": "8bd357115ac39edab768a54ef5122350f2c7e97ef2c0237817eab436455f9115"
+      },
+      {
+        "checkpoint": 82,
+        "resource": "effect.anm",
+        "entryChunk": 2,
+        "returnChunk": 3,
+        "native": [
+          37213,
+          400,
+          0,
+          0
+        ],
+        "portable": [
+          37213,
+          400,
+          0,
+          0
+        ],
+        "nativeReportSha256": "5ee6f1f4d5aae530c2af3c8b796f378a688a9bcb7bfc396adfb5004b45bd4c47"
+      },
+      {
+        "checkpoint": 84,
+        "resource": "effect.anm",
+        "entryChunk": 3,
+        "returnChunk": 4,
+        "native": [
+          37213,
+          400,
+          0,
+          0
+        ],
+        "portable": [
+          37213,
+          400,
+          0,
+          0
+        ],
+        "nativeReportSha256": "7d5788be869071791010ddbcf3dc83a5375eb79fdd80e8bc5ec7860efe678350"
+      },
+      {
+        "checkpoint": 86,
+        "resource": "effect.anm",
+        "entryChunk": 4,
+        "returnChunk": 5,
+        "native": [
+          15878,
+          424,
+          0,
+          0
+        ],
+        "portable": [
+          15878,
+          424,
+          0,
+          0
+        ],
+        "nativeReportSha256": "cde02c4a89fd25f832395687c431d2223317d5bbbe54e098481a6062393d1b16"
+      },
+      {
+        "checkpoint": 88,
+        "resource": "effect.anm",
+        "entryChunk": 5,
+        "returnChunk": 6,
+        "native": [
+          15878,
+          424,
+          0,
+          0
+        ],
+        "portable": [
+          15878,
+          424,
+          0,
+          0
+        ],
+        "nativeReportSha256": "10e9e9aeb7dd6b2660cf5af317cc9191512e868b36b5659cff0fb7b36be555a5"
+      },
+      {
+        "checkpoint": 90,
+        "resource": "effect.anm",
+        "entryChunk": 6,
+        "returnChunk": 7,
+        "native": [
+          15878,
+          424,
+          0,
+          0
+        ],
+        "portable": [
+          15878,
+          424,
+          0,
+          0
+        ],
+        "nativeReportSha256": "4ba95276f27200bc56b2ba06f3da70d825a7e3c89107ef1d3b7c1a7ee48fac59"
+      },
+      {
+        "checkpoint": 92,
+        "resource": "effect.anm",
+        "entryChunk": 7,
+        "returnChunk": 8,
+        "native": [
+          15878,
+          424,
+          0,
+          0
+        ],
+        "portable": [
+          15878,
+          424,
+          0,
+          0
+        ],
+        "nativeReportSha256": "1c488ff3b6c3a53ba4b11114c80d538e0df6865ff341230868a46cd1d2a0754e"
+      },
+      {
+        "checkpoint": 94,
+        "resource": "effect.anm",
+        "entryChunk": 8,
+        "returnChunk": 9,
+        "native": [
+          11577,
+          448,
+          0,
+          0
+        ],
+        "portable": [
+          11577,
+          448,
+          0,
+          0
+        ],
+        "nativeReportSha256": "075d0f32567380a74117397b67f217a8f44f9a483546a912bcc25e83d915ec04"
+      },
+      {
+        "checkpoint": 96,
+        "resource": "effect.anm",
+        "entryChunk": 9,
+        "returnChunk": 10,
+        "native": [
+          11577,
+          448,
+          0,
+          0
+        ],
+        "portable": [
+          11577,
+          448,
+          0,
+          0
+        ],
+        "nativeReportSha256": "537b09961ca0ab623ccae46f9d7814a3ce0acba55decbbb71bb793b2a8f90023"
+      },
+      {
+        "checkpoint": 98,
+        "resource": "effect.anm",
+        "entryChunk": 10,
+        "returnChunk": 11,
+        "native": [
+          11577,
+          448,
+          0,
+          0
+        ],
+        "portable": [
+          11577,
+          448,
+          0,
+          0
+        ],
+        "nativeReportSha256": "7f7555cfed2facb8018b709c1e7ffa83446f79855471fadcb3c458686876afe3"
+      },
+      {
+        "checkpoint": 100,
+        "resource": "effect.anm",
+        "entryChunk": 11,
+        "returnChunk": 12,
+        "native": [
+          11577,
+          448,
+          0,
+          0
+        ],
+        "portable": [
+          11577,
+          448,
+          0,
+          0
+        ],
+        "nativeReportSha256": "3c8a7c62746a112bf9150d50ba39b0e0e88358ddcc492ea4ac9ec05954080186"
+      },
+      {
+        "checkpoint": 102,
+        "resource": "effect.anm",
+        "entryChunk": 12,
+        "returnChunk": 13,
+        "native": [
+          51586,
+          472,
+          0,
+          0
+        ],
+        "portable": [
+          51586,
+          472,
+          0,
+          0
+        ],
+        "nativeReportSha256": "019e4c11bdb39d1093b0bb6735c72c6741a83306b6cd61d2ff179ef1f81f3274"
+      },
+      {
+        "checkpoint": 104,
+        "resource": "effect.anm",
+        "entryChunk": 13,
+        "returnChunk": 0,
+        "native": [
+          2253,
+          476,
+          0,
+          0
+        ],
+        "portable": [
+          2253,
+          476,
+          0,
+          0
+        ],
+        "nativeReportSha256": "5c3146dc1917f47a863bd15a86bf0c4eb63a685f013b5321c6502a5e9e6a5285"
+      }
+    ],
+    "differences": [],
+    "intermediateReseeds": 0,
+    "wasmSha256": "a452aa9291e29de5d50153243ca58ed31f36d77a44003de9509271d06019d982",
+    "fixtureSha256": "9a3b1a4e63b56ec075c75d88a31593aeacc861123e864fd2a2f68f9240443c04",
+    "sourceOfInitialRng": "Original registered loading draw component checkpoint23, before its following ANM update",
+    "mainFpuNativeMeasured": false,
+    "scope": "RNG-only component trace for original one-chunk resource callbacks followed by ANM update, starting after the original ASCII17 creation. Resource templates prepare only on their original final-chunk callbacks. No intermediate RNG values are supplied to C++; original thread timing, full VM states, GPU draw, audio and complete startup are not certified."
+  },
+  "browser": {
+    "validated": true,
+    "url": "http://localhost:8211/?game=th14",
+    "quiet": true,
+    "runtimeVariant": "normal",
+    "steps": [
+      "Launch",
+      "Normal Demo",
+      "Game Start / Normal / Reimu B",
+      "Stage1 rendered",
+      "Natural GameOver",
+      "Continue; later credit count3 to2 and stage1 boss observed",
+      "Subsequent GameOver / Return to Title",
+      "Title rendered again"
+    ],
+    "initialResourceJobs": [
+      {
+        "file": 5,
+        "chunks": 8
+      },
+      {
+        "file": 7,
+        "chunks": 9
+      },
+      {
+        "file": 8,
+        "chunks": 13
+      },
+      {
+        "file": 9,
+        "chunks": 3
+      },
+      {
+        "file": 24,
+        "chunks": 41
+      },
+      {
+        "file": 25,
+        "chunks": 1
+      },
+      {
+        "file": 7,
+        "chunks": 13
+      },
+      {
+        "file": 7,
+        "chunks": 15
+      },
+      {
+        "file": 7,
+        "chunks": 12
+      }
+    ],
+    "initialChunkCallbacks": 115,
+    "errorsAndWarnings": [],
+    "loadingEvents": [
+      {
+        "level": "log",
+        "message": "[loading14] ascii script17 started; 9 resource uploads pending",
+        "timestamp": "2026-10-22T23:19:03.812Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] file 5 ready after 8 chunk callbacks",
+        "timestamp": "2026-10-22T23:19:03.939Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] file 7 ready after 9 chunk callbacks",
+        "timestamp": "2026-10-22T23:19:04.090Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] file 8 ready after 13 chunk callbacks",
+        "timestamp": "2026-10-22T23:19:04.311Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] file 9 ready after 3 chunk callbacks",
+        "timestamp": "2026-10-22T23:19:04.361Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] file 24 ready after 41 chunk callbacks",
+        "timestamp": "2026-10-22T23:19:05.140Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] file 25 ready after 1 chunk callbacks",
+        "timestamp": "2026-10-22T23:19:05.140Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] file 7 ready after 13 chunk callbacks",
+        "timestamp": "2026-10-22T23:19:05.362Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] file 7 ready after 15 chunk callbacks",
+        "timestamp": "2026-10-22T23:19:05.613Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] file 7 ready after 12 chunk callbacks",
+        "timestamp": "2026-10-22T23:19:05.811Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] resource uploads complete; interrupt1 delivered",
+        "timestamp": "2026-10-22T23:19:05.812Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] stage entry; 5 resource uploads pending",
+        "timestamp": "2026-10-22T23:19:35.872Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] file 4 ready after 5 chunk callbacks",
+        "timestamp": "2026-10-22T23:19:35.907Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] file 6 ready after 2 chunk callbacks",
+        "timestamp": "2026-10-22T23:19:35.941Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] file 9 ready after 16 chunk callbacks",
+        "timestamp": "2026-10-22T23:19:36.207Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] file 10 ready after 3 chunk callbacks",
+        "timestamp": "2026-10-22T23:19:36.256Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] file 11 ready after 16 chunk callbacks",
+        "timestamp": "2026-10-22T23:19:36.523Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] resource uploads complete; interrupt1 delivered",
+        "timestamp": "2026-10-22T23:19:36.523Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] stage entry; 6 resource uploads pending",
+        "timestamp": "2026-10-22T23:22:52.396Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] file 4 ready after 5 chunk callbacks",
+        "timestamp": "2026-10-22T23:22:52.442Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] file 6 ready after 2 chunk callbacks",
+        "timestamp": "2026-10-22T23:22:52.478Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] file 9 ready after 16 chunk callbacks",
+        "timestamp": "2026-10-22T23:22:52.745Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] file 10 ready after 3 chunk callbacks",
+        "timestamp": "2026-10-22T23:22:52.793Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] file 11 ready after 16 chunk callbacks",
+        "timestamp": "2026-10-22T23:22:53.062Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] file 12 ready after 3 chunk callbacks",
+        "timestamp": "2026-10-22T23:22:53.112Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      },
+      {
+        "level": "log",
+        "message": "[loading14] resource uploads complete; interrupt1 delivered",
+        "timestamp": "2026-10-22T23:22:53.112Z",
+        "url": "http://localhost:8211/runtime/th14/th14-sdl.mjs"
+      }
+    ],
+    "proofs": [
+      {
+        "name": "browser-normal-demo.jpg",
+        "bytes": 216117,
+        "sha256": "80eaba49e1c4a837af6759562e085bb846a9d36db3441d1fce291ab4d50c19c5"
+      },
+      {
+        "name": "browser-normal-reimu-b-gameover.jpg",
+        "bytes": 217283,
+        "sha256": "dfbee0e02f5bd9d4c0cf8676b910360bcd1c045e88578e5f65c9a97e0b746a95"
+      },
+      {
+        "name": "browser-after-continue-gameover.jpg",
+        "bytes": 224330,
+        "sha256": "5e0517de99052996cb8c6352cb2ce3b6c8b33f4d311285bd7facb06376d2a01b"
+      },
+      {
+        "name": "browser-returned-title.jpg",
+        "bytes": 227924,
+        "sha256": "649714e43e4ccfae4d02a57f90c2a023582bbd5b9ba1c1f5dc01123a80ce6036"
+      }
+    ]
+  },
+  "originalSigStartupImplemented": false,
+  "old8208PreviewUnchanged": true,
+  "allLoadingPixelsVerified": false,
+  "fullReplayMatrixRetested": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "scope": "TH14 startup resource pump now uploads one ANM texture chunk per callback, prepares templates on its final chunk before the ANM callbacks, and begins common resources in the observed front/bullet/effect order. Separate component RNG, delayed-core and browser-smoke checks have the limited scopes listed. Sig production startup, remaining cold-start resource lifecycle, Native asynchronous timing, all pixels/audio and complete game remain unfinished."
+}

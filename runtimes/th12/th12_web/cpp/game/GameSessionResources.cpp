@@ -71,8 +71,10 @@ bool GameSessionResources::load_core_job(u32 index){
     if(index>=9)return core_error(error,"TH14 core resource job outside 0..8");
     if(!core_deferred||(core_loaded_jobs&(1u<<index)))return true;
     if(!core_source)return core_error(error,"TH14 core resource source missing");
-    AnmResource* files[]={&core.effect,&core.bullet,&core.enemy,&core.front,&core.title,&core.title_variant,&core.players[0],&core.players[1],&core.players[2]};
-    const char* names[]={"effect.anm","bullet.anm","enemy.anm","front.anm","title.anm","title_v.anm","pl00.anm","pl01.anm","pl02.anm"};
+    // Original 444050 prepares front, bullet, then effect before constructing
+    // their users. Keep the deferred path in the same order as prepare_core.
+    AnmResource* files[]={&core.front,&core.bullet,&core.effect,&core.enemy,&core.title,&core.title_variant,&core.players[0],&core.players[1],&core.players[2]};
+    const char* names[]={"front.anm","bullet.anm","effect.anm","enemy.anm","title.anm","title_v.anm","pl00.anm","pl01.anm","pl02.anm"};
     if(!core_source->open_anm(names[index],*files[index]))return core_error(error,(std::string(names[index])+": "+files[index]->detail).c_str());
     if(index>=6){const u32 character=index-6;
         for(u32 loadout=0;loadout<shot_loadout_count;++loadout){const u32 slot=shot_file_slot(character,loadout);
