@@ -1,0 +1,61 @@
+{
+  "passed": true,
+  "date": "2026-10-23",
+  "change": "TH14 ascii/text template preparation and startup preload order corrected to ascii before text",
+  "files": [
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/GameSessionResources.cpp",
+      "before": "68b4dd5cf5acf263f8f44a30ed23ecb2d4d16db81f1c5f4ead9e93639055343a",
+      "after": "68b980dc17f5f9233095edf381159926f83460f13d120cde2489c5aba40a1abc"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/sdl/Application.cpp",
+      "before": "635752cfc0cf9b8c00895eade3d0c8e45940ce8f34f9265a8c5541d77f7fb553",
+      "after": "b96267df765d81276ff416757339c7dc3cc40dc04926c0f162ac739680fe7967"
+    }
+  ],
+  "delayedCases": 9,
+  "naturalTitleFrames": 1801,
+  "naturalObservationFrames": 1921,
+  "sampledStateAndRngEqualToFrozenPortBaseline": true,
+  "baselineWasmSha256": "21142de2cadd2a4c194e51ba217e1f4a08a01338689e74e87ecb93cc57e44b40",
+  "candidateWasiSha256": "6a6ca6d6450b2833cd442774e47d625408107dbee9485e63519c0aaea35c90d3",
+  "candidateSdlSha256": "5dda0ac038ac238472b6704c38db26bec53e02b5872f33ec0ac165c305f842cf",
+  "candidateLoaderSha256": "9b3b775105b5adb0a6077729ce2b29f3941b4608408e347e4369da9baaa76b03",
+  "sdlImportsUnchanged": true,
+  "sdlExportsUnchanged": true,
+  "wasiFreshlyCompiledEngineSources": 141,
+  "rootResourceCryptPreserved": true,
+  "releaseResourceCryptSha256": "d57118f1114f3909c42a2e99e7df30e625f6563247a8118cd14bb9f68a0f97ef",
+  "originalExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "originalArchiveSha256": "57d84a5cbe82460931cca26f090a0fde7aef180889ce5bfe8315851fc97b0233",
+  "originalResourceOrderObserved": [
+    "sig.anm:1",
+    "ascii.anm:2",
+    "text.anm:0",
+    "front.anm:5"
+  ],
+  "originalReadyClearedByOriginalInstructions": true,
+  "textRenderTargets": {
+    "count": 2,
+    "width": 640,
+    "height": 480,
+    "format": 21,
+    "usage": 1,
+    "pool": 0,
+    "actual32BitDeviceCreateTexture": true
+  },
+  "sigStartupImplemented": false,
+  "nativeFullStartupVerified": false,
+  "fullNativeDrawChainExecuted": false,
+  "audioPlayed": false,
+  "browserCandidateValidated": false,
+  "currentPreviewModuleSha256": "0e1ba6d1531edb51cfcf3f45aa0e01c4221788716369154470c95834d114a4bd",
+  "evidenceSha256": {
+    "startupVerification": "f163fe1bea94e61fb4bca13443ee257ba8f7f49bebf84f5d906ab69f84ad2fbf",
+    "sdlBuild": "551559e0f6ef60f8f266298413332a02fb0f2f583ba126d80cd70636486f2a10",
+    "wasiBuild": "a9ae794703ab328b58c0dc21888579acd4d255d6649ae88e3549bb1eea846731"
+  },
+  "completeGame": false,
+  "nativeEquivalent": false
+}

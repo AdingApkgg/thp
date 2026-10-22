@@ -438,7 +438,7 @@ struct Application:StageResourceEffects
         // Upload real pending resources between frames so the original loading
         // ANM can update and draw while GPU work remains. Its random children
         // follow script17's own clock, never a captured RNG count.
-        for(auto* file:{&core.text,&core.ascii})if(!graphics.preload(*file)){error=graphics.error;return false;}
+        for(auto* file:{&core.ascii,&core.text})if(!graphics.preload(*file)){error=graphics.error;return false;}
         if(!boot_loading.begin(session.animations,core.ascii)){error="TH14 loading animation creation failed";return false;}
         boot_uploads={{&core.effect,8},{&core.bullet,7},{&core.enemy,9},{&core.front,5},{&core.title,24},{&core.title_variant,25},{&core.players[0],7},{&core.players[1],7},{&core.players[2],7}};
         boot_upload_index=0;std::printf("[loading14] ascii script17 started; %u resource uploads pending\n",u32(boot_uploads.size()));

@@ -30,7 +30,7 @@ bool GameSessionResources::load_core(GameResources& source) {
         core={};
         if(!anm("ascii ANM","ascii.anm",core.ascii)||!anm("text ANM","text.anm",core.text))return false;
         if(animation_manager){auto& a=*animation_manager;a.fallback_sprites=&core.ascii;
-            if(!a.prepare_resource(core.text,0)||!a.prepare_resource(core.ascii,2))return core_error(error,a.last_error_text().c_str());}
+            if(!a.prepare_resource(core.ascii,2)||!a.prepare_resource(core.text,0))return core_error(error,a.last_error_text().c_str());}
         core_source=&source;return true;
     }
 #endif
@@ -61,7 +61,7 @@ bool GameSessionResources::load_core(GameResources& source) {
     if(!source.load_ecl("default.ecl",core.defaults))return core_error(error,"default ECL");
 #if PORT_TITLE == 14
     if(animation_manager){auto& a=*animation_manager;a.fallback_sprites=&core.ascii;
-        if(!a.prepare_resource(core.text,0)||!a.prepare_resource(core.ascii,2))return core_error(error,a.last_error_text().c_str());}
+        if(!a.prepare_resource(core.ascii,2)||!a.prepare_resource(core.text,0))return core_error(error,a.last_error_text().c_str());}
     if((!effects||effects->core_ready())&&!prepare_core())return false;
 #endif
     core_source=&source;return true;
@@ -85,7 +85,7 @@ bool GameSessionResources::prepare_core(){
     if(core_deferred){for(u32 index=0;index<9;++index)if(!load_core_job(index))return false;core_deferred=false;}
     if(animation_manager){
         auto& a=*animation_manager;a.fallback_sprites=&core.ascii;
-        if(!a.prepare_resource(core.text,0)||!a.prepare_resource(core.ascii,2)||!a.prepare_resource(core.front,5)
+        if(!a.prepare_resource(core.ascii,2)||!a.prepare_resource(core.text,0)||!a.prepare_resource(core.front,5)
            ||!a.prepare_resource(core.bullet,7)||!a.prepare_resource(core.effect,8)||!a.prepare_resource(core.enemy,9)
            ||!a.prepare_resource(core.title,24)||!a.prepare_resource(core.title_variant,25))return core_error(error,a.last_error_text().c_str());
         for(u32 i=0;i<player_file_count;++i)if(!a.prepare_resource(core.players[i],7))return core_error(error,a.last_error_text().c_str());
