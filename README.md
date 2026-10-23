@@ -1,5 +1,7 @@
 # thp — 东方原作 Web 移植工作区
 
+TH14 当前核心完整录像复核（2026-10-23）：灵梦 B Normal 原始输入自然播放 122,005 次回调，3,904,160 个所选状态字与旧移植基线零差；原版记录中的 93 次射击计数差异仍保留，尚不构成整作 1:1。[本次复核与差异范围](docs/porting/TH14_CURRENT_REIMUB_REPLAY_CHECK_OCT23.md)、[验证摘要](docs/porting/th14-current-reimub-replay-verified-oct23.json)。
+
 TH14 标题与首次入关修正（2026-10-23）：标题 ANM 模板及动画改为原版文件槽 16／17，首次进关去掉重复 enemy 上传，Normal 灵梦 B 一面从 45 块降为 29 块。9 组核心加载及新版静音普通开局／暂停／返回标题检查通过；完整启动时序与整作 1:1 仍未完成。[修正范围](docs/porting/TH14_TITLE_SLOTS_FIRST_ENTRY_FIX_OCT23.md)、[验证摘要](docs/porting/th14-title-slots-first-entry-verified-oct23.json)。
 
 TH14 启动签名修正（2026-10-23）：真实 sig/ASCII 动画在绘制优先级 60 创建，资源就绪且达到 180 次实际绘制后释放签名并开启标题。9 组核心加载检查及新版静音浏览器普通开局／Game Over／返回标题检查通过，浏览器无错误或警告；完整异步启动与整作 1:1 仍未完成。[修正范围](docs/porting/TH14_STARTUP_SIGNATURE_DRAW_FIX_OCT23.md)、[验证摘要](docs/porting/th14-startup-signature-draw-verified-oct23.json)。
