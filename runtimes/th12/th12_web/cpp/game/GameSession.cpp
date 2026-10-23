@@ -181,6 +181,10 @@ bool GameSession::finish_loading(){
     if(pending_core_title){
         if(resources.effects&&!resources.effects->core_ready())return fail("TH14 core resources still pending");
         if(!resources.prepare_core())return fail(resources.error.c_str());
+        if(compositor.copies[0].resource!=&resources.core.text){
+            if(!compositor.initialize(resources.core.text))return fail(("title compositor initialization failed: "+compositor.last_error).c_str());
+            compositor.reset_cameras(false);
+        }
         pending_core_title=false;return activate_title(*source,pending_core_first,pending_core_screen);
     }
     if(resources.effects&&!resources.effects->stage_ready())return fail("TH14 stage resources still pending");
@@ -748,12 +752,15 @@ bool GameSession::open_title(GameResources& data,bool first,TitleScreen screen){
     reset_state();source=&data;interactive=true;
     if(!resources.load_core(data))return fail(resources.error.c_str());
     if constexpr(kPortTitle==14||kPortTitle==16)animations.fallback_sprites=&resources.core.ascii;
+#if PORT_TITLE == 14
+    if(resources.effects&&!resources.effects->core_ready()){
+        compositor.reset_cameras(false);
+        pending_core_title=true;pending_core_first=first;pending_core_screen=screen;state.phase=GameSessionPhase::loading;return true;
+    }
+#endif
     if(!compositor.initialize(resources.core.text))return fail(("title compositor initialization failed: "+compositor.last_error).c_str());
     compositor.reset_cameras(false);
 #if PORT_TITLE == 14
-    if(resources.effects&&!resources.effects->core_ready()){
-        pending_core_title=true;pending_core_first=first;pending_core_screen=screen;state.phase=GameSessionPhase::loading;return true;
-    }
     return activate_title(data,first,screen);
 }
 bool GameSession::activate_title(GameResources& data,bool first,TitleScreen screen){

@@ -141,6 +141,9 @@ struct Application:StageResourceEffects
     u32 boot_signature_handle=0;
     bool boot_signature_pending=false;
     bool boot_signature_active=false;
+    bool boot_signature_uploaded=false;
+    bool boot_ascii_uploaded=false;
+    bool boot_ascii_pending=false;
     u32 boot_signature_draws=0;
     struct ResourceUpload {AnmResource* resource;u16 file;u32 chunk=0;};
     std::vector<ResourceUpload> boot_uploads;
@@ -369,18 +372,22 @@ struct Application:StageResourceEffects
 #if PORT_TITLE == 14
     bool core_ready()const override{return core_loading_done;}
     bool draw_startup_loading()override{
-        if(!boot_signature_active)return true;
+        if(!boot_signature_active||!boot_signature_uploaded)return true;
         if(boot_signature_pending){
             if(!boot_signature_handle){
                 auto* vm=session.animations.create(boot_signature,0,1,0xffffffffu);
                 if(!vm){graphics.error=session.animations.last_error_text();return false;}
                 boot_signature_handle=vm->id;
             }
+            boot_signature_pending=false;
+            std::printf("[loading14] sig script0 created at draw priority60 after sig upload\n");
+        }
+        if(boot_ascii_uploaded&&boot_ascii_pending){
             if(!boot_loading.begin(session.animations,session.resources.core.ascii)){
                 graphics.error=session.animations.last_error_text();return false;
             }
-            boot_signature_pending=false;
-            std::printf("[loading14] sig script0 and ascii script17 created at draw priority60\n");
+            boot_ascii_pending=false;
+            std::printf("[loading14] ascii script17 created at draw priority60 after ascii upload\n");
         }
         ++boot_signature_draws;
         return true;
@@ -466,10 +473,12 @@ struct Application:StageResourceEffects
         // Upload real pending resources between frames so the original loading
         // ANM can update and draw while GPU work remains. Its random children
         // follow script17's own clock, never a captured RNG count.
-        for(auto* file:{&boot_signature,&core.ascii,&core.text})if(!graphics.preload(*file)){error=graphics.error;return false;}
         boot_signature_pending=true;boot_signature_active=true;boot_signature_draws=0;
-        boot_uploads={{&core.front,5},{&core.bullet,7},{&core.effect,8},{&core.enemy,9},{&core.title,16},{&core.title_variant,17},{&core.players[0],7},{&core.players[1],7},{&core.players[2],7}};
-        boot_upload_index=0;std::printf("[loading14] sig/ascii scheduled at draw priority60; %u resource uploads pending\n",u32(boot_uploads.size()));
+        boot_signature_uploaded=false;boot_ascii_uploaded=false;boot_ascii_pending=true;
+        // These uploads also belong to the original main resource pump. Draw
+        // Sig and ASCII only after their own file's GPU preparation completes.
+        boot_uploads={{&boot_signature,1},{&core.ascii,2},{&core.text,0},{&core.front,5},{&core.bullet,7},{&core.effect,8},{&core.enemy,9},{&core.title,16},{&core.title_variant,17},{&core.players[0],7},{&core.players[1],7},{&core.players[2],7}};
+        boot_upload_index=0;std::printf("[loading14] sig/ascii/text queued before common resources; %u resource uploads pending\n",u32(boot_uploads.size()));
         boot_stage_owner=nullptr;
 #else
 #if PORT_TITLE == 16
@@ -495,6 +504,7 @@ struct Application:StageResourceEffects
         if(!initialize())return false;
 #if PORT_TITLE == 14
         boot_signature_pending=false;boot_signature_active=false;boot_signature_handle=0;boot_signature_draws=0;
+        boot_signature_uploaded=false;boot_ascii_uploaded=false;boot_ascii_pending=false;
         if(!core_loading_done){if(!session.resources.prepare_core()){error=session.resources.error;return false;}core_loading_done=true;}
         boot_loading.finish(session.animations);boot_uploads.clear();boot_upload_index=0;
         boot_stage_owner=nullptr;stage_uploads.cancel_all();
@@ -554,13 +564,21 @@ struct Application:StageResourceEffects
         if(boot_upload_index<boot_uploads.size()||boot_signature_active){
             if(boot_upload_index<boot_uploads.size()){
                 auto& job=boot_uploads[boot_upload_index];
-                if(!core_loading_done&&!session.resources.load_core_job(boot_upload_index)){error=session.resources.error;return false;}
+                if(!core_loading_done&&boot_upload_index>=3&&!session.resources.load_core_job(boot_upload_index-3)){error=session.resources.error;return false;}
                 // Original resource priority1 pumps one chunk. Its final chunk
                 // prepares templates before the priority29/30 ANM callbacks.
                 if(!graphics.preload_chunk(*job.resource,job.chunk)){error=graphics.error;return false;}
                 const bool resource_ready=++job.chunk>=job.resource->textures.size();
                 if(resource_ready&&!session.animations.prepare_resource(*job.resource,job.file)){error=session.animations.last_error_text();return false;}
-                if(resource_ready){std::printf("[loading14] file %u ready after %u chunk callbacks\n",u32(job.file),job.chunk);++boot_upload_index;}
+                if(resource_ready){
+                    if(job.resource==&boot_signature)boot_signature_uploaded=true;
+                    if(job.resource==&session.resources.core.ascii)boot_ascii_uploaded=true;
+                    if(!core_loading_done&&job.resource==&session.resources.core.text){
+                        if(!session.compositor.initialize(*job.resource)){error="TH14 startup compositor: "+session.compositor.last_error;return false;}
+                        session.compositor.reset_cameras(false);
+                    }
+                    std::printf("[loading14] file %u ready after %u chunk callbacks\n",u32(job.file),job.chunk);++boot_upload_index;
+                }
             }
             // 45959a waits for actual priority60 callbacks to reach180. Only
             // after both upload readiness and that count does 4595e1 unload sig.

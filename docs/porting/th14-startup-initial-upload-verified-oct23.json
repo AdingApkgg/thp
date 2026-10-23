@@ -1,0 +1,274 @@
+{
+  "verified": true,
+  "baseSourceCommit": "2447e48aea2176254302066cb9a15b95b814bc2d",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/GameSession.cpp": "ee2b6d0603df11f7e9dc3d098aae38c2d50c5e7068848fde62840b9e8985c16a",
+    "runtimes/th12/th12_web/cpp/sdl/Application.cpp": "9725b5c758f85a564a8dc448896a16e174551cb026d6768879a08157efaeab65"
+  },
+  "sdlWasmSha256": "86b86503222443a0942d9eb3c6b8b5a4845d4d5ce938f3dfa18253a6caea3129",
+  "sdlRecompiled": 2,
+  "sdlReused": 144,
+  "wasiStartupWasmSha256": "08ac364d90da8d762e685992207f72757a9d84e7c95e6230f63f7ffea80a2d8d",
+  "exportsUnchanged": true,
+  "importsUnchanged": true,
+  "delayedCoreCases": 9,
+  "browser": {
+    "url": "http://localhost:8217/?game=th14",
+    "ordinaryTitle": true,
+    "normalReimuBStage1": true,
+    "pauseMenu": true,
+    "returnToTitle": true,
+    "errorOrWarningCount": 0,
+    "quietOutput": true,
+    "initialUploadChunks": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        8,
+        13
+      ],
+      [
+        9,
+        3
+      ],
+      [
+        16,
+        41
+      ],
+      [
+        17,
+        1
+      ],
+      [
+        7,
+        13
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        7,
+        12
+      ]
+    ],
+    "sigMinimumDrawCallbacks": 180
+  },
+  "actualOriginalCaptures": [
+    {
+      "report": {
+        "name": "report.json",
+        "bytes": 8291,
+        "sha256": "965f5c2726f4eeff8a5b22d86788bc8f04fc00f13524ea1c5d092b3fb067824a"
+      },
+      "source": {
+        "name": "capture-retail-startup-events-oct23.py",
+        "bytes": 8805,
+        "sha256": "78937798be3c893b6e8a49938a3b7309645b5b57e10f50d4c16af4c1ae9da9af"
+      },
+      "actualOriginalWindowsProcess": true,
+      "hardwareBreakpointsOnly": true,
+      "instructionBytesPatched": 0,
+      "gameStateWrites": 0,
+      "rngOrCounterWrites": 0,
+      "debuggerPausesAffectTiming": true,
+      "actualAudioPcmMeasured": false,
+      "lifecycle": [
+        {
+          "event": "sig-root-first-update-returned",
+          "drawCallbacks": 0,
+          "scriptCalls": 256
+        },
+        {
+          "event": "ascii17-factory-returned",
+          "drawCallbacks": 1,
+          "scriptCalls": 256
+        },
+        {
+          "event": "sig-unload-before-call",
+          "drawCallbacks": 180,
+          "scriptCalls": 1340
+        },
+        {
+          "event": "title-tick-enabled",
+          "drawCallbacks": 180,
+          "scriptCalls": 1340
+        }
+      ],
+      "resourceChunks": []
+    },
+    {
+      "report": {
+        "name": "report.json",
+        "bytes": 102353,
+        "sha256": "1c670842397edef3784b525a596071336c674e65a5af16f67abf77c07b6457ab"
+      },
+      "source": {
+        "name": "capture-retail-startup-chunks-oct23.py",
+        "bytes": 9506,
+        "sha256": "2227197e0e231799c35da8d8f9db8eceb0fe398a118edad94d8f080ef4991e68"
+      },
+      "actualOriginalWindowsProcess": true,
+      "hardwareBreakpointsOnly": true,
+      "instructionBytesPatched": 0,
+      "gameStateWrites": 0,
+      "rngOrCounterWrites": 0,
+      "debuggerPausesAffectTiming": true,
+      "actualAudioPcmMeasured": false,
+      "lifecycle": [
+        {
+          "event": "sig-root-first-update-returned",
+          "drawCallbacks": 0,
+          "scriptCalls": 256
+        },
+        {
+          "event": "ascii17-factory-returned",
+          "drawCallbacks": 1,
+          "scriptCalls": 256
+        },
+        {
+          "event": "sig-unload-before-call",
+          "drawCallbacks": 180,
+          "scriptCalls": 1340
+        },
+        {
+          "event": "title-tick-enabled",
+          "drawCallbacks": 180,
+          "scriptCalls": 1340
+        }
+      ],
+      "resourceChunks": [
+        {
+          "name": "sig.anm",
+          "fileSlot": 1,
+          "chunks": 2
+        },
+        {
+          "name": "ascii.anm",
+          "fileSlot": 2,
+          "chunks": 2
+        },
+        {
+          "name": "text.anm",
+          "fileSlot": 0,
+          "chunks": 4
+        },
+        {
+          "name": "front.anm",
+          "fileSlot": 5,
+          "chunks": 8
+        },
+        {
+          "name": "bullet.anm",
+          "fileSlot": 7,
+          "chunks": 9
+        },
+        {
+          "name": "effect.anm",
+          "fileSlot": 8,
+          "chunks": 13
+        },
+        {
+          "name": "title.anm",
+          "fileSlot": 16,
+          "chunks": 41
+        },
+        {
+          "name": "title_v.anm",
+          "fileSlot": 17,
+          "chunks": 1
+        }
+      ]
+    }
+  ],
+  "controlledOriginal": {
+    "throughReadyCheckpoint": 412,
+    "verifiedCheckpointJsonFiles": 826,
+    "scriptCallsAtReady": 1340,
+    "crtCleanupCheckpoint": 415,
+    "actualWindowsStartup": false,
+    "fullPhysicalDrawRegistryExecuted": false
+  },
+  "replay": {
+    "wasmSha256": "45bf2e81a9d2ff17cf649c070f007cbc19ae4c348a63f94d9a1334cf4d1817b3",
+    "naturalEof": true,
+    "callbacks": 122005,
+    "priorPortDifferentBytes": 0,
+    "nativeShotCountDifferences": 93,
+    "otherActiveSelectedNonvisualDifferences": 0,
+    "clockRescaled": false,
+    "seedOrStateInjected": false
+  },
+  "knownLimits": [
+    "Initial Sig/ASCII/TEXT CPU decode is still synchronous.",
+    "Enemy and three player resources are still uploaded before Title.",
+    "Debugger observations do not establish matching wall timing, VM states, seeds, or pixels.",
+    "Original Script RNG call count1340 is observed reference evidence, not a forced production target.",
+    "93 active shot-count differences versus the frozen Native full replay remain.",
+    "Earlier controlled1268-call result had a harness cadence bug and is not a production target.",
+    "Whole-game visuals, audio, modes and persistence still need full acceptance."
+  ],
+  "rootResourceCryptExcluded": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "evidenceBindings": [
+    {
+      "name": "build.json",
+      "bytes": 98308,
+      "sha256": "cc1f05bd727762ec1c2a1e0f11a130782de4c38735d0a04d2d7b94fd21e523b4"
+    },
+    {
+      "name": "wasi-build.json",
+      "bytes": 151292,
+      "sha256": "9293d677d7a6e31dbba9281f1e122927ec513108bf44020ee8b507cb2e1e387b"
+    },
+    {
+      "name": "core-loading-v2-verified.json",
+      "bytes": 9368,
+      "sha256": "d603f436d23352f4adf9a13802429ab3ea9e3f70ef475b11335f54b8d4f19a08"
+    },
+    {
+      "name": "browser-v2-logs.json",
+      "bytes": 6474,
+      "sha256": "74c191aa3a6ee4b458360d4729f01aa110fe4cf4756e4ae0393a944c65becec0"
+    },
+    {
+      "name": "verified-current-vs-native.json",
+      "bytes": 13547,
+      "sha256": "3cd7ed2b7b7d041c8418cd393f6cdc08bee951b396c5f140a86f8269b82983b4"
+    },
+    {
+      "name": "browser-v2-title.jpg",
+      "bytes": 226750,
+      "sha256": "baa99a18b76390174f79f60276a8b836f0915a45cb13e7189fda45299e7e5bb4"
+    },
+    {
+      "name": "browser-v2-stage1-paused.jpg",
+      "bytes": 211601,
+      "sha256": "f27c217f653adc3be5dec07c45b37fd0c2a31866d5ce126627866ec6d5615aa3"
+    },
+    {
+      "name": "browser-v2-returned-title.jpg",
+      "bytes": 227710,
+      "sha256": "b9526b89593cd18615c8ac02dd021fae5f783322ea4bbd78b13b2ac1b959df39"
+    }
+  ]
+}
