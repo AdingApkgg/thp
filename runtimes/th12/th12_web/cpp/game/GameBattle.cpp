@@ -61,6 +61,20 @@ GameBattle::GameBattle(GameSessionResources& r,AnmManager& a,GameEconomy& e,Spel
 
 GameBattle::~GameBattle(){for(auto* node=enemies.first;node;node=node->next)release_deformation(node->value->state);if(dialogue)dialogue->clear();for(auto& vm:spell_backgrounds)animations.release_geometry(vm);}
 bool GameBattle::create_deformation(EnemyState& e){auto effect=std::make_unique<ScreenDeformation>(animations);if(!effect->initialize(resources.core.text))return false;e.deformation=effect.release();return true;}
+#if PORT_TITLE == 14
+bool GameBattle::prepare_initial_player(i32 character,i32 subtype){
+    if(initialized||player||!player_selection_valid(character,subtype))return unavailable("invalid initial player preparation");
+    player_input={};player_input.movement.character=character;player_input.movement.subtype=subtype;
+    player_input.movement.enemy_manager=true;
+    player=std::make_unique<PlayerFrame>(resources.core.shots[shot_file_slot(u32(character),u32(subtype))],resources.core.players[character],resources.core.bullet,animations,economy,*this,9,6);
+    player->input=player_input;
+    // Retail44c4c6 resumes after the selected file9 upload; 435e1d then
+    // creates options while background/HUD uploads still remain pending.
+    if(!player->initialize()){last_error=-601;error="player initialization";return false;}
+    if(!player->start_stage()){last_error=-601;error="initial player stage reset ("+std::to_string(player->last_error)+")";return false;}
+    return true;
+}
+#endif
 bool GameBattle::initialize(i32 character,i32 subtype,i32 difficulty) {
     if(!player_selection_valid(character,subtype)||difficulty<0||difficulty>4)return unavailable("invalid battle selection");
     initialized=false;last_error=0;frame=0;error.clear();events.clear();
@@ -93,6 +107,11 @@ bool GameBattle::initialize(i32 character,i32 subtype,i32 difficulty) {
     player_input={};player_input.movement.character=character;player_input.movement.subtype=subtype;
     player_input.movement.enemy_manager=true;
     bomb.reset();
+#if PORT_TITLE == 14
+    if(!player){if(!prepare_initial_player(character,subtype))return false;}
+    else if(player->input.movement.character!=character||player->input.movement.subtype!=subtype)return unavailable("prepared player selection changed");
+    player->input=player_input;
+#else
     player=std::make_unique<PlayerFrame>(resources.core.shots[shot_file_slot(u32(character),u32(subtype))],resources.core.players[character],resources.core.bullet,animations,economy,*this,(kPortTitle==14||kPortTitle==16)?9:7,kPortTitle==16?7:6);
 #if PORT_TITLE == 16
     if(economy.th16_subseason<0||economy.th16_subseason>=5)return unavailable("invalid TH16 subseason");
@@ -102,10 +121,13 @@ bool GameBattle::initialize(i32 character,i32 subtype,i32 difficulty) {
     trace_point=15;
     player->input=player_input;
     if(!player->initialize()){last_error=-601;error="player initialization";return false;}
+#endif
     trace_point=16;
     // On the first stage, 420390 calls 42fec0 before the first player tick.
     // Lifecycle 0 is the respawn entrance, not a new game's starting state.
+#if PORT_TITLE != 14
     if(!player->start_stage()){last_error=-601;error="initial player stage reset ("+std::to_string(player->last_error)+")";return false;}
+#endif
     trace_point=17;
     if(replaying&&!player->restore_replay_position(replay_entry)){error="replay player entry";return false;}
     bomb=std::make_unique<BombController>(animations,resources.core.players[character],*player,*this,kPortTitle==14?9:7,&resources.core.text);

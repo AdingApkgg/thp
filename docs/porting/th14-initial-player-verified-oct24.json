@@ -1,0 +1,214 @@
+{
+  "verified": true,
+  "baseCommit": "ee657c73ccb58f20f08f403e5862aee3017a4627",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/GameBattle.cpp": "af801dd653d70c0367f672d83e146f560958ecd0666c5cfa0a7c9cb5345308f6",
+    "runtimes/th12/th12_web/cpp/game/GameBattle.hpp": "ccdaff9ef9e8f9b441677a814fb96ed8f3d858a5fdab7d7a86e3991d6222f160",
+    "runtimes/th12/th12_web/cpp/game/GameSession.cpp": "6cc658f32506ada14600bf3c0dfe99f5ed06dc10d3dfeb8b1b82c465d47aa441",
+    "runtimes/th12/th12_web/cpp/game/GameSession.hpp": "3073cb11289d56530d10e5b3c84bd409d2f489119a6c61ddcd152db9c680e4e9",
+    "runtimes/th12/th12_web/cpp/sdl/Application.cpp": "a0a077af7735d82436fb10fb6acd74567d9a94d8d17130234a55196aaac19c32"
+  },
+  "changes": [
+    "Initialize the player and its options after file9 worker resumption, retaining that object until the stage controller attaches.",
+    "Wait for asynchronous resumption after every initial upload; finish initial loading before the first Player/HUD/ANM pass.",
+    "Retire Sig in the worker before asynchronously publishing Title readiness.",
+    "Ignore spell-clock sampling while an early player has no initialized battle; preserve first-stage music initialization."
+  ],
+  "build": {
+    "sdlWasmSha256": "bb86140f895ea585c8b3ba4f3e77014cba5a92320f7e0ebf4ab9f2e62aeff339",
+    "all146SourcesRecompiledAfterHeaderChanges": true,
+    "finalApplicationRecompiledAfterBrowserFailure": true,
+    "allIntermediateObjectBindingsVerified": true,
+    "exportsUnchanged": true,
+    "addedImports": [],
+    "removedImports": [],
+    "coreSourcesRecompiled": 141,
+    "coreWasmSha256": "028e8806621001a33daba1db0a2790287f0e9b30059f21b3103e95675e52b4bb"
+  },
+  "originalStartupControls": [
+    {
+      "publications": 132,
+      "handleFileScriptDifferences": 0,
+      "physicalCreationCallbackDifferences": 0,
+      "visualRngCalls": 1360,
+      "firstLivePlayerSelected32WordsIdentical": true,
+      "observedHostEventsUsed": true,
+      "ordinaryMenuInitialization": false
+    },
+    {
+      "publications": 215,
+      "handleFileScriptDifferences": 0,
+      "physicalCreationCallbackDifferences": 0,
+      "visualRngCalls": 3352,
+      "firstLivePlayerSelected32WordsIdentical": true,
+      "observedHostEventsUsed": true,
+      "ordinaryMenuInitialization": false
+    }
+  ],
+  "independentOriginalInitialPrefix": {
+    "playerCallbacks": 300,
+    "selected32WordsByteIdentical": true,
+    "animationPublications": 349,
+    "handleFileScriptDifferences": 0,
+    "physicalCreationCallbackDifferences": 0,
+    "diagnosticExecutionStoppedAtSamePrePlayerBoundary": true,
+    "productionCoreObjectsUnmodified": true,
+    "observedHostEventsUsed": true
+  },
+  "negativeControl": {
+    "sameDiagnosticWasm": true,
+    "signatureRetirementEventOmitted": true,
+    "handleDifferences": 71,
+    "physicalCallbackDifferences": 0,
+    "firstPlayerSelected32StillIdentical": true
+  },
+  "controlScope": {
+    "privateObservedHostInputAdapter": true,
+    "actualProductionSdlApplicationExecuted": false,
+    "realOriginalWindowsProcesses": true,
+    "originalInstructionOrGameStateWrites": 0,
+    "replayInputUnmodified": true,
+    "archiveChangedEntries": [
+      "demo0.rpy"
+    ],
+    "archiveUnchangedEntries": 226,
+    "actualInitialClockAndSecurityCookieReadFromEachProcess": true,
+    "declaredGeometryAbiFrame": 1764484,
+    "gameClockRescaled": false,
+    "rngOrSerialCompensation": false,
+    "textureReadyPublicationForFiles10To12BoundedByFirstPendingMainObservation": true
+  },
+  "regression": {
+    "cases": 30,
+    "callbacks": 2763367,
+    "allRaw32ByteIdenticalToCb0f291": true,
+    "eachNaturallyEndedAndStable90MenuTicks": true,
+    "defaultHeadlessPath": true,
+    "notAllModeOriginalAcceptance": true
+  },
+  "browser": {
+    "actualProductionLauncher": true,
+    "actualWebGL": true,
+    "naturalColdAttractDemo": true,
+    "ordinaryGameplayGameOverContinuePause": true,
+    "quietOutput": true,
+    "issues": [],
+    "observedNativeTimingsInjected": false,
+    "currentFullReplayStillRunning": true,
+    "sameModuleBootHotStopResumeDirectlyExercised": false,
+    "failedPriorCandidateRetained": true,
+    "postReturnLauncherToolIssueUnresolved": true
+  },
+  "priorBinaryFullGpu": {
+    "commit": "ee657c73ccb58f20f08f403e5862aee3017a4627",
+    "wasmSha256": "6f3a1b3e71618a5399a35dc534aa5a03ee11a247eda4f10f2deba06b9d95a4d5",
+    "naturalSixStageReplayEnd": true,
+    "hudScore": 801525760,
+    "graze": 17551,
+    "newBinaryAcceptanceInherited": false
+  },
+  "limitations": [
+    "The original comparisons use private observed worker/resource events and a diagnostic GPU adapter, not the production SDL host or original rendered pixels.",
+    "Initial Sig/ASCII/text and first-stage resource CPU decoding remains synchronous; asynchronous host callbacks run on the browser main thread.",
+    "The original samples use intact replay inputs through demo0 replacement and stop at the first or300th Player callback, not ordinary menu input or a complete native campaign.",
+    "The new full browser replay is still running; older binaries do not establish its acceptance.",
+    "After returning to the launcher a visible replay tool may not receive clicks until reload; cause remains unconfirmed.",
+    "All-mode original graphics, DirectSound PCM and persistence acceptance remain unfinished."
+  ],
+  "evidenceBindings": [
+    {
+      "path": "artifacts/th14/initial-player-ready-oct24/build-v4/build.json",
+      "bytes": 188626,
+      "sha256": "3803b36cefb2628f3a70f04e570df477c549f0422c76d37f1afe084ce2e31fc1"
+    },
+    {
+      "path": "artifacts/th14/initial-player-ready-oct24/core-build.json",
+      "bytes": 79801,
+      "sha256": "7cdf59f2bb6c3d15966d51ded2326455b16b8eeb96b1d33bcd53e8f0bd8c3f64"
+    },
+    {
+      "path": "artifacts/th14/initial-player-ready-oct24/observed-initial-v3-build.json",
+      "bytes": 80006,
+      "sha256": "2fb65390bf7742c5d09dd87621a665e1238cbffe602191384401b92865b1f566"
+    },
+    {
+      "path": "artifacts/th14/initial-player-ready-oct24/matrix-results.json",
+      "bytes": 65145,
+      "sha256": "90ade78f09468e43a726ab65c795115cdeaa975786ed1ac10ff3197e1ac87c5b"
+    },
+    {
+      "path": "artifacts/th14/retail-marisaa-cold-initial-player-2-hardware-oct24/report.json",
+      "bytes": 3286,
+      "sha256": "cd18d74c4351acb33c8a1ba9659e2d344dfadfbaa9ab2c80bd79ba7195da37e6"
+    },
+    {
+      "path": "artifacts/th14/initial-player-ready-oct24/observed-v3-initial-worker-events-retail-marisaa-cold-initial-player-2-hardware-oct24/report.json",
+      "bytes": 1838,
+      "sha256": "0b01e2b4c9d3ce5b3bea72c4f277312b88cf7ba959eb9df0370d734ae9de82a9"
+    },
+    {
+      "path": "artifacts/th14/retail-marisaa-cold-initial-player-3-hardware-oct24/report.json",
+      "bytes": 3284,
+      "sha256": "2390651073a3e216960752d4141c12e7dc86a400dba6cbfcf52a33a74f97b1e7"
+    },
+    {
+      "path": "artifacts/th14/initial-player-ready-oct24/observed-v3-initial-worker-events-retail-marisaa-cold-initial-player-3-hardware-oct24/report.json",
+      "bytes": 1838,
+      "sha256": "7eb5e9baeafb9dba91aad34c5e4c13ca3bc9fc55fe24b2447c94b723907cb1b5"
+    },
+    {
+      "path": "artifacts/th14/initial-player-ready-oct24/observed-v3-no-sig-retire-initial-worker-events-retail-marisaa-cold-initial-player-3-hardware-oct24/report.json",
+      "bytes": 7685,
+      "sha256": "5ae1182506ca1df7f3680eb447dcb4b92bf663522c9dc98c6c341abeedf9405c"
+    },
+    {
+      "path": "artifacts/th14/retail-marisaa-cold-initial-prefix300-hardware-oct24/report.json",
+      "bytes": 3333,
+      "sha256": "21cbbf0d804bda738403dd4423766ddada5f70e9be50c1eab96a120f68255d8d"
+    },
+    {
+      "path": "artifacts/th14/initial-player-ready-oct24/observed-prefix300-boundary-initial-worker-events-retail-marisaa-cold-initial-prefix300-hardware-oct24/report.json",
+      "bytes": 2365,
+      "sha256": "2ebf2125421dedb06e6b1e4de6933401c02ba1c167e1c117aab6b13b5295d9dc"
+    },
+    {
+      "path": "artifacts/th14/initial-player-ready-oct24/observed-initial-v4-build.json",
+      "bytes": 80006,
+      "sha256": "28c818d7d45d773df69077b509045b6fcb61deac3b366551c9e6c5dea6dc66c0"
+    },
+    {
+      "path": "artifacts/th14/initial-player-ready-oct24/browser-v4-cold-observation.json",
+      "bytes": 505,
+      "sha256": "90f18eb5604c6538878e48e3619f2b463d1d4d2285e100c12f8bc4219e69c51a"
+    },
+    {
+      "path": "artifacts/th14/initial-player-ready-oct24/browser-v4-ordinary-observation.json",
+      "bytes": 521,
+      "sha256": "96db1ec25d9d5890dc30064b109032e2b369c3e4b8468f04ef3d94e2331b8045"
+    },
+    {
+      "path": "artifacts/th14/initial-player-ready-oct24/browser-v3-last-resume-failure.json",
+      "bytes": 10866,
+      "sha256": "9552060c87d990e18244aef858fda189b242109e52a673d3c959bf38a4706049"
+    },
+    {
+      "path": "artifacts/th14/initial-player-ready-oct24/browser-post-return-tool-failure.json",
+      "bytes": 581,
+      "sha256": "5ffde70d9beaf08bfd6b9e6f9dd50f9ee5af47722047d91e296958e9d06fd478"
+    },
+    {
+      "path": "artifacts/th14/initial-player-ready-oct24/browser-full-replay-start.json",
+      "bytes": 514,
+      "sha256": "afa614e27074fd265542dd66101914b8564e568f9532221330cc7dd3928c655f"
+    },
+    {
+      "path": "artifacts/th14/startup-worker-ready-oct24/browser-full-replay-observation.json",
+      "bytes": 5438,
+      "sha256": "13603d9401cf85faa66de65d606e86bacb1893ed7d94ff43cfde65e7e02c22a5"
+    }
+  ],
+  "sourceOnlyPublication": true,
+  "rootResourceCryptExcluded": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}

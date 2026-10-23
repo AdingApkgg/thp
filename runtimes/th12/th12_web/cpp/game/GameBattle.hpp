@@ -138,6 +138,9 @@ public:
     GameBattle(GameSessionResources&,AnmManager&,GameEconomy&,SpellRecords&,SceneCompositor&,ClearRecords&);
     ~GameBattle()override;
     bool initialize(i32 character,i32 subtype,i32 difficulty);
+#if PORT_TITLE == 14
+    bool prepare_initial_player(i32 character,i32 subtype);
+#endif
     bool next_stage(GameResources&,u32);
 #if PORT_TITLE == 14
     u32 pending_stage=0;

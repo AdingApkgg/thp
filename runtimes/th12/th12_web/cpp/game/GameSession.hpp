@@ -124,6 +124,7 @@ public:
     bool return_to_title();
     bool start_stage(GameResources& source, u32 stage);
 #if PORT_TITLE == 14
+    bool prepare_initial_player();
     bool finish_loading();
 #endif
     bool draw(AnmRenderer& renderer,AsciiText* overlay=nullptr);

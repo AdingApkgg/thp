@@ -158,13 +158,14 @@ struct Application:StageResourceEffects
     std::vector<ResourceUpload> boot_uploads;
     u32 boot_upload_index=0;
     StageResources* boot_stage_owner=nullptr;
-    enum class BootWork:u8 {Idle,Decode,Resume,Title};
+    enum class BootWork:u8 {Idle,Decode,Resume,Title,TitlePublish};
     struct BootWorkToken {Application* owner;u64 generation;BootWork work;u32 index;};
     u64 boot_worker_generation=0;
     BootWork boot_worker_work=BootWork::Idle;
     u32 boot_worker_index=0;
     bool boot_worker_active=false,boot_worker_suspended=false;
     bool boot_job_published=false,boot_title_ready=false,boot_worker_failed=false;
+    bool initial_upload_waiting=false;
     StageUploadsTh14 stage_uploads;
     u64 stage_worker_generation=0,stage_worker_started_ns=0;
     bool stage_worker_waiting=false;
@@ -399,14 +400,32 @@ struct Application:StageResourceEffects
         ++boot_worker_generation;boot_worker_active=boot_worker_suspended=false;
         boot_job_published=boot_title_ready=boot_worker_failed=false;
         boot_worker_work=BootWork::Idle;
+        initial_upload_waiting=false;
     }
     void suspend_boot_worker(){
-        if(boot_worker_active){++boot_worker_generation;boot_worker_suspended=true;}
+        if(boot_worker_active||initial_upload_waiting){++boot_worker_generation;boot_worker_suspended=true;}
     }
     void resume_boot_worker(){
-        if(!boot_worker_active||!boot_worker_suspended)return;
+        if(!boot_worker_suspended)return;
         boot_worker_suspended=false;
-        if(boot_worker_work!=BootWork::Idle)dispatch_boot_work(boot_worker_work,boot_worker_index,0);
+        if(boot_worker_active&&boot_worker_work!=BootWork::Idle)dispatch_boot_work(boot_worker_work,boot_worker_index,0);
+        else if(initial_upload_waiting)dispatch_initial_upload_resume(boot_upload_index-1);
+    }
+    void dispatch_initial_upload_resume(u32 index){
+        initial_upload_waiting=true;
+        emscripten_async_call(resume_initial_upload,new BootWorkToken{this,boot_worker_generation,BootWork::Resume,index},1);
+    }
+    static void resume_initial_upload(void* raw){
+        std::unique_ptr<BootWorkToken> token(static_cast<BootWorkToken*>(raw));auto& app=*token->owner;
+        if(token->generation!=app.boot_worker_generation||app.boot_worker_suspended||!app.boot_stage_owner)return;
+        if(!app.initial_upload_waiting||token->index>=app.boot_uploads.size()||app.boot_upload_index!=token->index+1){
+            app.error="TH14 initial upload owner changed";app.boot_worker_failed=true;return;
+        }
+        if(app.boot_uploads[token->index].file==9&&!app.session.prepare_initial_player()){
+            app.error=app.session.error;app.boot_worker_failed=true;return;
+        }
+        app.initial_upload_waiting=false;
+        std::printf("[loading14] initial worker resumed after file%u\n",u32(app.boot_uploads[token->index].file));
     }
     void dispatch_boot_work(BootWork work,u32 index,int delay){
         boot_worker_work=work;boot_worker_index=index;
@@ -420,6 +439,12 @@ struct Application:StageResourceEffects
         if(token->work==BootWork::Title){
             // Retail4595be polls Sleep16 after the resource worker returns.
             if(app.boot_signature_draws<180){app.dispatch_boot_work(BootWork::Title,0,16);return;}
+            // 4595e1 retires Sig before 459615 enables Title. A main pass
+            // between these worker boundaries can reuse its animation slots.
+            app.session.animations.retire_resource(app.boot_signature);
+            app.dispatch_boot_work(BootWork::TitlePublish,0,0);return;
+        }
+        if(token->work==BootWork::TitlePublish){
             app.boot_title_ready=true;
             std::printf("[loading14] title worker ready at draw%u\n",app.boot_signature_draws);return;
         }
@@ -679,8 +704,8 @@ struct Application:StageResourceEffects
             // Player/HUD/old Stage callbacks and draw below, without a second
             // ANM update or a loading-frame return.
         }
-        if(boot_upload_index<boot_uploads.size()||boot_signature_active){
-            if(boot_upload_index<boot_uploads.size()&&(!boot_worker_active||boot_job_published)){
+        if(boot_upload_index<boot_uploads.size()||boot_signature_active||boot_stage_owner){
+            if(boot_upload_index<boot_uploads.size()&&!initial_upload_waiting&&(!boot_worker_active||boot_job_published)){
                 auto& job=boot_uploads[boot_upload_index];
                 if(!boot_worker_active&&!core_loading_done&&boot_upload_index>=3){
                     constexpr u32 title_jobs[]={0,1,2,4,5};
@@ -701,6 +726,7 @@ struct Application:StageResourceEffects
                     std::printf("[loading14] file %u ready after %u chunk callbacks\n",u32(job.file),job.chunk);
                     const u32 completed=boot_upload_index++;
                     if(boot_worker_active){boot_job_published=false;dispatch_boot_work(BootWork::Resume,completed,1);}
+                    else if(boot_stage_owner)dispatch_initial_upload_resume(completed);
                 }
             }
             // 45959a waits for actual priority60 callbacks to reach180. Only
@@ -725,21 +751,38 @@ struct Application:StageResourceEffects
                     title_entry_advanced=true;
                 }
             }
-            if(!title_entry_advanced&&(!session.animations.update(true)||!session.animations.update(false))){error="TH14 loading ANM update failed";return false;}
+            bool initial_stage_entry_advanced=false;
+            if(boot_stage_owner&&boot_upload_index==boot_uploads.size()&&!initial_upload_waiting){
+                // The worker clears Control+80 bit4 after its final upload.
+                // Control11 then attaches the world before Player/ANM in the
+                // next pass; do not create HUD after that pass's ANM update.
+                cancel_boot_worker();boot_loading.finish(session.animations);
+                boot_uploads.clear();boot_upload_index=0;boot_stage_owner=nullptr;
+                if(!session.finish_loading()){error=session.error;return false;}
+                frame_statistics.reset_run();audio.effects.reset();
+                if(!play_stage_music(session.state.stage,true))return false;
+                session.battle->th14_current_music=audio.current_music();
+                const GameSessionInput input{held,0,0,pause_key,bool(held&0x100),bool(held&0x2),frame_statistics.fps};
+                if(!session.update(input)){error=session.error;return false;}
+                if(!audio_events()||!text_events())return false;
+                initial_stage_entry_advanced=true;reset_frame_window();
+                std::printf("[loading14] initial worker ready; control callbacks attached\n");
+            }
+            if(!title_entry_advanced&&!initial_stage_entry_advanced&&(!session.animations.update(true)||!session.animations.update(false))){error="TH14 loading ANM update failed";return false;}
             if(signature_ready){
                 if(session.animations.references(boot_signature)){error="TH14 sig still referenced after ANM retirement";return false;}
                 graphics.unload(boot_signature);renderer.invalidate();boot_signature={};
                 boot_signature_active=false;boot_signature_handle=0;
                 std::printf("[loading14] sig retired after %u draw callbacks\n",boot_signature_draws);
             }
-            if(boot_upload_index==boot_uploads.size()&&!boot_signature_active){
+            if(!initial_stage_entry_advanced&&boot_upload_index==boot_uploads.size()&&!boot_signature_active&&!initial_upload_waiting){
                 cancel_boot_worker();
                 core_loading_done=true;
                 boot_loading.finish(session.animations);boot_uploads.clear();boot_upload_index=0;
                 boot_stage_owner=nullptr;
                 std::printf("[loading14] resource uploads complete; interrupt1 delivered\n");reset_frame_window();
                 if(session.state.phase==GameSessionPhase::loading){
-                    const bool existing_battle=bool(session.battle);
+                    const bool existing_battle=session.battle_callbacks_attached();
                     if(!session.finish_loading()){error=session.error;return false;}
                     if(!existing_battle){frame_statistics.reset_run();audio.effects.reset();
                         if(session.state.phase==GameSessionPhase::stage&&!play_stage_music(session.state.stage,true))return false;}

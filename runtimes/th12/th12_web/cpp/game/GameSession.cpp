@@ -179,6 +179,18 @@ bool GameSession::start_stage(GameResources& source, u32 stage) {
     if(resources.effects&&!resources.effects->stage_ready()){state.phase=GameSessionPhase::loading;return true;}
     return activate_stage();
 }
+bool GameSession::prepare_initial_player(){
+    if(state.phase!=GameSessionPhase::loading||pending_core_title||battle_attached||battle)return fail("no pending TH14 initial player load");
+    if(state.replay){
+        // 435da5 initializes the ordinary starting power before 456050
+        // restores the selected replay entry later in the worker.
+        const auto& shot=resources.core.shots[shot_file_slot(u32(state.character),u32(state.subtype))].header;
+        economy.power=std::min(state.stage==1&&state.spell_practice_id<0?100:400,shot.max_power_level*100);
+    }
+    battle=std::make_unique<GameBattle>(resources,animations,economy,spell_records,compositor,clear_records);
+    if(!battle->prepare_initial_player(state.character,state.subtype))return fail(battle->error.c_str());
+    return true;
+}
 bool GameSession::finish_loading(){
     if(state.phase!=GameSessionPhase::loading)return fail("no pending TH14 resource load");
     if(pending_core_title){
@@ -213,6 +225,9 @@ bool GameSession::activate_stage(){
         economy.max_power=shot.max_power_level*shot.power_step;economy.power_step=shot.power_step;
         entry.restore(economy,gameplay_rng,true,kPortTitle==14?&animations.script_rng:nullptr);
     }
+#if PORT_TITLE == 14
+    if(!battle)
+#endif
     battle=std::make_unique<GameBattle>(resources,animations,economy,spell_records,compositor,clear_records);
 #if PORT_TITLE == 14
     battle->enemy_environment.spell_practice_id=state.replay?entry.th14_practice_mode:state.spell_practice_id;
@@ -843,7 +858,7 @@ bool GameSession::activate_title(GameResources& data,bool first,TitleScreen scre
 
 #if PORT_TITLE == 14
 bool GameSession::sample_spell_clock(double now){
-    return !battle||battle->spell_timing.update(battle->spell_flags,battle->spells.frame_count,now,state.replay);
+    return !battle||!battle->initialized||battle->spell_timing.update(battle->spell_flags,battle->spells.frame_count,now,state.replay);
 }
 #endif
 bool GameSession::draw(AnmRenderer& renderer,AsciiText* overlay) {
