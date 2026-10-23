@@ -1,0 +1,81 @@
+{
+  "verified": true,
+  "baseCommit": "7341fc914bb750dc08c5ba84a07568f9506890b1",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/ShotManager.cpp": "f4908f6b13506db8002920d3799d5e77bcf42ff2e3ac807ce6ed0846a3449079"
+  },
+  "change": "TH14 computes ordinary-shot quad geometry before testing the ten-frame visibility grace period, matching45115a before45115f; other title branches retain their age gate.",
+  "sdlWasmSha256": "b202312a36a8c4224c0f9e77d5df40698e4688b2d0c595e14a471f134f26d75a",
+  "coreProbeWasmSha256": "4499cc52fe2fcfd1c9ae033021a85989b6266afbcf7dffcf9e28f7535bc61119",
+  "sdlRecompiled": 1,
+  "sdlReused": 145,
+  "coreRecompiled": 1,
+  "coreReused": 140,
+  "privateGuestStackOrPackedHandleModelIncluded": false,
+  "nativeCallOrderCases": 60,
+  "originalCallOrderInstructionPatches": 0,
+  "coreRegression": {
+    "cases": 30,
+    "callbacks": 2885731,
+    "all32WordSnapshotsByteIdenticalToPreviousProductionPort": true,
+    "naturalEndMenusAnd90StableMenuTicks": true,
+    "allOriginalEquivalenceClaimed": false
+  },
+  "browser": {
+    "url": "http://localhost:8223/?game=th14",
+    "actualWebGL": true,
+    "naturalDemoObserved": true,
+    "ordinaryGameFromTitleMenus": true,
+    "character": "Marisa A",
+    "difficulty": "Normal",
+    "shootingInputAndOrdinaryPauseObserved": true,
+    "quietOutput": true,
+    "errorsOrWarnings": 0,
+    "fullOriginalGraphicsOrAudioEquivalenceClaimed": false
+  },
+  "evidenceBindings": [
+    {
+      "path": "artifacts/th14/ordinary-shot-quad-order-oct23/build/build.json",
+      "bytes": 98419,
+      "sha256": "09ae34f8e39c8a3103a44831d6ceff9a56e9e236f9abcde6086066c089463f06"
+    },
+    {
+      "path": "artifacts/th14/ordinary-shot-quad-order-oct23/core-build.json",
+      "bytes": 81493,
+      "sha256": "1bcc79dedd9306d376f508b6aa559c366b114b01b996b69035b2615756ed9c70"
+    },
+    {
+      "path": "artifacts/th14/ordinary-shot-quad-order-oct23/native-call-order.json",
+      "bytes": 15118,
+      "sha256": "edafca67fbcc082f06ff46199e9f5a34b12843e0c1d97480fe5ec24b7d2078a3"
+    },
+    {
+      "path": "artifacts/th14/ordinary-shot-quad-order-oct23/matrix-results.json",
+      "bytes": 51857,
+      "sha256": "dd95f22ba5670a62dd320b07afb869337829b45b19ede8b2f6d21c7676511bd2"
+    },
+    {
+      "path": "artifacts/th14/ordinary-shot-quad-order-oct23/browser-logs.json",
+      "bytes": 12021,
+      "sha256": "39e43f5ea5c34beebd426c5dca5b3f105db6061655555a036f0171c110713ce1"
+    },
+    {
+      "path": "artifacts/th14/ordinary-shot-quad-order-oct23/browser-demo.jpg",
+      "bytes": 216999,
+      "sha256": "e0b982be8df8943e2e080e4a963991a7a6135257e04f0c8980508251616ff3b1"
+    },
+    {
+      "path": "artifacts/th14/ordinary-shot-quad-order-oct23/browser-marisaa-normal.jpg",
+      "bytes": 236900,
+      "sha256": "0b45b5d7127c156e98a4628871a8611dc1b5bf9962046f58c4dec50bb3a3871f"
+    },
+    {
+      "path": "artifacts/th14/ordinary-shot-quad-order-oct23/browser-ordinary-pause.jpg",
+      "bytes": 209047,
+      "sha256": "8fb3e6a4d0a3ec1f3b986eeaa5c2e680ed08a2d3d00e11623a4a888e3577d55d"
+    }
+  ],
+  "rootResourceCryptExcluded": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}

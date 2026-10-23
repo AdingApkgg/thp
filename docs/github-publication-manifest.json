@@ -1,7 +1,7 @@
 {
   "date": "2026-10-23",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "7f659e7528749c56e467cf8d8666d70b7bb2f7be",
+  "sourceCommit": "7341fc914bb750dc08c5ba84a07568f9506890b1",
   "files": [
     {
       "path": ".gitignore",
@@ -47,6 +47,11 @@
       "path": "docs/porting/TH06NC_FORMATS.md",
       "bytes": 2834,
       "sha256": "b5dd37c28b228114d1bf0fe1a3aaeb8fa1c3f109010d809baa575991ee203757"
+    },
+    {
+      "path": "docs/porting/TH14_BEAM_COOKIE_AND_TERMINAL_HUD_OCT23.md",
+      "bytes": 2279,
+      "sha256": "e46bc51418b3975fdc686bf7b5dc0ada6b54ea3cc6b838fca0f2b09d7ab6da03"
     },
     {
       "path": "docs/porting/TH14_CONSTRUCTOR_HIT_FIX_OCT15.md",
@@ -182,6 +187,11 @@
       "path": "docs/porting/TH14_SELECTED_PLAYER_RESOURCE_OCT23.md",
       "bytes": 3421,
       "sha256": "c74a1b8a394305c8b01ef563f5e4e2d244e3f18ca71baecfd631b585e2a2e1dc"
+    },
+    {
+      "path": "docs/porting/TH14_SHOT_GEOMETRY_CALL_ORDER_OCT23.md",
+      "bytes": 1134,
+      "sha256": "97d3f9222915f2bf63ba4a68e21cf67c58431f5746628dac44c7ffd726aaaa1b"
     },
     {
       "path": "docs/porting/TH14_STAGE2_CALLBACK_RETURN_OCT15.md",
@@ -912,6 +922,11 @@
       "path": "docs/porting/th14-audio-table-verified.json",
       "bytes": 23359,
       "sha256": "eef940e15051b7f79bedd1fe2831eec68224ea582b5970800761f280e77b9ef7"
+    },
+    {
+      "path": "docs/porting/th14-beam-cookie-and-terminal-hud-verified-oct23.json",
+      "bytes": 5805,
+      "sha256": "2f60d823e923e8d6d9ff397addaac71e7bdd83d114b987888e5896a8db6f24fa"
     },
     {
       "path": "docs/porting/th14-bomb-child-position-verified.json",
@@ -2354,6 +2369,11 @@
       "sha256": "036b65259421aeb3190559abafb7d742619625d12faa79fd74a0d4d6abd0513a"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-ordinary-shot-quad-candidate-oct23.json",
+      "bytes": 139794,
+      "sha256": "3ede34c530e8ec87aa460f7f50a405c79bf8ff9a6cdd02baed72645bfe66576d"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-positive-w-viewport-oct19.json",
       "bytes": 103768,
       "sha256": "73d92640558eb0cd07c7e6a8c3d33b2e51c4b67ba2d86e120244504b32e36056"
@@ -2502,6 +2522,11 @@
       "path": "docs/porting/th14-launcher-site-native-fog-oct20.json",
       "bytes": 37133,
       "sha256": "ac93c3e1eb150f3475513651763da5d8fb2e95da02d56d21ed873afbfd983f39"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-ordinary-shot-quad-candidate-oct23.json",
+      "bytes": 36655,
+      "sha256": "a1ff99c538866a53675720ec787e7b6e41edfd43dadd124b13570c146d2edf28"
     },
     {
       "path": "docs/porting/th14-launcher-site-positive-w-viewport-oct19.json",
@@ -4127,6 +4152,11 @@
       "path": "docs/porting/th14-shot-focused-verified.json",
       "bytes": 1630,
       "sha256": "1cb1ce9703178a3acc55968bc6bf15d97a2d548099c2e11c43e1672e4a761d48"
+    },
+    {
+      "path": "docs/porting/th14-shot-geometry-call-order-verified-oct23.json",
+      "bytes": 3242,
+      "sha256": "91fdce0deeb58ad74901dfc426ce0df06e006362576a757836fe0041971a6048"
     },
     {
       "path": "docs/porting/th14-shot-hit-verified.json",
@@ -7270,8 +7300,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotManager.cpp",
-      "bytes": 23071,
-      "sha256": "1d85e0adeddec2b2167094c1eee0307652e074650b89ea3b34011388f275861a"
+      "bytes": 23253,
+      "sha256": "f4908f6b13506db8002920d3799d5e77bcf42ff2e3ac807ce6ed0846a3449079"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotManager.hpp",

@@ -286,11 +286,13 @@ bool ShotManager::update(){
             s.th14_area_flags&=~1u;if(s.th14_area_slot<256)th14_areas[s.th14_area_slot].flags&=~1u;
 #endif
             continue;}
-        if(s.spec->type!=(kPortTitle==14?3:4)&&s.timer.current>=10){
+        if(s.spec->type!=(kPortTitle==14?3:4)&&(kPortTitle==14||s.timer.current>=10)){
 #if PORT_TITLE == 14
+            // 45115a computes the quad before45115f tests the ten-frame
+            // visibility grace period. Keep that call order for young shots.
             Vec3 corners[4];if(!anm_quad_positions(*a,corners,animations.render_space)){last_error=8;return false;}
             const float left=animations.render_space.play_origin.x-192.f,top=animations.render_space.play_origin.y;
-            bool visible=false;for(const auto p:corners)if(p.x>left&&p.x<left+384.f&&p.y>top&&p.y<top+448.f){visible=true;break;}
+            bool visible=s.timer.current<10;for(const auto p:corners)if(p.x>left&&p.x<left+384.f&&p.y>top&&p.y<top+448.f){visible=true;break;}
             if(!visible){erase(s.animation);s.animation=0;s.state=0;
 #else
             if(!a->sprite){last_error=8;return false;}

@@ -1,0 +1,139 @@
+{
+  "verified": true,
+  "productionBaseCommit": "7341fc914bb750dc08c5ba84a07568f9506890b1",
+  "productionRuntimeDoesNotIncludePrivateBeamModel": true,
+  "originalHud": {
+    "callbacks": 122005,
+    "naturalStage6ForcedEndMenu": true,
+    "stableSamples": 3,
+    "hudDisplayedScoreUnits": 80152576,
+    "economyScoreUnits": 91452576,
+    "displayScale": 10,
+    "originalHudOffset": "HUD+0x140",
+    "portableCoreSameFieldsEqual": true,
+    "browserDisplayedScore": 801525760,
+    "browserHiddenEconomyMemoryRead": false,
+    "originalInstructionPatches": 0,
+    "declaredWarmFlagWordWrites": 1
+  },
+  "geometryCookieOracle": {
+    "cases": 518,
+    "originalCodeBytesPatched": 0,
+    "actual4352b0GeometryAnd4854a0CookieCheckAnd452700BeamArithmetic": true,
+    "cookieXorFrameWriteOverlapsLaterBeamScratch": true
+  },
+  "retainedFullMarisaAControl": {
+    "callbacks": 34783,
+    "naturalStage3GameOver": true,
+    "allActiveSelected32WordsEqual": true,
+    "initialClockAndCookieWereInferred": true,
+    "independentProcessInputProofClaimed": false
+  },
+  "freshMarisaAIndependentControl": {
+    "callbacks": 27049,
+    "stop": "Declared observation stop at stage3frame6000; no natural end claim.",
+    "startupClockDirectlyReadAtUntouchedFirstPlayer": true,
+    "securityCookieDirectlyReadAtUntouchedFirstPlayer": true,
+    "guestGeometryFrameDeclaredFromDifferentTrace": true,
+    "futureFallbackPredictionRecordedBeforeOriginalFallback": true,
+    "predictedFallbackValueAndActualWriterMatched": true,
+    "actualLastWriter": "4352c0",
+    "actualOriginalStackWritesObserved": 67306,
+    "allActiveSelected32WordsEqualUnderObservedHostTimestampSpacing": true,
+    "remainingInactiveEntryDifferences": {
+      "21": {
+        "index": 20904,
+        "stage": 3,
+        "stageFrame": 0,
+        "word": 21,
+        "native": 9857,
+        "portable": 50041
+      },
+      "24": {
+        "index": 20904,
+        "stage": 3,
+        "stageFrame": 0,
+        "word": 24,
+        "native": 178165,
+        "portable": 0
+      }
+    },
+    "fixed60HzActiveDifferencesOnlyVisualWords21And22": true,
+    "originalInstructionPatches": 0,
+    "declaredWarmFlagWordWrites": 1,
+    "rngOrCounterWrites": 0
+  },
+  "privateRegression": {
+    "cases": 30,
+    "callbacks": 2723681,
+    "allNaturalMenuGuardsPassed": true,
+    "declaredDefaultCrtCookieProfile": true,
+    "originalAll30CookieInputsNotCaptured": true,
+    "fullOriginalEquivalenceClaimed": false
+  },
+  "limits": [
+    "Guest stack, packed handles and the local Windows DirectSound profile remain private candidates; only the ordinary-shot call order is included in production.",
+    "The full34783-callback Marisa A control uses inferred initial process inputs. The independent directly observed-input case is a27049-callback prefix to stage3frame6000.",
+    "One inactive stage-entry callback still differs in visual seed and gameplay call counter; no fixed row, RNG or counter compensation is added.",
+    "All-mode original ordinary initialization, graphics, audio, persistence and complete-game acceptance remain unfinished."
+  ],
+  "evidenceBindings": [
+    {
+      "path": "artifacts/th14/retail-reimub-full-hud-menu-hardware-oct23/report.json",
+      "bytes": 9585,
+      "sha256": "33a45a64e801be9ad25acaa741ab31384974333636c44aef4a4ca2713a85ea05"
+    },
+    {
+      "path": "artifacts/th14/replay-completion-hud-readonly-oct23/reimub-normal-observed-interactive/receipt.json",
+      "bytes": 1508,
+      "sha256": "0bdc3176b532a7d7863b12082fa96911b9ca0ccab26bd75d5e41dc23370569ae"
+    },
+    {
+      "path": "artifacts/th14/native-beam-geometry-cookie-control-oct23/report.json",
+      "bytes": 282607,
+      "sha256": "7f46deeb95478a0723e5ed8ec40bb7b8f19954806016f99d76be9fdc6a43d118"
+    },
+    {
+      "path": "artifacts/th14/beam-stack-current-model-oct23/cold-marisaa-geometry-cookie-inferred/report.json",
+      "bytes": 2859,
+      "sha256": "8dd9fbbde487e941175b17615b7f617759f990b1f728c9def7938ef89d32c4b4"
+    },
+    {
+      "path": "artifacts/th14/beam-stack-current-model-oct23/fresh-marisaa-observed-process-prediction/prediction.json",
+      "bytes": 800,
+      "sha256": "43f2a6164bec0582fef5d84d1aed0efe30997bdb8a07ac7a80da5f05220ca53f"
+    },
+    {
+      "path": "artifacts/th14/beam-stack-current-model-oct23/fresh-marisaa-observed-process-prediction/report.json",
+      "bytes": 3114,
+      "sha256": "5a45ba87d11b05b90fc72ee90e3eb5697ee9d2455799430334b68d8dabda4ce0"
+    },
+    {
+      "path": "artifacts/th14/beam-stack-current-model-oct23/fresh-marisaa-observed-process-prediction/independent-prediction-verification.json",
+      "bytes": 9210,
+      "sha256": "c04f614e0b08e59127d62abaaefa16d7cacf8138e938bd2d5b8746974a321c87"
+    },
+    {
+      "path": "artifacts/th14/beam-stack-current-model-oct23/fresh-marisaa-observed-clock-cookie/report.json",
+      "bytes": 3307,
+      "sha256": "ee11ec55072ba49f0db5b14e45c1c4cc0875c3129cc216dd3453db8c97a576a1"
+    },
+    {
+      "path": "artifacts/th14/beam-stack-current-model-oct23/geometry-cookie-control/build.json",
+      "bytes": 48989,
+      "sha256": "dfacf16797f50818436690b3084db934ef2b903fea78f183a07928a33aec8c2c"
+    },
+    {
+      "path": "artifacts/th14/beam-stack-current-model-oct23/geometry-cookie-control/matrix-results.json",
+      "bytes": 60719,
+      "sha256": "342404df2a0d27a9fa3042f6647fe3135c9232bd8df7c5d125e940502b06307d"
+    },
+    {
+      "path": "artifacts/th14/retail-marisaa-security-cookie-window-hardware-oct23/report.json",
+      "bytes": 83883,
+      "sha256": "de03a6c74ebc5e642ff8d8e9c43af4aa3f9bed8001c68b51edb2f82b710b405c"
+    }
+  ],
+  "completeGame": false,
+  "nativeEquivalent": false
+}
