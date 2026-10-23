@@ -24,6 +24,7 @@ struct DialogueEffects {
     virtual bool dialogue_text(const DialogueText&){return false;}
     virtual bool dialogue_sound(i32){return false;}
     virtual bool dialogue_music(){return false;}
+    virtual bool dialogue_boss_name(){return false;}
     virtual bool dialogue_fade(float){return false;}
     virtual bool dialogue_stage_complete(){return false;}
 };

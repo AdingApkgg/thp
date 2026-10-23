@@ -484,9 +484,9 @@ bool GameBattle::update(const std::function<bool()>& sample_input
     if(!items.update()){last_error=-1004;error="item update failed: "+std::to_string(items.last_error);return false;}
     if(spell_flags&1){Vec3 boss;if(!boss_position(boss)||!spells.update(player->motion.state.position.y,boss,kPortTitle==14?special_active==1:special_active!=0)){last_error=-1006;if(error.empty())error="spell update";return false;}}
     completion.update();
-#if PORT_TITLE != 14
+    // TH14 boss rings/stars precede the MSG update at430d7b. The indicator
+    // follows it at430dfe, including the frame that retires the dialogue.
     if(!hud.update(hud_input())){last_error=-1010;error="HUD update";return false;}
-#endif
     if(dialogue&&dialogue->active){const i32 result=dialogue->update(player_input.movement.held,player_input.movement.pressed
 #if PORT_TITLE == 14
         ,th14_dialogue_skip_frames,th14_dialogue_fire_frames
@@ -496,10 +496,6 @@ bool GameBattle::update(const std::function<bool()>& sample_input
         if(enemy_commands.stage_section)enemy_commands.section_frame=0;enemy_commands.stage_section=0;
 #endif
     }else dialogue->state.elapsed.tick();}
-#if PORT_TITLE == 14
-    // Retail430d6b..430dfe retires dialogue before the boss HUD observes state.
-    if(!hud.update(hud_input())){last_error=-1010;error="HUD update";return false;}
-#endif
     if(!hud.finish_update(hud_input())){last_error=-1010;error="HUD indicator update";return false;}
 #if PORT_TITLE == 14
     if(last_error)return false;

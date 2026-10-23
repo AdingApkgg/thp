@@ -37,7 +37,11 @@ bool Dialogue::create_th14(u32 slot,i32 selection,u32 opcode){
     i32 file,script;if(!th14_animations||!th14_asset(stage,selection,opcode,file,script)||u32(file)>=16)return fail("invalid TH14 dialogue asset");
     const auto& resource=th14_animations->resources[file];if(!resource.file)return fail("missing TH14 dialogue asset");
     if(opcode==2||opcode==31){auto* vm=manager.create(*resource.file,script,resource.id,u32(-1),false,false);if(!vm)return fail("TH14 enemy portrait animation");th14_enemy_portraits[opcode==31?1:selection]=vm->id;return true;}
-    return create(slot,*resource.file,script,resource.id);
+    if(!create(slot,*resource.file,script,resource.id))return false;
+    // MSG20 calls4350b0 immediately after publishing the entrance animation
+    // at433606; the ordinary HUD callback may still be blocked by dialogue.
+    if(opcode==20&&!effects.dialogue_boss_name())return fail("TH14 boss name animation");
+    return true;
 }
 // TH14 MSG factories (432bd7/432cbb/432d98/433589) copy the initialized
 // ANM prefix and retain its layer; they do not override it with layer22.
@@ -246,7 +250,7 @@ bool Dialogue::command(u8 op,const u8* p,u32 n){
         }else families.interrupt(state.animations[slot],2);break;
     }
     case 18:if constexpr(kPortTitle==14){families.erase(th14_text_background);th14_text_background=0;}for(u32 i=3;i<7;++i)families.interrupt(state.animations[i],3);break;
-    case 19:if(!effects.dialogue_music())return fail("dialogue boss music");return create(8,logo,2,27);
+    case 19:if(!effects.dialogue_music())return fail("dialogue boss music");return create(8,logo,2,kPortTitle==14?6:27);
     case 20:{if constexpr(kPortTitle==14){if(n<4)return fail("truncated MSG argument");return create_th14(7,read<i32>(p),20);}constexpr i32 scripts[]={9,9,10,14,18,19,9};if(stage<1||stage>7)return fail("invalid dialogue stage");return create(7,enemy,scripts[stage-1],9);}
     case 31:if constexpr(kPortTitle==14)return create_th14(2,1,31);return fail("unsupported MSG opcode");
     case 32:{

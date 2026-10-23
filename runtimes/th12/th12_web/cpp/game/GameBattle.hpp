@@ -188,6 +188,9 @@ public:
     bool dialogue_sound(i32 id)override{return sound(id,0,false);}
     bool hud_sound(i32 id)override{return sound(id,0,false);}
     bool dialogue_music()override{events.push_back({BattleEventKind::BossMusic,i32(resources.stage_number)});return true;}
+#if PORT_TITLE == 14
+    bool dialogue_boss_name()override{return hud.boss_name_th14(hud_input());}
+#endif
     bool dialogue_fade(float seconds)override{events.push_back({BattleEventKind::MusicFade,0,0,{seconds,0,0}});return true;}
     bool dialogue_stage_complete()override{
 #if PORT_TITLE == 14

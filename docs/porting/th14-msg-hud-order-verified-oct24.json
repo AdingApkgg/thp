@@ -1,0 +1,213 @@
+{
+  "verified": true,
+  "baseCommit": "27adc4c15b2c59e017cb569b01e50dbb8bb35bce",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/Dialogue.cpp": "586f3e01725bdee35dfbe48d1e250c0971423bd05bb3a85537144e2c63a198c8",
+    "runtimes/th12/th12_web/cpp/game/Dialogue.hpp": "76d1707cc638f5b8c8d449c651296e1694076d66282322785d1cdc9be43fe9a0",
+    "runtimes/th12/th12_web/cpp/game/GameBattle.cpp": "d33a8422f7773b7e0c3c496fa7f11595d9a5dc0d1982d83715bccb9487198815",
+    "runtimes/th12/th12_web/cpp/game/GameBattle.hpp": "ecb41c8a5c8f84cbaaa180d118ecee22f53af1d7bd53ce2a39855677c8557691"
+  },
+  "productionChanges": [
+    "MSG20 publishes the entrance animation then immediately creates the retained boss-name VM through Hud.",
+    "MSG19 stage-logo animation binds file6.",
+    "Boss HUD/rings/stars update before MSG; the indicator remains after MSG, matching430d7b and430dfe."
+  ],
+  "build": {
+    "sdlWasmSha256": "f5fafbbb80c98b0af0e118eab54341d3b53b1e206456c2366476904175057ad8",
+    "coreWasmSha256": "9d079c39913cbedd31ca1e5c9da9c4e6e3297e5fb80e6e725a9a9abc1b0cc399",
+    "coldObserverWasmSha256": "45efe64383302a64d68e2fab6a91f770a00017ad3486bcbfbfa0dd88fe2286ef",
+    "headerChangeFullSdlRebuild": 146,
+    "headerChangeFullCoreRebuild": 141,
+    "finalSdlRecompiled": 2,
+    "finalSdlReused": 144,
+    "finalCoreRecompiled": 2,
+    "finalCoreReused": 139,
+    "reusedObjectsCameFromThisHeaderCompatibleFullRebuild": true
+  },
+  "nativeWindow": {
+    "msgOpcode": 20,
+    "msgFrame": 5744,
+    "callPc": "0x433606",
+    "bossNameEntryPc": "0x4350b0",
+    "callerReturn": "0x43360b",
+    "publishedScript": 153,
+    "realWindowsProcess": true,
+    "noInstructionPatches": true,
+    "noRngOrCounterWrites": true,
+    "declaredAttractFlagClearAfterUntouchedFirstPlayer": true
+  },
+  "originalPrefix": {
+    "callbacks": 9000,
+    "allPublications": 42648,
+    "handleFileScriptDifferences": 0,
+    "allSelected32WordDifferences": 0,
+    "actualProductionCore": true,
+    "privateBeamProcessProfileIncluded": false,
+    "declaredOneTextureChunkPerCallback": true,
+    "observedNativeHostSpacing": true
+  },
+  "extendedPrefix": {
+    "callbacks": 22328,
+    "nativePublications": 140411,
+    "portablePublications": 140403,
+    "first44390HandleFileScriptTuplesIdentical": true,
+    "first133982FileScriptTuplesIdentical": true,
+    "remainingFirstHandleSerial": 44391,
+    "remainingFirstHandleNativeSlot": 7473,
+    "remainingFirstHandlePortableSlot": 8035,
+    "remainingFirstIdentitySerial": 133983,
+    "missingPublicationCount": 8,
+    "inactiveFrameZeroDifferences": [
+      {
+        "index": 9322,
+        "word": 21,
+        "native": 1148,
+        "portable": 45250,
+        "stage": 2,
+        "nativeStageFrame": 0,
+        "portableStageFrame": 0
+      },
+      {
+        "index": 9322,
+        "word": 24,
+        "native": 74844,
+        "portable": 0,
+        "stage": 2,
+        "nativeStageFrame": 0,
+        "portableStageFrame": 0
+      },
+      {
+        "index": 20904,
+        "word": 21,
+        "native": 56690,
+        "portable": 50041,
+        "stage": 3,
+        "nativeStageFrame": 0,
+        "portableStageFrame": 0
+      },
+      {
+        "index": 20904,
+        "word": 24,
+        "native": 178165,
+        "portable": 0,
+        "stage": 3,
+        "nativeStageFrame": 0,
+        "portableStageFrame": 0
+      }
+    ],
+    "activeSelected32Differences": 0,
+    "completePrefixEquivalenceClaimed": false
+  },
+  "regression": {
+    "cases": 30,
+    "callbacks": 2885731,
+    "allSelected32WordSnapshotsByteIdenticalToPreviousProduction": true,
+    "naturalTerminalAnd90StableMenuTicks": true,
+    "allModeNativeAcceptanceClaimed": false
+  },
+  "browser": {
+    "actualProductionLauncher": true,
+    "actualWebGL": true,
+    "quietOutput": true,
+    "coldNaturalAttractObserved": true,
+    "cancelToTitle": true,
+    "ordinaryReimuANormalEntry": true,
+    "gameOverScreenshotCaptured": true,
+    "errorsOrWarnings": 0,
+    "newBinaryFullReplayStartedButNotFinishedAtPublication": true
+  },
+  "separatePriorBinaryGpuRun": {
+    "commit": "3ee88588bf6fc9a8455dcecff6903731eb36702c",
+    "wasmSha256": "e2edc90fa3314da650db9087af59c098a3e76ae5ae032812cb1b8d44b928d419",
+    "mode": "ReimuB Normal",
+    "sixStagesNaturalReplayEnd": true,
+    "hudScore": 801525760,
+    "graze": 17551,
+    "power": 4,
+    "pointMaximum": 111490,
+    "issuesAfterStart": 0,
+    "notInheritedAsNewBinaryFullReplayAcceptance": true
+  },
+  "limitations": [
+    "The longer native prefix still differs at stage2 retirement/free-slot order and later stage3 option publications.",
+    "Two selected words differ at two inactive frame0 rows; active selected words agree, which does not prove full graphics/beam equivalence.",
+    "Cold adapter completion scheduling is declared, not the actual original asynchronous worker/GPU schedule.",
+    "All-mode original replays, ordinary initialization, graphics, audio and persistence acceptance remain unfinished."
+  ],
+  "evidenceBindings": [
+    {
+      "path": "artifacts/th14/msg-hud-order-oct24/build/build.json",
+      "bytes": 99346,
+      "sha256": "3d9d2343ebf718e4fb378136d0752996643d31456cd88e590388091ba313045c"
+    },
+    {
+      "path": "artifacts/th14/msg-hud-order-oct24/core-build.json",
+      "bytes": 77798,
+      "sha256": "36a15d2e0e17078f34095a50ab412b334d7de222e37b7e19b2bf4a107039e87a"
+    },
+    {
+      "path": "artifacts/th14/msg-hud-order-oct24/cold-build.json",
+      "bytes": 78033,
+      "sha256": "bab470d9ca0dd4c918034a4f58648c574b4b2ae0935630d979a742203460b140"
+    },
+    {
+      "path": "artifacts/th14/msg-hud-order-oct24/matrix-results.json",
+      "bytes": 60661,
+      "sha256": "3cb934ae5c79bc33effe3a7911217c932414ffa7d543d3ba838fe5343f8500a0"
+    },
+    {
+      "path": "artifacts/th14/msg-hud-order-oct24/allocation-prefix-9000/report.json",
+      "bytes": 1259,
+      "sha256": "2432b5da96dbfdf1e9df59ed9490dab26f52ec62c0631963070b2413e15d1be1"
+    },
+    {
+      "path": "artifacts/th14/msg-hud-order-oct24/allocation-prefix-22328/report.json",
+      "bytes": 2678,
+      "sha256": "96a4d428a43573c3b5289b8c52c281469d725d4bef8060becbb28fcfebe74088"
+    },
+    {
+      "path": "artifacts/th14/retail-marisaa-msg-boss-name-window-hardware-oct23/boss-name-events.jsonl",
+      "bytes": 10156,
+      "sha256": "e8fcb5597bb57d0e8212fa2170c2b3768324428a4881678645573a8f5ab0ad5a"
+    },
+    {
+      "path": "artifacts/th14/retail-marisaa-msg-boss-name-window-hardware-oct23/report.json",
+      "bytes": 17217,
+      "sha256": "6e08c89b13c69ff03fb501cb364b923a23669389c2bfda37543d2ecf5267a640"
+    },
+    {
+      "path": "artifacts/th14/msg-hud-order-oct24/browser-logs.json",
+      "bytes": 10375,
+      "sha256": "69ac9d54770620060e92ee268ebf2722f35a4d166cfaba4a728bfd549cb81e2e"
+    },
+    {
+      "path": "artifacts/th14/msg-hud-order-oct24/browser-cold-demo.jpg",
+      "bytes": 227413,
+      "sha256": "5d9d77eeb0c3057557e101f45df8f647aef85a569a2d3b4c5f07049d0285f023"
+    },
+    {
+      "path": "artifacts/th14/msg-hud-order-oct24/browser-ordinary-gameover.jpg",
+      "bytes": 217972,
+      "sha256": "1811edd3eb16777fe5131e12e8280ed20ce5ebea1ca32d5ae345f3ff923e7e3a"
+    },
+    {
+      "path": "artifacts/th14/title-entry-retirement-oct23/browser-full-replay-observation.json",
+      "bytes": 1107,
+      "sha256": "66772863e7eb5eb27b78bc07f2c768d93b8b183ebf2312e4c27acba426fbc47a"
+    },
+    {
+      "path": "artifacts/th14/title-entry-retirement-oct23/browser-full-replay-end-stable.jpg",
+      "bytes": 106331,
+      "sha256": "d15b3d354fad4c7cf0e5ccf4b2ec9839115ceed1aec05e8517e7c71dbaec0d74"
+    },
+    {
+      "path": "artifacts/th14/msg-hud-order-oct24/metadata-correction.json",
+      "bytes": 350,
+      "sha256": "e5adbbaebd7fa4ca221c4b489aa56aa35d319779a0cc3da8d714083bb0f48591"
+    }
+  ],
+  "rootResourceCryptExcluded": true,
+  "sourceOnlyPublication": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}
