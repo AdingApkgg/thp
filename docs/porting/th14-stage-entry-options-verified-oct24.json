@@ -1,0 +1,204 @@
+{
+  "verified": true,
+  "baseCommit": "84488d21895e680f033ff98cf4ea18787ea61a00",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/GameBattle.cpp": "9ede7108d8dc83b8ff2cdc8f6265086d71a3accf265dd0443e836f3c9449f053",
+    "runtimes/th12/th12_web/cpp/game/PlayerFrame.cpp": "1e6239b050051b46ac9188d61a0c812c9aa5c10cb8f8382ed1b2c6fd5aace255",
+    "runtimes/th12/th12_web/cpp/game/PlayerFrame.hpp": "8fcc664470151131a1e4367c1c64b134c7d438963a86048a43a9d8bf12b29541"
+  },
+  "productionChanges": [
+    "Outgoing ECL ANM resources retire during owner retirement, before ANM29 and loading children.",
+    "TH14 replay position/weapon restoration calls option refresh once unconditionally while preserving the current option count.",
+    "Initial and next-stage control callbacks perform a separate option refresh after ECL/HUD entry."
+  ],
+  "build": {
+    "sdlWasmSha256": "72cf7cf8efa8ae0daa27463359e662269e9fd09e3088a7ba280e0037e24a7f17",
+    "coreWasmSha256": "7a9ae42e50ae26fe8f6f14d5e6a18c5d5510b7574e5f27f6db67f4c0f0316394",
+    "coldObserverWasmSha256": "51fa12861485b3dd2b769ef1d6ac508babf9f68ecf3cc0a9cc319ed0b1073646",
+    "sdlFullyRecompiled": 146,
+    "coreFullyRecompiled": 141,
+    "staleHeaderObjectsReused": false
+  },
+  "originalPrefix": {
+    "callbacks": 22328,
+    "allPublications": 140411,
+    "handleFileScriptDifferences": 0,
+    "noMissingOrExtraPublications": true,
+    "actualProductionCore": true,
+    "privateBeamProcessProfileIncluded": false,
+    "observedNativeClockSpacing": true,
+    "declaredOneTextureChunkPerCallback": true,
+    "inactiveFrameZeroDifferences": [
+      {
+        "index": 9322,
+        "word": 21,
+        "native": 1148,
+        "portable": 45250,
+        "stage": 2,
+        "nativeStageFrame": 0,
+        "portableStageFrame": 0
+      },
+      {
+        "index": 9322,
+        "word": 24,
+        "native": 74844,
+        "portable": 0,
+        "stage": 2,
+        "nativeStageFrame": 0,
+        "portableStageFrame": 0
+      },
+      {
+        "index": 20904,
+        "word": 21,
+        "native": 56690,
+        "portable": 50041,
+        "stage": 3,
+        "nativeStageFrame": 0,
+        "portableStageFrame": 0
+      },
+      {
+        "index": 20904,
+        "word": 24,
+        "native": 178165,
+        "portable": 0,
+        "stage": 3,
+        "nativeStageFrame": 0,
+        "portableStageFrame": 0
+      }
+    ],
+    "activeSelected32Differences": 0,
+    "fullAnimationEquivalenceClaimed": false
+  },
+  "independentRetirementWindow": {
+    "retirements": 178,
+    "allOrderedCallbackFileScriptTimerAgeTuplesIdentical": true,
+    "nextStageRequestRetirements": 67,
+    "activationAuxiliaryRetirements": 8,
+    "wrapperTransparent": true,
+    "nativeIndependentColdSerial": 132,
+    "pairedHandlesAcrossDifferentNativeProcessesClaimed": false
+  },
+  "regression": {
+    "cases": 30,
+    "callbacks": 2885731,
+    "allSelected32WordSnapshotsByteIdenticalToPreviousProduction": true,
+    "naturalTerminalAnd90StableMenuTicks": true,
+    "allModeOriginalAcceptanceClaimed": false
+  },
+  "longerProductionOriginalComparison": {
+    "mode": "MarisaA Easy declared warm case",
+    "portableCallbacks": 33522,
+    "nativeCallbacks": 34783,
+    "unpairedNativeTail": 1261,
+    "firstActiveDifference": {
+      "index": 22337,
+      "stage": 3,
+      "stageFrame": 1289,
+      "word": 12,
+      "native": 5553429,
+      "portable": 5553428
+    },
+    "firstObservedDifferenceIsOneScoreUnit": true,
+    "subsequentRngEconomyAndTerminalDifferencesRemain": true,
+    "cookieOrStackProfileInjected": false,
+    "fullOriginalEquivalenceClaimed": false
+  },
+  "browser": {
+    "actualProductionLauncher": true,
+    "actualWebGL": true,
+    "quietOutput": true,
+    "coldNaturalAttract": true,
+    "importedReplayAndStage1Gameplay": true,
+    "errorsOrWarnings": 0,
+    "newBinaryFullReplayStartedButNotFinishedAtPublication": true
+  },
+  "separatePriorBinaryGpuRun": {
+    "commit": "2e020f559915540b19b02dbbfe9f58da9593983e",
+    "wasmSha256": "f5fafbbb80c98b0af0e118eab54341d3b53b1e206456c2366476904175057ad8",
+    "mode": "ReimuB Normal",
+    "sixStagesNaturalReplayEnd": true,
+    "hudScore": 801525760,
+    "graze": 17551,
+    "power": 4,
+    "pointMaximum": 111490,
+    "issuesAfterStart": 0,
+    "notInheritedAsNewBinaryFullReplayAcceptance": true
+  },
+  "limitations": [
+    "The longer production original comparison still diverges after the stage3 beam fallback; production currently clamps that uninitialized original-stack path to zero.",
+    "Four selected word differences at two inactive frame0 records remain.",
+    "The cold adapter texture completion schedule is declared and is not actual original worker/GPU timing.",
+    "All-mode original graphics/audio, ordinary initialization and persistence acceptance remain unfinished."
+  ],
+  "evidenceBindings": [
+    {
+      "path": "artifacts/th14/stage-entry-options-full-oct24/build/build.json",
+      "bytes": 88224,
+      "sha256": "aeb81b6e99fb510a8d5c80c3bb89ea0f447c73fdc6e6510a9132c48aa309bb7b"
+    },
+    {
+      "path": "artifacts/th14/stage-entry-options-full-oct24/core-build.json",
+      "bytes": 80482,
+      "sha256": "6d23fae8f648603e3f4e58a3f13b57df4924910fc986dc5b522f92f6d124c6a6"
+    },
+    {
+      "path": "artifacts/th14/stage-entry-options-full-oct24/cold-build.json",
+      "bytes": 80728,
+      "sha256": "3f3e8787446deece912f3ff8e10c26eb478bac5ce0328fdd7925c6bc55d9fa39"
+    },
+    {
+      "path": "artifacts/th14/stage-entry-options-full-oct24/matrix-results.json",
+      "bytes": 60661,
+      "sha256": "4832b10ebff1fd7d29f5d3e09acfd13b14d8cea698bb529bc2f99d89bfdae049"
+    },
+    {
+      "path": "artifacts/th14/stage-entry-options-full-oct24/allocation-prefix-22328/report.json",
+      "bytes": 1544,
+      "sha256": "2e6fa1f645872f2146f3482353d25212c474f9072ec2008099994dde731dc0b7"
+    },
+    {
+      "path": "artifacts/th14/stage-entry-options-full-oct24/stage3-retirement-verified.json",
+      "bytes": 805,
+      "sha256": "e34937195b4c95c60494655035f7a8bc023722d0cafb04b53ea9295422e1bed1"
+    },
+    {
+      "path": "artifacts/th14/retail-marisaa-stage3-retirement-owner-window-hardware-oct24/report.json",
+      "bytes": 606076,
+      "sha256": "a9d87c32f16642cd73970ce25e9116b6321102a9bc30c0939ee480631734ddf3"
+    },
+    {
+      "path": "artifacts/th14/stage-entry-options-full-oct24/production-full-observed-clock/report.json",
+      "bytes": 5391,
+      "sha256": "da8a17243d49178e4032c6ca49596d1dda7d477335a0a46c70f1f8810f2c91bb"
+    },
+    {
+      "path": "artifacts/th14/stage-entry-options-full-oct24/browser-logs.json",
+      "bytes": 8812,
+      "sha256": "b0fff9e523cfed152f7b79e45989e9a959a408ab03f1cc611285085e0c8d798f"
+    },
+    {
+      "path": "artifacts/th14/stage-entry-options-full-oct24/browser-full-replay-start.json",
+      "bytes": 511,
+      "sha256": "0d749ea51f4866d3ba3f20fc05172c49936f688806f4ece37f2b23cbc15ea99f"
+    },
+    {
+      "path": "artifacts/th14/stage-entry-options-full-oct24/browser-full-replay-first-observed.jpg",
+      "bytes": 301883,
+      "sha256": "2cd3b038c6dea63343b198421a0aad28d7ff83fa5034ec1abffeeb7ccd7e5141"
+    },
+    {
+      "path": "artifacts/th14/msg-hud-order-oct24/browser-full-replay-observation.json",
+      "bytes": 1051,
+      "sha256": "ff7222c5bf2c6aed34e7e8da3f3ce4b5a8730a687d6ba43c812151c287ae8295"
+    },
+    {
+      "path": "artifacts/th14/msg-hud-order-oct24/browser-full-replay-end-stable.jpg",
+      "bytes": 106258,
+      "sha256": "7d836cfc65ab651c64748a81a335aa203fdbb4e1ccc5d1d287d4a160a396264e"
+    }
+  ],
+  "rootResourceCryptExcluded": true,
+  "sourceOnlyPublication": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}

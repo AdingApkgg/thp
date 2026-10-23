@@ -116,6 +116,10 @@ bool GameBattle::initialize(i32 character,i32 subtype,i32 difficulty) {
     trace_point=19;
     countdown_seconds=-1;
     if(!hud.start_stage(resources.stage->logo,hud_input(),demo,true,completion.mode.control_mode,hud.score.continues)){error="HUD initialization";return false;}
+#if PORT_TITLE == 14
+    // 4368aa refreshes max-power auxiliaries after the ECL/HUD entry work.
+    if(!player->rebuild_th14_options()){error="TH14 initial option refresh";return false;}
+#endif
     trace_point=20;
     initialized=true;return true;
 }
@@ -181,6 +185,10 @@ bool GameBattle::pump_stage_loading(u64 now,i32 first_capture_index,u32 supervis
 }
 bool GameBattle::retire_stage_owner(){
     if(!enemies.retire())return false;
+    // 4227d6..42281d unloads the six ECL animation files during owner
+    // retirement. Their live VMs must leave ANM29 before loading's children.
+    if(auto* old=resources.stage.get())
+        for(auto& file:old->ecl_animations)animations.retire_resource(file);
     // 436425 calls41e9f0 while the outgoing stage is still attached.
     // Mark effect8 and bullet7 before ANM29, rather than waiting for the
     // worker's initialization phase. The normal registry returns their slots
@@ -198,7 +206,6 @@ bool GameBattle::initialize_stage_work(){
     animations.retire_resource(resources.core.enemy);
     if(auto* old=resources.stage.get()){
         animations.retire_resource(old->enemies);animations.retire_resource(old->logo);
-        for(auto& file:old->ecl_animations)animations.retire_resource(file);
     }
     for(auto id:spell_titles)enemy_animations.erase(id);
     enemy_animations.erase(spell_circle);spell_circle=0;
@@ -326,6 +333,9 @@ bool GameBattle::activate_stage(){
 #endif
     if(!hud.start_stage(resources.stage->logo,hud_input(),false,false,completion.mode.control_mode)){error="HUD stage activation";return false;}
 #if PORT_TITLE == 14
+    // 436a9a runs after replay position/weapon restoration, ECL main and HUD.
+    // Even when the option count is unchanged, full power recreates auxiliaries.
+    if(!player->rebuild_th14_options()){error="TH14 next-stage option refresh";return false;}
     stage_loading.finish(animations);
 #endif
     stage_active=true;events.push_back({BattleEventKind::StageMusic,i32(resources.stage_number)});

@@ -113,10 +113,17 @@ bool PlayerFrame::rebuild_options(){
 }
 bool PlayerFrame::restore_replay_position(const ReplayStageState& entry){
     entry.restore_position(motion.state);for(auto& option:motion.options)option.snap=1;
+#if PORT_TITLE == 14
+    // 455fc5 restores position and455fda the weapon field;456039 then calls
+    // 44f970 unconditionally, preserving the option count. The control callback
+    // performs its separate post-ECL/HUD refresh later at4368aa/436a9a.
+    return rebuild_options();
+#else
     // 436da0 recreates the non-default Marisa/B formation, twice. The second
     // call also refreshes max-power auxiliary effects; do not remove it.
     if(entry.weapon){motion.state.option_count=0;return rebuild_options()&&rebuild_options();}
     return true;
+#endif
 }
 bool PlayerFrame::start_stage(){
     // Reset the stage clocks while preserving replay position and weapon mode.
