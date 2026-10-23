@@ -4,6 +4,7 @@
 #include "PortTitle.hpp"
 #if PORT_TITLE == 14
 #include "DeferredCaptureQueueTh14.hpp"
+#include "NativeStackTh14.hpp"
 #endif
 #include <array>
 #include <memory>
@@ -16,6 +17,8 @@ public:
     ~AnmManager() override;
 #if PORT_TITLE == 14
     bool prepare_resource(AnmResource&,u16 file_id);
+    // One reference process context; clearing a scene does not clear its stack.
+    NativeStackTh14 th14_native_stack;
 #endif
     AnmVm* create(AnmResource& resource,i32 script,u16 file_id,u32 layer,bool overlay=false,bool prepend=false,const Vec3* initial_position=nullptr,const AnmVm* detached_source=nullptr,AnmVm* attached_parent=nullptr,bool th14_playfield_layer=false,const float* initial_rotation=nullptr,u32 th16_initial_flags2=0);
     AnmVm* spawn(AnmVm& parent,i32 script,u32 opcode) override;

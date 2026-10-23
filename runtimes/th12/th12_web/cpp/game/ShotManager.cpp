@@ -11,6 +11,9 @@ float angle_delta(float target,float current){const double d=double(target)-curr
 bool outside(Vec3 p,float x,float y){return double(p.x)+x<=-192||double(p.x)-x>=192||double(p.y)+y<=0||double(p.y)-y>=448;}
 }
 ShotManager::ShotManager(ShtResource& s,AnmResource& a,AnmManager& m,ShotWorld& w,u16 file):resource(s),animation_resource(a),animations(m),world(w),file_id(file){schedule.timer.set(-1,&m.rate);
+#if PORT_TITLE == 14
+    player.th14_native_stack=&m.th14_native_stack;
+#endif
 #if PORT_TITLE == 16
     th16_schedule.regular.set(-1,&m.rate);th16_schedule.long_timer.set(-1,&m.rate);
 #endif
@@ -291,6 +294,9 @@ bool ShotManager::update(){
             // 45115a computes the quad before45115f tests the ten-frame
             // visibility grace period. Keep that call order for young shots.
             Vec3 corners[4];if(!anm_quad_positions(*a,corners,animations.render_space)){last_error=8;return false;}
+#if PORT_TITLE == 14
+            if(a->drawing_mode()==1)animations.th14_native_stack.geometry_mode1_call();
+#endif
             const float left=animations.render_space.play_origin.x-192.f,top=animations.render_space.play_origin.y;
             bool visible=s.timer.current<10;for(const auto p:corners)if(p.x>left&&p.x<left+384.f&&p.y>top&&p.y<top+448.f){visible=true;break;}
             if(!visible){erase(s.animation);s.animation=0;s.state=0;

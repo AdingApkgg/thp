@@ -3,6 +3,7 @@
 #include "PauseCaptureTh14.hpp"
 #include "ApplicationCaptureTh14.hpp"
 #include "StageUploadsTh14.hpp"
+#include <random>
 #endif
 #include "AudioDevice.hpp"
 #include "FontDevice.hpp"
@@ -124,6 +125,14 @@ struct Application:StageResourceEffects
     FontDevice fonts{graphics};
     GameResources resources;
 #if PORT_TITLE == 14
+    static u32 reference_process_cookie(){
+        // Windows supplies the original cookie before CRT/game entry. Use a
+        // separate host entropy source; this is compatibility data, not RNG.
+        std::random_device entropy;u32 value;
+        do{value=entropy();}while(!NativeStackTh14::preinitialized_cookie(value));
+        return value;
+    }
+    u32 process_cookie=reference_process_cookie();
     u32 initial_ticks=th14_clock_ticks();
     GameSession session{initial_ticks};
 #else
@@ -451,6 +460,7 @@ struct Application:StageResourceEffects
         if(initialized){if(!audio.initialize(resources)){error=audio.error;return false;}return true;}
         if(!graphics.initialize()){error=graphics.error;return false;}
 #if PORT_TITLE == 14
+        session.animations.th14_native_stack.configure(process_cookie);
         session.animations.texture_high_precision=false;
         graphics.texture_high_precision=&session.animations.texture_high_precision;
         std::printf("[clock14] monotonic ticks=%u; initial seed=%u\n",initial_ticks,u32(u16(initial_ticks)));

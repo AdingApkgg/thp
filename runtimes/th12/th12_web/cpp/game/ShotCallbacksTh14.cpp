@@ -97,17 +97,15 @@ bool shot_th14_beam_intersection(Vec3 origin,Vec3 center,Vec2 size,float angle,f
     return true;
 }
 bool shot_th14_beam_hit(ShotState& shot,ShotPlayer& player,Th14DamageArea& area,Vec3 target,const Vec2* size,float radius,float angle,Th14BeamHit& out)noexcept{
-    out={};shot.hit_this_frame=1;if(!shot.hit_last_frame){out.interrupt=true;shot.hit_last_frame=1;}
+    out={};if(!player.th14_native_stack)return false;
+    shot.hit_this_frame=1;if(!shot.hit_last_frame){out.interrupt=true;shot.hit_last_frame=1;}
     const auto origin=shot.movement.position;const float dx=target.x-origin.x,dy=target.y-origin.y;
     if(!size){const float r=area.size.y*.5f+radius,s=float(std::sin(-double(shot.movement.angle))),c=float(std::cos(-double(shot.movement.angle)));
         const float x=dx*c-dy*s,y=dy*c+dx*s;
         if(r==0)return false;
         if(std::abs(y)>r||x<-r||(x<0&&x*x+y*y>r*r)){
-            // 45286f reads an uninitialized stack float, adds 8 and clamps.
-            // The original demo's frame-3430 edge uses -131.49336, yielding
-            // zero. Use that measured clamped outcome for this undefined
-            // branch; arbitrary positive scratch values remain unverified.
-            shot.th14_beam_length=0;
+            const u32 bits=NativeStackTh14::fallback_bits(player.th14_native_stack->scratch);
+            std::memcpy(&shot.th14_beam_length,&bits,4);
         }else{
             const float t=y/r;shot.th14_beam_length=std::max(0.f,x-float(std::sqrt(double(1.f-t*t)))*r+8.f);
         }
@@ -115,6 +113,7 @@ bool shot_th14_beam_hit(ShotState& shot,ShotPlayer& player,Th14DamageArea& area,
     }else{Vec2 p;const Vec2 expanded{size->x+area.size.y,size->y+area.size.y};
         if(shot_th14_beam_intersection(origin,target,expanded,angle,shot.movement.angle,p)){
             const float x=p.x-origin.x,y=p.y-origin.y,aim=float(std::atan2(double(y),double(x)));float d=aim-shot.movement.angle;
+            player.th14_native_stack->rectangle_intersection_y(y);
             if(d>3.1415927410125732f)d=aim-(shot.movement.angle+6.2831854820251465f);
             else if(shot.movement.angle-aim>3.1415927410125732f)d=aim-(shot.movement.angle-6.2831854820251465f);
             shot.th14_beam_length=std::abs(d)<1.5707963705062866f?float(std::sqrt(double(y*y+x*x)))+8.f:8.f;

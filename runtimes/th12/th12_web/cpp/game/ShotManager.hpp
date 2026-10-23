@@ -54,6 +54,7 @@ struct ShotPlayer {
     // consumed by 453a90, so individual callback fixtures must keep this map.
     bool th14_dialogue_blocked=false,th14_enemy_manager=false;
     i32 th14_attached_count=0;
+    NativeStackTh14* th14_native_stack=nullptr;
 #endif
 };
 #if PORT_TITLE == 14

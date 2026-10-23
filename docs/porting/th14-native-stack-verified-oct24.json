@@ -1,0 +1,267 @@
+{
+  "verified": true,
+  "baseCommit": "6200eb5668886a270b6f53d97f61e70bbb47cdce",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/AnmManager.hpp": "7afb624746be4067a725e883e8ff4299412c644f434f371ad4c8b5d47721670f",
+    "runtimes/th12/th12_web/cpp/game/GameBattle.hpp": "5f73cc6f725edecf572381e33fd0b11d4caddd35df2966922742bb99c9a94f3a",
+    "runtimes/th12/th12_web/cpp/game/ShotManager.hpp": "6d0501c71aa7d96a1ebe9b6ad853d5066b19f8b0fbdde94a5d6d65c3cb45b554",
+    "runtimes/th12/th12_web/cpp/game/ShotManager.cpp": "52e7fa2a5d3ab1ca0b54564ed7773d02a36df54a604d7422c3a34c5dc3222d7c",
+    "runtimes/th12/th12_web/cpp/game/ShotCallbacksTh14.cpp": "5ec0ad38089e9576a86d9dc0f6c89ce5e7546bb06dad11838a74e6f901536d2a",
+    "runtimes/th12/th12_web/cpp/sdl/Application.cpp": "a14edf829fd57cdecdef1e8637f8315f0b5dce30b8b1c02afc1348006f3b3be8",
+    "runtimes/th12/th12_web/cpp/game/NativeStackTh14.hpp": "b99bd9db2b4a7b83220e5ad9d5412b23425db38745b04bb28e88f06a472833db"
+  },
+  "changes": [
+    "Model the reference Win32 beam scratch word using actual effect publication, rectangle intersection, pinned dsound pan and mode1 geometry calls.",
+    "Supply a Web process cookie through separate host entropy, without consuming either game RNG. Retain it across scene clears.",
+    "Preserve original fallback addss/comiss behavior including quieted NaN payloads."
+  ],
+  "build": {
+    "sdlWasmSha256": "48258f0a5edcfbdee6a9fc9380ee635f1ec68a23eafe7f820b0df1ced7fa65b5",
+    "coreWasmSha256": "85022e268b4e095eddcfd1aa373551ed0e852de0e0d1e4fc79f093af393a853e",
+    "coldObserverWasmSha256": "33368b8d60fdf20aed0ec43567a02f74bbe3275941a38d02d5251ff372ca1b24",
+    "sdlFullyRecompiled": 146,
+    "coreFullyRecompiled": 141,
+    "staleHeaderObjectsReused": false,
+    "addedImports": [
+      {
+        "module": "wasi_snapshot_preview1",
+        "name": "random_get",
+        "kind": "function"
+      }
+    ],
+    "exportsUnchanged": true
+  },
+  "nativeMarisaAComparison": {
+    "callbacks": 34783,
+    "all32SelectedWordsByteIdentical": true,
+    "nativeUnpairedTail": 0,
+    "selectedSha256": "8fbc8440ce5dae4d5a4d32a67598f708bbccbc233692aae3a631d421293e8732",
+    "bootstrapEnvironmentObserved": true,
+    "declaredVirtualGeometryFrame": "0x1aec84",
+    "referenceDsoundSha256": "e6519f8f41c4a2b64f0768488df4c3796a3adb65d3f8c7996a4872af6505ff09",
+    "nativeHostSpacingObserved": true,
+    "declaredOneTextureChunkPerCallback": true,
+    "noSeedCounterOrSerialCompensation": true,
+    "perFrameReferenceOverrides": false,
+    "naturalReplayEndAnd90StableMenuTicks": true,
+    "allOriginalBehaviorClaimed": false
+  },
+  "allocationPrefix": {
+    "callbacks": 22328,
+    "publications": 140411,
+    "handleFileScriptDifferences": 0,
+    "inactiveFrameZeroDifferences": [
+      {
+        "index": 9322,
+        "word": 21,
+        "stage": 2,
+        "nativeStageFrame": 0,
+        "portableStageFrame": 0
+      },
+      {
+        "index": 9322,
+        "word": 24,
+        "stage": 2,
+        "nativeStageFrame": 0,
+        "portableStageFrame": 0
+      },
+      {
+        "index": 20904,
+        "word": 21,
+        "stage": 3,
+        "nativeStageFrame": 0,
+        "portableStageFrame": 0
+      },
+      {
+        "index": 20904,
+        "word": 24,
+        "stage": 3,
+        "nativeStageFrame": 0,
+        "portableStageFrame": 0
+      }
+    ],
+    "activeSelected32Differences": 0
+  },
+  "fallbackArithmetic": {
+    "cases": 4116,
+    "differences": 0,
+    "oracle": "Original executable machine fragment emulated with Unicorn2.1.4",
+    "actualNativeCpuExecution": false,
+    "productionHeaderBound": true
+  },
+  "independentForwardProcess": {
+    "predictions": 3,
+    "matched": 2,
+    "geometryCookieFormulaPredictedBeforeFirstCallback": true,
+    "panWordPredictionMatched": true,
+    "firstPackedHandlePredictionMismatchRetained": true,
+    "nativeColdSerial": 131,
+    "declaredPortableColdSerial": 132,
+    "fullCausalMatchingForThisProcessProven": false
+  },
+  "regression": {
+    "cases": 30,
+    "callbacks": 2763367,
+    "unchangedRawCases": [
+      "marisaa-extra",
+      "marisaa-lunatic",
+      "marisab-easy",
+      "marisab-extra",
+      "marisab-hard",
+      "marisab-lunatic",
+      "reimua-extra",
+      "reimua-easy",
+      "reimua-hard",
+      "reimua-lunatic",
+      "reimub-extra",
+      "reimua-normal",
+      "reimub-hard",
+      "reimub-easy",
+      "sakuyaa-easy",
+      "reimub-lunatic",
+      "sakuyaa-extra",
+      "sakuyaa-hard",
+      "reimub-normal",
+      "sakuyaa-lunatic",
+      "sakuyaa-normal",
+      "sakuyab-easy",
+      "sakuyab-extra",
+      "sakuyab-hard",
+      "sakuyab-lunatic",
+      "sakuyab-normal"
+    ],
+    "changedMarisaCases": [
+      "marisaa-easy",
+      "marisaa-hard",
+      "marisaa-normal",
+      "marisab-normal"
+    ],
+    "naturalTerminalAnd90StableMenuTicks": true,
+    "declaredStandaloneCookie": "normalized CRT fallback BB40E64F",
+    "allModeNativeAcceptanceClaimed": false
+  },
+  "newReimuBOriginalPrefix": {
+    "first7500CallbacksAll32SelectedWordsByteIdentical": true,
+    "comparedCallbacks": 18000,
+    "firstActiveDifference": {
+      "index": 14181,
+      "stage": 2,
+      "stageFrame": 1,
+      "word": 21,
+      "native": 65271,
+      "portable": 45757
+    },
+    "activeDifferenceCounts": {
+      "21": 3819,
+      "22": 537,
+      "26": 1
+    },
+    "inactiveLoadingDifferenceRetained": true,
+    "nativeSixStageCaptureStillRunning": true,
+    "exactWorkerCompletionTimingNotObserved": true
+  },
+  "browser": {
+    "actualProductionLauncher": true,
+    "actualWebGL": true,
+    "coldNaturalAttract": true,
+    "importedMarisaAEasyReplayAndStage1Gameplay": true,
+    "independentBrowserEntropy": true,
+    "referenceCookieInjected": false,
+    "errorsOrWarnings": 0,
+    "quietOutput": true,
+    "newBinaryReplayStillRunning": true
+  },
+  "previousBinaryGpu": {
+    "commit": "6200eb5668886a270b6f53d97f61e70bbb47cdce",
+    "wasmSha256": "72cf7cf8efa8ae0daa27463359e662269e9fd09e3088a7ba280e0037e24a7f17",
+    "character": "Reimu B",
+    "difficulty": "Normal",
+    "naturalSixStageReplayEnd": true,
+    "hudScore": 801525760,
+    "graze": 17551,
+    "notInheritedAsNewBinaryFullRunAcceptance": true
+  },
+  "limitations": [
+    "Reference Win32 stack frame and dsound module are declared compatibility ABI inputs; other original host environments have not been proven equivalent.",
+    "The independent forward Native process retains one packed-handle mismatch with a different cold-loader history.",
+    "The new Reimu B Native prefix diverges in stage2 visual RNG and one shot-count callback; its full capture remains active.",
+    "The cold adapter does not reproduce actual original asynchronous worker/GPU completion scheduling.",
+    "All-mode original graphics/audio, ordinary initialization and persistence acceptance remain unfinished."
+  ],
+  "evidenceBindings": [
+    {
+      "path": "artifacts/th14/native-stack-production-oct24/build/build.json",
+      "bytes": 178275,
+      "sha256": "3ff1ce7b92737a8b47343f559c998f92755cfa14430c88385680194d2de8db08"
+    },
+    {
+      "path": "artifacts/th14/native-stack-production-oct24/core-build.json",
+      "bytes": 80536,
+      "sha256": "bf64cb0916a67599348a72a4eeb3e1f53a8d127a5a19a9601750e3eb49688f95"
+    },
+    {
+      "path": "artifacts/th14/native-stack-production-oct24/cold-build.json",
+      "bytes": 80781,
+      "sha256": "18599e3d96bcfa37c7981bda43e7d1012463e12c3e82072c91e36132735315a6"
+    },
+    {
+      "path": "artifacts/th14/native-stack-production-oct24/matrix-results.json",
+      "bytes": 65143,
+      "sha256": "ce0340ca97230afc9e8c71878dddb4725cf7636297f84926fc6fe0d7a7fbb4c3"
+    },
+    {
+      "path": "artifacts/th14/native-stack-production-oct24/production-full-observed-reference-environment/report.json",
+      "bytes": 1826,
+      "sha256": "e2016c3afb8b836aa0e6424d750d2a239218ba2ceb26be4ad0ec0d83ffa004dc"
+    },
+    {
+      "path": "artifacts/th14/native-stack-production-oct24/allocation-prefix-22328/report.json",
+      "bytes": 1544,
+      "sha256": "390d6bea45778b9cb92fc281b83c79db308ff49bd493569960d95f972e5ece71"
+    },
+    {
+      "path": "artifacts/th14/native-stack-production-oct24/reference-stack-fragment-verified.json",
+      "bytes": 546,
+      "sha256": "9faf00bce8dabbe7055b54ec3746f3b72271334003e35f7358b5ef81d2f5e724"
+    },
+    {
+      "path": "artifacts/th14/native-stack-production-oct24/entropy-import-audit.json",
+      "bytes": 595,
+      "sha256": "797c01383d4cd160f3a55fab64ebb5b6298f78abee0cb11ec92f70e92ca012f9"
+    },
+    {
+      "path": "artifacts/th14/native-stack-production-oct24/forward-environment-validation.json",
+      "bytes": 1617,
+      "sha256": "75b934ebc166d73c30772731c3c71366ac6a23eff2dcd7adde0e7fe6de0e694b"
+    },
+    {
+      "path": "artifacts/th14/native-stack-production-oct24/reimub-bootstrap-prefix-7500/report.json",
+      "bytes": 1168,
+      "sha256": "a55df960d36df18e7f333586fbe9ecf96d6ba2cde1132a04b18fef11c5ed63ff"
+    },
+    {
+      "path": "artifacts/th14/native-stack-production-oct24/reimub-bootstrap-prefix-18000/report.json",
+      "bytes": 1981,
+      "sha256": "66c8d5cbfd427db30856a881b4f03893a5e3a60a9ab9009d523e7c7005d8a9a7"
+    },
+    {
+      "path": "artifacts/th14/native-stack-production-oct24/browser-logs.json",
+      "bytes": 18983,
+      "sha256": "65aea78b4d46b6690ea783b156e327dfa71727916fc258f2a2edb32d9d33ce37"
+    },
+    {
+      "path": "artifacts/th14/native-stack-production-oct24/browser-full-replay-start.json",
+      "bytes": 534,
+      "sha256": "b4df1fb6e6d1ec0ca21606b5f2cff796fcd26adb82e0b4d8362326e25bbe1d20"
+    },
+    {
+      "path": "artifacts/th14/stage-entry-options-full-oct24/browser-full-replay-observation.json",
+      "bytes": 2580,
+      "sha256": "eca99d18887870ea9089a0f9cc8b0c2205bde0350bc6b7729df4218388a9f5d0"
+    }
+  ],
+  "rootResourceCryptExcluded": true,
+  "sourceOnlyPublication": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}

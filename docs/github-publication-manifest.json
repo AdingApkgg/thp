@@ -1,7 +1,7 @@
 {
   "date": "2026-10-24",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "84488d21895e680f033ff98cf4ea18787ea61a00",
+  "sourceCommit": "6200eb5668886a270b6f53d97f61e70bbb47cdce",
   "files": [
     {
       "path": ".gitignore",
@@ -147,6 +147,11 @@
       "path": "docs/porting/TH14_NATIVE_FOG_MIX_FIX_OCT20.md",
       "bytes": 3698,
       "sha256": "60e8619ade9d0b7fe6dcd9bef366b96f823c7ffbe631c14d1d018fcf74592cc3"
+    },
+    {
+      "path": "docs/porting/TH14_NATIVE_STACK_OCT24.md",
+      "bytes": 3190,
+      "sha256": "47d423a0a9b06e72558d5a0e2d7eae7d2dd5fa9e8ff5d979f5f1323fa5192279"
     },
     {
       "path": "docs/porting/TH14_NEXT_STAGE_LOADING_FAMILY_FIX_OCT16.md",
@@ -2409,6 +2414,11 @@
       "sha256": "036b65259421aeb3190559abafb7d742619625d12faa79fd74a0d4d6abd0513a"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-native-stack-candidate-oct24.json",
+      "bytes": 228922,
+      "sha256": "3509db5f5aebd5a8f07447125fd531388be62de738f55b15374eb35fdb0e069c"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-ordinary-shot-quad-candidate-oct23.json",
       "bytes": 139794,
       "sha256": "3ede34c530e8ec87aa460f7f50a405c79bf8ff9a6cdd02baed72645bfe66576d"
@@ -2592,6 +2602,11 @@
       "path": "docs/porting/th14-launcher-site-native-fog-oct20.json",
       "bytes": 37133,
       "sha256": "ac93c3e1eb150f3475513651763da5d8fb2e95da02d56d21ed873afbfd983f39"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-native-stack-candidate-oct24.json",
+      "bytes": 36946,
+      "sha256": "64b4dd3d07e4c82e6ad7e1fab15f379b26b850286fb7f9ea79b14373e38003c1"
     },
     {
       "path": "docs/porting/th14-launcher-site-ordinary-shot-quad-candidate-oct23.json",
@@ -2817,6 +2832,11 @@
       "path": "docs/porting/th14-native-fog-observed-oct20.json",
       "bytes": 175098,
       "sha256": "cd567889272953c68f7fb114dc35c371664a9a2830b91789ebf9d8fe927d2a1d"
+    },
+    {
+      "path": "docs/porting/th14-native-stack-verified-oct24.json",
+      "bytes": 10197,
+      "sha256": "c1934cb331b41ef6d10a63bc28594f9ef93dbc9f99d5d6a67f53bbe4039a3bdf"
     },
     {
       "path": "docs/porting/th14-natural-current-replay-area-lifecycle-verified-oct13.json",
@@ -6435,8 +6455,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmManager.hpp",
-      "bytes": 5907,
-      "sha256": "e7623372913ef1bad27593d3fe1eb853f1990d0e5b2ebf3793e8fcafaeb55bb9"
+      "bytes": 6058,
+      "sha256": "7afb624746be4067a725e883e8ff4299412c644f434f371ad4c8b5d47721670f"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmOpcodes.hpp",
@@ -6905,8 +6925,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
-      "bytes": 24265,
-      "sha256": "ecb41c8a5c8f84cbaaa180d118ecee22f53af1d7bd53ce2a39855677c8557691"
+      "bytes": 24410,
+      "sha256": "5f73cc6f725edecf572381e33fd0b11d4caddd35df2966922742bb99c9a94f3a"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameConfig.cpp",
@@ -7199,6 +7219,11 @@
       "sha256": "6140437daa966fd346b89daec86503d0fbd70a142dd771d4ffacc0e46c230a80"
     },
     {
+      "path": "runtimes/th12/th12_web/cpp/game/NativeStackTh14.hpp",
+      "bytes": 1622,
+      "sha256": "b99bd9db2b4a7b83220e5ad9d5412b23425db38745b04bb28e88f06a472833db"
+    },
+    {
       "path": "runtimes/th12/th12_web/cpp/game/NoopOpcodes.hpp",
       "bytes": 5992,
       "sha256": "80a6631cb5a29de88e0c2d299ca04f4bb7ff8db1c22c78ca52e3131e34d6c317"
@@ -7400,8 +7425,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotCallbacksTh14.cpp",
-      "bytes": 8591,
-      "sha256": "ca45e02b0ac112a2a8ea471ea448a462546fdca3aa1458fad9f25f206dd04a2f"
+      "bytes": 8515,
+      "sha256": "5ec0ad38089e9576a86d9dc0f6c89ce5e7546bb06dad11838a74e6f901536d2a"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotDamageTh14.cpp",
@@ -7420,13 +7445,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotManager.cpp",
-      "bytes": 23253,
-      "sha256": "f4908f6b13506db8002920d3799d5e77bcf42ff2e3ac807ce6ed0846a3449079"
+      "bytes": 23448,
+      "sha256": "52e7fa2a5d3ab1ca0b54564ed7773d02a36df54a604d7422c3a34c5dc3222d7c"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotManager.hpp",
-      "bytes": 9259,
-      "sha256": "bed6956c6ef55a32cc2ddc12ad2fa5390c87102c08f958da33f3b99f65b0e67f"
+      "bytes": 9307,
+      "sha256": "6d0501c71aa7d96a1ebe9b6ad853d5066b19f8b0fbdde94a5d6d65c3cb45b554"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotPoolTh14.hpp",
@@ -7750,8 +7775,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/sdl/Application.cpp",
-      "bytes": 62007,
-      "sha256": "ee4856851298f73f5e5b16fc4454753ef8222d51afe9f0fb1bdbd0bfa1a3a286"
+      "bytes": 62513,
+      "sha256": "a14edf829fd57cdecdef1e8637f8315f0b5dce30b8b1c02afc1348006f3b3be8"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/sdl/ApplicationCaptureTh14.hpp",
