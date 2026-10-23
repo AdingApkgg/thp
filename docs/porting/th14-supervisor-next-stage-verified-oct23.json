@@ -1,0 +1,352 @@
+{
+  "verified": true,
+  "baseSourceCommit": "1a0b43c8f40068fdf5c4766be5bf1a5adc60f5bb",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/GameSession.cpp": "379d3a967bb91038a46d539b22230146bbd3b2e9f8bb1194211d0176f785db90"
+  },
+  "change": "Consume NextStage requests at the next Supervisor1 boundary; retain outgoing ANM29 and normal 60 ms minimum.",
+  "sdlWasmSha256": "8eb04b3340b26aa555e8fd27a06a5468d82ad560d20f78e539d4fc86d719998c",
+  "wasiStartupWasmSha256": "3e9a93635a61ecc480810b385644be1b347aea17fc2c6cac26cde3994e6c50ce",
+  "sdlRecompiled": 1,
+  "sdlReused": 145,
+  "wasiRecompiled": 1,
+  "wasiReused": 140,
+  "exportsUnchanged": true,
+  "importsUnchanged": true,
+  "delayedCoreCases": 9,
+  "normalReplays": [
+    {
+      "key": "marisaa-normal",
+      "callbacks": 104236,
+      "naturalEof": true,
+      "rawSha256": "4a10762c9edbb49a92a6ffd5afb9ae06fd4424bc44f31c3c34a35d9730429ae3",
+      "activeDifferenceCounts": {},
+      "inactiveOwnerPresenceDifferences": 5,
+      "activeBattleAndShotFieldsUnchanged": true,
+      "receipt": {
+        "path": "artifacts/th14/supervisor-next-stage-replays-oct23/full-marisaa-normal-rate-1/receipt.json",
+        "bytes": 21643,
+        "sha256": "c4e638b0187b672a30c54cc57674935120dcac8adabf909e2c59af33a9718e18"
+      },
+      "comparison": {
+        "path": "artifacts/th14/supervisor-next-stage-replays-oct23/full-marisaa-normal-rate-1/vs-published-v2.json",
+        "bytes": 2364,
+        "sha256": "d7c5ad0fc5ee721a1b111f9608759ab65c30da99af43f1bf0e45c218d23cbf73"
+      }
+    },
+    {
+      "key": "marisab-normal",
+      "callbacks": 113877,
+      "naturalEof": true,
+      "rawSha256": "4005f98945476c978ca6a49cf44a7be04c36ea79f279b8a1cd1917e8c3974949",
+      "activeDifferenceCounts": {
+        "21": 16291,
+        "22": 4498
+      },
+      "inactiveOwnerPresenceDifferences": 5,
+      "activeBattleAndShotFieldsUnchanged": true,
+      "receipt": {
+        "path": "artifacts/th14/supervisor-next-stage-replays-oct23/full-marisab-normal-rate-1/receipt.json",
+        "bytes": 21643,
+        "sha256": "66a552294b05b4d7f0cab439b3bc4ae8e53ee8705e96ffcde10f758cc7afc980"
+      },
+      "comparison": {
+        "path": "artifacts/th14/supervisor-next-stage-replays-oct23/full-marisab-normal-rate-1/vs-published-v2.json",
+        "bytes": 3184,
+        "sha256": "7781fd835479dc35fc17255782efced50647c87794ac654ea99a66f547235473"
+      }
+    },
+    {
+      "key": "reimua-normal",
+      "callbacks": 85035,
+      "naturalEof": true,
+      "rawSha256": "282db7cda9a8dd58ef3e4da816547d01fe62a76e9beba0e95d3579ac93f32ce9",
+      "activeDifferenceCounts": {
+        "21": 12561,
+        "22": 1283
+      },
+      "inactiveOwnerPresenceDifferences": 5,
+      "activeBattleAndShotFieldsUnchanged": true,
+      "receipt": {
+        "path": "artifacts/th14/supervisor-next-stage-replays-oct23/full-reimua-normal-rate-1/receipt.json",
+        "bytes": 21638,
+        "sha256": "2b5ad22a5cd87ff2357df8072ae344faedf1cfbd69b8d3b80eeb6d10c1c911e3"
+      },
+      "comparison": {
+        "path": "artifacts/th14/supervisor-next-stage-replays-oct23/full-reimua-normal-rate-1/vs-published-v2.json",
+        "bytes": 3174,
+        "sha256": "55ac3bf81cb1ff2155e476cf2fe73b3c2adef3c68f68be45dc68b72de1cf9ee9"
+      }
+    },
+    {
+      "key": "reimub-normal",
+      "callbacks": 122005,
+      "naturalEof": true,
+      "rawSha256": "aa3210811b9355392a39334c97a2ee050b16a888a0ea50dd096348b2510b8787",
+      "activeDifferenceCounts": {},
+      "inactiveOwnerPresenceDifferences": 5,
+      "activeBattleAndShotFieldsUnchanged": true,
+      "receipt": {
+        "path": "artifacts/th14/supervisor-next-stage-replays-oct23/full-reimub-normal-rate-1-retry/receipt.json",
+        "bytes": 21642,
+        "sha256": "8c7448624f0a2059f4c4cb6c513b361ef841d5c659e6c61378cb757bc9eb2c96"
+      },
+      "comparison": {
+        "path": "artifacts/th14/supervisor-next-stage-replays-oct23/full-reimub-normal-rate-1-retry/vs-published-v2.json",
+        "bytes": 2369,
+        "sha256": "aa69dbb4fe87fb10f820d5f334ec27b430078c475ce751b78d3ce9b6f9b4bc77"
+      }
+    },
+    {
+      "key": "sakuyaa-normal",
+      "callbacks": 104802,
+      "naturalEof": true,
+      "rawSha256": "4e0397718bb63f1d58ac6b475572499345e857b7ac89cd0f99c21672443b0d68",
+      "activeDifferenceCounts": {},
+      "inactiveOwnerPresenceDifferences": 5,
+      "activeBattleAndShotFieldsUnchanged": true,
+      "receipt": {
+        "path": "artifacts/th14/supervisor-next-stage-replays-oct23/full-sakuyaa-normal-rate-1/receipt.json",
+        "bytes": 21643,
+        "sha256": "f369359d294c9271af2f870e3a5b7bef399eccd17038d6fa347719f64b115dbc"
+      },
+      "comparison": {
+        "path": "artifacts/th14/supervisor-next-stage-replays-oct23/full-sakuyaa-normal-rate-1/vs-published-v2.json",
+        "bytes": 2361,
+        "sha256": "9ac46f9998d7620caf357504f724f3546ffe50356e4e4f82fc565edb2aec2bdd"
+      }
+    },
+    {
+      "key": "sakuyab-normal",
+      "callbacks": 112201,
+      "naturalEof": true,
+      "rawSha256": "baaab0c9afbfab0e9cc7befb909d6be35f287d154256be23bb7962b0961642c8",
+      "activeDifferenceCounts": {},
+      "inactiveOwnerPresenceDifferences": 5,
+      "activeBattleAndShotFieldsUnchanged": true,
+      "receipt": {
+        "path": "artifacts/th14/supervisor-next-stage-replays-oct23/full-sakuyab-normal-rate-1/receipt.json",
+        "bytes": 21643,
+        "sha256": "b709d5ecedd091fc3605d3a9bc8d42b6327d669fd2d138ba58f84c61152f0766"
+      },
+      "comparison": {
+        "path": "artifacts/th14/supervisor-next-stage-replays-oct23/full-sakuyab-normal-rate-1/vs-published-v2.json",
+        "bytes": 2362,
+        "sha256": "2ce84f1dec3578dd719c0ca8a7b94f49f498a6bfb82379e7296fef6e567febf9"
+      }
+    }
+  ],
+  "totalNormalCallbacks": 642156,
+  "allActiveSelectedWordsUnchanged": false,
+  "allActiveSelectedNonvisualAndShotFieldsUnchangedVersusPreviousPort": true,
+  "originalRequestOrder": {
+    "supervisorPriority": 1,
+    "playerPriority": 18,
+    "dialoguePriority": 27,
+    "hudPriority": 28,
+    "normalAnmPriority": 29,
+    "postingRoutine": "0x436f90",
+    "postingInstruction": "0x43726e",
+    "supervisorConsume": "0x446a8d"
+  },
+  "nativeControls": {
+    "verified": true,
+    "sourceSha256": "379d3a967bb91038a46d539b22230146bbd3b2e9f8bb1194211d0176f785db90",
+    "identicalPortableObjectBindings": 141,
+    "originalProcess": {
+      "callbacks": 12735,
+      "executableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+      "rawSha256": "70695351d0bcad545c18b19cc41de13a6adecd910e404dd4481f214e24081d25",
+      "timesSha256": "9caa6be6b5df893c62cabcea3e62bd9e8435976b83ac74f10780ca96a5005f92",
+      "supervisorPrecedingPlayerCallbacks": 12553,
+      "sleepPrecedingPlayerCallbacks": 12554,
+      "wakePrecedingPlayerCallbacks": 12558,
+      "requestedSleepMs": 60,
+      "observedHostBoundaryMs": 62.6449,
+      "restore": {
+        "index": 12558,
+        "stage": 2,
+        "seed": 31125,
+        "calls": 258710
+      },
+      "originalFlagWordWrites": 1,
+      "instructionBytesPatched": 0,
+      "rngOrCounterWrites": 0,
+      "configuredQuiet": true,
+      "debuggerPausesAffectTiming": true,
+      "hostTimeIsOriginalClockInput": false,
+      "ordinaryMenuReplayInitialization": false
+    },
+    "freshVersusOldNativePrefixDifferentFieldRows": {
+      "21": 12558,
+      "22": 341
+    },
+    "controls": [
+      {
+        "label": "published",
+        "restore": {
+          "index": 12556,
+          "stage": 2,
+          "seed": 31125,
+          "calls": 257606
+        },
+        "differentFieldRows": {
+          "21": 12735,
+          "22": 12735,
+          "24": 2
+        },
+        "shotDifferences": 0,
+        "rawSha256": "07a7eda6ecd6440e4589cbb3c115b08f2ed6231a3a37cf09c75d6fd085aeca86",
+        "report": {
+          "path": "artifacts\\th14\\marisab-observed-clock-controls-oct23\\published\\report.json",
+          "bytes": 2263,
+          "sha256": "507c38a711e50fa4f817f48b1ef0d4a2325fe4dfa8b3495c12b5a1fd2cb6488e"
+        }
+      },
+      {
+        "label": "candidate",
+        "restore": {
+          "index": 12558,
+          "stage": 2,
+          "seed": 31125,
+          "calls": 257630
+        },
+        "differentFieldRows": {
+          "21": 12558,
+          "22": 12735
+        },
+        "shotDifferences": 0,
+        "rawSha256": "3ec68c8ee5c411959aed5a65b05d4b9f0f939c19e76eb27c2a07effd82c996f9",
+        "report": {
+          "path": "artifacts\\th14\\marisab-observed-clock-controls-oct23\\candidate\\report.json",
+          "bytes": 2279,
+          "sha256": "36e8343419b9d4f1995f1c15b9a993296e627146cebad1fb3ea21a0c10ad6935"
+        }
+      }
+    ],
+    "allRaw32Compared": true,
+    "clockRescaling": false,
+    "productionSeedOrCounterCompensation": false,
+    "knownLimits": [
+      "Only the first transition and stage 2 frame 32 are observed in this fresh Native case.",
+      "Host timestamps are independent observations, not original QPC inputs or the worker completion schedule.",
+      "The absolute visual RNG call count still differs by 1080 at this restore.",
+      "The older Marisa B Normal Native prefix has a pre-existing stage 2 score difference at frame 1575, outside this fresh capture."
+    ],
+    "evidenceBindings": [
+      {
+        "path": "artifacts\\th14\\retail-marisab-stage-wait-hardware-oct23\\report.json",
+        "bytes": 4944,
+        "sha256": "6926bcf544ace3701c9842717c3e14a6a767534388b610884ba1ec0d7509b7bc"
+      },
+      {
+        "path": "artifacts\\th14\\retail-marisab-stage-wait-hardware-oct23\\selected-state.u32",
+        "bytes": 1630080,
+        "sha256": "70695351d0bcad545c18b19cc41de13a6adecd910e404dd4481f214e24081d25"
+      },
+      {
+        "path": "artifacts\\th14\\retail-marisab-stage-wait-hardware-oct23\\player-host-monotonic.u64",
+        "bytes": 101880,
+        "sha256": "9caa6be6b5df893c62cabcea3e62bd9e8435976b83ac74f10780ca96a5005f92"
+      },
+      {
+        "path": "artifacts\\th14\\supervisor-next-stage-candidate-oct23\\replay-build.json",
+        "bytes": 69253,
+        "sha256": "44c304e5a5ab3ccb7d59c10e0498a58d9f93c197d67c793f755f132285bf7c2f"
+      },
+      {
+        "path": "artifacts\\th14\\supervisor-next-stage-replays-oct23\\build.json",
+        "bytes": 68179,
+        "sha256": "bdcca91cfc1a3cf5b5599013ac59e8fa5e915653c0d25813af0a074e20ea1bfc"
+      }
+    ],
+    "completeGame": false,
+    "nativeEquivalent": false
+  },
+  "reimuBDefaultClockNativeActiveShotCountDifferences": 93,
+  "reimuBDifferencesByStage": {
+    "2": 4,
+    "3": 63,
+    "4": 13,
+    "5": 13
+  },
+  "browser": {
+    "url": "http://localhost:8219/?game=th14",
+    "quietOutput": true,
+    "replayImportedUsingLauncher": true,
+    "replayDownloadBytesIdentical": true,
+    "originalReimuBNormalReplayFromStage1": true,
+    "naturalFirstToSecondStageTransition": true,
+    "errorOrWarningCountSinceReplayLaunch": 0,
+    "actualWebGL": true,
+    "fullReplayNaturalEofAsserted": false
+  },
+  "knownLimits": [
+    "Actual Native worker scheduling and original clock inputs remain unproved; observed host timestamps do not establish them.",
+    "The absolute Native visual RNG call total still differs. No fixed callback count, clock rescaling, seed or counter correction is added.",
+    "Default-clock Reimu A and Marisa B active visual RNG words change; all recorded differences are retained.",
+    "93 active Reimu B Normal shot-count differences remain versus the frozen Native full reference.",
+    "The older Marisa B Normal Native run times out at 27751 callbacks and first differs in score at stage 2 frame 1575; this already exists in the previous port.",
+    "Full modes, graphics, audio, persistence and ordinary Native menu replay initialization still require acceptance."
+  ],
+  "evidenceBindings": [
+    {
+      "path": "artifacts/th14/supervisor-next-stage-oct23/build/build.json",
+      "bytes": 98378,
+      "sha256": "c6cb85e267d209f76e25e9b822ade0b55dfbf37da1b2d7a070c925dd9ce9e0e1"
+    },
+    {
+      "path": "artifacts/th14/supervisor-next-stage-oct23/build/wasi-build.json",
+      "bytes": 149532,
+      "sha256": "f5c9b7cec8aebaa85a760c456c006f014f6912b4094bf67c9abb9fd90527f38f"
+    },
+    {
+      "path": "artifacts/th14/supervisor-next-stage-oct23/core-loading-verified.json",
+      "bytes": 9368,
+      "sha256": "d95e419ccc0c42a3f29bb05b3f9ccf7c9ce1fb37fcfdcb0c3fcc166e96f1476c"
+    },
+    {
+      "path": "artifacts/th14/supervisor-next-stage-oct23/native-controls-verified.json",
+      "bytes": 4123,
+      "sha256": "e78d5c385cdec409da621b763f903100b058ef9a6b2655a06e00dfb12f0a7978"
+    },
+    {
+      "path": "artifacts/th14/supervisor-next-stage-replays-oct23/six-normal-results-v2.json",
+      "bytes": 19599,
+      "sha256": "6ad8ac3af99117ab06ff578eb9c8a086d447f5002a28a3de3b067fc5a00b40b9"
+    },
+    {
+      "path": "artifacts/th14/supervisor-next-stage-replays-oct23/strict-check-failure.json",
+      "bytes": 378,
+      "sha256": "502ae05393b520ecf2bbeecb46e9b3412a03fc374092533a315066235e73ec5b"
+    },
+    {
+      "path": "artifacts/th14/supervisor-next-stage-oct23/browser-logs.json",
+      "bytes": 110618,
+      "sha256": "dc96f901cad59309d736e1b2b572bc0c366c8e5a7d9139d66c604e483dcfaa7c"
+    },
+    {
+      "path": "artifacts/th14/marisab-normal-native-prefix-raw-oct23/report.json",
+      "bytes": 4468,
+      "sha256": "9c40a1727baec4e3544b30e7a8faeae2cdbb6dc1842f9e3ccbcac7385fbddbb2"
+    },
+    {
+      "path": "artifacts/th14/supervisor-next-stage-oct23/browser-replay-selected.jpg",
+      "bytes": 260297,
+      "sha256": "767a70aaf92442b23db7747bb2b8f7b355fb91dd6ddbc31c8d88c90c52f8898e"
+    },
+    {
+      "path": "artifacts/th14/supervisor-next-stage-oct23/browser-replay-stage1.jpg",
+      "bytes": 229314,
+      "sha256": "c7b409a1f26c945df66ac79b44f34966a1b71e210125086eaf18fbb5ea77ce08"
+    },
+    {
+      "path": "artifacts/th14/supervisor-next-stage-oct23/browser-replay-stage2.jpg",
+      "bytes": 218322,
+      "sha256": "e7c3fb94d7a7e4aceddb80edd32d9ea134683de03243441dac29a10815c8a972"
+    }
+  ],
+  "rootResourceCryptExcluded": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}

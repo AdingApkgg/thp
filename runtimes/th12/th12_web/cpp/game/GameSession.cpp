@@ -318,6 +318,31 @@ bool GameSession::update(const GameSessionInput& input) {
         }
     }
     if(state.phase==GameSessionPhase::loading)return true;
+#if PORT_TITLE == 14
+    // Consume the preceding dialogue/HUD request at Supervisor1, before the
+    // incoming callback pass. The loader is launched here, not at ANM29's tail.
+    if(state.phase==GameSessionPhase::stage&&battle&&battle->completion.state.exit==StageExit::NextStage){
+        const u32 next=u32(battle->completion.state.next_stage);
+        if(!state.replay){recording.spell_times(battle->spell_timing.records);recording_active=false;}
+        if(state.replay){
+            if(!playback.stage(next)){state.phase=GameSessionPhase::finished;return true;}
+            battle->replay_entry.read(playback.header(next));
+        }
+        auto initialize=[this](){
+            auto& rng=animations.visual_rng;
+            if(!state.replay){recording_seed=rng.seed;rng.calls=0;animations.script_rng.seed=u16(recording_seed);}
+            else{
+                battle->replay_entry.restore(economy,rng,false,&animations.script_rng);
+                battle->enemy_environment.spell_practice_id=battle->replay_entry.th14_practice_mode;
+                battle->hud.score.continues=battle->replay_entry.continues;
+                battle->player->state.minimum_point_value=signed_bits(battle->replay_entry.th14_globals[10]);
+            }
+            return true;
+        };
+        if(!source||!battle->next_stage(*source,next,std::move(initialize))){error="stage transition failed: "+battle->error;return false;}
+        state.stage=next;state.frame=0;
+    }
+#endif
     if(battle&&battle->pending_stage){
         // Only the first actual deferred copy slot guards worker entry;
         // graphics upload readiness is a separate resource phase boundary.
@@ -571,6 +596,9 @@ bool GameSession::update(const GameSessionInput& input) {
         if(battle->completion.state.exit==StageExit::Ending)return open_ending();
 #endif
         if(battle->completion.state.exit==StageExit::Title||battle->completion.state.exit==StageExit::ReplayEnd){if(interactive)return return_to_title();state.phase=GameSessionPhase::finished;return true;}
+#if PORT_TITLE == 14
+        if(battle->completion.state.exit==StageExit::NextStage){state.stage=u32(battle->completion.state.next_stage);state.frame=0;}
+#else
         if(battle->completion.state.exit==StageExit::NextStage){
             const u32 next=u32(battle->completion.state.next_stage);
             auto& gameplay_rng=kPortTitle==14?animations.visual_rng:animations.script_rng;
@@ -618,6 +646,7 @@ bool GameSession::update(const GameSessionInput& input) {
 #endif
 #endif
         }
+#endif
     } else if(!animations.update(false)) return fail("ANM update failed");
     ++state.frame;
     return true;
