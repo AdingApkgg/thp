@@ -494,7 +494,7 @@ struct Application:StageResourceEffects
 #endif
         if(!initialize())return false;
 #if PORT_TITLE == 14
-        boot_signature_pending=false;boot_signature_active=false;boot_signature_handle=0;
+        boot_signature_pending=false;boot_signature_active=false;boot_signature_handle=0;boot_signature_draws=0;
         if(!core_loading_done){if(!session.resources.prepare_core()){error=session.resources.error;return false;}core_loading_done=true;}
         boot_loading.finish(session.animations);boot_uploads.clear();boot_upload_index=0;
         boot_stage_owner=nullptr;stage_uploads.cancel_all();
@@ -514,6 +514,13 @@ struct Application:StageResourceEffects
         if(session.resources.stage)for(auto& file:session.resources.stage->ecl_animations)graphics.unload(file);
 #endif
         if(!session.begin(resources,stage,character,subtype,difficulty,false)){error=session.error;return false;}
+#if PORT_TITLE == 14
+        // begin() clears the previous session's VMs. An interrupted cold boot
+        // can still own sig textures; release them only after those references
+        // are gone, without an extra ANM update consuming random values.
+        if(session.animations.references(boot_signature)){error="TH14 sig still referenced after session replacement";return false;}
+        graphics.unload(boot_signature);boot_signature={};
+#endif
         frame_statistics.reset_run();
 #if PORT_TITLE == 14 || PORT_TITLE == 16
         if(!graphics.preload(core.effect)){error=graphics.error;return false;}
