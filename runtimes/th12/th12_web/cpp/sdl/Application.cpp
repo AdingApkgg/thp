@@ -158,6 +158,13 @@ struct Application:StageResourceEffects
     std::vector<ResourceUpload> boot_uploads;
     u32 boot_upload_index=0;
     StageResources* boot_stage_owner=nullptr;
+    enum class BootWork:u8 {Idle,Decode,Resume,Title};
+    struct BootWorkToken {Application* owner;u64 generation;BootWork work;u32 index;};
+    u64 boot_worker_generation=0;
+    BootWork boot_worker_work=BootWork::Idle;
+    u32 boot_worker_index=0;
+    bool boot_worker_active=false,boot_worker_suspended=false;
+    bool boot_job_published=false,boot_title_ready=false,boot_worker_failed=false;
     StageUploadsTh14 stage_uploads;
     u64 stage_worker_generation=0,stage_worker_started_ns=0;
     bool stage_worker_waiting=false;
@@ -362,6 +369,7 @@ struct Application:StageResourceEffects
         // First entry waits before battle construction; later entries keep
         // the existing world until the incoming resources are ready.
         {
+            cancel_boot_worker();
             boot_uploads.clear();boot_upload_index=0;
             boot_stage_owner=&stage;
             // Like later Timeline loads, queue only the ECL ANIM resources.
@@ -387,6 +395,65 @@ struct Application:StageResourceEffects
     }
 #if PORT_TITLE == 14
     bool core_ready()const override{return core_loading_done;}
+    void cancel_boot_worker(){
+        ++boot_worker_generation;boot_worker_active=boot_worker_suspended=false;
+        boot_job_published=boot_title_ready=boot_worker_failed=false;
+        boot_worker_work=BootWork::Idle;
+    }
+    void suspend_boot_worker(){
+        if(boot_worker_active){++boot_worker_generation;boot_worker_suspended=true;}
+    }
+    void resume_boot_worker(){
+        if(!boot_worker_active||!boot_worker_suspended)return;
+        boot_worker_suspended=false;
+        if(boot_worker_work!=BootWork::Idle)dispatch_boot_work(boot_worker_work,boot_worker_index,0);
+    }
+    void dispatch_boot_work(BootWork work,u32 index,int delay){
+        boot_worker_work=work;boot_worker_index=index;
+        emscripten_async_call(run_boot_work,new BootWorkToken{this,boot_worker_generation,work,index},delay);
+    }
+    static void run_boot_work(void* raw){
+        std::unique_ptr<BootWorkToken> token(static_cast<BootWorkToken*>(raw));
+        auto& app=*token->owner;
+        if(token->generation!=app.boot_worker_generation||!app.boot_worker_active||app.boot_worker_suspended)return;
+        app.boot_worker_work=BootWork::Idle;
+        if(token->work==BootWork::Title){
+            // Retail4595be polls Sleep16 after the resource worker returns.
+            if(app.boot_signature_draws<180){app.dispatch_boot_work(BootWork::Title,0,16);return;}
+            app.boot_title_ready=true;
+            std::printf("[loading14] title worker ready at draw%u\n",app.boot_signature_draws);return;
+        }
+        if(token->work==BootWork::Decode){
+            if(token->index!=app.boot_upload_index||token->index>=app.boot_uploads.size()){
+                app.error="TH14 boot decode owner changed";app.boot_worker_failed=true;return;
+            }
+            if(token->index>=3){
+                constexpr u32 jobs[]={0,1,2,4,5};
+                if(!app.session.resources.load_core_job(jobs[token->index-3])){
+                    app.error=app.session.resources.error;app.boot_worker_failed=true;return;
+                }
+            }
+            app.boot_job_published=true;
+            std::printf("[loading14] worker queued file%u\n",u32(app.boot_uploads[token->index].file));return;
+        }
+        if(token->index>=app.boot_uploads.size()||app.boot_upload_index!=token->index+1){
+            app.error="TH14 boot upload owner changed";app.boot_worker_failed=true;return;
+        }
+        const auto file=app.boot_uploads[token->index].file;
+        // Retail47d090 waits for the main upload pump, then the worker
+        // publishes604/608. GPU completion alone does not enable draw60.
+        if(file==1)app.boot_signature_uploaded=true;
+        if(file==2)app.boot_ascii_uploaded=true;
+        if(file==0){
+            if(!app.session.compositor.initialize(app.session.resources.core.text)){
+                app.error="TH14 startup compositor: "+app.session.compositor.last_error;app.boot_worker_failed=true;return;
+            }
+            app.session.compositor.reset_cameras(false);
+        }
+        std::printf("[loading14] worker resumed after file%u\n",u32(file));
+        if(app.boot_upload_index<app.boot_uploads.size())app.dispatch_boot_work(BootWork::Decode,app.boot_upload_index,0);
+        else app.dispatch_boot_work(BootWork::Title,0,0);
+    }
     static void finish_stage_worker_wait(void* raw){
         std::unique_ptr<StageWorkerWaitToken> token(static_cast<StageWorkerWaitToken*>(raw));
         auto& app=*token->owner;
@@ -463,7 +530,7 @@ struct Application:StageResourceEffects
     void release(StageResources& stage)override{
 #if PORT_TITLE == 14
         stage_uploads.cancel(stage);
-        if(boot_stage_owner==&stage){boot_uploads.clear();boot_upload_index=0;boot_stage_owner=nullptr;boot_loading.finish(session.animations);}
+        if(boot_stage_owner==&stage){cancel_boot_worker();boot_uploads.clear();boot_upload_index=0;boot_stage_owner=nullptr;boot_loading.finish(session.animations);}
 #endif
         renderer.flush();renderer.invalidate();
         for(auto* file:{&stage.background,&stage.logo,&stage.enemies})graphics.unload(*file);
@@ -527,6 +594,7 @@ struct Application:StageResourceEffects
         // Sig and ASCII only after their own file's GPU preparation completes.
         boot_uploads={{&boot_signature,1},{&core.ascii,2},{&core.text,0},{&core.front,5},{&core.bullet,7},{&core.effect,8},{&core.title,16},{&core.title_variant,17}};
         boot_upload_index=0;std::printf("[loading14] sig/ascii/text queued before common resources; %u resource uploads pending\n",u32(boot_uploads.size()));
+        cancel_boot_worker();boot_worker_active=true;dispatch_boot_work(BootWork::Decode,0,0);
         boot_stage_owner=nullptr;
 #else
 #if PORT_TITLE == 16
@@ -551,6 +619,7 @@ struct Application:StageResourceEffects
 #endif
         if(!initialize())return false;
 #if PORT_TITLE == 14
+        cancel_boot_worker();
         boot_signature_pending=false;boot_signature_active=false;boot_signature_handle=0;boot_signature_draws=0;
         boot_signature_uploaded=false;boot_ascii_uploaded=false;boot_ascii_pending=false;
         if(!core_loading_done){if(!session.resources.prepare_core()){error=session.resources.error;return false;}core_loading_done=true;}
@@ -600,6 +669,7 @@ struct Application:StageResourceEffects
     bool tick(u32 held,bool pause_key=false) {
         if(!initialize())return false;
 #if PORT_TITLE == 14
+        if(boot_worker_failed)return false;
         if(stage_uploads.pending()){
             renderer.flush();graphics.error.clear();
             if(!stage_uploads.advance([&](const auto& job){return graphics.preload_chunk(*job.resource,job.chunk);})){ 
@@ -610,9 +680,9 @@ struct Application:StageResourceEffects
             // ANM update or a loading-frame return.
         }
         if(boot_upload_index<boot_uploads.size()||boot_signature_active){
-            if(boot_upload_index<boot_uploads.size()){
+            if(boot_upload_index<boot_uploads.size()&&(!boot_worker_active||boot_job_published)){
                 auto& job=boot_uploads[boot_upload_index];
-                if(!core_loading_done&&boot_upload_index>=3){
+                if(!boot_worker_active&&!core_loading_done&&boot_upload_index>=3){
                     constexpr u32 title_jobs[]={0,1,2,4,5};
                     if(!session.resources.load_core_job(title_jobs[boot_upload_index-3])){error=session.resources.error;return false;}
                 }
@@ -622,18 +692,20 @@ struct Application:StageResourceEffects
                 const bool resource_ready=++job.chunk>=job.resource->textures.size();
                 if(resource_ready&&!session.animations.prepare_resource(*job.resource,job.file)){error=session.animations.last_error_text();return false;}
                 if(resource_ready){
-                    if(job.resource==&boot_signature)boot_signature_uploaded=true;
-                    if(job.resource==&session.resources.core.ascii)boot_ascii_uploaded=true;
-                    if(!core_loading_done&&job.resource==&session.resources.core.text){
+                    if(!boot_worker_active&&job.resource==&boot_signature)boot_signature_uploaded=true;
+                    if(!boot_worker_active&&job.resource==&session.resources.core.ascii)boot_ascii_uploaded=true;
+                    if(!boot_worker_active&&!core_loading_done&&job.resource==&session.resources.core.text){
                         if(!session.compositor.initialize(*job.resource)){error="TH14 startup compositor: "+session.compositor.last_error;return false;}
                         session.compositor.reset_cameras(false);
                     }
-                    std::printf("[loading14] file %u ready after %u chunk callbacks\n",u32(job.file),job.chunk);++boot_upload_index;
+                    std::printf("[loading14] file %u ready after %u chunk callbacks\n",u32(job.file),job.chunk);
+                    const u32 completed=boot_upload_index++;
+                    if(boot_worker_active){boot_job_published=false;dispatch_boot_work(BootWork::Resume,completed,1);}
                 }
             }
             // 45959a waits for actual priority60 callbacks to reach180. Only
             // after both upload readiness and that count does 4595e1 unload sig.
-            const bool signature_ready=boot_signature_active&&!boot_signature_pending&&boot_signature_draws>=180&&boot_upload_index==boot_uploads.size();
+            const bool signature_ready=boot_signature_active&&!boot_signature_pending&&boot_signature_draws>=180&&boot_upload_index==boot_uploads.size()&&(!boot_worker_active||boot_title_ready);
             bool title_entry_advanced=false;
             if(signature_ready){
                 session.animations.retire_resource(boot_signature);
@@ -661,6 +733,7 @@ struct Application:StageResourceEffects
                 std::printf("[loading14] sig retired after %u draw callbacks\n",boot_signature_draws);
             }
             if(boot_upload_index==boot_uploads.size()&&!boot_signature_active){
+                cancel_boot_worker();
                 core_loading_done=true;
                 boot_loading.finish(session.animations);boot_uploads.clear();boot_upload_index=0;
                 boot_stage_owner=nullptr;
@@ -958,11 +1031,19 @@ EMSCRIPTEN_KEEPALIVE void th11_keys_clear(){th11::sdl::clear_inputs();}
 EMSCRIPTEN_KEEPALIVE void th11_music_enabled(unsigned on){using namespace th11::sdl;app.audio.music_enabled=on!=0;app.audio.refresh_volume();}
 EMSCRIPTEN_KEEPALIVE const unsigned* th11_audio_statistics(){return th11::sdl::app.audio.statistics();}
 EMSCRIPTEN_KEEPALIVE void th11_loop_pause(unsigned on){using namespace th11::sdl;suspended=on!=0;app.audio.suspend(suspended);previous_frame=-1;cadence.reset();clear_inputs();app.reset_frame_window();}
-EMSCRIPTEN_KEEPALIVE void th11_loop_stop(){using namespace th11::sdl;running=false;++loop_epoch;previous_frame=-1;cadence.reset();clear_inputs();app.audio.suspend(true);app.reset_frame_window();}
+EMSCRIPTEN_KEEPALIVE void th11_loop_stop(){
+    using namespace th11::sdl;running=false;++loop_epoch;previous_frame=-1;cadence.reset();clear_inputs();app.audio.suspend(true);app.reset_frame_window();
+#if PORT_TITLE == 14
+    app.suspend_boot_worker();
+#endif
+}
 EMSCRIPTEN_KEEPALIVE void th11_audio_close(){th11::sdl::app.audio.close();}
 EMSCRIPTEN_KEEPALIVE void th11_loop_start(){
     using namespace th11::sdl;if(running||!app.initialized)return;
     running=true;suspended=false;previous_frame=-1;cadence.reset();clear_inputs();app.audio.suspend(false);app.reset_frame_window();
+#if PORT_TITLE == 14
+    app.resume_boot_worker();
+#endif
     emscripten_request_animation_frame_loop([](double time,void* epoch)->EM_BOOL{
         if(!running||uintptr_t(epoch)!=loop_epoch)return EM_FALSE;
         const double begin=emscripten_get_now(),delta=previous_frame<0?0:(time-previous_frame)/1000.;previous_frame=time;

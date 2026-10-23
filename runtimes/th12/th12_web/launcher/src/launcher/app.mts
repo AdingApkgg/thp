@@ -981,6 +981,18 @@ let activeInstalledPackageGeneration: InstalledPackageGeneration | null = null;
 // depend on whichever optional-resource generation happens to be current.
 const managedRuntimeGenerationLease = createManagedRuntimeGenerationLease();
 let runtimeNavigationEpoch = 0;
+let th14PlayerAttempt = 0;
+type Th14PlayerScope = { value: number } | null;
+const captureTh14PlayerScope = (): Th14PlayerScope => state.game === "th14" ? { value: th14PlayerAttempt } : null;
+const currentTh14PlayerScope = (scope: Th14PlayerScope) => scope === null || (state.game === "th14" && scope.value === th14PlayerAttempt);
+function checkTh14PlayerScope(scope: Th14PlayerScope) {
+  if (!currentTh14PlayerScope(scope)) throw new DOMException("TH14启动请求已取消", "AbortError");
+}
+function openPlayerViewForScope(scope: Th14PlayerScope) {
+  checkTh14PlayerScope(scope);
+  openPlayerView();
+  if (scope) scope.value = th14PlayerAttempt;
+}
 const runtimeEpochFields = () => state.game === "th14" ? { epoch: runtimeNavigationEpoch } : {};
 // A failed local OGG startup is a launch-scoped fallback. Keep the durable
 // preference so the user can retry after repairing the Package, but do not let
@@ -2819,12 +2831,16 @@ async function installImportedGameData(file: File | Blob) {
 }
 const selectedLanguagePack = () => resolveLanguagePackSource(languageEntry(), location.href);
 async function launchConfiguredRuntime() {
+  const attempt = captureTh14PlayerScope();
   clearStartupError();
-  await ensureRuntime(true);
+  await ensureRuntime(true, attempt);
+  checkTh14PlayerScope(attempt);
   launchMusicFallback = null;
   chooseDefaultMusic();
   const runtimePack = await prepareLanguagePack();
+  checkTh14PlayerScope(attempt);
   await ensureManagedOggStartupBarrier();
+  checkTh14PlayerScope(attempt);
   prepareMidi();
   const musicResources = await selectedMusicResources();
   const localMusicResources = isOggMusicMode(state.music) && musicResources.length > 0 &&
@@ -2832,6 +2848,7 @@ async function launchConfiguredRuntime() {
   const localMusicGeneration = localMusicResources ? activeInstalledPackageGeneration : null;
   const shared = await selectedSharedResources();
   const packageResources = await installedPackageRuntimeResources();
+  checkTh14PlayerScope(attempt);
   setPlayerStatus(runtimePack ? `准备 ${entryTitle(languageEntry())} 语言包…` : `准备 ${musicModeLabel(state.music)} 音乐资源…`);
   const netplayOptions = state.runtimeVariant === "multiplayer" && !state.replayViewer ? validatedNetplayOptions() : {};
   await send("configure", {
@@ -2856,8 +2873,10 @@ async function launchConfiguredRuntime() {
       replayViewer: !!state.replayViewer,
       ...netplayOptions }
   }, 30 * 60 * 1000);
+  checkTh14PlayerScope(attempt);
   if (packageResources.length) {
     await installManagedPackageResources(packageResources);
+    checkTh14PlayerScope(attempt);
   }
   let localMusicInstall = null;
   if (localMusicResources) {
@@ -2865,10 +2884,12 @@ async function launchConfiguredRuntime() {
       if (!localMusicGeneration) throw new Error("本地 OGG 对应的 Package generation 不可用");
       localMusicInstall = createLocalMusicInstall(localMusicResources, localMusicGeneration);
       await localMusicInstall.installInitial();
+      checkTh14PlayerScope(attempt);
       const runtimeWindow = currentRuntimeWindow();
       if (!runtimeWindow?.Module) throw new Error("游戏运行时不可访问");
       runtimeWindow.Module.touhouMusicMode = "ogg";
     } catch (error) {
+      checkTh14PlayerScope(attempt);
       localMusicInstall?.cancel();
       localMusicInstall = null;
       // Keep the durable preference intact, but make this launch's effective
@@ -2887,6 +2908,7 @@ async function launchConfiguredRuntime() {
   startPlayerFocusRelay();
   try {
     await send("launch");
+    checkTh14PlayerScope(attempt);
   } catch (error) {
     clearFirstFrameWatchdog();
     throw error;
@@ -3436,6 +3458,22 @@ async function confirmInputWarnings() {
   return true;
 }
 
+function navigateRuntimeFrame(source: string | null) {
+  if (state.game === "th14" && frame.contentWindow) {
+    try {
+      // Reusing the iframe must not add a child history entry. Otherwise a
+      // browser Back can enter about:blank while the parent stays in Player.
+      frame.contentWindow.location.replace(source ?? "about:blank");
+      return;
+    } catch {
+      // Retain the standard iframe navigation fallback if direct navigation
+      // is unavailable for this browsing context.
+    }
+  }
+  if (source === null) frame.removeAttribute("src");
+  else frame.src = source;
+}
+
 function resetRuntime() {
   ++runtimeNavigationEpoch;
   cancelDirectTouches(false);
@@ -3462,7 +3500,7 @@ function resetRuntime() {
   gameZoom.reset();
   updatePlayerOrientationUi();
   midiSynth?.reset();
-  frame.removeAttribute("src");
+  navigateRuntimeFrame(null);
 }
 
 function prepareMidi() {
@@ -3656,6 +3694,7 @@ for (const type of ["contextmenu", "selectstart", "dragstart", "gesturestart", "
 
 function openPlayerView() {
   if (!player.classList.contains("open")) {
+    if (state.game === "th14") ++th14PlayerAttempt;
     const operation = playerRouteHistoryOperation({
       currentUrl: location.href,
       currentState: history.state,
@@ -3714,6 +3753,7 @@ function resetGameZoomFromControl() {
 }
 
 async function closePlayerView(fromHistory = false, { skipSync = false, returnToMpRoom = false } = {}) {
+  if (state.game === "th14") ++th14PlayerAttempt;
   gameZoom.cancelGesture();
   cancelTouchLayoutGestures();
   if (isPlayerFullscreen()) await document.exitFullscreen().catch(() => {});
@@ -3890,13 +3930,15 @@ function needsTh08OggMigration(generation: InstalledPackageGeneration) {
     /^\/music\/.*\.flac$/i.test(file.target));
 }
 
-async function ensureInstalledPackageRuntime(show = true) {
+async function ensureInstalledPackageRuntime(show = true, attempt: Th14PlayerScope = null) {
   let installed;
   try {
     installed = await readCurrentPackageGeneration(state.game);
   } catch {
+    checkTh14PlayerScope(attempt);
     return false;
   }
+  checkTh14PlayerScope(attempt);
   const generation = installed?.generation;
   if (!generation?.id) { activeInstalledPackageGeneration = null; return false; }
   if (needsTh08OggMigration(generation)) throw new Error("请先更新永夜抄音乐资源，再进入游戏。存档和录像会保留。");
@@ -3928,7 +3970,7 @@ async function ensureInstalledPackageRuntime(show = true) {
   // generated Emscripten loader through Module.getPreloadedPackage.
   state.source = managedRuntimeUrl(runtimeUrl(), generation, state.runtimeVariant, location.href);
   { const url = new URL(state.source); url.searchParams.set("language", state.language); if (state.game === "th14") url.searchParams.set("runtimeEpoch", String(runtimeNavigationEpoch)); state.source = url.href; }
-  if (show) openPlayerView();
+  if (show) openPlayerViewForScope(attempt);
   const runtimeReady = new Promise<void>((resolve, reject) => {
     const cleanup = () => {
       clearOptionalTimeout(timer);
@@ -3948,8 +3990,9 @@ async function ensureInstalledPackageRuntime(show = true) {
   // App-owned same-origin Runtime URLs can commit and execute immediately.
   // Arm readiness/error listeners before navigation so a fast local Runtime
   // cannot emit `ready` in the gap after frame.src changes.
-  frame.src = state.source;
+  navigateRuntimeFrame(state.source);
   await runtimeReady;
+  checkTh14PlayerScope(attempt);
   return true;
 }
 
@@ -4158,15 +4201,17 @@ function startManagedOggProgressiveInstall() {
   backgroundOggInstalls.set(gameId, task);
 }
 
-async function ensureRuntime(show = true) {
+async function ensureRuntime(show = true, attempt: Th14PlayerScope = null) {
   let localInstalled = null;
   try { localInstalled = await readCurrentPackageGeneration(state.game); } catch {}
+  checkTh14PlayerScope(attempt);
   if (localInstalled?.generation) {
     // Never wait for the network merely to decide whether a local current may
     // launch. If the background Catalog is already known, apply update policy;
     // otherwise start current immediately and learn remote state later.
     const updateMode = show && releaseCatalog ? await maybeUpdateInstalledPackageBeforeLaunch(localInstalled) : "none";
-    if (await ensureInstalledPackageRuntime(show)) {
+    checkTh14PlayerScope(attempt);
+    if (await ensureInstalledPackageRuntime(show, attempt)) {
       if (updateMode === "background") deferredBackgroundPackageUpdate = localInstalled;
       return;
     }
@@ -4174,10 +4219,11 @@ async function ensureRuntime(show = true) {
   if (!releaseCatalog) {
     try { await remoteReleasePromise; } catch {}
   }
+  checkTh14PlayerScope(attempt);
   if (releaseCatalog?.games?.[state.game]) {
     const operation = beginBlockingNetworkOperation({ label: "取消下载" });
     try {
-      if (show) openPlayerView();
+      if (show) openPlayerViewForScope(attempt);
       setPlayerStatus("正在安装游戏资源…");
       await installPublishedPackage(state.game, {
         catalog: releaseCatalog,
@@ -4186,11 +4232,13 @@ async function ensureRuntime(show = true) {
         fetchImpl: packageTrackedFetch(state.game),
         signal: operation.controller.signal,
         onProgress(progress) {
-          setPlayerStatus(`正在安装游戏资源… ${progress.completed}/${progress.total}`);
+          if (currentTh14PlayerScope(attempt)) setPlayerStatus(`正在安装游戏资源… ${progress.completed}/${progress.total}`);
         }
       });
-      if (await ensureInstalledPackageRuntime(show)) return;
+      checkTh14PlayerScope(attempt);
+      if (await ensureInstalledPackageRuntime(show, attempt)) return;
     } catch (error) {
+      checkTh14PlayerScope(attempt);
       if (isCancelledDownload(error)) throw error;
       if (!hostManifestAvailable) throw error;
       showToast(`游戏资源安装失败，本次尝试现有资源启动：${errorMessage(error)}`);
@@ -4226,7 +4274,7 @@ async function ensureRuntime(show = true) {
     phase: "requesting",
     indeterminate: true,
   });
-  frame.src = state.source;
+  navigateRuntimeFrame(state.source);
   await new Promise<void>((resolve, reject) => {
     const timer = setTimeout(() => {
       frame.removeEventListener("runtime-ready", done);
@@ -6983,6 +7031,7 @@ $("#gamePackageImport").addEventListener("click", () => {
   beginManualGamePackageImport("请选择要导入的本地游戏包。已安装游戏时，导入新包会更新本地版本。");
 });
 $("#launch").addEventListener("click", async () => {
+  let th14Attempt: number | null = null;
   try {
     // Via and other mobile browsers can restore a BFCache/history entry with
     // the URL already moved to ?game=th07 while the in-memory state still
@@ -7000,12 +7049,15 @@ $("#launch").addEventListener("click", async () => {
       // Make the real player visible before requestFullscreen so desktop
       // browsers can fullscreen the same element that will host the game.
       openPlayerView();
+      if (state.game === "th14") th14Attempt = th14PlayerAttempt;
       try { await enterPlayerFullscreen({ focusGame: false }); }
       catch (error) { showToast(`浏览器阻止自动全屏：${errorMessage(error)}`); }
+      if (th14Attempt !== null && th14Attempt !== th14PlayerAttempt) return;
       await launchConfiguredRuntime();
       if (isPlayerFullscreen()) await lockEscapeForGame();
     } else refocusGameIfNeeded();
   } catch (error) {
+    if (th14Attempt !== null && th14Attempt !== th14PlayerAttempt) return;
     if (!state.launched && isCancelledDownload(error)) {
       if (player.classList.contains("open")) await closePlayerView();
       else resetRuntime();

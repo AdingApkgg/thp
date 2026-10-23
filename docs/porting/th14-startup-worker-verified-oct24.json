@@ -1,0 +1,166 @@
+{
+  "verified": true,
+  "baseCommit": "be4b564062cbe7991587445a89c4577ad15600a4",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/sdl/Application.cpp": "62533ae245a99e5730bdc3b69bcd14491b220f686b4b27ddb82da86a5d3e10ba",
+    "runtimes/th12/th12_web/launcher/src/launcher/app.mts": "557fb5d843287d4383f40e059bef2254cc82ab7c5b8bf0129331f46d24448e67",
+    "runtimes/th12/th12_web/sdl-runtime/shell.mjs": "85245c360bd7a12f2d20e958233374e5e299c4e3243f2ce4fcbe12b9e32692e5"
+  },
+  "changes": [
+    "Separate boot CPU queue publication, GPU completion, worker resumption and draw60 ready flags.",
+    "Poll the original180-draw minimum at16ms after common resources finish.",
+    "Ignore canceled or superseded boot work and preserve pending work through exported loop stop/resume.",
+    "For TH14, replace iframe history entries and reject superseded launch attempts throughout resource preparation and fallback.",
+    "Treat initialization failure on a departed TH14 document as superseded, retaining live failures."
+  ],
+  "build": {
+    "sdlWasmSha256": "6f3a1b3e71618a5399a35dc534aa5a03ee11a247eda4f10f2deba06b9d95a4d5",
+    "recompiledSources": [
+      "th12_web/cpp/sdl/Application.cpp"
+    ],
+    "reusedObjects": 145,
+    "allReusedObjectHashesBound": true,
+    "headersUnchanged": true,
+    "addedImports": [],
+    "removedImports": [],
+    "compilerImportOrderChanged": true,
+    "exportsUnchanged": true
+  },
+  "unchangedCore": {
+    "wasmSha256": "6b1f6dde9906aa04e4bda0777e4e7db8709facadbe3f343ea9f91232ea7fe0ba",
+    "sourcesAndHeadersUnchanged": true,
+    "priorRegressionCommit": "be4b564062cbe7991587445a89c4577ad15600a4",
+    "cases": 30,
+    "callbacks": 2763367,
+    "allRaw32RegressionPassed": true,
+    "notARepeatRunOfChangedSdlApplication": true
+  },
+  "independentNativeStartupControls": [
+    {
+      "publications": 131,
+      "handleFileScriptDifferences": 0,
+      "visualCalls": 1336,
+      "first49PhysicalCreationFramesMatch": true,
+      "remainingPhysicalDifferences": 82
+    },
+    {
+      "publications": 146,
+      "handleFileScriptDifferences": 0,
+      "visualCalls": 1696,
+      "first94PhysicalCreationFramesMatch": true,
+      "remainingPhysicalDifferences": 52
+    }
+  ],
+  "controlScope": {
+    "privateObservedHostQueueAndReadyFlags": true,
+    "productionCoreObjectsUsed": true,
+    "productionSdlApplicationExecuted": false,
+    "gameClockRescaled": false,
+    "perFrameGameStateOverrides": false,
+    "rngOrSerialCompensation": false,
+    "originalInstructionOrStateWrites": false
+  },
+  "browser": {
+    "actualProductionLauncher": true,
+    "actualWebGL": true,
+    "coldStartupAndTitleAttract": true,
+    "titleAttractAfterOrdinaryGame": true,
+    "postGameplayLauncherToolInteractionNeedsInvestigation": true,
+    "workerFiles": [
+      1,
+      2,
+      0,
+      5,
+      7,
+      8,
+      16,
+      17
+    ],
+    "minimumDrawsBeforeTitleReady": 180,
+    "ordinaryGameplayAndPause": true,
+    "fullscreenSingleBackAndManagedDataCancel": true,
+    "staleUiCheckElapsedMilliseconds": 1800818,
+    "issues": [],
+    "quietOutput": true,
+    "referenceTimingInjected": false,
+    "currentFullReplayStillRunning": true,
+    "sameModuleBootHotStopResumeDirectlyExercised": false
+  },
+  "previousBinaryFullGpu": {
+    "commit": "be4b564062cbe7991587445a89c4577ad15600a4",
+    "wasmSha256": "2bd54a4d931d7ad411f2c0402c8ee5316767c03fcdb24280173469f6cfc2cb26",
+    "naturalSixStageReplayEnd": true,
+    "hudScore": 801525760,
+    "graze": 17551,
+    "newBinaryAcceptanceInherited": false
+  },
+  "limitations": [
+    "Sig/ASCII/text CPU decoding remains synchronous, and asynchronous callback CPU jobs still run on the browser main thread.",
+    "The startup controls use private observed host inputs and a diagnostic adapter, not the production SDL Application or actual Native GPU pixels.",
+    "The146-object case retains52 physical creation-frame differences beginning with the initial player animation; the complete first-stage loading pipeline remains unfinished.",
+    "After returning from ordinary gameplay and its title attract demo, the visible launcher replay tool did not respond until reload; its cause remains unconfirmed.",
+    "The new full browser replay is still running at publication.",
+    "All-mode original graphics, DirectSound PCM, ordinary native initialization and persistence acceptance remain unfinished."
+  ],
+  "evidenceBindings": [
+    {
+      "path": "artifacts/th14/startup-worker-ready-oct24/build/build.json",
+      "bytes": 188627,
+      "sha256": "c71988770a71645f5cf8898b0175892452514b3853ad7d6644e716bcc4a5cdbf"
+    },
+    {
+      "path": "artifacts/th14/startup-worker-ready-oct24/import-audit.json",
+      "bytes": 366,
+      "sha256": "bfc77c2257439c2680f30625cac66d5af1a9335e9865e9840991754df4d205d6"
+    },
+    {
+      "path": "artifacts/th14/startup-worker-ready-oct24/observed-cold-queue-and-flags/report.json",
+      "bytes": 2681,
+      "sha256": "829469dbe945a1883e2dbe8c877a65f442151aa00622847ff51ad0e9d08d42dc"
+    },
+    {
+      "path": "artifacts/th14/startup-worker-ready-oct24/observed-cold-complete-queue-flags-and-title/report.json",
+      "bytes": 2542,
+      "sha256": "85c61f42cc57837b67161b41479af17c2c8ffcae4daca0abf8da62992c1aeb8c"
+    },
+    {
+      "path": "artifacts/th14/startup-worker-ready-oct24/browser-history-baseline.json",
+      "bytes": 521,
+      "sha256": "dbf00a8ab70e3d2c5f73cde9acf0e2704532a7cf4586ffd220f3e4bd3684994b"
+    },
+    {
+      "path": "artifacts/th14/startup-worker-ready-oct24/browser-history-v3-cancel-observation.json",
+      "bytes": 2123,
+      "sha256": "0baa4e5521406ab4b9ddbb21107482bebab3d730944c1cc9d692066725253f33"
+    },
+    {
+      "path": "artifacts/th14/startup-worker-ready-oct24/browser-history-v3-running-observation.json",
+      "bytes": 637,
+      "sha256": "bca5c1378df050d3f9ad8740be33acdad080044af912b1f5c6f73718a2e964f8"
+    },
+    {
+      "path": "artifacts/th14/startup-worker-ready-oct24/browser-history-v3-ordinary-observation.json",
+      "bytes": 493,
+      "sha256": "655fb90508e4c95883c1c83f74747f2eb1d7339188dd9600328482906a79f7cf"
+    },
+    {
+      "path": "artifacts/th14/startup-worker-ready-oct24/browser-full-replay-start.json",
+      "bytes": 514,
+      "sha256": "b44f102c0d202c59d29f0b5c20a4f7619c912b312454ef8248268e760735714d"
+    },
+    {
+      "path": "artifacts/th14/stage-worker-host-oct24/browser-full-replay-observation.json",
+      "bytes": 5498,
+      "sha256": "1453a7ffc27debad7d0766e551fd94d18586d5754a5c93cc91a022d43597d3d0"
+    },
+    {
+      "path": "artifacts/th14/stage-worker-host-oct24/matrix-results.json",
+      "bytes": 65145,
+      "sha256": "b9ed3caa3010fd3c9539ce5e1bf4b4cc07d72f4493b089a1ccfb7f2a7f672b3f"
+    }
+  ],
+  "sourceOnlyPublication": true,
+  "rootResourceCryptExcluded": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}
