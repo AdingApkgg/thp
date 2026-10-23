@@ -248,7 +248,7 @@ public:
     bool th14_beam_stop()override{events.push_back({BattleEventKind::StopSound,20});return true;}
     bool th14_knife_slowdown(Enemy& e,float delta)override{shot_th14_sakuya_slowdown(e.state,delta,spell_flags,spell_id);return true;}
     bool th14_beam_hit_effect(Vec3 p,float angle,Vec3 travel)override{
-        auto* vm=animations.create(resources.core.players[enemy_environment.character],8,7,22,false,false,&p);if(!vm)return false;
+        auto* vm=animations.create(resources.core.players[enemy_environment.character],8,kPortTitle==14?9:7,22,false,false,&p);if(!vm)return false;
         vm->flags|=4;vm->rotation.z=angle;auto& v=vm->position_interpolation;
         v.duration=20;v.mode=InterpolationMode::Decelerate2;v.timer.set(0,&animations.rate);
         const auto start=animations.default_tangent;std::memcpy(v.start,&start,12);std::memcpy(v.end,&travel,12);

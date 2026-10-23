@@ -91,6 +91,7 @@ public:
 #if PORT_TITLE == 14
     bool prepare_core();
     bool load_core_job(u32 index);
+    bool select_player(u32 character,u32 subtype);
     bool prepare_stage();
     enum class PhaseResult:u32 {Waiting,Ready,Failed};
     bool begin_stage_loading(u32 number);

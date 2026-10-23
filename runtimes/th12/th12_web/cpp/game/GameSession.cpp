@@ -110,6 +110,9 @@ bool GameSession::begin(GameResources& source, u32 stage, i32 character,
     if(!player_selection_valid(character,subtype)||difficulty<0||difficulty>4)
         return fail("invalid TH11 session selection");
     if(!resources.load_core(source)) return fail(resources.error.c_str());
+#if PORT_TITLE == 14
+    if(!resources.select_player(u32(character),u32(subtype)))return fail(resources.error.c_str());
+#endif
     if constexpr(kPortTitle==14||kPortTitle==16)animations.fallback_sprites=&resources.core.ascii;
     if(!compositor.initialize(resources.core.text))return fail("screen compositor initialization failed");
     state.character=character;

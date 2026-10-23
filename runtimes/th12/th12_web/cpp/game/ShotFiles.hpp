@@ -103,6 +103,9 @@ inline constexpr u32 shot_file_slot(u32 character,u32 subtype) {
 inline constexpr const char* const th12_player_files[3]={"pl00.anm","pl01.anm","pl02.anm"};
 inline constexpr const char* const th13_player_files[4]={"pl00.anm","pl01.anm","pl02.anm","pl03.anm"};
 inline constexpr const char* const th14_player_files[3]={"pl00.anm","pl01.anm","pl02.anm"};
+// Retail44c4a3..44c4c1 indexes4d9f38 by character*2+subtype and
+// requests the chosen ANM at file9. B loadouts have their own resources.
+inline constexpr const char* const th14_player_variants[6]={"pl00.anm","pl00b.anm","pl01.anm","pl01b.anm","pl02.anm","pl02b.anm"};
 inline constexpr const char* const th16_player_files[4]={"pl00.anm","pl02.anm","pl03.anm","pl01.anm"};
 inline constexpr const char* const th17_player_files[3]={"pl00.anm","pl01.anm","pl02.anm"};
 inline constexpr const char* const th18_player_files[4]={"pl00.anm","pl01.anm","pl02.anm","pl03.anm"};
@@ -111,9 +114,9 @@ inline constexpr u32 player_file_count = shot_file_count/shot_loadout_count;
 inline constexpr u32 player_character_max = player_file_count-1;
 inline constexpr u32 player_subtype_max = shot_loadout_count-1;
 
-inline constexpr const char* player_file_name(u32 index) {
+inline constexpr const char* player_file_name(u32 index,u32 subtype=0) {
     if(kPortTitle==13)return th13_player_files[index];
-    if(kPortTitle==14)return th14_player_files[index];
+    if(kPortTitle==14)return th14_player_variants[shot_file_slot(index,subtype)];
     if(kPortTitle==16)return th16_player_files[index];
     if(kPortTitle==17)return th17_player_files[index];
     if(kPortTitle==18)return th18_player_files[index];

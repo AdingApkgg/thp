@@ -354,7 +354,9 @@ struct Application:StageResourceEffects
             boot_stage_owner=&stage;
             // Like later Timeline loads, queue only the ECL ANIM resources.
             // stage.enemies duplicates one of those files and has no upload.
-            boot_uploads={{&stage.background,u16((stage.stage_number&1)+3)},{&stage.logo,6}};
+            // Retail44c4bf requests only the selected player at file9 before
+            // the initial background/HUD/ECL uploads.
+            boot_uploads={{&session.resources.core.players[session.state.character],9},{&stage.background,u16((stage.stage_number&1)+3)},{&stage.logo,6}};
             for(u32 i=0;i<stage.ecl_animations.size();++i)if(!stage.ecl_animation_names[i].empty())boot_uploads.push_back({&stage.ecl_animations[i],u16(10+i)});
             if(!boot_uploads.empty()){
                 if(!boot_loading.begin(session.animations,session.resources.core.ascii)){graphics.error="TH14 stage loading animation creation failed";return false;}
@@ -477,7 +479,7 @@ struct Application:StageResourceEffects
         boot_signature_uploaded=false;boot_ascii_uploaded=false;boot_ascii_pending=true;
         // These uploads also belong to the original main resource pump. Draw
         // Sig and ASCII only after their own file's GPU preparation completes.
-        boot_uploads={{&boot_signature,1},{&core.ascii,2},{&core.text,0},{&core.front,5},{&core.bullet,7},{&core.effect,8},{&core.enemy,9},{&core.title,16},{&core.title_variant,17},{&core.players[0],7},{&core.players[1],7},{&core.players[2],7}};
+        boot_uploads={{&boot_signature,1},{&core.ascii,2},{&core.text,0},{&core.front,5},{&core.bullet,7},{&core.effect,8},{&core.title,16},{&core.title_variant,17}};
         boot_upload_index=0;std::printf("[loading14] sig/ascii/text queued before common resources; %u resource uploads pending\n",u32(boot_uploads.size()));
         boot_stage_owner=nullptr;
 #else
@@ -564,7 +566,10 @@ struct Application:StageResourceEffects
         if(boot_upload_index<boot_uploads.size()||boot_signature_active){
             if(boot_upload_index<boot_uploads.size()){
                 auto& job=boot_uploads[boot_upload_index];
-                if(!core_loading_done&&boot_upload_index>=3&&!session.resources.load_core_job(boot_upload_index-3)){error=session.resources.error;return false;}
+                if(!core_loading_done&&boot_upload_index>=3){
+                    constexpr u32 title_jobs[]={0,1,2,4,5};
+                    if(!session.resources.load_core_job(title_jobs[boot_upload_index-3])){error=session.resources.error;return false;}
+                }
                 // Original resource priority1 pumps one chunk. Its final chunk
                 // prepares templates before the priority29/30 ANM callbacks.
                 if(!graphics.preload_chunk(*job.resource,job.chunk)){error=graphics.error;return false;}

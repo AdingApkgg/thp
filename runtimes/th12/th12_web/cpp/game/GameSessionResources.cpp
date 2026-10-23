@@ -90,8 +90,20 @@ bool GameSessionResources::prepare_core(){
         if(!a.prepare_resource(core.ascii,2)||!a.prepare_resource(core.text,0)||!a.prepare_resource(core.front,5)
            ||!a.prepare_resource(core.bullet,7)||!a.prepare_resource(core.effect,8)||!a.prepare_resource(core.enemy,9)
            ||!a.prepare_resource(core.title,16)||!a.prepare_resource(core.title_variant,17))return core_error(error,a.last_error_text().c_str());
-        for(u32 i=0;i<player_file_count;++i)if(!a.prepare_resource(core.players[i],7))return core_error(error,a.last_error_text().c_str());
+        for(u32 i=0;i<player_file_count;++i)if(!a.prepare_resource(core.players[i],9))return core_error(error,a.last_error_text().c_str());
     }
+    return true;
+}
+bool GameSessionResources::select_player(u32 character,u32 subtype){
+    if(!core_source||!player_selection_valid(i32(character),i32(subtype)))return core_error(error,"invalid TH14 player resource selection");
+    auto& file=core.players[character];
+    // GameSession clears the previous world's VMs before replacing this file.
+    // Release the old GPU generation before changing data at its stable address.
+    if(animation_manager&&animation_manager->references(file))return core_error(error,"TH14 selected player resource still referenced");
+    if(effects)effects->release_animation(file);
+    file={};
+    if(!core_source->open_anm(player_file_name(character,subtype),file))return core_error(error,(std::string("player ANM: ")+file.detail).c_str());
+    if(animation_manager&&!animation_manager->prepare_resource(file,9))return core_error(error,animation_manager->last_error_text().c_str());
     return true;
 }
 #endif

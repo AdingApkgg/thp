@@ -1,7 +1,7 @@
 {
   "date": "2026-10-23",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "2447e48aea2176254302066cb9a15b95b814bc2d",
+  "sourceCommit": "6fe90f113790f339b9722906f8081eb1b2dc8bda",
   "files": [
     {
       "path": ".gitignore",
@@ -167,6 +167,11 @@
       "path": "docs/porting/TH14_SCREEN_CAMERA_FIX_OCT15.md",
       "bytes": 3244,
       "sha256": "292f438b3124d3e35a5f7889f45e5fbee40bd704a2fce9780a23037597f0126d"
+    },
+    {
+      "path": "docs/porting/TH14_SELECTED_PLAYER_RESOURCE_OCT23.md",
+      "bytes": 3421,
+      "sha256": "c74a1b8a394305c8b01ef563f5e4e2d244e3f18ca71baecfd631b585e2a2e1dc"
     },
     {
       "path": "docs/porting/TH14_STAGE2_CALLBACK_RETURN_OCT15.md",
@@ -4029,6 +4034,11 @@
       "sha256": "b6935ec6a92b82dc84980635f9b8afc49c2fc120cd96da6865286b0e9c7c5fb7"
     },
     {
+      "path": "docs/porting/th14-selected-player-resource-verified-oct23.json",
+      "bytes": 15675,
+      "sha256": "6005fffdefc9cde93e7f8676a8365f8fdbd88777b0c5798a090a1158aec2decd"
+    },
+    {
       "path": "docs/porting/th14-shared-angle-browser-flow-verified-oct14.json",
       "bytes": 89999,
       "sha256": "147f5c5b29d190b555ca12f55073ccfbd3dd47d273416c1f7db50bc42a19ba21"
@@ -6460,8 +6470,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Dialogue.cpp",
-      "bytes": 27125,
-      "sha256": "95e55a7a0fda7d7a6770c4ed5bd590892dcc9d4ff5c5f2f261de906c832b59eb"
+      "bytes": 27142,
+      "sha256": "3b90090ba4b3672fa576080d007fff717a7d977b8346aa0e48b00a3025710908"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Dialogue.hpp",
@@ -6710,13 +6720,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "bytes": 58326,
-      "sha256": "17a53bb1712181de6cb76edbdd94dc3faeae637407e88e59a8495e351fff3aa7"
+      "bytes": 58395,
+      "sha256": "e28d16970f7b8b29655de752a18ae1506f0d2cd1410e0014112939bb77ed6227"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
-      "bytes": 23767,
-      "sha256": "96bd8f1467c6b5144317b3a4606599ca17fb5adfc4e9ad1d2497f63349b2cb60"
+      "bytes": 23784,
+      "sha256": "00143bd92c17fbf6f2bb517f87e1b5e75d73faa006577fe69cff1b3f01afb396"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameConfig.cpp",
@@ -6760,8 +6770,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "bytes": 49788,
-      "sha256": "ee2b6d0603df11f7e9dc3d098aae38c2d50c5e7068848fde62840b9e8985c16a"
+      "bytes": 49918,
+      "sha256": "d3d600d8c9c5a2fe936b4c475dc3154cff85cb0ad52073aabca9e1dd1ffb6e0e"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.hpp",
@@ -6770,13 +6780,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSessionResources.cpp",
-      "bytes": 10594,
-      "sha256": "93af1ef25bbde8c45eec30bb2ed9289a81907429e766c66896f1bad67d410456"
+      "bytes": 11513,
+      "sha256": "ee863f99c522d2976e30d1bd2ab2c6356c81b4797a8b768946892e0a5e0330e3"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSessionResources.hpp",
-      "bytes": 4626,
-      "sha256": "b638934fb86ecb9f2e4bfcea8884e624215e511622f9e501a10b44de1f40c157"
+      "bytes": 4677,
+      "sha256": "872b90efef5537e57d4b5d0f39790127bd081eaafbf30313dcf877cf99e3cb67"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GlyphAtlas.cpp",
@@ -7225,8 +7235,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotFiles.hpp",
-      "bytes": 7018,
-      "sha256": "768a6de513a5e95745dfb2866c9408054ffb28970a6b28cd053b4a05e13397c0"
+      "bytes": 7329,
+      "sha256": "b19ed97d1278dda8c7384a73e8840e746ab1c2eb970674382667df87c6851cfb"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotManager.cpp",
@@ -7560,8 +7570,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/sdl/Application.cpp",
-      "bytes": 60609,
-      "sha256": "9725b5c758f85a564a8dc448896a16e174551cb026d6768879a08157efaeab65"
+      "bytes": 60843,
+      "sha256": "a175cad178c530b1cef8865c6296b234cb25e8cd96d52d54dc2eea4a69c50bda"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/sdl/ApplicationCaptureTh14.hpp",

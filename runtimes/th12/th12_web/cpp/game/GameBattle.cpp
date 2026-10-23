@@ -93,7 +93,7 @@ bool GameBattle::initialize(i32 character,i32 subtype,i32 difficulty) {
     player_input={};player_input.movement.character=character;player_input.movement.subtype=subtype;
     player_input.movement.enemy_manager=true;
     bomb.reset();
-    player=std::make_unique<PlayerFrame>(resources.core.shots[shot_file_slot(u32(character),u32(subtype))],resources.core.players[character],resources.core.bullet,animations,economy,*this,kPortTitle==16?9:7,kPortTitle==16?7:6);
+    player=std::make_unique<PlayerFrame>(resources.core.shots[shot_file_slot(u32(character),u32(subtype))],resources.core.players[character],resources.core.bullet,animations,economy,*this,(kPortTitle==14||kPortTitle==16)?9:7,kPortTitle==16?7:6);
 #if PORT_TITLE == 16
     if(economy.th16_subseason<0||economy.th16_subseason>=5)return unavailable("invalid TH16 subseason");
     player->th16_season_shots=&resources.core.season_shots[economy.th16_subseason];
@@ -108,7 +108,7 @@ bool GameBattle::initialize(i32 character,i32 subtype,i32 difficulty) {
     if(!player->start_stage()){last_error=-601;error="initial player stage reset ("+std::to_string(player->last_error)+")";return false;}
     trace_point=17;
     if(replaying&&!player->restore_replay_position(replay_entry)){error="replay player entry";return false;}
-    bomb=std::make_unique<BombController>(animations,resources.core.players[character],*player,*this,7,&resources.core.text);
+    bomb=std::make_unique<BombController>(animations,resources.core.players[character],*player,*this,kPortTitle==14?9:7,&resources.core.text);
     bomb->selection=character*2+subtype;
     synchronize_player();
     trace_point=18;
@@ -225,7 +225,7 @@ prototype::Work GameBattle::prepare_stage_timeline(){
         enemy_animations.resources[i+2]={resources.stage->ecl_animation_names[i].empty()?nullptr:&resources.stage->ecl_animations[i],u16(10+i)};
     enemy_animations.stage_logo_resource={&resources.stage->logo,6};
     create_dialogue();spells.stage=pending_stage;
-    bomb=std::make_unique<BombController>(animations,resources.core.players[enemy_environment.character],*player,*this,7,&resources.core.text);
+    bomb=std::make_unique<BombController>(animations,resources.core.players[enemy_environment.character],*player,*this,kPortTitle==14?9:7,&resources.core.text);
     bomb->selection=enemy_environment.character*2+enemy_environment.subtype;
     resources.finish_stage_parts();pending_stage=0;next_stage_source=nullptr;return prototype::Work::Ready;
 }
@@ -287,7 +287,7 @@ bool GameBattle::enter_stage_transition(u32 number){
     if constexpr(kPortTitle==14)enemy_animations.stage_logo_resource={&resources.stage->logo,6};
 #endif
     create_dialogue();spells.stage=number;
-    bomb=std::make_unique<BombController>(animations,resources.core.players[enemy_environment.character],*player,*this,7,&resources.core.text);
+    bomb=std::make_unique<BombController>(animations,resources.core.players[enemy_environment.character],*player,*this,kPortTitle==14?9:7,&resources.core.text);
     bomb->selection=enemy_environment.character*2+enemy_environment.subtype;
     completion.mode.stage=i32(number);completion.state.exit=StageExit::None;
     hud.prepare_stage();countdown_seconds=-1;

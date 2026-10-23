@@ -194,7 +194,7 @@ bool Dialogue::command(u8 op,const u8* p,u32 n){
         case 18:portrait=portrait_th18[character];break;
         default:portrait=portrait_th12[character];break;
         }
-        return create(0,player,portrait,7);
+        return create(0,player,portrait,kPortTitle==14?9:7);
     }
     // MSG opcode 2: the original indexes a stage table. The handler at 0x420174 branches
     //   0x420179 cmp eax,5 / jne  ->  stage 5 with dialogue id >= 2 uses the literal 0xa
