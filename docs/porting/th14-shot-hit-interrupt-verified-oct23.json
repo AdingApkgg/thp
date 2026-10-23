@@ -1,0 +1,140 @@
+{
+  "verified": true,
+  "baseCommit": "3ee88588bf6fc9a8455dcecff6903731eb36702c",
+  "productionChanges": [
+    "TH14 ordinary hit path uses the selected root VM interrupt, matching451855; explicit47f140-style family broadcasts are preserved."
+  ],
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/ShotTh14.cpp": "75ee43fd0933739f9534d1727d4d74af50cab3669da6ccc294038d26c7acbca7"
+  },
+  "sdlWasmSha256": "bb3a9c16b92431494626152beb9c3ec8a21c1fc165e21d1eac8723b822f0c192",
+  "sdlRecompiled": 1,
+  "sdlReused": 145,
+  "coreProbeWasmSha256": "a635abd4576ee3c05f0182ac5656b10bbcc054a2763c16dea4c26013022e0fca",
+  "coreRecompiled": 1,
+  "coreReused": 140,
+  "nativePrefix": {
+    "callbacks": 2999,
+    "pairedAllPublications": 5942,
+    "handleFileScriptDifferences": 0,
+    "raw32Differences": 0,
+    "retirementWindowRows": 137,
+    "allOrderedHandleFrameFileScriptTimerAndAgeTuplesIdentical": true,
+    "previousFirstHandleDivergenceSerial": 4499
+  },
+  "longerNativePrefix": {
+    "callbacks": 9000,
+    "pairedPublications": 42648,
+    "raw32Differences": 0,
+    "first16978HandleFileScriptTuplesIdentical": true,
+    "remainingFirstDivergenceSerial": 16979,
+    "remainingNativeScript": "front5/script153 at frame5744",
+    "remainingPortableScript": "front5/script169 at frame5745",
+    "all42648HandlesClaimedIdentical": false
+  },
+  "causalEvidence": {
+    "nativeOrdinaryHitWriter": "0x451855",
+    "nativeFamilyBroadcast": "0x47f140",
+    "actualWindowsUpdateWindowObserved": true,
+    "firstNewRootPendingInterrupt": 1,
+    "newChildrenPendingInterrupt": 0,
+    "laterExplicitFamilyInterruptObserved": true,
+    "afterFamilyBreakpointRowsNotCapturedBecauseObserverSelectedConsumedEsi": true,
+    "noInstructionPatches": true,
+    "noRngOrCounterWrites": true,
+    "oneDeclaredAttractFlagClearAfterUntouchedFirstPlayer": true
+  },
+  "regression": {
+    "cases": 30,
+    "callbacks": 2885731,
+    "allSelected32WordSnapshotsByteIdenticalToPreviousProduction": true,
+    "naturalTerminalAnd90StableMenuTicks": true,
+    "allModeOriginalEquivalenceClaimed": false
+  },
+  "browser": {
+    "actualProductionLauncher": true,
+    "actualWebGL": true,
+    "quietOutput": true,
+    "coldBootToNaturalAttractObserved": true,
+    "cancelDemoToTitle": true,
+    "ordinaryMarisaANormalEntry": true,
+    "gameOverScreenshotCaptured": true,
+    "continuationInferredFromHud": true,
+    "retryNotEstablished": true,
+    "shotInputAndOrdinaryPauseObserved": true,
+    "errorsOrWarnings": 0,
+    "newBinaryFullGpuReplayClaimed": false
+  },
+  "limitations": [
+    "Animation prefix and retirement comparison uses a private causal beam process profile; that model is not included in production.",
+    "All selected32 words can match while animation publication history still differs; serial16979 and the later eight-publication gap remain under investigation.",
+    "The browser replay of the preceding title-entry binary is separate and is not inherited as full GPU acceptance of this new binary.",
+    "Actual original worker/GPU timing, all-mode full original replays, graphics, audio and persistence equivalence remain unfinished."
+  ],
+  "evidenceBindings": [
+    {
+      "path": "artifacts/th14/shot-hit-interrupt-oct23/build/build.json",
+      "bytes": 98419,
+      "sha256": "7b2cc949fdce57a77cf2c27b2e45959d7223c362e956f7cc74ac110299e47413"
+    },
+    {
+      "path": "artifacts/th14/shot-hit-interrupt-oct23/core-build.json",
+      "bytes": 80551,
+      "sha256": "5a711200451cbed0d8505ddd0bd779fd5f5d9d6c344538f9b924076a370285b1"
+    },
+    {
+      "path": "artifacts/th14/shot-hit-interrupt-oct23/matrix-results.json",
+      "bytes": 60661,
+      "sha256": "4147047c3d459ece0f422dda8f156625f8cbe3632d4834e3f51d3277ea54dd31"
+    },
+    {
+      "path": "artifacts/th14/shot-hit-interrupt-oct23/private-beam-control/retire-wrapper-prefix-2999/report.json",
+      "bytes": 1189,
+      "sha256": "98a13c7c4793a10302e63dd2adbc41903e293b693dbaad66d7f8f6ca64631f1e"
+    },
+    {
+      "path": "artifacts/th14/shot-hit-interrupt-oct23/private-beam-control/retire-wrapper-prefix-2999/portable-retirements.json",
+      "bytes": 54898,
+      "sha256": "c6cdfdd2971cb53e21e2786f79e7ac248422f1456298f05dbbd25f357dd59c8c"
+    },
+    {
+      "path": "artifacts/th14/shot-hit-interrupt-oct23/private-beam-control/allocation-prefix-9000/report.json",
+      "bytes": 2329,
+      "sha256": "5e8e8c4112f42aba6b019ce8d93ce24bd955f89216a93def0187f6d7f9e20c10"
+    },
+    {
+      "path": "artifacts/th14/retail-marisaa-anm-retire-window-hardware-oct23/retirement-events.jsonl",
+      "bytes": 440424,
+      "sha256": "b54216fb1f490adbf4a83ebea5df6c8eb2d193b7a3654c93aada98072e696f0f"
+    },
+    {
+      "path": "artifacts/th14/retail-marisaa-anm-interrupt-window-hardware-oct23/report.json",
+      "bytes": 3414206,
+      "sha256": "728908485fe1e30dc0442d9480349405c362ba37be032770b9cf7609bdc3104c"
+    },
+    {
+      "path": "artifacts/th14/shot-hit-interrupt-oct23/browser-logs.json",
+      "bytes": 8473,
+      "sha256": "c00687bfe5b7d02d831046c3ba9092b3cf064d63db759a05e10d65d2a8d40ae5"
+    },
+    {
+      "path": "artifacts/th14/shot-hit-interrupt-oct23/browser-cold-demo.jpg",
+      "bytes": 223401,
+      "sha256": "0eeee3427282f5b13e2b5b6138dec55fa067974a37501bde848f424957a27436"
+    },
+    {
+      "path": "artifacts/th14/shot-hit-interrupt-oct23/browser-ordinary-gameover.jpg",
+      "bytes": 218560,
+      "sha256": "ff8a4e6e24d59d9b2358a57ddf6f6f541be18ae9504578419fa1b1d552b5faa6"
+    },
+    {
+      "path": "artifacts/th14/shot-hit-interrupt-oct23/browser-ordinary-pause.jpg",
+      "bytes": 228880,
+      "sha256": "cd6c5f673f34b45cdc3236dd4b71993133567f4b115a62ce87bbe528134855e9"
+    }
+  ],
+  "rootResourceCryptExcluded": true,
+  "sourceOnlyPublication": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}

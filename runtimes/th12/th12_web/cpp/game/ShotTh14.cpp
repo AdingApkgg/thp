@@ -227,7 +227,9 @@ bool ShotManager::hit(u32 j,Th14DamageArea& area,const Vec3& p,const Vec2* size,
         if(effect.effect&&!world.th14_plain_hit_effect(effect.position,effect.angle,effect.color)){last_error=2;return false;}
     }else (s.th14_was_focused?player.th14_focused_hits:player.th14_plain_hits)+=5;
     auto* vm=animations.find(s.animation);if(!vm){last_error=10;return false;}
-    interrupt(s.animation,1);s.movement.position.z=.1f;s.state=2;s.movement.speed*=.125f;vm->position=s.movement.position;
+    // 451855 interrupts only this VM;47f140's family broadcast belongs to
+    // the explicit shot callbacks. Children keep running until root deletion.
+    vm->interrupt(1);s.movement.position.z=.1f;s.state=2;s.movement.speed*=.125f;vm->position=s.movement.position;
     area.flags&=~1u;s.th14_area_flags&=~1u;s.th14_area_slot=256;out=s.damage;return true;
 }
 bool ShotManager::damage_th14(Vec3 p,const Vec2* size,float radius,float angle,bool advanced,GameEconomy& economy,i32& out,u32 argument,u32 stamp,Enemy* hit_target){

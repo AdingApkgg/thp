@@ -1,7 +1,7 @@
 {
   "date": "2026-10-23",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "fcd5ed1326766a812dbd10393c0b8945fcb528b4",
+  "sourceCommit": "3ee88588bf6fc9a8455dcecff6903731eb36702c",
   "files": [
     {
       "path": ".gitignore",
@@ -197,6 +197,11 @@
       "path": "docs/porting/TH14_SHOT_GEOMETRY_CALL_ORDER_OCT23.md",
       "bytes": 1134,
       "sha256": "97d3f9222915f2bf63ba4a68e21cf67c58431f5746628dac44c7ffd726aaaa1b"
+    },
+    {
+      "path": "docs/porting/TH14_SHOT_HIT_INTERRUPT_OCT23.md",
+      "bytes": 2258,
+      "sha256": "7a681bbb892f1d6ac530f0b2383bfd0ed56deeffed76b44fffe293227eaaa3bc"
     },
     {
       "path": "docs/porting/TH14_STAGE2_CALLBACK_RETURN_OCT15.md",
@@ -2474,6 +2479,11 @@
       "sha256": "fb5ae4619c1b987204276884af8fa8c9cd06fa3624cc450c11503b34e40b938a"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-shot-hit-interrupt-candidate-oct23.json",
+      "bytes": 139750,
+      "sha256": "3d624b500d08d1db4096791e560afd7c4b051fc171d7e33f66cc215b35b3b333"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-third-reward-oct16.json",
       "bytes": 102941,
       "sha256": "f9ecf9aec80a1bce0d008a469e497e5696c59b1a4d9a26a911f198a6de69370d"
@@ -2577,6 +2587,11 @@
       "path": "docs/porting/th14-launcher-site-save-delta-oct16.json",
       "bytes": 36937,
       "sha256": "5231a4047a69ee115a7aaeeb6533b4085d5606ed9e2f8b2db794383055f11b66"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-shot-hit-interrupt-candidate-oct23.json",
+      "bytes": 36617,
+      "sha256": "b660e5798cbe316e69fc107d1904bbdb3c32366c2ac60d7f898e424ee7459abb"
     },
     {
       "path": "docs/porting/th14-launcher-site-third-reward-oct16.json",
@@ -4192,6 +4207,11 @@
       "path": "docs/porting/th14-shot-geometry-call-order-verified-oct23.json",
       "bytes": 3242,
       "sha256": "91fdce0deeb58ad74901dfc426ce0df06e006362576a757836fe0041971a6048"
+    },
+    {
+      "path": "docs/porting/th14-shot-hit-interrupt-verified-oct23.json",
+      "bytes": 5956,
+      "sha256": "86f76a1a216accf13f49c2081769a63885b04d516bd322bade75236f53a6d162"
     },
     {
       "path": "docs/porting/th14-shot-hit-verified.json",
@@ -7370,8 +7390,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotTh14.cpp",
-      "bytes": 17757,
-      "sha256": "5f75052cceb4e941d0bb040c3ca3dc00f995af014f4844b039954f4bedc3f95f"
+      "bytes": 17903,
+      "sha256": "75ee43fd0933739f9534d1727d4d74af50cab3669da6ccc294038d26c7acbca7"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotTh16.cpp",
