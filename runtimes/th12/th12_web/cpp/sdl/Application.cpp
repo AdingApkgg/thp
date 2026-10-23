@@ -590,8 +590,26 @@ struct Application:StageResourceEffects
             // 45959a waits for actual priority60 callbacks to reach180. Only
             // after both upload readiness and that count does 4595e1 unload sig.
             const bool signature_ready=boot_signature_active&&!boot_signature_pending&&boot_signature_draws>=180&&boot_upload_index==boot_uploads.size();
-            if(signature_ready)session.animations.retire_resource(boot_signature);
-            if(!session.animations.update(true)||!session.animations.update(false)){error="TH14 loading ANM update failed";return false;}
+            bool title_entry_advanced=false;
+            if(signature_ready){
+                session.animations.retire_resource(boot_signature);
+                // The ready worker enables Title6 before overlay8/ANM29.
+                // Its initial resource retirement and title creations share
+                // that pass with the pending sig deletion, preserving the
+                // allocator's free-list order. Do not add a second ANM tick.
+                core_loading_done=true;
+                if(session.state.phase==GameSessionPhase::loading){
+                    if(!session.finish_loading()){error=session.error;return false;}
+                }
+                if(session.state.phase==GameSessionPhase::title){
+                    boot_loading.finish(session.animations);
+                    const GameSessionInput input{held,0,0,pause_key,bool(held&0x100),bool(held&0x2),frame_statistics.fps};
+                    if(!session.update(input)){error=session.error;return false;}
+                    if(!audio_events()||!text_events())return false;
+                    title_entry_advanced=true;
+                }
+            }
+            if(!title_entry_advanced&&(!session.animations.update(true)||!session.animations.update(false))){error="TH14 loading ANM update failed";return false;}
             if(signature_ready){
                 if(session.animations.references(boot_signature)){error="TH14 sig still referenced after ANM retirement";return false;}
                 graphics.unload(boot_signature);renderer.invalidate();boot_signature={};

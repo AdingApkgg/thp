@@ -825,6 +825,11 @@ bool GameSession::open_title(GameResources& data,bool first,TitleScreen screen){
 }
 bool GameSession::activate_title(GameResources& data,bool first,TitleScreen screen){
     state.phase=GameSessionPhase::title;
+    // Title6's initial459b19..459b4e marks the old file5/7/2/0 VMs
+    // before creating title animations. Keep their slots live until the
+    // following overlay8/normal29 callbacks consume the deletion markers.
+    for(auto* file:{&resources.core.front,&resources.core.bullet,&resources.core.ascii,&resources.core.text})
+        animations.retire_resource(*file);
 #endif
     title=std::make_unique<TitleMenu>(animations,resources.core.title,resources.core.title_variant,resources.core.ascii,scores);
     title_ascii=std::make_unique<AsciiText>(resources.core.ascii);title->text_resource=&resources.core.text;

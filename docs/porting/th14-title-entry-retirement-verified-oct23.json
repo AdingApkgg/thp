@@ -1,0 +1,130 @@
+{
+  "verified": true,
+  "baseCommit": "fcd5ed1326766a812dbd10393c0b8945fcb528b4",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/GameSession.cpp": "0f254be9a8846cefac5224eaa732841941ce5a8c7ff992ef84317986b71349a8",
+    "runtimes/th12/th12_web/cpp/sdl/Application.cpp": "ee4856851298f73f5e5b16fc4454753ef8222d51afe9f0fb1bdbd0bfa1a3a286"
+  },
+  "productionChanges": [
+    "Title activation retires existing file5/front,7/bullet,2/ascii and0/text registered VMs without unloading their resources.",
+    "The ready boot callback activates and updates Title6 before its single overlay/normal ANM pass, preserving pending sig deletion and LIFO slot release order."
+  ],
+  "sdlWasmSha256": "e2edc90fa3314da650db9087af59c098a3e76ae5ae032812cb1b8d44b928d419",
+  "sdlRecompiled": 2,
+  "sdlReused": 144,
+  "coreProbeWasmSha256": "2eecd4b464a27d606d60a926df6e99b5282b1389af8485e023d5d11228388e41",
+  "coreRecompiled": 1,
+  "coreReused": 140,
+  "nativeColdPublications": {
+    "paired": 129,
+    "portableTotal": 132,
+    "missingOriginalPublicationsNotClaimed": 3,
+    "previousHandleFileScriptMismatches": 71,
+    "candidateMismatches": 0,
+    "sequenceJoinedByActual19BitSerial": true
+  },
+  "originalHardwareWriteWatch": {
+    "watched": "actual ASCII17 root flags",
+    "writerPc": "0x47f3db",
+    "afterPc": "0x47f3df",
+    "titleCallerReturnPc": "0x459b46",
+    "instructionOrGameStateOrRngWrites": 0
+  },
+  "selectedFirstPlayerBoundary": {
+    "actualObservedStartupClock": 180095714,
+    "nativeAndCandidateVisualSeed": 25675,
+    "nativeAndCandidateVisualCalls": 1360,
+    "nativeAndCandidateSerial": 132,
+    "noSeedCounterOrSerialCompensation": true
+  },
+  "coreRegression": {
+    "cases": 30,
+    "callbacks": 2885731,
+    "allSelected32WordSnapshotsByteIdenticalToPreviousProductionCommit": "fcd5ed1326766a812dbd10393c0b8945fcb528b4",
+    "naturalTerminalAnd90StableMenuTicks": true,
+    "allModeOriginalEquivalenceClaimed": false
+  },
+  "browser": {
+    "actualProductionLauncher": true,
+    "actualWebGL": true,
+    "quietOutput": true,
+    "coldBootToNaturalAttractObserved": true,
+    "demoCancellationToTitle": true,
+    "ordinarySakuyaBNormalEntry": true,
+    "ordinaryPauseObserved": true,
+    "errorsOrWarnings": 0,
+    "continuationInferredFromHud": true,
+    "gameOverScreenshotCaptured": false,
+    "allModeGpuAcceptanceClaimed": false
+  },
+  "excluded": [
+    "Private beam guest-stack model",
+    "Security cookie profile",
+    "Local Windows DirectSound stack profile",
+    "Original assets, memory, screenshots and compiled outputs"
+  ],
+  "limitations": [
+    "129 recorded Native publications are compared; three other publications were not caught by this breakpoint set.",
+    "The observer declares one successful texture chunk per callback; original worker/GPU readiness timing is not reproduced.",
+    "Four short observations reached the declared cutoff. One stalled at counter180 and was stopped after process ownership verification; its partial record is retained.",
+    "An independent earlier full Marisa A run began with1336 visual calls. This record does not resolve that actual readiness history.",
+    "The long six-stage browser replay of the preceding packed-handle build is a separate run and is not inherited as acceptance of this new SDL binary.",
+    "Complete all-mode original replay, ordinary game flow, GPU/audio and persistence equivalence remain unfinished."
+  ],
+  "evidenceBindings": [
+    {
+      "path": "artifacts/th14/title-entry-retirement-oct23/build/build.json",
+      "bytes": 98349,
+      "sha256": "35dd6bba200c1564cfced5304b277dd4465cd3da999a9375f173289caae13d9d"
+    },
+    {
+      "path": "artifacts/th14/title-entry-retirement-oct23/core-build.json",
+      "bytes": 81005,
+      "sha256": "a9dfbb95328ffa72cb8bca66c6d6894e1b816619f59c21d989a6545eded289d4"
+    },
+    {
+      "path": "artifacts/th14/title-entry-retirement-oct23/cold-build.json",
+      "bytes": 48958,
+      "sha256": "0b9b751b40592cbf9fefe46aeec812a36e1ee43af41fd4a39935aa6b0bfccad9"
+    },
+    {
+      "path": "artifacts/th14/title-entry-retirement-oct23/cold-comparison.json",
+      "bytes": 18894,
+      "sha256": "dc2a5f8d4687c62cad0d74c0f880a602a88a5f8a38b511f541472836540c63f5"
+    },
+    {
+      "path": "artifacts/th14/title-entry-retirement-oct23/cold-report.json",
+      "bytes": 1609,
+      "sha256": "b9171a699370d06991132c04bc2ef7319b404b4cd6b9d9ff123984829c167eac"
+    },
+    {
+      "path": "artifacts/th14/title-entry-retirement-oct23/matrix-results.json",
+      "bytes": 60661,
+      "sha256": "9c5fc5535f5d659735cc951083c4412ef9887dff3d47b9a8e32ba8618b526a1e"
+    },
+    {
+      "path": "artifacts/th14/title-entry-retirement-oct23/browser-logs.json",
+      "bytes": 8428,
+      "sha256": "54c2ff485a0a9dcfa58d2615f923717873d7a28c31fd0dd0a1ce43e334023264"
+    },
+    {
+      "path": "artifacts/th14/title-entry-retirement-oct23/browser-title-or-demo.jpg",
+      "bytes": 221344,
+      "sha256": "cbfdee6f70e1617de714771d594c8eccbfb725dc948d3aaa34a385c71ac0aca6"
+    },
+    {
+      "path": "artifacts/th14/title-entry-retirement-oct23/browser-sakuyab-normal.jpg",
+      "bytes": 231588,
+      "sha256": "c869799b089a300fb360922d5c256c973a2fcbbe82b5c1fefc8c8d19936243e2"
+    },
+    {
+      "path": "artifacts/th14/title-entry-retirement-oct23/browser-ordinary-pause.jpg",
+      "bytes": 222920,
+      "sha256": "48e557defd69eff52108368d92dd885c1a81441e90c40d70b8c92b3b52f0f2c0"
+    }
+  ],
+  "rootResourceCryptExcluded": true,
+  "sourceOnlyPublication": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}
