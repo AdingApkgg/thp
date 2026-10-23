@@ -6,6 +6,8 @@ enum class LoadPhase:u32{Idle,WaitCapture,WaitMinimum,Hud,Scene,Timeline,Ready,A
 struct StageActions {
  virtual ~StageActions()=default;
  virtual bool retire_owner()=0;
+ virtual bool begin_worker_wait(bool){return true;}
+ virtual bool worker_wait_ready()const{return true;}
  virtual bool enter_work_and_initialize()=0;
  virtual Work prepare_hud()=0;
  virtual Work prepare_scene()=0;
@@ -34,10 +36,11 @@ struct StagedLoader {
     }
     const u64 minimum=initial_stage?0:60000000;
     if(now>~u64(0)-minimum){phase=LoadPhase::Failed;return false;}
+    if(!actions.begin_worker_wait(initial_stage)){phase=LoadPhase::Failed;return false;}
     deadline=now+minimum;phase=LoadPhase::WaitMinimum;
    }
    if(phase==LoadPhase::WaitMinimum){
-    if(now<deadline)return true;
+    if(now<deadline||!actions.worker_wait_ready())return true;
     if(!actions.enter_work_and_initialize()){phase=LoadPhase::Failed;return false;}
     phase=LoadPhase::Hud;
    }

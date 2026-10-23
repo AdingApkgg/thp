@@ -159,6 +159,9 @@ struct Application:StageResourceEffects
     u32 boot_upload_index=0;
     StageResources* boot_stage_owner=nullptr;
     StageUploadsTh14 stage_uploads;
+    u64 stage_worker_generation=0,stage_worker_started_ns=0;
+    bool stage_worker_waiting=false;
+    struct StageWorkerWaitToken {Application* owner;u64 generation;};
     bool core_loading_done=false;
 #endif
     std::string error;
@@ -384,6 +387,36 @@ struct Application:StageResourceEffects
     }
 #if PORT_TITLE == 14
     bool core_ready()const override{return core_loading_done;}
+    static void finish_stage_worker_wait(void* raw){
+        std::unique_ptr<StageWorkerWaitToken> token(static_cast<StageWorkerWaitToken*>(raw));
+        auto& app=*token->owner;
+        if(token->generation!=app.stage_worker_generation||!app.stage_worker_waiting)return;
+        const u64 elapsed=u64(SDL_GetTicksNS())-app.stage_worker_started_ns;
+        if(elapsed<60000000){
+            const int remaining=int((60000000-elapsed+999999)/1000000);
+            emscripten_async_call(finish_stage_worker_wait,token.release(),remaining);return;
+        }
+        app.stage_worker_waiting=false;
+        std::printf("[loading14] worker wait completed after %.3fms\n",double(elapsed)/1000000.);
+    }
+    static void start_stage_worker_wait(void* raw){
+        std::unique_ptr<StageWorkerWaitToken> token(static_cast<StageWorkerWaitToken*>(raw));
+        auto& app=*token->owner;
+        if(token->generation!=app.stage_worker_generation||!app.stage_worker_waiting)return;
+        app.stage_worker_started_ns=u64(SDL_GetTicksNS());
+        std::printf("[loading14] worker wait dispatched; minimum60ms\n");
+        emscripten_async_call(finish_stage_worker_wait,token.release(),60);
+    }
+    bool begin_stage_worker_wait(bool initial)override{
+        ++stage_worker_generation;stage_worker_waiting=!initial;
+        if(stage_worker_waiting){
+            // Dispatch after this callback pass. No scene/resource pointer is
+            // retained by either timer, and a newer generation cancels it.
+            emscripten_async_call(start_stage_worker_wait,new StageWorkerWaitToken{this,stage_worker_generation},0);
+        }
+        return true;
+    }
+    bool stage_worker_wait_ready()const override{return !stage_worker_waiting;}
     bool draw_startup_loading()override{
         if(!boot_signature_active||!boot_signature_uploaded)return true;
         if(boot_signature_pending){
@@ -416,6 +449,7 @@ struct Application:StageResourceEffects
     void cancel_stage_phases(StageResources& stage,u32)override{
         // Queued raw resource references must disappear before GPU teardown
         // or StageResources destruction. release also covers boot ownership.
+        ++stage_worker_generation;stage_worker_waiting=false;
         stage_uploads.cancel(stage);release(stage);
     }
     bool defer_ending_loading()const override{return true;}

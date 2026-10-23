@@ -1,7 +1,7 @@
 {
   "date": "2026-10-24",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "6200eb5668886a270b6f53d97f61e70bbb47cdce",
+  "sourceCommit": "cb0f291d18f4ac6dc01cd121ac0cb236d9482193",
   "files": [
     {
       "path": ".gitignore",
@@ -257,6 +257,11 @@
       "path": "docs/porting/TH14_STAGE_TRANSITION_RETIREMENT_OCT24.md",
       "bytes": 2586,
       "sha256": "a1951d1e7e21bf624e4683c8ef00615f6cb6b1b65bd7dc0fd3a0b925ac6ff59d"
+    },
+    {
+      "path": "docs/porting/TH14_STAGE_WORKER_HOST_OCT24.md",
+      "bytes": 3639,
+      "sha256": "5333acb66d8b39f2d90149dee3fc4e3741fa58a1ff57a93c92be49086c6a2a10"
     },
     {
       "path": "docs/porting/TH14_STARTUP_CHUNK_PUMP_FIX_OCT23.md",
@@ -2524,6 +2529,11 @@
       "sha256": "5350168ec3411ab8e54807882fe636aa3c310261b9381013f1dca1297d99a877"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-stage-worker-host-candidate-oct24.json",
+      "bytes": 229469,
+      "sha256": "01e0f09ac8992b70ec3a741d856a6de7a333bce66c821bbbe49cff2a5d97d080"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-third-reward-oct16.json",
       "bytes": 102941,
       "sha256": "f9ecf9aec80a1bce0d008a469e497e5696c59b1a4d9a26a911f198a6de69370d"
@@ -2652,6 +2662,11 @@
       "path": "docs/porting/th14-launcher-site-stage-transition-retirement-candidate-oct24.json",
       "bytes": 36658,
       "sha256": "bbb2ef2773ec7795aa34f25423811b57c88b9bf4f00651baecf2ab9cc0ecac21"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-stage-worker-host-candidate-oct24.json",
+      "bytes": 36836,
+      "sha256": "003e697fc5a913b32241e063e2b73a1195d4a5daaefbe05c83a254657a1183d6"
     },
     {
       "path": "docs/porting/th14-launcher-site-third-reward-oct16.json",
@@ -4944,6 +4959,11 @@
       "sha256": "330ebec9de4874e7e25bf56aaa5ff6a0c0c4fc87ab6e2f49520f67e3ac4998d2"
     },
     {
+      "path": "docs/porting/th14-stage-worker-host-verified-oct24.json",
+      "bytes": 11137,
+      "sha256": "e61ee7e0f136fd4edaef92b91739824e51620325b9fba7ab2333a96d0ca5ef81"
+    },
+    {
       "path": "docs/porting/th14-stage-world-uv-observed-oct12.json",
       "bytes": 32276,
       "sha256": "148bd21752fba96f4957e08b55338071989cd4180b4b9c2a6a21d91331898698"
@@ -6920,8 +6940,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "bytes": 59536,
-      "sha256": "9ede7108d8dc83b8ff2cdc8f6265086d71a3accf265dd0443e836f3c9449f053"
+      "bytes": 59813,
+      "sha256": "79cd261a1c136845120a0029bfb7fd0d508963e32325dc15a078fdcc38b343b7"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
@@ -6985,8 +7005,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSessionResources.hpp",
-      "bytes": 4677,
-      "sha256": "872b90efef5537e57d4b5d0f39790127bd081eaafbf30313dcf877cf99e3cb67"
+      "bytes": 4953,
+      "sha256": "b5819a973e23dcde8d4d006298eedd4bce512f25c8c179afa8ca01533661ba9c"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GlyphAtlas.cpp",
@@ -7615,8 +7635,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/StagedLoaderPrototype.hpp",
-      "bytes": 2582,
-      "sha256": "c910303eca30aecdae4da806ce63828355b906f550f08490533414512373e045"
+      "bytes": 2806,
+      "sha256": "28133b2979ad44c297a017f3985060044fe2a74600fa32782f884ae2ab2a6043"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/TextLayoutTh14.hpp",
@@ -7775,8 +7795,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/sdl/Application.cpp",
-      "bytes": 62513,
-      "sha256": "a14edf829fd57cdecdef1e8637f8315f0b5dce30b8b1c02afc1348006f3b3be8"
+      "bytes": 64508,
+      "sha256": "bf3ef5c47b2ae8cdc41bedb171ac01852acf18731c242b93dd3d88ac52c61670"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/sdl/ApplicationCaptureTh14.hpp",

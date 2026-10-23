@@ -148,6 +148,8 @@ namespace {
 struct BattleStageActions final:prototype::StageActions {
     GameBattle& battle;explicit BattleStageActions(GameBattle& b):battle(b){}
     bool retire_owner()override{return battle.retire_stage_owner();}
+    bool begin_worker_wait(bool initial)override{return !battle.resources.effects||battle.resources.effects->begin_stage_worker_wait(initial);}
+    bool worker_wait_ready()const override{return !battle.resources.effects||battle.resources.effects->stage_worker_wait_ready();}
     bool enter_work_and_initialize()override{return battle.initialize_stage_work();}
     prototype::Work prepare_hud()override{return battle.prepare_stage_hud();}
     prototype::Work prepare_scene()override{return battle.prepare_stage_scene();}

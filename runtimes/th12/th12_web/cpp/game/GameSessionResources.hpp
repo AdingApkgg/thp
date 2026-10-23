@@ -40,6 +40,10 @@ struct StageResourceEffects {
 #if PORT_TITLE == 14
     virtual bool core_ready()const{return true;}
     virtual bool stage_ready()const{return true;}
+    // The60ms core minimum is a lower bound. Dispatch and timer completion
+    // are host events, independent of the frame that requested this worker.
+    virtual bool begin_stage_worker_wait(bool){return true;}
+    virtual bool stage_worker_wait_ready()const{return true;}
     // Cold-start VM creation belongs to the original priority60 callback.
     virtual bool draw_startup_loading(){return true;}
     virtual bool defer_ending_loading()const{return false;}

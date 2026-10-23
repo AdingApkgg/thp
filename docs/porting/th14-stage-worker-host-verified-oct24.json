@@ -1,0 +1,287 @@
+{
+  "verified": true,
+  "baseCommit": "cb0f291d18f4ac6dc01cd121ac0cb236d9482193",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/StagedLoaderPrototype.hpp": "28133b2979ad44c297a017f3985060044fe2a74600fa32782f884ae2ab2a6043",
+    "runtimes/th12/th12_web/cpp/game/GameSessionResources.hpp": "b5819a973e23dcde8d4d006298eedd4bce512f25c8c179afa8ca01533661ba9c",
+    "runtimes/th12/th12_web/cpp/game/GameBattle.cpp": "79cd261a1c136845120a0029bfb7fd0d508963e32325dc15a078fdcc38b343b7",
+    "runtimes/th12/th12_web/cpp/sdl/Application.cpp": "bf3ef5c47b2ae8cdc41bedb171ac01852acf18731c242b93dd3d88ac52c61670"
+  },
+  "changes": [
+    "Separate host worker dispatch/completion from the unchanged60ms minimum and unchanged stage clock.",
+    "Web dispatches the wait after the current callback pass and uses actual asynchronous timer completion.",
+    "Generation-bound callbacks ignore canceled or superseded waits and retain no scene/resource pointer."
+  ],
+  "build": {
+    "sdlWasmSha256": "2bd54a4d931d7ad411f2c0402c8ee5316767c03fcdb24280173469f6cfc2cb26",
+    "coreWasmSha256": "6b1f6dde9906aa04e4bda0777e4e7db8709facadbe3f343ea9f91232ea7fe0ba",
+    "coldObserverWasmSha256": "05eb365739bb3801ea40fb06757e12f1ac8f6c63bb31b5e62d54ff80ad5d7a71",
+    "sdlFullyRecompiled": 146,
+    "coreFullyRecompiled": 141,
+    "staleHeaderObjectsReused": false,
+    "addedImports": [
+      {
+        "module": "env",
+        "name": "emscripten_async_call",
+        "kind": "function"
+      }
+    ],
+    "exportsUnchanged": true
+  },
+  "observedNativeWorker": {
+    "capture": "retail-reimub-stage2-worker-order-lean-hardware-oct24",
+    "sleepCallToSeedStoreMilliseconds": 152.8489,
+    "intervalIncludesSchedulingWorkAndDebuggerPauses": true,
+    "sleepReturnTimestampObserved": false,
+    "visualCallsBeforeSeedRestore": 24,
+    "productionMinimumNanoseconds": 60000000,
+    "observedIntervalEmbeddedInProduction": false
+  },
+  "observedHostControl": {
+    "callbacks": 14370,
+    "all32SelectedWordsByteIdentical": true,
+    "productionReadinessInterface": true,
+    "privateObservedHostInput": true,
+    "stageClockUnmodified": true,
+    "minimumUnmodified": true,
+    "readyProxy": "Observed seed-store boundary, not the unobserved Sleep return",
+    "perFrameSeedCounterOrSerialWrites": false,
+    "declaredReferenceBootstrapAndGeometry": true,
+    "declaredOneTextureChunkPerCallback": true,
+    "defaultWebHostEquivalenceClaimed": false,
+    "rawSha256": "87cb87a8ab4bc1a29d76adf022c8d8eb400f75166daa7cead10e9ba49dfce3b8"
+  },
+  "independentActualReturnControl": {
+    "callbacks": 14370,
+    "all32SelectedWordsByteIdentical": true,
+    "actualSleepReturnObserved": true,
+    "seedStoreProxyUsed": false,
+    "callToReturnMilliseconds": 226.0268,
+    "returnToSeedStoreMilliseconds": 12.3258,
+    "extraVisualCallsBeforeReturn": 72,
+    "debuggerPausesIncluded": true,
+    "privateObservedHostInput": true,
+    "stageClockAndMinimumUnmodified": true,
+    "rawSha256": "8e36564d27d29af563a7bbf812076b32464d34a6c37c1cdd32cf55b1470bea4a",
+    "defaultWebHostEquivalenceClaimed": false
+  },
+  "sameBinaryNegativeControl": {
+    "callbacks": 14370,
+    "observedHostEventProvided": false,
+    "allDifferenceCounts": {
+      "21": 308,
+      "24": 12
+    },
+    "positiveControlFrameDifferences": {
+      "21": 189
+    },
+    "firstDifference": {
+      "index": 14181,
+      "stage": 2,
+      "stageFrame": 1,
+      "word": 21,
+      "native": 39822,
+      "portable": 45757
+    },
+    "productionBinaryIdentical": true
+  },
+  "nativeMarisaAComparison": {
+    "callbacks": 34783,
+    "all32SelectedWordsByteIdentical": true,
+    "nativeUnpairedTail": 0,
+    "selectedSha256": "8fbc8440ce5dae4d5a4d32a67598f708bbccbc233692aae3a631d421293e8732",
+    "bootstrapEnvironmentObserved": true,
+    "nativeHostSpacingObserved": true,
+    "declaredCompatibilityAbiAndTextureChunking": true,
+    "naturalReplayEndAnd90StableMenuTicks": true
+  },
+  "allocationPrefix": {
+    "callbacks": 22328,
+    "publications": 140411,
+    "handleFileScriptDifferences": 0,
+    "inactiveFrameZeroDifferences": [
+      {
+        "index": 9322,
+        "word": 21,
+        "stage": 2,
+        "nativeStageFrame": 0,
+        "portableStageFrame": 0
+      },
+      {
+        "index": 9322,
+        "word": 24,
+        "stage": 2,
+        "nativeStageFrame": 0,
+        "portableStageFrame": 0
+      },
+      {
+        "index": 20904,
+        "word": 21,
+        "stage": 3,
+        "nativeStageFrame": 0,
+        "portableStageFrame": 0
+      },
+      {
+        "index": 20904,
+        "word": 24,
+        "stage": 3,
+        "nativeStageFrame": 0,
+        "portableStageFrame": 0
+      }
+    ]
+  },
+  "regression": {
+    "cases": 30,
+    "callbacks": 2763367,
+    "allRaw32ByteIdenticalToPreviousCommit": "cb0f291d18f4ac6dc01cd121ac0cb236d9482193",
+    "naturalTerminalAnd90StableMenuTicks": true,
+    "defaultCoreHostImmediateReadiness": true,
+    "allModeNativeAcceptanceClaimed": false
+  },
+  "stateMachineContract": {
+    "cases": [
+      "capture gate precedes host dispatch",
+      "host completion can hold beyond60ms without reinitializing",
+      "default host retains exact60ms lower bound",
+      "initial worker skips minimum wait",
+      "capture cancellation does not dispatch worker",
+      "backward clock fails before initialization",
+      "failed host dispatch does not initialize resources"
+    ],
+    "failures": 0,
+    "productionHeaderBound": true
+  },
+  "browser": {
+    "actualProductionLauncher": true,
+    "actualWebGL": true,
+    "importedUnmodifiedReimuBNormal": true,
+    "stage2GameplayObserved": true,
+    "hostWaits": [
+      {
+        "timestamp": "2026-10-23T20:04:11.325Z",
+        "elapsedMs": 67
+      },
+      {
+        "timestamp": "2026-10-23T20:08:48.252Z",
+        "elapsedMs": 61
+      },
+      {
+        "timestamp": "2026-10-23T20:14:52.415Z",
+        "elapsedMs": 63
+      },
+      {
+        "timestamp": "2026-10-23T20:21:53.577Z",
+        "elapsedMs": 66
+      },
+      {
+        "timestamp": "2026-10-23T20:27:39.956Z",
+        "elapsedMs": 61
+      }
+    ],
+    "issuesAfterReplayStart": [],
+    "preReplayErrorCount": 1,
+    "quietOutput": true,
+    "nativeTimingInjected": false,
+    "newSixStageReplayStillRunning": true
+  },
+  "previousBinaryGpu": {
+    "commit": "cb0f291d18f4ac6dc01cd121ac0cb236d9482193",
+    "wasmSha256": "48258f0a5edcfbdee6a9fc9380ee635f1ec68a23eafe7f820b0df1ced7fa65b5",
+    "naturalSixStageReplayEnd": true,
+    "hudScore": 801525760,
+    "graze": 17551,
+    "notInheritedAsNewBinaryFullRunAcceptance": true
+  },
+  "limitations": [
+    "The first Native capture only measured call-to-seed-store; a second independently captured actual Sleep return. Both contain debugger scheduling effects.",
+    "Both14370-row exact comparisons supply private observed host events; they do not prove default browser scheduling matches the original.",
+    "A separate Native Reimu B full bootstrap capture failed at stage5 after93104 callbacks with access violation0xc0000005 at0x447529; no full Native acceptance is claimed.",
+    "Independent cold-loader history, ordinary initialization, all-mode original graphics/audio and persistence acceptance remain unfinished."
+  ],
+  "evidenceBindings": [
+    {
+      "path": "artifacts/th14/stage-worker-host-oct24/build/build.json",
+      "bytes": 178475,
+      "sha256": "073f08a3dca19ba332f466d0a2a7805a6678547a57c668618950ff493d859763"
+    },
+    {
+      "path": "artifacts/th14/stage-worker-host-oct24/core-build.json",
+      "bytes": 79066,
+      "sha256": "b6a2ff00a840ca0fadeecdbf1db2e777348be6542a08247df643ed9ed9c348bf"
+    },
+    {
+      "path": "artifacts/th14/stage-worker-host-oct24/cold-build.json",
+      "bytes": 79305,
+      "sha256": "8ba5f96ac30b07ffb783f8a8c1807d6a2f4e4b2b837d6d4010202429aa3569e4"
+    },
+    {
+      "path": "artifacts/th14/stage-worker-host-oct24/matrix-results.json",
+      "bytes": 65145,
+      "sha256": "b9ed3caa3010fd3c9539ce5e1bf4b4cc07d72f4493b089a1ccfb7f2a7f672b3f"
+    },
+    {
+      "path": "artifacts/th14/stage-worker-host-oct24/production-full-observed-reference-environment/report.json",
+      "bytes": 1826,
+      "sha256": "6ea48bc1b337d186f8b8b07e49af335c970f2685d5f5642a4d64fbafe4bc5618"
+    },
+    {
+      "path": "artifacts/th14/stage-worker-host-oct24/allocation-prefix-22328/report.json",
+      "bytes": 1544,
+      "sha256": "1a4cb4994b6e3f4de491a2f4743cf6302ac3ebe51fad58d771526e530f1c3163"
+    },
+    {
+      "path": "artifacts/th14/stage-worker-host-oct24/worker-wait-contract-verified.json",
+      "bytes": 690,
+      "sha256": "ffd27ff11366769a341bd7c24eade3e6ea112317dd7ba14a509b326fac8a5bb6"
+    },
+    {
+      "path": "artifacts/th14/stage-worker-host-oct24/timer-import-audit.json",
+      "bytes": 569,
+      "sha256": "94bbea9e82d19f9e78510fe4841dfe677e826d0f0186dadd4e1e6da68e59bfd8"
+    },
+    {
+      "path": "artifacts/th14/stage-worker-host-oct24/observed-worker-effects-prefix-retail-reimub-stage2-worker-order-lean-hardware-oct24-14370/report.json",
+      "bytes": 1637,
+      "sha256": "979d30f88f9310a1001d387b76999c456d2b9ead045fadf0adf2b3cea68e5a0a"
+    },
+    {
+      "path": "artifacts/th14/stage-worker-host-oct24/browser-worker-waits-observed.json",
+      "bytes": 838,
+      "sha256": "d5b9a1d0ba3f8e266fb4a1a2d6b48675c626d8bd4f1b6efa338d7ecbd71bf1b8"
+    },
+    {
+      "path": "artifacts/th14/stage-worker-host-oct24/browser-full-replay-start.json",
+      "bytes": 514,
+      "sha256": "8e526ea1f9b8ad61fa674a6bd87a4268584f5dea3f712970dfae4560dc9ab22f"
+    },
+    {
+      "path": "artifacts/th14/native-stack-production-oct24/browser-reimub-full-observation.json",
+      "bytes": 2668,
+      "sha256": "8b9768c4cc2a2dcec82671fc495c4e7ec271a89add63763f1cfc31b070f8fdfa"
+    },
+    {
+      "path": "artifacts/th14/native-stack-production-oct24/native-reimub-bootstrap-failure.json",
+      "bytes": 846,
+      "sha256": "a2310f5c64a0abcfe85608ce1b0ece9a90eaf1c149bae37cb469233ca04e90e8"
+    },
+    {
+      "path": "artifacts/th14/stage-worker-host-oct24/native-sleep-return-observed.json",
+      "bytes": 1382,
+      "sha256": "dc1d6b71f1146e0be87789e6cc44f90d21a0f0aba95dc170f3dbd8a8731d3b9b"
+    },
+    {
+      "path": "artifacts/th14/stage-worker-host-oct24/observed-worker-sleep-return-prefix-retail-reimub-stage2-sleep-return-hardware-oct24-14370/report.json",
+      "bytes": 1678,
+      "sha256": "71412212641afdfb7801641defaaecd96beb89d8be87063f2c686bf398d70954"
+    },
+    {
+      "path": "artifacts/th14/stage-worker-host-oct24/default-worker-negative-sleep-return-prefix-retail-reimub-stage2-sleep-return-hardware-oct24-14370/report.json",
+      "bytes": 2105,
+      "sha256": "9130757d6ffb6b0c61cd8d575d3aa581d0e0b494fb844945257193e4f76c8247"
+    }
+  ],
+  "rootResourceCryptExcluded": true,
+  "sourceOnlyPublication": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}
