@@ -40,6 +40,8 @@ struct StageResourceEffects {
 #if PORT_TITLE == 14
     virtual bool core_ready()const{return true;}
     virtual bool stage_ready()const{return true;}
+    // Cold-start VM creation belongs to the original priority60 callback.
+    virtual bool draw_startup_loading(){return true;}
     virtual bool defer_ending_loading()const{return false;}
     virtual bool begin_ending_loading(){return true;}
     virtual void finish_ending_loading(){}

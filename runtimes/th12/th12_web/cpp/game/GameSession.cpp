@@ -790,6 +790,8 @@ bool GameSession::draw(AnmRenderer& renderer,AsciiText* overlay) {
         // Their priority need not coincide with any persistent scene pass:
         // attract fade 48 and title fade 61 are both between fixed passes.
         for(;next_fade_priority<=pass.priority;++next_fade_priority){
+            if(next_fade_priority==60&&resources.effects&&!resources.effects->draw_startup_loading())
+                return fail((std::string("startup loading creation failed: ")+resources.effects->last_error()).c_str());
             if(title)title_fades.draw(renderer,next_fade_priority);
             if(ending)ending->fades.draw(renderer,next_fade_priority);
             if(battle_attached&&battle)battle->fades.draw(renderer,next_fade_priority);

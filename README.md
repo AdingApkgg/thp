@@ -1,5 +1,7 @@
 # thp — 东方原作 Web 移植工作区
 
+TH14 启动签名修正（2026-10-23）：真实 sig/ASCII 动画在绘制优先级 60 创建，资源就绪且达到 180 次实际绘制后释放签名并开启标题。9 组核心加载检查及新版静音浏览器普通开局／Game Over／返回标题检查通过，浏览器无错误或警告；完整异步启动与整作 1:1 仍未完成。[修正范围](docs/porting/TH14_STARTUP_SIGNATURE_DRAW_FIX_OCT23.md)、[验证摘要](docs/porting/th14-startup-signature-draw-verified-oct23.json)。
+
 TH14 启动逐块推进修正（2026-10-23）：每次回调上传一个 ANM 块，最后一块准备模板后再更新动画；公共资源前段改为 front → bullet → effect。9 组延迟加载、34 次原版组件 RNG 更新对照及新版静音浏览器普通入口检查通过。sig 完整启动、异步时序和整作 1:1 仍在推进。[修正范围](docs/porting/TH14_STARTUP_CHUNK_PUMP_FIX_OCT23.md)、[验证摘要](docs/porting/th14-startup-chunk-pump-verified-oct23.json)。
 
 TH14 加载绘制修正（2026-10-23）：启动资源分支提前返回前补齐绘制、延迟捕获和呈现。新版 SDL 在独立静音地址完成 Normal 灵梦 B 第一关进入、暂停和返回标题检查，浏览器无错误／警告；sig 完整启动与整作 1:1 继续施工。旧 8208 预览仍保留。[修正范围](docs/porting/TH14_LOADING_PRESENT_FIX_OCT23.md)、[验证摘要](docs/porting/th14-loading-present-verified-oct23.json)。

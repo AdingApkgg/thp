@@ -1,0 +1,121 @@
+{
+  "verified": true,
+  "title": 14,
+  "baseCommit": "ddc499752562bb2827f92823c11543c637f888c5",
+  "change": "Create cold-start sig script0 and ASCII script17 at draw priority60; retire sig after uploads and 180 actual draw callbacks, before enabling title update.",
+  "sourceFiles": {
+    "runtimes/th12/th12_web/cpp/game/GameSessionResources.hpp": "b638934fb86ecb9f2e4bfcea8884e624215e511622f9e501a10b44de1f40c157",
+    "runtimes/th12/th12_web/cpp/game/GameSession.cpp": "eb1011277af968fd63c89f49e9e9f4758f4cecc35b4d5cab71df363df2e7d88e",
+    "runtimes/th12/th12_web/cpp/sdl/Application.cpp": "14c76261cd48ea6fdbe8c59a7464253fd9848b0403d5a36a64dd362e47940f34"
+  },
+  "build": {
+    "sdlWasm": {
+      "path": "artifacts/th14/startup-signature-draw-oct23/build-v2/th11.wasm",
+      "bytes": 1905212,
+      "sha256": "fdfac6be22827fc29588be082b1e882aabd2ffdd6c7558e9bd25bfa2210048d8"
+    },
+    "freshObjectsBeforeVirtualInterfaceChange": 146,
+    "recompiledAfterFinalApplicationChange": 1,
+    "verifiedReusedObjects": 145,
+    "frozenSourceFiles": 295,
+    "rootResourceCryptExcluded": true,
+    "exportsUnchanged": true,
+    "importsUnchanged": true
+  },
+  "originalStatic": {
+    "executableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+    "drawPriority": 60,
+    "minimumDrawCallbacks": 180,
+    "counterInstruction": "0x44478f",
+    "waitCompare": "0x45959a",
+    "unloadSignatureCall": "0x4595e1",
+    "enableTitleUpdate": "0x459607",
+    "skipMask": "0x180",
+    "skipMaskImplemented": false,
+    "actualNativeTitleThreadWaitExecuted": false
+  },
+  "coreLoading": {
+    "passed": true,
+    "cases": 9,
+    "scope": "Nine original-resource delayed title entries: three explicit real clock inputs times delay0/9/44. Font/score initialization remains256/494 real calls; title/input/frame/gameplay RNG held while core resources pending; actual effect21 template job consumes its separately native-verified two next32 calls between loading-family updates. Title constructs at readiness without clearing loading children and starts timer0. Nine pending ANM files remain undecoded until their own real frame jobs; player jobs also decode six original SHT resources and the final default ECL. GPU uploads and original asynchronous thread scheduling/wallclock/title/loading pixel equivalence excluded.",
+    "sdlApplicationIncluded": false,
+    "receipt": {
+      "path": "artifacts/th14/startup-signature-draw-oct23/core-loading-verified.json",
+      "bytes": 8342,
+      "sha256": "827ede9692f0169afbee738935b28df1220aa61448a8eae7e894233d2def5470"
+    }
+  },
+  "browser": {
+    "url": "http://localhost:8213/?game=th14",
+    "runtimeVariant": "normal",
+    "quiet": true,
+    "commonChunkCallbacks": 115,
+    "chunkCounts": [
+      8,
+      9,
+      13,
+      3,
+      41,
+      1,
+      13,
+      15,
+      12
+    ],
+    "signatureDrawCallbacks": 180,
+    "signatureCreated": "2026-10-23T00:23:17.540Z",
+    "signatureRetired": "2026-10-23T00:23:20.589Z",
+    "elapsedSeconds": 3.049,
+    "manuallyObserved": [
+      "cold start to title",
+      "natural Normal Demo",
+      "ordinary Game Start / Normal / Reimu B",
+      "natural first-stage Game Over",
+      "return to title through ordinary menu"
+    ],
+    "errors": 0,
+    "warnings": 0,
+    "proofs": [
+      {
+        "path": "artifacts/th14/startup-signature-draw-oct23/browser-title.jpg",
+        "bytes": 227278,
+        "sha256": "ffccc8eb7746d463c51f0dbad922e3433504bae5c39c8de60ac7db24e958eef9"
+      },
+      {
+        "path": "artifacts/th14/startup-signature-draw-oct23/browser-normal-reimu-b-gameover.jpg",
+        "bytes": 217031,
+        "sha256": "1199a93998856c21ed44cb76d273ea7f0a64e271ff01bbf5d02adbc2eaf4cb0c"
+      },
+      {
+        "path": "artifacts/th14/startup-signature-draw-oct23/browser-returned-title.jpg",
+        "bytes": 227763,
+        "sha256": "6364c5a5f7fa8bb8e36385420fdf67e62e9a4593fa98c68a004f19645b66f271"
+      }
+    ],
+    "logs": [
+      {
+        "path": "artifacts/th14/startup-signature-draw-oct23/browser-first-launch-logs.json",
+        "bytes": 43434,
+        "sha256": "16123c493b05ec3feefcc36c7a77482b0430d29dbf54cc9955def2785e7ca452"
+      },
+      {
+        "path": "artifacts/th14/startup-signature-draw-oct23/browser-logs.json",
+        "bytes": 65100,
+        "sha256": "932f2c336c0c143e02d45dba8b822f4cf4d9c7c27f3b01180d7836774392e96e"
+      }
+    ],
+    "screenshotOfActualSignatureLoading": false,
+    "pixelEquivalence": false
+  },
+  "limitations": [
+    "Initial sig/ascii/text GPU preparation remains synchronous.",
+    "Original full asynchronous startup, physical frame cadence, native title worker and pixel equivalence are not verified.",
+    "Original 0x180 skip-mask bypass is not implemented by this change.",
+    "Forced JavaScript restart during cold loading has not been verified.",
+    "Nine headless core cases do not execute the SDL application or certify the signature minimum.",
+    "Full replays from earlier versions are not inherited as validation of this SDL build."
+  ],
+  "originalSigStartupImplemented": false,
+  "originalFullStartupTimingVerified": false,
+  "completeGame": false,
+  "nativeEquivalent": false
+}

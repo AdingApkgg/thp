@@ -137,6 +137,11 @@ struct Application:StageResourceEffects
     bool initialized=false;
 #if PORT_TITLE == 14
     LoadingTh14 boot_loading;
+    AnmResource boot_signature;
+    u32 boot_signature_handle=0;
+    bool boot_signature_pending=false;
+    bool boot_signature_active=false;
+    u32 boot_signature_draws=0;
     struct ResourceUpload {AnmResource* resource;u16 file;u32 chunk=0;};
     std::vector<ResourceUpload> boot_uploads;
     u32 boot_upload_index=0;
@@ -361,6 +366,23 @@ struct Application:StageResourceEffects
     }
 #if PORT_TITLE == 14
     bool core_ready()const override{return core_loading_done;}
+    bool draw_startup_loading()override{
+        if(!boot_signature_active)return true;
+        if(boot_signature_pending){
+            if(!boot_signature_handle){
+                auto* vm=session.animations.create(boot_signature,0,1,0xffffffffu);
+                if(!vm){graphics.error=session.animations.last_error_text();return false;}
+                boot_signature_handle=vm->id;
+            }
+            if(!boot_loading.begin(session.animations,session.resources.core.ascii)){
+                graphics.error=session.animations.last_error_text();return false;
+            }
+            boot_signature_pending=false;
+            std::printf("[loading14] sig script0 and ascii script17 created at draw priority60\n");
+        }
+        ++boot_signature_draws;
+        return true;
+    }
     bool stage_ready()const override{return boot_uploads.empty();}
     bool prepare_stage_phase(StageResources& stage,StageResourceEffects::Phase phase)override{
         renderer.flush();graphics.error.clear();
@@ -432,16 +454,20 @@ struct Application:StageResourceEffects
         if(SDL_GetPathInfo(config_path,nullptr)){std::vector<u8> saved;if(!read_file(config_path,saved,u32(session.config.bytes.size()))||!session.config.open(saved.data(),u32(saved.size()))){error=std::string("Invalid ")+config_path;return false;}saved_config_state=saved;}
         audio.music_volume=session.config.music_volume();audio.effects.master_volume=session.config.sound_volume();audio.refresh_volume();
         session.recording_timestamp=u64(std::time(nullptr));
+#if PORT_TITLE == 14
+        if(!resources.open_anm("sig.anm",boot_signature)){error="sig ANM: "+boot_signature.detail;return false;}
+        if(!session.animations.prepare_resource(boot_signature,1)){error=session.animations.last_error_text();return false;}
+#endif
         if(!session.open_title(resources,true)){error=session.error;return false;}
         auto& core=session.resources.core;
 #if PORT_TITLE == 14
         // Upload real pending resources between frames so the original loading
         // ANM can update and draw while GPU work remains. Its random children
         // follow script17's own clock, never a captured RNG count.
-        for(auto* file:{&core.ascii,&core.text})if(!graphics.preload(*file)){error=graphics.error;return false;}
-        if(!boot_loading.begin(session.animations,core.ascii)){error="TH14 loading animation creation failed";return false;}
+        for(auto* file:{&boot_signature,&core.ascii,&core.text})if(!graphics.preload(*file)){error=graphics.error;return false;}
+        boot_signature_pending=true;boot_signature_active=true;boot_signature_draws=0;
         boot_uploads={{&core.front,5},{&core.bullet,7},{&core.effect,8},{&core.enemy,9},{&core.title,24},{&core.title_variant,25},{&core.players[0],7},{&core.players[1],7},{&core.players[2],7}};
-        boot_upload_index=0;std::printf("[loading14] ascii script17 started; %u resource uploads pending\n",u32(boot_uploads.size()));
+        boot_upload_index=0;std::printf("[loading14] sig/ascii scheduled at draw priority60; %u resource uploads pending\n",u32(boot_uploads.size()));
         boot_stage_owner=nullptr;
 #else
 #if PORT_TITLE == 16
@@ -466,6 +492,7 @@ struct Application:StageResourceEffects
 #endif
         if(!initialize())return false;
 #if PORT_TITLE == 14
+        boot_signature_pending=false;boot_signature_active=false;boot_signature_handle=0;
         if(!core_loading_done){if(!session.resources.prepare_core()){error=session.resources.error;return false;}core_loading_done=true;}
         boot_loading.finish(session.animations);boot_uploads.clear();boot_upload_index=0;
         boot_stage_owner=nullptr;stage_uploads.cancel_all();
@@ -515,17 +542,29 @@ struct Application:StageResourceEffects
             // Player/HUD/old Stage callbacks and draw below, without a second
             // ANM update or a loading-frame return.
         }
-        if(boot_upload_index<boot_uploads.size()){
-            auto& job=boot_uploads[boot_upload_index];
-            if(!core_loading_done&&!session.resources.load_core_job(boot_upload_index)){error=session.resources.error;return false;}
-            // Original resource priority1 pumps one chunk. Its final chunk
-            // prepares templates before the priority29/30 ANM callbacks.
-            if(!graphics.preload_chunk(*job.resource,job.chunk)){error=graphics.error;return false;}
-            const bool resource_ready=++job.chunk>=job.resource->textures.size();
-            if(resource_ready&&!session.animations.prepare_resource(*job.resource,job.file)){error=session.animations.last_error_text();return false;}
-            if(resource_ready)std::printf("[loading14] file %u ready after %u chunk callbacks\n",u32(job.file),job.chunk);
+        if(boot_upload_index<boot_uploads.size()||boot_signature_active){
+            if(boot_upload_index<boot_uploads.size()){
+                auto& job=boot_uploads[boot_upload_index];
+                if(!core_loading_done&&!session.resources.load_core_job(boot_upload_index)){error=session.resources.error;return false;}
+                // Original resource priority1 pumps one chunk. Its final chunk
+                // prepares templates before the priority29/30 ANM callbacks.
+                if(!graphics.preload_chunk(*job.resource,job.chunk)){error=graphics.error;return false;}
+                const bool resource_ready=++job.chunk>=job.resource->textures.size();
+                if(resource_ready&&!session.animations.prepare_resource(*job.resource,job.file)){error=session.animations.last_error_text();return false;}
+                if(resource_ready){std::printf("[loading14] file %u ready after %u chunk callbacks\n",u32(job.file),job.chunk);++boot_upload_index;}
+            }
+            // 45959a waits for actual priority60 callbacks to reach180. Only
+            // after both upload readiness and that count does 4595e1 unload sig.
+            const bool signature_ready=boot_signature_active&&!boot_signature_pending&&boot_signature_draws>=180&&boot_upload_index==boot_uploads.size();
+            if(signature_ready)session.animations.retire_resource(boot_signature);
             if(!session.animations.update(true)||!session.animations.update(false)){error="TH14 loading ANM update failed";return false;}
-            if(resource_ready&&++boot_upload_index==boot_uploads.size()){
+            if(signature_ready){
+                if(session.animations.references(boot_signature)){error="TH14 sig still referenced after ANM retirement";return false;}
+                graphics.unload(boot_signature);renderer.invalidate();boot_signature={};
+                boot_signature_active=false;boot_signature_handle=0;
+                std::printf("[loading14] sig retired after %u draw callbacks\n",boot_signature_draws);
+            }
+            if(boot_upload_index==boot_uploads.size()&&!boot_signature_active){
                 core_loading_done=true;
                 boot_loading.finish(session.animations);boot_uploads.clear();boot_upload_index=0;
                 boot_stage_owner=nullptr;
