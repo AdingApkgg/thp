@@ -349,7 +349,9 @@ struct Application:StageResourceEffects
         {
             boot_uploads.clear();boot_upload_index=0;
             boot_stage_owner=&stage;
-            boot_uploads={{&stage.background,u16((stage.stage_number&1)+3)},{&stage.logo,6},{&stage.enemies,9}};
+            // Like later Timeline loads, queue only the ECL ANIM resources.
+            // stage.enemies duplicates one of those files and has no upload.
+            boot_uploads={{&stage.background,u16((stage.stage_number&1)+3)},{&stage.logo,6}};
             for(u32 i=0;i<stage.ecl_animations.size();++i)if(!stage.ecl_animation_names[i].empty())boot_uploads.push_back({&stage.ecl_animations[i],u16(10+i)});
             if(!boot_uploads.empty()){
                 if(!boot_loading.begin(session.animations,session.resources.core.ascii)){graphics.error="TH14 stage loading animation creation failed";return false;}
@@ -466,7 +468,7 @@ struct Application:StageResourceEffects
         // follow script17's own clock, never a captured RNG count.
         for(auto* file:{&boot_signature,&core.ascii,&core.text})if(!graphics.preload(*file)){error=graphics.error;return false;}
         boot_signature_pending=true;boot_signature_active=true;boot_signature_draws=0;
-        boot_uploads={{&core.front,5},{&core.bullet,7},{&core.effect,8},{&core.enemy,9},{&core.title,24},{&core.title_variant,25},{&core.players[0],7},{&core.players[1],7},{&core.players[2],7}};
+        boot_uploads={{&core.front,5},{&core.bullet,7},{&core.effect,8},{&core.enemy,9},{&core.title,16},{&core.title_variant,17},{&core.players[0],7},{&core.players[1],7},{&core.players[2],7}};
         boot_upload_index=0;std::printf("[loading14] sig/ascii scheduled at draw priority60; %u resource uploads pending\n",u32(boot_uploads.size()));
         boot_stage_owner=nullptr;
 #else

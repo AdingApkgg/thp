@@ -1,0 +1,197 @@
+{
+  "verified": true,
+  "title": 14,
+  "baseCommit": "22d2f94a6557acad0239f5303a586c8a100fc87a",
+  "changes": [
+    "TH14 title/template/upload/VM file slots16/17",
+    "Remove duplicate legacy enemy upload from first stage entry"
+  ],
+  "originalStatic": {
+    "verified": true,
+    "executableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+    "titleFile": 16,
+    "variantFile": 17,
+    "loader": "0x47d090",
+    "rows": [
+      {
+        "pc": "0x459665",
+        "bytes": 7,
+        "hex": "68e0f84b006a10",
+        "sha256": "387ee46e5ba1a75ac93d5b4afeafe838211e0a9af0c0323b335a36aac98934cf"
+      },
+      {
+        "pc": "0x45966f",
+        "bytes": 5,
+        "hex": "e81c3a0200",
+        "sha256": "0d0e4f7d349326a91da878d258248c52e9a7f01ec9a0428b163c22ca51730572"
+      },
+      {
+        "pc": "0x459696",
+        "bytes": 7,
+        "hex": "68ecf84b006a11",
+        "sha256": "93a24e8cf47e5a1478ab7aaadb6deb9ac3e167e7d8a0a2ce7a1e4511b1d2dfd1"
+      },
+      {
+        "pc": "0x45969d",
+        "bytes": 5,
+        "hex": "e8ee390200",
+        "sha256": "e68033951c6a099fbedab1ddb480f0b2a236b1953f26d7fb280b3cadf57614ff"
+      },
+      {
+        "pc": "0x4bf8e0",
+        "bytes": 10,
+        "hex": "7469746c652e616e6d00",
+        "sha256": "a72a615a9b29a4cd3e0c1e24bb4ecea5e4c88f12f7539e7d8fb5b8e7cdf062ea"
+      },
+      {
+        "pc": "0x4bf8ec",
+        "bytes": 12,
+        "hex": "7469746c655f762e616e6d00",
+        "sha256": "ff1ab984b2761bcfdc4a03ae6ab450506b3d4f3ba5e945d7b006d9aa5bf97858"
+      }
+    ],
+    "actualNativeTitleWorkerExecuted": false,
+    "completeGame": false,
+    "nativeEquivalent": false
+  },
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/GameSessionResources.cpp": "93af1ef25bbde8c45eec30bb2ed9289a81907429e766c66896f1bad67d410456",
+    "runtimes/th12/th12_web/cpp/game/TitleMenu.cpp": "b68cabfc3f6933cafbebd44c377eaf85ffb09596902a3f272256453df8c5b9a8",
+    "runtimes/th12/th12_web/cpp/sdl/Application.cpp": "4effec3e9f867540e8e1ee028e85a5492f8bb0a81fbd677762db4918bc773858",
+    "runtimes/th12/th12_web/tests/cpp/th14-startup-fixture.cpp": "d1c23be26a665b0206f1f40b739129db29c4749cadf727ffcaec97af9fd27c76",
+    "tools/th14-core-loading-check.mjs": "00a208664d60707d5bbfde8389c8a72128e2fdcf7082bf7d716e7a78b01f168b"
+  },
+  "build": {
+    "wasm": {
+      "path": "artifacts/th14/startup-slots-first-entry-oct23/build/th11.wasm",
+      "bytes": 1905189,
+      "sha256": "8a31194db8f6c21ff15744dbf1c6477ee6a6b7cc4b0afef8c717b2b306f70a77"
+    },
+    "recompiled": 3,
+    "verifiedReused": 143,
+    "importsUnchanged": true,
+    "exportsUnchanged": true,
+    "rootResourceCryptExcluded": true
+  },
+  "core": {
+    "wasm": {
+      "path": "artifacts/th14/startup-slots-first-entry-oct23/build/startup.wasm",
+      "bytes": 1481555,
+      "sha256": "1e33957be912753209ca87926eba2545563a6cbc01d99a6bd5551792a39759f7"
+    },
+    "recompiled": 2,
+    "verifiedReused": 139,
+    "passedCases": 9,
+    "checkedTitleTemplateSlots": [
+      16,
+      17
+    ],
+    "checkedFirstTitleFamilySlot": 16,
+    "sharedTitleCompileChecks": [
+      13,
+      16
+    ],
+    "initialMissingFixtureLinkFailureRetained": true,
+    "receipt": {
+      "path": "artifacts/th14/startup-slots-first-entry-oct23/core-loading-verified.json",
+      "bytes": 9368,
+      "sha256": "8446608102afc025753323adc11dc8670783c5249304d2b1e4a6e074b548ebb8"
+    }
+  },
+  "browser": {
+    "url": "http://localhost:8214/?game=th14",
+    "variant": "normal",
+    "quiet": true,
+    "observed": [
+      "signature loading screen",
+      "title",
+      "ordinary Normal Reimu B stage1",
+      "pause",
+      "confirmed return to title"
+    ],
+    "titleFiles": [
+      16,
+      17
+    ],
+    "signatureDraws": 180,
+    "firstStageChunks": [
+      [
+        4,
+        5
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        10,
+        3
+      ],
+      [
+        11,
+        16
+      ],
+      [
+        12,
+        3
+      ]
+    ],
+    "firstStageTotalChunks": 29,
+    "oldFirstStageChunks": [
+      [
+        4,
+        5
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        9,
+        16
+      ],
+      [
+        10,
+        3
+      ],
+      [
+        11,
+        16
+      ],
+      [
+        12,
+        3
+      ]
+    ],
+    "oldFirstStageTotalChunks": 45,
+    "duplicateChunksRemoved": 16,
+    "errors": 0,
+    "warnings": 0,
+    "proofs": [
+      {
+        "path": "artifacts/th14/startup-slots-first-entry-oct23/browser-title.jpg",
+        "bytes": 227349,
+        "sha256": "b5a598f58848726a79e06087b3a286a919b0f39769fb0f709eb63336ea984e9a"
+      },
+      {
+        "path": "artifacts/th14/startup-slots-first-entry-oct23/browser-stage1-paused.jpg",
+        "bytes": 229318,
+        "sha256": "b93929a17e6d79c81436d88f9338a3a9a3d7fe3ec8cce5551b654fbba832b028"
+      },
+      {
+        "path": "artifacts/th14/startup-slots-first-entry-oct23/browser-returned-title.jpg",
+        "bytes": 177860,
+        "sha256": "e917723a191db55af091ce3d0c34f833521f81bf638454ce70188498ae5300e2"
+      }
+    ],
+    "logs": {
+      "path": "artifacts/th14/startup-slots-first-entry-oct23/browser-final-logs.json",
+      "bytes": 93243,
+      "sha256": "37beb5c7addbbdb18af00dd7fc67661e06c6537d57a972ed0ea0f7945a58362d"
+    }
+  },
+  "scope": "Original title slot instructions, selected template/VM fields, bounded loading tests and browser smoke only; full native startup, all modes, later full stage transitions, GPU pixel and audio equivalence remain unverified.",
+  "priorFullReplayAcceptanceInherited": false,
+  "completeGame": false,
+  "nativeEquivalent": false
+}

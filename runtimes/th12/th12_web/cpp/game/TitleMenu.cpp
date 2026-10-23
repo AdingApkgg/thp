@@ -19,7 +19,9 @@ bool TitleMenu::unlocked()const{for(i32 c=0;c<(kPortTitle==14?3:kPortTitle==13?4
 u32 TitleMenu::create(i32 script,i32 slot,i32 file){
     if(slot<0)slot=script;
     if(file==3&&!text_resource){error="title text resource missing";return 0;}
-    auto* vm=animations.create(file==1?variant:file==2?ascii:file==3?*text_resource:title,script,file==1?25:file==2?2:file==3?0:24,22);
+    // Retail TH14 45966a/45969b load title and title_v in slots16/17.
+    const u16 title_file=kPortTitle==14?16:24,variant_file=kPortTitle==14?17:25;
+    auto* vm=animations.create(file==1?variant:file==2?ascii:file==3?*text_resource:title,script,file==1?variant_file:file==2?2:file==3?0:title_file,22);
     if(!vm){error="title animation creation failed: "+std::to_string(script)+" (ANM opcode "+std::to_string(animations.last_error)+")";return 0;}
     return handles[slot]=vm->id;
 }

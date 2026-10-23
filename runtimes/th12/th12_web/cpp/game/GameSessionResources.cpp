@@ -89,7 +89,7 @@ bool GameSessionResources::prepare_core(){
         auto& a=*animation_manager;a.fallback_sprites=&core.ascii;
         if(!a.prepare_resource(core.ascii,2)||!a.prepare_resource(core.text,0)||!a.prepare_resource(core.front,5)
            ||!a.prepare_resource(core.bullet,7)||!a.prepare_resource(core.effect,8)||!a.prepare_resource(core.enemy,9)
-           ||!a.prepare_resource(core.title,24)||!a.prepare_resource(core.title_variant,25))return core_error(error,a.last_error_text().c_str());
+           ||!a.prepare_resource(core.title,16)||!a.prepare_resource(core.title_variant,17))return core_error(error,a.last_error_text().c_str());
         for(u32 i=0;i<player_file_count;++i)if(!a.prepare_resource(core.players[i],7))return core_error(error,a.last_error_text().c_str());
     }
     return true;
