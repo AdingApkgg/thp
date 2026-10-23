@@ -1,0 +1,189 @@
+{
+  "verified": true,
+  "baseCommit": "7f659e7528749c56e467cf8d8666d70b7bb2f7be",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/sdl/Application.cpp": "12e7f5ec013a09e8cd1c12bb8a1460db9648c5688ab8d508f4e83db497f0f798"
+  },
+  "sdlWasmSha256": "da60adc36962f99a7e62729d569b8695f2bb92fae57b743fb4704d4fda318f11",
+  "sdlRecompiled": 1,
+  "sdlReused": 145,
+  "unchangedProductionCoreObjects": 141,
+  "importsUnchanged": true,
+  "exportsUnchanged": true,
+  "change": "Do not create another ASCII17 loading family during first-stage resource preparation. Keep the selected-player/scene/ECL upload queue and all later-stage loader paths.",
+  "nativeLifecycle": {
+    "realWindowsProcess": true,
+    "hardwareBreakpointsOnly": true,
+    "callbacks": 10,
+    "loadingBegin420d20Calls": 0,
+    "initialFinish420ca0Calls": 1,
+    "workerInterrupt4369b3Calls": 1,
+    "workerObservedLoadingHandle": 0,
+    "originalInstructionPatches": 0,
+    "declaredWarmFlagWordWrites": 1
+  },
+  "coldEntryCases": [
+    {
+      "case": "v2",
+      "actualObservedClockInput": 171806422,
+      "nativeVisualSeed": 52393,
+      "nativeVisualCalls": 1360,
+      "beforeVisualCalls": 1624,
+      "afterVisualCalls": 1360,
+      "removedCallsFromRealAnimationJobs": 264,
+      "removedCreationCount": 14,
+      "selected32Equal": true,
+      "remainingDifferences": [],
+      "nativeCreationSerial": 132,
+      "portableCreationCount": 132,
+      "packedHandleEquivalenceClaimed": false
+    },
+    {
+      "case": "v3",
+      "actualObservedClockInput": 171940683,
+      "nativeVisualSeed": 16308,
+      "nativeVisualCalls": 1336,
+      "beforeVisualCalls": 1624,
+      "afterVisualCalls": 1360,
+      "removedCallsFromRealAnimationJobs": 264,
+      "removedCreationCount": 14,
+      "selected32Equal": false,
+      "remainingDifferences": [
+        {
+          "word": 21,
+          "native": 16308,
+          "portable": 42708
+        },
+        {
+          "word": 22,
+          "native": 1336,
+          "portable": 1360
+        }
+      ],
+      "nativeCreationSerial": 131,
+      "portableCreationCount": 132,
+      "packedHandleEquivalenceClaimed": false
+    }
+  ],
+  "productionCoreProbeHasPrivateStackModel": false,
+  "hostUploadWorkModel": "One successful texture chunk per callback in the source-bound diagnostic adapter; actual GPU/worker completion events are not established.",
+  "browser": {
+    "url": "http://localhost:8222/?game=th14",
+    "actualWebGL": true,
+    "quietOutput": true,
+    "naturalDemoEntryObserved": true,
+    "launcherGeneratedReplayUpload": true,
+    "generatedReplayBytes": 269,
+    "automaticForcedEndMenu": true,
+    "escapeCannotResume": true,
+    "replayAgainThenAutomaticEndMenu": true,
+    "returnedReplayList": true,
+    "errorsOrWarnings": 0
+  },
+  "unchangedCoreAcceptance": {
+    "commit": "7f659e7528749c56e467cf8d8666d70b7bb2f7be",
+    "cases": 30,
+    "callbacks": 2885731,
+    "reusedByExact141ObjectBindings": true,
+    "newAllModeGpuAcceptanceClaimed": false
+  },
+  "knownLimits": [
+    "One observed clock case matches all32 selected first-Player words; another retains a seed/24-call difference from a real loading child and one creation difference. No fixed count, clock-rate or seed adjustment is added.",
+    "The diagnostic field name for minimum pool slot was inherited; production IDs remain linear. No Native packed-handle/pool equivalence is claimed.",
+    "Clock input is actually observed, while the adapter upload callback model is not the original GPU/worker completion schedule. Native cases use one declared warm attract-flag initialization.",
+    "The private Windows beam-stack/packed-handle model improves Marisa B Normal to its natural27751-callback stage2GameOver, but Marisa A Easy still first materially differs at stage3frame5983. None of those model changes are part of this publication.",
+    "The long browser replay reaches the stage6 end menu. Its displayed801525760 must not be compared directly with Native economy914525760; a read-only core confirms HUD80152576 and economy91452576. Native HUD same-field capture remains pending.",
+    "Complete original all-mode, graphics, audio, ordinary initialization and persistence acceptance remain unfinished."
+  ],
+  "evidenceBindings": [
+    {
+      "path": "artifacts/th14/first-entry-loading-family-oct23/build/build.json",
+      "bytes": 98419,
+      "sha256": "00f8876c6235e3bd8e39b77db9aa19df4d311105cd0194899e6e2ad6ce17abef"
+    },
+    {
+      "path": "artifacts/th14/first-entry-loading-family-oct23/cold-entry-baseline-build.json",
+      "bytes": 19352,
+      "sha256": "1087f846ea48107ae370c1695d8b6b47a09d1e769cd2ff24f5019f9b1403f0fd"
+    },
+    {
+      "path": "artifacts/th14/first-entry-loading-family-oct23/cold-entry-production-build.json",
+      "bytes": 19354,
+      "sha256": "d9a4dbdbf65ea811c6654927f911ec378956ae38f3ab2694aef23fb67487f5f4"
+    },
+    {
+      "path": "artifacts/th14/first-entry-loading-family-oct23/observer-field-notes.json",
+      "bytes": 452,
+      "sha256": "97815d04d2c21c9630a70f92ca9093051c7c2e9ede314033f4375a0405b4d85b"
+    },
+    {
+      "path": "artifacts/th14/retail-marisaa-easy-first-loading-lifecycle-hardware-oct23/report.json",
+      "bytes": 4185,
+      "sha256": "24623bcb276695af34b794379c9262118fbd24e15a5903f3dff985cb11b98f4a"
+    },
+    {
+      "path": "artifacts/th14/first-entry-loading-family-oct23/browser-logs.json",
+      "bytes": 10188,
+      "sha256": "50aa0ec40ead8bb0de34c5e148fe2db9256c4330c46c24e1726944dc0f17511c"
+    },
+    {
+      "path": "artifacts/th14/retail-marisaa-easy-cold-clock-anm-v2-hardware-oct23/report.json",
+      "bytes": 395414,
+      "sha256": "8c8f4afb5f5b38078fd6a77b3451e17d450d621e240c6794a7c315ddf01ce2f2"
+    },
+    {
+      "path": "artifacts/th14/retail-marisaa-easy-cold-clock-anm-v2-hardware-oct23/untouched-first-player.json",
+      "bytes": 459,
+      "sha256": "ee6ebd6969e0fc1c3e80746f8b4307bdb55b2c5470a3f1527d3f43c3c67b77ae"
+    },
+    {
+      "path": "artifacts/th14/first-entry-loading-family-oct23/cold-v2-baseline.json",
+      "bytes": 27543,
+      "sha256": "c3c15b32df3844e4ef53dc80a5a0206e97ec26d0aef1bfcfe37d16e00d49fd2a"
+    },
+    {
+      "path": "artifacts/th14/first-entry-loading-family-oct23/cold-v2-production.json",
+      "bytes": 25099,
+      "sha256": "4f6a8b8920e2e0894a0f37d879fb0deeca04e9c8b582ffb8bebac9f2cbef04fe"
+    },
+    {
+      "path": "artifacts/th14/retail-marisaa-easy-cold-clock-anm-v3-hardware-oct23/report.json",
+      "bytes": 596592,
+      "sha256": "58b846e8aacc31eef3cdfe93cf1dc5dfab51eff71553348658745d73141fbaf3"
+    },
+    {
+      "path": "artifacts/th14/retail-marisaa-easy-cold-clock-anm-v3-hardware-oct23/untouched-first-player.json",
+      "bytes": 459,
+      "sha256": "416f0b17ed5349b8373a4d5684a9dd3b3217e27e3d8535b0dab5116109509a81"
+    },
+    {
+      "path": "artifacts/th14/first-entry-loading-family-oct23/cold-v3-baseline.json",
+      "bytes": 27543,
+      "sha256": "c607e67b9ee2ec657a0aeb50d996b6316f71f5af9c9eac9ded21c676ccfc3d75"
+    },
+    {
+      "path": "artifacts/th14/first-entry-loading-family-oct23/cold-v3-production.json",
+      "bytes": 25101,
+      "sha256": "24bca3749b5e82661ec223ef8fb40a4f71858c42180d708f0e78b5cf532ef28e"
+    },
+    {
+      "path": "artifacts/th14/first-entry-loading-family-oct23/browser-end-menu.jpg",
+      "bytes": 154714,
+      "sha256": "cbb7cb257a32466d0936bc75890c542c2e27c9f8596f6bb18451fc959cad21ad"
+    },
+    {
+      "path": "artifacts/th14/first-entry-loading-family-oct23/browser-after-replay-again.jpg",
+      "bytes": 154711,
+      "sha256": "42e9d8987225c1af9cd30a6ce99d7f20b4d1e5bc7efc1a8460b7bf04f6ae19da"
+    },
+    {
+      "path": "artifacts/th14/first-entry-loading-family-oct23/browser-returned-list.jpg",
+      "bytes": 265268,
+      "sha256": "94fdbf720778df47d7fe2aade0e2762941146d80cf02b7002947176765234d2c"
+    }
+  ],
+  "rootResourceCryptExcluded": true,
+  "sourceOnlyPublication": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}

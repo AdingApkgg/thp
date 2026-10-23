@@ -359,7 +359,9 @@ struct Application:StageResourceEffects
             boot_uploads={{&session.resources.core.players[session.state.character],9},{&stage.background,u16((stage.stage_number&1)+3)},{&stage.logo,6}};
             for(u32 i=0;i<stage.ecl_animations.size();++i)if(!stage.ecl_animation_names[i].empty())boot_uploads.push_back({&stage.ecl_animations[i],u16(10+i)});
             if(!boot_uploads.empty()){
-                if(!boot_loading.begin(session.animations,session.resources.core.ascii)){graphics.error="TH14 stage loading animation creation failed";return false;}
+                // The initial controller's44c4bf resource requests do not
+                // enter420d20. Its loading family belonged to cold startup;
+                // later-stage workers create their own family separately.
                 std::printf("[loading14] stage entry; %u resource uploads pending\n",u32(boot_uploads.size()));
                 return true;
             }
