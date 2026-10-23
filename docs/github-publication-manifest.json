@@ -1,7 +1,7 @@
 {
-  "date": "2026-10-23",
+  "date": "2026-10-24",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "27adc4c15b2c59e017cb569b01e50dbb8bb35bce",
+  "sourceCommit": "2e020f559915540b19b02dbbfe9f58da9593983e",
   "files": [
     {
       "path": ".gitignore",
@@ -242,6 +242,11 @@
       "path": "docs/porting/TH14_STAGE_TIMELINE_ANM_FIX_OCT15.md",
       "bytes": 3155,
       "sha256": "803cd629f240ef81021e738615696d505582b180bca036cab3432fd8143babbe"
+    },
+    {
+      "path": "docs/porting/TH14_STAGE_TRANSITION_RETIREMENT_OCT24.md",
+      "bytes": 2586,
+      "sha256": "a1951d1e7e21bf624e4683c8ef00615f6cb6b1b65bd7dc0fd3a0b925ac6ff59d"
     },
     {
       "path": "docs/porting/TH14_STARTUP_CHUNK_PUMP_FIX_OCT23.md",
@@ -2494,6 +2499,11 @@
       "sha256": "3d624b500d08d1db4096791e560afd7c4b051fc171d7e33f66cc215b35b3b333"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-stage-transition-retirement-candidate-oct24.json",
+      "bytes": 140062,
+      "sha256": "5350168ec3411ab8e54807882fe636aa3c310261b9381013f1dca1297d99a877"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-third-reward-oct16.json",
       "bytes": 102941,
       "sha256": "f9ecf9aec80a1bce0d008a469e497e5696c59b1a4d9a26a911f198a6de69370d"
@@ -2607,6 +2617,11 @@
       "path": "docs/porting/th14-launcher-site-shot-hit-interrupt-candidate-oct23.json",
       "bytes": 36617,
       "sha256": "b660e5798cbe316e69fc107d1904bbdb3c32366c2ac60d7f898e424ee7459abb"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-stage-transition-retirement-candidate-oct24.json",
+      "bytes": 36658,
+      "sha256": "bbb2ef2773ec7795aa34f25423811b57c88b9bf4f00651baecf2ab9cc0ecac21"
     },
     {
       "path": "docs/porting/th14-launcher-site-third-reward-oct16.json",
@@ -4829,6 +4844,11 @@
       "sha256": "f1528bf82a3b1e056ef79a65abc79a1b58bd7bd13693c4dd172773c07a7b155c"
     },
     {
+      "path": "docs/porting/th14-stage-transition-retirement-verified-oct24.json",
+      "bytes": 7575,
+      "sha256": "a95624675a2c0bcbd40d5ddbf4dc81e11504c96e3602545fb6109a325d1f8f11"
+    },
+    {
       "path": "docs/porting/th14-stage-upload-owner-unit-verified-oct14.json",
       "bytes": 7024,
       "sha256": "180e47e12df95e5e76c311ef1fd63390f9fea03e61936682d8fb97dd0755b368"
@@ -6390,8 +6410,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmManager.cpp",
-      "bytes": 19168,
-      "sha256": "cebfc0d1ad1f248ba0e0298d7eee985f1da1a95dc653d4f6e90c1a57454b35ab"
+      "bytes": 19246,
+      "sha256": "62a74556fb4dfb5ddc9257aff78c4f2688d778add06057d59f99e777fab55655"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmManager.hpp",
@@ -6860,8 +6880,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "bytes": 58384,
-      "sha256": "d33a8422f7773b7e0c3c496fa7f11595d9a5dc0d1982d83715bccb9487198815"
+      "bytes": 58887,
+      "sha256": "c9424aa04e2f467211bce0d6e32632c8b0c5167b4a8f7ae50ec73dedd40bd909"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",

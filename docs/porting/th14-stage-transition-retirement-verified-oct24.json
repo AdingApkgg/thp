@@ -1,0 +1,209 @@
+{
+  "verified": true,
+  "baseCommit": "2e020f559915540b19b02dbbfe9f58da9593983e",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/AnmManager.cpp": "62a74556fb4dfb5ddc9257aff78c4f2688d778add06057d59f99e777fab55655",
+    "runtimes/th12/th12_web/cpp/game/GameBattle.cpp": "c9424aa04e2f467211bce0d6e32632c8b0c5167b4a8f7ae50ec73dedd40bd909"
+  },
+  "productionChanges": [
+    "Next-stage owner retirement marks effect8 and bullet7 and clears the outgoing dialogue before normal ANM29.",
+    "TH14 resource retirement uses the actual flags2 bit0x20; other title paths retain their existing flag."
+  ],
+  "build": {
+    "sdlWasmSha256": "0432f8c8f8240ac4bc50bc916dd3961c6ce5a8cea653d9eecd8fc24efe75fa08",
+    "coreWasmSha256": "7659ac6653fdebff3d70419d0a1a3497474fa91d70c18ac34e1053f22953dbe2",
+    "coldObserverWasmSha256": "07e26172bcdfb99730dadc67b4bd642c2aab5c019c1845ca8e6ed0c2b3128994",
+    "sdlRecompiled": 2,
+    "sdlReused": 144,
+    "coreRecompiled": 2,
+    "coreReused": 139,
+    "headersUnchanged": true
+  },
+  "nativeWriter": {
+    "afterWritePc": "0x41ea15",
+    "callerReturn": "0x43642a",
+    "stage": 2,
+    "precedingPlayerCallbacks": 9317,
+    "watchedFile": 8,
+    "watchedScript": 101,
+    "flags2DeleteBit": "0x20",
+    "instructionPatches": 0,
+    "rngOrCounterWrites": 0,
+    "declaredOneAttractFlagClearAfterUntouchedFirstPlayer": true
+  },
+  "retirement": {
+    "nativeAndPortableOrderedFileScriptRetirements": 67,
+    "lastFourPortableSlots": [
+      7230,
+      7809,
+      7846,
+      7473
+    ],
+    "nextLoadingSlots": [
+      7473,
+      7846,
+      7809
+    ],
+    "nativeWindowUsesIndependentColdHistory": true,
+    "pairedSlotsAcrossDifferentNativeRunsClaimed": false
+  },
+  "originalPrefix": {
+    "callbacks": 9350,
+    "allPublications": 44401,
+    "handleFileScriptDifferences": 0,
+    "actualProductionCore": true,
+    "privateBeamProcessProfileIncluded": false,
+    "observedNativeClockSpacing": true,
+    "declaredOneTextureChunkPerCallback": true
+  },
+  "extendedPrefix": {
+    "callbacks": 22328,
+    "nativePublications": 140411,
+    "portablePublications": 140403,
+    "first133934HandleFileScriptTuplesIdentical": true,
+    "previousFirstHandleSerial": 44391,
+    "remainingFirstHandleSerial": 133935,
+    "remainingFirstHandleNativeSlot": 7087,
+    "remainingFirstHandlePortableSlot": 7285,
+    "first133982FileScriptTuplesIdentical": true,
+    "remainingFirstIdentitySerial": 133983,
+    "missingPublicationCount": 8,
+    "inactiveFrameZeroDifferences": [
+      {
+        "index": 9322,
+        "word": 21,
+        "native": 1148,
+        "portable": 45250,
+        "stage": 2,
+        "nativeStageFrame": 0,
+        "portableStageFrame": 0
+      },
+      {
+        "index": 9322,
+        "word": 24,
+        "native": 74844,
+        "portable": 0,
+        "stage": 2,
+        "nativeStageFrame": 0,
+        "portableStageFrame": 0
+      },
+      {
+        "index": 20904,
+        "word": 21,
+        "native": 56690,
+        "portable": 50041,
+        "stage": 3,
+        "nativeStageFrame": 0,
+        "portableStageFrame": 0
+      },
+      {
+        "index": 20904,
+        "word": 24,
+        "native": 178165,
+        "portable": 0,
+        "stage": 3,
+        "nativeStageFrame": 0,
+        "portableStageFrame": 0
+      }
+    ],
+    "activeSelected32Differences": 0,
+    "fullAnimationEquivalenceClaimed": false
+  },
+  "regression": {
+    "cases": 30,
+    "callbacks": 2885731,
+    "allSelected32WordSnapshotsByteIdenticalToPreviousProduction": true,
+    "naturalTerminalAnd90StableMenuTicks": true,
+    "allModeNativeAcceptanceClaimed": false
+  },
+  "browser": {
+    "actualProductionLauncher": true,
+    "actualWebGL": true,
+    "quietOutput": true,
+    "coldNaturalAttractObserved": true,
+    "cancelToTitle": true,
+    "ordinaryReimuANormalMenuRoute": true,
+    "ordinaryGameplayObserved": true,
+    "continuedHudAndRankingObserved": true,
+    "errorsOrWarnings": 0,
+    "pauseAcceptanceClaimed": false,
+    "currentBinaryFullReplayAcceptanceClaimed": false
+  },
+  "limitations": [
+    "Stage3 retirement/free-slot order still differs; eight auxiliary option publications are still missing.",
+    "Four selected word differences at two inactive frame0 records remain; active selected words agree.",
+    "The cold adapter texture service schedule is declared, not actual native worker/GPU timing.",
+    "All-mode original comparisons, graphics, audio, ordinary initialization and persistence acceptance remain unfinished."
+  ],
+  "evidenceBindings": [
+    {
+      "path": "artifacts/th14/stage-transition-retirement-oct24/build/build.json",
+      "bytes": 98419,
+      "sha256": "888fb316e02029696b583bd50b8337e952fba57be44cfb696b104a3ed7d22701"
+    },
+    {
+      "path": "artifacts/th14/stage-transition-retirement-oct24/core-build.json",
+      "bytes": 79268,
+      "sha256": "86e6678b1241c3c41cb155157e2abb694bb06053f704df0658cf6ea75678d9ba"
+    },
+    {
+      "path": "artifacts/th14/stage-transition-retirement-oct24/cold-build.json",
+      "bytes": 79517,
+      "sha256": "6c33d19037ca2bb59c4749f6899220637873a56aa317aa51afcaf3b7c0d2e537"
+    },
+    {
+      "path": "artifacts/th14/stage-transition-retirement-oct24/matrix-results.json",
+      "bytes": 60661,
+      "sha256": "8633ef87935843bf504b45eec9aaf5151fe9823dc9c0c35b894257b665457d43"
+    },
+    {
+      "path": "artifacts/th14/stage-transition-retirement-oct24/allocation-prefix-9350/report.json",
+      "bytes": 1540,
+      "sha256": "845a4b95d23c5adc73873ae70830d74009d46893f66b1a8cb741be66608117b9"
+    },
+    {
+      "path": "artifacts/th14/stage-transition-retirement-oct24/allocation-prefix-22328/report.json",
+      "bytes": 2685,
+      "sha256": "d83030a2a0e0a3d9d3f84e9502f5048eb8d43ee015db303bb519a8add6a56d05"
+    },
+    {
+      "path": "artifacts/th14/stage-transition-retirement-oct24/retirement-prefix-verified.json",
+      "bytes": 634,
+      "sha256": "670d41fdf8254fe93a253fcd6496ad1bfa186da38c8d05c5c719d82e3f6e8429"
+    },
+    {
+      "path": "artifacts/th14/stage-transition-retirement-oct24/native-writer-summary.json",
+      "bytes": 498,
+      "sha256": "f4536e5a65052bec8879042095aeb39efa3ae39a281c0f9e01e81b80bcfb7e29"
+    },
+    {
+      "path": "artifacts/th14/retail-marisaa-stage2-effect-delete-writer-hardware-oct24/report.json",
+      "bytes": 8139,
+      "sha256": "13eff48e9ec3678c7c0ded523bb56cc02137edeed0d9d4538d27185fbecba401"
+    },
+    {
+      "path": "artifacts/th14/retail-marisaa-stage2-retirement-window-hardware-oct24/report.json",
+      "bytes": 404579,
+      "sha256": "d77b90595b46ded1213d99f5d3025f13ae680f746422393eb372356a7f96432c"
+    },
+    {
+      "path": "artifacts/th14/stage-transition-retirement-oct24/browser-logs.json",
+      "bytes": 12605,
+      "sha256": "2647e96ae0e8392979e6d3b952b4c78f618a26258fd7ef66be8c374002f6c67e"
+    },
+    {
+      "path": "artifacts/th14/stage-transition-retirement-oct24/browser-cold-demo.jpg",
+      "bytes": 187336,
+      "sha256": "3d92043fbaccbd0a890d72a39aa6fe918193324412ed4f1847e44dccb2e30d5c"
+    },
+    {
+      "path": "artifacts/th14/stage-transition-retirement-oct24/browser-ordinary-ranking.jpg",
+      "bytes": 276397,
+      "sha256": "647378bf11399f8011588039562ed0246950c61e9e6aa914f2735a9ede691f00"
+    }
+  ],
+  "rootResourceCryptExcluded": true,
+  "sourceOnlyPublication": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}

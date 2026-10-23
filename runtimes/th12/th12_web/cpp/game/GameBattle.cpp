@@ -179,7 +179,17 @@ bool GameBattle::pump_stage_loading(u64 now,i32 first_capture_index,u32 supervis
     }
     return true;
 }
-bool GameBattle::retire_stage_owner(){return enemies.retire();}
+bool GameBattle::retire_stage_owner(){
+    if(!enemies.retire())return false;
+    // 436425 calls41e9f0 while the outgoing stage is still attached.
+    // Mark effect8 and bullet7 before ANM29, rather than waiting for the
+    // worker's initialization phase. The normal registry returns their slots
+    // before loading17 publishes its overlay children on its first update.
+    animations.retire_resource(resources.core.effect);
+    animations.retire_resource(resources.core.bullet);
+    if(dialogue)dialogue->clear();dialogue.reset();
+    return true;
+}
 bool GameBattle::initialize_stage_work(){
     if(!compositor.stage_start()){error="TH14 worker copy0 reset failed";return false;}
     if(next_stage_initializer&&!next_stage_initializer())return false;

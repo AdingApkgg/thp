@@ -239,7 +239,10 @@ void AnmManager::retire_resource(const AnmResource& resource){
     // Deferred deletion matches 4564c0: an overlay callback and its children
     // may still occur later in the current tick. Keep the resource alive until
     // both ANM registries have consumed the deletion markers.
-    for(auto& [id,vm]:active)if(vm->resource==&resource)vm->flags|=0x4000000;
+    for(auto& [id,vm]:active)if(vm->resource==&resource){
+        if constexpr(kPortTitle==14)vm->flags2|=0x20;
+        else vm->flags|=0x4000000;
+    }
 }
 bool AnmManager::references(const AnmResource& resource)const noexcept{
     for(const auto& entry:active)if(entry.second->resource==&resource)return true;
