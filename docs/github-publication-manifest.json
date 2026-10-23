@@ -1,7 +1,7 @@
 {
   "date": "2026-10-23",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "7341fc914bb750dc08c5ba84a07568f9506890b1",
+  "sourceCommit": "c9b7ead82684e4fdc99e02eb4b3f4ddfb5bf0d5d",
   "files": [
     {
       "path": ".gitignore",
@@ -127,6 +127,11 @@
       "path": "docs/porting/TH14_MUSIC_CLOCK_FIX_OCT20.md",
       "bytes": 4135,
       "sha256": "fded076b40e9637ce8d5e1a90ef3b0bfacce29cdcf089dce4ab0e691a2d1728c"
+    },
+    {
+      "path": "docs/porting/TH14_NATIVE_ANM_HANDLES_POOL_OCT23.md",
+      "bytes": 2258,
+      "sha256": "e45826c891cdf46fca1f205c363fd0ab08bbd4a17ac182b058f409da1bb2c69f"
     },
     {
       "path": "docs/porting/TH14_NATIVE_FOG_FIX_OCT20.md",
@@ -2359,6 +2364,11 @@
       "sha256": "72a0dece3d9ac39128288fa8e44686de0ae0e9b67080a566df3f0887edcc339c"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-native-anm-handles-candidate-oct23.json",
+      "bytes": 129655,
+      "sha256": "f7e24a7af2524ae4c667604a82935856f85568f31cb931d7eea4c58e37624437"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-native-fog-mix-oct20.json",
       "bytes": 103818,
       "sha256": "8fe04482542f743891f0bcfb6045bf262edd21c24f7f7b03e8be88369fb8dfce"
@@ -2512,6 +2522,11 @@
       "path": "docs/porting/th14-launcher-site-music-clock-oct20.json",
       "bytes": 37066,
       "sha256": "d2ce1023d9027cfc57fb24b01aff3a6522b49b8e6b56cfc39061178191c32d2a"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-native-anm-handles-candidate-oct23.json",
+      "bytes": 36716,
+      "sha256": "81681b68bc36a20854f8e301cfbca264e2cebff04b1f0d942f0e1f4443d91f44"
     },
     {
       "path": "docs/porting/th14-launcher-site-native-fog-mix-oct20.json",
@@ -2697,6 +2712,11 @@
       "path": "docs/porting/th14-music-verified.json",
       "bytes": 8608,
       "sha256": "65ba84c135cc29e8626b0ba5b5fa68f5b99465669a5d22c0d1d21d94001f763b"
+    },
+    {
+      "path": "docs/porting/th14-native-anm-handles-pool-verified-oct23.json",
+      "bytes": 7047,
+      "sha256": "acf025df3e8406a0709612b4bd4c60e07bb48bb3fe28a59a1271e58c9abbc778"
     },
     {
       "path": "docs/porting/th14-native-backend-3901-verified-oct13.json",
@@ -6310,13 +6330,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmManager.cpp",
-      "bytes": 18059,
-      "sha256": "6943719effbaa0889f988db890d2ad7da66401dec676eba6e367b0ad9dfba980"
+      "bytes": 19168,
+      "sha256": "cebfc0d1ad1f248ba0e0298d7eee985f1da1a95dc653d4f6e90c1a57454b35ab"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmManager.hpp",
-      "bytes": 5653,
-      "sha256": "f6a0bd79cde0256f7fa0d0d8de425662b87f4e60622c909f579581c71f001bba"
+      "bytes": 5907,
+      "sha256": "e7623372913ef1bad27593d3fe1eb853f1990d0e5b2ebf3793e8fcafaeb55bb9"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmOpcodes.hpp",

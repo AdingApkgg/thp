@@ -136,6 +136,9 @@ AnmVm* AnmManager::create(AnmResource& file,i32 script,u16 file_id,u32 layer,boo
     const u32 record_index=g_creation_count%kCreationCapacity;
     {auto& r=g_creations[record_index];r={script,layer,file_id,&file,spawn_depth,0u};++g_creation_count;}
     AnmVm* vm;if(available.empty()){storage.push_back(std::make_unique<AnmVm>());vm=storage.back().get();if constexpr(kPortTitle==16)vm->layer=14;vm->initialize();}else{vm=available.back();available.pop_back();}
+#if PORT_TITLE == 14
+    if(th14_native_slots.find(vm)==th14_native_slots.end())th14_native_slots.emplace(vm,th14_unused_slots?--th14_unused_slots:8191);
+#endif
     // Retail TH16 4063dc skips the layer override for negative arguments.
     // The resource's default layer is retained; -1 is not a draw-list index.
     if constexpr(kPortTitle==16){if(signed_bits(layer)>=0)vm->layer=layer;}
@@ -182,8 +185,16 @@ AnmVm* AnmManager::create(AnmResource& file,i32 script,u16 file_id,u32 layer,boo
     auto& node=vm->registry;node.value=vm;node.next=node.previous=nullptr;const u32 list=overlay?1:0;
     if(prepend){node.next=heads[list];if(heads[list])heads[list]->previous=&node;else tails[list]=&node;heads[list]=&node;}
     else{node.previous=tails[list];if(tails[list])tails[list]->next=&node;else heads[list]=&node;tails[list]=&node;}
-    if(++next_id==0)++next_id;vm->id=next_id;active.emplace(next_id,vm);
-    g_creations[record_index].id=next_id;
+#if PORT_TITLE == 14
+    // 47e890 publishes after the initial script update (and its children).
+    // Its19-bit serial skips zero; the low13 bits retain the pool slot.
+    next_id=(next_id+1)&0x7ffffu;if(!next_id)++next_id;
+    vm->id=(next_id<<13)|(th14_native_slots.at(vm)&8191u);
+#else
+    if(++next_id==0)++next_id;vm->id=next_id;
+#endif
+    active.emplace(vm->id,vm);
+    g_creations[record_index].id=vm->id;
     return vm;
 }
 AnmVm* AnmManager::spawn(AnmVm& parent,i32 script,u32 op){if(!parent.resource)return nullptr;const bool detached=op==95||op==97;return create(*parent.resource,script,parent.file_index,parent.layer,op==90||op==92,op==91||op==92,nullptr,(kPortTitle==13||kPortTitle==14||kPortTitle==16)&&detached?&parent:nullptr,(kPortTitle==14||kPortTitle==16)&&!detached?&parent:nullptr);}
@@ -201,12 +212,26 @@ void AnmManager::destroy(AnmVm& vm){
     for(u32 i=0;i<2;++i){if(heads[i]==&vm.registry)heads[i]=vm.registry.next;if(tails[i]==&vm.registry)tails[i]=vm.registry.previous;}
     auto unlink=[](AnmVm::Node& node){if(node.next)node.next->previous=node.previous;if(node.previous)node.previous->next=node.next;node.next=node.previous=nullptr;};
     unlink(vm.registry);unlink(vm.child);active.erase(vm.id);if(auto it=geometry_sizes.find(&vm);it!=geometry_sizes.end()){std::free(vm.geometry);vm.geometry=nullptr;geometry_sizes.erase(it);}
+#if PORT_TITLE == 14
+    const auto slot=th14_native_slots.find(&vm);
+    if(slot!=th14_native_slots.end()&&slot->second==8191){
+        // 47ecd4 frees the heap VM instead of inserting it in the pool.
+        th14_native_slots.erase(slot);
+        for(auto i=storage.begin();i!=storage.end();++i)if(i->get()==&vm){storage.erase(i);break;}
+        return;
+    }
+#endif
     vm.initialize();available.push_back(&vm);
 }
 void AnmManager::clear(){
     // Walk ownership, not draw layers: newly created VMs are not on a draw
     // layer until update() has run, and deleted layer heads are not owners.
     layers.fill(nullptr);
+#if PORT_TITLE == 14
+    // Preserve registry order when returning slots; hash iteration would
+    // make the next allocation history depend on the host container.
+    for(u32 list=0;list<2;++list)while(heads[list])destroy(*heads[list]->value);
+#endif
     while(!active.empty())destroy(*active.begin()->second);
     last_error=0;
 }

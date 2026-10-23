@@ -85,6 +85,12 @@ private:
     std::array<AnmVm*,kPortTitle==16?43:kPortTitle==14?36:kPortTitle==13?33:31> layers{};
     u32 next_id=0,spawn_depth=0;
 #if PORT_TITLE == 14
+    // 47fcb0 uses8191 pool slots;8191 identifies a heap allocation.
+    // Preserve a pooled VM's slot across its LIFO retire/reuse cycle.
+    std::unordered_map<AnmVm*,u32> th14_native_slots;
+    u32 th14_unused_slots=8191;
+#endif
+#if PORT_TITLE == 14
 public:
     // Native capture records belong to this manager, not to a menu, a
     // staged resource job, or a GPU completion counter. VM clear preserves it.

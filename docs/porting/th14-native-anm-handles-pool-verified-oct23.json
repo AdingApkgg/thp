@@ -1,0 +1,163 @@
+{
+  "verified": true,
+  "baseCommit": "c9b7ead82684e4fdc99e02eb4b3f4ddfb5bf0d5d",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/AnmManager.cpp": "cebfc0d1ad1f248ba0e0298d7eee985f1da1a95dc653d4f6e90c1a57454b35ab",
+    "runtimes/th12/th12_web/cpp/game/AnmManager.hpp": "e7623372913ef1bad27593d3fe1eb853f1990d0e5b2ebf3793e8fcafaeb55bb9"
+  },
+  "productionChanges": [
+    "TH14 handles pack a19-bit nonzero serial and13-bit stable pool slot after the initial script update and child publications.",
+    "8191 pooled VMs retain their slot through LIFO retirement and reuse; exhausted allocations use the8191 heap tag and are freed instead of inserted in the pool.",
+    "Whole-manager clear returns slots in normal/overlay registry order rather than unordered-map iteration order."
+  ],
+  "sdlWasmSha256": "b7d02f7f518724c5c12be2b12c8778a00ec9dff717b0614cc86e2dfda328ec7d",
+  "sdlRecompiled": 146,
+  "sdlReused": 0,
+  "wasiRecompiled": 141,
+  "wasiReused": 0,
+  "coreProbeWasmSha256": "88f17d2f519fcec9e77d0256604ebe33da67292cdc284f9c97c7ce3dbe23e70f",
+  "nativeHandlePackingCases": 30,
+  "lifetime": {
+    "actualOriginalPoolSlots": 8191,
+    "pairedNativeAndProductionAllocations": 22392,
+    "pairedNativeAndProductionRetirements": 22392,
+    "traceRows": 44784,
+    "heapCasesAfterActualPoolExhaustion": 3,
+    "allPackedHandlesAndSlotsEqual": true,
+    "staleHandleLookupChecksPassed": true,
+    "productionSerialWrapIterations": 524290,
+    "actualShippedSigLeafScriptUsed": true,
+    "originalGameplayInstructionsPatched": 0,
+    "originalManagerConstructorExecuted": false,
+    "initialFreeChainIsDeclaredPrecondition": true,
+    "originalCrtAllocationAndMemsetAreDeclaredServiceBoundaries": true,
+    "originalHeapVmConstructorExecuted": true,
+    "actualWindowsHeapTimingOrOomEquivalenceClaimed": false
+  },
+  "coreRegression": {
+    "cases": 30,
+    "callbacks": 2885731,
+    "all32WordSnapshotsByteIdenticalToPreviousProductionCommit": "c9b7ead82684e4fdc99e02eb4b3f4ddfb5bf0d5d",
+    "naturalEndMenusAnd90StableMenuTicks": true,
+    "originalAllModeEquivalenceClaimed": false
+  },
+  "browser": {
+    "url": "http://localhost:8224/?game=th14",
+    "actualProductionLauncher": true,
+    "actualWebGL": true,
+    "naturalAttractEntry": true,
+    "returnToTitleAndOrdinaryReimuANormalEntry": true,
+    "shootingInputAndOrdinaryPauseObserved": true,
+    "quietOutput": true,
+    "errorsOrWarnings": 0,
+    "newAllModeGpuAcceptanceClaimed": false
+  },
+  "independentFullMarisaABeamControl": {
+    "privateOnly": true,
+    "actualInitialClockDirectlyObserved": true,
+    "actualSecurityCookieDirectlyObserved": true,
+    "callbacks": 34783,
+    "naturalTerminalMatches": true,
+    "terminalScoreUnits": 8243413,
+    "terminalLives": -1,
+    "terminalLifeState": 2,
+    "terminalControlFrame": 13734,
+    "allActiveSelectedNonvisualWordsEqual": true,
+    "remainingActiveDifferences": {
+      "21": 9317,
+      "22": 34543
+    },
+    "nativeInitialVisualCalls": 1336,
+    "portableInitialVisualCalls": 1360,
+    "initialDifferenceFromOneRealLoadingChild": true,
+    "noCounterSeedOrRowCompensation": true,
+    "full32WordOrGraphicsEquivalenceClaimed": false
+  },
+  "excludedPrivateModels": [
+    "Beam uninitialized guest-stack profile",
+    "Windows DirectSound stack constant",
+    "Security-cookie profile"
+  ],
+  "knownLimits": [
+    "The actual manager construction and full live allocation history are separate from the controlled pool/heap lifetime oracle.",
+    "Native allocation timing, actual host heap behavior and GPU equivalence are not certified.",
+    "The independent full Marisa A comparison still differs in visual RNG history from cold startup; its private beam model is excluded from this production change.",
+    "Complete original all-mode replay, ordinary initialization, rendering, audio and persistence acceptance remain unfinished."
+  ],
+  "evidenceBindings": [
+    {
+      "path": "artifacts/th14/native-anm-handles-pool-oct23/build/build.json",
+      "bytes": 88224,
+      "sha256": "a210f095ba01cf47a46488ff6668060e554bff0aaca49131b4b9750c128b7e4e"
+    },
+    {
+      "path": "artifacts/th14/native-anm-handles-pool-oct23/build/wasi-build.json",
+      "bytes": 137245,
+      "sha256": "4d820a1a4f1747da49253e17dd108d40e232a2abd50dfadbba5574a4e3358701"
+    },
+    {
+      "path": "artifacts/th14/native-anm-handles-pool-oct23/core-build.json",
+      "bytes": 81115,
+      "sha256": "c398afd936b643bfe02cb2cd1e2500a70b8e7942421588f556314231949a19d5"
+    },
+    {
+      "path": "artifacts/th14/native-anm-handles-pool-oct23/matrix-results.json",
+      "bytes": 51857,
+      "sha256": "3aee6bf3b34007d35b0673761469d80d0bb8db29b29a286a2d277fbf3627aed8"
+    },
+    {
+      "path": "artifacts/th14/native-anm-handles-pool-oct23/lifetime-build.json",
+      "bytes": 3756,
+      "sha256": "24d7ca1434904b8d81da8e9b8b891b597d5e37907aebd7e3d1fa032a226a8b12"
+    },
+    {
+      "path": "artifacts/th14/native-anm-handles-pool-oct23/lifetime-verification.json",
+      "bytes": 1077,
+      "sha256": "89cf47b4dd136f150b598284e291e8e107bde953f5993b34950be7be2bc163cb"
+    },
+    {
+      "path": "artifacts/th14/native-anm-lifetime-natural-heap-trace-v2-oct23/report.json",
+      "bytes": 4444,
+      "sha256": "3ae96aa8b9a8305f17857b91e2e801134a1f54bb24deb42363184dec77c498db"
+    },
+    {
+      "path": "artifacts/th14/native-anm-lifetime-natural-heap-trace-v2-oct23/lifetime-trace.json",
+      "bytes": 2295601,
+      "sha256": "acbbf36c81b7cf0c10ed720da26324e9d11fa24b64271201b2de04e3017ea33b"
+    },
+    {
+      "path": "artifacts/th14/native-anm-handle-pack-oracle-oct19.json",
+      "bytes": 4763,
+      "sha256": "3375bd01d15f48ef16a2a8ede7675a430c1173dcf07b4181adcd539c924cbc0b"
+    },
+    {
+      "path": "artifacts/th14/native-anm-handles-pool-oct23/browser-logs.json",
+      "bytes": 12021,
+      "sha256": "d9016e85066766183c16102fcdd24592e081a4fe3fd9629bdb5148dadfeb5965"
+    },
+    {
+      "path": "artifacts/th14/native-anm-handles-pool-oct23/browser-demo.jpg",
+      "bytes": 181731,
+      "sha256": "f8d83bf51b368bf52e56b4e0300656f6079c568aa7518918a980eca87f4ed8cb"
+    },
+    {
+      "path": "artifacts/th14/native-anm-handles-pool-oct23/browser-pause.jpg",
+      "bytes": 220161,
+      "sha256": "dab98476ab22ef11926cd95926ab2d5f1628651c2f39df9bdea7ab4c1aa0487e"
+    },
+    {
+      "path": "artifacts/th14/beam-stack-current-model-oct23/full-marisaa-observed-clock-cookie/report.json",
+      "bytes": 3266,
+      "sha256": "b8afc1fbd979e413453718f58151ed5c3b34df07da00c7d3cd2208be2e20d316"
+    },
+    {
+      "path": "artifacts/th14/retail-marisaa-full-observed-process-hardware-oct23/report.json",
+      "bytes": 12855,
+      "sha256": "bdae042beeb5a48c81fdd65e395a1d9f20386895b899c6d6da07864c31b8c749"
+    }
+  ],
+  "rootResourceCryptExcluded": true,
+  "sourceOnlyPublication": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}
