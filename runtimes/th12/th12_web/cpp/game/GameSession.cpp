@@ -543,7 +543,22 @@ bool GameSession::update(const GameSessionInput& input) {
         if(state.replay){
             if(battle->stage_active&&playback.selected_stage()!=state.stage&&!playback.select(state.stage))return fail("replay activation stage missing");
             const auto recorded=playback.tick();
-            if(recorded.end_marker){playback_ended=true;return false;}
+            if(recorded.end_marker){
+                playback_ended=true;
+#if PORT_TITLE == 14
+                if(interactive){
+                    // Replay12 clears the three masks, opens448ef0 and then
+                    // returns to this callback pass. Hold/repeat clocks are
+                    // not recomputed by the original terminal-marker branch.
+                    game_input.held=game_input.pressed=game_input.released=0;
+                    edges.held=edges.pressed=edges.released=0;
+                    battle->completion.state.exit=StageExit::ReplayEnd;
+                    if(!pause())return false;
+                }else return false;
+#else
+                return false;
+#endif
+            }else{
             edges.held=recorded.held;edges.pressed=recorded.pressed;edges.released=recorded.released;
 #if PORT_TITLE == 14
             // Retail455180 loads all three words, then41e710 recomputes the
@@ -553,6 +568,7 @@ bool GameSession::update(const GameSessionInput& input) {
             edges.pressed=game_input.pressed;edges.released=game_input.released;
 #endif
             auto& motion=battle->player_input.movement;motion.touch_mode=recorded.touch_mode;motion.touch_x=recorded.touch_x;motion.touch_y=recorded.touch_y;
+            }
         }else{
             game_input.update(input.held,config.auto_focus());
             edges.held=game_input.held;edges.pressed=game_input.pressed;edges.released=game_input.released;
@@ -570,7 +586,12 @@ bool GameSession::update(const GameSessionInput& input) {
         ,overlay_already_updated
 #endif
         );
-        if(playback_ended){if(interactive)return return_to_title();state.phase=GameSessionPhase::finished;return true;}
+        if(playback_ended){
+#if PORT_TITLE == 14
+            if(interactive)return state.phase==GameSessionPhase::paused;
+#endif
+            if(interactive)return return_to_title();state.phase=GameSessionPhase::finished;return true;
+        }
         if(!updated) { if(error.empty())error="battle update failed: "+std::to_string(battle->last_error)+" "+battle->error; return false; }
         for(const auto& event:battle->events)if(event.kind==BattleEventKind::BossMusic||(event.kind==BattleEventKind::StageMusic&&!state.demo))scores.settings[0x26+stage_music(event.value,event.kind==BattleEventKind::BossMusic)]=1;
         if(!state.replay&&battle->stage_active){auto* counter=scores.characters[state.character*2+state.subtype].data()+ScoreFile::play_time_offset;i32 n;std::memcpy(&n,counter,4);if(n<215999999){++n;std::memcpy(counter,&n,4);}}
@@ -595,7 +616,14 @@ bool GameSession::update(const GameSessionInput& input) {
 #if PORT_TITLE != 14
         if(battle->completion.state.exit==StageExit::Ending)return open_ending();
 #endif
-        if(battle->completion.state.exit==StageExit::Title||battle->completion.state.exit==StageExit::ReplayEnd){if(interactive)return return_to_title();state.phase=GameSessionPhase::finished;return true;}
+        if(battle->completion.state.exit==StageExit::Title||battle->completion.state.exit==StageExit::ReplayEnd){
+#if PORT_TITLE == 14
+            // The completion effect opened the forced menu at its actual
+            // dialogue/HUD request, before normal ANM29 in this same pass.
+            if(interactive&&battle->completion.state.exit==StageExit::ReplayEnd)return state.phase==GameSessionPhase::paused;
+#endif
+            if(interactive)return return_to_title();state.phase=GameSessionPhase::finished;return true;
+        }
 #if PORT_TITLE == 14
         if(battle->completion.state.exit==StageExit::NextStage){state.stage=u32(battle->completion.state.next_stage);state.frame=0;}
 #else
@@ -661,7 +689,7 @@ bool GameSession::pause() {
 #endif
     paused_rate=animations.rate;
 #if PORT_TITLE == 14
-    const bool replay_end=state.replay&&battle&&battle->game_over_requested;
+    const bool replay_end=state.replay&&battle&&(battle->game_over_requested||battle->completion.state.exit==StageExit::ReplayEnd);
     if(replay_end){
         if(!pause_menu->begin_replay_end())return fail(pause_menu->error.c_str());
         // This entry has no physical Pause edge to initialize menu input.

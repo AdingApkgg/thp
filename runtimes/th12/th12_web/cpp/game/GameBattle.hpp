@@ -197,7 +197,15 @@ public:
     }
     bool stage_result_animation()override;
     void recall_player_options()override{if(player)player->motion.recall_options(true);}
-    void request_stage_exit(StageExit)override{}
+    void request_stage_exit(StageExit exit)override{
+#if PORT_TITLE == 14
+        // Stage completion and Player GameOver both enter448ef0. Reuse the
+        // menu delivery callback without declaring a gameplay GameOver.
+        if(exit==StageExit::ReplayEnd&&on_game_over&&!on_game_over(true)){
+            last_error=-1011;if(error.empty())error="replay completion menu entry failed";
+        }
+#endif
+    }
     void start_ending_fade()override{fades.start(5,200,0,kPortTitle==14?73:67,&animations.rate);}
 
     bool shot_damage(EnemyState&,i32&) override;

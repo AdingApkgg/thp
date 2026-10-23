@@ -1,0 +1,558 @@
+{
+  "verified": true,
+  "baseCommit": "672f33d6eab3116e2b8b265e74db0d4ed604df68",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/GameBattle.cpp": "7124cded82cfa82195b46e873ac5fee8b9d9a38a8d48237239603f605bb0808c",
+    "runtimes/th12/th12_web/cpp/game/GameBattle.hpp": "80fd4efb677e127aaa848a1a7b844dff5d86b71cf5da0d3068f74944809e72dd",
+    "runtimes/th12/th12_web/cpp/game/GameSession.cpp": "b527609034ef165860e4b7222a8e9b24e16f497d1c7eeb0c4586b841ace42de7"
+  },
+  "sdlWasmSha256": "41dda42c2062ca7b322ab86cdedac839135163caa40321ef4f5609cc09d28880",
+  "sdlCompiledObjects": 146,
+  "wasiCompiledObjects": 141,
+  "objectsReused": 0,
+  "wasiStartupWasmSha256": "24884a3051f122f5f318e1b052afef5fc29f5302b615c5500dd6dc3522ede5d9",
+  "readOnlyProbeWasmSha256": "52f1d5aeca8949c83f795139e7b59031ccc1502ac164bc6a98f4919b80088c79",
+  "importsUnchanged": true,
+  "exportsUnchanged": true,
+  "delayedCoreCases": 9,
+  "replayEndPaths": [
+    "Replay12 terminal marker: clear masks, retain hold clocks, continue callback pass",
+    "Dialogue/HUD completion request: enter menu before normal ANM29"
+  ],
+  "originalTerminalMarkerBranchCases": 5,
+  "allModes": {
+    "cases": [
+      {
+        "key": "marisaa-easy",
+        "callbacks": 33522,
+        "previousTerminal": "GameOver",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/marisaa-easy/receipt.json",
+          "bytes": 1225,
+          "sha256": "1a945f4a59a39e6c6391b3920e69d97aab423c2dc3904edcc86a173f2307a3f3"
+        }
+      },
+      {
+        "key": "marisaa-extra",
+        "callbacks": 46391,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/marisaa-extra/receipt.json",
+          "bytes": 1221,
+          "sha256": "4e25183e7264ce0722106ae9ea7a8a2ce9d4b392d23d489043497f0842cce039"
+        }
+      },
+      {
+        "key": "marisaa-hard",
+        "callbacks": 115317,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/marisaa-hard/receipt.json",
+          "bytes": 1224,
+          "sha256": "9e4ed3b8339e1c4fb6ae9f4757d9213cb94b14c6687ed58ae1f8f215d1330370"
+        }
+      },
+      {
+        "key": "marisaa-lunatic",
+        "callbacks": 106740,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/marisaa-lunatic/receipt.json",
+          "bytes": 1227,
+          "sha256": "83a9e596a0345fa68245e7e24b9bebb1181b3c94d1137bc1aae2f21359f24e9b"
+        }
+      },
+      {
+        "key": "marisaa-normal",
+        "callbacks": 104236,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/marisaa-normal/receipt.json",
+          "bytes": 1226,
+          "sha256": "9d11f1b4e70cdfc8da3314d2d7b83939d28b78cc4c43427c9c10e57e714dbac1"
+        }
+      },
+      {
+        "key": "marisab-easy",
+        "callbacks": 106773,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/marisab-easy/receipt.json",
+          "bytes": 1224,
+          "sha256": "27ea509a44c7ca7390989d5c74c249f3d37f546349f11b9d9ace38cbcaf6fc98"
+        }
+      },
+      {
+        "key": "marisab-extra",
+        "callbacks": 54114,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/marisab-extra/receipt.json",
+          "bytes": 1223,
+          "sha256": "938265fb2ecee2ea7a9c01a47c25432670c36f1a3c2478f77b203cd22377275d"
+        }
+      },
+      {
+        "key": "marisab-hard",
+        "callbacks": 119048,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/marisab-hard/receipt.json",
+          "bytes": 1226,
+          "sha256": "121b61bd68283e315288e4b425037a13cdc6ff554bf963816f67a1ecdfa3f608"
+        }
+      },
+      {
+        "key": "marisab-lunatic",
+        "callbacks": 89235,
+        "previousTerminal": "GameOver",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/marisab-lunatic/receipt.json",
+          "bytes": 1230,
+          "sha256": "5cc9c8513ea040c7cd02de763b297f80ad16d54c652dbf58185ed528c1bc54b9"
+        }
+      },
+      {
+        "key": "marisab-normal",
+        "callbacks": 113877,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/marisab-normal/receipt.json",
+          "bytes": 1228,
+          "sha256": "aaefce37064ba913aee4f100e5c7b36e3ebaa3190d0ef3207c1c95fb5dc56320"
+        }
+      },
+      {
+        "key": "reimua-easy",
+        "callbacks": 100074,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/reimua-easy/receipt.json",
+          "bytes": 1223,
+          "sha256": "5a1f0381a39d1c60e4dee8586474bd0aa84402615c1e89264f2bdbabf721ac4f"
+        }
+      },
+      {
+        "key": "reimua-extra",
+        "callbacks": 38403,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/reimua-extra/receipt.json",
+          "bytes": 1220,
+          "sha256": "289968879e643f4ed4be21831cd3e663c8844b71f14aba6e11c0aabf32af117e"
+        }
+      },
+      {
+        "key": "reimua-hard",
+        "callbacks": 95678,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/reimua-hard/receipt.json",
+          "bytes": 1219,
+          "sha256": "73577127c7d20db42abaa1e6d5f6c2a5798bf73877b59ee7152236f730683e84"
+        }
+      },
+      {
+        "key": "reimua-lunatic",
+        "callbacks": 86343,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/reimua-lunatic/receipt.json",
+          "bytes": 1222,
+          "sha256": "c3f10767fac8b0f1ce59faca105ef959a3b85e43d57e184fded26614a8050b86"
+        }
+      },
+      {
+        "key": "reimua-normal",
+        "callbacks": 85035,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/reimua-normal/receipt.json",
+          "bytes": 1221,
+          "sha256": "62577c2d6f7fef152cd1ec669b2a2266df505868564170595a1f9913ce930977"
+        }
+      },
+      {
+        "key": "reimub-extra",
+        "callbacks": 46936,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/reimub-extra/receipt.json",
+          "bytes": 1220,
+          "sha256": "b4dc0810582c464eaf4fa9a4ee7a7050ad02810104d447cd346e2970ef31dcf2"
+        }
+      },
+      {
+        "key": "reimub-easy",
+        "callbacks": 238611,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/reimub-easy/receipt.json",
+          "bytes": 1223,
+          "sha256": "d53120aa850d9e66c8ad3da62b588c85b663ef7d9ddabbfd6e4491df60375ab4"
+        }
+      },
+      {
+        "key": "reimub-lunatic",
+        "callbacks": 103888,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/reimub-lunatic/receipt.json",
+          "bytes": 1226,
+          "sha256": "7e8e75bd289e5aa4587129f14e2f14d7534d9183da79dfd9a6beb88acb70dc5d"
+        }
+      },
+      {
+        "key": "reimub-hard",
+        "callbacks": 106910,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/reimub-hard/receipt.json",
+          "bytes": 1223,
+          "sha256": "32081303dd8697fee25cdd93790c3adf6ac7db552d432ba2f56deb36d6e0d457"
+        }
+      },
+      {
+        "key": "reimub-normal",
+        "callbacks": 122005,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/reimub-normal/receipt.json",
+          "bytes": 1225,
+          "sha256": "3f765501a400ffbec96accecff73b0e7d7ed0dbbff640acf50a5c710649457ea"
+        }
+      },
+      {
+        "key": "sakuyaa-easy",
+        "callbacks": 127903,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/sakuyaa-easy/receipt.json",
+          "bytes": 1224,
+          "sha256": "704aebe00f4864a2c9158e2687300dff0c27dfbb309ade216d7833a12c2c421c"
+        }
+      },
+      {
+        "key": "sakuyaa-extra",
+        "callbacks": 38977,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/sakuyaa-extra/receipt.json",
+          "bytes": 1221,
+          "sha256": "9cc6faae1b9042b72f87f458b114629db0946a8dbfa872544fa20cd1b84aa1bf"
+        }
+      },
+      {
+        "key": "sakuyaa-hard",
+        "callbacks": 96569,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/sakuyaa-hard/receipt.json",
+          "bytes": 1220,
+          "sha256": "20b034654b7c23695001d9e323f3bdb7ef0db5932bf754d0b7a936be4beeddda"
+        }
+      },
+      {
+        "key": "sakuyaa-lunatic",
+        "callbacks": 84952,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/sakuyaa-lunatic/receipt.json",
+          "bytes": 1223,
+          "sha256": "698ff9c7e6610e12463d2cbd39edd4879bac0c1dbe9f4080697cc86b3d2ba48e"
+        }
+      },
+      {
+        "key": "sakuyaa-normal",
+        "callbacks": 104802,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/sakuyaa-normal/receipt.json",
+          "bytes": 1226,
+          "sha256": "58978a0d5e5e37b2391d0e12e8f1c9aa3a9e2d9496a0354df0339dc791c656af"
+        }
+      },
+      {
+        "key": "sakuyab-easy",
+        "callbacks": 106749,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/sakuyab-easy/receipt.json",
+          "bytes": 1224,
+          "sha256": "b51c64a01423503f47b7d35560bcefa8123ea5df8bf9e3816d3e2216a1d6a0fb"
+        }
+      },
+      {
+        "key": "sakuyab-extra",
+        "callbacks": 50937,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/sakuyab-extra/receipt.json",
+          "bytes": 1221,
+          "sha256": "500edca3bff7a65caa16e6c1278b19e000d0818c67054a55992b2bd1a5328570"
+        }
+      },
+      {
+        "key": "sakuyab-hard",
+        "callbacks": 122796,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/sakuyab-hard/receipt.json",
+          "bytes": 1226,
+          "sha256": "b30dffb3bc9450206d79a321666640e7149e2e8b7a63cfdd24aebfa90598c5a4"
+        }
+      },
+      {
+        "key": "sakuyab-lunatic",
+        "callbacks": 126709,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/sakuyab-lunatic/receipt.json",
+          "bytes": 1229,
+          "sha256": "3dd058f12cff55121afe42de180d3f57f9a9baa233a8e1a6b0cd2f52846142a8"
+        }
+      },
+      {
+        "key": "sakuyab-normal",
+        "callbacks": 112201,
+        "previousTerminal": "EOF",
+        "raw32Unchanged": true,
+        "forcedReplayEndMenu": true,
+        "receipt": {
+          "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix/sakuyab-normal/receipt.json",
+          "bytes": 1228,
+          "sha256": "a2263dbd1bf1b0b403507a85c587280965f3a3da3ecd05e064929535b8d4d156"
+        }
+      }
+    ],
+    "totalCallbacks": 2885731,
+    "allRaw32UnchangedVersusPreviousPort": true,
+    "allForcedMenusStableAfter90Ticks": true,
+    "originalAllModesEquivalenceClaimed": false
+  },
+  "interactiveNaturalNormal": {
+    "callbacks": 122005,
+    "clock": "observed host timestamp spacing",
+    "matchesOriginalTerminalFields": [
+      "score",
+      "lives",
+      "lifeState",
+      "controlFrame",
+      "disabledEntries"
+    ],
+    "returnedTitleThroughRealMenuInput": true
+  },
+  "interactiveNaturalExtra": {
+    "callbacks": 46936,
+    "clock": "default60Hz",
+    "returnedTitleThroughRealMenuInput": true
+  },
+  "generatedTerminalMarkerCases": [
+    0,
+    1,
+    32
+  ],
+  "browser": {
+    "url": "http://localhost:8221/?game=th14",
+    "actualWebGL": true,
+    "launcherUpload": true,
+    "generatedReplayBytes": 269,
+    "automaticEndMenu": true,
+    "escapeCannotResume": true,
+    "replayAgainThenAutomaticEndMenu": true,
+    "returnedReplayList": true,
+    "errorsOrWarnings": 0,
+    "quietOutput": true,
+    "fullReplayOnGpuClaimed": false
+  },
+  "reimuBFullObservedClock": {
+    "callbacks": 122005,
+    "defaultClockShotDifferences": 93,
+    "observedSpacingShotDifferences": 0,
+    "differentFieldRows": {
+      "21": 14068,
+      "22": 122005,
+      "24": 2
+    },
+    "allPositiveStageFrameSelectedNonvisualWordsEqual": true,
+    "originalClockInputsClaimed": false,
+    "actualWorkerScheduleClaimed": false,
+    "clockRescaling": false,
+    "seedOrCounterCompensation": false
+  },
+  "originalReplayEndMenuObserved": true,
+  "originalReplayTerminalMarkerObservedInFullRun": false,
+  "knownLimits": [
+    "Selected state snapshots and menu fields do not prove every gameplay field, whole-image pixels or audio.",
+    "Native capture uses one declared warm replay flag initialization after an untouched first Player snapshot; ordinary native menu replay initialization is not established.",
+    "Host timestamps are observer measurements affected by debugging, not original QPC inputs or original async worker completion events.",
+    "Cold startup visual RNG history and two inactive gameplay RNG call-count rows still differ. No fixed call-count or seed correction is added.",
+    "The default 60Hz schedule still has93 Reimu B shot-count differences versus the frozen reference.",
+    "Marisa B beam fallback reads uninitialized Windows stack memory; the local DirectSound writer is now observed, but the old stack model still has failed samples and is not promoted.",
+    "All modes against complete original execution, graphics, audio and persistence still require acceptance."
+  ],
+  "evidenceBindings": [
+    {
+      "path": "artifacts/th14/replay-completion-menu-oct23/build-v2/build.json",
+      "bytes": 88224,
+      "sha256": "fab28d28a341a41b99e4de6b5c4577f3a068ff8bba6dc64a275cf9210728a67d"
+    },
+    {
+      "path": "artifacts/th14/replay-completion-menu-oct23/build-v2/wasi-build.json",
+      "bytes": 139529,
+      "sha256": "c1f988a76765b8ae2571393917875037bec9a580d9c38d7a45e7a110336d3e21"
+    },
+    {
+      "path": "artifacts/th14/replay-completion-menu-oct23/build-v2/wasi-build-inherited-counts.json",
+      "bytes": 138125,
+      "sha256": "6a8bf979cda45ddce9544262f35589ef0a8e399414e4db51f9c20ac90e787198"
+    },
+    {
+      "path": "artifacts/th14/replay-completion-menu-oct23/core-loading-verified.json",
+      "bytes": 9368,
+      "sha256": "4f009e1660b246cdd5f913bf707abdf550fffb039a817b7672a90e2167fb6520"
+    },
+    {
+      "path": "artifacts/th14/replay-completion-menu-replays-oct23/build.json",
+      "bytes": 69128,
+      "sha256": "dcafadfb0d3f9f57a5132ec84fd5f409603d3d8a5e268a6283e5fcec4af1e3ad"
+    },
+    {
+      "path": "artifacts/th14/replay-completion-menu-replays-oct23/matrix-results.json",
+      "bytes": 51857,
+      "sha256": "46c870d044ea5198b477e9232beeb9d772db846121a9b7641ccf7e1b099e97a6"
+    },
+    {
+      "path": "artifacts/th14/replay-completion-menu-replays-oct23/reimub-normal-observed-interactive/receipt.json",
+      "bytes": 1395,
+      "sha256": "0622411b11e16dfad43c82edf87f75ca7e0538bd09bf74e7a3c62e93b627066e"
+    },
+    {
+      "path": "artifacts/th14/replay-completion-menu-replays-oct23/reimub-extra-default-interactive/receipt.json",
+      "bytes": 1387,
+      "sha256": "3b35b2e23d1d9c8301357c158cc235aecdd9393ddee44dc90443e461b41e643e"
+    },
+    {
+      "path": "artifacts/th14/native-replay-terminal-marker-control-oct23/report.json",
+      "bytes": 2585,
+      "sha256": "d007cf9fb03a872ef1e57c1883267216201306124173d6c11875960777ea308a"
+    },
+    {
+      "path": "artifacts/th14/retail-reimub-full-clock-hardware-oct23/terminal-menu-readonly-v3.json",
+      "bytes": 4299,
+      "sha256": "27a0d173c608bf3c629124f194043411c91320a6e25eb6eb69e06af2ea1690ec"
+    },
+    {
+      "path": "artifacts/th14/reimub-full-observed-clock-control-oct23/verified.json",
+      "bytes": 3467,
+      "sha256": "68e00e8d40e9d1ff3383e90224cb6f35a7577497f02a92ee013a0378ae00febe"
+    },
+    {
+      "path": "artifacts/th14/reimub-full-observed-clock-control-oct23/completion-report.json",
+      "bytes": 1420,
+      "sha256": "41398991f408607ca26417d2b16a7a1ba5190001b4f523d29f2a56e7f5629f25"
+    },
+    {
+      "path": "artifacts/th14/reimub-rng-stage3-observed-control-oct23/verified.json",
+      "bytes": 18015,
+      "sha256": "e15c3060a948ab3441c865143fc6aa5d209e4f35dec3868821cbc3eca09da957"
+    },
+    {
+      "path": "artifacts/th14/replay-completion-menu-oct23/browser-logs.json",
+      "bytes": 10096,
+      "sha256": "ac3e16f657a6ccbdd4bad83adf78613b106f48fa90b4db637877eaa15c109024"
+    },
+    {
+      "path": "artifacts/th14/replay-completion-menu-replays-oct23/short-0.json",
+      "bytes": 875,
+      "sha256": "186c14152df8d61be0cf2202a0cc115c6a487de8b79bb0fcd4c3d4512bc67b07"
+    },
+    {
+      "path": "artifacts/th14/replay-completion-menu-replays-oct23/short-1.json",
+      "bytes": 875,
+      "sha256": "e59045446b906869b2995cd04386bb058f6a1c2c5065d91e04c2ad8a5112f445"
+    },
+    {
+      "path": "artifacts/th14/replay-completion-menu-replays-oct23/short-32.json",
+      "bytes": 883,
+      "sha256": "ed9114f1c93c7966045ffa9f224336c79cb37c4fb2b2b00aa3daf9da97872e63"
+    },
+    {
+      "path": "artifacts/th14/replay-completion-menu-oct23/browser-forced-menu.jpg",
+      "bytes": 90431,
+      "sha256": "713d24bc61a1d4f38a8d7858b979f9fed137299669b23e9e65afad330bfe34de"
+    },
+    {
+      "path": "artifacts/th14/replay-completion-menu-oct23/browser-after-replay-again.jpg",
+      "bytes": 90401,
+      "sha256": "a2c0d03f682bccd31af13b107060ea2d8a16151115fcb469c72bb2166eb6811e"
+    },
+    {
+      "path": "artifacts/th14/replay-completion-menu-oct23/browser-returned-list.jpg",
+      "bytes": 157525,
+      "sha256": "4e97ce18ec896c9402c76ddcbcd16dba6909f32d2527115970b7ffc94800d9e9"
+    }
+  ],
+  "rootResourceCryptExcluded": true,
+  "sourceOnlyPublication": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}

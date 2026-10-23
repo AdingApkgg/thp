@@ -501,6 +501,9 @@ bool GameBattle::update(const std::function<bool()>& sample_input
     if(!hud.update(hud_input())){last_error=-1010;error="HUD update";return false;}
 #endif
     if(!hud.finish_update(hud_input())){last_error=-1010;error="HUD indicator update";return false;}
+#if PORT_TITLE == 14
+    if(last_error)return false;
+#endif
     if(!animations.update(false)){last_error=-1005;if(error.empty())error="animation update: "+animations.last_error_text();return false;}
     if(control_running)++frame;
     // Both VM registries have now consumed resource retirement markers.
