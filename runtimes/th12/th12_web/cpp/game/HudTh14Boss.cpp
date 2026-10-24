@@ -34,7 +34,7 @@ bool Hud::remaining_th14(){
     }return true;
 }
 namespace {
-void retire(AnmVm* vm){if(!vm)return;vm->flags|=0x4000000;if(!vm->child.previous)for(auto* n=vm->child.next;n;n=n->next)n->value->flags|=0x4000000;}
+void retire(AnmVm* vm){if(!vm)return;vm->flags2|=0x20;if(!vm->child.previous)for(auto* n=vm->child.next;n;n=n->next)n->value->flags2|=0x20;}
 float angle(float value){constexpr float pi=3.1415927410125732f,tau=6.2831854820251465f;u32 loops=0;while(value>pi){value=float(value-tau);if(loops++>32)break;}while(value<-pi){value=float(value+tau);if(loops++>32)break;}return value;}
 }
 bool Hud::bosses_th14(const HudInput& input){

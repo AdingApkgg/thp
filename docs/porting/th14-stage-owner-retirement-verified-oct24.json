@@ -1,0 +1,504 @@
+{
+  "verifiedScopedFixes": true,
+  "baseCommit": "0cad5bbd1a2b899e5c492268e394345d4cd6dbf4",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/GameBattle.cpp": "61ad18f9bd7d7228ca21efebb425b2a764be6cface00aee3faf9a753ad2213db",
+    "runtimes/th12/th12_web/cpp/game/HudTh14Boss.cpp": "ff986afce15b7f0af0774e6cafc6750b431f4b83b50cc9c9d801963b8fc9f923"
+  },
+  "productionChanges": [
+    "Destroy outgoing Bomb controller in stage-owner retirement before the worker wait, matching43642a to411f40/411980; preserve ordinary deferred ANM destruction and LIFO pool reuse.",
+    "HUD boss-ring/name retirement sets native flags2 bit0x20 on roots and flattened children."
+  ],
+  "originalHudBlockControl": {
+    "path": "docs/porting/th14-hud-retirement-verified-oct24.json",
+    "sha256": "74a4c613e84c5edbf833cdd770d5dc7d6292f5e0f84e5caaf28d9f8551b46091",
+    "cases": 128,
+    "rawFlags2WordsPerCase": 15,
+    "oldDifferenceCounts": {
+      "name": 4,
+      "retirementFlagWords": 10,
+      "retired": 98
+    },
+    "currentAllEqual": true
+  },
+  "priorContextCampaigns": {
+    "marisaa": {
+      "callbacks": 66737,
+      "allSelected32WordsEqual": true,
+      "allSelected25CameraWordsEqual": true,
+      "liveFields": 291,
+      "liveSnapshots": [
+        {
+          "frame": 1,
+          "nativeCount": 52,
+          "portableCount": 52,
+          "portableExpected": 52,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 26000,
+          "nativeCount": 570,
+          "portableCount": 570,
+          "portableExpected": 570,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 30000,
+          "nativeCount": 578,
+          "portableCount": 578,
+          "portableExpected": 578,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 36000,
+          "nativeCount": 404,
+          "portableCount": 404,
+          "portableExpected": 404,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 38900,
+          "nativeCount": 567,
+          "portableCount": 567,
+          "portableExpected": 567,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 60000,
+          "nativeCount": 294,
+          "portableCount": 294,
+          "portableExpected": 294,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        }
+      ],
+      "allStrictLiveValuesEqual": true,
+      "allocationPrefixCallbacks": 30000,
+      "orderedHandleFileScriptPublications": 246729,
+      "reports": {
+        "report.json": {
+          "path": "artifacts/th14/stage-owner-retirement-oct24/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/report.json",
+          "sha256": "7a8c9c214834b83fdcade8aa47209d34eff95ea7d6085b85ed8cf260749784fb"
+        },
+        "live-report.json": {
+          "path": "artifacts/th14/stage-owner-retirement-oct24/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/live-report.json",
+          "sha256": "d1f93e6e8e7b4a4dfd980edd35295794b8c341bb111d3d2cc384666285d9e149"
+        },
+        "camera-report.json": {
+          "path": "artifacts/th14/stage-owner-retirement-oct24/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/camera-report.json",
+          "sha256": "f2c14b4d5cbe2dce9f42cb35594257f202fa49b5424e8ac8d90cb9a1af0e29b4"
+        },
+        "allocation-report.json": {
+          "path": "artifacts/th14/stage-owner-retirement-oct24/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/allocation-report.json",
+          "sha256": "e42415d286c121058256952cdfa84d224f42401a9341b0d52dc63422319383c0"
+        }
+      }
+    },
+    "sakuyaaPrior": {
+      "callbacks": 104802,
+      "allSelected32WordsEqual": true,
+      "allSelected25CameraWordsEqual": true,
+      "liveFields": 291,
+      "liveSnapshots": [
+        {
+          "frame": 1,
+          "nativeCount": 52,
+          "portableCount": 52,
+          "portableExpected": 52,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 26000,
+          "nativeCount": 154,
+          "portableCount": 154,
+          "portableExpected": 154,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 30000,
+          "nativeCount": 191,
+          "portableCount": 191,
+          "portableExpected": 191,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 36000,
+          "nativeCount": 344,
+          "portableCount": 344,
+          "portableExpected": 344,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 38900,
+          "nativeCount": 241,
+          "portableCount": 241,
+          "portableExpected": 241,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 60000,
+          "nativeCount": 223,
+          "portableCount": 223,
+          "portableExpected": 223,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 90000,
+          "nativeCount": 231,
+          "portableCount": 231,
+          "portableExpected": 231,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        }
+      ],
+      "allStrictLiveValuesEqual": true,
+      "allocationPrefixCallbacks": 30000,
+      "orderedHandleFileScriptPublications": 136778,
+      "reports": {
+        "report.json": {
+          "path": "artifacts/th14/stage-owner-retirement-oct24/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/report.json",
+          "sha256": "eadcef825156baa3b065589cce187e6305d38af8881a6300ceaeb8121b351084"
+        },
+        "live-report.json": {
+          "path": "artifacts/th14/stage-owner-retirement-oct24/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/live-report.json",
+          "sha256": "3b22c7550a10331cc3c2cb3282cd2878d02620e7605a6c366d3983990214bcc7"
+        },
+        "camera-report.json": {
+          "path": "artifacts/th14/stage-owner-retirement-oct24/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/camera-report.json",
+          "sha256": "c7a5d863e43e41fe18fda3eecb1ba48fac0e8def1d7d4f6259bce317d3b6a350"
+        },
+        "allocation-report.json": {
+          "path": "artifacts/th14/stage-owner-retirement-oct24/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/allocation-report.json",
+          "sha256": "96de7300e13f4afa223df9878ada6175a5d219e685c30dc87e7ec3cb7a1ef902"
+        }
+      }
+    }
+  },
+  "independentCurrentContextSakuyaCampaign": {
+    "callbacks": 104802,
+    "allSelected32WordsEqual": true,
+    "allSelected25CameraWordsEqual": true,
+    "allTwoHudWordsEqual": true,
+    "hudDisplayedEndScore": 283535260,
+    "internalEndScore": 324535260,
+    "terminalMenuSamples": 3,
+    "liveFields": 291,
+    "liveSnapshots": [
+      {
+        "frame": 1,
+        "nativeCount": 52,
+        "portableCount": 52,
+        "portableExpected": 52,
+        "portableRegistryComplete": true,
+        "differenceCount": 0
+      },
+      {
+        "frame": 26000,
+        "nativeCount": 154,
+        "portableCount": 154,
+        "portableExpected": 154,
+        "portableRegistryComplete": true,
+        "differenceCount": 0
+      },
+      {
+        "frame": 30000,
+        "nativeCount": 191,
+        "portableCount": 191,
+        "portableExpected": 191,
+        "portableRegistryComplete": true,
+        "differenceCount": 0
+      },
+      {
+        "frame": 36000,
+        "nativeCount": 344,
+        "portableCount": 344,
+        "portableExpected": 344,
+        "portableRegistryComplete": true,
+        "differenceCount": 0
+      },
+      {
+        "frame": 38900,
+        "nativeCount": 241,
+        "portableCount": 241,
+        "portableExpected": 241,
+        "portableRegistryComplete": true,
+        "differenceCount": 0
+      },
+      {
+        "frame": 60000,
+        "nativeCount": 223,
+        "portableCount": 223,
+        "portableExpected": 223,
+        "portableRegistryComplete": true,
+        "differenceCount": 0
+      },
+      {
+        "frame": 90000,
+        "nativeCount": 231,
+        "portableCount": 231,
+        "portableExpected": 231,
+        "portableRegistryComplete": true,
+        "differenceCount": 0
+      }
+    ],
+    "allStrictLiveValuesEqual": true,
+    "observedAllocationWindows": [
+      {
+        "window": "untouched-initial",
+        "nativeCount": 131,
+        "portableCount": 131,
+        "paired": 131,
+        "firstHandleDifference": null,
+        "firstIdentityDifference": null,
+        "allHandlesFileScriptEqual": true,
+        "portableCreationRange": [
+          0,
+          131
+        ]
+      },
+      {
+        "window": "late-75000-to-91000",
+        "nativeCount": 79288,
+        "portableCount": 79288,
+        "paired": 79288,
+        "firstHandleDifference": null,
+        "firstIdentityDifference": null,
+        "allHandlesFileScriptEqual": true,
+        "portableCreationRange": [
+          411160,
+          490448
+        ]
+      }
+    ],
+    "explicitAllocationTraceGap": [
+      1,
+      75000
+    ],
+    "comparedDestructions": 79292,
+    "comparedDestructionWords": 8,
+    "allOrderedDestructionWordsEqual": true,
+    "readOnlyInstrumentation": true,
+    "reports": {
+      "report.json": {
+        "path": "artifacts/th14/stage-owner-retirement-oct24/destruction-observer/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/report.json",
+        "sha256": "c6956ad1e952ec0bb9be845dadd5db4545c62f5867769d5c3fee9f7c05162e23"
+      },
+      "live-report.json": {
+        "path": "artifacts/th14/stage-owner-retirement-oct24/destruction-observer/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/live-report.json",
+        "sha256": "215e602ca8b79963c1ac05763c98381eb9b00a863414eb62670fee338a5f51e1"
+      },
+      "camera-report.json": {
+        "path": "artifacts/th14/stage-owner-retirement-oct24/destruction-observer/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/camera-report.json",
+        "sha256": "92229a5393252ca228e4aa8c4b6783a78979028efcf11aaec25589614bafa844"
+      },
+      "hud-report.json": {
+        "path": "artifacts/th14/stage-owner-retirement-oct24/destruction-observer/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/hud-report.json",
+        "sha256": "b64ecd486c5f876e3f67a25eb8f6a7c7ee7c8f5dba438d18a667f42fd4ae16d4"
+      },
+      "allocation-report.json": {
+        "path": "artifacts/th14/stage-owner-retirement-oct24/destruction-observer/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/allocation-report.json",
+        "sha256": "e3769c7e3f4078ca197c0e89b9eda8527e1650d77fc24a1e531017829a240619"
+      },
+      "destruction-report.json": {
+        "path": "artifacts/th14/stage-owner-retirement-oct24/destruction-observer/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/destruction-report.json",
+        "sha256": "761875581b328235c77478df3e1e3d09849c876285d7ef6741cca608c3a4076c"
+      }
+    }
+  },
+  "otherCurrentOriginalControls": [
+    {
+      "path": "artifacts/th14/stage-owner-retirement-oct24/full-initial-worker-events-retail-browser-recorded-legal-normal-hardware-oct24/report.json",
+      "sha256": "0ee6c410333a4880d4890499ec13693fc3ad2986457f53033393e47a42ae835e",
+      "callbacks": 1195,
+      "wasmSha256": "986c5e3261f5545589fa345c5fef8c80fee801e0c0256eb0788cada6b259ebc9"
+    },
+    {
+      "path": "artifacts/th14/stage-owner-retirement-oct24/full-initial-worker-events-retail-marisaa-extra-live-full-hardware-oct24/report.json",
+      "sha256": "89a2294ab94ff96a2072ac5c488d7574e428f8e93a7ac309d0e54729ad0eced0",
+      "callbacks": 46391,
+      "wasmSha256": "986c5e3261f5545589fa345c5fef8c80fee801e0c0256eb0788cada6b259ebc9"
+    },
+    {
+      "path": "artifacts/th14/stage-owner-retirement-oct24/full-initial-worker-events-retail-marisab-extra-full-hardware-oct24/report.json",
+      "sha256": "4422bedc992355979aa44471e94e5c4054b8aae4015ea975d9234cd2cde272cc",
+      "callbacks": 54114,
+      "wasmSha256": "986c5e3261f5545589fa345c5fef8c80fee801e0c0256eb0788cada6b259ebc9"
+    },
+    {
+      "path": "artifacts/th14/stage-owner-retirement-oct24/full-initial-worker-events-retail-reimua-extra-full-hardware-oct24/report.json",
+      "sha256": "8eb750bbb40043c0d9b61e7ef3442879ff916729899e14eace5da8e469adc404",
+      "callbacks": 38403,
+      "wasmSha256": "986c5e3261f5545589fa345c5fef8c80fee801e0c0256eb0788cada6b259ebc9"
+    },
+    {
+      "path": "artifacts/th14/stage-owner-retirement-oct24/full-initial-worker-events-retail-reimub-campaign-resource-phases-hardware-oct24/report.json",
+      "sha256": "e869f67bba8470c200dfa24e55ea768009637ac70c3ff8e16d1817da750d7fbd",
+      "callbacks": 122012,
+      "wasmSha256": "718c92da544ca44db1174cf98a6fe7e8e8d3eb18532425329332797f040060d5"
+    },
+    {
+      "path": "artifacts/th14/stage-owner-retirement-oct24/full-initial-worker-events-retail-reimub-extra-live-full-hardware-oct24/report.json",
+      "sha256": "48bd4d20b4e9245650a01934eb4f81d9628df396fc07fc9437f7e878a006650a",
+      "callbacks": 46936,
+      "wasmSha256": "986c5e3261f5545589fa345c5fef8c80fee801e0c0256eb0788cada6b259ebc9"
+    },
+    {
+      "path": "artifacts/th14/stage-owner-retirement-oct24/full-initial-worker-events-retail-sakuyaa-extra-full-2-hardware-oct24/report.json",
+      "sha256": "3c061bd5e7464d6035fecc6b3d6f6af99a82ff02b85a71b74458170077d9ba2a",
+      "callbacks": 38977,
+      "wasmSha256": "986c5e3261f5545589fa345c5fef8c80fee801e0c0256eb0788cada6b259ebc9"
+    },
+    {
+      "path": "artifacts/th14/stage-owner-retirement-oct24/full-initial-worker-events-retail-sakuyaa-final-live-vm-hardware-oct24/report.json",
+      "sha256": "a0ed4e6d6307df1cd48c3e51b578440a95d14c0770b1dadd5ec5d0879bc67287",
+      "callbacks": 38977,
+      "wasmSha256": "986c5e3261f5545589fa345c5fef8c80fee801e0c0256eb0788cada6b259ebc9"
+    },
+    {
+      "path": "artifacts/th14/stage-owner-retirement-oct24/full-initial-worker-events-retail-sakuyaa-hard-stage6-full-2-hardware-oct24/report.json",
+      "sha256": "9c53e22ec9de66cd11f00f9d178e65cbfd022e0f0c05e4db1da0b6259480c750",
+      "callbacks": 23294,
+      "wasmSha256": "986c5e3261f5545589fa345c5fef8c80fee801e0c0256eb0788cada6b259ebc9"
+    },
+    {
+      "path": "artifacts/th14/stage-owner-retirement-oct24/full-initial-worker-events-retail-sakuyaa-lunatic-stage6-full-hardware-oct24/report.json",
+      "sha256": "40b51b932520b10a9a925a8e57388e6ad1723ce8155c6e38c15b5e9b9f07788d",
+      "callbacks": 19405,
+      "wasmSha256": "986c5e3261f5545589fa345c5fef8c80fee801e0c0256eb0788cada6b259ebc9"
+    },
+    {
+      "path": "artifacts/th14/stage-owner-retirement-oct24/full-initial-worker-events-retail-sakuyaa-normal-stage6-full-hardware-oct24/report.json",
+      "sha256": "e9ea31bf9418c2c6b0f16ad9386e867dac13fe801a627f4f38661e92319d68b1",
+      "callbacks": 23461,
+      "wasmSha256": "986c5e3261f5545589fa345c5fef8c80fee801e0c0256eb0788cada6b259ebc9"
+    },
+    {
+      "path": "artifacts/th14/stage-owner-retirement-oct24/full-initial-worker-events-retail-sakuyab-extra-full-hardware-oct24/report.json",
+      "sha256": "7d9bcff93ca4a9ee7383e217358d9f0a2718c788d33cff90c34c9be3a8537784",
+      "callbacks": 50937,
+      "wasmSha256": "986c5e3261f5545589fa345c5fef8c80fee801e0c0256eb0788cada6b259ebc9"
+    }
+  ],
+  "currentSelected32CallbackTotal": 780443,
+  "currentExtraLiveSnapshots": [
+    {
+      "path": "artifacts/th14/stage-owner-retirement-oct24/variable-prefix-38900-initial-worker-events-retail-marisaa-extra-live-full-hardware-oct24/live-report.json",
+      "sha256": "7432416815b483ff39711e41aef5b77a0a4236e69275eedc9521d6bbed404b9b",
+      "snapshots": 5,
+      "cumulativeRows": 2131,
+      "fields": 80
+    },
+    {
+      "path": "artifacts/th14/stage-owner-retirement-oct24/variable-prefix-38900-initial-worker-events-retail-reimub-extra-live-full-hardware-oct24/live-report.json",
+      "sha256": "bca21b768c91a39ebf77079b7bcdc4d3371d8bc2608bb3dcf0a8d5bd1e65c055",
+      "snapshots": 5,
+      "cumulativeRows": 3957,
+      "fields": 80
+    },
+    {
+      "path": "artifacts/th14/stage-owner-retirement-oct24/variable-prefix-38900-initial-worker-events-retail-sakuyaa-final-live-vm-hardware-oct24/live-report.json",
+      "sha256": "3c7fd17878432fe9176d17d3774d35570685b95bd171a7569f8640548014e556",
+      "snapshots": 5,
+      "cumulativeRows": 6305,
+      "fields": 80
+    }
+  ],
+  "oldFailurePreserved": {
+    "allocationReport": {
+      "path": "artifacts/th14/sakuyaa-late-allocation-oct24/destruction-observer/prefix-82500-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/allocation-report.json",
+      "sha256": "8637caafe5a0cc34e2c5db2597e6652e66dadc61f697bbf63cd3af165bc933aa"
+    },
+    "firstDifference": {
+      "index": 23608,
+      "native": {
+        "serial": 434769,
+        "handle": 3561632134,
+        "poolSlot": 4486,
+        "file": 2,
+        "script": 16,
+        "layer": 34,
+        "hostMonotonicNs": 271669219291700,
+        "idleCounter": 0,
+        "signatureDraws": 83227,
+        "titleState": null,
+        "pc": 4713281,
+        "threadId": 29364,
+        "precedingPlayerCallbacks": 81200,
+        "stage": 6,
+        "stageFrame": 0,
+        "rngHex": "9134000054502b00f370000000000000"
+      },
+      "portable": {
+        "creationIndex": 434769,
+        "mainResourceFrame": 81200,
+        "callbackBoundary": 81200,
+        "serial": 434769,
+        "handle": 3561631128,
+        "file": 2,
+        "script": 16,
+        "requestedLayer": 29
+      }
+    },
+    "rootCause": "Outgoing Bomb root retired at callback81192 in Native but only81199 in the old portable loader; its slot3480 then displaced4486 during ASCII16 publication and later effect128 reuse.",
+    "oldPublished90000FailureResolved": true
+  },
+  "browserAcceptanceOfThisBinary": {
+    "startedUtc": "2026-10-24T16:15:41.900Z",
+    "firstEndObservedUtc": "2026-10-24T16:16:06.706Z",
+    "stableObservedUtc": "2026-10-24T16:17:04.140Z",
+    "stableObservedSeconds": 57.434,
+    "naturalReplayEndObserved": true,
+    "formalReplayMenu": true,
+    "noInputAfterStart": true,
+    "quietOutput": true,
+    "hudScore": 3980,
+    "graze": 4,
+    "maxPoint": 10000,
+    "lives": 1,
+    "replaySha256": "c6fd7a579bb5c40126c32efeaae758ac5e254feef38da3980859a0f2a52eba0d",
+    "sdlWasmSha256": "23caa6d59e802bc4bde2b045a0c2a3e5530926125993be253dd48013fcab1a3d",
+    "url": "http://localhost:8253/?game=th14",
+    "generation": "gen-mvmlm3lm-014077824a67",
+    "runtimeEpoch": 6,
+    "issues": [],
+    "actualWebGl": true,
+    "priorBinaryAcceptanceInherited": false,
+    "completeGame": false,
+    "nativeEquivalent": false
+  },
+  "build": {
+    "warmWasmSha256": "986c5e3261f5545589fa345c5fef8c80fee801e0c0256eb0788cada6b259ebc9",
+    "observerWasmSha256": "718c92da544ca44db1174cf98a6fe7e8e8d3eb18532425329332797f040060d5",
+    "destructionObserverWasmSha256": "e3409ab2e113a59430d59c563820704ffb3acd222fa6b75172f3e857a7126b00",
+    "sdlWasmSha256": "23caa6d59e802bc4bde2b045a0c2a3e5530926125993be253dd48013fcab1a3d",
+    "recompiledEngineSources": 2,
+    "reusedEngineSources": 139,
+    "sdlRecompiledSources": [
+      "th12_web/cpp/game/GameBattle.cpp",
+      "th12_web/cpp/game/HudTh14Boss.cpp"
+    ],
+    "sdlReusedSourceCount": 144,
+    "allHeadersVerified": true
+  },
+  "scope": "Selected state and declared Native host environment;291 fields in selected live VM snapshots and8 destruction fields in the explicit late window. No complete VM/geometry, whole-frame GPU pixels, PCM, all-mode ordinary startup or full persistence equivalence.",
+  "nativeInstructionBytesPatched": 0,
+  "oneAttractBitClearAfterUntouchedFirstPlayer": true,
+  "noRngSerialCounterHealthOrInputWrites": true,
+  "originalClockCookieResourceReadyAndPlayerHostTimesAreExplicitEnvironmentInputs": true,
+  "debuggerAffectsHostTiming": true,
+  "rootResourceCryptExcluded": true,
+  "sourceOnlyPublication": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}

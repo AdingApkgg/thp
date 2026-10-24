@@ -1,7 +1,7 @@
 {
-  "date": "2026-10-24",
+  "date": "2026-10-25",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "9ffbbc2c1f5df92cd0c96bf18485b253363b1de3",
+  "sourceCommit": "0cad5bbd1a2b899e5c492268e394345d4cd6dbf4",
   "files": [
     {
       "path": ".gitignore",
@@ -302,6 +302,11 @@
       "path": "docs/porting/TH14_STAGE_ENTRY_OPTIONS_OCT24.md",
       "bytes": 2803,
       "sha256": "4070837169aab4197a79c0fac54a5e9b33cc4e713ed4157fd34ce9a427a91d45"
+    },
+    {
+      "path": "docs/porting/TH14_STAGE_OWNER_RETIREMENT_OCT24.md",
+      "bytes": 3369,
+      "sha256": "1b97dbd2be5a03ff4f57c96ce8d4ed740e184887504c71978c61f198e18cd6a1"
     },
     {
       "path": "docs/porting/TH14_STAGE_TIMELINE_ANM_FIX_OCT15.md",
@@ -2274,6 +2279,11 @@
       "sha256": "efaaa54c5678a2cd2879c19fea6f2b80416f0ddb29707aca2072cabb6a2c4986"
     },
     {
+      "path": "docs/porting/th14-hud-retirement-verified-oct24.json",
+      "bytes": 3410,
+      "sha256": "74a4c613e84c5edbf833cdd770d5dc7d6292f5e0f84e5caaf28d9f8551b46091"
+    },
+    {
       "path": "docs/porting/th14-hud-startup-verified.json",
       "bytes": 1960,
       "sha256": "c6a971b02f62a99188c52100aa3c6bc8d86e3678dc0c7f712314a55eb7bc8c30"
@@ -2719,6 +2729,11 @@
       "sha256": "a7094209c193f5156121c6f2a819aebe507fb8178e5a7517d35e189b7add390f"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-stage-owner-retirement-candidate-oct24.json",
+      "bytes": 240136,
+      "sha256": "c13a6600f93fef532642efac6610c721ba2be6f7a5ae1b607c940f8e5a7ff598"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-stage-transition-retirement-candidate-oct24.json",
       "bytes": 140062,
       "sha256": "5350168ec3411ab8e54807882fe636aa3c310261b9381013f1dca1297d99a877"
@@ -2922,6 +2937,11 @@
       "path": "docs/porting/th14-launcher-site-stage-entry-options-candidate-oct24.json",
       "bytes": 36808,
       "sha256": "7f9e444e0d1465cd0031546859c2e991eb503c030b19a2c36bfade1c9c8ba9f0"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-stage-owner-retirement-candidate-oct24.json",
+      "bytes": 40236,
+      "sha256": "9fa2f2ab5226480a04a89b4c1e894054f6d3c9a5a2dbb44d7b1a6f98a8438201"
     },
     {
       "path": "docs/porting/th14-launcher-site-stage-transition-retirement-candidate-oct24.json",
@@ -5062,6 +5082,11 @@
       "path": "docs/porting/th14-stage-object-render-observed-oct12.json",
       "bytes": 28046,
       "sha256": "8c7e72ce100641591c94e815d07d4bf3d442657eef001fd99f458e041d91e9a0"
+    },
+    {
+      "path": "docs/porting/th14-stage-owner-retirement-verified-oct24.json",
+      "bytes": 21032,
+      "sha256": "5b0a41d15d3af00eed83c9d45635ea5b72a625d7cc70ed825e1453d6b60f1efe"
     },
     {
       "path": "docs/porting/th14-stage-pass-state-observed-oct12.json",
@@ -7270,8 +7295,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "bytes": 62451,
-      "sha256": "440ce5978d01cc16aaca8782d253666c5a871f9062c9517edf62ab15f6cb381d"
+      "bytes": 62607,
+      "sha256": "61ad18f9bd7d7228ca21efebb425b2a764be6cface00aee3faf9a753ad2213db"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
@@ -7370,8 +7395,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/HudTh14Boss.cpp",
-      "bytes": 7870,
-      "sha256": "14989a95bc5f1aa65f2d368db9aa85a837cb1c7542f5b0459d27f1ca666dc23d"
+      "bytes": 7862,
+      "sha256": "ff986afce15b7f0af0774e6cafc6750b431f4b83b50cc9c9d801963b8fc9f923"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/HudTh14Notice.cpp",
@@ -11020,8 +11045,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-hud-boss-rings-fixture.cpp",
-      "bytes": 3576,
-      "sha256": "d0aa56a8bfd91eead713b6ab61f35d5a8842900e7071645c5c278839354c25f0"
+      "bytes": 3708,
+      "sha256": "19958ec29510b3ac5e11a31caf6e239db9892298b4403f3e3e3a1c2173752b14"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-hud-difficulty-fixture.cpp",
@@ -16922,6 +16947,16 @@
       "path": "tools/th14-hud-resource-check.mjs",
       "bytes": 4097,
       "sha256": "f7f30c3d1d7efd04df09989ed65a676f36493b5c8906b6e1f9ee95c56cecb63c"
+    },
+    {
+      "path": "tools/th14-hud-retirement-check-oct24.mjs",
+      "bytes": 3539,
+      "sha256": "9788f8a785932e683a221ded260f644cf4cbfb8817efc15fecdb3bc43c13666f"
+    },
+    {
+      "path": "tools/th14-hud-retirement-native-oct24.py",
+      "bytes": 6028,
+      "sha256": "4f51142c59a7183a3506947f9d1b53ce9fc4c1ce515b37195d4a59738f92e6d6"
     },
     {
       "path": "tools/th14-hud-startup-check.mjs",

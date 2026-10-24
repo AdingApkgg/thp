@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "cases": 128,
+  "rawRetirementWordsPerCase": 15,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "nativeProofSha256": "ea0dc69d07401ddd547915267317eb223902a07f99e805bee9ca7d8fdfd6d0c7",
+  "results": {
+    "before": {
+      "wasmSha256": "3856589575d4e4eaf8c571dc5b2f1f00bdc63b11e79184c62bf014975b129971",
+      "differenceCounts": {
+        "name": 4,
+        "retirementFlagWords": 10,
+        "retired": 98
+      },
+      "firstDifferences": {
+        "name": {
+          "entry": 0,
+          "expected": [
+            false,
+            true
+          ],
+          "observed": [
+            false,
+            false
+          ]
+        },
+        "retirementFlagWords": {
+          "entry": 0,
+          "expected": [
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            544
+          ],
+          "observed": [
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        "retired": {
+          "entry": 1,
+          "expected": true,
+          "observed": false
+        }
+      },
+      "allEqual": false
+    },
+    "after": {
+      "wasmSha256": "2ee430fec4d0fb4927a96c76d4592bc2e00def30439bb910580c58c83e1f09ad",
+      "differenceCounts": {},
+      "firstDifferences": {},
+      "allEqual": true
+    }
+  },
+  "sourceHashes": {
+    "runtimes/th12/th12_web/tests/cpp/th14-hud-boss-rings-fixture.cpp": "19958ec29510b3ac5e11a31caf6e239db9892298b4403f3e3e3a1c2173752b14",
+    "runtimes/th12/th12_web/cpp/game/HudTh14Boss.cpp": "ff986afce15b7f0af0774e6cafc6750b431f4b83b50cc9c9d801963b8fc9f923",
+    "runtimes/th12/th12_web/cpp/game/GameBattle.cpp": "61ad18f9bd7d7228ca21efebb425b2a764be6cface00aee3faf9a753ad2213db",
+    "tools/th14-hud-retirement-native-oct24.py": "4f51142c59a7183a3506947f9d1b53ce9fc4c1ce515b37195d4a59738f92e6d6",
+    "tools/th14-hud-retirement-check-oct24.mjs": "9788f8a785932e683a221ded260f644cf4cbfb8817efc15fecdb3bc43c13666f"
+  },
+  "scope": "Retail43014e..430c55 two boss rows. Actual SSE health ratio/smoothing, angle403590, retail sin/cos and full4350b0 name helper execute. Cases cover boss absence in either slot, eligibility exclusions, dialogue/manager gate, fresh/retained seven-script rings232/233/234/235x4, four marks, proximity80/96 and adjacent float positions, hidden-state hysteresis, missing-boss clears and direct VM retirement. ANM allocation/binding/first update/registry/interrupt controlled boundaries; name selection additionally proved separately. No real ANM/GPU or allocation failure proof. Actual production bosses_th14 before/after; old fixture retirement getters also corrected to observe flags2 bit0x20 directly. Prior VMs explicitly start with the ordinary factory bit0x200 in both controls. All15 complete flags2 words compare, alongside the existing scalar/creation/VM words. Native ANM allocation, binding, interpreter, lookup and interrupt remain declared services. No GPU or full-game equivalence.",
+  "completeGame": false,
+  "nativeEquivalent": false
+}

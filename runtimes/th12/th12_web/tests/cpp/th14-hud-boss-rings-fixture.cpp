@@ -29,5 +29,6 @@ API(state) u32 state(u32 slot,u32 k){auto& row=hud->th14_boss[slot];switch(k){ca
 API(mark) u32 mark(u32 slot,u32 n){return float_bits(enemies.th14_health_segments[slot][n].fraction);}
 API(present) u32 present(u32 slot,u32 n){return bool(hud->th14_boss[slot].handles[n]);}
 API(value) u32 value(u32 slot,u32 n,u32 k){auto* vm=manager.find(hud->th14_boss[slot].handles[n]);if(!vm)return u32(-1);switch(k){case 0:return vm->flags&6;case 1:return float_bits(vm->rotation.x);case 2:return float_bits(vm->rotation.z);case 3:return float_bits(vm->position.x);case 4:return float_bits(vm->position.y);case 5:return float_bits(vm->position.z);case 6:return vm->pending_interrupt;default:return 0;}}
-API(retired) u32 retired(u32 slot,u32 n){auto* vm=manager.find(old[slot][n]);return vm&&bool(vm->flags&0x4000000);}
-API(name_value) u32 name_value(u32 n){return n?bool(manager.find(name_old)->flags&0x4000000):bool(hud->boss_name);}
+API(retired) u32 retired(u32 slot,u32 n){auto* vm=manager.find(old[slot][n]);return vm&&bool(vm->flags2&0x20);}
+API(name_value) u32 name_value(u32 n){return n?bool(manager.find(name_old)->flags2&0x20):bool(hud->boss_name);}
+API(retirement_word) u32 retirement_word(u32 n){const auto* vm=manager.find(n<14?old[n/7][n%7]:name_old);return vm?vm->flags2:0xffffffffu;}

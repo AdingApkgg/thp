@@ -225,6 +225,9 @@ bool GameBattle::retire_stage_owner(){
     // before loading17 publishes its overlay children on its first update.
     animations.retire_resource(resources.core.effect);
     animations.retire_resource(resources.core.bullet);
+    // Retail43642a calls411f40/411980 before the worker wait. Returning
+    // Bomb slots after that wait changes loading's LIFO allocation order.
+    bomb.reset();
     if(dialogue)dialogue->clear();dialogue.reset();
     return true;
 }
@@ -232,7 +235,7 @@ bool GameBattle::initialize_stage_work(){
     if(!compositor.stage_start()){error="TH14 worker copy0 reset failed";return false;}
     if(next_stage_initializer&&!next_stage_initializer())return false;
     next_stage_initializer={};
-    if(dialogue)dialogue->clear();dialogue.reset();bomb.reset();
+    if(dialogue)dialogue->clear();dialogue.reset();
     animations.retire_resource(resources.core.enemy);
     if(auto* old=resources.stage.get()){
         animations.retire_resource(old->enemies);animations.retire_resource(old->logo);
