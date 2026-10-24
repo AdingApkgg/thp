@@ -1,0 +1,710 @@
+{
+  "verifiedScopedFix": true,
+  "baseCommit": "4a2be103b68fbe3135ada4a89df0ebbfa1a63fe7",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/SceneCamera.cpp": "4a4fd81759388239e9f063e87fcb4bce388618d546e4476178891e8c0e6c0eb4"
+  },
+  "productionChange": "TH14 camera.right cross product rounds each float32 product before subtraction, matching original inline SSE446539..44659d; shared GraphicsMath cross and other titles are unchanged.",
+  "originalInstructionAndD3dxControl": {
+    "path": "docs/porting/th14-camera-cross-verified-oct25.json",
+    "sha256": "62a99889f526dbad5ada2927cc0d9492fc97e18484fb54f57396af82428afce1"
+  },
+  "unitCases": 2053,
+  "oldUnitComponentDifferences": 2247,
+  "currentUnitComponentDifferences": 0,
+  "oldReimuACameraDifferences": 15771,
+  "currentReimuACameraDifferences": 0,
+  "reimuaHudEndScore": 466814280,
+  "reimuaInternalEndScore": 588814280,
+  "campaigns": {
+    "sakuyaaNormal": {
+      "callbacks": 104802,
+      "selected32WordsEqual": true,
+      "camera25WordsEqual": true,
+      "hudTwoWordsEqual": true,
+      "all303LiveValuesEqual": true,
+      "liveSnapshots": [
+        {
+          "registryOrderEqual": true,
+          "frame": 1,
+          "nativeCount": 52,
+          "portableCount": 52,
+          "portableExpected": 52,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 26000,
+          "nativeCount": 154,
+          "portableCount": 154,
+          "portableExpected": 154,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 30000,
+          "nativeCount": 191,
+          "portableCount": 191,
+          "portableExpected": 191,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 36000,
+          "nativeCount": 344,
+          "portableCount": 344,
+          "portableExpected": 344,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 38900,
+          "nativeCount": 241,
+          "portableCount": 241,
+          "portableExpected": 241,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 60000,
+          "nativeCount": 223,
+          "portableCount": 223,
+          "portableExpected": 223,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 90000,
+          "nativeCount": 231,
+          "portableCount": 231,
+          "portableExpected": 231,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        }
+      ],
+      "remainingLiveDifferences": 0,
+      "allocation": {
+        "completed": true,
+        "windows": [
+          {
+            "window": "untouched-initial",
+            "nativeCount": 131,
+            "portableCount": 131,
+            "paired": 131,
+            "firstHandleDifference": null,
+            "firstIdentityDifference": null,
+            "allHandlesFileScriptEqual": true,
+            "portableCreationRange": [
+              0,
+              131
+            ]
+          },
+          {
+            "window": "late-75000-to-91000",
+            "nativeCount": 79288,
+            "portableCount": 79288,
+            "paired": 79288,
+            "firstHandleDifference": null,
+            "firstIdentityDifference": null,
+            "allHandlesFileScriptEqual": true,
+            "portableCreationRange": [
+              411160,
+              490448
+            ]
+          }
+        ],
+        "explicitUnobservedGap": [
+          1,
+          75000
+        ],
+        "scope": "Compare only untouched initial and observed late publication windows; no claim about the explicit gap. All original handle-slot differences are retained.",
+        "completeGame": false,
+        "nativeEquivalent": false
+      },
+      "reports": {
+        "report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/report.json",
+          "sha256": "23b76c597e4d64b2be8aec1fd89e170e479e78297f498145e39379aa7c72c2d5"
+        },
+        "camera-report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/camera-report.json",
+          "sha256": "0982abd0606cca8729279b32a02ec923f021f46d9256081f208040f8220cf3f7"
+        },
+        "live-report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/live-report.json",
+          "sha256": "b9c8b7f05440b47df8e28457b4bc5f57ab6e15246dfa696a6face43a2f07302d"
+        },
+        "allocation-report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/allocation-report.json",
+          "sha256": "e3769c7e3f4078ca197c0e89b9eda8527e1650d77fc24a1e531017829a240619"
+        },
+        "hud-report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/hud-report.json",
+          "sha256": "3c9f3aee78fac1a2563a7771dec1dd4d69a7a8aee0bc4834cfaa7684ced70031"
+        }
+      }
+    },
+    "marisaaNormal": {
+      "callbacks": 66737,
+      "selected32WordsEqual": true,
+      "camera25WordsEqual": true,
+      "hudTwoWordsEqual": null,
+      "all303LiveValuesEqual": true,
+      "liveSnapshots": [
+        {
+          "registryOrderEqual": true,
+          "frame": 1,
+          "nativeCount": 52,
+          "portableCount": 52,
+          "portableExpected": 52,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 26000,
+          "nativeCount": 570,
+          "portableCount": 570,
+          "portableExpected": 570,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 30000,
+          "nativeCount": 578,
+          "portableCount": 578,
+          "portableExpected": 578,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 36000,
+          "nativeCount": 404,
+          "portableCount": 404,
+          "portableExpected": 404,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 38900,
+          "nativeCount": 567,
+          "portableCount": 567,
+          "portableExpected": 567,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 60000,
+          "nativeCount": 294,
+          "portableCount": 294,
+          "portableExpected": 294,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        }
+      ],
+      "remainingLiveDifferences": 0,
+      "allocation": {
+        "completed": true,
+        "nativePrefixCount": 246729,
+        "portableObservedCount": 246729,
+        "portablePrefixCount": 246729,
+        "paired": 246729,
+        "firstHandleDifference": null,
+        "firstIdentityDifference": null,
+        "nativeTraceCutoffCallbacks": 30000,
+        "scope": "Ordered handle/file/script diagnostic, preserving all slot differences; requested layers are not compared to post-script layers.",
+        "completeGame": false,
+        "nativeEquivalent": false
+      },
+      "reports": {
+        "report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/report.json",
+          "sha256": "26bce0e420e9f6d9843be586c1eadcca260fda3b73e397cdfeaebdf9b3017062"
+        },
+        "camera-report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/camera-report.json",
+          "sha256": "54217a892a3fe58ee769e1f4fac705fed49e510d2090769ebdbf34e9f764cfb1"
+        },
+        "live-report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/live-report.json",
+          "sha256": "cbc5ba48b7331aa8247a4d3ff607f9bffa97e85718a8f11f606e3da87bcf6a30"
+        },
+        "allocation-report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/allocation-report.json",
+          "sha256": "e42415d286c121058256952cdfa84d224f42401a9341b0d52dc63422319383c0"
+        }
+      }
+    },
+    "sakuyaaLunatic": {
+      "callbacks": 84952,
+      "selected32WordsEqual": true,
+      "camera25WordsEqual": true,
+      "hudTwoWordsEqual": true,
+      "all303LiveValuesEqual": true,
+      "liveSnapshots": [
+        {
+          "registryOrderEqual": true,
+          "frame": 1,
+          "nativeCount": 52,
+          "portableCount": 52,
+          "portableExpected": 52,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 26000,
+          "nativeCount": 185,
+          "portableCount": 185,
+          "portableExpected": 185,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 30000,
+          "nativeCount": 210,
+          "portableCount": 210,
+          "portableExpected": 210,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 36000,
+          "nativeCount": 222,
+          "portableCount": 222,
+          "portableExpected": 222,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 38900,
+          "nativeCount": 143,
+          "portableCount": 143,
+          "portableExpected": 143,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 60000,
+          "nativeCount": 102,
+          "portableCount": 102,
+          "portableExpected": 102,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 80000,
+          "nativeCount": 432,
+          "portableCount": 432,
+          "portableExpected": 432,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        }
+      ],
+      "remainingLiveDifferences": 0,
+      "allocation": {
+        "completed": true,
+        "windows": [
+          {
+            "window": "initial-through-30000",
+            "nativeCount": 156037,
+            "portableCount": 156037,
+            "paired": 156037,
+            "firstHandleDifference": null,
+            "firstIdentityDifference": null,
+            "allHandlesFileScriptEqual": true,
+            "portableCreationRange": [
+              0,
+              156037
+            ]
+          }
+        ],
+        "nativeTraceCutoffCallbacks": 30000,
+        "scope": "Compare only the continuous untouched boot and first30000 publication window; no claim about later allocations. All original handle-slot differences are retained.",
+        "completeGame": false,
+        "nativeEquivalent": false
+      },
+      "reports": {
+        "report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/report.json",
+          "sha256": "f32114d01c05b16efc5160156718943866a7cb9407405e13dba9bf646e2ccca9"
+        },
+        "camera-report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/camera-report.json",
+          "sha256": "a78be1221fc97e5b35ce141d71d61177d28c5b9e169baeee011417b3a0bfae04"
+        },
+        "live-report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/live-report.json",
+          "sha256": "530b564b90a59408b533970575aada24dc928175b2424150f936fe1e3c347fec"
+        },
+        "allocation-report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/allocation-report.json",
+          "sha256": "556013d201f6723876401c94c2476626b203437a0febb1344eb3ea2d322b4e37"
+        },
+        "hud-report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/hud-report.json",
+          "sha256": "f5de2258ba2d3d22cb633b8363195b34717a96b1dfec86ddf9e678e0283808b3"
+        }
+      }
+    },
+    "marisabNormal": {
+      "callbacks": 27751,
+      "selected32WordsEqual": true,
+      "camera25WordsEqual": true,
+      "hudTwoWordsEqual": true,
+      "all303LiveValuesEqual": true,
+      "liveSnapshots": [
+        {
+          "registryOrderEqual": true,
+          "frame": 1,
+          "nativeCount": 52,
+          "portableCount": 52,
+          "portableExpected": 52,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 26000,
+          "nativeCount": 537,
+          "portableCount": 537,
+          "portableExpected": 537,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        }
+      ],
+      "remainingLiveDifferences": 0,
+      "allocation": {
+        "completed": true,
+        "windows": [
+          {
+            "window": "initial-through-27751",
+            "nativeCount": 176509,
+            "portableCount": 176509,
+            "paired": 176509,
+            "firstHandleDifference": null,
+            "firstIdentityDifference": null,
+            "allHandlesFileScriptEqual": true,
+            "portableCreationRange": [
+              0,
+              176509
+            ]
+          }
+        ],
+        "nativeTraceCutoffCallbacks": 30000,
+        "scope": "Compare only the continuous untouched boot and first30000 publication window; no claim about later allocations. All original handle-slot differences are retained.",
+        "completeGame": false,
+        "nativeEquivalent": false
+      },
+      "reports": {
+        "report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/report.json",
+          "sha256": "347a04271fa002b19c7609fc5cffd2d3d0ff30fb849e0ea2f062417e44bb6646"
+        },
+        "camera-report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/camera-report.json",
+          "sha256": "eb536a33c0cb55dd69cb35d4b7dd239564bdaf3a8dd8f4625e3b8bcc4b7db6da"
+        },
+        "live-report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/live-report.json",
+          "sha256": "d2861cebdd8c3587fac38140309f5cadbe6e63d542af105d9580996071ac2ae2"
+        },
+        "allocation-report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/allocation-report.json",
+          "sha256": "73a289f28998782deca164832a13788234f1960a2e27c80074e2f20187326b72"
+        },
+        "hud-report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/hud-report.json",
+          "sha256": "5418cc6882d477c09505afef01330d4ee0625960de053ad2a901637dbd75a981"
+        }
+      }
+    },
+    "reimuaNormal": {
+      "callbacks": 85035,
+      "selected32WordsEqual": true,
+      "camera25WordsEqual": true,
+      "hudTwoWordsEqual": true,
+      "all303LiveValuesEqual": false,
+      "liveSnapshots": [
+        {
+          "registryOrderEqual": true,
+          "frame": 1,
+          "nativeCount": 52,
+          "portableCount": 52,
+          "portableExpected": 52,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 26000,
+          "nativeCount": 227,
+          "portableCount": 227,
+          "portableExpected": 227,
+          "portableRegistryComplete": true,
+          "differenceCount": 1
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 30000,
+          "nativeCount": 329,
+          "portableCount": 329,
+          "portableExpected": 329,
+          "portableRegistryComplete": true,
+          "differenceCount": 6
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 36000,
+          "nativeCount": 397,
+          "portableCount": 397,
+          "portableExpected": 397,
+          "portableRegistryComplete": true,
+          "differenceCount": 6
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 38900,
+          "nativeCount": 197,
+          "portableCount": 197,
+          "portableExpected": 197,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 60000,
+          "nativeCount": 177,
+          "portableCount": 177,
+          "portableExpected": 177,
+          "portableRegistryComplete": true,
+          "differenceCount": 6
+        }
+      ],
+      "remainingLiveDifferences": 19,
+      "allocation": {
+        "completed": true,
+        "windows": [
+          {
+            "window": "initial-through-30000",
+            "nativeCount": 480316,
+            "portableCount": 480316,
+            "paired": 480316,
+            "firstHandleDifference": null,
+            "firstIdentityDifference": null,
+            "allHandlesFileScriptEqual": true,
+            "portableCreationRange": [
+              0,
+              480316
+            ]
+          }
+        ],
+        "nativeTraceCutoffCallbacks": 30000,
+        "scope": "Compare only the continuous untouched boot and first30000 publication window; no claim about later allocations. All original handle-slot differences are retained.",
+        "completeGame": false,
+        "nativeEquivalent": false
+      },
+      "reports": {
+        "report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/report.json",
+          "sha256": "1809770e5e9615c72c4e3c47304da03cf47a37c01473bae0196f4f57ea097854"
+        },
+        "camera-report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/camera-report.json",
+          "sha256": "2266049b214a431b1ef0ccb556fff7e9276a9d9f3faa06daee69b0545b9e94c7"
+        },
+        "live-report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/live-report.json",
+          "sha256": "22ab331d033d727543ddeab94eaa5bf33e0588c50473506fb7820ce80a08785b"
+        },
+        "allocation-report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/allocation-report.json",
+          "sha256": "6dd688e05ebf47ea60a16f129eba7ca39eb4342d2a3b4ad3b8b7e7c2a2bbd585"
+        },
+        "hud-report.json": {
+          "path": "artifacts/th14/camera-cross-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/hud-report.json",
+          "sha256": "3e133e107453321f943411b6ca42ca2449d16a5e51ea4cb397621946e05809f0"
+        }
+      }
+    }
+  },
+  "otherSelected32Controls": [
+    {
+      "path": "artifacts/th14/camera-cross-oct25/full-initial-worker-events-retail-browser-recorded-legal-normal-hardware-oct24/report.json",
+      "sha256": "98a386f6c942fcdadd30734a6c4f878e376a376f877689235fcb380b0e1ae8ad",
+      "callbacks": 1195,
+      "wasmSha256": "fa60c11f6b8e138dccc4ff1fafd142764412eb3c870460bfdc2b4098cc64db8f"
+    },
+    {
+      "path": "artifacts/th14/camera-cross-oct25/full-initial-worker-events-retail-marisaa-extra-live-full-hardware-oct24/report.json",
+      "sha256": "30ed3a80568ed19bbc8085efc9c996da38634d7c1d8e309300c62ab015b31c4f",
+      "callbacks": 46391,
+      "wasmSha256": "fa60c11f6b8e138dccc4ff1fafd142764412eb3c870460bfdc2b4098cc64db8f"
+    },
+    {
+      "path": "artifacts/th14/camera-cross-oct25/full-initial-worker-events-retail-marisab-extra-full-hardware-oct24/report.json",
+      "sha256": "193921087f7eb8881f5484a496cf4bb12d758b5f43b4843f5955afa42dd1b70f",
+      "callbacks": 54114,
+      "wasmSha256": "fa60c11f6b8e138dccc4ff1fafd142764412eb3c870460bfdc2b4098cc64db8f"
+    },
+    {
+      "path": "artifacts/th14/camera-cross-oct25/full-initial-worker-events-retail-reimua-extra-full-hardware-oct24/report.json",
+      "sha256": "af4b4e0f6d38d1204b643f7077c68d289c028a0d6bfd9d37f48139f02a43d628",
+      "callbacks": 38403,
+      "wasmSha256": "fa60c11f6b8e138dccc4ff1fafd142764412eb3c870460bfdc2b4098cc64db8f"
+    },
+    {
+      "path": "artifacts/th14/camera-cross-oct25/full-initial-worker-events-retail-reimub-campaign-resource-phases-hardware-oct24-observer-repaired/report.json",
+      "sha256": "83302e92dd2b430d3738399c3b32677fd527677b660d9055032a799238b7f52b",
+      "callbacks": 122012,
+      "wasmSha256": "886d1158aad87aebcefdb100922edd878301c1c8a5207eab790f6625fca165b0"
+    },
+    {
+      "path": "artifacts/th14/camera-cross-oct25/full-initial-worker-events-retail-reimub-extra-live-full-hardware-oct24/report.json",
+      "sha256": "f8489745fbab6116b63e3ae9bf9ae23777ae01c044080024c9d3e742005cef27",
+      "callbacks": 46936,
+      "wasmSha256": "fa60c11f6b8e138dccc4ff1fafd142764412eb3c870460bfdc2b4098cc64db8f"
+    },
+    {
+      "path": "artifacts/th14/camera-cross-oct25/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/report.json",
+      "sha256": "9d4484871384e8c929b8cd1153489494acf4067a5525ae02c0953c7040bcb684",
+      "callbacks": 104802,
+      "wasmSha256": "886d1158aad87aebcefdb100922edd878301c1c8a5207eab790f6625fca165b0"
+    },
+    {
+      "path": "artifacts/th14/camera-cross-oct25/full-initial-worker-events-retail-sakuyaa-extra-full-2-hardware-oct24/report.json",
+      "sha256": "d0ac0f4cefc1c41d65e0c66074bb4edefd51e0c2b0945a41ab923e28858d226a",
+      "callbacks": 38977,
+      "wasmSha256": "fa60c11f6b8e138dccc4ff1fafd142764412eb3c870460bfdc2b4098cc64db8f"
+    },
+    {
+      "path": "artifacts/th14/camera-cross-oct25/full-initial-worker-events-retail-sakuyaa-final-live-vm-hardware-oct24/report.json",
+      "sha256": "49401bc4eb7520d3755e1923697e9dd8ae450deb85c24c3f5b378e8d0746959c",
+      "callbacks": 38977,
+      "wasmSha256": "fa60c11f6b8e138dccc4ff1fafd142764412eb3c870460bfdc2b4098cc64db8f"
+    },
+    {
+      "path": "artifacts/th14/camera-cross-oct25/full-initial-worker-events-retail-sakuyaa-hard-stage6-full-2-hardware-oct24/report.json",
+      "sha256": "ad9e84e36e8e62c15eafe0cc321077203532517ef54a092cf90bd5dd8e687cff",
+      "callbacks": 23294,
+      "wasmSha256": "fa60c11f6b8e138dccc4ff1fafd142764412eb3c870460bfdc2b4098cc64db8f"
+    },
+    {
+      "path": "artifacts/th14/camera-cross-oct25/full-initial-worker-events-retail-sakuyaa-lunatic-stage6-full-hardware-oct24/report.json",
+      "sha256": "624813ec20cb21b1f79af02ce2933ce1362c142d46d4335614663c2ca7c268e1",
+      "callbacks": 19405,
+      "wasmSha256": "fa60c11f6b8e138dccc4ff1fafd142764412eb3c870460bfdc2b4098cc64db8f"
+    },
+    {
+      "path": "artifacts/th14/camera-cross-oct25/full-initial-worker-events-retail-sakuyaa-normal-stage6-full-hardware-oct24/report.json",
+      "sha256": "6e33b810c48dbfd4a417b2b2dcebd45cb302b3ad5c4a1741aadcb25c33ff0432",
+      "callbacks": 23461,
+      "wasmSha256": "fa60c11f6b8e138dccc4ff1fafd142764412eb3c870460bfdc2b4098cc64db8f"
+    },
+    {
+      "path": "artifacts/th14/camera-cross-oct25/full-initial-worker-events-retail-sakuyab-extra-full-hardware-oct24/report.json",
+      "sha256": "dff989e323391f9a615a44d97b08a6085f69c2c2c97f4377c3f889a2d204b64c",
+      "callbacks": 50937,
+      "wasmSha256": "fa60c11f6b8e138dccc4ff1fafd142764412eb3c870460bfdc2b4098cc64db8f"
+    }
+  ],
+  "currentSelected32Callbacks": 978181,
+  "extra80FieldControls": [
+    {
+      "path": "artifacts/th14/camera-cross-oct25/variable-prefix-38900-initial-worker-events-retail-marisaa-extra-live-full-hardware-oct24/live-report.json",
+      "sha256": "797923cde8b41c9e28d513e02ff21d4f13656eb23686435d94ff6a401e566cc5",
+      "snapshots": 5
+    },
+    {
+      "path": "artifacts/th14/camera-cross-oct25/variable-prefix-38900-initial-worker-events-retail-reimub-extra-live-full-hardware-oct24/live-report.json",
+      "sha256": "3454445a63811bd867d9f57855c81e788e92b58f2a64e59365833135ff33a536",
+      "snapshots": 5
+    },
+    {
+      "path": "artifacts/th14/camera-cross-oct25/variable-prefix-38900-initial-worker-events-retail-sakuyaa-final-live-vm-hardware-oct24/live-report.json",
+      "sha256": "706b060cb981e334901ad1fc23c6308ff6504ebc854aaaf4b7525c6f07dfdbf3",
+      "snapshots": 5
+    }
+  ],
+  "remainingReimuAFocusedHitWorldZWords": 19,
+  "remainingNativeScratchZUninitialized": true,
+  "browserAcceptanceOfThisBinary": {
+    "startedUtc": "2026-10-24T17:54:36.500Z",
+    "firstEndObservedUtc": "2026-10-24T17:55:38.847Z",
+    "stableObservedUtc": "2026-10-24T17:56:18.898Z",
+    "stableObservedSeconds": 40.051,
+    "naturalReplayEndObserved": true,
+    "formalReplayMenu": true,
+    "browserRecordedReplay": true,
+    "noInputAfterStart": true,
+    "quietOutput": true,
+    "hudScore": 3980,
+    "graze": 4,
+    "maxPoint": 10000,
+    "lives": 1,
+    "replaySha256": "c6fd7a579bb5c40126c32efeaae758ac5e254feef38da3980859a0f2a52eba0d",
+    "sdlWasmSha256": "c90555d2f402d65679bf352c70827d189ae418104bdc045a32e15805a4d81f1e",
+    "url": "http://localhost:8257/?game=th14",
+    "issues": [],
+    "completeGame": false,
+    "nativeEquivalent": false
+  },
+  "priorBombTemplateBinaryBrowserMarisab": {
+    "startedUtc": "2026-10-24T17:39:26.984Z",
+    "firstEndObservedUtc": "2026-10-24T17:47:41.161Z",
+    "stableObservedUtc": "2026-10-24T17:49:54.384Z",
+    "stableObservedSeconds": 133.223,
+    "naturalReplayEndObserved": true,
+    "formalReplayMenu": true,
+    "intactOriginalReplay": true,
+    "inputHasSixStageHeaders": true,
+    "observedEndStage": 2,
+    "originalNaturallyGameOverStage": 2,
+    "noInputAfterStart": true,
+    "quietOutput": true,
+    "hudScore": 48407120,
+    "graze": 10436,
+    "maxPoint": 35970,
+    "replaySha256": "2f3a61e72e1bd14a1cecc934d805106f31f6b55a830ae4a9f1d94207098d2bf0",
+    "sdlWasmSha256": "32ccfbeaf7e4a0d2fb06a6aed75571b412d51fdd5efd4061d49a253250a50428",
+    "url": "http://localhost:8256/?game=th14",
+    "issues": [],
+    "completeGame": false,
+    "nativeEquivalent": false
+  },
+  "build": {
+    "sdlWasmSha256": "c90555d2f402d65679bf352c70827d189ae418104bdc045a32e15805a4d81f1e",
+    "coreRecompiledSources": 1,
+    "coreReusedSources": 140,
+    "sdlRecompiledSources": [
+      "th12_web/cpp/game/SceneCamera.cpp"
+    ],
+    "sdlReusedSources": 145,
+    "lineEndingCanonicalization": {
+      "originalSourceLfOnly": true,
+      "currentSourceLfOnly": true,
+      "sourceSha256": "4a4fd81759388239e9f063e87fcb4bce388618d546e4476178891e8c0e6c0eb4",
+      "coreAndSdlRecompiledObjectByteIdentical": true,
+      "linkedWasmBytesUnchanged": true
+    },
+    "rootResourceCryptExcluded": true
+  },
+  "scope": "Specific original camera inline arithmetic and installed x86 D3DX service; selected callback state and live snapshots in declared original environments. Original clock/cookie/resource readiness and host times remain explicit inputs, one attract bit clear after untouched first Player, no original RNG/serial/counter/health/input writes. Nineteen original script149 Z words are still strict differences from the uninitialized original polar scratch; no masking or per-frame replay of original values. Full VM/geometry, all-mode ordinary initialization, whole-game GPU pixels, PCM and complete persistence remain unproved.",
+  "completeGame": false,
+  "nativeEquivalent": false
+}

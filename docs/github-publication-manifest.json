@@ -1,7 +1,7 @@
 {
   "date": "2026-10-25",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "39eeab874f8473b7231dad47a3dede50d93ecf31",
+  "sourceCommit": "4a2be103b68fbe3135ada4a89df0ebbfa1a63fe7",
   "files": [
     {
       "path": ".gitignore",
@@ -67,6 +67,11 @@
       "path": "docs/porting/TH14_BULLET_CANCEL_RATE_OCT24.md",
       "bytes": 3347,
       "sha256": "9aeb250c72855357437e6dfd10a1557ac58a0732d33e08c55af60fd20c1ceae9"
+    },
+    {
+      "path": "docs/porting/TH14_CAMERA_CROSS_OCT25.md",
+      "bytes": 2332,
+      "sha256": "2c690a3f167e9273edf785b6c1297421cf8b2601bc2ea0c232f9c6d5fac266e1"
     },
     {
       "path": "docs/porting/TH14_CAMERA_LOADING_HUD_OCT24.md",
@@ -1349,6 +1354,16 @@
       "sha256": "0cc3726a66a3edab555e2e55a2ac5def18162e5c329ef8e7e02c2bdd813ecb95"
     },
     {
+      "path": "docs/porting/th14-camera-cross-campaign-verified-oct25.json",
+      "bytes": 29688,
+      "sha256": "477ed5c9e0cc73f4edcb30d31baa429acd95b171535c17d56eaabf0c76bf88bb"
+    },
+    {
+      "path": "docs/porting/th14-camera-cross-verified-oct25.json",
+      "bytes": 4566,
+      "sha256": "62a99889f526dbad5ada2927cc0d9492fc97e18484fb54f57396af82428afce1"
+    },
+    {
       "path": "docs/porting/th14-camera-loading-hud-verified-oct24.json",
       "bytes": 27176,
       "sha256": "b439a0785baa8946ac7f81cea2a2969541e5cd516d76c45ba9faf3fb0b9dad14"
@@ -2559,6 +2574,11 @@
       "sha256": "e0835e069cea222bd9686ebcf1565a9922752068bef06d9b8cf8e4a55850c96b"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-camera-cross-candidate-oct25.json",
+      "bytes": 240038,
+      "sha256": "d5cdb4e672f280c86baf0449769f8a7a2a8c81e61febf9b3a1dd4de4cdcf7da1"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-camera-loading-hud-candidate-oct24.json",
       "bytes": 239946,
       "sha256": "20e09aa4a0a7294e63d0ea649385bf12019281606fa110a78f489a51160df90b"
@@ -2827,6 +2847,11 @@
       "path": "docs/porting/th14-launcher-site-bullet-cancel-rate-candidate-oct24.json",
       "bytes": 37978,
       "sha256": "ebd85eb17601b36294e155b23cf82c3134fedfe76cb4715a2025330e21a946ca"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-camera-cross-candidate-oct25.json",
+      "bytes": 40013,
+      "sha256": "7c0b5863653037bc01d77bff9bc6ef80179433cd210eea6cde8d9d7e05d23296"
     },
     {
       "path": "docs/porting/th14-launcher-site-camera-loading-hud-candidate-oct24.json",
@@ -7760,8 +7785,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/SceneCamera.cpp",
-      "bytes": 1803,
-      "sha256": "6fc589bd7c47f0757f22ebb33ee2d6647a5b53543c189d802b6781d6dbe3a391"
+      "bytes": 2129,
+      "sha256": "4a4fd81759388239e9f063e87fcb4bce388618d546e4476178891e8c0e6c0eb4"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/SceneCamera.hpp",
@@ -10522,6 +10547,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-bullet-wrap-fixture.cpp",
       "bytes": 1814,
       "sha256": "0c827673523867de44bd85980a53a828fcfdfb038f3fdc56125b622820403410"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-camera-cross-fixture.cpp",
+      "bytes": 716,
+      "sha256": "395412db16bfb3953dd90242cacf4d9ab0e9b03545779cd86e6280c1997f0430"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-camera-fixture.cpp",
@@ -14752,6 +14782,16 @@
       "path": "tools/th14-camera-check.mjs",
       "bytes": 3948,
       "sha256": "a598e98b281e27e5bc0cda2032cc7dc646c77158d1f4c003c6865cd0a7172ebf"
+    },
+    {
+      "path": "tools/th14-camera-cross-check-oct25.mjs",
+      "bytes": 2390,
+      "sha256": "2fe31d72149c0a7e15e89925ade0b3b04aa8df7e838e58c05f15a88f1eec770e"
+    },
+    {
+      "path": "tools/th14-camera-cross-native-oct25.py",
+      "bytes": 3009,
+      "sha256": "e2ef94eb82c19a7fe385bafa8a9657de9dd5ff8981fccbd23b1a5025d8e4b64d"
     },
     {
       "path": "tools/th14-campaign-handoff-check.mjs",

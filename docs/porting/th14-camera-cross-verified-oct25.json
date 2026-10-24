@@ -1,0 +1,142 @@
+{
+  "passed": true,
+  "results": {
+    "before": {
+      "cases": 2053,
+      "differenceCount": 2247,
+      "firstDifferences": [
+        {
+          "inputBits": [
+            1080645153,
+            1087678246,
+            3230389286,
+            1080544017,
+            1090270731,
+            3224101453
+          ],
+          "component": 1,
+          "native": 3198758162,
+          "portable": 3198758161
+        },
+        {
+          "inputBits": [
+            1080645153,
+            1087678246,
+            3230389286,
+            1080544017,
+            1090270731,
+            3224101453
+          ],
+          "component": 2,
+          "native": 1048762977,
+          "portable": 1048762976
+        },
+        {
+          "inputBits": [
+            3228596895,
+            3236404938,
+            3226459970,
+            1089221264,
+            1085544701,
+            1084437080
+          ],
+          "component": 0,
+          "native": 3204308682,
+          "portable": 3204308684
+        },
+        {
+          "inputBits": [
+            3228596895,
+            3236404938,
+            3226459970,
+            1089221264,
+            1085544701,
+            1084437080
+          ],
+          "component": 1,
+          "native": 3187874168,
+          "portable": 3187874170
+        },
+        {
+          "inputBits": [
+            3228596895,
+            3236404938,
+            3226459970,
+            1089221264,
+            1085544701,
+            1084437080
+          ],
+          "component": 2,
+          "native": 1062986364,
+          "portable": 1062986362
+        },
+        {
+          "inputBits": [
+            3231112547,
+            1086287035,
+            3229993333,
+            3234270904,
+            1082141410,
+            3227359503
+          ],
+          "component": 0,
+          "native": 3191897175,
+          "portable": 3191897171
+        },
+        {
+          "inputBits": [
+            3231112547,
+            1086287035,
+            3229993333,
+            3234270904,
+            1082141410,
+            3227359503
+          ],
+          "component": 1,
+          "native": 1055582168,
+          "portable": 1055582170
+        },
+        {
+          "inputBits": [
+            1085218027,
+            3234625194,
+            1086563478,
+            1075635008,
+            1082702770,
+            3224983412
+          ],
+          "component": 1,
+          "native": 1058853997,
+          "portable": 1058853996
+        }
+      ],
+      "differenceTraceSha256": "ccce02db16eddbae6dbbd547b8e3deabc6e5fef8f6f74ad039d01bf4284e8ce2",
+      "wasmSha256": "6649479d680955322d1d53921a4ddbb86194a793eb2e03049fe1c537270f8936"
+    },
+    "after": {
+      "cases": 2053,
+      "differenceCount": 0,
+      "firstDifferences": [],
+      "differenceTraceSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "wasmSha256": "b071cd3eb8752d0d18a9ba93ac3021bdaeb77c0ae70a1830c85774cacaf16b25"
+    }
+  },
+  "nativeProofSha256": "05a203671a28632115ff84da45df14d2a0a97396b4ad241fb03d4045da2de153",
+  "nativeBackend": {
+    "backend": "actual Windows x86 D3DX DLL service",
+    "dllSha256": "0b28546be22c71834501f7d7185ede5d79742457331c7ee09efc14490dd64f5f",
+    "workerSha256": "a3c45980e641781d15820f191bb51a420363b4a87ceaf9f91c7c7c236e212d8c",
+    "calls": 2053,
+    "inputOutputSha256": "2f4d12e4394879483d4e8a8f783ab2b0674e87e291591a0e6d2a406d56cd9523",
+    "processor": "Intel64 Family 6 Model 151 Stepping 2, GenuineIntel"
+  },
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/SceneCamera.cpp": "4a4fd81759388239e9f063e87fcb4bce388618d546e4476178891e8c0e6c0eb4",
+    "runtimes/th12/th12_web/tests/cpp/th14-camera-cross-fixture.cpp": "395412db16bfb3953dd90242cacf4d9ab0e9b03545779cd86e6280c1997f0430",
+    "tools/th14-camera-cross-native-oct25.py": "e2ef94eb82c19a7fe385bafa8a9657de9dd5ff8981fccbd23b1a5025d8e4b64d",
+    "tools/th14-camera-cross-check-oct25.mjs": "2fe31d72149c0a7e15e89925ade0b3b04aa8df7e838e58c05f15a88f1eec770e"
+  },
+  "scope": "Original446539..44659d SSE inline cross product, followed by original call4465a0 to actual installed x86 D3DX9_43 normalization. Direction/up are declared six float32 inputs; matrices, device SetTransform, original caller and complete camera function are excluded. No original game process or audio starts. Portable executes real SceneCamera::perspective and GraphicsMath::normalize; only camera.right output is compared. Matrix construction and GPU pixels are not verified by this unit.",
+  "completeGame": false,
+  "nativeEquivalent": false
+}

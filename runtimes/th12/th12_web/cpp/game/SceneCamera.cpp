@@ -11,7 +11,15 @@ void SceneCamera::perspective(){
     view=GraphicsMath::look_at(add(position,eye_offset),add(position,direction),up);
 #endif
     projection=GraphicsMath::perspective(fov,float(double(viewport.width)/viewport.height),30,kPortTitle==14?8000:1800);
+#if PORT_TITLE == 14
+    // Retail446539..44659d rounds each SSE product before subtraction.
+    const auto& d=reserved24;
+    const Vec3 axis={float(float(d.y*up.z)-float(d.z*up.y)),
+        float(float(d.z*up.x)-float(d.x*up.z)),float(float(d.x*up.y)-float(d.y*up.x))};
+    right=GraphicsMath::normalize(axis);
+#else
     right=GraphicsMath::normalize(GraphicsMath::cross(kPortTitle==13||kPortTitle==14?reserved24:direction,up));
+#endif
 }
 void SceneCamera::screen(){
 #if PORT_TITLE == 14
