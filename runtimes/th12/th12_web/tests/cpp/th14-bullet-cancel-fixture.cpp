@@ -37,6 +37,11 @@ static i32 run_case(i32 state,u32 flags,float rate,float x,float y,bool all,u32 
 API(run) i32 run(i32 state,u32 flags,float rate,float x,float y){return run_case(state,flags,rate,x,y,false,BulletManager::capacity-1);}
 API(run_delayed) i32 run_delayed(i32 state,u32 flags,float rate,u32 x,u32 y,i32 delay){return run_case(state,flags,rate,float_bits(x),float_bits(y),false,BulletManager::capacity-1,false,0,delay,true);}
 API(run_all) i32 run_all(i32 state,u32 flags,float rate,float x,float y,u32 slot){return run_case(state,flags,rate,x,y,true,slot);}
+API(run_all_changed_rate) i32 run_all_changed_rate(i32 state,u32 flags,float cached_rate,float current_rate,float x,float y,u32 slot){
+    if(run_case(0,flags,cached_rate,x,y,true,slot))return -2;
+    bullet->state=i16(state);animations.rate=current_rate;
+    return manager->cancel_all_th14()?0:-2;
+}
 API(run_all_ecl) i32 run_all_ecl(i32 state,u32 flags,float rate,float x,float y,u32 slot,u32 opcode){return run_case(state,flags,rate,x,y,true,slot,false,opcode);}
 static EnemyState timer_owner;static float old_rate;
 API(run_timer) i32 run_timer(i32 value,u32 flags,u32 pointer){

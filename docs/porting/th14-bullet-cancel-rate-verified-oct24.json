@@ -1,0 +1,508 @@
+{
+  "verified": true,
+  "verifiedUtc": "2026-10-24T05:08:14.990465+00:00",
+  "baseCommit": "6c474d9b0c3f6d9b526103d19fe46b707bd0ac8b",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/BulletTh14.cpp": "073ef72e4be893b972c9ef496a7182d6c73656d536ccad4af55b523a23db6a53",
+    "runtimes/th12/th12_web/tests/cpp/th14-bullet-cancel-fixture.cpp": "a153f87928af202e7a368872f47a74df74e3ccb6487d49ab86c99ba189a859ee",
+    "tools/th14-bullet-cancel-check.mjs": "80b4087829a508fdfdd2be06f56fbf36bc40bc57512ccd23c46893aa6c082285"
+  },
+  "behavior": "TH14 cancellation half-step reads the current animation rate while the enemy knife-slowdown scope is active; it no longer reads a stale cached manager rate.",
+  "nativeInstructionEvidence": "Retail41ad1b reads global4d8f58 immediately before velocity*rate*0.5 movement.",
+  "build": {
+    "sdlWasmSha256": "ffdc1392420e87611b091f16ed46197b0431a28732bd2c06eae72799f69d487f",
+    "probeWasmSha256": "15881eff6d64367c53ac7d4527674ef1b15d3c50aad8e5ee41935b7892a01e03",
+    "warmWasmSha256": "08126862cc63733360761111803f80aa12c76ab83bf9f90e0cfe4b09cbc6ff04",
+    "sdlCompiled": 1,
+    "sdlReused": 145,
+    "coreCompiled": 1,
+    "coreReused": 140,
+    "exportsUnchanged": true,
+    "importNamesAndKindsUnchanged": true
+  },
+  "independentOriginalCompleteExtraControls": [
+    {
+      "shot": "reimua",
+      "callbacks": 38403,
+      "allSelected32ByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true,
+      "intactOriginalReplay": true,
+      "declaredAttractBitClearAtFirstPlayer": true
+    },
+    {
+      "shot": "marisab",
+      "callbacks": 54114,
+      "allSelected32ByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true,
+      "intactOriginalReplay": true,
+      "declaredAttractBitClearAtFirstPlayer": true
+    },
+    {
+      "shot": "sakuyab",
+      "callbacks": 50937,
+      "allSelected32ByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true,
+      "intactOriginalReplay": true,
+      "declaredAttractBitClearAtFirstPlayer": true
+    },
+    {
+      "shot": "sakuyaa",
+      "callbacks": 38977,
+      "allSelected32ByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true,
+      "intactOriginalReplay": true,
+      "declaredAttractBitClearAtFirstPlayer": true
+    }
+  ],
+  "originalSakuyaAVisualWindows": [
+    {
+      "case": "2",
+      "callbacks": 15850,
+      "allSelected32ByteIdentical": true
+    },
+    {
+      "case": "3",
+      "callbacks": 15850,
+      "allSelected32ByteIdentical": true
+    },
+    {
+      "case": "4",
+      "callbacks": 15850,
+      "allSelected32ByteIdentical": true
+    }
+  ],
+  "originalKeyFrameBullets": {
+    "passed": true,
+    "originalBullets": 590,
+    "portableBullets": 590,
+    "comparedValuesPerBullet": 21,
+    "comparisonFields": [
+      "angle",
+      "collisionDelay",
+      "color",
+      "flags",
+      "grace",
+      "life",
+      "rngCalls",
+      "size",
+      "speed",
+      "sprite",
+      "state",
+      "transforms",
+      "vmAge",
+      "vmScript",
+      "vmTimer",
+      "vx",
+      "vy",
+      "vz",
+      "x",
+      "y",
+      "z"
+    ],
+    "differences": [],
+    "originalPoolIndexAndListOrderIdentical": true,
+    "observerRaw32Neutral": true,
+    "frame": 15840,
+    "rngComparisonBoundary": "Original counter is sampled immediately after next32 increments by2; portable counter is sampled immediately before the same command.",
+    "sourceOnly": true,
+    "originalPixelsOrPcm": false,
+    "completeGame": false,
+    "nativeEquivalent": false
+  },
+  "unitRegression": {
+    "passed": true,
+    "changedRateCases": 360,
+    "oldCoreRejected": true,
+    "otherNativeCases": 4134
+  },
+  "matrix": {
+    "passed": true,
+    "cases": [
+      {
+        "key": "marisaa-easy",
+        "callbacks": 34783,
+        "unchanged": true
+      },
+      {
+        "key": "marisaa-extra",
+        "callbacks": 46391,
+        "unchanged": true
+      },
+      {
+        "key": "marisaa-hard",
+        "callbacks": 115317,
+        "unchanged": true
+      },
+      {
+        "key": "marisaa-normal",
+        "callbacks": 66737,
+        "unchanged": true
+      },
+      {
+        "key": "marisab-easy",
+        "callbacks": 106773,
+        "unchanged": true
+      },
+      {
+        "key": "marisaa-lunatic",
+        "callbacks": 106740,
+        "unchanged": true
+      },
+      {
+        "key": "marisab-extra",
+        "callbacks": 54114,
+        "unchanged": true
+      },
+      {
+        "key": "marisab-hard",
+        "callbacks": 119048,
+        "unchanged": true
+      },
+      {
+        "key": "marisab-lunatic",
+        "callbacks": 89235,
+        "unchanged": true
+      },
+      {
+        "key": "marisab-normal",
+        "callbacks": 27751,
+        "unchanged": true
+      },
+      {
+        "key": "reimua-extra",
+        "callbacks": 38403,
+        "unchanged": true
+      },
+      {
+        "key": "reimua-easy",
+        "callbacks": 100074,
+        "unchanged": true
+      },
+      {
+        "key": "reimua-hard",
+        "callbacks": 95678,
+        "unchanged": true
+      },
+      {
+        "key": "reimua-lunatic",
+        "callbacks": 86343,
+        "unchanged": true
+      },
+      {
+        "key": "reimub-extra",
+        "callbacks": 46936,
+        "unchanged": true
+      },
+      {
+        "key": "reimua-normal",
+        "callbacks": 85035,
+        "unchanged": true
+      },
+      {
+        "key": "reimub-hard",
+        "callbacks": 106910,
+        "unchanged": true
+      },
+      {
+        "key": "reimub-easy",
+        "callbacks": 238611,
+        "unchanged": true
+      },
+      {
+        "key": "sakuyaa-easy",
+        "callbacks": 127903,
+        "unchanged": true
+      },
+      {
+        "key": "sakuyaa-extra",
+        "callbacks": 38977,
+        "unchanged": false,
+        "intendedVisualRngCorrection": true,
+        "differingWords": {
+          "21": 23135,
+          "22": 23135
+        },
+        "firstDifferences": {
+          "21": {
+            "index": 15840,
+            "new": 45044,
+            "old": 11461
+          },
+          "22": {
+            "index": 15840,
+            "new": 270832,
+            "old": 270766
+          }
+        },
+        "independentFullOriginalSelected32ByteIdentical": true,
+        "replaySha256": "c93a499bfa1409aba4f6708d3478a10c6a4a0fb0239b97356209a0b616bee8fd"
+      },
+      {
+        "key": "reimub-lunatic",
+        "callbacks": 103888,
+        "unchanged": true
+      },
+      {
+        "key": "sakuyaa-hard",
+        "callbacks": 96569,
+        "unchanged": false,
+        "intendedVisualRngCorrection": true,
+        "differingWords": {
+          "21": 18219,
+          "22": 18219
+        },
+        "firstDifferences": {
+          "21": {
+            "index": 78331,
+            "new": 3798,
+            "old": 59312
+          },
+          "22": {
+            "index": 78331,
+            "new": 3559994,
+            "old": 3560040
+          }
+        },
+        "independentFullOriginalSelected32ByteIdentical": false,
+        "replaySha256": "49927152c4dfaf804d475b2aae1b0a2847d5ffcd408668662e12bcd7c92e863f"
+      },
+      {
+        "key": "reimub-normal",
+        "callbacks": 122005,
+        "unchanged": true
+      },
+      {
+        "key": "sakuyaa-lunatic",
+        "callbacks": 84952,
+        "unchanged": false,
+        "intendedVisualRngCorrection": true,
+        "differingWords": {
+          "21": 21938,
+          "22": 61100
+        },
+        "firstDifferences": {
+          "21": {
+            "index": 23847,
+            "new": 7042,
+            "old": 21195
+          },
+          "22": {
+            "index": 23847,
+            "new": 771182,
+            "old": 771164
+          }
+        },
+        "independentFullOriginalSelected32ByteIdentical": false,
+        "replaySha256": "890bcf6be90cbef072c525a96a012920d3958d0e8fcd00d1c75b59f12c1b9af8"
+      },
+      {
+        "key": "sakuyaa-normal",
+        "callbacks": 104802,
+        "unchanged": false,
+        "intendedVisualRngCorrection": true,
+        "differingWords": {
+          "21": 4472,
+          "22": 28079
+        },
+        "firstDifferences": {
+          "21": {
+            "index": 76723,
+            "new": 5150,
+            "old": 42071
+          },
+          "22": {
+            "index": 76723,
+            "new": 2744766,
+            "old": 2744812
+          }
+        },
+        "independentFullOriginalSelected32ByteIdentical": false,
+        "replaySha256": "c8070bac53dbf525d5c8cb9f7193da6ae362911b11ada8b77b015744b6563a47"
+      },
+      {
+        "key": "sakuyab-easy",
+        "callbacks": 106749,
+        "unchanged": true
+      },
+      {
+        "key": "sakuyab-extra",
+        "callbacks": 50937,
+        "unchanged": true
+      },
+      {
+        "key": "sakuyab-hard",
+        "callbacks": 122796,
+        "unchanged": true
+      },
+      {
+        "key": "sakuyab-normal",
+        "callbacks": 112201,
+        "unchanged": true
+      },
+      {
+        "key": "sakuyab-lunatic",
+        "callbacks": 126709,
+        "unchanged": true
+      }
+    ],
+    "unchangedCases": 26,
+    "intentionalChangedCases": 4,
+    "totalCallbacks": 2763367,
+    "everyCaseNaturallyEndedAndStable90MenuTicks": true,
+    "allCasesUnchanged": false,
+    "sourceBaselineCommit": "cb0f291d18f4ac6dc01cd121ac0cb236d9482193",
+    "wasmSha256": "15881eff6d64367c53ac7d4527674ef1b15d3c50aad8e5ee41935b7892a01e03",
+    "completeGame": false,
+    "nativeEquivalent": false
+  },
+  "hardStage6": {
+    "callbacks": 23294,
+    "allSelected32ByteIdentical": true,
+    "naturallyEndedAndStable90MenuTicks": true,
+    "derivedSingleStageContainer": true,
+    "originalRecordedStageHeaderInputAndFpsRetained": true,
+    "originalFullReplayUnmodified": true,
+    "oldCoreFirstDifferenceStageFrame": 5057,
+    "ordinaryFullSixStageAcceptance": false
+  },
+  "previousBinarySixStageBrowser": {
+    "startedUtc": "2026-10-24T04:23:36.826Z",
+    "wasmSha256": "63e42ad5ee030f1b1e12d2b2bc239b071988a62a814886f8126288dfd670cd6b",
+    "actualProductionLauncher": true,
+    "actualReplayMenu": true,
+    "intactOriginalReplay": true,
+    "sixStages": true,
+    "character": "Reimu B",
+    "difficulty": "Normal",
+    "startStage": 1,
+    "userSlot": "th14_ud0001.rpy",
+    "replaySha256": "c48412a95f0fe9f685d97574e8ab0655d41e44ff9c41fda7bf788589b1b29c74",
+    "downloadViaUiByteExact": true,
+    "quietOutput": true,
+    "inputAfterStart": false,
+    "observedNativeTimingsInjected": false,
+    "fullReplayFinished": true,
+    "completeGame": false,
+    "nativeEquivalent": false,
+    "naturalReplayEndMenuObserved": true,
+    "firstEndObservedUtc": "2026-10-24T04:58:13.655Z",
+    "stableEndObservedUtc": "2026-10-24T04:59:11.906Z",
+    "stableMenuSeconds": 58.251,
+    "hudScore": 801525760,
+    "graze": 17551,
+    "maxPoint": 111490,
+    "actualWebGL": true,
+    "issuesAfterStart": [],
+    "priorBrowserAcceptanceInherited": false
+  },
+  "currentSdlBrowserValidated": false,
+  "priorBrowserAcceptanceInherited": false,
+  "evidenceBindings": [
+    {
+      "path": "artifacts/th14/bullet-cancel-rate-oct24/core-build.json",
+      "bytes": 79024,
+      "sha256": "4f58427a06539e71c876355e011de5781ef6e7b06ed4cdf8f5216eae96071ff1"
+    },
+    {
+      "path": "artifacts/th14/bullet-cancel-rate-oct24/warm-build.json",
+      "bytes": 79024,
+      "sha256": "6aa7f083690b5683299c6cec6fadfa2f2acc53edcb313ca9dda311bc4ccdcf8e"
+    },
+    {
+      "path": "artifacts/th14/bullet-cancel-rate-oct24/build/build.json",
+      "bytes": 188626,
+      "sha256": "c8ef98ec4a277a9c07bfb275fbc0a7d1f33743996510db7aa4167158e01c92c3"
+    },
+    {
+      "path": "artifacts/th14/bullet-cancel-rate-oct24/matrix-assessment.json",
+      "bytes": 5500,
+      "sha256": "169f721813636caf1572deaa61022c6e935888530f87a6207b64eef80d1aee2e"
+    },
+    {
+      "path": "artifacts/th14/bullet-cancel-rate-oct24/matrix-results.json",
+      "bytes": 65154,
+      "sha256": "d3b6c57223fa726aa8b58cbc76195feca95c93186c9e65e5c71dff3e0dbfdeb6"
+    },
+    {
+      "path": "artifacts/th14/bullet-cancel-rate-oct24/cancel-verified.json",
+      "bytes": 3445,
+      "sha256": "551464fca306b9c39421e58602f38ddc39e30916cdab70dec3b008da857811e4"
+    },
+    {
+      "path": "artifacts/th14/bullet-cancel-rate-oct24/bullet-owners-verified.json",
+      "bytes": 838,
+      "sha256": "cd32ef6db6cccd7536f0ebd3fb930c7ea079e4457fc4fc03b82f1c46158d868c"
+    },
+    {
+      "path": "artifacts/th14/bullet-cancel-rate-oct24/cancel-old-negative.log",
+      "bytes": 1225,
+      "sha256": "e47ae1fea975ce424024db43fd9e00ccf5ba779bbabee2854761d78b0537d384"
+    },
+    {
+      "path": "artifacts/th14/bullet-cancel-rate-oct24/full-initial-worker-events-retail-reimua-extra-full-hardware-oct24/report.json",
+      "bytes": 2123,
+      "sha256": "5d8b51a7cf531d613f714611b63e1e573b527bd468b096a7287f83de1f0dd15a"
+    },
+    {
+      "path": "artifacts/th14/bullet-cancel-rate-oct24/full-initial-worker-events-retail-marisab-extra-full-hardware-oct24/report.json",
+      "bytes": 2124,
+      "sha256": "f8aca75b502ca7ab246676cb6b9461d2d4cc868000adb992f2695faf3eaa6917"
+    },
+    {
+      "path": "artifacts/th14/bullet-cancel-rate-oct24/full-initial-worker-events-retail-sakuyab-extra-full-hardware-oct24/report.json",
+      "bytes": 2123,
+      "sha256": "224e89e306feba1b172d8f9269b19c33dc66b21a64168f20775d9442d257e433"
+    },
+    {
+      "path": "artifacts/th14/bullet-cancel-rate-oct24/full-initial-worker-events-retail-sakuyaa-extra-full-2-hardware-oct24/report.json",
+      "bytes": 2123,
+      "sha256": "ac0426f2f00886085a5761609eba0d19bb81b591daf9ee5e60535d6666bdad49"
+    },
+    {
+      "path": "artifacts/th14/bullet-cancel-rate-oct24/prefix-15850-initial-worker-events-retail-sakuyaa-visual-window-2-hardware-oct24/report.json",
+      "bytes": 1227,
+      "sha256": "359b9f11b7d5578d421b28182ec791d3bd17f110a9488a7d169907e2b22451ef"
+    },
+    {
+      "path": "artifacts/th14/bullet-cancel-rate-oct24/prefix-15850-initial-worker-events-retail-sakuyaa-visual-window-3-hardware-oct24/report.json",
+      "bytes": 1228,
+      "sha256": "4ff7e3cff37ad4817a20fb17dd36dea06e46a28cdb9c39edf7aecee678b6b3e8"
+    },
+    {
+      "path": "artifacts/th14/bullet-cancel-rate-oct24/prefix-15850-initial-worker-events-retail-sakuyaa-visual-window-4-hardware-oct24/report.json",
+      "bytes": 1228,
+      "sha256": "ffdbe7c446c2081eedfa604d9611158ebb4cbb3e276e52e6fa8aa332efd7701b"
+    },
+    {
+      "path": "artifacts/th14/sakuyaa-hard-stage6-retail-oct24/full-initial-worker-events-retail-sakuyaa-hard-stage6-full-2-hardware-oct24/report.json",
+      "bytes": 2041,
+      "sha256": "c6a1026d5719f25f774486ae4b11e74415787224e2a51f9b3f42d0ebcc07627d"
+    },
+    {
+      "path": "artifacts/th14/sakuyaa-hard-stage6-retail-oct24/old-full-initial-worker-events-retail-sakuyaa-hard-stage6-full-2-hardware-oct24/report.json",
+      "bytes": 2499,
+      "sha256": "5061501a145cae544e8627e61f9a5efac7db351a1f2ecf6ed3c14692b56140cd"
+    },
+    {
+      "path": "artifacts/th14/sakuyaa-hard-stage6-retail-oct24/stage-slice.json",
+      "bytes": 852,
+      "sha256": "39df29cfad939f546691d5876ca2aecd7ceeb3788f9731f55ac307e94d5c2a30"
+    },
+    {
+      "path": "artifacts/th14/live-effect-fix-oct24/browser-six-replay-observation.json",
+      "bytes": 984,
+      "sha256": "c42b1b32e07c7b54f43d649c5b61b33239625b9501804406ce22cbd0843673e4"
+    }
+  ],
+  "limitations": [
+    "Original controls use declared warm initialization, actual process clock/cookie, declared geometry ABI and observed host events; ordinary original-menu initialization is not claimed.",
+    "Selected32 words and21 bullet values do not cover complete native state or GPU pixels.",
+    "Sakuya A Normal/Hard/Lunatic baseline changes are limited to visual RNG; only Extra has a new intact full original replay control, plus the derived Hard Stage6 control.",
+    "The63e42ad5 browser six-stage acceptance belongs to the previous binary; the newffdc1392 browser run is pending.",
+    "Original full GPU pixels, DirectSound output PCM, all-mode and complete persistence acceptance remain unfinished."
+  ],
+  "sourceOnlyPublication": true,
+  "rootResourceCryptExcluded": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}

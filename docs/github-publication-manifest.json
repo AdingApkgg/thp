@@ -1,7 +1,7 @@
 {
   "date": "2026-10-24",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "73c3c14044d848cbc15192cbd20ea9a448de4175",
+  "sourceCommit": "6c474d9b0c3f6d9b526103d19fe46b707bd0ac8b",
   "files": [
     {
       "path": ".gitignore",
@@ -52,6 +52,11 @@
       "path": "docs/porting/TH14_BEAM_COOKIE_AND_TERMINAL_HUD_OCT23.md",
       "bytes": 2279,
       "sha256": "e46bc51418b3975fdc686bf7b5dc0ada6b54ea3cc6b838fca0f2b09d7ab6da03"
+    },
+    {
+      "path": "docs/porting/TH14_BULLET_CANCEL_RATE_OCT24.md",
+      "bytes": 2985,
+      "sha256": "73c0dda5c1cba2ca59a0d42610547ef209d0b5f8f32b0b7f9bee0f3086953115"
     },
     {
       "path": "docs/porting/TH14_CONSTRUCTOR_HIT_FIX_OCT15.md",
@@ -105,8 +110,8 @@
     },
     {
       "path": "docs/porting/TH14_LIVE_EFFECT_OCT24.md",
-      "bytes": 2823,
-      "sha256": "3a5fbcb0a5e0827ebad4befb5641f60794fb65874607363111b6a54420f0d9ef"
+      "bytes": 2994,
+      "sha256": "335cb51a0e9c606399cbba50863295e5d14848c8377e3b8f7edad6033b30da81"
     },
     {
       "path": "docs/porting/TH14_LOADING_PRESENT_FIX_OCT23.md",
@@ -1169,9 +1174,14 @@
       "sha256": "e1ab1d1209faff7fdb7bed957be959e79e2fa522d9db6f8ec6f5f2f38f4001ab"
     },
     {
+      "path": "docs/porting/th14-bullet-cancel-rate-verified-oct24.json",
+      "bytes": 16657,
+      "sha256": "542f7bf00f1109ab8fe1b43342f0dca02c399bcade87872d0eee5cb0a867e72a"
+    },
+    {
       "path": "docs/porting/th14-bullet-cancel-verified.json",
-      "bytes": 2939,
-      "sha256": "b8bd0931b49947d9f2d2104dba4cca6b0dd7535beb54583f3f48c876a2089c24"
+      "bytes": 3445,
+      "sha256": "551464fca306b9c39421e58602f38ddc39e30916cdab70dec3b008da857811e4"
     },
     {
       "path": "docs/porting/th14-bullet-cancel-visual-fanout-verified-oct14.json",
@@ -2404,6 +2414,11 @@
       "sha256": "402c3c00caef4780f9c9932691ee6f70114a1817445d332ee04c57288072c699"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-bullet-cancel-rate-candidate-oct24.json",
+      "bytes": 238717,
+      "sha256": "eb13e73a9791e023607898d27be695033c8d6c67c6f7bbc5f603d52436bbe4b8"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-dialogue-damage-oct19.json",
       "bytes": 103690,
       "sha256": "3b750bcc4f1a5172f575101b1784b8b079b079cb5fd8559adc9a53259dccf30e"
@@ -2612,6 +2627,11 @@
       "path": "docs/porting/th14-launcher-screen-snap-browser-observed-oct11.json",
       "bytes": 3605,
       "sha256": "d2ebebe005d174df7b6e1d2193fffee160d788dd8c0942afa68ee4d807a82a89"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-bullet-cancel-rate-candidate-oct24.json",
+      "bytes": 37855,
+      "sha256": "97feee71041ba9375a70d97ec4d560e118d8504e6033f719099326646658efee"
     },
     {
       "path": "docs/porting/th14-launcher-site-constructor-hit-oct15.json",
@@ -6695,8 +6715,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/BulletTh14.cpp",
-      "bytes": 30228,
-      "sha256": "e87bec8532f767fb9b857d0aaab0f9ea4151df76a701e22ce4571e625427935f"
+      "bytes": 30394,
+      "sha256": "073ef72e4be893b972c9ef496a7182d6c73656d536ccad4af55b523a23db6a53"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/BulletTh14.hpp",
@@ -10110,8 +10130,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-bullet-cancel-fixture.cpp",
-      "bytes": 6025,
-      "sha256": "0cf812569c2e0a6f84c6a378dd51d56c59cf11d609fb43b6a53ce7ae437e592e"
+      "bytes": 6332,
+      "sha256": "a153f87928af202e7a368872f47a74df74e3ccb6487d49ab86c99ba189a859ee"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-bullet-child-fixture.cpp",
@@ -14145,8 +14165,8 @@
     },
     {
       "path": "tools/th14-bullet-cancel-check.mjs",
-      "bytes": 6671,
-      "sha256": "fa04f17206a363aed2d37302f004e4b8780d314002e939e655c0b48d238ef43f"
+      "bytes": 7367,
+      "sha256": "80b4087829a508fdfdd2be06f56fbf36bc40bc57512ccd23c46893aa6c082285"
     },
     {
       "path": "tools/th14-bullet-cancel-native.py",

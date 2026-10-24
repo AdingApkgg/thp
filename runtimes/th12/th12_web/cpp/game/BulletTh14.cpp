@@ -328,7 +328,9 @@ bool BulletManager::cancel_th14(BulletState& b,u32 rewards){
             }
         }
     }
-    move_th14(b,rate,true);b.state=4;b.lifetime.set(0,&rate);return true;
+    // 41ad1b reads the live global rate. Enemy knife slowdown can temporarily
+    // change it while cancellation runs before this manager's next update.
+    move_th14(b,animations.rate,true);b.state=4;b.lifetime.set(0,&rate);return true;
 }
 bool BulletManager::cancel_circle_th14(Vec3 center,float radius,u32 rewards,bool skip_delayed){
     // 41b2f0 / 41b3f0 walk active-list order; the latter skips +24 delays.
