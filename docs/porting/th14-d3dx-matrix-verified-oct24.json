@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "results": {
+    "before": {
+      "cases": 1200,
+      "differenceCount": 2307,
+      "wasmSha256": "6714a12669d68fc2a2ac181e3ff2196acfa8250df963e62aa3e7ae2c736bf9f3",
+      "differenceTraceSha256": "8e6c4d8ea8fc37907043db116f7df04ace15ad95db2ef65605ee75c3f53f3b19",
+      "firstDifferences": [
+        {
+          "op": "M",
+          "case": 0,
+          "field": 0,
+          "native": 1150908262,
+          "portable": 1150908263
+        },
+        {
+          "op": "M",
+          "case": 0,
+          "field": 1,
+          "native": 1147985167,
+          "portable": 1147985170
+        },
+        {
+          "op": "M",
+          "case": 0,
+          "field": 2,
+          "native": 1171753082,
+          "portable": 1171753083
+        },
+        {
+          "op": "M",
+          "case": 0,
+          "field": 3,
+          "native": 1118496960,
+          "portable": 1118496957
+        },
+        {
+          "op": "M",
+          "case": 0,
+          "field": 7,
+          "native": 3274031364,
+          "portable": 3274031363
+        },
+        {
+          "op": "M",
+          "case": 0,
+          "field": 8,
+          "native": 3307762874,
+          "portable": 3307762875
+        },
+        {
+          "op": "M",
+          "case": 0,
+          "field": 9,
+          "native": 3307016162,
+          "portable": 3307016161
+        },
+        {
+          "op": "M",
+          "case": 0,
+          "field": 10,
+          "native": 3301437214,
+          "portable": 3301437215
+        }
+      ]
+    },
+    "after": {
+      "cases": 1200,
+      "differenceCount": 0,
+      "wasmSha256": "685a577dbfe3091f3883459971ff0414f3cbaed08909874ca9d3afc75b0d269d",
+      "differenceTraceSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "firstDifferences": []
+    }
+  },
+  "nativeProofSha256": "229c80cbd74674626964170b00edcdb9f1ac0a2d5f6fc97315247b33c53df905",
+  "dllSha256": "0b28546be22c71834501f7d7185ede5d79742457331c7ee09efc14490dd64f5f",
+  "multiplyDispatchRva": "0x1ba245",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/GraphicsMath.cpp": "905ef19aa25f4684f655e26a604028a8f6d4f8faf212a3c3410283d95de5fd27",
+    "runtimes/th12/th12_web/tests/cpp/th14-d3dx-matrix-fixture.cpp": "9a3daa0ef56bcdd85dc066ebec54ffeff7ac4581564dca9f69047290a89243e6",
+    "tools/th14-d3dx-matrix-native-oct24.py": "05c100fcf6437d9c12f8bb1d3d643c842d111faa5be29edde30eff925731ddd4",
+    "tools/th14-d3dx-matrix-check-oct24.mjs": "3c05d84ef4c5f3bc9909d4959352f140601bc41302de35eb6ade757c571a0ecc",
+    "tools/th14-d3dx-matrix-worker.cs": "a6ae276e68bad1de156483fc19d0599f70b11542fd41f3439a5b139020735dc4"
+  },
+  "scope": "Actual pinned Windows x86 D3DX9_43 CPU-selected SSE MatrixMultiply and RotationX/Y/Z,1200 deterministic independent finite inputs. The observed multiply dispatch is RVA1ba245: rows0/3 add product pairs and rows1/2 accumulate serially. This is a specific DLL/CPU environment, not all D3DX implementations, GPU pixels or full-game equality.",
+  "completeGame": false,
+  "nativeEquivalent": false
+}

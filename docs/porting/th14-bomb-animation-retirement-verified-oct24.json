@@ -1,0 +1,127 @@
+{
+  "passed": true,
+  "results": {
+    "before": {
+      "cases": 108,
+      "differenceCount": 144,
+      "wasmSha256": "046e2806ab7927836b0ca0c044fe0c4757fe8a1da30a24fc6f1fbc3ea3a560da",
+      "differenceTraceSha256": "232ebfbed86ad797845d29a299aef6136ff5c431e6138db9b262dd5bd98950a6",
+      "firstDifferences": [
+        {
+          "args": [
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          "field": 1,
+          "native": 32,
+          "portable": 0
+        },
+        {
+          "args": [
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          "field": 4,
+          "native": 32,
+          "portable": 0
+        },
+        {
+          "args": [
+            0,
+            1,
+            0,
+            0,
+            1048640
+          ],
+          "field": 1,
+          "native": 1048672,
+          "portable": 1048640
+        },
+        {
+          "args": [
+            0,
+            1,
+            0,
+            0,
+            1048640
+          ],
+          "field": 4,
+          "native": 1048672,
+          "portable": 1048640
+        },
+        {
+          "args": [
+            0,
+            1,
+            0,
+            1,
+            0
+          ],
+          "field": 1,
+          "native": 32,
+          "portable": 0
+        },
+        {
+          "args": [
+            0,
+            1,
+            0,
+            1,
+            0
+          ],
+          "field": 4,
+          "native": 32,
+          "portable": 0
+        },
+        {
+          "args": [
+            0,
+            1,
+            0,
+            1,
+            1048640
+          ],
+          "field": 1,
+          "native": 1048672,
+          "portable": 1048640
+        },
+        {
+          "args": [
+            0,
+            1,
+            0,
+            1,
+            1048640
+          ],
+          "field": 4,
+          "native": 1048672,
+          "portable": 1048640
+        }
+      ]
+    },
+    "after": {
+      "cases": 108,
+      "differenceCount": 0,
+      "wasmSha256": "71d62dc401a001e0715a7b84921f7782d9fb7a6f4bd36310f327b5140fc37abb",
+      "differenceTraceSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "firstDifferences": []
+    }
+  },
+  "nativeProofSha256": "b96d072227db865ad977acd74b88c7c7c1a5bf1cb930f928f138e6956653b4e2",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/BombController.cpp": "f765533d2bb50ac6228eb61c09d34ecce4345ddfc09cedb60282645d55ca85cc",
+    "runtimes/th12/th12_web/tests/cpp/th14-bomb-animation-retirement-fixture.cpp": "c3abf6c766bacf49913ad5871252f3afe717d5f7004daf0c65debae1045643b3",
+    "runtimes/th12/th12_web/tests/cpp/th14-sakuya-b-controller-fixture.cpp": "6014d52752dd2013d64406175cbfe89f46cef89555d8caf8fa2ef6a6db39b491",
+    "tools/th14-bomb-animation-retirement-native-oct24.py": "320de3d5306096200a7ae1018662c065bfae2ef5c939db679743d7c39689e15b",
+    "tools/th14-bomb-animation-retirement-check-oct24.mjs": "353770e9bed40ddf126551cc236c48f0a7df343103e034b0886e1833aacce397"
+  },
+  "scope": "Original411980..411a60 animation-family retirement block. Handle lookup47f0a0 is an explicit resolver for valid100/200, zero and stale999. Middle handle+48 is zero, matching the two represented production handles. Root and nonroot child topology, unrelated VM, active0/1/2 and flag preservation are controlled. Callback unregistration, native manager construction, allocator and whole destructor tail are excluded. Production invokes the real BombController destructor and real ANM manager/family marking. This fixture compares flags before the manager retires VMs; campaign snapshots separately expose the remaining strict handle-slot mismatch.",
+  "completeGame": false,
+  "nativeEquivalent": false
+}

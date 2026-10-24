@@ -5,7 +5,17 @@
 #endif
 namespace th11 {
 Matrix4 GraphicsMath::multiply(const Matrix4& a,const Matrix4& b)noexcept{
+#if PORT_TITLE == 14
+    // Windows x86 D3DX9_43 SSE101ba245 rounds each product. Rows0/3
+    // add pairs;rows1/2 accumulate serially to fit the eight SSE registers.
+    Matrix4 out;for(u32 r=0;r<4;++r)for(u32 c=0;c<4;++c){
+        const float p0=a.m[r*4]*b.m[c],p1=a.m[r*4+1]*b.m[c+4];
+        const float p2=a.m[r*4+2]*b.m[c+8],p3=a.m[r*4+3]*b.m[c+12];
+        out.m[r*4+c]=r==0||r==3?float(float(p0+p1)+float(p2+p3)):float(float(float(p0+p1)+p2)+p3);
+    }return out;
+#else
     Matrix4 out;for(u32 r=0;r<4;++r)for(u32 c=0;c<4;++c)out.m[r*4+c]=float(((double(a.m[r*4])*b.m[c]+double(a.m[r*4+1])*b.m[c+4])+double(a.m[r*4+2])*b.m[c+8])+double(a.m[r*4+3])*b.m[c+12]);return out;
+#endif
 }
 Matrix4 GraphicsMath::rotation(u32 axis,float angle)noexcept{
     Matrix4 m;m.identity();const float c=float(std::cos(double(angle))),s=float(std::sin(double(angle)));

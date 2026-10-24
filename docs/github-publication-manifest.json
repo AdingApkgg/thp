@@ -1,7 +1,7 @@
 {
   "date": "2026-10-24",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "b8e1906bb0164a38dbd6f8f0a0283cd0a01acd68",
+  "sourceCommit": "9ffbbc2c1f5df92cd0c96bf18485b253363b1de3",
   "files": [
     {
       "path": ".gitignore",
@@ -157,6 +157,11 @@
       "path": "docs/porting/TH14_MARISA_LASER_INVESTIGATION_OCT19.md",
       "bytes": 3977,
       "sha256": "405c18601fe53731da3a9bf513216921ad7f4585107c054d84e690504f762475"
+    },
+    {
+      "path": "docs/porting/TH14_MATRIX_AND_BOMB_RETIREMENT_OCT24.md",
+      "bytes": 3591,
+      "sha256": "df6aff0643d4cf0454d3e0611ca94515c13452566ded1ae6cfbc6438dac08317"
     },
     {
       "path": "docs/porting/TH14_METHOD.md",
@@ -1039,6 +1044,11 @@
       "sha256": "2f60d823e923e8d6d9ff397addaac71e7bdd83d114b987888e5896a8db6f24fa"
     },
     {
+      "path": "docs/porting/th14-bomb-animation-retirement-verified-oct24.json",
+      "bytes": 3780,
+      "sha256": "ca38ead189d406177b1cd414e131069fe2532de403bb2e309c50af473338063a"
+    },
+    {
       "path": "docs/porting/th14-bomb-child-position-verified.json",
       "bytes": 1340,
       "sha256": "0e8830fafb53677b8db75f7a47652b2199fa3182beb20ae6752fc86efd5b4b89"
@@ -1507,6 +1517,11 @@
       "path": "docs/porting/th14-d3d9-euler-constant-observed-oct11.json",
       "bytes": 4976,
       "sha256": "f59116ff3a1f2540bb60a6fcfa07befdea79a3cf22b04a68604deaf6e82573c7"
+    },
+    {
+      "path": "docs/porting/th14-d3dx-matrix-verified-oct24.json",
+      "bytes": 3064,
+      "sha256": "e45b8bac187a12dfe0bb31609d4111b33844a363dcb00dc8751e7df881fd37df"
     },
     {
       "path": "docs/porting/th14-d3dx-normalize-verified-oct24.json",
@@ -2554,6 +2569,11 @@
       "sha256": "3b4b058ee13a69ea0c3441f34b7203db0b8ec900e5040046d87449ad796d52b7"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-matrix-bomb-retirement-candidate-oct24.json",
+      "bytes": 239939,
+      "sha256": "3695557f29b79a029828644d859cc58651d291e990997d905a19b081549dd59c"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-msg-hud-order-candidate-oct24.json",
       "bytes": 139877,
       "sha256": "3490e16ce86425ac8a9f9e35a8e32f7e54fc079958d4ea139b7b46ed9a146f65"
@@ -2814,6 +2834,11 @@
       "sha256": "3f7abba78f81266cbc303fac5e7939ec497b0b1c06d61b52a26f1226d20e6afd"
     },
     {
+      "path": "docs/porting/th14-launcher-site-matrix-bomb-retirement-candidate-oct24.json",
+      "bytes": 39966,
+      "sha256": "ea483214dbf727aff64375c333b71c7e4d582a0b2c68f5ef261b39f42dcc7e47"
+    },
+    {
       "path": "docs/porting/th14-launcher-site-msg-hud-order-candidate-oct24.json",
       "bytes": 36747,
       "sha256": "91a38ab0f3defafd2cb0c62a691771e0d03513e8b945c00115e8f4e16e342e83"
@@ -3037,6 +3062,11 @@
       "path": "docs/porting/th14-math-verified.json",
       "bytes": 1679,
       "sha256": "c9f3db2a4febd3d7720fddc12df6e63aeeb78b2684c6eb29b6823431c496ad85"
+    },
+    {
+      "path": "docs/porting/th14-matrix-bomb-retirement-verified-oct24.json",
+      "bytes": 17022,
+      "sha256": "68cdb976cd127ecd68ad9c92a59d70b11cd44a6bef1a5b5ebacbe31d9484185f"
     },
     {
       "path": "docs/porting/th14-midgame-visuals-verified-oct24.json",
@@ -6845,8 +6875,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/BombController.cpp",
-      "bytes": 27757,
-      "sha256": "4eb902aaaeb48413ad7a7f1c3e3c2e0bda6ed04e48f7dae1c6137a550e4c4fb7"
+      "bytes": 28051,
+      "sha256": "f765533d2bb50ac6228eb61c09d34ecce4345ddfc09cedb60282645d55ca85cc"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/BombController.hpp",
@@ -7320,8 +7350,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GraphicsMath.cpp",
-      "bytes": 3858,
-      "sha256": "a3247e884629e43dfe05359f5055160af97a7ebf295cad3d8b7ed1f2b87ce7c2"
+      "bytes": 4353,
+      "sha256": "905ef19aa25f4684f655e26a604028a8f6d4f8faf212a3c3410283d95de5fd27"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GraphicsMath.hpp",
@@ -10314,6 +10344,11 @@
       "sha256": "a68ef07d7740da58cd5f2c0bc9cb66b17718779aae6769f2daf2c41b4713ea92"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-bomb-animation-retirement-fixture.cpp",
+      "bytes": 1874,
+      "sha256": "c3abf6c766bacf49913ad5871252f3afe717d5f7004daf0c65debae1045643b3"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-bomb-damage-fixture.cpp",
       "bytes": 2607,
       "sha256": "9a64a12cfc19d1b76d74afa09b0cd97fd2a89e6bd6b8890e79f13c8db90bf665"
@@ -10477,6 +10512,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-custom-replay-reference-fixture.cpp",
       "bytes": 290,
       "sha256": "9e8ec3271b63ef4d0c3629042d784dd0c5bc5f59595c8bcbffa4c5d7a9874764"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-d3dx-matrix-fixture.cpp",
+      "bytes": 717,
+      "sha256": "9a3daa0ef56bcdd85dc066ebec54ffeff7ac4581564dca9f69047290a89243e6"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-d3dx-normalize-fixture.cpp",
@@ -14294,6 +14334,16 @@
       "sha256": "bb4963f199be1fb8e5642f4d4c659a1f8dadc7998f44771cb921e4bd0cc63751"
     },
     {
+      "path": "tools/th14-bomb-animation-retirement-check-oct24.mjs",
+      "bytes": 2915,
+      "sha256": "353770e9bed40ddf126551cc236c48f0a7df343103e034b0886e1833aacce397"
+    },
+    {
+      "path": "tools/th14-bomb-animation-retirement-native-oct24.py",
+      "bytes": 3027,
+      "sha256": "320de3d5306096200a7ae1018662c065bfae2ef5c939db679743d7c39689e15b"
+    },
+    {
       "path": "tools/th14-bomb-child-position-check.mjs",
       "bytes": 3341,
       "sha256": "0e00779f29f434de5325fb7ae8164cb21356ce89f4d199e60c805231d9a68389"
@@ -14857,6 +14907,21 @@
       "path": "tools/th14-d3d9-euler-constant.py",
       "bytes": 2026,
       "sha256": "d666c11434ce173454bcbeda83b8e0aaee8b33ebba39fdc2e280b5a7a0240795"
+    },
+    {
+      "path": "tools/th14-d3dx-matrix-check-oct24.mjs",
+      "bytes": 2664,
+      "sha256": "3c05d84ef4c5f3bc9909d4959352f140601bc41302de35eb6ade757c571a0ecc"
+    },
+    {
+      "path": "tools/th14-d3dx-matrix-native-oct24.py",
+      "bytes": 2780,
+      "sha256": "05c100fcf6437d9c12f8bb1d3d643c842d111faa5be29edde30eff925731ddd4"
+    },
+    {
+      "path": "tools/th14-d3dx-matrix-worker.cs",
+      "bytes": 2405,
+      "sha256": "a6ae276e68bad1de156483fc19d0599f70b11542fd41f3439a5b139020735dc4"
     },
     {
       "path": "tools/th14-d3dx-normalize-check.mjs",

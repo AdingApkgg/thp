@@ -1,0 +1,383 @@
+{
+  "verifiedScopedFixes": true,
+  "baseCommit": "9ffbbc2c1f5df92cd0c96bf18485b253363b1de3",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/GraphicsMath.cpp": "905ef19aa25f4684f655e26a604028a8f6d4f8faf212a3c3410283d95de5fd27",
+    "runtimes/th12/th12_web/cpp/game/BombController.cpp": "f765533d2bb50ac6228eb61c09d34ecce4345ddfc09cedb60282645d55ca85cc"
+  },
+  "productionChanges": [
+    "TH14 matrix multiplication reproduces actual Windows x86 D3DX9_43 SSE product rounding and row-specific addition: rows0/3 pair sums, rows1/2 serial sums.",
+    "Bomb controller destructor marks retained primary and auxiliary animation families for deferred retirement, matching original411980 animation teardown before callback unregistration."
+  ],
+  "nativeUnits": {
+    "matrix": {
+      "path": "docs/porting/th14-d3dx-matrix-verified-oct24.json",
+      "sha256": "e45b8bac187a12dfe0bb31609d4111b33844a363dcb00dc8751e7df881fd37df",
+      "cases": 1200,
+      "oldWordDifferences": 2307,
+      "currentWordDifferences": 0
+    },
+    "bombRetirement": {
+      "path": "docs/porting/th14-bomb-animation-retirement-verified-oct24.json",
+      "sha256": "ca38ead189d406177b1cd414e131069fe2532de403bb2e309c50af473338063a",
+      "cases": 108,
+      "oldWordDifferences": 144,
+      "currentWordDifferences": 0
+    }
+  },
+  "currentOriginalCampaigns": {
+    "marisaa": {
+      "callbacks": 66737,
+      "allSelected32WordsBitIdentical": true,
+      "allSelected25CameraWordsBitIdentical": true,
+      "naturalReplayEndObserved": true,
+      "menuStableTicks": 90,
+      "liveFields": 291,
+      "liveSnapshots": [
+        {
+          "frame": 1,
+          "nativeCount": 52,
+          "portableCount": 52,
+          "portableExpected": 52,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 26000,
+          "nativeCount": 570,
+          "portableCount": 570,
+          "portableExpected": 570,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 30000,
+          "nativeCount": 578,
+          "portableCount": 578,
+          "portableExpected": 578,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 36000,
+          "nativeCount": 404,
+          "portableCount": 404,
+          "portableExpected": 404,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 38900,
+          "nativeCount": 567,
+          "portableCount": 567,
+          "portableExpected": 567,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 60000,
+          "nativeCount": 294,
+          "portableCount": 294,
+          "portableExpected": 294,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        }
+      ],
+      "allStrictLiveValuesEqual": true,
+      "allocationPrefixCallbacks": 30000,
+      "orderedAllocationPublications": 246729,
+      "allPrefixHandleFileScriptEqual": true,
+      "reports": {
+        "report.json": {
+          "path": "artifacts/th14/bomb-animation-retirement-oct24/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/report.json",
+          "sha256": "e59f14cd0303c9b0685471b61d71a6a2396c9bcc89dd695530a21de42aea47ef"
+        },
+        "live-report.json": {
+          "path": "artifacts/th14/bomb-animation-retirement-oct24/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/live-report.json",
+          "sha256": "3a19310b18f67abf98ba45e79421fae75530ecac3fcc5bbc4539feae9440ca2b"
+        },
+        "camera-report.json": {
+          "path": "artifacts/th14/bomb-animation-retirement-oct24/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/camera-report.json",
+          "sha256": "c744082393acbe008889ddbfe05e07223183922b486de6a859177db9d7d13527"
+        },
+        "allocation-report.json": {
+          "path": "artifacts/th14/bomb-animation-retirement-oct24/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/allocation-report.json",
+          "sha256": "e42415d286c121058256952cdfa84d224f42401a9341b0d52dc63422319383c0"
+        }
+      }
+    },
+    "sakuyaa": {
+      "callbacks": 104802,
+      "allSelected32WordsBitIdentical": true,
+      "allSelected25CameraWordsBitIdentical": true,
+      "naturalReplayEndObserved": true,
+      "menuStableTicks": 90,
+      "liveFields": 291,
+      "liveSnapshots": [
+        {
+          "frame": 1,
+          "nativeCount": 52,
+          "portableCount": 52,
+          "portableExpected": 52,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 26000,
+          "nativeCount": 154,
+          "portableCount": 154,
+          "portableExpected": 154,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 30000,
+          "nativeCount": 191,
+          "portableCount": 191,
+          "portableExpected": 191,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 36000,
+          "nativeCount": 344,
+          "portableCount": 344,
+          "portableExpected": 344,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 38900,
+          "nativeCount": 241,
+          "portableCount": 241,
+          "portableExpected": 241,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 60000,
+          "nativeCount": 223,
+          "portableCount": 223,
+          "portableExpected": 223,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 90000,
+          "nativeCount": 231,
+          "portableCount": 231,
+          "portableExpected": 231,
+          "portableRegistryComplete": true,
+          "differenceCount": 2
+        }
+      ],
+      "allStrictLiveValuesEqual": false,
+      "allocationPrefixCallbacks": 30000,
+      "orderedAllocationPublications": 136778,
+      "allPrefixHandleFileScriptEqual": true,
+      "reports": {
+        "report.json": {
+          "path": "artifacts/th14/bomb-animation-retirement-oct24/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/report.json",
+          "sha256": "e2a6c16210207a6e43ab0e83cbbdc3dd1bd9d920dd5ee7a1f61a329c69169c04"
+        },
+        "live-report.json": {
+          "path": "artifacts/th14/bomb-animation-retirement-oct24/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/live-report.json",
+          "sha256": "5b8db163cd2b21a7aed7efd81eacca3f1d248e10021bde52c28a25462af8e456"
+        },
+        "camera-report.json": {
+          "path": "artifacts/th14/bomb-animation-retirement-oct24/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/camera-report.json",
+          "sha256": "482c6bddaa29dba5993c51c3dd4a45368f13f437f9dd72b050041c5857c52cd8"
+        },
+        "allocation-report.json": {
+          "path": "artifacts/th14/bomb-animation-retirement-oct24/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/allocation-report.json",
+          "sha256": "96de7300e13f4afa223df9878ada6175a5d219e685c30dc87e7ec3cb7a1ef902"
+        }
+      }
+    }
+  },
+  "otherCurrentOriginalControls": [
+    {
+      "path": "artifacts/th14/bomb-animation-retirement-oct24/full-initial-worker-events-retail-browser-recorded-legal-normal-hardware-oct24/report.json",
+      "sha256": "3e4f14f26a088869febcdaa95f614229c168ef1520f4ac64c63694999ca192b3",
+      "callbacks": 1195,
+      "wasmSha256": "821196c8a3b82aa639e08b28d5dd819e0042747e6db48b01e0c5f3756bc81841"
+    },
+    {
+      "path": "artifacts/th14/bomb-animation-retirement-oct24/full-initial-worker-events-retail-marisaa-extra-live-full-hardware-oct24/report.json",
+      "sha256": "3e50d7ad64d8f734861b930aa05f975fcf444d4dc3d40a94d92e1e248cff7c45",
+      "callbacks": 46391,
+      "wasmSha256": "821196c8a3b82aa639e08b28d5dd819e0042747e6db48b01e0c5f3756bc81841"
+    },
+    {
+      "path": "artifacts/th14/bomb-animation-retirement-oct24/full-initial-worker-events-retail-marisab-extra-full-hardware-oct24/report.json",
+      "sha256": "fe5c1f3b0a1c9120d3dbc6cd03553ac51845b30d8dc1a98534c19e91ccbd1fce",
+      "callbacks": 54114,
+      "wasmSha256": "821196c8a3b82aa639e08b28d5dd819e0042747e6db48b01e0c5f3756bc81841"
+    },
+    {
+      "path": "artifacts/th14/bomb-animation-retirement-oct24/full-initial-worker-events-retail-reimua-extra-full-hardware-oct24/report.json",
+      "sha256": "a701aed33ada370b003897aa82419d830f93383360d664afd04cdf3d6ee1522c",
+      "callbacks": 38403,
+      "wasmSha256": "821196c8a3b82aa639e08b28d5dd819e0042747e6db48b01e0c5f3756bc81841"
+    },
+    {
+      "path": "artifacts/th14/bomb-animation-retirement-oct24/full-initial-worker-events-retail-reimub-campaign-resource-phases-hardware-oct24/report.json",
+      "sha256": "6c285052359cd92ee9d2a64b406298b54b14d1bf385393e95b51f15f8861ce83",
+      "callbacks": 122012,
+      "wasmSha256": "b43cfc2f22ae9f16747dc86e37bcdf122ca57da325bcd32c7e9d2c0773c65200"
+    },
+    {
+      "path": "artifacts/th14/bomb-animation-retirement-oct24/full-initial-worker-events-retail-reimub-extra-live-full-hardware-oct24/report.json",
+      "sha256": "3e7fc380e471af1feb13f2dfc3385704458d888abe94b3dfd7dc0052a06b9206",
+      "callbacks": 46936,
+      "wasmSha256": "821196c8a3b82aa639e08b28d5dd819e0042747e6db48b01e0c5f3756bc81841"
+    },
+    {
+      "path": "artifacts/th14/bomb-animation-retirement-oct24/full-initial-worker-events-retail-sakuyaa-extra-full-2-hardware-oct24/report.json",
+      "sha256": "a58149c8156cacd73bf7d89fb214bd766958a4de4273b9dbf7e26e15e2671d3a",
+      "callbacks": 38977,
+      "wasmSha256": "821196c8a3b82aa639e08b28d5dd819e0042747e6db48b01e0c5f3756bc81841"
+    },
+    {
+      "path": "artifacts/th14/bomb-animation-retirement-oct24/full-initial-worker-events-retail-sakuyaa-final-live-vm-hardware-oct24/report.json",
+      "sha256": "a89aa6b9b926df05c63e75e9b00b1201d682bd6c521c3b3625266a917d9eccbf",
+      "callbacks": 38977,
+      "wasmSha256": "821196c8a3b82aa639e08b28d5dd819e0042747e6db48b01e0c5f3756bc81841"
+    },
+    {
+      "path": "artifacts/th14/bomb-animation-retirement-oct24/full-initial-worker-events-retail-sakuyaa-hard-stage6-full-2-hardware-oct24/report.json",
+      "sha256": "0fbb8a4b5fce2714fef15ddc8753dcb8de3da7f17a0b37016efcc093cd985d5a",
+      "callbacks": 23294,
+      "wasmSha256": "821196c8a3b82aa639e08b28d5dd819e0042747e6db48b01e0c5f3756bc81841"
+    },
+    {
+      "path": "artifacts/th14/bomb-animation-retirement-oct24/full-initial-worker-events-retail-sakuyaa-lunatic-stage6-full-hardware-oct24/report.json",
+      "sha256": "9d9181f1a2c3834eabc291d9db0a3e33ff73349ff27addcce838f412c0603a4e",
+      "callbacks": 19405,
+      "wasmSha256": "821196c8a3b82aa639e08b28d5dd819e0042747e6db48b01e0c5f3756bc81841"
+    },
+    {
+      "path": "artifacts/th14/bomb-animation-retirement-oct24/full-initial-worker-events-retail-sakuyaa-normal-stage6-full-hardware-oct24/report.json",
+      "sha256": "45bdaf404643cbb4bb2d2e18f12010e20aee83355669abe5a5b11209139f1765",
+      "callbacks": 23461,
+      "wasmSha256": "821196c8a3b82aa639e08b28d5dd819e0042747e6db48b01e0c5f3756bc81841"
+    },
+    {
+      "path": "artifacts/th14/bomb-animation-retirement-oct24/full-initial-worker-events-retail-sakuyab-extra-full-hardware-oct24/report.json",
+      "sha256": "94661db60978c0d096e3c4fcd312bceec33fdeafd2f0074bad9a5fa973d94a7d",
+      "callbacks": 50937,
+      "wasmSha256": "821196c8a3b82aa639e08b28d5dd819e0042747e6db48b01e0c5f3756bc81841"
+    }
+  ],
+  "currentSelected32CallbackTotal": 675641,
+  "currentExtraLiveSnapshots": [
+    {
+      "path": "artifacts/th14/bomb-animation-retirement-oct24/variable-prefix-38900-initial-worker-events-retail-marisaa-extra-live-full-hardware-oct24/live-report.json",
+      "sha256": "e076a3e0d2513f96b3ca52137ce9936e16dce1354357f9c69368f38f829bf5a3",
+      "snapshots": 5,
+      "cumulativeRows": 2131,
+      "fields": 80
+    },
+    {
+      "path": "artifacts/th14/bomb-animation-retirement-oct24/variable-prefix-38900-initial-worker-events-retail-reimub-extra-live-full-hardware-oct24/live-report.json",
+      "sha256": "9d0f64093f62bac85789d3646f42dfe70f26272f5b45053f3854e0398c973393",
+      "snapshots": 5,
+      "cumulativeRows": 3957,
+      "fields": 80
+    },
+    {
+      "path": "artifacts/th14/bomb-animation-retirement-oct24/variable-prefix-38900-initial-worker-events-retail-sakuyaa-final-live-vm-hardware-oct24/live-report.json",
+      "sha256": "865ac6a9f2945977a694b5f276aabe637d11b3c4ff74d517bf7e8d5a1720eab6",
+      "snapshots": 5,
+      "cumulativeRows": 6305,
+      "fields": 80
+    }
+  ],
+  "knownFailure": {
+    "snapshotCallback": 90000,
+    "file": 8,
+    "script": 128,
+    "nativeHandle": 3942019462,
+    "portableHandle": 3942018456,
+    "commonSerial": 481203,
+    "nativeSlot": 4486,
+    "portableSlot": 3480,
+    "strictHandleEquality": false,
+    "nativeCount": 231,
+    "portableCount": 231,
+    "orphanShieldRemoved": true,
+    "originalFailurePreserved": true,
+    "workContinues": true
+  },
+  "currentBinaryLegalReplayBrowser": {
+    "naturalReplayEndObserved": true,
+    "hudScore": 3980,
+    "graze": 4,
+    "maxPoint": 10000,
+    "lives": 1,
+    "stableObservedSeconds": 88.578,
+    "sdlWasmSha256": "edb75600b6a6329d7e3fab684bc433c9d258d7b258931185f5ea6b7a3a7f5cc9",
+    "generation": "gen-mvmjv302-ee3c4c3fe2ec",
+    "epoch": 6,
+    "actualProductionLauncher": true,
+    "actualWebGL": true,
+    "quiet": true,
+    "noInputAfterReplayStart": true,
+    "issues": [],
+    "startedUtc": "2026-10-24T15:32:38.663Z",
+    "firstEndObservedUtc": "2026-10-24T15:33:49.643Z",
+    "stableEndObservedUtc": "2026-10-24T15:35:18.221Z",
+    "ui": "Browser tab: 18, Title: \"东方辉针城网页版\", URL: \"http://localhost:8252/?game=th14\".\nThe following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.\n~\t\t\t28 text 帧 H180/4ms - C180/4ms - P60/331ms - gap 0ms - lock 60 - vis visible - focus Y/CANVAS - touch 0\nThe focused UI element is 17 image canvas",
+    "priorBinaryAcceptanceInherited": false,
+    "completeGame": false,
+    "nativeEquivalent": false
+  },
+  "historicalPreviousBinarySakuyaBrowser": {
+    "naturalReplayEndObserved": true,
+    "hudScore": 283535260,
+    "graze": 3501,
+    "maxPoint": 67090,
+    "lives": 2,
+    "stableObservedSeconds": 234.791,
+    "runtimeWasmSha256": "3d4496b84001929199f47f975d3e7286f482b5991dc92f20e62582c3b22b9744",
+    "generation": "gen-mvmi0koo-d443c536f211",
+    "epoch": 4,
+    "actualProductionLauncher": true,
+    "actualWebGL": true,
+    "noInputAfterReplayStart": true,
+    "quiet": true,
+    "issues": [],
+    "startedUtc": "2026-10-24T14:48:02.618Z",
+    "firstEndObservedUtc": "2026-10-24T15:19:50.086Z",
+    "stableEndObservedUtc": "2026-10-24T15:23:44.877Z",
+    "nativeHudScoreNotCaptured": true,
+    "nativeInternalScore": 324535260,
+    "endingHudAndInternalScoreMustBeDistinguished": true,
+    "completeGame": false,
+    "nativeEquivalent": false
+  },
+  "nativeInternalSakuyaEndScore": 324535260,
+  "nativeSakuyaHudEndScoreNotYetCaptured": true,
+  "build": {
+    "warmWasmSha256": "821196c8a3b82aa639e08b28d5dd819e0042747e6db48b01e0c5f3756bc81841",
+    "observerWasmSha256": "b43cfc2f22ae9f16747dc86e37bcdf122ca57da325bcd32c7e9d2c0773c65200",
+    "sdlWasmSha256": "edb75600b6a6329d7e3fab684bc433c9d258d7b258931185f5ea6b7a3a7f5cc9",
+    "lastStepRecompiledEngineSources": 1,
+    "lastStepReusedEngineSources": 140,
+    "lastSdlRecompiledSources": [
+      "th12_web/cpp/game/BombController.cpp"
+    ],
+    "lastSdlReusedSourceCount": 145,
+    "allHeadersVerified": true
+  },
+  "scope": "Selected state, selected VM snapshots and declared native host environment only; no whole-frame pixel, PCM, full-mode ordinary startup or full persistence equivalence.",
+  "nativeInstructionBytesPatched": 0,
+  "oneAttractBitClearAfterUntouchedFirstPlayer": true,
+  "noRngSerialCounterHealthOrInputWrites": true,
+  "originalClockCookieResourceReadyAndPlayerHostTimesAreExplicitEnvironmentInputs": true,
+  "debuggerAffectsHostTiming": true,
+  "rootResourceCryptExcluded": true,
+  "sourceOnlyPublication": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}
