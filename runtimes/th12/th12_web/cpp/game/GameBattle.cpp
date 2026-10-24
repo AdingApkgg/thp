@@ -71,7 +71,7 @@ bool GameBattle::prepare_initial_player(i32 character,i32 subtype){
     // Retail44c4c6 resumes after the selected file9 upload; 435e1d then
     // creates options while background/HUD uploads still remain pending.
     if(!player->initialize()){last_error=-601;error="player initialization";return false;}
-    if(!player->start_stage()){last_error=-601;error="initial player stage reset ("+std::to_string(player->last_error)+")";return false;}
+    if(!player->rebuild_th14_options()){last_error=-601;error="initial player option preparation";return false;}
     return true;
 }
 #endif
@@ -123,11 +123,11 @@ bool GameBattle::initialize(i32 character,i32 subtype,i32 difficulty) {
     if(!player->initialize()){last_error=-601;error="player initialization";return false;}
 #endif
     trace_point=16;
-    // On the first stage, 420390 calls 42fec0 before the first player tick.
-    // Lifecycle 0 is the respawn entrance, not a new game's starting state.
-#if PORT_TITLE != 14
+    // TH14 Control43681c calls44cc10 after the worker's435e1d option
+    // preparation and before Replay455ed0 restores the stage entry. This
+    // reset includes its own44cf98 option refresh, also at maximum power.
+    // Legacy420390 calls42fec0 before the first player tick.
     if(!player->start_stage()){last_error=-601;error="initial player stage reset ("+std::to_string(player->last_error)+")";return false;}
-#endif
     trace_point=17;
     if(replaying&&!player->restore_replay_position(replay_entry)){error="replay player entry";return false;}
     bomb=std::make_unique<BombController>(animations,resources.core.players[character],*player,*this,kPortTitle==14?9:7,&resources.core.text);

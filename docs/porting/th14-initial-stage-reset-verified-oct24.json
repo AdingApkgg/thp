@@ -1,0 +1,244 @@
+{
+  "verified": true,
+  "verifiedUtc": "2026-10-24T01:12:45.267853+00:00",
+  "baseCommit": "a7051cdb99e0176e6242abc5547095f73c424538",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/GameBattle.cpp": "48485638bae6cd147469d8f93344fc8fe82ab88b2fbb34443b26efad37f6c458"
+  },
+  "change": "Separate initial-worker option preparation from the later Control player-stage reset before replay position restoration, preserving its own max-power auxiliary refresh.",
+  "originalOptionCallerReturnPcs": [
+    "0x435e22",
+    "0x44cf9d",
+    "0x45603e",
+    "0x4368af"
+  ],
+  "build": {
+    "sdlWasmSha256": "ad3b2e90e47ec1af90820940ef2e57cef7e924bd952a960da039793ed2da232b",
+    "sdlRecompiledSources": 1,
+    "sdlReusedBoundObjects": 145,
+    "coreWasmSha256": "6de7fad60116a8d51009317a0b8c8de7c0a68f87254b4c8e25a2089bed406b5b",
+    "coreRecompiledSources": 1,
+    "coreReusedBoundObjects": 140,
+    "exportsUnchanged": true,
+    "addedImports": [],
+    "removedImports": []
+  },
+  "initialAnimationControls": [
+    {
+      "publications": 154,
+      "handleFileScriptDifferences": 0,
+      "physicalCreationCallbackDifferences": 0,
+      "firstSelected32WordsIdentical": true,
+      "observedHostEvents": true
+    },
+    {
+      "publications": 132,
+      "handleFileScriptDifferences": 0,
+      "physicalCreationCallbackDifferences": 0,
+      "firstSelected32WordsIdentical": true,
+      "observedHostEvents": true
+    },
+    {
+      "publications": 215,
+      "handleFileScriptDifferences": 0,
+      "physicalCreationCallbackDifferences": 0,
+      "firstSelected32WordsIdentical": true,
+      "observedHostEvents": true
+    },
+    {
+      "publications": 212,
+      "handleFileScriptDifferences": 0,
+      "physicalCreationCallbackDifferences": 0,
+      "firstSelected32WordsIdentical": true,
+      "observedHostEvents": true
+    }
+  ],
+  "initialPrefix": {
+    "playerCallbacks": 300,
+    "selected32WordsIdentical": true,
+    "animationPublications": 349,
+    "identityAndPhysicalFrameDifferences": 0
+  },
+  "independentOriginalFullSegments": [
+    {
+      "playerCallbacks": 26089,
+      "allSelected32WordsByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true,
+      "declaredSingleAttractBitClear": true,
+      "observedHostEvents": true,
+      "actualInitialClockAndCookie": true,
+      "declaredGeometryFrame": 1764484,
+      "originalOrdinaryMenuInitialization": false,
+      "originalPixelsOrPcm": false
+    },
+    {
+      "playerCallbacks": 46893,
+      "allSelected32WordsByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true,
+      "declaredSingleAttractBitClear": true,
+      "observedHostEvents": true,
+      "actualInitialClockAndCookie": true,
+      "declaredGeometryFrame": 1764484,
+      "originalOrdinaryMenuInitialization": false,
+      "originalPixelsOrPcm": false
+    }
+  ],
+  "regression": {
+    "cases": 30,
+    "callbacks": 2763367,
+    "allRaw32ByteIdenticalToCb0f291": true,
+    "eachNaturallyEndedAndStable90MenuTicks": true,
+    "allModeOriginalAcceptance": false
+  },
+  "excludedControls": {
+    "oldBinaryMissingFourAuxiliaries": true,
+    "oldBinaryFirst32StillMatched": true,
+    "optionCallInstrumentedCaseIdentityMatchesButPhysicalFramesDiffer": 5,
+    "missingPhaseReadyHostInputCaseLost21Callbacks": true
+  },
+  "browser": {
+    "actualProductionLauncher": true,
+    "actualWebGL": true,
+    "naturalAttractDemo": true,
+    "derivedStage6ReplayNaturallyEnded": true,
+    "hudDisplayedScore": 801525760,
+    "graze": 17551,
+    "quietOutput": true,
+    "issues": [],
+    "originalHudFieldMatches": true,
+    "newFullReplayStillRunning": true,
+    "fullOriginalReplayRoundTripThroughUploadAndDownloadByteExact": true
+  },
+  "originalHudFields": {
+    "readOnlyOriginalSampler": true,
+    "additionalDebugPauses": false,
+    "originalStateWrites": 0,
+    "terminalSamples": 15,
+    "internalScoreUnits": 91452576,
+    "hudDisplayedScoreUnits": 80152576,
+    "displayMultiplier": 10,
+    "stageCompletionBonus": 113000000,
+    "mixedFieldScoreDifferenceWithdrawn": true,
+    "originalGpuPixelsCompared": false
+  },
+  "previousBinaryFullBrowser": {
+    "commit": "a7051cdb99e0176e6242abc5547095f73c424538",
+    "wasmSha256": "bb86140f895ea585c8b3ba4f3e77014cba5a92320f7e0ebf4ab9f2e62aeff339",
+    "naturalSixStageReplayEnd": true,
+    "newBinaryAcceptanceInherited": false
+  },
+  "limitations": [
+    "Original comparisons use declared warm demo0 cases, actual per-process startup clock/cookie, declared geometry ABI and private observed host events; not ordinary original menu initialization.",
+    "Stage6 and stages5-6 containers retain exact recorded stage headers/input/FPS but modify file stage-count metadata and recompression.",
+    "Phase readiness is bounded by first observed post-upload Main boundary and Control loading-flag clearance; production embeds no captured times or frame compensation.",
+    "The option-entry instrumented case retains five physical creation-frame differences; host CPU work still runs on browser main-thread callbacks.",
+    "The new full browser replay is still running, and Sakuya B Extra native capture remains in progress.",
+    "Original GPU pixels, DirectSound output PCM, all-mode native and complete persistence acceptance remain unfinished."
+  ],
+  "evidenceBindings": [
+    {
+      "path": "artifacts/th14/stage6-retail-reference-oct24/build/build.json",
+      "bytes": 188626,
+      "sha256": "62bfc12ed59899ad6512b8253d1d6b30d49e0f888d2fe746a6c1be334a103c63"
+    },
+    {
+      "path": "artifacts/th14/stage6-retail-reference-oct24/core-build.json",
+      "bytes": 80316,
+      "sha256": "5bbf13bad2ef782c1c22a4ccee82cb4904af219c6c00b62d9795b3ed06aeefec"
+    },
+    {
+      "path": "artifacts/th14/stage6-retail-reference-oct24/matrix-results.json",
+      "bytes": 65145,
+      "sha256": "9e36a7fca20b0548da9242dd8d5caa7b8bdca6b32e74b49164284ab7ded72184"
+    },
+    {
+      "path": "artifacts/th14/stage6-retail-reference-oct24/fixed-initial-worker-events-retail-reimub-stage6-entry-hardware-oct24/report.json",
+      "bytes": 1840,
+      "sha256": "762108cee1ef0da3be3a25f4973db4672f3503e7aac624bcc6b2cd3ae3d0e849"
+    },
+    {
+      "path": "artifacts/th14/stage6-retail-reference-oct24/observed-v3-initial-worker-events-retail-marisaa-cold-initial-player-2-hardware-oct24/report.json",
+      "bytes": 1837,
+      "sha256": "3e5267fbd3161a269f936021b7d3178b0eed56d4090265e642b6da61ecf34d06"
+    },
+    {
+      "path": "artifacts/th14/stage6-retail-reference-oct24/observed-v3-initial-worker-events-retail-marisaa-cold-initial-player-3-hardware-oct24/report.json",
+      "bytes": 1837,
+      "sha256": "026165e015c42b1704cd197fe204098c54cc825db7467101a269f3538b77e060"
+    },
+    {
+      "path": "artifacts/th14/stage56-retail-reference-oct24/fixed-initial-worker-events-retail-reimub-stage56-full-hardware-oct24/report.json",
+      "bytes": 1832,
+      "sha256": "afed5079962c4eb808f451aae95c713af4a5ecf3df834fd04e3bb966616e6001"
+    },
+    {
+      "path": "artifacts/th14/stage6-retail-reference-oct24/observed-prefix300-boundary-initial-worker-events-retail-marisaa-cold-initial-prefix300-hardware-oct24/report.json",
+      "bytes": 2364,
+      "sha256": "882bac9b5ba2df1d4a3391c956afb64e7611cfd013d195ebe4596824a6b2c4b1"
+    },
+    {
+      "path": "artifacts/th14/retail-reimub-stage6-full-hardware-oct24/report.json",
+      "bytes": 4932,
+      "sha256": "2da35852ff31f56cef2eaa86bdbd1ef9632610abcd93cf0175324c9c5edb80d1"
+    },
+    {
+      "path": "artifacts/th14/stage6-retail-reference-oct24/full-initial-worker-events-retail-reimub-stage6-full-hardware-oct24/report.json",
+      "bytes": 2040,
+      "sha256": "86808df0309c82404594e77c312c26cd4759ab8f9e751a2a31671c7410f70397"
+    },
+    {
+      "path": "artifacts/th14/retail-reimub-stage56-full-hardware-oct24/report.json",
+      "bytes": 6645,
+      "sha256": "de4337a2b4b4a42d0734af9035f02b251787c0daf7eb8ff0404af5488500701b"
+    },
+    {
+      "path": "artifacts/th14/stage56-retail-reference-oct24/phase-v2-initial-worker-events-retail-reimub-stage56-full-hardware-oct24/report.json",
+      "bytes": 2791,
+      "sha256": "80dc059b4a9e4413607fc0a03c4589442186a103042320ebbcfa00f1876eb958"
+    },
+    {
+      "path": "artifacts/th14/stage6-retail-reference-oct24/baseline-initial-worker-events-retail-reimub-stage6-entry-hardware-oct24/report.json",
+      "bytes": 7570,
+      "sha256": "e23b3c8faabbed1ff7a2d646a818f16a188aa916036b1ffa1b664dc8adf4e511"
+    },
+    {
+      "path": "artifacts/th14/stage6-retail-reference-oct24/fixed-initial-worker-events-retail-reimub-stage6-option-calls-hardware-oct24/report.json",
+      "bytes": 2472,
+      "sha256": "6337cc175f194e118e4a331acf1322ca84a64ecc6ea112ba98ae1c45bd455451"
+    },
+    {
+      "path": "artifacts/th14/stage56-retail-reference-oct24/full-initial-worker-events-retail-reimub-stage56-full-hardware-oct24/report.json",
+      "bytes": 6681,
+      "sha256": "6e814d4ba6cd78d12c5e6fe9da0b920eb371a7c995345efd22e9afd299ef5d43"
+    },
+    {
+      "path": "artifacts/th14/stage56-retail-reference-oct24/native-hud-v2-observation.json",
+      "bytes": 6524,
+      "sha256": "cbf9f845b717636ca0550244a82baa984576029ed3942d5beeeefb81bc06c90b"
+    },
+    {
+      "path": "artifacts/th14/stage6-retail-reference-oct24/end-ui-initial-worker-events-retail-reimub-stage6-full-hardware-oct24/report.json",
+      "bytes": 2165,
+      "sha256": "1ebebca09e7ac7616a54c651a4ca5ae545e84524fdb54f059ec9d9496cb85d1a"
+    },
+    {
+      "path": "artifacts/th14/stage6-retail-reference-oct24/browser-stage6-observation.json",
+      "bytes": 1311,
+      "sha256": "8196c77b26c9188a861ee8b2ddf88333c2f61f2ed6fd7fbd67b544907397d5d7"
+    },
+    {
+      "path": "artifacts/th14/stage6-retail-reference-oct24/browser-full-replay-start.json",
+      "bytes": 687,
+      "sha256": "9e745bf0a132763f7574a187c44a3daf5637f4fd3ae98d18b97efbe8213bd2f4"
+    },
+    {
+      "path": "artifacts/th14/initial-player-ready-oct24/browser-full-replay-observation.json",
+      "bytes": 977,
+      "sha256": "68526c562378360901a0612aa9a1fd2f25df0391ac6f89528a2430cc374377d1"
+    }
+  ],
+  "sourceOnlyPublication": true,
+  "rootResourceCryptExcluded": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}
