@@ -94,7 +94,8 @@
     "oldBinaryMissingFourAuxiliaries": true,
     "oldBinaryFirst32StillMatched": true,
     "optionCallInstrumentedCaseIdentityMatchesButPhysicalFramesDiffer": 5,
-    "missingPhaseReadyHostInputCaseLost21Callbacks": true
+    "missingPhaseReadyHostInputCaseLost21Callbacks": true,
+    "uninstrumentedSakuyaBExtraPhysicalCreationDifferences": 7
   },
   "browser": {
     "actualProductionLauncher": true,
@@ -106,8 +107,17 @@
     "quietOutput": true,
     "issues": [],
     "originalHudFieldMatches": true,
-    "newFullReplayStillRunning": true,
-    "fullOriginalReplayRoundTripThroughUploadAndDownloadByteExact": true
+    "newFullReplayStillRunning": false,
+    "fullOriginalReplayRoundTripThroughUploadAndDownloadByteExact": true,
+    "newBinarySixStageOriginalReplayNaturallyEnded": true,
+    "stableEndMenuSeconds": 51.975,
+    "workerWaitMilliseconds": [
+      66,
+      66,
+      62,
+      67,
+      67
+    ]
   },
   "originalHudFields": {
     "readOnlyOriginalSampler": true,
@@ -132,8 +142,8 @@
     "Stage6 and stages5-6 containers retain exact recorded stage headers/input/FPS but modify file stage-count metadata and recompression.",
     "Phase readiness is bounded by first observed post-upload Main boundary and Control loading-flag clearance; production embeds no captured times or frame compensation.",
     "The option-entry instrumented case retains five physical creation-frame differences; host CPU work still runs on browser main-thread callbacks.",
-    "The new full browser replay is still running, and Sakuya B Extra native capture remains in progress.",
-    "Original GPU pixels, DirectSound output PCM, all-mode native and complete persistence acceptance remain unfinished."
+    "Original GPU pixels, DirectSound output PCM, all-mode native and complete persistence acceptance remain unfinished.",
+    "Sakuya B Extra has seven one-callback creation-time differences inside initial options; identities and selected gameplay state match, but live animation state and CPU concurrency remain under investigation."
   ],
   "evidenceBindings": [
     {
@@ -235,10 +245,107 @@
       "path": "artifacts/th14/initial-player-ready-oct24/browser-full-replay-observation.json",
       "bytes": 977,
       "sha256": "68526c562378360901a0612aa9a1fd2f25df0391ac6f89528a2430cc374377d1"
+    },
+    {
+      "path": "artifacts/th14/stage6-retail-reference-oct24/browser-full-replay-observation.json",
+      "bytes": 1030,
+      "sha256": "2271031fc38f129cfb425dc483d34037b14db7c4a967f27bb547a11af5853cfc"
+    },
+    {
+      "path": "artifacts/th14/retail-sakuyab-extra-full-hardware-oct24/report.json",
+      "bytes": 4967,
+      "sha256": "f7bb73bc3e92e45dd422f8cd0ba2a34ec20394cb14d14f936a8370c79cfba0a7"
+    },
+    {
+      "path": "artifacts/th14/sakuyab-extra-retail-oct24/full-initial-worker-events-retail-sakuyab-extra-full-hardware-oct24/report.json",
+      "bytes": 2123,
+      "sha256": "89b3a0afb216c5aed16c866f71428aaa247170b4c455eaeefd959c603ab6aef2"
+    },
+    {
+      "path": "artifacts/th14/sakuyab-extra-retail-oct24/fixed-initial-worker-events-retail-sakuyab-extra-full-hardware-oct24/report.json",
+      "bytes": 2725,
+      "sha256": "11e4ebfe977ebf226c4cfeaa5b61401dd7f9dc217a89abcf97a7df0d445aa893"
+    },
+    {
+      "path": "artifacts/th14/retail-reimua-extra-full-hardware-oct24/report.json",
+      "bytes": 4966,
+      "sha256": "dd02b29ab1af1afc7564e2f99338ce650eb081463b6354881fb10e3c0597b606"
+    },
+    {
+      "path": "artifacts/th14/reimua-extra-retail-oct24/full-initial-worker-events-retail-reimua-extra-full-hardware-oct24/report.json",
+      "bytes": 2123,
+      "sha256": "729b3f62759e0f640f6ee96252e582e63b0ff1e2c86c4646c0f5fee29bdfeb43"
+    },
+    {
+      "path": "artifacts/th14/reimua-extra-retail-oct24/fixed-initial-worker-events-retail-reimua-extra-full-hardware-oct24/report.json",
+      "bytes": 1848,
+      "sha256": "bd07c2eb821ee7864bbe5224cf4ab93c9ef7c6514ece8d54e2f2a8b76fd98f5d"
+    },
+    {
+      "path": "artifacts/th14/stage6-retail-reference-oct24/score-observer/report.json",
+      "bytes": 2034,
+      "sha256": "aee1c0681662ca3eb964e3abfbb7c1d94d1e8cac66bed1b03adbc5de95752a40"
+    },
+    {
+      "path": "artifacts/th14/stage6-retail-reference-oct24/score-observer/ui-roundtrip.json",
+      "bytes": 656,
+      "sha256": "9dee7a3b83e02128f0509e683d4e48d07a16af293b5ffb84e6a6277a015af194"
     }
   ],
   "sourceOnlyPublication": true,
   "rootResourceCryptExcluded": true,
   "completeGame": false,
-  "nativeEquivalent": false
+  "nativeEquivalent": false,
+  "additionalEvidenceVerifiedUtc": "2026-10-24T01:46:03.878238+00:00",
+  "independentOriginalExtraSegments": [
+    {
+      "shot": "sakuyab",
+      "difficulty": "Extra",
+      "intactOriginalReplay": true,
+      "callbacks": 50937,
+      "selected32ByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true,
+      "initialAnimationIdentities": 160,
+      "physicalCreationCallbackDifferences": 7,
+      "sourceReplaySha256": "b3f5e7d00a46c7b33a77645e12fb72f70d601a239b34c894c38dc42c41f6ae10",
+      "selectedSha256": "4163c834e56ddee9cfd1a6bf913c0ef956c1248136b24840feb5570c5ef42bd5",
+      "declaredOneAttractBitClear": true,
+      "observedHostEvents": true,
+      "ordinaryOriginalMenuInitialization": false,
+      "actualOriginalPixelsOrPcm": false
+    },
+    {
+      "shot": "reimua",
+      "difficulty": "Extra",
+      "intactOriginalReplay": true,
+      "callbacks": 38403,
+      "selected32ByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true,
+      "initialAnimationIdentities": 186,
+      "physicalCreationCallbackDifferences": 0,
+      "sourceReplaySha256": "869e4270b2b22ed563136c09f8856aa6117a6a7796dbeb0e4d1802b38381f7f6",
+      "selectedSha256": "0c92af106e60cde5daf3a47dc5f8a26fc218468a2724c5430d656ae056616c73",
+      "declaredOneAttractBitClear": true,
+      "observedHostEvents": true,
+      "ordinaryOriginalMenuInitialization": false,
+      "actualOriginalPixelsOrPcm": false
+    }
+  ],
+  "formalSaveImportExportRoundTrip": {
+    "verified": true,
+    "actualProductionLauncherUploadAndDownload": true,
+    "downloadBeforeReloadAndAfterReload": true,
+    "uploadedSameBackedUpSave": true,
+    "reloadedAfterSuccessfulImport": true,
+    "allThreeFilesByteIdentical": true,
+    "bytes": 21634,
+    "decodedBytes": 149076,
+    "sha256": "89d9f100b7f1ee746f0476094218d5a418d0bc019ad1b0f88f769ae0fd9faf1a",
+    "decodedSha256": "27645a9b220de3ce4e92a1af49db85bbda98a4c5d48df5cfaee9990631b76e9b",
+    "retailLoaderAndWriterAllBytesExact": true,
+    "ordinaryPlayAllSaveFieldsAcceptance": false,
+    "originalOsFilesystemAcceptance": false,
+    "completeGame": false,
+    "nativeEquivalent": false
+  }
 }
