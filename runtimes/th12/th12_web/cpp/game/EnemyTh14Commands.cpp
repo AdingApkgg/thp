@@ -6,6 +6,7 @@
 #include "SpellController.hpp"
 #include "LaserManager.hpp"
 #include "BulletManager.hpp"
+#include "AnmVm.hpp"
 #include "EnemyCallbacks.hpp"
 #include <cmath>
 namespace th11 {
@@ -44,6 +45,18 @@ i32 enemy_th14_hit_sound(const EnemyState& e,u32 spell_flags)noexcept{
     if(e.damage_reserved>=0)return e.damage_reserved;
     const bool low=(e.flags&0x40800000)&&((spell_flags&9)!=9)&&e.interrupt_health<((spell_flags&1)?200:900);
     return low?35:34;
+}
+i32 enemy_th14_hit_flash(EnemyState& e,AnmVm& vm,u32 spell_flags)noexcept{
+    // Retail 423ee5..42407c uses native color-mode bits and TH14 enemy flags.
+    auto clear=[&](){vm.th13_native_flags&=~0x60000u;};
+    auto tint=[&](u32 color){vm.th13_native_flags=(vm.th13_native_flags&~0x60000u)|0x20000u;vm.secondary_color=color;};
+    if(e.damage_flash){clear();e.damage_flash=wrapping_add(e.damage_flash,-1);return -1;}
+    const bool flash_frame=e.lifetime.current%4==0;
+    if(e.flags&0x80000000u){if(flash_frame)tint(0xffff00ff);else clear();}
+    if(e.flags&0x200000u){tint(0xff0000ff);e.damage_flash=4;return enemy_th14_hit_sound(e,spell_flags);}
+    if(!flash_frame)clear();
+    else if((e.flags&0x40800000u)&&((spell_flags&9)!=9)&&e.interrupt_health<((spell_flags&1)?100:500))tint(0xff0000ff);
+    return -1;
 }
 namespace {
 float motion_easing(float t,i32 mode)noexcept{

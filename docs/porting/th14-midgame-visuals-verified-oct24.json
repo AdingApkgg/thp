@@ -1,0 +1,292 @@
+{
+  "verified": true,
+  "verifiedUtc": "2026-10-24T06:50:24.879626+00:00",
+  "baseCommit": "18ad4bfee6c94f9e11ec3ce9cddbc933a8c7d33a",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/ShotManager.cpp": "ed94585ad7d7ffa8ea30a49ac2794257ab0e3a10b0fb88918f3f41a1ea607d64",
+    "runtimes/th12/th12_web/cpp/game/EnemyFrame.cpp": "52bf6e62fead977812304878260393b89afa2545d81d73f8048a998abdd8f9c4",
+    "runtimes/th12/th12_web/cpp/game/EnemyTh14Commands.cpp": "b44ed0c65e4a9ed2d65b69dbb52fafd79b9a97b73477c858359a583e129b3ff3",
+    "runtimes/th12/th12_web/cpp/game/ShotTh14.cpp": "ec55d7417d230fba9bc4572cd520f0c2ae38f74c6adfbd62441c021994fd64dc",
+    "runtimes/th12/th12_web/cpp/game/GraphicsMath.cpp": "a3247e884629e43dfe05359f5055160af97a7ebf295cad3d8b7ed1f2b87ce7c2",
+    "runtimes/th12/th12_web/cpp/game/SpellTh14Visuals.cpp": "d8fd090b5619d6d8469307934065755d4f89aeb9b4c97b735afa347790b1ee61",
+    "runtimes/th12/th12_web/cpp/game/EnemyCommands.hpp": "7502c43c813edae5356ec37e0f695b91c582c2a2fa6d9ed82c3168accb36bbea",
+    "runtimes/th12/th12_web/cpp/game/D3dxRsqrtTable.hpp": "adbd3744ac71cbca207d75c1479a2e53f0b58923c5bbaf017647d689702b4174"
+  },
+  "changes": [
+    "Retain copied player-shot ANM template layer.",
+    "Use native TH14 enemy flash masks and VM color-mode bits.",
+    "Connect last damage-area hit position to enemy death-effect direction.",
+    "Match pinned Windows reference CPU D3DX vector normalization.",
+    "Retain inline spell-title factory template layers."
+  ],
+  "units": {
+    "th14-shot-visual-state-verified-oct24.json": {
+      "passed": true
+    },
+    "th14-enemy-hit-flash-verified-oct24.json": {
+      "passed": true,
+      "cases": 11520
+    },
+    "th14-d3dx-normalize-verified-oct24.json": {
+      "passed": true,
+      "cases": 8245
+    },
+    "th14-spell-template-layer-verified-oct24.json": {
+      "passed": true,
+      "cases": 12
+    }
+  },
+  "build": {
+    "sdlWasmSha256": "3469225182b2f0f98e72a0bed58ddd0dae66d5d6ee018c7deba65f61858a17f9",
+    "warmWasmSha256": "1545cd37c185d0a1af03268c5571536f9aa1aeb0243881b4a64885d771bc8a2d",
+    "sdlFinalIncrementalCompiled": 1,
+    "sdlFinalIncrementalReused": 145,
+    "firstFourFixesCompiled": 5,
+    "firstFourFixesReused": 141,
+    "exportsUnchanged": true,
+    "importNamesAndKindsUnchanged": true
+  },
+  "originalControls": [
+    {
+      "case": "full-initial-worker-events-retail-marisab-extra-full-hardware-oct24",
+      "callbacks": 54114,
+      "allSelected32ByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true
+    },
+    {
+      "case": "full-initial-worker-events-retail-reimua-extra-full-hardware-oct24",
+      "callbacks": 38403,
+      "allSelected32ByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true
+    },
+    {
+      "case": "full-initial-worker-events-retail-sakuyaa-extra-full-2-hardware-oct24",
+      "callbacks": 38977,
+      "allSelected32ByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true
+    },
+    {
+      "case": "full-initial-worker-events-retail-sakuyaa-final-live-vm-hardware-oct24",
+      "callbacks": 38977,
+      "allSelected32ByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true
+    },
+    {
+      "case": "full-initial-worker-events-retail-sakuyaa-hard-stage6-full-2-hardware-oct24",
+      "callbacks": 23294,
+      "allSelected32ByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true
+    },
+    {
+      "case": "full-initial-worker-events-retail-sakuyaa-lunatic-stage6-full-hardware-oct24",
+      "callbacks": 19405,
+      "allSelected32ByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true
+    },
+    {
+      "case": "full-initial-worker-events-retail-sakuyaa-normal-stage6-full-hardware-oct24",
+      "callbacks": 23461,
+      "allSelected32ByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true
+    },
+    {
+      "case": "full-initial-worker-events-retail-sakuyab-extra-full-hardware-oct24",
+      "callbacks": 50937,
+      "allSelected32ByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true
+    }
+  ],
+  "totalOriginalCallbacks": 287568,
+  "positiveLiveVmWindows": [
+    {
+      "label": "mid",
+      "prefixCallbacks": 3601,
+      "allSelected32ByteIdentical": true,
+      "selectedValuesPerRow": 62,
+      "snapshots": [
+        {
+          "frame": 1,
+          "nativeCount": 71,
+          "portableCount": 71,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 600,
+          "nativeCount": 187,
+          "portableCount": 187,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 1800,
+          "nativeCount": 146,
+          "portableCount": 146,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 3600,
+          "nativeCount": 181,
+          "portableCount": 181,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        }
+      ]
+    },
+    {
+      "label": "late",
+      "prefixCallbacks": 20001,
+      "allSelected32ByteIdentical": true,
+      "selectedValuesPerRow": 62,
+      "snapshots": [
+        {
+          "frame": 1,
+          "nativeCount": 71,
+          "portableCount": 71,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 6000,
+          "nativeCount": 258,
+          "portableCount": 258,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 12000,
+          "nativeCount": 155,
+          "portableCount": 155,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 15840,
+          "nativeCount": 255,
+          "portableCount": 255,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 20000,
+          "nativeCount": 158,
+          "portableCount": 158,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        }
+      ]
+    }
+  ],
+  "positiveLiveVmRows": 1482,
+  "valuesIncludeRepeatedClocksAndAreNotCompleteVm": true,
+  "earlierFourFixBinaryMatrix": {
+    "cases": 30,
+    "callbacks": 2763367,
+    "allSelected32Unchanged": true,
+    "naturallyEndedAndStable90MenuTicks": true,
+    "wasmSha256": "7c3ba64a9fc4b81038758c08aa181d70e5a60a64f3d5e520458be0fb8f9fc375",
+    "notMeasuredAgainForFinalSpellLayerBinary": true
+  },
+  "earlierFourFixBrowser": {
+    "startedUtc": "2026-10-24T06:15:38.176Z",
+    "wasmSha256": "a53b6e6a240d43d77060039b15fe1f5c3202c65b88dfd2e19103553a215d059a",
+    "actualProductionLauncher": true,
+    "actualReplayMenu": true,
+    "intactOriginalReplay": true,
+    "character": "Sakuya A",
+    "difficulty": "Extra",
+    "startStage": 7,
+    "userSlot": "th14_ud0000.rpy",
+    "replaySha256": "c93a499bfa1409aba4f6708d3478a10c6a4a0fb0239b97356209a0b616bee8fd",
+    "downloadViaUiByteExact": true,
+    "quietOutput": true,
+    "inputAfterStart": false,
+    "observedNativeTimingsInjected": false,
+    "fullReplayFinished": true,
+    "completeGame": false,
+    "nativeEquivalent": false,
+    "naturalReplayEndMenuObserved": true,
+    "firstEndObservedUtc": "2026-10-24T06:28:25.319Z",
+    "stableEndObservedUtc": "2026-10-24T06:29:49.120Z",
+    "stableMenuSeconds": 83.801,
+    "hudScore": 338569890,
+    "graze": 5496,
+    "maxPoint": 46290,
+    "actualWebGL": true,
+    "issuesAfterStart": [],
+    "priorBrowserAcceptanceInherited": false
+  },
+  "currentSdlBrowserValidated": false,
+  "priorBrowserAcceptanceInherited": false,
+  "unresolvedFinalVmSnapshots": [
+    {
+      "frame": 1,
+      "nativeRows": 71,
+      "portableRows": 71,
+      "differences": 0,
+      "categories": []
+    },
+    {
+      "frame": 26000,
+      "nativeRows": 1029,
+      "portableRows": 1029,
+      "differences": 283,
+      "categories": [
+        "5:95:nativeVmWord0x24",
+        "8:151:nativeVmWord0x3c",
+        "8:151:nativeVmWord0x40",
+        "8:152:nativeVmWord0x3c",
+        "8:152:nativeVmWord0x40",
+        "8:69:vertexColorMode"
+      ]
+    },
+    {
+      "frame": 30000,
+      "nativeRows": 512,
+      "portableRows": 512,
+      "differences": 147,
+      "categories": [
+        "8:151:nativeVmWord0x3c",
+        "8:151:nativeVmWord0x40",
+        "8:152:nativeVmWord0x3c",
+        "8:152:nativeVmWord0x40"
+      ]
+    },
+    {
+      "frame": 36000,
+      "nativeRows": 2015,
+      "portableRows": 2015,
+      "differences": 150,
+      "categories": [
+        "8:151:nativeVmWord0x3c",
+        "8:151:nativeVmWord0x40",
+        "8:152:nativeVmWord0x3c",
+        "8:152:nativeVmWord0x40"
+      ]
+    },
+    {
+      "frame": 38900,
+      "nativeRows": 2678,
+      "portableRows": 2678,
+      "differences": 150,
+      "categories": [
+        "8:151:nativeVmWord0x3c",
+        "8:151:nativeVmWord0x40",
+        "8:152:nativeVmWord0x3c",
+        "8:152:nativeVmWord0x40"
+      ]
+    }
+  ],
+  "limitations": [
+    "Complete game 1:1 remains unfinished.",
+    "Final-game VM snapshots retain effect151/152 position-bit differences, front95 layer and effect69 vertex-color-mode differences; no tolerances or state compensation hide them.",
+    "The D3DX estimate table is generated numeric CPU data pinned to the recorded Windows reference CPU; other CPU models and nonfinite vectors are not certified.",
+    "Warm original controls declare one attract-bit clear after the untouched first Player; actual host timing/cookie and a declared geometry ABI are scoped inputs. Three Stage6 containers retain original stage header/input/FPS but are not full six-stage controls.",
+    "Complete original GPU pixels, PCM, all-mode ordinary initialization and full persistence acceptance remain unfinished."
+  ],
+  "sourceOnlyPublication": true,
+  "rootResourceCryptExcluded": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}

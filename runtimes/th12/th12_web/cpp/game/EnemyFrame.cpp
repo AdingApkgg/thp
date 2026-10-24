@@ -162,7 +162,10 @@ i32 enemy_frame(EnemyScriptServices& script,EnemyFrameWorld& world){
         if(!world.target_locked)world.target=e.script_owner;world.target_locked=true;
     }
     if(auto* vm=animations->lookup(e.animations[0])){
-        if(e.damage_flash){vm->flags&=~0x8000u;if(e.flags&0x80000)world.bomb_animation_flags&=~0x8000u;e.damage_flash=wrapping_add(e.damage_flash,-1);}
+        if constexpr(kPortTitle==14){
+            const i32 sound=enemy_th14_hit_flash(e,*vm,world.spell_flags);
+            if(sound>=0&&!world.sound(sound,e.current.position.x))return -2;
+        }else if(e.damage_flash){vm->flags&=~0x8000u;if(e.flags&0x80000)world.bomb_animation_flags&=~0x8000u;e.damage_flash=wrapping_add(e.damage_flash,-1);}
         else{
             const bool flash_frame=e.lifetime.current%4==0;
             if(e.flags&0x8000000){if(flash_frame){vm->flags|=0x8000;vm->secondary_color=0xffff00ff;}else vm->flags&=~0x8000u;}

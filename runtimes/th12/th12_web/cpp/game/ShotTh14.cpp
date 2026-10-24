@@ -244,7 +244,12 @@ bool ShotManager::damage_th14(Vec3 p,const Vec2* size,float radius,float angle,b
         if(!world.special_damage(p,size?*size:Vec2{},direct)||direct!=0){last_error=13;return false;}
     }
     for(const auto& a:damage_areas.areas)if(a.flags&1){last_error=13;return false;}
-    bool bomb=false;if(!th14_damage_collect(th14_areas,*this,p,size,radius,angle,advanced,false,argument,stamp,signed_bits(resource.header.native_extra[0]),economy,out,bomb,nullptr)){if(!last_error)last_error=12;return false;}return true;
+    // Retail 423a54 passes enemy+280 to451430. The collector's last hit
+    // position supplies the direction used by the later424af0 death effect.
+    Vec3 last_hit=hit_target?Vec3{hit_target->state.death_reference.x,hit_target->state.death_reference.y,0}:Vec3{};
+    bool bomb=false;if(!th14_damage_collect(th14_areas,*this,p,size,radius,angle,advanced,false,argument,stamp,signed_bits(resource.header.native_extra[0]),economy,out,bomb,hit_target?&last_hit:nullptr)){if(!last_error)last_error=12;return false;}
+    if(hit_target)hit_target->state.death_reference={last_hit.x,last_hit.y};
+    return true;
 }
 #endif
 }

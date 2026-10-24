@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "cases": 8245,
+  "differences": [],
+  "wasmSha256": "e0f8873adff7e8f05b189e3af2750a1893a40a4a2221cce52403645a466b8481",
+  "sourceSha256": "a3247e884629e43dfe05359f5055160af97a7ebf295cad3d8b7ed1f2b87ce7c2",
+  "dllSha256": "0b28546be22c71834501f7d7185ede5d79742457331c7ee09efc14490dd64f5f",
+  "processor": "Intel64 Family 6 Model 151 Stepping 2, GenuineIntel",
+  "actualWindowsX86Dll": true,
+  "finiteInputsOnly": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "scope": "Independent finite-vector controls through the actual x86 D3DX9_43 DLL on the recorded Windows reference CPU. Small/zero/signed-zero/axis/diagonal/camera vectors and 8192 seeded random vectors span exponents -100..60. Scalar SSE products/sums, small-vector zeroing and CPU reciprocal-square-root estimate plus refinement are compared bit for bit. Other CPU estimate implementations, nonfinite vectors, GPU pixels and complete gameplay are not certified."
+}

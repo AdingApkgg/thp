@@ -119,7 +119,8 @@ i32 ShotManager::spawn(const ShotSpec& spec,i32 firing_frame,const Vec3& origin)
     s.movement.position.x=float(float(spec.offset.x-s.movement.velocity.x)+s.movement.position.x);
     s.movement.position.y=float(float(spec.offset.y-s.movement.velocity.y)+s.movement.position.y);
     const Vec3 initial_position{};const float initial_rotation=0;
-    auto* vm=animations.create(animation_resource,i32(spec.animation)+5,file_id,0,false,false,&initial_position,nullptr,nullptr,false,&initial_rotation);
+    // Retail450cd3 binds the copied template; it retains the shot's ANM layer.
+    auto* vm=animations.create(animation_resource,i32(spec.animation)+5,file_id,u32(-1),false,false,&initial_position,nullptr,nullptr,false,&initial_rotation);
 #else
     s.movement.update_velocity();
     s.movement.position.x=float(double(spec.offset.x)-s.movement.velocity.x+s.movement.position.x);

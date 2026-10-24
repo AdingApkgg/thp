@@ -1,5 +1,8 @@
 #include "GraphicsMath.hpp"
 #include <cmath>
+#if PORT_TITLE == 14
+#include "D3dxRsqrtTable.hpp"
+#endif
 namespace th11 {
 Matrix4 GraphicsMath::multiply(const Matrix4& a,const Matrix4& b)noexcept{
     Matrix4 out;for(u32 r=0;r<4;++r)for(u32 c=0;c<4;++c)out.m[r*4+c]=float(((double(a.m[r*4])*b.m[c]+double(a.m[r*4+1])*b.m[c+4])+double(a.m[r*4+2])*b.m[c+8])+double(a.m[r*4+3])*b.m[c+12]);return out;
@@ -11,6 +14,22 @@ Matrix4 GraphicsMath::rotation(u32 axis,float angle)noexcept{
     else{m.m[0]=m.m[5]=c;m.m[1]=s;m.m[4]=-s;}return m;
 }
 Vec3 GraphicsMath::normalize(Vec3 v)noexcept{
+#if PORT_TITLE == 14
+    // D3DX9_43's SSE path refines the reference CPU's RSQRTSS estimate.
+    // Rounding an exact reciprocal square root takes a different path.
+    {
+        float n=float(v.x*v.x);n=float(n+float(v.y*v.y));n=float(n+float(v.z*v.z));
+        if(std::isfinite(n)){
+            if(n<float(0x1p-46))return {};
+            u32 bits;std::memcpy(&bits,&n,4);const i32 power=i32(bits>>23)-127;
+            const u32 index=((bits&0x7fffff)|((u32(power)&1)<<23))>>12;
+            const i32 exponent=power<0?(power-1)/2:power/2;
+            const u32 estimate_bits=(0x3f000000u+(u32(anm_rsqrt_estimates[index])<<11))-(u32(exponent)<<23);float estimate;std::memcpy(&estimate,&estimate_bits,4);
+            float r=float(estimate*n);r=float(r*estimate);const float half=float(estimate*.5f);r=float(3.f-r);r=float(r*half);
+            return {float(v.x*r),float(v.y*r),float(v.z*r)};
+        }
+    }
+#endif
     const float squared=float((double(v.x)*v.x+double(v.y)*v.y)+double(v.z)*v.z);
     if(std::abs(float(double(squared)-1))<=0x1p-23f)return v;
     if(squared<=0x1p-126f)return {};

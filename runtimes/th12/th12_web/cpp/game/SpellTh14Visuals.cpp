@@ -16,7 +16,9 @@ bool spell_th14_create_visuals(AnmManager& manager,EnemyAnimations& files,AnmRes
     for(i32 n:{0,2})if(bg[n]!=-1&&(u32(bg[n])>=files.resources.size()||!files.resources[bg[n]].file))return false;
     if(bg[0]<0)return false;
     const float zero=0;
-    auto create=[&](AnmResource& resource,i32 script,u16 file,u32* handle){auto* vm=manager.create(resource,script,file,0,false,false,nullptr,nullptr,nullptr,false,&zero);if(handle)*handle=vm?vm->id:0;return vm;};
+    // Retail41cd1b/41cdc3/41ce70 copy each resource template directly;
+    // these inline factories preserve its layer before the first live update.
+    auto create=[&](AnmResource& resource,i32 script,u16 file,u32* handle){auto* vm=manager.create(resource,script,file,u32(-1),false,false,nullptr,nullptr,nullptr,false,&zero);if(handle)*handle=vm?vm->id:0;return vm;};
     if(!create(ascii,0,2,titles)||!create(text,2,0,titles+1)||!create(ascii,1,2,titles+2))return false;
     if(!title_delivery(titles[1])||!sound_delivery(33))return false;
     auto* vm=create(effect,13,8,&circle);if(!vm)return false;vm->position=boss;

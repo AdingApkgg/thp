@@ -160,6 +160,7 @@ void enemy_th14_death_metadata(EnemyState&)noexcept;
 bool enemy_th14_clear_drops(EnemyState&)noexcept;
 i32 enemy_th14_bomb_damage(const EnemyState&,i32 damage,i32 bomb_state,bool& resistant_sound)noexcept;
 i32 enemy_th14_hit_sound(const EnemyState&,u32 spell_flags)noexcept;
+i32 enemy_th14_hit_flash(EnemyState&,AnmVm&,u32 spell_flags)noexcept;
 bool enemy_emitter_command(EnemyState&,EclContext&,EnemyGlobals&)noexcept;
 i32 enemy_fire_command(EnemyState&,EclContext&,EnemyGlobals&,EnemyCommandEnvironment&)noexcept;
 i32 enemy_laser_command(EnemyState&,EclContext&,EnemyGlobals&,EnemyCommandEnvironment&)noexcept;
