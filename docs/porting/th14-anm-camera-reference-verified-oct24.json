@@ -1,0 +1,182 @@
+{
+  "passed": true,
+  "results": {
+    "before": {
+      "wasmSha256": "c07ba6d2ad02398acd25cfbf10871cb122538b638dadc308668a3b6f574351da",
+      "cases": 72,
+      "differenceCount": 22,
+      "differences": [
+        {
+          "cameraCase": 0,
+          "reference": 10016,
+          "fraction": 0,
+          "native": 1101398016,
+          "portable": 1099563008
+        },
+        {
+          "cameraCase": 0,
+          "reference": 10016,
+          "fraction": 0.75,
+          "native": 1101398016,
+          "portable": 1099563008
+        },
+        {
+          "cameraCase": 0,
+          "reference": 10017,
+          "fraction": 0,
+          "native": 3244556288,
+          "portable": 3239575552
+        },
+        {
+          "cameraCase": 0,
+          "reference": 10017,
+          "fraction": 0.75,
+          "native": 3244556288,
+          "portable": 3239575552
+        },
+        {
+          "cameraCase": 0,
+          "reference": 10018,
+          "fraction": 0,
+          "native": 1094057984,
+          "portable": 1040187392
+        },
+        {
+          "cameraCase": 0,
+          "reference": 10018,
+          "fraction": 0.75,
+          "native": 1094057984,
+          "portable": 1040187392
+        },
+        {
+          "cameraCase": 1,
+          "reference": 10016,
+          "fraction": 0,
+          "native": 3296331776,
+          "portable": 3296329728
+        },
+        {
+          "cameraCase": 1,
+          "reference": 10016,
+          "fraction": 0.75,
+          "native": 3296331776,
+          "portable": 3296329728
+        },
+        {
+          "cameraCase": 1,
+          "reference": 10017,
+          "fraction": 0,
+          "native": 1157235200,
+          "portable": 1157234688
+        },
+        {
+          "cameraCase": 1,
+          "reference": 10017,
+          "fraction": 0.75,
+          "native": 1157235200,
+          "portable": 1157234688
+        },
+        {
+          "cameraCase": 1,
+          "reference": 10018,
+          "fraction": 0,
+          "native": 1149829120,
+          "portable": 3309010944
+        },
+        {
+          "cameraCase": 1,
+          "reference": 10018,
+          "fraction": 0.75,
+          "native": 1149829120,
+          "portable": 3309010944
+        },
+        {
+          "cameraCase": 2,
+          "reference": 10017,
+          "fraction": 0,
+          "native": 0,
+          "portable": 2147483648
+        },
+        {
+          "cameraCase": 2,
+          "reference": 10017,
+          "fraction": 0.75,
+          "native": 0,
+          "portable": 2147483648
+        },
+        {
+          "cameraCase": 4,
+          "reference": 10018,
+          "fraction": 0,
+          "native": 1275068417,
+          "portable": 1275068416
+        },
+        {
+          "cameraCase": 4,
+          "reference": 10018,
+          "fraction": 0.75,
+          "native": 1275068417,
+          "portable": 1275068416
+        },
+        {
+          "cameraCase": 5,
+          "reference": 10016,
+          "fraction": 0,
+          "native": 34978152,
+          "portable": 34086122
+        },
+        {
+          "cameraCase": 5,
+          "reference": 10016,
+          "fraction": 0.75,
+          "native": 34978152,
+          "portable": 34086122
+        },
+        {
+          "cameraCase": 5,
+          "reference": 10017,
+          "fraction": 0,
+          "native": 2180317400,
+          "portable": 2181569770
+        },
+        {
+          "cameraCase": 5,
+          "reference": 10017,
+          "fraction": 0.75,
+          "native": 2180317400,
+          "portable": 2181569770
+        },
+        {
+          "cameraCase": 5,
+          "reference": 10018,
+          "fraction": 0,
+          "native": 0,
+          "portable": 228737632
+        },
+        {
+          "cameraCase": 5,
+          "reference": 10018,
+          "fraction": 0.75,
+          "native": 0,
+          "portable": 228737632
+        }
+      ]
+    },
+    "after": {
+      "wasmSha256": "4a3ef290c146dc9aa1564e3b51eeabcdfe221f7dcb2dade1d33f93104cf27195",
+      "cases": 72,
+      "differenceCount": 0,
+      "differences": []
+    }
+  },
+  "nativeProofSha256": "288de1bd274a216cb3d3ac758f70b703685035b88539fabd63069780e773bb7e",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/Stage.cpp": "27717c4c4ddf2b3765b8110f27151c61413410ced83f605e10a314132fbbb42e",
+    "runtimes/th12/th12_web/cpp/game/GameBattle.cpp": "440ce5978d01cc16aaca8782d253666c5a871f9062c9517edf62ab15f6cb381d",
+    "runtimes/th12/th12_web/tests/cpp/th14-anm-camera-reference-fixture.cpp": "8146c19349fec2903dd6efd80e0cd126e1bea1e55780b971d68c60c670a08a10",
+    "tools/th14-anm-camera-reference-check-oct24.mjs": "de720287191e985cecad1af7e26a8f5f87ec21f2a26c7d2027233454d30467bb"
+  },
+  "scope": "Original46f770 getters10016..10021 versus real Stage::publish_camera and AnmVm::float_value. Camera input words are controlled;72 calls include nonzero eye offsets, fractional IDs, large-float rounding and signed zero. Old engine object control must fail. Camera generation, pixel and PCM equality not claimed.",
+  "completeGame": false,
+  "nativeEquivalent": false
+}

@@ -92,7 +92,13 @@ bool GameBattle::initialize(i32 character,i32 subtype,i32 difficulty) {
     camera_position=compositor.play_camera.position;
     enemy_environment.camera_delta=compositor.play_camera.animation_delta;
     economy.difficulty=difficulty;
+#if PORT_TITLE == 14
+    // Retail46f921..46f95c reads world-camera position plus eye_offset.
+    animations.reference_positions[0]={compositor.world_camera.position.x+compositor.world_camera.eye_offset.x,
+        compositor.world_camera.position.y+compositor.world_camera.eye_offset.y,compositor.world_camera.position.z+compositor.world_camera.eye_offset.z};
+#else
     animations.reference_positions[0]=compositor.world_camera.position;
+#endif
     animations.reference_positions[1]=compositor.world_camera.reserved24;
     animations.camera_delta=compositor.world_camera.animation_delta;
     trace_point=12;
@@ -560,7 +566,16 @@ bool GameBattle::draw(AnmRenderer& renderer,SceneDrawKind kind) {
         if(!popups.queue_bonuses(ascii))return false;
 #endif
         return popups.draw(renderer,resources.core.ascii,player->motion.state.position);
-    case SceneDrawKind::HudInner:return hud.draw_inner(renderer,hud_input())&&hud.queue_text(ascii,hud_input());
+    case SceneDrawKind::HudInner:
+#if PORT_TITLE == 14
+        // Retail431270..431285 retires the time VM when the spell manager
+        // is absent during next-stage loading;47f6e0 defers family deletion.
+        if(pending_stage&&hud.show_spell_time){
+            enemy_animations.erase(hud.spell_time_animation);
+            hud.spell_time_animation=0;hud.show_spell_time=false;
+        }
+#endif
+        return hud.draw_inner(renderer,hud_input())&&hud.queue_text(ascii,hud_input());
     case SceneDrawKind::HudOuter:return hud.draw_outer(renderer,hud_input());
     case SceneDrawKind::AsciiInner:return ascii.draw(renderer,1,compositor.full_camera,compositor.play_camera);
     case SceneDrawKind::AsciiOuter:return ascii.draw(renderer,0,compositor.full_camera,compositor.play_camera);

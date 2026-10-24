@@ -8,6 +8,10 @@ bool Stage::initialize(const StageResource& file,i32 number,const SceneCamera& c
     if(!object_animations.empty()||file.instructions.empty())return false;
     resource=file;std::memset(&state,0,sizeof state);state.flags=2;state.stage_number=number;state.camera=camera;
     state.camera.position={0,0,-600};state.camera.direction={0,300,600};state.camera.up={0,1,0};state.camera.eye_offset={};
+#if PORT_TITLE == 14
+    // Retail40d4ef/40d4fc clears the copied previous-stage target offset.
+    state.camera.target_offset={};
+#endif
     state.draw_distance_squared=9610000;state.draw_flags=1;state.script_timer.set(0,&manager.rate);
     return !start||start_objects();
 }
@@ -60,7 +64,13 @@ bool Stage::update(){
 void Stage::publish_camera(){
     if(!active_camera)return;
     *active_camera=state.camera;
+#if PORT_TITLE == 14
+    // Retail46f921..46f95c reads world-camera position plus eye_offset.
+    manager.reference_positions[0]={(*active_camera).position.x+(*active_camera).eye_offset.x,
+        (*active_camera).position.y+(*active_camera).eye_offset.y,(*active_camera).position.z+(*active_camera).eye_offset.z};
+#else
     manager.reference_positions[0]=active_camera->position;
+#endif
     manager.reference_positions[1]=active_camera->reserved24;
     manager.camera_delta=active_camera->animation_delta;
 }

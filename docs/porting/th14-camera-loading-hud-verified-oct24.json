@@ -1,0 +1,732 @@
+{
+  "verified": true,
+  "baseCommit": "b8e1906bb0164a38dbd6f8f0a0283cd0a01acd68",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/Stage.cpp": "27717c4c4ddf2b3765b8110f27151c61413410ced83f605e10a314132fbbb42e",
+    "runtimes/th12/th12_web/cpp/game/GameBattle.cpp": "440ce5978d01cc16aaca8782d253666c5a871f9062c9517edf62ab15f6cb381d"
+  },
+  "productionChanges": [
+    "Publish world-camera position plus eye_offset for ANM camera variables10016..10018.",
+    "Clear copied target_offset at new-stage initialization.",
+    "At the HUD draw boundary during pending stage loading, mark the old spell-time animation family for deferred retirement, matching the absent native spell-manager branch."
+  ],
+  "originalMarisaANormal": {
+    "callbacks": 66737,
+    "allSelected32WordsBitIdentical": true,
+    "selectedCameraFields": 25,
+    "allCameraWordsBitIdentical": true,
+    "cameraValuesCompared": 1668425,
+    "recordedStages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "actualTerminalStage": 5,
+    "sixStageClear": false,
+    "naturalGameOverObserved": true,
+    "displayScore": 239487580,
+    "graze": 6145,
+    "maxPoint": 65080,
+    "stableMenuAfterTicks": 90,
+    "sourceReplaySha256": "724c78a013ab8334f14fc7ddd995b01308e16dd20ef19a2c8fd73a20fb02258c",
+    "originalReportSha256": "512129f5fb79c2a342c0864775f8d753ed8b5ef8d8211aeb9eae59a76af2eeae"
+  },
+  "allocationPrefix": {
+    "callbacks": 30000,
+    "publications": 246729,
+    "handleFileScriptAllEqual": true,
+    "requestedLayerVersusNativePostScriptLayerNotCompared": true,
+    "nativeTraceStopsAt30000": true
+  },
+  "liveSnapshots": {
+    "snapshots": 6,
+    "cumulativeRows": 2465,
+    "fields": 80,
+    "allEqual": true,
+    "scope": "Selected snapshots; cumulative rows include repeated clock fields, not unique instances or every-frame VM proof."
+  },
+  "otherCurrentOriginalControls": [
+    {
+      "path": "artifacts/th14/loading-spell-time-retirement-oct24/full-initial-worker-events-retail-browser-recorded-legal-normal-hardware-oct24/report.json",
+      "sha256": "7709462d7a62277dc22754a1cc589bdcc50def743fb2dba4c1f89bfb68f76003",
+      "callbacks": 1195,
+      "selection": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "sourceReplaySha256": null,
+      "derivedSingleStageReplay": false,
+      "intactOriginalReplay": false,
+      "wasmSha256": "1bd530cc1ddd4a752d6afa77ff68e10534a8cbbbad8cddbfb2697a45fc397c83"
+    },
+    {
+      "path": "artifacts/th14/loading-spell-time-retirement-oct24/full-initial-worker-events-retail-marisaa-extra-live-full-hardware-oct24/report.json",
+      "sha256": "f042fd93845065d6c252682a37f43b7c91136043cf835dd85a81fa6740ddaf6e",
+      "callbacks": 46391,
+      "selection": [
+        1,
+        0,
+        4,
+        7
+      ],
+      "sourceReplaySha256": "89c0c5fd0c201698735d5e0ea55dc3b3edba7d5e4e2327010b662d2668f6004a",
+      "derivedSingleStageReplay": false,
+      "intactOriginalReplay": true,
+      "wasmSha256": "1bd530cc1ddd4a752d6afa77ff68e10534a8cbbbad8cddbfb2697a45fc397c83"
+    },
+    {
+      "path": "artifacts/th14/loading-spell-time-retirement-oct24/full-initial-worker-events-retail-marisab-extra-full-hardware-oct24/report.json",
+      "sha256": "d3382b02a4d0845569bb8d3dcdcab59dabd4941335f4c439600272c817ae97c0",
+      "callbacks": 54114,
+      "selection": [
+        1,
+        1,
+        4,
+        7
+      ],
+      "sourceReplaySha256": "a3078d31892b5fb2f08de3c0b58da55db383eb575b00d463e1d79c0cc979186f",
+      "derivedSingleStageReplay": false,
+      "intactOriginalReplay": true,
+      "wasmSha256": "1bd530cc1ddd4a752d6afa77ff68e10534a8cbbbad8cddbfb2697a45fc397c83"
+    },
+    {
+      "path": "artifacts/th14/loading-spell-time-retirement-oct24/full-initial-worker-events-retail-reimua-extra-full-hardware-oct24/report.json",
+      "sha256": "6b391553c18626bdb6003c718682fd61c99fc636d2acdfb5d31e645b772f5c72",
+      "callbacks": 38403,
+      "selection": [
+        0,
+        0,
+        4,
+        7
+      ],
+      "sourceReplaySha256": "869e4270b2b22ed563136c09f8856aa6117a6a7796dbeb0e4d1802b38381f7f6",
+      "derivedSingleStageReplay": false,
+      "intactOriginalReplay": true,
+      "wasmSha256": "1bd530cc1ddd4a752d6afa77ff68e10534a8cbbbad8cddbfb2697a45fc397c83"
+    },
+    {
+      "path": "artifacts/th14/loading-spell-time-retirement-oct24/full-initial-worker-events-retail-reimub-campaign-resource-phases-hardware-oct24/report.json",
+      "sha256": "41efe84935ea6b036db8e77eb226a8b000b4efc12ee0a8322eb8ff413fcc7d89",
+      "callbacks": 122012,
+      "selection": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "sourceReplaySha256": "c48412a95f0fe9f685d97574e8ab0655d41e44ff9c41fda7bf788589b1b29c74",
+      "derivedSingleStageReplay": false,
+      "intactOriginalReplay": true,
+      "wasmSha256": "39237e99fc395b456724a7bd104b2b96594adc7624793b6fc4973ddd56644660"
+    },
+    {
+      "path": "artifacts/th14/loading-spell-time-retirement-oct24/full-initial-worker-events-retail-reimub-extra-live-full-hardware-oct24/report.json",
+      "sha256": "cc6e677d57841c02c0f8fc3d54b37ebc523052068f4ecf7b4e53e3d5c5a375bb",
+      "callbacks": 46936,
+      "selection": [
+        0,
+        1,
+        4,
+        7
+      ],
+      "sourceReplaySha256": "3979ae43be068d2fff96ddf432d0363e9677b8c39e9901ea3c49331c4858aca1",
+      "derivedSingleStageReplay": false,
+      "intactOriginalReplay": true,
+      "wasmSha256": "1bd530cc1ddd4a752d6afa77ff68e10534a8cbbbad8cddbfb2697a45fc397c83"
+    },
+    {
+      "path": "artifacts/th14/loading-spell-time-retirement-oct24/full-initial-worker-events-retail-sakuyaa-extra-full-2-hardware-oct24/report.json",
+      "sha256": "75c5f1e174bbc1c080ec95e5bb3ff72de5f0c1181aa090c761992fffe9f95142",
+      "callbacks": 38977,
+      "selection": [
+        2,
+        0,
+        4,
+        7
+      ],
+      "sourceReplaySha256": "c93a499bfa1409aba4f6708d3478a10c6a4a0fb0239b97356209a0b616bee8fd",
+      "derivedSingleStageReplay": false,
+      "intactOriginalReplay": true,
+      "wasmSha256": "1bd530cc1ddd4a752d6afa77ff68e10534a8cbbbad8cddbfb2697a45fc397c83"
+    },
+    {
+      "path": "artifacts/th14/loading-spell-time-retirement-oct24/full-initial-worker-events-retail-sakuyaa-final-live-vm-hardware-oct24/report.json",
+      "sha256": "c8b9e247b1514a9dd29949f3290b6b9b40f7fb7a50f4c231936e2c567febf83c",
+      "callbacks": 38977,
+      "selection": [
+        2,
+        0,
+        4,
+        7
+      ],
+      "sourceReplaySha256": "c93a499bfa1409aba4f6708d3478a10c6a4a0fb0239b97356209a0b616bee8fd",
+      "derivedSingleStageReplay": false,
+      "intactOriginalReplay": true,
+      "wasmSha256": "1bd530cc1ddd4a752d6afa77ff68e10534a8cbbbad8cddbfb2697a45fc397c83"
+    },
+    {
+      "path": "artifacts/th14/loading-spell-time-retirement-oct24/full-initial-worker-events-retail-sakuyaa-hard-stage6-full-2-hardware-oct24/report.json",
+      "sha256": "0c8f4f2864faa9a4940597b215b38a87b03c8da1af9bf77a69e8feb2ee326987",
+      "callbacks": 23294,
+      "selection": null,
+      "sourceReplaySha256": "49927152c4dfaf804d475b2aae1b0a2847d5ffcd408668662e12bcd7c92e863f",
+      "derivedSingleStageReplay": true,
+      "intactOriginalReplay": null,
+      "wasmSha256": "1bd530cc1ddd4a752d6afa77ff68e10534a8cbbbad8cddbfb2697a45fc397c83"
+    },
+    {
+      "path": "artifacts/th14/loading-spell-time-retirement-oct24/full-initial-worker-events-retail-sakuyaa-lunatic-stage6-full-hardware-oct24/report.json",
+      "sha256": "78de3c925e5e0356b0bbe3194115c322dbb0914cfcfa80b7f8e91f3aa070f2ad",
+      "callbacks": 19405,
+      "selection": null,
+      "sourceReplaySha256": "890bcf6be90cbef072c525a96a012920d3958d0e8fcd00d1c75b59f12c1b9af8",
+      "derivedSingleStageReplay": true,
+      "intactOriginalReplay": null,
+      "wasmSha256": "1bd530cc1ddd4a752d6afa77ff68e10534a8cbbbad8cddbfb2697a45fc397c83"
+    },
+    {
+      "path": "artifacts/th14/loading-spell-time-retirement-oct24/full-initial-worker-events-retail-sakuyaa-normal-stage6-full-hardware-oct24/report.json",
+      "sha256": "39967d07958053b616b38cc5ac1e41e321e0c50055bc0a11a97bf55dd8a1fe30",
+      "callbacks": 23461,
+      "selection": null,
+      "sourceReplaySha256": "c8070bac53dbf525d5c8cb9f7193da6ae362911b11ada8b77b015744b6563a47",
+      "derivedSingleStageReplay": true,
+      "intactOriginalReplay": null,
+      "wasmSha256": "1bd530cc1ddd4a752d6afa77ff68e10534a8cbbbad8cddbfb2697a45fc397c83"
+    },
+    {
+      "path": "artifacts/th14/loading-spell-time-retirement-oct24/full-initial-worker-events-retail-sakuyab-extra-full-hardware-oct24/report.json",
+      "sha256": "e9ecbba9687d2313f24a25d3eff099dee0940d253011b18d8c705ee1709e80d7",
+      "callbacks": 50937,
+      "selection": [
+        2,
+        1,
+        4,
+        7
+      ],
+      "sourceReplaySha256": "b3f5e7d00a46c7b33a77645e12fb72f70d601a239b34c894c38dc42c41f6ae10",
+      "derivedSingleStageReplay": false,
+      "intactOriginalReplay": true,
+      "wasmSha256": "1bd530cc1ddd4a752d6afa77ff68e10534a8cbbbad8cddbfb2697a45fc397c83"
+    }
+  ],
+  "otherCurrentOriginalCallbackTotal": 504102,
+  "currentExtraLiveSnapshots": [
+    {
+      "path": "artifacts/th14/loading-spell-time-retirement-oct24/variable-prefix-38900-initial-worker-events-retail-marisaa-extra-live-full-hardware-oct24/live-report.json",
+      "sha256": "ab9ab3a28990b72b7606f764297219f59902d694bfd99b2e3349f42a5273f9ff",
+      "snapshots": 5,
+      "cumulativeRows": 2131,
+      "fields": 80,
+      "wasmSha256": "9571560998d8b912c50fd2e110a901d9820018c92807f16fa09c51152de80127"
+    },
+    {
+      "path": "artifacts/th14/loading-spell-time-retirement-oct24/variable-prefix-38900-initial-worker-events-retail-reimub-extra-live-full-hardware-oct24/live-report.json",
+      "sha256": "843c9a352dcf1e23e39e6ba2a46c492c278f2ec1d433a8be6a75a13d14cd7b6b",
+      "snapshots": 5,
+      "cumulativeRows": 3957,
+      "fields": 80,
+      "wasmSha256": "9571560998d8b912c50fd2e110a901d9820018c92807f16fa09c51152de80127"
+    },
+    {
+      "path": "artifacts/th14/loading-spell-time-retirement-oct24/variable-prefix-38900-initial-worker-events-retail-sakuyaa-final-live-vm-hardware-oct24/live-report.json",
+      "sha256": "0b47772e8066fc8df0761edfffdc6bc75ea45742e030595ecdcff63e5840c0ac",
+      "snapshots": 5,
+      "cumulativeRows": 6305,
+      "fields": 80,
+      "wasmSha256": "9571560998d8b912c50fd2e110a901d9820018c92807f16fa09c51152de80127"
+    }
+  ],
+  "controlledOriginalUnits": [
+    {
+      "path": "docs/porting/th14-anm-camera-reference-verified-oct24.json",
+      "sha256": "4dd34e3ddb3a64a80ac40105270d540455e56e60e1101acd3929f855d16bc92e",
+      "report": {
+        "passed": true,
+        "results": {
+          "before": {
+            "wasmSha256": "c07ba6d2ad02398acd25cfbf10871cb122538b638dadc308668a3b6f574351da",
+            "cases": 72,
+            "differenceCount": 22,
+            "differences": [
+              {
+                "cameraCase": 0,
+                "reference": 10016,
+                "fraction": 0,
+                "native": 1101398016,
+                "portable": 1099563008
+              },
+              {
+                "cameraCase": 0,
+                "reference": 10016,
+                "fraction": 0.75,
+                "native": 1101398016,
+                "portable": 1099563008
+              },
+              {
+                "cameraCase": 0,
+                "reference": 10017,
+                "fraction": 0,
+                "native": 3244556288,
+                "portable": 3239575552
+              },
+              {
+                "cameraCase": 0,
+                "reference": 10017,
+                "fraction": 0.75,
+                "native": 3244556288,
+                "portable": 3239575552
+              },
+              {
+                "cameraCase": 0,
+                "reference": 10018,
+                "fraction": 0,
+                "native": 1094057984,
+                "portable": 1040187392
+              },
+              {
+                "cameraCase": 0,
+                "reference": 10018,
+                "fraction": 0.75,
+                "native": 1094057984,
+                "portable": 1040187392
+              },
+              {
+                "cameraCase": 1,
+                "reference": 10016,
+                "fraction": 0,
+                "native": 3296331776,
+                "portable": 3296329728
+              },
+              {
+                "cameraCase": 1,
+                "reference": 10016,
+                "fraction": 0.75,
+                "native": 3296331776,
+                "portable": 3296329728
+              },
+              {
+                "cameraCase": 1,
+                "reference": 10017,
+                "fraction": 0,
+                "native": 1157235200,
+                "portable": 1157234688
+              },
+              {
+                "cameraCase": 1,
+                "reference": 10017,
+                "fraction": 0.75,
+                "native": 1157235200,
+                "portable": 1157234688
+              },
+              {
+                "cameraCase": 1,
+                "reference": 10018,
+                "fraction": 0,
+                "native": 1149829120,
+                "portable": 3309010944
+              },
+              {
+                "cameraCase": 1,
+                "reference": 10018,
+                "fraction": 0.75,
+                "native": 1149829120,
+                "portable": 3309010944
+              },
+              {
+                "cameraCase": 2,
+                "reference": 10017,
+                "fraction": 0,
+                "native": 0,
+                "portable": 2147483648
+              },
+              {
+                "cameraCase": 2,
+                "reference": 10017,
+                "fraction": 0.75,
+                "native": 0,
+                "portable": 2147483648
+              },
+              {
+                "cameraCase": 4,
+                "reference": 10018,
+                "fraction": 0,
+                "native": 1275068417,
+                "portable": 1275068416
+              },
+              {
+                "cameraCase": 4,
+                "reference": 10018,
+                "fraction": 0.75,
+                "native": 1275068417,
+                "portable": 1275068416
+              },
+              {
+                "cameraCase": 5,
+                "reference": 10016,
+                "fraction": 0,
+                "native": 34978152,
+                "portable": 34086122
+              },
+              {
+                "cameraCase": 5,
+                "reference": 10016,
+                "fraction": 0.75,
+                "native": 34978152,
+                "portable": 34086122
+              },
+              {
+                "cameraCase": 5,
+                "reference": 10017,
+                "fraction": 0,
+                "native": 2180317400,
+                "portable": 2181569770
+              },
+              {
+                "cameraCase": 5,
+                "reference": 10017,
+                "fraction": 0.75,
+                "native": 2180317400,
+                "portable": 2181569770
+              },
+              {
+                "cameraCase": 5,
+                "reference": 10018,
+                "fraction": 0,
+                "native": 0,
+                "portable": 228737632
+              },
+              {
+                "cameraCase": 5,
+                "reference": 10018,
+                "fraction": 0.75,
+                "native": 0,
+                "portable": 228737632
+              }
+            ]
+          },
+          "after": {
+            "wasmSha256": "4a3ef290c146dc9aa1564e3b51eeabcdfe221f7dcb2dade1d33f93104cf27195",
+            "cases": 72,
+            "differenceCount": 0,
+            "differences": []
+          }
+        },
+        "nativeProofSha256": "288de1bd274a216cb3d3ac758f70b703685035b88539fabd63069780e773bb7e",
+        "sourceHashes": {
+          "runtimes/th12/th12_web/cpp/game/Stage.cpp": "27717c4c4ddf2b3765b8110f27151c61413410ced83f605e10a314132fbbb42e",
+          "runtimes/th12/th12_web/cpp/game/GameBattle.cpp": "440ce5978d01cc16aaca8782d253666c5a871f9062c9517edf62ab15f6cb381d",
+          "runtimes/th12/th12_web/tests/cpp/th14-anm-camera-reference-fixture.cpp": "8146c19349fec2903dd6efd80e0cd126e1bea1e55780b971d68c60c670a08a10",
+          "tools/th14-anm-camera-reference-check-oct24.mjs": "de720287191e985cecad1af7e26a8f5f87ec21f2a26c7d2027233454d30467bb"
+        },
+        "scope": "Original46f770 getters10016..10021 versus real Stage::publish_camera and AnmVm::float_value. Camera input words are controlled;72 calls include nonzero eye offsets, fractional IDs, large-float rounding and signed zero. Old engine object control must fail. Camera generation, pixel and PCM equality not claimed.",
+        "completeGame": false,
+        "nativeEquivalent": false
+      }
+    },
+    {
+      "path": "docs/porting/th14-stage-camera-target-reset-verified-oct24.json",
+      "sha256": "39a8a4863b0cd11939558d826aa5e9e1c50e926f465105bc41c25e8bbba6b482",
+      "report": {
+        "passed": true,
+        "results": {
+          "before": {
+            "cases": 12,
+            "comparedWords": 264,
+            "differenceCount": 36,
+            "differences": [
+              {
+                "case": 0,
+                "field": 18,
+                "native": 0,
+                "portable": 1102970880
+              },
+              {
+                "case": 0,
+                "field": 19,
+                "native": 0,
+                "portable": 3245342720
+              },
+              {
+                "case": 0,
+                "field": 20,
+                "native": 0,
+                "portable": 1104281600
+              },
+              {
+                "case": 1,
+                "field": 18,
+                "native": 0,
+                "portable": 3252944896
+              },
+              {
+                "case": 1,
+                "field": 19,
+                "native": 0,
+                "portable": 1112014848
+              },
+              {
+                "case": 1,
+                "field": 20,
+                "native": 0,
+                "portable": 3254517760
+              },
+              {
+                "case": 2,
+                "field": 18,
+                "native": 0,
+                "portable": 1116635136
+              },
+              {
+                "case": 2,
+                "field": 19,
+                "native": 0,
+                "portable": 3258187776
+              },
+              {
+                "case": 2,
+                "field": 20,
+                "native": 0,
+                "portable": 1117618176
+              },
+              {
+                "case": 3,
+                "field": 18,
+                "native": 0,
+                "portable": 3261333504
+              },
+              {
+                "case": 3,
+                "field": 19,
+                "native": 0,
+                "portable": 1120403456
+              },
+              {
+                "case": 3,
+                "field": 20,
+                "native": 0,
+                "portable": 3262906368
+              },
+              {
+                "case": 4,
+                "field": 18,
+                "native": 0,
+                "portable": 1122861056
+              },
+              {
+                "case": 4,
+                "field": 19,
+                "native": 0,
+                "portable": 3264610304
+              },
+              {
+                "case": 4,
+                "field": 20,
+                "native": 0,
+                "portable": 1124286464
+              },
+              {
+                "case": 5,
+                "field": 18,
+                "native": 0,
+                "portable": 3265986560
+              },
+              {
+                "case": 5,
+                "field": 19,
+                "native": 0,
+                "portable": 1125515264
+              },
+              {
+                "case": 5,
+                "field": 20,
+                "native": 0,
+                "portable": 3267166208
+              },
+              {
+                "case": 6,
+                "field": 18,
+                "native": 0,
+                "portable": 1126580224
+              },
+              {
+                "case": 6,
+                "field": 19,
+                "native": 0,
+                "portable": 3268542464
+              },
+              {
+                "case": 6,
+                "field": 20,
+                "native": 0,
+                "portable": 1127727104
+              },
+              {
+                "case": 7,
+                "field": 18,
+                "native": 0,
+                "portable": 3269722112
+              },
+              {
+                "case": 7,
+                "field": 19,
+                "native": 0,
+                "portable": 1128792064
+              },
+              {
+                "case": 7,
+                "field": 20,
+                "native": 0,
+                "portable": 3271294976
+              },
+              {
+                "case": 8,
+                "field": 18,
+                "native": 0,
+                "portable": 1129693184
+              },
+              {
+                "case": 8,
+                "field": 19,
+                "native": 0,
+                "portable": 3272015872
+              },
+              {
+                "case": 8,
+                "field": 20,
+                "native": 0,
+                "portable": 1131167744
+              },
+              {
+                "case": 9,
+                "field": 18,
+                "native": 0,
+                "portable": 3272507392
+              },
+              {
+                "case": 9,
+                "field": 19,
+                "native": 0,
+                "portable": 1132068864
+              },
+              {
+                "case": 9,
+                "field": 20,
+                "native": 0,
+                "portable": 3273490432
+              },
+              {
+                "case": 10,
+                "field": 18,
+                "native": 0,
+                "portable": 1132634112
+              },
+              {
+                "case": 10,
+                "field": 19,
+                "native": 0,
+                "portable": 3273981952
+              },
+              {
+                "case": 10,
+                "field": 20,
+                "native": 0,
+                "portable": 1133535232
+              },
+              {
+                "case": 11,
+                "field": 18,
+                "native": 0,
+                "portable": 3274375168
+              },
+              {
+                "case": 11,
+                "field": 19,
+                "native": 0,
+                "portable": 1133903872
+              },
+              {
+                "case": 11,
+                "field": 20,
+                "native": 0,
+                "portable": 3275554816
+              }
+            ],
+            "wasmSha256": "ae2d7022a99a064a5715ae428c7db2624bec75aec761a7db77406ccc91d7b32d"
+          },
+          "after": {
+            "cases": 12,
+            "comparedWords": 264,
+            "differenceCount": 0,
+            "differences": [],
+            "wasmSha256": "d357a38880efe2ee68d543065ac66065d91a5f6af7334eeaeb961dcac16527ff"
+          }
+        },
+        "nativeProofSha256": "383d478c9a97ed04d3b989dd64e5753e01d755faad006beec2079e8b698d4b63",
+        "sourceHashes": {
+          "runtimes/th12/th12_web/cpp/game/Stage.cpp": "27717c4c4ddf2b3765b8110f27151c61413410ced83f605e10a314132fbbb42e",
+          "runtimes/th12/th12_web/tests/cpp/th14-stage-camera-target-reset-fixture.cpp": "f1f4e6e49f7495ed1cffdfbf573280fdb3881a8dce7704eaea48f6c5f555abc4",
+          "tools/th14-stage-camera-target-reset-check-oct24.mjs": "2ef85702061c3ea05b3847ee4cdeee772fe98815ef444131ffee86eea29765b2"
+        },
+        "scope": "Original40d412..40d502 camera initialization block versus real Stage::initialize under12 distinct prior-camera inputs,22 selected words each. All prior target offsets must clear; old Stage object fails36 words. Original resource setup, callback registration, pixels and PCM not included.",
+        "completeGame": false,
+        "nativeEquivalent": false
+      }
+    }
+  ],
+  "currentBinaryLegalReplayBrowser": {
+    "naturalReplayEndObserved": true,
+    "hudScore": 3980,
+    "graze": 4,
+    "maxPoint": 10000,
+    "lives": 1,
+    "stableObservedSeconds": 298.384,
+    "sdlWasmSha256": "3d4496b84001929199f47f975d3e7286f482b5991dc92f20e62582c3b22b9744",
+    "generation": "gen-mvmi0koo-d443c536f211",
+    "epoch": 4,
+    "actualProductionLauncher": true,
+    "actualWebGL": true,
+    "quiet": true,
+    "noInputAfterReplayStart": true,
+    "issues": [],
+    "startedUtc": "2026-10-24T14:37:02.137Z",
+    "firstEndObservedUtc": "2026-10-24T14:38:15.316Z",
+    "stableEndObservedUtc": "2026-10-24T14:43:13.700Z",
+    "ui": "Browser tab: 18, Title: \"东方辉针城网页版\", URL: \"http://localhost:8251/?game=th14\".\nThe following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.\n~\t\t\t28 text 帧 H180/4ms - C180/4ms - P60/643ms - gap 0ms - lock 60 - vis visible - focus Y/CANVAS - touch 0\nThe focused UI element is 17 image canvas",
+    "priorBinaryAcceptanceInherited": false,
+    "completeGame": false,
+    "nativeEquivalent": false
+  },
+  "build": {
+    "warmWasmSha256": "1bd530cc1ddd4a752d6afa77ff68e10534a8cbbbad8cddbfb2697a45fc397c83",
+    "cameraAllocationObserverWasmSha256": "39237e99fc395b456724a7bd104b2b96594adc7624793b6fc4973ddd56644660",
+    "sdlWasmSha256": "3d4496b84001929199f47f975d3e7286f482b5991dc92f20e62582c3b22b9744",
+    "engineObjects": 141,
+    "latestStepRecompiledEngineSources": 1,
+    "latestStepReusedEngineSources": 140,
+    "latestSdlRecompiledSources": [
+      "th12_web/cpp/game/GameBattle.cpp"
+    ],
+    "latestSdlReusedSources": 145,
+    "allHeadersVerified": true
+  },
+  "nativeDeclaration": {
+    "instructionBytesPatched": 0,
+    "oneAttractBitClearAfterUntouchedFirstPlayer": true,
+    "rngSerialCounterHealthAndInputWrites": false,
+    "actualOriginalClockAndCookieAsEnvironment": true,
+    "initialResourceQueueAndPerPhaseReadinessAndPlayerHostTimesAsEnvironment": true,
+    "readinessBoundedByFirstObservedMainBoundary": true,
+    "debuggerAffectsHostTiming": true,
+    "actualGpuOrAudio": false
+  },
+  "rootResourceCryptExcluded": true,
+  "sourceOnlyPublication": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}

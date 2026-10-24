@@ -1,7 +1,7 @@
 {
   "date": "2026-10-24",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "04bd169db275ddc5af4ad842d7cc1eaf13e2b733",
+  "sourceCommit": "b8e1906bb0164a38dbd6f8f0a0283cd0a01acd68",
   "files": [
     {
       "path": ".gitignore",
@@ -62,6 +62,11 @@
       "path": "docs/porting/TH14_BULLET_CANCEL_RATE_OCT24.md",
       "bytes": 3347,
       "sha256": "9aeb250c72855357437e6dfd10a1557ac58a0732d33e08c55af60fd20c1ceae9"
+    },
+    {
+      "path": "docs/porting/TH14_CAMERA_LOADING_HUD_OCT24.md",
+      "bytes": 2864,
+      "sha256": "23ff33ad56a531b017a3ba8169773d2a791cdfef5ea90c4301c3c9cee5e45b79"
     },
     {
       "path": "docs/porting/TH14_CONSTRUCTOR_HIT_FIX_OCT15.md",
@@ -934,6 +939,11 @@
       "sha256": "02d6f51b01a7c7237f66013d9e54ee3dd70d9746a6cab1adfd352da30d23428d"
     },
     {
+      "path": "docs/porting/th14-anm-camera-reference-verified-oct24.json",
+      "bytes": 5095,
+      "sha256": "4dd34e3ddb3a64a80ac40105270d540455e56e60e1101acd3929f855d16bc92e"
+    },
+    {
       "path": "docs/porting/th14-anm-destruction-verified-oct12.json",
       "bytes": 28059,
       "sha256": "aa96301b85213d658fe160b6983bc72b3f558577f4c62449ff24ccbd12c603a1"
@@ -1297,6 +1307,11 @@
       "path": "docs/porting/th14-bullet-wrap-verified.json",
       "bytes": 1282,
       "sha256": "0cc3726a66a3edab555e2e55a2ac5def18162e5c329ef8e7e02c2bdd813ecb95"
+    },
+    {
+      "path": "docs/porting/th14-camera-loading-hud-verified-oct24.json",
+      "bytes": 27176,
+      "sha256": "b439a0785baa8946ac7f81cea2a2969541e5cd516d76c45ba9faf3fb0b9dad14"
     },
     {
       "path": "docs/porting/th14-camera-verified.json",
@@ -2484,6 +2499,11 @@
       "sha256": "e0835e069cea222bd9686ebcf1565a9922752068bef06d9b8cf8e4a55850c96b"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-camera-loading-hud-candidate-oct24.json",
+      "bytes": 239946,
+      "sha256": "20e09aa4a0a7294e63d0ea649385bf12019281606fa110a78f489a51160df90b"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-dialogue-damage-oct19.json",
       "bytes": 103690,
       "sha256": "3b750bcc4f1a5172f575101b1784b8b079b079cb5fd8559adc9a53259dccf30e"
@@ -2732,6 +2752,11 @@
       "path": "docs/porting/th14-launcher-site-bullet-cancel-rate-candidate-oct24.json",
       "bytes": 37978,
       "sha256": "ebd85eb17601b36294e155b23cf82c3134fedfe76cb4715a2025330e21a946ca"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-camera-loading-hud-candidate-oct24.json",
+      "bytes": 39969,
+      "sha256": "93ea25e95e94c47cedba914c53c95ea30e926a3875d02d6368b150c15ac8eab5"
     },
     {
       "path": "docs/porting/th14-launcher-site-constructor-hit-oct15.json",
@@ -4762,6 +4787,11 @@
       "path": "docs/porting/th14-stage-camera-publication-observed-oct12.json",
       "bytes": 28259,
       "sha256": "04a6372b5c828be5c879d413ab70859629696956caf41f1739c06ab5e661fdb4"
+    },
+    {
+      "path": "docs/porting/th14-stage-camera-target-reset-verified-oct24.json",
+      "bytes": 5695,
+      "sha256": "39a8a4863b0cd11939558d826aa5e9e1c50e926f465105bc41c25e8bbba6b482"
     },
     {
       "path": "docs/porting/th14-stage-chunk-upload-observed-oct15.json",
@@ -7210,8 +7240,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "bytes": 61687,
-      "sha256": "f8d217be3310ed2673d902ff7cc4f272b91cbe96ee9d0f987bac0c066500a1f0"
+      "bytes": 62451,
+      "sha256": "440ce5978d01cc16aaca8782d253666c5a871f9062c9517edf62ab15f6cb381d"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
@@ -7860,8 +7890,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Stage.cpp",
-      "bytes": 7028,
-      "sha256": "1666ac9bd4aeac26db0564ba16848ec5c2145782fc103f36c2dd931bec9ed394"
+      "bytes": 7494,
+      "sha256": "27717c4c4ddf2b3765b8110f27151c61413410ced83f605e10a314132fbbb42e"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Stage.hpp",
@@ -10244,6 +10274,11 @@
       "sha256": "090359c5538a29bf5798927e54aeb20e7e232cc73470ed9b5d7ac509d2b82a95"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-anm-camera-reference-fixture.cpp",
+      "bytes": 1009,
+      "sha256": "8146c19349fec2903dd6efd80e0cd126e1bea1e55780b971d68c60c670a08a10"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-anm-destruction-fixture.cpp",
       "bytes": 2183,
       "sha256": "2da5b649cd77f4eea69636ab5480170433aacdc33707dcd86cbee87d17ab2783"
@@ -11602,6 +11637,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-stage-camera-publication-fixture.cpp",
       "bytes": 2265,
       "sha256": "dc5483cf3af59692127ff357fdc568958fb66b3ba5ebe06a04465d5229316f19"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-stage-camera-target-reset-fixture.cpp",
+      "bytes": 1314,
+      "sha256": "f1f4e6e49f7495ed1cffdfbf573280fdb3881a8dce7704eaea48f6c5f555abc4"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-stage-completion-fixture.cpp",
@@ -14087,6 +14127,16 @@
       "path": "tools/th14-anm-all-resource-loader-native.py",
       "bytes": 10168,
       "sha256": "1f7f764bb35cfcab74765c60cf0ec7ce22e5256c6003ecc136b150360ee932f6"
+    },
+    {
+      "path": "tools/th14-anm-camera-reference-check-oct24.mjs",
+      "bytes": 2698,
+      "sha256": "de720287191e985cecad1af7e26a8f5f87ec21f2a26c7d2027233454d30467bb"
+    },
+    {
+      "path": "tools/th14-anm-camera-reference-native-oct24.py",
+      "bytes": 2844,
+      "sha256": "0763239240b1858228a36c8c9a45b13da174b4db2754475f0929f9edea9bd137"
     },
     {
       "path": "tools/th14-anm-check.mjs",
@@ -19247,6 +19297,16 @@
       "path": "tools/th14-stage-camera-publication-native.py",
       "bytes": 7294,
       "sha256": "454f96d1ff71f10aa681d968b85cd2700bdede0c1cc8a99c5817e2ca66dc4b96"
+    },
+    {
+      "path": "tools/th14-stage-camera-target-reset-check-oct24.mjs",
+      "bytes": 2400,
+      "sha256": "2ef85702061c3ea05b3847ee4cdeee772fe98815ef444131ffee86eea29765b2"
+    },
+    {
+      "path": "tools/th14-stage-camera-target-reset-native-oct24.py",
+      "bytes": 2294,
+      "sha256": "fd0deb95f4032ce35d08f46b38be641ef908897831e108e0b38b845ea54dd262"
     },
     {
       "path": "tools/th14-stage-chunk-evidence-check-oct15.py",
