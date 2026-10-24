@@ -705,6 +705,8 @@ bool GameSession::pause() {
     pause_menu->selection=state.character*2+state.subtype;pause_menu->difficulty=state.difficulty;pause_menu->stage=state.stage;pause_menu->practice=state.practice;
 #if PORT_TITLE == 14
     pause_menu->spell_practice_id=state.spell_practice_id;
+    // Retail4490c0 reads the live4f5838 counter before disabling replay save.
+    pause_menu->continues=battle?battle->hud.score.continues:0;
 #endif
     paused_rate=animations.rate;
 #if PORT_TITLE == 14

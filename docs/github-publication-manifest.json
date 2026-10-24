@@ -1,7 +1,7 @@
 {
   "date": "2026-10-24",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "3df3cd326ee7de1b3443a87f79eaba8691dd3792",
+  "sourceCommit": "04bd169db275ddc5af4ad842d7cc1eaf13e2b733",
   "files": [
     {
       "path": ".gitignore",
@@ -202,6 +202,11 @@
       "path": "docs/porting/TH14_ORDINARY_STAGE_LOADING_OCT15.md",
       "bytes": 2916,
       "sha256": "78f4b029f947b81ef65edd38fd9893bef00b0956f432c6503a9c89d70ee59642"
+    },
+    {
+      "path": "docs/porting/TH14_PAUSE_SESSION_CONTINUES_OCT24.md",
+      "bytes": 2279,
+      "sha256": "33e5cea203ba170591b7380b337e93803348f67e73203c39fe9c5ced08ec1047"
     },
     {
       "path": "docs/porting/TH14_POSITIVE_W_VIEWPORT_FIX_OCT19.md",
@@ -2564,6 +2569,11 @@
       "sha256": "3ede34c530e8ec87aa460f7f50a405c79bf8ff9a6cdd02baed72645bfe66576d"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-pause-session-continues-candidate-oct24.json",
+      "bytes": 239927,
+      "sha256": "19f084d8ba0e39acec26893aa8d3d6c5684600bd6374a983f1522dd1c7565143"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-positive-w-viewport-oct19.json",
       "bytes": 103768,
       "sha256": "73d92640558eb0cd07c7e6a8c3d33b2e51c4b67ba2d86e120244504b32e36056"
@@ -2812,6 +2822,11 @@
       "path": "docs/porting/th14-launcher-site-ordinary-shot-quad-candidate-oct23.json",
       "bytes": 36655,
       "sha256": "a1ff99c538866a53675720ec787e7b6e41edfd43dadd124b13570c146d2edf28"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-pause-session-continues-candidate-oct24.json",
+      "bytes": 39839,
+      "sha256": "a9044a08c462270404ef949832cf6065061afff2a12a8f39ae9e287027b554a9"
     },
     {
       "path": "docs/porting/th14-launcher-site-positive-w-viewport-oct19.json",
@@ -3827,6 +3842,16 @@
       "path": "docs/porting/th14-pause-replay-full-matrix-oct21.json",
       "bytes": 39345,
       "sha256": "a39045d83f46769d238683a35a4711033c0afae7c3195a4ea3e3abe15394d9f8"
+    },
+    {
+      "path": "docs/porting/th14-pause-session-continues-runtime-verified-oct24.json",
+      "bytes": 12655,
+      "sha256": "07ae415788ed03fdfe0d440c88b1f63e8877e108de37cdd13ce2df29a400b840"
+    },
+    {
+      "path": "docs/porting/th14-pause-session-continues-verified-oct24.json",
+      "bytes": 6007,
+      "sha256": "39caa0c2a70c2ff29f0bd2dc527dea5688cfc71d0ff8a3f95405ed4dec1584a4"
     },
     {
       "path": "docs/porting/th14-pause-text-verified.json",
@@ -7235,8 +7260,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "bytes": 54268,
-      "sha256": "e5266a6e7698e79700469887097bace8f0a9ab4ead9d6900908f9e208d339d20"
+      "bytes": 54413,
+      "sha256": "dca590654bc2ddd01e4e9ae9d4fe2a88f04c19e85efcf824481318dd8cd70118"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.hpp",
@@ -11182,6 +11207,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-pause-entry-fixture.cpp",
       "bytes": 2132,
       "sha256": "7bedf5e68463f4a5bb983b1270127f9a161d4ad3e930c146b281c2dca9e01af3"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-pause-session-continues-fixture.cpp",
+      "bytes": 1692,
+      "sha256": "28e462228befb7e2be62f462cbb59c74bd4a9acf3f5019346da2315fd5f42f00"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-pause-text-fixture.cpp",
@@ -17987,6 +18017,11 @@
       "path": "tools/th14-pause-entry-native.py",
       "bytes": 5231,
       "sha256": "e30808c8db67560105c11799e7531380a18a174d428795f02a1da1569bb1cb66"
+    },
+    {
+      "path": "tools/th14-pause-session-continues-check.mjs",
+      "bytes": 4124,
+      "sha256": "b30056979d6bf14b324cbb480733d1b573a136d6b47b47735d7e7ea0449ed258"
     },
     {
       "path": "tools/th14-pause-text-check.mjs",

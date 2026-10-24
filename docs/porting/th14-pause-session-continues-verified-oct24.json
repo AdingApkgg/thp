@@ -1,0 +1,280 @@
+{
+  "passed": true,
+  "cases": 4,
+  "current": {
+    "label": "current",
+    "wasmSha256": "1aea46344d54f4495d05eecca57546bcbe898061ee4efc2c830ff5743db1edd3",
+    "coreBuildReportSha256": "3c0217d1308f2087ec1844cf29d255a6b545583c3971e0ce3a574dc720f8bf17",
+    "cases": [
+      {
+        "replay": 0,
+        "continues": 0,
+        "actual": {
+          "continues": 0,
+          "state": 3,
+          "cursor": [
+            0,
+            5,
+            1,
+            0
+          ],
+          "disabled": []
+        },
+        "expected": {
+          "continues": 0,
+          "state": 3,
+          "cursor": [
+            0,
+            5,
+            1,
+            0
+          ],
+          "disabled": []
+        },
+        "passed": true
+      },
+      {
+        "replay": 0,
+        "continues": 1,
+        "actual": {
+          "continues": 1,
+          "state": 3,
+          "cursor": [
+            0,
+            5,
+            1,
+            1
+          ],
+          "disabled": [
+            2
+          ]
+        },
+        "expected": {
+          "continues": 1,
+          "state": 3,
+          "cursor": [
+            0,
+            5,
+            1,
+            1
+          ],
+          "disabled": [
+            2
+          ]
+        },
+        "passed": true
+      },
+      {
+        "replay": 1,
+        "continues": 0,
+        "actual": {
+          "continues": 0,
+          "state": 3,
+          "cursor": [
+            0,
+            5,
+            1,
+            2
+          ],
+          "disabled": [
+            2,
+            3
+          ]
+        },
+        "expected": {
+          "continues": 0,
+          "state": 3,
+          "cursor": [
+            0,
+            5,
+            1,
+            2
+          ],
+          "disabled": [
+            2,
+            3
+          ]
+        },
+        "passed": true
+      },
+      {
+        "replay": 1,
+        "continues": 1,
+        "actual": {
+          "continues": 1,
+          "state": 3,
+          "cursor": [
+            0,
+            5,
+            1,
+            3
+          ],
+          "disabled": [
+            2,
+            3,
+            2
+          ]
+        },
+        "expected": {
+          "continues": 1,
+          "state": 3,
+          "cursor": [
+            0,
+            5,
+            1,
+            3
+          ],
+          "disabled": [
+            2,
+            3,
+            2
+          ]
+        },
+        "passed": true
+      }
+    ],
+    "allPassed": true
+  },
+  "baseline": {
+    "label": "before",
+    "wasmSha256": "e99511a519e468460cf0eb7717b9afaec8e340630c90e75f82a7562eb7f14a9d",
+    "coreBuildReportSha256": "ef37f1f68217f649585da4fd2b04687d4fbcfb96ff320e9ee81ecf0f8b271b9d",
+    "cases": [
+      {
+        "replay": 0,
+        "continues": 0,
+        "actual": {
+          "continues": 0,
+          "state": 3,
+          "cursor": [
+            0,
+            5,
+            1,
+            0
+          ],
+          "disabled": []
+        },
+        "expected": {
+          "continues": 0,
+          "state": 3,
+          "cursor": [
+            0,
+            5,
+            1,
+            0
+          ],
+          "disabled": []
+        },
+        "passed": true
+      },
+      {
+        "replay": 0,
+        "continues": 1,
+        "actual": {
+          "continues": 0,
+          "state": 3,
+          "cursor": [
+            0,
+            5,
+            1,
+            0
+          ],
+          "disabled": []
+        },
+        "expected": {
+          "continues": 1,
+          "state": 3,
+          "cursor": [
+            0,
+            5,
+            1,
+            1
+          ],
+          "disabled": [
+            2
+          ]
+        },
+        "passed": false
+      },
+      {
+        "replay": 1,
+        "continues": 0,
+        "actual": {
+          "continues": 0,
+          "state": 3,
+          "cursor": [
+            0,
+            5,
+            1,
+            2
+          ],
+          "disabled": [
+            2,
+            3
+          ]
+        },
+        "expected": {
+          "continues": 0,
+          "state": 3,
+          "cursor": [
+            0,
+            5,
+            1,
+            2
+          ],
+          "disabled": [
+            2,
+            3
+          ]
+        },
+        "passed": true
+      },
+      {
+        "replay": 1,
+        "continues": 1,
+        "actual": {
+          "continues": 0,
+          "state": 3,
+          "cursor": [
+            0,
+            5,
+            1,
+            2
+          ],
+          "disabled": [
+            2,
+            3
+          ]
+        },
+        "expected": {
+          "continues": 1,
+          "state": 3,
+          "cursor": [
+            0,
+            5,
+            1,
+            3
+          ],
+          "disabled": [
+            2,
+            3,
+            2
+          ]
+        },
+        "passed": false
+      }
+    ],
+    "allPassed": false
+  },
+  "originalExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "originalMenuEntry": "4490c0",
+  "oracleSha256": "f79c35328d9f53cdbb348891e3bde177221ce5c151882ea8f463c467838da422",
+  "fixtureSha256": "28e462228befb7e2be62f462cbb59c74bd4a9acf3f5019346da2315fd5f42f00",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/GameSession.cpp": "dca590654bc2ddd01e4e9ae9d4fe2a88f04c19e85efcf824481318dd8cd70118",
+    "runtimes/th12/th12_web/tests/cpp/th14-pause-session-continues-fixture.cpp": "28e462228befb7e2be62f462cbb59c74bd4a9acf3f5019346da2315fd5f42f00"
+  },
+  "scope": "Real GameSession::pause construction propagates the current battle HUD continue count into the separately measured retail4490c0 five-choice controller. Four original helper cases cover normal/replay with zero/one continue, including the duplicate disabled2 entry. Synthetic ANM scripts delimit graphics delivery; controlled counter values are explicit. This is a session-binding regression, not complete original ordinary gameplay or pixel/PCM equivalence.",
+  "completeGame": false,
+  "nativeEquivalent": false
+}
