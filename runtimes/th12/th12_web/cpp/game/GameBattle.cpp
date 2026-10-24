@@ -614,7 +614,8 @@ HudInput GameBattle::hud_input()const{
     HudInput input;input.player_present=bool(player);
 #if PORT_TITLE == 14
     input.character=enemy_environment.character;
-    input.subtype=enemy_environment.subtype;input.spell_id=spell_id;input.spell_flags=spell_flags;
+    // Boss-name4350b0 reads global4f5844 (practice selection), not Spell+78.
+    input.subtype=enemy_environment.subtype;input.spell_id=enemy_environment.spell_practice_id;input.spell_flags=spell_flags;
 #endif
     if(player)input.player_position=player->motion.state.position;
     input.dialogue=dialogue&&dialogue->active;input.spell=(spell_flags&1)!=0;

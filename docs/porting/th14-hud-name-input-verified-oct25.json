@@ -1,0 +1,139 @@
+{
+  "passed": true,
+  "results": {
+    "before": {
+      "cases": 3528,
+      "differenceCount": 117,
+      "firstDifferences": [
+        {
+          "stage": 4,
+          "section": 5,
+          "practiceSelection": -1,
+          "subtype": 0,
+          "currentSpell": 52,
+          "native": 156,
+          "portable": 157
+        },
+        {
+          "stage": 4,
+          "section": 5,
+          "practiceSelection": -1,
+          "subtype": 0,
+          "currentSpell": 63,
+          "native": 156,
+          "portable": 157
+        },
+        {
+          "stage": 4,
+          "section": 5,
+          "practiceSelection": -1,
+          "subtype": 1,
+          "currentSpell": 0,
+          "native": 157,
+          "portable": 156
+        },
+        {
+          "stage": 4,
+          "section": 5,
+          "practiceSelection": -1,
+          "subtype": 1,
+          "currentSpell": 51,
+          "native": 157,
+          "portable": 156
+        },
+        {
+          "stage": 4,
+          "section": 5,
+          "practiceSelection": -1,
+          "subtype": 1,
+          "currentSpell": 64,
+          "native": 157,
+          "portable": 156
+        },
+        {
+          "stage": 4,
+          "section": 5,
+          "practiceSelection": -1,
+          "subtype": 1,
+          "currentSpell": 86,
+          "native": 157,
+          "portable": 156
+        },
+        {
+          "stage": 4,
+          "section": 5,
+          "practiceSelection": -1,
+          "subtype": 1,
+          "currentSpell": 174,
+          "native": 157,
+          "portable": 156
+        },
+        {
+          "stage": 4,
+          "section": 5,
+          "practiceSelection": 0,
+          "subtype": 0,
+          "currentSpell": 52,
+          "native": 156,
+          "portable": 157
+        },
+        {
+          "stage": 4,
+          "section": 5,
+          "practiceSelection": 0,
+          "subtype": 0,
+          "currentSpell": 63,
+          "native": 156,
+          "portable": 157
+        },
+        {
+          "stage": 4,
+          "section": 5,
+          "practiceSelection": 0,
+          "subtype": 1,
+          "currentSpell": 52,
+          "native": 156,
+          "portable": 157
+        },
+        {
+          "stage": 4,
+          "section": 5,
+          "practiceSelection": 0,
+          "subtype": 1,
+          "currentSpell": 63,
+          "native": 156,
+          "portable": 157
+        },
+        {
+          "stage": 4,
+          "section": 5,
+          "practiceSelection": 51,
+          "subtype": 0,
+          "currentSpell": 52,
+          "native": 156,
+          "portable": 157
+        }
+      ],
+      "differenceTraceSha256": "f70286920e27cd4264f1aad77579a4fe3ae638e0ce4212d034b738497f686715",
+      "wasmSha256": "7fcdf8714e4e769158d48a1a9046b09a6aca28ce6e4821df9a25a2f7ef021b7b"
+    },
+    "after": {
+      "cases": 3528,
+      "differenceCount": 0,
+      "firstDifferences": [],
+      "differenceTraceSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "wasmSha256": "94f8d2993d0bef32d064adad240e287d98192196d3aa97ca11ec387227995ec0"
+    }
+  },
+  "nativeReferenceSha256": "d714da56b84e32a0d62aba7d137e26ce27ea40efddfad78eb4de5614c4dde557",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/GameBattle.cpp": "e5182139ceb08e247d97bd200c682b6f8d0ce8e9a8eed053f3be7c15be403ffc",
+    "runtimes/th12/th12_web/cpp/game/HudTh14Boss.cpp": "ff986afce15b7f0af0774e6cafc6750b431f4b83b50cc9c9d801963b8fc9f923",
+    "runtimes/th12/th12_web/tests/cpp/th14-hud-name-input-fixture.cpp": "b837bfa2d7916755ec76406cd2e4c42d016eb4d2acf5603733e8c305fe5bf566",
+    "tools/th14-hud-boss-labels-native.py": "2afedc03eb1e4ef9b1776b1cb79aa05eeb24b8c6115730c966e4c43b2cd9be9f",
+    "tools/th14-hud-name-input-check-oct25.mjs": "39a19555db027bd24803868db5649bf1ab520f93a1ab0eb38b2704bc7fe75422"
+  },
+  "scope": "504 original4350b0 boss-name controls with no prior handle, across seven stages, six sections, six global4f5844 values and both subtypes. Each repeats against seven unrelated active Spell+78 ids. Portable runs the actual private GameBattle::hud_input connection and real Hud::boss_name_th14; -fno-access-control is confined to the diagnostic translation unit. Stopped synthetic front scripts observe selection, not rendering. Original ANM service boundaries and exact native-control scope are declared by tools/th14-hud-boss-labels-native.py. Independent full replay snapshots separately check live VMs.",
+  "completeGame": false,
+  "nativeEquivalent": false
+}

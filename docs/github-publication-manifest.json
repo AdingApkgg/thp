@@ -1,7 +1,7 @@
 {
   "date": "2026-10-25",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "4a2be103b68fbe3135ada4a89df0ebbfa1a63fe7",
+  "sourceCommit": "45142d9d5aaabad1a97c71d4a550a45eb12b5c82",
   "files": [
     {
       "path": ".gitignore",
@@ -132,6 +132,11 @@
       "path": "docs/porting/TH14_FIXED20_DEPTH_FIX_OCT19.md",
       "bytes": 2622,
       "sha256": "9f1561d8260b4c1060edcb3bfa88895a799ba9d63f009fa9d0a1e442da5b076e"
+    },
+    {
+      "path": "docs/porting/TH14_HUD_NAME_INPUT_OCT25.md",
+      "bytes": 2153,
+      "sha256": "a51e815040c2d0365c0a5e357c8900822ba04acfb4de9ade174e2a38d6786696"
     },
     {
       "path": "docs/porting/TH14_INITIAL_PLAYER_OCT24.md",
@@ -2314,6 +2319,16 @@
       "sha256": "903420e8c5d2e41e4da920a79c008b882836378eab4fabd041afa8253ce13ad7"
     },
     {
+      "path": "docs/porting/th14-hud-name-input-campaign-verified-oct25.json",
+      "bytes": 33250,
+      "sha256": "382d0cd1d46bd7a787335fd5c6787d34f27c527fc78d9f9b40b8569afab57357"
+    },
+    {
+      "path": "docs/porting/th14-hud-name-input-verified-oct25.json",
+      "bytes": 4508,
+      "sha256": "c7b8e3404ecadfeaf29249076154328c016ea770a17d9da6b3dc78aad8385bd8"
+    },
+    {
       "path": "docs/porting/th14-hud-notice-verified.json",
       "bytes": 2113,
       "sha256": "bff2fb536c755f559ede70b5735e285d8143715cbe702c655da6dca4d1dca3ac"
@@ -2567,6 +2582,11 @@
       "path": "docs/porting/th14-launcher-runtime-bomb-template-layer-candidate-oct25.json",
       "bytes": 240025,
       "sha256": "b0ab4dce9f691dd2a359a8631915f978bf035962f6f0cb59c2be7be8394557a6"
+    },
+    {
+      "path": "docs/porting/th14-launcher-runtime-boss-name-input-candidate-oct25.json",
+      "bytes": 240100,
+      "sha256": "ec21f9f99e265486fd1ca019ab20f6db1d166675b011d04a2a143a401bec3835"
     },
     {
       "path": "docs/porting/th14-launcher-runtime-bullet-cancel-rate-candidate-oct24.json",
@@ -2842,6 +2862,11 @@
       "path": "docs/porting/th14-launcher-site-bomb-template-layer-candidate-oct25.json",
       "bytes": 40058,
       "sha256": "1697c0c54f0144219435ad66d82c4432b41ef71a1270edba96563c8f049471f9"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-boss-name-input-candidate-oct25.json",
+      "bytes": 40137,
+      "sha256": "c7535739a02be248b9df2143fa63a3eb096293bcea2f50297f2a0704e4ec65ec"
     },
     {
       "path": "docs/porting/th14-launcher-site-bullet-cancel-rate-candidate-oct24.json",
@@ -7365,8 +7390,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "bytes": 62607,
-      "sha256": "61ad18f9bd7d7228ca21efebb425b2a764be6cface00aee3faf9a753ad2213db"
+      "bytes": 62713,
+      "sha256": "e5182139ceb08e247d97bd200c682b6f8d0ce8e9a8eed053f3be7c15be403ffc"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
@@ -11142,6 +11167,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-hud-indicator-fixture.cpp",
       "bytes": 1888,
       "sha256": "6721c2b112396eecb54d8464ce59386da1391ce5d9f6c27b589c826d2b3a5788"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-hud-name-input-fixture.cpp",
+      "bytes": 1460,
+      "sha256": "b837bfa2d7916755ec76406cd2e4c42d016eb4d2acf5603733e8c305fe5bf566"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-hud-notice-fixture.cpp",
@@ -17037,6 +17067,11 @@
       "path": "tools/th14-hud-indicator-native.py",
       "bytes": 3549,
       "sha256": "f7edf51cac1ecdd1987f06d66d791b90afaf299b639cae7f4532af2a92ad6253"
+    },
+    {
+      "path": "tools/th14-hud-name-input-check-oct25.mjs",
+      "bytes": 2980,
+      "sha256": "39a19555db027bd24803868db5649bf1ab520f93a1ab0eb38b2704bc7fe75422"
     },
     {
       "path": "tools/th14-hud-notice-check.mjs",
