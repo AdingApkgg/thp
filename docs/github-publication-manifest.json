@@ -1,7 +1,7 @@
 {
   "date": "2026-10-25",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "135fbea87f9ae1e34993cb6f1ce9d4d2dc3569ec",
+  "sourceCommit": "39eeab874f8473b7231dad47a3dede50d93ecf31",
   "files": [
     {
       "path": ".gitignore",
@@ -59,6 +59,11 @@
       "sha256": "e46bc51418b3975fdc686bf7b5dc0ada6b54ea3cc6b838fca0f2b09d7ab6da03"
     },
     {
+      "path": "docs/porting/TH14_BOMB_TEMPLATE_LAYER_OCT25.md",
+      "bytes": 2617,
+      "sha256": "8fd531384cc429338acc080ac136f99c06088043b559f8707ec1287c58719430"
+    },
+    {
       "path": "docs/porting/TH14_BULLET_CANCEL_RATE_OCT24.md",
       "bytes": 3347,
       "sha256": "9aeb250c72855357437e6dfd10a1557ac58a0732d33e08c55af60fd20c1ceae9"
@@ -77,6 +82,11 @@
       "path": "docs/porting/TH14_CONSTRUCTOR_HIT_FULL_NATIVE_OCT16.md",
       "bytes": 2165,
       "sha256": "3d26858bb8f4b984eaa03c3a0faae8e19df994aa26b98d88715b3c6df2e7762a"
+    },
+    {
+      "path": "docs/porting/TH14_CURRENT_GPU_BASELINE_OCT25.md",
+      "bytes": 1685,
+      "sha256": "5d53c3705415a90fbd649006872b8e1e80adebbd3c0fc12b7c368b0574f1aeb0"
     },
     {
       "path": "docs/porting/TH14_CURRENT_QUEUE_FULL_PLAYBACKS_OCT15.md",
@@ -1074,6 +1084,16 @@
       "sha256": "4cee6f100436e7b1be2c99e4bf87b4900de59e6ee8d9f46c2f1e005aa694e541"
     },
     {
+      "path": "docs/porting/th14-bomb-template-layer-campaign-verified-oct25.json",
+      "bytes": 27539,
+      "sha256": "f14aaf7826cacd5b2f1fb8b2b8504262184a78b2277496e09eeb9620c67208ef"
+    },
+    {
+      "path": "docs/porting/th14-bomb-template-layer-verified-oct25.json",
+      "bytes": 4180,
+      "sha256": "c2eff69dca1208eba66c5cc0678cd29312115b5cf4ee297d8aa231dde13a6b40"
+    },
+    {
       "path": "docs/porting/th14-boss-interrupt-verified.json",
       "bytes": 1615,
       "sha256": "44cc0e8f84d08d35815fa68fa0fc1b1aac84ed4c64871b17bd7119621e96bfb0"
@@ -1497,6 +1517,11 @@
       "path": "docs/porting/th14-current-browser-flow-verified-oct14.json",
       "bytes": 89970,
       "sha256": "a1dfab228accea46d9e876f89820f76ff7cb13796ac42af1473d0cf2f586d163"
+    },
+    {
+      "path": "docs/porting/th14-current-gpu-baseline-observed-oct25.json",
+      "bytes": 31672,
+      "sha256": "c3033bec02f9bbcb33504b7626af1b74ac7f3b865207d99e46ab673a30fed7f1"
     },
     {
       "path": "docs/porting/th14-current-queue-full-playbacks-observed-oct15.json",
@@ -2524,6 +2549,11 @@
       "sha256": "fa094429fccdaad100e9a465257329458b14377a97007e444316e3bcbe30de82"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-bomb-template-layer-candidate-oct25.json",
+      "bytes": 240025,
+      "sha256": "b0ab4dce9f691dd2a359a8631915f978bf035962f6f0cb59c2be7be8394557a6"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-bullet-cancel-rate-candidate-oct24.json",
       "bytes": 239231,
       "sha256": "e0835e069cea222bd9686ebcf1565a9922752068bef06d9b8cf8e4a55850c96b"
@@ -2787,6 +2817,11 @@
       "path": "docs/porting/th14-launcher-site-anm-scale-velocity-candidate-oct24.json",
       "bytes": 37864,
       "sha256": "2cadfdf9ed92731e58eb0f9c2abab9762287e7409c3323c62d5cff3c3fb4bbe5"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-bomb-template-layer-candidate-oct25.json",
+      "bytes": 40058,
+      "sha256": "1697c0c54f0144219435ad66d82c4432b41ef71a1270edba96563c8f049471f9"
     },
     {
       "path": "docs/porting/th14-launcher-site-bullet-cancel-rate-candidate-oct24.json",
@@ -6910,8 +6945,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/BombController.cpp",
-      "bytes": 28051,
-      "sha256": "f765533d2bb50ac6228eb61c09d34ecce4345ddfc09cedb60282645d55ca85cc"
+      "bytes": 28057,
+      "sha256": "25491163dcbc85f557f9e9b7ee33403dbbba13a0a65f370d6d3fd7b3294e0fd8"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/BombController.hpp",
@@ -10392,6 +10427,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-bomb-reward-fixture.cpp",
       "bytes": 2538,
       "sha256": "0f5f364a48e03a9c4c912a821561a677cd2e7a602eb9c7483079bef780475bd8"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-bomb-template-layer-fixture.cpp",
+      "bytes": 151,
+      "sha256": "7af427f5e7b57064c6bfd69bacc5d1e57cd7b785aa1c4d2605a3f0f3be710638"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-boss-interrupt-fixture.cpp",
@@ -14414,6 +14454,16 @@
       "sha256": "7e524bc60767a27c45742c5565ace3d8be1f99d2267580cf2aa1a4a557020d93"
     },
     {
+      "path": "tools/th14-bomb-template-layer-check-oct25.mjs",
+      "bytes": 3141,
+      "sha256": "514aca3a18d17c888db12978317eadcfdc3b9369ca2008d4b0d6d97cc6bb997f"
+    },
+    {
+      "path": "tools/th14-bomb-template-layer-native-oct25.py",
+      "bytes": 5474,
+      "sha256": "d06aad8aaead892778573c4b7291b67e9908646ddb8a3a3c84f794f3b8a5dd12"
+    },
+    {
       "path": "tools/th14-boss-interrupt-check.mjs",
       "bytes": 3486,
       "sha256": "b108c6b2f3fe21db23b1a2d71493d9d9f2d4822cbb18cc7b78a0f5d042844f08"
@@ -14922,6 +14972,11 @@
       "path": "tools/th14-current-browser-flow-evidence-check.mjs",
       "bytes": 3283,
       "sha256": "ca6dd742aaee3082472c2020496fa03b2b44013f31eeae28f90e77d5b16af78a"
+    },
+    {
+      "path": "tools/th14-current-gpu-baseline-evidence-check-oct25.py",
+      "bytes": 5602,
+      "sha256": "824cc4f75cdf12a705dfd017d5f14a7973f6c3cbcdafac622678616f9bf1b1b6"
     },
     {
       "path": "tools/th14-current-queue-playback-evidence-check-oct15.py",

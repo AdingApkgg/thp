@@ -18,7 +18,7 @@ bool BombController::create(u32& id,i32 script,bool positioned){
     Vec3 p={float((double(state.position.x)+32)+192),float(double(state.position.y)+16),state.position.z};
     AnmVm* vm;
 #if PORT_TITLE == 14
-    if(selection>=0&&selection<=5){const Vec3 raw=positioned?state.position:Vec3{};const float angle=0;vm=animations.create(resource,script,file_id,0,false,false,&raw,nullptr,nullptr,false,&angle);}
+    if(selection>=0&&selection<=5){const Vec3 raw=positioned?state.position:Vec3{};const float angle=0;vm=animations.create(resource,script,file_id,u32(-1),false,false,&raw,nullptr,nullptr,false,&angle);}
     else
 #endif
     vm=animations.create(resource,script,file_id,22,false,false,positioned?&p:nullptr);

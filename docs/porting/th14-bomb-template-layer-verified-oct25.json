@@ -1,0 +1,129 @@
+{
+  "passed": true,
+  "results": {
+    "before": {
+      "cases": 72,
+      "animations": 132,
+      "differenceCount": 132,
+      "firstDifferences": [
+        {
+          "selection": 0,
+          "spellFlags": 0,
+          "spellElapsed": 0,
+          "script": 14,
+          "native": 4294967295,
+          "portable": 0
+        },
+        {
+          "selection": 0,
+          "spellFlags": 0,
+          "spellElapsed": 0,
+          "script": 24,
+          "native": 4294967295,
+          "portable": 0
+        },
+        {
+          "selection": 0,
+          "spellFlags": 0,
+          "spellElapsed": 59,
+          "script": 14,
+          "native": 4294967295,
+          "portable": 0
+        },
+        {
+          "selection": 0,
+          "spellFlags": 0,
+          "spellElapsed": 59,
+          "script": 24,
+          "native": 4294967295,
+          "portable": 0
+        },
+        {
+          "selection": 0,
+          "spellFlags": 0,
+          "spellElapsed": 60,
+          "script": 14,
+          "native": 4294967295,
+          "portable": 0
+        },
+        {
+          "selection": 0,
+          "spellFlags": 0,
+          "spellElapsed": 60,
+          "script": 24,
+          "native": 4294967295,
+          "portable": 0
+        },
+        {
+          "selection": 0,
+          "spellFlags": 0,
+          "spellElapsed": 120,
+          "script": 14,
+          "native": 4294967295,
+          "portable": 0
+        },
+        {
+          "selection": 0,
+          "spellFlags": 0,
+          "spellElapsed": 120,
+          "script": 24,
+          "native": 4294967295,
+          "portable": 0
+        },
+        {
+          "selection": 0,
+          "spellFlags": 1,
+          "spellElapsed": 0,
+          "script": 14,
+          "native": 4294967295,
+          "portable": 0
+        },
+        {
+          "selection": 0,
+          "spellFlags": 1,
+          "spellElapsed": 0,
+          "script": 24,
+          "native": 4294967295,
+          "portable": 0
+        },
+        {
+          "selection": 0,
+          "spellFlags": 1,
+          "spellElapsed": 59,
+          "script": 14,
+          "native": 4294967295,
+          "portable": 0
+        },
+        {
+          "selection": 0,
+          "spellFlags": 1,
+          "spellElapsed": 59,
+          "script": 24,
+          "native": 4294967295,
+          "portable": 0
+        }
+      ],
+      "differenceTraceSha256": "8b4fdd3b7ab14b8a18030332834c602c0de5da480439b64461d330d59891a42a",
+      "wasmSha256": "227fffc61b67e12381a340c4a9dc7c6f4985fd591e520491a5c1c11cf265a33d"
+    },
+    "after": {
+      "cases": 72,
+      "animations": 132,
+      "differenceCount": 0,
+      "firstDifferences": [],
+      "differenceTraceSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "wasmSha256": "db408aa4f2eef2439bf20b825d066661daf9e59ceda24fe3125807ac03375470"
+    }
+  },
+  "nativeProofSha256": "ff73bd7fbd7d6a5c889e057d51e36e10c699a39928b3177e1e4953929cd4a872",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/BombController.cpp": "25491163dcbc85f557f9e9b7ee33403dbbba13a0a65f370d6d3fd7b3294e0fd8",
+    "runtimes/th12/th12_web/tests/cpp/th14-bomb-template-layer-fixture.cpp": "7af427f5e7b57064c6bfd69bacc5d1e57cd7b785aa1c4d2605a3f0f3be710638",
+    "runtimes/th12/th12_web/tests/cpp/th14-sakuya-b-controller-fixture.cpp": "6014d52752dd2013d64406175cbfe89f46cef89555d8caf8fa2ef6a6db39b491",
+    "tools/th14-bomb-template-layer-native-oct25.py": "d06aad8aaead892778573c4b7291b67e9908646ddb8a3a3c84f794f3b8a5dd12",
+    "tools/th14-bomb-template-layer-check-oct25.mjs": "514aca3a18d17c888db12978317eadcfdc3b9369ca2008d4b0d6d97cc6bb997f"
+  },
+  "scope": "Original common412110 and all six startup virtuals, 72 combinations of selection, spell flags and elapsed spell time. ANM47ed10 is an explicit factory boundary recording the actual requested layer. The portable side executes the real BombController and ANM manager with a declared minimal script resource. This control compares scripts and requested layers, not complete native animation rendering; actual campaign VM snapshots separately check retained layers.",
+  "completeGame": false,
+  "nativeEquivalent": false
+}
