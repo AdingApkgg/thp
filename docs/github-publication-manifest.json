@@ -1,7 +1,7 @@
 {
   "date": "2026-10-24",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "6c474d9b0c3f6d9b526103d19fe46b707bd0ac8b",
+  "sourceCommit": "1d5b07aa343ea1e1fc2684fef158df4d36b39371",
   "files": [
     {
       "path": ".gitignore",
@@ -49,14 +49,19 @@
       "sha256": "b5dd37c28b228114d1bf0fe1a3aaeb8fa1c3f109010d809baa575991ee203757"
     },
     {
+      "path": "docs/porting/TH14_ANM_SCALE_VELOCITY_OCT24.md",
+      "bytes": 1995,
+      "sha256": "a448c239e3d7ae3fb5e809a385d733a4925f5e89f1d660487d103b774a5cd98a"
+    },
+    {
       "path": "docs/porting/TH14_BEAM_COOKIE_AND_TERMINAL_HUD_OCT23.md",
       "bytes": 2279,
       "sha256": "e46bc51418b3975fdc686bf7b5dc0ada6b54ea3cc6b838fca0f2b09d7ab6da03"
     },
     {
       "path": "docs/porting/TH14_BULLET_CANCEL_RATE_OCT24.md",
-      "bytes": 2985,
-      "sha256": "73c0dda5c1cba2ca59a0d42610547ef209d0b5f8f32b0b7f9bee0f3086953115"
+      "bytes": 3347,
+      "sha256": "9aeb250c72855357437e6dfd10a1557ac58a0732d33e08c55af60fd20c1ceae9"
     },
     {
       "path": "docs/porting/TH14_CONSTRUCTOR_HIT_FIX_OCT15.md",
@@ -929,6 +934,16 @@
       "sha256": "3630c75f1e1599621d172f8bcd54bef8935dc3381932ca27b078a4285680d530"
     },
     {
+      "path": "docs/porting/th14-anm-scale-velocity-runtime-verified-oct24.json",
+      "bytes": 8455,
+      "sha256": "b6ab6b6597ac42d6ba33928b3dfc0b40df8922fe5dd2c54e84525d5b234ac86b"
+    },
+    {
+      "path": "docs/porting/th14-anm-scale-velocity-verified-oct24.json",
+      "bytes": 2447,
+      "sha256": "9aac118cc08adb90b3de8537ec3834f609ffc56019fa73ef81f04215d309d190"
+    },
+    {
       "path": "docs/porting/th14-anm-template-verified.json",
       "bytes": 3365,
       "sha256": "e106bcab5e5d840b1e1cd4290b2e85f3678e847e53565068b1bd22800cba6d93"
@@ -1175,8 +1190,8 @@
     },
     {
       "path": "docs/porting/th14-bullet-cancel-rate-verified-oct24.json",
-      "bytes": 16657,
-      "sha256": "542f7bf00f1109ab8fe1b43342f0dca02c399bcade87872d0eee5cb0a867e72a"
+      "bytes": 18474,
+      "sha256": "5dd75ec68f23a07b156361f148bc1abde19b3e30f8154ae2cdb8a5657851e507"
     },
     {
       "path": "docs/porting/th14-bullet-cancel-verified.json",
@@ -2414,9 +2429,14 @@
       "sha256": "402c3c00caef4780f9c9932691ee6f70114a1817445d332ee04c57288072c699"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-anm-scale-velocity-candidate-oct24.json",
+      "bytes": 238726,
+      "sha256": "fa094429fccdaad100e9a465257329458b14377a97007e444316e3bcbe30de82"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-bullet-cancel-rate-candidate-oct24.json",
-      "bytes": 238717,
-      "sha256": "eb13e73a9791e023607898d27be695033c8d6c67c6f7bbc5f603d52436bbe4b8"
+      "bytes": 239231,
+      "sha256": "e0835e069cea222bd9686ebcf1565a9922752068bef06d9b8cf8e4a55850c96b"
     },
     {
       "path": "docs/porting/th14-launcher-runtime-dialogue-damage-oct19.json",
@@ -2629,9 +2649,14 @@
       "sha256": "d2ebebe005d174df7b6e1d2193fffee160d788dd8c0942afa68ee4d807a82a89"
     },
     {
+      "path": "docs/porting/th14-launcher-site-anm-scale-velocity-candidate-oct24.json",
+      "bytes": 37864,
+      "sha256": "2cadfdf9ed92731e58eb0f9c2abab9762287e7409c3323c62d5cff3c3fb4bbe5"
+    },
+    {
       "path": "docs/porting/th14-launcher-site-bullet-cancel-rate-candidate-oct24.json",
-      "bytes": 37855,
-      "sha256": "97feee71041ba9375a70d97ec4d560e118d8504e6033f719099326646658efee"
+      "bytes": 37978,
+      "sha256": "ebd85eb17601b36294e155b23cf82c3134fedfe76cb4715a2025330e21a946ca"
     },
     {
       "path": "docs/porting/th14-launcher-site-constructor-hit-oct15.json",
@@ -6565,8 +6590,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmInterpreter.cpp",
-      "bytes": 37142,
-      "sha256": "9484128f415609ad8264e2538f91e0d8be253c84a6708620bcffaddd814f6298"
+      "bytes": 37432,
+      "sha256": "0318e28755b911c96311e03869c972ee27093cc13656699b34927a066750d732"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmManager.cpp",
@@ -10087,6 +10112,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-anm-resource-loader-fixture.cpp",
       "bytes": 1279,
       "sha256": "ef01c43c357a824a0aceaf08b82ddbff38b0e89a61a0b18fba76c9563b46f126"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-anm-scale-velocity-fixture.cpp",
+      "bytes": 1275,
+      "sha256": "d931e8b86a190e7f777b242373d241c0fd92daa2211a8dc1a14312c55dd598c2"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-anm-texture-precision-fixture.cpp",
@@ -13922,6 +13952,16 @@
       "path": "tools/th14-anm-resource-loader-native.py",
       "bytes": 9169,
       "sha256": "bceaab28b8fdfe7e9811eeb088a4d1d698732f5e502ef2be2955fb8dc79b0129"
+    },
+    {
+      "path": "tools/th14-anm-scale-velocity-check.mjs",
+      "bytes": 3056,
+      "sha256": "88f738ebec4d1c43960a1d4cb1afa7b36c620e69b2d23c433304efbfd2c52aa8"
+    },
+    {
+      "path": "tools/th14-anm-scale-velocity-native.py",
+      "bytes": 2383,
+      "sha256": "669482f346930994e6e4f18f1ef4f00d2a92df9e9a6aa50795c661b2739d5770"
     },
     {
       "path": "tools/th14-anm-template-check.mjs",

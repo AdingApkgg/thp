@@ -395,7 +395,7 @@
     "issuesAfterStart": [],
     "priorBrowserAcceptanceInherited": false
   },
-  "currentSdlBrowserValidated": false,
+  "currentSdlBrowserValidated": true,
   "priorBrowserAcceptanceInherited": false,
   "evidenceBindings": [
     {
@@ -498,11 +498,64 @@
     "Original controls use declared warm initialization, actual process clock/cookie, declared geometry ABI and observed host events; ordinary original-menu initialization is not claimed.",
     "Selected32 words and21 bullet values do not cover complete native state or GPU pixels.",
     "Sakuya A Normal/Hard/Lunatic baseline changes are limited to visual RNG; only Extra has a new intact full original replay control, plus the derived Hard Stage6 control.",
-    "The63e42ad5 browser six-stage acceptance belongs to the previous binary; the newffdc1392 browser run is pending.",
     "Original full GPU pixels, DirectSound output PCM, all-mode and complete persistence acceptance remain unfinished."
   ],
   "sourceOnlyPublication": true,
   "rootResourceCryptExcluded": true,
   "completeGame": false,
-  "nativeEquivalent": false
+  "nativeEquivalent": false,
+  "browserBinarySourceCommit": "1d5b07aa343ea1e1fc2684fef158df4d36b39371",
+  "browser": {
+    "startedUtc": "2026-10-24T05:09:44.040Z",
+    "wasmSha256": "ffdc1392420e87611b091f16ed46197b0431a28732bd2c06eae72799f69d487f",
+    "actualProductionLauncher": true,
+    "actualReplayMenu": true,
+    "intactOriginalReplay": true,
+    "character": "Sakuya A",
+    "difficulty": "Extra",
+    "startStage": 7,
+    "userSlot": "th14_ud0000.rpy",
+    "replaySha256": "c93a499bfa1409aba4f6708d3478a10c6a4a0fb0239b97356209a0b616bee8fd",
+    "downloadViaUiByteExact": true,
+    "quietOutput": true,
+    "inputAfterStart": false,
+    "observedNativeTimingsInjected": false,
+    "fullReplayFinished": true,
+    "completeGame": false,
+    "nativeEquivalent": false,
+    "naturalReplayEndMenuObserved": true,
+    "firstEndObservedUtc": "2026-10-24T05:22:47.636Z",
+    "stableEndObservedUtc": "2026-10-24T05:24:28.038Z",
+    "stableMenuSeconds": 100.402,
+    "hudScore": 338569890,
+    "graze": 5496,
+    "maxPoint": 46290,
+    "actualWebGL": true,
+    "issuesAfterStart": [],
+    "priorBrowserAcceptanceInherited": false
+  },
+  "additionalOriginalStage6Controls": [
+    {
+      "case": "sakuyaa-hard-stage6",
+      "callbacks": 23294,
+      "allSelected32ByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true,
+      "derivedSingleStageContainer": true
+    },
+    {
+      "case": "sakuyaa-normal-stage6",
+      "callbacks": 23461,
+      "allSelected32ByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true,
+      "derivedSingleStageContainer": true
+    },
+    {
+      "case": "sakuyaa-lunatic-stage6",
+      "callbacks": 19405,
+      "allSelected32ByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true,
+      "derivedSingleStageContainer": true
+    }
+  ],
+  "newerSourceInterpreterUnitReport": "docs/porting/th14-anm-scale-velocity-verified-oct24.json"
 }

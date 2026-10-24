@@ -406,7 +406,13 @@ int AnmVm::update(AnmEnvironment& env){
                 angular_velocity={x,y,z};flags2|=0x800000u;
             }else{angular_velocity.x=float(floating(0));angular_velocity.y=float(floating(1));angular_velocity.z=float(floating(2));}
             flags|=4;break;
-        case 54:scale_velocity.x=float(floating(0));scale_velocity.y=float(floating(1));break;
+        case 54:
+            if constexpr(kPortTitle==14){
+                // Retail4716bf resolves Y before X and enables velocity updates.
+                const float y=float(floating(1)),x=float(floating(0));
+                scale_velocity={x,y};flags2|=0x800000u;
+            }else{scale_velocity.x=float(floating(0));scale_velocity.y=float(floating(1));}
+            break;
         case 55:{const i32 duration=integer(1);alpha_start(alpha_interpolation,duration,0,color>>24,current->argument<u8>(0),&env.rate,true);break;}
         case 56:{auto& v=position_interpolation;v.duration=integer(0);std::memcpy(v.initial_tangent,&env.default_tangent,12);std::memcpy(v.final_tangent,&env.default_tangent,12);v.mode=InterpolationMode(current->argument<i32>(1));const auto from=flags&0x100?child_position:script_position;std::memcpy(v.start,&from,12);const float z=float(floating(4)),y=float(floating(3)),x=float(floating(2));v.end[0]=x;v.end[1]=y;v.end[2]=z;v.timer.set(0,&env.rate);break;}
         case 57:case 78:{const u32 from=op==57?color:secondary_color;const u32 b=u32(integer(4))&255,g=u32(integer(3))&255,r=u32(integer(2))&255;const i32 duration=integer(0);rgb_start(op==57?color_interpolation:color2_interpolation,duration,current->argument<u8>(1),from,b|(g<<8)|(r<<16),&env.rate);break;}
