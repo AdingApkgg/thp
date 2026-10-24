@@ -1,7 +1,7 @@
 {
   "date": "2026-10-24",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "c907eec957f1ab95fde1213624108f13b54a2b08",
+  "sourceCommit": "3df3cd326ee7de1b3443a87f79eaba8691dd3792",
   "files": [
     {
       "path": ".gitignore",
@@ -92,6 +92,11 @@
       "path": "docs/porting/TH14_DIALOGUE_SECTION_FIX_OCT20.md",
       "bytes": 3085,
       "sha256": "b66c5131bcf0d55e92170c138caca5663bb9f34f96dd1ba888e845e271e29e91"
+    },
+    {
+      "path": "docs/porting/TH14_ENEMY_PROBE_AND_PAUSED_SCORE_OCT24.md",
+      "bytes": 3605,
+      "sha256": "9e8fd5ad470fa258383fd5277da7da2ca9fa608eec1041febe8c08ed00747354"
     },
     {
       "path": "docs/porting/TH14_FINAL_VISUAL_STATE_OCT24.md",
@@ -1880,8 +1885,8 @@
     },
     {
       "path": "docs/porting/th14-enemy-hit-flash-verified-oct24.json",
-      "bytes": 1278,
-      "sha256": "c2b277e8a13262630d06fbf4f85abc2bec8edaee532b2476c3b88249d27d00f2"
+      "bytes": 1341,
+      "sha256": "ae28cca0d9fbab8a18946207a0831e918efbb7de183ab50586ef83d62e636595"
     },
     {
       "path": "docs/porting/th14-enemy-manager-id-verified.json",
@@ -1917,6 +1922,11 @@
       "path": "docs/porting/th14-enemy-position-copy-verified.json",
       "bytes": 1443,
       "sha256": "f5a30ebf454b399e68eb4cb3f60942d6e8c000b767c2f803bed8ded0a2ac8a43"
+    },
+    {
+      "path": "docs/porting/th14-enemy-probe-and-paused-score-verified-oct24.json",
+      "bytes": 20408,
+      "sha256": "7e13692eb946e891045c3b82f4d77f6389ab77c7d45e34c7ccaa02344cb060c8"
     },
     {
       "path": "docs/porting/th14-enemy-spawn-verified.json",
@@ -2479,6 +2489,16 @@
       "sha256": "eefe1eb8bcf8072f4eaa077cc659efa61b213feab5ae4b218d544e441be04109"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-ending-score-lifetime-candidate-oct24.json",
+      "bytes": 240287,
+      "sha256": "e1cc776f7535748079d6537b094f819b083b270d09451234f3eafa918f9007d6"
+    },
+    {
+      "path": "docs/porting/th14-launcher-runtime-enemy-probe-candidate-oct24.json",
+      "bytes": 229877,
+      "sha256": "05141692beb32da9156e4f650964828b0cb001e6ed3464d30dfedd012f4b6209"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-final-visual-state-candidate-oct24.json",
       "bytes": 239368,
       "sha256": "f9df92a4b9a33740f6195a421898a84afa8e7d5dc437e4790af0bd440eeae4e4"
@@ -2629,6 +2649,11 @@
       "sha256": "fb5ae4619c1b987204276884af8fa8c9cd06fa3624cc450c11503b34e40b938a"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-score-phase-candidate-oct24.json",
+      "bytes": 239670,
+      "sha256": "5bc3f08aafa2be5abc31c28bd04bb2a85f95f60f2989bee3dcbb40ac2bef0fbc"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-shot-hit-interrupt-candidate-oct23.json",
       "bytes": 139750,
       "sha256": "3d624b500d08d1db4096791e560afd7c4b051fc171d7e33f66cc215b35b3b333"
@@ -2712,6 +2737,16 @@
       "path": "docs/porting/th14-launcher-site-dialogue-section-oct20.json",
       "bytes": 36943,
       "sha256": "e8120517f8bfae315dae5aa038748c8d4c3132952f70d1059c53b374e42627b7"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-ending-score-lifetime-candidate-oct24.json",
+      "bytes": 40201,
+      "sha256": "a3ca99485a8e31e16043660a068f5b85f3cf71de851057e0d3c2b77cc89e4133"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-enemy-probe-candidate-oct24.json",
+      "bytes": 39952,
+      "sha256": "3314d576f19d3f425a6c31cfb17a5da270e2a958b0d79508ca8ee8eab1a8a1d5"
     },
     {
       "path": "docs/porting/th14-launcher-site-final-visual-state-candidate-oct24.json",
@@ -2802,6 +2837,11 @@
       "path": "docs/porting/th14-launcher-site-save-delta-oct16.json",
       "bytes": 36937,
       "sha256": "5231a4047a69ee115a7aaeeb6533b4085d5606ed9e2f8b2db794383055f11b66"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-score-phase-candidate-oct24.json",
+      "bytes": 39658,
+      "sha256": "306854b038a9a573092981a36bf0ae7844bd02dcecd8e083fc8e92acfaf0e356"
     },
     {
       "path": "docs/porting/th14-launcher-site-shot-hit-interrupt-candidate-oct23.json",
@@ -3792,6 +3832,11 @@
       "path": "docs/porting/th14-pause-text-verified.json",
       "bytes": 1489,
       "sha256": "923a8e0d8fde69b96c5c9b00965f2f170b9a3dbd6ce970723d23de30afaf2730"
+    },
+    {
+      "path": "docs/porting/th14-paused-score-verified-oct24.json",
+      "bytes": 973,
+      "sha256": "1d2d80b81e10b0762bbe7a4f8b4d7d8389bf4d111805672d79b4a1ba0343df05"
     },
     {
       "path": "docs/porting/th14-physical-replay-native-trace-zps-normal-stage6-control-clock-oct13-observed-oct13.json",
@@ -7000,13 +7045,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/EnemyFrame.cpp",
-      "bytes": 12266,
-      "sha256": "52bf6e62fead977812304878260393b89afa2545d81d73f8048a998abdd8f9c4"
+      "bytes": 12737,
+      "sha256": "e579d9fb16dbae6845385e57d4caf190f3246a9e9bb6a2f52598813c1cbab456"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/EnemyFrame.hpp",
-      "bytes": 2564,
-      "sha256": "bbc9afeadb594e7410f4d9ed38176246fc0d89364033d7946bdfa03ba8e5537d"
+      "bytes": 2669,
+      "sha256": "2b69dbfa7572b2122d610ee04f5067cb4bb1770360cf6548544b3e8e7303fccf"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/EnemyLaserCommands.cpp",
@@ -7060,8 +7105,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/EnemyTh14Commands.cpp",
-      "bytes": 44999,
-      "sha256": "b44ed0c65e4a9ed2d65b69dbb52fafd79b9a97b73477c858359a583e129b3ff3"
+      "bytes": 45000,
+      "sha256": "4199764193c09c6bf2557a9ee4e106ceaedda78d8a710fb0ca1bf3f25a9fddf2"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/EnemyTh14Emitter.cpp",
@@ -7140,13 +7185,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "bytes": 61227,
-      "sha256": "48485638bae6cd147469d8f93344fc8fe82ab88b2fbb34443b26efad37f6c458"
+      "bytes": 61687,
+      "sha256": "f8d217be3310ed2673d902ff7cc4f272b91cbe96ee9d0f987bac0c066500a1f0"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
-      "bytes": 24501,
-      "sha256": "ccdaff9ef9e8f9b441677a814fb96ed8f3d858a5fdab7d7a86e3991d6222f160"
+      "bytes": 24593,
+      "sha256": "a7c2d66680a3ef6db19e401eb6c5f7bb0ea3f90536bdd09a25dfac8bd24afc9a"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameConfig.cpp",
@@ -7190,8 +7235,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "bytes": 54042,
-      "sha256": "6cc658f32506ada14600bf3c0dfe99f5ed06dc10d3dfeb8b1b82c465d47aa441"
+      "bytes": 54268,
+      "sha256": "e5266a6e7698e79700469887097bace8f0a9ab4ead9d6900908f9e208d339d20"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.hpp",
@@ -7670,8 +7715,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotManager.hpp",
-      "bytes": 9307,
-      "sha256": "6d0501c71aa7d96a1ebe9b6ad853d5066b19f8b0fbdde94a5d6d65c3cb45b554"
+      "bytes": 9351,
+      "sha256": "72d7c3844b774233d634d2d6d706f3d091ba36a954e0a9b89d70c928b82df75f"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotPoolTh14.hpp",
@@ -7695,8 +7740,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotTh14.cpp",
-      "bytes": 18273,
-      "sha256": "ec55d7417d230fba9bc4572cd520f0c2ae38f74c6adfbd62441c021994fd64dc"
+      "bytes": 18343,
+      "sha256": "d6ccfbd5523929e2ab2d7c373abcae9416e636509967299e9bf6b7229927242d"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotTh16.cpp",
@@ -10635,8 +10680,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-enemy-hit-flash-fixture.cpp",
-      "bytes": 733,
-      "sha256": "eabc7f43f575a9ed8f358054ce971bc25f5cddf9a7d8907c01beb52db8cef89a"
+      "bytes": 782,
+      "sha256": "a0a76416636f32580a3440b0300545c094c1f0bebbfa83aad9ea2b53921610ee"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-enemy-manager-id-fixture.cpp",
@@ -11142,6 +11187,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-pause-text-fixture.cpp",
       "bytes": 3033,
       "sha256": "4d13d5a4d54aa48e58a6983b5f51a821cb5b6b68d6e9f9971118206b34c92cf0"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-paused-score-fixture.cpp",
+      "bytes": 609,
+      "sha256": "f38adcb6b6898ff89822e4da1bfe41134345b0d7e292d520aaff02689b78022e"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-physical-replay-reference-fixture.cpp",
@@ -15660,8 +15710,8 @@
     },
     {
       "path": "tools/th14-enemy-hit-flash-check.mjs",
-      "bytes": 3051,
-      "sha256": "d645dde479a35a282d80d28c01aaa4e48d8ba60e08ad3679deca19ed9753f0b5"
+      "bytes": 3114,
+      "sha256": "02e9670494ccaa9296181bf6f98166d1b90ad071edbb89d5bfcf630e8df93758"
     },
     {
       "path": "tools/th14-enemy-hit-flash-native.py",
@@ -17947,6 +17997,16 @@
       "path": "tools/th14-pause-text-native.py",
       "bytes": 5782,
       "sha256": "fba980029dc5a17d7e23b5a0a1245808115fe9f97d62b1639970dce0ab0f6032"
+    },
+    {
+      "path": "tools/th14-paused-score-check.mjs",
+      "bytes": 3216,
+      "sha256": "584dc2297b47645ba9b8b9526702ade2f4fa31b7bf81b93a2813949b2ca02267"
+    },
+    {
+      "path": "tools/th14-paused-score-native.py",
+      "bytes": 1729,
+      "sha256": "1f38a17c5abde97d41a2646f5ec96b7d318ef5f046931f2b261e99302541a2bb"
     },
     {
       "path": "tools/th14-physical-area-reference-trace-check.mjs",

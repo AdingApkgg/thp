@@ -92,6 +92,15 @@ i32 enemy_frame(EnemyScriptServices& script,EnemyFrameWorld& world){
             animations->position(e.animations[9],e.current.position,true);e.hitbox={192,192};
         }else if(vm){animations->interrupt(e.animations[9],1);e.animations[9]=0;e.hitbox={48,48};}
     }
+#if PORT_TITLE == 14
+    // Retail42396c..423a02 probes flag800 enemies before the ordinary21 guard.
+    // The collector still records the last contact, but skips hit callbacks/score.
+    if(e.flags&0x800){
+        i32 probe_damage=0;bool bomb_contact=false;
+        if(!world.th14_probe_damage(e,probe_damage,bomb_contact))return -2;
+        if(probe_damage&&bomb_contact){result=enemy_death(e,*animations,world,&script);if(result)return result;}
+    }
+#endif
     e.flags&=~u32(kPortTitle==14||kPortTitle==16?0x200000:0x20000);
     EnemyPhaseState phase{e.lifetime.rate,&world.countdown_seconds,&world.countdown_hundredths,&world.spell_flags,&world.spell_elapsed,&world.spell_bonus,&world.shared_spell_counter(),world.special_active,environment.character,environment.subtype};
     const auto transition=[&](const char* name){if constexpr(kPortTitle!=14&&kPortTitle!=16)e.lifetime.set(0,e.lifetime.rate);auto& owner=*e.script_owner;owner.script.reset_threads(script);owner.script.select_subroutine(name);};

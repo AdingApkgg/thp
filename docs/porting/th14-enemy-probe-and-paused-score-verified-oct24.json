@@ -1,0 +1,571 @@
+{
+  "verified": true,
+  "observedUtc": "2026-10-24T12:22:20.455489+00:00",
+  "baseCommit": "3df3cd326ee7de1b3443a87f79eaba8691dd3792",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/EnemyFrame.hpp": "2b69dbfa7572b2122d610ee04f5067cb4bb1770360cf6548544b3e8e7303fccf",
+    "runtimes/th12/th12_web/cpp/game/EnemyFrame.cpp": "e579d9fb16dbae6845385e57d4caf190f3246a9e9bb6a2f52598813c1cbab456",
+    "runtimes/th12/th12_web/cpp/game/GameBattle.hpp": "a7c2d66680a3ef6db19e401eb6c5f7bb0ea3f90536bdd09a25dfac8bd24afc9a",
+    "runtimes/th12/th12_web/cpp/game/GameBattle.cpp": "f8d217be3310ed2673d902ff7cc4f272b91cbe96ee9d0f987bac0c066500a1f0",
+    "runtimes/th12/th12_web/cpp/game/ShotManager.hpp": "72d7c3844b774233d634d2d6d706f3d091ba36a954e0a9b89d70c928b82df75f",
+    "runtimes/th12/th12_web/cpp/game/ShotTh14.cpp": "d6ccfbd5523929e2ab2d7c373abcae9416e636509967299e9bf6b7229927242d",
+    "runtimes/th12/th12_web/cpp/game/GameSession.cpp": "e5266a6e7698e79700469887097bace8f0a9ab4ead9d6900908f9e208d339d20",
+    "runtimes/th12/th12_web/cpp/game/EnemyTh14Commands.cpp": "4199764193c09c6bf2557a9ee4e106ceaedda78d8a710fb0ca1bf3f25a9fddf2"
+  },
+  "changes": [
+    "Continue retail434360 score progression in the paused Extra end menu, preserving the six-stage ending-active freeze.",
+    "Use enemy+2c0 phase clock for hit flashing, with lifetime independently different in the unit control.",
+    "Connect the flag800 probe collector before the ordinary21 guard, retaining last contact without hit callbacks or score and preserving its Bomb-death branch.",
+    "Keep the six-stage ending-active HUD frozen at801525760 while the economy retains914525760; Extra progresses to732411200."
+  ],
+  "scoreUnit": {
+    "passed": true,
+    "cases": 336,
+    "originalExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+    "originalEntry": "434360",
+    "instructionBytesPatched": 0,
+    "controlledHudAndGlobals": true,
+    "wasmSha256": "2d4cc011954f54d666e1a9daedd04f77529e4948bd80e69053be6a3738f99b42",
+    "coreBuildReportSha256": "7697e3ddccbcfe1cbd5d7b248e73ab1d65cd2dcbe5404a59c0dea22fc393d514",
+    "fixtureSha256": "f38adcb6b6898ff89822e4da1bfe41134345b0d7e292d520aaff02689b78022e",
+    "scope": "Unmodified retail434360 score callback: displayed score, speed, high score, high continues and flags.336 explicit current/display/speed/flag combinations include negative differences and paused/demo flags. This helper unit does not prove Scheduler registration, whole HUD, GPU or complete-game equivalence; full-process terminal HUD observations and production Replay-menu integration are separate controls.",
+    "completeGame": false,
+    "nativeEquivalent": false
+  },
+  "phaseUnit": {
+    "passed": true,
+    "cases": 11520,
+    "originalExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+    "actualBranch": "423ee5..42407c",
+    "wasmSha256": "4b062c4d9b6012bd9aaf47c6fee53952ce9d888a5fc94554ed13ea52f5e27557",
+    "controlledEnemyAndVm": true,
+    "soundSinkPatched": true,
+    "scope": "TH14 retail flash branch 423ee5..42407c: damage-flash countdown, signed phase-clock modulo (native enemy+2c0), native 0x80000000/0x40800000/0x200000 enemy masks, native VM color-mode bits, secondary color and optional hit sound. Twelve flag combinations include former wrong masks; negative/zero/positive countdown and phase clock, with lifetime deliberately different, four spell states, five health boundaries and four dirty VM flag values. Production helper runs through EnemyFrame. Complete gameplay, GPU pixels and audio PCM are outside this unit control.",
+    "sourceHashes": {
+      "cpp/game/EnemyTh14Commands.cpp": "4199764193c09c6bf2557a9ee4e106ceaedda78d8a710fb0ca1bf3f25a9fddf2",
+      "cpp/game/EnemyFrame.cpp": "e579d9fb16dbae6845385e57d4caf190f3246a9e9bb6a2f52598813c1cbab456",
+      "cpp/game/EnemyCommands.hpp": "7502c43c813edae5356ec37e0f695b91c582c2a2fa6d9ed82c3168accb36bbea",
+      "tests/cpp/th14-enemy-hit-flash-fixture.cpp": "a0a76416636f32580a3440b0300545c094c1f0bebbfa83aad9ea2b53921610ee"
+    }
+  },
+  "originalControls": [
+    {
+      "case": "full-initial-worker-events-retail-marisaa-extra-live-full-hardware-oct24",
+      "callbacks": 46391,
+      "selected32ByteExact": true,
+      "naturalEndAndStable90MenuTicks": true
+    },
+    {
+      "case": "full-initial-worker-events-retail-marisab-extra-full-hardware-oct24",
+      "callbacks": 54114,
+      "selected32ByteExact": true,
+      "naturalEndAndStable90MenuTicks": true
+    },
+    {
+      "case": "full-initial-worker-events-retail-reimua-extra-full-hardware-oct24",
+      "callbacks": 38403,
+      "selected32ByteExact": true,
+      "naturalEndAndStable90MenuTicks": true
+    },
+    {
+      "case": "full-initial-worker-events-retail-reimub-extra-live-full-hardware-oct24",
+      "callbacks": 46936,
+      "selected32ByteExact": true,
+      "naturalEndAndStable90MenuTicks": true
+    },
+    {
+      "case": "full-initial-worker-events-retail-sakuyaa-extra-full-2-hardware-oct24",
+      "callbacks": 38977,
+      "selected32ByteExact": true,
+      "naturalEndAndStable90MenuTicks": true
+    },
+    {
+      "case": "full-initial-worker-events-retail-sakuyaa-final-live-vm-hardware-oct24",
+      "callbacks": 38977,
+      "selected32ByteExact": true,
+      "naturalEndAndStable90MenuTicks": true
+    },
+    {
+      "case": "full-initial-worker-events-retail-sakuyaa-hard-stage6-full-2-hardware-oct24",
+      "callbacks": 23294,
+      "selected32ByteExact": true,
+      "naturalEndAndStable90MenuTicks": true
+    },
+    {
+      "case": "full-initial-worker-events-retail-sakuyaa-lunatic-stage6-full-hardware-oct24",
+      "callbacks": 19405,
+      "selected32ByteExact": true,
+      "naturalEndAndStable90MenuTicks": true
+    },
+    {
+      "case": "full-initial-worker-events-retail-sakuyaa-normal-stage6-full-hardware-oct24",
+      "callbacks": 23461,
+      "selected32ByteExact": true,
+      "naturalEndAndStable90MenuTicks": true
+    },
+    {
+      "case": "full-initial-worker-events-retail-sakuyab-extra-full-hardware-oct24",
+      "callbacks": 50937,
+      "selected32ByteExact": true,
+      "naturalEndAndStable90MenuTicks": true
+    }
+  ],
+  "totalOriginalCallbacks": 380895,
+  "liveVmControls": [
+    {
+      "case": "sakuyaa-final-live-vm",
+      "selectedValuesPerRow": 80,
+      "rows": 6305,
+      "snapshots": [
+        {
+          "frame": 1,
+          "nativeCount": 71,
+          "portableCount": 71,
+          "portableExpected": 71,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 26000,
+          "nativeCount": 1029,
+          "portableCount": 1029,
+          "portableExpected": 1029,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 30000,
+          "nativeCount": 512,
+          "portableCount": 512,
+          "portableExpected": 512,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 36000,
+          "nativeCount": 2015,
+          "portableCount": 2015,
+          "portableExpected": 2015,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 38900,
+          "nativeCount": 2678,
+          "portableCount": 2678,
+          "portableExpected": 2678,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        }
+      ],
+      "allSelectedValuesBitExact": true,
+      "wasmSha256": "d5090166eb044b4a8335295b5615ef045844eec6cea9bb04b6964ef6891678f1"
+    },
+    {
+      "case": "reimub-extra-live-full",
+      "selectedValuesPerRow": 80,
+      "rows": 3957,
+      "snapshots": [
+        {
+          "frame": 1,
+          "nativeCount": 71,
+          "portableCount": 71,
+          "portableExpected": 71,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 26000,
+          "nativeCount": 138,
+          "portableCount": 138,
+          "portableExpected": 138,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 30000,
+          "nativeCount": 230,
+          "portableCount": 230,
+          "portableExpected": 230,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 36000,
+          "nativeCount": 3007,
+          "portableCount": 3007,
+          "portableExpected": 3007,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 38900,
+          "nativeCount": 511,
+          "portableCount": 511,
+          "portableExpected": 511,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        }
+      ],
+      "allSelectedValuesBitExact": true,
+      "wasmSha256": "d5090166eb044b4a8335295b5615ef045844eec6cea9bb04b6964ef6891678f1"
+    },
+    {
+      "case": "marisaa-extra-live-full",
+      "selectedValuesPerRow": 80,
+      "rows": 2131,
+      "snapshots": [
+        {
+          "frame": 1,
+          "nativeCount": 71,
+          "portableCount": 71,
+          "portableExpected": 71,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 26000,
+          "nativeCount": 144,
+          "portableCount": 144,
+          "portableExpected": 144,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 30000,
+          "nativeCount": 496,
+          "portableCount": 496,
+          "portableExpected": 496,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 36000,
+          "nativeCount": 909,
+          "portableCount": 909,
+          "portableExpected": 909,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "frame": 38900,
+          "nativeCount": 511,
+          "portableCount": 511,
+          "portableExpected": 511,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        }
+      ],
+      "allSelectedValuesBitExact": true,
+      "wasmSha256": "d5090166eb044b4a8335295b5615ef045844eec6cea9bb04b6964ef6891678f1"
+    }
+  ],
+  "totalLiveVmRows": 12393,
+  "liveVmSnapshots": 15,
+  "selectedValuesPerRow": 80,
+  "rowsCumulativeNotUniqueInstances": true,
+  "valuesIncludeRepeatedClocksNotCompleteVm": true,
+  "resolvedPreviousReimuBSelectedDifferences": 1025,
+  "matrix": {
+    "cases": 30,
+    "callbacks": 2763367,
+    "allSelected32Unchanged": true,
+    "naturalEndAndStable90MenuTicks": true,
+    "wasmSha256": "de3fc3fa20850afc2d76d501d1b37420987d89f43120403e6017d5852f70fecc",
+    "baselineCommit": "1d5b07aa343ea1e1fc2684fef158df4d36b39371"
+  },
+  "build": {
+    "coreObjectsRecompiled": 1,
+    "sdlObjectsRecompiled": 1,
+    "reusedCoreObjects": 140,
+    "reusedSdlObjects": 145,
+    "allHeadersAndReusedObjectsHashVerified": true,
+    "previousInterfaceRebuildCoreObjects": 141,
+    "previousInterfaceRebuildSdlObjects": 146,
+    "diagnosticsUseCurrentFrozenHeaders": true,
+    "sdlWasmSha256": "bb27b6b47c0d391f1c45fe17fa5590944d041a0054aeacf662520f015786fe0c",
+    "warmWasmSha256": "5da90d3449e90bbe7b17a6d3c0d5c937ac6e3feb6bc3a2632465359781c11199",
+    "probeWasmSha256": "de3fc3fa20850afc2d76d501d1b37420987d89f43120403e6017d5852f70fecc",
+    "exportsUnchanged": true,
+    "addedImports": [],
+    "removedImports": []
+  },
+  "previousScorePhaseBinaryBrowser": {
+    "startedUtc": "2026-10-24T08:32:18.794Z",
+    "endFirstObservedUtc": "2026-10-24T08:47:25.750Z",
+    "endStableObservedUtc": "2026-10-24T08:48:45.946Z",
+    "stableObservedSeconds": 80.196,
+    "sdlWasmSha256": "9299fd08d537f697a1455a94b3b624fe9b9f00daea82a4fc7d0ef7f2eb5d9a01",
+    "naturalReplayEndObserved": true,
+    "hudScore": 732411200,
+    "graze": 12484,
+    "maxPoint": 61590,
+    "scoreMatchesRecordedFinalScore": true,
+    "quietOutput": true,
+    "noInputAfterStart": true,
+    "issues": [],
+    "fullHudEquivalence": false,
+    "completeGame": false,
+    "nativeEquivalent": false
+  },
+  "currentBinaryBrowser": {
+    "startedUtc": "2026-10-24T09:54:57.740Z",
+    "endFirstConfirmedUtc": "2026-10-24T12:20:38.679Z",
+    "endStableObservedUtc": "2026-10-24T12:21:55.209Z",
+    "stableObservedSeconds": 76.53,
+    "sdlWasmSha256": "bb27b6b47c0d391f1c45fe17fa5590944d041a0054aeacf662520f015786fe0c",
+    "naturalReplayEndObserved": true,
+    "hudScore": 732411200,
+    "graze": 12484,
+    "maxPoint": 61590,
+    "scoreMatchesRecordedFinalScore": true,
+    "quietOutput": true,
+    "noInputSentByAgentAfterStart": true,
+    "issues": [],
+    "fullHudEquivalence": false,
+    "completeGame": false,
+    "nativeEquivalent": false
+  },
+  "currentBinaryBrowserValidated": true,
+  "limits": [
+    "Original controls declare one attract-bit clear after an untouched first Player boundary; instruction, RNG, counter, health and input writes are absent.",
+    "Reference host timings, initial clock and cookie are explicit controlled environment inputs in diagnostic reactors, not per-frame gameplay overrides.",
+    "Six distinct shot types have intact Extra controls; three stage6 controls are derived containers preserving exact recorded stage header/input/FPS and do not certify every full six-stage mode.",
+    "Live rows are cumulative across15 selected snapshots;80 selected values include duplicate clocks and are not complete VMs, every-frame/GPU-pixel proof or unique-instance counts.",
+    "Whole original GPU pixels, PCM, ordinary all-mode initialization and full persistence remain unfinished."
+  ],
+  "sourceOnly": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "endingHudIntegration": {
+    "rows": [
+      {
+        "key": "reimub-extra",
+        "expectedOriginalHudUnits": 73241120,
+        "end": {
+          "frame": 46936,
+          "hud": [
+            35941120,
+            73241120,
+            0,
+            0,
+            0,
+            0,
+            3
+          ],
+          "menu": [
+            2,
+            7,
+            46935,
+            46936,
+            1,
+            2,
+            1,
+            0,
+            0,
+            0,
+            3,
+            73241120,
+            8,
+            1,
+            46787,
+            1065353216,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "after90MenuTicks": [
+          73241120,
+          73241120,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "callbacks": 46936,
+        "wasmSha256": "aa96c07cb56a97ab1e34fbaf661d5632b939abe0ff65578c75600aac27e29a58",
+        "matched": true
+      },
+      {
+        "key": "reimub-normal",
+        "expectedOriginalHudUnits": 80152576,
+        "end": {
+          "frame": 122005,
+          "hud": [
+            80152576,
+            91452576,
+            1,
+            0,
+            1,
+            0,
+            3
+          ],
+          "menu": [
+            2,
+            6,
+            26238,
+            122005,
+            1,
+            2,
+            1,
+            0,
+            0,
+            0,
+            3,
+            91452576,
+            8,
+            1,
+            25940,
+            1065353216,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "after90MenuTicks": [
+          80152576,
+          91452576,
+          1,
+          0,
+          1,
+          0,
+          3
+        ],
+        "callbacks": 122005,
+        "wasmSha256": "aa96c07cb56a97ab1e34fbaf661d5632b939abe0ff65578c75600aac27e29a58",
+        "matched": true
+      }
+    ],
+    "allMatched": true,
+    "completeGame": false,
+    "nativeEquivalent": false
+  },
+  "scoreHelperProofScope": "The336-case helper proof uses the previous full-interface object build; the Hud helper source is unchanged. The new ending-active Scheduler guard is separately checked by the exact final-build Normal122005 and Extra46936 callback terminal-HUD integrations.",
+  "previousProbeBinaryBrowser": {
+    "startedUtc": "2026-10-24T09:24:52.449Z",
+    "endFirstConfirmedUtc": "2026-10-24T09:49:07.026Z",
+    "endStableObservedUtc": "2026-10-24T09:49:49.880Z",
+    "stableObservedSeconds": 42.854,
+    "sdlWasmSha256": "3235b91221a86ad73a080e136fe3e521af18725620bff328baa23e00c4d103be",
+    "naturalReplayEndObserved": true,
+    "hudScore": 732411200,
+    "graze": 12484,
+    "maxPoint": 61590,
+    "scoreMatchesRecordedFinalScore": true,
+    "quietOutput": true,
+    "noInputAfterStart": true,
+    "issues": [],
+    "fullHudEquivalence": false,
+    "completeGame": false,
+    "nativeEquivalent": false
+  },
+  "freshOriginalSixStageHudControl": {
+    "callbacks": 122005,
+    "intactOriginalReplay": true,
+    "stages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "naturalEnd": true,
+    "stableMenuReadings": 3,
+    "hudScore": 801525760,
+    "economyScore": 914525760,
+    "controlFlags": 16400,
+    "scoreCallbackEntries": 121404,
+    "scoreCallbackEntriesDuringEnding": 0,
+    "scoreCallbackGroups": {
+      "1:0x0": 14060,
+      "2:0x0": 16496,
+      "3:0x0": 20697,
+      "4:0x0": 23369,
+      "5:0x0": 20663,
+      "6:0x0": 26119
+    },
+    "instructionBytesPatched": 0,
+    "rngCounterHealthInputWrites": false,
+    "declaredAttractBitClearAtUntouchedFirstPlayer": true,
+    "sourceSha256": "8968f6a2f7ef4fd707344b1b369c62c96511890032f44846f5f3b082f22f0756",
+    "selectedSha256": "23a59e1d5185448f7ad87b25c20330d414721056a731fa788b9e67b86c853759",
+    "scope": "Read-only original full-process evidence for the score callback lifetime and terminal HUD; it does not assert whole-campaign portable state equality."
+  },
+  "fullSixStageSelectedStateControl": {
+    "callbacks": 122005,
+    "intactOriginalReplay": true,
+    "stages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "selectedValuesPerCallback": 32,
+    "allSelectedWordsByteExact": true,
+    "selectedSha256": "23a59e1d5185448f7ad87b25c20330d414721056a731fa788b9e67b86c853759",
+    "naturalEnd": true,
+    "stablePortableMenuTicks": 90,
+    "wasmSha256": "e711b40d5e371977880e6356480c698e9d2345874d78e1624f5bc5d41a771318",
+    "coreWarmModuleSha256": "5da90d3449e90bbe7b17a6d3c0d5c937ac6e3feb6bc3a2632465359781c11199",
+    "currentCoreObjectsUsed": true,
+    "observedStageWorkerWaits": [
+      {
+        "stage": 2,
+        "requestedMilliseconds": 60,
+        "observedCallToReturnNanoseconds": 65717200,
+        "callAfterPlayerCallbacks": 14062,
+        "returnAfterPlayerCallbacks": 14067,
+        "includesDebuggerScheduling": true
+      },
+      {
+        "stage": 3,
+        "requestedMilliseconds": 60,
+        "observedCallToReturnNanoseconds": 65371600,
+        "callAfterPlayerCallbacks": 30678,
+        "returnAfterPlayerCallbacks": 30683,
+        "includesDebuggerScheduling": true
+      },
+      {
+        "stage": 4,
+        "requestedMilliseconds": 60,
+        "observedCallToReturnNanoseconds": 63598300,
+        "callAfterPlayerCallbacks": 51495,
+        "returnAfterPlayerCallbacks": 51499,
+        "includesDebuggerScheduling": true
+      },
+      {
+        "stage": 5,
+        "requestedMilliseconds": 60,
+        "observedCallToReturnNanoseconds": 62432800,
+        "callAfterPlayerCallbacks": 74984,
+        "returnAfterPlayerCallbacks": 74989,
+        "includesDebuggerScheduling": true
+      },
+      {
+        "stage": 6,
+        "requestedMilliseconds": 60,
+        "observedCallToReturnNanoseconds": 63738100,
+        "callAfterPlayerCallbacks": 95767,
+        "returnAfterPlayerCallbacks": 95772,
+        "includesDebuggerScheduling": true
+      }
+    ],
+    "actualInitialClockAndCookieAsEnvironment": true,
+    "observedInitialResourceQueueAndPlayerHostTimes": true,
+    "declaredGeometryFrame": 1764484,
+    "declaredAttractClearAtUntouchedFirstPlayer": true,
+    "rngSerialCounterHealthAndInputWrites": false,
+    "perFrameStateOverrides": false,
+    "resourcePhaseReadinessNotYetConfigured": true,
+    "scope": "Separate diagnostic wrapper over the current production core with five independently observed worker-wait return times as host-environment inputs. Selected32 state equality across the full replay is not whole ANM allocation/VM, original GPU, PCM or all-mode equivalence.",
+    "completeGame": false,
+    "nativeEquivalent": false
+  }
+}

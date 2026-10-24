@@ -215,6 +215,9 @@ public:
     void start_ending_fade()override{fades.start(5,200,0,kPortTitle==14?73:67,&animations.rate);}
 
     bool shot_damage(EnemyState&,i32&) override;
+#if PORT_TITLE == 14
+    bool th14_probe_damage(EnemyState&,i32&,bool&) override;
+#endif
 #if PORT_TITLE == 16
     bool th16_shot_score(i32 amount)override{return item_rewards.th16_add_score(amount);}
     bool th16_beam_pan(i32 pan)override{events.push_back({BattleEventKind::SoundPan,20,pan});return true;}

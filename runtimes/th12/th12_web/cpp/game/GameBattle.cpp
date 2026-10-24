@@ -663,6 +663,12 @@ bool GameBattle::cancel_shot(Vec3 position,float angle) {
     // A full native 256-shot pool silently discards the emission.
     return player->shots.spawn_converted_laser(position,angle)!=-2;
 }
+#if PORT_TITLE == 14
+bool GameBattle::th14_probe_damage(EnemyState& e,i32& out,bool& bomb_contact){
+    if(!player)return false;const auto& timer=player->state.state_timer;
+    return player->shots.damage_th14(e.current.position,e.flags&0x1000?&e.hitbox:nullptr,e.flags&0x1000?0:e.hitbox.x*.5f,e.flags&0x1000?e.animation_angle:0,timer.previous!=timer.current,economy,out,u32(e.instance_id),u32(e.instance_id),e.script_owner,true,&bomb_contact);
+}
+#endif
 bool GameBattle::shot_damage(EnemyState& e,i32& out) {
     if(!player)return false;
     const auto& timer=player->state.state_timer;

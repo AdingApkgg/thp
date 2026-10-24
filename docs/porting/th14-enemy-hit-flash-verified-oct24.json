@@ -3,14 +3,14 @@
   "cases": 11520,
   "originalExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
   "actualBranch": "423ee5..42407c",
-  "wasmSha256": "60e1c35ffdc1099ebbc956d14d55431ef32b3cb1835cce6f9b9a0524494e21db",
+  "wasmSha256": "4b062c4d9b6012bd9aaf47c6fee53952ce9d888a5fc94554ed13ea52f5e27557",
   "controlledEnemyAndVm": true,
   "soundSinkPatched": true,
-  "scope": "TH14 retail flash branch 423ee5..42407c: damage-flash countdown, signed lifetime modulo, native 0x80000000/0x40800000/0x200000 enemy masks, native VM color-mode bits, secondary color and optional hit sound. Twelve flag combinations include former wrong masks; negative/zero/positive countdown and lifetime, four spell states, five health boundaries and four dirty VM flag values. Production helper runs through EnemyFrame. Complete gameplay, GPU pixels and audio PCM are outside this unit control.",
+  "scope": "TH14 retail flash branch 423ee5..42407c: damage-flash countdown, signed phase-clock modulo (native enemy+2c0), native 0x80000000/0x40800000/0x200000 enemy masks, native VM color-mode bits, secondary color and optional hit sound. Twelve flag combinations include former wrong masks; negative/zero/positive countdown and phase clock, with lifetime deliberately different, four spell states, five health boundaries and four dirty VM flag values. Production helper runs through EnemyFrame. Complete gameplay, GPU pixels and audio PCM are outside this unit control.",
   "sourceHashes": {
-    "cpp/game/EnemyTh14Commands.cpp": "b44ed0c65e4a9ed2d65b69dbb52fafd79b9a97b73477c858359a583e129b3ff3",
-    "cpp/game/EnemyFrame.cpp": "52bf6e62fead977812304878260393b89afa2545d81d73f8048a998abdd8f9c4",
+    "cpp/game/EnemyTh14Commands.cpp": "4199764193c09c6bf2557a9ee4e106ceaedda78d8a710fb0ca1bf3f25a9fddf2",
+    "cpp/game/EnemyFrame.cpp": "e579d9fb16dbae6845385e57d4caf190f3246a9e9bb6a2f52598813c1cbab456",
     "cpp/game/EnemyCommands.hpp": "7502c43c813edae5356ec37e0f695b91c582c2a2fa6d9ed82c3168accb36bbea",
-    "tests/cpp/th14-enemy-hit-flash-fixture.cpp": "eabc7f43f575a9ed8f358054ce971bc25f5cddf9a7d8907c01beb52db8cef89a"
+    "tests/cpp/th14-enemy-hit-flash-fixture.cpp": "a0a76416636f32580a3440b0300545c094c1f0bebbfa83aad9ea2b53921610ee"
   }
 }

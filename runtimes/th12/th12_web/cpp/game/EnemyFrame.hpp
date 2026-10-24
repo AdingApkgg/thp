@@ -33,6 +33,9 @@ struct EnemyFrameWorld {
     virtual void clear_shot_targets(Enemy*)=0;
     virtual bool project_spawn(Vec3,Vec3&){return false;}
     virtual i32& shared_spell_counter(){return shared_spell_state;}
+#if PORT_TITLE == 14
+    virtual bool th14_probe_damage(EnemyState&,i32&,bool&){return false;}
+#endif
     Vec3 camera_position{};
 };
 // Original 0x411750 ordering: movement, scripts, damage/interrupts, collision,

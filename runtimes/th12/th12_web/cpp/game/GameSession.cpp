@@ -450,7 +450,11 @@ bool GameSession::update(const GameSessionInput& input) {
         default:break;
         }
 #if PORT_TITLE == 14
-        if(!overlay_already_updated)return true;
+        if(!overlay_already_updated){
+            // Retail434360 remains registered at priority17 while Menu9 pauses combat.
+            if(battle&&!battle->completion.state.ending_active)battle->hud.score.update(economy.score_units);
+            return true;
+        }
 #else
         return true;
 #endif
