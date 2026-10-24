@@ -1,7 +1,7 @@
 {
   "date": "2026-10-25",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "724a2ef96436c3e8a6d51b7c899edf7dea4b0525",
+  "sourceCommit": "46385ab662738af5bc49745ee0c35a2fd253f79f",
   "files": [
     {
       "path": ".gitignore",
@@ -102,6 +102,11 @@
       "path": "docs/porting/TH14_CURRENT_REIMUB_REPLAY_CHECK_OCT23.md",
       "bytes": 1665,
       "sha256": "3cb9cec6f012421e4fabfb78cf8f0f214e5b3fea2c1fdb48325faaf99f5efa2d"
+    },
+    {
+      "path": "docs/porting/TH14_DAMAGE_AREA_SNAP_OCT25.md",
+      "bytes": 2718,
+      "sha256": "398db6a479200ae9f562a90eee2f9debbceaa418114e05867ddd9049ee041392"
     },
     {
       "path": "docs/porting/TH14_DIALOGUE_DAMAGE_FIX_OCT19.md",
@@ -1594,6 +1599,16 @@
       "sha256": "e67df00235c2b9135db52a4e05f5b7c32f4728bc89d9b4030a7424d007d6de39"
     },
     {
+      "path": "docs/porting/th14-damage-area-snap-campaign-verified-oct25.json",
+      "bytes": 37381,
+      "sha256": "915d83978196f43060cf710de5423fe9750cd1678737ec082ba1665fa59f3315"
+    },
+    {
+      "path": "docs/porting/th14-damage-area-snap-verified-oct25.json",
+      "bytes": 1431,
+      "sha256": "17d91396e24746ae5b68ee0e1eeb264528cc3f6a33974d1d14fd6c754a46dba6"
+    },
+    {
       "path": "docs/porting/th14-damage-area-z-consumer-verified-oct14.json",
       "bytes": 20506,
       "sha256": "4936deff24524551f2b158582a6914aeb77bb4869bdc136c83fc477349a82a09"
@@ -2609,6 +2624,11 @@
       "sha256": "20e09aa4a0a7294e63d0ea649385bf12019281606fa110a78f489a51160df90b"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-damage-area-snap-candidate-oct25.json",
+      "bytes": 240141,
+      "sha256": "8ead7729eed1a5cc6bbc3895f3b03d78a55fc667c4772c94c9b774e7ec208570"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-dialogue-damage-oct19.json",
       "bytes": 103690,
       "sha256": "3b750bcc4f1a5172f575101b1784b8b079b079cb5fd8559adc9a53259dccf30e"
@@ -2897,6 +2917,11 @@
       "path": "docs/porting/th14-launcher-site-constructor-hit-oct15.json",
       "bytes": 36442,
       "sha256": "3aa3c395fb7fbe3a43d3f5951075ae4911250d799c6496682417887ff1fa5820"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-damage-area-snap-candidate-oct25.json",
+      "bytes": 40177,
+      "sha256": "ff245fb649421fcda3ed7988079c7a1ca881c9a5604bbbdc94dd1aa12372fec4"
     },
     {
       "path": "docs/porting/th14-launcher-site-dialogue-damage-oct19.json",
@@ -7925,8 +7950,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotDamageTh14.cpp",
-      "bytes": 6524,
-      "sha256": "a063bc7179916295185143bc75083e46dcd1f6351d9719b6818beaf25749073f"
+      "bytes": 6798,
+      "sha256": "e4a52f6c3fbf0079bae8b601dce7b8c8eb39d61b74443b36439c6770d44f9d27"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotDamageTh14.hpp",
@@ -10677,6 +10702,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-d3dx-normalize-fixture.cpp",
       "bytes": 403,
       "sha256": "1a8ed2e946439be5fe72a27740ee5dd0ca536c77e23cf41d2a38716de47e40e0"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-damage-area-snap-fixture.cpp",
+      "bytes": 1043,
+      "sha256": "c645e56c4ccf79a2e295db3195be8826d4c2d1c66f8e9bd7f4ca10ef4012aa89"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-damage-circle-fixture.cpp",
@@ -15137,6 +15167,16 @@
       "path": "tools/th14-damage-area-retained-owner-evidence-check.py",
       "bytes": 10011,
       "sha256": "8ba097114eba921cd620be47eb34999037281b5f4e99c07d029bbb32ccc26b57"
+    },
+    {
+      "path": "tools/th14-damage-area-snap-check-oct25.mjs",
+      "bytes": 2736,
+      "sha256": "18edb64a284b6b2e899e62e7b5f3de3414ff7bcd13eeb336ab6c76b51144fc60"
+    },
+    {
+      "path": "tools/th14-damage-area-snap-native-oct25.py",
+      "bytes": 3136,
+      "sha256": "5319e10e7416bb48e749e6fff246af29edd3e9fb1fce3ff58773fbcaba0fe5a9"
     },
     {
       "path": "tools/th14-damage-area-z-consumer-evidence-check.py",

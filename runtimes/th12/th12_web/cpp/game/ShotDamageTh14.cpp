@@ -17,6 +17,10 @@ void th14_damage_tick(Th14DamageArea& a)noexcept{
         const auto v=polar(m.angle,m.speed*rate);m.velocity.x=v.x;m.velocity.y=v.y;
         m.position.x+=m.velocity.x;m.position.y+=m.velocity.y;m.position.z+=m.velocity.z;
         m.position.x=float(std::floor(double(m.position.x*100.f)))/100.f;m.position.y=float(std::floor(double(m.position.y*100.f)))/100.f;a.position=m.position;
+    }else{
+        // 44e00f/44e017 run movement for every active area. Even zero-speed
+        // death/Bomb areas reach 4040dc's float32 floor-to-centi XY step.
+        Movement stationary;stationary.position=a.position;stationary.update();a.position=stationary.position;
     }
     a.radius+=a.growth;a.angle=normalize_angle(a.angle+a.angular_velocity);a.stamp=0;
     auto& t=a.timer;t.previous=t.current;const float rate=t.rate?*t.rate:1.f;

@@ -1,0 +1,875 @@
+{
+  "verifiedScopedFix": true,
+  "baseCommit": "46385ab662738af5bc49745ee0c35a2fd253f79f",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/ShotDamageTh14.cpp": "e4a52f6c3fbf0079bae8b601dce7b8c8eb39d61b74443b36439c6770d44f9d27"
+  },
+  "productionChange": "TH14 active stationary damage-area updates run zero-speed Movement::update, including float32 floor-to-centi XY, matching44e005/403df0/4040dc.",
+  "originalInstructionControl": {
+    "path": "docs/porting/th14-damage-area-snap-verified-oct25.json",
+    "sha256": "17d91396e24746ae5b68ee0e1eeb264528cc3f6a33974d1d14fd6c754a46dba6"
+  },
+  "unitCases": 2400,
+  "unitUpdateFrames": 9600,
+  "unitFields": 16,
+  "oldUnitDifferences": 12128,
+  "currentUnitDifferences": 0,
+  "campaigns": {
+    "sakuyaaNormal": {
+      "callbacks": 104802,
+      "selected32WordsEqual": true,
+      "camera25WordsEqual": true,
+      "hudTwoWordsEqual": true,
+      "all303LiveValuesEqual": true,
+      "liveSnapshots": [
+        {
+          "registryOrderEqual": true,
+          "frame": 1,
+          "nativeCount": 52,
+          "portableCount": 52,
+          "portableExpected": 52,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 26000,
+          "nativeCount": 154,
+          "portableCount": 154,
+          "portableExpected": 154,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 30000,
+          "nativeCount": 191,
+          "portableCount": 191,
+          "portableExpected": 191,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 36000,
+          "nativeCount": 344,
+          "portableCount": 344,
+          "portableExpected": 344,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 38900,
+          "nativeCount": 241,
+          "portableCount": 241,
+          "portableExpected": 241,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 60000,
+          "nativeCount": 223,
+          "portableCount": 223,
+          "portableExpected": 223,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 90000,
+          "nativeCount": 231,
+          "portableCount": 231,
+          "portableExpected": 231,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        }
+      ],
+      "remainingLiveDifferences": 0,
+      "allocation": {
+        "completed": true,
+        "windows": [
+          {
+            "window": "untouched-initial",
+            "nativeCount": 131,
+            "portableCount": 131,
+            "paired": 131,
+            "firstHandleDifference": null,
+            "firstIdentityDifference": null,
+            "allHandlesFileScriptEqual": true,
+            "portableCreationRange": [
+              0,
+              131
+            ]
+          },
+          {
+            "window": "late-75000-to-91000",
+            "nativeCount": 79288,
+            "portableCount": 79288,
+            "paired": 79288,
+            "firstHandleDifference": null,
+            "firstIdentityDifference": null,
+            "allHandlesFileScriptEqual": true,
+            "portableCreationRange": [
+              411160,
+              490448
+            ]
+          }
+        ],
+        "explicitUnobservedGap": [
+          1,
+          75000
+        ],
+        "scope": "Compare only untouched initial and observed late publication windows; no claim about the explicit gap. All original handle-slot differences are retained.",
+        "completeGame": false,
+        "nativeEquivalent": false
+      },
+      "reports": {
+        "report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/report.json",
+          "sha256": "ad686775127b51b59e264df6afe06060d0c806f8ebd015362a72c3580c9dce4f"
+        },
+        "camera-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/camera-report.json",
+          "sha256": "d3060faa4bbf44213f58599deff689c5e7a467cd836309ef32b0f84233b2b075"
+        },
+        "live-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/live-report.json",
+          "sha256": "ba69f9258770108ae36f7242657efefedbfe44f47e164f30b2bdd5a414b51407"
+        },
+        "allocation-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/allocation-report.json",
+          "sha256": "e3769c7e3f4078ca197c0e89b9eda8527e1650d77fc24a1e531017829a240619"
+        },
+        "hud-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/hud-report.json",
+          "sha256": "d7be6dd973984d8d4befa457ff610e317d39cf17614fad061077f2b449146c22"
+        }
+      }
+    },
+    "marisaaNormal": {
+      "callbacks": 66737,
+      "selected32WordsEqual": true,
+      "camera25WordsEqual": true,
+      "hudTwoWordsEqual": null,
+      "all303LiveValuesEqual": true,
+      "liveSnapshots": [
+        {
+          "registryOrderEqual": true,
+          "frame": 1,
+          "nativeCount": 52,
+          "portableCount": 52,
+          "portableExpected": 52,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 26000,
+          "nativeCount": 570,
+          "portableCount": 570,
+          "portableExpected": 570,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 30000,
+          "nativeCount": 578,
+          "portableCount": 578,
+          "portableExpected": 578,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 36000,
+          "nativeCount": 404,
+          "portableCount": 404,
+          "portableExpected": 404,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 38900,
+          "nativeCount": 567,
+          "portableCount": 567,
+          "portableExpected": 567,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 60000,
+          "nativeCount": 294,
+          "portableCount": 294,
+          "portableExpected": 294,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        }
+      ],
+      "remainingLiveDifferences": 0,
+      "allocation": {
+        "completed": true,
+        "nativePrefixCount": 246729,
+        "portableObservedCount": 246729,
+        "portablePrefixCount": 246729,
+        "paired": 246729,
+        "firstHandleDifference": null,
+        "firstIdentityDifference": null,
+        "nativeTraceCutoffCallbacks": 30000,
+        "scope": "Ordered handle/file/script diagnostic, preserving all slot differences; requested layers are not compared to post-script layers.",
+        "completeGame": false,
+        "nativeEquivalent": false
+      },
+      "reports": {
+        "report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/report.json",
+          "sha256": "a563e0b8bb66e21463a2ddb72cce1964360e9ab16853ef0fbb8b51e6b2b4a91e"
+        },
+        "camera-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/camera-report.json",
+          "sha256": "b40df82a9241090cfbd60bee7171c62093760052315b59bfebc5d19d6053441e"
+        },
+        "live-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/live-report.json",
+          "sha256": "dd871b96a05c3958948e8fdd5f3b0fee932909871a9f868ef3e0c471da48fa48"
+        },
+        "allocation-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/allocation-report.json",
+          "sha256": "e42415d286c121058256952cdfa84d224f42401a9341b0d52dc63422319383c0"
+        }
+      }
+    },
+    "sakuyaaLunatic": {
+      "callbacks": 84952,
+      "selected32WordsEqual": true,
+      "camera25WordsEqual": true,
+      "hudTwoWordsEqual": true,
+      "all303LiveValuesEqual": true,
+      "liveSnapshots": [
+        {
+          "registryOrderEqual": true,
+          "frame": 1,
+          "nativeCount": 52,
+          "portableCount": 52,
+          "portableExpected": 52,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 26000,
+          "nativeCount": 185,
+          "portableCount": 185,
+          "portableExpected": 185,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 30000,
+          "nativeCount": 210,
+          "portableCount": 210,
+          "portableExpected": 210,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 36000,
+          "nativeCount": 222,
+          "portableCount": 222,
+          "portableExpected": 222,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 38900,
+          "nativeCount": 143,
+          "portableCount": 143,
+          "portableExpected": 143,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 60000,
+          "nativeCount": 102,
+          "portableCount": 102,
+          "portableExpected": 102,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 80000,
+          "nativeCount": 432,
+          "portableCount": 432,
+          "portableExpected": 432,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        }
+      ],
+      "remainingLiveDifferences": 0,
+      "allocation": {
+        "completed": true,
+        "windows": [
+          {
+            "window": "initial-through-30000",
+            "nativeCount": 156037,
+            "portableCount": 156037,
+            "paired": 156037,
+            "firstHandleDifference": null,
+            "firstIdentityDifference": null,
+            "allHandlesFileScriptEqual": true,
+            "portableCreationRange": [
+              0,
+              156037
+            ]
+          }
+        ],
+        "nativeTraceCutoffCallbacks": 30000,
+        "scope": "Compare only the continuous untouched boot and first30000 publication window; no claim about later allocations. All original handle-slot differences are retained.",
+        "completeGame": false,
+        "nativeEquivalent": false
+      },
+      "reports": {
+        "report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/report.json",
+          "sha256": "927b4b038f40b4d6a383a095a0db0285af02db154f6335f2e35b68c7ecb1d107"
+        },
+        "camera-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/camera-report.json",
+          "sha256": "5d0206a86c27bd7014f2c483d2e0ca339b138df8bab5a30c9046a3f6418fceca"
+        },
+        "live-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/live-report.json",
+          "sha256": "4a7940e3f0df2601ea8e43d043e6ff84587673d3ad76a6f74a1463d6127f9208"
+        },
+        "allocation-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/allocation-report.json",
+          "sha256": "556013d201f6723876401c94c2476626b203437a0febb1344eb3ea2d322b4e37"
+        },
+        "hud-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/hud-report.json",
+          "sha256": "a48cbf69af57c5fceef36fd95d1f3b95c1e96d6408450d9cd771c63f7aaa0ec2"
+        }
+      }
+    },
+    "marisabNormal": {
+      "callbacks": 27751,
+      "selected32WordsEqual": true,
+      "camera25WordsEqual": true,
+      "hudTwoWordsEqual": true,
+      "all303LiveValuesEqual": true,
+      "liveSnapshots": [
+        {
+          "registryOrderEqual": true,
+          "frame": 1,
+          "nativeCount": 52,
+          "portableCount": 52,
+          "portableExpected": 52,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 26000,
+          "nativeCount": 537,
+          "portableCount": 537,
+          "portableExpected": 537,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        }
+      ],
+      "remainingLiveDifferences": 0,
+      "allocation": {
+        "completed": true,
+        "windows": [
+          {
+            "window": "initial-through-27751",
+            "nativeCount": 176509,
+            "portableCount": 176509,
+            "paired": 176509,
+            "firstHandleDifference": null,
+            "firstIdentityDifference": null,
+            "allHandlesFileScriptEqual": true,
+            "portableCreationRange": [
+              0,
+              176509
+            ]
+          }
+        ],
+        "nativeTraceCutoffCallbacks": 30000,
+        "scope": "Compare only the continuous untouched boot and first30000 publication window; no claim about later allocations. All original handle-slot differences are retained.",
+        "completeGame": false,
+        "nativeEquivalent": false
+      },
+      "reports": {
+        "report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/report.json",
+          "sha256": "24eff251bb5ce306b849b5e811b32385a714a10ff4ae3caee78799d036f6705d"
+        },
+        "camera-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/camera-report.json",
+          "sha256": "e6e10b6099dc602de10e5a3546634cd3807e8d957f3b7a44c934de29e3b6bdbd"
+        },
+        "live-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/live-report.json",
+          "sha256": "c437d10419a194e48c52539602507274f81ad06e247d1579c72cb19e1355a984"
+        },
+        "allocation-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/allocation-report.json",
+          "sha256": "73a289f28998782deca164832a13788234f1960a2e27c80074e2f20187326b72"
+        },
+        "hud-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/hud-report.json",
+          "sha256": "aa9550cb897d1856e309a77cfc094f9e7f7085aae0dc102eca72f576387ffa65"
+        }
+      }
+    },
+    "reimuaNormal": {
+      "callbacks": 85035,
+      "selected32WordsEqual": true,
+      "camera25WordsEqual": true,
+      "hudTwoWordsEqual": true,
+      "all303LiveValuesEqual": false,
+      "liveSnapshots": [
+        {
+          "registryOrderEqual": true,
+          "frame": 1,
+          "nativeCount": 52,
+          "portableCount": 52,
+          "portableExpected": 52,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 26000,
+          "nativeCount": 227,
+          "portableCount": 227,
+          "portableExpected": 227,
+          "portableRegistryComplete": true,
+          "differenceCount": 1
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 30000,
+          "nativeCount": 329,
+          "portableCount": 329,
+          "portableExpected": 329,
+          "portableRegistryComplete": true,
+          "differenceCount": 6
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 36000,
+          "nativeCount": 397,
+          "portableCount": 397,
+          "portableExpected": 397,
+          "portableRegistryComplete": true,
+          "differenceCount": 6
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 38900,
+          "nativeCount": 197,
+          "portableCount": 197,
+          "portableExpected": 197,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 60000,
+          "nativeCount": 177,
+          "portableCount": 177,
+          "portableExpected": 177,
+          "portableRegistryComplete": true,
+          "differenceCount": 6
+        }
+      ],
+      "remainingLiveDifferences": 19,
+      "allocation": {
+        "completed": true,
+        "windows": [
+          {
+            "window": "initial-through-30000",
+            "nativeCount": 480316,
+            "portableCount": 480316,
+            "paired": 480316,
+            "firstHandleDifference": null,
+            "firstIdentityDifference": null,
+            "allHandlesFileScriptEqual": true,
+            "portableCreationRange": [
+              0,
+              480316
+            ]
+          }
+        ],
+        "nativeTraceCutoffCallbacks": 30000,
+        "scope": "Compare only the continuous untouched boot and first30000 publication window; no claim about later allocations. All original handle-slot differences are retained.",
+        "completeGame": false,
+        "nativeEquivalent": false
+      },
+      "reports": {
+        "report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/report.json",
+          "sha256": "6f8a9c37a43c4f57df608cfcfe8e37448722360511473f4f6a4e3e4db55686b2"
+        },
+        "camera-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/camera-report.json",
+          "sha256": "c7e397349ddd8ea34e5af841ed35fdbfefe4f777b985950fd0abeb739414e05f"
+        },
+        "live-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/live-report.json",
+          "sha256": "5853251fbda319df8967bf16e3223fbf5cd79e5be17841c4600435ddc3952deb"
+        },
+        "allocation-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/allocation-report.json",
+          "sha256": "6dd688e05ebf47ea60a16f129eba7ca39eb4342d2a3b4ad3b8b7e7c2a2bbd585"
+        },
+        "hud-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/hud-report.json",
+          "sha256": "a547614f7e01a500b6c56cf8aaaa5a3d451a1390a7ccc96b2db9f8f97c08b102"
+        }
+      }
+    },
+    "sakuyabNormal": {
+      "callbacks": 112201,
+      "selected32WordsEqual": true,
+      "camera25WordsEqual": true,
+      "hudTwoWordsEqual": true,
+      "all303LiveValuesEqual": true,
+      "liveSnapshots": [
+        {
+          "registryOrderEqual": true,
+          "frame": 1,
+          "nativeCount": 52,
+          "portableCount": 52,
+          "portableExpected": 52,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 26000,
+          "nativeCount": 414,
+          "portableCount": 414,
+          "portableExpected": 414,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 30000,
+          "nativeCount": 201,
+          "portableCount": 201,
+          "portableExpected": 201,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 36000,
+          "nativeCount": 194,
+          "portableCount": 194,
+          "portableExpected": 194,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 38900,
+          "nativeCount": 171,
+          "portableCount": 171,
+          "portableExpected": 171,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 60000,
+          "nativeCount": 333,
+          "portableCount": 333,
+          "portableExpected": 333,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        },
+        {
+          "registryOrderEqual": true,
+          "frame": 90000,
+          "nativeCount": 200,
+          "portableCount": 200,
+          "portableExpected": 200,
+          "portableRegistryComplete": true,
+          "differenceCount": 0
+        }
+      ],
+      "remainingLiveDifferences": 0,
+      "allocation": {
+        "completed": true,
+        "windows": [
+          {
+            "window": "initial-through-30000",
+            "nativeCount": 308819,
+            "portableCount": 308819,
+            "paired": 308819,
+            "firstHandleDifference": null,
+            "firstIdentityDifference": null,
+            "allHandlesFileScriptEqual": true,
+            "portableCreationRange": [
+              0,
+              308819
+            ]
+          }
+        ],
+        "nativeTraceCutoffCallbacks": 30000,
+        "scope": "Compare only the continuous untouched boot and first30000 publication window; no claim about later allocations. All original handle-slot differences are retained.",
+        "completeGame": false,
+        "nativeEquivalent": false
+      },
+      "reports": {
+        "report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/sakuyab-normal/full-initial-worker-events-retail-sakuyab-normal-campaign-hardware-oct25/report.json",
+          "sha256": "64f7cbc6678c7831cc3190fe83dea2b2828b0f7cf48dd9bdbc6bb7a10fd232ec"
+        },
+        "camera-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/sakuyab-normal/full-initial-worker-events-retail-sakuyab-normal-campaign-hardware-oct25/camera-report.json",
+          "sha256": "4bbefc3d5f0daff27ede007ea52e842a77cd3fb905bfb5dd22fa27351627f018"
+        },
+        "live-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/sakuyab-normal/full-initial-worker-events-retail-sakuyab-normal-campaign-hardware-oct25/live-report.json",
+          "sha256": "4eff8b83d05d34b0985c6ddaf5bbc872a85c621bf15d210b3a8580cea6e61c30"
+        },
+        "allocation-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/sakuyab-normal/full-initial-worker-events-retail-sakuyab-normal-campaign-hardware-oct25/allocation-report.json",
+          "sha256": "2d0935ab57dd6df84fd73059add0bd6c1476148a0330279d5836ce635ddd4771"
+        },
+        "hud-report.json": {
+          "path": "artifacts/th14/damage-area-snap-oct25/sakuyab-normal/full-initial-worker-events-retail-sakuyab-normal-campaign-hardware-oct25/hud-report.json",
+          "sha256": "ed250b13775b1f976a66140e7d7cc0eafe3df51f3b67bf2ad07e96042e069ae3"
+        }
+      }
+    }
+  },
+  "otherSelected32Controls": [
+    {
+      "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-browser-recorded-legal-normal-hardware-oct24/report.json",
+      "sha256": "a873dd25268a8ca07a8e8dc23035375d99da4bf8cd6c2d74c7e5f6839824b12f",
+      "callbacks": 1195,
+      "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5"
+    },
+    {
+      "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-marisaa-extra-live-full-hardware-oct24/report.json",
+      "sha256": "660402cbe1b822072545c4b19ce24504282c956cde22d1d21da8436b324c12f5",
+      "callbacks": 46391,
+      "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5"
+    },
+    {
+      "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-marisab-extra-full-hardware-oct24/report.json",
+      "sha256": "8d16b7b6d9e329c7810df04681cda64150ecc2597b7d0b1d17432cc1481217de",
+      "callbacks": 54114,
+      "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5"
+    },
+    {
+      "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-reimua-extra-full-hardware-oct24/report.json",
+      "sha256": "66e99a8836b1f9b0c04d78c3a25acebe6846379fbef1ac1de127e654753e1eb8",
+      "callbacks": 38403,
+      "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5"
+    },
+    {
+      "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-reimub-campaign-resource-phases-hardware-oct24-observer-repaired/report.json",
+      "sha256": "9825dfa4866fbec3cfbba6b1116d4b11e8d59b8d0ca7e4a033839ccf2d4739e4",
+      "callbacks": 122012,
+      "wasmSha256": "85876c3d0a6364ff68e5a69b2232ab61cbdd6d1d46175eccdc88498b0dd409c8"
+    },
+    {
+      "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-reimub-extra-live-full-hardware-oct24/report.json",
+      "sha256": "8894e9455bc67dd43ba68b5758d3f420299ffa3d0a06dc2e44eed0d8cf61fa38",
+      "callbacks": 46936,
+      "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5"
+    },
+    {
+      "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/report.json",
+      "sha256": "fcf0594fe338a2109236f71278e9dbe91606a799aad48b44ccd1de9f7cd837b5",
+      "callbacks": 104802,
+      "wasmSha256": "85876c3d0a6364ff68e5a69b2232ab61cbdd6d1d46175eccdc88498b0dd409c8"
+    },
+    {
+      "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-sakuyaa-extra-full-2-hardware-oct24/report.json",
+      "sha256": "0146ef5d72c6c061ab3d126f042b5c0c4ce79f8512ba8759f9ce3f297ae588e4",
+      "callbacks": 38977,
+      "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5"
+    },
+    {
+      "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-sakuyaa-final-live-vm-hardware-oct24/report.json",
+      "sha256": "97deb4640e79e48d0b7634a92012d5613f3fe5b32ff034ebedab6b5e8e135500",
+      "callbacks": 38977,
+      "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5"
+    },
+    {
+      "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-sakuyaa-hard-stage6-full-2-hardware-oct24/report.json",
+      "sha256": "4fccb298c16192c4b7999e1bb30bdc553319150770fb52b2428933de9a661d43",
+      "callbacks": 23294,
+      "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5"
+    },
+    {
+      "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-sakuyaa-lunatic-stage6-full-hardware-oct24/report.json",
+      "sha256": "d25b43e771bc0516eb77231aef3e312e4a99d20225868e9b10abecadad2eef90",
+      "callbacks": 19405,
+      "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5"
+    },
+    {
+      "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-sakuyaa-normal-stage6-full-hardware-oct24/report.json",
+      "sha256": "a7df3fe76af5215b2657cd0265366782027c7e84bbe06de99fd83be71d578ee7",
+      "callbacks": 23461,
+      "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5"
+    },
+    {
+      "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-sakuyab-extra-full-hardware-oct24/report.json",
+      "sha256": "7fd90ae4007a15d902d8dfa2c7f3d9fcdbed9efd7639896b7937a070b8450972",
+      "callbacks": 50937,
+      "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5"
+    }
+  ],
+  "currentPreviouslyCoveredSelected32Callbacks": 1090382,
+  "currentSelected32CallbacksIncludingNewHard": 1209430,
+  "strict303Rows": 7401,
+  "strict303RowsIncludingHard": 9543,
+  "strict303CheckpointsIncludingHard": 36,
+  "extra80FieldControls": [
+    {
+      "path": "artifacts/th14/damage-area-snap-oct25/variable-prefix-38900-initial-worker-events-retail-marisaa-extra-live-full-hardware-oct24/live-report.json",
+      "sha256": "150d9e9ca7aa72afdc2af431c9b365fc48a498eca022701ca2da142db270be20",
+      "snapshots": 5
+    },
+    {
+      "path": "artifacts/th14/damage-area-snap-oct25/variable-prefix-38900-initial-worker-events-retail-reimub-extra-live-full-hardware-oct24/live-report.json",
+      "sha256": "7381206edb7dc2a04fbab547face17a1f6e087931b88099b007404e7cc67b02b",
+      "snapshots": 5
+    },
+    {
+      "path": "artifacts/th14/damage-area-snap-oct25/variable-prefix-38900-initial-worker-events-retail-sakuyaa-final-live-vm-hardware-oct24/live-report.json",
+      "sha256": "c13d6995b3afbf5d8f7c0061cd889c68dda375c5c68c89cb163dc9491b12b42e",
+      "snapshots": 5
+    }
+  ],
+  "hardOriginalCallbacks": 119048,
+  "hardSelected32WordsEqual": true,
+  "hardCamera25WordsEqual": true,
+  "hardAll303LiveValuesEqual": true,
+  "hard303Snapshots": 7,
+  "hard303Rows": 2142,
+  "hardInitialThrough30000Publications": 269922,
+  "hardInitialThrough30000PublicationsEqual": true,
+  "hardRemainingHudInitializationDifferences": 4,
+  "hardFullCampaignPassed": false,
+  "hardTerminalHudDisplayedScore": 1204638210,
+  "hardTerminalInternalScore": 1305638210,
+  "hardFullReports": {
+    "report.json": {
+      "path": "artifacts/th14/damage-area-snap-oct25/marisab-hard/full-initial-worker-events-retail-marisab-hard-campaign-hardware-oct25/report.json",
+      "sha256": "be6dee401707bfa5026c910f08da76b37d2e8114f53b9af1cd87b9616ad636a1"
+    },
+    "camera-report.json": {
+      "path": "artifacts/th14/damage-area-snap-oct25/marisab-hard/full-initial-worker-events-retail-marisab-hard-campaign-hardware-oct25/camera-report.json",
+      "sha256": "b0a5018e727ccad12b9686520efa0b926c1c0e24ba1360806ed9f766aa456525"
+    },
+    "hud-report.json": {
+      "path": "artifacts/th14/damage-area-snap-oct25/marisab-hard/full-initial-worker-events-retail-marisab-hard-campaign-hardware-oct25/hud-report.json",
+      "sha256": "522e39eb90fb37e0878fe15e9224003a1037a3be7a83a9d5c30302a50aa3baa8"
+    },
+    "live-report.json": {
+      "path": "artifacts/th14/damage-area-snap-oct25/marisab-hard/full-initial-worker-events-retail-marisab-hard-campaign-hardware-oct25/live-report.json",
+      "sha256": "060020508c82af9a0692daa3cb693f903e9cdd9e63a4159a61facc7d0f3a7f9c"
+    },
+    "allocation-report.json": {
+      "path": "artifacts/th14/damage-area-snap-oct25/marisab-hard/full-initial-worker-events-retail-marisab-hard-campaign-hardware-oct25/allocation-report.json",
+      "sha256": "256c5b7f58e7a6a2989b72f1aac4c84d2c8f6d0e2298ba74496e3160bb51f101"
+    }
+  },
+  "derivedStage5Diagnostic": {
+    "callbacks": 6000,
+    "intactOriginalReplay": false,
+    "stageHeaderInputAndFpsRetainedExactly": true,
+    "selected32CameraAndInitial303SnapshotEqual": true,
+    "orderedPublications": 46324,
+    "publicationsEqual": true,
+    "enemyWindowFrames": 141,
+    "enemyFields": 31,
+    "playerFields": 4,
+    "areaFields": 18,
+    "shotFields": 18,
+    "windowRawDifferences": 0,
+    "initialHudFixtureDifferencesRetained": 85,
+    "reports": {
+      "report.json": {
+        "path": "artifacts/th14/damage-area-snap-oct25/derived-stage5/prefix-6000-initial-worker-events-retail-marisab-hard-stage5-window-hardware-oct25/report.json",
+        "sha256": "c14d5e9c1df1a3e24dcef802cd0817c6ad8b107d08895aad9021eb71e6dd2625"
+      },
+      "camera-report.json": {
+        "path": "artifacts/th14/damage-area-snap-oct25/derived-stage5/prefix-6000-initial-worker-events-retail-marisab-hard-stage5-window-hardware-oct25/camera-report.json",
+        "sha256": "3225f982d49e0294e4ecdc9abc954acef926a38cc87d326edddb4a1674f40235"
+      },
+      "hud-report.json": {
+        "path": "artifacts/th14/damage-area-snap-oct25/derived-stage5/prefix-6000-initial-worker-events-retail-marisab-hard-stage5-window-hardware-oct25/hud-report.json",
+        "sha256": "bcaf5edb187609d067e908fe4e45a57d3e4698bcfd48985866cf571cb1ba7690"
+      },
+      "live-report.json": {
+        "path": "artifacts/th14/damage-area-snap-oct25/derived-stage5/prefix-6000-initial-worker-events-retail-marisab-hard-stage5-window-hardware-oct25/live-report.json",
+        "sha256": "7641daed5adc6a8bfacf8024a4be13efef5384bc303dcfcddb5f215461aafc78"
+      },
+      "allocation-report.json": {
+        "path": "artifacts/th14/damage-area-snap-oct25/derived-stage5/prefix-6000-initial-worker-events-retail-marisab-hard-stage5-window-hardware-oct25/allocation-report.json",
+        "sha256": "e670d9aae983d206dc9b77565a8e6ee318093ff95a50c1b21c2f69e80512140f"
+      }
+    }
+  },
+  "newHudWriteInstructionPrefix": {
+    "callbacks": 16000,
+    "stateCameraHudAnd303SnapshotEqual": true,
+    "publications": 101130,
+    "publicationsEqual": true,
+    "completionSource": "original42ec6bAfterHudInitializationWrite",
+    "queueTimingObservedDirectly": false,
+    "resourceQueueTimingGapsRetained": true,
+    "noNaturalEndClaim": true
+  },
+  "remainingReimuAFocusedHitWorldZWords": 19,
+  "browserAcceptanceOfThisBinary": {
+    "observedUtc": "2026-10-24T20:16:21.945Z",
+    "sdlWasmSha256": "8b7ef3f99d732fcf9c19f63a0efa5e54af7ed18ce169e69a8701f637c2000ac7",
+    "naturalReplayEndObserved": true,
+    "hudScore": 3980,
+    "graze": 4,
+    "maxPoint": 10000,
+    "lives": 1,
+    "quietOutput": true,
+    "noInputAfterStart": true,
+    "completeGame": false,
+    "nativeEquivalent": false,
+    "stableObservedSeconds": 31.847,
+    "issues": []
+  },
+  "currentHardBrowserPending": true,
+  "fullHudCompletionOriginalCapturePending": true,
+  "build": {
+    "sdlWasmSha256": "8b7ef3f99d732fcf9c19f63a0efa5e54af7ed18ce169e69a8701f637c2000ac7",
+    "coreRecompiledSources": 1,
+    "coreReusedSources": 140,
+    "sdlRecompiledSources": [
+      "th12_web/cpp/game/ShotDamageTh14.cpp"
+    ],
+    "sdlReusedSources": 145,
+    "rootResourceCryptExcluded": true
+  },
+  "scope": "Active stationary TH14 damage areas now execute zero-speed movement and float32 floor-to-centi XY each update. Original instructions and floor/math unpatched; no live original RNG/serial/counter/health/input correction. Only one declared attract bit clear; clock/cookie/host times and asynchronous readiness are explicit environment inputs. Hard119048 selected32 and camera25 match throughout, seven303 checkpoints2142 rows and first30000 publication window269922 match. Four HUD initialization boundary words remain failures, so full campaign equivalence is not claimed. Existing1090382 selected32 callbacks and29 strict303 checkpoints7401 rows rerun; ReimuA19 raw worldZ words remain. A derived stage5 prefix reproduces and resolves the same root cause, with separate initial HUD fixture failure retained. Full VM/geometry, all-mode ordinary startup, GPU, PCM and persistence remain incomplete.",
+  "completeGame": false,
+  "nativeEquivalent": false
+}
