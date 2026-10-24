@@ -1,0 +1,207 @@
+{
+  "passed": true,
+  "results": {
+    "before": {
+      "cases": 1725,
+      "differenceCount": 219,
+      "firstDifferences": [
+        {
+          "id": -9989,
+          "values": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "native": 1070141403,
+          "portable": 0
+        },
+        {
+          "id": -9956,
+          "values": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "native": 1070141403,
+          "portable": 0
+        },
+        {
+          "id": -9955,
+          "values": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "native": 1070141403,
+          "portable": 0
+        },
+        {
+          "id": -9989,
+          "values": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "native": 1070141403,
+          "portable": 0
+        },
+        {
+          "id": -9956,
+          "values": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "native": 1070141403,
+          "portable": 0
+        },
+        {
+          "id": -9955,
+          "values": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "native": 1070141403,
+          "portable": 0
+        },
+        {
+          "id": -9989,
+          "values": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "native": 1070141403,
+          "portable": 0
+        },
+        {
+          "id": -9956,
+          "values": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "native": 1070141403,
+          "portable": 0
+        },
+        {
+          "id": -9955,
+          "values": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "native": 1070141403,
+          "portable": 0
+        },
+        {
+          "id": -9989,
+          "values": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "native": 1070141403,
+          "portable": 0
+        },
+        {
+          "id": -9956,
+          "values": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "native": 1070141403,
+          "portable": 0
+        },
+        {
+          "id": -9955,
+          "values": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "native": 1070141403,
+          "portable": 0
+        },
+        {
+          "id": -9989,
+          "values": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "native": 1070141403,
+          "portable": 0
+        },
+        {
+          "id": -9956,
+          "values": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "native": 1070141403,
+          "portable": 0
+        },
+        {
+          "id": -9955,
+          "values": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "native": 1070141403,
+          "portable": 0
+        },
+        {
+          "id": -9989,
+          "values": [
+            -192,
+            32,
+            -192,
+            32
+          ],
+          "native": 1070141403,
+          "portable": 0
+        }
+      ],
+      "differenceTraceSha256": "8e483f648ff1ac635cc8d4cbd88b6634128f4efcdb7ef28d941e2f5980ea0d6d",
+      "wasmSha256": "aec7de79b1b835fab3bf5a162939f8f7248345fc92bfee127e6cac1365a1a244"
+    },
+    "after": {
+      "cases": 1725,
+      "differenceCount": 0,
+      "firstDifferences": [],
+      "differenceTraceSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "wasmSha256": "c128323eccfcbbb11b2edbcab1b43ea738da32b41187fbb1233e08377a6a4361"
+    }
+  },
+  "nativeReferenceSha256": "9d4ba00238f053b71350e22f0488a232bd93a6cede2b16e36fe56eebee83f830",
+  "nativeInputSha256": "414e935693c78dcfa40129d068f27d54cbd7a03d04b968461935b29535c7340e",
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/EnemyState.cpp": "f7b3773398cdb32aff58d16cfe6b92416913a3a96346923fce215610446fedae",
+    "runtimes/th12/th12_web/tests/cpp/th14-player-aim-fixture.cpp": "af75a09774648783357d414f7367da3695c81b94be66fe992d385d4765175216",
+    "tools/th14-player-aim-native-oct25.py": "62be64568dfb4df43045ab462ab954a8714dd1ff68c763d3f9d2ddcf3d7640bb",
+    "tools/th14-player-aim-check-oct25.mjs": "ab1d6eae9720b74b6720664de3d8f8580a8c6797a84158f360420ebe1d890b50"
+  },
+  "scope": "Original full42b230 float getters -9989/-9956/-9955 and full44ee00 player-relative aiming on575 declared finite origin/player positions, including coincident/signed-zero and independent seeded nonzero controls.1725 getter calls; no original instruction patch or math stub. Portable executes the actual EnemyGlobals getter; only TH14 ECL zero-vector behavior changes, shared TH11 atan2 helper stays unchanged. This is not full campaign or all non-finite math equivalence.",
+  "completeGame": false,
+  "nativeEquivalent": false
+}

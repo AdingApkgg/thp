@@ -35,6 +35,15 @@ void velocity_step(Movement& movement,Vec3Interpolator& interpolation,const floa
     if(interpolation.duration)movement.velocity=subtract(sample(interpolation,rate),movement.position);else movement.update_velocity();
 }
 float clamp_axis(float value,float center,float width){const double half=double(width)*.5,low=double(center)-half,high=double(center)+half;return value<low?float(low):value>high?float(high):value;}
+float player_aim_angle(const Vec3& origin,const Vec3& player)noexcept{
+#if PORT_TITLE == 14
+    // 44ee00 returns +pi/2 when both binary32 displacements are zero.
+    // The shared TH11 atan2 helper deliberately retains its zero result.
+    const float dx=float(player.x-origin.x),dy=float(player.y-origin.y);
+    if(dx==0.f&&dy==0.f)return 1.5707963705062866f;
+#endif
+    return aim_angle(origin,player);
+}
 }
 // 0x411610: the coordinate sum is rounded before the displacement subtraction.
 void EnemyState::combine_movement()noexcept{
@@ -239,7 +248,7 @@ double EnemyGlobals::floating(i32 id){
     case -9995:case -9975:return enemy.absolute.position.x;case -9994:case -9974:return enemy.absolute.position.y;
     case -9993:case -9973:return enemy.relative.position.x;case -9992:case -9972:return enemy.relative.position.y;
     case -9991:case -9965:return environment.player_position.x;case -9990:case -9964:return environment.player_position.y;
-    case -9989:return aim_angle(enemy.current.position,environment.player_position);
+    case -9989:return player_aim_angle(enemy.current.position,environment.player_position);
     // TH14 42b352 reads enemy+14b4: phase timer fractional, not lifetime.
     case -9988:return kPortTitle==14?enemy.timer_2bc.fractional:enemy.lifetime.fractional;
     case -9986:return (enemy.flags>>(kPortTitle==14?24:20))&1;
@@ -250,8 +259,8 @@ double EnemyGlobals::floating(i32 id){
     case -9962:return environment.boss?environment.boss->current.position.y:0;
     case -9960:return environment.rank;case -9959:return environment.difficulty;
     case -9958:return float(std::atan2(double(enemy.current.velocity.y),double(enemy.current.velocity.x)));
-    case -9957:return 1;case -9956:return aim_angle(enemy.absolute.position,environment.player_position);
-    case -9955:return aim_angle(enemy.relative.position,environment.player_position);case -9954:return enemy.health;
+    case -9957:return 1;case -9956:return player_aim_angle(enemy.absolute.position,environment.player_position);
+    case -9955:return player_aim_angle(enemy.relative.position,environment.player_position);case -9954:return enemy.health;
     case -9953:case -9952:case -9951:case -9950:return environment.difficulty==id+9953;
     case -9946:return environment.enemy_count;case -9945:return signed_bits(u32(environment.character)*2+u32(environment.subtype));
     case -9944:return position_distance(enemy.current.position,environment.player_position);
