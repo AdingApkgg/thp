@@ -95,7 +95,9 @@
     "oldBinaryFirst32StillMatched": true,
     "optionCallInstrumentedCaseIdentityMatchesButPhysicalFramesDiffer": 5,
     "missingPhaseReadyHostInputCaseLost21Callbacks": true,
-    "uninstrumentedSakuyaBExtraPhysicalCreationDifferences": 7
+    "uninstrumentedSakuyaBExtraPhysicalCreationDifferences": 7,
+    "readOnlyColdControlStalledBeforeFirstPlayer": true,
+    "marisaBExtraResourceBoundaryCreationDifferences": 8
   },
   "browser": {
     "actualProductionLauncher": true,
@@ -143,7 +145,8 @@
     "Phase readiness is bounded by first observed post-upload Main boundary and Control loading-flag clearance; production embeds no captured times or frame compensation.",
     "The option-entry instrumented case retains five physical creation-frame differences; host CPU work still runs on browser main-thread callbacks.",
     "Original GPU pixels, DirectSound output PCM, all-mode native and complete persistence acceptance remain unfinished.",
-    "Sakuya B Extra has seven one-callback creation-time differences inside initial options; identities and selected gameplay state match, but live animation state and CPU concurrency remain under investigation."
+    "Sakuya B Extra has seven one-callback creation-time differences inside initial options; identities and selected gameplay state match, but live animation state and CPU concurrency remain under investigation.",
+    "Two zero-state-write first-Player controls match eight fields for all71 live animations even when48 creation events cross different resource-pump boundaries. These boundaries alone cannot prove animation-update age differences. Other live fields, loading-frame visuals and arbitrary worker scheduling remain unverified."
   ],
   "evidenceBindings": [
     {
@@ -290,6 +293,51 @@
       "path": "artifacts/th14/stage6-retail-reference-oct24/score-observer/ui-roundtrip.json",
       "bytes": 656,
       "sha256": "9dee7a3b83e02128f0509e683d4e48d07a16af293b5ffb84e6a6277a015af194"
+    },
+    {
+      "path": "artifacts/th14/retail-sakuyab-cold-live-vms-hardware-oct24/report.json",
+      "bytes": 3598,
+      "sha256": "5544e31ad87549c645239a87ec811040eabe3684f1697398e1b353c66ba61bca"
+    },
+    {
+      "path": "artifacts/th14/extra-controls-oct24/fixed-initial-worker-events-retail-sakuyab-cold-live-vms-hardware-oct24/report.json",
+      "bytes": 2289,
+      "sha256": "a0b6f227194ccaec14d1e2df7d860650dec29df323dac1550d903ecc67e8fe0a"
+    },
+    {
+      "path": "artifacts/th14/retail-sakuyab-cold-live-vms-3-hardware-oct24/report.json",
+      "bytes": 3596,
+      "sha256": "c47186d660fa533bad33e23f0ba2d61e0c010411e08ebf67b3aadbfbe523e981"
+    },
+    {
+      "path": "artifacts/th14/extra-controls-oct24/fixed-initial-worker-events-retail-sakuyab-cold-live-vms-3-hardware-oct24/report.json",
+      "bytes": 3253,
+      "sha256": "e204ab7c0d075d40c0d46300ed3f25736a6263199186c52cfc5874b5eef05609"
+    },
+    {
+      "path": "artifacts/th14/extra-controls-oct24/cold-vm-2-aborted.json",
+      "bytes": 356,
+      "sha256": "f1f97682bbd370419ea74261780d732b493dd07b1e19f4fff8a469ad6c4a2fcf"
+    },
+    {
+      "path": "artifacts/th14/marisab-extra-retail-oct24/full-initial-worker-events-retail-marisab-extra-full-hardware-oct24/report.json",
+      "bytes": 2124,
+      "sha256": "b8fc0f3fbfa9990d77d01d79ea149446fa9a054b2bafe13f264595deb40982bd"
+    },
+    {
+      "path": "artifacts/th14/marisab-extra-retail-oct24/fixed-initial-worker-events-retail-marisab-extra-full-hardware-oct24/report.json",
+      "bytes": 2855,
+      "sha256": "42bd946e1dd640ad0b35b0c762470b35c479e7d636b99bffa73f3d22d5b15367"
+    },
+    {
+      "path": "artifacts/th14/reimua-extra-retail-oct24/browser-replay-observation.json",
+      "bytes": 989,
+      "sha256": "a9b98a33c9341061407ee6d14202d1dd71dd29341c2e02ba268277c6a89f4894"
+    },
+    {
+      "path": "artifacts/th14/reimua-extra-retail-oct24/end-ui-initial-worker-events-retail-reimua-extra-full-hardware-oct24/report.json",
+      "bytes": 2248,
+      "sha256": "c13dd92adab8f8059725e1353f229bdfc4182f5866f3e21f292cca3f313b3aaa"
     }
   ],
   "sourceOnlyPublication": true,
@@ -329,6 +377,21 @@
       "observedHostEvents": true,
       "ordinaryOriginalMenuInitialization": false,
       "actualOriginalPixelsOrPcm": false
+    },
+    {
+      "shot": "marisab",
+      "difficulty": "Extra",
+      "intactOriginalReplay": true,
+      "callbacks": 54114,
+      "selected32ByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true,
+      "initialAnimationIdentities": 186,
+      "physicalCreationCallbackDifferences": 8,
+      "selectedSha256": "866262e00a5c7afa1fbd7c29ecbfac0d999d2ba7312dc6a63bbda7b2e87e0869",
+      "declaredOneAttractBitClear": true,
+      "observedHostEvents": true,
+      "ordinaryOriginalMenuInitialization": false,
+      "actualOriginalPixelsOrPcm": false
     }
   ],
   "formalSaveImportExportRoundTrip": {
@@ -347,5 +410,84 @@
     "originalOsFilesystemAcceptance": false,
     "completeGame": false,
     "nativeEquivalent": false
+  },
+  "furtherEvidenceVerifiedUtc": "2026-10-24T02:43:43.137771+00:00",
+  "readOnlyFirstPlayerLiveAnimationControls": [
+    {
+      "originalInstructionOrStateWrites": 0,
+      "originalCallbacks": 1,
+      "publications": 151,
+      "liveAnimations": 71,
+      "liveFields": [
+        "handle",
+        "file",
+        "script",
+        "timerPrevious",
+        "timerCurrent",
+        "timerFraction",
+        "pendingInterrupt",
+        "ageCurrent"
+      ],
+      "liveFieldDifferences": 0,
+      "resourceBoundaryCreationDifferences": 0,
+      "selected32ByteIdentical": true
+    },
+    {
+      "originalInstructionOrStateWrites": 0,
+      "originalCallbacks": 1,
+      "publications": 151,
+      "liveAnimations": 71,
+      "liveFields": [
+        "handle",
+        "file",
+        "script",
+        "timerPrevious",
+        "timerCurrent",
+        "timerFraction",
+        "pendingInterrupt",
+        "ageCurrent"
+      ],
+      "liveFieldDifferences": 0,
+      "resourceBoundaryCreationDifferences": 48,
+      "selected32ByteIdentical": true
+    }
+  ],
+  "resourceBoundaryIsNotAnimationUpdateBoundary": true,
+  "browserExtra": {
+    "observedUtc": "2026-10-24T02:04:26.868Z",
+    "startedUtc": "2026-10-24T01:50:56.563Z",
+    "firstNaturalEndObservedUtc": "2026-10-24T02:03:54.695Z",
+    "stableMenuSeconds": 32.173,
+    "wasmSha256": "ad3b2e90e47ec1af90820940ef2e57cef7e924bd952a960da039793ed2da232b",
+    "actualProductionLauncher": true,
+    "actualWebGL": true,
+    "actualReplayMenu": true,
+    "intactOriginalReplay": true,
+    "character": "Reimu A",
+    "difficulty": "Extra",
+    "stage": 7,
+    "userSlot": "th14_ud0002.rpy",
+    "replaySha256": "869e4270b2b22ed563136c09f8856aa6117a6a7796dbeb0e4d1802b38381f7f6",
+    "uiDownloadByteExact": true,
+    "naturalReplayEndMenuObserved": true,
+    "hudDisplayedScore": 344324490,
+    "graze": 4474,
+    "power": 4,
+    "maxPointValue": 42760,
+    "quietOutput": true,
+    "inputAfterStart": false,
+    "observedNativeTimingsInjected": false,
+    "issuesAfterStart": [],
+    "fullReplayFinished": true,
+    "actualOriginalPixelOrPcmEquivalenceClaimed": false,
+    "completeGame": false,
+    "nativeEquivalent": false
+  },
+  "browserExtraSourceBoundHudFields": {
+    "internalScore": 713324490,
+    "hudDisplayedScore": 344324490,
+    "completionBonus": 369000000,
+    "originalInternalScoreCompared": true,
+    "originalExtraHudMemoryOrPixelsCompared": false
   }
 }
