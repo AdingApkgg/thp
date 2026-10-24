@@ -14,8 +14,9 @@ bool Hud::notice_th14(i32 type,i32 value){
         id=0;
     };
     const float zero=0;
+    // Retail4348fe copies the template without an intervening layer store.
     auto make=[&](AnmResource& resource,i32 script,u16 file,u32& id){
-        auto* vm=animations.create(resource,script,file,0,false,false,nullptr,nullptr,nullptr,false,&zero);
+        auto* vm=animations.create(resource,script,file,u32(-1),false,false,nullptr,nullptr,nullptr,false,&zero);
         id=vm?vm->id:0;return vm;
     };
     if(type>=2&&type<=4){erase(item_notice);return make(front,59+type,5,item_notice)!=nullptr;}

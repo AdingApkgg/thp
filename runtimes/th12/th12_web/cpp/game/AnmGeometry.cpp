@@ -1,4 +1,5 @@
 #include "AnmGeometry.hpp"
+#include "GraphicsMath.hpp"
 #include "PortTitle.hpp"
 #include <cmath>
 namespace th11 {
@@ -168,10 +169,8 @@ int anm_th14_particles_update(AnmVm& vm,AnmEnvironment& env){
     auto subtract=[](Vec3 a,Vec3 b){return Vec3{float(a.x-b.x),float(a.y-b.y),float(a.z-b.z)};};
     auto multiply=[](Vec3 a,float b){return Vec3{float(a.x*b),float(a.y*b),float(a.z*b)};};
     auto polar=[](float a,float r){return Vec3{float(std::cos(double(a))*r),float(std::sin(double(a))*r),0};};
-    auto normalize=[&](Vec3 a){
-        const float squared=float(float(float(a.x*a.x)+float(a.y*a.y))+float(a.z*a.z));
-        if(squared<=0)return Vec3{};return multiply(a,float(1.f/float(std::sqrt(double(squared)))));
-    };
+    // Retail effect7 calls the same D3DX normalize service as its camera.
+    auto normalize=[](Vec3 a){return GraphicsMath::normalize(a);};
     auto random_offset=[&](float radius){const float angle=float(env.visual_rng.signed_unit()*3.1415927410125732f);return polar(angle,float(env.visual_rng.unit()*radius));};
     auto interpolate=[&](AnmVm& child,Vec3 from,Vec3 initial,Vec3 to,Vec3 final){
         auto& v=child.position_interpolation;std::memcpy(v.start,&from,12);std::memcpy(v.end,&to,12);
