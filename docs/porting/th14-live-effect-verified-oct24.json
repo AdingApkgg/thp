@@ -1,0 +1,263 @@
+{
+  "verified": true,
+  "verifiedUtc": "2026-10-24T03:23:38.815659+00:00",
+  "baseCommit": "73c3c14044d848cbc15192cbd20ea9a448de4175",
+  "changes": [
+    "TH14 angular-velocity referenced operands resolve Z/Y/X in retail47163b order.",
+    "TH14 ECL307/308 loose animation retains its copied template layer."
+  ],
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/AnmInterpreter.cpp": "9484128f415609ad8264e2538f91e0d8be253c84a6708620bcffaddd814f6298",
+    "runtimes/th12/th12_web/cpp/game/EnemyAnimations.cpp": "18454896661a046c8b6adc7e466336fc628feff01538ecbd89cfb076f1dffeda"
+  },
+  "build": {
+    "sdlWasmSha256": "63e42ad5ee030f1b1e12d2b2bc239b071988a62a814886f8126288dfd670cd6b",
+    "coreWasmSha256": "6d0f695b4b5889fbb4668356d4ac00de951f81af9089d250f210537dc097e873",
+    "sdlCompiled": 2,
+    "sdlReused": 144,
+    "coreCompiled": 2,
+    "coreReused": 139,
+    "exportsUnchanged": true,
+    "importNamesAndKindsUnchanged": true
+  },
+  "beforeControls": [
+    {
+      "beforeLiveDifferences": 5,
+      "file": 8,
+      "script": 105,
+      "layer": [
+        2,
+        0
+      ],
+      "angularVelocityAndRotationAxesDiffered": true
+    },
+    {
+      "beforeLiveDifferences": 5,
+      "file": 8,
+      "script": 105,
+      "layer": [
+        2,
+        0
+      ],
+      "angularVelocityAndRotationAxesDiffered": true
+    }
+  ],
+  "firstLiveAnimationControls": [
+    {
+      "nativeCase": "retail-sakuyab-cold-live-vms-hardware-oct24",
+      "publications": 151,
+      "liveAnimations": 71,
+      "comparisonValuesPerVm": 61,
+      "liveDifferences": 0,
+      "firstSelected32ByteIdentical": true,
+      "originalGameStateWrites": 0,
+      "originalInstructionWrites": 0,
+      "resourceBoundaryDifferences": 0
+    },
+    {
+      "nativeCase": "retail-sakuyab-cold-live-vms-3-hardware-oct24",
+      "publications": 151,
+      "liveAnimations": 71,
+      "comparisonValuesPerVm": 61,
+      "liveDifferences": 0,
+      "firstSelected32ByteIdentical": true,
+      "originalGameStateWrites": 0,
+      "originalInstructionWrites": 0,
+      "resourceBoundaryDifferences": 48
+    },
+    {
+      "nativeCase": "retail-sakuyaa-extra-full-2-hardware-oct24",
+      "publications": 150,
+      "liveAnimations": 71,
+      "comparisonValuesPerVm": 61,
+      "liveDifferences": 0,
+      "firstSelected32ByteIdentical": true,
+      "originalGameStateWrites": 1,
+      "originalInstructionWrites": 0,
+      "resourceBoundaryDifferences": 0
+    }
+  ],
+  "comparisonValuesMayIncludeRepeatedTimers": true,
+  "comparisonExcludesRawPointersAndFullVmBytes": true,
+  "regression": {
+    "cases": 30,
+    "callbacks": 2763367,
+    "allPriorRaw32ByteIdentical": true,
+    "eachNaturallyEndedAndStable90MenuTicks": true
+  },
+  "independentOriginalCompleteExtraControls": [
+    {
+      "shot": "reimua",
+      "callbacks": 38403,
+      "allSelected32ByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true,
+      "declaredAttractBitClear": true,
+      "actualClockCookieAndObservedHostInputs": true
+    },
+    {
+      "shot": "marisab",
+      "callbacks": 54114,
+      "allSelected32ByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true,
+      "declaredAttractBitClear": true,
+      "actualClockCookieAndObservedHostInputs": true
+    },
+    {
+      "shot": "sakuyab",
+      "callbacks": 50937,
+      "allSelected32ByteIdentical": true,
+      "naturallyEndedAndStable90MenuTicks": true,
+      "declaredAttractBitClear": true,
+      "actualClockCookieAndObservedHostInputs": true
+    }
+  ],
+  "knownSakuyaAVisualRngGap": {
+    "originalCallbacks": 38977,
+    "firstDifferingCallback": 15841,
+    "differingWords": [
+      21,
+      22
+    ],
+    "otherSelectedWordsIdentical": true,
+    "fullBaselineAndCorrectedRaw32ByteIdentical": true,
+    "independentWindowReproduced": true,
+    "observedCounterExtraSteps": [
+      50,
+      98
+    ],
+    "fixedCounterCompensation": false,
+    "fullyPassed": false
+  },
+  "browser": {
+    "observedUtc": "2026-10-24T03:21:10.299Z",
+    "startedUtc": "2026-10-24T03:05:01.833Z",
+    "firstNaturalEndObservedUtc": "2026-10-24T03:20:16.552Z",
+    "stableMenuSeconds": 53.747,
+    "wasmSha256": "63e42ad5ee030f1b1e12d2b2bc239b071988a62a814886f8126288dfd670cd6b",
+    "actualProductionLauncher": true,
+    "actualWebGL": true,
+    "actualReplayMenu": true,
+    "intactOriginalReplay": true,
+    "character": "Sakuya B",
+    "difficulty": "Extra",
+    "stage": 7,
+    "replaySha256": "b3f5e7d00a46c7b33a77645e12fb72f70d601a239b34c894c38dc42c41f6ae10",
+    "naturalReplayEndMenuObserved": true,
+    "hudDisplayedScore": 508559650,
+    "graze": 19864,
+    "power": 4,
+    "maxPointValue": 158590,
+    "inputAfterStart": false,
+    "quietOutput": true,
+    "observedNativeTimingsInjected": false,
+    "issuesAfterStart": [],
+    "fullReplayFinished": true,
+    "priorBrowserAcceptanceInherited": false,
+    "actualOriginalPixelOrPcmEquivalenceClaimed": false,
+    "completeGame": false,
+    "nativeEquivalent": false
+  },
+  "evidenceBindings": [
+    {
+      "path": "artifacts/th14/live-effect-fix-oct24/build/build.json",
+      "bytes": 188556,
+      "sha256": "7146adc43ec5da5be90540780342627fb3c8219bb7faa15b26f9c2793318c7ad"
+    },
+    {
+      "path": "artifacts/th14/live-effect-fix-oct24/core-build.json",
+      "bytes": 78601,
+      "sha256": "d3db88efbbfd6a8dc32b328f39c08cbc0bcbfbc3737ac9f62f97e98b135d0825"
+    },
+    {
+      "path": "artifacts/th14/live-effect-fix-oct24/matrix-results.json",
+      "bytes": 65145,
+      "sha256": "2493d9eef7f476b84cc00835fe81ab173c0884ee104691a4d420aac78a86df83"
+    },
+    {
+      "path": "artifacts/th14/live-effect-fix-oct24/fully-expanded-initial-worker-events-retail-sakuyab-cold-live-vms-hardware-oct24/report.json",
+      "bytes": 3549,
+      "sha256": "8b593c7fd10011db11b437627ccab88ca677ffbd387eac976f5dfba5e4d867d9"
+    },
+    {
+      "path": "artifacts/th14/retail-sakuyab-cold-live-vms-hardware-oct24/report.json",
+      "bytes": 3598,
+      "sha256": "5544e31ad87549c645239a87ec811040eabe3684f1697398e1b353c66ba61bca"
+    },
+    {
+      "path": "artifacts/th14/live-effect-fix-oct24/fully-expanded-initial-worker-events-retail-sakuyab-cold-live-vms-3-hardware-oct24/report.json",
+      "bytes": 4513,
+      "sha256": "44d286b75b7ab62737b6741ac51f371ddb2a3ab2a92dc6e9919534e87d346ce5"
+    },
+    {
+      "path": "artifacts/th14/retail-sakuyab-cold-live-vms-3-hardware-oct24/report.json",
+      "bytes": 3596,
+      "sha256": "c47186d660fa533bad33e23f0ba2d61e0c010411e08ebf67b3aadbfbe523e981"
+    },
+    {
+      "path": "artifacts/th14/live-effect-fix-oct24/fully-expanded-initial-worker-events-retail-sakuyaa-extra-full-2-hardware-oct24/report.json",
+      "bytes": 3588,
+      "sha256": "90ef1f93efdea966164a45e4e64eff3c9d04e138718841ef1dc332299b63f5a7"
+    },
+    {
+      "path": "artifacts/th14/retail-sakuyaa-extra-full-2-hardware-oct24/report.json",
+      "bytes": 4967,
+      "sha256": "e1f704f34786fa74e63a34f3c4853e17208fe6130ff94478eea22e99e7cc364d"
+    },
+    {
+      "path": "artifacts/th14/extra-controls-oct24/expanded-initial-worker-events-retail-sakuyab-cold-live-vms-hardware-oct24/report.json",
+      "bytes": 4396,
+      "sha256": "a49d95a669a4de2547db5ee271e9790fc92e0afd72ed747e1585eff5f8d55ad0"
+    },
+    {
+      "path": "artifacts/th14/extra-controls-oct24/expanded-initial-worker-events-retail-sakuyab-cold-live-vms-3-hardware-oct24/report.json",
+      "bytes": 5360,
+      "sha256": "45b3e84b2c259514a51f2ebc23df27fa35f9e91a1370e41e3a5a34dd1b2f3a3d"
+    },
+    {
+      "path": "artifacts/th14/live-effect-fix-oct24/full-initial-worker-events-retail-reimua-extra-full-hardware-oct24/report.json",
+      "bytes": 2123,
+      "sha256": "47a9f3717744fe67803dffb61442844cce0ce465fced752271de4e8ca46a2b14"
+    },
+    {
+      "path": "artifacts/th14/live-effect-fix-oct24/full-initial-worker-events-retail-marisab-extra-full-hardware-oct24/report.json",
+      "bytes": 2124,
+      "sha256": "61303ca4a5bd4124cd4ad4f01cc9922cf2980ea1ab4d5fac2081fe679685d1cd"
+    },
+    {
+      "path": "artifacts/th14/live-effect-fix-oct24/full-initial-worker-events-retail-sakuyab-extra-full-hardware-oct24/report.json",
+      "bytes": 2123,
+      "sha256": "96bb0ad3a193191d257961d29073baab6e1f70e42f10e9c170a6fce276cdf6bd"
+    },
+    {
+      "path": "artifacts/th14/live-effect-fix-oct24/full-initial-worker-events-retail-sakuyaa-extra-full-2-hardware-oct24/report.json",
+      "bytes": 2587,
+      "sha256": "9618cfb1df764b3209eeac65a594e1b40a644fb32ea5e0b6d26552dfbfcf9cb9"
+    },
+    {
+      "path": "artifacts/th14/sakuyaa-extra-retail-oct24/full-initial-worker-events-retail-sakuyaa-extra-full-2-hardware-oct24/report.json",
+      "bytes": 2587,
+      "sha256": "e492dffb90f16941b73946e19005e9ac07ce5a0dd4164aa7ca115e1e5729a57d"
+    },
+    {
+      "path": "artifacts/th14/live-effect-fix-oct24/prefix-15850-initial-worker-events-retail-sakuyaa-visual-window-2-hardware-oct24/report.json",
+      "bytes": 1685,
+      "sha256": "cf83d6901c5bd1c3b03bf24423581b90e0186b1a952d5ba50ddd91699d22c5e0"
+    },
+    {
+      "path": "artifacts/th14/live-effect-fix-oct24/browser-replay-observation.json",
+      "bytes": 972,
+      "sha256": "c53c231b328a70ffae7843e2773da157512e261a592dbd21fb0804d30cd9433b"
+    }
+  ],
+  "limitations": [
+    "First-Player controls compare declared61 values for71 live animations, including repeated timers; not all VM memory, all frames or pixels.",
+    "Original complete cases use intact recorded replay through private demo0, declared single attract-bit clear, actual initial clock/cookie, declared geometry ABI and observed host events; ordinary menu initialization remains unverified.",
+    "Sakuya A Extra visual-RNG discrepancy predates these corrections and remains open.",
+    "New binary completed Sakuya B Extra production browser replay; no independent new six-stage browser acceptance is inherited.",
+    "Original full GPU pixels, DirectSound PCM, arbitrary worker scheduling, all-mode native and complete persistence acceptance remain unfinished."
+  ],
+  "sourceOnlyPublication": true,
+  "rootResourceCryptExcluded": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}

@@ -287,7 +287,7 @@ i32 EnemyAnimations::command(EnemyState& e,EclContext& c,EnemyGlobals& g){
             // zero the origin, execute the first ANM update, prepend normally.
             const i32 script=op==307?i(1):0,file=i(0),bound_script=op==307?script:i(1);
             if(u32(file)>=resources.size()||!resources[file].file)return -2;
-            return manager.create(*resources[file].file,bound_script,resources[file].id,0,false,true,op==307?&e.current.position:nullptr)?0:-2;
+            return manager.create(*resources[file].file,bound_script,resources[file].id,u32(-1),false,true,op==307?&e.current.position:nullptr)?0:-2;
         }
         if(op==303||op==306||op==313||op==316){
             const u32 slot=u32(i(0));i32 script=op==313?wrapping_add(e.base_animation,5):i(1);if(slot>=16)return -2;
