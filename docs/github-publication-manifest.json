@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "c275c1cce0235388202210551a7ff9709d132a78",
+  "sourceCommit": "e5542ed7ad0a0bd4a93db62a81922e592a811764",
   "files": [
     {
       "path": ".gitignore",
@@ -254,6 +254,11 @@
       "sha256": "e45826c891cdf46fca1f205c363fd0ab08bbd4a17ac182b058f409da1bb2c69f"
     },
     {
+      "path": "docs/porting/TH14_NATIVE_BOUNDARIES_OCT26.md",
+      "bytes": 2453,
+      "sha256": "d4c4c58c7555e9f76b735d7d83c4557f7fc2e368a20c90c7db28f5285e7c9faa"
+    },
+    {
       "path": "docs/porting/TH14_NATIVE_FOG_FIX_OCT20.md",
       "bytes": 4008,
       "sha256": "6c97ec26097a671b9fbf9d4981794ea3521c7e6389cd1b0fb19495d6bb6ba63b"
@@ -300,8 +305,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 4648,
-      "sha256": "75afc6c1ee35b575626f639bd9979d763626e593ba6a3f4425b141dcec60bbb8"
+      "bytes": 5080,
+      "sha256": "d5d33a9c7b2d19b248e04dfc06649abe24848495f0d2f7646ed1d180e19f905f"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -3377,6 +3382,11 @@
       "path": "docs/porting/th14-native-bootstrap-verified-oct13.json",
       "bytes": 3331,
       "sha256": "473ff7c68d0033a068c287a0803c713806735b77e2a2a17b90fe7d9e825d7d8f"
+    },
+    {
+      "path": "docs/porting/th14-native-boundaries-verified-oct26.json",
+      "bytes": 90085,
+      "sha256": "ce7a957318dfd7fe5fc79897968fa86c771a975b7fec10c15d0484b17b761b39"
     },
     {
       "path": "docs/porting/th14-native-fog-mix-observed-oct20.json",
@@ -17864,14 +17874,19 @@
       "sha256": "6f91e206612af75e0b51042922089b9b36865dcc7450f433652bc45514a6a499"
     },
     {
+      "path": "tools/th14-native-boundaries-evidence-check-oct26.py",
+      "bytes": 7721,
+      "sha256": "9cf1ef75b69fadd54b5728e337d14fe36d4240f9957d26d87df420c468c2fa37"
+    },
+    {
       "path": "tools/th14-native-campaign-assets.mjs",
       "bytes": 6943,
       "sha256": "6f406b3a383f75625f81a84c3b46efe5a24af7c0672246c826d7926f859791d5"
     },
     {
       "path": "tools/th14-native-campaign-observer-oct25.py",
-      "bytes": 40786,
-      "sha256": "cd219dfb78c3a81132eab025e3100e622cf382740ee0d204ddc73c7e1dad5b35"
+      "bytes": 41512,
+      "sha256": "87270c321bef6298cf69c479828873db1da27526bf8f1c330b4df9f99240ee7d"
     },
     {
       "path": "tools/th14-native-detail-window-capture.py",
@@ -18175,8 +18190,8 @@
     },
     {
       "path": "tools/th14-natural-score-native.py",
-      "bytes": 3607,
-      "sha256": "562b89984695c7611d712294ad839ebfeaec0844be61be6f51db71f8505b8581"
+      "bytes": 3648,
+      "sha256": "6103cd58d322307b83eeea697877872b0175a8765f5c92feeccdfa30aea76e23"
     },
     {
       "path": "tools/th14-natural-shot-diagnostic.mjs",
@@ -21580,8 +21595,8 @@
     },
     {
       "path": "tools/th14-verify-native-campaign.py",
-      "bytes": 7898,
-      "sha256": "a3bb8dfff2fa8896a8aa4da9d7a16347d584683e410670506abdf56221e98eb8"
+      "bytes": 8860,
+      "sha256": "380e34aec7fd7bf3eadb1ad05d1af2107603c362e37ab8bb7b4a2c5de68cea95"
     },
     {
       "path": "tools/th14-viewport-candidate-evidence-check-oct19.py",
@@ -22765,24 +22780,22 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "c275c1cce0235388202210551a7ff9709d132a78",
-    "title": "TH14 curve laser preserves its request origin",
-    "changedSourceAndMetadataFiles": 6,
-    "productionSourceFiles": 1,
-    "productionGameplayChanged": true,
+    "basePublishedCommit": "e5542ed7ad0a0bd4a93db62a81922e592a811764",
+    "title": "TH14 actual original UI save and strict campaign observation boundaries",
+    "changedSourceAndMetadataFiles": 7,
+    "productionSourceFiles": 0,
+    "productionGameplayChanged": false,
     "productionGraphicsChanged": false,
     "productionAudioChanged": false,
     "gameAssetsAdded": false,
-    "sdlWasmSha256": "11d5c78ceccde1dd07b22cc09e8831cb047f13a724ba7e9b1314e748465109af",
-    "observerWasmSha256": "f0801b8a81134c61255ffb9102a41a3957b8cf8ea1d8de7813da381665a619de",
     "nativeNaturalRunModePairs": 21,
     "nativeAllStageEntryModePairs": 17,
-    "marisaaHardVerifiedCallbacks": 75921,
-    "marisaaHardAllSixStagesObserved": false,
-    "beforeLaserXYDifferences": 28,
-    "constructorComponentCases": 26,
-    "normalIndependentVerifiedFullCallbacks": 122537,
-    "hardIndependentVerifiedCallbacks": 107662,
+    "actualOriginalUiSaveBytes": 21633,
+    "decodedRecordBytes": 149076,
+    "sakuyaaHardDiagnosticPrefixCallbacks": 60393,
+    "sakuyaaHardNaturalReplayEndObserved": false,
+    "exitEventBoundedProbeCallbacks": 200,
+    "unmarkedFullRunRejected": true,
     "currentSdlBrowserAcceptance": false,
     "unrelatedResourceCryptEditExcluded": true,
     "completeGame": false,

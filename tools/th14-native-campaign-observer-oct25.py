@@ -98,6 +98,7 @@ hud_score_pc={};hud_score_writes=[]
 targets[0x44477a]='startup-ascii-create-call-instruction'
 ascii_create_invocations=[]
 pcs=list(targets);threads={};handles={pi.process,pi.thread};events=[];debug_errors=[];started=time.monotonic();exited=False;error='';complete=False
+process_exit_event=None;observer_termination_requested=False
 camera_raw=bytearray();live_capture_callbacks=[];thread_events=[];callback_count=0;raw=bytearray();player_times=bytearray();initialization=None;last_stage=0;first_snapshot=None
 worker_phase_pcs={};main_resource_frames=0;last_pan=None;last_rectangle=None;last_player_time=started;terminal_menu_samples=[];last_terminal_check=0.;observed_terminal_marker=False
 (home/'process-start.json').write_text(json.dumps(dict(pid=pi.pid,exe=exe,onlyOwnCreatedProcess=True,createdUnixNs=time.time_ns()),indent=2)+'\n')
@@ -339,7 +340,9 @@ try:
             elif ev.kind==4:threads.pop(ev.tid,None)
             elif ev.kind==6:
                 if ev.data.dll.file:k.CloseHandle(ev.data.dll.file)
-            elif ev.kind==5:exited=True
+            elif ev.kind==5:
+                exited=True
+                process_exit_event=dict(exitCode=int(ev.data.exit_code),hostMonotonicNs=time.monotonic_ns(),callbacks=callback_count,observerTerminationRequested=False)
             elif ev.kind==1:
                 x=ev.data.exception.record
                 if x.code in(0x80000004,0x4000001e)and ev.tid in threads:
@@ -394,7 +397,7 @@ try:
                         install(ev.tid,current=True)
                     else:status=0x80010001;debug_errors.append(dict(code=x.code,pc=pc))
                 elif x.code not in(0x80000003,0x4000001f):
-                    status=0x80010001;debug_errors.append(dict(code=x.code,address=x.address,firstChance=ev.data.exception.first_chance))
+                    status=0x80010001;debug_errors.append(dict(code=x.code,address=x.address,firstChance=ev.data.exception.first_chance,callbacks=callback_count,hostMonotonicNs=time.monotonic_ns()))
                     if not ev.data.exception.first_chance:raise RuntimeError('Unexpected second-chance child exception')
         finally:checked(k.ContinueDebugEvent(ev.pid,ev.tid,status))
 except BaseException as e:
@@ -402,13 +405,17 @@ except BaseException as e:
     error=repr(e);(home/'exception.txt').write_text(traceback.format_exc(),encoding='utf8')
 finally:
     if not exited:
+        observer_termination_requested=True
         k.TerminateProcess(pi.process,0);deadline=time.monotonic()+3
         while time.monotonic()<deadline:
             ev=types.DebugEvent()
             if not k.WaitForDebugEvent(C.byref(ev),100):continue
             if ev.kind==6 and ev.data.dll.file:k.CloseHandle(ev.data.dll.file)
             checked(k.ContinueDebugEvent(ev.pid,ev.tid,0x10002))
-            if ev.kind==5:exited=True;break
+            if ev.kind==5:
+                exited=True
+                process_exit_event=dict(exitCode=int(ev.data.exit_code),hostMonotonicNs=time.monotonic_ns(),callbacks=callback_count,observerTerminationRequested=True)
+                break
         k.WaitForSingleObject(pi.process,2000)
     for handle in handles:
         if handle:k.CloseHandle(handle)
@@ -421,5 +428,6 @@ finally:
         callbacks=callback_count,selectedSha256=sha(raw),selectedBytes=len(raw),playerHostTimesSha256=sha(player_times),observedReplayTerminalMarker=observed_terminal_marker,observedForcedReplayEndMenu=complete,observedColdFirstPlayerBoundary=first_snapshot is not None,derivedSingleStageReplay=False,derivedTwoStageReplay=False,intactOriginalReplay=True,recordedStages=sorted({struct.unpack_from('<I',raw,i+120)[0]for i in range(0,len(raw),128)}),transitionEvents=transition_events,sourceFullReplaySha256=asset_report['replaySha256'],recordedStageHeaderInputAndFpsRetainedExactly=True,anmPublicationTraceEndsAtFirstPlayer=False,anmPublicationTraceCutoffPlayerCallbacks=opt.publication_cutoff,hudScoreStride=8,hudScoreSha256=sha(hud_raw),worldCameraSha256=sha(camera_raw),worldCameraBytes=len(camera_raw),worldCameraStride=0x124,mainResourceFrames=main_resource_frames,allAnmPublications=len(allocation_rows),serialWriteObservations=len(serial_write_rows),allocationEventsSha256=sha((home/'allocation-events.jsonl').read_bytes())if(home/'allocation-events.jsonl').exists()else None,allRecordedSerialsContiguous=len(allocation_rows)<=0x7ffff,serialModulus=0x7ffff,serialSkipsZero=True,allRecordedPublicationOrdinalsContiguous=all(r['publicationOrdinal']==i+1 and r['serial']==i%0x7ffff+1 for i,r in enumerate(allocation_rows)),observedSerialWrapPublicationOrdinals=[r['publicationOrdinal']for r in allocation_rows if r['serial']==1 and r['publicationOrdinal']>1],terminalMenuSamples=terminal_menu_samples,beamFallbackCount=len(events),
         readOnlyLiveAnimationSnapshots=live_capture_callbacks,liveAnimationSnapshotBoundary="before original Player callback",childExited=exited,error=error,debugErrors=debug_errors,elapsedSeconds=time.monotonic()-started,sourceSha256=sha(observer_source_bytes),observerSourceFrozenAtStart=True,controllerPhaseEventsSha256=sha((home/'controller-phase-events.jsonl').read_bytes())if(home/'controller-phase-events.jsonl').exists()else None,sceneCameraCopyEventsSha256=sha((home/'scene-camera-copy-events.jsonl').read_bytes())if(home/'scene-camera-copy-events.jsonl').exists()else None,sceneCameraCopyEvents=len(scene_camera_copies),mainCameraBoundaryEvents=camera_boundary_count,
         nativeTypesSourceSha256=sha((root/'tools/th14-native-session-capture.py').read_bytes()),completeGame=False,nativeEquivalent=False)
-    (home/'report.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:report[k]for k in('observedForcedReplayEndMenu','allAnmPublications','beamFallbackCount','callbacks','childExited','error','elapsedSeconds')}),flush=True)
+    report.update(processExitEvent=process_exit_event,observerTerminationRequested=observer_termination_requested)
+    (home/'report.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:report[k]for k in('observedForcedReplayEndMenu','allAnmPublications','beamFallbackCount','callbacks','childExited','error','elapsedSeconds','processExitEvent','observerTerminationRequested')}),flush=True)
 if error or not complete:raise SystemExit(1)
