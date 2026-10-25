@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "6c7d3065714cd5c1393ccc9d53ce951c5b91abc4",
+  "sourceCommit": "fbd8642067afefa0ddb8c1ca764405f3639c5b19",
   "files": [
     {
       "path": ".gitignore",
@@ -240,8 +240,8 @@
     },
     {
       "path": "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
-      "bytes": 2702,
-      "sha256": "b93ef02e20d896304ea0319fce2373ea9d06f588a5dc38301ab298a1b693a5b6"
+      "bytes": 2744,
+      "sha256": "704c95cee490d862f77f68f8e3ddfdd50c12df5c3910e9d91e7c4c49c06f446e"
     },
     {
       "path": "docs/porting/TH14_MSG_HUD_ORDER_OCT24.md",
@@ -310,8 +310,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 5346,
-      "sha256": "88038b5d97cd5cf9b7ea280dbc5a79d8a0b30cbcdbb8c9c1b5641bb811388ba0"
+      "bytes": 5777,
+      "sha256": "ec4100fbedee8c0f1aa956e6854373b18db4e68c7f339dc888455aed402a29d1"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -337,6 +337,11 @@
       "path": "docs/porting/TH14_SAVE_DELTA_FIX_OCT16.md",
       "bytes": 4114,
       "sha256": "4d36dc608bb03ec2457ff3d2919a5465bb7e033cc722e3cae330f28813de49c8"
+    },
+    {
+      "path": "docs/porting/TH14_SCENE_HANDOFF_OCT26.md",
+      "bytes": 3519,
+      "sha256": "1280d1e1fb75a2f712a3603209b2f9f3c0d47b4b91f6b985821953ab611f43f4"
     },
     {
       "path": "docs/porting/TH14_SCREEN_CAMERA_FIX_OCT15.md",
@@ -3345,8 +3350,8 @@
     },
     {
       "path": "docs/porting/th14-mode-acceptance-inventory-oct25.json",
-      "bytes": 155928,
-      "sha256": "294bcf98e683133385d28b548d8cf5f284bea0965f3e72f103d97d90dfa4b8cf"
+      "bytes": 168053,
+      "sha256": "3ea79b129c5825ddb671b6b294743830f0f9dc4b42431a1ea4a6b1e7c04db522"
     },
     {
       "path": "docs/porting/th14-msg-hud-order-verified-oct24.json",
@@ -4774,6 +4779,11 @@
       "sha256": "d9149709063093f2f33566f137b96c3c4f00b970cfe280f8a83284ac0f9137b5"
     },
     {
+      "path": "docs/porting/th14-scene-handoff-verified-oct26.json",
+      "bytes": 20387,
+      "sha256": "15b629c706ae885499d6f0ff1316a0d57f2aad1045565fa859e4af60e8b83e90"
+    },
+    {
       "path": "docs/porting/th14-score-legacy-regression.json",
       "bytes": 1532,
       "sha256": "917cc69c2769a00bf2b24e3ac7da310b87c875c661ca71754ca81d12663780af"
@@ -4907,6 +4917,11 @@
       "path": "docs/porting/th14-shot-hit-interrupt-verified-oct23.json",
       "bytes": 5956,
       "sha256": "86f76a1a216accf13f49c2081769a63885b04d516bd322bade75236f53a6d162"
+    },
+    {
+      "path": "docs/porting/th14-shot-hit-stack-z-component-oct26.json",
+      "bytes": 1326,
+      "sha256": "8bc8f2c727dfa352efcdaf3b7cce47d7a015df465b7d2100c0b078b8275c0bcc"
     },
     {
       "path": "docs/porting/th14-shot-hit-verified.json",
@@ -15160,8 +15175,8 @@
     },
     {
       "path": "tools/th14-compare-native-campaign.mjs",
-      "bytes": 38382,
-      "sha256": "fb67ed475a72f4bcf92d283a4f0789441dc76f438d02bcf53067f205a1a8fdaf"
+      "bytes": 40670,
+      "sha256": "97d022ed7c03f4c934edf829f3d81a20e9b15483bee7a8eecfaaee2733c26e11"
     },
     {
       "path": "tools/th14-comparison-failure-receipt.py",
@@ -19224,6 +19239,11 @@
       "sha256": "fab20e717b7c0d346661abaf0f293fdc18bc88615bc36d69c0dfdb627cf5c726"
     },
     {
+      "path": "tools/th14-scene-handoff-evidence-check-oct26.py",
+      "bytes": 13903,
+      "sha256": "bb664cdc44c8bb93cda1ebb60c513f247cd507820c8736e7e6cca050853fbb35"
+    },
+    {
       "path": "tools/th14-score-check.mjs",
       "bytes": 8409,
       "sha256": "7b9a904fe7fa7852636dde5477dee22c8eeb93f8d9fd8e687521e3e09867d16d"
@@ -19467,6 +19487,11 @@
       "path": "tools/th14-shot-hit-native.py",
       "bytes": 3271,
       "sha256": "23ba64d516bd5b16acca9b4db91a09e3e56571dbe8d3e602ba5faa8236844913"
+    },
+    {
+      "path": "tools/th14-shot-hit-stack-z-evidence-oct26.py",
+      "bytes": 7870,
+      "sha256": "866156bd4380362e6974c839896cd13c8f808d2db22d48a5e31a9e84b473f0e4"
     },
     {
       "path": "tools/th14-shot-homing-check.mjs",
@@ -22805,24 +22830,28 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "6c7d3065714cd5c1393ccc9d53ce951c5b91abc4",
-    "title": "TH14 complete retained Sakuya A Hard observation",
-    "changedSourceAndMetadataFiles": 6,
+    "basePublishedCommit": "fbd8642067afefa0ddb8c1ca764405f3639c5b19",
+    "title": "TH14 observed cross-update Scene camera scheduling",
+    "changedSourceAndMetadataFiles": 9,
     "productionSourceFiles": 0,
     "productionGameplayChanged": false,
     "productionGraphicsChanged": false,
     "productionAudioChanged": false,
     "gameAssetsAdded": false,
-    "nativeNaturalRunModePairs": 22,
-    "nativeAllStageEntryModePairs": 18,
-    "sakuyaaHardNativeCallbacks": 96682,
-    "sakuyaaHardAllSixStagesObserved": true,
-    "sakuyaaHardVm303Rows": 2020,
-    "sakuyaaHardCombatCheckpoints": 850,
-    "sakuyaaHardNonemptyCombatCheckpoints": 311,
-    "sakuyaaHardIndependentlyVerifiedFiniteEvidence": true,
-    "sakuyaaHardWholeModeEquivalent": false,
-    "previousEarlyExitCauseStillUnproved": true,
+    "nativeNaturalRunModePairs": 23,
+    "nativeAllStageEntryModePairs": 19,
+    "reimuaHardCallbacks": 96103,
+    "reimuaHardCamera25Equal": true,
+    "reimuaHardVmWordDifferences": 6,
+    "reimuaLunaticCallbacks": 86751,
+    "reimuaLunaticVmWordDifferences": 5,
+    "strictFailedRunsRemainRejected": true,
+    "identicalDiagnosticWasmPrefixCallbacks": 56000,
+    "diagnosticCameraDifferencesBefore": 933,
+    "diagnosticCameraDifferencesAfter": 0,
+    "syntheticStackCases": 336,
+    "sakuyaaHardRegressionCallbacks": 96682,
+    "reimubNormalRegressionCallbacks": 122537,
     "currentSdlBrowserAcceptance": false,
     "unrelatedResourceCryptEditExcluded": true,
     "completeGame": false,

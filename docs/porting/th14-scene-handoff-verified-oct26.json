@@ -1,0 +1,479 @@
+{
+  "schema": "th14/scene-camera-handoff/1",
+  "verifiedRetainedDifferences": true,
+  "sourceToolSha256": "97d022ed7c03f4c934edf829f3d81a20e9b15483bee7a8eecfaaee2733c26e11",
+  "checkerSha256": "bb664cdc44c8bb93cda1ebb60c513f247cd507820c8736e7e6cca050853fbb35",
+  "wasmSha256": "f0801b8a81134c61255ffb9102a41a3957b8cf8ea1d8de7813da381665a619de",
+  "productionChanged": false,
+  "fullCases": [
+    {
+      "mode": "reimua-hard",
+      "callbacks": 96103,
+      "stagesObserved": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "allSelected32Equal": true,
+      "allCamera25Equal": true,
+      "allHud2Equal": true,
+      "vm303Snapshots": [
+        {
+          "callback": 1,
+          "rows": 52,
+          "selectedWordsPerVm": 303
+        },
+        {
+          "callback": 26000,
+          "rows": 519,
+          "selectedWordsPerVm": 303
+        },
+        {
+          "callback": 30000,
+          "rows": 243,
+          "selectedWordsPerVm": 303
+        },
+        {
+          "callback": 36000,
+          "rows": 218,
+          "selectedWordsPerVm": 303
+        },
+        {
+          "callback": 38900,
+          "rows": 266,
+          "selectedWordsPerVm": 303
+        },
+        {
+          "callback": 60000,
+          "rows": 807,
+          "selectedWordsPerVm": 303
+        },
+        {
+          "callback": 90000,
+          "rows": 351,
+          "selectedWordsPerVm": 303
+        }
+      ],
+      "vm303Rows": 2456,
+      "registryOrderEqual": true,
+      "vmWordDifferences": 6,
+      "remainingVmDifferenceScope": {
+        "file": 8,
+        "script": 149,
+        "field": "worldZ"
+      },
+      "fullCapturedRunAccepted": false,
+      "combatCheckpoints": 1162,
+      "nonemptyCombatCheckpoints": 360,
+      "combatRows": {
+        "enemies": 729,
+        "bullets": 114154,
+        "shots": 2754,
+        "areas": 1337,
+        "items": 4692,
+        "lasers": 217
+      },
+      "allCapturedCombatWordsEqual": true,
+      "orderedInitialPublications": 3361,
+      "publicationCutoffCallbacks": 1000,
+      "sceneUpdateHandoffs": [
+        {
+          "stage": 5,
+          "precedingPlayerCallbacks": 54933,
+          "drawCameraBoundaryNs": 364915263222300,
+          "sceneCopyNs": 364915265409200,
+          "nextControllerCameraNs": 364915266502900
+        }
+      ]
+    },
+    {
+      "mode": "reimua-lunatic",
+      "callbacks": 86751,
+      "stagesObserved": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "allSelected32Equal": true,
+      "allCamera25Equal": true,
+      "allHud2Equal": true,
+      "vm303Snapshots": [
+        {
+          "callback": 1,
+          "rows": 52,
+          "selectedWordsPerVm": 303
+        },
+        {
+          "callback": 26000,
+          "rows": 131,
+          "selectedWordsPerVm": 303
+        },
+        {
+          "callback": 30000,
+          "rows": 240,
+          "selectedWordsPerVm": 303
+        },
+        {
+          "callback": 36000,
+          "rows": 319,
+          "selectedWordsPerVm": 303
+        },
+        {
+          "callback": 38900,
+          "rows": 217,
+          "selectedWordsPerVm": 303
+        },
+        {
+          "callback": 60000,
+          "rows": 1305,
+          "selectedWordsPerVm": 303
+        }
+      ],
+      "vm303Rows": 2264,
+      "registryOrderEqual": true,
+      "vmWordDifferences": 5,
+      "remainingVmDifferenceScope": {
+        "file": 8,
+        "script": 149,
+        "field": "worldZ"
+      },
+      "fullCapturedRunAccepted": false,
+      "combatCheckpoints": 1133,
+      "nonemptyCombatCheckpoints": 308,
+      "combatRows": {
+        "enemies": 607,
+        "bullets": 85858,
+        "shots": 2980,
+        "areas": 1643,
+        "items": 4610,
+        "lasers": 353
+      },
+      "allCapturedCombatWordsEqual": true,
+      "orderedInitialPublications": 1776,
+      "publicationCutoffCallbacks": 1000,
+      "sceneUpdateHandoffs": []
+    }
+  ],
+  "passingRegressions": [
+    {
+      "mode": "sakuyaa-hard",
+      "callbacks": 96682,
+      "independentlyVerifiedFiniteEvidence": true,
+      "vm303Rows": 2020,
+      "combatCheckpoints": 850
+    },
+    {
+      "mode": "reimub-normal",
+      "callbacks": 122537,
+      "independentlyVerifiedFiniteEvidence": true,
+      "vm303Rows": 2586,
+      "combatCheckpoints": 1294
+    }
+  ],
+  "strictFailureRegressions": [
+    {
+      "mode": "hard",
+      "strictVerifierExitCode": 1,
+      "rejectedAtFullVmEquality": true,
+      "noPassingReportWritten": true
+    },
+    {
+      "mode": "lunatic",
+      "strictVerifierExitCode": 1,
+      "rejectedAtFullVmEquality": true,
+      "noPassingReportWritten": true
+    }
+  ],
+  "historicalFullCameraBaseline": {
+    "callbacks": 96103,
+    "differingWord12Callbacks": 18399,
+    "wasmSha256": "b6563726f05bfc2a6d216e38b99f2ad83b94d69fa896937635669f923d4dc605",
+    "identicalWasmToCurrent": false
+  },
+  "identicalDiagnosticWasmPrefixControl": {
+    "callbacks": 56000,
+    "beforeCameraWord12Differences": 933,
+    "afterCameraWordDifferences": 0,
+    "wholeRunScope": false
+  },
+  "bindings": {
+    "artifacts/th14/stage-item-retirement-oct25/curve-origin-observer-oct26/observer-build.json": {
+      "bytes": 74306,
+      "sha256": "8a10c07925bb6c4f090cc593325f60e46dd10732cee8a274f71f2f1cc1021935"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/curve-origin-observer-oct26/observer.wasm": {
+      "bytes": 1500808,
+      "sha256": "f0801b8a81134c61255ffb9102a41a3957b8cf8ea1d8de7813da381665a619de"
+    },
+    "artifacts/th14/retail-reimua-hard-callback-rng-hardware-oct26/report.json": {
+      "bytes": 480774,
+      "sha256": "6447052685b80a40b816302744858db62971f9f7d5e32a424cd983b2029033dc"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-scene-handoff-full-oct26/report.json": {
+      "bytes": 9039,
+      "sha256": "b3bc4f89abc5ea8970b1c6783ba9d60fa7a74aee323752bb2faa233babb58feb"
+    },
+    "tools/th14-compare-native-campaign.mjs": {
+      "bytes": 40670,
+      "sha256": "97d022ed7c03f4c934edf829f3d81a20e9b15483bee7a8eecfaaee2733c26e11"
+    },
+    "artifacts/th14/retail-reimua-hard-callback-rng-hardware-oct26/selected-state.u32": {
+      "bytes": 12301184,
+      "sha256": "5ab29538808d05e03fcb555d43523797244a8516f006cbf1f98ba6de20e8973b"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-scene-handoff-full-oct26/selected-state.u32": {
+      "bytes": 12301184,
+      "sha256": "5ab29538808d05e03fcb555d43523797244a8516f006cbf1f98ba6de20e8973b"
+    },
+    "artifacts/th14/retail-reimua-hard-callback-rng-hardware-oct26/world-camera.raw": {
+      "bytes": 28062076,
+      "sha256": "f3aeac2c73872510a51a8267e1540b945b9d9a491ce76474ae573b69d6b9877f"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-scene-handoff-full-oct26/portable-camera.u32": {
+      "bytes": 9610300,
+      "sha256": "16cd1d3bbc6a97f637d99ff8da2a779759896e1a1243e166a2d32fec4994514f"
+    },
+    "artifacts/th14/retail-reimua-hard-callback-rng-hardware-oct26/hud-score.u32": {
+      "bytes": 768824,
+      "sha256": "5ab30a475f8651c2f22c98320cd1eac9bb1c0e703c965645bd61f766d9e583c5"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-scene-handoff-full-oct26/portable-hud.u32": {
+      "bytes": 768824,
+      "sha256": "5ab30a475f8651c2f22c98320cd1eac9bb1c0e703c965645bd61f766d9e583c5"
+    },
+    "artifacts/th14/retail-reimua-hard-callback-rng-hardware-oct26/live-vms-callback-1.json": {
+      "bytes": 168173,
+      "sha256": "f6c998a784d9b94b8debe6aa835ce9ea38ce459c7d7b355ff0b27d9a5be25043"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-scene-handoff-full-oct26/portable-live-1.json": {
+      "bytes": 50694,
+      "sha256": "1d9c5bb7f770d3aa12cc46df2fec34d7e94297c81751b750dad3ced9f8c5349a"
+    },
+    "artifacts/th14/retail-reimua-hard-callback-rng-hardware-oct26/live-vms-callback-26000.json": {
+      "bytes": 1681168,
+      "sha256": "396c515d5a64773601cef4070f34c5a387f354405f928b4b6d8ba9b8130dcfa7"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-scene-handoff-full-oct26/portable-live-26000.json": {
+      "bytes": 561992,
+      "sha256": "b477561a67648e810b35713d901704983483ea210b73f5da55cccb9f2bed0ba6"
+    },
+    "artifacts/th14/retail-reimua-hard-callback-rng-hardware-oct26/live-vms-callback-30000.json": {
+      "bytes": 787201,
+      "sha256": "a4ed8ee7afdf929827fecb460a5766fe4fbcabaa543dc05bca06349186fd1f5a"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-scene-handoff-full-oct26/portable-live-30000.json": {
+      "bytes": 266967,
+      "sha256": "38621f65c1dffa6ebfac88edc00496c89e01b0e14da391749313666e1ac0ab55"
+    },
+    "artifacts/th14/retail-reimua-hard-callback-rng-hardware-oct26/live-vms-callback-36000.json": {
+      "bytes": 706140,
+      "sha256": "9e8e03d4025a1ed7900c5d0a72df638fa69a00a542c82a610768e976ad5c631d"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-scene-handoff-full-oct26/portable-live-36000.json": {
+      "bytes": 236935,
+      "sha256": "4ae9e3c69559b752846214c804a73c4ef33aaf8c899ba21e6b34770ef9c8cf8a"
+    },
+    "artifacts/th14/retail-reimua-hard-callback-rng-hardware-oct26/live-vms-callback-38900.json": {
+      "bytes": 861937,
+      "sha256": "4f2a588cc1effdd1577d6df074d9e2dbf9ac3ac20edb7f35f00fa32caf7f8a2d"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-scene-handoff-full-oct26/portable-live-38900.json": {
+      "bytes": 292905,
+      "sha256": "63c103768aadcb22ca175bd735b83753f0b98a07b5a9c2364821dfff784c6951"
+    },
+    "artifacts/th14/retail-reimua-hard-callback-rng-hardware-oct26/live-vms-callback-60000.json": {
+      "bytes": 2623140,
+      "sha256": "fb5504b3d586f4ac4e236fcb58765521904731b910b6478abb7983d2bb71f1da"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-scene-handoff-full-oct26/portable-live-60000.json": {
+      "bytes": 904591,
+      "sha256": "04640444937a644725770b645c1613b0c1e2a0198cbad3ddbd9a3d0163b93760"
+    },
+    "artifacts/th14/retail-reimua-hard-callback-rng-hardware-oct26/live-vms-callback-90000.json": {
+      "bytes": 1138089,
+      "sha256": "2a5b686f9365dd78125b1fa7ada45be00a6d4018c278eceedf53613e546eb647"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-scene-handoff-full-oct26/portable-live-90000.json": {
+      "bytes": 390965,
+      "sha256": "8e70ab8ad17c57b8d20e3a0c9efca523818d87beacf2a6dc59cf8cb87773240e"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-scene-handoff-full-oct26/live-report.json": {
+      "bytes": 10394,
+      "sha256": "639d98b859754a92f19a12ac54e8a7108e68c564195dfa4582a756a3c224283c"
+    },
+    "artifacts/th14/retail-reimua-hard-callback-rng-hardware-oct26/combat-pool-index.json": {
+      "bytes": 463092,
+      "sha256": "aaf56073bf18723e31f8918dfd47c47d4a41eafe9349347d017c32b1539b94f5"
+    },
+    "artifacts/th14/retail-reimua-hard-callback-rng-hardware-oct26/allocation-events.jsonl": {
+      "bytes": 1217262,
+      "sha256": "cee2e54c139dec539fe53c7fd2bb8709bce21b44a1e5eef2114ba497f8590289"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-scene-handoff-full-oct26/portable-allocations-initial-through-1000.json": {
+      "bytes": 567323,
+      "sha256": "41f61ab492fc204d24dcd2f44c1c5e2b110b5a82d8310018d2d7d8ece5c11e15"
+    },
+    "artifacts/th14/retail-reimua-lunatic-exit-boundary-hardware-oct26/report.json": {
+      "bytes": 469666,
+      "sha256": "5edbec01fcb1ecbcddf460f22bea6c886408af8c7614de9c754e5b67b0ff55f2"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-scene-handoff-full-oct26/report.json": {
+      "bytes": 8830,
+      "sha256": "c5e2aef38b80fea8ba00492ed933a3de77b7529a0e48a6d877dd9bb9a50dc90d"
+    },
+    "artifacts/th14/retail-reimua-lunatic-exit-boundary-hardware-oct26/selected-state.u32": {
+      "bytes": 11104128,
+      "sha256": "c71f84de7a7c5381735d65ada584e1f2a277408793a6e0b0e5a66bac16d677af"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-scene-handoff-full-oct26/selected-state.u32": {
+      "bytes": 11104128,
+      "sha256": "c71f84de7a7c5381735d65ada584e1f2a277408793a6e0b0e5a66bac16d677af"
+    },
+    "artifacts/th14/retail-reimua-lunatic-exit-boundary-hardware-oct26/world-camera.raw": {
+      "bytes": 25331292,
+      "sha256": "3bef1342ce61b3198bfbb3cb7108cf945e164d9c0ae568ad163fcfacdb44a730"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-scene-handoff-full-oct26/portable-camera.u32": {
+      "bytes": 8675100,
+      "sha256": "617853f036f5d64a5b724792f60fb55ad03c0d30a4b1b9773c7a91dc230d2b14"
+    },
+    "artifacts/th14/retail-reimua-lunatic-exit-boundary-hardware-oct26/hud-score.u32": {
+      "bytes": 694008,
+      "sha256": "b699e5e37f2b2d59de92f9e155ff3b7b3effe2f8a24521f78319294ac7ff407b"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-scene-handoff-full-oct26/portable-hud.u32": {
+      "bytes": 694008,
+      "sha256": "b699e5e37f2b2d59de92f9e155ff3b7b3effe2f8a24521f78319294ac7ff407b"
+    },
+    "artifacts/th14/retail-reimua-lunatic-exit-boundary-hardware-oct26/live-vms-callback-1.json": {
+      "bytes": 168172,
+      "sha256": "8049ed7b606b47d61b807c413bef3dc114fe2da97a9bcb65f6f1a56d18c8bab5"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-scene-handoff-full-oct26/portable-live-1.json": {
+      "bytes": 50691,
+      "sha256": "2f12d923b73b966d6ed3a0f435be1533e03d73607caa45d3a9c2de782a9010cf"
+    },
+    "artifacts/th14/retail-reimua-lunatic-exit-boundary-hardware-oct26/live-vms-callback-26000.json": {
+      "bytes": 424471,
+      "sha256": "07cc7255ce5ad824f7cbaed6ba81df2af349e69f195aff76d365f16f7d612af4"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-scene-handoff-full-oct26/portable-live-26000.json": {
+      "bytes": 147356,
+      "sha256": "c5bf15610f930773915355b980b26c63626fb9df1a1abca5399026da5898279a"
+    },
+    "artifacts/th14/retail-reimua-lunatic-exit-boundary-hardware-oct26/live-vms-callback-30000.json": {
+      "bytes": 777352,
+      "sha256": "8a21b947cb1755dbc0ac5c44e73068bedcfd3fa5c26d34f2ceed21d0cfe19328"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-scene-handoff-full-oct26/portable-live-30000.json": {
+      "bytes": 260639,
+      "sha256": "048380c8daf44092b2bb3fafc2f1f87ebf6ebd630b38526b50499b4c27ac94fe"
+    },
+    "artifacts/th14/retail-reimua-lunatic-exit-boundary-hardware-oct26/live-vms-callback-36000.json": {
+      "bytes": 1033465,
+      "sha256": "44d43ee847bab9834c0987e459fc38cf75b98fc6bc5867e5c1318f63d316d60b"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-scene-handoff-full-oct26/portable-live-36000.json": {
+      "bytes": 348481,
+      "sha256": "c2b4afb580ebd91d80c1fabeea4909155e31d31a97f20042e36473b0eabe39fd"
+    },
+    "artifacts/th14/retail-reimua-lunatic-exit-boundary-hardware-oct26/live-vms-callback-38900.json": {
+      "bytes": 702825,
+      "sha256": "e8f5c53040b4a2f52ce9f2608f14674683cb9ed878ffee180546a61d81ed1d30"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-scene-handoff-full-oct26/portable-live-38900.json": {
+      "bytes": 235641,
+      "sha256": "f703ec9bbf3c4c2b556fb9d73c0fe7950c664dfa64cc13dfc1b170e5b6c4408e"
+    },
+    "artifacts/th14/retail-reimua-lunatic-exit-boundary-hardware-oct26/live-vms-callback-60000.json": {
+      "bytes": 4244626,
+      "sha256": "3a7a30a88b9d023875dc77e8b6667e765f6d8f1e5b2445202f0b4a87f502eef5"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-scene-handoff-full-oct26/portable-live-60000.json": {
+      "bytes": 1487874,
+      "sha256": "6929c204516fe160b145816fab1cecd76739a3be8016feb7c832694e79b3e465"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-scene-handoff-full-oct26/live-report.json": {
+      "bytes": 9962,
+      "sha256": "83699da812248ad80fb0c472cd9989fae9d56437bebec3073e9a6162888f274c"
+    },
+    "artifacts/th14/retail-reimua-lunatic-exit-boundary-hardware-oct26/combat-pool-index.json": {
+      "bytes": 451577,
+      "sha256": "b27a6bea97632d84120703d985e7030f9f67c5568215fb2e0f5e4f8fb18dd972"
+    },
+    "artifacts/th14/retail-reimua-lunatic-exit-boundary-hardware-oct26/allocation-events.jsonl": {
+      "bytes": 642115,
+      "sha256": "362d3b92ba28f9b067769abbee52a55b52fbbb8543baba5055f0544102cbf7fd"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-scene-handoff-full-oct26/portable-allocations-initial-through-1000.json": {
+      "bytes": 300452,
+      "sha256": "5bc6559097d07347de4c2cfd90eade7cca523df0a5164af8f2582ac23fe1ffaf"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-bullet-hit-full-oct26/report.json": {
+      "bytes": 8761,
+      "sha256": "77e603805e50e4eba5c47f9328132efeb669c02a80cff1a8a71f6558891319c7"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-bullet-hit-full-oct26/camera-report.json": {
+      "bytes": 808,
+      "sha256": "f1388ea162f9c513c6f9fe3382e5d708683c3c4752f1f9b374476f7e918b10c1"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/camera-copy-probe-oct26/reimua-hard-prefix-56000/report.json": {
+      "bytes": 7207,
+      "sha256": "ec9295520914c4f226377a3bbff67f88018136e8abbef0de3202a8a9084ac9a9"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/camera-copy-probe-oct26/reimua-hard-prefix-56000/camera-report.json": {
+      "bytes": 806,
+      "sha256": "332a4c3bfb48271a4cb1a7acad53a3a1bb76c1d54eaacea59a19644cdee4b1c8"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/camera-copy-probe-oct26/reimua-hard-cross-update-prefix-56000/report.json": {
+      "bytes": 7360,
+      "sha256": "44fde7504287a3e6b0cfca9243912eb5949d26f5abbc8f632e9d8b5a915e68b9"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/camera-copy-probe-oct26/reimua-hard-cross-update-prefix-56000/camera-report.json": {
+      "bytes": 669,
+      "sha256": "9f23d29c54da948bd9d1227551c09a276a8cd8225648ca622bdb09f78c649812"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/sakuyaa-hard-scene-handoff-regression-verified-oct26.json": {
+      "bytes": 10311,
+      "sha256": "2c6f53ae52966a9ac022a336a6e387abb052fd761e5753a93b5eac5871b0668b"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/sakuyaa-hard-scene-handoff-regression-oct26/report.json": {
+      "bytes": 8830,
+      "sha256": "625c940979ec4eec034cc123851895f0ab07d16ac8b9dbf653e48a5a9c5bcbe9"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimub-normal-scene-handoff-regression-verified-oct26.json": {
+      "bytes": 10889,
+      "sha256": "c621d1e5e439db3aab5e20b983e439ba46202ab19b5c1a42d072ead31cdb88a8"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/reimub-normal-scene-handoff-regression-oct26/report.json": {
+      "bytes": 8837,
+      "sha256": "0627576ac7fac6946ba8597fd7b66bf40f42e8c4cb537f2943e1e8823e6683df"
+    },
+    "artifacts/th14/stage-item-retirement-oct25/scene-handoff-negative-regression-oct26.json": {
+      "bytes": 290,
+      "sha256": "d262a17d1e46ef30a4588612afc0b41b80264c201db611b5e3f5701a367561af"
+    },
+    "artifacts/th14/retail-reimua-hard-callback-rng-hardware-oct26/scene-camera-copy-events.jsonl": {
+      "bytes": 5819,
+      "sha256": "7bebfa7a0b93b86fb7466b931062b16f5238ec12cd8c63271fa1b1b194de19c7"
+    },
+    "artifacts/th14/retail-reimua-hard-callback-rng-hardware-oct26/camera-boundary-events.jsonl": {
+      "bytes": 4180397,
+      "sha256": "862734435d7e92410e7b20fc785547298a3d91effb1f1795733a8d1bb54264af"
+    }
+  },
+  "limitations": [
+    "Known VM Z differences remain fatal to the strict full-run verifier.",
+    "The scheduler uses observed timestamps and instruction boundaries, never native camera values.",
+    "The synthetic stack component does not prove actual stack provenance or later lifecycle.",
+    "No ordinary menu, actual GPU/PCM, browser persistence, all-mode or whole-game equivalence is proved."
+  ],
+  "completeGame": false,
+  "nativeEquivalent": false
+}

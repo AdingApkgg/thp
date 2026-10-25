@@ -70,7 +70,7 @@ const transition=(exists(resolve(nativeHome,'transition-events.jsonl'))?read(res
 const resourceEvents=read(resolve(nativeHome,'resource-ready-events.jsonl'),'utf8').trim().split('\n').map(x=>JSON.parse(x)),phaseInputs=[];
 const sceneEvents=phasedScheduler?read(resolve(nativeHome,'scene-camera-copy-events.jsonl'),'utf8').trim().split('\n').filter(Boolean).map(x=>JSON.parse(x)):[];
 const controllerEvents=schedulerPhases==='observed'?read(resolve(nativeHome,'controller-phase-events.jsonl'),'utf8').trim().split('\n').filter(Boolean).map(x=>JSON.parse(x)):[];
-const controlClock=new Map(),pumpClock=new Map(),beforeDrawWorker=new Map(),afterDrawWorker=new Map();
+const controlClock=new Map(),pumpClock=new Map(),beforeDrawWorker=new Map(),afterDrawWorker=new Map(),sceneNextCameraClock=new Map(),sceneUpdateHandoffs=[];
 if(phasedScheduler){
  assert(c.observed_player_boundary&&c.observed_worker_boundary&&c.observed_boundary_ok,'Observer lacks callback-boundary support');
  for(const e of controllerEvents){assert.equal(e.pc,0x436bed);const callback=e.precedingPlayerCallbacks+1;assert(!controlClock.has(callback),'Repeated controller boundary requires its own scheduler observation');controlClock.set(callback,e.hostMonotonicNs);}
@@ -78,13 +78,30 @@ if(phasedScheduler){
   let low=0,high=limit;while(low<high){const mid=(low+high)>>>1;if(times.readBigUInt64LE(mid*8)<BigInt(e.hostMonotonicNs))low=mid+1;else high=mid;}
   if(low>0&&low<limit)pumpClock.set(low+1,e.hostMonotonicNs);
  }
+ const cameraBoundaryEvents=exists(resolve(nativeHome,'camera-boundary-events.jsonl'))?read(resolve(nativeHome,'camera-boundary-events.jsonl'),'utf8').trim().split('\n').filter(Boolean).map(x=>JSON.parse(x)):[];
  const copies=sceneEvents.filter(x=>x.event==='scene-camera-copy-before'||x.event==='scene-camera-copy-after'&&!sceneEvents.some(b=>b.stage===x.stage&&b.event==='scene-camera-copy-before'));
  for(const e of copies){
   const callback=e.precedingPlayerCallbacks;if(callback<1||callback>limit)continue;
   let phase=e.mainPhaseAtObservation;
   if(phase===undefined){const playerTime=Number(times.readBigUInt64LE((callback-1)*8));const pumps=resourceEvents.filter(x=>x.event==='main-resource-pump'&&x.hostMonotonicNs<=e.hostMonotonicNs);assert(pumps.length,'No observed resource boundary for Scene event');phase=pumps.at(-1).hostMonotonicNs>playerTime?'update':'draw';}
+  const boundary=e.lastMainCameraBoundary;
+  // A resource pump starts the next update before the controller replaces the
+  // camera left by the previous draw. Deliver Scene in that observed window.
+  // Only instruction boundaries and timestamps are used, never camera values.
+  if(phase==='update'&&boundary?.event==='world-perspective-right-written'&&boundary.precedingPlayerCallbacks===callback&&callback<limit){
+   assert(e.readOnly&&boundary.readOnly&&boundary.mainPhaseAtObservation==='draw');
+   assert.equal(e.pc,e.event==='scene-camera-copy-before'?0x40d435:0x40d447);
+   assert.equal(boundary.stage,e.stage);assert.equal(boundary.pc,0x4465a6);
+   const next=cameraBoundaryEvents.find(b=>b.event==='controller-camera-published'&&b.precedingPlayerCallbacks===callback&&b.hostMonotonicNs>e.hostMonotonicNs);
+   assert(next,'Missing observed next camera publication after cross-update Scene copy');
+   assert(next.readOnly&&next.mainPhaseAtObservation==='update');assert.equal(next.pc,0x40dae9);assert.equal(next.stage,e.stage);assert.equal(next.threadId,boundary.threadId);
+   assert(Number(times.readBigUInt64LE((callback-1)*8))<boundary.hostMonotonicNs&&boundary.hostMonotonicNs<e.hostMonotonicNs&&next.hostMonotonicNs<=Number(times.readBigUInt64LE(callback*8)),'Scene handoff must lie between consecutive observed Player callbacks');
+   assert(!afterDrawWorker.has(callback)&&!sceneNextCameraClock.has(callback+1));
+   afterDrawWorker.set(callback,e.hostMonotonicNs);sceneNextCameraClock.set(callback+1,next.hostMonotonicNs);
+   sceneUpdateHandoffs.push({stage:e.stage,precedingPlayerCallbacks:callback,drawCameraBoundaryNs:boundary.hostMonotonicNs,sceneCopyNs:e.hostMonotonicNs,nextControllerCameraNs:next.hostMonotonicNs});continue;
+  }
   if(phase!=='draw')continue;
-  const boundary=e.lastMainCameraBoundary;assert(boundary,'Missing camera scheduler boundary');
+  assert(boundary,'Missing camera scheduler boundary');
   const map=boundary.event==='world-perspective-right-written'?afterDrawWorker:beforeDrawWorker;
   assert(!map.has(e.precedingPlayerCallbacks));map.set(e.precedingPlayerCallbacks,e.hostMonotonicNs);
  }
@@ -153,7 +170,8 @@ for(let i=1;i<limit;i++){
  let updateNow=lastNow;
  if(phasedScheduler&&maxStage>=2){
   const observed=controlClock.get(i+1)??pumpClock.get(i+1);if(observed!==undefined)updateNow=baseNow+BigInt(observed)-playerOrigin;
-  assert(updateNow<=lastNow);assert.equal(c.observed_player_boundary(i+1,lastNow),1);
+   const nextCamera=sceneNextCameraClock.get(i+1);if(nextCamera!==undefined){const boundary=baseNow+BigInt(nextCamera)-playerOrigin;if(updateNow<boundary)updateNow=boundary;}
+   assert(updateNow<=lastNow);assert.equal(c.observed_player_boundary(i+1,lastNow),1);
  }
  assert.equal(c.menu_tick(updateNow,0),1);
  if(phasedScheduler&&maxStage>=2)assert.equal(c.observed_boundary_ok(),1,'Worker delivery failed before Player');
@@ -173,6 +191,7 @@ for(let i=1;i<=600&&!end&&!prefix;i++){
 let stable=null;if(end&&!prefix){for(let i=1;i<=90;i++){const now=lastNow+BigInt(i)*1000000000n/60n;assert.equal(c.menu_tick(now,0),1);assert.equal(c.draw(),1);c.probe_retire_capture();assert.equal(c.public_replay_clock((sampled+i)/60),1);}stable=Array.from({length:20},(_,n)=>c.menu_state(n));}
 const raw=Buffer.from(new Uint32Array(rows).buffer);write(resolve(out,'selected-state.u32'),raw,{flag:'wx'});
 const report={schedulerPhases,controllerFlagReadObservations:controllerEvents.length,sceneWorkerBeforeDrawBoundaries:beforeDrawWorker.size,sceneWorkerAfterDrawBoundaries:afterDrawWorker.size,comparisonToolSha256:sha(read(new URL(import.meta.url))),declaredSelection:expectedSelection,publicationCutoff,portableUnsupportedBulletObservations:unsupportedObservations,allPortableBulletOpcodesSupported:unsupportedObservations.length===0,diagnosticPrefixOnly:!!prefix,nativeCaptureMayStillBeRunning:!nativeReport,observedPhaseInputs:phaseInputs,completed:true,derivedSingleStageReplay:false,intactOriginalReplay:true,selection:initial.words.slice(27,31),stageHeaderInputAndFpsRetainedExactly:true,sourceReplaySha256:assetManifest.replaySha256,archiveSha256:sha(archive),replayBytesSha256:sha(replayBytes),callbacks:rows.length/32,nativeCallbacks:progress.callbacks,selectedSha256:sha(raw),nativeSelectedSha256:sha(nativeRaw),allRaw32ByteIdentical:raw.equals(nativeRaw),differenceCounts:counts,firstDifferences:first,firstDifference,entry,end,stableMenuAfter90Ticks:stable,finalObservedCallbacks:c.public_replay_observations(),nativeInitialSnapshotSha256:sha(read(resolve(nativeHome,'untouched-first-player.json'))),nativeResourceEventsSha256:sha(read(resolve(nativeHome,'resource-ready-events.jsonl'))),nativeTimesSha256:sha(times),wasmSha256:sha(wasm),actualInitialTimeGetTime:initial.actualInitialTimeGetTimeInput,actualCookie:initial.actualOriginalSecurityCookie,declaredGeometryFrame:0x1aec84,observedNativeHostTimes:true,extraAsciiDrawBeginBoundaryTimestamp:asciiBegin.hostMonotonicNs,asciiBeginDeliveryInferredFromFirstPublication:false,asciiCreateObservedAtOriginal44477aCall:true,asciiDeliveryResult,noNativePublicationValuesProvidedToEngine:true,declaredAttractBitClearAtFirstPlayer:true,noRngSerialCounterHealthOrInputWrites:true,noPerFrameStateOverrides:true,recordingGraphics:true,actualGpuOrAudio:false,completeGame:false,nativeEquivalent:false};
+report.sceneWorkerAcrossUpdateBoundaries=sceneUpdateHandoffs.length;report.sceneUpdateHandoffs=sceneUpdateHandoffs;
 write(resolve(out,'report.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(report));
 assert.equal(report.callbacks,limit);assert.equal(report.finalObservedCallbacks,limit);if(!prefix){assert(end);assert.equal(stable[0],2);assert.equal(stable[5],3);}
 

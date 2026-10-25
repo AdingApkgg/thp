@@ -1,0 +1,34 @@
+{
+  "schema": "th14/shot-hit-scratch-z-component/1",
+  "executableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "toolSha256": "866156bd4380362e6974c839896cd13c8f808d2db22d48a5e31a9e84b473f0e4",
+  "cases": 336,
+  "inputCombinations": 48,
+  "declaredScratchWords": [
+    0,
+    8388608,
+    226492416,
+    1056964608,
+    1065353216,
+    3212836864,
+    1736441856
+  ],
+  "firstScratchReadPc": "0x4520f2",
+  "firstScratchWritePc": "0x4520f7",
+  "originalPolarHelper": "0x454510",
+  "factoryBoundary": "0x47ed10",
+  "factoryScript": 149,
+  "everyCaseReadsUnwrittenScratch": true,
+  "everyFactoryZEqualsDeclaredInput": true,
+  "allOtherSelectedResultsInvariant": true,
+  "caseSummarySha256": "ac5b299ded09d9cafe335f01190eaac40526ea9db2bfbd4313345164125490b2",
+  "limitations": [
+    "Controlled Unicorn stack inputs; no actual live stack producer or allocation address is inferred.",
+    "Shot Z is declared zero. Only the stated age/power/seed/radius combinations are covered.",
+    "Three service boundaries return through recorded stubs; the actual factory is not executed.",
+    "No child creation, later lifecycle, visual equivalence or full campaign pass is proved."
+  ],
+  "productionChanged": false,
+  "completeGame": false,
+  "nativeEquivalent": false
+}

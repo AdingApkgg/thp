@@ -256,6 +256,38 @@
           "replaySha256": "c177ab2b6e79e880cb44fd95320e9b1f18425a795be9f0fecd28c19d23e3662c",
           "selected32ComparisonReports": [
             {
+              "path": "artifacts/th14/stage-item-retirement-oct25/reimua-hard-scene-handoff-full-oct26/report.json",
+              "reportSha256": "b3bc4f89abc5ea8970b1c6783ba9d60fa7a74aee323752bb2faa233babb58feb",
+              "callbacks": 96103,
+              "wasmSha256": "f0801b8a81134c61255ffb9102a41a3957b8cf8ea1d8de7813da381665a619de",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": false,
+                "combat": true
+              },
+              "reportedAdditionalGateFailures": [
+                "animation"
+              ],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
+              "path": "artifacts/th14/stage-item-retirement-oct25/reimua-hard-cross-update-full-oct26/report.json",
+              "reportSha256": "a69e4f369d9cfa9a62701e93500fc707eafafaa61b55687eac5a9a23c6884bae",
+              "callbacks": 96103,
+              "wasmSha256": "f0801b8a81134c61255ffb9102a41a3957b8cf8ea1d8de7813da381665a619de",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": false,
+                "combat": true
+              },
+              "reportedAdditionalGateFailures": [
+                "animation"
+              ],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
               "path": "artifacts/th14/stage-item-retirement-oct25/reimua-hard-initialize-full-oct26/report.json",
               "reportSha256": "fadd7e8d511f5af9cd90027f8f99302549c5d58145acdd16b3e6f78fa4cbbd06",
               "callbacks": 96103,
@@ -290,13 +322,27 @@
               "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             }
           ],
-          "preferredComparisonPath": "artifacts/th14/stage-item-retirement-oct25/reimua-hard-initialize-full-oct26/report.json",
+          "preferredComparisonPath": "artifacts/th14/stage-item-retirement-oct25/reimua-hard-scene-handoff-full-oct26/report.json",
           "partialSelected32ComparisonReports": [
             {
               "path": "artifacts/th14/stage-item-retirement-oct25/reimua-hard-initialize-prefix-12000-oct26/report.json",
               "reportSha256": "993a6ac3593e8afadce1342c0072e0d41b10237e40991e00352dabdafd99d8ae",
               "callbacks": 12000,
               "wasmSha256": "4660f22678b026893cf4cc0a7a30f337a5d380ac45e050460a06cd1e9e8d4d1a",
+              "scope": "Reported selected32 prefix equality only, not a full captured-run pass."
+            },
+            {
+              "path": "artifacts/th14/stage-item-retirement-oct25/camera-copy-probe-oct26/reimua-hard-cross-update-prefix-56000/report.json",
+              "reportSha256": "44fde7504287a3e6b0cfca9243912eb5949d26f5abbc8f632e9d8b5a915e68b9",
+              "callbacks": 56000,
+              "wasmSha256": "64e62fe5ac2862b7eba6ba6db2f5af4efd8ead2fdaa6e03792c640ad4eab88fc",
+              "scope": "Reported selected32 prefix equality only, not a full captured-run pass."
+            },
+            {
+              "path": "artifacts/th14/stage-item-retirement-oct25/camera-copy-probe-oct26/reimua-hard-prefix-56000/report.json",
+              "reportSha256": "ec9295520914c4f226377a3bbff67f88018136e8abbef0de3202a8a9084ac9a9",
+              "callbacks": 56000,
+              "wasmSha256": "64e62fe5ac2862b7eba6ba6db2f5af4efd8ead2fdaa6e03792c640ad4eab88fc",
               "scope": "Reported selected32 prefix equality only, not a full captured-run pass."
             }
           ]
@@ -317,9 +363,75 @@
         5,
         6
       ],
-      "nativeCapturedRunAvailable": false,
-      "allStageEntriesObserved": false,
-      "retainedNaturalRuns": [],
+      "nativeCapturedRunAvailable": true,
+      "allStageEntriesObserved": true,
+      "retainedNaturalRuns": [
+        {
+          "path": "artifacts/th14/retail-reimua-lunatic-exit-boundary-hardware-oct26",
+          "reportSha256": "5edbec01fcb1ecbcddf460f22bea6c886408af8c7614de9c754e5b67b0ff55f2",
+          "initialSnapshotSha256": "0ef7ad33c0d4d8e1a8b7996c679fc91c26cf8065b4d205b34ce4d1512665cdc3",
+          "selectedSha256": "c71f84de7a7c5381735d65ada584e1f2a277408793a6e0b0e5a66bac16d677af",
+          "callbacks": 86751,
+          "stagesObserved": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "naturalReplayEndObserved": true,
+          "clearCompletionNotAsserted": true,
+          "intactOriginalReplayDeclared": true,
+          "instructionBytesPatched": 0,
+          "rngOrCounterWrites": 0,
+          "replaySha256": "97d4551123de6a57dbe90193c490ed54e7e28b47ea9ced14c85e0506773422f9",
+          "selected32ComparisonReports": [
+            {
+              "path": "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-scene-handoff-full-oct26/report.json",
+              "reportSha256": "c5e2aef38b80fea8ba00492ed933a3de77b7529a0e48a6d877dd9bb9a50dc90d",
+              "callbacks": 86751,
+              "wasmSha256": "f0801b8a81134c61255ffb9102a41a3957b8cf8ea1d8de7813da381665a619de",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": false,
+                "combat": true
+              },
+              "reportedAdditionalGateFailures": [
+                "animation"
+              ],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
+              "path": "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-exit-boundary-full-oct26/report.json",
+              "reportSha256": "c78ec3cced42b4a8fc8545fb19064189646040339f42a898190470fac0424357",
+              "callbacks": 86751,
+              "wasmSha256": "f0801b8a81134c61255ffb9102a41a3957b8cf8ea1d8de7813da381665a619de",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": false,
+                "combat": true
+              },
+              "reportedAdditionalGateFailures": [
+                "animation"
+              ],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            }
+          ],
+          "preferredComparisonPath": "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-scene-handoff-full-oct26/report.json",
+          "partialSelected32ComparisonReports": [
+            {
+              "path": "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-exit-boundary-prefix-26000-oct26/report.json",
+              "reportSha256": "6bafabd80d677a792dd0632711ffc84c6bd0b051e11940a4099c9a07424e9dac",
+              "callbacks": 26000,
+              "wasmSha256": "f0801b8a81134c61255ffb9102a41a3957b8cf8ea1d8de7813da381665a619de",
+              "scope": "Reported selected32 prefix equality only, not a full captured-run pass."
+            }
+          ]
+        }
+      ],
       "wholeModeEquivalent": false
     },
     {
@@ -494,6 +606,20 @@
           "replaySha256": "c48412a95f0fe9f685d97574e8ab0655d41e44ff9c41fda7bf788589b1b29c74",
           "selected32ComparisonReports": [
             {
+              "path": "artifacts/th14/stage-item-retirement-oct25/reimub-normal-scene-handoff-regression-oct26/report.json",
+              "reportSha256": "0627576ac7fac6946ba8597fd7b66bf40f42e8c4cb537f2943e1e8823e6683df",
+              "callbacks": 122537,
+              "wasmSha256": "f0801b8a81134c61255ffb9102a41a3957b8cf8ea1d8de7813da381665a619de",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": true
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
               "path": "artifacts/th14/stage-item-retirement-oct25/reimub-normal-curve-origin-full-oct26/report.json",
               "reportSha256": "9a783c016803e65f9304d959a4f7d0648c58d7ab56f252de9ba5eb701adc9140",
               "callbacks": 122537,
@@ -522,7 +648,7 @@
               "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             }
           ],
-          "preferredComparisonPath": "artifacts/th14/stage-item-retirement-oct25/reimub-normal-curve-origin-full-oct26/report.json",
+          "preferredComparisonPath": "artifacts/th14/stage-item-retirement-oct25/reimub-normal-scene-handoff-regression-oct26/report.json",
           "partialSelected32ComparisonReports": [
             {
               "path": "artifacts/th14/stage-item-retirement-oct25/reimub-normal-bullet-hit-prefix-26000-oct26/report.json",
@@ -2017,6 +2143,20 @@
           "replaySha256": "49927152c4dfaf804d475b2aae1b0a2847d5ffcd408668662e12bcd7c92e863f",
           "selected32ComparisonReports": [
             {
+              "path": "artifacts/th14/stage-item-retirement-oct25/sakuyaa-hard-scene-handoff-regression-oct26/report.json",
+              "reportSha256": "625c940979ec4eec034cc123851895f0ab07d16ac8b9dbf653e48a5a9c5bcbe9",
+              "callbacks": 96682,
+              "wasmSha256": "f0801b8a81134c61255ffb9102a41a3957b8cf8ea1d8de7813da381665a619de",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": true
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
               "path": "artifacts/th14/stage-item-retirement-oct25/sakuyaa-hard-exit-boundary-full-oct26/report.json",
               "reportSha256": "5b8fafeb26c695f67f82b174535e85e8daf60ed2c69c94de7439b512f57e0493",
               "callbacks": 96682,
@@ -2031,7 +2171,7 @@
               "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             }
           ],
-          "preferredComparisonPath": "artifacts/th14/stage-item-retirement-oct25/sakuyaa-hard-exit-boundary-full-oct26/report.json",
+          "preferredComparisonPath": "artifacts/th14/stage-item-retirement-oct25/sakuyaa-hard-scene-handoff-regression-oct26/report.json",
           "partialSelected32ComparisonReports": [
             {
               "path": "artifacts/th14/stage-item-retirement-oct25/sakuyaa-hard-exit-boundary-prefix-26000-oct26/report.json",
@@ -2530,8 +2670,8 @@
     }
   ],
   "modePairs": 30,
-  "pairsWithNaturalNativeRun": 22,
-  "pairsWithAllStageEntriesObserved": 18,
+  "pairsWithNaturalNativeRun": 23,
+  "pairsWithAllStageEntriesObserved": 19,
   "preferredCaptureRule": "Prefer more observed stages, then a reported full selected32 comparison, then the longest compared prefix; loading callback count breaks remaining ties.",
   "scope": "An inventory of retained actual stage entries and separately scoped reported selected32 comparisons, with additional observed gate failures. Missing gates are null, never passed. Neither replay end nor observing all stage entries proves a clear, all objects, ordinary menu initialization, pixels, PCM, persistence or mode equivalence.",
   "reportBindings": {
@@ -2550,6 +2690,7 @@
     "artifacts/th14/retail-reimua-easy-timeline-clear-hardware-oct25/report.json": "ed5fd2e703fa951ec09146763d2f584d7927448656c5c061e119e9c17148269f",
     "artifacts/th14/retail-reimua-extra-full-hardware-oct24/report.json": "dd02b29ab1af1afc7564e2f99338ce650eb081463b6354881fb10e3c0597b606",
     "artifacts/th14/retail-reimua-hard-callback-rng-hardware-oct26/report.json": "6447052685b80a40b816302744858db62971f9f7d5e32a424cd983b2029033dc",
+    "artifacts/th14/retail-reimua-lunatic-exit-boundary-hardware-oct26/report.json": "5edbec01fcb1ecbcddf460f22bea6c886408af8c7614de9c754e5b67b0ff55f2",
     "artifacts/th14/retail-reimua-normal-campaign-hardware-oct25/report.json": "0db95763156f1349ef30e87b0768ba9d1e17f81fb8cb83deba3536b668426c53",
     "artifacts/th14/retail-reimub-campaign-resource-phases-hardware-oct24/report.json": "0826f4823f44d256d1102fafa5fc544cd1947134e8ce470eeb1f1ac33f59c0fa",
     "artifacts/th14/retail-reimub-campaign-score-sleep-hardware-oct24/report.json": "fcba50b0631d07291046f3e7887aff2ed52f89771c03799104cb5356c6cd98eb",
@@ -2682,10 +2823,26 @@
     "artifacts/th14/stage-item-retirement-oct25/reimua-hard-bullet-hit-full-oct26/hud-report.json": "a0adaa9142817349d59ad03523be810412f25c1115fb34a87d76410f8b1d2b7a",
     "artifacts/th14/stage-item-retirement-oct25/reimua-hard-bullet-hit-full-oct26/live-report.json": "960d1e67bf24975f2f738f9227fc406e63092bea263b9726d6982e36d17ed429",
     "artifacts/th14/stage-item-retirement-oct25/reimua-hard-bullet-hit-full-oct26/combat-snapshots.json": "b7e5851ef7b3665f6a11bb86b2179c340a83beb3bf09b1c5b2893c7054cd46f1",
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-cross-update-full-oct26/camera-report.json": "4b41aacf971b34d56eb58721617f4312dab848c46afc617b79cd1ebb3391c528",
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-cross-update-full-oct26/hud-report.json": "dbd7e1a7c48bdb9ec97bb6d2d6ffbe3dbb36d200603905cf25c2082c5d8846ef",
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-cross-update-full-oct26/live-report.json": "639d98b859754a92f19a12ac54e8a7108e68c564195dfa4582a756a3c224283c",
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-cross-update-full-oct26/combat-snapshots.json": "b7e5851ef7b3665f6a11bb86b2179c340a83beb3bf09b1c5b2893c7054cd46f1",
     "artifacts/th14/stage-item-retirement-oct25/reimua-hard-initialize-full-oct26/camera-report.json": "77f96403248dcdef03db02b684b3bd0f046ab4ef4e24ab113a957b3d9da40d2c",
     "artifacts/th14/stage-item-retirement-oct25/reimua-hard-initialize-full-oct26/hud-report.json": "21d3e46cc39236eb03f11a809deb6bc8d447cdfe61a5d65f7e423f6127382681",
     "artifacts/th14/stage-item-retirement-oct25/reimua-hard-initialize-full-oct26/live-report.json": "1e170f257191bfc29db62ef856c4869c6e45f541e46657e278e7f752af794428",
     "artifacts/th14/stage-item-retirement-oct25/reimua-hard-initialize-full-oct26/combat-snapshots.json": "b7e5851ef7b3665f6a11bb86b2179c340a83beb3bf09b1c5b2893c7054cd46f1",
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-scene-handoff-full-oct26/camera-report.json": "4b41aacf971b34d56eb58721617f4312dab848c46afc617b79cd1ebb3391c528",
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-scene-handoff-full-oct26/hud-report.json": "dbd7e1a7c48bdb9ec97bb6d2d6ffbe3dbb36d200603905cf25c2082c5d8846ef",
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-scene-handoff-full-oct26/live-report.json": "639d98b859754a92f19a12ac54e8a7108e68c564195dfa4582a756a3c224283c",
+    "artifacts/th14/stage-item-retirement-oct25/reimua-hard-scene-handoff-full-oct26/combat-snapshots.json": "b7e5851ef7b3665f6a11bb86b2179c340a83beb3bf09b1c5b2893c7054cd46f1",
+    "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-exit-boundary-full-oct26/camera-report.json": "f0b206a9856ddc206eb2d4fa0a7889016ecb3360bf4aa1653a22dc6ffe137c9f",
+    "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-exit-boundary-full-oct26/hud-report.json": "4e07a6b5d47b0749a82809b0242f2c13bad471cefe6da8c415f7721bce5b0602",
+    "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-exit-boundary-full-oct26/live-report.json": "83699da812248ad80fb0c472cd9989fae9d56437bebec3073e9a6162888f274c",
+    "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-exit-boundary-full-oct26/combat-snapshots.json": "5b07e2df2e121bed2a6af40eac26343f112e23c5b6331a9d52b1d7a2d879b528",
+    "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-scene-handoff-full-oct26/camera-report.json": "f0b206a9856ddc206eb2d4fa0a7889016ecb3360bf4aa1653a22dc6ffe137c9f",
+    "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-scene-handoff-full-oct26/hud-report.json": "4e07a6b5d47b0749a82809b0242f2c13bad471cefe6da8c415f7721bce5b0602",
+    "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-scene-handoff-full-oct26/live-report.json": "83699da812248ad80fb0c472cd9989fae9d56437bebec3073e9a6162888f274c",
+    "artifacts/th14/stage-item-retirement-oct25/reimua-lunatic-scene-handoff-full-oct26/combat-snapshots.json": "5b07e2df2e121bed2a6af40eac26343f112e23c5b6331a9d52b1d7a2d879b528",
     "artifacts/th14/stage-item-retirement-oct25/reimub-hard-bullet-hit-full-oct26/camera-report.json": "ca266e54e135f7cf0163411e9688854d959e67fe5930ca666ec15301ab0b5f97",
     "artifacts/th14/stage-item-retirement-oct25/reimub-hard-bullet-hit-full-oct26/hud-report.json": "2dbe11c5a22e2148dc817906a4173e3fe76485f82ce9ad009dc8b3ee16919b00",
     "artifacts/th14/stage-item-retirement-oct25/reimub-hard-bullet-hit-full-oct26/live-report.json": "3b717c38de1f46dd1755295ada0b3e445555d3f865ef9f2887fa00e94529c8b0",
@@ -2702,6 +2859,10 @@
     "artifacts/th14/stage-item-retirement-oct25/reimub-normal-curve-origin-full-oct26/hud-report.json": "bc4900d1f6f580554f5408e8b6ded6b573f79f4c97c0a24d5da22f70d651cd6a",
     "artifacts/th14/stage-item-retirement-oct25/reimub-normal-curve-origin-full-oct26/live-report.json": "04b602eb2cd2f33170731cc97704190c598564acc817816d2ee4622c4043de63",
     "artifacts/th14/stage-item-retirement-oct25/reimub-normal-curve-origin-full-oct26/combat-snapshots.json": "9760efb557257470187ef60a9aad96b65aea648c22e7bd919fe8c6fe0764e46d",
+    "artifacts/th14/stage-item-retirement-oct25/reimub-normal-scene-handoff-regression-oct26/camera-report.json": "07a1d15af4549650232c143a942f9f00a4c51fc74cb93f4d4c1c4b85b98282a9",
+    "artifacts/th14/stage-item-retirement-oct25/reimub-normal-scene-handoff-regression-oct26/hud-report.json": "bc4900d1f6f580554f5408e8b6ded6b573f79f4c97c0a24d5da22f70d651cd6a",
+    "artifacts/th14/stage-item-retirement-oct25/reimub-normal-scene-handoff-regression-oct26/live-report.json": "04b602eb2cd2f33170731cc97704190c598564acc817816d2ee4622c4043de63",
+    "artifacts/th14/stage-item-retirement-oct25/reimub-normal-scene-handoff-regression-oct26/combat-snapshots.json": "9760efb557257470187ef60a9aad96b65aea648c22e7bd919fe8c6fe0764e46d",
     "artifacts/th14/stage-item-retirement-oct25/reusable-hard-full/camera-report.json": "7e2ff8e9fbaa5b44983d730db8478076312e5b71cbef09bca616ba0a194112fe",
     "artifacts/th14/stage-item-retirement-oct25/reusable-hard-full/hud-report.json": "b58500349c46b638cc466629fbc60324b040ba8e2f23a3701d8459dafacc7dd4",
     "artifacts/th14/stage-item-retirement-oct25/reusable-hard-full/live-report.json": "e9765133a6d3c0627740a1d20c2bcaeb137fbe32f4b2c6b9b60419a9270a754e",
@@ -2710,6 +2871,10 @@
     "artifacts/th14/stage-item-retirement-oct25/sakuyaa-hard-exit-boundary-full-oct26/hud-report.json": "46f9940984fdd93b21797ff27531122428300ba86207c89593007deb9f7cb030",
     "artifacts/th14/stage-item-retirement-oct25/sakuyaa-hard-exit-boundary-full-oct26/live-report.json": "130de65ac494c1307edb73fbf3f67627069305006b732f6a779e42a0699dd1b6",
     "artifacts/th14/stage-item-retirement-oct25/sakuyaa-hard-exit-boundary-full-oct26/combat-snapshots.json": "87e83c944ea72b28291e427c9ab01c564d8f65913184c8af2ffd764e0b063111",
+    "artifacts/th14/stage-item-retirement-oct25/sakuyaa-hard-scene-handoff-regression-oct26/camera-report.json": "067fa39cef83879968c99d61b1df62e394eb2a8fed932de1850ae1a265d5581e",
+    "artifacts/th14/stage-item-retirement-oct25/sakuyaa-hard-scene-handoff-regression-oct26/hud-report.json": "46f9940984fdd93b21797ff27531122428300ba86207c89593007deb9f7cb030",
+    "artifacts/th14/stage-item-retirement-oct25/sakuyaa-hard-scene-handoff-regression-oct26/live-report.json": "130de65ac494c1307edb73fbf3f67627069305006b732f6a779e42a0699dd1b6",
+    "artifacts/th14/stage-item-retirement-oct25/sakuyaa-hard-scene-handoff-regression-oct26/combat-snapshots.json": "87e83c944ea72b28291e427c9ab01c564d8f65913184c8af2ffd764e0b063111",
     "artifacts/th14/stage-item-retirement-oct25/timeline-clear-full/camera-report.json": "06922d33b3d2ac543971c523b0a91561298667f1c20d258674f7048268de1649",
     "artifacts/th14/stage-item-retirement-oct25/timeline-clear-full/hud-report.json": "0a33da79d8f3a8e2128395fc5624d9e11abd7622346720e4946059399eae9a6d",
     "artifacts/th14/stage-item-retirement-oct25/timeline-clear-full/live-report.json": "e5c9df6c92ec8d158a88060dd8bdbeb07ef27f5431875e0bc296e21a3c9b2369",
