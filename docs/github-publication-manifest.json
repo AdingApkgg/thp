@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "eb74dbaafeefe385a859485422fe6d2b73ac39b0",
+  "sourceCommit": "5cf40cb4e09d27a63b97259618560ec770c85af6",
   "files": [
     {
       "path": ".gitignore",
@@ -69,9 +69,14 @@
       "sha256": "9aeb250c72855357437e6dfd10a1557ac58a0732d33e08c55af60fd20c1ceae9"
     },
     {
+      "path": "docs/porting/TH14_BULLET_HIT_MOVEMENT_OCT26.md",
+      "bytes": 2532,
+      "sha256": "7eda804c715d01e07464fa4ca738dfac4401df2177057d27f7a8d415ec97d408"
+    },
+    {
       "path": "docs/porting/TH14_CALLBACK_BOUNDARY_OCT26.md",
-      "bytes": 3141,
-      "sha256": "e506504da072d0fe0ecc4bdb4501c25f0470279f8c09cafda0bcf5247fc088d4"
+      "bytes": 3512,
+      "sha256": "5d2e9e1bd0523bff14a7d5dd9057b038a5011f976cef013e07c52437edad8532"
     },
     {
       "path": "docs/porting/TH14_CAMERA_CROSS_OCT25.md",
@@ -225,8 +230,8 @@
     },
     {
       "path": "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
-      "bytes": 2604,
-      "sha256": "31d7426f9c47db44e105ccc24f307ca02658c373f8dde8eeb182856e567c7f1c"
+      "bytes": 2665,
+      "sha256": "545463de9f34e86b1442713b73a0576a885fe3e54207bbfa843fd0de7faebbbb"
     },
     {
       "path": "docs/porting/TH14_MSG_HUD_ORDER_OCT24.md",
@@ -290,8 +295,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 4005,
-      "sha256": "8c19b53600b3170d21837eedb707ee9615daaf19b59b180fa2b28b10468c7717"
+      "bytes": 4384,
+      "sha256": "ab6b4a70668cf159cf080ff7d684dff67ad2c0e1a8d447e83138c2659db87b89"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -1359,6 +1364,11 @@
       "sha256": "84ae37f23ecbc63d8d8142895f73db92d4940d70df4798933bc43b1dcbdfb857"
     },
     {
+      "path": "docs/porting/th14-bullet-hit-movement-verified-oct26.json",
+      "bytes": 5723,
+      "sha256": "439384a0f87d989fe77a8e2b3e56f76efd042d0f46369e1bf46c2464a4f2736e"
+    },
+    {
       "path": "docs/porting/th14-bullet-launch-verified.json",
       "bytes": 1000,
       "sha256": "e2b17bb20ce9e47e3b81fa5e268d38aebbd03a2a58d2f40349ce3cfb2e5e2c84"
@@ -1415,8 +1425,8 @@
     },
     {
       "path": "docs/porting/th14-callback-boundary-observed-oct26.json",
-      "bytes": 7812,
-      "sha256": "b646ff9bdd4d1480b32798d42f1f593954d27ae01be3a9752655e9713356b07b"
+      "bytes": 8237,
+      "sha256": "12de4921a3d0f37e27bb75613b930746190637df09b6053cb3b01d3f278ca001"
     },
     {
       "path": "docs/porting/th14-camera-cross-campaign-verified-oct25.json",
@@ -3305,8 +3315,8 @@
     },
     {
       "path": "docs/porting/th14-mode-acceptance-inventory-oct25.json",
-      "bytes": 129740,
-      "sha256": "cae5cd6a03be9286d676b0524b75743487ba243b05b9118b85644f826d071a17"
+      "bytes": 138128,
+      "sha256": "d13a2ebcc0d3d04ef634f377ffbb7cd61d1db333ee5b07d1dd4a77daf6e259f5"
     },
     {
       "path": "docs/porting/th14-msg-hud-order-verified-oct24.json",
@@ -7190,8 +7200,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/BulletManager.hpp",
-      "bytes": 4940,
-      "sha256": "e9e97f327838e0cc3a986ad46ac78833dfd2e7b8ef949f3a9d113bcc585cf43b"
+      "bytes": 5024,
+      "sha256": "09cd787ee37ac972068b35f27a3f1a1b39f97dbe73dff0d429e9622e1e073dcc"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/BulletMotion.cpp",
@@ -7205,8 +7215,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/BulletTh14.cpp",
-      "bytes": 30394,
-      "sha256": "073ef72e4be893b972c9ef496a7182d6c73656d536ccad4af55b523a23db6a53"
+      "bytes": 30421,
+      "sha256": "a593f4b97ef78cb46b11aee53f27bd91f52a0067576d78065054be0b52792f83"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/BulletTh14.hpp",
@@ -7535,13 +7545,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "bytes": 62884,
-      "sha256": "248740f71c5206f728716f8d2d98e1ab717992da2e42565e27b3cf248c23f0d0"
+      "bytes": 63787,
+      "sha256": "1279e1f0db24f24d128163f5207e46923839af4092daf3b391b5c47ac4669c7d"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
-      "bytes": 24593,
-      "sha256": "a7c2d66680a3ef6db19e401eb6c5f7bb0ea3f90536bdd09a25dfac8bd24afc9a"
+      "bytes": 24694,
+      "sha256": "52709ff8f98d392c2ff998dc4afb587d8f723e3714779807b2aec704135e7a1d"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameConfig.cpp",
@@ -22745,25 +22755,23 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "eb74dbaafeefe385a859485422fe6d2b73ac39b0",
-    "title": "TH14 observed callback boundaries and internal-word consumer checks",
-    "changedSourceAndMetadataFiles": 13,
-    "productionSourceFiles": 0,
-    "productionGameplayChanged": false,
-    "productionGraphicsChanged": false,
+    "basePublishedCommit": "5cf40cb4e09d27a63b97259618560ec770c85af6",
+    "title": "TH14 bullet-hit disappearance animation movement",
+    "changedSourceAndMetadataFiles": 11,
+    "productionSourceFiles": 4,
+    "productionGameplayChanged": true,
+    "productionGraphicsChanged": true,
     "productionAudioChanged": false,
     "gameAssetsAdded": false,
-    "sdlWasmSha256": "7bebd2edc4cab71040f92a94029269a6bcc3dc518c6189bfd504223ec275960e",
-    "observerWasmSha256": "4660f22678b026893cf4cc0a7a30f337a5d380ac45e050460a06cd1e9e8d4d1a",
-    "nativeNaturalRunModePairs": 19,
-    "nativeAllStageEntryModePairs": 16,
-    "legacyHardVerifiedCallbacks": 107662,
-    "oldEasyFullCallbacks": 239234,
-    "oldEasyFullAccepted": false,
-    "newHardVerifiedPrefixCallbacks": 12000,
-    "newHardFullCaptureStillRunning": true,
-    "effect149ObservedDescendantVertexPairs": 39,
-    "cameraRightRecomputeCases": 30,
+    "sdlWasmSha256": "a0877a36c53249b937eb87854b36023e4d823a48d7201b7f48040eb38f009dea",
+    "observerWasmSha256": "b6563726f05bfc2a6d216e38b99f2ad83b94d69fa896937635669f923d4dc605",
+    "nativeNaturalRunModePairs": 20,
+    "nativeAllStageEntryModePairs": 17,
+    "normalIndependentVerifiedPrefixCallbacks": 60000,
+    "normalFullCaptureStillRunning": true,
+    "hardIndependentVerifiedCallbacks": 107662,
+    "reimuaHardFullCallbacks": 96103,
+    "reimuaHardAllObservedGatesPassed": false,
     "currentSdlBrowserAcceptance": false,
     "unrelatedResourceCryptEditExcluded": true,
     "completeGame": false,

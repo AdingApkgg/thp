@@ -327,6 +327,9 @@ public:
     bool effect(const Vec3& p,i32 script) override { return visual(p,script); }
     bool colored_effect(const Vec3&,i32,u32) override;
     i32 collision(const BulletState&) override;
+#if PORT_TITLE == 14
+    bool th14_bullet_hit_effect(const Vec3&,i32,const Vec3&)override;
+#endif
     bool th16_hit_effect(const Vec3&,i32,const Vec3&)override;
     bool th16_graze(const Vec3&)override;
     i32 th14_probe_collision(const BulletState&)override;

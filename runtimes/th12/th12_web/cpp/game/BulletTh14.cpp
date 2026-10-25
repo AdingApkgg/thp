@@ -396,7 +396,7 @@ bool BulletManager::fire_th14(const Th14BulletEmitter& e){
 i32 BulletManager::collision_th14(BulletState& b,bool probe){
     if(!(b.flags&2))return 0;
     const i32 result=probe?world.th14_probe_collision(b):world.collision(b);if(result<0)return -2;
-    if(result==1&&!b.collision_delay){b.state=3;b.vm.interrupt(1);if(b.cancel_effect>=0&&!world.effect(b.position,b.cancel_effect))return -2;}
+    if(result==1&&!b.collision_delay){b.state=3;b.vm.interrupt(1);if(b.cancel_effect>=0&&!world.th14_bullet_hit_effect(b.position,b.cancel_effect,b.velocity))return -2;}
     // Retail416f14 uses the same450410 point-value/effect/sound consumer as lasers.
     else if(result==2&&!(b.flags&4)){if(!world.th14_curve_graze(b.position))return -2;b.flags|=4;}
     return result;

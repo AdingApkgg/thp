@@ -796,6 +796,23 @@ bool GameBattle::visual(Vec3 p,i32 script) {
     p.x=float(double(p.x)+224);p.y=float(double(p.y)+16);return animations.create(resources.core.bullet,script,6,22,false,false,&p)!=nullptr;
 #endif
 }
+#if PORT_TITLE == 14
+bool GameBattle::th14_bullet_hit_effect(const Vec3& position,i32 script,const Vec3& velocity){
+    auto* vm=animations.create(resources.core.bullet,script,7,u32(-1),false,false,&position);
+    if(!vm)return false;
+    // Retail416e8d reads the live rate after creation, scales each velocity
+    // component in two MULSS steps, then41be50 initializes the ANM tween.
+    auto& p=vm->position_interpolation;
+    p.start[0]=p.start[1]=p.start[2]=0;
+    p.end[0]=float(float(velocity.x*animations.rate)*10.f);
+    p.end[1]=float(float(velocity.y*animations.rate)*10.f);
+    p.end[2]=float(float(velocity.z*animations.rate)*10.f);
+    std::memset(p.initial_tangent,0,sizeof(p.initial_tangent));
+    std::memset(p.final_tangent,0,sizeof(p.final_tangent));
+    p.duration=30;p.mode=InterpolationMode::Decelerate4;p.timer.set(0,&animations.rate);
+    return true;
+}
+#endif
 bool GameBattle::th16_hit_effect(const Vec3& position,i32 script,const Vec3& velocity){
 #if PORT_TITLE == 16
     const float rotation=0;auto* vm=animations.create(resources.core.bullet,script,7,u32(-1),false,false,&position,nullptr,nullptr,false,&rotation,0x400);

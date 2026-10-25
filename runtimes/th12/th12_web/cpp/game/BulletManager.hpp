@@ -13,6 +13,7 @@ struct BulletWorld {
     virtual ~BulletWorld()=default;
 #if PORT_TITLE == 14
     virtual bool th14_spawn_enemy(const char*,const EnemySpawn&){return false;}
+    virtual bool th14_bullet_hit_effect(const Vec3&,i32,const Vec3&){return false;}
 #endif
     virtual bool sound(i32,float,bool){return false;}
     virtual i32 collision(const BulletState&){return -2;}
