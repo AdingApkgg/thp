@@ -1,6 +1,9 @@
 {
-  "schema": "th14/native-boundaries/1",
+  "schema": "th14/native-boundaries/2",
   "productionChanged": false,
+  "observerDiagnosticStopSeparatedFromNaturalMenu": true,
+  "beamDiagnosticStopRuntimeExercised": false,
+  "oldTerminalMarkerFieldWasNotInstrumented": true,
   "actualOriginalUiScore": {
     "bytes": 21633,
     "encodedSha256": "691ee595c2cb97b66e36a819f1e290e9f14cb1e92b5061ec9121cc93543e3e74",
@@ -42,7 +45,7 @@
     "notNaturalCompletion": true
   },
   "sourceHashes": {
-    "tools/th14-native-campaign-observer-oct25.py": "87270c321bef6298cf69c479828873db1da27526bf8f1c330b4df9f99240ee7d",
+    "tools/th14-native-campaign-observer-oct25.py": "ccb28bdb75f4d6e30802ac0633be23becd3495a1abf1bda69a53f2dcfab9a172",
     "tools/th14-verify-native-campaign.py": "380e34aec7fd7bf3eadb1ad05d1af2107603c362e37ab8bb7b4a2c5de68cea95",
     "tools/th14-natural-score-native.py": "6103cd58d322307b83eeea697877872b0175a8765f5c92feeccdfa30aea76e23"
   },
@@ -1968,11 +1971,11 @@
       "sha256": "87270c321bef6298cf69c479828873db1da27526bf8f1c330b4df9f99240ee7d"
     },
     "tools/th14-native-campaign-observer-oct25.py": {
-      "bytes": 41512,
-      "sha256": "87270c321bef6298cf69c479828873db1da27526bf8f1c330b4df9f99240ee7d"
+      "bytes": 42890,
+      "sha256": "ccb28bdb75f4d6e30802ac0633be23becd3495a1abf1bda69a53f2dcfab9a172"
     }
   },
-  "toolSha256": "9cf1ef75b69fadd54b5728e337d14fe36d4240f9957d26d87df420c468c2fa37",
+  "toolSha256": "2a155bd8dbe6af8ed7d60b3efe91da8ff97af9a42f90d0b5dfafd726423c0175",
   "limits": [
     "The original UI wrote a private filesystem score; UI gameplay, browser reload and browser persistence remain unproved.",
     "The Sakuya A Hard process exited before a recorded terminal menu. Exit cause and code were not captured; it is excluded from natural-run counts.",

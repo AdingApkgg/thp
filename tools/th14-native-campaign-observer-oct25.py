@@ -25,6 +25,7 @@ parser.add_argument('--maximum-capture-gib',type=float,default=2)
 parser.add_argument('--scene-camera-events',action='store_true',help='Observe scene camera-copy and main-loop camera publication/perspective boundaries during transitions')
 parser.add_argument('--controller-phase-events',action='store_true',help='Observe original loading-flag read at controller priority11; combined camera tracing switches its other breakpoint between update and draw')
 parser.add_argument('--worker-rng-events',action='store_true',help='Observe replay seed restoration after the worker sleep and retain the paused main-thread PC')
+parser.add_argument('--exit-boundary-events',action='store_true',help='Use a free main-thread hardware breakpoint outside loading/publication windows to observe the original WinMain loop exit')
 parser.add_argument('--live-callbacks',help='Comma-separated predeclared VM observation callbacks, including1; maximum32')
 parser.add_argument('--game-directory',help='Default: directory of executable in runtimes/th14/target.json')
 opt=parser.parse_args()
@@ -96,11 +97,13 @@ serial_after_to_publish={0x47e90f:(0x47e938,'edi'),0x47e918:(0x47e938,'edi'),0x4
 targets.update({0x42ec65:'hud-score-initialization-before-write',0x42ec6b:'hud-score-initialization-after-write'})
 hud_score_pc={};hud_score_writes=[]
 targets[0x44477a]='startup-ascii-create-call-instruction'
+targets[0x469c48]='winmain-loop-exit-boundary'
 ascii_create_invocations=[]
 pcs=list(targets);threads={};handles={pi.process,pi.thread};events=[];debug_errors=[];started=time.monotonic();exited=False;error='';complete=False
 process_exit_event=None;observer_termination_requested=False
+capture_stop_requested=False;exit_boundary_events=[]
 camera_raw=bytearray();live_capture_callbacks=[];thread_events=[];callback_count=0;raw=bytearray();player_times=bytearray();initialization=None;last_stage=0;first_snapshot=None
-worker_phase_pcs={};main_resource_frames=0;last_pan=None;last_rectangle=None;last_player_time=started;terminal_menu_samples=[];last_terminal_check=0.;observed_terminal_marker=False
+worker_phase_pcs={};main_resource_frames=0;last_pan=None;last_rectangle=None;last_player_time=started;terminal_menu_samples=[];last_terminal_check=0.
 (home/'process-start.json').write_text(json.dumps(dict(pid=pi.pid,exe=exe,onlyOwnCreatedProcess=True,createdUnixNs=time.time_ns()),indent=2)+'\n')
 print(json.dumps(dict(nativeChildStarted=True,pid=pi.pid,hidden=True,configuredSilent=True,mode='intact original stages1 through6; declared one attract-mode clear at first Player; no RNG/counter/health writes')),flush=True)
 def read(address,count):
@@ -120,6 +123,8 @@ def install(tid,current=False):
     if first_snapshot is not None and not trace_publications and tid==pi.tid and transition_trace and opt.controller_phase_events:
         addresses[2]=0x436bed
         if opt.scene_camera_events:addresses[1]=0x40dae9 if main_camera_phase=='update'else 0x4465a6
+    if first_snapshot is not None and not trace_publications and tid==pi.tid and not transition_trace and opt.exit_boundary_events:
+        addresses[3]=0x469c48
     if first_snapshot is None and tid==pi.tid and not ascii_create_invocations:addresses[0]=0x44477a
     for index,address in enumerate(addresses):struct.pack_into('<I',b,4+4*index,address)
     struct.pack_into('<I',b,20,0)
@@ -188,8 +193,16 @@ def capture_live_animations(label='first-player-live-vms'):
     (home/(label+'.json')).write_text(json.dumps(dict(readOnly=True,hostMonotonicNs=time.monotonic_ns(),mainResourceFrame=main_resource_frames,ordinaryAndOverlayRegistryWalk=True,rows=rows),indent=2)+'\n')
 
 def event_snapshot(pc,tid,b):
-    global last_pan,last_rectangle,complete,main_resource_frames,transition_trace
+    global last_pan,last_rectangle,capture_stop_requested,main_resource_frames,transition_trace
     global latest_camera_boundary,camera_boundary_count,main_camera_phase
+    if pc==0x469c48:
+        assert opt.exit_boundary_events and tid==pi.tid
+        regs=dict(zip(['edi','esi','ebx','edx','ecx','eax','ebp','eip','cs','eflags','esp'],struct.unpack_from('<11I',b,156)))
+        control=u32(0x4db558)
+        row=dict(event=targets[pc],pc=pc,threadId=tid,hostMonotonicNs=time.monotonic_ns(),precedingPlayerCallbacks=callback_count,stage=u32(0x4f58a4),stageFrame=u32(control+0x14)if control else None,registers=regs,stackHex=read(regs['esp'],64).hex(),localResult=u32(regs['esp']+12),quitFlag=u32(0x4f5a20),renderFlags=u32(0x4f7a54),readOnly=True)
+        exit_boundary_events.append(row)
+        with(home/'exit-boundary-events.jsonl').open('a',encoding='utf8')as stream:stream.write(json.dumps(row)+'\n')
+        return
     if pc==0x436bed:
         assert opt.controller_phase_events and tid==pi.tid
         # The preceding mov436be7 already read the flags. Retain EAX as a
@@ -297,7 +310,7 @@ def event_snapshot(pc,tid,b):
     row.update(shotAddress=obj,shotHex=read(obj,0xd0).hex(),targetHex=read(target,12).hex(),areaHex=read(area,0xa4).hex(),
         stackHex=read(regs['esp'],160).hex(),rngHex=read(0x4db508,16).hex(),lastObservedPan=last_pan,lastObservedRectangle=last_rectangle,
         interveningOtherStackWritersNotObserved=True)
-    complete=True # Declared prefix ends before executing the first fallback.
+    capture_stop_requested=True # Diagnostic stop is distinct from a natural replay-end menu.
     events.append(row)
     with(home/'events.jsonl').open('a',encoding='utf-8')as f:f.write(json.dumps(row)+'\n')
     print(json.dumps(dict(beamFallback=True,stage=row['stage'],stageFrame=row['stageFrame'],bits=row['scratchBits'],callbacks=callback_count)),flush=True)
@@ -314,7 +327,7 @@ def terminal_menu_sample():
         lifeState=u32(u32(0x4db67c)+0x684),callbacks=callback_count,hudPointer=u32(0x4db550),hudDisplayedScoreUnits=u32(u32(0x4db550)+0x140))
 
 try:
-    while time.monotonic()-started<opt.max_seconds and callback_count<opt.maximum_callbacks and not complete and not exited:
+    while time.monotonic()-started<opt.max_seconds and callback_count<opt.maximum_callbacks and not complete and not capture_stop_requested and not exited:
         ev=types.DebugEvent()
         if not k.WaitForDebugEvent(C.byref(ev),500):
             code=C.get_last_error()
@@ -425,9 +438,9 @@ finally:
         hardwareBreakpointsOnly=True,instructionBytesPatched=0,gameStateWordWrites=int(initialization is not None),caseInitialization=initialization,
         rngOrCounterWrites=0,inputInjected=False,realOriginalWindowsProcess=True,ordinaryMenuReplayInitialization=False,hiddenWindowRequested=True,
         configuredMusicAndSoundVolumeZero=True,actualAudioPcmMeasured=False,debuggerPausesAffectTiming=True,hostTimeIsOriginalClockInput=False,
-        callbacks=callback_count,selectedSha256=sha(raw),selectedBytes=len(raw),playerHostTimesSha256=sha(player_times),observedReplayTerminalMarker=observed_terminal_marker,observedForcedReplayEndMenu=complete,observedColdFirstPlayerBoundary=first_snapshot is not None,derivedSingleStageReplay=False,derivedTwoStageReplay=False,intactOriginalReplay=True,recordedStages=sorted({struct.unpack_from('<I',raw,i+120)[0]for i in range(0,len(raw),128)}),transitionEvents=transition_events,sourceFullReplaySha256=asset_report['replaySha256'],recordedStageHeaderInputAndFpsRetainedExactly=True,anmPublicationTraceEndsAtFirstPlayer=False,anmPublicationTraceCutoffPlayerCallbacks=opt.publication_cutoff,hudScoreStride=8,hudScoreSha256=sha(hud_raw),worldCameraSha256=sha(camera_raw),worldCameraBytes=len(camera_raw),worldCameraStride=0x124,mainResourceFrames=main_resource_frames,allAnmPublications=len(allocation_rows),serialWriteObservations=len(serial_write_rows),allocationEventsSha256=sha((home/'allocation-events.jsonl').read_bytes())if(home/'allocation-events.jsonl').exists()else None,allRecordedSerialsContiguous=len(allocation_rows)<=0x7ffff,serialModulus=0x7ffff,serialSkipsZero=True,allRecordedPublicationOrdinalsContiguous=all(r['publicationOrdinal']==i+1 and r['serial']==i%0x7ffff+1 for i,r in enumerate(allocation_rows)),observedSerialWrapPublicationOrdinals=[r['publicationOrdinal']for r in allocation_rows if r['serial']==1 and r['publicationOrdinal']>1],terminalMenuSamples=terminal_menu_samples,beamFallbackCount=len(events),
+        callbacks=callback_count,selectedSha256=sha(raw),selectedBytes=len(raw),playerHostTimesSha256=sha(player_times),observedReplayTerminalMarker=None,replayTerminalMarkerObservationImplemented=False,observedForcedReplayEndMenu=complete,observedColdFirstPlayerBoundary=first_snapshot is not None,derivedSingleStageReplay=False,derivedTwoStageReplay=False,intactOriginalReplay=True,recordedStages=sorted({struct.unpack_from('<I',raw,i+120)[0]for i in range(0,len(raw),128)}),transitionEvents=transition_events,sourceFullReplaySha256=asset_report['replaySha256'],recordedStageHeaderInputAndFpsRetainedExactly=True,anmPublicationTraceEndsAtFirstPlayer=False,anmPublicationTraceCutoffPlayerCallbacks=opt.publication_cutoff,hudScoreStride=8,hudScoreSha256=sha(hud_raw),worldCameraSha256=sha(camera_raw),worldCameraBytes=len(camera_raw),worldCameraStride=0x124,mainResourceFrames=main_resource_frames,allAnmPublications=len(allocation_rows),serialWriteObservations=len(serial_write_rows),allocationEventsSha256=sha((home/'allocation-events.jsonl').read_bytes())if(home/'allocation-events.jsonl').exists()else None,allRecordedSerialsContiguous=len(allocation_rows)<=0x7ffff,serialModulus=0x7ffff,serialSkipsZero=True,allRecordedPublicationOrdinalsContiguous=all(r['publicationOrdinal']==i+1 and r['serial']==i%0x7ffff+1 for i,r in enumerate(allocation_rows)),observedSerialWrapPublicationOrdinals=[r['publicationOrdinal']for r in allocation_rows if r['serial']==1 and r['publicationOrdinal']>1],terminalMenuSamples=terminal_menu_samples,beamFallbackCount=len(events),
         readOnlyLiveAnimationSnapshots=live_capture_callbacks,liveAnimationSnapshotBoundary="before original Player callback",childExited=exited,error=error,debugErrors=debug_errors,elapsedSeconds=time.monotonic()-started,sourceSha256=sha(observer_source_bytes),observerSourceFrozenAtStart=True,controllerPhaseEventsSha256=sha((home/'controller-phase-events.jsonl').read_bytes())if(home/'controller-phase-events.jsonl').exists()else None,sceneCameraCopyEventsSha256=sha((home/'scene-camera-copy-events.jsonl').read_bytes())if(home/'scene-camera-copy-events.jsonl').exists()else None,sceneCameraCopyEvents=len(scene_camera_copies),mainCameraBoundaryEvents=camera_boundary_count,
         nativeTypesSourceSha256=sha((root/'tools/th14-native-session-capture.py').read_bytes()),completeGame=False,nativeEquivalent=False)
-    report.update(processExitEvent=process_exit_event,observerTerminationRequested=observer_termination_requested)
+    report.update(processExitEvent=process_exit_event,observerTerminationRequested=observer_termination_requested,exitBoundaryEvents=exit_boundary_events,diagnosticStopBeforeBeamFallback=capture_stop_requested)
     (home/'report.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:report[k]for k in('observedForcedReplayEndMenu','allAnmPublications','beamFallbackCount','callbacks','childExited','error','elapsedSeconds','processExitEvent','observerTerminationRequested')}),flush=True)
 if error or not complete:raise SystemExit(1)

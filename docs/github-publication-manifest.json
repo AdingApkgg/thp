@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "e5542ed7ad0a0bd4a93db62a81922e592a811764",
+  "sourceCommit": "1eaa6338e928e6588567334a8b7583d27d8e44d8",
   "files": [
     {
       "path": ".gitignore",
@@ -52,6 +52,11 @@
       "path": "docs/porting/TH14_ANM_SCALE_VELOCITY_OCT24.md",
       "bytes": 2075,
       "sha256": "0b9880ba4cba4894277f017a271a6dc69e3bbcd46cf7a03482e1588247b02636"
+    },
+    {
+      "path": "docs/porting/TH14_BACKGROUND_CLIP_ORDER_OCT26.md",
+      "bytes": 2731,
+      "sha256": "df1d116237cbaad81a96bef2dfb1d848478514c305b490d5a993a5c211686774"
     },
     {
       "path": "docs/porting/TH14_BEAM_COOKIE_AND_TERMINAL_HUD_OCT23.md",
@@ -110,8 +115,8 @@
     },
     {
       "path": "docs/porting/TH14_CURRENT_GPU_BASELINE_OCT25.md",
-      "bytes": 1685,
-      "sha256": "5d53c3705415a90fbd649006872b8e1e80adebbd3c0fc12b7c368b0574f1aeb0"
+      "bytes": 2159,
+      "sha256": "957d81a1afdcf7f8282e27cb7f85265335cebbc4856ee1518b4c6efbc8db3aad"
     },
     {
       "path": "docs/porting/TH14_CURRENT_QUEUE_FULL_PLAYBACKS_OCT15.md",
@@ -255,8 +260,8 @@
     },
     {
       "path": "docs/porting/TH14_NATIVE_BOUNDARIES_OCT26.md",
-      "bytes": 2453,
-      "sha256": "d4c4c58c7555e9f76b735d7d83c4557f7fc2e368a20c90c7db28f5285e7c9faa"
+      "bytes": 3036,
+      "sha256": "a27c574c46e8a0da31efd81778baf81effc18531e2ecba38f12dce4c8ac57e9f"
     },
     {
       "path": "docs/porting/TH14_NATIVE_FOG_FIX_OCT20.md",
@@ -305,8 +310,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 5080,
-      "sha256": "d5d33a9c7b2d19b248e04dfc06649abe24848495f0d2f7646ed1d180e19f905f"
+      "bytes": 5297,
+      "sha256": "1042b62d2fba3e609766a5dcd5121fd55fe88d41b9158a863daff79e0d79eaa2"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -1137,6 +1142,11 @@
       "path": "docs/porting/th14-audio-table-verified.json",
       "bytes": 23359,
       "sha256": "eef940e15051b7f79bedd1fe2831eec68224ea582b5970800761f280e77b9ef7"
+    },
+    {
+      "path": "docs/porting/th14-background-clip-order-verified-oct26.json",
+      "bytes": 8389,
+      "sha256": "bec3aee81c73b73cb41c990021f46c94c70888d561a6b90297e06d16702c754a"
     },
     {
       "path": "docs/porting/th14-beam-cookie-and-terminal-hud-verified-oct23.json",
@@ -3385,8 +3395,8 @@
     },
     {
       "path": "docs/porting/th14-native-boundaries-verified-oct26.json",
-      "bytes": 90085,
-      "sha256": "ce7a957318dfd7fe5fc79897968fa86c771a975b7fec10c15d0484b17b761b39"
+      "bytes": 90245,
+      "sha256": "412467413f345c44615a963fb4031d96eb0c2303e56af23b93b3e45748c5288d"
     },
     {
       "path": "docs/porting/th14-native-fog-mix-observed-oct20.json",
@@ -14654,6 +14664,11 @@
       "sha256": "11d33eeb516d16743ef2085a54952cad19e853b94f1057f3dbf06f2f68d442d0"
     },
     {
+      "path": "tools/th14-background-clip-order-evidence-check-oct26.py",
+      "bytes": 7378,
+      "sha256": "d0b936cd0969ecf9e7035150da8467c49832c2ace22978178debd1f02a001695"
+    },
+    {
       "path": "tools/th14-bomb-activation-repro.mjs",
       "bytes": 2807,
       "sha256": "bb4963f199be1fb8e5642f4d4c659a1f8dadc7998f44771cb921e4bd0cc63751"
@@ -17875,8 +17890,8 @@
     },
     {
       "path": "tools/th14-native-boundaries-evidence-check-oct26.py",
-      "bytes": 7721,
-      "sha256": "9cf1ef75b69fadd54b5728e337d14fe36d4240f9957d26d87df420c468c2fa37"
+      "bytes": 8191,
+      "sha256": "2a155bd8dbe6af8ed7d60b3efe91da8ff97af9a42f90d0b5dfafd726423c0175"
     },
     {
       "path": "tools/th14-native-campaign-assets.mjs",
@@ -17885,8 +17900,8 @@
     },
     {
       "path": "tools/th14-native-campaign-observer-oct25.py",
-      "bytes": 41512,
-      "sha256": "87270c321bef6298cf69c479828873db1da27526bf8f1c330b4df9f99240ee7d"
+      "bytes": 42890,
+      "sha256": "ccb28bdb75f4d6e30802ac0633be23becd3495a1abf1bda69a53f2dcfab9a172"
     },
     {
       "path": "tools/th14-native-detail-window-capture.py",
@@ -22780,9 +22795,9 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "e5542ed7ad0a0bd4a93db62a81922e592a811764",
-    "title": "TH14 actual original UI save and strict campaign observation boundaries",
-    "changedSourceAndMetadataFiles": 7,
+    "basePublishedCommit": "1eaa6338e928e6588567334a8b7583d27d8e44d8",
+    "title": "TH14 background half-pixel clip-order controls",
+    "changedSourceAndMetadataFiles": 9,
     "productionSourceFiles": 0,
     "productionGameplayChanged": false,
     "productionGraphicsChanged": false,
@@ -22790,13 +22805,15 @@
     "gameAssetsAdded": false,
     "nativeNaturalRunModePairs": 21,
     "nativeAllStageEntryModePairs": 17,
-    "actualOriginalUiSaveBytes": 21633,
-    "decodedRecordBytes": 149076,
-    "sakuyaaHardDiagnosticPrefixCallbacks": 60393,
-    "sakuyaaHardNaturalReplayEndObserved": false,
-    "exitEventBoundedProbeCallbacks": 200,
-    "unmarkedFullRunRejected": true,
+    "retainedBrowserSceneBuffers": 21,
+    "retainedBrowserExactSceneBuffers": 20,
+    "strictBrowserPixelPass": false,
+    "reconstructedUvWordDifference": 2,
+    "postclipViewportComponentMatches": true,
+    "actualBrowserRunForNewComponent": false,
     "currentSdlBrowserAcceptance": false,
+    "observerDiagnosticAndNaturalCompletionSeparated": true,
+    "independentReplayTerminalMarkerObservationImplemented": false,
     "unrelatedResourceCryptEditExcluded": true,
     "completeGame": false,
     "nativeEquivalent": false
