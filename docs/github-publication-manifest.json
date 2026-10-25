@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "1eaa6338e928e6588567334a8b7583d27d8e44d8",
+  "sourceCommit": "6c7d3065714cd5c1393ccc9d53ce951c5b91abc4",
   "files": [
     {
       "path": ".gitignore",
@@ -240,8 +240,8 @@
     },
     {
       "path": "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
-      "bytes": 2672,
-      "sha256": "20549e707c4c14ac23e6c847bbde48249d3d223f655872afa732b13b01f39791"
+      "bytes": 2702,
+      "sha256": "b93ef02e20d896304ea0319fce2373ea9d06f588a5dc38301ab298a1b693a5b6"
     },
     {
       "path": "docs/porting/TH14_MSG_HUD_ORDER_OCT24.md",
@@ -260,8 +260,8 @@
     },
     {
       "path": "docs/porting/TH14_NATIVE_BOUNDARIES_OCT26.md",
-      "bytes": 3036,
-      "sha256": "a27c574c46e8a0da31efd81778baf81effc18531e2ecba38f12dce4c8ac57e9f"
+      "bytes": 3211,
+      "sha256": "4e25bb359fe566a64197c2987408b9368716e65924bd596ea2b6ce441a855108"
     },
     {
       "path": "docs/porting/TH14_NATIVE_FOG_FIX_OCT20.md",
@@ -310,8 +310,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 5297,
-      "sha256": "1042b62d2fba3e609766a5dcd5121fd55fe88d41b9158a863daff79e0d79eaa2"
+      "bytes": 5346,
+      "sha256": "88038b5d97cd5cf9b7ea280dbc5a79d8a0b30cbcdbb8c9c1b5641bb811388ba0"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -322,6 +322,11 @@
       "path": "docs/porting/TH14_REPLAY_END_SOUND_FIX_OCT21.md",
       "bytes": 4452,
       "sha256": "03fcb17b72949c3cb163d0255a776e52a171278f9403868c60ab8ebf6f34fc37"
+    },
+    {
+      "path": "docs/porting/TH14_SAKUYAA_HARD_OCT26.md",
+      "bytes": 1826,
+      "sha256": "43cbf663fc914235a5383b438ad52809bc647c4c25418b93ef12d2a6ff710a42"
     },
     {
       "path": "docs/porting/TH14_SAVE_BYTE_VIEWS_FIX_OCT18.md",
@@ -3340,8 +3345,8 @@
     },
     {
       "path": "docs/porting/th14-mode-acceptance-inventory-oct25.json",
-      "bytes": 152143,
-      "sha256": "fc957a0c6857fc91454f525f7fd51ff1788eade3a345ec5acaa742d1d1ee63c5"
+      "bytes": 155928,
+      "sha256": "294bcf98e683133385d28b548d8cf5f284bea0965f3e72f103d97d90dfa4b8cf"
     },
     {
       "path": "docs/porting/th14-msg-hud-order-verified-oct24.json",
@@ -4682,6 +4687,11 @@
       "path": "docs/porting/th14-sakuya-b-session-verified.json",
       "bytes": 5005,
       "sha256": "ce44e8a81db9b3570c080ca6a4e71f0c60a55ad9145a385a870b213ce1da10ca"
+    },
+    {
+      "path": "docs/porting/th14-sakuyaa-hard-verified-oct26.json",
+      "bytes": 10239,
+      "sha256": "7e52674ecaef44f1d92de626d5054c860fa32e61c8b693c6e3d65eff69e93ce8"
     },
     {
       "path": "docs/porting/th14-sanitized-input-parity-matrix-focused-growth-oct14-observed-oct14.json",
@@ -22795,25 +22805,25 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "1eaa6338e928e6588567334a8b7583d27d8e44d8",
-    "title": "TH14 background half-pixel clip-order controls",
-    "changedSourceAndMetadataFiles": 9,
+    "basePublishedCommit": "6c7d3065714cd5c1393ccc9d53ce951c5b91abc4",
+    "title": "TH14 complete retained Sakuya A Hard observation",
+    "changedSourceAndMetadataFiles": 6,
     "productionSourceFiles": 0,
     "productionGameplayChanged": false,
     "productionGraphicsChanged": false,
     "productionAudioChanged": false,
     "gameAssetsAdded": false,
-    "nativeNaturalRunModePairs": 21,
-    "nativeAllStageEntryModePairs": 17,
-    "retainedBrowserSceneBuffers": 21,
-    "retainedBrowserExactSceneBuffers": 20,
-    "strictBrowserPixelPass": false,
-    "reconstructedUvWordDifference": 2,
-    "postclipViewportComponentMatches": true,
-    "actualBrowserRunForNewComponent": false,
+    "nativeNaturalRunModePairs": 22,
+    "nativeAllStageEntryModePairs": 18,
+    "sakuyaaHardNativeCallbacks": 96682,
+    "sakuyaaHardAllSixStagesObserved": true,
+    "sakuyaaHardVm303Rows": 2020,
+    "sakuyaaHardCombatCheckpoints": 850,
+    "sakuyaaHardNonemptyCombatCheckpoints": 311,
+    "sakuyaaHardIndependentlyVerifiedFiniteEvidence": true,
+    "sakuyaaHardWholeModeEquivalent": false,
+    "previousEarlyExitCauseStillUnproved": true,
     "currentSdlBrowserAcceptance": false,
-    "observerDiagnosticAndNaturalCompletionSeparated": true,
-    "independentReplayTerminalMarkerObservationImplemented": false,
     "unrelatedResourceCryptEditExcluded": true,
     "completeGame": false,
     "nativeEquivalent": false
