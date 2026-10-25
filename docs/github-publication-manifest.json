@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "fbd8642067afefa0ddb8c1ca764405f3639c5b19",
+  "sourceCommit": "d57762cc90b4ba9c3bba12a406eede97d54776c5",
   "files": [
     {
       "path": ".gitignore",
@@ -147,6 +147,11 @@
       "path": "docs/porting/TH14_DIALOGUE_SECTION_FIX_OCT20.md",
       "bytes": 3085,
       "sha256": "b66c5131bcf0d55e92170c138caca5663bb9f34f96dd1ba888e845e271e29e91"
+    },
+    {
+      "path": "docs/porting/TH14_EFFECT149_RETIREMENT_OCT26.md",
+      "bytes": 2802,
+      "sha256": "a84e43765113e79f7fc1bd65b1e88e4c009866ed57fd0aae3bce62a6128832c2"
     },
     {
       "path": "docs/porting/TH14_ENEMY_PROBE_AND_PAUSED_SCORE_OCT24.md",
@@ -310,8 +315,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 5777,
-      "sha256": "ec4100fbedee8c0f1aa956e6854373b18db4e68c7f339dc888455aed402a29d1"
+      "bytes": 6101,
+      "sha256": "430e48f60039d7022bad9c7a7fd08505ed8e7c5709b12c15285844a9ca72b909"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -340,8 +345,8 @@
     },
     {
       "path": "docs/porting/TH14_SCENE_HANDOFF_OCT26.md",
-      "bytes": 3519,
-      "sha256": "1280d1e1fb75a2f712a3603209b2f9f3c0d47b4b91f6b985821953ab611f43f4"
+      "bytes": 3792,
+      "sha256": "25e8663dcad6987b28fa98978b91082b49af217b6a0979ea40f4a19d3a0f02d8"
     },
     {
       "path": "docs/porting/TH14_SCREEN_CAMERA_FIX_OCT15.md",
@@ -2007,6 +2012,16 @@
       "path": "docs/porting/th14-effect-template-layer-verified-oct14.json",
       "bytes": 34511,
       "sha256": "0077b2f9a4e7e07b1f5e908ee96165c41efb596c7e5ab1ae9a627e85d0306ce7"
+    },
+    {
+      "path": "docs/porting/th14-effect149-retirement-component-oct26.json",
+      "bytes": 4144,
+      "sha256": "48238ec82c4f3213c2c61fa9e3059d6f944f81518191512b0ec92b1eee2a4263"
+    },
+    {
+      "path": "docs/porting/th14-effect149-retirement-verified-oct26.json",
+      "bytes": 2604,
+      "sha256": "1dfcafd364276c561e2878f0a7b45106b1263d298fc8f3a7863e21d817b9d696"
     },
     {
       "path": "docs/porting/th14-end-ascii-manual-progress-oct09.json",
@@ -11059,6 +11074,11 @@
       "sha256": "07cb4b0784e4a567ce80f29d8572c18dc158ea0eaa982c706cf03fe42e0adea2"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-effect149-retirement-fixture.cpp",
+      "bytes": 6480,
+      "sha256": "ec00caa8eaa425b74b3da28ae693dbe28c114862f006875240e6146bdfd1140b"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-end-choices-fixture.cpp",
       "bytes": 2133,
       "sha256": "b7d27977ac9e4d5253d14e84f1a1dc3792b9385975d7ffcaee750e8cb7968900"
@@ -16132,6 +16152,16 @@
       "path": "tools/th14-effect149-observable-check-oct26.py",
       "bytes": 6519,
       "sha256": "4bdf98add7548c6e08fae7290bdca338f3903e20e5e59b51ef9ca08c93df6d5e"
+    },
+    {
+      "path": "tools/th14-effect149-retirement-check.mjs",
+      "bytes": 8944,
+      "sha256": "a30f7dde0fb30ab4d259d0f467be7faf1ff10ae756653f2961ef7be7f2b2d6a0"
+    },
+    {
+      "path": "tools/th14-effect149-retirement-evidence-oct26.py",
+      "bytes": 12451,
+      "sha256": "dc2f7a9bbff305bbed5513d7e58373ce995836ea383999921d8a4beb79d225c3"
     },
     {
       "path": "tools/th14-end-choices-check.mjs",
@@ -22830,9 +22860,9 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "fbd8642067afefa0ddb8c1ca764405f3639c5b19",
-    "title": "TH14 observed cross-update Scene camera scheduling",
-    "changedSourceAndMetadataFiles": 9,
+    "basePublishedCommit": "d57762cc90b4ba9c3bba12a406eede97d54776c5",
+    "title": "TH14 finite effect149 family retirement comparison",
+    "changedSourceAndMetadataFiles": 8,
     "productionSourceFiles": 0,
     "productionGameplayChanged": false,
     "productionGraphicsChanged": false,
@@ -22840,18 +22870,15 @@
     "gameAssetsAdded": false,
     "nativeNaturalRunModePairs": 23,
     "nativeAllStageEntryModePairs": 19,
-    "reimuaHardCallbacks": 96103,
-    "reimuaHardCamera25Equal": true,
-    "reimuaHardVmWordDifferences": 6,
-    "reimuaLunaticCallbacks": 86751,
-    "reimuaLunaticVmWordDifferences": 5,
-    "strictFailedRunsRemainRejected": true,
-    "identicalDiagnosticWasmPrefixCallbacks": 56000,
-    "diagnosticCameraDifferencesBefore": 933,
-    "diagnosticCameraDifferencesAfter": 0,
-    "syntheticStackCases": 336,
-    "sakuyaaHardRegressionCallbacks": 96682,
-    "reimubNormalRegressionCallbacks": 122537,
+    "finiteComponentProfiles": 48,
+    "finiteComponentObservations": 5808,
+    "portableVm303Rows": 5632,
+    "portableGeometryRows": 2944,
+    "nativeZInterventionLiveVmBytePairs": 4224,
+    "nativeZInterventionGeometryPairs": 2208,
+    "allFamiliesRetiredWithinDeclaredBound": true,
+    "positionPositiveControlsPassed": true,
+    "strictFullCampaignVmGateUnchanged": true,
     "currentSdlBrowserAcceptance": false,
     "unrelatedResourceCryptEditExcluded": true,
     "completeGame": false,

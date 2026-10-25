@@ -1,0 +1,104 @@
+{
+  "schema": "th14/effect149-retirement-component/1",
+  "executableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "toolSha256": "dc2f7a9bbff305bbed5513d7e58373ce995836ea383999921d8a4beb79d225c3",
+  "resourceLoaderSha256": "1f7f764bb35cfcab74765c60cf0ec7ce22e5256c6003ecc136b150360ee932f6",
+  "generatedProbeSha256": "b3d479c7e02cdc9d531d05d34c1e15d41b080227769d75579922dd0736538eb0",
+  "resources": [
+    {
+      "name": "ascii.anm",
+      "sha256": "fc1c2295fda07140b475b2ddd45d221920534e4a011c529e76578609d69a9284"
+    },
+    {
+      "name": "effect.anm",
+      "sha256": "bbd7205654c87677c4a582fc5e99c2884e724f501b3d281c75bf207a76095559"
+    }
+  ],
+  "selectedNativeWordsSha256": "d06aac63ec431cc5b6d40523e0a4b0a07a8158737eb3fa9f829b8cea43004b7a",
+  "selectedSerializerSha256": "5415867186d05bcbdb0027a8f3528883fb6ead649c40980c8e4e8c492c49d175",
+  "profiles": 48,
+  "observationsPerProfile": 121,
+  "zInterventionLiveVmPairs": 4224,
+  "descendantGeometryPairs": 2208,
+  "originalFactory": "0x47ed10",
+  "originalAllocator": "0x47fcb0",
+  "originalBinding": "0x40af00",
+  "originalInterpreter": "0x46fe50",
+  "originalOrdinaryUpdate": "0x47e5e0",
+  "originalOverlayUpdate": "0x47e6c0",
+  "originalDestructor": "0x47eb50",
+  "originalGeometry": "0x4766e0",
+  "allDeclaredZInterventionsPreserveOtherLiveVmBytes": true,
+  "soleLiveVmDifference": "Declared root149 worldZ at 0x5a4",
+  "allDescendantGeometryRngRegistryAndReleaseOrderEqual": true,
+  "allFamiliesRetiredWithinBound": true,
+  "allXPositiveControlsChangeGeometry": true,
+  "groups": [
+    {
+      "runtimeRate": 0.5,
+      "seed": 12345,
+      "lastLiveFrame": 87,
+      "stableEmptyFrames": 33,
+      "familyObjects": 3,
+      "nonemptyGeometryFrames": 62,
+      "xPositiveControlChangedGeometryFrames": 62
+    },
+    {
+      "runtimeRate": 0.5,
+      "seed": 54321,
+      "lastLiveFrame": 87,
+      "stableEmptyFrames": 33,
+      "familyObjects": 3,
+      "nonemptyGeometryFrames": 62,
+      "xPositiveControlChangedGeometryFrames": 62
+    },
+    {
+      "runtimeRate": 1.0,
+      "seed": 12345,
+      "lastLiveFrame": 43,
+      "stableEmptyFrames": 77,
+      "familyObjects": 3,
+      "nonemptyGeometryFrames": 31,
+      "xPositiveControlChangedGeometryFrames": 31
+    },
+    {
+      "runtimeRate": 1.0,
+      "seed": 54321,
+      "lastLiveFrame": 43,
+      "stableEmptyFrames": 77,
+      "familyObjects": 3,
+      "nonemptyGeometryFrames": 31,
+      "xPositiveControlChangedGeometryFrames": 31
+    },
+    {
+      "runtimeRate": 1.25,
+      "seed": 12345,
+      "lastLiveFrame": 35,
+      "stableEmptyFrames": 85,
+      "familyObjects": 3,
+      "nonemptyGeometryFrames": 26,
+      "xPositiveControlChangedGeometryFrames": 26
+    },
+    {
+      "runtimeRate": 1.25,
+      "seed": 54321,
+      "lastLiveFrame": 35,
+      "stableEmptyFrames": 85,
+      "familyObjects": 3,
+      "nonemptyGeometryFrames": 26,
+      "xPositiveControlChangedGeometryFrames": 26
+    }
+  ],
+  "limitations": [
+    "Controlled Unicorn component with the resource loaded at declared slot3; no actual game process or GPU.",
+    "Actual factory, external allocator, registry traversal, interpreter and destructor execute. File/GPU services, CRT allocation/free and lock disabling remain declared boundaries.",
+    "Templates load at rate1; runtime rate is then set to .5,1,1.25. Two script seeds, seven declared rootZ words and one X+32 control per combination.",
+    "Only effect149 and its two effect143 children in this isolated family are covered, not arbitrary external callbacks, interrupts, forced deletion or game scheduling.",
+    "All 0x5cc live VM bytes compare, with the controlled rootZ input difference explicitly retained. This does not relax any full campaign VM gate.",
+    "No actual uninitialized stack provenance, full scene pixels/PCM, portable implementation comparison, all-mode or whole-game equivalence is proved."
+  ],
+  "productionChanged": false,
+  "strictFullRunVmGateUnchanged": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}
