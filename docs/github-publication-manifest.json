@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "5cf40cb4e09d27a63b97259618560ec770c85af6",
+  "sourceCommit": "ab158cd50d2bd0df185fba10fd54074e1eb47c86",
   "files": [
     {
       "path": ".gitignore",
@@ -70,13 +70,13 @@
     },
     {
       "path": "docs/porting/TH14_BULLET_HIT_MOVEMENT_OCT26.md",
-      "bytes": 2532,
-      "sha256": "7eda804c715d01e07464fa4ca738dfac4401df2177057d27f7a8d415ec97d408"
+      "bytes": 2705,
+      "sha256": "19680fca54ad04c64ee8d02c648e64782fdb4e9b4474818e7c7c6b95f3de6759"
     },
     {
       "path": "docs/porting/TH14_CALLBACK_BOUNDARY_OCT26.md",
-      "bytes": 3512,
-      "sha256": "5d2e9e1bd0523bff14a7d5dd9057b038a5011f976cef013e07c52437edad8532"
+      "bytes": 3543,
+      "sha256": "bbf6d8e4d8f9b98c5e865e1604e1a22667210e7652448046f6414ca1039be588"
     },
     {
       "path": "docs/porting/TH14_CAMERA_CROSS_OCT25.md",
@@ -230,8 +230,8 @@
     },
     {
       "path": "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
-      "bytes": 2665,
-      "sha256": "545463de9f34e86b1442713b73a0576a885fe3e54207bbfa843fd0de7faebbbb"
+      "bytes": 2644,
+      "sha256": "15b7970bb78164646aff1720b2ba981421b64d94d8ce63954f9b30875c8964fb"
     },
     {
       "path": "docs/porting/TH14_MSG_HUD_ORDER_OCT24.md",
@@ -295,8 +295,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 4384,
-      "sha256": "ab6b4a70668cf159cf080ff7d684dff67ad2c0e1a8d447e83138c2659db87b89"
+      "bytes": 4427,
+      "sha256": "406ecfa92f381f37d9dfd3afe2054667a35a44ce28500c9c63af2c7df2901233"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -1365,8 +1365,8 @@
     },
     {
       "path": "docs/porting/th14-bullet-hit-movement-verified-oct26.json",
-      "bytes": 5723,
-      "sha256": "439384a0f87d989fe77a8e2b3e56f76efd042d0f46369e1bf46c2464a4f2736e"
+      "bytes": 8816,
+      "sha256": "f787fc2e394e6aaf1ad7b2084778917f930c6a681b60c9bb90aa53c3e859dbf4"
     },
     {
       "path": "docs/porting/th14-bullet-launch-verified.json",
@@ -1425,8 +1425,8 @@
     },
     {
       "path": "docs/porting/th14-callback-boundary-observed-oct26.json",
-      "bytes": 8237,
-      "sha256": "12de4921a3d0f37e27bb75613b930746190637df09b6053cb3b01d3f278ca001"
+      "bytes": 8418,
+      "sha256": "778f845c00bedafbd57991d1db9bacbd6ff6649689887399062aa36b67108b0f"
     },
     {
       "path": "docs/porting/th14-camera-cross-campaign-verified-oct25.json",
@@ -3315,8 +3315,8 @@
     },
     {
       "path": "docs/porting/th14-mode-acceptance-inventory-oct25.json",
-      "bytes": 138128,
-      "sha256": "d13a2ebcc0d3d04ef634f377ffbb7cd61d1db333ee5b07d1dd4a77daf6e259f5"
+      "bytes": 142864,
+      "sha256": "8b4a2012420235e1ddfefadda1dc203129d9397e6cf7e3c0a6783e8a5427b02c"
     },
     {
       "path": "docs/porting/th14-msg-hud-order-verified-oct24.json",
@@ -22755,20 +22755,21 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "5cf40cb4e09d27a63b97259618560ec770c85af6",
-    "title": "TH14 bullet-hit disappearance animation movement",
-    "changedSourceAndMetadataFiles": 11,
-    "productionSourceFiles": 4,
-    "productionGameplayChanged": true,
-    "productionGraphicsChanged": true,
+    "basePublishedCommit": "ab158cd50d2bd0df185fba10fd54074e1eb47c86",
+    "title": "TH14 complete Reimu B Normal retained-observation verification",
+    "changedSourceAndMetadataFiles": 7,
+    "productionSourceFiles": 0,
+    "productionGameplayChanged": false,
+    "productionGraphicsChanged": false,
     "productionAudioChanged": false,
     "gameAssetsAdded": false,
     "sdlWasmSha256": "a0877a36c53249b937eb87854b36023e4d823a48d7201b7f48040eb38f009dea",
     "observerWasmSha256": "b6563726f05bfc2a6d216e38b99f2ad83b94d69fa896937635669f923d4dc605",
     "nativeNaturalRunModePairs": 20,
     "nativeAllStageEntryModePairs": 17,
-    "normalIndependentVerifiedPrefixCallbacks": 60000,
-    "normalFullCaptureStillRunning": true,
+    "normalIndependentVerifiedFullCallbacks": 122537,
+    "normalFullCaptureStillRunning": false,
+    "nextNativeCapture": "marisaa-hard",
     "hardIndependentVerifiedCallbacks": 107662,
     "reimuaHardFullCallbacks": 96103,
     "reimuaHardAllObservedGatesPassed": false,

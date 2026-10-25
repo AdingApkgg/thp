@@ -473,6 +473,74 @@
       "allStageEntriesObserved": true,
       "retainedNaturalRuns": [
         {
+          "path": "artifacts/th14/retail-reimub-normal-callback-rng-hardware-oct26",
+          "reportSha256": "13728b59a3ca5fc7d1ae8742f43d336d47db9b4fa0b054a0f6f55e366dabffd2",
+          "initialSnapshotSha256": "bfe90feb0ab2e3dd199223a71e9d48ad6ac965cf70e27add83614c512c8b73e3",
+          "selectedSha256": "f2da659201db92271e6225dc077d77aa0890f56defccf96058fe7a5eb127f314",
+          "callbacks": 122537,
+          "stagesObserved": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "naturalReplayEndObserved": true,
+          "clearCompletionNotAsserted": true,
+          "intactOriginalReplayDeclared": true,
+          "instructionBytesPatched": 0,
+          "rngOrCounterWrites": 0,
+          "replaySha256": "c48412a95f0fe9f685d97574e8ab0655d41e44ff9c41fda7bf788589b1b29c74",
+          "selected32ComparisonReports": [
+            {
+              "path": "artifacts/th14/stage-item-retirement-oct25/reimub-normal-bullet-hit-full-oct26/report.json",
+              "reportSha256": "0a3d178a98b4189895fc611ee5721f74549578740def752266b8e7f02fff0dc2",
+              "callbacks": 122537,
+              "wasmSha256": "b6563726f05bfc2a6d216e38b99f2ad83b94d69fa896937635669f923d4dc605",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": true
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            }
+          ],
+          "preferredComparisonPath": "artifacts/th14/stage-item-retirement-oct25/reimub-normal-bullet-hit-full-oct26/report.json",
+          "partialSelected32ComparisonReports": [
+            {
+              "path": "artifacts/th14/stage-item-retirement-oct25/reimub-normal-bullet-hit-prefix-26000-oct26/report.json",
+              "reportSha256": "3f8ded8dee722a0bd38b586433f98541ce55e1f231d94b358923bbd11dcf2a39",
+              "callbacks": 26000,
+              "wasmSha256": "b6563726f05bfc2a6d216e38b99f2ad83b94d69fa896937635669f923d4dc605",
+              "scope": "Reported selected32 prefix equality only, not a full captured-run pass."
+            },
+            {
+              "path": "artifacts/th14/stage-item-retirement-oct25/reimub-normal-bullet-hit-prefix-60000-oct26/report.json",
+              "reportSha256": "92ed06e20093b683be83aae3f16c188fb78242b9cd27c4c7402b01819c0f030d",
+              "callbacks": 60000,
+              "wasmSha256": "b6563726f05bfc2a6d216e38b99f2ad83b94d69fa896937635669f923d4dc605",
+              "scope": "Reported selected32 prefix equality only, not a full captured-run pass."
+            },
+            {
+              "path": "artifacts/th14/stage-item-retirement-oct25/reimub-normal-bullet-hit-prefix-90000-oct26/report.json",
+              "reportSha256": "4b58ddcba264ee67e1dc15cea67b4eb84ad0b6299e5fa0fc0dda1c499e55d4eb",
+              "callbacks": 90000,
+              "wasmSha256": "b6563726f05bfc2a6d216e38b99f2ad83b94d69fa896937635669f923d4dc605",
+              "scope": "Reported selected32 prefix equality only, not a full captured-run pass."
+            },
+            {
+              "path": "artifacts/th14/stage-item-retirement-oct25/reimub-normal-initialize-prefix-26000-oct26/report.json",
+              "reportSha256": "c1129d6375a097907168f301b5d5081470fc8d672de8c0c42cfcce35974cd7cf",
+              "callbacks": 26000,
+              "wasmSha256": "4660f22678b026893cf4cc0a7a30f337a5d380ac45e050460a06cd1e9e8d4d1a",
+              "scope": "Reported selected32 prefix equality only, not a full captured-run pass."
+            }
+          ]
+        },
+        {
           "path": "artifacts/th14/retail-reimub-campaign-resource-phases-hardware-oct24",
           "reportSha256": "0826f4823f44d256d1102fafa5fc544cd1947134e8ce470eeb1f1ac33f59c0fa",
           "initialSnapshotSha256": "37c96a9280ca9e55066c4783603184a4a45ef1da157c684141139b6a68f64bc1",
@@ -2323,6 +2391,7 @@
     "artifacts/th14/retail-reimub-hard-full-bounded-hardware-oct25/report.json": "1b301b01c8fd1d979e6564eed3fa46661769aaacc08036aef0c9ccfcadad172a",
     "artifacts/th14/retail-reimub-lunatic-full-bounded-v2-hardware-oct25/report.json": "627ef3bb62c6ec9dc0e65457fe43de8f405c4addb3815b2cb8cc853f295a04f7",
     "artifacts/th14/retail-reimub-lunatic-timeline-clear-hardware-oct25/report.json": "84ce576dc52987dea7c564702ee88504a13c32a734da22ab39165dbd2f84c53c",
+    "artifacts/th14/retail-reimub-normal-callback-rng-hardware-oct26/report.json": "13728b59a3ca5fc7d1ae8742f43d336d47db9b4fa0b054a0f6f55e366dabffd2",
     "artifacts/th14/retail-sakuyaa-campaign-publications-camera-hardware-oct24/report.json": "f85f5be62ff9d7d2ce95fbccbd3e55d435580b435095c70a3867530f5bd59598",
     "artifacts/th14/retail-sakuyaa-extra-full-2-hardware-oct24/report.json": "e1f704f34786fa74e63a34f3c4853e17208fe6130ff94478eea22e99e7cc364d",
     "artifacts/th14/retail-sakuyaa-final-live-vm-hardware-oct24/report.json": "985710a11f21a63512bddfd7eea5239b76f328ba0ed56a77e454540e3a1c2ac9",
@@ -2444,6 +2513,10 @@
     "artifacts/th14/stage-item-retirement-oct25/reimub-hard-bullet-hit-full-oct26/hud-report.json": "2dbe11c5a22e2148dc817906a4173e3fe76485f82ce9ad009dc8b3ee16919b00",
     "artifacts/th14/stage-item-retirement-oct25/reimub-hard-bullet-hit-full-oct26/live-report.json": "3b717c38de1f46dd1755295ada0b3e445555d3f865ef9f2887fa00e94529c8b0",
     "artifacts/th14/stage-item-retirement-oct25/reimub-hard-bullet-hit-full-oct26/combat-snapshots.json": "f48c549943f0b8af1f50fa6baac63f1e31691a9d102498ef4e986aa7ce4f2a22",
+    "artifacts/th14/stage-item-retirement-oct25/reimub-normal-bullet-hit-full-oct26/camera-report.json": "0272cd7b9d10242ceea28648b8b93e97c9cedbb18b8679d3889b533caae7eb48",
+    "artifacts/th14/stage-item-retirement-oct25/reimub-normal-bullet-hit-full-oct26/hud-report.json": "3902aa7f9a43f8b7040b20090d9a9b2428d66e42d70d0ded7355a50c554514bf",
+    "artifacts/th14/stage-item-retirement-oct25/reimub-normal-bullet-hit-full-oct26/live-report.json": "1c359745aeec6cdf861088e6a88b62c858e24a94ecfc333efeffdf0286415976",
+    "artifacts/th14/stage-item-retirement-oct25/reimub-normal-bullet-hit-full-oct26/combat-snapshots.json": "9760efb557257470187ef60a9aad96b65aea648c22e7bd919fe8c6fe0764e46d",
     "artifacts/th14/stage-item-retirement-oct25/reusable-hard-full/camera-report.json": "7e2ff8e9fbaa5b44983d730db8478076312e5b71cbef09bca616ba0a194112fe",
     "artifacts/th14/stage-item-retirement-oct25/reusable-hard-full/hud-report.json": "b58500349c46b638cc466629fbc60324b040ba8e2f23a3701d8459dafacc7dd4",
     "artifacts/th14/stage-item-retirement-oct25/reusable-hard-full/live-report.json": "e9765133a6d3c0627740a1d20c2bcaeb137fbe32f4b2c6b9b60419a9270a754e",

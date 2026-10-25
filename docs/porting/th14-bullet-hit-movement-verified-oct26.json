@@ -160,8 +160,107 @@
     "runtimes/th12/th12_web/cpp/game/BulletManager.hpp": "09cd787ee37ac972068b35f27a3f1a1b39f97dbe73dff0d429e9622e1e073dcc",
     "runtimes/th12/th12_web/cpp/game/GameBattle.hpp": "52709ff8f98d392c2ff998dc4afb587d8f723e3714779807b2aec704135e7a1d",
     "runtimes/th12/th12_web/cpp/game/BulletTh14.cpp": "a593f4b97ef78cb46b11aee53f27bd91f52a0067576d78065054be0b52792f83",
-    "runtimes/th12/th12_web/cpp/game/GameBattle.cpp": "1279e1f0db24f24d128163f5207e46923839af4092daf3b391b5c47ac4669c7d"
+    "runtimes/th12/th12_web/cpp/game/GameBattle.cpp": "1279e1f0db24f24d128163f5207e46923839af4092daf3b391b5c47ac4669c7d",
+    "artifacts/th14/stage-item-retirement-oct25/reimub-normal-bullet-hit-full-verified-oct26.json": "838fb6437f6058b41771b917d24543646e74395a8d314ee265568907c29c3f2b",
+    "artifacts/th14/stage-item-retirement-oct25/reimub-normal-bullet-hit-full-oct26/report.json": "0a3d178a98b4189895fc611ee5721f74549578740def752266b8e7f02fff0dc2",
+    "artifacts/th14/stage-item-retirement-oct25/reimub-normal-bullet-hit-full-oct26/camera-report.json": "0272cd7b9d10242ceea28648b8b93e97c9cedbb18b8679d3889b533caae7eb48",
+    "artifacts/th14/stage-item-retirement-oct25/reimub-normal-bullet-hit-full-oct26/live-report.json": "1c359745aeec6cdf861088e6a88b62c858e24a94ecfc333efeffdf0286415976",
+    "artifacts/th14/stage-item-retirement-oct25/reimub-normal-bullet-hit-full-oct26/combat-snapshots.json": "9760efb557257470187ef60a9aad96b65aea648c22e7bd919fe8c6fe0764e46d"
   },
   "completeGame": false,
-  "nativeEquivalent": false
+  "nativeEquivalent": false,
+  "normalFull": {
+    "verifiedFiniteEvidence": true,
+    "callbacks": 122537,
+    "sourceReplaySha256": "c48412a95f0fe9f685d97574e8ab0655d41e44ff9c41fda7bf788589b1b29c74",
+    "selection": [
+      0,
+      1,
+      1,
+      1
+    ],
+    "stagesObserved": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "allSelected32Equal": true,
+    "allCamera25Equal": true,
+    "allHud2Equal": true,
+    "vm303Snapshots": [
+      {
+        "callback": 1,
+        "rows": 52,
+        "selectedWordsPerVm": 303
+      },
+      {
+        "callback": 120000,
+        "rows": 318,
+        "selectedWordsPerVm": 303
+      },
+      {
+        "callback": 26000,
+        "rows": 316,
+        "selectedWordsPerVm": 303
+      },
+      {
+        "callback": 30000,
+        "rows": 402,
+        "selectedWordsPerVm": 303
+      },
+      {
+        "callback": 36000,
+        "rows": 352,
+        "selectedWordsPerVm": 303
+      },
+      {
+        "callback": 38900,
+        "rows": 510,
+        "selectedWordsPerVm": 303
+      },
+      {
+        "callback": 60000,
+        "rows": 392,
+        "selectedWordsPerVm": 303
+      },
+      {
+        "callback": 90000,
+        "rows": 244,
+        "selectedWordsPerVm": 303
+      }
+    ],
+    "vm303Rows": 2586,
+    "allVm303AndRegistryOrderEqual": true,
+    "combatCheckpoints": 1294,
+    "nonemptyCombatCheckpoints": 157,
+    "combatRows": {
+      "enemies": 898,
+      "bullets": 16518,
+      "shots": 5061,
+      "areas": 2364,
+      "items": 7987,
+      "lasers": 203
+    },
+    "combatFieldCounts": {
+      "enemies": 31,
+      "bullets": 18,
+      "shots": 19,
+      "areas": 19,
+      "items": 13,
+      "lasers": 26
+    },
+    "allCapturedCombatWordsEqual": true,
+    "publicationCutoffCallbacks": 1000,
+    "orderedPublications": 3274,
+    "wasmSha256": "b6563726f05bfc2a6d216e38b99f2ad83b94d69fa896937635669f923d4dc605",
+    "comparisonToolSha256": "fb67ed475a72f4bcf92d283a4f0789441dc76f438d02bcf53067f205a1a8fdaf",
+    "completeGame": false,
+    "nativeEquivalent": false,
+    "wholeModeEquivalent": false
+  },
+  "normalFullCaptureStillRunning": false,
+  "nextNativeCapture": "marisaa-hard"
 }
