@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "ab158cd50d2bd0df185fba10fd54074e1eb47c86",
+  "sourceCommit": "c275c1cce0235388202210551a7ff9709d132a78",
   "files": [
     {
       "path": ".gitignore",
@@ -124,6 +124,11 @@
       "sha256": "3cb9cec6f012421e4fabfb78cf8f0f214e5b3fea2c1fdb48325faaf99f5efa2d"
     },
     {
+      "path": "docs/porting/TH14_CURVE_ORIGIN_OCT26.md",
+      "bytes": 2621,
+      "sha256": "7ab882fa1b8645e052541f954e97284461ee88b7e72fff1b2339048e9fdde66c"
+    },
+    {
       "path": "docs/porting/TH14_DAMAGE_AREA_SNAP_OCT25.md",
       "bytes": 3006,
       "sha256": "642af506c15cdb3454e956fd93ea4b6f4618451da7fecddbdd88637bc24f7638"
@@ -230,8 +235,8 @@
     },
     {
       "path": "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
-      "bytes": 2644,
-      "sha256": "15b7970bb78164646aff1720b2ba981421b64d94d8ce63954f9b30875c8964fb"
+      "bytes": 2672,
+      "sha256": "20549e707c4c14ac23e6c847bbde48249d3d223f655872afa732b13b01f39791"
     },
     {
       "path": "docs/porting/TH14_MSG_HUD_ORDER_OCT24.md",
@@ -295,8 +300,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 4427,
-      "sha256": "406ecfa92f381f37d9dfd3afe2054667a35a44ce28500c9c63af2c7df2901233"
+      "bytes": 4648,
+      "sha256": "75afc6c1ee35b575626f639bd9979d763626e593ba6a3f4425b141dcec60bbb8"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -1637,6 +1642,11 @@
       "path": "docs/porting/th14-current-release-browser-verified-oct13.json",
       "bytes": 90570,
       "sha256": "3f204ec9a2f0390d02e93a86d1a91d82690dece38628f2510193ee0b4737a6cc"
+    },
+    {
+      "path": "docs/porting/th14-curve-origin-verified-oct26.json",
+      "bytes": 7734,
+      "sha256": "3dd02ea35ef475f3a7e4dba967309bc4a61b5ba88f1f71a75f2033db4942099a"
     },
     {
       "path": "docs/porting/th14-custom-replay-native-extended-observed-oct11.json",
@@ -3315,8 +3325,8 @@
     },
     {
       "path": "docs/porting/th14-mode-acceptance-inventory-oct25.json",
-      "bytes": 142864,
-      "sha256": "8b4a2012420235e1ddfefadda1dc203129d9397e6cf7e3c0a6783e8a5427b02c"
+      "bytes": 152143,
+      "sha256": "fc957a0c6857fc91454f525f7fd51ff1788eade3a345ec5acaa742d1d1ee63c5"
     },
     {
       "path": "docs/porting/th14-msg-hud-order-verified-oct24.json",
@@ -7730,8 +7740,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/LaserCurveTh14Runtime.cpp",
-      "bytes": 6645,
-      "sha256": "4d28ba331761e0de24e133904d6f2ede84e945eb8824e914ac36ac8c6f0e0557"
+      "bytes": 6791,
+      "sha256": "b8a56865aa4cfa119d934beda128f21bda872a002ed9709a21546b4e27d7c05b"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/LaserCut.cpp",
@@ -22755,24 +22765,24 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "ab158cd50d2bd0df185fba10fd54074e1eb47c86",
-    "title": "TH14 complete Reimu B Normal retained-observation verification",
-    "changedSourceAndMetadataFiles": 7,
-    "productionSourceFiles": 0,
-    "productionGameplayChanged": false,
+    "basePublishedCommit": "c275c1cce0235388202210551a7ff9709d132a78",
+    "title": "TH14 curve laser preserves its request origin",
+    "changedSourceAndMetadataFiles": 6,
+    "productionSourceFiles": 1,
+    "productionGameplayChanged": true,
     "productionGraphicsChanged": false,
     "productionAudioChanged": false,
     "gameAssetsAdded": false,
-    "sdlWasmSha256": "a0877a36c53249b937eb87854b36023e4d823a48d7201b7f48040eb38f009dea",
-    "observerWasmSha256": "b6563726f05bfc2a6d216e38b99f2ad83b94d69fa896937635669f923d4dc605",
-    "nativeNaturalRunModePairs": 20,
+    "sdlWasmSha256": "11d5c78ceccde1dd07b22cc09e8831cb047f13a724ba7e9b1314e748465109af",
+    "observerWasmSha256": "f0801b8a81134c61255ffb9102a41a3957b8cf8ea1d8de7813da381665a619de",
+    "nativeNaturalRunModePairs": 21,
     "nativeAllStageEntryModePairs": 17,
+    "marisaaHardVerifiedCallbacks": 75921,
+    "marisaaHardAllSixStagesObserved": false,
+    "beforeLaserXYDifferences": 28,
+    "constructorComponentCases": 26,
     "normalIndependentVerifiedFullCallbacks": 122537,
-    "normalFullCaptureStillRunning": false,
-    "nextNativeCapture": "marisaa-hard",
     "hardIndependentVerifiedCallbacks": 107662,
-    "reimuaHardFullCallbacks": 96103,
-    "reimuaHardAllObservedGatesPassed": false,
     "currentSdlBrowserAcceptance": false,
     "unrelatedResourceCryptEditExcluded": true,
     "completeGame": false,

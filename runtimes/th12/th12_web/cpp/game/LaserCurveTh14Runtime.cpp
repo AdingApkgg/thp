@@ -14,7 +14,9 @@ i32 sprite_callback(AnmVm& vm,i32){
 bool laser_th14_curve_initialize(Th14LaserCurve& curve,const u8* request,AnmResource& resource,AnmEnvironment& animations,LaserWorld& world,u16 file,const std::vector<Th14CurveNode>* inherited){
     auto& b=curve.base;
     if(!curve.path.initialize(request,inherited)||curve.path.samples.empty())return false;
-    b.state=b.type=2;b.position=curve.path.samples[0].position;
+    // Retail440372/4403c4 preserves the adjusted request origin even when the
+    // inherited path is sampled at a nonzero initial time.
+    b.state=b.type=2;std::memcpy(&b.position,curve.path.request,12);
     b.angle=field(request+0xc);b.width=field(request+0x10);b.speed=field(request+0x14);b.sprite=i16(integer(request+0x18));b.color=i16(integer(request+0x1c));
     const auto velocity=polar(b.angle,b.speed);b.velocity={velocity.x,velocity.y,0};
     auto& body=curve.body;
