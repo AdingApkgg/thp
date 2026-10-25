@@ -1,4 +1,14 @@
-# TH14 当前本机入口 · 2026-10-23
+# TH14 当前本机入口 · 2026-10-25
+
+固定静音入口为 `http://localhost:8208/?game=th14`。当前服务读取 `th14-launcher-site-stage-item-retirement-candidate-oct25.json`，实际 HTTP 完整模块 SHA256 为 `7bebd2edc4cab71040f92a94029269a6bcc3dc518c6189bfd504223ec275960e`。启动命令：
+
+```powershell
+node tools/th14-serve-workspace.mjs --report th14-launcher-site-stage-item-retirement-candidate-oct25.json
+```
+
+站点 127 文件的只读预检通过；HTTP 已验证模块字节和父页面、runtime 页面静音脚本。未清缓存或存档。当前 Windows 浏览器工具因无法可靠确认页面 URL 中止，界面操作已停止，不能把 HTTP 和旧模块记录视为本模块浏览器验收。实际静音适配、普通浏览器完整流程、结束稳定性和刷新后持久化仍待浏览器观察。
+
+## 历史入口 · 2026-10-23
 
 当前固定静音入口为 `http://localhost:8208/?game=th14`，使用标题／结局调度修正后的模块 `0e1ba6d1531edb51cfcf3f45aa0e01c4221788716369154470c95834d114a4bd`（1,902,898 字节）。启动命令：
 

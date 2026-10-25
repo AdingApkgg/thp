@@ -187,7 +187,12 @@ def event_snapshot(pc,tid,b):
         print(json.dumps(row),flush=True);return
     if pc in (0x44c4c6,0x44d2aa,0x435e22,0x43605a,0x4360c6):
         control=u32(0x4db558)
-        row=dict(event=targets[pc],pc=pc,threadId=tid,hostMonotonicNs=time.monotonic_ns(),mainResourceFrame=main_resource_frames,controlFlags=u32(control+0x80)if control else None,rngHex=read(0x4db508,16).hex(),serial=u32(serial_watch_manager+0xff52c8),resourceSlots=[])
+        row=dict(event=targets[pc],pc=pc,threadId=tid,hostMonotonicNs=time.monotonic_ns(),mainResourceFrame=main_resource_frames,stage=u32(0x4f58a4),precedingPlayerCallbacks=callback_count,controlFlags=u32(control+0x80)if control else None,rngHex=read(0x4db508,16).hex(),serial=u32(serial_watch_manager+0xff52c8),resourceSlots=[])
+        if pc==0x43605a:
+            row.update(observedOriginalLoadingFlagClear=True,clearInstructionPc=0x436053,clearInstructionBytes=read(0x436053,7).hex(),readOnly=True)
+            assert row['clearInstructionBytes']=='83a380000000fb' and control and not(row['controlFlags']&4)
+        if first_snapshot is not None and tid!=pi.tid:
+            hud_score_pc[tid]=0x4360c6 if pc==0x43605a else 0x42ec65 if pc==0x4360c6 else hud_score_pc.get(tid,0x42ec65)
         worker_phase_pcs[tid]={0x44c4c6:0x44d2aa,0x44d2aa:0x435e22,0x435e22:0x47d0ec,0x43605a:0x4360c6,0x4360c6:0x47d0ec}[pc]
         with(home/'resource-ready-events.jsonl').open('a',encoding='utf8')as stream:stream.write(json.dumps(row)+'\n')
         return
@@ -299,11 +304,11 @@ try:
                             row=dict(event=targets[pc],pc=pc,threadId=ev.tid,hostMonotonicNs=time.monotonic_ns(),precedingPlayerCallbacks=callback_count,stage=u32(0x4f58a4),hud=ebx,hudDisplayedScoreUnits=u32(ebx+0x140),globalScoreUnits=u32(0x4f5830),eax=eax,originalInstructionBytes=read(pc,10).hex(),readOnly=True)
                             hud_score_writes.append(row)
                             with(home/'hud-initialization-events.jsonl').open('a',encoding='utf8')as f:f.write(json.dumps(row)+'\n')
-                            hud_score_pc[ev.tid]=0x42ec6b if pc==0x42ec65 else 0x42ec65
+                            hud_score_pc[ev.tid]=0x42ec6b if pc==0x42ec65 else 0x43605a
                         elif pc==0x44dbd0:
                             words=player_snapshot();last_player_time=time.monotonic()
                             if first_snapshot is None:
-                                assert words[27:31]==[0,1,2,1],words[27:31]
+                                assert words[27:31]==[opt.character,opt.subtype,opt.difficulty,1],words[27:31]
                                 flags=u32(0x4f58b8);manager=u32(0x4db688);assert flags&0x40 and manager and u32(manager+0x10)==1
                                 first_snapshot=dict(hostMonotonicNs=time.monotonic_ns(),mainResourceFrame=main_resource_frames,words=words,attractFlags=flags,replayManagerMode=1,rngHex=read(0x4db508,16).hex(),actualInitialTimeGetTimeInput=u32(0x4d9688),actualOriginalSecurityCookie=u32(0x4d0cc0),anmManagerSerial=u32(u32(0x4f56cc)+0xff52c8))
                                 (home/'untouched-first-player.json').write_text(json.dumps(first_snapshot,indent=2)+'\n')

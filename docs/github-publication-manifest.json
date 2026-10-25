@@ -1,7 +1,7 @@
 {
   "date": "2026-10-25",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "defcddc204c2b883d7f663ab946a7d503d5f351b",
+  "sourceCommit": "ea8d1d855c62dc2f609042cf6ad0d25ad5fef5a3",
   "files": [
     {
       "path": ".gitignore",
@@ -77,6 +77,11 @@
       "path": "docs/porting/TH14_CAMERA_LOADING_HUD_OCT24.md",
       "bytes": 2864,
       "sha256": "23ff33ad56a531b017a3ba8169773d2a791cdfef5ea90c4301c3c9cee5e45b79"
+    },
+    {
+      "path": "docs/porting/TH14_CAMPAIGN_TOOLING_OCT25.md",
+      "bytes": 4473,
+      "sha256": "dc33dca9660bf843b353e38f56f094afbd606a72e2a3427ae9f2a3a215688666"
     },
     {
       "path": "docs/porting/TH14_CONSTRUCTOR_HIT_FIX_OCT15.md",
@@ -175,8 +180,8 @@
     },
     {
       "path": "docs/porting/TH14_LOCAL_WORKSPACE_CURRENT_SERVER.md",
-      "bytes": 7177,
-      "sha256": "bac6f77bed6629e8999bab96f57f6d32327802c4371dcc706c5020c4c8668a96"
+      "bytes": 8009,
+      "sha256": "29c34c1a5e1ae38611f131e9bb710a19506aa31f1f8d048fe8bf971a43918583"
     },
     {
       "path": "docs/porting/TH14_LUNATIC_AND_VM303_OCT25.md",
@@ -200,13 +205,18 @@
     },
     {
       "path": "docs/porting/TH14_METHOD.md",
-      "bytes": 42142,
-      "sha256": "dd9bc5eda2c578cb4d57c58c4db704528701703adaaf8e4f36c4f5c904280e57"
+      "bytes": 42737,
+      "sha256": "3af7e4f8314e90c1cca105c01dda79345c33df42c79e09c20d96b4746e8343aa"
     },
     {
       "path": "docs/porting/TH14_MIDGAME_VISUALS_OCT24.md",
       "bytes": 2584,
       "sha256": "0a00577e6323ee3091c598a93046b7ce5dd4f993082c22498bf42c9ed911f65a"
+    },
+    {
+      "path": "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
+      "bytes": 2193,
+      "sha256": "7f40d3aca056f3c0e1635a40aabdfbf3e089e72ebf3142e50ddbbdd73f9ec004"
     },
     {
       "path": "docs/porting/TH14_MSG_HUD_ORDER_OCT24.md",
@@ -270,8 +280,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 2465,
-      "sha256": "aa4bd4c99049b1b2c6ce61cda348d4c05765de15ac45ba5d993f8905d7b2f826"
+      "bytes": 2883,
+      "sha256": "cec457eb7b5f6747904a302dde859feb530c513674d78fffb73d43da23d35d95"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -1437,6 +1447,11 @@
       "path": "docs/porting/th14-campaign-replay-handoff-native-verified-oct11.json",
       "bytes": 3529,
       "sha256": "d81503ef49f80f0df0f21679b140160f4e4d8782c161a14a33aa78d2f1c6c860"
+    },
+    {
+      "path": "docs/porting/th14-campaign-tooling-verified-oct25.json",
+      "bytes": 1992,
+      "sha256": "1a112f0a67287ee1aa7394008ee88e8fc5da3a8d7fe11031211b144fedceee7a"
     },
     {
       "path": "docs/porting/th14-captured-virtual-heap-size-observed-oct13.json",
@@ -3262,6 +3277,11 @@
       "path": "docs/porting/th14-midgame-visuals-verified-oct24.json",
       "bytes": 10943,
       "sha256": "641e09fad80dacdd1953437f229f7cf4a2c0cc4494b3b92dd21ba33716be0cce"
+    },
+    {
+      "path": "docs/porting/th14-mode-acceptance-inventory-oct25.json",
+      "bytes": 78109,
+      "sha256": "c00344d15ad7d25d63aaad5e7d619dfa846c27a0c661e3c59d0fb5de64fce6e2"
     },
     {
       "path": "docs/porting/th14-msg-hud-order-verified-oct24.json",
@@ -11404,6 +11424,11 @@
       "sha256": "2797aeae3c9cad28ef54ca4c155065ee26fe6d70d96525ac2b6f565266bf4cff"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-native-campaign-fixture.cpp",
+      "bytes": 62768,
+      "sha256": "4a195be82c9c45115461042e701a33fbfe2ca6c6c37d43fa4933f7c35bbafa43"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-natural-body-avoid-fixture.cpp",
       "bytes": 6701,
       "sha256": "96d30a1dc5c49df5c1bb99ac55d5d682eea0b718f71fe035cc798feff8ae6989"
@@ -14714,6 +14739,11 @@
       "sha256": "286a51e1e5f54d3ac3c8ca51256f0f33316e2b0dbd54402b44cd7ac1362fbf04"
     },
     {
+      "path": "tools/th14-build-campaign-observer.py",
+      "bytes": 3338,
+      "sha256": "79c7caac7728a47ca2419dd3d2f06695b9a0bf13fe9a76ac9465b05546865683"
+    },
+    {
       "path": "tools/th14-bullet-acceleration-check.mjs",
       "bytes": 3532,
       "sha256": "4356b68a84cd51ee5afe06e895e73ab36316a52c28cd6f288305bb77c30b0914"
@@ -15032,6 +15062,11 @@
       "path": "tools/th14-combat-pool-readonly-v3-oct25.py",
       "bytes": 6611,
       "sha256": "8714448699df7aab1af1723a394176bc05590eb8a3827ed7cce54313a4e2f233"
+    },
+    {
+      "path": "tools/th14-compare-native-campaign.mjs",
+      "bytes": 33024,
+      "sha256": "4682c6a662dfd1f7830a8191c3398c7c9fdfeb980faa44d56055022003595563"
     },
     {
       "path": "tools/th14-comparison-failure-receipt.py",
@@ -17679,6 +17714,11 @@
       "sha256": "06741b36837df2238256729bdb8ce82ba5ab9e7babc4994be9314a3e3e3a4a30"
     },
     {
+      "path": "tools/th14-mode-acceptance-inventory.py",
+      "bytes": 7063,
+      "sha256": "f471e5833236b6f843ee1959f0d5c02e9b2582fe73b7c4bf8b690deb3181f609"
+    },
+    {
       "path": "tools/th14-music-clock-evidence-check-oct20.py",
       "bytes": 6304,
       "sha256": "817e726a1b87067389419e50890850973ab69b86c8308dc222624fc9a18ee848"
@@ -17765,8 +17805,8 @@
     },
     {
       "path": "tools/th14-native-campaign-observer-oct25.py",
-      "bytes": 34676,
-      "sha256": "03491643571802e13d793ad3991be75215c1bf8722b37ca06c113a9548926363"
+      "bytes": 35235,
+      "sha256": "51866bd9c5b1eabebcfbddab1725a52eef974738ef038eab2aa625e790712499"
     },
     {
       "path": "tools/th14-native-detail-window-capture.py",
@@ -22650,17 +22690,20 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "defcddc204c2b883d7f663ab946a7d503d5f351b",
-    "title": "TH14 stage item retirement and bounded storage",
-    "changedSourceAndMetadataFiles": 14,
-    "productionSourceFiles": 1,
-    "productionGameplayChanged": true,
+    "basePublishedCommit": "ea8d1d855c62dc2f609042cf6ad0d25ad5fef5a3",
+    "title": "TH14 reusable campaign observation, direct Timeline events and mode inventory",
+    "changedSourceAndMetadataFiles": 12,
+    "productionSourceFiles": 0,
+    "productionGameplayChanged": false,
     "productionGraphicsChanged": false,
     "productionAudioChanged": false,
     "gameAssetsAdded": false,
     "sdlWasmSha256": "7bebd2edc4cab71040f92a94029269a6bcc3dc518c6189bfd504223ec275960e",
-    "fullNativeReplayCallbacks": 107662,
-    "combatSelectedCheckpoints": 1496,
+    "nativeNaturalRunModePairs": 17,
+    "nativeAllStageEntryModePairs": 14,
+    "lunaticOldFirstThreeStagesSelectedCallbacks": 38530,
+    "directTimelinePrefixCallbacks": 40000,
+    "directTimelineFullRunPending": true,
     "currentSdlBrowserAcceptance": false,
     "unrelatedResourceCryptEditExcluded": true,
     "completeGame": false,
