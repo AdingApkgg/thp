@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "d57762cc90b4ba9c3bba12a406eede97d54776c5",
+  "sourceCommit": "5477b29145628cb9762ad609644dad82b3f478cb",
   "files": [
     {
       "path": ".gitignore",
@@ -219,6 +219,11 @@
       "sha256": "fb8a439f10aa74cfaf14a0049d9083dcd37dc7c29e380febe01fcc4e5c5b4f7d"
     },
     {
+      "path": "docs/porting/TH14_MARISAA_LUNATIC_OCT26.md",
+      "bytes": 1812,
+      "sha256": "6d19ffa9fc973ca3a1f9a316255ba9138a003e90fd0542ddea5e07797409e474"
+    },
+    {
       "path": "docs/porting/TH14_MARISAB_FULL_NATIVE_OCT19.md",
       "bytes": 2546,
       "sha256": "f713dbea93af192b1207ed85dfeb0f7b126e2ea864ce95d1bf38427a98a6e841"
@@ -245,8 +250,8 @@
     },
     {
       "path": "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
-      "bytes": 2744,
-      "sha256": "704c95cee490d862f77f68f8e3ddfdd50c12df5c3910e9d91e7c4c49c06f446e"
+      "bytes": 2774,
+      "sha256": "608b149732160aa05e9eb0db7a278b8bb11a0635fa5b19d2f31d87d262333805"
     },
     {
       "path": "docs/porting/TH14_MSG_HUD_ORDER_OCT24.md",
@@ -315,8 +320,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 6101,
-      "sha256": "430e48f60039d7022bad9c7a7fd08505ed8e7c5709b12c15285844a9ca72b909"
+      "bytes": 6348,
+      "sha256": "6a68a51826872d5f7e57adfc882720f28866c00a58e6b7d404ad217366523749"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -3349,6 +3354,11 @@
       "sha256": "f29c11430396cbca1203a8ccb1904369707cd932a3c3022e1684f84e1a64e52e"
     },
     {
+      "path": "docs/porting/th14-marisaa-lunatic-verified-oct26.json",
+      "bytes": 10155,
+      "sha256": "fddf4fada91bf16bef2241b68a4584849aa3849eb2f18bff8c8877e48cf179ae"
+    },
+    {
       "path": "docs/porting/th14-math-verified.json",
       "bytes": 1679,
       "sha256": "c9f3db2a4febd3d7720fddc12df6e63aeeb78b2684c6eb29b6823431c496ad85"
@@ -3365,8 +3375,8 @@
     },
     {
       "path": "docs/porting/th14-mode-acceptance-inventory-oct25.json",
-      "bytes": 168053,
-      "sha256": "3ea79b129c5825ddb671b6b294743830f0f9dc4b42431a1ea4a6b1e7c04db522"
+      "bytes": 171282,
+      "sha256": "6e8ded9c5dea687f19539c943ee076b62662cdcf89f8bee52d2edf2fefca9911"
     },
     {
       "path": "docs/porting/th14-msg-hud-order-verified-oct24.json",
@@ -22860,25 +22870,23 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "d57762cc90b4ba9c3bba12a406eede97d54776c5",
-    "title": "TH14 finite effect149 family retirement comparison",
-    "changedSourceAndMetadataFiles": 8,
+    "basePublishedCommit": "5477b29145628cb9762ad609644dad82b3f478cb",
+    "title": "TH14 complete retained Marisa A Lunatic observation",
+    "changedSourceAndMetadataFiles": 5,
     "productionSourceFiles": 0,
     "productionGameplayChanged": false,
     "productionGraphicsChanged": false,
     "productionAudioChanged": false,
     "gameAssetsAdded": false,
-    "nativeNaturalRunModePairs": 23,
-    "nativeAllStageEntryModePairs": 19,
-    "finiteComponentProfiles": 48,
-    "finiteComponentObservations": 5808,
-    "portableVm303Rows": 5632,
-    "portableGeometryRows": 2944,
-    "nativeZInterventionLiveVmBytePairs": 4224,
-    "nativeZInterventionGeometryPairs": 2208,
-    "allFamiliesRetiredWithinDeclaredBound": true,
-    "positionPositiveControlsPassed": true,
-    "strictFullCampaignVmGateUnchanged": true,
+    "nativeNaturalRunModePairs": 24,
+    "nativeAllStageEntryModePairs": 20,
+    "marisaaLunaticNativeCallbacks": 106797,
+    "marisaaLunaticAllSixStagesObserved": true,
+    "marisaaLunaticVm303Rows": 3102,
+    "marisaaLunaticCombatCheckpoints": 803,
+    "marisaaLunaticNonemptyCombatCheckpoints": 306,
+    "marisaaLunaticIndependentlyVerifiedFiniteEvidence": true,
+    "marisaaLunaticWholeModeEquivalent": false,
     "currentSdlBrowserAcceptance": false,
     "unrelatedResourceCryptEditExcluded": true,
     "completeGame": false,
