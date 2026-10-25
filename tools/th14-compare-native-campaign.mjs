@@ -2,13 +2,15 @@ import{gunzipSync}from'node:zlib';
 import assert from'node:assert/strict';import{readFileSync as read,writeFileSync as write,mkdirSync as mkdir,existsSync as exists}from'node:fs';
 import{resolve,dirname,basename,relative,isAbsolute}from'node:path';import{createHash}from'node:crypto';import{WASI}from'node:wasi';
 // Explicit case inputs; no native gameplay state is supplied to the engine.
-const allowed=new Set(['native','assets','build','wasm','output','prefix','selection','hud-ready','publication-cutoff']);
+const allowed=new Set(['native','assets','build','wasm','output','prefix','selection','hud-ready','publication-cutoff','scheduler-phases']);
 const options=new Map();for(let i=2;i<process.argv.length;i+=2){const key=process.argv[i]?.replace(/^--/,'');assert(allowed.has(key)&&process.argv[i+1]&&!options.has(key),'Unknown, repeated or missing option '+key);options.set(key,process.argv[i+1]);}
 for(const key of ['native','assets','build','output','selection'])assert(options.has(key),'Missing --'+key);
 const root=resolve(import.meta.dirname,'..'),nativeHome=resolve(root,options.get('native')),nativeName=basename(nativeHome),mode='initial-worker-events',home=dirname(resolve(root,options.get('build')));
 const sha=b=>createHash('sha256').update(b).digest('hex'),prefix=Number(options.get('prefix')??0),publicationCutoff=Number(options.get('publication-cutoff')??1000),expectedSelection=options.get('selection').split(',').map(Number),hudFlag=(options.get('hud-ready')??'cpu-write')==='cpu-write'?'-cpu-write':'-main-resource-boundary';
 assert(Number.isInteger(prefix)&&prefix>=0&&Number.isInteger(publicationCutoff)&&publicationCutoff>0);
 assert(expectedSelection.length===4&&expectedSelection.every(Number.isInteger));assert(['cpu-write','boundary'].includes(options.get('hud-ready')??'cpu-write'));
+const schedulerPhases=options.get('scheduler-phases')??'legacy';assert(['legacy','observed','resource-player'].includes(schedulerPhases));
+const phasedScheduler=schedulerPhases!=='legacy';
 const out=resolve(root,options.get('output')),scope=relative(resolve(root,'artifacts/th14'),out);assert(scope&&!scope.startsWith('..')&&!isAbsolute(scope),'New TH14 artifact directory required');
 const nativeReport=exists(resolve(nativeHome,'report.json'))?JSON.parse(read(resolve(nativeHome,'report.json'))):null,initial=JSON.parse(read(resolve(nativeHome,'untouched-first-player.json')));
 const snapshotPlan=exists(resolve(nativeHome,'snapshot-plan.json'))?JSON.parse(read(resolve(nativeHome,'snapshot-plan.json'))):null;
@@ -66,9 +68,34 @@ const rows=[],counts={},first={};const unsupportedObservations=[];let unsupporte
 const playerOrigin=times.readBigUInt64LE(0),baseNow=lastNow;
 const transition=(exists(resolve(nativeHome,'transition-events.jsonl'))?read(resolve(nativeHome,'transition-events.jsonl'),'utf8').trim().split('\n').filter(Boolean).map(x=>JSON.parse(x)):[]);
 const resourceEvents=read(resolve(nativeHome,'resource-ready-events.jsonl'),'utf8').trim().split('\n').map(x=>JSON.parse(x)),phaseInputs=[];
+const sceneEvents=phasedScheduler?read(resolve(nativeHome,'scene-camera-copy-events.jsonl'),'utf8').trim().split('\n').filter(Boolean).map(x=>JSON.parse(x)):[];
+const controllerEvents=schedulerPhases==='observed'?read(resolve(nativeHome,'controller-phase-events.jsonl'),'utf8').trim().split('\n').filter(Boolean).map(x=>JSON.parse(x)):[];
+const controlClock=new Map(),pumpClock=new Map(),beforeDrawWorker=new Map(),afterDrawWorker=new Map();
+if(phasedScheduler){
+ assert(c.observed_player_boundary&&c.observed_worker_boundary&&c.observed_boundary_ok,'Observer lacks callback-boundary support');
+ for(const e of controllerEvents){assert.equal(e.pc,0x436bed);const callback=e.precedingPlayerCallbacks+1;assert(!controlClock.has(callback),'Repeated controller boundary requires its own scheduler observation');controlClock.set(callback,e.hostMonotonicNs);}
+ for(const e of resourceEvents.filter(x=>x.event==='main-resource-pump')){
+  let low=0,high=limit;while(low<high){const mid=(low+high)>>>1;if(times.readBigUInt64LE(mid*8)<BigInt(e.hostMonotonicNs))low=mid+1;else high=mid;}
+  if(low>0&&low<limit)pumpClock.set(low+1,e.hostMonotonicNs);
+ }
+ const copies=sceneEvents.filter(x=>x.event==='scene-camera-copy-before'||x.event==='scene-camera-copy-after'&&!sceneEvents.some(b=>b.stage===x.stage&&b.event==='scene-camera-copy-before'));
+ for(const e of copies){
+  const callback=e.precedingPlayerCallbacks;if(callback<1||callback>limit)continue;
+  let phase=e.mainPhaseAtObservation;
+  if(phase===undefined){const playerTime=Number(times.readBigUInt64LE((callback-1)*8));const pumps=resourceEvents.filter(x=>x.event==='main-resource-pump'&&x.hostMonotonicNs<=e.hostMonotonicNs);assert(pumps.length,'No observed resource boundary for Scene event');phase=pumps.at(-1).hostMonotonicNs>playerTime?'update':'draw';}
+  if(phase!=='draw')continue;
+  const boundary=e.lastMainCameraBoundary;assert(boundary,'Missing camera scheduler boundary');
+  const map=boundary.event==='world-perspective-right-written'?afterDrawWorker:beforeDrawWorker;
+  assert(!map.has(e.precedingPlayerCallbacks));map.set(e.precedingPlayerCallbacks,e.hostMonotonicNs);
+ }
+}
 for(let stage=2;stage<=maxStage;stage++){
  const call=transition.find(x=>x.event==='sleep60-before-call'&&x.stage===stage),returned=transition.find(x=>x.event==='sleep60-returned'&&x.stage===stage);assert(call&&returned&&returned.returnInstructionObservedDirectly);
  assert.equal(c.observed_worker_events(stage,baseNow+BigInt(call.hostMonotonicNs)-playerOrigin,baseNow+BigInt(returned.hostMonotonicNs)-playerOrigin),1);
+ if(phasedScheduler){
+  const initialized=transition.find(x=>x.event==='replay-seeds-restored-before-globals-copy'&&x.stage===stage);
+  if(initialized){assert.equal(initialized.pc,0x456133);assert(initialized.originalInstructionBytes.startsWith('f3a5'));assert.equal(c.observed_worker_initialize(stage,baseNow+BigInt(initialized.hostMonotonicNs)-playerOrigin),1);phaseInputs.push({stage,phase:'Initialize',readyNs:initialized.hostMonotonicNs,completionSource:'original456133AfterSeedsRestoredBeforeGlobalsCopy',globalCopyAlreadyCompletedNotAsserted:true});}
+ }
  const nextCall=transition.find(x=>x.event==='sleep60-before-call'&&x.stage===stage+1),end=nextCall?.hostMonotonicNs??Infinity;
  const later=resourceEvents.filter(x=>x.hostMonotonicNs>=call.hostMonotonicNs&&x.hostMonotonicNs<end),frames=later.filter(x=>x.event==='main-resource-pump'),inputs=[];
  for(const[phase,file,name]of[['Hud',6,'st'+String(stage).padStart(2,'0')+'logo.anm'],['Scene',(stage&1)+3,'st'+String(stage).padStart(2,'0')+'wl.anm']]){
@@ -79,6 +106,11 @@ for(let stage=2;stage<=maxStage;stage++){
   if(phase==='Hud'&&hudFlag==='-cpu-write'){
    const writes=read(resolve(nativeHome,'hud-initialization-events.jsonl'),'utf8').trim().split('\n').map(x=>JSON.parse(x));
    const written=writes.find(x=>x.event==='hud-score-initialization-after-write'&&x.stage===stage);assert(written);readyNs=written.hostMonotonicNs;completionSource='original42ec6bAfterHudInitializationWrite';
+  }
+  if(phase==='Scene'&&phasedScheduler){
+   const before=sceneEvents.find(x=>x.event==='scene-camera-copy-before'&&x.stage===stage),after=sceneEvents.find(x=>x.event==='scene-camera-copy-after'&&x.stage===stage);
+   assert(after&&(schedulerPhases!=='observed'||before)&&(!before||before.hostMonotonicNs<=after.hostMonotonicNs),'Missing original Scene copy boundaries '+stage);
+   readyNs=(before??after).hostMonotonicNs;completionSource=before?'original40d435BeforeSceneCameraCopy':'original40d447AfterSceneCameraCopy';
   }
   inputs.push({stage,phase,file,queuedNs:queued?.hostMonotonicNs??null,queueObservedDirectly:!!queued,resourceFirstObservedNs:firstObserved?.hostMonotonicNs??null,readyNs,completionSource,boundedByFirstObservedReadyMainBoundary:completionSource==='firstObservedResourceReadyMainBoundary'});
  }
@@ -118,7 +150,17 @@ combatSnapshots.push({callback:snapshot.callback,stage:snapshot.stage,stageFrame
 initialCreationCount=c.observed_creation_count();compare(0);assert.equal(c.public_replay_clock(1/60),1);let end=null;
 for(let i=1;i<limit;i++){
  lastNow=baseNow+times.readBigUInt64LE(i*8)-playerOrigin;
- assert.equal(c.menu_tick(lastNow,0),1);assert.equal(c.draw(),1);c.probe_retire_capture();assert.equal(c.public_replay_clock((i+1)/60),1);
+ let updateNow=lastNow;
+ if(phasedScheduler&&maxStage>=2){
+  const observed=controlClock.get(i+1)??pumpClock.get(i+1);if(observed!==undefined)updateNow=baseNow+BigInt(observed)-playerOrigin;
+  assert(updateNow<=lastNow);assert.equal(c.observed_player_boundary(i+1,lastNow),1);
+ }
+ assert.equal(c.menu_tick(updateNow,0),1);
+ if(phasedScheduler&&maxStage>=2)assert.equal(c.observed_boundary_ok(),1,'Worker delivery failed before Player');
+ const beforeDraw=beforeDrawWorker.get(i+1);if(beforeDraw!==undefined)assert.equal(c.observed_worker_boundary(baseNow+BigInt(beforeDraw)-playerOrigin),1);
+ assert.equal(c.draw(),1);c.probe_retire_capture();
+ const afterDraw=afterDrawWorker.get(i+1);if(afterDraw!==undefined)assert.equal(c.observed_worker_boundary(baseNow+BigInt(afterDraw)-playerOrigin),1);
+ assert.equal(c.public_replay_clock((i+1)/60),1);
  assert.equal(c.public_replay_observations(),i+1);compare(i);
  if(c.menu_state(0)!==1){end={index:i,state:Array.from({length:20},(_,n)=>c.menu_state(n))};break;}
  if((i+1)%3000===0)console.log(JSON.stringify({callbacks:i+1,differenceCounts:counts}));
@@ -130,7 +172,7 @@ for(let i=1;i<=600&&!end&&!prefix;i++){
 }
 let stable=null;if(end&&!prefix){for(let i=1;i<=90;i++){const now=lastNow+BigInt(i)*1000000000n/60n;assert.equal(c.menu_tick(now,0),1);assert.equal(c.draw(),1);c.probe_retire_capture();assert.equal(c.public_replay_clock((sampled+i)/60),1);}stable=Array.from({length:20},(_,n)=>c.menu_state(n));}
 const raw=Buffer.from(new Uint32Array(rows).buffer);write(resolve(out,'selected-state.u32'),raw,{flag:'wx'});
-const report={comparisonToolSha256:sha(read(new URL(import.meta.url))),declaredSelection:expectedSelection,publicationCutoff,portableUnsupportedBulletObservations:unsupportedObservations,allPortableBulletOpcodesSupported:unsupportedObservations.length===0,diagnosticPrefixOnly:!!prefix,nativeCaptureMayStillBeRunning:!nativeReport,observedPhaseInputs:phaseInputs,completed:true,derivedSingleStageReplay:false,intactOriginalReplay:true,selection:initial.words.slice(27,31),stageHeaderInputAndFpsRetainedExactly:true,sourceReplaySha256:assetManifest.replaySha256,archiveSha256:sha(archive),replayBytesSha256:sha(replayBytes),callbacks:rows.length/32,nativeCallbacks:progress.callbacks,selectedSha256:sha(raw),nativeSelectedSha256:sha(nativeRaw),allRaw32ByteIdentical:raw.equals(nativeRaw),differenceCounts:counts,firstDifferences:first,firstDifference,entry,end,stableMenuAfter90Ticks:stable,finalObservedCallbacks:c.public_replay_observations(),nativeInitialSnapshotSha256:sha(read(resolve(nativeHome,'untouched-first-player.json'))),nativeResourceEventsSha256:sha(read(resolve(nativeHome,'resource-ready-events.jsonl'))),nativeTimesSha256:sha(times),wasmSha256:sha(wasm),actualInitialTimeGetTime:initial.actualInitialTimeGetTimeInput,actualCookie:initial.actualOriginalSecurityCookie,declaredGeometryFrame:0x1aec84,observedNativeHostTimes:true,extraAsciiDrawBeginBoundaryTimestamp:asciiBegin.hostMonotonicNs,asciiBeginDeliveryInferredFromFirstPublication:false,asciiCreateObservedAtOriginal44477aCall:true,asciiDeliveryResult,noNativePublicationValuesProvidedToEngine:true,declaredAttractBitClearAtFirstPlayer:true,noRngSerialCounterHealthOrInputWrites:true,noPerFrameStateOverrides:true,recordingGraphics:true,actualGpuOrAudio:false,completeGame:false,nativeEquivalent:false};
+const report={schedulerPhases,controllerFlagReadObservations:controllerEvents.length,sceneWorkerBeforeDrawBoundaries:beforeDrawWorker.size,sceneWorkerAfterDrawBoundaries:afterDrawWorker.size,comparisonToolSha256:sha(read(new URL(import.meta.url))),declaredSelection:expectedSelection,publicationCutoff,portableUnsupportedBulletObservations:unsupportedObservations,allPortableBulletOpcodesSupported:unsupportedObservations.length===0,diagnosticPrefixOnly:!!prefix,nativeCaptureMayStillBeRunning:!nativeReport,observedPhaseInputs:phaseInputs,completed:true,derivedSingleStageReplay:false,intactOriginalReplay:true,selection:initial.words.slice(27,31),stageHeaderInputAndFpsRetainedExactly:true,sourceReplaySha256:assetManifest.replaySha256,archiveSha256:sha(archive),replayBytesSha256:sha(replayBytes),callbacks:rows.length/32,nativeCallbacks:progress.callbacks,selectedSha256:sha(raw),nativeSelectedSha256:sha(nativeRaw),allRaw32ByteIdentical:raw.equals(nativeRaw),differenceCounts:counts,firstDifferences:first,firstDifference,entry,end,stableMenuAfter90Ticks:stable,finalObservedCallbacks:c.public_replay_observations(),nativeInitialSnapshotSha256:sha(read(resolve(nativeHome,'untouched-first-player.json'))),nativeResourceEventsSha256:sha(read(resolve(nativeHome,'resource-ready-events.jsonl'))),nativeTimesSha256:sha(times),wasmSha256:sha(wasm),actualInitialTimeGetTime:initial.actualInitialTimeGetTimeInput,actualCookie:initial.actualOriginalSecurityCookie,declaredGeometryFrame:0x1aec84,observedNativeHostTimes:true,extraAsciiDrawBeginBoundaryTimestamp:asciiBegin.hostMonotonicNs,asciiBeginDeliveryInferredFromFirstPublication:false,asciiCreateObservedAtOriginal44477aCall:true,asciiDeliveryResult,noNativePublicationValuesProvidedToEngine:true,declaredAttractBitClearAtFirstPlayer:true,noRngSerialCounterHealthOrInputWrites:true,noPerFrameStateOverrides:true,recordingGraphics:true,actualGpuOrAudio:false,completeGame:false,nativeEquivalent:false};
 write(resolve(out,'report.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(report));
 assert.equal(report.callbacks,limit);assert.equal(report.finalObservedCallbacks,limit);if(!prefix){assert(end);assert.equal(stable[0],2);assert.equal(stable[5],3);}
 

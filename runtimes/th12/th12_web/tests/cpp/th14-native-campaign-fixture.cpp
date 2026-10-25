@@ -2520,7 +2520,7 @@ struct ObservedWorkerEffects final:StageResourceEffects {
 
     StageResourceEffects* next=nullptr;
 
-    u64 ready_ns[8]{},phase_ready_ns[8][3]{};u32 begins=0;
+    u64 ready_ns[8]{},initialize_ns[8]{},phase_ready_ns[8][3]{};u32 begins=0;
 
     bool prepare(StageResources& s)override{return next->prepare(s);}
 
@@ -2530,7 +2530,7 @@ struct ObservedWorkerEffects final:StageResourceEffects {
 
     bool begin_stage_worker_wait(bool initial)override{++begins;return next->begin_stage_worker_wait(initial);}
 
-    bool stage_worker_wait_ready()const override{return (session.state.stage<8&&probe_clock_ns>=ready_ns[session.state.stage])&&next->stage_worker_wait_ready();}
+    bool stage_worker_wait_ready()const override{return (session.state.stage<8&&probe_clock_ns>=ready_ns[session.state.stage]&&probe_clock_ns>=initialize_ns[session.state.stage])&&next->stage_worker_wait_ready();}
 
     bool draw_startup_loading()override{return next->draw_startup_loading();}
 
@@ -2565,12 +2565,33 @@ struct ObservedWorkerEffects final:StageResourceEffects {
 };
 
 static ObservedWorkerEffects observed_worker_effects;
+API(observed_worker_initialize) u32 observed_worker_initialize(u32 stage,u64 now){
+    if(!observed_worker_effects.next||stage<2||stage>6||now<observed_worker_effects.ready_ns[stage])return 0;
+    observed_worker_effects.initialize_ns[stage]=now;return 1;
+}
+
+// Optional scheduler observations belong to the test host. They advance real
+// loader actions at callback boundaries and never replace gameplay values.
+static u64 observed_player_boundary_ns=0;
+static bool observed_player_boundary_pending=false,observed_boundary_failed=false;
+static bool service_observed_worker(u64 now){
+    if(now<probe_clock_ns)return false;
+    probe_clock_ns=now;
+    return !session.battle||!session.battle->pending_stage||
+        session.battle->pump_stage_loading(now,session.animations.first_deferred_capture_file_index(),session.stage_load_host_flags);
+}
+API(observed_player_boundary) u32 observed_player_boundary(u32 callback,u64 now){
+    if(observed_player_boundary_pending||callback!=public_player_observations+1||now<probe_clock_ns)return 0;
+    observed_player_boundary_ns=now;observed_player_boundary_pending=true;return 1;
+}
+API(observed_worker_boundary) u32 observed_worker_boundary(u64 now){return service_observed_worker(now);}
+API(observed_boundary_ok) u32 observed_boundary_ok(){return !observed_boundary_failed&&!observed_player_boundary_pending;}
 
 API(observed_worker_events) u32 observed_worker_events(u32 stage,u64 start,u64 ready){
 
     if(public_player_observations!=1||session.state.stage!=1||stage<2||stage>6||!session.resources.effects||ready<start||ready-start<60000000)return 0;
 
-    if(!observed_worker_effects.next){probe_attach(1);static auto observed_player_callback=session.battle->before_player_update;session.battle->before_player_update=[](const GameBattle& b){observed_player_callback(b);capture_mid_live();};observed_worker_effects.next=session.resources.effects;session.resources.effects=&observed_worker_effects;}
+    if(!observed_worker_effects.next){probe_attach(1);static auto observed_player_callback=session.battle->before_player_update;session.battle->before_player_update=[](const GameBattle& b){if(observed_player_boundary_pending){observed_player_boundary_pending=false;if(!service_observed_worker(observed_player_boundary_ns)){observed_boundary_failed=true;return;}}observed_player_callback(b);capture_mid_live();};observed_worker_effects.next=session.resources.effects;session.resources.effects=&observed_worker_effects;}
 
     observed_worker_effects.ready_ns[stage]=ready;return 1;
 

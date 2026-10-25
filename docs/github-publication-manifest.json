@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "837893517e8faa4bbb2677ce1cc22f9453f6e536",
+  "sourceCommit": "eb74dbaafeefe385a859485422fe6d2b73ac39b0",
   "files": [
     {
       "path": ".gitignore",
@@ -69,6 +69,11 @@
       "sha256": "9aeb250c72855357437e6dfd10a1557ac58a0732d33e08c55af60fd20c1ceae9"
     },
     {
+      "path": "docs/porting/TH14_CALLBACK_BOUNDARY_OCT26.md",
+      "bytes": 3141,
+      "sha256": "e506504da072d0fe0ecc4bdb4501c25f0470279f8c09cafda0bcf5247fc088d4"
+    },
+    {
       "path": "docs/porting/TH14_CAMERA_CROSS_OCT25.md",
       "bytes": 2332,
       "sha256": "2c690a3f167e9273edf785b6c1297421cf8b2601bc2ea0c232f9c6d5fac266e1"
@@ -80,13 +85,13 @@
     },
     {
       "path": "docs/porting/TH14_CAMPAIGN_GAPS_OCT26.md",
-      "bytes": 3136,
-      "sha256": "cd0e49fe1e71cdfc7a8ece55c77e7297f502e1f1af4735447c52e629b5708ebc"
+      "bytes": 3482,
+      "sha256": "df7de67d26fbb4e5a0b118bc94d4617e92cc2d7d01428bb7768be3a282f7baa3"
     },
     {
       "path": "docs/porting/TH14_CAMPAIGN_TOOLING_OCT25.md",
-      "bytes": 4957,
-      "sha256": "03653db33d6df9bcc2cdee29f4278973ce005cfa51a0a2ae721a18742305c0ea"
+      "bytes": 5405,
+      "sha256": "ca1de52c70cf9f53509a74cd6a791562d9cb72bbb905c08c0ee2f9d048e1f1bf"
     },
     {
       "path": "docs/porting/TH14_CONSTRUCTOR_HIT_FIX_OCT15.md",
@@ -210,8 +215,8 @@
     },
     {
       "path": "docs/porting/TH14_METHOD.md",
-      "bytes": 43409,
-      "sha256": "711ec6dc4fa332cd9d5d17c6766f816867b174dd140daaba179ae3103557debc"
+      "bytes": 43552,
+      "sha256": "f8d521b450d1d2f5c5fd0fd19f545e27c2f79c0ca2a74815d4785b814323008b"
     },
     {
       "path": "docs/porting/TH14_MIDGAME_VISUALS_OCT24.md",
@@ -220,8 +225,8 @@
     },
     {
       "path": "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
-      "bytes": 2554,
-      "sha256": "b48ad4b54c2d3928fce6cbb79d400588cd5e40d011ff597f22f0ac1c1503a1d1"
+      "bytes": 2604,
+      "sha256": "31d7426f9c47db44e105ccc24f307ca02658c373f8dde8eeb182856e567c7f1c"
     },
     {
       "path": "docs/porting/TH14_MSG_HUD_ORDER_OCT24.md",
@@ -285,8 +290,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 3840,
-      "sha256": "08722fbceaa1ad1e2408564c6cb8c8738abc4e2a6703c519bda7170037c1db0d"
+      "bytes": 4005,
+      "sha256": "8c19b53600b3170d21837eedb707ee9615daaf19b59b180fa2b28b10468c7717"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -1407,6 +1412,11 @@
       "path": "docs/porting/th14-bullet-wrap-verified.json",
       "bytes": 1282,
       "sha256": "0cc3726a66a3edab555e2e55a2ac5def18162e5c329ef8e7e02c2bdd813ecb95"
+    },
+    {
+      "path": "docs/porting/th14-callback-boundary-observed-oct26.json",
+      "bytes": 7812,
+      "sha256": "b646ff9bdd4d1480b32798d42f1f593954d27ae01be3a9752655e9713356b07b"
     },
     {
       "path": "docs/porting/th14-camera-cross-campaign-verified-oct25.json",
@@ -3295,8 +3305,8 @@
     },
     {
       "path": "docs/porting/th14-mode-acceptance-inventory-oct25.json",
-      "bytes": 125037,
-      "sha256": "0be84194723485a1d3c1d6108cd9de4391f8153fac7d035c5262433871e92a75"
+      "bytes": 129740,
+      "sha256": "cae5cd6a03be9286d676b0524b75743487ba243b05b9118b85644f826d071a17"
     },
     {
       "path": "docs/porting/th14-msg-hud-order-verified-oct24.json",
@@ -11450,8 +11460,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-native-campaign-fixture.cpp",
-      "bytes": 64291,
-      "sha256": "6b7f9d79516f053a30901ec220bff6e6731660a0cfb7b8e13306b64b6ae1b178"
+      "bytes": 65908,
+      "sha256": "ebd7ac67b8aa938417cf7d9b613e35c16a4591d255514d71400b38d6e2766544"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-natural-body-avoid-fixture.cpp",
@@ -14979,6 +14989,11 @@
       "sha256": "e2ef94eb82c19a7fe385bafa8a9657de9dd5ff8981fccbd23b1a5025d8e4b64d"
     },
     {
+      "path": "tools/th14-camera-right-observable-check-oct26.py",
+      "bytes": 5786,
+      "sha256": "81765ecd823d8e041bd71a3d7c52d5e62895b76a596b2887bfde1673e0c6fe2f"
+    },
+    {
       "path": "tools/th14-campaign-handoff-check.mjs",
       "bytes": 3122,
       "sha256": "cb32692d49d3d7c3edf11a641f0b37bd194ee6bd8dabe08982dfc65f31c2d85e"
@@ -15090,8 +15105,8 @@
     },
     {
       "path": "tools/th14-compare-native-campaign.mjs",
-      "bytes": 34028,
-      "sha256": "093347cb45b34d7bcf80d73c0bd9f355b73d9960adf237446b9f618d8fde735a"
+      "bytes": 38382,
+      "sha256": "fb67ed475a72f4bcf92d283a4f0789441dc76f438d02bcf53067f205a1a8fdaf"
     },
     {
       "path": "tools/th14-comparison-failure-receipt.py",
@@ -16042,6 +16057,11 @@
       "path": "tools/th14-effect-template-layer-evidence-check.py",
       "bytes": 16614,
       "sha256": "31b25d84dc1efa8e1c10bcdbc441729c51c8a1d1d39570d69ebb281cbfd13e0c"
+    },
+    {
+      "path": "tools/th14-effect149-observable-check-oct26.py",
+      "bytes": 6519,
+      "sha256": "4bdf98add7548c6e08fae7290bdca338f3903e20e5e59b51ef9ca08c93df6d5e"
     },
     {
       "path": "tools/th14-end-choices-check.mjs",
@@ -17830,8 +17850,8 @@
     },
     {
       "path": "tools/th14-native-campaign-observer-oct25.py",
-      "bytes": 39439,
-      "sha256": "c4b47b53e77146ea6cb3760898efd17bc8491bee8bf3d1ede8c1ee6dc95618f5"
+      "bytes": 40786,
+      "sha256": "cd219dfb78c3a81132eab025e3100e622cf382740ee0d204ddc73c7e1dad5b35"
     },
     {
       "path": "tools/th14-native-detail-window-capture.py",
@@ -22725,22 +22745,25 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "837893517e8faa4bbb2677ce1cc22f9453f6e536",
-    "title": "TH14 comparison failure gates, scoped mode gaps and immutable resource reuse",
-    "changedSourceAndMetadataFiles": 18,
+    "basePublishedCommit": "eb74dbaafeefe385a859485422fe6d2b73ac39b0",
+    "title": "TH14 observed callback boundaries and internal-word consumer checks",
+    "changedSourceAndMetadataFiles": 13,
     "productionSourceFiles": 0,
     "productionGameplayChanged": false,
     "productionGraphicsChanged": false,
     "productionAudioChanged": false,
     "gameAssetsAdded": false,
     "sdlWasmSha256": "7bebd2edc4cab71040f92a94029269a6bcc3dc518c6189bfd504223ec275960e",
-    "nativeNaturalRunModePairs": 18,
-    "nativeAllStageEntryModePairs": 15,
-    "hardVerifiedCallbacks": 107662,
-    "lunaticCameraFailureRegressionCallbacks": 104110,
-    "lunaticFailureProcessExitCode": 1,
-    "newControllerPhaseObservationRuntimeVerified": false,
-    "newScenePrecopyObservationRuntimeVerified": false,
+    "observerWasmSha256": "4660f22678b026893cf4cc0a7a30f337a5d380ac45e050460a06cd1e9e8d4d1a",
+    "nativeNaturalRunModePairs": 19,
+    "nativeAllStageEntryModePairs": 16,
+    "legacyHardVerifiedCallbacks": 107662,
+    "oldEasyFullCallbacks": 239234,
+    "oldEasyFullAccepted": false,
+    "newHardVerifiedPrefixCallbacks": 12000,
+    "newHardFullCaptureStillRunning": true,
+    "effect149ObservedDescendantVertexPairs": 39,
+    "cameraRightRecomputeCases": 30,
     "currentSdlBrowserAcceptance": false,
     "unrelatedResourceCryptEditExcluded": true,
     "completeGame": false,

@@ -29,4 +29,6 @@ node tools/th14-compare-native-campaign.mjs --native artifacts/th14/retail-reimu
 
 2026-10-26 更新：[失败门槛和后续观察](TH14_CAMPAIGN_GAPS_OCT26.md)修正了只凭退出码误判通过的问题；比较器现在要求相机、HUD、动画和分配窗口也通过。32 个可配置动画检查点只扩展观察范围，生产对象未变。新增独立复算工具读取保留原始记录验证；新增单用例等待工具只比较指定采集，不会启动下一局。
 
+回调阶段交付和实际执行范围继续见[后续记录](TH14_CALLBACK_BOUNDARY_OCT26.md)。`--scheduler-phases observed` 使用精确控制器、Scene 复制前和已观察到的 RNG 恢复边界；`resource-player` 用于只有资源／Player 及 Scene 复制后观察的旧记录，其环境范围较弱。默认 `legacy` 保留原交付控制。三者均执行真实 C++ 加载动作，原版现场数值不作为游戏状态输入。
+
 测试保持静音并遵守 [存储限制](TH14_STORAGE_POLICY_OCT25.md)。原版观察、存档、录像、资源和二进制留在本机。实际 GPU／音频、当前包浏览器流程和整作 1:1 仍未完成。
