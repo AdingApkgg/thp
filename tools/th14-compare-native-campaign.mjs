@@ -11,6 +11,9 @@ assert(Number.isInteger(prefix)&&prefix>=0&&Number.isInteger(publicationCutoff)&
 assert(expectedSelection.length===4&&expectedSelection.every(Number.isInteger));assert(['cpu-write','boundary'].includes(options.get('hud-ready')??'cpu-write'));
 const out=resolve(root,options.get('output')),scope=relative(resolve(root,'artifacts/th14'),out);assert(scope&&!scope.startsWith('..')&&!isAbsolute(scope),'New TH14 artifact directory required');
 const nativeReport=exists(resolve(nativeHome,'report.json'))?JSON.parse(read(resolve(nativeHome,'report.json'))):null,initial=JSON.parse(read(resolve(nativeHome,'untouched-first-player.json')));
+const snapshotPlan=exists(resolve(nativeHome,'snapshot-plan.json'))?JSON.parse(read(resolve(nativeHome,'snapshot-plan.json'))):null;
+const snapshotCallbacks=snapshotPlan?.callbacks??[1,26000,30000,36000,38900,60000,90000,120000];
+assert(snapshotCallbacks.length<=32&&snapshotCallbacks[0]===1&&snapshotCallbacks.every((value,index)=>Number.isInteger(value)&&value>0&&(!index||value>snapshotCallbacks[index-1])));
 if(nativeReport)assert.equal(nativeReport.anmPublicationTraceCutoffPlayerCallbacks,publicationCutoff,'Declared publication cutoff differs from capture');
 const progress=nativeReport??JSON.parse(read(resolve(nativeHome,'progress.json'))),limit=prefix||nativeReport?.callbacks;assert(limit&&progress.callbacks>=limit);assert.deepEqual(initial.words.slice(27,31),expectedSelection);
 if(!prefix){assert(nativeReport.observedForcedReplayEndMenu&&nativeReport.childExited&&!nativeReport.error&&nativeReport.gameStateWordWrites===1&&!nativeReport.rngOrCounterWrites);assert(nativeReport.caseInitialization.attractBitClearOnly);assert(nativeReport.caseInitialization.beforeFlags&0x40);assert.equal(nativeReport.caseInitialization.afterFlags,nativeReport.caseInitialization.beforeFlags&~0x40);}
@@ -19,6 +22,8 @@ const flags=['signature-ready-flag-published','ascii-ready-flag-published'].map(
 const origin=BigInt(frames[0].hostMonotonicNs);assert(!exists(out));mkdir(out,{recursive:true});
 const wasm=read(resolve(root,options.get('wasm')??resolve(home,'observer.wasm'))),build=JSON.parse(read(resolve(root,options.get('build'))));assert.equal(sha(wasm),build.wasmSha256);
 const wasi=new WASI({version:'preview1',args:[],env:{},preopens:{}}),{instance}=await WebAssembly.instantiate(wasm,{wasi_snapshot_preview1:wasi.wasiImport});wasi.initialize(instance);const c=instance.exports;
+if(c.observation_snapshot_target){for(let at=0;at<32;at++)assert.equal(c.observation_snapshot_target(at,snapshotCallbacks[at]??0),1);}
+else assert.deepEqual(snapshotCallbacks,[1,26000,30000,36000,38900,60000,90000,120000],'Observer build does not support configured snapshot targets');
 const assetHome=resolve(root,options.get('assets')),assetManifest=JSON.parse(read(resolve(assetHome,'manifest.json')));
 assert(assetManifest.passed&&assetManifest.unchangedEntries===226);assert.deepEqual(assetManifest.changedEntries,['demo0.rpy']);
 const replayBytes=read(resolve(root,assetManifest.replayPath));assert.equal(sha(replayBytes),assetManifest.replaySha256);assert(/^[a-f0-9]{64}$/.test(assetManifest.replaySha256));
@@ -136,7 +141,7 @@ for(const[name,base,n]of interpDefinitions){for(const group of ['start','end','i
 assert.equal(fields.length,234);
 const transformFields=['childX','childY','childZ','pivotX','pivotY','slowdown','parentHandle','timerFlags','ageFlags',...['spriteMatrix','transformMatrix','uvMatrix'].flatMap(x=>Array.from({length:16},(_,i)=>x+i))];fields.push(...transformFields);assert.equal(fields.length,291);const linkFields=['registryNextHandle','registryPreviousHandle','childNextHandle','childPreviousHandle'];fields.push(...linkFields);assert.equal(fields.length,295);const interruptFields=['savedTimerPrevious','savedTimerCurrent','savedTimerFraction','savedTimerRatePresent','savedTimerFlags','savedInstructionOffset','spriteFrame','inheritedColorCache'];fields.push(...interruptFields);assert.equal(fields.length,303);
 const snapshots=[];
-for(const [at,frame]of[1,26000,30000,36000,38900,60000,90000,120000].entries()){
+for(const [at,frame]of snapshotCallbacks.entries()){
  if(frame>limit)continue;const np=resolve(nativeHome,'live-vms-callback-'+frame+'.json');assert(exists(np));const nr=JSON.parse(read(np));const nativeHandleByAddress=new Map(nr.rows.map(x=>[Buffer.from(x.rawVmHex,'hex').readUInt32LE(0x570),x.handle]));
  const pr=Array.from({length:c.mid_count(at)},(_,r)=>Array.from({length:303},(_,k)=>c.mid_value(at,r,k)>>>0)),byId=new Map(pr.map(x=>[x[0],x])),nativeIds=new Set(nr.rows.map(x=>x.handle)),differences=[];
  for(const n of nr.rows){const raw=Buffer.from(n.rawVmHex,'hex'),flags=raw.readUInt32LE(0x18),values=[flags&1,(flags>>>25)&31,...rawOffsets.map(x=>raw.readUInt32LE(x)),raw.readUInt32LE(0x28)?(raw.readUInt32LE(0x28)-raw.readUInt32LE(0x38))>>>0:0xffffffff,...[0x59c,0x5a0,0x5a4].map(x=>raw.readUInt32LE(x)),(flags>>>17)&3,(flags>>>5)&15,Number(!!(flags&0x2000)),Number(!!(flags&0x800)),Number(!!(flags&0x1000)),(flags>>>21)&3,(flags>>>23)&3,flags>>>30,Number(!!(flags&0x8000)),...[0x4cc,0x4d0,0x4d4,0x4d8,0x4dc,0x4e0,0x4e4,0x4e8,0x70,0x74].map(x=>raw.readUInt32LE(x))];for(let k=0;k<extraFields.length;k++)n[extraFields[k]]=values[k];for(const[name,base,nc]of interpDefinitions){const offsets=[...Array.from({length:4*nc},(_,i)=>base+i*4),...[0,4,8,16,20,24].map(x=>base+5*nc*4+x)];let start=fields.indexOf(name+'.start0');for(const off of offsets)n[fields[start++]]=raw.readUInt32LE(off);}
@@ -165,3 +170,7 @@ console.log(JSON.stringify({combatCheckpoints:combatSnapshots.length,combatDiffe
 console.log(JSON.stringify({allPortableBulletOpcodesSupported:unsupportedObservations.length===0,unsupportedObservations}));if(unsupportedObservations.length)process.exitCode=1;
 
 assert(report.allRaw32ByteIdentical);
+assert(cameraReport.allCameraWordsEqual,'Camera selected words differ');
+assert(hudReport.allHudWordsEqual,'HUD selected words differ');
+assert(liveReport.allLiveValuesEqual,'Live VM fields or registry order differ');
+assert(allocationReports.every(row=>row.allHandlesFileScriptEqual),'Observed publication window differs');

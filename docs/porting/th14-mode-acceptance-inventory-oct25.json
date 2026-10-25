@@ -1,6 +1,6 @@
 {
-  "schema": "th14/mode-acceptance-inventory/1",
-  "date": "2026-10-25",
+  "schema": "th14/mode-acceptance-inventory/2",
+  "date": "2026-10-26",
   "cases": [
     {
       "key": "reimua-easy",
@@ -15,9 +15,53 @@
         5,
         6
       ],
-      "nativeCapturedRunAvailable": false,
-      "allStageEntriesObserved": false,
-      "retainedNaturalRuns": [],
+      "nativeCapturedRunAvailable": true,
+      "allStageEntriesObserved": true,
+      "retainedNaturalRuns": [
+        {
+          "path": "artifacts/th14/retail-reimua-easy-timeline-clear-hardware-oct25",
+          "reportSha256": "ed5fd2e703fa951ec09146763d2f584d7927448656c5c061e119e9c17148269f",
+          "initialSnapshotSha256": "941d2214404fb11cf08b1032ee2d8d629ab0f9c42d49a4c7b01c61530c1b8baf",
+          "selectedSha256": "e6fdae65523758a0b3be7b8d5543d545c30cb2cecafff96a6ea0bf0d75517fc8",
+          "callbacks": 100718,
+          "stagesObserved": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "naturalReplayEndObserved": true,
+          "clearCompletionNotAsserted": true,
+          "intactOriginalReplayDeclared": true,
+          "instructionBytesPatched": 0,
+          "rngOrCounterWrites": 0,
+          "replaySha256": "1d1b7da60739afc9b6d1ee5eb143e2a59e6a29b712096871874fa7bd72391a5d",
+          "selected32ComparisonReports": [
+            {
+              "path": "artifacts/th14/stage-item-retirement-oct25/reimua-easy-full/report.json",
+              "reportSha256": "4b45e49c55be24ec4541968d1a2566e44f4b7b672296195aa1195ddcb765ee49",
+              "callbacks": 100718,
+              "wasmSha256": "5fb7079e226384eb9678e54a0091fc9ad5bc7de9de3d8cb731d0c95c9e92e3ed",
+              "additionalObservedGateResults": {
+                "camera": false,
+                "hud": true,
+                "animation": false,
+                "combat": false
+              },
+              "reportedAdditionalGateFailures": [
+                "camera",
+                "animation",
+                "combat"
+              ],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            }
+          ],
+          "preferredComparisonPath": "artifacts/th14/stage-item-retirement-oct25/reimua-easy-full/report.json",
+          "partialSelected32ComparisonReports": []
+        }
+      ],
       "wholeModeEquivalent": false
     },
     {
@@ -58,27 +102,55 @@
           "replaySha256": "d9674bb030cafc7782195f37db269837012045bf29cec1c54be63667964720d8",
           "selected32ComparisonReports": [
             {
-              "path": "artifacts/th14/damage-area-snap-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/report.json",
-              "reportSha256": "6f8a9c37a43c4f57df608cfcfe8e37448722360511473f4f6a4e3e4db55686b2",
-              "callbacks": 85035,
-              "wasmSha256": "85876c3d0a6364ff68e5a69b2232ab61cbdd6d1d46175eccdc88498b0dd409c8",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
-            },
-            {
               "path": "artifacts/th14/player-aim-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/report.json",
               "reportSha256": "fd06de7af629b9c3830b0ed1041e29f81bb4f6d54b837b44e85dc189b478ab99",
               "callbacks": 85035,
               "wasmSha256": "550234d67abe1baa278219c80145bc7b306ece9ec0fd5ee6032ac82f40d3d8fd",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": false,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [
+                "animation"
+              ],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
+              "path": "artifacts/th14/damage-area-snap-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/report.json",
+              "reportSha256": "6f8a9c37a43c4f57df608cfcfe8e37448722360511473f4f6a4e3e4db55686b2",
+              "callbacks": 85035,
+              "wasmSha256": "85876c3d0a6364ff68e5a69b2232ab61cbdd6d1d46175eccdc88498b0dd409c8",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": false,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [
+                "animation"
+              ],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             },
             {
               "path": "artifacts/th14/boss-name-input-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/report.json",
               "reportSha256": "c5d64c588789bf48888fdfb9131c0227858bb4deb67011b2065d1ff78fd5d9e4",
               "callbacks": 85035,
               "wasmSha256": "0b38097ab3fc73e22082ac43ff165c068a6eb341b511aa0842905c278c92de00",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": false,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [
+                "animation"
+              ],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             }
           ],
+          "preferredComparisonPath": "artifacts/th14/player-aim-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/report.json",
           "partialSelected32ComparisonReports": []
         },
         {
@@ -98,27 +170,49 @@
           "replaySha256": null,
           "selected32ComparisonReports": [
             {
-              "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-browser-recorded-legal-normal-hardware-oct24/report.json",
-              "reportSha256": "a873dd25268a8ca07a8e8dc23035375d99da4bf8cd6c2d74c7e5f6839824b12f",
-              "callbacks": 1195,
-              "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
-            },
-            {
               "path": "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-browser-recorded-legal-normal-hardware-oct24/report.json",
               "reportSha256": "37e2c4dfd783432fb585be3d4f544a62f4bcb6e4c1278c2b243dffdda851820d",
               "callbacks": 1195,
               "wasmSha256": "3f6f116223f16b42c76d57e1d0a17d99b147bd0ae9756a94bf8f528b18c2c9f2",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
+              "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-browser-recorded-legal-normal-hardware-oct24/report.json",
+              "reportSha256": "a873dd25268a8ca07a8e8dc23035375d99da4bf8cd6c2d74c7e5f6839824b12f",
+              "callbacks": 1195,
+              "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5",
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             },
             {
               "path": "artifacts/th14/boss-name-input-oct25/full-initial-worker-events-retail-browser-recorded-legal-normal-hardware-oct24/report.json",
               "reportSha256": "676b8d68906c941ffc4cccafc0b1bc49af92c6b1f20ff3cb7d5ea6bf7d71b5d9",
               "callbacks": 1195,
               "wasmSha256": "3dbbe7d22078babab6e22d6ec94a02b320d50d2cc768578576994c120075bce7",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             }
           ],
+          "preferredComparisonPath": "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-browser-recorded-legal-normal-hardware-oct24/report.json",
           "partialSelected32ComparisonReports": []
         }
       ],
@@ -188,27 +282,49 @@
           "replaySha256": "869e4270b2b22ed563136c09f8856aa6117a6a7796dbeb0e4d1802b38381f7f6",
           "selected32ComparisonReports": [
             {
-              "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-reimua-extra-full-hardware-oct24/report.json",
-              "reportSha256": "66e99a8836b1f9b0c04d78c3a25acebe6846379fbef1ac1de127e654753e1eb8",
-              "callbacks": 38403,
-              "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
-            },
-            {
               "path": "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-reimua-extra-full-hardware-oct24/report.json",
               "reportSha256": "ed981c8744389bd74d00e0c274e2e061436184ec2d023c033f5d2d0598136fbc",
               "callbacks": 38403,
               "wasmSha256": "3f6f116223f16b42c76d57e1d0a17d99b147bd0ae9756a94bf8f528b18c2c9f2",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
+              "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-reimua-extra-full-hardware-oct24/report.json",
+              "reportSha256": "66e99a8836b1f9b0c04d78c3a25acebe6846379fbef1ac1de127e654753e1eb8",
+              "callbacks": 38403,
+              "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5",
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             },
             {
               "path": "artifacts/th14/boss-name-input-oct25/full-initial-worker-events-retail-reimua-extra-full-hardware-oct24/report.json",
               "reportSha256": "ef20f3a64134f9c3ace42fafa7201da6b761fad7542255548842a06520bfe739",
               "callbacks": 38403,
               "wasmSha256": "3dbbe7d22078babab6e22d6ec94a02b320d50d2cc768578576994c120075bce7",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             }
           ],
+          "preferredComparisonPath": "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-reimua-extra-full-hardware-oct24/report.json",
           "partialSelected32ComparisonReports": []
         }
       ],
@@ -270,27 +386,55 @@
           "replaySha256": "c48412a95f0fe9f685d97574e8ab0655d41e44ff9c41fda7bf788589b1b29c74",
           "selected32ComparisonReports": [
             {
-              "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-reimub-campaign-resource-phases-hardware-oct24-observer-repaired/report.json",
-              "reportSha256": "9825dfa4866fbec3cfbba6b1116d4b11e8d59b8d0ca7e4a033839ccf2d4739e4",
-              "callbacks": 122012,
-              "wasmSha256": "85876c3d0a6364ff68e5a69b2232ab61cbdd6d1d46175eccdc88498b0dd409c8",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
-            },
-            {
               "path": "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-reimub-campaign-resource-phases-hardware-oct24-observer-repaired/report.json",
               "reportSha256": "a9cbaf84e86d1805811b30a2c4d6cbb3ea4e09abfe9408ba7e2eb9243b76b523",
               "callbacks": 122012,
               "wasmSha256": "550234d67abe1baa278219c80145bc7b306ece9ec0fd5ee6032ac82f40d3d8fd",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": false,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [
+                "animation"
+              ],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
+              "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-reimub-campaign-resource-phases-hardware-oct24-observer-repaired/report.json",
+              "reportSha256": "9825dfa4866fbec3cfbba6b1116d4b11e8d59b8d0ca7e4a033839ccf2d4739e4",
+              "callbacks": 122012,
+              "wasmSha256": "85876c3d0a6364ff68e5a69b2232ab61cbdd6d1d46175eccdc88498b0dd409c8",
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": false,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [
+                "animation"
+              ],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             },
             {
               "path": "artifacts/th14/boss-name-input-oct25/full-initial-worker-events-retail-reimub-campaign-resource-phases-hardware-oct24-observer-repaired/report.json",
               "reportSha256": "00294f2664719957ce8cde21c3438a281a5fbf61ee74396253450d8003855206",
               "callbacks": 122012,
               "wasmSha256": "0b38097ab3fc73e22082ac43ff165c068a6eb341b511aa0842905c278c92de00",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": false,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [
+                "animation"
+              ],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             }
           ],
+          "preferredComparisonPath": "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-reimub-campaign-resource-phases-hardware-oct24-observer-repaired/report.json",
           "partialSelected32ComparisonReports": []
         },
         {
@@ -314,6 +458,7 @@
           "rngOrCounterWrites": 0,
           "replaySha256": "c48412a95f0fe9f685d97574e8ab0655d41e44ff9c41fda7bf788589b1b29c74",
           "selected32ComparisonReports": [],
+          "preferredComparisonPath": null,
           "partialSelected32ComparisonReports": []
         },
         {
@@ -337,6 +482,7 @@
           "rngOrCounterWrites": 0,
           "replaySha256": null,
           "selected32ComparisonReports": [],
+          "preferredComparisonPath": null,
           "partialSelected32ComparisonReports": []
         }
       ],
@@ -380,27 +526,65 @@
           "replaySha256": "c5db55756f58ed10281c6e4232a36873fb099a1b9567dc74b107f5a76e8ffc2b",
           "selected32ComparisonReports": [
             {
-              "path": "artifacts/th14/stage-item-retirement-oct25/full-initial-worker-events-retail-reimub-hard-full-bounded-hardware-oct25-cpu-write-stage-item-retirement/report.json",
-              "reportSha256": "c530d13fbbeb86ee9ce6fbbde99ffe716ba171f22e3d23002dd9ff7813158a47",
+              "path": "artifacts/th14/stage-item-retirement-oct25/reusable-hard-full/report.json",
+              "reportSha256": "d47a4987d4ab5dcee39517aa3bb78385320af3e8f50742653582b405a7da8ca4",
               "callbacks": 107662,
-              "wasmSha256": "920453d4c0dbcc93236d62b5b3afc316dc6943db0f13ed66d127c2fefa6c696a",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "wasmSha256": "5fb7079e226384eb9678e54a0091fc9ad5bc7de9de3d8cb731d0c95c9e92e3ed",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": true
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             },
             {
               "path": "artifacts/th14/stage-item-retirement-oct25/full-initial-worker-events-retail-reimub-hard-full-bounded-hardware-oct25-cpu-write-stage-item-retirement-curve-cursor/report.json",
               "reportSha256": "a763c17f230f2507cf1f77a22d9beb239912518430864e412c11e9bfa4d4a112",
               "callbacks": 107662,
               "wasmSha256": "041470ba732ce8212f886c8e104c098e70139a407e786aa9f76356e741afc6a3",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": true
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             },
             {
-              "path": "artifacts/th14/stage-item-retirement-oct25/reusable-hard-full/report.json",
-              "reportSha256": "d47a4987d4ab5dcee39517aa3bb78385320af3e8f50742653582b405a7da8ca4",
+              "path": "artifacts/th14/stage-item-retirement-oct25/flexible-hard-full/report.json",
+              "reportSha256": "b56a7efa079ab664b80a3edbe7e4a17bd6d85445d62236e5695425aecc2de2e7",
               "callbacks": 107662,
-              "wasmSha256": "5fb7079e226384eb9678e54a0091fc9ad5bc7de9de3d8cb731d0c95c9e92e3ed",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "wasmSha256": "d13f12bf6af9bc82c5493be41e6cefabe09ba1c4656aa369eb52568b68737eaa",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": true
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
+              "path": "artifacts/th14/stage-item-retirement-oct25/full-initial-worker-events-retail-reimub-hard-full-bounded-hardware-oct25-cpu-write-stage-item-retirement/report.json",
+              "reportSha256": "c530d13fbbeb86ee9ce6fbbde99ffe716ba171f22e3d23002dd9ff7813158a47",
+              "callbacks": 107662,
+              "wasmSha256": "920453d4c0dbcc93236d62b5b3afc316dc6943db0f13ed66d127c2fefa6c696a",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": false
+              },
+              "reportedAdditionalGateFailures": [
+                "combat"
+              ],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             }
           ],
+          "preferredComparisonPath": "artifacts/th14/stage-item-retirement-oct25/reusable-hard-full/report.json",
           "partialSelected32ComparisonReports": []
         }
       ],
@@ -423,6 +607,69 @@
       "allStageEntriesObserved": true,
       "retainedNaturalRuns": [
         {
+          "path": "artifacts/th14/retail-reimub-lunatic-timeline-clear-hardware-oct25",
+          "reportSha256": "84ce576dc52987dea7c564702ee88504a13c32a734da22ab39165dbd2f84c53c",
+          "initialSnapshotSha256": "b0423cc7d5baae70b158918b241a96d32fa56e432b878585194d7057631e4886",
+          "selectedSha256": "ace9b90ae2b355794cc35b28da1144a0c4ff17b6bf0065970b4aefad4ac7e27e",
+          "callbacks": 104110,
+          "stagesObserved": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "naturalReplayEndObserved": true,
+          "clearCompletionNotAsserted": true,
+          "intactOriginalReplayDeclared": true,
+          "instructionBytesPatched": 0,
+          "rngOrCounterWrites": 0,
+          "replaySha256": "eb7a90b6a97d5322d19509bbb7028376d5e894de3e74916eeeaab31cc88467b7",
+          "selected32ComparisonReports": [
+            {
+              "path": "artifacts/th14/stage-item-retirement-oct25/timeline-clear-full/report.json",
+              "reportSha256": "2683c9bb1c429a893ca7b1585d5d27285820222931433e1923104eabbf95c2b4",
+              "callbacks": 104110,
+              "wasmSha256": "5fb7079e226384eb9678e54a0091fc9ad5bc7de9de3d8cb731d0c95c9e92e3ed",
+              "additionalObservedGateResults": {
+                "camera": false,
+                "hud": true,
+                "animation": true,
+                "combat": true
+              },
+              "reportedAdditionalGateFailures": [
+                "camera"
+              ],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            }
+          ],
+          "preferredComparisonPath": "artifacts/th14/stage-item-retirement-oct25/timeline-clear-full/report.json",
+          "partialSelected32ComparisonReports": [
+            {
+              "path": "artifacts/th14/stage-item-retirement-oct25/timeline-clear-prefix-1000/report.json",
+              "reportSha256": "8a38c72bb55b5657c510f2ad49432b9989e1f59423b89dbd9d837806ff590547",
+              "callbacks": 1000,
+              "wasmSha256": "5fb7079e226384eb9678e54a0091fc9ad5bc7de9de3d8cb731d0c95c9e92e3ed",
+              "scope": "Reported selected32 prefix equality only, not a full captured-run pass."
+            },
+            {
+              "path": "artifacts/th14/stage-item-retirement-oct25/timeline-clear-prefix-16000/report.json",
+              "reportSha256": "5cd12d4f991bcdcd28f9f03d0c0ca55fb7b635c6d013f4125ea80834cbcf5ed8",
+              "callbacks": 16000,
+              "wasmSha256": "5fb7079e226384eb9678e54a0091fc9ad5bc7de9de3d8cb731d0c95c9e92e3ed",
+              "scope": "Reported selected32 prefix equality only, not a full captured-run pass."
+            },
+            {
+              "path": "artifacts/th14/stage-item-retirement-oct25/timeline-clear-prefix-40000/report.json",
+              "reportSha256": "7166c8fe97d002622c8373892796118e2145655005f531f056ae3b5fbbcc056a",
+              "callbacks": 40000,
+              "wasmSha256": "5fb7079e226384eb9678e54a0091fc9ad5bc7de9de3d8cb731d0c95c9e92e3ed",
+              "scope": "Reported selected32 prefix equality only, not a full captured-run pass."
+            }
+          ]
+        },
+        {
           "path": "artifacts/th14/retail-reimub-lunatic-full-bounded-v2-hardware-oct25",
           "reportSha256": "627ef3bb62c6ec9dc0e65457fe43de8f405c4addb3815b2cb8cc853f295a04f7",
           "initialSnapshotSha256": "d1765b99708730ada7786fd56e2e48460fda3bd6ada0e43d046ad9c24c52ffc8",
@@ -443,6 +690,7 @@
           "rngOrCounterWrites": 0,
           "replaySha256": "eb7a90b6a97d5322d19509bbb7028376d5e894de3e74916eeeaab31cc88467b7",
           "selected32ComparisonReports": [],
+          "preferredComparisonPath": null,
           "partialSelected32ComparisonReports": [
             {
               "path": "artifacts/th14/stage-item-retirement-oct25/reusable-lunatic-prefix-1000/report.json",
@@ -512,27 +760,49 @@
           "replaySha256": "3979ae43be068d2fff96ddf432d0363e9677b8c39e9901ea3c49331c4858aca1",
           "selected32ComparisonReports": [
             {
-              "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-reimub-extra-live-full-hardware-oct24/report.json",
-              "reportSha256": "8894e9455bc67dd43ba68b5758d3f420299ffa3d0a06dc2e44eed0d8cf61fa38",
-              "callbacks": 46936,
-              "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
-            },
-            {
               "path": "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-reimub-extra-live-full-hardware-oct24/report.json",
               "reportSha256": "3b3f23af96565966bde0cc69bc98d2d02550b34e414882a76012e4757d89315b",
               "callbacks": 46936,
               "wasmSha256": "3f6f116223f16b42c76d57e1d0a17d99b147bd0ae9756a94bf8f528b18c2c9f2",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
+              "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-reimub-extra-live-full-hardware-oct24/report.json",
+              "reportSha256": "8894e9455bc67dd43ba68b5758d3f420299ffa3d0a06dc2e44eed0d8cf61fa38",
+              "callbacks": 46936,
+              "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5",
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             },
             {
               "path": "artifacts/th14/boss-name-input-oct25/full-initial-worker-events-retail-reimub-extra-live-full-hardware-oct24/report.json",
               "reportSha256": "3b4a4ba4c3fc0888dc10b421c557cb7787f1c79e8e9f947e660abf4c2a325a06",
               "callbacks": 46936,
               "wasmSha256": "3dbbe7d22078babab6e22d6ec94a02b320d50d2cc768578576994c120075bce7",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             }
           ],
+          "preferredComparisonPath": "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-reimub-extra-live-full-hardware-oct24/report.json",
           "partialSelected32ComparisonReports": []
         }
       ],
@@ -572,6 +842,7 @@
           "rngOrCounterWrites": 0,
           "replaySha256": null,
           "selected32ComparisonReports": [],
+          "preferredComparisonPath": null,
           "partialSelected32ComparisonReports": []
         },
         {
@@ -592,6 +863,7 @@
           "rngOrCounterWrites": 0,
           "replaySha256": null,
           "selected32ComparisonReports": [],
+          "preferredComparisonPath": null,
           "partialSelected32ComparisonReports": []
         },
         {
@@ -612,6 +884,7 @@
           "rngOrCounterWrites": 0,
           "replaySha256": null,
           "selected32ComparisonReports": [],
+          "preferredComparisonPath": null,
           "partialSelected32ComparisonReports": []
         }
       ],
@@ -654,34 +927,63 @@
           "replaySha256": "724c78a013ab8334f14fc7ddd995b01308e16dd20ef19a2c8fd73a20fb02258c",
           "selected32ComparisonReports": [
             {
-              "path": "artifacts/th14/damage-area-snap-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/report.json",
-              "reportSha256": "a563e0b8bb66e21463a2ddb72cce1964360e9ab16853ef0fbb8b51e6b2b4a91e",
+              "path": "artifacts/th14/vm-interrupt-cache-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/report.json",
+              "reportSha256": "9c905f36fb9160016940718a975de14e3ee0f769771a6437f06a1331a8c792d5",
               "callbacks": 66737,
-              "wasmSha256": "85876c3d0a6364ff68e5a69b2232ab61cbdd6d1d46175eccdc88498b0dd409c8",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "wasmSha256": "11152c897604f763628d7b33fe47bb4dabbfd8e6279e1e39834ad31ab5b5e80b",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": null,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             },
             {
               "path": "artifacts/th14/player-aim-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/report.json",
               "reportSha256": "806ec434e80c2ecea60b3536a203ebb3bfe4b23ea1bdf38d85eed2063a6b58cb",
               "callbacks": 66737,
               "wasmSha256": "550234d67abe1baa278219c80145bc7b306ece9ec0fd5ee6032ac82f40d3d8fd",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": null,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
+              "path": "artifacts/th14/damage-area-snap-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/report.json",
+              "reportSha256": "a563e0b8bb66e21463a2ddb72cce1964360e9ab16853ef0fbb8b51e6b2b4a91e",
+              "callbacks": 66737,
+              "wasmSha256": "85876c3d0a6364ff68e5a69b2232ab61cbdd6d1d46175eccdc88498b0dd409c8",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": null,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             },
             {
               "path": "artifacts/th14/boss-name-input-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/report.json",
               "reportSha256": "e59f03b1ce5ef8d3dd4b63da3aba3a79c7a6e67886ae5778dfddf0dde728ba89",
               "callbacks": 66737,
               "wasmSha256": "0b38097ab3fc73e22082ac43ff165c068a6eb341b511aa0842905c278c92de00",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
-            },
-            {
-              "path": "artifacts/th14/vm-interrupt-cache-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/report.json",
-              "reportSha256": "9c905f36fb9160016940718a975de14e3ee0f769771a6437f06a1331a8c792d5",
-              "callbacks": 66737,
-              "wasmSha256": "11152c897604f763628d7b33fe47bb4dabbfd8e6279e1e39834ad31ab5b5e80b",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": null,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             }
           ],
+          "preferredComparisonPath": "artifacts/th14/vm-interrupt-cache-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/report.json",
           "partialSelected32ComparisonReports": []
         },
         {
@@ -704,6 +1006,7 @@
           "rngOrCounterWrites": 0,
           "replaySha256": "724c78a013ab8334f14fc7ddd995b01308e16dd20ef19a2c8fd73a20fb02258c",
           "selected32ComparisonReports": [],
+          "preferredComparisonPath": null,
           "partialSelected32ComparisonReports": []
         }
       ],
@@ -773,27 +1076,49 @@
           "replaySha256": "89c0c5fd0c201698735d5e0ea55dc3b3edba7d5e4e2327010b662d2668f6004a",
           "selected32ComparisonReports": [
             {
-              "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-marisaa-extra-live-full-hardware-oct24/report.json",
-              "reportSha256": "660402cbe1b822072545c4b19ce24504282c956cde22d1d21da8436b324c12f5",
-              "callbacks": 46391,
-              "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
-            },
-            {
               "path": "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-marisaa-extra-live-full-hardware-oct24/report.json",
               "reportSha256": "ba972e5c1f63478d5dec74bd972ca63775f2fb4a1ac16cc4662005492e6886d5",
               "callbacks": 46391,
               "wasmSha256": "3f6f116223f16b42c76d57e1d0a17d99b147bd0ae9756a94bf8f528b18c2c9f2",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
+              "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-marisaa-extra-live-full-hardware-oct24/report.json",
+              "reportSha256": "660402cbe1b822072545c4b19ce24504282c956cde22d1d21da8436b324c12f5",
+              "callbacks": 46391,
+              "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5",
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             },
             {
               "path": "artifacts/th14/boss-name-input-oct25/full-initial-worker-events-retail-marisaa-extra-live-full-hardware-oct24/report.json",
               "reportSha256": "d0827394115041abb34bf853b6bd769a06a340899c5aac094d04d4cbd0c47664",
               "callbacks": 46391,
               "wasmSha256": "3dbbe7d22078babab6e22d6ec94a02b320d50d2cc768578576994c120075bce7",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             }
           ],
+          "preferredComparisonPath": "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-marisaa-extra-live-full-hardware-oct24/report.json",
           "partialSelected32ComparisonReports": []
         }
       ],
@@ -851,27 +1176,49 @@
           "replaySha256": "2f3a61e72e1bd14a1cecc934d805106f31f6b55a830ae4a9f1d94207098d2bf0",
           "selected32ComparisonReports": [
             {
-              "path": "artifacts/th14/damage-area-snap-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/report.json",
-              "reportSha256": "24eff251bb5ce306b849b5e811b32385a714a10ff4ae3caee78799d036f6705d",
-              "callbacks": 27751,
-              "wasmSha256": "85876c3d0a6364ff68e5a69b2232ab61cbdd6d1d46175eccdc88498b0dd409c8",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
-            },
-            {
               "path": "artifacts/th14/player-aim-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/report.json",
               "reportSha256": "dc17bc1819dc7d4928f3e8e82cdaf478650ccc0ee8bef69d6ad88c71f99c1dc7",
               "callbacks": 27751,
               "wasmSha256": "550234d67abe1baa278219c80145bc7b306ece9ec0fd5ee6032ac82f40d3d8fd",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
+              "path": "artifacts/th14/damage-area-snap-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/report.json",
+              "reportSha256": "24eff251bb5ce306b849b5e811b32385a714a10ff4ae3caee78799d036f6705d",
+              "callbacks": 27751,
+              "wasmSha256": "85876c3d0a6364ff68e5a69b2232ab61cbdd6d1d46175eccdc88498b0dd409c8",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             },
             {
               "path": "artifacts/th14/boss-name-input-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/report.json",
               "reportSha256": "377409aeebd89d5e3b8d873a31c02f3244525884a481bde54d02d603deab12c4",
               "callbacks": 27751,
               "wasmSha256": "0b38097ab3fc73e22082ac43ff165c068a6eb341b511aa0842905c278c92de00",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             }
           ],
+          "preferredComparisonPath": "artifacts/th14/player-aim-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/report.json",
           "partialSelected32ComparisonReports": []
         }
       ],
@@ -893,45 +1240,6 @@
       "nativeCapturedRunAvailable": true,
       "allStageEntriesObserved": true,
       "retainedNaturalRuns": [
-        {
-          "path": "artifacts/th14/retail-marisab-hard-campaign-hardware-oct25",
-          "reportSha256": "13183bb722837c856e50fc3eff753a4cfba741b2a9a927d986fc06f49a54e285",
-          "initialSnapshotSha256": "7d8b73fc3716417aa523a74efa682bcdfdfeed5255ffb526701f0029a5eaa593",
-          "selectedSha256": "5a5069a15c9a9e5490257511ac8ee35eee91ccb58d116cb6d0112534c9dc1817",
-          "callbacks": 119048,
-          "stagesObserved": [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6
-          ],
-          "naturalReplayEndObserved": true,
-          "clearCompletionNotAsserted": true,
-          "intactOriginalReplayDeclared": true,
-          "instructionBytesPatched": 0,
-          "rngOrCounterWrites": 0,
-          "replaySha256": "74b5e618a893f8d0d675442cf865158007f74d4f305d1e522e71c9fdddad4f28",
-          "selected32ComparisonReports": [
-            {
-              "path": "artifacts/th14/damage-area-snap-oct25/marisab-hard/full-initial-worker-events-retail-marisab-hard-campaign-hardware-oct25/report.json",
-              "reportSha256": "be6dee401707bfa5026c910f08da76b37d2e8114f53b9af1cd87b9616ad636a1",
-              "callbacks": 119048,
-              "wasmSha256": "85876c3d0a6364ff68e5a69b2232ab61cbdd6d1d46175eccdc88498b0dd409c8",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
-            }
-          ],
-          "partialSelected32ComparisonReports": [
-            {
-              "path": "artifacts/th14/player-aim-oct25/marisab-hard/prefix-30000-initial-worker-events-retail-marisab-hard-campaign-hardware-oct25/report.json",
-              "reportSha256": "6d10bffaa39fd8a11801c354e39a18457f4911556e828ab53a6c0412a9071b8c",
-              "callbacks": 30000,
-              "wasmSha256": "550234d67abe1baa278219c80145bc7b306ece9ec0fd5ee6032ac82f40d3d8fd",
-              "scope": "Reported selected32 prefix equality only, not a full captured-run pass."
-            }
-          ]
-        },
         {
           "path": "artifacts/th14/retail-marisab-hard-hud-completion-hardware-oct25",
           "reportSha256": "15eb20bf17f9eeda72c16b0c3a3137bd23d8ba3a1c7f72382ef747181a9f2658",
@@ -958,9 +1266,17 @@
               "reportSha256": "f6066452d47f737b7ec115a7c3be4912ec3936ed95cb1361f3f81ed246f84e0a",
               "callbacks": 119048,
               "wasmSha256": "3277485dbcb1584646b98e7ff654d84d63960f51b2febe23d3932e119c466231",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             }
           ],
+          "preferredComparisonPath": "artifacts/th14/damage-area-snap-oct25/ascii-draw-boundary/full-initial-worker-events-retail-marisab-hard-hud-completion-hardware-oct25-cpu-write-bounded-queue/report.json",
           "partialSelected32ComparisonReports": [
             {
               "path": "artifacts/th14/damage-area-snap-oct25/ascii-draw-boundary/prefix-30000-initial-worker-events-retail-marisab-hard-hud-completion-hardware-oct25-cpu-write-bounded-queue/report.json",
@@ -974,6 +1290,55 @@
               "reportSha256": "90ba3e4a4174536598f953b85396b672acb550cf121b7162f4f2b9ebdb383c0b",
               "callbacks": 75000,
               "wasmSha256": "3277485dbcb1584646b98e7ff654d84d63960f51b2febe23d3932e119c466231",
+              "scope": "Reported selected32 prefix equality only, not a full captured-run pass."
+            }
+          ]
+        },
+        {
+          "path": "artifacts/th14/retail-marisab-hard-campaign-hardware-oct25",
+          "reportSha256": "13183bb722837c856e50fc3eff753a4cfba741b2a9a927d986fc06f49a54e285",
+          "initialSnapshotSha256": "7d8b73fc3716417aa523a74efa682bcdfdfeed5255ffb526701f0029a5eaa593",
+          "selectedSha256": "5a5069a15c9a9e5490257511ac8ee35eee91ccb58d116cb6d0112534c9dc1817",
+          "callbacks": 119048,
+          "stagesObserved": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "naturalReplayEndObserved": true,
+          "clearCompletionNotAsserted": true,
+          "intactOriginalReplayDeclared": true,
+          "instructionBytesPatched": 0,
+          "rngOrCounterWrites": 0,
+          "replaySha256": "74b5e618a893f8d0d675442cf865158007f74d4f305d1e522e71c9fdddad4f28",
+          "selected32ComparisonReports": [
+            {
+              "path": "artifacts/th14/damage-area-snap-oct25/marisab-hard/full-initial-worker-events-retail-marisab-hard-campaign-hardware-oct25/report.json",
+              "reportSha256": "be6dee401707bfa5026c910f08da76b37d2e8114f53b9af1cd87b9616ad636a1",
+              "callbacks": 119048,
+              "wasmSha256": "85876c3d0a6364ff68e5a69b2232ab61cbdd6d1d46175eccdc88498b0dd409c8",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": false,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [
+                "hud"
+              ],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            }
+          ],
+          "preferredComparisonPath": "artifacts/th14/damage-area-snap-oct25/marisab-hard/full-initial-worker-events-retail-marisab-hard-campaign-hardware-oct25/report.json",
+          "partialSelected32ComparisonReports": [
+            {
+              "path": "artifacts/th14/player-aim-oct25/marisab-hard/prefix-30000-initial-worker-events-retail-marisab-hard-campaign-hardware-oct25/report.json",
+              "reportSha256": "6d10bffaa39fd8a11801c354e39a18457f4911556e828ab53a6c0412a9071b8c",
+              "callbacks": 30000,
+              "wasmSha256": "550234d67abe1baa278219c80145bc7b306ece9ec0fd5ee6032ac82f40d3d8fd",
               "scope": "Reported selected32 prefix equality only, not a full captured-run pass."
             }
           ]
@@ -1027,27 +1392,49 @@
           "replaySha256": "a3078d31892b5fb2f08de3c0b58da55db383eb575b00d463e1d79c0cc979186f",
           "selected32ComparisonReports": [
             {
-              "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-marisab-extra-full-hardware-oct24/report.json",
-              "reportSha256": "8d16b7b6d9e329c7810df04681cda64150ecc2597b7d0b1d17432cc1481217de",
-              "callbacks": 54114,
-              "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
-            },
-            {
               "path": "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-marisab-extra-full-hardware-oct24/report.json",
               "reportSha256": "f83be9d739bb210e4489c6f5a7bb1b07019aaffa248a64238086c1d2ffbad6b2",
               "callbacks": 54114,
               "wasmSha256": "3f6f116223f16b42c76d57e1d0a17d99b147bd0ae9756a94bf8f528b18c2c9f2",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
+              "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-marisab-extra-full-hardware-oct24/report.json",
+              "reportSha256": "8d16b7b6d9e329c7810df04681cda64150ecc2597b7d0b1d17432cc1481217de",
+              "callbacks": 54114,
+              "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5",
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             },
             {
               "path": "artifacts/th14/boss-name-input-oct25/full-initial-worker-events-retail-marisab-extra-full-hardware-oct24/report.json",
               "reportSha256": "bed1f735e33877c72c3ed4075af0f6a08a8d9465dd0ceff81a5057d6baf7d399",
               "callbacks": 54114,
               "wasmSha256": "3dbbe7d22078babab6e22d6ec94a02b320d50d2cc768578576994c120075bce7",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             }
           ],
+          "preferredComparisonPath": "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-marisab-extra-full-hardware-oct24/report.json",
           "partialSelected32ComparisonReports": []
         }
       ],
@@ -1088,51 +1475,6 @@
       "allStageEntriesObserved": true,
       "retainedNaturalRuns": [
         {
-          "path": "artifacts/th14/retail-sakuyaa-campaign-publications-camera-hardware-oct24",
-          "reportSha256": "f85f5be62ff9d7d2ce95fbccbd3e55d435580b435095c70a3867530f5bd59598",
-          "initialSnapshotSha256": "a73a1356dc1a86255d8d9f224265021edfe1fd6a929757ade430daf484c6317b",
-          "selectedSha256": "7cc41a83bc1b32a2f920bdb64d6d4d76e2f2fba278f075d37625d962f48bd783",
-          "callbacks": 104802,
-          "stagesObserved": [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6
-          ],
-          "naturalReplayEndObserved": true,
-          "clearCompletionNotAsserted": true,
-          "intactOriginalReplayDeclared": true,
-          "instructionBytesPatched": 0,
-          "rngOrCounterWrites": 0,
-          "replaySha256": "c8070bac53dbf525d5c8cb9f7193da6ae362911b11ada8b77b015744b6563a47",
-          "selected32ComparisonReports": [
-            {
-              "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/report.json",
-              "reportSha256": "fcf0594fe338a2109236f71278e9dbe91606a799aad48b44ccd1de9f7cd837b5",
-              "callbacks": 104802,
-              "wasmSha256": "85876c3d0a6364ff68e5a69b2232ab61cbdd6d1d46175eccdc88498b0dd409c8",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
-            },
-            {
-              "path": "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/report.json",
-              "reportSha256": "6624cea5c933487479d65fe93fb144bf3e195c8837a1fe91976445628966e012",
-              "callbacks": 104802,
-              "wasmSha256": "550234d67abe1baa278219c80145bc7b306ece9ec0fd5ee6032ac82f40d3d8fd",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
-            },
-            {
-              "path": "artifacts/th14/boss-name-input-oct25/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/report.json",
-              "reportSha256": "47172574dc5dfb82e750440412355e460cf5ae2d67b8090e818fa3085be71a66",
-              "callbacks": 104802,
-              "wasmSha256": "0b38097ab3fc73e22082ac43ff165c068a6eb341b511aa0842905c278c92de00",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
-            }
-          ],
-          "partialSelected32ComparisonReports": []
-        },
-        {
           "path": "artifacts/th14/retail-sakuyaa-late-allocation-hardware-oct24",
           "reportSha256": "b437b26b61ffae7f6514ceb8c2f889be2575bbd278f8d481e3b98a96d2f22a98",
           "initialSnapshotSha256": "4f846e951eea5cd383580707f69271fc51b4a0adaf662d16d52f21538d900ce8",
@@ -1154,34 +1496,63 @@
           "replaySha256": "c8070bac53dbf525d5c8cb9f7193da6ae362911b11ada8b77b015744b6563a47",
           "selected32ComparisonReports": [
             {
-              "path": "artifacts/th14/damage-area-snap-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/report.json",
-              "reportSha256": "ad686775127b51b59e264df6afe06060d0c806f8ebd015362a72c3580c9dce4f",
+              "path": "artifacts/th14/vm-interrupt-cache-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/report.json",
+              "reportSha256": "b3c41e0d0dee8e6762a1915703b5318fd2d83091323abc80487f8dcf6ee00cd0",
               "callbacks": 104802,
-              "wasmSha256": "85876c3d0a6364ff68e5a69b2232ab61cbdd6d1d46175eccdc88498b0dd409c8",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "wasmSha256": "11152c897604f763628d7b33fe47bb4dabbfd8e6279e1e39834ad31ab5b5e80b",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             },
             {
               "path": "artifacts/th14/player-aim-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/report.json",
               "reportSha256": "2ea5972dbb15acc4f1d27b6e9dfb78abad04aef5226f36a4894a8e2b5b6d1f5a",
               "callbacks": 104802,
               "wasmSha256": "550234d67abe1baa278219c80145bc7b306ece9ec0fd5ee6032ac82f40d3d8fd",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
+              "path": "artifacts/th14/damage-area-snap-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/report.json",
+              "reportSha256": "ad686775127b51b59e264df6afe06060d0c806f8ebd015362a72c3580c9dce4f",
+              "callbacks": 104802,
+              "wasmSha256": "85876c3d0a6364ff68e5a69b2232ab61cbdd6d1d46175eccdc88498b0dd409c8",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             },
             {
               "path": "artifacts/th14/boss-name-input-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/report.json",
               "reportSha256": "a511eb8c25916f1a4f2cd8a34720024e37d8f1fc7395d243d67c1be19267a0ef",
               "callbacks": 104802,
               "wasmSha256": "0b38097ab3fc73e22082ac43ff165c068a6eb341b511aa0842905c278c92de00",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
-            },
-            {
-              "path": "artifacts/th14/vm-interrupt-cache-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/report.json",
-              "reportSha256": "b3c41e0d0dee8e6762a1915703b5318fd2d83091323abc80487f8dcf6ee00cd0",
-              "callbacks": 104802,
-              "wasmSha256": "11152c897604f763628d7b33fe47bb4dabbfd8e6279e1e39834ad31ab5b5e80b",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             }
           ],
+          "preferredComparisonPath": "artifacts/th14/vm-interrupt-cache-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/report.json",
           "partialSelected32ComparisonReports": [
             {
               "path": "artifacts/th14/vm-interrupt-cache-oct25/normal/prefix-30000-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/report.json",
@@ -1191,6 +1562,73 @@
               "scope": "Reported selected32 prefix equality only, not a full captured-run pass."
             }
           ]
+        },
+        {
+          "path": "artifacts/th14/retail-sakuyaa-campaign-publications-camera-hardware-oct24",
+          "reportSha256": "f85f5be62ff9d7d2ce95fbccbd3e55d435580b435095c70a3867530f5bd59598",
+          "initialSnapshotSha256": "a73a1356dc1a86255d8d9f224265021edfe1fd6a929757ade430daf484c6317b",
+          "selectedSha256": "7cc41a83bc1b32a2f920bdb64d6d4d76e2f2fba278f075d37625d962f48bd783",
+          "callbacks": 104802,
+          "stagesObserved": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "naturalReplayEndObserved": true,
+          "clearCompletionNotAsserted": true,
+          "intactOriginalReplayDeclared": true,
+          "instructionBytesPatched": 0,
+          "rngOrCounterWrites": 0,
+          "replaySha256": "c8070bac53dbf525d5c8cb9f7193da6ae362911b11ada8b77b015744b6563a47",
+          "selected32ComparisonReports": [
+            {
+              "path": "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/report.json",
+              "reportSha256": "6624cea5c933487479d65fe93fb144bf3e195c8837a1fe91976445628966e012",
+              "callbacks": 104802,
+              "wasmSha256": "550234d67abe1baa278219c80145bc7b306ece9ec0fd5ee6032ac82f40d3d8fd",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": null,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
+              "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/report.json",
+              "reportSha256": "fcf0594fe338a2109236f71278e9dbe91606a799aad48b44ccd1de9f7cd837b5",
+              "callbacks": 104802,
+              "wasmSha256": "85876c3d0a6364ff68e5a69b2232ab61cbdd6d1d46175eccdc88498b0dd409c8",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": null,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
+              "path": "artifacts/th14/boss-name-input-oct25/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/report.json",
+              "reportSha256": "47172574dc5dfb82e750440412355e460cf5ae2d67b8090e818fa3085be71a66",
+              "callbacks": 104802,
+              "wasmSha256": "0b38097ab3fc73e22082ac43ff165c068a6eb341b511aa0842905c278c92de00",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": null,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            }
+          ],
+          "preferredComparisonPath": "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/report.json",
+          "partialSelected32ComparisonReports": []
         }
       ],
       "wholeModeEquivalent": false
@@ -1251,34 +1689,63 @@
           "replaySha256": "890bcf6be90cbef072c525a96a012920d3958d0e8fcd00d1c75b59f12c1b9af8",
           "selected32ComparisonReports": [
             {
-              "path": "artifacts/th14/damage-area-snap-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/report.json",
-              "reportSha256": "927b4b038f40b4d6a383a095a0db0285af02db154f6335f2e35b68c7ecb1d107",
+              "path": "artifacts/th14/vm-interrupt-cache-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/report.json",
+              "reportSha256": "947f62d379e3043a0e5f40ef6648f6e8304f01562154228e2fdba5faaac6cd59",
               "callbacks": 84952,
-              "wasmSha256": "0db212788ff6a61b481b693e5af1a3890845e1c24306563395c72f7e0af8c655",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "wasmSha256": "26c84af6bbcd36020af5fc13c224c86d2b2f9d7def6792e78cce454abf9ca7c9",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             },
             {
               "path": "artifacts/th14/player-aim-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/report.json",
               "reportSha256": "8eaf3ada33d0d10f3ad8b8b41bc7675fcc395240681946845f3647012578d2d3",
               "callbacks": 84952,
               "wasmSha256": "569afa5213f2645cfdd9877417c19e26c0edb59c4c2c9795fc94a7adcaaa19c8",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
+              "path": "artifacts/th14/damage-area-snap-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/report.json",
+              "reportSha256": "927b4b038f40b4d6a383a095a0db0285af02db154f6335f2e35b68c7ecb1d107",
+              "callbacks": 84952,
+              "wasmSha256": "0db212788ff6a61b481b693e5af1a3890845e1c24306563395c72f7e0af8c655",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             },
             {
               "path": "artifacts/th14/boss-name-input-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/report.json",
               "reportSha256": "d58ec0718d52a0e42889b7a538283eb2567cbf77e8b47cdcf4f7a04b80381354",
               "callbacks": 84952,
               "wasmSha256": "60ad7e26d55c87efa6b176baf390a14d7b38e6cc6db1b2d68549608a07b1343e",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
-            },
-            {
-              "path": "artifacts/th14/vm-interrupt-cache-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/report.json",
-              "reportSha256": "947f62d379e3043a0e5f40ef6648f6e8304f01562154228e2fdba5faaac6cd59",
-              "callbacks": 84952,
-              "wasmSha256": "26c84af6bbcd36020af5fc13c224c86d2b2f9d7def6792e78cce454abf9ca7c9",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             }
           ],
+          "preferredComparisonPath": "artifacts/th14/vm-interrupt-cache-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/report.json",
           "partialSelected32ComparisonReports": [
             {
               "path": "artifacts/th14/vm-interrupt-cache-oct25/lunatic/prefix-38900-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/report.json",
@@ -1334,27 +1801,49 @@
           "replaySha256": "c93a499bfa1409aba4f6708d3478a10c6a4a0fb0239b97356209a0b616bee8fd",
           "selected32ComparisonReports": [
             {
-              "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-sakuyaa-extra-full-2-hardware-oct24/report.json",
-              "reportSha256": "0146ef5d72c6c061ab3d126f042b5c0c4ce79f8512ba8759f9ce3f297ae588e4",
-              "callbacks": 38977,
-              "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
-            },
-            {
               "path": "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-sakuyaa-extra-full-2-hardware-oct24/report.json",
               "reportSha256": "d4ad031dad2bea29d3ae939c573e4de00f51eb4cffc5cc9d32394c5d3a330a50",
               "callbacks": 38977,
               "wasmSha256": "3f6f116223f16b42c76d57e1d0a17d99b147bd0ae9756a94bf8f528b18c2c9f2",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
+              "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-sakuyaa-extra-full-2-hardware-oct24/report.json",
+              "reportSha256": "0146ef5d72c6c061ab3d126f042b5c0c4ce79f8512ba8759f9ce3f297ae588e4",
+              "callbacks": 38977,
+              "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5",
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             },
             {
               "path": "artifacts/th14/boss-name-input-oct25/full-initial-worker-events-retail-sakuyaa-extra-full-2-hardware-oct24/report.json",
               "reportSha256": "b911808b51a78dfc17adf62cb77baa9c3a781fd081c838cacf10551edfea852a",
               "callbacks": 38977,
               "wasmSha256": "3dbbe7d22078babab6e22d6ec94a02b320d50d2cc768578576994c120075bce7",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             }
           ],
+          "preferredComparisonPath": "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-sakuyaa-extra-full-2-hardware-oct24/report.json",
           "partialSelected32ComparisonReports": []
         },
         {
@@ -1374,27 +1863,49 @@
           "replaySha256": "c93a499bfa1409aba4f6708d3478a10c6a4a0fb0239b97356209a0b616bee8fd",
           "selected32ComparisonReports": [
             {
-              "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-sakuyaa-final-live-vm-hardware-oct24/report.json",
-              "reportSha256": "97deb4640e79e48d0b7634a92012d5613f3fe5b32ff034ebedab6b5e8e135500",
-              "callbacks": 38977,
-              "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
-            },
-            {
               "path": "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-sakuyaa-final-live-vm-hardware-oct24/report.json",
               "reportSha256": "7a1b7aa57ead68a835a35f333c4d8a2b93043b85b83042eba88d82fd18cb24d2",
               "callbacks": 38977,
               "wasmSha256": "3f6f116223f16b42c76d57e1d0a17d99b147bd0ae9756a94bf8f528b18c2c9f2",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
+              "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-sakuyaa-final-live-vm-hardware-oct24/report.json",
+              "reportSha256": "97deb4640e79e48d0b7634a92012d5613f3fe5b32ff034ebedab6b5e8e135500",
+              "callbacks": 38977,
+              "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5",
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             },
             {
               "path": "artifacts/th14/boss-name-input-oct25/full-initial-worker-events-retail-sakuyaa-final-live-vm-hardware-oct24/report.json",
               "reportSha256": "9cc7a1a36d24c9404e892d9c5d8c8f0708f131837b7fa1deb774ca5f80f8d58b",
               "callbacks": 38977,
               "wasmSha256": "3dbbe7d22078babab6e22d6ec94a02b320d50d2cc768578576994c120075bce7",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             }
           ],
+          "preferredComparisonPath": "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-sakuyaa-final-live-vm-hardware-oct24/report.json",
           "partialSelected32ComparisonReports": []
         }
       ],
@@ -1456,27 +1967,49 @@
           "replaySha256": "207d061ec91066147693297669625a29aa4f3b264b98577a723b52ea69b665e8",
           "selected32ComparisonReports": [
             {
-              "path": "artifacts/th14/damage-area-snap-oct25/sakuyab-normal/full-initial-worker-events-retail-sakuyab-normal-campaign-hardware-oct25/report.json",
-              "reportSha256": "64f7cbc6678c7831cc3190fe83dea2b2828b0f7cf48dd9bdbc6bb7a10fd232ec",
-              "callbacks": 112201,
-              "wasmSha256": "85876c3d0a6364ff68e5a69b2232ab61cbdd6d1d46175eccdc88498b0dd409c8",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
-            },
-            {
               "path": "artifacts/th14/player-aim-oct25/sakuyab-normal/full-initial-worker-events-retail-sakuyab-normal-campaign-hardware-oct25/report.json",
               "reportSha256": "9627b3c2cac0b3b81b45b7c4f0fd3fcf7626e363e5c800a55a1e5649117ca13b",
               "callbacks": 112201,
               "wasmSha256": "550234d67abe1baa278219c80145bc7b306ece9ec0fd5ee6032ac82f40d3d8fd",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
+              "path": "artifacts/th14/damage-area-snap-oct25/sakuyab-normal/full-initial-worker-events-retail-sakuyab-normal-campaign-hardware-oct25/report.json",
+              "reportSha256": "64f7cbc6678c7831cc3190fe83dea2b2828b0f7cf48dd9bdbc6bb7a10fd232ec",
+              "callbacks": 112201,
+              "wasmSha256": "85876c3d0a6364ff68e5a69b2232ab61cbdd6d1d46175eccdc88498b0dd409c8",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             },
             {
               "path": "artifacts/th14/boss-name-input-oct25/sakuyab-normal/full-initial-worker-events-retail-sakuyab-normal-campaign-hardware-oct25/report.json",
               "reportSha256": "6ba87d8ca2b3881618dc4d3be657bec22d5f2a871b66489dc30cfc1fd97f3cdf",
               "callbacks": 112201,
               "wasmSha256": "0b38097ab3fc73e22082ac43ff165c068a6eb341b511aa0842905c278c92de00",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             }
           ],
+          "preferredComparisonPath": "artifacts/th14/player-aim-oct25/sakuyab-normal/full-initial-worker-events-retail-sakuyab-normal-campaign-hardware-oct25/report.json",
           "partialSelected32ComparisonReports": []
         }
       ],
@@ -1546,27 +2079,49 @@
           "replaySha256": "b3f5e7d00a46c7b33a77645e12fb72f70d601a239b34c894c38dc42c41f6ae10",
           "selected32ComparisonReports": [
             {
-              "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-sakuyab-extra-full-hardware-oct24/report.json",
-              "reportSha256": "7fd90ae4007a15d902d8dfa2c7f3d9fcdbed9efd7639896b7937a070b8450972",
-              "callbacks": 50937,
-              "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
-            },
-            {
               "path": "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-sakuyab-extra-full-hardware-oct24/report.json",
               "reportSha256": "d2dd4ef6cb4fe9be28c7b669642345824776fa24be66e2f80275fbf350f43f08",
               "callbacks": 50937,
               "wasmSha256": "3f6f116223f16b42c76d57e1d0a17d99b147bd0ae9756a94bf8f528b18c2c9f2",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            },
+            {
+              "path": "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-sakuyab-extra-full-hardware-oct24/report.json",
+              "reportSha256": "7fd90ae4007a15d902d8dfa2c7f3d9fcdbed9efd7639896b7937a070b8450972",
+              "callbacks": 50937,
+              "wasmSha256": "132ed0e63bdbad554239bc4fc8d63005e362fcf449a825ec028a098b8583e7f5",
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             },
             {
               "path": "artifacts/th14/boss-name-input-oct25/full-initial-worker-events-retail-sakuyab-extra-full-hardware-oct24/report.json",
               "reportSha256": "39dca38a41cfc4502b2b89054de6f7a2626a9b3c9a88f3c451aabb5bfbbbdbc8",
               "callbacks": 50937,
               "wasmSha256": "3dbbe7d22078babab6e22d6ec94a02b320d50d2cc768578576994c120075bce7",
-              "scope": "Reported full captured-run selected32 equality only; each version and additional fields require their own verification."
+              "additionalObservedGateResults": {
+                "camera": null,
+                "hud": null,
+                "animation": null,
+                "combat": null
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
             }
           ],
+          "preferredComparisonPath": "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-sakuyab-extra-full-hardware-oct24/report.json",
           "partialSelected32ComparisonReports": []
         }
       ],
@@ -1574,9 +2129,10 @@
     }
   ],
   "modePairs": 30,
-  "pairsWithNaturalNativeRun": 17,
-  "pairsWithAllStageEntriesObserved": 14,
-  "scope": "An inventory of retained actual stage entries and separately scoped reported selected32 comparisons. Neither replay end nor observing all stage entries proves a clear, all objects, ordinary menu initialization, pixels, PCM, persistence or mode equivalence.",
+  "pairsWithNaturalNativeRun": 18,
+  "pairsWithAllStageEntriesObserved": 15,
+  "preferredCaptureRule": "Prefer more observed stages, then a reported full selected32 comparison, then the longest compared prefix; loading callback count breaks remaining ties.",
+  "scope": "An inventory of retained actual stage entries and separately scoped reported selected32 comparisons, with additional observed gate failures. Missing gates are null, never passed. Neither replay end nor observing all stage entries proves a clear, all objects, ordinary menu initialization, pixels, PCM, persistence or mode equivalence.",
   "reportBindings": {
     "artifacts/th14/retail-browser-recorded-legal-normal-hardware-oct24/report.json": "e7967d9c2b9b32d6392cf6d251b5866688709059e6cf3e26ee08417936bb76a6",
     "artifacts/th14/retail-marisaa-campaign-publications-camera-hardware-oct24/report.json": "512129f5fb79c2a342c0864775f8d753ed8b5ef8d8211aeb9eae59a76af2eeae",
@@ -1589,6 +2145,7 @@
     "artifacts/th14/retail-marisab-hard-campaign-hardware-oct25/report.json": "13183bb722837c856e50fc3eff753a4cfba741b2a9a927d986fc06f49a54e285",
     "artifacts/th14/retail-marisab-hard-hud-completion-hardware-oct25/report.json": "15eb20bf17f9eeda72c16b0c3a3137bd23d8ba3a1c7f72382ef747181a9f2658",
     "artifacts/th14/retail-marisab-normal-campaign-hardware-oct25/report.json": "584e6a1dcd443c23f1ec52d2e897d32c2adfa05ce85d10943c2c892717151378",
+    "artifacts/th14/retail-reimua-easy-timeline-clear-hardware-oct25/report.json": "ed5fd2e703fa951ec09146763d2f584d7927448656c5c061e119e9c17148269f",
     "artifacts/th14/retail-reimua-extra-full-hardware-oct24/report.json": "dd02b29ab1af1afc7564e2f99338ce650eb081463b6354881fb10e3c0597b606",
     "artifacts/th14/retail-reimua-normal-campaign-hardware-oct25/report.json": "0db95763156f1349ef30e87b0768ba9d1e17f81fb8cb83deba3536b668426c53",
     "artifacts/th14/retail-reimub-campaign-resource-phases-hardware-oct24/report.json": "0826f4823f44d256d1102fafa5fc544cd1947134e8ce470eeb1f1ac33f59c0fa",
@@ -1597,15 +2154,114 @@
     "artifacts/th14/retail-reimub-full-hud-menu-hardware-oct23/report.json": "33a45a64e801be9ad25acaa741ab31384974333636c44aef4a4ca2713a85ea05",
     "artifacts/th14/retail-reimub-hard-full-bounded-hardware-oct25/report.json": "1b301b01c8fd1d979e6564eed3fa46661769aaacc08036aef0c9ccfcadad172a",
     "artifacts/th14/retail-reimub-lunatic-full-bounded-v2-hardware-oct25/report.json": "627ef3bb62c6ec9dc0e65457fe43de8f405c4addb3815b2cb8cc853f295a04f7",
+    "artifacts/th14/retail-reimub-lunatic-timeline-clear-hardware-oct25/report.json": "84ce576dc52987dea7c564702ee88504a13c32a734da22ab39165dbd2f84c53c",
     "artifacts/th14/retail-sakuyaa-campaign-publications-camera-hardware-oct24/report.json": "f85f5be62ff9d7d2ce95fbccbd3e55d435580b435095c70a3867530f5bd59598",
     "artifacts/th14/retail-sakuyaa-extra-full-2-hardware-oct24/report.json": "e1f704f34786fa74e63a34f3c4853e17208fe6130ff94478eea22e99e7cc364d",
     "artifacts/th14/retail-sakuyaa-final-live-vm-hardware-oct24/report.json": "985710a11f21a63512bddfd7eea5239b76f328ba0ed56a77e454540e3a1c2ac9",
     "artifacts/th14/retail-sakuyaa-late-allocation-hardware-oct24/report.json": "b437b26b61ffae7f6514ceb8c2f889be2575bbd278f8d481e3b98a96d2f22a98",
     "artifacts/th14/retail-sakuyaa-lunatic-campaign-hardware-oct25/report.json": "46df331a2e5442e4db1733241e67a79c728f8ba7c8c4e8122125975097823ba1",
     "artifacts/th14/retail-sakuyab-extra-full-hardware-oct24/report.json": "f7bb73bc3e92e45dd422f8cd0ba2a34ec20394cb14d14f936a8370c79cfba0a7",
-    "artifacts/th14/retail-sakuyab-normal-campaign-hardware-oct25/report.json": "40ce58fa2bce6f75bfe52be6b990652644417de3354c395b6fd6210f28ca1874"
+    "artifacts/th14/retail-sakuyab-normal-campaign-hardware-oct25/report.json": "40ce58fa2bce6f75bfe52be6b990652644417de3354c395b6fd6210f28ca1874",
+    "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-reimub-campaign-resource-phases-hardware-oct24-observer-repaired/live-report.json": "13063710fcc9309a47e5544757a14108aaeedea0b7249f39edf0f469cec008a0",
+    "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/camera-report.json": "131412c60c10e55db671c723fbd722512b080dafc9d5a81e1c46c925e5158486",
+    "artifacts/th14/damage-area-snap-oct25/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/live-report.json": "49b60c29f209cd1b2a6fd9b86fbcc9717ae81faea848005b31acc72883467c3d",
+    "artifacts/th14/damage-area-snap-oct25/sakuyab-normal/full-initial-worker-events-retail-sakuyab-normal-campaign-hardware-oct25/camera-report.json": "4bbefc3d5f0daff27ede007ea52e842a77cd3fb905bfb5dd22fa27351627f018",
+    "artifacts/th14/damage-area-snap-oct25/sakuyab-normal/full-initial-worker-events-retail-sakuyab-normal-campaign-hardware-oct25/hud-report.json": "ed250b13775b1f976a66140e7d7cc0eafe3df51f3b67bf2ad07e96042e069ae3",
+    "artifacts/th14/damage-area-snap-oct25/sakuyab-normal/full-initial-worker-events-retail-sakuyab-normal-campaign-hardware-oct25/live-report.json": "4eff8b83d05d34b0985c6ddaf5bbc872a85c621bf15d210b3a8580cea6e61c30",
+    "artifacts/th14/damage-area-snap-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/camera-report.json": "c7e397349ddd8ea34e5af841ed35fdbfefe4f777b985950fd0abeb739414e05f",
+    "artifacts/th14/damage-area-snap-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/hud-report.json": "a547614f7e01a500b6c56cf8aaaa5a3d451a1390a7ccc96b2db9f8f97c08b102",
+    "artifacts/th14/damage-area-snap-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/live-report.json": "5853251fbda319df8967bf16e3223fbf5cd79e5be17841c4600435ddc3952deb",
+    "artifacts/th14/damage-area-snap-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/camera-report.json": "b40df82a9241090cfbd60bee7171c62093760052315b59bfebc5d19d6053441e",
+    "artifacts/th14/damage-area-snap-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/live-report.json": "dd871b96a05c3958948e8fdd5f3b0fee932909871a9f868ef3e0c471da48fa48",
+    "artifacts/th14/damage-area-snap-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/camera-report.json": "d3060faa4bbf44213f58599deff689c5e7a467cd836309ef32b0f84233b2b075",
+    "artifacts/th14/damage-area-snap-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/hud-report.json": "d7be6dd973984d8d4befa457ff610e317d39cf17614fad061077f2b449146c22",
+    "artifacts/th14/damage-area-snap-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/live-report.json": "ba69f9258770108ae36f7242657efefedbfe44f47e164f30b2bdd5a414b51407",
+    "artifacts/th14/damage-area-snap-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/camera-report.json": "e6e10b6099dc602de10e5a3546634cd3807e8d957f3b7a44c934de29e3b6bdbd",
+    "artifacts/th14/damage-area-snap-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/hud-report.json": "aa9550cb897d1856e309a77cfc094f9e7f7085aae0dc102eca72f576387ffa65",
+    "artifacts/th14/damage-area-snap-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/live-report.json": "c437d10419a194e48c52539602507274f81ad06e247d1579c72cb19e1355a984",
+    "artifacts/th14/damage-area-snap-oct25/marisab-hard/full-initial-worker-events-retail-marisab-hard-campaign-hardware-oct25/camera-report.json": "b0a5018e727ccad12b9686520efa0b926c1c0e24ba1360806ed9f766aa456525",
+    "artifacts/th14/damage-area-snap-oct25/marisab-hard/full-initial-worker-events-retail-marisab-hard-campaign-hardware-oct25/hud-report.json": "522e39eb90fb37e0878fe15e9224003a1037a3be7a83a9d5c30302a50aa3baa8",
+    "artifacts/th14/damage-area-snap-oct25/marisab-hard/full-initial-worker-events-retail-marisab-hard-campaign-hardware-oct25/live-report.json": "060020508c82af9a0692daa3cb693f903e9cdd9e63a4159a61facc7d0f3a7f9c",
+    "artifacts/th14/damage-area-snap-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/camera-report.json": "5d0206a86c27bd7014f2c483d2e0ca339b138df8bab5a30c9046a3f6418fceca",
+    "artifacts/th14/damage-area-snap-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/hud-report.json": "a48cbf69af57c5fceef36fd95d1f3b95c1e96d6408450d9cd771c63f7aaa0ec2",
+    "artifacts/th14/damage-area-snap-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/live-report.json": "4a7940e3f0df2601ea8e43d043e6ff84587673d3ad76a6f74a1463d6127f9208",
+    "artifacts/th14/damage-area-snap-oct25/ascii-draw-boundary/full-initial-worker-events-retail-marisab-hard-hud-completion-hardware-oct25-cpu-write-bounded-queue/camera-report.json": "50dd79514a5c4e614ce38d6dac916ad31e68969d0d401ddc2b4a77d63f9835df",
+    "artifacts/th14/damage-area-snap-oct25/ascii-draw-boundary/full-initial-worker-events-retail-marisab-hard-hud-completion-hardware-oct25-cpu-write-bounded-queue/hud-report.json": "0c43506ef16c42c9cad9ea9777513e02eb1af134657038ecf2fc16aeb8547b2a",
+    "artifacts/th14/damage-area-snap-oct25/ascii-draw-boundary/full-initial-worker-events-retail-marisab-hard-hud-completion-hardware-oct25-cpu-write-bounded-queue/live-report.json": "e1d9bfb16b22d4b161aae00689199b1f9c655ba71cce0e7239da441070f12a39",
+    "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-reimub-campaign-resource-phases-hardware-oct24-observer-repaired/live-report.json": "52c95976aa6ad56723eecb26e82d486d2a69ec623e231a9ad39c0185d8af5f3c",
+    "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/camera-report.json": "6f952d11180a80026bcee13cb4876cb2dccf74b5a97221bd828f99a182ad16b5",
+    "artifacts/th14/player-aim-oct25/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/live-report.json": "d43cd1c4d5f2293dcd2dbde0e6a352d2c1a87fe9aa964b7bd115d6de7ec66c5d",
+    "artifacts/th14/player-aim-oct25/sakuyab-normal/full-initial-worker-events-retail-sakuyab-normal-campaign-hardware-oct25/camera-report.json": "c10b6992163b2e3835aef417a53c31b71725a8455b3e3cc5c748d4c7f718b650",
+    "artifacts/th14/player-aim-oct25/sakuyab-normal/full-initial-worker-events-retail-sakuyab-normal-campaign-hardware-oct25/hud-report.json": "3a57a4ac02035b22dde86f9bf27fe662597fa85502cad1de278fde71db526b21",
+    "artifacts/th14/player-aim-oct25/sakuyab-normal/full-initial-worker-events-retail-sakuyab-normal-campaign-hardware-oct25/live-report.json": "4dcac1978a74954c0535da5b06921142ee0596556c6781e62e886173ee3baa88",
+    "artifacts/th14/player-aim-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/camera-report.json": "9fa3a1f596d39bc13a9ec79e5bdc56cbc74a47990976aa3b7e5c5623cd9c53c8",
+    "artifacts/th14/player-aim-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/hud-report.json": "cb3401e24aeae421cb3029d4a6490cb5b177854310a1b180688aa17ec96396d4",
+    "artifacts/th14/player-aim-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/live-report.json": "cc7bc4a4f43aecd63b798ed0aefd7f09c3380fd5d919b5ec7814947d7b6463fc",
+    "artifacts/th14/player-aim-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/camera-report.json": "386d0c2ab3be4c7d32e4a7baa94b95751d1f86e686f4c6055d3e276265ad1f1e",
+    "artifacts/th14/player-aim-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/live-report.json": "cccd236612bf30b36964cc53cc867aa9ad7d5d1a693aa6f1a3876ac80f65c587",
+    "artifacts/th14/player-aim-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/camera-report.json": "5d1838baef105a689cde88b4fc54fff048ddc73cdabdb3fa8b558a8f7cd22c0b",
+    "artifacts/th14/player-aim-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/hud-report.json": "050f9a9f2945001af84c803ac785a846ccb2a8ca1f46a3c26f2bdf2c3427903f",
+    "artifacts/th14/player-aim-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/live-report.json": "7231e1ca291073697b65ca76a1e7ed00a1aac6ff9628515c6e3f85e4db79ba0f",
+    "artifacts/th14/player-aim-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/camera-report.json": "215b1c494dedf2973aac937fb90c566073533611b0a8e7e44b6c188315e37f54",
+    "artifacts/th14/player-aim-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/hud-report.json": "c05c1c233b48d19c5b2b6b45973b9702e28dd10674f55b5eeab3ba95ff315639",
+    "artifacts/th14/player-aim-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/live-report.json": "8826b058f67774b0ba0378939c3c08d7413e1042ea9cc8c4c92a83b7496b6fe6",
+    "artifacts/th14/player-aim-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/camera-report.json": "dc0691888e6158d2c6dadd11b9d2db1a8d2a98737c624ad8a2947562843d71c8",
+    "artifacts/th14/player-aim-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/hud-report.json": "5d120f8e1fc0294e7fb92aca7e6f9dddf3d03ceba2487e4ff564ee85e80ed2bc",
+    "artifacts/th14/player-aim-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/live-report.json": "0a4f56b3ba0c9428d305ed24a02da0d426e9ca11371af9d92cfa68b5c0b19ed4",
+    "artifacts/th14/boss-name-input-oct25/full-initial-worker-events-retail-reimub-campaign-resource-phases-hardware-oct24-observer-repaired/live-report.json": "8703955041194524f660d3cbddd83e0f2fb7bad1eab49fe67f06dd0e2354c513",
+    "artifacts/th14/boss-name-input-oct25/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/camera-report.json": "a67ac3f79e22d1cddf4891d180629399cd9100e70c62dc7dd4079665eeb1a02a",
+    "artifacts/th14/boss-name-input-oct25/full-initial-worker-events-retail-sakuyaa-campaign-publications-camera-hardware-oct24/live-report.json": "6e3223056f82866959e9b03740607870ab257fcad39c582b41965968cdd11ac2",
+    "artifacts/th14/boss-name-input-oct25/sakuyab-normal/full-initial-worker-events-retail-sakuyab-normal-campaign-hardware-oct25/camera-report.json": "c633f25d29e33964e1b89ce6795878154f77adce33db7a2091b2ad6a6645d3b4",
+    "artifacts/th14/boss-name-input-oct25/sakuyab-normal/full-initial-worker-events-retail-sakuyab-normal-campaign-hardware-oct25/hud-report.json": "2cab7911257b51d03c5b4a068ca53d4b9679f388978d6cb6e68acd8f9fc99ff9",
+    "artifacts/th14/boss-name-input-oct25/sakuyab-normal/full-initial-worker-events-retail-sakuyab-normal-campaign-hardware-oct25/live-report.json": "67d06e21f5716f41c96724185eee14dcd95d2b21c0ed157b7d1c6a2cc3406c5a",
+    "artifacts/th14/boss-name-input-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/camera-report.json": "067e198a24c200455587ccfb14545ba381b0fdad9359f7d55bc588265d860b46",
+    "artifacts/th14/boss-name-input-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/hud-report.json": "ef1c3bda82b1a360c8b159e033b8d0f2fd21a640c6b30aa0317689dee267b0c1",
+    "artifacts/th14/boss-name-input-oct25/reimua-normal/full-initial-worker-events-retail-reimua-normal-campaign-hardware-oct25/live-report.json": "31e7587d316c6f47431fec8f867557549410349533a8e52b35ff35a6ff154a02",
+    "artifacts/th14/boss-name-input-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/camera-report.json": "e4d13010c276bf5d06c7f8e23015c2f25a44ab2e4157fc668d66be19347cce35",
+    "artifacts/th14/boss-name-input-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/live-report.json": "d2e6b2975ac4c72fc00cd07a6537e2f286e2e8f893ee00eef5a5fb9f963fe38f",
+    "artifacts/th14/boss-name-input-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/camera-report.json": "56599265ce39d49550cfc17550e5fbf93fdf55a4ea20073f6c71bb506e2beefc",
+    "artifacts/th14/boss-name-input-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/hud-report.json": "046dc57bf5c561d0adf4cb686e9843065fdeabd779361f3605f605ca8e97c319",
+    "artifacts/th14/boss-name-input-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/live-report.json": "2c0659c204c93cd29af0d55d6655d11a73f1a78b3e7ce7b9a704785115be461d",
+    "artifacts/th14/boss-name-input-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/camera-report.json": "0630d00265ecadaff390c4e9cbc58d46d1707b3008c84061ea93e2d1dcbd0f98",
+    "artifacts/th14/boss-name-input-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/hud-report.json": "b1787709c03710020be0abfab415493eae501960fa12cd0f0125a8326def57cc",
+    "artifacts/th14/boss-name-input-oct25/marisab-normal/full-initial-worker-events-retail-marisab-normal-campaign-hardware-oct25/live-report.json": "3d27bca11094b23916c6d3c24acbe2d6fd78b78400efda2be03657c9108236fc",
+    "artifacts/th14/boss-name-input-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/camera-report.json": "a5d8cbc89f057f22d0a1efd9ab2e9afc0ce4e17c19f50c89b45f39049547a591",
+    "artifacts/th14/boss-name-input-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/hud-report.json": "5455262989a11a116340b46e9a010774084e6d8aaded2e5db9688365f8ebef43",
+    "artifacts/th14/boss-name-input-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/live-report.json": "278dcce0e945ec14083e410c7153676fe5d3e15f7265b43e619aad58b3a5f74b",
+    "artifacts/th14/vm-interrupt-cache-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/camera-report.json": "1f681aa24b497ab2dabcb664c20849a5187a38995ff978dd122d7a9290b37437",
+    "artifacts/th14/vm-interrupt-cache-oct25/normal/full-initial-worker-events-retail-marisaa-campaign-publications-camera-hardware-oct24/live-report.json": "d3abce797f2aa711ffa5df79ec44cd2120118ebdea115184bc1105bc955f9816",
+    "artifacts/th14/vm-interrupt-cache-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/camera-report.json": "8720d27cb0c62665f0d0ad9f6c0881465f4272a73ab02ce6406dfb0375c3f6a7",
+    "artifacts/th14/vm-interrupt-cache-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/hud-report.json": "02ab283be52f0e2bfd2f61937ed490df39942f46923bcc9453f49c86490ad7fc",
+    "artifacts/th14/vm-interrupt-cache-oct25/normal/full-initial-worker-events-retail-sakuyaa-late-allocation-hardware-oct24/live-report.json": "8bbcc0d9197c7e4d091d4f1241c01dd7725d33ebc1029cb1982a0e982b2b3d27",
+    "artifacts/th14/vm-interrupt-cache-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/camera-report.json": "24eec7ef7c1525b87fd46a5a6a8717f6516b6cb5eb041ac6c7b25d50422a26c1",
+    "artifacts/th14/vm-interrupt-cache-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/hud-report.json": "849fac933545597b1c4053b58123192350f7f801aa032897f81c3dbb4ad192a0",
+    "artifacts/th14/vm-interrupt-cache-oct25/lunatic/full-initial-worker-events-retail-sakuyaa-lunatic-campaign-hardware-oct25/live-report.json": "e845472238c53cab91fe8b53a9b3709149ce7704092836a233669935a9057cd0",
+    "artifacts/th14/stage-item-retirement-oct25/flexible-hard-full/camera-report.json": "d506b27f9470c7f61dbd8e226cc45ae5d34ff2543b3a29f4017c82d1270022c7",
+    "artifacts/th14/stage-item-retirement-oct25/flexible-hard-full/hud-report.json": "0bd23f2cb684f7637f224b14e369c8e07143ad7699b3c1bc1a872a080404e77d",
+    "artifacts/th14/stage-item-retirement-oct25/flexible-hard-full/live-report.json": "72a3aeb7fa991f086a05da2a5175364ccea636cbe4dbe2c8cdda9cdfac528e14",
+    "artifacts/th14/stage-item-retirement-oct25/flexible-hard-full/combat-snapshots.json": "f48c549943f0b8af1f50fa6baac63f1e31691a9d102498ef4e986aa7ce4f2a22",
+    "artifacts/th14/stage-item-retirement-oct25/full-initial-worker-events-retail-reimub-hard-full-bounded-hardware-oct25-cpu-write-stage-item-retirement/camera-report.json": "47d4f9bae74ed42b2cc3533394663f538e5390f4309d8232ea63ee81785890ba",
+    "artifacts/th14/stage-item-retirement-oct25/full-initial-worker-events-retail-reimub-hard-full-bounded-hardware-oct25-cpu-write-stage-item-retirement/hud-report.json": "cfebc3e7def7825d8c82181fbd5b2cd6b11e8b057720e56dd1602e6ddf7638b8",
+    "artifacts/th14/stage-item-retirement-oct25/full-initial-worker-events-retail-reimub-hard-full-bounded-hardware-oct25-cpu-write-stage-item-retirement/live-report.json": "700108712101f3a69780f1a7cc360af52c2461be41f091c77c5c404027ae2276",
+    "artifacts/th14/stage-item-retirement-oct25/full-initial-worker-events-retail-reimub-hard-full-bounded-hardware-oct25-cpu-write-stage-item-retirement/combat-snapshots.json": "58d19dd2974bd92f48b95fd66773832b8ab59dc94886d2df2d686530aeeb4f7e",
+    "artifacts/th14/stage-item-retirement-oct25/full-initial-worker-events-retail-reimub-hard-full-bounded-hardware-oct25-cpu-write-stage-item-retirement-curve-cursor/camera-report.json": "caeca676b02831f601dd2d55125827525a679adaabad0febe6425ab47c7ff038",
+    "artifacts/th14/stage-item-retirement-oct25/full-initial-worker-events-retail-reimub-hard-full-bounded-hardware-oct25-cpu-write-stage-item-retirement-curve-cursor/hud-report.json": "663169c37a749cdc6cdeb8941b00174ae7efd0125657b57db57f30fbbea7a4fd",
+    "artifacts/th14/stage-item-retirement-oct25/full-initial-worker-events-retail-reimub-hard-full-bounded-hardware-oct25-cpu-write-stage-item-retirement-curve-cursor/live-report.json": "1ebce5d1f39cb623099b215223b410dc451132a332554eb593187e8cc5609354",
+    "artifacts/th14/stage-item-retirement-oct25/full-initial-worker-events-retail-reimub-hard-full-bounded-hardware-oct25-cpu-write-stage-item-retirement-curve-cursor/combat-snapshots.json": "f48c549943f0b8af1f50fa6baac63f1e31691a9d102498ef4e986aa7ce4f2a22",
+    "artifacts/th14/stage-item-retirement-oct25/reimua-easy-full/camera-report.json": "560e55fd79a38e0095286105f7c6ae468b894a7fbc5c9bdc62e507683d9162f3",
+    "artifacts/th14/stage-item-retirement-oct25/reimua-easy-full/hud-report.json": "a39ca0c1c770604820c466e2c02b28b73f97ae91d6be477b53266d128e98dc83",
+    "artifacts/th14/stage-item-retirement-oct25/reimua-easy-full/live-report.json": "617e5a242686a6716d697a074c63c8848530d13c22972d5580243ebfbaa5cebe",
+    "artifacts/th14/stage-item-retirement-oct25/reimua-easy-full/combat-snapshots.json": "f558d4cc961a8786759653ecf29c45ce851a0d5922a29904f12a11585e71d1e7",
+    "artifacts/th14/stage-item-retirement-oct25/reusable-hard-full/camera-report.json": "7e2ff8e9fbaa5b44983d730db8478076312e5b71cbef09bca616ba0a194112fe",
+    "artifacts/th14/stage-item-retirement-oct25/reusable-hard-full/hud-report.json": "b58500349c46b638cc466629fbc60324b040ba8e2f23a3701d8459dafacc7dd4",
+    "artifacts/th14/stage-item-retirement-oct25/reusable-hard-full/live-report.json": "e9765133a6d3c0627740a1d20c2bcaeb137fbe32f4b2c6b9b60419a9270a754e",
+    "artifacts/th14/stage-item-retirement-oct25/reusable-hard-full/combat-snapshots.json": "f48c549943f0b8af1f50fa6baac63f1e31691a9d102498ef4e986aa7ce4f2a22",
+    "artifacts/th14/stage-item-retirement-oct25/timeline-clear-full/camera-report.json": "06922d33b3d2ac543971c523b0a91561298667f1c20d258674f7048268de1649",
+    "artifacts/th14/stage-item-retirement-oct25/timeline-clear-full/hud-report.json": "0a33da79d8f3a8e2128395fc5624d9e11abd7622346720e4946059399eae9a6d",
+    "artifacts/th14/stage-item-retirement-oct25/timeline-clear-full/live-report.json": "e5c9df6c92ec8d158a88060dd8bdbeb07ef27f5431875e0bc296e21a3c9b2369",
+    "artifacts/th14/stage-item-retirement-oct25/timeline-clear-full/combat-snapshots.json": "842c881f3e7c97e545e2473a38fbba792bdd42f80a424dd91c5177df0e19b818"
   },
-  "toolSha256": "f471e5833236b6f843ee1959f0d5c02e9b2582fe73b7c4bf8b690deb3181f609",
+  "toolSha256": "974b655649fedb24a3e598d48b8a39be6c9f2912ad1fb96230685de1c3fc9fc5",
   "completeGame": false,
   "nativeEquivalent": false
 }

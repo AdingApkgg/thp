@@ -8,6 +8,7 @@ from ctypes import wintypes as W
 import argparse
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
+observer_source_bytes=Path(__file__).read_bytes()
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--assets',required=True,help='Verified private archive directory from th14-native-campaign-assets.mjs')
 parser.add_argument('--output',required=True,help='New output directory under artifacts/th14; existing directories are refused')
@@ -21,10 +22,16 @@ parser.add_argument('--max-seconds',type=int,default=7200)
 parser.add_argument('--maximum-callbacks',type=int,default=160000)
 parser.add_argument('--minimum-free-gib',type=float,default=100)
 parser.add_argument('--maximum-capture-gib',type=float,default=2)
+parser.add_argument('--scene-camera-events',action='store_true',help='Observe scene camera-copy and main-loop camera publication/perspective boundaries during transitions')
+parser.add_argument('--controller-phase-events',action='store_true',help='Observe original loading-flag read at controller priority11; with scene camera events, replaces the perspective breakpoint')
+parser.add_argument('--live-callbacks',help='Comma-separated predeclared VM observation callbacks, including1; maximum32')
 parser.add_argument('--game-directory',help='Default: directory of executable in runtimes/th14/target.json')
 opt=parser.parse_args()
 assert 1<=opt.publication_cutoff<=opt.maximum_callbacks and opt.max_seconds>0
 assert opt.minimum_free_gib>=0 and opt.maximum_capture_gib>0
+snapshot_callbacks=tuple(int(value)for value in opt.live_callbacks.split(','))if opt.live_callbacks else(1,26000,30000,36000,38900,60000,90000,120000)
+assert 1<=len(snapshot_callbacks)<=32 and snapshot_callbacks==tuple(sorted(set(snapshot_callbacks)))and snapshot_callbacks[0]==1
+assert snapshot_callbacks[-1]<=opt.maximum_callbacks
 storage_spec=importlib.util.spec_from_file_location('test_storage',root/'tools/th14-test-storage.py')
 storage=importlib.util.module_from_spec(storage_spec);storage_spec.loader.exec_module(storage)
 original=Path(opt.game_directory) if opt.game_directory else Path(json.loads((root/'runtimes/th14/target.json').read_text())['executable']).parent
@@ -32,6 +39,8 @@ original=Path(opt.game_directory) if opt.game_directory else Path(json.loads((ro
 spec=importlib.util.spec_from_file_location('native_types',root/'tools/th14-native-session-capture.py')
 types=importlib.util.module_from_spec(spec);spec.loader.exec_module(types)
 home=(root/opt.output).resolve();assert home.is_relative_to((root/'artifacts/th14').resolve());home.mkdir(exist_ok=False)
+(home/'observer-source.py').write_bytes(observer_source_bytes)
+(home/'snapshot-plan.json').write_text(json.dumps(dict(callbacks=snapshot_callbacks,observationOnly=True,predeclaredBeforeOriginalProcessLaunch=True),indent=2)+'\n')
 work=home/'work';work.mkdir();sha=lambda b:hashlib.sha256(b).hexdigest()
 def storage_budget():return storage.check_budget(home,int(opt.minimum_free_gib*1024**3),int(opt.maximum_capture_gib*1024**3))
 storage_budget()
@@ -75,8 +84,10 @@ combat_module=root/('tools/th14-combat-pool-readonly-v'+str(opt.combat_schema)+'
 combat_spec=importlib.util.spec_from_file_location('combat_pool',combat_module)
 combat_pool=importlib.util.module_from_spec(combat_spec);combat_spec.loader.exec_module(combat_pool)
 combat_snapshots=[]
+latest_camera_boundary=None;camera_boundary_count=0;scene_camera_copies=[]
 sleep_pcs={};transition_trace=False;transition_events=[]
 targets={0x435b0f:'sleep60-before-call',0x435b11:'sleep60-returned',0x456133:'replay-seeds-restored-before-globals-copy',0x44dbd0:'player-entry',0x47e938:'initial-anm-publication',0x45286f:'beam-uninitialized-scratch-read',0x47d720:'main-resource-pump',0x47d0ec:'cpu-resource-queued',0x4441a8:'signature-ready-flag-published',0x444222:'ascii-ready-flag-published',0x4595e1:'title-worker-signature-retirement',0x459615:'title-ready-flag-published',0x44c4c6:'initial-player-file-returned',0x44d2aa:'initial-player-initialized',0x435e22:'initial-player-options-ready',0x43605a:'initial-control-loading-flag-cleared',0x4360c6:'initial-worker-complete'}
+targets.update({0x40dae9:'controller-camera-published',0x4465a6:'world-perspective-right-written',0x40d435:'scene-camera-copy-before',0x40d447:'scene-camera-copy-after',0x436bed:'controller-loading-flag-read'})
 serial_watch_manager=0;pending_publications={};allocation_rows=[];serial_write_rows=[];hud_raw=bytearray()
 serial_after_to_publish={0x47e90f:(0x47e938,'edi'),0x47e918:(0x47e938,'edi'),0x47e9b8:(0x47e9e1,'esi'),0x47e9c1:(0x47e9e1,'esi'),0x47ea6f:(0x47ea98,'edi'),0x47ea78:(0x47ea98,'edi'),0x47eb18:(0x47eb41,'esi'),0x47eb21:(0x47eb41,'esi')}
 
@@ -100,6 +111,10 @@ def install(tid,current=False):
     trace_publications=first_snapshot is not None and callback_count<opt.publication_cutoff
     addresses=[0x44dbd0,serial_watch_manager+0xff52c8 if trace_publications else sleep_pcs.get(tid,0x435b0f),pending['publishPc']if trace_publications and pending else (0x456133 if tid==pi.tid else sleep_pcs.get(tid,0x435b0f)) if trace_publications else (0x456133 if tid==pi.tid else 0x47d0ec),0x47d720 if tid==pi.tid and transition_trace else 0x47d0ec if tid!=pi.tid and trace_publications else 0]if first_snapshot is not None else[0x44dbd0,serial_watch_manager+0xff52c8 if serial_watch_manager else 0x47e938,pending['publishPc']if pending else 0,0x47d720 if tid==pi.tid else worker_phase_pcs.get(tid,0x47d0ec)]
     if first_snapshot is not None and tid!=pi.tid:addresses[3]=hud_score_pc.get(tid,0x42ec65)
+    if first_snapshot is not None and not trace_publications and tid==pi.tid and transition_trace and opt.scene_camera_events:
+        addresses[1:3]=[0x40dae9,0x4465a6]
+    if first_snapshot is not None and not trace_publications and tid==pi.tid and transition_trace and opt.controller_phase_events:
+        addresses[2]=0x436bed
     if first_snapshot is None and tid==pi.tid and not ascii_create_invocations:addresses[0]=0x44477a
     for index,address in enumerate(addresses):struct.pack_into('<I',b,4+4*index,address)
     struct.pack_into('<I',b,20,0)
@@ -169,6 +184,35 @@ def capture_live_animations(label='first-player-live-vms'):
 
 def event_snapshot(pc,tid,b):
     global last_pan,last_rectangle,complete,main_resource_frames,transition_trace
+    global latest_camera_boundary,camera_boundary_count
+    if pc==0x436bed:
+        assert opt.controller_phase_events and tid==pi.tid
+        # The preceding mov436be7 already read the flags. Retain EAX as a
+        # diagnostic of races across this instruction, never an engine input.
+        assert read(0x436be7,6).hex()=='8b8780000000' and read(pc,2).hex()=='a804'
+        control=u32(0x4db558)
+        row=dict(event=targets[pc],pc=pc,threadId=tid,hostMonotonicNs=time.monotonic_ns(),precedingPlayerCallbacks=callback_count,stage=u32(0x4f58a4),cachedFlags=struct.unpack_from('<I',b,176)[0],currentFlags=u32(control+0x80),stageFrame=u32(control+0x14),readOnly=True)
+        with(home/'controller-phase-events.jsonl').open('a',encoding='utf8')as stream:stream.write(json.dumps(row)+'\n')
+        return
+    if pc in (0x40dae9,0x4465a6,0x40d435,0x40d447):
+        assert opt.scene_camera_events
+        ebx,esi=struct.unpack_from('<I',b,164)[0],struct.unpack_from('<I',b,160)[0]
+        if pc==0x4465a6 and esi!=0x4d9514:return
+        row=dict(event=targets[pc],pc=pc,threadId=tid,hostMonotonicNs=time.monotonic_ns(),precedingPlayerCallbacks=callback_count,stage=u32(0x4f58a4),readOnly=True)
+        if pc==0x40d435:
+            assert read(pc,5).hex()=='b94b000000'
+            row.update(scene=ebx,sourceRightHex=read(0x4d9544,12).hex(),lastMainCameraBoundary=latest_camera_boundary)
+            hud_score_pc[tid]=0x40d447
+            with(home/'scene-camera-copy-events.jsonl').open('a',encoding='utf8')as stream:stream.write(json.dumps(row)+'\n')
+        elif pc==0x40d447:
+            assert read(0x40d435,5).hex()=='b94b000000' and read(0x40d445,2).hex()=='f3a5'
+            row.update(scene=ebx,copiedBytes=0x12c,copiedRightHex=read(ebx+0x42a4,12).hex(),lastMainCameraBoundary=latest_camera_boundary)
+            scene_camera_copies.append(row);hud_score_pc[tid]=0x43605a
+            with(home/'scene-camera-copy-events.jsonl').open('a',encoding='utf8')as stream:stream.write(json.dumps(row)+'\n')
+        else:
+            camera_boundary_count+=1;row.update(ordinal=camera_boundary_count,rightHex=read(0x4d9544,12).hex());latest_camera_boundary=row
+            with(home/'camera-boundary-events.jsonl').open('a',encoding='utf8')as stream:stream.write(json.dumps(row)+'\n')
+        return
     if pc in (0x435b0f,0x435b11,0x456133):
         regs=dict(zip(['edi','esi','ebx','edx','ecx','eax','ebp','eip','cs','eflags','esp'],struct.unpack_from('<11I',b,156)))
         control=u32(0x4db558)
@@ -304,7 +348,7 @@ try:
                             row=dict(event=targets[pc],pc=pc,threadId=ev.tid,hostMonotonicNs=time.monotonic_ns(),precedingPlayerCallbacks=callback_count,stage=u32(0x4f58a4),hud=ebx,hudDisplayedScoreUnits=u32(ebx+0x140),globalScoreUnits=u32(0x4f5830),eax=eax,originalInstructionBytes=read(pc,10).hex(),readOnly=True)
                             hud_score_writes.append(row)
                             with(home/'hud-initialization-events.jsonl').open('a',encoding='utf8')as f:f.write(json.dumps(row)+'\n')
-                            hud_score_pc[ev.tid]=0x42ec6b if pc==0x42ec65 else 0x43605a
+                            hud_score_pc[ev.tid]=0x42ec6b if pc==0x42ec65 else 0x40d435 if opt.scene_camera_events else 0x43605a
                         elif pc==0x44dbd0:
                             words=player_snapshot();last_player_time=time.monotonic()
                             if first_snapshot is None:
@@ -324,7 +368,7 @@ try:
                                 checkpoint=combat_pool.capture(read,callback_count,words,home/'combat-pools')
                                 combat_snapshots.append(checkpoint)
                                 (home/'combat-pool-index.json').write_text(json.dumps(dict(readOnly=True,fields=combat_pool.SCHEMA,snapshots=combat_snapshots),indent=2)+'\n')
-                            if callback_count in (1,26000,30000,36000,38900,60000,90000,120000):
+                            if callback_count in snapshot_callbacks:
                                 capture_live_animations('live-vms-callback-'+str(callback_count));live_capture_callbacks.append(callback_count)
                             if transition_trace and 2<=words[30]<=6 and words[0]>0 and not(u32(u32(0x4db558)+0x80)&4):
                                 transition_trace=False
@@ -365,7 +409,7 @@ finally:
         rngOrCounterWrites=0,inputInjected=False,realOriginalWindowsProcess=True,ordinaryMenuReplayInitialization=False,hiddenWindowRequested=True,
         configuredMusicAndSoundVolumeZero=True,actualAudioPcmMeasured=False,debuggerPausesAffectTiming=True,hostTimeIsOriginalClockInput=False,
         callbacks=callback_count,selectedSha256=sha(raw),selectedBytes=len(raw),playerHostTimesSha256=sha(player_times),observedReplayTerminalMarker=observed_terminal_marker,observedForcedReplayEndMenu=complete,observedColdFirstPlayerBoundary=first_snapshot is not None,derivedSingleStageReplay=False,derivedTwoStageReplay=False,intactOriginalReplay=True,recordedStages=sorted({struct.unpack_from('<I',raw,i+120)[0]for i in range(0,len(raw),128)}),transitionEvents=transition_events,sourceFullReplaySha256=asset_report['replaySha256'],recordedStageHeaderInputAndFpsRetainedExactly=True,anmPublicationTraceEndsAtFirstPlayer=False,anmPublicationTraceCutoffPlayerCallbacks=opt.publication_cutoff,hudScoreStride=8,hudScoreSha256=sha(hud_raw),worldCameraSha256=sha(camera_raw),worldCameraBytes=len(camera_raw),worldCameraStride=0x124,mainResourceFrames=main_resource_frames,allAnmPublications=len(allocation_rows),serialWriteObservations=len(serial_write_rows),allocationEventsSha256=sha((home/'allocation-events.jsonl').read_bytes())if(home/'allocation-events.jsonl').exists()else None,allRecordedSerialsContiguous=len(allocation_rows)<=0x7ffff,serialModulus=0x7ffff,serialSkipsZero=True,allRecordedPublicationOrdinalsContiguous=all(r['publicationOrdinal']==i+1 and r['serial']==i%0x7ffff+1 for i,r in enumerate(allocation_rows)),observedSerialWrapPublicationOrdinals=[r['publicationOrdinal']for r in allocation_rows if r['serial']==1 and r['publicationOrdinal']>1],terminalMenuSamples=terminal_menu_samples,beamFallbackCount=len(events),
-        readOnlyLiveAnimationSnapshots=live_capture_callbacks,liveAnimationSnapshotBoundary="before original Player callback",childExited=exited,error=error,debugErrors=debug_errors,elapsedSeconds=time.monotonic()-started,sourceSha256=sha(Path(__file__).read_bytes()),
+        readOnlyLiveAnimationSnapshots=live_capture_callbacks,liveAnimationSnapshotBoundary="before original Player callback",childExited=exited,error=error,debugErrors=debug_errors,elapsedSeconds=time.monotonic()-started,sourceSha256=sha(observer_source_bytes),observerSourceFrozenAtStart=True,sceneCameraCopyEvents=len(scene_camera_copies),mainCameraBoundaryEvents=camera_boundary_count,
         nativeTypesSourceSha256=sha((root/'tools/th14-native-session-capture.py').read_bytes()),completeGame=False,nativeEquivalent=False)
     (home/'report.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:report[k]for k in('observedForcedReplayEndMenu','allAnmPublications','beamFallbackCount','callbacks','childExited','error','elapsedSeconds')}),flush=True)
 if error or not complete:raise SystemExit(1)

@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 import re
+import stat
 import subprocess
 from pathlib import Path
 
@@ -32,6 +33,10 @@ def main():
         p=p.resolve();key=p.as_posix()
         if key in dependencies:return
         raw=p.read_bytes();dependencies[key]=SHA(raw)
+        cache=ROOT/'artifacts/th14/shared-observer-source-cache';cache.mkdir(exist_ok=True)
+        retained=cache/(dependencies[key]+'.bin')
+        if not retained.exists():retained.write_bytes(raw)
+        assert SHA(retained.read_bytes())==dependencies[key];retained.chmod(stat.S_IREAD)
         for name in re.findall(r'^\s*#\s*include\s*"([^"]+)"',raw.decode(),re.M):
             candidates=[p.parent/name,*[d/name for d in include_dirs]]
             child=next((v for v in candidates if v.exists()),None);assert child,name;scan(child)
