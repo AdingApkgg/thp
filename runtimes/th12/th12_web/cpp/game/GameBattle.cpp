@@ -214,6 +214,9 @@ bool GameBattle::pump_stage_loading(u64 now,i32 first_capture_index,u32 supervis
     return true;
 }
 bool GameBattle::retire_stage_owner(){
+    // Retail4363ea clears the item pools before retiring the enemy owner.
+    // Items must not remain collectible during the incoming worker wait.
+    items.reset();
     if(!enemies.retire())return false;
     // 4227d6..42281d unloads the six ECL animation files during owner
     // retirement. Their live VMs must leave ANM29 before loading's children.

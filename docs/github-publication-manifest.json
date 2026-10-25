@@ -1,7 +1,7 @@
 {
   "date": "2026-10-25",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "6526182b593605e6d29d814cd5d74629d055b9d7",
+  "sourceCommit": "defcddc204c2b883d7f663ab946a7d503d5f351b",
   "files": [
     {
       "path": ".gitignore",
@@ -200,8 +200,8 @@
     },
     {
       "path": "docs/porting/TH14_METHOD.md",
-      "bytes": 41517,
-      "sha256": "7f11dfd4e164f1446a0ec912a6a25c7227a79c47bc2feab23e575079844d5db6"
+      "bytes": 42142,
+      "sha256": "dd9bc5eda2c578cb4d57c58c4db704528701703adaaf8e4f36c4f5c904280e57"
     },
     {
       "path": "docs/porting/TH14_MIDGAME_VISUALS_OCT24.md",
@@ -267,6 +267,11 @@
       "path": "docs/porting/TH14_PRIMITIVE_VIEWPORT_FIX_OCT19.md",
       "bytes": 3938,
       "sha256": "43dee0b448404b2939507a40e50893e04e9beb960a8a4315279326aac52460b3"
+    },
+    {
+      "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
+      "bytes": 2465,
+      "sha256": "aa4bd4c99049b1b2c6ce61cda348d4c05765de15ac45ba5d993f8905d7b2f826"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -344,6 +349,11 @@
       "sha256": "4070837169aab4197a79c0fac54a5e9b33cc4e713ed4157fd34ce9a427a91d45"
     },
     {
+      "path": "docs/porting/TH14_STAGE_ITEM_RETIREMENT_OCT25.md",
+      "bytes": 3048,
+      "sha256": "42cea65faf3fff11eaeffc38c06bb77776f09d69f6ceae7bf2c94b932bd2b8b3"
+    },
+    {
       "path": "docs/porting/TH14_STAGE_OWNER_RETIREMENT_OCT24.md",
       "bytes": 3369,
       "sha256": "1b97dbd2be5a03ff4f57c96ce8d4ed740e184887504c71978c61f198e18cd6a1"
@@ -397,6 +407,11 @@
       "path": "docs/porting/TH14_STARTUP_WORKER_OCT24.md",
       "bytes": 3156,
       "sha256": "31c9e3059f8d28ae587a2b051439e5605ab9c92d2612a8d097104e24ece62086"
+    },
+    {
+      "path": "docs/porting/TH14_STORAGE_POLICY_OCT25.md",
+      "bytes": 1854,
+      "sha256": "66115a4cb1f8910e9808a6b1647e333ecfc5d3a6672e110c6ddee44a61cb324b"
     },
     {
       "path": "docs/porting/TH14_SUPERVISOR_NEXT_STAGE_OCT23.md",
@@ -2844,6 +2859,11 @@
       "sha256": "a7094209c193f5156121c6f2a819aebe507fb8178e5a7517d35e189b7add390f"
     },
     {
+      "path": "docs/porting/th14-launcher-runtime-stage-item-retirement-candidate-oct25.json",
+      "bytes": 239143,
+      "sha256": "d4edb658883419c3f5cf82a021609c49d84c8ef26be6efa2f12dc610530ac8da"
+    },
+    {
       "path": "docs/porting/th14-launcher-runtime-stage-owner-retirement-candidate-oct24.json",
       "bytes": 240136,
       "sha256": "c13a6600f93fef532642efac6610c721ba2be6f7a5ae1b607c940f8e5a7ff598"
@@ -3077,6 +3097,11 @@
       "path": "docs/porting/th14-launcher-site-stage-entry-options-candidate-oct24.json",
       "bytes": 36808,
       "sha256": "7f9e444e0d1465cd0031546859c2e991eb503c030b19a2c36bfade1c9c8ba9f0"
+    },
+    {
+      "path": "docs/porting/th14-launcher-site-stage-item-retirement-candidate-oct25.json",
+      "bytes": 39173,
+      "sha256": "9aa305e0d8a25a7e79be661ab7da192942fff95d65a6c5d10aed00d8ddd03bb5"
     },
     {
       "path": "docs/porting/th14-launcher-site-stage-owner-retirement-candidate-oct24.json",
@@ -5197,6 +5222,11 @@
       "path": "docs/porting/th14-stage-interrupt-verified.json",
       "bytes": 1387,
       "sha256": "7e8321649209d3aab2696cd63d974aac43a477586096e72fb8825f7e654accc5"
+    },
+    {
+      "path": "docs/porting/th14-stage-item-retirement-verified-oct25.json",
+      "bytes": 10377,
+      "sha256": "eecf09dceae0102fc4534088a6c135a2fafeb9f363cb81dcde049acbcd066dcb"
     },
     {
       "path": "docs/porting/th14-stage-layer-state-observed-oct12.json",
@@ -7450,8 +7480,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "bytes": 62713,
-      "sha256": "e5182139ceb08e247d97bd200c682b6f8d0ce8e9a8eed053f3be7c15be403ffc"
+      "bytes": 62884,
+      "sha256": "248740f71c5206f728716f8d2d98e1ab717992da2e42565e27b3cf248c23f0d0"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
@@ -14994,6 +15024,16 @@
       "sha256": "2cd6b5c7306683d3f77d86f4bf7dc5c64bdd7fd39ac5e931cdd0026af44220bf"
     },
     {
+      "path": "tools/th14-combat-pool-readonly-v2-oct25.py",
+      "bytes": 5276,
+      "sha256": "73d5927fc746393f781e23e5b9e6b78ba4c5b89bdaaa272591489ba8bce14f38"
+    },
+    {
+      "path": "tools/th14-combat-pool-readonly-v3-oct25.py",
+      "bytes": 6611,
+      "sha256": "8714448699df7aab1af1723a394176bc05590eb8a3827ed7cce54313a4e2f233"
+    },
+    {
       "path": "tools/th14-comparison-failure-receipt.py",
       "bytes": 2311,
       "sha256": "6fad9e51586a4c8c160b618f34ba8476a1a7d4355d00f67f2ec91afda8101ab6"
@@ -17234,6 +17274,11 @@
       "sha256": "f6c12514595d6c6d00a074d13250d95dc1e446c54814908db529633562251194"
     },
     {
+      "path": "tools/th14-immutable-artifacts.mjs",
+      "bytes": 1317,
+      "sha256": "61b6f67d9d566b4603013aa73a5220aeefe454e1695d874233c8263728477094"
+    },
+    {
       "path": "tools/th14-item-check.mjs",
       "bytes": 7502,
       "sha256": "57d85d692158dccead83388c75c1c103fbd582df077ab855f9254c0e15535704"
@@ -17717,6 +17762,11 @@
       "path": "tools/th14-native-campaign-assets.mjs",
       "bytes": 4785,
       "sha256": "b90d3fd6cd7338d0264c9649e6724a13cc5491ceb50f389ef1c072c9838285f0"
+    },
+    {
+      "path": "tools/th14-native-campaign-observer-oct25.py",
+      "bytes": 34676,
+      "sha256": "03491643571802e13d793ad3991be75215c1bf8722b37ca06c113a9548926363"
     },
     {
       "path": "tools/th14-native-detail-window-capture.py",
@@ -20169,6 +20219,11 @@
       "sha256": "17c1fcd0309f733616eab69733b6c2b959ca86e62db8904ef0d497013ed50165"
     },
     {
+      "path": "tools/th14-stage-item-retirement-evidence-check-oct25.py",
+      "bytes": 8030,
+      "sha256": "fa20c1c83344aff82d876b63246e86bfcf6ddb1aa1e083d3777d2766eaf63547"
+    },
+    {
       "path": "tools/th14-stage-layer-state-check.mjs",
       "bytes": 3379,
       "sha256": "6b842e0f47b5d17beb93831c96cbac17ad342efd558a8b832716eb69f7f41f44"
@@ -21177,6 +21232,11 @@
       "path": "tools/th14-template-layer-full-combat-evidence-check.py",
       "bytes": 16181,
       "sha256": "9bb97a060d652ea2e4d167fecc479cd0da818beddb163296d6a28534771dbe7d"
+    },
+    {
+      "path": "tools/th14-test-storage.py",
+      "bytes": 2282,
+      "sha256": "e8774729516efdeb8bda0600fe4c8fd2c443ee0e4b87fb00c17f88e94834e8c7"
     },
     {
       "path": "tools/th14-text-layout-native.py",
@@ -22590,27 +22650,20 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "dd79e69ca83977802cf102c2f813c86255a9566e",
-    "title": "TH14 Title scene boundary and Ending whole-chain fast-forward",
-    "changedSourceAndMetadataFiles": 18,
-    "productionSourceFiles": 3,
-    "completeGame": false,
-    "nativeEquivalent": false,
+    "basePublishedCommit": "defcddc204c2b883d7f663ab946a7d503d5f351b",
+    "title": "TH14 stage item retirement and bounded storage",
+    "changedSourceAndMetadataFiles": 14,
+    "productionSourceFiles": 1,
     "productionGameplayChanged": true,
     "productionGraphicsChanged": false,
     "productionAudioChanged": false,
     "gameAssetsAdded": false,
-    "sdlWasmSha256": "0e1ba6d1531edb51cfcf3f45aa0e01c4221788716369154470c95834d114a4bd",
-    "matrixCases": 30,
-    "matrixCallbacks": 2885731,
-    "comparedRaw32Words": 92343392,
-    "raw32DifferentWords": 0,
-    "fullReplayComparison": "Immutable prior Portable outputs, not full Native equality",
-    "naturalLiveClears": 2,
-    "controlledNativeEndingCases": 32,
-    "controlledNativeEndingPasses": 672,
-    "titleRoutePhysicalTicks": 2975,
-    "browserObservation": "docs/porting/th14-title-ending-browser-observed-oct23.json",
-    "unrelatedResourceCryptEditExcluded": true
+    "sdlWasmSha256": "7bebd2edc4cab71040f92a94029269a6bcc3dc518c6189bfd504223ec275960e",
+    "fullNativeReplayCallbacks": 107662,
+    "combatSelectedCheckpoints": 1496,
+    "currentSdlBrowserAcceptance": false,
+    "unrelatedResourceCryptEditExcluded": true,
+    "completeGame": false,
+    "nativeEquivalent": false
   }
 }
