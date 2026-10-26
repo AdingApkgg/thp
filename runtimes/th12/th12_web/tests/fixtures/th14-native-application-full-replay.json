@@ -1,0 +1,208 @@
+{
+  "schema": "th14/native-application-scenario/1",
+  "scope": "One bounded whole Application replay through the ordinary C++ menu and actual renderer/audio. Initial private files contain one intact independent SakuyaBHard recording only; no game/RNG/death/health/stage overrides. Stage waits query actual readonly state. Six stage entries, living stock1 and stable natural replay menu are required. Native-unit platform/normalized input scope, not browser or original ordinary-UI acceptance.",
+  "actions": [
+    {
+      "frames": 420,
+      "expect": {
+        "0": 0,
+        "3": 1,
+        "4": 0,
+        "5": 2,
+        "19": 1
+      }
+    },
+    {
+      "frames": 1,
+      "held": 32
+    },
+    {
+      "frames": 2
+    },
+    {
+      "frames": 1,
+      "held": 32
+    },
+    {
+      "frames": 2
+    },
+    {
+      "frames": 1,
+      "held": 32
+    },
+    {
+      "frames": 2
+    },
+    {
+      "frames": 1,
+      "held": 1
+    },
+    {
+      "frames": 30,
+      "expect": {
+        "0": 0,
+        "3": 11,
+        "4": 0,
+        "5": 2
+      }
+    },
+    {
+      "frames": 1,
+      "held": 1
+    },
+    {
+      "frames": 20,
+      "expect": {
+        "3": 11,
+        "5": 4
+      }
+    },
+    {
+      "frames": 1,
+      "held": 1
+    },
+    {
+      "frames": 240,
+      "held": 0,
+      "capture": "stage-one-ready",
+      "expect": {
+        "0": 1,
+        "1": 1,
+        "13": 2,
+        "14": 1,
+        "15": 2
+      }
+    },
+    {
+      "frames": 35000,
+      "held": 0,
+      "until": {
+        "index": 1,
+        "equals": 2
+      },
+      "capture": "stage-2-entry",
+      "expect": {
+        "0": 1,
+        "1": 2
+      }
+    },
+    {
+      "frames": 240,
+      "held": 0,
+      "expect": {
+        "0": 1,
+        "1": 2
+      }
+    },
+    {
+      "frames": 35000,
+      "held": 0,
+      "until": {
+        "index": 1,
+        "equals": 3
+      },
+      "capture": "stage-3-entry",
+      "expect": {
+        "0": 1,
+        "1": 3
+      }
+    },
+    {
+      "frames": 240,
+      "held": 0,
+      "expect": {
+        "0": 1,
+        "1": 3
+      }
+    },
+    {
+      "frames": 35000,
+      "held": 0,
+      "until": {
+        "index": 1,
+        "equals": 4
+      },
+      "capture": "stage-4-entry",
+      "expect": {
+        "0": 1,
+        "1": 4
+      }
+    },
+    {
+      "frames": 240,
+      "held": 0,
+      "expect": {
+        "0": 1,
+        "1": 4
+      }
+    },
+    {
+      "frames": 35000,
+      "held": 0,
+      "until": {
+        "index": 1,
+        "equals": 5
+      },
+      "capture": "stage-5-entry",
+      "expect": {
+        "0": 1,
+        "1": 5
+      }
+    },
+    {
+      "frames": 240,
+      "held": 0,
+      "expect": {
+        "0": 1,
+        "1": 5
+      }
+    },
+    {
+      "frames": 35000,
+      "held": 0,
+      "until": {
+        "index": 1,
+        "equals": 6
+      },
+      "capture": "stage-6-entry",
+      "expect": {
+        "0": 1,
+        "1": 6
+      }
+    },
+    {
+      "frames": 240,
+      "held": 0,
+      "expect": {
+        "0": 1,
+        "1": 6
+      }
+    },
+    {
+      "frames": 35000,
+      "held": 0,
+      "until": {
+        "index": 0,
+        "equals": 2
+      },
+      "capture": "natural-replay-end",
+      "expect": {
+        "0": 2,
+        "1": 6,
+        "7": 1
+      }
+    },
+    {
+      "frames": 60,
+      "held": 0,
+      "capture": "stable-replay-end",
+      "expect": {
+        "0": 2,
+        "1": 6,
+        "7": 1,
+        "11": 3,
+        "12": 1
+      }
+    }
+  ]
+}

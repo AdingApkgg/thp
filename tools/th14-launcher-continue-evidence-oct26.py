@@ -90,7 +90,9 @@ def main():
         assert run['completed']and not run['error']and run['frames']==3637 and run['backend']==backend
         assert run['scenarioSha256']==SHA(read(scenario_path))and run['metadataEpochAtFrameZero']==1792965600
         assert run['actualProductionApplicationAndDevices']and run['physicalAudioDevicesOpened']==0
-        assert run['toolSha256']==SHA(read(folder/'run-tool.py'))==SHA(read(ROOT/'tools/th14-native-application.py'))
+        # Verify the frozen runner that actually produced this run. Later
+        # budget/scenario changes neither inherit the run nor change its bytes.
+        assert run['toolSha256']==SHA(read(folder/'run-tool.py'))
         assert not run['browserRun']and not run['appUiControlled']and run['initialSave']==run['finalSave']=={}
         assert len(run['actions'])==len(scenario['actions'])==22
         expected_checks=[];last=0
@@ -115,6 +117,7 @@ def main():
         for capture in run['captures']:
             raw=read(folder/capture['file']);assert len(raw)==640*480*4 and SHA(raw)==capture['sha256']
         runs.append(run)
+    assert runs[0]['toolSha256']==runs[1]['toolSha256']
     assert runs[0]['rows']==runs[1]['rows']and runs[0]['actions']==runs[1]['actions']
     assert runs[0]['captures']==runs[1]['captures']and runs[0]['pcmSha256']==runs[1]['pcmSha256']
     for capture in runs[0]['captures']:
@@ -124,6 +127,7 @@ def main():
         beamObservation=dict(productionGameplayChanged=False,ownedShotWidth=54,reusedAreaWidth=48,changedObservedWords=1,
             strictCases=native_cases,wasmSha256=build['wasmSha256'],engineObjectsUnchanged=141),
         applicationContinue=dict(framesPerBackend=3637,assertionsPerBackend=58,pairedJournalRows=len(runs[0]['rows']),
+            frozenRunnerSha256=runs[0]['toolSha256'],laterRunnerVersionsNotAcceptedByInheritance=True,
             naturalGameOverFrame=3472,restoredFrame=3517,pairedImages=4,comparedImageBytes=4*640*480*4,
             reportedPairedPcmHashEqual=True,pcmFramesPerBackend=2515968,noGameplayOverrides=True,
             originalOrdinaryMenuEquivalence=False,physicalAudioDevicesOpened=0,browserAcceptance=False),

@@ -26,7 +26,10 @@ parser.add_argument('--backend',choices=['gles','webgpu'],default='gles')
 parser.add_argument('--angle-directory',type=Path)
 parser.add_argument('--wgpu-site',type=Path)
 parser.add_argument('--metadata-epoch',type=int,help='Declared UTC seconds at virtual frame zero; override WASI realtime for reproducible replay metadata')
+parser.add_argument('--maximum-frames',type=int,default=12000,help='Explicit bounded scenario budget, at most240000')
+parser.add_argument('--maximum-wall-seconds',type=int,default=900,help='Explicit wall budget, at most7200seconds')
 args=parser.parse_args();B=args.build.resolve();O=args.output.resolve()
+assert 1<=args.maximum_frames<=240000 and 1<=args.maximum_wall_seconds<=7200
 assert O.is_relative_to((R/'artifacts/th14').resolve())and not O.exists()
 O.mkdir(parents=True);(O/'save/replay').mkdir(parents=True)
 spec=importlib.util.spec_from_file_location('test_storage',R/'tools/th14-test-storage.py')
@@ -35,7 +38,7 @@ sha=lambda raw:hashlib.sha256(raw).hexdigest()
 scenario_raw=args.scenario.read_bytes();scenario=json.loads(scenario_raw)
 assert scenario['schema']=='th14/native-application-scenario/1'
 assert 0<len(scenario['actions'])<=256
-assert sum(action.get('frames',0)for action in scenario['actions'])<=12000
+assert sum(action.get('frames',0)for action in scenario['actions'])<=args.maximum_frames
 if args.initial_save:
  source=args.initial_save.resolve(strict=True)
  assert source.is_relative_to((R/'artifacts/th14').resolve())and source!=O/'save'
@@ -191,11 +194,11 @@ try:
   result.update(backend=args.backend,hostToolSha256=sha(host_path.read_bytes()),metadataEpochAtFrameZero=args.metadata_epoch)
   (O/'report.json').write_text(json.dumps(result,indent=2)+'\n')
   return result
- print(json.dumps(dict(ready=True,state=state_now(),maximumFrames=12000,maximumWallSeconds=900,output=str(O))),flush=True)
+ print(json.dumps(dict(ready=True,state=state_now(),maximumFrames=args.maximum_frames,maximumWallSeconds=args.maximum_wall_seconds,output=str(O))),flush=True)
  for command in scenario['actions']:
   assert set(command)<=set(['frames','held','pause','capture','expect','until'])
-  count=int(command.get('frames',0));held=int(command.get('held',0));pause=int(command.get('pause',0));assert 0<=count<=6000 and 0<=held<2**32 and pause in [0,1]
-  assert frame_index+count<=12000 and time.monotonic()-wall_started<900
+  count=int(command.get('frames',0));held=int(command.get('held',0));pause=int(command.get('pause',0));assert 0<=count<=args.maximum_frames and 0<=held<2**32 and pause in [0,1]
+  assert frame_index+count<=args.maximum_frames and time.monotonic()-wall_started<args.maximum_wall_seconds
   actions.append(dict(atFrame=frame_index,frames=count,held=held,pause=pause))
   until=command.get('until')
   if until is not None:
@@ -204,7 +207,7 @@ try:
    assert isinstance(until['equals'],int)and 0<=until['equals']<=0xffffffff
    actions[-1]['until']=until
   for _ in range(count):
-   assert time.monotonic()-wall_started<900,'Native Application wall budget exhausted'
+   assert time.monotonic()-wall_started<args.maximum_wall_seconds,'Native Application wall budget exhausted'
    frame_index+=1;clock_ns=frame_index*1000000000//60;delivered=0
    while callbacks and callbacks[0][0]<=clock_ns:
     _,_,function,argument=heapq.heappop(callbacks);target=table.get(store,function);assert target;target(store,argument);delivered+=1;assert delivered<=256
@@ -212,6 +215,9 @@ try:
    assert ok==1,C.string_at(C.addressof(api['memory'].data_ptr(store).contents)+api['th11_error'](store)).decode()
    state=state_now();key=state[:2]+state[3:6]+state[7:16]
    if not rows or frame_index%30==0 or key!=rows[-1]['key']:rows.append(dict(frame=frame_index,clockNs=clock_ns,state=state,key=key,callbacksDelivered=delivered))
+   if frame_index%3000==0:
+    storage.check_budget(O)
+    print(json.dumps(dict(progressFrame=frame_index,state=state,elapsedSeconds=time.monotonic()-wall_started,maximumFrames=args.maximum_frames)),flush=True)
    if until is not None and state[until['index']]==until['equals']:break
   if until is not None:assert state_now()[until['index']]==until['equals'],'Declared state was not reached within the frame budget'
   image=capture(command['capture'])if command.get('capture')else None

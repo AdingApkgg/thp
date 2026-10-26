@@ -52,4 +52,6 @@
 python tools/th14-launcher-continue-evidence-oct26.py --home artifacts/th14/replay-coverage-input-oct26 --launcher artifacts/th14/webgpu-js-host-oct26/launcher-candidate --output docs/porting/th14-launcher-continue-verified-oct26.json --check
 ```
 
+复核器绑定实际运行时冻结的 `run-tool.py`（SHA-256 `23b40b816b35e861d75abad73f4bf93e2e37394c57268fb661195ce6bab2f5a6`），后续工具版本不继承这次运行。所有原有动作、状态、严格对象和图像门槛不变。后续[实际 Application 六面回放](TH14_FULL_APPLICATION_REPLAY_OCT26.md)由不同的冻结运行另行验证。
+
 当前模式覆盖仍为 30 组自然结束／25 组全部目标入口。相机复制交错、effect149 地址／ABI、剩余完整模式、原版普通流程和浏览器验收继续。原版资源、录像、原始对象、画面、PCM、DLL 与 Wasm 不随源码发布。

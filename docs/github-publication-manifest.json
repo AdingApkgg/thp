@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "3a52b428a603a35c3e4a6bd0cabf3a6536bb67fd",
+  "sourceCommit": "7f752e2e9827ea3fbd4aff89ae3a3f7dc03e80af",
   "files": [
     {
       "path": ".gitignore",
@@ -184,6 +184,11 @@
       "sha256": "0cdcc2757786c32d96a8c7789d699e5ea874e63699443855bdc1b3afaef125bf"
     },
     {
+      "path": "docs/porting/TH14_FULL_APPLICATION_REPLAY_OCT26.md",
+      "bytes": 5421,
+      "sha256": "656470580e6e9ce8ee4eeec3cb50a129ea336c030a18f9a74c2aebca326c196a"
+    },
+    {
       "path": "docs/porting/TH14_HUD_COMPLETION_OCT25.md",
       "bytes": 3220,
       "sha256": "ce0236fe3774ede87e37b4995f8ccd969c5d2d25cb12d612315239350954b7fa"
@@ -210,8 +215,8 @@
     },
     {
       "path": "docs/porting/TH14_LAUNCHER_CONTINUE_OCT26.md",
-      "bytes": 5726,
-      "sha256": "93ba6503359d8f071383694f16495db80b25600d822ea1741e3eb7c740187164"
+      "bytes": 6089,
+      "sha256": "751c07dda3a770bb5c0a1c15bdfcc9204c5835d1515a9264e1b883fa66a5813f"
     },
     {
       "path": "docs/porting/TH14_LIVE_EFFECT_OCT24.md",
@@ -375,8 +380,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 11649,
-      "sha256": "fe6f44531e0e663511664750b98a0eb0d80b5bea90b40ae010f92ce1bc3d59d0"
+      "bytes": 12185,
+      "sha256": "e0e445f95f0e42e3ac77b7b76901a5c295daff693d5c591d98e0192368ae0da7"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -2394,6 +2399,21 @@
       "sha256": "fd65171377bf18362ed72f5d6ffe1542d4b418581977c8bcdd3ce55c12b21c84"
     },
     {
+      "path": "docs/porting/th14-full-application-gles-verified-oct26.json",
+      "bytes": 34106,
+      "sha256": "7503bb439fd873573796e7ffd6b4ab8ec298c7f8d6b816670836a564307bb593"
+    },
+    {
+      "path": "docs/porting/th14-full-application-pair-verified-oct26.json",
+      "bytes": 6319,
+      "sha256": "928ae4d16c08cc73e04f87af4b41adfce914297107ea7f3b9d8320fac5add8e7"
+    },
+    {
+      "path": "docs/porting/th14-full-application-webgpu-verified-oct26.json",
+      "bytes": 34472,
+      "sha256": "a9dd3487c1abdef94338f306bc3e10564aafa1b8b02fc861f8175c7dd48515db"
+    },
+    {
       "path": "docs/porting/th14-full-extra-release-area-current-checkpoint-oct14.json",
       "bytes": 37158,
       "sha256": "ad00f168c2fdf8912e68ee77237847774999f7928db0e1e0e6fc6ee680852330"
@@ -2730,8 +2750,8 @@
     },
     {
       "path": "docs/porting/th14-launcher-continue-verified-oct26.json",
-      "bytes": 101203,
-      "sha256": "11ea2aa3279a0eeb8897307b692dfc3a547a44c0b8ddeceeaf3d0a0b3761513d"
+      "bytes": 101198,
+      "sha256": "27fec5e8ae11b0a0a98e973c80f2a09199ffbb73c82d2412a0129ee824ff1510"
     },
     {
       "path": "docs/porting/th14-launcher-keys-browser-observed-oct11.json",
@@ -13054,6 +13074,11 @@
       "sha256": "84863099ed43a9861c4fc41da9dc8bdf4334fb68e0f5c946ef7d49cc7f46bb29"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/fixtures/th14-native-application-full-replay.json",
+      "bytes": 3672,
+      "sha256": "175cc189db32ba3cff2e778cffee56c5454e427b0e6ff33062dcac99f5b1e2bd"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/fixtures/th14-native-application-reload-replay.json",
       "bytes": 1367,
       "sha256": "d8fee8fbfea698184d2f4f9102a106e56bca5ab0d83ce14be365e801902f75b0"
@@ -14942,6 +14967,16 @@
       "path": "tools/th14-app-shell-precache-evidence-check.py",
       "bytes": 12631,
       "sha256": "9500b2af083741033e06a451b3555074ee065d5a49c0aab15ba76cb93ff5ac60"
+    },
+    {
+      "path": "tools/th14-application-full-replay-evidence-oct26.py",
+      "bytes": 9745,
+      "sha256": "3509572ff006513dc6897fe39dfeb2075b653b2a8184d9f3011f22af27ca09e8"
+    },
+    {
+      "path": "tools/th14-application-render-pair-check.py",
+      "bytes": 6475,
+      "sha256": "d45bc275520cce6cd484368f07d2e62ab0fa0ef66cd36ab4824e83e3e10acef0"
     },
     {
       "path": "tools/th14-area-lifecycle-browser-evidence-check.mjs",
@@ -18030,8 +18065,8 @@
     },
     {
       "path": "tools/th14-launcher-continue-evidence-oct26.py",
-      "bytes": 11014,
-      "sha256": "f9d03768e0b4a0c41f2c730c2d10300f5fc4aedefd807e8baf58de923c46585a"
+      "bytes": 11275,
+      "sha256": "d25895e4f885915d60a3726b8f6b5cf2079369e11866218950ae0fd66f799e55"
     },
     {
       "path": "tools/th14-launcher-keys-browser-proof.mjs",
@@ -18265,8 +18300,8 @@
     },
     {
       "path": "tools/th14-native-application.py",
-      "bytes": 16697,
-      "sha256": "23b40b816b35e861d75abad73f4bf93e2e37394c57268fb661195ce6bab2f5a6"
+      "bytes": 17342,
+      "sha256": "bed3b9c452b2fc5fb8fec0988d94ea84bcd8eab6c52817ebc73471b5bcf08edf"
     },
     {
       "path": "tools/th14-native-area-window-capture.py",
@@ -23335,23 +23370,21 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "3a52b428a603a35c3e4a6bd0cabf3a6536bb67fd",
-    "title": "TH14 local WebGPU Launcher, natural Application Continue and owned beam observation",
+    "basePublishedCommit": "7f752e2e9827ea3fbd4aff89ae3a3f7dc03e80af",
+    "title": "TH14 actual Application full six-stage replay across native WebGPU and GLES",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-prepare-webgpu-launcher.py",
-      "tools/th14-serve-webgpu-candidate.mjs",
-      "tools/th14-webgpu-launcher-transport-check.mjs",
-      "tools/th14-native-replay-intake.py",
-      "tools/th14-launcher-continue-evidence-oct26.py",
-      "tools/th14-build-campaign-observer.py",
       "tools/th14-native-application.py",
-      "runtimes/th12/th12_web/tests/cpp/th14-native-campaign-fixture.cpp",
-      "runtimes/th12/th12_web/tests/fixtures/th14-native-application-continue.json",
+      "tools/th14-launcher-continue-evidence-oct26.py",
+      "tools/th14-application-full-replay-evidence-oct26.py",
+      "tools/th14-application-render-pair-check.py",
+      "runtimes/th12/th12_web/tests/fixtures/th14-native-application-full-replay.json",
+      "docs/porting/TH14_FULL_APPLICATION_REPLAY_OCT26.md",
+      "docs/porting/th14-full-application-webgpu-verified-oct26.json",
+      "docs/porting/th14-full-application-gles-verified-oct26.json",
+      "docs/porting/th14-full-application-pair-verified-oct26.json",
       "docs/porting/TH14_LAUNCHER_CONTINUE_OCT26.md",
       "docs/porting/th14-launcher-continue-verified-oct26.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "docs/porting/TH14_MUSIC_CONTINUE_OCT26.md",
-      "docs/porting/TH14_JS_WEBGPU_OCT26.md",
       "docs/github-publication-manifest.json"
     ],
     "productionGameplayChanged": false,
@@ -23360,31 +23393,32 @@
     "gameAssetsAdded": false,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
-    "launcherRoutes": 133,
-    "launcherHttpChecks": 21,
-    "launcherMetadataBytesWritten": 103342,
-    "launcherPayloadBytesReferenced": 510696322,
-    "launcherPayloadFilesCopied": false,
-    "applicationNaturalContinueFramesPerBackend": 3637,
-    "applicationNaturalContinueAssertionsPerBackend": 58,
-    "applicationNaturalContinuePairedImages": 4,
-    "applicationNaturalContinuePairedPcmHashEqual": true,
-    "applicationNaturalContinuePhysicalAudioDevices": 0,
-    "correctedObserverOwnedBeamLength": true,
-    "changedObservedWords": 1,
-    "engineObjectsUnchanged": 141,
-    "newNormalInputCallbacks": 19496,
-    "newNormalInputStagesObserved": [
+    "applicationFullReplayFramesPerBackend": 123412,
+    "applicationFullReplayAssertionsPerBackend": 44,
+    "applicationFullReplayPairedJournalRows": 55071,
+    "applicationFullReplayPairedImages": 8,
+    "applicationFullReplayImageBytes": 9830400,
+    "applicationFullReplayPcmFramesPerBackend": 90553344,
+    "applicationFullReplayPcmSinkHashEqual": true,
+    "applicationFullReplayRawPcmRetained": false,
+    "applicationFullReplayActualStageActivation": [
       1,
-      2
+      2,
+      3,
+      4,
+      5,
+      6
     ],
-    "newNormalInputFullStageCoverage": false,
-    "strictEasyRegressionCallbacks": 107233,
+    "applicationFullReplayFinalLivingStock": 1,
+    "applicationFullReplayStableEndFrames": 60,
+    "physicalAudioDevicesOpened": 0,
+    "normalizedMenuInputsOnly": true,
+    "frozenRunnerSourceBound": true,
+    "laterRunnerVersionsInheritOldRuns": false,
+    "originalOrdinaryMenuEquivalence": false,
+    "originalWholeApplicationImageOrPcmEquivalence": false,
     "unrelatedResourceCryptEditExcluded": true,
-    "browserCandidateWasmSha256": "3786901cbe373d221b14f02bcb3b1fa77901512195a09ba080669753a915018c",
-    "defaultSdlWasmSha256": "23bcfdef3441f5dbccc615a0f883cf6bb2de727d95aead90396f4814d490d05c",
-    "currentSdlBrowserAcceptance": false,
-    "ordinaryOriginalMenuEquivalence": false,
+    "browserAcceptance": false,
     "completeGame": false,
     "nativeEquivalent": false
   }
