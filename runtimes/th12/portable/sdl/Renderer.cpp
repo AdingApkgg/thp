@@ -252,7 +252,13 @@ integer(13,!!texture);uniform(14,4,color(p.textureFactor).data());
    const u32 submitted=vertex_count(primitive,count);std::vector<float> eligibility(submitted,0.f);const auto clip=th14_clip(d.matrix[0],d.matrix[1],d.matrix[2]);
    for(u32 i=0;i+2<submitted;i+=3)if(th14_primitive_projectable(static_cast<const float*>(data),d.stride,i,3,clip,d.viewport))eligibility[i]=eligibility[i+1]=eligibility[i+2]=1.f;
    const u32 flagBase=upload(instances,GL_ARRAY_BUFFER,eligibility.data(),u32(eligibility.size()*4),65536);glEnableVertexAttribArray(13);glVertexAttribPointer(13,1,GL_FLOAT,false,4,reinterpret_cast<void*>(flagBase));glVertexAttribDivisor(13,0);
-  }else{glDisableVertexAttribArray(13);glVertexAttrib1f(13,0.f);glVertexAttribDivisor(13,0);}
+  }else{
+   glDisableVertexAttribArray(13);float eligible=0.f;
+   // A non-instanced four-vertex strip is the same complete quad tested by
+   // the instanced path. Preserve its projection rounding as well.
+   if(!transformed&&!index&&primitive==Topology::Strip&&count==2){const auto clip=th14_clip(d.matrix[0],d.matrix[1],d.matrix[2]);eligible=th14_primitive_projectable(static_cast<const float*>(data),d.stride,0,4,clip,d.viewport)?1.f:0.f;}
+   glVertexAttrib1f(13,eligible);glVertexAttribDivisor(13,0);
+  }
  }
 #endif
 const u32 base=upload(vertices,GL_ARRAY_BUFFER,data,size,1048576);
