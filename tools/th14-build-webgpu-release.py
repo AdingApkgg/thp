@@ -81,6 +81,7 @@ def main():
         futures = {pool.submit(compile_unit,unit):unit for unit in units if unit not in compiled}
         for future in concurrent.futures.as_completed(futures):
             unit = futures[future]; compiled[unit] = future.result()
+            storage.check_budget(out)
             (out/'progress.json').write_text(json.dumps(dict(phase='compile',compiled=len(compiled),total=len(units)))+'\n')
             if len(compiled)%16 == 0: print('compiled',len(compiled),'/',len(units),flush=True)
     exports = ['malloc','free',*['th11_'+name for name in ['validate_file','save_scores','save_replay','initialize','last_resource','music_enabled','audio_statistics','return_title','restart','error','frame','phase','pause','resume','loop_start','loop_stop','loop_pause','key','keys_clear','touch','touch_cancel','touch_options','touch_controls','touch_stick']],
@@ -94,8 +95,10 @@ def main():
                   '-sGL_SUPPORT_AUTOMATIC_ENABLE_EXTENSIONS=0','-sEXPORTED_FUNCTIONS='+','.join('_'+name for name in exports),
                   '--js-library',str(source/'portable/sdl/Th14WebGpuLibrary.js')]
     (out/'progress.json').write_text(json.dumps(dict(phase='link',compiled=len(compiled),total=len(units)))+'\n')
+    storage.check_budget(out)
     result = subprocess.run([sys.executable,str(emcc),*flags,*link_flags,*[str(compiled[unit])for unit in units],'-o',str(out/'th14-sdl.mjs')],cwd=source/'th12_web',env=env,capture_output=True)
     (out/'link.log').write_bytes(result.stdout+result.stderr); assert result.returncode == 0, (out/'link.log').read_text()[-8000:]
+    storage.check_budget(out)
     wasm = (out/'th14-sdl.wasm').read_bytes()
     report = dict(schema='th14/browser-webgpu-candidate-build/1',compiled=True,title=14,basePublishedCommit=args.base_commit,
         sourceBindings=inventory,overlays=OVERLAYS,sourceFiles=len(inventory),sourceUnits=len(units),compiledUnits=len(units)-len(reused),reusedObjectCount=len(reused),reusedObjectHashes=reused,reuseBuildReportSha256=reuse_report_sha,exports=exports,

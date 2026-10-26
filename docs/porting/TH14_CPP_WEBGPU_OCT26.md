@@ -41,3 +41,5 @@ Application 使用 [既有流程](TH14_NATIVE_APPLICATION_OCT26.md)的构建／�
 尚未实现浏览器 WebGPU 主机、异步初始化／读回与画布呈现；不启用发布入口的新后端。默认 WebGL 仍保留既有 20／21 和一个蓝通道差异，重构后的完整缓冲与保留浏览器记录一致。打包格式目标上的一般光栅混合及部分 stencil 清除明确拒绝；加权捕获着色器、其余格式、深度和管线组合仍需单独原版控制。Stage 参考保留原有屏幕队列排除，成对 Application 画面也不是原版普通菜单画面对照。完整模式、相机交错、effect149 地址／ABI、音频、普通原版界面和浏览器持久化验收仍待完成。`browserAcceptance=false`、`completeGame=false`、`nativeEquivalent=false`。
 
 后续新增[矩形 stencil 清除修复](TH14_STENCIL_CLEAR_OCT26.md)，以独立 HAL、实际 C++／Asyncify／JS 与原生 Python 设备控制另行验证，当前 21／8 图像回归通过。本文较早运行及浏览器候选保留原版本范围，不自动继承到新宿主。
+
+2026-10-27 新增[Bgrx8 清除／绘制目标](TH14_BGRX_RASTER_OCT27.md)，两条实际 C++ 宿主路径在 1,344 个设备用例中分别比较全部 4,032 份实际 D3DX 规范化缓冲一致；原始 X 字节也保留。当前 21／8／96 图形回归通过，16 位打包光栅与原有混合格式复制继续开放。本文较早完整 Application 和浏览器构建仍保留实际版本范围。

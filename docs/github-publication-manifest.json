@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "1776db96c0655bf0c941a715c5aa30f4c4c00285",
+  "sourceCommit": "edbcf27a3196932bf7211886195ef5a9adcc2ec1",
   "files": [
     {
       "path": ".gitignore",
@@ -64,6 +64,11 @@
       "sha256": "e46bc51418b3975fdc686bf7b5dc0ada6b54ea3cc6b838fca0f2b09d7ab6da03"
     },
     {
+      "path": "docs/porting/TH14_BGRX_RASTER_OCT27.md",
+      "bytes": 4158,
+      "sha256": "e13adba5714519fef8407bd1c019760539c3b2c470d61823bdcb3fb6c0259f3a"
+    },
+    {
       "path": "docs/porting/TH14_BOMB_TEMPLATE_LAYER_OCT25.md",
       "bytes": 2617,
       "sha256": "8fd531384cc429338acc080ac136f99c06088043b559f8707ec1287c58719430"
@@ -120,8 +125,8 @@
     },
     {
       "path": "docs/porting/TH14_CPP_WEBGPU_OCT26.md",
-      "bytes": 5277,
-      "sha256": "f0d84a5bb894fe58c72321df782ea4d9c5b54ffa7d2dd85bc6256676542c46e1"
+      "bytes": 5682,
+      "sha256": "8c8796b5df8b5b89bf657cf09554fc668141bb8b5834c0aa30533177359573a1"
     },
     {
       "path": "docs/porting/TH14_CURRENT_GPU_BASELINE_OCT25.md",
@@ -385,8 +390,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 13704,
-      "sha256": "cac3fccfcaa44a2f6109720fbb87a06e6dcaaa0f40a932f7336d182d6bd271cc"
+      "bytes": 14353,
+      "sha256": "5ecd753b0975b676f3dc93bec227a83ae72aa8f8a08cb83281af7db892343cd5"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -560,8 +565,8 @@
     },
     {
       "path": "docs/porting/TH14_STORAGE_POLICY_OCT25.md",
-      "bytes": 1854,
-      "sha256": "66115a4cb1f8910e9808a6b1647e333ecfc5d3a6672e110c6ddee44a61cb324b"
+      "bytes": 2373,
+      "sha256": "074aba0bf155ccfa72921c52538dbce13866640451aff43afa922c44cbe24775"
     },
     {
       "path": "docs/porting/TH14_SUPERVISOR_NEXT_STAGE_OCT23.md",
@@ -1267,6 +1272,11 @@
       "path": "docs/porting/th14-beam-cookie-and-terminal-hud-verified-oct23.json",
       "bytes": 5805,
       "sha256": "2f60d823e923e8d6d9ff397addaac71e7bdd83d114b987888e5896a8db6f24fa"
+    },
+    {
+      "path": "docs/porting/th14-bgrx-raster-verified-oct27.json",
+      "bytes": 33804,
+      "sha256": "d01813ae3dafd341fafc95e95965948ece8707976b26fb8450ba7298e08a82c7"
     },
     {
       "path": "docs/porting/th14-bomb-animation-retirement-verified-oct24.json",
@@ -7390,8 +7400,8 @@
     },
     {
       "path": "runtimes/th12/portable/sdl/WebGpuRenderer.hpp",
-      "bytes": 13253,
-      "sha256": "726b90394559d384fefd720ba1dbd3ec77c7302c8cd975f61955e53d79b04d72"
+      "bytes": 13639,
+      "sha256": "57bbb64838ec1eda7bc90bb0dd97c81f6f980996119748bca9ae1b86d9c4c813"
     },
     {
       "path": "runtimes/th12/portable/sdl/third_party/miniaudio.LICENSE",
@@ -10992,6 +11002,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-audio-mixer-fixture.cpp",
       "bytes": 1284,
       "sha256": "a68ef07d7740da58cd5f2c0bc9cb66b17718779aae6769f2daf2c41b4713ea92"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-bgrx-raster-fixture.cpp",
+      "bytes": 2370,
+      "sha256": "91c5479e4c02de74d2701414c893c6e64bdb9b596ae700a87bbc66ad499bbbfe"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-bomb-animation-retirement-fixture.cpp",
@@ -15064,6 +15079,16 @@
       "sha256": "d0b936cd0969ecf9e7035150da8467c49832c2ace22978178debd1f02a001695"
     },
     {
+      "path": "tools/th14-bgrx-raster-evidence-oct27.py",
+      "bytes": 13833,
+      "sha256": "d28403d9a961e00d258a7ee2c1e2be814371918a19c7e3c855723370a61f54b2"
+    },
+    {
+      "path": "tools/th14-bgrx-raster-hal-control-oct27.py",
+      "bytes": 9031,
+      "sha256": "061d16840ef96099a07f95e433707128786a1bccc83f979467f1debadeacadba"
+    },
+    {
       "path": "tools/th14-bomb-activation-repro.mjs",
       "bytes": 2807,
       "sha256": "bb4963f199be1fb8e5642f4d4c659a1f8dadc7998f44771cb921e4bd0cc63751"
@@ -15245,8 +15270,8 @@
     },
     {
       "path": "tools/th14-build-webgpu-release.py",
-      "bytes": 9732,
-      "sha256": "aa4be5a8c955c18b0afa6014dbac08b6a7ddb1542d8f5b11e418e37b17d95cf2"
+      "bytes": 9830,
+      "sha256": "a1832fc98434f0d0cefe7020fe30b587b77adfcbaf758cbdbd48b54a84686a46"
     },
     {
       "path": "tools/th14-bullet-acceleration-check.mjs",
@@ -18587,6 +18612,11 @@
       "path": "tools/th14-native-triangle-weights32.py",
       "bytes": 2544,
       "sha256": "7d374015bbff167ec7cd931fc6cbdb190e5b20a580d2cf78a0194fd98181dd7a"
+    },
+    {
+      "path": "tools/th14-native-webgpu-bgrx-control-oct27.py",
+      "bytes": 6905,
+      "sha256": "7fcb689dd7e759e67ead2a4bfa4ded31089af943ebf2e4889d42974e94ad765c"
     },
     {
       "path": "tools/th14-native-webgpu-component.py",
@@ -22264,6 +22294,11 @@
       "sha256": "2b25c7fca6f5ac4a625d2cc971280f6e1aee10f6bcf417934b2589ab50275a66"
     },
     {
+      "path": "tools/th14-webgpu-bgrx-raster-control-oct27.mjs",
+      "bytes": 6602,
+      "sha256": "e51dfa7670bcf4707085f75989d50809deabf96a50cf8d9c547a012298e943ee"
+    },
+    {
       "path": "tools/th14-webgpu-canvas-control.mjs",
       "bytes": 3561,
       "sha256": "7ebb063aec75f9caaa3678d8e9db174efc09772681744d8b058b3b3d61bcb1ad"
@@ -23455,38 +23490,51 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "1776db96c0655bf0c941a715c5aa30f4c4c00285",
-    "title": "TH14 current stencil host candidate package with unchanged C++ objects and local HTTP proof",
+    "basePublishedCommit": "edbcf27a3196932bf7211886195ef5a9adcc2ec1",
+    "title": "TH14 Bgrx8 raster targets with actual D3D9 and D3DX canonical controls",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-stencil-candidate-evidence-oct26.py",
-      "docs/porting/th14-stencil-candidate-verified-oct26.json",
-      "docs/porting/TH14_STENCIL_CLEAR_OCT26.md",
+      "runtimes/th12/portable/sdl/WebGpuRenderer.hpp",
+      "tools/th14-bgrx-raster-hal-control-oct27.py",
+      "tools/th14-webgpu-bgrx-raster-control-oct27.mjs",
+      "tools/th14-native-webgpu-bgrx-control-oct27.py",
+      "tools/th14-bgrx-raster-evidence-oct27.py",
+      "tools/th14-build-webgpu-release.py",
+      "runtimes/th12/th12_web/tests/cpp/th14-bgrx-raster-fixture.cpp",
+      "docs/porting/TH14_BGRX_RASTER_OCT27.md",
+      "docs/porting/th14-bgrx-raster-verified-oct27.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "docs/porting/TH14_JS_WEBGPU_OCT26.md",
+      "docs/porting/TH14_STORAGE_POLICY_OCT25.md",
+      "docs/porting/TH14_CPP_WEBGPU_OCT26.md",
       "docs/github-publication-manifest.json"
     ],
     "productionGameplayChanged": false,
-    "productionGraphicsChanged": false,
+    "productionGraphicsChanged": true,
     "productionAudioChanged": false,
+    "productionCppGraphicsChanged": true,
     "gameAssetsAdded": false,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
-    "currentLocalWebgpuCandidatePackaged": true,
-    "currentStencilHostBound": true,
-    "reusedCppObjects": 146,
-    "compiledCppUnits": 0,
-    "fullGameWasmByteIdentical": true,
-    "fullGameWasmSha256": "3786901cbe373d221b14f02bcb3b1fa77901512195a09ba080669753a915018c",
-    "generatedResourceBytesAliased": 414850582,
-    "generatedResourceAliases": 28,
-    "launcherMetadataBytesWritten": 103342,
-    "launcherPayloadBytesReferenced": 510696486,
-    "launcherRoutes": 133,
-    "launcherHttpChecks": 21,
-    "quietByDefault": true,
+    "bgrxRenderTargetImplemented": true,
+    "halCases": 1344,
+    "cppJsCases": 1344,
+    "nativeCppCases": 1344,
+    "buffersPerBackend": 4032,
+    "comparedBytesPerBackend": 4128768,
+    "allCanonicalBuffersExact": true,
+    "actualD3dxCanonicalConversion": true,
+    "noPixelChannelsDropped": true,
+    "rawX8IgnoredBytesRetained": true,
+    "opaqueDestinationAlphaChainCases": 672,
+    "stageRegressionFrames": 21,
+    "d3dxRegressionCases": 8,
+    "stencilRegressionCases": 96,
+    "packed16BitRasterStillRejected": true,
+    "mixedFormatCopyNotNewlyEnabled": true,
+    "completedObservationFilesTransparentlyCompressed": 24,
+    "observationContentAndPathsPreserved": true,
+    "releaseBuildContinuousBudgetChecksAdded": true,
+    "currentBrowserCandidateUpdated": false,
     "defaultPreviewChanged": false,
-    "ordinaryBrowserRun": false,
-    "originalOrdinaryUiAccepted": false,
     "unrelatedResourceCryptEditExcluded": true,
     "browserAcceptance": false,
     "completeGame": false,

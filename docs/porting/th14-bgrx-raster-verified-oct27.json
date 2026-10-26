@@ -1,0 +1,728 @@
+{
+  "verifiedFiniteBgrxRasterIncrement": true,
+  "halCases": 1344,
+  "a8ControlCases": 672,
+  "x8Cases": 672,
+  "cppJsCases": 1344,
+  "nativeCppCases": 1344,
+  "buffersPerBackend": 4032,
+  "comparedBytesPerBackend": 4128768,
+  "allCanonicalBuffersExact": true,
+  "noChannelsDropped": true,
+  "referenceUsesActualD3dxFormatConversion": true,
+  "rawHalBuffersRetainedAndChecked": true,
+  "x8RawUpperByteValues": {
+    "clear": [
+      0
+    ],
+    "first": [
+      0
+    ],
+    "chain": [
+      0
+    ]
+  },
+  "canonicalAlphaAlwaysOpaque": true,
+  "opaqueDestinationAlphaChainCases": 672,
+  "independentClearAndUnblendedMaskChecks": true,
+  "cppBgrxRenderTargetImplemented": true,
+  "cppSourceDelta": "WebGpuRenderer.hpp target acceptance, opaque clears, alpha write masking",
+  "packed16BitRasterTargetsStillRejected": true,
+  "mixedFormatCopyNotNewlyEnabled": true,
+  "baselineCppRejectRetained": true,
+  "nativeGlesFallbackCalls": 0,
+  "stageRegressionFrames": 21,
+  "stageRegressionBytes": 25804800,
+  "d3dxRegressionCases": 8,
+  "d3dxRegressionBytes": 5242880,
+  "stencilRegressionCases": 96,
+  "stencilRegressionBuffers": 384,
+  "stencilRegressionBytes": 4718592,
+  "pixelDatasetDigests": {
+    "halCanonical": {
+      "files": 4032,
+      "sha256": "4ef8309aaf551da478dacee930447785b359e118c4750044d4933f256b8291ea"
+    },
+    "halRaw": {
+      "files": 4032,
+      "sha256": "762973f115e2741a192e285d8d57ccc199cd2388fe85d5d0d1ec65e4dae9f7d7"
+    },
+    "cppJs": {
+      "files": 4032,
+      "sha256": "4ef8309aaf551da478dacee930447785b359e118c4750044d4933f256b8291ea"
+    },
+    "nativeCpp": {
+      "files": 4032,
+      "sha256": "4ef8309aaf551da478dacee930447785b359e118c4750044d4933f256b8291ea"
+    }
+  },
+  "observationFilesTransparentlyCompressed": 24,
+  "observationHashesPreserved": true,
+  "productionGameplayOrAudioChanged": false,
+  "currentBrowserCandidateUpdated": false,
+  "browserAcceptance": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "wasmSha256": "34a7c80b0932ff68291444b76bcc00a42e4190490c65b1bdf236b2d3023ed190",
+  "nativeWasmSha256": "0189e712ccf86d672c4109c64b4bdd6216217059d32b069ebe2517263e27c8b1",
+  "verifierSha256": "d28403d9a961e00d258a7ee2c1e2be814371918a19c7e3c855723370a61f54b2",
+  "bindings": {
+    "artifacts/th14/bgrx-raster-oct27/hal-canonical-reference/report.json": {
+      "bytes": 2054365,
+      "sha256": "1305834769abd7762f9886f051707ea467dd905c16f593dc03cc996f26d0b78a"
+    },
+    "artifacts/th14/bgrx-raster-oct27/final/report.json": {
+      "bytes": 1423365,
+      "sha256": "8f1baf00efedd8053b92dd7e50af2a0df6b067011ca777df6f23eb9ffffa2104"
+    },
+    "artifacts/th14/bgrx-raster-oct27/native-verified/report.json": {
+      "bytes": 1465621,
+      "sha256": "06e92f4341932525291ef49ed97ba49aac00c5e7e4d618ecf9fb3cc41a3658ce"
+    },
+    "artifacts/th14/bgrx-raster-oct27/hal-canonical-reference/run-tool.py": {
+      "bytes": 9031,
+      "sha256": "061d16840ef96099a07f95e433707128786a1bccc83f979467f1debadeacadba"
+    },
+    "tools/th14-bgrx-raster-hal-control-oct27.py": {
+      "bytes": 9031,
+      "sha256": "061d16840ef96099a07f95e433707128786a1bccc83f979467f1debadeacadba"
+    },
+    "artifacts/th14/bgrx-raster-oct27/final/run-tool.mjs": {
+      "bytes": 6602,
+      "sha256": "e51dfa7670bcf4707085f75989d50809deabf96a50cf8d9c547a012298e943ee"
+    },
+    "tools/th14-webgpu-bgrx-raster-control-oct27.mjs": {
+      "bytes": 6602,
+      "sha256": "e51dfa7670bcf4707085f75989d50809deabf96a50cf8d9c547a012298e943ee"
+    },
+    "artifacts/th14/bgrx-raster-oct27/native-verified/run-tool.py": {
+      "bytes": 6905,
+      "sha256": "7fcb689dd7e759e67ead2a4bfa4ded31089af943ebf2e4889d42974e94ad765c"
+    },
+    "tools/th14-native-webgpu-bgrx-control-oct27.py": {
+      "bytes": 6905,
+      "sha256": "7fcb689dd7e759e67ead2a4bfa4ded31089af943ebf2e4889d42974e94ad765c"
+    },
+    "artifacts/th14/bgrx-raster-oct27/native-verified/context-tool.py": {
+      "bytes": 21258,
+      "sha256": "1bb5d6e930b04f5b450404c6ce490fedb4bdb77509144daacd53e9d39bc0873e"
+    },
+    "tools/th14-native-webgpu-context.py": {
+      "bytes": 21258,
+      "sha256": "1bb5d6e930b04f5b450404c6ce490fedb4bdb77509144daacd53e9d39bc0873e"
+    },
+    "artifacts/th14/bgrx-raster-oct27/baseline-build/build.json": {
+      "bytes": 7543,
+      "sha256": "222eb73ba79f99e104ef1b48f0bd43eac742ab7221ad24d1730d2115df0fd3e9"
+    },
+    "artifacts/th14/bgrx-raster-oct27/baseline-build/component.wasm": {
+      "bytes": 84854,
+      "sha256": "bd3f624a2d6ee0a0b16a86f733bbe469116f44ed113338c39efbea393373a71a"
+    },
+    "artifacts/th14/bgrx-raster-oct27/baseline-build/component.mjs": {
+      "bytes": 75641,
+      "sha256": "759dd00a71269bc9824b84df3f97181dccbc6a8ff344a89673952fbbb80b6294"
+    },
+    "artifacts/th14/bgrx-raster-oct27/baseline-build/src/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/bgrx-raster-oct27/baseline-build/src/fixture.cpp": {
+      "bytes": 2385,
+      "sha256": "2f96b33b976e9b89428f34669d9e6eb7f9018c3c4a3d4f13c7ad4b0dd6e9e411"
+    },
+    "artifacts/th14/bgrx-raster-oct27/baseline-build/src/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/bgrx-raster-oct27/baseline-build/src/Renderer.cpp": {
+      "bytes": 36652,
+      "sha256": "e3468c7edf975426ba33bc9df80eed2cc5ddfef17ae205267961960055a7c197"
+    },
+    "artifacts/th14/bgrx-raster-oct27/baseline-build/src/Renderer.hpp": {
+      "bytes": 4312,
+      "sha256": "8090192167b8be9a0180fe0e046c266751110b86f2d0940a88defd4384dacb29"
+    },
+    "artifacts/th14/bgrx-raster-oct27/baseline-build/src/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/bgrx-raster-oct27/baseline-build/src/Shaders.hpp": {
+      "bytes": 6185,
+      "sha256": "2e4a0b06da45e98e5babae05c29a6da7fa2dfe9ec4a73c39d2f7e3008f182193"
+    },
+    "artifacts/th14/bgrx-raster-oct27/baseline-build/src/Th14RenderMath.hpp": {
+      "bytes": 2726,
+      "sha256": "0f7af59d776b664600d6576a86d24fc927b0472917ab0318811236fb615060b7"
+    },
+    "artifacts/th14/bgrx-raster-oct27/baseline-build/src/Th14WebGpu.wgsl": {
+      "bytes": 4022,
+      "sha256": "11df22f617f1f813bd7c42fb2ebff530445d7b987726530dcaa801d8320b6432"
+    },
+    "artifacts/th14/bgrx-raster-oct27/baseline-build/src/Th14WebGpuCallbacks.hpp": {
+      "bytes": 802,
+      "sha256": "4c85132a71d3ccf3fca7cf35a40ecd361479deb1e72feb86371b9646ce1403b1"
+    },
+    "artifacts/th14/bgrx-raster-oct27/baseline-build/src/Th14WebGpuCore.mjs": {
+      "bytes": 967,
+      "sha256": "27ccd40844379579cbf5ac2c5b906aa9e10e96e9d46ca2fe97b2a37cd77a93ae"
+    },
+    "artifacts/th14/bgrx-raster-oct27/baseline-build/src/Th14WebGpuHost.mjs": {
+      "bytes": 18963,
+      "sha256": "45c8d5ee563f3083f61ae33d9c7ca8fcdbf39c3dc06c121daa87eb21e05d5fbd"
+    },
+    "artifacts/th14/bgrx-raster-oct27/baseline-build/src/Th14WebGpuLibrary.js": {
+      "bytes": 2730,
+      "sha256": "57cb50f139a1d93a9283f3b81e6876cee164ee6f8144843d73ab897bb1230773"
+    },
+    "artifacts/th14/bgrx-raster-oct27/baseline-build/src/Th14WebGpuResample.wgsl": {
+      "bytes": 4593,
+      "sha256": "7232afa690c4384f3246d126f7acf4e403ecc01dd5f22b9376d94f8453d4ff91"
+    },
+    "artifacts/th14/bgrx-raster-oct27/baseline-build/src/Th14WebGpuRuntime.mjs": {
+      "bytes": 2201,
+      "sha256": "e7af7fa29b04040c33eff193b8aec8114fb4e90f355e63cf3dc4309b9ef0154c"
+    },
+    "artifacts/th14/bgrx-raster-oct27/baseline-build/src/unit-post.js": {
+      "bytes": 106,
+      "sha256": "97f01d21c16ad94a63f27c65d6f960c6c3000651da3c4144bad9607a3afe18bd"
+    },
+    "artifacts/th14/bgrx-raster-oct27/baseline-build/src/WebGpuRenderer.hpp": {
+      "bytes": 13253,
+      "sha256": "726b90394559d384fefd720ba1dbd3ec77c7302c8cd975f61955e53d79b04d72"
+    },
+    "artifacts/th14/bgrx-raster-oct27/final-build/build.json": {
+      "bytes": 7531,
+      "sha256": "c113355080bd403e5ed70b8260421a32b4f0bae33813f741714fa76f20d2b35d"
+    },
+    "artifacts/th14/bgrx-raster-oct27/final-build/component.wasm": {
+      "bytes": 85092,
+      "sha256": "34a7c80b0932ff68291444b76bcc00a42e4190490c65b1bdf236b2d3023ed190"
+    },
+    "artifacts/th14/bgrx-raster-oct27/final-build/component.mjs": {
+      "bytes": 75641,
+      "sha256": "759dd00a71269bc9824b84df3f97181dccbc6a8ff344a89673952fbbb80b6294"
+    },
+    "artifacts/th14/bgrx-raster-oct27/final-build/src/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/bgrx-raster-oct27/final-build/src/fixture.cpp": {
+      "bytes": 2385,
+      "sha256": "2f96b33b976e9b89428f34669d9e6eb7f9018c3c4a3d4f13c7ad4b0dd6e9e411"
+    },
+    "artifacts/th14/bgrx-raster-oct27/final-build/src/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/bgrx-raster-oct27/final-build/src/Renderer.cpp": {
+      "bytes": 36652,
+      "sha256": "e3468c7edf975426ba33bc9df80eed2cc5ddfef17ae205267961960055a7c197"
+    },
+    "artifacts/th14/bgrx-raster-oct27/final-build/src/Renderer.hpp": {
+      "bytes": 4312,
+      "sha256": "8090192167b8be9a0180fe0e046c266751110b86f2d0940a88defd4384dacb29"
+    },
+    "artifacts/th14/bgrx-raster-oct27/final-build/src/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/bgrx-raster-oct27/final-build/src/Shaders.hpp": {
+      "bytes": 6185,
+      "sha256": "2e4a0b06da45e98e5babae05c29a6da7fa2dfe9ec4a73c39d2f7e3008f182193"
+    },
+    "artifacts/th14/bgrx-raster-oct27/final-build/src/Th14RenderMath.hpp": {
+      "bytes": 2726,
+      "sha256": "0f7af59d776b664600d6576a86d24fc927b0472917ab0318811236fb615060b7"
+    },
+    "artifacts/th14/bgrx-raster-oct27/final-build/src/Th14WebGpu.wgsl": {
+      "bytes": 4022,
+      "sha256": "11df22f617f1f813bd7c42fb2ebff530445d7b987726530dcaa801d8320b6432"
+    },
+    "artifacts/th14/bgrx-raster-oct27/final-build/src/Th14WebGpuCallbacks.hpp": {
+      "bytes": 802,
+      "sha256": "4c85132a71d3ccf3fca7cf35a40ecd361479deb1e72feb86371b9646ce1403b1"
+    },
+    "artifacts/th14/bgrx-raster-oct27/final-build/src/Th14WebGpuCore.mjs": {
+      "bytes": 967,
+      "sha256": "27ccd40844379579cbf5ac2c5b906aa9e10e96e9d46ca2fe97b2a37cd77a93ae"
+    },
+    "artifacts/th14/bgrx-raster-oct27/final-build/src/Th14WebGpuHost.mjs": {
+      "bytes": 18963,
+      "sha256": "45c8d5ee563f3083f61ae33d9c7ca8fcdbf39c3dc06c121daa87eb21e05d5fbd"
+    },
+    "artifacts/th14/bgrx-raster-oct27/final-build/src/Th14WebGpuLibrary.js": {
+      "bytes": 2730,
+      "sha256": "57cb50f139a1d93a9283f3b81e6876cee164ee6f8144843d73ab897bb1230773"
+    },
+    "artifacts/th14/bgrx-raster-oct27/final-build/src/Th14WebGpuResample.wgsl": {
+      "bytes": 4593,
+      "sha256": "7232afa690c4384f3246d126f7acf4e403ecc01dd5f22b9376d94f8453d4ff91"
+    },
+    "artifacts/th14/bgrx-raster-oct27/final-build/src/Th14WebGpuRuntime.mjs": {
+      "bytes": 2201,
+      "sha256": "e7af7fa29b04040c33eff193b8aec8114fb4e90f355e63cf3dc4309b9ef0154c"
+    },
+    "artifacts/th14/bgrx-raster-oct27/final-build/src/unit-post.js": {
+      "bytes": 106,
+      "sha256": "97f01d21c16ad94a63f27c65d6f960c6c3000651da3c4144bad9607a3afe18bd"
+    },
+    "artifacts/th14/bgrx-raster-oct27/final-build/src/WebGpuRenderer.hpp": {
+      "bytes": 13639,
+      "sha256": "57bbb64838ec1eda7bc90bb0dd97c81f6f980996119748bca9ae1b86d9c4c813"
+    },
+    "runtimes/th12/portable/sdl/Renderer.cpp": {
+      "bytes": 36652,
+      "sha256": "e3468c7edf975426ba33bc9df80eed2cc5ddfef17ae205267961960055a7c197"
+    },
+    "runtimes/th12/portable/sdl/Renderer.hpp": {
+      "bytes": 4312,
+      "sha256": "8090192167b8be9a0180fe0e046c266751110b86f2d0940a88defd4384dacb29"
+    },
+    "runtimes/th12/portable/sdl/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "runtimes/th12/portable/sdl/Shaders.hpp": {
+      "bytes": 6185,
+      "sha256": "2e4a0b06da45e98e5babae05c29a6da7fa2dfe9ec4a73c39d2f7e3008f182193"
+    },
+    "runtimes/th12/portable/sdl/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "runtimes/th12/portable/sdl/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "runtimes/th12/portable/sdl/Th14RenderMath.hpp": {
+      "bytes": 2726,
+      "sha256": "0f7af59d776b664600d6576a86d24fc927b0472917ab0318811236fb615060b7"
+    },
+    "runtimes/th12/portable/sdl/WebGpuRenderer.hpp": {
+      "bytes": 13639,
+      "sha256": "57bbb64838ec1eda7bc90bb0dd97c81f6f980996119748bca9ae1b86d9c4c813"
+    },
+    "runtimes/th12/portable/sdl/Th14WebGpuCallbacks.hpp": {
+      "bytes": 802,
+      "sha256": "4c85132a71d3ccf3fca7cf35a40ecd361479deb1e72feb86371b9646ce1403b1"
+    },
+    "runtimes/th12/portable/sdl/Th14WebGpuHost.mjs": {
+      "bytes": 18963,
+      "sha256": "45c8d5ee563f3083f61ae33d9c7ca8fcdbf39c3dc06c121daa87eb21e05d5fbd"
+    },
+    "runtimes/th12/portable/sdl/Th14WebGpuRuntime.mjs": {
+      "bytes": 2201,
+      "sha256": "e7af7fa29b04040c33eff193b8aec8114fb4e90f355e63cf3dc4309b9ef0154c"
+    },
+    "runtimes/th12/portable/sdl/Th14WebGpuCore.mjs": {
+      "bytes": 967,
+      "sha256": "27ccd40844379579cbf5ac2c5b906aa9e10e96e9d46ca2fe97b2a37cd77a93ae"
+    },
+    "runtimes/th12/portable/sdl/Th14WebGpuLibrary.js": {
+      "bytes": 2730,
+      "sha256": "57cb50f139a1d93a9283f3b81e6876cee164ee6f8144843d73ab897bb1230773"
+    },
+    "runtimes/th12/portable/sdl/Th14WebGpu.wgsl": {
+      "bytes": 4022,
+      "sha256": "11df22f617f1f813bd7c42fb2ebff530445d7b987726530dcaa801d8320b6432"
+    },
+    "runtimes/th12/portable/sdl/Th14WebGpuResample.wgsl": {
+      "bytes": 4593,
+      "sha256": "7232afa690c4384f3246d126f7acf4e403ecc01dd5f22b9376d94f8453d4ff91"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-bgrx-raster-fixture.cpp": {
+      "bytes": 2370,
+      "sha256": "91c5479e4c02de74d2701414c893c6e64bdb9b596ae700a87bbc66ad499bbbfe"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stage-build/build.json": {
+      "bytes": 7786,
+      "sha256": "23097a20e9a07fac1039cb69dda9d1cf81e2e014ea0ffe443780a73a2051ee0e"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stage-build/component.wasm": {
+      "bytes": 86554,
+      "sha256": "32e320a817a4b02da9be00ce76edf0dc332865ce9b3c9f7e8d0a10c3d1385ce7"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stage-build/component.mjs": {
+      "bytes": 77460,
+      "sha256": "d3a9d165bc30cb21291dbca25d3af3445b2b3cf01c06398b8c793f2f1397d8b2"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stage-build/src/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stage-build/src/fixture.cpp": {
+      "bytes": 5778,
+      "sha256": "e55e6d34bba682738d89e87d0a6cd88946736f4a6acfa050ec6b4a16131a6e40"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stage-build/src/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stage-build/src/Renderer.cpp": {
+      "bytes": 36652,
+      "sha256": "e3468c7edf975426ba33bc9df80eed2cc5ddfef17ae205267961960055a7c197"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stage-build/src/Renderer.hpp": {
+      "bytes": 4312,
+      "sha256": "8090192167b8be9a0180fe0e046c266751110b86f2d0940a88defd4384dacb29"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stage-build/src/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stage-build/src/Shaders.hpp": {
+      "bytes": 6185,
+      "sha256": "2e4a0b06da45e98e5babae05c29a6da7fa2dfe9ec4a73c39d2f7e3008f182193"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stage-build/src/Th14RenderMath.hpp": {
+      "bytes": 2726,
+      "sha256": "0f7af59d776b664600d6576a86d24fc927b0472917ab0318811236fb615060b7"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stage-build/src/Th14WebGpu.wgsl": {
+      "bytes": 4022,
+      "sha256": "11df22f617f1f813bd7c42fb2ebff530445d7b987726530dcaa801d8320b6432"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stage-build/src/Th14WebGpuCallbacks.hpp": {
+      "bytes": 802,
+      "sha256": "4c85132a71d3ccf3fca7cf35a40ecd361479deb1e72feb86371b9646ce1403b1"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stage-build/src/Th14WebGpuCore.mjs": {
+      "bytes": 967,
+      "sha256": "27ccd40844379579cbf5ac2c5b906aa9e10e96e9d46ca2fe97b2a37cd77a93ae"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stage-build/src/Th14WebGpuHost.mjs": {
+      "bytes": 18963,
+      "sha256": "45c8d5ee563f3083f61ae33d9c7ca8fcdbf39c3dc06c121daa87eb21e05d5fbd"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stage-build/src/Th14WebGpuLibrary.js": {
+      "bytes": 2730,
+      "sha256": "57cb50f139a1d93a9283f3b81e6876cee164ee6f8144843d73ab897bb1230773"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stage-build/src/Th14WebGpuResample.wgsl": {
+      "bytes": 4593,
+      "sha256": "7232afa690c4384f3246d126f7acf4e403ecc01dd5f22b9376d94f8453d4ff91"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stage-build/src/Th14WebGpuRuntime.mjs": {
+      "bytes": 2201,
+      "sha256": "e7af7fa29b04040c33eff193b8aec8114fb4e90f355e63cf3dc4309b9ef0154c"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stage-build/src/unit-post.js": {
+      "bytes": 106,
+      "sha256": "97f01d21c16ad94a63f27c65d6f960c6c3000651da3c4144bad9607a3afe18bd"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stage-build/src/WebGpuRenderer.hpp": {
+      "bytes": 13639,
+      "sha256": "57bbb64838ec1eda7bc90bb0dd97c81f6f980996119748bca9ae1b86d9c4c813"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stage-gpu-stream-fixture.cpp": {
+      "bytes": 5715,
+      "sha256": "a28294ab1106fc4ef0380781b8af7ba8f5b4cf17059c707985e2837845a37f2d"
+    },
+    "artifacts/th14/bgrx-raster-oct27/surfaces-build/build.json": {
+      "bytes": 7594,
+      "sha256": "00d7b2356e9933d87f4916cbd1309b46b97bfc8af4cd0ddbe85c1a2cad951f1c"
+    },
+    "artifacts/th14/bgrx-raster-oct27/surfaces-build/component.wasm": {
+      "bytes": 86349,
+      "sha256": "e19a19089780c854dc84b5f02338d2dd6fb63f4a97cc7e45bd743bca7115ba7e"
+    },
+    "artifacts/th14/bgrx-raster-oct27/surfaces-build/component.mjs": {
+      "bytes": 77032,
+      "sha256": "bd93c00490b0bad3e552020b79604b969f28b685bebaa928c7d29e9ecb1a8c58"
+    },
+    "artifacts/th14/bgrx-raster-oct27/surfaces-build/src/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/bgrx-raster-oct27/surfaces-build/src/fixture.cpp": {
+      "bytes": 1784,
+      "sha256": "d0a805d159c652579f42b438c832b94c4f40ff6b501ff07a737940232acb4609"
+    },
+    "artifacts/th14/bgrx-raster-oct27/surfaces-build/src/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/bgrx-raster-oct27/surfaces-build/src/Renderer.cpp": {
+      "bytes": 36652,
+      "sha256": "e3468c7edf975426ba33bc9df80eed2cc5ddfef17ae205267961960055a7c197"
+    },
+    "artifacts/th14/bgrx-raster-oct27/surfaces-build/src/Renderer.hpp": {
+      "bytes": 4312,
+      "sha256": "8090192167b8be9a0180fe0e046c266751110b86f2d0940a88defd4384dacb29"
+    },
+    "artifacts/th14/bgrx-raster-oct27/surfaces-build/src/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/bgrx-raster-oct27/surfaces-build/src/Shaders.hpp": {
+      "bytes": 6185,
+      "sha256": "2e4a0b06da45e98e5babae05c29a6da7fa2dfe9ec4a73c39d2f7e3008f182193"
+    },
+    "artifacts/th14/bgrx-raster-oct27/surfaces-build/src/Th14RenderMath.hpp": {
+      "bytes": 2726,
+      "sha256": "0f7af59d776b664600d6576a86d24fc927b0472917ab0318811236fb615060b7"
+    },
+    "artifacts/th14/bgrx-raster-oct27/surfaces-build/src/Th14WebGpu.wgsl": {
+      "bytes": 4022,
+      "sha256": "11df22f617f1f813bd7c42fb2ebff530445d7b987726530dcaa801d8320b6432"
+    },
+    "artifacts/th14/bgrx-raster-oct27/surfaces-build/src/Th14WebGpuCallbacks.hpp": {
+      "bytes": 802,
+      "sha256": "4c85132a71d3ccf3fca7cf35a40ecd361479deb1e72feb86371b9646ce1403b1"
+    },
+    "artifacts/th14/bgrx-raster-oct27/surfaces-build/src/Th14WebGpuCore.mjs": {
+      "bytes": 967,
+      "sha256": "27ccd40844379579cbf5ac2c5b906aa9e10e96e9d46ca2fe97b2a37cd77a93ae"
+    },
+    "artifacts/th14/bgrx-raster-oct27/surfaces-build/src/Th14WebGpuHost.mjs": {
+      "bytes": 18963,
+      "sha256": "45c8d5ee563f3083f61ae33d9c7ca8fcdbf39c3dc06c121daa87eb21e05d5fbd"
+    },
+    "artifacts/th14/bgrx-raster-oct27/surfaces-build/src/Th14WebGpuLibrary.js": {
+      "bytes": 2730,
+      "sha256": "57cb50f139a1d93a9283f3b81e6876cee164ee6f8144843d73ab897bb1230773"
+    },
+    "artifacts/th14/bgrx-raster-oct27/surfaces-build/src/Th14WebGpuResample.wgsl": {
+      "bytes": 4593,
+      "sha256": "7232afa690c4384f3246d126f7acf4e403ecc01dd5f22b9376d94f8453d4ff91"
+    },
+    "artifacts/th14/bgrx-raster-oct27/surfaces-build/src/Th14WebGpuRuntime.mjs": {
+      "bytes": 2201,
+      "sha256": "e7af7fa29b04040c33eff193b8aec8114fb4e90f355e63cf3dc4309b9ef0154c"
+    },
+    "artifacts/th14/bgrx-raster-oct27/surfaces-build/src/unit-post.js": {
+      "bytes": 106,
+      "sha256": "97f01d21c16ad94a63f27c65d6f960c6c3000651da3c4144bad9607a3afe18bd"
+    },
+    "artifacts/th14/bgrx-raster-oct27/surfaces-build/src/WebGpuRenderer.hpp": {
+      "bytes": 13639,
+      "sha256": "57bbb64838ec1eda7bc90bb0dd97c81f6f980996119748bca9ae1b86d9c4c813"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-webgpu-surface-fixture.cpp": {
+      "bytes": 1783,
+      "sha256": "38b95faace21e6ac16737a76fe8af1eff71ca7a9baafcdead777a81bf7bf3829"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stencil-build/build.json": {
+      "bytes": 7460,
+      "sha256": "cfe7303f60dff8cab56367658146e51f61f800f6847e8243cce17bff93d03487"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stencil-build/component.wasm": {
+      "bytes": 78123,
+      "sha256": "c5e820ccc0c1439d100f9e7e69b80476338ef2d938ad825d5029023f30d40bed"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stencil-build/component.mjs": {
+      "bytes": 74779,
+      "sha256": "0140fd25a4ac472a7c854df4df3ebb731fbc2f2dbb974664490e0978a917ceff"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stencil-build/src/AlphaConversion.hpp": {
+      "bytes": 4885,
+      "sha256": "143709acfe01203b00aa3be97a97b36a014bf84afb82065f8bba3cda59cf93f5"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stencil-build/src/fixture.cpp": {
+      "bytes": 1361,
+      "sha256": "a282c4da09b5d065e8baa79054fd4ee73576555c248edc4b222d645272a9b07c"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stencil-build/src/GraphicsState.hpp": {
+      "bytes": 8278,
+      "sha256": "8464e416b0153224f60e34dd6645b7960770335c359eeea53c1ec4f4acaa1d31"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stencil-build/src/Renderer.cpp": {
+      "bytes": 36652,
+      "sha256": "e3468c7edf975426ba33bc9df80eed2cc5ddfef17ae205267961960055a7c197"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stencil-build/src/Renderer.hpp": {
+      "bytes": 4312,
+      "sha256": "8090192167b8be9a0180fe0e046c266751110b86f2d0940a88defd4384dacb29"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stencil-build/src/ResampleShader.hpp": {
+      "bytes": 4510,
+      "sha256": "3fe7fc8885fe3b569ecef7d95a6c98c3fdfa78260b8f49819c93f2eeef5d9134"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stencil-build/src/Shaders.hpp": {
+      "bytes": 6185,
+      "sha256": "2e4a0b06da45e98e5babae05c29a6da7fa2dfe9ec4a73c39d2f7e3008f182193"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stencil-build/src/Th14RenderMath.hpp": {
+      "bytes": 2726,
+      "sha256": "0f7af59d776b664600d6576a86d24fc927b0472917ab0318811236fb615060b7"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stencil-build/src/Th14WebGpu.wgsl": {
+      "bytes": 4022,
+      "sha256": "11df22f617f1f813bd7c42fb2ebff530445d7b987726530dcaa801d8320b6432"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stencil-build/src/Th14WebGpuCallbacks.hpp": {
+      "bytes": 802,
+      "sha256": "4c85132a71d3ccf3fca7cf35a40ecd361479deb1e72feb86371b9646ce1403b1"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stencil-build/src/Th14WebGpuCore.mjs": {
+      "bytes": 967,
+      "sha256": "27ccd40844379579cbf5ac2c5b906aa9e10e96e9d46ca2fe97b2a37cd77a93ae"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stencil-build/src/Th14WebGpuHost.mjs": {
+      "bytes": 18963,
+      "sha256": "45c8d5ee563f3083f61ae33d9c7ca8fcdbf39c3dc06c121daa87eb21e05d5fbd"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stencil-build/src/Th14WebGpuLibrary.js": {
+      "bytes": 2730,
+      "sha256": "57cb50f139a1d93a9283f3b81e6876cee164ee6f8144843d73ab897bb1230773"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stencil-build/src/Th14WebGpuResample.wgsl": {
+      "bytes": 4593,
+      "sha256": "7232afa690c4384f3246d126f7acf4e403ecc01dd5f22b9376d94f8453d4ff91"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stencil-build/src/Th14WebGpuRuntime.mjs": {
+      "bytes": 2201,
+      "sha256": "e7af7fa29b04040c33eff193b8aec8114fb4e90f355e63cf3dc4309b9ef0154c"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stencil-build/src/unit-post.js": {
+      "bytes": 106,
+      "sha256": "97f01d21c16ad94a63f27c65d6f960c6c3000651da3c4144bad9607a3afe18bd"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stencil-build/src/WebGpuRenderer.hpp": {
+      "bytes": 13639,
+      "sha256": "57bbb64838ec1eda7bc90bb0dd97c81f6f980996119748bca9ae1b86d9c4c813"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-stencil-clear-fixture.cpp": {
+      "bytes": 1351,
+      "sha256": "80348ccdb3b6218cad388b6de63dd37df1f4767a07841898ea59fc802ae69dac"
+    },
+    "artifacts/th14/bgrx-raster-oct27/native-build/build.json": {
+      "bytes": 5149,
+      "sha256": "946efd6816247f17aab613b9f5c0411f66484c9cd8b0228eebb9bab03d95b21b"
+    },
+    "artifacts/th14/bgrx-raster-oct27/native-build/probe.wasm": {
+      "bytes": 589769,
+      "sha256": "0189e712ccf86d672c4109c64b4bdd6216217059d32b069ebe2517263e27c8b1"
+    },
+    "artifacts/th14/bgrx-raster-oct27/baseline-rejected/report.json": {
+      "bytes": 1322,
+      "sha256": "1339166314b2c33c55b5bbaace5643de4b0e24b4b3b95166eb6d7a0818429638"
+    },
+    "artifacts/th14/bgrx-raster-oct27/baseline-rejected/run-tool.mjs": {
+      "bytes": 6602,
+      "sha256": "e51dfa7670bcf4707085f75989d50809deabf96a50cf8d9c547a012298e943ee"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stage-regression/report.json": {
+      "bytes": 7647,
+      "sha256": "699683c0436a6d27a7353525747c7f20a1a5ae90e1614af3c9c2c60a09934e14"
+    },
+    "artifacts/th14/bgrx-raster-oct27/surfaces-regression/report.json": {
+      "bytes": 3762,
+      "sha256": "a5866241ae8344455bc7a63bb7ba5629e46f63b3951ba75845b49deb0e6095a5"
+    },
+    "artifacts/th14/bgrx-raster-oct27/stencil-regression/report.json": {
+      "bytes": 121179,
+      "sha256": "e26838d2089afbd6124c3ce12e7c4043e9eaef2b3cf54bfd70b5367d9625ed0a"
+    },
+    "artifacts/th14/stage-gpu-stream-replay/native.json": {
+      "bytes": 6748,
+      "sha256": "115123af74b9133297766d01284d5f9e4e077a2b290ab84916f74cf3a44040cd"
+    },
+    "artifacts/th14/deferred-capture-pixels-oct14/native.json": {
+      "bytes": 17277,
+      "sha256": "6c38fdefee1b420dad58f8df3fa917169cdfe8eb8bd0ba6c6745a9fbe2193958"
+    },
+    "artifacts/th14/stencil-clear-oct26-hal-reference/report.json": {
+      "bytes": 107249,
+      "sha256": "a21b0a85c6f73a519304951593dd9963dbdfd198667ce01afe5dc5832e42b658"
+    },
+    "artifacts/th14/bgrx-raster-oct27/compression-verified.json": {
+      "bytes": 271,
+      "sha256": "014bc33ee7d5474475372e59cae6b6040101150c8871d3a3154b84a82ceeea8c"
+    },
+    "artifacts/th14/bgrx-raster-oct27/compression-plan.json": {
+      "bytes": 5862,
+      "sha256": "e1f975e75f3ac0a5b9cbf43a53cde37bd9cca3565cc01802c0ec3168c16233d4"
+    },
+    "artifacts/th14/retail-reimub-easy-camera-phases-hardware-oct25/report.json": {
+      "bytes": 609737,
+      "sha256": "dacd1385a972b360001ebd0f58bfec216d51fa3a5ee5a1afcdcb41eeee7a222f"
+    },
+    "artifacts/th14/retail-reimub-easy-worker-boundary-hardware-oct26/report.json": {
+      "bytes": 495164,
+      "sha256": "344046591e2adc9a553feac2ae08add00126b87d03f6df7c6fb2a14320b70be7"
+    },
+    "artifacts/th14/retail-sakuyaa-easy-callback-hardware-oct26/report.json": {
+      "bytes": 532445,
+      "sha256": "a9eca6e7435369c07ee58e4e608070402f8da037544f698decee80fb38740171"
+    },
+    "artifacts/th14/retail-sakuyab-lunatic-exit-boundary-hardware-oct26/report.json": {
+      "bytes": 395435,
+      "sha256": "d5d3183c6c5f03dda6b9a299339c15a077b358f0f2938929f3893d02fb10805b"
+    },
+    "artifacts/th14/retail-sakuyab-hard-exit-boundary-hardware-oct26/report.json": {
+      "bytes": 330747,
+      "sha256": "4e0e3772559c1f35e94ef2916e760a5574a32c395c416c8dbc9c815c0c06c75d"
+    },
+    "artifacts/th14/retail-reimub-normal-callback-rng-hardware-oct26/report.json": {
+      "bytes": 532635,
+      "sha256": "13728b59a3ca5fc7d1ae8742f43d336d47db9b4fa0b054a0f6f55e366dabffd2"
+    },
+    "artifacts/th14/retail-marisab-hard-campaign-hardware-oct25/report.json": {
+      "bytes": 13884,
+      "sha256": "13183bb722837c856e50fc3eff753a4cfba741b2a9a927d986fc06f49a54e285"
+    },
+    "artifacts/th14/retail-marisab-hard-hud-completion-hardware-oct25/report.json": {
+      "bytes": 18297,
+      "sha256": "15eb20bf17f9eeda72c16b0c3a3137bd23d8ba3a1c7f72382ef747181a9f2658"
+    },
+    "artifacts/th14/retail-sakuyab-normal-campaign-hardware-oct25/report.json": {
+      "bytes": 13881,
+      "sha256": "40ce58fa2bce6f75bfe52be6b990652644417de3354c395b6fd6210f28ca1874"
+    },
+    "artifacts/th14/retail-reimub-hard-full-bounded-hardware-oct25/report.json": {
+      "bytes": 607675,
+      "sha256": "1b301b01c8fd1d979e6564eed3fa46661769aaacc08036aef0c9ccfcadad172a"
+    },
+    "artifacts/th14/retail-marisab-easy-callback-hardware-oct26/report.json": {
+      "bytes": 497540,
+      "sha256": "b7b7a30a8dac709a82ac385748791e73e6daa1d0c332746b7c51e65e2f4a745c"
+    },
+    "artifacts/th14/retail-sakuyab-easy-exact-camera-hardware-oct26/report.json": {
+      "bytes": 378849,
+      "sha256": "33060203ef8f02d4a56639e07e36552cf16414a9d210039f5e2fa02e1feb5f4c"
+    },
+    "artifacts/th14/retail-marisaa-lunatic-exit-boundary-hardware-oct26/report.json": {
+      "bytes": 340934,
+      "sha256": "128cbeebc314973d37c804e21122bade0ebe42d8cdadf9399d0404ec76f71b0a"
+    },
+    "artifacts/th14/retail-sakuyaa-campaign-publications-camera-hardware-oct24/report.json": {
+      "bytes": 13535,
+      "sha256": "f85f5be62ff9d7d2ce95fbccbd3e55d435580b435095c70a3867530f5bd59598"
+    },
+    "artifacts/th14/retail-sakuyaa-late-allocation-hardware-oct24/report.json": {
+      "bytes": 13979,
+      "sha256": "b437b26b61ffae7f6514ceb8c2f889be2575bbd278f8d481e3b98a96d2f22a98"
+    },
+    "artifacts/th14/retail-reimub-lunatic-full-bounded-v2-hardware-oct25/report.json": {
+      "bytes": 570234,
+      "sha256": "627ef3bb62c6ec9dc0e65457fe43de8f405c4addb3815b2cb8cc853f295a04f7"
+    },
+    "artifacts/th14/retail-reimub-lunatic-timeline-clear-hardware-oct25/report.json": {
+      "bytes": 400091,
+      "sha256": "84ce576dc52987dea7c564702ee88504a13c32a734da22ab39165dbd2f84c53c"
+    },
+    "artifacts/th14/retail-reimua-easy-timeline-clear-hardware-oct25/report.json": {
+      "bytes": 561911,
+      "sha256": "ed5fd2e703fa951ec09146763d2f584d7927448656c5c061e119e9c17148269f"
+    },
+    "artifacts/th14/retail-sakuyaa-hard-exit-boundary-hardware-oct26/report.json": {
+      "bytes": 359161,
+      "sha256": "8ea7c9f1aa84b595b5cc15064d544152a8151f44ace41f6d0dae97b8477179c0"
+    },
+    "artifacts/th14/retail-reimua-hard-callback-rng-hardware-oct26/report.json": {
+      "bytes": 480774,
+      "sha256": "6447052685b80a40b816302744858db62971f9f7d5e32a424cd983b2029033dc"
+    },
+    "artifacts/th14/retail-marisab-lunatic-exit-boundary-hardware-oct26/report.json": {
+      "bytes": 258001,
+      "sha256": "5b5792fcecbab5c3fca8e94fb0b1ec7752e0122ce9e53404bb7a9ebaaa0ff9fb"
+    },
+    "artifacts/th14/retail-reimua-lunatic-exit-boundary-hardware-oct26/report.json": {
+      "bytes": 469666,
+      "sha256": "5edbec01fcb1ecbcddf460f22bea6c886408af8c7614de9c754e5b67b0ff55f2"
+    }
+  },
+  "scope": "Finite actual CPP Renderer A8/X8 target Clear/draw/read versus real D3D9 HAL and real D3DX canonical conversion. Both Emscripten/Asyncify/JS and WASI/native GPU paths compare all32 canonical bits; original X8 ignored bytes remain retained. Full retained21Stage/8D3DX/96stencil regressions also checked. No complete format/mixed-copy, original ordinary UI, full-game GPU/PCM, browser or whole-game acceptance."
+}

@@ -46,7 +46,7 @@ class WebGpuRenderer {
         const auto s=renderer.resolve(renderer.owner,id);
         // Packed render targets require post-blend quantization, which this
         // backend does not yet implement. Reject them instead of losing bits.
-        if(!utility&&s.format!=PixelFormat::Bgra8){std::fprintf(stderr,"WebGPU packed raster target unsupported: handle=%u format=%u\n",id,u32(s.format));std::abort();}
+        if(!utility&&s.format!=PixelFormat::Bgra8&&s.format!=PixelFormat::Bgrx8){std::fprintf(stderr,"WebGPU packed raster target unsupported: handle=%u format=%u\n",id,u32(s.format));std::abort();}
         prepare(id);if(depth)prepare(depth);
     }
 public:
@@ -87,6 +87,9 @@ public:
             if(instances){const auto* record=static_cast<const u8*>(instances)+repetition*68;std::memcpy(world.data(),record,64);std::memcpy(&factor,record+64,4);}
             const auto eye=th14_multiply(state.matrix[1],world),clip=th14_multiply(state.matrix[2],eye);
             Packet packet;packet.pipeline={state.target,state.depth,state.texture,u32(topology),u32(p.depthTest),u32(p.depthWrite),u32(p.blend),u32(p.sourceBlend),u32(p.destinationBlend),u32(p.blendEquation),u32(p.depthCompare),u32(p.cull),p.colorMask,u32(p.minFilter),u32(p.magFilter),u32(p.addressU),u32(p.addressV),word(vp.min),word(vp.max),0};
+            // X8 samples and destination-alpha factors see one. Preserve the
+            // uploaded/cleared opaque alpha through every draw and mask.
+            if(renderer.resolve(renderer.owner,state.target).format==PixelFormat::Bgrx8)packet.pipeline[12]&=7u;
             color(packet.uniform.data(),factor);color(packet.uniform.data()+4,p.fogColor,true);
             integers(packet,8,{u32(p.fog),u32(p.alphaTest),u32(p.alphaCompare),u32(state.texture!=0)});
             const auto* boundaries=renderer.alpha_boundaries();packet.uniform[12]=boundaries[p.alphaReference];packet.uniform[13]=p.alphaReference==255?2.f:boundaries[p.alphaReference+1];
@@ -121,7 +124,7 @@ public:
         }
         resources[state.target].rendered=true;
     }
-    void clear(u32 flags,u32 color,float depth,u32 stencil,const i32* rects,u32 count){const auto& s=renderer.state;target(s.target,s.depth);i32 box[]{i32(s.viewport.x),i32(s.viewport.y),i32(s.viewport.x+s.viewport.width),i32(s.viewport.y+s.viewport.height)};if(!rects){rects=box;count=1;}th14_webgpu_clear(s.target,s.depth,flags,color,depth,stencil,rects,count);resources[s.target].rendered=true;}
+    void clear(u32 flags,u32 color,float depth,u32 stencil,const i32* rects,u32 count){const auto& s=renderer.state;target(s.target,s.depth);if(renderer.resolve(renderer.owner,s.target).format==PixelFormat::Bgrx8)color|=0xff000000u;i32 box[]{i32(s.viewport.x),i32(s.viewport.y),i32(s.viewport.x+s.viewport.width),i32(s.viewport.y+s.viewport.height)};if(!rects){rects=box;count=1;}th14_webgpu_clear(s.target,s.depth,flags,color,depth,stencil,rects,count);resources[s.target].rendered=true;}
     void copy(u32 src,const i32* rect,u32 dst,const i32* point){const auto a=renderer.resolve(renderer.owner,src),b=renderer.resolve(renderer.owner,dst);if(a.format!=b.format&&b.format!=PixelFormat::Bgra8)std::abort();prepare(src);target(dst,0,true);th14_webgpu_copy(src,rect,dst,point);auto& d=resources[dst];d.rendered=true;d.version=b.version+1;}
     bool resample(u32 src,const i32* from,u32 dst,const i32* to,const float* weights,u32 width,u32 height){if(src==dst)return false;const auto a=mask(renderer.resolve(renderer.owner,src).format),b=mask(renderer.resolve(renderer.owner,dst).format);if(!a[0]||!b[0])return false;prepare(src);target(dst,0,true);if(!th14_webgpu_resample(src,from,dst,to,weights,width,height,a.data(),b.data()))return false;auto& d=resources[dst];d.rendered=true;d.version=renderer.resolve(renderer.owner,dst).version+1;++renderer.stats.resamples;return true;}
     void read(u32 id){auto it=resources.find(id);if(it==resources.end()||!it->second.rendered)return;const auto s=renderer.resolve(renderer.owner,id);pixels.resize(s.width*s.height*4);th14_webgpu_read(id,pixels.data(),u32(pixels.size()));renderer.stats.readBytes+=s.size;
