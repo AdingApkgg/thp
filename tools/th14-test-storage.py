@@ -27,13 +27,18 @@ def clone_immutable(source,target):
 
 def check_budget(directory,minimum_free=100*1024**3,maximum_case=2*1024**3):
     directory=Path(directory).resolve();assert directory.is_relative_to((ROOT/'artifacts/th14').resolve())
-    free=shutil.disk_usage(directory).free
     used=0
     for current,folders,files in os.walk(directory,followlinks=False):
         folders[:]=[name for name in folders if not (Path(current)/name).is_junction() and not (Path(current)/name).is_symlink() and not(Path(current)==directory and name=='work')]
         for name in files:
             path=Path(current)/name
-            if not path.is_symlink():used+=path.stat().st_size
+            # Active compilers atomically rename/unlink temporary objects after
+            # os.walk lists them. Only an already-removed entry may be skipped;
+            # permission, I/O and other errors must still stop the operation.
+            try:metadata=path.lstat()
+            except FileNotFoundError:continue
+            if not stat.S_ISLNK(metadata.st_mode):used+=metadata.st_size
+    free=shutil.disk_usage(directory).free
     if free<minimum_free or used>maximum_case:
         result=dict(storageBudgetExceeded=True,freeBytes=free,minimumFreeBytes=minimum_free,caseObservationBytes=used,maximumCaseBytes=maximum_case,checkedUnixSeconds=time.time(),originalGameInputsOrCodeChanged=False)
         (directory/'storage-limit.json').write_text(json.dumps(result,indent=2)+'\n')

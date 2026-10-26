@@ -43,3 +43,5 @@ Application 使用 [既有流程](TH14_NATIVE_APPLICATION_OCT26.md)的构建／�
 后续新增[矩形 stencil 清除修复](TH14_STENCIL_CLEAR_OCT26.md)，以独立 HAL、实际 C++／Asyncify／JS 与原生 Python 设备控制另行验证，当前 21／8 图像回归通过。本文较早运行及浏览器候选保留原版本范围，不自动继承到新宿主。
 
 2026-10-27 新增[Bgrx8 清除／绘制目标](TH14_BGRX_RASTER_OCT27.md)，两条实际 C++ 宿主路径在 1,344 个设备用例中分别比较全部 4,032 份实际 D3DX 规范化缓冲一致；原始 X 字节也保留。当前 21／8／96 图形回归通过，16 位打包光栅与原有混合格式复制继续开放。本文较早完整 Application 和浏览器构建仍保留实际版本范围。
+
+该 C++ 修复随后进入重新编译全部 146 单元的新候选，未复用旧对象；完整 Wasm、当前宿主、133 条 Launcher 路由及 21 项 HTTP／协议检查由[新候选报告](th14-bgrx-candidate-verified-oct27.json)绑定。仍未执行普通浏览器验收。

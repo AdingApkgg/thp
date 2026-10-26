@@ -31,8 +31,15 @@ def main():
     assert subprocess.check_output(['git','-C',str(courier),'rev-parse','HEAD'],text=True).strip() == args.base_commit
     assert not subprocess.check_output(['git','-C',str(courier),'status','--porcelain'],text=True).strip()
     out.mkdir(parents=True)
-    spec = importlib.util.spec_from_file_location('storage', ROOT/'tools/th14-test-storage.py')
-    storage = importlib.util.module_from_spec(spec); spec.loader.exec_module(storage); storage.check_budget(out)
+    storage_raw = (ROOT/'tools/th14-test-storage.py').read_bytes()
+    (out/'storage-tool.py').write_bytes(storage_raw)
+    storage_path = ROOT/'tools/th14-test-storage.py'
+    spec = importlib.util.spec_from_file_location('storage', storage_path)
+    storage = importlib.util.module_from_spec(spec)
+    # Execute the captured bytes with their original source location so the
+    # helper's workspace root stays correct without rereading a mutable file.
+    exec(compile(storage_raw,str(storage_path),'exec'),storage.__dict__)
+    storage.check_budget(out)
     source = out/'source'; objects = out/'objects'; objects.mkdir()
     inventory = {}
     base = courier/'runtimes/th12'
@@ -79,11 +86,15 @@ def main():
             os.link(original,target);compiled[unit]=target;reused[key]=digest
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
         futures = {pool.submit(compile_unit,unit):unit for unit in units if unit not in compiled}
-        for future in concurrent.futures.as_completed(futures):
-            unit = futures[future]; compiled[unit] = future.result()
-            storage.check_budget(out)
-            (out/'progress.json').write_text(json.dumps(dict(phase='compile',compiled=len(compiled),total=len(units)))+'\n')
-            if len(compiled)%16 == 0: print('compiled',len(compiled),'/',len(units),flush=True)
+        try:
+            for future in concurrent.futures.as_completed(futures):
+                unit = futures[future]; compiled[unit] = future.result()
+                storage.check_budget(out)
+                (out/'progress.json').write_text(json.dumps(dict(phase='compile',compiled=len(compiled),total=len(units)))+'\n')
+                if len(compiled)%16 == 0: print('compiled',len(compiled),'/',len(units),flush=True)
+        except BaseException:
+            for future in futures: future.cancel()
+            raise
     exports = ['malloc','free',*['th11_'+name for name in ['validate_file','save_scores','save_replay','initialize','last_resource','music_enabled','audio_statistics','return_title','restart','error','frame','phase','pause','resume','loop_start','loop_stop','loop_pause','key','keys_clear','touch','touch_cancel','touch_options','touch_controls','touch_stick']],
                'th14_webgpu_invoke','th14_webgpu_frame']
     link_flags = ['--no-entry','-sDEFAULT_TO_CXX=1','-sMODULARIZE=1','-sEXPORT_ES6=1','-sENVIRONMENT=web,worker',
@@ -105,7 +116,7 @@ def main():
         flags=flags,linkFlags=link_flags,compilerVersion=(sdk/'upstream/emscripten/emscripten-version.txt').read_text().strip(),
         wasmBytes=len(wasm),wasmSha256=SHA(wasm),loaderSha256=SHA((out/'th14-sdl.mjs').read_bytes()),
         objectHashes={unit.relative_to(source).as_posix():SHA(compiled[unit].read_bytes())for unit in units},
-        toolSha256=SHA(tool_raw),rootUnrelatedResourceCryptExcluded=True,retailAssetsIncluded=False,
+        toolSha256=SHA(tool_raw),storageToolSha256=SHA(storage_raw),rootUnrelatedResourceCryptExcluded=True,retailAssetsIncluded=False,
         actualSdlPort=True,asyncify=True,frameAndWorkerCallbacksSerialized=True,browserRun=False,browserAcceptance=False,
         completeGame=False,nativeEquivalent=False,scope='Fresh compilation of the published independent C++ TH14 engine, real SDL3 port and explicit WebGPU overlays. Browser-targeted candidate only; compilation does not prove startup, presentation, browser scheduling, persistence, physical devices or whole-game fidelity.')
     (out/'build.json').write_text(json.dumps(report,indent=2)+'\n')

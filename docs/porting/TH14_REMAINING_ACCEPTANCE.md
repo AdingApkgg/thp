@@ -1,6 +1,6 @@
 # TH14 剩余验收清单
 
-更新：2026-10-26。目标为独立 C++／Wasm 完整 1:1，仅推进 TH14。以下各项未全部闭合前，`completeGame=false`、`nativeEquivalent=false`。
+更新：2026-10-27。目标为独立 C++／Wasm 完整 1:1，仅推进 TH14。以下各项未全部闭合前，`completeGame=false`、`nativeEquivalent=false`。
 
 本轮新增 [曲线激光生成原点修复](TH14_CURVE_ORIGIN_OCT26.md)，魔理沙 A Hard 所列对象比较的 28 项 X/Y 差异消失。此前已修复 [敌弹命中特效位移](TH14_BULLET_HIT_MOVEMENT_OCT26.md)，灵梦 B Normal 完整 122,537 回调独立复算通过，原先 10 个动画字段差异消失；Hard 完整 107,662 回调回归继续通过。此前 [换关遗留道具](TH14_STAGE_ITEM_RETIREMENT_OCT25.md) 的 83 帧 Bomb 碎片差异也已修复。
 
@@ -28,7 +28,7 @@
 
 新增[WebGPU 矩形 stencil 清除](TH14_STENCIL_CLEAR_OCT26.md)：可选 JS 后端与原生 Python 宿主接通此前拒绝的路径。96 个 D3D9 HAL 用例由独立 CPU 期望复核，实际 C++／Asyncify／JS 路径及 Python 路径各 384 份、4,718,592 字节与 HAL 一致，颜色／深度隔离、低 8 位和重叠矩形均有控制。C++ Wasm 前后逐字不变，当前 Stage 21／21、D3DX 8／8 及既有矩形颜色清除／版本／复制回归通过。随后以 146 个哈希不变的 C++ 对象重新链接本地候选并装入当前宿主，133 路由／21 项 HTTP 检查通过；普通浏览器、完整格式光栅、旧 WebGL 单像素及整局范围继续。
 
-新增[Bgrx8 渲染目标](TH14_BGRX_RASTER_OCT27.md)：生产 C++ WebGPU 分支接通清除／绘制目标，维持实际无 alpha 格式的目标混合语义。1,344 个 D3D9 HAL／实际 D3DX 转换用例，在 Emscripten／Asyncify／JS 与 WASI／原生 GPU 两条 C++ 路径各 4,032 份、4,128,768 字节完整缓冲一致；原始 X8 高字节另存，未丢弃通道。当前 21 Stage、8 D3DX、96 stencil 回归通过。16 位打包光栅与混合格式复制仍开放，新 C++ 尚未进入完整浏览器候选。另对 24 份已结束观察缓冲透明压缩且逐哈希保持不变，并补充发布构建的持续容量检查。
+新增[Bgrx8 渲染目标](TH14_BGRX_RASTER_OCT27.md)：生产 C++ WebGPU 分支接通清除／绘制目标，维持实际无 alpha 格式的目标混合语义。1,344 个 D3D9 HAL／实际 D3DX 转换用例，在 Emscripten／Asyncify／JS 与 WASI／原生 GPU 两条 C++ 路径各 4,032 份、4,128,768 字节完整缓冲一致；原始 X8 高字节另存，未丢弃通道。当前 21 Stage、8 D3DX、96 stencil 回归通过。随后以已发布 96bf57c 为基线重新编译全部 146 单元，完整 Wasm 为 2,700,129 字节；约 415 MB 生成资源通过别名复用，133 路由／21 项 HTTP 检查及实际服务的宿主／Wasm 字节核对通过，见[新候选范围报告](th14-bgrx-candidate-verified-oct27.json)。普通浏览器、16 位打包光栅与混合格式复制仍开放。另对 24 份已结束观察缓冲透明压缩且逐哈希保持不变，并补充发布构建的持续容量检查及临时文件并发消失控制。
 
 推进规则：优先首个真实玩法／流程差异；先最小窗口，修复后只重跑受影响完整用例。只有新增变更或失败需要时才重复验证。每项通过时记录版本、输入与实际范围，不以采样字数代替完成度。
 
