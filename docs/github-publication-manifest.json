@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "96bf57c97d41d583a07c5c30a24dcf4b94d93990",
+  "sourceCommit": "12a00b4f7adaccdfce40089aa1cc6c2157a52f02",
   "files": [
     {
       "path": ".gitignore",
@@ -102,6 +102,11 @@
       "path": "docs/porting/TH14_CAMERA_STORE_INTERLEAVING_OCT26.md",
       "bytes": 7452,
       "sha256": "8e2fcf9f4d73bd805111adf67cc173dbcce114c2776e4003316c73f9be6c3936"
+    },
+    {
+      "path": "docs/porting/TH14_CAMERA_WORD_STAGE4_OCT27.md",
+      "bytes": 4119,
+      "sha256": "561bdfcf43e0a3cdfbd36884e47be5b8363b6bbc9270685c451897f042f1c511"
     },
     {
       "path": "docs/porting/TH14_CAMPAIGN_GAPS_OCT26.md",
@@ -390,8 +395,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 14661,
-      "sha256": "3b6fba2d6d91dbbf07039dd250d40d851cbf60520e430f2fe519a2d13d6a4643"
+      "bytes": 15408,
+      "sha256": "1876132f11e42c4e3dfb2b2dcbf6c2d85bdd9160ad59816ded56253c76bda5ce"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -565,8 +570,8 @@
     },
     {
       "path": "docs/porting/TH14_STORAGE_POLICY_OCT25.md",
-      "bytes": 2874,
-      "sha256": "e6a1292e3d9d598dce93287b9a6c06e8bc575470ce3b212e23a7ab7d8f1d2a53"
+      "bytes": 3403,
+      "sha256": "4cbeeafba4df92c5ef2443a5cf10c5da4cc89a36c6afed19f970bf1e23f4ddb8"
     },
     {
       "path": "docs/porting/TH14_SUPERVISOR_NEXT_STAGE_OCT23.md",
@@ -1602,6 +1607,11 @@
       "path": "docs/porting/th14-camera-verified.json",
       "bytes": 2395,
       "sha256": "e411c140536fd74987eb1b9d21a94c259d9b48fd8868e8275d63421e13b02f7a"
+    },
+    {
+      "path": "docs/porting/th14-camera-word-stage4-summary-oct27.json",
+      "bytes": 1189,
+      "sha256": "1a16c812947b82d96d4818827c4e0c0fd1e96499e32b3bcc2374e232a434f9a8"
     },
     {
       "path": "docs/porting/th14-campaign-gates-verified-oct26.json",
@@ -5047,6 +5057,16 @@
       "path": "docs/porting/th14-scene-copy-word-prefix-oct26.json",
       "bytes": 4382,
       "sha256": "a8afd00b230e5f04daa68e493403c4c37691e6dae87b327765ec7071bd16ef3d"
+    },
+    {
+      "path": "docs/porting/th14-scene-copy-word-window-observation-oct27.json",
+      "bytes": 6022,
+      "sha256": "d7e6b36ea79889df7df63615302fc8f9338717d22fa56329ba7ca0df25b96d37"
+    },
+    {
+      "path": "docs/porting/th14-scene-copy-word-window-verified-oct27.json",
+      "bytes": 8917,
+      "sha256": "35c9c6d750d68b15e86775bff7cbdf84dd46d65e57ec14dcee676e25bac13aaa"
     },
     {
       "path": "docs/porting/th14-scene-handoff-verified-oct26.json",
@@ -19394,6 +19414,11 @@
       "sha256": "158b6d661ff7008a7a3a25915b4e3c2931889719b27debe623431ea06728d1ce"
     },
     {
+      "path": "tools/th14-prepare-word-window-comparison-oct27.py",
+      "bytes": 8623,
+      "sha256": "753e7a4895c4a0749e1d22db78fca7a98c12b812bc36ae9579720f1e511d7a01"
+    },
+    {
       "path": "tools/th14-primitive-viewport-evidence-check-oct19.py",
       "bytes": 9954,
       "sha256": "a30477846e2eb1ecddb65a504fd0cc90153acde49921dcf141b4069811da9fb4"
@@ -19832,6 +19857,11 @@
       "path": "tools/th14-scene-copy-word-evidence-oct26.py",
       "bytes": 8498,
       "sha256": "6f0a306921784e3fddcebe748afe1820a59970b440a9f22995e6e56c4bcc5b56"
+    },
+    {
+      "path": "tools/th14-scene-copy-word-window-evidence-oct27.py",
+      "bytes": 11147,
+      "sha256": "a8cc504f3b673772586c210940a25614d51030cbf69b01ffb0d898ee965eecd4"
     },
     {
       "path": "tools/th14-scene-handoff-evidence-check-oct26.py",
@@ -23505,18 +23535,17 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "96bf57c97d41d583a07c5c30a24dcf4b94d93990",
-    "title": "TH14 freshly compiled Bgrx8 candidate and robust continuous storage checks",
+    "basePublishedCommit": "12a00b4f7adaccdfce40089aa1cc6c2157a52f02",
+    "title": "TH14 retained Stage4 copy-word diagnostic, capacity failure preserved",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-bgrx-candidate-evidence-oct27.py",
-      "tools/th14-storage-budget-check-oct27.py",
-      "tools/th14-build-webgpu-release.py",
-      "tools/th14-test-storage.py",
-      "docs/porting/th14-bgrx-candidate-verified-oct27.json",
-      "docs/porting/TH14_BGRX_RASTER_OCT27.md",
+      "tools/th14-scene-copy-word-window-evidence-oct27.py",
+      "tools/th14-prepare-word-window-comparison-oct27.py",
+      "docs/porting/TH14_CAMERA_WORD_STAGE4_OCT27.md",
+      "docs/porting/th14-scene-copy-word-window-observation-oct27.json",
+      "docs/porting/th14-scene-copy-word-window-verified-oct27.json",
+      "docs/porting/th14-camera-word-stage4-summary-oct27.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/porting/TH14_STORAGE_POLICY_OCT25.md",
-      "docs/porting/TH14_CPP_WEBGPU_OCT26.md",
       "docs/github-publication-manifest.json"
     ],
     "productionGameplayChanged": false,
@@ -23525,30 +23554,28 @@
     "gameAssetsAdded": false,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
-    "compiledCppUnits": 146,
-    "reusedCppObjects": 0,
-    "fullGameWasmBytes": 2700129,
-    "fullGameWasmSha256": "d448495ab2c119ba54bf95790b03d4cd2a02b59310b4b4be84510c1e78f9382f",
-    "bgrxHeaderBoundToFiniteControls": true,
-    "finiteHalCases": 1344,
-    "buffersPerBackend": 4032,
-    "stageRegressionFrames": 21,
-    "d3dxRegressionCases": 8,
-    "stencilRegressionCases": 96,
-    "generatedResourceBytesAliased": 414850582,
-    "generatedResourceAliases": 28,
-    "launcherMetadataBytesWritten": 103342,
-    "launcherRoutes": 133,
-    "httpChecks": 21,
-    "currentBrowserCandidateUpdated": true,
-    "directHttpWasmAndHostBytesEqual": true,
-    "continuousStorageChecks": true,
-    "compilerTemporaryRaceHandled": true,
-    "bothBudgetGatesRetained": true,
-    "nonMissingIoErrorsStillPropagate": true,
+    "plannedMaximumCallbacks": 52000,
+    "actualDiagnosticCallbacks": 50700,
+    "originalCaptureSucceeded": false,
+    "captureBudgetStopped": true,
+    "originalFailureRetained": true,
+    "actualOriginalRepIterations": 225,
+    "actualRightWordObservations": 9,
+    "baselineAlreadyPassed": true,
+    "baselineAndWordModelOutputFilesEqual": 742,
+    "vm303Rows": 517,
+    "combatCheckpoints": 732,
+    "initialPublications": 2024,
+    "oldCameraFailureClosed": false,
+    "corruptedCameraRejected": true,
+    "failedCaptureNotAcceptedAsCompleted": true,
+    "completedOwnFilesTransparentlyCompressed": 88,
+    "logicalBytesCompressed": 1976541401,
+    "allocatedCompressedBytes": 561963008,
+    "compressionContentAndPathsUnchanged": true,
+    "currentBrowserCandidateChanged": false,
     "defaultPreviewChanged": false,
     "unrelatedResourceCryptEditExcluded": true,
-    "browserRun": false,
     "browserAcceptance": false,
     "completeGame": false,
     "nativeEquivalent": false
