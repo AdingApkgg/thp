@@ -190,17 +190,21 @@ struct Uniform{color:vec4f,depth:vec4f};
 
     def clear(self, target, depth, flags, color, value, stencil, rects):
         item = self.resources[target]
+        if flags & 4:
+            assert depth and self.depths[depth]['format'].endswith('stencil8'), 'Stencil clear requires stencil storage'
         full = rects == [(0, 0, item['width'], item['height'])]
         if not full:
-            assert not flags & 4, 'Partial stencil clear is not implemented'
             fmt = self.depths[depth]['format'] if depth else None
-            key = (fmt, flags & 3)
+            key = (fmt, flags & 7)
             if key not in self.clear_pipelines:
                 shader = self.clear_shader if fmt else self.clear_color_shader
                 descriptor = dict(layout='auto', vertex=dict(module=shader, entry_point='vs'),
                     fragment=dict(module=shader, entry_point='fs', targets=[dict(format='bgra8unorm', write_mask=15 if flags & 1 else 0)]))
                 if fmt:
                     descriptor['depth_stencil'] = dict(format=fmt, depth_write_enabled=bool(flags & 2), depth_compare='always')
+                    if flags & 4:
+                        descriptor['depth_stencil'].update(stencil_front=dict(compare='always',pass_op='replace'),
+                            stencil_back=dict(compare='always',pass_op='replace'),stencil_read_mask=255,stencil_write_mask=255)
                 self.clear_pipelines[key] = self.device.create_render_pipeline(**descriptor)
             pipeline = self.clear_pipelines[key]
             uniform = self.device.create_buffer_with_data(data=struct.pack('<8f',
@@ -211,6 +215,7 @@ struct Uniform{color:vec4f,depth:vec4f};
             render = self.commands().begin_render_pass(color_attachments=[dict(view=self.target(target).create_view(), load_op='load', store_op='store')],
                 depth_stencil_attachment=self.depth_attachment(depth))
             render.set_pipeline(pipeline); render.set_bind_group(0, binding)
+            if flags & 4:render.set_stencil_reference(stencil & 255)
             for left, top, right, bottom in rects:
                 left, top = max(0, left), max(0, top)
                 right, bottom = min(item['width'], right), min(item['height'], bottom)
@@ -226,7 +231,7 @@ struct Uniform{color:vec4f,depth:vec4f};
             z.update(depth_load_op='clear', depth_clear_value=value)
         if z and flags & 4:
             assert self.depths[depth]['format'].endswith('stencil8')
-            z.update(stencil_load_op='clear', stencil_clear_value=stencil)
+            z.update(stencil_load_op='clear', stencil_clear_value=stencil & 255)
         self.commands().begin_render_pass(color_attachments=[attachment], depth_stencil_attachment=z).end()
         item['dirty'] = True
 

@@ -165,20 +165,22 @@ struct Output{@location(0) color:vec4f,@builtin(frag_depth) depth:f32};
     const rgba=[16,8,0,24].map(shift=>((color>>>shift)&255)/255);
     const full=rects.length===4&&rects[0]===0&&rects[1]===0&&rects[2]===item.width&&rects[3]===item.height;
     const z=this.depthAttachment(depth);
+    if ((flags&4)&&(!z||!this.depths.get(depth).format.endsWith('stencil8'))) throw new Error('Stencil clear requires stencil storage');
     if (full) {
       if (z&&(flags&2)) Object.assign(z,{depthLoadOp:'clear',depthClearValue:value});
-      if (z&&(flags&4)) {if (!this.depths.get(depth).format.endsWith('stencil8')) throw new Error('Stencil clear requires stencil storage');Object.assign(z,{stencilLoadOp:'clear',stencilClearValue:stencil});}
+      if (flags&4) Object.assign(z,{stencilLoadOp:'clear',stencilClearValue:stencil&255});
       this.commands().beginRenderPass({colorAttachments:[{view:output.createView(),loadOp:flags&1?'clear':'load',storeOp:'store',clearValue:rgba}],depthStencilAttachment:z}).end();
     } else {
-      if (flags&4) throw new Error('Partial stencil clear is not implemented');
-      const format=depth?this.depths.get(depth).format:null,key=JSON.stringify([format,flags&3]);
+      const format=depth?this.depths.get(depth).format:null,key=JSON.stringify([format,flags&7]);
       if (!this.clearPipelines.has(key)) this.clearPipelines.set(key,this.device.createRenderPipeline({layout:'auto',vertex:{module:this.clearShader,entryPoint:'vs'},
         fragment:{module:this.clearShader,entryPoint:format?'fs':'fsColor',targets:[{format:'bgra8unorm',writeMask:flags&1?15:0}]},
-        ...(format?{depthStencil:{format,depthWriteEnabled:!!(flags&2),depthCompare:'always'}}:{})}));
+        ...(format?{depthStencil:{format,depthWriteEnabled:!!(flags&2),depthCompare:'always',
+          ...(flags&4?{stencilFront:{compare:'always',passOp:'replace'},stencilBack:{compare:'always',passOp:'replace'},stencilReadMask:255,stencilWriteMask:255}:{})}}:{})}));
       const pipeline=this.clearPipelines.get(key),buffer=this.buffer(new Float32Array([...rgba,value,0,0,0]),GPUBufferUsage.UNIFORM);
       const bind=this.device.createBindGroup({layout:pipeline.getBindGroupLayout(0),entries:[{binding:0,resource:{buffer}}]});
       const pass=this.commands().beginRenderPass({colorAttachments:[{view:output.createView(),loadOp:'load',storeOp:'store'}],depthStencilAttachment:z});
       pass.setPipeline(pipeline);pass.setBindGroup(0,bind);
+      if (flags&4) pass.setStencilReference(stencil&255);
       for (let i=0;i<rects.length;i+=4) {
         const left=Math.max(0,rects[i]),top=Math.max(0,rects[i+1]),right=Math.min(item.width,rects[i+2]),bottom=Math.min(item.height,rects[i+3]);
         if (right>left&&bottom>top) {pass.setScissorRect(left,top,right-left,bottom-top);pass.draw(3);}

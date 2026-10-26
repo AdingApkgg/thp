@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "6f7d02dffd872196db01a1215f2e9ef6c11bfb8c",
+  "sourceCommit": "26838507879ade0397d391205ea0e30be825650a",
   "files": [
     {
       "path": ".gitignore",
@@ -120,8 +120,8 @@
     },
     {
       "path": "docs/porting/TH14_CPP_WEBGPU_OCT26.md",
-      "bytes": 4990,
-      "sha256": "35ee183e25505f87f933069fb4437d008c25e49b18a53f41e8160bdea6aec35c"
+      "bytes": 5277,
+      "sha256": "f0d84a5bb894fe58c72321df782ea4d9c5b54ffa7d2dd85bc6256676542c46e1"
     },
     {
       "path": "docs/porting/TH14_CURRENT_GPU_BASELINE_OCT25.md",
@@ -215,8 +215,8 @@
     },
     {
       "path": "docs/porting/TH14_JS_WEBGPU_OCT26.md",
-      "bytes": 5395,
-      "sha256": "25a40d40491c321e092ae7f20e63bdd3dd01b58d2d8e9ecc810d42d56dcba23e"
+      "bytes": 5682,
+      "sha256": "f8eeb1ca2801f72aca43e66597c40517a2b3dfdcfbdde263198366cc9e8a86c6"
     },
     {
       "path": "docs/porting/TH14_LAUNCHER_CONTINUE_OCT26.md",
@@ -385,8 +385,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 12973,
-      "sha256": "2f98d943deee165bf7519d139d00a7ea4e7263b7f8f0fa6dfba5ec581e39e2db"
+      "bytes": 13579,
+      "sha256": "ede528624f173c5611919e8fa0776ac6131131bc990840ef15a5398bd61a1744"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -552,6 +552,11 @@
       "path": "docs/porting/TH14_STARTUP_WORKER_OCT24.md",
       "bytes": 3156,
       "sha256": "31c9e3059f8d28ae587a2b051439e5605ab9c92d2612a8d097104e24ece62086"
+    },
+    {
+      "path": "docs/porting/TH14_STENCIL_CLEAR_OCT26.md",
+      "bytes": 3841,
+      "sha256": "d17da3f0d867362d6b4fa1f2e2857c25b0d230aa13fe382f096595d5cffaee22"
     },
     {
       "path": "docs/porting/TH14_STORAGE_POLICY_OCT25.md",
@@ -6024,6 +6029,11 @@
       "sha256": "b14cfb65c734540207c9ce2efaec8a6d2e276fa808a20fb21cf6b6432bc74b94"
     },
     {
+      "path": "docs/porting/th14-stencil-clear-verified-oct26.json",
+      "bytes": 257039,
+      "sha256": "13f8037429c11a723be16df98dc07331d0374a6af5d54b4b753ca62cba95f459"
+    },
+    {
       "path": "docs/porting/th14-supervisor-next-stage-verified-oct23.json",
       "bytes": 14477,
       "sha256": "f70bace41451ac92e8ab8e7414188abf6bd634f2e555db9c095e741afeda6b90"
@@ -7355,8 +7365,8 @@
     },
     {
       "path": "runtimes/th12/portable/sdl/Th14WebGpuHost.mjs",
-      "bytes": 18799,
-      "sha256": "b90a8075004199c26248b4d4385b26edfaa582d5358cd5ba20579f1dc296571f"
+      "bytes": 18963,
+      "sha256": "45c8d5ee563f3083f61ae33d9c7ca8fcdbf39c3dc06c121daa87eb21e05d5fbd"
     },
     {
       "path": "runtimes/th12/portable/sdl/Th14WebGpuLibrary.js",
@@ -12512,6 +12522,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-startup-fixture.cpp",
       "bytes": 41307,
       "sha256": "d1c23be26a665b0206f1f40b739129db29c4749cadf727ffcaec97af9fd27c76"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-stencil-clear-fixture.cpp",
+      "bytes": 1351,
+      "sha256": "80348ccdb3b6218cad388b6de63dd37df1f4767a07841898ea59fc802ae69dac"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-text-raster-fixture.cpp",
@@ -18575,8 +18590,8 @@
     },
     {
       "path": "tools/th14-native-webgpu-context.py",
-      "bytes": 20840,
-      "sha256": "9b1ce31ca53865a07a76ae85c91994d033c500265fcc8e488c6ed3b191a85fc7"
+      "bytes": 21258,
+      "sha256": "1bb5d6e930b04f5b450404c6ce490fedb4bdb77509144daacd53e9d39bc0873e"
     },
     {
       "path": "tools/th14-native-webgpu-surfaces.py",
@@ -21909,6 +21924,21 @@
       "sha256": "6f563fb135832b66918630bd1a1ba830b93e982dbc510514a815d68e2c7852eb"
     },
     {
+      "path": "tools/th14-stencil-clear-evidence-oct26.py",
+      "bytes": 8511,
+      "sha256": "80addf0a24023a847a582ee166023eb21fd2a0e43034469f838df05dfe18609a"
+    },
+    {
+      "path": "tools/th14-stencil-clear-hal-control.py",
+      "bytes": 8252,
+      "sha256": "cad3edf82c7ef9f4403d9cc37d012a0f0017011fbab6ec72e5c88d4df1f8e9e5"
+    },
+    {
+      "path": "tools/th14-stencil-clear-native-webgpu-control.py",
+      "bytes": 5224,
+      "sha256": "056c5d451c547986100a1806d57f3cc6efbdc0242fd74f5e426bdba59a085fbf"
+    },
+    {
       "path": "tools/th14-survival-phase-check.mjs",
       "bytes": 2906,
       "sha256": "f590e627d6cdf73c418a5658dc1e982400ec58ac0d2b61975cf8e9243da86db8"
@@ -22257,6 +22287,11 @@
       "path": "tools/th14-webgpu-stage-evidence-oct26.py",
       "bytes": 6406,
       "sha256": "0bc2d14444d6a7e2ba8916e187dd8d860457f108286ff39ae60765db95541e8a"
+    },
+    {
+      "path": "tools/th14-webgpu-stencil-clear-control.mjs",
+      "bytes": 7548,
+      "sha256": "91b6836871a61da2d45c4c8c8da1b8f6bbd865bbcf1d1f301f67da2dc9e97a07"
     },
     {
       "path": "tools/th16-anm-basic-check.mjs",
@@ -23410,52 +23445,48 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "6f7d02dffd872196db01a1215f2e9ef6c11bfb8c",
-    "title": "TH14 original partial camera-store interleaving and direct Scene-copy observation",
+    "basePublishedCommit": "26838507879ade0397d391205ea0e30be825650a",
+    "title": "TH14 native WebGPU rectangle stencil clear with independent D3D9 HAL controls",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-camera-store-interleaving-oct26.py",
-      "tools/th14-prepare-scene-copy-word-observer-oct26.py",
-      "tools/th14-scene-copy-word-evidence-oct26.py",
-      "tools/th14-scene-copy-handoff-evidence-oct26.py",
-      "tools/th14-compare-native-campaign.mjs",
-      "tools/th14-verify-native-campaign.py",
-      "docs/porting/TH14_CAMERA_STORE_INTERLEAVING_OCT26.md",
-      "docs/porting/th14-camera-store-interleaving-oct26.json",
-      "docs/porting/th14-scene-copy-word-prefix-oct26.json",
-      "docs/porting/th14-scene-copy-handoff-verified-oct26.json",
-      "docs/porting/TH14_SAKUYAB_EASY_CAMERA_FAILURE_OCT26.md",
+      "runtimes/th12/portable/sdl/Th14WebGpuHost.mjs",
+      "tools/th14-native-webgpu-context.py",
+      "tools/th14-stencil-clear-hal-control.py",
+      "tools/th14-webgpu-stencil-clear-control.mjs",
+      "tools/th14-stencil-clear-native-webgpu-control.py",
+      "tools/th14-stencil-clear-evidence-oct26.py",
+      "runtimes/th12/th12_web/tests/cpp/th14-stencil-clear-fixture.cpp",
+      "docs/porting/TH14_STENCIL_CLEAR_OCT26.md",
+      "docs/porting/th14-stencil-clear-verified-oct26.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
+      "docs/porting/TH14_CPP_WEBGPU_OCT26.md",
+      "docs/porting/TH14_JS_WEBGPU_OCT26.md",
       "docs/github-publication-manifest.json"
     ],
     "productionGameplayChanged": false,
-    "productionGraphicsChanged": false,
+    "productionGraphicsChanged": true,
     "productionAudioChanged": false,
+    "productionCppEngineChanged": false,
+    "productionJavascriptWebgpuHostChanged": true,
+    "nativePythonGpuHostChanged": true,
     "gameAssetsAdded": false,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
-    "originalCameraProducerAndCopySchedules": 280,
-    "originalCopiedDwords": 21000,
-    "retainedStage4MixedRightReproduced": true,
-    "historicalRealScheduleIdentified": false,
-    "originalDiagnosticPrefixCallbacks": 15000,
-    "originalDiagnosticStages": [
-      1,
-      2
-    ],
-    "originalSceneCopyStepEvents": 78,
-    "originalSceneCopyRepIterations": 75,
-    "originalRightWordObservations": 3,
-    "previousDataOnlyObserverFailedAndRetained": true,
-    "hostSceneWordHandoffCorrected": true,
-    "diagnosticCameraWordDifferencesBefore": 1286,
-    "diagnosticAllCamera25AfterEqual": true,
-    "diagnosticAnimationRows": 384,
-    "diagnosticCombatCheckpoints": 228,
-    "strictCorruptCameraNegativeRejected": true,
-    "classicHardwareFullVerifierRegressionCallbacks": 107233,
-    "cameraCampaignFailuresClosed": false,
-    "ordinaryOriginalUiAccepted": false,
-    "nativeValuesProvidedToGameEngine": false,
+    "stencilHalCases": 96,
+    "stencilCppAsyncifyJsCases": 96,
+    "stencilNativeHostCases": 96,
+    "stencilBuffersPerHost": 384,
+    "stencilComparedBytesPerHost": 4718592,
+    "allStencilHalHostBuffersExact": true,
+    "cppWasmBeforeAfterByteIdentical": true,
+    "stencilLow8BitAndColorDepthIsolationChecked": true,
+    "stageRegressionFrames": 21,
+    "stageRegressionBytes": 25804800,
+    "d3dxRegressionCases": 8,
+    "d3dxRegressionBytes": 5242880,
+    "existingPartialColorVersionAndCopyRegression": true,
+    "packedRasterTargetsStillRejected": true,
+    "browserCandidateUpdated": false,
+    "originalOrdinaryUiAccepted": false,
     "unrelatedResourceCryptEditExcluded": true,
     "browserAcceptance": false,
     "completeGame": false,

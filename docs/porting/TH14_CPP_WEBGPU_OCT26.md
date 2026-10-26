@@ -39,3 +39,5 @@ python tools/th14-native-webgpu-surfaces.py `
 Application 使用 [既有流程](TH14_NATIVE_APPLICATION_OCT26.md)的构建／运行命令，加 `--backend webgpu`、本地 `--wgpu-site` 及上述 `--metadata-epoch`；对照构建使用 `--backend gles` 和同一个元数据时钟。所有输出使用新的私有目录，至少保留 100 GiB 空间。工具不下载游戏或安装运行库。
 
 尚未实现浏览器 WebGPU 主机、异步初始化／读回与画布呈现；不启用发布入口的新后端。默认 WebGL 仍保留既有 20／21 和一个蓝通道差异，重构后的完整缓冲与保留浏览器记录一致。打包格式目标上的一般光栅混合及部分 stencil 清除明确拒绝；加权捕获着色器、其余格式、深度和管线组合仍需单独原版控制。Stage 参考保留原有屏幕队列排除，成对 Application 画面也不是原版普通菜单画面对照。完整模式、相机交错、effect149 地址／ABI、音频、普通原版界面和浏览器持久化验收仍待完成。`browserAcceptance=false`、`completeGame=false`、`nativeEquivalent=false`。
+
+后续新增[矩形 stencil 清除修复](TH14_STENCIL_CLEAR_OCT26.md)，以独立 HAL、实际 C++／Asyncify／JS 与原生 Python 设备控制另行验证，当前 21／8 图像回归通过。本文较早运行及浏览器候选保留原版本范围，不自动继承到新宿主。
