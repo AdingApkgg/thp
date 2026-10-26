@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "6ac61159f627700c64c9a79fdef4b7530d399ad4",
+  "sourceCommit": "1d9999a47ea1c8510d4983d47ff22c50a544fad6",
   "files": [
     {
       "path": ".gitignore",
@@ -404,14 +404,19 @@
       "sha256": "fbaf2c953e54ff3b8e9a72e83d2868a5330dd56a0fbadb7ce0d2e191741d3305"
     },
     {
+      "path": "docs/porting/TH14_RECOVERED_PREVIEW_OCT27.md",
+      "bytes": 4662,
+      "sha256": "72047916222c0db87dfa6609a415564bba3fd2a141d883a391227396f16a83cf"
+    },
+    {
       "path": "docs/porting/TH14_REIMUB_EASY_WORKER_OCT26.md",
       "bytes": 2033,
       "sha256": "70b681a624ade01ebdff36c5f6e8f0c8d122ff4de675fd9d5b47bdaedf133d1a"
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 19302,
-      "sha256": "b376a1dcdf416c0f504ff9e49af617bc300d0f65b86e1273133122f784d8a98e"
+      "bytes": 20069,
+      "sha256": "ab6a95310c9dc53f701f577f3faada1367c7bfc9517f22dc70c1dd880a512437"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -4732,6 +4737,11 @@
       "path": "docs/porting/th14-records-verified.json",
       "bytes": 1567,
       "sha256": "02d2cfdb46c9b3b0962c78663698ea1e04ff482e0bd8d58acec26e9fadcb0577"
+    },
+    {
+      "path": "docs/porting/th14-recovered-preview-verified-oct27.json",
+      "bytes": 78972,
+      "sha256": "ad0e8df7133f796797497e2acc3259ed68ba4a5f60ab6bd225a4f516ca962210"
     },
     {
       "path": "docs/porting/th14-reference-address-crosscheck-oct12.json",
@@ -19034,6 +19044,11 @@
       "sha256": "21f41ab066e94eef8e9201a3d3e5e1128399abfb25352f87b08be5f757e1cffd"
     },
     {
+      "path": "tools/th14-ordinary-replay-observer-oct27.py",
+      "bytes": 15174,
+      "sha256": "ae629c8c998b28f17903a2070aa633b2bc9bc967b9544ae170393ec1eb56ba56"
+    },
+    {
       "path": "tools/th14-original-demo-native-evidence-check.mjs",
       "bytes": 4871,
       "sha256": "754580a96fd543c4c21c5e265f01e1407c6b6f12b784fcda21a8eabdee6a5134"
@@ -19607,6 +19622,11 @@
       "path": "tools/th14-records-text-native.py",
       "bytes": 4139,
       "sha256": "423fa17bcda7a38e2c74c90fc5539096a6c2da78f400dd4e51f5b2c69684b8e1"
+    },
+    {
+      "path": "tools/th14-recovered-preview-evidence-oct27.py",
+      "bytes": 6566,
+      "sha256": "68e941c9b694682a827124e48e0dd94d9568878f7d105e6929e15b39d97707e6"
     },
     {
       "path": "tools/th14-reference-address-crosscheck.py",
@@ -23640,49 +23660,38 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "6ac61159f627700c64c9a79fdef4b7530d399ad4",
-    "title": "TH14 ordinary replay initial script seed restoration",
+    "basePublishedCommit": "1d9999a47ea1c8510d4983d47ff22c50a544fad6",
+    "title": "TH14 recovered silent candidate and retained ordinary UI failure",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "runtimes/th12/th12_web/cpp/game/Replay.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-initial-replay-restore-fixture.cpp",
-      "tools/th14-initial-replay-restore-native-oct27.py",
-      "tools/th14-initial-replay-restore-compare-oct27.py",
-      "tools/th14-initial-replay-restore-evidence-oct27.py",
-      "docs/porting/TH14_INITIAL_REPLAY_RESTORE_OCT27.md",
-      "docs/porting/th14-initial-replay-restore-verified-oct27.json",
+      "tools/th14-ordinary-replay-observer-oct27.py",
+      "tools/th14-recovered-preview-evidence-oct27.py",
+      "docs/porting/TH14_RECOVERED_PREVIEW_OCT27.md",
+      "docs/porting/th14-recovered-preview-verified-oct27.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
-    "productionGameplayChanged": true,
+    "productionGameplayChanged": false,
     "productionGraphicsChanged": false,
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "actualNativeRestoreControls": 288,
-    "oldCallContractExactCases": 0,
-    "currentCallContractExactCases": 288,
-    "wholeGameSessionNativeAcceptance": false,
-    "compiledCoreSources": 2,
-    "reusedCoreObjects": 139,
-    "actualApplicationOrdinaryMenuReachedStage2": true,
-    "ordinaryFullReplayAccepted": false,
-    "failedActualApplicationFrames": 27251,
-    "failedActualApplicationJournalRows": 8434,
-    "assertionsPassedBeforeFullFailure": 20,
-    "oldWarmCaseFailureUniquelyAttributed": false,
-    "newReplayDownloaded": false,
+    "browserCandidateCodeCommit": "1d9999a47ea1c8510d4983d47ff22c50a544fad6",
+    "compiledCppUnits": 146,
+    "wasmBytes": 2700286,
+    "wasmSha256": "60c5f8fcded16f26123247bf04078be7a1c9abed934dadcce96affe01d5d992c",
+    "candidateRoutes": 133,
+    "httpChecks": 21,
+    "actualServedBytesVerified": true,
+    "quietByDefault": true,
+    "workingBgmCopiesDeduplicated": 23,
+    "independentCopyRestoreProbePassed": true,
+    "workingOriginalMetadataRecoverable": true,
+    "referenceHashesUnchanged": true,
     "oldFailuresRetained": true,
-    "currentDemoFrames": 2264,
-    "currentDemoAssertions": 7,
-    "currentDemoJournalRows": 131,
-    "currentDemoCapturedImages": 2,
-    "currentDemoImagesAndRowsPreserved": true,
-    "currentDemoPcmFrames": 1508352,
-    "currentDemoPcmHashPreserved": true,
+    "originalGameFilesChanged": false,
+    "ordinaryNativeUiAccepted": false,
+    "ordinaryNativeUiPlayerCallbacks": 0,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
-    "preview8218StillPreviousPublishedCode": true,
-    "originalOrdinaryUiAccepted": false,
     "browserAcceptance": false,
     "completeGame": false,
     "nativeEquivalent": false
