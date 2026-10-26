@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "9f750c79daf0262455a25bdb358d9ca177570e23",
+  "sourceCommit": "ca306ace291742fa72e3709d31c2bd36b18dc5dd",
   "files": [
     {
       "path": ".gitignore",
@@ -112,6 +112,11 @@
       "path": "docs/porting/TH14_CONSTRUCTOR_HIT_FULL_NATIVE_OCT16.md",
       "bytes": 2165,
       "sha256": "3d26858bb8f4b984eaa03c3a0faae8e19df994aa26b98d88715b3c6df2e7762a"
+    },
+    {
+      "path": "docs/porting/TH14_CPP_WEBGPU_OCT26.md",
+      "bytes": 4830,
+      "sha256": "e8061d3840f48eb37ece6fbc56c36f63b2cb3f064d563421cce8baa817a0d496"
     },
     {
       "path": "docs/porting/TH14_CURRENT_GPU_BASELINE_OCT25.md",
@@ -295,8 +300,8 @@
     },
     {
       "path": "docs/porting/TH14_NATIVE_APPLICATION_OCT26.md",
-      "bytes": 4281,
-      "sha256": "677f60e83d925bacdd32d0d0744a1f26d73554421aa8cb8c5f8e4b4c501f52bc"
+      "bytes": 4562,
+      "sha256": "00334861072e24791a599ca1c91aa16f60e26e16ffe927aad258826fe4a819cb"
     },
     {
       "path": "docs/porting/TH14_NATIVE_BOUNDARIES_OCT26.md",
@@ -360,8 +365,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 10160,
-      "sha256": "a46865f90e16cc684dbf47bb26ca5ea2954abe6762714862956a5cde28c85f31"
+      "bytes": 10586,
+      "sha256": "640719713c2e57a76d48d043f179768f90e8a552b3c742b5850259bd63ed7fbd"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -1717,6 +1722,11 @@
       "path": "docs/porting/th14-core-loading-verified.json",
       "bytes": 8342,
       "sha256": "b72c1e1787b4d248511bafd8e0ee82012a165939862dc692b298484dc0717ec3"
+    },
+    {
+      "path": "docs/porting/th14-cpp-webgpu-verified-oct26.json",
+      "bytes": 96304,
+      "sha256": "87a083c83d6a44a1adfe8d5b7d3a1d1144f437df85089517e896bc90ac54800b"
     },
     {
       "path": "docs/porting/th14-current-browser-flow-verified-oct14.json",
@@ -7245,13 +7255,13 @@
     },
     {
       "path": "runtimes/th12/portable/sdl/Renderer.cpp",
-      "bytes": 37657,
-      "sha256": "2408f613a531ec7c28de071b669933de33763d45b2e7794d97cb8f96494a67f6"
+      "bytes": 36652,
+      "sha256": "e3468c7edf975426ba33bc9df80eed2cc5ddfef17ae205267961960055a7c197"
     },
     {
       "path": "runtimes/th12/portable/sdl/Renderer.hpp",
-      "bytes": 4167,
-      "sha256": "d356cf5cde80ff0f5f8e4c43b1eb77cdc061e542c7cbe543e2c26bf2d6405249"
+      "bytes": 4312,
+      "sha256": "8090192167b8be9a0180fe0e046c266751110b86f2d0940a88defd4384dacb29"
     },
     {
       "path": "runtimes/th12/portable/sdl/ResampleShader.hpp",
@@ -7262,6 +7272,26 @@
       "path": "runtimes/th12/portable/sdl/Shaders.hpp",
       "bytes": 6185,
       "sha256": "2e4a0b06da45e98e5babae05c29a6da7fa2dfe9ec4a73c39d2f7e3008f182193"
+    },
+    {
+      "path": "runtimes/th12/portable/sdl/Th14RenderMath.hpp",
+      "bytes": 2726,
+      "sha256": "0f7af59d776b664600d6576a86d24fc927b0472917ab0318811236fb615060b7"
+    },
+    {
+      "path": "runtimes/th12/portable/sdl/Th14WebGpu.wgsl",
+      "bytes": 4022,
+      "sha256": "11df22f617f1f813bd7c42fb2ebff530445d7b987726530dcaa801d8320b6432"
+    },
+    {
+      "path": "runtimes/th12/portable/sdl/Th14WebGpuResample.wgsl",
+      "bytes": 4593,
+      "sha256": "7232afa690c4384f3246d126f7acf4e403ecc01dd5f22b9376d94f8453d4ff91"
+    },
+    {
+      "path": "runtimes/th12/portable/sdl/WebGpuRenderer.hpp",
+      "bytes": 13253,
+      "sha256": "726b90394559d384fefd720ba1dbd3ec77c7302c8cd975f61955e53d79b04d72"
     },
     {
       "path": "runtimes/th12/portable/sdl/third_party/miniaudio.LICENSE",
@@ -8670,8 +8700,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/sdl/GraphicsDevice.cpp",
-      "bytes": 9529,
-      "sha256": "bfa7a1445bb6d6f2924c3c2c35d12fc5ffe7cd78e1ce8098102697dd40363765"
+      "bytes": 9527,
+      "sha256": "cb72b8d39dda16292bb3b78b2f851f62a2ec4071583644ef00feacb3373c7e33"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/sdl/GraphicsDevice.hpp",
@@ -12444,6 +12474,11 @@
       "sha256": "b310a2480d9252f1ca35c4a28402e0563f14508d8f71cdb992110cb90900ba82"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-webgpu-surface-fixture.cpp",
+      "bytes": 1783,
+      "sha256": "38b95faace21e6ac16737a76fe8af1eff71ca7a9baafcdead777a81bf7bf3829"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th16-anm-basic-fixture.cpp",
       "bytes": 13010,
       "sha256": "c93b1c68da628bc620c35d0d02971b2778e1422c1cd8273476c4e6746f8ad3f6"
@@ -15065,13 +15100,13 @@
     },
     {
       "path": "tools/th14-build-native-application.py",
-      "bytes": 8099,
-      "sha256": "79c7935585d1881f2cd5a39a760e968dda2de1494087b3663f22121c40c6f49a"
+      "bytes": 8555,
+      "sha256": "aa69a3d0b0e252523cf5cfdb194dbfdb6c0c648bb07df66338f16d8d63834bfb"
     },
     {
       "path": "tools/th14-build-native-gles-component.py",
-      "bytes": 6475,
-      "sha256": "8570a98cb632a623e602df39f3e28aa698f502d54a6bf0becea9469ca76cd8c4"
+      "bytes": 7091,
+      "sha256": "568de985a983b5c2c4ae75d6c3bb6b6e33e895625267c53d99cf64a70a1d6149"
     },
     {
       "path": "tools/th14-bullet-acceleration-check.mjs",
@@ -15522,6 +15557,11 @@
       "path": "tools/th14-core-loading-check.mjs",
       "bytes": 4752,
       "sha256": "00a208664d60707d5bbfde8389c8a72128e2fdcf7082bf7d716e7a78b01f168b"
+    },
+    {
+      "path": "tools/th14-cpp-webgpu-evidence-oct26.py",
+      "bytes": 12681,
+      "sha256": "27afe0efdb5af69f5f2aa2f76fe8e0f9c1d0fd7edc4c5589210fc6f5446f7600"
     },
     {
       "path": "tools/th14-current-browser-flow-evidence-check.mjs",
@@ -18150,8 +18190,8 @@
     },
     {
       "path": "tools/th14-native-application.py",
-      "bytes": 14419,
-      "sha256": "3782aa04f9909e4ec30dc37c363623206b4a2e4309c5a2c2fe4a4c24ab01f0eb"
+      "bytes": 16150,
+      "sha256": "6a62922143fbaa1833c730074eab3869d4226325fa9c561391128ef77567215f"
     },
     {
       "path": "tools/th14-native-area-window-capture.py",
@@ -18387,6 +18427,21 @@
       "path": "tools/th14-native-triangle-weights32.py",
       "bytes": 2544,
       "sha256": "7d374015bbff167ec7cd931fc6cbdb190e5b20a580d2cf78a0194fd98181dd7a"
+    },
+    {
+      "path": "tools/th14-native-webgpu-component.py",
+      "bytes": 11892,
+      "sha256": "55bf15c4720f3b7d4d32a8498a0821c01e1213d75902f2b5f0daa5c527b779ce"
+    },
+    {
+      "path": "tools/th14-native-webgpu-context.py",
+      "bytes": 20840,
+      "sha256": "9b1ce31ca53865a07a76ae85c91994d033c500265fcc8e488c6ed3b191a85fc7"
+    },
+    {
+      "path": "tools/th14-native-webgpu-surfaces.py",
+      "bytes": 7683,
+      "sha256": "f4b3a4508e0eb409410d7a3391a9d6cf776d6d689dd97e74b18da6866c0ef239"
     },
     {
       "path": "tools/th14-native-worker-status-capture.py",
@@ -23160,42 +23215,57 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "9f750c79daf0262455a25bdb358d9ca177570e23",
-    "title": "TH14 strict Marisa B Easy and native WebGPU Stage prototype",
+    "basePublishedCommit": "ca306ace291742fa72e3709d31c2bd36b18dc5dd",
+    "title": "TH14 actual C++ WebGPU renderer and finite Application integration",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-webgpu-stage-component-oct26.py",
-      "tools/th14-webgpu-rgb565-sampler-oct26.py",
-      "tools/th14-webgpu-stage-evidence-oct26.py",
-      "docs/porting/TH14_WEBGPU_STAGE_COMPONENT_OCT26.md",
-      "docs/porting/th14-webgpu-stage-verified-oct26.json",
-      "docs/porting/TH14_MARISAB_EASY_OCT26.md",
-      "docs/porting/th14-marisab-easy-verified-oct26.json",
+      "runtimes/th12/portable/sdl/Renderer.cpp",
+      "runtimes/th12/portable/sdl/Renderer.hpp",
+      "runtimes/th12/portable/sdl/Th14RenderMath.hpp",
+      "runtimes/th12/portable/sdl/WebGpuRenderer.hpp",
+      "runtimes/th12/portable/sdl/Th14WebGpu.wgsl",
+      "runtimes/th12/portable/sdl/Th14WebGpuResample.wgsl",
+      "runtimes/th12/th12_web/cpp/sdl/GraphicsDevice.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-webgpu-surface-fixture.cpp",
+      "tools/th14-build-native-gles-component.py",
+      "tools/th14-native-webgpu-component.py",
+      "tools/th14-native-webgpu-context.py",
+      "tools/th14-native-webgpu-surfaces.py",
+      "tools/th14-cpp-webgpu-evidence-oct26.py",
+      "tools/th14-build-native-application.py",
+      "tools/th14-native-application.py",
+      "docs/porting/TH14_CPP_WEBGPU_OCT26.md",
+      "docs/porting/th14-cpp-webgpu-verified-oct26.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "docs/porting/TH14_NATIVE_GLES_COMPONENT_OCT26.md",
-      "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
-      "docs/porting/th14-mode-acceptance-inventory-oct25.json",
+      "docs/porting/TH14_NATIVE_APPLICATION_OCT26.md",
       "docs/github-publication-manifest.json"
     ],
-    "productionSourceFiles": [],
+    "productionSourceFiles": [
+      "runtimes/th12/portable/sdl/Renderer.cpp",
+      "runtimes/th12/portable/sdl/Renderer.hpp",
+      "runtimes/th12/portable/sdl/Th14RenderMath.hpp",
+      "runtimes/th12/portable/sdl/WebGpuRenderer.hpp",
+      "runtimes/th12/portable/sdl/Th14WebGpu.wgsl",
+      "runtimes/th12/portable/sdl/Th14WebGpuResample.wgsl",
+      "runtimes/th12/th12_web/cpp/sdl/GraphicsDevice.cpp"
+    ],
     "productionGameplayChanged": false,
-    "productionGraphicsChanged": false,
+    "productionGraphicsChanged": true,
+    "productionGraphicsDefaultBehaviorChanged": false,
     "productionAudioChanged": false,
     "gameAssetsAdded": false,
-    "nativeNaturalRunModePairs": 30,
-    "nativeAllStageEntryModePairs": 25,
-    "marisaBEasyNativeCallbacks": 107233,
-    "marisaBEasyVm303Rows": 2630,
-    "marisaBEasyCombatCheckpoints": 1206,
-    "marisaBEasyIndependentlyVerifiedFiniteEvidence": true,
-    "nativeWebgpuPrototypeExactStageFrames": 21,
-    "nativeWebgpuPrototypeDraws": 1005,
-    "nativeWebgpuPrototypeComparedBytes": 25804800,
-    "nativeWebgpuRgb565SourceCodes": 65536,
-    "nativeWebgpuRgb565SamplerComparedFloatWords": 786432,
-    "nativeWebgpuOptionalFeatures": [],
-    "productionCppRendererExecutedByWebgpuPrototype": false,
-    "productionWebgpuBackendImplemented": false,
-    "productionWebglFix": false,
+    "actualProductionCppRendererExecuted": true,
+    "optionalCppWebgpuBackendImplemented": true,
+    "browserWebgpuHostImplemented": false,
+    "defaultBackend": "GLES/WebGL",
+    "defaultWebglFailureRetained": true,
+    "cppWebgpuExactStageFrames": 21,
+    "cppWebgpuStageComparedBytes": 25804800,
+    "cppWebgpuExactD3dxCaptureCases": 8,
+    "cppWebgpuCaptureComparedBytes": 5242880,
+    "cppWebgpuApplicationFrames": 2008,
+    "cppWebgpuApplicationAssertions": 239,
+    "cppWebgpuExactPairedApplicationCaptures": 18,
+    "cppWebgpuMetadataEpoch": 1792965600,
     "unrelatedResourceCryptEditExcluded": true,
     "currentSdlBrowserAcceptance": false,
     "sdlWasmSha256": "23bcfdef3441f5dbccc615a0f883cf6bb2de727d95aead90396f4814d490d05c",

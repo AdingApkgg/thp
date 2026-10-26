@@ -11,6 +11,7 @@
 // Semantic GLES renderer shared by the two games. Matrices and vertices stay
 // in C++; only resource decoding knows the original file format codes.
 namespace touhou::sdl {
+class WebGpuRenderer;
 using u32=uint32_t;using i32=int32_t;using u8=uint8_t;
 using namespace touhou::graphics;
 struct Surface {u32 handle=0,width=0,height=0;PixelFormat format=PixelFormat::Bgra8;u32 pitch=0;u8* data=nullptr;u32 size=0,version=0;};
@@ -38,8 +39,12 @@ public:
     void read(u32);void release(u32);void present(u32);void prepare(u32);
     const char* error()const{return failure.c_str();}
     const float* alpha_boundaries()const{return alphaBoundaries.data();}
+    SDL_Window* native_window()const{return window;}
     int version;Resolve resolve;void* owner;
 private:
+#ifdef TH14_WEBGPU_BACKEND
+    WebGpuRenderer* webGpu=nullptr;
+#endif
     struct GPU {GLuint texture=0,framebuffer=0;u32 version=~0u;bool rendered=false;GLuint attached=~0u;std::array<GLint,4> sampler{};};
     struct Depth {GLuint buffer=0;bool stencil=false;};
     struct Uniform {GLint location=-1;std::array<float,16> value{};int count=-1;};

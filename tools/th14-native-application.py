@@ -18,9 +18,13 @@ import sys
 
 R=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser(description=__doc__)
-for name in ['build','output','scenario','archive','fonts','music','angle-directory','wasmtime-site']:
+for name in ['build','output','scenario','archive','fonts','music','wasmtime-site']:
  parser.add_argument('--'+name,type=Path,required=True)
 parser.add_argument('--initial-save',type=Path)
+parser.add_argument('--backend',choices=['gles','webgpu'],default='gles')
+parser.add_argument('--angle-directory',type=Path)
+parser.add_argument('--wgpu-site',type=Path)
+parser.add_argument('--metadata-epoch',type=int,help='Declared UTC seconds at virtual frame zero; override WASI realtime for reproducible replay metadata')
 args=parser.parse_args();B=args.build.resolve();O=args.output.resolve()
 assert O.is_relative_to((R/'artifacts/th14').resolve())and not O.exists()
 O.mkdir(parents=True);(O/'save/replay').mkdir(parents=True)
@@ -48,13 +52,31 @@ initial_save=save_files()
 (O/'run-tool.py').write_bytes(Path(__file__).read_bytes())
 with args.archive.open('rb')as archive_file:archive_sha256=hashlib.file_digest(archive_file,'sha256').hexdigest()
 sys.path.insert(0,str(args.wasmtime_site.resolve()));import wasmtime as W
-spec=importlib.util.spec_from_file_location('native_gles_context',R/'tools/th14-native-gles-context.py');g=importlib.util.module_from_spec(spec);spec.loader.exec_module(g)
+host_path=R/('tools/th14-native-webgpu-context.py'if args.backend=='webgpu'else'tools/th14-native-gles-context.py')
+spec=importlib.util.spec_from_file_location('native_graphics_context',host_path);g=importlib.util.module_from_spec(spec);spec.loader.exec_module(g)
 sha=lambda raw:hashlib.sha256(raw).hexdigest();build=json.loads((B/'build.json').read_bytes());raw=(B/'application.wasm').read_bytes();assert sha(raw)==build['wasmSha256']
+assert build.get('backend','gles')==args.backend
 for path,row in build['sourceBindings'].items():assert sha((R/path).read_bytes())==row['sha256']
 engine=W.Engine();module=W.Module(engine,raw);store=W.Store(engine);wasi=W.WasiConfig();wasi.stdout_file=str(O/'stdout.log');wasi.stderr_file=str(O/'stderr.log')
 music=args.music.resolve(strict=True);fonts=args.fonts.resolve(strict=True)
-wasi.preopen_dir(str(music),'/music',fs_mutable=False);wasi.preopen_dir(str(O/'save'),'/save');store.set_wasi(wasi);linker=W.Linker(engine);linker.define_wasi();e=g.Context(args.angle_directory.resolve(strict=True))
+wasi.preopen_dir(str(music),'/music',fs_mutable=False);wasi.preopen_dir(str(O/'save'),'/save');store.set_wasi(wasi);linker=W.Linker(engine);linker.define_wasi()
+if args.backend=='webgpu':
+ for name in ['Th14WebGpu.wgsl','Th14WebGpuResample.wgsl']:
+  assert sha((B/'shaders'/name).read_bytes())==build['sourceBindings']['runtimes/th12/portable/sdl/'+name]['sha256']
+ e=g.Context(args.wgpu_site,B/'shaders/Th14WebGpu.wgsl')
+else:e=g.Context(args.angle_directory.resolve(strict=True))
 clock_ns=0;callbacks=[];sequence=0;files={};next_file=10;audio={};calls=collections.Counter();file_events=[];audio_hash=hashlib.sha256();pcm_frames=0;shader_sources=[]
+if args.metadata_epoch is not None:
+ assert 0<args.metadata_epoch<2**32
+ linker.allow_shadowing=True
+ def declared_clock(caller,clock_id,precision,pointer):
+  calls['declared_wasi_clock_time_get']+=1
+  assert clock_id in [0,1],clock_id
+  value=clock_ns+(args.metadata_epoch*1000000000 if clock_id==0 else 0)
+  memory(caller).write(caller,struct.pack('<Q',value),pointer);return 0
+ for imported in module.imports:
+  if imported.module=='wasi_snapshot_preview1'and imported.name=='clock_time_get':
+   linker.define(store,imported.module,imported.name,W.Func(store,imported.type,declared_clock,access_caller=True))
 signatures_raw=(B/'gl-signatures.json').read_bytes();assert sha(signatures_raw)==build['glSignaturesSha256'];signatures=json.loads(signatures_raw)
 def memory(caller):return caller['memory']
 def string(caller,pointer):return C.string_at(C.addressof(memory(caller).data_ptr(caller).contents)+pointer).decode()
@@ -96,9 +118,13 @@ def audio_remaining(stream):
   frames=(clock_ns-stream['last_ns'])*44100//1000000000;stream['queued']=max(0,stream['queued']-frames*8);stream['last_ns']+=frames*1000000000//44100
  return stream['queued']
 def platform(name):
+ backend=args.backend
  def invoke(caller,*args):
   global sequence,next_file,pcm_frames
   calls[name]+=1
+  if name.startswith('th14_webgpu_'):return e.invoke(name,caller,*args)
+  if backend=='webgpu'and(name.startswith('gl')or name=='touhou_clip_control'):
+   raise AssertionError('Unexpected GLES call '+name)
   if name=='th14_clock_ticks':return (clock_ns//1000000)&0xffffffff
   if name=='SDL_GetTicksNS':return clock_ns
   if name=='SDL_GetTicks':return clock_ns//1000000
@@ -145,7 +171,7 @@ try:
  for imported in module.imports:
   if imported.module=='wasi_snapshot_preview1':continue
   assert imported.module=='env' and isinstance(imported.type,W.FuncType)
-  callback=gl_host(imported.name)if imported.name.startswith('gl')else platform(imported.name)
+  callback=gl_host(imported.name)if args.backend=='gles'and imported.name.startswith('gl')else platform(imported.name)
   linker.define(store,imported.module,imported.name,W.Func(store,imported.type,callback,access_caller=True))
  instance=linker.instantiate(store,module);api=instance.exports(store);api['_initialize'](store)
  initialized=api['component_initialize'](store)
@@ -156,10 +182,12 @@ try:
   pointer=api['component_state'](store);return list(struct.unpack('<20I',mem.read(store,pointer,pointer+80)))
  def capture(label):
   assert label.isascii()and label.replace('-','').isalnum()and len(label)<=48
-  pointer=api['component_pixels'](store);assert pointer;pixels=bytes(mem.read(store,pointer,pointer+640*480*4));assert g.fn(e.gles,'glGetError',C.c_uint)()==0
+  pointer=api['component_pixels'](store);assert pointer;pixels=bytes(mem.read(store,pointer,pointer+640*480*4))
+  if args.backend=='gles':assert g.fn(e.gles,'glGetError',C.c_uint)()==0
   name=label+'.bgra';(O/name).write_bytes(pixels);entry=dict(frame=frame_index,label=label,file=name,sha256=sha(pixels));captures.append(entry);return entry
  def report():
   result=dict(schema='th14/native-application-run/1',completed=completed,error=error,checks=checks,scenarioSha256=sha(scenario_raw),initialSave=initial_save,finalSave=save_files(),buildReportSha256=sha((B/'build.json').read_bytes()),archiveSha256=archive_sha256,frames=frame_index,rows=rows,actions=actions,captures=captures,glCalls=dict(calls),pendingAsyncCallbacks=len(callbacks),deliveredCallbackSequence=sequence,files=file_events,pcmFrames=pcm_frames,pcmSha256=audio_hash.hexdigest(),wasmSha256=sha(raw),toolSha256=sha(Path(__file__).read_bytes()),renderer=e.info,actualProductionApplicationAndDevices=True,platformClockAndIoDeclared=True,physicalAudioDevicesOpened=0,virtualAudioStreamsCreated=calls['SDL_OpenAudioDeviceStream'],appUiControlled=False,browserRun=False,browserAcceptance=False,productionChanged=False,completeGame=False,nativeEquivalent=False)
+  result.update(backend=args.backend,hostToolSha256=sha(host_path.read_bytes()),metadataEpochAtFrameZero=args.metadata_epoch)
   (O/'report.json').write_text(json.dumps(result,indent=2)+'\n')
   return result
  print(json.dumps(dict(ready=True,state=state_now(),maximumFrames=12000,maximumWallSeconds=900,output=str(O))),flush=True)

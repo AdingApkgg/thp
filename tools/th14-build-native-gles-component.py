@@ -16,12 +16,15 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[1]
 SHA = lambda data: hashlib.sha256(data).hexdigest()
 SOURCES = ['Renderer.cpp', 'Renderer.hpp', 'GraphicsState.hpp', 'Shaders.hpp',
-           'AlphaConversion.hpp', 'ResampleShader.hpp']
+           'AlphaConversion.hpp', 'ResampleShader.hpp', 'Th14RenderMath.hpp',
+           'WebGpuRenderer.hpp', 'Th14WebGpu.wgsl', 'Th14WebGpuResample.wgsl']
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--backend', choices=['gles', 'webgpu'], default='gles')
+    parser.add_argument('--fixture', type=Path)
     args = parser.parse_args()
     out = args.output.resolve()
     assert out.is_relative_to(ROOT / 'artifacts/th14') and not out.exists()
@@ -39,7 +42,8 @@ def main():
         raw = path.read_bytes()
         bindings[path.relative_to(ROOT).as_posix()] = dict(bytes=len(raw), sha256=SHA(raw))
         (src / name).write_bytes(raw)
-    fixture_path = ROOT / 'runtimes/th12/th12_web/tests/cpp/th14-stage-gpu-stream-fixture.cpp'
+    fixture_path = args.fixture.resolve(strict=True) if args.fixture else ROOT / 'runtimes/th12/th12_web/tests/cpp/th14-stage-gpu-stream-fixture.cpp'
+    assert fixture_path.is_relative_to(ROOT / 'runtimes/th12/th12_web/tests/cpp')
     fixture_bytes = fixture_path.read_bytes()
     bindings[fixture_path.relative_to(ROOT).as_posix()] = dict(bytes=len(fixture_bytes), sha256=SHA(fixture_bytes))
     fixture = fixture_bytes.decode().replace('#include "../../../portable/sdl/Renderer.hpp"', '#include "Renderer.hpp"')
@@ -85,12 +89,16 @@ inline bool SDL_SetHint(const char*,const char*){return true;}inline bool SDL_Po
     (out / 'gl-signatures.json').write_text(json.dumps(prototypes, indent=2) + '\n')
     compiler = ROOT / 'runtimes/th12/tools/wasi-sdk-34.0-x86_64-windows/bin/clang++.exe'
     exports = re.findall(r'EMSCRIPTEN_KEEPALIVE\s+[^;{]+?\b(gpu_\w+)\s*\(', fixture)
-    assert len(exports) == 16
+    assert len(exports) == len(set(exports)) and exports
+    if not args.fixture:
+        assert len(exports) == 16
     flags = ['--target=wasm32-wasip1', '-DPORT_TITLE=14', '-std=c++17', '-O2', '-g0', '-ffp-contract=off', '-fno-strict-aliasing', '-fno-exceptions', '-fno-rtti', '-mexec-model=reactor', '-Wl,--no-entry', '-Wl,--export-memory', '-Wl,--allow-undefined', '-Wl,-z,stack-size=1048576', '-I' + str(inc), '-I' + str(src), *[f'-Wl,--export={name}' for name in exports]]
+    if args.backend == 'webgpu':
+        flags.append('-DTH14_WEBGPU_BACKEND=1')
     result = subprocess.run([str(compiler), *flags, str(src / 'fixture.cpp'), str(src / 'Renderer.cpp'), '-o', str(out / 'probe.wasm')], cwd=ROOT, env={**os.environ, 'TEMP': str(out), 'TMP': str(out), 'TMPDIR': str(out)}, capture_output=True)
     (out / 'compile.log').write_bytes(result.stdout + result.stderr)
     assert result.returncode == 0, (out / 'compile.log').read_text()
-    report = dict(sourceBindings=bindings, wasmSha256=SHA((out / 'probe.wasm').read_bytes()), compilerSha256=SHA(compiler.read_bytes()), sourceFiles={path.name: SHA(path.read_bytes()) for path in src.iterdir()}, shimFiles={path.relative_to(inc).as_posix(): SHA(path.read_bytes()) for path in inc.rglob('*') if path.is_file()}, signaturesSha256=SHA((out / 'gl-signatures.json').read_bytes()), toolSha256=SHA(Path(__file__).read_bytes()), flags=flags, glFunctions=len(prototypes), originalRendererSourcesUnmodified=True, renderProfile='WebGL upload branch, deterministic SDL lifetime shim, imported native GLES; no browser context', browserRun=False, productionChanged=False)
+    report = dict(sourceBindings=bindings, wasmSha256=SHA((out / 'probe.wasm').read_bytes()), compilerSha256=SHA(compiler.read_bytes()), sourceFiles={path.name: SHA(path.read_bytes()) for path in src.iterdir()}, shimFiles={path.relative_to(inc).as_posix(): SHA(path.read_bytes()) for path in inc.rglob('*') if path.is_file()}, signaturesSha256=SHA((out / 'gl-signatures.json').read_bytes()), toolSha256=SHA(Path(__file__).read_bytes()), flags=flags, glFunctions=len(prototypes), originalRendererSourcesUnmodified=True, backend=args.backend, renderProfile=('C++ Renderer with explicit WebGPU backend' if args.backend == 'webgpu' else 'WebGL upload branch')+', deterministic SDL lifetime shim; no browser context', browserRun=False, productionChanged=False)
     (out / 'build.json').write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps(dict(wasmBytes=(out / 'probe.wasm').stat().st_size, glFunctions=len(prototypes), wasmSha256=report['wasmSha256'])))
 

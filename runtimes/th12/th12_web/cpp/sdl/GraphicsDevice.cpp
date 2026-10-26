@@ -100,7 +100,7 @@ bool GraphicsDevice::initialize(){
     using namespace touhou::graphics;
     for(u32 id:{screen,depth}){auto& image=textures[id].image;image.width=640;image.height=480;image.pitch=640*(id==screen?4:2);image.format=id==screen?PixelFormat::Bgra8:PixelFormat::Depth16;if(id==screen)image.pixels.resize(image.pitch*image.height);}
     SDL_SetHint(SDL_HINT_EMSCRIPTEN_KEYBOARD_ELEMENT,"#canvas");
-    if(!backend.initialize()){error=backend.error();return false;}SDL_SetWindowTitle(SDL_GL_GetCurrentWindow(),kPortTitle==16?"东方天空璋":kPortTitle==14?"东方辉针城 · 移植验证":"Touhou 11");backend.state.target=screen;backend.state.depth=depth;initialize_game_pipeline();return true;
+    if(!backend.initialize()){error=backend.error();return false;}SDL_SetWindowTitle(backend.native_window(),kPortTitle==16?"东方天空璋":kPortTitle==14?"东方辉针城 · 移植验证":"Touhou 11");backend.state.target=screen;backend.state.depth=depth;initialize_game_pipeline();return true;
 }
 bool GraphicsDevice::prepare_texture(AnmResource& file,u32 index,u32& handle,bool low_color){
     const auto& source=file.textures[index];Texture texture;
