@@ -17,24 +17,26 @@ struct Th14MusicStream {
     static u16 half(const u8* p){u16 v;std::memcpy(&v,p,2);return v;}
     u32 align()const{return half(current+44);}
     void close_preceding(){if(preceding_ready)ma_decoder_uninit(&preceding);preceding_ready=false;selected=-1;}
+    u32 subframe_relative()const{
+        u32 value=0u-align();if(value>=word(current+28))value+=word(current+24)-word(current+28);return value;
+    }
+    u32 subframe_address()const{
+        const u32 address=word(current+16)+subframe_relative();
+        if(address<=0x7fffffffu)return address;
+        // Continue44aef0 queues the saved filename and waits for46e5e0.
+        // Its481a60 reset clears reader9c;480cf0 fills the new4s buffer.
+        // The final signed SetFilePointer fails, retaining that fresh cursor.
+        const u32 bytes=word(current+36)*align()*4,total=word(current+28),intro=word(current+24);
+        const u32 cursor=bytes<=total?bytes:intro+(bytes-total-1)%(total-intro)+1;
+        return word(current+16)+cursor;
+    }
     bool restore_supported()const{
-        u32 relative=0u-align();if(relative>=word(current+28))relative+=word(current+24)-word(current+28);
-        const u32 address=word(current+16)+relative;
-        // lpDistanceToMoveHigh=NULL makes SetFilePointer's distance signed.
-        // A negative seek fails and retains the prior DirectSound reader cursor.
-        // Keep the previous fallback until that asynchronous cursor is modeled.
-        if(address>0x7fffffffu)return false;
+        const u32 address=subframe_address();
         for(size_t n=0;n+52<=formats.size();n+=52){const auto* p=formats.data()+n;if(address>=word(p+16)&&u64(address)<u64(word(p+16))+word(p+28))return true;}
         return false;
     }
     void begin_subframe(){
-        close_preceding();exceptional=true;
-        // Whole481ee0 truncates time then subtracts one PCM frame. Whole481b40
-        // wraps once with unsigned32 arithmetic before adding the DAT offset.
-        u32 relative=0u-align();
-        if(relative>=word(current+28))relative+=word(current+24)-word(current+28);
-        physical=word(current+16)+relative;remaining=word(current+28)-relative;
-
+        close_preceding();exceptional=true;physical=subframe_address();remaining=word(current+28)-subframe_relative();
     }
     ma_result resume_loop(){
         close_preceding();exceptional=false;
