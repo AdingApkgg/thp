@@ -233,7 +233,10 @@ bool GameSession::activate_stage(){
     battle=std::make_unique<GameBattle>(resources,animations,economy,spell_records,compositor,clear_records);
 #if PORT_TITLE == 14
     battle->enemy_environment.spell_practice_id=state.replay?entry.th14_practice_mode:state.spell_practice_id;
-    battle->enemy_commands.th14_run_flags=state.spell_practice_id>=0?32:state.practice?16:0;
+    // Attract keeps only its own mode bit even when its replay header marks
+    // practice; ordinary playback also carries the native replay bit.
+    battle->enemy_commands.th14_run_flags=state.demo?0x40u:
+        (state.spell_practice_id>=0?0x20u:state.practice?0x10u:0u)|(state.replay?2u:0u);
     battle->th14_audio_flags=config.bytes[0x38];battle->th14_scores=&scores;
 #endif
     battle->replaying=state.replay;battle->demo=state.demo;battle->replay_entry=entry;

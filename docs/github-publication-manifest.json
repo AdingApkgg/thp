@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "1d9999a47ea1c8510d4983d47ff22c50a544fad6",
+  "sourceCommit": "c47a534b3233980ed56eda9152c56140b47a5ad3",
   "files": [
     {
       "path": ".gitignore",
@@ -57,6 +57,11 @@
       "path": "docs/porting/TH14_ATTRACT_CYCLE_OCT27.md",
       "bytes": 4191,
       "sha256": "0939214de6b23357979c073f9d664c94c9147888b376d24d37cb85250e1c3737"
+    },
+    {
+      "path": "docs/porting/TH14_ATTRACT_RUN_FLAGS_OCT27.md",
+      "bytes": 3587,
+      "sha256": "67eaa2ee94f40999cb8d2329ae4374981df86f898462beaafee9946eaff2459d"
     },
     {
       "path": "docs/porting/TH14_BACKGROUND_CLIP_ORDER_OCT26.md",
@@ -415,8 +420,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 20069,
-      "sha256": "ab6a95310c9dc53f701f577f3faada1367c7bfc9517f22dc70c1dd880a512437"
+      "bytes": 20694,
+      "sha256": "0a2835a671f9d5df3d1926d2b2382aa45611fc0a6cc0f4265fead4be173e0aa7"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -1282,6 +1287,11 @@
       "path": "docs/porting/th14-attract-cycle-verified-oct27.json",
       "bytes": 82700,
       "sha256": "a3742ef42789b4fac80460e9322a9e50f8dea21b8e2c3ad80e0615a01d6510b0"
+    },
+    {
+      "path": "docs/porting/th14-attract-run-flags-verified-oct27.json",
+      "bytes": 63233,
+      "sha256": "f31197ff558f5dd31bf65678e3aaa35786ae93d4e613533e1e588ce08e94e8e7"
     },
     {
       "path": "docs/porting/th14-audio-mixer-verified.json",
@@ -8050,8 +8060,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "bytes": 54598,
-      "sha256": "bd732b5e384862a79744e76607b3d48681f38c17f0df046e66101238b83bc7f4"
+      "bytes": 54805,
+      "sha256": "e5cdf91f098595491fbf41377cbb1119cf09341825694708c5675fb726568738"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.hpp",
@@ -15152,6 +15162,16 @@
       "path": "tools/th14-attract-cycle-evidence-oct27.py",
       "bytes": 8861,
       "sha256": "a110e5c5a03e63a64c975a4b729714254cf7a163a119663a23aa9f0dcd913afc"
+    },
+    {
+      "path": "tools/th14-attract-run-flags-evidence-oct27.py",
+      "bytes": 7133,
+      "sha256": "7740cc4cffca4052b6491b26c382b0b5ba843ae970aeeae062b06ae1a8a89b27"
+    },
+    {
+      "path": "tools/th14-attract-run-flags-native-oct27.py",
+      "bytes": 2842,
+      "sha256": "2aeb9391fc5d0e6de16faefedf6f46ecb3dfd2a788bc83e5126f0912abf9cbb6"
     },
     {
       "path": "tools/th14-audio-mixer-check.mjs",
@@ -23660,38 +23680,40 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "1d9999a47ea1c8510d4983d47ff22c50a544fad6",
-    "title": "TH14 recovered silent candidate and retained ordinary UI failure",
+    "basePublishedCommit": "c47a534b3233980ed56eda9152c56140b47a5ad3",
+    "title": "TH14 propagate native attract and ordinary replay mode flags",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-ordinary-replay-observer-oct27.py",
-      "tools/th14-recovered-preview-evidence-oct27.py",
-      "docs/porting/TH14_RECOVERED_PREVIEW_OCT27.md",
-      "docs/porting/th14-recovered-preview-verified-oct27.json",
+      "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
+      "tools/th14-attract-run-flags-native-oct27.py",
+      "tools/th14-attract-run-flags-evidence-oct27.py",
+      "docs/porting/TH14_ATTRACT_RUN_FLAGS_OCT27.md",
+      "docs/porting/th14-attract-run-flags-verified-oct27.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
-    "productionGameplayChanged": false,
+    "productionGameplayChanged": true,
     "productionGraphicsChanged": false,
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "browserCandidateCodeCommit": "1d9999a47ea1c8510d4983d47ff22c50a544fad6",
-    "compiledCppUnits": 146,
-    "wasmBytes": 2700286,
-    "wasmSha256": "60c5f8fcded16f26123247bf04078be7a1c9abed934dadcce96affe01d5d992c",
-    "candidateRoutes": 133,
-    "httpChecks": 21,
-    "actualServedBytesVerified": true,
-    "quietByDefault": true,
-    "workingBgmCopiesDeduplicated": 23,
-    "independentCopyRestoreProbePassed": true,
-    "workingOriginalMetadataRecoverable": true,
-    "referenceHashesUnchanged": true,
+    "coreSourcesRecompiled": 1,
+    "coreObjectsReused": 140,
+    "originalGuardCases": 28,
+    "previousAttractFlags": 16,
+    "currentAttractFlags": 64,
+    "previousOrdinaryReplayFlags": 0,
+    "currentOrdinaryReplayFlags": 2,
+    "actualApplicationDemoFrames": 2264,
+    "actualApplicationDemoChecks": 7,
+    "actualApplicationOrdinaryPrefixFrames": 722,
+    "actualApplicationOrdinaryPrefixChecks": 16,
+    "actualEcl554CallObserved": false,
+    "correctedPixelClaimed": false,
+    "prefixImagesLogsPcmFilesUnchanged": true,
+    "oldFullReplayFailureAttributed": false,
     "oldFailuresRetained": true,
-    "originalGameFilesChanged": false,
-    "ordinaryNativeUiAccepted": false,
-    "ordinaryNativeUiPlayerCallbacks": 0,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
+    "preview8220CodeCommit": "1d9999a47ea1c8510d4983d47ff22c50a544fad6",
     "browserAcceptance": false,
     "completeGame": false,
     "nativeEquivalent": false
