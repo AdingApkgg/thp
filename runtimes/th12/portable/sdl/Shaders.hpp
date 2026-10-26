@@ -34,7 +34,7 @@ void main(){
   mat4 model=instanced?mat4(instanceWorld0,instanceWorld1,instanceWorld2,instanceWorld3):world;
   vec4 eye=view*model*vec4(position.xyz,1.0);
   if(transformed){vec2 xy=(position.xy-viewport.xy+vec2(.5))/viewport.zw;gl_Position=vec4(xy.x*2.0-1.0,xy.y*2.0-1.0,position.z*2.0-1.0,1.0)/position.w;}
-  else {mat4 composed=instanced?mat4(instanceClip0,instanceClip1,instanceClip2,instanceClip3):clipMatrix;gl_Position=composed*vec4(position.xyz,1.0);gl_Position.y=-gl_Position.y;vec2 numerator=gl_Position.xy*viewport.zw+vec2(gl_Position.w);gl_Position.xy=numerator/viewport.zw;if(primitiveViewportEligible>0.5){vec4 original=composed*vec4(position.xyz,1.0);vec2 halfViewport=viewport.zw*0.5;vec2 pixel=(vec2(original.x,-original.y)*halfViewport)/original.w+halfViewport;pixel=roundEven(pixel*256.0)/256.0;gl_Position.xy=((pixel+vec2(0.5))/halfViewport-vec2(1.0))*original.w;}gl_Position.z=gl_Position.z*2.0-gl_Position.w;}
+  else {mat4 composed=instanced?mat4(instanceClip0,instanceClip1,instanceClip2,instanceClip3):clipMatrix;gl_Position=composed*vec4(position.xyz,1.0);gl_Position.y=-gl_Position.y;vec2 numerator=gl_Position.xy*viewport.zw+vec2(gl_Position.w);gl_Position.xy=numerator/viewport.zw;if(primitiveViewportEligible>0.5){vec4 original=composed*vec4(position.xyz,1.0);vec2 halfViewport=viewport.zw*0.5;vec2 pixel=(vec2(original.x,-original.y)*halfViewport)/original.w+halfViewport;pixel=roundEven((pixel+viewport.xy)*256.0)/256.0-viewport.xy;gl_Position.xy=((pixel+vec2(0.5))/halfViewport-vec2(1.0))*original.w;}gl_Position.z=gl_Position.z*2.0-gl_Position.w;}
   vColor=diffuse.bgra;vSpecular=specular.bgra;
   vFactor=instanced?instanceFactor.bgra:factor;
   vUV=textureTransform&&!transformed?(textureMatrix*vec4(uv,1.0,0.0)).xy:uv;

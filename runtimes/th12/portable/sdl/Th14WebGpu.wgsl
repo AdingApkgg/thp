@@ -29,7 +29,9 @@ fn round_even(v:vec2f)->vec2f {
   let original=vec4f(v.position.xyz,1);o.position=u.clipMatrix*original;
   if(v.eligible>0.5) {
    let half_viewport=u.viewport.zw*0.5;
-   let pixel=round_even(((vec2f(o.position.x,-o.position.y)*half_viewport)/o.position.w+half_viewport)*256.0)/256.0;
+   // Round in screen coordinates. Rounding before the viewport translation
+   // loses binary32 boundary decisions in subviewports.
+   let pixel=round_even((((vec2f(o.position.x,-o.position.y)*half_viewport)/o.position.w+half_viewport)+u.viewport.xy)*256.0)/256.0-u.viewport.xy;
    o.position.x=(pixel.x/half_viewport.x-1.0)*o.position.w;
    o.position.y=-(pixel.y/half_viewport.y-1.0)*o.position.w;
   }

@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "2c79036c4ec2157575fc629dfd6f351c05ee8183",
+  "sourceCommit": "30d962c12b2a76a1f0e28f579625f02d4052fb8a",
   "files": [
     {
       "path": ".gitignore",
@@ -400,8 +400,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 16200,
-      "sha256": "f85b87f4577afe37681a61a8324d9f14adf1363861548732ef47d11e148af15c"
+      "bytes": 17491,
+      "sha256": "f5850cf5edfe7b882ce28d09ab20a01dcf64bdb8942c5d37f2ba75bc004fdd25"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -612,6 +612,11 @@
       "path": "docs/porting/TH14_VIEWPORT_CANDIDATES_OCT19.md",
       "bytes": 4531,
       "sha256": "f9addd93cde9120c809df2c955e2522988c811b0e2e18e61441726480d9f0390"
+    },
+    {
+      "path": "docs/porting/TH14_VIEWPORT_ROUNDING_OCT27.md",
+      "bytes": 5304,
+      "sha256": "e50bcc9e8ff80e320f987ade5d1ceaf1e3565a0f43fbb5b179d51e561039a7a6"
     },
     {
       "path": "docs/porting/TH14_WEBGPU_STAGE_COMPONENT_OCT26.md",
@@ -6289,6 +6294,11 @@
       "sha256": "94c5521848b9e7da93de6931307967eae59c6b5e410a2526d59af809eee671a8"
     },
     {
+      "path": "docs/porting/th14-viewport-rounding-verified-oct27.json",
+      "bytes": 57701,
+      "sha256": "2f254131cf99de16e5c80238f1c3543fea4b76eaac6977ce43d0818a77e2ab1b"
+    },
+    {
       "path": "docs/porting/th14-warm-replay-8618-constructor-clear-verified-oct13.json",
       "bytes": 3630,
       "sha256": "ebde6c3e03e9bf4d4a18e364bfcaf76e8d9e54149b6541a65235bfec3e3e561b"
@@ -7390,8 +7400,8 @@
     },
     {
       "path": "runtimes/th12/portable/sdl/Shaders.hpp",
-      "bytes": 6185,
-      "sha256": "2e4a0b06da45e98e5babae05c29a6da7fa2dfe9ec4a73c39d2f7e3008f182193"
+      "bytes": 6211,
+      "sha256": "50b14f282a62d97e4e2d6f125c2b747c64236d287074c3610551cf8529e8a918"
     },
     {
       "path": "runtimes/th12/portable/sdl/Th14RenderMath.hpp",
@@ -7400,8 +7410,8 @@
     },
     {
       "path": "runtimes/th12/portable/sdl/Th14WebGpu.wgsl",
-      "bytes": 4022,
-      "sha256": "11df22f617f1f813bd7c42fb2ebff530445d7b987726530dcaa801d8320b6432"
+      "bytes": 4185,
+      "sha256": "e44aa0ffb527e627bf7239afe38a11b8211403961eb6a50590614bb87be748c6"
     },
     {
       "path": "runtimes/th12/portable/sdl/Th14WebGpuCallbacks.hpp",
@@ -15070,8 +15080,13 @@
     },
     {
       "path": "tools/th14-application-render-pair-check.py",
-      "bytes": 7301,
-      "sha256": "cbb3f9dd3a512369aae68e92d9df4cf4d0ae4ccb0bc39580f015a12a03fadfb0"
+      "bytes": 7980,
+      "sha256": "6bd171047d6dd19744908cd0877bd63c1750915a57ee95cf6012cd8c9796ad1b"
+    },
+    {
+      "path": "tools/th14-application-trace-hal-oct27.py",
+      "bytes": 34760,
+      "sha256": "50d2156f14aa05598b99a6ebb15f716e7250aa70e3f5b74e7a984d9091a9f2e9"
     },
     {
       "path": "tools/th14-area-lifecycle-browser-evidence-check.mjs",
@@ -19414,6 +19429,11 @@
       "sha256": "1c88a163f042d1b7684ab3cd3acc21553753f3c12b5fbc4ebeca814fabda7454"
     },
     {
+      "path": "tools/th14-prepare-application-trace-oct27.py",
+      "bytes": 12950,
+      "sha256": "5ab2d0241973c14b4cafe4c3cdfcdf1e7f6ba276ae4fea2184c8e3570bed720c"
+    },
+    {
       "path": "tools/th14-prepare-lossless-music.py",
       "bytes": 3669,
       "sha256": "527f5c3dd3e0ac9bf148d2f8e7752e750306c0441d5f5dbd3771e76867245962"
@@ -22329,6 +22349,11 @@
       "sha256": "233a237c547dfce03fd76bc82968567a0cf4923f4fe38c378e68109c2fa686a1"
     },
     {
+      "path": "tools/th14-viewport-rounding-evidence-oct27.py",
+      "bytes": 13599,
+      "sha256": "dc28a52630de08b879c4dda27a5c4d67c7b0573a4f5b175115c72d5753fd78e0"
+    },
+    {
       "path": "tools/th14-viewport-valid-boundary-evidence-check-oct19.py",
       "bytes": 4156,
       "sha256": "32f4ec93021933d67d906ba143966337afdfeb318ddc1116aeeb1a0c8ac0e8d1"
@@ -23555,64 +23580,51 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "2c79036c4ec2157575fc629dfd6f351c05ee8183",
-    "title": "TH14 current Application attract flows and retained image mismatch",
+    "basePublishedCommit": "30d962c12b2a76a1f0e28f579625f02d4052fb8a",
+    "title": "TH14 actual Application viewport rounding repair against D3D9",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/tests/fixtures/th14-native-application-attract-cycle-oct27.json",
+      "runtimes/th12/portable/sdl/Shaders.hpp",
+      "runtimes/th12/portable/sdl/Th14WebGpu.wgsl",
+      "tools/th14-prepare-application-trace-oct27.py",
+      "tools/th14-application-trace-hal-oct27.py",
+      "tools/th14-viewport-rounding-evidence-oct27.py",
       "tools/th14-application-render-pair-check.py",
-      "tools/th14-attract-cycle-evidence-oct27.py",
-      "docs/porting/TH14_ATTRACT_CYCLE_OCT27.md",
-      "docs/porting/th14-attract-cycle-verified-oct27.json",
+      "docs/porting/TH14_VIEWPORT_ROUNDING_OCT27.md",
+      "docs/porting/th14-viewport-rounding-verified-oct27.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "docs/porting/TH14_STORAGE_POLICY_OCT25.md",
       "docs/github-publication-manifest.json"
     ],
+    "productionGraphicsChanged": true,
     "productionGameplayChanged": false,
-    "productionGraphicsChanged": false,
-    "productionAudioChanged": false,
+    "sourceOnly": true,
     "gameAssetsAdded": false,
+    "observedApplicationFrame": 2264,
+    "independentNativeDraws": 416,
+    "independentNativeClears": 7,
+    "observedNativeFrameBytes": 1228800,
+    "originalWebgpuNativeDifferentBytes": 15,
+    "currentWebgpuNativeDifferentBytes": 0,
+    "currentGlesNativeDifferentBytes": 10,
+    "currentGlesNativeDifferentPixels": 8,
+    "stageFrames": 21,
+    "stageAllColorBytesEqual": true,
+    "glesStageSingleBlueDifferenceRetained": true,
+    "fullAttractFramesPerBackend": 17545,
+    "assertionsPerBackend": 30,
+    "journalRowsPerBackend": {
+      "webgpu": 4243,
+      "gles": 4239
+    },
+    "currentFullFlowAccepted": false,
+    "journalStatesEqual": false,
+    "firstJournalDifferenceObservedFrame": 11210,
+    "actualSilentPcmFramesPerBackend": 12681216,
+    "silentPcmSinkHashesEqual": false,
+    "pairedImageEqualityPassed": false,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
-    "currentNativeApplicationFramesPerBackend": 17545,
-    "assertionsPerBackend": 30,
-    "externalActionsHeldNoKeys": true,
-    "threeNaturalDemoAndTitleCycles": true,
-    "observedDemoStages": [
-      3,
-      4,
-      1
-    ],
-    "journalRows": 4239,
-    "actualSilentPcmFramesPerBackend": 12681216,
-    "silentPcmSinkHashesEqual": true,
-    "pairedImages": 7,
-    "comparedImageBytes": 8601600,
-    "imageEqualityPassed": false,
-    "differentPixels": 14,
-    "differentBytes": 16,
-    "firstDifferencePixel": [
-      361,
-      211
-    ],
-    "firstDifferenceChannel": "A",
-    "firstDifferenceValues": [
-      178,
-      177
-    ],
-    "originalGpuCapacityFailureRetained": true,
-    "onlyFailedBackendRepeated": true,
-    "pairCheckerWritesNegativeDiagnostic": true,
-    "pairCheckerEqualityGatesRetained": true,
-    "oldFullApplicationPairRegressionImages": 8,
-    "additionalCompletedOwnFilesCompressed": 64,
-    "additionalFrozenObservationFilesCompressed": 9,
-    "frozenLogicalBytes": 5645763849,
-    "frozenAllocatedBytes": 1592967168,
-    "compressionContentPathsMtimesUnchanged": true,
-    "currentBrowserCandidateChanged": false,
-    "defaultPreviewChanged": false,
-    "unrelatedResourceCryptEditExcluded": true,
-    "originalOrdinaryUiAcceptance": false,
+    "oldCandidate8216NotUpdated": true,
+    "originalOrdinaryApplicationAcceptance": false,
     "browserAcceptance": false,
     "completeGame": false,
     "nativeEquivalent": false

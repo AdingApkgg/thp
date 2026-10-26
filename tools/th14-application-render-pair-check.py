@@ -78,10 +78,14 @@ def main():
         assert set(captures['webgpu'])==set(captures['gles'])
         pcm=dict(framesEqual=runs['webgpu']['pcmFrames']==runs['gles']['pcmFrames'],
             reportedHashEqual=runs['webgpu']['pcmSha256']==runs['gles']['pcmSha256'])
-        assert runs['webgpu']['rows']==runs['gles']['rows'],'Full journal state differs'
-        assert all(pcm.values()),'Actual silent PCM sink hashes differ'
-        pcm.update(framesPerBackend=runs['webgpu']['pcmFrames'],reportedSha256=runs['webgpu']['pcmSha256'],rawPcmIndependentlyRetained=False)
-    else:pcm=None
+        left,right=runs['webgpu']['rows'],runs['gles']['rows'];same_journal=left==right
+        first=next((dict(index=i,webgpu=a,gles=b)for i,(a,b)in enumerate(zip(left,right))if a!=b),None)
+        if first is None and len(left)!=len(right):first=dict(index=min(len(left),len(right)),webgpu=left[min(len(left),len(right)):] or None,gles=right[min(len(left),len(right)):] or None)
+        journal=dict(allRowsEqual=same_journal,rowCounts=dict(webgpu=len(left),gles=len(right)),firstIndexedDifference=first)
+        pcm.update(framesPerBackend=runs['webgpu']['pcmFrames']if pcm['framesEqual']else None,
+            reportedSha256=runs['webgpu']['pcmSha256']if pcm['reportedHashEqual']else None,
+            reportedHashes=dict(webgpu=runs['webgpu']['pcmSha256'],gles=runs['gles']['pcmSha256']),rawPcmIndependentlyRetained=False)
+    else:pcm=None;journal=None;same_journal=True
     result=dict(schema='th14/application-native-render-pair/1',runningPrefixOnly=prefix,
         completedRuns=sorted(runs),sharedCompletedActions=shared_actions,pairedImages=len(pairs),
         framesPerBackend=None if prefix else runs['webgpu']['frames'],
@@ -89,6 +93,7 @@ def main():
         pairedJournalRows=None if prefix else len(runs['webgpu']['rows']),
         comparedImageBytes=sum(row['bytes']for row in pairs),pairs=pairs,
         allPairedCapturedBuffersEqual=all_buffers,allSharedActionStatesEqual=same_states,stateDifferences=state_differences,
+        journalComparison=journal,
         silentPcmSinkComparison=pcm,fullFlowAccepted=False,originalApplicationPixelsEqualNotAsserted=True,
         browserAcceptance=False,completeGame=False,nativeEquivalent=False,
         verifierSha256=SHA(Path(__file__).read_bytes()),bindings=bindings,
@@ -98,7 +103,7 @@ def main():
         output.parent.mkdir(parents=True,exist_ok=True);output.write_text(json.dumps(result,indent=2)+'\n')
     # Keep the complete diagnostic even when the required equality gate fails.
     # A report with differences still returns failure and accepts no full flow.
-    assert all_buffers and same_states,'Retained native backend differences; do not waive pixels or state'
+    assert all_buffers and same_states and same_journal and (prefix or (pcm['framesEqual']and pcm['reportedHashEqual'])),'Retained native backend differences; do not waive pixels, state or PCM'
     print(json.dumps({key:result[key]for key in ['runningPrefixOnly','sharedCompletedActions','pairedImages','comparedImageBytes','allPairedCapturedBuffersEqual','allSharedActionStatesEqual']}))
 
 
