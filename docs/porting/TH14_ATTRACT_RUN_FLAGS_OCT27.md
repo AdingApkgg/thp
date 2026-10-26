@@ -31,6 +31,6 @@
 python tools/th14-attract-run-flags-evidence-oct27.py --check
 ```
 
-较早 `1d9999a` 核心的咲夜 B Hard 六面回归独立运行并保留其冻结版本；不因本项修改继承其全程结果。8220 候选仍绑定 `1d9999a`，本次代码须另行构建。所有测试静音，容量门槛维持至少 100 GiB 空闲和每例 128 MiB 观察输出。
+后续[冻结核心六面回归与新候选](TH14_FROZEN_ORDINARY_FULL_OCT27.md)已完成：`1d9999a` 的咲夜 B Hard 六面回归保留其冻结版本，不因本项修改继承全程结果。模式标志修复的 `45b76f0` 已另行全编译为静音 8222 候选，构建／传输检查通过，普通浏览器仍未验收。所有测试静音，容量门槛维持至少 100 GiB 空闲和每例 128 MiB 观察输出。
 
 模式覆盖仍为 30／25，完整目标继续见[剩余清单](TH14_REMAINING_ACCEPTANCE.md)。仅发布源码与哈希元数据，`completeGame=false`、`nativeEquivalent=false`、`browserAcceptance=false`。
