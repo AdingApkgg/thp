@@ -39,3 +39,5 @@ Native Deno 控制使用 `DENO_WEBGPU_BACKEND=dx12`，设备不请求可选特�
 后续[父 Launcher 与实际 Application 续关流程](TH14_LAUNCHER_CONTINUE_OCT26.md)补齐独立静音候选入口，并在两个原生后端完成自然 GameOver／续关／恢复射击的有限集成。原版普通菜单与浏览器范围继续开放。
 
 后续新增[矩形 stencil 清除修复](TH14_STENCIL_CLEAR_OCT26.md)，以独立 HAL、实际 C++／Asyncify／JS 与原生 Python 设备控制另行验证，当前 21／8 图像回归通过。本文较早运行及浏览器候选保留原版本范围，不自动继承到新宿主。
+
+当前 stencil 宿主随后装入[新本地候选包](TH14_STENCIL_CLEAR_OCT26.md)，146 个 C++ 对象输入相同并复用，完整 Wasm 字节不变，独立包与 Launcher HTTP 检查通过。普通浏览器与系统呈现范围仍未验收。

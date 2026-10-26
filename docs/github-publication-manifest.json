@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "26838507879ade0397d391205ea0e30be825650a",
+  "sourceCommit": "1776db96c0655bf0c941a715c5aa30f4c4c00285",
   "files": [
     {
       "path": ".gitignore",
@@ -215,8 +215,8 @@
     },
     {
       "path": "docs/porting/TH14_JS_WEBGPU_OCT26.md",
-      "bytes": 5682,
-      "sha256": "f8eeb1ca2801f72aca43e66597c40517a2b3dfdcfbdde263198366cc9e8a86c6"
+      "bytes": 5931,
+      "sha256": "4cc2bdcf3943b1ead8faefbb731280cc92aa42ad7b5cf370327edfe711436ee0"
     },
     {
       "path": "docs/porting/TH14_LAUNCHER_CONTINUE_OCT26.md",
@@ -385,8 +385,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 13579,
-      "sha256": "ede528624f173c5611919e8fa0776ac6131131bc990840ef15a5398bd61a1744"
+      "bytes": 13704,
+      "sha256": "cac3fccfcaa44a2f6109720fbb87a06e6dcaaa0f40a932f7336d182d6bd271cc"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -555,8 +555,8 @@
     },
     {
       "path": "docs/porting/TH14_STENCIL_CLEAR_OCT26.md",
-      "bytes": 3841,
-      "sha256": "d17da3f0d867362d6b4fa1f2e2857c25b0d230aa13fe382f096595d5cffaee22"
+      "bytes": 5051,
+      "sha256": "c095aa72488c8e0d5ccbd07bb2dbf96075bcb1bd8feb624799a9d3bf9243e665"
     },
     {
       "path": "docs/porting/TH14_STORAGE_POLICY_OCT25.md",
@@ -6027,6 +6027,11 @@
       "path": "docs/porting/th14-startup-worker-verified-oct24.json",
       "bytes": 7011,
       "sha256": "b14cfb65c734540207c9ce2efaec8a6d2e276fa808a20fb21cf6b6432bc74b94"
+    },
+    {
+      "path": "docs/porting/th14-stencil-candidate-verified-oct26.json",
+      "bytes": 139111,
+      "sha256": "82b719529f8865d3817787e8a0e4af9b0fe96a2c6cfd7749b33742766aaffeac"
     },
     {
       "path": "docs/porting/th14-stencil-clear-verified-oct26.json",
@@ -21924,6 +21929,11 @@
       "sha256": "6f563fb135832b66918630bd1a1ba830b93e982dbc510514a815d68e2c7852eb"
     },
     {
+      "path": "tools/th14-stencil-candidate-evidence-oct26.py",
+      "bytes": 6561,
+      "sha256": "57cbce5ec5c459b65f898456dba0a1d624c81f6cb82d10186b8a2d0399fde0da"
+    },
+    {
       "path": "tools/th14-stencil-clear-evidence-oct26.py",
       "bytes": 8511,
       "sha256": "80addf0a24023a847a582ee166023eb21fd2a0e43034469f838df05dfe18609a"
@@ -23445,47 +23455,37 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "26838507879ade0397d391205ea0e30be825650a",
-    "title": "TH14 native WebGPU rectangle stencil clear with independent D3D9 HAL controls",
+    "basePublishedCommit": "1776db96c0655bf0c941a715c5aa30f4c4c00285",
+    "title": "TH14 current stencil host candidate package with unchanged C++ objects and local HTTP proof",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/portable/sdl/Th14WebGpuHost.mjs",
-      "tools/th14-native-webgpu-context.py",
-      "tools/th14-stencil-clear-hal-control.py",
-      "tools/th14-webgpu-stencil-clear-control.mjs",
-      "tools/th14-stencil-clear-native-webgpu-control.py",
-      "tools/th14-stencil-clear-evidence-oct26.py",
-      "runtimes/th12/th12_web/tests/cpp/th14-stencil-clear-fixture.cpp",
+      "tools/th14-stencil-candidate-evidence-oct26.py",
+      "docs/porting/th14-stencil-candidate-verified-oct26.json",
       "docs/porting/TH14_STENCIL_CLEAR_OCT26.md",
-      "docs/porting/th14-stencil-clear-verified-oct26.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "docs/porting/TH14_CPP_WEBGPU_OCT26.md",
       "docs/porting/TH14_JS_WEBGPU_OCT26.md",
       "docs/github-publication-manifest.json"
     ],
     "productionGameplayChanged": false,
-    "productionGraphicsChanged": true,
+    "productionGraphicsChanged": false,
     "productionAudioChanged": false,
-    "productionCppEngineChanged": false,
-    "productionJavascriptWebgpuHostChanged": true,
-    "nativePythonGpuHostChanged": true,
     "gameAssetsAdded": false,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
-    "stencilHalCases": 96,
-    "stencilCppAsyncifyJsCases": 96,
-    "stencilNativeHostCases": 96,
-    "stencilBuffersPerHost": 384,
-    "stencilComparedBytesPerHost": 4718592,
-    "allStencilHalHostBuffersExact": true,
-    "cppWasmBeforeAfterByteIdentical": true,
-    "stencilLow8BitAndColorDepthIsolationChecked": true,
-    "stageRegressionFrames": 21,
-    "stageRegressionBytes": 25804800,
-    "d3dxRegressionCases": 8,
-    "d3dxRegressionBytes": 5242880,
-    "existingPartialColorVersionAndCopyRegression": true,
-    "packedRasterTargetsStillRejected": true,
-    "browserCandidateUpdated": false,
+    "currentLocalWebgpuCandidatePackaged": true,
+    "currentStencilHostBound": true,
+    "reusedCppObjects": 146,
+    "compiledCppUnits": 0,
+    "fullGameWasmByteIdentical": true,
+    "fullGameWasmSha256": "3786901cbe373d221b14f02bcb3b1fa77901512195a09ba080669753a915018c",
+    "generatedResourceBytesAliased": 414850582,
+    "generatedResourceAliases": 28,
+    "launcherMetadataBytesWritten": 103342,
+    "launcherPayloadBytesReferenced": 510696486,
+    "launcherRoutes": 133,
+    "launcherHttpChecks": 21,
+    "quietByDefault": true,
+    "defaultPreviewChanged": false,
+    "ordinaryBrowserRun": false,
     "originalOrdinaryUiAccepted": false,
     "unrelatedResourceCryptEditExcluded": true,
     "browserAcceptance": false,
