@@ -17,6 +17,7 @@ import time
 import sys
 
 R=Path(__file__).resolve().parents[1]
+tool_raw=Path(__file__).read_bytes()
 parser=argparse.ArgumentParser(description=__doc__)
 for name in ['build','output','scenario','archive','fonts','music','wasmtime-site']:
  parser.add_argument('--'+name,type=Path,required=True)
@@ -49,7 +50,7 @@ def save_files():
  return {p.relative_to(O/'save').as_posix():dict(bytes=p.stat().st_size,sha256=sha(p.read_bytes()))for p in sorted((O/'save').rglob('*'))if p.is_file()}
 assert len(save_files())<=78
 initial_save=save_files()
-(O/'run-tool.py').write_bytes(Path(__file__).read_bytes())
+(O/'run-tool.py').write_bytes(tool_raw)
 with args.archive.open('rb')as archive_file:archive_sha256=hashlib.file_digest(archive_file,'sha256').hexdigest()
 sys.path.insert(0,str(args.wasmtime_site.resolve()));import wasmtime as W
 host_path=R/('tools/th14-native-webgpu-context.py'if args.backend=='webgpu'else'tools/th14-native-gles-context.py')
@@ -186,16 +187,22 @@ try:
   if args.backend=='gles':assert g.fn(e.gles,'glGetError',C.c_uint)()==0
   name=label+'.bgra';(O/name).write_bytes(pixels);entry=dict(frame=frame_index,label=label,file=name,sha256=sha(pixels));captures.append(entry);return entry
  def report():
-  result=dict(schema='th14/native-application-run/1',completed=completed,error=error,checks=checks,scenarioSha256=sha(scenario_raw),initialSave=initial_save,finalSave=save_files(),buildReportSha256=sha((B/'build.json').read_bytes()),archiveSha256=archive_sha256,frames=frame_index,rows=rows,actions=actions,captures=captures,glCalls=dict(calls),pendingAsyncCallbacks=len(callbacks),deliveredCallbackSequence=sequence,files=file_events,pcmFrames=pcm_frames,pcmSha256=audio_hash.hexdigest(),wasmSha256=sha(raw),toolSha256=sha(Path(__file__).read_bytes()),renderer=e.info,actualProductionApplicationAndDevices=True,platformClockAndIoDeclared=True,physicalAudioDevicesOpened=0,virtualAudioStreamsCreated=calls['SDL_OpenAudioDeviceStream'],appUiControlled=False,browserRun=False,browserAcceptance=False,productionChanged=False,completeGame=False,nativeEquivalent=False)
+  result=dict(schema='th14/native-application-run/1',completed=completed,error=error,checks=checks,scenarioSha256=sha(scenario_raw),initialSave=initial_save,finalSave=save_files(),buildReportSha256=sha((B/'build.json').read_bytes()),archiveSha256=archive_sha256,frames=frame_index,rows=rows,actions=actions,captures=captures,glCalls=dict(calls),pendingAsyncCallbacks=len(callbacks),deliveredCallbackSequence=sequence,files=file_events,pcmFrames=pcm_frames,pcmSha256=audio_hash.hexdigest(),wasmSha256=sha(raw),toolSha256=sha(tool_raw),renderer=e.info,actualProductionApplicationAndDevices=True,platformClockAndIoDeclared=True,physicalAudioDevicesOpened=0,virtualAudioStreamsCreated=calls['SDL_OpenAudioDeviceStream'],appUiControlled=False,browserRun=False,browserAcceptance=False,productionChanged=False,completeGame=False,nativeEquivalent=False)
   result.update(backend=args.backend,hostToolSha256=sha(host_path.read_bytes()),metadataEpochAtFrameZero=args.metadata_epoch)
   (O/'report.json').write_text(json.dumps(result,indent=2)+'\n')
   return result
  print(json.dumps(dict(ready=True,state=state_now(),maximumFrames=12000,maximumWallSeconds=900,output=str(O))),flush=True)
  for command in scenario['actions']:
-  assert set(command)<=set(['frames','held','pause','capture','expect'])
+  assert set(command)<=set(['frames','held','pause','capture','expect','until'])
   count=int(command.get('frames',0));held=int(command.get('held',0));pause=int(command.get('pause',0));assert 0<=count<=6000 and 0<=held<2**32 and pause in [0,1]
   assert frame_index+count<=12000 and time.monotonic()-wall_started<900
   actions.append(dict(atFrame=frame_index,frames=count,held=held,pause=pause))
+  until=command.get('until')
+  if until is not None:
+   assert set(until)=={'index','equals'}and count>0
+   assert isinstance(until['index'],int)and 0<=until['index']<20
+   assert isinstance(until['equals'],int)and 0<=until['equals']<=0xffffffff
+   actions[-1]['until']=until
   for _ in range(count):
    assert time.monotonic()-wall_started<900,'Native Application wall budget exhausted'
    frame_index+=1;clock_ns=frame_index*1000000000//60;delivered=0
@@ -205,6 +212,8 @@ try:
    assert ok==1,C.string_at(C.addressof(api['memory'].data_ptr(store).contents)+api['th11_error'](store)).decode()
    state=state_now();key=state[:2]+state[3:6]+state[7:16]
    if not rows or frame_index%30==0 or key!=rows[-1]['key']:rows.append(dict(frame=frame_index,clockNs=clock_ns,state=state,key=key,callbacksDelivered=delivered))
+   if until is not None and state[until['index']]==until['equals']:break
+  if until is not None:assert state_now()[until['index']]==until['equals'],'Declared state was not reached within the frame budget'
   image=capture(command['capture'])if command.get('capture')else None
   actual=state_now()
   actions[-1].update(endFrame=frame_index,state=actual)

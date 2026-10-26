@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "faee616ae3be0ee38c66c0d7fd69a2f3da2300e0",
+  "sourceCommit": "3a52b428a603a35c3e4a6bd0cabf3a6536bb67fd",
   "files": [
     {
       "path": ".gitignore",
@@ -205,8 +205,13 @@
     },
     {
       "path": "docs/porting/TH14_JS_WEBGPU_OCT26.md",
-      "bytes": 5134,
-      "sha256": "506106923a06491a82ea1c278b982569e491cc4726917fbc64543b04e4148bb4"
+      "bytes": 5395,
+      "sha256": "25a40d40491c321e092ae7f20e63bdd3dd01b58d2d8e9ecc810d42d56dcba23e"
+    },
+    {
+      "path": "docs/porting/TH14_LAUNCHER_CONTINUE_OCT26.md",
+      "bytes": 5726,
+      "sha256": "93ba6503359d8f071383694f16495db80b25600d822ea1741e3eb7c740187164"
     },
     {
       "path": "docs/porting/TH14_LIVE_EFFECT_OCT24.md",
@@ -290,8 +295,8 @@
     },
     {
       "path": "docs/porting/TH14_MUSIC_CONTINUE_OCT26.md",
-      "bytes": 3403,
-      "sha256": "c4ec040320a4fcc4e57d0b57269984d93e1bee2932f8cc6a3264216683397ed3"
+      "bytes": 3664,
+      "sha256": "4c8e3854c5af34210b297fa6a9d255398f0f93be8216f642a665c825f00235b9"
     },
     {
       "path": "docs/porting/TH14_MUSIC_SUBFRAME_OCT26.md",
@@ -370,8 +375,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 10825,
-      "sha256": "c51ac7e47acf49d7b1388983e0fe0cb634e222c1b9ddcb8ba01b8014672290d1"
+      "bytes": 11649,
+      "sha256": "fe6f44531e0e663511664750b98a0eb0d80b5bea90b40ae010f92ce1bc3d59d0"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -2722,6 +2727,11 @@
       "path": "docs/porting/th14-launcher-config-browser-observed-oct11.json",
       "bytes": 1731,
       "sha256": "33072957d9d0898b380164287194b3222aafde04e297eb69064c4ec17ab6c62d"
+    },
+    {
+      "path": "docs/porting/th14-launcher-continue-verified-oct26.json",
+      "bytes": 101203,
+      "sha256": "11ea2aa3279a0eeb8897307b692dfc3a547a44c0b8ddeceeaf3d0a0b3761513d"
     },
     {
       "path": "docs/porting/th14-launcher-keys-browser-observed-oct11.json",
@@ -11785,8 +11795,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-native-campaign-fixture.cpp",
-      "bytes": 65908,
-      "sha256": "ebd7ac67b8aa938417cf7d9b613e35c16a4591d255514d71400b38d6e2766544"
+      "bytes": 66004,
+      "sha256": "ac6d4298914d2a4e4f9589f40b2379d268f2b40ff199c674cfe337c9f6b765e6"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-natural-body-avoid-fixture.cpp",
@@ -13037,6 +13047,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/world-replays.test.mjs",
       "bytes": 14612,
       "sha256": "7255684bad2e116bd24d21ab90c3b1cd2a5391fa3826993b2f599362d6f1a9f5"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/fixtures/th14-native-application-continue.json",
+      "bytes": 3416,
+      "sha256": "84863099ed43a9861c4fc41da9dc8bdf4334fb68e0f5c946ef7d49cc7f46bb29"
     },
     {
       "path": "runtimes/th12/th12_web/tests/fixtures/th14-native-application-reload-replay.json",
@@ -15125,8 +15140,8 @@
     },
     {
       "path": "tools/th14-build-campaign-observer.py",
-      "bytes": 3641,
-      "sha256": "af6f02217f601db61d1f04f0b67fe6d1db09c884ffa9afe4ab1a01f723a821cb"
+      "bytes": 4970,
+      "sha256": "8c400204e301ef8a46e0ec5379f0a3c1b6ad14d10b763ee42cdcb3c8be43cd57"
     },
     {
       "path": "tools/th14-build-music-continue-sdl-oct26.mjs",
@@ -18014,6 +18029,11 @@
       "sha256": "9db03a2229e80bc864035f6ba7011333ecb53abe2c84117cf854d2041b9f8f21"
     },
     {
+      "path": "tools/th14-launcher-continue-evidence-oct26.py",
+      "bytes": 11014,
+      "sha256": "f9d03768e0b4a0c41f2c730c2d10300f5fc4aedefd807e8baf58de923c46585a"
+    },
+    {
       "path": "tools/th14-launcher-keys-browser-proof.mjs",
       "bytes": 3386,
       "sha256": "ab46c76b14fe48d44d208f316b9ea1fa7d631c0bca651242f87fa7cdf06d4050"
@@ -18245,8 +18265,8 @@
     },
     {
       "path": "tools/th14-native-application.py",
-      "bytes": 16209,
-      "sha256": "dcda850984efa23e40378068e1c72e9a2ad59b1f822623d5b34c52bf4b2b8b5a"
+      "bytes": 16697,
+      "sha256": "23b40b816b35e861d75abad73f4bf93e2e37394c57268fb661195ce6bab2f5a6"
     },
     {
       "path": "tools/th14-native-area-window-capture.py",
@@ -18392,6 +18412,11 @@
       "path": "tools/th14-native-rcp-scalar-shader.py",
       "bytes": 1674,
       "sha256": "eefbc320025c5a7d99110a79a4fc303dfcbab3a78f005bd2febe801cf03b9fd4"
+    },
+    {
+      "path": "tools/th14-native-replay-intake.py",
+      "bytes": 8428,
+      "sha256": "de3e3148df7d1a8ba0fa86bbeba0083c481b1f8653dc6c51b02278ebd4cbf342"
     },
     {
       "path": "tools/th14-native-resource-loader.py",
@@ -19239,6 +19264,11 @@
       "sha256": "8ed5e6c41b6f06e6c95786c5f2d123bb346abd2a404849d6963be0b73867505a"
     },
     {
+      "path": "tools/th14-prepare-webgpu-launcher.py",
+      "bytes": 7647,
+      "sha256": "158b6d661ff7008a7a3a25915b4e3c2931889719b27debe623431ea06728d1ce"
+    },
+    {
       "path": "tools/th14-primitive-viewport-evidence-check-oct19.py",
       "bytes": 9954,
       "sha256": "a30477846e2eb1ecddb65a504fd0cc90153acde49921dcf141b4069811da9fb4"
@@ -19767,6 +19797,11 @@
       "path": "tools/th14-serve-v2.mjs",
       "bytes": 2370,
       "sha256": "eb7e5a0a87e5e04dc8ac2e952bf980ae67fac48693de900d86459bf03ba51f95"
+    },
+    {
+      "path": "tools/th14-serve-webgpu-candidate.mjs",
+      "bytes": 2407,
+      "sha256": "5ea859235c73ad762cd25bbcbacf75e31cdce0b21b4a1b90da269b636348b077"
     },
     {
       "path": "tools/th14-serve-workspace-current.mjs",
@@ -22129,6 +22164,11 @@
       "sha256": "054f768325e92e56b12807974094f8eeeb33789434a0079f0ad4d1e96330a882"
     },
     {
+      "path": "tools/th14-webgpu-launcher-transport-check.mjs",
+      "bytes": 7980,
+      "sha256": "aa61b3e9bd2e48a82238f494ab9fa8cacfd2931aa5bd0a46266fbf0fa2736471"
+    },
+    {
       "path": "tools/th14-webgpu-rgb565-sampler-oct26.py",
       "bytes": 7957,
       "sha256": "fec7e7fe2a2834a32f36dd2b4143240a95401079cb74c6dbc3491ecd728fd17a"
@@ -23295,68 +23335,56 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "faee616ae3be0ee38c66c0d7fd69a2f3da2300e0",
-    "title": "TH14 JavaScript WebGPU host, Asyncify callback integration and browser candidate",
+    "basePublishedCommit": "3a52b428a603a35c3e4a6bd0cabf3a6536bb67fd",
+    "title": "TH14 local WebGPU Launcher, natural Application Continue and owned beam observation",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/portable/sdl/Th14WebGpuHost.mjs",
-      "runtimes/th12/portable/sdl/Th14WebGpuRuntime.mjs",
-      "runtimes/th12/portable/sdl/Th14WebGpuCore.mjs",
-      "runtimes/th12/portable/sdl/Th14WebGpuLibrary.js",
-      "runtimes/th12/portable/sdl/Th14WebGpuCallbacks.hpp",
-      "runtimes/th12/th12_web/cpp/sdl/Application.cpp",
-      "runtimes/th12/th12_web/sdl-runtime/shell.mjs",
-      "runtimes/th12/th12_web/tests/cpp/th14-webgpu-async-fixture.cpp",
-      "tools/th14-build-webgpu-async-component.py",
-      "tools/th14-build-webgpu-release.py",
-      "tools/th14-webgpu-js-component.mjs",
-      "tools/th14-webgpu-async-check.mjs",
-      "tools/th14-webgpu-js-surfaces.mjs",
-      "tools/th14-webgpu-canvas-control.mjs",
-      "tools/th14-package-webgpu-candidate.py",
-      "tools/th14-js-webgpu-evidence-oct26.py",
+      "tools/th14-prepare-webgpu-launcher.py",
+      "tools/th14-serve-webgpu-candidate.mjs",
+      "tools/th14-webgpu-launcher-transport-check.mjs",
+      "tools/th14-native-replay-intake.py",
+      "tools/th14-launcher-continue-evidence-oct26.py",
+      "tools/th14-build-campaign-observer.py",
       "tools/th14-native-application.py",
-      "docs/porting/TH14_JS_WEBGPU_OCT26.md",
-      "docs/porting/th14-js-webgpu-verified-oct26.json",
+      "runtimes/th12/th12_web/tests/cpp/th14-native-campaign-fixture.cpp",
+      "runtimes/th12/th12_web/tests/fixtures/th14-native-application-continue.json",
+      "docs/porting/TH14_LAUNCHER_CONTINUE_OCT26.md",
+      "docs/porting/th14-launcher-continue-verified-oct26.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "docs/porting/TH14_CPP_WEBGPU_OCT26.md",
+      "docs/porting/TH14_MUSIC_CONTINUE_OCT26.md",
+      "docs/porting/TH14_JS_WEBGPU_OCT26.md",
       "docs/github-publication-manifest.json"
     ],
-    "productionSourceFiles": [
-      "runtimes/th12/portable/sdl/Th14WebGpuHost.mjs",
-      "runtimes/th12/portable/sdl/Th14WebGpuRuntime.mjs",
-      "runtimes/th12/portable/sdl/Th14WebGpuCore.mjs",
-      "runtimes/th12/portable/sdl/Th14WebGpuLibrary.js",
-      "runtimes/th12/portable/sdl/Th14WebGpuCallbacks.hpp",
-      "runtimes/th12/th12_web/cpp/sdl/Application.cpp",
-      "runtimes/th12/th12_web/sdl-runtime/shell.mjs"
-    ],
     "productionGameplayChanged": false,
-    "productionGraphicsChanged": true,
-    "productionSchedulingChanged": true,
-    "productionAudioAlgorithmChanged": false,
+    "productionGraphicsChanged": false,
+    "productionAudioChanged": false,
     "gameAssetsAdded": false,
-    "browserWebgpuHostImplementationPresent": true,
-    "actualCppEmscriptenJavascriptWebgpuChain": true,
-    "nativeStageExactFrames": 21,
-    "nativeStageComparedBytes": 25804800,
-    "nativeD3dxExactCases": 8,
-    "nativeD3dxComparedBytes": 5242880,
-    "asyncStackGuardWords": 2048,
-    "asyncMemoryGrowthBytes": 65536,
-    "queuedCallbacksAndInput": 6,
-    "nativeBgraPngFailureRetained": true,
-    "applicationAssertions": 239,
-    "pairedApplicationCaptures": 18,
+    "nativeNaturalRunModePairs": 30,
+    "nativeAllStageEntryModePairs": 25,
+    "launcherRoutes": 133,
+    "launcherHttpChecks": 21,
+    "launcherMetadataBytesWritten": 103342,
+    "launcherPayloadBytesReferenced": 510696322,
+    "launcherPayloadFilesCopied": false,
+    "applicationNaturalContinueFramesPerBackend": 3637,
+    "applicationNaturalContinueAssertionsPerBackend": 58,
+    "applicationNaturalContinuePairedImages": 4,
+    "applicationNaturalContinuePairedPcmHashEqual": true,
+    "applicationNaturalContinuePhysicalAudioDevices": 0,
+    "correctedObserverOwnedBeamLength": true,
+    "changedObservedWords": 1,
+    "engineObjectsUnchanged": 141,
+    "newNormalInputCallbacks": 19496,
+    "newNormalInputStagesObserved": [
+      1,
+      2
+    ],
+    "newNormalInputFullStageCoverage": false,
+    "strictEasyRegressionCallbacks": 107233,
+    "unrelatedResourceCryptEditExcluded": true,
     "browserCandidateWasmSha256": "3786901cbe373d221b14f02bcb3b1fa77901512195a09ba080669753a915018c",
-    "browserCandidateWasmBytes": 2699895,
-    "browserCandidateSourceUnits": 146,
-    "browserCandidatePackaged": true,
-    "generatedResourceBytesAliased": 414850582,
-    "originalRetailFilesLinked": false,
-    "defaultPreviewChanged": false,
-    "defaultWebglFailureRetained": true,
-    "rootUnrelatedResourceCryptExcluded": true,
+    "defaultSdlWasmSha256": "23bcfdef3441f5dbccc615a0f883cf6bb2de727d95aead90396f4814d490d05c",
     "currentSdlBrowserAcceptance": false,
+    "ordinaryOriginalMenuEquivalence": false,
     "completeGame": false,
     "nativeEquivalent": false
   }

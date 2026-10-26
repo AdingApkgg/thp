@@ -2695,7 +2695,9 @@ static void capture_combat_checkpoint(){
 
   for(u32 x:{i,u32(s.state),u32(s.timer.previous),u32(s.timer.current),float_bits(s.timer.fractional),s.th14_shot_flags,s.animation})shots.push_back(x);
 
-  for(float x:{s.movement.position.x,s.movement.position.y,s.movement.position.z,s.movement.speed,s.movement.angle,s.movement.velocity.x,s.movement.velocity.y,s.movement.velocity.z,(s.spec&&s.spec->type==3&&manager.th14_bomb_area(s.th14_area_slot)?manager.th14_bomb_area(s.th14_area_slot)->size.x:(s.spec?s.spec->hitbox.x:0.f))})shots.push_back(float_bits(x));
+  // Retail shot +b0 retains its own beam length after retirement. Its damage-area
+  // slot can already belong to another shot, so area.size.x is a different field.
+  for(float x:{s.movement.position.x,s.movement.position.y,s.movement.position.z,s.movement.speed,s.movement.angle,s.movement.velocity.x,s.movement.velocity.y,s.movement.velocity.z,(s.spec&&s.spec->type==3?s.th14_beam_length:(s.spec?s.spec->hitbox.x:0.f))})shots.push_back(float_bits(x));
 
   for(u32 x:{u32(s.damage),u32(s.hit_this_frame),u32(s.hit_last_frame)})shots.push_back(x);
 

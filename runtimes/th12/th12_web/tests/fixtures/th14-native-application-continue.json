@@ -1,0 +1,191 @@
+{
+  "schema": "th14/native-application-scenario/1",
+  "scope": "Actual Application cold start and ordinary normalized menu keys; idle until natural GameOver, choose Continue, then resume shooting. Only read-only state queries stop the bounded frame loop. No stock/health/score/stage/RNG overrides, OS input, browser or original ordinary-UI equivalence.",
+  "actions": [
+    {
+      "frames": 420,
+      "held": 0,
+      "pause": 0,
+      "expect": {
+        "0": 0,
+        "1": 0,
+        "3": 1,
+        "4": 0,
+        "5": 2,
+        "7": 2,
+        "8": 0,
+        "10": 0,
+        "11": 4294967295,
+        "12": 4294967295,
+        "13": 0,
+        "14": 0,
+        "15": 1,
+        "19": 1
+      }
+    },
+    {
+      "frames": 1,
+      "held": 1,
+      "pause": 0
+    },
+    {
+      "frames": 30,
+      "held": 0,
+      "pause": 0
+    },
+    {
+      "frames": 1,
+      "held": 16,
+      "pause": 0
+    },
+    {
+      "frames": 2,
+      "held": 0,
+      "pause": 0
+    },
+    {
+      "frames": 1,
+      "held": 1,
+      "pause": 0
+    },
+    {
+      "frames": 24,
+      "held": 0,
+      "pause": 0
+    },
+    {
+      "frames": 1,
+      "held": 128,
+      "pause": 0
+    },
+    {
+      "frames": 2,
+      "held": 0,
+      "pause": 0
+    },
+    {
+      "frames": 1,
+      "held": 128,
+      "pause": 0
+    },
+    {
+      "frames": 2,
+      "held": 0,
+      "pause": 0
+    },
+    {
+      "frames": 1,
+      "held": 1,
+      "pause": 0
+    },
+    {
+      "frames": 24,
+      "held": 0,
+      "pause": 0,
+      "expect": {
+        "0": 0,
+        "1": 0,
+        "3": 7,
+        "4": 0,
+        "5": 2,
+        "7": 2,
+        "8": 0,
+        "10": 0,
+        "11": 4294967295,
+        "12": 4294967295,
+        "13": 0,
+        "14": 0,
+        "15": 1,
+        "19": 1
+      }
+    },
+    {
+      "frames": 1,
+      "held": 128,
+      "pause": 0
+    },
+    {
+      "frames": 2,
+      "held": 0,
+      "pause": 0
+    },
+    {
+      "frames": 1,
+      "held": 1,
+      "pause": 0
+    },
+    {
+      "frames": 200,
+      "held": 0,
+      "pause": 0,
+      "expect": {
+        "0": 1,
+        "1": 1,
+        "3": 4294967295,
+        "4": 4294967295,
+        "5": 4294967295,
+        "7": 2,
+        "8": 100,
+        "10": 0,
+        "11": 4294967295,
+        "12": 4294967295,
+        "13": 2,
+        "14": 1,
+        "15": 0,
+        "19": 1,
+        "2": 118,
+        "6": 118
+      }
+    },
+    {
+      "frames": 6000,
+      "held": 0,
+      "until": {
+        "index": 0,
+        "equals": 3
+      },
+      "capture": "natural-game-over",
+      "expect": {
+        "0": 3,
+        "7": 4294967295,
+        "10": 0
+      }
+    },
+    {
+      "frames": 24,
+      "held": 0,
+      "capture": "continue-menu",
+      "expect": {
+        "0": 3,
+        "11": 14,
+        "12": 0,
+        "10": 0
+      }
+    },
+    {
+      "frames": 1,
+      "held": 1
+    },
+    {
+      "frames": 20,
+      "held": 0,
+      "capture": "continue-restored",
+      "expect": {
+        "0": 1,
+        "7": 2,
+        "10": 1,
+        "11": 4294967295,
+        "12": 4294967295
+      }
+    },
+    {
+      "frames": 120,
+      "held": 1,
+      "capture": "continue-playing",
+      "expect": {
+        "0": 1,
+        "10": 1
+      }
+    }
+  ]
+}

@@ -18,3 +18,5 @@
 这些结果不证明队列播放与最终恢复之间发生物理通知竞争时的行为、设备队列、完整 Application 续关的玩家／HUD 状态、浏览器播放或整作音频等价。`completeGame=false`、`nativeEquivalent=false` 保持不变。[上一版本](TH14_MUSIC_SUBFRAME_OCT26.md)的 104 用例报告作为历史范围保留。
 
 复核工具为[实际续关音乐队列](../../tools/th14-music-continue-native-oct26.py)、[混音器比较](../../tools/th14-music-continue-check-oct26.mjs)、[Web 构建](../../tools/th14-build-music-continue-sdl-oct26.mjs)和[打包](../../tools/th14-package-music-continue-oct26.mjs)。它们依赖本地原始文件、无损音乐及绑定的私有构建对象；原始输入和二进制不随源码发布。
+
+后续[父 Launcher 与实际 Application 续关流程](TH14_LAUNCHER_CONTINUE_OCT26.md)补齐独立静音候选入口，并在两个原生后端完成自然 GameOver／续关／恢复射击的有限集成。原版普通菜单与浏览器范围继续开放。

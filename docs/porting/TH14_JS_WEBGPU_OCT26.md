@@ -35,3 +35,5 @@ python tools/th14-package-webgpu-candidate.py `
 Native Deno 控制使用 `DENO_WEBGPU_BACKEND=dx12`，设备不请求可选特性。Deno 二进制来自官方 v2.9.8 发布并核对官方 SHA256；它仅用于原生 GPU API 单元验证，没有启动 Deno 的桌面浏览器或窗口。参考 [Deno GPU API](https://docs.deno.com/api/web/gpu/)、[实际后端选择源码](https://github.com/denoland/deno/blob/v2.9.8/ext/webgpu/lib.rs)及 [Emscripten Asyncify 文档](https://emscripten.org/docs/porting/asyncify.html)。SDK 组件明确使用无真实窗口的 SDL 生命周期边界；浏览器候选使用真实 SDL3，后者的运行验收仍独立开放。
 
 所有输出写入新私有目录并保留至少 100 GiB 空间。浏览器策略检查此前因无法可靠识别当前 URL 终止；本轮没有重试该失败、发送应用输入或请求手动 Ctrl+L，也没有通过其他浏览器、CDP 或 DOM 替代物绕过。普通 Chrome 的启动／呈现／输入／音频／刷新及持久化、完整模式和历史相机／effect149 字差继续验收。一般打包目标光栅混合、部分 stencil 与加权捕获也保留其范围。`browserAcceptance=false`、`completeGame=false`、`nativeEquivalent=false`。
+
+后续[父 Launcher 与实际 Application 续关流程](TH14_LAUNCHER_CONTINUE_OCT26.md)补齐独立静音候选入口，并在两个原生后端完成自然 GameOver／续关／恢复射击的有限集成。原版普通菜单与浏览器范围继续开放。
