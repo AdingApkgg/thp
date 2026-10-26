@@ -1,0 +1,2016 @@
+{
+  "verifiedFiniteSceneWordHandoff": true,
+  "diagnosticPrefixOnly": true,
+  "callbacks": 15000,
+  "stagesObserved": [
+    1,
+    2
+  ],
+  "sameProductionWasm": true,
+  "productionEngineChanged": false,
+  "deliveryInputs": "Observed instruction boundaries and timestamps only",
+  "nativeCameraValuesProvidedToEngine": false,
+  "beforeCameraField12DifferentCallbacks": 1286,
+  "afterAllCamera25Equal": true,
+  "changedCameraFields": [
+    12
+  ],
+  "firstChangedIndex": 13714,
+  "selected32AndHudUnchanged": true,
+  "animationRows": 384,
+  "animationRegistryAndWordsUnchanged": true,
+  "combatCheckpoints": 228,
+  "combatOutputWordsUnchanged": true,
+  "initialOrderedPublications": 2023,
+  "corruptedCameraNegativeRejected": true,
+  "legacyClassicHardwareFullRegressionCallbacks": 107233,
+  "observerInstrumentationCheckedSeparately": true,
+  "historicalMixedStoreCasesStillOpen": true,
+  "actualGpuOrPcm": false,
+  "originalOrdinaryMenuEquivalence": false,
+  "browserAcceptance": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "wasmSha256": "b46bea539bc6346c7af8e4d1ac20b90d0c342056044549afeecb0fae1d236880",
+  "comparisonToolSha256": "aedc4555a2dbad064e2df0aa5301bfc3215ec84c81e483fa4a506488f6e8c230",
+  "verifierSha256": "eac81db0053124023ce73aec56cd57e312c2539409a402282634c46d1c411297",
+  "bindings": {
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/report.json": {
+      "bytes": 3869,
+      "sha256": "ce37b93ac8e5e3cb08c81b913506550db68a6de6847507c82905159f1ef8ae30"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/report.json": {
+      "bytes": 4240,
+      "sha256": "74ee4b649707a16af578b8e9c3d2908cbb583a0711c69a1282bc018e0d3b2a54"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-verified.json": {
+      "bytes": 7792,
+      "sha256": "b63e9d71e5e0460d0c0b996bca43c0bc078ecdbfd4ffddb40bd67f4be6efa851"
+    },
+    "docs/porting/th14-scene-copy-word-prefix-oct26.json": {
+      "bytes": 4382,
+      "sha256": "a8afd00b230e5f04daa68e493403c4c37691e6dae87b327765ec7071bd16ef3d"
+    },
+    "tools/th14-verify-native-campaign.py": {
+      "bytes": 10525,
+      "sha256": "c03d52b75cf0e99c5973de7b4446b5153960f9f7129e91e45603865ec2d657e6"
+    },
+    "artifacts/th14/retail-sakuyab-easy-copy-word-step-prefix-hardware-oct26/report.json": {
+      "bytes": 100119,
+      "sha256": "0ac37d10a32257c9536a99ad33e73478ad35d985635d40105ec70475a932906f"
+    },
+    "artifacts/th14/replay-coverage-input-oct26/beam-owned-field-observer-final/observer-build.json": {
+      "bytes": 74724,
+      "sha256": "36946e6a03617e5fb4b4fa216a1fe2778ec81874ac1ab5997d6c799b6ee8b2c2"
+    },
+    "artifacts/th14/native-campaign-assets/57d84a5cbe82-e98fc11baae2/manifest.json": {
+      "bytes": 67916,
+      "sha256": "c1bdbbb5f790fd351a86733fc1bb4939c410a2601373061f1163bacb1b6d9741"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/inputs/sakuyab-easy.rpy": {
+      "bytes": 94100,
+      "sha256": "e98fc11baae2d58c9cdaee6a5f8f94e0504340eba6685c7187550168a415624f"
+    },
+    "artifacts/th14/native-campaign-assets/57d84a5cbe82-e98fc11baae2/th14.dat": {
+      "bytes": 90836926,
+      "sha256": "edcfe387aea6f7b248bdbe821bd24a58e90c797eb57395747d4569c93491b3ef"
+    },
+    "artifacts/th14/retail-sakuyab-easy-copy-word-step-prefix-hardware-oct26/selected-state.u32": {
+      "bytes": 1920000,
+      "sha256": "08e13a02583f9f81147b024a9be861ae9727064481e94e2b45d19c281ef40e52"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/selected-state.u32": {
+      "bytes": 1920000,
+      "sha256": "08e13a02583f9f81147b024a9be861ae9727064481e94e2b45d19c281ef40e52"
+    },
+    "artifacts/th14/retail-sakuyab-easy-copy-word-step-prefix-hardware-oct26/world-camera.raw": {
+      "bytes": 4380000,
+      "sha256": "e091a1d489f4c89eb0dbd8aab8c97ce0bde0099869f107feafbfa37a1cf17ab8"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/portable-camera.u32": {
+      "bytes": 1500000,
+      "sha256": "d5d69a3586953742187a5cdd901524f5352ee869f1a2141a07a4525a5295ebea"
+    },
+    "artifacts/th14/retail-sakuyab-easy-copy-word-step-prefix-hardware-oct26/hud-score.u32": {
+      "bytes": 120000,
+      "sha256": "3cffaf8564d53baeb158c09c9e89e07fd746a04ca4668764dd3adfce0220893b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/portable-hud.u32": {
+      "bytes": 120000,
+      "sha256": "3cffaf8564d53baeb158c09c9e89e07fd746a04ca4668764dd3adfce0220893b"
+    },
+    "artifacts/th14/retail-sakuyab-easy-copy-word-step-prefix-hardware-oct26/live-vms-callback-1.json": {
+      "bytes": 168170,
+      "sha256": "42d89ba72d18574d7c001c27870793b049da0c92b3e7701adbbb1444c858e604"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/portable-live-1.json": {
+      "bytes": 50651,
+      "sha256": "930c38c56ceb50478592d3d9e2c5f38cc38218143ed65c257abf656f2f6d0279"
+    },
+    "artifacts/th14/retail-sakuyab-easy-copy-word-step-prefix-hardware-oct26/live-vms-callback-14000.json": {
+      "bytes": 440545,
+      "sha256": "4a1d65e5feeee1916688411ec2f1fe3f5194e6bf455ec693b8cc793de09ac677"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/portable-live-14000.json": {
+      "bytes": 149909,
+      "sha256": "bd23e3854c0588745fed6f0fd2d35c59b9a692ff08199fdd52505e1fcf1135e0"
+    },
+    "artifacts/th14/retail-sakuyab-easy-copy-word-step-prefix-hardware-oct26/live-vms-callback-14900.json": {
+      "bytes": 634992,
+      "sha256": "3f6a697225b876287cb550aa453c15c299f8222346ad939dec8061c3e5ec83c5"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/portable-live-14900.json": {
+      "bytes": 217925,
+      "sha256": "be66af939dff6a287a875e0752c5031253b738e2a86075ae381430f3da7c2059"
+    },
+    "artifacts/th14/retail-sakuyab-easy-copy-word-step-prefix-hardware-oct26/combat-pool-index.json": {
+      "bytes": 96128,
+      "sha256": "fe45659e43c085bdb4b72b8a5bcfbc3f32f2ea73916dc27be86d282c7ad781be"
+    },
+    "artifacts/th14/retail-sakuyab-easy-copy-word-step-prefix-hardware-oct26/allocation-events.jsonl": {
+      "bytes": 731486,
+      "sha256": "e44329a88884de6df11ed92fa93351d9939d26be223cb51d3facffe6d43028ec"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/portable-allocations-initial-through-1000.json": {
+      "bytes": 342577,
+      "sha256": "8abdcc8145312c61bd32a088123ebf2b64cd4676d8058cb464ff0058d59bf36c"
+    },
+    "artifacts/th14/replay-coverage-input-oct26/beam-owned-field-observer-final/observer.wasm": {
+      "bytes": 1500784,
+      "sha256": "b46bea539bc6346c7af8e4d1ac20b90d0c342056044549afeecb0fae1d236880"
+    },
+    "tools/th14-compare-native-campaign.mjs": {
+      "bytes": 43784,
+      "sha256": "aedc4555a2dbad064e2df0aa5301bfc3215ec84c81e483fa4a506488f6e8c230"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/selected-state.u32": {
+      "bytes": 1920000,
+      "sha256": "08e13a02583f9f81147b024a9be861ae9727064481e94e2b45d19c281ef40e52"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/portable-hud.u32": {
+      "bytes": 120000,
+      "sha256": "3cffaf8564d53baeb158c09c9e89e07fd746a04ca4668764dd3adfce0220893b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/portable-live-1.json": {
+      "bytes": 50651,
+      "sha256": "930c38c56ceb50478592d3d9e2c5f38cc38218143ed65c257abf656f2f6d0279"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/portable-live-14000.json": {
+      "bytes": 149909,
+      "sha256": "bd23e3854c0588745fed6f0fd2d35c59b9a692ff08199fdd52505e1fcf1135e0"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/portable-live-14900.json": {
+      "bytes": 217925,
+      "sha256": "be66af939dff6a287a875e0752c5031253b738e2a86075ae381430f3da7c2059"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-1.json": {
+      "bytes": 326,
+      "sha256": "ced319bfdcd064ae5320513bbcde09c6a871a9fdf02abcff279c56c067f39bcc"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-1.json": {
+      "bytes": 326,
+      "sha256": "ced319bfdcd064ae5320513bbcde09c6a871a9fdf02abcff279c56c067f39bcc"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-10967.json": {
+      "bytes": 10647,
+      "sha256": "c87dd76cd3c201e0413fa857a4dfc9ab82f5c9bba9954e9565250065e95ea70b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-10967.json": {
+      "bytes": 10647,
+      "sha256": "c87dd76cd3c201e0413fa857a4dfc9ab82f5c9bba9954e9565250065e95ea70b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-11964.json": {
+      "bytes": 21858,
+      "sha256": "2d05c81b69847486c92d051f19abd6ad6c04895c907754885408fe1298648c5c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-11964.json": {
+      "bytes": 21858,
+      "sha256": "2d05c81b69847486c92d051f19abd6ad6c04895c907754885408fe1298648c5c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-12961.json": {
+      "bytes": 26262,
+      "sha256": "392b195f3b3a2b6810daee8871ddda16c024ccd8e71f792fd6880ee9f45cfa0b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-12961.json": {
+      "bytes": 26262,
+      "sha256": "392b195f3b3a2b6810daee8871ddda16c024ccd8e71f792fd6880ee9f45cfa0b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13480.json": {
+      "bytes": 186,
+      "sha256": "8cd0d704181995cc0eacdb29d4bf55bdc1932b30f43de27ae3d8d44868e41f51"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13480.json": {
+      "bytes": 186,
+      "sha256": "8cd0d704181995cc0eacdb29d4bf55bdc1932b30f43de27ae3d8d44868e41f51"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13481.json": {
+      "bytes": 186,
+      "sha256": "3dbbbfc92aac096ff6ff0123e605a7480220c4acae8b20f7c877fd073b77b315"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13481.json": {
+      "bytes": 186,
+      "sha256": "3dbbbfc92aac096ff6ff0123e605a7480220c4acae8b20f7c877fd073b77b315"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13482.json": {
+      "bytes": 186,
+      "sha256": "7bc558179bcec76c3f6d2fab1f988ac6f984c0a39a2f334c0d7a85cc8688bd90"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13482.json": {
+      "bytes": 186,
+      "sha256": "7bc558179bcec76c3f6d2fab1f988ac6f984c0a39a2f334c0d7a85cc8688bd90"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13483.json": {
+      "bytes": 186,
+      "sha256": "5ae6015f0b0caae9ce062c15c604dc42f20f3f2719af9ef25a002982606a7151"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13483.json": {
+      "bytes": 186,
+      "sha256": "5ae6015f0b0caae9ce062c15c604dc42f20f3f2719af9ef25a002982606a7151"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13484.json": {
+      "bytes": 186,
+      "sha256": "dd7ebcceb183cb071d7b6d528ef7208e5c638f6444a1964ec3594eea25b005a1"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13484.json": {
+      "bytes": 186,
+      "sha256": "dd7ebcceb183cb071d7b6d528ef7208e5c638f6444a1964ec3594eea25b005a1"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13485.json": {
+      "bytes": 186,
+      "sha256": "421928a35e1975468bed980d3bcbbe4ea4e979071b0dbaa8b6183956c9872284"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13485.json": {
+      "bytes": 186,
+      "sha256": "421928a35e1975468bed980d3bcbbe4ea4e979071b0dbaa8b6183956c9872284"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13486.json": {
+      "bytes": 186,
+      "sha256": "9af4e92079f7b15af53a8cb0425b56b170aca6d7122ef42f1c1d5cd9404a85ce"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13486.json": {
+      "bytes": 186,
+      "sha256": "9af4e92079f7b15af53a8cb0425b56b170aca6d7122ef42f1c1d5cd9404a85ce"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13487.json": {
+      "bytes": 186,
+      "sha256": "9d94120a4c5d714b11ebe8b74afd41118e1e61e92d84e2034ce98eb24ef0a5da"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13487.json": {
+      "bytes": 186,
+      "sha256": "9d94120a4c5d714b11ebe8b74afd41118e1e61e92d84e2034ce98eb24ef0a5da"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13488.json": {
+      "bytes": 186,
+      "sha256": "9ef2195af337140835ffb094f31dfd0bb76545394444b6cb483a1fcb3346cfec"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13488.json": {
+      "bytes": 186,
+      "sha256": "9ef2195af337140835ffb094f31dfd0bb76545394444b6cb483a1fcb3346cfec"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13489.json": {
+      "bytes": 186,
+      "sha256": "b062033b3fea6d9e05f3021b942628ce8c0bcf9deeddf39dc5ca0286d903233d"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13489.json": {
+      "bytes": 186,
+      "sha256": "b062033b3fea6d9e05f3021b942628ce8c0bcf9deeddf39dc5ca0286d903233d"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13490.json": {
+      "bytes": 186,
+      "sha256": "692ab3414e773a4d907cd557783dae919f089f7ce1fd72ec0a6824844acd7693"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13490.json": {
+      "bytes": 186,
+      "sha256": "692ab3414e773a4d907cd557783dae919f089f7ce1fd72ec0a6824844acd7693"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13491.json": {
+      "bytes": 186,
+      "sha256": "1ae354540d3624a5b8e505acc7a5fc246ed031d92c18e0e3a7292db276e054a5"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13491.json": {
+      "bytes": 186,
+      "sha256": "1ae354540d3624a5b8e505acc7a5fc246ed031d92c18e0e3a7292db276e054a5"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13492.json": {
+      "bytes": 186,
+      "sha256": "a2ff9a09ac609d62306bdbd5d10be5818fe42bb024e00db7b8f9b00d60c3d1af"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13492.json": {
+      "bytes": 186,
+      "sha256": "a2ff9a09ac609d62306bdbd5d10be5818fe42bb024e00db7b8f9b00d60c3d1af"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13493.json": {
+      "bytes": 186,
+      "sha256": "395df8526136efde96915b031888c2645d5e8f56fa081633de1fdd332672fc63"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13493.json": {
+      "bytes": 186,
+      "sha256": "395df8526136efde96915b031888c2645d5e8f56fa081633de1fdd332672fc63"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13494.json": {
+      "bytes": 186,
+      "sha256": "badadca4b285e7eaea4c62340be1107b400ae532722c759f1001989d7c9aa45b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13494.json": {
+      "bytes": 186,
+      "sha256": "badadca4b285e7eaea4c62340be1107b400ae532722c759f1001989d7c9aa45b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13495.json": {
+      "bytes": 186,
+      "sha256": "44a11dd5994339f9a4bb744d46fe2807e8e4af7515d672879169219849a85b95"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13495.json": {
+      "bytes": 186,
+      "sha256": "44a11dd5994339f9a4bb744d46fe2807e8e4af7515d672879169219849a85b95"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13496.json": {
+      "bytes": 186,
+      "sha256": "55d1b55c9c1b9a73e2e9f95d2c7e71cec3528a66a96f313fd7460c2fc959e03d"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13496.json": {
+      "bytes": 186,
+      "sha256": "55d1b55c9c1b9a73e2e9f95d2c7e71cec3528a66a96f313fd7460c2fc959e03d"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13497.json": {
+      "bytes": 186,
+      "sha256": "c1f18a63db3d685a5c427d6b69d588d74df3f48a9eb4b6d8ad23780c3696ada4"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13497.json": {
+      "bytes": 186,
+      "sha256": "c1f18a63db3d685a5c427d6b69d588d74df3f48a9eb4b6d8ad23780c3696ada4"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13498.json": {
+      "bytes": 186,
+      "sha256": "943437bf838db155f45f4aa4954762d110b6140af54be68b89a2a7c97c300d91"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13498.json": {
+      "bytes": 186,
+      "sha256": "943437bf838db155f45f4aa4954762d110b6140af54be68b89a2a7c97c300d91"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13499.json": {
+      "bytes": 186,
+      "sha256": "d58debdc124eb13849169c13f52290de05f33d770f7fb42ff508431935afe5d1"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13499.json": {
+      "bytes": 186,
+      "sha256": "d58debdc124eb13849169c13f52290de05f33d770f7fb42ff508431935afe5d1"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13500.json": {
+      "bytes": 186,
+      "sha256": "6868b4583d8d7747d6ae01bc75e8422ffd967d4abc724d8d83055e6877789512"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13500.json": {
+      "bytes": 186,
+      "sha256": "6868b4583d8d7747d6ae01bc75e8422ffd967d4abc724d8d83055e6877789512"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13501.json": {
+      "bytes": 186,
+      "sha256": "42f870bdc9bfcf12f8844a6e6f40dec186593942ab234f6684ef5bfb02e65ed8"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13501.json": {
+      "bytes": 186,
+      "sha256": "42f870bdc9bfcf12f8844a6e6f40dec186593942ab234f6684ef5bfb02e65ed8"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13502.json": {
+      "bytes": 186,
+      "sha256": "dd58841449e9892ab7dbeeaed8ffbc8c4a1fecbfe96d35d0c344fa90f4e10536"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13502.json": {
+      "bytes": 186,
+      "sha256": "dd58841449e9892ab7dbeeaed8ffbc8c4a1fecbfe96d35d0c344fa90f4e10536"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13503.json": {
+      "bytes": 186,
+      "sha256": "91333d8381121e70cd3d2eb0a8dd0bde87bfa4ce6f65362b6b19f925f7e68395"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13503.json": {
+      "bytes": 186,
+      "sha256": "91333d8381121e70cd3d2eb0a8dd0bde87bfa4ce6f65362b6b19f925f7e68395"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13504.json": {
+      "bytes": 186,
+      "sha256": "1f6ed06e4b23d6fd043a39629449ce41b910cde813810d678b9a2bdb1c9941d0"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13504.json": {
+      "bytes": 186,
+      "sha256": "1f6ed06e4b23d6fd043a39629449ce41b910cde813810d678b9a2bdb1c9941d0"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13505.json": {
+      "bytes": 186,
+      "sha256": "c64289693d11c4e9ebd00d2567001b936d80ce38ef39ad6d103c26992b9a58b4"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13505.json": {
+      "bytes": 186,
+      "sha256": "c64289693d11c4e9ebd00d2567001b936d80ce38ef39ad6d103c26992b9a58b4"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13506.json": {
+      "bytes": 186,
+      "sha256": "75951835086137f6b379e6980e56b79e4bf4bfd0898b77525c0bdd71df546242"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13506.json": {
+      "bytes": 186,
+      "sha256": "75951835086137f6b379e6980e56b79e4bf4bfd0898b77525c0bdd71df546242"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13507.json": {
+      "bytes": 186,
+      "sha256": "f67abbbf781bc61b18538280104b16b20f69ee84d0032bf994114fcbc9330e82"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13507.json": {
+      "bytes": 186,
+      "sha256": "f67abbbf781bc61b18538280104b16b20f69ee84d0032bf994114fcbc9330e82"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13508.json": {
+      "bytes": 186,
+      "sha256": "a3efbb0a9ccc339e8751a988becdca15d05041987e1202e4d8f7b9a702cd4def"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13508.json": {
+      "bytes": 186,
+      "sha256": "a3efbb0a9ccc339e8751a988becdca15d05041987e1202e4d8f7b9a702cd4def"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13509.json": {
+      "bytes": 186,
+      "sha256": "2c5811e133c35980b8f23e708301c6848fa887c4e24492fcf28ecee1c5b895cf"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13509.json": {
+      "bytes": 186,
+      "sha256": "2c5811e133c35980b8f23e708301c6848fa887c4e24492fcf28ecee1c5b895cf"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13510.json": {
+      "bytes": 186,
+      "sha256": "d7a2b6931a202d078a4cc00c4092a70c76272e821fa5728b28ae0f679f841c10"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13510.json": {
+      "bytes": 186,
+      "sha256": "d7a2b6931a202d078a4cc00c4092a70c76272e821fa5728b28ae0f679f841c10"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13511.json": {
+      "bytes": 186,
+      "sha256": "4c8b94a18e5172de1b2ba133967c118745d54fd427055da5930345a275501f94"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13511.json": {
+      "bytes": 186,
+      "sha256": "4c8b94a18e5172de1b2ba133967c118745d54fd427055da5930345a275501f94"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13512.json": {
+      "bytes": 186,
+      "sha256": "360074919c9e7b0143595bcac64210c2b2d9b2db47ab84ec3ab975fc3ce04b5c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13512.json": {
+      "bytes": 186,
+      "sha256": "360074919c9e7b0143595bcac64210c2b2d9b2db47ab84ec3ab975fc3ce04b5c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13513.json": {
+      "bytes": 186,
+      "sha256": "c95d47bed69bafdbaeff62d42cc22bf898a566514fd1b8c600d905bf32e40177"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13513.json": {
+      "bytes": 186,
+      "sha256": "c95d47bed69bafdbaeff62d42cc22bf898a566514fd1b8c600d905bf32e40177"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13514.json": {
+      "bytes": 186,
+      "sha256": "4c05c02d60d58d60b2ffb924b2c9aa7ed57d11e85c9c1214e9a26cf6909fe86d"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13514.json": {
+      "bytes": 186,
+      "sha256": "4c05c02d60d58d60b2ffb924b2c9aa7ed57d11e85c9c1214e9a26cf6909fe86d"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13515.json": {
+      "bytes": 186,
+      "sha256": "c93ca98e776ef8a1e6f17309549a53b1cb45685385e20e66e85ac63b8566e986"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13515.json": {
+      "bytes": 186,
+      "sha256": "c93ca98e776ef8a1e6f17309549a53b1cb45685385e20e66e85ac63b8566e986"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13516.json": {
+      "bytes": 186,
+      "sha256": "08974a90e1132e492dc9e83b691ac478aaba29d6c4f06792584e2bd2cdfb49ea"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13516.json": {
+      "bytes": 186,
+      "sha256": "08974a90e1132e492dc9e83b691ac478aaba29d6c4f06792584e2bd2cdfb49ea"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13517.json": {
+      "bytes": 186,
+      "sha256": "ffa76b0781162259045cf3eee8f781c30af4d08655505c250bc4852bcc5f5baa"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13517.json": {
+      "bytes": 186,
+      "sha256": "ffa76b0781162259045cf3eee8f781c30af4d08655505c250bc4852bcc5f5baa"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13518.json": {
+      "bytes": 186,
+      "sha256": "5cb874ca809960b9295e67a228bee715fe64be3be63b9904db60c68a2c8e6501"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13518.json": {
+      "bytes": 186,
+      "sha256": "5cb874ca809960b9295e67a228bee715fe64be3be63b9904db60c68a2c8e6501"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13519.json": {
+      "bytes": 186,
+      "sha256": "5292f3ea762f6aa89a57ca03babd632e6c00dadb7712f657164cfe6c632d6553"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13519.json": {
+      "bytes": 186,
+      "sha256": "5292f3ea762f6aa89a57ca03babd632e6c00dadb7712f657164cfe6c632d6553"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13520.json": {
+      "bytes": 186,
+      "sha256": "6377b956894f87e60477e999c08886608b2fc0e89efacd9999d1115bf48a1e91"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13520.json": {
+      "bytes": 186,
+      "sha256": "6377b956894f87e60477e999c08886608b2fc0e89efacd9999d1115bf48a1e91"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13521.json": {
+      "bytes": 186,
+      "sha256": "25aef969086dabc75ba0b1c95ed4060a8c1fd43e6d2770a086b5fd5ee8b0effd"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13521.json": {
+      "bytes": 186,
+      "sha256": "25aef969086dabc75ba0b1c95ed4060a8c1fd43e6d2770a086b5fd5ee8b0effd"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13522.json": {
+      "bytes": 186,
+      "sha256": "7098532cf8c40cea844a70425f4a71822a035ae0c15213e06f17471473df254c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13522.json": {
+      "bytes": 186,
+      "sha256": "7098532cf8c40cea844a70425f4a71822a035ae0c15213e06f17471473df254c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13523.json": {
+      "bytes": 186,
+      "sha256": "412a0f58fa6bfa16026b68253dba018b78e9787a95c01ab7a0146023639280ed"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13523.json": {
+      "bytes": 186,
+      "sha256": "412a0f58fa6bfa16026b68253dba018b78e9787a95c01ab7a0146023639280ed"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13524.json": {
+      "bytes": 186,
+      "sha256": "5825182f6d91429c945f511f5680aecad16fcf2e2efa4dd352b195ba8eef3d1f"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13524.json": {
+      "bytes": 186,
+      "sha256": "5825182f6d91429c945f511f5680aecad16fcf2e2efa4dd352b195ba8eef3d1f"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13525.json": {
+      "bytes": 186,
+      "sha256": "2dac9429b4cc2b279e20ac3349c9125e4778a4c071d1f2fc271b5bb319bead6f"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13525.json": {
+      "bytes": 186,
+      "sha256": "2dac9429b4cc2b279e20ac3349c9125e4778a4c071d1f2fc271b5bb319bead6f"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13526.json": {
+      "bytes": 186,
+      "sha256": "60a41b10dfe56328ce35491cab037ed49c791c1d08e7607ba9d1f9ca9689fc09"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13526.json": {
+      "bytes": 186,
+      "sha256": "60a41b10dfe56328ce35491cab037ed49c791c1d08e7607ba9d1f9ca9689fc09"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13527.json": {
+      "bytes": 186,
+      "sha256": "0cb34c247a80beae49b6474adf2eb9deebd9394d8c460bd2ef69ae3dbe820c54"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13527.json": {
+      "bytes": 186,
+      "sha256": "0cb34c247a80beae49b6474adf2eb9deebd9394d8c460bd2ef69ae3dbe820c54"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13528.json": {
+      "bytes": 186,
+      "sha256": "fd3a3af421a2091e222783a807dde95543463f5c379f9ba1e17780e68341c65c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13528.json": {
+      "bytes": 186,
+      "sha256": "fd3a3af421a2091e222783a807dde95543463f5c379f9ba1e17780e68341c65c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13529.json": {
+      "bytes": 186,
+      "sha256": "c6838285ccc8897f0587685f27a8bce1e1b1db2797932ec3bd895fc76d7d4704"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13529.json": {
+      "bytes": 186,
+      "sha256": "c6838285ccc8897f0587685f27a8bce1e1b1db2797932ec3bd895fc76d7d4704"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13530.json": {
+      "bytes": 186,
+      "sha256": "12aa95cbff4efe3160bcc3d15693ec50cbb2b001aed13bc9ca6dc2a612e1e805"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13530.json": {
+      "bytes": 186,
+      "sha256": "12aa95cbff4efe3160bcc3d15693ec50cbb2b001aed13bc9ca6dc2a612e1e805"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13531.json": {
+      "bytes": 186,
+      "sha256": "c588b1662ff4826ad50949a9cbf0b3cda564b2b0e8ec461b42c64522c1e6d168"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13531.json": {
+      "bytes": 186,
+      "sha256": "c588b1662ff4826ad50949a9cbf0b3cda564b2b0e8ec461b42c64522c1e6d168"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13532.json": {
+      "bytes": 186,
+      "sha256": "029babcd9f2bb4d0c5cb5407c495998f1442a06737d937fb5b2835b832b37775"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13532.json": {
+      "bytes": 186,
+      "sha256": "029babcd9f2bb4d0c5cb5407c495998f1442a06737d937fb5b2835b832b37775"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13533.json": {
+      "bytes": 186,
+      "sha256": "e8e9b13fc79dab1d6fdf437ca9f4293588954d24486e1825df8b3ed77414c73e"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13533.json": {
+      "bytes": 186,
+      "sha256": "e8e9b13fc79dab1d6fdf437ca9f4293588954d24486e1825df8b3ed77414c73e"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13534.json": {
+      "bytes": 186,
+      "sha256": "dd4f418e0a13a92b3c860730865e9043bd3982b5235e108f45efaf87f703bd62"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13534.json": {
+      "bytes": 186,
+      "sha256": "dd4f418e0a13a92b3c860730865e9043bd3982b5235e108f45efaf87f703bd62"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13535.json": {
+      "bytes": 186,
+      "sha256": "6cb86ed90389486a83442df77a7db958c8aa44338394ef974fb364c4948c1dda"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13535.json": {
+      "bytes": 186,
+      "sha256": "6cb86ed90389486a83442df77a7db958c8aa44338394ef974fb364c4948c1dda"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13536.json": {
+      "bytes": 186,
+      "sha256": "8d5385adb4b14c48412f5d36906023f1b2061def0601c59a329315c9d4123961"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13536.json": {
+      "bytes": 186,
+      "sha256": "8d5385adb4b14c48412f5d36906023f1b2061def0601c59a329315c9d4123961"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13537.json": {
+      "bytes": 186,
+      "sha256": "841cdc7e48b70628c41937954337ad883b5f6887ac3c1352fcfaf7069e1dfed7"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13537.json": {
+      "bytes": 186,
+      "sha256": "841cdc7e48b70628c41937954337ad883b5f6887ac3c1352fcfaf7069e1dfed7"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13538.json": {
+      "bytes": 186,
+      "sha256": "968c34d20f1db01fbff5d2650506a86093493347ef36058feddd2ed42773656c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13538.json": {
+      "bytes": 186,
+      "sha256": "968c34d20f1db01fbff5d2650506a86093493347ef36058feddd2ed42773656c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13539.json": {
+      "bytes": 186,
+      "sha256": "7d019d4f842e5521761d8b6c69af978e3b8bf09e93c21c89dd933272ca09473b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13539.json": {
+      "bytes": 186,
+      "sha256": "7d019d4f842e5521761d8b6c69af978e3b8bf09e93c21c89dd933272ca09473b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13540.json": {
+      "bytes": 186,
+      "sha256": "303c72a84e93a0a471f3b23388d4904f107c749fadc56061e5a19bf8d449980f"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13540.json": {
+      "bytes": 186,
+      "sha256": "303c72a84e93a0a471f3b23388d4904f107c749fadc56061e5a19bf8d449980f"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13541.json": {
+      "bytes": 186,
+      "sha256": "0f90db44a99a15b8b35a6fb597856c4a2ec41dee1ebd542022c7aedb26385958"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13541.json": {
+      "bytes": 186,
+      "sha256": "0f90db44a99a15b8b35a6fb597856c4a2ec41dee1ebd542022c7aedb26385958"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13542.json": {
+      "bytes": 186,
+      "sha256": "dd455d16d218ccccbd5c6d759a4ff2dc8ecc353b24984887a39b8fcd5ae9eed6"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13542.json": {
+      "bytes": 186,
+      "sha256": "dd455d16d218ccccbd5c6d759a4ff2dc8ecc353b24984887a39b8fcd5ae9eed6"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13543.json": {
+      "bytes": 186,
+      "sha256": "0f3b8e849481256206b5e7a6c96b9557d50dc8173f0d965a8c9ffc74a688de7c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13543.json": {
+      "bytes": 186,
+      "sha256": "0f3b8e849481256206b5e7a6c96b9557d50dc8173f0d965a8c9ffc74a688de7c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13544.json": {
+      "bytes": 186,
+      "sha256": "caa8f7fc4ddcbb75fbc96705b1daccbcb9142a3ad2342942bc98c80d517609e7"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13544.json": {
+      "bytes": 186,
+      "sha256": "caa8f7fc4ddcbb75fbc96705b1daccbcb9142a3ad2342942bc98c80d517609e7"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13545.json": {
+      "bytes": 186,
+      "sha256": "c80110e4cc5a6e5536bb85805c224337f344be252ccf17207d87b6c97a0dc156"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13545.json": {
+      "bytes": 186,
+      "sha256": "c80110e4cc5a6e5536bb85805c224337f344be252ccf17207d87b6c97a0dc156"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13546.json": {
+      "bytes": 186,
+      "sha256": "9d2e1461d822b1fbcd28d1cfc25c0da8c8c282f350ff8734bb9235d3c95d3d3f"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13546.json": {
+      "bytes": 186,
+      "sha256": "9d2e1461d822b1fbcd28d1cfc25c0da8c8c282f350ff8734bb9235d3c95d3d3f"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13547.json": {
+      "bytes": 186,
+      "sha256": "867a4c18d3fbfca8a947c2b06d58ab4d436e0664332dbd1dd75f81ddff2e693c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13547.json": {
+      "bytes": 186,
+      "sha256": "867a4c18d3fbfca8a947c2b06d58ab4d436e0664332dbd1dd75f81ddff2e693c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13548.json": {
+      "bytes": 186,
+      "sha256": "5398f0bcbb07dc036e401c4ca5b4a76ee85c25d135dd01b33e7960cb7874f76e"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13548.json": {
+      "bytes": 186,
+      "sha256": "5398f0bcbb07dc036e401c4ca5b4a76ee85c25d135dd01b33e7960cb7874f76e"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13549.json": {
+      "bytes": 186,
+      "sha256": "bc1631cecde3beac3c3c1a22c0100bce84f39363368862e0d251efd79246949f"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13549.json": {
+      "bytes": 186,
+      "sha256": "bc1631cecde3beac3c3c1a22c0100bce84f39363368862e0d251efd79246949f"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13550.json": {
+      "bytes": 186,
+      "sha256": "6ad803c5f353790d9d643b106e9ef85a51b57e93d6efa2c67050cf79afb54225"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13550.json": {
+      "bytes": 186,
+      "sha256": "6ad803c5f353790d9d643b106e9ef85a51b57e93d6efa2c67050cf79afb54225"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13551.json": {
+      "bytes": 186,
+      "sha256": "97b4c494a7a24c4c0ea989d25bdc41753820123d8e5738df4f5a5cf4d5f1676a"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13551.json": {
+      "bytes": 186,
+      "sha256": "97b4c494a7a24c4c0ea989d25bdc41753820123d8e5738df4f5a5cf4d5f1676a"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13552.json": {
+      "bytes": 186,
+      "sha256": "dcb875cfb9a33e69259c6a309c38bafb3fce47e8a1d634974cf52d3410425617"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13552.json": {
+      "bytes": 186,
+      "sha256": "dcb875cfb9a33e69259c6a309c38bafb3fce47e8a1d634974cf52d3410425617"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13553.json": {
+      "bytes": 186,
+      "sha256": "9b3f86023924d3159ff14253b17a97f1b7127dc04b3249bb8f8eff6024285b0f"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13553.json": {
+      "bytes": 186,
+      "sha256": "9b3f86023924d3159ff14253b17a97f1b7127dc04b3249bb8f8eff6024285b0f"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13554.json": {
+      "bytes": 186,
+      "sha256": "5446839d6d5c4881fcb758e73a467c06956acbdc476807f73e69ab7eadfe22b6"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13554.json": {
+      "bytes": 186,
+      "sha256": "5446839d6d5c4881fcb758e73a467c06956acbdc476807f73e69ab7eadfe22b6"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13555.json": {
+      "bytes": 186,
+      "sha256": "59b5d4751b070d07537daa23c642ee9e97923c85bba476dbe628df4df2b81afb"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13555.json": {
+      "bytes": 186,
+      "sha256": "59b5d4751b070d07537daa23c642ee9e97923c85bba476dbe628df4df2b81afb"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13556.json": {
+      "bytes": 186,
+      "sha256": "56adf4f737c5232ac35eb0d534c1d1ded030c02f0f05e84e121584972b6e5070"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13556.json": {
+      "bytes": 186,
+      "sha256": "56adf4f737c5232ac35eb0d534c1d1ded030c02f0f05e84e121584972b6e5070"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13557.json": {
+      "bytes": 186,
+      "sha256": "c360f649ad2ab5c4997eff059cc0059163654a3680a13e92d2677a32da8ec900"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13557.json": {
+      "bytes": 186,
+      "sha256": "c360f649ad2ab5c4997eff059cc0059163654a3680a13e92d2677a32da8ec900"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13558.json": {
+      "bytes": 186,
+      "sha256": "ebf18387a4fe9d51ffc1d610b7e810c9e827a8f14f0b5a00b0e53d1e5fb2e095"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13558.json": {
+      "bytes": 186,
+      "sha256": "ebf18387a4fe9d51ffc1d610b7e810c9e827a8f14f0b5a00b0e53d1e5fb2e095"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13559.json": {
+      "bytes": 186,
+      "sha256": "1e70dd1fe90168f726aa44dbabecb5bb5c00c32c1c0b90718ea80d0276fd81f9"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13559.json": {
+      "bytes": 186,
+      "sha256": "1e70dd1fe90168f726aa44dbabecb5bb5c00c32c1c0b90718ea80d0276fd81f9"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13560.json": {
+      "bytes": 186,
+      "sha256": "9d965f328ec0e99ca1e6673dc065ec94d2bcf1632179c0151d52962e345e3abb"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13560.json": {
+      "bytes": 186,
+      "sha256": "9d965f328ec0e99ca1e6673dc065ec94d2bcf1632179c0151d52962e345e3abb"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13561.json": {
+      "bytes": 186,
+      "sha256": "d18f6171adfe8ebabe4221ab9e3b61b60a516d7a451bb8bc1a2639c354d73d9b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13561.json": {
+      "bytes": 186,
+      "sha256": "d18f6171adfe8ebabe4221ab9e3b61b60a516d7a451bb8bc1a2639c354d73d9b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13562.json": {
+      "bytes": 186,
+      "sha256": "4760b0822d9436c763a2e9c5ab4645f035ac8a5685bbcb2dc8a4562a56534fdd"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13562.json": {
+      "bytes": 186,
+      "sha256": "4760b0822d9436c763a2e9c5ab4645f035ac8a5685bbcb2dc8a4562a56534fdd"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13563.json": {
+      "bytes": 186,
+      "sha256": "7d18ca8671c0e070629ecb967db207824041cb94c371e70b443615c55b3ce660"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13563.json": {
+      "bytes": 186,
+      "sha256": "7d18ca8671c0e070629ecb967db207824041cb94c371e70b443615c55b3ce660"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13564.json": {
+      "bytes": 186,
+      "sha256": "46ea62c11f378f03d11fb74f405debf2dd0fddc6f7444c4c40a1fe2d0de7efa8"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13564.json": {
+      "bytes": 186,
+      "sha256": "46ea62c11f378f03d11fb74f405debf2dd0fddc6f7444c4c40a1fe2d0de7efa8"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13565.json": {
+      "bytes": 186,
+      "sha256": "d475a770715f18ecc939f834693032c999e6e7554f58698825d159bc90fdc6e2"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13565.json": {
+      "bytes": 186,
+      "sha256": "d475a770715f18ecc939f834693032c999e6e7554f58698825d159bc90fdc6e2"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13566.json": {
+      "bytes": 186,
+      "sha256": "6b2eae2115b2d5ab6b4772647426d7d0f25fe9908c5ea5d7644d3b110d295788"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13566.json": {
+      "bytes": 186,
+      "sha256": "6b2eae2115b2d5ab6b4772647426d7d0f25fe9908c5ea5d7644d3b110d295788"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13567.json": {
+      "bytes": 186,
+      "sha256": "36ef964a4a5d5800bbe6877a43589956798107b0aa6849604946dd1403818c6b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13567.json": {
+      "bytes": 186,
+      "sha256": "36ef964a4a5d5800bbe6877a43589956798107b0aa6849604946dd1403818c6b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13568.json": {
+      "bytes": 186,
+      "sha256": "812f5b3ffb712dbea2693c33159a41497775da1616bb4c147fb6686957cfcacb"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13568.json": {
+      "bytes": 186,
+      "sha256": "812f5b3ffb712dbea2693c33159a41497775da1616bb4c147fb6686957cfcacb"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13569.json": {
+      "bytes": 186,
+      "sha256": "64f3548e3ba2d600b9e43e07fae462314a29c4a6fed73a1b839b601c00cf60ab"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13569.json": {
+      "bytes": 186,
+      "sha256": "64f3548e3ba2d600b9e43e07fae462314a29c4a6fed73a1b839b601c00cf60ab"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13570.json": {
+      "bytes": 186,
+      "sha256": "d108242c39038072f5f5b2046ab227eb23a311ff500741b065fe23920b2f570d"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13570.json": {
+      "bytes": 186,
+      "sha256": "d108242c39038072f5f5b2046ab227eb23a311ff500741b065fe23920b2f570d"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13571.json": {
+      "bytes": 186,
+      "sha256": "c68adaed947b7f84b863bc9796915d132391daa996a305b38d641c2e0f50a9b3"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13571.json": {
+      "bytes": 186,
+      "sha256": "c68adaed947b7f84b863bc9796915d132391daa996a305b38d641c2e0f50a9b3"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13572.json": {
+      "bytes": 186,
+      "sha256": "499e7b382a695924d3bd25e0d3a21bb84d0c675c66e81e1231724ce92f4ca9ce"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13572.json": {
+      "bytes": 186,
+      "sha256": "499e7b382a695924d3bd25e0d3a21bb84d0c675c66e81e1231724ce92f4ca9ce"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13573.json": {
+      "bytes": 186,
+      "sha256": "9c7540068395f1a116d8b8ea4d0ec683a677c9945b09ebccc2de67eb27fc4636"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13573.json": {
+      "bytes": 186,
+      "sha256": "9c7540068395f1a116d8b8ea4d0ec683a677c9945b09ebccc2de67eb27fc4636"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13574.json": {
+      "bytes": 186,
+      "sha256": "893ef8cef7c54dfcb507674a336b00086606efeb8630c792f71c7ac87f20a43b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13574.json": {
+      "bytes": 186,
+      "sha256": "893ef8cef7c54dfcb507674a336b00086606efeb8630c792f71c7ac87f20a43b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13575.json": {
+      "bytes": 186,
+      "sha256": "f234c04bada6bcfc678ea19f052b5f26d1ed8160d2bdf8395ce792a9eb4d76fb"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13575.json": {
+      "bytes": 186,
+      "sha256": "f234c04bada6bcfc678ea19f052b5f26d1ed8160d2bdf8395ce792a9eb4d76fb"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13576.json": {
+      "bytes": 186,
+      "sha256": "4b505b465df79238b38fbcb72fb90d1938178a86da168cf6f289a1ad0709d00d"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13576.json": {
+      "bytes": 186,
+      "sha256": "4b505b465df79238b38fbcb72fb90d1938178a86da168cf6f289a1ad0709d00d"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13577.json": {
+      "bytes": 186,
+      "sha256": "6e7132c87a743dee5906aa39f3b64cb35afbdaf1e0445a813b0282e1b3943015"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13577.json": {
+      "bytes": 186,
+      "sha256": "6e7132c87a743dee5906aa39f3b64cb35afbdaf1e0445a813b0282e1b3943015"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13578.json": {
+      "bytes": 186,
+      "sha256": "7898b38efcfc1d05ff7c5811c934cff73dfb0ff0f04e15b779175ec78145be6d"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13578.json": {
+      "bytes": 186,
+      "sha256": "7898b38efcfc1d05ff7c5811c934cff73dfb0ff0f04e15b779175ec78145be6d"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13579.json": {
+      "bytes": 186,
+      "sha256": "43f7cde81245d4b170eaa66827585d62e3774bda861175196426b29958ecdeb0"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13579.json": {
+      "bytes": 186,
+      "sha256": "43f7cde81245d4b170eaa66827585d62e3774bda861175196426b29958ecdeb0"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13580.json": {
+      "bytes": 186,
+      "sha256": "288850f4a70b6bd0d2f6cec16271555da535b75ebf1ba20df88617d04724e0c5"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13580.json": {
+      "bytes": 186,
+      "sha256": "288850f4a70b6bd0d2f6cec16271555da535b75ebf1ba20df88617d04724e0c5"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13581.json": {
+      "bytes": 186,
+      "sha256": "9a17974d94f664f6d8ebfefcecdb5acfb2fda621fe78ed9312da1e1d4a65439a"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13581.json": {
+      "bytes": 186,
+      "sha256": "9a17974d94f664f6d8ebfefcecdb5acfb2fda621fe78ed9312da1e1d4a65439a"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13582.json": {
+      "bytes": 186,
+      "sha256": "faf3bbd0e9cee1923bb8c499fbe28e876c230dbd71c356ded052aa975f5938c7"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13582.json": {
+      "bytes": 186,
+      "sha256": "faf3bbd0e9cee1923bb8c499fbe28e876c230dbd71c356ded052aa975f5938c7"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13583.json": {
+      "bytes": 186,
+      "sha256": "68278ab6dead68af70eeca41a4641bb5bbd5f7c1aa3086a2f961f5de37182e49"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13583.json": {
+      "bytes": 186,
+      "sha256": "68278ab6dead68af70eeca41a4641bb5bbd5f7c1aa3086a2f961f5de37182e49"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13584.json": {
+      "bytes": 186,
+      "sha256": "7be4500e9716a85d43bda326d56d0fbf22f95c5f50836904470416e9fa331f5e"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13584.json": {
+      "bytes": 186,
+      "sha256": "7be4500e9716a85d43bda326d56d0fbf22f95c5f50836904470416e9fa331f5e"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13585.json": {
+      "bytes": 186,
+      "sha256": "b49921fcdcbe47eef8be8848a4c59e7b89de939269ae8bacf877378e14660beb"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13585.json": {
+      "bytes": 186,
+      "sha256": "b49921fcdcbe47eef8be8848a4c59e7b89de939269ae8bacf877378e14660beb"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13586.json": {
+      "bytes": 186,
+      "sha256": "8763959db93b584257c7fdf8f3d37c93ddd11d81be1ed8f1bf71b3e6f2f0c3c7"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13586.json": {
+      "bytes": 186,
+      "sha256": "8763959db93b584257c7fdf8f3d37c93ddd11d81be1ed8f1bf71b3e6f2f0c3c7"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13587.json": {
+      "bytes": 186,
+      "sha256": "81ea736733f9df67476b5d8c1a069d3e5e156bca0b099636c6e47279a997d920"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13587.json": {
+      "bytes": 186,
+      "sha256": "81ea736733f9df67476b5d8c1a069d3e5e156bca0b099636c6e47279a997d920"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13588.json": {
+      "bytes": 186,
+      "sha256": "e373fb7df24b3fe9cd10082242018f1f7afdb466d21d0e2a98e6472052ab986c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13588.json": {
+      "bytes": 186,
+      "sha256": "e373fb7df24b3fe9cd10082242018f1f7afdb466d21d0e2a98e6472052ab986c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13589.json": {
+      "bytes": 186,
+      "sha256": "2acfdf673be139511bd593e6d7e89f270bcacdb622d5744091474a9d15095d31"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13589.json": {
+      "bytes": 186,
+      "sha256": "2acfdf673be139511bd593e6d7e89f270bcacdb622d5744091474a9d15095d31"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13590.json": {
+      "bytes": 186,
+      "sha256": "e85ed0a500198409d11a9e44cf18b3937c10cea1ab839e748f192c185f869457"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13590.json": {
+      "bytes": 186,
+      "sha256": "e85ed0a500198409d11a9e44cf18b3937c10cea1ab839e748f192c185f869457"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13591.json": {
+      "bytes": 186,
+      "sha256": "5f9e1c5cf8d022010d828855ed1d5409b7820cc4123be393ad99d1b0ac0271d7"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13591.json": {
+      "bytes": 186,
+      "sha256": "5f9e1c5cf8d022010d828855ed1d5409b7820cc4123be393ad99d1b0ac0271d7"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13592.json": {
+      "bytes": 186,
+      "sha256": "521e0b3d76e3ce8b28b185868d38d85b33be62f55b752441546003438ad7bdfc"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13592.json": {
+      "bytes": 186,
+      "sha256": "521e0b3d76e3ce8b28b185868d38d85b33be62f55b752441546003438ad7bdfc"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13593.json": {
+      "bytes": 186,
+      "sha256": "f48698a48fb48f39d566af3b247c24a26035402afbc36189d9f20af742d7ece3"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13593.json": {
+      "bytes": 186,
+      "sha256": "f48698a48fb48f39d566af3b247c24a26035402afbc36189d9f20af742d7ece3"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13594.json": {
+      "bytes": 186,
+      "sha256": "37cffdf3e72284d908af7840eabfcc7be6fa304512ef8864b0b6bce5d35d0926"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13594.json": {
+      "bytes": 186,
+      "sha256": "37cffdf3e72284d908af7840eabfcc7be6fa304512ef8864b0b6bce5d35d0926"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13595.json": {
+      "bytes": 186,
+      "sha256": "23a3bc9211aebb9e588879c4c22a4c9edb45a3b692ee04e303a16092e54d5346"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13595.json": {
+      "bytes": 186,
+      "sha256": "23a3bc9211aebb9e588879c4c22a4c9edb45a3b692ee04e303a16092e54d5346"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13596.json": {
+      "bytes": 186,
+      "sha256": "ef824dc5e634ddfce57ce233edea5754392f7db4570941113cfdbc5d5b5517a6"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13596.json": {
+      "bytes": 186,
+      "sha256": "ef824dc5e634ddfce57ce233edea5754392f7db4570941113cfdbc5d5b5517a6"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13597.json": {
+      "bytes": 186,
+      "sha256": "410a59d1737d4a846e95c6a2b71ce17f1383a1d219225f320feb2bdb928a4e94"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13597.json": {
+      "bytes": 186,
+      "sha256": "410a59d1737d4a846e95c6a2b71ce17f1383a1d219225f320feb2bdb928a4e94"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13598.json": {
+      "bytes": 186,
+      "sha256": "1d74d69325024883e158ef3f35a1457b4a5ea053562b7b5177208ce120201424"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13598.json": {
+      "bytes": 186,
+      "sha256": "1d74d69325024883e158ef3f35a1457b4a5ea053562b7b5177208ce120201424"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13599.json": {
+      "bytes": 186,
+      "sha256": "c303e2e3a3e1c0a8ae93b07116b4a691744209b952829063fd7c53bac35b4728"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13599.json": {
+      "bytes": 186,
+      "sha256": "c303e2e3a3e1c0a8ae93b07116b4a691744209b952829063fd7c53bac35b4728"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13600.json": {
+      "bytes": 186,
+      "sha256": "49b15d18a0f5983fedb0757999a0f3923260f0e40da1edec350800118f7061e6"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13600.json": {
+      "bytes": 186,
+      "sha256": "49b15d18a0f5983fedb0757999a0f3923260f0e40da1edec350800118f7061e6"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13601.json": {
+      "bytes": 186,
+      "sha256": "7861bf1f8bf9c5da638fd134d6915907fe53ce6430d3bca219c7b5261f65503c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13601.json": {
+      "bytes": 186,
+      "sha256": "7861bf1f8bf9c5da638fd134d6915907fe53ce6430d3bca219c7b5261f65503c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13602.json": {
+      "bytes": 186,
+      "sha256": "37f52e70f39f8c2f48f6799def9fb7077d2a54e0272bc801adb24835c04d8385"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13602.json": {
+      "bytes": 186,
+      "sha256": "37f52e70f39f8c2f48f6799def9fb7077d2a54e0272bc801adb24835c04d8385"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13603.json": {
+      "bytes": 186,
+      "sha256": "b66c6dda5217999e71119b720c5464f5a85e6b84dab631b2122543036aee353c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13603.json": {
+      "bytes": 186,
+      "sha256": "b66c6dda5217999e71119b720c5464f5a85e6b84dab631b2122543036aee353c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13604.json": {
+      "bytes": 186,
+      "sha256": "14cd5ca2d4f8d24481a5bd799140c0306ebca69d1775b78fc8f299e06c74ed4b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13604.json": {
+      "bytes": 186,
+      "sha256": "14cd5ca2d4f8d24481a5bd799140c0306ebca69d1775b78fc8f299e06c74ed4b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13605.json": {
+      "bytes": 186,
+      "sha256": "c5482affb74a57448908e1d80f2a3c6dea76b5ff6ee646f237278fa71cf46058"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13605.json": {
+      "bytes": 186,
+      "sha256": "c5482affb74a57448908e1d80f2a3c6dea76b5ff6ee646f237278fa71cf46058"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13606.json": {
+      "bytes": 186,
+      "sha256": "613e936f907609e6bb2da52ba59e9e5971336c40bb6865f923c585ffcb30470a"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13606.json": {
+      "bytes": 186,
+      "sha256": "613e936f907609e6bb2da52ba59e9e5971336c40bb6865f923c585ffcb30470a"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13607.json": {
+      "bytes": 186,
+      "sha256": "e8432e5ee9c456a0efda44c925be5ad5efa8fe9ebf136319d51a9d99a7cd8a86"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13607.json": {
+      "bytes": 186,
+      "sha256": "e8432e5ee9c456a0efda44c925be5ad5efa8fe9ebf136319d51a9d99a7cd8a86"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13608.json": {
+      "bytes": 186,
+      "sha256": "3173a0616674422c56a7ab76517079ea30bd388971fb3e41f5b4fa58e31129c4"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13608.json": {
+      "bytes": 186,
+      "sha256": "3173a0616674422c56a7ab76517079ea30bd388971fb3e41f5b4fa58e31129c4"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13609.json": {
+      "bytes": 186,
+      "sha256": "71c4301e950ddca0bb118e1b7e390fb1637197e4116cec43eeae57dcef6e7670"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13609.json": {
+      "bytes": 186,
+      "sha256": "71c4301e950ddca0bb118e1b7e390fb1637197e4116cec43eeae57dcef6e7670"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13610.json": {
+      "bytes": 186,
+      "sha256": "a926771eb5a5f44e4be65cf2f24579c3b742cd1f742e1768d4551c51fda86c1c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13610.json": {
+      "bytes": 186,
+      "sha256": "a926771eb5a5f44e4be65cf2f24579c3b742cd1f742e1768d4551c51fda86c1c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13611.json": {
+      "bytes": 186,
+      "sha256": "6bebd567d66eb115b60a4f7319587e99bc9aeb9e33fd5216efa01b842e955299"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13611.json": {
+      "bytes": 186,
+      "sha256": "6bebd567d66eb115b60a4f7319587e99bc9aeb9e33fd5216efa01b842e955299"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13612.json": {
+      "bytes": 186,
+      "sha256": "64dbe3b371d846eb0b2ea4302adbc7362e54f25db0420ce86eedfbb8a2899f58"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13612.json": {
+      "bytes": 186,
+      "sha256": "64dbe3b371d846eb0b2ea4302adbc7362e54f25db0420ce86eedfbb8a2899f58"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13613.json": {
+      "bytes": 186,
+      "sha256": "e819136fe461f96cf6bf2248f0b784be631218e2c36895139c4ab0d7b6983fb6"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13613.json": {
+      "bytes": 186,
+      "sha256": "e819136fe461f96cf6bf2248f0b784be631218e2c36895139c4ab0d7b6983fb6"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13614.json": {
+      "bytes": 186,
+      "sha256": "b646ac4aa7a3147b39937c0b398241b68160e16c5da829e00a2b2f10a496afae"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13614.json": {
+      "bytes": 186,
+      "sha256": "b646ac4aa7a3147b39937c0b398241b68160e16c5da829e00a2b2f10a496afae"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13615.json": {
+      "bytes": 186,
+      "sha256": "e0f53c10709ae130c6e832b0bb3a73163e97da6853ed5db877c9a70bd4a084dc"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13615.json": {
+      "bytes": 186,
+      "sha256": "e0f53c10709ae130c6e832b0bb3a73163e97da6853ed5db877c9a70bd4a084dc"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13616.json": {
+      "bytes": 186,
+      "sha256": "6cf7ec471223b6e1a344ab8bdff21495c9798b668d66482fdf372b5c6f45ca32"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13616.json": {
+      "bytes": 186,
+      "sha256": "6cf7ec471223b6e1a344ab8bdff21495c9798b668d66482fdf372b5c6f45ca32"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13617.json": {
+      "bytes": 186,
+      "sha256": "2e9eee5adaf6f258517fecb95d818a89d8137499d8667be408c349b542986864"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13617.json": {
+      "bytes": 186,
+      "sha256": "2e9eee5adaf6f258517fecb95d818a89d8137499d8667be408c349b542986864"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13618.json": {
+      "bytes": 186,
+      "sha256": "72ed2ebce68cde4ae2ea7fb6b9b7ea775577be1b5bfc0259748e245b98462b75"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13618.json": {
+      "bytes": 186,
+      "sha256": "72ed2ebce68cde4ae2ea7fb6b9b7ea775577be1b5bfc0259748e245b98462b75"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13619.json": {
+      "bytes": 186,
+      "sha256": "9807d97d0bc2528fb3bdd008419fee44c8d6d5e4ee8711e9b2afe0c2af42dca8"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13619.json": {
+      "bytes": 186,
+      "sha256": "9807d97d0bc2528fb3bdd008419fee44c8d6d5e4ee8711e9b2afe0c2af42dca8"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13620.json": {
+      "bytes": 186,
+      "sha256": "231a9146b73acf113236b7f36d96af78399dc7d276671852177180308bd74a3f"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13620.json": {
+      "bytes": 186,
+      "sha256": "231a9146b73acf113236b7f36d96af78399dc7d276671852177180308bd74a3f"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13621.json": {
+      "bytes": 186,
+      "sha256": "cbb06822a4fc5431822a99bcffe39ce93685127e13cdc9cb55808fcab0a1284b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13621.json": {
+      "bytes": 186,
+      "sha256": "cbb06822a4fc5431822a99bcffe39ce93685127e13cdc9cb55808fcab0a1284b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13622.json": {
+      "bytes": 186,
+      "sha256": "338aa17e038b5cba63542b4253400945ef8fe93732acbae47e829f082abc4fc6"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13622.json": {
+      "bytes": 186,
+      "sha256": "338aa17e038b5cba63542b4253400945ef8fe93732acbae47e829f082abc4fc6"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13623.json": {
+      "bytes": 186,
+      "sha256": "39cf6b3285b2cf10197cc5f39e0ed65d45c3343528e19d06de14fa93f2374e47"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13623.json": {
+      "bytes": 186,
+      "sha256": "39cf6b3285b2cf10197cc5f39e0ed65d45c3343528e19d06de14fa93f2374e47"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13624.json": {
+      "bytes": 186,
+      "sha256": "c8d69958a9b84a8e3ea2ac9fc41319448b6e16184561308746a62239089c6d11"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13624.json": {
+      "bytes": 186,
+      "sha256": "c8d69958a9b84a8e3ea2ac9fc41319448b6e16184561308746a62239089c6d11"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13625.json": {
+      "bytes": 186,
+      "sha256": "8a17358091fb5f41e2dd20b438c8812c047fbb2aaa4065f71b76b151a0820bde"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13625.json": {
+      "bytes": 186,
+      "sha256": "8a17358091fb5f41e2dd20b438c8812c047fbb2aaa4065f71b76b151a0820bde"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13626.json": {
+      "bytes": 186,
+      "sha256": "1991d50411730ca04ad8d44e2058bf2cd8b393cb0b477a5f5eef013b675849c8"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13626.json": {
+      "bytes": 186,
+      "sha256": "1991d50411730ca04ad8d44e2058bf2cd8b393cb0b477a5f5eef013b675849c8"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13627.json": {
+      "bytes": 186,
+      "sha256": "f4d0edc7426646ae9dabeeece4044f7ac6ceab330512428d2f37fa6566736e21"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13627.json": {
+      "bytes": 186,
+      "sha256": "f4d0edc7426646ae9dabeeece4044f7ac6ceab330512428d2f37fa6566736e21"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13628.json": {
+      "bytes": 186,
+      "sha256": "dcd3a93c5b4826aa938f144627a6bc884412106f10d72ed55b9a6b070b112f86"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13628.json": {
+      "bytes": 186,
+      "sha256": "dcd3a93c5b4826aa938f144627a6bc884412106f10d72ed55b9a6b070b112f86"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13629.json": {
+      "bytes": 186,
+      "sha256": "4916d146e82625aadfbe61f32b140b911197f36f94b78e2d6efe8dedb37653c8"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13629.json": {
+      "bytes": 186,
+      "sha256": "4916d146e82625aadfbe61f32b140b911197f36f94b78e2d6efe8dedb37653c8"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13630.json": {
+      "bytes": 186,
+      "sha256": "e0d81f2a163c1d1b18a85dddc8bcf236f21a30574d6927cc70654a12fb655e16"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13630.json": {
+      "bytes": 186,
+      "sha256": "e0d81f2a163c1d1b18a85dddc8bcf236f21a30574d6927cc70654a12fb655e16"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13631.json": {
+      "bytes": 186,
+      "sha256": "a4c146f7fb6c532266df2b735d89842159fabe24e369644a3da3d55b72dc881f"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13631.json": {
+      "bytes": 186,
+      "sha256": "a4c146f7fb6c532266df2b735d89842159fabe24e369644a3da3d55b72dc881f"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13632.json": {
+      "bytes": 186,
+      "sha256": "4782208b03e8c73d341fff7dc5d215d6ef97a718757701928859e0cb0a76fb61"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13632.json": {
+      "bytes": 186,
+      "sha256": "4782208b03e8c73d341fff7dc5d215d6ef97a718757701928859e0cb0a76fb61"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13633.json": {
+      "bytes": 186,
+      "sha256": "ecbd3fc1cf9f52f18d4af9dd90a9686512ada47b2d88e43e27bb716079a40920"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13633.json": {
+      "bytes": 186,
+      "sha256": "ecbd3fc1cf9f52f18d4af9dd90a9686512ada47b2d88e43e27bb716079a40920"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13634.json": {
+      "bytes": 186,
+      "sha256": "d2df299ee4896b5b8f10d766103b2636d5ead42e8bbd7b2db0862994a2eacea1"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13634.json": {
+      "bytes": 186,
+      "sha256": "d2df299ee4896b5b8f10d766103b2636d5ead42e8bbd7b2db0862994a2eacea1"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13635.json": {
+      "bytes": 186,
+      "sha256": "c31ce19b9d0e7530dc4dab6c40d1a15295f3588a7732db0291d25f1ab573bab4"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13635.json": {
+      "bytes": 186,
+      "sha256": "c31ce19b9d0e7530dc4dab6c40d1a15295f3588a7732db0291d25f1ab573bab4"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13636.json": {
+      "bytes": 186,
+      "sha256": "deebdc7a480f90ad3de1a3e78e35eaa03e724e0f8c2441969384b79fc9585ae1"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13636.json": {
+      "bytes": 186,
+      "sha256": "deebdc7a480f90ad3de1a3e78e35eaa03e724e0f8c2441969384b79fc9585ae1"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13637.json": {
+      "bytes": 186,
+      "sha256": "e45d5f9246a2bd7501d07ff1b1a1eb0fde0fab2ddf397dffea6ccc72f82f9e38"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13637.json": {
+      "bytes": 186,
+      "sha256": "e45d5f9246a2bd7501d07ff1b1a1eb0fde0fab2ddf397dffea6ccc72f82f9e38"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13638.json": {
+      "bytes": 186,
+      "sha256": "937f0324ec639d1835e0d073f33b1bce6af996c0dbc2ccb0c423351e735bb708"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13638.json": {
+      "bytes": 186,
+      "sha256": "937f0324ec639d1835e0d073f33b1bce6af996c0dbc2ccb0c423351e735bb708"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13639.json": {
+      "bytes": 186,
+      "sha256": "2f01d10a76db54603d2c8b995848c5a8f3444b357d8ca63f76fc5985272647c0"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13639.json": {
+      "bytes": 186,
+      "sha256": "2f01d10a76db54603d2c8b995848c5a8f3444b357d8ca63f76fc5985272647c0"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13640.json": {
+      "bytes": 186,
+      "sha256": "7d9ee0ec001b2296e46378ae3ac78fcc73d2e5ee982da235c21f3bc5d3d8a76b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13640.json": {
+      "bytes": 186,
+      "sha256": "7d9ee0ec001b2296e46378ae3ac78fcc73d2e5ee982da235c21f3bc5d3d8a76b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13641.json": {
+      "bytes": 186,
+      "sha256": "11c598ab6b6eb3f382a9f30a67badc130b58a1a54794d66eb5e66b946f487d83"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13641.json": {
+      "bytes": 186,
+      "sha256": "11c598ab6b6eb3f382a9f30a67badc130b58a1a54794d66eb5e66b946f487d83"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13642.json": {
+      "bytes": 186,
+      "sha256": "96c6d0e9a2355ce357da877359cd2be3b2e39c3f939b88566fabb5ab0612e385"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13642.json": {
+      "bytes": 186,
+      "sha256": "96c6d0e9a2355ce357da877359cd2be3b2e39c3f939b88566fabb5ab0612e385"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13643.json": {
+      "bytes": 186,
+      "sha256": "df1df0689ccaaf02034d0add6078a115e40c0ae167d8d5b4c0336b4312af51c3"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13643.json": {
+      "bytes": 186,
+      "sha256": "df1df0689ccaaf02034d0add6078a115e40c0ae167d8d5b4c0336b4312af51c3"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13644.json": {
+      "bytes": 186,
+      "sha256": "7abc4f4fedd5bfd473398e5c75895db7b903bc5e1397a231e9b9ea28f3ceba91"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13644.json": {
+      "bytes": 186,
+      "sha256": "7abc4f4fedd5bfd473398e5c75895db7b903bc5e1397a231e9b9ea28f3ceba91"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13645.json": {
+      "bytes": 186,
+      "sha256": "7b5a63e441eaca655dc87e499e615e0f93673a01966c621645026bf175a2be70"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13645.json": {
+      "bytes": 186,
+      "sha256": "7b5a63e441eaca655dc87e499e615e0f93673a01966c621645026bf175a2be70"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13646.json": {
+      "bytes": 186,
+      "sha256": "f8a8f8914dcfced7d9ea8d5f7a1beee0bcc7fa40ea9ca7d0004e133135b5cca0"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13646.json": {
+      "bytes": 186,
+      "sha256": "f8a8f8914dcfced7d9ea8d5f7a1beee0bcc7fa40ea9ca7d0004e133135b5cca0"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13647.json": {
+      "bytes": 186,
+      "sha256": "5670a8f7b2cf52d19d090fd168ccd44d8b75da12d007c6c766e828f5373f2997"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13647.json": {
+      "bytes": 186,
+      "sha256": "5670a8f7b2cf52d19d090fd168ccd44d8b75da12d007c6c766e828f5373f2997"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13648.json": {
+      "bytes": 186,
+      "sha256": "f8c42414665b3ba4655dec2980bb7f4c3dbe65a9c10ebd0e45524a348a7f1268"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13648.json": {
+      "bytes": 186,
+      "sha256": "f8c42414665b3ba4655dec2980bb7f4c3dbe65a9c10ebd0e45524a348a7f1268"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13649.json": {
+      "bytes": 186,
+      "sha256": "292ba20f719c43dff4eabc20473d563707ee59b36011b64c74fb7f168fcd2abb"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13649.json": {
+      "bytes": 186,
+      "sha256": "292ba20f719c43dff4eabc20473d563707ee59b36011b64c74fb7f168fcd2abb"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13650.json": {
+      "bytes": 186,
+      "sha256": "150d5e9c1380da7b7a69e4fd6e1ca1f9200a4ae548ad4cbce5acddbe4b5dfd7c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13650.json": {
+      "bytes": 186,
+      "sha256": "150d5e9c1380da7b7a69e4fd6e1ca1f9200a4ae548ad4cbce5acddbe4b5dfd7c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13651.json": {
+      "bytes": 186,
+      "sha256": "5611e05012bbaae4a04f26833838a790659aa29dc146fb53915c5bd06b37486b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13651.json": {
+      "bytes": 186,
+      "sha256": "5611e05012bbaae4a04f26833838a790659aa29dc146fb53915c5bd06b37486b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13652.json": {
+      "bytes": 186,
+      "sha256": "61f4b5b485017a1c6faac7a0dba77a222f418f51089d2054fbc4cfae62f1ca6c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13652.json": {
+      "bytes": 186,
+      "sha256": "61f4b5b485017a1c6faac7a0dba77a222f418f51089d2054fbc4cfae62f1ca6c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13653.json": {
+      "bytes": 186,
+      "sha256": "446de76047f3514a6ae4f4a8db80d718e601dc8a60d0c291448227430dc7a793"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13653.json": {
+      "bytes": 186,
+      "sha256": "446de76047f3514a6ae4f4a8db80d718e601dc8a60d0c291448227430dc7a793"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13654.json": {
+      "bytes": 186,
+      "sha256": "820d39003777bea365fe6a8b32b2b9193aec6221ab0a411431b300dc49cf7cad"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13654.json": {
+      "bytes": 186,
+      "sha256": "820d39003777bea365fe6a8b32b2b9193aec6221ab0a411431b300dc49cf7cad"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13655.json": {
+      "bytes": 186,
+      "sha256": "a8d1426c746fc1b87f48bfea63f73a51dbeab30ebcb40cb5b95f7e92f4be6c3f"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13655.json": {
+      "bytes": 186,
+      "sha256": "a8d1426c746fc1b87f48bfea63f73a51dbeab30ebcb40cb5b95f7e92f4be6c3f"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13656.json": {
+      "bytes": 186,
+      "sha256": "112b084280d0aa2905724112a43809241f7fba228bc85bb663fcbe41910f7289"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13656.json": {
+      "bytes": 186,
+      "sha256": "112b084280d0aa2905724112a43809241f7fba228bc85bb663fcbe41910f7289"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13657.json": {
+      "bytes": 186,
+      "sha256": "5d60dcd1759da43c185ead64cea434a9ffb9fb5c64a1c01f58b12e4eac4e33f3"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13657.json": {
+      "bytes": 186,
+      "sha256": "5d60dcd1759da43c185ead64cea434a9ffb9fb5c64a1c01f58b12e4eac4e33f3"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13658.json": {
+      "bytes": 186,
+      "sha256": "b7208daf0b778069a17eedd8aa5f7672587bc2c32ddfd684d81c8a511e057f35"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13658.json": {
+      "bytes": 186,
+      "sha256": "b7208daf0b778069a17eedd8aa5f7672587bc2c32ddfd684d81c8a511e057f35"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13659.json": {
+      "bytes": 186,
+      "sha256": "014d9e10c8e427e3b58d071c3d541c2572ed3fffe1467a49712fba3ca50c3cb9"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13659.json": {
+      "bytes": 186,
+      "sha256": "014d9e10c8e427e3b58d071c3d541c2572ed3fffe1467a49712fba3ca50c3cb9"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13660.json": {
+      "bytes": 186,
+      "sha256": "562289e9b7f2fa0e0b648980d9756bb7fd974a57cb997cd90b92eb85bf2a04e6"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13660.json": {
+      "bytes": 186,
+      "sha256": "562289e9b7f2fa0e0b648980d9756bb7fd974a57cb997cd90b92eb85bf2a04e6"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13661.json": {
+      "bytes": 186,
+      "sha256": "569f1aac7a5684f483479115b1ccf7572eae7769af5f14ba96f69632a890a41c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13661.json": {
+      "bytes": 186,
+      "sha256": "569f1aac7a5684f483479115b1ccf7572eae7769af5f14ba96f69632a890a41c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13662.json": {
+      "bytes": 186,
+      "sha256": "d9f5bed3035bfa2f886e2fc695aa3f8be1faf9f09936a9bd98536e4f876b45ff"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13662.json": {
+      "bytes": 186,
+      "sha256": "d9f5bed3035bfa2f886e2fc695aa3f8be1faf9f09936a9bd98536e4f876b45ff"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13663.json": {
+      "bytes": 186,
+      "sha256": "3f29713490a92c02c4e71dc8c1dda257e3cf93951e41c4f3d3f8486e798c8eb9"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13663.json": {
+      "bytes": 186,
+      "sha256": "3f29713490a92c02c4e71dc8c1dda257e3cf93951e41c4f3d3f8486e798c8eb9"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13664.json": {
+      "bytes": 186,
+      "sha256": "e7bb452fc1dab1b3d0cf99a0ed7e67a2ab2497a121462303eb6427f2c751f61c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13664.json": {
+      "bytes": 186,
+      "sha256": "e7bb452fc1dab1b3d0cf99a0ed7e67a2ab2497a121462303eb6427f2c751f61c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13665.json": {
+      "bytes": 186,
+      "sha256": "ef49fb872d72120a1477f66510b98fbab302cd65917882811d1f63c655263039"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13665.json": {
+      "bytes": 186,
+      "sha256": "ef49fb872d72120a1477f66510b98fbab302cd65917882811d1f63c655263039"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13666.json": {
+      "bytes": 186,
+      "sha256": "1adc5159c308809630e594cf0338fbf947c584609e91282b0885a28d7aecdee2"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13666.json": {
+      "bytes": 186,
+      "sha256": "1adc5159c308809630e594cf0338fbf947c584609e91282b0885a28d7aecdee2"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13667.json": {
+      "bytes": 186,
+      "sha256": "60ba1ff02aba3f11f759b6f0bfb72b725cc1ba594e87ad36f0da1553fc013eda"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13667.json": {
+      "bytes": 186,
+      "sha256": "60ba1ff02aba3f11f759b6f0bfb72b725cc1ba594e87ad36f0da1553fc013eda"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13668.json": {
+      "bytes": 186,
+      "sha256": "54ac6d919e7bcb6bb602239bd040c201f957b03d9338f2c00202c6cf6f9d22a3"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13668.json": {
+      "bytes": 186,
+      "sha256": "54ac6d919e7bcb6bb602239bd040c201f957b03d9338f2c00202c6cf6f9d22a3"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13669.json": {
+      "bytes": 186,
+      "sha256": "cfd3d5cb22d9faefbddb38501267cbef179940339db5265f08503248ee2f0c99"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13669.json": {
+      "bytes": 186,
+      "sha256": "cfd3d5cb22d9faefbddb38501267cbef179940339db5265f08503248ee2f0c99"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13670.json": {
+      "bytes": 186,
+      "sha256": "737c41de3b4806a511f3cf44b93bacb4c9cdc22ac26b378c6f3af058b3194ddf"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13670.json": {
+      "bytes": 186,
+      "sha256": "737c41de3b4806a511f3cf44b93bacb4c9cdc22ac26b378c6f3af058b3194ddf"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13671.json": {
+      "bytes": 186,
+      "sha256": "ff970291efd67fdbe2b63b1d05cacbe31bd0e257480e516307ef03f7706b7e0b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13671.json": {
+      "bytes": 186,
+      "sha256": "ff970291efd67fdbe2b63b1d05cacbe31bd0e257480e516307ef03f7706b7e0b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13672.json": {
+      "bytes": 186,
+      "sha256": "207ba57439777ed6ce38bb4a1e1e48e26426ac35cc37a417ca33c5a4b86dd628"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13672.json": {
+      "bytes": 186,
+      "sha256": "207ba57439777ed6ce38bb4a1e1e48e26426ac35cc37a417ca33c5a4b86dd628"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13673.json": {
+      "bytes": 186,
+      "sha256": "21c4ddcb72fb51f6791de251b3dc84b2e7c4c6029a9650a8840a1d6c028b54af"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13673.json": {
+      "bytes": 186,
+      "sha256": "21c4ddcb72fb51f6791de251b3dc84b2e7c4c6029a9650a8840a1d6c028b54af"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13674.json": {
+      "bytes": 186,
+      "sha256": "0465b07d511135bd72d6a243b857f7219542171084609786463820505f3ecb4a"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13674.json": {
+      "bytes": 186,
+      "sha256": "0465b07d511135bd72d6a243b857f7219542171084609786463820505f3ecb4a"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13675.json": {
+      "bytes": 186,
+      "sha256": "2128320ca6b7142622ffe4ab5d0ecb51d2a2ad9c020089b8d3b8b0e4a044a4f5"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13675.json": {
+      "bytes": 186,
+      "sha256": "2128320ca6b7142622ffe4ab5d0ecb51d2a2ad9c020089b8d3b8b0e4a044a4f5"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13676.json": {
+      "bytes": 186,
+      "sha256": "fc1f8c8bcf75489d76a022193eded85e4d8b6f9a74afd707ca7843d7634663a6"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13676.json": {
+      "bytes": 186,
+      "sha256": "fc1f8c8bcf75489d76a022193eded85e4d8b6f9a74afd707ca7843d7634663a6"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13677.json": {
+      "bytes": 186,
+      "sha256": "83762446a9889a3c4a53871a8ba042b794ffb494a04896d094a52ef0dfe97f7c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13677.json": {
+      "bytes": 186,
+      "sha256": "83762446a9889a3c4a53871a8ba042b794ffb494a04896d094a52ef0dfe97f7c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13678.json": {
+      "bytes": 186,
+      "sha256": "08bb50a52702f882ec9d2ea1541b5c2bfd034a698a415d051989d27195140b43"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13678.json": {
+      "bytes": 186,
+      "sha256": "08bb50a52702f882ec9d2ea1541b5c2bfd034a698a415d051989d27195140b43"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13679.json": {
+      "bytes": 186,
+      "sha256": "b7e3351a283ccb9a5b9d317b130006fd44885263e9d90de6095e09fe30c2d397"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13679.json": {
+      "bytes": 186,
+      "sha256": "b7e3351a283ccb9a5b9d317b130006fd44885263e9d90de6095e09fe30c2d397"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13680.json": {
+      "bytes": 186,
+      "sha256": "e033cb4b281b4cccc861fb585dbe0968a663779ac52d55cea9b5c8957ffd890d"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13680.json": {
+      "bytes": 186,
+      "sha256": "e033cb4b281b4cccc861fb585dbe0968a663779ac52d55cea9b5c8957ffd890d"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13681.json": {
+      "bytes": 186,
+      "sha256": "52606182b3f0608094540cfbb2988d0a1e28e687ed18704386054c98a912dfd6"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13681.json": {
+      "bytes": 186,
+      "sha256": "52606182b3f0608094540cfbb2988d0a1e28e687ed18704386054c98a912dfd6"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13682.json": {
+      "bytes": 186,
+      "sha256": "302e2587c6a076b36901dc5ac85d980a94d57317017cc7df50ec1e8cb91f733e"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13682.json": {
+      "bytes": 186,
+      "sha256": "302e2587c6a076b36901dc5ac85d980a94d57317017cc7df50ec1e8cb91f733e"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13683.json": {
+      "bytes": 186,
+      "sha256": "71efbb7b2671eebe66b758e0b6064287bfc21c12331b3c5f55c84c18a64728a5"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13683.json": {
+      "bytes": 186,
+      "sha256": "71efbb7b2671eebe66b758e0b6064287bfc21c12331b3c5f55c84c18a64728a5"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13684.json": {
+      "bytes": 186,
+      "sha256": "a702664fedc59d4a0e5a4ae2628847ea0f8c1700091208e4552af7f620836199"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13684.json": {
+      "bytes": 186,
+      "sha256": "a702664fedc59d4a0e5a4ae2628847ea0f8c1700091208e4552af7f620836199"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13685.json": {
+      "bytes": 186,
+      "sha256": "6ded36c69c6a9bc1210b4e22825567130bcc0cbde6146077c5c2c20181289be3"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13685.json": {
+      "bytes": 186,
+      "sha256": "6ded36c69c6a9bc1210b4e22825567130bcc0cbde6146077c5c2c20181289be3"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13715.json": {
+      "bytes": 330,
+      "sha256": "35d09b782f1ef7bcc15a34ef245ec763ad1282b14d83a86f7c510c19872309fb"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13715.json": {
+      "bytes": 330,
+      "sha256": "35d09b782f1ef7bcc15a34ef245ec763ad1282b14d83a86f7c510c19872309fb"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-13958.json": {
+      "bytes": 7599,
+      "sha256": "4d33fef0ed50a3ab91225e996a2c1b94f649087ffa74cf7e5fd6584b9a0dd7c9"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-13958.json": {
+      "bytes": 7599,
+      "sha256": "4d33fef0ed50a3ab91225e996a2c1b94f649087ffa74cf7e5fd6584b9a0dd7c9"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-14614.json": {
+      "bytes": 8219,
+      "sha256": "a55957960fe4149d67cd4fa413e380116132ed0331a48de0d8770a84b3e4f6d6"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-14614.json": {
+      "bytes": 8219,
+      "sha256": "a55957960fe4149d67cd4fa413e380116132ed0331a48de0d8770a84b3e4f6d6"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-14955.json": {
+      "bytes": 10474,
+      "sha256": "98389df874d83bbcb83be555486e8ffa70112f68222b5a5796829cf66c87baf1"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-14955.json": {
+      "bytes": 10474,
+      "sha256": "98389df874d83bbcb83be555486e8ffa70112f68222b5a5796829cf66c87baf1"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-1994.json": {
+      "bytes": 4813,
+      "sha256": "37446f44616611ea07c582d8133b68f0139c42e1d8e42c1e89f6a3aee55a1c18"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-1994.json": {
+      "bytes": 4813,
+      "sha256": "37446f44616611ea07c582d8133b68f0139c42e1d8e42c1e89f6a3aee55a1c18"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-2991.json": {
+      "bytes": 12989,
+      "sha256": "e4a096fe8f394b83d472e5ca04f145549d7393267fff2db3d7f263dd92b9d873"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-2991.json": {
+      "bytes": 12989,
+      "sha256": "e4a096fe8f394b83d472e5ca04f145549d7393267fff2db3d7f263dd92b9d873"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-3000.json": {
+      "bytes": 12669,
+      "sha256": "23d9f47c0049fa780435699d91deeca92bbda684283284e33c171f9fae1ba8da"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-3000.json": {
+      "bytes": 12669,
+      "sha256": "23d9f47c0049fa780435699d91deeca92bbda684283284e33c171f9fae1ba8da"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-3988.json": {
+      "bytes": 2319,
+      "sha256": "38b824940a114a742f39b6bb585ea34954a47de09a10c4928f498df2dc6f1403"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-3988.json": {
+      "bytes": 2319,
+      "sha256": "38b824940a114a742f39b6bb585ea34954a47de09a10c4928f498df2dc6f1403"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-4500.json": {
+      "bytes": 11072,
+      "sha256": "4dc5ca4fbf60e7ca0c68cda9a83d784d15abc8244e5cef588bdb77fedc44428a"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-4500.json": {
+      "bytes": 11072,
+      "sha256": "4dc5ca4fbf60e7ca0c68cda9a83d784d15abc8244e5cef588bdb77fedc44428a"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-4577.json": {
+      "bytes": 5647,
+      "sha256": "4189f505783f2acc3b3b43d40e6a2770a6b2f0ea04617b67da0c2dd877254fe3"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-4577.json": {
+      "bytes": 5647,
+      "sha256": "4189f505783f2acc3b3b43d40e6a2770a6b2f0ea04617b67da0c2dd877254fe3"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-4985.json": {
+      "bytes": 18734,
+      "sha256": "4f1f8ece39b228f2a5ee625ce2d86b924b16be3bde9bfe84cb4427a4cc7db61c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-4985.json": {
+      "bytes": 18734,
+      "sha256": "4f1f8ece39b228f2a5ee625ce2d86b924b16be3bde9bfe84cb4427a4cc7db61c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-5982.json": {
+      "bytes": 11985,
+      "sha256": "8dc3b9014390ddbe9a284f2c245149f4d9b60f900158f60ccd793ffe4aa1052e"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-5982.json": {
+      "bytes": 11985,
+      "sha256": "8dc3b9014390ddbe9a284f2c245149f4d9b60f900158f60ccd793ffe4aa1052e"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-6979.json": {
+      "bytes": 4146,
+      "sha256": "daf6ae5878fd2f1e29f0558b6279c0724ba2245db7d6436b2c8695a450e70f27"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-6979.json": {
+      "bytes": 4146,
+      "sha256": "daf6ae5878fd2f1e29f0558b6279c0724ba2245db7d6436b2c8695a450e70f27"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-7976.json": {
+      "bytes": 25525,
+      "sha256": "be115c6553213dd2ff889c42730a5b4eccec7d7ac2777cc509222fea657d34dc"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-7976.json": {
+      "bytes": 25525,
+      "sha256": "be115c6553213dd2ff889c42730a5b4eccec7d7ac2777cc509222fea657d34dc"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-8973.json": {
+      "bytes": 17376,
+      "sha256": "a1d405f74dd9e1a274094e28ba2a6f64d570d982ffb3dea894421fa9a725cfc2"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-8973.json": {
+      "bytes": 17376,
+      "sha256": "a1d405f74dd9e1a274094e28ba2a6f64d570d982ffb3dea894421fa9a725cfc2"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-900.json": {
+      "bytes": 4557,
+      "sha256": "e53c858694db75145e9027448621541e13e249a4ae9587e1083fa90df5057bde"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-900.json": {
+      "bytes": 4557,
+      "sha256": "e53c858694db75145e9027448621541e13e249a4ae9587e1083fa90df5057bde"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-997.json": {
+      "bytes": 6965,
+      "sha256": "af8236f0b09eda2c0365d9b0cf3346795045cafc1759afcbe7910d295cff233b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-997.json": {
+      "bytes": 6965,
+      "sha256": "af8236f0b09eda2c0365d9b0cf3346795045cafc1759afcbe7910d295cff233b"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/combat-9970.json": {
+      "bytes": 19439,
+      "sha256": "d0dc444dfb814791ceca27db8bbacc8349f35e97b7dca8d39a0cbbe6592acd9c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/combat-9970.json": {
+      "bytes": 19439,
+      "sha256": "d0dc444dfb814791ceca27db8bbacc8349f35e97b7dca8d39a0cbbe6592acd9c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/portable-allocations-initial-through-1000.json": {
+      "bytes": 342577,
+      "sha256": "8abdcc8145312c61bd32a088123ebf2b64cd4676d8058cb464ff0058d59bf36c"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/portable-camera.u32": {
+      "bytes": 1500000,
+      "sha256": "5ec4a9b42662dd6e0ee13d6a329dd68671ba16d247dabbb0c27f9a0777a471f7"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-prefix-model/camera-report.json": {
+      "bytes": 798,
+      "sha256": "3187489fddc02236790ab60708857ce419bb460f4da55d643275e1747e1664e4"
+    },
+    "artifacts/th14/camera-interleaving-oct26/word-step-observed-handoff-model/camera-report.json": {
+      "bytes": 669,
+      "sha256": "89356b7991f67e9c356d952c3c659fe9cdb92acaa7ed67d9fadf72cc71d14bac"
+    },
+    "artifacts/th14/camera-interleaving-oct26/corrupted-camera-negative/rejection.txt": {
+      "bytes": 473,
+      "sha256": "be669168af1e13ddcdc532e14c60baf8c7752e847e4505798892d83ad5aacc9a"
+    },
+    "artifacts/th14/camera-interleaving-oct26/legacy-easy-verifier-regression.json": {
+      "bytes": 10088,
+      "sha256": "5ccdfe58b4aa89c77a580c34952f97bf1c98624dbc2d3e3f73c4c8731b9385e1"
+    }
+  },
+  "scope": "Same frozen game Wasm and same original15000-callback TF diagnostic record. Host Scene readiness moves from whole-copy-start to an explicitly observed right-word/post-perspective boundary. Every selected camera word remains required, and all other retained outputs are compared. No proof that three word samples identify simultaneous main execution, no inferred historical schedule, no full-mode, ordinary UI, GPU/PCM or browser acceptance."
+}

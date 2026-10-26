@@ -6,6 +6,8 @@ import hashlib
 import importlib.util
 import json
 import struct
+import subprocess
+import sys
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -15,6 +17,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     for name in ['native','model','build','output']:parser.add_argument('--'+name,type=Path,required=True)
     parser.add_argument('--prefix',type=int,default=0,help='Explicitly verify only this diagnostic prefix; never accepts it as a natural full run')
+    parser.add_argument('--scene-copy-observation',type=Path,help='Separately verified original TF-copy observation; only the declared15000-callback prefix is accepted')
     args=parser.parse_args();native=args.native.resolve();model=args.model.resolve();bindings={}
     assert args.prefix>=0
     assert all(p.is_relative_to(ROOT/'artifacts/th14')for p in (native,model))
@@ -25,7 +28,18 @@ def main():
     assert original['childExited']and not original['error']
     if args.prefix:assert count<=captured and reported['diagnosticPrefixOnly']
     else:assert original['observedForcedReplayEndMenu']and not reported['diagnosticPrefixOnly']
-    assert original['hardwareBreakpointsOnly']and original['instructionBytesPatched']==original['rngOrCounterWrites']==0
+    if args.scene_copy_observation:
+        assert args.prefix==15000 and original.get('hardwareDebugRegistersAndTrapFlagOnly')
+        proof_path=args.scene_copy_observation.resolve();proof=load(proof_path)
+        assert proof['verifiedFiniteOriginalSceneCopyObservation']and proof['diagnosticPrefixOnly']and proof['callbacks']==args.prefix
+        assert proof['bindings'][(native/'report.json').relative_to(ROOT).as_posix()]['sha256']==SHA(read(native/'report.json'))
+        prepared=[ROOT/path for path in proof['bindings']if path.endswith('/prepared.json')]
+        plans=[ROOT/path for path in proof['bindings']if path.endswith('/native-word-step-prefix-plan.json')]
+        assert len(prepared)==len(plans)==1
+        subprocess.run([sys.executable,str(ROOT/'tools/th14-scene-copy-word-evidence-oct26.py'),'--native',str(native),'--build',str(prepared[0].parent),'--plan',str(plans[0]),'--output',str(proof_path),'--check'],check=True)
+        assert reported['sceneCopyObservationSha256']==SHA(read(proof_path))and len(reported['sceneCopyWordHandoffs'])==1
+    else:assert original['hardwareBreakpointsOnly']
+    assert original['instructionBytesPatched']==original['rngOrCounterWrites']==0
     assert not original['inputInjected']and original['gameStateWordWrites']==1 and original['caseInitialization']['attractBitClearOnly']
     assert original['executableSha256']=='f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353'
     assert reported['callbacks']==count
@@ -82,6 +96,9 @@ def main():
     timing=[row for row in reported['observedPhaseInputs']if row['phase']=='Timeline']
     result=dict(verifiedFiniteEvidence=True,callbacks=count,sourceReplaySha256=assets['replaySha256'],selection=reported['selection'],stagesObserved=original['recordedStages'],allSelected32Equal=True,allCamera25Equal=True,allHud2Equal=True,vm303Snapshots=snapshots,vm303Rows=sum(row['rows']for row in snapshots),allVm303AndRegistryOrderEqual=True,combatCheckpoints=len(index['snapshots']),nonemptyCombatCheckpoints=active,combatRows=totals,combatFieldCounts={key:len(value)for key,value in fields.items()},allCapturedCombatWordsEqual=True,publicationCutoffCallbacks=cutoff,orderedPublications=len(publications),timelineCompletionSources=timing,wasmSha256=build['wasmSha256'],comparisonToolSha256=reported.get('comparisonToolSha256'),verifierSha256=SHA(Path(__file__).read_bytes()),bindings=bindings,limitations=['Warm replay with declared host time, entropy and asynchronous resource completion inputs; ordinary original cold-menu initialization is not proved.','Only stated fields and sampled objects, including empty loading frames; whole objects and all curve samples are not compared.','Publication order covers only the declared initial window.','No actual GPU/PCM, all-mode equivalence, browser acceptance or persistence is proved.'],completeGame=False,nativeEquivalent=False)
     result.update(diagnosticPrefixOnly=bool(args.prefix),originalCapturedCallbacks=captured,originalNaturalReplayEndObserved=bool(original['observedForcedReplayEndMenu']),combatCheckpoints=checkpoints)
+    if args.scene_copy_observation:
+        result.update(sceneCopyObservationSha256=SHA(read(args.scene_copy_observation.resolve())),hardwareDebugInputKind='verified original hardware watches and TF copy steps')
+        result['limitations'].append('The explicit Scene-copy observation validates only this TF-stepped diagnostic prefix; historical camera failures remain independent.')
     if args.prefix:result['limitations'].append('Explicit diagnostic prefix only; neither the original process exit nor this prefix proves natural replay completion.')
     output=args.output.resolve();assert output.is_relative_to(ROOT/'docs/porting')or output.is_relative_to(ROOT/'artifacts/th14')
     output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf8')

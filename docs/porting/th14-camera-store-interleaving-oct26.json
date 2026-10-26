@@ -1,0 +1,90 @@
+{
+  "verifiedFiniteOriginalInstructionSchedules": true,
+  "caseCount": 5,
+  "orderedSchedulesPerCase": 56,
+  "actualProducerAndSceneCopyExecutions": 280,
+  "actualCopiedDwords": 21000,
+  "sceneCopyBytesPerExecution": 300,
+  "allInstructionCopiesEqualIndependentStoreModel": true,
+  "allProducerFinalRightWordsUnchangedBySchedules": true,
+  "instructionStores": [
+    {
+      "pc": "0x446590",
+      "offset": 0,
+      "bytes": 8
+    },
+    {
+      "pc": "0x44659d",
+      "offset": 8,
+      "bytes": 4
+    },
+    {
+      "pc": "0x101bcaa0",
+      "offset": 0,
+      "bytes": 4
+    },
+    {
+      "pc": "0x101bcaa4",
+      "offset": 4,
+      "bytes": 4
+    },
+    {
+      "pc": "0x101bcaa9",
+      "offset": 8,
+      "bytes": 4
+    }
+  ],
+  "stage4RetainedMixedCopyReproduced": true,
+  "stage4Callback": 48006,
+  "stage4MatchingSchedules": [
+    [
+      3,
+      3,
+      3
+    ],
+    [
+      3,
+      3,
+      4
+    ]
+  ],
+  "stage4MixedCopyDiffersFromOldRawAndFinalControls": true,
+  "matchedRetainedStages": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "actualRealThreadScheduleIdentified": false,
+  "recordedInputsOnlyAtComponentBoundary": true,
+  "nativeValuesProvidedToGameEngine": false,
+  "originalProcessOrHardwareDeviceLaunched": false,
+  "productionCodeChanged": false,
+  "campaignCameraFailureClosed": false,
+  "originalExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "d3dxSha256": "0b28546be22c71834501f7d7185ede5d79742457331c7ee09efc14490dd64f5f",
+  "toolSha256": "2311f96e529b27c42fb574b4e9528598d81d898cfb1df993364aef6a0f87c3d3",
+  "bindings": {
+    "artifacts/th14/retail-sakuyab-easy-exact-camera-hardware-oct26/report.json": {
+      "bytes": 378849,
+      "sha256": "33060203ef8f02d4a56639e07e36552cf16414a9d210039f5e2fa02e1feb5f4c"
+    },
+    "artifacts/th14/retail-sakuyab-easy-exact-camera-hardware-oct26/world-camera.raw": {
+      "bytes": 31215676,
+      "sha256": "f4335396e8b9723d99fd5cb5c675227355e6271654dcddae18d689c8c927cc46"
+    },
+    "artifacts/th14/retail-sakuyab-easy-exact-camera-hardware-oct26/scene-camera-copy-events.jsonl": {
+      "bytes": 9848,
+      "sha256": "5bc25df79bc87fb69094681d6dee11a55b8ea956285f59441a518571168edb92"
+    },
+    "artifacts/th14/camera-interleaving-oct26/instruction-pair-final/cases.json": {
+      "bytes": 80500,
+      "sha256": "df3c6833a79ce82cccd044aedbca72b74cd26d227576eff96ed20254b0149d23"
+    }
+  },
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "browserAcceptance": false,
+  "scope": "Original446400 plus pinned real x86 D3DX code, and original40d435..40d447 ordered75-dword Scene copy. Separate complete CPU contexts share camera memory under56 explicitly controlled instruction-boundary schedules per recorded input. Device SetTransform is a declared sink. This finite store model treats the raw8-byte instruction as one transaction; subinstruction hardware tearing is not asserted. Reproduces retained mixed right values but cannot identify unrecorded real copy timing or accept a campaign, original ordinary UI, pixels, audio or browser."
+}

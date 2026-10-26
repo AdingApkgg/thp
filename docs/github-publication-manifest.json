@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "7f752e2e9827ea3fbd4aff89ae3a3f7dc03e80af",
+  "sourceCommit": "6f7d02dffd872196db01a1215f2e9ef6c11bfb8c",
   "files": [
     {
       "path": ".gitignore",
@@ -92,6 +92,11 @@
       "path": "docs/porting/TH14_CAMERA_LOADING_HUD_OCT24.md",
       "bytes": 2864,
       "sha256": "23ff33ad56a531b017a3ba8169773d2a791cdfef5ea90c4301c3c9cee5e45b79"
+    },
+    {
+      "path": "docs/porting/TH14_CAMERA_STORE_INTERLEAVING_OCT26.md",
+      "bytes": 7452,
+      "sha256": "8e2fcf9f4d73bd805111adf67cc173dbcce114c2776e4003316c73f9be6c3936"
     },
     {
       "path": "docs/porting/TH14_CAMPAIGN_GAPS_OCT26.md",
@@ -380,8 +385,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 12185,
-      "sha256": "e0e445f95f0e42e3ac77b7b76901a5c295daff693d5c591d98e0192368ae0da7"
+      "bytes": 12973,
+      "sha256": "2f98d943deee165bf7519d139d00a7ea4e7263b7f8f0fa6dfba5ec581e39e2db"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -405,8 +410,8 @@
     },
     {
       "path": "docs/porting/TH14_SAKUYAB_EASY_CAMERA_FAILURE_OCT26.md",
-      "bytes": 1830,
-      "sha256": "eccbce99e5427c49ea32f5832bfd3052002e7058f7e906af1b1ab6b5eff7bf47"
+      "bytes": 2419,
+      "sha256": "09ed80002c86dac05d99fe9f9be3fcab32a79236500d845ec3cf659aaf3c5974"
     },
     {
       "path": "docs/porting/TH14_SAKUYAB_HARD_OCT26.md",
@@ -1567,6 +1572,11 @@
       "path": "docs/porting/th14-camera-loading-hud-verified-oct24.json",
       "bytes": 27176,
       "sha256": "b439a0785baa8946ac7f81cea2a2969541e5cd516d76c45ba9faf3fb0b9dad14"
+    },
+    {
+      "path": "docs/porting/th14-camera-store-interleaving-oct26.json",
+      "bytes": 3161,
+      "sha256": "d9da46c37a38bcd3eca9cb05e20f06169d1e494df814ccf2aac57750a8deaa74"
     },
     {
       "path": "docs/porting/th14-camera-verified.json",
@@ -5007,6 +5017,16 @@
       "path": "docs/porting/th14-save-delta-observed-oct16.json",
       "bytes": 5732,
       "sha256": "d9149709063093f2f33566f137b96c3c4f00b970cfe280f8a83284ac0f9137b5"
+    },
+    {
+      "path": "docs/porting/th14-scene-copy-handoff-verified-oct26.json",
+      "bytes": 105647,
+      "sha256": "753158585d80c6d7175fb3dc62f461218ca20f598496be26e0fe01e1bc718d58"
+    },
+    {
+      "path": "docs/porting/th14-scene-copy-word-prefix-oct26.json",
+      "bytes": 4382,
+      "sha256": "a8afd00b230e5f04daa68e493403c4c37691e6dae87b327765ec7071bd16ef3d"
     },
     {
       "path": "docs/porting/th14-scene-handoff-verified-oct26.json",
@@ -15429,6 +15449,11 @@
       "sha256": "81765ecd823d8e041bd71a3d7c52d5e62895b76a596b2887bfde1673e0c6fe2f"
     },
     {
+      "path": "tools/th14-camera-store-interleaving-oct26.py",
+      "bytes": 12634,
+      "sha256": "2311f96e529b27c42fb574b4e9528598d81d898cfb1df993364aef6a0f87c3d3"
+    },
+    {
       "path": "tools/th14-campaign-handoff-check.mjs",
       "bytes": 3122,
       "sha256": "cb32692d49d3d7c3edf11a641f0b37bd194ee6bd8dabe08982dfc65f31c2d85e"
@@ -15540,8 +15565,8 @@
     },
     {
       "path": "tools/th14-compare-native-campaign.mjs",
-      "bytes": 40670,
-      "sha256": "97d022ed7c03f4c934edf829f3d81a20e9b15483bee7a8eecfaaee2733c26e11"
+      "bytes": 43784,
+      "sha256": "aedc4555a2dbad064e2df0aa5301bfc3215ec84c81e483fa4a506488f6e8c230"
     },
     {
       "path": "tools/th14-comparison-failure-receipt.py",
@@ -19299,6 +19324,11 @@
       "sha256": "8ed5e6c41b6f06e6c95786c5f2d123bb346abd2a404849d6963be0b73867505a"
     },
     {
+      "path": "tools/th14-prepare-scene-copy-word-observer-oct26.py",
+      "bytes": 10827,
+      "sha256": "43178aea81d78c0408048b6c780044e154183a8679e911f7b1b8a23813f2d8a0"
+    },
+    {
       "path": "tools/th14-prepare-webgpu-launcher.py",
       "bytes": 7647,
       "sha256": "158b6d661ff7008a7a3a25915b4e3c2931889719b27debe623431ea06728d1ce"
@@ -19732,6 +19762,16 @@
       "path": "tools/th14-save-delta-evidence-check-oct16.py",
       "bytes": 3862,
       "sha256": "fab20e717b7c0d346661abaf0f293fdc18bc88615bc36d69c0dfdb627cf5c726"
+    },
+    {
+      "path": "tools/th14-scene-copy-handoff-evidence-oct26.py",
+      "bytes": 6734,
+      "sha256": "eac81db0053124023ce73aec56cd57e312c2539409a402282634c46d1c411297"
+    },
+    {
+      "path": "tools/th14-scene-copy-word-evidence-oct26.py",
+      "bytes": 8498,
+      "sha256": "6f0a306921784e3fddcebe748afe1820a59970b440a9f22995e6e56c4bcc5b56"
     },
     {
       "path": "tools/th14-scene-handoff-evidence-check-oct26.py",
@@ -22145,8 +22185,8 @@
     },
     {
       "path": "tools/th14-verify-native-campaign.py",
-      "bytes": 8860,
-      "sha256": "380e34aec7fd7bf3eadb1ad05d1af2107603c362e37ab8bb7b4a2c5de68cea95"
+      "bytes": 10525,
+      "sha256": "c03d52b75cf0e99c5973de7b4446b5153960f9f7129e91e45603865ec2d657e6"
     },
     {
       "path": "tools/th14-viewport-candidate-evidence-check-oct19.py",
@@ -23370,20 +23410,20 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "7f752e2e9827ea3fbd4aff89ae3a3f7dc03e80af",
-    "title": "TH14 actual Application full six-stage replay across native WebGPU and GLES",
+    "basePublishedCommit": "6f7d02dffd872196db01a1215f2e9ef6c11bfb8c",
+    "title": "TH14 original partial camera-store interleaving and direct Scene-copy observation",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-native-application.py",
-      "tools/th14-launcher-continue-evidence-oct26.py",
-      "tools/th14-application-full-replay-evidence-oct26.py",
-      "tools/th14-application-render-pair-check.py",
-      "runtimes/th12/th12_web/tests/fixtures/th14-native-application-full-replay.json",
-      "docs/porting/TH14_FULL_APPLICATION_REPLAY_OCT26.md",
-      "docs/porting/th14-full-application-webgpu-verified-oct26.json",
-      "docs/porting/th14-full-application-gles-verified-oct26.json",
-      "docs/porting/th14-full-application-pair-verified-oct26.json",
-      "docs/porting/TH14_LAUNCHER_CONTINUE_OCT26.md",
-      "docs/porting/th14-launcher-continue-verified-oct26.json",
+      "tools/th14-camera-store-interleaving-oct26.py",
+      "tools/th14-prepare-scene-copy-word-observer-oct26.py",
+      "tools/th14-scene-copy-word-evidence-oct26.py",
+      "tools/th14-scene-copy-handoff-evidence-oct26.py",
+      "tools/th14-compare-native-campaign.mjs",
+      "tools/th14-verify-native-campaign.py",
+      "docs/porting/TH14_CAMERA_STORE_INTERLEAVING_OCT26.md",
+      "docs/porting/th14-camera-store-interleaving-oct26.json",
+      "docs/porting/th14-scene-copy-word-prefix-oct26.json",
+      "docs/porting/th14-scene-copy-handoff-verified-oct26.json",
+      "docs/porting/TH14_SAKUYAB_EASY_CAMERA_FAILURE_OCT26.md",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
@@ -23393,30 +23433,29 @@
     "gameAssetsAdded": false,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
-    "applicationFullReplayFramesPerBackend": 123412,
-    "applicationFullReplayAssertionsPerBackend": 44,
-    "applicationFullReplayPairedJournalRows": 55071,
-    "applicationFullReplayPairedImages": 8,
-    "applicationFullReplayImageBytes": 9830400,
-    "applicationFullReplayPcmFramesPerBackend": 90553344,
-    "applicationFullReplayPcmSinkHashEqual": true,
-    "applicationFullReplayRawPcmRetained": false,
-    "applicationFullReplayActualStageActivation": [
+    "originalCameraProducerAndCopySchedules": 280,
+    "originalCopiedDwords": 21000,
+    "retainedStage4MixedRightReproduced": true,
+    "historicalRealScheduleIdentified": false,
+    "originalDiagnosticPrefixCallbacks": 15000,
+    "originalDiagnosticStages": [
       1,
-      2,
-      3,
-      4,
-      5,
-      6
+      2
     ],
-    "applicationFullReplayFinalLivingStock": 1,
-    "applicationFullReplayStableEndFrames": 60,
-    "physicalAudioDevicesOpened": 0,
-    "normalizedMenuInputsOnly": true,
-    "frozenRunnerSourceBound": true,
-    "laterRunnerVersionsInheritOldRuns": false,
-    "originalOrdinaryMenuEquivalence": false,
-    "originalWholeApplicationImageOrPcmEquivalence": false,
+    "originalSceneCopyStepEvents": 78,
+    "originalSceneCopyRepIterations": 75,
+    "originalRightWordObservations": 3,
+    "previousDataOnlyObserverFailedAndRetained": true,
+    "hostSceneWordHandoffCorrected": true,
+    "diagnosticCameraWordDifferencesBefore": 1286,
+    "diagnosticAllCamera25AfterEqual": true,
+    "diagnosticAnimationRows": 384,
+    "diagnosticCombatCheckpoints": 228,
+    "strictCorruptCameraNegativeRejected": true,
+    "classicHardwareFullVerifierRegressionCallbacks": 107233,
+    "cameraCampaignFailuresClosed": false,
+    "ordinaryOriginalUiAccepted": false,
+    "nativeValuesProvidedToGameEngine": false,
     "unrelatedResourceCryptEditExcluded": true,
     "browserAcceptance": false,
     "completeGame": false,

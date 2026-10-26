@@ -2,7 +2,7 @@ import{gunzipSync}from'node:zlib';
 import assert from'node:assert/strict';import{readFileSync as read,writeFileSync as write,mkdirSync as mkdir,existsSync as exists}from'node:fs';
 import{resolve,dirname,basename,relative,isAbsolute}from'node:path';import{createHash}from'node:crypto';import{WASI}from'node:wasi';
 // Explicit case inputs; no native gameplay state is supplied to the engine.
-const allowed=new Set(['native','assets','build','wasm','output','prefix','selection','hud-ready','publication-cutoff','scheduler-phases']);
+const allowed=new Set(['native','assets','build','wasm','output','prefix','selection','hud-ready','publication-cutoff','scheduler-phases','scene-copy-observation']);
 const options=new Map();for(let i=2;i<process.argv.length;i+=2){const key=process.argv[i]?.replace(/^--/,'');assert(allowed.has(key)&&process.argv[i+1]&&!options.has(key),'Unknown, repeated or missing option '+key);options.set(key,process.argv[i+1]);}
 for(const key of ['native','assets','build','output','selection'])assert(options.has(key),'Missing --'+key);
 const root=resolve(import.meta.dirname,'..'),nativeHome=resolve(root,options.get('native')),nativeName=basename(nativeHome),mode='initial-worker-events',home=dirname(resolve(root,options.get('build')));
@@ -70,7 +70,32 @@ const transition=(exists(resolve(nativeHome,'transition-events.jsonl'))?read(res
 const resourceEvents=read(resolve(nativeHome,'resource-ready-events.jsonl'),'utf8').trim().split('\n').map(x=>JSON.parse(x)),phaseInputs=[];
 const sceneEvents=phasedScheduler?read(resolve(nativeHome,'scene-camera-copy-events.jsonl'),'utf8').trim().split('\n').filter(Boolean).map(x=>JSON.parse(x)):[];
 const controllerEvents=schedulerPhases==='observed'?read(resolve(nativeHome,'controller-phase-events.jsonl'),'utf8').trim().split('\n').filter(Boolean).map(x=>JSON.parse(x)):[];
-const controlClock=new Map(),pumpClock=new Map(),beforeDrawWorker=new Map(),afterDrawWorker=new Map(),sceneNextCameraClock=new Map(),sceneUpdateHandoffs=[];
+const controlClock=new Map(),pumpClock=new Map(),beforeDrawWorker=new Map(),afterDrawWorker=new Map(),sceneNextCameraClock=new Map(),sceneUpdateHandoffs=[],sceneCopyWordHandoffs=[],sceneWordDelivery=new Map();
+if(options.has('scene-copy-observation')){
+ assert(phasedScheduler&&prefix===15000,'The explicit TF observation is a finite15000-callback prefix only');
+ const proof=JSON.parse(read(resolve(root,options.get('scene-copy-observation'))));
+ assert(proof.verifiedFiniteOriginalSceneCopyObservation&&proof.diagnosticPrefixOnly&&proof.callbacks===prefix);
+ assert(!proof.completeGame&&!proof.nativeEquivalent&&!proof.oldCameraFailureClosed);
+ assert.equal(proof.verifierSha256,sha(read(resolve(root,'tools/th14-scene-copy-word-evidence-oct26.py'))));
+ for(const[path,row]of Object.entries(proof.bindings))assert.equal(sha(read(resolve(root,path))),row.sha256,'Observation binding changed: '+path);
+ const nativeKey=relative(root,resolve(nativeHome,'report.json')).replaceAll('\\','/');assert.equal(proof.bindings[nativeKey]?.sha256,sha(read(resolve(nativeHome,'report.json'))));
+ const words=read(resolve(nativeHome,'scene-camera-word-copy-events.jsonl'),'utf8').trim().split('\n').map(x=>JSON.parse(x));
+ assert.equal(words.length,3);assert.deepEqual(words.map(row=>row.word),[0,1,2]);
+ const stage=words[0].stage,callback=words[0].precedingPlayerCallbacks;
+ const before=sceneEvents.find(row=>row.stage===stage&&row.event==='scene-camera-copy-before');
+ assert(before&&before.precedingPlayerCallbacks===callback&&before.mainPhaseAtObservation==='draw');
+ const boundaries=words.map(row=>row.lastMainCameraBoundary);
+ for(const[row,boundary]of words.map((row,index)=>[row,boundaries[index]])){
+  assert(row.readOnly&&row.exactTrapFlagStep&&row.actualOriginalRepIterationObserved&&!row.nativeValuesProvidedToEngine);
+  assert.equal(row.stage,stage);assert.equal(row.precedingPlayerCallbacks,callback);assert.equal(row.threadId,before.threadId);assert.equal(row.scene,before.scene);
+  assert(boundary?.readOnly&&boundary.event==='world-perspective-right-written'&&boundary.pc===0x4465a6&&boundary.mainPhaseAtObservation==='draw');
+  assert.equal(boundary.precedingPlayerCallbacks,callback);assert.equal(boundary.stage,stage);
+  assert(before.hostMonotonicNs<boundary.hostMonotonicNs&&boundary.hostMonotonicNs<row.hostMonotonicNs);
+ }
+ // Use only observed instruction boundaries and time, never source/copy values.
+ const delivery={stage,callback,readyNs:words[0].hostMonotonicNs,completionSource:'originalRightWordTrapAfterObservedPerspectiveBoundary',perspectiveBoundaryNs:boundaries[0].hostMonotonicNs};
+ sceneWordDelivery.set(stage,delivery);sceneCopyWordHandoffs.push(delivery);
+}
 if(phasedScheduler){
  assert(c.observed_player_boundary&&c.observed_worker_boundary&&c.observed_boundary_ok,'Observer lacks callback-boundary support');
  for(const e of controllerEvents){assert.equal(e.pc,0x436bed);const callback=e.precedingPlayerCallbacks+1;assert(!controlClock.has(callback),'Repeated controller boundary requires its own scheduler observation');controlClock.set(callback,e.hostMonotonicNs);}
@@ -82,6 +107,8 @@ if(phasedScheduler){
  const copies=sceneEvents.filter(x=>x.event==='scene-camera-copy-before'||x.event==='scene-camera-copy-after'&&!sceneEvents.some(b=>b.stage===x.stage&&b.event==='scene-camera-copy-before'));
  for(const e of copies){
   const callback=e.precedingPlayerCallbacks;if(callback<1||callback>limit)continue;
+  const wordDelivery=sceneWordDelivery.get(e.stage);
+  if(wordDelivery){assert.equal(wordDelivery.callback,callback);assert(!afterDrawWorker.has(callback));afterDrawWorker.set(callback,wordDelivery.readyNs);continue;}
   let phase=e.mainPhaseAtObservation;
   if(phase===undefined){const playerTime=Number(times.readBigUInt64LE((callback-1)*8));const pumps=resourceEvents.filter(x=>x.event==='main-resource-pump'&&x.hostMonotonicNs<=e.hostMonotonicNs);assert(pumps.length,'No observed resource boundary for Scene event');phase=pumps.at(-1).hostMonotonicNs>playerTime?'update':'draw';}
   const boundary=e.lastMainCameraBoundary;
@@ -128,6 +155,7 @@ for(let stage=2;stage<=maxStage;stage++){
    const before=sceneEvents.find(x=>x.event==='scene-camera-copy-before'&&x.stage===stage),after=sceneEvents.find(x=>x.event==='scene-camera-copy-after'&&x.stage===stage);
    assert(after&&(schedulerPhases!=='observed'||before)&&(!before||before.hostMonotonicNs<=after.hostMonotonicNs),'Missing original Scene copy boundaries '+stage);
    readyNs=(before??after).hostMonotonicNs;completionSource=before?'original40d435BeforeSceneCameraCopy':'original40d447AfterSceneCameraCopy';
+   const words=sceneWordDelivery.get(stage);if(words){readyNs=words.readyNs;completionSource=words.completionSource;}
   }
   inputs.push({stage,phase,file,queuedNs:queued?.hostMonotonicNs??null,queueObservedDirectly:!!queued,resourceFirstObservedNs:firstObserved?.hostMonotonicNs??null,readyNs,completionSource,boundedByFirstObservedReadyMainBoundary:completionSource==='firstObservedResourceReadyMainBoundary'});
  }
@@ -192,6 +220,7 @@ let stable=null;if(end&&!prefix){for(let i=1;i<=90;i++){const now=lastNow+BigInt
 const raw=Buffer.from(new Uint32Array(rows).buffer);write(resolve(out,'selected-state.u32'),raw,{flag:'wx'});
 const report={schedulerPhases,controllerFlagReadObservations:controllerEvents.length,sceneWorkerBeforeDrawBoundaries:beforeDrawWorker.size,sceneWorkerAfterDrawBoundaries:afterDrawWorker.size,comparisonToolSha256:sha(read(new URL(import.meta.url))),declaredSelection:expectedSelection,publicationCutoff,portableUnsupportedBulletObservations:unsupportedObservations,allPortableBulletOpcodesSupported:unsupportedObservations.length===0,diagnosticPrefixOnly:!!prefix,nativeCaptureMayStillBeRunning:!nativeReport,observedPhaseInputs:phaseInputs,completed:true,derivedSingleStageReplay:false,intactOriginalReplay:true,selection:initial.words.slice(27,31),stageHeaderInputAndFpsRetainedExactly:true,sourceReplaySha256:assetManifest.replaySha256,archiveSha256:sha(archive),replayBytesSha256:sha(replayBytes),callbacks:rows.length/32,nativeCallbacks:progress.callbacks,selectedSha256:sha(raw),nativeSelectedSha256:sha(nativeRaw),allRaw32ByteIdentical:raw.equals(nativeRaw),differenceCounts:counts,firstDifferences:first,firstDifference,entry,end,stableMenuAfter90Ticks:stable,finalObservedCallbacks:c.public_replay_observations(),nativeInitialSnapshotSha256:sha(read(resolve(nativeHome,'untouched-first-player.json'))),nativeResourceEventsSha256:sha(read(resolve(nativeHome,'resource-ready-events.jsonl'))),nativeTimesSha256:sha(times),wasmSha256:sha(wasm),actualInitialTimeGetTime:initial.actualInitialTimeGetTimeInput,actualCookie:initial.actualOriginalSecurityCookie,declaredGeometryFrame:0x1aec84,observedNativeHostTimes:true,extraAsciiDrawBeginBoundaryTimestamp:asciiBegin.hostMonotonicNs,asciiBeginDeliveryInferredFromFirstPublication:false,asciiCreateObservedAtOriginal44477aCall:true,asciiDeliveryResult,noNativePublicationValuesProvidedToEngine:true,declaredAttractBitClearAtFirstPlayer:true,noRngSerialCounterHealthOrInputWrites:true,noPerFrameStateOverrides:true,recordingGraphics:true,actualGpuOrAudio:false,completeGame:false,nativeEquivalent:false};
 report.sceneWorkerAcrossUpdateBoundaries=sceneUpdateHandoffs.length;report.sceneUpdateHandoffs=sceneUpdateHandoffs;
+report.sceneCopyWordHandoffs=sceneCopyWordHandoffs;report.sceneCopyObservationSha256=options.has('scene-copy-observation')?sha(read(resolve(root,options.get('scene-copy-observation')))):null;
 write(resolve(out,'report.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(report));
 assert.equal(report.callbacks,limit);assert.equal(report.finalObservedCallbacks,limit);if(!prefix){assert(end);assert.equal(stable[0],2);assert.equal(stable[5],3);}
 
