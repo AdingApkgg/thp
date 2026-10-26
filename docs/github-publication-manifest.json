@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "12a00b4f7adaccdfce40089aa1cc6c2157a52f02",
+  "sourceCommit": "2c79036c4ec2157575fc629dfd6f351c05ee8183",
   "files": [
     {
       "path": ".gitignore",
@@ -52,6 +52,11 @@
       "path": "docs/porting/TH14_ANM_SCALE_VELOCITY_OCT24.md",
       "bytes": 2075,
       "sha256": "0b9880ba4cba4894277f017a271a6dc69e3bbcd46cf7a03482e1588247b02636"
+    },
+    {
+      "path": "docs/porting/TH14_ATTRACT_CYCLE_OCT27.md",
+      "bytes": 4191,
+      "sha256": "0939214de6b23357979c073f9d664c94c9147888b376d24d37cb85250e1c3737"
     },
     {
       "path": "docs/porting/TH14_BACKGROUND_CLIP_ORDER_OCT26.md",
@@ -395,8 +400,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 15408,
-      "sha256": "1876132f11e42c4e3dfb2b2dcbf6c2d85bdd9160ad59816ded56253c76bda5ce"
+      "bytes": 16200,
+      "sha256": "f85b87f4577afe37681a61a8324d9f14adf1363861548732ef47d11e148af15c"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -570,8 +575,8 @@
     },
     {
       "path": "docs/porting/TH14_STORAGE_POLICY_OCT25.md",
-      "bytes": 3403,
-      "sha256": "4cbeeafba4df92c5ef2443a5cf10c5da4cc89a36c6afed19f970bf1e23f4ddb8"
+      "bytes": 4015,
+      "sha256": "520053c84f598b530a51b194dfe67392810d82835011cee939754d44917832ff"
     },
     {
       "path": "docs/porting/TH14_SUPERVISOR_NEXT_STAGE_OCT23.md",
@@ -1252,6 +1257,11 @@
       "path": "docs/porting/th14-asset-sharing-verified-oct25.json",
       "bytes": 525,
       "sha256": "8363969e669d55dde774d5970700367d75d6c55940312fb93c38ba8db3547cd0"
+    },
+    {
+      "path": "docs/porting/th14-attract-cycle-verified-oct27.json",
+      "bytes": 82700,
+      "sha256": "a3742ef42789b4fac80460e9322a9e50f8dea21b8e2c3ad80e0615a01d6510b0"
     },
     {
       "path": "docs/porting/th14-audio-mixer-verified.json",
@@ -13149,6 +13159,11 @@
       "sha256": "7255684bad2e116bd24d21ab90c3b1cd2a5391fa3826993b2f599362d6f1a9f5"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/fixtures/th14-native-application-attract-cycle-oct27.json",
+      "bytes": 1401,
+      "sha256": "bd06a4c60503aa45f5d4413c5bc9987c49c2eec1f76e40fd76447db4c996bede"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/fixtures/th14-native-application-continue.json",
       "bytes": 3416,
       "sha256": "84863099ed43a9861c4fc41da9dc8bdf4334fb68e0f5c946ef7d49cc7f46bb29"
@@ -15055,8 +15070,8 @@
     },
     {
       "path": "tools/th14-application-render-pair-check.py",
-      "bytes": 6475,
-      "sha256": "d45bc275520cce6cd484368f07d2e62ab0fa0ef66cd36ab4824e83e3e10acef0"
+      "bytes": 7301,
+      "sha256": "cbb3f9dd3a512369aae68e92d9df4cf4d0ae4ccb0bc39580f015a12a03fadfb0"
     },
     {
       "path": "tools/th14-area-lifecycle-browser-evidence-check.mjs",
@@ -15072,6 +15087,11 @@
       "path": "tools/th14-ascii-native.py",
       "bytes": 3139,
       "sha256": "51d9514717d64cfd17a6dbb90dad78eccbbc06fc384710b07e5130f948e26693"
+    },
+    {
+      "path": "tools/th14-attract-cycle-evidence-oct27.py",
+      "bytes": 8861,
+      "sha256": "a110e5c5a03e63a64c975a4b729714254cf7a163a119663a23aa9f0dcd913afc"
     },
     {
       "path": "tools/th14-audio-mixer-check.mjs",
@@ -23535,15 +23555,14 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "12a00b4f7adaccdfce40089aa1cc6c2157a52f02",
-    "title": "TH14 retained Stage4 copy-word diagnostic, capacity failure preserved",
+    "basePublishedCommit": "2c79036c4ec2157575fc629dfd6f351c05ee8183",
+    "title": "TH14 current Application attract flows and retained image mismatch",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-scene-copy-word-window-evidence-oct27.py",
-      "tools/th14-prepare-word-window-comparison-oct27.py",
-      "docs/porting/TH14_CAMERA_WORD_STAGE4_OCT27.md",
-      "docs/porting/th14-scene-copy-word-window-observation-oct27.json",
-      "docs/porting/th14-scene-copy-word-window-verified-oct27.json",
-      "docs/porting/th14-camera-word-stage4-summary-oct27.json",
+      "runtimes/th12/th12_web/tests/fixtures/th14-native-application-attract-cycle-oct27.json",
+      "tools/th14-application-render-pair-check.py",
+      "tools/th14-attract-cycle-evidence-oct27.py",
+      "docs/porting/TH14_ATTRACT_CYCLE_OCT27.md",
+      "docs/porting/th14-attract-cycle-verified-oct27.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/porting/TH14_STORAGE_POLICY_OCT25.md",
       "docs/github-publication-manifest.json"
@@ -23554,28 +23573,46 @@
     "gameAssetsAdded": false,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
-    "plannedMaximumCallbacks": 52000,
-    "actualDiagnosticCallbacks": 50700,
-    "originalCaptureSucceeded": false,
-    "captureBudgetStopped": true,
-    "originalFailureRetained": true,
-    "actualOriginalRepIterations": 225,
-    "actualRightWordObservations": 9,
-    "baselineAlreadyPassed": true,
-    "baselineAndWordModelOutputFilesEqual": 742,
-    "vm303Rows": 517,
-    "combatCheckpoints": 732,
-    "initialPublications": 2024,
-    "oldCameraFailureClosed": false,
-    "corruptedCameraRejected": true,
-    "failedCaptureNotAcceptedAsCompleted": true,
-    "completedOwnFilesTransparentlyCompressed": 88,
-    "logicalBytesCompressed": 1976541401,
-    "allocatedCompressedBytes": 561963008,
-    "compressionContentAndPathsUnchanged": true,
+    "currentNativeApplicationFramesPerBackend": 17545,
+    "assertionsPerBackend": 30,
+    "externalActionsHeldNoKeys": true,
+    "threeNaturalDemoAndTitleCycles": true,
+    "observedDemoStages": [
+      3,
+      4,
+      1
+    ],
+    "journalRows": 4239,
+    "actualSilentPcmFramesPerBackend": 12681216,
+    "silentPcmSinkHashesEqual": true,
+    "pairedImages": 7,
+    "comparedImageBytes": 8601600,
+    "imageEqualityPassed": false,
+    "differentPixels": 14,
+    "differentBytes": 16,
+    "firstDifferencePixel": [
+      361,
+      211
+    ],
+    "firstDifferenceChannel": "A",
+    "firstDifferenceValues": [
+      178,
+      177
+    ],
+    "originalGpuCapacityFailureRetained": true,
+    "onlyFailedBackendRepeated": true,
+    "pairCheckerWritesNegativeDiagnostic": true,
+    "pairCheckerEqualityGatesRetained": true,
+    "oldFullApplicationPairRegressionImages": 8,
+    "additionalCompletedOwnFilesCompressed": 64,
+    "additionalFrozenObservationFilesCompressed": 9,
+    "frozenLogicalBytes": 5645763849,
+    "frozenAllocatedBytes": 1592967168,
+    "compressionContentPathsMtimesUnchanged": true,
     "currentBrowserCandidateChanged": false,
     "defaultPreviewChanged": false,
     "unrelatedResourceCryptEditExcluded": true,
+    "originalOrdinaryUiAcceptance": false,
     "browserAcceptance": false,
     "completeGame": false,
     "nativeEquivalent": false

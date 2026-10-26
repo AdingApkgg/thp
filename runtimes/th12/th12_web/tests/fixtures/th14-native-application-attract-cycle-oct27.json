@@ -1,0 +1,19 @@
+{
+  "schema": "th14/native-application-scenario/1",
+  "scope": "Prepared scenario only, not yet executed. Actual production Application with a clean private save and intact original archive: cold title, three automatic demos and natural title returns. Every action holds no keys. Native component graphics and silent PCM sink only; no original ordinary-window, browser or physical-device acceptance.",
+  "actions": [
+    {"frames":420,"capture":"cold-title","expect":{"0":0,"3":1,"19":1}},
+    {"frames":2200,"until":{"index":0,"equals":1},"expect":{"0":1,"19":1}},
+    {"frames":240,"capture":"demo-1-ready","expect":{"0":1,"19":1}},
+    {"frames":6000,"until":{"index":0,"equals":0},"expect":{"0":0,"19":1}},
+    {"frames":120,"capture":"after-demo-1-title","expect":{"0":0,"3":1,"19":1}},
+    {"frames":2200,"until":{"index":0,"equals":1},"expect":{"0":1,"19":1}},
+    {"frames":240,"capture":"demo-2-ready","expect":{"0":1,"19":1}},
+    {"frames":6000,"until":{"index":0,"equals":0},"expect":{"0":0,"19":1}},
+    {"frames":120,"capture":"after-demo-2-title","expect":{"0":0,"3":1,"19":1}},
+    {"frames":2200,"until":{"index":0,"equals":1},"expect":{"0":1,"19":1}},
+    {"frames":240,"capture":"demo-3-ready","expect":{"0":1,"19":1}},
+    {"frames":6000,"until":{"index":0,"equals":0},"expect":{"0":0,"19":1}},
+    {"frames":120,"capture":"after-demo-3-title","expect":{"0":0,"3":1,"19":1}}
+  ]
+}

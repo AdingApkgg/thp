@@ -15,19 +15,26 @@ SHA=lambda raw:hashlib.sha256(raw).hexdigest()
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--home',type=Path,required=True)
+    parser.add_argument('--webgpu',type=Path,help='Explicit terminal WebGPU run directory, preserving earlier failed runs')
+    parser.add_argument('--gles',type=Path,help='Explicit terminal GLES run directory')
     parser.add_argument('--output',type=Path,required=True)
     parser.add_argument('--check',action='store_true')
     parser.add_argument('--allow-running-prefix',action='store_true')
     args=parser.parse_args();home=args.home.resolve();output=args.output.resolve()
     assert home.is_relative_to(ROOT/'artifacts/th14')
     assert output.is_relative_to(ROOT/'artifacts/th14')or output.is_relative_to(ROOT/'docs/porting')
+    if args.webgpu or args.gles:
+        assert args.webgpu and args.gles and not args.allow_running_prefix,'Explicit run directories require both terminal runs'
+    folders={name:(getattr(args,name)or(home/name)).resolve(strict=True)for name in ['webgpu','gles']}
+    assert all(path.is_relative_to(ROOT/'artifacts/th14')for path in folders.values())
     bindings={};runs={};actions={};captures={}
     def read(path):
         raw=path.read_bytes();bindings[path.relative_to(ROOT).as_posix()]=dict(bytes=len(raw),sha256=SHA(raw));return raw
     for backend in ['webgpu','gles']:
-        folder=home/backend;report=folder/'report.json'
+        folder=folders[backend];report=folder/'report.json'
         if report.exists():
             run=json.loads(read(report));runs[backend]=run
+            assert run['backend']==backend,'Run backend does not match the selected directory'
             assert run['completed']and not run['error'],backend+' is a terminal failure, not an accepted pair'
             actions[backend]=run['actions'];captures[backend]={row['label']:row for row in run['captures']}
         else:
@@ -57,7 +64,7 @@ def main():
         buffers=[];frames=[]
         for backend in ['webgpu','gles']:
             row=captures[backend][label];assert Path(row['file']).name==row['file']
-            raw=read(home/backend/row['file']);assert len(raw)==640*480*4 and SHA(raw)==row['sha256']
+            raw=read(folders[backend]/row['file']);assert len(raw)==640*480*4 and SHA(raw)==row['sha256']
             buffers.append(raw);frames.append(row['frame'])
         assert frames[0]==frames[1],label+' is not the same Application frame'
         indices=[index for index,(left,right)in enumerate(zip(*buffers))if left!=right]
@@ -86,10 +93,12 @@ def main():
         browserAcceptance=False,completeGame=False,nativeEquivalent=False,
         verifierSha256=SHA(Path(__file__).read_bytes()),bindings=bindings,
         scope='Byte comparison of retained actual C++ Application images and action states between native WebGPU and GLES. An explicit running prefix is limited to the common completed captures. Each full-flow and original-image claim still needs separate authoritative evidence.')
-    assert all_buffers and same_states,'Retained native backend differences; do not waive pixels or state'
     if args.check:assert json.loads(output.read_bytes())==result
     else:
         output.parent.mkdir(parents=True,exist_ok=True);output.write_text(json.dumps(result,indent=2)+'\n')
+    # Keep the complete diagnostic even when the required equality gate fails.
+    # A report with differences still returns failure and accepts no full flow.
+    assert all_buffers and same_states,'Retained native backend differences; do not waive pixels or state'
     print(json.dumps({key:result[key]for key in ['runningPrefixOnly','sharedCompletedActions','pairedImages','comparedImageBytes','allPairedCapturedBuffersEqual','allSharedActionStatesEqual']}))
 
 
