@@ -223,7 +223,9 @@ bool GameSession::activate_stage(){
         entry.read(playback.header(stage));
         const auto& shot=resources.core.shots[shot_file_slot(u32(state.character),u32(state.subtype))].header;
         economy.max_power=shot.max_power_level*shot.power_step;economy.power_step=shot.power_step;
-        entry.restore(economy,gameplay_rng,true,kPortTitle==14?&animations.script_rng:nullptr);
+        // Ordinary TH14 replay enters 435f32/456050 even on its first stage;
+        // attract startup creates its manager instead and retains script RNG.
+        entry.restore(economy,gameplay_rng,kPortTitle==14?state.demo:true,kPortTitle==14?&animations.script_rng:nullptr);
     }
 #if PORT_TITLE == 14
     if(!battle)
