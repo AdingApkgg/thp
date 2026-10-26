@@ -2067,9 +2067,49 @@
         5,
         6
       ],
-      "nativeCapturedRunAvailable": false,
-      "allStageEntriesObserved": false,
-      "retainedNaturalRuns": [],
+      "nativeCapturedRunAvailable": true,
+      "allStageEntriesObserved": true,
+      "retainedNaturalRuns": [
+        {
+          "path": "artifacts/th14/retail-sakuyaa-easy-callback-hardware-oct26",
+          "reportSha256": "a9eca6e7435369c07ee58e4e608070402f8da037544f698decee80fb38740171",
+          "initialSnapshotSha256": "43fafae8c63386d8ee87b1310378e963e228b990b08ad5b565bdc53b3935c93d",
+          "selectedSha256": "157b108560e9ecea4b96eaa1abe9b3da174c4ff9255b2b3f03e8a1926b1e4589",
+          "callbacks": 128425,
+          "stagesObserved": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "naturalReplayEndObserved": true,
+          "clearCompletionNotAsserted": true,
+          "intactOriginalReplayDeclared": true,
+          "instructionBytesPatched": 0,
+          "rngOrCounterWrites": 0,
+          "replaySha256": "2b40f5d77b22df2f893f97c7a60f46a632ae536732b76bb143eaa1618e045042",
+          "selected32ComparisonReports": [
+            {
+              "path": "artifacts/th14/stage-item-retirement-oct25/sakuyaa-easy-callback-full-oct26/report.json",
+              "reportSha256": "4be6f3aa7bb5e681a37751c5fda02dc15921bb29e517591cf9cde8edd9cfdcd2",
+              "callbacks": 128425,
+              "wasmSha256": "f0801b8a81134c61255ffb9102a41a3957b8cf8ea1d8de7813da381665a619de",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": true
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            }
+          ],
+          "preferredComparisonPath": "artifacts/th14/stage-item-retirement-oct25/sakuyaa-easy-callback-full-oct26/report.json",
+          "partialSelected32ComparisonReports": []
+        }
+      ],
       "wholeModeEquivalent": false
     },
     {
@@ -2944,8 +2984,8 @@
     }
   ],
   "modePairs": 30,
-  "pairsWithNaturalNativeRun": 28,
-  "pairsWithAllStageEntriesObserved": 23,
+  "pairsWithNaturalNativeRun": 29,
+  "pairsWithAllStageEntriesObserved": 24,
   "preferredCaptureRule": "Prefer more observed stages, then a reported full selected32 comparison, then the longest compared prefix; loading callback count breaks remaining ties.",
   "scope": "An inventory of retained actual stage entries and separately scoped reported selected32 comparisons, with additional observed gate failures. Missing gates are null, never passed. Neither replay end nor observing all stage entries proves a clear, all objects, ordinary menu initialization, pixels, PCM, persistence or mode equivalence.",
   "reportBindings": {
@@ -2979,6 +3019,7 @@
     "artifacts/th14/retail-reimub-lunatic-timeline-clear-hardware-oct25/report.json": "84ce576dc52987dea7c564702ee88504a13c32a734da22ab39165dbd2f84c53c",
     "artifacts/th14/retail-reimub-normal-callback-rng-hardware-oct26/report.json": "13728b59a3ca5fc7d1ae8742f43d336d47db9b4fa0b054a0f6f55e366dabffd2",
     "artifacts/th14/retail-sakuyaa-campaign-publications-camera-hardware-oct24/report.json": "f85f5be62ff9d7d2ce95fbccbd3e55d435580b435095c70a3867530f5bd59598",
+    "artifacts/th14/retail-sakuyaa-easy-callback-hardware-oct26/report.json": "a9eca6e7435369c07ee58e4e608070402f8da037544f698decee80fb38740171",
     "artifacts/th14/retail-sakuyaa-extra-full-2-hardware-oct24/report.json": "e1f704f34786fa74e63a34f3c4853e17208fe6130ff94478eea22e99e7cc364d",
     "artifacts/th14/retail-sakuyaa-final-live-vm-hardware-oct24/report.json": "985710a11f21a63512bddfd7eea5239b76f328ba0ed56a77e454540e3a1c2ac9",
     "artifacts/th14/retail-sakuyaa-hard-exit-boundary-hardware-oct26/report.json": "8ea7c9f1aa84b595b5cc15064d544152a8151f44ace41f6d0dae97b8477179c0",
@@ -3159,6 +3200,10 @@
     "artifacts/th14/stage-item-retirement-oct25/reusable-hard-full/hud-report.json": "b58500349c46b638cc466629fbc60324b040ba8e2f23a3701d8459dafacc7dd4",
     "artifacts/th14/stage-item-retirement-oct25/reusable-hard-full/live-report.json": "e9765133a6d3c0627740a1d20c2bcaeb137fbe32f4b2c6b9b60419a9270a754e",
     "artifacts/th14/stage-item-retirement-oct25/reusable-hard-full/combat-snapshots.json": "f48c549943f0b8af1f50fa6baac63f1e31691a9d102498ef4e986aa7ce4f2a22",
+    "artifacts/th14/stage-item-retirement-oct25/sakuyaa-easy-callback-full-oct26/camera-report.json": "8b10b1f5cfb861e34eb5d8fdfd5e7cc656fea50af54ecbf5822aa08adfae2857",
+    "artifacts/th14/stage-item-retirement-oct25/sakuyaa-easy-callback-full-oct26/hud-report.json": "7791f5b74c302cd6567ff2790a1514ce1a33e0e04c5a6ece9d46c873b7742b0a",
+    "artifacts/th14/stage-item-retirement-oct25/sakuyaa-easy-callback-full-oct26/live-report.json": "3fc51302e88c0eac03c9fd4c5298ac9755b946ddd22b11255f73215db7f901df",
+    "artifacts/th14/stage-item-retirement-oct25/sakuyaa-easy-callback-full-oct26/combat-snapshots.json": "22972e10be95659b0663e188be84fe09465bca80898c0c4c3b933e022c6d5a19",
     "artifacts/th14/stage-item-retirement-oct25/sakuyaa-hard-exit-boundary-full-oct26/camera-report.json": "067fa39cef83879968c99d61b1df62e394eb2a8fed932de1850ae1a265d5581e",
     "artifacts/th14/stage-item-retirement-oct25/sakuyaa-hard-exit-boundary-full-oct26/hud-report.json": "46f9940984fdd93b21797ff27531122428300ba86207c89593007deb9f7cb030",
     "artifacts/th14/stage-item-retirement-oct25/sakuyaa-hard-exit-boundary-full-oct26/live-report.json": "130de65ac494c1307edb73fbf3f67627069305006b732f6a779e42a0699dd1b6",

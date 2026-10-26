@@ -14,4 +14,6 @@ effect149 的受控实验现已从采样时刻扩展至原版工厂创建、全�
 
 灵梦 A Hard 的六个、Lunatic 的五个原始 worldZ 字差继续保留；[严格完整回放门槛](TH14_SCENE_HANDOFF_OCT26.md)不变，不能把本组件通过写成这两条完整记录通过或整作 1:1 完成。
 
+后续[公共命中调用链的栈来源组件](TH14_FOCUSED_HIT_STACK_PRODUCER_OCT26.md)已执行奖励函数与聚焦回调：960 组中均由 `453aae push edi` 保存目标坐标指针，再被当作 Z 读回。生产 ABI／地址模型和实时调用身份仍未闭合，完整原始字差继续失败。
+
 [原版组件报告](th14-effect149-retirement-component-oct26.json)、[Wasm 对照报告](th14-effect149-retirement-verified-oct26.json)、[可复跑检查](../../tools/th14-effect149-retirement-check.mjs)。检查需要本地原版资源与哈希绑定的生产对象缓存，接受 `--build` 和新的私有 `--output` 路径；`--check` 复跑后要求公共范围报告相同。原始资源、内存、选定状态流和 Wasm 只保留在私有 artifacts，不发布。
