@@ -1,0 +1,83 @@
+{
+  "schema": "th14/native-application-scenario/1",
+  "scope": "Fresh process seeded only with actual files written by the prior Application workflow; no in-memory state carried across.",
+  "actions": [
+    {
+      "frames": 420,
+      "capture": "reload-main",
+      "expect": {
+        "0": 0,
+        "3": 1,
+        "4": 0,
+        "5": 2,
+        "19": 1
+      }
+    },
+    {
+      "frames": 1,
+      "held": 32
+    },
+    {
+      "frames": 2
+    },
+    {
+      "frames": 1,
+      "held": 32
+    },
+    {
+      "frames": 2
+    },
+    {
+      "frames": 1,
+      "held": 32
+    },
+    {
+      "frames": 2
+    },
+    {
+      "frames": 1,
+      "held": 1
+    },
+    {
+      "frames": 30,
+      "capture": "reload-replay-list",
+      "expect": {
+        "0": 0,
+        "3": 11,
+        "4": 0,
+        "5": 2
+      }
+    },
+    {
+      "frames": 1,
+      "held": 1
+    },
+    {
+      "frames": 20,
+      "expect": {
+        "3": 11,
+        "5": 4
+      }
+    },
+    {
+      "frames": 1,
+      "held": 1
+    },
+    {
+      "frames": 240,
+      "capture": "reload-replay-end",
+      "expect": {
+        "0": 2,
+        "1": 1,
+        "2": 127,
+        "6": 128,
+        "11": 3,
+        "12": 1,
+        "13": 2,
+        "14": 1,
+        "15": 0,
+        "19": 1
+      }
+    }
+  ]
+}

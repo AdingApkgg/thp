@@ -2607,9 +2607,51 @@
         5,
         6
       ],
-      "nativeCapturedRunAvailable": false,
-      "allStageEntriesObserved": false,
-      "retainedNaturalRuns": [],
+      "nativeCapturedRunAvailable": true,
+      "allStageEntriesObserved": true,
+      "retainedNaturalRuns": [
+        {
+          "path": "artifacts/th14/retail-sakuyab-easy-exact-camera-hardware-oct26",
+          "reportSha256": "33060203ef8f02d4a56639e07e36552cf16414a9d210039f5e2fa02e1feb5f4c",
+          "initialSnapshotSha256": "c22afa657d86730bd51f58604bb49803c5e36c653fa188dca279987bd167c3b9",
+          "selectedSha256": "15e149c4015cb0b503b76102e7f12679e17b143e68d75f938d2323748e94ccae",
+          "callbacks": 106903,
+          "stagesObserved": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "naturalReplayEndObserved": true,
+          "clearCompletionNotAsserted": true,
+          "intactOriginalReplayDeclared": true,
+          "instructionBytesPatched": 0,
+          "rngOrCounterWrites": 0,
+          "replaySha256": "e98fc11baae2d58c9cdaee6a5f8f94e0504340eba6685c7187550168a415624f",
+          "selected32ComparisonReports": [
+            {
+              "path": "artifacts/th14/stage-item-retirement-oct25/sakuyab-easy-exact-camera-full-oct26/report.json",
+              "reportSha256": "6b722291aa0e046a9f5eea8835d3d7525be295f43b061771eda95d2275ac55c7",
+              "callbacks": 106903,
+              "wasmSha256": "f0801b8a81134c61255ffb9102a41a3957b8cf8ea1d8de7813da381665a619de",
+              "additionalObservedGateResults": {
+                "camera": false,
+                "hud": true,
+                "animation": true,
+                "combat": true
+              },
+              "reportedAdditionalGateFailures": [
+                "camera"
+              ],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            }
+          ],
+          "preferredComparisonPath": "artifacts/th14/stage-item-retirement-oct25/sakuyab-easy-exact-camera-full-oct26/report.json",
+          "partialSelected32ComparisonReports": []
+        }
+      ],
       "wholeModeEquivalent": false
     },
     {
@@ -2902,8 +2944,8 @@
     }
   ],
   "modePairs": 30,
-  "pairsWithNaturalNativeRun": 27,
-  "pairsWithAllStageEntriesObserved": 22,
+  "pairsWithNaturalNativeRun": 28,
+  "pairsWithAllStageEntriesObserved": 23,
   "preferredCaptureRule": "Prefer more observed stages, then a reported full selected32 comparison, then the longest compared prefix; loading callback count breaks remaining ties.",
   "scope": "An inventory of retained actual stage entries and separately scoped reported selected32 comparisons, with additional observed gate failures. Missing gates are null, never passed. Neither replay end nor observing all stage entries proves a clear, all objects, ordinary menu initialization, pixels, PCM, persistence or mode equivalence.",
   "reportBindings": {
@@ -2942,6 +2984,7 @@
     "artifacts/th14/retail-sakuyaa-hard-exit-boundary-hardware-oct26/report.json": "8ea7c9f1aa84b595b5cc15064d544152a8151f44ace41f6d0dae97b8477179c0",
     "artifacts/th14/retail-sakuyaa-late-allocation-hardware-oct24/report.json": "b437b26b61ffae7f6514ceb8c2f889be2575bbd278f8d481e3b98a96d2f22a98",
     "artifacts/th14/retail-sakuyaa-lunatic-campaign-hardware-oct25/report.json": "46df331a2e5442e4db1733241e67a79c728f8ba7c8c4e8122125975097823ba1",
+    "artifacts/th14/retail-sakuyab-easy-exact-camera-hardware-oct26/report.json": "33060203ef8f02d4a56639e07e36552cf16414a9d210039f5e2fa02e1feb5f4c",
     "artifacts/th14/retail-sakuyab-extra-full-hardware-oct24/report.json": "f7bb73bc3e92e45dd422f8cd0ba2a34ec20394cb14d14f936a8370c79cfba0a7",
     "artifacts/th14/retail-sakuyab-hard-exit-boundary-hardware-oct26/report.json": "4e0e3772559c1f35e94ef2916e760a5574a32c395c416c8dbc9c815c0c06c75d",
     "artifacts/th14/retail-sakuyab-lunatic-exit-boundary-hardware-oct26/report.json": "d5d3183c6c5f03dda6b9a299339c15a077b358f0f2938929f3893d02fb10805b",
@@ -3124,6 +3167,10 @@
     "artifacts/th14/stage-item-retirement-oct25/sakuyaa-hard-scene-handoff-regression-oct26/hud-report.json": "46f9940984fdd93b21797ff27531122428300ba86207c89593007deb9f7cb030",
     "artifacts/th14/stage-item-retirement-oct25/sakuyaa-hard-scene-handoff-regression-oct26/live-report.json": "130de65ac494c1307edb73fbf3f67627069305006b732f6a779e42a0699dd1b6",
     "artifacts/th14/stage-item-retirement-oct25/sakuyaa-hard-scene-handoff-regression-oct26/combat-snapshots.json": "87e83c944ea72b28291e427c9ab01c564d8f65913184c8af2ffd764e0b063111",
+    "artifacts/th14/stage-item-retirement-oct25/sakuyab-easy-exact-camera-full-oct26/camera-report.json": "ff3fa5fcfb1b1ec021d2b9d3ad3d9fab5540f2f973d6e1c429772cb555ee7498",
+    "artifacts/th14/stage-item-retirement-oct25/sakuyab-easy-exact-camera-full-oct26/hud-report.json": "e6c2bedbc720ed1d316d87f1b6be0a09409211a9f0999dd96a57301886b330c3",
+    "artifacts/th14/stage-item-retirement-oct25/sakuyab-easy-exact-camera-full-oct26/live-report.json": "912bb13bcf94b23738f36ccdb273fa890e588f04d0b9ec0af380517ddbfdeb0e",
+    "artifacts/th14/stage-item-retirement-oct25/sakuyab-easy-exact-camera-full-oct26/combat-snapshots.json": "e13df4fa1bc557fb7d33022fa92a5778a97da6d5d2661d95e281e48deaad0c3d",
     "artifacts/th14/stage-item-retirement-oct25/sakuyab-hard-exit-boundary-full-oct26/camera-report.json": "8091ab78eaf6ed99e83fc4508fe5d36c6b983e7347fe08d94ea05cc9f4ca0438",
     "artifacts/th14/stage-item-retirement-oct25/sakuyab-hard-exit-boundary-full-oct26/hud-report.json": "4a2356d47bc95c2b36c3d59fee418560aefec38fb882c5ebe2635253a7361078",
     "artifacts/th14/stage-item-retirement-oct25/sakuyab-hard-exit-boundary-full-oct26/live-report.json": "e80a16b6965d9eff659e8e60bdd2f6147608a2b95b11fa1efb269a3877c6d5b1",
