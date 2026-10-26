@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "939b83463a42e3928d0a605fbc8b305bac8d67c8",
+  "sourceCommit": "16d008e663303d09ee3d1b3781c9aff6e82f434f",
   "files": [
     {
       "path": ".gitignore",
@@ -55,8 +55,8 @@
     },
     {
       "path": "docs/porting/TH14_BACKGROUND_CLIP_ORDER_OCT26.md",
-      "bytes": 2731,
-      "sha256": "df1d116237cbaad81a96bef2dfb1d848478514c305b490d5a993a5c211686774"
+      "bytes": 3406,
+      "sha256": "19793b68adad3606ed711bdfe0e5d2e611a2c34304b4d619cb47dd6d4c918d02"
     },
     {
       "path": "docs/porting/TH14_BEAM_COOKIE_AND_TERMINAL_HUD_OCT23.md",
@@ -255,8 +255,8 @@
     },
     {
       "path": "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
-      "bytes": 2781,
-      "sha256": "1214f13ddb6a0e93fc2e578bd7ab6264d6f74aeb592581f54424123f172ac5a7"
+      "bytes": 2862,
+      "sha256": "4612cc9df488ec389c2f1b350f13668f2dc45d001c0fe6ed87867391a5fe0028"
     },
     {
       "path": "docs/porting/TH14_MSG_HUD_ORDER_OCT24.md",
@@ -297,6 +297,11 @@
       "path": "docs/porting/TH14_NATIVE_FOG_MIX_FIX_OCT20.md",
       "bytes": 3698,
       "sha256": "60e8619ade9d0b7fe6dcd9bef366b96f823c7ffbe631c14d1d018fcf74592cc3"
+    },
+    {
+      "path": "docs/porting/TH14_NATIVE_GLES_COMPONENT_OCT26.md",
+      "bytes": 3660,
+      "sha256": "542ed8d491ebfa066815c36814e445b9bafaeb579d870e625e573e5bd7cbcd15"
     },
     {
       "path": "docs/porting/TH14_NATIVE_STACK_OCT24.md",
@@ -340,8 +345,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 7147,
-      "sha256": "b09812d198ad0f339a40c66bf9ae7e97a1ae7c720b7b958bbf4b89f84deb7464"
+      "bytes": 8091,
+      "sha256": "1679e207cb14f9793ac7590e573ef68c8e42a70ae1523f2e75a8bae8ebeb7d52"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -357,6 +362,16 @@
       "path": "docs/porting/TH14_SAKUYAA_HARD_OCT26.md",
       "bytes": 1826,
       "sha256": "43cbf663fc914235a5383b438ad52809bc647c4c25418b93ef12d2a6ff710a42"
+    },
+    {
+      "path": "docs/porting/TH14_SAKUYAB_HARD_OCT26.md",
+      "bytes": 1631,
+      "sha256": "1e20c7657aceeb4ebde34173a3d7649b0612f75435834ff65b35387a5221c6be"
+    },
+    {
+      "path": "docs/porting/TH14_SAKUYAB_LUNATIC_CAMERA_WINDOW_OCT26.md",
+      "bytes": 2511,
+      "sha256": "83964588b5ba765c08205c890062f54cc4184c0bf7929fd007b0f868ce188148"
     },
     {
       "path": "docs/porting/TH14_SAVE_BYTE_VIEWS_FIX_OCT18.md",
@@ -3420,8 +3435,8 @@
     },
     {
       "path": "docs/porting/th14-mode-acceptance-inventory-oct25.json",
-      "bytes": 177737,
-      "sha256": "49f56746c87dac23dba6a055b7b7bf5936130d0158ddeb6d1df0d391daa7a8af"
+      "bytes": 183892,
+      "sha256": "5a78661673b55dc3792ccd712ae12dff45d03964ea9d1179c229e45aa7b91d31"
     },
     {
       "path": "docs/porting/th14-msg-hud-order-verified-oct24.json",
@@ -3497,6 +3512,16 @@
       "path": "docs/porting/th14-native-fog-observed-oct20.json",
       "bytes": 175098,
       "sha256": "cd567889272953c68f7fb114dc35c371664a9a2830b91789ebf9d8fe927d2a1d"
+    },
+    {
+      "path": "docs/porting/th14-native-gles-component-oct26.json",
+      "bytes": 23261,
+      "sha256": "6b3e06ddb04927d28742326d526e41a00bd1ac5b5f1e1fc7c3c5f30a432e4c12"
+    },
+    {
+      "path": "docs/porting/th14-native-gles-viewport-verified-oct26.json",
+      "bytes": 25188,
+      "sha256": "913271960d7ca2a8a57140dc29d0fc48be1d8ae300c2d201214927049f235b67"
     },
     {
       "path": "docs/porting/th14-native-stack-verified-oct24.json",
@@ -4782,6 +4807,21 @@
       "path": "docs/porting/th14-sakuyaa-hard-verified-oct26.json",
       "bytes": 10239,
       "sha256": "7e52674ecaef44f1d92de626d5054c860fa32e61c8b693c6e3d65eff69e93ce8"
+    },
+    {
+      "path": "docs/porting/th14-sakuyab-hard-verified-oct26.json",
+      "bytes": 10790,
+      "sha256": "2f894174b3e34b592322d697d5507aae0598388587317dbfd72876b320629d20"
+    },
+    {
+      "path": "docs/porting/th14-sakuyab-lunatic-camera-window-oct26.json",
+      "bytes": 7415,
+      "sha256": "e49a93368bb5b80a371a5a8782b06416a83c6ef200c082ab7d5a0ddc690cd00b"
+    },
+    {
+      "path": "docs/porting/th14-sakuyab-lunatic-camera-write-prefix-verified-oct26.json",
+      "bytes": 8563,
+      "sha256": "52a94ec7a667700c37ad95531e932b361f69309510f18fe83b043f89c52ae526"
     },
     {
       "path": "docs/porting/th14-sanitized-input-parity-matrix-focused-growth-oct14-observed-oct14.json",
@@ -14954,6 +14994,11 @@
       "sha256": "5af55cf08f3bfc85824fe9eccc1fb9191ccd02d180498a338ad673aa90a11bfd"
     },
     {
+      "path": "tools/th14-build-native-gles-component.py",
+      "bytes": 6475,
+      "sha256": "8570a98cb632a623e602df39f3e28aa698f502d54a6bf0becea9469ca76cd8c4"
+    },
+    {
       "path": "tools/th14-bullet-acceleration-check.mjs",
       "bytes": 3532,
       "sha256": "4356b68a84cd51ee5afe06e895e73ab36316a52c28cd6f288305bb77c30b0914"
@@ -15152,6 +15197,11 @@
       "path": "tools/th14-camera-check.mjs",
       "bytes": 3948,
       "sha256": "a598e98b281e27e5bc0cda2032cc7dc646c77158d1f4c003c6865cd0a7172ebf"
+    },
+    {
+      "path": "tools/th14-camera-copy-window-evidence-check-oct26.py",
+      "bytes": 7847,
+      "sha256": "a1413becfe13fbb29bcd4f5b0e92b62819aebb1e08d182f2f715b09f79d322be"
     },
     {
       "path": "tools/th14-camera-cross-check-oct25.mjs",
@@ -18060,8 +18110,8 @@
     },
     {
       "path": "tools/th14-native-campaign-observer-oct25.py",
-      "bytes": 42890,
-      "sha256": "ccb28bdb75f4d6e30802ac0633be23becd3495a1abf1bda69a53f2dcfab9a172"
+      "bytes": 45122,
+      "sha256": "b3ff99666cc99816c0ab07ad5fe449a5acdc9843bd83e6e112da25eef450861e"
     },
     {
       "path": "tools/th14-native-detail-window-capture.py",
@@ -18097,6 +18147,21 @@
       "path": "tools/th14-native-gdi-host.py",
       "bytes": 12086,
       "sha256": "55ae10fc46e5d7e619058f10ea72ad0ebcbd0276707136098f3dd8788a238288"
+    },
+    {
+      "path": "tools/th14-native-gles-component.py",
+      "bytes": 13628,
+      "sha256": "7b0648ed3830019e9958988cf4ec11d87dd8d04b6d5f0c59737bfcbd27b1acff"
+    },
+    {
+      "path": "tools/th14-native-gles-context.py",
+      "bytes": 3785,
+      "sha256": "1a04bc385ae9078d2f98d803d1a9eec54fddf841a33d36818ef5ef997b99f5a8"
+    },
+    {
+      "path": "tools/th14-native-gles-viewport-evidence-check.py",
+      "bytes": 6596,
+      "sha256": "5c15a219f00c5ac80faa8a888c6f36a73e667a99408e244acafbcb02c1ff279f"
     },
     {
       "path": "tools/th14-native-heap-size-probe.py",
@@ -22975,40 +23040,56 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "939b83463a42e3928d0a605fbc8b305bac8d67c8",
-    "title": "TH14 actual Continue music queue and full retained Reimu B Easy comparison",
-    "changedSourceAndMetadataFiles": 15,
-    "productionSourceFiles": 1,
+    "basePublishedCommit": "16d008e663303d09ee3d1b3781c9aff6e82f434f",
+    "title": "TH14 strict Sakuya B Hard evidence and standalone C++ graphics component",
+    "changedSourceAndMetadataFiles": [
+      "tools/th14-build-native-gles-component.py",
+      "tools/th14-native-gles-context.py",
+      "tools/th14-native-gles-component.py",
+      "tools/th14-native-gles-viewport-evidence-check.py",
+      "docs/porting/TH14_NATIVE_GLES_COMPONENT_OCT26.md",
+      "docs/porting/th14-native-gles-component-oct26.json",
+      "docs/porting/th14-native-gles-viewport-verified-oct26.json",
+      "docs/porting/TH14_SAKUYAB_HARD_OCT26.md",
+      "docs/porting/th14-sakuyab-hard-verified-oct26.json",
+      "docs/porting/TH14_BACKGROUND_CLIP_ORDER_OCT26.md",
+      "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
+      "docs/porting/th14-mode-acceptance-inventory-oct25.json",
+      "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
+      "tools/th14-native-campaign-observer-oct25.py",
+      "tools/th14-camera-copy-window-evidence-check-oct26.py",
+      "docs/porting/TH14_SAKUYAB_LUNATIC_CAMERA_WINDOW_OCT26.md",
+      "docs/porting/th14-sakuyab-lunatic-camera-window-oct26.json",
+      "docs/porting/th14-sakuyab-lunatic-camera-write-prefix-verified-oct26.json",
+      "docs/github-publication-manifest.json"
+    ],
+    "productionSourceFiles": [],
     "productionGameplayChanged": false,
     "productionGraphicsChanged": false,
-    "productionAudioChanged": true,
+    "productionAudioChanged": false,
     "gameAssetsAdded": false,
-    "musicComparedCases": 108,
-    "musicOriginalCases": 108,
-    "musicExcludedFirstTrackSubframeCases": 0,
-    "musicComparedFloatWords": 410218200,
-    "musicWholeContinueQueueCases": 216,
-    "musicPriorResultNotificationCounts": [
-      0,
-      128
-    ],
-    "musicPositiveClockCases": 180,
-    "musicPositiveClockWords": 298224,
-    "musicFileServices": "actual Windows readonly",
-    "musicConcurrentHardwareNotificationsUnproved": true,
-    "nativeNaturalRunModePairs": 25,
-    "nativeAllStageEntryModePairs": 20,
-    "reimubEasyNativeCallbacks": 238922,
-    "reimubEasyAllSixStagesObserved": true,
-    "reimubEasyVm303Rows": 3325,
-    "reimubEasyCombatCheckpoints": 1191,
-    "reimubEasyNonemptyCombatCheckpoints": 475,
-    "reimubEasyIndependentlyVerifiedFiniteEvidence": true,
-    "oldReimubEasy239234RawFailuresRetained": true,
+    "nativeNaturalRunModePairs": 27,
+    "nativeAllStageEntryModePairs": 22,
+    "sakuyaBHardNativeCallbacks": 122811,
+    "sakuyaBHardVm303Rows": 1743,
+    "sakuyaBHardCombatCheckpoints": 778,
+    "sakuyaBHardIndependentlyVerifiedFiniteEvidence": true,
+    "standaloneGlesReferenceFrames": 21,
+    "standaloneGlesExactReferenceFrames": 20,
+    "standaloneGlesRetainedBrowserBuffersReproduced": 21,
+    "standaloneGlesIdenticalBrowserShaderSources": 38,
+    "nativePostclipViewportExactFrames": 21,
+    "nativePostclipViewportIsProductionWebglFix": false,
     "currentSdlBrowserAcceptance": false,
     "sdlWasmSha256": "23bcfdef3441f5dbccc615a0f883cf6bb2de727d95aead90396f4814d490d05c",
     "unrelatedResourceCryptEditExcluded": true,
     "completeGame": false,
-    "nativeEquivalent": false
+    "nativeEquivalent": false,
+    "sakuyaBLunaticNativeCallbacks": 126882,
+    "sakuyaBLunaticCameraField12DifferentCallbacks": 16631,
+    "sakuyaBLunaticFullRunPassed": false,
+    "cameraWriteObserverDiagnosticPrefixCallbacks": 20000,
+    "cameraWriteObserverDiagnosticPrefixIsNaturalEnd": false,
+    "cameraWriteObserverActualStores": 3739
   }
 }
