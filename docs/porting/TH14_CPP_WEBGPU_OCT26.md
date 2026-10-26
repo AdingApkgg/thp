@@ -1,5 +1,7 @@
 # TH14 实际 C++ Renderer 的 WebGPU 接入 · 2026-10-26
 
+本页记录此前 C++／原生 GPU 接入的冻结证据；后续[JavaScript 主机、Asyncify 与浏览器候选包](TH14_JS_WEBGPU_OCT26.md)另行核对。
+
 实际 `Renderer` 新增显式选择的 `TH14_WEBGPU_BACKEND` 分支。生产的状态、批处理、实例记录、矩阵组合、布局读取及纹理解码仍由 C++ 执行；平台只接收语义管线、派生矩阵、展开纹理和顶点字节。与先前 Python／WGSL 镜像组件相比，本次运行实际 C++ 渲染入口及 Application。默认 GLES／WebGL 分支保持原行为。
 
 | 验证对象 | 严格有限范围结果 |

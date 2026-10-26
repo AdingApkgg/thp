@@ -25,7 +25,11 @@ const error=reason=>{const message=reason?.stack||String(reason);const node=$('#
 const u32=(ptr,count)=>new Int32Array(Module.HEAPU8.buffer,ptr,count);
 const sync=(populate=false)=>{const current=storageSync.then(()=>new Promise((r,j)=>Module.FS.syncfs(populate,e=>e?j(e):r())));storageSync=current.catch(()=>{});return current;};
 const coreError=()=>{const p=core.th11_error(),end=Module.HEAPU8.indexOf(0,p);return new TextDecoder().decode(Module.HEAPU8.subarray(p,end<0?p+256:end));};
-const save=()=>{if(launched&&!core.th11_save_scores())throw Error(coreError());return sync(false);};
+async function callCore(name,...args){
+ const call=()=>Module.ccall?Module.ccall(name,'number',args.map(()=> 'number'),args,{async:true}):core[name](...args);
+ const runtime=Module.th14WebGpuRuntime;return runtime?runtime.run(call):call();
+}
+const save=async()=>{if(launched&&!await callCore('th11_save_scores'))throw Error(coreError());return sync(false);};
 async function installResources(resources=[]){return installHostResources(Module,resources,{game,emit});}
 // The Launcher has already verified the ZIP identity. Match TH10's Runtime
 // manifest/path/size checks before exposing any file to the native game.
@@ -67,23 +71,25 @@ async function resumeForegroundAudio(forcePause=false){
  if(forcePause)core.sdl_loop_pause(1);
  return resumeRuntimeAudio(Module,core,()=>!!core&&launched&&!document.hidden);
 }
-function closeAudio(){
+async function closeAudio(){
  // The launcher owns the shared context. SDL owns and must disconnect its
  // stream, but closing that stream must not close the launcher's context.
- const s=Module.SDL3,context=s?.audioContext,borrowed=parent!==window&&context===parent.__touhouAudioContext;
- if(borrowed)s.audioContext=undefined;
- try{core.th11_audio_close();}finally{if(borrowed)s.audioContext=context;}
+ const close=()=>{const s=Module.SDL3,context=s?.audioContext,borrowed=parent!==window&&context===parent.__touhouAudioContext;
+  if(borrowed)s.audioContext=undefined;
+  try{core.th11_audio_close();}finally{if(borrowed)s.audioContext=context;}};
+ const runtime=Module.th14WebGpuRuntime;if(runtime)await runtime.run(close);else close();
 }
-async function stop(){if(stopping)return;stopping=true;clearKeyboard();try{core.th11_loop_stop();await save();closeAudio();launched=false;emit('exit',{code:0,status:'success'});}finally{stopping=false;}}
+async function stop(){if(stopping)return;stopping=true;clearKeyboard();try{core.th11_loop_stop();await save();await closeAudio();launched=false;emit('exit',{code:0,status:'success'});}finally{stopping=false;}}
 function path(value){const name=String(value).replaceAll('\\','/').toLowerCase().replace(/^\/savesth11\//,'').replace(/^\//,'');if(!/^(?:scoreth11\.dat|th11\.cfg|replay\/th11_(?:\d{2}|ud[a-z0-9]{4})\.rpyx?)$/.test(name))throw Error('存档路径无效');return name;}
-function launch(){
+async function launch(){
  if(launched)return;clearKeyboard();
- if(!core.th11_initialize())throw Error(coreError());
- if(core.th11_phase()===4&&!core.th11_return_title())throw Error(coreError());
+ if(!await callCore('th11_initialize'))throw Error(coreError());
+ if(Module.th14WebGpuRuntime){core=Module.th14WebGpuRuntime.bindCore(core);window.core=core;}
+ if(core.th11_phase()===4&&!await callCore('th11_return_title'))throw Error(coreError());
  launched=true;apply();first=false;lastPresented=0;lastHealth=performance.now();lastFrame=0;frames=0;maxGap=0;
  const loading=$('#loading');if(loading)loading.textContent='';
  canvas.focus({preventScroll:true});core.sdl_loop_pause(1);if(!document.hidden)void resumeForegroundAudio();core.th11_loop_start();
- emit('runtime-info',{renderer:'SDL3 / WebGL2 / C++',architecture:protocol,version:runtimeBuild.version});
+ emit('runtime-info',{renderer:Module.th14WebGpuRuntime?'SDL3 / WebGPU / C++':'SDL3 / WebGL2 / C++',architecture:protocol,version:runtimeBuild.version});
 }
 async function command(m){switch(m.command){
  case 'configure':if(launched)throw Error('不能配置正在运行的游戏');language=m.language==='lang_zh-hans'?'chs':'jp';options=normalizeOptions(m.options);music=m.music!=='none';musicMode=m.music;await installResources(m.sharedResources);await installResources(m.runtimeResources);await installResources(m.resources);if(m.runtimePack)await installRuntimePack(m.runtimePack);apply();return {};
@@ -93,14 +99,14 @@ async function command(m){switch(m.command){
  case 'touch-cancel':cancelTouches();return {};
  case 'direct-touch':directTouch(core,canvas,m,{width:innerWidth,height:innerHeight});return {};
  case 'touch-controls':touchControls(core,options,m);return {};
- case 'launch':launch();return {};
+ case 'launch':await launch();return {};
  case 'sync':await save();return {};
  case 'list':{const files=[];for(const dir of ['','/replay'])for(const name of Module.FS.readdir('/savesth11'+dir)){const n=(dir+'/'+name).replace(/^\//,'');try{path(n);}catch{continue;}const s=Module.FS.stat('/savesth11/'+n);if(Module.FS.isFile(s.mode)){files.push({path:n,size:s.size});}}return {files};}
  case 'read':return {bytes:Array.from(Module.FS.readFile('/savesth11/'+path(m.path)))};
  case 'write':{
   if(launched)throw Error('请先退出游戏');const target=path(m.path),bytes=new Uint8Array(m.bytes||[]);
   if(!bytes.length||bytes.length>64*1024*1024)throw Error('文件大小无效');
-  const p=core.malloc(bytes.length);if(!p)throw Error('文件导入内存不足');let valid=false;try{Module.HEAPU8.set(bytes,p);valid=!!core.th11_validate_file(target==='scoreth11.dat'?0:target==='th11.cfg'?2:1,p,bytes.length);}finally{core.free(p);}
+  const p=core.malloc(bytes.length);if(!p)throw Error('文件导入内存不足');let valid=false;try{Module.HEAPU8.set(bytes,p);valid=!!await callCore('th11_validate_file',target==='scoreth11.dat'?0:target==='th11.cfg'?2:1,p,bytes.length);}finally{core.free(p);}
   if(!valid)throw Error('文件不是有效的地灵殿存档或录像');
   if(target.startsWith('replay/')&&!validateMotionReplay(bytes))throw Error('录像数据无效');
   Module.FS.writeFile('/savesth11/'+target,bytes);await sync(false);return {};
@@ -135,6 +141,7 @@ const initialized=(async()=>{
  Module=await createModule({canvas,noInitialRun:true,resetBrowserKeyboard:()=>keyboard.clear(),...(audioContext?{SDL3:{audioContext}}:{}),print:console.log,printErr:console.error,
   instantiateWasm(imports,ready){return WebAssembly.instantiateStreaming(fetch('./th11-sdl.wasm'),imports).then(({instance,module})=>{core=instance.exports;ready(instance,module);return core;});}});
  window.Module=Module;window.FS=Module.FS;window.core=core;
+ Module.onWebGpuError=error;
  observeMusicWrites(Module,core,game);
  Module.FS.mkdirTree('/savesth11');Module.FS.mount(Module.IDBFS,{},'/savesth11');await sync(true);
  Module.FS.mkdirTree('/savesth11/replay');Module.FS.symlink('/savesth11','/save');

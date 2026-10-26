@@ -1,0 +1,35 @@
+// Link only with -sASYNCIFY and TH14_WEBGPU_BACKEND. The C++ byte ABI is also
+// used by the standalone native host; no game logic is implemented here.
+addToLibrary({
+  th14_webgpu_open__async:'auto',
+  th14_webgpu_open: async function (pointer) {
+    if (!Module['th14WebGpuRuntime']) {
+      const {Th14WebGpuRuntime}=await import(locateFile('Th14WebGpuRuntime.mjs'));
+      Module['th14WebGpuRuntime']=new Th14WebGpuRuntime(Module);
+    }
+    const runtime=Module['th14WebGpuRuntime'];
+    await runtime.open();
+    // Reacquire HEAP views after await: initialization may grow Wasm memory.
+    HEAPF32.set(runtime.host.alphaBoundaries,pointer>>>2);return 1;
+  },
+  th14_webgpu_close:() => Module['th14WebGpuRuntime'].host.close(),
+  th14_webgpu_upload:(handle,width,height,pointer) => Module['th14WebGpuRuntime'].host.upload(handle>>>0,width,height,HEAPU8.subarray(pointer,pointer+width*height*4)),
+  th14_webgpu_depth:(handle,width,height,format) => Module['th14WebGpuRuntime'].host.depth(handle>>>0,width,height,format),
+  th14_webgpu_draw:(packet,vertices,count) => Module['th14WebGpuRuntime'].host.draw(HEAPU8.subarray(packet,packet+448),HEAPU8.subarray(vertices,vertices+count*40),count),
+  th14_webgpu_clear:(target,depth,flags,color,value,stencil,rects,count) => Module['th14WebGpuRuntime'].host.clear(target>>>0,depth>>>0,flags,color>>>0,value,stencil,HEAP32.subarray(rects>>>2,(rects>>>2)+count*4)),
+  th14_webgpu_copy:(source,rect,target,point) => Module['th14WebGpuRuntime'].host.copy(source>>>0,HEAP32.subarray(rect>>>2,(rect>>>2)+4),target>>>0,HEAP32.subarray(point>>>2,(point>>>2)+2)),
+  th14_webgpu_read__async:'auto',
+  th14_webgpu_read: async function (handle,pointer,size) {
+    const raw=await Module['th14WebGpuRuntime'].host.read(handle>>>0);
+    if(raw.byteLength!==size)throw new Error('WebGPU readback size mismatch');
+    HEAPU8.set(raw,pointer);
+  },
+  th14_webgpu_resample:(source,rect,target,to,weights,width,height,inputMask,outputMask) => Module['th14WebGpuRuntime'].host.resample(
+    source>>>0,HEAP32.subarray(rect>>>2,(rect>>>2)+4),target>>>0,HEAP32.subarray(to>>>2,(to>>>2)+4),
+    weights?HEAPU8.subarray(weights,weights+width*height*8):null,width,height,
+    HEAPU32.subarray(inputMask>>>2,(inputMask>>>2)+4),HEAPU32.subarray(outputMask>>>2,(outputMask>>>2)+4)),
+  th14_webgpu_release:(handle) => Module['th14WebGpuRuntime'].host.release(handle>>>0),
+  th14_webgpu_present:(handle) => Module['th14WebGpuRuntime'].host.present(handle>>>0),
+  th14_webgpu_schedule:(callback,data,delay) => Module['th14WebGpuRuntime'].schedule(callback,data,delay),
+  th14_webgpu_request_frames:(callback,data) => Module['th14WebGpuRuntime'].startFrames(callback,data),
+});

@@ -122,13 +122,13 @@ def platform(name):
  def invoke(caller,*args):
   global sequence,next_file,pcm_frames
   calls[name]+=1
-  if name.startswith('th14_webgpu_'):return e.invoke(name,caller,*args)
+  if name.startswith('th14_webgpu_')and name!='th14_webgpu_schedule':return e.invoke(name,caller,*args)
   if backend=='webgpu'and(name.startswith('gl')or name=='touhou_clip_control'):
    raise AssertionError('Unexpected GLES call '+name)
   if name=='th14_clock_ticks':return (clock_ns//1000000)&0xffffffff
   if name=='SDL_GetTicksNS':return clock_ns
   if name=='SDL_GetTicks':return clock_ns//1000000
-  if name=='emscripten_async_call':
+  if name in ['emscripten_async_call','th14_webgpu_schedule']:
    function,argument,delay=args;sequence+=1;heapq.heappush(callbacks,(clock_ns+max(1,delay)*1000000,sequence,function,argument));return
   if name in ['th11_reset_browser_keyboard','SDL_ResetKeyboard','SDL_CloseJoystick','SDL_DestroyWindow','SDL_Quit']:return
   if name=='SDL_free':caller['free'](caller,args[0]);return

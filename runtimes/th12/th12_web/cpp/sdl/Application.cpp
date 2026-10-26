@@ -14,6 +14,9 @@
 #include "../game/AnmRenderer.hpp"
 #include <SDL3/SDL.h>
 #include <emscripten.h>
+#ifdef TH14_WEBGPU_BACKEND
+#include "../../../portable/sdl/Th14WebGpuCallbacks.hpp"
+#endif
 #include <emscripten/heap.h>
 #include <malloc.h>
 #include <emscripten/html5.h>
@@ -93,6 +96,13 @@ EM_JS(int, th11_browser_keyboard, (), { return typeof Module["resetBrowserKeyboa
 // Browser has no Windows boot-time clock. Preserve native integer wrapping
 // using this environment's actual monotonic millisecond input.
 EM_JS(unsigned, th14_clock_ticks, (), { return performance.now() >>> 0; });
+static void schedule_th14_work(void(*callback)(void*),void* data,int delay){
+#ifdef TH14_WEBGPU_BACKEND
+    th14_webgpu_schedule(callback,data,delay);
+#else
+    emscripten_async_call(callback,data,delay);
+#endif
+}
 #endif
 EM_JS(void, th11_reset_browser_keyboard, (), { Module["resetBrowserKeyboard"]?.(); });
 EM_JS(void, th11_browser_frame, (int ok,double milliseconds,unsigned ticks), { Module["onGameFrame"]?.(ok,milliseconds,ticks); });
@@ -413,7 +423,7 @@ struct Application:StageResourceEffects
     }
     void dispatch_initial_upload_resume(u32 index){
         initial_upload_waiting=true;
-        emscripten_async_call(resume_initial_upload,new BootWorkToken{this,boot_worker_generation,BootWork::Resume,index},1);
+        schedule_th14_work(resume_initial_upload,new BootWorkToken{this,boot_worker_generation,BootWork::Resume,index},1);
     }
     static void resume_initial_upload(void* raw){
         std::unique_ptr<BootWorkToken> token(static_cast<BootWorkToken*>(raw));auto& app=*token->owner;
@@ -429,7 +439,7 @@ struct Application:StageResourceEffects
     }
     void dispatch_boot_work(BootWork work,u32 index,int delay){
         boot_worker_work=work;boot_worker_index=index;
-        emscripten_async_call(run_boot_work,new BootWorkToken{this,boot_worker_generation,work,index},delay);
+        schedule_th14_work(run_boot_work,new BootWorkToken{this,boot_worker_generation,work,index},delay);
     }
     static void run_boot_work(void* raw){
         std::unique_ptr<BootWorkToken> token(static_cast<BootWorkToken*>(raw));
@@ -486,7 +496,7 @@ struct Application:StageResourceEffects
         const u64 elapsed=u64(SDL_GetTicksNS())-app.stage_worker_started_ns;
         if(elapsed<60000000){
             const int remaining=int((60000000-elapsed+999999)/1000000);
-            emscripten_async_call(finish_stage_worker_wait,token.release(),remaining);return;
+            schedule_th14_work(finish_stage_worker_wait,token.release(),remaining);return;
         }
         app.stage_worker_waiting=false;
         std::printf("[loading14] worker wait completed after %.3fms\n",double(elapsed)/1000000.);
@@ -497,14 +507,14 @@ struct Application:StageResourceEffects
         if(token->generation!=app.stage_worker_generation||!app.stage_worker_waiting)return;
         app.stage_worker_started_ns=u64(SDL_GetTicksNS());
         std::printf("[loading14] worker wait dispatched; minimum60ms\n");
-        emscripten_async_call(finish_stage_worker_wait,token.release(),60);
+        schedule_th14_work(finish_stage_worker_wait,token.release(),60);
     }
     bool begin_stage_worker_wait(bool initial)override{
         ++stage_worker_generation;stage_worker_waiting=!initial;
         if(stage_worker_waiting){
             // Dispatch after this callback pass. No scene/resource pointer is
             // retained by either timer, and a newer generation cancels it.
-            emscripten_async_call(start_stage_worker_wait,new StageWorkerWaitToken{this,stage_worker_generation},0);
+            schedule_th14_work(start_stage_worker_wait,new StageWorkerWaitToken{this,stage_worker_generation},0);
         }
         return true;
     }
@@ -1087,7 +1097,12 @@ EMSCRIPTEN_KEEPALIVE void th11_loop_start(){
 #if PORT_TITLE == 14
     app.resume_boot_worker();
 #endif
-    emscripten_request_animation_frame_loop([](double time,void* epoch)->EM_BOOL{
+#ifdef TH14_WEBGPU_BACKEND
+    auto request_frames=th14_webgpu_request_frames;
+#else
+    auto request_frames=emscripten_request_animation_frame_loop;
+#endif
+    request_frames([](double time,void* epoch)->EM_BOOL{
         if(!running||uintptr_t(epoch)!=loop_epoch)return EM_FALSE;
         const double begin=emscripten_get_now(),delta=previous_frame<0?0:(time-previous_frame)/1000.;previous_frame=time;
         if(suspended){cadence.reset();return EM_TRUE;}
