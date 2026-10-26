@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "7298b1a50c203884f6672f1d0f746280a941b7e6",
+  "sourceCommit": "9f750c79daf0262455a25bdb358d9ca177570e23",
   "files": [
     {
       "path": ".gitignore",
@@ -229,6 +229,11 @@
       "sha256": "6d19ffa9fc973ca3a1f9a316255ba9138a003e90fd0542ddea5e07797409e474"
     },
     {
+      "path": "docs/porting/TH14_MARISAB_EASY_OCT26.md",
+      "bytes": 1618,
+      "sha256": "23166e21cf5e9693149837b0b859d3921e0431bdd96b85af42bf33039595bdf8"
+    },
+    {
       "path": "docs/porting/TH14_MARISAB_FULL_NATIVE_OCT19.md",
       "bytes": 2546,
       "sha256": "f713dbea93af192b1207ed85dfeb0f7b126e2ea864ce95d1bf38427a98a6e841"
@@ -260,8 +265,8 @@
     },
     {
       "path": "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
-      "bytes": 2943,
-      "sha256": "f4e97372a3cb572dc79abcc9c3cb83b7a3350b9530ab6915c9484981f2b3d5b7"
+      "bytes": 2973,
+      "sha256": "46fe3a083f9e85d723f33c177736d4fddc97ff98dd22a001e87666194ab06131"
     },
     {
       "path": "docs/porting/TH14_MSG_HUD_ORDER_OCT24.md",
@@ -310,8 +315,8 @@
     },
     {
       "path": "docs/porting/TH14_NATIVE_GLES_COMPONENT_OCT26.md",
-      "bytes": 3660,
-      "sha256": "542ed8d491ebfa066815c36814e445b9bafaeb579d870e625e573e5bd7cbcd15"
+      "bytes": 3956,
+      "sha256": "f5d714743ee1ede70315c6b25bd87bcc06724caa2d46bc2a429d182a267cecbc"
     },
     {
       "path": "docs/porting/TH14_NATIVE_STACK_OCT24.md",
@@ -355,8 +360,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 9584,
-      "sha256": "4f3f6b2180fa0ece359b4ee6a7ada46f907e082af889b9d88d9c02b552adf540"
+      "bytes": 10160,
+      "sha256": "a46865f90e16cc684dbf47bb26ca5ea2954abe6762714862956a5cde28c85f31"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -562,6 +567,11 @@
       "path": "docs/porting/TH14_VIEWPORT_CANDIDATES_OCT19.md",
       "bytes": 4531,
       "sha256": "f9addd93cde9120c809df2c955e2522988c811b0e2e18e61441726480d9f0390"
+    },
+    {
+      "path": "docs/porting/TH14_WEBGPU_STAGE_COMPONENT_OCT26.md",
+      "bytes": 3103,
+      "sha256": "8164c5e15ff019456813add1bd73090fde9598e3f93b76791c76941e3439ca79"
     },
     {
       "path": "docs/porting/TH14_WORKER_RESOURCE_CONTINUATION_OCT15.md",
@@ -3439,6 +3449,11 @@
       "sha256": "fddf4fada91bf16bef2241b68a4584849aa3849eb2f18bff8c8877e48cf179ae"
     },
     {
+      "path": "docs/porting/th14-marisab-easy-verified-oct26.json",
+      "bytes": 10116,
+      "sha256": "0821f999533e167efe07c0516c1113c66d304b226aebb7b0c6add2616a9cae6c"
+    },
+    {
       "path": "docs/porting/th14-marisab-lunatic-verified-oct26.json",
       "bytes": 9390,
       "sha256": "f40174518843036621d664323fecd96c0eb8c4b24cb2f47b92ac4e206b685ee4"
@@ -3460,8 +3475,8 @@
     },
     {
       "path": "docs/porting/th14-mode-acceptance-inventory-oct25.json",
-      "bytes": 189491,
-      "sha256": "b434268363339139c63b3913119599b4b859e9f4227fa2651fe365eac5fc0932"
+      "bytes": 192746,
+      "sha256": "7acbb357bab1f7ca70f7a9ba05a4fe99b58e870a6d7577dfb714a07237b0d4bb"
     },
     {
       "path": "docs/porting/th14-msg-hud-order-verified-oct24.json",
@@ -6147,6 +6162,11 @@
       "path": "docs/porting/th14-warm-replay-8618-constructor-clear-verified-oct13.json",
       "bytes": 3630,
       "sha256": "ebde6c3e03e9bf4d4a18e364bfcaf76e8d9e54149b6541a65235bfec3e3e561b"
+    },
+    {
+      "path": "docs/porting/th14-webgpu-stage-verified-oct26.json",
+      "bytes": 25808,
+      "sha256": "27c173b2f64a4f16104dda9442b3285aeba32524328e55ec332b66f391fa87da"
     },
     {
       "path": "docs/porting/th14-workspace-diagnostics-gateway-prepared-oct14.json",
@@ -21974,6 +21994,21 @@
       "sha256": "aa7ac1335cc7bebedad4dd6493a4c42d4c0fa713e25d77acc39834d63aac1124"
     },
     {
+      "path": "tools/th14-webgpu-rgb565-sampler-oct26.py",
+      "bytes": 7957,
+      "sha256": "fec7e7fe2a2834a32f36dd2b4143240a95401079cb74c6dbc3491ecd728fd17a"
+    },
+    {
+      "path": "tools/th14-webgpu-stage-component-oct26.py",
+      "bytes": 19684,
+      "sha256": "9816f00e43185efcb1ed92b29d165867f0d258cfcf48f2ee4c109b4bc3bd8782"
+    },
+    {
+      "path": "tools/th14-webgpu-stage-evidence-oct26.py",
+      "bytes": 6406,
+      "sha256": "0bc2d14444d6a7e2ba8916e187dd8d860457f108286ff39ae60765db95541e8a"
+    },
+    {
       "path": "tools/th16-anm-basic-check.mjs",
       "bytes": 6067,
       "sha256": "54101afa4049f8f56b0999071c66dff1727079aa7b9d78b93b85b9345be00fd9"
@@ -23125,17 +23160,18 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "7298b1a50c203884f6672f1d0f746280a941b7e6",
-    "title": "TH14 strict Sakuya A Easy evidence and focused-hit stack producer",
+    "basePublishedCommit": "9f750c79daf0262455a25bdb358d9ca177570e23",
+    "title": "TH14 strict Marisa B Easy and native WebGPU Stage prototype",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-focused-hit-stack-producer-native-oct26.py",
-      "tools/th14-focused-hit-stack-producer-evidence-oct26.py",
-      "docs/porting/TH14_FOCUSED_HIT_STACK_PRODUCER_OCT26.md",
-      "docs/porting/th14-focused-hit-stack-producer-verified-oct26.json",
-      "docs/porting/TH14_SAKUYAA_EASY_OCT26.md",
-      "docs/porting/th14-sakuyaa-easy-verified-oct26.json",
-      "docs/porting/TH14_EFFECT149_RETIREMENT_OCT26.md",
+      "tools/th14-webgpu-stage-component-oct26.py",
+      "tools/th14-webgpu-rgb565-sampler-oct26.py",
+      "tools/th14-webgpu-stage-evidence-oct26.py",
+      "docs/porting/TH14_WEBGPU_STAGE_COMPONENT_OCT26.md",
+      "docs/porting/th14-webgpu-stage-verified-oct26.json",
+      "docs/porting/TH14_MARISAB_EASY_OCT26.md",
+      "docs/porting/th14-marisab-easy-verified-oct26.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
+      "docs/porting/TH14_NATIVE_GLES_COMPONENT_OCT26.md",
       "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
       "docs/porting/th14-mode-acceptance-inventory-oct25.json",
       "docs/github-publication-manifest.json"
@@ -23145,19 +23181,21 @@
     "productionGraphicsChanged": false,
     "productionAudioChanged": false,
     "gameAssetsAdded": false,
-    "nativeNaturalRunModePairs": 29,
-    "nativeAllStageEntryModePairs": 24,
-    "sakuyaAEasyNativeCallbacks": 128425,
-    "sakuyaAEasyVm303Rows": 2441,
-    "sakuyaAEasyCombatCheckpoints": 1291,
-    "sakuyaAEasyIndependentlyVerifiedFiniteEvidence": true,
-    "focusedHitOriginalCommonChainCases": 960,
-    "focusedHitSkippedRewardControls": 15,
-    "focusedHitStackLastWriter": "453aae push edi",
-    "focusedHitPortableAddressModelImplemented": false,
-    "focusedHitSameCallbackPointerAssociations": 3,
-    "focusedHitEarlierCheckpointPointerAssociations": 8,
-    "retainedRootZFailuresWaived": false,
+    "nativeNaturalRunModePairs": 30,
+    "nativeAllStageEntryModePairs": 25,
+    "marisaBEasyNativeCallbacks": 107233,
+    "marisaBEasyVm303Rows": 2630,
+    "marisaBEasyCombatCheckpoints": 1206,
+    "marisaBEasyIndependentlyVerifiedFiniteEvidence": true,
+    "nativeWebgpuPrototypeExactStageFrames": 21,
+    "nativeWebgpuPrototypeDraws": 1005,
+    "nativeWebgpuPrototypeComparedBytes": 25804800,
+    "nativeWebgpuRgb565SourceCodes": 65536,
+    "nativeWebgpuRgb565SamplerComparedFloatWords": 786432,
+    "nativeWebgpuOptionalFeatures": [],
+    "productionCppRendererExecutedByWebgpuPrototype": false,
+    "productionWebgpuBackendImplemented": false,
+    "productionWebglFix": false,
     "unrelatedResourceCryptEditExcluded": true,
     "currentSdlBrowserAcceptance": false,
     "sdlWasmSha256": "23bcfdef3441f5dbccc615a0f883cf6bb2de727d95aead90396f4814d490d05c",

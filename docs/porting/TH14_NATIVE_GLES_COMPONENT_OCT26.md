@@ -26,3 +26,5 @@ python tools/th14-native-gles-component.py `
 进一步的原生视口对照已覆盖全部 21 幅画面：保留同一组件 Wasm、矩阵／顶点／状态／纹理和所有片元着色器，只从提交的顶点着色器移除半像素偏移，再在该离屏组件自己的 D3D11 视口中于裁剪后施加偏移。21／21 幅完整缓冲均与原版参考逐字节一致。八位子像素取整仍保留，屏幕顶点路径不改。独立检查器重新读取所有缓冲、复算差异并验证仅一份顶点着色器改变，见[检查器](../../tools/th14-native-gles-viewport-evidence-check.py)与[范围报告](th14-native-gles-viewport-verified-oct26.json)。
 
 这项控制使用私有离屏进程中的原生 D3D11 视口干预，不是生产 WebGL 修复，也没有访问浏览器或其他应用。它将此前隔离绘制的裁剪次序证据扩展到了同一有限命令流的全部画面。生产 WebGL 仍为 20／21；适用于 WebGL 的实现及其他图形范围继续待验收。
+
+后续[独立 WebGPU 组件](TH14_WEBGPU_STAGE_COMPONENT_OCT26.md)也通过同一 21 组有限命令流，并用全 RGB565 编码采样控制核对位复制到 BGRA8 的转换。它使用 WGSL 镜像而非当前 C++ Renderer，尚待生产接入，未改写本组件或 WebGL 的验收结果。

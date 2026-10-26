@@ -1704,9 +1704,57 @@
         5,
         6
       ],
-      "nativeCapturedRunAvailable": false,
-      "allStageEntriesObserved": false,
-      "retainedNaturalRuns": [],
+      "nativeCapturedRunAvailable": true,
+      "allStageEntriesObserved": true,
+      "retainedNaturalRuns": [
+        {
+          "path": "artifacts/th14/retail-marisab-easy-callback-hardware-oct26",
+          "reportSha256": "b7b7a30a8dac709a82ac385748791e73e6daa1d0c332746b7c51e65e2f4a745c",
+          "initialSnapshotSha256": "1b28bc574e71ea4874f93fe05482866764615e3dfca3de4bef1dc1acf045b683",
+          "selectedSha256": "2f518ff2207cdb94c59707ad7ee5b9f9643aecf00f68d8380038c22d53690cd0",
+          "callbacks": 107233,
+          "stagesObserved": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "naturalReplayEndObserved": true,
+          "clearCompletionNotAsserted": true,
+          "intactOriginalReplayDeclared": true,
+          "instructionBytesPatched": 0,
+          "rngOrCounterWrites": 0,
+          "replaySha256": "cca4f177759078077817981c90c7e36e28ce4f3917a022ae9c0bd7cedd8a1848",
+          "selected32ComparisonReports": [
+            {
+              "path": "artifacts/th14/stage-item-retirement-oct25/marisab-easy-callback-full-oct26/report.json",
+              "reportSha256": "69fc16bda91e72cfa6752b1d6c105325c18d8a931fa24f12956314622dab5a7b",
+              "callbacks": 107233,
+              "wasmSha256": "f0801b8a81134c61255ffb9102a41a3957b8cf8ea1d8de7813da381665a619de",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": true
+              },
+              "reportedAdditionalGateFailures": [],
+              "scope": "Reported full captured-run selected32 equality only; additional failures remain explicit. Each version and field scope requires its own verification."
+            }
+          ],
+          "preferredComparisonPath": "artifacts/th14/stage-item-retirement-oct25/marisab-easy-callback-full-oct26/report.json",
+          "partialSelected32ComparisonReports": [
+            {
+              "path": "artifacts/th14/stage-item-retirement-oct25/marisab-easy-callback-prefix-26000-oct26/report.json",
+              "reportSha256": "5014c742db83d321bea81be4f9b5b74249493bdaf0880b74a836d9a615877e80",
+              "callbacks": 26000,
+              "wasmSha256": "f0801b8a81134c61255ffb9102a41a3957b8cf8ea1d8de7813da381665a619de",
+              "scope": "Reported selected32 prefix equality only, not a full captured-run pass."
+            }
+          ]
+        }
+      ],
       "wholeModeEquivalent": false
     },
     {
@@ -2984,8 +3032,8 @@
     }
   ],
   "modePairs": 30,
-  "pairsWithNaturalNativeRun": 29,
-  "pairsWithAllStageEntriesObserved": 24,
+  "pairsWithNaturalNativeRun": 30,
+  "pairsWithAllStageEntriesObserved": 25,
   "preferredCaptureRule": "Prefer more observed stages, then a reported full selected32 comparison, then the longest compared prefix; loading callback count breaks remaining ties.",
   "scope": "An inventory of retained actual stage entries and separately scoped reported selected32 comparisons, with additional observed gate failures. Missing gates are null, never passed. Neither replay end nor observing all stage entries proves a clear, all objects, ordinary menu initialization, pixels, PCM, persistence or mode equivalence.",
   "reportBindings": {
@@ -2998,6 +3046,7 @@
     "artifacts/th14/retail-marisaa-full-observed-process-hardware-oct23/report.json": "bdae042beeb5a48c81fdd65e395a1d9f20386895b899c6d6da07864c31b8c749",
     "artifacts/th14/retail-marisaa-hard-callback-rng-hardware-oct26/report.json": "d95704789da54f5c66c94106b2b9a626ab5ec89cb4ffdad6d06a606ff7c51b7b",
     "artifacts/th14/retail-marisaa-lunatic-exit-boundary-hardware-oct26/report.json": "128cbeebc314973d37c804e21122bade0ebe42d8cdadf9399d0404ec76f71b0a",
+    "artifacts/th14/retail-marisab-easy-callback-hardware-oct26/report.json": "b7b7a30a8dac709a82ac385748791e73e6daa1d0c332746b7c51e65e2f4a745c",
     "artifacts/th14/retail-marisab-extra-full-hardware-oct24/report.json": "77900e6d1382b730cf32c286fd77339a087123cb61fc44c586c02876961cb6cf",
     "artifacts/th14/retail-marisab-hard-campaign-hardware-oct25/report.json": "13183bb722837c856e50fc3eff753a4cfba741b2a9a927d986fc06f49a54e285",
     "artifacts/th14/retail-marisab-hard-hud-completion-hardware-oct25/report.json": "15eb20bf17f9eeda72c16b0c3a3137bd23d8ba3a1c7f72382ef747181a9f2658",
@@ -3140,6 +3189,10 @@
     "artifacts/th14/stage-item-retirement-oct25/marisaa-lunatic-full-oct26/hud-report.json": "22e9f9ce99d5b345e9dc0560cce7624335e880fe2405850247bb8d3d5c17e2af",
     "artifacts/th14/stage-item-retirement-oct25/marisaa-lunatic-full-oct26/live-report.json": "0ee3ae8d93c01f6d88ff7752df081f202a494f09c607b263455867b7e9c25f65",
     "artifacts/th14/stage-item-retirement-oct25/marisaa-lunatic-full-oct26/combat-snapshots.json": "45420261cdc32e2403d8ef4adf0691621f0e290414cdb5d8d42c1fbbfa48760d",
+    "artifacts/th14/stage-item-retirement-oct25/marisab-easy-callback-full-oct26/camera-report.json": "3b6af59a4cb3429d8872e5bbefb349b1dd27d2a6cc057a69137b3e2ca0cb387b",
+    "artifacts/th14/stage-item-retirement-oct25/marisab-easy-callback-full-oct26/hud-report.json": "77cf88079556ab244b4bb2f36b0bee974d88486a626a6d3cbd3b8d56286cd069",
+    "artifacts/th14/stage-item-retirement-oct25/marisab-easy-callback-full-oct26/live-report.json": "f6389dc6f58b1193bbe0fa896d6eeb8c8bc6cbdd98e4bc08941a1eaf907ea126",
+    "artifacts/th14/stage-item-retirement-oct25/marisab-easy-callback-full-oct26/combat-snapshots.json": "2aa44f61ed5fa97c6e36b288da15fcd4434b648f3dd67151ae6eb45ddc8dd557",
     "artifacts/th14/stage-item-retirement-oct25/marisab-lunatic-full-oct26/camera-report.json": "5247800f034c14c813f2c7ac2fda750f441d251606a391b038e28664c1eafd59",
     "artifacts/th14/stage-item-retirement-oct25/marisab-lunatic-full-oct26/hud-report.json": "2ab384ef0104864046bf3fd27d1c3f4d257b169c4fbba185aac78c078603617e",
     "artifacts/th14/stage-item-retirement-oct25/marisab-lunatic-full-oct26/live-report.json": "1e58ad40e8c259f58d096bf5b12ada5446d8918c0c2e856dac4e1faffd062a13",
