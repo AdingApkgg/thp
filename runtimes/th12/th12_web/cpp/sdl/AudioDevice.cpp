@@ -14,6 +14,9 @@
 #include "../game/Th14MusicFade.hpp"
 #include <cmath>
 #include <algorithm>
+#if PORT_TITLE == 14
+#include "Th14MusicStream.hpp"
+#endif
 namespace th11::sdl {
 namespace {
 u32 word(const u8* p){u32 v;std::memcpy(&v,p,4);return v;}
@@ -43,8 +46,13 @@ struct AudioDevice::Impl {
     struct Voice {
 #if PORT_TITLE == 14
         MusicTime time;
+        std::unique_ptr<Th14MusicStream> music_stream;
 #endif
-        ma_decoder decoder{};ma_sound sound{};bool decoded=false,attached=false;~Voice(){if(attached)ma_sound_uninit(&sound);if(decoded)ma_decoder_uninit(&decoder);}};
+        ma_decoder decoder{};ma_sound sound{};bool decoded=false,attached=false;~Voice(){if(attached)ma_sound_uninit(&sound);
+#if PORT_TITLE == 14
+        music_stream.reset();
+#endif
+        if(decoded)ma_decoder_uninit(&decoder);}};
     ma_engine engine{};SDL_AudioStream* stream=nullptr;bool engine_ready=false,ready=false,suspended=false,refill=true,music_paused=false;
     std::array<std::unique_ptr<Voice>,sound_voice_count> sounds;std::array<std::vector<u8>,96> samples;std::unique_ptr<Voice> music,saved_music;
     std::vector<u8> formats;i32 track=-1,saved_track=-1,fade=0,fade_total=0;mutable u32 stats[14]{};
@@ -59,8 +67,22 @@ struct AudioDevice::Impl {
         // Retail plays fixed-rate PCM;avoid the mixer's optional pitch path.
         flags|=MA_SOUND_FLAG_NO_PITCH;
 #endif
-        if(ma_sound_init_from_data_source(&engine,&v.decoder,flags,nullptr,&v.sound)!=MA_SUCCESS)return false;v.attached=true;return true;
+        ma_data_source* source=&v.decoder;
+#if PORT_TITLE == 14
+        if(v.music_stream)source=&v.music_stream->base;
+#endif
+        if(ma_sound_init_from_data_source(&engine,source,flags,nullptr,&v.sound)!=MA_SUCCESS)return false;v.attached=true;return true;
     }
+#if PORT_TITLE == 14
+    bool seek_music(Voice& v,ma_uint64 frame,bool subframe=false){
+        // Retail481ee0 recreates its streaming buffer. Recreate the mixer node
+        // as well: ma_sound_seek alone retains already decoded cache frames.
+        if(v.attached){ma_sound_stop(&v.sound);ma_sound_uninit(&v.sound);v.attached=false;}
+        if(subframe)v.music_stream->begin_subframe();
+        else if(ma_data_source_seek_to_pcm_frame(&v.music_stream->base,frame)!=MA_SUCCESS)return false;
+        if(!attach(v))return false;ma_sound_set_looping(&v.sound,MA_TRUE);return true;
+    }
+#endif
     Voice* voice(u32 n){return n&&n<=sounds.size()?sounds[n-1].get():nullptr;}
 };
 AudioDevice::AudioDevice():impl(std::make_unique<Impl>()){}
@@ -95,7 +117,11 @@ bool AudioDevice::music(i32 track){
 #if PORT_TITLE == 14
         a.music_fade={};
 #endif
+#if PORT_TITLE == 14
+        if(!a.seek_music(*a.music,0)){error="Unable to restart TH14 music";return false;}
+#else
         ma_sound_seek_to_pcm_frame(&a.music->sound,0);
+#endif
 #if PORT_TITLE == 14
         a.music->time.started=a.clock();a.music->time.paused=0;a.music->time.pause_started=0;
 #endif
@@ -113,6 +139,8 @@ bool AudioDevice::music(i32 track){
     ma_uint64 length=0;if(ma_decoder_get_length_in_pcm_frames(&next->decoder,&length)!=MA_SUCCESS||length!=total/align){error="Music PCM frame count differs from original: "+path;return false;}
     ma_data_source_set_loop_point_in_pcm_frames(&next->decoder,intro/align,total/align);
 #if PORT_TITLE == 14
+    next->music_stream=std::make_unique<Th14MusicStream>(next->decoder,a.formats,format);
+    if(!next->music_stream->initialized){error="Unable to initialize TH14 music stream";return false;}
     next->time.rate=rate;next->time.total=total;next->time.intro=intro;
     next->time.channels=channels;next->time.bits=short_word(format+46);
 #endif
@@ -179,10 +207,11 @@ bool AudioDevice::restore_music(){
     const double sample_time=a.saved_position*double(a.saved_music->time.rate);
     if(sample_time>=1&&sample_time<2147483648.){
         const u64 frame=u64(i32(sample_time)-1);
-        if(ma_sound_seek_to_pcm_frame(&a.saved_music->sound,frame)!=MA_SUCCESS){error="Unable to restore TH14 music time";return false;}
+        if(!a.seek_music(*a.saved_music,frame)){error="Unable to restore TH14 music time";return false;}
     }
-    // Original sub-frame timestamps underflow the raw-file seek. Preserve
-    // the prior decoder fallback until that exceptional path is reconstructed.
+    else if(sample_time>=0&&sample_time<1&&a.saved_music->music_stream->restore_supported()){
+        if(!a.seek_music(*a.saved_music,0,true)){error="Unable to restore TH14 subframe music";return false;}
+    }
 #endif
     if(a.music)ma_sound_stop(&a.music->sound);a.music=std::move(a.saved_music);a.track=a.saved_track;a.saved_track=-1;
     a.fade=a.fade_total=0;a.music_paused=false;
