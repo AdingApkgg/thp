@@ -11,17 +11,20 @@ ROOT=Path(__file__).resolve().parents[1]
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--home',type=Path,required=True)
+    parser.add_argument('--build',type=Path,help='Explicit frozen build directory; defaults to HOME/browser-candidate')
     parser.add_argument('--expected-code-commit',required=True)
     parser.add_argument('--output',type=Path,required=True)
     parser.add_argument('--reuse-build',type=Path,help='Required when validating reused objects; supplies their frozen build provenance')
     parser.add_argument('--check',action='store_true');args=parser.parse_args()
     home=args.home.resolve();assert home.is_relative_to(ROOT/'artifacts/th14')
+    build_home=(args.build or(home/'browser-candidate')).resolve(strict=True)
+    assert build_home.is_relative_to(ROOT/'artifacts/th14')
     bindings={}
     def read(path):
         raw=path.read_bytes();bindings[path.relative_to(ROOT).as_posix()]=dict(bytes=len(raw),sha256=hashlib.sha256(raw).hexdigest());return raw
     def load(path):return json.loads(read(path))
     sha=lambda raw:hashlib.sha256(raw).hexdigest()
-    build=load(home/'browser-candidate/build.json');package=load(home/'browser-runtime/package-report.json')
+    build=load(build_home/'build.json');package=load(home/'browser-runtime/package-report.json')
     routes=load(home/'launcher-candidate/launcher-report.json');transport=load(home/'launcher-candidate/transport.json')
     served=load(home/'served-current.json');read(home/'verify-preview.py')
     assert build['compiled'] and build['sourceUnits']==146
@@ -29,11 +32,11 @@ def main():
     assert build['basePublishedCommit']==served['basePublishedCommit']==args.expected_code_commit
     assert build['rootUnrelatedResourceCryptExcluded'] and not build['retailAssetsIncluded']
     assert build['actualSdlPort'] and build['asyncify'] and build['frameAndWorkerCallbacksSerialized']
-    assert sha(read(home/'browser-candidate/build-tool.py'))==build['toolSha256']
+    assert sha(read(build_home/'build-tool.py'))==build['toolSha256']
     for path,row in build['sourceBindings'].items():
-        assert sha(read(home/'browser-candidate/source'/path))==row['sha256'],path
+        assert sha(read(build_home/'source'/path))==row['sha256'],path
     for path,digest in build['objectHashes'].items():
-        assert sha(read(home/'browser-candidate/objects'/(path.replace('/','_')+'.o')))==digest,path
+        assert sha(read(build_home/'objects'/(path.replace('/','_')+'.o')))==digest,path
     assert len(build['objectHashes'])==146
     if build['reusedObjectCount']:
         assert args.reuse_build is not None
@@ -53,9 +56,9 @@ def main():
             assert sha(read(previous/'source'/name))==left[name]
             obj=name.replace('/','_')+'.o'
             assert sha(read(previous/'objects'/obj))==digest
-            assert os.path.samefile(previous/'objects'/obj,home/'browser-candidate/objects'/obj)
+            assert os.path.samefile(previous/'objects'/obj,build_home/'objects'/obj)
     for filename,field in [('th14-sdl.wasm','wasmSha256'),('th14-sdl.mjs','loaderSha256')]:
-        raw=read(home/'browser-candidate'/filename)
+        raw=read(build_home/filename)
         assert sha(raw)==build[field] and raw==read(home/'browser-runtime'/filename)
     assert build['wasmSha256']==package['wasmSha256']==routes['wasmSha256']==transport['wasmSha256']==served['wasmSha256']
     assert transport['verifiedTransport'] and transport['routes']==133 and len(transport['requests'])==21
@@ -70,8 +73,9 @@ def main():
         assert os.path.samefile(home/'browser-runtime'/row['path'],ROOT/row['source'])
         assert (home/'browser-runtime'/row['path']).stat().st_size==row['bytes']
     courier=ROOT/'tools/tmp/github-source-release'
-    for relative in ('th12_web/cpp/game/GameSession.cpp','th12_web/cpp/game/Replay.cpp'):
-        raw=read(home/'browser-candidate/source'/relative)
+    for relative in ('th12_web/cpp/game/GameSession.cpp','th12_web/cpp/game/Replay.cpp',
+        'th12_web/cpp/game/TitleMenu.cpp','portable/sdl/WebGpuRenderer.hpp'):
+        raw=read(build_home/'source'/relative)
         published=subprocess.check_output(['git','-C',str(courier),'show',args.expected_code_commit+':runtimes/th12/'+relative])
         assert raw==published
     for report in (build,package,routes,served):

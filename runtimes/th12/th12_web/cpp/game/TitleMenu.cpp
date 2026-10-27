@@ -21,7 +21,11 @@ u32 TitleMenu::create(i32 script,i32 slot,i32 file){
     if(file==3&&!text_resource){error="title text resource missing";return 0;}
     // Retail TH14 45966a/45969b load title and title_v in slots16/17.
     const u16 title_file=kPortTitle==14?16:24,variant_file=kPortTitle==14?17:25;
-    auto* vm=animations.create(file==1?variant:file==2?ascii:file==3?*text_resource:title,script,file==1?variant_file:file==2?2:file==3?0:title_file,22);
+    // Retail458d70 copies the title template and updates it without replacing
+    // its layer. In particular title script0 retains layer0; its children set
+    // their own visible layers in their scripts.
+    const u32 layer=kPortTitle==14&&file==0?u32(-1):22u;
+    auto* vm=animations.create(file==1?variant:file==2?ascii:file==3?*text_resource:title,script,file==1?variant_file:file==2?2:file==3?0:title_file,layer);
     if(!vm){error="title animation creation failed: "+std::to_string(script)+" (ANM opcode "+std::to_string(animations.last_error)+")";return 0;}
     return handles[slot]=vm->id;
 }

@@ -30,4 +30,4 @@ GLES 的 199 个语义／清除边界和最终画面全部与 HAL 相同。WebGP
 python tools/th14-screen-line-clip-evidence-oct27.py --check
 ```
 
-当前 8224 候选仍是包含标题修复的 `4a843e6`，未包含本次屏幕线段修复；浏览器未验收。严格标题 VM 的句柄／layer 差异、旧默认 GLES 三面 1199 帧蓝字节、历史相机／effect149、普通原版流程、完整音频及持久化继续。模式覆盖仍为 30／25，不继承旧冻结版本的完整演示或整局通过。仅发布源码和复核元数据，测试静音并维持 100 GiB 空闲与每例 128 MiB 新观察限制。`completeGame=false`、`nativeEquivalent=false`、`browserAcceptance=false`。
+后续静音 8226 候选已绑定本项源码 `d53076b`：146 单元全部重新编译、零对象复用，28 份生成字体／音乐资源别名复用；133 路由／21 HTTP 及实际服务 Wasm、宿主、着色器和静音脚本核对通过，见[候选摘要](th14-screen-line-candidate-verified-oct27.json)。普通浏览器仍未验收。严格标题 VM 的句柄／layer 差异另见[模板图层修复](TH14_TITLE_TEMPLATE_LAYER_OCT27.md)，8226 尚未包含该后续修复。旧默认 GLES 三面 1199 帧蓝字节、历史相机／effect149、普通原版流程、完整音频及持久化继续。模式覆盖仍为 30／25，不继承旧冻结版本的完整演示或整局通过。仅发布源码和复核元数据，测试静音并维持 100 GiB 空闲与每例 128 MiB 新观察限制。`completeGame=false`、`nativeEquivalent=false`、`browserAcceptance=false`。

@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "2c52d7dad38108169abde5c6cb24e94233f81e1d",
+  "sourceCommit": "d53076b4997f544f142757e1b147b7e163d78d0d",
   "files": [
     {
       "path": ".gitignore",
@@ -430,8 +430,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 23148,
-      "sha256": "6b754ed74630edb4459e16b4385b044e17b7d7787df19d210cadbdca13521501"
+      "bytes": 23822,
+      "sha256": "02aec967fd0ffbea2a68b9bfb00f401ce5b72251a2fdc24615ee7ac924afebd0"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -490,8 +490,8 @@
     },
     {
       "path": "docs/porting/TH14_SCREEN_LINE_CLIP_OCT27.md",
-      "bytes": 3952,
-      "sha256": "465b547f4cc2c6eb298173cfb2a8750b4010d5db046795852ecf777915fcb1f5"
+      "bytes": 4279,
+      "sha256": "9e84e65192abfadcf0b81ad00fde1d28cebd3489512307d84ffe832ad1708bf2"
     },
     {
       "path": "docs/porting/TH14_SELECTED_PLAYER_RESOURCE_OCT23.md",
@@ -637,6 +637,11 @@
       "path": "docs/porting/TH14_TITLE_SLOTS_FIRST_ENTRY_FIX_OCT23.md",
       "bytes": 2378,
       "sha256": "2571155d8a8b2c43939004454feb711c2db2e5b95e850f1273ce88d6cb3e86df"
+    },
+    {
+      "path": "docs/porting/TH14_TITLE_TEMPLATE_LAYER_OCT27.md",
+      "bytes": 2377,
+      "sha256": "f8022f39b02fa7423996b8e0f7eb1c07364313844ddb7edf7ee7e3af1225a97e"
     },
     {
       "path": "docs/porting/TH14_VERTEX_OUTPUT_DIAGNOSTIC_OCT14.md",
@@ -5204,6 +5209,11 @@
       "sha256": "396899ed6f9103c07f7146f8f22d4b40afab02d6cf18658dbd578779931e7edc"
     },
     {
+      "path": "docs/porting/th14-screen-line-candidate-verified-oct27.json",
+      "bytes": 109231,
+      "sha256": "886a95f6116fabbd10de315167063e57efa801156be8b4b9a3fe727fba7f2320"
+    },
+    {
       "path": "docs/porting/th14-screen-line-clip-verified-oct27.json",
       "bytes": 71669,
       "sha256": "03f561b6f290cc481150c6aaea72916b87e8f91b895f2263c17383975b1885b4"
@@ -6317,6 +6327,11 @@
       "path": "docs/porting/th14-title-spell-stage-verified.json",
       "bytes": 1530,
       "sha256": "3e3978493a0c55a010cdc296bfeff78a5adc173118add1575bc6e27d11c523e5"
+    },
+    {
+      "path": "docs/porting/th14-title-template-layer-verified-oct27.json",
+      "bytes": 62420,
+      "sha256": "1ff068ac03084b913480cf30f3a5077221b00c5e6195200a8486fed59da7ae5a"
     },
     {
       "path": "docs/porting/th14-title-unlock-verified.json",
@@ -8835,8 +8850,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/TitleMenu.cpp",
-      "bytes": 9567,
-      "sha256": "b68cabfc3f6933cafbebd44c377eaf85ffb09596902a3f272256453df8c5b9a8"
+      "bytes": 9835,
+      "sha256": "4c12351b41e967694026c885f46e542134bc540081e56de090968654c879da0d"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/TitleMenu.hpp",
@@ -18425,8 +18440,8 @@
     },
     {
       "path": "tools/th14-local-candidate-evidence-oct27.py",
-      "bytes": 6297,
-      "sha256": "442d88308381a7b3eeacb89d74b97c11edcf0538488df5c126aca71ad65e3859"
+      "bytes": 6546,
+      "sha256": "2cf8ec070ce1e6ac2c179fcfbe876b582114e0333190365e33ffc2bab0d68d1a"
     },
     {
       "path": "tools/th14-local-quiet-audio.js",
@@ -18842,6 +18857,11 @@
       "path": "tools/th14-native-title-live-compare-oct27.py",
       "bytes": 7192,
       "sha256": "c7866f2c3d6e030bae1e4c5153b196f7500436b43e710fc181730bf087a3f9cc"
+    },
+    {
+      "path": "tools/th14-native-title-template-layer-oct27.py",
+      "bytes": 3840,
+      "sha256": "b7e0afe179abfd0056854334ac5ec62be3de4bb3ab88cd6036da4ee0fa77f435"
     },
     {
       "path": "tools/th14-native-trace-compact.py",
@@ -22484,6 +22504,11 @@
       "sha256": "1ba2fa8f5492906d095810df4df6ce7dc491282fe76c622bf859dd839f10ab37"
     },
     {
+      "path": "tools/th14-title-template-layer-evidence-oct27.py",
+      "bytes": 6598,
+      "sha256": "34aed068248bcea84bb176ee269ad151f00155ff93b2ae378122243c34629a88"
+    },
+    {
       "path": "tools/th14-title-unlock-native.py",
       "bytes": 1701,
       "sha256": "a800f373f6514a582af0a86a2d53ca85bc6eaac48d5d238520ed2110833cbe65"
@@ -23785,37 +23810,44 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "2c52d7dad38108169abde5c6cb24e94233f81e1d",
-    "title": "TH14 screen-line half-pixel bias before clipping",
+    "basePublishedCommit": "d53076b4997f544f142757e1b147b7e163d78d0d",
+    "title": "TH14 title factory preserves template layer and current line-repaired candidate",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/portable/sdl/WebGpuRenderer.hpp",
-      "tools/th14-prepare-application-trace-oct27.py",
-      "tools/th14-application-trace-hal-oct27.py",
-      "tools/th14-application-gles-trace-oct27.py",
-      "tools/th14-screen-line-clip-evidence-oct27.py",
+      "runtimes/th12/th12_web/cpp/game/TitleMenu.cpp",
+      "tools/th14-native-title-template-layer-oct27.py",
+      "tools/th14-title-template-layer-evidence-oct27.py",
+      "docs/porting/TH14_TITLE_TEMPLATE_LAYER_OCT27.md",
+      "docs/porting/th14-title-template-layer-verified-oct27.json",
+      "tools/th14-local-candidate-evidence-oct27.py",
+      "docs/porting/th14-screen-line-candidate-verified-oct27.json",
       "docs/porting/TH14_SCREEN_LINE_CLIP_OCT27.md",
-      "docs/porting/th14-screen-line-clip-verified-oct27.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
-    "productionGameplayChanged": false,
-    "productionGraphicsChanged": true,
+    "productionGameplayChanged": true,
+    "productionGraphicsChanged": false,
     "sourceOnly": true,
     "gameAssetsAdded": false,
+    "nativeFactoryPrefixCases": 12,
     "actualApplicationFrames": 2265,
     "actualApplicationAssertions": 7,
-    "firstDifferentDraw": 395,
-    "independentHalDraws": 415,
-    "independentHalClears": 7,
-    "comparedDrawAndClearSteps": 422,
-    "currentFullBufferIndependentHalExact": true,
-    "originalScreenLineQuantizationRetained": true,
-    "actualNativeTitleFramesRechecked": 2,
-    "stageRegressionFrames": 21,
-    "oldFailuresRetained": true,
-    "currentQuietPreviewPort": 8224,
-    "previewStillEarlierCodeCommit": "4a843e67c262cf6a7968fd71291a80b062e5bbb8",
+    "actualNativeTitleFullBufferExact": true,
+    "strictVmDifferenceCount": 61,
     "strictLiveVmComparisonPassed": false,
+    "diagnosticUniquePairs": 30,
+    "diagnosticWordsCompared": 9090,
+    "diagnosticAfterExplicitHandleMapDifferentWords": 0,
+    "mappingIsNotStrictAcceptance": true,
+    "currentQuietPreviewPort": 8226,
+    "candidateCodeCommit": "d53076b4997f544f142757e1b147b7e163d78d0d",
+    "compiledCppUnits": 146,
+    "reusedObjects": 0,
+    "wasmBytes": 2700558,
+    "wasmSha256": "aa9abbc50315ca95ca973cc01faedeb745ee66834032e63f32d01758cfd0a2ee",
+    "routeCount": 133,
+    "httpChecks": 21,
+    "previewStillEarlierThanTemplateLayerRepair": true,
+    "oldFailuresRetained": true,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
     "browserAcceptance": false,
