@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "4a843e67c262cf6a7968fd71291a80b062e5bbb8",
+  "sourceCommit": "2c52d7dad38108169abde5c6cb24e94233f81e1d",
   "files": [
     {
       "path": ".gitignore",
@@ -430,8 +430,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 22382,
-      "sha256": "82ff3b74dcb704fc73ff5ee99c74b6c0130d356554afb7f836ead00700951e59"
+      "bytes": 23148,
+      "sha256": "6b754ed74630edb4459e16b4385b044e17b7d7787df19d210cadbdca13521501"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -487,6 +487,11 @@
       "path": "docs/porting/TH14_SCREEN_CAMERA_FIX_OCT15.md",
       "bytes": 3244,
       "sha256": "292f438b3124d3e35a5f7889f45e5fbee40bd704a2fce9780a23037597f0126d"
+    },
+    {
+      "path": "docs/porting/TH14_SCREEN_LINE_CLIP_OCT27.md",
+      "bytes": 3952,
+      "sha256": "465b547f4cc2c6eb298173cfb2a8750b4010d5db046795852ecf777915fcb1f5"
     },
     {
       "path": "docs/porting/TH14_SELECTED_PLAYER_RESOURCE_OCT23.md",
@@ -5199,6 +5204,11 @@
       "sha256": "396899ed6f9103c07f7146f8f22d4b40afab02d6cf18658dbd578779931e7edc"
     },
     {
+      "path": "docs/porting/th14-screen-line-clip-verified-oct27.json",
+      "bytes": 71669,
+      "sha256": "03f561b6f290cc481150c6aaea72916b87e8f91b895f2263c17383975b1885b4"
+    },
+    {
       "path": "docs/porting/th14-screen-shake-hold-verified.json",
       "bytes": 1576,
       "sha256": "d62e30cdd53de35b0280863ecdb2cc851b699efc112a6e817d029d565b4df6b3"
@@ -7515,8 +7525,8 @@
     },
     {
       "path": "runtimes/th12/portable/sdl/WebGpuRenderer.hpp",
-      "bytes": 13639,
-      "sha256": "57bbb64838ec1eda7bc90bb0dd97c81f6f980996119748bca9ae1b86d9c4c813"
+      "bytes": 14075,
+      "sha256": "fcff82afdaca21c9503c38cfe3cd9651f5e10acd61d7dad2d7c1c1dc76a12cea"
     },
     {
       "path": "runtimes/th12/portable/sdl/third_party/miniaudio.LICENSE",
@@ -15170,8 +15180,8 @@
     },
     {
       "path": "tools/th14-application-gles-trace-oct27.py",
-      "bytes": 13913,
-      "sha256": "0ecefaf79ff40d096b12e1e2bdd154792fe8b844e84e814e9ab259901e13cd97"
+      "bytes": 14297,
+      "sha256": "1ec3031a92e5e273cd9cec4c5f60ca7501bcb7126400f84a3659115d5c327da5"
     },
     {
       "path": "tools/th14-application-render-pair-check.py",
@@ -15180,8 +15190,8 @@
     },
     {
       "path": "tools/th14-application-trace-hal-oct27.py",
-      "bytes": 34760,
-      "sha256": "50d2156f14aa05598b99a6ebb15f716e7250aa70e3f5b74e7a984d9091a9f2e9"
+      "bytes": 35327,
+      "sha256": "5693c65801603a2f0e42f5c28ac50c245dd32df6599b6e918e0752b2d96ef184"
     },
     {
       "path": "tools/th14-area-lifecycle-browser-evidence-check.mjs",
@@ -19610,8 +19620,8 @@
     },
     {
       "path": "tools/th14-prepare-application-trace-oct27.py",
-      "bytes": 12950,
-      "sha256": "5ab2d0241973c14b4cafe4c3cdfcdf1e7f6ba276ae4fea2184c8e3570bed720c"
+      "bytes": 13186,
+      "sha256": "5a97c5efd4581acd00304c17b649a64fa4790329f7367037f02f4da32c15a763"
     },
     {
       "path": "tools/th14-prepare-lossless-music.py",
@@ -20142,6 +20152,11 @@
       "path": "tools/th14-screen-fade-native.py",
       "bytes": 2065,
       "sha256": "28351f176126321da1679d0e0a0a40c51902f34dfe71e68f1a7734d6a779f3a8"
+    },
+    {
+      "path": "tools/th14-screen-line-clip-evidence-oct27.py",
+      "bytes": 9200,
+      "sha256": "fed0205f9d812805a1c0f01a6fb6de3cc85bf165cc428bcb3f6ad4b873feec00"
     },
     {
       "path": "tools/th14-screen-shake-check.mjs",
@@ -23770,34 +23785,37 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "4a843e67c262cf6a7968fd71291a80b062e5bbb8",
-    "title": "TH14 title-repaired quiet candidate with verified partial object reuse",
+    "basePublishedCommit": "2c52d7dad38108169abde5c6cb24e94233f81e1d",
+    "title": "TH14 screen-line half-pixel bias before clipping",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-build-webgpu-release.py",
-      "tools/th14-local-candidate-evidence-oct27.py",
-      "docs/porting/TH14_NATIVE_TITLE_FRAMES_OCT27.md",
+      "runtimes/th12/portable/sdl/WebGpuRenderer.hpp",
+      "tools/th14-prepare-application-trace-oct27.py",
+      "tools/th14-application-trace-hal-oct27.py",
+      "tools/th14-application-gles-trace-oct27.py",
+      "tools/th14-screen-line-clip-evidence-oct27.py",
+      "docs/porting/TH14_SCREEN_LINE_CLIP_OCT27.md",
+      "docs/porting/th14-screen-line-clip-verified-oct27.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "docs/porting/th14-native-title-candidate-verified-oct27.json",
       "docs/github-publication-manifest.json"
     ],
     "productionGameplayChanged": false,
-    "productionGraphicsChanged": false,
+    "productionGraphicsChanged": true,
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "compiledCppUnits": 2,
-    "reusedObjects": 144,
-    "totalCppUnits": 146,
-    "wasmBytes": 2700436,
-    "wasmSha256": "a0884e8e9e682ccdd5abdb0d7db7e1587c917d594e4a8bc8e629f2c02affab75",
-    "candidateCodeCommit": "4a843e67c262cf6a7968fd71291a80b062e5bbb8",
-    "routeCount": 133,
-    "httpChecks": 21,
-    "currentQuietPreviewPort": 8224,
-    "strictLiveVmComparisonPassed": false,
-    "demoImageBackendComparisonPassed": false,
-    "demoDifferentPixels": 1,
-    "demoDifferentBytes": 2,
+    "actualApplicationFrames": 2265,
+    "actualApplicationAssertions": 7,
+    "firstDifferentDraw": 395,
+    "independentHalDraws": 415,
+    "independentHalClears": 7,
+    "comparedDrawAndClearSteps": 422,
+    "currentFullBufferIndependentHalExact": true,
+    "originalScreenLineQuantizationRetained": true,
+    "actualNativeTitleFramesRechecked": 2,
+    "stageRegressionFrames": 21,
     "oldFailuresRetained": true,
+    "currentQuietPreviewPort": 8224,
+    "previewStillEarlierCodeCommit": "4a843e67c262cf6a7968fd71291a80b062e5bbb8",
+    "strictLiveVmComparisonPassed": false,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
     "browserAcceptance": false,

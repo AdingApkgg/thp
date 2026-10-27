@@ -125,6 +125,7 @@ def trace_finish():
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--process-host', action='store_true', help='Use the declared startup tick/cookie host instead of the legacy relative-time host')
     args = parser.parse_args()
     out = args.output.resolve()
     assert out.is_relative_to(ROOT / 'artifacts/th14') and not out.exists()
@@ -155,7 +156,7 @@ def main():
     marker = "'-I'+str(inc),'-I'+str(src)]"
     assert builder.count(marker) == 1
     builder = builder.replace(marker, "'-I'+str(inc),'-I'+str(src),'-I'+str(R/'runtimes/th12/portable/sdl')]")
-    runner_path = ROOT / 'tools/th14-native-application.py'
+    runner_path = ROOT / ('tools/th14-native-application-process-host-oct27.py' if args.process_host else 'tools/th14-native-application.py')
     raw = runner_path.read_bytes(); sources[runner_path.relative_to(ROOT).as_posix()] = SHA(raw)
     runner = raw.decode().replace('\r\n', '\n')
     assert runner.count('R=Path(__file__).resolve().parents[1]') == 1

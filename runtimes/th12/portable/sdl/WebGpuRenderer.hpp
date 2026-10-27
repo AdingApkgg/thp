@@ -81,6 +81,7 @@ public:
     void issue(const State& state,Topology topology,u32 count,const void* input,const void* indices,IndexType indexType,const void* instances,u32 instanceBytes){
         target(state.target,state.depth);if(state.texture)prepare(state.texture);
         const auto& p=state.pipeline;const auto& vp=state.viewport;
+        const bool screenLine=state.layout.screen&&(topology==Topology::Lines||topology==Topology::LineStrip);
         const u32 repetitions=instances?instanceBytes/68:1;
         for(u32 repetition=0;repetition<repetitions;++repetition){
             auto world=state.matrix[0];auto factor=p.textureFactor;
@@ -100,6 +101,10 @@ public:
             if(nativeFog){volatile float range=p.fogFar-p.fogNear;volatile float scale=1.f/range;volatile float bias=p.fogFar*scale;packet.uniform[72]=bias;packet.uniform[73]=scale;}
             integers(packet,76,{u32(state.layout.screen),u32(p.textureTransform),u32(nativeFog),0});
             packet.uniform[80]=float(vp.x);packet.uniform[81]=float(vp.y);packet.uniform[82]=float(vp.width);packet.uniform[83]=float(vp.height);
+            // The host adds a half-pixel viewport bias. For screen-space
+            // lines it must precede homogeneous clipping: shifting only
+            // the viewport clips a line entering its first pixel too early.
+            if(screenLine){packet.uniform[80]-=.5f;packet.uniform[81]-=.5f;}
             packet.uniform[84]=p.fogNear;packet.uniform[85]=p.fogFar;packet.uniform[86]=p.fogDensity;
             integers(packet,88,{u32(p.depthTest&&state.depth&&renderer.resolve(renderer.owner,state.depth).format==PixelFormat::Depth16),u32(p.rangeFog),u32(p.fogMode),0});
             std::vector<u32> order;const u32 n=vertex_count(topology,count);
@@ -113,7 +118,7 @@ public:
                 if(state.layout.diffuse!=VertexAttributes::absent)std::memcpy(&v.color,bytes+state.layout.diffuse,4);
                 if(state.layout.specular!=VertexAttributes::absent)std::memcpy(&v.specular,bytes+state.layout.specular,4);
                 if(state.layout.uv!=VertexAttributes::absent)std::memcpy(v.uv,bytes+state.layout.uv,8);
-                if(state.layout.screen){const float rhw=v.position[3];const float x=std::nearbyint((v.position[0]-float(vp.x))*256.f)*(1.f/256.f),y=std::nearbyint((v.position[1]-float(vp.y))*256.f)*(1.f/256.f);v.position[0]=(x/float(vp.width)*2.f-1.f)/rhw;v.position[1]=-(y/float(vp.height)*2.f-1.f)/rhw;v.position[2]/=rhw;v.position[3]=1.f/rhw;v.fog=float(v.specular>>24)/255.f;}
+                if(state.layout.screen){const float rhw=v.position[3];float x=std::nearbyint((v.position[0]-float(vp.x))*256.f)*(1.f/256.f),y=std::nearbyint((v.position[1]-float(vp.y))*256.f)*(1.f/256.f);if(screenLine){x+=.5f;y+=.5f;}v.position[0]=(x/float(vp.width)*2.f-1.f)/rhw;v.position[1]=-(y/float(vp.height)*2.f-1.f)/rhw;v.position[2]/=rhw;v.position[3]=1.f/rhw;v.fog=float(v.specular>>24)/255.f;}
             }
             if(!state.layout.screen&&packet.pipeline[3]==u32(Topology::Triangles)){
                 const bool quad=topology==Topology::Strip&&count==2&&state.layout==attributes(VertexLayout::WorldUv)&&!indices;

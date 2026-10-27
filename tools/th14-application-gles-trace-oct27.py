@@ -31,11 +31,14 @@ def main():
     parser.add_argument('--probe-draw',type=int,nargs='*',default=[],help='Observe unblended source fragments on an independent float target')
     parser.add_argument('--uv-probe',action='store_true',help='Private shader observation with a disabled-by-default UV output uniform')
     parser.add_argument('--baseline-kind',choices=['current-application','independent-hal'],default='current-application')
+    parser.add_argument('--expected-frame',type=int,default=2264,help='Explicit Application frame represented by this trace')
     args=parser.parse_args();out=args.output.resolve();build_home=args.build.resolve();source=args.trace.resolve(strict=True)
     assert out.is_relative_to(ROOT/'artifacts/th14')and not out.exists();out.mkdir(parents=True)
     storage=load('trace_storage',ROOT/'tools/th14-test-storage.py');storage.check_budget(out,100*1024**3,128*1024**2)
     (out/'runner.py').write_bytes(Path(__file__).read_bytes())
-    trace_raw=source.read_bytes();trace=json.loads(trace_raw);assert trace['frame']==2264
+    trace_raw=source.read_bytes();trace=json.loads(trace_raw);assert 1<=args.expected_frame<=240000 and trace['frame']==args.expected_frame
+    expected_draws=sum(row['kind']==101 for row in trace['events']);expected_clears=sum(row['kind']==110 for row in trace['events'])
+    assert expected_draws>0 and expected_clears>0
     native_raw=args.native_comparisons.read_bytes();native=json.loads(native_raw)
     expected={row['event']:row for row in native['steps']}
     build=json.loads((build_home/'build.json').read_bytes())
@@ -169,7 +172,7 @@ def main():
                 del allocations[before:];assert gl_error()==0;clears+=1;compare(row['sequence'],w[0])
             elif kind==20:submit();assert w[0]==1
             else:assert kind in [4,120],kind
-        submit();assert draws==416 and clears==7
+        submit();assert draws==expected_draws and clears==expected_clears
         raw=read(1);(out/'frame.bgra').write_bytes(raw);baseline=args.baseline.read_bytes();baseline_exact=raw==baseline
         assert baseline_exact,'Semantic replay must reproduce every byte of the explicitly selected complete baseline'
         completed=True

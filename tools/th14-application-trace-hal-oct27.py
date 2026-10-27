@@ -34,6 +34,8 @@ class Viewport(C.Structure):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--trace', type=Path, required=True)
+    parser.add_argument('--expected-frame', type=int, default=2264, help='Explicit Application frame represented by this trace')
+    parser.add_argument('--baseline', type=Path, help='Captured complete Application buffer; defaults to the legacy demo-1-ready filename')
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--wgpu-site', type=Path, help='Replay identical packets on the current native WebGPU host and compare after every draw')
     parser.add_argument('--process-vertices', type=int, nargs='*', default=[], help='Capture D3D9 ProcessVertices output before these one-based actual draws')
@@ -50,8 +52,11 @@ def main():
     out.mkdir(parents=True)
     tool_raw = Path(__file__).read_bytes(); (out / 'run-tool.py').write_bytes(tool_raw)
     trace_raw = source.read_bytes(); trace = json.loads(trace_raw)
-    assert trace['frame'] == 2264 and trace['semanticInputsObservedBeforeBackend'] and not trace['nativeValuesProvidedToEngine']
+    assert 1<=args.expected_frame<=240000 and trace['frame'] == args.expected_frame and trace['semanticInputsObservedBeforeBackend'] and not trace['nativeValuesProvidedToEngine']
     assert all(row['sequence'] == index for index, row in enumerate(trace['events']))
+    expected_draws=sum(row['kind']==101 for row in trace['events'])
+    expected_clears=sum(row['kind']==110 for row in trace['events'])
+    assert expected_draws>0 and expected_clears>0
     header = SDK.read_bytes(); tables = {}
     for name in ['IDirect3D9', 'IDirect3DDevice9', 'IDirect3DSurface9', 'IDirect3DTexture9', 'IDirect3DVertexBuffer9', 'IDirect3DPixelShader9']:
         body = header.decode().split('DECLARE_INTERFACE_(' + name + ',', 1)[1].split('};', 1)[0]
@@ -171,7 +176,7 @@ def main():
         if replay is None or args.final_only: return
         a, b = pixels(handle), replay.read(handle)
         assert len(a) == len(b)
-        different = [i for i, (left, right) in enumerate(zip(a, b)) if left != right]
+        different = [] if a == b else [i for i, (left, right) in enumerate(zip(a, b)) if left != right]
         width = metadata[handle]['words'][1]
         first = different[0] if different else None
         row = dict(event=last_event, completedDraws=draws, target=handle, nativeSha256=SHA(a), webgpuSha256=SHA(b),
@@ -430,7 +435,7 @@ def main():
             elif kind == 120: assert final == w[0]
             else: raise AssertionError(('Unimplemented observed command', kind))
         assert pending is not None and repetition == (len(instances) // 68 if instances else 1)
-        assert draws == 416 and clears == 7 and final == 1
+        assert draws == expected_draws and clears == expected_clears and final == 1
         call(device, 'IDirect3DDevice9', 'EndScene', [], []); scene_open = False
         readback = readbacks.get(1)
         if readback is None:
@@ -443,7 +448,7 @@ def main():
         (out / 'frame.bgra').write_bytes(raw); completed = True
         if replay is not None:
             gpu_raw=replay.read(final);(out/'webgpu-frame.bgra').write_bytes(gpu_raw)
-            baseline=(source.parent/'demo-1-ready.bgra').read_bytes()
+            baseline=(args.baseline or(source.parent/'demo-1-ready.bgra')).read_bytes()
             if args.shader_variant == 'baseline' and not args.require_native_equality:assert gpu_raw==baseline,'Packet replay must exactly reproduce the observed C++ Application frame'
             different=[i for i,(a,b)in enumerate(zip(raw,gpu_raw))if a!=b]
             final_differences=[dict(x=i//4%640,y=i//4//640,channel='BGRA'[i%4],native=raw[i],webgpu=gpu_raw[i])for i in different]
