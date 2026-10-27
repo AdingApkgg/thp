@@ -30,6 +30,7 @@ parser.add_argument('--maximum-frames',type=int,default=12000,help='Explicit bou
 parser.add_argument('--maximum-wall-seconds',type=int,default=900,help='Explicit wall budget, at most7200seconds')
 parser.add_argument('--declared-process-cookie',type=lambda text:int(text,0),required=True)
 parser.add_argument('--declared-initial-game-ticks',type=int,required=True)
+parser.add_argument('--observe-creations',action='store_true',help='Read the bounded creation ring after each actual tick; no game state is replaced')
 args=parser.parse_args();B=args.build.resolve();O=args.output.resolve()
 assert 0<=args.declared_initial_game_ticks<2**32
 initial_game_ticks=args.declared_initial_game_ticks
@@ -207,6 +208,8 @@ try:
  assert initialized==1,C.string_at(C.addressof(api['memory'].data_ptr(store).contents)+api['th11_error'](store)).decode()
  table=api['__indirect_function_table'];mem=api['memory']
  frame_index=0;wall_started=time.monotonic();actions=[];captures=[]
+ creation_rows=[];creation_count=0
+ if args.observe_creations:assert 'component_births'in api,'Build with the read-only title observer'
  def state_now():
   pointer=api['component_state'](store);return list(struct.unpack('<20I',mem.read(store,pointer,pointer+80)))
  def reference_state():
@@ -234,7 +237,9 @@ try:
   captures.append(entry);return entry
  def report():
   result=dict(schema='th14/native-application-run/1',completed=completed,error=error,checks=checks,scenarioSha256=sha(scenario_raw),initialSave=initial_save,finalSave=save_files(),buildReportSha256=sha((B/'build.json').read_bytes()),archiveSha256=archive_sha256,frames=frame_index,rows=rows,actions=actions,captures=captures,glCalls=dict(calls),pendingAsyncCallbacks=len(callbacks),deliveredCallbackSequence=sequence,files=file_events,pcmFrames=pcm_frames,pcmSha256=audio_hash.hexdigest(),wasmSha256=sha(raw),toolSha256=sha(tool_raw),renderer=e.info,actualProductionApplicationAndDevices=True,platformClockAndIoDeclared=True,physicalAudioDevicesOpened=0,virtualAudioStreamsCreated=calls['SDL_OpenAudioDeviceStream'],appUiControlled=False,browserRun=False,browserAcceptance=False,productionChanged=False,completeGame=False,nativeEquivalent=False)
-  result.update(backend=args.backend,hostToolSha256=sha(host_path.read_bytes()),metadataEpochAtFrameZero=args.metadata_epoch,declaredInitialGameTicks=initial_game_ticks)
+  result.update(backend=args.backend,hostToolSha256=sha(host_path.read_bytes()),metadataEpochAtFrameZero=args.metadata_epoch,declaredInitialGameTicks=initial_game_ticks,
+   callbackClockPolicy='queued deadlines between fixed frame starts; callback execution duration declared zero',minimumCallbackDelayMs=1)
+  if args.observe_creations:result['animationCreationRecords']=creation_rows
   observed=reference_state()
   if observed is not None:result['finalReferenceState']=observed
   (O/'report.json').write_text(json.dumps(result,indent=2)+'\n')
@@ -253,11 +258,26 @@ try:
    actions[-1]['until']=until
   for _ in range(count):
    assert time.monotonic()-wall_started<args.maximum_wall_seconds,'Native Application wall budget exhausted'
-   frame_index+=1;clock_ns=frame_index*1000000000//60;delivered=0
-   while callbacks and callbacks[0][0]<=clock_ns:
-    _,_,function,argument=heapq.heappop(callbacks);target=table.get(store,function);assert target;target(store,argument);delivered+=1;assert delivered<=256
+   frame_index+=1;frame_ns=frame_index*1000000000//60;delivered=0
+   while callbacks and callbacks[0][0]<=frame_ns:
+    due,_,function,argument=heapq.heappop(callbacks)
+    assert clock_ns<=due<=frame_ns
+    # A worker continuation uses its queued delivery time. Assigning every
+    # callback the next frame's time incorrectly postpones its successors.
+    clock_ns=due
+    target=table.get(store,function);assert target;target(store,argument);delivered+=1;assert delivered<=256
+   clock_ns=frame_ns
    ok=api['component_tick'](store,held,pause)
    assert ok==1,C.string_at(C.addressof(api['memory'].data_ptr(store).contents)+api['th11_error'](store)).decode()
+   if args.observe_creations:
+    pointer=api['component_births'](store);assert pointer,'Creation ring exceeded its4096-record observation budget'
+    count,width=struct.unpack('<2I',mem.read(store,pointer,pointer+8))
+    assert width==6 and creation_count<=count<=4096
+    creation_bytes=mem.read(store,pointer+8+creation_count*24,pointer+8+count*24)
+    for n,values in enumerate(struct.iter_unpack('<6I',creation_bytes),creation_count):
+     creation_rows.append(dict(record=n,appFrame=frame_index,script=values[0],requestedLayer=values[1],file=values[2],
+      hasResource=values[3],depth=values[4],handle=values[5],serial=values[5]>>13,slot=values[5]&8191))
+    creation_count=count
    state=state_now();key=state[:2]+state[3:6]+state[7:16]
    if not rows or frame_index%30==0 or key!=rows[-1]['key']:rows.append(dict(frame=frame_index,clockNs=clock_ns,state=state,key=key,callbacksDelivered=delivered))
    if frame_index%3000==0:

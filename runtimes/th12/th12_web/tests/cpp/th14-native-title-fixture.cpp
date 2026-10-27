@@ -65,6 +65,16 @@ EMSCRIPTEN_KEEPALIVE const unsigned* component_live_state() {
     }
     return words.data();
 }
+EMSCRIPTEN_KEEPALIVE const unsigned* component_births() {
+    static std::vector<unsigned> words;
+    const auto count = th11::anm_creation_count();
+    if (count > 4096) return nullptr; // The engine's observation ring is bounded.
+    words = {count, 6};
+    for (unsigned n = 0; n < count; ++n)
+        for (unsigned k = 0; k < 6; ++k)
+            words.push_back(unsigned(th11::anm_creation_value(n, k)));
+    return words.data();
+}
 EMSCRIPTEN_KEEPALIVE void component_audio_close() {
     th11::sdl::app.audio.close();
 }

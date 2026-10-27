@@ -23,10 +23,16 @@ def main():
     parser.add_argument('--maximum-seconds',type=int,default=45)
     parser.add_argument('--capture-present',type=int,default=0,help='Read back one actual backbuffer before this declared Present entry; zero observes device creation only')
     parser.add_argument('--snapshot-vms',action='store_true',help='Read ordinary/overlay animation registries before target Present diagnostic calls')
+    parser.add_argument('--trace-publications',action='store_true',help='Read animation handle publications using the original serial-counter hardware watchpoint')
+    parser.add_argument('--trace-resource-pump',action='store_true',help='Read resource slots and startup-ready flags at main resource pump entry')
+    parser.add_argument('--trace-startup-ready',action='store_true',help='Read worker queue, signature/ASCII-ready and title-retirement publication boundaries')
     parser.add_argument('--d3d9-header',type=Path,default=Path('C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/shared/d3d9.h'))
     args=parser.parse_args();assert 1<=args.maximum_seconds<=120
     assert 0<=args.capture_present<=600
     assert not args.snapshot_vms or args.capture_present>0
+    assert not args.trace_publications or args.capture_present>0
+    assert not args.trace_resource_pump or args.capture_present>0
+    assert not args.trace_startup_ready or args.capture_present>0
     home=args.output.resolve();assert home.is_relative_to(ROOT/'artifacts/th14')
     home.mkdir(parents=True,exist_ok=False);(home/'run-tool.py').write_bytes(Path(__file__).read_bytes())
     storage=module('device_storage',ROOT/'tools/th14-test-storage.py')
@@ -39,6 +45,9 @@ def main():
         hardwareReturnPcRule='observed call PC plus3',
         capturePresentOrdinal=args.capture_present,newDiagnosticCodeAllocated=bool(args.capture_present),
         snapshotLiveAnimationsBeforeReadback=args.snapshot_vms,
+        traceAnimationPublications=args.trace_publications,maximumPublications=1024,
+        traceMainResourcePump=args.trace_resource_pump,maximumResourcePumpEntries=1200,
+        traceStartupReadyBoundaries=args.trace_startup_ready,maximumStartupBoundaries=128,
         originalThreadContextRedirectDeclared=bool(args.capture_present),
         extraD3dReadbackCallsDeclared=bool(args.capture_present),gameNeverResumesAfterDiagnosticReadback=bool(args.capture_present),
         originalCodeWrites=0,gameStateWrites=0,inputInjection=False,silent=True,
@@ -91,6 +100,13 @@ def main():
     device_observed=False;present_pc=0;present_tid=0;present_count=0;device_pointer=0
     readback_program=None;readback_phase='';readback_result={};context_redirects=0
     normalized_input_samples=[]
+    serial_manager=0;publication_pending={};publications=[]
+    resource_pumps=[]
+    startup_phases={};startup_boundaries=[]
+    serial_after_to_publish={0x47e90f:(0x47e938,'edi'),0x47e918:(0x47e938,'edi'),
+        0x47e9b8:(0x47e9e1,'esi'),0x47e9c1:(0x47e9e1,'esi'),
+        0x47ea6f:(0x47ea98,'edi'),0x47ea78:(0x47ea98,'edi'),
+        0x47eb18:(0x47eb41,'esi'),0x47eb21:(0x47eb41,'esi')}
     def read(address,count):
         data,got=C.create_string_buffer(count),C.c_size_t()
         checked(k.ReadProcessMemory(pi.process,address,data,count,C.byref(got)));assert got.value==count;return data.raw
@@ -117,16 +133,67 @@ def main():
         checked(k.Wow64GetThreadContext(threads[tid],data));return data
     def install(tid,resume=False):
         data=context(tid)
-        if present_pc:addresses=[present_pc,0,0,0]if tid==present_tid else[0,0,0,0]
+        if present_pc:
+            addresses=[present_pc if tid==present_tid else 0,0,0,0]
+            if args.trace_publications:
+                addresses[1]=serial_manager+0xff52c8 if serial_manager else 0x47e938
+                addresses[2]=publication_pending[tid]['publishPc']if tid in publication_pending else 0
+            if args.trace_resource_pump and tid==present_tid:addresses[3]=0x47d720
+            elif args.trace_startup_ready and tid!=present_tid:addresses[3]=startup_phases.get(tid,0x47d0ec)
         else:addresses=[*selected_groups[tid],pending[tid]['returnPc']if tid in pending else 0]if tid in selected_groups else[0x46b110,0x46b1a0,0,0]
         for index,address in enumerate(addresses):struct.pack_into('<I',data,4+4*index,address)
-        struct.pack_into('<I',data,20,0);struct.pack_into('<I',data,24,sum(1<<(2*i)for i,address in enumerate(addresses)if address))
+        dr7=sum(1<<(2*i)for i,address in enumerate(addresses)if address)
+        if present_pc and args.trace_publications and serial_manager:dr7|=0xd00000 # Slot1, write4 bytes.
+        struct.pack_into('<I',data,20,0);struct.pack_into('<I',data,24,dr7)
         if resume:struct.pack_into('<I',data,192,struct.unpack_from('<I',data,192)[0]|0x10000)
         checked(k.Wow64SetThreadContext(threads[tid],data))
     def emit(row):
         rows.append(row)
         with (home/'events.jsonl').open('a')as stream:stream.write(json.dumps(row)+'\n')
         print(json.dumps(row),flush=True);budget()
+    def record_publication(tid,pc,regs,vm):
+        assert len(publications)<1024
+        blob=read(vm,0x5cc);word=lambda at:struct.unpack_from('<I',blob,at)[0]
+        handle=word(0x540);title=u32(0x4db6a4);signature=u32(0x4db668)
+        row=dict(ordinal=len(publications)+1,pc=pc,threadId=tid,precedingPresentEntries=present_count,
+            handle=handle,serial=handle>>13,poolSlot=word(0x544),handleSlot=handle&8191,
+            file=struct.unpack_from('<H',blob,0x36)[0],script=struct.unpack_from('<h',blob,0x4aa)[0],
+            layer=word(0x24),idleCounter=u32(0x4f58bc),signatureDraws=u32(signature+0x60c)if signature else None,
+            titleState=u32(title+0x1c)if title else None,rngHex=read(0x4db508,16).hex(),
+            hostMonotonicNs=time.monotonic_ns(),readOnly=True)
+        assert row['serial']==row['ordinal'],row
+        publications.append(row)
+        with (home/'animation-publications.jsonl').open('a')as stream:stream.write(json.dumps(row)+'\n')
+    def record_resource_pump(tid):
+        assert len(resource_pumps)<1200
+        manager=u32(0x4f56cc);owner=u32(0x4db668);slots=[]
+        if manager:
+            for file in (0,1,2):
+                pointer=u32(manager+0xbc7b0c+file*4)
+                if pointer:
+                    blob=read(pointer,0x13c)
+                    slots.append(dict(file=file,address=pointer,words128Through134=list(struct.unpack_from('<4I',blob,0x128))))
+        row=dict(ordinal=len(resource_pumps)+1,threadId=tid,precedingPresentEntries=present_count,
+            startupWords604Through60c=list(struct.unpack('<3I',read(owner+0x604,12)))if owner else None,
+            slots=slots,hostMonotonicNs=time.monotonic_ns(),readOnly=True)
+        resource_pumps.append(row)
+        with (home/'resource-pump-entries.jsonl').open('a')as stream:stream.write(json.dumps(row)+'\n')
+    def record_startup_boundary(tid,pc,regs):
+        assert len(startup_boundaries)<128
+        owner=u32(0x4db668)
+        row=dict(ordinal=len(startup_boundaries)+1,pc=pc,threadId=tid,precedingPresentEntries=present_count,
+            startupWords604Through60c=list(struct.unpack('<3I',read(owner+0x604,12)))if owner else None,
+            hostMonotonicNs=time.monotonic_ns(),readOnly=True)
+        if pc==0x47d0ec:
+            file=u32(regs['esi']);row['queuedFile']=file
+            startup_phases[tid]={1:0x4441a8,2:0x444222,17:0x4595e1}.get(file,0x47d0ec)
+        elif pc in (0x4441a8,0x444222):
+            assert owner==regs['edi'];startup_phases[tid]=0x47d0ec
+        elif pc==0x4595e1:startup_phases[tid]=0x459615
+        elif pc==0x459615:startup_phases[tid]=0x47d0ec
+        else:raise AssertionError(hex(pc))
+        startup_boundaries.append(row)
+        with (home/'startup-ready-boundaries.jsonl').open('a')as stream:stream.write(json.dumps(row)+'\n')
     def redirect(tid,entry,stack=None):
         nonlocal context_redirects
         data=context(tid);struct.pack_into('<I',data,184,entry)
@@ -209,10 +276,27 @@ def main():
                     elif exception.code in (0x80000004,0x4000001e)and ev.tid in threads:
                         data=context(ev.tid);pc=struct.unpack_from('<I',data,184)[0]
                         regs=dict(zip(('edi','esi','ebx','edx','ecx','eax','ebp','eip','cs','eflags','esp'),struct.unpack_from('<11I',data,156)))
-                        if present_pc and pc==present_pc:
+                        dr6=struct.unpack_from('<I',data,20)[0]
+                        if present_pc and args.trace_resource_pump and pc==0x47d720:
+                            record_resource_pump(ev.tid);install(ev.tid,True)
+                        elif present_pc and args.trace_startup_ready and pc in (0x47d0ec,0x4441a8,0x444222,0x4595e1,0x459615):
+                            record_startup_boundary(ev.tid,pc,regs);install(ev.tid,True)
+                        elif present_pc and args.trace_publications and serial_manager and dr6&2:
+                            assert pc in serial_after_to_publish,hex(pc)
+                            publish,register=serial_after_to_publish[pc]
+                            publication_pending[ev.tid]=dict(publishPc=publish,vm=regs[register],serial=u32(serial_manager+0xff52c8))
+                            install(ev.tid,True)
+                        elif present_pc and args.trace_publications and ev.tid in publication_pending and pc==publication_pending[ev.tid]['publishPc']:
+                            saved=publication_pending.pop(ev.tid);assert u32(saved['vm']+0x540)>>13==saved['serial']
+                            record_publication(ev.tid,pc,regs,saved['vm']);install(ev.tid,True)
+                        elif present_pc and args.trace_publications and not serial_manager and pc==0x47e938:
+                            serial_manager=u32(0x4f56cc);assert serial_manager
+                            record_publication(ev.tid,pc,regs,regs['edi'])
+                            for other in tuple(threads):install(other,other==ev.tid)
+                        elif present_pc and pc==present_pc:
                             assert ev.tid==present_tid
                             present_count+=1
-                            normalized_input_samples.append([present_count,*struct.unpack('<3I',read(0x4d6a90,12))])
+                            normalized_input_samples.append([present_count,u32(0x4d6a90),u32(0x4d6a9c),u32(0x4d6aa0)])
                             if present_count in (1,args.capture_present):
                                 title=u32(0x4db6a4)
                                 snapshot=dict(kind='native-Present-entry',ordinal=present_count,pc=pc,tid=ev.tid,
@@ -280,6 +364,10 @@ def main():
             actualPixelsCaptured=bool(readback_result.get('pixelBytes')),frameReadbackCompleted=bool(args.capture_present and completed),
             readback=readback_result,presentEntriesObserved=present_count,threadContextRedirects=context_redirects,
             normalizedInputSamplesAtPresent=normalized_input_samples,
+            normalizedInputAddresses=dict(held=0x4d6a90,pressed=0x4d6a9c,released=0x4d6aa0),
+            animationPublications=publications,animationPublicationCounterHardwareWatch=bool(serial_manager),
+            mainResourcePumpEntries=resource_pumps,
+            startupReadyBoundaries=startup_boundaries,
             normalizedInputWords='ordinal,held,pressed,released; observed at Present only, not physical input events',
             diagnosticPrivateCodeAllocated=readback_program is not None,gameNeverResumedAfterReadback=bool(readback_program),
             configuredMusicAndSoundVolumeZero=True,

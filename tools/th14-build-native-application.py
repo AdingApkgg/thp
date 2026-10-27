@@ -87,7 +87,7 @@ for unit in units:
  assert result.returncode==0,(O/(unit.stem+'.compile.log')).read_text()[-6000:]
  objects.append(obj);print('compiled',unit.name,flush=True)
 exports=['component_initialize','component_tick','component_state','component_pixels','component_audio_close','th11_error','th11_last_resource','malloc','free']
-if args.title_observer:exports.extend(['component_reference_state','component_live_state'])
+if args.title_observer:exports.extend(['component_reference_state','component_live_state','component_births'])
 linkflags=['-mexec-model=reactor','-Wl,--no-entry','-Wl,--export-memory','-Wl,--export-table','-Wl,--allow-undefined','-Wl,-z,stack-size=1048576',*[f'-Wl,--export={name}'for name in exports]]
 result=subprocess.run([str(compiler),*flags,*linkflags,*[str(p)for p in objects],*[row['path']for row in build['objectBindings']],'-o',str(O/'application.wasm')],cwd=R,env={**os.environ,'TEMP':str(O),'TMP':str(O),'TMPDIR':str(O)},capture_output=True);(O/'link.log').write_bytes(result.stdout+result.stderr);assert result.returncode==0,(O/'link.log').read_text()[-6000:]
 # Bind the included production Application and all project headers. Reused game
