@@ -899,8 +899,15 @@ struct Application:StageResourceEffects
         )||!text_events())return false;
         audio.update();audio.pump();
         frame_statistics.sample(double(SDL_GetTicks())*.001,after==GameSessionPhase::stage&&session.battle&&session.battle->stage_active&&!session.state.replay);
-        frame_text.clear();const auto label=frame_statistics.label();frame_text.add(label.text.c_str(),label.position,label.style);
-        if(!session.draw(renderer,&frame_text)){error=session.error;return false;}
+        frame_text.clear();
+#if PORT_TITLE == 14
+        // Retail42e5c3..42e5d7 skips the FPS callback in Supervisor4 (title).
+        const bool show_frame_statistics=after!=GameSessionPhase::title;
+#else
+        constexpr bool show_frame_statistics=true;
+#endif
+        if(show_frame_statistics){const auto label=frame_statistics.label();frame_text.add(label.text.c_str(),label.position,label.style);}
+        if(!session.draw(renderer,show_frame_statistics?&frame_text:nullptr)){error=session.error;return false;}
 #if PORT_TITLE == 14
         th14_consume_deferred_captures(session.animations.deferred_captures,session,graphics,renderer);
 #endif

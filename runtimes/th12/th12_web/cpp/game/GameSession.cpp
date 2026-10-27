@@ -467,7 +467,11 @@ bool GameSession::update(const GameSessionInput& input) {
     if(state.phase==GameSessionPhase::title) {
         if(!title||!source)return fail("title lifetime missing");
         const u32 raw=(input.held&~256u)|((input.held&256)?0x80000:0)|(input.pause?256:0);
-        if(title->screen==TitleScreen::Main){++title_idle;if(raw)title_idle=0;
+        // Retail459944..45995c increments idle only when Title+1c is already1.
+        // Its state0 activation dispatches the first main-menu update later
+        // in that callback. Our TitleMenu is constructed as Main, so its
+        // first session frame must likewise leave the idle counter alone.
+        if(title->screen==TitleScreen::Main&&(kPortTitle!=14||state.frame!=0)){++title_idle;if(raw)title_idle=0;
 #if PORT_TITLE != 14
             if(title_idle>=1800){const DemoPlaylist playlist=demo_playlist();
                 const auto path=std::string(playlist.names[demo_index<playlist.step?demo_index:0]);
