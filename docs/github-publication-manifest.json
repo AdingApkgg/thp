@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "a3cb5701817b803265bc8ff255d408562726e3fb",
+  "sourceCommit": "6a0a12b4b7a254451ef4e7f888f92118e2c7ef34",
   "files": [
     {
       "path": ".gitignore",
@@ -245,8 +245,8 @@
     },
     {
       "path": "docs/porting/TH14_INITIAL_STAGE_DECODE_OCT27.md",
-      "bytes": 4769,
-      "sha256": "0b295efca73a54a0d49701a6618c28d2af43283e66c72c369b882601acf3da0c"
+      "bytes": 5591,
+      "sha256": "acfcb0959bc013ab389c3f0258249753862da1b20dcbe084b2e8ca4d13c5498e"
     },
     {
       "path": "docs/porting/TH14_INITIAL_STAGE_RESET_OCT24.md",
@@ -445,8 +445,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 26636,
-      "sha256": "5ccc9fdf029ca09706d540dd7e524f89491c6522f612836f8f9a2e353a8ef83e"
+      "bytes": 27165,
+      "sha256": "fb199d73bb07d737925b95a64f0bb08233aeb312cf20fc9e8400d626279407c9"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -2772,6 +2772,11 @@
       "path": "docs/porting/th14-initial-replay-restore-verified-oct27.json",
       "bytes": 64384,
       "sha256": "09cec368f0cc925599c45231521221e7d0c5b93711e759e5a8b1939da4be98ff"
+    },
+    {
+      "path": "docs/porting/th14-initial-stage-decode-candidate-verified-oct27.json",
+      "bytes": 118041,
+      "sha256": "e506d64fe0873245a1400dffb0a32a44c84b8a61926b5f144a789a85e1a58543"
     },
     {
       "path": "docs/porting/th14-initial-stage-decode-verified-oct27.json",
@@ -23895,54 +23900,35 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "a3cb5701817b803265bc8ff255d408562726e3fb",
-    "title": "TH14 staged initial resource decoding and worker lifecycle",
+    "basePublishedCommit": "6a0a12b4b7a254451ef4e7f888f92118e2c7ef34",
+    "title": "TH14 initial-stage decode: full rebuild and quiet local candidate",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/GameResources.cpp",
-      "runtimes/th12/th12_web/cpp/game/GameResources.hpp",
-      "runtimes/th12/th12_web/cpp/game/GameSessionResources.cpp",
-      "runtimes/th12/th12_web/cpp/game/GameSessionResources.hpp",
-      "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "runtimes/th12/th12_web/cpp/sdl/Application.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-initial-stage-decode-fixture.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-native-initial-loading-fixture.cpp",
-      "tools/th14-initial-stage-decode-resources-oct27.py",
-      "tools/th14-initial-stage-decode-evidence-oct27.py",
-      "tools/th14-build-native-application.py",
-      "tools/th14-native-application-process-host-oct27.py",
       "docs/porting/TH14_INITIAL_STAGE_DECODE_OCT27.md",
-      "docs/porting/th14-initial-stage-decode-verified-oct27.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
+      "docs/porting/th14-initial-stage-decode-candidate-verified-oct27.json",
       "docs/github-publication-manifest.json"
     ],
-    "productionInitialResourceLoadingChanged": true,
-    "productionGraphicsChanged": false,
+    "productionGameplayChanged": false,
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "defaultSynchronousResourceConsumersPreserved": true,
-    "decodedResourceComparisons": 42,
-    "initialDecodeResumesAfterSelectedPlayerUpload": true,
-    "eachEclAnimationReadAfterPreviousUpload": true,
-    "coreUnitsRecompiledInitially": 141,
-    "coreUnitsRecompiledAfterBindingCorrection": 1,
-    "coreObjectsReusedAfterFullRecompile": 140,
-    "actualDemoFramesPerBackend": 2264,
-    "actualOrdinaryPrefixFramesPerBackend": 722,
-    "workerSuspendResumeCases": 2,
-    "staleWorkerCallbackLeavesPendingStateUnchanged": true,
-    "lifecycleResumeAll339LiveVmsAndImageAndPcmEqual": true,
-    "priorNativeTitle80PublicationsAnd303VmWordsStillExact": true,
-    "trueParallelNativeCpuWorkerReproduced": false,
-    "actualNativeGameplayStrictFramePassed": false,
-    "remainingRawVmWords": 20,
-    "remainingPixelBytes": 3854,
-    "newBrowserCandidateDelivered": false,
-    "currentQuietPreviewPort": 8228,
-    "candidateProductionCodeCommit": "736103cbc00c2067dbd72d9fd14ebbeef2694245",
+    "compiledCppUnits": 146,
+    "reusedObjects": 0,
+    "totalCppUnits": 146,
+    "wasmBytes": 2713292,
+    "wasmSha256": "35e69e59c0d31bf08e73cefc67ba18ba681af5d421c26de6fe76bda91adae3bd",
+    "candidateCodeCommit": "6a0a12b4b7a254451ef4e7f888f92118e2c7ef34",
+    "routeCount": 133,
+    "httpChecks": 21,
+    "currentQuietPreviewPort": 8230,
+    "nativeTitle80PublicationStrictPassed": true,
+    "actualNativeGameFrameStrictPassed": false,
+    "actualNativeGameFrameDifferentWords": 20,
+    "actualNativeGameFrameDifferentPixels": 1129,
+    "actualNativeGameFrameDifferentBytes": 3854,
     "oldFailuresRetained": true,
-    "fullCampaignAcceptanceInherited": false,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
+    "currentFullReplayStillRunning": true,
     "browserAcceptance": false,
     "completeGame": false,
     "nativeEquivalent": false
