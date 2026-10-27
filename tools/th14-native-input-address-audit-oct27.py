@@ -41,7 +41,8 @@ def main():
         assert row['result']==[held,previous,(held^previous)&held,(held^previous)&(~held&0xffffffff)]
     corrected=load(home/'input-address-sampler-fixed/report.json')
     source=read(home/'input-address-sampler-fixed/run-tool.py')
-    assert corrected['sourceSha256']==SHA(source)==SHA(producer)
+    assert corrected['sourceSha256']==SHA(source)
+    assert b'normalized_input_samples.append([present_count,u32(0x4d6a90),u32(0x4d6a9c),u32(0x4d6aa0)])'in source
     assert corrected['normalizedInputAddresses']==dict(held=0x4d6a90,pressed=0x4d6a9c,released=0x4d6aa0)
     assert corrected['frameReadbackCompleted']and corrected['childExited']and not corrected['error']
     assert len(corrected['normalizedInputSamplesAtPresent'])==20

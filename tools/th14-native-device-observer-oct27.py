@@ -22,13 +22,20 @@ def main():
     parser.add_argument('--output',type=Path,required=True)
     parser.add_argument('--maximum-seconds',type=int,default=45)
     parser.add_argument('--capture-present',type=int,default=0,help='Read back one actual backbuffer before this declared Present entry; zero observes device creation only')
+    parser.add_argument('--capture-stage-frame',type=int,help='Read before Present when the actual controller reaches this frame; at most3000 Presents')
+    parser.add_argument('--capture-stage',type=int,default=3,help='Actual stage for --capture-stage-frame; default is the first automatic demo')
     parser.add_argument('--snapshot-vms',action='store_true',help='Read ordinary/overlay animation registries before target Present diagnostic calls')
     parser.add_argument('--trace-publications',action='store_true',help='Read animation handle publications using the original serial-counter hardware watchpoint')
     parser.add_argument('--trace-resource-pump',action='store_true',help='Read resource slots and startup-ready flags at main resource pump entry')
     parser.add_argument('--trace-startup-ready',action='store_true',help='Read worker queue, signature/ASCII-ready and title-retirement publication boundaries')
     parser.add_argument('--d3d9-header',type=Path,default=Path('C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/shared/d3d9.h'))
     args=parser.parse_args();assert 1<=args.maximum_seconds<=120
-    assert 0<=args.capture_present<=600
+    stage_capture=args.capture_stage_frame is not None
+    assert 1<=args.capture_stage<=7
+    if stage_capture:
+        assert args.capture_present==0 and 0<=args.capture_stage_frame<=400
+        args.capture_present=3000
+    assert 0<=args.capture_present<=(3000 if stage_capture else 600)
     assert not args.snapshot_vms or args.capture_present>0
     assert not args.trace_publications or args.capture_present>0
     assert not args.trace_resource_pump or args.capture_present>0
@@ -44,6 +51,8 @@ def main():
         hardwareCallGroups=[[0x46b13d,0x46b169,0x46b18a],[0x46b235,0x46b262,0x46b286]],
         hardwareReturnPcRule='observed call PC plus3',
         capturePresentOrdinal=args.capture_present,newDiagnosticCodeAllocated=bool(args.capture_present),
+        captureStageTrigger=dict(stage=args.capture_stage,controllerFrame=args.capture_stage_frame)if stage_capture else None,
+        captureStageTriggerObserved=False,
         snapshotLiveAnimationsBeforeReadback=args.snapshot_vms,
         traceAnimationPublications=args.trace_publications,maximumPublications=1024,
         traceMainResourcePump=args.trace_resource_pump,maximumResourcePumpEntries=1200,
@@ -99,7 +108,7 @@ def main():
     completed=exited=False;error='';started=time.monotonic()
     device_observed=False;present_pc=0;present_tid=0;present_count=0;device_pointer=0
     readback_program=None;readback_phase='';readback_result={};context_redirects=0
-    normalized_input_samples=[]
+    normalized_input_samples=[];stage_progress=[];title_reference=[]
     serial_manager=0;publication_pending={};publications=[]
     resource_pumps=[]
     startup_phases={};startup_boundaries=[]
@@ -165,10 +174,11 @@ def main():
         publications.append(row)
         with (home/'animation-publications.jsonl').open('a')as stream:stream.write(json.dumps(row)+'\n')
     def record_resource_pump(tid):
+        if stage_capture and not u32(0x4db558):return
         assert len(resource_pumps)<1200
         manager=u32(0x4f56cc);owner=u32(0x4db668);slots=[]
         if manager:
-            for file in (0,1,2):
+            for file in (range(3,22)if stage_capture else (0,1,2)):
                 pointer=u32(manager+0xbc7b0c+file*4)
                 if pointer:
                     blob=read(pointer,0x13c)
@@ -297,16 +307,33 @@ def main():
                             assert ev.tid==present_tid
                             present_count+=1
                             normalized_input_samples.append([present_count,u32(0x4d6a90),u32(0x4d6a9c),u32(0x4d6aa0)])
+                            controller=u32(0x4db558)if stage_capture else 0
+                            stage_frame=u32(controller+0x14)if controller else None
+                            if stage_capture:
+                                native_stage=u32(0x4f58a4)
+                                if controller and (not stage_progress or native_stage!=stage_progress[-1]['stage']or stage_frame%60==0):
+                                    stage_progress.append(dict(presentOrdinal=present_count,stage=native_stage,stageFrame=stage_frame,
+                                        supervisorWords=list(struct.unpack('<2I',read(0x4d9648,8))),
+                                        selectedGlobalWords=list(struct.unpack('<32I',read(0x4f5828,128))),rngHex=read(0x4db508,16).hex()))
+                                title=u32(0x4db6a4)
+                                if title and u32(title+0x1c)==1 and u32(0x4f58bc)in(20,232)and len(title_reference)<2:
+                                    title_reference.append(dict(presentOrdinal=present_count,idle=u32(0x4f58bc),rngHex=read(0x4db508,16).hex()))
+                                if controller and native_stage==args.capture_stage and stage_frame==args.capture_stage_frame:
+                                    args.capture_present=present_count;plan['capturePresentOrdinal']=present_count
+                                    plan['captureStageTriggerObserved']=True
                             if present_count in (1,args.capture_present):
                                 title=u32(0x4db6a4)
                                 snapshot=dict(kind='native-Present-entry',ordinal=present_count,pc=pc,tid=ev.tid,
                                     stage=u32(0x4f58a4),gameFlags=u32(0x4f58b8),idleCounter=u32(0x4f58bc),
+                                    stageFrame=stage_frame,controllerPointer=controller,
+                                    selectedGlobalWords=list(struct.unpack('<32I',read(0x4f5828,128)))if stage_capture else None,
                                     originalInitialTicks=u32(0x4d9688),originalProcessCookie=u32(0x4d0cc0),
                                     supervisorWords=list(struct.unpack('<2I',read(0x4d9648,8))),
                                     rngHex=read(0x4db508,16).hex(),titlePointer=title,
                                     titleState=u32(title+0x1c)if title else None,readBeforeDiagnosticCalls=True)
                                 emit(snapshot)
                             if present_count==args.capture_present:
+                                assert not stage_capture or plan['captureStageTriggerObserved'],'Declared controller frame was not reached before the Present budget'
                                 if args.snapshot_vms:snapshot_live_animations()
                                 begin_readback(ev.tid,data)
                             else:install(ev.tid,True)
@@ -368,6 +395,7 @@ def main():
             animationPublications=publications,animationPublicationCounterHardwareWatch=bool(serial_manager),
             mainResourcePumpEntries=resource_pumps,
             startupReadyBoundaries=startup_boundaries,
+            nativeStageProgress=stage_progress,nativeTitleReference=title_reference,
             normalizedInputWords='ordinal,held,pressed,released; observed at Present only, not physical input events',
             diagnosticPrivateCodeAllocated=readback_program is not None,gameNeverResumedAfterReadback=bool(readback_program),
             configuredMusicAndSoundVolumeZero=True,
