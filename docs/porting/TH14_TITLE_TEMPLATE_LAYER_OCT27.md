@@ -14,4 +14,8 @@
 python tools/th14-title-template-layer-evidence-oct27.py --check
 ```
 
-静音 8226 候选绑定前一屏幕线段修复 `d53076b`，146 单元全部重新编译、零复用，133 路由／21 HTTP 及服务字节通过核对，见[候选摘要](th14-screen-line-candidate-verified-oct27.json)。它尚未包含本次模板图层修复，浏览器界面尚未验收。模式覆盖仍为 30／25，其余[剩余验收](TH14_REMAINING_ACCEPTANCE.md)继续；仅发布源码和元数据，不发布原版资产、原始内存／像素或二进制。所有测试静音，`completeGame=false`、`nativeEquivalent=false`、`browserAcceptance=false`。
+最新静音 8228 候选已绑定本项源码 `736103c`，包含标题 FPS、首次空闲计数、屏幕线段裁剪和模板图层四项修复。重编 TitleMenu 一个单元，核对复用 145 个对象；133 路由／21 HTTP 及实际服务 Wasm、宿主、着色器和静音脚本逐字节核对通过，见[候选摘要](th14-title-template-candidate-verified-oct27.json)。28 份生成资源继续别名复用，普通浏览器界面与持久化尚未验收。前一静音 8226 仍冻结 `d53076b` 的线段修复及全量编译结果。模式覆盖仍为 30／25，其余[剩余验收](TH14_REMAINING_ACCEPTANCE.md)继续；仅发布源码和元数据，不发布原版资产、原始内存／像素或二进制。所有测试静音，`completeGame=false`、`nativeEquivalent=false`、`browserAcceptance=false`。
+
+```powershell
+python tools/th14-local-candidate-evidence-oct27.py --home artifacts/th14/native-frame-readback-oct27/title-layer-delivery --expected-code-commit 736103cbc00c2067dbd72d9fd14ebbeef2694245 --output docs/porting/th14-title-template-candidate-verified-oct27.json --reuse-build artifacts/th14/native-frame-readback-oct27/line-browser-candidate --check
+```

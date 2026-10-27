@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "d53076b4997f544f142757e1b147b7e163d78d0d",
+  "sourceCommit": "736103cbc00c2067dbd72d9fd14ebbeef2694245",
   "files": [
     {
       "path": ".gitignore",
@@ -430,8 +430,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 23822,
-      "sha256": "02aec967fd0ffbea2a68b9bfb00f401ce5b72251a2fdc24615ee7ac924afebd0"
+      "bytes": 23906,
+      "sha256": "6ba004134b9f031e6e160d2124596cd499bce6a89cab6ca1c035eefd9700a908"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -640,8 +640,8 @@
     },
     {
       "path": "docs/porting/TH14_TITLE_TEMPLATE_LAYER_OCT27.md",
-      "bytes": 2377,
-      "sha256": "f8022f39b02fa7423996b8e0f7eb1c07364313844ddb7edf7ee7e3af1225a97e"
+      "bytes": 2991,
+      "sha256": "8329268d56d4f7f7698a3472892ab8f7d5b0e864a0e964e5be1f3a3754529bb1"
     },
     {
       "path": "docs/porting/TH14_VERTEX_OUTPUT_DIAGNOSTIC_OCT14.md",
@@ -6327,6 +6327,11 @@
       "path": "docs/porting/th14-title-spell-stage-verified.json",
       "bytes": 1530,
       "sha256": "3e3978493a0c55a010cdc296bfeff78a5adc173118add1575bc6e27d11c523e5"
+    },
+    {
+      "path": "docs/porting/th14-title-template-candidate-verified-oct27.json",
+      "bytes": 184618,
+      "sha256": "9defdc21689d3186a9fe4fc0df697c4b39e33d6a44139515131332b187535276"
     },
     {
       "path": "docs/porting/th14-title-template-layer-verified-oct27.json",
@@ -23810,43 +23815,31 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "d53076b4997f544f142757e1b147b7e163d78d0d",
-    "title": "TH14 title factory preserves template layer and current line-repaired candidate",
+    "basePublishedCommit": "736103cbc00c2067dbd72d9fd14ebbeef2694245",
+    "title": "TH14 current quiet candidate includes title, clip and template-layer repairs",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/TitleMenu.cpp",
-      "tools/th14-native-title-template-layer-oct27.py",
-      "tools/th14-title-template-layer-evidence-oct27.py",
       "docs/porting/TH14_TITLE_TEMPLATE_LAYER_OCT27.md",
-      "docs/porting/th14-title-template-layer-verified-oct27.json",
-      "tools/th14-local-candidate-evidence-oct27.py",
-      "docs/porting/th14-screen-line-candidate-verified-oct27.json",
-      "docs/porting/TH14_SCREEN_LINE_CLIP_OCT27.md",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
+      "docs/porting/th14-title-template-candidate-verified-oct27.json",
       "docs/github-publication-manifest.json"
     ],
-    "productionGameplayChanged": true,
+    "productionGameplayChanged": false,
     "productionGraphicsChanged": false,
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "nativeFactoryPrefixCases": 12,
-    "actualApplicationFrames": 2265,
-    "actualApplicationAssertions": 7,
-    "actualNativeTitleFullBufferExact": true,
-    "strictVmDifferenceCount": 61,
-    "strictLiveVmComparisonPassed": false,
-    "diagnosticUniquePairs": 30,
-    "diagnosticWordsCompared": 9090,
-    "diagnosticAfterExplicitHandleMapDifferentWords": 0,
-    "mappingIsNotStrictAcceptance": true,
-    "currentQuietPreviewPort": 8226,
-    "candidateCodeCommit": "d53076b4997f544f142757e1b147b7e163d78d0d",
-    "compiledCppUnits": 146,
-    "reusedObjects": 0,
-    "wasmBytes": 2700558,
-    "wasmSha256": "aa9abbc50315ca95ca973cc01faedeb745ee66834032e63f32d01758cfd0a2ee",
+    "compiledCppUnits": 1,
+    "reusedObjects": 145,
+    "totalCppUnits": 146,
+    "wasmBytes": 2700581,
+    "wasmSha256": "b49eb5642218e2e5ceeaf049b8206d595b29949710707976319ab37444979e3e",
+    "candidateCodeCommit": "736103cbc00c2067dbd72d9fd14ebbeef2694245",
     "routeCount": 133,
     "httpChecks": 21,
-    "previewStillEarlierThanTemplateLayerRepair": true,
+    "currentQuietPreviewPort": 8228,
+    "strictLiveVmComparisonPassed": false,
+    "strictVmDifferenceCount": 61,
+    "currentFiniteTitleImagesExact": true,
+    "currentFiniteDemoFrameHalExact": true,
     "oldFailuresRetained": true,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
