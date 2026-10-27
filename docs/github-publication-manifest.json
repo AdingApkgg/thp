@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "d69295b903b8ad2350be897a88007057d979b237",
+  "sourceCommit": "4a843e67c262cf6a7968fd71291a80b062e5bbb8",
   "files": [
     {
       "path": ".gitignore",
@@ -380,8 +380,8 @@
     },
     {
       "path": "docs/porting/TH14_NATIVE_TITLE_FRAMES_OCT27.md",
-      "bytes": 6184,
-      "sha256": "de76bde167d669cb934ac4a352cea621988572e80b92f119de43dc64fe781d65"
+      "bytes": 7218,
+      "sha256": "7014774cadd7d9734e8b8b3460e3895ffd6bee3a1ac45ef16eeb1c1f6bcc5457"
     },
     {
       "path": "docs/porting/TH14_NEXT_STAGE_LOADING_FAMILY_FIX_OCT16.md",
@@ -430,8 +430,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 22201,
-      "sha256": "9296451a3857dcfe6b06408ea1e0d3840bea2094c82287f515ad91a7d46c2947"
+      "bytes": 22382,
+      "sha256": "82ff3b74dcb704fc73ff5ee99c74b6c0130d356554afb7f836ead00700951e59"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -3727,6 +3727,11 @@
       "path": "docs/porting/th14-native-stack-verified-oct24.json",
       "bytes": 10197,
       "sha256": "c1934cb331b41ef6d10a63bc28594f9ef93dbc9f99d5d6a67f53bbe4039a3bdf"
+    },
+    {
+      "path": "docs/porting/th14-native-title-candidate-verified-oct27.json",
+      "bytes": 171738,
+      "sha256": "0165366fc4fac6198d0c3f85747d1eca8f57bc87140e2e70030fcd2d7713b1c9"
     },
     {
       "path": "docs/porting/th14-native-title-verified-oct27.json",
@@ -15435,8 +15440,8 @@
     },
     {
       "path": "tools/th14-build-webgpu-release.py",
-      "bytes": 10345,
-      "sha256": "525c6172c665adda8d2f4a5e874d4d157072dc7d4dfb6215a732b3252045ff14"
+      "bytes": 11172,
+      "sha256": "de1330b7639387b7bee0108d7210465ad69e9859ea69e0d8d233b79f8477fbcf"
     },
     {
       "path": "tools/th14-bullet-acceleration-check.mjs",
@@ -18410,8 +18415,8 @@
     },
     {
       "path": "tools/th14-local-candidate-evidence-oct27.py",
-      "bytes": 4705,
-      "sha256": "834ab505c422944e5b20dde57403426501e68003c14606b5941c0c4d55f9cd34"
+      "bytes": 6297,
+      "sha256": "442d88308381a7b3eeacb89d74b97c11edcf0538488df5c126aca71ad65e3859"
     },
     {
       "path": "tools/th14-local-quiet-audio.js",
@@ -23765,39 +23770,33 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "d69295b903b8ad2350be897a88007057d979b237",
-    "title": "TH14 actual native title frames and initial idle guard",
+    "basePublishedCommit": "4a843e67c262cf6a7968fd71291a80b062e5bbb8",
+    "title": "TH14 title-repaired quiet candidate with verified partial object reuse",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/sdl/Application.cpp",
-      "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-native-title-fixture.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-native-title-live-observer.hpp",
-      "tools/th14-build-native-application.py",
-      "tools/th14-native-application-process-host-oct27.py",
-      "tools/th14-native-device-observer-oct27.py",
-      "tools/th14-native-frame-readback-program-oct27.py",
-      "tools/th14-native-fps-guard-oct27.py",
-      "tools/th14-native-title-idle-guard-oct27.py",
-      "tools/th14-native-title-image-compare-oct27.py",
-      "tools/th14-native-title-live-compare-oct27.py",
-      "tools/th14-native-title-evidence-oct27.py",
+      "tools/th14-build-webgpu-release.py",
+      "tools/th14-local-candidate-evidence-oct27.py",
       "docs/porting/TH14_NATIVE_TITLE_FRAMES_OCT27.md",
-      "docs/porting/th14-native-title-verified-oct27.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
+      "docs/porting/th14-native-title-candidate-verified-oct27.json",
       "docs/github-publication-manifest.json"
     ],
-    "productionGameplayChanged": true,
-    "productionGraphicsChanged": true,
+    "productionGameplayChanged": false,
+    "productionGraphicsChanged": false,
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "exactFiniteNativeTitleFrames": 2,
-    "exactBackendComparisons": 3,
+    "compiledCppUnits": 2,
+    "reusedObjects": 144,
+    "totalCppUnits": 146,
+    "wasmBytes": 2700436,
+    "wasmSha256": "a0884e8e9e682ccdd5abdb0d7db7e1587c917d594e4a8bc8e629f2c02affab75",
+    "candidateCodeCommit": "4a843e67c262cf6a7968fd71291a80b062e5bbb8",
+    "routeCount": 133,
+    "httpChecks": 21,
+    "currentQuietPreviewPort": 8224,
     "strictLiveVmComparisonPassed": false,
     "demoImageBackendComparisonPassed": false,
     "demoDifferentPixels": 1,
     "demoDifferentBytes": 2,
-    "currentQuietPreviewPort": 8222,
-    "previewStillEarlierCodeCommit": "45b76f0ea6e35df132437f5f1b201e93d34ea25b",
     "oldFailuresRetained": true,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,

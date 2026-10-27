@@ -11,6 +11,7 @@ import hashlib
 import importlib.util
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -25,7 +26,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--base-commit', required=True)
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--reuse-build',type=Path,help='Reuse immutable objects only when every C++ input and compiler flag matches')
+    parser.add_argument('--reuse-build',type=Path,help='Reuse unchanged translation units only when the complete header inventory and compiler flags match')
     args = parser.parse_args(); out = args.output.resolve(); courier = ROOT/'tools/tmp/github-source-release'; tool_raw = Path(__file__).read_bytes()
     assert out.is_relative_to(ROOT/'artifacts/th14') and not out.exists()
     assert subprocess.check_output(['git','-C',str(courier),'rev-parse','HEAD'],text=True).strip() == args.base_commit
@@ -79,9 +80,19 @@ def main():
         assert before['compiled']and before['flags']==flags and before['compilerVersion']==(sdk/'upstream/emscripten/emscripten-version.txt').read_text().strip()
         cpp_inputs={path:row['sha256']for path,row in inventory.items()if Path(path).suffix in ['.cpp','.h','.hpp','.inc']}
         old_cpp_inputs={path:row['sha256']for path,row in before['sourceBindings'].items()if Path(path).suffix in ['.cpp','.h','.hpp','.inc']}
-        assert cpp_inputs==old_cpp_inputs,'C++ inputs changed: cached objects cannot be reused'
+        assert set(cpp_inputs)==set(old_cpp_inputs),'C++ input inventory changed: cached objects cannot be reused'
+        changed_inputs={path for path,digest in cpp_inputs.items()if digest!=old_cpp_inputs[path]}
+        assert all(Path(path).suffix=='.cpp'for path in changed_inputs),'Headers changed: cached objects cannot be reused'
+        unit_names={unit.relative_to(source).as_posix()for unit in units}
+        assert changed_inputs<=unit_names,'Included C++ input changed: cached objects cannot be reused'
+        # A complete unchanged header inventory isolates each changed .cpp
+        # only if no other project input textually includes a .cpp file.
+        if changed_inputs:
+            for path in cpp_inputs:
+                assert not re.search(r'^\s*#\s*include\s*[<\"][^>\"]*\.cpp[>\"]',(source/path).read_text(),re.M),path
         for unit in units:
             key=unit.relative_to(source).as_posix();name=key.replace('/','_')+'.o';original=previous/'objects'/name;target=objects/name
+            if key in changed_inputs:continue
             digest=SHA(original.read_bytes());assert digest==before['objectHashes'][key]
             os.link(original,target);compiled[unit]=target;reused[key]=digest
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:

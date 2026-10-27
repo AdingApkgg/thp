@@ -13,6 +13,7 @@ def main():
     parser.add_argument('--home',type=Path,required=True)
     parser.add_argument('--expected-code-commit',required=True)
     parser.add_argument('--output',type=Path,required=True)
+    parser.add_argument('--reuse-build',type=Path,help='Required when validating reused objects; supplies their frozen build provenance')
     parser.add_argument('--check',action='store_true');args=parser.parse_args()
     home=args.home.resolve();assert home.is_relative_to(ROOT/'artifacts/th14')
     bindings={}
@@ -23,7 +24,8 @@ def main():
     build=load(home/'browser-candidate/build.json');package=load(home/'browser-runtime/package-report.json')
     routes=load(home/'launcher-candidate/launcher-report.json');transport=load(home/'launcher-candidate/transport.json')
     served=load(home/'served-current.json');read(home/'verify-preview.py')
-    assert build['compiled'] and build['compiledUnits']==build['sourceUnits']==146 and build['reusedObjectCount']==0
+    assert build['compiled'] and build['sourceUnits']==146
+    assert build['compiledUnits']+build['reusedObjectCount']==146
     assert build['basePublishedCommit']==served['basePublishedCommit']==args.expected_code_commit
     assert build['rootUnrelatedResourceCryptExcluded'] and not build['retailAssetsIncluded']
     assert build['actualSdlPort'] and build['asyncify'] and build['frameAndWorkerCallbacksSerialized']
@@ -33,6 +35,25 @@ def main():
     for path,digest in build['objectHashes'].items():
         assert sha(read(home/'browser-candidate/objects'/(path.replace('/','_')+'.o')))==digest,path
     assert len(build['objectHashes'])==146
+    if build['reusedObjectCount']:
+        assert args.reuse_build is not None
+        previous=args.reuse_build.resolve(strict=True);assert previous.is_relative_to(ROOT/'artifacts/th14')
+        old_raw=read(previous/'build.json');old=json.loads(old_raw)
+        assert sha(old_raw)==build['reuseBuildReportSha256']and old['flags']==build['flags']
+        assert old['compilerVersion']==build['compilerVersion']and old['compiled']
+        before=old['sourceBindings'];after=build['sourceBindings']
+        cpp=lambda rows:{k:v['sha256']for k,v in rows.items()if Path(k).suffix in ('.cpp','.h','.hpp','.inc')}
+        left,right=cpp(before),cpp(after);assert set(left)==set(right)
+        changed={name for name in left if left[name]!=right[name]}
+        assert all(Path(name).suffix=='.cpp'for name in changed)
+        reused=build['reusedObjectHashes'];assert len(reused)==build['reusedObjectCount']
+        assert set(build['objectHashes'])-set(reused)==changed
+        for name,digest in reused.items():
+            assert digest==old['objectHashes'][name]==build['objectHashes'][name]and left[name]==right[name]
+            assert sha(read(previous/'source'/name))==left[name]
+            obj=name.replace('/','_')+'.o'
+            assert sha(read(previous/'objects'/obj))==digest
+            assert os.path.samefile(previous/'objects'/obj,home/'browser-candidate/objects'/obj)
     for filename,field in [('th14-sdl.wasm','wasmSha256'),('th14-sdl.mjs','loaderSha256')]:
         raw=read(home/'browser-candidate'/filename)
         assert sha(raw)==build[field] and raw==read(home/'browser-runtime'/filename)
@@ -56,7 +77,7 @@ def main():
     for report in (build,package,routes,served):
         assert not report['browserAcceptance'] and not report['completeGame'] and not report['nativeEquivalent']
     result=dict(verifiedFrozenLocalCandidate=True,codeCommit=args.expected_code_commit,
-        compiledCppUnits=146,reusedObjects=0,wasmBytes=build['wasmBytes'],wasmSha256=build['wasmSha256'],
+        totalCppUnits=146,compiledCppUnits=build['compiledUnits'],reusedObjects=build['reusedObjectCount'],wasmBytes=build['wasmBytes'],wasmSha256=build['wasmSha256'],
         routeCount=133,httpChecks=21,observedUrl=served['url'],observedUtc=served['checkedUtc'],quietByDefault=True,
         generatedAssetAliases=28,generatedAssetLogicalBytes=414850582,
         currentBrowserRun=False,browserAcceptance=False,completeGame=False,nativeEquivalent=False,

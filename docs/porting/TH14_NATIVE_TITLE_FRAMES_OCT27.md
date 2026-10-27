@@ -43,3 +43,9 @@ python tools/th14-native-title-evidence-oct27.py --check
 ```
 
 模式覆盖仍为 30／25；[剩余验收清单](TH14_REMAINING_ACCEPTANCE.md)继续保留普通流程、模式覆盖、历史相机／effect149、Stage 像素、完整音频及浏览器持久化／输入。测试与预览静音，保持 100 GiB 空闲下限及每例 128 MiB 新观察输出限制。`completeGame=false`、`nativeEquivalent=false`、`browserAcceptance=false`。
+
+源码 `4a843e6` 已构建为静音 8224 候选，包含上述两处标题修复。146 个单元中只重编修改过的 GameSession／Application，144 个对象按完整头文件清单、编译参数、源码哈希及旧对象哈希核对后复用；出现头文件修改、输入清单变化或源码包含其他 `.cpp` 时拒绝此复用路径。28 份生成字体／音乐资源继续别名复用，未复制原版资产。133 条路由／21 项 HTTP 检查通过，实际服务的 Wasm、宿主、着色器和默认静音脚本逐字节核对。[候选摘要](th14-native-title-candidate-verified-oct27.json)保留编译／复用数及冻结来源，浏览器界面与持久化尚未验收。
+
+```powershell
+python tools/th14-local-candidate-evidence-oct27.py --home artifacts/th14/native-frame-readback-oct27 --expected-code-commit 4a843e67c262cf6a7968fd71291a80b062e5bbb8 --output docs/porting/th14-native-title-candidate-verified-oct27.json --reuse-build artifacts/th14/attract-run-flags-oct27/browser-candidate --check
+```
