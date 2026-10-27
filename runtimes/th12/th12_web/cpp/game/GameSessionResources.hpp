@@ -40,6 +40,9 @@ struct StageResourceEffects {
 #if PORT_TITLE == 14
     virtual bool core_ready()const{return true;}
     virtual bool stage_ready()const{return true;}
+    // The retail initial worker creates Player before reading the remaining
+    // scene/HUD/ECL resources. Synchronous consumers can keep load_stage.
+    virtual bool defer_initial_stage_decode()const{return false;}
     // The60ms core minimum is a lower bound. Dispatch and timer completion
     // are host events, independent of the frame that requested this worker.
     virtual bool begin_stage_worker_wait(bool){return true;}

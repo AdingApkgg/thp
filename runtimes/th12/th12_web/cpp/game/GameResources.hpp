@@ -49,6 +49,9 @@ public:
     bool load_stage_hud(u32 stage,StageResources& output,u32 dialogue_selection);
     bool load_stage_scene(u32 stage,StageResources& output);
     bool load_stage_timeline(u32 stage,StageResources& output);
+    bool load_stage_timeline_plan(u32 stage,StageResources& output);
+    bool load_stage_animation(StageResources& output,u32 slot);
+    bool complete_stage_timeline(u32 stage,StageResources& output);
 #endif
     bool animation(u32 slot, const std::string& name) override;
     const std::string& error() const noexcept { return last_error; }

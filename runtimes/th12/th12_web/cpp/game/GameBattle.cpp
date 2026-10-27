@@ -80,6 +80,11 @@ bool GameBattle::initialize(i32 character,i32 subtype,i32 difficulty) {
     initialized=false;last_error=0;frame=0;error.clear();events.clear();
 #if PORT_TITLE == 14
     th14_control_clock.set(0,&animations.rate);
+    // Initial Player construction can precede scene/HUD/ECL decoding. Bind
+    // the actual incoming ANIM owners when the worker has completed them.
+    for(u32 i=0;i<resources.stage->ecl_animations.size();++i)
+        enemy_animations.resources[i+2]={resources.stage->ecl_animation_names[i].empty()?nullptr:&resources.stage->ecl_animations[i],u16(10+i)};
+    enemy_animations.stage_logo_resource={&resources.stage->logo,6};
 #endif
     completion.mode.stage=i32(resources.stage_number);completion.mode.selection=character*2+subtype;
     if(replaying)spell_timing.records=replay_entry.spell_times;

@@ -103,7 +103,7 @@ bool GameSessionResources::select_player(u32 character,u32 subtype){
     if(effects)effects->release_animation(file);
     file={};
     if(!core_source->open_anm(player_file_name(character,subtype),file))return core_error(error,(std::string("player ANM: ")+file.detail).c_str());
-    if(animation_manager&&!animation_manager->prepare_resource(file,9))return core_error(error,animation_manager->last_error_text().c_str());
+    if(animation_manager&&(!effects||!effects->defer_initial_stage_decode())&&!animation_manager->prepare_resource(file,9))return core_error(error,animation_manager->last_error_text().c_str());
     return true;
 }
 #endif
@@ -113,6 +113,12 @@ bool GameSessionResources::load_stage(GameResources& source,u32 number) {
     if(incoming_stage)return core_error(error,"cancel pending TH14 stage before resource replacement");
 #endif
     auto next=std::make_unique<StageResources>();
+#if PORT_TITLE == 14
+    if(effects&&effects->defer_initial_stage_decode()){
+        if(number<1||number>7)return core_error(error,"initial TH14 stage outside1..7");
+        next->stage_number=number;
+    }else
+#endif
     if(!source.load_stage(number,*next)){error="stage resource "+last_resource+": "+source.error();return false;}
     if(effects&&!effects->prepare(*next)){effects->release(*next);error="stage graphics preparation: "+effects->last_error();return false;}
     retire_previous();previous_stage=std::move(stage);stage=std::move(next);

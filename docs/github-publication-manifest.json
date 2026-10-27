@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "e0cf834ffcad762b11f8d5469d89acdedb56e0f0",
+  "sourceCommit": "a3cb5701817b803265bc8ff255d408562726e3fb",
   "files": [
     {
       "path": ".gitignore",
@@ -244,6 +244,11 @@
       "sha256": "715a8464d9f380c3bc3f37e0a85ae51c60b7e2139e67bd47e51c88bfee02572c"
     },
     {
+      "path": "docs/porting/TH14_INITIAL_STAGE_DECODE_OCT27.md",
+      "bytes": 4769,
+      "sha256": "0b295efca73a54a0d49701a6618c28d2af43283e66c72c369b882601acf3da0c"
+    },
+    {
       "path": "docs/porting/TH14_INITIAL_STAGE_RESET_OCT24.md",
       "bytes": 7487,
       "sha256": "758bc3da9e7c306a333c8540201787a1f4e108d61e3b86be4e5d2cf7d59759b4"
@@ -440,8 +445,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 25851,
-      "sha256": "4753fd13416ab5a2587bbc240a688b5b023ee1ff67a57763d5c2ad37a59ba145"
+      "bytes": 26636,
+      "sha256": "5ccc9fdf029ca09706d540dd7e524f89491c6522f612836f8f9a2e353a8ef83e"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -2767,6 +2772,11 @@
       "path": "docs/porting/th14-initial-replay-restore-verified-oct27.json",
       "bytes": 64384,
       "sha256": "09cec368f0cc925599c45231521221e7d0c5b93711e759e5a8b1939da4be98ff"
+    },
+    {
+      "path": "docs/porting/th14-initial-stage-decode-verified-oct27.json",
+      "bytes": 101950,
+      "sha256": "9a95044fec1bbb33b93a6add3fb979c1df4dc47c74e4148294875716323be89d"
     },
     {
       "path": "docs/porting/th14-initial-stage-reset-verified-oct24.json",
@@ -8100,8 +8110,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "bytes": 63787,
-      "sha256": "1279e1f0db24f24d128163f5207e46923839af4092daf3b391b5c47ac4669c7d"
+      "bytes": 64219,
+      "sha256": "8bee09c5eeb4f40918ea28832679b5684aa399f23d0942ec94b617477f1bf88a"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
@@ -8140,13 +8150,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameResources.cpp",
-      "bytes": 10657,
-      "sha256": "d2d17c95ab2d9a70bf93659212f6bfc2f8a0bffbdfaa28429bd8999b9eb62832"
+      "bytes": 12565,
+      "sha256": "7c3741c2903730869f310927f9c079916e4a07adf7c1cda68efdca8dfe7eaf25"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameResources.hpp",
-      "bytes": 2851,
-      "sha256": "7757a4a13cf6b7b62c2e60bf2894106739291c2dbba7929926e878ee568734f0"
+      "bytes": 3052,
+      "sha256": "11956d3ae5d3675b325a595784d83629b6b6b252f68c40c1b86ef8ce21a3fbea"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
@@ -8160,13 +8170,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSessionResources.cpp",
-      "bytes": 11513,
-      "sha256": "ee863f99c522d2976e30d1bd2ab2c6356c81b4797a8b768946892e0a5e0330e3"
+      "bytes": 11783,
+      "sha256": "3e2978fc731e16ab0a387fb55aeafd09c4147633832bd9cf2bd244c0d71f3f18"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSessionResources.hpp",
-      "bytes": 4953,
-      "sha256": "b5819a973e23dcde8d4d006298eedd4bce512f25c8c179afa8ca01533661ba9c"
+      "bytes": 5171,
+      "sha256": "cd60d8b3dab21f44679627981dc076234f575c3eb65a212c9f90202affe5cbc2"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GlyphAtlas.cpp",
@@ -8955,8 +8965,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/sdl/Application.cpp",
-      "bytes": 72906,
-      "sha256": "bff5b5ebcfb611bdd7b3056544eaa52c88f7aef912ba5998d4cc73cf92a74f0a"
+      "bytes": 75495,
+      "sha256": "6c8fe7e41be97fbf61661f8e27841104de5ce813536799f62ccea58eb4f26106"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/sdl/ApplicationCaptureTh14.hpp",
@@ -11939,6 +11949,11 @@
       "sha256": "cd1084494872ff7946911ce0c97d34f4b6dd63138c6362bc69938cab21863358"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-initial-stage-decode-fixture.cpp",
+      "bytes": 6073,
+      "sha256": "bb1a2063b982d59675afac4574919722a7d5a496c213229ae64486819514327f"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-item-drop-fixture.cpp",
       "bytes": 2244,
       "sha256": "35c7293d6377525ce38ff40495bb87ebd1bfa27a3bbe3c57fbc33d91170a2ab4"
@@ -12052,6 +12067,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-native-campaign-fixture.cpp",
       "bytes": 66004,
       "sha256": "ac6d4298914d2a4e4f9589f40b2379d268f2b40ff199c674cfe337c9f6b765e6"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-native-initial-loading-fixture.cpp",
+      "bytes": 1432,
+      "sha256": "27511c9355504abe9231ba8f9f80697ecdc6a648889103e1076e4585e29a8cc4"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-native-title-fixture.cpp",
@@ -15485,8 +15505,8 @@
     },
     {
       "path": "tools/th14-build-native-application.py",
-      "bytes": 9383,
-      "sha256": "7fb88d7aba5bbcdc371822b9905c81b5c6dc222009562e24d407901cbd6191aa"
+      "bytes": 10097,
+      "sha256": "f2cc127f2900525af6284999a3b3f04b07eeb61cb3d1fff00363760793b25f08"
     },
     {
       "path": "tools/th14-build-native-gles-component.py",
@@ -18144,6 +18164,16 @@
       "sha256": "28978a59d977537681d8554d488df86c140b60dce2dc6722d72213c1b67e9a5e"
     },
     {
+      "path": "tools/th14-initial-stage-decode-evidence-oct27.py",
+      "bytes": 11308,
+      "sha256": "ef0cff5baf85ff9aadee05e094e9f00233e8c7098e75af7dbaed197efbf1f449"
+    },
+    {
+      "path": "tools/th14-initial-stage-decode-resources-oct27.py",
+      "bytes": 3748,
+      "sha256": "9b6e9c1a44804f2786172bf64f59ff6eb0e3f575058260e3a5cf3097e4c5454d"
+    },
+    {
       "path": "tools/th14-item-check.mjs",
       "bytes": 7502,
       "sha256": "57d85d692158dccead83388c75c1c103fbd582df077ab855f9254c0e15535704"
@@ -18630,8 +18660,8 @@
     },
     {
       "path": "tools/th14-native-application-process-host-oct27.py",
-      "bytes": 22000,
-      "sha256": "8a1e57648512c0d442ea01c2abefa67048f45bf33fc6bb9838cd296d7f5d2e6a"
+      "bytes": 25326,
+      "sha256": "7752e282d3465d63a5aabf1e57b41cc6e28312a7ae4093033a4b6ed05db84b57"
     },
     {
       "path": "tools/th14-native-application.py",
@@ -23865,54 +23895,52 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "e0cf834ffcad762b11f8d5469d89acdedb56e0f0",
-    "title": "TH14 first two actual native gameplay buffers and strict loading-age failures",
+    "basePublishedCommit": "a3cb5701817b803265bc8ff255d408562726e3fb",
+    "title": "TH14 staged initial resource decoding and worker lifecycle",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-native-device-observer-oct27.py",
-      "tools/th14-native-input-address-audit-oct27.py",
-      "docs/porting/th14-native-input-address-audit-oct27.json",
-      "docs/porting/TH14_NATIVE_INPUT_ADDRESS_AUDIT_OCT27.md",
-      "tools/th14-native-game-frame-compare-oct27.py",
-      "tools/th14-first-native-demo-evidence-oct27.py",
-      "docs/porting/TH14_FIRST_ACTUAL_NATIVE_DEMO_OCT27.md",
-      "docs/porting/th14-first-native-demo-verified-oct27.json",
+      "runtimes/th12/th12_web/cpp/game/GameResources.cpp",
+      "runtimes/th12/th12_web/cpp/game/GameResources.hpp",
+      "runtimes/th12/th12_web/cpp/game/GameSessionResources.cpp",
+      "runtimes/th12/th12_web/cpp/game/GameSessionResources.hpp",
+      "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
+      "runtimes/th12/th12_web/cpp/sdl/Application.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-initial-stage-decode-fixture.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-native-initial-loading-fixture.cpp",
+      "tools/th14-initial-stage-decode-resources-oct27.py",
+      "tools/th14-initial-stage-decode-evidence-oct27.py",
+      "tools/th14-build-native-application.py",
+      "tools/th14-native-application-process-host-oct27.py",
+      "docs/porting/TH14_INITIAL_STAGE_DECODE_OCT27.md",
+      "docs/porting/th14-initial-stage-decode-verified-oct27.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
-    "productionGameplayChanged": false,
+    "productionInitialResourceLoadingChanged": true,
     "productionGraphicsChanged": false,
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "actualNativeGameplayFramesCaptured": 2,
-    "stage": 3,
-    "controllerAndBattleFrame": 241,
-    "actualCppFramesPerCase": 2264,
-    "actualNativeLiveVmsPerCase": 339,
-    "comparedWordsPerVm": 303,
-    "bothRngSeedsAndCountsAndSelectedEconomyEqual": true,
-    "secondSampleRawHandlesAndRegistryOrderExact": true,
-    "secondSampleStrictDifferentVmWords": 20,
-    "fourOptionAnimationsLoadingAgeDelta": [
-      5,
-      6
-    ],
-    "actualFrameDifferentPixelBytes": [
-      3883,
-      3854
-    ],
-    "actualFrameDifferentPixels": [
-      1147,
-      1129
-    ],
-    "strictActualGameFramePassed": false,
-    "fixedAgePatchUsed": false,
-    "strictComparisonUsesHandleMapping": false,
-    "firstSampleMappingDiagnosticOnly": true,
+    "defaultSynchronousResourceConsumersPreserved": true,
+    "decodedResourceComparisons": 42,
+    "initialDecodeResumesAfterSelectedPlayerUpload": true,
+    "eachEclAnimationReadAfterPreviousUpload": true,
+    "coreUnitsRecompiledInitially": 141,
+    "coreUnitsRecompiledAfterBindingCorrection": 1,
+    "coreObjectsReusedAfterFullRecompile": 140,
+    "actualDemoFramesPerBackend": 2264,
+    "actualOrdinaryPrefixFramesPerBackend": 722,
+    "workerSuspendResumeCases": 2,
+    "staleWorkerCallbackLeavesPendingStateUnchanged": true,
+    "lifecycleResumeAll339LiveVmsAndImageAndPcmEqual": true,
+    "priorNativeTitle80PublicationsAnd303VmWordsStillExact": true,
+    "trueParallelNativeCpuWorkerReproduced": false,
+    "actualNativeGameplayStrictFramePassed": false,
+    "remainingRawVmWords": 20,
+    "remainingPixelBytes": 3854,
+    "newBrowserCandidateDelivered": false,
     "currentQuietPreviewPort": 8228,
     "candidateProductionCodeCommit": "736103cbc00c2067dbd72d9fd14ebbeef2694245",
-    "legacyInputEdgeLabelsWithdrawn": true,
     "oldFailuresRetained": true,
-    "creationRingBudgetFailureRetained": true,
+    "fullCampaignAcceptanceInherited": false,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
     "browserAcceptance": false,

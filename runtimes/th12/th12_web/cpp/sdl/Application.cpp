@@ -168,13 +168,14 @@ struct Application:StageResourceEffects
     std::vector<ResourceUpload> boot_uploads;
     u32 boot_upload_index=0;
     StageResources* boot_stage_owner=nullptr;
-    enum class BootWork:u8 {Idle,Decode,Resume,Title,TitlePublish};
+    enum class BootWork:u8 {Idle,Decode,Resume,Title,TitlePublish,InitialDecode,InitialResume};
     struct BootWorkToken {Application* owner;u64 generation;BootWork work;u32 index;};
     u64 boot_worker_generation=0;
     BootWork boot_worker_work=BootWork::Idle;
     u32 boot_worker_index=0;
     bool boot_worker_active=false,boot_worker_suspended=false;
     bool boot_job_published=false,boot_title_ready=false,boot_worker_failed=false;
+    bool initial_decode_complete=true;
     bool initial_upload_waiting=false;
     StageUploadsTh14 stage_uploads;
     u64 stage_worker_generation=0,stage_worker_started_ns=0;
@@ -387,8 +388,11 @@ struct Application:StageResourceEffects
             // stage.enemies duplicates one of those files and has no upload.
             // Retail44c4bf requests only the selected player at file9 before
             // the initial background/HUD/ECL uploads.
-            boot_uploads={{&session.resources.core.players[session.state.character],9},{&stage.background,u16((stage.stage_number&1)+3)},{&stage.logo,6}};
-            for(u32 i=0;i<stage.ecl_animations.size();++i)if(!stage.ecl_animation_names[i].empty())boot_uploads.push_back({&stage.ecl_animations[i],u16(10+i)});
+            // 44c4bf waits for file9 before435e1d creates the options.
+            // The same worker then reads scene, HUD and each ECL ANIM only
+            // after the preceding upload returns; those reads are not boot IO.
+            initial_decode_complete=false;
+            boot_uploads={{&session.resources.core.players[session.state.character],9}};
             if(!boot_uploads.empty()){
                 // The initial controller's44c4bf resource requests do not
                 // enter420d20. Its loading family belonged to cold startup;
@@ -406,11 +410,12 @@ struct Application:StageResourceEffects
     }
 #if PORT_TITLE == 14
     bool core_ready()const override{return core_loading_done;}
+    bool defer_initial_stage_decode()const override{return true;}
     void cancel_boot_worker(){
         ++boot_worker_generation;boot_worker_active=boot_worker_suspended=false;
         boot_job_published=boot_title_ready=boot_worker_failed=false;
         boot_worker_work=BootWork::Idle;
-        initial_upload_waiting=false;
+        initial_upload_waiting=false;initial_decode_complete=true;
     }
     void suspend_boot_worker(){
         if(boot_worker_active||initial_upload_waiting){++boot_worker_generation;boot_worker_suspended=true;}
@@ -419,23 +424,59 @@ struct Application:StageResourceEffects
         if(!boot_worker_suspended)return;
         boot_worker_suspended=false;
         if(boot_worker_active&&boot_worker_work!=BootWork::Idle)dispatch_boot_work(boot_worker_work,boot_worker_index,0);
-        else if(initial_upload_waiting)dispatch_initial_upload_resume(boot_upload_index-1);
+        else if(initial_upload_waiting)dispatch_initial_stage_work(boot_worker_work,boot_worker_index,0);
+    }
+    void dispatch_initial_stage_work(BootWork work,u32 index,int delay){
+        initial_upload_waiting=true;boot_worker_work=work;boot_worker_index=index;
+        schedule_th14_work(run_initial_stage_work,new BootWorkToken{this,boot_worker_generation,work,index},delay);
     }
     void dispatch_initial_upload_resume(u32 index){
-        initial_upload_waiting=true;
-        schedule_th14_work(resume_initial_upload,new BootWorkToken{this,boot_worker_generation,BootWork::Resume,index},1);
+        dispatch_initial_stage_work(BootWork::InitialResume,index,1);
     }
-    static void resume_initial_upload(void* raw){
+    static void run_initial_stage_work(void* raw){
         std::unique_ptr<BootWorkToken> token(static_cast<BootWorkToken*>(raw));auto& app=*token->owner;
         if(token->generation!=app.boot_worker_generation||app.boot_worker_suspended||!app.boot_stage_owner)return;
-        if(!app.initial_upload_waiting||token->index>=app.boot_uploads.size()||app.boot_upload_index!=token->index+1){
-            app.error="TH14 initial upload owner changed";app.boot_worker_failed=true;return;
+        if(!app.initial_upload_waiting||app.boot_worker_work!=token->work||app.boot_worker_index!=token->index){
+            app.error="TH14 initial worker owner changed";app.boot_worker_failed=true;return;
         }
-        if(app.boot_uploads[token->index].file==9&&!app.session.prepare_initial_player()){
-            app.error=app.session.error;app.boot_worker_failed=true;return;
+        app.boot_worker_work=BootWork::Idle;
+        auto& stage=*app.boot_stage_owner;
+        if(token->work==BootWork::InitialResume){
+            if(token->index>=app.boot_uploads.size()||app.boot_upload_index!=token->index+1){
+                app.error="TH14 initial upload owner changed";app.boot_worker_failed=true;return;
+            }
+            const auto file=app.boot_uploads[token->index].file;
+            if(file==9&&!app.session.prepare_initial_player()){
+                app.error=app.session.error;app.boot_worker_failed=true;return;
+            }
+            const u32 step=file==9?0:file==u16((stage.stage_number&1)+3)?1:file==6?2:u32(file-10)+4;
+            std::printf("[loading14] initial worker resumed after file%u\n",u32(file));
+            app.dispatch_initial_stage_work(BootWork::InitialDecode,step,0);return;
+        }
+        if(token->work!=BootWork::InitialDecode){app.error="Invalid TH14 initial worker task";app.boot_worker_failed=true;return;}
+        auto fail=[&](){app.error="TH14 initial resource "+last_resource+": "+app.resources.error();app.boot_worker_failed=true;};
+        u32 step=token->index;
+        if(step==0){
+            if(!app.resources.load_stage_scene(stage.stage_number,stage)){fail();return;}
+            app.boot_uploads.push_back({&stage.background,u16((stage.stage_number&1)+3)});
+        }else if(step==1){
+            const u32 selection=u32(app.session.state.character*2+app.session.state.subtype);
+            if(!app.resources.load_stage_hud(stage.stage_number,stage,selection)){fail();return;}
+            app.boot_uploads.push_back({&stage.logo,6});
+        }else{
+            if(step==2){if(!app.resources.load_stage_timeline_plan(stage.stage_number,stage)){fail();return;}step=3;}
+            if(step<3||step>7){app.error="Invalid TH14 initial decode step";app.boot_worker_failed=true;return;}
+            u32 slot=step-3;
+            while(slot<stage.ecl_animations.size()&&stage.ecl_animation_names[slot].empty())++slot;
+            if(slot<stage.ecl_animations.size()){
+                if(!app.resources.load_stage_animation(stage,slot)){fail();return;}
+                app.boot_uploads.push_back({&stage.ecl_animations[slot],u16(10+slot)});
+            }else{
+                if(!app.resources.complete_stage_timeline(stage.stage_number,stage)){fail();return;}
+                app.initial_decode_complete=true;
+            }
         }
         app.initial_upload_waiting=false;
-        std::printf("[loading14] initial worker resumed after file%u\n",u32(app.boot_uploads[token->index].file));
     }
     void dispatch_boot_work(BootWork work,u32 index,int delay){
         boot_worker_work=work;boot_worker_index=index;
@@ -540,7 +581,7 @@ struct Application:StageResourceEffects
         ++boot_signature_draws;
         return true;
     }
-    bool stage_ready()const override{return boot_uploads.empty();}
+    bool stage_ready()const override{return boot_uploads.empty()&&initial_decode_complete;}
     bool prepare_stage_phase(StageResources& stage,StageResourceEffects::Phase phase)override{
         renderer.flush();graphics.error.clear();
         if(!stage_uploads.begin(stage,phase)){graphics.error="TH14 stage upload owner still pending";return false;}

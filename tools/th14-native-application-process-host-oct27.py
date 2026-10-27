@@ -31,7 +31,12 @@ parser.add_argument('--maximum-wall-seconds',type=int,default=900,help='Explicit
 parser.add_argument('--declared-process-cookie',type=lambda text:int(text,0),required=True)
 parser.add_argument('--declared-initial-game-ticks',type=int,required=True)
 parser.add_argument('--observe-creations',action='store_true',help='Read the bounded creation ring after each actual tick; no game state is replaced')
+parser.add_argument('--observe-initial-loading',action='store_true',help='Read the initial resource queue at callback/tick boundaries')
+parser.add_argument('--initial-worker-pause-kind',choices=['decode','resume'],help='Exercise production worker suspend/resume once before the selected pending initial task; component test only')
+parser.add_argument('--initial-worker-pause-frames',type=int,default=5)
 args=parser.parse_args();B=args.build.resolve();O=args.output.resolve()
+assert 1<=args.initial_worker_pause_frames<=30
+if args.initial_worker_pause_kind:args.observe_initial_loading=True
 assert 0<=args.declared_initial_game_ticks<2**32
 initial_game_ticks=args.declared_initial_game_ticks
 assert 0<=args.declared_process_cookie<2**32 and args.declared_process_cookie!=0xbb40e64e and args.declared_process_cookie&0xffff0000
@@ -207,9 +212,22 @@ try:
  initialized=api['component_initialize'](store)
  assert initialized==1,C.string_at(C.addressof(api['memory'].data_ptr(store).contents)+api['th11_error'](store)).decode()
  table=api['__indirect_function_table'];mem=api['memory']
- frame_index=0;wall_started=time.monotonic();actions=[];captures=[]
+ frame_index=0;wall_started=time.monotonic();actions=[];captures=[];application_ticks=0
  creation_rows=[];creation_count=0
+ initial_loading_rows=[];worker_pause_events=[];worker_paused=False;worker_resume_frame=0;worker_pause_done=False
  if args.observe_creations:assert 'component_births'in api,'Build with the read-only title observer'
+ if args.observe_initial_loading:assert 'component_initial_loading_state'in api,'Build with --initial-loading-observer'
+ def initial_loading_state():
+  pointer=api['component_initial_loading_state'](store)
+  return list(struct.unpack('<14I',mem.read(store,pointer,pointer+56)))
+ def observe_initial_loading(boundary):
+  if not args.observe_initial_loading:return
+  words=initial_loading_state()
+  if words[1]!=3:return
+  pointer=api['component_initial_last_resource'](store)
+  name=C.string_at(C.addressof(mem.data_ptr(store).contents)+pointer).decode()
+  if not initial_loading_rows or words[3:]!=initial_loading_rows[-1]['words'][3:]or name!=initial_loading_rows[-1]['lastResource']:
+   initial_loading_rows.append(dict(frame=frame_index,boundary=boundary,clockNs=clock_ns,words=words,lastResource=name))
  def state_now():
   pointer=api['component_state'](store);return list(struct.unpack('<20I',mem.read(store,pointer,pointer+80)))
  def reference_state():
@@ -239,6 +257,11 @@ try:
   result=dict(schema='th14/native-application-run/1',completed=completed,error=error,checks=checks,scenarioSha256=sha(scenario_raw),initialSave=initial_save,finalSave=save_files(),buildReportSha256=sha((B/'build.json').read_bytes()),archiveSha256=archive_sha256,frames=frame_index,rows=rows,actions=actions,captures=captures,glCalls=dict(calls),pendingAsyncCallbacks=len(callbacks),deliveredCallbackSequence=sequence,files=file_events,pcmFrames=pcm_frames,pcmSha256=audio_hash.hexdigest(),wasmSha256=sha(raw),toolSha256=sha(tool_raw),renderer=e.info,actualProductionApplicationAndDevices=True,platformClockAndIoDeclared=True,physicalAudioDevicesOpened=0,virtualAudioStreamsCreated=calls['SDL_OpenAudioDeviceStream'],appUiControlled=False,browserRun=False,browserAcceptance=False,productionChanged=False,completeGame=False,nativeEquivalent=False)
   result.update(backend=args.backend,hostToolSha256=sha(host_path.read_bytes()),metadataEpochAtFrameZero=args.metadata_epoch,declaredInitialGameTicks=initial_game_ticks,
    callbackClockPolicy='queued deadlines between fixed frame starts; callback execution duration declared zero',minimumCallbackDelayMs=1)
+  result['applicationTicks']=application_ticks
+  if args.observe_initial_loading:result['initialLoadingObservations']=initial_loading_rows
+  if args.initial_worker_pause_kind:
+   result.update(workerPauseEvents=worker_pause_events,workerPauseKind=args.initial_worker_pause_kind,
+    workerLifecycleControlledViaProductionMethods=True,workerLifecycleIsNotPhysicalUiAcceptance=True)
   if args.observe_creations:result['animationCreationRecords']=creation_rows
   observed=reference_state()
   if observed is not None:result['finalReferenceState']=observed
@@ -259,16 +282,33 @@ try:
   for _ in range(count):
    assert time.monotonic()-wall_started<args.maximum_wall_seconds,'Native Application wall budget exhausted'
    frame_index+=1;frame_ns=frame_index*1000000000//60;delivered=0
+   if worker_paused and frame_index>=worker_resume_frame:
+    api['component_initial_resume'](store);worker_paused=False
+    worker_pause_events.append(dict(kind='resume',frame=frame_index,clockNs=clock_ns,words=initial_loading_state()))
    while callbacks and callbacks[0][0]<=frame_ns:
     due,_,function,argument=heapq.heappop(callbacks)
     assert clock_ns<=due<=frame_ns
     # A worker continuation uses its queued delivery time. Assigning every
     # callback the next frame's time incorrectly postpones its successors.
     clock_ns=due
+    paused_this_callback=False
+    if args.initial_worker_pause_kind and not worker_pause_done:
+     before=initial_loading_state();wanted=1 if args.initial_worker_pause_kind=='decode'else 2
+     if before[0]==6 and before[1]==3 and before[12]and before[5]==wanted:
+      api['component_initial_suspend'](store);worker_paused=True;worker_pause_done=True;paused_this_callback=True
+      worker_resume_frame=frame_index+args.initial_worker_pause_frames
+      preserved=initial_loading_state()
+      worker_pause_events.append(dict(kind='suspend',frame=frame_index,clockNs=clock_ns,words=preserved))
     target=table.get(store,function);assert target;target(store,argument);delivered+=1;assert delivered<=256
+    if paused_this_callback:
+     after=initial_loading_state();assert preserved==after,'Stale callback changed a suspended initial worker'
+     worker_pause_events.append(dict(kind='stale-callback-returned',frame=frame_index,clockNs=clock_ns,pendingStatePreserved=True))
+    observe_initial_loading('callback')
    clock_ns=frame_ns
-   ok=api['component_tick'](store,held,pause)
-   assert ok==1,C.string_at(C.addressof(api['memory'].data_ptr(store).contents)+api['th11_error'](store)).decode()
+   if not worker_paused:
+    ok=api['component_tick'](store,held,pause);application_ticks+=1
+    assert ok==1,C.string_at(C.addressof(api['memory'].data_ptr(store).contents)+api['th11_error'](store)).decode()
+   observe_initial_loading('paused'if worker_paused else'tick')
    if args.observe_creations:
     pointer=api['component_births'](store);assert pointer,'Creation ring exceeded its4096-record observation budget'
     count,width=struct.unpack('<2I',mem.read(store,pointer,pointer+8))
@@ -294,6 +334,8 @@ try:
    assert check['passed'],check
   storage.check_budget(O,maximum_case=128*1024**2)
   print(json.dumps(dict(frame=frame_index,state=actual,capture=image,pcmFrames=pcm_frames,pendingCallbacks=len(callbacks))),flush=True)
+ if args.initial_worker_pause_kind:
+  assert worker_pause_done and not worker_paused and [event['kind']for event in worker_pause_events]==['suspend','stale-callback-returned','resume']
  api['component_audio_close'](store);completed=True;report()
  print(json.dumps(dict(completed=True,frames=frame_index,checks=len(checks),saveFiles=save_files())),flush=True)
 except BaseException as failure:

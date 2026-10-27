@@ -19,7 +19,9 @@ parser.add_argument('--output',type=Path,required=True)
 parser.add_argument('--core-build',type=Path,required=True)
 parser.add_argument('--backend',choices=['gles','webgpu'],default='gles')
 parser.add_argument('--title-observer',action='store_true',help='Export read-only title age, startup inputs and RNG state; run the unchanged production tick')
+parser.add_argument('--initial-loading-observer',action='store_true',help='Also export initial worker observations and production suspend/resume methods for lifecycle checks')
 args=parser.parse_args();O=args.output.resolve()
+if args.initial_loading_observer:args.title_observer=True
 assert O.is_relative_to((R/'artifacts/th14').resolve())and not O.exists()
 O.mkdir(parents=True);inc=O/'include';inc.mkdir();src=R/'runtimes/th12/th12_web/cpp/sdl'
 spec=importlib.util.spec_from_file_location('test_storage',R/'tools/th14-test-storage.py')
@@ -74,7 +76,8 @@ EMSCRIPTEN_KEEPALIVE void component_audio_close(){th11::sdl::app.audio.close();}
 }
 '''
 title_fixture=R/'runtimes/th12/th12_web/tests/cpp/th14-native-title-fixture.cpp'
-if args.title_observer:fixture=title_fixture.read_text()
+initial_fixture=R/'runtimes/th12/th12_web/tests/cpp/th14-native-initial-loading-fixture.cpp'
+if args.title_observer:fixture=(initial_fixture if args.initial_loading_observer else title_fixture).read_text()
 (O/'fixture.cpp').write_text(fixture)
 compiler=R/'runtimes/th12/tools/wasi-sdk-34.0-x86_64-windows/bin/clang++.exe'
 flags=['--target=wasm32-wasip1','-DPORT_TITLE=14','-DTH_NATIVE_PLATFORM=1','-DTH11_DEVELOPMENT_HARNESS=0','-std=c++17','-O2','-g0','-ffp-contract=off','-fno-strict-aliasing','-fno-exceptions','-fno-rtti','-I'+str(inc),'-I'+str(src)]
@@ -88,6 +91,7 @@ for unit in units:
  objects.append(obj);print('compiled',unit.name,flush=True)
 exports=['component_initialize','component_tick','component_state','component_pixels','component_audio_close','th11_error','th11_last_resource','malloc','free']
 if args.title_observer:exports.extend(['component_reference_state','component_live_state','component_births'])
+if args.initial_loading_observer:exports.extend(['component_initial_loading_state','component_initial_last_resource','component_initial_suspend','component_initial_resume'])
 linkflags=['-mexec-model=reactor','-Wl,--no-entry','-Wl,--export-memory','-Wl,--export-table','-Wl,--allow-undefined','-Wl,-z,stack-size=1048576',*[f'-Wl,--export={name}'for name in exports]]
 result=subprocess.run([str(compiler),*flags,*linkflags,*[str(p)for p in objects],*[row['path']for row in build['objectBindings']],'-o',str(O/'application.wasm')],cwd=R,env={**os.environ,'TEMP':str(O),'TMP':str(O),'TMPDIR':str(O)},capture_output=True);(O/'link.log').write_bytes(result.stdout+result.stderr);assert result.returncode==0,(O/'link.log').read_text()[-6000:]
 # Bind the included production Application and all project headers. Reused game
@@ -98,6 +102,8 @@ for source in [src/'Application.cpp',*project_headers]:
 if args.title_observer:
  for source in [title_fixture,title_fixture.parent/'th14-native-title-live-observer.hpp']:
   raw=source.read_bytes();bindings[source.relative_to(R).as_posix()]=dict(bytes=len(raw),sha256=sha(raw))
+if args.initial_loading_observer:
+ raw=initial_fixture.read_bytes();bindings[initial_fixture.relative_to(R).as_posix()]=dict(bytes=len(raw),sha256=sha(raw))
 if args.backend=='webgpu':
  (O/'shaders').mkdir()
  for name in ['Th14WebGpu.wgsl','Th14WebGpuResample.wgsl']:

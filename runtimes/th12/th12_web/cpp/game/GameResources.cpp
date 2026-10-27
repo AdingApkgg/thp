@@ -177,6 +177,40 @@ bool GameResources::load_stage_scene(u32 stage,StageResources& output) {
     return true;
 }
 
+bool GameResources::load_stage_timeline_plan(u32 stage,StageResources& output){
+    if(stage<1||stage>7)return fail("stage outside TH14 range");
+    last_error.clear();output.stage_number=stage;
+    char name[64];std::snprintf(name,sizeof name,stage_files.timeline,stage);
+    if(!load_ecl(name,output.timeline))return false;
+    output.ecl_animation_names={};output.ecl_animations={};output.enemies={};
+    for(const auto& file:output.timeline.files){
+        if(file->animations.size()>output.ecl_animations.size())return fail("ECL animation slot limit");
+        for(u32 i=0;i<file->animations.size();++i)output.ecl_animation_names[i]=file->animations[i];
+    }
+    output.boss_programs.clear();
+    for(const char* suffix:{stage_files.boss,stage_files.midboss}){
+        std::snprintf(name,sizeof name,suffix,stage);
+        if(!has(name))continue;
+        output.boss_programs.emplace_back();
+        if(!load_ecl(name,output.boss_programs.back()))return false;
+    }
+    return true;
+}
+bool GameResources::load_stage_animation(StageResources& output,u32 slot){
+    if(slot>=output.ecl_animations.size())return fail("ECL animation slot limit");
+    if(output.ecl_animation_names[slot].empty())return true;
+    return open_anm(output.ecl_animation_names[slot],output.ecl_animations[slot]);
+}
+bool GameResources::complete_stage_timeline(u32 stage,StageResources& output){
+    if(stage<1||stage>7)return fail("stage outside TH14 range");
+    char name[64];std::snprintf(name,sizeof name,stage_files.enemies,stage);
+    for(u32 i=0;i<output.ecl_animation_names.size();++i)if(output.ecl_animation_names[i]==name){
+        // This engine retains an independent default-animation owner. The
+        // matching ANIM file has already been decoded by the same worker.
+        output.enemies=output.ecl_animations[i];output.enemies.templates.reset();return true;
+    }
+    return open_anm(name,output.enemies);
+}
 bool GameResources::load_stage_timeline(u32 stage,StageResources& output) {
     if(stage<1||stage>7)return fail("stage outside TH14 range");
     last_error.clear();output.stage_number=stage;
