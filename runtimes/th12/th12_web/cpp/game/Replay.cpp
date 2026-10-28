@@ -201,7 +201,13 @@ ReplayInput Replay::tick(bool active){
         const auto* p=bytes.data()+s->offset+kReplayStageHeader+cursor*6;
         input.held=word(p);input.pressed=word(p+2);input.released=word(p+4);
         input.end_marker=input.held==0xffff&&input.pressed==0xffff&&input.released==0xffff;
-        // 436190 advances the FPS pointer AFTER ticks 0,30,60,... .
+#if PORT_TITLE == 14
+        //45521b requests the replay-end menu before the FPS read and cursor
+        // increments. Repeated terminal callbacks must retain that marker
+        // and the last recorded rate, including an empty terminal replay.
+        if(input.end_marker)return input;
+#endif
+        // TH14 4552a9..4552c4 advances the FPS pointer AFTER ticks0,30,60,... .
         const u32 fps_index=cursor?1+(cursor-1)/30:0;
         const u32 fps_size=s->payload_size-s->frames*6;
         input.fps=fps_size?bytes[s->offset+kReplayStageHeader+s->frames*6+(fps_index<fps_size?fps_index:fps_size-1)]:0;

@@ -1,0 +1,267 @@
+{
+  "verifiedFiniteTerminalFix": true,
+  "th14TerminalPreservesCursorAndRecordedFps": true,
+  "retailReaderCases": 36,
+  "retailReaderSteps": 2804,
+  "beforeMismatchSteps": 208,
+  "afterMismatchSteps": 0,
+  "comparedReaderFields": [
+    "stage input cursor",
+    "recorded FPS byte",
+    "active terminal pause-request versus ReplayInput.end_marker"
+  ],
+  "nativePauseRequestBoundaryControlled": true,
+  "nativeInputMasksNotComparedToRawReplayWords": true,
+  "nativeOutOfPayloadReadsExcluded": true,
+  "applicationRuns": [
+    {
+      "backend": "gles",
+      "frames": 2142,
+      "assertions": 27,
+      "captures": 4,
+      "liveRows": 295,
+      "naturalReplayEnds": 2,
+      "encodedReplayBytesPreserved": 823,
+      "pcmFrames": 1391616,
+      "pcmSha256": "4e4019ffe16d3fb5337e53adcb2dae16239b6648087c4d496e3830c23f03020d",
+      "productionWasmSha256": "8b786bd03ba69347605ca781e1f3231e4ae27c333a5c2cfbf179ea233ca364ae",
+      "nativeOriginalOrdinaryPlaybackAccepted": false
+    },
+    {
+      "backend": "webgpu",
+      "frames": 2142,
+      "assertions": 27,
+      "captures": 4,
+      "liveRows": 295,
+      "naturalReplayEnds": 2,
+      "encodedReplayBytesPreserved": 823,
+      "pcmFrames": 1391616,
+      "pcmSha256": "4e4019ffe16d3fb5337e53adcb2dae16239b6648087c4d496e3830c23f03020d",
+      "productionWasmSha256": "0c648a22084cbcdd8d3b4937817021c92c809af1c4c54346cb06f1177e2ad4b2",
+      "nativeOriginalOrdinaryPlaybackAccepted": false
+    }
+  ],
+  "applicationActionAndJournalRowsEqual": true,
+  "applicationCaptureBuffersEqual": 4,
+  "applicationLiveRowsEqual": 295,
+  "applicationWordsPerLiveVm": 303,
+  "silentPcmSinksEqual": true,
+  "browserMainWasmBytes": 2722034,
+  "browserMainWasmSha256": "450017d173438f3c817d107b1d546e7d99a29c16ca9dcb65378e1567f3662758",
+  "browserCompiledUnits": 1,
+  "browserReusedUnits": 145,
+  "browserTransportRoutes": 139,
+  "browserHttpChecks": 27,
+  "actualBrowserPartialReplayNaturalEnds": 2,
+  "browserReplayAgainAndReturnListVisuallyObserved": true,
+  "browserVisualObservationIsNotStrictOriginalPixelComparison": true,
+  "completeMultiStageBrowserReplayAccepted": false,
+  "completeOriginalOrdinaryPlaybackAccepted": false,
+  "independentProductionLoadingAccepted": false,
+  "completeBrowserAcceptance": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "verifierSha256": "7c1211247854da8d11d9d32fb03b4d197cb2a87ecf817e8b2236ca717df398ac",
+  "bindings": {
+    "artifacts/th14/native-frame-readback-oct28/replay-rate-terminal-baseline-v2/report.json": {
+      "bytes": 1002085,
+      "sha256": "4b88081a49f021f3a3b4cef373f322d5e006c629b0c8e662f1ad093a6d47d2c4"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-rate-terminal-fixed/report.json": {
+      "bytes": 936404,
+      "sha256": "ba00c44f6d72c5e22482389a30cad2614ef35a37861bc0cbcd96e84ccd54d6ae"
+    },
+    "tools/th14-replay-rate-terminal-oct28.py": {
+      "bytes": 10540,
+      "sha256": "53be4a0f7589669e7ff7be37bf5856950e4024a1ea8db0ac45313909c2eae3a8"
+    },
+    "runtimes/th12/th12_web/cpp/game/Replay.cpp": {
+      "bytes": 14722,
+      "sha256": "3a91278c1c01857b772a046d85b088b1496c75e4c675fd62b5807214840d19b3"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-rate-terminal-fixed/Replay.cpp.o": {
+      "bytes": 10319,
+      "sha256": "b1ce04bb67216b28aa05a2e9cf31e6d07be463b9892dad990df0b422283c3303"
+    },
+    "artifacts/th14/native-frame-readback-oct27/initial-decode-core-build/objects/ResourceCrypt.cpp.o": {
+      "bytes": 2437,
+      "sha256": "246f39f58215aeb6593e201d2a48e26a4ce572f61ea23f7a3199c54cd66e5316"
+    },
+    "artifacts/th14/native-frame-readback-oct27/initial-decode-core-build/objects/Lzss.cpp.o": {
+      "bytes": 8624,
+      "sha256": "fd0a76fa9b2e2e8c2046429565dad3511b76a3f2382624d809e6b2ea6ab1281e"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-core/observer-build.json": {
+      "bytes": 79654,
+      "sha256": "8d790bfe8d796b27be7c758f4ccde6fff781db0d096ada36d26a90628a69d21e"
+    },
+    "runtimes/th12/th12_web/cpp/game/Replay.hpp": {
+      "bytes": 9111,
+      "sha256": "c722098dec81f838c6ccaa74d50dc9840538d84b20c56f9e67bf40cd12f6378b"
+    },
+    "runtimes/th12/th12_web/cpp/game/ResourceCrypt.hpp": {
+      "bytes": 1099,
+      "sha256": "dba560d8380ef04611c41da473972aaa30f9725afe9bdb49709b8dbfa9ccda27"
+    },
+    "runtimes/th12/th12_web/cpp/game/Lzss.hpp": {
+      "bytes": 1223,
+      "sha256": "df264a260821a4cbc8ec60e46b02f15ad0eb00bf998a8d6ad5260622f8224290"
+    },
+    "runtimes/th12/th12_web/cpp/game/Types.hpp": {
+      "bytes": 613,
+      "sha256": "f79c1ed7cb200413ef0dea75bf0d58842745b6b47182a97e496733c1d7bb2669"
+    },
+    "runtimes/th12/th12_web/cpp/game/PortTitle.hpp": {
+      "bytes": 741,
+      "sha256": "5531b9b0a2364098ec023e09eddbf66907c392fb58a24e1a84c5bf7a9a033d2f"
+    },
+    "artifacts/th14/native-frame-readback-oct28/browser-replay/downloaded-th14_01.rpy": {
+      "bytes": 823,
+      "sha256": "75d5212f15433d6a09296d23602942c2dfd7966cb80df9723b55a9848b5edce9"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-application-gles/report.json": {
+      "bytes": 116181,
+      "sha256": "acf0d78d02539e58e63ef7f3c5b98dbc011f533d80ec07f590857e37f4ced8aa"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-application-gles/save/replay/th14_01.rpy": {
+      "bytes": 823,
+      "sha256": "75d5212f15433d6a09296d23602942c2dfd7966cb80df9723b55a9848b5edce9"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-application-gles/run-tool.py": {
+      "bytes": 25666,
+      "sha256": "c4a720cc6815ca5956824917663658d85104909e0d9e155c043bbc1e25aeb7b8"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-gles-build/build.json": {
+      "bytes": 88574,
+      "sha256": "559281672b932fa1457a55e05753f5d268968c6263cf0794d8119672481e0c73"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-application-gles/replay-list.bgra": {
+      "bytes": 1228800,
+      "sha256": "ed9c97feecd4142e0aed1863219ce927b1c1422e2d3f564d3a082fd5bf928418"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-application-gles/replay-list-live.json": {
+      "bytes": 130961,
+      "sha256": "b97d2ebe1abdd947f12de4ff8966eecfe657a6164cce2cf8db89ece60989ba98"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-application-gles/first-natural-end.bgra": {
+      "bytes": 1228800,
+      "sha256": "8a0df631aa8bfe48cb329b583155e9c3289009d185e2ce02c40a9b88dd10cacb"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-application-gles/first-natural-end-live.json": {
+      "bytes": 457550,
+      "sha256": "404f4da34a22668b7103a9866c36df29e0fba01e9f0ae111683fddc9049f1b8a"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-application-gles/second-natural-end.bgra": {
+      "bytes": 1228800,
+      "sha256": "8a0df631aa8bfe48cb329b583155e9c3289009d185e2ce02c40a9b88dd10cacb"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-application-gles/second-natural-end-live.json": {
+      "bytes": 458027,
+      "sha256": "e3ca484e587781182428dc1e9b4017038278f2983f603802875bb32d915317f5"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-application-gles/returned-replay-list.bgra": {
+      "bytes": 1228800,
+      "sha256": "10f4d37bc929077c1d41b064466013afdccb783a7fb766897ecf6f85d84b63f0"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-application-gles/returned-replay-list-live.json": {
+      "bytes": 149,
+      "sha256": "b334d43a1fe29c326ff1636f06f882452a24dbd8aa261765f5996ab81ac4a495"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-application-webgpu/report.json": {
+      "bytes": 109490,
+      "sha256": "db1b6e96d1d77239c7946ebaa7f3c342ceb5cb156e247a05a9a3fe1f9c5a640e"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-application-webgpu/save/replay/th14_01.rpy": {
+      "bytes": 823,
+      "sha256": "75d5212f15433d6a09296d23602942c2dfd7966cb80df9723b55a9848b5edce9"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-application-webgpu/run-tool.py": {
+      "bytes": 25666,
+      "sha256": "c4a720cc6815ca5956824917663658d85104909e0d9e155c043bbc1e25aeb7b8"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-webgpu-build/build.json": {
+      "bytes": 88954,
+      "sha256": "0ca07bd7e110438a00d88ccf570f54d659fd89476bcbe581c0aa10d69a69a2a4"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-application-webgpu/replay-list.bgra": {
+      "bytes": 1228800,
+      "sha256": "ed9c97feecd4142e0aed1863219ce927b1c1422e2d3f564d3a082fd5bf928418"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-application-webgpu/replay-list-live.json": {
+      "bytes": 130961,
+      "sha256": "b97d2ebe1abdd947f12de4ff8966eecfe657a6164cce2cf8db89ece60989ba98"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-application-webgpu/first-natural-end.bgra": {
+      "bytes": 1228800,
+      "sha256": "8a0df631aa8bfe48cb329b583155e9c3289009d185e2ce02c40a9b88dd10cacb"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-application-webgpu/first-natural-end-live.json": {
+      "bytes": 457550,
+      "sha256": "404f4da34a22668b7103a9866c36df29e0fba01e9f0ae111683fddc9049f1b8a"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-application-webgpu/second-natural-end.bgra": {
+      "bytes": 1228800,
+      "sha256": "8a0df631aa8bfe48cb329b583155e9c3289009d185e2ce02c40a9b88dd10cacb"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-application-webgpu/second-natural-end-live.json": {
+      "bytes": 458027,
+      "sha256": "e3ca484e587781182428dc1e9b4017038278f2983f603802875bb32d915317f5"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-application-webgpu/returned-replay-list.bgra": {
+      "bytes": 1228800,
+      "sha256": "10f4d37bc929077c1d41b064466013afdccb783a7fb766897ecf6f85d84b63f0"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-application-webgpu/returned-replay-list-live.json": {
+      "bytes": 149,
+      "sha256": "b334d43a1fe29c326ff1636f06f882452a24dbd8aa261765f5996ab81ac4a495"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-browser-candidate/build.json": {
+      "bytes": 99042,
+      "sha256": "26ac9f2af7bc6e0fe2976d6bf37fd6304ca2b227b8317da59142fce8b1a11bee"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-browser-candidate-v2/build.json": {
+      "bytes": 82841,
+      "sha256": "a734f18f153ccf6e4a0585ed21f218aaa2aa30c74c9055fd2c0c5f12c4da0dff"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-launcher/http-check.json": {
+      "bytes": 15030,
+      "sha256": "7498fb7453921941f7eb65ca9582bb2b2cbba3bf8a40f20548c2901c52c810b7"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-launcher/served-current.json": {
+      "bytes": 2053,
+      "sha256": "06470c38d1ab28dde74de5a131206b77c5b699c5c0b15cc477c0d1bed69a41e9"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-browser-ui/replay-list.jpg": {
+      "bytes": 113137,
+      "sha256": "4a8dae9e9730d58b853cf944c79ebc6ff854885cbb56c15d2ab1019d39d0f18c"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-browser-ui/replay-list.ax.txt": {
+      "bytes": 1400,
+      "sha256": "d76a01bd339c059b946c0b9ab9c2371ffddd3ce46c11db1f12355d9833be1230"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-browser-ui/first-natural-end.jpg": {
+      "bytes": 85347,
+      "sha256": "0c930973b8c4b7bccd98a537043288741c56fc9440d7a1ad6200e122881e6c78"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-browser-ui/first-natural-end.ax.txt": {
+      "bytes": 1400,
+      "sha256": "5a66f476df4d9b29e64018db5f33cadbc03e062209366382d8f5010d8f61d25e"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-browser-ui/second-natural-end.jpg": {
+      "bytes": 85401,
+      "sha256": "038f7fcedc07869cd433a8303f7cec402ca14ba21f8f4c51f63ff05670026de1"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-browser-ui/second-natural-end.ax.txt": {
+      "bytes": 1398,
+      "sha256": "2b708e9c8f6e7dd62ef6081f66f36d9d118388eb941a170061a9a724d7dbbe2d"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-browser-ui/returned-replay-list.jpg": {
+      "bytes": 113301,
+      "sha256": "0acd9a82169ba6561f09ecbef4250723fffbdac55a72f4144c07250cbb0d7e4a"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-terminal-browser-ui/returned-replay-list.ax.txt": {
+      "bytes": 1400,
+      "sha256": "5cb28886d3cfc47230741c2c24d1d8233b540cbc274ac3ec357b24ae9dfa75b5"
+    }
+  }
+}

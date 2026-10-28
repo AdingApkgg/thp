@@ -19,7 +19,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 SHA = lambda raw: hashlib.sha256(raw).hexdigest()
 OVERLAYS = ['th12_web/cpp/sdl/Application.cpp','th12_web/cpp/game/GameResources.cpp',
-            'th12_web/cpp/game/GameSession.cpp','th12_web/cpp/game/ReplayTextTh14.hpp','portable/sdl/Th14WebGpuCallbacks.hpp',
+            'th12_web/cpp/game/GameSession.cpp','th12_web/cpp/game/Replay.cpp','th12_web/cpp/game/ReplayTextTh14.hpp','portable/sdl/Th14WebGpuCallbacks.hpp',
             'portable/sdl/Th14ArchiveDecodeClient.mjs','portable/sdl/Th14ArchiveReadAhead.mjs','portable/sdl/Th14ArchiveDecodeEndpoint.mjs','portable/sdl/Th14ArchiveDecodeWorker.mjs',
             'portable/sdl/Th14WebGpuHost.mjs','portable/sdl/Th14WebGpuRuntime.mjs','portable/sdl/Th14WebGpuCore.mjs','portable/sdl/Th14WebGpuLibrary.js']
 

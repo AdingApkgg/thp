@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "6e3578748a26b6d689e88a275bfce3f09b852259",
+  "sourceCommit": "8658d2ae3cd8bc77af5f96e8f75e37bcb63eea1c",
   "files": [
     {
       "path": ".gitignore",
@@ -460,8 +460,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 30580,
-      "sha256": "e662803de629e3cd5a87f406e592307399c0e051f702f5ae21a7d191c697ee54"
+      "bytes": 31389,
+      "sha256": "891e85cd41e38166590485ab7277c6d74da58c1e157cbed6109e8dcb7622cbf8"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -477,6 +477,11 @@
       "path": "docs/porting/TH14_REPLAY_FPS_OCT28.md",
       "bytes": 4555,
       "sha256": "f96b6af149f646ecd401d85fdd85d6d62d0b814c1b84642517f7ad1185b1c4d4"
+    },
+    {
+      "path": "docs/porting/TH14_REPLAY_TERMINAL_OCT28.md",
+      "bytes": 3161,
+      "sha256": "8fa5de26bb0e3679734103bdffe6a4fb7005e593255f95bb9e6bbf801626ab7a"
     },
     {
       "path": "docs/porting/TH14_SAKUYAA_EASY_OCT26.md",
@@ -5054,6 +5059,11 @@
       "sha256": "ca7d564e6ed8c0d7029e2ee9bd0d9b03c997f525916012f837bfc08f00e4fb5a"
     },
     {
+      "path": "docs/porting/th14-replay-terminal-verified-oct28.json",
+      "bytes": 13106,
+      "sha256": "d0a932eeba37a21a0fdc2e3e4874ae94198a3f67e4db4fc97e49cd2001cdca55"
+    },
+    {
       "path": "docs/porting/th14-replay-writer-verified.json",
       "bytes": 2358,
       "sha256": "e60a57f189742320cace0be75f6cb2bb4c9e9fe3a3dabc8039a2e009314c7557"
@@ -8565,8 +8575,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Replay.cpp",
-      "bytes": 14413,
-      "sha256": "ef205696bfc475361353eb1e3c497302dd62e8dad07f094c7ab400b217198a05"
+      "bytes": 14722,
+      "sha256": "3a91278c1c01857b772a046d85b088b1496c75e4c675fd62b5807214840d19b3"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Replay.hpp",
@@ -15680,8 +15690,8 @@
     },
     {
       "path": "tools/th14-build-webgpu-release.py",
-      "bytes": 12856,
-      "sha256": "c4d724a77a79de3fe10a8b4bc83ff7ac0230dccfb1a2859c6d02c82679bc5c07"
+      "bytes": 12887,
+      "sha256": "2b217e1ab8c588315280a8d7139ca890f0d596b3bff4933d7de1691d398a4218"
     },
     {
       "path": "tools/th14-bullet-acceleration-check.mjs",
@@ -20149,6 +20159,11 @@
       "sha256": "25665213041a4c6608a47672bdebec12a0ebadf66f22b960d34f224431010aa7"
     },
     {
+      "path": "tools/th14-replay-rate-terminal-oct28.py",
+      "bytes": 10540,
+      "sha256": "53be4a0f7589669e7ff7be37bf5856950e4024a1ea8db0ac45313909c2eae3a8"
+    },
+    {
       "path": "tools/th14-replay-session-check.mjs",
       "bytes": 4390,
       "sha256": "5dc667a08c07fbc15cd9898e0b2b0439d5414071fc942d6319d9bd1ea54c0da3"
@@ -20177,6 +20192,11 @@
       "path": "tools/th14-replay-state-native.py",
       "bytes": 4429,
       "sha256": "7e7d79a6440e538334ad280abbc81a31e0ac5de110982a9976dd8eb905d6b98a"
+    },
+    {
+      "path": "tools/th14-replay-terminal-evidence-oct28.py",
+      "bytes": 8553,
+      "sha256": "7c1211247854da8d11d9d32fb03b4d197cb2a87ecf817e8b2236ca717df398ac"
     },
     {
       "path": "tools/th14-replay-writer-check.mjs",
@@ -24080,45 +24100,49 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "6e3578748a26b6d689e88a275bfce3f09b852259",
-    "title": "TH14 replay FPS loading guard and priority62 queue boundary",
+    "basePublishedCommit": "8658d2ae3cd8bc77af5f96e8f75e37bcb63eea1c",
+    "title": "TH14 replay terminal cursor and recorded FPS preservation",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "runtimes/th12/th12_web/cpp/game/ReplayTextTh14.hpp",
-      "tools/th14-replay-fps-text-oct28.py",
-      "tools/th14-replay-fps-evidence-oct28.py",
-      "docs/porting/TH14_REPLAY_FPS_OCT28.md",
-      "docs/porting/th14-replay-fps-verified-oct28.json",
+      "runtimes/th12/th12_web/cpp/game/Replay.cpp",
+      "tools/th14-build-webgpu-release.py",
+      "tools/th14-replay-rate-terminal-oct28.py",
+      "tools/th14-replay-terminal-evidence-oct28.py",
+      "docs/porting/TH14_REPLAY_TERMINAL_OCT28.md",
+      "docs/porting/th14-replay-terminal-verified-oct28.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "productionReplayFpsTextFixed": true,
-    "retailRequestCases": 8192,
-    "drawPriority": 62,
-    "controllerLoadingFlag": 4,
-    "finiteOriginalGameFrameStage": 3,
-    "finiteOriginalGameControllerFrame": 241,
-    "strictComponentBackends": [
+    "productionReplayTerminalFixed": true,
+    "retailReaderCases": 36,
+    "retailReaderSteps": 2804,
+    "beforeMismatchSteps": 208,
+    "afterMismatchSteps": 0,
+    "applicationBackends": [
       "gles",
       "webgpu"
     ],
-    "strictComponentLiveVms": 334,
-    "strictComponentWordsPerVm": 303,
-    "strictComponentBgraBytes": 1228800,
-    "originalResourceReadinessDeclaredAsComponentInput": true,
-    "independentProductionSchedulingAccepted": false,
-    "zeroDurationCallbackNegativeStillFails": true,
-    "fixedFrameOrVmAgeCompensationAdded": false,
-    "compiledBrowserUnits": 146,
-    "browserWasmBytes": 2722010,
-    "browserWasmSha256": "c5ee1fe1840d1bc5b359cf7f9ac4e8a9a1b11923e7429ff1de4edb14f557d4f2",
-    "browserFiniteDemoAndReplayFpsObserved": true,
-    "browserPartialReplayNaturalEndObserved": true,
+    "applicationFramesEach": 2142,
+    "applicationAssertionsEach": 27,
+    "applicationEqualCaptureBuffers": 4,
+    "applicationEqualLiveRows": 295,
+    "applicationWordsPerVm": 303,
+    "applicationSilentPcmFramesEach": 1391616,
+    "applicationReplayEncodedBytesPreserved": 823,
+    "nativePauseRequestBoundaryControlled": true,
+    "nativeOutOfPayloadReadsExcluded": true,
+    "compiledBrowserUnits": 1,
+    "reusedBrowserObjects": 145,
+    "browserSourceUnits": 146,
+    "browserWasmBytes": 2722034,
+    "browserWasmSha256": "450017d173438f3c817d107b1d546e7d99a29c16ca9dcb65378e1567f3662758",
+    "actualBrowserPartialReplayNaturalEnds": 2,
+    "browserReplayAgainAndReturnListVisuallyObserved": true,
     "browserRoutes": 139,
     "httpChecks": 27,
     "currentQuietPreviewPort": 8234,
+    "independentProductionSchedulingAccepted": false,
     "completeBrowserAcceptance": false,
     "completeGame": false,
     "nativeEquivalent": false
