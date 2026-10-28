@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "77158662e01747a90f0bfc66a692b8e03add59fe",
+  "sourceCommit": "d0210754361a102e97e740bdaf0fcfd62ffee5f3",
   "files": [
     {
       "path": ".gitignore",
@@ -167,6 +167,11 @@
       "path": "docs/porting/TH14_CONSTRUCTOR_HIT_FULL_NATIVE_OCT16.md",
       "bytes": 2165,
       "sha256": "3d26858bb8f4b984eaa03c3a0faae8e19df994aa26b98d88715b3c6df2e7762a"
+    },
+    {
+      "path": "docs/porting/TH14_CORE_TAIL_WORKER_OCT29.md",
+      "bytes": 3632,
+      "sha256": "3980ffd27a6a8b1e1d8f1e4ccf2429fe5022500fe4cda732f4cb03c864884ed7"
     },
     {
       "path": "docs/porting/TH14_CPP_WEBGPU_OCT26.md",
@@ -475,8 +480,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 35321,
-      "sha256": "0c15a55740a7809e5a85d371071c3a3331381042049ed2dbb4c6d728febc297f"
+      "bytes": 36185,
+      "sha256": "fab8a9baeb913c3135207e6f57821668552104ec20db00e663ff06812fc25c9e"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -1942,6 +1947,11 @@
       "path": "docs/porting/th14-core-loading-verified.json",
       "bytes": 8342,
       "sha256": "b72c1e1787b4d248511bafd8e0ee82012a165939862dc692b298484dc0717ec3"
+    },
+    {
+      "path": "docs/porting/th14-core-tail-worker-verified-oct29.json",
+      "bytes": 196880,
+      "sha256": "5d0b7c2428df14a4be4f9531450a6ad5087f3db45cc6159cd9622fc74185c35d"
     },
     {
       "path": "docs/porting/th14-cpp-webgpu-verified-oct26.json",
@@ -9115,8 +9125,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/sdl/Application.cpp",
-      "bytes": 80920,
-      "sha256": "2a903dbf4ed1f8a8df79c950c7a095f72066cde356d8ec0190baeb4f6707b14c"
+      "bytes": 83572,
+      "sha256": "83eec8ff1fdcbaef840193610075416fae62e13cdf01a76c2311da289b5e4fa4"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/sdl/ApplicationCaptureTh14.hpp",
@@ -11532,6 +11542,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-controller-input-fixture.cpp",
       "bytes": 402,
       "sha256": "d497ddf1121ef3ff8913ff3ac630a58a87496505f62f05da3fdc900ec7e8d855"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-core-tail-worker-fixture.cpp",
+      "bytes": 2307,
+      "sha256": "6140d3fae2d4545b583812626837a5123ed49911662937389a80a6eeb8ef77d5"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-custom-replay-reference-fixture.cpp",
@@ -15570,8 +15585,8 @@
     },
     {
       "path": "tools/th14-background-resource-build-oct28.py",
-      "bytes": 4399,
-      "sha256": "ebd8f48967d1e3f01764c7f2b456d6a0cf2b06c218a6b52bf3f8dc0212c687a0"
+      "bytes": 4569,
+      "sha256": "c58b1b5a3b6e242e9cb9c3c422f9b4a5df35f8a168c948de1c9f4edb19cafbd1"
     },
     {
       "path": "tools/th14-background-resource-check-oct28.mjs",
@@ -16262,6 +16277,16 @@
       "path": "tools/th14-core-loading-check.mjs",
       "bytes": 4752,
       "sha256": "00a208664d60707d5bbfde8389c8a72128e2fdcf7082bf7d716e7a78b01f168b"
+    },
+    {
+      "path": "tools/th14-core-tail-worker-check-oct29.mjs",
+      "bytes": 5340,
+      "sha256": "17245f2951d899b405ba2f565af24945f19436f2d9f100282aa68095d0e5ec3b"
+    },
+    {
+      "path": "tools/th14-core-tail-worker-evidence-oct29.py",
+      "bytes": 8390,
+      "sha256": "68f75775dfd9b96af700bb84b14c47ecd7663112f1250113623620435a2869fb"
     },
     {
       "path": "tools/th14-cpp-webgpu-evidence-oct26.py",
@@ -24250,51 +24275,70 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "77158662e01747a90f0bfc66a692b8e03add59fe",
-    "title": "TH14 selected-player CPU worker parsing and actual reload/lifecycle controls",
+    "basePublishedCommit": "d0210754361a102e97e740bdaf0fcfd62ffee5f3",
+    "title": "TH14 remaining core CPU worker batches and actual startup rejection/recovery",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/GameSessionResources.cpp",
-      "runtimes/th12/th12_web/cpp/game/GameSessionResources.hpp",
-      "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
       "runtimes/th12/th12_web/cpp/sdl/Application.cpp",
-      "tools/th14-build-webgpu-release.py",
       "tools/th14-background-resource-build-oct28.py",
-      "runtimes/th12/th12_web/tests/cpp/th14-selected-player-worker-fixture.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-native-initial-loading-fixture.cpp",
-      "tools/th14-selected-player-worker-check-oct29.mjs",
-      "tools/th14-build-snapshot-core-oct29.py",
-      "tools/th14-native-application-process-host-oct27.py",
-      "tools/th14-boot-worker-control-oct29.py",
-      "tools/th14-selected-player-worker-evidence-oct29.py",
-      "docs/porting/TH14_SELECTED_PLAYER_WORKER_OCT29.md",
-      "docs/porting/th14-selected-player-worker-verified-oct29.json",
+      "runtimes/th12/th12_web/tests/cpp/th14-core-tail-worker-fixture.cpp",
+      "tools/th14-core-tail-worker-check-oct29.mjs",
+      "tools/th14-core-tail-worker-evidence-oct29.py",
+      "docs/porting/TH14_CORE_TAIL_WORKER_OCT29.md",
+      "docs/porting/th14-core-tail-worker-verified-oct29.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "compiledBrowserUnits": 146,
-    "compiledNativeCoreUnits": 141,
-    "selections": [
-      "pl00.anm",
-      "pl00b.anm",
-      "pl01.anm",
-      "pl01b.anm",
-      "pl02.anm",
-      "pl02b.anm"
+    "compiledBrowserUnits": 1,
+    "validatedReusedObjects": 145,
+    "coreJobIndices": [
+      3,
+      6,
+      7,
+      8
     ],
-    "validWorkerImports": 11,
-    "corruptPacketImports": 1,
-    "synchronousConsumerCases": 6,
-    "actualNativeFramesPerBackend": 2264,
-    "actualNativeAssertionsPerBackend": 7,
-    "browserWasmBytes": 2744745,
-    "browserWasmSha256": "dfebae6d7922c85ddff3c722a8c2a189cc81256fff31029a9f017f1f048e0160",
+    "anmResources": [
+      "enemy.anm",
+      "pl00.anm",
+      "pl01.anm",
+      "pl02.anm"
+    ],
+    "rawShotResources": [
+      "pl00a.sht",
+      "pl00b.sht",
+      "pl01a.sht",
+      "pl01b.sht",
+      "pl02a.sht",
+      "pl02b.sht"
+    ],
+    "eclResource": "default.ecl",
+    "actualValidCoreBatches": 8,
+    "invalidAndCorruptControlsPassed": true,
+    "shotParsingRemainsOnMainConsumer": true,
+    "nativeFeatureOff": {
+      "gles": {
+        "wasmByteIdentical": true,
+        "platformObjectsByteIdentical": true,
+        "wasmSha256": "ba8b169ad3c158dd60aa6db293a3647fa2c1171563ae38e1075db35faff3ce6e",
+        "previousFiniteRunFrames": 2264,
+        "noNewNativeRunClaimed": true
+      },
+      "webgpu": {
+        "wasmByteIdentical": true,
+        "platformObjectsByteIdentical": true,
+        "wasmSha256": "ee7af1763550715330494bc270fc62d5849ba53cdef605b7f27f372c51f04b00",
+        "previousFiniteRunFrames": 2264,
+        "noNewNativeRunClaimed": true
+      }
+    },
+    "browserWasmBytes": 2747246,
+    "browserWasmSha256": "3957b4a20e3ca984842db5d66e2ce60d637085a4c3d5955ffc29f81f3c91e460",
     "workerWasmBytes": 76918,
     "workerWasmSha256": "217c46f4b367a106affb34acdd8a20b2f37576a5546da37f12a89638de39f38d",
-    "actualBrowserSelectedPlayerRejectionObserved": true,
+    "actualBrowserCoreRejectionObserved": true,
     "normalWorkerRestored": true,
-    "actualBrowserReplayAgainAndReturnObserved": true,
+    "shortNaturalEndAndReturnObserved": true,
     "originalIndependentThreadSchedulingAccepted": false,
     "currentBuildInheritsFrozenFullCampaign": false,
     "currentQuietPreviewPort": 8234,

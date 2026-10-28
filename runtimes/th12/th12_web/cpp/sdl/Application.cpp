@@ -169,7 +169,7 @@ struct Application:StageResourceEffects
     std::vector<ResourceUpload> boot_uploads;
     u32 boot_upload_index=0;
     StageResources* boot_stage_owner=nullptr;
-    enum class BootWork:u8 {Idle,Decode,Resume,Title,TitlePublish,InitialDecode,InitialResume,InitialPlayer};
+    enum class BootWork:u8 {Idle,Decode,Resume,Title,TitlePublish,InitialDecode,InitialResume,InitialPlayer,CoreDecode};
     struct BootWorkToken {Application* owner;u64 generation;BootWork work;u32 index;};
     u64 boot_worker_generation=0;
     BootWork boot_worker_work=BootWork::Idle;
@@ -183,6 +183,9 @@ struct Application:StageResourceEffects
     bool stage_worker_waiting=false;
     struct StageWorkerWaitToken {Application* owner;u64 generation;};
     bool core_loading_done=false;
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+    u32 boot_core_decoded=0;
+#endif
 #endif
     std::string error;
     // Lines whose plate had no sprite when they arrived, held until the plate's own walk binds one.
@@ -552,6 +555,22 @@ struct Application:StageResourceEffects
     void dispatch_boot_work(BootWork work,u32 index,int delay){
         boot_worker_work=work;boot_worker_index=index;
 #if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+        if(work==BootWork::CoreDecode&&index<4){
+            // These remaining core jobs used to parse synchronously when the
+            // title was enabled. Keep their order and final template owner,
+            // but decode the ANM/ECL and decompress SHT in the CPU worker.
+            std::vector<std::string> names;
+            if(index==0)names.emplace_back("enemy.anm");
+            else{
+                const u32 character=index-1;names.emplace_back(player_file_name(character));
+                for(u32 loadout=0;loadout<shot_loadout_count;++loadout)
+                    names.emplace_back(shot_file_name(shot_file_slot(character,loadout)));
+                if(index==3)names.emplace_back("default.ecl");
+            }
+            std::vector<const char*> pointers;for(const auto& name:names)pointers.push_back(name.c_str());
+            th14_webgpu_archive_schedule(run_boot_work,new BootWorkToken{this,boot_worker_generation,work,index},pointers.data(),u32(pointers.size()));
+            return;
+        }
         // The first three files already exist for the loading screen. Later
         // CPU decodes may run while its main-thread animations keep updating;
         // the same callback still owns the resource before GPU publication.
@@ -568,6 +587,27 @@ struct Application:StageResourceEffects
         std::unique_ptr<BootWorkToken> token(static_cast<BootWorkToken*>(raw));
         auto& app=*token->owner;
         if(token->generation!=app.boot_worker_generation||!app.boot_worker_active||app.boot_worker_suspended)return;
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+        if(token->work==BootWork::CoreDecode){
+            if(token->index>=4||token->index!=app.boot_core_decoded||token->index!=app.boot_worker_index
+                ||app.boot_worker_work!=BootWork::CoreDecode||app.boot_upload_index!=app.boot_uploads.size()
+                ||app.boot_stage_owner||app.core_loading_done){
+                app.error="TH14 remaining core resource owner changed";app.boot_worker_failed=true;return;
+            }
+            app.boot_worker_work=BootWork::Idle;
+            if(!th14_webgpu_archive_status()){
+                app.error="TH14 background core resource decode failed";app.boot_worker_failed=true;return;
+            }
+            constexpr u32 jobs[]={3,6,7,8};
+            if(!app.session.resources.load_core_job(jobs[token->index])){
+                app.error=app.session.resources.error;app.boot_worker_failed=true;return;
+            }
+            ++app.boot_core_decoded;
+            if(app.boot_core_decoded<4)app.dispatch_boot_work(BootWork::CoreDecode,app.boot_core_decoded,0);
+            else app.dispatch_boot_work(BootWork::Title,0,0);
+            return;
+        }
+#endif
         app.boot_worker_work=BootWork::Idle;
         if(token->work==BootWork::Title){
             // Retail4595be polls Sleep16 after the resource worker returns.
@@ -615,7 +655,13 @@ struct Application:StageResourceEffects
         }
         std::printf("[loading14] worker resumed after file%u\n",u32(file));
         if(app.boot_upload_index<app.boot_uploads.size())app.dispatch_boot_work(BootWork::Decode,app.boot_upload_index,0);
-        else app.dispatch_boot_work(BootWork::Title,0,0);
+        else{
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+            app.dispatch_boot_work(BootWork::CoreDecode,0,0);
+#else
+            app.dispatch_boot_work(BootWork::Title,0,0);
+#endif
+        }
     }
     static void finish_stage_worker_wait(void* raw){
         std::unique_ptr<StageWorkerWaitToken> token(static_cast<StageWorkerWaitToken*>(raw));
@@ -760,7 +806,11 @@ struct Application:StageResourceEffects
         // Sig and ASCII only after their own file's GPU preparation completes.
         boot_uploads={{&boot_signature,1},{&core.ascii,2},{&core.text,0},{&core.front,5},{&core.bullet,7},{&core.effect,8},{&core.title,16},{&core.title_variant,17}};
         boot_upload_index=0;std::printf("[loading14] sig/ascii/text queued before common resources; %u resource uploads pending\n",u32(boot_uploads.size()));
-        cancel_boot_worker();boot_worker_active=true;dispatch_boot_work(BootWork::Decode,0,0);
+        cancel_boot_worker();boot_worker_active=true;
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+        boot_core_decoded=0;
+#endif
+        dispatch_boot_work(BootWork::Decode,0,0);
         boot_stage_owner=nullptr;
 #else
 #if PORT_TITLE == 16
