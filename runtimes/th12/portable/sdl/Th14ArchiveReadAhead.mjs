@@ -17,7 +17,9 @@ export class ArchiveReadAhead {
       const stale=this.closed||generation!==this.generation;
       this.batch=stale?{error:new Error('Stale archive read-ahead callback')}:
         value.error?{error:value.error}:{entries:new Map(value.entries.map(entry=>[entry.name,entry.bytes])),
-          anms:new Map(value.entries.filter(entry=>entry.anm).map(entry=>[entry.name,entry.anm]))};
+          anms:new Map(value.entries.filter(entry=>entry.anm).map(entry=>[entry.name,entry.anm])),
+          stds:new Map(value.entries.filter(entry=>entry.std).map(entry=>[entry.name,entry.std])),
+          ecls:new Map(value.entries.filter(entry=>entry.ecl).map(entry=>[entry.name,entry.ecl]))};
       try {
         // Even stale callbacks must be delivered: the C++ generation check
         // owns and frees its token. Dropping a callback here would leak it.
@@ -48,6 +50,17 @@ export class ArchiveReadAhead {
     if(!(destination instanceof Uint8Array)||destination.byteLength!==size)
       throw new Error('ANM transfer destination size changed');
     destination.set(this.batch.anms.get(name));return size;
+  }
+  parsedSize(kind,name) {
+    if(kind!=='std'&&kind!=='ecl')throw new Error('Invalid parsed resource kind');
+    if(!this.batch)return -1;if(this.batch.error)throw this.batch.error;
+    const files=this.batch[kind+'s'];return files.has(name)?files.get(name).byteLength:-1;
+  }
+  parsedCopy(kind,name,destination) {
+    const size=this.parsedSize(kind,name);if(size<0)return -1;
+    if(!(destination instanceof Uint8Array)||destination.byteLength!==size)
+      throw new Error('Parsed resource destination size changed');
+    destination.set(this.batch[kind+'s'].get(name));return size;
   }
   cancel() {++this.generation;}
   close() {

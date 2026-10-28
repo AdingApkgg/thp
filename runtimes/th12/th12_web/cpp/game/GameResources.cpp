@@ -4,11 +4,14 @@
 #include <cstdio>
 #if PORT_TITLE == 14 && defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
 #include "AnmTransferTh14.hpp"
+#include "StageEclTransferTh14.hpp"
 extern "C" {
 int th14_webgpu_archive_size(const char* name);
 int th14_webgpu_archive_copy(const char* name,void* destination,unsigned size);
 int th14_webgpu_anm_size(const char* name);
 int th14_webgpu_anm_copy(const char* name,void* destination,unsigned size);
+int th14_webgpu_resource_size(unsigned kind,const char* name);
+int th14_webgpu_resource_copy(unsigned kind,const char* name,void* destination,unsigned size);
 }
 #endif
 #if defined(TH_NATIVE_PLATFORM) && defined(TH_ENABLE_THCRAP)
@@ -145,8 +148,12 @@ bool GameResources::load_stage(u32 stage, StageResources& output) {
     char name[64];
     std::vector<u8> scene;
     std::snprintf(name, sizeof name, stage_files.scene, stage);
+#if PORT_TITLE == 14
+    if(!open_std(name,output.scene))return false;
+#else
     if (!read(name, scene)) return false;
     if (!output.scene.open(scene.data(), u32(scene.size()))) return fail(output.scene.error.c_str());
+#endif
     std::snprintf(name, sizeof name, stage_files.background, stage);
     if (!open_anm(name, output.background)) return false;
     std::snprintf(name, sizeof name, stage_files.logo, stage);
@@ -182,6 +189,39 @@ bool GameResources::load_stage(u32 stage, StageResources& output) {
 }
 
 #if PORT_TITLE == 14
+bool GameResources::open_std(const std::string& name,StageResource& output){
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+    last_resource=name;const int parsed=th14_webgpu_resource_size(1,name.c_str());
+    if(parsed < -1)return fail("background STD parse failed");
+    if(parsed>=0){
+        if(!has(name))return fail("missing archive resource");
+        if(u32(parsed)>anm_transfer_th14::maximum_bytes)return fail("oversized background STD");
+        std::vector<u8> packet(static_cast<u32>(parsed));
+        if(!th14_webgpu_resource_copy(1,name.c_str(),packet.data(),u32(packet.size())))return fail("background STD delivery failed");
+        if(!th14_decode_std_transfer(packet.data(),u32(packet.size()),output))return fail("invalid background STD transfer");
+        return true;
+    }
+#endif
+    std::vector<u8> bytes;if(!read(name,bytes))return false;
+    return output.open(bytes.data(),u32(bytes.size()))?true:fail(output.error.c_str());
+}
+int GameResources::parsed_ecl(const std::string& name,std::unique_ptr<EclResource>& output){
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+    last_resource=name;const int parsed=th14_webgpu_resource_size(2,name.c_str());
+    auto invalid=[&](const char* error){fail(error);return -1;};
+    if(parsed < -1)return invalid("background ECL parse failed");
+    if(parsed>=0){
+        if(!has(name))return invalid("missing archive resource");
+        if(u32(parsed)>anm_transfer_th14::maximum_bytes)return invalid("oversized background ECL");
+        std::vector<u8> packet(static_cast<u32>(parsed));
+        if(!th14_webgpu_resource_copy(2,name.c_str(),packet.data(),u32(packet.size())))return invalid("background ECL delivery failed");
+        auto next=std::make_unique<EclResource>();
+        if(!th14_decode_ecl_transfer(packet.data(),u32(packet.size()),*next))return invalid("invalid background ECL transfer");
+        output=std::move(next);return 1;
+    }
+#endif
+    return 0;
+}
 bool GameResources::load_stage_hud(u32 stage,StageResources& output,u32 dialogue_selection) {
     if(stage<1||stage>7)return fail("stage outside TH14 range");
     if(dialogue_selection>=stage_files.dialogue_count||dialogue_selection>=output.messages.size())
@@ -200,8 +240,7 @@ bool GameResources::load_stage_scene(u32 stage,StageResources& output) {
     last_error.clear();output.stage_number=stage;
     char name[64];std::vector<u8> bytes;
     std::snprintf(name,sizeof name,stage_files.scene,stage);
-    if(!read(name,bytes))return false;
-    if(!output.scene.open(bytes.data(),u32(bytes.size())))return fail(output.scene.error.c_str());
+    if(!open_std(name,output.scene))return false;
     std::snprintf(name,sizeof name,stage_files.background,stage);
     if(!open_anm(name,output.background))return false;
     return true;

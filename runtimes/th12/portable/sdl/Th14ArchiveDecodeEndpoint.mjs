@@ -24,8 +24,9 @@ export function createArchiveDecodeEndpoint(createModule, send) {
     if (command === 'decode') {
       if (!opened || !Array.isArray(message.names) || message.names.length < 1 ||
           message.names.length > 8) throw new Error('Invalid decode batch');
-      const entries = [];let total = 0;
-      for (const name of message.names) {
+      const entries=[],dependencies=[],queued=new Set(message.names),jobs=message.names.map(name=>({name,dependency:false}));let total=0;
+      for (let job=0;job<jobs.length;++job) {
+        const {name,dependency}=jobs[job];
         if (typeof name !== 'string') throw new Error('Invalid archive name');
         const bytes = encoder.encode(name);
         if (!bytes.length || bytes.length > 128 || bytes.includes(0)) throw new Error('Invalid archive name');
@@ -51,9 +52,28 @@ export function createArchiveDecodeEndpoint(createModule, send) {
             throw new Error('Parsed ANM batch exceeds budget');
           anm=module.HEAPU8.slice(parsed,parsed+parsedSize).buffer;
         }
-        entries.push({name, bytes:copy.buffer,...(anm?{anm}:{})});
+        const kind=name.endsWith('.std')?'std':name.endsWith('.ecl')?'ecl':null;let parsedResource;
+        if(kind){
+          const parsed=kind==='std'?module._decoder_std():module._decoder_ecl();
+          if(!parsed)throw new Error(`${kind.toUpperCase()} rejected: ${name} (${module._decoder_error()})`);
+          const parsedSize=module._decoder_parsed_size();total+=parsedSize;
+          if(parsedSize<36||parsedSize>128*1024*1024||total>128*1024*1024)
+            throw new Error('Parsed resource batch exceeds budget');
+          parsedResource=module.HEAPU8.slice(parsed,parsed+parsedSize).buffer;
+          if(kind==='ecl'){
+            const count=module._decoder_ecl_include_count();if(count>32)throw new Error('ECL include limit exceeded');
+            for(let index=0;index<count;++index){
+              const include=module.UTF8ToString(module._decoder_ecl_include_name(index));
+              if(!include.endsWith('.ecl'))throw new Error('Invalid ECL include name');
+              if(queued.has(include))continue;
+              if(jobs.length-message.names.length>=32)throw new Error('ECL dependency batch exceeds budget');
+              queued.add(include);jobs.push({name:include,dependency:true});
+            }
+          }
+        }
+        (dependency?dependencies:entries).push({name,bytes:copy.buffer,...(anm?{anm}:{}),...(kind?{[kind]:parsedResource}:{})});
       }
-      send({id, command, ok:true, entries}, entries.flatMap(entry=>entry.anm?[entry.bytes,entry.anm]:[entry.bytes]));return;
+      send({id,command,ok:true,entries,dependencies},[...entries,...dependencies].flatMap(entry=>[entry.bytes,...['anm','std','ecl'].filter(kind=>entry[kind]).map(kind=>entry[kind])]));return;
     }
     if (command === 'close') {
       module._decoder_close();

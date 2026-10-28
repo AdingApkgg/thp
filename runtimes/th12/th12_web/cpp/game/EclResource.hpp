@@ -22,6 +22,11 @@ public:
     virtual ~EclResourceProvider()=default;
     virtual bool read(const std::string& name,std::vector<u8>& data)=0;
     virtual bool animation(u32 slot,const std::string& name)=0;
+#if PORT_TITLE == 14
+    // 0: no worker owner; 1: a parsed file was delivered; -1: delivery failed.
+    // The program still assembles includes/definitions through its old path.
+    virtual int parsed_ecl(const std::string&,std::unique_ptr<EclResource>&){return 0;}
+#endif
 };
 class EclProgram {
 public:
@@ -35,5 +40,7 @@ public:
     bool load(const std::string&,EclResourceProvider&);
     const EclInstruction* find(const char*)const noexcept;
     const EclSubroutine& subroutine(u32 index)const noexcept{return definitions[index].file->subroutines[definitions[index].index];}
+private:
+    i32 attach_resource(std::unique_ptr<EclResource>,EclResourceProvider*);
 };
 }

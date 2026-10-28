@@ -69,6 +69,19 @@ try {
   assert.equal(stale,1);assert.equal(runtime.archiveStatus(),1);
   callback=()=>assert.equal(runtime.archiveSize('st03enm.anm'),byName.get('st03enm.anm').bytes);
   await runtime.scheduleArchive(3,4,['st03enm.anm']).delivered;
+  let ownedDependencies=0;
+  callback=()=>{
+    for(const name of ['st04.ecl','st04mbs2.ecl','st04bs2.ecl','default.ecl']){
+      const length=runtime.archiveParsedSize(2,name);assert(length>=36,name);
+      const parsed=new Uint8Array(length);assert.equal(runtime.archiveParsedCopy(2,name,parsed),1);
+      assert.equal(new DataView(parsed.buffer).getUint32(0,true),0x314c4345);
+      const output=new Uint8Array(runtime.archiveSize(name));assert.equal(runtime.archiveCopy(name,output),1);
+      assert.equal(sha(output),byName.get(name).sha256);++ownedDependencies;
+    }
+    assert.equal(runtime.archiveParsedSize(3,'st04.ecl'),-2);
+  };
+  await runtime.scheduleArchive(5,6,['st04.ecl']).delivered;
+  assert.equal(ownedDependencies,4);assert.equal(runtime.archiveParsedSize(2,'st04bs2.ecl'),-1);
   assert.equal(runtime.failure,null);assert.equal(runtime.archiveSize('st03enm.anm'),-1);
   assert.equal(sha(bytes),'57d84a5cbe82460931cca26f090a0fde7aef180889ce5bfe8315851fc97b0233');
   report={passed:true,actualProductionRuntimeAndBrowserWorkerSource:true,nodeMessageTransportAdapter:true,
@@ -78,6 +91,7 @@ try {
     workerFailureDeliveredToCppStatus:true,staleCallbackDeliveredOnceForCppTokenCleanup:true,
     resumedGenerationPassed:true,sourceBindings,completeGame:false,nativeEquivalent:false};
   report.parsedAnmTransferredAndOwned=true;report.parsedAnmFailureAndGenerationClearingPassed=true;
+  report.parsedStdEclDependencyClosureOwned=true;report.eclClosureDirectByteCases=ownedDependencies;
 }catch(error){report={passed:false,error:String(error.stack??error),completeGame:false,nativeEquivalent:false};process.exitCode=1;}
 finally{clearTimeout(deadline);runtime.archive?.close();}
 await writeFile(resolve(out,'report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));

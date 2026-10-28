@@ -24,6 +24,10 @@ module.th14WebGpuRuntime=runtime;
 const deadline=setTimeout(()=>{void worker?.terminate();},60000);const rows=[];let report;
 let cacheReads=0,cacheCopies=0,uncachedReads=0;
 let parsedAnmReads=0,parsedAnmCopies=0,parsedAnmBytes=0;
+const parsedCalls={std:0,ecl:0},parsedCopies={std:0,ecl:0},batchEclMisses=[];
+const parsedSize=runtime.archiveParsedSize.bind(runtime),parsedCopy=runtime.archiveParsedCopy.bind(runtime);
+runtime.archiveParsedSize=(kind,name)=>{const result=parsedSize(kind,name),key=kind===1?'std':'ecl';if(result>=0)++parsedCalls[key];else if(kind===2&&runtime.archive?.batch)batchEclMisses.push(name);return result;};
+runtime.archiveParsedCopy=(kind,name,bytes)=>{const result=parsedCopy(kind,name,bytes);if(result===1)++parsedCopies[kind===1?'std':'ecl'];return result;};
 const size=runtime.archiveSize.bind(runtime),copy=runtime.archiveCopy.bind(runtime);
 runtime.archiveSize=name=>{const result=size(name);if(result>=0)++cacheReads;else if(result===-1)++uncachedReads;return result;};
 runtime.archiveCopy=(name,bytes)=>{const result=copy(name,bytes);if(result===1)++cacheCopies;return result;};
@@ -61,6 +65,18 @@ try {
   };
   await runtime.scheduleArchive(1,0,['st03enm.anm']).delivered;
   assert.equal(module._fixture_anm(anmPointer),1,'Normal ANM parsing outside a batch remains available');
+  for(const [kind,name,method]of [[1,'st03.std','std'],[2,'st03.ecl','ecl']]){
+    const text=new TextEncoder().encode(name+'\0'),p=module._malloc(text.length);module.HEAPU8.set(text,p);
+    const originalCopy=runtime.archiveParsedCopy;
+    invoke=()=>{
+      runtime.archiveParsedCopy=(actualKind,name,bytes)=>{const result=originalCopy(actualKind,name,bytes);if(result===1&&actualKind===kind)bytes[bytes.length-1]^=1;return result;};
+      try{assert.equal(module['_fixture_'+method](p),0,'Corrupted '+method+' must not synchronously fall back');}
+      finally{runtime.archiveParsedCopy=originalCopy;}
+    };
+    await runtime.scheduleArchive(1,0,[name]).delivered;
+    assert.equal(module['_fixture_'+method](p),1,'Synchronous '+method+' outside batch remains available');module._free(p);
+  }
+  assert(parsedCalls.std>0&&parsedCalls.ecl>0);assert.deepEqual(parsedCalls,parsedCopies);
   assert(parsedAnmReads>0);assert.equal(parsedAnmReads,parsedAnmCopies);
   assert(cacheReads>0);assert.equal(cacheCopies,cacheReads);assert.equal(runtime.failure,null);
   module._free(anmPointer);module._free(namePointer);module._free(pointer);
@@ -68,6 +84,7 @@ try {
     actualIndependentCpuWorker:true,actualCxxParsedResourcesCompared:true,cacheReads,cacheCopies,uncachedReads,
     parsedAnmReads,parsedAnmCopies,parsedAnmBytes,actualProductionCppImporterUsed:true,
     corruptedPacketCannotSilentlyFallback:true,synchronousAnmOutsideBatchPassed:true,
+    parsedCalls,parsedCopies,batchEclMisses,allEclFilesWithinOwnedBatches:batchEclMisses.length===0,
     failedBatchCannotSilentlyFallback:true,synchronousReadOutsideBatchPassed:true,
     browserBuildSha256:sha(buildRaw),fixtureBuildSha256:sha(await readFile(resolve(fixture,'build.json'))),
     checkerSha256:sha(await readFile(fileURLToPath(import.meta.url))),

@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "dd92df87a1b20d5801b7fa2c46bca29f93fdc061",
+  "sourceCommit": "7d490039fea57057995d7902e325bb45ec355823",
   "files": [
     {
       "path": ".gitignore",
@@ -92,6 +92,11 @@
       "path": "docs/porting/TH14_BOMB_TEMPLATE_LAYER_OCT25.md",
       "bytes": 2617,
       "sha256": "8fd531384cc429338acc080ac136f99c06088043b559f8707ec1287c58719430"
+    },
+    {
+      "path": "docs/porting/TH14_BROWSER_FULL_REPLAY_OCT29.md",
+      "bytes": 2250,
+      "sha256": "cf6bb8285e87f7e000fea9e937047c80f3b5408cdb5f8fc4ecb606bd2f30b072"
     },
     {
       "path": "docs/porting/TH14_BROWSER_REPLAY_OCT28.md",
@@ -465,8 +470,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 32144,
-      "sha256": "a420ac214525b0c759a428608e9925ae71ed7801ecca9f9705b429bdc865ac58"
+      "bytes": 33570,
+      "sha256": "3df840a5c189737952ac34677a15804988ec42bc49177b26fee9d7a16509888f"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -582,6 +587,11 @@
       "path": "docs/porting/TH14_STAGE_CHUNK_UPLOAD_FIX_OCT15.md",
       "bytes": 3041,
       "sha256": "39ac8fdf36e780b8bb3b8b5aa2f1f3803fad0201657ba28672131170a7d63456"
+    },
+    {
+      "path": "docs/porting/TH14_STAGE_ECL_WORKER_OCT29.md",
+      "bytes": 4381,
+      "sha256": "a56791c136f3c1ff483d0fe46531b746a8c26977f69c8c65e034821f9fbeb9f3"
     },
     {
       "path": "docs/porting/TH14_STAGE_ENTRY_OPTIONS_OCT24.md",
@@ -1482,6 +1492,11 @@
       "path": "docs/porting/th14-browser-frozen-observed-oct11.json",
       "bytes": 1583,
       "sha256": "3cd4e8eabbdeac97a79b76a35f02ebda7d00aed208589a36bd552cb1234aac6d"
+    },
+    {
+      "path": "docs/porting/th14-browser-full-replay-verified-oct29.json",
+      "bytes": 86383,
+      "sha256": "8153ed7e13987f977e5e8c9b8ec9f601e0344c5894fd3db353773ae31c205013"
     },
     {
       "path": "docs/porting/th14-browser-hud-decimal-verified-oct11.json",
@@ -5744,6 +5759,11 @@
       "sha256": "a66f4e1ba8ef5b9a030903297f33cd6889309d8a7362edf8c77169ca98151037"
     },
     {
+      "path": "docs/porting/th14-stage-ecl-worker-verified-oct29.json",
+      "bytes": 88235,
+      "sha256": "776b9c5b392186c2e979c586a257ee71b1d238ef2ab475f573227521b3b6d874"
+    },
+    {
       "path": "docs/porting/th14-stage-entry-options-verified-oct24.json",
       "bytes": 7868,
       "sha256": "e254d293733b8f32faa4554c3865239faa409adabb21e6562b88d50ca4e95adc"
@@ -7620,13 +7640,13 @@
     },
     {
       "path": "runtimes/th12/portable/sdl/Th14ArchiveDecodeClient.mjs",
-      "bytes": 3006,
-      "sha256": "cb0279b6585089f0274cb76c6b5302b750e838183c75d5e255b0a14c060a77d7"
+      "bytes": 3908,
+      "sha256": "cb6232e57f10be2c896a7d3e41e955845e926ca8a330df2e0c20075254a3ebd9"
     },
     {
       "path": "runtimes/th12/portable/sdl/Th14ArchiveDecodeEndpoint.mjs",
-      "bytes": 3725,
-      "sha256": "0d679d515ab2faf301385dfbe21c45471e5bd311b5e3458aec7a360e8733f2f2"
+      "bytes": 5253,
+      "sha256": "2f554d901054ff5b027997f08b00f76132a2518a3e1016fd2ca5bc7ade1e3885"
     },
     {
       "path": "runtimes/th12/portable/sdl/Th14ArchiveDecodeWorker.mjs",
@@ -7635,8 +7655,8 @@
     },
     {
       "path": "runtimes/th12/portable/sdl/Th14ArchiveReadAhead.mjs",
-      "bytes": 2615,
-      "sha256": "80c8a3d1e8c39346afad5ca3838037694b5490bfdf8bdce9fe1c52cbfffaaca1"
+      "bytes": 3403,
+      "sha256": "5ccf64ccadb0cbea4e869d675bb2350d9f706673f128273f5b4c0d85c2460c38"
     },
     {
       "path": "runtimes/th12/portable/sdl/Th14RenderMath.hpp",
@@ -7665,8 +7685,8 @@
     },
     {
       "path": "runtimes/th12/portable/sdl/Th14WebGpuLibrary.js",
-      "bytes": 4124,
-      "sha256": "bdfed08564268ca2e39d497fb12819dc7b31e4c2ae47f7185a69fe85e581c474"
+      "bytes": 4515,
+      "sha256": "d8c86464b7fbc965df5687fcd7822a2bcb059f1a41eebcefd63686556488a563"
     },
     {
       "path": "runtimes/th12/portable/sdl/Th14WebGpuResample.wgsl",
@@ -7675,8 +7695,8 @@
     },
     {
       "path": "runtimes/th12/portable/sdl/Th14WebGpuRuntime.mjs",
-      "bytes": 4020,
-      "sha256": "df6cce8fad3876293f419481fc3ee9902ffcfc375b501128e05d5988f706fb90"
+      "bytes": 4385,
+      "sha256": "e9a158afe25a32f8da564388f077d031e486c6c10e39c3b2dc4c62e9a5432f78"
     },
     {
       "path": "runtimes/th12/portable/sdl/WebGpuRenderer.hpp",
@@ -7995,13 +8015,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/EclResource.cpp",
-      "bytes": 3981,
-      "sha256": "5482a55370100ae63d7d997c62943e903c8b4b82325b59e1fd6d0c33c97f4e25"
+      "bytes": 4547,
+      "sha256": "0c9f9fc3f54202680e420f7c415e6e1838a3042afc3d0ba51a8e8aaa9d2a6c40"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/EclResource.hpp",
-      "bytes": 1559,
-      "sha256": "9d54309de9d4df895847edea7ce31de26d122ef6be60898535d56c5e0bde76bc"
+      "bytes": 1918,
+      "sha256": "f7e6b89fc237c96399ddc6edc7c993e312f605ac9ed652451aff085447460af9"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/EclRoutes.hpp",
@@ -8250,13 +8270,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameResources.cpp",
-      "bytes": 13564,
-      "sha256": "9749c1158a71ac0a6d64fd593df7186cc4c0c84e4348a17e9af9d57ceaa43fc4"
+      "bytes": 15725,
+      "sha256": "af60a6935bb33c2b4c7694a645471b1ca2b5afd08ce38b5aa8cf00c9d1942697"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameResources.hpp",
-      "bytes": 3052,
-      "sha256": "11956d3ae5d3675b325a595784d83629b6b6b252f68c40c1b86ef8ce21a3fbea"
+      "bytes": 3184,
+      "sha256": "7a47789e8cb5c26fd603947f4e70f655fb98a7e6dc16666479c4dfced02a7687"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
@@ -8887,6 +8907,11 @@
       "path": "runtimes/th12/th12_web/cpp/game/StageDraw.cpp",
       "bytes": 10027,
       "sha256": "0dd619d9f36ef976909e243f6e3956f019668ddf0cc308d610243856d7cbb2b2"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/StageEclTransferTh14.hpp",
+      "bytes": 6508,
+      "sha256": "5147d2e7cfda3c967f454d41c9a026b513f3e0d5f85dd44e6a5ec4fe2e25ebef"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/StageFiles.hpp",
@@ -11305,8 +11330,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-background-resource-fixture.cpp",
-      "bytes": 3134,
-      "sha256": "5f039389677aa33249b89c1c1c3194e671cd0caf8e30738f079dcf8096d2c915"
+      "bytes": 3365,
+      "sha256": "97a26f369d67fb33272e2127f6cbc05c63b6cfd671231b98ef6538e345871cba"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-bgrx-raster-fixture.cpp",
@@ -11692,6 +11717,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-ecl-phase-clock-fixture.cpp",
       "bytes": 679,
       "sha256": "fea0dab7b0c5d81a55db6c41d7acd9b045c622cde7c09a1132299d4e8947249e"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-ecl-program-transfer-regression.cpp",
+      "bytes": 3240,
+      "sha256": "baad09c317d2140a26c6b6e6e6a157c3c5d3840d1f8b0cfa749c91fc97e44ace"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-ecl-vm-fixture.cpp",
@@ -12722,6 +12752,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-stage-draw-integration-fixture.cpp",
       "bytes": 2587,
       "sha256": "8a0427668555ac1358ab8c1053a59dcce9ca8f3eb73b8378f126a9dfac3328d2"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-stage-ecl-transfer-fixture.cpp",
+      "bytes": 3781,
+      "sha256": "dd2aab4148b2a13a7c8c4e291085f187ebc4bab9d3a733e873d6aaf547824b23"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-stage-fade-control-chain-fixture.cpp",
@@ -15410,13 +15445,13 @@
     },
     {
       "path": "tools/th14-archive-runtime-check-oct28.mjs",
-      "bytes": 6552,
-      "sha256": "bd6867db5f7226027ae053ce4987f0c7f7bee11192c0a7622915dc401396e2fb"
+      "bytes": 7452,
+      "sha256": "b1587e27e9ae7447bf9e1562dde7f3706c57230d1bbf395e3bb10be8bcaa275e"
     },
     {
       "path": "tools/th14-archive-worker-prototype-build-oct27.py",
-      "bytes": 5285,
-      "sha256": "2bbb68f9e4e791afd1c006e04b9fbb58c449933bd3d3ae2b701ed77bb18b1eac"
+      "bytes": 5686,
+      "sha256": "914294938d83bcd724747ea2ff89babdfafcd01b9af09743af1f9bb4db5183db"
     },
     {
       "path": "tools/th14-archive-worker-prototype-check-oct27.mjs",
@@ -15440,8 +15475,8 @@
     },
     {
       "path": "tools/th14-archive-worker/archive-decoder.cpp",
-      "bytes": 1989,
-      "sha256": "9f1cee2a61fc2d73f75c00aa7ecf81d363b22d27ae7049c332ce94723da43949"
+      "bytes": 3284,
+      "sha256": "6f873a6826204a3afe46ceba8c24b05fce1a9baf245598ad0c9169f564ca659f"
     },
     {
       "path": "tools/th14-archive-worker/archive-read-ahead.mjs",
@@ -15510,13 +15545,13 @@
     },
     {
       "path": "tools/th14-background-resource-build-oct28.py",
-      "bytes": 4119,
-      "sha256": "b175c83fcdb50ab973da061c58bdb4c344886145f476470d15a51164fd6e394c"
+      "bytes": 4131,
+      "sha256": "d39223619aa6e5419702ac0eebc0450995a3b7e2a53018d248c5f768ecb24661"
     },
     {
       "path": "tools/th14-background-resource-check-oct28.mjs",
-      "bytes": 6512,
-      "sha256": "4ff959b5dade71bff3f27e103adde46478ae9dc666e72256d9a9076cd22ccb08"
+      "bytes": 8059,
+      "sha256": "6a4d098cd117d6ee8c96cd4f877ef11e8d405a4bad02b75891bcfd60f6f0555f"
     },
     {
       "path": "tools/th14-bgrx-candidate-evidence-oct27.py",
@@ -15612,6 +15647,11 @@
       "path": "tools/th14-browser-frozen-report.mjs",
       "bytes": 2268,
       "sha256": "0ed64ec0349d40ed883229d24324fb8d8e29a8dcf88be33eced4d3a4683f1635"
+    },
+    {
+      "path": "tools/th14-browser-full-replay-evidence-oct29.py",
+      "bytes": 5643,
+      "sha256": "443d36fd28880d8ab4bf5513b4db3f460136da7f26596d74ded575123e472a80"
     },
     {
       "path": "tools/th14-browser-hud-decimal-report.mjs",
@@ -15725,8 +15765,8 @@
     },
     {
       "path": "tools/th14-build-webgpu-release.py",
-      "bytes": 12927,
-      "sha256": "178b5d505d7b9d92c5157eaa461f072051f3dd35b5d4e359ffb47934564c9ea1"
+      "bytes": 13095,
+      "sha256": "3664f2b7e54fe4781c00096d3ee7b41e35c5ac7b11e1626f021bbc9a060b97d2"
     },
     {
       "path": "tools/th14-bullet-acceleration-check.mjs",
@@ -17002,6 +17042,16 @@
       "path": "tools/th14-ecl-phase-clock-native.py",
       "bytes": 2560,
       "sha256": "0c469a07a3858b93d1b4990600d27cbc3b3d16a78123a4a0917f378c7e435cb6"
+    },
+    {
+      "path": "tools/th14-ecl-program-regression-check-oct29.mjs",
+      "bytes": 2720,
+      "sha256": "45f16bf47a1a3fb2633f057430376b47923ad12594a31464dee90deee3494f9a"
+    },
+    {
+      "path": "tools/th14-ecl-program-regression-oct29.py",
+      "bytes": 3627,
+      "sha256": "2e31a66f534c6c7858c67b08941aa1f2c64071022cbee7e050fb7aaa51b9e4a8"
     },
     {
       "path": "tools/th14-ecl-vm-check.mjs",
@@ -21309,6 +21359,21 @@
       "sha256": "756a14b8a6e96f24b5e234ac6546608ef6993f8fa1c89fd4e3f5e11218384740"
     },
     {
+      "path": "tools/th14-stage-ecl-transfer-check-oct29.mjs",
+      "bytes": 6923,
+      "sha256": "d9086f129d8ecf10cb6031fe66c7779f1b19687dcfdc165654940f24b3757fd8"
+    },
+    {
+      "path": "tools/th14-stage-ecl-transfer-component-oct29.py",
+      "bytes": 3410,
+      "sha256": "09d9598832938ea7a456c39fd8e10ca9889887b93d34c654605a182af01e0f8d"
+    },
+    {
+      "path": "tools/th14-stage-ecl-worker-evidence-oct29.py",
+      "bytes": 8886,
+      "sha256": "d317d5e340d7bf2f2c67c5d509fdb4594dfcc715cba1428cd671637b37920590"
+    },
+    {
       "path": "tools/th14-stage-every-frame-live-asset-render-check.mjs",
       "bytes": 6568,
       "sha256": "d7ec8e76455d48d313c17109fd8b1886e23691a935f70e53e6e2b069728444c1"
@@ -24135,11 +24200,14 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "dd92df87a1b20d5801b7fa2c46bca29f93fdc061",
-    "title": "TH14 initial-stage ANM parsing on isolated CPU worker",
+    "basePublishedCommit": "7d490039fea57057995d7902e325bb45ec355823",
+    "title": "TH14 initial-stage STD/ECL CPU parsing and finite browser replay evidence",
     "changedSourceAndMetadataFiles": [
       "runtimes/th12/th12_web/cpp/game/GameResources.cpp",
-      "runtimes/th12/th12_web/cpp/game/AnmTransferTh14.hpp",
+      "runtimes/th12/th12_web/cpp/game/GameResources.hpp",
+      "runtimes/th12/th12_web/cpp/game/EclResource.cpp",
+      "runtimes/th12/th12_web/cpp/game/EclResource.hpp",
+      "runtimes/th12/th12_web/cpp/game/StageEclTransferTh14.hpp",
       "runtimes/th12/portable/sdl/Th14WebGpuRuntime.mjs",
       "runtimes/th12/portable/sdl/Th14WebGpuLibrary.js",
       "runtimes/th12/portable/sdl/Th14ArchiveDecodeClient.mjs",
@@ -24149,43 +24217,53 @@
       "tools/th14-archive-worker-prototype-build-oct27.py",
       "tools/th14-build-webgpu-release.py",
       "runtimes/th12/th12_web/tests/cpp/th14-background-resource-fixture.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-anm-transfer-fixture.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-stage-ecl-transfer-fixture.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-ecl-program-transfer-regression.cpp",
       "tools/th14-background-resource-build-oct28.py",
       "tools/th14-background-resource-check-oct28.mjs",
       "tools/th14-archive-runtime-check-oct28.mjs",
-      "tools/th14-anm-transfer-component-oct28.py",
-      "tools/th14-anm-transfer-check-oct28.mjs",
-      "tools/th14-anm-worker-evidence-oct28.py",
-      "docs/porting/TH14_ANM_WORKER_OCT28.md",
-      "docs/porting/th14-anm-worker-verified-oct28.json",
+      "tools/th14-stage-ecl-transfer-component-oct29.py",
+      "tools/th14-stage-ecl-transfer-check-oct29.mjs",
+      "tools/th14-ecl-program-regression-oct29.py",
+      "tools/th14-ecl-program-regression-check-oct29.mjs",
+      "tools/th14-stage-ecl-worker-evidence-oct29.py",
+      "tools/th14-browser-full-replay-evidence-oct29.py",
+      "docs/porting/TH14_STAGE_ECL_WORKER_OCT29.md",
+      "docs/porting/th14-stage-ecl-worker-verified-oct29.json",
+      "docs/porting/TH14_BROWSER_FULL_REPLAY_OCT29.md",
+      "docs/porting/th14-browser-full-replay-verified-oct29.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "productionAnmParserOnInitialStageWorker": true,
-    "allInitialResourcesParsedOnWorker": false,
-    "stdAndEclParsingStillOnMainThread": true,
-    "actualWorkerAnmCases": 57,
-    "parsedPacketBytesCompared": 245717904,
-    "malformedPacketsRejected": 68,
+    "productionStdAndEclParsersOnInitialStageWorker": true,
+    "allLoadingWorkOnCpuWorker": false,
+    "stdResources": 7,
+    "eclResources": 24,
+    "parsedPacketBytesCompared": 652018,
+    "malformedPacketsRejected": 53,
     "actualProductionGameResourceCases": 42,
-    "validAnmImports": 198,
-    "corruptedPacketControls": 1,
-    "totalAnmImportCalls": 199,
-    "runtimeCpuOutsideAsyncifyQueue": true,
-    "generationErrorCancelAndOwnershipControlsPassed": true,
+    "previousOwnedEclMisses": 12,
+    "currentOwnedEclMisses": 0,
+    "publishedProgramRegressionCases": 24,
+    "publishedProgramSnapshotBytesCompared": 1100649,
     "browserCppUnitsRecompiled": 146,
-    "browserReusedObjects": 0,
-    "browserWasmBytes": 2726640,
-    "browserWasmSha256": "cef8961af946ff8ff24e440a4681907da5940a5cf7acad03c730ca87cfc48182",
-    "workerWasmBytes": 52793,
-    "workerWasmSha256": "f45799f6dc86705c8984cc6b16f4ace0babc5a3d6206b594bdce8b5d08fcb7fa",
+    "closureRefinementReusedObjects": 146,
+    "browserWasmBytes": 2743750,
+    "browserWasmSha256": "4bbd1e4ff36fc2bd55ec2b38f3ded74e7fdffbad129687b0b3789fa8395811cd",
+    "workerWasmBytes": 76918,
+    "workerWasmSha256": "217c46f4b367a106affb34acdd8a20b2f37576a5546da37f12a89638de39f38d",
+    "actualBrowserStage4PauseResumeAndShortReplayEndObserved": true,
+    "frozen7dBrowserFullReplayFlowObserved": true,
+    "currentBuildInheritsFrozenFullRun": false,
     "browserRoutes": 139,
     "httpChecks": 27,
-    "actualBrowserDemoAndTwoPartialReplayEndsVisuallyObserved": true,
     "currentQuietPreviewPort": 8234,
-    "independentProductionSchedulingAccepted": false,
+    "fixedFrameCompensationAdded": false,
+    "independentOriginalThreadSchedulingAccepted": false,
+    "nativeNaturalRunModePairs": 30,
+    "nativeAllStageEntryModePairs": 25,
     "completeBrowserAcceptance": false,
     "completeGame": false,
     "nativeEquivalent": false

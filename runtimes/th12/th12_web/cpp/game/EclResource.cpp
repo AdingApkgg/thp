@@ -30,11 +30,23 @@ bool EclResource::open(const u8* source,u32 size){
 i32 EclProgram::attach(const u8* data,u32 size,EclResourceProvider* provider){
     if(files.size()>=32){error="ECL include limit exceeded";return -1;}
     auto file=std::make_unique<EclResource>();if(!file->open(data,size)){error="Invalid ECL resource";return -1;}
+    return attach_resource(std::move(file),provider);
+}
+i32 EclProgram::attach_resource(std::unique_ptr<EclResource> file,EclResourceProvider* provider){
+    if(files.size()>=32){error="ECL include limit exceeded";return -1;}
+    if(!file){error="Invalid parsed ECL resource";return -1;}
     const i32 result=files.size();const auto* current=file.get();const bool first=files.empty();files.push_back(std::move(file));
     for(u32 i=0;i<current->subroutines.size();++i){Definition def{current,i};if(first)definitions.push_back(def);else{const auto& key=current->subroutines[i].name;auto at=definitions.begin();while(at!=definitions.end()&&std::strcmp(key.c_str(),at->file->subroutines[at->index].name.c_str())>0)++at;definitions.insert(at,def);}}
     if(provider){for(u32 i=0;i<current->animations.size();++i){if(!provider->animation(i+(kPortTitle==14?10:8),current->animations[i])){error="Missing animation: "+current->animations[i];return result;}}for(const auto& name:current->includes)load(name,*provider);}
     return result;
 }
-bool EclProgram::load(const std::string& name,EclResourceProvider& provider){std::vector<u8> data;if(!provider.read(name,data)){error="Missing ECL: "+name;return false;}return attach(data.data(),data.size(),&provider)>=0;}
+bool EclProgram::load(const std::string& name,EclResourceProvider& provider){
+#if PORT_TITLE == 14
+    std::unique_ptr<EclResource> parsed_file;const int parsed=provider.parsed_ecl(name,parsed_file);
+    if(parsed<0){error="Invalid parsed ECL: "+name;return false;}
+    if(parsed>0)return attach_resource(std::move(parsed_file),&provider)>=0;
+#endif
+    std::vector<u8> data;if(!provider.read(name,data)){error="Missing ECL: "+name;return false;}return attach(data.data(),data.size(),&provider)>=0;
+}
 const EclInstruction* EclProgram::find(const char* name)const noexcept{if(!name)return nullptr;i32 low=0,high=i32(definitions.size())-1;while(low<=high){const i32 mid=low+(high-low)/2;const auto& def=definitions[mid];const auto& sub=def.file->subroutines[def.index];const int order=std::strcmp(name,sub.name.c_str());if(!order)return reinterpret_cast<const EclInstruction*>(def.file->bytes.data()+sub.offset+16);if(order<0)high=mid-1;else low=mid+1;}return nullptr;}
 }

@@ -48,8 +48,21 @@ export class ArchiveDecodeClient {
             (entry.anm!==undefined&&!(entry.anm instanceof ArrayBuffer))||
             (names[i].endsWith('.anm')&&!(entry.anm instanceof ArrayBuffer))))
         throw new Error('Archive response names or buffers changed');
-      return result.entries.map(entry => ({name:entry.name,bytes:new Uint8Array(entry.bytes),
-        ...(entry.anm?{anm:new Uint8Array(entry.anm)}:{})}));
+      const dependencies=result.dependencies??[],seen=new Set(names);
+      if(!Array.isArray(dependencies)||dependencies.length>32)throw new Error('Invalid ECL dependency response');
+      for(const entry of dependencies){
+        if(typeof entry.name!=='string'||!entry.name.endsWith('.ecl')||seen.has(entry.name)||
+            !(entry.bytes instanceof ArrayBuffer)||!(entry.ecl instanceof ArrayBuffer))
+          throw new Error('ECL dependency owner changed');
+        seen.add(entry.name);
+      }
+      const combined=[...result.entries,...dependencies];
+      if(combined.some(entry=>['std','ecl'].some(kind=>
+          (entry[kind]!==undefined&&!(entry[kind]instanceof ArrayBuffer))||
+          (entry.name.endsWith('.'+kind)&&!(entry[kind]instanceof ArrayBuffer)))))
+        throw new Error('Parsed resource response owner changed');
+      return combined.map(entry => ({name:entry.name,bytes:new Uint8Array(entry.bytes),
+        ...Object.fromEntries(['anm','std','ecl'].filter(kind=>entry[kind]).map(kind=>[kind,new Uint8Array(entry[kind])]))}));
     } finally {this.decoding = false;}
   }
   close() {

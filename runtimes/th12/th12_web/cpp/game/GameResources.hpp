@@ -46,6 +46,8 @@ public:
     bool load_ecl(const std::string& name, EclProgram& output);
     bool load_stage(u32 stage, StageResources& output);
 #if PORT_TITLE == 14
+    bool open_std(const std::string&,StageResource&);
+    int parsed_ecl(const std::string&,std::unique_ptr<EclResource>&)override;
     bool load_stage_hud(u32 stage,StageResources& output,u32 dialogue_selection);
     bool load_stage_scene(u32 stage,StageResources& output);
     bool load_stage_timeline(u32 stage,StageResources& output);
