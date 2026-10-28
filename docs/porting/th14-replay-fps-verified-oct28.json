@@ -1,0 +1,283 @@
+{
+  "verifiedFiniteReplayFpsFix": true,
+  "productionReplayFpsTextAdded": true,
+  "retailRequestCases": 2048,
+  "recordedRateByteValues": 256,
+  "positiveComponentCases": [
+    {
+      "backend": "gles",
+      "applicationFrames": 2270,
+      "checks": 7,
+      "liveVms": 334,
+      "wordsPerVm": 303,
+      "rawHandlesAndRegistryOrderExact": true,
+      "bothRngExact": true,
+      "bgraBytesCompared": 1228800,
+      "differentBytes": 0,
+      "wasmSha256": "3156244679558603023a7576c2c045a8538e9a6b2d25e1a0b65884c9d00e7f97",
+      "externalResourceReadinessDeclared": true,
+      "productionSchedulingAccepted": false
+    },
+    {
+      "backend": "webgpu",
+      "applicationFrames": 2270,
+      "checks": 7,
+      "liveVms": 334,
+      "wordsPerVm": 303,
+      "rawHandlesAndRegistryOrderExact": true,
+      "bothRngExact": true,
+      "bgraBytesCompared": 1228800,
+      "differentBytes": 0,
+      "wasmSha256": "0407557b066bbbc78879a357b00f101b2a18242326e674248193ba1840877fbd",
+      "externalResourceReadinessDeclared": true,
+      "productionSchedulingAccepted": false
+    }
+  ],
+  "retainedNegativeControls": {
+    "inline-ecl-baseline-strict.json": {
+      "strictVmDifferenceWords": 20,
+      "pixelDifferentPixels": 1129,
+      "pixelDifferentBytes": 3854
+    },
+    "inline-ecl-availability-strict.json": {
+      "strictVmDifferenceWords": 0,
+      "pixelDifferentPixels": 165,
+      "pixelDifferentBytes": 658
+    },
+    "replay-fps-gles-baseline-strict.json": {
+      "strictVmDifferenceWords": 20,
+      "pixelDifferentPixels": 964,
+      "pixelDifferentBytes": 3196
+    }
+  },
+  "nativePresent": 2278,
+  "nativeStage": 3,
+  "nativeControllerFrame": 241,
+  "nativeOptionAges": [
+    274,
+    274,
+    274,
+    274
+  ],
+  "observedInlineEclAnm": [
+    {
+      "file": 10,
+      "phase": "cpu-entry",
+      "precedingPresentEntries": 2015
+    },
+    {
+      "file": 10,
+      "phase": "gpu-published",
+      "precedingPresentEntries": 2015
+    },
+    {
+      "file": 10,
+      "phase": "gpu-wait-exit",
+      "precedingPresentEntries": 2018
+    },
+    {
+      "file": 11,
+      "phase": "cpu-entry",
+      "precedingPresentEntries": 2018
+    },
+    {
+      "file": 11,
+      "phase": "gpu-published",
+      "precedingPresentEntries": 2021
+    },
+    {
+      "file": 11,
+      "phase": "gpu-wait-exit",
+      "precedingPresentEntries": 2037
+    }
+  ],
+  "browserCandidateCompiledUnits": 146,
+  "browserCandidateWasmBytes": 2721939,
+  "browserCandidateWasmSha256": "a7a32e951c6816211679afde7cca6846b474259756bcd6577ce158d2ba0e8ff9",
+  "browserTransportRoutes": 139,
+  "browserHttpRequests": 27,
+  "actualBrowserRecordedFpsVisuallyObserved": true,
+  "actualBrowserAutomaticDemoAndOrdinaryReplayObserved": true,
+  "actualBrowserPartialReplayNaturalEndObserved": true,
+  "browserVisualObservationIsNotStrictPixelComparison": true,
+  "nativeChildExited": true,
+  "originalCodeWrites": 0,
+  "originalGameStateWrites": 0,
+  "nativeReadbackContextRedirects": 2,
+  "originalHardwareObservationPerturbsScheduling": true,
+  "originalResourceReadinessIsDeclaredComponentInput": true,
+  "fixedFrameOrVmAgePatchInProduction": false,
+  "independentProductionSchedulingAccepted": false,
+  "firstOriginalGameFrameStrictDifferenceClosed": false,
+  "completeBrowserAcceptance": false,
+  "physicalAudioDevicesOpened": 0,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "verifierSha256": "6693c9a8ebafcec06cbf0967e87e4205e0664f4d974f8625dcc954f1d487e18a",
+  "bindings": {
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-text-component-v2/report.json": {
+      "bytes": 323669,
+      "sha256": "d19d9310d3fb3e5f51b0f2ab6ab2935c45e714366470a0a5bb81cf96def8eb18"
+    },
+    "tools/th14-replay-fps-text-oct28.py": {
+      "bytes": 6226,
+      "sha256": "50a9926f9c2fa87d5277026f2bb133588f8e5bf7a90de8484cdd119503cb5185"
+    },
+    "runtimes/th12/th12_web/cpp/game/ReplayTextTh14.hpp": {
+      "bytes": 492,
+      "sha256": "cd0872860cc5edf0ad4f07f0a84be292db62af07003325335c2893761a238eaf"
+    },
+    "artifacts/th14/native-frame-readback-oct28/inline-ecl-worker-boundaries-v2/report.json": {
+      "bytes": 981537,
+      "sha256": "d3bb1ac42acbd69f2942089d7757bec86fc017d01333b2311beee4d711dab19f"
+    },
+    "artifacts/th14/native-frame-readback-oct28/inline-ecl-worker-boundaries-v2/run-tool.py": {
+      "bytes": 37420,
+      "sha256": "ec15b4c6db3a4a408efc208bb829e5246b9504eb8f09d7d28b61af119d22212d"
+    },
+    "tools/th14-native-device-observer-oct27.py": {
+      "bytes": 37420,
+      "sha256": "ec15b4c6db3a4a408efc208bb829e5246b9504eb8f09d7d28b61af119d22212d"
+    },
+    "artifacts/th14/native-frame-readback-oct28/inline-ecl-worker-boundaries-v2/native-before-present-2278.bgra": {
+      "bytes": 1228800,
+      "sha256": "daac0beb8d1c2ced3b5c31cd685bbb71e87caf5447d68671c774e8d46b21cbd8"
+    },
+    "artifacts/th14/native-frame-readback-oct28/inline-ecl-worker-boundaries-v2/live-vms-before-readback.json": {
+      "bytes": 1080728,
+      "sha256": "f93e8f0bcef7f2ea205cebee901b46a0b0cfa720f5131f25ddb0e6dc4da4bb54"
+    },
+    "artifacts/th14/native-frame-readback-oct28/inline-ecl-baseline-strict.json": {
+      "bytes": 13015,
+      "sha256": "0f6bb1a31f614f9cbf76859ecc180ab994ea7af7f9e14f843ff817be6ed304be"
+    },
+    "artifacts/th14/native-frame-readback-oct28/inline-ecl-availability-strict.json": {
+      "bytes": 6648,
+      "sha256": "fd29cb64951642f6efb54649816aff5cdefc9e7cea1a8c78ba019d17638b5f37"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-gles-baseline-strict.json": {
+      "bytes": 13015,
+      "sha256": "02fda1cb69e6febc25eda282252602e596fe57cd4d7d933c377cc5fc6ab19c0c"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-core/observer-build.json": {
+      "bytes": 79653,
+      "sha256": "9a4601ceb43537dfd8744725b49d79271265af8240ba004f8721c5d76ab8c7af"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameSession.cpp": {
+      "bytes": 55520,
+      "sha256": "50ab775eb5805335273cbc95be67495a8cb78cdec9f9b092fa46faaf065105f4"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-gles-availability-strict.json": {
+      "bytes": 3904,
+      "sha256": "d06ec64f7f6f9769585026e412afb5c484f65f39459beebea4ec0e329ff69318"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-gles-availability/run/report.json": {
+      "bytes": 117879,
+      "sha256": "b84d5736e39dac7baa5023922c69489edf9a565706adf766bfa3f9461412e573"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-gles-availability/run/run-tool.py": {
+      "bytes": 27365,
+      "sha256": "e892187bbe045eeb3e516a8029e53778dd2ec8d771a13cb579b9403070654d18"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-gles-availability/run/first-demo-frame-0241-live.json": {
+      "bytes": 1167153,
+      "sha256": "08bfe7ea39e92b6636e51a1b954ce23580668cfd108fdc05f19bc1e1e597c020"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-gles-availability/run/first-demo-frame-0241.bgra": {
+      "bytes": 1228800,
+      "sha256": "daac0beb8d1c2ced3b5c31cd685bbb71e87caf5447d68671c774e8d46b21cbd8"
+    },
+    "tools/th14-native-title-live-compare-oct27.py": {
+      "bytes": 7192,
+      "sha256": "c7866f2c3d6e030bae1e4c5153b196f7500436b43e710fc181730bf087a3f9cc"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-gles-availability/availability.json": {
+      "bytes": 1070,
+      "sha256": "65b9acfbe20079deadaf986f71a0067d9691c1d19a8c6235b7a2e220d0d0aff4"
+    },
+    "tools/th14-native-availability-control-oct28.py": {
+      "bytes": 6431,
+      "sha256": "ff7b323fe22e0e6631e0df25f5f19c4f920c515c75c39cfcb9a7d9013eeb616a"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-gles-build/build.json": {
+      "bytes": 88558,
+      "sha256": "2268a74bbd655815e097d9df932aa19acdc75de65240b795f960c4cddffe29ca"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-webgpu-availability-strict.json": {
+      "bytes": 3912,
+      "sha256": "bb0335c59f4e4e623790fce6607697c67ef1452b332cf1bba692007d53b7772c"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-webgpu-availability/run/report.json": {
+      "bytes": 111204,
+      "sha256": "1c2ea70cd0492652dd049be8a84f06f30212060e6ce80a64afff092ae9344b9b"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-webgpu-availability/run/run-tool.py": {
+      "bytes": 27367,
+      "sha256": "196a4b71bc85c15b63d27af60689553f3308a43b8df2cf6dbf21525588f35381"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-webgpu-availability/run/first-demo-frame-0241-live.json": {
+      "bytes": 1167153,
+      "sha256": "08bfe7ea39e92b6636e51a1b954ce23580668cfd108fdc05f19bc1e1e597c020"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-webgpu-availability/run/first-demo-frame-0241.bgra": {
+      "bytes": 1228800,
+      "sha256": "daac0beb8d1c2ced3b5c31cd685bbb71e87caf5447d68671c774e8d46b21cbd8"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-webgpu-availability/availability.json": {
+      "bytes": 1070,
+      "sha256": "65b9acfbe20079deadaf986f71a0067d9691c1d19a8c6235b7a2e220d0d0aff4"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-webgpu-build/build.json": {
+      "bytes": 88938,
+      "sha256": "f31b2d72e5baf31d4ffd6c9c5e869663c497c21e031dc55fb6bf5a5470c09b99"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-browser-candidate/build.json": {
+      "bytes": 82838,
+      "sha256": "1c5402ddd14200f5fc00d463466c5b37581b41cd038b87f9c1bb3c93ff9fbabd"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-launcher/http-check.json": {
+      "bytes": 15030,
+      "sha256": "f00462c709ee4eceaa58d8e6ca66ab163bbacd80a57b1327f65279d4c4ab86f9"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-launcher/served-current.json": {
+      "bytes": 2053,
+      "sha256": "ad519dac1bb744972ec718cb88c8a6752a1cb0982caf3da8827186891e79465a"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-browser-ui/automatic-demo-recorded-fps.jpg": {
+      "bytes": 81993,
+      "sha256": "57f55a66cbf6ebf639c9967c555b99e533d2f9d2152b9af8263242ea76f92d16"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-browser-ui/automatic-demo-recorded-fps.ax.txt": {
+      "bytes": 1400,
+      "sha256": "713c0eb156b2656d7257c38162f44ae46a29135d67a27710f661d69fe48930ba"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-browser-ui/saved-replay-list.jpg": {
+      "bytes": 116157,
+      "sha256": "29dd1c1fabfd00ecb76c7165428930df5fa5a681c2e5fb6925599cf7ca6b4d28"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-browser-ui/saved-replay-list.ax.txt": {
+      "bytes": 1400,
+      "sha256": "80fa53b413c77a95a372d8c099ade210abc825caaf33bb2bbc6b39802ae8110d"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-browser-ui/ordinary-replay-recorded-fps.jpg": {
+      "bytes": 78205,
+      "sha256": "8c9c4556a89ef51f06cb8b766f00fbdbe5b1b34de5774597bbd44c155115b5de"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-browser-ui/ordinary-replay-recorded-fps.ax.txt": {
+      "bytes": 1400,
+      "sha256": "5f06510eb0082ff778cae1a8e0a3c573c3c2b21d9493a1462b77acea0798b849"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-browser-ui/ordinary-replay-natural-end.jpg": {
+      "bytes": 85384,
+      "sha256": "50512ab32b838a4c65090495b17ea64483be50a99938603ae2dafdc6e6d94640"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-browser-ui/ordinary-replay-natural-end.ax.txt": {
+      "bytes": 1400,
+      "sha256": "f3ac13c8f65891c700e3afa00b554ad6a184a4098a0da8368872836540e3431f"
+    },
+    "artifacts/th14/native-frame-readback-oct28/replay-fps-browser-ui/console.json": {
+      "bytes": 32278,
+      "sha256": "8933ac5da21b002f0e4ec43bf9444a1e456e3bbe699aa877affb86ea19b4db0a"
+    }
+  }
+}

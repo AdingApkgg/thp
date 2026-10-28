@@ -3,6 +3,9 @@
 #include "MusicCatalog.hpp"
 #include "ContinueTh14.hpp"
 #include "ClockSeedTh14.hpp"
+#if PORT_TITLE == 14
+#include "ReplayTextTh14.hpp"
+#endif
 
 namespace th11 {
 
@@ -882,6 +885,11 @@ bool GameSession::draw(AnmRenderer& renderer,AsciiText* overlay) {
     }
     if(state.phase==GameSessionPhase::finished)return true;
     if(battle_attached&&battle)battle->ascii.clear();
+#if PORT_TITLE == 14
+    AsciiRequest replay_fps;
+    if(th14_replay_fps_request(battle_attached&&battle,state.replay?1u:0u,u8(playback.current().fps),replay_fps)&&
+       !battle->ascii.add(replay_fps.text.c_str(),replay_fps.position,replay_fps.style))return fail("replay FPS text queue failed");
+#endif
     renderer.fog_origin=compositor.play_camera.position;
     const auto& fog=compositor.play_camera.fog;
     renderer.fog_channels={fog.channels[0],fog.channels[1],fog.channels[2]};renderer.fog_start=fog.near_distance;
