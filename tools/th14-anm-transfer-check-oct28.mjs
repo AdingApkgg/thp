@@ -29,6 +29,9 @@ try{
   const names=Array.from({length:227},(_,i)=>direct.UTF8ToString(direct._decoder_name(i)));assert.equal(await client.open(archive),227);
   let decodedBytes=0,transferredAnmBytes=0,rejectedPackets=0;
   for(let i=0;i<names.length;i+=4)for(const entry of await client.decode(names.slice(i,i+4))){
+    // Newer workers may also deliver ECL includes owned by this batch. Count
+    // the requested archive inventory once; closure ownership has its own test.
+    if(!names.slice(i,i+4).includes(entry.name))continue;
     decodedBytes+=entry.bytes.length;
     if(!entry.name.endsWith('.anm')){assert.equal(entry.anm,undefined);continue;}
     assert(entry.anm instanceof Uint8Array);transferredAnmBytes+=entry.anm.length;

@@ -537,6 +537,17 @@ struct Application:StageResourceEffects
     }
     void dispatch_boot_work(BootWork work,u32 index,int delay){
         boot_worker_work=work;boot_worker_index=index;
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+        // The first three files already exist for the loading screen. Later
+        // CPU decodes may run while its main-thread animations keep updating;
+        // the same callback still owns the resource before GPU publication.
+        constexpr const char* names[]={nullptr,nullptr,nullptr,"front.anm","bullet.anm","effect.anm","title.anm","title_v.anm"};
+        if(work==BootWork::Decode&&index<sizeof(names)/sizeof(*names)&&names[index]){
+            const char* name=names[index];
+            th14_webgpu_archive_schedule(run_boot_work,new BootWorkToken{this,boot_worker_generation,work,index},&name,1);
+            return;
+        }
+#endif
         schedule_th14_work(run_boot_work,new BootWorkToken{this,boot_worker_generation,work,index},delay);
     }
     static void run_boot_work(void* raw){
@@ -561,6 +572,11 @@ struct Application:StageResourceEffects
                 app.error="TH14 boot decode owner changed";app.boot_worker_failed=true;return;
             }
             if(token->index>=3){
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+                if(!th14_webgpu_archive_status()){
+                    app.error="TH14 background boot resource decode failed";app.boot_worker_failed=true;return;
+                }
+#endif
                 constexpr u32 jobs[]={0,1,2,4,5};
                 if(!app.session.resources.load_core_job(jobs[token->index-3])){
                     app.error=app.session.resources.error;app.boot_worker_failed=true;return;
