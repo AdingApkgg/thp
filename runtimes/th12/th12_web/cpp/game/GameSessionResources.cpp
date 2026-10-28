@@ -23,7 +23,7 @@ bool GameSessionResources::load_core(GameResources& source) {
         return core_error(error,(std::string(message)+output.detail).c_str());
     };
 #if PORT_TITLE == 14
-    core_deferred=effects&&!effects->core_ready();core_loaded_jobs=0;
+    core_deferred=effects&&!effects->core_ready();core_loaded_jobs=0;selected_player_pending=-1;
     if(core_deferred){
         // Only the original loading screen's resources are needed now. Each
         // remaining decode is a real frame job before its upload/templates.
@@ -102,9 +102,18 @@ bool GameSessionResources::select_player(u32 character,u32 subtype){
     if(animation_manager&&animation_manager->references(file))return core_error(error,"TH14 selected player resource still referenced");
     if(effects)effects->release_animation(file);
     file={};
+    selected_player_pending=i32(character*2+subtype);
+    if(effects&&effects->defer_initial_stage_decode())return true;
+    return load_selected_player(character,subtype);
+}
+bool GameSessionResources::load_selected_player(u32 character,u32 subtype){
+    if(!core_source||!player_selection_valid(i32(character),i32(subtype))||selected_player_pending!=i32(character*2+subtype))
+        return core_error(error,"TH14 pending player resource owner changed");
+    auto& file=core.players[character];
+    if(animation_manager&&animation_manager->references(file))return core_error(error,"TH14 pending player resource still referenced");
     if(!core_source->open_anm(player_file_name(character,subtype),file))return core_error(error,(std::string("player ANM: ")+file.detail).c_str());
     if(animation_manager&&(!effects||!effects->defer_initial_stage_decode())&&!animation_manager->prepare_resource(file,9))return core_error(error,animation_manager->last_error_text().c_str());
-    return true;
+    selected_player_pending=-1;return true;
 }
 #endif
 

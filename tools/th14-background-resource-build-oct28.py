@@ -7,6 +7,7 @@ SHA=lambda raw:hashlib.sha256(raw).hexdigest()
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--build',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--suite',choices=['stage','selected-player'],default='stage')
     a=p.parse_args();B=a.build.resolve(strict=True);O=a.output.resolve()
     assert B.is_relative_to(R/'artifacts/th14') and O.is_relative_to(R/'artifacts/th14') and not O.exists()
     O.mkdir(parents=True)
@@ -21,7 +22,8 @@ def main():
         original=B/'source'/relative;data=original.read_bytes();assert SHA(data)==row['sha256']
         target=source/relative;target.parent.mkdir(parents=True,exist_ok=True);os.link(original,target)
         bindings[relative]=row['sha256']
-    for name in ('th14-background-resource-fixture.cpp','th14-initial-stage-decode-fixture.cpp'):
+    fixture_name='th14-background-resource-fixture.cpp'if a.suite=='stage'else'th14-selected-player-worker-fixture.cpp'
+    for name in (fixture_name,'th14-initial-stage-decode-fixture.cpp'):
         original=R/'runtimes/th12/th12_web/tests/cpp'/name;data=original.read_bytes()
         target=source/'th12_web/tests/cpp'/name;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(data)
         bindings['th12_web/tests/cpp/'+name]=SHA(data)
@@ -36,8 +38,9 @@ def main():
     sdk=R/'runtimes/th12/tools/emsdk';emcc=sdk/'upstream/emscripten/emcc.py'
     env={**os.environ,'EM_CONFIG':str(sdk/'.emscripten'),'EMSDK':str(sdk),'EMSDK_PYTHON':sys.executable,'EMCC_CORES':'2',
         'TEMP':str(O),'TMP':str(O),'TMPDIR':str(O)}
-    exports=['malloc','free',*['fixture_'+name for name in ('open','prepare','names','step','compare','read','anm','std','ecl','error')]]
-    command=[sys.executable,str(emcc),*build['flags'],str(source/'th12_web/tests/cpp/th14-background-resource-fixture.cpp'),
+    methods=('open','prepare','names','step','compare','read','anm','std','ecl','error')if a.suite=='stage'else('open','select','name','load','cancel','empty','compare','sync','error')
+    exports=['malloc','free',*['fixture_'+name for name in methods]]
+    command=[sys.executable,str(emcc),*build['flags'],str(source/'th12_web/tests/cpp'/fixture_name),
         *map(str,objects),'--no-entry','-sDEFAULT_TO_CXX=1','-sMODULARIZE=1','-sEXPORT_ES6=1','-sENVIRONMENT=web,worker,node',
         '-sFILESYSTEM=0','-sALLOW_MEMORY_GROWTH=1','-sINITIAL_MEMORY=536870912','-sMAXIMUM_MEMORY=1073741824',
         '-sSTACK_SIZE=1048576','-sEXPORTED_FUNCTIONS='+','.join('_'+name for name in exports),

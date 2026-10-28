@@ -169,7 +169,7 @@ struct Application:StageResourceEffects
     std::vector<ResourceUpload> boot_uploads;
     u32 boot_upload_index=0;
     StageResources* boot_stage_owner=nullptr;
-    enum class BootWork:u8 {Idle,Decode,Resume,Title,TitlePublish,InitialDecode,InitialResume};
+    enum class BootWork:u8 {Idle,Decode,Resume,Title,TitlePublish,InitialDecode,InitialResume,InitialPlayer};
     struct BootWorkToken {Application* owner;u64 generation;BootWork work;u32 index;};
     u64 boot_worker_generation=0;
     BootWork boot_worker_work=BootWork::Idle;
@@ -393,14 +393,12 @@ struct Application:StageResourceEffects
             // The same worker then reads scene, HUD and each ECL ANIM only
             // after the preceding upload returns; those reads are not boot IO.
             initial_decode_complete=false;
-            boot_uploads={{&session.resources.core.players[session.state.character],9}};
-            if(!boot_uploads.empty()){
-                // The initial controller's44c4bf resource requests do not
-                // enter420d20. Its loading family belonged to cold startup;
-                // later-stage workers create their own family separately.
-                std::printf("[loading14] stage entry; %u resource uploads pending\n",u32(boot_uploads.size()));
-                return true;
-            }
+            dispatch_initial_stage_work(BootWork::InitialPlayer,u32(session.state.character*2+session.state.subtype),0);
+            // The initial controller's44c4bf resource requests do not
+            // enter420d20. Its loading family belonged to cold startup;
+            // later-stage workers create their own family separately.
+            std::printf("[loading14] stage entry; selected player CPU resource pending\n");
+            return true;
         }
 #endif
         for(auto* file:{&stage.background,&stage.logo,&stage.enemies})if(!graphics.preload(*file)){error=graphics.error;return false;}
@@ -438,10 +436,11 @@ struct Application:StageResourceEffects
     void dispatch_initial_stage_work(BootWork work,u32 index,int delay){
         initial_upload_waiting=true;boot_worker_work=work;boot_worker_index=index;
 #if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
-        if(work==BootWork::InitialDecode&&boot_stage_owner){
+        if((work==BootWork::InitialDecode||work==BootWork::InitialPlayer)&&boot_stage_owner){
             const auto& stage=*boot_stage_owner;std::vector<std::string> names;char name[64];
             auto add=[&](const char* format){std::snprintf(name,sizeof name,format,stage.stage_number);names.emplace_back(name);};
-            if(index==0){add(stage_files.scene);add(stage_files.background);}
+            if(work==BootWork::InitialPlayer)names.emplace_back(player_file_name(u32(session.state.character),u32(session.state.subtype)));
+            else if(index==0){add(stage_files.scene);add(stage_files.background);}
             else if(index==1){
                 add(stage_files.logo);
                 stage_dialogue_name(name,sizeof name,stage.stage_number,u32(session.state.character*2+session.state.subtype));
@@ -484,6 +483,21 @@ struct Application:StageResourceEffects
         }
         app.boot_worker_work=BootWork::Idle;
         auto& stage=*app.boot_stage_owner;
+        if(token->work==BootWork::InitialPlayer){
+            if(token->index!=u32(app.session.state.character*2+app.session.state.subtype)||!app.boot_uploads.empty()){
+                app.error="TH14 initial player resource owner changed";app.boot_worker_failed=true;return;
+            }
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+            if(!th14_webgpu_archive_status()){
+                app.error="TH14 background player resource decode failed";app.boot_worker_failed=true;return;
+            }
+#endif
+            if(!app.session.resources.load_selected_player(u32(app.session.state.character),u32(app.session.state.subtype))){
+                app.error=app.session.resources.error;app.boot_worker_failed=true;return;
+            }
+            app.boot_uploads.push_back({&app.session.resources.core.players[app.session.state.character],9});
+            app.initial_upload_waiting=false;return;
+        }
         if(token->work==BootWork::InitialResume){
             if(token->index>=app.boot_uploads.size()||app.boot_upload_index!=token->index+1){
                 app.error="TH14 initial upload owner changed";app.boot_worker_failed=true;return;

@@ -32,7 +32,7 @@ parser.add_argument('--declared-process-cookie',type=lambda text:int(text,0),req
 parser.add_argument('--declared-initial-game-ticks',type=int,required=True)
 parser.add_argument('--observe-creations',action='store_true',help='Read the bounded creation ring after each actual tick; no game state is replaced')
 parser.add_argument('--observe-initial-loading',action='store_true',help='Read the initial resource queue at callback/tick boundaries')
-parser.add_argument('--initial-worker-pause-kind',choices=['decode','resume'],help='Exercise production worker suspend/resume once before the selected pending initial task; component test only')
+parser.add_argument('--initial-worker-pause-kind',choices=['decode','resume','player'],help='Exercise production worker suspend/resume once before the selected pending initial task; component test only')
 parser.add_argument('--initial-worker-pause-frames',type=int,default=5)
 args=parser.parse_args();B=args.build.resolve();O=args.output.resolve()
 assert 1<=args.initial_worker_pause_frames<=30
@@ -297,7 +297,7 @@ try:
     clock_ns=due
     paused_this_callback=False
     if args.initial_worker_pause_kind and not worker_pause_done:
-     before=initial_loading_state();wanted=1 if args.initial_worker_pause_kind=='decode'else 2
+     before=initial_loading_state();wanted={'decode':1,'resume':2,'player':3}[args.initial_worker_pause_kind]
      if before[0]==6 and before[1]==3 and before[12]and before[5]==wanted:
       api['component_initial_suspend'](store);worker_paused=True;worker_pause_done=True;paused_this_callback=True
       worker_resume_frame=frame_index+args.initial_worker_pause_frames

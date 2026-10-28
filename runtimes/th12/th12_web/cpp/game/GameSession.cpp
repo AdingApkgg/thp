@@ -72,6 +72,7 @@ void GameSession::reset_state() noexcept {
     clear_animations(animations);
 #if PORT_TITLE == 14
     resources.cancel_stage_loading();
+    resources.cancel_selected_player();
 #endif
     if constexpr(kPortTitle==14||kPortTitle==16)animations.fallback_sprites=nullptr;
     state={};

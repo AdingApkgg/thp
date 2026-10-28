@@ -99,6 +99,8 @@ public:
     bool prepare_core();
     bool load_core_job(u32 index);
     bool select_player(u32 character,u32 subtype);
+    bool load_selected_player(u32 character,u32 subtype);
+    void cancel_selected_player()noexcept{selected_player_pending=-1;}
     bool prepare_stage();
     enum class PhaseResult:u32 {Waiting,Ready,Failed};
     bool begin_stage_loading(u32 number);
@@ -116,6 +118,7 @@ private:
 #if PORT_TITLE == 14
     bool core_deferred=false;
     u16 core_loaded_jobs=0;
+    i32 selected_player_pending=-1;
     std::unique_ptr<StageResources> pending_stage;
     StageResources* incoming_stage=nullptr;
     u32 pending_number=0,decoded_phases=0,requested_phases=0,ready_phases=0;
