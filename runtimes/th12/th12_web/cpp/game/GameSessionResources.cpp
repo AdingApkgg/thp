@@ -28,6 +28,11 @@ bool GameSessionResources::load_core(GameResources& source) {
         // Only the original loading screen's resources are needed now. Each
         // remaining decode is a real frame job before its upload/templates.
         core={};
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+        if(effects&&effects->defer_initial_stage_decode()){
+            core_source=&source;return true;
+        }
+#endif
         if(!anm("ascii ANM","ascii.anm",core.ascii)||!anm("text ANM","text.anm",core.text))return false;
         if(animation_manager){auto& a=*animation_manager;a.fallback_sprites=&core.ascii;
             if(!a.prepare_resource(core.ascii,2)||!a.prepare_resource(core.text,0))return core_error(error,a.last_error_text().c_str());}
@@ -67,6 +72,17 @@ bool GameSessionResources::load_core(GameResources& source) {
     core_source=&source;return true;
 }
 #if PORT_TITLE == 14
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+bool GameSessionResources::load_core_bootstrap(){
+    if(!core_deferred||(core_loaded_jobs&(1u<<9)))return true;
+    if(!core_source)return core_error(error,"TH14 bootstrap resource source missing");
+    if(!core_source->open_anm("ascii.anm",core.ascii))return core_error(error,(std::string("ascii ANM: ")+core.ascii.detail).c_str());
+    if(!core_source->open_anm("text.anm",core.text))return core_error(error,(std::string("text ANM: ")+core.text.detail).c_str());
+    if(animation_manager){auto& a=*animation_manager;a.fallback_sprites=&core.ascii;
+        if(!a.prepare_resource(core.ascii,2)||!a.prepare_resource(core.text,0))return core_error(error,a.last_error_text().c_str());}
+    core_loaded_jobs|=u16(1u<<9);return true;
+}
+#endif
 bool GameSessionResources::load_core_job(u32 index){
     if(index>=9)return core_error(error,"TH14 core resource job outside 0..8");
     if(!core_deferred||(core_loaded_jobs&(1u<<index)))return true;
@@ -84,6 +100,10 @@ bool GameSessionResources::load_core_job(u32 index){
     core_loaded_jobs|=u16(1u<<index);return true;
 }
 bool GameSessionResources::prepare_core(){
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+    if(core_deferred&&effects&&effects->defer_initial_stage_decode()&&!(core_loaded_jobs&(1u<<9)))
+        return core_error(error,"TH14 bootstrap resources still pending");
+#endif
     if(core_deferred){for(u32 index=0;index<9;++index)if(!load_core_job(index))return false;core_deferred=false;}
     if(animation_manager){
         auto& a=*animation_manager;a.fallback_sprites=&core.ascii;

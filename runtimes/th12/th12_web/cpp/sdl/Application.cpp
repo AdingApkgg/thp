@@ -571,9 +571,16 @@ struct Application:StageResourceEffects
             th14_webgpu_archive_schedule(run_boot_work,new BootWorkToken{this,boot_worker_generation,work,index},pointers.data(),u32(pointers.size()));
             return;
         }
-        // The first three files already exist for the loading screen. Later
-        // CPU decodes may run while its main-thread animations keep updating;
-        // the same callback still owns the resource before GPU publication.
+        if(work==BootWork::Decode&&index==0){
+            // Bootstrap all three before the first upload, preserving Sig,
+            // ASCII and text template order without holding an Asyncify stack
+            // open while their CPU decoding runs in the independent worker.
+            const char* names[]={"sig.anm","ascii.anm","text.anm"};
+            th14_webgpu_archive_schedule(run_boot_work,new BootWorkToken{this,boot_worker_generation,work,index},names,3);
+            return;
+        }
+        // Bootstrap already owns the first three files. Later CPU decodes may
+        // run while loading animations update on the main thread.
         constexpr const char* names[]={nullptr,nullptr,nullptr,"front.anm","bullet.anm","effect.anm","title.anm","title_v.anm"};
         if(work==BootWork::Decode&&index<sizeof(names)/sizeof(*names)&&names[index]){
             const char* name=names[index];
@@ -622,9 +629,25 @@ struct Application:StageResourceEffects
             std::printf("[loading14] title worker ready at draw%u\n",app.boot_signature_draws);return;
         }
         if(token->work==BootWork::Decode){
-            if(token->index!=app.boot_upload_index||token->index>=app.boot_uploads.size()){
+            if(token->index!=app.boot_upload_index||token->index>=app.boot_uploads.size()||app.boot_job_published){
                 app.error="TH14 boot decode owner changed";app.boot_worker_failed=true;return;
             }
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+            if(token->index==0){
+                if(!th14_webgpu_archive_status()){
+                    app.error="TH14 background bootstrap resource decode failed";app.boot_worker_failed=true;return;
+                }
+                if(!app.resources.open_anm("sig.anm",app.boot_signature)){
+                    app.error="sig ANM: "+app.boot_signature.detail;app.boot_worker_failed=true;return;
+                }
+                if(!app.session.animations.prepare_resource(app.boot_signature,1)){
+                    app.error=app.session.animations.last_error_text();app.boot_worker_failed=true;return;
+                }
+                if(!app.session.resources.load_core_bootstrap()){
+                    app.error=app.session.resources.error;app.boot_worker_failed=true;return;
+                }
+            }
+#endif
             if(token->index>=3){
 #if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
                 if(!th14_webgpu_archive_status()){
@@ -791,8 +814,10 @@ struct Application:StageResourceEffects
         audio.music_volume=session.config.music_volume();audio.effects.master_volume=session.config.sound_volume();audio.refresh_volume();
         session.recording_timestamp=u64(std::time(nullptr));
 #if PORT_TITLE == 14
+#if !defined(TH14_WEBGPU_BACKEND) || !defined(TH14_ARCHIVE_WORKER)
         if(!resources.open_anm("sig.anm",boot_signature)){error="sig ANM: "+boot_signature.detail;return false;}
         if(!session.animations.prepare_resource(boot_signature,1)){error=session.animations.last_error_text();return false;}
+#endif
 #endif
         if(!session.open_title(resources,true)){error=session.error;return false;}
         auto& core=session.resources.core;

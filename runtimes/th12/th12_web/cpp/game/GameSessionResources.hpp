@@ -98,6 +98,9 @@ public:
 #if PORT_TITLE == 14
     bool prepare_core();
     bool load_core_job(u32 index);
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+    bool load_core_bootstrap();
+#endif
     bool select_player(u32 character,u32 subtype);
     bool load_selected_player(u32 character,u32 subtype);
     void cancel_selected_player()noexcept{selected_player_pending=-1;}
