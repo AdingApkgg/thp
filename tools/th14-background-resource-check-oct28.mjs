@@ -23,9 +23,13 @@ const runtime=new Th14WebGpuRuntime({ccall:()=>invoke()},{createArchiveWorker:()
 module.th14WebGpuRuntime=runtime;
 const deadline=setTimeout(()=>{void worker?.terminate();},60000);const rows=[];let report;
 let cacheReads=0,cacheCopies=0,uncachedReads=0;
+let parsedAnmReads=0,parsedAnmCopies=0,parsedAnmBytes=0;
 const size=runtime.archiveSize.bind(runtime),copy=runtime.archiveCopy.bind(runtime);
 runtime.archiveSize=name=>{const result=size(name);if(result>=0)++cacheReads;else if(result===-1)++uncachedReads;return result;};
 runtime.archiveCopy=(name,bytes)=>{const result=copy(name,bytes);if(result===1)++cacheCopies;return result;};
+const anmSize=runtime.archiveAnmSize.bind(runtime),anmCopy=runtime.archiveAnmCopy.bind(runtime);
+runtime.archiveAnmSize=name=>{const result=anmSize(name);if(result>=0)++parsedAnmReads;return result;};
+runtime.archiveAnmCopy=(name,bytes)=>{const result=anmCopy(name,bytes);if(result===1){++parsedAnmCopies;parsedAnmBytes+=bytes.length;}return result;};
 try {
   const bytes=new Uint8Array(await readFile('H:/Games/th/14/th14.dat'));
   assert.equal(sha(bytes),'57d84a5cbe82460931cca26f090a0fde7aef180889ce5bfe8315851fc97b0233');
@@ -47,10 +51,23 @@ try {
   invoke=()=>{assert.equal(runtime.archiveStatus(),0);assert.equal(module._fixture_read(namePointer),0,'An errored batch must not silently decode synchronously');};
   await runtime.scheduleArchive(1,0,['__missing__']).delivered;
   assert.equal(module._fixture_read(namePointer),1,'Ordinary synchronous reads remain available outside a batch');
+  const anmName=new TextEncoder().encode('st03enm.anm\0'),anmPointer=module._malloc(anmName.length);module.HEAPU8.set(anmName,anmPointer);
+  const ordinaryCopy=runtime.archiveAnmCopy;
+  invoke=()=>{
+    assert.equal(runtime.archiveStatus(),1);
+    runtime.archiveAnmCopy=(name,bytes)=>{const result=ordinaryCopy(name,bytes);if(result===1)bytes[bytes.length-1]^=1;return result;};
+    try{assert.equal(module._fixture_anm(anmPointer),0,'A corrupted parsed packet must not silently fall back to synchronous parsing');}
+    finally{runtime.archiveAnmCopy=ordinaryCopy;}
+  };
+  await runtime.scheduleArchive(1,0,['st03enm.anm']).delivered;
+  assert.equal(module._fixture_anm(anmPointer),1,'Normal ANM parsing outside a batch remains available');
+  assert(parsedAnmReads>0);assert.equal(parsedAnmReads,parsedAnmCopies);
   assert(cacheReads>0);assert.equal(cacheCopies,cacheReads);assert.equal(runtime.failure,null);
-  module._free(namePointer);module._free(pointer);
+  module._free(anmPointer);module._free(namePointer);module._free(pointer);
   report={passed:true,cases:rows.length,rows,actualProductionBrowserGameResourcesObject:true,
     actualIndependentCpuWorker:true,actualCxxParsedResourcesCompared:true,cacheReads,cacheCopies,uncachedReads,
+    parsedAnmReads,parsedAnmCopies,parsedAnmBytes,actualProductionCppImporterUsed:true,
+    corruptedPacketCannotSilentlyFallback:true,synchronousAnmOutsideBatchPassed:true,
     failedBatchCannotSilentlyFallback:true,synchronousReadOutsideBatchPassed:true,
     browserBuildSha256:sha(buildRaw),fixtureBuildSha256:sha(await readFile(resolve(fixture,'build.json'))),
     checkerSha256:sha(await readFile(fileURLToPath(import.meta.url))),

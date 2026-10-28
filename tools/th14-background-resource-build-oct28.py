@@ -36,7 +36,7 @@ def main():
     sdk=R/'runtimes/th12/tools/emsdk';emcc=sdk/'upstream/emscripten/emcc.py'
     env={**os.environ,'EM_CONFIG':str(sdk/'.emscripten'),'EMSDK':str(sdk),'EMSDK_PYTHON':sys.executable,'EMCC_CORES':'2',
         'TEMP':str(O),'TMP':str(O),'TMPDIR':str(O)}
-    exports=['malloc','free',*['fixture_'+name for name in ('open','prepare','names','step','compare','read','error')]]
+    exports=['malloc','free',*['fixture_'+name for name in ('open','prepare','names','step','compare','read','anm','error')]]
     command=[sys.executable,str(emcc),*build['flags'],str(source/'th12_web/tests/cpp/th14-background-resource-fixture.cpp'),
         *map(str,objects),'--no-entry','-sDEFAULT_TO_CXX=1','-sMODULARIZE=1','-sEXPORT_ES6=1','-sENVIRONMENT=web,worker,node',
         '-sFILESYSTEM=0','-sALLOW_MEMORY_GROWTH=1','-sINITIAL_MEMORY=536870912','-sMAXIMUM_MEMORY=1073741824',

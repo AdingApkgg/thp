@@ -45,6 +45,12 @@ export class Th14WebGpuRuntime {
   archiveCopy(name,destination) {
     try{return this.archive?.copy(name,destination)===destination.byteLength?1:0;}catch{return 0;}
   }
+  archiveAnmSize(name) {
+    try{return this.archive?.anmSize(name)??-1;}catch{return -2;}
+  }
+  archiveAnmCopy(name,destination) {
+    try{return this.archive?.anmCopy(name,destination)===destination.byteLength?1:0;}catch{return 0;}
+  }
   scheduleArchive(callback,data,names) {
     const invoke=()=>this.call('th14_webgpu_invoke',null,['number','number'],[callback,data]);
     if(!this.archive)throw new Error('Archive decoder is unavailable');

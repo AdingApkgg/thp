@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "8658d2ae3cd8bc77af5f96e8f75e37bcb63eea1c",
+  "sourceCommit": "dd92df87a1b20d5801b7fa2c46bca29f93fdc061",
   "files": [
     {
       "path": ".gitignore",
@@ -52,6 +52,11 @@
       "path": "docs/porting/TH14_ANM_SCALE_VELOCITY_OCT24.md",
       "bytes": 2075,
       "sha256": "0b9880ba4cba4894277f017a271a6dc69e3bbcd46cf7a03482e1588247b02636"
+    },
+    {
+      "path": "docs/porting/TH14_ANM_WORKER_OCT28.md",
+      "bytes": 3642,
+      "sha256": "4fde7dabb63fa950304aecbab1b8f194b744964d77742bfaaafc729c45a25560"
     },
     {
       "path": "docs/porting/TH14_ARCHIVE_WORKER_OCT28.md",
@@ -460,8 +465,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 31389,
-      "sha256": "891e85cd41e38166590485ab7277c6d74da58c1e157cbed6109e8dcb7622cbf8"
+      "bytes": 32144,
+      "sha256": "a420ac214525b0c759a428608e9925ae71ed7801ecca9f9705b429bdc865ac58"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -1317,6 +1322,11 @@
       "path": "docs/porting/th14-anm-verified.json",
       "bytes": 10424,
       "sha256": "0ed255ca286b3aac02c965ab070d0351b19e8c05a929916267af4a48d176b6a2"
+    },
+    {
+      "path": "docs/porting/th14-anm-worker-verified-oct28.json",
+      "bytes": 87331,
+      "sha256": "23460ae8b230c86161e07b0edd2431eea43b1baeef80a52e480b57141efac049"
     },
     {
       "path": "docs/porting/th14-app-shell-precache-clip-pause-verified-oct14.json",
@@ -7610,13 +7620,13 @@
     },
     {
       "path": "runtimes/th12/portable/sdl/Th14ArchiveDecodeClient.mjs",
-      "bytes": 2794,
-      "sha256": "8fedb590293be96931495884f0f947276c649a0bed3b2701d56f5f6dfde017d5"
+      "bytes": 3006,
+      "sha256": "cb0279b6585089f0274cb76c6b5302b750e838183c75d5e255b0a14c060a77d7"
     },
     {
       "path": "runtimes/th12/portable/sdl/Th14ArchiveDecodeEndpoint.mjs",
-      "bytes": 3189,
-      "sha256": "1d12680e015e9cff3afc3cc872ba2fbde6cbeed016382880d83be3489be2ef33"
+      "bytes": 3725,
+      "sha256": "0d679d515ab2faf301385dfbe21c45471e5bd311b5e3458aec7a360e8733f2f2"
     },
     {
       "path": "runtimes/th12/portable/sdl/Th14ArchiveDecodeWorker.mjs",
@@ -7625,8 +7635,8 @@
     },
     {
       "path": "runtimes/th12/portable/sdl/Th14ArchiveReadAhead.mjs",
-      "bytes": 2049,
-      "sha256": "c0e94f0d8d0b4363d2bb0db27f0bbff9565ab9c3ed22dc9692bdff44bd6bb642"
+      "bytes": 2615,
+      "sha256": "80c8a3d1e8c39346afad5ca3838037694b5490bfdf8bdce9fe1c52cbfffaaca1"
     },
     {
       "path": "runtimes/th12/portable/sdl/Th14RenderMath.hpp",
@@ -7655,8 +7665,8 @@
     },
     {
       "path": "runtimes/th12/portable/sdl/Th14WebGpuLibrary.js",
-      "bytes": 3779,
-      "sha256": "cff21d348625b5e9bfc99e851431547e4105b96a8aa029bd2e2cfde406e63c04"
+      "bytes": 4124,
+      "sha256": "bdfed08564268ca2e39d497fb12819dc7b31e4c2ae47f7185a69fe85e581c474"
     },
     {
       "path": "runtimes/th12/portable/sdl/Th14WebGpuResample.wgsl",
@@ -7665,8 +7675,8 @@
     },
     {
       "path": "runtimes/th12/portable/sdl/Th14WebGpuRuntime.mjs",
-      "bytes": 3782,
-      "sha256": "f8fd0d6502dcea08d7833cf1a4f434c685bb62efa52bd0677e8c39397867ad08"
+      "bytes": 4020,
+      "sha256": "df6cce8fad3876293f419481fc3ee9902ffcfc375b501128e05d5988f706fb90"
     },
     {
       "path": "runtimes/th12/portable/sdl/WebGpuRenderer.hpp",
@@ -7767,6 +7777,11 @@
       "path": "runtimes/th12/th12_web/cpp/game/AnmTrace.hpp",
       "bytes": 1617,
       "sha256": "ab2505e016f7439d50a5e09c7f3cff53b57bc68f7b93f4bc0afb23bee1155e89"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/AnmTransferTh14.hpp",
+      "bytes": 5629,
+      "sha256": "133b38cd0b5033f06be91809d30eb4f49c08d87f72b9d74ee34c38841e00baba"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmVm.cpp",
@@ -8235,8 +8250,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameResources.cpp",
-      "bytes": 13420,
-      "sha256": "a7207f8d378c226a60f5232355bbfa61b5116e3c39a189761c25db3ee36f7bcb"
+      "bytes": 13564,
+      "sha256": "9749c1158a71ac0a6d64fd593df7186cc4c0c84e4348a17e9af9d57ceaa43fc4"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameResources.hpp",
@@ -11269,6 +11284,11 @@
       "sha256": "f85de164939bdde8b1afc35496720fc9558b4a1f4567e676c6bfb2837d66c8c6"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-anm-transfer-fixture.cpp",
+      "bytes": 2593,
+      "sha256": "ffa1396b985c50607f85eaa267512f16af6009e8491e443e1134a12333dd7ced"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-anm-traversal-fixture.cpp",
       "bytes": 2403,
       "sha256": "4ae1d2ada6f5a20338182fd806e752be7c8e42c01758de49b2a0581d443ee54e"
@@ -11285,8 +11305,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-background-resource-fixture.cpp",
-      "bytes": 3019,
-      "sha256": "96e894516178351a6db812f3bbf5e1ed4c3a95a9f2439c64213b976535617012"
+      "bytes": 3134,
+      "sha256": "5f039389677aa33249b89c1c1c3194e671cd0caf8e30738f079dcf8096d2c915"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-bgrx-raster-fixture.cpp",
@@ -15314,6 +15334,16 @@
       "sha256": "76f0007e0bf3360063b4b25249c2d0ec4e79bd1079cbbba443565f40384e2214"
     },
     {
+      "path": "tools/th14-anm-transfer-check-oct28.mjs",
+      "bytes": 6434,
+      "sha256": "ca7177401f4056736ed3cfd94dd3e2cad66416b56cc53e48133664e449dbffa4"
+    },
+    {
+      "path": "tools/th14-anm-transfer-component-oct28.py",
+      "bytes": 3305,
+      "sha256": "746bfc5d9f0cc11d04e47e32d1e41baad2f7c000b088ae354448476a43004b0a"
+    },
+    {
       "path": "tools/th14-anm-traversal-check.mjs",
       "bytes": 3436,
       "sha256": "04ede42a4a6ecac325a32a15567f26300fa1b4432a71938c0d1f604be143d84c"
@@ -15322,6 +15352,11 @@
       "path": "tools/th14-anm-traversal-native.py",
       "bytes": 4260,
       "sha256": "a6bf701e845e2d2d159e9caaff1acd737b5ac9694980ff1a6681da6bd712e05d"
+    },
+    {
+      "path": "tools/th14-anm-worker-evidence-oct28.py",
+      "bytes": 7720,
+      "sha256": "febb96f578a49bafacb865301d5a140fb26bd6a9537f84f65527664f86ba6968"
     },
     {
       "path": "tools/th14-app-shell-precache-clip-pause-evidence-check.py",
@@ -15375,13 +15410,13 @@
     },
     {
       "path": "tools/th14-archive-runtime-check-oct28.mjs",
-      "bytes": 5791,
-      "sha256": "ffe1d34ad0a2675f81797076c7e84508f645f2b6a50c28cd1476c23a26609ff0"
+      "bytes": 6552,
+      "sha256": "bd6867db5f7226027ae053ce4987f0c7f7bee11192c0a7622915dc401396e2fb"
     },
     {
       "path": "tools/th14-archive-worker-prototype-build-oct27.py",
-      "bytes": 4534,
-      "sha256": "fdeb99f4cbbb85e680a7342a767ff269fd4bfcbccb8786c7cda38a0319e3fe09"
+      "bytes": 5285,
+      "sha256": "2bbb68f9e4e791afd1c006e04b9fbb58c449933bd3d3ae2b701ed77bb18b1eac"
     },
     {
       "path": "tools/th14-archive-worker-prototype-check-oct27.mjs",
@@ -15405,8 +15440,8 @@
     },
     {
       "path": "tools/th14-archive-worker/archive-decoder.cpp",
-      "bytes": 1475,
-      "sha256": "12f1bd9471bb971a855fe18136561a58e086eb1963374da80a460815e38d5bcf"
+      "bytes": 1989,
+      "sha256": "9f1cee2a61fc2d73f75c00aa7ecf81d363b22d27ae7049c332ce94723da43949"
     },
     {
       "path": "tools/th14-archive-worker/archive-read-ahead.mjs",
@@ -15475,13 +15510,13 @@
     },
     {
       "path": "tools/th14-background-resource-build-oct28.py",
-      "bytes": 4113,
-      "sha256": "ff1d0b3bb537b7277334b07624482864c952c3a27cc567d29947b9f7fb29da79"
+      "bytes": 4119,
+      "sha256": "b175c83fcdb50ab973da061c58bdb4c344886145f476470d15a51164fd6e394c"
     },
     {
       "path": "tools/th14-background-resource-check-oct28.mjs",
-      "bytes": 5089,
-      "sha256": "a8fe3033e27617c81e9ca97b4e4206df3a940d8d78ddadbf77eb358875a14ab0"
+      "bytes": 6512,
+      "sha256": "4ff959b5dade71bff3f27e103adde46478ae9dc666e72256d9a9076cd22ccb08"
     },
     {
       "path": "tools/th14-bgrx-candidate-evidence-oct27.py",
@@ -15690,8 +15725,8 @@
     },
     {
       "path": "tools/th14-build-webgpu-release.py",
-      "bytes": 12887,
-      "sha256": "2b217e1ab8c588315280a8d7139ca890f0d596b3bff4933d7de1691d398a4218"
+      "bytes": 12927,
+      "sha256": "178b5d505d7b9d92c5157eaa461f072051f3dd35b5d4e359ffb47934564c9ea1"
     },
     {
       "path": "tools/th14-bullet-acceleration-check.mjs",
@@ -24100,47 +24135,55 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "8658d2ae3cd8bc77af5f96e8f75e37bcb63eea1c",
-    "title": "TH14 replay terminal cursor and recorded FPS preservation",
+    "basePublishedCommit": "dd92df87a1b20d5801b7fa2c46bca29f93fdc061",
+    "title": "TH14 initial-stage ANM parsing on isolated CPU worker",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/Replay.cpp",
+      "runtimes/th12/th12_web/cpp/game/GameResources.cpp",
+      "runtimes/th12/th12_web/cpp/game/AnmTransferTh14.hpp",
+      "runtimes/th12/portable/sdl/Th14WebGpuRuntime.mjs",
+      "runtimes/th12/portable/sdl/Th14WebGpuLibrary.js",
+      "runtimes/th12/portable/sdl/Th14ArchiveDecodeClient.mjs",
+      "runtimes/th12/portable/sdl/Th14ArchiveReadAhead.mjs",
+      "runtimes/th12/portable/sdl/Th14ArchiveDecodeEndpoint.mjs",
+      "tools/th14-archive-worker/archive-decoder.cpp",
+      "tools/th14-archive-worker-prototype-build-oct27.py",
       "tools/th14-build-webgpu-release.py",
-      "tools/th14-replay-rate-terminal-oct28.py",
-      "tools/th14-replay-terminal-evidence-oct28.py",
-      "docs/porting/TH14_REPLAY_TERMINAL_OCT28.md",
-      "docs/porting/th14-replay-terminal-verified-oct28.json",
+      "runtimes/th12/th12_web/tests/cpp/th14-background-resource-fixture.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-anm-transfer-fixture.cpp",
+      "tools/th14-background-resource-build-oct28.py",
+      "tools/th14-background-resource-check-oct28.mjs",
+      "tools/th14-archive-runtime-check-oct28.mjs",
+      "tools/th14-anm-transfer-component-oct28.py",
+      "tools/th14-anm-transfer-check-oct28.mjs",
+      "tools/th14-anm-worker-evidence-oct28.py",
+      "docs/porting/TH14_ANM_WORKER_OCT28.md",
+      "docs/porting/th14-anm-worker-verified-oct28.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "productionReplayTerminalFixed": true,
-    "retailReaderCases": 36,
-    "retailReaderSteps": 2804,
-    "beforeMismatchSteps": 208,
-    "afterMismatchSteps": 0,
-    "applicationBackends": [
-      "gles",
-      "webgpu"
-    ],
-    "applicationFramesEach": 2142,
-    "applicationAssertionsEach": 27,
-    "applicationEqualCaptureBuffers": 4,
-    "applicationEqualLiveRows": 295,
-    "applicationWordsPerVm": 303,
-    "applicationSilentPcmFramesEach": 1391616,
-    "applicationReplayEncodedBytesPreserved": 823,
-    "nativePauseRequestBoundaryControlled": true,
-    "nativeOutOfPayloadReadsExcluded": true,
-    "compiledBrowserUnits": 1,
-    "reusedBrowserObjects": 145,
-    "browserSourceUnits": 146,
-    "browserWasmBytes": 2722034,
-    "browserWasmSha256": "450017d173438f3c817d107b1d546e7d99a29c16ca9dcb65378e1567f3662758",
-    "actualBrowserPartialReplayNaturalEnds": 2,
-    "browserReplayAgainAndReturnListVisuallyObserved": true,
+    "productionAnmParserOnInitialStageWorker": true,
+    "allInitialResourcesParsedOnWorker": false,
+    "stdAndEclParsingStillOnMainThread": true,
+    "actualWorkerAnmCases": 57,
+    "parsedPacketBytesCompared": 245717904,
+    "malformedPacketsRejected": 68,
+    "actualProductionGameResourceCases": 42,
+    "validAnmImports": 198,
+    "corruptedPacketControls": 1,
+    "totalAnmImportCalls": 199,
+    "runtimeCpuOutsideAsyncifyQueue": true,
+    "generationErrorCancelAndOwnershipControlsPassed": true,
+    "browserCppUnitsRecompiled": 146,
+    "browserReusedObjects": 0,
+    "browserWasmBytes": 2726640,
+    "browserWasmSha256": "cef8961af946ff8ff24e440a4681907da5940a5cf7acad03c730ca87cfc48182",
+    "workerWasmBytes": 52793,
+    "workerWasmSha256": "f45799f6dc86705c8984cc6b16f4ace0babc5a3d6206b594bdce8b5d08fcb7fa",
     "browserRoutes": 139,
     "httpChecks": 27,
+    "actualBrowserDemoAndTwoPartialReplayEndsVisuallyObserved": true,
     "currentQuietPreviewPort": 8234,
     "independentProductionSchedulingAccepted": false,
     "completeBrowserAcceptance": false,

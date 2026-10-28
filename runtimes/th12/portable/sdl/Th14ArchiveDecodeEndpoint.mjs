@@ -42,9 +42,18 @@ export function createArchiveDecodeEndpoint(createModule, send) {
         // The C++ buffer is overwritten by the next read. Transfer a distinct
         // copy; the consumer can never alias that mutable dictionary/output.
         const copy = size ? module.HEAPU8.slice(decoded, decoded+size) : new Uint8Array();
-        entries.push({name, bytes:copy.buffer});
+        let anm;
+        if(name.endsWith('.anm')){
+          const parsed=module._decoder_anm();
+          if(!parsed)throw new Error(`ANM rejected: ${name} (${module._decoder_error()})`);
+          const parsedSize=module._decoder_anm_size();total+=parsedSize;
+          if(parsedSize<36||parsedSize>128*1024*1024||total>128*1024*1024)
+            throw new Error('Parsed ANM batch exceeds budget');
+          anm=module.HEAPU8.slice(parsed,parsed+parsedSize).buffer;
+        }
+        entries.push({name, bytes:copy.buffer,...(anm?{anm}:{})});
       }
-      send({id, command, ok:true, entries}, entries.map(entry => entry.bytes));return;
+      send({id, command, ok:true, entries}, entries.flatMap(entry=>entry.anm?[entry.bytes,entry.anm]:[entry.bytes]));return;
     }
     if (command === 'close') {
       module._decoder_close();

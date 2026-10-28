@@ -44,9 +44,12 @@ export class ArchiveDecodeClient {
     try {
       const result = await this.request('decode', {names});
       if (!Array.isArray(result.entries) || result.entries.length !== names.length ||
-          result.entries.some((entry, i) => entry.name !== names[i] || !(entry.bytes instanceof ArrayBuffer)))
+          result.entries.some((entry, i) => entry.name !== names[i] || !(entry.bytes instanceof ArrayBuffer)||
+            (entry.anm!==undefined&&!(entry.anm instanceof ArrayBuffer))||
+            (names[i].endsWith('.anm')&&!(entry.anm instanceof ArrayBuffer))))
         throw new Error('Archive response names or buffers changed');
-      return result.entries.map(entry => ({name:entry.name, bytes:new Uint8Array(entry.bytes)}));
+      return result.entries.map(entry => ({name:entry.name,bytes:new Uint8Array(entry.bytes),
+        ...(entry.anm?{anm:new Uint8Array(entry.anm)}:{})}));
     } finally {this.decoding = false;}
   }
   close() {

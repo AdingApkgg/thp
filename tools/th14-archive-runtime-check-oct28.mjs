@@ -50,14 +50,21 @@ try {
       assert.equal(runtime.archiveCopy(name,new Uint8Array(output.length+1)),0);
     }
     assert.equal(runtime.archiveSize('st03enm.anm'),-1);
+    const parsedSize=runtime.archiveAnmSize('st03wl.anm');assert(parsedSize>=36);
+    const parsed=new Uint8Array(parsedSize);assert.equal(runtime.archiveAnmCopy('st03wl.anm',parsed),1);
+    assert.equal(new DataView(parsed.buffer).getUint32(0,true),0x314d4e41);
+    const original=sha(parsed);parsed.fill(0);assert.equal(runtime.archiveAnmCopy('st03wl.anm',parsed),1);assert.equal(sha(parsed),original);
+    assert.equal(runtime.archiveAnmCopy('st03wl.anm',new Uint8Array(parsedSize+1)),0);
+    assert.equal(runtime.archiveAnmSize('st03.std'),-1);
   };
   const first=runtime.scheduleArchive(123,456,['st03.std','st03wl.anm']);
   assert.equal((await first.ready).ok,true);assert.deepEqual(events,['frame-enter']);
   release();await frame;await first.delivered;
   assert.deepEqual(events,['frame-enter','frame-exit','decode-callback']);assert.equal(runtime.archiveSize('st03wl.anm'),-1);
+  assert.equal(runtime.archiveAnmSize('st03wl.anm'),-1);
   callback=()=>{assert.equal(runtime.archiveStatus(),0);assert.equal(runtime.archiveSize('__missing__'),-2);};
   await runtime.scheduleArchive(1,2,['__missing__']).delivered;
-  let stale=0;callback=()=>{++stale;assert.equal(runtime.archiveStatus(),0);assert.equal(runtime.archiveSize('st03enm.anm'),-2);};
+  let stale=0;callback=()=>{++stale;assert.equal(runtime.archiveStatus(),0);assert.equal(runtime.archiveSize('st03enm.anm'),-2);assert.equal(runtime.archiveAnmSize('st03enm.anm'),-2);};
   const cancelled=runtime.scheduleArchive(1,2,['st03enm.anm']);runtime.cancelArchive();await cancelled.delivered;
   assert.equal(stale,1);assert.equal(runtime.archiveStatus(),1);
   callback=()=>assert.equal(runtime.archiveSize('st03enm.anm'),byName.get('st03enm.anm').bytes);
@@ -70,6 +77,7 @@ try {
     immutableInputAndTransferredResults:true,wrongDestinationRejected:true,cacheClearedAfterCallback:true,
     workerFailureDeliveredToCppStatus:true,staleCallbackDeliveredOnceForCppTokenCleanup:true,
     resumedGenerationPassed:true,sourceBindings,completeGame:false,nativeEquivalent:false};
+  report.parsedAnmTransferredAndOwned=true;report.parsedAnmFailureAndGenerationClearingPassed=true;
 }catch(error){report={passed:false,error:String(error.stack??error),completeGame:false,nativeEquivalent:false};process.exitCode=1;}
 finally{clearTimeout(deadline);runtime.archive?.close();}
 await writeFile(resolve(out,'report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));

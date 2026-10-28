@@ -16,7 +16,8 @@ export class ArchiveReadAhead {
       if(this.batch!==null)throw new Error('Overlapping archive callback owner');
       const stale=this.closed||generation!==this.generation;
       this.batch=stale?{error:new Error('Stale archive read-ahead callback')}:
-        value.error?{error:value.error}:{entries:new Map(value.entries.map(entry=>[entry.name,entry.bytes]))};
+        value.error?{error:value.error}:{entries:new Map(value.entries.map(entry=>[entry.name,entry.bytes])),
+          anms:new Map(value.entries.filter(entry=>entry.anm).map(entry=>[entry.name,entry.anm]))};
       try {
         // Even stale callbacks must be delivered: the C++ generation check
         // owns and frees its token. Dropping a callback here would leak it.
@@ -36,6 +37,17 @@ export class ArchiveReadAhead {
     if(!(destination instanceof Uint8Array)||destination.byteLength!==size)
       throw new Error('Archive read-ahead destination size changed');
     destination.set(this.batch.entries.get(name));return size;
+  }
+  anmSize(name) {
+    if(!this.batch)return -1;
+    if(this.batch.error)throw this.batch.error;
+    return this.batch.anms.has(name)?this.batch.anms.get(name).byteLength:-1;
+  }
+  anmCopy(name,destination) {
+    const size=this.anmSize(name);if(size<0)return -1;
+    if(!(destination instanceof Uint8Array)||destination.byteLength!==size)
+      throw new Error('ANM transfer destination size changed');
+    destination.set(this.batch.anms.get(name));return size;
   }
   cancel() {++this.generation;}
   close() {

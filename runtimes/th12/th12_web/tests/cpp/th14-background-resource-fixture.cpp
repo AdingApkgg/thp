@@ -52,5 +52,6 @@ EMSCRIPTEN_KEEPALIVE int fixture_compare(){
     return same;
 }
 EMSCRIPTEN_KEEPALIVE int fixture_read(const char* name){std::vector<u8> output;return resources.read(name,output);}
+EMSCRIPTEN_KEEPALIVE int fixture_anm(const char* name){AnmResource output;return resources.open_anm(name,output);}
 EMSCRIPTEN_KEEPALIVE const char* fixture_error(){return resources.error().c_str();}
 }

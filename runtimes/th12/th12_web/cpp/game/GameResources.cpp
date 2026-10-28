@@ -3,9 +3,12 @@
 #include "PortTitle.hpp"
 #include <cstdio>
 #if PORT_TITLE == 14 && defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+#include "AnmTransferTh14.hpp"
 extern "C" {
 int th14_webgpu_archive_size(const char* name);
 int th14_webgpu_archive_copy(const char* name,void* destination,unsigned size);
+int th14_webgpu_anm_size(const char* name);
+int th14_webgpu_anm_copy(const char* name,void* destination,unsigned size);
 }
 #endif
 #if defined(TH_NATIVE_PLATFORM) && defined(TH_ENABLE_THCRAP)
@@ -90,6 +93,19 @@ bool GameResources::read(const std::string& name, std::vector<u8>& data) {
 }
 
 bool GameResources::open_anm(const std::string& name, AnmResource& output) {
+#if PORT_TITLE == 14 && defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+    last_resource=name;
+    const int parsed=th14_webgpu_anm_size(name.c_str());
+    if(parsed < -1)return fail("background ANM parse failed");
+    if(parsed>=0){
+        if(!has(name))return fail("missing archive resource");
+        if(u32(parsed)>anm_transfer_th14::maximum_bytes)return fail("oversized background ANM");
+        std::vector<u8> packet(static_cast<u32>(parsed));
+        if(!th14_webgpu_anm_copy(name.c_str(),packet.data(),u32(packet.size())))return fail("background ANM delivery failed");
+        if(!th14_decode_anm_transfer(packet.data(),u32(packet.size()),output))return fail("invalid background ANM transfer");
+        return true;
+    }
+#endif
     std::vector<u8> data;
     if (!read(name, data) || !output.open(data.data(), u32(data.size())))
         return fail("invalid ANM resource");
@@ -173,9 +189,7 @@ bool GameResources::load_stage_hud(u32 stage,StageResources& output,u32 dialogue
     last_error.clear();output.stage_number=stage;
     char name[64];std::vector<u8> bytes;
     std::snprintf(name,sizeof name,stage_files.logo,stage);
-    if(!read(name,bytes))return false;
-    if(!output.logo.open(bytes.data(),u32(bytes.size())))
-        return fail((std::string(name)+": "+(output.logo.detail.empty()?"invalid ANM resource":output.logo.detail)).c_str());
+    if(!open_anm(name,output.logo))return false;
     for(auto& message:output.messages)message.clear();
     stage_dialogue_name(name,sizeof name,stage,dialogue_selection);
     return read(name,output.messages[dialogue_selection]);
@@ -189,9 +203,7 @@ bool GameResources::load_stage_scene(u32 stage,StageResources& output) {
     if(!read(name,bytes))return false;
     if(!output.scene.open(bytes.data(),u32(bytes.size())))return fail(output.scene.error.c_str());
     std::snprintf(name,sizeof name,stage_files.background,stage);
-    if(!read(name,bytes))return false;
-    if(!output.background.open(bytes.data(),u32(bytes.size())))
-        return fail((std::string(name)+": "+(output.background.detail.empty()?"invalid ANM resource":output.background.detail)).c_str());
+    if(!open_anm(name,output.background))return false;
     return true;
 }
 
@@ -234,9 +246,7 @@ bool GameResources::load_stage_timeline(u32 stage,StageResources& output) {
     last_error.clear();output.stage_number=stage;
     char name[64];std::vector<u8> bytes;
     std::snprintf(name,sizeof name,stage_files.enemies,stage);
-    if(!read(name,bytes))return false;
-    if(!output.enemies.open(bytes.data(),u32(bytes.size())))
-        return fail((std::string(name)+": "+(output.enemies.detail.empty()?"invalid ANM resource":output.enemies.detail)).c_str());
+    if(!open_anm(name,output.enemies))return false;
     std::snprintf(name,sizeof name,stage_files.timeline,stage);
     if(!load_ecl(name,output.timeline))return false;
     output.ecl_animation_names={};
@@ -247,9 +257,7 @@ bool GameResources::load_stage_timeline(u32 stage,StageResources& output) {
     for(u32 i=0;i<output.ecl_animations.size();++i){
         output.ecl_animations[i]={};
         if(output.ecl_animation_names[i].empty())continue;
-        if(!read(output.ecl_animation_names[i],bytes))return false;
-        if(!output.ecl_animations[i].open(bytes.data(),u32(bytes.size())))
-            return fail((output.ecl_animation_names[i]+": "+(output.ecl_animations[i].detail.empty()?"invalid ANM resource":output.ecl_animations[i].detail)).c_str());
+        if(!open_anm(output.ecl_animation_names[i],output.ecl_animations[i]))return false;
     }
     output.boss_programs.clear();
     for(const char* suffix:{stage_files.boss,stage_files.midboss}){

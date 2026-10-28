@@ -42,6 +42,10 @@ addToLibrary({
   th14_webgpu_archive_size:(name) => Module['th14WebGpuRuntime'].archiveSize(UTF8ToString(name)),
   th14_webgpu_archive_copy__deps:['$UTF8ToString'],
   th14_webgpu_archive_copy:(name,pointer,size) => Module['th14WebGpuRuntime'].archiveCopy(UTF8ToString(name),HEAPU8.subarray(pointer,pointer+size)),
+  th14_webgpu_anm_size__deps:['$UTF8ToString'],
+  th14_webgpu_anm_size:(name) => Module['th14WebGpuRuntime'].archiveAnmSize(UTF8ToString(name)),
+  th14_webgpu_anm_copy__deps:['$UTF8ToString'],
+  th14_webgpu_anm_copy:(name,pointer,size) => Module['th14WebGpuRuntime'].archiveAnmCopy(UTF8ToString(name),HEAPU8.subarray(pointer,pointer+size)),
   th14_webgpu_archive_schedule__deps:['$UTF8ToString'],
   th14_webgpu_archive_schedule:(callback,data,pointers,count) => {
     const names=[];
