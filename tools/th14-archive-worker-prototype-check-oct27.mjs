@@ -94,7 +94,8 @@ try {
   for (const [name, row] of Object.entries(build.sourceBindings)) {
     // Core inputs come from the published snapshot. In particular, the
     // unrelated local ResourceCrypt.cpp must never replace that input.
-    const path = name.startsWith('runtimes/') ? resolve(home, 'source', name.split('/').at(-1)) : resolve(root, name);
+    const path = name.startsWith('runtimes/th12/th12_web/cpp/game/') ? resolve(home, 'source', name.split('/').at(-1)) :
+      name.startsWith('runtimes/th12/portable/sdl/') ? resolve(home,name.split('/').at(-1)) : resolve(root, name);
     const raw = await readFile(path);assert.equal(sha(raw), row.sha256, name);
   }
   assert.ok(performance.now()-begin < 60000, 'Worker prototype wall budget exhausted');

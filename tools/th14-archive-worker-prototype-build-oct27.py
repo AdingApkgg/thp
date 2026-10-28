@@ -9,6 +9,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--base-commit',required=True)
     p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--browser-runtime',action='store_true',help='Bind and stage the production browser worker modules')
     args=p.parse_args();O=args.output.resolve();C=R/'tools/tmp/github-source-release'
     assert O.is_relative_to(R/'artifacts/th14')and not O.exists()
     subprocess.run(['git','-C',str(C),'cat-file','-e',args.base_commit+'^{commit}'],check=True)
@@ -27,6 +28,10 @@ def main():
     for name in ('archive-decoder.cpp','archive-decode-client.mjs','archive-decode-endpoint.mjs','archive-decode-worker.mjs'):
         path=R/'tools/th14-archive-worker'/name;raw=path.read_bytes()
         (O/name).write_bytes(raw);bindings[path.relative_to(R).as_posix()]=dict(bytes=len(raw),sha256=SHA(raw))
+    if args.browser_runtime:
+        for name in ('Th14ArchiveDecodeClient.mjs','Th14ArchiveReadAhead.mjs','Th14ArchiveDecodeEndpoint.mjs','Th14ArchiveDecodeWorker.mjs'):
+            path=R/'runtimes/th12/portable/sdl'/name;raw=path.read_bytes()
+            (O/name).write_bytes(raw);bindings[path.relative_to(R).as_posix()]=dict(bytes=len(raw),sha256=SHA(raw))
     sdk=R/'runtimes/th12/tools/emsdk';emcc=sdk/'upstream/emscripten/emcc.py'
     env={**os.environ,'EM_CONFIG':str(sdk/'.emscripten'),'EMSDK':str(sdk),'EMSDK_PYTHON':sys.executable,'EMCC_CORES':'2',
          'TEMP':str(O),'TMP':str(O),'TMPDIR':str(O)}
@@ -47,7 +52,7 @@ def main():
         wasmBytes=len(wasm),wasmSha256=SHA(wasm),loaderSha256=SHA((O/'archive-decoder.mjs').read_bytes()),
         buildToolSha256=SHA(tool),storageToolSha256=SHA((O/'storage-tool.py').read_bytes()),
         compilerVersion=(sdk/'upstream/emscripten/emscripten-version.txt').read_text().strip(),
-        productionIntegrated=False,browserAcceptance=False,completeGame=False,nativeEquivalent=False)
+        browserRuntimeModules=args.browser_runtime,productionIntegrated=False,browserAcceptance=False,completeGame=False,nativeEquivalent=False)
     (O/'build.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps({k:v for k,v in report.items()if k!='sourceBindings'}))
 

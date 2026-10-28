@@ -32,4 +32,20 @@ addToLibrary({
   th14_webgpu_present:(handle) => Module['th14WebGpuRuntime'].host.present(handle>>>0),
   th14_webgpu_schedule:(callback,data,delay) => Module['th14WebGpuRuntime'].schedule(callback,data,delay),
   th14_webgpu_request_frames:(callback,data) => Module['th14WebGpuRuntime'].startFrames(callback,data),
+  th14_webgpu_archive_open:(pointer,size) => {
+    try{Module['th14WebGpuRuntime'].openArchive(HEAPU8.subarray(pointer,pointer+size));return 1;}
+    catch(error){console.error('TH14 archive worker:',error);return 0;}
+  },
+  th14_webgpu_archive_cancel:() => Module['th14WebGpuRuntime']?.cancelArchive(),
+  th14_webgpu_archive_status:() => Module['th14WebGpuRuntime'].archiveStatus(),
+  th14_webgpu_archive_size__deps:['$UTF8ToString'],
+  th14_webgpu_archive_size:(name) => Module['th14WebGpuRuntime'].archiveSize(UTF8ToString(name)),
+  th14_webgpu_archive_copy__deps:['$UTF8ToString'],
+  th14_webgpu_archive_copy:(name,pointer,size) => Module['th14WebGpuRuntime'].archiveCopy(UTF8ToString(name),HEAPU8.subarray(pointer,pointer+size)),
+  th14_webgpu_archive_schedule__deps:['$UTF8ToString'],
+  th14_webgpu_archive_schedule:(callback,data,pointers,count) => {
+    const names=[];
+    for(let i=0;i<count;++i)names.push(UTF8ToString(HEAPU32[(pointers>>>2)+i]));
+    Module['th14WebGpuRuntime'].scheduleArchive(callback,data,names);
+  },
 });

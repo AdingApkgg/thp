@@ -48,7 +48,7 @@ const dependencies=[];
 for (const [name,row] of Object.entries(state.proof.files)) {
   if (!/\.(?:mjs|js)$/.test(name)) continue;
   const source=readFileSync(resolve(root,row.path),'utf8');
-  if (name!=='runtime/th14/th14-sdl.mjs') assert(!/(?:from\s*|import\s*\()['"]node:/.test(source),name);
+  if (!['runtime/th14/th14-sdl.mjs','runtime/th14/archive-decoder.mjs'].includes(name)) assert(!/(?:from\s*|import\s*\()['"]node:/.test(source),name);
   // Literal module edges; generated loader's computed Wasm/Runtime URLs are
   // checked separately. Sources are read rather than executed in a DOM shim.
   for (const match of source.matchAll(/(?:\b(?:import|export)\s+(?:[^'";]*?\s+from\s+)?|\bimport\s*\()\s*['"](\.[^'"]+)['"]/g)) {
@@ -80,6 +80,9 @@ try {
     ['/runtime/th14/runtime-files.json','application/json; charset=utf-8'],
     [quietRoute,'text/javascript; charset=utf-8'],
   ];
+  for(const name of ['archive-decoder.mjs','archive-decoder.wasm','Th14ArchiveDecodeClient.mjs','Th14ArchiveReadAhead.mjs','Th14ArchiveDecodeEndpoint.mjs','Th14ArchiveDecodeWorker.mjs']) {
+    if(state.proof.files['runtime/th14/'+name])checks.push(['/runtime/th14/'+name,name.endsWith('.wasm')?'application/wasm':'text/javascript; charset=utf-8']);
+  }
   for (const [path,type] of checks) {
     const response=await fetch(origin+path);assert.equal(response.status,200,path);
     assert.equal(response.headers.get('content-type'),type,path);

@@ -18,7 +18,8 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 SHA = lambda raw: hashlib.sha256(raw).hexdigest()
-OVERLAYS = ['th12_web/cpp/sdl/Application.cpp','portable/sdl/Th14WebGpuCallbacks.hpp',
+OVERLAYS = ['th12_web/cpp/sdl/Application.cpp','th12_web/cpp/game/GameResources.cpp','portable/sdl/Th14WebGpuCallbacks.hpp',
+            'portable/sdl/Th14ArchiveDecodeClient.mjs','portable/sdl/Th14ArchiveReadAhead.mjs','portable/sdl/Th14ArchiveDecodeEndpoint.mjs','portable/sdl/Th14ArchiveDecodeWorker.mjs',
             'portable/sdl/Th14WebGpuHost.mjs','portable/sdl/Th14WebGpuRuntime.mjs','portable/sdl/Th14WebGpuCore.mjs','portable/sdl/Th14WebGpuLibrary.js']
 
 
@@ -56,11 +57,23 @@ def main():
         inventory[relative] = dict(bytes=len(raw),sha256=SHA(raw),origin='explicit-th14-overlay')
     crypt = 'th12_web/cpp/game/ResourceCrypt.cpp'
     assert inventory[crypt]['sha256'] == 'd57118f1114f3909c42a2e99e7df30e625f6563247a8118cd14bb9f68a0f97ef'
-    for name in ['Th14WebGpuHost.mjs','Th14WebGpuRuntime.mjs','Th14WebGpuCore.mjs','Th14WebGpu.wgsl','Th14WebGpuResample.wgsl']:
+    for name in ['Th14WebGpuHost.mjs','Th14WebGpuRuntime.mjs','Th14WebGpuCore.mjs','Th14WebGpu.wgsl','Th14WebGpuResample.wgsl',
+                 'Th14ArchiveDecodeClient.mjs','Th14ArchiveReadAhead.mjs','Th14ArchiveDecodeEndpoint.mjs','Th14ArchiveDecodeWorker.mjs']:
         shutil.copyfile(source/'portable/sdl'/name, out/name)
+    worker_home=out/'archive-worker'
+    worker_tool=ROOT/'tools/th14-archive-worker-prototype-build-oct27.py'
+    subprocess.run([sys.executable,str(worker_tool),'--base-commit',args.base_commit,'--output',str(worker_home),'--browser-runtime'],check=True)
+    worker_raw=(worker_home/'build.json').read_bytes();worker_build=json.loads(worker_raw)
+    assert worker_build['compiled'] and worker_build['browserRuntimeModules']
+    worker_files={}
+    for name in ['archive-decoder.mjs','archive-decoder.wasm','Th14ArchiveDecodeClient.mjs','Th14ArchiveReadAhead.mjs','Th14ArchiveDecodeEndpoint.mjs','Th14ArchiveDecodeWorker.mjs']:
+        raw=(worker_home/name).read_bytes()
+        if name.startswith('Th14'):assert raw==(out/name).read_bytes()
+        else:(out/name).write_bytes(raw)
+        worker_files[name]=dict(bytes=len(raw),sha256=SHA(raw))
     sdk = ROOT/'runtimes/th12/tools/emsdk'; emcc = sdk/'upstream/emscripten/emcc.py'
     flags = ['-O2','-g0','--profiling-funcs','-std=c++17','-ffp-contract=off','-fno-strict-aliasing','-fno-exceptions','-fno-rtti',
-             '-DPORT_TITLE=14','-DTH_NATIVE_PLATFORM=1','-DTH11_DEVELOPMENT_HARNESS=0','-DTH14_WEBGPU_BACKEND=1','--use-port=sdl3']
+             '-DPORT_TITLE=14','-DTH_NATIVE_PLATFORM=1','-DTH11_DEVELOPMENT_HARNESS=0','-DTH14_WEBGPU_BACKEND=1','-DTH14_ARCHIVE_WORKER=1','--use-port=sdl3']
     (out/'build-tool.py').write_bytes(tool_raw)
     (out/'compile-inputs.json').write_text(json.dumps(dict(baseCommit=args.base_commit,sourceBindings=inventory,flags=flags,toolSha256=SHA(tool_raw)),indent=2)+'\n')
     env = {**os.environ,'EM_CONFIG':str(sdk/'.emscripten'),'EMSDK':str(sdk),'EMSDK_PYTHON':sys.executable,
@@ -130,6 +143,7 @@ def main():
         flags=flags,linkFlags=link_flags,compilerVersion=(sdk/'upstream/emscripten/emscripten-version.txt').read_text().strip(),
         wasmBytes=len(wasm),wasmSha256=SHA(wasm),loaderSha256=SHA((out/'th14-sdl.mjs').read_bytes()),
         objectHashes={unit.relative_to(source).as_posix():SHA(compiled[unit].read_bytes())for unit in units},
+        archiveWorkerBuildSha256=SHA(worker_raw),archiveWorkerFiles=worker_files,backgroundArchiveIntegration=True,
         toolSha256=SHA(tool_raw),storageToolSha256=SHA(storage_raw),rootUnrelatedResourceCryptExcluded=True,retailAssetsIncluded=False,
         actualSdlPort=True,asyncify=True,frameAndWorkerCallbacksSerialized=True,browserRun=False,browserAcceptance=False,
         completeGame=False,nativeEquivalent=False,scope='Fresh compilation of the published independent C++ TH14 engine, real SDL3 port and explicit WebGPU overlays. Browser-targeted candidate only; compilation does not prove startup, presentation, browser scheduling, persistence, physical devices or whole-game fidelity.')

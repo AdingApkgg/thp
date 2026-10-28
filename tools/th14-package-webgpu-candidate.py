@@ -54,6 +54,8 @@ def main():
     for name in ['managed.css','keyboard.mjs','directory-keyboard.mjs','eagler-host.mjs','runtime-epoch.mjs']:put(name,source(shared/name))
     motion=source(courier/'runtimes/th12/portable/browser/motion-replay.mjs').decode().replace('TH11','TH14').replace('t11r','t13r').replace('0x72313174','0x72333174').replace('74 31 31 72','74 31 33 72');put('motion-replay.mjs',motion.encode())
     for name in ['th14-sdl.wasm','th14-sdl.mjs','Th14WebGpuHost.mjs','Th14WebGpuRuntime.mjs','Th14WebGpuCore.mjs','Th14WebGpu.wgsl','Th14WebGpuResample.wgsl']:put(name,source(home/name))
+    for name,row in build.get('archiveWorkerFiles',{}).items():
+        raw=source(home/name);assert len(raw)==row['bytes'] and SHA(raw)==row['sha256'];put(name,raw)
     generated=ROOT/'runtimes/th14/th14_web/assets/sdl-native';resources=[];aliases=[]
     font_manifest=json.loads(source(generated/'fonts/manifest.json'));music_manifest=json.loads(source(generated/'music-verification.json'))
     assert len(font_manifest['files'])==10 and len(music_manifest)==18

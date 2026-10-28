@@ -16,6 +16,7 @@
 #include <emscripten.h>
 #ifdef TH14_WEBGPU_BACKEND
 #include "../../../portable/sdl/Th14WebGpuCallbacks.hpp"
+#include "../game/StageFiles.hpp"
 #endif
 #include <emscripten/heap.h>
 #include <malloc.h>
@@ -412,13 +413,21 @@ struct Application:StageResourceEffects
     bool core_ready()const override{return core_loading_done;}
     bool defer_initial_stage_decode()const override{return true;}
     void cancel_boot_worker(){
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+        th14_webgpu_archive_cancel();
+#endif
         ++boot_worker_generation;boot_worker_active=boot_worker_suspended=false;
         boot_job_published=boot_title_ready=boot_worker_failed=false;
         boot_worker_work=BootWork::Idle;
         initial_upload_waiting=false;initial_decode_complete=true;
     }
     void suspend_boot_worker(){
-        if(boot_worker_active||initial_upload_waiting){++boot_worker_generation;boot_worker_suspended=true;}
+        if(boot_worker_active||initial_upload_waiting){
+            ++boot_worker_generation;boot_worker_suspended=true;
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+            th14_webgpu_archive_cancel();
+#endif
+        }
     }
     void resume_boot_worker(){
         if(!boot_worker_suspended)return;
@@ -428,6 +437,40 @@ struct Application:StageResourceEffects
     }
     void dispatch_initial_stage_work(BootWork work,u32 index,int delay){
         initial_upload_waiting=true;boot_worker_work=work;boot_worker_index=index;
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+        if(work==BootWork::InitialDecode&&boot_stage_owner){
+            const auto& stage=*boot_stage_owner;std::vector<std::string> names;char name[64];
+            auto add=[&](const char* format){std::snprintf(name,sizeof name,format,stage.stage_number);names.emplace_back(name);};
+            if(index==0){add(stage_files.scene);add(stage_files.background);}
+            else if(index==1){
+                add(stage_files.logo);
+                stage_dialogue_name(name,sizeof name,stage.stage_number,u32(session.state.character*2+session.state.subtype));
+                names.emplace_back(name);
+            }else if(index==2){
+                add(stage_files.timeline);
+                for(const char* format:{stage_files.boss,stage_files.midboss}){
+                    std::snprintf(name,sizeof name,format,stage.stage_number);
+                    if(resources.has(name))names.emplace_back(name);
+                }
+                if(resources.has("default.ecl"))names.emplace_back("default.ecl");
+            }else if(index>=3&&index<=7){
+                u32 slot=index-3;
+                while(slot<stage.ecl_animations.size()&&stage.ecl_animation_names[slot].empty())++slot;
+                if(slot<stage.ecl_animations.size())names.push_back(stage.ecl_animation_names[slot]);
+                else{
+                    std::snprintf(name,sizeof name,stage_files.enemies,stage.stage_number);
+                    if(std::find(stage.ecl_animation_names.begin(),stage.ecl_animation_names.end(),name)==stage.ecl_animation_names.end())names.emplace_back(name);
+                }
+            }
+            if(!names.empty()){
+                std::vector<const char*> pointers;for(const auto& name:names)pointers.push_back(name.c_str());
+                // The import copies names before returning. It never holds an
+                // Asyncify stack open while the independent CPU worker runs.
+                th14_webgpu_archive_schedule(run_initial_stage_work,new BootWorkToken{this,boot_worker_generation,work,index},pointers.data(),u32(pointers.size()));
+                return;
+            }
+        }
+#endif
         schedule_th14_work(run_initial_stage_work,new BootWorkToken{this,boot_worker_generation,work,index},delay);
     }
     void dispatch_initial_upload_resume(u32 index){
@@ -454,6 +497,11 @@ struct Application:StageResourceEffects
             app.dispatch_initial_stage_work(BootWork::InitialDecode,step,0);return;
         }
         if(token->work!=BootWork::InitialDecode){app.error="Invalid TH14 initial worker task";app.boot_worker_failed=true;return;}
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+        if(!th14_webgpu_archive_status()){
+            app.error="TH14 background archive decode failed";app.boot_worker_failed=true;return;
+        }
+#endif
         auto fail=[&](){app.error="TH14 initial resource "+last_resource+": "+app.resources.error();app.boot_worker_failed=true;};
         u32 step=token->index;
         if(step==0){
@@ -464,7 +512,16 @@ struct Application:StageResourceEffects
             if(!app.resources.load_stage_hud(stage.stage_number,stage,selection)){fail();return;}
             app.boot_uploads.push_back({&stage.logo,6});
         }else{
-            if(step==2){if(!app.resources.load_stage_timeline_plan(stage.stage_number,stage)){fail();return;}step=3;}
+            if(step==2){
+                if(!app.resources.load_stage_timeline_plan(stage.stage_number,stage)){fail();return;}
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+                // ANIM names become available only after parsing ECL. Decode
+                // that next dependency in the worker, without a fixed frame wait.
+                app.dispatch_initial_stage_work(BootWork::InitialDecode,3,0);return;
+#else
+                step=3;
+#endif
+            }
             if(step<3||step>7){app.error="Invalid TH14 initial decode step";app.boot_worker_failed=true;return;}
             u32 slot=step-3;
             while(slot<stage.ecl_animations.size()&&stage.ecl_animation_names[slot].empty())++slot;
@@ -643,6 +700,9 @@ struct Application:StageResourceEffects
         std::printf("[clock14] monotonic ticks=%u; initial seed=%u\n",initial_ticks,u32(u16(initial_ticks)));
 #endif
         if(!read_archive()){if(error.empty())error=resources.error();return false;}
+#if PORT_TITLE == 14 && defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+        if(!th14_webgpu_archive_open(archive.data(),u32(archive.size()))){error="Unable to start TH14 background archive decoder";return false;}
+#endif
         if(!audio.initialize(resources)){error=audio.error;return false;}
         if(!fonts.initialize(
 #if PORT_TITLE==14

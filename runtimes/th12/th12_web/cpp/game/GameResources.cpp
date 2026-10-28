@@ -2,6 +2,12 @@
 #include "StageFiles.hpp"
 #include "PortTitle.hpp"
 #include <cstdio>
+#if PORT_TITLE == 14 && defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+extern "C" {
+int th14_webgpu_archive_size(const char* name);
+int th14_webgpu_archive_copy(const char* name,void* destination,unsigned size);
+}
+#endif
 #if defined(TH_NATIVE_PLATFORM) && defined(TH_ENABLE_THCRAP)
 #include <SDL3/SDL.h>
 #endif
@@ -65,6 +71,18 @@ bool GameResources::read(const std::string& name, std::vector<u8>& data) {
             SDL_free(bytes);
             return true;
         }
+    }
+#endif
+#if PORT_TITLE == 14 && defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+    // A background batch owns immutable decoded bytes only while its loading
+    // callback runs. Entries outside that batch keep the ordinary archive path.
+    const int prefetched=th14_webgpu_archive_size(name.c_str());
+    if(prefetched < -1)return fail("background archive decode failed");
+    if(prefetched>=0){
+        data.resize(u32(prefetched));
+        if(!th14_webgpu_archive_copy(name.c_str(),data.data(),u32(data.size())))
+            return fail("background archive delivery failed");
+        return true;
     }
 #endif
     if (!archive.read(found->second, data)) return fail("resource decode failed");
