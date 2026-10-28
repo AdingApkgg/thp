@@ -35,7 +35,10 @@ def main():
     assert pv['complete']and pv['comparedValues']==303 and len(pv['rows'])==pv['expected']
     state=pr['actions'][-1]['state'];rng=struct.unpack('<HHIHHI',bytes.fromhex(s['rngHex']))
     assert state[0]==1 and state[1]==s['stage']and state[6]==s['stageFrame']
-    assert c['referenceState'][:7]==[s['originalInitialTicks'],s['originalProcessCookie'],s['idleCounter'],rng[0],rng[2],rng[3],rng[5]]
+    assert c['referenceState'][:3]==[s['originalInitialTicks'],s['originalProcessCookie'],s['idleCounter']]
+    native_rng=[rng[0],rng[2],rng[3],rng[5]]
+    port_rng=c['referenceState'][3:7]
+    rng_equal=native_rng==port_rng
     globals_=s['selectedGlobalWords'];selected={'character':(globals_[0],state[13]),'subtype':(globals_[1],state[14]),
         'difficulty':(globals_[3],state[15]),'scoreUnits':(globals_[2],state[9]),'power':(globals_[12],state[8]),'lives':(globals_[15],state[7])}
     selected_equal=all(x==y for x,y in selected.values())
@@ -67,10 +70,12 @@ def main():
             for field,x,y in zip(fields,native_words[row['handle']],port_serial[serial]):
                 if field in links:x=remap.get(x,x)
                 if x!=y:diagnostic.append(dict(serial=serial,file=row['file'],script=row['script'],field=field,native=x,port=y))
-    exact=selected_equal and not differences and not strict and not extra and order
+    exact=rng_equal and selected_equal and not differences and not strict and not extra and order
     report=dict(strictAllSelectedStateLiveVmsAndPixelsEqual=exact,actualNativeGameFrame=True,
         nativePresent=s['ordinal'],stage=s['stage'],nativeControllerFrame=s['stageFrame'],portBattleFrame=state[6],portApplicationFrame=pr['frames'],
-        externalStartupInputsAndBothRngEqual=True,selectedFields=selected,selectedFieldsEqual=selected_equal,
+        externalStartupInputsAndBothRngEqual=rng_equal,externalStartupInputsEqual=True,
+        bothRngEqual=rng_equal,nativeRngWords=native_rng,portRngWords=port_rng,
+        selectedFields=selected,selectedFieldsEqual=selected_equal,
         nativeLiveVms=len(nv['rows']),portLiveVms=len(pv['rows']),wordsPerVm=303,
         strictVmDifferences=strict,strictExtraPortHandles=extra,strictRegistryOrderEqual=order,
         pixelBytesCompared=1228800,pixelDifferentBytes=len(differences),pixelDifferentPixels=len(pixels),pixelDifferenceBounds=bounds,

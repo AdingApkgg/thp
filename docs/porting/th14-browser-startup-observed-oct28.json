@@ -1,0 +1,288 @@
+{
+  "actualBrowserFiniteUiObserved": true,
+  "ordinaryBrowserScope": [
+    "startup",
+    "Normal/Reimu-A selection",
+    "first stage",
+    "pause and resume",
+    "natural early game over",
+    "score-name completion",
+    "return to title",
+    "page reload",
+    "Launcher score download"
+  ],
+  "browser": "Chromium156 on Windows; in-app browser",
+  "quietByDefault": true,
+  "startupFailureRetained": true,
+  "fix": "Export requestFullscreen in Emscripten runtime methods so SDL3 can assign it during video initialization",
+  "unchangedGameplayWasmSha256": "35e69e59c0d31bf08e73cefc67ba18ba681af5d421c26de6fe76bda91adae3bd",
+  "compiledCppUnits": 0,
+  "reusedObjects": 146,
+  "transportRoutes": 133,
+  "httpChecks": 21,
+  "observedPreviewUrl": "http://127.0.0.1:8230/?game=th14",
+  "scoreAfterReloadBytes": 21656,
+  "scoreDecodedBytes": 149076,
+  "scoreRoundtripAndOriginalCodecEqual": true,
+  "displayedSavedNormalReimuAScore": 124431,
+  "screenshots": [
+    {
+      "label": "fullscreen-getter-failure",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "1042d1530e63ab16e9dcd90017cfec5cdcb264d7d02ae905de299c52d9398f26"
+    },
+    {
+      "label": "ordinary-selection",
+      "width": 1280,
+      "height": 720,
+      "sha256": "46d9aa83bc482a99f45539b585cb220fd0e1318a1c9ad42134cfc2e848f9ba08"
+    },
+    {
+      "label": "normal-first-stage",
+      "width": 1280,
+      "height": 720,
+      "sha256": "c1fdea1d74d57780c5b871b6b19a071eb1fc4fb8424dbca9dfd90e032e0cacc2"
+    },
+    {
+      "label": "ordinary-pause-menu",
+      "width": 1280,
+      "height": 720,
+      "sha256": "40ad499687f85fcf9b609db8f3b3c63451e8957c8309962c0afdcffc7cf260bb"
+    },
+    {
+      "label": "ordinary-game-over",
+      "width": 1280,
+      "height": 720,
+      "sha256": "4b8f538fc5891d1eaf767ac7d88013cd45f4e68d5b08a8051c23e387933fff7a"
+    },
+    {
+      "label": "persisted-score-export",
+      "width": 1280,
+      "height": 720,
+      "sha256": "7f90efb275c15256de18391a2630b157828703ebddbb1afb7e42b460f4453f41"
+    }
+  ],
+  "currentGlesFullReplayFrames": 123412,
+  "currentGlesFullReplayAssertions": 44,
+  "currentWebGpuFullReplayPassed": false,
+  "standaloneCpuWorkerEntries": 227,
+  "standaloneCpuWorkerDecodedBytes": 253480939,
+  "workerIntegratedIntoGame": false,
+  "originalCpuWorkerBoundaries": 11,
+  "thirdNativeGameplayFrameStillStrictlyFailed": true,
+  "originalOrdinaryUiEquivalence": false,
+  "originalWholeApplicationPixelsOrPcmCompared": false,
+  "completeBrowserAcceptance": false,
+  "replaySaveAndReloadNotAccepted": true,
+  "physicalAudioAcceptance": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "verifierSha256": "4490651b1a060fab896d0ae3c32aaf1af1b46e1b401086948f2bd749bcef11a5",
+  "bindings": {
+    "artifacts/th14/native-frame-readback-oct28/fullscreen-runtime-delivery/browser-candidate/build.json": {
+      "bytes": 96647,
+      "sha256": "b4d1444589af72d1d96a13e093a26b120812b6d287908d5056cf63acd6852330"
+    },
+    "artifacts/th14/native-frame-readback-oct28/fullscreen-runtime-delivery/launcher-candidate/transport.json": {
+      "bytes": 13381,
+      "sha256": "037292393e352ada70c4c5a72b9dd8593c9dbb1d8514a6d7ebddf891ff1f27c7"
+    },
+    "artifacts/th14/native-frame-readback-oct28/fullscreen-runtime-delivery/browser-candidate/build-tool.py": {
+      "bytes": 11418,
+      "sha256": "d56167e419035f957a6944e91877dd2a92c3fe406a874a8f8e030d2b6cf3bbe8"
+    },
+    "artifacts/th14/native-frame-readback-oct28/browser-startup/fullscreen-getter-failure.jpg": {
+      "bytes": 32363,
+      "sha256": "1042d1530e63ab16e9dcd90017cfec5cdcb264d7d02ae905de299c52d9398f26"
+    },
+    "artifacts/th14/native-frame-readback-oct28/browser-startup/ordinary-selection.jpg": {
+      "bytes": 51468,
+      "sha256": "46d9aa83bc482a99f45539b585cb220fd0e1318a1c9ad42134cfc2e848f9ba08"
+    },
+    "artifacts/th14/native-frame-readback-oct28/browser-startup/normal-first-stage.jpg": {
+      "bytes": 53876,
+      "sha256": "c1fdea1d74d57780c5b871b6b19a071eb1fc4fb8424dbca9dfd90e032e0cacc2"
+    },
+    "artifacts/th14/native-frame-readback-oct28/browser-startup/ordinary-pause-menu.jpg": {
+      "bytes": 52172,
+      "sha256": "40ad499687f85fcf9b609db8f3b3c63451e8957c8309962c0afdcffc7cf260bb"
+    },
+    "artifacts/th14/native-frame-readback-oct28/browser-startup/ordinary-game-over.jpg": {
+      "bytes": 53777,
+      "sha256": "4b8f538fc5891d1eaf767ac7d88013cd45f4e68d5b08a8051c23e387933fff7a"
+    },
+    "artifacts/th14/native-frame-readback-oct28/browser-startup/persisted-score-export.jpg": {
+      "bytes": 40013,
+      "sha256": "7f90efb275c15256de18391a2630b157828703ebddbb1afb7e42b460f4453f41"
+    },
+    "artifacts/th14/native-frame-readback-oct28/browser-startup/persisted-score-export-ax.txt": {
+      "bytes": 564,
+      "sha256": "4639a712884d0d8124f557c08b32c795f748610e3c8c2ab8aa9ca5db7b31e28d"
+    },
+    "artifacts/th14/native-frame-readback-oct28/browser-startup/persisted-score/production.json": {
+      "bytes": 2430,
+      "sha256": "1b77248b24fb8488ccd7c164e915c55313ef61b5ce76960355bd1386bd597ca1"
+    },
+    "artifacts/th14/native-frame-readback-oct28/browser-startup/persisted-score/native/native.json": {
+      "bytes": 778,
+      "sha256": "aec6f28d0fa6ae32c6f92373d42321e84ddb2b6d1b7fef32985b92832e76cfe3"
+    },
+    "artifacts/th14/native-frame-readback-oct28/browser-startup/persisted-score/browser-export.dat": {
+      "bytes": 21656,
+      "sha256": "ed92a752b5fc74288a87d74588a94b5292fbc2a69ef1b5394590693012dce50d"
+    },
+    "artifacts/th14/native-frame-readback-oct28/browser-startup/persisted-score/production.raw": {
+      "bytes": 149076,
+      "sha256": "2cf11d16235d79638d5bf8923d69437c2fa40796c4cbc901a2420865629dc48e"
+    },
+    "artifacts/th14/native-frame-readback-oct28/browser-startup/persisted-score/native/retail-loaded.raw": {
+      "bytes": 149076,
+      "sha256": "2cf11d16235d79638d5bf8923d69437c2fa40796c4cbc901a2420865629dc48e"
+    },
+    "artifacts/th14/native-frame-readback-oct28/browser-startup/persisted-score/native/retail-rewritten.dat": {
+      "bytes": 21656,
+      "sha256": "ed92a752b5fc74288a87d74588a94b5292fbc2a69ef1b5394590693012dce50d"
+    },
+    "artifacts/th14/native-frame-readback-oct28/browser-startup/verify-exported-score.py": {
+      "bytes": 3429,
+      "sha256": "4af0b586e858389fd071b53ccc6c822affbec499a159ab1302e687c579b7fce4"
+    },
+    "tools/th14-browser-score-native.py": {
+      "bytes": 3359,
+      "sha256": "56309948ab3d3d2ef270bb0534dc765e6b4d76da989494c965a98ef0eb6ce3e1"
+    },
+    "artifacts/th14/native-frame-readback-oct28/browser-startup/persisted-score/fixture.cpp": {
+      "bytes": 2831,
+      "sha256": "657306034afda880cfd9caf3b28e49076e99ae13c5b0287e6167ceddea0e1880"
+    },
+    "artifacts/th14/native-frame-readback-oct28/browser-startup/persisted-score/command.json": {
+      "bytes": 16612,
+      "sha256": "7b2beebe78dc4186bc6c7df70bce136af2397489f54c2c41ca9578c82ecfbb95"
+    },
+    "artifacts/th14/native-frame-readback-oct28/browser-startup/persisted-score/score.wasm": {
+      "bytes": 811043,
+      "sha256": "62d497f88c279f6ec9ee34471967ab1abc6bc68695788d4bd4c0f600f51f88e4"
+    },
+    "docs/porting/th14-current-full-replay-verified-oct28.json": {
+      "bytes": 69319,
+      "sha256": "5c74be1ecba9d2b12a2e3e9cdf42d5b785e2d274c3be1ed70513bbfc32124233"
+    },
+    "tools/th14-application-full-replay-evidence-oct28.py": {
+      "bytes": 12496,
+      "sha256": "f2b0dd9089dbe26cd4610108feffb74b3d77da27d04db5767a98ad601267a96c"
+    },
+    "artifacts/th14/native-frame-readback-oct27/archive-worker-public-v2/build.json": {
+      "bytes": 2529,
+      "sha256": "fa84ca025e8bda826aefd559eb624ba22d30aa9c75c163efddc69a5b0778ffa8"
+    },
+    "artifacts/th14/native-frame-readback-oct27/archive-worker-public-v2/check.json": {
+      "bytes": 35560,
+      "sha256": "c9fab15982d29a414af323bc156cc3f18b66b2c0dc3e6b766a84e70800ac76b7"
+    },
+    "artifacts/th14/native-frame-readback-oct27/archive-worker-public-v2/archive-decoder.cpp": {
+      "bytes": 1475,
+      "sha256": "12f1bd9471bb971a855fe18136561a58e086eb1963374da80a460815e38d5bcf"
+    },
+    "artifacts/th14/native-frame-readback-oct27/archive-worker-public-v2/archive-decode-client.mjs": {
+      "bytes": 2794,
+      "sha256": "8fedb590293be96931495884f0f947276c649a0bed3b2701d56f5f6dfde017d5"
+    },
+    "artifacts/th14/native-frame-readback-oct27/archive-worker-public-v2/archive-decode-endpoint.mjs": {
+      "bytes": 3189,
+      "sha256": "1d12680e015e9cff3afc3cc872ba2fbde6cbeed016382880d83be3489be2ef33"
+    },
+    "artifacts/th14/native-frame-readback-oct27/archive-worker-public-v2/archive-decode-worker.mjs": {
+      "bytes": 851,
+      "sha256": "0c525dbda758e49fbb99e57729828209929da38369bf91635dbee5e46d467211"
+    },
+    "artifacts/th14/native-frame-readback-oct27/archive-worker-public-v2/archive-decoder.wasm": {
+      "bytes": 25105,
+      "sha256": "3d97c7dc2acd4c4c864788b228bf5725d39b053b1acb87ca611c3cf7f25d729e"
+    },
+    "artifacts/th14/native-frame-readback-oct27/archive-worker-public-v2/archive-decoder.mjs": {
+      "bytes": 9636,
+      "sha256": "cc1bff3643276c92ded7241ac1b007d080b541190c3317eea0d66a3051dc15ed"
+    },
+    "artifacts/th14/native-frame-readback-oct27/archive-worker-public-v2/run-check.mjs": {
+      "bytes": 7771,
+      "sha256": "a17be38ceececaddf315a206bc838c48234af69456aa938a749f5d1f9191ae26"
+    },
+    "artifacts/th14/native-frame-readback-oct27/archive-worker-public-v2/build-tool.py": {
+      "bytes": 4009,
+      "sha256": "54480a58ddaec3a41da4fcbe5f6d9e34e136e6070844da13e9c1cf1e09ed5ad6"
+    },
+    "artifacts/th14/native-frame-readback-oct27/archive-worker-public-v2/storage-tool.py": {
+      "bytes": 2614,
+      "sha256": "246d005db6ff6cc9dcb12da8244bdbc4fe1505a1bb2802fa8c54c87471ce8df0"
+    },
+    "artifacts/th14/native-frame-readback-oct27/archive-worker-public-v2/source/Archive.cpp": {
+      "bytes": 6815,
+      "sha256": "18ddd5a4b212d02c13d79d3b2958889bb3513301c1ed7656825822f77e21d8fe"
+    },
+    "artifacts/th14/native-frame-readback-oct27/archive-worker-public-v2/source/Archive.hpp": {
+      "bytes": 967,
+      "sha256": "6a89a3b3ff5fa6f3c56efc01398ada4906fd021699a78b43a13220f75a90933a"
+    },
+    "artifacts/th14/native-frame-readback-oct27/archive-worker-public-v2/source/ResourceCrypt.cpp": {
+      "bytes": 3228,
+      "sha256": "d57118f1114f3909c42a2e99e7df30e625f6563247a8118cd14bb9f68a0f97ef"
+    },
+    "artifacts/th14/native-frame-readback-oct27/archive-worker-public-v2/source/ResourceCrypt.hpp": {
+      "bytes": 1099,
+      "sha256": "dba560d8380ef04611c41da473972aaa30f9725afe9bdb49709b8dbfa9ccda27"
+    },
+    "artifacts/th14/native-frame-readback-oct27/archive-worker-public-v2/source/Lzss.cpp": {
+      "bytes": 4459,
+      "sha256": "7bf9b34043ee21f6e23244369069b2807314f3d7ddf7f37a556b34780afa4e48"
+    },
+    "artifacts/th14/native-frame-readback-oct27/archive-worker-public-v2/source/Lzss.hpp": {
+      "bytes": 1223,
+      "sha256": "df264a260821a4cbc8ec60e46b02f15ad0eb00bf998a8d6ad5260622f8224290"
+    },
+    "artifacts/th14/native-frame-readback-oct27/archive-worker-public-v2/source/Types.hpp": {
+      "bytes": 613,
+      "sha256": "f79c1ed7cb200413ef0dea75bf0d58842745b6b47182a97e496733c1d7bb2669"
+    },
+    "tools/th14-archive-worker/archive-decoder.cpp": {
+      "bytes": 1475,
+      "sha256": "12f1bd9471bb971a855fe18136561a58e086eb1963374da80a460815e38d5bcf"
+    },
+    "tools/th14-archive-worker/archive-decode-client.mjs": {
+      "bytes": 2794,
+      "sha256": "8fedb590293be96931495884f0f947276c649a0bed3b2701d56f5f6dfde017d5"
+    },
+    "tools/th14-archive-worker/archive-decode-endpoint.mjs": {
+      "bytes": 3189,
+      "sha256": "1d12680e015e9cff3afc3cc872ba2fbde6cbeed016382880d83be3489be2ef33"
+    },
+    "tools/th14-archive-worker/archive-decode-worker.mjs": {
+      "bytes": 851,
+      "sha256": "0c525dbda758e49fbb99e57729828209929da38369bf91635dbee5e46d467211"
+    },
+    "artifacts/th14/native-frame-readback-oct27/archive-worker-public/check.json": {
+      "bytes": 526,
+      "sha256": "c39ae8ecd1100493ea01c4f1333a22bf8fb47108d9aaacd0b885e530f60e1b3a"
+    },
+    "artifacts/th14/native-frame-readback-oct27/initial-cpu-worker-boundaries/report.json": {
+      "bytes": 823237,
+      "sha256": "9ca9e6d408534eb8bc8fc25041a83ac6f45103aaa0d92aed52440f0aea313183"
+    },
+    "artifacts/th14/native-frame-readback-oct27/initial-cpu-worker-boundaries/run-tool.py": {
+      "bytes": 34453,
+      "sha256": "e3d6526f97ce0d5e4bfadb52cc617863f98b9a919ea2dc3f6f158bcee85f3cf3"
+    },
+    "artifacts/th14/native-frame-readback-oct27/initial-cpu-worker-boundaries/stage-worker-boundaries.jsonl": {
+      "bytes": 127136,
+      "sha256": "6ca82e41eed6e47616fcaa689a177699e699e140f499c94f5fd5330bb5250d4d"
+    },
+    "artifacts/th14/native-frame-readback-oct27/initial-cpu-worker-boundaries/resource-pump-entries.jsonl": {
+      "bytes": 221847,
+      "sha256": "7875400a088a6baaea92a8a3bd3d5ba3c6938709d94d3341fd1436adfb91f4e2"
+    },
+    "artifacts/th14/native-frame-readback-oct27/initial-cpu-worker-strict-v2.json": {
+      "bytes": 96299,
+      "sha256": "e3d6f8f65b5c61bd11258f2ece4b71f715922e285edbda2265bda9401b30b1bf"
+    }
+  }
+}

@@ -244,7 +244,11 @@ try:
   if 'component_live_state'in api:
    pointer=api['component_live_state'](store)
    complete,count,expected,width=struct.unpack('<4I',mem.read(store,pointer,pointer+16))
-   assert complete==1 and count==expected and count<=8192 and width==303
+   if not(complete==1 and count==expected and count<=8192 and width==303):
+    failure=dict(frame=frame_index,label=label,complete=complete,count=count,expected=expected,width=width,
+     state=state_now(),referenceState=observed,readOnly=True)
+    (O/(label+'-live-failure.json')).write_text(json.dumps(failure,indent=2)+'\n')
+    raise AssertionError('Live VM observation incomplete: '+json.dumps(failure))
    raw=bytes(mem.read(store,pointer+16,pointer+16+count*width*4))
    assert len(raw)==count*width*4
    live_name=label+'-live.json'

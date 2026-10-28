@@ -113,7 +113,10 @@ def main():
                   '-sFILESYSTEM=1','-lidbfs.js','-sEXIT_RUNTIME=0','-sINVOKE_RUN=0','-sASSERTIONS=1',
                   '-sASYNCIFY=1','-sASYNCIFY_STACK_SIZE=65536',
                   '-sINCOMING_MODULE_JS_API=canvas,instantiateWasm,noInitialRun,locateFile,print,printErr,onRuntimeInitialized,onAbort,wasmBinary,wasmMemory,preRun,postRun',
-                  '-sEXPORTED_RUNTIME_METHODS=FS,IDBFS,HEAPU8,HEAP32,HEAPU32,ccall','-sMIN_WEBGL_VERSION=2','-sMAX_WEBGL_VERSION=2',
+                  # SDL3 installs Module.requestFullscreen during video init.
+                  # Leaving it unexported makes ASSERTIONS install a getter
+                  # without a setter, so SDL's assignment aborts startup.
+                  '-sEXPORTED_RUNTIME_METHODS=FS,IDBFS,HEAPU8,HEAP32,HEAPU32,ccall,requestFullscreen','-sMIN_WEBGL_VERSION=2','-sMAX_WEBGL_VERSION=2',
                   '-sGL_SUPPORT_AUTOMATIC_ENABLE_EXTENSIONS=0','-sEXPORTED_FUNCTIONS='+','.join('_'+name for name in exports),
                   '--js-library',str(source/'portable/sdl/Th14WebGpuLibrary.js')]
     (out/'progress.json').write_text(json.dumps(dict(phase='link',compiled=len(compiled),total=len(units)))+'\n')

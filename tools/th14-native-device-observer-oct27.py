@@ -28,6 +28,7 @@ def main():
     parser.add_argument('--trace-publications',action='store_true',help='Read animation handle publications using the original serial-counter hardware watchpoint')
     parser.add_argument('--trace-resource-pump',action='store_true',help='Read resource slots and startup-ready flags at main resource pump entry')
     parser.add_argument('--trace-startup-ready',action='store_true',help='Read worker queue, signature/ASCII-ready and title-retirement publication boundaries')
+    parser.add_argument('--trace-stage-worker',action='store_true',help='Read first stage CPU worker boundaries and option VMs; hardware observations perturb scheduling and do not prescribe port delays')
     parser.add_argument('--d3d9-header',type=Path,default=Path('C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/shared/d3d9.h'))
     args=parser.parse_args();assert 1<=args.maximum_seconds<=120
     stage_capture=args.capture_stage_frame is not None
@@ -40,6 +41,7 @@ def main():
     assert not args.trace_publications or args.capture_present>0
     assert not args.trace_resource_pump or args.capture_present>0
     assert not args.trace_startup_ready or args.capture_present>0
+    assert not args.trace_stage_worker or (stage_capture and not args.trace_publications)
     home=args.output.resolve();assert home.is_relative_to(ROOT/'artifacts/th14')
     home.mkdir(parents=True,exist_ok=False);(home/'run-tool.py').write_bytes(Path(__file__).read_bytes())
     storage=module('device_storage',ROOT/'tools/th14-test-storage.py')
@@ -57,6 +59,10 @@ def main():
         traceAnimationPublications=args.trace_publications,maximumPublications=1024,
         traceMainResourcePump=args.trace_resource_pump,maximumResourcePumpEntries=1200,
         traceStartupReadyBoundaries=args.trace_startup_ready,maximumStartupBoundaries=128,
+        traceStageWorkerBoundaries=args.trace_stage_worker,maximumStageWorkerBoundaries=12,
+        stageWorkerHardwareObservationPerturbsScheduling=bool(args.trace_stage_worker),
+        stageWorkerBoundaryPcs=[0x435e17,0x435e22,0x435ed0,0x435ee4,0x435efa,
+            0x435fba,0x435fc3,0x435fcc,0x436049,0x436053,0x436060]if args.trace_stage_worker else [],
         originalThreadContextRedirectDeclared=bool(args.capture_present),
         extraD3dReadbackCallsDeclared=bool(args.capture_present),gameNeverResumesAfterDiagnosticReadback=bool(args.capture_present),
         originalCodeWrites=0,gameStateWrites=0,inputInjection=False,silent=True,
@@ -112,6 +118,9 @@ def main():
     serial_manager=0;publication_pending={};publications=[]
     resource_pumps=[]
     startup_phases={};startup_boundaries=[]
+    stage_worker_pcs=(0x435e17,0x435e22,0x435ed0,0x435ee4,0x435efa,
+        0x435fba,0x435fc3,0x435fcc,0x436049,0x436053,0x436060)
+    stage_worker_index=0;stage_worker_tid=0;stage_worker_boundaries=[]
     serial_after_to_publish={0x47e90f:(0x47e938,'edi'),0x47e918:(0x47e938,'edi'),
         0x47e9b8:(0x47e9e1,'esi'),0x47e9c1:(0x47e9e1,'esi'),
         0x47ea6f:(0x47ea98,'edi'),0x47ea78:(0x47ea98,'edi'),
@@ -147,6 +156,8 @@ def main():
             if args.trace_publications:
                 addresses[1]=serial_manager+0xff52c8 if serial_manager else 0x47e938
                 addresses[2]=publication_pending[tid]['publishPc']if tid in publication_pending else 0
+            elif args.trace_stage_worker and tid!=present_tid and stage_worker_index<len(stage_worker_pcs):
+                if not stage_worker_tid or tid==stage_worker_tid:addresses[1]=stage_worker_pcs[stage_worker_index]
             if args.trace_resource_pump and tid==present_tid:addresses[3]=0x47d720
             elif args.trace_startup_ready and tid!=present_tid:addresses[3]=startup_phases.get(tid,0x47d0ec)
         else:addresses=[*selected_groups[tid],pending[tid]['returnPc']if tid in pending else 0]if tid in selected_groups else[0x46b110,0x46b1a0,0,0]
@@ -188,6 +199,35 @@ def main():
             slots=slots,hostMonotonicNs=time.monotonic_ns(),readOnly=True)
         resource_pumps.append(row)
         with (home/'resource-pump-entries.jsonl').open('a')as stream:stream.write(json.dumps(row)+'\n')
+    def record_stage_worker_boundary(tid,pc,regs):
+        nonlocal stage_worker_index,stage_worker_tid
+        assert len(stage_worker_boundaries)<12 and pc==stage_worker_pcs[stage_worker_index]
+        assert not stage_worker_tid or stage_worker_tid==tid
+        stage_worker_tid=tid
+        manager=u32(0x4f56cc);controller=u32(0x4db558);options=[];visited=set()
+        if manager:
+            for group,offset in enumerate((0xfe8208,0xfe8210)):
+                node=u32(manager+offset)
+                while node:
+                    assert node not in visited and len(visited)<8192
+                    visited.add(node);vm=u32(node);assert vm+0x570==node
+                    blob=read(vm,0x5cc)
+                    file=struct.unpack_from('<H',blob,0x36)[0]
+                    script=struct.unpack_from('<h',blob,0x4aa)[0]
+                    if file==9 and script==10:
+                        word=lambda at:struct.unpack_from('<I',blob,at)[0]
+                        options.append(dict(handle=word(0x540),file=file,script=script,group=group,
+                            ageCurrent=word(0x560),timerCurrent=word(0x54c),rawVmHex=blob.hex()))
+                    node=u32(node+4)
+        row=dict(ordinal=len(stage_worker_boundaries)+1,pc=pc,threadId=tid,
+            precedingPresentEntries=present_count,hostMonotonicNs=time.monotonic_ns(),
+            controller=controller,controllerFrame=u32(controller+0x14)if controller else None,
+            controllerFlags=u32(controller+0x80)if controller else None,
+            stage=u32(0x4f58a4),gameFlags=u32(0x4f58b8),player=u32(0x4db67c),
+            rngHex=read(0x4db508,16).hex(),optionVms=options,readOnly=True,
+            hardwareObservationPerturbsScheduling=True)
+        stage_worker_boundaries.append(row);stage_worker_index+=1
+        with (home/'stage-worker-boundaries.jsonl').open('a')as stream:stream.write(json.dumps(row)+'\n')
     def record_startup_boundary(tid,pc,regs):
         assert len(startup_boundaries)<128
         owner=u32(0x4db668)
@@ -289,6 +329,9 @@ def main():
                         dr6=struct.unpack_from('<I',data,20)[0]
                         if present_pc and args.trace_resource_pump and pc==0x47d720:
                             record_resource_pump(ev.tid);install(ev.tid,True)
+                        elif present_pc and args.trace_stage_worker and stage_worker_index<len(stage_worker_pcs)and pc==stage_worker_pcs[stage_worker_index]:
+                            record_stage_worker_boundary(ev.tid,pc,regs)
+                            for other in tuple(threads):install(other,other==ev.tid)
                         elif present_pc and args.trace_startup_ready and pc in (0x47d0ec,0x4441a8,0x444222,0x4595e1,0x459615):
                             record_startup_boundary(ev.tid,pc,regs);install(ev.tid,True)
                         elif present_pc and args.trace_publications and serial_manager and dr6&2:
@@ -334,6 +377,7 @@ def main():
                                 emit(snapshot)
                             if present_count==args.capture_present:
                                 assert not stage_capture or plan['captureStageTriggerObserved'],'Declared controller frame was not reached before the Present budget'
+                                assert not args.trace_stage_worker or stage_worker_index==len(stage_worker_pcs),'Declared stage CPU worker boundaries were not all observed'
                                 if args.snapshot_vms:snapshot_live_animations()
                                 begin_readback(ev.tid,data)
                             else:install(ev.tid,True)
@@ -395,6 +439,8 @@ def main():
             animationPublications=publications,animationPublicationCounterHardwareWatch=bool(serial_manager),
             mainResourcePumpEntries=resource_pumps,
             startupReadyBoundaries=startup_boundaries,
+            stageWorkerBoundaries=stage_worker_boundaries,
+            stageWorkerBoundariesComplete=bool(args.trace_stage_worker and stage_worker_index==len(stage_worker_pcs)),
             nativeStageProgress=stage_progress,nativeTitleReference=title_reference,
             normalizedInputWords='ordinal,held,pressed,released; observed at Present only, not physical input events',
             diagnosticPrivateCodeAllocated=readback_program is not None,gameNeverResumedAfterReadback=bool(readback_program),

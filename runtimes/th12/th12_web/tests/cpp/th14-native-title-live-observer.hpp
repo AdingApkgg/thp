@@ -24,9 +24,10 @@ auto& manager=session.animations;expected=manager.active_count();
 
  std::vector<u32> seen;
 
- for(u32 layer=0;layer<36;++layer){auto* seed=manager.layer_first(layer);if(!seed)continue;
-
-  auto* node=&seed->registry;u32 back=0;while(node->previous){node=node->previous;if(++back>8192)return;}
+ // Creation publishes into a registry before the next animation update
+ // builds draw layers. A menu born at this boundary can have no layer seed.
+ // The diagnostic fixture uses -fno-access-control for these read-only heads.
+ for(u32 group=0;group<2;++group){auto* node=manager.heads[group];
 
   for(u32 budget=0;node&&budget<8192;node=node->next,++budget){
 
