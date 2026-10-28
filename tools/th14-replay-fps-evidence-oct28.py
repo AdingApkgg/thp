@@ -4,7 +4,7 @@ The strict positive cases declare original resource readiness as an external
 component input. They cannot establish independent production scheduling.
 """
 from pathlib import Path
-import argparse,hashlib,json,struct
+import argparse,hashlib,importlib,json,struct,sys
 
 ROOT=Path(__file__).resolve().parents[1]
 HOME=ROOT/'artifacts/th14/native-frame-readback-oct28'
@@ -17,12 +17,16 @@ def evidence():
         path=path.resolve(strict=True);assert path.is_relative_to(ROOT)
         b=path.read_bytes();bindings[path.relative_to(ROOT).as_posix()]=dict(bytes=len(b),sha256=SHA(b));return b
     def load(path):return json.loads(raw(path))
-    component=load(HOME/'replay-fps-text-component-v2/report.json')
-    assert component['passed']and component['cases']==2048 and component['queuedCases']==256
+    component=load(HOME/'replay-fps-text-component-v3/report.json')
+    assert component['passed']and component['cases']==8192 and component['queuedCases']==512
     assert all(x['passed']for x in component['rows'])
     assert component['toolSha256']==SHA(raw(ROOT/'tools/th14-replay-fps-text-oct28.py'))
     header=ROOT/'runtimes/th12/th12_web/cpp/game/ReplayTextTh14.hpp'
     assert component['productionHeaderSha256']==SHA(raw(header))
+    sys.path.insert(0,str(ROOT/'tools'));image,*_=importlib.import_module('th-anm-handlers').handlers(14)
+    assert SHA(image.data)==component['nativeExecutableSha256']
+    assert image.read(0x454b13,2)==bytes.fromhex('6a3e')
+    assert image.read(0x455eb9,7)==bytes.fromhex('f6808000000004')
     native_home=HOME/'inline-ecl-worker-boundaries-v2';n=load(native_home/'report.json')
     assert n['childExited']and n['frameReadbackCompleted']and not n['error']
     assert n['sourceSha256']==SHA(raw(native_home/'run-tool.py'))==SHA(raw(ROOT/'tools/th14-native-device-observer-oct27.py'))
@@ -47,13 +51,13 @@ def evidence():
         assert d['bothRngEqual']and d['strictRegistryOrderEqual']and not d['strictExtraPortHandles']
         failures[name]=dict(strictVmDifferenceWords=vm_count,pixelDifferentPixels=pixels,pixelDifferentBytes=byte_count)
     positives=[]
-    core=load(HOME/'replay-fps-core/observer-build.json')
+    core=load(HOME/'replay-fps-core-v2/observer-build.json')
     session_path='runtimes/th12/th12_web/cpp/game/GameSession.cpp';session_sha=SHA(raw(ROOT/session_path))
     assert core['sourceHashes']['th12_web/cpp/game/GameSession.cpp']==session_sha
     assert core['headerHashes']['th12_web/cpp/game/ReplayTextTh14.hpp']==component['productionHeaderSha256']
     for backend in ('gles','webgpu'):
-        control=HOME/f'replay-fps-{backend}-availability';port=control/'run'
-        d=load(HOME/f'replay-fps-{backend}-availability-strict.json')
+        control=HOME/f'replay-fps-{backend}-availability-v2';port=control/'run'
+        d=load(HOME/f'replay-fps-{backend}-availability-v2-strict.json')
         assert d['strictAllSelectedStateLiveVmsAndPixelsEqual']and d['noPixelToleranceOrFpsNormalization']
         assert d['nativeLiveVms']==d['portLiveVms']==334 and d['wordsPerVm']==303
         assert d['bothRngEqual']and d['selectedFieldsEqual']and d['strictRegistryOrderEqual']
@@ -75,7 +79,7 @@ def evidence():
                 if slot['file']!=9 and slot['words128Through134'][0]and row['precedingPresentEntries']>=origin:
                     first.setdefault(slot['file'],row['precedingPresentEntries'])
         assert profile['deliveries']==[dict(resourceFile=f,mainPumpOffsetFromPlayer=p-origin)for f,p in first.items()]
-        build=load(HOME/f'replay-fps-{backend}-build/build.json')
+        build=load(HOME/f'replay-fps-{backend}-build-v2/build.json')
         assert build['coreSourceHashes']['th12_web/cpp/game/GameSession.cpp']==session_sha
         assert build['sourceBindings']['runtimes/th12/th12_web/cpp/game/ReplayTextTh14.hpp']['sha256']==component['productionHeaderSha256']
         assert run['wasmSha256']==build['wasmSha256']
@@ -86,23 +90,24 @@ def evidence():
             liveVms=334,wordsPerVm=303,rawHandlesAndRegistryOrderExact=True,bothRngExact=True,
             bgraBytesCompared=len(pixels),differentBytes=0,wasmSha256=run['wasmSha256'],
             externalResourceReadinessDeclared=True,productionSchedulingAccepted=False))
-    candidate=load(HOME/'replay-fps-browser-candidate/build.json')
+    candidate=load(HOME/'replay-fps-browser-candidate-v2/build.json')
     assert candidate['compiled']and candidate['compiledUnits']==candidate['sourceUnits']==146 and candidate['reusedObjectCount']==0
     assert candidate['sourceBindings']['th12_web/cpp/game/GameSession.cpp']['sha256']==session_sha
     assert candidate['sourceBindings']['th12_web/cpp/game/ReplayTextTh14.hpp']['sha256']==component['productionHeaderSha256']
     assert candidate['rootUnrelatedResourceCryptExcluded']and not candidate['retailAssetsIncluded']
-    transport=load(HOME/'replay-fps-launcher/http-check.json')
-    served=load(HOME/'replay-fps-launcher/served-current.json')
+    transport=load(HOME/'replay-fps-launcher-v2/http-check.json')
+    served=load(HOME/'replay-fps-launcher-v2/served-current.json')
     assert transport['verifiedTransport']and transport['routes']==139 and len(transport['requests'])==27
     assert transport['wasmSha256']==served['wasmSha256']==candidate['wasmSha256']
     assert served['actualServedMainAndWorkerBytesEqual']and served['quietInjectedIntoParentAndIframe']
     for name in ('automatic-demo-recorded-fps','saved-replay-list','ordinary-replay-recorded-fps','ordinary-replay-natural-end'):
-        picture=raw(HOME/f'replay-fps-browser-ui/{name}.jpg');assert picture[:3]==b'\xff\xd8\xff'
-        ax=raw(HOME/f'replay-fps-browser-ui/{name}.ax.txt').decode()
+        picture=raw(HOME/f'replay-fps-browser-ui-v2/{name}.jpg');assert picture[:3]==b'\xff\xd8\xff'
+        ax=raw(HOME/f'replay-fps-browser-ui-v2/{name}.ax.txt').decode()
         assert 'runtimeEpoch=1'in ax and '音频 0ms'in ax and '本机测试静音'in ax
-    console=load(HOME/'replay-fps-browser-ui/console.json')
+    console=load(HOME/'replay-fps-browser-ui-v2/console.json')
     assert any('[replay] selected: record stage 1, character 0 subtype 0 difficulty 1, 823 bytes'in x['message']for x in console)
-    return dict(verifiedFiniteReplayFpsFix=True,productionReplayFpsTextAdded=True,retailRequestCases=2048,
+    return dict(verifiedFiniteReplayFpsFix=True,productionReplayFpsTextAdded=True,retailRequestCases=8192,
+        retailDrawPriority=62,retailControllerLoadingFlag=4,retailDrawWrapperAndBodyCovered=True,
         recordedRateByteValues=256,positiveComponentCases=positives,retainedNegativeControls=failures,
         nativePresent=2278,nativeStage=3,nativeControllerFrame=241,nativeOptionAges=native_ages,
         observedInlineEclAnm=[dict(file=x['file'],phase=x['phase'],precedingPresentEntries=x['precedingPresentEntries'])for x in inline],

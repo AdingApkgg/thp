@@ -885,11 +885,6 @@ bool GameSession::draw(AnmRenderer& renderer,AsciiText* overlay) {
     }
     if(state.phase==GameSessionPhase::finished)return true;
     if(battle_attached&&battle)battle->ascii.clear();
-#if PORT_TITLE == 14
-    AsciiRequest replay_fps;
-    if(th14_replay_fps_request(battle_attached&&battle,state.replay?1u:0u,u8(playback.current().fps),replay_fps)&&
-       !battle->ascii.add(replay_fps.text.c_str(),replay_fps.position,replay_fps.style))return fail("replay FPS text queue failed");
-#endif
     renderer.fog_origin=compositor.play_camera.position;
     const auto& fog=compositor.play_camera.fog;
     renderer.fog_channels={fog.channels[0],fog.channels[1],fog.channels[2]};renderer.fog_start=fog.near_distance;
@@ -900,6 +895,14 @@ bool GameSession::draw(AnmRenderer& renderer,AsciiText* overlay) {
         // Their priority need not coincide with any persistent scene pass:
         // attract fade 48 and title fade 61 are both between fixed passes.
         for(;next_fade_priority<=pass.priority;++next_fade_priority){
+            // Replay's455eb0 draw callback registers at62 (454b13).
+            // Queue after inner HUD/text, preserving the ASCII queue limit.
+            if(next_fade_priority==62){
+                AsciiRequest replay_fps;
+                const u32 controller_flags=state.phase==GameSessionPhase::loading?4u:0u;
+                if(th14_replay_fps_request(battle_attached&&battle,state.replay?1u:0u,u8(playback.current().fps),replay_fps,controller_flags)&&
+                   !battle->ascii.add(replay_fps.text.c_str(),replay_fps.position,replay_fps.style))return fail("replay FPS text queue failed");
+            }
             if(next_fade_priority==60&&resources.effects&&!resources.effects->draw_startup_loading())
                 return fail((std::string("startup loading creation failed: ")+resources.effects->last_error()).c_str());
             if(title)title_fades.draw(renderer,next_fade_priority);

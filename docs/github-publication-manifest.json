@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "a719a3df5420f29844c18904c8e53abd57463ec3",
+  "sourceCommit": "6e3578748a26b6d689e88a275bfce3f09b852259",
   "files": [
     {
       "path": ".gitignore",
@@ -460,8 +460,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 30486,
-      "sha256": "30de7ccabe0c68c720495a1a3be7f4c5dd53a5f5a8368996288085f92298d02a"
+      "bytes": 30580,
+      "sha256": "e662803de629e3cd5a87f406e592307399c0e051f702f5ae21a7d191c697ee54"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -475,8 +475,8 @@
     },
     {
       "path": "docs/porting/TH14_REPLAY_FPS_OCT28.md",
-      "bytes": 4230,
-      "sha256": "f2a4ebd20e3713101d62adf03112394f97a207ccdf172725dda263ac2cba7807"
+      "bytes": 4555,
+      "sha256": "f96b6af149f646ecd401d85fdd85d6d62d0b814c1b84642517f7ad1185b1c4d4"
     },
     {
       "path": "docs/porting/TH14_SAKUYAA_EASY_OCT26.md",
@@ -5025,8 +5025,8 @@
     },
     {
       "path": "docs/porting/th14-replay-fps-verified-oct28.json",
-      "bytes": 12162,
-      "sha256": "a50f003781a33b2dc8485af19a6ef9408c7f58f4b6d01bc9da3100924c04acf8"
+      "bytes": 12354,
+      "sha256": "8a3b515621c645eb8a03e8022b7786b795856ce22b4830bfafaba02dd99e7bbb"
     },
     {
       "path": "docs/porting/th14-replay-input-edges-verified-oct13.json",
@@ -8235,8 +8235,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "bytes": 55520,
-      "sha256": "50ab775eb5805335273cbc95be67495a8cb78cdec9f9b092fa46faaf065105f4"
+      "bytes": 55837,
+      "sha256": "6401f4174cdd516f316e9ad4c766fa94a8ab115dadd9078685035cb7f64542a7"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.hpp",
@@ -8590,8 +8590,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ReplayTextTh14.hpp",
-      "bytes": 492,
-      "sha256": "cd0872860cc5edf0ad4f07f0a84be292db62af07003325335c2893761a238eaf"
+      "bytes": 537,
+      "sha256": "dbe84b160652af9c9222d3314dc039615c20a54d21866c0bffba741e2903a7d1"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ResourceCrypt.cpp",
@@ -20125,13 +20125,13 @@
     },
     {
       "path": "tools/th14-replay-fps-evidence-oct28.py",
-      "bytes": 10002,
-      "sha256": "6693c9a8ebafcec06cbf0967e87e4205e0664f4d974f8625dcc954f1d487e18a"
+      "bytes": 10438,
+      "sha256": "fc3824e8bbec0a96199672165b395a6f6655c1565d5277713e8d3c95d92dbf56"
     },
     {
       "path": "tools/th14-replay-fps-text-oct28.py",
-      "bytes": 6226,
-      "sha256": "50a9926f9c2fa87d5277026f2bb133588f8e5bf7a90de8484cdd119503cb5185"
+      "bytes": 6443,
+      "sha256": "5e69d8c8abc4839a00e48e678249874f5203907b0090aac7693bfb6e45198347"
     },
     {
       "path": "tools/th14-replay-input-edges-check.mjs",
@@ -24080,14 +24080,11 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "a719a3df5420f29844c18904c8e53abd57463ec3",
-    "title": "TH14 replay recorded-FPS drawing and declared resource-availability causal control",
+    "basePublishedCommit": "6e3578748a26b6d689e88a275bfce3f09b852259",
+    "title": "TH14 replay FPS loading guard and priority62 queue boundary",
     "changedSourceAndMetadataFiles": [
       "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
       "runtimes/th12/th12_web/cpp/game/ReplayTextTh14.hpp",
-      "tools/th14-native-device-observer-oct27.py",
-      "tools/th14-build-webgpu-release.py",
-      "tools/th14-native-availability-control-oct28.py",
       "tools/th14-replay-fps-text-oct28.py",
       "tools/th14-replay-fps-evidence-oct28.py",
       "docs/porting/TH14_REPLAY_FPS_OCT28.md",
@@ -24098,7 +24095,9 @@
     "sourceOnly": true,
     "gameAssetsAdded": false,
     "productionReplayFpsTextFixed": true,
-    "retailRequestCases": 2048,
+    "retailRequestCases": 8192,
+    "drawPriority": 62,
+    "controllerLoadingFlag": 4,
     "finiteOriginalGameFrameStage": 3,
     "finiteOriginalGameControllerFrame": 241,
     "strictComponentBackends": [
@@ -24113,8 +24112,8 @@
     "zeroDurationCallbackNegativeStillFails": true,
     "fixedFrameOrVmAgeCompensationAdded": false,
     "compiledBrowserUnits": 146,
-    "browserWasmBytes": 2721939,
-    "browserWasmSha256": "a7a32e951c6816211679afde7cca6846b474259756bcd6577ce158d2ba0e8ff9",
+    "browserWasmBytes": 2722010,
+    "browserWasmSha256": "c5ee1fe1840d1bc5b359cf7f9ac4e8a9a1b11923e7429ff1de4edb14f557d4f2",
     "browserFiniteDemoAndReplayFpsObserved": true,
     "browserPartialReplayNaturalEndObserved": true,
     "browserRoutes": 139,
