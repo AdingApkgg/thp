@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "4b22969c9f28722563b6b710eb6e98095ff7a008",
+  "sourceCommit": "185e53982fb317b4ea31a8955781f9510bc48abb",
   "files": [
     {
       "path": ".gitignore",
@@ -87,6 +87,11 @@
       "path": "docs/porting/TH14_BOMB_TEMPLATE_LAYER_OCT25.md",
       "bytes": 2617,
       "sha256": "8fd531384cc429338acc080ac136f99c06088043b559f8707ec1287c58719430"
+    },
+    {
+      "path": "docs/porting/TH14_BROWSER_REPLAY_OCT28.md",
+      "bytes": 2695,
+      "sha256": "3f5cb5a9f3bb303c6d4f012acccc28689bc01419e59bdac044adcdb84cc32f04"
     },
     {
       "path": "docs/porting/TH14_BROWSER_STARTUP_OCT28.md",
@@ -455,8 +460,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 28977,
-      "sha256": "74f107149b57ad8e2151a32e5b694abaf850f080d6ddb859ccadd145d7d703f0"
+      "bytes": 29586,
+      "sha256": "996fa82c5ca5e3026f1b7973dbeb0fa211dcbb8622ba19f7ac1de7fe63a3cb77"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -1487,6 +1492,11 @@
       "path": "docs/porting/th14-browser-records-verified-oct11.json",
       "bytes": 1531,
       "sha256": "e0afb5ad4f4cbcfab0ff043d0434a7a94029c2dbe5f46b769df979e0750bd39d"
+    },
+    {
+      "path": "docs/porting/th14-browser-replay-observed-oct28.json",
+      "bytes": 12881,
+      "sha256": "3d3ea69064e19c9654c170a470f0303f540273184368e566a5640a3a466b6a48"
     },
     {
       "path": "docs/porting/th14-browser-results-routing-verified-oct11.json",
@@ -15569,6 +15579,11 @@
       "sha256": "5375958b7c71d7c7fdc6c961e02fb2d09021302bd3a756a53c4139eee5f561d1"
     },
     {
+      "path": "tools/th14-browser-replay-evidence-oct28.py",
+      "bytes": 6352,
+      "sha256": "ccbae8b704cfb86fee6d2f930e2d4a6de06e8a3bd253a9272d2d8ac43788f2b7"
+    },
+    {
       "path": "tools/th14-browser-replay-report.mjs",
       "bytes": 2123,
       "sha256": "5b2de3de22177795fa3ff6feb068f4a7e24fe37ef2c8821c9f25cc8ed4832bc5"
@@ -20079,6 +20094,16 @@
       "sha256": "3881f200e21b909e103a53dc84fdeda3e64dfe8e532fc0282a4d9f877c909c88"
     },
     {
+      "path": "tools/th14-replay-file-native-codec-oct28.py",
+      "bytes": 4936,
+      "sha256": "717673b12060f02261c2e1af04b68de63227db65fd6f2cc96f98ccfc5cbecd8e"
+    },
+    {
+      "path": "tools/th14-replay-file-production-oct28.py",
+      "bytes": 5028,
+      "sha256": "7cc15836d024d6afca6b60009d156e6d0b87228787abb9f37292c7699c7280cf"
+    },
+    {
       "path": "tools/th14-replay-input-edges-check.mjs",
       "bytes": 2620,
       "sha256": "6a4e596479c17bb4a8f92c2398f0558500da5966934be1e5a26df350ea7a08d2"
@@ -24025,52 +24050,28 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "4b22969c9f28722563b6b710eb6e98095ff7a008",
-    "title": "TH14 initial-stage archive worker integration and finite browser verification",
+    "basePublishedCommit": "185e53982fb317b4ea31a8955781f9510bc48abb",
+    "title": "TH14 finite ordinary browser replay save, reload and playback evidence",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/GameResources.cpp",
-      "runtimes/th12/th12_web/cpp/sdl/Application.cpp",
-      "runtimes/th12/portable/sdl/Th14WebGpuCallbacks.hpp",
-      "runtimes/th12/portable/sdl/Th14WebGpuRuntime.mjs",
-      "runtimes/th12/portable/sdl/Th14WebGpuLibrary.js",
-      "runtimes/th12/portable/sdl/Th14ArchiveDecodeClient.mjs",
-      "runtimes/th12/portable/sdl/Th14ArchiveReadAhead.mjs",
-      "runtimes/th12/portable/sdl/Th14ArchiveDecodeEndpoint.mjs",
-      "runtimes/th12/portable/sdl/Th14ArchiveDecodeWorker.mjs",
-      "runtimes/th12/th12_web/tests/cpp/th14-background-resource-fixture.cpp",
-      "tools/th14-archive-worker/archive-read-ahead.mjs",
-      "tools/th14-archive-worker-prototype-build-oct27.py",
-      "tools/th14-archive-worker-prototype-check-oct27.mjs",
-      "tools/th14-build-webgpu-release.py",
-      "tools/th14-package-webgpu-candidate.py",
-      "tools/th14-webgpu-launcher-transport-check.mjs",
-      "tools/th14-archive-runtime-check-oct28.mjs",
-      "tools/th14-background-resource-build-oct28.py",
-      "tools/th14-background-resource-check-oct28.mjs",
-      "tools/th14-archive-native-compat-oct28.py",
-      "tools/th14-archive-integration-evidence-oct28.py",
-      "docs/porting/th14-archive-integration-verified-oct28.json",
-      "docs/porting/TH14_ARCHIVE_WORKER_OCT28.md",
+      "tools/th14-replay-file-native-codec-oct28.py",
+      "tools/th14-replay-file-production-oct28.py",
+      "tools/th14-browser-replay-evidence-oct28.py",
+      "docs/porting/TH14_BROWSER_REPLAY_OCT28.md",
+      "docs/porting/th14-browser-replay-observed-oct28.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "browserInitialStageArchiveWorkerIntegrated": true,
-    "workerArchiveEntries": 227,
-    "workerDecodedBytesCompared": 253480939,
-    "actualProductionCppResourceCases": 42,
-    "cacheReads": 534,
-    "compiledBrowserUnits": 146,
-    "browserMainWasmBytes": 2721058,
-    "browserRouteCount": 139,
-    "httpChecks": 27,
-    "actualBrowserFiniteUiObserved": true,
+    "productionGameplayChanged": false,
+    "browserWasmUnchanged": true,
+    "ordinaryBrowserPartialReplayCasePassed": true,
+    "recordedInputFrames": 717,
+    "replayFileBytes": 823,
+    "entireEncodedFileUnchangedAfterTwoPlaybacks": true,
+    "productionAndRetailDecodedBytesEqual": 4694,
+    "completeMultiStageBrowserReplayAccepted": false,
     "completeBrowserAcceptance": false,
-    "nativeDisabledObjectsRecompiledByteIdentical": 2,
-    "nativeWebGpuHostRelinked": true,
-    "fixedFrameOrVmAgeCompensationAdded": false,
-    "oldStrictFailuresRetained": true,
     "currentQuietPreviewPort": 8234,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
