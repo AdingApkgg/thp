@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "798a515c839af2770e08351c82e02771587948d8",
+  "sourceCommit": "4e3f603e45e86e483d107d904c844db4e64984d9",
   "files": [
     {
       "path": ".gitignore",
@@ -190,8 +190,8 @@
     },
     {
       "path": "docs/porting/TH14_CURRENT_FULL_REGRESSION_OCT30.md",
-      "bytes": 6276,
-      "sha256": "56b626fa558ef0fca61c027980996715bea501980a751e33f9136bec311dfd12"
+      "bytes": 6468,
+      "sha256": "1d05ec6ccbfd20eefe0210d8ebcb8c1b432f4b86d6a07bb467ee9ddac43a35ba"
     },
     {
       "path": "docs/porting/TH14_CURRENT_GPU_BASELINE_OCT25.md",
@@ -24585,41 +24585,20 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "798a515c839af2770e08351c82e02771587948d8",
-    "title": "TH14 current GLES full ordinary Application replay and retained WebGPU budget failure",
+    "basePublishedCommit": "4e3f603e45e86e483d107d904c844db4e64984d9",
+    "title": "TH14 distinguish terminal internal score from frozen visible HUD",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-current-ordinary-full-evidence-oct30.py",
-      "docs/porting/th14-current-ordinary-full-oct30.json",
-      "docs/porting/th14-current-full-budget-oct30.json",
-      "docs/porting/th14-marisab-normal-alt-oct30.json",
       "docs/porting/TH14_CURRENT_FULL_REGRESSION_OCT30.md",
-      "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
     "productionEngineChanged": false,
-    "productionCoreCommit": "3af854d7e4251890cb743157b00c862392e6d816",
     "currentGlesFullReplayFrames": 123412,
     "assertions": 44,
-    "actualStagesActivated": 6,
-    "naturalLivingEnd": true,
-    "stableEndFrames": 60,
-    "finalLivingStock": 1,
-    "inputReplayUnchanged": true,
-    "originalWholePixelsOrPcmCompared": false,
-    "currentWebGpuBudgetFailureFrames": 108875,
-    "currentWebGpuMaximumWallSecondsUnchanged": 3600,
-    "alternativeMarisabNormalNativeCallbacks": 33926,
-    "alternativeMarisabNormalStages": [
-      1,
-      2,
-      3
-    ],
-    "ordinaryOriginalUiCallbacks": 0,
-    "currentBrowserFullFlowAccepted": false,
-    "nativeNaturalRunModePairs": 30,
-    "nativeAllStageEntryModePairs": 25,
+    "finalScoreUnits": 154806314,
+    "visibleStableHudScore": 1511063140,
+    "wholeOriginalPixelsOrPcmAccepted": false,
     "completeGame": false,
     "nativeEquivalent": false
   }
