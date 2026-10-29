@@ -164,14 +164,21 @@ bool GameSessionResources::begin_stage_loading(u32 number){
     pending_number=number;stage_number=number;incoming_stage->stage_number=number;
     decoded_phases=requested_phases=ready_phases=0;error.clear();return true;
 }
+StageResourceEffects::DecodeResult StageResourceEffects::decode_stage_phase(GameResources& source,StageResources& stage,Phase phase,u32 selection){
+    const bool decoded=phase==Phase::Hud?source.load_stage_hud(stage.stage_number,stage,selection):
+        phase==Phase::Scene?source.load_stage_scene(stage.stage_number,stage):source.load_stage_timeline(stage.stage_number,stage);
+    return decoded?DecodeResult::Ready:DecodeResult::Failed;
+}
 GameSessionResources::PhaseResult GameSessionResources::advance_stage_phase(GameResources& source,StageResourceEffects::Phase phase,u32 selection){
     if(!incoming_stage){error="TH14 incoming resource owner missing";return PhaseResult::Failed;}
     const u32 mask=1u<<u32(phase);
     if(ready_phases&mask)return PhaseResult::Ready;
     if(!(decoded_phases&mask)){
-        const bool decoded=phase==StageResourceEffects::Phase::Hud?source.load_stage_hud(pending_number,*incoming_stage,selection):
-            phase==StageResourceEffects::Phase::Scene?source.load_stage_scene(pending_number,*incoming_stage):source.load_stage_timeline(pending_number,*incoming_stage);
-        if(!decoded){error="stage resource "+last_resource+": "+source.error();return PhaseResult::Failed;}
+        StageResourceEffects synchronous;
+        const auto decoded=(effects?effects:&synchronous)->decode_stage_phase(source,*incoming_stage,phase,selection);
+        if(decoded==PhaseResult::Waiting)return decoded;
+        if(decoded==PhaseResult::Failed){error="stage resource "+last_resource+": "+source.error();
+            if(effects&&!effects->last_error().empty())error+="; "+effects->last_error();return decoded;}
         decoded_phases|=mask;
     }
     if(!(requested_phases&mask)){
@@ -204,6 +211,7 @@ void GameSessionResources::finish_stage_parts(){
 }
 void GameSessionResources::cancel_stage_loading(){
     if(!incoming_stage)return;
+    if(effects)effects->cancel_stage_decode(*incoming_stage);
     if(effects&&requested_phases)effects->cancel_stage_phases(*incoming_stage,requested_phases);
     incoming_stage=nullptr;pending_stage.reset();pending_number=0;
     decoded_phases=requested_phases=ready_phases=0;

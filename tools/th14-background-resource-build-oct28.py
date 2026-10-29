@@ -7,7 +7,7 @@ SHA=lambda raw:hashlib.sha256(raw).hexdigest()
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--build',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
-    p.add_argument('--suite',choices=['stage','selected-player','core-tail','bootstrap'],default='stage')
+    p.add_argument('--suite',choices=['stage','selected-player','core-tail','bootstrap','later-stage'],default='stage')
     a=p.parse_args();B=a.build.resolve(strict=True);O=a.output.resolve()
     assert B.is_relative_to(R/'artifacts/th14') and O.is_relative_to(R/'artifacts/th14') and not O.exists()
     O.mkdir(parents=True)
@@ -22,7 +22,7 @@ def main():
         original=B/'source'/relative;data=original.read_bytes();assert SHA(data)==row['sha256']
         target=source/relative;target.parent.mkdir(parents=True,exist_ok=True);os.link(original,target)
         bindings[relative]=row['sha256']
-    fixture_name={'stage':'th14-background-resource-fixture.cpp','selected-player':'th14-selected-player-worker-fixture.cpp','core-tail':'th14-core-tail-worker-fixture.cpp','bootstrap':'th14-bootstrap-worker-fixture.cpp'}[a.suite]
+    fixture_name={'stage':'th14-background-resource-fixture.cpp','selected-player':'th14-selected-player-worker-fixture.cpp','core-tail':'th14-core-tail-worker-fixture.cpp','bootstrap':'th14-bootstrap-worker-fixture.cpp','later-stage':'th14-later-stage-worker-fixture.cpp'}[a.suite]
     for name in (fixture_name,'th14-initial-stage-decode-fixture.cpp'):
         original=R/'runtimes/th12/th12_web/tests/cpp'/name;data=original.read_bytes()
         target=source/'th12_web/tests/cpp'/name;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(data)
@@ -41,7 +41,8 @@ def main():
     methods={'stage':('open','prepare','names','step','compare','read','anm','std','ecl','error'),
         'selected-player':('open','select','name','load','cancel','empty','compare','sync','error'),
         'core-tail':('open','reset','load','empty','compare','error'),
-        'bootstrap':('open','reset','signature','load','empty','compare','error')}[a.suite]
+        'bootstrap':('open','reset','signature','load','empty','compare','error'),
+        'later-stage':('open','prepare','advance','names','dispatch','deliver','publish','finish','cancel','suspend','resume','gpu','counts','wrong_owner','compare','error')}[a.suite]
     exports=['malloc','free',*['fixture_'+name for name in methods]]
     command=[sys.executable,str(emcc),*build['flags'],str(source/'th12_web/tests/cpp'/fixture_name),
         *map(str,objects),'--no-entry','-sDEFAULT_TO_CXX=1','-sMODULARIZE=1','-sEXPORT_ES6=1','-sENVIRONMENT=web,worker,node',

@@ -3,6 +3,7 @@
 #include "PauseCaptureTh14.hpp"
 #include "ApplicationCaptureTh14.hpp"
 #include "StageUploadsTh14.hpp"
+#include "StageDecodeTh14.hpp"
 #include <random>
 #endif
 #include "AudioDevice.hpp"
@@ -185,6 +186,8 @@ struct Application:StageResourceEffects
     bool core_loading_done=false;
 #if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
     u32 boot_core_decoded=0;
+    StageDecodeTh14 stage_decode;
+    struct StageDecodeToken {Application* owner;StageDecodeTh14::Token task;bool archive;};
 #endif
 #endif
     std::string error;
@@ -423,6 +426,9 @@ struct Application:StageResourceEffects
         initial_upload_waiting=false;initial_decode_complete=true;
     }
     void suspend_boot_worker(){
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+        if(stage_decode.pending()){stage_decode.suspend();th14_webgpu_archive_cancel();}
+#endif
         if(boot_worker_active||initial_upload_waiting){
             ++boot_worker_generation;boot_worker_suspended=true;
 #if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
@@ -431,6 +437,9 @@ struct Application:StageResourceEffects
         }
     }
     void resume_boot_worker(){
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+        stage_decode.resume();dispatch_stage_decode();
+#endif
         if(!boot_worker_suspended)return;
         boot_worker_suspended=false;
         if(boot_worker_active&&boot_worker_work!=BootWork::Idle)dispatch_boot_work(boot_worker_work,boot_worker_index,0);
@@ -738,13 +747,43 @@ struct Application:StageResourceEffects
         return true;
     }
     bool stage_ready()const override{return boot_uploads.empty()&&initial_decode_complete;}
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+    void dispatch_stage_decode(){
+        if(!stage_decode.dispatchable())return;
+        const auto names=stage_decode.names();
+        auto* token=new StageDecodeToken{this,stage_decode.dispatch(),!names.empty()};
+        if(names.empty()){schedule_th14_work(run_stage_decode,token,0);return;}
+        std::vector<const char*> pointers;for(const auto& name:names)pointers.push_back(name.c_str());
+        th14_webgpu_archive_schedule(run_stage_decode,token,pointers.data(),u32(pointers.size()));
+    }
+    static void run_stage_decode(void* raw){
+        std::unique_ptr<StageDecodeToken> token(static_cast<StageDecodeToken*>(raw));auto& app=*token->owner;
+        if(!app.stage_decode.complete(token->task,!token->archive||th14_webgpu_archive_status()))return;
+        if(app.stage_decode.result()==StageDecodeTh14::Result::Failed){app.graphics.error=app.stage_decode.error();return;}
+        app.dispatch_stage_decode();
+    }
+    StageResourceEffects::DecodeResult decode_stage_phase(GameResources& source,StageResources& stage,StageResourceEffects::Phase phase,u32 selection)override{
+        const auto result=stage_decode.begin(source,stage,phase,selection);
+        if(result==StageDecodeTh14::Result::Failed)graphics.error=stage_decode.error();
+        else dispatch_stage_decode();
+        return result;
+    }
+    void cancel_stage_decode(StageResources& stage)override{
+        if(stage_decode.owns(stage)){stage_decode.cancel(stage);th14_webgpu_archive_cancel();}
+    }
+#endif
     bool prepare_stage_phase(StageResources& stage,StageResourceEffects::Phase phase)override{
         renderer.flush();graphics.error.clear();
         if(!stage_uploads.begin(stage,phase)){graphics.error="TH14 stage upload owner still pending";return false;}
         return true;
     }
     bool stage_phase_ready(StageResourceEffects::Phase phase)const override{return stage_uploads.ready(phase);}
-    void finish_stage_phases(StageResources& stage,u32)override{stage_uploads.finish(stage);}
+    void finish_stage_phases(StageResources& stage,u32)override{
+#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+        stage_decode.finish(stage);
+#endif
+        stage_uploads.finish(stage);
+    }
     void cancel_stage_phases(StageResources& stage,u32)override{
         // Queued raw resource references must disappear before GPU teardown
         // or StageResources destruction. release also covers boot ownership.
@@ -761,6 +800,7 @@ struct Application:StageResourceEffects
     const std::string& last_error()const override{return graphics.error;}
     void release(StageResources& stage)override{
 #if PORT_TITLE == 14
+        cancel_stage_decode(stage);
         stage_uploads.cancel(stage);
         if(boot_stage_owner==&stage){cancel_boot_worker();boot_uploads.clear();boot_upload_index=0;boot_stage_owner=nullptr;boot_loading.finish(session.animations);}
 #endif

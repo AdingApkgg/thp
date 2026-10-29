@@ -67,6 +67,10 @@ struct StageResourceEffects {
     virtual const std::string& last_error() const {static const std::string none;return none;}
 #if PORT_TITLE == 14
     enum class Phase:u32 {Hud,Scene,Timeline};
+    enum class DecodeResult:u32 {Waiting,Ready,Failed};
+    virtual DecodeResult decode_stage_phase(GameResources&,StageResources&,Phase,u32);
+    // CPU work can already hold this owner before the first GPU request.
+    virtual void cancel_stage_decode(StageResources&){}
     virtual bool prepare_stage_phase(StageResources& stage,Phase phase){
         if(phase==Phase::Hud)return prepare_animation(stage.logo);
         if(phase==Phase::Scene)return prepare_animation(stage.background);
@@ -105,7 +109,7 @@ public:
     bool load_selected_player(u32 character,u32 subtype);
     void cancel_selected_player()noexcept{selected_player_pending=-1;}
     bool prepare_stage();
-    enum class PhaseResult:u32 {Waiting,Ready,Failed};
+    using PhaseResult=StageResourceEffects::DecodeResult;
     bool begin_stage_loading(u32 number);
     PhaseResult advance_stage_phase(GameResources&,StageResourceEffects::Phase,u32 dialogue_selection);
     bool publish_stage_scene();
