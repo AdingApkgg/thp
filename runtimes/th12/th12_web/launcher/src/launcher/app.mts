@@ -4240,6 +4240,13 @@ async function ensureRuntime(show = true, attempt: Th14PlayerScope = null) {
     } catch (error) {
       checkTh14PlayerScope(attempt);
       if (isCancelledDownload(error)) throw error;
+      if (state.game === "th14") {
+        // TH14 has no legacy resource fallback below. In particular, a
+        // Runtime failure after a successful Package commit must retain its
+        // cause instead of being replaced with "Package not installed".
+        hideTransfer();
+        throw error;
+      }
       if (!hostManifestAvailable) throw error;
       showToast(`游戏资源安装失败，本次尝试现有资源启动：${errorMessage(error)}`);
     } finally {

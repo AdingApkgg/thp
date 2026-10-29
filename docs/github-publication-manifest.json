@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "57a544191704e0ce64cd46de85fe648a3e152097",
+  "sourceCommit": "29e1a8ef759d1fc8c87b18882b0f074eeccb05d2",
   "files": [
     {
       "path": ".gitignore",
@@ -510,8 +510,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 44753,
-      "sha256": "ad1f1cd16bfbb4cfca9946a8b381fb6fa5b396b70f82d07a6dd50be8a0e6b031"
+      "bytes": 45405,
+      "sha256": "e5b238286611a3b569bdebeebefc201d3f68d6669445b9336d71a248f97d513a"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -537,6 +537,11 @@
       "path": "docs/porting/TH14_REPLAY_TERMINAL_OCT28.md",
       "bytes": 3161,
       "sha256": "8fa5de26bb0e3679734103bdffe6a4fb7005e593255f95bb9e6bbf801626ab7a"
+    },
+    {
+      "path": "docs/porting/TH14_RUNTIME_STARTUP_ERROR_OCT30.md",
+      "bytes": 3062,
+      "sha256": "46eb2d33fdfdd45fbb846ad9c22a4b031e731e55ba6d24f9b55d9d0a3bf91323"
     },
     {
       "path": "docs/porting/TH14_SAKUYAA_EASY_OCT26.md",
@@ -5262,6 +5267,11 @@
       "path": "docs/porting/th14-rings-verified.json",
       "bytes": 2147,
       "sha256": "62dd60e44aa5f3a5000a82c6f056b469748c14e3e5904e4cbc7766e2e9bc5a58"
+    },
+    {
+      "path": "docs/porting/th14-runtime-startup-error-oct30.json",
+      "bytes": 1697,
+      "sha256": "5616bf6e07963a4cd0a0c9e392307ba38fa1f3fd142fbcc49ae4ab9a533484b2"
     },
     {
       "path": "docs/porting/th14-sakuya-a-anm-verified.json",
@@ -10065,8 +10075,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/launcher/src/launcher/app.mts",
-      "bytes": 338416,
-      "sha256": "557fb5d843287d4383f40e059bef2254cc82ab7c5b8bf0129331f46d24448e67"
+      "bytes": 338726,
+      "sha256": "d6258e9a8de34920652836c2ed0a67b3d642c6e7403ccf85d290f19a6760cfa1"
     },
     {
       "path": "runtimes/th12/th12_web/launcher/src/launcher/changelog.mts",
@@ -20714,6 +20724,16 @@
       "sha256": "4ec2b3da5e07811cbb5b440da40ec536a1c6d698bde11d22f826d2aae337f619"
     },
     {
+      "path": "tools/th14-runtime-startup-error-oct30.mjs",
+      "bytes": 6152,
+      "sha256": "a273f8183af48207f614ee198dbc3d1eae7daa7085637c6fc3c069a64b0197f9"
+    },
+    {
+      "path": "tools/th14-runtime-startup-preview-oct30.mjs",
+      "bytes": 3503,
+      "sha256": "48c1cff261f71dea3f00346e5d3251432820bc4d8cdcd8f1bda1c6f52f52605e"
+    },
+    {
       "path": "tools/th14-sakuya-a-anm-check.mjs",
       "bytes": 4011,
       "sha256": "df135d84f5944119d80eac374514145540574caafb760c88bfe2001d49401ab4"
@@ -24620,27 +24640,25 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "57a544191704e0ce64cd46de85fe648a3e152097",
-    "title": "TH14 retain ordinary full Replay failure after verified construction repair",
+    "basePublishedCommit": "29e1a8ef759d1fc8c87b18882b0f074eeccb05d2",
+    "title": "TH14 preserve the original post-install Runtime startup failure",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-replay-construction-evidence-oct30.py",
-      "docs/porting/th14-replay-construction-oct30.json",
-      "docs/porting/th14-replay-construction-full-failure-oct30.json",
-      "docs/porting/TH14_REPLAY_CONSTRUCTION_OCT30.md",
+      "runtimes/th12/th12_web/launcher/src/launcher/app.mts",
+      "tools/th14-runtime-startup-error-oct30.mjs",
+      "tools/th14-runtime-startup-preview-oct30.mjs",
+      "docs/porting/TH14_RUNTIME_STARTUP_ERROR_OCT30.md",
+      "docs/porting/th14-runtime-startup-error-oct30.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
     "productionEngineChanged": false,
-    "productionCoreCommit": "57a544191704e0ce64cd46de85fe648a3e152097",
-    "failedFullApplicationFrames": 27251,
-    "failedFullApplicationStages": [
-      1,
-      2
-    ],
-    "assertionsPassedBeforeFailure": 20,
-    "fullReplayAccepted": false,
+    "th14LauncherErrorHandlingChanged": true,
+    "actualFunctionControls": 12,
+    "oldMaskedErrorCases": 3,
+    "currentMaskedErrorCases": 0,
+    "originalColdStartFailureCauseProven": false,
     "completeGame": false,
     "nativeEquivalent": false
   }
