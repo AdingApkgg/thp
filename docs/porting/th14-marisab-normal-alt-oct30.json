@@ -1,0 +1,181 @@
+{
+  "verifiedFiniteEvidence": true,
+  "callbacks": 33926,
+  "sourceReplaySha256": "449edc8264f11db2c84ed8f098644df006043d53513a4d1f028c220800649d65",
+  "selection": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "stagesObserved": [
+    1,
+    2,
+    3
+  ],
+  "allSelected32Equal": true,
+  "allCamera25Equal": true,
+  "allHud2Equal": true,
+  "vm303Snapshots": [
+    {
+      "callback": 1,
+      "rows": 52,
+      "selectedWordsPerVm": 303
+    },
+    {
+      "callback": 26000,
+      "rows": 728,
+      "selectedWordsPerVm": 303
+    },
+    {
+      "callback": 30000,
+      "rows": 203,
+      "selectedWordsPerVm": 303
+    }
+  ],
+  "vm303Rows": 983,
+  "allVm303AndRegistryOrderEqual": true,
+  "combatCheckpoints": 362,
+  "nonemptyCombatCheckpoints": 50,
+  "combatRows": {
+    "enemies": 258,
+    "bullets": 4037,
+    "shots": 785,
+    "areas": 481,
+    "items": 1357,
+    "lasers": 122
+  },
+  "combatFieldCounts": {
+    "enemies": 31,
+    "bullets": 18,
+    "shots": 19,
+    "areas": 19,
+    "items": 13,
+    "lasers": 26
+  },
+  "allCapturedCombatWordsEqual": true,
+  "publicationCutoffCallbacks": 1000,
+  "orderedPublications": 1754,
+  "timelineCompletionSources": [
+    {
+      "stage": 2,
+      "phase": "Timeline",
+      "readyNs": 166362189881200,
+      "completionSource": "original43605aAfterLoadingFlagClear",
+      "boundedByFirstObservedClearControlFlag": false
+    },
+    {
+      "stage": 3,
+      "phase": "Timeline",
+      "readyNs": 166578857795500,
+      "completionSource": "original43605aAfterLoadingFlagClear",
+      "boundedByFirstObservedClearControlFlag": false
+    }
+  ],
+  "wasmSha256": "4f9956c748625a71d4e11ea90a1119f5ba9bb7ad100c0bc41cf099e83357ee0f",
+  "comparisonToolSha256": "e0cacdb5767c3798fe88a3ec9527f985059a435993e7397856352891ad6923f9",
+  "verifierSha256": "ea0751a2d4644780c3cde3f62873cbf6b7e41c17a6657c17d474f48579587fc8",
+  "bindings": {
+    "artifacts/th14/marisab-normal-alternative-oct30/native/report.json": {
+      "bytes": 157202,
+      "sha256": "48eafb26c0d92e99daddbaa36eb2311d3e4dd54de00d10681a82de85f6a841b6"
+    },
+    "artifacts/th14/marisab-normal-alt-current-oct30/model/report.json": {
+      "bytes": 5828,
+      "sha256": "0e7ca33391b067eb758a38f4fbdb740e614413cfbb45a0508c47eec683d08263"
+    },
+    "artifacts/th14/vm-return-worker-oct29/observer-v2/observer-build.json": {
+      "bytes": 87093,
+      "sha256": "857d0ac64de189e06bc3b301cfa55e20026b978be3de3d4766d4dc19b2aaba90"
+    },
+    "artifacts/th14/native-campaign-assets/57d84a5cbe82-449edc8264f1/manifest.json": {
+      "bytes": 67914,
+      "sha256": "eca1af295f9739f5e60653c1e818a5bdb3a204ac8200a11f46212530de3829bc"
+    },
+    "artifacts/th14/marisab-normal-alternative-oct30/input/th14_ud000b.rpy": {
+      "bytes": 81908,
+      "sha256": "449edc8264f11db2c84ed8f098644df006043d53513a4d1f028c220800649d65"
+    },
+    "artifacts/th14/native-campaign-assets/57d84a5cbe82-449edc8264f1/th14.dat": {
+      "bytes": 90824732,
+      "sha256": "b27c14ca4e009306ef78289f14f550974a23e154b2bc870dd84f9de0ac7acf75"
+    },
+    "artifacts/th14/marisab-normal-alternative-oct30/native/selected-state.u32": {
+      "bytes": 4342528,
+      "sha256": "8ff85c1c22548615f1d34f6a71050636127a0e76df1593ca5f411eb696d1b4a3"
+    },
+    "artifacts/th14/marisab-normal-alt-current-oct30/model/selected-state.u32": {
+      "bytes": 4342528,
+      "sha256": "8ff85c1c22548615f1d34f6a71050636127a0e76df1593ca5f411eb696d1b4a3"
+    },
+    "artifacts/th14/marisab-normal-alternative-oct30/native/world-camera.raw": {
+      "bytes": 9906392,
+      "sha256": "b6ec9a5b8de60b610ddeae9f5d032e47a4cbd5f31cc7b60c16d459fba99f888b"
+    },
+    "artifacts/th14/marisab-normal-alt-current-oct30/model/portable-camera.u32": {
+      "bytes": 3392600,
+      "sha256": "5cc16a9c6020c0b7f89187ec933deaaf61f3710ed265492a7026064ad18d8bc8"
+    },
+    "artifacts/th14/marisab-normal-alternative-oct30/native/hud-score.u32": {
+      "bytes": 271408,
+      "sha256": "7de9060e57984751478ba0fafdc2bede0c1275f85b67705ba11847f8778ef44a"
+    },
+    "artifacts/th14/marisab-normal-alt-current-oct30/model/portable-hud.u32": {
+      "bytes": 271408,
+      "sha256": "7de9060e57984751478ba0fafdc2bede0c1275f85b67705ba11847f8778ef44a"
+    },
+    "artifacts/th14/marisab-normal-alternative-oct30/native/live-vms-callback-1.json": {
+      "bytes": 168173,
+      "sha256": "fd99bb3aa04c92cd95762616bd26c7a68df2cabc83be58c157973793f645a733"
+    },
+    "artifacts/th14/marisab-normal-alt-current-oct30/model/portable-live-1.json": {
+      "bytes": 50676,
+      "sha256": "d2e12148f61c76d47b5f50649346b4af33c49d5e43527c2d888eefa7c936ce77"
+    },
+    "artifacts/th14/marisab-normal-alternative-oct30/native/live-vms-callback-26000.json": {
+      "bytes": 2365647,
+      "sha256": "1980b9f10514d1e27c04636588d3aaf359c5081cda147ab05e8d09cda1d84292"
+    },
+    "artifacts/th14/marisab-normal-alt-current-oct30/model/portable-live-26000.json": {
+      "bytes": 819972,
+      "sha256": "c54ed68e7e5c47e17cd7a287136b35805d80330cd3b1bee3b3c42317d785c50c"
+    },
+    "artifacts/th14/marisab-normal-alternative-oct30/native/live-vms-callback-30000.json": {
+      "bytes": 657842,
+      "sha256": "6108241e0354e2f82b44cb4fbe0aca6ac91107bb23e8f8d7b08fd993725e4b40"
+    },
+    "artifacts/th14/marisab-normal-alt-current-oct30/model/portable-live-30000.json": {
+      "bytes": 225805,
+      "sha256": "f4d378e74c878eddb6400b211c0f82a8a5fa319313328c1f4633b65136d539e5"
+    },
+    "artifacts/th14/marisab-normal-alternative-oct30/native/combat-pool-index.json": {
+      "bytes": 148583,
+      "sha256": "65ae8dc034ad3679e9b04df1dab735bfba6ad516f32ad2b18f65eeb80baa0dd6"
+    },
+    "artifacts/th14/marisab-normal-alternative-oct30/native/allocation-events.jsonl": {
+      "bytes": 633943,
+      "sha256": "bb1d9012f2df126258e764ade993711947accfd4fe8b4089d0262c8d837123ee"
+    },
+    "artifacts/th14/marisab-normal-alt-current-oct30/model/portable-allocations-initial-through-1000.json": {
+      "bytes": 296258,
+      "sha256": "ac506858dde9ec56806d016b6a589023564cfffbc9bf5aff7edb51826ada3698"
+    },
+    "artifacts/th14/vm-return-worker-oct29/observer-v2/observer.wasm": {
+      "bytes": 1503011,
+      "sha256": "4f9956c748625a71d4e11ea90a1119f5ba9bb7ad100c0bc41cf099e83357ee0f"
+    }
+  },
+  "limitations": [
+    "Warm replay with declared host time, entropy and asynchronous resource completion inputs; ordinary original cold-menu initialization is not proved.",
+    "Only stated fields and sampled objects, including empty loading frames; whole objects and all curve samples are not compared.",
+    "Publication order covers only the declared initial window.",
+    "No actual GPU/PCM, all-mode equivalence, browser acceptance or persistence is proved."
+  ],
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "diagnosticPrefixOnly": false,
+  "originalCapturedCallbacks": 33926,
+  "originalNaturalReplayEndObserved": true,
+  "hostNormalBoundaryMode": "none",
+  "ordinaryIndependentThreadTimingAcceptance": false
+}

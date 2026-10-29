@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "3af854d7e4251890cb743157b00c862392e6d816",
+  "sourceCommit": "798a515c839af2770e08351c82e02771587948d8",
   "files": [
     {
       "path": ".gitignore",
@@ -190,8 +190,8 @@
     },
     {
       "path": "docs/porting/TH14_CURRENT_FULL_REGRESSION_OCT30.md",
-      "bytes": 2538,
-      "sha256": "581df56ee21bbee9fd39636de317f529f763fa6496cf31ef8794e9e3fa16b5a4"
+      "bytes": 6276,
+      "sha256": "56b626fa558ef0fca61c027980996715bea501980a751e33f9136bec311dfd12"
     },
     {
       "path": "docs/porting/TH14_CURRENT_GPU_BASELINE_OCT25.md",
@@ -510,8 +510,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 43888,
-      "sha256": "bc03d89f30b2df217d91851e5d91ef72e31b440dadd97155d1816ae39b94d6aa"
+      "bytes": 44316,
+      "sha256": "6f0207af03f5812cc2a8efe793763eab2221ca42bb6e4e7d22b67a655be23311"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -2024,6 +2024,11 @@
       "sha256": "a1dfab228accea46d9e876f89820f76ff7cb13796ac42af1473d0cf2f586d163"
     },
     {
+      "path": "docs/porting/th14-current-full-budget-oct30.json",
+      "bytes": 1650,
+      "sha256": "80340cdced90606ccb007d5ce9b3ce63fae1c02aafb334d245eadac5782b1eec"
+    },
+    {
       "path": "docs/porting/th14-current-full-replay-verified-oct28.json",
       "bytes": 69319,
       "sha256": "5c74be1ecba9d2b12a2e3e9cdf42d5b785e2d274c3be1ed70513bbfc32124233"
@@ -2037,6 +2042,11 @@
       "path": "docs/porting/th14-current-normal-regression-oct30.json",
       "bytes": 31297,
       "sha256": "817edeb30395a5b7b1ccaf2c6c12e8cde705111a1121ee1ea1c427fe97bb84a8"
+    },
+    {
+      "path": "docs/porting/th14-current-ordinary-full-oct30.json",
+      "bytes": 65390,
+      "sha256": "dfc33b9f958853389d28c1761f586d39c3508439254f341a9bf31ee4e2f2b35b"
     },
     {
       "path": "docs/porting/th14-current-queue-full-playbacks-observed-oct15.json",
@@ -3827,6 +3837,11 @@
       "path": "docs/porting/th14-marisab-lunatic-verified-oct26.json",
       "bytes": 9390,
       "sha256": "f40174518843036621d664323fecd96c0eb8c4b24cb2f47b92ac4e206b685ee4"
+    },
+    {
+      "path": "docs/porting/th14-marisab-normal-alt-oct30.json",
+      "bytes": 7123,
+      "sha256": "8569ea09f66504929a7acc604eb265db3bea291ee29deeb18bde7faa2e25117a"
     },
     {
       "path": "docs/porting/th14-math-verified.json",
@@ -16479,6 +16494,11 @@
       "sha256": "d073ee09ad0d695ae67c6af50e83bad2b826e7615086f72cb0a8ea240d03fad4"
     },
     {
+      "path": "tools/th14-current-ordinary-full-evidence-oct30.py",
+      "bytes": 13415,
+      "sha256": "9631dab5f8a8efd4711d8463f1a8ef5637808e185b7a4ae24da0953bf39ac1ae"
+    },
+    {
       "path": "tools/th14-current-queue-playback-evidence-check-oct15.py",
       "bytes": 14795,
       "sha256": "01db37a064038e6a7fb470034b1a64fb8b87046cc11680eaae6ee8e28d69a6d9"
@@ -24565,11 +24585,13 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "3af854d7e4251890cb743157b00c862392e6d816",
-    "title": "TH14 current-core full ReimuB Normal regression",
+    "basePublishedCommit": "798a515c839af2770e08351c82e02771587948d8",
+    "title": "TH14 current GLES full ordinary Application replay and retained WebGPU budget failure",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-current-normal-regression-evidence-oct30.py",
-      "docs/porting/th14-current-normal-regression-oct30.json",
+      "tools/th14-current-ordinary-full-evidence-oct30.py",
+      "docs/porting/th14-current-ordinary-full-oct30.json",
+      "docs/porting/th14-current-full-budget-oct30.json",
+      "docs/porting/th14-marisab-normal-alt-oct30.json",
       "docs/porting/TH14_CURRENT_FULL_REGRESSION_OCT30.md",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
@@ -24577,13 +24599,25 @@
     "sourceOnly": true,
     "gameAssetsAdded": false,
     "productionEngineChanged": false,
-    "productionCoreSourceUnits": 141,
-    "observerWasmSha256": "4f9956c748625a71d4e11ea90a1119f5ba9bb7ad100c0bc41cf099e83357ee0f",
-    "fullCurrentRegressionCallbacks": 122537,
-    "vmRows": 2586,
-    "combatCheckpoints": 1294,
-    "ordinaryIndependentThreadTimingAcceptance": false,
-    "currentFullApplicationPending": true,
+    "productionCoreCommit": "3af854d7e4251890cb743157b00c862392e6d816",
+    "currentGlesFullReplayFrames": 123412,
+    "assertions": 44,
+    "actualStagesActivated": 6,
+    "naturalLivingEnd": true,
+    "stableEndFrames": 60,
+    "finalLivingStock": 1,
+    "inputReplayUnchanged": true,
+    "originalWholePixelsOrPcmCompared": false,
+    "currentWebGpuBudgetFailureFrames": 108875,
+    "currentWebGpuMaximumWallSecondsUnchanged": 3600,
+    "alternativeMarisabNormalNativeCallbacks": 33926,
+    "alternativeMarisabNormalStages": [
+      1,
+      2,
+      3
+    ],
+    "ordinaryOriginalUiCallbacks": 0,
+    "currentBrowserFullFlowAccepted": false,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
     "completeGame": false,
