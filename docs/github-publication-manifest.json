@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "59ac9c67b850ed0348fdc6d047b1cd80aa02ae79",
+  "sourceCommit": "57a544191704e0ce64cd46de85fe648a3e152097",
   "files": [
     {
       "path": ".gitignore",
@@ -510,8 +510,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 44584,
-      "sha256": "3e39c91eaaf801616fa6a9ecb3ba0a790bf4fdab0adaa5d937aab46b4fa243a8"
+      "bytes": 44753,
+      "sha256": "ad1f1cd16bfbb4cfca9946a8b381fb6fa5b396b70f82d07a6dd50be8a0e6b031"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -520,8 +520,8 @@
     },
     {
       "path": "docs/porting/TH14_REPLAY_CONSTRUCTION_OCT30.md",
-      "bytes": 4830,
-      "sha256": "2453871ee1310df0926892dc937a759b76c68e66c7dcf505d47acf32c60edacc"
+      "bytes": 5469,
+      "sha256": "725cee8323c9665afda57f04d9ca359f777e109db1ef8f8f7c4cce989f768471"
     },
     {
       "path": "docs/porting/TH14_REPLAY_END_SOUND_FIX_OCT21.md",
@@ -5179,9 +5179,14 @@
       "sha256": "06d68521ff1fcff0408d7f37bf59e4987cda43b0e425eb8c9f601d15bedcb403"
     },
     {
+      "path": "docs/porting/th14-replay-construction-full-failure-oct30.json",
+      "bytes": 750,
+      "sha256": "a9152ae1110575c97fc0c8cbb683742109f1d29e7e3b22a0eeef8e17897e62ef"
+    },
+    {
       "path": "docs/porting/th14-replay-construction-oct30.json",
-      "bytes": 91761,
-      "sha256": "08eed6d18eb099968ed20294599ff5c2183973b9d6362e6ee3ab11734155e5e3"
+      "bytes": 93715,
+      "sha256": "bbc7d8535762e8fbd878b6bb0e90ed40ea41a9a107a8e9d88b78df2e5024c3b5"
     },
     {
       "path": "docs/porting/th14-replay-fps-verified-oct28.json",
@@ -20540,8 +20545,8 @@
     },
     {
       "path": "tools/th14-replay-construction-evidence-oct30.py",
-      "bytes": 11476,
-      "sha256": "3468df008cdfe0a85b5dea11f30244779c795c331aa39632c35d89b899d46c82"
+      "bytes": 13609,
+      "sha256": "9b87efec38dde91426f7cf7b44496a5b6371b0aa8f8abab1287927f04a8ab561"
     },
     {
       "path": "tools/th14-replay-construction-native-oct30.py",
@@ -24615,37 +24620,27 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "59ac9c67b850ed0348fdc6d047b1cd80aa02ae79",
-    "title": "TH14 distinguish first Replay construction from existing-controller stage restoration",
+    "basePublishedCommit": "57a544191704e0ce64cd46de85fe648a3e152097",
+    "title": "TH14 retain ordinary full Replay failure after verified construction repair",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "runtimes/th12/th12_web/cpp/game/Replay.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-native-replay-construction-fixture.cpp",
-      "tools/th14-replay-construction-native-oct30.py",
-      "tools/th14-replay-construction-compare-oct30.py",
       "tools/th14-replay-construction-evidence-oct30.py",
-      "tools/th14-build-native-application.py",
-      "tools/th14-native-application-process-host-oct27.py",
-      "docs/porting/TH14_REPLAY_CONSTRUCTION_OCT30.md",
       "docs/porting/th14-replay-construction-oct30.json",
-      "docs/porting/TH14_INITIAL_REPLAY_RESTORE_OCT27.md",
-      "docs/porting/TH14_CURRENT_FULL_REGRESSION_OCT30.md",
+      "docs/porting/th14-replay-construction-full-failure-oct30.json",
+      "docs/porting/TH14_REPLAY_CONSTRUCTION_OCT30.md",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "productionEngineChanged": true,
-    "nativeInitialCases": 288,
-    "nativeExistingStageCases": 288,
-    "oldInitialExactCases": 0,
-    "correctedInitialExactCases": 288,
-    "actualApplicationFramesPerVersion": 782,
-    "actualApplicationAssertionsPerVersion": 21,
-    "originalOrdinaryGuiAccepted": false,
-    "currentFullReplayAccepted": false,
-    "nativeNaturalRunModePairs": 30,
-    "nativeAllStageEntryModePairs": 25,
+    "productionEngineChanged": false,
+    "productionCoreCommit": "57a544191704e0ce64cd46de85fe648a3e152097",
+    "failedFullApplicationFrames": 27251,
+    "failedFullApplicationStages": [
+      1,
+      2
+    ],
+    "assertionsPassedBeforeFailure": 20,
+    "fullReplayAccepted": false,
     "completeGame": false,
     "nativeEquivalent": false
   }

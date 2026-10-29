@@ -157,6 +157,30 @@ def main():
     assert [a['state'] for a in runs['legacy']['actions']] == [a['state'] for a in runs['observed']['actions']]
     assert runs['legacy']['pcmFrames'] == runs['observed']['pcmFrames'] == 417792
     assert runs['legacy']['pcmSha256'] == runs['observed']['pcmSha256']
+    full_raw = read(home / 'ordinary-full/report.json')
+    full = json.loads(full_raw)
+    failure = load(ROOT / 'docs/porting/th14-replay-construction-full-failure-oct30.json')
+    plan = load(home / 'full-plan.json')
+    assert not full['completed'] and full['error'] == "AssertionError('Declared state was not reached within the frame budget')"
+    assert full['frames'] == failure['frames'] == 27251 and len(full['checks']) == failure['assertionsPassed'] == 20
+    assert failure['reportSha256'] == SHA(full_raw) and failure['planSha256'] == SHA(read(home / 'full-plan.json'))
+    assert full['wasmSha256'] == builds['observed']['wasmSha256'] == failure['wasmSha256']
+    assert full['toolSha256'] == SHA(read(home / 'ordinary-full/run-tool.py')) == SHA(read(ROOT / 'tools/th14-native-application-process-host-oct27.py'))
+    assert full['scenarioSha256'] == plan['scenarioSha256'] == SHA(read(ROOT / plan['scenario']))
+    assert plan['maximumFrames'] == 150000 and plan['maximumWallSeconds'] == 3600
+    assert plan['minimumFreeBytes'] == 100 * 1024**3 and plan['maximumOutputBytes'] == 128 * 1024**2
+    assert plan['scenarioUpperBoundFrames'] == 129854
+    assert failure['observedStages'] == sorted({r['state'][1] for r in full['rows'] if r['state'][1]}) == [1, 2]
+    last = full['rows'][-1]['state']
+    assert last[0:2] == [2, 2] and last[7] == failure['finalLivingStock'] == 0xffffffff
+    assert last[9] == failure['finalScoreUnits'] == 3285179
+    assert full['physicalAudioDevicesOpened'] == 0 and not failure['fullReplayAccepted']
+    assert full['initialSave']['replay/th14_01.rpy'] == full['finalSave']['replay/th14_01.rpy']
+    assert not (home / 'full-accepted.json').exists()
+    for capture in full['captures']:
+        assert SHA(read(home / 'ordinary-full' / capture['file'])) == capture['sha256']
+        live = capture['liveAnimations']
+        assert SHA(read(home / 'ordinary-full' / live['file'])) == live['sha256']
     result = dict(schema='th14/replay-construction-evidence/1', verifiedFiniteConstructionRepair=True,
                   originalInitialCases=288, originalExistingStageCases=288,
                   oldInitialExactCases=0, correctedInitialExactCases=288, existingStageExactCases=288,
@@ -168,6 +192,8 @@ def main():
                   activationScriptCallsObserved=20, inputReplayUnchanged=True, physicalAudioDevicesOpened=0,
                   initialPcmFramesPerVersion=417792, initialPcmHashesEqual=True,
                   olderWorkerOnlyProofWasIncorrectlyAppliedToInitialEntry=True,
+                  failedFullApplicationFrames=27251, failedFullApplicationStages=[1, 2],
+                  failedFullApplicationAssertionsPassed=20, fullApplicationFailureRetained=True,
                   originalOrdinaryGuiAccepted=False, completeReplayAcceptance=False,
                   browserAcceptance=False, completeGame=False, nativeEquivalent=False,
                   previousPublishedCommit='59ac9c67b850ed0348fdc6d047b1cd80aa02ae79',

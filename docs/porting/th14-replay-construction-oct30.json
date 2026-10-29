@@ -23,13 +23,20 @@
   "initialPcmFramesPerVersion": 417792,
   "initialPcmHashesEqual": true,
   "olderWorkerOnlyProofWasIncorrectlyAppliedToInitialEntry": true,
+  "failedFullApplicationFrames": 27251,
+  "failedFullApplicationStages": [
+    1,
+    2
+  ],
+  "failedFullApplicationAssertionsPassed": 20,
+  "fullApplicationFailureRetained": true,
   "originalOrdinaryGuiAccepted": false,
   "completeReplayAcceptance": false,
   "browserAcceptance": false,
   "completeGame": false,
   "nativeEquivalent": false,
   "previousPublishedCommit": "59ac9c67b850ed0348fdc6d047b1cd80aa02ae79",
-  "verifierSha256": "3468df008cdfe0a85b5dea11f30244779c795c331aa39632c35d89b899d46c82",
+  "verifierSha256": "9b87efec38dde91426f7cf7b44496a5b6371b0aa8f8abab1287927f04a8ab561",
   "bindings": {
     "artifacts/th14/replay-construction-oct30/native-v3/native.json": {
       "bytes": 2654402,
@@ -2006,6 +2013,42 @@
     "artifacts/th14/replay-construction-oct30/run-observed/save/replay/th14_01.rpy": {
       "bytes": 77283,
       "sha256": "28d9d29a34cf1dd0e67d67a82c1f0a5f7c508543271e0f1b1e4cbed527ff7353"
+    },
+    "artifacts/th14/replay-construction-oct30/ordinary-full/report.json": {
+      "bytes": 5688680,
+      "sha256": "a617c3cb93f70b2898f6aaa3f5474c735684e3048b58daf6f0d1037816252c4f"
+    },
+    "docs/porting/th14-replay-construction-full-failure-oct30.json": {
+      "bytes": 750,
+      "sha256": "a9152ae1110575c97fc0c8cbb683742109f1d29e7e3b22a0eeef8e17897e62ef"
+    },
+    "artifacts/th14/replay-construction-oct30/full-plan.json": {
+      "bytes": 730,
+      "sha256": "7ca68ecfab5ea2338e275dfc3012adaea409323a41cbc233d093678e07201208"
+    },
+    "artifacts/th14/replay-construction-oct30/ordinary-full/run-tool.py": {
+      "bytes": 26683,
+      "sha256": "80911b84ade035edef38e96a74a6c5cd0e3d8e3a4f09538475940ff256e9762c"
+    },
+    "artifacts/th14/initial-replay-restore-oct27/ordinary-full-v2/scenario.json": {
+      "bytes": 3491,
+      "sha256": "cc177972253693018338ebbe7b1a2654491197926aadad94e48a16f9ce5db643"
+    },
+    "artifacts/th14/replay-construction-oct30/ordinary-full/stage-one-ready.bgra": {
+      "bytes": 1228800,
+      "sha256": "c010dd4a4eb1d27a32dee0e22441a75591d02071e70704179bee6f463fee5342"
+    },
+    "artifacts/th14/replay-construction-oct30/ordinary-full/stage-one-ready-live.json": {
+      "bytes": 394989,
+      "sha256": "f5e1e3b9b4ddd0a8c5679fc5bab9d9639245ad20c2066115e74f887f79d50279"
+    },
+    "artifacts/th14/replay-construction-oct30/ordinary-full/stage-2-entry.bgra": {
+      "bytes": 1228800,
+      "sha256": "46155b3abb78f5ce6ce8fa74042e7ed1d8e096c5c2b5eec6ffcdbf9d247c5276"
+    },
+    "artifacts/th14/replay-construction-oct30/ordinary-full/stage-2-entry-live.json": {
+      "bytes": 473278,
+      "sha256": "e5f8956e84bdbdac4b9735a770d8050acee9547d3ea33cc80375c2e3d973637b"
     }
   }
 }
