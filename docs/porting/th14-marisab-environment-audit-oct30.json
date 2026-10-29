@@ -1,0 +1,262 @@
+{
+  "verifiedFiniteEnvironmentAudit": true,
+  "coreCommit": "57a544191704e0ce64cd46de85fe648a3e152097",
+  "sourceReplaySha256": "28d9d29a34cf1dd0e67d67a82c1f0a5f7c508543271e0f1b1e4cbed527ff7353",
+  "warmOriginalCallbacks": 19496,
+  "warmCurrentStrictAll32CameraHudVmCombatPassed": true,
+  "warmVm303Rows": 52,
+  "warmCombatCheckpoints": 212,
+  "warmOrderedPublications": 1770,
+  "originalWarmTerminalStage": 2,
+  "originalWarmTerminalBattleFrame": 10142,
+  "originalWarmTerminalScoreUnits": 3270751,
+  "sourceSixStageHeadersDoNotProveSixStagePlayback": true,
+  "oldFullScenarioFailurePreserved": true,
+  "oldOrdinaryEnvironmentEndScoreUnits": 3285179,
+  "ordinaryDeclaredOriginalEnvironmentFrames": 20053,
+  "ordinaryDeclaredOriginalEnvironmentAssertions": 18,
+  "ordinaryNaturalEndStage": 2,
+  "ordinaryNaturalEndBattleFrame": 10142,
+  "ordinaryNaturalEndScoreUnits": 3270751,
+  "ordinaryStableTerminalFrames": 60,
+  "ordinaryVersusWarmDiagnostic": {
+    "actualBeforePlayerRows": 19434,
+    "uniquePositiveClockPairs": 19254,
+    "unpairedRows": {
+      "frozenClockZero": 120,
+      "missingOrAmbiguousOriginalClock": 60
+    },
+    "all32DifferenceCounts": {
+      "21": 19246,
+      "22": 19254
+    },
+    "firstDifferencePerField": {
+      "21": {
+        "appObservation": 0,
+        "stage": 1,
+        "battleFrame": 1,
+        "appTick": 560,
+        "nativeCallback": 1,
+        "field": 21,
+        "actual": 15398,
+        "expected": 23826,
+        "scratchWord": 0
+      },
+      "22": {
+        "appObservation": 0,
+        "stage": 1,
+        "battleFrame": 1,
+        "appTick": 560,
+        "nativeCallback": 1,
+        "field": 22,
+        "actual": 2174,
+        "expected": 1360,
+        "scratchWord": 0
+      }
+    },
+    "firstAdditionalDifferenceBeyondScriptRng": null,
+    "strictAll32Equal": false,
+    "wholeOrdinaryNativeComparisonAccepted": false
+  },
+  "crossedEnvironments": [
+    {
+      "name": "application-cross-old-clock-native-cookie",
+      "initialGameTicks": 479352152,
+      "processCookie": 1759244761,
+      "frames": 15551,
+      "endScoreUnits": 3004324,
+      "actualBeforePlayerRows": 14992,
+      "uniquePositiveClockPairs": 14812,
+      "unpairedRows": {
+        "frozenClockZero": 120,
+        "missingOrAmbiguousOriginalClock": 60
+      },
+      "all32DifferenceCounts": {
+        "21": 14810,
+        "22": 14812
+      },
+      "firstDifferencePerField": {
+        "21": {
+          "appObservation": 0,
+          "stage": 1,
+          "battleFrame": 1,
+          "appTick": 560,
+          "nativeCallback": 1,
+          "field": 21,
+          "actual": 65265,
+          "expected": 23826,
+          "scratchWord": 0
+        },
+        "22": {
+          "appObservation": 0,
+          "stage": 1,
+          "battleFrame": 1,
+          "appTick": 560,
+          "nativeCallback": 1,
+          "field": 22,
+          "actual": 2174,
+          "expected": 1360,
+          "scratchWord": 0
+        }
+      },
+      "firstAdditionalDifferenceBeyondScriptRng": null,
+      "strictAll32Equal": false,
+      "wholeOrdinaryNativeComparisonAccepted": false
+    },
+    {
+      "name": "application-cross-native-clock-old-cookie",
+      "initialGameTicks": 433399386,
+      "processCookie": 3067924159,
+      "frames": 15551,
+      "endScoreUnits": 3018805,
+      "actualBeforePlayerRows": 14992,
+      "uniquePositiveClockPairs": 14812,
+      "unpairedRows": {
+        "frozenClockZero": 120,
+        "missingOrAmbiguousOriginalClock": 60
+      },
+      "all32DifferenceCounts": {
+        "12": 144,
+        "13": 45,
+        "14": 45,
+        "21": 14810,
+        "22": 14812,
+        "23": 92,
+        "24": 92,
+        "25": 89,
+        "26": 11
+      },
+      "firstDifferencePerField": {
+        "21": {
+          "appObservation": 0,
+          "stage": 1,
+          "battleFrame": 1,
+          "appTick": 560,
+          "nativeCallback": 1,
+          "field": 21,
+          "actual": 15398,
+          "expected": 23826,
+          "scratchWord": 0
+        },
+        "22": {
+          "appObservation": 0,
+          "stage": 1,
+          "battleFrame": 1,
+          "appTick": 560,
+          "nativeCallback": 1,
+          "field": 22,
+          "actual": 2174,
+          "expected": 1360,
+          "scratchWord": 0
+        },
+        "12": {
+          "appObservation": 14848,
+          "stage": 2,
+          "battleFrame": 5557,
+          "appTick": 15408,
+          "nativeCallback": 14911,
+          "field": 12,
+          "actual": 2748127,
+          "expected": 2748126,
+          "scratchWord": 429545889
+        },
+        "23": {
+          "appObservation": 14867,
+          "stage": 2,
+          "battleFrame": 5576,
+          "appTick": 15427,
+          "nativeCallback": 14930,
+          "field": 23,
+          "actual": 37226,
+          "expected": 23306,
+          "scratchWord": 3066438203
+        },
+        "24": {
+          "appObservation": 14867,
+          "stage": 2,
+          "battleFrame": 5576,
+          "appTick": 15427,
+          "nativeCallback": 14930,
+          "field": 24,
+          "actual": 54050,
+          "expected": 54048,
+          "scratchWord": 3066438203
+        },
+        "25": {
+          "appObservation": 14882,
+          "stage": 2,
+          "battleFrame": 5591,
+          "appTick": 15442,
+          "nativeCallback": 14945,
+          "field": 25,
+          "actual": 4,
+          "expected": 5,
+          "scratchWord": 430168614
+        },
+        "13": {
+          "appObservation": 14947,
+          "stage": 2,
+          "battleFrame": 5656,
+          "appTick": 15507,
+          "nativeCallback": 15010,
+          "field": 13,
+          "actual": 252,
+          "expected": 253,
+          "scratchWord": 3066438203
+        },
+        "14": {
+          "appObservation": 14947,
+          "stage": 2,
+          "battleFrame": 5656,
+          "appTick": 15507,
+          "nativeCallback": 15010,
+          "field": 14,
+          "actual": 1415200,
+          "expected": 1415300,
+          "scratchWord": 3066438203
+        },
+        "26": {
+          "appObservation": 14981,
+          "stage": 2,
+          "battleFrame": 5690,
+          "appTick": 15541,
+          "nativeCallback": 15044,
+          "field": 26,
+          "actual": 10,
+          "expected": 11,
+          "scratchWord": 3066438203
+        }
+      },
+      "firstAdditionalDifferenceBeyondScriptRng": {
+        "appObservation": 14848,
+        "stage": 2,
+        "battleFrame": 5557,
+        "appTick": 15408,
+        "nativeCallback": 14911,
+        "field": 12,
+        "actual": 2748127,
+        "expected": 2748126,
+        "scratchWord": 429545889
+      },
+      "strictAll32Equal": false,
+      "wholeOrdinaryNativeComparisonAccepted": false
+    }
+  ],
+  "cookieEffectSeparatedFromInitialClockInThisCppWindow": true,
+  "readOnlyCommonPrefixControlPassed": true,
+  "verifiedCoreObjectsReused": 141,
+  "verifiedDeviceObjectsReused": 4,
+  "adapterCompiledObjects": 1,
+  "originalGameRngHealthInputOrCookieWritten": false,
+  "allSelectedOrdinary32Equal": false,
+  "ordinaryOriginalGuiAccepted": false,
+  "originalWholePixelsOrPcmCompared": false,
+  "allSixStagesAccepted": false,
+  "modeInventoryChanged": false,
+  "browserAcceptance": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "verifierSha256": "9138d5ade9fc6141ca94f18752aacd198b402cdf74b4a9dff3e0cbb0a1928ed1",
+  "savedFullProofSha256": "cbb855ef5edd60053d964adf705575de1b27eacc7f418248d61bc09c28d3228e",
+  "boundPrivateArtifacts": 363
+}

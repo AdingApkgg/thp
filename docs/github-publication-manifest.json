@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "06b8b815b5037cc65500ea219f424c6c2ba17414",
+  "sourceCommit": "b15cc44ef5decf5afe512b6e831d078c4b346ba9",
   "files": [
     {
       "path": ".gitignore",
@@ -364,6 +364,11 @@
       "sha256": "23166e21cf5e9693149837b0b859d3921e0431bdd96b85af42bf33039595bdf8"
     },
     {
+      "path": "docs/porting/TH14_MARISAB_ENVIRONMENT_AUDIT_OCT30.md",
+      "bytes": 3950,
+      "sha256": "0d0e51b28bde13b71052579fbbf5ed9ac68cd657238b43c3d18cb5f812094cac"
+    },
+    {
       "path": "docs/porting/TH14_MARISAB_FULL_NATIVE_OCT19.md",
       "bytes": 2546,
       "sha256": "f713dbea93af192b1207ed85dfeb0f7b126e2ea864ce95d1bf38427a98a6e841"
@@ -520,8 +525,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 47759,
-      "sha256": "d55ac5d955c4e7138c1e0395f36f1fc3eacd9ea0efe49c20cbf0116efce13c5b"
+      "bytes": 48670,
+      "sha256": "72fc8c8040d376c966803ba65b929ed6750f32a12c23f6cebaf6684ef4add28f"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -3872,6 +3877,11 @@
       "path": "docs/porting/th14-marisab-easy-verified-oct26.json",
       "bytes": 10116,
       "sha256": "0821f999533e167efe07c0516c1113c66d304b226aebb7b0c6add2616a9cae6c"
+    },
+    {
+      "path": "docs/porting/th14-marisab-environment-audit-oct30.json",
+      "bytes": 7748,
+      "sha256": "6d864b29c53f1a146f62acf0a87637a2cc4ea57b2040d6bd65a7ddbd0d35ceac"
     },
     {
       "path": "docs/porting/th14-marisab-lunatic-verified-oct26.json",
@@ -12444,6 +12454,11 @@
       "sha256": "2797aeae3c9cad28ef54ca4c155065ee26fe6d70d96525ac2b6f565266bf4cff"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-native-application-player-fixture.cpp",
+      "bytes": 2338,
+      "sha256": "a9cf17396b16a0849036ba3a1f80e79bffa5b85dcd0be7d292bc417d942eca48"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-native-campaign-fixture.cpp",
       "bytes": 66310,
       "sha256": "76bea8b3c342d958fcd41c1adbe13083a6fd03e6bc3f57dfc54392e23f19c2b7"
@@ -15687,6 +15702,16 @@
       "path": "tools/th14-application-gles-trace-oct27.py",
       "bytes": 14297,
       "sha256": "1ec3031a92e5e273cd9cec4c5f60ca7501bcb7126400f84a3659115d5c327da5"
+    },
+    {
+      "path": "tools/th14-application-player-host-oct30.py",
+      "bytes": 1866,
+      "sha256": "f62c9ce25d83e0ee0a7870355c0c2e65ec29872412e86e8ec74b6865e11476f3"
+    },
+    {
+      "path": "tools/th14-application-player-observer-oct30.py",
+      "bytes": 3294,
+      "sha256": "58252d5a4a1310bf686ffd81c01578c6af5e65379c73d075698644edc2dc7952"
     },
     {
       "path": "tools/th14-application-render-pair-check.py",
@@ -19187,6 +19212,11 @@
       "path": "tools/th14-marisa-b-controller-native.py",
       "bytes": 108,
       "sha256": "1baa332085647efc0a2d46a9e211a4e3114faf423013201e27ad65e621b8b320"
+    },
+    {
+      "path": "tools/th14-marisab-environment-evidence-oct30.py",
+      "bytes": 10165,
+      "sha256": "9138d5ade9fc6141ca94f18752aacd198b402cdf74b4a9dff3e0cbb0a1928ed1"
     },
     {
       "path": "tools/th14-math-check.mjs",
@@ -24700,32 +24730,30 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "06b8b815b5037cc65500ea219f424c6c2ba17414",
-    "title": "TH14 replay manager startup order, browser short-replay persistence and current ordinary full Normal flow",
+    "basePublishedCommit": "b15cc44ef5decf5afe512b6e831d078c4b346ba9",
+    "title": "TH14 MarisaB Normal original playback-boundary and process-environment audit",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/launcher/src/launcher/app.mts",
-      "tools/th14-replay-manager-startup-oct30.mjs",
-      "tools/th14-reimub-ordinary-application-evidence-oct30.py",
-      "docs/porting/th14-replay-manager-startup-oct30.json",
-      "docs/porting/TH14_REPLAY_MANAGER_STARTUP_OCT30.md",
-      "docs/porting/th14-browser-replay-roundtrip-oct30.json",
-      "docs/porting/th14-reimub-ordinary-application-oct30.json",
-      "docs/porting/TH14_REIMUB_ORDINARY_APPLICATION_OCT30.md",
-      "docs/porting/TH14_CURRENT_REPAIR_REGRESSION_OCT30.md",
+      "runtimes/th12/th12_web/tests/cpp/th14-native-application-player-fixture.cpp",
+      "tools/th14-application-player-observer-oct30.py",
+      "tools/th14-application-player-host-oct30.py",
+      "tools/th14-marisab-environment-evidence-oct30.py",
+      "docs/porting/th14-marisab-environment-audit-oct30.json",
+      "docs/porting/TH14_MARISAB_ENVIRONMENT_AUDIT_OCT30.md",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
     "productionEngineChanged": false,
-    "productionLauncherFunctionChanged": "manageReplays",
+    "productionLauncherChanged": false,
     "productionCoreCommit": "57a544191704e0ce64cd46de85fe648a3e152097",
-    "actualFunctionDeclaredIoControls": 14,
-    "currentBrowserShortReplaySavedReloadedPlayedToNaturalEnd": true,
-    "currentBrowserColdManagerListingAccepted": true,
-    "browserFileByteDownloadAccepted": false,
-    "currentCoreOrdinaryReimuBNormalFullFlowAccepted": true,
-    "originalOrdinaryGuiOrWholePixelsOrPcmAccepted": false,
+    "warmCurrentStrictCallbacks": 19496,
+    "ordinaryDeclaredOriginalEnvironmentFrames": 20053,
+    "crossedWindowFramesEach": 15551,
+    "onlyReadOnlyApplicationAdapterAdded": true,
+    "originalOrdinaryGuiOrAll32Accepted": false,
+    "allSixStagesAccepted": false,
+    "modeInventoryChanged": false,
     "completeGame": false,
     "nativeEquivalent": false
   }
