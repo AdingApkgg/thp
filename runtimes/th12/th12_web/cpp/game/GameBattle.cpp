@@ -468,6 +468,7 @@ bool GameBattle::spawn_root() {
 bool GameBattle::update(const std::function<bool()>& sample_input
 #if PORT_TITLE == 14
     ,bool overlay_already_updated
+    ,const std::function<bool()>& before_normal_animation_update
 #endif
 ) {
     if(!initialized||last_error)return false;
@@ -560,6 +561,12 @@ bool GameBattle::update(const std::function<bool()>& sample_input
     if(!hud.finish_update(hud_input())){last_error=-1010;error="HUD indicator update";return false;}
 #if PORT_TITLE == 14
     if(last_error)return false;
+    // Retail47e5e0 can be entered after the loading worker has restored the
+    // incoming Replay entry. Poll at this registry boundary as well as at
+    // Supervisor1 so normal ANM consumes the newly ready stage's RNG state.
+    if(before_normal_animation_update&&!before_normal_animation_update()){
+        last_error=-1009;return false;
+    }
 #endif
     if(!animations.update(false)){last_error=-1005;if(error.empty())error="animation update: "+animations.last_error_text();return false;}
     if(control_running)++frame;

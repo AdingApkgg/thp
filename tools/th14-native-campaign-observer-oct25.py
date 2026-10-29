@@ -19,19 +19,25 @@ parser.add_argument('--difficulty',type=int,choices=range(4),required=True)
 parser.add_argument('--publication-cutoff',type=int,default=1000)
 parser.add_argument('--combat-schema',type=int,choices=(2,3),default=2)
 parser.add_argument('--max-seconds',type=int,default=7200)
+parser.add_argument('--maximum-startup-seconds',type=int,default=0,help='Explicit no-first-Player deadline; zero leaves the overall wall limit in control')
 parser.add_argument('--maximum-callbacks',type=int,default=160000)
 parser.add_argument('--minimum-free-gib',type=float,default=100)
 parser.add_argument('--maximum-capture-gib',type=float,default=2)
 parser.add_argument('--scene-camera-events',action='store_true',help='Observe scene camera-copy and main-loop camera publication/perspective boundaries during transitions')
 parser.add_argument('--controller-phase-events',action='store_true',help='Observe original loading-flag read at controller priority11; combined camera tracing switches its other breakpoint between update and draw')
 parser.add_argument('--worker-rng-events',action='store_true',help='Observe replay seed restoration after the worker sleep and retain the paused main-thread PC')
+parser.add_argument('--worker-main-context',action='store_true',help='Diagnostic only: retain paused main-thread registers and bounded stack bytes at worker sleep/seed-restore events; no unwind or engine input')
+parser.add_argument('--worker-main-stack-bytes',type=int,choices=(64,256,512),default=64,help='Diagnostic stack-read upper bound, clamped to the current stack page; nondefault sizes require worker-main-context')
 parser.add_argument('--exit-boundary-events',action='store_true',help='Use a free main-thread hardware breakpoint outside loading/publication windows to observe the original WinMain loop exit')
 parser.add_argument('--live-callbacks',help='Comma-separated predeclared VM observation callbacks, including1; maximum32')
 parser.add_argument('--camera-write-events',action='store_true',help='Observe actual world-right X stores with a draw-phase main-thread DR2 data breakpoint; diagnostic values are never engine inputs')
 parser.add_argument('--game-directory',help='Default: directory of executable in runtimes/th14/target.json')
 opt=parser.parse_args()
 assert not opt.camera_write_events or (opt.scene_camera_events and opt.controller_phase_events)
+assert not opt.worker_main_context or opt.worker_rng_events
+assert opt.worker_main_context or opt.worker_main_stack_bytes==64
 assert 1<=opt.publication_cutoff<=opt.maximum_callbacks and opt.max_seconds>0
+assert 0<=opt.maximum_startup_seconds<=opt.max_seconds
 assert opt.minimum_free_gib>=0 and opt.maximum_capture_gib>0
 snapshot_callbacks=tuple(int(value)for value in opt.live_callbacks.split(','))if opt.live_callbacks else(1,26000,30000,36000,38900,60000,90000,120000)
 assert 1<=len(snapshot_callbacks)<=32 and snapshot_callbacks==tuple(sorted(set(snapshot_callbacks)))and snapshot_callbacks[0]==1
@@ -76,6 +82,7 @@ signatures={
  'WriteProcessMemory':([W.HANDLE,C.c_void_p,C.c_void_p,C.c_size_t,C.POINTER(C.c_size_t)],W.BOOL),
  'Wow64GetThreadContext':([W.HANDLE,C.c_void_p],W.BOOL),'Wow64SetThreadContext':([W.HANDLE,C.c_void_p],W.BOOL),
  'TerminateProcess':([W.HANDLE,W.UINT],W.BOOL),'WaitForSingleObject':([W.HANDLE,W.DWORD],W.DWORD),'CloseHandle':([W.HANDLE],W.BOOL),
+ 'GetExitCodeThread':([W.HANDLE,C.POINTER(W.DWORD)],W.BOOL),
 }
 for name,(args,result)in signatures.items():getattr(k,name).argtypes=args;getattr(k,name).restype=result
 def checked(ok):
@@ -114,8 +121,23 @@ def read(address,count):
 def u32(address):return struct.unpack('<I',read(address,4))[0]
 def context(handle):
     b=C.create_string_buffer(716);struct.pack_into('<I',b,0,0x10017);checked(k.Wow64GetThreadContext(handle,b));return b
+def confirmed_thread_ended(tid):
+    # A zero-time wait confirms termination even when an EXIT_THREAD event is
+    # still queued. Never infer it merely from a context API error or code259.
+    status=k.WaitForSingleObject(threads[tid],0)
+    if status==0x102:return False
+    if status!=0:raise C.WinError(C.get_last_error())
+    code=W.DWORD();checked(k.GetExitCodeThread(threads[tid],C.byref(code)))
+    thread_events.append(dict(event='context-install-skipped-confirmed-terminated',threadId=tid,
+        exitCode=code.value,zeroTimeoutWait=0,hostMonotonicNs=time.monotonic_ns(),readOnly=True))
+    return True
+
 def install(tid,current=False):
-    b=context(threads[tid])
+    if not current and confirmed_thread_ended(tid):return
+    try:b=context(threads[tid])
+    except OSError as exc:
+        if not current and exc.winerror==5 and confirmed_thread_ended(tid):return
+        raise
     pending=pending_publications.get(tid)
     trace_publications=first_snapshot is not None and callback_count<opt.publication_cutoff
     addresses=[0x44dbd0,serial_watch_manager+0xff52c8 if trace_publications else sleep_pcs.get(tid,0x435b0f),pending['publishPc']if trace_publications and pending else (0x456133 if tid==pi.tid else sleep_pcs.get(tid,0x435b0f)) if trace_publications else (0x456133 if tid==pi.tid else 0x47d0ec),0x47d720 if tid==pi.tid and transition_trace else 0x47d0ec if tid!=pi.tid and trace_publications else 0]if first_snapshot is not None else[0x44dbd0,serial_watch_manager+0xff52c8 if serial_watch_manager else 0x47e938,pending['publishPc']if pending else 0,0x47d720 if tid==pi.tid else worker_phase_pcs.get(tid,0x47d0ec)]
@@ -136,7 +158,10 @@ def install(tid,current=False):
     struct.pack_into('<I',b,24,(sum(1<<(2*i)for i,a in enumerate(addresses)if a)|(0xd00000 if trace_publications else 0)) if first_snapshot is not None else 0x45|(0x10 if pending else 0)|(0xd00000 if serial_watch_manager else 0))
     if watch_camera_write:struct.pack_into('<I',b,24,struct.unpack_from('<I',b,24)[0]|0xd000000)
     if current:struct.pack_into('<I',b,192,struct.unpack_from('<I',b,192)[0]|0x10000)
-    checked(k.Wow64SetThreadContext(threads[tid],b))
+    if not k.Wow64SetThreadContext(threads[tid],b):
+        context_error=C.get_last_error()
+        if not current and context_error==5 and confirmed_thread_ended(tid):return
+        raise C.WinError(context_error)
 def player_snapshot():
     globals_=struct.unpack('<32I',read(0x4f5828,128));player,control,enemies=[u32(x)for x in (0x4db67c,0x4db558,0x4db544)]
     assert player and control
@@ -247,6 +272,15 @@ def event_snapshot(pc,tid,b):
         row=dict(event=targets[pc],pc=pc,threadId=tid,hostMonotonicNs=time.monotonic_ns(),precedingPlayerCallbacks=callback_count,stage=u32(0x4f58a4),stageFrame=u32(control+0x14)if control else None,rngHex=read(0x4db508,16).hex(),registers=regs,originalInstructionBytes=read(pc,6).hex())
         if opt.worker_rng_events and tid!=pi.tid and pi.tid in threads:
             main=context(threads[pi.tid]);row['mainThreadPcAtWorkerEvent']=struct.unpack_from('<I',main,184)[0]
+            if opt.worker_main_context:
+                main_regs=dict(zip(['edi','esi','ebx','edx','ecx','eax','ebp','eip','cs','eflags','esp'],struct.unpack_from('<11I',main,156)))
+                stack_count=min(opt.worker_main_stack_bytes,4096-(main_regs['esp']&4095))
+                assert main_regs['esp']%4==0 and stack_count%4==0
+                stack=read(main_regs['esp'],stack_count)
+                row['mainThreadContextAtWorkerEvent']=dict(registers=main_regs,stackHex=stack.hex(),
+                    stackBytes=len(stack),requestedStackUpperBound=opt.worker_main_stack_bytes,clampedToCurrentStackPage=True,
+                    gameReturnCandidates=[dict(stackOffset=index*4,address=value)for index,value in enumerate(struct.unpack('<'+str(len(stack)//4)+'I',stack))if 0x400000<=value<0x4b0000],
+                    readOnly=True,diagnosticOnly=True,unwoundCallStack=False,providedToEngine=False)
         if pc==0x435b0f:
             row['requestedMilliseconds']=u32(regs['esp']);assert row['requestedMilliseconds']==60
             assert row['originalInstructionBytes'].startswith('ffd0');sleep_pcs[tid]=0x435b11;transition_trace=True
@@ -338,6 +372,8 @@ def terminal_menu_sample():
 
 try:
     while time.monotonic()-started<opt.max_seconds and callback_count<opt.maximum_callbacks and not complete and not capture_stop_requested and not exited:
+        if first_snapshot is None and opt.maximum_startup_seconds and time.monotonic()-started>opt.maximum_startup_seconds:
+            raise TimeoutError('Declared no-first-Player startup deadline exceeded')
         ev=types.DebugEvent()
         if not k.WaitForDebugEvent(C.byref(ev),500):
             code=C.get_last_error()
@@ -457,6 +493,6 @@ finally:
         callbacks=callback_count,selectedSha256=sha(raw),selectedBytes=len(raw),playerHostTimesSha256=sha(player_times),observedReplayTerminalMarker=None,replayTerminalMarkerObservationImplemented=False,observedForcedReplayEndMenu=complete,observedColdFirstPlayerBoundary=first_snapshot is not None,derivedSingleStageReplay=False,derivedTwoStageReplay=False,intactOriginalReplay=True,recordedStages=sorted({struct.unpack_from('<I',raw,i+120)[0]for i in range(0,len(raw),128)}),transitionEvents=transition_events,sourceFullReplaySha256=asset_report['replaySha256'],recordedStageHeaderInputAndFpsRetainedExactly=True,anmPublicationTraceEndsAtFirstPlayer=False,anmPublicationTraceCutoffPlayerCallbacks=opt.publication_cutoff,hudScoreStride=8,hudScoreSha256=sha(hud_raw),worldCameraSha256=sha(camera_raw),worldCameraBytes=len(camera_raw),worldCameraStride=0x124,mainResourceFrames=main_resource_frames,allAnmPublications=len(allocation_rows),serialWriteObservations=len(serial_write_rows),allocationEventsSha256=sha((home/'allocation-events.jsonl').read_bytes())if(home/'allocation-events.jsonl').exists()else None,allRecordedSerialsContiguous=len(allocation_rows)<=0x7ffff,serialModulus=0x7ffff,serialSkipsZero=True,allRecordedPublicationOrdinalsContiguous=all(r['publicationOrdinal']==i+1 and r['serial']==i%0x7ffff+1 for i,r in enumerate(allocation_rows)),observedSerialWrapPublicationOrdinals=[r['publicationOrdinal']for r in allocation_rows if r['serial']==1 and r['publicationOrdinal']>1],terminalMenuSamples=terminal_menu_samples,beamFallbackCount=len(events),
         readOnlyLiveAnimationSnapshots=live_capture_callbacks,liveAnimationSnapshotBoundary="before original Player callback",childExited=exited,error=error,debugErrors=debug_errors,elapsedSeconds=time.monotonic()-started,sourceSha256=sha(observer_source_bytes),observerSourceFrozenAtStart=True,controllerPhaseEventsSha256=sha((home/'controller-phase-events.jsonl').read_bytes())if(home/'controller-phase-events.jsonl').exists()else None,sceneCameraCopyEventsSha256=sha((home/'scene-camera-copy-events.jsonl').read_bytes())if(home/'scene-camera-copy-events.jsonl').exists()else None,sceneCameraCopyEvents=len(scene_camera_copies),mainCameraBoundaryEvents=camera_boundary_count,
         nativeTypesSourceSha256=sha((root/'tools/th14-native-session-capture.py').read_bytes()),completeGame=False,nativeEquivalent=False)
-    report.update(processExitEvent=process_exit_event,observerTerminationRequested=observer_termination_requested,exitBoundaryEvents=exit_boundary_events,diagnosticStopBeforeBeamFallback=capture_stop_requested,cameraRightWriteEvents=camera_right_write_count,cameraRightWriteEventsSha256=sha((home/'camera-right-write-events.jsonl').read_bytes())if(home/'camera-right-write-events.jsonl').exists()else None)
+    report.update(processExitEvent=process_exit_event,observerTerminationRequested=observer_termination_requested,exitBoundaryEvents=exit_boundary_events,diagnosticStopBeforeBeamFallback=capture_stop_requested,cameraRightWriteEvents=camera_right_write_count,cameraRightWriteEventsSha256=sha((home/'camera-right-write-events.jsonl').read_bytes())if(home/'camera-right-write-events.jsonl').exists()else None,workerMainContextEvents=sum('mainThreadContextAtWorkerEvent'in row for row in transition_events))
     (home/'report.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:report[k]for k in('observedForcedReplayEndMenu','allAnmPublications','beamFallbackCount','callbacks','childExited','error','elapsedSeconds','processExitEvent','observerTerminationRequested')}),flush=True)
 if error or not complete:raise SystemExit(1)

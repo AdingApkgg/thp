@@ -162,6 +162,7 @@ public:
     bool update(const std::function<bool()>& sample_input={}
 #if PORT_TITLE == 14
         ,bool overlay_already_updated=false
+        ,const std::function<bool()>& before_normal_animation_update={}
 #endif
     );
     bool draw(AnmRenderer&,SceneDrawKind);

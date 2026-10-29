@@ -616,6 +616,10 @@ bool GameSession::update(const GameSessionInput& input) {
         }
 #if PORT_TITLE == 14
         ,overlay_already_updated
+        ,[this](){
+            return !battle->pending_stage||battle->pump_stage_loading(stage_load_clock(),
+                animations.first_deferred_capture_file_index(),stage_load_host_flags);
+        }
 #endif
         );
         if(playback_ended){

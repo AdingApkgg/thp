@@ -4,6 +4,7 @@
 #include "ApplicationCaptureTh14.hpp"
 #include "StageUploadsTh14.hpp"
 #include "StageDecodeTh14.hpp"
+#include "StageWorkerWaitTh14.hpp"
 #include <random>
 #endif
 #include "AudioDevice.hpp"
@@ -180,8 +181,7 @@ struct Application:StageResourceEffects
     bool initial_decode_complete=true;
     bool initial_upload_waiting=false;
     StageUploadsTh14 stage_uploads;
-    u64 stage_worker_generation=0,stage_worker_started_ns=0;
-    bool stage_worker_waiting=false;
+    StageWorkerWaitTh14 stage_worker_wait;
     struct StageWorkerWaitToken {Application* owner;u64 generation;};
     bool core_loading_done=false;
 #if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
@@ -698,33 +698,33 @@ struct Application:StageResourceEffects
     static void finish_stage_worker_wait(void* raw){
         std::unique_ptr<StageWorkerWaitToken> token(static_cast<StageWorkerWaitToken*>(raw));
         auto& app=*token->owner;
-        if(token->generation!=app.stage_worker_generation||!app.stage_worker_waiting)return;
-        const u64 elapsed=u64(SDL_GetTicksNS())-app.stage_worker_started_ns;
-        if(elapsed<60000000){
-            const int remaining=int((60000000-elapsed+999999)/1000000);
+        if(!app.stage_worker_wait.owns(token->generation))return;
+        const u64 now=u64(SDL_GetTicksNS());
+        if(!app.stage_worker_wait.ready(now)){
+            const int remaining=int((app.stage_worker_wait.remaining(now)+999999)/1000000);
             schedule_th14_work(finish_stage_worker_wait,token.release(),remaining);return;
         }
-        app.stage_worker_waiting=false;
+        const u64 elapsed=now-app.stage_worker_wait.started_ns;
+        if(!app.stage_worker_wait.finish(token->generation,now))return;
         std::printf("[loading14] worker wait completed after %.3fms\n",double(elapsed)/1000000.);
     }
     static void start_stage_worker_wait(void* raw){
         std::unique_ptr<StageWorkerWaitToken> token(static_cast<StageWorkerWaitToken*>(raw));
         auto& app=*token->owner;
-        if(token->generation!=app.stage_worker_generation||!app.stage_worker_waiting)return;
-        app.stage_worker_started_ns=u64(SDL_GetTicksNS());
+        if(!app.stage_worker_wait.start(token->generation,u64(SDL_GetTicksNS())))return;
         std::printf("[loading14] worker wait dispatched; minimum60ms\n");
         schedule_th14_work(finish_stage_worker_wait,token.release(),60);
     }
     bool begin_stage_worker_wait(bool initial)override{
-        ++stage_worker_generation;stage_worker_waiting=!initial;
-        if(stage_worker_waiting){
+        stage_worker_wait.begin(initial);
+        if(stage_worker_wait.waiting){
             // Dispatch after this callback pass. No scene/resource pointer is
             // retained by either timer, and a newer generation cancels it.
-            schedule_th14_work(start_stage_worker_wait,new StageWorkerWaitToken{this,stage_worker_generation},0);
+            schedule_th14_work(start_stage_worker_wait,new StageWorkerWaitToken{this,stage_worker_wait.generation},0);
         }
         return true;
     }
-    bool stage_worker_wait_ready()const override{return !stage_worker_waiting;}
+    bool stage_worker_wait_ready()const override{return stage_worker_wait.ready(u64(SDL_GetTicksNS()));}
     bool draw_startup_loading()override{
         if(!boot_signature_active||!boot_signature_uploaded)return true;
         if(boot_signature_pending){
@@ -787,7 +787,7 @@ struct Application:StageResourceEffects
     void cancel_stage_phases(StageResources& stage,u32)override{
         // Queued raw resource references must disappear before GPU teardown
         // or StageResources destruction. release also covers boot ownership.
-        ++stage_worker_generation;stage_worker_waiting=false;
+        stage_worker_wait.cancel();
         stage_uploads.cancel(stage);release(stage);
     }
     bool defer_ending_loading()const override{return true;}

@@ -18,13 +18,21 @@ def main():
     for name in ['native','model','build','output']:parser.add_argument('--'+name,type=Path,required=True)
     parser.add_argument('--prefix',type=int,default=0,help='Explicitly verify only this diagnostic prefix; never accepts it as a natural full run')
     parser.add_argument('--scene-copy-observation',type=Path,help='Separately verified original TF-copy observation; only the declared15000-callback prefix is accepted')
+    parser.add_argument('--controlled-thread-observation',type=Path,help='Explicitly controlled original normal-ANM worker observation; finite diagnostic prefixes only, never ordinary timing acceptance')
+    parser.add_argument('--proposed-normal-boundary',action='store_true',help='Explicitly retain a proposed host-clock delivery boundary; field equality never accepts its exact original instruction placement')
     args=parser.parse_args();native=args.native.resolve();model=args.model.resolve();bindings={}
     assert args.prefix>=0
+    assert not(args.scene_copy_observation and args.controlled_thread_observation)
+    assert not(args.proposed_normal_boundary and(args.scene_copy_observation or args.controlled_thread_observation))
     assert all(p.is_relative_to(ROOT/'artifacts/th14')for p in (native,model))
     def read(path):
         data=path.read_bytes();bindings[path.relative_to(ROOT).as_posix()]=dict(bytes=len(data),sha256=SHA(data));return data
     def load(path):return json.loads(read(path))
     original=load(native/'report.json');reported=load(model/'report.json');build=load(args.build.resolve());captured=original['callbacks'];count=args.prefix or captured
+    assert (reported.get('hostNormalBoundaryMode')=='proposed')==args.proposed_normal_boundary
+    if args.proposed_normal_boundary:
+        assert reported['normalBoundaryTimestampAssumptionDeclared']and not reported['vmCallbackPointersWrapped']
+        assert not reported['ordinaryIndependentThreadTimingAcceptance']and not reported['exactOriginalInstructionBoundaryAccepted']
     assert original['childExited']and not original['error']
     if args.prefix:assert count<=captured and reported['diagnosticPrefixOnly']
     else:assert original['observedForcedReplayEndMenu']and not reported['diagnosticPrefixOnly']
@@ -38,6 +46,16 @@ def main():
         assert len(prepared)==len(plans)==1
         subprocess.run([sys.executable,str(ROOT/'tools/th14-scene-copy-word-evidence-oct26.py'),'--native',str(native),'--build',str(prepared[0].parent),'--plan',str(plans[0]),'--output',str(proof_path),'--check'],check=True)
         assert reported['sceneCopyObservationSha256']==SHA(read(proof_path))and len(reported['sceneCopyWordHandoffs'])==1
+    elif args.controlled_thread_observation:
+        assert args.prefix>0 and reported['hostNormalBoundaryMode']=='controlled'
+        assert reported['productionNormalAnmBoundaryPoll']and not reported['vmCallbackPointersWrapped']
+        assert not reported['ordinaryIndependentThreadTimingAcceptance']
+        proof_path=args.controlled_thread_observation.resolve();proof=load(proof_path)
+        subprocess.run([sys.executable,str(ROOT/'tools/th14-controlled-worker-boundary-evidence-oct29.py'),
+            '--native',str(native),'--output',str(proof_path),'--check'],check=True)
+        assert proof['verifiedControlledOriginalNormalAnmBoundary']and proof['diagnosticPrefixOnly']
+        assert not proof['ordinaryIndependentThreadTimingAcceptance']and count<=proof['capturedCallbacks']
+        assert proof['bindings'][(native/'report.json').relative_to(ROOT).as_posix()]['sha256']==SHA(read(native/'report.json'))
     else:assert original['hardwareBreakpointsOnly']
     assert original['instructionBytesPatched']==original['rngOrCounterWrites']==0
     assert not original['inputInjected']and original['gameStateWordWrites']==1 and original['caseInitialization']['attractBitClearOnly']
@@ -96,9 +114,17 @@ def main():
     timing=[row for row in reported['observedPhaseInputs']if row['phase']=='Timeline']
     result=dict(verifiedFiniteEvidence=True,callbacks=count,sourceReplaySha256=assets['replaySha256'],selection=reported['selection'],stagesObserved=original['recordedStages'],allSelected32Equal=True,allCamera25Equal=True,allHud2Equal=True,vm303Snapshots=snapshots,vm303Rows=sum(row['rows']for row in snapshots),allVm303AndRegistryOrderEqual=True,combatCheckpoints=len(index['snapshots']),nonemptyCombatCheckpoints=active,combatRows=totals,combatFieldCounts={key:len(value)for key,value in fields.items()},allCapturedCombatWordsEqual=True,publicationCutoffCallbacks=cutoff,orderedPublications=len(publications),timelineCompletionSources=timing,wasmSha256=build['wasmSha256'],comparisonToolSha256=reported.get('comparisonToolSha256'),verifierSha256=SHA(Path(__file__).read_bytes()),bindings=bindings,limitations=['Warm replay with declared host time, entropy and asynchronous resource completion inputs; ordinary original cold-menu initialization is not proved.','Only stated fields and sampled objects, including empty loading frames; whole objects and all curve samples are not compared.','Publication order covers only the declared initial window.','No actual GPU/PCM, all-mode equivalence, browser acceptance or persistence is proved.'],completeGame=False,nativeEquivalent=False)
     result.update(diagnosticPrefixOnly=bool(args.prefix),originalCapturedCallbacks=captured,originalNaturalReplayEndObserved=bool(original['observedForcedReplayEndMenu']),combatCheckpoints=checkpoints)
+    result.update(hostNormalBoundaryMode=reported.get('hostNormalBoundaryMode','none'),ordinaryIndependentThreadTimingAcceptance=False)
     if args.scene_copy_observation:
         result.update(sceneCopyObservationSha256=SHA(read(args.scene_copy_observation.resolve())),hardwareDebugInputKind='verified original hardware watches and TF copy steps')
         result['limitations'].append('The explicit Scene-copy observation validates only this TF-stepped diagnostic prefix; historical camera failures remain independent.')
+    if args.controlled_thread_observation:
+        result.update(controlledThreadObservationSha256=SHA(read(args.controlled_thread_observation.resolve())),
+            hardwareDebugInputKind='hardware breakpoints with one explicitly controlled main-thread suspend increment',ordinaryIndependentThreadTimingAcceptance=False)
+        result['limitations'].append('Original timing was explicitly controlled at normal ANM entry; ordinary independent original/browser scheduling is not accepted.')
+    if args.proposed_normal_boundary:
+        result.update(proposedNormalBoundaryAssumption=True,exactOriginalInstructionBoundaryAccepted=False)
+        result['limitations'].append('The host clock is delivered at a proposed normal-ANM boundary; exact placement in this original record is an assumption, not accepted original instruction evidence.')
     if args.prefix:result['limitations'].append('Explicit diagnostic prefix only; neither the original process exit nor this prefix proves natural replay completion.')
     output=args.output.resolve();assert output.is_relative_to(ROOT/'docs/porting')or output.is_relative_to(ROOT/'artifacts/th14')
     output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
