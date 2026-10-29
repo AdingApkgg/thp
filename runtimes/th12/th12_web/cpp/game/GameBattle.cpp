@@ -568,7 +568,21 @@ bool GameBattle::update(const std::function<bool()>& sample_input
         last_error=-1009;return false;
     }
 #endif
+#if PORT_TITLE == 14
+    bool loading_failed=false;
+    std::function<bool()> after_normal_vm;
+    if(pending_stage&&before_normal_animation_update)after_normal_vm=[&]{
+        if(before_normal_animation_update())return true;
+        loading_failed=true;return false;
+    };
+    if(!animations.update(false,after_normal_vm)){
+        last_error=loading_failed?-1009:-1005;
+        if(error.empty())error=loading_failed?"loading at normal VM return":"animation update: "+animations.last_error_text();
+        return false;
+    }
+#else
     if(!animations.update(false)){last_error=-1005;if(error.empty())error="animation update: "+animations.last_error_text();return false;}
+#endif
     if(control_running)++frame;
     // Both VM registries have now consumed resource retirement markers.
     if(transitioning&&stage_active&&!outgoing_stage){

@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "872da5bdfa263a1d76bce01845d14e09b538f6aa",
+  "sourceCommit": "36009ab934e3838c6461403362fd4f3c61bf3213",
   "files": [
     {
       "path": ".gitignore",
@@ -505,8 +505,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 42321,
-      "sha256": "5ef7a013f4def442e850c628baa8f5a81e1fc426b69bc2c0e772763fedd55981"
+      "bytes": 43205,
+      "sha256": "ab759052e4030a1e0930999085971d95cf553b3988be5f77a6201d996d1e7a22"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -567,6 +567,11 @@
       "path": "docs/porting/TH14_SCENE_HANDOFF_OCT26.md",
       "bytes": 3792,
       "sha256": "25e8663dcad6987b28fa98978b91082b49af217b6a0979ea40f4a19d3a0f02d8"
+    },
+    {
+      "path": "docs/porting/TH14_SCENE_PUBLICATION_WINDOW_OCT30.md",
+      "bytes": 8025,
+      "sha256": "ed5e05266cf7441e06d178b72f813c84f08ef60bf24800de6b471d7100d2c157"
     },
     {
       "path": "docs/porting/TH14_SCREEN_CAMERA_FIX_OCT15.md",
@@ -762,6 +767,11 @@
       "path": "docs/porting/TH14_VIEWPORT_ROUNDING_OCT27.md",
       "bytes": 5304,
       "sha256": "e50bcc9e8ff80e320f987ade5d1ceaf1e3565a0f43fbb5b179d51e561039a7a6"
+    },
+    {
+      "path": "docs/porting/TH14_VM_RETURN_WORKER_OCT30.md",
+      "bytes": 3239,
+      "sha256": "741a13069492843d2fb0f0b98c88a878ebff37d3ca66ffece2cf4ec51d303a9f"
     },
     {
       "path": "docs/porting/TH14_WARM_REPLAY_FLAGS_OCT29.md",
@@ -6629,6 +6639,11 @@
       "sha256": "2f254131cf99de16e5c80238f1c3543fea4b76eaac6977ce43d0818a77e2ab1b"
     },
     {
+      "path": "docs/porting/th14-vm-return-review-oct30.json",
+      "bytes": 35631,
+      "sha256": "a912f0f54708c9c8db96bf3eef1f3e4a2dcc246d8a66b74a00c401cc2860faf1"
+    },
+    {
       "path": "docs/porting/th14-warm-replay-8618-constructor-clear-verified-oct13.json",
       "bytes": 3630,
       "sha256": "ebde6c3e03e9bf4d4a18e364bfcaf76e8d9e54149b6541a65235bfec3e3e561b"
@@ -7850,13 +7865,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmManager.cpp",
-      "bytes": 19246,
-      "sha256": "62a74556fb4dfb5ddc9257aff78c4f2688d778add06057d59f99e777fab55655"
+      "bytes": 19713,
+      "sha256": "67e8957a8b765b8cab070ab6dfa9ae0596048c740036e376301f71ee506a1de8"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmManager.hpp",
-      "bytes": 6058,
-      "sha256": "7afb624746be4067a725e883e8ff4299412c644f434f371ad4c8b5d47721670f"
+      "bytes": 6177,
+      "sha256": "a18ab595bff58d2a3f7c4b2824f2a83624ab8271310a9ea3fc92cba6c7f062d1"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmOpcodes.hpp",
@@ -8330,8 +8345,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "bytes": 64640,
-      "sha256": "201c1786dfa501fa1ef0c3ad3cdbaf52e878eb3723bae82c18c22c808aeb0c08"
+      "bytes": 65195,
+      "sha256": "b084e574b2a18025134415152116dedfdde857492213002d05283760915407d5"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
@@ -13109,6 +13124,11 @@
       "sha256": "b310a2480d9252f1ca35c4a28402e0563f14508d8f71cdb992110cb90900ba82"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-vm-return-worker-fixture.cpp",
+      "bytes": 2620,
+      "sha256": "fc02cd090a2edcef2738e640210fb2a0878af08a9c882310121ecf323b619ec4"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-webgpu-async-fixture.cpp",
       "bytes": 1659,
       "sha256": "498b00c6d046ec94c49e13535f7bd6773a0a8fdbcf1cc39d643b30febf671748"
@@ -15940,8 +15960,8 @@
     },
     {
       "path": "tools/th14-build-webgpu-release.py",
-      "bytes": 13403,
-      "sha256": "1d6086c6782a1fecce18629682f26592267f1baf4026e70502bfd099bd48789a"
+      "bytes": 13486,
+      "sha256": "6044d38a46d970f23411f2e0efb7a9705a2e96caae9c7142ee0131e802c1b524"
     },
     {
       "path": "tools/th14-bullet-acceleration-check.mjs",
@@ -16269,6 +16289,11 @@
       "sha256": "2cd6b5c7306683d3f77d86f4bf7dc5c64bdd7fd39ac5e931cdd0026af44220bf"
     },
     {
+      "path": "tools/th14-color-cache-cull-native-oct30.py",
+      "bytes": 5213,
+      "sha256": "4eb8b78d537011b26cfb58efb2e54a86f8d7823c7b0950b5f88bdc5ab11d1600"
+    },
+    {
       "path": "tools/th14-combat-pool-readonly-v2-oct25.py",
       "bytes": 5276,
       "sha256": "73d5927fc746393f781e23e5b9e6b78ba4c5b89bdaaa272591489ba8bce14f38"
@@ -16280,8 +16305,8 @@
     },
     {
       "path": "tools/th14-compare-native-campaign.mjs",
-      "bytes": 45993,
-      "sha256": "1726e17d55babe676a1d532a15f10c268819e2cf92e29cd4edec7849659c5dd4"
+      "bytes": 48642,
+      "sha256": "e0cacdb5767c3798fe88a3ec9527f985059a435993e7397856352891ad6923f9"
     },
     {
       "path": "tools/th14-comparison-failure-receipt.py",
@@ -16382,6 +16407,11 @@
       "path": "tools/th14-continuous-stage-prefix-check.py",
       "bytes": 5328,
       "sha256": "12aad2078b337789206b58a053dc169ae7fcd6015dfba0c6cdb881c7b163c011"
+    },
+    {
+      "path": "tools/th14-controlled-vm-worker-evidence-oct29.py",
+      "bytes": 7096,
+      "sha256": "da40a782fbe63f72d00ab19031d4c9031d6e07bb06471a4a3659734b1a76891f"
     },
     {
       "path": "tools/th14-controlled-worker-boundary-evidence-oct29.py",
@@ -19200,8 +19230,8 @@
     },
     {
       "path": "tools/th14-native-campaign-observer-oct25.py",
-      "bytes": 48162,
-      "sha256": "3f3894afc0007e3cb16c2e54667698e825b8bc78253d59c5f90329b0af6573f8"
+      "bytes": 53671,
+      "sha256": "800afb84042203b9496b26254bb947ac8bffbca30b2a4fc613ad2a3a99b47da7"
     },
     {
       "path": "tools/th14-native-detail-window-capture.py",
@@ -19709,6 +19739,11 @@
       "sha256": "b7428cd5521afd12e48c6f31a9687fdcd440fb757384c0e112ea1a8600c02574"
     },
     {
+      "path": "tools/th14-normal-vm-return-guard-check-oct29.py",
+      "bytes": 5839,
+      "sha256": "b976be5e5445c39c8f94e878419edcd532389ffe27632d1e1728ee1de0d66a2f"
+    },
+    {
       "path": "tools/th14-normal-worker-observer-build-oct29.py",
       "bytes": 3223,
       "sha256": "4c42e89b7c9e4bb1d0063079c9fb9c6a8b5d0ae423e2130d7d745b7ef65e5c05"
@@ -19969,6 +20004,11 @@
       "sha256": "aa7c6e616828430cda9ae9eaa2066e5787b9ed10c38436a13c1a6ff4850716ae"
     },
     {
+      "path": "tools/th14-passive-normal-vm-evidence-oct29.py",
+      "bytes": 9194,
+      "sha256": "1499f6cbc159324f3cf9389a2ebb7437d418ed341bee0a4c5448544ab4524d4a"
+    },
+    {
       "path": "tools/th14-pause-controls-check.mjs",
       "bytes": 3829,
       "sha256": "9c98b9486f940253bd680637eb7b3706f127afb8bf36c3347451e4a5756e87bd"
@@ -20219,9 +20259,19 @@
       "sha256": "8ed5e6c41b6f06e6c95786c5f2d123bb346abd2a404849d6963be0b73867505a"
     },
     {
+      "path": "tools/th14-prepare-scene-context-observer-oct30.py",
+      "bytes": 3694,
+      "sha256": "a959ee4355c6cca93801012cb84a067e77496087b3066057fc7075819a6ee5de"
+    },
+    {
       "path": "tools/th14-prepare-scene-copy-word-observer-oct26.py",
       "bytes": 10827,
       "sha256": "43178aea81d78c0408048b6c780044e154183a8679e911f7b1b8a23813f2d8a0"
+    },
+    {
+      "path": "tools/th14-prepare-signature-call-observer-oct30.py",
+      "bytes": 4818,
+      "sha256": "947284722415aa87a9fdd65c6e401fd44d65dafb19dd6968c4a8cdd3db164d93"
     },
     {
       "path": "tools/th14-prepare-webgpu-launcher.py",
@@ -20704,6 +20754,11 @@
       "sha256": "fab20e717b7c0d346661abaf0f293fdc18bc88615bc36d69c0dfdb627cf5c726"
     },
     {
+      "path": "tools/th14-scene-context-evidence-oct30.py",
+      "bytes": 6137,
+      "sha256": "185ae9bd7e008602339dc7cdc9c8236e9d3e82a1b6a3519a17d44791692e0358"
+    },
+    {
       "path": "tools/th14-scene-copy-handoff-evidence-oct26.py",
       "bytes": 6734,
       "sha256": "eac81db0053124023ce73aec56cd57e312c2539409a402282634c46d1c411297"
@@ -20722,6 +20777,11 @@
       "path": "tools/th14-scene-handoff-evidence-check-oct26.py",
       "bytes": 13903,
       "sha256": "bb664cdc44c8bb93cda1ebb60c513f247cd507820c8736e7e6cca050853fbb35"
+    },
+    {
+      "path": "tools/th14-scene-publish-window-evidence-oct30.py",
+      "bytes": 5523,
+      "sha256": "acc304ad71f3187fb804e7b399112b40aea9ebe8fdb7a6eb74f38c2090954d38"
     },
     {
       "path": "tools/th14-score-check.mjs",
@@ -21107,6 +21167,11 @@
       "path": "tools/th14-sht-worker-host-oct29.mjs",
       "bytes": 1360,
       "sha256": "3394fa0d966e4c1b497f5eed4ae675646fb0c463cc1b52df9f7cd4a3f1c07bef"
+    },
+    {
+      "path": "tools/th14-signature-draw-clock-observer-build-oct30.py",
+      "bytes": 4584,
+      "sha256": "9672a87df95bf4599044115df802d7e6827ed8172bbdae1a689e67d49b31016b"
     },
     {
       "path": "tools/th14-six-loadouts-session-check.mjs",
@@ -23230,8 +23295,8 @@
     },
     {
       "path": "tools/th14-verify-native-campaign.py",
-      "bytes": 13420,
-      "sha256": "86303d30bf45b19fcb29cdd69728de66bf0326be3bf6a1f67d26b3095dcf3a4c"
+      "bytes": 16097,
+      "sha256": "ea0751a2d4644780c3cde3f62873cbf6b7e41c17a6657c17d474f48579587fc8"
     },
     {
       "path": "tools/th14-viewport-candidate-evidence-check-oct19.py",
@@ -23247,6 +23312,16 @@
       "path": "tools/th14-viewport-valid-boundary-evidence-check-oct19.py",
       "bytes": 4156,
       "sha256": "32f4ec93021933d67d906ba143966337afdfeb318ddc1116aeeb1a0c8ac0e8d1"
+    },
+    {
+      "path": "tools/th14-vm-return-review-oct30.py",
+      "bytes": 5422,
+      "sha256": "e7a886519e454bd0656c3facf7de95a08edf7c08e3d68274f415f071ce3b14f8"
+    },
+    {
+      "path": "tools/th14-vm-return-worker-observer-build-oct29.py",
+      "bytes": 4255,
+      "sha256": "52503f8300cc82dcb0adcaa7b08ab7963e63419a49bb7bdabd39a510a5ade310"
     },
     {
       "path": "tools/th14-warm-replay-evidence-check.py",
@@ -24475,58 +24550,47 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "872da5bdfa263a1d76bce01845d14e09b538f6aa",
-    "title": "TH14 parse SHT in independent CPU worker and import bounded explicit fields",
+    "basePublishedCommit": "36009ab934e3838c6461403362fd4f3c61bf3213",
+    "title": "TH14 poll ready loading work after normal VM return; retain bounded timing failures",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/GameResources.cpp",
-      "runtimes/th12/th12_web/cpp/game/ShtTransferTh14.hpp",
-      "runtimes/th12/portable/sdl/Th14WebGpuRuntime.mjs",
-      "runtimes/th12/portable/sdl/Th14ArchiveReadAhead.mjs",
-      "runtimes/th12/portable/sdl/Th14ArchiveDecodeClient.mjs",
-      "runtimes/th12/portable/sdl/Th14ArchiveDecodeEndpoint.mjs",
-      "tools/th14-archive-worker/archive-decoder.cpp",
-      "tools/th14-archive-worker-prototype-build-oct27.py",
+      "runtimes/th12/th12_web/cpp/game/AnmManager.cpp",
+      "runtimes/th12/th12_web/cpp/game/AnmManager.hpp",
+      "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-vm-return-worker-fixture.cpp",
       "tools/th14-build-webgpu-release.py",
-      "tools/th14-boot-worker-control-oct29.py",
-      "runtimes/th12/th12_web/tests/cpp/th14-sht-worker-fixture.cpp",
-      "tools/th14-sht-worker-component-build-oct29.py",
-      "tools/th14-sht-worker-host-oct29.mjs",
-      "tools/th14-sht-worker-check-oct29.mjs",
-      "tools/th14-sht-native-off-check-oct29.py",
-      "tools/th14-core-tail-worker-check-oct29.mjs",
-      "tools/th14-sht-worker-evidence-oct29.py",
-      "docs/porting/TH14_SHT_WORKER_OCT29.md",
-      "docs/porting/th14-sht-worker-verified-oct29.json",
+      "tools/th14-vm-return-worker-observer-build-oct29.py",
+      "tools/th14-native-campaign-observer-oct25.py",
+      "tools/th14-controlled-vm-worker-evidence-oct29.py",
+      "tools/th14-passive-normal-vm-evidence-oct29.py",
+      "tools/th14-normal-vm-return-guard-check-oct29.py",
+      "tools/th14-compare-native-campaign.mjs",
+      "tools/th14-verify-native-campaign.py",
+      "tools/th14-prepare-scene-context-observer-oct30.py",
+      "tools/th14-scene-context-evidence-oct30.py",
+      "tools/th14-scene-publish-window-evidence-oct30.py",
+      "tools/th14-signature-draw-clock-observer-build-oct30.py",
+      "tools/th14-prepare-signature-call-observer-oct30.py",
+      "tools/th14-color-cache-cull-native-oct30.py",
+      "tools/th14-vm-return-review-oct30.py",
+      "docs/porting/TH14_VM_RETURN_WORKER_OCT30.md",
+      "docs/porting/th14-vm-return-review-oct30.json",
+      "docs/porting/TH14_SCENE_PUBLICATION_WINDOW_OCT30.md",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "productionResourceLoadingChanged": true,
-    "shtFiles": 6,
-    "shtGroups": 60,
-    "shtShots": 283,
-    "failureCancelAndRecoveryControls": 125,
-    "multiResourceBatches": 4,
-    "parsedShtCopies": 18,
-    "mainRawShtReads": 0,
-    "actualCoreOwnerBatches": 8,
-    "coreParsedShtCopies": 12,
-    "coreRawShtCopies": 0,
     "browserCompiledUnits": 146,
-    "browserWasmSha256": "f252f18551418bf1c475c8450718de9337fc7a5cc5bc24f0b88663c975a22fa4",
-    "cpuWorkerWasmSha256": "b1967b96e9d8c5e484c9f008fb3b31b81889dec33a6e48876e7373f4541cae28",
-    "nativeWorkerOffObjectByteIdentical": true,
-    "newNativeApplicationRunsClaimed": 0,
-    "actualBrowserCorruptShtRejectedBeforeTitle": true,
-    "browserNormalRecoveryObserved": true,
-    "browserReplayStartStage": 5,
-    "browserStage6AndNaturalEndObserved": true,
-    "browserWholeRunFromStage1Accepted": false,
+    "browserWasmSha256": "f79578818cb8f8214648a74887a4182baffe3e95d6d40db24e2f9441d47180d5",
+    "nativeCoreUnits": 141,
+    "nativeFramesPerBackend": 2264,
+    "independentRegressionCallbacks": 33000,
+    "controlledCameraMismatchRows": 17039,
+    "browserStage5To6AndBossObserved": true,
+    "browserNaturalEndAndPersistenceAccepted": false,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
     "ordinaryIndependentThreadTimingAcceptance": false,
-    "completeBrowserAcceptance": false,
     "completeGame": false,
     "nativeEquivalent": false
   }

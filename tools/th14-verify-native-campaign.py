@@ -19,16 +19,19 @@ def main():
     parser.add_argument('--prefix',type=int,default=0,help='Explicitly verify only this diagnostic prefix; never accepts it as a natural full run')
     parser.add_argument('--scene-copy-observation',type=Path,help='Separately verified original TF-copy observation; only the declared15000-callback prefix is accepted')
     parser.add_argument('--controlled-thread-observation',type=Path,help='Explicitly controlled original normal-ANM worker observation; finite diagnostic prefixes only, never ordinary timing acceptance')
+    parser.add_argument('--controlled-vm-observation',type=Path,help='Explicit two-thread original VM-return schedule; finite diagnostic prefix only')
     parser.add_argument('--proposed-normal-boundary',action='store_true',help='Explicitly retain a proposed host-clock delivery boundary; field equality never accepts its exact original instruction placement')
     args=parser.parse_args();native=args.native.resolve();model=args.model.resolve();bindings={}
     assert args.prefix>=0
-    assert not(args.scene_copy_observation and args.controlled_thread_observation)
-    assert not(args.proposed_normal_boundary and(args.scene_copy_observation or args.controlled_thread_observation))
+    assert sum(bool(value)for value in [args.scene_copy_observation,args.controlled_thread_observation,args.controlled_vm_observation])<=1
+    assert not(args.proposed_normal_boundary and(args.scene_copy_observation or args.controlled_thread_observation or args.controlled_vm_observation))
     assert all(p.is_relative_to(ROOT/'artifacts/th14')for p in (native,model))
     def read(path):
         data=path.read_bytes();bindings[path.relative_to(ROOT).as_posix()]=dict(bytes=len(data),sha256=SHA(data));return data
     def load(path):return json.loads(read(path))
     original=load(native/'report.json');reported=load(model/'report.json');build=load(args.build.resolve());captured=original['callbacks'];count=args.prefix or captured
+    assert not reported.get('proposedScenePublicationWindowDiagnostic'), 'Proposed Scene publication-window timing is diagnostic only'
+    assert not reported.get('proposedSignatureDrawClockDiagnostic'), 'Proposed signature draw-clock timing is diagnostic only'
     assert (reported.get('hostNormalBoundaryMode')=='proposed')==args.proposed_normal_boundary
     if args.proposed_normal_boundary:
         assert reported['normalBoundaryTimestampAssumptionDeclared']and not reported['vmCallbackPointersWrapped']
@@ -56,6 +59,21 @@ def main():
         assert proof['verifiedControlledOriginalNormalAnmBoundary']and proof['diagnosticPrefixOnly']
         assert not proof['ordinaryIndependentThreadTimingAcceptance']and count<=proof['capturedCallbacks']
         assert proof['bindings'][(native/'report.json').relative_to(ROOT).as_posix()]['sha256']==SHA(read(native/'report.json'))
+    elif args.controlled_vm_observation:
+        assert args.prefix==33000 and reported['hostNormalBoundaryMode']=='controlled-vm-return'
+        assert reported['productionNormalVmReturnPoll']and not reported['normalVmReturnBoundaryUnsupported']and not reported['vmCallbackPointersWrapped']
+        assert not reported['ordinaryIndependentThreadTimingAcceptance']
+        proof_path=args.controlled_vm_observation.resolve();proof=load(proof_path)
+        subprocess.run([sys.executable,str(ROOT/'tools/th14-controlled-vm-worker-evidence-oct29.py'),
+            '--native',str(native),'--output',str(proof_path),'--check'],check=True)
+        assert proof['verifiedControlledOriginalNormalVmReturnBoundary']and proof['diagnosticPrefixOnly']
+        assert not proof['ordinaryIndependentThreadTimingAcceptance']and count<=proof['capturedCallbacks']
+        assert proof['bindings'][(native/'report.json').relative_to(ROOT).as_posix()]['sha256']==SHA(read(native/'report.json'))
+        boundary=reported['normalVmBoundaryObservation'];clock=boundary['modelClock']
+        assert boundary['callback']==proof['precedingPlayerCallbacks']and boundary['originalPc']==0x47e660
+        assert (boundary['file'],boundary['script'])==(proof['targetVmFile'],proof['targetVmScript'])and not boundary['retainedBaseline']
+        assert boundary['readyNs']==original['controlledScheduleEvents'][4]['hostMonotonicNs']
+        assert clock['delivered']==1 and clock['failed']==0 and 2<=clock['ownVmPollSlot']<=clock['visits']
     else:assert original['hardwareBreakpointsOnly']
     assert original['instructionBytesPatched']==original['rngOrCounterWrites']==0
     assert not original['inputInjected']and original['gameStateWordWrites']==1 and original['caseInitialization']['attractBitClearOnly']
@@ -125,6 +143,12 @@ def main():
     if args.proposed_normal_boundary:
         result.update(proposedNormalBoundaryAssumption=True,exactOriginalInstructionBoundaryAccepted=False)
         result['limitations'].append('The host clock is delivered at a proposed normal-ANM boundary; exact placement in this original record is an assumption, not accepted original instruction evidence.')
+    if args.controlled_vm_observation:
+        result.update(controlledVmReturnObservationSha256=SHA(read(args.controlled_vm_observation.resolve())),
+            hardwareDebugInputKind='hardware breakpoints with one declared suspend increment per original thread',
+            ownVmClockPollSlot=reported['normalVmBoundaryObservation']['modelClock']['ownVmPollSlot'],
+            ordinaryIndependentThreadTimingAcceptance=False)
+        result['limitations'].append('Both original threads are explicitly scheduled at a verified VM return. This supports that legal boundary only; the older independent instruction placement and ordinary timing remain unaccepted.')
     if args.prefix:result['limitations'].append('Explicit diagnostic prefix only; neither the original process exit nor this prefix proves natural replay completion.')
     output=args.output.resolve();assert output.is_relative_to(ROOT/'docs/porting')or output.is_relative_to(ROOT/'artifacts/th14')
     output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf8')

@@ -2,7 +2,7 @@ import{gunzipSync}from'node:zlib';
 import assert from'node:assert/strict';import{readFileSync as read,writeFileSync as write,mkdirSync as mkdir,existsSync as exists}from'node:fs';
 import{resolve,dirname,basename,relative,isAbsolute}from'node:path';import{createHash}from'node:crypto';import{WASI}from'node:wasi';
 // Explicit case inputs; no native gameplay state is supplied to the engine.
-const allowed=new Set(['native','assets','build','wasm','output','prefix','selection','hud-ready','publication-cutoff','scheduler-phases','scene-copy-observation','normal-boundary-observation']);
+const allowed=new Set(['native','assets','build','wasm','output','prefix','selection','hud-ready','publication-cutoff','scheduler-phases','scene-copy-observation','normal-boundary-observation','normal-vm-boundary-observation','vm-boundary-baseline']);
 const options=new Map();for(let i=2;i<process.argv.length;i+=2){const key=process.argv[i]?.replace(/^--/,'');assert(allowed.has(key)&&process.argv[i+1]&&!options.has(key),'Unknown, repeated or missing option '+key);options.set(key,process.argv[i+1]);}
 for(const key of ['native','assets','build','output','selection'])assert(options.has(key),'Missing --'+key);
 const root=resolve(import.meta.dirname,'..'),nativeHome=resolve(root,options.get('native')),nativeName=basename(nativeHome),mode='initial-worker-events',home=dirname(resolve(root,options.get('build')));
@@ -186,6 +186,21 @@ if(options.has('normal-boundary-observation')){
  normalBoundary={callback:proof.precedingPlayerCallbacks,readyNs:events[2].hostMonotonicNs,stage:proof.stage,originalPc:proof.originalMainHoldPc};
  assert.equal(c.observed_normal_clock(normalBoundary.callback,baseNow+BigInt(normalBoundary.readyNs)-playerOrigin),1);
 }
+let normalVmBoundary=null;
+assert(!options.has('vm-boundary-baseline')||options.get('vm-boundary-baseline')==='true'&&options.has('normal-vm-boundary-observation'));
+if(options.has('normal-vm-boundary-observation')){
+ assert(prefix===33000&&schedulerPhases==='observed'&&!normalBoundary&&!options.has('scene-copy-observation'));
+ const proof=JSON.parse(read(resolve(root,options.get('normal-vm-boundary-observation'))));
+ assert(proof.verifiedControlledOriginalNormalVmReturnBoundary&&proof.diagnosticPrefixOnly&&!proof.ordinaryIndependentThreadTimingAcceptance);
+ assert.equal(proof.verifierSha256,sha(read(resolve(root,'tools/th14-controlled-vm-worker-evidence-oct29.py'))));
+ for(const[path,row]of Object.entries(proof.bindings))assert.equal(sha(read(resolve(root,path))),row.sha256,'Changed controlled VM observation '+path);
+ assert.equal(proof.bindings[relative(root,resolve(nativeHome,'report.json')).replaceAll('\\','/')]?.sha256,sha(read(resolve(nativeHome,'report.json'))));
+ assert(nativeReport.threadSchedulingControlled&&nativeReport.controlledScheduleComplete&&!nativeReport.hardwareBreakpointsOnly);
+ const events=nativeReport.controlledScheduleEvents;assert.equal(events.length,6);
+ assert.equal(events[1].pc,0x47e660);assert.equal(events[4].pc,0x456135);
+ normalVmBoundary={callback:proof.precedingPlayerCallbacks,readyNs:events[4].hostMonotonicNs,stage:proof.stage,originalPc:proof.originalMainReturnPc,file:proof.targetVmFile,script:proof.targetVmScript,retainedBaseline:options.has('vm-boundary-baseline')};
+ assert.equal(c.observed_normal_vm_clock(normalVmBoundary.callback,baseNow+BigInt(normalVmBoundary.readyNs)-playerOrigin,normalVmBoundary.file,normalVmBoundary.script),1);
+}
 const combatSnapshots=[],combatDifferences=[],nativeCombatIndex=JSON.parse(read(resolve(nativeHome,'combat-pool-index.json'))),nativeCombatByCallback=new Map(nativeCombatIndex.snapshots.map(x=>[x.callback,x]));
 function compare(index){
  const mask=c.bullet_skipped_mask()>>>0,nativeMask=c.bullet_unsupported_native_mask()>>>0;if(mask!==unsupportedMask||nativeMask!==unsupportedNativeMask){unsupportedObservations.push({index,mask,nativeMask});unsupportedMask=mask;unsupportedNativeMask=nativeMask;}
@@ -237,11 +252,19 @@ for(let i=1;i<=600&&!end&&!prefix;i++){
 }
 let stable=null;if(end&&!prefix){for(let i=1;i<=90;i++){const now=lastNow+BigInt(i)*1000000000n/60n;assert.equal(c.menu_tick(now,0),1);assert.equal(c.draw(),1);c.probe_retire_capture();assert.equal(c.public_replay_clock((sampled+i)/60),1);}stable=Array.from({length:20},(_,n)=>c.menu_state(n));}
 if(normalBoundary){assert.equal(c.observed_normal_clock_state(0),1);assert.equal(c.observed_normal_clock_state(1),0);}
+if(normalVmBoundary){
+ normalVmBoundary.modelClock={delivered:c.observed_normal_vm_clock_state(0),failed:c.observed_normal_vm_clock_state(1),ownVmPollSlot:c.observed_normal_vm_clock_state(2),visits:c.observed_normal_vm_clock_state(3)};
+ if(!normalVmBoundary.retainedBaseline){assert.equal(normalVmBoundary.modelClock.delivered,1);assert.equal(normalVmBoundary.modelClock.failed,0);}
+ else assert.equal(normalVmBoundary.modelClock.delivered,0,'The explicitly retained baseline must lack this VM-return clock boundary');
+}
 const raw=Buffer.from(new Uint32Array(rows).buffer);write(resolve(out,'selected-state.u32'),raw,{flag:'wx'});
 const report={schedulerPhases,controllerFlagReadObservations:controllerEvents.length,sceneWorkerBeforeDrawBoundaries:beforeDrawWorker.size,sceneWorkerAfterDrawBoundaries:afterDrawWorker.size,comparisonToolSha256:sha(read(new URL(import.meta.url))),declaredSelection:expectedSelection,publicationCutoff,portableUnsupportedBulletObservations:unsupportedObservations,allPortableBulletOpcodesSupported:unsupportedObservations.length===0,diagnosticPrefixOnly:!!prefix,nativeCaptureMayStillBeRunning:!nativeReport,observedPhaseInputs:phaseInputs,completed:true,derivedSingleStageReplay:false,intactOriginalReplay:true,selection:initial.words.slice(27,31),stageHeaderInputAndFpsRetainedExactly:true,sourceReplaySha256:assetManifest.replaySha256,archiveSha256:sha(archive),replayBytesSha256:sha(replayBytes),callbacks:rows.length/32,nativeCallbacks:progress.callbacks,selectedSha256:sha(raw),nativeSelectedSha256:sha(nativeRaw),allRaw32ByteIdentical:raw.equals(nativeRaw),differenceCounts:counts,firstDifferences:first,firstDifference,entry,end,stableMenuAfter90Ticks:stable,finalObservedCallbacks:c.public_replay_observations(),nativeInitialSnapshotSha256:sha(read(resolve(nativeHome,'untouched-first-player.json'))),nativeResourceEventsSha256:sha(read(resolve(nativeHome,'resource-ready-events.jsonl'))),nativeTimesSha256:sha(times),wasmSha256:sha(wasm),actualInitialTimeGetTime:initial.actualInitialTimeGetTimeInput,actualCookie:initial.actualOriginalSecurityCookie,declaredGeometryFrame:0x1aec84,observedNativeHostTimes:true,extraAsciiDrawBeginBoundaryTimestamp:asciiBegin.hostMonotonicNs,asciiBeginDeliveryInferredFromFirstPublication:false,asciiCreateObservedAtOriginal44477aCall:true,asciiDeliveryResult,noNativePublicationValuesProvidedToEngine:true,declaredAttractBitClearAtFirstPlayer:true,noRngSerialCounterHealthOrInputWrites:true,noPerFrameStateOverrides:true,recordingGraphics:true,actualGpuOrAudio:false,completeGame:false,nativeEquivalent:false};
-report.hostNormalBoundaryMode=normalBoundary?'controlled':'none';report.vmCallbackPointersWrapped=false;
+report.hostNormalBoundaryMode=normalVmBoundary?normalVmBoundary.retainedBaseline?'controlled-vm-return-baseline':'controlled-vm-return':normalBoundary?'controlled':'none';report.vmCallbackPointersWrapped=false;
 report.productionNormalAnmBoundaryPoll=!!normalBoundary;report.ordinaryIndependentThreadTimingAcceptance=false;
 report.normalBoundaryObservation=normalBoundary;
+report.normalVmBoundaryObservation=normalVmBoundary;
+report.productionNormalVmReturnPoll=!!normalVmBoundary&&!normalVmBoundary.retainedBaseline;
+report.normalVmReturnBoundaryUnsupported=!!normalVmBoundary&&normalVmBoundary.retainedBaseline;
 report.sceneWorkerAcrossUpdateBoundaries=sceneUpdateHandoffs.length;report.sceneUpdateHandoffs=sceneUpdateHandoffs;
 report.sceneCopyWordHandoffs=sceneCopyWordHandoffs;report.sceneCopyObservationSha256=options.has('scene-copy-observation')?sha(read(resolve(root,options.get('scene-copy-observation')))):null;
 write(resolve(out,'report.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(report));

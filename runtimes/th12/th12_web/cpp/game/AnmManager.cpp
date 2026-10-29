@@ -249,13 +249,25 @@ bool AnmManager::references(const AnmResource& resource)const noexcept{
     return false;
 }
 bool AnmManager::update(bool overlay){
+#if PORT_TITLE == 14
+    return update(overlay,{});
+}
+bool AnmManager::update(bool overlay,const std::function<bool()>& after_vm){
+#endif
     constexpr u32 overlay_first=kPortTitle==16?36:kPortTitle==14?34:kPortTitle==13?31:29;
     const u32 first=overlay?overlay_first:0,last=overlay?overlay_first+(kPortTitle==16?7:2):overlay_first;decltype(layers) end{};for(u32 i=first;i<last;++i)layers[i]=nullptr;
     auto* cursor=heads[overlay?1:0];while(cursor){auto& vm=*cursor->value;cursor=cursor->next;
         if((vm.flags&0x4000000)||(kPortTitle==14&&(vm.flags2&0x20))){destroy(vm);continue;}
         if constexpr(kPortTitle==16){const u32 state=vm.flags2&0x60;if(state==0x20){destroy(vm);continue;}if(state)continue;}
         if(vm.before_update)vm.before_update(vm);const int status=vm.update(*this);
-        if(status<0){record_failure(vm);return false;}if(status){destroy(vm);continue;}
+        if(status<0){record_failure(vm);return false;}
+#if PORT_TITLE == 14
+        // Retail47e660 is a real worker interleave after the VM call, before
+        // retirement and draw-list publication. The callback owns its clock
+        // and readiness checks; no VM state or fixed delay is supplied here.
+        if(after_vm&&!after_vm())return false;
+#endif
+        if(status){destroy(vm);continue;}
         if constexpr(kPortTitle==16){
             if(overlay){if(vm.layer>=24&&vm.layer<=31)vm.layer+=12;else if(vm.layer<36||vm.layer>42)vm.layer=38;}
             else if(vm.layer>=36&&vm.layer<=42)vm.layer-=12;

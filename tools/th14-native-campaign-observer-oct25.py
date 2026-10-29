@@ -28,6 +28,7 @@ parser.add_argument('--controller-phase-events',action='store_true',help='Observ
 parser.add_argument('--worker-rng-events',action='store_true',help='Observe replay seed restoration after the worker sleep and retain the paused main-thread PC')
 parser.add_argument('--worker-main-context',action='store_true',help='Diagnostic only: retain paused main-thread registers and bounded stack bytes at worker sleep/seed-restore events; no unwind or engine input')
 parser.add_argument('--worker-main-stack-bytes',type=int,choices=(64,256,512),default=64,help='Diagnostic stack-read upper bound, clamped to the current stack page; nondefault sizes require worker-main-context')
+parser.add_argument('--normal-vm-window-events',action='store_true',help='Diagnostic hardware call/return observations only between original worker Sleep60 call and Replay seed restore; never schedules either thread or supplies engine values')
 parser.add_argument('--exit-boundary-events',action='store_true',help='Use a free main-thread hardware breakpoint outside loading/publication windows to observe the original WinMain loop exit')
 parser.add_argument('--live-callbacks',help='Comma-separated predeclared VM observation callbacks, including1; maximum32')
 parser.add_argument('--camera-write-events',action='store_true',help='Observe actual world-right X stores with a draw-phase main-thread DR2 data breakpoint; diagnostic values are never engine inputs')
@@ -36,6 +37,7 @@ opt=parser.parse_args()
 assert not opt.camera_write_events or (opt.scene_camera_events and opt.controller_phase_events)
 assert not opt.worker_main_context or opt.worker_rng_events
 assert opt.worker_main_context or opt.worker_main_stack_bytes==64
+assert not opt.normal_vm_window_events or (opt.worker_rng_events and opt.worker_main_context and not opt.camera_write_events)
 assert 1<=opt.publication_cutoff<=opt.maximum_callbacks and opt.max_seconds>0
 assert 0<=opt.maximum_startup_seconds<=opt.max_seconds
 assert opt.minimum_free_gib>=0 and opt.maximum_capture_gib>0
@@ -99,6 +101,7 @@ latest_camera_boundary=None;camera_boundary_count=0;scene_camera_copies=[];main_
 camera_right_write_count=0;latest_camera_right_write=None
 sleep_pcs={};transition_trace=False;transition_events=[]
 pending_worker_rng=set()
+normal_vm_window_tid=None;normal_vm_active=None;normal_vm_closing_restore=None;normal_vm_events=[]
 targets={0x435b0f:'sleep60-before-call',0x435b11:'sleep60-returned',0x456133:'replay-seeds-restored-before-globals-copy',0x44dbd0:'player-entry',0x47e938:'initial-anm-publication',0x45286f:'beam-uninitialized-scratch-read',0x47d720:'main-resource-pump',0x47d0ec:'cpu-resource-queued',0x4441a8:'signature-ready-flag-published',0x444222:'ascii-ready-flag-published',0x4595e1:'title-worker-signature-retirement',0x459615:'title-ready-flag-published',0x44c4c6:'initial-player-file-returned',0x44d2aa:'initial-player-initialized',0x435e22:'initial-player-options-ready',0x43605a:'initial-control-loading-flag-cleared',0x4360c6:'initial-worker-complete'}
 targets.update({0x40dae9:'controller-camera-published',0x4465a6:'world-perspective-right-written',0x40d435:'scene-camera-copy-before',0x40d447:'scene-camera-copy-after',0x436bed:'controller-loading-flag-read'})
 serial_watch_manager=0;pending_publications={};allocation_rows=[];serial_write_rows=[];hud_raw=bytearray()
@@ -108,6 +111,7 @@ targets.update({0x42ec65:'hud-score-initialization-before-write',0x42ec6b:'hud-s
 hud_score_pc={};hud_score_writes=[]
 targets[0x44477a]='startup-ascii-create-call-instruction'
 targets[0x469c48]='winmain-loop-exit-boundary'
+targets.update({0x47e65b:'normal-vm-before-original-call',0x47e660:'normal-vm-after-original-return'})
 ascii_create_invocations=[]
 pcs=list(targets);threads={};handles={pi.process,pi.thread};events=[];debug_errors=[];started=time.monotonic();exited=False;error='';complete=False
 process_exit_event=None;observer_termination_requested=False
@@ -153,6 +157,9 @@ def install(tid,current=False):
     if first_snapshot is not None and not trace_publications and tid==pi.tid and not transition_trace and opt.exit_boundary_events:
         addresses[3]=0x469c48
     if first_snapshot is None and tid==pi.tid and not ascii_create_invocations:addresses[0]=0x44477a
+    if opt.normal_vm_window_events and normal_vm_window_tid is not None and tid==pi.tid:
+        assert first_snapshot is not None and not trace_publications
+        addresses[1:3]=[0x47e65b,0x47e660]
     for index,address in enumerate(addresses):struct.pack_into('<I',b,4+4*index,address)
     struct.pack_into('<I',b,20,0)
     struct.pack_into('<I',b,24,(sum(1<<(2*i)for i,a in enumerate(addresses)if a)|(0xd00000 if trace_publications else 0)) if first_snapshot is not None else 0x45|(0x10 if pending else 0)|(0xd00000 if serial_watch_manager else 0))
@@ -226,6 +233,36 @@ def capture_live_animations(label='first-player-live-vms'):
 def event_snapshot(pc,tid,b):
     global last_pan,last_rectangle,capture_stop_requested,main_resource_frames,transition_trace
     global latest_camera_boundary,camera_boundary_count,main_camera_phase
+    global normal_vm_window_tid,normal_vm_active,normal_vm_closing_restore
+    if pc in (0x47e65b,0x47e660):
+        assert opt.normal_vm_window_events and normal_vm_window_tid is not None and tid==pi.tid
+        call=read(0x47e65b,7)
+        assert call[0]==0xe8 and 0x47e660+struct.unpack_from('<i',call,1)[0]==0x46fe50 and call[5:]==b'\x85\xc0'
+        assert len(normal_vm_events)<8192,'Bounded transition VM observation cap exceeded'
+        vm=struct.unpack_from('<I',b,160)[0]
+        blob=read(vm,0x5cc)
+        row=dict(event=targets[pc],pc=pc,threadId=tid,workerThreadId=normal_vm_window_tid,
+            hostMonotonicNs=time.monotonic_ns(),precedingPlayerCallbacks=callback_count,stage=u32(0x4f58a4),
+            vm=vm,handle=struct.unpack_from('<I',blob,0x540)[0],file=struct.unpack_from('<H',blob,0x36)[0],
+            script=struct.unpack_from('<H',blob,0x4aa)[0],rngHex=read(0x4db508,16).hex(),
+            originalInstructionBytes=read(pc,5 if pc==0x47e65b else 2).hex(),readOnly=True,
+            actualOriginalCallEdge=True,threadSchedulingControlled=False,providedToEngine=False,
+            ordinal=len(normal_vm_events)+1)
+        if pc==0x47e65b:
+            assert normal_vm_active is None and normal_vm_closing_restore is None
+            assert struct.unpack_from('<I',b,172)[0]==vm # ECX is the original this argument.
+            normal_vm_active=row
+        else:
+            assert normal_vm_active is not None and normal_vm_active['vm']==vm
+            row['callEntryOrdinal']=normal_vm_active['ordinal'];normal_vm_active=None
+            if normal_vm_closing_restore is not None:
+                row.update(returnPcAlreadyObservedAtSeedRestore=True,restoreEventDeliveredEarlier=True,
+                    restoreObservationHostNs=normal_vm_closing_restore)
+                normal_vm_window_tid=None;normal_vm_closing_restore=None
+        normal_vm_events.append(row)
+        with(home/'normal-vm-window-events.jsonl').open('a',encoding='utf8')as stream:stream.write(json.dumps(row)+'\n')
+        if len(normal_vm_events)%256==0:storage_budget()
+        return
     if pc==0x469c48:
         assert opt.exit_boundary_events and tid==pi.tid
         regs=dict(zip(['edi','esi','ebx','edx','ecx','eax','ebp','eip','cs','eflags','esp'],struct.unpack_from('<11I',b,156)))
@@ -281,9 +318,15 @@ def event_snapshot(pc,tid,b):
                     stackBytes=len(stack),requestedStackUpperBound=opt.worker_main_stack_bytes,clampedToCurrentStackPage=True,
                     gameReturnCandidates=[dict(stackOffset=index*4,address=value)for index,value in enumerate(struct.unpack('<'+str(len(stack)//4)+'I',stack))if 0x400000<=value<0x4b0000],
                     readOnly=True,diagnosticOnly=True,unwoundCallStack=False,providedToEngine=False)
+                if opt.normal_vm_window_events:
+                    row['mainThreadContextAtWorkerEvent']['debugRegisters']=dict(addresses=list(struct.unpack_from('<4I',main,4)),status=struct.unpack_from('<I',main,20)[0],control=struct.unpack_from('<I',main,24)[0])
         if pc==0x435b0f:
             row['requestedMilliseconds']=u32(regs['esp']);assert row['requestedMilliseconds']==60
             assert row['originalInstructionBytes'].startswith('ffd0');sleep_pcs[tid]=0x435b11;transition_trace=True
+            if opt.normal_vm_window_events and tid!=pi.tid and 2<=row['stage']<=6:
+                assert normal_vm_window_tid is None and normal_vm_closing_restore is None and first_snapshot is not None and callback_count>=opt.publication_cutoff
+                normal_vm_window_tid=tid;normal_vm_active=None
+                row['normalVmCallWindowArmedAtOriginalSleepCall']=True
             if tid!=pi.tid and pi.tid in threads:install(pi.tid)
         elif pc==0x435b11:
             before=next(x for x in reversed(transition_events)if x['event']=='sleep60-before-call'and x['threadId']==tid)
@@ -292,6 +335,25 @@ def event_snapshot(pc,tid,b):
         else:
             row['restoredReplaySeed']=struct.unpack('<H',read(regs['esi']-0x12,2))[0];assert row['originalInstructionBytes'].startswith('f3a5')
             pending_worker_rng.discard(tid)
+            if opt.normal_vm_window_events and normal_vm_window_tid==tid:
+                main_pc=row['mainThreadPcAtWorkerEvent']
+                return_pending=normal_vm_active is not None and main_pc==0x47e660
+                row['normalVmCallWindowAtSeedRestore']=dict(activeCall=normal_vm_active,
+                    mainPcAtRestore=main_pc,
+                    betweenObservedCallAndReturn=normal_vm_active is not None and not return_pending,
+                    callInstructionStillPending=normal_vm_active is not None and main_pc==0x47e65b,
+                    withinVmMethodAtRestore=normal_vm_active is not None and main_pc not in (0x47e65b,0x47e660),
+                    callReturnEdgeDeliveryPending=return_pending,
+                    returnWatchStatusBitAtRestore=bool(row['mainThreadContextAtWorkerEvent']['debugRegisters']['status']&4),
+                    observedEdges=len(normal_vm_events),readOnly=True,threadSchedulingControlled=False,providedToEngine=False)
+                if return_pending:
+                    # Main is already at the return PC, while its corresponding
+                    # edge event has not been delivered. Retain that one watch
+                    # until delivery; this is not an active VM method.
+                    normal_vm_closing_restore=row['hostMonotonicNs']
+                else:
+                    normal_vm_window_tid=None;normal_vm_active=None
+                    if pi.tid in threads:install(pi.tid)
         transition_events.append(row)
         with(home/'transition-events.jsonl').open('a',encoding='utf8')as stream:stream.write(json.dumps(row)+'\n')
         print(json.dumps(row),flush=True);return
@@ -494,5 +556,9 @@ finally:
         readOnlyLiveAnimationSnapshots=live_capture_callbacks,liveAnimationSnapshotBoundary="before original Player callback",childExited=exited,error=error,debugErrors=debug_errors,elapsedSeconds=time.monotonic()-started,sourceSha256=sha(observer_source_bytes),observerSourceFrozenAtStart=True,controllerPhaseEventsSha256=sha((home/'controller-phase-events.jsonl').read_bytes())if(home/'controller-phase-events.jsonl').exists()else None,sceneCameraCopyEventsSha256=sha((home/'scene-camera-copy-events.jsonl').read_bytes())if(home/'scene-camera-copy-events.jsonl').exists()else None,sceneCameraCopyEvents=len(scene_camera_copies),mainCameraBoundaryEvents=camera_boundary_count,
         nativeTypesSourceSha256=sha((root/'tools/th14-native-session-capture.py').read_bytes()),completeGame=False,nativeEquivalent=False)
     report.update(processExitEvent=process_exit_event,observerTerminationRequested=observer_termination_requested,exitBoundaryEvents=exit_boundary_events,diagnosticStopBeforeBeamFallback=capture_stop_requested,cameraRightWriteEvents=camera_right_write_count,cameraRightWriteEventsSha256=sha((home/'camera-right-write-events.jsonl').read_bytes())if(home/'camera-right-write-events.jsonl').exists()else None,workerMainContextEvents=sum('mainThreadContextAtWorkerEvent'in row for row in transition_events))
+    report.update(normalVmWindowEvents=len(normal_vm_events),normalVmWindowReadOnly=bool(opt.normal_vm_window_events),
+        normalVmWindowEventsSha256=sha((home/'normal-vm-window-events.jsonl').read_bytes())if(home/'normal-vm-window-events.jsonl').exists()else None,
+        normalVmWindowHasActiveCallAtEnd=normal_vm_active is not None,normalVmWindowWorkerAtEnd=normal_vm_window_tid)
+    report['normalVmReturnEventPendingAtEnd']=normal_vm_closing_restore is not None
     (home/'report.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:report[k]for k in('observedForcedReplayEndMenu','allAnmPublications','beamFallbackCount','callbacks','childExited','error','elapsedSeconds','processExitEvent','observerTerminationRequested')}),flush=True)
 if error or not complete:raise SystemExit(1)

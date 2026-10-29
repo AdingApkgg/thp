@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SHA = lambda raw: hashlib.sha256(raw).hexdigest()
 OVERLAYS = ['th12_web/cpp/sdl/Application.cpp','th12_web/cpp/sdl/StageDecodeTh14.hpp','th12_web/cpp/sdl/StageWorkerWaitTh14.hpp',
             'th12_web/cpp/game/GameBattle.cpp','th12_web/cpp/game/GameBattle.hpp','th12_web/cpp/game/GameResources.cpp',
+            'th12_web/cpp/game/AnmManager.cpp','th12_web/cpp/game/AnmManager.hpp',
             'th12_web/cpp/game/GameSession.cpp','th12_web/cpp/game/GameSessionResources.cpp','th12_web/cpp/game/GameSessionResources.hpp',
             'th12_web/cpp/game/Replay.cpp','th12_web/cpp/game/ReplayTextTh14.hpp','th12_web/cpp/game/AnmTransferTh14.hpp',
             'th12_web/cpp/game/StageEclTransferTh14.hpp','th12_web/cpp/game/ShtTransferTh14.hpp','th12_web/cpp/game/EclResource.cpp','th12_web/cpp/game/EclResource.hpp','th12_web/cpp/game/GameResources.hpp','portable/sdl/Th14WebGpuCallbacks.hpp',

@@ -5,6 +5,7 @@
 #if PORT_TITLE == 14
 #include "DeferredCaptureQueueTh14.hpp"
 #include "NativeStackTh14.hpp"
+#include <functional>
 #endif
 #include <array>
 #include <memory>
@@ -29,6 +30,9 @@ public:
     void retire_resource(const AnmResource&);
     bool references(const AnmResource&)const noexcept;
     bool update(bool overlay);
+#if PORT_TITLE == 14
+    bool update(bool overlay,const std::function<bool()>& after_vm);
+#endif
     bool change_draw_mode(AnmVm& vm) override;
     bool allocate_geometry(AnmVm& vm,u32 bytes) override;
     bool update_geometry(AnmVm& vm) override;
