@@ -4700,6 +4700,13 @@ async function refreshReplayManager({ animateRows = false } = {}) {
 }
 
 async function manageReplays() {
+  const selectedGame = state.game;
+  if (selectedGame === "th14" && !state.ready) {
+    // Starting the existing TH14 iframe behind this dialog can leave its
+    // navigation at about:blank. Finish startup before making the page modal.
+    await ensureRuntime(false);
+    if (state.game !== selectedGame) return;
+  }
   const dialog = $("#replayDialog");
   const list = $("#replayList");
   list.replaceChildren();

@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "346f937f6fb7039c51fe8eebfd8f0adea074e5da",
+  "sourceCommit": "06b8b815b5037cc65500ea219f424c6c2ba17414",
   "files": [
     {
       "path": ".gitignore",
@@ -210,8 +210,8 @@
     },
     {
       "path": "docs/porting/TH14_CURRENT_REPAIR_REGRESSION_OCT30.md",
-      "bytes": 3809,
-      "sha256": "9a52152804ce72c365d20fdbf48fd7975c8c3a14784def3812437a52702807cb"
+      "bytes": 4965,
+      "sha256": "22528425101a2b2d8644dff2788a3b3a8e6426c2f922023961e467390f7b4267"
     },
     {
       "path": "docs/porting/TH14_CURVE_ORIGIN_OCT26.md",
@@ -514,9 +514,14 @@
       "sha256": "70b681a624ade01ebdff36c5f6e8f0c8d122ff4de675fd9d5b47bdaedf133d1a"
     },
     {
+      "path": "docs/porting/TH14_REIMUB_ORDINARY_APPLICATION_OCT30.md",
+      "bytes": 2170,
+      "sha256": "2f58522276dee34a17ae065304ffe7867e4b355b10612898611a95d148bfe0ff"
+    },
+    {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 46140,
-      "sha256": "96eae44f0a6fde8ae21473587ed9197ba0cd677b24ee87c0c4c4297b68f24429"
+      "bytes": 47759,
+      "sha256": "d55ac5d955c4e7138c1e0395f36f1fc3eacd9ea0efe49c20cbf0116efce13c5b"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -537,6 +542,11 @@
       "path": "docs/porting/TH14_REPLAY_FPS_OCT28.md",
       "bytes": 4555,
       "sha256": "f96b6af149f646ecd401d85fdd85d6d62d0b814c1b84642517f7ad1185b1c4d4"
+    },
+    {
+      "path": "docs/porting/TH14_REPLAY_MANAGER_STARTUP_OCT30.md",
+      "bytes": 2378,
+      "sha256": "f183b2b17e802ad4d3f1ee50eb65164b11e9b3a7b9eef5fa77a89d3ae838d4e9"
     },
     {
       "path": "docs/porting/TH14_REPLAY_TERMINAL_OCT28.md",
@@ -1627,6 +1637,11 @@
       "path": "docs/porting/th14-browser-replay-observed-oct28.json",
       "bytes": 12881,
       "sha256": "3d3ea69064e19c9654c170a470f0303f540273184368e566a5640a3a466b6a48"
+    },
+    {
+      "path": "docs/porting/th14-browser-replay-roundtrip-oct30.json",
+      "bytes": 2157,
+      "sha256": "2d76d123cec985b73f41726d4cb8e2b5b708514d00c058198740b0ed6ff3e9c1"
     },
     {
       "path": "docs/porting/th14-browser-results-routing-verified-oct11.json",
@@ -5174,6 +5189,11 @@
       "sha256": "b90d8667f5f75692f2fce85036c79cccee4ab8000739602e179cc99597cbfe63"
     },
     {
+      "path": "docs/porting/th14-reimub-ordinary-application-oct30.json",
+      "bytes": 2551,
+      "sha256": "83d4a872883c503cc8b74a4e4aed87e1324c8cf7e4bb3935c9443d9ce824aa73"
+    },
+    {
       "path": "docs/porting/th14-release-area-browser-flow-verified-oct14.json",
       "bytes": 90088,
       "sha256": "f7c2c3991d3503b8854948adfd71f3fe46254e485a564bf118ee87499dd61269"
@@ -5217,6 +5237,11 @@
       "path": "docs/porting/th14-replay-input-edges-verified-oct13.json",
       "bytes": 1216,
       "sha256": "07ec0e5e2c3cc87772a797b0eee306855b05ee0c2614efc8b9a2b45efabcb196"
+    },
+    {
+      "path": "docs/porting/th14-replay-manager-startup-oct30.json",
+      "bytes": 2890,
+      "sha256": "19b5246aa163be8f5dc1c34c78cd41a5ac6299d46e3c10e2af930f6cf3456972"
     },
     {
       "path": "docs/porting/th14-replay-native-decode-verified.json",
@@ -10090,8 +10115,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/launcher/src/launcher/app.mts",
-      "bytes": 338726,
-      "sha256": "d6258e9a8de34920652836c2ed0a67b3d642c6e7403ccf85d290f19a6760cfa1"
+      "bytes": 339044,
+      "sha256": "1372962132b94740ae30d0b8b6dbda90d0cef0c609c603c6651ee226b172ecb8"
     },
     {
       "path": "runtimes/th12/th12_web/launcher/src/launcher/changelog.mts",
@@ -20554,6 +20579,11 @@
       "sha256": "0a413d99ad46beb05eddd84b0d09f50beea0c958e82d23ad8bce84311eb29bf3"
     },
     {
+      "path": "tools/th14-reimub-ordinary-application-evidence-oct30.py",
+      "bytes": 10524,
+      "sha256": "18e301992c24be3ac6403805ab7b718919777b43506f3f0dbdbf3e6d84f92489"
+    },
+    {
       "path": "tools/th14-release-area-browser-flow-evidence-check.mjs",
       "bytes": 3427,
       "sha256": "d5a1780b631e3085612643f4aeadfe509d0e7d6ccdf0a34bb7bc1c9ec63bac8a"
@@ -20617,6 +20647,11 @@
       "path": "tools/th14-replay-input-edges-native.py",
       "bytes": 2519,
       "sha256": "8d80a71f2c1f6f77f7ff4cb62a57f7f49d91398c28b204b4235da3d1bd6c6e3f"
+    },
+    {
+      "path": "tools/th14-replay-manager-startup-oct30.mjs",
+      "bytes": 6568,
+      "sha256": "1f1421d953172508f166a1331a07009f48ccd516f7e779dcc806794fa7042217"
     },
     {
       "path": "tools/th14-replay-native-decode.py",
@@ -24665,13 +24700,17 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "346f937f6fb7039c51fe8eebfd8f0adea074e5da",
-    "title": "TH14 current repaired-core full ReimuB Normal regression and bounded browser observations",
+    "basePublishedCommit": "06b8b815b5037cc65500ea219f424c6c2ba17414",
+    "title": "TH14 replay manager startup order, browser short-replay persistence and current ordinary full Normal flow",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-current-construction-normal-evidence-oct30.py",
-      "docs/porting/th14-current-construction-normal-oct30.json",
-      "tools/th14-browser-raf-control-oct30.html",
-      "docs/porting/th14-browser-raf-control-oct30.json",
+      "runtimes/th12/th12_web/launcher/src/launcher/app.mts",
+      "tools/th14-replay-manager-startup-oct30.mjs",
+      "tools/th14-reimub-ordinary-application-evidence-oct30.py",
+      "docs/porting/th14-replay-manager-startup-oct30.json",
+      "docs/porting/TH14_REPLAY_MANAGER_STARTUP_OCT30.md",
+      "docs/porting/th14-browser-replay-roundtrip-oct30.json",
+      "docs/porting/th14-reimub-ordinary-application-oct30.json",
+      "docs/porting/TH14_REIMUB_ORDINARY_APPLICATION_OCT30.md",
       "docs/porting/TH14_CURRENT_REPAIR_REGRESSION_OCT30.md",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
@@ -24679,14 +24718,14 @@
     "sourceOnly": true,
     "gameAssetsAdded": false,
     "productionEngineChanged": false,
+    "productionLauncherFunctionChanged": "manageReplays",
     "productionCoreCommit": "57a544191704e0ce64cd46de85fe648a3e152097",
-    "currentFullNormalCallbacks": 122537,
-    "vm303Rows": 2586,
-    "combatCheckpoints": 1294,
-    "currentBrowserNormalReimuBStage1Observed": true,
-    "browserMovementShotPauseAndSlotSaveObserved": true,
-    "browserManagerReadbackAccepted": false,
-    "originalWholePixelsOrPcmCompared": false,
+    "actualFunctionDeclaredIoControls": 14,
+    "currentBrowserShortReplaySavedReloadedPlayedToNaturalEnd": true,
+    "currentBrowserColdManagerListingAccepted": true,
+    "browserFileByteDownloadAccepted": false,
+    "currentCoreOrdinaryReimuBNormalFullFlowAccepted": true,
+    "originalOrdinaryGuiOrWholePixelsOrPcmAccepted": false,
     "completeGame": false,
     "nativeEquivalent": false
   }
