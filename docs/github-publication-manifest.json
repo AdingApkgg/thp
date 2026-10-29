@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "36009ab934e3838c6461403362fd4f3c61bf3213",
+  "sourceCommit": "3af854d7e4251890cb743157b00c862392e6d816",
   "files": [
     {
       "path": ".gitignore",
@@ -187,6 +187,11 @@
       "path": "docs/porting/TH14_CPP_WEBGPU_OCT26.md",
       "bytes": 5963,
       "sha256": "642bf16f267c796f84df2618309539b17af4d73106d0ce175a5d0b22f1890cab"
+    },
+    {
+      "path": "docs/porting/TH14_CURRENT_FULL_REGRESSION_OCT30.md",
+      "bytes": 2538,
+      "sha256": "581df56ee21bbee9fd39636de317f529f763fa6496cf31ef8794e9e3fa16b5a4"
     },
     {
       "path": "docs/porting/TH14_CURRENT_GPU_BASELINE_OCT25.md",
@@ -505,8 +510,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 43205,
-      "sha256": "ab759052e4030a1e0930999085971d95cf553b3988be5f77a6201d996d1e7a22"
+      "bytes": 43888,
+      "sha256": "bc03d89f30b2df217d91851e5d91ef72e31b440dadd97155d1816ae39b94d6aa"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -2027,6 +2032,11 @@
       "path": "docs/porting/th14-current-gpu-baseline-observed-oct25.json",
       "bytes": 31672,
       "sha256": "c3033bec02f9bbcb33504b7626af1b74ac7f3b865207d99e46ab673a30fed7f1"
+    },
+    {
+      "path": "docs/porting/th14-current-normal-regression-oct30.json",
+      "bytes": 31297,
+      "sha256": "817edeb30395a5b7b1ccaf2c6c12e8cde705111a1121ee1ea1c427fe97bb84a8"
     },
     {
       "path": "docs/porting/th14-current-queue-full-playbacks-observed-oct15.json",
@@ -16464,6 +16474,11 @@
       "sha256": "824cc4f75cdf12a705dfd017d5f14a7973f6c3cbcdafac622678616f9bf1b1b6"
     },
     {
+      "path": "tools/th14-current-normal-regression-evidence-oct30.py",
+      "bytes": 5455,
+      "sha256": "d073ee09ad0d695ae67c6af50e83bad2b826e7615086f72cb0a8ea240d03fad4"
+    },
+    {
       "path": "tools/th14-current-queue-playback-evidence-check-oct15.py",
       "bytes": 14795,
       "sha256": "01db37a064038e6a7fb470034b1a64fb8b87046cc11680eaae6ee8e28d69a6d9"
@@ -24550,47 +24565,27 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "36009ab934e3838c6461403362fd4f3c61bf3213",
-    "title": "TH14 poll ready loading work after normal VM return; retain bounded timing failures",
+    "basePublishedCommit": "3af854d7e4251890cb743157b00c862392e6d816",
+    "title": "TH14 current-core full ReimuB Normal regression",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/AnmManager.cpp",
-      "runtimes/th12/th12_web/cpp/game/AnmManager.hpp",
-      "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-vm-return-worker-fixture.cpp",
-      "tools/th14-build-webgpu-release.py",
-      "tools/th14-vm-return-worker-observer-build-oct29.py",
-      "tools/th14-native-campaign-observer-oct25.py",
-      "tools/th14-controlled-vm-worker-evidence-oct29.py",
-      "tools/th14-passive-normal-vm-evidence-oct29.py",
-      "tools/th14-normal-vm-return-guard-check-oct29.py",
-      "tools/th14-compare-native-campaign.mjs",
-      "tools/th14-verify-native-campaign.py",
-      "tools/th14-prepare-scene-context-observer-oct30.py",
-      "tools/th14-scene-context-evidence-oct30.py",
-      "tools/th14-scene-publish-window-evidence-oct30.py",
-      "tools/th14-signature-draw-clock-observer-build-oct30.py",
-      "tools/th14-prepare-signature-call-observer-oct30.py",
-      "tools/th14-color-cache-cull-native-oct30.py",
-      "tools/th14-vm-return-review-oct30.py",
-      "docs/porting/TH14_VM_RETURN_WORKER_OCT30.md",
-      "docs/porting/th14-vm-return-review-oct30.json",
-      "docs/porting/TH14_SCENE_PUBLICATION_WINDOW_OCT30.md",
+      "tools/th14-current-normal-regression-evidence-oct30.py",
+      "docs/porting/th14-current-normal-regression-oct30.json",
+      "docs/porting/TH14_CURRENT_FULL_REGRESSION_OCT30.md",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "browserCompiledUnits": 146,
-    "browserWasmSha256": "f79578818cb8f8214648a74887a4182baffe3e95d6d40db24e2f9441d47180d5",
-    "nativeCoreUnits": 141,
-    "nativeFramesPerBackend": 2264,
-    "independentRegressionCallbacks": 33000,
-    "controlledCameraMismatchRows": 17039,
-    "browserStage5To6AndBossObserved": true,
-    "browserNaturalEndAndPersistenceAccepted": false,
+    "productionEngineChanged": false,
+    "productionCoreSourceUnits": 141,
+    "observerWasmSha256": "4f9956c748625a71d4e11ea90a1119f5ba9bb7ad100c0bc41cf099e83357ee0f",
+    "fullCurrentRegressionCallbacks": 122537,
+    "vmRows": 2586,
+    "combatCheckpoints": 1294,
+    "ordinaryIndependentThreadTimingAcceptance": false,
+    "currentFullApplicationPending": true,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
-    "ordinaryIndependentThreadTimingAcceptance": false,
     "completeGame": false,
     "nativeEquivalent": false
   }
