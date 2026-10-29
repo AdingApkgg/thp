@@ -5,6 +5,7 @@
 #if PORT_TITLE == 14 && defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
 #include "AnmTransferTh14.hpp"
 #include "StageEclTransferTh14.hpp"
+#include "ShtTransferTh14.hpp"
 extern "C" {
 int th14_webgpu_archive_size(const char* name);
 int th14_webgpu_archive_copy(const char* name,void* destination,unsigned size);
@@ -116,6 +117,22 @@ bool GameResources::open_anm(const std::string& name, AnmResource& output) {
 }
 
 bool GameResources::open_sht(const std::string& name, ShtResource& output) {
+#if PORT_TITLE == 14 && defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+    last_resource=name;
+    const int parsed=th14_webgpu_resource_size(3,name.c_str());
+    if(parsed < -1)return fail("background SHT parse failed");
+    if(parsed>=0){
+        if(!has(name))return fail("missing archive resource");
+        if(u32(parsed)>sht_transfer_th14::maximum_bytes)return fail("oversized background SHT");
+        std::vector<u8> packet(static_cast<u32>(parsed));
+        if(!th14_webgpu_resource_copy(3,name.c_str(),packet.data(),u32(packet.size())))return fail("background SHT delivery failed");
+        if(!th14_decode_sht_transfer(packet.data(),u32(packet.size()),output))return fail("invalid background SHT transfer");
+        return true;
+    }
+    // A prefetched SHT must carry its parsed packet. Failed/missing worker
+    // output cannot silently move parsing back onto the main callback.
+    if(th14_webgpu_archive_size(name.c_str())>=0)return fail("background SHT transfer missing");
+#endif
     std::vector<u8> data;
     if (!read(name, data)) return fail("SHT entry not found");
     if (!output.open(data.data(), u32(data.size())))

@@ -29,9 +29,10 @@ def main():
     # bounded transfer header is an explicit overlay; unrelated worktree files
     # (in particular ResourceCrypt.cpp) remain excluded.
     for name in ('AnmResource.cpp','AnmResource.hpp','AnmOpcodes.hpp','Th16AnmDispatch.hpp','PortTitle.hpp','AnmTransferTh14.hpp',
-                 'StageEclTransferTh14.hpp','StageResource.cpp','StageResource.hpp','EclResource.cpp','EclResource.hpp'):
+                 'StageEclTransferTh14.hpp','StageResource.cpp','StageResource.hpp','EclResource.cpp','EclResource.hpp',
+                 'ShtResource.cpp','ShtResource.hpp','ShtTransferTh14.hpp'):
         path='runtimes/th12/th12_web/cpp/game/'+name
-        raw=(R/path).read_bytes()if name in ('AnmTransferTh14.hpp','StageEclTransferTh14.hpp','EclResource.cpp','EclResource.hpp')else subprocess.check_output(['git','-C',str(C),'show',args.base_commit+':'+path])
+        raw=(R/path).read_bytes()if name in ('AnmTransferTh14.hpp','StageEclTransferTh14.hpp','EclResource.cpp','EclResource.hpp','ShtTransferTh14.hpp')else subprocess.check_output(['git','-C',str(C),'show',args.base_commit+':'+path])
         (source/name).write_bytes(raw);bindings[path]=dict(bytes=len(raw),sha256=SHA(raw))
     for name in ('archive-decoder.cpp','archive-decode-client.mjs','archive-decode-endpoint.mjs','archive-decode-worker.mjs'):
         path=R/'tools/th14-archive-worker'/name;raw=path.read_bytes()
@@ -43,9 +44,9 @@ def main():
     sdk=R/'runtimes/th12/tools/emsdk';emcc=sdk/'upstream/emscripten/emcc.py'
     env={**os.environ,'EM_CONFIG':str(sdk/'.emscripten'),'EMSDK':str(sdk),'EMSDK_PYTHON':sys.executable,'EMCC_CORES':'2',
          'TEMP':str(O),'TMP':str(O),'TMPDIR':str(O)}
-    exports='malloc,free,decoder_open,decoder_name,decoder_read,decoder_size,decoder_anm,decoder_anm_size,decoder_std,decoder_ecl,decoder_parsed_size,decoder_ecl_include_count,decoder_ecl_include_name,decoder_error,decoder_close'
+    exports='malloc,free,decoder_open,decoder_name,decoder_read,decoder_size,decoder_anm,decoder_anm_size,decoder_std,decoder_ecl,decoder_sht,decoder_parsed_size,decoder_ecl_include_count,decoder_ecl_include_name,decoder_error,decoder_close'
     command=[sys.executable,str(emcc),'-O2','-std=c++17','-fno-exceptions','-fno-rtti','-DPORT_TITLE=14','-I'+str(source),
-        *[str(source/name)for name in ('Archive.cpp','ResourceCrypt.cpp','Lzss.cpp','AnmResource.cpp','StageResource.cpp','EclResource.cpp')],str(O/'archive-decoder.cpp'),'--no-entry',
+        *[str(source/name)for name in ('Archive.cpp','ResourceCrypt.cpp','Lzss.cpp','AnmResource.cpp','StageResource.cpp','EclResource.cpp','ShtResource.cpp')],str(O/'archive-decoder.cpp'),'--no-entry',
         '-sDEFAULT_TO_CXX=1','-sFILESYSTEM=0','-sMODULARIZE=1','-sEXPORT_ES6=1','-sENVIRONMENT=web,worker,node',
         '-sALLOW_MEMORY_GROWTH=1','-sINITIAL_MEMORY=134217728','-sMAXIMUM_MEMORY=536870912','-sSTACK_SIZE=1048576',
         '-sEXPORTED_FUNCTIONS='+','.join('_'+name for name in exports.split(',')),
@@ -62,6 +63,7 @@ def main():
         compilerVersion=(sdk/'upstream/emscripten/emscripten-version.txt').read_text().strip(),
         browserRuntimeModules=args.browser_runtime,actualProductionAnmParser=True,parsedAnmTransferVersion=1,
         actualProductionStdAndEclParsers=True,parsedStdAndEclTransferVersion=1,
+        actualProductionShtParser=True,parsedShtTransferVersion=1,
         productionIntegrated=False,browserAcceptance=False,completeGame=False,nativeEquivalent=False)
     (O/'build.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps({k:v for k,v in report.items()if k!='sourceBindings'}))

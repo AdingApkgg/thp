@@ -2,6 +2,7 @@
 #include "Archive.hpp"
 #include "AnmTransferTh14.hpp"
 #include "StageEclTransferTh14.hpp"
+#include "ShtTransferTh14.hpp"
 #include <emscripten.h>
 #include <memory>
 using namespace th11;
@@ -57,6 +58,12 @@ EMSCRIPTEN_KEEPALIVE const u8* decoder_ecl(){
     return parsed_resource.data();
 }
 EMSCRIPTEN_KEEPALIVE u32 decoder_parsed_size(){return u32(parsed_resource.size());}
+EMSCRIPTEN_KEEPALIVE const u8* decoder_sht(){
+    parsed_resource.clear();ShtResource resource;
+    if(!resource.open(output.data(),u32(output.size()))){failure=11;return nullptr;}
+    if(!th14_encode_sht_transfer(resource,output.data(),u32(output.size()),parsed_resource)){failure=12;return nullptr;}
+    return parsed_resource.data();
+}
 EMSCRIPTEN_KEEPALIVE u32 decoder_ecl_include_count(){return u32(parsed_ecl_includes.size());}
 EMSCRIPTEN_KEEPALIVE const char* decoder_ecl_include_name(u32 index){return index<parsed_ecl_includes.size()?parsed_ecl_includes[index].c_str():nullptr;}
 EMSCRIPTEN_KEEPALIVE u32 decoder_error(){return failure;}

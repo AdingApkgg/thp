@@ -52,9 +52,9 @@ export function createArchiveDecodeEndpoint(createModule, send) {
             throw new Error('Parsed ANM batch exceeds budget');
           anm=module.HEAPU8.slice(parsed,parsed+parsedSize).buffer;
         }
-        const kind=name.endsWith('.std')?'std':name.endsWith('.ecl')?'ecl':null;let parsedResource;
+        const kind=name.endsWith('.std')?'std':name.endsWith('.ecl')?'ecl':name.endsWith('.sht')?'sht':null;let parsedResource;
         if(kind){
-          const parsed=kind==='std'?module._decoder_std():module._decoder_ecl();
+          const parsed=kind==='std'?module._decoder_std():kind==='ecl'?module._decoder_ecl():module._decoder_sht();
           if(!parsed)throw new Error(`${kind.toUpperCase()} rejected: ${name} (${module._decoder_error()})`);
           const parsedSize=module._decoder_parsed_size();total+=parsedSize;
           if(parsedSize<36||parsedSize>128*1024*1024||total>128*1024*1024)
@@ -73,7 +73,7 @@ export function createArchiveDecodeEndpoint(createModule, send) {
         }
         (dependency?dependencies:entries).push({name,bytes:copy.buffer,...(anm?{anm}:{}),...(kind?{[kind]:parsedResource}:{})});
       }
-      send({id,command,ok:true,entries,dependencies},[...entries,...dependencies].flatMap(entry=>[entry.bytes,...['anm','std','ecl'].filter(kind=>entry[kind]).map(kind=>entry[kind])]));return;
+      send({id,command,ok:true,entries,dependencies},[...entries,...dependencies].flatMap(entry=>[entry.bytes,...['anm','std','ecl','sht'].filter(kind=>entry[kind]).map(kind=>entry[kind])]));return;
     }
     if (command === 'close') {
       module._decoder_close();

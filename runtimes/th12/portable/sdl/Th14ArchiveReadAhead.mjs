@@ -19,7 +19,8 @@ export class ArchiveReadAhead {
         value.error?{error:value.error}:{entries:new Map(value.entries.map(entry=>[entry.name,entry.bytes])),
           anms:new Map(value.entries.filter(entry=>entry.anm).map(entry=>[entry.name,entry.anm])),
           stds:new Map(value.entries.filter(entry=>entry.std).map(entry=>[entry.name,entry.std])),
-          ecls:new Map(value.entries.filter(entry=>entry.ecl).map(entry=>[entry.name,entry.ecl]))};
+          ecls:new Map(value.entries.filter(entry=>entry.ecl).map(entry=>[entry.name,entry.ecl])),
+          shts:new Map(value.entries.filter(entry=>entry.sht).map(entry=>[entry.name,entry.sht]))};
       try {
         // Even stale callbacks must be delivered: the C++ generation check
         // owns and frees its token. Dropping a callback here would leak it.
@@ -52,9 +53,11 @@ export class ArchiveReadAhead {
     destination.set(this.batch.anms.get(name));return size;
   }
   parsedSize(kind,name) {
-    if(kind!=='std'&&kind!=='ecl')throw new Error('Invalid parsed resource kind');
+    if(kind!=='std'&&kind!=='ecl'&&kind!=='sht')throw new Error('Invalid parsed resource kind');
     if(!this.batch)return -1;if(this.batch.error)throw this.batch.error;
-    const files=this.batch[kind+'s'];return files.has(name)?files.get(name).byteLength:-1;
+    const files=this.batch[kind+'s'];
+    if(kind==='sht'&&this.batch.entries.has(name)&&!files.has(name))throw new Error('Parsed SHT transfer missing');
+    return files.has(name)?files.get(name).byteLength:-1;
   }
   parsedCopy(kind,name,destination) {
     const size=this.parsedSize(kind,name);if(size<0)return -1;

@@ -57,12 +57,12 @@ export class ArchiveDecodeClient {
         seen.add(entry.name);
       }
       const combined=[...result.entries,...dependencies];
-      if(combined.some(entry=>['std','ecl'].some(kind=>
+      if(combined.some(entry=>['std','ecl','sht'].some(kind=>
           (entry[kind]!==undefined&&!(entry[kind]instanceof ArrayBuffer))||
           (entry.name.endsWith('.'+kind)&&!(entry[kind]instanceof ArrayBuffer)))))
         throw new Error('Parsed resource response owner changed');
       return combined.map(entry => ({name:entry.name,bytes:new Uint8Array(entry.bytes),
-        ...Object.fromEntries(['anm','std','ecl'].filter(kind=>entry[kind]).map(kind=>[kind,new Uint8Array(entry[kind])]))}));
+        ...Object.fromEntries(['anm','std','ecl','sht'].filter(kind=>entry[kind]).map(kind=>[kind,new Uint8Array(entry[kind])]))}));
     } finally {this.decoding = false;}
   }
   close() {

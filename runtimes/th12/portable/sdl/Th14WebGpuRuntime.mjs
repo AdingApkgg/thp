@@ -52,10 +52,10 @@ export class Th14WebGpuRuntime {
     try{return this.archive?.anmCopy(name,destination)===destination.byteLength?1:0;}catch{return 0;}
   }
   archiveParsedSize(kind,name) {
-    try{if(kind!==1&&kind!==2)return -2;return this.archive?.parsedSize(kind===1?'std':'ecl',name)??-1;}catch{return -2;}
+    try{if(kind!==1&&kind!==2&&kind!==3)return -2;return this.archive?.parsedSize(kind===1?'std':kind===2?'ecl':'sht',name)??-1;}catch{return -2;}
   }
   archiveParsedCopy(kind,name,destination) {
-    try{if(kind!==1&&kind!==2)return 0;return this.archive?.parsedCopy(kind===1?'std':'ecl',name,destination)===destination.byteLength?1:0;}catch{return 0;}
+    try{if(kind!==1&&kind!==2&&kind!==3)return 0;return this.archive?.parsedCopy(kind===1?'std':kind===2?'ecl':'sht',name,destination)===destination.byteLength?1:0;}catch{return 0;}
   }
   scheduleArchive(callback,data,names) {
     const invoke=()=>this.call('th14_webgpu_invoke',null,['number','number'],[callback,data]);
