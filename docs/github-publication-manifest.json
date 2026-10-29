@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "29e1a8ef759d1fc8c87b18882b0f074eeccb05d2",
+  "sourceCommit": "346f937f6fb7039c51fe8eebfd8f0adea074e5da",
   "files": [
     {
       "path": ".gitignore",
@@ -207,6 +207,11 @@
       "path": "docs/porting/TH14_CURRENT_REIMUB_REPLAY_CHECK_OCT23.md",
       "bytes": 1665,
       "sha256": "3cb9cec6f012421e4fabfb78cf8f0f214e5b3fea2c1fdb48325faaf99f5efa2d"
+    },
+    {
+      "path": "docs/porting/TH14_CURRENT_REPAIR_REGRESSION_OCT30.md",
+      "bytes": 3809,
+      "sha256": "9a52152804ce72c365d20fdbf48fd7975c8c3a14784def3812437a52702807cb"
     },
     {
       "path": "docs/porting/TH14_CURVE_ORIGIN_OCT26.md",
@@ -510,8 +515,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 45405,
-      "sha256": "e5b238286611a3b569bdebeebefc201d3f68d6669445b9336d71a248f97d513a"
+      "bytes": 46140,
+      "sha256": "96eae44f0a6fde8ae21473587ed9197ba0cd677b24ee87c0c4c4297b68f24429"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -1609,6 +1614,11 @@
       "sha256": "a0c8d0029b5fb3829149ab5d51c8d9fd1bc7682f576a0a4b0e72e9619c3d6a34"
     },
     {
+      "path": "docs/porting/th14-browser-raf-control-oct30.json",
+      "bytes": 906,
+      "sha256": "d06c1b68fd76c97b007396cc8c0502c7cdee641203327e7a82752a022f4230f5"
+    },
+    {
       "path": "docs/porting/th14-browser-records-verified-oct11.json",
       "bytes": 1531,
       "sha256": "e0afb5ad4f4cbcfab0ff043d0434a7a94029c2dbe5f46b769df979e0750bd39d"
@@ -2032,6 +2042,11 @@
       "path": "docs/porting/th14-current-browser-flow-verified-oct14.json",
       "bytes": 89970,
       "sha256": "a1dfab228accea46d9e876f89820f76ff7cb13796ac42af1473d0cf2f586d163"
+    },
+    {
+      "path": "docs/porting/th14-current-construction-normal-oct30.json",
+      "bytes": 31341,
+      "sha256": "7d4d4d09badcd072e687bf944288702f0afa8009fbd24635e44b260ca5849e2c"
     },
     {
       "path": "docs/porting/th14-current-full-budget-oct30.json",
@@ -15924,6 +15939,11 @@
       "sha256": "5375958b7c71d7c7fdc6c961e02fb2d09021302bd3a756a53c4139eee5f561d1"
     },
     {
+      "path": "tools/th14-browser-raf-control-oct30.html",
+      "bytes": 1131,
+      "sha256": "a8f24ef5c181e0702d3b74761a40ffc084e748c1eada625cf97170303c848eb8"
+    },
+    {
       "path": "tools/th14-browser-replay-evidence-oct28.py",
       "bytes": 6352,
       "sha256": "ccbae8b704cfb86fee6d2f930e2d4a6de06e8a3bd253a9272d2d8ac43788f2b7"
@@ -16512,6 +16532,11 @@
       "path": "tools/th14-current-browser-flow-evidence-check.mjs",
       "bytes": 3283,
       "sha256": "ca6dd742aaee3082472c2020496fa03b2b44013f31eeae28f90e77d5b16af78a"
+    },
+    {
+      "path": "tools/th14-current-construction-normal-evidence-oct30.py",
+      "bytes": 5571,
+      "sha256": "2240dc7dddfaea04b97848f05ac53874eadca91f78c350aed1bfbb779a522a67"
     },
     {
       "path": "tools/th14-current-gpu-baseline-evidence-check-oct25.py",
@@ -24640,25 +24665,28 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "29e1a8ef759d1fc8c87b18882b0f074eeccb05d2",
-    "title": "TH14 preserve the original post-install Runtime startup failure",
+    "basePublishedCommit": "346f937f6fb7039c51fe8eebfd8f0adea074e5da",
+    "title": "TH14 current repaired-core full ReimuB Normal regression and bounded browser observations",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/launcher/src/launcher/app.mts",
-      "tools/th14-runtime-startup-error-oct30.mjs",
-      "tools/th14-runtime-startup-preview-oct30.mjs",
-      "docs/porting/TH14_RUNTIME_STARTUP_ERROR_OCT30.md",
-      "docs/porting/th14-runtime-startup-error-oct30.json",
+      "tools/th14-current-construction-normal-evidence-oct30.py",
+      "docs/porting/th14-current-construction-normal-oct30.json",
+      "tools/th14-browser-raf-control-oct30.html",
+      "docs/porting/th14-browser-raf-control-oct30.json",
+      "docs/porting/TH14_CURRENT_REPAIR_REGRESSION_OCT30.md",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
     "productionEngineChanged": false,
-    "th14LauncherErrorHandlingChanged": true,
-    "actualFunctionControls": 12,
-    "oldMaskedErrorCases": 3,
-    "currentMaskedErrorCases": 0,
-    "originalColdStartFailureCauseProven": false,
+    "productionCoreCommit": "57a544191704e0ce64cd46de85fe648a3e152097",
+    "currentFullNormalCallbacks": 122537,
+    "vm303Rows": 2586,
+    "combatCheckpoints": 1294,
+    "currentBrowserNormalReimuBStage1Observed": true,
+    "browserMovementShotPauseAndSlotSaveObserved": true,
+    "browserManagerReadbackAccepted": false,
+    "originalWholePixelsOrPcmCompared": false,
     "completeGame": false,
     "nativeEquivalent": false
   }

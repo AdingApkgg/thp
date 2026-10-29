@@ -1,0 +1,6 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>TH14 独立 RAF 对照</title><style>body{background:#141820;color:#eee;font:18px system-ui;padding:28px}pre{white-space:pre-wrap}</style><h1>独立 RAF 对照</h1><p>此页不加载游戏、Wasm、音频或网络资源。只观察 15 秒浏览器回调。</p><pre id="result" role="status">采样中</pre><script>
+const started=performance.now(),stamp=new Date().toISOString();let count=0,first=null,last=null,finished=false;
+function show(now){document.getElementById('result').textContent=JSON.stringify({startedUtc:stamp,sampleElapsedMs:now-started,rafCallbacks:count,firstRafMs:first,lastRafMs:last,measuredRafHz:first!==null&&last>first?(count-1)*1000/(last-first):null,visibility:document.visibilityState,documentFocused:document.hasFocus(),gameLoaded:false,wasmLoaded:false,audioLoaded:false,finished},null,2);}
+function tick(now){if(finished)return;if(first===null)first=now;last=now;++count;show(performance.now());requestAnimationFrame(tick);}
+requestAnimationFrame(tick);setTimeout(()=>{finished=true;show(performance.now());},15000);
+</script></html>

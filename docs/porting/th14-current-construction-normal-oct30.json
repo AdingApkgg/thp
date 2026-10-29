@@ -1,0 +1,640 @@
+{
+  "verifiedCurrentFullNormalRegression": true,
+  "sourceCommit": "57a544191704e0ce64cd46de85fe648a3e152097",
+  "replaySha256": "c48412a95f0fe9f685d97574e8ab0655d41e44ff9c41fda7bf788589b1b29c74",
+  "callbacks": 122537,
+  "selection": [
+    0,
+    1,
+    1,
+    1
+  ],
+  "stagesObserved": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "selectedStateWords": 32,
+  "cameraWords": 25,
+  "hudWords": 2,
+  "allDeclaredStateAndSampledFieldsEqual": true,
+  "vmRows": 2586,
+  "selectedWordsPerVm": 303,
+  "combatCheckpoints": 1294,
+  "nonemptyCombatCheckpoints": 157,
+  "initialOrderedPublications": 3274,
+  "publicationWindowCallbacks": 1000,
+  "productionCoreSourceUnits": 141,
+  "observerWasmSha256": "7c4c9066a9e8a86fb7db162638ad2d50d73441dad90d2418e5b5aa2b0e84b0ee",
+  "savedFullProofSha256": "7cd40060223c1cfbf9782c053324e6a1faef06ffd402cb8f14b2875fd71a2be1",
+  "independentRecomputationEqual": true,
+  "noEmulationRerun": true,
+  "originalWarmAttractClearCase": true,
+  "ordinaryOriginalMenuAccepted": false,
+  "ordinaryIndependentThreadTimingAccepted": false,
+  "originalWholePixelsOrPcmCompared": false,
+  "browserAcceptance": false,
+  "wholeModeEquivalenceAccepted": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "verifierSha256": "2240dc7dddfaea04b97848f05ac53874eadca91f78c350aed1bfbb779a522a67",
+  "bindings": {
+    "artifacts/th14/reimub-normal-construction-current-oct30/plan.json": {
+      "bytes": 725,
+      "sha256": "e6ee9a8745fcd113014d8496c20c557e0252afd7c4462c444726f1b60d787881"
+    },
+    "artifacts/th14/reimub-normal-construction-current-oct30/verified.json": {
+      "bytes": 10631,
+      "sha256": "7cd40060223c1cfbf9782c053324e6a1faef06ffd402cb8f14b2875fd71a2be1"
+    },
+    "artifacts/th14/reimub-normal-construction-current-oct30/observer/observer-build.json": {
+      "bytes": 87317,
+      "sha256": "341a741b5e6438eb360234c4b7e4be5ad91cd646eb9af8418513f27e47b769cf"
+    },
+    "tools/th14-verify-native-campaign.py": {
+      "bytes": 16097,
+      "sha256": "ea0751a2d4644780c3cde3f62873cbf6b7e41c17a6657c17d474f48579587fc8"
+    },
+    "tools/th14-compare-native-campaign.mjs": {
+      "bytes": 48642,
+      "sha256": "e0cacdb5767c3798fe88a3ec9527f985059a435993e7397856352891ad6923f9"
+    },
+    "artifacts/th14/reimub-normal-construction-current-oct30/observer/observer.wasm": {
+      "bytes": 1503006,
+      "sha256": "7c4c9066a9e8a86fb7db162638ad2d50d73441dad90d2418e5b5aa2b0e84b0ee"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/AnmGeometry.cpp.o": {
+      "bytes": 13175,
+      "sha256": "f0721135dd04011fe986a2beb86f039259ccf3a6c03128c21241deaa2c2eb391"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/AnmInterpreter.cpp.o": {
+      "bytes": 21871,
+      "sha256": "80b0cf278980e71f49978bc76ac33b0a258d6099aef92d9d977df295b6bce265"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/AnmManager.cpp.o": {
+      "bytes": 135163,
+      "sha256": "7fb862ea2f82e1cef7266d234c040f2cf933089eca20dbb3b0baea33156219ec"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/AnmProjection.cpp.o": {
+      "bytes": 3952,
+      "sha256": "45da957323a487d8b878895e236f7c8d0f7d2d72d44bf7c82c49821623845703"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/AnmRenderer.cpp.o": {
+      "bytes": 22328,
+      "sha256": "13e7f24d1067cc7cf153a54c1eb4056e57d69f60a5a662de03b514d76155e86d"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/AnmResource.cpp.o": {
+      "bytes": 17140,
+      "sha256": "8b28400a9cc366dfc0600eb203c0b9b36aead3e17d84d132ff6fffe878b2acb6"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/AnmVm.cpp.o": {
+      "bytes": 6013,
+      "sha256": "a1ae0a24b858e9769dd0b9a9489f17684bd7fab9e9d88e8fd08a49740906c598"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/Archive.cpp.o": {
+      "bytes": 11958,
+      "sha256": "eee3dc2952a29b47d85c3a9a7c1fd7257473240538a81b8a0d53838de10f09bf"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/AsciiText.cpp.o": {
+      "bytes": 5021,
+      "sha256": "26ea89c2948f1505940d238f90597d1ae2aef6e3cf256f92d6755f09e010b654"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/BombController.cpp.o": {
+      "bytes": 22561,
+      "sha256": "4e03946a6212598732d4fc10056775c83ee24db535df05ad12ed5ecffd7f593a"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/BombReimuTh14.cpp.o": {
+      "bytes": 1877,
+      "sha256": "d141cb43cc2856a516a6050f88febaa7c9fb2465bd219f1170c70652b0a4b2ed"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/BulletAppearance.cpp.o": {
+      "bytes": 7011,
+      "sha256": "a17239c06f9d239b338e67c92132f35347e13b7d4a0973f9cb750ca781848320"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/BulletLaunch.cpp.o": {
+      "bytes": 1779,
+      "sha256": "2da26b4903642c84bfc0fc3de23ff6ececfa88d27c7ea0bf44d86a3005fd775e"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/BulletManager.cpp.o": {
+      "bytes": 11629,
+      "sha256": "95c7076d2dbef3fd15a066dfb9086c36bf5a8c98ae2ecfdfa2f00db3284f6bd2"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/BulletMotion.cpp.o": {
+      "bytes": 4780,
+      "sha256": "f2f6327f6cae6e7aa1c5d2261e3f620468c26ddf0e38356cfa802351ee1f7323"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/BulletTh14.cpp.o": {
+      "bytes": 31038,
+      "sha256": "c0d17db087bf4858c0f1bd8bbb57ff92d080ab77794468fff8f81be3b1fac8b3"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/BulletTh14Launch.cpp.o": {
+      "bytes": 1969,
+      "sha256": "0b68804bd91466f67200ed13bd27351fc0db61570a70d5fdc5ec9b049111e61a"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/BulletTh16.cpp.o": {
+      "bytes": 17065,
+      "sha256": "111fdc81812b1d64932564716c20bae7eb3b290d6b6200fd1b37523e275dff8a"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/BulletTh16Launch.cpp.o": {
+      "bytes": 1969,
+      "sha256": "18ed1322007c4df5fb009346039835d57e4136f97c4e8ceb1660263983c70236"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/BulletTransforms.cpp.o": {
+      "bytes": 3309,
+      "sha256": "5dc579451f07299a1b2aeba3fc2db9e18c69d306b8bbbc997dc7ae7477df1560"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/Communication.cpp.o": {
+      "bytes": 888,
+      "sha256": "56675d7cae625106ddd0e54f3896e767237911f3040397359dc2229d67208fc5"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ContinueTh14.cpp.o": {
+      "bytes": 575,
+      "sha256": "dabdf82eb57e64f7b0a5a7660355bc853e17a53bdaab5b21620ea56726b6939c"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/DamageArea.cpp.o": {
+      "bytes": 2516,
+      "sha256": "cd37d236b0bd9769f561bd01ab9f65da73f5cbab231b444f0e5589f846432c08"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/Dialogue.cpp.o": {
+      "bytes": 21356,
+      "sha256": "644e6a058c0b8788ee78c5226b50705794ad6f7c3d1ea071270c61b5359cd1b5"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EclContext.cpp.o": {
+      "bytes": 4170,
+      "sha256": "b664db1c5e9674c9db1c39cc5d93623920ae2a45ff425e512dea448ae86d5b39"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EclInterpreter.cpp.o": {
+      "bytes": 9245,
+      "sha256": "c7bd8c2854cee2bcad5e313718d79f972d68926617ecee8ad0e7b596e547e69c"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EclOwner.cpp.o": {
+      "bytes": 2909,
+      "sha256": "46f4cfb623943006b67ca3e2bd161fc2221f5055c331bd41161b346f8cdee56c"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EclResource.cpp.o": {
+      "bytes": 15162,
+      "sha256": "1ea8ddbc0622f2279c6d92d979b98534622308a37c16f06a1aa19a220e7fb313"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EffectTh16Slots.cpp.o": {
+      "bytes": 614,
+      "sha256": "96ea57e8df86473558dad6b03f7dec2842ffc2101f77cd1e6d7cc82b77af0bfd"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/Ending.cpp.o": {
+      "bytes": 30636,
+      "sha256": "6b6f1104ea4cfc5dbb14ccc2417bfa180b0568719e8199f44caf6173b4a4043d"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EnemyAnimations.cpp.o": {
+      "bytes": 7802,
+      "sha256": "45564b57c0e73583d1a40c5bf376bbae6e71b3d5675c14f8a3e0c9a655960551"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EnemyCallbacks.cpp.o": {
+      "bytes": 8165,
+      "sha256": "6181fbffabe6733e4aea3d2027f327c09161738c19d664a6ac62d1b0ef57b63e"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EnemyCommands.cpp.o": {
+      "bytes": 6173,
+      "sha256": "c83fb3e21efdb0d53c0ee5643dab2d71891b365ae1fb9855eb66a8dedb446c82"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EnemyEmitterCommands.cpp.o": {
+      "bytes": 4431,
+      "sha256": "f86cab6946b4a6858e8f4ba7772c3331200a74d48b1fbf2ca778eed51c279c08"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EnemyFrame.cpp.o": {
+      "bytes": 5239,
+      "sha256": "1c464a406e937647f3340a0d82a8717289e8bce262960a65f6bb3a1f7b97736e"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EnemyLaserCommands.cpp.o": {
+      "bytes": 3437,
+      "sha256": "d47d0dc985966cb285b1606122952a32d94a5d06759b042204fc418ff9f754f7"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EnemyManager.cpp.o": {
+      "bytes": 19970,
+      "sha256": "6542a258375c1ea126a9efe3b7359bc4d487dc2adbd91b0a9cd111007aa62103"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EnemyPhase.cpp.o": {
+      "bytes": 1577,
+      "sha256": "1de756c6b1d1f83c5418c32752aa1229efde638be9716d4159b6458703367f9a"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EnemyScript.cpp.o": {
+      "bytes": 9273,
+      "sha256": "7cc283354b5e55feb6f1d867cd86ce8cba8768eff2546635494ed9b2b93ebe52"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EnemyState.cpp.o": {
+      "bytes": 7049,
+      "sha256": "17e98cdf7a9ce9077ae06b5705a0de3d5700080248c891565d1ad54d1606f25f"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EnemyStateCommands.cpp.o": {
+      "bytes": 14461,
+      "sha256": "a9ec0975e3f2417da59d4f7be2266bbc92375a179fb098216d618f32cd3f7b37"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EnemyTh14Callbacks.cpp.o": {
+      "bytes": 1448,
+      "sha256": "7a5e3f658d0896b1f5bcf687225baf4b9133f60cad9d9b19f29697aa6ba306cf"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EnemyTh14Commands.cpp.o": {
+      "bytes": 23336,
+      "sha256": "b5d81b07342d48b084808936973c2782074759923221042da9cd5bc9475e1271"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EnemyTh14Emitter.cpp.o": {
+      "bytes": 2313,
+      "sha256": "b29f0c16b12fb5972355a6470633a13b810ee55c01025740a7e2b1186c584ca2"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EnemyTh14Fire.cpp.o": {
+      "bytes": 1075,
+      "sha256": "0028bea6eeaa1d6680ffcd9ac495f0e3f874d3ceead8c040d4ab630590dcae7f"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EnemyTh16Commands.cpp.o": {
+      "bytes": 3380,
+      "sha256": "79107d500bf6ac08e5ce201088dc2ed99ae3c210122b7d1b3f2ce382e8da465a"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EnemyTh16Emitter.cpp.o": {
+      "bytes": 470,
+      "sha256": "4cb5ddc11468e0a8e23dc1075a8f76366cbcea5b306917baf3f39408d22c507d"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EnemyTh16Fire.cpp.o": {
+      "bytes": 640,
+      "sha256": "02eec6294e35ca04adf83b446356817c8079ee9303f6d37307437bafcfb43853"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EnemyTh16Movement.cpp.o": {
+      "bytes": 3147,
+      "sha256": "07c53eca89bb4db2aae14743288ef48552a5bf35502f194f63c25ab7aa9f0b26"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/EnemyTh16Targets.cpp.o": {
+      "bytes": 771,
+      "sha256": "6acb64bad3623d4efcf9a74e7787615244d120d8cdba2289f2f370b81e0106d8"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/FogInterpolation.cpp.o": {
+      "bytes": 3238,
+      "sha256": "d82736cae176de68e402e14c4498146f85d71005770e5ad1d3f384f92f1bc9e7"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/FrameStatistics.cpp.o": {
+      "bytes": 1909,
+      "sha256": "9fbb8564ea990edbef770b2b4eed55f9bc546657304b993f7263fff8110e4731"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/GameBattle.cpp.o": {
+      "bytes": 141222,
+      "sha256": "532e1c6d34659e224557b4ba5fe927ae6b38734f3e374337586d5fdcac6d0a25"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/GameConfig.cpp.o": {
+      "bytes": 884,
+      "sha256": "ae95f5410036b46916e34b60a792376d86afdeef6e6cf4b8ce38bab3ab66db60"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/GameEconomy.cpp.o": {
+      "bytes": 938,
+      "sha256": "a6cc1baedcd2364ff3154af420fc23d6940f8d27f388d057cc787fc7c2da48ab"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/GameInput.cpp.o": {
+      "bytes": 2140,
+      "sha256": "b24b6be43fb716ab8a6017e03f3db55a4a9397ced1f42c42d0c9f8700a5baef8"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/GameResources.cpp.o": {
+      "bytes": 38876,
+      "sha256": "2a02a33ff119ccf99cfed718d04c17049e4e4bcff3eb4ac7f51624a4097c213c"
+    },
+    "artifacts/th14/replay-construction-oct30/core-build/GameSession.cpp.o": {
+      "bytes": 68050,
+      "sha256": "1f616218444bd12cc27d82216f7a6ed88557d16e22952fc51ef8abf965fadbfa"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/GameSessionResources.cpp.o": {
+      "bytes": 30106,
+      "sha256": "0d3d9b88d89e4a0c15423866aee897a61dd0d96980e0216425c61f5478a77e6a"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/GlyphAtlas.cpp.o": {
+      "bytes": 4042,
+      "sha256": "1cbb8d777472bf1abe9e537cfe6a24e26f41942ec270c11bf339b0f7c02960e1"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/GraphicsMath.cpp.o": {
+      "bytes": 11937,
+      "sha256": "5d5060c0c0e944f7897d93f83197c52474fcafbd2b1f8582ee937aed7481d841"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/Hud.cpp.o": {
+      "bytes": 13483,
+      "sha256": "4c0221304602297ed2c1fbca359078bdb2cfae21fa309ed818c97d596ab4efe4"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/HudTh14Boss.cpp.o": {
+      "bytes": 6440,
+      "sha256": "8ef6e6e1a47d870107f7ae8e62df8e229eda231d97551281e6df751afb4b511e"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/HudTh14Notice.cpp.o": {
+      "bytes": 2090,
+      "sha256": "2942d7acff0d218464c5726f3de1c59bc7d8bbdfeb026d50dd93c1556e5ad429"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/HudTh14Text.cpp.o": {
+      "bytes": 5757,
+      "sha256": "4d8e7cd5cc6e7bbfcbd8cf8d8ebdc14014d7669637da918d200a6633ccf741d4"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ImageResample.cpp.o": {
+      "bytes": 12476,
+      "sha256": "aefd84412bdf87cb961a705c78b45376bed5660691e81447a8ac93e624a969e1"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/Interpolation.cpp.o": {
+      "bytes": 5999,
+      "sha256": "bd18c887025d6cff3a463034a55d67881c4f2c97c05b68137af7553d47b97737"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ItemManager.cpp.o": {
+      "bytes": 6923,
+      "sha256": "97fe6f9535eee3633eb0b40e92bf0cf45a6f345b44104209ca1262ae7dd38775"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ItemRewards.cpp.o": {
+      "bytes": 5703,
+      "sha256": "ad937ddecc828962d0b11dfa805c9ccf76ade9d9056d4b7622ad6094b45bc111"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ItemTh14.cpp.o": {
+      "bytes": 7432,
+      "sha256": "a6dc77190b1ef78e54a0c97dfee63bdf0ab90d69381149708858b2012b041679"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ItemTh16.cpp.o": {
+      "bytes": 335,
+      "sha256": "07c084e6bd92d751fc33919d27c47b90f0ced127d1061b0f64fc4c9b683a4cfc"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ItemTh16Drop.cpp.o": {
+      "bytes": 335,
+      "sha256": "07c084e6bd92d751fc33919d27c47b90f0ced127d1061b0f64fc4c9b683a4cfc"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/LaserCurveTh14.cpp.o": {
+      "bytes": 13851,
+      "sha256": "fc2e56510f6cd193f79ecea4ebeeea91101bcde66f99b76df9d118496dc68e11"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/LaserCurveTh14Runtime.cpp.o": {
+      "bytes": 8086,
+      "sha256": "4a1d0f23063ffe2ed7958f61fe54646dae62393554de271b66e00f69179a0355"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/LaserCut.cpp.o": {
+      "bytes": 3575,
+      "sha256": "71de802e372f05863a7db010c07b8e432e1243757172d5ac0dc972e01dfccd17"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/LaserCutTh16.cpp.o": {
+      "bytes": 335,
+      "sha256": "07c084e6bd92d751fc33919d27c47b90f0ced127d1061b0f64fc4c9b683a4cfc"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/LaserInfinite.cpp.o": {
+      "bytes": 4117,
+      "sha256": "ad760b8b98f1de5fa56ccf888031832247bca27a213d8dd657e69292bf2597a9"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/LaserInfiniteCut.cpp.o": {
+      "bytes": 3942,
+      "sha256": "070539fc22532e6d6fc7895f3c7ab4b52025366e5e400d3c2785a1b9fc65b2f0"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/LaserInfiniteTh14.cpp.o": {
+      "bytes": 9544,
+      "sha256": "5dde13c1f011ba1608a977432377e67a078b3e43eae22c867b0df339db439034"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/LaserLine.cpp.o": {
+      "bytes": 4806,
+      "sha256": "215f21e1dc2e639c59d3fa2bf2b702054d1540bcb389955e2e1384f58c9b4854"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/LaserLineTh14.cpp.o": {
+      "bytes": 11507,
+      "sha256": "b4d6f0f92c92e8b1b83e9f85a19381dbf55409334f3b89d8ae61f07c26a0847d"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/LaserLineTh16.cpp.o": {
+      "bytes": 335,
+      "sha256": "07c084e6bd92d751fc33919d27c47b90f0ced127d1061b0f64fc4c9b683a4cfc"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/LaserManager.cpp.o": {
+      "bytes": 25792,
+      "sha256": "4ab78dfa2c7f90dd566d765869670b3beb8db6ccb4b10064f632b37df01281ae"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/LaserState.cpp.o": {
+      "bytes": 4944,
+      "sha256": "5b949e6e19b61109d6b03acc8130cf8ae0795b4479711dc25556dd5775482399"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/Localization.cpp.o": {
+      "bytes": 632,
+      "sha256": "4de2094bcc5162f6d7e374d44ee3569a3ecbd0145cc0dd2f197182f668ef8c39"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/Lzss.cpp.o": {
+      "bytes": 8624,
+      "sha256": "fd0a76fa9b2e2e8c2046429565dad3511b76a3f2382624d809e6b2ea6ab1281e"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/MenuCursor.cpp.o": {
+      "bytes": 1476,
+      "sha256": "e648d57ffd93444fb731c35799618308e14d18d80b1a7cb5f93ff9a710a10667"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/Movement.cpp.o": {
+      "bytes": 2428,
+      "sha256": "6acf4ecd6d75fc095717a20a06d73465f0953fe691f6a3d2b7dd3a9d67571336"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/PauseEnd.cpp.o": {
+      "bytes": 12754,
+      "sha256": "783a2a070735f59e1f4f2226b3cb74cb3957612d2596b31c64abe39aaba8dde9"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/PauseMenu.cpp.o": {
+      "bytes": 8508,
+      "sha256": "c876a4d17ba93485d4f33cd53acd6bb55c89ee8d39cf60728f2e87ddcb4f1f76"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/PauseReplay.cpp.o": {
+      "bytes": 5343,
+      "sha256": "d1b3c615ef01b8212233ebffe36860ab49188b47c1d741e076fc238d7882565d"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/PauseText.cpp.o": {
+      "bytes": 6884,
+      "sha256": "26acc4c79ec9932462dfc73cc7c224c87e42ec94921998e2b5c0037016d8f171"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/PlayerCollision.cpp.o": {
+      "bytes": 1596,
+      "sha256": "7b43ddbffc92995192b9efe019f748e05c079a10e8589b9e225ec05eb7375eda"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/PlayerFrame.cpp.o": {
+      "bytes": 15717,
+      "sha256": "9114283ef297d329b8bd374130afcc2994483fcba3044b3c2abe171169c8472b"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/PlayerMotion.cpp.o": {
+      "bytes": 12018,
+      "sha256": "14e1430bcb0e8e80970a861ab6050f834814b6386cb51700b696aa249736b792"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/PlayerTh16Life.cpp.o": {
+      "bytes": 2482,
+      "sha256": "1a29a029b647133067108adff2448e41c5255b06782baccd3f67827adbfe8428"
+    },
+    "artifacts/th14/replay-construction-oct30/core-build/Replay.cpp.o": {
+      "bytes": 10319,
+      "sha256": "b1ce04bb67216b28aa05a2e9cf31e6d07be463b9892dad990df0b422283c3303"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ReplayRecorder.cpp.o": {
+      "bytes": 12432,
+      "sha256": "c4e2353e75e7680a2c63dc7317266cb14c212dda87adf24d133f355416d3d378"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ResourceCrypt.cpp.o": {
+      "bytes": 2437,
+      "sha256": "246f39f58215aeb6593e201d2a48e26a4ce572f61ea23f7a3199c54cd66e5316"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/SceneCamera.cpp.o": {
+      "bytes": 1786,
+      "sha256": "9661d0392e94be31ebf1aa3193647c1c8665ec953629179551abe95d112f93be"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/SceneCompositor.cpp.o": {
+      "bytes": 11697,
+      "sha256": "acfd43d3207d77362917d3bdedc48d4b936d1ba6042621d57cd100b25eeeadf4"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ScoreFile.cpp.o": {
+      "bytes": 10690,
+      "sha256": "dceac7f4a0a396293e2dd0118d98c43279a42e82d3e6bf80ff753e5bb9a6f825"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ScorePopups.cpp.o": {
+      "bytes": 5726,
+      "sha256": "16079048e7ed8f70f29a3c1e186e7c1539d4f50293dfd160e72d0f2cce7c2d1f"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ScreenDeformation.cpp.o": {
+      "bytes": 7038,
+      "sha256": "a1fdf73f0726b26a7cd22513f5fe83231eed5bdd5f8c349fe3704469ea14c541"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ScreenFade.cpp.o": {
+      "bytes": 1695,
+      "sha256": "580d48d07c467d248f28a201f7f652bda849b97b72d6a202d5a7ffbaccde1635"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ScreenShake.cpp.o": {
+      "bytes": 1265,
+      "sha256": "20374a462181ba4e3b09f4bcbbdc9abc5d68b7564cc895649aa92f23f0fed63b"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/SeasonTh16.cpp.o": {
+      "bytes": 2312,
+      "sha256": "fb06c218a393545886c8f6e74b435ebf7e3724b8c0fa53517c7af87456eeab86"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ShotCallbacksTh14.cpp.o": {
+      "bytes": 5077,
+      "sha256": "4796ac5036a9e6257446d7ecb96039b64cbafb9a1da19cd553c1e9ce0d4be55c"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ShotDamageTh14.cpp.o": {
+      "bytes": 6376,
+      "sha256": "63f6bca97eb4aecaea869be271db4d54b55b0bb3ffcf4409f9f9325d7251f9ab"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ShotManager.cpp.o": {
+      "bytes": 12686,
+      "sha256": "474a156eb380050c6f73edde6ff350770654f6028a356b39760fabb7f3b066b8"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ShotSakuyaTh14.cpp.o": {
+      "bytes": 4870,
+      "sha256": "ecbce15090f47b118f78e7d243e330dbf0e847b6fd0fcbf3c1b8629ca9debe41"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ShotSchedule.cpp.o": {
+      "bytes": 1111,
+      "sha256": "67857adfeaaaed00b712953d9d6938a161649775723b361f657654b5a630bc0f"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ShotTh14.cpp.o": {
+      "bytes": 14012,
+      "sha256": "110bf90f36dc399055fee63dc5a81b561fe8d372514de8668aee69956d864ba9"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ShotTh16.cpp.o": {
+      "bytes": 335,
+      "sha256": "07c084e6bd92d751fc33919d27c47b90f0ced127d1061b0f64fc4c9b683a4cfc"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ShotTh16Geometry.cpp.o": {
+      "bytes": 335,
+      "sha256": "07c084e6bd92d751fc33919d27c47b90f0ced127d1061b0f64fc4c9b683a4cfc"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ShotTh16Hit.cpp.o": {
+      "bytes": 335,
+      "sha256": "07c084e6bd92d751fc33919d27c47b90f0ced127d1061b0f64fc4c9b683a4cfc"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ShotTh16Production.cpp.o": {
+      "bytes": 335,
+      "sha256": "07c084e6bd92d751fc33919d27c47b90f0ced127d1061b0f64fc4c9b683a4cfc"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/ShtResource.cpp.o": {
+      "bytes": 6690,
+      "sha256": "db8c7e9c0c0a58e9cb3dc04232e7e0234d7cd39e8dca9b59aeca19934f721199"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/SoundEffects.cpp.o": {
+      "bytes": 8613,
+      "sha256": "4ce9c20dd04e544a66acf6f781164953c74124916a84460c6d16a15f1911a3ae"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/SpellController.cpp.o": {
+      "bytes": 4565,
+      "sha256": "9d6d18b5e90ca3442711480161b59c58ab152b8aaa418ddfbb44e77ce794308d"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/SpellTh14Visuals.cpp.o": {
+      "bytes": 2633,
+      "sha256": "b4b16840d8514d60a5972d3bdb1a94efc6d8c31bf15d2aa741e0b5fd868b26e2"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/SpellTh16Visuals.cpp.o": {
+      "bytes": 554,
+      "sha256": "e10f2c4678ad78dc1eff031a1da3e40d0c41254213780c8bb5f16e0bdb32f5ce"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/SpellTiming.cpp.o": {
+      "bytes": 1139,
+      "sha256": "8d47b2c77eeb98426e1b971cfd2f0f9b4d6ff282b36ba7eb631afef63fddc55f"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/Stage.cpp.o": {
+      "bytes": 17322,
+      "sha256": "734497b5aa6ba00323b20e7dc859f5d5665e02be2f4d89ba96a5150751f019b7"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/StageCompletion.cpp.o": {
+      "bytes": 1883,
+      "sha256": "d453a56c982566fc7099d5f6337c7a127aab73c0eb6f77426c43eee7c720c6d4"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/StageDraw.cpp.o": {
+      "bytes": 9241,
+      "sha256": "fca35473d77936663f7bdaff66c18f0d7697fb3a3a3cfa329c47eeda53c7e5ae"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/StageResource.cpp.o": {
+      "bytes": 14112,
+      "sha256": "916a7f5ce961fbe0f0942a0c06a17cd74b4ec33d30584f4d9c41008e6ac3b280"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/StageScript.cpp.o": {
+      "bytes": 6498,
+      "sha256": "b9cf67fa095c435460e729870fd14cd9a39f3ca622d4190d49087e5c36250763"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/TextRaster.cpp.o": {
+      "bytes": 5464,
+      "sha256": "e82653fc59008f2439629f725c094923fa7d3b78297c8cf10dc1c5ecd488eb02"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/TextureImage.cpp.o": {
+      "bytes": 7965,
+      "sha256": "66cba930e8050a2db0e0a790c09b1c9bf3f5ef6866b572e992bbb760cadf0580"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/TitleKeys.cpp.o": {
+      "bytes": 5234,
+      "sha256": "3e22498956b75b62ac0bc68077a9ee40cfd2f38abac02052164af4f775f2dc14"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/TitleMenu.cpp.o": {
+      "bytes": 6519,
+      "sha256": "1ef6078a730e39433a3bcfef290915beabf4772524e7e89a4b81febb3fd28b65"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/TitleMusic.cpp.o": {
+      "bytes": 18224,
+      "sha256": "40575d6b4923b8300ad64549f8b06e1795ffea04cb01360557d4aa23114d7233"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/TitleOptions.cpp.o": {
+      "bytes": 6774,
+      "sha256": "04ee2e43e7874b7b6c85c9930a9bf3d56fe4d91e71636e10bf368cd326c1b57d"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/TitleRecords.cpp.o": {
+      "bytes": 10939,
+      "sha256": "6d7e142c47853c96d59a592b1f2f1c7b39f324edda2c749f8bc9ffffb3f404e5"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/TitleReplay.cpp.o": {
+      "bytes": 5399,
+      "sha256": "7a02e29bcdff00906727a426b4d9b774a7fddb23c9ac0c57db7c55a5fb861958"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/TitleResults.cpp.o": {
+      "bytes": 7121,
+      "sha256": "946b1a49adbd824d39c16912f9c32e41ac655513af6fad4ffea75aa9717739e0"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/TitleSelection.cpp.o": {
+      "bytes": 586,
+      "sha256": "c24d3ee5bf5a74d38c12b46a31bcac5b8d65c9027c2cbe5749cd59768689dd68"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/TitleText.cpp.o": {
+      "bytes": 13541,
+      "sha256": "8003c91807993e26d40cc2fbc3b62efd53b5ddf93087f88425268fb82c4f30e1"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/TitleTh14.cpp.o": {
+      "bytes": 24181,
+      "sha256": "852f82fb6f472d626bdd42ae8397dd03bf8e750586817c91e6aacea243d3f10b"
+    },
+    "artifacts/th14/vm-return-worker-oct29/native-core/objects/Trace.cpp.o": {
+      "bytes": 430,
+      "sha256": "4ea6fdd6b1ea94caa12ecb240afd9ae7d83de19de339e9d014bef3286ab9773c"
+    }
+  },
+  "scope": [
+    "Warm replay with declared host time, entropy and asynchronous resource completion inputs; ordinary original cold-menu initialization is not proved.",
+    "Only stated fields and sampled objects, including empty loading frames; whole objects and all curve samples are not compared.",
+    "Publication order covers only the declared initial window.",
+    "No actual GPU/PCM, all-mode equivalence, browser acceptance or persistence is proved."
+  ]
+}
