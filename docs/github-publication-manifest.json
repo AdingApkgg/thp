@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "4d73dffe1f7a374f32c727f01feb7ea3f9daee63",
+  "sourceCommit": "babc4e04e4b37f98cbf89d5117065e084fbd8b26",
   "files": [
     {
       "path": ".gitignore",
@@ -304,6 +304,11 @@
       "sha256": "4cc2bdcf3943b1ead8faefbb731280cc92aa42ad7b5cf370327edfe711436ee0"
     },
     {
+      "path": "docs/porting/TH14_LATER_STAGE_FULL_REPLAY_OCT29.md",
+      "bytes": 1866,
+      "sha256": "0704390797cab74c5eab1a39a307718f2f0e5fa8c1cd6ffa49c4a1d944869dff"
+    },
+    {
       "path": "docs/porting/TH14_LATER_STAGE_WORKER_OCT29.md",
       "bytes": 3338,
       "sha256": "dd2ed82da11a593b019b1d847a368e9d1fbf2d0672940b668f15d15c906a5488"
@@ -380,8 +385,8 @@
     },
     {
       "path": "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
-      "bytes": 2973,
-      "sha256": "46fe3a083f9e85d723f33c177736d4fddc97ff98dd22a001e87666194ab06131"
+      "bytes": 3392,
+      "sha256": "2d96d1b0bc8a6a1c992f6f2a75d0c477962ff976c13d0965ec01bcfe5a6f2d71"
     },
     {
       "path": "docs/porting/TH14_MSG_HUD_ORDER_OCT24.md",
@@ -495,8 +500,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 38605,
-      "sha256": "5e386a3696e912c83b3cfed148ec43c06920bc15c6403bd5193d13c6f893d73c"
+      "bytes": 40068,
+      "sha256": "c025e70e168a4e039e4462ed3ffd6bab7d21ff9ae3e94fcd9614510b7485a2a6"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -747,6 +752,11 @@
       "path": "docs/porting/TH14_VIEWPORT_ROUNDING_OCT27.md",
       "bytes": 5304,
       "sha256": "e50bcc9e8ff80e320f987ade5d1ceaf1e3565a0f43fbb5b179d51e561039a7a6"
+    },
+    {
+      "path": "docs/porting/TH14_WARM_REPLAY_FLAGS_OCT29.md",
+      "bytes": 3166,
+      "sha256": "c1fa5efab98c175dd7150c094d9cc223fb6aa374d618d526a6ae72de2776b03d"
     },
     {
       "path": "docs/porting/TH14_WEBGPU_STAGE_COMPONENT_OCT26.md",
@@ -3004,6 +3014,11 @@
       "sha256": "2edbf468267a5a2abd549844aa7901ab3db5b5b2f479cc529e1efcc4e933cd50"
     },
     {
+      "path": "docs/porting/th14-later-stage-full-replay-verified-oct29.json",
+      "bytes": 88357,
+      "sha256": "8abe504482840ae4ffaf090976adf8969eaa40c572b06de4e56c456324440261"
+    },
+    {
       "path": "docs/porting/th14-later-stage-worker-verified-oct29.json",
       "bytes": 227577,
       "sha256": "719640e41ec2079aaf39b652e4ae7e64685526963ca3ed4d99100806ccc68911"
@@ -3800,8 +3815,8 @@
     },
     {
       "path": "docs/porting/th14-mode-acceptance-inventory-oct25.json",
-      "bytes": 192746,
-      "sha256": "7acbb357bab1f7ca70f7a9ba05a4fe99b58e870a6d7577dfb714a07237b0d4bb"
+      "bytes": 196075,
+      "sha256": "381c6179fc712352996e21d32d027231f20604a6084e485b377f42c4ee865046"
     },
     {
       "path": "docs/porting/th14-msg-hud-order-verified-oct24.json",
@@ -6597,6 +6612,11 @@
       "path": "docs/porting/th14-warm-replay-8618-constructor-clear-verified-oct13.json",
       "bytes": 3630,
       "sha256": "ebde6c3e03e9bf4d4a18e364bfcaf76e8d9e54149b6541a65235bfec3e3e561b"
+    },
+    {
+      "path": "docs/porting/th14-warm-replay-flags-verified-oct29.json",
+      "bytes": 128725,
+      "sha256": "8f3486ceab74fdb8dd961309a27a1f8bb98a62e288211043bb4918237158d7ce"
     },
     {
       "path": "docs/porting/th14-webgpu-stage-verified-oct26.json",
@@ -12290,8 +12310,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-native-campaign-fixture.cpp",
-      "bytes": 66004,
-      "sha256": "ac6d4298914d2a4e4f9589f40b2379d268f2b40ff199c674cfe337c9f6b765e6"
+      "bytes": 66310,
+      "sha256": "76bea8b3c342d958fcd41c1adbe13083a6fd03e6bc3f57dfc54392e23f19c2b7"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-native-initial-loading-fixture.cpp",
@@ -16215,8 +16235,8 @@
     },
     {
       "path": "tools/th14-compare-native-campaign.mjs",
-      "bytes": 43784,
-      "sha256": "aedc4555a2dbad064e2df0aa5301bfc3215ec84c81e483fa4a506488f6e8c230"
+      "bytes": 44109,
+      "sha256": "c3466574fd597841e2eeec74e7fd6f0ee983afb04af64b5ae23b234a2f93aab5"
     },
     {
       "path": "tools/th14-comparison-failure-receipt.py",
@@ -18784,6 +18804,11 @@
       "sha256": "b80133710e88fbd0db202ac713ab6a7fe6b53d2443224e0238d1ff60adb6ed41"
     },
     {
+      "path": "tools/th14-later-stage-full-replay-evidence-oct29.py",
+      "bytes": 6547,
+      "sha256": "c0894148ef6c7503d425006cd732624701d85467b08b4484e9889fe4c66321ad"
+    },
+    {
       "path": "tools/th14-later-stage-worker-check-oct29.mjs",
       "bytes": 8553,
       "sha256": "b8e4a1f182085287d8b205f1e29fa4c1bac6654a8884d85f1e6de40f3d612357"
@@ -18982,6 +19007,11 @@
       "path": "tools/th14-mode-acceptance-inventory.py",
       "bytes": 9449,
       "sha256": "974b655649fedb24a3e598d48b8a39be6c9f2912ad1fb96230685de1c3fc9fc5"
+    },
+    {
+      "path": "tools/th14-mode-coverage-extension-oct29.py",
+      "bytes": 6058,
+      "sha256": "ead7e47db69a3c102308fa766f3be97a1530109f1ea4b1d976e9646d1e34fee1"
     },
     {
       "path": "tools/th14-music-clock-evidence-check-oct20.py",
@@ -23129,6 +23159,11 @@
       "sha256": "03760b2bb646029427468921a9dbd0270675c2ab9404182f9f8aaa9921320820"
     },
     {
+      "path": "tools/th14-warm-replay-flags-evidence-oct29.py",
+      "bytes": 13553,
+      "sha256": "1c97a3cedb01731193aff8c78f5851424f531405a168a742416d4a0ae9fdb748"
+    },
+    {
       "path": "tools/th14-warm-retail-prefix-check.mjs",
       "bytes": 2342,
       "sha256": "5c7452efe53d11d91c069baea00f804f394d313027ca03d687163a23f07f0f84"
@@ -24345,59 +24380,61 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "4d73dffe1f7a374f32c727f01feb7ea3f9daee63",
-    "title": "TH14 later-stage CPU worker ownership and frozen core-tail full replay",
+    "basePublishedCommit": "babc4e04e4b37f98cbf89d5117065e084fbd8b26",
+    "title": "TH14 warm-case ECL flag initialization, latest full browser replay and explicit mode coverage",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/GameSessionResources.cpp",
-      "runtimes/th12/th12_web/cpp/game/GameSessionResources.hpp",
-      "runtimes/th12/th12_web/cpp/sdl/Application.cpp",
-      "runtimes/th12/th12_web/cpp/sdl/StageDecodeTh14.hpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-later-stage-worker-fixture.cpp",
-      "tools/th14-build-webgpu-release.py",
-      "tools/th14-background-resource-build-oct28.py",
-      "tools/th14-boot-worker-control-oct29.py",
-      "tools/th14-later-stage-worker-check-oct29.mjs",
-      "tools/th14-later-stage-worker-evidence-oct29.py",
-      "tools/th14-core-tail-full-replay-evidence-oct29.py",
-      "docs/porting/TH14_LATER_STAGE_WORKER_OCT29.md",
-      "docs/porting/th14-later-stage-worker-verified-oct29.json",
-      "docs/porting/TH14_CORE_TAIL_FULL_REPLAY_OCT29.md",
-      "docs/porting/th14-core-tail-full-replay-verified-oct29.json",
+      "runtimes/th12/th12_web/tests/cpp/th14-native-campaign-fixture.cpp",
+      "tools/th14-compare-native-campaign.mjs",
+      "tools/th14-warm-replay-flags-evidence-oct29.py",
+      "tools/th14-later-stage-full-replay-evidence-oct29.py",
+      "tools/th14-mode-coverage-extension-oct29.py",
+      "docs/porting/TH14_WARM_REPLAY_FLAGS_OCT29.md",
+      "docs/porting/th14-warm-replay-flags-verified-oct29.json",
+      "docs/porting/TH14_LATER_STAGE_FULL_REPLAY_OCT29.md",
+      "docs/porting/th14-later-stage-full-replay-verified-oct29.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
+      "docs/porting/th14-mode-acceptance-inventory-oct25.json",
+      "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "compiledBrowserUnits": 146,
-    "compiledNativeCoreUnits": 141,
-    "workerResourceCases": 30,
-    "synchronousConsumerCases": 30,
-    "componentControls": 16,
-    "realWorkerBatches": 203,
-    "resourceImports": 468,
-    "actualNativeFramesPerBackend": 2264,
-    "actualNativeAssertionsPerBackend": 7,
-    "actualNativeResultsAndPreviousEqual": true,
-    "browserWasmBytes": 2762635,
-    "browserWasmSha256": "0d798fc5cb1830dc4dfc16e976753dd8f9e48415fd494cc3b72ed76d8aa827ae",
-    "workerWasmSha256": "217c46f4b367a106affb34acdd8a20b2f37576a5546da37f12a89638de39f38d",
-    "actualBrowserStage5To6Observed": true,
-    "actualBrowserLaterStageRejectionObserved": true,
-    "normalWorkerRestored": true,
-    "coreTailFullReplayFrozenSource": "2e6d794a821cf89b28ca7ea743c78c628442e01b",
-    "coreTailFullReplayStagesVisuallySampled": [
+    "productionGameplayChanged": false,
+    "fixtureCoreObjectsReused": 141,
+    "fixtureCoreSourcesChanged": 0,
+    "warmPrefixCallbacks": 30000,
+    "warmVmRows": 431,
+    "warmCombatCheckpoints": 162,
+    "warmInitialPublications": 2870,
+    "longerPrefixCallbacks": 48000,
+    "longerPrefixStrictPassed": false,
+    "longerPrefixFirstMismatchCallback": 30991,
+    "newNativeRunCallbacks": 80324,
+    "newNativeRunStages": [
       1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "newNativeMissingStage": 6,
+    "nativeNaturalRunModePairs": 30,
+    "nativeAllStageEntryModePairs": 25,
+    "fullBrowserFrozenSource": "babc4e04e4b37f98cbf89d5117065e084fbd8b26",
+    "fullBrowserWasmSha256": "0d798fc5cb1830dc4dfc16e976753dd8f9e48415fd494cc3b72ed76d8aa827ae",
+    "fullBrowserWorkerWasmSha256": "217c46f4b367a106affb34acdd8a20b2f37576a5546da37f12a89638de39f38d",
+    "fullBrowserNaturalEnd": true,
+    "fullBrowserVisuallySampledStages": [
       2,
       3,
       4,
       5,
       6
     ],
-    "fullReplayStable60FpsAccepted": false,
-    "currentCandidateInheritsCoreTailFullReplay": false,
-    "originalIndependentThreadSchedulingAccepted": false,
-    "nativeNaturalRunModePairs": 30,
-    "nativeAllStageEntryModePairs": 25,
+    "fullBrowserStage1RunningScreenshot": false,
+    "fullBrowserReloadAndDownloadBytes": 110306,
+    "fullBrowserStable60FpsAccepted": false,
+    "experimentalMainContextObserverExcludedPendingProcessValidation": true,
     "completeBrowserAcceptance": false,
     "completeGame": false,
     "nativeEquivalent": false

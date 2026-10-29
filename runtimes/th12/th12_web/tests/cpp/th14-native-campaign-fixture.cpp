@@ -2411,7 +2411,14 @@ API(cold_host_initial_player) u32 cold_host_initial_player(u64 now){
 
  if(!session.prepare_initial_player())return 0;
 
- session.battle->before_player_update=[](const GameBattle& b){if(warm_at_first_player){session.state.demo=false;session.battle->demo=false;warm_at_first_player=false;}++public_player_observations;capture_mid_live();observe_reference(b);};
+ session.battle->before_player_update=[](const GameBattle& b){if(warm_at_first_player){
+  session.state.demo=false;session.battle->demo=false;
+  // Match the warm oracle's one declared write at first Player entry: clear
+  // only attract bit0x40. ECL554 and spell visuals read this live flag cell;
+  // changing the convenience demo booleans alone leaves them in attract mode.
+  session.battle->enemy_commands.th14_run_flags&=~0x40u;
+  warm_at_first_player=false;
+ }++public_player_observations;capture_mid_live();observe_reference(b);};
 
  return 1;
 

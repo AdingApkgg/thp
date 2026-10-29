@@ -68,8 +68,12 @@ const rows=[],counts={},first={};const unsupportedObservations=[];let unsupporte
 const playerOrigin=times.readBigUInt64LE(0),baseNow=lastNow;
 const transition=(exists(resolve(nativeHome,'transition-events.jsonl'))?read(resolve(nativeHome,'transition-events.jsonl'),'utf8').trim().split('\n').filter(Boolean).map(x=>JSON.parse(x)):[]);
 const resourceEvents=read(resolve(nativeHome,'resource-ready-events.jsonl'),'utf8').trim().split('\n').map(x=>JSON.parse(x)),phaseInputs=[];
-const sceneEvents=phasedScheduler?read(resolve(nativeHome,'scene-camera-copy-events.jsonl'),'utf8').trim().split('\n').filter(Boolean).map(x=>JSON.parse(x)):[];
-const controllerEvents=schedulerPhases==='observed'?read(resolve(nativeHome,'controller-phase-events.jsonl'),'utf8').trim().split('\n').filter(Boolean).map(x=>JSON.parse(x)):[];
+// A first-stage prefix has no transition worker yet. The capture creates these
+// files at its first event; absence is valid only when every sampled row is
+// still in stage1. Later-stage cases keep their mandatory observation reads.
+const stageEvents=name=>{const path=resolve(nativeHome,name);if(!exists(path)){assert.equal(maxStage,1,'Missing later-stage observation '+name);return [];}return read(path,'utf8').trim().split('\n').filter(Boolean).map(x=>JSON.parse(x));};
+const sceneEvents=phasedScheduler?stageEvents('scene-camera-copy-events.jsonl'):[];
+const controllerEvents=schedulerPhases==='observed'?stageEvents('controller-phase-events.jsonl'):[];
 const controlClock=new Map(),pumpClock=new Map(),beforeDrawWorker=new Map(),afterDrawWorker=new Map(),sceneNextCameraClock=new Map(),sceneUpdateHandoffs=[],sceneCopyWordHandoffs=[],sceneWordDelivery=new Map();
 if(options.has('scene-copy-observation')){
  assert(phasedScheduler&&prefix===15000,'The explicit TF observation is a finite15000-callback prefix only');

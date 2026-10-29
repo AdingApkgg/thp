@@ -1,6 +1,6 @@
 {
-  "schema": "th14/mode-acceptance-inventory/2",
-  "date": "2026-10-26",
+  "schema": "th14/mode-acceptance-inventory/3",
+  "date": "2026-10-29",
   "cases": [
     {
       "key": "reimua-easy",
@@ -1259,6 +1259,52 @@
       "nativeCapturedRunAvailable": true,
       "allStageEntriesObserved": false,
       "retainedNaturalRuns": [
+        {
+          "path": "artifacts/th14/mode-coverage-oct29/marisaa-easy-toho-native",
+          "reportSha256": "7cf1345358ebafefbc6586731240389cfedfb8295da4097706f33bff03fbab90",
+          "initialSnapshotSha256": "3319066dcd9648b14889d75b8793935bd537c715b6a30d02d0a6dbe1b20bb132",
+          "selectedSha256": "496e012ab5709e109eea2d04e6b5c7ebbec71b3f98eeac8237180fad7f5ddab2",
+          "callbacks": 80324,
+          "stagesObserved": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "naturalReplayEndObserved": true,
+          "clearCompletionNotAsserted": true,
+          "intactOriginalReplayDeclared": true,
+          "instructionBytesPatched": 0,
+          "rngOrCounterWrites": 0,
+          "replaySha256": "b1d9e367e7e5e29e0d7bd08fe493062164171d5d88c52f954b8565fcd2e81a2d",
+          "selected32ComparisonReports": [],
+          "preferredComparisonPath": null,
+          "partialSelected32ComparisonReports": [
+            {
+              "path": "artifacts/th14/mode-coverage-oct29/marisaa-easy-toho-prefix30000-warm-flag/report.json",
+              "reportSha256": "8b0200ac4a61a6fd77684752a0d943048ce6825fd6689d9f7f8959fc4708e7a3",
+              "callbacks": 30000,
+              "wasmSha256": "0e5d1ed0e60e08c5c02cef132a07578f036e7c3830ccef41e53ac068c8192709",
+              "scope": "Explicit30000-callback selected32 prefix; separately recomputed camera/HUD/VM/combat/publication fields. Longer48000 prefix strictly fails; no full-run acceptance."
+            }
+          ],
+          "retainedLongerStrictFailures": [
+            {
+              "path": "artifacts/th14/mode-coverage-oct29/marisaa-easy-toho-prefix48000-warm-flag/report.json",
+              "reportSha256": "34bd69f3e4ada7cc7a99f89aa22d4c9e922c108338dbedc6ef29c386e6db9db8",
+              "callbacks": 48000,
+              "firstDifference": {
+                "index": 30990,
+                "stage": 3,
+                "stageFrame": 0,
+                "word": 21,
+                "native": 56097,
+                "portable": 5435
+              }
+            }
+          ]
+        },
         {
           "path": "artifacts/th14/retail-marisaa-easy-beam-history-hardware-oct23",
           "reportSha256": "bfe4ff8e4664d8ca781a545b71183636d85942380e8b45f49d7ce2ee91c5a97c",
@@ -3280,9 +3326,37 @@
     "artifacts/th14/stage-item-retirement-oct25/timeline-clear-full/camera-report.json": "06922d33b3d2ac543971c523b0a91561298667f1c20d258674f7048268de1649",
     "artifacts/th14/stage-item-retirement-oct25/timeline-clear-full/hud-report.json": "0a33da79d8f3a8e2128395fc5624d9e11abd7622346720e4946059399eae9a6d",
     "artifacts/th14/stage-item-retirement-oct25/timeline-clear-full/live-report.json": "e5c9df6c92ec8d158a88060dd8bdbeb07ef27f5431875e0bc296e21a3c9b2369",
-    "artifacts/th14/stage-item-retirement-oct25/timeline-clear-full/combat-snapshots.json": "842c881f3e7c97e545e2473a38fbba792bdd42f80a424dd91c5177df0e19b818"
+    "artifacts/th14/stage-item-retirement-oct25/timeline-clear-full/combat-snapshots.json": "842c881f3e7c97e545e2473a38fbba792bdd42f80a424dd91c5177df0e19b818",
+    "artifacts/th14/mode-coverage-oct29/marisaa-easy-toho-native/report.json": "7cf1345358ebafefbc6586731240389cfedfb8295da4097706f33bff03fbab90",
+    "artifacts/th14/mode-coverage-oct29/marisaa-easy-toho-prefix30000-warm-flag/report.json": "8b0200ac4a61a6fd77684752a0d943048ce6825fd6689d9f7f8959fc4708e7a3",
+    "artifacts/th14/mode-coverage-oct29/marisaa-easy-toho-prefix48000-warm-flag/report.json": "34bd69f3e4ada7cc7a99f89aa22d4c9e922c108338dbedc6ef29c386e6db9db8"
   },
-  "toolSha256": "974b655649fedb24a3e598d48b8a39be6c9f2912ad1fb96230685de1c3fc9fc5",
+  "toolSha256": "ead7e47db69a3c102308fa766f3be97a1530109f1ea4b1d976e9646d1e34fee1",
   "completeGame": false,
-  "nativeEquivalent": false
+  "nativeEquivalent": false,
+  "explicitExtension": {
+    "baseSourceCommit": "babc4e04e4b37f98cbf89d5117065e084fbd8b26",
+    "baseInventorySha256": "7acbb357bab1f7ca70f7a9ba05a4fe99b58e870a6d7577dfb714a07237b0d4bb",
+    "originalInventoryToolSha256": "974b655649fedb24a3e598d48b8a39be6c9f2912ad1fb96230685de1c3fc9fc5",
+    "updatedModeOnly": "marisaa-easy",
+    "otherModesFrozenUnchanged": true,
+    "oldObservedStages": [
+      1,
+      2,
+      3
+    ],
+    "newObservedStages": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "missingStageEntries": [
+      6
+    ],
+    "fullCapturedRunCompared": false,
+    "longerStrictFailureRetained": true,
+    "completeGame": false
+  }
 }
