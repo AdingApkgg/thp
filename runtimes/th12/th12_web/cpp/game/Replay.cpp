@@ -45,9 +45,9 @@ void ReplayStageState::read(const u8* p){
 void ReplayStageState::restore(GameEconomy& e,Rng& rng,bool first,Rng* visual)const{
     rng.seed=u16(seed);rng.calls=0;
 #if PORT_TITLE == 14
-    // Initial attract creation skips 456050 at 435ed0. Ordinary replay,
-    // including its first stage, and existing-controller stage entry restore
-    // both seeds at 45610b..456129, resetting only 4db514.
+    // Initial ordinary/attract creation restores only gameplay RNG at
+    // 454a41..454a47. Existing-controller stage entry restores both seeds at
+    // 45610b..456129. Both paths reset only the gameplay call counter.
     if(visual&&!first)visual->seed=u16(seed);
     (void)first;const auto value=[&](u32 n){return signed_bits(th14_globals[n]);};
     e.score_units=score;e.power=power;e.point_value=points;e.graze=graze;e.rank=rank;e.difficulty=value(3);

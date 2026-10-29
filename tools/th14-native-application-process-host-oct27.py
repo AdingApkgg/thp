@@ -215,6 +215,16 @@ try:
  frame_index=0;wall_started=time.monotonic();actions=[];captures=[];application_ticks=0
  creation_rows=[];creation_count=0
  initial_loading_rows=[];worker_pause_events=[];worker_paused=False;worker_resume_frame=0;worker_pause_done=False
+ replay_construction_transitions=[]
+ def replay_construction_state():
+  if 'component_replay_construction_state'not in api:return None
+  pointer=api['component_replay_construction_state'](store)
+  return list(struct.unpack('<10I',mem.read(store,pointer,pointer+40)))
+ def observe_replay_construction(before,boundary):
+  if before is None:return
+  after=replay_construction_state()
+  if before[0]==6 and after[0]==1 and after[8]:
+   replay_construction_transitions.append(dict(frame=frame_index,clockNs=clock_ns,boundary=boundary,before=before,after=after,readOnly=True))
  if args.observe_creations:assert 'component_births'in api,'Build with the read-only title observer'
  if args.observe_initial_loading:assert 'component_initial_loading_state'in api,'Build with --initial-loading-observer'
  def initial_loading_state():
@@ -263,6 +273,9 @@ try:
    callbackClockPolicy='queued deadlines between fixed frame starts; callback execution duration declared zero',minimumCallbackDelayMs=1)
   result['applicationTicks']=application_ticks
   if args.observe_initial_loading:result['initialLoadingObservations']=initial_loading_rows
+  if 'component_replay_construction_state'in api:
+   result['replayConstructionTransitions']=replay_construction_transitions
+   result['replayConstructionObservationOnly']=True
   if args.initial_worker_pause_kind:
    result.update(workerPauseEvents=worker_pause_events,workerPauseKind=args.initial_worker_pause_kind,
     workerLifecycleControlledViaProductionMethods=True,workerLifecycleIsNotPhysicalUiAcceptance=True)
@@ -303,14 +316,18 @@ try:
       worker_resume_frame=frame_index+args.initial_worker_pause_frames
       preserved=initial_loading_state()
       worker_pause_events.append(dict(kind='suspend',frame=frame_index,clockNs=clock_ns,words=preserved))
+    construction_before=replay_construction_state()
     target=table.get(store,function);assert target;target(store,argument);delivered+=1;assert delivered<=256
+    observe_replay_construction(construction_before,'callback')
     if paused_this_callback:
      after=initial_loading_state();assert preserved==after,'Stale callback changed a suspended initial worker'
      worker_pause_events.append(dict(kind='stale-callback-returned',frame=frame_index,clockNs=clock_ns,pendingStatePreserved=True))
     observe_initial_loading('callback')
    clock_ns=frame_ns
    if not worker_paused:
+    construction_before=replay_construction_state()
     ok=api['component_tick'](store,held,pause);application_ticks+=1
+    observe_replay_construction(construction_before,'tick')
     assert ok==1,C.string_at(C.addressof(api['memory'].data_ptr(store).contents)+api['th11_error'](store)).decode()
    observe_initial_loading('paused'if worker_paused else'tick')
    if args.observe_creations:

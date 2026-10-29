@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "4e3f603e45e86e483d107d904c844db4e64984d9",
+  "sourceCommit": "59ac9c67b850ed0348fdc6d047b1cd80aa02ae79",
   "files": [
     {
       "path": ".gitignore",
@@ -190,8 +190,8 @@
     },
     {
       "path": "docs/porting/TH14_CURRENT_FULL_REGRESSION_OCT30.md",
-      "bytes": 6468,
-      "sha256": "1d05ec6ccbfd20eefe0210d8ebcb8c1b432f4b86d6a07bb467ee9ddac43a35ba"
+      "bytes": 6726,
+      "sha256": "c05fb6e1a568a07281644fc1f0f9301088d8b1da483e6fdeb7b3b5d979e574e8"
     },
     {
       "path": "docs/porting/TH14_CURRENT_GPU_BASELINE_OCT25.md",
@@ -290,8 +290,8 @@
     },
     {
       "path": "docs/porting/TH14_INITIAL_REPLAY_RESTORE_OCT27.md",
-      "bytes": 5448,
-      "sha256": "715a8464d9f380c3bc3f37e0a85ae51c60b7e2139e67bd47e51c88bfee02572c"
+      "bytes": 5965,
+      "sha256": "d0fb21f0b36b4a0a13960f5752124091cd140985c7fa17d9b032acc158d4aa87"
     },
     {
       "path": "docs/porting/TH14_INITIAL_STAGE_DECODE_OCT27.md",
@@ -510,13 +510,18 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 44316,
-      "sha256": "6f0207af03f5812cc2a8efe793763eab2221ca42bb6e4e7d22b67a655be23311"
+      "bytes": 44584,
+      "sha256": "3e39c91eaaf801616fa6a9ecb3ba0a790bf4fdab0adaa5d937aab46b4fa243a8"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
       "bytes": 3015,
       "sha256": "d2c5b13305dc9b60addc7fc479580186fd58904370e4a02178ca9e7239076cb6"
+    },
+    {
+      "path": "docs/porting/TH14_REPLAY_CONSTRUCTION_OCT30.md",
+      "bytes": 4830,
+      "sha256": "2453871ee1310df0926892dc937a759b76c68e66c7dcf505d47acf32c60edacc"
     },
     {
       "path": "docs/porting/TH14_REPLAY_END_SOUND_FIX_OCT21.md",
@@ -5174,6 +5179,11 @@
       "sha256": "06d68521ff1fcff0408d7f37bf59e4987cda43b0e425eb8c9f601d15bedcb403"
     },
     {
+      "path": "docs/porting/th14-replay-construction-oct30.json",
+      "bytes": 91761,
+      "sha256": "08eed6d18eb099968ed20294599ff5c2183973b9d6362e6ee3ab11734155e5e3"
+    },
+    {
       "path": "docs/porting/th14-replay-fps-verified-oct28.json",
       "bytes": 12354,
       "sha256": "8a3b515621c645eb8a03e8022b7786b795856ce22b4830bfafaba02dd99e7bbb"
@@ -8420,8 +8430,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "bytes": 56088,
-      "sha256": "f16b6a3d7f6b5c79ee99c15ac0b534b119477379f97cad376c805a3e31907795"
+      "bytes": 56216,
+      "sha256": "07b5ce11601f235e2c6b6b9f65d862c810d717f93e36799d3cc387b1d98d48c6"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.hpp",
@@ -8750,8 +8760,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Replay.cpp",
-      "bytes": 14722,
-      "sha256": "3a91278c1c01857b772a046d85b088b1496c75e4c675fd62b5807214840d19b3"
+      "bytes": 14732,
+      "sha256": "0e705c98829bc4c8b8abce7bcdfcbb4537c16afaadcd191b563ad0cbe581f818"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Replay.hpp",
@@ -12389,6 +12399,11 @@
       "sha256": "94d83aa63c46974adb9928e8057b37279346edb10bf25fef20b0ffa617de779a"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-native-replay-construction-fixture.cpp",
+      "bytes": 752,
+      "sha256": "51493c6bfcfbe97732acad4c906dc1b61ebf08330e978c14492bd9dd0990d4e1"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-native-title-fixture.cpp",
       "bytes": 3548,
       "sha256": "5333381a71fc45d5e35e36366bc90aafc89e28a751ef9866770c1c4d5b3d0256"
@@ -15965,8 +15980,8 @@
     },
     {
       "path": "tools/th14-build-native-application.py",
-      "bytes": 10097,
-      "sha256": "f2cc127f2900525af6284999a3b3f04b07eeb61cb3d1fff00363760793b25f08"
+      "bytes": 10777,
+      "sha256": "c38698bf9c619cfec2e4763cf3b2a3600d471bb406f2c3399ce59107c00748be"
     },
     {
       "path": "tools/th14-build-native-gles-component.py",
@@ -19195,8 +19210,8 @@
     },
     {
       "path": "tools/th14-native-application-process-host-oct27.py",
-      "bytes": 25690,
-      "sha256": "bbfc127e771d9301d76b1c7731cb50d762dfa578fa0d4f78490c07a4892e27ab"
+      "bytes": 26683,
+      "sha256": "80911b84ade035edef38e96a74a6c5cd0e3d8e3a4f09538475940ff256e9762c"
     },
     {
       "path": "tools/th14-native-application.py",
@@ -20517,6 +20532,21 @@
       "path": "tools/th14-render-setup-native.py",
       "bytes": 5417,
       "sha256": "3881f200e21b909e103a53dc84fdeda3e64dfe8e532fc0282a4d9f877c909c88"
+    },
+    {
+      "path": "tools/th14-replay-construction-compare-oct30.py",
+      "bytes": 6393,
+      "sha256": "548797d301bd7c3d3448cfaa0b30e29b4a83a25860d85bb6d4436125ad94bf5d"
+    },
+    {
+      "path": "tools/th14-replay-construction-evidence-oct30.py",
+      "bytes": 11476,
+      "sha256": "3468df008cdfe0a85b5dea11f30244779c795c331aa39632c35d89b899d46c82"
+    },
+    {
+      "path": "tools/th14-replay-construction-native-oct30.py",
+      "bytes": 9379,
+      "sha256": "33e6d22075ac83155d9dd5587be83e406b1ac8d6f61ec320b027d2ab8a871279"
     },
     {
       "path": "tools/th14-replay-file-native-codec-oct28.py",
@@ -24585,20 +24615,37 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "4e3f603e45e86e483d107d904c844db4e64984d9",
-    "title": "TH14 distinguish terminal internal score from frozen visible HUD",
+    "basePublishedCommit": "59ac9c67b850ed0348fdc6d047b1cd80aa02ae79",
+    "title": "TH14 distinguish first Replay construction from existing-controller stage restoration",
     "changedSourceAndMetadataFiles": [
+      "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
+      "runtimes/th12/th12_web/cpp/game/Replay.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-native-replay-construction-fixture.cpp",
+      "tools/th14-replay-construction-native-oct30.py",
+      "tools/th14-replay-construction-compare-oct30.py",
+      "tools/th14-replay-construction-evidence-oct30.py",
+      "tools/th14-build-native-application.py",
+      "tools/th14-native-application-process-host-oct27.py",
+      "docs/porting/TH14_REPLAY_CONSTRUCTION_OCT30.md",
+      "docs/porting/th14-replay-construction-oct30.json",
+      "docs/porting/TH14_INITIAL_REPLAY_RESTORE_OCT27.md",
       "docs/porting/TH14_CURRENT_FULL_REGRESSION_OCT30.md",
+      "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "productionEngineChanged": false,
-    "currentGlesFullReplayFrames": 123412,
-    "assertions": 44,
-    "finalScoreUnits": 154806314,
-    "visibleStableHudScore": 1511063140,
-    "wholeOriginalPixelsOrPcmAccepted": false,
+    "productionEngineChanged": true,
+    "nativeInitialCases": 288,
+    "nativeExistingStageCases": 288,
+    "oldInitialExactCases": 0,
+    "correctedInitialExactCases": 288,
+    "actualApplicationFramesPerVersion": 782,
+    "actualApplicationAssertionsPerVersion": 21,
+    "originalOrdinaryGuiAccepted": false,
+    "currentFullReplayAccepted": false,
+    "nativeNaturalRunModePairs": 30,
+    "nativeAllStageEntryModePairs": 25,
     "completeGame": false,
     "nativeEquivalent": false
   }

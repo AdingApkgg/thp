@@ -186,8 +186,8 @@ bool GameSession::start_stage(GameResources& source, u32 stage) {
 bool GameSession::prepare_initial_player(){
     if(state.phase!=GameSessionPhase::loading||pending_core_title||battle_attached||battle)return fail("no pending TH14 initial player load");
     if(state.replay){
-        // 435da5 initializes the ordinary starting power before 456050
-        // restores the selected replay entry later in the worker.
+        // 435da5 initializes starting power before the first replay manager
+        // copies the selected entry at 454a51 later in the worker.
         const auto& shot=resources.core.shots[shot_file_slot(u32(state.character),u32(state.subtype))].header;
         economy.power=std::min(state.stage==1&&state.spell_practice_id<0?100:400,shot.max_power_level*100);
     }
@@ -227,9 +227,10 @@ bool GameSession::activate_stage(){
         entry.read(playback.header(stage));
         const auto& shot=resources.core.shots[shot_file_slot(u32(state.character),u32(state.subtype))].header;
         economy.max_power=shot.max_power_level*shot.power_step;economy.power_step=shot.power_step;
-        // Ordinary TH14 replay enters 435f32/456050 even on its first stage;
-        // attract startup creates its manager instead and retains script RNG.
-        entry.restore(economy,gameplay_rng,kPortTitle==14?state.demo:true,kPortTitle==14?&animations.script_rng:nullptr);
+        // Both ordinary and attract startup create the replay manager here.
+        // 454a41..454a51 restores gameplay RNG and globals but retains script
+        // RNG. Only existing-controller stage entry uses 456050 (first=false).
+        entry.restore(economy,gameplay_rng,true,kPortTitle==14?&animations.script_rng:nullptr);
     }
 #if PORT_TITLE == 14
     if(!battle)
@@ -237,10 +238,11 @@ bool GameSession::activate_stage(){
     battle=std::make_unique<GameBattle>(resources,animations,economy,spell_records,compositor,clear_records);
 #if PORT_TITLE == 14
     battle->enemy_environment.spell_practice_id=state.replay?entry.th14_practice_mode:state.spell_practice_id;
-    // Attract keeps only its own mode bit even when its replay header marks
-    // practice; ordinary playback also carries the native replay bit.
+    // 436060 clears the transient worker bits 0/1/3 before gameplay. Replay
+    // identity lives in the controller; bit 1 only selects existing-stage
+    // restoration during loading. Attract retains its own mode bit.
     battle->enemy_commands.th14_run_flags=state.demo?0x40u:
-        (state.spell_practice_id>=0?0x20u:state.practice?0x10u:0u)|(state.replay?2u:0u);
+        (state.spell_practice_id>=0?0x20u:state.practice&&!state.replay?0x10u:0u);
     battle->th14_audio_flags=config.bytes[0x38];battle->th14_scores=&scores;
 #endif
     battle->replaying=state.replay;battle->demo=state.demo;battle->replay_entry=entry;
