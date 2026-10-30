@@ -35,8 +35,12 @@ WGSL 使用单独实例入口，并将颜色因子按 flat varying 传入片元�
 
 冻结的串行 WebGPU 基线已正常结束并经严格复核：灵梦 B Normal 从冷菜单播放全部六面，共 122,622 帧、45 项断言，在 122,562 帧自然结束并稳定 60 帧。所选完整日志、八幅完整图像、文件和各 89,969,664 帧静音 PCM 累计哈希均与当前 GLES 相同；实际墙钟 4,184.91 秒，原 3,600 秒失败保留。它属于旧 Renderer，未直接算作新实例实现整局通过。
 
-[生产绑定复核工具](../../tools/th14-webgpu-production-binding-oct30.py)重新读取有限候选全部证据、正式构建源码／对象及产物，明确通过字节同一性绑定有限范围。新实例 Application Wasm 为 `aff230920a25148a5abb50098d66f1570f89bbcd4beefbdb2c1e80281cb305d0`。新的完整六面运行使用同一输入及预先声明的时钟／进程熵，仍设 150,000 帧／6,000 秒／128MiB／至少 100GiB 余量；运行中不得验收通过。见[生产绑定哈希元数据](th14-webgpu-production-binding-oct30.json)。
+[生产绑定复核工具](../../tools/th14-webgpu-production-binding-oct30.py)重新读取有限候选全部证据、正式构建源码／对象及产物，明确通过字节同一性绑定有限范围。新实例 Application Wasm 为 `aff230920a25148a5abb50098d66f1570f89bbcd4beefbdb2c1e80281cb305d0`。见[生产绑定哈希元数据](th14-webgpu-production-binding-oct30.json)。该较早有限证明的整局标志保留历史范围，完整流程结果另行绑定如下。
+
+新实例版本的完整六面运行现已正常结束并经[独立严格检查器](../../tools/th14-instanced-webgpu-full-evidence-oct30.py)复核：同一冷菜单灵梦 B Normal 用例实际 122,622 帧、45 项断言，在 122,562 帧自然进入录像结束菜单并稳定 60 帧。全部动作／所选完整日志、八幅完整 BGRA 图像及其活动 VM 文件、实际输入文件和 89,969,664 帧静音 PCM 累计哈希与 GLES 相同，没有帧偏移、容差或终值补偿。内部计分 91,452,576、残机 8。当前 GLES 重编 Wasm 与旧已验收 Wasm 逐字节相同，检查器还逐项重查封存 GLES 证明的全部绑定，旧 WebGPU 头文件按其实际发布版本核对，没有放宽当前源检查或重写历史证明。见[整局哈希元数据](th14-instanced-webgpu-full-oct30.json)。
+
+该次墙钟 2,504.09 秒，先前串行基线为 4,184.91 秒，单次用例减少约 40.2%；两次运行都可能与其他有限检查并发，不能视为稳定浏览器帧率或普遍加速保证。事先声明的 150,000 帧／6,000 秒／128MiB／至少 100GiB 余量上限未改，没有触发限制；此前预算失败及运行中检查器拒绝记录均保留。
 
 浏览器构建器补齐 Renderer 头文件和 WGSL 显式覆盖，避免基于旧发布快照时混入旧实现。完整 Wasm SHA256 为 `3df9d9f4da0b8b934053752eafbd230d0b865aeb263bd646735e9d0cc3c168c3`，主／worker HTTP 响应均核对实际产物，页面和 iframe 输出保持静音。字体／音乐只建立已有生成文件的硬链接，414,850,582 字节逻辑资源未再次物理复制；原作 DAT 没有复制或链接。
 
-当前仅 `finiteProductionIntegrationAccepted=true`。原版普通 GUI、整局原版画面／PCM、浏览器完整新版、全模式及独立调度仍开放，`completeGame=false`、`nativeEquivalent=false`。旧候选证明与合入收据原字节保留，不将旧报告的历史标志改写成生产通过。
+当前通过实例实现的有限生产整合及上述单份完整 Application 录像。原版普通 GUI、整局原版画面／PCM、完整新版浏览器全程、全模式及独立调度仍开放，`completeGame=false`、`nativeEquivalent=false`。旧候选证明与合入收据原字节保留，不将旧报告的历史标志改写成生产通过。

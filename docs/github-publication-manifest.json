@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "8d50230dc1123c30f83a0fb29de2f6728564f60b",
+  "sourceCommit": "190729a01c8b8926f4d9fbb2874504dcb8cc21ca",
   "files": [
     {
       "path": ".gitignore",
@@ -105,8 +105,8 @@
     },
     {
       "path": "docs/porting/TH14_BROWSER_CROSSHOST_OCT30.md",
-      "bytes": 2389,
-      "sha256": "1debe4a81a50f242236a48e5c3b6657ce5fd845eb095ac3c4d8b66aa93b7f290"
+      "bytes": 2739,
+      "sha256": "9c7de34c718927ce60ddf4cce1c69517396fce505e351ba233e6e203b0ff254c"
     },
     {
       "path": "docs/porting/TH14_BROWSER_FULL_REPLAY_OCT29.md",
@@ -535,8 +535,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 50660,
-      "sha256": "c9c2aee73e2269a3da2d55a1383ed090d4ac0d951eb28a3c62dd27ff07ae48ab"
+      "bytes": 51879,
+      "sha256": "11ef32dd3faff90e99b36dafee7d5f0b29afb893dbeaca9defea5b862a5dcfc4"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -557,6 +557,11 @@
       "path": "docs/porting/TH14_REPLAY_FPS_OCT28.md",
       "bytes": 4555,
       "sha256": "f96b6af149f646ecd401d85fdd85d6d62d0b814c1b84642517f7ad1185b1c4d4"
+    },
+    {
+      "path": "docs/porting/TH14_REPLAY_INTAKE_PARSER_OCT30.md",
+      "bytes": 2502,
+      "sha256": "962e067d45b7f2bad3841f1cccc37ac655d62e3a682db31c48b8d91482ffbb61"
     },
     {
       "path": "docs/porting/TH14_REPLAY_MANAGER_STARTUP_OCT30.md",
@@ -825,8 +830,8 @@
     },
     {
       "path": "docs/porting/TH14_WEBGPU_INSTANCING_OCT30.md",
-      "bytes": 6461,
-      "sha256": "05ede2e045daaa5a301531a353f216dde54a583b6ba193539d0d8a176ef8daf4"
+      "bytes": 7620,
+      "sha256": "bcc500891d4438a303fe75382252c282d977f470a861913f3da391c6a08b6276"
     },
     {
       "path": "docs/porting/TH14_WEBGPU_STAGE_COMPONENT_OCT26.md",
@@ -3032,6 +3037,11 @@
       "path": "docs/porting/th14-initial-stage-reset-verified-oct24.json",
       "bytes": 20781,
       "sha256": "06bfe505d2d17ff1da03f1e05bb2f6c8c66fa37a66f5d478cd5d81bb30c23729"
+    },
+    {
+      "path": "docs/porting/th14-instanced-webgpu-full-oct30.json",
+      "bytes": 72478,
+      "sha256": "91f9f6ee2572ef2b5a57598cb2f933681039e552d86431b5942d65a165dc25b2"
     },
     {
       "path": "docs/porting/th14-item-drop-verified.json",
@@ -5277,6 +5287,11 @@
       "path": "docs/porting/th14-replay-input-edges-verified-oct13.json",
       "bytes": 1216,
       "sha256": "07ec0e5e2c3cc87772a797b0eee306855b05ee0c2614efc8b9a2b45efabcb196"
+    },
+    {
+      "path": "docs/porting/th14-replay-intake-parser-oct30.json",
+      "bytes": 6549,
+      "sha256": "e97ba1c389d039863ddf1d252a070b566c8ecdf740eb803057965a0749fafd2d"
     },
     {
       "path": "docs/porting/th14-replay-manager-startup-oct30.json",
@@ -12764,6 +12779,11 @@
       "sha256": "d888732e9246284847f7b1a501e95db0476fea7b817c7d85d80b6e9fb4c6b83c"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-replay-intake-table-fixture.cpp",
+      "bytes": 1396,
+      "sha256": "d4386ea20773269b0a4449ec1f7d9da5397da7d139bff8bcc7ea76e6b3adefd1"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-replay-session-fixture.cpp",
       "bytes": 1413,
       "sha256": "b8bafe56bfc5eb4770b12c034d7fb2ba83ede223443985502ca56a78d9a9da35"
@@ -18844,6 +18864,11 @@
       "sha256": "9b6e9c1a44804f2786172bf64f59ff6eb0e3f575058260e3a5cf3097e4c5454d"
     },
     {
+      "path": "tools/th14-instanced-webgpu-full-evidence-oct30.py",
+      "bytes": 9020,
+      "sha256": "089eaeaf62d086babcd45c9f66ddcac7b92b748d52b45718179c96ef9833dcaa"
+    },
+    {
       "path": "tools/th14-item-check.mjs",
       "bytes": 7502,
       "sha256": "57d85d692158dccead83388c75c1c103fbd582df077ab855f9254c0e15535704"
@@ -20732,6 +20757,16 @@
       "path": "tools/th14-replay-input-edges-native.py",
       "bytes": 2519,
       "sha256": "8d80a71f2c1f6f77f7ff4cb62a57f7f49d91398c28b204b4235da3d1bd6c6e3f"
+    },
+    {
+      "path": "tools/th14-replay-intake-parser-evidence-oct30.py",
+      "bytes": 6447,
+      "sha256": "4a9a672063390428fd08f4a6cd455747d0318e17945462254ff4984aec3e3251"
+    },
+    {
+      "path": "tools/th14-replay-intake-parser-native-oct30.py",
+      "bytes": 7279,
+      "sha256": "376fbc7e9e41cdd431a334ba3196c27b7c67082a74e4fceb9209a31dd72e5111"
     },
     {
       "path": "tools/th14-replay-manager-startup-oct30.mjs",
@@ -24795,48 +24830,36 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "8d50230dc1123c30f83a0fb29de2f6728564f60b",
-    "title": "TH14 preserve WebGPU instance batches and bind finite native/Asyncify/browser evidence",
+    "basePublishedCommit": "190729a01c8b8926f4d9fbb2874504dcb8cc21ca",
+    "title": "TH14 instanced WebGPU complete finite replay and original file-parser comparison",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/portable/sdl/WebGpuRenderer.hpp",
-      "runtimes/th12/portable/sdl/Th14WebGpu.wgsl",
-      "runtimes/th12/portable/sdl/Th14WebGpuHost.mjs",
-      "runtimes/th12/portable/sdl/Th14WebGpuLibrary.js",
-      "tools/th14-native-webgpu-context.py",
-      "tools/th14-build-webgpu-async-component.py",
-      "tools/th14-build-webgpu-release.py",
-      "tools/th14-clip-projection-controls-oct30.py",
-      "tools/th14-browser-scheduling-control-oct30.py",
-      "tools/th14-reimub-webgpu-application-evidence-oct30.py",
-      "tools/th14-webgpu-instancing-evidence-oct30.py",
-      "tools/th14-webgpu-production-binding-oct30.py",
-      "tools/th14-browser-crosshost-evidence-oct30.py",
-      "docs/porting/TH14_CLIP_AND_SCHEDULING_CONTROLS_OCT30.md",
-      "docs/porting/th14-clip-projection-controls-oct30.json",
-      "docs/porting/th14-browser-scheduling-controls-oct30.json",
+      "runtimes/th12/th12_web/tests/cpp/th14-replay-intake-table-fixture.cpp",
+      "tools/th14-replay-intake-parser-native-oct30.py",
+      "tools/th14-replay-intake-parser-evidence-oct30.py",
+      "tools/th14-instanced-webgpu-full-evidence-oct30.py",
+      "docs/porting/TH14_REPLAY_INTAKE_PARSER_OCT30.md",
+      "docs/porting/th14-replay-intake-parser-oct30.json",
+      "docs/porting/th14-instanced-webgpu-full-oct30.json",
       "docs/porting/TH14_WEBGPU_INSTANCING_OCT30.md",
-      "docs/porting/th14-webgpu-production-binding-oct30.json",
-      "docs/porting/TH14_BROWSER_CROSSHOST_OCT30.md",
-      "docs/porting/th14-browser-crosshost-evidence-oct30.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
+      "docs/porting/TH14_BROWSER_CROSSHOST_OCT30.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "productionEngineChanged": true,
+    "productionEngineChanged": false,
     "productionGameplayCoreChanged": false,
     "productionLauncherChanged": false,
     "productionCoreCommit": "57a544191704e0ce64cd46de85fe648a3e152097",
-    "finiteProductionIntegrationAccepted": true,
-    "serialBaselineFullFrames": 122622,
-    "newInstancedFullReplayAccepted": false,
-    "applicationPrefixFramesEach": 2264,
-    "attractFramesEach": 17547,
-    "browserCompiledUnits": 146,
-    "browserFiniteStartupAndDemoObserved": true,
-    "stableBrowserFpsAccepted": false,
-    "ordinaryNewBrowserRecordingExportBytes": 828,
-    "allRefreshDownloadedBytesEqual": true,
+    "newInstancedFullReplayAccepted": true,
+    "actualApplicationFrames": 122622,
+    "actualApplicationAssertions": 45,
+    "allEightCapturedBuffersAndFullSelectedJournalEqual": true,
+    "silentPcmFrames": 89969664,
+    "originalParserValidInputs": 2,
+    "originalParserNegativeInputs": 2,
+    "allSevenStageIndicesEqual": true,
+    "all744698DecodedBytesEqual": true,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
     "completeGame": false,
