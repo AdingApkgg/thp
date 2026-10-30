@@ -29,6 +29,7 @@ parser.add_argument('--worker-rng-events',action='store_true',help='Observe repl
 parser.add_argument('--worker-main-context',action='store_true',help='Diagnostic only: retain paused main-thread registers and bounded stack bytes at worker sleep/seed-restore events; no unwind or engine input')
 parser.add_argument('--worker-main-stack-bytes',type=int,choices=(64,256,512),default=64,help='Diagnostic stack-read upper bound, clamped to the current stack page; nondefault sizes require worker-main-context')
 parser.add_argument('--normal-vm-window-events',action='store_true',help='Diagnostic hardware call/return observations only between original worker Sleep60 call and Replay seed restore; never schedules either thread or supplies engine values')
+parser.add_argument('--worker-active-vm-snapshot',action='store_true',help='Read-only diagnostic: retain the observed normal-call VM bytes at call edges and worker seed-restore debug events; does not prove the main PC at the earlier individual seed stores')
 parser.add_argument('--exit-boundary-events',action='store_true',help='Use a free main-thread hardware breakpoint outside loading/publication windows to observe the original WinMain loop exit')
 parser.add_argument('--live-callbacks',help='Comma-separated predeclared VM observation callbacks, including1; maximum32')
 parser.add_argument('--camera-write-events',action='store_true',help='Observe actual world-right X stores with a draw-phase main-thread DR2 data breakpoint; diagnostic values are never engine inputs')
@@ -38,6 +39,7 @@ assert not opt.camera_write_events or (opt.scene_camera_events and opt.controlle
 assert not opt.worker_main_context or opt.worker_rng_events
 assert opt.worker_main_context or opt.worker_main_stack_bytes==64
 assert not opt.normal_vm_window_events or (opt.worker_rng_events and opt.worker_main_context and not opt.camera_write_events)
+assert not opt.worker_active_vm_snapshot or opt.normal_vm_window_events
 assert 1<=opt.publication_cutoff<=opt.maximum_callbacks and opt.max_seconds>0
 assert 0<=opt.maximum_startup_seconds<=opt.max_seconds
 assert opt.minimum_free_gib>=0 and opt.maximum_capture_gib>0
@@ -123,6 +125,17 @@ print(json.dumps(dict(nativeChildStarted=True,pid=pi.pid,hidden=True,configuredS
 def read(address,count):
     b=C.create_string_buffer(count);got=C.c_size_t();checked(k.ReadProcessMemory(pi.process,address,b,count,C.byref(got)));assert got.value==count;return b.raw
 def u32(address):return struct.unpack('<I',read(address,4))[0]
+
+def worker_vm_snapshot(active):
+    # The pointer comes from an actually observed normal VM call. A retained
+    # address alone is not liveness proof; preserve identity changes as data.
+    if active is None:return dict(observedCallActive=False,readOnly=True,providedToEngine=False)
+    vm=active['vm'];blob=read(vm,0x5cc)
+    identity=dict(handle=struct.unpack_from('<I',blob,0x540)[0],file=struct.unpack_from('<H',blob,0x36)[0],script=struct.unpack_from('<H',blob,0x4aa)[0])
+    return dict(observedCallActive=True,vm=vm,callEntryOrdinal=active['ordinal'],identity=identity,
+        callIdentityStillMatches=all(identity[k]==active[k]for k in identity),rawVmHex=blob.hex(),bytes=len(blob),
+        snapshotAtWorkerDebugEvent=True,exactMainPcAtIndividualSeedStoreProven=False,
+        currentInstructionPointerNotInferred=True,readOnly=True,providedToEngine=False)
 def context(handle):
     b=C.create_string_buffer(716);struct.pack_into('<I',b,0,0x10017);checked(k.Wow64GetThreadContext(handle,b));return b
 def confirmed_thread_ended(tid):
@@ -248,16 +261,20 @@ def event_snapshot(pc,tid,b):
             originalInstructionBytes=read(pc,5 if pc==0x47e65b else 2).hex(),readOnly=True,
             actualOriginalCallEdge=True,threadSchedulingControlled=False,providedToEngine=False,
             ordinal=len(normal_vm_events)+1)
+        if getattr(opt,'worker_active_vm_snapshot',False):row['rawVmHexAtCallEdge']=blob.hex()
         if pc==0x47e65b:
-            assert normal_vm_active is None and normal_vm_closing_restore is None
+            closing_call=isinstance(normal_vm_closing_restore,dict)and normal_vm_closing_restore.get('boundary')=='call-entry-pending'
+            assert normal_vm_active is None and (normal_vm_closing_restore is None or closing_call)
             assert struct.unpack_from('<I',b,172)[0]==vm # ECX is the original this argument.
+            if closing_call:row.update(callEntryDrainedAfterSeedRestore=True,restoreObservationHostNs=normal_vm_closing_restore['hostMonotonicNs'])
             normal_vm_active=row
         else:
             assert normal_vm_active is not None and normal_vm_active['vm']==vm
             row['callEntryOrdinal']=normal_vm_active['ordinal'];normal_vm_active=None
             if normal_vm_closing_restore is not None:
-                row.update(returnPcAlreadyObservedAtSeedRestore=True,restoreEventDeliveredEarlier=True,
-                    restoreObservationHostNs=normal_vm_closing_restore)
+                closing_call=isinstance(normal_vm_closing_restore,dict)
+                row.update(returnPcAlreadyObservedAtSeedRestore=not closing_call,callEntryPendingAtSeedRestore=closing_call,restoreEventDeliveredEarlier=True,
+                    restoreObservationHostNs=normal_vm_closing_restore['hostMonotonicNs']if closing_call else normal_vm_closing_restore)
                 normal_vm_window_tid=None;normal_vm_closing_restore=None
         normal_vm_events.append(row)
         with(home/'normal-vm-window-events.jsonl').open('a',encoding='utf8')as stream:stream.write(json.dumps(row)+'\n')
@@ -338,19 +355,29 @@ def event_snapshot(pc,tid,b):
             if opt.normal_vm_window_events and normal_vm_window_tid==tid:
                 main_pc=row['mainThreadPcAtWorkerEvent']
                 return_pending=normal_vm_active is not None and main_pc==0x47e660
+                call_pending=normal_vm_active is None and main_pc==0x47e65b
                 row['normalVmCallWindowAtSeedRestore']=dict(activeCall=normal_vm_active,
                     mainPcAtRestore=main_pc,
                     betweenObservedCallAndReturn=normal_vm_active is not None and not return_pending,
                     callInstructionStillPending=normal_vm_active is not None and main_pc==0x47e65b,
                     withinVmMethodAtRestore=normal_vm_active is not None and main_pc not in (0x47e65b,0x47e660),
                     callReturnEdgeDeliveryPending=return_pending,
+                    callEntryDeliveryPending=call_pending,
+                    callWatchStatusBitAtRestore=bool(row['mainThreadContextAtWorkerEvent']['debugRegisters']['status']&2),
                     returnWatchStatusBitAtRestore=bool(row['mainThreadContextAtWorkerEvent']['debugRegisters']['status']&4),
                     observedEdges=len(normal_vm_events),readOnly=True,threadSchedulingControlled=False,providedToEngine=False)
+                if getattr(opt,'worker_active_vm_snapshot',False):
+                    row['normalVmCallWindowAtSeedRestore']['activeVmSnapshot']=worker_vm_snapshot(normal_vm_active)
                 if return_pending:
                     # Main is already at the return PC, while its corresponding
                     # edge event has not been delivered. Retain that one watch
                     # until delivery; this is not an active VM method.
                     normal_vm_closing_restore=row['hostMonotonicNs']
+                elif call_pending:
+                    # A call-edge exception can already be pending in the main
+                    # thread when the worker event is delivered first. Drain
+                    # that real call and return before removing their watches.
+                    normal_vm_closing_restore=dict(boundary='call-entry-pending',hostMonotonicNs=row['hostMonotonicNs'])
                 else:
                     normal_vm_window_tid=None;normal_vm_active=None
                     if pi.tid in threads:install(pi.tid)
@@ -547,7 +574,7 @@ finally:
     for handle in handles:
         if handle:k.CloseHandle(handle)
     (home/'selected-state.u32').write_bytes(raw);(home/'player-host-monotonic.u64').write_bytes(player_times);(home/'world-camera.raw').write_bytes(camera_raw);(home/'hud-score.u32').write_bytes(hud_raw)
-    report=dict(privateImmutableStorageCacheUsed=True,originalGameFilesNotHardlinked=True,storageHelperSha256=sha((root/'tools/th14-test-storage.py').read_bytes()),combatPoolSchemaVersion=opt.combat_schema,observerOptions=vars(opt),combatPoolSnapshots=combat_snapshots,combatPoolObserverSha256=sha(combat_module.read_bytes()),diagnosticPrefixOnly=False,asciiBeginObservedAtActualFunctionEntry=False,asciiCreationObservedAtActualCallInstruction=True,asciiCreateCallPc=0x44477a,asciiCreateInvocations=ascii_create_invocations,asciiPublicationCallsiteReadOnly=True,hudInitializationEvents=hud_score_writes,pid=pi.pid,executableSha256=manifest[0]['sha256'],files=manifest,referenceArchiveManifestSha256=sha((asset/'manifest.json').read_bytes()),
+    report=dict(privateImmutableStorageCacheUsed=True,originalGameFilesNotHardlinked=True,storageHelperSha256=sha((root/'tools/th14-test-storage.py').read_bytes()),combatPoolSchemaVersion=opt.combat_schema,observerOptions=vars(opt),combatPoolSnapshots=combat_snapshots,combatPoolObserverSha256=sha(combat_module.read_bytes()),diagnosticPrefixOnly=not complete,asciiBeginObservedAtActualFunctionEntry=False,asciiCreationObservedAtActualCallInstruction=True,asciiCreateCallPc=0x44477a,asciiCreateInvocations=ascii_create_invocations,asciiPublicationCallsiteReadOnly=True,hudInitializationEvents=hud_score_writes,pid=pi.pid,executableSha256=manifest[0]['sha256'],files=manifest,referenceArchiveManifestSha256=sha((asset/'manifest.json').read_bytes()),
         changedArchiveEntries=['demo0.rpy'],unchangedArchiveEntries=226,configHex=config.hex(),events=events,threadEvents=thread_events,
         hardwareBreakpointsOnly=True,instructionBytesPatched=0,gameStateWordWrites=int(initialization is not None),caseInitialization=initialization,
         rngOrCounterWrites=0,inputInjected=False,realOriginalWindowsProcess=True,ordinaryMenuReplayInitialization=False,hiddenWindowRequested=True,
@@ -559,6 +586,9 @@ finally:
     report.update(normalVmWindowEvents=len(normal_vm_events),normalVmWindowReadOnly=bool(opt.normal_vm_window_events),
         normalVmWindowEventsSha256=sha((home/'normal-vm-window-events.jsonl').read_bytes())if(home/'normal-vm-window-events.jsonl').exists()else None,
         normalVmWindowHasActiveCallAtEnd=normal_vm_active is not None,normalVmWindowWorkerAtEnd=normal_vm_window_tid)
-    report['normalVmReturnEventPendingAtEnd']=normal_vm_closing_restore is not None
+    report['normalVmReturnEventPendingAtEnd']=normal_vm_closing_restore is not None and not isinstance(normal_vm_closing_restore,dict)
+    report['normalVmCallEntryPendingAtEnd']=isinstance(normal_vm_closing_restore,dict)
+    report['workerActiveVmSnapshotsRequested']=opt.worker_active_vm_snapshot
+    report['workerActiveVmSnapshotCount']=sum('activeVmSnapshot'in row.get('normalVmCallWindowAtSeedRestore',{})for row in transition_events)
     (home/'report.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:report[k]for k in('observedForcedReplayEndMenu','allAnmPublications','beamFallbackCount','callbacks','childExited','error','elapsedSeconds','processExitEvent','observerTerminationRequested')}),flush=True)
 if error or not complete:raise SystemExit(1)

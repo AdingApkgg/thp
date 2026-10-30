@@ -1,0 +1,82 @@
+{
+  "verifiedFinitePassiveNormalVmCallObservation": true,
+  "diagnosticPrefixOnly": true,
+  "callbacks": 33000,
+  "pendingCallEntriesDrained": 1,
+  "fullRawVmBytesAtEachEdge": 1484,
+  "rawProducerDiagnosticFlagFalseDoesNotOverrideActualPrefix": true,
+  "observedCallEdges": 4714,
+  "completedCallPairs": 2357,
+  "workerWindows": [
+    {
+      "stage": 2,
+      "precedingPlayerCallbacks": 13937,
+      "edges": 2508,
+      "callEntryDeliveredAfterRestore": false,
+      "completedCalls": 1254,
+      "activeCallAtRestore": false,
+      "callInstructionStillPending": false,
+      "returnEventDeliveredAfterRestore": false,
+      "activeFile": null,
+      "activeScript": null,
+      "mainPcAtRestore": 4512720
+    },
+    {
+      "stage": 3,
+      "precedingPlayerCallbacks": 30996,
+      "edges": 2206,
+      "callEntryDeliveredAfterRestore": true,
+      "completedCalls": 1103,
+      "activeCallAtRestore": false,
+      "callInstructionStillPending": false,
+      "returnEventDeliveredAfterRestore": false,
+      "activeFile": null,
+      "activeScript": null,
+      "mainPcAtRestore": 4712027
+    }
+  ],
+  "restoreWithinObservedCallIntervals": 0,
+  "restoreBeforeCallInstructionExecutes": 0,
+  "returnEventsDeliveredAfterRestore": 0,
+  "threadSchedulingControlled": false,
+  "instructionRngOrCounterWrites": false,
+  "oneDeclaredWarmAttractFlagClear": true,
+  "debuggerPausesAffectTiming": true,
+  "originalNormalCallPc": 4712027,
+  "originalNormalReturnPc": 4712032,
+  "originalVmUpdateTarget": 4652624,
+  "exactVmOpcodeOfRestoreAccepted": false,
+  "observedValuesProvidedToEngine": false,
+  "ordinaryMenuInitializationAccepted": false,
+  "old80324FailureClosed": false,
+  "bindings": {
+    "artifacts/th14/worker-vm-context-retry-oct30/native/report.json": {
+      "bytes": 155309,
+      "sha256": "495de0f5a73e30406cc8df8049aca3fa038e3f9760dabb1d09a6ae5181345156"
+    },
+    "artifacts/th14/worker-vm-context-retry-oct30/native/observer-source.py": {
+      "bytes": 56676,
+      "sha256": "bfec4e0479a06ec3a6cf49ded29a79895a3bad69d4ee77dd250b3aaff1907ca5"
+    },
+    "artifacts/th14/worker-vm-context-retry-oct30/native/work/th14.exe": {
+      "bytes": 897536,
+      "sha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353"
+    },
+    "artifacts/th14/worker-vm-context-retry-oct30/native/transition-events.jsonl": {
+      "bytes": 14383,
+      "sha256": "8753c05e87dd2b0387dbc89a11ac48fda7dfdded9ef2146d8989f9ec9466b377"
+    },
+    "artifacts/th14/worker-vm-context-retry-oct30/native/normal-vm-window-events.jsonl": {
+      "bytes": 16358499,
+      "sha256": "87ab06498a12e188a65d998780b5b4d73a081457d8558d4edd82caba84acc103"
+    }
+  },
+  "verifierSha256": "a5d025c3e8e018461f3338097e8c67a3f7e8e2538764da713f7deaa8de6132b6",
+  "limitations": [
+    "Hardware debug events pause the process and affect observed wall time; no explicit thread hold or release is introduced.",
+    "Call-entry and return delivery ordering is checked explicitly. Raw VM bytes at a later edge are not backdated to the seed-store event.",
+    "The warm prefix and its observed native values do not establish ordinary menu, whole-game or independently scheduled browser equivalence."
+  ],
+  "completeGame": false,
+  "nativeEquivalent": false
+}

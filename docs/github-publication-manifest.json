@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "190729a01c8b8926f4d9fbb2874504dcb8cc21ca",
+  "sourceCommit": "8df264cec3d4d7885140eca64da76a2728645846",
   "files": [
     {
       "path": ".gitignore",
@@ -494,6 +494,11 @@
       "sha256": "78f4b029f947b81ef65edd38fd9893bef00b0956f432c6503a9c89d70ee59642"
     },
     {
+      "path": "docs/porting/TH14_PASSIVE_VM_ENTRY_OCT30.md",
+      "bytes": 4068,
+      "sha256": "d9329911e65efa878c16881e99109feea311a8bf01b99d62776d174c176a2300"
+    },
+    {
       "path": "docs/porting/TH14_PAUSE_SESSION_CONTINUES_OCT24.md",
       "bytes": 2279,
       "sha256": "33e5cea203ba170591b7380b337e93803348f67e73203c39fe9c5ced08ec1047"
@@ -535,8 +540,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 51879,
-      "sha256": "11ef32dd3faff90e99b36dafee7d5f0b29afb893dbeaca9defea5b862a5dcfc4"
+      "bytes": 52667,
+      "sha256": "2d9c9211c999e0da64a7252853f4fdb3c1455e08e3883d36732a298123d82657"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -4797,6 +4802,16 @@
       "path": "docs/porting/th14-particles-windows-verified-oct24.json",
       "bytes": 2267,
       "sha256": "e60067fc6f4fc21f5f370db4e97eb573256334625c534afb531a9ebd1a181b83"
+    },
+    {
+      "path": "docs/porting/th14-passive-entry-clock-oct30.json",
+      "bytes": 143128,
+      "sha256": "2ad2fbde762c8824079687af1b0895f9611cf4fbf57b2a6be666a5bab598f16d"
+    },
+    {
+      "path": "docs/porting/th14-passive-vm-entry-oct30.json",
+      "bytes": 3326,
+      "sha256": "e09924572b1053b761e743a6df4095de11b936d26ff54657e1f8003569bbdaa7"
     },
     {
       "path": "docs/porting/th14-pause-controls-verified-oct11.json",
@@ -16349,6 +16364,11 @@
       "sha256": "e74abc7da7e0bf335fcb114a7828d94af2eb84c0389410efa96e7dd708fb6a3c"
     },
     {
+      "path": "tools/th14-call-entry-return-guard-check-oct30.py",
+      "bytes": 6818,
+      "sha256": "fabac093287edfa6177492a76948fe18600752260f071b098c5ccafde636b196"
+    },
+    {
       "path": "tools/th14-camera-check.mjs",
       "bytes": 3948,
       "sha256": "a598e98b281e27e5bc0cda2032cc7dc646c77158d1f4c003c6865cd0a7172ebf"
@@ -19450,8 +19470,8 @@
     },
     {
       "path": "tools/th14-native-campaign-observer-oct25.py",
-      "bytes": 53671,
-      "sha256": "800afb84042203b9496b26254bb947ac8bffbca30b2a4fc613ad2a3a99b47da7"
+      "bytes": 56683,
+      "sha256": "ce533a0503163d69a6b93f3a132b950ba96b40cc24bc1f9bbabd9b33b6ca2da7"
     },
     {
       "path": "tools/th14-native-detail-window-capture.py",
@@ -20224,9 +20244,19 @@
       "sha256": "aa7c6e616828430cda9ae9eaa2066e5787b9ed10c38436a13c1a6ff4850716ae"
     },
     {
+      "path": "tools/th14-passive-entry-clock-evidence-oct30.py",
+      "bytes": 11935,
+      "sha256": "6f6e55a69e06bc6c1b6a1604b04cad64bf5ca2b6afb318700aa8922988ff06ae"
+    },
+    {
       "path": "tools/th14-passive-normal-vm-evidence-oct29.py",
       "bytes": 9194,
       "sha256": "1499f6cbc159324f3cf9389a2ebb7437d418ed341bee0a4c5448544ab4524d4a"
+    },
+    {
+      "path": "tools/th14-passive-vm-entry-evidence-oct30.py",
+      "bytes": 12124,
+      "sha256": "a5d025c3e8e018461f3338097e8c67a3f7e8e2538764da713f7deaa8de6132b6"
     },
     {
       "path": "tools/th14-pause-controls-check.mjs",
@@ -24830,19 +24860,17 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "190729a01c8b8926f4d9fbb2874504dcb8cc21ca",
-    "title": "TH14 instanced WebGPU complete finite replay and original file-parser comparison",
+    "basePublishedCommit": "8df264cec3d4d7885140eca64da76a2728645846",
+    "title": "TH14 passive pending VM entry and bounded clock diagnosis",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/tests/cpp/th14-replay-intake-table-fixture.cpp",
-      "tools/th14-replay-intake-parser-native-oct30.py",
-      "tools/th14-replay-intake-parser-evidence-oct30.py",
-      "tools/th14-instanced-webgpu-full-evidence-oct30.py",
-      "docs/porting/TH14_REPLAY_INTAKE_PARSER_OCT30.md",
-      "docs/porting/th14-replay-intake-parser-oct30.json",
-      "docs/porting/th14-instanced-webgpu-full-oct30.json",
-      "docs/porting/TH14_WEBGPU_INSTANCING_OCT30.md",
+      "tools/th14-native-campaign-observer-oct25.py",
+      "tools/th14-call-entry-return-guard-check-oct30.py",
+      "tools/th14-passive-vm-entry-evidence-oct30.py",
+      "tools/th14-passive-entry-clock-evidence-oct30.py",
+      "docs/porting/TH14_PASSIVE_VM_ENTRY_OCT30.md",
+      "docs/porting/th14-passive-vm-entry-oct30.json",
+      "docs/porting/th14-passive-entry-clock-oct30.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "docs/porting/TH14_BROWSER_CROSSHOST_OCT30.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
@@ -24851,15 +24879,15 @@
     "productionGameplayCoreChanged": false,
     "productionLauncherChanged": false,
     "productionCoreCommit": "57a544191704e0ce64cd46de85fe648a3e152097",
-    "newInstancedFullReplayAccepted": true,
-    "actualApplicationFrames": 122622,
-    "actualApplicationAssertions": 45,
-    "allEightCapturedBuffersAndFullSelectedJournalEqual": true,
-    "silentPcmFrames": 89969664,
-    "originalParserValidInputs": 2,
-    "originalParserNegativeInputs": 2,
-    "allSevenStageIndicesEqual": true,
-    "all744698DecodedBytesEqual": true,
+    "nativePrefixCallbacks": 33000,
+    "nativeCallEdges": 4714,
+    "nativeCallPairs": 2357,
+    "pendingCallEntryDrained": 1,
+    "observerEntryAndReturnControlsPassed": true,
+    "passiveClockProjectionCurrentPayloadsEqual": true,
+    "unprojectedStrictFailureRetained": true,
+    "old80324FailureClosed": false,
+    "independentThreadSchedulingAccepted": false,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
     "completeGame": false,
