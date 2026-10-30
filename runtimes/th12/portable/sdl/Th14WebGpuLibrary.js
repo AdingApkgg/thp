@@ -16,6 +16,9 @@ addToLibrary({
   th14_webgpu_upload:(handle,width,height,pointer) => Module['th14WebGpuRuntime'].host.upload(handle>>>0,width,height,HEAPU8.subarray(pointer,pointer+width*height*4)),
   th14_webgpu_depth:(handle,width,height,format) => Module['th14WebGpuRuntime'].host.depth(handle>>>0,width,height,format),
   th14_webgpu_draw:(packet,vertices,count) => Module['th14WebGpuRuntime'].host.draw(HEAPU8.subarray(packet,packet+448),HEAPU8.subarray(vertices,vertices+count*40),count),
+  th14_webgpu_draw_instances:(packet,vertices,count,instances,instanceCount) => Module['th14WebGpuRuntime'].host.drawInstances(
+    HEAPU8.subarray(packet,packet+448),HEAPU8.subarray(vertices,vertices+count*40),count,
+    HEAPU8.subarray(instances,instances+instanceCount*148),instanceCount),
   th14_webgpu_clear:(target,depth,flags,color,value,stencil,rects,count) => Module['th14WebGpuRuntime'].host.clear(target>>>0,depth>>>0,flags,color>>>0,value,stencil,HEAP32.subarray(rects>>>2,(rects>>>2)+count*4)),
   th14_webgpu_copy:(source,rect,target,point) => Module['th14WebGpuRuntime'].host.copy(source>>>0,HEAP32.subarray(rect>>>2,(rect>>>2)+4),target>>>0,HEAP32.subarray(point>>>2,(point>>>2)+2)),
   th14_webgpu_read__async:'auto',

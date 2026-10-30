@@ -112,9 +112,9 @@ struct Uniform{color:vec4f,depth:vec4f};
             result.update(stencil_load_op='load', stencil_store_op='store')
         return result
 
-    def pipeline(self, p):
+    def pipeline(self, p, instanced=False):
         fmt = self.depths[p[1]]['format'] if p[1] else None
-        key = (p[3], *p[4:13], fmt)
+        key = (p[3], *p[4:13], fmt, instanced)
         if key in self.pipelines:
             return self.pipelines[key]
         blend_names = ['zero', 'one', 'src', 'one-minus-src', 'src-alpha', 'one-minus-src-alpha',
@@ -138,7 +138,7 @@ struct Uniform{color:vec4f,depth:vec4f};
                 return dict(src_factor='one' if p[9] >= 3 else factor(p[7], alpha),
                             dst_factor='one' if p[9] >= 3 else factor(p[8], alpha), operation=equations[p[9]])
             target['blend'] = dict(color=component(False), alpha=component(True))
-        descriptor = dict(layout='auto', vertex=dict(module=self.shader, entry_point='vs', buffers=[dict(
+        descriptor = dict(layout='auto', vertex=dict(module=self.shader, entry_point='vsInstanced' if instanced else 'vs', buffers=[dict(
             array_stride=40, attributes=[dict(shader_location=0, offset=0, format='float32x4'),
             dict(shader_location=1, offset=16, format='unorm8x4'), dict(shader_location=2, offset=20, format='float32x2'),
             dict(shader_location=3, offset=28, format='float32'), dict(shader_location=4, offset=32, format='float32'),
@@ -146,6 +146,11 @@ struct Uniform{color:vec4f,depth:vec4f};
             fragment=dict(module=self.shader, entry_point='fs' if fmt else 'fsColor', targets=[target]),
             primitive=dict(topology={0: 'point-list', 1: 'line-list', 3: 'triangle-list'}[p[3]],
                            front_face='cw', cull_mode=['none', 'back', 'front'][p[11]]))
+        if instanced:
+            descriptor['vertex']['buffers'].append(dict(array_stride=148,step_mode='instance',attributes=[
+                *[dict(shader_location=6+i,offset=16*i,format='float32x4') for i in range(8)],
+                dict(shader_location=14,offset=128,format='float32x4'),
+                dict(shader_location=15,offset=144,format='float32')]))
         if fmt:
             descriptor['depth_stencil'] = dict(format=fmt, depth_write_enabled=bool(p[4] and p[5]),
                 depth_compare=compare[p[10]] if p[4] else 'always')
@@ -153,7 +158,7 @@ struct Uniform{color:vec4f,depth:vec4f};
         self.pipelines[key] = pipeline
         return pipeline
 
-    def draw(self, packet, vertices, count):
+    def draw(self, packet, vertices, count, instances=None):
         assert len(packet) == 448 and len(vertices) == count*40
         p = struct.unpack_from('<20I', packet)
         uniform = packet[80:]
@@ -161,7 +166,7 @@ struct Uniform{color:vec4f,depth:vec4f};
         minimum, maximum = struct.unpack('<2f', struct.pack('<2I', *p[17:19]))
         color = self.target(p[0])
         texture = self.sample(p[2])
-        pipeline = self.pipeline(p)
+        pipeline = self.pipeline(p, instances is not None)
         bind_key = (id(pipeline), p[2], *p[13:17])
         if bind_key not in self.bindings:
             address = ['repeat', 'mirror-repeat', 'clamp-to-edge']
@@ -184,7 +189,11 @@ struct Uniform{color:vec4f,depth:vec4f};
         render.set_bind_group(0, binding)
         render.set_bind_group(1, self.bindings[bind_key])
         render.set_vertex_buffer(0, vb)
-        render.draw(count)
+        if instances is not None:
+            assert len(instances)%148==0 and 1<len(instances)//148<=1024
+            instance_buffer=self.device.create_buffer_with_data(data=instances,usage=self.wgpu.BufferUsage.VERTEX)
+            self.keep.append(instance_buffer);render.set_vertex_buffer(1,instance_buffer)
+        render.draw(count,1 if instances is None else len(instances)//148)
         render.end()
         item['dirty'] = True
 
@@ -330,6 +339,9 @@ struct Uniform{color:vec4f,depth:vec4f};
         if name == 'th14_webgpu_draw':
             packet, vertices, count = args
             return self.draw(read(packet, 448), read(vertices, count*40), count)
+        if name == 'th14_webgpu_draw_instances':
+            packet,vertices,count,instances,instance_count=args
+            return self.draw(read(packet,448),read(vertices,count*40),count,read(instances,instance_count*148))
         if name == 'th14_webgpu_clear':
             target, depth, flags, color, value, stencil, ptr, count = args
             rects = ints(ptr, count*4)

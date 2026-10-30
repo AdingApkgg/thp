@@ -15,6 +15,7 @@ void th14_webgpu_close();
 void th14_webgpu_upload(uint32_t,uint32_t,uint32_t,const void*);
 void th14_webgpu_depth(uint32_t,uint32_t,uint32_t,uint32_t);
 void th14_webgpu_draw(const void* packet,const void* vertices,uint32_t count);
+void th14_webgpu_draw_instances(const void* packet,const void* vertices,uint32_t count,const void* instances,uint32_t instanceCount);
 void th14_webgpu_clear(uint32_t,uint32_t,uint32_t,uint32_t,float,uint32_t,const int32_t*,uint32_t);
 void th14_webgpu_copy(uint32_t,const int32_t*,uint32_t,const int32_t*);
 void th14_webgpu_read(uint32_t,void*,uint32_t);
@@ -30,6 +31,8 @@ class WebGpuRenderer {
     std::map<u32,Resource> resources;
     std::vector<u8> pixels;
     struct Vertex {float position[4];u32 color;float uv[2],fog,eligible;u32 specular;};
+    struct Instance {std::array<float,16> clip,eye;std::array<float,4> factor;float eligible;};
+    static_assert(sizeof(Instance)==148);
     // Explicit 32-bit fields; no compiler-dependent bool/enum structure ABI.
     struct Packet {std::array<u32,20> pipeline{};std::array<float,92> uniform{};};
     static_assert(sizeof(Vertex)==40 && sizeof(Packet)==448);
@@ -83,6 +86,12 @@ public:
         const auto& p=state.pipeline;const auto& vp=state.viewport;
         const bool screenLine=state.layout.screen&&(topology==Topology::Lines||topology==Topology::LineStrip);
         const u32 repetitions=instances?instanceBytes/68:1;
+        // Only Renderer::flush's identical WorldUv strip batch is eligible.
+        // Preserve the serial path for every other topology and feedback draw.
+        const bool batched=instances&&repetitions>1&&instanceBytes%68==0&&
+            state.layout==attributes(VertexLayout::WorldUv)&&state.stride==20&&
+            topology==Topology::Strip&&count==2&&!indices&&state.texture!=state.target;
+        std::vector<Instance> records;if(batched)records.reserve(repetitions);
         for(u32 repetition=0;repetition<repetitions;++repetition){
             auto world=state.matrix[0];auto factor=p.textureFactor;
             if(instances){const auto* record=static_cast<const u8*>(instances)+repetition*68;std::memcpy(world.data(),record,64);std::memcpy(&factor,record+64,4);}
@@ -125,7 +134,17 @@ public:
                 const bool quadEligible=quad&&th14_primitive_projectable(static_cast<const float*>(input),state.stride,0,4,clip,vp);
                 for(u32 i=0;i+2<vertices.size();i+=3){bool eligible=quadEligible;if(!quad){float points[12];for(u32 j=0;j<3;++j)std::memcpy(points+j*4,vertices[i+j].position,16);eligible=th14_primitive_projectable(points,16,0,3,clip,vp);}for(u32 j=0;j<3;++j)vertices[i+j].eligible=eligible?1.f:0.f;}
             }
-            th14_webgpu_draw(&packet,vertices.data(),u32(vertices.size()));renderer.stats.vertexUploadBytes+=u32(vertices.size()*sizeof(Vertex));
+            if(batched){
+                Instance record;record.clip=clip;record.eye=eye;
+                std::memcpy(record.factor.data(),packet.uniform.data(),16);
+                record.eligible=vertices[0].eligible;records.push_back(record);
+                if(repetition+1==repetitions){
+                    th14_webgpu_draw_instances(&packet,vertices.data(),u32(vertices.size()),records.data(),u32(records.size()));
+                    renderer.stats.vertexUploadBytes+=u32(vertices.size()*sizeof(Vertex)+records.size()*sizeof(Instance));
+                }
+            }else{
+                th14_webgpu_draw(&packet,vertices.data(),u32(vertices.size()));renderer.stats.vertexUploadBytes+=u32(vertices.size()*sizeof(Vertex));
+            }
         }
         resources[state.target].rendered=true;
     }

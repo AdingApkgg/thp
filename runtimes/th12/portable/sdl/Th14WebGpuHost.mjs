@@ -115,9 +115,9 @@ struct Output{@location(0) color:vec4f,@builtin(frag_depth) depth:f32};
       ...(item.format.endsWith('stencil8')?{stencilLoadOp:'load',stencilStoreOp:'store'}:{})};
   }
 
-  pipeline(p) {
+  pipeline(p,instanced=false) {
     const format = p[1]?this.depths.get(p[1]).format:null;
-    const key = JSON.stringify([p[3],...p.slice(4,13),format]);
+    const key = JSON.stringify([p[3],...p.slice(4,13),format,instanced]);
     if (this.pipelines.has(key)) return this.pipelines.get(key);
     const factors = ['zero','one','src','one-minus-src','src-alpha','one-minus-src-alpha','dst-alpha','one-minus-dst-alpha','dst','one-minus-dst','src-alpha-saturated'];
     const operations = ['add','subtract','reverse-subtract','min','max'];
@@ -129,23 +129,28 @@ struct Output{@location(0) color:vec4f,@builtin(frag_depth) depth:f32};
       const component = alpha => ({srcFactor:p[9]>=3?'one':factor(p[7],alpha),dstFactor:p[9]>=3?'one':factor(p[8],alpha),operation:operations[p[9]]});
       target.blend={color:component(false),alpha:component(true)};
     }
-    const pipeline = this.device.createRenderPipeline({layout:'auto',
-      vertex:{module:this.shader,entryPoint:'vs',buffers:[{arrayStride:40,attributes:[
+    const descriptor = {layout:'auto',
+      vertex:{module:this.shader,entryPoint:instanced?'vsInstanced':'vs',buffers:[{arrayStride:40,attributes:[
         {shaderLocation:0,offset:0,format:'float32x4'},{shaderLocation:1,offset:16,format:'unorm8x4'},
         {shaderLocation:2,offset:20,format:'float32x2'},{shaderLocation:3,offset:28,format:'float32'},
         {shaderLocation:4,offset:32,format:'float32'},{shaderLocation:5,offset:36,format:'unorm8x4'}]}]},
       fragment:{module:this.shader,entryPoint:format?'fs':'fsColor',targets:[target]},
       primitive:{topology:{0:'point-list',1:'line-list',3:'triangle-list'}[p[3]],frontFace:'cw',cullMode:['none','back','front'][p[11]]},
-      ...(format?{depthStencil:{format,depthWriteEnabled:!!(p[4]&&p[5]),depthCompare:p[4]?compares[p[10]]:'always'}}:{})});
+      ...(format?{depthStencil:{format,depthWriteEnabled:!!(p[4]&&p[5]),depthCompare:p[4]?compares[p[10]]:'always'}}:{})};
+    if(instanced) descriptor.vertex.buffers.push({arrayStride:148,stepMode:'instance',attributes:[
+      ...Array.from({length:8},(_,i)=>({shaderLocation:6+i,offset:16*i,format:'float32x4'})),
+      {shaderLocation:14,offset:128,format:'float32x4'},
+      {shaderLocation:15,offset:144,format:'float32'}]});
+    const pipeline=this.device.createRenderPipeline(descriptor);
     const entry={pipeline,key};this.pipelines.set(key,entry);return entry;
   }
 
-  draw(packet,vertices,count) {
+  draw(packet,vertices,count,instances=null) {
     this.assertHealthy();if (packet.byteLength!==448||vertices.byteLength!==count*40) throw new Error('Invalid C++ draw packet');
     const p = new Uint32Array(packet.buffer,packet.byteOffset,20);
     const uniform = packet.subarray(80);const floats = new Float32Array(uniform.buffer,uniform.byteOffset,92);
     const viewport = floats.subarray(80,84);const range = new Float32Array(p.buffer,p.byteOffset+68,2);
-    const target=this.target(p[0]),texture=this.sample(p[2]),entry=this.pipeline(p),pipeline=entry.pipeline;
+    const target=this.target(p[0]),texture=this.sample(p[2]),entry=this.pipeline(p,instances!==null),pipeline=entry.pipeline;
     const key=JSON.stringify([entry.key,p[2],...p.slice(13,17)]);
     if (!this.bindings.has(key)) {
       const address=['repeat','mirror-repeat','clamp-to-edge'];
@@ -157,9 +162,16 @@ struct Output{@location(0) color:vec4f,@builtin(frag_depth) depth:f32};
     const pass=this.commands().beginRenderPass({colorAttachments:[{view:target.createView(),loadOp:'load',storeOp:'store'}],depthStencilAttachment:this.depthAttachment(p[1])});
     const item=this.resources.get(p[0]);pass.setScissorRect(0,0,item.width,item.height);
     pass.setViewport(viewport[0]+.5,viewport[1]+.5,viewport[2],viewport[3],range[0],range[1]);
-    pass.setPipeline(pipeline);pass.setBindGroup(0,binding);pass.setBindGroup(1,this.bindings.get(key));pass.setVertexBuffer(0,vb);pass.draw(count);pass.end();item.dirty=true;
+    pass.setPipeline(pipeline);pass.setBindGroup(0,binding);pass.setBindGroup(1,this.bindings.get(key));pass.setVertexBuffer(0,vb);
+    if(instances!==null)pass.setVertexBuffer(1,this.buffer(instances,GPUBufferUsage.VERTEX));
+    pass.draw(count,instances===null?1:instances.byteLength/148);pass.end();item.dirty=true;
   }
 
+  drawInstances(packet,vertices,count,instances,instanceCount) {
+    if(!Number.isInteger(instanceCount)||instanceCount<2||instanceCount>1024||instances.byteLength!==instanceCount*148)
+      throw new Error('Invalid C++ instance packet');
+    return this.draw(packet,vertices,count,instances);
+  }
   clear(target,depth,flags,color,value,stencil,rects) {
     const item=this.resources.get(target),output=this.target(target);
     const rgba=[16,8,0,24].map(shift=>((color>>>shift)&255)/255);

@@ -1,0 +1,62 @@
+{
+  "schema": "th14/browser-scheduling-controls/1",
+  "actualChromeBrowserRuns": 2,
+  "rows": [
+    {
+      "profile": "no-canvas",
+      "elapsedMs": 15006.90000000596,
+      "rafCallbacks": 878,
+      "overallRafHz": 58.506420379935314,
+      "lateRafMedianGapMs": 1005.5,
+      "timerCallbacks": 929,
+      "timerHz": 61.90485709904318,
+      "workerCallbacks": 926,
+      "workerHz": 61.70494905674271,
+      "observedLongTasks": 0,
+      "allRecordedDocumentVisibleAndFocused": true
+    },
+    {
+      "profile": "continuous-canvas2d",
+      "elapsedMs": 15013.59999999404,
+      "rafCallbacks": 24,
+      "overallRafHz": 1.5985506474136468,
+      "lateRafMedianGapMs": 1005.3999999999996,
+      "timerCallbacks": 937,
+      "timerHz": 62.410081526107795,
+      "workerCallbacks": 933,
+      "workerHz": 62.14365641820552,
+      "observedLongTasks": 0,
+      "allRecordedDocumentVisibleAndFocused": true
+    }
+  ],
+  "gameLoaded": false,
+  "wasmLoaded": false,
+  "explicitWebGlOrWebGpuRequested": false,
+  "physicalAudioDevicesOpened": 0,
+  "gameTimingOrBrowserSettingsChanged": false,
+  "uniqueBrowserPolicyOrOsCauseProven": false,
+  "stable60FpsAccepted": false,
+  "browserAcceptance": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "scope": "No-game controls reproduce ~1Hz late RAF while16ms main and worker timers keep running. Canvas2D can use internal GPU acceleration; no WebGL/WebGPU device was requested. DOM visibility/focus is not an OS occlusion measurement. No claim that all game frame costs are explained.",
+  "verifierSha256": "b053efeaf22da050efb03f9d212d0ec7d372579f0ff917a2ce507b17190d740c",
+  "bindings": {
+    "artifacts/th14/browser-scheduling-control-oct30/result.json": {
+      "bytes": 125277,
+      "sha256": "cc003071f502b477fddf6c7b98d75b12c1b9db190759d287da471ff0426e2fe3"
+    },
+    "artifacts/th14/browser-scheduling-control-oct30/server.mjs": {
+      "bytes": 3589,
+      "sha256": "fc475a68261237c54e770213d2d862ea1db42db052ded119f45f54c96359bbf3"
+    },
+    "artifacts/th14/browser-scheduling-control-oct30/animated-result.json": {
+      "bytes": 116533,
+      "sha256": "8be053da7ff8f3a88238d4af7a2f4701e08bd9ab62ef2b3d81962b570e7ecab7"
+    },
+    "artifacts/th14/browser-scheduling-control-oct30/animated-server.mjs": {
+      "bytes": 3926,
+      "sha256": "a0b4afbfc03769ba60ed8c684ce5c2619996752b37906f7deee53ff17767ea2f"
+    }
+  }
+}

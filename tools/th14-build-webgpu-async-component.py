@@ -33,7 +33,8 @@ def main():
     src = out/'src'; src.mkdir(); bindings = {}
     names = ['Renderer.cpp','Renderer.hpp','GraphicsState.hpp','Shaders.hpp','ResampleShader.hpp','AlphaConversion.hpp',
              'Th14RenderMath.hpp','WebGpuRenderer.hpp','Th14WebGpuCallbacks.hpp',
-             'Th14WebGpuHost.mjs','Th14WebGpuRuntime.mjs','Th14WebGpuCore.mjs','Th14WebGpuLibrary.js','Th14WebGpu.wgsl','Th14WebGpuResample.wgsl']
+             'Th14WebGpuHost.mjs','Th14WebGpuRuntime.mjs','Th14WebGpuCore.mjs','Th14WebGpuLibrary.js','Th14WebGpu.wgsl','Th14WebGpuResample.wgsl',
+             'Th14ArchiveDecodeClient.mjs','Th14ArchiveReadAhead.mjs']
     for name in names:
         path = ROOT/'runtimes/th12/portable/sdl'/name; raw = path.read_bytes()
         bindings[path.relative_to(ROOT).as_posix()] = dict(bytes=len(raw), sha256=SHA(raw)); (src/name).write_bytes(raw)

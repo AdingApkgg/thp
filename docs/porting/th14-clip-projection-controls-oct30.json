@@ -1,0 +1,122 @@
+{
+  "schema": "th14/clip-projection-controls/1",
+  "cpuTransformedCornerWordsEqual": 16,
+  "cpuClippingCases": 54,
+  "cpuClippingExactFullBuffers": 0,
+  "sameResultAcrossFractionalAndPowerOfTwoViewports": 18,
+  "profiles": [
+    {
+      "profile": "cpu-clip-fractional-viewport",
+      "cases": 18,
+      "exactFullBuffers": 0,
+      "bestCoverageDifferences": 0,
+      "bestCommonUWordDifferences": 17723,
+      "bestCommonVWordDifferences": 8420
+    },
+    {
+      "profile": "cpu-clip-power2",
+      "cases": 18,
+      "exactFullBuffers": 0,
+      "bestCoverageDifferences": 0,
+      "bestCommonUWordDifferences": 17723,
+      "bestCommonVWordDifferences": 8420
+    },
+    {
+      "profile": "cpu-clip-power2-snap256",
+      "cases": 18,
+      "exactFullBuffers": 0,
+      "bestCoverageDifferences": 0,
+      "bestCommonUWordDifferences": 17723,
+      "bestCommonVWordDifferences": 8420
+    }
+  ],
+  "hardwareInterpolationControls": [
+    {
+      "profile": "hardware-depth-clip-off",
+      "commonCoveredPixels": 70807,
+      "coverageDifferentPixels": 0,
+      "commonUWordDifferences": 20524,
+      "commonVWordDifferences": 18437,
+      "sha256": "df33c7b952d771cddde63786c7af8aacfc3d3c4e77cec29b557fe3a026512a03",
+      "fullBufferEqual": false
+    },
+    {
+      "profile": "hardware-z-midpoint",
+      "commonCoveredPixels": 70807,
+      "coverageDifferentPixels": 0,
+      "commonUWordDifferences": 68509,
+      "commonVWordDifferences": 5109,
+      "sha256": "58a6186ae03698d551ca121d2b66328f7bda827b2f494542664b9bc4902ebc76",
+      "fullBufferEqual": false
+    },
+    {
+      "profile": "unshifted-evaluate-minus-half",
+      "commonCoveredPixels": 70807,
+      "coverageDifferentPixels": 287,
+      "commonUWordDifferences": 12662,
+      "commonVWordDifferences": 33986,
+      "sha256": "f1a8000abd6bdb18a00f9971ef28587b2127af070df3240c4c33384fff335734",
+      "fullBufferEqual": false
+    }
+  ],
+  "productionChanged": false,
+  "browserRun": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "scope": "One retained near-plane-crossing quad,307200pixels. CPU clipping changes UV even with the native fractional viewport. No graphics candidate accepted; original complete-buffer failures retained.",
+  "verifierSha256": "3ef4be4db14872347722ce1f1260cec9c6032550b7376ede305194941929d330",
+  "bindings": {
+    "artifacts/th14/pixel-background-d3d11-oct26/native-clip/clip-inputs.json": {
+      "bytes": 2113,
+      "sha256": "97f4f6fc3294db846dae96f0aa9d2cac22f3dc2ec3a1879d89a8e560fb73feed"
+    },
+    "artifacts/th14/pixel-background-d3d11-oct26/clip-result.json": {
+      "bytes": 1425,
+      "sha256": "7eed652c058f6b9f220fe2d43d36a43aec864aa4fe2e259932b926467dc7ce93"
+    },
+    "artifacts/th14/pixel-background-d3d11-oct26/native-clip/native.json": {
+      "bytes": 3707,
+      "sha256": "bf4a2f41ad7a147629d3c1a4dd9d7555cb03de3191680855917879d4166c8d65"
+    },
+    "artifacts/th14/clip-projection-control-oct30/summary.json": {
+      "bytes": 1316,
+      "sha256": "44936bfc6cb25e4329c23a0f7c2315ee74bf7722d163328d42b69b068d7df55d"
+    },
+    "artifacts/th14/pixel-background-d3d11-oct26/native-uv/native.json": {
+      "bytes": 1768,
+      "sha256": "b112d18a7a3fa75fff81fd68bd8f86f914648e70dd61168bee8c927337a51f2f"
+    },
+    "artifacts/th14/clip-projection-control-oct30/cpu-clip-fractional-viewport.json": {
+      "bytes": 14183,
+      "sha256": "4264f23d83b2f7609ab5c9c43b2e8482a6a73dbdfb451c72cee02cf376516800"
+    },
+    "artifacts/th14/clip-projection-control-oct30/cpu-clip-power2.json": {
+      "bytes": 14183,
+      "sha256": "4264f23d83b2f7609ab5c9c43b2e8482a6a73dbdfb451c72cee02cf376516800"
+    },
+    "artifacts/th14/clip-projection-control-oct30/cpu-clip-power2-snap256.json": {
+      "bytes": 14183,
+      "sha256": "4264f23d83b2f7609ab5c9c43b2e8482a6a73dbdfb451c72cee02cf376516800"
+    },
+    "artifacts/th14/clip-projection-control-oct30/interpolation-summary.json": {
+      "bytes": 1292,
+      "sha256": "e146a84548cea6e682a01b03259bfba62386f6a44226385e9814be8303eab92a"
+    },
+    "artifacts/th14/clip-projection-control-oct30/probe.py": {
+      "bytes": 4423,
+      "sha256": "66453cf74752aa649cc9a10f6df9e9e5f25b41a6112cb7e974641e1f588d67ba"
+    },
+    "artifacts/th14/clip-projection-control-oct30/interpolation-control.py": {
+      "bytes": 1888,
+      "sha256": "d5b837a17bd7208c3235967f59904a0d249eb79d64b2648c6d66cfa153c86c04"
+    },
+    "artifacts/th14/pixel-background-d3d11-oct26/cpu-clip-precision.py": {
+      "bytes": 7186,
+      "sha256": "cf459608744e77a2a896f2028a528ce4a0c22e1007f6377212ec4a55ca5353b8"
+    },
+    "artifacts/th14/pixel-background-d3d11-oct26/replay-uv-full-postclip.py": {
+      "bytes": 10010,
+      "sha256": "2b122ebd17bb714bb61612e9bf38e188e2d8d00a528a171c14747003481703c7"
+    }
+  }
+}

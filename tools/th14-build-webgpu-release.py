@@ -25,7 +25,8 @@ OVERLAYS = ['th12_web/cpp/sdl/Application.cpp','th12_web/cpp/sdl/StageDecodeTh14
             'th12_web/cpp/game/Replay.cpp','th12_web/cpp/game/ReplayTextTh14.hpp','th12_web/cpp/game/AnmTransferTh14.hpp',
             'th12_web/cpp/game/StageEclTransferTh14.hpp','th12_web/cpp/game/ShtTransferTh14.hpp','th12_web/cpp/game/EclResource.cpp','th12_web/cpp/game/EclResource.hpp','th12_web/cpp/game/GameResources.hpp','portable/sdl/Th14WebGpuCallbacks.hpp',
             'portable/sdl/Th14ArchiveDecodeClient.mjs','portable/sdl/Th14ArchiveReadAhead.mjs','portable/sdl/Th14ArchiveDecodeEndpoint.mjs','portable/sdl/Th14ArchiveDecodeWorker.mjs',
-            'portable/sdl/Th14WebGpuHost.mjs','portable/sdl/Th14WebGpuRuntime.mjs','portable/sdl/Th14WebGpuCore.mjs','portable/sdl/Th14WebGpuLibrary.js']
+            'portable/sdl/Th14WebGpuHost.mjs','portable/sdl/Th14WebGpuRuntime.mjs','portable/sdl/Th14WebGpuCore.mjs','portable/sdl/Th14WebGpuLibrary.js',
+            'portable/sdl/WebGpuRenderer.hpp','portable/sdl/Th14WebGpu.wgsl']
 
 
 def main():

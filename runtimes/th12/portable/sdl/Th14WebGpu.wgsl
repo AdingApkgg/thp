@@ -12,22 +12,33 @@ struct Input {
  @location(2) uv:vec2f, @location(3) fog:f32,
  @location(4) eligible:f32, @location(5) specular:vec4f,
 };
+struct InstanceInput {
+ @location(0) position:vec4f, @location(1) color:vec4f,
+ @location(2) uv:vec2f, @location(3) fog:f32,
+ @location(4) eligible:f32, @location(5) specular:vec4f,
+ @location(6) clip0:vec4f, @location(7) clip1:vec4f,
+ @location(8) clip2:vec4f, @location(9) clip3:vec4f,
+ @location(10) eye0:vec4f, @location(11) eye1:vec4f,
+ @location(12) eye2:vec4f, @location(13) eye3:vec4f,
+ @location(14) factor:vec4f, @location(15) primitiveEligible:f32,
+};
 struct Output {
  @builtin(position) position:vec4f, @location(0) color:vec4f,
  @location(1) uv:vec2f, @location(2) fog:f32,
  @location(3) specular:vec4f,
+ @location(4) @interpolate(flat) factor:vec4f,
 };
 fn round_even(v:vec2f)->vec2f {
  let a=floor(v);let fraction=v-a;
  return select(select(a,a+1.0,fraction>vec2f(0.5)),
   select(a,a+1.0,(vec2i(a)&vec2i(1))!=vec2i(0)),fraction==vec2f(0.5));
 }
-@vertex fn vs(v:Input)->Output {
- var o:Output;o.position=v.position;o.color=v.color.bgra;
+fn vertex(v:Input,clip:mat4x4f,eyeMatrix:mat4x4f,factor:vec4f,eligible:f32)->Output {
+ var o:Output;o.position=v.position;o.color=v.color.bgra;o.factor=factor;
  o.uv=v.uv;o.fog=v.fog;o.specular=v.specular.bgra;
  if(u.vertexFlags.x==0u) {
-  let original=vec4f(v.position.xyz,1);o.position=u.clipMatrix*original;
-  if(v.eligible>0.5) {
+  let original=vec4f(v.position.xyz,1);o.position=clip*original;
+  if(eligible>0.5) {
    let half_viewport=u.viewport.zw*0.5;
    // Round in screen coordinates. Rounding before the viewport translation
    // loses binary32 boundary decisions in subviewports.
@@ -38,7 +49,7 @@ fn round_even(v:vec2f)->vec2f {
   if(u.vertexFlags.y!=0u){o.uv=(u.uvMatrix*vec4f(v.uv,1,0)).xy;}
   o.fog=1;
   if(u.flags.x!=0u) {
-   let eye=u.eyeMatrix*original;var z=abs(eye.z);
+   let eye=eyeMatrix*original;var z=abs(eye.z);
    if(u.extra.y!=0u){z=length(eye.xyz);}
    if(u.vertexFlags.z!=0u){o.fog=u.linearFog.x-z*u.linearFog.y;}
    else if(u.extra.z==1u){o.fog=exp(-u.fogParams.z*z);}
@@ -48,9 +59,16 @@ fn round_even(v:vec2f)->vec2f {
  }
  return o;
 }
+@vertex fn vs(v:Input)->Output {
+ return vertex(v,u.clipMatrix,u.eyeMatrix,u.factor,v.eligible);
+}
+@vertex fn vsInstanced(v:InstanceInput)->Output {
+ return vertex(Input(v.position,v.color,v.uv,v.fog,v.eligible,v.specular),
+   mat4x4f(v.clip0,v.clip1,v.clip2,v.clip3),mat4x4f(v.eye0,v.eye1,v.eye2,v.eye3),v.factor,v.primitiveEligible);
+}
 fn argument(value:u32,t:vec4f,v:Output)->vec4f {
  var result=v.color;let source=value&15u;
- if(source==1u){result=t;}else if(source==2u){result=u.factor;}
+ if(source==1u){result=t;}else if(source==2u){result=v.factor;}
  else if(source==3u){result=v.specular;}
  if((value&16u)!=0u){result=1.0-result;}
  if((value&32u)!=0u){result=vec4f(result.a);}return result;
@@ -63,7 +81,7 @@ fn operation(mode:u32,a:vec4f,b:vec4f,t:vec4f,v:Output)->vec4f {
  if(mode==9u){return a-b;}if(mode==10u){return a+b*(1.0-a);}
  if(mode==11u||mode==15u){return b*(1.0-v.color.a)+a*v.color.a;}
  if(mode==12u){return b*(1.0-t.a)+a*t.a;}
- if(mode==13u){return b*(1.0-u.factor.a)+a*u.factor.a;}
+ if(mode==13u){return b*(1.0-v.factor.a)+a*v.factor.a;}
  if(mode==14u){return a+b*(1.0-t.a);}return v.color;
 }
 struct FragmentOut {@location(0) color:vec4f,@builtin(frag_depth) depth:f32};
