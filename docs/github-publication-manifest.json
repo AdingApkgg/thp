@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "cfb81344f4a0be78a8d63dba3ccbca6fd27dbda1",
+  "sourceCommit": "ebba4fe46764cb486e730f74783b39041420955f",
   "files": [
     {
       "path": ".gitignore",
@@ -762,6 +762,11 @@
       "path": "docs/porting/TH14_SHT_WORKER_OCT29.md",
       "bytes": 4384,
       "sha256": "6814365848ec0ff128c8a5618bbbc2697887692d99089d6689f1cf76e2e0366a"
+    },
+    {
+      "path": "docs/porting/TH14_SPAWN_BEAM_STACK_COMPILE_GUARD_NOV02.md",
+      "bytes": 874,
+      "sha256": "751c487c07b7d4f400d5a773f30242b3112887b01a3ec49270d171c44b7a7793"
     },
     {
       "path": "docs/porting/TH14_SPAWN_BEAM_STACK_NOV02.md",
@@ -5989,6 +5994,11 @@
       "sha256": "3579f5168412423cfcf0ed255e61289e779777c834cdf1cdf6d382eaef7df51e"
     },
     {
+      "path": "docs/porting/th14-spawn-beam-stack-compile-guard-nov02.json",
+      "bytes": 1082,
+      "sha256": "4e874814a96c7b1615c9ef53a0492cb8498051fe95dc1b706328b45b3ce659fb"
+    },
+    {
       "path": "docs/porting/th14-spawn-beam-stack-nov02.json",
       "bytes": 231940,
       "sha256": "1617d190691c70486721bc9fc366dd6280a6cb7ab2f09b4431db6c0e2e1f3341"
@@ -8555,8 +8565,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/EnemyAnimations.cpp",
-      "bytes": 23238,
-      "sha256": "0a6e34b13848db04d954a32ae67814a58714b9967fed602bdf3cc7d6fe8a572f"
+      "bytes": 23268,
+      "sha256": "514335c08f45f2ff9ccf955a4a58dcd284dd1a53e576e99cf272d33655c21ec4"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/EnemyAnimations.hpp",
@@ -25360,50 +25370,29 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "cfb81344f4a0be78a8d63dba3ccbca6fd27dbda1",
-    "title": "TH14 constructor beam stack producer",
+    "basePublishedCommit": "ebba4fe46764cb486e730f74783b39041420955f",
+    "title": "Isolate TH14 constructor stack scope at preprocessing",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/AnmInterpreter.cpp",
-      "runtimes/th12/th12_web/cpp/game/AnmManager.hpp",
-      "runtimes/th12/th12_web/cpp/game/AnmVm.hpp",
       "runtimes/th12/th12_web/cpp/game/EnemyAnimations.cpp",
-      "runtimes/th12/th12_web/cpp/game/EnemyAnimations.hpp",
-      "runtimes/th12/th12_web/cpp/game/EnemyManager.cpp",
-      "runtimes/th12/th12_web/cpp/game/NativeStackTh14.hpp",
-      "runtimes/th12/th12_web/cpp/game/ShotCallbacksTh14.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-spawn-beam-stack-fixture-nov02.cpp",
-      "tools/th14-marisaa-beam-writer-context-observer-nov02.py",
-      "tools/th14-spawn-beam-stack-native-v2-nov02.py",
-      "tools/th14-spawn-beam-stack-check-nov02.mjs",
-      "tools/th14-area-shape-verify-nov02.py",
-      "tools/th14-spawn-beam-stack-evidence-nov02.py",
-      "docs/porting/TH14_SPAWN_BEAM_STACK_NOV02.md",
-      "docs/porting/th14-spawn-beam-stack-nov02.json",
-      "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
+      "docs/porting/TH14_SPAWN_BEAM_STACK_COMPILE_GUARD_NOV02.md",
+      "docs/porting/th14-spawn-beam-stack-compile-guard-nov02.json",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
     "productionEngineChanged": true,
-    "productionGameplayCoreChanged": true,
-    "previousProductionCoreCommit": "91a797541a5491d326a8c6e5d593e0890313879e",
+    "productionGameplayCoreChanged": false,
+    "previousProductionCoreCommit": "ebba4fe46764cb486e730f74783b39041420955f",
     "testedCoreWasmSha256": "57256e501cb0e7a850704940eeb030a1e2eab5de696ed79137aeede0a5de2ec6",
-    "sourceFilesChanged": 8,
-    "all141ObjectsRecompiledForNewLayoutInParent": true,
-    "nativeAndCppComponentCases": 1536,
-    "strictAndIndependentFiniteCases": 7,
-    "finiteCallbacks": 37812,
-    "activeAreaAndShotFramesExact": 401,
-    "areaTotalFramesExact": 651,
-    "freshCompleteRegressions": 12,
-    "freshRegressionCallbacks": 1302022,
-    "allTwelveStrictAndIndependentPassed": true,
-    "otherConstructorStackProducersAndNestedDepthsUnproved": true,
-    "currentFullApplicationAccepted": false,
-    "priorCompleteApplicationPairVersionBoundTo91a7975": true,
+    "th14ObjectByteIdentical": true,
+    "sharedSyntaxTitles": [
+      12,
+      13,
+      14,
+      16
+    ],
+    "otherWorksPortProgressClaimed": false,
     "browserAcceptance": false,
-    "nativeNaturalRunModePairs": 30,
-    "nativeAllStageEntryModePairs": 26,
     "completeGame": false,
     "nativeEquivalent": false
   }
