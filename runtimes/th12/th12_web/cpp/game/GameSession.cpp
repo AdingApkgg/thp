@@ -12,6 +12,9 @@ namespace th11 {
 #if PORT_TITLE==14
 GameSession::GameSession(u32 initial_ticks){
     resources.animation_manager=&animations;
+    animations.before_initial_update=[this](const AnmVm&){
+        return !battle||!battle->pending_stage||battle->poll_stage_initialization(stage_load_clock());
+    };
     th14_seed_clock(initial_ticks,animations.script_rng,animations.visual_rng);
     font_bitmap.initialize(animations.script_rng);
 #else

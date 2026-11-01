@@ -18,6 +18,7 @@ public:
     ~AnmManager() override;
 #if PORT_TITLE == 14
     bool prepare_resource(AnmResource&,u16 file_id);
+    std::function<bool(const AnmVm&)> before_initial_update;
     // One reference process context; clearing a scene does not clear its stack.
     NativeStackTh14 th14_native_stack;
 #endif

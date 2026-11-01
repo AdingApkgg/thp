@@ -23,6 +23,19 @@ struct StagedLoader {
   if(!actions.retire_owner()){phase=LoadPhase::Failed;return false;}
   initial_stage=initial;has_sample=false;deadline=0;phase=LoadPhase::WaitCapture;return true;
  }
+ // Initialization may complete while the main thread owns an active VM.
+ // Do not replace ANM resources or create stage owners at that boundary.
+ bool poll_initialization(StageActions& actions,u64 now){
+  if(phase==LoadPhase::Aborted||phase==LoadPhase::Failed)return false;
+  if(phase!=LoadPhase::WaitMinimum)return true;
+  if(has_sample&&now<last_sample){phase=LoadPhase::Failed;return false;}
+  has_sample=true;last_sample=now;
+  if(now<deadline||!actions.worker_wait_ready())return true;
+  // A nested animation creation must observe initialization at most once.
+  phase=LoadPhase::Hud;
+  if(!actions.enter_work_and_initialize()){phase=LoadPhase::Failed;return false;}
+  return true;
+ }
  bool pump(StageActions& actions,u64 now,i32 first_capture_index,u32 supervisor_flags){
   if(phase==LoadPhase::Idle||phase==LoadPhase::Ready)return true;
   if(phase==LoadPhase::Aborted||phase==LoadPhase::Failed)return false;
@@ -40,9 +53,8 @@ struct StagedLoader {
     deadline=now+minimum;phase=LoadPhase::WaitMinimum;
    }
    if(phase==LoadPhase::WaitMinimum){
-    if(now<deadline||!actions.worker_wait_ready())return true;
-    if(!actions.enter_work_and_initialize()){phase=LoadPhase::Failed;return false;}
-    phase=LoadPhase::Hud;
+    if(!poll_initialization(actions,now))return false;
+    if(phase==LoadPhase::WaitMinimum)return true;
    }
    if(phase==LoadPhase::Hud){
     const auto result=actions.prepare_hud();

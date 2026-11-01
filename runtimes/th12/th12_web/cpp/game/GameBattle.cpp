@@ -218,6 +218,13 @@ bool GameBattle::pump_stage_loading(u64 now,i32 first_capture_index,u32 supervis
     }
     return true;
 }
+bool GameBattle::poll_stage_initialization(u64 now){
+    if(!pending_stage)return true;
+    BattleStageActions actions(*this);
+    if(stage_loader.poll_initialization(actions,now))return true;
+    if(error.empty())error="TH14 stage initialization stopped";
+    return false;
+}
 bool GameBattle::retire_stage_owner(){
     // Retail4363ea clears the item pools before retiring the enemy owner.
     // Items must not remain collectible during the incoming worker wait.

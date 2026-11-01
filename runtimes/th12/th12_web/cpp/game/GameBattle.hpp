@@ -150,6 +150,7 @@ public:
     std::function<bool()> next_stage_initializer;
     bool next_stage(GameResources&,u32,std::function<bool()>);
     bool pump_stage_loading(u64 now,i32 first_capture_index,u32 supervisor_flags);
+    bool poll_stage_initialization(u64 now);
     bool retire_stage_owner();
     bool initialize_stage_work();
     prototype::Work prepare_stage_hud();

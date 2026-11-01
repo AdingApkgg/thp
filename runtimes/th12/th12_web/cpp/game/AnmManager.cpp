@@ -180,6 +180,9 @@ AnmVm* AnmManager::create(AnmResource& file,i32 script,u16 file_id,u32 layer,boo
         vm->flags2|=th16_initial_flags2;
         if(th16_initial_flags2){if(initial_rotation)vm->rotation.z=*initial_rotation;if(signed_bits(layer)>=0&&layer<=23)vm->flags2=(vm->flags2&~0x80000u)|0x40000;}
     }
+#if PORT_TITLE == 14
+    if(before_initial_update&&!before_initial_update(*vm)){destroy(*vm);return nullptr;}
+#endif
     ++spawn_depth;const int status=vm->update(*this);--spawn_depth;
     if(status<0){record_failure(*vm);destroy(*vm);return nullptr;}
     auto& node=vm->registry;node.value=vm;node.next=node.previous=nullptr;const u32 list=overlay?1:0;
