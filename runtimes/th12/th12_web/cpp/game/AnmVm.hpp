@@ -162,7 +162,7 @@ struct AnmEnvironment {
     // Effects requiring a manager or renderer are explicit integration points.
     // Returning false aborts the update rather than silently dropping an effect.
 #if PORT_TITLE == 14
-    virtual void th14_vector_interpolated(float)noexcept{}
+    virtual void th14_interpolation_scratch(u32,u32 mask=~u32(0))noexcept{}
 #endif
     virtual AnmVm* spawn(AnmVm&,i32,u32){return nullptr;}
     virtual AnmVm* spawn_effect(AnmVm&,i32){return nullptr;}

@@ -21,9 +21,9 @@ public:
     std::function<bool(const AnmVm&)> before_initial_update;
     // One reference process context; clearing a scene does not clear its stack.
     NativeStackTh14 th14_native_stack;
-    void th14_vector_interpolated(float z)noexcept override{
+    void th14_interpolation_scratch(u32 word,u32 mask=~u32(0))noexcept override{
         if(th14_native_stack.ecl_animation_factory_depth&&th14_native_stack.enemy_spawn_depth==0&&depth()==1)
-            th14_native_stack.ecl_factory_vector(z);
+            th14_native_stack.ecl_factory_interpolation(word,mask);
     }
 #endif
     AnmVm* create(AnmResource& resource,i32 script,u16 file_id,u32 layer,bool overlay=false,bool prepend=false,const Vec3* initial_position=nullptr,const AnmVm* detached_source=nullptr,AnmVm* attached_parent=nullptr,bool th14_playfield_layer=false,const float* initial_rotation=nullptr,u32 th16_initial_flags2=0);

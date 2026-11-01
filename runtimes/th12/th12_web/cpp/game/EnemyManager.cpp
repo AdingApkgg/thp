@@ -156,7 +156,7 @@ bool EnemyManager::update(){
 #if PORT_TITLE == 14
     // Other native calls can overwrite the constructor's stack between
     // manager passes. Only the proved current-pass producer is known here.
-    if(commands.animations)commands.animations->native_stack().spawn_scratch_known=false;
+    if(commands.animations){auto& stack=commands.animations->native_stack();stack.spawn_scratch_known=false;stack.spawn_scratch_mask=0;}
 #endif
     for(auto* node=first;node;){auto* next=node->next;auto& enemy=*node->value;auto& entry=*entries.at(&enemy);
         const i32 result=enemy.state.flags&((kPortTitle==14||kPortTitle==16)?0x2000000:0x200000)?1:enemy_frame(entry.script,world);

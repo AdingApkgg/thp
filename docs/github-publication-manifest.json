@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "ff1938f1ec144363ab0a2a8615465477fa283eca",
+  "sourceCommit": "7cb608f1e3577f173fbe91a8c096578589f1a067",
   "files": [
     {
       "path": ".gitignore",
@@ -354,6 +354,11 @@
       "sha256": "758bc3da9e7c306a333c8540201787a1f4e108d61e3b86be4e5d2cf7d59759b4"
     },
     {
+      "path": "docs/porting/TH14_INTERPOLATOR_STACK_NOV02.md",
+      "bytes": 3569,
+      "sha256": "d3674e29af5691d4e9a7380294587ffd7d28547a352b337066d9682684363db9"
+    },
+    {
       "path": "docs/porting/TH14_JS_WEBGPU_OCT26.md",
       "bytes": 5931,
       "sha256": "4cc2bdcf3943b1ead8faefbb731280cc92aa42ad7b5cf370327edfe711436ee0"
@@ -635,8 +640,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 68936,
-      "sha256": "5122f735834337132aec2330b43545383a106e615f3547abdc1d9488d1867229"
+      "bytes": 69556,
+      "sha256": "3895efab8cf4d1bb75612e1df92304a17fa18e9d057cf88c3262066a1efb8f30"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -3207,6 +3212,11 @@
       "path": "docs/porting/th14-instanced-webgpu-full-oct30.json",
       "bytes": 72478,
       "sha256": "91f9f6ee2572ef2b5a57598cb2f933681039e552d86431b5942d65a165dc25b2"
+    },
+    {
+      "path": "docs/porting/th14-interpolator-stack-nov02.json",
+      "bytes": 193975,
+      "sha256": "4b9d1176edd2860435b116a1125a13985d8e323a7a0822afc8d88b039140e20d"
     },
     {
       "path": "docs/porting/th14-item-drop-verified.json",
@@ -8285,8 +8295,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmInterpreter.cpp",
-      "bytes": 38186,
-      "sha256": "e3b56a316aeeeea3db37ad711b01fdd161e041c1e4b1ede3c3897f4c35b63319"
+      "bytes": 39830,
+      "sha256": "ca454697ac0cf62f0ef4ad08e4ac91e3c81d904bcb35ec6466c05c1b6f7b80fd"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmManager.cpp",
@@ -8295,8 +8305,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmManager.hpp",
-      "bytes": 6591,
-      "sha256": "29ec3a537dbdebaed95e6b67e65103a999c279bb0fe481396faecda96b558195"
+      "bytes": 6626,
+      "sha256": "5036df538441cd6f8391550d93f6cfe27a2e6e2d0879e7705de63c1d2c270bba"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmOpcodes.hpp",
@@ -8350,8 +8360,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmVm.hpp",
-      "bytes": 9027,
-      "sha256": "fada027bffe39cf816fefd5849ad975e5e862cd9248974670ca81d5b32f193ed"
+      "bytes": 9044,
+      "sha256": "23b0ecb775ac37057f72bf88f3ba80a40712f87cebbc0acbade911e0ce288001"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Archive.cpp",
@@ -8645,8 +8655,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/EnemyManager.cpp",
-      "bytes": 28856,
-      "sha256": "d81c9031bf10ae6a9526319431c50b255467a5e62cc63a907a6b58e5b5c3c804"
+      "bytes": 28903,
+      "sha256": "e2a1b2d443b8e3827750dd03d3688c81bc1d28cade08293f9798e7470f5b7929"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/EnemyManager.hpp",
@@ -9070,8 +9080,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/NativeStackTh14.hpp",
-      "bytes": 4088,
-      "sha256": "54d5ed12195f3a45254afaedf6f42adb3ca04e477adaea7a0ccfbcfd922d1200"
+      "bytes": 4271,
+      "sha256": "d0b9d6250eed881f5d2294ddca02b080d2370551e268aa3011b03f56f6fae3d8"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/NoopOpcodes.hpp",
@@ -12667,6 +12677,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-initialization-clock-fixture-nov01.cpp",
       "bytes": 1069,
       "sha256": "73643f5535932066dd3a2e02afc36a2ff71852f7d4e30a635835c8dfb8e8c6a4"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-interpolator-stack-fixture-nov02.cpp",
+      "bytes": 4434,
+      "sha256": "b51270231928258d2a1b8446e8e2179c94dfba1cb0a57f3e96b7d5acb9f91ab0"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-item-drop-fixture.cpp",
@@ -19279,6 +19294,21 @@
       "sha256": "089eaeaf62d086babcd45c9f66ddcac7b92b748d52b45718179c96ef9833dcaa"
     },
     {
+      "path": "tools/th14-interpolator-stack-check-nov02.mjs",
+      "bytes": 5240,
+      "sha256": "b2b89c394bb324cc3fe4e16031e15dbc0700ab9183f7d3af28f8b7d5c29d8300"
+    },
+    {
+      "path": "tools/th14-interpolator-stack-evidence-nov02.py",
+      "bytes": 9633,
+      "sha256": "a8ac143ee6b94e8d9c0ac48ba54e10db54340c2150944d8119017e1fb9a614fc"
+    },
+    {
+      "path": "tools/th14-interpolator-stack-native-nov02.py",
+      "bytes": 7521,
+      "sha256": "e56dcf53a41616ad4d34f3f3222a7c97a452710cc17104ca21bf36f30ff2dfda"
+    },
+    {
       "path": "tools/th14-item-check.mjs",
       "bytes": 7502,
       "sha256": "57d85d692158dccead83388c75c1c103fbd582df077ab855f9254c0e15535704"
@@ -24259,6 +24289,11 @@
       "sha256": "91b6836871a61da2d45c4c8c8da1b8f6bbd865bbcf1d1f301f67da2dc9e97a07"
     },
     {
+      "path": "tools/th14-x87-control-observer-nov02.py",
+      "bytes": 58656,
+      "sha256": "03b9867a643296d358e901aac5c8d19fd6b0c42e9691ef6767e4d107cc66baea"
+    },
+    {
       "path": "tools/th16-anm-basic-check.mjs",
       "bytes": 6067,
       "sha256": "54101afa4049f8f56b0999071c66dff1727079aa7b9d78b93b85b9345be00fd9"
@@ -25410,33 +25445,40 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "ff1938f1ec144363ab0a2a8615465477fa283eca",
-    "title": "TH14 spawn-core actual GLES and WebGPU full Application and new Lunatic sample",
+    "basePublishedCommit": "7cb608f1e3577f173fbe91a8c096578589f1a067",
+    "title": "TH14 RGB and partial x87 interpolation stack writes and original interpolation order",
     "changedSourceAndMetadataFiles": [
-      "docs/porting/TH14_SPAWN_APPLICATION_FULL_NOV02.md",
-      "docs/porting/th14-spawn-application-full-nov02.json",
-      "docs/porting/th14-spawn-marisab-lunatic-natural-nov02.json",
+      "runtimes/th12/th12_web/cpp/game/AnmInterpreter.cpp",
+      "runtimes/th12/th12_web/cpp/game/AnmManager.hpp",
+      "runtimes/th12/th12_web/cpp/game/AnmVm.hpp",
+      "runtimes/th12/th12_web/cpp/game/EnemyManager.cpp",
+      "runtimes/th12/th12_web/cpp/game/NativeStackTh14.hpp",
+      "tools/th14-interpolator-stack-native-nov02.py",
+      "tools/th14-interpolator-stack-check-nov02.mjs",
+      "tools/th14-interpolator-stack-evidence-nov02.py",
+      "tools/th14-x87-control-observer-nov02.py",
+      "runtimes/th12/th12_web/tests/cpp/th14-interpolator-stack-fixture-nov02.cpp",
+      "docs/porting/TH14_INTERPOLATOR_STACK_NOV02.md",
+      "docs/porting/th14-interpolator-stack-nov02.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "productionEngineChanged": false,
-    "productionGameplayCoreChanged": false,
+    "productionEngineChanged": true,
     "previousProductionCoreCommit": "ebba4fe46764cb486e730f74783b39041420955f",
-    "actualFramesPerBackend": 122622,
-    "assertionsPerBackend": 45,
-    "bothActuallyExecutedAndIndependentlyPassed": true,
-    "marisabLunaticNaturalCallbacks": 67860,
-    "marisabLunaticStagesActuallyObserved": [
-      1,
-      2,
-      3,
-      4
-    ],
-    "marisabLunaticVm303Rows": 6908,
-    "marisabLunaticCombatCheckpoints": 631,
-    "marisabLunaticStrictAndIndependentPassed": true,
+    "newCoreWasmSha256": "1de2cbb429832670d52fde4b398137a66b59a54212426599d13aba957f56eeef",
+    "newComponentCases": 9216,
+    "priorVectorCases": 1536,
+    "baselineSingleFailures": 320,
+    "finalSingleFailures": 0,
+    "priorOrderFailures": 216,
+    "finalOrderFailures": 0,
+    "currentNaturalSamples": 14,
+    "currentNaturalCallbacks": 1451340,
+    "currentStrictAndIndependentPassed": true,
+    "actualOriginalFnstcwSamples": 16,
+    "currentCompleteBackendPairAccepted": false,
     "naturalModePairs": 30,
     "allTargetStageEntryModePairs": 26,
     "browserAcceptance": false,

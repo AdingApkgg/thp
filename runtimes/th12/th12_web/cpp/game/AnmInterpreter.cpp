@@ -10,7 +10,32 @@ Vec3 sample_vector_stack(Vec3Interpolator& interpolation,AnmEnvironment& env){
 #if PORT_TITLE == 14
     // Terminal copies skip the temporary. Acceleration's final tangent
     // update overwrites its earlier position value at 409d9d.
-    if(interpolation.duration)env.th14_vector_interpolated(interpolation.mode==InterpolationMode::Acceleration?interpolation.final_tangent[2]:value.z);
+    if(interpolation.duration){const float z=interpolation.mode==InterpolationMode::Acceleration?interpolation.final_tangent[2]:value.z;u32 word;std::memcpy(&word,&z,4);env.th14_interpolation_scratch(word);}
+#endif
+    return value;
+}
+Rgb sample_rgb_stack(RgbInterpolator& interpolation,AnmEnvironment& env){
+    const i32 previous_green=interpolation.start[1];
+    const auto value=sample(interpolation,&env.rate);
+#if PORT_TITLE == 14
+    // 473ef9 stores the previous green component for velocity; 473f47
+    // stores its updated value for acceleration. Terminal copies skip both.
+    if(interpolation.duration){
+        if(interpolation.mode==InterpolationMode::Velocity)env.th14_interpolation_scratch(u32(previous_green));
+        else if(interpolation.mode==InterpolationMode::Acceleration)env.th14_interpolation_scratch(u32(interpolation.start[1]));
+    }
+#endif
+    return value;
+}
+Vec2 sample_vec2_stack(Vec2Interpolator& interpolation,AnmEnvironment& env){
+    const auto value=sample(interpolation,&env.rate);
+#if PORT_TITLE == 14
+    // 474750 -> 4041a0 -> 4a8020 stores the x87 control word at 4a8038.
+    // Only two bytes overlap the retained constructor temporary. Device PC24
+    // and floating-RNG FNINIT PC64 are already tracked by the ANM environment.
+    const i32 mode=i32(interpolation.mode);
+    if(interpolation.duration&&mode>=18&&mode<=21)
+        env.th14_interpolation_scratch(env.texture_high_precision?0x037fu:0x007fu,0xffffu);
 #endif
     return value;
 }
@@ -75,17 +100,21 @@ bool animate(AnmVm& vm,AnmEnvironment& env){
     if((kPortTitle==13||kPortTitle==14)?(vm.th13_native_flags&0x8000):(vm.flags&0x2000)){vm.position.x=float(double(vm.position.x)+env.camera_delta.x);vm.position.y=float(double(vm.position.y)+env.camera_delta.y);vm.position.z=float(double(vm.position.z)+env.camera_delta.z);}
     if(vm.flags2&(kPortTitle==13?0x2000:kPortTitle==14?0x1000:4))if(!env.screen_uv(vm))return false;
     if(vm.position_interpolation.duration)(vm.flags&0x100?vm.child_position:vm.script_position)=sample_vector_stack(vm.position_interpolation,env);
-    if(vm.color_interpolation.duration)vm.color=(vm.color&0xff000000)|rgb_bits(sample(vm.color_interpolation,&env.rate));
+    if(vm.color_interpolation.duration)vm.color=(vm.color&0xff000000)|rgb_bits(sample_rgb_stack(vm.color_interpolation,env));
     if(vm.alpha_interpolation.duration)vm.color=(vm.color&0xffffff)|(u32(sample(vm.alpha_interpolation,&env.rate))<<24);
-    if(vm.scale_interpolation.duration){vm.scale=sample(vm.scale_interpolation,&env.rate);vm.flags|=8;}
+    if(vm.scale_interpolation.duration){vm.scale=sample_vec2_stack(vm.scale_interpolation,env);vm.flags|=8;}
+#if PORT_TITLE == 14
+    if(vm.extra_scale_interpolation.duration){vm.extra_scale=sample_vec2_stack(vm.extra_scale_interpolation,env);vm.flags|=8;}
+    if(vm.texture_scale_interpolation.duration){vm.texture_scale=sample_vec2_stack(vm.texture_scale_interpolation,env);vm.th13_native_flags|=0x10;}
+#endif
     if(vm.rotation_interpolation.duration){vm.rotation=sample_vector_stack(vm.rotation_interpolation,env);vm.flags|=4;}
-    if(vm.color2_interpolation.duration)vm.secondary_color=(vm.secondary_color&0xff000000)|rgb_bits(sample(vm.color2_interpolation,&env.rate));
+    if(vm.color2_interpolation.duration)vm.secondary_color=(vm.secondary_color&0xff000000)|rgb_bits(sample_rgb_stack(vm.color2_interpolation,env));
     if(vm.alpha2_interpolation.duration)vm.secondary_color=(vm.secondary_color&0xffffff)|(u32(sample(vm.alpha2_interpolation,&env.rate))<<24);
     if(vm.scroll_x_interpolation.duration)vm.scroll_velocity.x=sample(vm.scroll_x_interpolation,&env.rate);
     if(vm.scroll_y_interpolation.duration)vm.scroll_velocity.y=sample(vm.scroll_y_interpolation,&env.rate);
-#if PORT_TITLE == 13 || PORT_TITLE == 14
-    if(vm.extra_scale_interpolation.duration){vm.extra_scale=sample(vm.extra_scale_interpolation,&env.rate);vm.flags|=8;}
-    if(vm.texture_scale_interpolation.duration){vm.texture_scale=sample(vm.texture_scale_interpolation,&env.rate);vm.th13_native_flags|=0x10;}
+#if PORT_TITLE == 13
+    if(vm.extra_scale_interpolation.duration){vm.extra_scale=sample_vec2_stack(vm.extra_scale_interpolation,env);vm.flags|=8;}
+    if(vm.texture_scale_interpolation.duration){vm.texture_scale=sample_vec2_stack(vm.texture_scale_interpolation,env);vm.th13_native_flags|=0x10;}
 #endif
     const u32 mode=vm.drawing_mode();if((mode==9||mode==13||((kPortTitle==13||kPortTitle==14)&&mode==14)||(kPortTitle==14&&(mode==23||mode==24)))&&!env.update_geometry(vm))return false;
     return true;

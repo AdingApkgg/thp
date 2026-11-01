@@ -13,7 +13,7 @@ struct NativeStackTh14 {
     Word controller_scratch=0;bool controller_scratch_known=true;
     // 425793 -> 42df70 -> 473af0 -> 409bd0 leaves its vector Z at the
     // stack word later read by a constructor's first-frame 45286f call.
-    Word spawn_scratch=0,enemy_spawn_depth=0,ecl_animation_factory_depth=0;
+    Word spawn_scratch=0,spawn_scratch_mask=0,enemy_spawn_depth=0,ecl_animation_factory_depth=0;
     bool spawn_scratch_known=false;
     struct CounterScope {
         Word* counter;
@@ -22,11 +22,14 @@ struct NativeStackTh14 {
         CounterScope(const CounterScope&)=delete;
         CounterScope& operator=(const CounterScope&)=delete;
     };
-    void ecl_factory_vector(float z)noexcept{std::memcpy(&spawn_scratch,&z,4);spawn_scratch_known=true;}
-    Word beam_fallback_scratch()const noexcept{return enemy_spawn_depth==1&&spawn_scratch_known?spawn_scratch:scratch;}
+    void ecl_factory_interpolation(Word value,Word mask)noexcept{
+        spawn_scratch=(spawn_scratch&~mask)|(value&mask);spawn_scratch_mask|=mask;
+        spawn_scratch_known=spawn_scratch_mask==~Word(0);
+    }
+    Word beam_fallback_scratch()const noexcept{return enemy_spawn_depth==1?((spawn_scratch&spawn_scratch_mask)|(scratch&~spawn_scratch_mask)):scratch;}
     static bool preinitialized_cookie(Word value)noexcept{return value!=0xbb40e64eu&&(value&0xffff0000u);}
     void configure(Word opaque_cookie,Word geometry_frame=reference_geometry_frame)noexcept{
-        cookie=opaque_cookie;frame=geometry_frame;scratch=0;damage_scratch=0;controller_scratch=0;controller_scratch_known=true;spawn_scratch=0;enemy_spawn_depth=ecl_animation_factory_depth=0;spawn_scratch_known=false;
+        cookie=opaque_cookie;frame=geometry_frame;scratch=0;damage_scratch=0;controller_scratch=0;controller_scratch_known=true;spawn_scratch=spawn_scratch_mask=0;enemy_spawn_depth=ecl_animation_factory_depth=0;spawn_scratch_known=false;
     }
     // Reference collector entry alignment4: its C-28 word is reused by
     // 414020's two-dimensional polar temporary. Calls and math write it.
