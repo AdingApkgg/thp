@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "aee4fc1c9be1fe5318caf1d6d152339370599fe9",
+  "sourceCommit": "93ee3a3ba064c447b9ef2f1452c6a5dbf4fbab96",
   "files": [
     {
       "path": ".gitignore",
@@ -207,6 +207,11 @@
       "path": "docs/porting/TH14_CURRENT_GPU_BASELINE_OCT25.md",
       "bytes": 2159,
       "sha256": "957d81a1afdcf7f8282e27cb7f85265335cebbc4856ee1518b4c6efbc8db3aad"
+    },
+    {
+      "path": "docs/porting/TH14_CURRENT_NATIVE_DEMO_NOV01.md",
+      "bytes": 2874,
+      "sha256": "20bea023c5d358d77e021efd28b4232a6b7ffb65d18aee100c8ec4eba8a90437"
     },
     {
       "path": "docs/porting/TH14_CURRENT_QUEUE_FULL_PLAYBACKS_OCT15.md",
@@ -555,8 +560,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 54440,
-      "sha256": "6720bc5e9d02aefdd8de24967888ff1e23647db775281e08579cb479356c30f5"
+      "bytes": 55097,
+      "sha256": "6ae234410aaee70015bc937e66fd48eb8c54f8e6b7d54a9486ca973fc4707b02"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -2137,6 +2142,11 @@
       "path": "docs/porting/th14-current-gpu-baseline-observed-oct25.json",
       "bytes": 31672,
       "sha256": "c3033bec02f9bbcb33504b7626af1b74ac7f3b865207d99e46ab673a30fed7f1"
+    },
+    {
+      "path": "docs/porting/th14-current-native-demo-nov01.json",
+      "bytes": 37409,
+      "sha256": "d54f8602d3fa4762e0a0a607b623709e795719b03a933e120d6936b46694d6ef"
     },
     {
       "path": "docs/porting/th14-current-normal-regression-oct30.json",
@@ -16719,6 +16729,11 @@
       "sha256": "824cc4f75cdf12a705dfd017d5f14a7973f6c3cbcdafac622678616f9bf1b1b6"
     },
     {
+      "path": "tools/th14-current-native-demo-evidence-nov01.py",
+      "bytes": 5380,
+      "sha256": "920fd9e4628e423702de35aaa4fd039dc0ac055f055c9c0577e4c0f7f83a376e"
+    },
+    {
       "path": "tools/th14-current-normal-regression-evidence-oct30.py",
       "bytes": 5455,
       "sha256": "d073ee09ad0d695ae67c6af50e83bad2b826e7615086f72cb0a8ea240d03fad4"
@@ -24930,17 +24945,12 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "aee4fc1c9be1fe5318caf1d6d152339370599fe9",
-    "title": "TH14 strict stage4 prefix without extra VM clock and multiple-observation fixture",
+    "basePublishedCommit": "93ee3a3ba064c447b9ef2f1452c6a5dbf4fbab96",
+    "title": "TH14 current production Application versus actual original full frame",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/tests/cpp/th14-passive-vm-clocks-fixture-nov01.cpp",
-      "tools/th14-passive-stage4-window-evidence-nov01.py",
-      "tools/th14-passive-stage4-evidence-nov01.py",
-      "tools/th14-passive-vm-clocks-build-nov01.py",
-      "tools/th14-passive-multiclock-evidence-nov01.py",
-      "docs/porting/th14-passive-stage4-nov01.json",
-      "docs/porting/th14-passive-multiclock-nov01.json",
-      "docs/porting/TH14_PASSIVE_STAGE4_NOV01.md",
+      "tools/th14-current-native-demo-evidence-nov01.py",
+      "docs/porting/TH14_CURRENT_NATIVE_DEMO_NOV01.md",
+      "docs/porting/th14-current-native-demo-nov01.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
@@ -24950,23 +24960,22 @@
     "productionGameplayCoreChanged": false,
     "productionLauncherChanged": false,
     "productionCoreCommit": "57a544191704e0ce64cd46de85fe648a3e152097",
-    "nativePrefixCallbacks": 60000,
-    "nativeCallEdges": 6048,
-    "nativeCallPairs": 3024,
-    "pendingCallEntriesDrained": 2,
-    "noExtraVmBoundaryClock": true,
-    "normalRegistryEntryTimeProjected": false,
-    "combatCheckpoints": 555,
-    "combatFieldDifferences": 0,
-    "vmRows": 677,
+    "actualApplicationFramesPerBackend": 2270,
+    "assertionsPerBackend": 7,
+    "originalPresent": 2278,
+    "originalStage": 3,
+    "originalControllerFrame": 241,
+    "fullBgraBytesPerBackend": 1228800,
+    "pixelDifferences": 0,
+    "vmRows": 334,
     "vmFields": 303,
-    "multiclockActualRuns": 2,
-    "multiclockCallbacksPerRun": 48000,
-    "multiclockDistinctStageRestores": 1,
-    "ordinaryNativeUiLaunchTimedOut": true,
+    "bothRngEqual": true,
+    "rawHandleAndRegistryOrderExact": true,
+    "currentInstancedWebgpuAndGlesRetested": true,
+    "externalObservedResourceAvailabilityDeclared": true,
+    "independentLoadingAccepted": false,
+    "wholeOriginalPixelsOrPcmAccepted": false,
     "ordinaryNativeMenuAccepted": false,
-    "old80324FailureClosed": false,
-    "independentThreadSchedulingAccepted": false,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
     "completeGame": false,
