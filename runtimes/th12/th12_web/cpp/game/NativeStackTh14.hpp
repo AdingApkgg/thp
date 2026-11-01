@@ -11,9 +11,22 @@ struct NativeStackTh14 {
     // supplies an independent process nonce before the first game callback.
     Word cookie=0xbb40e64fu,frame=reference_geometry_frame,scratch=0,damage_scratch=0;
     Word controller_scratch=0;bool controller_scratch_known=true;
+    // 425793 -> 42df70 -> 473af0 -> 409bd0 leaves its vector Z at the
+    // stack word later read by a constructor's first-frame 45286f call.
+    Word spawn_scratch=0,enemy_spawn_depth=0,ecl_animation_factory_depth=0;
+    bool spawn_scratch_known=false;
+    struct CounterScope {
+        Word* counter;
+        explicit CounterScope(Word* value)noexcept:counter(value){if(counter)++*counter;}
+        ~CounterScope(){if(counter)--*counter;}
+        CounterScope(const CounterScope&)=delete;
+        CounterScope& operator=(const CounterScope&)=delete;
+    };
+    void ecl_factory_vector(float z)noexcept{std::memcpy(&spawn_scratch,&z,4);spawn_scratch_known=true;}
+    Word beam_fallback_scratch()const noexcept{return enemy_spawn_depth==1&&spawn_scratch_known?spawn_scratch:scratch;}
     static bool preinitialized_cookie(Word value)noexcept{return value!=0xbb40e64eu&&(value&0xffff0000u);}
     void configure(Word opaque_cookie,Word geometry_frame=reference_geometry_frame)noexcept{
-        cookie=opaque_cookie;frame=geometry_frame;scratch=0;damage_scratch=0;controller_scratch=0;controller_scratch_known=true;
+        cookie=opaque_cookie;frame=geometry_frame;scratch=0;damage_scratch=0;controller_scratch=0;controller_scratch_known=true;spawn_scratch=0;enemy_spawn_depth=ecl_animation_factory_depth=0;spawn_scratch_known=false;
     }
     // Reference collector entry alignment4: its C-28 word is reused by
     // 414020's two-dimensional polar temporary. Calls and math write it.

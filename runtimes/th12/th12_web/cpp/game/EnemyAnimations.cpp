@@ -287,6 +287,7 @@ i32 EnemyAnimations::command(EnemyState& e,EclContext& c,EnemyGlobals& g){
             // zero the origin, execute the first ANM update, prepend normally.
             const i32 script=op==307?i(1):0,file=i(0),bound_script=op==307?script:i(1);
             if(u32(file)>=resources.size()||!resources[file].file)return -2;
+            NativeStackTh14::CounterScope factory_scope(op==308?&manager.th14_native_stack.ecl_animation_factory_depth:nullptr);
             return manager.create(*resources[file].file,bound_script,resources[file].id,u32(-1),false,true,op==307?&e.current.position:nullptr)?0:-2;
         }
         if(op==303||op==306||op==313||op==316){

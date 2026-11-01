@@ -5,6 +5,15 @@
 #include <cmath>
 namespace th11 {
 namespace {
+Vec3 sample_vector_stack(Vec3Interpolator& interpolation,AnmEnvironment& env){
+    const auto value=sample(interpolation,&env.rate);
+#if PORT_TITLE == 14
+    // Terminal copies skip the temporary. Acceleration's final tangent
+    // update overwrites its earlier position value at 409d9d.
+    if(interpolation.duration)env.th14_vector_interpolated(interpolation.mode==InterpolationMode::Acceleration?interpolation.final_tangent[2]:value.z);
+#endif
+    return value;
+}
 float add_angle(float a,float b){
     float value=float(double(a)+b);u32 loops=0;
     constexpr double pi=3.1415927410125732421875,tau=6.283185482025146484375;
@@ -65,11 +74,11 @@ bool animate(AnmVm& vm,AnmEnvironment& env){
     }
     if((kPortTitle==13||kPortTitle==14)?(vm.th13_native_flags&0x8000):(vm.flags&0x2000)){vm.position.x=float(double(vm.position.x)+env.camera_delta.x);vm.position.y=float(double(vm.position.y)+env.camera_delta.y);vm.position.z=float(double(vm.position.z)+env.camera_delta.z);}
     if(vm.flags2&(kPortTitle==13?0x2000:kPortTitle==14?0x1000:4))if(!env.screen_uv(vm))return false;
-    if(vm.position_interpolation.duration)(vm.flags&0x100?vm.child_position:vm.script_position)=sample(vm.position_interpolation,&env.rate);
+    if(vm.position_interpolation.duration)(vm.flags&0x100?vm.child_position:vm.script_position)=sample_vector_stack(vm.position_interpolation,env);
     if(vm.color_interpolation.duration)vm.color=(vm.color&0xff000000)|rgb_bits(sample(vm.color_interpolation,&env.rate));
     if(vm.alpha_interpolation.duration)vm.color=(vm.color&0xffffff)|(u32(sample(vm.alpha_interpolation,&env.rate))<<24);
     if(vm.scale_interpolation.duration){vm.scale=sample(vm.scale_interpolation,&env.rate);vm.flags|=8;}
-    if(vm.rotation_interpolation.duration){vm.rotation=sample(vm.rotation_interpolation,&env.rate);vm.flags|=4;}
+    if(vm.rotation_interpolation.duration){vm.rotation=sample_vector_stack(vm.rotation_interpolation,env);vm.flags|=4;}
     if(vm.color2_interpolation.duration)vm.secondary_color=(vm.secondary_color&0xff000000)|rgb_bits(sample(vm.color2_interpolation,&env.rate));
     if(vm.alpha2_interpolation.duration)vm.secondary_color=(vm.secondary_color&0xffffff)|(u32(sample(vm.alpha2_interpolation,&env.rate))<<24);
     if(vm.scroll_x_interpolation.duration)vm.scroll_velocity.x=sample(vm.scroll_x_interpolation,&env.rate);

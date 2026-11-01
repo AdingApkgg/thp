@@ -161,6 +161,9 @@ struct AnmEnvironment {
     Rng& random(const AnmVm& vm) noexcept {return vm.flags&0x40000000?visual_rng:script_rng;}
     // Effects requiring a manager or renderer are explicit integration points.
     // Returning false aborts the update rather than silently dropping an effect.
+#if PORT_TITLE == 14
+    virtual void th14_vector_interpolated(float)noexcept{}
+#endif
     virtual AnmVm* spawn(AnmVm&,i32,u32){return nullptr;}
     virtual AnmVm* spawn_effect(AnmVm&,i32){return nullptr;}
     virtual AnmVm* find(u32) noexcept{return nullptr;}

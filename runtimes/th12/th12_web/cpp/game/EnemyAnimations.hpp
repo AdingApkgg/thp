@@ -14,6 +14,9 @@ public:
     bool (*th16_register_effect)(void*,u32)=nullptr;
 #endif
     i32 command(EnemyState&,EclContext&,EnemyGlobals&);
+#if PORT_TITLE == 14
+    NativeStackTh14& native_stack()noexcept{return manager.th14_native_stack;}
+#endif
     void visible(u32 id,bool value);
     void interrupt(u32 id,i16 value);
     // TH14 47f1b0 also executes each VM immediately, without unregistering it.

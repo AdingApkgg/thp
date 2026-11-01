@@ -53,7 +53,13 @@ Enemy* EnemyManager::spawn(const char* name,const EnemySpawn& parameters){
     // wave waiting for id 0 to disappear could never see it go.
     // The native constructor executes the first frame before joining the list.
     // Child spawns therefore appear before their parent, and inherit RNG order.
-    ++spawn_depth;const i32 result=enemy_frame(entry->script,world);--spawn_depth;
+    ++spawn_depth;const i32 result=[&](){
+#if PORT_TITLE == 14
+        auto* stack=commands.animations?&commands.animations->native_stack():nullptr;
+        NativeStackTh14::CounterScope constructor_scope(stack?&stack->enemy_spawn_depth:nullptr);
+#endif
+        return enemy_frame(entry->script,world);
+    }();--spawn_depth;
     if constexpr(kPortTitle!=14&&kPortTitle!=16)e.instance_id=i32(total_created);
     if(result==-2||last_error){
 #if PORT_TITLE == 16
@@ -147,6 +153,11 @@ bool EnemyManager::initialize_empty(EclProgram& next){
 #endif
 bool EnemyManager::update(){
     if(last_error)return false;
+#if PORT_TITLE == 14
+    // Other native calls can overwrite the constructor's stack between
+    // manager passes. Only the proved current-pass producer is known here.
+    if(commands.animations)commands.animations->native_stack().spawn_scratch_known=false;
+#endif
     for(auto* node=first;node;){auto* next=node->next;auto& enemy=*node->value;auto& entry=*entries.at(&enemy);
         const i32 result=enemy.state.flags&((kPortTitle==14||kPortTitle==16)?0x2000000:0x200000)?1:enemy_frame(entry.script,world);
         if(result==-2||last_error){
