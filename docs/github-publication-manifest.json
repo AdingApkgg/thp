@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "b13d4b533100f7133f194550bea7eeb97bd4ff9f",
+  "sourceCommit": "91a797541a5491d326a8c6e5d593e0890313879e",
   "files": [
     {
       "path": ".gitignore",
@@ -429,6 +429,11 @@
       "sha256": "cd1355d88a4cc9ee1a4ab1d83437a98de8a9cf78410290f08a199a8b0aca3b5b"
     },
     {
+      "path": "docs/porting/TH14_MARISAB_NORMAL_SIX_STAGE_NOV02.md",
+      "bytes": 2749,
+      "sha256": "8ba7fd6e57dc5e9e0002c60d42202bc95416c5c23fc67b7e78d49364fb1a9897"
+    },
+    {
       "path": "docs/porting/TH14_MARISA_LASER_INVESTIGATION_OCT19.md",
       "bytes": 3977,
       "sha256": "405c18601fe53731da3a9bf513216921ad7f4585107c054d84e690504f762475"
@@ -450,8 +455,8 @@
     },
     {
       "path": "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
-      "bytes": 3392,
-      "sha256": "2d96d1b0bc8a6a1c992f6f2a75d0c477962ff976c13d0965ec01bcfe5a6f2d71"
+      "bytes": 3886,
+      "sha256": "bf0c5d03c01e738322d903b42a32b3bc5a389ea73d14135ba98a171d88dde66f"
     },
     {
       "path": "docs/porting/TH14_MSG_HUD_ORDER_OCT24.md",
@@ -625,8 +630,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 65349,
-      "sha256": "62fa8b6785c0b65d80dad3b5602f2b3211359517787060a5b777e7532e1bf362"
+      "bytes": 66143,
+      "sha256": "ad8d7616e54b9d8c962b9329381bd98466a59db20c57d4dc90475e97da3482cd"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -4074,6 +4079,11 @@
       "sha256": "8569ea09f66504929a7acc604eb265db3bea291ee29deeb18bde7faa2e25117a"
     },
     {
+      "path": "docs/porting/th14-marisab-normal-six-stage-nov02.json",
+      "bytes": 75568,
+      "sha256": "8c1ccba9788c8c6947b8284eefc74a4b83bf613f25b656be0a4e628fbd47c9da"
+    },
+    {
       "path": "docs/porting/th14-math-verified.json",
       "bytes": 1679,
       "sha256": "c9f3db2a4febd3d7720fddc12df6e63aeeb78b2684c6eb29b6823431c496ad85"
@@ -4090,8 +4100,8 @@
     },
     {
       "path": "docs/porting/th14-mode-acceptance-inventory-oct25.json",
-      "bytes": 196075,
-      "sha256": "381c6179fc712352996e21d32d027231f20604a6084e485b377f42c4ee865046"
+      "bytes": 200836,
+      "sha256": "b9dddc7d16ae3b0cd0c594a709f7bd3f0941f5c1eecec091a4a634601f713e19"
     },
     {
       "path": "docs/porting/th14-msg-hud-order-verified-oct24.json",
@@ -18089,6 +18099,16 @@
       "sha256": "d04ed6cd1bd7584ae0ee9edc03a46375441efcc82ed7a2f8188bee663ec18483"
     },
     {
+      "path": "tools/th14-expand-mode-inventory-nov02.py",
+      "bytes": 5854,
+      "sha256": "96abbe5fc49855d7023251652a848144b263936d1de241476a9b3c6505c78cba"
+    },
+    {
+      "path": "tools/th14-expanded-six-stage-evidence-nov02.py",
+      "bytes": 8603,
+      "sha256": "8e679311a8bbd19bb0721ec1b2b477da9cb9efefd95abafa055741ce4eb5f2d9"
+    },
+    {
       "path": "tools/th14-extra-late-combat-raw-trace-check.mjs",
       "bytes": 9785,
       "sha256": "5a33109e92ad0b248c010773a837f2ca2683b3f3caaea58e01e130223c2217fa"
@@ -19912,6 +19932,11 @@
       "path": "tools/th14-native-session-capture.py",
       "bytes": 31982,
       "sha256": "87bf9cabb347cc926b36576c8ad8da4bfccbd2fbbf5a142e26a69bee9482be6c"
+    },
+    {
+      "path": "tools/th14-native-silent-levels-nov02.py",
+      "bytes": 4097,
+      "sha256": "510b8cc3eb22b14dc32da1f6e6705697027d5571a4c58f1a2453f6740779013d"
     },
     {
       "path": "tools/th14-native-stage-fog32.py",
@@ -25280,46 +25305,41 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "b13d4b533100f7133f194550bea7eeb97bd4ff9f",
-    "title": "TH14 option recall once at actual stage completion",
+    "basePublishedCommit": "91a797541a5491d326a8c6e5d593e0890313879e",
+    "title": "TH14 Marisa B Normal actual complete six-stage original coverage",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
-      "tools/th14-option-recall-native-nov02.py",
-      "tools/th14-option-recall-evidence-nov02.py",
-      "tools/th14-controlled-std-vm-return-observer-nov02.py",
-      "tools/th14-controlled-std-vm-return-evidence-nov02.py",
-      "docs/porting/TH14_OPTION_RECALL_NOV02.md",
-      "docs/porting/th14-option-recall-nov02.json",
+      "tools/th14-expanded-six-stage-evidence-nov02.py",
+      "tools/th14-expand-mode-inventory-nov02.py",
+      "tools/th14-native-silent-levels-nov02.py",
+      "docs/porting/TH14_MARISAB_NORMAL_SIX_STAGE_NOV02.md",
+      "docs/porting/th14-marisab-normal-six-stage-nov02.json",
+      "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
+      "docs/porting/th14-mode-acceptance-inventory-oct25.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "productionEngineChanged": true,
-    "productionGameplayCoreChanged": true,
-    "previousProductionCoreCommit": "85811ecb5f4a6e4bb3a2add3c0c6aebb31813dd6",
-    "testedCoreWasmSha256": "f3af4e5e1aaea287869f2b67a23f9f3e27137274883b2a32506523f40d9be43d",
-    "all141ObjectsRecompiled": true,
-    "sourceFilesChanged": 2,
-    "nativeComponentCases": 84,
-    "diagnosticCallbacks": 26000,
-    "diagnosticBeforeDifferentWords": 14,
-    "diagnosticAfterDifferentWords": 6,
-    "eightOptionScaleStartWordsNowExact": true,
-    "diagnosticStrictPassed": false,
-    "noNewModelClockHooks": true,
-    "freshCompleteRegressions": 11,
-    "freshRegressionCallbacks": 1178575,
-    "allElevenStrictAndIndependentPassed": true,
-    "oldInitializationRngFailureClosed": false,
-    "originalControlledTimingDeclared": true,
+    "productionEngineChanged": false,
+    "productionGameplayCoreChanged": false,
+    "productionCoreCommit": "91a797541a5491d326a8c6e5d593e0890313879e",
+    "callbacks": 123447,
+    "vmRows": 3086,
+    "vmFields": 303,
+    "combatCheckpoints": 1166,
+    "allRetainedSelectedCameraHudVmCombatAndInitialPublicationsIndependentlyExact": true,
+    "actualOriginalNaturalReplayEndAndSixStagesObserved": true,
+    "actualNativeMusicEffectsMasterLevelsZero": true,
+    "oldTwoStageInputRetained": true,
+    "otherTwentyNineModesFrozenUnchanged": true,
+    "noNativeComputedGameValuesProvidedToEngine": true,
+    "ordinaryOriginalGuiAccepted": false,
     "independentSchedulingAccepted": false,
-    "priorFullApplicationPairVersionBoundTo85811": true,
-    "newCompleteApplicationPairAccepted": false,
+    "originalWholePixelsOrPcmAccepted": false,
     "browserAcceptance": false,
     "nativeNaturalRunModePairs": 30,
-    "nativeAllStageEntryModePairs": 25,
+    "nativeAllStageEntryModePairs": 26,
+    "wholeModeEquivalentAccepted": false,
     "completeGame": false,
     "nativeEquivalent": false
   }
