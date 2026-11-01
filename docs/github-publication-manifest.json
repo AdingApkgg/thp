@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "85811ecb5f4a6e4bb3a2add3c0c6aebb31813dd6",
+  "sourceCommit": "a7841bc855dc688715bba37106daaeb6c8505186",
   "files": [
     {
       "path": ".gitignore",
@@ -182,6 +182,11 @@
       "path": "docs/porting/TH14_CONSTRUCTOR_HIT_FULL_NATIVE_OCT16.md",
       "bytes": 2165,
       "sha256": "3d26858bb8f4b984eaa03c3a0faae8e19df994aa26b98d88715b3c6df2e7762a"
+    },
+    {
+      "path": "docs/porting/TH14_CONTROLLER_APPLICATION_FULL_NOV01.md",
+      "bytes": 1928,
+      "sha256": "f2462c4289568a9ba8a7da54990abb5ffd2e7555942dfdf52e89f89e6c158cec"
     },
     {
       "path": "docs/porting/TH14_CORE_TAIL_FULL_REPLAY_OCT29.md",
@@ -615,8 +620,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 63605,
-      "sha256": "2c55c0d52a3c523f19fde618fa2068397793409b9105bbb9a52ebb7942c3bdc6"
+      "bytes": 64508,
+      "sha256": "b4fbc1946eddbe6ae3539564db19006c463943ea4bc20815ea21f609cb07f1d3"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -2147,6 +2152,11 @@
       "path": "docs/porting/th14-continuous-object-native-trace-zps-normal-full-objects-rotated-body-oct14-observed-oct13.json",
       "bytes": 20832094,
       "sha256": "85d3fa08ad5c58e94cd050efc490a751dbd21afa6a8b286a8b19e61b10c4e46a"
+    },
+    {
+      "path": "docs/porting/th14-controller-application-full-nov01.json",
+      "bytes": 80309,
+      "sha256": "9bc48cf6b732702efc534811e3245dc7ecc4cd423cc88b20f34736c1550c39de"
     },
     {
       "path": "docs/porting/th14-controller-input-verified.json",
@@ -25240,16 +25250,11 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "85811ecb5f4a6e4bb3a2add3c0c6aebb31813dd6",
-    "title": "TH14 actual stage3 seed-store boundaries and retained prefix failures",
+    "basePublishedCommit": "a7841bc855dc688715bba37106daaeb6c8505186",
+    "title": "TH14 actual complete controller-stack Applications on both graphics backends",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-stage3-seed-store-observer-v2-nov01.py",
-      "tools/th14-stage3-seed-store-evidence-v3-nov01.py",
-      "tools/th14-seed-store-prefix-evidence-nov01.py",
-      "tools/th14-controller-application-full-evidence-nov01.py",
-      "docs/porting/TH14_SEED_STORE_BOUNDARIES_NOV01.md",
-      "docs/porting/th14-seed-store-boundaries-nov01.json",
-      "docs/porting/th14-seed-store-prefix-nov01.json",
+      "docs/porting/TH14_CONTROLLER_APPLICATION_FULL_NOV01.md",
+      "docs/porting/th14-controller-application-full-nov01.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
@@ -25257,28 +25262,24 @@
     "gameAssetsAdded": false,
     "productionEngineChanged": false,
     "productionGameplayCoreChanged": false,
-    "frozenObserverSourceBytesPreserved": true,
-    "capturedObserverOnlyEofBlankLineAccepted": true,
     "productionCoreCommit": "85811ecb5f4a6e4bb3a2add3c0c6aebb31813dd6",
-    "actualNativePrefixCallbacks": 26000,
-    "actualSeedStoreBoundaries": 2,
-    "normalVmWindowEdges": 3870,
-    "allSelectedCameraHudCombatAndInitialPublicationsExact": true,
-    "vmRows": 1111,
-    "vmFields": 303,
-    "vmDifferentWords": 5,
-    "strictPassed": false,
-    "combatCheckpoints": 291,
-    "initialPublications": 3835,
-    "oldInsideVmSeedInterleaveFailureClosed": false,
-    "firstObserverAndCheckerFailuresRetained": true,
-    "observationBudgetBytes": 134217728,
-    "immutableInputCacheExcludedByExistingCapturePolicy": true,
-    "nativeValuesProvidedToEngine": false,
-    "currentGlesCompleteFrames": 122622,
-    "currentGlesAssertions": 45,
-    "currentCompleteApplicationPairAccepted": false,
-    "currentWebgpuStillRunning": true,
+    "backends": [
+      "gles",
+      "webgpu"
+    ],
+    "actualFramesPerBackend": 122622,
+    "assertionsPerBackend": 45,
+    "naturalEndFrame": 122562,
+    "stableEndFrames": 60,
+    "fullImagesPerBackend": 8,
+    "all141CurrentCoreObjectsVerified": true,
+    "currentBothBackendsActuallyExecuted": true,
+    "allCapturedVmAndFullImagesByteEqual": true,
+    "filesAndReplayByteEqual": true,
+    "silentPcmFrames": 89969664,
+    "silentPcmSha256": "39e9d4e4c65b7dea3b259e7a83189c06b7aaf28d76ef71bf9942a5c005453b54",
+    "physicalAudioDevicesOpened": 0,
+    "prematureFullProofRejected": true,
     "ordinaryOriginalGuiAccepted": false,
     "independentSchedulingAccepted": false,
     "originalWholePixelsOrPcmAccepted": false,
