@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "ebba4fe46764cb486e730f74783b39041420955f",
+  "sourceCommit": "ab7b9eaf37a5671a66eb2dab8e2cdf74f87a1036",
   "files": [
     {
       "path": ".gitignore",
@@ -635,8 +635,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 67669,
-      "sha256": "646867019ba4b7fcfa12aafc94421b174f92bcf386e8a859f66f6782141f0015"
+      "bytes": 68229,
+      "sha256": "6feba265d76a40376f870095ecd191036773705193919bbb3336ccbbc7934f91"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -772,6 +772,11 @@
       "path": "docs/porting/TH14_SPAWN_BEAM_STACK_NOV02.md",
       "bytes": 3050,
       "sha256": "0b2492f218adc9322eb5e0ad387e4d374d8aec3eac1394db89c4ffade24a7d2a"
+    },
+    {
+      "path": "docs/porting/TH14_SPAWN_GLES_AND_HARD_NOV02.md",
+      "bytes": 2508,
+      "sha256": "247d0996ac370432002808d1e746916baeb766448a94d6530f6bad36bd187dd1"
     },
     {
       "path": "docs/porting/TH14_STAGE2_CALLBACK_RETURN_OCT15.md",
@@ -6002,6 +6007,16 @@
       "path": "docs/porting/th14-spawn-beam-stack-nov02.json",
       "bytes": 231940,
       "sha256": "1617d190691c70486721bc9fc366dd6280a6cb7ab2f09b4431db6c0e2e1f3341"
+    },
+    {
+      "path": "docs/porting/th14-spawn-gles-full-nov02.json",
+      "bytes": 270789,
+      "sha256": "4bc86cdcca804f3b38086aa2f5753665c5f1cae056d81ec28ddb9bfa61dc262d"
+    },
+    {
+      "path": "docs/porting/th14-spawn-marisaa-hard-natural-nov02.json",
+      "bytes": 111115,
+      "sha256": "97c6d5a0f2b5a55f7f0e1db8612c85f88009792887864083d0ae6483fbcc0838"
     },
     {
       "path": "docs/porting/th14-spell-capture-replay-session-observed-oct11.json",
@@ -21979,6 +21994,11 @@
       "sha256": "831d50df62f03157d98a1799d060ea08d63e6e4dc7b5f739ef455ac344dac4b0"
     },
     {
+      "path": "tools/th14-spawn-beam-application-full-evidence-nov02.py",
+      "bytes": 9676,
+      "sha256": "3f7aef4d9848082d769eb0e59ecbf30028dc14ef21b6260257c42fde6993a46a"
+    },
+    {
       "path": "tools/th14-spawn-beam-stack-check-nov02.mjs",
       "bytes": 3921,
       "sha256": "5d3f303235459df2e6db87fa018a97df06b5085b1d4203789b61d151bb626207"
@@ -21992,6 +22012,11 @@
       "path": "tools/th14-spawn-beam-stack-native-v2-nov02.py",
       "bytes": 5777,
       "sha256": "26fb93e28a2636cd0218051deab5a8a882ef7b81c26bb8fd0c7de18896f36371"
+    },
+    {
+      "path": "tools/th14-spawn-natural-run-evidence-nov02.py",
+      "bytes": 5370,
+      "sha256": "36d41ecb6122737492d274efd037f06942d79dc949716a569f5684f25b1de587"
     },
     {
       "path": "tools/th14-spell-capture-replay-session-check.mjs",
@@ -25370,28 +25395,39 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "ebba4fe46764cb486e730f74783b39041420955f",
-    "title": "Isolate TH14 constructor stack scope at preprocessing",
+    "basePublishedCommit": "ab7b9eaf37a5671a66eb2dab8e2cdf74f87a1036",
+    "title": "TH14 spawn-core actual GLES full run and Marisa A Hard natural sample",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/EnemyAnimations.cpp",
-      "docs/porting/TH14_SPAWN_BEAM_STACK_COMPILE_GUARD_NOV02.md",
-      "docs/porting/th14-spawn-beam-stack-compile-guard-nov02.json",
+      "tools/th14-spawn-beam-application-full-evidence-nov02.py",
+      "tools/th14-spawn-natural-run-evidence-nov02.py",
+      "docs/porting/TH14_SPAWN_GLES_AND_HARD_NOV02.md",
+      "docs/porting/th14-spawn-gles-full-nov02.json",
+      "docs/porting/th14-spawn-marisaa-hard-natural-nov02.json",
+      "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "productionEngineChanged": true,
+    "productionEngineChanged": false,
     "productionGameplayCoreChanged": false,
     "previousProductionCoreCommit": "ebba4fe46764cb486e730f74783b39041420955f",
-    "testedCoreWasmSha256": "57256e501cb0e7a850704940eeb030a1e2eab5de696ed79137aeede0a5de2ec6",
-    "th14ObjectByteIdentical": true,
-    "sharedSyntaxTitles": [
-      12,
-      13,
-      14,
-      16
+    "actualGlesFrames": 122622,
+    "actualGlesAssertions": 45,
+    "glesIndependentPassed": true,
+    "fullBackendPairAccepted": false,
+    "marisaaHardNaturalCallbacks": 81458,
+    "marisaaHardStagesActuallyObserved": [
+      1,
+      2,
+      3,
+      4,
+      5
     ],
-    "otherWorksPortProgressClaimed": false,
+    "marisaaHardVm303Rows": 2487,
+    "marisaaHardCombatCheckpoints": 815,
+    "marisaaHardStrictAndIndependentPassed": true,
+    "naturalModePairs": 30,
+    "allTargetStageEntryModePairs": 26,
     "browserAcceptance": false,
     "completeGame": false,
     "nativeEquivalent": false
