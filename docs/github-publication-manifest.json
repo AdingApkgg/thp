@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "50b7d161637571389116b76695d2536aa2e6ff51",
+  "sourceCommit": "85811ecb5f4a6e4bb3a2add3c0c6aebb31813dd6",
   "files": [
     {
       "path": ".gitignore",
@@ -615,8 +615,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 62709,
-      "sha256": "c669376c77d0f789e85dcee7acc3e27bb94674901c94c706c7108fc91ea893a3"
+      "bytes": 63605,
+      "sha256": "2c55c0d52a3c523f19fde618fa2068397793409b9105bbb9a52ebb7942c3bdc6"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -712,6 +712,11 @@
       "path": "docs/porting/TH14_SCREEN_LINE_CLIP_OCT27.md",
       "bytes": 4279,
       "sha256": "9e84e65192abfadcf0b81ad00fde1d28cebd3489512307d84ffe832ad1708bf2"
+    },
+    {
+      "path": "docs/porting/TH14_SEED_STORE_BOUNDARIES_NOV01.md",
+      "bytes": 2706,
+      "sha256": "5f74b3053c44371c1a5635df4d3bc81e3fb207f6bb6aeb1120950baae4cf6cc5"
     },
     {
       "path": "docs/porting/TH14_SELECTED_PLAYER_RESOURCE_OCT23.md",
@@ -5767,6 +5772,16 @@
       "path": "docs/porting/th14-second-ruby-launcher-observed-oct12.json",
       "bytes": 1075,
       "sha256": "b6935ec6a92b82dc84980635f9b8afc49c2fc120cd96da6865286b0e9c7c5fb7"
+    },
+    {
+      "path": "docs/porting/th14-seed-store-boundaries-nov01.json",
+      "bytes": 4427,
+      "sha256": "7f64cfcaa85eec8366132abf6bd594ff054710225a6d807c42cedd0faba4bbfe"
+    },
+    {
+      "path": "docs/porting/th14-seed-store-prefix-nov01.json",
+      "bytes": 232179,
+      "sha256": "adfe7822d689971d5ec7fe86da2a7c0d881602c96d06d3032efd3c58ae69b8d0"
     },
     {
       "path": "docs/porting/th14-selected-player-resource-verified-oct23.json",
@@ -16829,6 +16844,11 @@
       "sha256": "c5a7b4a607485b00e672d3c9e3890560834c888fbafd75031698f5cf1a071b36"
     },
     {
+      "path": "tools/th14-controller-application-full-evidence-nov01.py",
+      "bytes": 7826,
+      "sha256": "f24ad868b541bf36bc3e9572dc0b1eed8761fc17cd158d44bf728f58c18c520d"
+    },
+    {
       "path": "tools/th14-controller-input-check.mjs",
       "bytes": 2625,
       "sha256": "5ec3f4211be690752f6969af08f9dea90880baabad9540af09713e8e7e0fea59"
@@ -21504,6 +21524,11 @@
       "sha256": "1770d709a980f567e6a6012b483421cebf8003afb4978071d66c1ae37b7773ca"
     },
     {
+      "path": "tools/th14-seed-store-prefix-evidence-nov01.py",
+      "bytes": 7308,
+      "sha256": "cd2d60bf6401cb7a82a59e28245075b511f164c6673060cee76e5de32e704f7a"
+    },
+    {
       "path": "tools/th14-selected-player-worker-check-oct29.mjs",
       "bytes": 6027,
       "sha256": "40e37d7f993e797bc0d6c6e056035d075835cb812b1abb618e37c580414a0912"
@@ -23419,6 +23444,16 @@
       "sha256": "dea0d7b1ec8b4617e5559a9665821698f30f0050085ae30e6f2e4415b3b4e9d5"
     },
     {
+      "path": "tools/th14-stage3-seed-store-evidence-v3-nov01.py",
+      "bytes": 7535,
+      "sha256": "3760812763ea0f467cf4d0c2c471500baf0aefa1200c1208f04abf4c9ca86e29"
+    },
+    {
+      "path": "tools/th14-stage3-seed-store-observer-v2-nov01.py",
+      "bytes": 59926,
+      "sha256": "f51c4a63d04e6e8b81bd75038002cd0fc7a5c25b415c9b74501d687de561b52b"
+    },
+    {
       "path": "tools/th14-stage5-area-replay-trace-check.mjs",
       "bytes": 8728,
       "sha256": "b0e5ecfaf9868565891862576f1188ba71ee7a67dbdc01af798f9d260d25faeb"
@@ -25205,48 +25240,45 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "50b7d161637571389116b76695d2536aa2e6ff51",
-    "title": "TH14 actual controller stack producers for Reimu A bomb Z",
+    "basePublishedCommit": "85811ecb5f4a6e4bb3a2add3c0c6aebb31813dd6",
+    "title": "TH14 actual stage3 seed-store boundaries and retained prefix failures",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/NativeStackTh14.hpp",
-      "runtimes/th12/th12_web/cpp/game/AnmManager.cpp",
-      "runtimes/th12/th12_web/cpp/game/ScreenShake.hpp",
-      "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "runtimes/th12/th12_web/cpp/game/BombController.cpp",
-      "tools/th14-reimu-controller-z-context-live-observer-nov01.py",
-      "tools/th14-controller-polar-candidate-compare-nov01.mjs",
-      "tools/th14-reimu-controller-polar-evidence-nov01.py",
-      "tools/th14-controller-polar-integration-evidence-nov01.py",
-      "docs/porting/TH14_REIMU_CONTROLLER_POLAR_NOV01.md",
-      "docs/porting/th14-reimu-controller-polar-candidate-nov01.json",
-      "docs/porting/th14-controller-polar-integration-nov01.json",
+      "tools/th14-stage3-seed-store-observer-v2-nov01.py",
+      "tools/th14-stage3-seed-store-evidence-v3-nov01.py",
+      "tools/th14-seed-store-prefix-evidence-nov01.py",
+      "tools/th14-controller-application-full-evidence-nov01.py",
+      "docs/porting/TH14_SEED_STORE_BOUNDARIES_NOV01.md",
+      "docs/porting/th14-seed-store-boundaries-nov01.json",
+      "docs/porting/th14-seed-store-prefix-nov01.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "productionEngineChanged": true,
-    "productionGameplayCoreChanged": true,
-    "previousProductionCoreCommit": "bd70b911a3c6a362331f561407a74b6aca3e031f",
-    "productionCoreWasmSha256": "af9ec42926395595779d2744868a5cbff22cb9ddb39588e1a76265c395cffd9a",
-    "objectsRecompiled": 141,
-    "sourceFilesChanged": 5,
-    "nativeStackSamples": 23,
-    "knownStackSamplesEqual": 22,
-    "retirementStackSampleUnresolved": true,
-    "firstReadLastWriterNotObserved": true,
-    "freshProductionRegressionCases": 11,
-    "freshProductionRegressionCallbacks": 1178575,
-    "allElevenStrictAndIndependentRawPassed": true,
-    "stage6Callbacks": 90012,
-    "stage6CombatCheckpoints": 936,
-    "stage6CombatWordsNowEqual": true,
-    "stage6VmDifferentWordsStill22": true,
-    "stage6StrictPassed": false,
-    "opaqueAddressModelStillUnresolved": true,
+    "productionEngineChanged": false,
+    "productionGameplayCoreChanged": false,
+    "frozenObserverSourceBytesPreserved": true,
+    "capturedObserverOnlyEofBlankLineAccepted": true,
+    "productionCoreCommit": "85811ecb5f4a6e4bb3a2add3c0c6aebb31813dd6",
+    "actualNativePrefixCallbacks": 26000,
+    "actualSeedStoreBoundaries": 2,
+    "normalVmWindowEdges": 3870,
+    "allSelectedCameraHudCombatAndInitialPublicationsExact": true,
+    "vmRows": 1111,
+    "vmFields": 303,
+    "vmDifferentWords": 5,
+    "strictPassed": false,
+    "combatCheckpoints": 291,
+    "initialPublications": 3835,
+    "oldInsideVmSeedInterleaveFailureClosed": false,
+    "firstObserverAndCheckerFailuresRetained": true,
+    "observationBudgetBytes": 134217728,
+    "immutableInputCacheExcludedByExistingCapturePolicy": true,
     "nativeValuesProvidedToEngine": false,
-    "priorFullApplicationPairVersionBound": true,
-    "newCompleteApplicationPairAccepted": false,
+    "currentGlesCompleteFrames": 122622,
+    "currentGlesAssertions": 45,
+    "currentCompleteApplicationPairAccepted": false,
+    "currentWebgpuStillRunning": true,
     "ordinaryOriginalGuiAccepted": false,
     "independentSchedulingAccepted": false,
     "originalWholePixelsOrPcmAccepted": false,
