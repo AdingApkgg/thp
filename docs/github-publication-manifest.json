@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "93ee3a3ba064c447b9ef2f1452c6a5dbf4fbab96",
+  "sourceCommit": "f89d982170b9a65c00ac08e1737d9fccaa4f838c",
   "files": [
     {
       "path": ".gitignore",
@@ -374,6 +374,11 @@
       "sha256": "6d19ffa9fc973ca3a1f9a316255ba9138a003e90fd0542ddea5e07797409e474"
     },
     {
+      "path": "docs/porting/TH14_MARISAA_NATURAL_GAMEOVER_NOV01.md",
+      "bytes": 3841,
+      "sha256": "d7a138339103c106a7ea6230ae548c870e8bf041b6294381e8eee61c23013ab4"
+    },
+    {
       "path": "docs/porting/TH14_MARISAB_EASY_OCT26.md",
       "bytes": 1618,
       "sha256": "23166e21cf5e9693149837b0b859d3921e0431bdd96b85af42bf33039595bdf8"
@@ -560,8 +565,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 55097,
-      "sha256": "6ae234410aaee70015bc937e66fd48eb8c54f8e6b7d54a9486ca973fc4707b02"
+      "bytes": 56014,
+      "sha256": "907c4061373b50d05882d5235b2a78e3b6703d1c0454003149a9d82084eb3ade"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -3937,6 +3942,11 @@
       "path": "docs/porting/th14-marisa-laser-reference-oct11.json",
       "bytes": 1341,
       "sha256": "f29c11430396cbca1203a8ccb1904369707cd932a3c3022e1684f84e1a64e52e"
+    },
+    {
+      "path": "docs/porting/th14-marisaa-easy-natural-nov01.json",
+      "bytes": 425111,
+      "sha256": "94918eb30f70cf0ff676f37d2399ea2f36a45a0f7ff6462140a1cbcccc637533"
     },
     {
       "path": "docs/porting/th14-marisaa-lunatic-verified-oct26.json",
@@ -19359,6 +19369,11 @@
       "sha256": "1baa332085647efc0a2d46a9e211a4e3114faf423013201e27ad65e621b8b320"
     },
     {
+      "path": "tools/th14-marisaa-easy-natural-evidence-nov01.py",
+      "bytes": 10168,
+      "sha256": "4ab8ceddad8b4e7eb13d3cb463a28cffc95fbb272dbd4f0949e834112653c72a"
+    },
+    {
       "path": "tools/th14-marisab-environment-evidence-oct30.py",
       "bytes": 10165,
       "sha256": "9138d5ade9fc6141ca94f18752aacd198b402cdf74b4a9dff3e0cbb0a1928ed1"
@@ -24945,12 +24960,12 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "93ee3a3ba064c447b9ef2f1452c6a5dbf4fbab96",
-    "title": "TH14 current production Application versus actual original full frame",
+    "basePublishedCommit": "f89d982170b9a65c00ac08e1737d9fccaa4f838c",
+    "title": "TH14 Marisa A Easy natural GameOver strict comparison",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-current-native-demo-evidence-nov01.py",
-      "docs/porting/TH14_CURRENT_NATIVE_DEMO_NOV01.md",
-      "docs/porting/th14-current-native-demo-nov01.json",
+      "tools/th14-marisaa-easy-natural-evidence-nov01.py",
+      "docs/porting/TH14_MARISAA_NATURAL_GAMEOVER_NOV01.md",
+      "docs/porting/th14-marisaa-easy-natural-nov01.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
@@ -24958,24 +24973,24 @@
     "gameAssetsAdded": false,
     "productionEngineChanged": false,
     "productionGameplayCoreChanged": false,
-    "productionLauncherChanged": false,
     "productionCoreCommit": "57a544191704e0ce64cd46de85fe648a3e152097",
-    "actualApplicationFramesPerBackend": 2270,
-    "assertionsPerBackend": 7,
-    "originalPresent": 2278,
-    "originalStage": 3,
-    "originalControllerFrame": 241,
-    "fullBgraBytesPerBackend": 1228800,
-    "pixelDifferences": 0,
-    "vmRows": 334,
+    "nativePlayerCallbacks": 80594,
+    "naturalGameOverStage": 5,
+    "naturalGameOverControllerFrame": 7565,
+    "selectedWordsPerCallback": 32,
+    "vmRows": 680,
     "vmFields": 303,
-    "bothRngEqual": true,
-    "rawHandleAndRegistryOrderExact": true,
-    "currentInstancedWebgpuAndGlesRetested": true,
-    "externalObservedResourceAvailabilityDeclared": true,
+    "combatCheckpoints": 907,
+    "combatFieldDifferences": 0,
+    "initialPublications": 2870,
+    "extraVmBoundaryClock": false,
+    "ordinaryTitleAndAttractVisuallyObserved": true,
+    "ordinaryReplayInputConfirmed": false,
+    "replayEofMarkerObserved": false,
+    "sixStageClearAccepted": false,
+    "old80324FailureClosed": false,
     "independentLoadingAccepted": false,
     "wholeOriginalPixelsOrPcmAccepted": false,
-    "ordinaryNativeMenuAccepted": false,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
     "completeGame": false,
