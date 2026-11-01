@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "a7841bc855dc688715bba37106daaeb6c8505186",
+  "sourceCommit": "b13d4b533100f7133f194550bea7eeb97bd4ff9f",
   "files": [
     {
       "path": ".gitignore",
@@ -529,6 +529,11 @@
       "sha256": "7a7d897911c04b5cc17daed47cae128f91a7f90a8c6d624ceb253593cacd9c4e"
     },
     {
+      "path": "docs/porting/TH14_OPTION_RECALL_NOV02.md",
+      "bytes": 3015,
+      "sha256": "51ad639f81a389c7930f8d92ec94ea78f628c6d15c7b28a3a75a8ac8cec15380"
+    },
+    {
       "path": "docs/porting/TH14_ORDINARY_STAGE_LOADING_OCT15.md",
       "bytes": 2916,
       "sha256": "78f4b029f947b81ef65edd38fd9893bef00b0956f432c6503a9c89d70ee59642"
@@ -620,8 +625,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 64508,
-      "sha256": "b4fbc1946eddbe6ae3539564db19006c463943ea4bc20815ea21f609cb07f1d3"
+      "bytes": 65349,
+      "sha256": "62fa8b6785c0b65d80dad3b5602f2b3211359517787060a5b777e7532e1bf362"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -4859,6 +4864,11 @@
       "sha256": "b2ee9f483b75c008b5c30bd740a08cb4d19d408d94fd646090fa7954dc73c982"
     },
     {
+      "path": "docs/porting/th14-option-recall-nov02.json",
+      "bytes": 444307,
+      "sha256": "1d19fdefe64e460e67d03b684164e38bd9b9cf74e6fe018fb7a6ce6fee726d82"
+    },
+    {
       "path": "docs/porting/th14-options-controls-verified-oct11.json",
       "bytes": 1384,
       "sha256": "5dc6fb1b9f9fe0b3e7a3f077bde088b73c21251a1d86b8b559b72c568005223f"
@@ -8690,13 +8700,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "bytes": 65622,
-      "sha256": "165255bfc914cec4cf0a97dfa814351e18f1dff482f602e9f8185424d5cd8aaf"
+      "bytes": 65700,
+      "sha256": "802a866a1f149ce64bddf2c49be72e77c077134b22cc105d61e47c11ab0a03ce"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
-      "bytes": 24813,
-      "sha256": "270289ebdfa885053c801032a0bf7a5a54ccd8269b9ad197d37f682dceec00b0"
+      "bytes": 24978,
+      "sha256": "171e2055afcdbce7f4d70c1339f17c6e429276590af3fc02e67545adb9289709"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameConfig.cpp",
@@ -16844,6 +16854,16 @@
       "sha256": "12aad2078b337789206b58a053dc169ae7fcd6015dfba0c6cdb881c7b163c011"
     },
     {
+      "path": "tools/th14-controlled-std-vm-return-evidence-nov02.py",
+      "bytes": 8252,
+      "sha256": "c1676bec7d3b76892db8dae955788852fd22f70ee448067dc4a79c3e9399a855"
+    },
+    {
+      "path": "tools/th14-controlled-std-vm-return-observer-nov02.py",
+      "bytes": 68532,
+      "sha256": "9343630acbde34cf54256ce41763fbdc2af84ea4a8b25eb5e04a42d500baca94"
+    },
+    {
       "path": "tools/th14-controlled-vm-worker-evidence-oct29.py",
       "bytes": 7096,
       "sha256": "da40a782fbe63f72d00ab19031d4c9031d6e07bb06471a4a3659734b1a76891f"
@@ -20282,6 +20302,16 @@
       "path": "tools/th14-normal-worker-observer-build-oct29.py",
       "bytes": 3223,
       "sha256": "4c42e89b7c9e4bb1d0063079c9fb9c6a8b5d0ae423e2130d7d745b7ef65e5c05"
+    },
+    {
+      "path": "tools/th14-option-recall-evidence-nov02.py",
+      "bytes": 13279,
+      "sha256": "18fc40c7c2954ced3d6592993c24219c2067c6ef165fb3953201412cef74cf4b"
+    },
+    {
+      "path": "tools/th14-option-recall-native-nov02.py",
+      "bytes": 6306,
+      "sha256": "d1fbd56d93ec485751deb8597df968a28fa6cdbb69ff2bbe5f8d13131f40c85d"
     },
     {
       "path": "tools/th14-options-check.mjs",
@@ -25250,39 +25280,43 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "a7841bc855dc688715bba37106daaeb6c8505186",
-    "title": "TH14 actual complete controller-stack Applications on both graphics backends",
+    "basePublishedCommit": "b13d4b533100f7133f194550bea7eeb97bd4ff9f",
+    "title": "TH14 option recall once at actual stage completion",
     "changedSourceAndMetadataFiles": [
-      "docs/porting/TH14_CONTROLLER_APPLICATION_FULL_NOV01.md",
-      "docs/porting/th14-controller-application-full-nov01.json",
+      "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
+      "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
+      "tools/th14-option-recall-native-nov02.py",
+      "tools/th14-option-recall-evidence-nov02.py",
+      "tools/th14-controlled-std-vm-return-observer-nov02.py",
+      "tools/th14-controlled-std-vm-return-evidence-nov02.py",
+      "docs/porting/TH14_OPTION_RECALL_NOV02.md",
+      "docs/porting/th14-option-recall-nov02.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "productionEngineChanged": false,
-    "productionGameplayCoreChanged": false,
-    "productionCoreCommit": "85811ecb5f4a6e4bb3a2add3c0c6aebb31813dd6",
-    "backends": [
-      "gles",
-      "webgpu"
-    ],
-    "actualFramesPerBackend": 122622,
-    "assertionsPerBackend": 45,
-    "naturalEndFrame": 122562,
-    "stableEndFrames": 60,
-    "fullImagesPerBackend": 8,
-    "all141CurrentCoreObjectsVerified": true,
-    "currentBothBackendsActuallyExecuted": true,
-    "allCapturedVmAndFullImagesByteEqual": true,
-    "filesAndReplayByteEqual": true,
-    "silentPcmFrames": 89969664,
-    "silentPcmSha256": "39e9d4e4c65b7dea3b259e7a83189c06b7aaf28d76ef71bf9942a5c005453b54",
-    "physicalAudioDevicesOpened": 0,
-    "prematureFullProofRejected": true,
-    "ordinaryOriginalGuiAccepted": false,
+    "productionEngineChanged": true,
+    "productionGameplayCoreChanged": true,
+    "previousProductionCoreCommit": "85811ecb5f4a6e4bb3a2add3c0c6aebb31813dd6",
+    "testedCoreWasmSha256": "f3af4e5e1aaea287869f2b67a23f9f3e27137274883b2a32506523f40d9be43d",
+    "all141ObjectsRecompiled": true,
+    "sourceFilesChanged": 2,
+    "nativeComponentCases": 84,
+    "diagnosticCallbacks": 26000,
+    "diagnosticBeforeDifferentWords": 14,
+    "diagnosticAfterDifferentWords": 6,
+    "eightOptionScaleStartWordsNowExact": true,
+    "diagnosticStrictPassed": false,
+    "noNewModelClockHooks": true,
+    "freshCompleteRegressions": 11,
+    "freshRegressionCallbacks": 1178575,
+    "allElevenStrictAndIndependentPassed": true,
+    "oldInitializationRngFailureClosed": false,
+    "originalControlledTimingDeclared": true,
     "independentSchedulingAccepted": false,
-    "originalWholePixelsOrPcmAccepted": false,
+    "priorFullApplicationPairVersionBoundTo85811": true,
+    "newCompleteApplicationPairAccepted": false,
     "browserAcceptance": false,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,

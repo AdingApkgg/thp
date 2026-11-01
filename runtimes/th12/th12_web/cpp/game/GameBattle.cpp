@@ -205,7 +205,8 @@ bool GameBattle::next_stage(GameResources& source,u32 number,std::function<bool(
     transition_timer.set(0,&animations.rate);th14_control_clock.set(0,&animations.rate);frame=0;
     // The result_timer continues from StageCompletion::complete; the resource
     // wait and work overlap that existing120 ticks, rather than restarting it.
-    player->th14_scale.flags|=2;player->motion.recall_options(true);
+    // The completion effect already recalled options at retail436fb3.
+    // Starting the loader must not send label3 again after ANM29 has run.
     outgoing_stage=std::move(stage);
     if(!stage_loading.begin(animations,resources.core.ascii)){error="TH14 next-stage loading animation creation failed";return false;}
     return true;

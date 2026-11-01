@@ -204,7 +204,13 @@ public:
         return completion.complete();
     }
     bool stage_result_animation()override;
-    void recall_player_options()override{if(player)player->motion.recall_options(true);}
+    void recall_player_options()override{if(player){
+#if PORT_TITLE == 14
+        // Retail4358e5 changes this flag in the same call that sends label3.
+        player->th14_scale.flags|=2;
+#endif
+        player->motion.recall_options(true);
+    }}
     void request_stage_exit(StageExit exit)override{
 #if PORT_TITLE == 14
         // Stage completion and Player GameOver both enter448ef0. Reuse the
