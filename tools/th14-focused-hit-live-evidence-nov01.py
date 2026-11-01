@@ -33,8 +33,7 @@ def evidence(home):
             assert read is factory is None
             wrapper=row;push=None
             assert row['registers']['edx']==row['targetPosition']
-            assert len(row['liveEnemyIdentityMatches'])==1
-            enemy=row['liveEnemyIdentityMatches'][0];assert enemy['address']+0x1234==row['targetPosition']
+            for enemy in row['liveEnemyIdentityMatches']:assert enemy['address']+0x1234==row['targetPosition']
         elif pc==0x453aae:
             assert wrapper is not None and push is None
             push=row;assert row['wrapper']['wrapperEsp']==wrapper['wrapperEsp']and row['pushedTargetPointer']==wrapper['targetPosition']
@@ -53,13 +52,18 @@ def evidence(home):
         else:
             assert pc==0x452188 and factory is not None
             assert row['handleOutputAddress']==factory['handleOutputAddress']and len(row['createdLiveVmMatches'])==1
+            # Non-producing hits can use an explicitly observed temporary
+            # stack coordinate. Do not call that an identified enemy. Every
+            # accepted effect birth still requires its actual live identity.
+            assert len(wrapper['liveEnemyIdentityMatches'])==1
             vm=row['createdLiveVmMatches'][0];blob=bytes.fromhex(vm['rawVmHex'])
             assert (vm['file'],vm['script'])==(8,149)and vm['handle']==row['handle']==struct.unpack_from('<I',blob,0x540)[0]
             assert struct.unpack_from('<I',blob,0x5a4)[0]==factory['positionWords'][2]
             births.append(dict(callback=row['precedingPlayerCallbacks'],handle=row['handle'],enemyInstance=wrapper['liveEnemyIdentityMatches'][0]['instance'],worldZWord=factory['positionWords'][2]))
             read=factory=None
     assert read is factory is None and births
-    return dict(verifiedFiniteActualLiveStackAndFactoryBirth=True,callbacks=report['callbacks'],window=plan['focusedHitWindow'],events=len(rows),counts=dict(counts),verifiedBirths=len(births),births=births,wrapperTargetAndPushAndScratchAndFactoryAndLiveVmZAllEqual=True,liveEnemyIdentityObservedAtHit=True,syntheticComponentNotRelabeledLive=True,hardwareBreakpointsOnly=True,gameStateWordWrites=1,attractBitClearOnly=True,additionalMemoryWritesOrSuspendCalls=0,diagnosticPrefixOnly=True,naturalReplayEndAccepted=False,nativeValuesProvidedToEngine=False,productionAddressModelImplemented=False,strictReimuaEasyPassed=False,completeGame=False,nativeEquivalent=False,bindings=bindings,verifierSha256=SHA(Path(__file__).read_bytes()))
+    unresolved=sum(r['pc']==0x451760 and not r['liveEnemyIdentityMatches']for r in rows)
+    return dict(verifiedFiniteActualLiveStackAndFactoryBirth=True,callbacks=report['callbacks'],window=plan['focusedHitWindow'],events=len(rows),counts=dict(counts),verifiedBirths=len(births),births=births,wrapperTargetAndPushAndScratchAndFactoryAndLiveVmZAllEqual=True,liveEnemyIdentityObservedAtEveryAcceptedBirth=True,nonProducingWrappersWithoutEnemyIdentity=unresolved,nonProducingTemporaryPointersNotRelabeledEnemies=True,syntheticComponentNotRelabeledLive=True,hardwareBreakpointsOnly=True,gameStateWordWrites=1,attractBitClearOnly=True,additionalMemoryWritesOrSuspendCalls=0,diagnosticPrefixOnly=True,naturalReplayEndAccepted=False,nativeValuesProvidedToEngine=False,productionAddressModelImplemented=False,strictReimuaEasyPassed=False,completeGame=False,nativeEquivalent=False,bindings=bindings,verifierSha256=SHA(Path(__file__).read_bytes()))
 
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--case',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--check',action='store_true');a=p.parse_args();out=a.output.resolve();assert out.is_relative_to(R/'artifacts/th14')or out.is_relative_to(R/'docs/porting');result=evidence(a.case)

@@ -8,6 +8,6 @@
 
 只修改硬件调试寄存器，未改指令／RNG／计数器／输入。过程内唯一游戏字写入仍为既有暖启动清除 attract 位；独立检查器核对全部 WriteProcessMemory／显式 SuspendThread／ResumeThread 调用 AST 与原观察器一致。未向移植引擎传入任何新指针或 Z 值。
 
-这关闭了短窗口中“最后写入者是否在实际进程中成立”的证据缺口，但尚未实现跨平台分配地址／ABI 模型，不关闭已有 Easy、Hard、Lunatic 的严格 worldZ 失败。六面 89,940–90,010 窗口另已启动有上限采样，尚未完成，不混入本项通过。普通原版菜单、独立调度、整局像素／PCM和整作 1:1 均未验收。
+这关闭了短窗口中“最后写入者是否在实际进程中成立”的证据缺口，但尚未实现跨平台分配地址／ABI 模型，不关闭已有 Easy、Hard、Lunatic 的严格 worldZ 失败。后续[六面窗口](TH14_FOCUSED_STAGE6_BIRTH_NOV01.md)已经完成，六条出生链仍要求命中时唯一活动敌人身份；不产生本项效果的未解析坐标不贴敌人标签，首次检查器对此误判的失败保留。普通原版菜单、独立调度、整局像素／PCM和整作 1:1 均未验收。
 
 证据：[th14-focused-hit-live-birth-nov01.json](th14-focused-hit-live-birth-nov01.json)。源码为 `tools/th14-focused-hit-live-observer-nov01.py` 与 `tools/th14-focused-hit-live-evidence-nov01.py`；只发布源码、文档和哈希，原始事件／VM／资源保留本机。
