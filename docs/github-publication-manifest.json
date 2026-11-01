@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "9b4201204405e1d7f6d5f28d6c71faf603b2836d",
+  "sourceCommit": "6d1d9b2c47095c9f3c511f329a31316378dba08f",
   "files": [
     {
       "path": ".gitignore",
@@ -579,9 +579,14 @@
       "sha256": "2f58522276dee34a17ae065304ffe7867e4b355b10612898611a95d148bfe0ff"
     },
     {
+      "path": "docs/porting/TH14_REIMU_BOMB_POLAR_Z_NOV01.md",
+      "bytes": 3109,
+      "sha256": "6dc5806831f3e096c087c552fe217a622d67106ae62df327dffa912180b6eef4"
+    },
+    {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 57986,
-      "sha256": "5c3dd3a6fb4fca999a208aa04198ae52eb8382b4015a53f1706949cab06af464"
+      "bytes": 58874,
+      "sha256": "65b3577f2ecb328a1ae66357454083ff32543141ab21f31fe358b67aa9036c4b"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -5249,6 +5254,11 @@
       "sha256": "a6a1fd413b9dc677b515f989823128dc635b7cb2fdbf057545cd6d26a5936a2c"
     },
     {
+      "path": "docs/porting/th14-reimu-bomb-polar-z-nov01.json",
+      "bytes": 756768,
+      "sha256": "0b1d813a2125c1c1d797080ced17dbfb72ec150c3f360bc4dfc9d2f2dab651b8"
+    },
+    {
       "path": "docs/porting/th14-reimu-orb-verified.json",
       "bytes": 1400,
       "sha256": "5eab71cbbfe147c5a8eb95dd0fea90ac41c4718b79e4cc4cce35f72984fc95b7"
@@ -8890,8 +8900,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/NativeStackTh14.hpp",
-      "bytes": 1622,
-      "sha256": "b99bd9db2b4a7b83220e5ad9d5412b23425db38745b04bb28e88f06a472833db"
+      "bytes": 2289,
+      "sha256": "683b013e15d741a04c6a63d8b0874693539f9410e5e7149d65c6e18b76f2e662"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/NoopOpcodes.hpp",
@@ -9105,13 +9115,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotDamageTh14.cpp",
-      "bytes": 6798,
-      "sha256": "e4a52f6c3fbf0079bae8b601dce7b8c8eb39d61b74443b36439c6770d44f9d27"
+      "bytes": 7098,
+      "sha256": "27412e8867ea8d7f17c6d347accdc34c01b4c12e94a203696ee088a982afa16c"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotDamageTh14.hpp",
-      "bytes": 1460,
-      "sha256": "5c243a3def8f90c62b008737221e41c7ee5240d5c32a27489a4551e77111b288"
+      "bytes": 1580,
+      "sha256": "b4bb44c325bb5f7a93b2023e207abd4d7e66d44171334aef824b5beb1036e0bf"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotFiles.hpp",
@@ -9125,8 +9135,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotManager.hpp",
-      "bytes": 9351,
-      "sha256": "72d7c3844b774233d634d2d6d706f3d091ba36a954e0a9b89d70c928b82df75f"
+      "bytes": 9557,
+      "sha256": "62835a5c6fda530d0ec6859584ac0c929f9a139c84607b9112358fb3511ae8a7"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotPoolTh14.hpp",
@@ -9150,8 +9160,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotTh14.cpp",
-      "bytes": 18343,
-      "sha256": "d6ccfbd5523929e2ab2d7c373abcae9416e636509967299e9bf6b7229927242d"
+      "bytes": 18840,
+      "sha256": "f8f208a8c2b2282fe2533d7ef9da4bf28c70162e94b797df9c598112fc53d66b"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ShotTh16.cpp",
@@ -12869,6 +12879,11 @@
       "sha256": "af7376db2dd017284c520f7ff0753a3e3f50638094160e679179b99af962116e"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-reimu-bomb-polar-nov01.cpp",
+      "bytes": 1676,
+      "sha256": "a1cf1d63887bac8c2ff064e140f40e07109bd9f73fadbc3b8e852e5afb4f760e"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-reimu-orb-fixture.cpp",
       "bytes": 1638,
       "sha256": "137fee4859c86e7334ffcd9ae3e0e4340112ee5d171ed70f2e56ac9086c07e4b"
@@ -16252,6 +16267,11 @@
       "path": "tools/th14-build-native-gles-component.py",
       "bytes": 7091,
       "sha256": "568de985a983b5c2c4ae75d6c3bb6b6e33e895625267c53d99cf64a70a1d6149"
+    },
+    {
+      "path": "tools/th14-build-reimu-bomb-polar-nov01.py",
+      "bytes": 1748,
+      "sha256": "82c64e82efeca851e8d96d06b2d53229cc0933736f5445da05c339a6e1039890"
     },
     {
       "path": "tools/th14-build-snapshot-core-oct29.py",
@@ -20884,6 +20904,21 @@
       "sha256": "07e902e41d0b68e08e9843db1d776706b0a577c2e4f53edce1a0fa78891659e5"
     },
     {
+      "path": "tools/th14-reimu-bomb-polar-check-nov01.mjs",
+      "bytes": 2124,
+      "sha256": "d068020935f0b73e5cfa2d6d1ccc99c2cad152e87d9356d43661eda54ba1d1e6"
+    },
+    {
+      "path": "tools/th14-reimu-bomb-polar-evidence-nov01.py",
+      "bytes": 12076,
+      "sha256": "64273d5bd11fc0934258005fb1fba672af36aa005a5fa5331daf5b3d06906318"
+    },
+    {
+      "path": "tools/th14-reimu-bomb-polar-native-nov01.py",
+      "bytes": 5695,
+      "sha256": "7e15344701b7e7393f9d6baaa5934e553fea9dbcdc35a7c0a2e7dacb98c35ad5"
+    },
+    {
       "path": "tools/th14-reimu-orb-check.mjs",
       "bytes": 3151,
       "sha256": "da254bf34402f4ff4c8fea7e76b73efb15c3b3ee4615011463a49b0454fa4d6a"
@@ -25045,41 +25080,51 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "9b4201204405e1d7f6d5f28d6c71faf603b2836d",
-    "title": "TH14 current Extra and initialized full Application evidence",
+    "basePublishedCommit": "6d1d9b2c47095c9f3c511f329a31316378dba08f",
+    "title": "TH14 actual damage geometry scratch producer for Reimu bomb Z",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-native-extra-campaign-observer-nov01.py",
-      "tools/th14-extra-stage-topology-nov01.mjs",
-      "tools/th14-compare-native-extra-campaign-nov01.mjs",
-      "tools/th14-current-campaign-evidence-nov01.py",
-      "tools/th14-extra-stage-topology-check-nov01.mjs",
-      "tools/th14-initialized-application-full-evidence-nov01.py",
-      "docs/porting/TH14_EXTRA_CURRENT_NOV01.md",
-      "docs/porting/th14-extra-current-campaign-nov01.json",
-      "docs/porting/TH14_INITIALIZED_APPLICATION_FULL_NOV01.md",
-      "docs/porting/th14-initialized-application-full-nov01.json",
+      "runtimes/th12/th12_web/cpp/game/NativeStackTh14.hpp",
+      "runtimes/th12/th12_web/cpp/game/ShotDamageTh14.hpp",
+      "runtimes/th12/th12_web/cpp/game/ShotDamageTh14.cpp",
+      "runtimes/th12/th12_web/cpp/game/ShotManager.hpp",
+      "runtimes/th12/th12_web/cpp/game/ShotTh14.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-reimu-bomb-polar-nov01.cpp",
+      "tools/th14-reimu-bomb-polar-native-nov01.py",
+      "tools/th14-build-reimu-bomb-polar-nov01.py",
+      "tools/th14-reimu-bomb-polar-check-nov01.mjs",
+      "tools/th14-reimu-bomb-polar-evidence-nov01.py",
+      "docs/porting/TH14_REIMU_BOMB_POLAR_Z_NOV01.md",
+      "docs/porting/th14-reimu-bomb-polar-z-nov01.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "productionEngineChanged": false,
-    "productionGameplayCoreChanged": false,
-    "productionCoreCommit": "9b4201204405e1d7f6d5f28d6c71faf603b2836d",
-    "extraCallbacks": 38403,
-    "extraVmRows": 860,
-    "extraVmFields": 303,
-    "extraCombatCheckpoints": 46,
-    "extraInitialPublications": 20679,
-    "actualApplicationFramesPerBackend": 122622,
-    "assertionsPerBackend": 45,
-    "fullImagesPerBackend": 8,
-    "naturalEndFrame": 122562,
-    "stableEndFrames": 60,
-    "physicalAudioDevicesOpened": 0,
+    "productionEngineChanged": true,
+    "productionGameplayCoreChanged": true,
+    "previousProductionCoreCommit": "9b4201204405e1d7f6d5f28d6c71faf603b2836d",
+    "objectsRecompiled": 141,
+    "publicAndPrivateWasmByteIdentical": true,
+    "reimuaEasyCallbacks": 100311,
+    "vmRows": 983,
+    "vmFields": 303,
+    "vmDifferencesBefore": 42,
+    "vmDifferencesAfter": 1,
+    "strictReimuaEasyPassed": false,
+    "originalComponentCases": 64,
+    "acceptedAlignment": 4,
+    "acceptedComponentCases": 32,
+    "otherAlignmentNotAccepted": true,
+    "oldZeroZControlsFailed": 20,
+    "strictFullRegressionCallbacks": [
+      80594,
+      122537,
+      38403
+    ],
+    "nativeValuesProvidedToEngine": false,
+    "originalWholePixelsOrPcmAccepted": false,
     "ordinaryOriginalGuiAccepted": false,
     "independentSchedulingAccepted": false,
-    "originalWholePixelsOrPcmAccepted": false,
     "browserAcceptance": false,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,

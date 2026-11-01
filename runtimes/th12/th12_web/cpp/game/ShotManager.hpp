@@ -113,7 +113,7 @@ struct ShotWorld {
 #if PORT_TITLE == 14
 bool shot_th14_hit_rewards(ShotPlayer&,Rng&,Vec3,ShotWorld&)noexcept;
 Vec3 shot_th14_reward_position(const Th14DamageArea&,Vec3)noexcept;
-void shot_th14_reimu_bomb_hit(const Th14DamageArea&,Vec3,Rng&,Vec3&,float&)noexcept;
+void shot_th14_reimu_bomb_hit(const Th14DamageArea&,Vec3,Rng&,Vec3&,float&,float polar_z=0)noexcept;
 #endif
 class ShotManager
 #if PORT_TITLE == 14

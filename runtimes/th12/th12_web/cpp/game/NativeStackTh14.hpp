@@ -9,11 +9,18 @@ struct NativeStackTh14 {
     static constexpr Word reference_geometry_frame=0x001b0000u-0x137cu;
     // Standalone hosts get the CRT's normalized fallback input. The Web host
     // supplies an independent process nonce before the first game callback.
-    Word cookie=0xbb40e64fu,frame=reference_geometry_frame,scratch=0;
+    Word cookie=0xbb40e64fu,frame=reference_geometry_frame,scratch=0,damage_scratch=0;
     static bool preinitialized_cookie(Word value)noexcept{return value!=0xbb40e64eu&&(value&0xffff0000u);}
     void configure(Word opaque_cookie,Word geometry_frame=reference_geometry_frame)noexcept{
-        cookie=opaque_cookie;frame=geometry_frame;scratch=0;
+        cookie=opaque_cookie;frame=geometry_frame;scratch=0;damage_scratch=0;
     }
+    // Reference collector entry alignment4: its C-28 word is reused by
+    // 414020's two-dimensional polar temporary. Calls and math write it.
+    void damage_rectangles_call()noexcept{damage_scratch=0x00451548u;}
+    void damage_circle_rectangle(float absolute_x)noexcept{std::memcpy(&damage_scratch,&absolute_x,4);}
+    void damage_hit_wrapper(float midpoint_y)noexcept{std::memcpy(&damage_scratch,&midpoint_y,4);}
+    float damage_polar_z()const noexcept{float z;std::memcpy(&z,&damage_scratch,4);return z;}
+    void damage_polar_store(float z)noexcept{std::memcpy(&damage_scratch,&z,4);}
     void beam_effect_published(Word handle)noexcept{scratch=handle;}
     void rectangle_intersection_y(float y)noexcept{std::memcpy(&scratch,&y,4);}
     // The pinned reference dsound.dll pushes STRSAFE_MAX_CCH at+25bab.

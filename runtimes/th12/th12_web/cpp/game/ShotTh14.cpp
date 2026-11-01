@@ -153,11 +153,11 @@ bool ShotManager::th14_reimu_bomb_area(Vec3 p,Vec2 size,i32 duration,u32& index)
     if(!th14_damage_rectangle(th14_areas,th14_area_cursor,p,size,0,duration,300,&animations.rate,index)){last_error=15;return false;}
     auto& a=th14_areas[index];a.flags|=4;a.period=10;a.callback=2;return true;
 }
-void shot_th14_reimu_bomb_hit(const Th14DamageArea& a,Vec3 hit,Rng& rng,Vec3& position,float& angle)noexcept{
+void shot_th14_reimu_bomb_hit(const Th14DamageArea& a,Vec3 hit,Rng& rng,Vec3& position,float& angle,float polar_z)noexcept{
     // Retail 414020 consumes two signed script-RNG units, then aims the effect
     // from the damage-area center toward the unperturbed contact point.
     const float radius=rng.signed_unit()*16.f,scatter=rng.signed_unit()*3.1415927410125732f;
-    position={hit.x+float(std::cos(double(scatter))*radius),hit.y+float(std::sin(double(scatter))*radius),hit.z};
+    position={hit.x+float(std::cos(double(scatter))*radius),hit.y+float(std::sin(double(scatter))*radius),float(hit.z+polar_z)};
     angle=float(std::atan2(double(hit.y-a.position.y),double(hit.x-a.position.x)));
 }
 Vec3 shot_th14_reward_position(const Th14DamageArea& area,Vec3 target)noexcept{
@@ -183,11 +183,13 @@ bool shot_th14_hit_rewards(ShotPlayer& player,Rng& rng,Vec3 p,ShotWorld& world)n
     }return true;
 }
 bool ShotManager::hit(u32 j,Th14DamageArea& area,const Vec3& p,const Vec2* size,float radius,float angle,i32& out){
-    if(area.callback==2){Vec3 position;float rotation;shot_th14_reimu_bomb_hit(area,p,animations.script_rng,position,rotation);
+    if(area.callback==2){Vec3 position;float rotation;shot_th14_reimu_bomb_hit(area,p,animations.script_rng,position,rotation,animations.th14_native_stack.damage_polar_z());
+        animations.th14_native_stack.damage_polar_store(position.z);
         out=area.damage;if(!world.th14_reimu_bomb_hit_effect(position,rotation)){last_error=14;return false;}return true;}
     auto* owner=th14_area_owners[j];if(!owner||!owner->spec){last_error=6;return false;}auto& s=*owner;
     // 451760 calls 453a90 before the shot callback.
     const Vec3 midpoint=shot_th14_reward_position(area,p);
+    animations.th14_native_stack.damage_hit_wrapper(midpoint.y);
     if(!shot_th14_hit_rewards(player,animations.visual_rng,midpoint,world)){last_error=14;return false;}
     if(s.spec->extra_callback==3){Th14BeamHit effect;
         if(!shot_th14_beam_hit(s,player,area,p,size,radius,angle,effect)){
@@ -247,7 +249,7 @@ bool ShotManager::damage_th14(Vec3 p,const Vec2* size,float radius,float angle,b
     // Retail 423a54 passes enemy+280 to451430. The collector's last hit
     // position supplies the direction used by the later424af0 death effect.
     Vec3 last_hit=hit_target?Vec3{hit_target->state.death_reference.x,hit_target->state.death_reference.y,0}:Vec3{};
-    bool bomb=false;if(!th14_damage_collect(th14_areas,*this,p,size,radius,angle,advanced,probe,argument,stamp,signed_bits(resource.header.native_extra[0]),economy,out,bomb,hit_target?&last_hit:nullptr)){if(!last_error)last_error=12;return false;}
+    bool bomb=false;if(!th14_damage_collect(th14_areas,*this,p,size,radius,angle,advanced,probe,argument,stamp,signed_bits(resource.header.native_extra[0]),economy,out,bomb,hit_target?&last_hit:nullptr,&animations.th14_native_stack)){if(!last_error)last_error=12;return false;}
     if(bomb_contact)*bomb_contact=bomb;
     if(hit_target)hit_target->state.death_reference={last_hit.x,last_hit.y};
     return true;
