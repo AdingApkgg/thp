@@ -1,5 +1,6 @@
 #pragma once
 #include "Rng.hpp"
+#include "NativeStackTh14.hpp"
 #include "Timer.hpp"
 #include <vector>
 namespace th11 {
@@ -23,9 +24,16 @@ struct ScreenShakes {
     void start_th14_hold(i32 amplitude,i32 ramp,i32 hold,i32 fall,const float* rate){
         ScreenShake effect;effect.start=amplitude;effect.ramp=ramp;effect.hold=hold;effect.fall=fall;effect.phased=true;effect.timer.set(0,rate);effects.insert(effects.begin(),effect);
     }
-    void update(Rng& rng,bool stopped=false,Rng* visual=nullptr){
-        for(auto it=effects.begin();it!=effects.end();)
-            if(it->update(it->phased&&visual?*visual:rng,offset,stopped)==7)it=effects.erase(it);else ++it;
+    void update(Rng& rng,bool stopped=false,Rng* visual=nullptr,NativeStackTh14* reference_stack=nullptr){
+        for(auto it=effects.begin();it!=effects.end();){
+            auto& chosen=it->phased&&visual?*visual:rng;const auto before=chosen.calls;
+            const auto result=it->update(chosen,offset,stopped);
+            if(reference_stack&&chosen.calls!=before){
+                if(it->phased)reference_stack->controller_opaque_leave();
+                else reference_stack->controller_shake_rng_leave();
+            }
+            if(result==7){if(reference_stack)reference_stack->controller_opaque_leave();it=effects.erase(it);}else ++it;
+        }
     }
 };
 }

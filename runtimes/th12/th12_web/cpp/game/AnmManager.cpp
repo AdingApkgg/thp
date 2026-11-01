@@ -279,7 +279,11 @@ bool AnmManager::update(bool overlay,const std::function<bool()>& after_vm){
             if(vm.layer>=last){last_error=-1;last_error_layer=vm.layer;return false;}
         }else if(overlay&&vm.layer!=overlay_first&&vm.layer!=overlay_first+1)vm.layer=overlay_first;
         if(vm.layer>=first&&vm.layer<last){if(end[vm.layer])end[vm.layer]->draw_next=&vm;else layers[vm.layer]=&vm;end[vm.layer]=&vm;vm.draw_next=nullptr;}
-    }return true;
+    }
+#if PORT_TITLE == 14
+    if(overlay)th14_native_stack.controller_overlay_tail();
+#endif
+    return true;
 }
 bool AnmManager::allocate_geometry(AnmVm& vm,u32 bytes){
     if(!bytes||bytes>16*1024*1024)return false;void* p=std::calloc(1,bytes);if(!p)return false;

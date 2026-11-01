@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "e3563b9590079a52ee1cff358f39c6e971329b08",
+  "sourceCommit": "50b7d161637571389116b76695d2536aa2e6ff51",
   "files": [
     {
       "path": ".gitignore",
@@ -609,9 +609,14 @@
       "sha256": "6dc5806831f3e096c087c552fe217a622d67106ae62df327dffa912180b6eef4"
     },
     {
+      "path": "docs/porting/TH14_REIMU_CONTROLLER_POLAR_NOV01.md",
+      "bytes": 3077,
+      "sha256": "65013c54f8ad6dc0c3403caca73d416e846d4db1109d67dbb068f37a02c9c739"
+    },
+    {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 61757,
-      "sha256": "1ed119a9a4d318096ab30816f5bc54c44a1e8b2e493a1dfb8f7815f7eac81b4b"
+      "bytes": 62709,
+      "sha256": "c669376c77d0f789e85dcee7acc3e27bb94674901c94c706c7108fc91ea893a3"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -2142,6 +2147,11 @@
       "path": "docs/porting/th14-controller-input-verified.json",
       "bytes": 875,
       "sha256": "1f2156c48b8dc33a683aaa8d54d32210bdf9946eae110d6198d6cf03280567df"
+    },
+    {
+      "path": "docs/porting/th14-controller-polar-integration-nov01.json",
+      "bytes": 5463445,
+      "sha256": "41aeb8be381fc2a94b00d59b6762742dcca76bc33a318a7e799960c0e6f81281"
     },
     {
       "path": "docs/porting/th14-cooperative-worker-independent-receipt-oct15.json",
@@ -5309,6 +5319,11 @@
       "sha256": "0b1d813a2125c1c1d797080ced17dbfb72ec150c3f360bc4dfc9d2f2dab651b8"
     },
     {
+      "path": "docs/porting/th14-reimu-controller-polar-candidate-nov01.json",
+      "bytes": 939146,
+      "sha256": "c331534c7d73d29f9363658b3b763822b5bd8298c5d4becf34a1903057bc7c7c"
+    },
+    {
       "path": "docs/porting/th14-reimu-orb-verified.json",
       "bytes": 1400,
       "sha256": "5eab71cbbfe147c5a8eb95dd0fea90ac41c4718b79e4cc4cce35f72984fc95b7"
@@ -8170,8 +8185,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmManager.cpp",
-      "bytes": 19833,
-      "sha256": "f3c3e7ce75d9e216d388f93c22a48a9f213bdc3fbda1fe96acf20a1386a5cd39"
+      "bytes": 19930,
+      "sha256": "5bb3e29b209da1069637399c7fef4f8caa0fa6bad696306b44b51f763cf876d9"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmManager.hpp",
@@ -8255,8 +8270,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/BombController.cpp",
-      "bytes": 28057,
-      "sha256": "25491163dcbc85f557f9e9b7ee33403dbbba13a0a65f370d6d3fd7b3294e0fd8"
+      "bytes": 28535,
+      "sha256": "42a365ad0bae85ab3f15c31e3eadd317b7fb3780ed4f27593873cc4e07e78673"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/BombController.hpp",
@@ -8650,8 +8665,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "bytes": 65479,
-      "sha256": "b4a11c29821d3718c9f1664f13a2f5568d08afe56053ae6088ebf5e1efd70aa7"
+      "bytes": 65622,
+      "sha256": "165255bfc914cec4cf0a97dfa814351e18f1dff482f602e9f8185424d5cd8aaf"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
@@ -8950,8 +8965,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/NativeStackTh14.hpp",
-      "bytes": 2289,
-      "sha256": "683b013e15d741a04c6a63d8b0874693539f9410e5e7149d65c6e18b76f2e662"
+      "bytes": 3199,
+      "sha256": "3f30d5b21b2dd2683ddb69a95d3dfebd223b6d573520623bc57b3c8cbd83fdc0"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/NoopOpcodes.hpp",
@@ -9145,8 +9160,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ScreenShake.hpp",
-      "bytes": 1370,
-      "sha256": "bb7f171c8c1c78a544113a8d90d1788f3cf3418a5c28e5a44b8b706d8d16a053"
+      "bytes": 1869,
+      "sha256": "bb1d62aa3cabb3564d19889554e3d9205bf018a0cad568e0811cf0c73117e378"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/SeasonTh16.cpp",
@@ -16824,6 +16839,16 @@
       "sha256": "a3976fa62edf163da8916fc78c54113f23dd2dc47d636e72339896b754f6a6d4"
     },
     {
+      "path": "tools/th14-controller-polar-candidate-compare-nov01.mjs",
+      "bytes": 48854,
+      "sha256": "a4bf1303ee61a650940834010cc2e2f2c56027a54011b76a0717f3810a143659"
+    },
+    {
+      "path": "tools/th14-controller-polar-integration-evidence-nov01.py",
+      "bytes": 7467,
+      "sha256": "a3c46cca3a357067726e958bf0b6fcd210fa12a06c478c8b4e239c0d1d8450e3"
+    },
+    {
       "path": "tools/th14-core-loading-check.mjs",
       "bytes": 4752,
       "sha256": "00a208664d60707d5bbfde8389c8a72128e2fdcf7082bf7d716e7a78b01f168b"
@@ -21009,6 +21034,16 @@
       "sha256": "7e15344701b7e7393f9d6baaa5934e553fea9dbcdc35a7c0a2e7dacb98c35ad5"
     },
     {
+      "path": "tools/th14-reimu-controller-polar-evidence-nov01.py",
+      "bytes": 17248,
+      "sha256": "a26ab7aa1e1143e7f4527aee9ddfd0dee083664e3ae690e509fa49b8e2017e8b"
+    },
+    {
+      "path": "tools/th14-reimu-controller-z-context-live-observer-nov01.py",
+      "bytes": 61925,
+      "sha256": "5d4ef766dd09ba2b2e1175e6cf61963746239e176a8d20cd50ae0beac6bad767"
+    },
+    {
       "path": "tools/th14-reimu-orb-check.mjs",
       "bytes": 3151,
       "sha256": "da254bf34402f4ff4c8fea7e76b73efb15c3b3ee4615011463a49b0454fa4d6a"
@@ -25170,37 +25205,48 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "e3563b9590079a52ee1cff358f39c6e971329b08",
-    "title": "TH14 actual complete polar-Z Applications on both graphics backends",
+    "basePublishedCommit": "50b7d161637571389116b76695d2536aa2e6ff51",
+    "title": "TH14 actual controller stack producers for Reimu A bomb Z",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-polar-application-full-evidence-nov01.py",
-      "docs/porting/TH14_POLAR_APPLICATION_FULL_NOV01.md",
-      "docs/porting/th14-polar-application-full-nov01.json",
+      "runtimes/th12/th12_web/cpp/game/NativeStackTh14.hpp",
+      "runtimes/th12/th12_web/cpp/game/AnmManager.cpp",
+      "runtimes/th12/th12_web/cpp/game/ScreenShake.hpp",
+      "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
+      "runtimes/th12/th12_web/cpp/game/BombController.cpp",
+      "tools/th14-reimu-controller-z-context-live-observer-nov01.py",
+      "tools/th14-controller-polar-candidate-compare-nov01.mjs",
+      "tools/th14-reimu-controller-polar-evidence-nov01.py",
+      "tools/th14-controller-polar-integration-evidence-nov01.py",
+      "docs/porting/TH14_REIMU_CONTROLLER_POLAR_NOV01.md",
+      "docs/porting/th14-reimu-controller-polar-candidate-nov01.json",
+      "docs/porting/th14-controller-polar-integration-nov01.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "productionEngineChanged": false,
-    "productionGameplayCoreChanged": false,
-    "productionCoreCommit": "bd70b911a3c6a362331f561407a74b6aca3e031f",
-    "backends": [
-      "gles",
-      "webgpu"
-    ],
-    "actualFramesPerBackend": 122622,
-    "assertionsPerBackend": 45,
-    "naturalEndFrame": 122562,
-    "stableEndFrames": 60,
-    "fullImagesPerBackend": 8,
-    "all141CurrentCoreObjectsVerified": true,
-    "currentBothBackendsActuallyExecuted": true,
-    "allCapturedVmAndFullImagesByteEqual": true,
-    "filesAndReplayByteEqual": true,
-    "silentPcmFrames": 89969664,
-    "silentPcmSha256": "39e9d4e4c65b7dea3b259e7a83189c06b7aaf28d76ef71bf9942a5c005453b54",
-    "physicalAudioDevicesOpened": 0,
-    "prematureFullProofRejected": true,
+    "productionEngineChanged": true,
+    "productionGameplayCoreChanged": true,
+    "previousProductionCoreCommit": "bd70b911a3c6a362331f561407a74b6aca3e031f",
+    "productionCoreWasmSha256": "af9ec42926395595779d2744868a5cbff22cb9ddb39588e1a76265c395cffd9a",
+    "objectsRecompiled": 141,
+    "sourceFilesChanged": 5,
+    "nativeStackSamples": 23,
+    "knownStackSamplesEqual": 22,
+    "retirementStackSampleUnresolved": true,
+    "firstReadLastWriterNotObserved": true,
+    "freshProductionRegressionCases": 11,
+    "freshProductionRegressionCallbacks": 1178575,
+    "allElevenStrictAndIndependentRawPassed": true,
+    "stage6Callbacks": 90012,
+    "stage6CombatCheckpoints": 936,
+    "stage6CombatWordsNowEqual": true,
+    "stage6VmDifferentWordsStill22": true,
+    "stage6StrictPassed": false,
+    "opaqueAddressModelStillUnresolved": true,
+    "nativeValuesProvidedToEngine": false,
+    "priorFullApplicationPairVersionBound": true,
+    "newCompleteApplicationPairAccepted": false,
     "ordinaryOriginalGuiAccepted": false,
     "independentSchedulingAccepted": false,
     "originalWholePixelsOrPcmAccepted": false,

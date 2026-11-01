@@ -149,7 +149,7 @@ i32 BombController::tick(){
             for(auto* n=&vm->child;n;n=n->next){if(!n->value||n->value==vm)continue;part=n->value;if(part->script_index==-2||!n->next)break;}
             if(!part){last_error=-6;return -2;}
             float angle=part->rotation.z;if(!(part->scale.x>0))angle-=3.1415927410125732f;
-            const Vec3 p{position.x+float(std::cos(double(angle))*112.),position.y+float(std::sin(double(angle))*112.),position.z};
+            const Vec3 p{position.x+float(std::cos(double(angle))*112.),position.y+float(std::sin(double(angle))*112.),float(position.z+animations.th14_native_stack.controller_polar_z())};
             if(t==0)for(u32 i=1;i<10;++i){th14_reimu_positions[i]=p;th14_reimu_angles[i]=angle;}
             for(u32 i=9;i>0;--i){th14_reimu_positions[i]=th14_reimu_positions[i-1];th14_reimu_angles[i]=th14_reimu_angles[i-1];}
             th14_reimu_positions[0]=p;th14_reimu_angles[0]=angle;

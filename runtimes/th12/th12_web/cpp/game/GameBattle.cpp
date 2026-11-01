@@ -523,7 +523,11 @@ bool GameBattle::update(const std::function<bool()>& sample_input
     camera_position=compositor.play_camera.position;
     enemy_environment.camera_delta=compositor.play_camera.animation_delta;
     shakes.offset=compositor.world_camera.offset;
+    #if PORT_TITLE == 14
+    shakes.update(animations.script_rng,false,&animations.visual_rng,&animations.th14_native_stack);
+#else
     shakes.update(animations.script_rng,false,kPortTitle==14?&animations.visual_rng:nullptr);
+#endif
     compositor.world_camera.offset=shakes.offset;
     fades.update();
     // TH14 4577bf registers score at 17; 44c52f registers player at 18.

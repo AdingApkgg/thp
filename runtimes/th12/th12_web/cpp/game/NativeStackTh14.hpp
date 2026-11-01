@@ -10,9 +10,10 @@ struct NativeStackTh14 {
     // Standalone hosts get the CRT's normalized fallback input. The Web host
     // supplies an independent process nonce before the first game callback.
     Word cookie=0xbb40e64fu,frame=reference_geometry_frame,scratch=0,damage_scratch=0;
+    Word controller_scratch=0;bool controller_scratch_known=true;
     static bool preinitialized_cookie(Word value)noexcept{return value!=0xbb40e64eu&&(value&0xffff0000u);}
     void configure(Word opaque_cookie,Word geometry_frame=reference_geometry_frame)noexcept{
-        cookie=opaque_cookie;frame=geometry_frame;scratch=0;damage_scratch=0;
+        cookie=opaque_cookie;frame=geometry_frame;scratch=0;damage_scratch=0;controller_scratch=0;controller_scratch_known=true;
     }
     // Reference collector entry alignment4: its C-28 word is reused by
     // 414020's two-dimensional polar temporary. Calls and math write it.
@@ -21,6 +22,15 @@ struct NativeStackTh14 {
     void damage_hit_wrapper(float midpoint_y)noexcept{std::memcpy(&damage_scratch,&midpoint_y,4);}
     float damage_polar_z()const noexcept{float z;std::memcpy(&z,&damage_scratch,4);return z;}
     void damage_polar_store(float z)noexcept{std::memcpy(&damage_scratch,&z,4);}
+    // Reference overlay47e7a0 leaves ESI as the null list cursor. A normal
+    // shake46cecf instead leaves the script-RNG this pointer through the
+    // pinned RtlLeaveCriticalSection prologue;4138ca reuses that saved word.
+    void controller_overlay_tail()noexcept{controller_scratch=0;controller_scratch_known=true;}
+    void controller_shake_rng_leave()noexcept{controller_scratch=0x004db508u;controller_scratch_known=true;}
+    // The retiring callback node's opaque native allocation address remains
+    // unresolved. Preserve the old numeric fallback and expose that gap.
+    void controller_opaque_leave()noexcept{controller_scratch=0;controller_scratch_known=false;}
+    float controller_polar_z()const noexcept{float z;std::memcpy(&z,&controller_scratch,4);return z;}
     void beam_effect_published(Word handle)noexcept{scratch=handle;}
     void rectangle_intersection_y(float y)noexcept{std::memcpy(&scratch,&y,4);}
     // The pinned reference dsound.dll pushes STRSAFE_MAX_CCH at+25bab.
