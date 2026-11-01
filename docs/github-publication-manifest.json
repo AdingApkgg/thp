@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "ab7b9eaf37a5671a66eb2dab8e2cdf74f87a1036",
+  "sourceCommit": "ff1938f1ec144363ab0a2a8615465477fa283eca",
   "files": [
     {
       "path": ".gitignore",
@@ -635,8 +635,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 68229,
-      "sha256": "6feba265d76a40376f870095ecd191036773705193919bbb3336ccbbc7934f91"
+      "bytes": 68936,
+      "sha256": "5122f735834337132aec2330b43545383a106e615f3547abdc1d9488d1867229"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -762,6 +762,11 @@
       "path": "docs/porting/TH14_SHT_WORKER_OCT29.md",
       "bytes": 4384,
       "sha256": "6814365848ec0ff128c8a5618bbbc2697887692d99089d6689f1cf76e2e0366a"
+    },
+    {
+      "path": "docs/porting/TH14_SPAWN_APPLICATION_FULL_NOV02.md",
+      "bytes": 2933,
+      "sha256": "59dbd125f5009ac4ccf7748b9e8fcf896a2b7d4db84bc43ffc32023981299693"
     },
     {
       "path": "docs/porting/TH14_SPAWN_BEAM_STACK_COMPILE_GUARD_NOV02.md",
@@ -5999,6 +6004,11 @@
       "sha256": "3579f5168412423cfcf0ed255e61289e779777c834cdf1cdf6d382eaef7df51e"
     },
     {
+      "path": "docs/porting/th14-spawn-application-full-nov02.json",
+      "bytes": 278222,
+      "sha256": "e0eb2e7bbc4cc118e37f9006be7b7298de601f5a8d417f3c8fcbc8337139d7b3"
+    },
+    {
       "path": "docs/porting/th14-spawn-beam-stack-compile-guard-nov02.json",
       "bytes": 1082,
       "sha256": "4e874814a96c7b1615c9ef53a0492cb8498051fe95dc1b706328b45b3ce659fb"
@@ -6017,6 +6027,11 @@
       "path": "docs/porting/th14-spawn-marisaa-hard-natural-nov02.json",
       "bytes": 111115,
       "sha256": "97c6d5a0f2b5a55f7f0e1db8612c85f88009792887864083d0ae6483fbcc0838"
+    },
+    {
+      "path": "docs/porting/th14-spawn-marisab-lunatic-natural-nov02.json",
+      "bytes": 111188,
+      "sha256": "5422aa4b557d81203ae28ce201f851e11762fbb90185c724aaf06ce5a85c4a34"
     },
     {
       "path": "docs/porting/th14-spell-capture-replay-session-observed-oct11.json",
@@ -25395,14 +25410,12 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "ab7b9eaf37a5671a66eb2dab8e2cdf74f87a1036",
-    "title": "TH14 spawn-core actual GLES full run and Marisa A Hard natural sample",
+    "basePublishedCommit": "ff1938f1ec144363ab0a2a8615465477fa283eca",
+    "title": "TH14 spawn-core actual GLES and WebGPU full Application and new Lunatic sample",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-spawn-beam-application-full-evidence-nov02.py",
-      "tools/th14-spawn-natural-run-evidence-nov02.py",
-      "docs/porting/TH14_SPAWN_GLES_AND_HARD_NOV02.md",
-      "docs/porting/th14-spawn-gles-full-nov02.json",
-      "docs/porting/th14-spawn-marisaa-hard-natural-nov02.json",
+      "docs/porting/TH14_SPAWN_APPLICATION_FULL_NOV02.md",
+      "docs/porting/th14-spawn-application-full-nov02.json",
+      "docs/porting/th14-spawn-marisab-lunatic-natural-nov02.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
@@ -25411,21 +25424,19 @@
     "productionEngineChanged": false,
     "productionGameplayCoreChanged": false,
     "previousProductionCoreCommit": "ebba4fe46764cb486e730f74783b39041420955f",
-    "actualGlesFrames": 122622,
-    "actualGlesAssertions": 45,
-    "glesIndependentPassed": true,
-    "fullBackendPairAccepted": false,
-    "marisaaHardNaturalCallbacks": 81458,
-    "marisaaHardStagesActuallyObserved": [
+    "actualFramesPerBackend": 122622,
+    "assertionsPerBackend": 45,
+    "bothActuallyExecutedAndIndependentlyPassed": true,
+    "marisabLunaticNaturalCallbacks": 67860,
+    "marisabLunaticStagesActuallyObserved": [
       1,
       2,
       3,
-      4,
-      5
+      4
     ],
-    "marisaaHardVm303Rows": 2487,
-    "marisaaHardCombatCheckpoints": 815,
-    "marisaaHardStrictAndIndependentPassed": true,
+    "marisabLunaticVm303Rows": 6908,
+    "marisabLunaticCombatCheckpoints": 631,
+    "marisabLunaticStrictAndIndependentPassed": true,
     "naturalModePairs": 30,
     "allTargetStageEntryModePairs": 26,
     "browserAcceptance": false,
