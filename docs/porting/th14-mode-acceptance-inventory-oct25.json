@@ -1,5 +1,5 @@
 {
-  "schema": "th14/mode-acceptance-inventory/4",
+  "schema": "th14/mode-acceptance-inventory/5",
   "date": "2026-11-02",
   "cases": [
     {
@@ -1257,8 +1257,52 @@
         6
       ],
       "nativeCapturedRunAvailable": true,
-      "allStageEntriesObserved": false,
+      "allStageEntriesObserved": true,
       "retainedNaturalRuns": [
+        {
+          "path": "artifacts/th14/marisaa-beam-writer-context-nov02/next-marisaa-easy-kg/native",
+          "reportSha256": "64f17bcf88bc63630cf7b2f7e98959c3d21d8b1c3dfdf92c57dc8224103896ed",
+          "initialSnapshotSha256": "50831ffb5da701e0adc06affc4ba874606c8dd6a3ec72cf556434331dcf96e56",
+          "selectedSha256": "b5113d65adc6270d43c34e74556485a35adf7e5d476f1035c7a5959f555377a4",
+          "callbacks": 120153,
+          "stagesObserved": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "naturalReplayEndObserved": true,
+          "clearCompletionNotAsserted": true,
+          "intactOriginalReplayDeclared": true,
+          "instructionBytesPatched": 0,
+          "rngOrCounterWrites": 0,
+          "replaySha256": "89e6c94c688228e9536bc5fd07caa6bd17c41174061a55d8602a96ed681aba29",
+          "selected32ComparisonReports": [
+            {
+              "path": "artifacts/th14/rgb-acceleration-stack-nov02/new-marisaa-easy-kg/model/report.json",
+              "reportSha256": "faedab21223f61ad00d45f9c4b4e6aaa0a0a77d7267a0b4c6d24c0ad73176353",
+              "callbacks": 120153,
+              "wasmSha256": "1de2cbb429832670d52fde4b398137a66b59a54212426599d13aba957f56eeef",
+              "additionalObservedGateResults": {
+                "camera": true,
+                "hud": true,
+                "animation": true,
+                "combat": true
+              },
+              "reportedAdditionalGateFailures": [],
+              "independentRawProofPath": "artifacts/th14/rgb-acceleration-stack-nov02/new-marisaa-easy-kg/raw-verified.json",
+              "independentRawProofSha256": "2301583815ef38f22ff3867cdcb62424637102020e8654a35bff780806a70675",
+              "scope": "Actual complete finite natural replay; all retained selected32/camera25/HUD2/VM303/combat and initial publications independently exact. Warm entry and observed platform timing only; no whole-mode, ordinary-GUI, pixel, PCM or independent-scheduling acceptance."
+            }
+          ],
+          "preferredComparisonPath": "artifacts/th14/rgb-acceleration-stack-nov02/new-marisaa-easy-kg/model/report.json",
+          "partialSelected32ComparisonReports": [],
+          "actualNativeMusicAndEffectsMasterLevelsZero": true,
+          "sourceCoreCommit": "54cbc0cd05b5db6d8257ffa14dc1dcaf407a8754",
+          "publicEvidence": "docs/porting/th14-marisaa-easy-six-stage-nov02.json"
+        },
         {
           "path": "artifacts/th14/mode-coverage-oct29/marisaa-easy-toho-native",
           "reportSha256": "7cf1345358ebafefbc6586731240389cfedfb8295da4097706f33bff03fbab90",
@@ -3123,7 +3167,7 @@
   ],
   "modePairs": 30,
   "pairsWithNaturalNativeRun": 30,
-  "pairsWithAllStageEntriesObserved": 26,
+  "pairsWithAllStageEntriesObserved": 27,
   "preferredCaptureRule": "Prefer more observed stages, then a reported full selected32 comparison, then the longest compared prefix; loading callback count breaks remaining ties.",
   "scope": "An inventory of retained actual stage entries and separately scoped reported selected32 comparisons, with additional observed gate failures. Missing gates are null, never passed. Neither replay end nor observing all stage entries proves a clear, all objects, ordinary menu initialization, pixels, PCM, persistence or mode equivalence.",
   "reportBindings": {
@@ -3382,9 +3426,18 @@
     "artifacts/th14/six-stage-inputs-nov02/marisab-normal-kg/model/live-report.json": "5dc8b8887ef1312c1ed45bc69c9d725b06e8094d0da8af74d7d44828f28f2e79",
     "artifacts/th14/six-stage-inputs-nov02/marisab-normal-kg/model/combat-snapshots.json": "f23b70ed4a47fad7f88287292b044ebd190cb87cf78fb53dcce92cb6cdccb723",
     "artifacts/th14/six-stage-inputs-nov02/marisab-normal-kg/raw-verified.json": "db1f5b0bb2a7f59fc1c14591aa52742357f2d5151376d801185b2c79f25332af",
-    "docs/porting/th14-marisab-normal-six-stage-nov02.json": "8c1ccba9788c8c6947b8284eefc74a4b83bf613f25b656be0a4e628fbd47c9da"
+    "docs/porting/th14-marisab-normal-six-stage-nov02.json": "8c1ccba9788c8c6947b8284eefc74a4b83bf613f25b656be0a4e628fbd47c9da",
+    "artifacts/th14/marisaa-beam-writer-context-nov02/next-marisaa-easy-kg/native/report.json": "64f17bcf88bc63630cf7b2f7e98959c3d21d8b1c3dfdf92c57dc8224103896ed",
+    "artifacts/th14/marisaa-beam-writer-context-nov02/next-marisaa-easy-kg/native/untouched-first-player.json": "50831ffb5da701e0adc06affc4ba874606c8dd6a3ec72cf556434331dcf96e56",
+    "artifacts/th14/rgb-acceleration-stack-nov02/new-marisaa-easy-kg/model/report.json": "faedab21223f61ad00d45f9c4b4e6aaa0a0a77d7267a0b4c6d24c0ad73176353",
+    "artifacts/th14/rgb-acceleration-stack-nov02/new-marisaa-easy-kg/model/camera-report.json": "14e3f059252d7a502818c34fa2a406e50c2054fc6d93cc4c5300cb9107f310ec",
+    "artifacts/th14/rgb-acceleration-stack-nov02/new-marisaa-easy-kg/model/hud-report.json": "fc796b9f602df31442b8e421bfc8749a05ec08476032254e07046a6cbc55c1d1",
+    "artifacts/th14/rgb-acceleration-stack-nov02/new-marisaa-easy-kg/model/live-report.json": "5b5cef8aca95a881d0cca7dbe391d6fee618ed6d2bdca0fc44589dd7bbbd06f1",
+    "artifacts/th14/rgb-acceleration-stack-nov02/new-marisaa-easy-kg/model/combat-snapshots.json": "50f16c9e7a74ec5615d814d49cb5d7a368dc7cac89948d18913d1574c3df9e6e",
+    "artifacts/th14/rgb-acceleration-stack-nov02/new-marisaa-easy-kg/raw-verified.json": "2301583815ef38f22ff3867cdcb62424637102020e8654a35bff780806a70675",
+    "docs/porting/th14-marisaa-easy-six-stage-nov02.json": "bfcde97eb5a4b4b3c98ada6ef2e70e94fe35d32cf7a1ba105e55a00e11096de7"
   },
-  "toolSha256": "96abbe5fc49855d7023251652a848144b263936d1de241476a9b3c6505c78cba",
+  "toolSha256": "812520447ba55fe17fea53914439a9ec9ee89fbdcc1b7d1a1861f2c5c2086a29",
   "completeGame": false,
   "nativeEquivalent": false,
   "explicitExtension": {
@@ -3435,6 +3488,34 @@
       "allRetainedFieldsIndependentlyExact": true,
       "sourceCoreCommit": "91a797541a5491d326a8c6e5d593e0890313879e",
       "publicEvidenceSha256": "8c1ccba9788c8c6947b8284eefc74a4b83bf613f25b656be0a4e628fbd47c9da",
+      "wholeModeEquivalent": false,
+      "completeGame": false
+    },
+    {
+      "baseSourceCommit": "54cbc0cd05b5db6d8257ffa14dc1dcaf407a8754",
+      "baseInventorySha256": "b9dddc7d16ae3b0cd0c594a709f7bd3f0941f5c1eecec091a4a634601f713e19",
+      "baseInventoryToolSha256": "96abbe5fc49855d7023251652a848144b263936d1de241476a9b3c6505c78cba",
+      "updatedModeOnly": "marisaa-easy",
+      "otherTwentyNineModesFrozenUnchanged": true,
+      "oldObservedStages": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "newObservedStages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "fullCapturedRunCompared": true,
+      "allRetainedFieldsIndependentlyExact": true,
+      "sourceCoreCommit": "54cbc0cd05b5db6d8257ffa14dc1dcaf407a8754",
+      "publicEvidenceSha256": "bfcde97eb5a4b4b3c98ada6ef2e70e94fe35d32cf7a1ba105e55a00e11096de7",
       "wholeModeEquivalent": false,
       "completeGame": false
     }
