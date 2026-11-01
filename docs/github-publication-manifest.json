@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "78ee989661df14014dbe896aa2923bb4fc293f50",
+  "sourceCommit": "9b4201204405e1d7f6d5f28d6c71faf603b2836d",
   "files": [
     {
       "path": ".gitignore",
@@ -259,6 +259,11 @@
       "sha256": "9e8fd5ad470fa258383fd5277da7da2ca9fa608eec1041febe8c08ed00747354"
     },
     {
+      "path": "docs/porting/TH14_EXTRA_CURRENT_NOV01.md",
+      "bytes": 1829,
+      "sha256": "3cf178806ff34077314d3002b1b6077fb94d48f353d0d1aaf62c60c3e8acded0"
+    },
+    {
       "path": "docs/porting/TH14_FINAL_VISUAL_STATE_OCT24.md",
       "bytes": 2378,
       "sha256": "b6e2734afe169d7cd171aea2d85000a04cbac406c2825b3b0a990c63e32aa143"
@@ -307,6 +312,11 @@
       "path": "docs/porting/TH14_INITIALIZATION_BOUNDARY_NOV01.md",
       "bytes": 3857,
       "sha256": "6246fc4dec68be93a76b4f248b325271372c1f5e080fbdb56681155c82a37885"
+    },
+    {
+      "path": "docs/porting/TH14_INITIALIZED_APPLICATION_FULL_NOV01.md",
+      "bytes": 1552,
+      "sha256": "8a2547debabaa0d31ff7ddf6b94b5c7ada5e0cfb8b5e23b1b75fe6d8dbd33c15"
     },
     {
       "path": "docs/porting/TH14_INITIAL_PLAYER_OCT24.md",
@@ -570,8 +580,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 56937,
-      "sha256": "30f42b7ab22c85356b288d269e49a5085fa4a722e74a9682a0c87103a87664c5"
+      "bytes": 57986,
+      "sha256": "5c3dd3a6fb4fca999a208aa04198ae52eb8382b4015a53f1706949cab06af464"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -2739,6 +2749,11 @@
       "sha256": "1a61c8b100f189d14a733a0d49523bf3449f5a6f444aa5197dd13288cac34668"
     },
     {
+      "path": "docs/porting/th14-extra-current-campaign-nov01.json",
+      "bytes": 37221,
+      "sha256": "0ebe04cd55ca8d3b3142f40cde3b6e37c3f5073067eba0018c3c48af4f00a133"
+    },
+    {
       "path": "docs/porting/th14-extra-reimu-b-campaign-oct10.json",
       "bytes": 31566,
       "sha256": "7a043322485a0f1f2e82589bfabb1ea48bc52f36f993128d05627891e2e956fd"
@@ -3082,6 +3097,11 @@
       "path": "docs/porting/th14-initialization-boundary-nov01.json",
       "bytes": 1228842,
       "sha256": "cc4d0a9aa83f73a349dcccf37e415bf153eb09542962716942c18e9eb3032c52"
+    },
+    {
+      "path": "docs/porting/th14-initialized-application-full-nov01.json",
+      "bytes": 78475,
+      "sha256": "93cc779320644691cc641bd319f20d968fbb32dd4f0685a8f05585c3416c1eba"
     },
     {
       "path": "docs/porting/th14-instanced-webgpu-full-oct30.json",
@@ -16604,6 +16624,11 @@
       "sha256": "e0cacdb5767c3798fe88a3ec9527f985059a435993e7397856352891ad6923f9"
     },
     {
+      "path": "tools/th14-compare-native-extra-campaign-nov01.mjs",
+      "bytes": 48886,
+      "sha256": "c07b3cf80927af8114a11a69e557eef9f9710f9b183b82601c7a3b0b85f221d9"
+    },
+    {
       "path": "tools/th14-comparison-failure-receipt.py",
       "bytes": 2311,
       "sha256": "6fad9e51586a4c8c160b618f34ba8476a1a7d4355d00f67f2ec91afda8101ab6"
@@ -16752,6 +16777,11 @@
       "path": "tools/th14-current-browser-flow-evidence-check.mjs",
       "bytes": 3283,
       "sha256": "ca6dd742aaee3082472c2020496fa03b2b44013f31eeae28f90e77d5b16af78a"
+    },
+    {
+      "path": "tools/th14-current-campaign-evidence-nov01.py",
+      "bytes": 8040,
+      "sha256": "c13c768f2fcdecd39341e73b1c6e18af634ace9ce8f6f58cb408e2c92c7c831c"
     },
     {
       "path": "tools/th14-current-construction-normal-evidence-oct30.py",
@@ -17919,6 +17949,16 @@
       "sha256": "9f584acb32ac49aeb755339d6ee0ed45556c408738190e62a5b9a3c8ebf5d6fe"
     },
     {
+      "path": "tools/th14-extra-stage-topology-check-nov01.mjs",
+      "bytes": 1790,
+      "sha256": "d0d0299f536fe5a7ff8ee3d03fe2bde08dceef261f005e6d0851965988d7686a"
+    },
+    {
+      "path": "tools/th14-extra-stage-topology-nov01.mjs",
+      "bytes": 730,
+      "sha256": "ec60007b5bcfd6aecf008caf971a368e3a9f4d6bb79f2500d2e03959efa3d152"
+    },
+    {
       "path": "tools/th14-final-visual-state-check.mjs",
       "bytes": 3235,
       "sha256": "2902ce4c034934836cbbfce11697f94a5a8a70b95cb4d9d4bf5aaf91f6c53d3f"
@@ -18974,6 +19014,11 @@
       "sha256": "5696dd107e3cfb48da9acd32d717be719afb623e6a1d460fb5ea0850dbc9b9ab"
     },
     {
+      "path": "tools/th14-initialized-application-full-evidence-nov01.py",
+      "bytes": 7632,
+      "sha256": "babb659e79fb8cdf134c2aa7ef2caae14a829f9375e2430502cb6bc2b22fd53b"
+    },
+    {
       "path": "tools/th14-instanced-webgpu-full-evidence-oct30.py",
       "bytes": 9020,
       "sha256": "089eaeaf62d086babcd45c9f66ddcac7b92b748d52b45718179c96ef9833dcaa"
@@ -19577,6 +19622,11 @@
       "path": "tools/th14-native-device-observer-oct27.py",
       "bytes": 37420,
       "sha256": "ec15b4c6db3a4a408efc208bb829e5246b9504eb8f09d7d28b61af119d22212d"
+    },
+    {
+      "path": "tools/th14-native-extra-campaign-observer-nov01.py",
+      "bytes": 56679,
+      "sha256": "84e9c7d51079e35006d9c223dd5d65a32cddbd39c33bf31d9a4437a16d5431f7"
     },
     {
       "path": "tools/th14-native-first-loader-angle-capture.py",
@@ -24995,53 +25045,42 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "78ee989661df14014dbe896aa2923bb4fc293f50",
-    "title": "TH14 stage initialization at an actual nested animation boundary",
+    "basePublishedCommit": "9b4201204405e1d7f6d5f28d6c71faf603b2836d",
+    "title": "TH14 current Extra and initialized full Application evidence",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/AnmManager.cpp",
-      "runtimes/th12/th12_web/cpp/game/AnmManager.hpp",
-      "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
-      "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "runtimes/th12/th12_web/cpp/game/StagedLoaderPrototype.hpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-stage-initialization-boundary-nov01.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-initialization-clock-fixture-nov01.cpp",
-      "tools/th14-native-initialization-boundary-observer-nov01.py",
-      "tools/th14-build-initialization-boundary-observer-nov01.py",
-      "tools/th14-initialization-boundary-evidence-nov01.py",
-      "docs/porting/TH14_INITIALIZATION_BOUNDARY_NOV01.md",
-      "docs/porting/th14-initialization-boundary-nov01.json",
+      "tools/th14-native-extra-campaign-observer-nov01.py",
+      "tools/th14-extra-stage-topology-nov01.mjs",
+      "tools/th14-compare-native-extra-campaign-nov01.mjs",
+      "tools/th14-current-campaign-evidence-nov01.py",
+      "tools/th14-extra-stage-topology-check-nov01.mjs",
+      "tools/th14-initialized-application-full-evidence-nov01.py",
+      "docs/porting/TH14_EXTRA_CURRENT_NOV01.md",
+      "docs/porting/th14-extra-current-campaign-nov01.json",
+      "docs/porting/TH14_INITIALIZED_APPLICATION_FULL_NOV01.md",
+      "docs/porting/th14-initialized-application-full-nov01.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "productionEngineChanged": true,
-    "productionGameplayCoreChanged": true,
-    "previousProductionCoreCommit": "57a544191704e0ce64cd46de85fe648a3e152097",
-    "controlledOriginalStage": 2,
-    "controlledOriginalCallback": 13919,
-    "controlledOriginalCallPc": "47ef1e",
-    "controlledCallbacks": 15500,
-    "controlledVmRows": 224,
-    "controlledCombatCheckpoints": 143,
-    "retainedOldCoreRngMismatchRows": 1581,
-    "stageInitializationOnlyNoRecursiveResourceReplacement": true,
-    "loaderBoundaryChecks": 24,
-    "allGameCoreObjectsRecompiled": 141,
-    "publicRebuildWasmByteIdentical": true,
-    "fullRegressionCallbacks": [
-      80594,
-      122537
-    ],
-    "actualApplicationFramesPerBackend": 2270,
-    "assertionsPerBackend": 7,
-    "originalFullBgraBytesPerBackend": 1228800,
-    "originalFrameVmRows": 334,
-    "pixelDifferences": 0,
-    "independentThreadSchedulingAccepted": false,
-    "old80324FailureClosed": false,
-    "ordinaryReplayInputConfirmed": false,
+    "productionEngineChanged": false,
+    "productionGameplayCoreChanged": false,
+    "productionCoreCommit": "9b4201204405e1d7f6d5f28d6c71faf603b2836d",
+    "extraCallbacks": 38403,
+    "extraVmRows": 860,
+    "extraVmFields": 303,
+    "extraCombatCheckpoints": 46,
+    "extraInitialPublications": 20679,
+    "actualApplicationFramesPerBackend": 122622,
+    "assertionsPerBackend": 45,
+    "fullImagesPerBackend": 8,
+    "naturalEndFrame": 122562,
+    "stableEndFrames": 60,
+    "physicalAudioDevicesOpened": 0,
+    "ordinaryOriginalGuiAccepted": false,
+    "independentSchedulingAccepted": false,
+    "originalWholePixelsOrPcmAccepted": false,
+    "browserAcceptance": false,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
     "completeGame": false,
