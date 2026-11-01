@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "6d1d9b2c47095c9f3c511f329a31316378dba08f",
+  "sourceCommit": "bd70b911a3c6a362331f561407a74b6aca3e031f",
   "files": [
     {
       "path": ".gitignore",
@@ -282,6 +282,11 @@
       "path": "docs/porting/TH14_FIXED20_DEPTH_FIX_OCT19.md",
       "bytes": 2622,
       "sha256": "9f1561d8260b4c1060edcb3bfa88895a799ba9d63f009fa9d0a1e442da5b076e"
+    },
+    {
+      "path": "docs/porting/TH14_FOCUSED_HIT_LIVE_BIRTH_NOV01.md",
+      "bytes": 2125,
+      "sha256": "3840545a3aaa2e5a58b5ec01d45356b6dbcb76994ea98d4a30534c692c140158"
     },
     {
       "path": "docs/porting/TH14_FOCUSED_HIT_STACK_PRODUCER_OCT26.md",
@@ -585,8 +590,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 58874,
-      "sha256": "65b3577f2ecb328a1ae66357454083ff32543141ab21f31fe358b67aa9036c4b"
+      "bytes": 59658,
+      "sha256": "072b41116a9477c78bc20ecd85044e0bfd14e12a35838c3a5d144997a3b20a02"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -2812,6 +2817,11 @@
       "path": "docs/porting/th14-focused-growth-full-combat-verified-oct14.json",
       "bytes": 121256,
       "sha256": "19b6553de0d1afeed0350ed12b2668fbee1124358e8305ff5958029dd52054a3"
+    },
+    {
+      "path": "docs/porting/th14-focused-hit-live-birth-nov01.json",
+      "bytes": 3696,
+      "sha256": "45923a860acb72f5412ff5c236fca6bbc438eb77ee30841f711e081d4a6689fa"
     },
     {
       "path": "docs/porting/th14-focused-hit-stack-producer-verified-oct26.json",
@@ -18029,6 +18039,16 @@
       "sha256": "2e926a56714f3636b156b3d3aba86af04a263e4a8246a6d6643148316ef88ff2"
     },
     {
+      "path": "tools/th14-focused-hit-live-evidence-nov01.py",
+      "bytes": 6254,
+      "sha256": "6757e1088316ab1107773a946295b16be0504490eafefb11ba864471d85c2f57"
+    },
+    {
+      "path": "tools/th14-focused-hit-live-observer-nov01.py",
+      "bytes": 60949,
+      "sha256": "a717da201bd5c9f9c52eaeb40b028420c9c5eb790cba8511ff4bd31d2dc17115"
+    },
+    {
       "path": "tools/th14-focused-hit-stack-producer-evidence-oct26.py",
       "bytes": 6886,
       "sha256": "c7f8f0d4d3ed1c7fcc8b716ef368bb6d10f40e443f29daa86e95ef3ffa678683"
@@ -25080,51 +25100,33 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "6d1d9b2c47095c9f3c511f329a31316378dba08f",
-    "title": "TH14 actual damage geometry scratch producer for Reimu bomb Z",
+    "basePublishedCommit": "bd70b911a3c6a362331f561407a74b6aca3e031f",
+    "title": "TH14 actual live focused-hit stack and factory birth evidence",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/NativeStackTh14.hpp",
-      "runtimes/th12/th12_web/cpp/game/ShotDamageTh14.hpp",
-      "runtimes/th12/th12_web/cpp/game/ShotDamageTh14.cpp",
-      "runtimes/th12/th12_web/cpp/game/ShotManager.hpp",
-      "runtimes/th12/th12_web/cpp/game/ShotTh14.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-reimu-bomb-polar-nov01.cpp",
-      "tools/th14-reimu-bomb-polar-native-nov01.py",
-      "tools/th14-build-reimu-bomb-polar-nov01.py",
-      "tools/th14-reimu-bomb-polar-check-nov01.mjs",
-      "tools/th14-reimu-bomb-polar-evidence-nov01.py",
-      "docs/porting/TH14_REIMU_BOMB_POLAR_Z_NOV01.md",
-      "docs/porting/th14-reimu-bomb-polar-z-nov01.json",
+      "tools/th14-focused-hit-live-observer-nov01.py",
+      "tools/th14-focused-hit-live-evidence-nov01.py",
+      "docs/porting/TH14_FOCUSED_HIT_LIVE_BIRTH_NOV01.md",
+      "docs/porting/th14-focused-hit-live-birth-nov01.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "productionEngineChanged": true,
-    "productionGameplayCoreChanged": true,
-    "previousProductionCoreCommit": "9b4201204405e1d7f6d5f28d6c71faf603b2836d",
-    "objectsRecompiled": 141,
-    "publicAndPrivateWasmByteIdentical": true,
-    "reimuaEasyCallbacks": 100311,
-    "vmRows": 983,
-    "vmFields": 303,
-    "vmDifferencesBefore": 42,
-    "vmDifferencesAfter": 1,
-    "strictReimuaEasyPassed": false,
-    "originalComponentCases": 64,
-    "acceptedAlignment": 4,
-    "acceptedComponentCases": 32,
-    "otherAlignmentNotAccepted": true,
-    "oldZeroZControlsFailed": 20,
-    "strictFullRegressionCallbacks": [
-      80594,
-      122537,
-      38403
+    "productionEngineChanged": false,
+    "productionGameplayCoreChanged": false,
+    "productionCoreCommit": "bd70b911a3c6a362331f561407a74b6aca3e031f",
+    "actualOriginalCallbacks": 2202,
+    "diagnosticWindow": [
+      2000,
+      2200
     ],
-    "nativeValuesProvidedToEngine": false,
-    "originalWholePixelsOrPcmAccepted": false,
-    "ordinaryOriginalGuiAccepted": false,
-    "independentSchedulingAccepted": false,
+    "events": 259,
+    "wrappers": 113,
+    "verifiedLiveBirths": 11,
+    "diagnosticPrefixOnly": true,
+    "naturalReplayEndAccepted": false,
+    "productionAddressModelImplemented": false,
+    "strictReimuaEasyPassed": false,
     "browserAcceptance": false,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 25,
