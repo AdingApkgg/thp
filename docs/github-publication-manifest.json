@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "54cbc0cd05b5db6d8257ffa14dc1dcaf407a8754",
+  "sourceCommit": "9a7fd24d3ed3f937932991e0838e2d7e1a00a7c0",
   "files": [
     {
       "path": ".gitignore",
@@ -354,6 +354,11 @@
       "sha256": "758bc3da9e7c306a333c8540201787a1f4e108d61e3b86be4e5d2cf7d59759b4"
     },
     {
+      "path": "docs/porting/TH14_INTERPOLATOR_APPLICATION_FULL_NOV02.md",
+      "bytes": 1984,
+      "sha256": "ca1bdb6cbc282d517e9da1d07478a982eab985a9f14826c416bfbe5c7f42fb5d"
+    },
+    {
       "path": "docs/porting/TH14_INTERPOLATOR_STACK_NOV02.md",
       "bytes": 3569,
       "sha256": "d3674e29af5691d4e9a7380294587ffd7d28547a352b337066d9682684363db9"
@@ -645,8 +650,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 70228,
-      "sha256": "3b65e68c798471b07c8373a318ed65339241674459849a5c695d18a230c4cd07"
+      "bytes": 71440,
+      "sha256": "b16b653e985ffd3feb4f27f906872a57bfb11ef4d0b80e4ffe03560137196610"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -747,6 +752,11 @@
       "path": "docs/porting/TH14_SEED_STORE_BOUNDARIES_NOV01.md",
       "bytes": 2706,
       "sha256": "5f74b3053c44371c1a5635df4d3bc81e3fb207f6bb6aeb1120950baae4cf6cc5"
+    },
+    {
+      "path": "docs/porting/TH14_SEED_WRITE_OPERANDS_NOV02.md",
+      "bytes": 2894,
+      "sha256": "df70a2e2bd28fd27f5fd8af34173e7f2dbfce843361e7a903ea4c97e3c4a7d9e"
     },
     {
       "path": "docs/porting/TH14_SELECTED_PLAYER_RESOURCE_OCT23.md",
@@ -3217,6 +3227,11 @@
       "path": "docs/porting/th14-instanced-webgpu-full-oct30.json",
       "bytes": 72478,
       "sha256": "91f9f6ee2572ef2b5a57598cb2f933681039e552d86431b5942d65a165dc25b2"
+    },
+    {
+      "path": "docs/porting/th14-interpolator-application-full-nov02.json",
+      "bytes": 241127,
+      "sha256": "3f134d33bc55e1a684d2c24a85d36f20af8f4cea80070765a459d720fb2b4eb6"
     },
     {
       "path": "docs/porting/th14-interpolator-gles-full-nov02.json",
@@ -6707,6 +6722,16 @@
       "path": "docs/porting/th14-stage2-progression-long-oct10.json",
       "bytes": 31444,
       "sha256": "0a24f1e6db91317eecdb6272ef6dfb57f151900e7047bc9ee497d5e52b4adadb"
+    },
+    {
+      "path": "docs/porting/th14-stage3-seed-write-controls-nov02.json",
+      "bytes": 1404,
+      "sha256": "cfa9226e5cd92cf9f65c8339eb9cbf719e3abaa01a622dfd0d331c2904d3af1f"
+    },
+    {
+      "path": "docs/porting/th14-stage3-seed-write-operands-nov02.json",
+      "bytes": 6250,
+      "sha256": "2aabbffdc4e4bf1e9a810966524866e862457aac22156122dad44adfdbdd0959"
     },
     {
       "path": "docs/porting/th14-stage6-bounce-campaign-oct10.json",
@@ -23689,9 +23714,29 @@
       "sha256": "3760812763ea0f467cf4d0c2c471500baf0aefa1200c1208f04abf4c9ca86e29"
     },
     {
+      "path": "tools/th14-stage3-seed-store-minimal-observer-nov01.py",
+      "bytes": 60798,
+      "sha256": "bd4d3e1338353c56908b90ec22b94ad9cfe0b77d47f28ea8f8c86b04e15eeee9"
+    },
+    {
       "path": "tools/th14-stage3-seed-store-observer-v2-nov01.py",
       "bytes": 59926,
       "sha256": "f51c4a63d04e6e8b81bd75038002cd0fc7a5c25b415c9b74501d687de561b52b"
+    },
+    {
+      "path": "tools/th14-stage3-seed-write-controls-nov02.py",
+      "bytes": 4262,
+      "sha256": "bd035c9390812ce452ed52f309b5898960708af12c46837f68345c983259d9ba"
+    },
+    {
+      "path": "tools/th14-stage3-seed-write-evidence-nov02.py",
+      "bytes": 13761,
+      "sha256": "2a8bf0d6b917ab10d576111b40d50ea2a64dfa7692a1530155905ab750a70c06"
+    },
+    {
+      "path": "tools/th14-stage3-seed-write-trace-observer-nov02.py",
+      "bytes": 65911,
+      "sha256": "07bf2722640855f78aca1164c082d2fe8856647e1c71fc1473bddb5b60670981"
     },
     {
       "path": "tools/th14-stage5-area-replay-trace-check.mjs",
@@ -25485,18 +25530,18 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "54cbc0cd05b5db6d8257ffa14dc1dcaf407a8754",
-    "title": "TH14 Marisa A Easy six-stage coverage and actual current-core GLES full run",
+    "basePublishedCommit": "9a7fd24d3ed3f937932991e0838e2d7e1a00a7c0",
+    "title": "TH14 current-core complete GLES/WebGPU and actual RNG store operands",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-marisaa-easy-six-stage-evidence-nov02.py",
-      "tools/th14-extend-marisaa-easy-inventory-nov02.py",
-      "tools/th14-interpolator-application-full-evidence-nov02.py",
-      "tools/th14-ordinary-reimub-observer-nov02.py",
-      "docs/porting/TH14_MARISAA_EASY_SIX_STAGE_NOV02.md",
-      "docs/porting/th14-marisaa-easy-six-stage-nov02.json",
-      "docs/porting/th14-mode-acceptance-inventory-oct25.json",
-      "docs/porting/th14-interpolator-gles-full-nov02.json",
-      "docs/porting/th14-ordinary-reimub-gui-nov02.json",
+      "tools/th14-stage3-seed-store-minimal-observer-nov01.py",
+      "tools/th14-stage3-seed-write-trace-observer-nov02.py",
+      "tools/th14-stage3-seed-write-evidence-nov02.py",
+      "tools/th14-stage3-seed-write-controls-nov02.py",
+      "docs/porting/TH14_SEED_WRITE_OPERANDS_NOV02.md",
+      "docs/porting/th14-stage3-seed-write-operands-nov02.json",
+      "docs/porting/th14-stage3-seed-write-controls-nov02.json",
+      "docs/porting/TH14_INTERPOLATOR_APPLICATION_FULL_NOV02.md",
+      "docs/porting/th14-interpolator-application-full-nov02.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
@@ -25504,30 +25549,21 @@
     "gameAssetsAdded": false,
     "productionEngineChanged": false,
     "productionGameplayCoreChanged": false,
-    "previousProductionCoreCommit": "54cbc0cd05b5db6d8257ffa14dc1dcaf407a8754",
+    "productionCoreCommit": "54cbc0cd05b5db6d8257ffa14dc1dcaf407a8754",
     "coreWasmSha256": "1de2cbb429832670d52fde4b398137a66b59a54212426599d13aba957f56eeef",
-    "newNaturalCallbacks": 120153,
-    "stagesActuallyObserved": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6
-    ],
-    "vm303Rows": 1141,
-    "combatCheckpoints": 1054,
+    "actualGlesAndWebgpuFramesEach": 122622,
+    "assertionsEach": 45,
+    "currentFullBackendPairAccepted": true,
     "currentNaturalSamples": 15,
     "currentNaturalCallbacks": 1571493,
-    "currentStrictAndIndependentPassed": true,
-    "currentGlesFrames": 122622,
-    "currentGlesAssertions": 45,
-    "currentGlesIndependentlyPassed": true,
-    "currentFullBackendPairAccepted": false,
+    "seedWritePrefixCallbacks": 26000,
+    "mainSeedWritesIndependentlyEmulated": 342,
+    "workerSeedWrites": 1,
+    "corruptedEvidenceCasesRejected": 6,
+    "crossThreadInstructionTotalOrderAccepted": false,
+    "nativeValuesProvidedToEngine": false,
     "naturalModePairs": 30,
     "allTargetStageEntryModePairs": 27,
-    "ordinaryOriginalGuiAttempts": 2,
-    "ordinaryOriginalGuiPlayerCallbacks": 0,
     "ordinaryOriginalGuiAccepted": false,
     "browserAcceptance": false,
     "completeGame": false,
