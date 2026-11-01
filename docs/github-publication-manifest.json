@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "8df264cec3d4d7885140eca64da76a2728645846",
+  "sourceCommit": "7e81b1a1f3ef23482d750ffee28755fbcde13790",
   "files": [
     {
       "path": ".gitignore",
@@ -494,6 +494,11 @@
       "sha256": "78f4b029f947b81ef65edd38fd9893bef00b0956f432c6503a9c89d70ee59642"
     },
     {
+      "path": "docs/porting/TH14_PASSIVE_RETURN_CLOCK_NOV01.md",
+      "bytes": 4129,
+      "sha256": "179ede4e0c09ba10cf7a7c6ed21693b04366d6cd77038c73b7667a1ae1d2a8a1"
+    },
+    {
       "path": "docs/porting/TH14_PASSIVE_VM_ENTRY_OCT30.md",
       "bytes": 4068,
       "sha256": "d9329911e65efa878c16881e99109feea311a8bf01b99d62776d174c176a2300"
@@ -529,6 +534,11 @@
       "sha256": "72047916222c0db87dfa6609a415564bba3fd2a141d883a391227396f16a83cf"
     },
     {
+      "path": "docs/porting/TH14_REFERENCE_METHODS_OCT31.md",
+      "bytes": 2610,
+      "sha256": "c351d4a5dd3c8564b0b681fcf1bf7f1add3ecace688f98592e0c4864e454b8c9"
+    },
+    {
       "path": "docs/porting/TH14_REIMUB_EASY_WORKER_OCT26.md",
       "bytes": 2033,
       "sha256": "70b681a624ade01ebdff36c5f6e8f0c8d122ff4de675fd9d5b47bdaedf133d1a"
@@ -540,8 +550,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 52667,
-      "sha256": "2d9c9211c999e0da64a7252853f4fdb3c1455e08e3883d36732a298123d82657"
+      "bytes": 53562,
+      "sha256": "0ddd2a319b98843711463d7cc80778ae2b45bd709997771ecf48ff2cc2cf645b"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -4807,6 +4817,11 @@
       "path": "docs/porting/th14-passive-entry-clock-oct30.json",
       "bytes": 143128,
       "sha256": "2ad2fbde762c8824079687af1b0895f9611cf4fbf57b2a6be666a5bab598f16d"
+    },
+    {
+      "path": "docs/porting/th14-passive-return-clock-nov01.json",
+      "bytes": 280143,
+      "sha256": "4f61c38f23eb913b3310d24206bb15897291d8383ecf759cc9f1ea446a2fdff7"
     },
     {
       "path": "docs/porting/th14-passive-vm-entry-oct30.json",
@@ -20254,9 +20269,24 @@
       "sha256": "1499f6cbc159324f3cf9389a2ebb7437d418ed341bee0a4c5448544ab4524d4a"
     },
     {
+      "path": "tools/th14-passive-return-clock-compare-nov01.py",
+      "bytes": 6893,
+      "sha256": "e4080e83cb1b16bfd341e9c3b6bbc01c86bfdf01f353c5de24e85d618d95720e"
+    },
+    {
+      "path": "tools/th14-passive-return-clock-evidence-nov01.py",
+      "bytes": 10157,
+      "sha256": "4edce35b73379cb944c633240767ed7b7d188608b29075317543f40872574c0d"
+    },
+    {
       "path": "tools/th14-passive-vm-entry-evidence-oct30.py",
       "bytes": 12124,
       "sha256": "a5d025c3e8e018461f3338097e8c67a3f7e8e2538764da713f7deaa8de6132b6"
+    },
+    {
+      "path": "tools/th14-passive-vm-return-evidence-nov01.py",
+      "bytes": 12213,
+      "sha256": "e2da3c90600eb3f880806094cba85e46a3f1d3256977092d17a7c7ce6e8d2938"
     },
     {
       "path": "tools/th14-pause-controls-check.mjs",
@@ -24860,16 +24890,15 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "8df264cec3d4d7885140eca64da76a2728645846",
-    "title": "TH14 passive pending VM entry and bounded clock diagnosis",
+    "basePublishedCommit": "7e81b1a1f3ef23482d750ffee28755fbcde13790",
+    "title": "TH14 actual passive VM return and extended strict comparison",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-native-campaign-observer-oct25.py",
-      "tools/th14-call-entry-return-guard-check-oct30.py",
-      "tools/th14-passive-vm-entry-evidence-oct30.py",
-      "tools/th14-passive-entry-clock-evidence-oct30.py",
-      "docs/porting/TH14_PASSIVE_VM_ENTRY_OCT30.md",
-      "docs/porting/th14-passive-vm-entry-oct30.json",
-      "docs/porting/th14-passive-entry-clock-oct30.json",
+      "tools/th14-passive-vm-return-evidence-nov01.py",
+      "tools/th14-passive-return-clock-compare-nov01.py",
+      "tools/th14-passive-return-clock-evidence-nov01.py",
+      "docs/porting/TH14_PASSIVE_RETURN_CLOCK_NOV01.md",
+      "docs/porting/th14-passive-return-clock-nov01.json",
+      "docs/porting/TH14_REFERENCE_METHODS_OCT31.md",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
@@ -24879,13 +24908,17 @@
     "productionGameplayCoreChanged": false,
     "productionLauncherChanged": false,
     "productionCoreCommit": "57a544191704e0ce64cd46de85fe648a3e152097",
-    "nativePrefixCallbacks": 33000,
-    "nativeCallEdges": 4714,
-    "nativeCallPairs": 2357,
-    "pendingCallEntryDrained": 1,
-    "observerEntryAndReturnControlsPassed": true,
-    "passiveClockProjectionCurrentPayloadsEqual": true,
-    "unprojectedStrictFailureRetained": true,
+    "nativePrefixCallbacks": 48000,
+    "nativeCallEdges": 4380,
+    "nativeCallPairs": 2190,
+    "actualReturnPointObserved": true,
+    "normalRegistryEntryTimeProjected": false,
+    "baselineStrictFailureRetained": true,
+    "combatCheckpoints": 432,
+    "combatFieldDifferencesBefore": 599,
+    "combatFieldDifferencesAfter": 0,
+    "vmRows": 666,
+    "vmFields": 303,
     "old80324FailureClosed": false,
     "independentThreadSchedulingAccepted": false,
     "nativeNaturalRunModePairs": 30,
