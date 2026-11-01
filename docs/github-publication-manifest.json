@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "2f1bf86ec0d9643516ca218a665c305d2fbbc3ba",
+  "sourceCommit": "e3563b9590079a52ee1cff358f39c6e971329b08",
   "files": [
     {
       "path": ".gitignore",
@@ -554,6 +554,11 @@
       "sha256": "a96593681039c593e0a5fe8d881c96e45b42d56d3a7188a73e5abadd8fc7ea09"
     },
     {
+      "path": "docs/porting/TH14_POLAR_APPLICATION_FULL_NOV01.md",
+      "bytes": 1821,
+      "sha256": "eb5680f50c8aaec83c13b7bc1a0e4dec3e0084c951522a69c758d231c8549b33"
+    },
+    {
       "path": "docs/porting/TH14_POLAR_EXTRA_REIMUB_NOV01.md",
       "bytes": 1490,
       "sha256": "b5fc051f5fe28ac10747566a5c82c3a29c785c43e7650dfbb43f9ba3275bbb49"
@@ -605,8 +610,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 60926,
-      "sha256": "1e4f785584de30af9bbbafdf3c3d2552ecb12cb38ef20449f4419dcc18913e54"
+      "bytes": 61757,
+      "sha256": "1ed119a9a4d318096ab30816f5bc54c44a1e8b2e493a1dfb8f7815f7eac81b4b"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -5177,6 +5182,11 @@
       "path": "docs/porting/th14-player-tail-verified.json",
       "bytes": 1997,
       "sha256": "565618bc525ad524c58031cde4fabd1f9c5fd54c8d0fb42f7519d6445878f78d"
+    },
+    {
+      "path": "docs/porting/th14-polar-application-full-nov01.json",
+      "bytes": 78904,
+      "sha256": "d5c88b48b0074efb13b5173230c4425ca88c15fec55b348e6ecf56d9c3404f42"
     },
     {
       "path": "docs/porting/th14-polar-extra-reimub-nov01.json",
@@ -20739,6 +20749,11 @@
       "sha256": "ffbf5c941f2852b56a078d8865679ca4555e3bf222533963043c2406f257bc1d"
     },
     {
+      "path": "tools/th14-polar-application-full-evidence-nov01.py",
+      "bytes": 7724,
+      "sha256": "dd3f10f5f564bc2f79ae3cdab0f628327fc714e5ac217f84e26afbbed99f6b4e"
+    },
+    {
       "path": "tools/th14-polar-current-extra-evidence-nov01.py",
       "bytes": 7494,
       "sha256": "d3eec0bfdeb6d6df28ce500e05c28de8cb995124fc1f5b380c9bf6fd859ee1c3"
@@ -25155,23 +25170,12 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "2f1bf86ec0d9643516ca218a665c305d2fbbc3ba",
-    "title": "TH14 current mode sweep, new Reimu B Extra, and actual stage6 birth provenance",
+    "basePublishedCommit": "e3563b9590079a52ee1cff358f39c6e971329b08",
+    "title": "TH14 actual complete polar-Z Applications on both graphics backends",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-focused-hit-live-evidence-nov01.py",
-      "tools/th14-focused-live-campaign-evidence-nov01.py",
-      "tools/th14-polar-current-mode-evidence-nov01.py",
-      "tools/th14-compare-native-campaign-retained-camera-nov01.mjs",
-      "tools/th14-polar-mode-sweep-evidence-nov01.py",
-      "tools/th14-polar-current-extra-evidence-nov01.py",
-      "docs/porting/TH14_FOCUSED_HIT_LIVE_BIRTH_NOV01.md",
-      "docs/porting/th14-focused-hit-live-birth-nov01.json",
-      "docs/porting/TH14_FOCUSED_STAGE6_BIRTH_NOV01.md",
-      "docs/porting/th14-focused-stage6-birth-nov01.json",
-      "docs/porting/TH14_POLAR_MODE_SWEEP_NOV01.md",
-      "docs/porting/th14-polar-mode-sweep-nov01.json",
-      "docs/porting/TH14_POLAR_EXTRA_REIMUB_NOV01.md",
-      "docs/porting/th14-polar-extra-reimub-nov01.json",
+      "tools/th14-polar-application-full-evidence-nov01.py",
+      "docs/porting/TH14_POLAR_APPLICATION_FULL_NOV01.md",
+      "docs/porting/th14-polar-application-full-nov01.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
@@ -25180,25 +25184,23 @@
     "productionEngineChanged": false,
     "productionGameplayCoreChanged": false,
     "productionCoreCommit": "bd70b911a3c6a362331f561407a74b6aca3e031f",
-    "currentFiniteModePassesAdded": 7,
-    "currentFiniteModeCallbacks": 890105,
-    "currentFidelityFailuresRetained": 5,
-    "missingObservationModesRejected": 2,
-    "oldOutputBudgetFailureRetained": true,
-    "outputBudgetBytes": 134217728,
-    "redundantNativeCameraBytesAvoidedOnRerun": 69765224,
-    "allRerunNumericsByteIdentical": true,
-    "freshReimubExtraCallbacks": 46936,
-    "freshExtraVmRows": 725,
-    "freshExtraCombatCheckpoints": 56,
-    "freshExtraInitialPublications": 10427,
-    "stage6DiagnosticCallbacks": 90012,
-    "stage6LiveBirths": 6,
-    "stage6VmRows": 2021,
-    "stage6VmDifferentWords": 22,
-    "stage6CombatDifferentWords": 1,
-    "stage6StrictPassed": false,
-    "productionAddressModelImplemented": false,
+    "backends": [
+      "gles",
+      "webgpu"
+    ],
+    "actualFramesPerBackend": 122622,
+    "assertionsPerBackend": 45,
+    "naturalEndFrame": 122562,
+    "stableEndFrames": 60,
+    "fullImagesPerBackend": 8,
+    "all141CurrentCoreObjectsVerified": true,
+    "currentBothBackendsActuallyExecuted": true,
+    "allCapturedVmAndFullImagesByteEqual": true,
+    "filesAndReplayByteEqual": true,
+    "silentPcmFrames": 89969664,
+    "silentPcmSha256": "39e9d4e4c65b7dea3b259e7a83189c06b7aaf28d76ef71bf9942a5c005453b54",
+    "physicalAudioDevicesOpened": 0,
+    "prematureFullProofRejected": true,
     "ordinaryOriginalGuiAccepted": false,
     "independentSchedulingAccepted": false,
     "originalWholePixelsOrPcmAccepted": false,
