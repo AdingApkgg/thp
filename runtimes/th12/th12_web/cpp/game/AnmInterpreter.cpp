@@ -157,6 +157,9 @@ int AnmVm::update(AnmEnvironment& env){
     if(pending_interrupt&&!dispatch_interrupt(*this,&env.rate)){timer.advance(-1);return finish();}
     for(u32 budget=0;instruction->time<=timer.current;++budget){
         if(budget==100000)return -1;
+#if PORT_TITLE == 14
+        if(!env.th14_instruction_boundary(*this))return -1;
+#endif
         auto* current=instruction;const i32 op=current->opcode;
         push_trace(u32(reinterpret_cast<const u8*>(current)-reinterpret_cast<const u8*>(script_begin)),u16(op),u16(current->length));
         auto integer=[&](u32 n){const auto v=current->argument<i32>(n);return current->references&(1u<<n)?integer_value(v,env):v;};

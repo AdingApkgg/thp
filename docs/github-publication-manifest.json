@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "9a7fd24d3ed3f937932991e0838e2d7e1a00a7c0",
+  "sourceCommit": "3a961ae474882daac7155178809dc91aac0be16e",
   "files": [
     {
       "path": ".gitignore",
@@ -354,6 +354,11 @@
       "sha256": "758bc3da9e7c306a333c8540201787a1f4e108d61e3b86be4e5d2cf7d59759b4"
     },
     {
+      "path": "docs/porting/TH14_INSTRUCTION_INITIALIZATION_NOV02.md",
+      "bytes": 3817,
+      "sha256": "a29cad15155b12e210a1dc3d16760b5410fd78f3feacd61c5097231ca2ad0a45"
+    },
+    {
       "path": "docs/porting/TH14_INTERPOLATOR_APPLICATION_FULL_NOV02.md",
       "bytes": 1984,
       "sha256": "ca1bdb6cbc282d517e9da1d07478a982eab985a9f14826c416bfbe5c7f42fb5d"
@@ -650,8 +655,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 71440,
-      "sha256": "b16b653e985ffd3feb4f27f906872a57bfb11ef4d0b80e4ffe03560137196610"
+      "bytes": 72220,
+      "sha256": "66ad16b64efc4a0c13edb2a3cd17e2fdf3ca134abbf2077c21880e3c98a2025a"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -3227,6 +3232,11 @@
       "path": "docs/porting/th14-instanced-webgpu-full-oct30.json",
       "bytes": 72478,
       "sha256": "91f9f6ee2572ef2b5a57598cb2f933681039e552d86431b5942d65a165dc25b2"
+    },
+    {
+      "path": "docs/porting/th14-instruction-initialization-nov02.json",
+      "bytes": 210384,
+      "sha256": "582275856a103e016d8c9f3912f192b5719809c73fef1697ac9fb86d8d3c14a5"
     },
     {
       "path": "docs/porting/th14-interpolator-application-full-nov02.json",
@@ -8340,8 +8350,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmInterpreter.cpp",
-      "bytes": 39830,
-      "sha256": "ca454697ac0cf62f0ef4ad08e4ac91e3c81d904bcb35ec6466c05c1b6f7b80fd"
+      "bytes": 39921,
+      "sha256": "e0ae43763e7ebc45d497aea1831713dec512cf26b347fc5a65969b76336b7f37"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmManager.cpp",
@@ -8350,8 +8360,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmManager.hpp",
-      "bytes": 6626,
-      "sha256": "5036df538441cd6f8391550d93f6cfe27a2e6e2d0879e7705de63c1d2c270bba"
+      "bytes": 6746,
+      "sha256": "0a5cdc5743ae0feb6486a9642b3202f8e11dcc2133f6f6f7e1edaccd84c4d1e3"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmOpcodes.hpp",
@@ -8405,8 +8415,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmVm.hpp",
-      "bytes": 9044,
-      "sha256": "23b0ecb775ac37057f72bf88f3ba80a40712f87cebbc0acbade911e0ce288001"
+      "bytes": 9187,
+      "sha256": "a80d69b947510294e41f9c4f9ee56b8511210490fd030ae0f39d508286fa6d33"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Archive.cpp",
@@ -16879,6 +16889,16 @@
       "sha256": "8714448699df7aab1af1723a394176bc05590eb8a3827ed7cce54313a4e2f233"
     },
     {
+      "path": "tools/th14-compare-controlled-nested-instruction-nov02.mjs",
+      "bytes": 52515,
+      "sha256": "030d25ac43d4e2ea76f3d6b78aad9189d0c22d0a3e6f760e892e71cf4a0b12d6"
+    },
+    {
+      "path": "tools/th14-compare-controlled-nested-instruction-prefix-nov02.mjs",
+      "bytes": 53190,
+      "sha256": "5c2d989f410a0aa417146be610e53dd482130580dd499442c80d38ecbd39a1fd"
+    },
+    {
       "path": "tools/th14-compare-native-campaign-retained-camera-nov01.mjs",
       "bytes": 48511,
       "sha256": "abaf89329cf21a3abdc6f1e421320b56c0ed60a0a67ed295e43b0054a26e31c1"
@@ -16992,6 +17012,21 @@
       "path": "tools/th14-continuous-stage-prefix-check.py",
       "bytes": 5328,
       "sha256": "12aad2078b337789206b58a053dc169ae7fcd6015dfba0c6cdb881c7b163c011"
+    },
+    {
+      "path": "tools/th14-controlled-nested-instruction-evidence-nov02.py",
+      "bytes": 9825,
+      "sha256": "cf510474068236e3c40f5dfcfbb493734cabda4f2a3e39710bccacd2fbdef607"
+    },
+    {
+      "path": "tools/th14-controlled-nested-instruction-observer-nov02.py",
+      "bytes": 70347,
+      "sha256": "69594e58d2ea32a558df35320d41c6cf5ebd38a814f964e678dc8883935fa1a4"
+    },
+    {
+      "path": "tools/th14-controlled-nested-instruction-prefix-evidence-nov02.py",
+      "bytes": 10847,
+      "sha256": "42b8989b3866fe6118d54b83c2dc2f37f7cc27167fd9354cb805b26429fc1f3c"
     },
     {
       "path": "tools/th14-controlled-std-vm-return-evidence-nov02.py",
@@ -19342,6 +19377,11 @@
       "path": "tools/th14-instanced-webgpu-full-evidence-oct30.py",
       "bytes": 9020,
       "sha256": "089eaeaf62d086babcd45c9f66ddcac7b92b748d52b45718179c96ef9833dcaa"
+    },
+    {
+      "path": "tools/th14-instruction-initialization-evidence-nov02.py",
+      "bytes": 12716,
+      "sha256": "16b4fa0158cb0835ad3ca99a7cc24d60289b83f3482705c94f57947712d2f369"
     },
     {
       "path": "tools/th14-interpolator-application-full-evidence-nov02.py",
@@ -24264,6 +24304,11 @@
       "sha256": "ea0751a2d4644780c3cde3f62873cbf6b7e41c17a6657c17d474f48579587fc8"
     },
     {
+      "path": "tools/th14-verify-nested-instruction-campaign-nov02.py",
+      "bytes": 19386,
+      "sha256": "56166cfe745f1e34e0f8197a6b0d47b02257a9eafc517a0a85d33245d722dad0"
+    },
+    {
       "path": "tools/th14-viewport-candidate-evidence-check-oct19.py",
       "bytes": 8246,
       "sha256": "233a237c547dfce03fd76bc82968567a0cf4923f4fe38c378e68109c2fa686a1"
@@ -25530,42 +25575,46 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "9a7fd24d3ed3f937932991e0838e2d7e1a00a7c0",
-    "title": "TH14 current-core complete GLES/WebGPU and actual RNG store operands",
+    "basePublishedCommit": "3a961ae474882daac7155178809dc91aac0be16e",
+    "title": "TH14 instruction-level initialization delivery with controlled Reimu B and regular natural regressions",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-stage3-seed-store-minimal-observer-nov01.py",
-      "tools/th14-stage3-seed-write-trace-observer-nov02.py",
-      "tools/th14-stage3-seed-write-evidence-nov02.py",
-      "tools/th14-stage3-seed-write-controls-nov02.py",
-      "docs/porting/TH14_SEED_WRITE_OPERANDS_NOV02.md",
-      "docs/porting/th14-stage3-seed-write-operands-nov02.json",
-      "docs/porting/th14-stage3-seed-write-controls-nov02.json",
-      "docs/porting/TH14_INTERPOLATOR_APPLICATION_FULL_NOV02.md",
-      "docs/porting/th14-interpolator-application-full-nov02.json",
+      "runtimes/th12/th12_web/cpp/game/AnmVm.hpp",
+      "runtimes/th12/th12_web/cpp/game/AnmManager.hpp",
+      "runtimes/th12/th12_web/cpp/game/AnmInterpreter.cpp",
+      "tools/th14-controlled-nested-instruction-observer-nov02.py",
+      "tools/th14-controlled-nested-instruction-evidence-nov02.py",
+      "tools/th14-controlled-nested-instruction-prefix-evidence-nov02.py",
+      "tools/th14-compare-controlled-nested-instruction-nov02.mjs",
+      "tools/th14-compare-controlled-nested-instruction-prefix-nov02.mjs",
+      "tools/th14-verify-nested-instruction-campaign-nov02.py",
+      "tools/th14-instruction-initialization-evidence-nov02.py",
+      "docs/porting/TH14_INSTRUCTION_INITIALIZATION_NOV02.md",
+      "docs/porting/th14-instruction-initialization-nov02.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "productionEngineChanged": false,
-    "productionGameplayCoreChanged": false,
-    "productionCoreCommit": "54cbc0cd05b5db6d8257ffa14dc1dcaf407a8754",
-    "coreWasmSha256": "1de2cbb429832670d52fde4b398137a66b59a54212426599d13aba957f56eeef",
-    "actualGlesAndWebgpuFramesEach": 122622,
-    "assertionsEach": 45,
-    "currentFullBackendPairAccepted": true,
+    "productionEngineChanged": true,
+    "productionGameplayCoreChanged": true,
+    "previousProductionCoreCommit": "54cbc0cd05b5db6d8257ffa14dc1dcaf407a8754",
+    "coreWasmSha256": "dc7e2a677d60371166cbb03352f566fd86278dd8a8dfe13879dc968ed5692ccc",
+    "coreObjectsRecompiled": 141,
+    "controlledReimubCallbacks": 34000,
+    "controlledVm303Rows": 956,
+    "controlledCombatCheckpoints": 322,
     "currentNaturalSamples": 15,
     "currentNaturalCallbacks": 1571493,
-    "seedWritePrefixCallbacks": 26000,
-    "mainSeedWritesIndependentlyEmulated": 342,
-    "workerSeedWrites": 1,
-    "corruptedEvidenceCasesRejected": 6,
-    "crossThreadInstructionTotalOrderAccepted": false,
-    "nativeValuesProvidedToEngine": false,
+    "strictAndIndependentPassed": true,
+    "startupFirstChanceNoticesRetained": 10,
+    "coldStartupAccepted": false,
+    "reimuaStrictPrefixAccepted": false,
+    "reimuaUnresolvedPointerZWords": 5,
+    "currentNewCoreFullApplicationAccepted": false,
+    "currentNewCoreBrowserAccepted": false,
     "naturalModePairs": 30,
     "allTargetStageEntryModePairs": 27,
-    "ordinaryOriginalGuiAccepted": false,
-    "browserAcceptance": false,
+    "independentSchedulingAccepted": false,
     "completeGame": false,
     "nativeEquivalent": false
   }
