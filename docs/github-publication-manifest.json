@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "91a797541a5491d326a8c6e5d593e0890313879e",
+  "sourceCommit": "4b6cb72295b27af2e9a3fecfa7adb54b089e825c",
   "files": [
     {
       "path": ".gitignore",
@@ -534,6 +534,11 @@
       "sha256": "7a7d897911c04b5cc17daed47cae128f91a7f90a8c6d624ceb253593cacd9c4e"
     },
     {
+      "path": "docs/porting/TH14_OPTION_RECALL_APPLICATION_FULL_NOV02.md",
+      "bytes": 1784,
+      "sha256": "5d6184482984151c19e547ef1201fc10c6c14d5ee5940bde875b160e6e6947da"
+    },
+    {
       "path": "docs/porting/TH14_OPTION_RECALL_NOV02.md",
       "bytes": 3015,
       "sha256": "51ad639f81a389c7930f8d92ec94ea78f628c6d15c7b28a3a75a8ac8cec15380"
@@ -630,8 +635,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 66143,
-      "sha256": "ad8d7616e54b9d8c962b9329381bd98466a59db20c57d4dc90475e97da3482cd"
+      "bytes": 67163,
+      "sha256": "bcdb3142028c1ae45022bf05930da0b62eead3c3f06cd74c0d14511ccf1cc18b"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -4872,6 +4877,11 @@
       "path": "docs/porting/th14-normal-natural-clear-verified-oct13.json",
       "bytes": 47788,
       "sha256": "b2ee9f483b75c008b5c30bd740a08cb4d19d408d94fd646090fa7954dc73c982"
+    },
+    {
+      "path": "docs/porting/th14-option-recall-application-full-nov02.json",
+      "bytes": 77190,
+      "sha256": "2bdacbd288dada23d2adaa0ae93dd8c143e8ac26bf2b65565dd9c78658af0271"
     },
     {
       "path": "docs/porting/th14-option-recall-nov02.json",
@@ -20329,6 +20339,11 @@
       "sha256": "4c42e89b7c9e4bb1d0063079c9fb9c6a8b5d0ae423e2130d7d745b7ef65e5c05"
     },
     {
+      "path": "tools/th14-option-recall-application-full-evidence-nov02.py",
+      "bytes": 7888,
+      "sha256": "19bf7d59d28da12e2fc687ed5146ec787b954bd930d7628a7f2500531e018eb3"
+    },
+    {
       "path": "tools/th14-option-recall-evidence-nov02.py",
       "bytes": 13279,
       "sha256": "18fc40c7c2954ced3d6592993c24219c2067c6ef165fb3953201412cef74cf4b"
@@ -25305,16 +25320,12 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "91a797541a5491d326a8c6e5d593e0890313879e",
-    "title": "TH14 Marisa B Normal actual complete six-stage original coverage",
+    "basePublishedCommit": "4b6cb72295b27af2e9a3fecfa7adb54b089e825c",
+    "title": "TH14 actual complete option-recall Applications on both graphics backends",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-expanded-six-stage-evidence-nov02.py",
-      "tools/th14-expand-mode-inventory-nov02.py",
-      "tools/th14-native-silent-levels-nov02.py",
-      "docs/porting/TH14_MARISAB_NORMAL_SIX_STAGE_NOV02.md",
-      "docs/porting/th14-marisab-normal-six-stage-nov02.json",
-      "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
-      "docs/porting/th14-mode-acceptance-inventory-oct25.json",
+      "tools/th14-option-recall-application-full-evidence-nov02.py",
+      "docs/porting/TH14_OPTION_RECALL_APPLICATION_FULL_NOV02.md",
+      "docs/porting/th14-option-recall-application-full-nov02.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
@@ -25323,23 +25334,29 @@
     "productionEngineChanged": false,
     "productionGameplayCoreChanged": false,
     "productionCoreCommit": "91a797541a5491d326a8c6e5d593e0890313879e",
-    "callbacks": 123447,
-    "vmRows": 3086,
-    "vmFields": 303,
-    "combatCheckpoints": 1166,
-    "allRetainedSelectedCameraHudVmCombatAndInitialPublicationsIndependentlyExact": true,
-    "actualOriginalNaturalReplayEndAndSixStagesObserved": true,
-    "actualNativeMusicEffectsMasterLevelsZero": true,
-    "oldTwoStageInputRetained": true,
-    "otherTwentyNineModesFrozenUnchanged": true,
-    "noNativeComputedGameValuesProvidedToEngine": true,
+    "backends": [
+      "gles",
+      "webgpu"
+    ],
+    "actualFramesPerBackend": 122622,
+    "assertionsPerBackend": 45,
+    "naturalEndFrame": 122562,
+    "stableEndFrames": 60,
+    "fullImagesPerBackend": 8,
+    "all141CurrentCoreObjectsVerified": true,
+    "currentBothBackendsActuallyExecuted": true,
+    "allCapturedVmAndFullImagesByteEqual": true,
+    "filesAndReplayByteEqual": true,
+    "silentPcmFrames": 89969664,
+    "silentPcmSha256": "39e9d4e4c65b7dea3b259e7a83189c06b7aaf28d76ef71bf9942a5c005453b54",
+    "physicalAudioDevicesOpened": 0,
+    "prematureFullProofRejected": true,
     "ordinaryOriginalGuiAccepted": false,
     "independentSchedulingAccepted": false,
     "originalWholePixelsOrPcmAccepted": false,
     "browserAcceptance": false,
     "nativeNaturalRunModePairs": 30,
     "nativeAllStageEntryModePairs": 26,
-    "wholeModeEquivalentAccepted": false,
     "completeGame": false,
     "nativeEquivalent": false
   }
