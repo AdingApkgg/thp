@@ -1,0 +1,42 @@
+{
+  "verifiedOriginalExtraHeapCallBoundaries": true,
+  "originalExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "actualOriginalInstructionsExecuted": true,
+  "cases": [
+    {
+      "site": "alternate",
+      "syntheticRequestedBytes": 0,
+      "heapRequestedBytes": 1,
+      "heapFlags": 0,
+      "returnBoundaryReached": true
+    },
+    {
+      "site": "alternate",
+      "syntheticRequestedBytes": 57,
+      "heapRequestedBytes": 57,
+      "heapFlags": 0,
+      "returnBoundaryReached": true
+    },
+    {
+      "site": "zeroed",
+      "syntheticRequestedBytes": 57,
+      "heapRequestedBytes": 57,
+      "heapFlags": 8,
+      "returnBoundaryReached": true
+    },
+    {
+      "site": "reallocate",
+      "syntheticRequestedBytes": 57,
+      "heapRequestedBytes": 57,
+      "heapFlags": 0,
+      "returnBoundaryReached": true
+    }
+  ],
+  "alternateZeroRequestNormalizedToOne": true,
+  "operatingSystemHeapFunctionsExecuted": false,
+  "nativeValuesProvidedToEngine": false,
+  "productionCodeChanged": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "toolSha256": "0b915ef99894b4dfc722d6c083b76aa6e17e66f8120022e168aba564bdc959da"
+}

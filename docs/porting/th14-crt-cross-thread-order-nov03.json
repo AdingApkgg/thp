@@ -1,0 +1,29 @@
+{
+  "verifiedRecordedDebugDeliveryOrderClassification": true,
+  "callbacks": 600,
+  "events": 1021,
+  "counts": {
+    "activeAtEndInRecordedOrder": 439,
+    "crossThreadMatchedFreeEntries": 86,
+    "duplicatesWithOtherThreadFreeBetween": 13,
+    "matchedFreeEntries": 269,
+    "nonNullAllocationReturns": 708,
+    "nullFreeEntries": 8,
+    "sameThreadDuplicateWithoutSameThreadFree": 13,
+    "unmatchedNonNullFreeEntries": 4
+  },
+  "syntheticPositiveAndNegativeControlsPassed": true,
+  "actualMemoryOrderProved": false,
+  "freeSuccessProved": false,
+  "loaderBeforeAttachAndDirectOsCallsObserved": false,
+  "originalFullHeapHistoryProved": false,
+  "nativeValuesProvidedToEngine": false,
+  "rawPointersPublished": false,
+  "productionIntegrated": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "proofSha256": "23b066d32317212b5bd1e8ba7d357b2669007eb5fe13286be9bce891fdf45f25",
+  "eventLogSha256": "23c188a786937baa552bf6b147807f8cdeb71fceebe07ff4ab647e26b9fa62fc",
+  "toolSha256": "8ebb7f2d17e769c162b8b1b8b2905af5422875bcb2297e28e4cdd03987ed533e",
+  "scope": "Address identities are classified in the debugger event delivery order only. A free entry is not a successful free, and cross-thread delivery order is not proved to match actual memory operations. The loader before attach and direct OS calls are unobserved."
+}

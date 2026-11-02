@@ -1,0 +1,44 @@
+{
+  "verifiedFiniteSameTraceHeapScopeExperiment": true,
+  "callbacks": 600,
+  "events": 1119,
+  "models": [
+    {
+      "name": "primaryOnly",
+      "primary": 708,
+      "zeroed": 130,
+      "target": 32,
+      "targetReuse": 25,
+      "targetRelative": 1,
+      "matchedFrees": 269,
+      "unknownFrees": 4,
+      "nullFrees": 8
+    },
+    {
+      "name": "primaryAndZeroed",
+      "primary": 708,
+      "zeroed": 130,
+      "target": 32,
+      "targetReuse": 25,
+      "targetRelative": 1,
+      "matchedFrees": 273,
+      "unknownFrees": 0,
+      "nullFrees": 8
+    }
+  ],
+  "primarySize530cIsNotProvenEnemy": true,
+  "modelReceivesOnlySizesAndObservedLifetimeOrder": true,
+  "actualOriginalAddressesProvidedToModel": false,
+  "debugDeliveryOrderAssumedMemoryOrderForExperiment": true,
+  "freeSuccessAssumedForExperiment": true,
+  "earlierActivityAndOtherHeapPathsNotModeled": true,
+  "originalHeapHistoryReconstructed": false,
+  "productionIntegrated": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "eventLogSha256": "2b35958238949c2f241109c3089b75b3e7c6c932f940826477aa37f066340fbb",
+  "traceProofSha256": "f553fe1357c74924b73c68449c8213be0f88b33fe9216aef4964b2bd702e778a",
+  "largeWasmSha256": "f6432ef0062440aece5afa1129b36da616d7e8c9de3dd7c8fca753c48fa12fe7",
+  "toolSha256": "0545bdeccaa69341846a7e2c2b72615b56f3ef7605aa1ce2129c537696e14ac9",
+  "scope": "Both isolated models process the same debugger event delivery order; the first omits zeroed allocations and the second includes them. Debug delivery order and free success are assumptions; loader before attach and other paths are omitted. The 0x530c primary allocation size is only a size filter, not proof of enemy identity."
+}
