@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "e4b6a1464ea497f41f2ada3ab1b4cefa72d58d24",
+  "sourceCommit": "22c4f853fc1cb81b8a0c0891b88023f2f5dc065e",
   "files": [
     {
       "path": ".gitignore",
@@ -675,8 +675,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 77158,
-      "sha256": "8884c24cdfec958eb9dcd1c7ded307969d2f9236f885645ad7d6360b3960b11a"
+      "bytes": 77720,
+      "sha256": "67086e4ae1bdd433dc6b65819205e69f5bd72f0d65e7007434a0b28e34198865"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -852,6 +852,11 @@
       "path": "docs/porting/TH14_STAGE2_CALLBACK_RETURN_OCT15.md",
       "bytes": 3533,
       "sha256": "25e2ebf9351c8015a2d75d7cf00bcc37767add47d2527e79c3a9014d1793f080"
+    },
+    {
+      "path": "docs/porting/TH14_STAGE3_SEED_ORDER_NOV03.md",
+      "bytes": 1618,
+      "sha256": "99b98a393dc03a7dd8c9713df6b4ed71e9c9ca57ddd0908e6d282d8d3dbce456"
     },
     {
       "path": "docs/porting/TH14_STAGED_LOADER.md",
@@ -6812,6 +6817,11 @@
       "path": "docs/porting/th14-stage2-progression-long-oct10.json",
       "bytes": 31444,
       "sha256": "0a24f1e6db91317eecdb6272ef6dfb57f151900e7047bc9ee497d5e52b4adadb"
+    },
+    {
+      "path": "docs/porting/th14-stage3-seed-order-nov03.json",
+      "bytes": 16780,
+      "sha256": "aae85a6a592fe7ddcc1628a93a7910b5f7b4bef469fc8461a477c028b0de0cf3"
     },
     {
       "path": "docs/porting/th14-stage3-seed-write-controls-nov02.json",
@@ -17009,6 +17019,11 @@
       "sha256": "31cdefea77cd457c86e378cf19fdefe2089f3db2141390590e39cebccf772490"
     },
     {
+      "path": "tools/th14-compare-earliest-worker-hypothesis-nov03.mjs",
+      "bytes": 49014,
+      "sha256": "c99af10c11745c3a2b5b3a38bd197849ad8db2c12e3cee6630bc07e8b7bb2d7f"
+    },
+    {
       "path": "tools/th14-compare-native-campaign-retained-camera-nov01.mjs",
       "bytes": 48511,
       "sha256": "abaf89329cf21a3abdc6f1e421320b56c0ed60a0a67ed295e43b0054a26e31c1"
@@ -17022,6 +17037,11 @@
       "path": "tools/th14-compare-native-extra-campaign-nov01.mjs",
       "bytes": 48886,
       "sha256": "c07b3cf80927af8114a11a69e557eef9f9710f9b183b82601c7a3b0b85f221d9"
+    },
+    {
+      "path": "tools/th14-compare-retained-stage-actor-experiment-nov03.mjs",
+      "bytes": 50012,
+      "sha256": "e38448a47d9c4324fa0f19de5b6073e63c7146441b848071d623d7bdb7e19cd7"
     },
     {
       "path": "tools/th14-comparison-failure-receipt.py",
@@ -18032,6 +18052,11 @@
       "path": "tools/th14-draw-layer-native.py",
       "bytes": 2726,
       "sha256": "87ea8dee6c86195923b2ffdefa78193c11f818930fadd97273a076d3fd189f56"
+    },
+    {
+      "path": "tools/th14-earliest-worker-hypothesis-check-nov03.py",
+      "bytes": 5271,
+      "sha256": "4d2c5f68d6aca11ecceb3a5477b003910297eed9222a3a6bf4aa384796365d8d"
     },
     {
       "path": "tools/th14-ecl-animation-slots-native.py",
@@ -21699,6 +21724,16 @@
       "sha256": "cf8297fe8d06d3c2f359e6536eccb3ac4fe1edac99747ab7b28291b49207a2ac"
     },
     {
+      "path": "tools/th14-retained-seed-trajectory-nov03.py",
+      "bytes": 3218,
+      "sha256": "421253b681b8c16d35688e58b8550a41f4ed2de23542eee52c9f0031a20994cd"
+    },
+    {
+      "path": "tools/th14-retained-stage3-stack-context-nov03.py",
+      "bytes": 4139,
+      "sha256": "de77cd429f3fcb09f4a375fb1de124ccf6a79c9da34f29e8dbfe318f67f2b436"
+    },
+    {
       "path": "tools/th14-retired-target-browser-flow-evidence-check.mjs",
       "bytes": 3460,
       "sha256": "11057e9b7d44d7d587e7cfd25877c86d7e93c0aa8cb8562dbc573e48284e21d4"
@@ -23964,6 +23999,11 @@
       "sha256": "dea0d7b1ec8b4617e5559a9665821698f30f0050085ae30e6f2e4415b3b4e9d5"
     },
     {
+      "path": "tools/th14-stage3-seed-order-evidence-nov03.py",
+      "bytes": 4364,
+      "sha256": "f419eb51eafdc376e678888fee007b49bc5430d48e0b299d51110ae732aa9b4a"
+    },
+    {
       "path": "tools/th14-stage3-seed-store-evidence-v3-nov01.py",
       "bytes": 7535,
       "sha256": "3760812763ea0f467cf4d0c2c471500baf0aefa1200c1208f04abf4c9ca86e29"
@@ -24517,6 +24557,11 @@
       "path": "tools/th14-verify-native-campaign.py",
       "bytes": 16097,
       "sha256": "ea0751a2d4644780c3cde3f62873cbf6b7e41c17a6657c17d474f48579587fc8"
+    },
+    {
+      "path": "tools/th14-verify-native-initialize-timing-nov03.py",
+      "bytes": 2407,
+      "sha256": "ad3a48524cf42e8a087d43654667e3a7c791e760b915c2910ade1290c71a68ec"
     },
     {
       "path": "tools/th14-verify-nested-instruction-campaign-nov02.py",
@@ -25795,43 +25840,34 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "e4b6a1464ea497f41f2ada3ab1b4cefa72d58d24",
-    "title": "TH14 preserve shake RNG draw across worker counter restore",
+    "basePublishedCommit": "22c4f853fc1cb81b8a0c0891b88023f2f5dc065e",
+    "title": "TH14 finite stage3 seed-order diagnosis with timing guard",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/ScreenShake.hpp",
-      "runtimes/th12/th12_web/cpp/game/ScreenShake.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-shake-counter-restore-fixture-nov03.cpp",
-      "tools/th14-rng-actor-counter-restore-native-nov02.py",
-      "tools/th14-shake-counter-restore-build-nov03.py",
-      "tools/th14-shake-counter-restore-check-nov03.mjs",
-      "tools/th14-shake-counter-restore-evidence-nov03.py",
-      "docs/porting/TH14_SHAKE_COUNTER_RESTORE_NOV03.md",
-      "docs/porting/th14-shake-counter-restore-nov03.json",
+      "tools/th14-retained-stage3-stack-context-nov03.py",
+      "tools/th14-retained-seed-trajectory-nov03.py",
+      "tools/th14-earliest-worker-hypothesis-check-nov03.py",
+      "tools/th14-verify-native-initialize-timing-nov03.py",
+      "tools/th14-compare-earliest-worker-hypothesis-nov03.mjs",
+      "tools/th14-compare-retained-stage-actor-experiment-nov03.mjs",
+      "tools/th14-stage3-seed-order-evidence-nov03.py",
+      "docs/porting/TH14_STAGE3_SEED_ORDER_NOV03.md",
+      "docs/porting/th14-stage3-seed-order-nov03.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
-    "productionEngineChanged": true,
-    "productionGameplayCoreChanged": true,
-    "previousProductionCoreCommit": "2f42560318202a997514d9644adb549db548964a",
-    "coreWasmSha256": "f00a33cb9687fb544441d71bf9e5d78249b4d2e00d4059d59e7736ab1fb1c6eb",
-    "coreObjectsCompiled": 141,
-    "ordinaryExportAbi": 134,
-    "verifiedCandidateAndProductionWasmByteEqual": true,
-    "currentNaturalSamples": 16,
-    "currentNaturalCallbacks": 1579705,
-    "strictAndIndependentPassed": true,
-    "originalInstructionProfiles": 2016,
-    "actualWorkerStoreExecutions": 480,
-    "baselineStackFailures": 192,
-    "candidateStackFailures": 0,
-    "syntheticWorkerSchedule": true,
-    "syntaxChecks": 12,
-    "old36826FailureClosed": false,
-    "currentCoreFullApplicationAccepted": false,
-    "currentCoreBrowserAccepted": false,
-    "naturalModePairs": 30,
-    "allTargetStageEntryModePairs": 27,
+    "productionEngineChanged": false,
+    "productionGameplayCoreChanged": false,
+    "currentProductionCoreCommit": "22c4f853fc1cb81b8a0c0891b88023f2f5dc065e",
+    "historicalObjectIndex": 6,
+    "individualHistoricalVmIdentityProved": false,
+    "hypotheticalEarlyTime": true,
+    "strictOldPrefixPassed": false,
+    "remainingVmZWordDifferences": 2,
+    "formalInitializeTimeCasesPassed": 16,
+    "hypothesisRejectedByTimingGate": true,
+    "newCoreFullApplicationAccepted": false,
+    "browserAccepted": false,
     "completeGame": false,
     "nativeEquivalent": false
   }
