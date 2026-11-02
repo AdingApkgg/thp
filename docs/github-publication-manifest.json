@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "90b457a21892160d3dfde9199135709a61af9c33",
+  "sourceCommit": "a9d8865a66f731f4094935d1c78a736cb4ad3f35",
   "files": [
     {
       "path": ".gitignore",
@@ -310,8 +310,8 @@
     },
     {
       "path": "docs/porting/TH14_EXTRA_HEAP_CALLS_NOV03.md",
-      "bytes": 2521,
-      "sha256": "94f1f419ddd9f8cfe95bdc747f1499db9d83ddb10ccdccd8234cd6e2a310b552"
+      "bytes": 2991,
+      "sha256": "3fd183ed6dcd14cc03b52f4fe17465a175da852514178b600606779aa4bfddf8"
     },
     {
       "path": "docs/porting/TH14_FINAL_VISUAL_STATE_OCT24.md",
@@ -775,8 +775,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 87639,
-      "sha256": "722f846b7fb6899bf632a29ba131408953d33e94c057797a21dfa2de8eea8189"
+      "bytes": 87914,
+      "sha256": "9ffd41745610c211f2f45fb4f4b7f9a170bad65222363c309a80f1ee75feef70"
     },
     {
       "path": "docs/porting/TH14_REPLAY_BOUNDARY_EXCEPTION_PROTOTYPE_NOV03.md",
@@ -5782,6 +5782,11 @@
       "path": "docs/porting/th14-real-message-session-verified-oct12.json",
       "bytes": 30582,
       "sha256": "511bc538dbd6ab8de7c2a96efc01fa6f81ac9f5c1fce971c4be621e724df173e"
+    },
+    {
+      "path": "docs/porting/th14-recorded-heap-windows-nov03.json",
+      "bytes": 2529,
+      "sha256": "13d00bf1d29f28954b6a6c0effd5279250eb5ac2c5f7b33309558ccc408c6489"
     },
     {
       "path": "docs/porting/th14-records-text-verified.json",
@@ -22114,6 +22119,21 @@
       "sha256": "2fd27ab3f1950c3e26d5d0441af170241a171dfbb26a0f2604541441a064c6f6"
     },
     {
+      "path": "tools/th14-recorded-heap-windows-evidence-nov03.py",
+      "bytes": 4753,
+      "sha256": "f51a01d8a8791fe624797b13843b26a2d4169788c5a75d9a320290a942fb10c5"
+    },
+    {
+      "path": "tools/th14-recorded-heap-windows-helper-nov03.c",
+      "bytes": 1380,
+      "sha256": "be35fcffc352af0ceb659b9aaa20ed7ca928c974c3c0e0106112212e0ae7bd53"
+    },
+    {
+      "path": "tools/th14-recorded-heap-windows-run-nov03.py",
+      "bytes": 3634,
+      "sha256": "d2d29cb2075c17a4e142c8ad00fcc56095fdca6c1b78b993c9d209a8fe0eaa35"
+    },
+    {
       "path": "tools/th14-records-check.mjs",
       "bytes": 5728,
       "sha256": "3f4761b8cfaee262b4a9ceb224a4e331b0d370d33b7a9de4433600a7095cebaa"
@@ -26625,25 +26645,13 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "90b457a21892160d3dfde9199135709a61af9c33",
-    "title": "TH14 combined original CRT and zeroed heap trace",
+    "basePublishedCommit": "a9d8865a66f731f4094935d1c78a736cb4ad3f35",
+    "title": "TH14 independent x86 Windows heap lifetime controls",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-crt-cross-thread-order-nov03.py",
-      "tools/th14-process-heap-large-model-build-nov03.py",
-      "tools/th14-crt-boot-model-trace-nov03.mjs",
-      "tools/th14-extra-heap-observer-nov03.py",
-      "tools/th14-extra-heap-observation-nov03.py",
-      "tools/th14-extra-heap-sites-nov03.py",
-      "tools/th14-combined-heap-observer-nov03.py",
-      "tools/th14-combined-heap-observation-nov03.py",
-      "tools/th14-combined-heap-model-trace-nov03.mjs",
-      "docs/porting/th14-crt-cross-thread-order-nov03.json",
-      "docs/porting/th14-crt-boot-model-trace-nov03.json",
-      "docs/porting/th14-extra-heap-sites-nov03.json",
-      "docs/porting/th14-extra-heap-trace-nov03.json",
-      "docs/porting/th14-combined-heap-trace-nov03.json",
-      "docs/porting/th14-combined-heap-model-trace-nov03.json",
-      "docs/porting/TH14_CRT_BOOT_FREE_NOV03.md",
+      "tools/th14-recorded-heap-windows-helper-nov03.c",
+      "tools/th14-recorded-heap-windows-run-nov03.py",
+      "tools/th14-recorded-heap-windows-evidence-nov03.py",
+      "docs/porting/th14-recorded-heap-windows-nov03.json",
       "docs/porting/TH14_EXTRA_HEAP_CALLS_NOV03.md",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
@@ -26651,11 +26659,10 @@
     "sourceOnly": true,
     "productionGameplayCoreChanged": false,
     "currentProductionCoreCommit": "22c4f853fc1cb81b8a0c0891b88023f2f5dc065e",
-    "originalTraceCallbacks": 600,
-    "zeroedAllocationReturns": 130,
-    "combinedFreeEntries": 281,
-    "enemyObjectIdentityNotProved": true,
-    "completeHeapHistoryProved": false,
+    "windowsHelperRuns": 6,
+    "targetSizeAllocations": 32,
+    "relativeMatchesEach": 1,
+    "originalHeapHistoryProved": false,
     "strictPassed": false,
     "completeGame": false,
     "nativeEquivalent": false

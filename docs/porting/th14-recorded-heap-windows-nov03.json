@@ -1,0 +1,67 @@
+{
+  "verifiedFiniteWindowsHeapReplayExperiment": true,
+  "originalTraceCallbacks": 600,
+  "allocations": 838,
+  "freeEntriesAssumedSuccessful": 273,
+  "runs": [
+    {
+      "index": 0,
+      "allAllocationReuseIdentityMatches": 675,
+      "targetSizeAllocations": 32,
+      "targetReuseIdentityMatches": 23,
+      "targetRelativePositionMatches": 1
+    },
+    {
+      "index": 1,
+      "allAllocationReuseIdentityMatches": 702,
+      "targetSizeAllocations": 32,
+      "targetReuseIdentityMatches": 24,
+      "targetRelativePositionMatches": 1
+    },
+    {
+      "index": 2,
+      "allAllocationReuseIdentityMatches": 702,
+      "targetSizeAllocations": 32,
+      "targetReuseIdentityMatches": 24,
+      "targetRelativePositionMatches": 1
+    },
+    {
+      "index": 3,
+      "allAllocationReuseIdentityMatches": 702,
+      "targetSizeAllocations": 32,
+      "targetReuseIdentityMatches": 24,
+      "targetRelativePositionMatches": 1
+    },
+    {
+      "index": 4,
+      "allAllocationReuseIdentityMatches": 702,
+      "targetSizeAllocations": 32,
+      "targetReuseIdentityMatches": 24,
+      "targetRelativePositionMatches": 1
+    },
+    {
+      "index": 5,
+      "allAllocationReuseIdentityMatches": 701,
+      "targetSizeAllocations": 32,
+      "targetReuseIdentityMatches": 24,
+      "targetRelativePositionMatches": 1
+    }
+  ],
+  "helperReceivesOnlySizesFlagsAndSyntheticLifetimes": true,
+  "actualOriginalAddressesProvidedToHelper": false,
+  "debugDeliveryOrderAssumedMemoryOrder": true,
+  "originalPriorProcessHeapStateReproduced": false,
+  "otherHeapPathsNotModeled": true,
+  "targetSizeIsNotProvenEnemy": true,
+  "actualWindowsProcessHeap": true,
+  "originalHeapHistoryReconstructed": false,
+  "rawPointersPublished": false,
+  "productionIntegrated": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "planSha256": "8b5f3401d0f84cb15c4f6cf671b87dcb2b6af838c403d532284751b538796a19",
+  "traceProofSha256": "f553fe1357c74924b73c68449c8213be0f88b33fe9216aef4964b2bd702e778a",
+  "eventLogSha256": "2b35958238949c2f241109c3089b75b3e7c6c932f940826477aa37f066340fbb",
+  "toolSha256": "f51a01d8a8791fe624797b13843b26a2d4169788c5a75d9a320290a942fb10c5",
+  "scope": "Six isolated x86 processes execute the same sizes, flags and synthetic lifetime order on their own Windows process heap. Debug delivery order and free success are assumptions. Their process startup heap and all activity before the original observer attached are different or unknown; original addresses are compared only after the helpers exit."
+}
