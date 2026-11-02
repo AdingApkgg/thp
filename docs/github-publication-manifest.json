@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "e0c7b378ecc5741c9ab907ffcd6726f2f1ad6ad6",
+  "sourceCommit": "2f42560318202a997514d9644adb549db548964a",
   "files": [
     {
       "path": ".gitignore",
@@ -670,8 +670,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 75368,
-      "sha256": "da05cb152ecd07eeb33fbca3a1a17011768b94d8bbb31476921aeed92b3fc244"
+      "bytes": 76078,
+      "sha256": "7059a5401fd8522da0709cefa0a21a1f3a0f16196fe7a70ad91526ac78de062a"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -712,6 +712,11 @@
       "path": "docs/porting/TH14_RNG_ASYNC_SCOPE_NOV02.md",
       "bytes": 1571,
       "sha256": "1272ee7abbb67026586ec8b9f998bbdc675dce1298c0703fc72d0db2ec3da60c"
+    },
+    {
+      "path": "docs/porting/TH14_RNG_STORE_BOUNDARY_APPLICATION_FULL_NOV02.md",
+      "bytes": 2212,
+      "sha256": "9334622e3fda821686c1a048d969cff111e3c55a6b1c77e036df582e399a2363"
     },
     {
       "path": "docs/porting/TH14_RNG_STORE_BOUNDARY_NOV02.md",
@@ -5697,6 +5702,11 @@
       "path": "docs/porting/th14-rng-async-scope-nov02.json",
       "bytes": 3166,
       "sha256": "5729724c25d30e8614e81296b291c46e04fc51475f894f86bc3bfd0aaa147022"
+    },
+    {
+      "path": "docs/porting/th14-rng-store-boundary-application-full-nov02.json",
+      "bytes": 239364,
+      "sha256": "1a72de84d336b3d15b6150dbe0dd9c562de62360df348071006ff2debe67d8c2"
     },
     {
       "path": "docs/porting/th14-rng-store-boundary-nov02.json",
@@ -25735,51 +25745,32 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "e0c7b378ecc5741c9ab907ffcd6726f2f1ad6ad6",
-    "title": "TH14 phased shake saved-register stack producer",
+    "basePublishedCommit": "2f42560318202a997514d9644adb549db548964a",
+    "title": "TH14 version-bound 4acbbc complete GLES and WebGPU regression",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/ScreenShake.hpp",
-      "runtimes/th12/th12_web/cpp/game/ScreenShake.cpp",
-      "runtimes/th12/th12_web/cpp/game/NativeStackTh14.hpp",
-      "tools/th14-phased-shake-stack-native-nov02.py",
-      "tools/th14-phased-shake-live-observer-nov02.py",
-      "tools/th14-phased-shake-stack-component-check-nov02.py",
-      "tools/th14-phased-shake-stack-component-check-nov02.mjs",
-      "tools/th14-phased-shake-stack-evidence-nov02.py",
-      "runtimes/th12/th12_web/tests/cpp/th14-phased-shake-stack-fixture-nov02.cpp",
-      "tools/th14-rng-store-boundary-application-full-evidence-nov02.py",
-      "docs/porting/TH14_PHASED_SHAKE_STACK_NOV02.md",
-      "docs/porting/th14-phased-shake-stack-nov02.json",
+      "docs/porting/TH14_RNG_STORE_BOUNDARY_APPLICATION_FULL_NOV02.md",
+      "docs/porting/th14-rng-store-boundary-application-full-nov02.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
-    "productionEngineChanged": true,
-    "productionGameplayCoreChanged": true,
-    "previousProductionCoreCommit": "4acbbc398fe3648ca8362e4fe803f56ee87818b7",
-    "coreWasmSha256": "5b77434dd760e24bc50760728ed3e1d8e6515d5541a763cb2b5fdac4c1ad8b45",
-    "coreObjectsCompiled": 141,
-    "ordinaryExportAbi": 134,
-    "verifiedCandidateAndProductionWasmByteEqual": true,
-    "currentNaturalSamples": 16,
-    "currentNaturalCallbacks": 1579705,
-    "strictAndIndependentPassed": true,
-    "actualNativeDiagnosticCallbacks": 18115,
-    "actualNativePhasedCalls": 1,
-    "originalInstructionProfiles": 2016,
-    "activeRngCppProfiles": 480,
-    "baselineStackFailures": 192,
-    "wrongAdjacentStackOffsetControlsRejected": 192,
-    "syntaxChecks": 8,
-    "actualMastersZero": true,
-    "fullControllerReaderExecuted": false,
-    "old36826FailureClosed": false,
-    "retirementAddressResolved": false,
-    "currentNewCoreFullApplicationAccepted": false,
-    "currentNewCoreBrowserAccepted": false,
+    "productionEngineChanged": false,
+    "productionGameplayCoreChanged": false,
+    "currentProductionCoreCommit": "2f42560318202a997514d9644adb549db548964a",
+    "currentCoreWasmSha256": "5b77434dd760e24bc50760728ed3e1d8e6515d5541a763cb2b5fdac4c1ad8b45",
+    "verifiedPreviousApplicationCoreCommit": "4acbbc398fe3648ca8362e4fe803f56ee87818b7",
+    "previousCoreBothBackendsActuallyCompleted": true,
+    "previousCoreFramesPerBackend": 122622,
+    "previousCoreAssertionsPerBackend": 45,
+    "previousCoreFullImagesPerBackend": 8,
+    "previousCoreSilentSinkPcmFrames": 89969664,
+    "physicalAudioDevicesOpened": 0,
+    "previousCoreFullPairIndependentAccepted": true,
+    "currentCoreFullPairNotInherited": true,
+    "currentCoreFullApplicationAccepted": false,
+    "currentCoreBrowserAccepted": false,
     "naturalModePairs": 30,
     "allTargetStageEntryModePairs": 27,
-    "independentSchedulingAccepted": false,
     "completeGame": false,
     "nativeEquivalent": false
   }
