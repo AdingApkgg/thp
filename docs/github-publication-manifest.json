@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "4acbbc398fe3648ca8362e4fe803f56ee87818b7",
+  "sourceCommit": "e0c7b378ecc5741c9ab907ffcd6726f2f1ad6ad6",
   "files": [
     {
       "path": ".gitignore",
@@ -599,6 +599,11 @@
       "sha256": "33e5cea203ba170591b7380b337e93803348f67e73203c39fe9c5ced08ec1047"
     },
     {
+      "path": "docs/porting/TH14_PHASED_SHAKE_STACK_NOV02.md",
+      "bytes": 3794,
+      "sha256": "3b98706722ea48c21d8a2147df0e52119ed369d31a73e5cbec24bda52c11d154"
+    },
+    {
       "path": "docs/porting/TH14_PLAYER_AIM_OCT25.md",
       "bytes": 2831,
       "sha256": "a96593681039c593e0a5fe8d881c96e45b42d56d3a7188a73e5abadd8fc7ea09"
@@ -665,8 +670,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 74488,
-      "sha256": "ebea0f6db3cb312952c3efc5a4243b28bbf3728d038497f74104056f0fb43aa5"
+      "bytes": 75368,
+      "sha256": "da05cb152ecd07eeb33fbca3a1a17011768b94d8bbb31476921aeed92b3fc244"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -5144,6 +5149,11 @@
       "sha256": "1d2d80b81e10b0762bbe7a4f8b4d7d8389bf4d111805672d79b4a1ba0343df05"
     },
     {
+      "path": "docs/porting/th14-phased-shake-stack-nov02.json",
+      "bytes": 158791,
+      "sha256": "da7850fe5c45ee0661d32d5cf41e30db1fa4476ad8c52928f604c9030150c295"
+    },
+    {
       "path": "docs/porting/th14-physical-replay-native-trace-zps-normal-stage6-control-clock-oct13-observed-oct13.json",
       "bytes": 4972751,
       "sha256": "f0b1b46b4e02d2822d1ba54bf78fb77893bf2eefdbda48c31f48ab5ad900caca"
@@ -9175,8 +9185,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/NativeStackTh14.hpp",
-      "bytes": 4271,
-      "sha256": "d0b9d6250eed881f5d2294ddca02b080d2370551e268aa3011b03f56f6fae3d8"
+      "bytes": 4540,
+      "sha256": "e2a9cd975410d1afcbd342a18c2fb0afc71d0b74997970f7c2c069fdfc7cc123"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/NoopOpcodes.hpp",
@@ -9365,13 +9375,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ScreenShake.cpp",
-      "bytes": 1528,
-      "sha256": "e6a87ffdc3edad1c8bd98b5031b13bc3c43247588e76b692562774a31c7ecb6b"
+      "bytes": 1706,
+      "sha256": "75603933c047ca3ffa1a5e3f0ebd8fb35f39b5bae195d51a3c337e1608dde2a2"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ScreenShake.hpp",
-      "bytes": 1869,
-      "sha256": "bb1d62aa3cabb3564d19889554e3d9205bf018a0cad568e0811cf0c73117e378"
+      "bytes": 1956,
+      "sha256": "8f5457c305fb75b3c781aa2ca21d14f8c6442ef3c093c38254d6d39dcbf11ac8"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/SeasonTh16.cpp",
@@ -13057,6 +13067,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-paused-score-fixture.cpp",
       "bytes": 609,
       "sha256": "f38adcb6b6898ff89822e4da1bfe41134345b0d7e292d520aaff02689b78022e"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-phased-shake-stack-fixture-nov02.cpp",
+      "bytes": 1088,
+      "sha256": "8074ccbc7aa8794d90b0930a68d5a2e289217e5eb2800aacecff79d632740a5a"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-physical-replay-reference-fixture.cpp",
@@ -20994,6 +21009,31 @@
       "sha256": "1f38a17c5abde97d41a2646f5ec96b7d318ef5f046931f2b261e99302541a2bb"
     },
     {
+      "path": "tools/th14-phased-shake-live-observer-nov02.py",
+      "bytes": 61254,
+      "sha256": "930f868fb48a91542037f28739afc46206fb986af890b3c4f9109f5547cf20fa"
+    },
+    {
+      "path": "tools/th14-phased-shake-stack-component-check-nov02.mjs",
+      "bytes": 2516,
+      "sha256": "fdfc39529be44319449fb3034979e14429bbe5629547d3e3143a690e157818f8"
+    },
+    {
+      "path": "tools/th14-phased-shake-stack-component-check-nov02.py",
+      "bytes": 2658,
+      "sha256": "950e54b42700399ab550ca047eeada530576131a0768943ef1ea580350a221ce"
+    },
+    {
+      "path": "tools/th14-phased-shake-stack-evidence-nov02.py",
+      "bytes": 11367,
+      "sha256": "50b3e1a23924cb9babc9d94c118957617e1eb95a2a2c5c359af238e71dc14a54"
+    },
+    {
+      "path": "tools/th14-phased-shake-stack-native-nov02.py",
+      "bytes": 7242,
+      "sha256": "a16c4cd2ccdcb49a12a5a9485f8716468a2418e5afc7032b78c1d7821e6f72e0"
+    },
+    {
       "path": "tools/th14-physical-area-reference-trace-check.mjs",
       "bytes": 9088,
       "sha256": "c93285795ab351cfecbec0ac6471e0a0f6aa769d244cdda7873ffd297de8061e"
@@ -21657,6 +21697,11 @@
       "path": "tools/th14-rng-async-scope-check-nov02.py",
       "bytes": 4536,
       "sha256": "a0938e7934d975bf31445442ef994b9f3afb45fd08b8ce171926db261dca60b6"
+    },
+    {
+      "path": "tools/th14-rng-store-boundary-application-full-evidence-nov02.py",
+      "bytes": 10743,
+      "sha256": "72ba3c25cef0fddc20332b68b5a98fbeb68af8c807390c3ecceb6144bf3a6f7d"
     },
     {
       "path": "tools/th14-rng-store-boundary-component-check-nov02.mjs",
@@ -25690,31 +25735,51 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "4acbbc398fe3648ca8362e4fe803f56ee87818b7",
-    "title": "TH14 RNG scopes across Asyncify suspension and current mode inventory prose",
+    "basePublishedCommit": "e0c7b378ecc5741c9ab907ffcd6726f2f1ad6ad6",
+    "title": "TH14 phased shake saved-register stack producer",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-rng-async-scope-check-nov02.py",
-      "tools/th14-rng-async-scope-check-nov02.mjs",
-      "runtimes/th12/th12_web/tests/cpp/th14-rng-async-scope-fixture-nov02.cpp",
-      "docs/porting/TH14_RNG_ASYNC_SCOPE_NOV02.md",
-      "docs/porting/th14-rng-async-scope-nov02.json",
-      "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
+      "runtimes/th12/th12_web/cpp/game/ScreenShake.hpp",
+      "runtimes/th12/th12_web/cpp/game/ScreenShake.cpp",
+      "runtimes/th12/th12_web/cpp/game/NativeStackTh14.hpp",
+      "tools/th14-phased-shake-stack-native-nov02.py",
+      "tools/th14-phased-shake-live-observer-nov02.py",
+      "tools/th14-phased-shake-stack-component-check-nov02.py",
+      "tools/th14-phased-shake-stack-component-check-nov02.mjs",
+      "tools/th14-phased-shake-stack-evidence-nov02.py",
+      "runtimes/th12/th12_web/tests/cpp/th14-phased-shake-stack-fixture-nov02.cpp",
+      "tools/th14-rng-store-boundary-application-full-evidence-nov02.py",
+      "docs/porting/TH14_PHASED_SHAKE_STACK_NOV02.md",
+      "docs/porting/th14-phased-shake-stack-nov02.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
-    "productionEngineChanged": false,
-    "productionGameplayCoreChanged": false,
-    "referenceCoreCommit": "4acbbc398fe3648ca8362e4fe803f56ee87818b7",
-    "asyncScopeCombinations": 80,
-    "queuedCallbacks": 320,
-    "cppStackGuardWordsPerCase": 2048,
-    "growthBytesPerCase": 65536,
-    "unserializedInputNegativeControlRejected": true,
+    "productionEngineChanged": true,
+    "productionGameplayCoreChanged": true,
+    "previousProductionCoreCommit": "4acbbc398fe3648ca8362e4fe803f56ee87818b7",
+    "coreWasmSha256": "5b77434dd760e24bc50760728ed3e1d8e6515d5541a763cb2b5fdac4c1ad8b45",
+    "coreObjectsCompiled": 141,
+    "ordinaryExportAbi": 134,
+    "verifiedCandidateAndProductionWasmByteEqual": true,
+    "currentNaturalSamples": 16,
+    "currentNaturalCallbacks": 1579705,
+    "strictAndIndependentPassed": true,
+    "actualNativeDiagnosticCallbacks": 18115,
+    "actualNativePhasedCalls": 1,
+    "originalInstructionProfiles": 2016,
+    "activeRngCppProfiles": 480,
+    "baselineStackFailures": 192,
+    "wrongAdjacentStackOffsetControlsRejected": 192,
+    "syntaxChecks": 8,
+    "actualMastersZero": true,
+    "fullControllerReaderExecuted": false,
+    "old36826FailureClosed": false,
+    "retirementAddressResolved": false,
+    "currentNewCoreFullApplicationAccepted": false,
+    "currentNewCoreBrowserAccepted": false,
     "naturalModePairs": 30,
     "allTargetStageEntryModePairs": 27,
-    "browserAcceptance": false,
-    "currentNewCoreFullApplicationAccepted": false,
+    "independentSchedulingAccepted": false,
     "completeGame": false,
     "nativeEquivalent": false
   }

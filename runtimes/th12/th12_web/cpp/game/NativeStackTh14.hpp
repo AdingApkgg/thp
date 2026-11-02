@@ -43,6 +43,9 @@ struct NativeStackTh14 {
     // pinned RtlLeaveCriticalSection prologue;4138ca reuses that saved word.
     void controller_overlay_tail()noexcept{controller_scratch=0;controller_scratch_known=true;}
     void controller_shake_rng_leave()noexcept{controller_scratch=0x004db508u;controller_scratch_known=true;}
+    // Phased46cf60 adds a saved EDI: the reused word is the pinned
+    // RtlLeaveCriticalSection saved EBX, the last32-bit draw's low half.
+    void controller_phased_rng_leave(Word sample)noexcept{controller_scratch=sample&0xffffu;controller_scratch_known=true;}
     // The retiring callback node's opaque native allocation address remains
     // unresolved. Preserve the old numeric fallback and expose that gap.
     void controller_opaque_leave()noexcept{controller_scratch=0;controller_scratch_known=false;}

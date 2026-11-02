@@ -11,7 +11,7 @@ struct ScreenShake {
     i32 duration=0,start=0,end=0;
     Timer timer;
     i32 ramp=0,hold=0,fall=0;bool phased=false;
-    i32 update(Rng&,Vec2& offset,bool stopped=false) noexcept;
+    i32 update(Rng&,Vec2& offset,bool stopped=false,u32* last_rng_return=nullptr) noexcept;
 };
 struct ScreenShakes {
     std::vector<ScreenShake> effects;
@@ -27,9 +27,9 @@ struct ScreenShakes {
     void update(Rng& rng,bool stopped=false,Rng* visual=nullptr,NativeStackTh14* reference_stack=nullptr){
         for(auto it=effects.begin();it!=effects.end();){
             auto& chosen=it->phased&&visual?*visual:rng;const auto before=chosen.calls;
-            const auto result=it->update(chosen,offset,stopped);
+            u32 last_rng_return=0;const auto result=it->update(chosen,offset,stopped,&last_rng_return);
             if(reference_stack&&chosen.calls!=before){
-                if(it->phased)reference_stack->controller_opaque_leave();
+                if(it->phased)reference_stack->controller_phased_rng_leave(last_rng_return);
                 else reference_stack->controller_shake_rng_leave();
             }
             if(result==7){if(reference_stack)reference_stack->controller_opaque_leave();it=effects.erase(it);}else ++it;
