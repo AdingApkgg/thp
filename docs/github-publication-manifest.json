@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "4609501b10485a780a6781f33cc38edcb86e7e0f",
+  "sourceCommit": "e4b6a1464ea497f41f2ada3ab1b4cefa72d58d24",
   "files": [
     {
       "path": ".gitignore",
@@ -675,8 +675,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 76566,
-      "sha256": "913d7ad807cc6a1b54324d75ba4c63515d7626841bffbf0beec49c8c20b4cdd2"
+      "bytes": 77158,
+      "sha256": "8884c24cdfec958eb9dcd1c7ded307969d2f9236f885645ad7d6360b3960b11a"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -807,6 +807,11 @@
       "path": "docs/porting/TH14_SELECTED_PLAYER_WORKER_OCT29.md",
       "bytes": 4115,
       "sha256": "c92d82078bfc0279369fa7be5f97e94878e7ed482d1482509da87fb684d4356d"
+    },
+    {
+      "path": "docs/porting/TH14_SHAKE_COUNTER_RESTORE_NOV03.md",
+      "bytes": 1660,
+      "sha256": "2f5d740dc98730310ba3509a56f107c8fb22c3f34e74c59fde113c0a7eee2255"
     },
     {
       "path": "docs/porting/TH14_SHOT_GEOMETRY_CALL_ORDER_OCT23.md",
@@ -5979,6 +5984,11 @@
       "sha256": "4ec411b2fa25815ab337d729abfb00a7b5d2c8561c38a199e6f4aabb16f07772"
     },
     {
+      "path": "docs/porting/th14-shake-counter-restore-nov03.json",
+      "bytes": 54572,
+      "sha256": "0bd55654b90a17df5eb3d07380426349af00ec703363e39c76c6cd6388779acf"
+    },
+    {
       "path": "docs/porting/th14-shared-angle-browser-flow-verified-oct14.json",
       "bytes": 89999,
       "sha256": "147f5c5b29d190b555ca12f55073ccfbd3dd47d273416c1f7db50bc42a19ba21"
@@ -9395,13 +9405,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ScreenShake.cpp",
-      "bytes": 1706,
-      "sha256": "75603933c047ca3ffa1a5e3f0ebd8fb35f39b5bae195d51a3c337e1608dde2a2"
+      "bytes": 1775,
+      "sha256": "db7636571007607244fe58d5ec41f29b721b848fbb613061fa2c7d8966d93e9a"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ScreenShake.hpp",
-      "bytes": 1956,
-      "sha256": "8f5457c305fb75b3c781aa2ca21d14f8c6442ef3c093c38254d6d39dcbf11ac8"
+      "bytes": 1966,
+      "sha256": "0b900307637e0081003170d1413e0136809b91811c55b596e7111b709a8ce00b"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/SeasonTh16.cpp",
@@ -13317,6 +13327,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-session-reference-fixture.cpp",
       "bytes": 8687,
       "sha256": "b5bb0b73a001bf729564b3ec9273e6035de425d9ae62c374818725c32daedd7b"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-shake-counter-restore-fixture-nov03.cpp",
+      "bytes": 1401,
+      "sha256": "15ab7db3ac59d6406740ce9676fee170d1694b948833a63b1fef05a738521cdb"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-shot-beam-fixture.cpp",
@@ -21714,6 +21729,11 @@
       "sha256": "3af77ec2f092c83d6e8019ec697725e7e3a718265aa39a6117c65c74680fe9bd"
     },
     {
+      "path": "tools/th14-rng-actor-counter-restore-native-nov02.py",
+      "bytes": 8048,
+      "sha256": "d44855ac38d5cc1bbc96001823e30997ae050762e6e7157c4eb75763a2e6f353"
+    },
+    {
       "path": "tools/th14-rng-async-scope-check-nov02.mjs",
       "bytes": 5972,
       "sha256": "b7c92b60c4666d48376a814c87f4523aec397af24203d77a00c2c3c025af3af1"
@@ -22067,6 +22087,21 @@
       "path": "tools/th14-session-reference-check.mjs",
       "bytes": 13242,
       "sha256": "61580c4a3346f94f3fd78c8cbffcfdc8bbb1060acc56fe329aeea708cdaa4768"
+    },
+    {
+      "path": "tools/th14-shake-counter-restore-build-nov03.py",
+      "bytes": 1446,
+      "sha256": "4b0d18cb18920e5a4b98b42c35f000523886fb10fbb560728d85d1c0b623d563"
+    },
+    {
+      "path": "tools/th14-shake-counter-restore-check-nov03.mjs",
+      "bytes": 2815,
+      "sha256": "d8415dedf900d4edd1418258e2af22a160b5bf3241eb6c55a9c056b9c8ab0be2"
+    },
+    {
+      "path": "tools/th14-shake-counter-restore-evidence-nov03.py",
+      "bytes": 3953,
+      "sha256": "df21f42df9434f03f11c724a181a4a3a58d029318ccaa09fd52e7c59f97b3b6a"
     },
     {
       "path": "tools/th14-shared-angle-browser-flow-evidence-check.mjs",
@@ -25760,28 +25795,41 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "4609501b10485a780a6781f33cc38edcb86e7e0f",
-    "title": "TH14 version-bound 2f42560 complete GLES and WebGPU regression",
+    "basePublishedCommit": "e4b6a1464ea497f41f2ada3ab1b4cefa72d58d24",
+    "title": "TH14 preserve shake RNG draw across worker counter restore",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-phased-shake-stack-application-full-evidence-nov02.py",
-      "docs/porting/TH14_PHASED_SHAKE_STACK_APPLICATION_FULL_NOV02.md",
-      "docs/porting/th14-phased-shake-stack-application-full-nov02.json",
+      "runtimes/th12/th12_web/cpp/game/ScreenShake.hpp",
+      "runtimes/th12/th12_web/cpp/game/ScreenShake.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-shake-counter-restore-fixture-nov03.cpp",
+      "tools/th14-rng-actor-counter-restore-native-nov02.py",
+      "tools/th14-shake-counter-restore-build-nov03.py",
+      "tools/th14-shake-counter-restore-check-nov03.mjs",
+      "tools/th14-shake-counter-restore-evidence-nov03.py",
+      "docs/porting/TH14_SHAKE_COUNTER_RESTORE_NOV03.md",
+      "docs/porting/th14-shake-counter-restore-nov03.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
-    "productionEngineChanged": false,
-    "productionGameplayCoreChanged": false,
-    "verifiedApplicationCoreCommit": "2f42560318202a997514d9644adb549db548964a",
-    "bothBackendsActuallyCompleted": true,
-    "framesPerBackend": 122622,
-    "assertionsPerBackend": 45,
-    "fullImagesPerBackend": 8,
-    "silentSinkPcmFrames": 89969664,
-    "physicalAudioDevicesOpened": 0,
-    "fullPairIndependentAccepted": true,
-    "laterCoreMustBeReverified": true,
-    "browserAccepted": false,
+    "productionEngineChanged": true,
+    "productionGameplayCoreChanged": true,
+    "previousProductionCoreCommit": "2f42560318202a997514d9644adb549db548964a",
+    "coreWasmSha256": "f00a33cb9687fb544441d71bf9e5d78249b4d2e00d4059d59e7736ab1fb1c6eb",
+    "coreObjectsCompiled": 141,
+    "ordinaryExportAbi": 134,
+    "verifiedCandidateAndProductionWasmByteEqual": true,
+    "currentNaturalSamples": 16,
+    "currentNaturalCallbacks": 1579705,
+    "strictAndIndependentPassed": true,
+    "originalInstructionProfiles": 2016,
+    "actualWorkerStoreExecutions": 480,
+    "baselineStackFailures": 192,
+    "candidateStackFailures": 0,
+    "syntheticWorkerSchedule": true,
+    "syntaxChecks": 12,
+    "old36826FailureClosed": false,
+    "currentCoreFullApplicationAccepted": false,
+    "currentCoreBrowserAccepted": false,
     "naturalModePairs": 30,
     "allTargetStageEntryModePairs": 27,
     "completeGame": false,
