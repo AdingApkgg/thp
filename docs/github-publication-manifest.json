@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "d54e8c0b0ccb0556926920ee1042b992018e5a82",
+  "sourceCommit": "52106c1c376b59e928c9c631e6c68ec1ea597360",
   "files": [
     {
       "path": ".gitignore",
@@ -187,6 +187,11 @@
       "path": "docs/porting/TH14_CONTROLLER_APPLICATION_FULL_NOV01.md",
       "bytes": 1928,
       "sha256": "f2462c4289568a9ba8a7da54990abb5ffd2e7555942dfdf52e89f89e6c158cec"
+    },
+    {
+      "path": "docs/porting/TH14_CONTROLLER_SHAKE_THIS_NOV03.md",
+      "bytes": 1495,
+      "sha256": "1631096a83697c7576c37325c272192d3ae2b9383295371f90c9974d7526544c"
     },
     {
       "path": "docs/porting/TH14_CORE_TAIL_FULL_REPLAY_OCT29.md",
@@ -685,8 +690,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 78699,
-      "sha256": "1e401f4e7c158f310f7bfca21bc30002c933860303fb2fb5317b74c91db68077"
+      "bytes": 79083,
+      "sha256": "ef04218eeb26483bbf6c30a9ac536f1595a202d45b6577025c0f8ad9b6eeb375"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -2282,6 +2287,11 @@
       "path": "docs/porting/th14-controller-polar-integration-nov01.json",
       "bytes": 5463445,
       "sha256": "41aeb8be381fc2a94b00d59b6762742dcca76bc33a318a7e799960c0e6f81281"
+    },
+    {
+      "path": "docs/porting/th14-controller-shake-this-nov03.json",
+      "bytes": 3463,
+      "sha256": "622b9b86bb5623e5d33209366726563e68cd2209b36d0952fa9ff8e3e9e6a63f"
     },
     {
       "path": "docs/porting/th14-cooperative-worker-independent-receipt-oct15.json",
@@ -17219,6 +17229,11 @@
       "sha256": "f24ad868b541bf36bc3e9572dc0b1eed8761fc17cd158d44bf728f58c18c520d"
     },
     {
+      "path": "tools/th14-controller-delete-address-observer-nov03.py",
+      "bytes": 63384,
+      "sha256": "7bd3723f2688f9957c365249b0b23668f454fe6eabe156c387444fc24ca66af8"
+    },
+    {
       "path": "tools/th14-controller-input-check.mjs",
       "bytes": 2625,
       "sha256": "5ec3f4211be690752f6969af08f9dea90880baabad9540af09713e8e7e0fea59"
@@ -17237,6 +17252,11 @@
       "path": "tools/th14-controller-polar-integration-evidence-nov01.py",
       "bytes": 7467,
       "sha256": "a3c46cca3a357067726e958bf0b6fcd210fa12a06c478c8b4e239c0d1d8450e3"
+    },
+    {
+      "path": "tools/th14-controller-shake-this-evidence-nov03.py",
+      "bytes": 5483,
+      "sha256": "cbc135ee71f136b94baa413acb8c1601c533008b599de342ff4a40facd4f1099"
     },
     {
       "path": "tools/th14-core-loading-check.mjs",
@@ -22189,6 +22209,11 @@
       "sha256": "df21f42df9434f03f11c724a181a4a3a58d029318ccaa09fd52e7c59f97b3b6a"
     },
     {
+      "path": "tools/th14-shake-retire-this-native-nov03.py",
+      "bytes": 4158,
+      "sha256": "107f21a4a95deadda6564f49f21245968dc5dd90e441c366e9124a0442e87c58"
+    },
+    {
       "path": "tools/th14-shared-angle-browser-flow-evidence-check.mjs",
       "bytes": 3343,
       "sha256": "215f42fdb418ed389c23c9a2d2d4b294534eaa11e3c228b6d4a2c130cabbcdd4"
@@ -25905,15 +25930,14 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "d54e8c0b0ccb0556926920ee1042b992018e5a82",
-    "title": "TH14 strict Initialize phase timing coverage gate",
+    "basePublishedCommit": "52106c1c376b59e928c9c631e6c68ec1ea597360",
+    "title": "TH14 original shake destruction this pointer stack provenance",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-verify-native-initialize-timing-v2-nov03.py",
-      "tools/th14-initialize-timing-controls-nov03.py",
-      "tools/th14-verify-native-campaign-with-timing-nov03.py",
-      "tools/th14-initialize-timing-coverage-evidence-nov03.py",
-      "docs/porting/TH14_INITIALIZE_TIME_COVERAGE_NOV03.md",
-      "docs/porting/th14-initialize-time-coverage-nov03.json",
+      "tools/th14-controller-delete-address-observer-nov03.py",
+      "tools/th14-shake-retire-this-native-nov03.py",
+      "tools/th14-controller-shake-this-evidence-nov03.py",
+      "docs/porting/TH14_CONTROLLER_SHAKE_THIS_NOV03.md",
+      "docs/porting/th14-controller-shake-this-nov03.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
@@ -25921,13 +25945,13 @@
     "productionEngineChanged": false,
     "productionGameplayCoreChanged": false,
     "currentProductionCoreCommit": "22c4f853fc1cb81b8a0c0891b88023f2f5dc065e",
-    "naturalCases": 16,
-    "negativeControlsRejected": 5,
-    "positiveStrictAndTimingPassed": true,
-    "unprovedHypothesisRejected": true,
-    "initializeTimingOnly": true,
-    "newCoreFullApplicationAccepted": false,
-    "browserAccepted": false,
+    "nativeDiagnosticCallbacks": 36823,
+    "nativeControllerReads": 23,
+    "actualThisPointerMatches": 1,
+    "deletedNodeMatches": 0,
+    "originalInstructionCases": 4,
+    "allocatorServiceSynthetic": true,
+    "portableHeapAddressModelImplemented": false,
     "completeGame": false,
     "nativeEquivalent": false
   }
