@@ -19,6 +19,11 @@ public:
 #if PORT_TITLE == 14
     bool prepare_resource(AnmResource&,u16 file_id);
     std::function<bool(const AnmVm&)> before_initial_update;
+    std::function<bool(const AnmVm&,Rng&,RngBoundary)> before_rng_boundary;
+    bool th14_rng_boundary(const AnmVm& vm,Rng& rng,RngBoundary point)override{
+        return (!before_rng_boundary||before_rng_boundary(vm,rng,point))&&
+               (!before_initial_update||before_initial_update(vm));
+    }
     bool th14_instruction_boundary(const AnmVm& vm)override{return !before_initial_update||before_initial_update(vm);}
     // One reference process context; clearing a scene does not clear its stack.
     NativeStackTh14 th14_native_stack;

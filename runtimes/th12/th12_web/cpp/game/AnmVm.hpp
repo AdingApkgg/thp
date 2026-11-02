@@ -164,6 +164,7 @@ struct AnmEnvironment {
 #if PORT_TITLE == 14
     // Initialization can complete between executed ANM instructions.
     virtual bool th14_instruction_boundary(const AnmVm&){return true;}
+    virtual bool th14_rng_boundary(const AnmVm&,Rng&,RngBoundary){return true;}
     virtual void th14_interpolation_scratch(u32,u32 mask=~u32(0))noexcept{}
 #endif
     virtual AnmVm* spawn(AnmVm&,i32,u32){return nullptr;}

@@ -128,6 +128,11 @@ double calculate(double a,double b,u32 op){switch(op){case 0:return b;case 1:ret
 // 0x44b4b0. The instruction set shares older opcodes but has TH11-specific
 // scrolling interpolation, screen UVs, child spawning and partial-ring modes.
 int AnmVm::update(AnmEnvironment& env){
+#if PORT_TITLE == 14
+    struct RngContext{AnmEnvironment& environment;const AnmVm& vm;} rng_context{env,*this};
+    RngBoundaryScope rng_scope(env.script_rng,env.visual_rng,&rng_context,
+        [](void* context,Rng& rng,RngBoundary point){auto& c=*static_cast<RngContext*>(context);return c.environment.th14_rng_boundary(c.vm,rng,point);});
+#endif
 #if PORT_TITLE == 13
     // 46246d runs the effect's pre-update before stop/pause and rate checks.
     if(th13_effect==5)anm_th13_ribbon_update(*this,env);
@@ -152,13 +157,20 @@ int AnmVm::update(AnmEnvironment& env){
 #if PORT_TITLE == 14
     if(!age.rate)age.set(0,&env.rate);age.tick();
 #endif
-    auto finish=[&](){if(!animate(*this,env))return -1;
+    auto finish=[&](){
+#if PORT_TITLE == 14
+        if(rng_scope.failed)return -1;
+#endif
+        if(!animate(*this,env))return -1;
+#if PORT_TITLE == 14
+        if(rng_scope.failed)return -1;
+#endif
         if(after_update&&after_update(*this))return 1;timer.tick();return 0;};
     if(pending_interrupt&&!dispatch_interrupt(*this,&env.rate)){timer.advance(-1);return finish();}
     for(u32 budget=0;instruction->time<=timer.current;++budget){
         if(budget==100000)return -1;
 #if PORT_TITLE == 14
-        if(!env.th14_instruction_boundary(*this))return -1;
+        if(rng_scope.failed||!env.th14_instruction_boundary(*this))return -1;
 #endif
         auto* current=instruction;const i32 op=current->opcode;
         push_trace(u32(reinterpret_cast<const u8*>(current)-reinterpret_cast<const u8*>(script_begin)),u16(op),u16(current->length));

@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "50d212bab4114ecb05472b2ad805873f11840cd2",
+  "sourceCommit": "7acf5ec0c0049e2eb72894987390bbe9c8a964d7",
   "files": [
     {
       "path": ".gitignore",
@@ -665,8 +665,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 72892,
-      "sha256": "4ba8d9e41435b348e4c184acb85ed856e3813927bdd1edc3bc39ce0a9c31baa1"
+      "bytes": 73844,
+      "sha256": "fe35cf9226722c279d4d785fd6bc0b4e08e2f6d352df78b565a7372b935a0c5a"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -702,6 +702,11 @@
       "path": "docs/porting/TH14_REPLAY_TERMINAL_OCT28.md",
       "bytes": 3161,
       "sha256": "8fa5de26bb0e3679734103bdffe6a4fb7005e593255f95bb9e6bbf801626ab7a"
+    },
+    {
+      "path": "docs/porting/TH14_RNG_STORE_BOUNDARY_NOV02.md",
+      "bytes": 3540,
+      "sha256": "e7aee6605fb45859cbd61fe0e47755fbf37b876407187d43b0a5155a49de06d6"
     },
     {
       "path": "docs/porting/TH14_RUNTIME_STARTUP_ERROR_OCT30.md",
@@ -5674,6 +5679,11 @@
       "sha256": "62dd60e44aa5f3a5000a82c6f056b469748c14e3e5904e4cbc7766e2e9bc5a58"
     },
     {
+      "path": "docs/porting/th14-rng-store-boundary-nov02.json",
+      "bytes": 215484,
+      "sha256": "abf417b0b50d80f373a9f692a5685b0c538aabb93c0384aee7a1842f8adcbbe1"
+    },
+    {
       "path": "docs/porting/th14-runtime-startup-error-oct30.json",
       "bytes": 1697,
       "sha256": "5616bf6e07963a4cd0a0c9e392307ba38fa1f3fd142fbcc49ae4ab9a533484b2"
@@ -8370,8 +8380,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmInterpreter.cpp",
-      "bytes": 39921,
-      "sha256": "e0ae43763e7ebc45d497aea1831713dec512cf26b347fc5a65969b76336b7f37"
+      "bytes": 40444,
+      "sha256": "8820770ac321b6ec5698556fafa92e5d844ada832e409bbae86dedec79d982e2"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmManager.cpp",
@@ -8380,8 +8390,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmManager.hpp",
-      "bytes": 6746,
-      "sha256": "0a5cdc5743ae0feb6486a9642b3202f8e11dcc2133f6f6f7e1edaccd84c4d1e3"
+      "bytes": 7056,
+      "sha256": "696346e8e7c8eb68eeb65a46991055e44e22a4fb0a0aea7331f4aa1fff541c24"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmOpcodes.hpp",
@@ -8435,8 +8445,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmVm.hpp",
-      "bytes": 9187,
-      "sha256": "a80d69b947510294e41f9c4f9ee56b8511210490fd030ae0f39d508286fa6d33"
+      "bytes": 9268,
+      "sha256": "4f4f24d80f3342eff8c64b565e8f5b71b8d50a875a68d8130e668fcb4a26a1c6"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Archive.cpp",
@@ -9275,8 +9285,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Rng.hpp",
-      "bytes": 1127,
-      "sha256": "c53231677e6b5ef755d7385f5d3e224e2e353757eec7f1110424a8d4f0073a9a"
+      "bytes": 4057,
+      "sha256": "86d2c1bb9cadfd2f23723d036337e2d50c0a09dcbd5f80bd96f4ca6bfe6d6387"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/SceneCamera.cpp",
@@ -13204,6 +13214,16 @@
       "sha256": "a9bbd49e9f24bd8583dcd98067c641404c35df1c3a7d1d56d002f9deb9fbf12d"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-rng-initialization-clock-fixture-nov02.cpp",
+      "bytes": 1077,
+      "sha256": "74a0cb7332fabbfbfb386a58a54f14c8d7b97bc2002f58d17d281ef489532b11"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-rng-store-boundary-fixture-nov02.cpp",
+      "bytes": 2299,
+      "sha256": "23e79540efb4bf2f7cfb569dab00ea9071f19a7c7f544d34e464f18961112435"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-sakuya-b-anm-fixture.cpp",
       "bytes": 1495,
       "sha256": "d468889b3051a0d95f92630022ec751cb2c130b14f0bd9949b2a4b97e31bd4bc"
@@ -16919,6 +16939,11 @@
       "sha256": "5c2d989f410a0aa417146be610e53dd482130580dd499442c80d38ecbd39a1fd"
     },
     {
+      "path": "tools/th14-compare-controlled-rng-store-nov02.mjs",
+      "bytes": 52097,
+      "sha256": "31cdefea77cd457c86e378cf19fdefe2089f3db2141390590e39cebccf772490"
+    },
+    {
       "path": "tools/th14-compare-native-campaign-retained-camera-nov01.mjs",
       "bytes": 48511,
       "sha256": "abaf89329cf21a3abdc6f1e421320b56c0ed60a0a67ed295e43b0054a26e31c1"
@@ -17047,6 +17072,16 @@
       "path": "tools/th14-controlled-nested-instruction-prefix-evidence-nov02.py",
       "bytes": 10847,
       "sha256": "42b8989b3866fe6118d54b83c2dc2f37f7cc27167fd9354cb805b26429fc1f3c"
+    },
+    {
+      "path": "tools/th14-controlled-rng-store-evidence-nov02.py",
+      "bytes": 9182,
+      "sha256": "a0a9dddb0b8d370571d3c208543f944e62a520620785529d31d01c8afb4ae4bd"
+    },
+    {
+      "path": "tools/th14-controlled-rng-store-observer-nov02.py",
+      "bytes": 70283,
+      "sha256": "a75c7c96cc210591173bb183f9a968102f98abd25a70dcd7d672d82d4159083e"
     },
     {
       "path": "tools/th14-controlled-std-vm-return-evidence-nov02.py",
@@ -21599,6 +21634,26 @@
       "sha256": "3af77ec2f092c83d6e8019ec697725e7e3a718265aa39a6117c65c74680fe9bd"
     },
     {
+      "path": "tools/th14-rng-store-boundary-component-check-nov02.mjs",
+      "bytes": 3199,
+      "sha256": "02d2a677737152b683c93bc14fba716b99504851d941ad60023c0df33f895c08"
+    },
+    {
+      "path": "tools/th14-rng-store-boundary-component-check-nov02.py",
+      "bytes": 2975,
+      "sha256": "788dd8b51e8710337e4b18de711449135cc0a5986888511e51cc6ae1fff56f8e"
+    },
+    {
+      "path": "tools/th14-rng-store-boundary-evidence-nov02.py",
+      "bytes": 11229,
+      "sha256": "ece748e8132311d0977d97befa66ec195b5a27d169b29bb5d16b32f6bdab7d84"
+    },
+    {
+      "path": "tools/th14-rng-store-boundary-native-nov02.py",
+      "bytes": 5629,
+      "sha256": "d8f440a722cdb0e1005f6b19adcbca109f908a51b48ec68bb4691ebe9ddea370"
+    },
+    {
       "path": "tools/th14-royalflare-replay-decode-native.py",
       "bytes": 4913,
       "sha256": "7a927a5a38e9a93e47dd4b1a5daccfa01d4031871c5eceff8516370ae947181d"
@@ -24339,6 +24394,11 @@
       "sha256": "56166cfe745f1e34e0f8197a6b0d47b02257a9eafc517a0a85d33245d722dad0"
     },
     {
+      "path": "tools/th14-verify-rng-store-campaign-nov02.py",
+      "bytes": 18975,
+      "sha256": "b1ce69e394938abc8a16c9fe11135abad20d7e951cdacbe4bacfc1cd51a8d27d"
+    },
+    {
       "path": "tools/th14-viewport-candidate-evidence-check-oct19.py",
       "bytes": 8246,
       "sha256": "233a237c547dfce03fd76bc82968567a0cf4923f4fe38c378e68109c2fa686a1"
@@ -25605,29 +25665,52 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "50d212bab4114ecb05472b2ad805873f11840cd2",
-    "title": "TH14 instruction-core actual complete GLES and WebGPU Applications",
+    "basePublishedCommit": "7acf5ec0c0049e2eb72894987390bbe9c8a964d7",
+    "title": "TH14 RNG internal initialization boundaries and both native critical-section return modes",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-instruction-initialization-application-full-evidence-nov02.py",
-      "docs/porting/TH14_INSTRUCTION_INITIALIZATION_APPLICATION_FULL_NOV02.md",
-      "docs/porting/th14-instruction-initialization-application-full-nov02.json",
-      "tools/th14-effect149-read-provenance-nov02.py",
-      "docs/porting/TH14_EFFECT149_COORDINATE_READS_NOV02.md",
-      "docs/porting/th14-effect149-coordinate-reads-nov02.json",
+      "runtimes/th12/th12_web/cpp/game/Rng.hpp",
+      "runtimes/th12/th12_web/cpp/game/AnmVm.hpp",
+      "runtimes/th12/th12_web/cpp/game/AnmManager.hpp",
+      "runtimes/th12/th12_web/cpp/game/AnmInterpreter.cpp",
+      "tools/th14-rng-store-boundary-native-nov02.py",
+      "tools/th14-rng-store-boundary-component-check-nov02.py",
+      "tools/th14-rng-store-boundary-component-check-nov02.mjs",
+      "tools/th14-controlled-rng-store-observer-nov02.py",
+      "tools/th14-controlled-rng-store-evidence-nov02.py",
+      "tools/th14-compare-controlled-rng-store-nov02.mjs",
+      "tools/th14-verify-rng-store-campaign-nov02.py",
+      "tools/th14-rng-store-boundary-evidence-nov02.py",
+      "runtimes/th12/th12_web/tests/cpp/th14-rng-store-boundary-fixture-nov02.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-rng-initialization-clock-fixture-nov02.cpp",
+      "docs/porting/TH14_RNG_STORE_BOUNDARY_NOV02.md",
+      "docs/porting/th14-rng-store-boundary-nov02.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "productionEngineChanged": false,
-    "productionGameplayCoreChanged": false,
-    "actualFramesPerBackend": 122622,
-    "assertionsPerBackend": 45,
-    "bothActuallyExecutedAndIndependentlyPassed": true,
-    "sourceGameplayCore": "50d212bab4114ecb05472b2ad805873f11840cd2",
+    "productionEngineChanged": true,
+    "productionGameplayCoreChanged": true,
+    "previousProductionCoreCommit": "50d212bab4114ecb05472b2ad805873f11840cd2",
+    "coreWasmSha256": "48537c4c32ebe7067d856a59d73ff43d3eaa0a5310461c6abdea7f12fbd3ee06",
+    "coreObjectsRecompiled": 141,
+    "originalRngInstructionProfiles": 800,
+    "wrongBoundaryControlsRejected": 144,
+    "firstPrototypeRejectedFor40ReturnReloadDifferences": true,
+    "controlledReimubCallbacks": 34000,
+    "controlledVm303Rows": 982,
+    "controlledCombatCheckpoints": 318,
+    "currentNaturalSamples": 16,
+    "currentNaturalCallbacks": 1579705,
+    "strictAndIndependentPassed": true,
+    "startupFirstChanceNoticesRetained": 10,
+    "coldStartupAccepted": false,
+    "old36826FailureClosed": false,
+    "currentNewCoreFullApplicationAccepted": false,
+    "currentNewCoreBrowserAccepted": false,
     "naturalModePairs": 30,
     "allTargetStageEntryModePairs": 27,
-    "browserAcceptance": false,
+    "independentSchedulingAccepted": false,
     "completeGame": false,
     "nativeEquivalent": false
   }
