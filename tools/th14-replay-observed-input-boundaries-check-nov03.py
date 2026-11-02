@@ -1,0 +1,26 @@
+"""Check source-bound replay-input classification with synthetic positive/negative events."""
+from pathlib import Path
+import argparse,copy,hashlib,json,subprocess,sys,tempfile
+R=Path(__file__).resolve().parents[1];H=R/'artifacts/th14/replay-candidates-second-nov03';basehome=R/'artifacts/th14/replay-alternatives-nov03/case-marisaa-hard-exception-probe';tool=R/'tools/th14-replay-observed-input-boundaries-nov03.py';observer=R/'tools/th14-native-terminal-marker-observer-nov03.py';meta=H/'th14_ud0552-source.json';decoded=H/'th14_ud0552-decoded.bin';replay=H/'th14_ud0552.rpy';sha=lambda b:hashlib.sha256(b).hexdigest();bindings={}
+def raw(p):
+ p=p.resolve();assert p.is_relative_to(R);v=p.read_bytes();bindings[p.relative_to(R).as_posix()]={'bytes':len(v),'sha256':sha(v)};return v
+def load(p):return json.loads(raw(p))
+for p in [tool,observer,meta,decoded,replay]:raw(p)
+metadata=load(meta);assert metadata['actualNativeCodecVerified'] and sha(raw(decoded))==metadata['decodedSha256'] and sha(raw(replay))==metadata['sha256'];base=load(basehome/'native/report.json');frames=metadata['stages'][-1]['frames']
+with tempfile.TemporaryDirectory(prefix='boundary-check-',dir=H) as tmp:
+ T=Path(tmp);N=T/'native';N.mkdir();(N/'observer-source.py').write_bytes(raw(observer));base['sourceFullReplaySha256']=metadata['sha256'];base['sourceSha256']=sha(raw(observer));base['replayTerminalMarkerObservationImplemented']=True;base['replayTerminalMarkerEvents']=[];base['replayStageInputExhaustionEvents']=[]
+ event=dict(event='replay-stage-input-exhausted',pc=0x4552cd,threadId=1,hostMonotonicNs=1,precedingPlayerCallbacks=1,stage=6,stageIndex=6,recordedStage=6,stageInputCursor=frames,declaredStageFrameCount=frames,exactFirstExhaustedCursor=True,readOnly=True,nativeValuesProvidedToEngine=False,debuggerPausesAffectTiming=True)
+ def run(label,report,marker,exhaust):
+  (N/'report.json').write_text(json.dumps(report));(N/'replay-terminal-marker-events.jsonl').write_text(''.join(json.dumps(x)+'\n' for x in marker));(N/'replay-stage-input-exhaustion-events.jsonl').write_text(''.join(json.dumps(x)+'\n' for x in exhaust));out=T/(label+'.json');cmd=[sys.executable,'-X','utf8',str(tool),'--native',str(N),'--metadata',str(meta),'--decoded',str(decoded),'--replay',str(replay),'--output',str(out)];p=subprocess.run(cmd,cwd=R,capture_output=True);return p.returncode,out
+ r=copy.deepcopy(base);r['replayStageInputExhaustionEvents']=[event];code,out=run('positive',r,[],[event]);assert code==0;proof=json.loads(out.read_bytes());assert proof['verifiedObservedInputBoundaries'] and proof['finalStageInputAtOrBeyondDeclaredFramesObserved'] and not proof['sourceFileByteEofProved'] and not proof['gameClearProved']
+ r=copy.deepcopy(base);bad=dict(event,declaredStageFrameCount=frames+1);r['replayStageInputExhaustionEvents']=[bad];assert run('bad-count',r,[],[bad])[0]!=0
+ marker=dict(event='replay-terminal-marker-before-input-clear',pc=0x45521b,stage=6,stageIndex=6,recordedStage=6,stageInputCursor=frames-1,declaredStageFrameCount=frames,markerAtLastRecordedInput=True,sixMarkerBytesVerified=True,readOnly=True,nativeValuesProvidedToEngine=False);r=copy.deepcopy(base);r['replayTerminalMarkerEvents']=[marker];r['observedReplayTerminalMarker']=True;assert run('false-marker',r,[marker],[])[0]!=0
+ r=copy.deepcopy(base);r['replayStageInputExhaustionEvents']=[event];assert run('missing-event-file',r,[],[])[0]!=0
+ r=copy.deepcopy(base);r['replayTerminalMarkerObservationImplemented']=False;r['replayStageInputExhaustionEvents']=[event];assert run('false-implementation',r,[],[event])[0]!=0
+ r=copy.deepcopy(base);r['replayTerminalMarkerObservationImplemented']=False;code,out=run('no-observer',r,[],[]);assert code==0;none=json.loads(out.read_bytes());assert not none['observationImplemented'] and not none['verifiedObservedInputBoundaries'] and none['absenceDoesNotProveNoEvent']
+ extended=R/'tools/th14-native-terminal-exception-observer-nov03.py';extended_bytes=raw(extended);(N/'observer-source.py').write_bytes(extended_bytes);r=copy.deepcopy(base);r['sourceSha256']=sha(extended_bytes);code,out=run('extended-observer',r,[],[]);assert code==0 and json.loads(out.read_bytes())['observationImplemented'] and not json.loads(out.read_bytes())['verifiedObservedInputBoundaries']
+result=dict(verifiedReplayInputBoundaryClassifier=True,syntheticExhaustionPositive=1,syntheticNegativeControls=4,unobservedMarkerNotInterpretedAsFalse=True,extendedObserverSourceBindingAccepted=True,syntheticEventsNotOriginalObservation=True,actualLiveEventValidated=False,sourceFileByteEofProved=False,gameClearProved=False,completeGame=False,nativeEquivalent=False,bindings=bindings,verifierSha256=sha(Path(__file__).read_bytes()))
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--check',action='store_true');p.add_argument('--output',type=Path,default=R/'docs/porting/th14-observed-input-boundaries-check-nov03.json');a=p.parse_args();out=a.output.resolve();assert out.is_relative_to(R/'docs/porting') or out.is_relative_to(H);data=(json.dumps(result,indent=2)+'\n').encode()
+if a.check:assert out.read_bytes()==data
+else:out.write_bytes(data)
+print(json.dumps({k:v for k,v in result.items() if k!='bindings'}))
