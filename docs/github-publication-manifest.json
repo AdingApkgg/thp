@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "7acf5ec0c0049e2eb72894987390bbe9c8a964d7",
+  "sourceCommit": "4acbbc398fe3648ca8362e4fe803f56ee87818b7",
   "files": [
     {
       "path": ".gitignore",
@@ -485,8 +485,8 @@
     },
     {
       "path": "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
-      "bytes": 3886,
-      "sha256": "bf0c5d03c01e738322d903b42a32b3bc5a389ea73d14135ba98a171d88dde66f"
+      "bytes": 4409,
+      "sha256": "610e64b0bf57ba7234f7841433fa35a5720020d016f0a4a8b29b68eb633b7226"
     },
     {
       "path": "docs/porting/TH14_MSG_HUD_ORDER_OCT24.md",
@@ -665,8 +665,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 73844,
-      "sha256": "fe35cf9226722c279d4d785fd6bc0b4e08e2f6d352df78b565a7372b935a0c5a"
+      "bytes": 74488,
+      "sha256": "ebea0f6db3cb312952c3efc5a4243b28bbf3728d038497f74104056f0fb43aa5"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -702,6 +702,11 @@
       "path": "docs/porting/TH14_REPLAY_TERMINAL_OCT28.md",
       "bytes": 3161,
       "sha256": "8fa5de26bb0e3679734103bdffe6a4fb7005e593255f95bb9e6bbf801626ab7a"
+    },
+    {
+      "path": "docs/porting/TH14_RNG_ASYNC_SCOPE_NOV02.md",
+      "bytes": 1571,
+      "sha256": "1272ee7abbb67026586ec8b9f998bbdc675dce1298c0703fc72d0db2ec3da60c"
     },
     {
       "path": "docs/porting/TH14_RNG_STORE_BOUNDARY_NOV02.md",
@@ -5677,6 +5682,11 @@
       "path": "docs/porting/th14-rings-verified.json",
       "bytes": 2147,
       "sha256": "62dd60e44aa5f3a5000a82c6f056b469748c14e3e5904e4cbc7766e2e9bc5a58"
+    },
+    {
+      "path": "docs/porting/th14-rng-async-scope-nov02.json",
+      "bytes": 3166,
+      "sha256": "5729724c25d30e8614e81296b291c46e04fc51475f894f86bc3bfd0aaa147022"
     },
     {
       "path": "docs/porting/th14-rng-store-boundary-nov02.json",
@@ -13212,6 +13222,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-rings-fixture.cpp",
       "bytes": 2966,
       "sha256": "a9bbd49e9f24bd8583dcd98067c641404c35df1c3a7d1d56d002f9deb9fbf12d"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-rng-async-scope-fixture-nov02.cpp",
+      "bytes": 2893,
+      "sha256": "9c0bb929db81f7dcb5983faf80f8971850cabe3cc864e56c5b1abf7330e2fc7b"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-rng-initialization-clock-fixture-nov02.cpp",
@@ -21634,6 +21649,16 @@
       "sha256": "3af77ec2f092c83d6e8019ec697725e7e3a718265aa39a6117c65c74680fe9bd"
     },
     {
+      "path": "tools/th14-rng-async-scope-check-nov02.mjs",
+      "bytes": 5972,
+      "sha256": "b7c92b60c4666d48376a814c87f4523aec397af24203d77a00c2c3c025af3af1"
+    },
+    {
+      "path": "tools/th14-rng-async-scope-check-nov02.py",
+      "bytes": 4536,
+      "sha256": "a0938e7934d975bf31445442ef994b9f3afb45fd08b8ce171926db261dca60b6"
+    },
+    {
       "path": "tools/th14-rng-store-boundary-component-check-nov02.mjs",
       "bytes": 3199,
       "sha256": "02d2a677737152b683c93bc14fba716b99504851d941ad60023c0df33f895c08"
@@ -25665,52 +25690,31 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "7acf5ec0c0049e2eb72894987390bbe9c8a964d7",
-    "title": "TH14 RNG internal initialization boundaries and both native critical-section return modes",
+    "basePublishedCommit": "4acbbc398fe3648ca8362e4fe803f56ee87818b7",
+    "title": "TH14 RNG scopes across Asyncify suspension and current mode inventory prose",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/Rng.hpp",
-      "runtimes/th12/th12_web/cpp/game/AnmVm.hpp",
-      "runtimes/th12/th12_web/cpp/game/AnmManager.hpp",
-      "runtimes/th12/th12_web/cpp/game/AnmInterpreter.cpp",
-      "tools/th14-rng-store-boundary-native-nov02.py",
-      "tools/th14-rng-store-boundary-component-check-nov02.py",
-      "tools/th14-rng-store-boundary-component-check-nov02.mjs",
-      "tools/th14-controlled-rng-store-observer-nov02.py",
-      "tools/th14-controlled-rng-store-evidence-nov02.py",
-      "tools/th14-compare-controlled-rng-store-nov02.mjs",
-      "tools/th14-verify-rng-store-campaign-nov02.py",
-      "tools/th14-rng-store-boundary-evidence-nov02.py",
-      "runtimes/th12/th12_web/tests/cpp/th14-rng-store-boundary-fixture-nov02.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-rng-initialization-clock-fixture-nov02.cpp",
-      "docs/porting/TH14_RNG_STORE_BOUNDARY_NOV02.md",
-      "docs/porting/th14-rng-store-boundary-nov02.json",
+      "tools/th14-rng-async-scope-check-nov02.py",
+      "tools/th14-rng-async-scope-check-nov02.mjs",
+      "runtimes/th12/th12_web/tests/cpp/th14-rng-async-scope-fixture-nov02.cpp",
+      "docs/porting/TH14_RNG_ASYNC_SCOPE_NOV02.md",
+      "docs/porting/th14-rng-async-scope-nov02.json",
+      "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
-    "gameAssetsAdded": false,
-    "productionEngineChanged": true,
-    "productionGameplayCoreChanged": true,
-    "previousProductionCoreCommit": "50d212bab4114ecb05472b2ad805873f11840cd2",
-    "coreWasmSha256": "48537c4c32ebe7067d856a59d73ff43d3eaa0a5310461c6abdea7f12fbd3ee06",
-    "coreObjectsRecompiled": 141,
-    "originalRngInstructionProfiles": 800,
-    "wrongBoundaryControlsRejected": 144,
-    "firstPrototypeRejectedFor40ReturnReloadDifferences": true,
-    "controlledReimubCallbacks": 34000,
-    "controlledVm303Rows": 982,
-    "controlledCombatCheckpoints": 318,
-    "currentNaturalSamples": 16,
-    "currentNaturalCallbacks": 1579705,
-    "strictAndIndependentPassed": true,
-    "startupFirstChanceNoticesRetained": 10,
-    "coldStartupAccepted": false,
-    "old36826FailureClosed": false,
-    "currentNewCoreFullApplicationAccepted": false,
-    "currentNewCoreBrowserAccepted": false,
+    "productionEngineChanged": false,
+    "productionGameplayCoreChanged": false,
+    "referenceCoreCommit": "4acbbc398fe3648ca8362e4fe803f56ee87818b7",
+    "asyncScopeCombinations": 80,
+    "queuedCallbacks": 320,
+    "cppStackGuardWordsPerCase": 2048,
+    "growthBytesPerCase": 65536,
+    "unserializedInputNegativeControlRejected": true,
     "naturalModePairs": 30,
     "allTargetStageEntryModePairs": 27,
-    "independentSchedulingAccepted": false,
+    "browserAcceptance": false,
+    "currentNewCoreFullApplicationAccepted": false,
     "completeGame": false,
     "nativeEquivalent": false
   }
