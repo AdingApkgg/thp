@@ -1,0 +1,41 @@
+{
+  "verifiedFiniteObservedFreeReturnModelExperiment": true,
+  "callbacks": 600,
+  "models": [
+    {
+      "mode": "entry",
+      "allocations": 838,
+      "targetSizeAllocations": 32,
+      "targetReuseIdentityMatches": 27,
+      "targetRelativePositionMatches": 1,
+      "matchedFrees": 273,
+      "unmatchedFrees": 0,
+      "nullFreeEntries": 8
+    },
+    {
+      "mode": "successful-return",
+      "allocations": 838,
+      "targetSizeAllocations": 32,
+      "targetReuseIdentityMatches": 27,
+      "targetRelativePositionMatches": 1,
+      "matchedFrees": 273,
+      "unmatchedFrees": 0,
+      "nullFreeEntries": 8
+    }
+  ],
+  "allNonNullFreeReturnsObservedSuccessful": true,
+  "debugDeliveryOrderAssumedMemoryOrder": true,
+  "actualCrossThreadMemoryOrderProved": false,
+  "earlierActivityAndOtherHeapPathsNotModeled": true,
+  "targetSizeIsNotProvenEnemy": true,
+  "actualOriginalAddressesProvidedToModel": false,
+  "originalHeapHistoryReconstructed": false,
+  "productionIntegrated": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "eventLogSha256": "a269e9eda8181508ba9e48261f59421f1185c181e288fdeed09aca065e04b59f",
+  "traceProofSha256": "63021d01715cf26240a26fad00adf487c0a07cb6bed0369c8d9b0e354b1368c7",
+  "largeWasmSha256": "f6432ef0062440aece5afa1129b36da616d7e8c9de3dd7c8fca753c48fa12fe7",
+  "toolSha256": "dc729aa87fa5ca3dd297f134b66dc195aa677d2e5cdc186fcba8cafb6001f801",
+  "scope": "Both isolated models use the same finite original trace and synthetic heap; one applies the observed successful frees at entry, the other at their actual return. Cross-thread debugger delivery order is still an unproved approximation of actual heap-operation order, and earlier or other allocations remain omitted."
+}

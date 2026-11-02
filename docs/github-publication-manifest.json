@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "a9d8865a66f731f4094935d1c78a736cb4ad3f35",
+  "sourceCommit": "b70925c8ce1794a8583d9f9b3f9e6306ad25c505",
   "files": [
     {
       "path": ".gitignore",
@@ -367,6 +367,11 @@
       "path": "docs/porting/TH14_HARD_TRANSITION_WINDOW_NOV03.md",
       "bytes": 2351,
       "sha256": "f1fba471047ee53946da4ba7c7122825502d7a066f7a458f0045d7702c932454"
+    },
+    {
+      "path": "docs/porting/TH14_HEAP_FREE_RETURN_NOV03.md",
+      "bytes": 1558,
+      "sha256": "012e725c9f336d7f1fef4a2bb31b8a7436617aa5d93b993764086181d4cb3e97"
     },
     {
       "path": "docs/porting/TH14_HUD_COMPLETION_OCT25.md",
@@ -775,8 +780,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 87914,
-      "sha256": "9ffd41745610c211f2f45fb4f4b7f9a170bad65222363c309a80f1ee75feef70"
+      "bytes": 88293,
+      "sha256": "98c8f635cfb5218653d944186557929b9d853bbc2e72767c24dd88e474f0ad7d"
     },
     {
       "path": "docs/porting/TH14_REPLAY_BOUNDARY_EXCEPTION_PROTOTYPE_NOV03.md",
@@ -3352,6 +3357,16 @@
       "path": "docs/porting/th14-hard-transition-window-nov03.json",
       "bytes": 3592,
       "sha256": "0324cee8978be64635663042e75080b9b0c91d1a6ae1e12d5b6804115443125c"
+    },
+    {
+      "path": "docs/porting/th14-heap-free-return-model-nov03.json",
+      "bytes": 1733,
+      "sha256": "24b92434b6d5299b4a1370569a57cd566c0959038b32f36f6459c25fa7402c53"
+    },
+    {
+      "path": "docs/porting/th14-heap-free-return-trace-nov03.json",
+      "bytes": 1850,
+      "sha256": "63021d01715cf26240a26fad00adf487c0a07cb6bed0369c8d9b0e354b1368c7"
     },
     {
       "path": "docs/porting/th14-hit-effect-current-visual-verified-oct14.json",
@@ -19864,6 +19879,21 @@
       "sha256": "a9507c7a9a95f12a1a31f4f75fc04dc8b0b61bd556f7da8a866c8eb899c56231"
     },
     {
+      "path": "tools/th14-heap-free-return-model-nov03.mjs",
+      "bytes": 4906,
+      "sha256": "dc729aa87fa5ca3dd297f134b66dc195aa677d2e5cdc186fcba8cafb6001f801"
+    },
+    {
+      "path": "tools/th14-heap-free-return-observation-nov03.py",
+      "bytes": 5797,
+      "sha256": "a7a090abc89fae1ffef8577c2dc8f240dfcb6363e42933d050fdfb2174fc36ac"
+    },
+    {
+      "path": "tools/th14-heap-free-return-observer-nov03.py",
+      "bytes": 59485,
+      "sha256": "6b0549b449d8f188c5b6878237bf19b7df5aa3121f9e659b02fd677e1608abe5"
+    },
+    {
       "path": "tools/th14-hit-effect-current-visual-evidence-check.py",
       "bytes": 13164,
       "sha256": "6d4e033a64adebf9d6dfb6af3a9c1a113ae173df94f3e4e03737e3de89f1520f"
@@ -26645,23 +26675,25 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "a9d8865a66f731f4094935d1c78a736cb4ad3f35",
-    "title": "TH14 independent x86 Windows heap lifetime controls",
+    "basePublishedCommit": "b70925c8ce1794a8583d9f9b3f9e6306ad25c505",
+    "title": "TH14 original HeapFree return observations",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-recorded-heap-windows-helper-nov03.c",
-      "tools/th14-recorded-heap-windows-run-nov03.py",
-      "tools/th14-recorded-heap-windows-evidence-nov03.py",
-      "docs/porting/th14-recorded-heap-windows-nov03.json",
-      "docs/porting/TH14_EXTRA_HEAP_CALLS_NOV03.md",
+      "tools/th14-heap-free-return-observer-nov03.py",
+      "tools/th14-heap-free-return-observation-nov03.py",
+      "tools/th14-heap-free-return-model-nov03.mjs",
+      "docs/porting/th14-heap-free-return-trace-nov03.json",
+      "docs/porting/th14-heap-free-return-model-nov03.json",
+      "docs/porting/TH14_HEAP_FREE_RETURN_NOV03.md",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "productionGameplayCoreChanged": false,
     "currentProductionCoreCommit": "22c4f853fc1cb81b8a0c0891b88023f2f5dc065e",
-    "windowsHelperRuns": 6,
-    "targetSizeAllocations": 32,
-    "relativeMatchesEach": 1,
+    "originalCallbacks": 600,
+    "successfulNonNullFrees": 273,
+    "nullFreeEntries": 8,
+    "actualCrossThreadOrderProved": false,
     "originalHeapHistoryProved": false,
     "strictPassed": false,
     "completeGame": false,
