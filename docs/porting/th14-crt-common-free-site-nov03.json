@@ -1,0 +1,48 @@
+{
+  "verifiedOriginalCommonFreeSite": true,
+  "originalExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "wrapperJumpsToCommonEntry": true,
+  "directCallExamples": [
+    "0x4029d3",
+    "0x402aeb",
+    "0x407506",
+    "0x40b7ef",
+    "0x40b80c"
+  ],
+  "heapFreeImport": "KERNEL32.dll!HeapFree",
+  "actualOriginalInstructionsExecuted": true,
+  "cases": [
+    {
+      "entry": "0x4854fe",
+      "syntheticNullPointer": false,
+      "heapFreeBoundaryReached": true,
+      "returnedToSyntheticCaller": true
+    },
+    {
+      "entry": "0x4854fe",
+      "syntheticNullPointer": true,
+      "heapFreeBoundaryReached": false,
+      "returnedToSyntheticCaller": true
+    },
+    {
+      "entry": "0x4855d2",
+      "syntheticNullPointer": false,
+      "heapFreeBoundaryReached": true,
+      "returnedToSyntheticCaller": true
+    },
+    {
+      "entry": "0x4855d2",
+      "syntheticNullPointer": true,
+      "heapFreeBoundaryReached": false,
+      "returnedToSyntheticCaller": true
+    }
+  ],
+  "operatingSystemHeapFreeExecuted": false,
+  "freeSuccessInRealProcessProved": false,
+  "originalFullHeapHistoryProved": false,
+  "nativeValuesProvidedToEngine": false,
+  "productionCodeChanged": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "toolSha256": "95b34c0150b3b495ab479ca47ddef4ef6322fed5dc5634b86ce266ce8f9fb56e"
+}

@@ -1,0 +1,82 @@
+{
+  "verifiedFiniteOriginalBootCrtHeapTrace": true,
+  "callbacks": 600,
+  "events": 784,
+  "eventsWithZeroObservedPlayerCallbacks": 698,
+  "threadsWithEvents": 6,
+  "crtAllocationReturns": 708,
+  "crtFreeEntries": 44,
+  "enemyAllocationReturns": 32,
+  "enemyReturnsMatchingSameThreadObservedCrtAllocation": 32,
+  "matchedSameThreadFreeEntries": 30,
+  "unmatchedSameThreadFreeEntries": 14,
+  "duplicateSameThreadAllocationsWithoutObservedFree": 91,
+  "nullAllocationReturns": 0,
+  "commonRequestedSizes": [
+    {
+      "bytes": 40,
+      "count": 85
+    },
+    {
+      "bytes": 10,
+      "count": 61
+    },
+    {
+      "bytes": 12,
+      "count": 34
+    },
+    {
+      "bytes": 21260,
+      "count": 32
+    },
+    {
+      "bytes": 13,
+      "count": 30
+    },
+    {
+      "bytes": 8,
+      "count": 26
+    },
+    {
+      "bytes": 14,
+      "count": 21
+    },
+    {
+      "bytes": 9,
+      "count": 20
+    },
+    {
+      "bytes": 11,
+      "count": 18
+    },
+    {
+      "bytes": 316,
+      "count": 14
+    },
+    {
+      "bytes": 16,
+      "count": 12
+    },
+    {
+      "bytes": 15,
+      "count": 12
+    }
+  ],
+  "debugExceptions": 0,
+  "actualMastersZero": true,
+  "trackedThreadsOnly": true,
+  "loaderBeforeAttachAndDirectOsCallsNotObserved": true,
+  "crossThreadDebugDeliveryOrderNotProvenMemoryOrder": true,
+  "freeEntryNotFreeSuccess": true,
+  "debuggerPausesAffectTiming": true,
+  "rawPointersPublished": false,
+  "nativeValuesProvidedToEngine": false,
+  "originalFullHeapHistoryProved": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "nativeReportSha256": "1ce1aed9f70ee3d5ae4ff0842c3c0475e5d499a0d833a8eb0531285334188c97",
+  "eventLogSha256": "919e404780ff2c56edbbb37c0147bdb1fc1eb157ddd234fdcac303b7a7b13b27",
+  "observerSha256": "74991fd816591e9407aa46f8480fe272b009b9da209921f1bfe805753bb8752f",
+  "verifierSha256": "a2d21dfa43a02e26b6657b29edf0ca1bd18be7c0420673ec88397dacad8d6631",
+  "scope": "Finite original boot and first-stage CRT trace on threads tracked by the debugger. Zero callbacks means the observer had not yet recorded a Player callback. Matches are classified within the same thread only; loader activity before attach, direct OS heap calls, cross-thread actual order and free-call success remain unproved."
+}

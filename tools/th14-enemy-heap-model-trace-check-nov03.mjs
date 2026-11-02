@@ -1,0 +1,25 @@
+// Compare a synthetic-address heap model to one separately verified original trace.
+import assert from 'node:assert/strict';
+import {readFileSync as read,writeFileSync as write,existsSync} from 'node:fs';
+import {resolve,relative,isAbsolute} from 'node:path';
+import {createHash} from 'node:crypto';
+import {WASI} from 'node:wasi';
+const root=resolve(import.meta.dirname,'..'),args=process.argv.slice(2);assert(args.length===4||args.length===5);assert.equal(args[0],'--case');assert.equal(args[2],'--output');assert(args.length===4||args[4]==='--check');const home=resolve(root,args[1]),out=resolve(root,args[3]),scope=relative(resolve(root,'artifacts/th14'),home),outScope=relative(resolve(root,'artifacts/th14'),out);assert(scope&&!scope.startsWith('..')&&!isAbsolute(scope)&&outScope&&!outScope.startsWith('..')&&!isAbsolute(outScope));const sha=x=>createHash('sha256').update(x).digest('hex');
+const proof=JSON.parse(read(resolve(home,'verified.json'))),native=resolve(home,'native'),report=read(resolve(native,'report.json')),eventsRaw=read(resolve(native,'enemy-heap-events.jsonl')),events=eventsRaw.toString().trim().split('\n').map(JSON.parse);assert(proof.verifiedFiniteOriginalEnemyHeapTrace&&proof.debugExceptions===0&&proof.duplicateAllocationsWithoutObservedFree===0);assert.equal(sha(report),proof.nativeReportSha256);assert.equal(sha(eventsRaw),proof.eventLogSha256);assert.equal(events.length,proof.allocationsObserved+proof.matchedFreeEntriesObserved);
+const build=JSON.parse(read(resolve(root,'artifacts/th14/replay-candidates-second-nov03/process-heap-model-v3/build.json'))),model=build.variants.find(x=>x.name==='candidate'),wasm=read(resolve(root,'artifacts/th14/replay-candidates-second-nov03/process-heap-model-v3/candidate.wasm'));assert.equal(sha(wasm),model.wasmSha256);assert.equal(sha(read(resolve(root,'tools/th14-process-heap-model-nov03.cpp'))),build.sourceSha256);assert(!build.productionIntegrated);
+const wasi=new WASI({version:'preview1',args:[],env:{},preopens:{}}),{instance}=await WebAssembly.instantiate(wasm,{wasi_snapshot_preview1:wasi.wasiImport});wasi.initialize(instance);const c=instance.exports;c.heap_model_reset(0x20000000,0x1000000);assert.equal(c.heap_model_ok(),1);
+const active=new Map(),nativeLast=new Map(),modelLast=new Map(),modelByToken=new Map();let allocations=0,frees=0,reuseIdentityMatches=0,relativePositionMatches=0,firstNative=null,firstModel=null;const mismatchOrdinals=[];
+for(const event of events){
+ if(event.event==='enemy-allocation-return'){
+  assert(!active.has(event.address));const token=++allocations,observedPrior=nativeLast.get(event.address)??null,modelAddress=c.heap_model_alloc(event.requestedBytes)>>>0;assert(modelAddress);const modelPrior=modelLast.get(modelAddress)??null;
+  if(observedPrior===modelPrior)reuseIdentityMatches++;else mismatchOrdinals.push(token);
+  if(firstNative===null){firstNative=event.address;firstModel=modelAddress;}
+  if(event.address-firstNative===modelAddress-firstModel)relativePositionMatches++;
+  active.set(event.address,token);nativeLast.set(event.address,token);modelLast.set(modelAddress,token);modelByToken.set(token,modelAddress);
+ }else{
+  assert.equal(event.event,'observed-enemy-crt-free-entry');const token=active.get(event.address);assert(token);assert.equal(c.heap_model_free(modelByToken.get(token)),1);active.delete(event.address);frees++;
+ }
+}
+assert.equal(allocations,proof.allocationsObserved);assert.equal(frees,proof.matchedFreeEntriesObserved);assert.equal(c.heap_model_ok(),1);
+const result={verifiedFiniteOriginalTraceComparison:true,callbacks:proof.callbacks,allocationsObserved:allocations,freeEntriesObserved:frees,reuseIdentityMatches,relativePositionMatches,mismatchAllocationOrdinals:mismatchOrdinals,unobservedOtherAllocationsAndThreadsNotModeled:true,freeSuccessAssumedForDiagnostic:true,modelReceivesOnlySizesAndObservedLifetimeOrder:true,actualOriginalAddressesProvidedToModel:false,originalHeapLayoutReconstructed:false,productionIntegrated:false,completeGame:false,nativeEquivalent:false,nativeTraceProofSha256:sha(read(resolve(home,'verified.json'))),nativeReportSha256:sha(report),eventLogSha256:sha(eventsRaw),modelWasmSha256:sha(wasm),verifierSha256:sha(read(new URL(import.meta.url))),scope:'The original trace observes only main-thread enemy allocation returns and matching CRT free entries after the first Player callback. A free entry is assumed successful in this diagnostic, and all unobserved allocator activity is omitted. Native addresses are used only for equality and relative-offset comparison; the model receives synthetic addresses, allocation sizes and matched lifetime order. This cannot prove the original heap history or game equivalence.'};
+const encoded=JSON.stringify(result,null,2)+'\n';if(args[4]==='--check')assert.equal(read(out,'utf8'),encoded);else{assert(!existsSync(out));write(out,encoded,{flag:'wx'});}console.log(JSON.stringify({verifiedFiniteOriginalTraceComparison:true,callbacks:result.callbacks,allocationsObserved:allocations,freeEntriesObserved:frees,reuseIdentityMatches,relativePositionMatches,productionIntegrated:false,completeGame:false}));

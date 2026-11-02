@@ -1,0 +1,30 @@
+{
+  "verifiedSameOriginalTraceScopeComparison": true,
+  "callbacks": 600,
+  "enemyAllocations": 30,
+  "enemyFreeEntries": 24,
+  "ignoredNonEnemyOrEarlierFreeEntries": 0,
+  "enemyOnlyModel": {
+    "reuseIdentityMatches": 22,
+    "relativePositionMatches": 4
+  },
+  "observedCrtModel": {
+    "reuseIdentityMatches": 22,
+    "relativePositionMatches": 4,
+    "crtAllocations": 32
+  },
+  "reuseIdentityMetricUsesSameOriginalEvents": true,
+  "bothRelativePositionCountsUseFirstObservedEnemyAsAnchor": true,
+  "freeSuccessAssumedForDiagnostic": true,
+  "unobservedEarlierActivityOtherThreadsAndDirectOsCallsNotModeled": true,
+  "actualOriginalAddressesProvidedToModel": false,
+  "originalHeapLayoutReconstructed": false,
+  "productionIntegrated": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "nativeReportSha256": "65b7686a866086c71c62e512850b7d29fe98be3ed8efd995d56ab94dc378cfd9",
+  "eventLogSha256": "8f76102db8fc17d3dc66a2dcb10a1ef57b73d39af0fb8d625f4569d441b6dc1a",
+  "fullCrtComparisonSha256": "a484e87ba568785f5c8021deaa430b114beeba222161cdd7576097f4a9d9c99e",
+  "verifierSha256": "af1b46b74d6dd587dfc61a23633213219b2225aa1ebcafad51302eb9110b1f98",
+  "scope": "Both models use the same finite original CRT trace, the first observed enemy as relative-position anchor, and synthetic addresses. One processes only enemy lifetimes; the other additionally processes observed main-thread CRT allocations. Free entries are assumed successful; other threads, direct OS calls and earlier heap activity remain unknown."
+}

@@ -1,0 +1,45 @@
+{
+  "verifiedFiniteOriginalCrtHeapTrace": true,
+  "callbacks": 600,
+  "stage": 1,
+  "crtAllocationReturns": 32,
+  "crtFreeEntries": 24,
+  "enemyAllocationReturns": 30,
+  "enemyReturnsMatchingObservedActiveCrtAllocation": 30,
+  "matchedTrackedCrtFreeEntries": 24,
+  "unmatchedCrtFreeEntries": 0,
+  "duplicateAllocationsWithoutObservedFree": 0,
+  "nullAllocationReturns": 0,
+  "reusedObservedAddresses": 13,
+  "stillTrackedAtEnd": 8,
+  "commonRequestedSizes": [
+    {
+      "bytes": 21260,
+      "count": 30
+    },
+    {
+      "bytes": 4548,
+      "count": 1
+    },
+    {
+      "bytes": 16,
+      "count": 1
+    }
+  ],
+  "debugExceptions": 0,
+  "actualMastersZero": true,
+  "mainThreadCrtOnly": true,
+  "earlierActivityOtherThreadsAndDirectOsCallsNotObserved": true,
+  "freeEntryNotFreeSuccess": true,
+  "debuggerPausesAffectTiming": true,
+  "rawPointersPublished": false,
+  "nativeValuesProvidedToEngine": false,
+  "originalFullHeapHistoryProved": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "nativeReportSha256": "65b7686a866086c71c62e512850b7d29fe98be3ed8efd995d56ab94dc378cfd9",
+  "eventLogSha256": "8f76102db8fc17d3dc66a2dcb10a1ef57b73d39af0fb8d625f4569d441b6dc1a",
+  "observerSha256": "feef2214a769da5a70cb5263096aec0070a97f126e8e0aaf1aa8d71310eda968",
+  "verifierSha256": "0e6bf934e4b1bcab64f88351658bf08922eb31a994ae5db2c8870bee8502b0ad",
+  "scope": "Finite original stage-one trace of main-thread CRT HeapAlloc returns, CRT free entries and enemy factory returns after the first Player callback. Earlier activity, other threads, direct OS calls, and whether each free subsequently succeeds remain unobserved."
+}

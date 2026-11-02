@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "2397939fb4221d1d0d936c3e38ad57266623e724",
+  "sourceCommit": "3d6c63aa23d4110587e16ce0e87eb04adb9d4321",
   "files": [
     {
       "path": ".gitignore",
@@ -209,6 +209,16 @@
       "sha256": "642bf16f267c796f84df2618309539b17af4d73106d0ce175a5d0b22f1890cab"
     },
     {
+      "path": "docs/porting/TH14_CRT_BOOT_FREE_NOV03.md",
+      "bytes": 1705,
+      "sha256": "c34acdf830f6edae1c05f44db88cddd60fb37f80be1549b8eb34072f770b949a"
+    },
+    {
+      "path": "docs/porting/TH14_CRT_HEAP_TRACE_NOV03.md",
+      "bytes": 1873,
+      "sha256": "3093e1e846bbbb9923bd8870b55f2b014c8def5c0a874721b70ffa62b7b20045"
+    },
+    {
       "path": "docs/porting/TH14_CURRENT_FULL_REGRESSION_OCT30.md",
       "bytes": 6726,
       "sha256": "c05fb6e1a568a07281644fc1f0f9301088d8b1da483e6fdeb7b3b5d979e574e8"
@@ -282,6 +292,11 @@
       "path": "docs/porting/TH14_ENEMY_ALLOCATION_SITE_NOV03.md",
       "bytes": 1209,
       "sha256": "f1197a7db013d07357ce8fdd212d82cc98130efe43f7fc90694c4cd3348e50db"
+    },
+    {
+      "path": "docs/porting/TH14_ENEMY_HEAP_TRACE_NOV03.md",
+      "bytes": 1957,
+      "sha256": "9118e7341dd3092e0cd37f6a62520c8c0bd2bb4d82a7bb63fdbd58deb4ed15cf"
     },
     {
       "path": "docs/porting/TH14_ENEMY_PROBE_AND_PAUSED_SCORE_OCT24.md",
@@ -755,8 +770,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 85896,
-      "sha256": "c96504ff60e51d1aebc87efb4482fca2efaec130a6487ea93c41d07963ab9ab2"
+      "bytes": 87016,
+      "sha256": "6da86ab1cf1732d68c45a2c8d61d2d29d397998191ceeb5ba6a109ec89025ac7"
     },
     {
       "path": "docs/porting/TH14_REPLAY_BOUNDARY_EXCEPTION_PROTOTYPE_NOV03.md",
@@ -2409,6 +2424,36 @@
       "sha256": "87a083c83d6a44a1adfe8d5b7d3a1d1144f437df85089517e896bc90ac54800b"
     },
     {
+      "path": "docs/porting/th14-crt-boot-heap-trace-nov03.json",
+      "bytes": 2254,
+      "sha256": "b892b77da0714ae581be470a616d8dbe8432b7f7306a1d100883c2a4dca3d0d8"
+    },
+    {
+      "path": "docs/porting/th14-crt-common-free-site-nov03.json",
+      "bytes": 1364,
+      "sha256": "53d3595c6200432f8fbd7d8e574d8443db2507eb0a7e05293b77d1b62ec7e5b7"
+    },
+    {
+      "path": "docs/porting/th14-crt-common-free-trace-nov03.json",
+      "bytes": 2257,
+      "sha256": "23b066d32317212b5bd1e8ba7d357b2669007eb5fe13286be9bce891fdf45f25"
+    },
+    {
+      "path": "docs/porting/th14-crt-heap-model-trace-nov03.json",
+      "bytes": 1699,
+      "sha256": "a484e87ba568785f5c8021deaa430b114beeba222161cdd7576097f4a9d9c99e"
+    },
+    {
+      "path": "docs/porting/th14-crt-heap-trace-nov03.json",
+      "bytes": 1638,
+      "sha256": "17f98e80164f50e27351bf3295586901a3537a7efef3dfe284d45685c2b98b4e"
+    },
+    {
+      "path": "docs/porting/th14-crt-vs-enemy-heap-scope-nov03.json",
+      "bytes": 1530,
+      "sha256": "77c9efcef4ffee9a8b606069266983895aa53ca06a00f969936d7434c76ccee9"
+    },
+    {
       "path": "docs/porting/th14-current-browser-flow-verified-oct14.json",
       "bytes": 89970,
       "sha256": "a1dfab228accea46d9e876f89820f76ff7cb13796ac42af1473d0cf2f586d163"
@@ -2922,6 +2967,16 @@
       "path": "docs/porting/th14-enemy-flags-verified.json",
       "bytes": 876,
       "sha256": "7fdb3758a93ab15af70e0d253ab38204b224e559fa0231981e0e6f5cfe5c8d18"
+    },
+    {
+      "path": "docs/porting/th14-enemy-heap-model-trace-nov03.json",
+      "bytes": 1813,
+      "sha256": "75ef088f5596a37715450ae33734c695aac184b00eaf92eba96593448a000e78"
+    },
+    {
+      "path": "docs/porting/th14-enemy-heap-trace-nov03.json",
+      "bytes": 1363,
+      "sha256": "b9fd6519b3ec5b2f81a52ad734bfd5afb798af2516f07551fe113550b467ce19"
     },
     {
       "path": "docs/porting/th14-enemy-hit-flash-verified-oct24.json",
@@ -17539,6 +17594,51 @@
       "sha256": "27afe0efdb5af69f5f2aa2f76fe8e0f9c1d0fd7edc4c5589210fc6f5446f7600"
     },
     {
+      "path": "tools/th14-crt-boot-heap-observation-nov03.py",
+      "bytes": 5428,
+      "sha256": "a2d21dfa43a02e26b6657b29edf0ca1bd18be7c0420673ec88397dacad8d6631"
+    },
+    {
+      "path": "tools/th14-crt-boot-heap-observer-nov03.py",
+      "bytes": 58928,
+      "sha256": "74991fd816591e9407aa46f8480fe272b009b9da209921f1bfe805753bb8752f"
+    },
+    {
+      "path": "tools/th14-crt-common-free-observation-nov03.py",
+      "bytes": 5458,
+      "sha256": "00dd36252893b716f5d8ad1279ddc4b51aa13a3bd3e92d0be00afe94d6114e45"
+    },
+    {
+      "path": "tools/th14-crt-common-free-observer-nov03.py",
+      "bytes": 58928,
+      "sha256": "a1378790eee887862033081b6c54362353f7e3d9d7fb8e9846ef5c891ae88bc2"
+    },
+    {
+      "path": "tools/th14-crt-common-free-site-nov03.py",
+      "bytes": 3866,
+      "sha256": "95b34c0150b3b495ab479ca47ddef4ef6322fed5dc5634b86ce266ce8f9fb56e"
+    },
+    {
+      "path": "tools/th14-crt-heap-model-trace-check-nov03.mjs",
+      "bytes": 6188,
+      "sha256": "1f511dd1d7eff72637558cfe2f5c6a8ad42e791a15f2cda52b8c9684a5c2948c"
+    },
+    {
+      "path": "tools/th14-crt-heap-observation-nov03.py",
+      "bytes": 5133,
+      "sha256": "0e6bf934e4b1bcab64f88351658bf08922eb31a994ae5db2c8870bee8502b0ad"
+    },
+    {
+      "path": "tools/th14-crt-heap-observer-nov03.py",
+      "bytes": 58940,
+      "sha256": "feef2214a769da5a70cb5263096aec0070a97f126e8e0aaf1aa8d71310eda968"
+    },
+    {
+      "path": "tools/th14-crt-vs-enemy-heap-scope-nov03.mjs",
+      "bytes": 6336,
+      "sha256": "af1b46b74d6dd587dfc61a23633213219b2225aa1ebcafad51302eb9110b1f98"
+    },
+    {
       "path": "tools/th14-current-browser-flow-evidence-check.mjs",
       "bytes": 3283,
       "sha256": "ca6dd742aaee3082472c2020496fa03b2b44013f31eeae28f90e77d5b16af78a"
@@ -18597,6 +18697,21 @@
       "path": "tools/th14-enemy-flags-native.py",
       "bytes": 2349,
       "sha256": "72635c7daa7a088f6272c7a20f007e60f99a02d4c4eaf0791f9fe5ed7d2f6e37"
+    },
+    {
+      "path": "tools/th14-enemy-heap-model-trace-check-nov03.mjs",
+      "bytes": 5137,
+      "sha256": "dfadc01110ca7f6ad1d7e8204a39444562b69399dced48a33cd136fdfdb88411"
+    },
+    {
+      "path": "tools/th14-enemy-heap-observation-nov03.py",
+      "bytes": 4688,
+      "sha256": "6e91461f6c4a6ff671f011fc6f4a778b7b8ddceb3bb7b476372e2565be5429a9"
+    },
+    {
+      "path": "tools/th14-enemy-heap-observer-nov03.py",
+      "bytes": 59260,
+      "sha256": "c6099235953dbd9cfc0bfb6435766e2a1ea6b537fda3e97cc78943ce79066fe2"
     },
     {
       "path": "tools/th14-enemy-hit-flash-check.mjs",
@@ -26430,43 +26545,42 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "2397939fb4221d1d0d936c3e38ad57266623e724",
-    "title": "TH14 process heap finite model and mixed-size counterexample",
+    "basePublishedCommit": "3d6c63aa23d4110587e16ce0e87eb04adb9d4321",
+    "title": "TH14 bounded original heap traces and common free entry",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-enemy-allocation-site-nov03.py",
-      "tools/th14-process-heap-probe-nov03.c",
-      "tools/th14-process-heap-probe-evidence-nov03.py",
-      "tools/th14-process-heap-walk-nov03.c",
-      "tools/th14-process-heap-walk-evidence-nov03.py",
-      "tools/th14-process-heap-scenarios-nov03.c",
-      "tools/th14-process-heap-model-nov03.cpp",
-      "tools/th14-process-heap-model-check-nov03.mjs",
-      "tools/th14-process-heap-mixed-nov03.c",
-      "tools/th14-process-heap-mixed-check-nov03.mjs",
-      "docs/porting/th14-enemy-allocation-site-nov03.json",
-      "docs/porting/th14-process-heap-probe-nov03.json",
-      "docs/porting/th14-process-heap-walk-nov03.json",
-      "docs/porting/th14-process-heap-model-nov03.json",
-      "docs/porting/th14-process-heap-mixed-nov03.json",
-      "docs/porting/TH14_ENEMY_ALLOCATION_SITE_NOV03.md",
-      "docs/porting/TH14_PROCESS_HEAP_PROBE_NOV03.md",
-      "docs/porting/TH14_PROCESS_HEAP_MODEL_NOV03.md",
+      "tools/th14-enemy-heap-observer-nov03.py",
+      "tools/th14-enemy-heap-observation-nov03.py",
+      "tools/th14-enemy-heap-model-trace-check-nov03.mjs",
+      "tools/th14-crt-heap-observer-nov03.py",
+      "tools/th14-crt-heap-observation-nov03.py",
+      "tools/th14-crt-heap-model-trace-check-nov03.mjs",
+      "tools/th14-crt-vs-enemy-heap-scope-nov03.mjs",
+      "tools/th14-crt-boot-heap-observer-nov03.py",
+      "tools/th14-crt-boot-heap-observation-nov03.py",
+      "tools/th14-crt-common-free-observer-nov03.py",
+      "tools/th14-crt-common-free-observation-nov03.py",
+      "tools/th14-crt-common-free-site-nov03.py",
+      "docs/porting/th14-enemy-heap-trace-nov03.json",
+      "docs/porting/th14-enemy-heap-model-trace-nov03.json",
+      "docs/porting/th14-crt-heap-trace-nov03.json",
+      "docs/porting/th14-crt-heap-model-trace-nov03.json",
+      "docs/porting/th14-crt-vs-enemy-heap-scope-nov03.json",
+      "docs/porting/th14-crt-boot-heap-trace-nov03.json",
+      "docs/porting/th14-crt-common-free-trace-nov03.json",
+      "docs/porting/th14-crt-common-free-site-nov03.json",
+      "docs/porting/TH14_ENEMY_HEAP_TRACE_NOV03.md",
+      "docs/porting/TH14_CRT_HEAP_TRACE_NOV03.md",
+      "docs/porting/TH14_CRT_BOOT_FREE_NOV03.md",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "productionGameplayCoreChanged": false,
     "currentProductionCoreCommit": "22c4f853fc1cb81b8a0c0891b88023f2f5dc065e",
-    "standaloneHeapRuns": 15,
-    "standaloneHeapModelMatches": 15,
-    "mixedSizeHeapRuns": 9,
-    "mixedSizeRelativeLayoutMatches": 8,
-    "heapModelIntegratedIntoProduction": false,
+    "originalTraceCallbacks": 600,
+    "commonFreeEntriesObserved": 281,
+    "completeHeapHistoryProved": false,
     "strictPassed": false,
-    "pairsWithAllStageEntriesObserved": 30,
-    "pairsWithAllStageEntriesInOneExceptionFreeRun": 29,
-    "sourceReplayEofProved": false,
-    "wholeModeEquivalent": false,
     "completeGame": false,
     "nativeEquivalent": false
   }
