@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "07d3686e94688d71f64602366af08f6fa5616bc7",
+  "sourceCommit": "628f1d41b5d27c8298e8fc8e2c2f3ce84145935f",
   "files": [
     {
       "path": ".gitignore",
@@ -327,6 +327,11 @@
       "path": "docs/porting/TH14_FULL_APPLICATION_REPLAY_OCT26.md",
       "bytes": 5421,
       "sha256": "656470580e6e9ce8ee4eeec3cb50a129ea336c030a18f9a74c2aebca326c196a"
+    },
+    {
+      "path": "docs/porting/TH14_HARD_CLEAN_EXCEPTION_PREFIX_NOV03.md",
+      "bytes": 1384,
+      "sha256": "dd0c0127367fa36c0fd0a1f7ee995ca14f1a670c772950937a38c0d95a952d1d"
     },
     {
       "path": "docs/porting/TH14_HARD_TRANSITION_WINDOW_NOV03.md",
@@ -715,8 +720,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 81540,
-      "sha256": "53e9e19d6f669a255a4d244fbc920fc13f2e5c9929adebe77e598572e1bd76a3"
+      "bytes": 81857,
+      "sha256": "cd1bdb103b74f847b7f699e82b2470600b29deb396c457ac1efd883ff8d5de97"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -3167,6 +3172,11 @@
       "path": "docs/porting/th14-graze-verified.json",
       "bytes": 1233,
       "sha256": "a36cab4fc50e86e3a2e6c439eec14eac84e7a7c8d57799b1128e0d1cce111e25"
+    },
+    {
+      "path": "docs/porting/th14-hard-clean-exception-prefix-nov03.json",
+      "bytes": 3406,
+      "sha256": "f242b41a3e8e388304d5c4ab20cec33d02e6f686af20a7e6fbc496d3da22f29f"
     },
     {
       "path": "docs/porting/th14-hard-marisa-a-boss16-campaign-oct10.json",
@@ -18534,6 +18544,11 @@
       "sha256": "d04ed6cd1bd7584ae0ee9edc03a46375441efcc82ed7a2f8188bee663ec18483"
     },
     {
+      "path": "tools/th14-exception-diagnostic-observer-nov03.py",
+      "bytes": 61454,
+      "sha256": "8fff454266b7765874ab2c238ad6d46b1d4afca95c0e63557b7373d99e97b6b0"
+    },
+    {
       "path": "tools/th14-expand-marisab-lunatic-inventory-nov03.py",
       "bytes": 4411,
       "sha256": "b9029c4f33a63095dbff3fe9797a5980f4715026b4149617079f017515353723"
@@ -19432,6 +19447,11 @@
       "path": "tools/th14-hard-camera-seed-hypothesis-nov03.mjs",
       "bytes": 49051,
       "sha256": "65b5b8a78a06590c01674fbcc0ced19ed14c766d2166c936a99e371691c9c9ce"
+    },
+    {
+      "path": "tools/th14-hard-clean-exception-prefix-nov03.py",
+      "bytes": 4302,
+      "sha256": "609b32b34358f9edcfe3dbe890b7ae06ab5df0463110d9532bb78ee19e7a72e3"
     },
     {
       "path": "tools/th14-hard-transition-window-evidence-nov03.py",
@@ -26080,16 +26100,13 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "07d3686e94688d71f64602366af08f6fa5616bc7",
-    "title": "TH14 active stage initialization coverage and exception inventory",
+    "basePublishedCommit": "628f1d41b5d27c8298e8fc8e2c2f3ce84145935f",
+    "title": "TH14 Hard clean exception diagnostic prefix",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-verify-native-initialize-timing-v3-nov03.py",
-      "tools/th14-verify-native-campaign-exceptions-timing-v3-nov03.py",
-      "tools/th14-initialize-active-stage-evidence-nov03.py",
-      "tools/th14-mode-debug-exception-audit-nov03.py",
-      "docs/porting/TH14_INITIALIZE_ACTIVE_STAGE_NOV03.md",
-      "docs/porting/th14-initialize-active-stage-nov03.json",
-      "docs/porting/th14-mode-debug-exception-audit-nov03.json",
+      "tools/th14-exception-diagnostic-observer-nov03.py",
+      "tools/th14-hard-clean-exception-prefix-nov03.py",
+      "docs/porting/TH14_HARD_CLEAN_EXCEPTION_PREFIX_NOV03.md",
+      "docs/porting/th14-hard-clean-exception-prefix-nov03.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
@@ -26097,13 +26114,17 @@
     "productionEngineChanged": false,
     "productionGameplayCoreChanged": false,
     "currentProductionCoreCommit": "22c4f853fc1cb81b8a0c0891b88023f2f5dc065e",
-    "existingTimingCasesPassed": 16,
-    "priorExceptionGatePassed": 15,
-    "missingOriginalEventNegativeControlRejected": true,
-    "exceptionFreeInventoryRuns": 45,
-    "inventoryRuns": 46,
-    "pairsWithAllStageEntriesInOneExceptionFreeRun": 28,
+    "nativeDiagnosticCallbacks": 31200,
+    "observedStages": [
+      1,
+      2
+    ],
+    "debugExceptions": 0,
+    "priorExceptionExplained": false,
+    "stage3RaceObserved": false,
     "sourceReplayEofProved": false,
+    "actualMastersZero": true,
+    "exceptionTimingAndRawGatesPassed": true,
     "completeGame": false,
     "nativeEquivalent": false
   }
