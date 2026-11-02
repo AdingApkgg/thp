@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "c5e2fb69643e06ad2b7fcfa3122c23c79a34e3ec",
+  "sourceCommit": "2397939fb4221d1d0d936c3e38ad57266623e724",
   "files": [
     {
       "path": ".gitignore",
@@ -277,6 +277,11 @@
       "path": "docs/porting/TH14_ENEMY_ADDRESS_LAYOUT_AUDIT_NOV03.md",
       "bytes": 1253,
       "sha256": "7181c4a9ca36914ad83c8ecc73be4e573fd74beb29c9f6d1523721cda71e1df1"
+    },
+    {
+      "path": "docs/porting/TH14_ENEMY_ALLOCATION_SITE_NOV03.md",
+      "bytes": 1209,
+      "sha256": "f1197a7db013d07357ce8fdd212d82cc98130efe43f7fc90694c4cd3348e50db"
     },
     {
       "path": "docs/porting/TH14_ENEMY_PROBE_AND_PAUSED_SCORE_OCT24.md",
@@ -704,6 +709,16 @@
       "sha256": "43dee0b448404b2939507a40e50893e04e9beb960a8a4315279326aac52460b3"
     },
     {
+      "path": "docs/porting/TH14_PROCESS_HEAP_MODEL_NOV03.md",
+      "bytes": 1748,
+      "sha256": "8946d54c643d1e9cfea1066bca090e625e0f79f433a8b8c3ba445e61d7e506e0"
+    },
+    {
+      "path": "docs/porting/TH14_PROCESS_HEAP_PROBE_NOV03.md",
+      "bytes": 1916,
+      "sha256": "d0dd92f04a44b71debba576bc07f9a7b1d53a25ca6546bc03eaa3b30f42108a1"
+    },
+    {
       "path": "docs/porting/TH14_PROCESS_INPUT_QUAD_OCT27.md",
       "bytes": 4804,
       "sha256": "fbaf2c953e54ff3b8e9a72e83d2868a5330dd56a0fbadb7ce0d2e191741d3305"
@@ -740,8 +755,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 84797,
-      "sha256": "54d03e853e786911a8b1b6d93a1c72f5ac29c01a6babe343fff46d060c031537"
+      "bytes": 85896,
+      "sha256": "c96504ff60e51d1aebc87efb4482fca2efaec130a6487ea93c41d07963ab9ab2"
     },
     {
       "path": "docs/porting/TH14_REPLAY_BOUNDARY_EXCEPTION_PROTOTYPE_NOV03.md",
@@ -2857,6 +2872,11 @@
       "path": "docs/porting/th14-enemy-address-layout-audit-nov03.json",
       "bytes": 1564,
       "sha256": "48a36bc609040c5e3f2d10cc67001c3db2377073bc28d2e7885733b9554ceb56"
+    },
+    {
+      "path": "docs/porting/th14-enemy-allocation-site-nov03.json",
+      "bytes": 2574,
+      "sha256": "f03fc2abc4b25955a03ac6da58d9fd3ca2a5451169df6513566290d64b85060a"
     },
     {
       "path": "docs/porting/th14-enemy-animation-shared-angle-verified-oct14.json",
@@ -5617,6 +5637,26 @@
       "path": "docs/porting/th14-primitive-viewport-observed-oct19.json",
       "bytes": 140625,
       "sha256": "2839fbe0fc701bf6a216ccacbf5ad066b255a13446b5007fc11a40bbaa9d81cc"
+    },
+    {
+      "path": "docs/porting/th14-process-heap-mixed-nov03.json",
+      "bytes": 3315,
+      "sha256": "f7a32e9dcbcc843e7d799208529f4b7d4094cfbb8f13e1dd7a4c6377e284e9cc"
+    },
+    {
+      "path": "docs/porting/th14-process-heap-model-nov03.json",
+      "bytes": 8242,
+      "sha256": "aaaf264b5bcfee71a63b8ba6f2e433a9b775abc22f7b08ba74a475d68831f531"
+    },
+    {
+      "path": "docs/porting/th14-process-heap-probe-nov03.json",
+      "bytes": 3458,
+      "sha256": "ae63cfaff1cd342acff72c1111ad7905663cef29373335250fce355492b8c1af"
+    },
+    {
+      "path": "docs/porting/th14-process-heap-walk-nov03.json",
+      "bytes": 4059,
+      "sha256": "41ce0b1416a71d8ba031a23efe5bb685c705fce42b4260a883610763ca87351f"
     },
     {
       "path": "docs/porting/th14-process-input-quad-verified-oct27.json",
@@ -18469,6 +18509,11 @@
       "sha256": "acab794fefbcbc91ecce4bbb32f9acd7dc2e8df4da2337de3a2bcd8e2a25db14"
     },
     {
+      "path": "tools/th14-enemy-allocation-site-nov03.py",
+      "bytes": 6697,
+      "sha256": "625e2eee34f0c894f12f82300f8aa810ab215cfd6f2f0ef850a27d1f0967e3ee"
+    },
+    {
       "path": "tools/th14-enemy-animation-check.mjs",
       "bytes": 11699,
       "sha256": "3bbb2ec5c42d51502675aee835f395a30ad1d91a55058513f433183aaf8de0bb"
@@ -21757,6 +21802,51 @@
       "path": "tools/th14-primitive-viewport-evidence-check-oct19.py",
       "bytes": 9954,
       "sha256": "a30477846e2eb1ecddb65a504fd0cc90153acde49921dcf141b4069811da9fb4"
+    },
+    {
+      "path": "tools/th14-process-heap-mixed-check-nov03.mjs",
+      "bytes": 5377,
+      "sha256": "2e5ea4ca19a6cc9efdbcc634d19c177aef5d7edba7ad92f5ba7dea20b42f922d"
+    },
+    {
+      "path": "tools/th14-process-heap-mixed-nov03.c",
+      "bytes": 1591,
+      "sha256": "93411830502505201f6f61012c65593d99a4b057908d2459644d30be44569154"
+    },
+    {
+      "path": "tools/th14-process-heap-model-check-nov03.mjs",
+      "bytes": 5427,
+      "sha256": "7d3238c8d0aac4b8cf33d72745a99cc0c5b746ee571c8f23d583c20ce160c462"
+    },
+    {
+      "path": "tools/th14-process-heap-model-nov03.cpp",
+      "bytes": 2779,
+      "sha256": "a07b7aa9f4a9ceae83209b439ae01bee587dbc0331edd73c6db78a15f195a7b1"
+    },
+    {
+      "path": "tools/th14-process-heap-probe-evidence-nov03.py",
+      "bytes": 4177,
+      "sha256": "19fe037713b2d479c28df1ab6ed8ce3a98c65def5e1907d095a4e903e24ec8a9"
+    },
+    {
+      "path": "tools/th14-process-heap-probe-nov03.c",
+      "bytes": 1414,
+      "sha256": "629d3f89571e23e6a7b71983b21916c40868568ddaba9429aebd24a51b96fcf8"
+    },
+    {
+      "path": "tools/th14-process-heap-scenarios-nov03.c",
+      "bytes": 1926,
+      "sha256": "cc37cb9b6dc03bd5bb493e9df50d154d3d322a76315b56b84a79ff1ffa6169de"
+    },
+    {
+      "path": "tools/th14-process-heap-walk-evidence-nov03.py",
+      "bytes": 5031,
+      "sha256": "89f3884b4bcc18500b2dedec588d8eeac3f6b30bf21f017e928bb73a7b38e186"
+    },
+    {
+      "path": "tools/th14-process-heap-walk-nov03.c",
+      "bytes": 2200,
+      "sha256": "7a6348e3198521b6a369eb24e5548ba5c56d0e02dfcf98353530bbb225e63312"
     },
     {
       "path": "tools/th14-process-input-quad-evidence-oct27.py",
@@ -26340,27 +26430,38 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "c5e2fb69643e06ad2b7fcfa3122c23c79a34e3ec",
-    "title": "TH14 retained seed boundary and cross-process enemy address evidence",
+    "basePublishedCommit": "2397939fb4221d1d0d936c3e38ad57266623e724",
+    "title": "TH14 process heap finite model and mixed-size counterexample",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-retained-seed-boundary-audit-nov03.py",
-      "tools/th14-enemy-address-layout-audit-nov03.py",
-      "docs/porting/th14-retained-seed-boundary-audit-nov03.json",
-      "docs/porting/th14-enemy-address-layout-audit-nov03.json",
-      "docs/porting/TH14_RETAINED_SEED_BOUNDARY_CURRENT_NOV03.md",
-      "docs/porting/TH14_ENEMY_ADDRESS_LAYOUT_AUDIT_NOV03.md",
-      "docs/porting/TH14_NORMAL_SCENE_WORD_ORDER_NOV03.md",
+      "tools/th14-enemy-allocation-site-nov03.py",
+      "tools/th14-process-heap-probe-nov03.c",
+      "tools/th14-process-heap-probe-evidence-nov03.py",
+      "tools/th14-process-heap-walk-nov03.c",
+      "tools/th14-process-heap-walk-evidence-nov03.py",
+      "tools/th14-process-heap-scenarios-nov03.c",
+      "tools/th14-process-heap-model-nov03.cpp",
+      "tools/th14-process-heap-model-check-nov03.mjs",
+      "tools/th14-process-heap-mixed-nov03.c",
+      "tools/th14-process-heap-mixed-check-nov03.mjs",
+      "docs/porting/th14-enemy-allocation-site-nov03.json",
+      "docs/porting/th14-process-heap-probe-nov03.json",
+      "docs/porting/th14-process-heap-walk-nov03.json",
+      "docs/porting/th14-process-heap-model-nov03.json",
+      "docs/porting/th14-process-heap-mixed-nov03.json",
+      "docs/porting/TH14_ENEMY_ALLOCATION_SITE_NOV03.md",
+      "docs/porting/TH14_PROCESS_HEAP_PROBE_NOV03.md",
+      "docs/porting/TH14_PROCESS_HEAP_MODEL_NOV03.md",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "productionGameplayCoreChanged": false,
     "currentProductionCoreCommit": "22c4f853fc1cb81b8a0c0891b88023f2f5dc065e",
-    "retainedSeedBoundaryCallbacks": 26000,
-    "vmDifferenceWords": 5,
-    "strictInitializationGateRejected": true,
-    "addressMatchedSamples": 57,
-    "distinctAddressDeltas": 15,
+    "standaloneHeapRuns": 15,
+    "standaloneHeapModelMatches": 15,
+    "mixedSizeHeapRuns": 9,
+    "mixedSizeRelativeLayoutMatches": 8,
+    "heapModelIntegratedIntoProduction": false,
     "strictPassed": false,
     "pairsWithAllStageEntriesObserved": 30,
     "pairsWithAllStageEntriesInOneExceptionFreeRun": 29,

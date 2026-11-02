@@ -1,0 +1,142 @@
+{
+  "verifiedFiniteMixedSizeLimit": true,
+  "runs": 9,
+  "noiseSizes": [
+    128,
+    4096,
+    24576
+  ],
+  "results": [
+    {
+      "noiseBytes": 128,
+      "run": 0,
+      "primaryStrideMatches": false,
+      "noiseToPrimaryOffsetsMatch": false,
+      "reusedSlotsMatch": true,
+      "nativeReusedSlots": [
+        5,
+        3,
+        1,
+        7
+      ]
+    },
+    {
+      "noiseBytes": 128,
+      "run": 1,
+      "primaryStrideMatches": true,
+      "noiseToPrimaryOffsetsMatch": true,
+      "reusedSlotsMatch": true,
+      "nativeReusedSlots": [
+        5,
+        3,
+        1,
+        7
+      ]
+    },
+    {
+      "noiseBytes": 128,
+      "run": 2,
+      "primaryStrideMatches": true,
+      "noiseToPrimaryOffsetsMatch": true,
+      "reusedSlotsMatch": true,
+      "nativeReusedSlots": [
+        5,
+        3,
+        1,
+        7
+      ]
+    },
+    {
+      "noiseBytes": 4096,
+      "run": 0,
+      "primaryStrideMatches": true,
+      "noiseToPrimaryOffsetsMatch": true,
+      "reusedSlotsMatch": true,
+      "nativeReusedSlots": [
+        5,
+        3,
+        1,
+        7
+      ]
+    },
+    {
+      "noiseBytes": 4096,
+      "run": 1,
+      "primaryStrideMatches": true,
+      "noiseToPrimaryOffsetsMatch": true,
+      "reusedSlotsMatch": true,
+      "nativeReusedSlots": [
+        5,
+        3,
+        1,
+        7
+      ]
+    },
+    {
+      "noiseBytes": 4096,
+      "run": 2,
+      "primaryStrideMatches": true,
+      "noiseToPrimaryOffsetsMatch": true,
+      "reusedSlotsMatch": true,
+      "nativeReusedSlots": [
+        5,
+        3,
+        1,
+        7
+      ]
+    },
+    {
+      "noiseBytes": 24576,
+      "run": 0,
+      "primaryStrideMatches": true,
+      "noiseToPrimaryOffsetsMatch": true,
+      "reusedSlotsMatch": true,
+      "nativeReusedSlots": [
+        5,
+        3,
+        1,
+        7
+      ]
+    },
+    {
+      "noiseBytes": 24576,
+      "run": 1,
+      "primaryStrideMatches": true,
+      "noiseToPrimaryOffsetsMatch": true,
+      "reusedSlotsMatch": true,
+      "nativeReusedSlots": [
+        5,
+        3,
+        1,
+        7
+      ]
+    },
+    {
+      "noiseBytes": 24576,
+      "run": 2,
+      "primaryStrideMatches": true,
+      "noiseToPrimaryOffsetsMatch": true,
+      "reusedSlotsMatch": true,
+      "nativeReusedSlots": [
+        5,
+        3,
+        1,
+        7
+      ]
+    }
+  ],
+  "fullRelativeLayoutMatches": 8,
+  "reusedSlotMatches": 9,
+  "modelReceivesOnlyDeclaredSizesAndFreeSlots": true,
+  "hostNativePointerValuesProvidedToModel": false,
+  "originalGameLaunched": false,
+  "originalGameHeapHistoryReproduced": false,
+  "actualWindowsAllocatorAlgorithmProved": false,
+  "productionIntegrated": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "modelSourceSha256": "a07b7aa9f4a9ceae83209b439ae01bee587dbc0331edd73c6db78a15f195a7b1",
+  "helperSourceSha256": "93411830502505201f6f61012c65593d99a4b057908d2459644d30be44569154",
+  "verifierSha256": "2e5ea4ca19a6cc9efdbcc634d19c177aef5d7edba7ad92f5ba7dea20b42f922d",
+  "scope": "Nine independent x86 helper runs with fixed noise sizes interleaved with eight 0x530c allocations. Compare only relative layout and reuse slots against a WASI candidate using synthetic addresses. At least one real helper layout is not reproduced; no claim about the original game heap or general Windows allocator."
+}

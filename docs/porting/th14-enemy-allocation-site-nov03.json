@@ -1,0 +1,62 @@
+{
+  "verifiedFiniteOriginalEnemyFactoryBoundary": true,
+  "cases": [
+    {
+      "syntheticAllocatorPointer": "0x11001000",
+      "requestedBytes": 21260,
+      "heapAllocBytes": 21260,
+      "heapAllocFlags": 0,
+      "actualAllocationCall": "0x421f03",
+      "actualConstructorCall": "0x421f14",
+      "allocatorReturnReachedConstructorUnchanged": true,
+      "constructorArgumentPreserved": true
+    },
+    {
+      "syntheticAllocatorPointer": "0x22002000",
+      "requestedBytes": 21260,
+      "heapAllocBytes": 21260,
+      "heapAllocFlags": 0,
+      "actualAllocationCall": "0x421f03",
+      "actualConstructorCall": "0x421f14",
+      "allocatorReturnReachedConstructorUnchanged": true,
+      "constructorArgumentPreserved": true
+    },
+    {
+      "syntheticAllocatorPointer": "0x33003000",
+      "requestedBytes": 21260,
+      "heapAllocBytes": 21260,
+      "heapAllocFlags": 0,
+      "actualAllocationCall": "0x421f03",
+      "actualConstructorCall": "0x421f14",
+      "allocatorReturnReachedConstructorUnchanged": true,
+      "constructorArgumentPreserved": true
+    },
+    {
+      "syntheticAllocatorPointer": "0x44004000",
+      "requestedBytes": 21260,
+      "heapAllocBytes": 21260,
+      "heapAllocFlags": 0,
+      "actualAllocationCall": "0x421f03",
+      "actualConstructorCall": "0x421f14",
+      "allocatorReturnReachedConstructorUnchanged": true,
+      "constructorArgumentPreserved": true
+    }
+  ],
+  "originalExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "actualOriginalInstructionSequencesExecuted": true,
+  "enemyObjectRequestedBytes": 21260,
+  "originalCrtProcessHeapSetupExecuted": true,
+  "heapSetupImport": "KERNEL32.dll!GetProcessHeap",
+  "nullProcessHeapControlRejected": true,
+  "originalCrtWrapperExecuted": true,
+  "heapImport": "KERNEL32.dll!HeapAlloc",
+  "allocatorImplementationExecuted": false,
+  "originalWindowsHeapLayoutProved": false,
+  "crossProcessObjectLifetimeProved": false,
+  "nativeValuesProvidedToEngine": false,
+  "productionCodeChanged": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "toolSha256": "625e2eee34f0c894f12f82300f8aa810ab215cfd6f2f0ef850a27d1f0967e3ee",
+  "scope": "Actual original CRT process-heap setup, factory and allocation wrapper instructions execute through imported GetProcessHeap and HeapAlloc boundaries. Those OS calls return declared synthetic handles and pointers; original instructions then reach the constructor. The Windows allocator and constructor body are not executed; this does not determine actual addresses or heap layout."
+}

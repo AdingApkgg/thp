@@ -1,0 +1,162 @@
+{
+  "verifiedFiniteStandaloneHeapWalkExperiment": true,
+  "processes": 6,
+  "requestedBytes": 21260,
+  "heapEntryCapacity": 4096,
+  "cases": [
+    {
+      "index": 0,
+      "heapEntryCounts": [
+        719,
+        718,
+        719
+      ],
+      "replacementFreedSlots": [
+        5,
+        3,
+        1,
+        7
+      ],
+      "initialAdjacentFreeBytes": 2152,
+      "lastFreeBlockBytes": 23424,
+      "otherFreedBlockBytes": [
+        21256,
+        21256,
+        21256
+      ],
+      "initialLastBlockAndAdjacentFreeListedSeparately": true,
+      "afterFreeSingleLargerFreeEntryObserved": true
+    },
+    {
+      "index": 1,
+      "heapEntryCounts": [
+        454,
+        453,
+        454
+      ],
+      "replacementFreedSlots": [
+        5,
+        3,
+        1,
+        7
+      ],
+      "initialAdjacentFreeBytes": 3016,
+      "lastFreeBlockBytes": 24288,
+      "otherFreedBlockBytes": [
+        21256,
+        21256,
+        21256
+      ],
+      "initialLastBlockAndAdjacentFreeListedSeparately": true,
+      "afterFreeSingleLargerFreeEntryObserved": true
+    },
+    {
+      "index": 2,
+      "heapEntryCounts": [
+        454,
+        453,
+        454
+      ],
+      "replacementFreedSlots": [
+        5,
+        3,
+        1,
+        7
+      ],
+      "initialAdjacentFreeBytes": 3016,
+      "lastFreeBlockBytes": 24288,
+      "otherFreedBlockBytes": [
+        21256,
+        21256,
+        21256
+      ],
+      "initialLastBlockAndAdjacentFreeListedSeparately": true,
+      "afterFreeSingleLargerFreeEntryObserved": true
+    },
+    {
+      "index": 3,
+      "heapEntryCounts": [
+        454,
+        453,
+        454
+      ],
+      "replacementFreedSlots": [
+        5,
+        3,
+        1,
+        7
+      ],
+      "initialAdjacentFreeBytes": 3016,
+      "lastFreeBlockBytes": 24288,
+      "otherFreedBlockBytes": [
+        21256,
+        21256,
+        21256
+      ],
+      "initialLastBlockAndAdjacentFreeListedSeparately": true,
+      "afterFreeSingleLargerFreeEntryObserved": true
+    },
+    {
+      "index": 4,
+      "heapEntryCounts": [
+        454,
+        453,
+        454
+      ],
+      "replacementFreedSlots": [
+        5,
+        3,
+        1,
+        7
+      ],
+      "initialAdjacentFreeBytes": 3016,
+      "lastFreeBlockBytes": 24288,
+      "otherFreedBlockBytes": [
+        21256,
+        21256,
+        21256
+      ],
+      "initialLastBlockAndAdjacentFreeListedSeparately": true,
+      "afterFreeSingleLargerFreeEntryObserved": true
+    },
+    {
+      "index": 5,
+      "heapEntryCounts": [
+        454,
+        453,
+        454
+      ],
+      "replacementFreedSlots": [
+        5,
+        3,
+        1,
+        7
+      ],
+      "initialAdjacentFreeBytes": 3016,
+      "lastFreeBlockBytes": 24288,
+      "otherFreedBlockBytes": [
+        21256,
+        21256,
+        21256
+      ],
+      "initialLastBlockAndAdjacentFreeListedSeparately": true,
+      "afterFreeSingleLargerFreeEntryObserved": true
+    }
+  ],
+  "allCasesSameFreedSlotOrder": true,
+  "allCasesShowLargerLastFreeEntry": true,
+  "prior512EntryCapacityExceeded": true,
+  "priorFailedCaptureWasNotAccepted": true,
+  "heapWalkAndLockMayAffectTiming": true,
+  "originalGameLaunched": false,
+  "originalGameHeapHistoryReproduced": false,
+  "windowsHeapAlgorithmOrStabilityProved": false,
+  "rawPointersPublished": false,
+  "nativeValuesProvidedToEngine": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "sourceSha256": "7a6348e3198521b6a369eb24e5548ba5c56d0e02dfcf98353530bbb225e63312",
+  "executableSha256": "af5eeaa38fe986b66522c7b4fbe5a922be813fa3381823c3d0798b92fbd38b32",
+  "verifierSha256": "89f3884b4bcc18500b2dedec588d8eeac3f6b30bf21f017e928bb73a7b38e186",
+  "scope": "Six x86 helper processes with locked HeapWalk snapshots before frees, after frees and after replacement allocations. The last freed allocation and adjacent free entry are listed separately before the free and as one larger free entry afterward. This is consistent with coalescence in these helpers, but does not prove allocator internals or the game process heap history."
+}
