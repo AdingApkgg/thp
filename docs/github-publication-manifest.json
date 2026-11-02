@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "55a4a84bddc7e523f7a952aa8ab735c4c06646e5",
+  "sourceCommit": "ea2ee61313f70ddef18c768ac8222463ccfb4987",
   "files": [
     {
       "path": ".gitignore",
@@ -474,6 +474,11 @@
       "sha256": "cd1355d88a4cc9ee1a4ab1d83437a98de8a9cf78410290f08a199a8b0aca3b5b"
     },
     {
+      "path": "docs/porting/TH14_MARISAB_LUNATIC_SIX_STAGE_NOV03.md",
+      "bytes": 1183,
+      "sha256": "c520d2a358482da37f88637c1b05eaf49075501a68f4d91033549134c2277937"
+    },
+    {
       "path": "docs/porting/TH14_MARISAB_NORMAL_SIX_STAGE_NOV02.md",
       "bytes": 2749,
       "sha256": "8ba7fd6e57dc5e9e0002c60d42202bc95416c5c23fc67b7e78d49364fb1a9897"
@@ -500,8 +505,8 @@
     },
     {
       "path": "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
-      "bytes": 4409,
-      "sha256": "610e64b0bf57ba7234f7841433fa35a5720020d016f0a4a8b29b68eb633b7226"
+      "bytes": 4737,
+      "sha256": "f1ccabfcee2a49f6fff266a36625369ad49a82344fca20baedfa640ab4484239"
     },
     {
       "path": "docs/porting/TH14_MSG_HUD_ORDER_OCT24.md",
@@ -695,8 +700,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 79969,
-      "sha256": "c8941bd66c051a7994c2e2bdcb52e8f5621ad0f05553479dc116e12450c0ccab"
+      "bytes": 80337,
+      "sha256": "1d2ba6a141bbeb029584ee3b65f1b7342b357bb4f872fa8820469d14ef4e527b"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -4239,6 +4244,11 @@
       "sha256": "6d864b29c53f1a146f62acf0a87637a2cc4ea57b2040d6bd65a7ddbd0d35ceac"
     },
     {
+      "path": "docs/porting/th14-marisab-lunatic-six-stage-nov03.json",
+      "bytes": 2986,
+      "sha256": "4758fcc1fbb9b593a63eb8fdfcbbb964bd27232e1a2ea721f5d293294607224e"
+    },
+    {
       "path": "docs/porting/th14-marisab-lunatic-verified-oct26.json",
       "bytes": 9390,
       "sha256": "f40174518843036621d664323fecd96c0eb8c4b24cb2f47b92ac4e206b685ee4"
@@ -4267,6 +4277,11 @@
       "path": "docs/porting/th14-midgame-visuals-verified-oct24.json",
       "bytes": 10943,
       "sha256": "641e09fad80dacdd1953437f229f7cf4a2c0cc4494b3b92dd21ba33716be0cce"
+    },
+    {
+      "path": "docs/porting/th14-mode-acceptance-inventory-nov03.json",
+      "bytes": 206531,
+      "sha256": "db5b7fe6fd3d2489b9bc88652ce905162078a09614b507c19286f97a199d23c4"
     },
     {
       "path": "docs/porting/th14-mode-acceptance-inventory-oct25.json",
@@ -18479,6 +18494,11 @@
       "sha256": "d04ed6cd1bd7584ae0ee9edc03a46375441efcc82ed7a2f8188bee663ec18483"
     },
     {
+      "path": "tools/th14-expand-marisab-lunatic-inventory-nov03.py",
+      "bytes": 4411,
+      "sha256": "b9029c4f33a63095dbff3fe9797a5980f4715026b4149617079f017515353723"
+    },
+    {
       "path": "tools/th14-expand-mode-inventory-nov02.py",
       "bytes": 5854,
       "sha256": "96abbe5fc49855d7023251652a848144b263936d1de241476a9b3c6505c78cba"
@@ -20077,6 +20097,11 @@
       "path": "tools/th14-marisab-environment-evidence-oct30.py",
       "bytes": 10165,
       "sha256": "9138d5ade9fc6141ca94f18752aacd198b402cdf74b4a9dff3e0cbb0a1928ed1"
+    },
+    {
+      "path": "tools/th14-marisab-lunatic-six-stage-evidence-nov03.py",
+      "bytes": 3977,
+      "sha256": "9d0ac4b39acb5f8f990630dc6a7c81ec174d8a1caa0852363bab02b1da21c349"
     },
     {
       "path": "tools/th14-math-check.mjs",
@@ -25955,14 +25980,15 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "55a4a84bddc7e523f7a952aa8ab735c4c06646e5",
-    "title": "TH14 current complete backends and finite Marisa A Normal recording",
+    "basePublishedCommit": "ea2ee61313f70ddef18c768ac8222463ccfb4987",
+    "title": "TH14 Marisa B Lunatic observed six-stage entries",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-marisaa-normal-alternate-evidence-nov03.py",
-      "docs/porting/TH14_MARISAA_NORMAL_ALTERNATE_NOV03.md",
-      "docs/porting/th14-marisaa-normal-alternate-nov03.json",
-      "docs/porting/TH14_SHAKE_COUNTER_APPLICATION_FULL_NOV03.md",
-      "docs/porting/th14-shake-counter-application-full-nov03.json",
+      "tools/th14-marisab-lunatic-six-stage-evidence-nov03.py",
+      "tools/th14-expand-marisab-lunatic-inventory-nov03.py",
+      "docs/porting/TH14_MARISAB_LUNATIC_SIX_STAGE_NOV03.md",
+      "docs/porting/th14-marisab-lunatic-six-stage-nov03.json",
+      "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
+      "docs/porting/th14-mode-acceptance-inventory-nov03.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
@@ -25970,25 +25996,26 @@
     "productionEngineChanged": false,
     "productionGameplayCoreChanged": false,
     "currentProductionCoreCommit": "22c4f853fc1cb81b8a0c0891b88023f2f5dc065e",
-    "bothBackendsActuallyCompleted": true,
-    "framesPerBackend": 122622,
-    "assertionsPerBackend": 45,
-    "fullPairIndependentAccepted": true,
-    "firstWebgpuSandboxFailurePreserved": true,
-    "physicalAudioDevicesOpened": 0,
-    "marisaANormalCallbacks": 66909,
-    "marisaANormalStages": [
+    "nativeDiagnosticCallbacks": 81077,
+    "observedStages": [
       1,
       2,
       3,
       4,
-      5
+      5,
+      6
     ],
-    "marisaANormalReplayEofProved": false,
-    "marisaANormalStrictIndependentAndTimingPassed": true,
+    "sourceReplayEofProved": false,
+    "actualMastersZero": true,
+    "strictAndIndependentPassed": true,
+    "initializeTimingCoveragePassed": true,
+    "vmRows": 1408,
+    "combatCheckpoints": 1074,
+    "initialPublications": 1873,
     "naturalModePairs": 30,
-    "allTargetStageEntryModePairs": 27,
-    "browserAccepted": false,
+    "allTargetStageEntryModePairs": 28,
+    "other29ModesFrozen": true,
+    "wholeModeEquivalent": false,
     "completeGame": false,
     "nativeEquivalent": false
   }
