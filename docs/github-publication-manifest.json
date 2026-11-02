@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "22c4f853fc1cb81b8a0c0891b88023f2f5dc065e",
+  "sourceCommit": "8cbc1673b9300bbcb75322a7177acc39ccc581b6",
   "files": [
     {
       "path": ".gitignore",
@@ -564,6 +564,11 @@
       "sha256": "7a7d897911c04b5cc17daed47cae128f91a7f90a8c6d624ceb253593cacd9c4e"
     },
     {
+      "path": "docs/porting/TH14_OBSERVED_SEED_STORE_GLES_NOV03.md",
+      "bytes": 1820,
+      "sha256": "29f72485cc99afccd28d27b16a37fd1f745f1559bb030d012935542451633007"
+    },
+    {
       "path": "docs/porting/TH14_OPTION_RECALL_APPLICATION_FULL_NOV02.md",
       "bytes": 1784,
       "sha256": "5d6184482984151c19e547ef1201fc10c6c14d5ee5940bde875b160e6e6947da"
@@ -675,8 +680,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 77720,
-      "sha256": "67086e4ae1bdd433dc6b65819205e69f5bd72f0d65e7007434a0b28e34198865"
+      "bytes": 78284,
+      "sha256": "600439a9d4a06a87982c53e0f62828418e355520ed56195197fadc510f43cd87"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -5002,6 +5007,11 @@
       "path": "docs/porting/th14-normal-natural-clear-verified-oct13.json",
       "bytes": 47788,
       "sha256": "b2ee9f483b75c008b5c30bd740a08cb4d19d408d94fd646090fa7954dc73c982"
+    },
+    {
+      "path": "docs/porting/th14-observed-seed-store-gles-nov03.json",
+      "bytes": 4175,
+      "sha256": "6a204f07d98d9452ebdc22520adfa4ebf5a66790237c6aaa33bae32f537da6de"
     },
     {
       "path": "docs/porting/th14-option-recall-application-full-nov02.json",
@@ -17039,6 +17049,11 @@
       "sha256": "c07b3cf80927af8114a11a69e557eef9f9710f9b183b82601c7a3b0b85f221d9"
     },
     {
+      "path": "tools/th14-compare-observed-seed-store-nov03.mjs",
+      "bytes": 49499,
+      "sha256": "5094c045a21d4e1e522a9f1dc7853cef446f11605088ad06e90f7ccdb087cbf4"
+    },
+    {
       "path": "tools/th14-compare-retained-stage-actor-experiment-nov03.mjs",
       "bytes": 50012,
       "sha256": "e38448a47d9c4324fa0f19de5b6073e63c7146441b848071d623d7bdb7e19cd7"
@@ -20689,6 +20704,16 @@
       "sha256": "4c42e89b7c9e4bb1d0063079c9fb9c6a8b5d0ae423e2130d7d745b7ef65e5c05"
     },
     {
+      "path": "tools/th14-observed-seed-store-comparison-nov03.py",
+      "bytes": 6715,
+      "sha256": "788dd05f369a0efdc98df01bd01370c6529dcad4cdccd61991d5268d54d82c82"
+    },
+    {
+      "path": "tools/th14-observed-seed-store-evidence-nov03.py",
+      "bytes": 4725,
+      "sha256": "fe9c339f3f072e49eb8c21c158328392bed8ba201e9c98ad8a0a1226a043f45e"
+    },
+    {
       "path": "tools/th14-option-recall-application-full-evidence-nov02.py",
       "bytes": 7888,
       "sha256": "19bf7d59d28da12e2fc687ed5146ec787b954bd930d7628a7f2500531e018eb3"
@@ -22122,6 +22147,11 @@
       "path": "tools/th14-session-reference-check.mjs",
       "bytes": 13242,
       "sha256": "61580c4a3346f94f3fd78c8cbffcfdc8bbb1060acc56fe329aeea708cdaa4768"
+    },
+    {
+      "path": "tools/th14-shake-counter-application-full-evidence-nov03.py",
+      "bytes": 10810,
+      "sha256": "7a51b09eb361bd3f989ce5fcd34bbf9c4bc00742b2b80dbac22afc7e76346784"
     },
     {
       "path": "tools/th14-shake-counter-restore-build-nov03.py",
@@ -24034,6 +24064,11 @@
       "sha256": "07bf2722640855f78aca1164c082d2fe8856647e1c71fc1473bddb5b60670981"
     },
     {
+      "path": "tools/th14-stage3-worker-entry-vm-observer-nov03.py",
+      "bytes": 71231,
+      "sha256": "d627b13a50910d575821b9c0c0009aa89d5a3ad5a8a70fa23038db38fb152e7c"
+    },
+    {
       "path": "tools/th14-stage5-area-replay-trace-check.mjs",
       "bytes": 8728,
       "sha256": "b0e5ecfaf9868565891862576f1188ba71ee7a67dbdc01af798f9d260d25faeb"
@@ -25840,18 +25875,16 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "22c4f853fc1cb81b8a0c0891b88023f2f5dc065e",
-    "title": "TH14 finite stage3 seed-order diagnosis with timing guard",
+    "basePublishedCommit": "8cbc1673b9300bbcb75322a7177acc39ccc581b6",
+    "title": "TH14 observed worker seed stores and current GLES full regression",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-retained-stage3-stack-context-nov03.py",
-      "tools/th14-retained-seed-trajectory-nov03.py",
-      "tools/th14-earliest-worker-hypothesis-check-nov03.py",
-      "tools/th14-verify-native-initialize-timing-nov03.py",
-      "tools/th14-compare-earliest-worker-hypothesis-nov03.mjs",
-      "tools/th14-compare-retained-stage-actor-experiment-nov03.mjs",
-      "tools/th14-stage3-seed-order-evidence-nov03.py",
-      "docs/porting/TH14_STAGE3_SEED_ORDER_NOV03.md",
-      "docs/porting/th14-stage3-seed-order-nov03.json",
+      "tools/th14-stage3-worker-entry-vm-observer-nov03.py",
+      "tools/th14-compare-observed-seed-store-nov03.mjs",
+      "tools/th14-observed-seed-store-comparison-nov03.py",
+      "tools/th14-shake-counter-application-full-evidence-nov03.py",
+      "tools/th14-observed-seed-store-evidence-nov03.py",
+      "docs/porting/TH14_OBSERVED_SEED_STORE_GLES_NOV03.md",
+      "docs/porting/th14-observed-seed-store-gles-nov03.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
@@ -25859,14 +25892,16 @@
     "productionEngineChanged": false,
     "productionGameplayCoreChanged": false,
     "currentProductionCoreCommit": "22c4f853fc1cb81b8a0c0891b88023f2f5dc065e",
-    "historicalObjectIndex": 6,
-    "individualHistoricalVmIdentityProved": false,
-    "hypotheticalEarlyTime": true,
-    "strictOldPrefixPassed": false,
-    "remainingVmZWordDifferences": 2,
-    "formalInitializeTimeCasesPassed": 16,
-    "hypothesisRejectedByTimingGate": true,
-    "newCoreFullApplicationAccepted": false,
+    "nativeDiagnosticCallbacks": 26000,
+    "nativeSeedStoreEvents": 2,
+    "nativeObservedStageObjectAtStore": 0,
+    "nativeAudioMasterLevelsZero": true,
+    "strictPrefixPassed": false,
+    "vmDifferingZWords": 7,
+    "glesFrames": 122622,
+    "glesAssertions": 45,
+    "glesIndependentlyVerified": true,
+    "webgpuFullAccepted": false,
     "browserAccepted": false,
     "completeGame": false,
     "nativeEquivalent": false
