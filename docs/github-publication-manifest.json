@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "8cbc1673b9300bbcb75322a7177acc39ccc581b6",
+  "sourceCommit": "d54e8c0b0ccb0556926920ee1042b992018e5a82",
   "files": [
     {
       "path": ".gitignore",
@@ -337,6 +337,11 @@
       "path": "docs/porting/TH14_INITIALIZED_APPLICATION_FULL_NOV01.md",
       "bytes": 1552,
       "sha256": "8a2547debabaa0d31ff7ddf6b94b5c7ada5e0cfb8b5e23b1b75fe6d8dbd33c15"
+    },
+    {
+      "path": "docs/porting/TH14_INITIALIZE_TIME_COVERAGE_NOV03.md",
+      "bytes": 1306,
+      "sha256": "9b6b2d0f65a5904316126f4ab9da4f489a41e22a442e1e02d7021c051b3d4f51"
     },
     {
       "path": "docs/porting/TH14_INITIAL_PLAYER_OCT24.md",
@@ -680,8 +685,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 78284,
-      "sha256": "600439a9d4a06a87982c53e0f62828418e355520ed56195197fadc510f43cd87"
+      "bytes": 78699,
+      "sha256": "1e401f4e7c158f310f7bfca21bc30002c933860303fb2fb5317b74c91db68077"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -3277,6 +3282,11 @@
       "path": "docs/porting/th14-initialization-boundary-nov01.json",
       "bytes": 1228842,
       "sha256": "cc4d0a9aa83f73a349dcccf37e415bf153eb09542962716942c18e9eb3032c52"
+    },
+    {
+      "path": "docs/porting/th14-initialize-time-coverage-nov03.json",
+      "bytes": 6235,
+      "sha256": "a9ae5d97e02a2b6c052a5304d5fedd7b6c9797d9b1caee92917d102352dc1b9e"
     },
     {
       "path": "docs/porting/th14-initialized-application-full-nov01.json",
@@ -19534,6 +19544,16 @@
       "sha256": "5696dd107e3cfb48da9acd32d717be719afb623e6a1d460fb5ea0850dbc9b9ab"
     },
     {
+      "path": "tools/th14-initialize-timing-controls-nov03.py",
+      "bytes": 3098,
+      "sha256": "0ca080b73c53380e43a29616df7e1c42bd5fd7dfb0bff2912aade709df5c9976"
+    },
+    {
+      "path": "tools/th14-initialize-timing-coverage-evidence-nov03.py",
+      "bytes": 2852,
+      "sha256": "91f12e5a287ad7b426c801ca847fb51d7d487b2393a8364158a16496e0bf51eb"
+    },
+    {
       "path": "tools/th14-initialized-application-full-evidence-nov01.py",
       "bytes": 7632,
       "sha256": "babb659e79fb8cdf134c2aa7ef2caae14a829f9375e2430502cb6bc2b22fd53b"
@@ -24589,6 +24609,11 @@
       "sha256": "450238dd62fc6a9061b3ee21020cbff221d3eb2f18d4452615c6df142cadb712"
     },
     {
+      "path": "tools/th14-verify-native-campaign-with-timing-nov03.py",
+      "bytes": 992,
+      "sha256": "c7adde1e708f3153cb3cd906157b7c9146c20bcdefb47c0af59b0a2b4966a1ea"
+    },
+    {
       "path": "tools/th14-verify-native-campaign.py",
       "bytes": 16097,
       "sha256": "ea0751a2d4644780c3cde3f62873cbf6b7e41c17a6657c17d474f48579587fc8"
@@ -24597,6 +24622,11 @@
       "path": "tools/th14-verify-native-initialize-timing-nov03.py",
       "bytes": 2407,
       "sha256": "ad3a48524cf42e8a087d43654667e3a7c791e760b915c2910ade1290c71a68ec"
+    },
+    {
+      "path": "tools/th14-verify-native-initialize-timing-v2-nov03.py",
+      "bytes": 2926,
+      "sha256": "cd98abe270ea006d36d5155e2a6a5118b65f7ad77c859d90d570aa9a53661c2e"
     },
     {
       "path": "tools/th14-verify-nested-instruction-campaign-nov02.py",
@@ -25875,16 +25905,15 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "8cbc1673b9300bbcb75322a7177acc39ccc581b6",
-    "title": "TH14 observed worker seed stores and current GLES full regression",
+    "basePublishedCommit": "d54e8c0b0ccb0556926920ee1042b992018e5a82",
+    "title": "TH14 strict Initialize phase timing coverage gate",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-stage3-worker-entry-vm-observer-nov03.py",
-      "tools/th14-compare-observed-seed-store-nov03.mjs",
-      "tools/th14-observed-seed-store-comparison-nov03.py",
-      "tools/th14-shake-counter-application-full-evidence-nov03.py",
-      "tools/th14-observed-seed-store-evidence-nov03.py",
-      "docs/porting/TH14_OBSERVED_SEED_STORE_GLES_NOV03.md",
-      "docs/porting/th14-observed-seed-store-gles-nov03.json",
+      "tools/th14-verify-native-initialize-timing-v2-nov03.py",
+      "tools/th14-initialize-timing-controls-nov03.py",
+      "tools/th14-verify-native-campaign-with-timing-nov03.py",
+      "tools/th14-initialize-timing-coverage-evidence-nov03.py",
+      "docs/porting/TH14_INITIALIZE_TIME_COVERAGE_NOV03.md",
+      "docs/porting/th14-initialize-time-coverage-nov03.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
@@ -25892,16 +25921,12 @@
     "productionEngineChanged": false,
     "productionGameplayCoreChanged": false,
     "currentProductionCoreCommit": "22c4f853fc1cb81b8a0c0891b88023f2f5dc065e",
-    "nativeDiagnosticCallbacks": 26000,
-    "nativeSeedStoreEvents": 2,
-    "nativeObservedStageObjectAtStore": 0,
-    "nativeAudioMasterLevelsZero": true,
-    "strictPrefixPassed": false,
-    "vmDifferingZWords": 7,
-    "glesFrames": 122622,
-    "glesAssertions": 45,
-    "glesIndependentlyVerified": true,
-    "webgpuFullAccepted": false,
+    "naturalCases": 16,
+    "negativeControlsRejected": 5,
+    "positiveStrictAndTimingPassed": true,
+    "unprovedHypothesisRejected": true,
+    "initializeTimingOnly": true,
+    "newCoreFullApplicationAccepted": false,
     "browserAccepted": false,
     "completeGame": false,
     "nativeEquivalent": false
