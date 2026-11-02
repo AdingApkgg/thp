@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "ea2ee61313f70ddef18c768ac8222463ccfb4987",
+  "sourceCommit": "b15036269c78e406bca61008ad914c830517e70a",
   "files": [
     {
       "path": ".gitignore",
@@ -322,6 +322,11 @@
       "path": "docs/porting/TH14_FULL_APPLICATION_REPLAY_OCT26.md",
       "bytes": 5421,
       "sha256": "656470580e6e9ce8ee4eeec3cb50a129ea336c030a18f9a74c2aebca326c196a"
+    },
+    {
+      "path": "docs/porting/TH14_HARD_TRANSITION_WINDOW_NOV03.md",
+      "bytes": 2351,
+      "sha256": "f1fba471047ee53946da4ba7c7122825502d7a066f7a458f0045d7702c932454"
     },
     {
       "path": "docs/porting/TH14_HUD_COMPLETION_OCT25.md",
@@ -700,8 +705,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 80337,
-      "sha256": "1d2ba6a141bbeb029584ee3b65f1b7342b357bb4f872fa8820469d14ef4e527b"
+      "bytes": 80712,
+      "sha256": "a9c6e0d0ecef9b2922c12d81eeb57efb844581a6ae245b70b1c9934944d78269"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -3157,6 +3162,11 @@
       "path": "docs/porting/th14-hard-marisa-a-campaign-oct10.json",
       "bytes": 34612,
       "sha256": "5fdcff8ef9089f8fa6062556f59e6567a397f287f2706c68d37856c33d6c1ead"
+    },
+    {
+      "path": "docs/porting/th14-hard-transition-window-nov03.json",
+      "bytes": 3592,
+      "sha256": "0324cee8978be64635663042e75080b9b0c91d1a6ae1e12d5b6804115443125c"
     },
     {
       "path": "docs/porting/th14-hit-effect-current-visual-verified-oct14.json",
@@ -19384,6 +19394,21 @@
       "sha256": "0fc4ec86fd0de9644fbee56d021add3a507cc3cff551607bef67c232d9b3d1b3"
     },
     {
+      "path": "tools/th14-hard-camera-after-hypothesis-nov03.mjs",
+      "bytes": 48955,
+      "sha256": "d5d4a5da879e1028b7e7a0af63b42ec816a8574bb43722d40f31351b65059c99"
+    },
+    {
+      "path": "tools/th14-hard-camera-seed-hypothesis-nov03.mjs",
+      "bytes": 49051,
+      "sha256": "65b5b8a78a06590c01674fbcc0ced19ed14c766d2166c936a99e371691c9c9ce"
+    },
+    {
+      "path": "tools/th14-hard-transition-window-evidence-nov03.py",
+      "bytes": 5896,
+      "sha256": "0577ad2dddde5348a947e03dfa2ef6d375fbbe198158a1b9b955e75de42c6325"
+    },
+    {
       "path": "tools/th14-health-history-candidate.mjs",
       "bytes": 3333,
       "sha256": "a9507c7a9a95f12a1a31f4f75fc04dc8b0b61bd556f7da8a866c8eb899c56231"
@@ -20087,6 +20112,21 @@
       "path": "tools/th14-marisaa-easy-six-stage-evidence-nov02.py",
       "bytes": 6186,
       "sha256": "63fb45beaa6064f504302599ebc8d10d984ee61d22cf2a31f2dbb03064a54e29"
+    },
+    {
+      "path": "tools/th14-marisaa-hard-after-hypothesis-audit-nov03.py",
+      "bytes": 6198,
+      "sha256": "e1d4f8b063f04bee412dcfaca93b488d556ad85e21cce3ed75ba80395c9dec97"
+    },
+    {
+      "path": "tools/th14-marisaa-hard-camera-seed-hypothesis-audit-nov03.py",
+      "bytes": 6314,
+      "sha256": "31c04335a35b20350a72d6e5b5485f344e8b82f9cfebf9cf326e1d1fce92926e"
+    },
+    {
+      "path": "tools/th14-marisaa-hard-gap-audit-nov03.py",
+      "bytes": 5254,
+      "sha256": "de77eb81fe6612e4ce2adae424a3f3e37732a18ebf33fc4df030c708f36b2f0a"
     },
     {
       "path": "tools/th14-marisaa-normal-alternate-evidence-nov03.py",
@@ -25980,15 +26020,17 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "ea2ee61313f70ddef18c768ac8222463ccfb4987",
-    "title": "TH14 Marisa B Lunatic observed six-stage entries",
+    "basePublishedCommit": "b15036269c78e406bca61008ad914c830517e70a",
+    "title": "TH14 Hard transition timing diagnostics",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-marisab-lunatic-six-stage-evidence-nov03.py",
-      "tools/th14-expand-marisab-lunatic-inventory-nov03.py",
-      "docs/porting/TH14_MARISAB_LUNATIC_SIX_STAGE_NOV03.md",
-      "docs/porting/th14-marisab-lunatic-six-stage-nov03.json",
-      "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
-      "docs/porting/th14-mode-acceptance-inventory-nov03.json",
+      "tools/th14-marisaa-hard-gap-audit-nov03.py",
+      "tools/th14-marisaa-hard-after-hypothesis-audit-nov03.py",
+      "tools/th14-marisaa-hard-camera-seed-hypothesis-audit-nov03.py",
+      "tools/th14-hard-camera-after-hypothesis-nov03.mjs",
+      "tools/th14-hard-camera-seed-hypothesis-nov03.mjs",
+      "tools/th14-hard-transition-window-evidence-nov03.py",
+      "docs/porting/TH14_HARD_TRANSITION_WINDOW_NOV03.md",
+      "docs/porting/th14-hard-transition-window-nov03.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
@@ -25996,26 +26038,20 @@
     "productionEngineChanged": false,
     "productionGameplayCoreChanged": false,
     "currentProductionCoreCommit": "22c4f853fc1cb81b8a0c0891b88023f2f5dc065e",
-    "nativeDiagnosticCallbacks": 81077,
+    "nativeDiagnosticCallbacks": 75855,
     "observedStages": [
       1,
       2,
       3,
       4,
-      5,
-      6
+      5
     ],
     "sourceReplayEofProved": false,
     "actualMastersZero": true,
-    "strictAndIndependentPassed": true,
-    "initializeTimingCoveragePassed": true,
-    "vmRows": 1408,
-    "combatCheckpoints": 1074,
-    "initialPublications": 1873,
+    "strictPassed": false,
+    "counterfactualAccepted": false,
     "naturalModePairs": 30,
     "allTargetStageEntryModePairs": 28,
-    "other29ModesFrozen": true,
-    "wholeModeEquivalent": false,
     "completeGame": false,
     "nativeEquivalent": false
   }
