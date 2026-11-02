@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "d5af49ae77da820334cb55572713a245eef1a910",
+  "sourceCommit": "c5e2fb69643e06ad2b7fcfa3122c23c79a34e3ec",
   "files": [
     {
       "path": ".gitignore",
@@ -272,6 +272,11 @@
       "path": "docs/porting/TH14_EFFECT149_RETIREMENT_OCT26.md",
       "bytes": 3112,
       "sha256": "74480167a5b922b6a65f4f5bb1adbc0fea4498348f9f45fb79f12cee4c3b06c4"
+    },
+    {
+      "path": "docs/porting/TH14_ENEMY_ADDRESS_LAYOUT_AUDIT_NOV03.md",
+      "bytes": 1253,
+      "sha256": "7181c4a9ca36914ad83c8ecc73be4e573fd74beb29c9f6d1523721cda71e1df1"
     },
     {
       "path": "docs/porting/TH14_ENEMY_PROBE_AND_PAUSED_SCORE_OCT24.md",
@@ -615,8 +620,8 @@
     },
     {
       "path": "docs/porting/TH14_NORMAL_SCENE_WORD_ORDER_NOV03.md",
-      "bytes": 1040,
-      "sha256": "d93604c43a90a808b7b51efbbd9d2b547a2ec375f7453658c12f6dec2aa2b582"
+      "bytes": 1341,
+      "sha256": "d91cc3d407b3ec7c555ae3d6e342352f4cf872fa1d80dbc6f3d56434ea05b1df"
     },
     {
       "path": "docs/porting/TH14_OBSERVED_SEED_STORE_GLES_NOV03.md",
@@ -735,8 +740,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 84025,
-      "sha256": "b4fb3c6ac3434dc6b82ecca101d6af984d4c02871af702e58d21d20f9b2687dd"
+      "bytes": 84797,
+      "sha256": "54d03e853e786911a8b1b6d93a1c72f5ac29c01a6babe343fff46d060c031537"
     },
     {
       "path": "docs/porting/TH14_REPLAY_BOUNDARY_EXCEPTION_PROTOTYPE_NOV03.md",
@@ -782,6 +787,11 @@
       "path": "docs/porting/TH14_REPLAY_TERMINAL_OCT28.md",
       "bytes": 3161,
       "sha256": "8fa5de26bb0e3679734103bdffe6a4fb7005e593255f95bb9e6bbf801626ab7a"
+    },
+    {
+      "path": "docs/porting/TH14_RETAINED_SEED_BOUNDARY_CURRENT_NOV03.md",
+      "bytes": 1118,
+      "sha256": "e40f0bb6e3f3b12c331c3cacf740254b233a9c98881a6859ce61bb6ee51170a6"
     },
     {
       "path": "docs/porting/TH14_RNG_ASYNC_SCOPE_NOV02.md",
@@ -2842,6 +2852,11 @@
       "path": "docs/porting/th14-ending-timing-verified.json",
       "bytes": 2081,
       "sha256": "f16d5749692a721f9349afcc7783f0013ff5819eac62e78f42a1ae035d51d76f"
+    },
+    {
+      "path": "docs/porting/th14-enemy-address-layout-audit-nov03.json",
+      "bytes": 1564,
+      "sha256": "48a36bc609040c5e3f2d10cc67001c3db2377073bc28d2e7885733b9554ceb56"
     },
     {
       "path": "docs/porting/th14-enemy-animation-shared-angle-verified-oct14.json",
@@ -5907,6 +5922,11 @@
       "path": "docs/porting/th14-retained-rng-current-gap-nov03.json",
       "bytes": 1048,
       "sha256": "b20e8d77c19fba6b032561010d07493a4221e4ae97091d0327ceeefb3a942dfb"
+    },
+    {
+      "path": "docs/porting/th14-retained-seed-boundary-audit-nov03.json",
+      "bytes": 984,
+      "sha256": "08b46abaffba63f28bc87d63c226c063ca7c39e26029228a16b0fe36f50d72cd"
     },
     {
       "path": "docs/porting/th14-retired-target-browser-flow-verified-oct14.json",
@@ -18444,6 +18464,11 @@
       "sha256": "950fbc7c20f472133dfb1f9696f7a5cc892db336dc0d86381cd4b70447a2bc95"
     },
     {
+      "path": "tools/th14-enemy-address-layout-audit-nov03.py",
+      "bytes": 3946,
+      "sha256": "acab794fefbcbc91ecce4bbb32f9acd7dc2e8df4da2337de3a2bcd8e2a25db14"
+    },
+    {
       "path": "tools/th14-enemy-animation-check.mjs",
       "bytes": 11699,
       "sha256": "3bbb2ec5c42d51502675aee835f395a30ad1d91a55058513f433183aaf8de0bb"
@@ -22127,6 +22152,11 @@
       "path": "tools/th14-retail-stage-core-evidence-check.py",
       "bytes": 5245,
       "sha256": "cf8297fe8d06d3c2f359e6536eccb3ac4fe1edac99747ab7b28291b49207a2ac"
+    },
+    {
+      "path": "tools/th14-retained-seed-boundary-audit-nov03.py",
+      "bytes": 5949,
+      "sha256": "5647814539d8dabf71a52f1aca27adb974334de4c77d9b3826684047cdd8494c"
     },
     {
       "path": "tools/th14-retained-seed-trajectory-nov03.py",
@@ -26310,42 +26340,27 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "d5af49ae77da820334cb55572713a245eef1a910",
-    "title": "TH14 Marisa A Hard six-stage observation and exception provenance",
+    "basePublishedCommit": "c5e2fb69643e06ad2b7fcfa3122c23c79a34e3ec",
+    "title": "TH14 retained seed boundary and cross-process enemy address evidence",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-marisaa-hard-stage-entry-evidence-nov03.py",
-      "tools/th14-exception-provenance-nov03.py",
-      "tools/th14-expand-marisaa-hard-inventory-nov03.py",
-      "tools/th14-marisaa-normal-scene-word-evidence-nov03.py",
-      "tools/th14-normal-scene-word-order-nov03.py",
-      "docs/porting/th14-marisaa-hard-stage-entry-nov03.json",
-      "docs/porting/th14-marisaa-hard-exception-provenance-nov03.json",
-      "docs/porting/th14-marisaa-hard-input-boundaries-nov03.json",
-      "docs/porting/th14-marisaa-hard-raw-only-nov03.json",
-      "docs/porting/th14-mode-acceptance-inventory-v8-nov03.json",
-      "docs/porting/th14-marisaa-normal-word-probe-nov03.json",
-      "docs/porting/th14-normal-scene-word-order-nov03.json",
-      "docs/porting/th14-retained-rng-current-gap-nov03.json",
-      "docs/porting/TH14_MARISAA_HARD_SIX_STAGE_NOV03.md",
+      "tools/th14-retained-seed-boundary-audit-nov03.py",
+      "tools/th14-enemy-address-layout-audit-nov03.py",
+      "docs/porting/th14-retained-seed-boundary-audit-nov03.json",
+      "docs/porting/th14-enemy-address-layout-audit-nov03.json",
+      "docs/porting/TH14_RETAINED_SEED_BOUNDARY_CURRENT_NOV03.md",
+      "docs/porting/TH14_ENEMY_ADDRESS_LAYOUT_AUDIT_NOV03.md",
       "docs/porting/TH14_NORMAL_SCENE_WORD_ORDER_NOV03.md",
-      "docs/porting/TH14_MODE_ACCEPTANCE_OCT25.md",
-      "docs/porting/TH14_REPLAY_INPUT_BOUNDARIES_NOV03.md",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "productionGameplayCoreChanged": false,
     "currentProductionCoreCommit": "22c4f853fc1cb81b8a0c0891b88023f2f5dc065e",
-    "nativeCallbacks": 114588,
-    "observedStages": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6
-    ],
-    "debugExceptions": 2,
+    "retainedSeedBoundaryCallbacks": 26000,
+    "vmDifferenceWords": 5,
+    "strictInitializationGateRejected": true,
+    "addressMatchedSamples": 57,
+    "distinctAddressDeltas": 15,
     "strictPassed": false,
     "pairsWithAllStageEntriesObserved": 30,
     "pairsWithAllStageEntriesInOneExceptionFreeRun": 29,

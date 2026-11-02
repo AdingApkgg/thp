@@ -1,0 +1,31 @@
+{
+  "verifiedFiniteAddressLayoutComparison": true,
+  "sameSourceReplay": true,
+  "maxCallback": 26000,
+  "sharedCallbackSamples": 232,
+  "sameStageAndFrameSamples": 211,
+  "selectedEnemyFields": 31,
+  "uniqueSelectedFieldMatches": 57,
+  "callbacksWithMatches": 14,
+  "matchesUsingFirstObservedAddressDelta": 14,
+  "distinctAddressDeltas": 15,
+  "singleBaseTranslationFitsAllMatchedSamples": false,
+  "identityMatchedOnlyBySelectedFieldsAndInstance": true,
+  "objectLifetimeIdentityAcrossProcessesProved": false,
+  "allocationHistoryOrCauseProved": false,
+  "rawAddressesOrSnapshotsPublished": false,
+  "nativeValuesProvidedToEngine": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "sourceReplaySha256": "1d1b7da60739afc9b6d1ee5eb143e2a59e6a29b712096871874fa7bd72391a5d",
+  "nativeReportSha256": [
+    "b69b7784cbab0aef9eb0011fd9f59f684913aec883560d9bf510684c011524ab",
+    "da292a1269eeb95ed8fe8128795582406e0b1505e845477af38aa1f31a65d112"
+  ],
+  "combatIndexSha256": [
+    "ee8f687e7358175348a30ca477da94830e9382939964d61df78c0b672b86379f",
+    "a875f7bde4236028e89ee813103543472d66652063357911f92529137158d7c6"
+  ],
+  "verifierSha256": "acab794fefbcbc91ecce4bbb32f9acd7dc2e8df4da2337de3a2bcd8e2a25db14",
+  "scope": "Two retained original processes using the same replay. At equal callback, stage and stage frame, match only unique identical 31-field enemy records including instance. Different address deltas rule out a universal base shift for these sampled matches, but do not establish cross-process object lifetime or allocator causality."
+}
