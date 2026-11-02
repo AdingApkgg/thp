@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "2f42560318202a997514d9644adb549db548964a",
+  "sourceCommit": "4609501b10485a780a6781f33cc38edcb86e7e0f",
   "files": [
     {
       "path": ".gitignore",
@@ -599,6 +599,11 @@
       "sha256": "33e5cea203ba170591b7380b337e93803348f67e73203c39fe9c5ced08ec1047"
     },
     {
+      "path": "docs/porting/TH14_PHASED_SHAKE_STACK_APPLICATION_FULL_NOV02.md",
+      "bytes": 1850,
+      "sha256": "f1cde9429c26375d2fe5ee4dfde088d284a75a7c3f7bf6fa255c51d525f7da30"
+    },
+    {
       "path": "docs/porting/TH14_PHASED_SHAKE_STACK_NOV02.md",
       "bytes": 3794,
       "sha256": "3b98706722ea48c21d8a2147df0e52119ed369d31a73e5cbec24bda52c11d154"
@@ -670,8 +675,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 76078,
-      "sha256": "7059a5401fd8522da0709cefa0a21a1f3a0f16196fe7a70ad91526ac78de062a"
+      "bytes": 76566,
+      "sha256": "913d7ad807cc6a1b54324d75ba4c63515d7626841bffbf0beec49c8c20b4cdd2"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -5152,6 +5157,11 @@
       "path": "docs/porting/th14-paused-score-verified-oct24.json",
       "bytes": 973,
       "sha256": "1d2d80b81e10b0762bbe7a4f8b4d7d8389bf4d111805672d79b4a1ba0343df05"
+    },
+    {
+      "path": "docs/porting/th14-phased-shake-stack-application-full-nov02.json",
+      "bytes": 134741,
+      "sha256": "2a268504f870d19f492dff989abaa2eeb10d51692ad352c698389e2a31689ce5"
     },
     {
       "path": "docs/porting/th14-phased-shake-stack-nov02.json",
@@ -21024,6 +21034,11 @@
       "sha256": "930f868fb48a91542037f28739afc46206fb986af890b3c4f9109f5547cf20fa"
     },
     {
+      "path": "tools/th14-phased-shake-stack-application-full-evidence-nov02.py",
+      "bytes": 10806,
+      "sha256": "967617719b07c677f11f4bb6c7aefabd3f947017adf9a472e45205df0e69460b"
+    },
+    {
       "path": "tools/th14-phased-shake-stack-component-check-nov02.mjs",
       "bytes": 2516,
       "sha256": "fdfc39529be44319449fb3034979e14429bbe5629547d3e3143a690e157818f8"
@@ -25745,30 +25760,28 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "2f42560318202a997514d9644adb549db548964a",
-    "title": "TH14 version-bound 4acbbc complete GLES and WebGPU regression",
+    "basePublishedCommit": "4609501b10485a780a6781f33cc38edcb86e7e0f",
+    "title": "TH14 version-bound 2f42560 complete GLES and WebGPU regression",
     "changedSourceAndMetadataFiles": [
-      "docs/porting/TH14_RNG_STORE_BOUNDARY_APPLICATION_FULL_NOV02.md",
-      "docs/porting/th14-rng-store-boundary-application-full-nov02.json",
+      "tools/th14-phased-shake-stack-application-full-evidence-nov02.py",
+      "docs/porting/TH14_PHASED_SHAKE_STACK_APPLICATION_FULL_NOV02.md",
+      "docs/porting/th14-phased-shake-stack-application-full-nov02.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "productionEngineChanged": false,
     "productionGameplayCoreChanged": false,
-    "currentProductionCoreCommit": "2f42560318202a997514d9644adb549db548964a",
-    "currentCoreWasmSha256": "5b77434dd760e24bc50760728ed3e1d8e6515d5541a763cb2b5fdac4c1ad8b45",
-    "verifiedPreviousApplicationCoreCommit": "4acbbc398fe3648ca8362e4fe803f56ee87818b7",
-    "previousCoreBothBackendsActuallyCompleted": true,
-    "previousCoreFramesPerBackend": 122622,
-    "previousCoreAssertionsPerBackend": 45,
-    "previousCoreFullImagesPerBackend": 8,
-    "previousCoreSilentSinkPcmFrames": 89969664,
+    "verifiedApplicationCoreCommit": "2f42560318202a997514d9644adb549db548964a",
+    "bothBackendsActuallyCompleted": true,
+    "framesPerBackend": 122622,
+    "assertionsPerBackend": 45,
+    "fullImagesPerBackend": 8,
+    "silentSinkPcmFrames": 89969664,
     "physicalAudioDevicesOpened": 0,
-    "previousCoreFullPairIndependentAccepted": true,
-    "currentCoreFullPairNotInherited": true,
-    "currentCoreFullApplicationAccepted": false,
-    "currentCoreBrowserAccepted": false,
+    "fullPairIndependentAccepted": true,
+    "laterCoreMustBeReverified": true,
+    "browserAccepted": false,
     "naturalModePairs": 30,
     "allTargetStageEntryModePairs": 27,
     "completeGame": false,
