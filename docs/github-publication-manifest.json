@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "628f1d41b5d27c8298e8fc8e2c2f3ce84145935f",
+  "sourceCommit": "8ed7ff490fba2fc445f2b73acd90829dec92468b",
   "files": [
     {
       "path": ".gitignore",
@@ -720,8 +720,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 81857,
-      "sha256": "cd1bdb103b74f847b7f699e82b2470600b29deb396c457ac1efd883ff8d5de97"
+      "bytes": 82229,
+      "sha256": "28d1542d1d68f3097279cbbd873ef659aace1d95538eee9a63d12a2e2775ad7c"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -742,6 +742,11 @@
       "path": "docs/porting/TH14_REPLAY_FPS_OCT28.md",
       "bytes": 4555,
       "sha256": "f96b6af149f646ecd401d85fdd85d6d62d0b814c1b84642517f7ad1185b1c4d4"
+    },
+    {
+      "path": "docs/porting/TH14_REPLAY_INPUT_BOUNDARIES_NOV03.md",
+      "bytes": 1791,
+      "sha256": "b16ba8e6c4c51207472786081c285b33e386031a12c1f37d2329907d0aa03b16"
     },
     {
       "path": "docs/porting/TH14_REPLAY_INTAKE_PARSER_OCT30.md",
@@ -5749,6 +5754,11 @@
       "sha256": "07ec0e5e2c3cc87772a797b0eee306855b05ee0c2614efc8b9a2b45efabcb196"
     },
     {
+      "path": "docs/porting/th14-replay-input-terminal-scan-nov03.json",
+      "bytes": 4165,
+      "sha256": "03649159030f5d1dff5626772a9bb9004e2bedcb75310214051a272216d589eb"
+    },
+    {
       "path": "docs/porting/th14-replay-intake-parser-oct30.json",
       "bytes": 6549,
       "sha256": "e97ba1c389d039863ddf1d252a070b566c8ecdf740eb803057965a0749fafd2d"
@@ -5777,6 +5787,11 @@
       "path": "docs/porting/th14-replay-state-verified.json",
       "bytes": 2257,
       "sha256": "ca7d564e6ed8c0d7029e2ee9bd0d9b03c997f525916012f837bfc08f00e4fb5a"
+    },
+    {
+      "path": "docs/porting/th14-replay-terminal-observer-unit-nov03.json",
+      "bytes": 1516,
+      "sha256": "b13d2f4ed764607c52b553ae70a9ec04b2611b2e71327c91c518f185684f2a15"
     },
     {
       "path": "docs/porting/th14-replay-terminal-verified-oct28.json",
@@ -20559,6 +20574,11 @@
       "sha256": "537cac2b030769dc3ed2fc6359afd99c5ed4568f4ea53012100d0fdc0df94e7d"
     },
     {
+      "path": "tools/th14-native-terminal-marker-observer-nov03.py",
+      "bytes": 60700,
+      "sha256": "ce2d706c22d1fb0742d8ee9b38f7a3e5347c8013b65ba49454df1e0189a9598e"
+    },
+    {
       "path": "tools/th14-native-texture-fpu-capture.py",
       "bytes": 10907,
       "sha256": "c381f094e46e4f5c2e2c1c7675f24d165892ba78c66eb4f409dde1c6144327d6"
@@ -21832,6 +21852,11 @@
       "path": "tools/th14-replay-input-edges-native.py",
       "bytes": 2519,
       "sha256": "8d80a71f2c1f6f77f7ff4cb62a57f7f49d91398c28b204b4235da3d1bd6c6e3f"
+    },
+    {
+      "path": "tools/th14-replay-input-terminal-scan-nov03.py",
+      "bytes": 2755,
+      "sha256": "2134155e3af2cadf76b74bc42023fec9c6886fe7846d0f794a6600076b698b31"
     },
     {
       "path": "tools/th14-replay-intake-parser-evidence-oct30.py",
@@ -24539,6 +24564,11 @@
       "sha256": "9bb97a060d652ea2e4d167fecc479cd0da818beddb163296d6a28534771dbe7d"
     },
     {
+      "path": "tools/th14-terminal-marker-observer-unit-nov03.py",
+      "bytes": 10946,
+      "sha256": "b6010199df2b6560ed6e2358bf1db9c1ecc16a8f041fb46ca918a2bb7904b09b"
+    },
+    {
       "path": "tools/th14-test-storage.py",
       "bytes": 2614,
       "sha256": "246d005db6ff6cc9dcb12da8244bdbc4fe1505a1bb2802fa8c54c87471ce8df0"
@@ -26100,13 +26130,15 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "628f1d41b5d27c8298e8fc8e2c2f3ce84145935f",
-    "title": "TH14 Hard clean exception diagnostic prefix",
+    "basePublishedCommit": "8ed7ff490fba2fc445f2b73acd90829dec92468b",
+    "title": "TH14 replay input boundary observer prototype",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-exception-diagnostic-observer-nov03.py",
-      "tools/th14-hard-clean-exception-prefix-nov03.py",
-      "docs/porting/TH14_HARD_CLEAN_EXCEPTION_PREFIX_NOV03.md",
-      "docs/porting/th14-hard-clean-exception-prefix-nov03.json",
+      "tools/th14-native-terminal-marker-observer-nov03.py",
+      "tools/th14-terminal-marker-observer-unit-nov03.py",
+      "tools/th14-replay-input-terminal-scan-nov03.py",
+      "docs/porting/TH14_REPLAY_INPUT_BOUNDARIES_NOV03.md",
+      "docs/porting/th14-replay-terminal-observer-unit-nov03.json",
+      "docs/porting/th14-replay-input-terminal-scan-nov03.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
@@ -26114,17 +26146,14 @@
     "productionEngineChanged": false,
     "productionGameplayCoreChanged": false,
     "currentProductionCoreCommit": "22c4f853fc1cb81b8a0c0891b88023f2f5dc065e",
-    "nativeDiagnosticCallbacks": 31200,
-    "observedStages": [
-      1,
-      2
-    ],
-    "debugExceptions": 0,
-    "priorExceptionExplained": false,
-    "stage3RaceObserved": false,
+    "originalReaderCases": 6,
+    "syntheticDebugRegisterCases": 7,
+    "syntheticHandlerCases": 8,
+    "newReplayFilesScanned": 2,
+    "inputStageSectionsScanned": 12,
+    "markerCount": 0,
+    "liveObserverValidated": false,
     "sourceReplayEofProved": false,
-    "actualMastersZero": true,
-    "exceptionTimingAndRawGatesPassed": true,
     "completeGame": false,
     "nativeEquivalent": false
   }
