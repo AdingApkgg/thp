@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "52106c1c376b59e928c9c631e6c68ec1ea597360",
+  "sourceCommit": "55a4a84bddc7e523f7a952aa8ab735c4c06646e5",
   "files": [
     {
       "path": ".gitignore",
@@ -449,6 +449,11 @@
       "sha256": "d7a138339103c106a7ea6230ae548c870e8bf041b6294381e8eee61c23013ab4"
     },
     {
+      "path": "docs/porting/TH14_MARISAA_NORMAL_ALTERNATE_NOV03.md",
+      "bytes": 1021,
+      "sha256": "bccb676d5c9f9806cb755cba1303b4edba5309ba2d28dcb737686ebf3178ad81"
+    },
+    {
       "path": "docs/porting/TH14_MARISAB_EASY_OCT26.md",
       "bytes": 1618,
       "sha256": "23166e21cf5e9693149837b0b859d3921e0431bdd96b85af42bf33039595bdf8"
@@ -690,8 +695,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 79083,
-      "sha256": "ef04218eeb26483bbf6c30a9ac536f1595a202d45b6577025c0f8ad9b6eeb375"
+      "bytes": 79969,
+      "sha256": "c8941bd66c051a7994c2e2bdcb52e8f5621ad0f05553479dc116e12450c0ccab"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -822,6 +827,11 @@
       "path": "docs/porting/TH14_SELECTED_PLAYER_WORKER_OCT29.md",
       "bytes": 4115,
       "sha256": "c92d82078bfc0279369fa7be5f97e94878e7ed482d1482509da87fb684d4356d"
+    },
+    {
+      "path": "docs/porting/TH14_SHAKE_COUNTER_APPLICATION_FULL_NOV03.md",
+      "bytes": 1814,
+      "sha256": "d0ea31107adc93423c318bffbb23c9a3d56db7d5530c9f0b15bed744dda1a739"
     },
     {
       "path": "docs/porting/TH14_SHAKE_COUNTER_RESTORE_NOV03.md",
@@ -4214,6 +4224,11 @@
       "sha256": "fddf4fada91bf16bef2241b68a4584849aa3849eb2f18bff8c8877e48cf179ae"
     },
     {
+      "path": "docs/porting/th14-marisaa-normal-alternate-nov03.json",
+      "bytes": 2971,
+      "sha256": "79d759e554b2fc29dd94fc1d4e78b6b15b6182079f472fd30982a1b2ce005bab"
+    },
+    {
       "path": "docs/porting/th14-marisab-easy-verified-oct26.json",
       "bytes": 10116,
       "sha256": "0821f999533e167efe07c0516c1113c66d304b226aebb7b0c6add2616a9cae6c"
@@ -6017,6 +6032,11 @@
       "path": "docs/porting/th14-selected-player-worker-verified-oct29.json",
       "bytes": 237646,
       "sha256": "4ec411b2fa25815ab337d729abfb00a7b5d2c8561c38a199e6f4aabb16f07772"
+    },
+    {
+      "path": "docs/porting/th14-shake-counter-application-full-nov03.json",
+      "bytes": 120504,
+      "sha256": "196f8203898cc6c92fa9531dec4ee26800d74ff99c2aef14134d6db670cb7cdf"
     },
     {
       "path": "docs/porting/th14-shake-counter-restore-nov03.json",
@@ -20049,6 +20069,11 @@
       "sha256": "63fb45beaa6064f504302599ebc8d10d984ee61d22cf2a31f2dbb03064a54e29"
     },
     {
+      "path": "tools/th14-marisaa-normal-alternate-evidence-nov03.py",
+      "bytes": 3955,
+      "sha256": "ff2cc80faa14502f4a563d8b4ef15f7ca2ab87a4a512d439c79bf4d15413f6b8"
+    },
+    {
       "path": "tools/th14-marisab-environment-evidence-oct30.py",
       "bytes": 10165,
       "sha256": "9138d5ade9fc6141ca94f18752aacd198b402cdf74b4a9dff3e0cbb0a1928ed1"
@@ -25930,14 +25955,14 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "52106c1c376b59e928c9c631e6c68ec1ea597360",
-    "title": "TH14 original shake destruction this pointer stack provenance",
+    "basePublishedCommit": "55a4a84bddc7e523f7a952aa8ab735c4c06646e5",
+    "title": "TH14 current complete backends and finite Marisa A Normal recording",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-controller-delete-address-observer-nov03.py",
-      "tools/th14-shake-retire-this-native-nov03.py",
-      "tools/th14-controller-shake-this-evidence-nov03.py",
-      "docs/porting/TH14_CONTROLLER_SHAKE_THIS_NOV03.md",
-      "docs/porting/th14-controller-shake-this-nov03.json",
+      "tools/th14-marisaa-normal-alternate-evidence-nov03.py",
+      "docs/porting/TH14_MARISAA_NORMAL_ALTERNATE_NOV03.md",
+      "docs/porting/th14-marisaa-normal-alternate-nov03.json",
+      "docs/porting/TH14_SHAKE_COUNTER_APPLICATION_FULL_NOV03.md",
+      "docs/porting/th14-shake-counter-application-full-nov03.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
@@ -25945,13 +25970,25 @@
     "productionEngineChanged": false,
     "productionGameplayCoreChanged": false,
     "currentProductionCoreCommit": "22c4f853fc1cb81b8a0c0891b88023f2f5dc065e",
-    "nativeDiagnosticCallbacks": 36823,
-    "nativeControllerReads": 23,
-    "actualThisPointerMatches": 1,
-    "deletedNodeMatches": 0,
-    "originalInstructionCases": 4,
-    "allocatorServiceSynthetic": true,
-    "portableHeapAddressModelImplemented": false,
+    "bothBackendsActuallyCompleted": true,
+    "framesPerBackend": 122622,
+    "assertionsPerBackend": 45,
+    "fullPairIndependentAccepted": true,
+    "firstWebgpuSandboxFailurePreserved": true,
+    "physicalAudioDevicesOpened": 0,
+    "marisaANormalCallbacks": 66909,
+    "marisaANormalStages": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "marisaANormalReplayEofProved": false,
+    "marisaANormalStrictIndependentAndTimingPassed": true,
+    "naturalModePairs": 30,
+    "allTargetStageEntryModePairs": 27,
+    "browserAccepted": false,
     "completeGame": false,
     "nativeEquivalent": false
   }
