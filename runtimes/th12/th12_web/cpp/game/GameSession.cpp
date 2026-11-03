@@ -647,6 +647,13 @@ bool GameSession::update(const GameSessionInput& input) {
             // or retiring the current scene/resources inside this borrowed call.
             return battle->poll_stage_initialization(stage_load_clock());
         }
+        ,[this](const Stage& owner,u32 copied_words){
+            if(!battle->pending_stage)return true;
+            if(stage_load_camera_word_boundary&&!stage_load_camera_word_boundary(owner,copied_words))return false;
+            // Only Scene may progress while the publisher is borrowed. Do not
+            // run Timeline or the controller's later Stage retirement here.
+            return battle->poll_stage_scene(stage_load_clock());
+        }
 #endif
         );
         if(playback_ended){

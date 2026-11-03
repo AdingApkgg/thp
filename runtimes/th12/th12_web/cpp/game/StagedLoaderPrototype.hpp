@@ -18,7 +18,7 @@ struct StageActions {
 struct StagedLoader {
  LoadPhase phase=LoadPhase::Idle;
  u64 deadline=0,last_sample=0;
- bool initial_stage=false,has_sample=false,initializing=false;
+ bool initial_stage=false,has_sample=false,initializing=false,preparing_scene=false;
  bool request(StageActions& actions,bool initial=false){
   if(phase!=LoadPhase::Idle&&phase!=LoadPhase::Ready)return false;
   if(!actions.retire_owner()){phase=LoadPhase::Failed;return false;}
@@ -42,7 +42,20 @@ struct StagedLoader {
   if(result==Work::Ready)phase=LoadPhase::Hud;
   return true;
  }
+ // Complete only an already-entered Scene phase while the Stage is borrowed.
+ bool poll_scene(StageActions& actions,u64 now){
+  if(phase==LoadPhase::Aborted||phase==LoadPhase::Failed)return false;
+  if(preparing_scene||phase!=LoadPhase::Scene)return true;
+  if(has_sample&&now<last_sample){phase=LoadPhase::Failed;return false;}
+  has_sample=true;last_sample=now;
+  struct Guard{bool& flag;Guard(bool& f):flag(f){flag=true;}~Guard(){flag=false;}}guard(preparing_scene);
+  const auto result=actions.prepare_scene();
+  if(result==Work::Waiting)return true;
+  if(result==Work::Failed||!actions.publish_empty_owner()){phase=LoadPhase::Failed;return false;}
+  phase=LoadPhase::Timeline;return true;
+ }
  bool pump(StageActions& actions,u64 now,i32 first_capture_index,u32 supervisor_flags){
+  if(preparing_scene)return true;
   if(phase==LoadPhase::Idle||phase==LoadPhase::Ready)return true;
   if(phase==LoadPhase::Aborted||phase==LoadPhase::Failed)return false;
   if(has_sample&&now<last_sample){phase=LoadPhase::Failed;return false;}
@@ -69,11 +82,8 @@ struct StagedLoader {
     phase=LoadPhase::Scene;
    }
    if(phase==LoadPhase::Scene){
-    const auto result=actions.prepare_scene();
-    if(result==Work::Waiting)return true;
-    if(result==Work::Failed){phase=LoadPhase::Failed;return false;}
-    if(!actions.publish_empty_owner()){phase=LoadPhase::Failed;return false;}
-    phase=LoadPhase::Timeline;
+    if(!poll_scene(actions,now))return false;
+    if(phase==LoadPhase::Scene)return true;
    }
    if(phase==LoadPhase::Timeline){
     const auto result=actions.prepare_timeline();

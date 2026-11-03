@@ -2,6 +2,7 @@
 #include "GraphicsMath.hpp"
 #include "Movement.hpp"
 #include <cmath>
+#include <type_traits>
 namespace th11 {
 Stage::~Stage(){for(auto& vm:object_animations)manager.release_geometry(vm);for(auto& vm:state.script_animations)manager.release_geometry(vm);for(auto& vm:state.effect_animations)manager.release_geometry(vm);}
 bool Stage::initialize(const StageResource& file,i32 number,const SceneCamera& camera,bool start){
@@ -67,6 +68,7 @@ bool Stage::update_objects(
 bool Stage::update(
 #if PORT_TITLE == 14
     const StageObjectVmBoundaryTh14& object_boundary
+    ,const StageCameraWordBoundaryTh14& camera_word_boundary
 #endif
 ){
     if((state.draw_flags&8)||((state.draw_flags&4)&&state.fade_timer.current>=60))return true;
@@ -84,15 +86,23 @@ bool Stage::update(
         if constexpr(kPortTitle!=14)for(auto& vm:state.script_animations)if(vm.update(manager)<0){error="stage standalone animation failed";return false;}
         if(state.frame_effect){const float saved_rate=manager.rate;manager.rate=1;bool ok=true;for(auto& vm:state.effect_animations)if(vm.update(manager)<0)ok=false;manager.rate=saved_rate;if(!ok){error="stage effect animation failed";return false;}}
     }
-    state.frame_effect=0;publish_camera();
+    state.frame_effect=0;if(!publish_camera(
+#if PORT_TITLE == 14
+        camera_word_boundary
+#endif
+    ))return false;
     // Retail 40dae2 publishes the camera before 40daf8 updates all eight VMs.
     // The animation loop also runs while the fade clock is between 30 and 59.
     if constexpr(kPortTitle==14)for(auto& vm:state.script_animations)if(vm.update(manager)<0){error="stage standalone animation failed";return false;}
     if(mesh&&!update_deformation())return false;++state.frame_count;return true;
 }
-void Stage::publish_camera(){
-    if(!active_camera)return;
-    *active_camera=state.camera;
+bool Stage::publish_camera(
+#if PORT_TITLE == 14
+    const StageCameraWordBoundaryTh14& camera_word_boundary
+#endif
+){
+    if(!active_camera)return true;
+    const auto refresh_camera_references=[this](){
 #if PORT_TITLE == 14
     // Retail46f921..46f95c reads world-camera position plus eye_offset.
     manager.reference_positions[0]={(*active_camera).position.x+(*active_camera).eye_offset.x,
@@ -101,7 +111,26 @@ void Stage::publish_camera(){
     manager.reference_positions[0]=active_camera->position;
 #endif
     manager.reference_positions[1]=active_camera->reserved24;
-    manager.camera_delta=active_camera->animation_delta;
+    manager.camera_delta=active_camera->animation_delta;    };
+#if PORT_TITLE == 14
+    static_assert(std::is_trivially_copyable<SceneCamera>::value);
+    static_assert(sizeof(SceneCamera)%sizeof(u32)==0);
+    // Retail40dae7 publishes with REP MOVSD. Only the mapped camera words
+    // are modeled here; two additional native copied words remain opaque.
+    if(camera_word_boundary){
+        refresh_camera_references();
+        if(!camera_word_boundary(*this,0)){error="loading before camera publication";return false;}
+        for(u32 i=0;i<sizeof(SceneCamera)/sizeof(u32);++i){
+            std::memcpy(reinterpret_cast<u8*>(active_camera)+i*sizeof(u32),
+                reinterpret_cast<const u8*>(&state.camera)+i*sizeof(u32),sizeof(u32));
+            refresh_camera_references();
+            if(!camera_word_boundary(*this,i+1)){error="loading during camera publication";return false;}
+        }
+    }else *active_camera=state.camera;
+#else
+    *active_camera=state.camera;
+#endif
+    refresh_camera_references();return true;
 }
 bool Stage::update_deformation(){
     float phase_x=state.phase_x,phase_y=state.phase_y;

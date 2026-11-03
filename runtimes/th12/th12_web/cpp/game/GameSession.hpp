@@ -119,6 +119,7 @@ public:
     // An external scheduler can supply readiness at the real VM call/return.
     AnmManager::VmBoundaryCallbackTh14 stage_load_vm_boundary;
     StageObjectVmBoundaryTh14 stage_load_object_boundary;
+    StageCameraWordBoundaryTh14 stage_load_camera_word_boundary;
     u32 stage_load_host_flags=0;
     void request_host_close(){stage_load_host_flags=(stage_load_host_flags&~0x100u)|0x80u;}
 #endif

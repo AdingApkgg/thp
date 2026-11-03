@@ -231,6 +231,13 @@ bool GameBattle::poll_stage_initialization(u64 now){
     if(error.empty())error="TH14 stage initialization stopped";
     return false;
 }
+bool GameBattle::poll_stage_scene(u64 now){
+    if(!pending_stage)return true;
+    BattleStageActions actions(*this);
+    if(stage_loader.poll_scene(actions,now))return true;
+    if(error.empty())error="TH14 stage scene copy stopped";
+    return false;
+}
 bool GameBattle::retire_stage_owner(){
     // Retail4363ea clears the item pools before retiring the enemy owner.
     // Items must not remain collectible during the incoming worker wait.
@@ -492,6 +499,7 @@ bool GameBattle::update(const std::function<bool()>& sample_input
     ,const std::function<bool()>& before_normal_animation_update
     ,const AnmManager::VmBoundaryCallbackTh14& normal_vm_boundary
     ,const StageObjectVmBoundaryTh14& stage_object_boundary
+    ,const StageCameraWordBoundaryTh14& camera_word_boundary
 #endif
 ) {
     if(!initialized||last_error)return false;
@@ -549,12 +557,12 @@ bool GameBattle::update(const std::function<bool()>& sample_input
     // Equal-priority callbacks insert newest first (456b70/456c10).
     if((!transitioning||transition_started)&&!stage->update(
 #if PORT_TITLE == 14
-        stage_object_boundary
+        stage_object_boundary,pending_stage?camera_word_boundary:StageCameraWordBoundaryTh14{}
 #endif
     )){last_error=-1008;error=stage->error;return false;}
     if(outgoing_stage&&!outgoing_stage->update(
 #if PORT_TITLE == 14
-        stage_object_boundary
+        stage_object_boundary,pending_stage?camera_word_boundary:StageCameraWordBoundaryTh14{}
 #endif
     )){last_error=-1008;error=outgoing_stage->error;return false;}
     camera_position=compositor.play_camera.position;

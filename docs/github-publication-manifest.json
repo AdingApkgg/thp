@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "8c946994f36827bfe1bba6c8eb9b6c7706425f30",
+  "sourceCommit": "02eccdb19b81d10e5a1a1b9fe2eeb70880ee15eb",
   "files": [
     {
       "path": ".gitignore",
@@ -154,9 +154,19 @@
       "sha256": "9ce23efb2f5283ece91730afdee57113e316a79695ca00423031166a49d6d379"
     },
     {
+      "path": "docs/porting/TH14_CAMERA_SOURCE_READ_NOV04.md",
+      "bytes": 1343,
+      "sha256": "9febc221748ea3c2f2571f0cdba618584d32d66d113198ed1319238a6a7baf73"
+    },
+    {
       "path": "docs/porting/TH14_CAMERA_STORE_INTERLEAVING_OCT26.md",
       "bytes": 7452,
       "sha256": "8e2fcf9f4d73bd805111adf67cc173dbcce114c2776e4003316c73f9be6c3936"
+    },
+    {
+      "path": "docs/porting/TH14_CAMERA_WORD_PUBLICATION_NOV04.md",
+      "bytes": 2634,
+      "sha256": "03489054ef13a79160852591fed8cb716f02a4a7f36a7f3e4ee9191458019f74"
     },
     {
       "path": "docs/porting/TH14_CAMERA_WORD_STAGE4_OCT27.md",
@@ -805,8 +815,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 96527,
-      "sha256": "0ebc3943a5783628629b4fb6b6d0396b57f43f4d984a0cec28a02ebc29299a40"
+      "bytes": 97344,
+      "sha256": "5ae4e4fa3700a7bfb4b65074286005051f01ba2ce585619558511a4def3665a3"
     },
     {
       "path": "docs/porting/TH14_REPLAY_ACTIVATION_RESET_NOV04.md",
@@ -1082,6 +1092,11 @@
       "path": "docs/porting/TH14_STAGE_ITEM_RETIREMENT_OCT25.md",
       "bytes": 3048,
       "sha256": "42cea65faf3fff11eaeffc38c06bb77776f09d69f6ceae7bf2c94b932bd2b8b3"
+    },
+    {
+      "path": "docs/porting/TH14_STAGE_OBJECT_FULL_APPLICATION_NOV04.md",
+      "bytes": 1562,
+      "sha256": "a9ab955852faa331748ca7019ede0d95044e847a95cbefecd64cd870043aa7a9"
     },
     {
       "path": "docs/porting/TH14_STAGE_OBJECT_SNAPSHOT_NOV04.md",
@@ -2289,6 +2304,11 @@
       "sha256": "4963e03c2d152bcd56fc4a68e8ce194be8c6925a368e0437909fc991a1f16d34"
     },
     {
+      "path": "docs/porting/th14-camera-source-read-nov04.json",
+      "bytes": 7411,
+      "sha256": "66c193592e1f5d0660520b4744231085c191e5aca9b9c6eed3e463a534dc8ccc"
+    },
+    {
       "path": "docs/porting/th14-camera-store-interleaving-oct26.json",
       "bytes": 3161,
       "sha256": "d9da46c37a38bcd3eca9cb05e20f06169d1e494df814ccf2aac57750a8deaa74"
@@ -2297,6 +2317,11 @@
       "path": "docs/porting/th14-camera-verified.json",
       "bytes": 2395,
       "sha256": "e411c140536fd74987eb1b9d21a94c259d9b48fd8868e8275d63421e13b02f7a"
+    },
+    {
+      "path": "docs/porting/th14-camera-word-publication-nov04.json",
+      "bytes": 246919,
+      "sha256": "030cbf252eeeb9dcf311bcb2d22a2d5221602881bb4d6c00a3ba7d42ef3a8004"
     },
     {
       "path": "docs/porting/th14-camera-word-stage4-summary-oct27.json",
@@ -7089,6 +7114,11 @@
       "sha256": "6213f5620310fd0c47879b4caad09b77ca38408b4f9b028e9fe0b2fdfeb559a1"
     },
     {
+      "path": "docs/porting/th14-stage-object-full-application-nov04.json",
+      "bytes": 299265,
+      "sha256": "5a93bd184b1d297797f931d2c6f06af89528bd9b6c9f292f15116aaf604c853d"
+    },
+    {
       "path": "docs/porting/th14-stage-object-render-observed-oct12.json",
       "bytes": 28046,
       "sha256": "8c7e72ce100641591c94e815d07d4bf3d442657eef001fd99f458e041d91e9a0"
@@ -9450,13 +9480,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "bytes": 68249,
-      "sha256": "a956ac15955c0c434869584c26cf69b9f1daa7de11cde201c18a790a03875420"
+      "bytes": 68703,
+      "sha256": "2b830968d7c64d1bbae8d2cc1bebb65e4b0c3b2d3999116684e8ca4c31e17c7f"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
-      "bytes": 25500,
-      "sha256": "fb0ef158ee310e43f9852837a01df292649d191e5d8bdf4d56a4181ba2801da0"
+      "bytes": 25606,
+      "sha256": "d100dc25f0737ce45621f3770f55210a795d7b943ad4030c7b3f38f1efb71791"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameConfig.cpp",
@@ -9500,13 +9530,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "bytes": 59381,
-      "sha256": "67de2eee0741ea9585a6983a288a52c5c489d307afdc436e2a0ac7def0df0a52"
+      "bytes": 59839,
+      "sha256": "4bdedc45bed7a8c34d9a09de0137faf9fedd53ed9b41cb08fe067e643a885786"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.hpp",
-      "bytes": 5785,
-      "sha256": "d7314edfb8da96e3025a1244c9fb4ebf2838e3bf394e5c7b243ffa0a22e291ad"
+      "bytes": 5851,
+      "sha256": "11502399222ec2c5e05dac7ef0759879108c0d8adcd77b20b137c0a61806f379"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSessionResources.cpp",
@@ -10120,13 +10150,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Stage.cpp",
-      "bytes": 8578,
-      "sha256": "7633a70e4ead11c42206206e55e65eeb3fd210626d50fb83bf82fd14635b1601"
+      "bytes": 9829,
+      "sha256": "308653f37cb85616f6309527e7aa8965025b56ffc15eca66c27c3140f677b65d"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Stage.hpp",
-      "bytes": 4577,
-      "sha256": "6969c121348220fb5ceba36376e751a03c221ee70f126474718e7f8d444d88f5"
+      "bytes": 4818,
+      "sha256": "3a498947073798bbddf11cc3c9669809892a3aed82d26321cb9bc304ac9063b3"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/StageCompletion.cpp",
@@ -10170,8 +10200,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/StagedLoaderPrototype.hpp",
-      "bytes": 3964,
-      "sha256": "8cbff03c51443c53dae7b7345baaf5663e35961283c201495e72cc3a893e6e17"
+      "bytes": 4552,
+      "sha256": "12b4f7c9958f82801c0a313311ddafcb446ae13a8a9ae20f78bd9e017965ffbd"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/TextLayoutTh14.hpp",
@@ -12712,6 +12742,21 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-camera-publication-fixture-nov04.cpp",
       "bytes": 2462,
       "sha256": "bd6bc9514c1e367dc631111f468397ca51c631e1ddadf8af019c4bbb4ee73504"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-camera-word-publication-fixture-nov04.cpp",
+      "bytes": 3837,
+      "sha256": "47400692c823910bfc8f55f9247258a16506e7cf1a349c7e3c1181908b909274"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-camera-word-reference-fixture-nov04.cpp",
+      "bytes": 4070,
+      "sha256": "405939fb3aeb6c5781a0cbff8952dce5d674ec2fdc5f29c20235134a48258ec2"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-camera-word-session-fixture-nov04.cpp",
+      "bytes": 6127,
+      "sha256": "8fd02413c3a01c36fd83613ebe1559e1b5aac79eac266840ab27b6bff670d210"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-campaign-handoff-fixture.cpp",
@@ -17209,6 +17254,21 @@
       "sha256": "631e8daa81762be8e152b615b246c4717ceb01d35e9bce8fbe84a7bfec24071a"
     },
     {
+      "path": "tools/th14-build-camera-word-component-nov04.py",
+      "bytes": 3930,
+      "sha256": "9dfd1c47ea6422a69e0dc1595a3380c7591de742188335974cf692ce7ed66b19"
+    },
+    {
+      "path": "tools/th14-build-camera-word-reference-component-nov04.py",
+      "bytes": 3928,
+      "sha256": "2a1f2ca8b34994ab17e9639c26ba661220937825444bcdd2be67577b66c68edd"
+    },
+    {
+      "path": "tools/th14-build-camera-word-session-nov04.py",
+      "bytes": 3950,
+      "sha256": "16239ec7ec511b3294e07765ee2fe20c1e924551e443c8c7410c6755bc401664"
+    },
+    {
       "path": "tools/th14-build-campaign-observer.py",
       "bytes": 4970,
       "sha256": "8c400204e301ef8a46e0ec5379f0a3c1b6ad14d10b763ee42cdcb3c8be43cd57"
@@ -17534,6 +17594,11 @@
       "sha256": "1c08ca8751ede1717cedc33152f9dc62095bb38b1efa45d38e7ea1ce90f8e572"
     },
     {
+      "path": "tools/th14-camera-publication-copy-native-nov04.py",
+      "bytes": 3338,
+      "sha256": "fba5531b20ccf29673c2fe41fd4ac8b8e857cab9dcdc32c5a0317e5ec68a788b"
+    },
+    {
       "path": "tools/th14-camera-publication-evidence-nov04.py",
       "bytes": 10710,
       "sha256": "f410257802ae3b3c73aa22f4448c87d91f324cbf4236eb235aa32849c7082429"
@@ -17544,9 +17609,19 @@
       "sha256": "af38c616ccee535e55b0fc85929c421dba86b610b38f3b557dc7911a89b20119"
     },
     {
+      "path": "tools/th14-camera-publication-reference-native-nov04.py",
+      "bytes": 3950,
+      "sha256": "e2760c7cf56fc75beb579dcb3b543ec40c3a9147af38317e026fb8b40168451f"
+    },
+    {
       "path": "tools/th14-camera-publication-regressions-nov04.py",
       "bytes": 5727,
       "sha256": "3e7d4fd6867b6b0bd8d82fe46bd94f775f93f6ee8837e36f240dfb645031185d"
+    },
+    {
+      "path": "tools/th14-camera-publication-write-evidence-nov04.py",
+      "bytes": 4576,
+      "sha256": "6bfca336336ea5fb97c2abb23afac52d171ce3784ecb3926e718f915359085a3"
     },
     {
       "path": "tools/th14-camera-right-observable-check-oct26.py",
@@ -17554,9 +17629,34 @@
       "sha256": "81765ecd823d8e041bd71a3d7c52d5e62895b76a596b2887bfde1673e0c6fe2f"
     },
     {
+      "path": "tools/th14-camera-source-read-evidence-nov04.py",
+      "bytes": 4590,
+      "sha256": "e9232be02f836c727aeb9ddc3b422a660360a4b07f828dc23ccba22ff31e9c61"
+    },
+    {
       "path": "tools/th14-camera-store-interleaving-oct26.py",
       "bytes": 12634,
       "sha256": "2311f96e529b27c42fb574b4e9528598d81d898cfb1df993364aef6a0f87c3d3"
+    },
+    {
+      "path": "tools/th14-camera-word-component-check-nov04.mjs",
+      "bytes": 3391,
+      "sha256": "17bf3133df5f87542432e567135224a5fb0f2d7f098858bb1f47b026cb956313"
+    },
+    {
+      "path": "tools/th14-camera-word-publication-evidence-nov04.py",
+      "bytes": 11417,
+      "sha256": "3da8b0b0a2c2d846aa34aa86753985f9b35cb177942d1ae7d4ff20353195f8cf"
+    },
+    {
+      "path": "tools/th14-camera-word-reference-check-nov04.mjs",
+      "bytes": 4338,
+      "sha256": "5774fa3549b1939cdc4b04002335c505025eedb0e04bb394ca62322395aef269"
+    },
+    {
+      "path": "tools/th14-camera-word-session-check-nov04.mjs",
+      "bytes": 29037,
+      "sha256": "ec267816354a5652b91a587bebbea77a43ee0fcf05525047f3dcbf6d5e6c0000"
     },
     {
       "path": "tools/th14-campaign-gap-summary-nov03.py",
@@ -22359,6 +22459,26 @@
       "sha256": "93eb27ab1ffa67b8bdcdc1d9e4349b1fca8df6f0c017e860eaa503475a7c0e97"
     },
     {
+      "path": "tools/th14-prepare-camera-publication-write-observer-nov04.py",
+      "bytes": 3395,
+      "sha256": "f4cb86dd1f352a9f5677c040e4b3850ea249df21e73352fe6284cf63438f33ed"
+    },
+    {
+      "path": "tools/th14-prepare-camera-source-read-observer-nov04.py",
+      "bytes": 7062,
+      "sha256": "7aa0a9890a7cf9513a65d496819fdb825787a6b8ee9d2c380596e802295b4976"
+    },
+    {
+      "path": "tools/th14-prepare-camera-word-publication-nov04.py",
+      "bytes": 8379,
+      "sha256": "19d80db1953b83837b66c289c64b487f2683178d6cefea3bda6621de02244461"
+    },
+    {
+      "path": "tools/th14-prepare-camera-word-references-v2-nov04.py",
+      "bytes": 2644,
+      "sha256": "ed46673f05971b53e518a93014d7f2c051805f6dd5e3e8bc0772dcb2681a5c7d"
+    },
+    {
       "path": "tools/th14-prepare-lossless-music.py",
       "bytes": 3669,
       "sha256": "527f5c3dd3e0ac9bf148d2f8e7752e750306c0441d5f5dbd3771e76867245962"
@@ -24637,6 +24757,11 @@
       "path": "tools/th14-stage-native.py",
       "bytes": 5413,
       "sha256": "a947fb386404702aad6e82bc7661d4e5033f7c35af6220beb2c632845f3d4b6e"
+    },
+    {
+      "path": "tools/th14-stage-object-application-full-evidence-nov04.py",
+      "bytes": 6990,
+      "sha256": "b135f89838112815c4943da80a3dc8f6683b51f812f629b853b8bc2ff177098b"
     },
     {
       "path": "tools/th14-stage-object-native-observations-nov04.py",
@@ -27260,40 +27385,74 @@
     }
   ],
   "latestIncrement": {
-    "verifiedStageObjectSnapshotReadiness": true,
-    "coreWasmSha256": "dfb49af20c890c4f6c909e992af5828b21ecf1101cf1d04e57ee24fa842a9b1a",
+    "verifiedCameraWordPublicationAndLiveReferences": true,
+    "coreWasmSha256": "f4eef7dc05bffe2b9692205bf93e77fc07f400895d36a3aa9c2fcd8eaefc917e",
     "freshCoreObjects": 141,
-    "finiteDefaultCases": 16,
+    "mappedCameraDwords": 73,
+    "nativePublicationDwords": 75,
+    "opaqueTailDwordsNotAccepted": 2,
+    "nativePrefixCases": 76,
+    "nativeAnmReadBlockExecutions": 456,
+    "cppMappedPrefixCases": 74,
+    "referenceFieldsPerPrefix": 6,
+    "candidateReferenceWrongWords": 0,
+    "priorPrivateCandidateReferenceWrongWords": 255,
+    "priorPrivateCandidateRejectedCases": 74,
+    "loaderProtocolCases": 10,
+    "componentPublicationFailureCases": 3,
+    "actualSessionCases": [
+      {
+        "mode": 0,
+        "callback": 14087,
+        "copiedWords": 13,
+        "nextWordConfirmed": true,
+        "loaderPhaseAtBoundary": 5
+      },
+      {
+        "mode": 1,
+        "callback": 14087,
+        "copiedWords": 13,
+        "nextWordConfirmed": false,
+        "loaderPhaseAtBoundary": 4
+      },
+      {
+        "mode": 2,
+        "callback": 14087,
+        "copiedWords": 13,
+        "nextWordConfirmed": false,
+        "loaderPhaseAtBoundary": 8
+      }
+    ],
+    "finiteDefaultRecords": 16,
     "finiteDefaultCallbacks": 1379760,
     "witnessedNormalVmCallbacks": 35000,
     "witnessedVmRows": 1057,
     "witnessedCombatCheckpoints": 393,
-    "sharedTitleSyntaxChecks": 16,
+    "sharedSyntaxChecks": 16,
     "negativeInputControls": 7,
-    "stageBoundaryFailureControls": 2,
-    "separateSnapshotResumeAndFailureControls": 2,
     "applicationFrames": 2289,
     "applicationChecks": 27,
-    "byteIdenticalReferenceImages": 2,
+    "identicalReferenceImages": 2,
     "offlinePcmFrames": 1526784,
     "physicalAudioDevicesOpened": 0,
     "browserCompiledUnits": 146,
-    "browserWasmSha256": "fc998f285621c22777ec137989439549e8a9b8d9592b43ae32ed8fc319386e6b",
+    "browserWasmSha256": "4ab3466af43fb671f097469eec35aa261188814364f94300a0e914bda923358a",
     "browserAcceptance": false,
-    "oldFailureDifferences": {
+    "writeOnlyTraceStrictWholeRunAccepted": false,
+    "writeOnlyTraceControllerSlotGapDisclosed": true,
+    "oldRngFailureDifferences": {
       "21": 4137,
       "22": 283,
       "26": 1
     },
-    "oldFailureClosed": false,
-    "nativeEquivalent": false,
+    "oldRngFailureClosed": false,
+    "oldCameraFailureClosed": false,
+    "originalOldThreadScheduleRecovered": false,
     "completeGame": false,
-    "ordinaryIndependentThreadTimingAccepted": false,
-    "initialReplayStillSynchronous": true,
-    "defaultReadinessImmediate": true,
+    "nativeEquivalent": false,
     "productionIntegrated": true,
-    "basePublishedCommit": "8c946994f36827bfe1bba6c8eb9b6c7706425f30",
-    "title": "TH14 detached Stage VM boundaries and separate replay snapshot readiness",
+    "title": "TH14 word-wise camera publication and live ANM references",
+    "basePublishedCommit": "02eccdb19b81d10e5a1a1b9fe2eeb70880ee15eb",
     "changedSourceAndMetadataFiles": [
       "runtimes/th12/th12_web/cpp/game/Stage.hpp",
       "runtimes/th12/th12_web/cpp/game/Stage.cpp",
@@ -27301,36 +27460,42 @@
       "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
       "runtimes/th12/th12_web/cpp/game/GameSession.hpp",
       "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "runtimes/th12/th12_web/cpp/game/GameSessionResources.hpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-stage-object-boundary-fixture-nov04.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-replay-snapshot-session-fixture-nov04.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-replay-rng-context-observer-fixture-nov04.cpp",
-      "tools/th14-prepare-stage-object-boundaries-nov04.py",
-      "tools/th14-prepare-stage-object-snapshot-readiness-nov04.py",
-      "tools/th14-check-stage-object-syntax-nov04.py",
-      "tools/th14-build-stage-object-boundary-fixture-nov04.py",
-      "tools/th14-check-stage-object-boundary-protocol-nov04.py",
-      "tools/th14-build-replay-snapshot-session-nov04.py",
-      "tools/th14-replay-snapshot-session-check-nov04.mjs",
-      "tools/th14-replay-snapshot-session-failure-check-nov04.mjs",
-      "tools/th14-build-frozen-native-application-nov04.py",
-      "tools/th14-build-frozen-stage-object-browser-nov04.py",
-      "tools/th14-stage-object-snapshot-evidence-nov04.py",
-      "tools/th14-build-replay-rng-order-current-nov04.py",
-      "tools/th14-build-replay-rng-context-current-nov04.py",
-      "tools/th14-current-rng-object-context-evidence-nov04.py",
-      "tools/th14-prepare-replay-rng-stage-object-observer-nov04.py",
-      "tools/th14-stage-object-native-observations-nov04.py",
-      "tools/th14-prepare-replay-rng-completion-stage-observer-nov04.py",
-      "tools/th14-replay-rng-completion-evidence-nov04.py",
-      "docs/porting/TH14_STAGE_OBJECT_SNAPSHOT_NOV04.md",
-      "docs/porting/th14-stage-object-snapshot-nov04.json",
+      "runtimes/th12/th12_web/cpp/game/StagedLoaderPrototype.hpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-camera-word-publication-fixture-nov04.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-camera-word-reference-fixture-nov04.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-camera-word-session-fixture-nov04.cpp",
+      "tools/th14-prepare-camera-word-publication-nov04.py",
+      "tools/th14-prepare-camera-word-references-v2-nov04.py",
+      "tools/th14-camera-publication-copy-native-nov04.py",
+      "tools/th14-camera-publication-reference-native-nov04.py",
+      "tools/th14-build-camera-word-component-nov04.py",
+      "tools/th14-camera-word-component-check-nov04.mjs",
+      "tools/th14-build-camera-word-reference-component-nov04.py",
+      "tools/th14-camera-word-reference-check-nov04.mjs",
+      "tools/th14-build-camera-word-session-nov04.py",
+      "tools/th14-camera-word-session-check-nov04.mjs",
+      "tools/th14-camera-word-publication-evidence-nov04.py",
+      "tools/th14-stage-object-application-full-evidence-nov04.py",
+      "tools/th14-prepare-camera-publication-write-observer-nov04.py",
+      "tools/th14-camera-publication-write-evidence-nov04.py",
+      "tools/th14-prepare-camera-source-read-observer-nov04.py",
+      "tools/th14-camera-source-read-evidence-nov04.py",
+      "docs/porting/TH14_CAMERA_WORD_PUBLICATION_NOV04.md",
+      "docs/porting/th14-camera-word-publication-nov04.json",
+      "docs/porting/TH14_STAGE_OBJECT_FULL_APPLICATION_NOV04.md",
+      "docs/porting/th14-stage-object-full-application-nov04.json",
+      "docs/porting/TH14_CAMERA_SOURCE_READ_NOV04.md",
+      "docs/porting/th14-camera-source-read-nov04.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
     "productionGameplayCoreChanged": true,
-    "gameplayCorePublicationPending": true
+    "gameplayCorePublicationPending": true,
+    "additionalSourceReadStrictCallbacks": 18000,
+    "historicalFullApplicationSourceCommit": "02eccdb19b81d10e5a1a1b9fe2eeb70880ee15eb",
+    "historicalFullApplicationFramesPerBackend": 122622,
+    "historicalFullApplicationDoesNotAcceptThisNewCore": true
   }
 }

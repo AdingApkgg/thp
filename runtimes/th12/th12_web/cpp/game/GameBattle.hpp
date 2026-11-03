@@ -154,6 +154,7 @@ public:
     bool next_stage(GameResources&,u32,std::function<bool()>,std::function<prototype::Work()>);
     bool pump_stage_loading(u64 now,i32 first_capture_index,u32 supervisor_flags);
     bool poll_stage_initialization(u64 now);
+    bool poll_stage_scene(u64 now);
     bool retire_stage_owner();
     bool initialize_stage_work();
     prototype::Work advance_stage_work();
@@ -170,6 +171,7 @@ public:
         ,const std::function<bool()>& before_normal_animation_update={}
         ,const AnmManager::VmBoundaryCallbackTh14& normal_vm_boundary={}
         ,const StageObjectVmBoundaryTh14& stage_object_boundary={}
+        ,const StageCameraWordBoundaryTh14& camera_word_boundary={}
 #endif
     );
     bool draw(AnmRenderer&,SceneDrawKind

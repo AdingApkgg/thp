@@ -61,6 +61,7 @@ u32 stage_interrupt_calls();
 u32 stage_interrupt_failures();
 #if PORT_TITLE == 14
 class Stage;
+using StageCameraWordBoundaryTh14=std::function<bool(const Stage&,u32)>;
 using StageObjectVmBoundaryTh14=std::function<bool(const Stage&,const AnmVm&,u32,u32,u32,AnmManager::VmBoundaryTh14)>;
 #endif
 class Stage final:public StageScriptWorld {
@@ -85,6 +86,7 @@ public:
     bool update(
 #if PORT_TITLE == 14
         const StageObjectVmBoundaryTh14& object_boundary={}
+        ,const StageCameraWordBoundaryTh14& camera_word_boundary={}
 #endif
     );
     bool update_objects(
@@ -92,7 +94,11 @@ public:
         const StageObjectVmBoundaryTh14& object_boundary={}
 #endif
     );
-    void publish_camera();
+    bool publish_camera(
+#if PORT_TITLE == 14
+        const StageCameraWordBoundaryTh14& camera_word_boundary={}
+#endif
+    );
     bool draw_layer(AnmRenderer&,SceneCamera&,u32);
     bool draw_background(AnmRenderer&,SceneCamera&,ScreenFades&
 #if PORT_TITLE == 14
