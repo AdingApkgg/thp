@@ -148,11 +148,15 @@ public:
     LoadingTh14 stage_loading;
     GameResources* next_stage_source=nullptr;
     std::function<bool()> next_stage_initializer;
+    std::function<prototype::Work()> next_stage_initializer_step;
+    bool stage_initialization_started=false,stage_initialization_finished=false;
     bool next_stage(GameResources&,u32,std::function<bool()>);
+    bool next_stage(GameResources&,u32,std::function<bool()>,std::function<prototype::Work()>);
     bool pump_stage_loading(u64 now,i32 first_capture_index,u32 supervisor_flags);
     bool poll_stage_initialization(u64 now);
     bool retire_stage_owner();
     bool initialize_stage_work();
+    prototype::Work advance_stage_work();
     prototype::Work prepare_stage_hud();
     prototype::Work prepare_stage_scene();
     bool publish_stage_owner();

@@ -108,6 +108,9 @@ struct ReplayStageState {
     bool scalars=replay_state_scalars;
     void read(const u8* header);
     void restore(GameEconomy&,Rng&,bool first,Rng* visual=nullptr)const;
+#if PORT_TITLE == 14
+    void restore_economy_th14(GameEconomy&)const;
+#endif
     void restore_position(PlayerMotionState&)const;
 };
 // TH11 1.00a t11r v4. Entries are six bytes PER TICK, not timestamped

@@ -5,6 +5,7 @@
 #include "ClockSeedTh14.hpp"
 #if PORT_TITLE == 14
 #include "ReplayTextTh14.hpp"
+#include "ReplayRngRestoreTh14.hpp"
 #endif
 
 namespace th11 {
@@ -357,18 +358,22 @@ bool GameSession::update(const GameSessionInput& input) {
             if(!playback.stage(next)){state.phase=GameSessionPhase::finished;return true;}
             battle->replay_entry.read(playback.header(next));
         }
-        auto initialize=[this](){
+        auto initialize=[this,restore=ReplayRngRestoreJobTh14{}]()mutable->prototype::Work {
             auto& rng=animations.visual_rng;
-            if(!state.replay){recording_seed=rng.seed;rng.calls=0;animations.script_rng.seed=u16(recording_seed);}
-            else{
-                battle->replay_entry.restore(economy,rng,false,&animations.script_rng);
+            const auto ready=[this](ReplayRngRestorePointTh14 point){return resources.effects?resources.effects->stage_rng_store_readiness(point):ReplayRngRestoreResultTh14::Ready;};
+            const auto progress=state.replay?restore.playback(rng,&animations.script_rng,battle->replay_entry.seed,false,ready):
+                restore.record(rng,animations.script_rng,recording_seed,ready);
+            if(progress==ReplayRngRestoreResultTh14::Waiting)return prototype::Work::Waiting;
+            if(progress==ReplayRngRestoreResultTh14::Failed){error="TH14 stage RNG restore failed";return prototype::Work::Failed;}
+            if(state.replay){
+                battle->replay_entry.restore_economy_th14(economy);
                 battle->enemy_environment.spell_practice_id=battle->replay_entry.th14_practice_mode;
                 battle->hud.score.continues=battle->replay_entry.continues;
                 battle->player->state.minimum_point_value=signed_bits(battle->replay_entry.th14_globals[10]);
             }
-            return true;
+            return prototype::Work::Ready;
         };
-        if(!source||!battle->next_stage(*source,next,std::move(initialize))){error="stage transition failed: "+battle->error;return false;}
+        if(!source||!battle->next_stage(*source,next,{},std::move(initialize))){error="stage transition failed: "+battle->error;return false;}
         state.stage=next;state.frame=0;
     }
 #endif
@@ -677,18 +682,22 @@ bool GameSession::update(const GameSessionInput& input) {
                 if(!playback.stage(next)){state.phase=GameSessionPhase::finished;return true;}
                 battle->replay_entry.read(playback.header(next));
             }
-            auto initialize=[this](){
+            auto initialize=[this,restore=ReplayRngRestoreJobTh14{}]()mutable->prototype::Work {
                 auto& rng=animations.visual_rng;
-                if(!state.replay){recording_seed=rng.seed;rng.calls=0;animations.script_rng.seed=u16(recording_seed);}
-                else{
-                    battle->replay_entry.restore(economy,rng,false,&animations.script_rng);
+                const auto ready=[this](ReplayRngRestorePointTh14 point){return resources.effects?resources.effects->stage_rng_store_readiness(point):ReplayRngRestoreResultTh14::Ready;};
+                const auto progress=state.replay?restore.playback(rng,&animations.script_rng,battle->replay_entry.seed,false,ready):
+                    restore.record(rng,animations.script_rng,recording_seed,ready);
+                if(progress==ReplayRngRestoreResultTh14::Waiting)return prototype::Work::Waiting;
+                if(progress==ReplayRngRestoreResultTh14::Failed){error="TH14 stage RNG restore failed";return prototype::Work::Failed;}
+                if(state.replay){
+                    battle->replay_entry.restore_economy_th14(economy);
                     battle->enemy_environment.spell_practice_id=battle->replay_entry.th14_practice_mode;
                     battle->hud.score.continues=battle->replay_entry.continues;
                     battle->player->state.minimum_point_value=signed_bits(battle->replay_entry.th14_globals[10]);
                 }
-                return true;
+                return prototype::Work::Ready;
             };
-            if(!source||!battle->next_stage(*source,next,std::move(initialize))){error="stage transition failed: "+battle->error;return false;}
+            if(!source||!battle->next_stage(*source,next,{},std::move(initialize))){error="stage transition failed: "+battle->error;return false;}
             state.stage=next;state.frame=0;
             if(!battle->pump_stage_loading(stage_load_clock(),animations.first_deferred_capture_file_index(),stage_load_host_flags))return fail(battle->error.c_str());
 #else

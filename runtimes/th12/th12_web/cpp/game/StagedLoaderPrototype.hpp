@@ -2,13 +2,14 @@
 #include "Types.hpp"
 namespace th11::prototype {
 enum class Work:u32{Waiting,Ready,Failed};
-enum class LoadPhase:u32{Idle,WaitCapture,WaitMinimum,Hud,Scene,Timeline,Ready,Aborted,Failed};
+enum class LoadPhase:u32{Idle,WaitCapture,WaitMinimum,Hud,Scene,Timeline,Ready,Aborted,Failed,Initialize};
 struct StageActions {
  virtual ~StageActions()=default;
  virtual bool retire_owner()=0;
  virtual bool begin_worker_wait(bool){return true;}
  virtual bool worker_wait_ready()const{return true;}
  virtual bool enter_work_and_initialize()=0;
+ virtual Work advance_work_and_initialize(){return enter_work_and_initialize()?Work::Ready:Work::Failed;}
  virtual Work prepare_hud()=0;
  virtual Work prepare_scene()=0;
  virtual bool publish_empty_owner()=0;
@@ -17,23 +18,28 @@ struct StageActions {
 struct StagedLoader {
  LoadPhase phase=LoadPhase::Idle;
  u64 deadline=0,last_sample=0;
- bool initial_stage=false,has_sample=false;
+ bool initial_stage=false,has_sample=false,initializing=false;
  bool request(StageActions& actions,bool initial=false){
   if(phase!=LoadPhase::Idle&&phase!=LoadPhase::Ready)return false;
   if(!actions.retire_owner()){phase=LoadPhase::Failed;return false;}
-  initial_stage=initial;has_sample=false;deadline=0;phase=LoadPhase::WaitCapture;return true;
+  initial_stage=initial;has_sample=false;initializing=false;deadline=0;phase=LoadPhase::WaitCapture;return true;
  }
  // Initialization may complete while the main thread owns an active VM.
  // Do not replace ANM resources or create stage owners at that boundary.
  bool poll_initialization(StageActions& actions,u64 now){
   if(phase==LoadPhase::Aborted||phase==LoadPhase::Failed)return false;
-  if(phase!=LoadPhase::WaitMinimum)return true;
+  if(initializing)return true;
+  if(phase!=LoadPhase::WaitMinimum&&phase!=LoadPhase::Initialize)return true;
   if(has_sample&&now<last_sample){phase=LoadPhase::Failed;return false;}
   has_sample=true;last_sample=now;
-  if(now<deadline||!actions.worker_wait_ready())return true;
-  // A nested animation creation must observe initialization at most once.
-  phase=LoadPhase::Hud;
-  if(!actions.enter_work_and_initialize()){phase=LoadPhase::Failed;return false;}
+  if(phase==LoadPhase::WaitMinimum){
+   if(now<deadline||!actions.worker_wait_ready())return true;
+   phase=LoadPhase::Initialize;
+  }
+  struct Guard {bool& flag;Guard(bool& v):flag(v){flag=true;}~Guard(){flag=false;}} guard(initializing);
+  const auto result=actions.advance_work_and_initialize();
+  if(result==Work::Failed){phase=LoadPhase::Failed;return false;}
+  if(result==Work::Ready)phase=LoadPhase::Hud;
   return true;
  }
  bool pump(StageActions& actions,u64 now,i32 first_capture_index,u32 supervisor_flags){
@@ -52,9 +58,9 @@ struct StagedLoader {
     if(!actions.begin_worker_wait(initial_stage)){phase=LoadPhase::Failed;return false;}
     deadline=now+minimum;phase=LoadPhase::WaitMinimum;
    }
-   if(phase==LoadPhase::WaitMinimum){
+   if(phase==LoadPhase::WaitMinimum||phase==LoadPhase::Initialize){
     if(!poll_initialization(actions,now))return false;
-    if(phase==LoadPhase::WaitMinimum)return true;
+    if(phase==LoadPhase::WaitMinimum||phase==LoadPhase::Initialize)return true;
    }
    if(phase==LoadPhase::Hud){
     const auto result=actions.prepare_hud();

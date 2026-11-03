@@ -21,6 +21,7 @@ SHA = lambda raw: hashlib.sha256(raw).hexdigest()
 OVERLAYS = ['th12_web/cpp/sdl/Application.cpp','th12_web/cpp/sdl/StageDecodeTh14.hpp','th12_web/cpp/sdl/StageWorkerWaitTh14.hpp',
             'th12_web/cpp/game/GameBattle.cpp','th12_web/cpp/game/GameBattle.hpp','th12_web/cpp/game/GameResources.cpp',
             'th12_web/cpp/game/Stage.hpp','th12_web/cpp/game/StageDraw.cpp',
+            'th12_web/cpp/game/ReplayRngRestoreTh14.hpp','th12_web/cpp/game/StagedLoaderPrototype.hpp',
             'th12_web/cpp/game/AnmManager.cpp','th12_web/cpp/game/AnmManager.hpp',
             'th12_web/cpp/game/GameSession.cpp','th12_web/cpp/game/GameSessionResources.cpp','th12_web/cpp/game/GameSessionResources.hpp',
             'th12_web/cpp/game/Replay.cpp','th12_web/cpp/game/Replay.hpp','th12_web/cpp/game/ReplayCadenceTh14.hpp','th12_web/cpp/game/ReplayTextTh14.hpp','th12_web/cpp/game/AnmTransferTh14.hpp',

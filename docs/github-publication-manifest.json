@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "90402e3b07d776aa73a752e5a759346ac327028f",
+  "sourceCommit": "2b0bc1c67ddeb57aa7ce2208f08cbf08ffc8bdda",
   "files": [
     {
       "path": ".gitignore",
@@ -795,8 +795,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 91857,
-      "sha256": "59edcc049200307c92324ec76c4dd4a2503e1d95be1b6974cd4313d24536e14c"
+      "bytes": 92645,
+      "sha256": "ac1ad9b984e9c033c18cab7803bfbdc6e31dcc8eb036fcf1bc02d73017c56cc0"
     },
     {
       "path": "docs/porting/TH14_REPLAY_ACTIVATION_RESET_NOV04.md",
@@ -847,6 +847,11 @@
       "path": "docs/porting/TH14_REPLAY_MANAGER_STARTUP_OCT30.md",
       "bytes": 2378,
       "sha256": "f183b2b17e802ad4d3f1ee50eb65164b11e9b3a7b9eef5fa77a89d3ae838d4e9"
+    },
+    {
+      "path": "docs/porting/TH14_REPLAY_RNG_STEP_NOV04.md",
+      "bytes": 4984,
+      "sha256": "177dcfb265d87710127e0809a4e02805dece67c78bc2a540a0e43bf4b00491e8"
     },
     {
       "path": "docs/porting/TH14_REPLAY_TERMINAL_OCT28.md",
@@ -6089,6 +6094,11 @@
       "sha256": "5aa4a52e53e80e5ab413ac1a0be0243ae5d18d7b09aa8a15e71723dc9a3c968c"
     },
     {
+      "path": "docs/porting/th14-replay-rng-step-nov04.json",
+      "bytes": 13953,
+      "sha256": "c27cdb5615f52de13fffe8c5d4b17f2a9b1e07605d1cdb0db82a539090e17a13"
+    },
+    {
       "path": "docs/porting/th14-replay-start-verified.json",
       "bytes": 1863,
       "sha256": "73ea211c111981dc7a84fe12c82d600bf9d447c047a47e8963d95a94ef1ccbad"
@@ -9385,13 +9395,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "bytes": 66040,
-      "sha256": "ac1247a661c1392080dc591018a87ed9a2c13823671a3632134713162bea9285"
+      "bytes": 67023,
+      "sha256": "0b0c10e1088cdcb9d62263b671b3d96db07b6a5a2962dfb5402b2c496fcb2960"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
-      "bytes": 25069,
-      "sha256": "08273e338d501a4973a07f7c79011f97ab6152938bff2ea8a06cb7bda0dcf1ce"
+      "bytes": 25358,
+      "sha256": "5860b3ac5bcd8541122ba39faa610be43b1de8ac3ae7ddf37dd4b63490ad2ca3"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameConfig.cpp",
@@ -9435,8 +9445,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "bytes": 56729,
-      "sha256": "b2f8b9468765f4e002b69394fc7ebc2904c7c1fd84beb6093c930fd0aa7eaa2f"
+      "bytes": 57940,
+      "sha256": "26b092a5fcb2190723e4584110696af5ffde702ee436075b88ace96eadba3f9c"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.hpp",
@@ -9450,8 +9460,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSessionResources.hpp",
-      "bytes": 5716,
-      "sha256": "3b97cd26368431e710cccfdfbd016b9d2ca1b40ff25b52745a534f4c75c90985"
+      "bytes": 5920,
+      "sha256": "e484bb7a142e65e65445b2a5e7d3427f49ca1c4c9908af225cb091531465fa60"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GlyphAtlas.cpp",
@@ -9765,13 +9775,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Replay.cpp",
-      "bytes": 15206,
-      "sha256": "eca372741e179bd69f2723754472411f8844a28718e56e71ad8addc11d5b6178"
+      "bytes": 15389,
+      "sha256": "2dc600710fcd1bf45ee4db8cbfcb3bb225a80dcb00bf9dcec0a9d77568c4c66a"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Replay.hpp",
-      "bytes": 9324,
-      "sha256": "1868fe2c72c6206885df978b8f2395670b5aa0cbad3d2021ff4bc808dca7ba29"
+      "bytes": 9402,
+      "sha256": "b21aa12bda3486f7b4a5513fd343ad5edba09568626ca7e1ca563412968ba5cc"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ReplayCadenceTh14.hpp",
@@ -9792,6 +9802,11 @@
       "path": "runtimes/th12/th12_web/cpp/game/ReplayRecorder.hpp",
       "bytes": 899,
       "sha256": "1ba401416c12d04a6f2c94801c0f6d76c366f5da4d3d6719df1e9f137ba142fb"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/ReplayRngRestoreTh14.hpp",
+      "bytes": 4868,
+      "sha256": "091a1bccd45abcb7afba610fbc973166a82ddc90f7eaf795f389c3224e72849a"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ReplayTextTh14.hpp",
@@ -10100,8 +10115,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/StagedLoaderPrototype.hpp",
-      "bytes": 3512,
-      "sha256": "4c71317b4abea54c04930be39500661bcc55df1f89408e2154e42db084f63cad"
+      "bytes": 3964,
+      "sha256": "8cbff03c51443c53dae7b7345baaf5663e35961283c201495e72cc3a893e6e17"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/TextLayoutTh14.hpp",
@@ -13719,6 +13734,21 @@
       "sha256": "d4386ea20773269b0a4449ec1f7d9da5397da7d139bff8bcc7ea76e6b3adefd1"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-replay-rng-job-fixture-nov04.cpp",
+      "bytes": 6839,
+      "sha256": "9b72b100d3c6f66d84f564f672410ca8cfd3b9107cf892d08e30329724e41b3e"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-replay-rng-restore-fixture-nov04.cpp",
+      "bytes": 2719,
+      "sha256": "d9ea073863eeb88faf53cc2aa88ca47c7a9a2888159313fb2b10833d908b62dc"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-replay-rng-step-session-fixture-nov04.cpp",
+      "bytes": 6355,
+      "sha256": "0f327aa472553ca66a09af0504e22a2dec40e8ecde6c75bf04b7688a5a660eff"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-replay-session-fixture.cpp",
       "bytes": 1413,
       "sha256": "b8bafe56bfc5eb4770b12c034d7fb2ba83ede223443985502ca56a78d9a9da35"
@@ -17140,8 +17170,8 @@
     },
     {
       "path": "tools/th14-build-webgpu-reuse-worker-nov03.py",
-      "bytes": 14842,
-      "sha256": "22a3cc8881d3b82da84459fe6f5a876f8b9032f38bc9fe0f868a6c4ebc7ed039"
+      "bytes": 14947,
+      "sha256": "0307ed862ae21b816d48d6668f35fe0b429f6b6af6f752c3ba0fbe189d9c7fc0"
     },
     {
       "path": "tools/th14-bullet-acceleration-check.mjs",
@@ -22144,6 +22174,16 @@
       "sha256": "8ed5e6c41b6f06e6c95786c5f2d123bb346abd2a404849d6963be0b73867505a"
     },
     {
+      "path": "tools/th14-prepare-replay-rng-restore-nov04.py",
+      "bytes": 3200,
+      "sha256": "e52c0c91b4efcc8e55c5d1803fc664a67eaea678f38adca6a024fbc27f897c94"
+    },
+    {
+      "path": "tools/th14-prepare-replay-rng-step-loader-nov04.py",
+      "bytes": 11588,
+      "sha256": "58145445ab821fdb50d011afb2759cafadc3ba9dbe10490137ef015953eca7cd"
+    },
+    {
       "path": "tools/th14-prepare-scene-context-observer-oct30.py",
       "bytes": 3694,
       "sha256": "a959ee4355c6cca93801012cb84a067e77496087b3066057fc7075819a6ee5de"
@@ -22582,6 +22622,36 @@
       "path": "tools/th14-replay-rate-terminal-oct28.py",
       "bytes": 10540,
       "sha256": "53be4a0f7589669e7ff7be37bf5856950e4024a1ea8db0ac45313909c2eae3a8"
+    },
+    {
+      "path": "tools/th14-replay-rng-restore-check-nov04.mjs",
+      "bytes": 7058,
+      "sha256": "b3162ddcb65dca5d0fa939e83158c5d44337554ff077266b970e5d0ac26b76e0"
+    },
+    {
+      "path": "tools/th14-replay-rng-restore-native-nov04.py",
+      "bytes": 6137,
+      "sha256": "0d16e20a8156deb92f6793d2cc511d738ce86bd4e3f78f585e11ffc137d56f4c"
+    },
+    {
+      "path": "tools/th14-replay-rng-step-check-nov04.mjs",
+      "bytes": 8005,
+      "sha256": "09c046342bf872ed18dafe60b19cc632496fb605b9837aeddcd73181cabda111"
+    },
+    {
+      "path": "tools/th14-replay-rng-step-evidence-nov04.py",
+      "bytes": 11457,
+      "sha256": "863588bf357e4e15368bc29c7353685dba2a52b6a14268ab81c6bd8b32424cf6"
+    },
+    {
+      "path": "tools/th14-replay-rng-step-session-check-nov04.mjs",
+      "bytes": 28668,
+      "sha256": "dab61efb2805870b8283dc986703cbb45710bd19818753e1bce091f7300afe3c"
+    },
+    {
+      "path": "tools/th14-replay-rng-step-session-failure-check-nov04.mjs",
+      "bytes": 28565,
+      "sha256": "cf7d54d781800d914809743359554641fae683976da2030405eba5af07fe94d1"
     },
     {
       "path": "tools/th14-replay-session-check.mjs",
@@ -26865,44 +26935,56 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "90402e3b07d776aa73a752e5a759346ac327028f",
-    "title": "TH14 loader delivery after draw camera publication",
+    "basePublishedCommit": "2b0bc1c67ddeb57aa7ce2208f08cbf08ffc8bdda",
+    "title": "TH14 resumable replay RNG stores through the production loader",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/Stage.hpp",
-      "runtimes/th12/th12_web/cpp/game/StageDraw.cpp",
+      "runtimes/th12/th12_web/cpp/game/Replay.cpp",
+      "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
+      "runtimes/th12/th12_web/cpp/game/ReplayRngRestoreTh14.hpp",
+      "runtimes/th12/th12_web/cpp/game/Replay.hpp",
+      "runtimes/th12/th12_web/cpp/game/GameSessionResources.hpp",
+      "runtimes/th12/th12_web/cpp/game/StagedLoaderPrototype.hpp",
       "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
       "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-camera-publication-fixture-nov04.cpp",
-      "tools/th14-prepare-camera-publication-candidate-nov04.py",
-      "tools/th14-build-camera-publication-candidate-nov04.py",
-      "tools/th14-camera-publication-native-nov04.py",
-      "tools/th14-camera-publication-check-nov04.mjs",
-      "tools/th14-camera-publication-regressions-nov04.py",
-      "tools/th14-integrate-camera-publication-nov04.py",
-      "tools/th14-camera-publication-evidence-nov04.py",
+      "runtimes/th12/th12_web/tests/cpp/th14-replay-rng-restore-fixture-nov04.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-replay-rng-job-fixture-nov04.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-replay-rng-step-session-fixture-nov04.cpp",
+      "tools/th14-replay-rng-restore-native-nov04.py",
+      "tools/th14-replay-rng-restore-check-nov04.mjs",
+      "tools/th14-replay-rng-step-check-nov04.mjs",
+      "tools/th14-replay-rng-step-session-check-nov04.mjs",
+      "tools/th14-replay-rng-step-session-failure-check-nov04.mjs",
+      "tools/th14-prepare-replay-rng-restore-nov04.py",
+      "tools/th14-prepare-replay-rng-step-loader-nov04.py",
+      "tools/th14-replay-rng-step-evidence-nov04.py",
       "tools/th14-build-webgpu-reuse-worker-nov03.py",
-      "docs/porting/TH14_CAMERA_PUBLICATION_NOV04.md",
-      "docs/porting/th14-camera-publication-nov04.json",
+      "docs/porting/TH14_REPLAY_RNG_STEP_NOV04.md",
+      "docs/porting/th14-replay-rng-step-nov04.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
+    "gameAssetsAdded": false,
     "productionGameplayCoreChanged": true,
-    "changedGameplayFiles": 5,
+    "changedGameplayFiles": 8,
     "coreObjectsRecompiled": 141,
     "browserUnitsCompiled": 146,
-    "controlledOriginalInstructionCases": 50,
-    "controlledWasmCases": 200,
-    "syntheticCameraInterleavingProbe": true,
-    "priorControlledCopiedRightDifferences": 72,
-    "candidateControlledCopiedRightDifferences": 0,
+    "nativeInstructionCases": 15840,
+    "cppDefaultRestoreCases": 15840,
+    "resumableJobCases": 15840,
+    "productionLoaderJobCases": 15840,
+    "priorFinalRngDifferences": 2880,
+    "candidateFinalRngDifferences": 0,
+    "readinessProtocolControls": 6,
+    "controlledSessionCallbacks": 14303,
+    "controlledSessionFailureCallback": 14106,
     "applicationFrames": 2289,
     "applicationChecks": 27,
     "regressionCallbacks": 199917,
     "regressionCases": 3,
-    "oldCameraOrRngFailuresClosed": false,
-    "copyWordInterleavingsImplemented": false,
+    "initialReplayConstructionStillSynchronous": true,
+    "defaultBrowserBackendAllStoresReady": true,
+    "oldRngOrBulletFailuresClosed": false,
     "browserAcceptance": false,
     "completeGame": false,
     "nativeEquivalent": false

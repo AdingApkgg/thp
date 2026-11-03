@@ -184,6 +184,7 @@ struct BattleStageActions final:prototype::StageActions {
     bool begin_worker_wait(bool initial)override{return !battle.resources.effects||battle.resources.effects->begin_stage_worker_wait(initial);}
     bool worker_wait_ready()const override{return !battle.resources.effects||battle.resources.effects->stage_worker_wait_ready();}
     bool enter_work_and_initialize()override{return battle.initialize_stage_work();}
+    prototype::Work advance_work_and_initialize()override{return battle.advance_stage_work();}
     prototype::Work prepare_hud()override{return battle.prepare_stage_hud();}
     prototype::Work prepare_scene()override{return battle.prepare_stage_scene();}
     bool publish_empty_owner()override{return battle.publish_stage_owner();}
@@ -195,8 +196,12 @@ prototype::Work phase_work(GameSessionResources::PhaseResult result){
 }
 }
 bool GameBattle::next_stage(GameResources& source,u32 number,std::function<bool()> initialize){
+    return next_stage(source,number,std::move(initialize),{});
+}
+bool GameBattle::next_stage(GameResources& source,u32 number,std::function<bool()> initialize,std::function<prototype::Work()> initialize_step){
     if(transitioning||pending_stage||number<2||number>6)return false;
     pending_stage=number;next_stage_source=&source;next_stage_initializer=std::move(initialize);
+    next_stage_initializer_step=std::move(initialize_step);stage_initialization_started=stage_initialization_finished=false;
     BattleStageActions actions(*this);
     if(!stage_loader.request(actions,false)){error="TH14 staged owner retirement failed";return false;}
     if(!resources.begin_stage_loading(number)){error=resources.error;return false;}
@@ -247,10 +252,18 @@ bool GameBattle::retire_stage_owner(){
     if(dialogue)dialogue->clear();dialogue.reset();
     return true;
 }
-bool GameBattle::initialize_stage_work(){
-    if(!compositor.stage_start()){error="TH14 worker copy0 reset failed";return false;}
-    if(next_stage_initializer&&!next_stage_initializer())return false;
-    next_stage_initializer={};
+bool GameBattle::initialize_stage_work(){return advance_stage_work()==prototype::Work::Ready;}
+prototype::Work GameBattle::advance_stage_work(){
+    if(stage_initialization_finished)return prototype::Work::Ready;
+    if(!stage_initialization_started){
+        if(!compositor.stage_start()){error="TH14 worker copy0 reset failed";return prototype::Work::Failed;}
+        stage_initialization_started=true;
+    }
+    if(next_stage_initializer_step){
+        const auto result=next_stage_initializer_step();
+        if(result!=prototype::Work::Ready)return result;
+    }else if(next_stage_initializer&&!next_stage_initializer())return prototype::Work::Failed;
+    next_stage_initializer={};next_stage_initializer_step={};
     if(dialogue)dialogue->clear();dialogue.reset();
     animations.retire_resource(resources.core.enemy);
     if(auto* old=resources.stage.get()){
@@ -266,7 +279,7 @@ bool GameBattle::initialize_stage_work(){
     enemy_commands.stage_section=0;enemy_commands.section_frame=0;
     for(auto& value:enemy_environment.shared_integers)value=0;
     shakes.effects.clear();shakes.offset={};items.reset();animations.rate=enemy_environment.rate=1;
-    economy.communication=0;communication.reset(&animations.rate);return true;
+    economy.communication=0;communication.reset(&animations.rate);stage_initialization_finished=true;return prototype::Work::Ready;
 }
 prototype::Work GameBattle::prepare_stage_hud(){
     const auto result=resources.advance_stage_phase(*next_stage_source,StageResourceEffects::Phase::Hud,u32(enemy_environment.character*2+enemy_environment.subtype));

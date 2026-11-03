@@ -3,6 +3,9 @@
 #include "GameResources.hpp"
 #include <memory>
 
+#if PORT_TITLE == 14
+#include "ReplayRngRestoreTh14.hpp"
+#endif
 namespace th11 {
 #if PORT_TITLE == 14
 class AnmManager;
@@ -68,6 +71,7 @@ struct StageResourceEffects {
 #if PORT_TITLE == 14
     enum class Phase:u32 {Hud,Scene,Timeline};
     enum class DecodeResult:u32 {Waiting,Ready,Failed};
+    virtual ReplayRngRestoreResultTh14 stage_rng_store_readiness(ReplayRngRestorePointTh14)const{return ReplayRngRestoreResultTh14::Ready;}
     virtual DecodeResult decode_stage_phase(GameResources&,StageResources&,Phase,u32);
     // CPU work can already hold this owner before the first GPU request.
     virtual void cancel_stage_decode(StageResources&){}

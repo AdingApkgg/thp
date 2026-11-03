@@ -5,6 +5,9 @@
 #include "Lzss.hpp"
 #include "GameEconomy.hpp"
 #include "Rng.hpp"
+#if PORT_TITLE == 14
+#include "ReplayRngRestoreTh14.hpp"
+#endif
 #include "PlayerMotion.hpp"
 #include <algorithm>
 #include <cmath>
@@ -43,20 +46,14 @@ void ReplayStageState::read(const u8* p){
     for(u32 i=0;i<20;++i)spell_times[i]=dword(p+60+i*4);
 }
 void ReplayStageState::restore(GameEconomy& e,Rng& rng,bool first,Rng* visual)const{
-    rng.seed=u16(seed);rng.calls=0;
 #if PORT_TITLE == 14
+    th14_restore_replay_rng(rng,visual,seed,first);
     // Initial ordinary/attract creation restores only gameplay RNG at
     // 454a41..454a47. Existing-controller stage entry restores both seeds at
     // 45610b..456129. Both paths reset only the gameplay call counter.
-    if(visual&&!first)visual->seed=u16(seed);
-    (void)first;const auto value=[&](u32 n){return signed_bits(th14_globals[n]);};
-    e.score_units=score;e.power=power;e.point_value=points;e.graze=graze;e.rank=rank;e.difficulty=value(3);
-    e.th14_point_items=value(8);e.max_point_value=value(11);e.max_power=value(13);e.power_step=value(14);
-    e.lives=lives;e.life_fragments=fragments;e.th14_life_awards=extends;
-    e.th14_bombs=value(18);e.th14_bomb_fragments=value(19);e.th14_reserved_54=value(21);e.th14_special_drop_count=value(27);
-    e.th14_combo.total=value(20);e.th14_combo.count=value(22);e.th14_combo.timer=value(23);
-    std::memcpy(&e.th14_combo.position,th14_globals.data()+24,12);return;
+    restore_economy_th14(e);return;
 #endif
+    rng.seed=u16(seed);rng.calls=0;
     (void)visual;
     // The title's own restore writes the entry pair and the float copy of it; the economy it
     // leaves as the stage start built it (th13.exe 0x047850..0x0478bd).
@@ -66,6 +63,17 @@ void ReplayStageState::restore(GameEconomy& e,Rng& rng,bool first,Rng* visual)co
     // 436f30 deliberately retains the live fragment and graze counters.
     if(first){e.life_fragments=fragments;e.graze=graze;}
 }
+#if PORT_TITLE == 14
+void ReplayStageState::restore_economy_th14(GameEconomy& e)const{
+    const auto value=[&](u32 n){return signed_bits(th14_globals[n]);};
+    e.score_units=score;e.power=power;e.point_value=points;e.graze=graze;e.rank=rank;e.difficulty=value(3);
+    e.th14_point_items=value(8);e.max_point_value=value(11);e.max_power=value(13);e.power_step=value(14);
+    e.lives=lives;e.life_fragments=fragments;e.th14_life_awards=extends;
+    e.th14_bombs=value(18);e.th14_bomb_fragments=value(19);e.th14_reserved_54=value(21);e.th14_special_drop_count=value(27);
+    e.th14_combo.total=value(20);e.th14_combo.count=value(22);e.th14_combo.timer=value(23);
+    std::memcpy(&e.th14_combo.position,th14_globals.data()+24,12);
+}
+#endif
 void ReplayStageState::restore_position(PlayerMotionState& s)const{
     s.x=x;s.y=y;
 #if PORT_TITLE == 14

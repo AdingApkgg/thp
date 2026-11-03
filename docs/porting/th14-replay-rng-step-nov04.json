@@ -1,0 +1,309 @@
+{
+  "verifiedIntegratedResumableReplayRngStores": true,
+  "nativeInstructionCases": 15840,
+  "initialPlaybackCases": 4320,
+  "nextStagePlaybackCases": 5760,
+  "recordingCases": 5760,
+  "cppDefaultRestoreCases": 15840,
+  "resumableJobCases": 15840,
+  "productionLoaderJobCases": 15840,
+  "nativePostStoreSnapshots": 43200,
+  "priorFinalRngDifferences": 2880,
+  "candidateFinalRngDifferences": 0,
+  "candidatePostStoreDifferences": 0,
+  "readinessProtocolControls": 6,
+  "controlledRealGameSessionCallbacks": 14303,
+  "controlledStoreCallbacks": [
+    14104,
+    14106,
+    14108
+  ],
+  "mainAnimationRngDrawsBetweenScriptStoreAndCounterClear": 24,
+  "controlledFailureCallback": 14106,
+  "controlledFailureCompletedStores": 1,
+  "earlyHudSceneOrTimelineRequests": false,
+  "all141CoreObjectsRecompiled": true,
+  "coreWasmSha256": "1e15bb751d12dac304d3d48ec5f70c4a222221c6f4ce444ebb3507773e0e239d",
+  "finiteRegressions": [
+    {
+      "key": "reimub-full",
+      "callbacks": 122537,
+      "vmRows": 2586,
+      "combatCheckpoints": 1294
+    },
+    {
+      "key": "reimua-extra",
+      "callbacks": 38403,
+      "vmRows": 860,
+      "combatCheckpoints": 46
+    },
+    {
+      "key": "sakuyaa-extra",
+      "callbacks": 38977,
+      "vmRows": 6461,
+      "combatCheckpoints": 48
+    }
+  ],
+  "finiteCallbacks": 199917,
+  "otherTitleSyntaxChecks": 12,
+  "applicationFrames": 2289,
+  "applicationChecks": 27,
+  "applicationPresents": 2289,
+  "frozenReferenceCaptureMatches": 2,
+  "offlineMixedPcmFrames": 1526784,
+  "offlinePcmHashMatchesFrozenReference": true,
+  "physicalAudioDevicesOpened": 0,
+  "browserCompiledUnits": 146,
+  "browserWasmSha256": "c7b2801fb916402bfbfd4d87e4bdf706395b34e33967191cec889923514aa1c2",
+  "browserAcceptance": false,
+  "initialReplayConstructionStillSynchronous": true,
+  "defaultBrowserBackendAllStoresReady": true,
+  "originalGlobalSnapshotStillRestoredAsOneOperation": true,
+  "ordinaryBrowserIndependentSubstoreTimingAccepted": false,
+  "nativeRngValuesProvidedToEngine": false,
+  "oldRecordingExactThreadOrderRecovered": false,
+  "oldRngOrBulletFailuresClosed": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "limitations": [
+    "The instruction and sliced-loader matrices use synthetic RNG inputs and CPU schedules; the optional OS lock services are declared stand-ins.",
+    "The real GameSession tests deliberately delay readiness and inject one failure; they do not compare that changed schedule with a captured original run.",
+    "Initial replay creation is still synchronous, the normal browser backend defaults to all stores ready, and the global replay snapshot is restored as one operation.",
+    "The older unobserved RNG/camera/worldZ order, all-mode equivalence, source replay EOF, original full-game pixels/PCM, ordinary browser flows and persistence remain open."
+  ],
+  "bindings": {
+    "artifacts/th14/replay-rng-restore-nov04/integration.json": {
+      "bytes": 3098,
+      "sha256": "66b0dcbc82210db850c1d4ffc22ed6f33b3c39cde7658d101dec3009baf5a497"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/step-candidate/prepared.json": {
+      "bytes": 2936,
+      "sha256": "c39cb3e43096b3bbce55a0f75d42872bcc0b3c13f119a3b5e882f42aa86d3e99"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/step-candidate/core/observer-build.json": {
+      "bytes": 134373,
+      "sha256": "7c70db8c11c852e0427047ad608f69d8263411d345e9d19ca5e344595dcd358d"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/step-candidate/core/observer.wasm": {
+      "bytes": 1506217,
+      "sha256": "1e15bb751d12dac304d3d48ec5f70c4a222221c6f4ce444ebb3507773e0e239d"
+    },
+    "runtimes/th12/th12_web/cpp/game/Replay.cpp": {
+      "bytes": 15389,
+      "sha256": "2dc600710fcd1bf45ee4db8cbfcb3bb225a80dcb00bf9dcec0a9d77568c4c66a"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameSession.cpp": {
+      "bytes": 57940,
+      "sha256": "26b092a5fcb2190723e4584110696af5ffde702ee436075b88ace96eadba3f9c"
+    },
+    "runtimes/th12/th12_web/cpp/game/ReplayRngRestoreTh14.hpp": {
+      "bytes": 4868,
+      "sha256": "091a1bccd45abcb7afba610fbc973166a82ddc90f7eaf795f389c3224e72849a"
+    },
+    "runtimes/th12/th12_web/cpp/game/Replay.hpp": {
+      "bytes": 9402,
+      "sha256": "b21aa12bda3486f7b4a5513fd343ad5edba09568626ca7e1ca563412968ba5cc"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameSessionResources.hpp": {
+      "bytes": 5920,
+      "sha256": "e484bb7a142e65e65445b2a5e7d3427f49ca1c4c9908af225cb091531465fa60"
+    },
+    "runtimes/th12/th12_web/cpp/game/StagedLoaderPrototype.hpp": {
+      "bytes": 3964,
+      "sha256": "8cbff03c51443c53dae7b7345baaf5663e35961283c201495e72cc3a893e6e17"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameBattle.hpp": {
+      "bytes": 25358,
+      "sha256": "5860b3ac5bcd8541122ba39faa610be43b1de8ac3ae7ddf37dd4b63490ad2ca3"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameBattle.cpp": {
+      "bytes": 67023,
+      "sha256": "0b0c10e1088cdcb9d62263b671b3d96db07b6a5a2962dfb5402b2c496fcb2960"
+    },
+    "tools/th14-prepare-replay-rng-step-loader-nov04.py": {
+      "bytes": 11588,
+      "sha256": "58145445ab821fdb50d011afb2759cafadc3ba9dbe10490137ef015953eca7cd"
+    },
+    "tools/th14-prepare-replay-rng-restore-nov04.py": {
+      "bytes": 3200,
+      "sha256": "e52c0c91b4efcc8e55c5d1803fc664a67eaea678f38adca6a024fbc27f897c94"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/native-component.json": {
+      "bytes": 3813314,
+      "sha256": "a5b7919e9d927a9ddca60a8aff9e1f19ac46e9100310e3d4c9f38f8769c4a209"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/step-component-verified-public.json": {
+      "bytes": 5609,
+      "sha256": "5d7822da6535a319be7683d20560f193dac27e032e745af756c332752bd5e1d2"
+    },
+    "tools/th14-replay-rng-restore-native-nov04.py": {
+      "bytes": 6137,
+      "sha256": "0d16e20a8156deb92f6793d2cc511d738ce86bd4e3f78f585e11ffc137d56f4c"
+    },
+    "tools/th14-replay-rng-step-check-nov04.mjs": {
+      "bytes": 8005,
+      "sha256": "09c046342bf872ed18dafe60b19cc632496fb605b9837aeddcd73181cabda111"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-replay-rng-job-fixture-nov04.cpp": {
+      "bytes": 6839,
+      "sha256": "9b72b100d3c6f66d84f564f672410ca8cfd3b9107cf892d08e30329724e41b3e"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-replay-rng-restore-fixture-nov04.cpp": {
+      "bytes": 2719,
+      "sha256": "d9ea073863eeb88faf53cc2aa88ca47c7a9a2888159313fb2b10833d908b62dc"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/unit-step-public/candidate.wasm": {
+      "bytes": 527292,
+      "sha256": "450b030ffa7d0511ba8368068a981b66cad9a870478eed14ee2492a47438f7e6"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/unit-step-public/prior.wasm": {
+      "bytes": 527174,
+      "sha256": "c18cfdeff9e926b00bc44783f8714af6e33e38d90c1a775f1d525ae7b91efd78"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/step-session-public-run/step-session.json": {
+      "bytes": 1145,
+      "sha256": "1a9787f93a1bb700dbf01987ef4e71efde264f69e6b1330a8ffb0ed8f03635dd"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/step-session-failure-public-run/step-session-failure.json": {
+      "bytes": 733,
+      "sha256": "15af9b46feb9b4a425b34f0672dbbb6e050b2af9f9155ddf99fc3900d42e1b24"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/step-session-complete-build/observer-build.json": {
+      "bytes": 135550,
+      "sha256": "f9cbe890c2078ca8c2d6c19aa74ea3292528e235338413db6df7859079a0be12"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/step-session-complete-build/observer.wasm": {
+      "bytes": 1508216,
+      "sha256": "6ae69502dab726442e46354c09d19ff389466299633fcedcfcc7ec3f544f909c"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-replay-rng-step-session-fixture-nov04.cpp": {
+      "bytes": 6355,
+      "sha256": "0f327aa472553ca66a09af0504e22a2dec40e8ecde6c75bf04b7688a5a660eff"
+    },
+    "tools/th14-replay-rng-step-session-check-nov04.mjs": {
+      "bytes": 28668,
+      "sha256": "dab61efb2805870b8283dc986703cbb45710bd19818753e1bce091f7300afe3c"
+    },
+    "tools/th14-replay-rng-step-session-failure-check-nov04.mjs": {
+      "bytes": 28565,
+      "sha256": "cf7d54d781800d914809743359554641fae683976da2030405eba5af07fe94d1"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/step-candidate/regressions/end.json": {
+      "bytes": 1365,
+      "sha256": "97697b7a56c7357b106a798169a219d591283852b830efc8cb3d74a1ab7c6468"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/step-candidate/regressions/reimub-full/raw-verified.json": {
+      "bytes": 10921,
+      "sha256": "ef1eb44e662cd05222aea2f0f9c3094b92c252c044176c6c84dbcda7b9f53f24"
+    },
+    "tools/th14-verify-native-campaign.py": {
+      "bytes": 16097,
+      "sha256": "ea0751a2d4644780c3cde3f62873cbf6b7e41c17a6657c17d474f48579587fc8"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/step-candidate/regressions/reimub-full/exceptions.json": {
+      "bytes": 461,
+      "sha256": "2a62c31fca626524f7f03f16d9a4fb0915951349be2f9b3ddb4b496685af23cf"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/step-candidate/regressions/reimub-full/timing.json": {
+      "bytes": 1019,
+      "sha256": "75d7bb0c3a1a47e462a7b34ca50ee39c4cf2380223ec9e7002e18e33755f1597"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/step-candidate/regressions/reimub-full/scene.json": {
+      "bytes": 863,
+      "sha256": "244bbcdc7aa792ae1de5e8811f247712d59ca30f6b37257e980abe3c1ab9076d"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/step-candidate/regressions/reimua-extra/raw-verified.json": {
+      "bytes": 6904,
+      "sha256": "fc17599ab884fa1989d127c9c572f575759738993e98ff4e1efb360695f7de9a"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/step-candidate/regressions/reimua-extra/exceptions.json": {
+      "bytes": 461,
+      "sha256": "aa3185c757ab9e898ac4e60d870a384524a4e1c1c277d5410da32c819dbe652c"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/step-candidate/regressions/reimua-extra/timing.json": {
+      "bytes": 933,
+      "sha256": "0c5a41c8832fb61c5cee855303aeaa42ef8640f64d64b89508578b8b32200610"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/step-candidate/regressions/reimua-extra/scene.json": {
+      "bytes": 758,
+      "sha256": "4df772ea88aee1d618be1b4416e1e9552fe0584cda33649004dc0ce0e029897a"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/step-candidate/regressions/sakuyaa-extra/raw-verified.json": {
+      "bytes": 8747,
+      "sha256": "1dd734f13e9c5dc1ca7e04252dcac7404031f95078cbefd5df53c9fd28ec248f"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/step-candidate/regressions/sakuyaa-extra/exceptions.json": {
+      "bytes": 461,
+      "sha256": "8e28d057e859037f74ac5a3e5b983d1764dc96514d73be7ae44c08765ad994b2"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/step-candidate/regressions/sakuyaa-extra/timing.json": {
+      "bytes": 933,
+      "sha256": "5cb969d96ce058c63e00fff4a3bbffdb0a16ec43feced5778f53e9af79b05dcb"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/step-candidate/regressions/sakuyaa-extra/scene.json": {
+      "bytes": 758,
+      "sha256": "077f0b54cf9650ca8437026f7cf94a711f066be9fc599db04f527b5e24765bd1"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/step-candidate/syntax/report.json": {
+      "bytes": 2266,
+      "sha256": "56a85b2f2f669d76fe4eb87c348fd964c065bce41d3c0cc8f264bfe5e7e22571"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/gles-two-stage/report.json": {
+      "bytes": 1346312,
+      "sha256": "51800afa5a8b2bde59b4a5a12df5c6eb733080a7bc2e29c1fce4189e814fd630"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/gles-build/build.json": {
+      "bytes": 87417,
+      "sha256": "8eef4cc4f53d707debaa9bcec63ce051c84e504865302d8354af22f57adcb4d4"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/gles-two-stage/report.json": {
+      "bytes": 1346312,
+      "sha256": "c3efef5444656e405d81f43119064fe70240728a21eaa29e4e6f7612bfd0b7b5"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/gles-build/application.wasm": {
+      "bytes": 2049561,
+      "sha256": "6a0b2179807ba491ab9f2ff1cdff578ba60c5edf411cd4f521e1bad5b6bbcad1"
+    },
+    "tools/th14-native-application-process-host-oct27.py": {
+      "bytes": 27304,
+      "sha256": "4b64f9f41a5a44a72be659de0912c5c0ec777778f903c5eec006c1d05817ecd6"
+    },
+    "tools/th14-build-native-application.py": {
+      "bytes": 11521,
+      "sha256": "6ef15ef417bf3c7e3a88e6cd943014cf2c4c6b8bf565c0847d300a1c416a655d"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/gles-two-stage/stage-one-ready.bgra": {
+      "bytes": 1228800,
+      "sha256": "f7aa26dd41ed166314472b16e1bdd6a3627b4771915e8a23dfd4d8d537246a4d"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/gles-two-stage/stage-two-eight.bgra": {
+      "bytes": 1228800,
+      "sha256": "3a05e33563c917c1470122eedee7fcacb8944f963135eb213c7784388fa53fdb"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/browser-build/build.json": {
+      "bytes": 85520,
+      "sha256": "ff85889fc475f62a39561275984fa7718f76c7ab548ff5c5b94e6c8a7ca04290"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/browser-build/th14-sdl.wasm": {
+      "bytes": 2802374,
+      "sha256": "c7b2801fb916402bfbfd4d87e4bdf706395b34e33967191cec889923514aa1c2"
+    },
+    "artifacts/th14/replay-rng-restore-nov04/browser-build/th14-sdl.mjs": {
+      "bytes": 298160,
+      "sha256": "2e52dee46477d909f02f522d76aaa4ad03d1010df2a308bb69b30097ea18daa5"
+    },
+    "tools/th14-build-webgpu-reuse-worker-nov03.py": {
+      "bytes": 14947,
+      "sha256": "0307ed862ae21b816d48d6668f35fe0b429f6b6af6f752c3ba0fbe189d9c7fc0"
+    },
+    "runtimes/th12/th12_web/cpp/game/ResourceCrypt.cpp": {
+      "bytes": 3316,
+      "sha256": "a291010053963e25dadef2be15ddb3c217110cd2377fc495402ef375150f8c45"
+    },
+    "artifacts/th14/vm-return-worker-oct29/work-state.json": {
+      "bytes": 5172,
+      "sha256": "2236db52bee27439486e69216333cd88ddc27d1dcc28233f87bacdcaadc1f33c"
+    }
+  },
+  "verifierSha256": "863588bf357e4e15368bc29c7353685dba2a52b6a14268ab81c6bd8b32424cf6"
+}
