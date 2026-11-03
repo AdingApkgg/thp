@@ -1,0 +1,168 @@
+{
+  "originalExeSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "anchors": [
+    {
+      "field": "targetOffsetXY",
+      "pc": "0x40d4ef",
+      "bytes": "660fd683bc420000",
+      "mnemonic": "movq",
+      "operands": "qword ptr [ebx + 0x42bc], xmm0"
+    },
+    {
+      "field": "targetOffsetZ",
+      "pc": "0x40d4fc",
+      "bytes": "8983c4420000",
+      "mnemonic": "mov",
+      "operands": "dword ptr [ebx + 0x42c4], eax"
+    },
+    {
+      "field": "fov",
+      "pc": "0x446500",
+      "bytes": "f30f104154",
+      "mnemonic": "movss",
+      "operands": "xmm0, dword ptr [ecx + 0x54]"
+    },
+    {
+      "field": "view",
+      "pc": "0x446486",
+      "bytes": "8d7e60",
+      "mnemonic": "lea",
+      "operands": "edi, [esi + 0x60]"
+    },
+    {
+      "field": "projection",
+      "pc": "0x4464cb",
+      "bytes": "81c6a0000000",
+      "mnemonic": "add",
+      "operands": "esi, 0xa0"
+    },
+    {
+      "field": "viewportWidth",
+      "pc": "0x4464aa",
+      "bytes": "8b81e8000000",
+      "mnemonic": "mov",
+      "operands": "eax, dword ptr [ecx + 0xe8]"
+    },
+    {
+      "field": "viewportHeight",
+      "pc": "0x4464da",
+      "bytes": "8b81ec000000",
+      "mnemonic": "mov",
+      "operands": "eax, dword ptr [ecx + 0xec]"
+    },
+    {
+      "field": "offsetX",
+      "pc": "0x4465b2",
+      "bytes": "8b86fc000000",
+      "mnemonic": "mov",
+      "operands": "eax, dword ptr [esi + 0xfc]"
+    },
+    {
+      "field": "offsetY",
+      "pc": "0x4465be",
+      "bytes": "8b8600010000",
+      "mnemonic": "mov",
+      "operands": "eax, dword ptr [esi + 0x100]"
+    },
+    {
+      "field": "fogNear",
+      "pc": "0x40e412",
+      "bytes": "8bb384430000",
+      "mnemonic": "mov",
+      "operands": "esi, dword ptr [ebx + 0x4384]"
+    },
+    {
+      "field": "fogColor",
+      "pc": "0x40e3f0",
+      "bytes": "8bb39c430000",
+      "mnemonic": "mov",
+      "operands": "esi, dword ptr [ebx + 0x439c]"
+    }
+  ],
+  "animationDeltaReferences": [
+    {
+      "pc": "0x409775",
+      "mnemonic": "movss",
+      "operands": "xmm0, dword ptr [0x4d9618]"
+    },
+    {
+      "pc": "0x409787",
+      "mnemonic": "movss",
+      "operands": "xmm0, dword ptr [0x4d961c]"
+    },
+    {
+      "pc": "0x40979e",
+      "mnemonic": "addss",
+      "operands": "xmm0, dword ptr [0x4d9620]"
+    },
+    {
+      "pc": "0x4097ca",
+      "mnemonic": "addss",
+      "operands": "xmm0, dword ptr [0x4d9618]"
+    },
+    {
+      "pc": "0x4097e4",
+      "mnemonic": "movss",
+      "operands": "xmm0, dword ptr [0x4d961c]"
+    },
+    {
+      "pc": "0x409804",
+      "mnemonic": "addss",
+      "operands": "xmm0, dword ptr [0x4d9620]"
+    },
+    {
+      "pc": "0x40d9e5",
+      "mnemonic": "movq",
+      "operands": "qword ptr [esi + 0x4378], xmm0"
+    },
+    {
+      "pc": "0x40d9f9",
+      "mnemonic": "mov",
+      "operands": "dword ptr [esi + 0x4380], eax"
+    },
+    {
+      "pc": "0x40f725",
+      "mnemonic": "movq",
+      "operands": "qword ptr [edi + 0x4378], xmm0"
+    },
+    {
+      "pc": "0x40f72d",
+      "mnemonic": "mov",
+      "operands": "dword ptr [edi + 0x4380], eax"
+    },
+    {
+      "pc": "0x40f756",
+      "mnemonic": "subss",
+      "operands": "xmm0, dword ptr [edi + 0x4378]"
+    },
+    {
+      "pc": "0x40f76c",
+      "mnemonic": "subss",
+      "operands": "xmm0, dword ptr [edi + 0x437c]"
+    },
+    {
+      "pc": "0x40f785",
+      "mnemonic": "subss",
+      "operands": "xmm0, dword ptr [edi + 0x4380]"
+    },
+    {
+      "pc": "0x40f7a3",
+      "mnemonic": "movq",
+      "operands": "qword ptr [edi + 0x4378], xmm0"
+    },
+    {
+      "pc": "0x40f7ab",
+      "mnemonic": "mov",
+      "operands": "dword ptr [edi + 0x4380], eax"
+    }
+  ],
+  "nativeFovOffset": 84,
+  "nativeViewOffset": 96,
+  "nativeTargetOffset": 72,
+  "unmappedNativeWordIndices": [
+    22,
+    23
+  ],
+  "unmappedWordsNotProvedUnused": true,
+  "completeGame": false
+}

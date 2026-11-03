@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "02eccdb19b81d10e5a1a1b9fe2eeb70880ee15eb",
+  "sourceCommit": "e08d4630fabf5e72aa0071aea7f4116800e3438e",
   "files": [
     {
       "path": ".gitignore",
@@ -149,14 +149,19 @@
       "sha256": "23ff33ad56a531b017a3ba8169773d2a791cdfef5ea90c4301c3c9cee5e45b79"
     },
     {
+      "path": "docs/porting/TH14_CAMERA_NATIVE_ORDER_NOV04.md",
+      "bytes": 2546,
+      "sha256": "504d4c3d11be3a56eead7dc078229c5dbd97b2eb536d2a5a5a0f5069f47e0738"
+    },
+    {
       "path": "docs/porting/TH14_CAMERA_PUBLICATION_NOV04.md",
       "bytes": 2319,
       "sha256": "9ce23efb2f5283ece91730afdee57113e316a79695ca00423031166a49d6d379"
     },
     {
       "path": "docs/porting/TH14_CAMERA_SOURCE_READ_NOV04.md",
-      "bytes": 1343,
-      "sha256": "9febc221748ea3c2f2571f0cdba618584d32d66d113198ed1319238a6a7baf73"
+      "bytes": 1711,
+      "sha256": "2a4c8091668b320e73ec524cfebe5de23edeb8017463cb7907ee9bc81b2fe5db"
     },
     {
       "path": "docs/porting/TH14_CAMERA_STORE_INTERLEAVING_OCT26.md",
@@ -165,8 +170,8 @@
     },
     {
       "path": "docs/porting/TH14_CAMERA_WORD_PUBLICATION_NOV04.md",
-      "bytes": 2634,
-      "sha256": "03489054ef13a79160852591fed8cb716f02a4a7f36a7f3e4ee9191458019f74"
+      "bytes": 3002,
+      "sha256": "771a4b4c187cc630a5d40c70e9a9c65ba01d7fa1fc6e7a0c7008df7735d72431"
     },
     {
       "path": "docs/porting/TH14_CAMERA_WORD_STAGE4_OCT27.md",
@@ -815,8 +820,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 97344,
-      "sha256": "5ae4e4fa3700a7bfb4b65074286005051f01ba2ce585619558511a4def3665a3"
+      "bytes": 98236,
+      "sha256": "049a48a08cd3bfc6c97a80699ee83f7c6c244073547f6a0ff1d6c6dd2e3dd516"
     },
     {
       "path": "docs/porting/TH14_REPLAY_ACTIVATION_RESET_NOV04.md",
@@ -2297,6 +2302,16 @@
       "path": "docs/porting/th14-camera-loading-hud-verified-oct24.json",
       "bytes": 27176,
       "sha256": "b439a0785baa8946ac7f81cea2a2969541e5cd516d76c45ba9faf3fb0b9dad14"
+    },
+    {
+      "path": "docs/porting/th14-camera-native-layout-nov04.json",
+      "bytes": 3877,
+      "sha256": "349ac3707f720caae1e9439c0abb302570a3f3c32daa4d7b9521764c9846010d"
+    },
+    {
+      "path": "docs/porting/th14-camera-native-order-nov04.json",
+      "bytes": 271881,
+      "sha256": "eabfdeb0e4add21412017632e684ab4658387cda126013c80bcb4332c426b718"
     },
     {
       "path": "docs/porting/th14-camera-publication-nov04.json",
@@ -10150,8 +10165,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Stage.cpp",
-      "bytes": 9829,
-      "sha256": "308653f37cb85616f6309527e7aa8965025b56ffc15eca66c27c3140f677b65d"
+      "bytes": 10558,
+      "sha256": "5447ca8c60e0f5197d3b4c647eac507a0cdf2c114e800a8019fd9a86a7011e76"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Stage.hpp",
@@ -12737,6 +12752,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-camera-fixture.cpp",
       "bytes": 2727,
       "sha256": "a109ddc05a5f2fce8f29b35f23d46a5e5a55866eed2b86fff25718995a1ce0a1"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-camera-native-order-fixture-nov04.cpp",
+      "bytes": 4738,
+      "sha256": "98f6a29c8e9a3a2877beb5285d2c7ec8607a8c7956638775cc095be6445a2c65"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-camera-publication-fixture-nov04.cpp",
@@ -17249,6 +17269,11 @@
       "sha256": "286a51e1e5f54d3ac3c8ca51256f0f33316e2b0dbd54402b44cd7ac1362fbf04"
     },
     {
+      "path": "tools/th14-build-camera-native-order-component-nov04.py",
+      "bytes": 3975,
+      "sha256": "73c4de5a0d2a2ef4ebcd28db0bc2759ff1050aacf3f2b417ef7d7953c1a8c778"
+    },
+    {
       "path": "tools/th14-build-camera-publication-candidate-nov04.py",
       "bytes": 8115,
       "sha256": "631e8daa81762be8e152b615b246c4717ceb01d35e9bce8fbe84a7bfec24071a"
@@ -17587,6 +17612,21 @@
       "path": "tools/th14-camera-cross-native-oct25.py",
       "bytes": 3009,
       "sha256": "e2ef94eb82c19a7fe385bafa8a9657de9dd5ff8981fccbd23b1a5025d8e4b64d"
+    },
+    {
+      "path": "tools/th14-camera-native-order-check-nov04.mjs",
+      "bytes": 3868,
+      "sha256": "43e797933bebc3fe7286e283038937678cd56fc8a11c39900cfefc13038575ff"
+    },
+    {
+      "path": "tools/th14-camera-native-order-evidence-nov04.py",
+      "bytes": 12789,
+      "sha256": "a7e31bc5164e7535d44a7643f0a09501139ac2068f54de489aca29ff3ebafcbf"
+    },
+    {
+      "path": "tools/th14-camera-native-order-native-nov04.py",
+      "bytes": 4175,
+      "sha256": "3734edc0b4b5d5e980968d04eeb6194d18d5d07e72fb6d9100c0ad2b1df98eca"
     },
     {
       "path": "tools/th14-camera-publication-check-nov04.mjs",
@@ -22452,6 +22492,11 @@
       "path": "tools/th14-prepare-application-trace-oct27.py",
       "bytes": 13186,
       "sha256": "5a97c5efd4581acd00304c17b649a64fa4790329f7367037f02f4da32c15a763"
+    },
+    {
+      "path": "tools/th14-prepare-camera-native-order-nov04.py",
+      "bytes": 2202,
+      "sha256": "54d872a8e71df27efe6a0fcbaf2d2d7413d293a797065a867b35a3bf44afc755"
     },
     {
       "path": "tools/th14-prepare-camera-publication-candidate-nov04.py",
@@ -27385,21 +27430,25 @@
     }
   ],
   "latestIncrement": {
-    "verifiedCameraWordPublicationAndLiveReferences": true,
-    "coreWasmSha256": "f4eef7dc05bffe2b9692205bf93e77fc07f400895d36a3aa9c2fcd8eaefc917e",
+    "verifiedNativeSemanticCameraOrder": true,
+    "coreWasmSha256": "46d95c5101ed44e5ca7af69bbad803055279d2d76a56ad174182794688c63a07",
     "freshCoreObjects": 141,
+    "nativeProgressCases": 76,
     "mappedCameraDwords": 73,
     "nativePublicationDwords": 75,
-    "opaqueTailDwordsNotAccepted": 2,
-    "nativePrefixCases": 76,
+    "unmappedNativeWordIndices": [
+      22,
+      23
+    ],
+    "opaqueWordsAreNotTrailing": true,
+    "opaqueWordsStillNotAccepted": true,
     "nativeAnmReadBlockExecutions": 456,
-    "cppMappedPrefixCases": 74,
-    "referenceFieldsPerPrefix": 6,
-    "candidateReferenceWrongWords": 0,
-    "priorPrivateCandidateReferenceWrongWords": 255,
-    "priorPrivateCandidateRejectedCases": 74,
-    "loaderProtocolCases": 10,
-    "componentPublicationFailureCases": 3,
+    "cppSemanticWordsCompared": 5548,
+    "candidateWrongSemanticWords": 0,
+    "priorPublishedCoreWrongSemanticWords": 557,
+    "priorPublishedCoreFailedPrefixes": 57,
+    "priorPublishedCoreWrongProgressCases": 76,
+    "componentPublicationFailureCases": 9,
     "actualSessionCases": [
       {
         "mode": 0,
@@ -27428,18 +27477,17 @@
     "witnessedNormalVmCallbacks": 35000,
     "witnessedVmRows": 1057,
     "witnessedCombatCheckpoints": 393,
-    "sharedSyntaxChecks": 16,
-    "negativeInputControls": 7,
+    "additionalSourceReadCallbacks": 18000,
+    "sharedStageSyntaxChecks": 4,
     "applicationFrames": 2289,
     "applicationChecks": 27,
     "identicalReferenceImages": 2,
     "offlinePcmFrames": 1526784,
     "physicalAudioDevicesOpened": 0,
     "browserCompiledUnits": 146,
-    "browserWasmSha256": "4ab3466af43fb671f097469eec35aa261188814364f94300a0e914bda923358a",
+    "browserWasmSha256": "534dc723256ac536fc97b90cf1ba18999d437c7b7f513b844b09de2ed049d540",
     "browserAcceptance": false,
-    "writeOnlyTraceStrictWholeRunAccepted": false,
-    "writeOnlyTraceControllerSlotGapDisclosed": true,
+    "priorPrefixEvidenceHadNoSemanticLayoutValidation": true,
     "oldRngFailureDifferences": {
       "21": 4137,
       "22": 283,
@@ -27451,51 +27499,27 @@
     "completeGame": false,
     "nativeEquivalent": false,
     "productionIntegrated": true,
-    "title": "TH14 word-wise camera publication and live ANM references",
-    "basePublishedCommit": "02eccdb19b81d10e5a1a1b9fe2eeb70880ee15eb",
+    "title": "TH14 native semantic camera copy order and progress correction",
+    "basePublishedCommit": "e08d4630fabf5e72aa0071aea7f4116800e3438e",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/Stage.hpp",
       "runtimes/th12/th12_web/cpp/game/Stage.cpp",
-      "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
-      "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "runtimes/th12/th12_web/cpp/game/GameSession.hpp",
-      "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "runtimes/th12/th12_web/cpp/game/StagedLoaderPrototype.hpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-camera-word-publication-fixture-nov04.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-camera-word-reference-fixture-nov04.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-camera-word-session-fixture-nov04.cpp",
-      "tools/th14-prepare-camera-word-publication-nov04.py",
-      "tools/th14-prepare-camera-word-references-v2-nov04.py",
-      "tools/th14-camera-publication-copy-native-nov04.py",
-      "tools/th14-camera-publication-reference-native-nov04.py",
-      "tools/th14-build-camera-word-component-nov04.py",
-      "tools/th14-camera-word-component-check-nov04.mjs",
-      "tools/th14-build-camera-word-reference-component-nov04.py",
-      "tools/th14-camera-word-reference-check-nov04.mjs",
-      "tools/th14-build-camera-word-session-nov04.py",
-      "tools/th14-camera-word-session-check-nov04.mjs",
-      "tools/th14-camera-word-publication-evidence-nov04.py",
-      "tools/th14-stage-object-application-full-evidence-nov04.py",
-      "tools/th14-prepare-camera-publication-write-observer-nov04.py",
-      "tools/th14-camera-publication-write-evidence-nov04.py",
-      "tools/th14-prepare-camera-source-read-observer-nov04.py",
-      "tools/th14-camera-source-read-evidence-nov04.py",
+      "runtimes/th12/th12_web/tests/cpp/th14-camera-native-order-fixture-nov04.cpp",
+      "tools/th14-prepare-camera-native-order-nov04.py",
+      "tools/th14-camera-native-order-native-nov04.py",
+      "tools/th14-build-camera-native-order-component-nov04.py",
+      "tools/th14-camera-native-order-check-nov04.mjs",
+      "tools/th14-camera-native-order-evidence-nov04.py",
+      "docs/porting/TH14_CAMERA_NATIVE_ORDER_NOV04.md",
+      "docs/porting/th14-camera-native-order-nov04.json",
+      "docs/porting/th14-camera-native-layout-nov04.json",
       "docs/porting/TH14_CAMERA_WORD_PUBLICATION_NOV04.md",
-      "docs/porting/th14-camera-word-publication-nov04.json",
-      "docs/porting/TH14_STAGE_OBJECT_FULL_APPLICATION_NOV04.md",
-      "docs/porting/th14-stage-object-full-application-nov04.json",
       "docs/porting/TH14_CAMERA_SOURCE_READ_NOV04.md",
-      "docs/porting/th14-camera-source-read-nov04.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
     "productionGameplayCoreChanged": true,
-    "gameplayCorePublicationPending": true,
-    "additionalSourceReadStrictCallbacks": 18000,
-    "historicalFullApplicationSourceCommit": "02eccdb19b81d10e5a1a1b9fe2eeb70880ee15eb",
-    "historicalFullApplicationFramesPerBackend": 122622,
-    "historicalFullApplicationDoesNotAcceptThisNewCore": true
+    "gameplayCorePublicationPending": true
   }
 }

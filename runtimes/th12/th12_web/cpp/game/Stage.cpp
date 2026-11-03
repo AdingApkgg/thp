@@ -120,9 +120,22 @@ bool Stage::publish_camera(
     if(camera_word_boundary){
         refresh_camera_references();
         if(!camera_word_boundary(*this,0)){error="loading before camera publication";return false;}
-        for(u32 i=0;i<sizeof(SceneCamera)/sizeof(u32);++i){
-            std::memcpy(reinterpret_cast<u8*>(active_camera)+i*sizeof(u32),
-                reinterpret_cast<const u8*>(&state.camera)+i*sizeof(u32),sizeof(u32));
+        // Native camera: target_offset precedes FOV; two unmapped words
+        // precede view. C++ keeps target_offset at the end of its structure.
+        // Preserve all 75 native progress boundaries, including opaque words.
+        static_assert(sizeof(SceneCamera)==292);
+        static_assert(offsetof(SceneCamera,target_offset)==280);
+        static_assert(offsetof(SceneCamera,fov)==72);
+        static_assert(offsetof(SceneCamera,view)==76);
+        for(u32 i=0;i<75;++i){
+            u32 offset=0;
+            const bool mapped=i<22||i>=24;
+            if(i<18)offset=i*4;
+            else if(i<21)offset=offsetof(SceneCamera,target_offset)+(i-18)*4;
+            else if(i==21)offset=offsetof(SceneCamera,fov);
+            else if(i>=24)offset=offsetof(SceneCamera,view)+(i-24)*4;
+            if(mapped)std::memcpy(reinterpret_cast<u8*>(active_camera)+offset,
+                reinterpret_cast<const u8*>(&state.camera)+offset,sizeof(u32));
             refresh_camera_references();
             if(!camera_word_boundary(*this,i+1)){error="loading during camera publication";return false;}
         }
