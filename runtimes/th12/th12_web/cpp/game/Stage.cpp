@@ -37,13 +37,38 @@ bool Stage::stage_deformation(i32 mode){
     if(!next->initialize(text,17,mode==1?(kPortTitle==16?7:25):17,false)){error="stage deformation initialization failed";return false;}
     mesh=std::move(next);state.deformation=1;return true;
 }
-bool Stage::update_objects(){
-    for(auto& object:resource.objects){if(!(object.flags&1))continue;u32 active=0;
-        for(const auto& primitive:object.primitives){auto& vm=object_animations[primitive.animation];if(vm.update(manager)<0){error="stage object animation failed";return false;}if(vm.instruction)++active;}
+bool Stage::update_objects(
+#if PORT_TITLE == 14
+    const StageObjectVmBoundaryTh14& object_boundary
+#endif
+){
+    for(u32 object_index=0;object_index<resource.objects.size();++object_index){
+        auto& object=resource.objects[object_index];if(!(object.flags&1))continue;u32 active=0;
+        for(u32 primitive_index=0;primitive_index<object.primitives.size();++primitive_index){
+            const auto& primitive=object.primitives[primitive_index];auto& vm=object_animations[primitive.animation];
+#if PORT_TITLE == 14
+            // Retail40f2a2 calls this detached background VM;40f2a7 resumes.
+            if(object_boundary&&!object_boundary(*this,vm,object_index,primitive_index,primitive.animation,AnmManager::VmBoundaryTh14::BeforeCall)){
+                error="loading before stage object VM call";return false;
+            }
+#endif
+            if(vm.update(manager)<0){error="stage object animation failed";return false;}
+#if PORT_TITLE == 14
+            if(object_boundary&&!object_boundary(*this,vm,object_index,primitive_index,primitive.animation,AnmManager::VmBoundaryTh14::AfterReturn)){
+                error="loading after stage object VM return";return false;
+            }
+#endif
+            if(vm.instruction)++active;
+        }
         if(!active)object.flags&=~1u;
-    }return true;
+    }
+    return true;
 }
-bool Stage::update(){
+bool Stage::update(
+#if PORT_TITLE == 14
+    const StageObjectVmBoundaryTh14& object_boundary
+#endif
+){
     if((state.draw_flags&8)||((state.draw_flags&4)&&state.fade_timer.current>=60))return true;
     state.camera.offset={};state.camera.animation_delta={};state.camera.reserved24=GraphicsMath::normalize(state.camera.direction);state.tint=0x00808080;
 #if PORT_TITLE == 13 || PORT_TITLE == 14
@@ -51,7 +76,11 @@ bool Stage::update(){
     state.camera.reserved24=GraphicsMath::normalize({float(double(d.x)+o.x),float(double(d.y)+o.y),float(double(d.z)+o.z)});
 #endif
     if(!(state.draw_flags&4)||state.fade_timer.current<30){
-        if(!update_objects()||!update_script())return false;
+        if(!update_objects(
+#if PORT_TITLE == 14
+            object_boundary
+#endif
+        )||!update_script())return false;
         if constexpr(kPortTitle!=14)for(auto& vm:state.script_animations)if(vm.update(manager)<0){error="stage standalone animation failed";return false;}
         if(state.frame_effect){const float saved_rate=manager.rate;manager.rate=1;bool ok=true;for(auto& vm:state.effect_animations)if(vm.update(manager)<0)ok=false;manager.rate=saved_rate;if(!ok){error="stage effect animation failed";return false;}}
     }

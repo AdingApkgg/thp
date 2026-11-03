@@ -59,6 +59,10 @@ bool stage_interrupt(StageState&,const StageResource&,i32,const float*);
 // on it, so a counter must live beside the struct rather than inside it.
 u32 stage_interrupt_calls();
 u32 stage_interrupt_failures();
+#if PORT_TITLE == 14
+class Stage;
+using StageObjectVmBoundaryTh14=std::function<bool(const Stage&,const AnmVm&,u32,u32,u32,AnmManager::VmBoundaryTh14)>;
+#endif
 class Stage final:public StageScriptWorld {
 public:
     StageState state{};
@@ -78,8 +82,16 @@ public:
     bool start_objects();
     bool update_script(){return stage_script(state,resource,&manager.rate,*this);}
     bool interrupt(i32 id){return stage_interrupt(state,resource,id,&manager.rate);}
-    bool update();
-    bool update_objects();
+    bool update(
+#if PORT_TITLE == 14
+        const StageObjectVmBoundaryTh14& object_boundary={}
+#endif
+    );
+    bool update_objects(
+#if PORT_TITLE == 14
+        const StageObjectVmBoundaryTh14& object_boundary={}
+#endif
+    );
     void publish_camera();
     bool draw_layer(AnmRenderer&,SceneCamera&,u32);
     bool draw_background(AnmRenderer&,SceneCamera&,ScreenFades&

@@ -86,6 +86,8 @@ struct StageResourceEffects {
     virtual bool stage_phase_ready(Phase)const{return true;}
     virtual void cancel_stage_phases(StageResources& stage,u32){release(stage);}
     virtual void finish_stage_phases(StageResources&,u32){}
+    // Retail456133 begins the replay globals copy after the three RNG stores.
+    virtual ReplayRngRestoreResultTh14 stage_replay_snapshot_readiness()const{return ReplayRngRestoreResultTh14::Ready;}
 #endif
 };
 class GameSessionResources {

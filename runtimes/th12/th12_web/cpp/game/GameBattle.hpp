@@ -169,6 +169,7 @@ public:
         ,bool overlay_already_updated=false
         ,const std::function<bool()>& before_normal_animation_update={}
         ,const AnmManager::VmBoundaryCallbackTh14& normal_vm_boundary={}
+        ,const StageObjectVmBoundaryTh14& stage_object_boundary={}
 #endif
     );
     bool draw(AnmRenderer&,SceneDrawKind

@@ -366,6 +366,9 @@ bool GameSession::update(const GameSessionInput& input) {
             if(progress==ReplayRngRestoreResultTh14::Waiting)return prototype::Work::Waiting;
             if(progress==ReplayRngRestoreResultTh14::Failed){error="TH14 stage RNG restore failed";return prototype::Work::Failed;}
             if(state.replay){
+                const auto snapshot=resources.effects?resources.effects->stage_replay_snapshot_readiness():ReplayRngRestoreResultTh14::Ready;
+                if(snapshot==ReplayRngRestoreResultTh14::Waiting)return prototype::Work::Waiting;
+                if(snapshot==ReplayRngRestoreResultTh14::Failed){error="TH14 replay snapshot restore failed";return prototype::Work::Failed;}
                 battle->replay_entry.restore_economy_th14(economy);
                 battle->enemy_environment.spell_practice_id=battle->replay_entry.th14_practice_mode;
                 battle->hud.score.continues=battle->replay_entry.continues;
@@ -636,6 +639,13 @@ bool GameSession::update(const GameSessionInput& input) {
             if(point==AnmManager::VmBoundaryTh14::BeforeCall)return battle->poll_stage_initialization(stage_load_clock());
             return battle->pump_stage_loading(stage_load_clock(),
                 animations.first_deferred_capture_file_index(),stage_load_host_flags);
+        }
+        ,[this](const Stage& owner,const AnmVm& vm,u32 object,u32 primitive,u32 animation,AnmManager::VmBoundaryTh14 point){
+            if(!battle->pending_stage)return true;
+            if(stage_load_object_boundary&&!stage_load_object_boundary(owner,vm,object,primitive,animation,point))return false;
+            // The owner is executing: finish only Initialize, without replacing
+            // or retiring the current scene/resources inside this borrowed call.
+            return battle->poll_stage_initialization(stage_load_clock());
         }
 #endif
         );

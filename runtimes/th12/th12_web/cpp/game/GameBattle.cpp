@@ -491,6 +491,7 @@ bool GameBattle::update(const std::function<bool()>& sample_input
     ,bool overlay_already_updated
     ,const std::function<bool()>& before_normal_animation_update
     ,const AnmManager::VmBoundaryCallbackTh14& normal_vm_boundary
+    ,const StageObjectVmBoundaryTh14& stage_object_boundary
 #endif
 ) {
     if(!initialized||last_error)return false;
@@ -546,8 +547,16 @@ bool GameBattle::update(const std::function<bool()>& sample_input
     // which selects the incoming stage's stream at activation, before players.
     if(sample_input&&!sample_input())return false;
     // Equal-priority callbacks insert newest first (456b70/456c10).
-    if((!transitioning||transition_started)&&!stage->update()){last_error=-1008;error=stage->error;return false;}
-    if(outgoing_stage&&!outgoing_stage->update()){last_error=-1008;error=outgoing_stage->error;return false;}
+    if((!transitioning||transition_started)&&!stage->update(
+#if PORT_TITLE == 14
+        stage_object_boundary
+#endif
+    )){last_error=-1008;error=stage->error;return false;}
+    if(outgoing_stage&&!outgoing_stage->update(
+#if PORT_TITLE == 14
+        stage_object_boundary
+#endif
+    )){last_error=-1008;error=outgoing_stage->error;return false;}
     camera_position=compositor.play_camera.position;
     enemy_environment.camera_delta=compositor.play_camera.animation_delta;
     shakes.offset=compositor.world_camera.offset;

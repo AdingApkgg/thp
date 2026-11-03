@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "a3ef0132e50444378e9a1804c153e53df0826060",
+  "sourceCommit": "8c946994f36827bfe1bba6c8eb9b6c7706425f30",
   "files": [
     {
       "path": ".gitignore",
@@ -805,8 +805,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 95720,
-      "sha256": "5303288dde0f080c7231847c17a521ca450d06c2299ae216080812081cc87ab2"
+      "bytes": 96527,
+      "sha256": "0ebc3943a5783628629b4fb6b6d0396b57f43f4d984a0cec28a02ebc29299a40"
     },
     {
       "path": "docs/porting/TH14_REPLAY_ACTIVATION_RESET_NOV04.md",
@@ -1082,6 +1082,11 @@
       "path": "docs/porting/TH14_STAGE_ITEM_RETIREMENT_OCT25.md",
       "bytes": 3048,
       "sha256": "42cea65faf3fff11eaeffc38c06bb77776f09d69f6ceae7bf2c94b932bd2b8b3"
+    },
+    {
+      "path": "docs/porting/TH14_STAGE_OBJECT_SNAPSHOT_NOV04.md",
+      "bytes": 2853,
+      "sha256": "660e74375e391b3b9ee357dc835eff6e84c73a50be7a597de03acec6c4727544"
     },
     {
       "path": "docs/porting/TH14_STAGE_OWNER_RETIREMENT_OCT24.md",
@@ -7089,6 +7094,11 @@
       "sha256": "8c7e72ce100641591c94e815d07d4bf3d442657eef001fd99f458e041d91e9a0"
     },
     {
+      "path": "docs/porting/th14-stage-object-snapshot-nov04.json",
+      "bytes": 242098,
+      "sha256": "ea3f87dd4901d7ebb20ac4103fa42fa55b1ecb01409ebc2e4253552ded3482e0"
+    },
+    {
       "path": "docs/porting/th14-stage-owner-retirement-verified-oct24.json",
       "bytes": 21032,
       "sha256": "5b0a41d15d3af00eed83c9d45635ea5b72a625d7cc70ed825e1453d6b60f1efe"
@@ -9440,13 +9450,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "bytes": 68054,
-      "sha256": "74459bfbe86d113eba9ddc49e710fd0364b51aca0eb73b1d30c9d2721d23d78b"
+      "bytes": 68249,
+      "sha256": "a956ac15955c0c434869584c26cf69b9f1daa7de11cde201c18a790a03875420"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
-      "bytes": 25432,
-      "sha256": "99fa7d254f0784e98c11fc4ca31fa49a60580e2e01d4682b70c033a41b714e6b"
+      "bytes": 25500,
+      "sha256": "fb0ef158ee310e43f9852837a01df292649d191e5d8bdf4d56a4181ba2801da0"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameConfig.cpp",
@@ -9490,13 +9500,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "bytes": 58438,
-      "sha256": "8ea91e4b1c6935b617699edab9e51ab7bad8500adb34ed388f745f2840046c82"
+      "bytes": 59381,
+      "sha256": "67de2eee0741ea9585a6983a288a52c5c489d307afdc436e2a0ac7def0df0a52"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.hpp",
-      "bytes": 5726,
-      "sha256": "6e975bf66da2e11e48df3bfae2eebf24d62e51951208b56f22ce042b6d73f860"
+      "bytes": 5785,
+      "sha256": "d7314edfb8da96e3025a1244c9fb4ebf2838e3bf394e5c7b243ffa0a22e291ad"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSessionResources.cpp",
@@ -9505,8 +9515,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSessionResources.hpp",
-      "bytes": 5920,
-      "sha256": "e484bb7a142e65e65445b2a5e7d3427f49ca1c4c9908af225cb091531465fa60"
+      "bytes": 6120,
+      "sha256": "9b93eae2bd56222e6cc05884fd84994a0ab5e6a6e20a42ea56a0a7b1905eb916"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GlyphAtlas.cpp",
@@ -10110,13 +10120,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Stage.cpp",
-      "bytes": 7494,
-      "sha256": "27717c4c4ddf2b3765b8110f27151c61413410ced83f605e10a314132fbbb42e"
+      "bytes": 8578,
+      "sha256": "7633a70e4ead11c42206206e55e65eeb3fd210626d50fb83bf82fd14635b1601"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Stage.hpp",
-      "bytes": 4231,
-      "sha256": "c081cab3d3bdefdb2518cbf49cdc37dfee0c4647cc0ac0f6c7d690a3ed440fb5"
+      "bytes": 4577,
+      "sha256": "6969c121348220fb5ceba36376e751a03c221ee70f126474718e7f8d444d88f5"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/StageCompletion.cpp",
@@ -13789,6 +13799,11 @@
       "sha256": "d4386ea20773269b0a4449ec1f7d9da5397da7d139bff8bcc7ea76e6b3adefd1"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-replay-rng-context-observer-fixture-nov04.cpp",
+      "bytes": 3983,
+      "sha256": "6784bdcc93ab486697e7e7985d315829e6452a508bcd0c028bdd7cfe4c7880af"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-replay-rng-job-fixture-nov04.cpp",
       "bytes": 6839,
       "sha256": "9b72b100d3c6f66d84f564f672410ca8cfd3b9107cf892d08e30329724e41b3e"
@@ -13812,6 +13827,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-replay-session-fixture.cpp",
       "bytes": 1413,
       "sha256": "b8bafe56bfc5eb4770b12c034d7fb2ba83ede223443985502ca56a78d9a9da35"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-replay-snapshot-session-fixture-nov04.cpp",
+      "bytes": 7607,
+      "sha256": "ce1785eb5a595226282c62125f0f7fbe3e060b7d4f1816c7bae9b58d7458895c"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-replay-stage-slice-fixture.cpp",
@@ -14187,6 +14207,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-stage-mixed-render-fixture.cpp",
       "bytes": 3641,
       "sha256": "90fb5a91ade2415fbdb0e72ebde8cbe0617cd52f60f084ee72783e7868920dc1"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-stage-object-boundary-fixture-nov04.cpp",
+      "bytes": 1225,
+      "sha256": "e78872b2a7f1e072de5647e15ec5d14d31f840035841e8498bdbc38ebc8d3675"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-stage-object-render-fixture.cpp",
@@ -17189,6 +17214,16 @@
       "sha256": "8c400204e301ef8a46e0ec5379f0a3c1b6ad14d10b763ee42cdcb3c8be43cd57"
     },
     {
+      "path": "tools/th14-build-frozen-native-application-nov04.py",
+      "bytes": 12851,
+      "sha256": "7d6cf6bf6291267fa8eaefd216554f31170b1a6a808e5b06d9661ceb218ac90f"
+    },
+    {
+      "path": "tools/th14-build-frozen-stage-object-browser-nov04.py",
+      "bytes": 15640,
+      "sha256": "65133757b058c8335ccd2c337da2fda23960c280133cb4167b77d8aef257faf5"
+    },
+    {
       "path": "tools/th14-build-initialization-boundary-observer-nov01.py",
       "bytes": 4850,
       "sha256": "ff36eb6f5079f3bd00d5a2d47b33033b6bbfb8a7e93090872568c107ee2cc61e"
@@ -17229,14 +17264,34 @@
       "sha256": "82c64e82efeca851e8d96d06b2d53229cc0933736f5445da05c339a6e1039890"
     },
     {
+      "path": "tools/th14-build-replay-rng-context-current-nov04.py",
+      "bytes": 3927,
+      "sha256": "a297580adfabbe548e90ae6080761245ce9b23c626e71b517080ecf009cac989"
+    },
+    {
+      "path": "tools/th14-build-replay-rng-order-current-nov04.py",
+      "bytes": 3925,
+      "sha256": "abe1cfa8fb78a28a5bec51d14a7ff01fa3cad258b29c0e6f70a6e3fdbf8f938e"
+    },
+    {
       "path": "tools/th14-build-replay-rng-order-observer-nov04.py",
       "bytes": 3879,
       "sha256": "1cadf5d41c2a8af30e73c4fa1536001b9e26ce06148957e80e0908bd9c466348"
     },
     {
+      "path": "tools/th14-build-replay-snapshot-session-nov04.py",
+      "bytes": 3974,
+      "sha256": "70805286aeb915f96d50ca768d7b86ffc09e78ed97c024174e06d14265f47118"
+    },
+    {
       "path": "tools/th14-build-snapshot-core-oct29.py",
       "bytes": 4106,
       "sha256": "42ea9e82a3d49890a56f009b70c31e9bab97c74aa93d982cb4d590aedb1fab90"
+    },
+    {
+      "path": "tools/th14-build-stage-object-boundary-fixture-nov04.py",
+      "bytes": 3921,
+      "sha256": "52a5775d4487234ca8850e193fff80ca95e05c9888e52310b77179c8f12b3931"
     },
     {
       "path": "tools/th14-build-webgpu-async-component.py",
@@ -17592,6 +17647,16 @@
       "path": "tools/th14-check-overlay-vm-boundary-protocol-nov04.py",
       "bytes": 4410,
       "sha256": "60daabd6f819ecc5a63f1ac2545a342be7ba1a107ffcbc523a47223510d9f821"
+    },
+    {
+      "path": "tools/th14-check-stage-object-boundary-protocol-nov04.py",
+      "bytes": 4481,
+      "sha256": "a3b37b9cd726679f63b56224b64ffc18a156b620519838647218f981e6706ae0"
+    },
+    {
+      "path": "tools/th14-check-stage-object-syntax-nov04.py",
+      "bytes": 1644,
+      "sha256": "5690f9ded44c85d18bd208321a4f4b1f61c4b1228018fdfd7f8d9babf80d7b9e"
     },
     {
       "path": "tools/th14-child-check.mjs",
@@ -18012,6 +18077,11 @@
       "path": "tools/th14-current-release-browser-evidence-check.mjs",
       "bytes": 3170,
       "sha256": "567db90a95690c485d68e915cdd184d3ab743e6d5739ccc8ab65b3096cde1e1e"
+    },
+    {
+      "path": "tools/th14-current-rng-object-context-evidence-nov04.py",
+      "bytes": 5213,
+      "sha256": "7b7752f7cc57b175a30a275a5300d87efb7a602588f08a3050d4486d6faed461"
     },
     {
       "path": "tools/th14-custom-replay-reference-check.mjs",
@@ -22314,6 +22384,11 @@
       "sha256": "e048f94fe747811b34279c4bab3f872f5879aa60c2d970b21521b1e863a1c896"
     },
     {
+      "path": "tools/th14-prepare-replay-rng-completion-stage-observer-nov04.py",
+      "bytes": 6892,
+      "sha256": "d6a5550d7a341a2f8159479fcde7e14610e1711dec775e77f5a3fe26dc757b5b"
+    },
+    {
       "path": "tools/th14-prepare-replay-rng-order-drivers-nov04.py",
       "bytes": 3302,
       "sha256": "18831ec4359134a8c2335b3ee847ae486dce99ba9050ffda2354922e5f678a19"
@@ -22332,6 +22407,11 @@
       "path": "tools/th14-prepare-replay-rng-restore-nov04.py",
       "bytes": 3200,
       "sha256": "e52c0c91b4efcc8e55c5d1803fc664a67eaea678f38adca6a024fbc27f897c94"
+    },
+    {
+      "path": "tools/th14-prepare-replay-rng-stage-object-observer-nov04.py",
+      "bytes": 3926,
+      "sha256": "e9cae68d62557f18e84f76534f23fdfba45464053c95bc9b8979e79bf3274030"
     },
     {
       "path": "tools/th14-prepare-replay-rng-step-loader-nov04.py",
@@ -22367,6 +22447,16 @@
       "path": "tools/th14-prepare-signature-call-observer-oct30.py",
       "bytes": 4818,
       "sha256": "947284722415aa87a9fdd65c6e401fd44d65dafb19dd6968c4a8cdd3db164d93"
+    },
+    {
+      "path": "tools/th14-prepare-stage-object-boundaries-nov04.py",
+      "bytes": 6864,
+      "sha256": "65556234cbaa4ebf44146e831957f1c280e7bd433a9275c5d92433670a9ad840"
+    },
+    {
+      "path": "tools/th14-prepare-stage-object-snapshot-readiness-nov04.py",
+      "bytes": 3907,
+      "sha256": "47330a3539994ee8a9dc250d5871d0b02b77c886f6e674f85149e25e7daf2196"
     },
     {
       "path": "tools/th14-prepare-webgpu-launcher.py",
@@ -22794,6 +22884,11 @@
       "sha256": "53be4a0f7589669e7ff7be37bf5856950e4024a1ea8db0ac45313909c2eae3a8"
     },
     {
+      "path": "tools/th14-replay-rng-completion-evidence-nov04.py",
+      "bytes": 4909,
+      "sha256": "61bbfba6060ead27510b157269bef82f5c8df43d75c8399eca32a85301cb7b97"
+    },
+    {
       "path": "tools/th14-replay-rng-order-evidence-nov04.py",
       "bytes": 10995,
       "sha256": "97da0aa604173e38640e2a46da12c6c3a69b6a5396c62f11648b0268b88f83ae"
@@ -22847,6 +22942,16 @@
       "path": "tools/th14-replay-session-check.mjs",
       "bytes": 4390,
       "sha256": "5dc667a08c07fbc15cd9898e0b2b0439d5414071fc942d6319d9bd1ea54c0da3"
+    },
+    {
+      "path": "tools/th14-replay-snapshot-session-check-nov04.mjs",
+      "bytes": 28941,
+      "sha256": "dead23331e28fd9ff8b390d8ca9ee367dc3aba07446414467e93294bbf73c7c2"
+    },
+    {
+      "path": "tools/th14-replay-snapshot-session-failure-check-nov04.mjs",
+      "bytes": 28895,
+      "sha256": "e9142f918a155737866171bd1505a21f6a108e0564596d39f535a894136af331"
     },
     {
       "path": "tools/th14-replay-stage-slice.mjs",
@@ -24534,6 +24639,11 @@
       "sha256": "a947fb386404702aad6e82bc7661d4e5033f7c35af6220beb2c632845f3d4b6e"
     },
     {
+      "path": "tools/th14-stage-object-native-observations-nov04.py",
+      "bytes": 7869,
+      "sha256": "3587b5941f22313d24210066db9d764111dd3b626c8c4563c4a4b7a0453fa874"
+    },
+    {
       "path": "tools/th14-stage-object-render-check.mjs",
       "bytes": 4155,
       "sha256": "726d1d60412f36ed329da3e37a8a077ba7449abb7764e5ff6bce830e1ef504e4"
@@ -24542,6 +24652,11 @@
       "path": "tools/th14-stage-object-render-native.py",
       "bytes": 8988,
       "sha256": "4a405b2ad3fa547dafad0e83f2a323a565f420c395a6896d3ccb13a9351d7f53"
+    },
+    {
+      "path": "tools/th14-stage-object-snapshot-evidence-nov04.py",
+      "bytes": 10907,
+      "sha256": "ce098a8bff97042a89fee2b5fee224d0c81fde60b15b3a75c8a375860bf1f243"
     },
     {
       "path": "tools/th14-stage-pass-state-check.mjs",
@@ -27145,58 +27260,77 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "a3ef0132e50444378e9a1804c153e53df0826060",
-    "title": "TH14 overlay loader dispatch and original-aligned VM pre-call ordering",
+    "verifiedStageObjectSnapshotReadiness": true,
+    "coreWasmSha256": "dfb49af20c890c4f6c909e992af5828b21ecf1101cf1d04e57ee24fa842a9b1a",
+    "freshCoreObjects": 141,
+    "finiteDefaultCases": 16,
+    "finiteDefaultCallbacks": 1379760,
+    "witnessedNormalVmCallbacks": 35000,
+    "witnessedVmRows": 1057,
+    "witnessedCombatCheckpoints": 393,
+    "sharedTitleSyntaxChecks": 16,
+    "negativeInputControls": 7,
+    "stageBoundaryFailureControls": 2,
+    "separateSnapshotResumeAndFailureControls": 2,
+    "applicationFrames": 2289,
+    "applicationChecks": 27,
+    "byteIdenticalReferenceImages": 2,
+    "offlinePcmFrames": 1526784,
+    "physicalAudioDevicesOpened": 0,
+    "browserCompiledUnits": 146,
+    "browserWasmSha256": "fc998f285621c22777ec137989439549e8a9b8d9592b43ae32ed8fc319386e6b",
+    "browserAcceptance": false,
+    "oldFailureDifferences": {
+      "21": 4137,
+      "22": 283,
+      "26": 1
+    },
+    "oldFailureClosed": false,
+    "nativeEquivalent": false,
+    "completeGame": false,
+    "ordinaryIndependentThreadTimingAccepted": false,
+    "initialReplayStillSynchronous": true,
+    "defaultReadinessImmediate": true,
+    "productionIntegrated": true,
+    "basePublishedCommit": "8c946994f36827bfe1bba6c8eb9b6c7706425f30",
+    "title": "TH14 detached Stage VM boundaries and separate replay snapshot readiness",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/AnmManager.cpp",
+      "runtimes/th12/th12_web/cpp/game/Stage.hpp",
+      "runtimes/th12/th12_web/cpp/game/Stage.cpp",
+      "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
       "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-overlay-vm-boundary-fixture-nov04.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-vm-precall-order-fixture-nov04.cpp",
-      "tools/th14-prepare-overlay-vm-boundaries-v2-nov04.py",
-      "tools/th14-build-overlay-vm-boundaries-nov04.py",
-      "tools/th14-check-overlay-vm-boundary-protocol-nov04.py",
-      "tools/th14-vm-precall-order-native-nov04.py",
-      "tools/th14-vm-precall-order-check-nov04.py",
-      "tools/th14-integrate-overlay-vm-boundaries-nov04.py",
-      "tools/th14-overlay-vm-boundary-evidence-nov04.py",
-      "tools/th14-prepare-replay-rng-post-vm-observer-nov04.py",
-      "tools/th14-replay-rng-post-vm-evidence-nov04.py",
-      "tools/th14-prepare-replay-rng-pool-context-observer-nov04.py",
-      "docs/porting/TH14_OVERLAY_VM_BOUNDARY_NOV04.md",
-      "docs/porting/th14-overlay-vm-boundary-nov04.json",
+      "runtimes/th12/th12_web/cpp/game/GameSession.hpp",
+      "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
+      "runtimes/th12/th12_web/cpp/game/GameSessionResources.hpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-stage-object-boundary-fixture-nov04.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-replay-snapshot-session-fixture-nov04.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-replay-rng-context-observer-fixture-nov04.cpp",
+      "tools/th14-prepare-stage-object-boundaries-nov04.py",
+      "tools/th14-prepare-stage-object-snapshot-readiness-nov04.py",
+      "tools/th14-check-stage-object-syntax-nov04.py",
+      "tools/th14-build-stage-object-boundary-fixture-nov04.py",
+      "tools/th14-check-stage-object-boundary-protocol-nov04.py",
+      "tools/th14-build-replay-snapshot-session-nov04.py",
+      "tools/th14-replay-snapshot-session-check-nov04.mjs",
+      "tools/th14-replay-snapshot-session-failure-check-nov04.mjs",
+      "tools/th14-build-frozen-native-application-nov04.py",
+      "tools/th14-build-frozen-stage-object-browser-nov04.py",
+      "tools/th14-stage-object-snapshot-evidence-nov04.py",
+      "tools/th14-build-replay-rng-order-current-nov04.py",
+      "tools/th14-build-replay-rng-context-current-nov04.py",
+      "tools/th14-current-rng-object-context-evidence-nov04.py",
+      "tools/th14-prepare-replay-rng-stage-object-observer-nov04.py",
+      "tools/th14-stage-object-native-observations-nov04.py",
+      "tools/th14-prepare-replay-rng-completion-stage-observer-nov04.py",
+      "tools/th14-replay-rng-completion-evidence-nov04.py",
+      "docs/porting/TH14_STAGE_OBJECT_SNAPSHOT_NOV04.md",
+      "docs/porting/th14-stage-object-snapshot-nov04.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
     "productionGameplayCoreChanged": true,
-    "gameplayCorePublicationPending": true,
-    "ordinaryWasmSha256": "a2f732df6464dc0b698716d836543a86c7eda9416d419138f7c2c7e4ac08c94f",
-    "freshCoreObjects": 141,
-    "defaultCurrentPassedRecords": 16,
-    "defaultCurrentPassedCallbacks": 1379760,
-    "observedVmBoundaryCallbacks": 35000,
-    "observedVmRows303": 1057,
-    "observedCombatCheckpoints": 393,
-    "additionalNaturalPrefixCallbacks": 35000,
-    "originalPrecallCases": 3,
-    "cppManagerOrderingCases": 6,
-    "priorOrderingControlsRejected": 6,
-    "negativeInputControls": 7,
-    "vmBoundaryFailureControls": 4,
-    "sharedTitleSyntaxChecks": 12,
-    "applicationFrames": 2289,
-    "applicationChecks": 27,
-    "physicalAudioDevicesOpened": 0,
-    "browserCompiledUnits": 146,
-    "thirdNativeRecordStrictlyAccepted": false,
-    "thirdNativeScriptSeedDifferences": 4137,
-    "thirdNativeScriptCallsDifferences": 283,
-    "thirdNativeOwnBulletCountDifferences": 1,
-    "ordinaryIndependentThreadTimingAccepted": false,
-    "oldRngOrBulletFailuresClosed": false,
-    "browserAcceptance": false,
-    "completeGame": false,
-    "nativeEquivalent": false
+    "gameplayCorePublicationPending": true
   }
 }
