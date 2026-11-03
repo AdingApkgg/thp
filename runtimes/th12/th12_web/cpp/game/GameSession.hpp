@@ -116,6 +116,8 @@ public:
     // Retail Supervisor samples41c800 after rendering while SpellManager lives.
     bool sample_spell_clock(double now);
     std::function<u64()> stage_load_clock=[](){return u64(std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now().time_since_epoch()).count());};
+    // An external scheduler can supply readiness at the real VM call/return.
+    AnmManager::VmBoundaryCallbackTh14 stage_load_vm_boundary;
     u32 stage_load_host_flags=0;
     void request_host_close(){stage_load_host_flags=(stage_load_host_flags&~0x100u)|0x80u;}
 #endif

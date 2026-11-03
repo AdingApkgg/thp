@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "7babb540918c13f7d813eb14ea09db1da2112bcd",
+  "sourceCommit": "7b8b66f523219662dbe084948917039d263f0bc0",
   "files": [
     {
       "path": ".gitignore",
@@ -669,6 +669,11 @@
       "sha256": "d91cc3d407b3ec7c555ae3d6e342352f4cf872fa1d80dbc6f3d56434ea05b1df"
     },
     {
+      "path": "docs/porting/TH14_NORMAL_VM_BOUNDARY_NOV04.md",
+      "bytes": 4393,
+      "sha256": "4b53e85b61e51422ce928d0a817e12152c5553747e1fd9679ff23e0736cb2ed9"
+    },
+    {
       "path": "docs/porting/TH14_OBSERVED_SEED_STORE_GLES_NOV03.md",
       "bytes": 1820,
       "sha256": "29f72485cc99afccd28d27b16a37fd1f745f1559bb030d012935542451633007"
@@ -795,8 +800,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 93958,
-      "sha256": "50fcf79556e6f0b02f47378d8457d86682a03e2689713788e4c8cc5bcda4544e"
+      "bytes": 94880,
+      "sha256": "b1acea8239d1bfd288f81c027cd5d5797f91c942ae81421f9bb5fc80bc257609"
     },
     {
       "path": "docs/porting/TH14_REPLAY_ACTIVATION_RESET_NOV04.md",
@@ -5394,6 +5399,11 @@
       "sha256": "e45708c7427fb3f0a4d14794b1102db242b6debe6b3a54fccc22efdf36168e16"
     },
     {
+      "path": "docs/porting/th14-normal-vm-boundary-nov04.json",
+      "bytes": 242696,
+      "sha256": "f7b0ad32b472d76d33bf31f8af0faec8b9f677cb5290f76a3e30a2dc2c74143c"
+    },
+    {
       "path": "docs/porting/th14-observed-input-boundaries-check-nov03.json",
       "bytes": 1834,
       "sha256": "76833fcb8eb752378a8b88b3428e7d7581759020c0b6cd11cdec0634a2cc8896"
@@ -6102,6 +6112,11 @@
       "path": "docs/porting/th14-replay-restart-storage-browser-observed-oct21.json",
       "bytes": 2499,
       "sha256": "5aa4a52e53e80e5ab413ac1a0be0243ae5d18d7b09aa8a15e71723dc9a3c968c"
+    },
+    {
+      "path": "docs/porting/th14-replay-rng-order-nov04.json",
+      "bytes": 12221,
+      "sha256": "790a62dc9d443b26f4a08a392172c20fa4d1e1263a6d4fd2a637837b144f52a3"
     },
     {
       "path": "docs/porting/th14-replay-rng-step-modes-nov04.json",
@@ -8935,13 +8950,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmManager.cpp",
-      "bytes": 19930,
-      "sha256": "5bb3e29b209da1069637399c7fef4f8caa0fa6bad696306b44b51f763cf876d9"
+      "bytes": 20454,
+      "sha256": "5d15c6feb97a763becb1810699107ac65439cb3d153fddd58ea5564195d14ac8"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmManager.hpp",
-      "bytes": 7056,
-      "sha256": "696346e8e7c8eb68eeb65a46991055e44e22a4fb0a0aea7331f4aa1fff541c24"
+      "bytes": 7272,
+      "sha256": "f1fff3cb6edcdd68a7521d9e49fc216ff9b1ac2561086735b8f8ce9fc411d767"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmOpcodes.hpp",
@@ -9415,13 +9430,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "bytes": 67023,
-      "sha256": "0b0c10e1088cdcb9d62263b671b3d96db07b6a5a2962dfb5402b2c496fcb2960"
+      "bytes": 67295,
+      "sha256": "01f9b53ec4d3fb3f964d7598b70c1a0b1eb02910b44a13ce16bff15c2a784837"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
-      "bytes": 25358,
-      "sha256": "5860b3ac5bcd8541122ba39faa610be43b1de8ac3ae7ddf37dd4b63490ad2ca3"
+      "bytes": 25432,
+      "sha256": "99fa7d254f0784e98c11fc4ca31fa49a60580e2e01d4682b70c033a41b714e6b"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameConfig.cpp",
@@ -9465,13 +9480,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "bytes": 57940,
-      "sha256": "26b092a5fcb2190723e4584110696af5ffde702ee436075b88ace96eadba3f9c"
+      "bytes": 58438,
+      "sha256": "8ea91e4b1c6935b617699edab9e51ab7bad8500adb34ed388f745f2840046c82"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.hpp",
-      "bytes": 5583,
-      "sha256": "3073cb11289d56530d10e5b3c84bd409d2f489119a6c61ddcd152db9c680e4e9"
+      "bytes": 5726,
+      "sha256": "6e975bf66da2e11e48df3bfae2eebf24d62e51951208b56f22ce042b6d73f860"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSessionResources.cpp",
@@ -13554,6 +13569,11 @@
       "sha256": "d11e13231a3d44ccdb54c665ba1f4e7f5a81ab4aa017b720ee18e773b301ab93"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-normal-vm-boundary-fixture-nov04.cpp",
+      "bytes": 2858,
+      "sha256": "e5fad3cb325cf8ffbc7a6a55f15b60aa3507d3d14423dec2ddaec282384c696a"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-normal-worker-fixture.cpp",
       "bytes": 1178,
       "sha256": "0211a1bfda001b1b7edadc5aab4899fc7c1795f81a6bbebedba5782ec3fc8b80"
@@ -13757,6 +13777,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-replay-rng-job-fixture-nov04.cpp",
       "bytes": 6839,
       "sha256": "9b72b100d3c6f66d84f564f672410ca8cfd3b9107cf892d08e30329724e41b3e"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-replay-rng-order-observer-fixture-nov04.cpp",
+      "bytes": 3198,
+      "sha256": "bca585b19fa27b5a4d72e925e823b0255b1959eba7b3a3342662a1f45a2a2b76"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-replay-rng-restore-fixture-nov04.cpp",
@@ -17169,9 +17194,19 @@
       "sha256": "568de985a983b5c2c4ae75d6c3bb6b6e33e895625267c53d99cf64a70a1d6149"
     },
     {
+      "path": "tools/th14-build-normal-vm-boundaries-nov04.py",
+      "bytes": 5165,
+      "sha256": "3a8a33ab2be6e154ccb0b20fd0ba93cfb397965ff8f543a93c983984d86ddc80"
+    },
+    {
       "path": "tools/th14-build-reimu-bomb-polar-nov01.py",
       "bytes": 1748,
       "sha256": "82c64e82efeca851e8d96d06b2d53229cc0933736f5445da05c339a6e1039890"
+    },
+    {
+      "path": "tools/th14-build-replay-rng-order-observer-nov04.py",
+      "bytes": 3879,
+      "sha256": "1cadf5d41c2a8af30e73c4fa1536001b9e26ce06148957e80e0908bd9c466348"
     },
     {
       "path": "tools/th14-build-snapshot-core-oct29.py",
@@ -17190,8 +17225,8 @@
     },
     {
       "path": "tools/th14-build-webgpu-reuse-worker-nov03.py",
-      "bytes": 14947,
-      "sha256": "0307ed862ae21b816d48d6668f35fe0b429f6b6af6f752c3ba0fbe189d9c7fc0"
+      "bytes": 14983,
+      "sha256": "25aea1d3690e021c0eead1af45f0ecda6f2c2a6c953b16fba91bde2507eca53f"
     },
     {
       "path": "tools/th14-bullet-acceleration-check.mjs",
@@ -17517,6 +17552,16 @@
       "path": "tools/th14-campaign-summary.mjs",
       "bytes": 3140,
       "sha256": "6930fbe94a7209821a898d14f4b5df59dd30b0a07ab9210e362235b037542e22"
+    },
+    {
+      "path": "tools/th14-check-normal-vm-boundaries-nov04.py",
+      "bytes": 4784,
+      "sha256": "5d9f9ba8cd9d297ffe296e866af5cafc0c6563a79fc97048b25ef36d42c69094"
+    },
+    {
+      "path": "tools/th14-check-normal-vm-boundary-protocol-nov04.py",
+      "bytes": 4922,
+      "sha256": "c508ee3853937bb50a63895b7f8b5dd38c3e314e320364debc30c03681babd43"
     },
     {
       "path": "tools/th14-child-check.mjs",
@@ -20334,6 +20379,11 @@
       "sha256": "b345af236a614e4b6b05af77791b4a5e2b89cd5f32b3e57b77ced07f8326c2ff"
     },
     {
+      "path": "tools/th14-integrate-normal-vm-boundaries-nov04.py",
+      "bytes": 6666,
+      "sha256": "31d7451892b6b697c317de1e4f9fc611f5679f7fbdbb77fae1c245b296b7ac68"
+    },
+    {
       "path": "tools/th14-interpolator-application-full-evidence-nov02.py",
       "bytes": 9805,
       "sha256": "6ce796d9bd2e75e0b3f983481406417de4dd82a43b9b901ac20267055e014175"
@@ -21544,6 +21594,16 @@
       "sha256": "b7428cd5521afd12e48c6f31a9687fdcd440fb757384c0e112ea1a8600c02574"
     },
     {
+      "path": "tools/th14-normal-vm-boundary-evidence-nov04.py",
+      "bytes": 11202,
+      "sha256": "5fdbe00cd0421c00ebfc926b099212a038f566bbb3fc144c19a313e61c0dca10"
+    },
+    {
+      "path": "tools/th14-normal-vm-input-contract-nov04.py",
+      "bytes": 4257,
+      "sha256": "f4756a4bd4ec48ae0ab9f8ae3bcab30bb7ecb27ef6bd77eda001f1ad70e9d830"
+    },
+    {
       "path": "tools/th14-normal-vm-return-guard-check-oct29.py",
       "bytes": 5839,
       "sha256": "b976be5e5445c39c8f94e878419edcd532389ffe27632d1e1728ee1de0d66a2f"
@@ -21552,6 +21612,11 @@
       "path": "tools/th14-normal-worker-observer-build-oct29.py",
       "bytes": 3223,
       "sha256": "4c42e89b7c9e4bb1d0063079c9fb9c6a8b5d0ae423e2130d7d745b7ef65e5c05"
+    },
+    {
+      "path": "tools/th14-observed-normal-vm-inputs-nov04.py",
+      "bytes": 7875,
+      "sha256": "2f1bb13bdab5faa0f26963585b62f2903974f06d3ce48d71504721b3fe4dfbd3"
     },
     {
       "path": "tools/th14-observed-seed-store-comparison-nov03.py",
@@ -22194,6 +22259,21 @@
       "sha256": "8ed5e6c41b6f06e6c95786c5f2d123bb346abd2a404849d6963be0b73867505a"
     },
     {
+      "path": "tools/th14-prepare-normal-vm-boundaries-nov04.py",
+      "bytes": 7257,
+      "sha256": "7c02f5976d58c0fb2390e780ac956fd4951dae5302954bb1a089c9959e0f9dff"
+    },
+    {
+      "path": "tools/th14-prepare-normal-vm-boundary-driver-nov04.py",
+      "bytes": 3861,
+      "sha256": "e99e14880b8040d3d2f661f559ddb39ed94de993f6db3155f92ab129e04d13fa"
+    },
+    {
+      "path": "tools/th14-prepare-replay-rng-order-drivers-nov04.py",
+      "bytes": 3302,
+      "sha256": "18831ec4359134a8c2335b3ee847ae486dce99ba9050ffda2354922e5f678a19"
+    },
+    {
       "path": "tools/th14-prepare-replay-rng-restore-nov04.py",
       "bytes": 3200,
       "sha256": "e52c0c91b4efcc8e55c5d1803fc664a67eaea678f38adca6a024fbc27f897c94"
@@ -22207,6 +22287,16 @@
       "path": "tools/th14-prepare-replay-rng-store-observer-nov04.py",
       "bytes": 5902,
       "sha256": "32986c4b57b0a62a429a4a9ad0efd6200522a66e1c41d6aa26ed46fab1276b25"
+    },
+    {
+      "path": "tools/th14-prepare-replay-rng-store-vm-observer-nov04.py",
+      "bytes": 3288,
+      "sha256": "111844df4a7297d5ecadcfce732f1118de0d3e30e8cbc616b355f65de11db221"
+    },
+    {
+      "path": "tools/th14-prepare-replay-rng-template-observer-nov04.py",
+      "bytes": 4424,
+      "sha256": "b31a30d7623feccf5f6f8926a71f1e0e36bd5cbfc6ebcf22b13a0694ddc70bab"
     },
     {
       "path": "tools/th14-prepare-scene-context-observer-oct30.py",
@@ -22647,6 +22737,11 @@
       "path": "tools/th14-replay-rate-terminal-oct28.py",
       "bytes": 10540,
       "sha256": "53be4a0f7589669e7ff7be37bf5856950e4024a1ea8db0ac45313909c2eae3a8"
+    },
+    {
+      "path": "tools/th14-replay-rng-order-evidence-nov04.py",
+      "bytes": 10995,
+      "sha256": "97da0aa604173e38640e2a46da12c6c3a69b6a5396c62f11648b0268b88f83ae"
     },
     {
       "path": "tools/th14-replay-rng-restore-check-nov04.mjs",
@@ -25689,6 +25784,16 @@
       "sha256": "56166cfe745f1e34e0f8197a6b0d47b02257a9eafc517a0a85d33245d722dad0"
     },
     {
+      "path": "tools/th14-verify-observed-normal-vm-campaign-nov04.py",
+      "bytes": 1391,
+      "sha256": "428520110e186af84b98d8c2d8a05d9b145d76b4f558cca02f96f14840ae15fc"
+    },
+    {
+      "path": "tools/th14-verify-observed-normal-vm-scene-nov04.py",
+      "bytes": 3243,
+      "sha256": "d6eb82c8b4ee01186d72f827343fc73fc210525f110dc7961e1310b54b775813"
+    },
+    {
       "path": "tools/th14-verify-rng-store-campaign-nov02.py",
       "bytes": 18975,
       "sha256": "b1ce69e394938abc8a16c9fe11135abad20d7e951cdacbe4bacfc1cd51a8d27d"
@@ -26970,35 +27075,64 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "7babb540918c13f7d813eb14ea09db1da2112bcd",
-    "title": "TH14 current-core mode evidence and original individual replay RNG store observations",
+    "basePublishedCommit": "7b8b66f523219662dbe084948917039d263f0bc0",
+    "title": "TH14 typed normal VM boundaries and witnessed replay initialization inputs",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-prepare-replay-rng-store-observer-nov04.py",
-      "tools/th14-replay-rng-store-trace-evidence-nov04.py",
-      "tools/th14-replay-rng-step-modes-evidence-nov04.py",
-      "docs/porting/TH14_REPLAY_RNG_STEP_MODES_NOV04.md",
-      "docs/porting/th14-replay-rng-step-modes-nov04.json",
-      "docs/porting/TH14_REPLAY_RNG_STORE_TRACE_NOV04.md",
-      "docs/porting/th14-replay-rng-store-trace-nov04.json",
+      "runtimes/th12/th12_web/cpp/game/AnmManager.hpp",
+      "runtimes/th12/th12_web/cpp/game/AnmManager.cpp",
+      "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
+      "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
+      "runtimes/th12/th12_web/cpp/game/GameSession.hpp",
+      "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
+      "tools/th14-prepare-normal-vm-boundaries-nov04.py",
+      "tools/th14-build-normal-vm-boundaries-nov04.py",
+      "tools/th14-check-normal-vm-boundary-protocol-nov04.py",
+      "tools/th14-check-normal-vm-boundaries-nov04.py",
+      "tools/th14-integrate-normal-vm-boundaries-nov04.py",
+      "tools/th14-observed-normal-vm-inputs-nov04.py",
+      "tools/th14-normal-vm-input-contract-nov04.py",
+      "tools/th14-prepare-normal-vm-boundary-driver-nov04.py",
+      "tools/th14-verify-observed-normal-vm-scene-nov04.py",
+      "tools/th14-verify-observed-normal-vm-campaign-nov04.py",
+      "tools/th14-normal-vm-boundary-evidence-nov04.py",
+      "tools/th14-build-webgpu-reuse-worker-nov03.py",
+      "tools/th14-prepare-replay-rng-store-vm-observer-nov04.py",
+      "tools/th14-prepare-replay-rng-template-observer-nov04.py",
+      "tools/th14-build-replay-rng-order-observer-nov04.py",
+      "tools/th14-prepare-replay-rng-order-drivers-nov04.py",
+      "tools/th14-replay-rng-order-evidence-nov04.py",
+      "runtimes/th12/th12_web/tests/cpp/th14-normal-vm-boundary-fixture-nov04.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-replay-rng-order-observer-fixture-nov04.cpp",
+      "docs/porting/TH14_NORMAL_VM_BOUNDARY_NOV04.md",
+      "docs/porting/th14-normal-vm-boundary-nov04.json",
+      "docs/porting/th14-replay-rng-order-nov04.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "productionGameplayCoreChanged": false,
-    "gameplayCoreCommit": "7babb540918c13f7d813eb14ea09db1da2112bcd",
-    "currentPassedRecords": 16,
-    "currentPassedCallbacks": 1379760,
-    "distinctPassedModePairs": 14,
-    "distinctPassedPairsWithAllTargetEntries": 11,
-    "newModeModelRuns": 13,
-    "retainedOriginalExceptionRejection": true,
-    "old36826SeedDifferences": 14403,
-    "old36826CounterDifferences": 1702,
-    "originalObservedPrefixCallbacks": 40000,
-    "individualWorkerStoreBoundaryEvents": 8,
-    "observedPrefixStrictAndIndependentPassed": false,
-    "threadSchedulingControlled": false,
+    "productionGameplayCoreChanged": true,
+    "gameplayCorePublicationPending": true,
+    "ordinaryWasmSha256": "59f98d528450a7f960a8c471d99b300b084cb5a2aea9232116cc2897d48b21f6",
+    "freshCoreObjects": 141,
+    "defaultCurrentPassedRecords": 16,
+    "defaultCurrentPassedCallbacks": 1379760,
+    "observedVmBoundaryCallbacks": 35000,
+    "observedVmRows303": 1057,
+    "observedCombatCheckpoints": 393,
+    "negativeInputControls": 7,
+    "vmBoundaryFailureControls": 2,
+    "sharedTitleSyntaxChecks": 12,
+    "applicationFrames": 2289,
+    "applicationChecks": 27,
+    "physicalAudioDevicesOpened": 0,
+    "browserCompiledUnits": 146,
+    "browserWasmSha256": "4d0bb4f86772863b9de3cbb4ad907bc97f131fc575fffa2b27ec6cd74597cc75",
+    "thirdNativeRecordStrictlyAccepted": false,
+    "thirdNativeScriptSeedDifferences": 4137,
+    "thirdNativeScriptCallsDifferences": 283,
+    "thirdNativeOwnBulletCountDifferences": 1,
+    "ordinaryIndependentThreadTimingAccepted": false,
     "oldRngOrBulletFailuresClosed": false,
     "browserAcceptance": false,
     "completeGame": false,

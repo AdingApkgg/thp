@@ -42,7 +42,10 @@ public:
     bool references(const AnmResource&)const noexcept;
     bool update(bool overlay);
 #if PORT_TITLE == 14
+    enum class VmBoundaryTh14:u32 {BeforeCall,AfterReturn};
+    using VmBoundaryCallbackTh14=std::function<bool(const AnmVm&,VmBoundaryTh14)>;
     bool update(bool overlay,const std::function<bool()>& after_vm);
+    bool update(bool overlay,const VmBoundaryCallbackTh14& boundary);
 #endif
     bool change_draw_mode(AnmVm& vm) override;
     bool allocate_geometry(AnmVm& vm,u32 bytes) override;

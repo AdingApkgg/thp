@@ -630,6 +630,13 @@ bool GameSession::update(const GameSessionInput& input) {
             return !battle->pending_stage||battle->pump_stage_loading(stage_load_clock(),
                 animations.first_deferred_capture_file_index(),stage_load_host_flags);
         }
+        ,[this](const AnmVm& vm,AnmManager::VmBoundaryTh14 point){
+            if(!battle->pending_stage)return true;
+            if(stage_load_vm_boundary&&!stage_load_vm_boundary(vm,point))return false;
+            if(point==AnmManager::VmBoundaryTh14::BeforeCall)return battle->poll_stage_initialization(stage_load_clock());
+            return battle->pump_stage_loading(stage_load_clock(),
+                animations.first_deferred_capture_file_index(),stage_load_host_flags);
+        }
 #endif
         );
         if(playback_ended){

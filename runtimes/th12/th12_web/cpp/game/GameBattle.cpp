@@ -490,6 +490,7 @@ bool GameBattle::update(const std::function<bool()>& sample_input
 #if PORT_TITLE == 14
     ,bool overlay_already_updated
     ,const std::function<bool()>& before_normal_animation_update
+    ,const AnmManager::VmBoundaryCallbackTh14& normal_vm_boundary
 #endif
 ) {
     if(!initialized||last_error)return false;
@@ -595,14 +596,15 @@ bool GameBattle::update(const std::function<bool()>& sample_input
 #endif
 #if PORT_TITLE == 14
     bool loading_failed=false;
-    std::function<bool()> after_normal_vm;
-    if(pending_stage&&before_normal_animation_update)after_normal_vm=[&]{
-        if(before_normal_animation_update())return true;
+    AnmManager::VmBoundaryCallbackTh14 vm_boundary;
+    if(pending_stage&&(normal_vm_boundary||before_normal_animation_update))vm_boundary=[&](const AnmVm& vm,AnmManager::VmBoundaryTh14 point){
+        if(normal_vm_boundary){if(normal_vm_boundary(vm,point))return true;}
+        else if(point==AnmManager::VmBoundaryTh14::BeforeCall||before_normal_animation_update())return true;
         loading_failed=true;return false;
     };
-    if(!animations.update(false,after_normal_vm)){
+    if(!animations.update(false,vm_boundary)){
         last_error=loading_failed?-1009:-1005;
-        if(error.empty())error=loading_failed?"loading at normal VM return":"animation update: "+animations.last_error_text();
+        if(error.empty())error=loading_failed?"loading at normal VM boundary":"animation update: "+animations.last_error_text();
         return false;
     }
 #else
