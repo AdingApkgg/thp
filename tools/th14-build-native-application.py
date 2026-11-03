@@ -21,6 +21,7 @@ parser.add_argument('--backend',choices=['gles','webgpu'],default='gles')
 parser.add_argument('--title-observer',action='store_true',help='Export read-only title age, startup inputs and RNG state; run the unchanged production tick')
 parser.add_argument('--initial-loading-observer',action='store_true',help='Also export initial worker observations and production suspend/resume methods for lifecycle checks')
 parser.add_argument('--replay-construction-observer',action='store_true',help='Read-only first replay activation and RNG boundary; implies initial-loading observer')
+parser.add_argument('--replay-cadence-observer',action='store_true',help='Read-only replay callback/stage counters and activation flags after each production tick')
 args=parser.parse_args();O=args.output.resolve()
 if args.replay_construction_observer:args.initial_loading_observer=True
 if args.initial_loading_observer:args.title_observer=True
@@ -82,6 +83,15 @@ initial_fixture=R/'runtimes/th12/th12_web/tests/cpp/th14-native-initial-loading-
 construction_fixture=R/'runtimes/th12/th12_web/tests/cpp/th14-native-replay-construction-fixture.cpp'
 if args.title_observer:fixture=(initial_fixture if args.initial_loading_observer else title_fixture).read_text()
 if args.replay_construction_observer:fixture=construction_fixture.read_text()
+if args.replay_cadence_observer:fixture+='''
+extern "C" EMSCRIPTEN_KEEPALIVE const unsigned* component_replay_cadence_state(){
+ auto& a=th11::sdl::app;auto& s=a.session;static unsigned words[8];
+ words[0]=s.playback.callback_frame();words[1]=s.playback.frame();
+ words[2]=s.playback.selected_stage();words[3]=s.state.replay;
+ words[4]=s.battle&&s.battle->stage_active;words[5]=s.battle?s.battle->pending_stage:0;
+ words[6]=s.battle_callbacks_attached();words[7]=a.repeat_update;return words;
+}
+'''
 (O/'fixture.cpp').write_text(fixture)
 compiler=R/'runtimes/th12/tools/wasi-sdk-34.0-x86_64-windows/bin/clang++.exe'
 flags=['--target=wasm32-wasip1','-DPORT_TITLE=14','-DTH_NATIVE_PLATFORM=1','-DTH11_DEVELOPMENT_HARNESS=0','-std=c++17','-O2','-g0','-ffp-contract=off','-fno-strict-aliasing','-fno-exceptions','-fno-rtti','-I'+str(inc),'-I'+str(src)]
@@ -97,6 +107,7 @@ exports=['component_initialize','component_tick','component_state','component_pi
 if args.title_observer:exports.extend(['component_reference_state','component_live_state','component_births'])
 if args.initial_loading_observer:exports.extend(['component_initial_loading_state','component_initial_last_resource','component_initial_suspend','component_initial_resume'])
 if args.replay_construction_observer:exports.append('component_replay_construction_state')
+if args.replay_cadence_observer:exports.append('component_replay_cadence_state')
 linkflags=['-mexec-model=reactor','-Wl,--no-entry','-Wl,--export-memory','-Wl,--export-table','-Wl,--allow-undefined','-Wl,-z,stack-size=1048576',*[f'-Wl,--export={name}'for name in exports]]
 result=subprocess.run([str(compiler),*flags,*linkflags,*[str(p)for p in objects],*[row['path']for row in build['objectBindings']],'-o',str(O/'application.wasm')],cwd=R,env={**os.environ,'TEMP':str(O),'TMP':str(O),'TMPDIR':str(O)},capture_output=True);(O/'link.log').write_bytes(result.stdout+result.stderr);assert result.returncode==0,(O/'link.log').read_text()[-6000:]
 # Bind the included production Application and all project headers. Reused game

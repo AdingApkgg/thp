@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "bf3f217fe41d286b611a123ffee5ceb24607f820",
+  "sourceCommit": "ed913249ab6f3604d3fd1fc9996fd33f225b4d4b",
   "files": [
     {
       "path": ".gitignore",
@@ -790,8 +790,13 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 89992,
-      "sha256": "f525e02ae82d17fe4ea0949f403ad2b8461231e899fafcaf449042fd562bc63a"
+      "bytes": 90753,
+      "sha256": "eb598eaf2c58218737c60486d3c71ed9f1d35846df72d0ace74c05dbc7f79dd1"
+    },
+    {
+      "path": "docs/porting/TH14_REPLAY_ACTIVATION_RESET_NOV04.md",
+      "bytes": 2369,
+      "sha256": "227efb2aec9da7eb49a11a2dd15a504d5543f5f524087c62b69cda40f6aaea61"
     },
     {
       "path": "docs/porting/TH14_REPLAY_BOUNDARY_EXCEPTION_PROTOTYPE_NOV03.md",
@@ -800,8 +805,8 @@
     },
     {
       "path": "docs/porting/TH14_REPLAY_CADENCE_NOV04.md",
-      "bytes": 2372,
-      "sha256": "a2bd885c4738435e469de8fee25af53a852eea02bcd1293bca991b727a8afe6c"
+      "bytes": 2765,
+      "sha256": "156a25fdf6272325fd6022e9b2708f1c1e5b4808526fe3d8ed99cd2bc59bdf73"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -6009,6 +6014,11 @@
       "sha256": "37d4c69cc6dc26fa1a1db624e54730ccb8a06cacf2d9669a485286b37c029db4"
     },
     {
+      "path": "docs/porting/th14-replay-activation-reset-nov04.json",
+      "bytes": 9446,
+      "sha256": "59a5b76f35d4d6e56dfe5c5d7cc33a41795a16e4d949dee12fab5375ec74887a"
+    },
+    {
       "path": "docs/porting/th14-replay-cadence-nov04.json",
       "bytes": 8725,
       "sha256": "31b0cb44a41d0636fc5ffb84747afa16fded4bb193e4a5868f0b613da9b538b0"
@@ -9735,18 +9745,18 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Replay.cpp",
-      "bytes": 14994,
-      "sha256": "57bb52ecd785f4c6f9e8e3c649e7b0f2f8d24043671ee9f1add184a1caf50741"
+      "bytes": 15206,
+      "sha256": "eca372741e179bd69f2723754472411f8844a28718e56e71ad8addc11d5b6178"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Replay.hpp",
-      "bytes": 9327,
-      "sha256": "27ef70a07616fc6ff1a095b549e64c1f5d3c294498f843e489adf7daaf5b6383"
+      "bytes": 9324,
+      "sha256": "1868fe2c72c6206885df978b8f2395670b5aa0cbad3d2021ff4bc808dca7ba29"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ReplayCadenceTh14.hpp",
-      "bytes": 639,
-      "sha256": "e11141696547c45b19daa7c5706bba3a6c23370febce4e197aabc21f3fcc6f90"
+      "bytes": 635,
+      "sha256": "828e568b0f30c501af19c87b29b8065ffc791f29ed98febb17cfc6d7e16b3337"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ReplayMenu.hpp",
@@ -13664,6 +13674,11 @@
       "sha256": "f7169e565fc5060b23be91f6636efac04ce402f2ed687765048ffed995bd0f34"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-replay-activation-fixture.cpp",
+      "bytes": 975,
+      "sha256": "80c73b27ae284fe7ac2e69ae576cabb2becfdbc061bd003f861b4f9288ccbb5c"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-replay-cadence-fixture.cpp",
       "bytes": 1320,
       "sha256": "cebfebde55b2dda4d24d97b3be01d70294a3292d41bc9939b80dc786ebee60ba"
@@ -17065,8 +17080,8 @@
     },
     {
       "path": "tools/th14-build-native-application.py",
-      "bytes": 10777,
-      "sha256": "c38698bf9c619cfec2e4763cf3b2a3600d471bb406f2c3399ce59107c00748be"
+      "bytes": 11521,
+      "sha256": "6ef15ef417bf3c7e3a88e6cd943014cf2c4c6b8bf565c0847d300a1c416a655d"
     },
     {
       "path": "tools/th14-build-native-gles-component.py",
@@ -20810,8 +20825,8 @@
     },
     {
       "path": "tools/th14-native-application-process-host-oct27.py",
-      "bytes": 26683,
-      "sha256": "80911b84ade035edef38e96a74a6c5cd0e3d8e3a4f09538475940ff256e9762c"
+      "bytes": 27304,
+      "sha256": "4b64f9f41a5a44a72be659de0912c5c0ec777778f903c5eec006c1d05817ecd6"
     },
     {
       "path": "tools/th14-native-application.py",
@@ -22392,6 +22407,21 @@
       "path": "tools/th14-render-setup-native.py",
       "bytes": 5417,
       "sha256": "3881f200e21b909e103a53dc84fdeda3e64dfe8e532fc0282a4d9f877c909c88"
+    },
+    {
+      "path": "tools/th14-replay-activation-check-nov04.mjs",
+      "bytes": 7822,
+      "sha256": "f0f0ab2a212c29d087b4c6345202e023b5ca79a923e3c77157f57ea2c0c8a424"
+    },
+    {
+      "path": "tools/th14-replay-activation-evidence-nov04.py",
+      "bytes": 9564,
+      "sha256": "c0a09fcfd42e2a2b11cfd9b1b0c22847fd033d824c6cb5b1845219f6896cd309"
+    },
+    {
+      "path": "tools/th14-replay-activation-native-nov04.py",
+      "bytes": 9409,
+      "sha256": "b84d35575acbfc21c8e8b7ba8d25125f8c64a096061544f11b6478109db20203"
     },
     {
       "path": "tools/th14-replay-cadence-check-nov04.mjs",
@@ -26770,23 +26800,21 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "bf3f217fe41d286b611a123ffee5ceb24607f820",
-    "title": "TH14 replay accelerated update dispatch",
+    "basePublishedCommit": "ed913249ab6f3604d3fd1fc9996fd33f225b4d4b",
+    "title": "TH14 replay activation counter reset",
     "changedSourceAndMetadataFiles": [
       "runtimes/th12/th12_web/cpp/game/Replay.hpp",
       "runtimes/th12/th12_web/cpp/game/Replay.cpp",
       "runtimes/th12/th12_web/cpp/game/ReplayCadenceTh14.hpp",
-      "runtimes/th12/th12_web/cpp/sdl/Application.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-replay-cadence-fixture.cpp",
-      "tools/th14-build-webgpu-reuse-worker-nov03.py",
-      "tools/th14-replay-cadence-native-nov04.py",
-      "tools/th14-replay-cadence-check-nov04.mjs",
-      "tools/th14-replay-cadence-evidence-nov04.py",
-      "tools/th14-hard-isolated-evidence-nov04.py",
-      "docs/porting/th14-replay-cadence-nov04.json",
-      "docs/porting/th14-hard-isolated-nov04.json",
+      "runtimes/th12/th12_web/tests/cpp/th14-replay-activation-fixture.cpp",
+      "tools/th14-build-native-application.py",
+      "tools/th14-native-application-process-host-oct27.py",
+      "tools/th14-replay-activation-native-nov04.py",
+      "tools/th14-replay-activation-check-nov04.mjs",
+      "tools/th14-replay-activation-evidence-nov04.py",
+      "docs/porting/th14-replay-activation-reset-nov04.json",
+      "docs/porting/TH14_REPLAY_ACTIVATION_RESET_NOV04.md",
       "docs/porting/TH14_REPLAY_CADENCE_NOV04.md",
-      "docs/porting/TH14_HARD_ISOLATED_NOV04.md",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
@@ -26794,14 +26822,15 @@
     "productionGameplayCoreChanged": true,
     "coreObjectsRecompiled": 141,
     "browserUnitsCompiled": 146,
-    "originalGateCases": 4416,
-    "dispatcherCases": 9,
-    "applicationFrames": 805,
-    "applicationPresents": 805,
+    "nativeStageActivationCases": 56,
+    "wasmStageActivationCases": 42,
+    "activationFpsCases": 1020,
+    "priorCounterMismatches": 35,
+    "applicationFrames": 2289,
+    "applicationPresents": 2289,
     "regressionCallbacks": 160940,
-    "hardIsolatedCallbacks": 114842,
-    "hardDebugExceptions": 0,
-    "hardStrictPassed": false,
+    "previousCrossStageCounterClaimRetracted": true,
+    "arbitraryPhaseFpsDefectClaimRetracted": true,
     "browserAcceptance": false,
     "completeGame": false,
     "nativeEquivalent": false

@@ -194,7 +194,13 @@ void Replay::retain_metadata(){
     for(auto& stage:stages)if(stage.number){const u32 offset=u32(headers.size());headers.insert(headers.end(),bytes.begin()+stage.offset,bytes.begin()+stage.offset+kReplayStageHeader);stage.offset=offset;}
     bytes.swap(headers);touches={};selected=cursor=touch_cursor=0;input={};metadata_only=true;
 }
-bool Replay::select(u32 number){if(metadata_only||!stage(number))return false;selected=number;cursor=touch_cursor=0;input={};return true;}
+bool Replay::select(u32 number){if(metadata_only||!stage(number))return false;selected=number;cursor=touch_cursor=0;
+#if PORT_TITLE == 14
+    // Native455ed0 enables the Replay callbacks, resets both stage pointers,
+    // and456040 clears +210 before the incoming stage's first Replay12 tick.
+    callback_cursor=0;
+#endif
+    input={};return true;}
 ReplayInput Replay::tick(bool active){
     if(!active)return input;
     input.previous=input.held;input.end_marker=false;

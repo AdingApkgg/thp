@@ -134,7 +134,7 @@ public:
     u32 character() const;u32 subtype() const;u32 difficulty() const;
     u32 frame() const {return cursor;}
 #if PORT_TITLE == 14
-    // Playback+210 starts at zero and does not reset on a stage selection.
+    // Playback+210 starts at zero;455ed0 resets it at stage activation.
     u32 callback_frame() const {return callback_cursor;}
 #endif
     // The input the last tick consumed. Read-only, so a diagnostic can line the recording's own bits up against

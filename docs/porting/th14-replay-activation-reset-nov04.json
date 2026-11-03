@@ -1,0 +1,211 @@
+{
+  "verifiedFiniteReplayActivationReset": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "nativeGateCases": 4416,
+  "nativeDispatcherCases": 9,
+  "wasmCounterAssertions": 25,
+  "nativeStageActivationCases": 56,
+  "wasmStageActivationCases": 42,
+  "activationFpsCases": 1020,
+  "priorActivationCounterMismatches": 35,
+  "priorActivationFpsMismatches": 0,
+  "priorCallbackMismatches": 986,
+  "previousCrossStageCounterClaimRetracted": true,
+  "arbitraryPhaseFpsDefectClaimRetracted": true,
+  "isolatedFpsCursorCandidateRejectedBeforeProduction": true,
+  "coreObjectsRecompiled": 141,
+  "coreWasmSha256": "88c98a25a2eb23b367f1a7a63b33057011f30c4d42902f66438ad170b82f1e5a",
+  "regressions": [
+    {
+      "key": "reimub-full",
+      "callbacks": 122537,
+      "vmRows": 2586,
+      "combatCheckpoints": 1294
+    },
+    {
+      "key": "reimua-extra",
+      "callbacks": 38403,
+      "vmRows": 860,
+      "combatCheckpoints": 46
+    }
+  ],
+  "applicationFrames": 2289,
+  "applicationPresents": 2289,
+  "applicationChecks": 27,
+  "firstStage2ActiveHostFrame": 2217,
+  "firstStage2ActiveCallbackFrame": 8,
+  "finalPausedCallbackFrame": 89,
+  "applicationPausedHostFrames": 60,
+  "activeCadenceSamples": 1716,
+  "allActiveCountersEqualStageCursor": true,
+  "physicalAudioDevicesOpened": 0,
+  "browserUnitsCompiled": 146,
+  "browserWasmSha256": "ff1363b93d48602ddf238344332c4c6872a18c3531d48991ddd2fab4e1e23095",
+  "browserLoaderSha256": "d332efece2307a54f79d1e92332ed6633876d54be5f043b94881e7ec9dd810d7",
+  "browserAcceptance": false,
+  "ordinaryOriginalGuiFastPlaybackAccepted": false,
+  "fullOriginalFastPlaybackComparisonAccepted": false,
+  "limitations": [
+    "Original activation executes with controlled input reset, position restore and motion refresh services.",
+    "Actual Application uses declared EGL/WASI platform clocks and normalized input; it is not original GUI or browser acceptance.",
+    "Full original fast-playback rendering, audio, callback enable/disable lifetimes and transitions still need direct comparison.",
+    "The two replay regression recordings do not close other modes or retained RNG/camera timing failures."
+  ],
+  "bindings": {
+    "artifacts/th14/replay-cadence-reset-nov04/native.json": {
+      "bytes": 149705,
+      "sha256": "d5003d06b80f987643145e8543c6a9aa10d68af499637928cfea60705500465a"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/cadence.wasm": {
+      "bytes": 561884,
+      "sha256": "b589e4d6b886b7277f16b91362a0f1cf79ec98cc09c8a05d55ff408853ffe3e7"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-replay-activation-fixture.cpp": {
+      "bytes": 975,
+      "sha256": "80c73b27ae284fe7ac2e69ae576cabb2becfdbc061bd003f861b4f9288ccbb5c"
+    },
+    "runtimes/th12/th12_web/cpp/game/Replay.cpp": {
+      "bytes": 15206,
+      "sha256": "eca372741e179bd69f2723754472411f8844a28718e56e71ad8addc11d5b6178"
+    },
+    "runtimes/th12/th12_web/cpp/game/ReplayRecorder.cpp": {
+      "bytes": 5912,
+      "sha256": "609cd8ac701578aeeef1989345cd63e8c1b37d4575a85539fe173251756450b6"
+    },
+    "runtimes/th12/th12_web/cpp/game/Lzss.cpp": {
+      "bytes": 4459,
+      "sha256": "7bf9b34043ee21f6e23244369069b2807314f3d7ddf7f37a556b34780afa4e48"
+    },
+    "runtimes/th12/th12_web/cpp/game/ReplayCadenceTh14.hpp": {
+      "bytes": 635,
+      "sha256": "828e568b0f30c501af19c87b29b8065ffc791f29ed98febb17cfc6d7e16b3337"
+    },
+    "runtimes/th12/th12_web/cpp/game/Replay.hpp": {
+      "bytes": 9324,
+      "sha256": "1868fe2c72c6206885df978b8f2395670b5aa0cbad3d2021ff4bc808dca7ba29"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-replay-cadence-fixture.cpp": {
+      "bytes": 1320,
+      "sha256": "cebfebde55b2dda4d24d97b3be01d70294a3292d41bc9939b80dc786ebee60ba"
+    },
+    "tools/th14-replay-activation-check-nov04.mjs": {
+      "bytes": 7822,
+      "sha256": "f0f0ab2a212c29d087b4c6345202e023b5ca79a923e3c77157f57ea2c0c8a424"
+    },
+    "tools/th14-replay-activation-native-nov04.py": {
+      "bytes": 9409,
+      "sha256": "b84d35575acbfc21c8e8b7ba8d25125f8c64a096061544f11b6478109db20203"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/verified.json": {
+      "bytes": 2202,
+      "sha256": "87429ae72c5f82f3e310da54c98699d3c8eb7998f229c43aa3898cb519b4dbca"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/core/observer.wasm": {
+      "bytes": 1503725,
+      "sha256": "88c98a25a2eb23b367f1a7a63b33057011f30c4d42902f66438ad170b82f1e5a"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/core/observer-build.json": {
+      "bytes": 132720,
+      "sha256": "b1de089d64d4f2f98eff17a5c7457d47e159680a94339f87337a280e63c54a2e"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/regressions/case-1/reimub-full/exceptions.json": {
+      "bytes": 461,
+      "sha256": "2a62c31fca626524f7f03f16d9a4fb0915951349be2f9b3ddb4b496685af23cf"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/regressions/case-1/reimub-full/timing.json": {
+      "bytes": 1019,
+      "sha256": "2010f27045655281120af895da9e7f546f7d8b2399e3131c81f6c45cd74a0f14"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/regressions/case-1/reimub-full/scene.json": {
+      "bytes": 863,
+      "sha256": "17d7b2075f691a660eb493ddf28d43d524b14500a9912f64d7ecbb6e7abf3301"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/regressions/case-1/reimub-full/raw-verified.json": {
+      "bytes": 10817,
+      "sha256": "99361e217d21823f4ba3b048382f4a3512a9fd6eaa6e4ae54713f0896c960cef"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/regressions/case-1/end.json": {
+      "bytes": 633,
+      "sha256": "89efdf3f2439ceee936ab71858157b0c2206910e0f314ed495f7864cc19ed2bd"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/regressions/case-2/reimua-extra/exceptions.json": {
+      "bytes": 461,
+      "sha256": "aa3185c757ab9e898ac4e60d870a384524a4e1c1c277d5410da32c819dbe652c"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/regressions/case-2/reimua-extra/timing.json": {
+      "bytes": 933,
+      "sha256": "a898f7ab9fe2c6766ca66b41523b9d8bcfb3bb81dcadd4c4dab6b84b517326da"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/regressions/case-2/reimua-extra/scene.json": {
+      "bytes": 758,
+      "sha256": "3b344e01b0d1c0e666ff1dadde557f8edf837c300af339599935133e2172e95d"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/regressions/case-2/reimua-extra/raw-verified.json": {
+      "bytes": 6830,
+      "sha256": "860e0546bbdf4f895753adebab1732deafca11d927488d75f427305ed5666633"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/regressions/case-2/end.json": {
+      "bytes": 632,
+      "sha256": "803fb99a180bdd6c982c08039378aaef2f42d9b2c52ae01e376ae447030a8ece"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/prior-no-reset.wasm": {
+      "bytes": 561874,
+      "sha256": "ddb2ee93ccf77e3210763de047b75e39f58218c87ab83a3a16dbe586e10ef68f"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/gles-build/application.wasm": {
+      "bytes": 2047064,
+      "sha256": "de8204d37d640f0b2d24c21a20ec530501a246984f39fffbc74590ebd4968fa3"
+    },
+    "tools/th14-native-application-process-host-oct27.py": {
+      "bytes": 27304,
+      "sha256": "4b64f9f41a5a44a72be659de0912c5c0ec777778f903c5eec006c1d05817ecd6"
+    },
+    "tools/th14-build-native-application.py": {
+      "bytes": 11521,
+      "sha256": "6ef15ef417bf3c7e3a88e6cd943014cf2c4c6b8bf565c0847d300a1c416a655d"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/gles-two-stage/stage-one-ready.bgra": {
+      "bytes": 1228800,
+      "sha256": "f7aa26dd41ed166314472b16e1bdd6a3627b4771915e8a23dfd4d8d537246a4d"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/gles-two-stage/stage-two-eight.bgra": {
+      "bytes": 1228800,
+      "sha256": "3a05e33563c917c1470122eedee7fcacb8944f963135eb213c7784388fa53fdb"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/gles-build/build.json": {
+      "bytes": 85407,
+      "sha256": "eaa84c5b50ef01cae0bea6b8a762b5fd26fc809a28daba1b7d2ec6dac2d576dd"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/gles-two-stage/report.json": {
+      "bytes": 1346312,
+      "sha256": "c3efef5444656e405d81f43119064fe70240728a21eaa29e4e6f7612bfd0b7b5"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/application-two-stage-scenario.json": {
+      "bytes": 2133,
+      "sha256": "e8e842a7f96bd102231604b1b1c844b592ce01778f6740da9be13c093564c754"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/application-argv.json": {
+      "bytes": 1255,
+      "sha256": "2528372f65f441b0d7850489375a4572ed5ab932176828cb57e70b025a14dcff"
+    },
+    "runtimes/th12/th12_web/cpp/sdl/Application.cpp": {
+      "bytes": 88518,
+      "sha256": "53ecef0abf6d1759c85f7d8d7ca2f880f508d93f14d7d14b6593eb262bcdeadc"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/browser-build/th14-sdl.wasm": {
+      "bytes": 2796555,
+      "sha256": "ff1363b93d48602ddf238344332c4c6872a18c3531d48991ddd2fab4e1e23095"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/browser-build/th14-sdl.mjs": {
+      "bytes": 298160,
+      "sha256": "d332efece2307a54f79d1e92332ed6633876d54be5f043b94881e7ec9dd810d7"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/browser-build/build.json": {
+      "bytes": 85113,
+      "sha256": "505d5a09072cb198350e8bdbc6efea5a6a4275eecb543c7e732311a85a72f20b"
+    }
+  },
+  "verifierSha256": "c0a09fcfd42e2a2b11cfd9b1b0c22847fd033d824c6cb5b1845219f6896cd309"
+}

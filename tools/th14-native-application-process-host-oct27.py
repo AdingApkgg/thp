@@ -31,6 +31,7 @@ parser.add_argument('--maximum-wall-seconds',type=int,default=900,help='Explicit
 parser.add_argument('--declared-process-cookie',type=lambda text:int(text,0),required=True)
 parser.add_argument('--declared-initial-game-ticks',type=int,required=True)
 parser.add_argument('--observe-creations',action='store_true',help='Read the bounded creation ring after each actual tick; no game state is replaced')
+parser.add_argument('--observe-replay-cadence',action='store_true',help='Read replay counters and activation flags after each production tick')
 parser.add_argument('--observe-initial-loading',action='store_true',help='Read the initial resource queue at callback/tick boundaries')
 parser.add_argument('--initial-worker-pause-kind',choices=['decode','resume','player'],help='Exercise production worker suspend/resume once before the selected pending initial task; component test only')
 parser.add_argument('--initial-worker-pause-frames',type=int,default=5)
@@ -214,6 +215,8 @@ try:
  table=api['__indirect_function_table'];mem=api['memory']
  frame_index=0;wall_started=time.monotonic();actions=[];captures=[];application_ticks=0
  creation_rows=[];creation_count=0
+ replay_cadence_rows=[]
+ if args.observe_replay_cadence:assert 'component_replay_cadence_state'in api
  initial_loading_rows=[];worker_pause_events=[];worker_paused=False;worker_resume_frame=0;worker_pause_done=False
  replay_construction_transitions=[]
  def replay_construction_state():
@@ -280,6 +283,7 @@ try:
    result.update(workerPauseEvents=worker_pause_events,workerPauseKind=args.initial_worker_pause_kind,
     workerLifecycleControlledViaProductionMethods=True,workerLifecycleIsNotPhysicalUiAcceptance=True)
   if args.observe_creations:result['animationCreationRecords']=creation_rows
+  if args.observe_replay_cadence:result['replayCadenceObservations']=replay_cadence_rows
   observed=reference_state()
   if observed is not None:result['finalReferenceState']=observed
   (O/'report.json').write_text(json.dumps(result,indent=2)+'\n')
@@ -327,6 +331,10 @@ try:
    if not worker_paused:
     construction_before=replay_construction_state()
     ok=api['component_tick'](store,held,pause);application_ticks+=1
+    if args.observe_replay_cadence:
+     pointer=api['component_replay_cadence_state'](store)
+     values=list(struct.unpack('<8I',mem.read(store,pointer,pointer+32)))
+     replay_cadence_rows.append(dict(hostFrame=frame_index,held=held,pause=pause,words=values,readOnly=True))
     observe_replay_construction(construction_before,'tick')
     assert ok==1,C.string_at(C.addressof(api['memory'].data_ptr(store).contents)+api['th11_error'](store)).decode()
    observe_initial_loading('paused'if worker_paused else'tick')
