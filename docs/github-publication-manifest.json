@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "5c71a2f98f0cc5c19fb18bcbc3d6795606c377a1",
+  "sourceCommit": "b5de114123e5e99f23e024c06a5f82d6d9e931a6",
   "files": [
     {
       "path": ".gitignore",
@@ -227,6 +227,11 @@
       "path": "docs/porting/TH14_CURRENT_GPU_BASELINE_OCT25.md",
       "bytes": 2159,
       "sha256": "957d81a1afdcf7f8282e27cb7f85265335cebbc4856ee1518b4c6efbc8db3aad"
+    },
+    {
+      "path": "docs/porting/TH14_CURRENT_MODE_V4_NOV03.md",
+      "bytes": 1472,
+      "sha256": "f5acdbad24124e000383ca4457d31821ccd9228e4894ca2a70f087c4cd4704b4"
     },
     {
       "path": "docs/porting/TH14_CURRENT_NATIVE_DEMO_NOV01.md",
@@ -780,8 +785,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 88691,
-      "sha256": "053a99720e7b1762fb104257cb317c9b8e76f4b8bf4caa8b4face132ceb58cb2"
+      "bytes": 89184,
+      "sha256": "628719e523dd94017aef467e86d28fd48f4aeff3b7849ea1afc1ac848bf626f4"
     },
     {
       "path": "docs/porting/TH14_REPLAY_BOUNDARY_EXCEPTION_PROTOTYPE_NOV03.md",
@@ -2512,6 +2517,11 @@
       "path": "docs/porting/th14-current-gpu-baseline-observed-oct25.json",
       "bytes": 31672,
       "sha256": "c3033bec02f9bbcb33504b7626af1b74ac7f3b865207d99e46ab673a30fed7f1"
+    },
+    {
+      "path": "docs/porting/th14-current-mode-v4-nov03.json",
+      "bytes": 17072,
+      "sha256": "b71b2a68eca8f83593a94cb4b3f45c7194fef739857dc4407941cfd94e961ed5"
     },
     {
       "path": "docs/porting/th14-current-native-demo-nov01.json",
@@ -17754,6 +17764,11 @@
       "sha256": "824cc4f75cdf12a705dfd017d5f14a7973f6c3cbcdafac622678616f9bf1b1b6"
     },
     {
+      "path": "tools/th14-current-mode-v4-evidence-nov03.py",
+      "bytes": 5447,
+      "sha256": "8ed7886a163ffeadd7187d84a446f18079b9585c57fe74778d68148c4d435ede"
+    },
+    {
       "path": "tools/th14-current-native-demo-evidence-nov01.py",
       "bytes": 5380,
       "sha256": "920fd9e4628e423702de35aaa4fd039dc0ac055f055c9c0577e4c0f7f83a376e"
@@ -26705,28 +26720,24 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "5c71a2f98f0cc5c19fb18bcbc3d6795606c377a1",
-    "title": "TH14 WebGPU startup failure returns to launcher",
+    "basePublishedCommit": "b5de114123e5e99f23e024c06a5f82d6d9e931a6",
+    "title": "TH14 current-core v4 mode audit",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/portable/sdl/Th14WebGpuRuntime.mjs",
-      "runtimes/th12/portable/sdl/Th14WebGpuLibrary.js",
-      "tools/th14-webgpu-open-error-check-nov03.mjs",
-      "tools/th14-webgpu-open-error-evidence-nov03.py",
-      "tools/th14-build-webgpu-reuse-worker-nov03.py",
-      "tools/th14-headless-browser-bridge-final-nov03.mjs",
-      "docs/porting/th14-webgpu-open-error-nov03.json",
-      "docs/porting/TH14_WEBGPU_STARTUP_ERROR_NOV03.md",
+      "tools/th14-current-mode-v4-evidence-nov03.py",
+      "docs/porting/th14-current-mode-v4-nov03.json",
+      "docs/porting/TH14_CURRENT_MODE_V4_NOV03.md",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "productionGameplayCoreChanged": false,
-    "browserHostErrorHandlingChanged": true,
     "currentProductionCoreCommit": "22c4f853fc1cb81b8a0c0891b88023f2f5dc065e",
-    "unchangedGameplayObjects": 146,
-    "headlessFailureReturnVerified": true,
-    "ordinaryChromeGameplayAccepted": false,
-    "strictPassed": false,
+    "capturedRunsAudited": 16,
+    "v4GatePasses": 15,
+    "distinctModePairsWithV4Pass": 13,
+    "distinctModePairsWithV4PassAndAllTargetEntries": 10,
+    "reimubNormal122537RecordPassed": true,
+    "reimubEasyCaptureRejectedFor12DebugExceptions": true,
     "completeGame": false,
     "nativeEquivalent": false
   }
