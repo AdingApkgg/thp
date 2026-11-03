@@ -133,6 +133,10 @@ public:
     u32 stage_count() const {return count;}
     u32 character() const;u32 subtype() const;u32 difficulty() const;
     u32 frame() const {return cursor;}
+#if PORT_TITLE == 14
+    // Playback+210 starts at zero and does not reset on a stage selection.
+    u32 callback_frame() const {return callback_cursor;}
+#endif
     // The input the last tick consumed. Read-only, so a diagnostic can line the recording's own bits up against
     // what the player did with them without advancing the stream to ask.
     const ReplayInput& current() const {return input;}
@@ -144,6 +148,9 @@ private:
     std::vector<u8> bytes;std::array<ReplayStage,8> stages{};
     std::array<std::vector<ReplayTouch>,8> touches{};u32 touch_cursor=0;
     u32 count=0,selected=0,cursor=0;ReplayInput input;std::string failure;
+#if PORT_TITLE == 14
+    u32 callback_cursor=0;
+#endif
     bool metadata_only=false;
 };
 }

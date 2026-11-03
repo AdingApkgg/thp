@@ -1,0 +1,197 @@
+{
+  "verifiedFiniteReplayCadence": true,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "nativeGateCases": 4416,
+  "nativeDispatcherCases": 9,
+  "wasmCounterAssertions": 25,
+  "priorSingleUpdateGateMismatches": 144,
+  "coreObjectsRecompiled": 141,
+  "coreWasmSha256": "05ee9a8b16397417cb3f95ee3286cf4ee800c38ee5b722e94106441a908c3909",
+  "regressions": [
+    {
+      "key": "reimub-full",
+      "callbacks": 122537,
+      "vmRows": 2586,
+      "combatCheckpoints": 1294
+    },
+    {
+      "key": "reimua-extra",
+      "callbacks": 38403,
+      "vmRows": 860,
+      "combatCheckpoints": 46
+    }
+  ],
+  "applicationFrames": 805,
+  "applicationPresents": 805,
+  "applicationCtrlTenFramesUpdates": 80,
+  "applicationReleaseUpdates": 1,
+  "applicationFireTenFramesUpdates": 79,
+  "applicationPausedHostFrames": 60,
+  "applicationPausedGameFrame": 328,
+  "physicalAudioDevicesOpened": 0,
+  "browserUnitsCompiled": 146,
+  "browserWasmSha256": "46dd6aaa7cfadc559e1f57bcfd18dc17ff35ab1d7a16472d235daca09e87034a",
+  "browserLoaderSha256": "54a739720535fe9a0096c51072a3fc9893db8d26ebcd719ba3474f9085bbb8bd",
+  "browserAcceptance": false,
+  "ordinaryOriginalGuiFastPlaybackAccepted": false,
+  "fullOriginalFastPlaybackComparisonAccepted": false,
+  "limitations": [
+    "Original callback/dispatcher use controlled surrounding callbacks and constructor dependencies.",
+    "Full original fast-playback rendering, audio and transitions still need direct comparison.",
+    "The two regression recordings do not inherit acceptance for other modes or old timing failures.",
+    "Browser output is compiled; no browser UI acceptance is claimed."
+  ],
+  "bindings": {
+    "artifacts/th14/replay-cadence-nov04/native.json": {
+      "bytes": 81459,
+      "sha256": "8f16f0bfbd1515414fc73c85470f608aa7b1e4ef7ea47a9ed7ad3b3208fc1685"
+    },
+    "artifacts/th14/replay-cadence-nov04/cadence.wasm": {
+      "bytes": 560786,
+      "sha256": "fcb23edf8b73de0142e5e74ac01dd2ad39542d9de41c8c6fcd4555954c5dc220"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-replay-cadence-fixture.cpp": {
+      "bytes": 1320,
+      "sha256": "cebfebde55b2dda4d24d97b3be01d70294a3292d41bc9939b80dc786ebee60ba"
+    },
+    "runtimes/th12/th12_web/cpp/game/Replay.cpp": {
+      "bytes": 14994,
+      "sha256": "57bb52ecd785f4c6f9e8e3c649e7b0f2f8d24043671ee9f1add184a1caf50741"
+    },
+    "runtimes/th12/th12_web/cpp/game/ReplayRecorder.cpp": {
+      "bytes": 5912,
+      "sha256": "609cd8ac701578aeeef1989345cd63e8c1b37d4575a85539fe173251756450b6"
+    },
+    "runtimes/th12/th12_web/cpp/game/Lzss.cpp": {
+      "bytes": 4459,
+      "sha256": "7bf9b34043ee21f6e23244369069b2807314f3d7ddf7f37a556b34780afa4e48"
+    },
+    "runtimes/th12/th12_web/cpp/game/ReplayCadenceTh14.hpp": {
+      "bytes": 639,
+      "sha256": "e11141696547c45b19daa7c5706bba3a6c23370febce4e197aabc21f3fcc6f90"
+    },
+    "runtimes/th12/th12_web/cpp/game/Replay.hpp": {
+      "bytes": 9327,
+      "sha256": "27ef70a07616fc6ff1a095b549e64c1f5d3c294498f843e489adf7daaf5b6383"
+    },
+    "tools/th14-replay-cadence-check-nov04.mjs": {
+      "bytes": 4199,
+      "sha256": "d6a3e26a9b438a6ee056eb7dfc2507661f6e6a1b8fcfac4d6bac2fcb9a2d7ee9"
+    },
+    "tools/th14-replay-cadence-native-nov04.py": {
+      "bytes": 7097,
+      "sha256": "f0255f482fb4b86a0b74227f6b1f3edba1915a9085ef03bc6181bf83e8f7e434"
+    },
+    "artifacts/th14/replay-cadence-nov04/verified.json": {
+      "bytes": 1520,
+      "sha256": "c2d05886096d9ccb4301d04a00dae827c911b72a947a9371188f0e7604656d08"
+    },
+    "artifacts/th14/replay-cadence-nov04/core-v2/observer.wasm": {
+      "bytes": 1503717,
+      "sha256": "05ee9a8b16397417cb3f95ee3286cf4ee800c38ee5b722e94106441a908c3909"
+    },
+    "artifacts/th14/replay-cadence-nov04/core-v2/observer-build.json": {
+      "bytes": 132072,
+      "sha256": "a40d3ee14a009b47b753b0f03d258a5ed1bcf33e687447efde7a648d57a31884"
+    },
+    "artifacts/th14/replay-cadence-nov04/regressions/case-1/reimub-full/exceptions.json": {
+      "bytes": 461,
+      "sha256": "2a62c31fca626524f7f03f16d9a4fb0915951349be2f9b3ddb4b496685af23cf"
+    },
+    "artifacts/th14/replay-cadence-nov04/regressions/case-1/reimub-full/timing.json": {
+      "bytes": 1019,
+      "sha256": "17975e757c30e08a3c3b6f327bebf6421509e7a2f4cf25e6a162b73a1c920524"
+    },
+    "artifacts/th14/replay-cadence-nov04/regressions/case-1/reimub-full/scene.json": {
+      "bytes": 863,
+      "sha256": "5179580984597733a1f3fe24a8415b3e6f2048aa81b6f1a84c1219cf88ba947b"
+    },
+    "artifacts/th14/replay-cadence-nov04/regressions/case-1/reimub-full/raw-verified.json": {
+      "bytes": 10733,
+      "sha256": "5c11e0c26994f8dce5de64d6d9ee4dd858744429cad9860ce1a1a06c454060fb"
+    },
+    "artifacts/th14/replay-cadence-nov04/regressions/case-1/end.json": {
+      "bytes": 626,
+      "sha256": "f3eb07023bf12e771b4b17bdaf2c97740db6a3d15ad769e4dadecbc39493e0f4"
+    },
+    "artifacts/th14/replay-cadence-nov04/regressions/case-2/reimua-extra/exceptions.json": {
+      "bytes": 461,
+      "sha256": "aa3185c757ab9e898ac4e60d870a384524a4e1c1c277d5410da32c819dbe652c"
+    },
+    "artifacts/th14/replay-cadence-nov04/regressions/case-2/reimua-extra/timing.json": {
+      "bytes": 933,
+      "sha256": "62f8bc2986f510037735c8f57a452f7baae54421688e04027a1dfafaabfd5634"
+    },
+    "artifacts/th14/replay-cadence-nov04/regressions/case-2/reimua-extra/scene.json": {
+      "bytes": 758,
+      "sha256": "c13a89daca9d20a8534d628c246b975c81190b0663e9aa31cba777bec748e0f3"
+    },
+    "artifacts/th14/replay-cadence-nov04/regressions/case-2/reimua-extra/raw-verified.json": {
+      "bytes": 6776,
+      "sha256": "35de2339cbf6442aac45742601dfac9cb2e261d69c62690e4759dfa990fd6c3f"
+    },
+    "artifacts/th14/replay-cadence-nov04/regressions/case-2/end.json": {
+      "bytes": 625,
+      "sha256": "109d92b4fffbafdbaf05aaed06e908dd6370129a7e00ad3d9dad1082442a7f77"
+    },
+    "artifacts/th14/replay-cadence-nov04/gles-application-build/application.wasm": {
+      "bytes": 2046873,
+      "sha256": "ff923d06e4bfb7174c2a5ab10f18105fb0c6e8312967998d09396955e3c1e6ae"
+    },
+    "artifacts/th14/replay-cadence-nov04/application-short-v2-run/stage-one-ready.bgra": {
+      "bytes": 1228800,
+      "sha256": "f7aa26dd41ed166314472b16e1bdd6a3627b4771915e8a23dfd4d8d537246a4d"
+    },
+    "artifacts/th14/replay-cadence-nov04/application-short-v2-run/ctrl-first.bgra": {
+      "bytes": 1228800,
+      "sha256": "5fe36f4c68dae898f23529f02d8020cf805bb224a7da958950126337e977f65e"
+    },
+    "artifacts/th14/replay-cadence-nov04/application-short-v2-run/ctrl-ten.bgra": {
+      "bytes": 1228800,
+      "sha256": "d7d2cd025a8bfd8d72dadfd83f54c3a156a719382867398b6508d2e38f791434"
+    },
+    "artifacts/th14/replay-cadence-nov04/application-short-v2-run/released.bgra": {
+      "bytes": 1228800,
+      "sha256": "948ed024cfe0582a231228aebf4782ad6afd9bc33d8c0a852f9b8f235dfeb85d"
+    },
+    "artifacts/th14/replay-cadence-nov04/application-short-v2-run/fire-ten.bgra": {
+      "bytes": 1228800,
+      "sha256": "379b962ec4151d87d4726d9500ee408703c858506ca5563cf5d440a6ab6a2c6a"
+    },
+    "artifacts/th14/replay-cadence-nov04/gles-application-build/build.json": {
+      "bytes": 84905,
+      "sha256": "5ae03a838d5d6054c3cd7a6bbde006484843ae6bbeada66b373ad97828c65e40"
+    },
+    "artifacts/th14/replay-cadence-nov04/application-short-v2-run/report.json": {
+      "bytes": 60122,
+      "sha256": "594df40a5ac05893785ee561cbdc79d9f6f21e82a46045a1be2eade871c62008"
+    },
+    "artifacts/th14/replay-cadence-nov04/application-short-scenario-v2.json": {
+      "bytes": 1851,
+      "sha256": "5a732fe3e5e7373d9196bb2e73bdc3bfc816b1ad0d036bf7934d6bbb693dc0d1"
+    },
+    "artifacts/th14/replay-cadence-nov04/application-short-v2-argv.json": {
+      "bytes": 1227,
+      "sha256": "7a8570c8aded8258ee0e101348ac46f9ff91b5cabfd91e8da26084cab4d888f8"
+    },
+    "runtimes/th12/th12_web/cpp/sdl/Application.cpp": {
+      "bytes": 88518,
+      "sha256": "53ecef0abf6d1759c85f7d8d7ca2f880f508d93f14d7d14b6593eb262bcdeadc"
+    },
+    "artifacts/th14/replay-cadence-nov04/browser-build/th14-sdl.wasm": {
+      "bytes": 2796528,
+      "sha256": "46dd6aaa7cfadc559e1f57bcfd18dc17ff35ab1d7a16472d235daca09e87034a"
+    },
+    "artifacts/th14/replay-cadence-nov04/browser-build/th14-sdl.mjs": {
+      "bytes": 298160,
+      "sha256": "54a739720535fe9a0096c51072a3fc9893db8d26ebcd719ba3474f9085bbb8bd"
+    },
+    "artifacts/th14/replay-cadence-nov04/browser-build/build.json": {
+      "bytes": 85107,
+      "sha256": "672499de62df8eb06651ebccd941b23afd768aa8e881e0614d0c8894ecdf8871"
+    }
+  },
+  "verifierSha256": "1a01c658ad6d30cfb162d3029b8a1a90b2e34cd6fc2f42d499bc9fcbcc2412d6"
+}

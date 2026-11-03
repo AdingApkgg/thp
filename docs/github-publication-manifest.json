@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "b5de114123e5e99f23e024c06a5f82d6d9e931a6",
+  "sourceCommit": "bf3f217fe41d286b611a123ffee5ceb24607f820",
   "files": [
     {
       "path": ".gitignore",
@@ -367,6 +367,11 @@
       "path": "docs/porting/TH14_HARD_CLEAN_EXCEPTION_PREFIX_NOV03.md",
       "bytes": 1384,
       "sha256": "dd0c0127367fa36c0fd0a1f7ee995ca14f1a670c772950937a38c0d95a952d1d"
+    },
+    {
+      "path": "docs/porting/TH14_HARD_ISOLATED_NOV04.md",
+      "bytes": 1552,
+      "sha256": "2bf6d3d9d1d6fd7be900c236fcfe2ff4996231cd9c1074cc82a3a976121acda7"
     },
     {
       "path": "docs/porting/TH14_HARD_TRANSITION_WINDOW_NOV03.md",
@@ -785,13 +790,18 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 89184,
-      "sha256": "628719e523dd94017aef467e86d28fd48f4aeff3b7849ea1afc1ac848bf626f4"
+      "bytes": 89992,
+      "sha256": "f525e02ae82d17fe4ea0949f403ad2b8461231e899fafcaf449042fd562bc63a"
     },
     {
       "path": "docs/porting/TH14_REPLAY_BOUNDARY_EXCEPTION_PROTOTYPE_NOV03.md",
       "bytes": 1799,
       "sha256": "1111849e65f3de4a4357acb2e0cf98d8d936186d30ed77e354d709df3bb634bd"
+    },
+    {
+      "path": "docs/porting/TH14_REPLAY_CADENCE_NOV04.md",
+      "bytes": 2372,
+      "sha256": "a2bd885c4738435e469de8fee25af53a852eea02bcd1293bca991b727a8afe6c"
     },
     {
       "path": "docs/porting/TH14_REPLAY_COMPLETION_MENU_OCT23.md",
@@ -3357,6 +3367,11 @@
       "path": "docs/porting/th14-hard-clean-exception-prefix-nov03.json",
       "bytes": 3406,
       "sha256": "f242b41a3e8e388304d5c4ab20cec33d02e6f686af20a7e6fbc496d3da22f29f"
+    },
+    {
+      "path": "docs/porting/th14-hard-isolated-nov04.json",
+      "bytes": 4195,
+      "sha256": "e9e5cc4e1d70cdd79bc8df228b274d4005949f1fc7b283c07eb3d33c505b3a24"
     },
     {
       "path": "docs/porting/th14-hard-marisa-a-boss16-campaign-oct10.json",
@@ -5992,6 +6007,11 @@
       "path": "docs/porting/th14-render-verified.json",
       "bytes": 2827,
       "sha256": "37d4c69cc6dc26fa1a1db624e54730ccb8a06cacf2d9669a485286b37c029db4"
+    },
+    {
+      "path": "docs/porting/th14-replay-cadence-nov04.json",
+      "bytes": 8725,
+      "sha256": "31b0cb44a41d0636fc5ffb84747afa16fded4bb193e4a5868f0b613da9b538b0"
     },
     {
       "path": "docs/porting/th14-replay-completion-menu-verified-oct23.json",
@@ -9715,13 +9735,18 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Replay.cpp",
-      "bytes": 14732,
-      "sha256": "0e705c98829bc4c8b8abce7bcdfcbb4537c16afaadcd191b563ad0cbe581f818"
+      "bytes": 14994,
+      "sha256": "57bb52ecd785f4c6f9e8e3c649e7b0f2f8d24043671ee9f1add184a1caf50741"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Replay.hpp",
-      "bytes": 9111,
-      "sha256": "c722098dec81f838c6ccaa74d50dc9840538d84b20c56f9e67bf40cd12f6378b"
+      "bytes": 9327,
+      "sha256": "27ef70a07616fc6ff1a095b549e64c1f5d3c294498f843e489adf7daaf5b6383"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/ReplayCadenceTh14.hpp",
+      "bytes": 639,
+      "sha256": "e11141696547c45b19daa7c5706bba3a6c23370febce4e197aabc21f3fcc6f90"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/ReplayMenu.hpp",
@@ -10205,8 +10230,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/sdl/Application.cpp",
-      "bytes": 87172,
-      "sha256": "66d7a76fc803966d0b5bc55ce363aa70a3f23648a555156c836d60d94bbd1910"
+      "bytes": 88518,
+      "sha256": "53ecef0abf6d1759c85f7d8d7ca2f880f508d93f14d7d14b6593eb262bcdeadc"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/sdl/ApplicationCaptureTh14.hpp",
@@ -13639,6 +13664,11 @@
       "sha256": "f7169e565fc5060b23be91f6636efac04ce402f2ed687765048ffed995bd0f34"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-replay-cadence-fixture.cpp",
+      "bytes": 1320,
+      "sha256": "cebfebde55b2dda4d24d97b3be01d70294a3292d41bc9939b80dc786ebee60ba"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-replay-input-edges-fixture.cpp",
       "bytes": 396,
       "sha256": "d888732e9246284847f7b1a501e95db0476fea7b817c7d85d80b6e9fb4c6b83c"
@@ -17065,8 +17095,8 @@
     },
     {
       "path": "tools/th14-build-webgpu-reuse-worker-nov03.py",
-      "bytes": 14691,
-      "sha256": "b6285e83d7e6ef9a34ae204d6d6a7448f474852560d7cefddeb758c9182fe504"
+      "bytes": 14764,
+      "sha256": "904794e758c1c456794305d005a541dc7980fa9faa3b78ae9b9d8a448e582306"
     },
     {
       "path": "tools/th14-bullet-acceleration-check.mjs",
@@ -19899,6 +19929,11 @@
       "sha256": "609b32b34358f9edcfe3dbe890b7ae06ab5df0463110d9532bb78ee19e7a72e3"
     },
     {
+      "path": "tools/th14-hard-isolated-evidence-nov04.py",
+      "bytes": 4897,
+      "sha256": "e66a8f2e03ad5cfa256cca804d4b29f241e5238a7e2176c41234040f88862b46"
+    },
+    {
       "path": "tools/th14-hard-transition-window-evidence-nov03.py",
       "bytes": 5896,
       "sha256": "0577ad2dddde5348a947e03dfa2ef6d375fbbe198158a1b9b955e75de42c6325"
@@ -22357,6 +22392,21 @@
       "path": "tools/th14-render-setup-native.py",
       "bytes": 5417,
       "sha256": "3881f200e21b909e103a53dc84fdeda3e64dfe8e532fc0282a4d9f877c909c88"
+    },
+    {
+      "path": "tools/th14-replay-cadence-check-nov04.mjs",
+      "bytes": 4199,
+      "sha256": "d6a3e26a9b438a6ee056eb7dfc2507661f6e6a1b8fcfac4d6bac2fcb9a2d7ee9"
+    },
+    {
+      "path": "tools/th14-replay-cadence-evidence-nov04.py",
+      "bytes": 7788,
+      "sha256": "1a01c658ad6d30cfb162d3029b8a1a90b2e34cd6fc2f42d499bc9fcbcc2412d6"
+    },
+    {
+      "path": "tools/th14-replay-cadence-native-nov04.py",
+      "bytes": 7097,
+      "sha256": "f0255f482fb4b86a0b74227f6b1f3edba1915a9085ef03bc6181bf83e8f7e434"
     },
     {
       "path": "tools/th14-replay-construction-compare-oct30.py",
@@ -26720,24 +26770,39 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "b5de114123e5e99f23e024c06a5f82d6d9e931a6",
-    "title": "TH14 current-core v4 mode audit",
+    "basePublishedCommit": "bf3f217fe41d286b611a123ffee5ceb24607f820",
+    "title": "TH14 replay accelerated update dispatch",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-current-mode-v4-evidence-nov03.py",
-      "docs/porting/th14-current-mode-v4-nov03.json",
-      "docs/porting/TH14_CURRENT_MODE_V4_NOV03.md",
+      "runtimes/th12/th12_web/cpp/game/Replay.hpp",
+      "runtimes/th12/th12_web/cpp/game/Replay.cpp",
+      "runtimes/th12/th12_web/cpp/game/ReplayCadenceTh14.hpp",
+      "runtimes/th12/th12_web/cpp/sdl/Application.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-replay-cadence-fixture.cpp",
+      "tools/th14-build-webgpu-reuse-worker-nov03.py",
+      "tools/th14-replay-cadence-native-nov04.py",
+      "tools/th14-replay-cadence-check-nov04.mjs",
+      "tools/th14-replay-cadence-evidence-nov04.py",
+      "tools/th14-hard-isolated-evidence-nov04.py",
+      "docs/porting/th14-replay-cadence-nov04.json",
+      "docs/porting/th14-hard-isolated-nov04.json",
+      "docs/porting/TH14_REPLAY_CADENCE_NOV04.md",
+      "docs/porting/TH14_HARD_ISOLATED_NOV04.md",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
-    "productionGameplayCoreChanged": false,
-    "currentProductionCoreCommit": "22c4f853fc1cb81b8a0c0891b88023f2f5dc065e",
-    "capturedRunsAudited": 16,
-    "v4GatePasses": 15,
-    "distinctModePairsWithV4Pass": 13,
-    "distinctModePairsWithV4PassAndAllTargetEntries": 10,
-    "reimubNormal122537RecordPassed": true,
-    "reimubEasyCaptureRejectedFor12DebugExceptions": true,
+    "productionGameplayCoreChanged": true,
+    "coreObjectsRecompiled": 141,
+    "browserUnitsCompiled": 146,
+    "originalGateCases": 4416,
+    "dispatcherCases": 9,
+    "applicationFrames": 805,
+    "applicationPresents": 805,
+    "regressionCallbacks": 160940,
+    "hardIsolatedCallbacks": 114842,
+    "hardDebugExceptions": 0,
+    "hardStrictPassed": false,
+    "browserAcceptance": false,
     "completeGame": false,
     "nativeEquivalent": false
   }

@@ -78,6 +78,9 @@ void ReplayStageState::restore_position(PlayerMotionState& s)const{
 }
 bool Replay::open(const u8* data,u32 size){
     bytes.clear();stages={};touches={};count=selected=cursor=touch_cursor=0;input={};failure.clear();metadata_only=false;
+#if PORT_TITLE == 14
+    callback_cursor=0;
+#endif
     auto fail=[&](const char* why){failure=why;return false;};
     // The replay magic and version are the title's, and every demo a title ships is the reading:
     // TH12 writes "t12r" (0x72323174) with version 4 over all four of its demos, TH13 "t13r"
@@ -213,6 +216,12 @@ ReplayInput Replay::tick(bool active){
         input.fps=fps_size?bytes[s->offset+kReplayStageHeader+s->frames*6+(fps_index<fps_size?fps_index:fps_size-1)]:0;
     }else{input.held=input.pressed=input.released=0;}
     if(selected<touches.size()&&touch_cursor<touches[selected].size()){const auto& t=touches[selected][touch_cursor];if(t.frame==cursor){input.touch_mode=t.mode;input.touch_x=t.x;input.touch_y=t.y;++touch_cursor;}}
-    ++cursor;return input;
+    ++cursor;
+#if PORT_TITLE == 14
+    //4552fb/455326 advance this global counter even after payload exhaustion.
+    // The terminal marker returns above, without advancing either counter.
+    ++callback_cursor;
+#endif
+    return input;
 }
 }

@@ -5,6 +5,7 @@
 #include "StageUploadsTh14.hpp"
 #include "StageDecodeTh14.hpp"
 #include "StageWorkerWaitTh14.hpp"
+#include "../game/ReplayCadenceTh14.hpp"
 #include <random>
 #endif
 #include "AudioDevice.hpp"
@@ -158,6 +159,7 @@ struct Application:StageResourceEffects
     std::vector<u8> saved_score_state,saved_config_state;
     bool initialized=false;
 #if PORT_TITLE == 14
+    bool repeat_update=false;
     LoadingTh14 boot_loading;
     AnmResource boot_signature;
     u32 boot_signature_handle=0;
@@ -947,7 +949,10 @@ struct Application:StageResourceEffects
         return audio_events()&&text_events();
     }
 
-    bool tick(u32 held,bool pause_key=false) {
+    bool tick_once(u32 held,bool pause_key=false) {
+#if PORT_TITLE == 14
+        repeat_update=false;
+#endif
         if(!initialize())return false;
 #if PORT_TITLE == 14
         if(boot_worker_failed)return false;
@@ -1144,6 +1149,17 @@ struct Application:StageResourceEffects
 #endif
         )||!text_events())return false;
         audio.update();audio.pump();
+#if PORT_TITLE == 14
+        // Registered Replay30 restarts the update list before any draw pass.
+        // Keep sound/text delivery for each update, and spell-clock sampling,
+        // deferred copies and GPU presentation for the completed list only.
+        const u32 replay_control_flags=after==GameSessionPhase::loading||
+            (session.battle&&session.battle->pending_stage)?4u:0u;
+        repeat_update=th14_replay_repeat(after==GameSessionPhase::stage&&
+            session.battle_callbacks_attached()&&session.battle,
+            session.state.replay?1u:0u,replay_control_flags,held,session.playback.callback_frame());
+        if(repeat_update)return true;
+#endif
         frame_statistics.sample(double(SDL_GetTicks())*.001,after==GameSessionPhase::stage&&session.battle&&session.battle->stage_active&&!session.state.replay);
         frame_text.clear();
 #if PORT_TITLE == 14
@@ -1164,6 +1180,14 @@ struct Application:StageResourceEffects
         if(!session.sample_spell_clock(double(SDL_GetTicksNS())*1e-9)){error="Invalid spell timing state";return false;}
 #endif
         return true;
+    }
+    bool tick(u32 held,bool pause_key=false){
+#if PORT_TITLE == 14
+        do{if(!tick_once(held,pause_key))return false;}while(repeat_update);
+        return true;
+#else
+        return tick_once(held,pause_key);
+#endif
     }
     bool return_to_title(){
 #if PORT_TITLE == 14
@@ -1228,7 +1252,7 @@ void cancel_touch(){
     gestures.cancel_transient();
     if(app.session.battle)app.session.battle->player_input.movement.touch_mode=0;
 }
-bool sample_and_tick(){
+bool sample_and_tick_once(){
     SDL_Event event;while(SDL_PollEvent(&event)){
 #if PORT_TITLE == 14
         if(event.type==SDL_EVENT_WINDOW_CLOSE_REQUESTED||event.type==SDL_EVENT_QUIT)app.session.request_host_close();
@@ -1252,7 +1276,16 @@ bool sample_and_tick(){
     if(auto* b=app.session.battle.get()){b->player_input.movement.touch_mode=sample.motion;b->player_input.movement.touch_x=sample.x;b->player_input.movement.touch_y=sample.y;}
     const u32 raw=sample_controller()|keyboard_keys(keys);
     const u32 held=(raw&~0x80100u)|((raw&0x80000)?256:0);
-    return app.tick(held,(raw&256)!=0);
+    return app.tick_once(held,(raw&256)!=0);
+}
+bool sample_and_tick(){
+#if PORT_TITLE == 14
+    // A registry restart samples physical input again, before replay input.
+    do{if(!sample_and_tick_once())return false;}while(app.repeat_update);
+    return true;
+#else
+    return sample_and_tick_once();
+#endif
 }
 }
 }
