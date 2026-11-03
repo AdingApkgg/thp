@@ -20,7 +20,8 @@ export class Th14WebGpuRuntime {
     return result;
   }
   async open() {
-    if (!this.opening) this.opening=Promise.resolve().then(this.createHost).then(host=>this.host=host);
+    if (!this.opening) this.opening=Promise.resolve().then(this.createHost).then(host=>this.host=host)
+      .catch(error=>{this.fail(error);throw error;});
     await this.opening;
   }
   call(name,returnType,types,args) {return this.module.ccall(name,returnType,types,args,{async:true});}

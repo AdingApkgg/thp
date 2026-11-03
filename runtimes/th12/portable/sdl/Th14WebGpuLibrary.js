@@ -8,11 +8,12 @@ addToLibrary({
       Module['th14WebGpuRuntime']=new Th14WebGpuRuntime(Module);
     }
     const runtime=Module['th14WebGpuRuntime'];
-    await runtime.open();
+    try { await runtime.open(); }
+    catch { return 0; }
     // Reacquire HEAP views after await: initialization may grow Wasm memory.
     HEAPF32.set(runtime.host.alphaBoundaries,pointer>>>2);return 1;
   },
-  th14_webgpu_close:() => Module['th14WebGpuRuntime'].host.close(),
+  th14_webgpu_close:() => { const runtime=Module['th14WebGpuRuntime']; if (runtime && runtime.host) runtime.host.close(); },
   th14_webgpu_upload:(handle,width,height,pointer) => Module['th14WebGpuRuntime'].host.upload(handle>>>0,width,height,HEAPU8.subarray(pointer,pointer+width*height*4)),
   th14_webgpu_depth:(handle,width,height,format) => Module['th14WebGpuRuntime'].host.depth(handle>>>0,width,height,format),
   th14_webgpu_draw:(packet,vertices,count) => Module['th14WebGpuRuntime'].host.draw(HEAPU8.subarray(packet,packet+448),HEAPU8.subarray(vertices,vertices+count*40),count),

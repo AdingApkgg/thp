@@ -1,0 +1,45 @@
+{
+  "verifiedWebGpuStartupFailureReturn": true,
+  "component": {
+    "failedInitializationNotifications": 2,
+    "concurrentOpenCreatesOnce": true,
+    "queuedWorkRejected": true,
+    "failedBridgeReturnsZero": true,
+    "failedCloseIsSafe": true,
+    "successfulInitializationUnaffected": true
+  },
+  "browserObservations": [
+    {
+      "fixed": false,
+      "observationSha256": "ae9a6833317f03be448ab24d47d7ae6bd204a46c89356adab1baf87a20c3d4dd",
+      "screenshotSha256": "cd094caacf997a666c70dafed725b584cab851d67c0addb550cf844c769a5bc8",
+      "unhandledRuntimeExceptions": 1,
+      "firstFrameTimeoutVisible": true,
+      "launchTimeoutVisible": true,
+      "initializationFailureVisible": false,
+      "profileBytes": 97732980
+    },
+    {
+      "fixed": true,
+      "observationSha256": "e8bad086b991179865e35b4dfb127713e29a3812ac704aeaa9a7ad88f67dd126",
+      "screenshotSha256": "f68f985bb3ae21fae3f9f847d169f4374b266c90706147742dac8d1d65d6b722",
+      "unhandledRuntimeExceptions": 0,
+      "firstFrameTimeoutVisible": false,
+      "launchTimeoutVisible": false,
+      "initializationFailureVisible": true,
+      "profileBytes": 97709756
+    }
+  ],
+  "buildSha256": "578edc35059b952cb35291e1260fb782080f3c0d73d785dcb889e369d3de4552",
+  "wasmSha256": "af0476df1adbbf3a0d42c3c1f790f1f42eed024fcfdb069da4eaf54642ad7993",
+  "loaderSha256": "bfabb3f2de4f87da210ce2e9465ecfa7c37f1910b73f97d58ea1d306d8b06e7f",
+  "gameplayObjectsReusedWithoutChange": 146,
+  "archiveWorkerReused": true,
+  "headlessGpuAdapterUnavailable": true,
+  "ordinaryChromeGameplayAccepted": false,
+  "wholeGameAccepted": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "toolSha256": "22be99cda19dc97b3e2c4927fc3c4332f7927dfa97340fb77890a7424deee197",
+  "scope": "Failure handling only: a missing WebGPU adapter returns initialization failure to the launcher instead of leaving an unhandled async rejection and later launch/first-frame timeouts. Fresh muted headless Chrome observations and component success/failure controls are bound to the relinked loader. This is not a successful gameplay, ordinary-GUI, pixel, audio or complete-game acceptance."
+}
