@@ -504,10 +504,23 @@ bool GameBattle::update(const std::function<bool()>& sample_input
     // score 17, player 18, Bomb 20, enemies 21, lasers 22, bullets 23, items 24,
     // spell 26, dialogue 27, HUD 28, normal ANM 29. Effects run before score.
 #if PORT_TITLE == 14
+    // The worker may finish during overlay ANM8 as well as normal ANM29.
+    // Keep the legacy normal-only callback out of the overlay traversal.
+    bool overlay_loading_failed=false;
+    AnmManager::VmBoundaryCallbackTh14 overlay_boundary;
+    if(pending_stage&&normal_vm_boundary)overlay_boundary=[&](const AnmVm& vm,AnmManager::VmBoundaryTh14 point){
+        if(normal_vm_boundary(vm,point))return true;
+        overlay_loading_failed=true;return false;
+    };
     // Resume at priority9 continues this frame; overlay8 has already run.
-    if(!overlay_already_updated)
-#endif
+    if(!overlay_already_updated&&!animations.update(true,overlay_boundary)){
+        last_error=overlay_loading_failed?-1009:-1005;
+        if(error.empty())error=overlay_loading_failed?"loading at overlay VM boundary":"overlay animation update: "+animations.last_error_text();
+        return false;
+    }
+#else
     if(!animations.update(true)){last_error=-1005;if(error.empty())error="overlay animation update: "+animations.last_error_text();return false;}
+#endif
     if(!stage_control()){last_error=-1009;return false;}
     const bool control_running=!transitioning||transition_started;
     // Legacy420752 holds stage-six music for300 ticks. TH14's complete436620

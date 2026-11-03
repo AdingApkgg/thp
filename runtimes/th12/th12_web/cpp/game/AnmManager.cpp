@@ -267,11 +267,11 @@ bool AnmManager::update(bool overlay,const VmBoundaryCallbackTh14& boundary){
     auto* cursor=heads[overlay?1:0];while(cursor){auto& vm=*cursor->value;cursor=cursor->next;
         if((vm.flags&0x4000000)||(kPortTitle==14&&(vm.flags2&0x20))){destroy(vm);continue;}
         if constexpr(kPortTitle==16){const u32 state=vm.flags2&0x60;if(state==0x20){destroy(vm);continue;}if(state)continue;}
-        if(vm.before_update)vm.before_update(vm);
 #if PORT_TITLE == 14
-        // Original47e65b calls the VM only after its pre-update callback.
+        // Original47e65b/47e73b precede the callback inside46fe50 at46ff1f.
         if(boundary&&!boundary(vm,VmBoundaryTh14::BeforeCall))return false;
 #endif
+        if(vm.before_update)vm.before_update(vm);
         const int status=vm.update(*this);
         if(status<0){record_failure(vm);return false;}
 #if PORT_TITLE == 14

@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "7b8b66f523219662dbe084948917039d263f0bc0",
+  "sourceCommit": "a3ef0132e50444378e9a1804c153e53df0826060",
   "files": [
     {
       "path": ".gitignore",
@@ -694,6 +694,11 @@
       "sha256": "78f4b029f947b81ef65edd38fd9893bef00b0956f432c6503a9c89d70ee59642"
     },
     {
+      "path": "docs/porting/TH14_OVERLAY_VM_BOUNDARY_NOV04.md",
+      "bytes": 3382,
+      "sha256": "deb6a39c33403e7f3d6e47cc140d5de59fee48aeeabcb57a1b09a14bfbbc7001"
+    },
+    {
       "path": "docs/porting/TH14_PASSIVE_RETURN_CLOCK_NOV01.md",
       "bytes": 4129,
       "sha256": "179ede4e0c09ba10cf7a7c6ed21693b04366d6cd77038c73b7667a1ae1d2a8a1"
@@ -800,8 +805,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 94880,
-      "sha256": "b1acea8239d1bfd288f81c027cd5d5797f91c942ae81421f9bb5fc80bc257609"
+      "bytes": 95720,
+      "sha256": "5303288dde0f080c7231847c17a521ca450d06c2299ae216080812081cc87ab2"
     },
     {
       "path": "docs/porting/TH14_REPLAY_ACTIVATION_RESET_NOV04.md",
@@ -5494,6 +5499,11 @@
       "sha256": "82b21ce578177f4bb110328ebb2bddbca495764861b955651599e361486f7b22"
     },
     {
+      "path": "docs/porting/th14-overlay-vm-boundary-nov04.json",
+      "bytes": 249501,
+      "sha256": "9852d92a3c6a83d2cc68bc78bbbabd41c3d4e98bb2d5c3257a2e9399da94ff20"
+    },
+    {
       "path": "docs/porting/th14-particles-verified.json",
       "bytes": 2198,
       "sha256": "dc417da26bf0c45e817da3191ea4281ccecf3f9d4e14168d328dc4f2ea2358be"
@@ -8950,8 +8960,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmManager.cpp",
-      "bytes": 20454,
-      "sha256": "5d15c6feb97a763becb1810699107ac65439cb3d153fddd58ea5564195d14ac8"
+      "bytes": 20456,
+      "sha256": "4f48ec09966bb9514412c6ff9ed6accf63cb46b7c781675a8dbf8c98f2c8b137"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/AnmManager.hpp",
@@ -9430,8 +9440,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "bytes": 67295,
-      "sha256": "01f9b53ec4d3fb3f964d7598b70c1a0b1eb02910b44a13ce16bff15c2a784837"
+      "bytes": 68054,
+      "sha256": "74459bfbe86d113eba9ddc49e710fd0364b51aca0eb73b1d30c9d2721d23d78b"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
@@ -13594,6 +13604,11 @@
       "sha256": "0f54e2d8a3db16ce2d6f80bf6fff88269ae5a2b267a09f9cae7ec32ac1e3438b"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-overlay-vm-boundary-fixture-nov04.cpp",
+      "bytes": 1059,
+      "sha256": "d4e3db50f5b9adcfa33c8b6b374503b833c118843b9767bd96a7f1f97cdb8bea"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-particles-fixture.cpp",
       "bytes": 3236,
       "sha256": "576845b84ddbd079b52e3dc685ed5f7da332d339ab0ca39a27df4ad2e0a70778"
@@ -14327,6 +14342,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-variables-fixture.cpp",
       "bytes": 2129,
       "sha256": "b310a2480d9252f1ca35c4a28402e0563f14508d8f71cdb992110cb90900ba82"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-vm-precall-order-fixture-nov04.cpp",
+      "bytes": 1294,
+      "sha256": "b992781b92e764202620a9665ca5b9c035fd53400c35c1a55b188bbfd0a5b1cd"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-vm-return-worker-fixture.cpp",
@@ -17199,6 +17219,11 @@
       "sha256": "3a8a33ab2be6e154ccb0b20fd0ba93cfb397965ff8f543a93c983984d86ddc80"
     },
     {
+      "path": "tools/th14-build-overlay-vm-boundaries-nov04.py",
+      "bytes": 5293,
+      "sha256": "e47702b3c7cb2700014cf290175c987e2a8d4473c929386cc88862d2060b9e49"
+    },
+    {
       "path": "tools/th14-build-reimu-bomb-polar-nov01.py",
       "bytes": 1748,
       "sha256": "82c64e82efeca851e8d96d06b2d53229cc0933736f5445da05c339a6e1039890"
@@ -17562,6 +17587,11 @@
       "path": "tools/th14-check-normal-vm-boundary-protocol-nov04.py",
       "bytes": 4922,
       "sha256": "c508ee3853937bb50a63895b7f8b5dd38c3e314e320364debc30c03681babd43"
+    },
+    {
+      "path": "tools/th14-check-overlay-vm-boundary-protocol-nov04.py",
+      "bytes": 4410,
+      "sha256": "60daabd6f819ecc5a63f1ac2545a342be7ba1a107ffcbc523a47223510d9f821"
     },
     {
       "path": "tools/th14-child-check.mjs",
@@ -20384,6 +20414,11 @@
       "sha256": "31d7451892b6b697c317de1e4f9fc611f5679f7fbdbb77fae1c245b296b7ac68"
     },
     {
+      "path": "tools/th14-integrate-overlay-vm-boundaries-nov04.py",
+      "bytes": 8764,
+      "sha256": "860e5c69243bace21fdf6d5c5fd7149192123a9df283571ff53d328ea0a2caa1"
+    },
+    {
       "path": "tools/th14-interpolator-application-full-evidence-nov02.py",
       "bytes": 9805,
       "sha256": "6ce796d9bd2e75e0b3f983481406417de4dd82a43b9b901ac20267055e014175"
@@ -21709,6 +21744,11 @@
       "sha256": "7960bbf80b317cb42424d94dc881367b21498effafb56c037455604bf5540457"
     },
     {
+      "path": "tools/th14-overlay-vm-boundary-evidence-nov04.py",
+      "bytes": 12893,
+      "sha256": "e2a43dfc1d79998733b4484104dfec45faa554f894f7cfa1b93ba3e90ca96454"
+    },
+    {
       "path": "tools/th14-owned-worker-status-read.py",
       "bytes": 3698,
       "sha256": "835157035574ab825e76df33371f82fb737de6f8648891ff5bf686f7bb89388f"
@@ -22269,9 +22309,24 @@
       "sha256": "e99e14880b8040d3d2f661f559ddb39ed94de993f6db3155f92ab129e04d13fa"
     },
     {
+      "path": "tools/th14-prepare-overlay-vm-boundaries-v2-nov04.py",
+      "bytes": 4643,
+      "sha256": "e048f94fe747811b34279c4bab3f872f5879aa60c2d970b21521b1e863a1c896"
+    },
+    {
       "path": "tools/th14-prepare-replay-rng-order-drivers-nov04.py",
       "bytes": 3302,
       "sha256": "18831ec4359134a8c2335b3ee847ae486dce99ba9050ffda2354922e5f678a19"
+    },
+    {
+      "path": "tools/th14-prepare-replay-rng-pool-context-observer-nov04.py",
+      "bytes": 4165,
+      "sha256": "93c70986ac763775da7e2e83ed42b41599aba5f070ef6c1320f1cbee293d945f"
+    },
+    {
+      "path": "tools/th14-prepare-replay-rng-post-vm-observer-nov04.py",
+      "bytes": 3363,
+      "sha256": "f0c0670852138da09ef983018e037e7c2d0bffb5839240d4f1dbbbf7d2e2d992"
     },
     {
       "path": "tools/th14-prepare-replay-rng-restore-nov04.py",
@@ -22742,6 +22797,11 @@
       "path": "tools/th14-replay-rng-order-evidence-nov04.py",
       "bytes": 10995,
       "sha256": "97da0aa604173e38640e2a46da12c6c3a69b6a5396c62f11648b0268b88f83ae"
+    },
+    {
+      "path": "tools/th14-replay-rng-post-vm-evidence-nov04.py",
+      "bytes": 6181,
+      "sha256": "7dfb097a8dd88aac631549f0a2476a09d02270abca63676c24885c81ddb6cd70"
     },
     {
       "path": "tools/th14-replay-rng-restore-check-nov04.mjs",
@@ -25814,6 +25874,16 @@
       "sha256": "32f4ec93021933d67d906ba143966337afdfeb318ddc1116aeeb1a0c8ac0e8d1"
     },
     {
+      "path": "tools/th14-vm-precall-order-check-nov04.py",
+      "bytes": 3761,
+      "sha256": "b36a6af244e4013a078938d92eef78cddf0b2ff444ab1dcae48b62794b07b01e"
+    },
+    {
+      "path": "tools/th14-vm-precall-order-native-nov04.py",
+      "bytes": 2659,
+      "sha256": "71a74dbbcb30421d7a85e8b5381ab4d09d4531e63758a2600946a778a47ef6ed"
+    },
+    {
       "path": "tools/th14-vm-return-review-oct30.py",
       "bytes": 5422,
       "sha256": "e7a886519e454bd0656c3facf7de95a08edf7c08e3d68274f415f071ce3b14f8"
@@ -27075,37 +27145,25 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "7b8b66f523219662dbe084948917039d263f0bc0",
-    "title": "TH14 typed normal VM boundaries and witnessed replay initialization inputs",
+    "basePublishedCommit": "a3ef0132e50444378e9a1804c153e53df0826060",
+    "title": "TH14 overlay loader dispatch and original-aligned VM pre-call ordering",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/AnmManager.hpp",
       "runtimes/th12/th12_web/cpp/game/AnmManager.cpp",
-      "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
       "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "runtimes/th12/th12_web/cpp/game/GameSession.hpp",
-      "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "tools/th14-prepare-normal-vm-boundaries-nov04.py",
-      "tools/th14-build-normal-vm-boundaries-nov04.py",
-      "tools/th14-check-normal-vm-boundary-protocol-nov04.py",
-      "tools/th14-check-normal-vm-boundaries-nov04.py",
-      "tools/th14-integrate-normal-vm-boundaries-nov04.py",
-      "tools/th14-observed-normal-vm-inputs-nov04.py",
-      "tools/th14-normal-vm-input-contract-nov04.py",
-      "tools/th14-prepare-normal-vm-boundary-driver-nov04.py",
-      "tools/th14-verify-observed-normal-vm-scene-nov04.py",
-      "tools/th14-verify-observed-normal-vm-campaign-nov04.py",
-      "tools/th14-normal-vm-boundary-evidence-nov04.py",
-      "tools/th14-build-webgpu-reuse-worker-nov03.py",
-      "tools/th14-prepare-replay-rng-store-vm-observer-nov04.py",
-      "tools/th14-prepare-replay-rng-template-observer-nov04.py",
-      "tools/th14-build-replay-rng-order-observer-nov04.py",
-      "tools/th14-prepare-replay-rng-order-drivers-nov04.py",
-      "tools/th14-replay-rng-order-evidence-nov04.py",
-      "runtimes/th12/th12_web/tests/cpp/th14-normal-vm-boundary-fixture-nov04.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-replay-rng-order-observer-fixture-nov04.cpp",
-      "docs/porting/TH14_NORMAL_VM_BOUNDARY_NOV04.md",
-      "docs/porting/th14-normal-vm-boundary-nov04.json",
-      "docs/porting/th14-replay-rng-order-nov04.json",
+      "runtimes/th12/th12_web/tests/cpp/th14-overlay-vm-boundary-fixture-nov04.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-vm-precall-order-fixture-nov04.cpp",
+      "tools/th14-prepare-overlay-vm-boundaries-v2-nov04.py",
+      "tools/th14-build-overlay-vm-boundaries-nov04.py",
+      "tools/th14-check-overlay-vm-boundary-protocol-nov04.py",
+      "tools/th14-vm-precall-order-native-nov04.py",
+      "tools/th14-vm-precall-order-check-nov04.py",
+      "tools/th14-integrate-overlay-vm-boundaries-nov04.py",
+      "tools/th14-overlay-vm-boundary-evidence-nov04.py",
+      "tools/th14-prepare-replay-rng-post-vm-observer-nov04.py",
+      "tools/th14-replay-rng-post-vm-evidence-nov04.py",
+      "tools/th14-prepare-replay-rng-pool-context-observer-nov04.py",
+      "docs/porting/TH14_OVERLAY_VM_BOUNDARY_NOV04.md",
+      "docs/porting/th14-overlay-vm-boundary-nov04.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
@@ -27113,21 +27171,24 @@
     "gameAssetsAdded": false,
     "productionGameplayCoreChanged": true,
     "gameplayCorePublicationPending": true,
-    "ordinaryWasmSha256": "59f98d528450a7f960a8c471d99b300b084cb5a2aea9232116cc2897d48b21f6",
+    "ordinaryWasmSha256": "a2f732df6464dc0b698716d836543a86c7eda9416d419138f7c2c7e4ac08c94f",
     "freshCoreObjects": 141,
     "defaultCurrentPassedRecords": 16,
     "defaultCurrentPassedCallbacks": 1379760,
     "observedVmBoundaryCallbacks": 35000,
     "observedVmRows303": 1057,
     "observedCombatCheckpoints": 393,
+    "additionalNaturalPrefixCallbacks": 35000,
+    "originalPrecallCases": 3,
+    "cppManagerOrderingCases": 6,
+    "priorOrderingControlsRejected": 6,
     "negativeInputControls": 7,
-    "vmBoundaryFailureControls": 2,
+    "vmBoundaryFailureControls": 4,
     "sharedTitleSyntaxChecks": 12,
     "applicationFrames": 2289,
     "applicationChecks": 27,
     "physicalAudioDevicesOpened": 0,
     "browserCompiledUnits": 146,
-    "browserWasmSha256": "4d0bb4f86772863b9de3cbb4ad907bc97f131fc575fffa2b27ec6cd74597cc75",
     "thirdNativeRecordStrictlyAccepted": false,
     "thirdNativeScriptSeedDifferences": 4137,
     "thirdNativeScriptCallsDifferences": 283,
