@@ -603,7 +603,11 @@ bool GameBattle::update(const std::function<bool()>& sample_input
     }
     return true;
 }
-bool GameBattle::draw(AnmRenderer& renderer,SceneDrawKind kind) {
+bool GameBattle::draw(AnmRenderer& renderer,SceneDrawKind kind
+#if PORT_TITLE == 14
+        ,const std::function<bool()>& camera_published
+#endif
+) {
     switch(kind){
     case SceneDrawKind::ScorePopups:
 #if PORT_TITLE == 14
@@ -625,11 +629,27 @@ bool GameBattle::draw(AnmRenderer& renderer,SceneDrawKind kind) {
     case SceneDrawKind::AsciiOuter:return ascii.draw(renderer,0,compositor.full_camera,compositor.play_camera);
     case SceneDrawKind::AsciiPlayfield:return ascii.draw(renderer,2,compositor.full_camera,compositor.play_camera);
     case SceneDrawKind::StageBackground:
-        if((!transitioning||transition_started)&&stage&&!stage->draw_background(renderer,compositor.world_camera,fades))return false;
-        return !outgoing_stage||outgoing_stage->draw_background(renderer,compositor.world_camera,fades);
+        if((!transitioning||transition_started)&&stage&&!stage->draw_background(renderer,compositor.world_camera,fades
+#if PORT_TITLE == 14
+            ,camera_published
+#endif
+))return false;
+        return !outgoing_stage||outgoing_stage->draw_background(renderer,compositor.world_camera,fades
+#if PORT_TITLE == 14
+            ,camera_published
+#endif
+);
     case SceneDrawKind::StageForeground:
-        if((!transitioning||transition_started)&&stage&&!stage->draw_foreground(renderer,compositor.world_camera))return false;
-        return !outgoing_stage||outgoing_stage->draw_foreground(renderer,compositor.world_camera);
+        if((!transitioning||transition_started)&&stage&&!stage->draw_foreground(renderer,compositor.world_camera
+#if PORT_TITLE == 14
+            ,camera_published
+#endif
+))return false;
+        return !outgoing_stage||outgoing_stage->draw_foreground(renderer,compositor.world_camera
+#if PORT_TITLE == 14
+            ,camera_published
+#endif
+);
     case SceneDrawKind::Spell:
         if(spell_flags&1){
             // TH14 backgrounds join the ANM manager in 41cb20; its layer

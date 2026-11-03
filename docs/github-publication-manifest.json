@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "5309e338232613bad6be96f1c2ad65090aaa74a2",
+  "sourceCommit": "90402e3b07d776aa73a752e5a759346ac327028f",
   "files": [
     {
       "path": ".gitignore",
@@ -147,6 +147,11 @@
       "path": "docs/porting/TH14_CAMERA_LOADING_HUD_OCT24.md",
       "bytes": 2864,
       "sha256": "23ff33ad56a531b017a3ba8169773d2a791cdfef5ea90c4301c3c9cee5e45b79"
+    },
+    {
+      "path": "docs/porting/TH14_CAMERA_PUBLICATION_NOV04.md",
+      "bytes": 2319,
+      "sha256": "9ce23efb2f5283ece91730afdee57113e316a79695ca00423031166a49d6d379"
     },
     {
       "path": "docs/porting/TH14_CAMERA_STORE_INTERLEAVING_OCT26.md",
@@ -790,8 +795,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 91245,
-      "sha256": "134b7eb089198476792b24cf632776ec65b872ce805d59ce2f991f41c3a55ff0"
+      "bytes": 91857,
+      "sha256": "59edcc049200307c92324ec76c4dd4a2503e1d95be1b6974cd4313d24536e14c"
     },
     {
       "path": "docs/porting/TH14_REPLAY_ACTIVATION_RESET_NOV04.md",
@@ -2247,6 +2252,11 @@
       "path": "docs/porting/th14-camera-loading-hud-verified-oct24.json",
       "bytes": 27176,
       "sha256": "b439a0785baa8946ac7f81cea2a2969541e5cd516d76c45ba9faf3fb0b9dad14"
+    },
+    {
+      "path": "docs/porting/th14-camera-publication-nov04.json",
+      "bytes": 12081,
+      "sha256": "4963e03c2d152bcd56fc4a68e8ce194be8c6925a368e0437909fc991a1f16d34"
     },
     {
       "path": "docs/porting/th14-camera-store-interleaving-oct26.json",
@@ -9375,13 +9385,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
-      "bytes": 65700,
-      "sha256": "802a866a1f149ce64bddf2c49be72e77c077134b22cc105d61e47c11ab0a03ce"
+      "bytes": 66040,
+      "sha256": "ac1247a661c1392080dc591018a87ed9a2c13823671a3632134713162bea9285"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
-      "bytes": 24978,
-      "sha256": "171e2055afcdbce7f4d70c1339f17c6e429276590af3fc02e67545adb9289709"
+      "bytes": 25069,
+      "sha256": "08273e338d501a4973a07f7c79011f97ab6152938bff2ea8a06cb7bda0dcf1ce"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameConfig.cpp",
@@ -9425,8 +9435,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "bytes": 56388,
-      "sha256": "68a54f2930b2552e0d0b959a5f63d96600224c3a04158bbc3bff7975a54efa93"
+      "bytes": 56729,
+      "sha256": "b2f8b9468765f4e002b69394fc7ebc2904c7c1fd84beb6093c930fd0aa7eaa2f"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.hpp",
@@ -10045,8 +10055,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Stage.hpp",
-      "bytes": 4057,
-      "sha256": "88c37ea23dd9b886e4d218921a00efff574edadced73b55b278c187293ce77c4"
+      "bytes": 4231,
+      "sha256": "c081cab3d3bdefdb2518cbf49cdc37dfee0c4647cc0ac0f6c7d690a3ed440fb5"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/StageCompletion.cpp",
@@ -10060,8 +10070,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/StageDraw.cpp",
-      "bytes": 10027,
-      "sha256": "0dd619d9f36ef976909e243f6e3956f019668ddf0cc308d610243856d7cbb2b2"
+      "bytes": 10791,
+      "sha256": "f50c57163addcd636201508df7f7bc17bc73aafed91806893a15d6fc838ceb7a"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/StageEclTransferTh14.hpp",
@@ -12627,6 +12637,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-camera-fixture.cpp",
       "bytes": 2727,
       "sha256": "a109ddc05a5f2fce8f29b35f23d46a5e5a55866eed2b86fff25718995a1ce0a1"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-camera-publication-fixture-nov04.cpp",
+      "bytes": 2462,
+      "sha256": "bd6bc9514c1e367dc631111f468397ca51c631e1ddadf8af019c4bbb4ee73504"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-campaign-handoff-fixture.cpp",
@@ -17069,6 +17084,11 @@
       "sha256": "286a51e1e5f54d3ac3c8ca51256f0f33316e2b0dbd54402b44cd7ac1362fbf04"
     },
     {
+      "path": "tools/th14-build-camera-publication-candidate-nov04.py",
+      "bytes": 8115,
+      "sha256": "631e8daa81762be8e152b615b246c4717ceb01d35e9bce8fbe84a7bfec24071a"
+    },
+    {
       "path": "tools/th14-build-campaign-observer.py",
       "bytes": 4970,
       "sha256": "8c400204e301ef8a46e0ec5379f0a3c1b6ad14d10b763ee42cdcb3c8be43cd57"
@@ -17120,8 +17140,8 @@
     },
     {
       "path": "tools/th14-build-webgpu-reuse-worker-nov03.py",
-      "bytes": 14764,
-      "sha256": "904794e758c1c456794305d005a541dc7980fa9faa3b78ae9b9d8a448e582306"
+      "bytes": 14842,
+      "sha256": "22a3cc8881d3b82da84459fe6f5a876f8b9032f38bc9fe0f868a6c4ebc7ed039"
     },
     {
       "path": "tools/th14-bullet-acceleration-check.mjs",
@@ -17342,6 +17362,26 @@
       "path": "tools/th14-camera-cross-native-oct25.py",
       "bytes": 3009,
       "sha256": "e2ef94eb82c19a7fe385bafa8a9657de9dd5ff8981fccbd23b1a5025d8e4b64d"
+    },
+    {
+      "path": "tools/th14-camera-publication-check-nov04.mjs",
+      "bytes": 3729,
+      "sha256": "1c08ca8751ede1717cedc33152f9dc62095bb38b1efa45d38e7ea1ce90f8e572"
+    },
+    {
+      "path": "tools/th14-camera-publication-evidence-nov04.py",
+      "bytes": 10710,
+      "sha256": "f410257802ae3b3c73aa22f4448c87d91f324cbf4236eb235aa32849c7082429"
+    },
+    {
+      "path": "tools/th14-camera-publication-native-nov04.py",
+      "bytes": 4505,
+      "sha256": "af38c616ccee535e55b0fc85929c421dba86b610b38f3b557dc7911a89b20119"
+    },
+    {
+      "path": "tools/th14-camera-publication-regressions-nov04.py",
+      "bytes": 5727,
+      "sha256": "3e7d4fd6867b6b0bd8d82fe46bd94f775f93f6ee8837e36f240dfb645031185d"
     },
     {
       "path": "tools/th14-camera-right-observable-check-oct26.py",
@@ -20239,6 +20279,11 @@
       "sha256": "16b4fa0158cb0835ad3ca99a7cc24d60289b83f3482705c94f57947712d2f369"
     },
     {
+      "path": "tools/th14-integrate-camera-publication-nov04.py",
+      "bytes": 7371,
+      "sha256": "b345af236a614e4b6b05af77791b4a5e2b89cd5f32b3e57b77ced07f8326c2ff"
+    },
+    {
       "path": "tools/th14-interpolator-application-full-evidence-nov02.py",
       "bytes": 9805,
       "sha256": "6ce796d9bd2e75e0b3f983481406417de4dd82a43b9b901ac20267055e014175"
@@ -22082,6 +22127,11 @@
       "path": "tools/th14-prepare-application-trace-oct27.py",
       "bytes": 13186,
       "sha256": "5a97c5efd4581acd00304c17b649a64fa4790329f7367037f02f4da32c15a763"
+    },
+    {
+      "path": "tools/th14-prepare-camera-publication-candidate-nov04.py",
+      "bytes": 5942,
+      "sha256": "93eb27ab1ffa67b8bdcdc1d9e4349b1fca8df6f0c017e860eaa503475a7c0e97"
     },
     {
       "path": "tools/th14-prepare-lossless-music.py",
@@ -26815,26 +26865,45 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "5309e338232613bad6be96f1c2ad65090aaa74a2",
-    "title": "TH14 Sakuya A Extra current-core comparison",
+    "basePublishedCommit": "90402e3b07d776aa73a752e5a759346ac327028f",
+    "title": "TH14 loader delivery after draw camera publication",
     "changedSourceAndMetadataFiles": [
-      "tools/th14-sakuyaa-extra-evidence-nov04.py",
-      "docs/porting/th14-sakuyaa-extra-current-nov04.json",
-      "docs/porting/TH14_SAKUYAA_EXTRA_CURRENT_NOV04.md",
+      "runtimes/th12/th12_web/cpp/game/Stage.hpp",
+      "runtimes/th12/th12_web/cpp/game/StageDraw.cpp",
+      "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
+      "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
+      "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-camera-publication-fixture-nov04.cpp",
+      "tools/th14-prepare-camera-publication-candidate-nov04.py",
+      "tools/th14-build-camera-publication-candidate-nov04.py",
+      "tools/th14-camera-publication-native-nov04.py",
+      "tools/th14-camera-publication-check-nov04.mjs",
+      "tools/th14-camera-publication-regressions-nov04.py",
+      "tools/th14-integrate-camera-publication-nov04.py",
+      "tools/th14-camera-publication-evidence-nov04.py",
+      "tools/th14-build-webgpu-reuse-worker-nov03.py",
+      "docs/porting/TH14_CAMERA_PUBLICATION_NOV04.md",
+      "docs/porting/th14-camera-publication-nov04.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
-    "productionGameplayCoreChanged": false,
-    "currentGameplayCoreCommit": "5309e338232613bad6be96f1c2ad65090aaa74a2",
-    "nativeCallbacks": 38977,
-    "debugExceptions": 0,
-    "strictV4Passed": true,
-    "vm303Rows": 6461,
-    "combatCheckpoints": 48,
-    "initialPublications": 3205,
-    "sourceReplayEofProved": false,
-    "wholeModeEquivalent": false,
+    "productionGameplayCoreChanged": true,
+    "changedGameplayFiles": 5,
+    "coreObjectsRecompiled": 141,
+    "browserUnitsCompiled": 146,
+    "controlledOriginalInstructionCases": 50,
+    "controlledWasmCases": 200,
+    "syntheticCameraInterleavingProbe": true,
+    "priorControlledCopiedRightDifferences": 72,
+    "candidateControlledCopiedRightDifferences": 0,
+    "applicationFrames": 2289,
+    "applicationChecks": 27,
+    "regressionCallbacks": 199917,
+    "regressionCases": 3,
+    "oldCameraOrRngFailuresClosed": false,
+    "copyWordInterleavingsImplemented": false,
+    "browserAcceptance": false,
     "completeGame": false,
     "nativeEquivalent": false
   }

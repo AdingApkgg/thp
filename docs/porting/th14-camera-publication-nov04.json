@@ -1,0 +1,265 @@
+{
+  "verifiedIntegratedCameraPublicationBoundary": true,
+  "originalPublicationPcs": [
+    "0x40e365",
+    "0x40e7f1"
+  ],
+  "originalWorkerCopy": "0x40d435..0x40d447",
+  "originalInstructionComponentCases": 50,
+  "originalPublicationCases": 36,
+  "controlledWasmCases": 200,
+  "priorCopiedRightDifferences": 72,
+  "candidateCopiedRightDifferences": 0,
+  "callbackFailureCases": 72,
+  "finiteRegressions": [
+    {
+      "key": "reimub-full",
+      "callbacks": 122537,
+      "vmRows": 2586,
+      "combatCheckpoints": 1294
+    },
+    {
+      "key": "reimua-extra",
+      "callbacks": 38403,
+      "vmRows": 860,
+      "combatCheckpoints": 46
+    },
+    {
+      "key": "sakuyaa-extra",
+      "callbacks": 38977,
+      "vmRows": 6461,
+      "combatCheckpoints": 48
+    }
+  ],
+  "finiteCallbacks": 199917,
+  "all141CoreObjectsRecompiled": true,
+  "coreWasmSha256": "272e68045ebf5907cadadf37bb3cba4afd936548d8d9944dfa78735b5bb513b7",
+  "otherTitleSyntaxCases": 12,
+  "applicationFrames": 2289,
+  "applicationPresents": 2289,
+  "applicationChecks": 27,
+  "applicationActiveCadenceSamples": 1716,
+  "applicationStage2FirstCounter": 8,
+  "applicationPauseCounter": 89,
+  "twoCapturedFramesEqualFrozenReference": true,
+  "offlineMixedPcmFrames": 1526784,
+  "offlineMixedPcmHashEqualFrozenReference": true,
+  "physicalAudioDevicesOpened": 0,
+  "browserCompiledUnits": 146,
+  "browserWasmSha256": "8778a3358efcd6497cc90ff26df4924487d8d781cc2ae82b30f92d0d1c5a55f1",
+  "browserAcceptance": false,
+  "nativeStateValuesProvidedToEngine": false,
+  "perRecordingClockChosen": false,
+  "oldRecordingOrderRecovered": false,
+  "oldCameraOrRngFailuresClosed": false,
+  "copyWordInterleavingsImplemented": false,
+  "ordinaryIndependentTimingAccepted": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "limitations": [
+    "The controlled instruction component uses synthetic cameras and skips the renderer flush implementation.",
+    "The new delivery point covers worker progress after a complete draw camera publication and before perspective; individual REP and perspective stores remain separately unproved.",
+    "Three retained finite records do not establish all modes, source replay EOF or the older failing recordings.",
+    "The offscreen Application uses declared platform inputs; its frozen image/PCM reference is not an original full-game recording.",
+    "Browser compilation does not accept browser gameplay, persistence, whole-game pixels/PCM or independent scheduling."
+  ],
+  "bindings": {
+    "artifacts/th14/camera-publication-candidate-v3-nov04/integration.json": {
+      "bytes": 2348,
+      "sha256": "7882383b8eea77d7857a7d60713c94a09bef942bdbfb26ab30cfbb88e7befd4d"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/core/observer-build.json": {
+      "bytes": 133052,
+      "sha256": "289252b30a724e291210f3d37134fb7015764ccf4b7bb9fb65fa07b99daff61d"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/core/observer.wasm": {
+      "bytes": 1504015,
+      "sha256": "272e68045ebf5907cadadf37bb3cba4afd936548d8d9944dfa78735b5bb513b7"
+    },
+    "runtimes/th12/th12_web/cpp/game/Stage.hpp": {
+      "bytes": 4231,
+      "sha256": "c081cab3d3bdefdb2518cbf49cdc37dfee0c4647cc0ac0f6c7d690a3ed440fb5"
+    },
+    "runtimes/th12/th12_web/cpp/game/StageDraw.cpp": {
+      "bytes": 10791,
+      "sha256": "f50c57163addcd636201508df7f7bc17bc73aafed91806893a15d6fc838ceb7a"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameBattle.hpp": {
+      "bytes": 25069,
+      "sha256": "08273e338d501a4973a07f7c79011f97ab6152938bff2ea8a06cb7bda0dcf1ce"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameBattle.cpp": {
+      "bytes": 66040,
+      "sha256": "ac1247a661c1392080dc591018a87ed9a2c13823671a3632134713162bea9285"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameSession.cpp": {
+      "bytes": 56729,
+      "sha256": "b2f8b9468765f4e002b69394fc7ebc2904c7c1fd84beb6093c930fd0aa7eaa2f"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/component-verified.json": {
+      "bytes": 1136,
+      "sha256": "5fa13626d6c8f96ce8e8f69cf39ba6a7377478e9b3561d4f211db37f60d5fd42"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/native-component.json": {
+      "bytes": 12928,
+      "sha256": "c7ca120c9ed36957f66ad274e941887cdd318310903d6ce4f46051df2b5c8ad2"
+    },
+    "tools/th14-camera-publication-check-nov04.mjs": {
+      "bytes": 3729,
+      "sha256": "1c08ca8751ede1717cedc33152f9dc62095bb38b1efa45d38e7ea1ce90f8e572"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/core/component-build.json": {
+      "bytes": 590,
+      "sha256": "452a45a4f4747936454f5bfdebad37c2428a12b67820f8f5c4cb5b24a6d8b227"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/core/component.wasm": {
+      "bytes": 1507593,
+      "sha256": "c25cb31c505b5a6430403d21ee4d47cd742504574028d5419c52afe46d5534da"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/core/prior-component.wasm": {
+      "bytes": 1506983,
+      "sha256": "525ff013554d08bbec8edf5b4f6506422910619957c382f6a0474aa39f2d5af5"
+    },
+    "tools/th14-camera-publication-native-nov04.py": {
+      "bytes": 4505,
+      "sha256": "af38c616ccee535e55b0fc85929c421dba86b610b38f3b557dc7911a89b20119"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-camera-publication-fixture-nov04.cpp": {
+      "bytes": 2462,
+      "sha256": "bd6bc9514c1e367dc631111f468397ca51c631e1ddadf8af019c4bbb4ee73504"
+    },
+    "artifacts/th14/camera-publication-candidate-v2-nov04/regressions/end.json": {
+      "bytes": 1367,
+      "sha256": "532ee88d24f6a5b40d0cc036fbc5777bf97ed6456fbc4fea4fb94a994daba454"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/revalidated-payloads/reimub-full/raw-verified.json": {
+      "bytes": 10891,
+      "sha256": "0f597f8c850de027720d16a913c1239efc51b850eede477a1cf5f0582770bdad"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/revalidated-payloads/reimub-full/exceptions.json": {
+      "bytes": 461,
+      "sha256": "2a62c31fca626524f7f03f16d9a4fb0915951349be2f9b3ddb4b496685af23cf"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/revalidated-payloads/reimub-full/timing.json": {
+      "bytes": 1019,
+      "sha256": "0f45db3fd5ebf83ebd21743b4cbcb422ca2fa4eb76f56b41ece7c13741f2d4fd"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/revalidated-payloads/reimub-full/scene.json": {
+      "bytes": 863,
+      "sha256": "b517018c9dfec9d7cc6d0689c7b90e0d9d60b0f3991c970c7ddb3b8af538e273"
+    },
+    "tools/th14-verify-native-campaign.py": {
+      "bytes": 16097,
+      "sha256": "ea0751a2d4644780c3cde3f62873cbf6b7e41c17a6657c17d474f48579587fc8"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/revalidated-payloads/reimua-extra/raw-verified.json": {
+      "bytes": 6884,
+      "sha256": "f3517c54de7f15479bf64563d5eec8b81e061c0c1b33467a1724c6cf4d72e183"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/revalidated-payloads/reimua-extra/exceptions.json": {
+      "bytes": 461,
+      "sha256": "aa3185c757ab9e898ac4e60d870a384524a4e1c1c277d5410da32c819dbe652c"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/revalidated-payloads/reimua-extra/timing.json": {
+      "bytes": 933,
+      "sha256": "d9f2f62418f05a5a80e49bcf1b523cae425fff4fd7d4cce1df84e7bf5eed5746"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/revalidated-payloads/reimua-extra/scene.json": {
+      "bytes": 758,
+      "sha256": "71f63dc509f216fd2dae3031b44d84cfbaff7bc86e47ae81ba2c061033808be2"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/revalidated-payloads/sakuyaa-extra/raw-verified.json": {
+      "bytes": 8721,
+      "sha256": "b193d259a562021f2dc27794859646fd593d58c251ecf54bb6950f482df406d2"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/revalidated-payloads/sakuyaa-extra/exceptions.json": {
+      "bytes": 461,
+      "sha256": "8e28d057e859037f74ac5a3e5b983d1764dc96514d73be7ae44c08765ad994b2"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/revalidated-payloads/sakuyaa-extra/timing.json": {
+      "bytes": 933,
+      "sha256": "a9897acabd2533dcecbc9af055c0111124e96d167ce5bf40b179bebe730eeb3f"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/revalidated-payloads/sakuyaa-extra/scene.json": {
+      "bytes": 758,
+      "sha256": "6f80f06b9b151de81985c5d1f46ff5331e0860ec91d51e7576d4052f450977eb"
+    },
+    "artifacts/th14/camera-publication-candidate-v2-nov04/syntax/report.json": {
+      "bytes": 2318,
+      "sha256": "6e61c8ca34facd7302280423d0502c5fcc3b2d25913741cd49a599bf56222508"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/gles-build/build.json": {
+      "bytes": 86980,
+      "sha256": "5865ca33cf00db83621e9ddfcb254034bc3d0b9b20842e7750bd00135dcce932"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/gles-two-stage/report.json": {
+      "bytes": 1346312,
+      "sha256": "7dd367122726f496739564153752739830876f9cf279ece95274f383f3daa80b"
+    },
+    "artifacts/th14/replay-cadence-reset-nov04/gles-two-stage/report.json": {
+      "bytes": 1346312,
+      "sha256": "c3efef5444656e405d81f43119064fe70240728a21eaa29e4e6f7612bfd0b7b5"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/gles-build/application.wasm": {
+      "bytes": 2047363,
+      "sha256": "60dbfc252d93dd793f30c22336e9ce4655583d15c3c93e92b9833c1068e14eca"
+    },
+    "tools/th14-native-application-process-host-oct27.py": {
+      "bytes": 27304,
+      "sha256": "4b64f9f41a5a44a72be659de0912c5c0ec777778f903c5eec006c1d05817ecd6"
+    },
+    "tools/th14-build-native-application.py": {
+      "bytes": 11521,
+      "sha256": "6ef15ef417bf3c7e3a88e6cd943014cf2c4c6b8bf565c0847d300a1c416a655d"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/gles-two-stage/stage-one-ready.bgra": {
+      "bytes": 1228800,
+      "sha256": "f7aa26dd41ed166314472b16e1bdd6a3627b4771915e8a23dfd4d8d537246a4d"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/gles-two-stage/stage-two-eight.bgra": {
+      "bytes": 1228800,
+      "sha256": "3a05e33563c917c1470122eedee7fcacb8944f963135eb213c7784388fa53fdb"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/browser-build/build.json": {
+      "bytes": 85214,
+      "sha256": "ba62e44fc4b7b639f78804522e956ffe3b70381829bebe22ebfd3eb7223e3a9e"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/browser-build/th14-sdl.wasm": {
+      "bytes": 2798198,
+      "sha256": "8778a3358efcd6497cc90ff26df4924487d8d781cc2ae82b30f92d0d1c5a55f1"
+    },
+    "artifacts/th14/camera-publication-candidate-v3-nov04/browser-build/th14-sdl.mjs": {
+      "bytes": 298160,
+      "sha256": "f796ac3b9921e9b7d1bdd1f18b080ae190f616cc942b07e815abfe6efb2bf1e6"
+    },
+    "runtimes/th12/th12_web/cpp/game/ResourceCrypt.cpp": {
+      "bytes": 3316,
+      "sha256": "a291010053963e25dadef2be15ddb3c217110cd2377fc495402ef375150f8c45"
+    },
+    "artifacts/th14/vm-return-worker-oct29/work-state.json": {
+      "bytes": 5172,
+      "sha256": "2236db52bee27439486e69216333cd88ddc27d1dcc28233f87bacdcaadc1f33c"
+    },
+    "tools/th14-prepare-camera-publication-candidate-nov04.py": {
+      "bytes": 5942,
+      "sha256": "93eb27ab1ffa67b8bdcdc1d9e4349b1fca8df6f0c017e860eaa503475a7c0e97"
+    },
+    "tools/th14-build-camera-publication-candidate-nov04.py": {
+      "bytes": 8115,
+      "sha256": "631e8daa81762be8e152b615b246c4717ceb01d35e9bce8fbe84a7bfec24071a"
+    },
+    "tools/th14-camera-publication-regressions-nov04.py": {
+      "bytes": 5727,
+      "sha256": "3e7d4fd6867b6b0bd8d82fe46bd94f775f93f6ee8837e36f240dfb645031185d"
+    },
+    "tools/th14-integrate-camera-publication-nov04.py": {
+      "bytes": 7371,
+      "sha256": "b345af236a614e4b6b05af77791b4a5e2b89cd5f32b3e57b77ced07f8326c2ff"
+    },
+    "tools/th14-build-webgpu-reuse-worker-nov03.py": {
+      "bytes": 14842,
+      "sha256": "22a3cc8881d3b82da84459fe6f5a876f8b9032f38bc9fe0f868a6c4ebc7ed039"
+    }
+  },
+  "verifierSha256": "f410257802ae3b3c73aa22f4448c87d91f324cbf4236eb235aa32849c7082429"
+}

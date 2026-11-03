@@ -166,7 +166,11 @@ public:
         ,const std::function<bool()>& before_normal_animation_update={}
 #endif
     );
-    bool draw(AnmRenderer&,SceneDrawKind);
+    bool draw(AnmRenderer&,SceneDrawKind
+#if PORT_TITLE == 14
+        ,const std::function<bool()>& camera_published={}
+#endif
+);
     bool spawn_root();
     void set_input(const GameSessionInput&);
     void synchronize_player();

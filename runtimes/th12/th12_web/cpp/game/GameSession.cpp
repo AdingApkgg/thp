@@ -898,6 +898,12 @@ bool GameSession::draw(AnmRenderer& renderer,AsciiText* overlay) {
     renderer.fog_origin=compositor.play_camera.position;
     const auto& fog=compositor.play_camera.fog;
     renderer.fog_channels={fog.channels[0],fog.channels[1],fog.channels[2]};renderer.fog_start=fog.near_distance;
+#if PORT_TITLE == 14
+    const std::function<bool()> camera_published=[this](){
+        return !battle||!battle->pending_stage||battle->pump_stage_loading(stage_load_clock(),
+            animations.first_deferred_capture_file_index(),stage_load_host_flags);
+    };
+#endif
     u32 next_fade_priority=0;
     for(const auto& pass:scene_draw_passes) {
 #if PORT_TITLE == 14
@@ -935,7 +941,11 @@ bool GameSession::draw(AnmRenderer& renderer,AsciiText* overlay) {
             if(!title_ascii->draw(renderer,0,compositor.full_camera,compositor.play_camera))return fail("title text draw failed");
         }else if(battle_attached&&battle){
             if(pass.kind==SceneDrawKind::AsciiOuter&&pause_menu)pause_menu->queue_ascii(battle->ascii);
-            if(!battle->draw(renderer,pass.kind))return fail(("battle draw failed: pass "+std::to_string(u32(pass.kind))+(battle->error.empty()?"":" "+battle->error)).c_str());
+            if(!battle->draw(renderer,pass.kind
+#if PORT_TITLE == 14
+            ,camera_published
+#endif
+))return fail(("battle draw failed: pass "+std::to_string(u32(pass.kind))+(battle->error.empty()?"":" "+battle->error)).c_str());
         }
         if(overlay&&pass.kind==SceneDrawKind::AsciiOuter&&!overlay->draw(renderer,0,compositor.full_camera,compositor.play_camera))return fail("frame statistics draw failed");
     }

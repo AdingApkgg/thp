@@ -82,8 +82,16 @@ public:
     bool update_objects();
     void publish_camera();
     bool draw_layer(AnmRenderer&,SceneCamera&,u32);
-    bool draw_background(AnmRenderer&,SceneCamera&,ScreenFades&);
-    bool draw_foreground(AnmRenderer&,SceneCamera&);
+    bool draw_background(AnmRenderer&,SceneCamera&,ScreenFades&
+#if PORT_TITLE == 14
+        ,const std::function<bool()>& camera_published={}
+#endif
+);
+    bool draw_foreground(AnmRenderer&,SceneCamera&
+#if PORT_TITLE == 14
+        ,const std::function<bool()>& camera_published={}
+#endif
+);
     void fade_out(ScreenFades&);
     void resume_background(){state.fade_timer.set(60,&manager.rate);state.draw_flags|=4;}
     bool stage_animation(AnmVm&,i32)override;

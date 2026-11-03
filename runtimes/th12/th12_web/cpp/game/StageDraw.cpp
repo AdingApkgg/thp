@@ -7,11 +7,21 @@ void camera_fog(AnmRenderer& renderer,const SceneCamera& camera){auto& p=rendere
 void restore_tint(AnmRenderer& renderer,i32 frame_effect){renderer.flush();renderer.tint_enabled=frame_effect!=0;renderer.tint=frame_effect?0xff404040:0x80808080;}
 }
 void Stage::fade_out(ScreenFades& fades){fades.start(2,30,0,10,&manager.rate);state.fade_timer.set(30,&manager.rate);state.draw_flags|=2;}
-bool Stage::draw_background(AnmRenderer& renderer,SceneCamera& camera,ScreenFades& fades){
+bool Stage::draw_background(AnmRenderer& renderer,SceneCamera& camera,ScreenFades& fades
+#if PORT_TITLE == 14
+        ,const std::function<bool()>& camera_published
+#endif
+){
     using touhou::graphics::Compare;
     if(state.draw_flags&8)return true;
     if(!(state.draw_flags&4)||state.fade_timer.current<60){
-        state.camera.offset=camera.offset;camera=state.camera;renderer.set_camera(camera,false);
+        state.camera.offset=camera.offset;camera=state.camera;
+#if PORT_TITLE == 14
+        // Retail40e365/40e7f1: the worker can copy the newly published
+        // saved camera before446400 replaces its perspective-derived right.
+        if(camera_published&&!camera_published()){error="stage camera publication worker failed";return false;}
+#endif
+        renderer.set_camera(camera,false);
         auto& p=renderer.pipeline();p.depthWrite=true;p.depthCompare=Compare::LessEqual;camera_fog(renderer,state.camera);
         const u32 clear=(state.draw_flags&4)&&state.frame_count<=33?0:state.camera.fog.color;
         if(!renderer.clear_target(clear,&camera.viewport)){error="stage background clear failed";return false;}
@@ -39,11 +49,21 @@ bool Stage::draw_background(AnmRenderer& renderer,SceneCamera& camera,ScreenFade
     }
     restore_tint(renderer,state.frame_effect);auto& p=renderer.pipeline();p.depthWrite=false;p.depthCompare=Compare::Always;return true;
 }
-bool Stage::draw_foreground(AnmRenderer& renderer,SceneCamera& camera){
+bool Stage::draw_foreground(AnmRenderer& renderer,SceneCamera& camera
+#if PORT_TITLE == 14
+        ,const std::function<bool()>& camera_published
+#endif
+){
     using touhou::graphics::Compare;
     if(state.draw_flags&8)return true;
     if(!(state.draw_flags&4)||state.fade_timer.current<60){
-        state.camera.offset=camera.offset;camera=state.camera;renderer.set_camera(camera,false);
+        state.camera.offset=camera.offset;camera=state.camera;
+#if PORT_TITLE == 14
+        // Retail40e365/40e7f1: the worker can copy the newly published
+        // saved camera before446400 replaces its perspective-derived right.
+        if(camera_published&&!camera_published()){error="stage camera publication worker failed";return false;}
+#endif
+        renderer.set_camera(camera,false);
         auto& p=renderer.pipeline();p.fog=false;p.depthWrite=false;p.depthCompare=Compare::Always;
         if(renderer.draw_layer(manager.layer_first(kPortTitle==16?32:kPortTitle==14?30:kPortTitle==13?27:25))==-2){error="stage foreground first layer draw failed";return false;}
         renderer.pipeline().depthCompare=Compare::LessEqual;
