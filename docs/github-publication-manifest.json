@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "ed913249ab6f3604d3fd1fc9996fd33f225b4d4b",
+  "sourceCommit": "5309e338232613bad6be96f1c2ad65090aaa74a2",
   "files": [
     {
       "path": ".gitignore",
@@ -790,8 +790,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 90753,
-      "sha256": "eb598eaf2c58218737c60486d3c71ed9f1d35846df72d0ace74c05dbc7f79dd1"
+      "bytes": 91245,
+      "sha256": "134b7eb089198476792b24cf632776ec65b872ce805d59ce2f991f41c3a55ff0"
     },
     {
       "path": "docs/porting/TH14_REPLAY_ACTIVATION_RESET_NOV04.md",
@@ -877,6 +877,11 @@
       "path": "docs/porting/TH14_SAKUYAA_EASY_OCT26.md",
       "bytes": 1731,
       "sha256": "3ee1fc937589e6d50c591ca7a14160f246fa876f6b3697762b139522a5272878"
+    },
+    {
+      "path": "docs/porting/TH14_SAKUYAA_EXTRA_CURRENT_NOV04.md",
+      "bytes": 1445,
+      "sha256": "da533ea8f6e174a9ef0951bec5b232b7210a44bc547d9723bfc86c3256557829"
     },
     {
       "path": "docs/porting/TH14_SAKUYAA_HARD_OCT26.md",
@@ -6192,6 +6197,11 @@
       "path": "docs/porting/th14-sakuyaa-easy-verified-oct26.json",
       "bytes": 10659,
       "sha256": "8ed5b90ac39692d3d05005b32001b1551ec2fce58e72ccff88b56f6028e604fb"
+    },
+    {
+      "path": "docs/porting/th14-sakuyaa-extra-current-nov04.json",
+      "bytes": 4571,
+      "sha256": "27b0c257502e5085ab11b846ab4ba76700753aaa5bd151495c991ce1146e12ed"
     },
     {
       "path": "docs/porting/th14-sakuyaa-hard-verified-oct26.json",
@@ -22754,6 +22764,11 @@
       "sha256": "5a3bd8bcb05e28db9ae64173e5f587f5098d98ba5ddb2b9e2c01ba66510467e0"
     },
     {
+      "path": "tools/th14-sakuyaa-extra-evidence-nov04.py",
+      "bytes": 5012,
+      "sha256": "cebb2573b780242b357c57f465e2c222aabe654be50174f8ecef9c120c6549a3"
+    },
+    {
       "path": "tools/th14-sakuyab-easy-camera-failure-check-oct26.py",
       "bytes": 6566,
       "sha256": "a75e81cdf7b631d174759cd661df4973db2daedc61105143d7ab94eca0760ba9"
@@ -26800,38 +26815,26 @@
     }
   ],
   "latestIncrement": {
-    "basePublishedCommit": "ed913249ab6f3604d3fd1fc9996fd33f225b4d4b",
-    "title": "TH14 replay activation counter reset",
+    "basePublishedCommit": "5309e338232613bad6be96f1c2ad65090aaa74a2",
+    "title": "TH14 Sakuya A Extra current-core comparison",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/Replay.hpp",
-      "runtimes/th12/th12_web/cpp/game/Replay.cpp",
-      "runtimes/th12/th12_web/cpp/game/ReplayCadenceTh14.hpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-replay-activation-fixture.cpp",
-      "tools/th14-build-native-application.py",
-      "tools/th14-native-application-process-host-oct27.py",
-      "tools/th14-replay-activation-native-nov04.py",
-      "tools/th14-replay-activation-check-nov04.mjs",
-      "tools/th14-replay-activation-evidence-nov04.py",
-      "docs/porting/th14-replay-activation-reset-nov04.json",
-      "docs/porting/TH14_REPLAY_ACTIVATION_RESET_NOV04.md",
-      "docs/porting/TH14_REPLAY_CADENCE_NOV04.md",
+      "tools/th14-sakuyaa-extra-evidence-nov04.py",
+      "docs/porting/th14-sakuyaa-extra-current-nov04.json",
+      "docs/porting/TH14_SAKUYAA_EXTRA_CURRENT_NOV04.md",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
-    "productionGameplayCoreChanged": true,
-    "coreObjectsRecompiled": 141,
-    "browserUnitsCompiled": 146,
-    "nativeStageActivationCases": 56,
-    "wasmStageActivationCases": 42,
-    "activationFpsCases": 1020,
-    "priorCounterMismatches": 35,
-    "applicationFrames": 2289,
-    "applicationPresents": 2289,
-    "regressionCallbacks": 160940,
-    "previousCrossStageCounterClaimRetracted": true,
-    "arbitraryPhaseFpsDefectClaimRetracted": true,
-    "browserAcceptance": false,
+    "productionGameplayCoreChanged": false,
+    "currentGameplayCoreCommit": "5309e338232613bad6be96f1c2ad65090aaa74a2",
+    "nativeCallbacks": 38977,
+    "debugExceptions": 0,
+    "strictV4Passed": true,
+    "vm303Rows": 6461,
+    "combatCheckpoints": 48,
+    "initialPublications": 3205,
+    "sourceReplayEofProved": false,
+    "wholeModeEquivalent": false,
     "completeGame": false,
     "nativeEquivalent": false
   }
