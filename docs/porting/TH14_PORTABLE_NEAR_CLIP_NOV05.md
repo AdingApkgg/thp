@@ -27,4 +27,6 @@ python -X utf8 tools/th14-portable-near-clip-evidence-nov05.py --output docs/por
 
 [证据 JSON](th14-portable-near-clip-nov05.json) 只发布计数、地址／路径、摘要和哈希。完整缓冲、游戏资产、录像／存档、原始内存和编译二进制保留在本地，不随此说明发布。
 
-仍需其他输入与 GPU、原版整局画面／PCM、WebGPU 对应行为、普通原版 GUI、当前浏览器呈现与持久化、全部自机难度和独立调度验收；Initialize／Scene 严格门槛和既有模式通过数不因本次图形修正改变。
+随后完成的[兼容路径、WebGPU、混合绘制和实际 Application 复核](TH14_NEAR_CLIP_RUNTIME_NOV05.md)另行绑定证据：同一 85 组在 GLES 扩展关闭路径和 WebGPU 下通过，416 次混合绘制记录通过；新 Application 六面 122,780 帧／53 项断言通过，两个浏览器配置各全量编译 146 单元。这些有限结果仍不接受原版整局画面／PCM、当前浏览器 UI 或整作 1:1。
+
+仍需其他输入与 GPU、原版整局画面／PCM、普通原版 GUI、当前浏览器呈现与持久化、全部自机难度和独立调度验收；Initialize／Scene 严格门槛和既有模式通过数不因本次图形修正改变。
