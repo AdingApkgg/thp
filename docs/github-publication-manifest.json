@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "acc1b44e5ef3415d6b92790fe671b837a94ceb33",
+  "sourceCommit": "8c6d4678ca5abed189a7f7c6347128e311cd31c3",
   "files": [
     {
       "path": ".gitignore",
@@ -830,8 +830,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 99046,
-      "sha256": "2ef777b05906b473e86de146472b0faaf265753b2c78b338c59977cb086694f0"
+      "bytes": 99857,
+      "sha256": "96c20dcd5bd1ff4228b156aad2cf00985a984ffb99e9edbe8a5d7f6e02f2ddf7"
     },
     {
       "path": "docs/porting/TH14_REPLAY_ACTIVATION_RESET_NOV04.md",
@@ -1217,6 +1217,11 @@
       "path": "docs/porting/TH14_TITLE_TEMPLATE_LAYER_OCT27.md",
       "bytes": 2991,
       "sha256": "8329268d56d4f7f7698a3472892ab8f7d5b0e864a0e964e5be1f3a3754529bb1"
+    },
+    {
+      "path": "docs/porting/TH14_UNIFIED_CAMERA_WINDOW_NOV04.md",
+      "bytes": 3593,
+      "sha256": "db08f116cc5bf4eab354559700b41522487e43f772622b474f51f619fa36d610"
     },
     {
       "path": "docs/porting/TH14_VERTEX_OUTPUT_DIAGNOSTIC_OCT14.md",
@@ -7789,6 +7794,11 @@
       "sha256": "4a628bde9e8fb3ec099e13e3b8535eca7bfc03312b08ae5c3c22ec7229743daf"
     },
     {
+      "path": "docs/porting/th14-unified-camera-window-nov04.json",
+      "bytes": 182840,
+      "sha256": "b3ec081b8c42cf8007811d13eccd97255088692ef5147af251a97571445df3b4"
+    },
+    {
       "path": "docs/porting/th14-variables-verified.json",
       "bytes": 1671,
       "sha256": "94c5521848b9e7da93de6931307967eae59c6b5e410a2526d59af809eee671a8"
@@ -13249,6 +13259,11 @@
       "sha256": "416982289a19436c10d667f40d80a3b0d94440edc11bc95ec8befb4ca9e383c8"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-full-camera-observer-fixture-nov04.cpp",
+      "bytes": 1154,
+      "sha256": "9e6fe0796f39967b77282fca1b783bbdd598ee0c520367303245174a87c436a4"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-gpu-alpha-blend-fixture.cpp",
       "bytes": 1829,
       "sha256": "9601eaff12ab028f5d020916bbba61b644797bf28fbe36340852b48a07509155"
@@ -13682,6 +13697,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-normal-worker-fixture.cpp",
       "bytes": 1178,
       "sha256": "0211a1bfda001b1b7edadc5aab4899fc7c1795f81a6bbebedba5782ec3fc8b80"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-observed-perspective-window-fixture-nov04.cpp",
+      "bytes": 1484,
+      "sha256": "8c10d3ac71eebb61df7c5ac331614d0b75b49fb71d8ff207bfd103ca9cdb175a"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-options-controls-fixture.cpp",
@@ -17364,6 +17384,11 @@
       "sha256": "65133757b058c8335ccd2c337da2fda23960c280133cb4167b77d8aef257faf5"
     },
     {
+      "path": "tools/th14-build-full-camera-observer-nov04.py",
+      "bytes": 3969,
+      "sha256": "95b42fdb4ede8e513967793ab753a64b8818b793d9ead5805b3aec435bbf718a"
+    },
+    {
       "path": "tools/th14-build-initialization-boundary-observer-nov01.py",
       "bytes": 4850,
       "sha256": "ff36eb6f5079f3bd00d5a2d47b33033b6bbfb8a7e93090872568c107ee2cc61e"
@@ -17392,6 +17417,11 @@
       "path": "tools/th14-build-normal-vm-boundaries-nov04.py",
       "bytes": 5165,
       "sha256": "3a8a33ab2be6e154ccb0b20fd0ba93cfb397965ff8f543a93c983984d86ddc80"
+    },
+    {
+      "path": "tools/th14-build-observed-perspective-window-nov04.py",
+      "bytes": 4015,
+      "sha256": "ce3d24a953e8ea1c4338946161f0c54f456e02c8390307c6117747f78ab6ff1a"
     },
     {
       "path": "tools/th14-build-overlay-vm-boundaries-nov04.py",
@@ -17987,6 +18017,21 @@
       "path": "tools/th14-compare-native-extra-campaign-nov01.mjs",
       "bytes": 48886,
       "sha256": "c07b3cf80927af8114a11a69e557eef9f9710f9b183b82601c7a3b0b85f221d9"
+    },
+    {
+      "path": "tools/th14-compare-native-extra-full-camera-nov04.mjs",
+      "bytes": 50354,
+      "sha256": "2fc74766543d8fa93a3a8d07369c986578d9f873a56a5909a950701c4daa806a"
+    },
+    {
+      "path": "tools/th14-compare-native-full-camera-nov04.mjs",
+      "bytes": 50291,
+      "sha256": "f80b7dc9300129aad56bbdc6a0a9fde9d7fa577ef295df683e3e575e03be53e4"
+    },
+    {
+      "path": "tools/th14-compare-native-observed-perspective-window-nov04.mjs",
+      "bytes": 52244,
+      "sha256": "d2234a564ce2b48646c5277ba1a41803e5b94456c3656fb580b80f65ef59368a"
     },
     {
       "path": "tools/th14-compare-observed-seed-store-nov03.mjs",
@@ -19747,6 +19792,16 @@
       "path": "tools/th14-frozen-ordinary-full-evidence-oct27.py",
       "bytes": 12822,
       "sha256": "9666c7d9d6e46163ab389c56dcb669a6e10c82e731a5c29af2b53f52e4d48f27"
+    },
+    {
+      "path": "tools/th14-full-camera-mode-evidence-nov04.py",
+      "bytes": 6081,
+      "sha256": "f3643a552b0f219fa80c22e444da5c9de81332b40ced3a92f02da19507f07d1b"
+    },
+    {
+      "path": "tools/th14-full-camera-mode-regressions-nov04.py",
+      "bytes": 3486,
+      "sha256": "6a3969d42db1c88bf91eae126004d5b5de31b54471687e2fb2f0a704938f4bde"
     },
     {
       "path": "tools/th14-full-extra-checkpoint.py",
@@ -21954,6 +22009,11 @@
       "sha256": "2f1bb13bdab5faa0f26963585b62f2903974f06d3ce48d71504721b3fe4dfbd3"
     },
     {
+      "path": "tools/th14-observed-perspective-window-evidence-nov04.py",
+      "bytes": 8971,
+      "sha256": "2a69312e184b79c35c54d04d5da234c58f4875d96f271f02f37ba1729b94b1c9"
+    },
+    {
       "path": "tools/th14-observed-seed-store-comparison-nov03.py",
       "bytes": 6715,
       "sha256": "788dd05f369a0efdc98df01bd01370c6529dcad4cdccd61991d5268d54d82c82"
@@ -22654,6 +22714,11 @@
       "sha256": "ed46673f05971b53e518a93014d7f2c051805f6dd5e3e8bc0772dcb2681a5c7d"
     },
     {
+      "path": "tools/th14-prepare-full-camera-drivers-nov04.py",
+      "bytes": 4224,
+      "sha256": "68b1e77f64aa6e5784e567ccb5501db8819ae7273175fb1696e010272185ebcd"
+    },
+    {
       "path": "tools/th14-prepare-lossless-music.py",
       "bytes": 3669,
       "sha256": "527f5c3dd3e0ac9bf148d2f8e7752e750306c0441d5f5dbd3771e76867245962"
@@ -22672,6 +22737,11 @@
       "path": "tools/th14-prepare-normal-vm-boundary-driver-nov04.py",
       "bytes": 3861,
       "sha256": "e99e14880b8040d3d2f661f559ddb39ed94de993f6db3155f92ab129e04d13fa"
+    },
+    {
+      "path": "tools/th14-prepare-observed-perspective-window-driver-nov04.py",
+      "bytes": 4671,
+      "sha256": "fb6291ba57d693dccc71c6bcb773603106cd01516674964d42fd748870a40edb"
     },
     {
       "path": "tools/th14-prepare-overlay-vm-boundaries-v2-nov04.py",
@@ -22757,6 +22827,11 @@
       "path": "tools/th14-prepare-stage-object-snapshot-readiness-nov04.py",
       "bytes": 3907,
       "sha256": "47330a3539994ee8a9dc250d5871d0b02b77c886f6e674f85149e25e7daf2196"
+    },
+    {
+      "path": "tools/th14-prepare-unified-event-context-observer-nov04.py",
+      "bytes": 7243,
+      "sha256": "d080d130b6800a144abe2e35c694e5c135bbbdaa344b92ee6823c99ee459f98d"
     },
     {
       "path": "tools/th14-prepare-webgpu-launcher.py",
@@ -26224,6 +26299,16 @@
       "sha256": "a8f4362996fc06a2caae272235530fbd6cf9a81fe218344d1148ebaaece3da99"
     },
     {
+      "path": "tools/th14-unified-camera-window-evidence-nov04.py",
+      "bytes": 2970,
+      "sha256": "1d7ed41352b886a47d9ce8a8e3985d7c3b8d2a201d32520ad631947ec5654c6f"
+    },
+    {
+      "path": "tools/th14-unified-event-context-evidence-nov04.py",
+      "bytes": 8066,
+      "sha256": "610be58d66a023833b7a5bd0fa14dc1ecd40a43d270c159b0bb7f62fb59b403d"
+    },
+    {
       "path": "tools/th14-variables-check.mjs",
       "bytes": 3143,
       "sha256": "c597c3394e7a1be658558a581c4d2f4b5e85822c55a12495bebd6a264aa11fa1"
@@ -27590,139 +27675,606 @@
     }
   ],
   "latestIncrement": {
-    "verifiedPerspectivePublication": true,
-    "coreWasmSha256": "fc24f408b1ea2bf5c0a054dd7b06d2e1e542d0145a2df7faacbed250b2288949",
-    "freshCoreObjects": 141,
-    "nativePerspectiveProfiles": 4,
-    "perspectiveBoundaries": 6,
-    "nativeWorkerCopies": 24,
-    "mappedCameraWordsCompared": 1752,
-    "wrongMappedWords": 0,
-    "unicornFloatingOracleRejectedWrongWords": 66,
-    "actualWindowsX86D3dxServicesUsed": true,
-    "scopeProtocolCases": 6,
-    "componentFailureCases": 24,
-    "actualSessionCases": [
-      {
-        "mode": 0,
-        "callback": 14088,
-        "perspectivePoint": 4,
-        "nextPerspectivePointConfirmed": true,
-        "loaderPhaseAtBoundary": 5
-      },
-      {
-        "mode": 1,
-        "callback": 14088,
-        "perspectivePoint": 4,
-        "nextPerspectivePointConfirmed": false,
-        "loaderPhaseAtBoundary": 4
-      },
-      {
-        "mode": 2,
-        "callback": 14088,
-        "perspectivePoint": 4,
-        "nextPerspectivePointConfirmed": false,
-        "loaderPhaseAtBoundary": 8
-      }
-    ],
-    "finiteDefaultRecords": 16,
-    "finiteDefaultCallbacks": 1379760,
-    "witnessedNormalVmCallbacks": 35000,
-    "witnessedVmRows": 1057,
-    "witnessedCombatCheckpoints": 393,
-    "additionalSourceReadCallbacks": 18000,
-    "sharedCameraSessionSyntaxChecks": 8,
-    "applicationFrames": 2289,
-    "applicationChecks": 27,
-    "identicalReferenceImages": 2,
-    "offlinePcmFrames": 1526784,
-    "physicalAudioDevicesOpened": 0,
-    "browserCompiledUnits": 146,
-    "browserWasmSha256": "21d5afd93a5e2c4a01bbfda873d78cc38807f57f02dab13482a2afdd82ec12fd",
+    "verifiedUnifiedCameraWindowEvidence": true,
+    "productionCoreChanged": false,
+    "productionSourceCommit": "8c6d4678ca5abed189a7f7c6347128e311cd31c3",
+    "ordinaryCoreWasmSha256": "fc24f408b1ea2bf5c0a054dd7b06d2e1e542d0145a2df7faacbed250b2288949",
+    "toolsAndEvidenceOnly": true,
+    "unresolvedExpandedModeRecords": 12,
+    "originalValuesInjected": false,
+    "hostClockWindowReplayAdded": true,
+    "exactOriginalInstructionScheduleRecovered": false,
+    "independentSchedulingAccepted": false,
+    "oldRecordingFailureClosed": false,
     "browserAcceptance": false,
-    "controlledCombinedClockCases": [
-      {
-        "case": "clock-experiments/perspective-5",
-        "callbacks": 35000,
-        "vm303Rows": 1072,
-        "combatCheckpoints": 480
-      },
-      {
-        "case": "full-camera-experiment/perspective-5",
-        "callbacks": 35000,
-        "vm303Rows": 1072,
-        "combatCheckpoints": 480
-      }
-    ],
-    "controlledExpandedCameraWords": 2484929,
-    "controlledExpandedCameraFields": 71,
-    "controlledTimingIsNotOriginalSchedule": true,
-    "strictContractRejectedControlledDriver": true,
-    "oldRngFailureDifferences": {
-      "21": 4137,
-      "22": 283,
-      "26": 1
-    },
-    "oldCameraFailureDifferences": {
-      "12": 16701
-    },
-    "oldRngFailureClosed": false,
-    "oldCameraFailureClosed": false,
-    "originalOldThreadScheduleRecovered": false,
-    "matrixInternalStoresNotModeled": true,
-    "unmappedNativeWordIndices": [
-      22,
-      23
-    ],
-    "opaqueWordsStillNotAccepted": true,
+    "originalWholeGamePixelsOrPcmAccepted": false,
     "completeGame": false,
     "nativeEquivalent": false,
-    "productionIntegrated": true,
-    "title": "TH14 perspective publication boundaries with native CPU validation",
-    "basePublishedCommit": "acc1b44e5ef3415d6b92790fe671b837a94ceb33",
+    "cameraWindow": {
+      "verifiedFiniteCameraWindowEvidence": true,
+      "callbacks": 35000,
+      "expandedFields": 71,
+      "expandedCallbacks": 34999,
+      "expandedWords": 2484929,
+      "unchangedLegacyPayloads": 7,
+      "coarse": {
+        "counts": {
+          "24": 4101,
+          "29": 4101,
+          "30": 4101,
+          "33": 4101,
+          "34": 4101,
+          "36": 4101,
+          "37": 4101,
+          "38": 4101,
+          "50": 4101,
+          "54": 4101
+        },
+        "wrongWords": 41010,
+        "first": {
+          "callback": 30900,
+          "nativeWord": 24,
+          "actual": 1065353215,
+          "expected": 1065353216
+        }
+      },
+      "measuredWindow": {
+        "counts": {},
+        "wrongWords": 0,
+        "first": null
+      },
+      "windows": [
+        {
+          "stage": 3,
+          "callback": 30787,
+          "ordinal": 2,
+          "readyNs": 35239143600400,
+          "previousBoundaryNs": 35239142054500,
+          "followingBoundaryNs": 35239151279000,
+          "sourceReadMainPc": 4412080,
+          "exactOriginalInstructionScheduleRecovered": false
+        }
+      ],
+      "vm303Rows": 1011,
+      "combatCheckpoints": 364,
+      "readOnlyObserverDoesNotAdvanceHostClock": true,
+      "measuredWindowHostClockReplayAdded": true,
+      "nativeGameplayValuesInjected": false,
+      "productionCoreChanged": false,
+      "ordinaryCoreWasmSha256": "fc24f408b1ea2bf5c0a054dd7b06d2e1e542d0145a2df7faacbed250b2288949",
+      "oldRecordingFailureClosed": false,
+      "exactOriginalInstructionScheduleRecovered": false,
+      "independentSchedulingAccepted": false,
+      "opaqueNativeWordsNotMapped": [
+        22,
+        23
+      ],
+      "nativeTailWordsNotCaptured": [
+        73,
+        74
+      ],
+      "physicalAudioDevicesOpenedByModel": 0,
+      "originalPcmNotMeasured": true,
+      "completeGame": false,
+      "nativeEquivalent": false,
+      "verifierSha256": "2a69312e184b79c35c54d04d5da234c58f4875d96f271f02f37ba1729b94b1c9"
+    },
+    "modeAudit": {
+      "verifiedExpandedCameraModeAudit": true,
+      "validRecords": 16,
+      "rejectedNativeRecords": 1,
+      "rejectedNativeExceptions": 12,
+      "callbacks": 1379760,
+      "expandedFields": 71,
+      "expandedWords": 97961824,
+      "expandedPasses": 4,
+      "expandedFailures": 12,
+      "cases": [
+        {
+          "key": "marisaa-natural",
+          "callbacks": 80594,
+          "expandedWords": 5722103,
+          "expandedPassed": false,
+          "wrongWords": 170820,
+          "counts": {
+            "24": 17082,
+            "29": 17082,
+            "30": 17082,
+            "33": 17082,
+            "34": 17082,
+            "36": 17082,
+            "37": 17082,
+            "38": 17082,
+            "50": 17082,
+            "54": 17082
+          },
+          "first": {
+            "callback": 14132,
+            "nativeWord": 24,
+            "actual": 1065353215,
+            "expected": 1065353216
+          },
+          "unchangedLegacyPayloads": 9
+        },
+        {
+          "key": "reimub-full",
+          "callbacks": 122537,
+          "expandedWords": 8700056,
+          "expandedPassed": false,
+          "wrongWords": 376550,
+          "counts": {
+            "24": 37655,
+            "29": 37655,
+            "30": 37655,
+            "33": 37655,
+            "34": 37655,
+            "36": 37655,
+            "37": 37655,
+            "38": 37655,
+            "50": 37655,
+            "54": 37655
+          },
+          "first": {
+            "callback": 14270,
+            "nativeWord": 24,
+            "actual": 1065353215,
+            "expected": 1065353216
+          },
+          "unchangedLegacyPayloads": 13
+        },
+        {
+          "key": "reimua-extra",
+          "callbacks": 38403,
+          "expandedWords": 2726542,
+          "expandedPassed": true,
+          "wrongWords": 0,
+          "counts": {},
+          "first": null,
+          "unchangedLegacyPayloads": 8
+        },
+        {
+          "key": "sakuyab-hard",
+          "callbacks": 122811,
+          "expandedWords": 8719510,
+          "expandedPassed": false,
+          "wrongWords": 797188,
+          "counts": {
+            "29": 70464,
+            "30": 70464,
+            "33": 70464,
+            "34": 70464,
+            "36": 70464,
+            "37": 70464,
+            "38": 70464,
+            "50": 70464,
+            "54": 70464,
+            "24": 52313,
+            "32": 23120,
+            "25": 29193,
+            "26": 29193,
+            "28": 29193
+          },
+          "first": {
+            "callback": 11897,
+            "nativeWord": 29,
+            "actual": 3212836863,
+            "expected": 1064153535
+          },
+          "unchangedLegacyPayloads": 13
+        },
+        {
+          "key": "sakuyaa-hard",
+          "callbacks": 96682,
+          "expandedWords": 6864351,
+          "expandedPassed": false,
+          "wrongWords": 479502,
+          "counts": {
+            "24": 46091,
+            "29": 46091,
+            "30": 46091,
+            "33": 46091,
+            "34": 46091,
+            "36": 46091,
+            "37": 46091,
+            "38": 46091,
+            "50": 46091,
+            "54": 46091,
+            "32": 18592
+          },
+          "first": {
+            "callback": 9772,
+            "nativeWord": 24,
+            "actual": 1065353215,
+            "expected": 1065353216
+          },
+          "unchangedLegacyPayloads": 12
+        },
+        {
+          "key": "marisab-easy",
+          "callbacks": 107233,
+          "expandedWords": 7613472,
+          "expandedPassed": false,
+          "wrongWords": 656802,
+          "counts": {
+            "24": 57499,
+            "29": 57499,
+            "30": 57499,
+            "33": 57499,
+            "34": 57499,
+            "36": 57499,
+            "37": 57499,
+            "38": 57499,
+            "50": 57499,
+            "54": 57499,
+            "32": 20855,
+            "25": 20319,
+            "26": 20319,
+            "28": 20319
+          },
+          "first": {
+            "callback": 32765,
+            "nativeWord": 24,
+            "actual": 1065353215,
+            "expected": 1065353216
+          },
+          "unchangedLegacyPayloads": 12
+        },
+        {
+          "key": "marisaa-lunatic",
+          "callbacks": 106797,
+          "expandedWords": 7582516,
+          "expandedPassed": false,
+          "wrongWords": 503469,
+          "counts": {
+            "24": 40212,
+            "25": 20379,
+            "26": 20379,
+            "28": 20379,
+            "29": 40212,
+            "30": 40212,
+            "32": 40212,
+            "33": 40212,
+            "34": 40212,
+            "36": 40212,
+            "37": 40212,
+            "38": 40212,
+            "50": 40212,
+            "54": 40212
+          },
+          "first": {
+            "callback": 40945,
+            "nativeWord": 24,
+            "actual": 1065353215,
+            "expected": 1065286896
+          },
+          "unchangedLegacyPayloads": 12
+        },
+        {
+          "key": "marisab-lunatic",
+          "callbacks": 89235,
+          "expandedWords": 6335614,
+          "expandedPassed": false,
+          "wrongWords": 534488,
+          "counts": {
+            "24": 52074,
+            "29": 52074,
+            "30": 52074,
+            "33": 52074,
+            "34": 52074,
+            "36": 52074,
+            "37": 52074,
+            "38": 52074,
+            "50": 52074,
+            "54": 52074,
+            "32": 13748
+          },
+          "first": {
+            "callback": 14004,
+            "nativeWord": 24,
+            "actual": 1065353215,
+            "expected": 1065353216
+          },
+          "unchangedLegacyPayloads": 11
+        },
+        {
+          "key": "sakuyaa-easy",
+          "callbacks": 128425,
+          "expandedWords": 9118104,
+          "expandedPassed": false,
+          "wrongWords": 570543,
+          "counts": {
+            "29": 46947,
+            "30": 46947,
+            "33": 46947,
+            "34": 46947,
+            "36": 46947,
+            "37": 46947,
+            "38": 46947,
+            "50": 46947,
+            "54": 46947,
+            "24": 29604,
+            "25": 29604,
+            "26": 29604,
+            "28": 29604,
+            "32": 29604
+          },
+          "first": {
+            "callback": 16713,
+            "nativeWord": 29,
+            "actual": 3212836863,
+            "expected": 1064153535
+          },
+          "unchangedLegacyPayloads": 13
+        },
+        {
+          "key": "reimub-easy",
+          "rejectedNativeExceptions": 12,
+          "newModelRun": false
+        },
+        {
+          "key": "reimub-extra",
+          "callbacks": 46936,
+          "expandedWords": 3332385,
+          "expandedPassed": true,
+          "wrongWords": 0,
+          "counts": {},
+          "first": null,
+          "unchangedLegacyPayloads": 8
+        },
+        {
+          "key": "marisab-normal-six-stage",
+          "callbacks": 123447,
+          "expandedWords": 8764666,
+          "expandedPassed": false,
+          "wrongWords": 581324,
+          "counts": {
+            "24": 48164,
+            "29": 48164,
+            "30": 48164,
+            "32": 22404,
+            "33": 48164,
+            "34": 48164,
+            "36": 48164,
+            "37": 48164,
+            "38": 48164,
+            "50": 48164,
+            "54": 48164,
+            "25": 25760,
+            "26": 25760,
+            "28": 25760
+          },
+          "first": {
+            "callback": 75284,
+            "nativeWord": 24,
+            "actual": 1065353215,
+            "expected": 1065353216
+          },
+          "unchangedLegacyPayloads": 12
+        },
+        {
+          "key": "new-marisaa-hard",
+          "callbacks": 81458,
+          "expandedWords": 5783447,
+          "expandedPassed": false,
+          "wrongWords": 184110,
+          "counts": {
+            "24": 18411,
+            "29": 18411,
+            "30": 18411,
+            "33": 18411,
+            "34": 18411,
+            "36": 18411,
+            "37": 18411,
+            "38": 18411,
+            "50": 18411,
+            "54": 18411
+          },
+          "first": {
+            "callback": 13705,
+            "nativeWord": 24,
+            "actual": 1065353215,
+            "expected": 1065353216
+          },
+          "unchangedLegacyPayloads": 10
+        },
+        {
+          "key": "new-marisab-lunatic",
+          "callbacks": 67860,
+          "expandedWords": 4817989,
+          "expandedPassed": false,
+          "wrongWords": 361556,
+          "counts": {
+            "29": 38096,
+            "30": 38096,
+            "33": 38096,
+            "34": 38096,
+            "36": 38096,
+            "37": 38096,
+            "38": 38096,
+            "50": 38096,
+            "54": 38096,
+            "24": 18692
+          },
+          "first": {
+            "callback": 14790,
+            "nativeWord": 29,
+            "actual": 3212836863,
+            "expected": 1064153535
+          },
+          "unchangedLegacyPayloads": 10
+        },
+        {
+          "key": "new-marisaa-easy-six-stage",
+          "callbacks": 120153,
+          "expandedWords": 8530792,
+          "expandedPassed": false,
+          "wrongWords": 215310,
+          "counts": {
+            "24": 21531,
+            "29": 21531,
+            "30": 21531,
+            "33": 21531,
+            "34": 21531,
+            "36": 21531,
+            "37": 21531,
+            "38": 21531,
+            "50": 21531,
+            "54": 21531
+          },
+          "first": {
+            "callback": 32718,
+            "nativeWord": 24,
+            "actual": 1065353215,
+            "expected": 1065353216
+          },
+          "unchangedLegacyPayloads": 10
+        },
+        {
+          "key": "marisaa-normal-kg-stage1",
+          "callbacks": 8212,
+          "expandedWords": 582981,
+          "expandedPassed": true,
+          "wrongWords": 0,
+          "counts": {},
+          "first": null,
+          "unchangedLegacyPayloads": 6
+        },
+        {
+          "key": "sakuyaa-extra",
+          "callbacks": 38977,
+          "expandedWords": 2767296,
+          "expandedPassed": true,
+          "wrongWords": 0,
+          "counts": {},
+          "first": null,
+          "unchangedLegacyPayloads": 11
+        }
+      ],
+      "legacyPayloadsByteIdentical": true,
+      "legacy16PassesDoNotAcceptExpandedFields": true,
+      "hostClockOverridesAdded": false,
+      "productionCoreChanged": false,
+      "independentSchedulingAccepted": false,
+      "oldRecordingFailureClosed": false,
+      "opaqueNativeWordsNotMapped": [
+        22,
+        23
+      ],
+      "nativeTailWordsNotCaptured": [
+        73,
+        74
+      ],
+      "completeGame": false,
+      "nativeEquivalent": false,
+      "verifierSha256": "f3643a552b0f219fa80c22e444da5c9de81332b40ced3a92f02da19507f07d1b"
+    },
+    "unifiedOriginalClock": {
+      "verifiedUnifiedOriginalDebugEventClock": true,
+      "callbacks": 35000,
+      "debugJournalRows": 56734,
+      "sharedRowsByFile": {
+        "allocation-events.jsonl": 3275,
+        "resource-ready-events.jsonl": 2384,
+        "controller-phase-events.jsonl": 2,
+        "camera-boundary-events.jsonl": 3526,
+        "camera-right-write-events.jsonl": 7286,
+        "scene-camera-copy-events.jsonl": 4,
+        "worker-camera-source-read-events.jsonl": 2,
+        "stage-object-vm-window-events.jsonl": 1964,
+        "replay-rng-store-events.jsonl": 8,
+        "transition-events.jsonl": 6,
+        "hud-initialization-events.jsonl": 4
+      },
+      "allPlayerTimesBoundToReceiptEvents": true,
+      "rngWriteCompletionEvents": 8,
+      "initializeAndCounterRowsShareSameStopClock": true,
+      "pairedStageVmCalls": 982,
+      "cameraReads": [
+        {
+          "stage": 2,
+          "callback": 14155,
+          "event": 25959,
+          "workerReadWords": 13,
+          "mainPc": 4252515,
+          "mainPublicationCopiedWords": 13,
+          "sourceAtReadEqualsCompletedCamera": true
+        },
+        {
+          "stage": 3,
+          "callback": 30787,
+          "event": 48784,
+          "workerReadWords": 13,
+          "mainPc": 4412080,
+          "mainPublicationCopiedWords": null,
+          "sourceAtReadEqualsCompletedCamera": true
+        }
+      ],
+      "playerBodyCallerObservedAtGlobalsCompletion": true,
+      "bodyUpdateCallPc": 4514223,
+      "bodyUpdateTarget": 4652624,
+      "actualCapturedStackFrames": [
+        {
+          "frame": 1764408,
+          "parent": 1764736,
+          "returnPc": 4664480
+        },
+        {
+          "frame": 1764736,
+          "parent": 1764808,
+          "returnPc": 4514228
+        },
+        {
+          "frame": 1764808,
+          "parent": 1764832,
+          "returnPc": 4199159
+        },
+        {
+          "frame": 1764832,
+          "parent": 1769256,
+          "returnPc": 4630536
+        }
+      ],
+      "unchangedStandardDriverStrictPassed": true,
+      "coreWasmSha256": "fc24f408b1ea2bf5c0a054dd7b06d2e1e542d0145a2df7faacbed250b2288949",
+      "vm303Rows": 1011,
+      "combatCheckpoints": 364,
+      "configuredMusicAndSoundVolumesZero": true,
+      "originalPcmNotMeasured": true,
+      "receiptTimeNotExactInstructionExecutionTime": true,
+      "debuggerPausesAffectTiming": true,
+      "oldRecordingExactScheduleRecovered": false,
+      "oldRngFailureClosed": false,
+      "oldCameraFailureClosed": false,
+      "completeGame": false,
+      "nativeEquivalent": false,
+      "verifierSha256": "610be58d66a023833b7a5bd0fa14dc1ecd40a43d270c159b0bb7f62fb59b403d"
+    },
+    "title": "TH14 event-clock witness and expanded camera audit with twelve retained failures",
+    "basePublishedCommit": "8c6d4678ca5abed189a7f7c6347128e311cd31c3",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/SceneCamera.hpp",
-      "runtimes/th12/th12_web/cpp/game/SceneCamera.cpp",
-      "runtimes/th12/th12_web/cpp/game/GameSession.hpp",
-      "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-perspective-publication-fixture-nov04.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-perspective-scope-fixture-nov04.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-perspective-session-fixture-nov04.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-stage-rng-clock-experiment-fixture-nov04.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-rng-perspective-clock-experiment-fixture-nov04.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-rng-perspective-full-camera-fixture-nov04.cpp",
-      "tools/th14-prepare-perspective-publication-nov04.py",
-      "tools/th14-perspective-publication-native-nov04.py",
-      "tools/th14-perspective-publication-native-cpu-nov04.py",
-      "tools/th14-perspective-d3dx-worker-nov04.cs",
-      "tools/th14-build-perspective-publication-component-nov04.py",
-      "tools/th14-perspective-publication-component-check-nov04.mjs",
-      "tools/th14-perspective-publication-component-cpu-check-nov04.mjs",
-      "tools/th14-build-perspective-scope-component-nov04.py",
-      "tools/th14-perspective-scope-check-nov04.mjs",
-      "tools/th14-build-perspective-session-nov04.py",
-      "tools/th14-perspective-session-check-nov04.mjs",
-      "tools/th14-check-perspective-syntax-nov04.py",
-      "tools/th14-build-frozen-perspective-browser-nov04.py",
-      "tools/th14-perspective-publication-evidence-nov04.py",
-      "tools/th14-build-stage-rng-clock-experiment-nov04.py",
-      "tools/th14-stage-rng-clock-experiment-nov04.mjs",
-      "tools/th14-stage-rng-clock-experiment-evidence-nov04.py",
-      "tools/th14-build-rng-perspective-clock-experiment-nov04.py",
-      "tools/th14-rng-perspective-clock-experiment-nov04.mjs",
-      "tools/th14-build-rng-perspective-full-camera-nov04.py",
-      "tools/th14-rng-perspective-full-camera-nov04.mjs",
-      "tools/th14-rng-perspective-clock-evidence-nov04.py",
-      "docs/porting/TH14_PERSPECTIVE_PUBLICATION_NOV04.md",
-      "docs/porting/th14-perspective-publication-nov04.json",
-      "docs/porting/TH14_CONTROLLED_CLOCK_DIAGNOSTICS_NOV04.md",
-      "docs/porting/th14-controlled-clock-diagnostics-nov04.json",
+      "runtimes/th12/th12_web/tests/cpp/th14-full-camera-observer-fixture-nov04.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-observed-perspective-window-fixture-nov04.cpp",
+      "tools/th14-prepare-unified-event-context-observer-nov04.py",
+      "tools/th14-unified-event-context-evidence-nov04.py",
+      "tools/th14-build-full-camera-observer-nov04.py",
+      "tools/th14-prepare-full-camera-drivers-nov04.py",
+      "tools/th14-compare-native-full-camera-nov04.mjs",
+      "tools/th14-compare-native-extra-full-camera-nov04.mjs",
+      "tools/th14-build-observed-perspective-window-nov04.py",
+      "tools/th14-prepare-observed-perspective-window-driver-nov04.py",
+      "tools/th14-compare-native-observed-perspective-window-nov04.mjs",
+      "tools/th14-observed-perspective-window-evidence-nov04.py",
+      "tools/th14-full-camera-mode-regressions-nov04.py",
+      "tools/th14-full-camera-mode-evidence-nov04.py",
+      "tools/th14-unified-camera-window-evidence-nov04.py",
+      "docs/porting/TH14_UNIFIED_CAMERA_WINDOW_NOV04.md",
+      "docs/porting/th14-unified-camera-window-nov04.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "productionGameplayCoreChanged": true,
-    "gameplayCorePublicationPending": true
+    "productionGameplayCoreChanged": false,
+    "gameplayCorePublicationPending": false
   }
 }
