@@ -254,6 +254,11 @@
       "sha256": "3093e1e846bbbb9923bd8870b55f2b014c8def5c0a874721b70ffa62b7b20045"
     },
     {
+      "path": "docs/porting/TH14_CURRENT_APPLICATION_FULL_EXIT_NOV04.md",
+      "bytes": 3550,
+      "sha256": "f6fd0114e69e7fb10a0dec38dbe5d05a23e47c17ebb795c4e512c7f11545e3d8"
+    },
+    {
       "path": "docs/porting/TH14_CURRENT_FULL_REGRESSION_OCT30.md",
       "bytes": 6726,
       "sha256": "c05fb6e1a568a07281644fc1f0f9301088d8b1da483e6fdeb7b3b5d979e574e8"
@@ -850,8 +855,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 102922,
-      "sha256": "f23834fc37a9d824b167906de6394f196bd3dfcd1c75249fb5a73bac749ef302"
+      "bytes": 103523,
+      "sha256": "689cdd81e18e52ab7f689673236e53ef6d01a3bc8dbfdb744d6bbd00eee829e5"
     },
     {
       "path": "docs/porting/TH14_REPLAY_ACTIVATION_RESET_NOV04.md",
@@ -2647,6 +2652,11 @@
       "path": "docs/porting/th14-crt-vs-enemy-heap-scope-nov03.json",
       "bytes": 1530,
       "sha256": "77c9efcef4ffee9a8b606069266983895aa53ca06a00f969936d7434c76ccee9"
+    },
+    {
+      "path": "docs/porting/th14-current-application-full-exit-nov04.json",
+      "bytes": 88255,
+      "sha256": "0a7b16d0ba592f57cd62b29e226584ddf14ba6917acdc8089f6e13aca72750aa"
     },
     {
       "path": "docs/porting/th14-current-browser-flow-verified-oct14.json",
@@ -20139,6 +20149,11 @@
       "sha256": "9666c7d9d6e46163ab389c56dcb669a6e10c82e731a5c29af2b53f52e4d48f27"
     },
     {
+      "path": "tools/th14-full-application-exit-evidence-nov04.py",
+      "bytes": 7484,
+      "sha256": "5cc6b8b98f01f01b25d0c464547f9afbbd4485b113d12118fee7c61859b28e08"
+    },
+    {
       "path": "tools/th14-full-camera-mode-evidence-nov04.py",
       "bytes": 6081,
       "sha256": "f3643a552b0f219fa80c22e444da5c9de81332b40ced3a92f02da19507f07d1b"
@@ -22764,6 +22779,11 @@
       "sha256": "1f38a17c5abde97d41a2646f5ec96b7d318ef5f046931f2b261e99302541a2bb"
     },
     {
+      "path": "tools/th14-persisted-score-readback-nov04.py",
+      "bytes": 3281,
+      "sha256": "1dbab04887029fe451cdc404b4670acefae64ca94349f6d9ca4f77ecea0c6bc6"
+    },
+    {
       "path": "tools/th14-perspective-d3dx-worker-nov04.cs",
       "bytes": 1955,
       "sha256": "0d7c5acfe4bfc80f56a4fec7e7b88155dbe7138dae234e8c0562249e3c1bb87e"
@@ -23097,6 +23117,11 @@
       "path": "tools/th14-prepare-full-camera-replay-cursor-nov04.py",
       "bytes": 6309,
       "sha256": "4739f54bcd9c80095f8bfa91ef138c98877d59b6f61b0d748f13c853210eab66"
+    },
+    {
+      "path": "tools/th14-prepare-full-exit-nov04.py",
+      "bytes": 6416,
+      "sha256": "826115ebfb12705f759ad1df9dd8ec99f4e0f4ee071fd47207a5a9b7f16c37d3"
     },
     {
       "path": "tools/th14-prepare-lossless-music.py",
@@ -28333,5 +28358,20 @@
     "nativeEquivalent": false,
     "gameAssetsIncluded": false,
     "compiledRuntimeIncluded": false
+  },
+  "latestFullApplicationVerification": {
+    "evidence": "docs/porting/th14-current-application-full-exit-nov04.json",
+    "applicationSourceCommit": "ae284631c2ebaf4006eb8b17662bc5caeeb6da5c",
+    "unchangedGameplayCoreCommit": "51fcb47992be0af65777d2ea87e9e409be6cc641",
+    "verifiedCurrentApplicationFullFlow": true,
+    "frames": 122780,
+    "assertions": 53,
+    "fullImages": 10,
+    "vm303Rows": 959,
+    "silentPcmFrames": 90086400,
+    "referenceIsCppApplication": true,
+    "originalWholePixelsOrPcmCompared": false,
+    "browserAcceptance": false,
+    "completeGame": false
   }
 }
