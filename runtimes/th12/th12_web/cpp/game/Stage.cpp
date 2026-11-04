@@ -116,25 +116,25 @@ bool Stage::publish_camera(
     static_assert(std::is_trivially_copyable<SceneCamera>::value);
     static_assert(sizeof(SceneCamera)%sizeof(u32)==0);
     // Retail40dae7 publishes with REP MOVSD. Only the mapped camera words
-    // are modeled here; two additional native copied words remain opaque.
+    // are modeled here, including the original render width and height.
     if(camera_word_boundary){
         refresh_camera_references();
         if(!camera_word_boundary(*this,0)){error="loading before camera publication";return false;}
-        // Native camera: target_offset precedes FOV; two unmapped words
-        // precede view. C++ keeps target_offset at the end of its structure.
-        // Preserve all 75 native progress boundaries, including opaque words.
-        static_assert(sizeof(SceneCamera)==292);
+        // Native target_offset and render dimensions precede view. C++
+        // retains them at the end; publish every one of the 75 native words.
+        static_assert(sizeof(SceneCamera)==300);
         static_assert(offsetof(SceneCamera,target_offset)==280);
         static_assert(offsetof(SceneCamera,fov)==72);
         static_assert(offsetof(SceneCamera,view)==76);
         for(u32 i=0;i<75;++i){
             u32 offset=0;
-            const bool mapped=i<22||i>=24;
             if(i<18)offset=i*4;
             else if(i<21)offset=offsetof(SceneCamera,target_offset)+(i-18)*4;
             else if(i==21)offset=offsetof(SceneCamera,fov);
+            else if(i==22)offset=offsetof(SceneCamera,render_width);
+            else if(i==23)offset=offsetof(SceneCamera,render_height);
             else if(i>=24)offset=offsetof(SceneCamera,view)+(i-24)*4;
-            if(mapped)std::memcpy(reinterpret_cast<u8*>(active_camera)+offset,
+            std::memcpy(reinterpret_cast<u8*>(active_camera)+offset,
                 reinterpret_cast<const u8*>(&state.camera)+offset,sizeof(u32));
             refresh_camera_references();
             if(!camera_word_boundary(*this,i+1)){error="loading during camera publication";return false;}

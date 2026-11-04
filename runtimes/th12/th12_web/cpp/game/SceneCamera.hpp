@@ -15,10 +15,14 @@ struct SceneCamera {
 #if PORT_TITLE == 13 || PORT_TITLE == 14
     Vec3 target_offset{};
 #endif
+#if PORT_TITLE == 14
+    // Native +0x58/+0x5c retain the render dimensions from 4f7a64/68.
+    u32 render_width=0,render_height=0;
+#endif
     void perspective();
     void screen();
 };
-static_assert(sizeof(SceneCamera)==0x118+(kPortTitle==13||kPortTitle==14?12:0));
+static_assert(sizeof(SceneCamera)==0x118+(kPortTitle==13||kPortTitle==14?12:0)+(kPortTitle==14?8:0));
 #if PORT_TITLE == 14
 // Original446400 publication phases. This scope observes one camera without
 // changing SceneCamera's native-mapped layout or intercepting other cameras.

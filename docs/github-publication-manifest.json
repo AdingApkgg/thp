@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "8c6d4678ca5abed189a7f7c6347128e311cd31c3",
+  "sourceCommit": "961e865da8eac97254636713f1562e1c400f9234",
   "files": [
     {
       "path": ".gitignore",
@@ -157,6 +157,11 @@
       "path": "docs/porting/TH14_CAMERA_PUBLICATION_NOV04.md",
       "bytes": 2319,
       "sha256": "9ce23efb2f5283ece91730afdee57113e316a79695ca00423031166a49d6d379"
+    },
+    {
+      "path": "docs/porting/TH14_CAMERA_RENDER_DIMENSIONS_NOV04.md",
+      "bytes": 3761,
+      "sha256": "198c2bb538eb77833d82d77725dc54a2510d582f5485af2b944e6d7512280ec3"
     },
     {
       "path": "docs/porting/TH14_CAMERA_SOURCE_READ_NOV04.md",
@@ -830,8 +835,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 99857,
-      "sha256": "96c20dcd5bd1ff4228b156aad2cf00985a984ffb99e9edbe8a5d7f6e02f2ddf7"
+      "bytes": 100729,
+      "sha256": "96c8069581b8e871fef02977b00f37acbf128fd6beed909393b5dae0868b998f"
     },
     {
       "path": "docs/porting/TH14_REPLAY_ACTIVATION_RESET_NOV04.md",
@@ -1220,8 +1225,8 @@
     },
     {
       "path": "docs/porting/TH14_UNIFIED_CAMERA_WINDOW_NOV04.md",
-      "bytes": 3593,
-      "sha256": "db08f116cc5bf4eab354559700b41522487e43f772622b474f51f619fa36d610"
+      "bytes": 3805,
+      "sha256": "c976e490a3e3e8643de099c00671f8a0eb00c609c2ac8a72c3ede78d4687b683"
     },
     {
       "path": "docs/porting/TH14_VERTEX_OUTPUT_DIAGNOSTIC_OCT14.md",
@@ -2332,6 +2337,11 @@
       "path": "docs/porting/th14-camera-publication-nov04.json",
       "bytes": 12081,
       "sha256": "4963e03c2d152bcd56fc4a68e8ce194be8c6925a368e0437909fc991a1f16d34"
+    },
+    {
+      "path": "docs/porting/th14-camera-render-dimensions-nov04.json",
+      "bytes": 612788,
+      "sha256": "d05f25870f562a9f370bdc42032e6f1ad85ecb460b730fedf39462f1f9cc72f4"
     },
     {
       "path": "docs/porting/th14-camera-source-read-nov04.json",
@@ -4692,6 +4702,11 @@
       "path": "docs/porting/th14-mode-debug-exception-audit-v7-nov03.json",
       "bytes": 32813,
       "sha256": "ef14acca90ec4c3d29d7ba08705ba81819755167ff77035ecbde997be2da8bad"
+    },
+    {
+      "path": "docs/porting/th14-mode-perspective-window-diagnostics-nov04.json",
+      "bytes": 213619,
+      "sha256": "e173ab7ac50a361d074768131f49ca751c84cfb1638f65fa5a8463c31a12e408"
     },
     {
       "path": "docs/porting/th14-msg-hud-order-verified-oct24.json",
@@ -9965,13 +9980,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/SceneCamera.hpp",
-      "bytes": 1832,
-      "sha256": "c6dcfe980936aa5450b903826ebb034209899e9ce5bca5b11ff7e46ee2850418"
+      "bytes": 1992,
+      "sha256": "b2681bfcb31c87eaf2c2649cb168ec78ac6029e816b364f0792217beb414630f"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/SceneCompositor.cpp",
-      "bytes": 10254,
-      "sha256": "f0568596460b395c0bdd6c7379c7008a0de081cd250143217dfe030dba1e86fb"
+      "bytes": 10428,
+      "sha256": "293eba21ba6d37ffcfe669304f06b6d85a4befa6c40f1f8e4578bcc0b44f68ae"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/SceneCompositor.hpp",
@@ -10195,13 +10210,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Stage.cpp",
-      "bytes": 10558,
-      "sha256": "5447ca8c60e0f5197d3b4c647eac507a0cdf2c114e800a8019fd9a86a7011e76"
+      "bytes": 10562,
+      "sha256": "736e05fc9c02332bad70d624b1dd29fd114a8bbef1ae2a89e56a3764c9f60670"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/Stage.hpp",
       "bytes": 4818,
-      "sha256": "3a498947073798bbddf11cc3c9669809892a3aed82d26321cb9bc304ac9063b3"
+      "sha256": "6bfe0af8e96fd8bfa09833698f79cf2bf9e561f1795ef8d147592cda1e8848de"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/StageCompletion.cpp",
@@ -12774,6 +12789,11 @@
       "sha256": "0c827673523867de44bd85980a53a828fcfdfb038f3fdc56125b622820403410"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-camera-all-words-fixture-nov04.cpp",
+      "bytes": 5453,
+      "sha256": "ea7d77a974e7111e3ddd57d3ea272cec504df3fbea36c864bfd987f1d0c51f02"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-camera-cross-fixture.cpp",
       "bytes": 716,
       "sha256": "395412db16bfb3953dd90242cacf4d9ab0e9b03545779cd86e6280c1997f0430"
@@ -13574,6 +13594,11 @@
       "sha256": "85a6fe182a6913aa8e3c973b3fc258d2b7b9a31209ab8d44f1816de61faea817"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-mode-perspective-window-fixture-nov04.cpp",
+      "bytes": 1654,
+      "sha256": "4e5a86f52e598246a0a65db35b4516c64be055a856fee7343df4de6c3ce5488e"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-music-fade-fixture.cpp",
       "bytes": 722,
       "sha256": "0b3c5d930ba4004db2460f9d9054ee55e3af6bd164061ee1e23816430e7b17e7"
@@ -13892,6 +13917,26 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-reimu-orb-fixture.cpp",
       "bytes": 1638,
       "sha256": "137fee4859c86e7334ffcd9ae3e0e4340112ee5d171ed70f2e56ac9086c07e4b"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-render-dimensions-mode-window-fixture-nov04.cpp",
+      "bytes": 358,
+      "sha256": "5ca89b23bab6ff8dc805b3a5f7bfccde2c21d5620e11e8f7c2bc3e86e93ba6e1"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-render-dimensions-observed-window-fixture-nov04.cpp",
+      "bytes": 362,
+      "sha256": "56ea884ed08e3beb92084bb0b1138b5e1ebe79df6e5b0de6274f2adf084e3e39"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-render-dimensions-observer-fixture-nov04.cpp",
+      "bytes": 355,
+      "sha256": "017bbc8b392fd559ff27640b5d78432dfd19ba5fff44eb998a5148fd35b1c0d4"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-render-dimensions-source-window-fixture-nov04.cpp",
+      "bytes": 1376,
+      "sha256": "013bf80c0dbdee9f2c47a677612484994f7a77ee371fc1f5c34bd12f9ff35cb4"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-render-fixture.cpp",
@@ -17339,6 +17384,11 @@
       "sha256": "286a51e1e5f54d3ac3c8ca51256f0f33316e2b0dbd54402b44cd7ac1362fbf04"
     },
     {
+      "path": "tools/th14-build-camera-all-words-component-nov04.py",
+      "bytes": 3972,
+      "sha256": "af58cb09ef64414c4a8a7e3280958724f4fa2b2f92996a32a79165ccd74ac74c"
+    },
+    {
       "path": "tools/th14-build-camera-native-order-component-nov04.py",
       "bytes": 3975,
       "sha256": "73c4de5a0d2a2ef4ebcd28db0bc2759ff1050aacf3f2b417ef7d7953c1a8c778"
@@ -17347,6 +17397,11 @@
       "path": "tools/th14-build-camera-publication-candidate-nov04.py",
       "bytes": 8115,
       "sha256": "631e8daa81762be8e152b615b246c4717ceb01d35e9bce8fbe84a7bfec24071a"
+    },
+    {
+      "path": "tools/th14-build-camera-render-dimensions-nov04.py",
+      "bytes": 6128,
+      "sha256": "8f63cb9355e74b84e171a4b4878db4a849bf1db365506912947454317ce705ad"
     },
     {
       "path": "tools/th14-build-camera-word-component-nov04.py",
@@ -17379,6 +17434,11 @@
       "sha256": "d9c5b10e312256af134ec480de1ab9995cca8ce869f9195943be6ecf77304f09"
     },
     {
+      "path": "tools/th14-build-frozen-render-dimensions-browser-nov04.py",
+      "bytes": 15933,
+      "sha256": "dea7071c325f0f7e5459501f0cc4d717a798a1a9e94d08e0c7c27bf0abfd2651"
+    },
+    {
       "path": "tools/th14-build-frozen-stage-object-browser-nov04.py",
       "bytes": 15640,
       "sha256": "65133757b058c8335ccd2c337da2fda23960c280133cb4167b77d8aef257faf5"
@@ -17392,6 +17452,11 @@
       "path": "tools/th14-build-initialization-boundary-observer-nov01.py",
       "bytes": 4850,
       "sha256": "ff36eb6f5079f3bd00d5a2d47b33033b6bbfb8a7e93090872568c107ee2cc61e"
+    },
+    {
+      "path": "tools/th14-build-mode-perspective-window-nov04.py",
+      "bytes": 3979,
+      "sha256": "4109952072a69a8d1b3e275c14b4b93c35d2e01153c74d530a1bb16bbd7d672c"
     },
     {
       "path": "tools/th14-build-music-continue-sdl-oct26.mjs",
@@ -17447,6 +17512,26 @@
       "path": "tools/th14-build-reimu-bomb-polar-nov01.py",
       "bytes": 1748,
       "sha256": "82c64e82efeca851e8d96d06b2d53229cc0933736f5445da05c339a6e1039890"
+    },
+    {
+      "path": "tools/th14-build-render-dimensions-mode-window-nov04.py",
+      "bytes": 4006,
+      "sha256": "098cb518d9b9bb8455bc98230751aa2a13f11c007f51d9a6ba902563dd8081f6"
+    },
+    {
+      "path": "tools/th14-build-render-dimensions-observed-window-nov04.py",
+      "bytes": 4019,
+      "sha256": "389a56114dbba29c5080308baf8013d008958cb90cd48e1d0890fc6c078c4986"
+    },
+    {
+      "path": "tools/th14-build-render-dimensions-observer-nov04.py",
+      "bytes": 3975,
+      "sha256": "0f5efa125a31a5fb90c5c0effea137b89c7cf2aaf9d06a9656b0d58b95010b42"
+    },
+    {
+      "path": "tools/th14-build-render-dimensions-source-window-nov04.py",
+      "bytes": 4017,
+      "sha256": "2f64730d96a047d080e5a50a235466b0f20386b188e1c049d8ba56238d747d2b"
     },
     {
       "path": "tools/th14-build-replay-rng-context-current-nov04.py",
@@ -17709,6 +17794,16 @@
       "sha256": "fabac093287edfa6177492a76948fe18600752260f071b098c5ccafde636b196"
     },
     {
+      "path": "tools/th14-camera-all-words-check-nov04.mjs",
+      "bytes": 4185,
+      "sha256": "a454a0c56c7784770682a547b9c9ae81412c77401c68b8a0d46cd7088157e1fc"
+    },
+    {
+      "path": "tools/th14-camera-all-words-native-nov04.py",
+      "bytes": 4179,
+      "sha256": "e2464ecb83286128b1facc18ef67b78339d6994e7994e13665efa1646f43d5f4"
+    },
+    {
       "path": "tools/th14-camera-check.mjs",
       "bytes": 3948,
       "sha256": "a598e98b281e27e5bc0cda2032cc7dc646c77158d1f4c003c6865cd0a7172ebf"
@@ -17777,6 +17872,16 @@
       "path": "tools/th14-camera-publication-write-evidence-nov04.py",
       "bytes": 4576,
       "sha256": "6bfca336336ea5fb97c2abb23afac52d171ce3784ecb3926e718f915359085a3"
+    },
+    {
+      "path": "tools/th14-camera-render-dimensions-evidence-nov04.py",
+      "bytes": 16311,
+      "sha256": "5fc1a9511f4b33733573298b5d7b4e4cb51c42d6e1a8f475de4b8046d3103f81"
+    },
+    {
+      "path": "tools/th14-camera-render-dimensions-native-nov04.py",
+      "bytes": 3924,
+      "sha256": "19b873dca101fd1190f6d64b4f8157655ebdf5efc0f5c9b653ad1cf12c320ae4"
     },
     {
       "path": "tools/th14-camera-right-observable-check-oct26.py",
@@ -17909,6 +18014,11 @@
       "sha256": "918ee9a5c86749ab561f1438f5669ad83a606b4a413dd87df66dc79890d33585"
     },
     {
+      "path": "tools/th14-check-render-dimensions-syntax-nov04.py",
+      "bytes": 1559,
+      "sha256": "b6d61606033d46cde691576dbe32e48fc9e3400447400b94d9aeb7e1a94dd46c"
+    },
+    {
       "path": "tools/th14-check-stage-object-boundary-protocol-nov04.py",
       "bytes": 4481,
       "sha256": "a3b37b9cd726679f63b56224b64ffc18a156b620519838647218f981e6706ae0"
@@ -18024,14 +18134,44 @@
       "sha256": "2fc74766543d8fa93a3a8d07369c986578d9f873a56a5909a950701c4daa806a"
     },
     {
+      "path": "tools/th14-compare-native-extra-render-dimensions-nov04.mjs",
+      "bytes": 50374,
+      "sha256": "bb603a49283f733fa99981418da268dfebf55b3e5bc6f131b79b87d55a761efb"
+    },
+    {
       "path": "tools/th14-compare-native-full-camera-nov04.mjs",
       "bytes": 50291,
       "sha256": "f80b7dc9300129aad56bbdc6a0a9fde9d7fa577ef295df683e3e575e03be53e4"
     },
     {
+      "path": "tools/th14-compare-native-mode-perspective-window-nov04.mjs",
+      "bytes": 52272,
+      "sha256": "ae5ace1fed7d87ddcbde46b0b2c06babede82f8d49abf20f2a455922359ecac6"
+    },
+    {
       "path": "tools/th14-compare-native-observed-perspective-window-nov04.mjs",
       "bytes": 52244,
       "sha256": "d2234a564ce2b48646c5277ba1a41803e5b94456c3656fb580b80f65ef59368a"
+    },
+    {
+      "path": "tools/th14-compare-native-render-dimensions-mode-window-nov04.mjs",
+      "bytes": 52292,
+      "sha256": "dd0dad1d0034655898d91c583527ba0b3b3ec659da4d4dc876385ec4f1cf1bac"
+    },
+    {
+      "path": "tools/th14-compare-native-render-dimensions-nov04.mjs",
+      "bytes": 50311,
+      "sha256": "f426b1ec2f60fa627e4a2d48184581c198f0b0d20c3a5a6210be31af004c6999"
+    },
+    {
+      "path": "tools/th14-compare-native-render-dimensions-observed-window-nov04.mjs",
+      "bytes": 52264,
+      "sha256": "4f73b6bb763994b752c485460b7dfe4a83c5752f8db42d5b83f0ccb2983dd536"
+    },
+    {
+      "path": "tools/th14-compare-native-render-dimensions-source-window-nov04.mjs",
+      "bytes": 53595,
+      "sha256": "71043d99246bb6bbb6835945cf6d8887de260151deb04aa6a5ce4976f1286491"
     },
     {
       "path": "tools/th14-compare-observed-seed-store-nov03.mjs",
@@ -21304,6 +21444,11 @@
       "sha256": "69e96d043f848697f35fbb7f996285c8c87c2510cd4989c26785b0d426498a8c"
     },
     {
+      "path": "tools/th14-mode-perspective-window-evidence-nov04.py",
+      "bytes": 8580,
+      "sha256": "e29c771a37063eb70a13a6e84cd5c26e46b98028f4eec61ff3b1eb496ed2d7ed"
+    },
+    {
       "path": "tools/th14-music-clock-evidence-check-oct20.py",
       "bytes": 6304,
       "sha256": "817e726a1b87067389419e50890850973ab69b86c8308dc222624fc9a18ee848"
@@ -22699,6 +22844,11 @@
       "sha256": "f4cb86dd1f352a9f5677c040e4b3850ea249df21e73352fe6284cf63438f33ed"
     },
     {
+      "path": "tools/th14-prepare-camera-render-dimensions-nov04.py",
+      "bytes": 4338,
+      "sha256": "9b6d62b2873a8f8c23e02a68f2089a45f8e989e1e31909f28b94362750a9fbd7"
+    },
+    {
       "path": "tools/th14-prepare-camera-source-read-observer-nov04.py",
       "bytes": 7062,
       "sha256": "7aa0a9890a7cf9513a65d496819fdb825787a6b8ee9d2c380596e802295b4976"
@@ -22722,6 +22872,11 @@
       "path": "tools/th14-prepare-lossless-music.py",
       "bytes": 3669,
       "sha256": "527f5c3dd3e0ac9bf148d2f8e7752e750306c0441d5f5dbd3771e76867245962"
+    },
+    {
+      "path": "tools/th14-prepare-mode-perspective-window-driver-nov04.py",
+      "bytes": 4887,
+      "sha256": "f573a28f0bd935800100555999756a3cd21fe13bf492e7ccd17775c1dc89dd98"
     },
     {
       "path": "tools/th14-prepare-music.py",
@@ -22752,6 +22907,11 @@
       "path": "tools/th14-prepare-perspective-publication-nov04.py",
       "bytes": 5337,
       "sha256": "1a3ec9d15ba0c6e94c614de28f1f4089336ac5b16207731698c7646c01d3c3fc"
+    },
+    {
+      "path": "tools/th14-prepare-render-dimensions-drivers-nov04.py",
+      "bytes": 4045,
+      "sha256": "c9b3d94ee08a14d69a858e754e1acdb979607c318ae1d5bfc4c6c5b44ab8ece6"
     },
     {
       "path": "tools/th14-prepare-replay-rng-completion-stage-observer-nov04.py",
@@ -27675,606 +27835,245 @@
     }
   ],
   "latestIncrement": {
-    "verifiedUnifiedCameraWindowEvidence": true,
-    "productionCoreChanged": false,
-    "productionSourceCommit": "8c6d4678ca5abed189a7f7c6347128e311cd31c3",
-    "ordinaryCoreWasmSha256": "fc24f408b1ea2bf5c0a054dd7b06d2e1e542d0145a2df7faacbed250b2288949",
-    "toolsAndEvidenceOnly": true,
-    "unresolvedExpandedModeRecords": 12,
-    "originalValuesInjected": false,
-    "hostClockWindowReplayAdded": true,
-    "exactOriginalInstructionScheduleRecovered": false,
+    "verifiedCameraRenderDimensions": true,
+    "productionIntegrated": true,
+    "changedProductionFiles": 4,
+    "ordinaryCoreWasmSha256": "b4595e3e7f008cd7f096c4e2ca9c5dcd1d2971ea4d5178e5f6c2317dba89b9f9",
+    "cameraBytes": 300,
+    "nativeDimensionIndices": [
+      22,
+      23
+    ],
+    "nativeResetProfiles": 8,
+    "nativeResetWords": 64,
+    "mappedPrefixWords": 75,
+    "nativePrefixCases": 76,
+    "componentComparedWords": 5700,
+    "componentWrongWords": 0,
+    "componentFailureCases": 9,
+    "referenceReadWords": 456,
+    "all141CoreObjectsFresh": true,
+    "metadataRecoveryRecompiledObjects": 0,
+    "initialStageSizeAssertionFailurePreserved": true,
+    "sourceLineEndingOnlyNormalizations": 2,
+    "legacyStrictRecords": 16,
+    "legacyStrictCallbacks": 1379760,
+    "rejectedOriginalRecords": 1,
+    "rejectedOriginalExceptions": 12,
+    "expandedCameraFields": 73,
+    "mixedClockRecords": 16,
+    "mixedClockDiagnosticRecords": 12,
+    "mixedClockComparedWords": 100721312,
+    "mixedClockWrongWords": 0,
+    "cases": [
+      {
+        "key": "marisaa-natural",
+        "callbacks": 80594,
+        "fields": 73,
+        "comparedWords": 5883289,
+        "wrongWords": 0,
+        "legacyWindowDiagnostic": true
+      },
+      {
+        "key": "reimub-full",
+        "callbacks": 122537,
+        "fields": 73,
+        "comparedWords": 8945128,
+        "wrongWords": 0,
+        "legacyWindowDiagnostic": true
+      },
+      {
+        "key": "reimua-extra",
+        "callbacks": 38403,
+        "fields": 73,
+        "comparedWords": 2803346,
+        "wrongWords": 0,
+        "legacyWindowDiagnostic": false
+      },
+      {
+        "key": "sakuyab-hard",
+        "callbacks": 122811,
+        "fields": 73,
+        "comparedWords": 8965130,
+        "wrongWords": 0,
+        "legacyWindowDiagnostic": true
+      },
+      {
+        "key": "sakuyaa-hard",
+        "callbacks": 96682,
+        "fields": 73,
+        "comparedWords": 7057713,
+        "wrongWords": 0,
+        "legacyWindowDiagnostic": true
+      },
+      {
+        "key": "marisab-easy",
+        "callbacks": 107233,
+        "fields": 73,
+        "comparedWords": 7827936,
+        "wrongWords": 0,
+        "legacyWindowDiagnostic": true
+      },
+      {
+        "key": "marisaa-lunatic",
+        "callbacks": 106797,
+        "fields": 73,
+        "comparedWords": 7796108,
+        "wrongWords": 0,
+        "legacyWindowDiagnostic": true
+      },
+      {
+        "key": "marisab-lunatic",
+        "callbacks": 89235,
+        "fields": 73,
+        "comparedWords": 6514082,
+        "wrongWords": 0,
+        "legacyWindowDiagnostic": true
+      },
+      {
+        "key": "sakuyaa-easy",
+        "callbacks": 128425,
+        "fields": 73,
+        "comparedWords": 9374952,
+        "wrongWords": 0,
+        "legacyWindowDiagnostic": true
+      },
+      {
+        "key": "reimub-extra",
+        "callbacks": 46936,
+        "fields": 73,
+        "comparedWords": 3426255,
+        "wrongWords": 0,
+        "legacyWindowDiagnostic": false
+      },
+      {
+        "key": "marisab-normal-six-stage",
+        "callbacks": 123447,
+        "fields": 73,
+        "comparedWords": 9011558,
+        "wrongWords": 0,
+        "legacyWindowDiagnostic": true
+      },
+      {
+        "key": "new-marisaa-hard",
+        "callbacks": 81458,
+        "fields": 73,
+        "comparedWords": 5946361,
+        "wrongWords": 0,
+        "legacyWindowDiagnostic": true
+      },
+      {
+        "key": "new-marisab-lunatic",
+        "callbacks": 67860,
+        "fields": 73,
+        "comparedWords": 4953707,
+        "wrongWords": 0,
+        "legacyWindowDiagnostic": true
+      },
+      {
+        "key": "new-marisaa-easy-six-stage",
+        "callbacks": 120153,
+        "fields": 73,
+        "comparedWords": 8771096,
+        "wrongWords": 0,
+        "legacyWindowDiagnostic": true
+      },
+      {
+        "key": "marisaa-normal-kg-stage1",
+        "callbacks": 8212,
+        "fields": 73,
+        "comparedWords": 599403,
+        "wrongWords": 0,
+        "legacyWindowDiagnostic": false
+      },
+      {
+        "key": "sakuyaa-extra",
+        "callbacks": 38977,
+        "fields": 73,
+        "comparedWords": 2845248,
+        "wrongWords": 0,
+        "legacyWindowDiagnostic": false
+      }
+    ],
+    "witnessedCallbacks": 35000,
+    "witnessedCameraWords": 2554927,
+    "witnessedSourceWords": 75,
+    "witnessedSourceWrongWords": 0,
+    "applicationFrames": 2289,
+    "applicationChecks": 27,
+    "applicationImages": 2,
+    "applicationOfflinePcmFrames": 1526784,
+    "applicationAgainstFrozenReferenceOnly": true,
+    "browserCompiledUnits": 146,
+    "browserWasmSha256": "87fe1da1d30b38b4390e98080b885aaaa31496cad93cee677eaac0015bb705b1",
+    "sharedSyntaxCases": 16,
+    "physicalAudioDevicesOpenedByModel": 0,
+    "hostClockWindowReplaysExplicit": true,
+    "strictSceneWhitelistNotBroadened": true,
+    "oldRngDifferences": [
+      4137,
+      283,
+      1
+    ],
+    "oldCameraDifferences": 16701,
+    "oldFailureClosed": false,
+    "noUnmappedNativeCameraWordsInComponent": true,
+    "wholeRunUncapturedCameraWords": [
+      73,
+      74
+    ],
+    "screenMatrixMathSkippedInDimensionDataflowReference": true,
     "independentSchedulingAccepted": false,
-    "oldRecordingFailureClosed": false,
     "browserAcceptance": false,
-    "originalWholeGamePixelsOrPcmAccepted": false,
+    "originalWholeRunPixelsOrPcmAccepted": false,
     "completeGame": false,
     "nativeEquivalent": false,
-    "cameraWindow": {
-      "verifiedFiniteCameraWindowEvidence": true,
-      "callbacks": 35000,
-      "expandedFields": 71,
-      "expandedCallbacks": 34999,
-      "expandedWords": 2484929,
-      "unchangedLegacyPayloads": 7,
-      "coarse": {
-        "counts": {
-          "24": 4101,
-          "29": 4101,
-          "30": 4101,
-          "33": 4101,
-          "34": 4101,
-          "36": 4101,
-          "37": 4101,
-          "38": 4101,
-          "50": 4101,
-          "54": 4101
-        },
-        "wrongWords": 41010,
-        "first": {
-          "callback": 30900,
-          "nativeWord": 24,
-          "actual": 1065353215,
-          "expected": 1065353216
-        }
-      },
-      "measuredWindow": {
-        "counts": {},
-        "wrongWords": 0,
-        "first": null
-      },
-      "windows": [
-        {
-          "stage": 3,
-          "callback": 30787,
-          "ordinal": 2,
-          "readyNs": 35239143600400,
-          "previousBoundaryNs": 35239142054500,
-          "followingBoundaryNs": 35239151279000,
-          "sourceReadMainPc": 4412080,
-          "exactOriginalInstructionScheduleRecovered": false
-        }
-      ],
-      "vm303Rows": 1011,
-      "combatCheckpoints": 364,
-      "readOnlyObserverDoesNotAdvanceHostClock": true,
-      "measuredWindowHostClockReplayAdded": true,
-      "nativeGameplayValuesInjected": false,
-      "productionCoreChanged": false,
-      "ordinaryCoreWasmSha256": "fc24f408b1ea2bf5c0a054dd7b06d2e1e542d0145a2df7faacbed250b2288949",
-      "oldRecordingFailureClosed": false,
-      "exactOriginalInstructionScheduleRecovered": false,
-      "independentSchedulingAccepted": false,
-      "opaqueNativeWordsNotMapped": [
-        22,
-        23
-      ],
-      "nativeTailWordsNotCaptured": [
-        73,
-        74
-      ],
-      "physicalAudioDevicesOpenedByModel": 0,
-      "originalPcmNotMeasured": true,
-      "completeGame": false,
-      "nativeEquivalent": false,
-      "verifierSha256": "2a69312e184b79c35c54d04d5da234c58f4875d96f271f02f37ba1729b94b1c9"
-    },
-    "modeAudit": {
-      "verifiedExpandedCameraModeAudit": true,
-      "validRecords": 16,
-      "rejectedNativeRecords": 1,
-      "rejectedNativeExceptions": 12,
-      "callbacks": 1379760,
-      "expandedFields": 71,
-      "expandedWords": 97961824,
-      "expandedPasses": 4,
-      "expandedFailures": 12,
-      "cases": [
-        {
-          "key": "marisaa-natural",
-          "callbacks": 80594,
-          "expandedWords": 5722103,
-          "expandedPassed": false,
-          "wrongWords": 170820,
-          "counts": {
-            "24": 17082,
-            "29": 17082,
-            "30": 17082,
-            "33": 17082,
-            "34": 17082,
-            "36": 17082,
-            "37": 17082,
-            "38": 17082,
-            "50": 17082,
-            "54": 17082
-          },
-          "first": {
-            "callback": 14132,
-            "nativeWord": 24,
-            "actual": 1065353215,
-            "expected": 1065353216
-          },
-          "unchangedLegacyPayloads": 9
-        },
-        {
-          "key": "reimub-full",
-          "callbacks": 122537,
-          "expandedWords": 8700056,
-          "expandedPassed": false,
-          "wrongWords": 376550,
-          "counts": {
-            "24": 37655,
-            "29": 37655,
-            "30": 37655,
-            "33": 37655,
-            "34": 37655,
-            "36": 37655,
-            "37": 37655,
-            "38": 37655,
-            "50": 37655,
-            "54": 37655
-          },
-          "first": {
-            "callback": 14270,
-            "nativeWord": 24,
-            "actual": 1065353215,
-            "expected": 1065353216
-          },
-          "unchangedLegacyPayloads": 13
-        },
-        {
-          "key": "reimua-extra",
-          "callbacks": 38403,
-          "expandedWords": 2726542,
-          "expandedPassed": true,
-          "wrongWords": 0,
-          "counts": {},
-          "first": null,
-          "unchangedLegacyPayloads": 8
-        },
-        {
-          "key": "sakuyab-hard",
-          "callbacks": 122811,
-          "expandedWords": 8719510,
-          "expandedPassed": false,
-          "wrongWords": 797188,
-          "counts": {
-            "29": 70464,
-            "30": 70464,
-            "33": 70464,
-            "34": 70464,
-            "36": 70464,
-            "37": 70464,
-            "38": 70464,
-            "50": 70464,
-            "54": 70464,
-            "24": 52313,
-            "32": 23120,
-            "25": 29193,
-            "26": 29193,
-            "28": 29193
-          },
-          "first": {
-            "callback": 11897,
-            "nativeWord": 29,
-            "actual": 3212836863,
-            "expected": 1064153535
-          },
-          "unchangedLegacyPayloads": 13
-        },
-        {
-          "key": "sakuyaa-hard",
-          "callbacks": 96682,
-          "expandedWords": 6864351,
-          "expandedPassed": false,
-          "wrongWords": 479502,
-          "counts": {
-            "24": 46091,
-            "29": 46091,
-            "30": 46091,
-            "33": 46091,
-            "34": 46091,
-            "36": 46091,
-            "37": 46091,
-            "38": 46091,
-            "50": 46091,
-            "54": 46091,
-            "32": 18592
-          },
-          "first": {
-            "callback": 9772,
-            "nativeWord": 24,
-            "actual": 1065353215,
-            "expected": 1065353216
-          },
-          "unchangedLegacyPayloads": 12
-        },
-        {
-          "key": "marisab-easy",
-          "callbacks": 107233,
-          "expandedWords": 7613472,
-          "expandedPassed": false,
-          "wrongWords": 656802,
-          "counts": {
-            "24": 57499,
-            "29": 57499,
-            "30": 57499,
-            "33": 57499,
-            "34": 57499,
-            "36": 57499,
-            "37": 57499,
-            "38": 57499,
-            "50": 57499,
-            "54": 57499,
-            "32": 20855,
-            "25": 20319,
-            "26": 20319,
-            "28": 20319
-          },
-          "first": {
-            "callback": 32765,
-            "nativeWord": 24,
-            "actual": 1065353215,
-            "expected": 1065353216
-          },
-          "unchangedLegacyPayloads": 12
-        },
-        {
-          "key": "marisaa-lunatic",
-          "callbacks": 106797,
-          "expandedWords": 7582516,
-          "expandedPassed": false,
-          "wrongWords": 503469,
-          "counts": {
-            "24": 40212,
-            "25": 20379,
-            "26": 20379,
-            "28": 20379,
-            "29": 40212,
-            "30": 40212,
-            "32": 40212,
-            "33": 40212,
-            "34": 40212,
-            "36": 40212,
-            "37": 40212,
-            "38": 40212,
-            "50": 40212,
-            "54": 40212
-          },
-          "first": {
-            "callback": 40945,
-            "nativeWord": 24,
-            "actual": 1065353215,
-            "expected": 1065286896
-          },
-          "unchangedLegacyPayloads": 12
-        },
-        {
-          "key": "marisab-lunatic",
-          "callbacks": 89235,
-          "expandedWords": 6335614,
-          "expandedPassed": false,
-          "wrongWords": 534488,
-          "counts": {
-            "24": 52074,
-            "29": 52074,
-            "30": 52074,
-            "33": 52074,
-            "34": 52074,
-            "36": 52074,
-            "37": 52074,
-            "38": 52074,
-            "50": 52074,
-            "54": 52074,
-            "32": 13748
-          },
-          "first": {
-            "callback": 14004,
-            "nativeWord": 24,
-            "actual": 1065353215,
-            "expected": 1065353216
-          },
-          "unchangedLegacyPayloads": 11
-        },
-        {
-          "key": "sakuyaa-easy",
-          "callbacks": 128425,
-          "expandedWords": 9118104,
-          "expandedPassed": false,
-          "wrongWords": 570543,
-          "counts": {
-            "29": 46947,
-            "30": 46947,
-            "33": 46947,
-            "34": 46947,
-            "36": 46947,
-            "37": 46947,
-            "38": 46947,
-            "50": 46947,
-            "54": 46947,
-            "24": 29604,
-            "25": 29604,
-            "26": 29604,
-            "28": 29604,
-            "32": 29604
-          },
-          "first": {
-            "callback": 16713,
-            "nativeWord": 29,
-            "actual": 3212836863,
-            "expected": 1064153535
-          },
-          "unchangedLegacyPayloads": 13
-        },
-        {
-          "key": "reimub-easy",
-          "rejectedNativeExceptions": 12,
-          "newModelRun": false
-        },
-        {
-          "key": "reimub-extra",
-          "callbacks": 46936,
-          "expandedWords": 3332385,
-          "expandedPassed": true,
-          "wrongWords": 0,
-          "counts": {},
-          "first": null,
-          "unchangedLegacyPayloads": 8
-        },
-        {
-          "key": "marisab-normal-six-stage",
-          "callbacks": 123447,
-          "expandedWords": 8764666,
-          "expandedPassed": false,
-          "wrongWords": 581324,
-          "counts": {
-            "24": 48164,
-            "29": 48164,
-            "30": 48164,
-            "32": 22404,
-            "33": 48164,
-            "34": 48164,
-            "36": 48164,
-            "37": 48164,
-            "38": 48164,
-            "50": 48164,
-            "54": 48164,
-            "25": 25760,
-            "26": 25760,
-            "28": 25760
-          },
-          "first": {
-            "callback": 75284,
-            "nativeWord": 24,
-            "actual": 1065353215,
-            "expected": 1065353216
-          },
-          "unchangedLegacyPayloads": 12
-        },
-        {
-          "key": "new-marisaa-hard",
-          "callbacks": 81458,
-          "expandedWords": 5783447,
-          "expandedPassed": false,
-          "wrongWords": 184110,
-          "counts": {
-            "24": 18411,
-            "29": 18411,
-            "30": 18411,
-            "33": 18411,
-            "34": 18411,
-            "36": 18411,
-            "37": 18411,
-            "38": 18411,
-            "50": 18411,
-            "54": 18411
-          },
-          "first": {
-            "callback": 13705,
-            "nativeWord": 24,
-            "actual": 1065353215,
-            "expected": 1065353216
-          },
-          "unchangedLegacyPayloads": 10
-        },
-        {
-          "key": "new-marisab-lunatic",
-          "callbacks": 67860,
-          "expandedWords": 4817989,
-          "expandedPassed": false,
-          "wrongWords": 361556,
-          "counts": {
-            "29": 38096,
-            "30": 38096,
-            "33": 38096,
-            "34": 38096,
-            "36": 38096,
-            "37": 38096,
-            "38": 38096,
-            "50": 38096,
-            "54": 38096,
-            "24": 18692
-          },
-          "first": {
-            "callback": 14790,
-            "nativeWord": 29,
-            "actual": 3212836863,
-            "expected": 1064153535
-          },
-          "unchangedLegacyPayloads": 10
-        },
-        {
-          "key": "new-marisaa-easy-six-stage",
-          "callbacks": 120153,
-          "expandedWords": 8530792,
-          "expandedPassed": false,
-          "wrongWords": 215310,
-          "counts": {
-            "24": 21531,
-            "29": 21531,
-            "30": 21531,
-            "33": 21531,
-            "34": 21531,
-            "36": 21531,
-            "37": 21531,
-            "38": 21531,
-            "50": 21531,
-            "54": 21531
-          },
-          "first": {
-            "callback": 32718,
-            "nativeWord": 24,
-            "actual": 1065353215,
-            "expected": 1065353216
-          },
-          "unchangedLegacyPayloads": 10
-        },
-        {
-          "key": "marisaa-normal-kg-stage1",
-          "callbacks": 8212,
-          "expandedWords": 582981,
-          "expandedPassed": true,
-          "wrongWords": 0,
-          "counts": {},
-          "first": null,
-          "unchangedLegacyPayloads": 6
-        },
-        {
-          "key": "sakuyaa-extra",
-          "callbacks": 38977,
-          "expandedWords": 2767296,
-          "expandedPassed": true,
-          "wrongWords": 0,
-          "counts": {},
-          "first": null,
-          "unchangedLegacyPayloads": 11
-        }
-      ],
-      "legacyPayloadsByteIdentical": true,
-      "legacy16PassesDoNotAcceptExpandedFields": true,
-      "hostClockOverridesAdded": false,
-      "productionCoreChanged": false,
-      "independentSchedulingAccepted": false,
-      "oldRecordingFailureClosed": false,
-      "opaqueNativeWordsNotMapped": [
-        22,
-        23
-      ],
-      "nativeTailWordsNotCaptured": [
-        73,
-        74
-      ],
-      "completeGame": false,
-      "nativeEquivalent": false,
-      "verifierSha256": "f3643a552b0f219fa80c22e444da5c9de81332b40ced3a92f02da19507f07d1b"
-    },
-    "unifiedOriginalClock": {
-      "verifiedUnifiedOriginalDebugEventClock": true,
-      "callbacks": 35000,
-      "debugJournalRows": 56734,
-      "sharedRowsByFile": {
-        "allocation-events.jsonl": 3275,
-        "resource-ready-events.jsonl": 2384,
-        "controller-phase-events.jsonl": 2,
-        "camera-boundary-events.jsonl": 3526,
-        "camera-right-write-events.jsonl": 7286,
-        "scene-camera-copy-events.jsonl": 4,
-        "worker-camera-source-read-events.jsonl": 2,
-        "stage-object-vm-window-events.jsonl": 1964,
-        "replay-rng-store-events.jsonl": 8,
-        "transition-events.jsonl": 6,
-        "hud-initialization-events.jsonl": 4
-      },
-      "allPlayerTimesBoundToReceiptEvents": true,
-      "rngWriteCompletionEvents": 8,
-      "initializeAndCounterRowsShareSameStopClock": true,
-      "pairedStageVmCalls": 982,
-      "cameraReads": [
-        {
-          "stage": 2,
-          "callback": 14155,
-          "event": 25959,
-          "workerReadWords": 13,
-          "mainPc": 4252515,
-          "mainPublicationCopiedWords": 13,
-          "sourceAtReadEqualsCompletedCamera": true
-        },
-        {
-          "stage": 3,
-          "callback": 30787,
-          "event": 48784,
-          "workerReadWords": 13,
-          "mainPc": 4412080,
-          "mainPublicationCopiedWords": null,
-          "sourceAtReadEqualsCompletedCamera": true
-        }
-      ],
-      "playerBodyCallerObservedAtGlobalsCompletion": true,
-      "bodyUpdateCallPc": 4514223,
-      "bodyUpdateTarget": 4652624,
-      "actualCapturedStackFrames": [
-        {
-          "frame": 1764408,
-          "parent": 1764736,
-          "returnPc": 4664480
-        },
-        {
-          "frame": 1764736,
-          "parent": 1764808,
-          "returnPc": 4514228
-        },
-        {
-          "frame": 1764808,
-          "parent": 1764832,
-          "returnPc": 4199159
-        },
-        {
-          "frame": 1764832,
-          "parent": 1769256,
-          "returnPc": 4630536
-        }
-      ],
-      "unchangedStandardDriverStrictPassed": true,
-      "coreWasmSha256": "fc24f408b1ea2bf5c0a054dd7b06d2e1e542d0145a2df7faacbed250b2288949",
-      "vm303Rows": 1011,
-      "combatCheckpoints": 364,
-      "configuredMusicAndSoundVolumesZero": true,
-      "originalPcmNotMeasured": true,
-      "receiptTimeNotExactInstructionExecutionTime": true,
-      "debuggerPausesAffectTiming": true,
-      "oldRecordingExactScheduleRecovered": false,
-      "oldRngFailureClosed": false,
-      "oldCameraFailureClosed": false,
-      "completeGame": false,
-      "nativeEquivalent": false,
-      "verifierSha256": "610be58d66a023833b7a5bd0fa14dc1ecd40a43d270c159b0bb7f62fb59b403d"
-    },
-    "title": "TH14 event-clock witness and expanded camera audit with twelve retained failures",
-    "basePublishedCommit": "8c6d4678ca5abed189a7f7c6347128e311cd31c3",
+    "title": "TH14 camera render dimensions and complete native word mapping",
+    "basePublishedCommit": "961e865da8eac97254636713f1562e1c400f9234",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/tests/cpp/th14-full-camera-observer-fixture-nov04.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-observed-perspective-window-fixture-nov04.cpp",
-      "tools/th14-prepare-unified-event-context-observer-nov04.py",
-      "tools/th14-unified-event-context-evidence-nov04.py",
-      "tools/th14-build-full-camera-observer-nov04.py",
-      "tools/th14-prepare-full-camera-drivers-nov04.py",
-      "tools/th14-compare-native-full-camera-nov04.mjs",
-      "tools/th14-compare-native-extra-full-camera-nov04.mjs",
-      "tools/th14-build-observed-perspective-window-nov04.py",
-      "tools/th14-prepare-observed-perspective-window-driver-nov04.py",
-      "tools/th14-compare-native-observed-perspective-window-nov04.mjs",
-      "tools/th14-observed-perspective-window-evidence-nov04.py",
-      "tools/th14-full-camera-mode-regressions-nov04.py",
-      "tools/th14-full-camera-mode-evidence-nov04.py",
-      "tools/th14-unified-camera-window-evidence-nov04.py",
-      "docs/porting/TH14_UNIFIED_CAMERA_WINDOW_NOV04.md",
-      "docs/porting/th14-unified-camera-window-nov04.json",
+      "runtimes/th12/th12_web/cpp/game/SceneCamera.hpp",
+      "runtimes/th12/th12_web/cpp/game/SceneCompositor.cpp",
+      "runtimes/th12/th12_web/cpp/game/Stage.cpp",
+      "runtimes/th12/th12_web/cpp/game/Stage.hpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-mode-perspective-window-fixture-nov04.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-camera-all-words-fixture-nov04.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-render-dimensions-observer-fixture-nov04.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-render-dimensions-mode-window-fixture-nov04.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-render-dimensions-observed-window-fixture-nov04.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-render-dimensions-source-window-fixture-nov04.cpp",
+      "tools/th14-build-mode-perspective-window-nov04.py",
+      "tools/th14-compare-native-mode-perspective-window-nov04.mjs",
+      "tools/th14-prepare-mode-perspective-window-driver-nov04.py",
+      "tools/th14-mode-perspective-window-evidence-nov04.py",
+      "tools/th14-camera-render-dimensions-native-nov04.py",
+      "tools/th14-prepare-camera-render-dimensions-nov04.py",
+      "tools/th14-build-camera-render-dimensions-nov04.py",
+      "tools/th14-build-camera-all-words-component-nov04.py",
+      "tools/th14-camera-all-words-native-nov04.py",
+      "tools/th14-camera-all-words-check-nov04.mjs",
+      "tools/th14-build-render-dimensions-observer-nov04.py",
+      "tools/th14-build-render-dimensions-mode-window-nov04.py",
+      "tools/th14-build-render-dimensions-observed-window-nov04.py",
+      "tools/th14-build-render-dimensions-source-window-nov04.py",
+      "tools/th14-compare-native-render-dimensions-nov04.mjs",
+      "tools/th14-compare-native-extra-render-dimensions-nov04.mjs",
+      "tools/th14-compare-native-render-dimensions-mode-window-nov04.mjs",
+      "tools/th14-compare-native-render-dimensions-observed-window-nov04.mjs",
+      "tools/th14-compare-native-render-dimensions-source-window-nov04.mjs",
+      "tools/th14-prepare-render-dimensions-drivers-nov04.py",
+      "tools/th14-build-frozen-render-dimensions-browser-nov04.py",
+      "tools/th14-check-render-dimensions-syntax-nov04.py",
+      "tools/th14-camera-render-dimensions-evidence-nov04.py",
+      "docs/porting/TH14_CAMERA_RENDER_DIMENSIONS_NOV04.md",
+      "docs/porting/th14-camera-render-dimensions-nov04.json",
+      "docs/porting/th14-mode-perspective-window-diagnostics-nov04.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
+      "docs/porting/TH14_UNIFIED_CAMERA_WINDOW_NOV04.md",
       "docs/github-publication-manifest.json"
     ],
     "sourceOnly": true,
     "gameAssetsAdded": false,
-    "productionGameplayCoreChanged": false,
-    "gameplayCorePublicationPending": false
+    "productionGameplayCoreChanged": true,
+    "gameplayCorePublicationPending": true
   }
 }

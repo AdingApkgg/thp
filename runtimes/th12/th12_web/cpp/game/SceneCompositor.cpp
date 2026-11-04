@@ -9,6 +9,9 @@ void SceneCompositor::reset_cameras(bool restricted,u32 width,u32 height){
         scaled_play_camera=play_camera;scaled_play_camera.mode=1;scaled_play_camera.viewport.x=u32(128*scale);
         world_camera=play_camera;world_camera.mode=3;
         region={u32((i32(width)-408)/2),u32((i32(height)-472)/2),408,472,0,1};world_camera.viewport=region;
+#if PORT_TITLE == 14
+        for(auto* camera:{&full_camera,&play_camera,&scaled_play_camera,&world_camera}){camera->render_width=width;camera->render_height=height;}
+#endif
         full_camera.screen();play_camera.screen();scaled_play_camera.screen();world_camera.screen();return;
     }
     full_camera={};full_camera.mode=1;play_camera={};play_camera.position.z=1000;world_camera=play_camera;

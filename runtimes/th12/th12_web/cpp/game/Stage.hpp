@@ -43,7 +43,7 @@ struct StageState {
 #endif
 };
 #if UINTPTR_MAX == UINT32_MAX
-static_assert(sizeof(StageState)==0x3158+11*kAnmVmExtensionBytes+(kPortTitle==13||kPortTitle==14?12+sizeof(Vec3Interpolator):0)+(kPortTitle==14?32:0));
+static_assert(sizeof(StageState)==0x3158+11*kAnmVmExtensionBytes+(kPortTitle==13||kPortTitle==14?12+sizeof(Vec3Interpolator):0)+(kPortTitle==14?40:0));
 static_assert(offsetof(StageState,camera)==0x3040+11*kAnmVmExtensionBytes+(kPortTitle==14?32:0)&&offsetof(StageState,script_animations)==0x180);
 static_assert(offsetof(StageState,fog_interpolation)==0xe8&&offsetof(StageState,effect_animations)==0x2348+8*kAnmVmExtensionBytes+(kPortTitle==14?32:0));
 #endif
