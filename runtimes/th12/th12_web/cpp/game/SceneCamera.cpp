@@ -28,7 +28,14 @@ void SceneCamera::perspective(){
     if(!SceneCameraPerspectiveScopeTh14::checkpoint(*this,3))return;
     right.z=axis.z;
     if(!SceneCameraPerspectiveScopeTh14::checkpoint(*this,4))return;
-    right=GraphicsMath::normalize(right);
+    // Native D3DX SSE stores normalized X, Y, Z separately. Preserve the
+    // already-computed local result while the worker may read between stores.
+    const auto normalized=GraphicsMath::normalize(right);
+    right.x=normalized.x;
+    if(!SceneCameraPerspectiveScopeTh14::checkpoint(*this,6))return;
+    right.y=normalized.y;
+    if(!SceneCameraPerspectiveScopeTh14::checkpoint(*this,7))return;
+    right.z=normalized.z;
     if(!SceneCameraPerspectiveScopeTh14::checkpoint(*this,5))return;
 #else
     right=GraphicsMath::normalize(GraphicsMath::cross(kPortTitle==13||kPortTitle==14?reserved24:direction,up));

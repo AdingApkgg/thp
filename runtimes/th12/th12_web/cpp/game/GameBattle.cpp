@@ -200,6 +200,8 @@ bool GameBattle::next_stage(GameResources& source,u32 number,std::function<bool(
 }
 bool GameBattle::next_stage(GameResources& source,u32 number,std::function<bool()> initialize,std::function<prototype::Work()> initialize_step){
     if(transitioning||pending_stage||number<2||number>6)return false;
+    if(!stage_camera_read_job.reset()){error="TH14 scene camera read still active";return false;}
+    incoming_scene_owner.reset();
     pending_stage=number;next_stage_source=&source;next_stage_initializer=std::move(initialize);
     next_stage_initializer_step=std::move(initialize_step);stage_initialization_started=stage_initialization_finished=false;
     BattleStageActions actions(*this);
@@ -297,9 +299,21 @@ prototype::Work GameBattle::prepare_stage_scene(){
     const auto result=resources.advance_stage_phase(*next_stage_source,StageResourceEffects::Phase::Scene,0);
     if(result!=GameSessionResources::PhaseResult::Ready)return phase_work(result);
     auto* incoming=resources.loading_bundle();if(!incoming){error="TH14 incoming scene bundle missing";return prototype::Work::Failed;}
-    stage=std::make_unique<Stage>(animations,incoming->background,resources.core.text,compositor.clear_color,u16((pending_stage&1)+3));
-    stage->active_camera=&compositor.world_camera;
-    if(!stage->initialize(incoming->scene,pending_stage,compositor.world_camera,false)){error=stage->error;return prototype::Work::Failed;}
+    // Native40d445 reads75 words while the main publisher may be active.
+    // Keep the incoming owner private until all reads and initialization finish.
+    if(!incoming_scene_owner){
+        incoming_scene_owner=std::make_unique<Stage>(animations,incoming->background,resources.core.text,compositor.clear_color,u16((pending_stage&1)+3));
+        incoming_scene_owner->active_camera=&compositor.world_camera;
+    }
+    const auto copied=stage_camera_read_job.advance(compositor.world_camera,[this](u32 word){
+        return stage_camera_read_boundary?stage_camera_read_boundary(word):prototype::Work::Ready;
+    });
+    if(copied!=prototype::Work::Ready){
+        if(copied==prototype::Work::Failed)error="TH14 scene camera read failed";
+        return copied;
+    }
+    if(!incoming_scene_owner->initialize(incoming->scene,pending_stage,stage_camera_read_job.snapshot(),false)){error=incoming_scene_owner->error;return prototype::Work::Failed;}
+    stage=std::move(incoming_scene_owner);
     if(!resources.publish_stage_scene()){error=resources.error;return prototype::Work::Failed;}
     enemy_commands.stage=stage.get();return prototype::Work::Ready;
 }

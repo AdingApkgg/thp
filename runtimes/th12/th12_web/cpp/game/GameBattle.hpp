@@ -26,6 +26,7 @@
 #include "Hud.hpp"
 #if PORT_TITLE == 14
 #include "StagedLoaderPrototype.hpp"
+#include "SceneCameraReadJobTh14.hpp"
 #include "LoadingTh14.hpp"
 #endif
 #if PORT_TITLE == 16
@@ -150,6 +151,9 @@ public:
     std::function<bool()> next_stage_initializer;
     std::function<prototype::Work()> next_stage_initializer_step;
     bool stage_initialization_started=false,stage_initialization_finished=false;
+    SceneCameraReadJobTh14 stage_camera_read_job;
+    std::unique_ptr<Stage> incoming_scene_owner;
+    std::function<prototype::Work(u32)> stage_camera_read_boundary;
     bool next_stage(GameResources&,u32,std::function<bool()>);
     bool next_stage(GameResources&,u32,std::function<bool()>,std::function<prototype::Work()>);
     bool pump_stage_loading(u64 now,i32 first_capture_index,u32 supervisor_flags);
