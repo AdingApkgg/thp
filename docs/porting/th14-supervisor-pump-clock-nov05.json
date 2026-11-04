@@ -1,0 +1,341 @@
+{
+  "schema": "th14/supervisor-pump-public-evidence/1",
+  "callbacks": 35000,
+  "stagesObserved": [
+    1,
+    2,
+    3
+  ],
+  "selection": [
+    0,
+    1,
+    1,
+    1
+  ],
+  "native": {
+    "debugExceptions": 0,
+    "observedPasses": 34000,
+    "entries": 34000,
+    "pumps": 34000,
+    "players": 34000,
+    "entryPc": "0x444890",
+    "pumpPc": "0x47d720",
+    "playerPc": "0x44dbd0",
+    "fixedHardwareSlots": true,
+    "multiplexing": false,
+    "sameMainThreadPassAssociationObserved": true,
+    "allNewEntryExceptionsHardwareValidated": true,
+    "physicalFrameIdentityProven": false,
+    "instructionAccesses": 64,
+    "pairedNext32ReadsAndStores": 32
+  },
+  "enabled": {
+    "allExistingComparisonGatesPassed": true,
+    "all32StateFieldsEqual": true,
+    "all75CameraFieldsEqual": true,
+    "expandedCameraCallbacks": 34999,
+    "expandedCameraWords": 2624925,
+    "allHudAndCursorEqual": true,
+    "orderedPublications": 3274,
+    "vm303Rows": 885,
+    "combatCheckpoints": 502,
+    "nonemptyCombatCheckpoints": 49,
+    "combatRows": {
+      "enemies": 376,
+      "bullets": 5630,
+      "shots": 1180,
+      "areas": 501,
+      "items": 1933,
+      "lasers": 149
+    },
+    "nativeInstructionAccesses": 64,
+    "matchedObservedInstructionSequence": true,
+    "portableScriptRows": 68,
+    "extraPortableRowsNotAccepted": 4,
+    "instructionDifferenceCounts": {
+      "callback": 0,
+      "point": 0,
+      "actualInstructionValue": 0,
+      "sampledScriptCalls": 0
+    },
+    "scheduledPumpClocks": 34000,
+    "deliveredAtPendingLoaderPump": 453,
+    "noPendingLoaderAtCallSite": 33547,
+    "clockDeliveryFailures": 0,
+    "firstReadWaitInstalled": false,
+    "sceneCopyHandoffsInstalled": false
+  },
+  "disabled": {
+    "failureCallback": 31009,
+    "nativeStage": 3,
+    "nativeStageFrame": 1,
+    "portableStageFrame": 0,
+    "scriptSeedDifferenceCallbacksBeforeFailure": 171,
+    "rngAuditPayloadIdenticalToOldNegative": true,
+    "rngAuditPayloadSha256": "ce9ac40e54f8e8b30d4bc85cca3ed1a810ea0ca6ba18d7bd61595dfbe4e8796a"
+  },
+  "build": {
+    "wasmSha256": "e526651326714596a0751dcfb43faa4fa8fb0ee79e39fff4917c5b2d8339318a",
+    "engineObjectsRecompiled": 1,
+    "engineObjectsReused": 140,
+    "diagnosticGameSessionOnly": true,
+    "productionGameplayChanged": false
+  },
+  "ownConcurrentWatchComponent": {
+    "counts": {
+      "entry": 256,
+      "pump": 256,
+      "player": 224,
+      "store": 224
+    },
+    "omittedPlayerPassesStillObserved": 32,
+    "passed": true
+  },
+  "failedStartupRetained": {
+    "callbacks": 0,
+    "newWatchProfileActivated": false,
+    "startupTimeoutSeconds": 90,
+    "causeProven": false
+  },
+  "timestampsAreDebuggerReceiptTimes": true,
+  "crossThreadExactOrderAccepted": false,
+  "originalStateValuesProvidedToEngine": false,
+  "allFinalComparisonGatesUnchanged": true,
+  "strictSceneWhitelistChanged": false,
+  "oldDefaultFailureClosed": false,
+  "ordinaryIndependentTimingAccepted": false,
+  "originalWholePixelsOrPcmAccepted": false,
+  "completeGame": false,
+  "assetsRawRegistersSeedsMemorySavesReplaysImagesPcmAndBinariesIncluded": false,
+  "sourceSummaryBindings": {
+    "artifacts/th14/supervisor-pass-rng-nov05/comparison-pump-enabled/native-register-proof.json": {
+      "bytes": 3281,
+      "sha256": "c0ae4c86711496ea850de35bb6b8e20507042c8e9487fe0964b0b25b2b0b59e2"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/comparison-pump-enabled/native-register-proof-timeline.json": {
+      "bytes": 19450,
+      "sha256": "6682383b1c75a7c2313abfadcbc7c83e5107b00700d236c2ccad53bae76d3ef5"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/comparison-pump-enabled/raw-verified.json": {
+      "bytes": 8163,
+      "sha256": "5b1a395155a4cde16d878cb4cef99ab430832b7ac24bceaac1ec8859fb0a6394"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/comparison-pump-enabled/comparison-result.json": {
+      "bytes": 2615,
+      "sha256": "fc5f6976e9ef5804f0ca52586e3e3d99c16b214d5e89ff3e5b10b2a1952d6696"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/comparison-pump-enabled/model/report.json": {
+      "bytes": 7774,
+      "sha256": "7f70134f4727552ef3efb2da9f7c13fea80dc7b80baef290e23799133c05d15e"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/comparison-pump-enabled/model/full-camera-report.json": {
+      "bytes": 1384,
+      "sha256": "8fd42dcb2b95a8d4e4c2680e06ca6bc2543ac77cc56086a1e7e1f0ede853b378"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/resource-clock-build-retry1/observer-build.json": {
+      "bytes": 88848,
+      "sha256": "a6f00614e6477117478647e12c840ade465f0ba1758c95187cc9c349a5bf3753"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/comparison-pump-disabled/model/checkpoint-failure.json": {
+      "bytes": 1900,
+      "sha256": "e62da67bd45a6bdf638d73a8561247d38b2fb251ed35075ff72a37aa360cbbd3"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/comparison-prefix-v5/model/checkpoint-failure.json": {
+      "bytes": 1741,
+      "sha256": "4f326bf5f134d693fe61281a9d663dcbaf25f9dc75935e9dd5671a2a506a298d"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/prefix-fixed-startup-retry1/native/report.json": {
+      "bytes": 230966,
+      "sha256": "5d08b1af19195329ce276d1a048fe5f3809cefe5e37bcb291dbae0eac3dae1f4"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/prefix-fixed-startup-retry1/native/observer-source.py": {
+      "bytes": 93676,
+      "sha256": "147af67bdca6061b18283205dae3659da67781d7e35886b13ebecd8f662934e0"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/prefix-fixed-startup-retry1/native/supervisor-pass-events.jsonl": {
+      "bytes": 59181318,
+      "sha256": "48bbf1f6721247c4bcc8a841c9b294686ee47ec0cc4dea0e3d28ec30a65c0066"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/prefix-fixed-startup-retry1/native/debug-event-clock.jsonl": {
+      "bytes": 41488279,
+      "sha256": "de9195a78bdad148acb6e7cecae02257e7ea94b08cf753f08067f18ad34f8255"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/prefix-fixed-startup-retry1/native/player-host-monotonic.u64": {
+      "bytes": 280000,
+      "sha256": "bc9506398f4eecfbe9d6250dda34f8fcb15f77dea5dcef701dc2dfd6e8775622"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/prefix-fixed-startup-retry1/native/script-rng-access-events.jsonl": {
+      "bytes": 90780,
+      "sha256": "0bdf72918f08607bffee362a555d1f4c6c147556cf45b62183ba174bf1969f3e"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/prefix-fixed-startup-retry1/process-end.json": {
+      "bytes": 183,
+      "sha256": "9d73edd10cbea75a1c2abc84a970dfde4b858e99f735e2fbd7a7d1b2d5e1dbcb"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/observer-fixed-target/prepared.json": {
+      "bytes": 4812,
+      "sha256": "f3acf33c6299a96cbaac0531ad917d3bc2127bc4f2e992b3f465481b904ba0d6"
+    },
+    "artifacts/th14/script-rng-read-generation-nov05/component/report.json": {
+      "bytes": 63408,
+      "sha256": "9ee67a2b37c32e038816e3889f05ff3152d8716451904bbb5bf8e03de298eeef"
+    },
+    "tools/th14-rng-register-generation-component-nov05.py": {
+      "bytes": 5531,
+      "sha256": "b0e2fb558c6bfbed0bca6ba516023333f90055d3825e8af19e15b34fe3a47956"
+    },
+    "artifacts/th14/native-campaign-assets/57d84a5cbe82-c48412a95f0f/manifest.json": {
+      "bytes": 67607,
+      "sha256": "6a130d1335f3fca6c810beca755128d915c57034622c13981a3133bd0654999c"
+    },
+    "artifacts/th14/royalflare-coverage-matrix-oct16/inputs/reimub-normal.rpy": {
+      "bytes": 110022,
+      "sha256": "c48412a95f0fe9f685d97574e8ab0655d41e44ff9c41fda7bf788589b1b29c74"
+    },
+    "artifacts/th14/native-campaign-assets/57d84a5cbe82-c48412a95f0f/th14.dat": {
+      "bytes": 90852846,
+      "sha256": "193951915600c331d60f167a9c6eecdf78731a3bc875f05d1e6a4ab011453080"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/prefix-fixed-startup-retry1/native/selected-state.u32": {
+      "bytes": 4480000,
+      "sha256": "851f64d43758ed80962e6ea7d8f58270482c24f5be0a3696414651d8cb2ab8a7"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/comparison-pump-enabled/model/selected-state.u32": {
+      "bytes": 4480000,
+      "sha256": "851f64d43758ed80962e6ea7d8f58270482c24f5be0a3696414651d8cb2ab8a7"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/prefix-fixed-startup-retry1/native/world-camera.raw": {
+      "bytes": 10220000,
+      "sha256": "d9e489cfe43b4bb24e03b315a00b4d49666275cd5952a24e939d917b410de166"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/comparison-pump-enabled/model/portable-camera.u32": {
+      "bytes": 3500000,
+      "sha256": "31a9ed7025f5b144374fa54cfd946f5811f0c67c335b4635c0ddd5e0c5b51f41"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/prefix-fixed-startup-retry1/native/hud-score.u32": {
+      "bytes": 280000,
+      "sha256": "14544b89a22ddabd0c6bce7f22e7a1fda0631750ff3cf98c02320008c01ceadb"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/comparison-pump-enabled/model/portable-hud.u32": {
+      "bytes": 280000,
+      "sha256": "14544b89a22ddabd0c6bce7f22e7a1fda0631750ff3cf98c02320008c01ceadb"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/prefix-fixed-startup-retry1/native/live-vms-callback-1.json": {
+      "bytes": 168172,
+      "sha256": "9481011a40cf6dd0b5e77735f6ed6325fe446cd2f01a717a54446fbcc1493191"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/comparison-pump-enabled/model/portable-live-1.json": {
+      "bytes": 50691,
+      "sha256": "958184980a59a6702fce14af99c5219e84f94fd342598952a9d05cfc31da00a7"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/prefix-fixed-startup-retry1/native/live-vms-callback-1000.json": {
+      "bytes": 579737,
+      "sha256": "19dfaae620cb4ed0f2817e9ef2f830c60550901e276115690e1bd77d38f676d7"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/comparison-pump-enabled/model/portable-live-1000.json": {
+      "bytes": 198215,
+      "sha256": "b1111b90c5cd94659bf35a22e59d698fe5ea2a2fa28ba24c789ce1b83ab15b7c"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/prefix-fixed-startup-retry1/native/live-vms-callback-26000.json": {
+      "bytes": 1108109,
+      "sha256": "6ec466b3638770d4d3de255166c225091199a7898242e3b5281b001d3de34f4d"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/comparison-pump-enabled/model/portable-live-26000.json": {
+      "bytes": 366740,
+      "sha256": "83f220c2c26971a8085f7a8f14d40bca590073196c3d1023bbd24880a631e731"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/prefix-fixed-startup-retry1/native/live-vms-callback-34000.json": {
+      "bytes": 1010446,
+      "sha256": "475dc5335aefbd5bf61543dbb3cc588179f9045b32ac03e39ddaee5bc01c381c"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/comparison-pump-enabled/model/portable-live-34000.json": {
+      "bytes": 336816,
+      "sha256": "e8f62250d29e66b614c0ddd5c1022ef276809c87557f97e08034c0a7691d6bec"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/prefix-fixed-startup-retry1/native/combat-pool-index.json": {
+      "bytes": 203704,
+      "sha256": "08719117cab7705ee89d53158cd095ff67869b261bacdd4d47d11436ac185c90"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/prefix-fixed-startup-retry1/native/allocation-events.jsonl": {
+      "bytes": 1565909,
+      "sha256": "38bb24054e0687898824570ce5b0664f2a07eb4bcfe68831d3f1b98f4ce4e2dc"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/comparison-pump-enabled/model/portable-allocations-initial-through-1000.json": {
+      "bytes": 552455,
+      "sha256": "7df2a5d54fe1e828d737232565818739632ebeb6214c4aa551b4d592a5ceced7"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/resource-clock-build-retry1/observer.wasm": {
+      "bytes": 1522518,
+      "sha256": "e526651326714596a0751dcfb43faa4fa8fb0ee79e39fff4917c5b2d8339318a"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/comparison-pump-disabled/model/rng-register-audit-at-failure.u32": {
+      "bytes": 4352,
+      "sha256": "ce9ac40e54f8e8b30d4bc85cca3ed1a810ea0ca6ba18d7bd61595dfbe4e8796a"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/comparison-prefix-v5/model/rng-register-audit-at-failure.u32": {
+      "bytes": 4352,
+      "sha256": "ce9ac40e54f8e8b30d4bc85cca3ed1a810ea0ca6ba18d7bd61595dfbe4e8796a"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/preflight-fixed/verified.json": {
+      "bytes": 917,
+      "sha256": "164b26d4559a859c9f413e4aeba30d198c2f7d8d7c576f110f20f5ffa3256778"
+    },
+    "artifacts/th14/frame-entry-audit-retry1-nov05/component/stable/report.json": {
+      "bytes": 165496,
+      "sha256": "d008110b62b66491a77740ee1794fa8a0facdf8e85e30c51cda078d2d9ddbea5"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/prefix-fixed/native/report.json": {
+      "bytes": 11083,
+      "sha256": "a55ed419297752ce75e5a7e65b845f308db8a05575f6177e3a78dd9a2424ba66"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/prefix-fixed/process-end.json": {
+      "bytes": 183,
+      "sha256": "c424cdca416ab48a6e4d458bb5855f1b69781583df39594e574431a5760c1388"
+    },
+    "tools/th14-inspect-supervisor-entry-nov05.py": {
+      "bytes": 2988,
+      "sha256": "66a75ae1aae489de9024d8fd5ed22710f024759fa7d2762572d46796cbf77875"
+    },
+    "tools/th14-fixed-frame-watch-component-nov05.py": {
+      "bytes": 9236,
+      "sha256": "042242ead2f87ed474510b863f08fba0566bd4446ac4b49fec420bbccf5c065d"
+    },
+    "tools/th14-prepare-supervisor-rng-observer-nov05.py": {
+      "bytes": 8992,
+      "sha256": "14f9ca30ef11b04887838c4dca57f139289fc489b1f8e5e1d73c2b76e4c90089"
+    },
+    "tools/th14-run-supervisor-rng-observer-nov05.py": {
+      "bytes": 2075,
+      "sha256": "a7dde0c1736e17df30739126304c510fd216194e326bd2eb3bbae6fb0bd721bd"
+    },
+    "tools/th14-check-supervisor-rng-preflight-nov05.py": {
+      "bytes": 919,
+      "sha256": "a27ab4a5a510f724724dd7aef746e0675a7f621878d16a70c7ff01feed774c5b"
+    },
+    "tools/th14-supervisor-pass-timeline-nov05.py": {
+      "bytes": 5904,
+      "sha256": "ae6bd4d69bd6a5fed2c4a9054ed9a952298001aaccb80e98bbb34957bc04988d"
+    },
+    "tools/th14-supervisor-rng-read-evidence-nov05.py": {
+      "bytes": 5849,
+      "sha256": "51579ba130141877818c5bceea565bed968d806b06a98ddfece5e70b12f7ab85"
+    },
+    "tools/th14-build-supervisor-resource-clock-nov05.py": {
+      "bytes": 5888,
+      "sha256": "d14bf01e555ad3c4fa701e13861106716f4cf414d05ca12fe6847b0a7ad161b5"
+    },
+    "tools/th14-prepare-supervisor-comparison-nov05.py": {
+      "bytes": 10545,
+      "sha256": "37e5b3ac13d41dd22d8b5b162fc81a1e8555474870d945d9e02024896c42dd42"
+    },
+    "tools/th14-compare-supervisor-prefix-nov05.py": {
+      "bytes": 7578,
+      "sha256": "a9b2a4aaacceb0f6c6be62f478ce08fbce5e7d64683198c5f319265fbdaaf908"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-supervisor-resource-clock-fixture-nov05.cpp": {
+      "bytes": 1624,
+      "sha256": "2ca3cc1491d6cd3ac715339c18a757145dff213b6d444b8ecf8d551c282faecd"
+    }
+  },
+  "toolSha256": "67731ee5c3c87ec3d9760891c4316125fc9b0ff9bd08705fa01bf43e4d68daf5"
+}
