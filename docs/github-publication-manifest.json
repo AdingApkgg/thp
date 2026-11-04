@@ -384,6 +384,11 @@
       "sha256": "c5bd8c1490d9c4eca612eaba42b596ea9fdfe51a694961a3ddf15b56485d23e0"
     },
     {
+      "path": "docs/porting/TH14_FROZEN_DELIVERY_NOV04.md",
+      "bytes": 3009,
+      "sha256": "124369aad343728c264c096a31a0d9f3f2f869199355e911d64ff22ddff1441a"
+    },
+    {
       "path": "docs/porting/TH14_FROZEN_ORDINARY_FULL_OCT27.md",
       "bytes": 4394,
       "sha256": "51559d4199521a5fd10afc22c70d31cbc41ecf3dd14e1bfa486688cd8e9fec08"
@@ -840,8 +845,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 101911,
-      "sha256": "3c991e7444e2b81c685dafec6aeaebf421cb32ffdbfdd73babd2b33480d650e0"
+      "bytes": 102363,
+      "sha256": "17dc7332c1d221937c36c63f8bb58d8f8bc4524f1f093bab68ad0016462a8e44"
     },
     {
       "path": "docs/porting/TH14_REPLAY_ACTIVATION_RESET_NOV04.md",
@@ -3387,6 +3392,11 @@
       "path": "docs/porting/th14-forward-viewport-positiont-observed-oct15.json",
       "bytes": 9510,
       "sha256": "fd65171377bf18362ed72f5d6ffe1542d4b418581977c8bcdd3ce55c12b21c84"
+    },
+    {
+      "path": "docs/porting/th14-frozen-delivery-nov04.json",
+      "bytes": 112263,
+      "sha256": "eab6fdd2a8ef366dc895eb68b0c241c297dad13de89fe7ec5f2a6410127feaaf"
     },
     {
       "path": "docs/porting/th14-frozen-ordinary-full-verified-oct27.json",
@@ -20089,6 +20099,11 @@
       "sha256": "b81a29e16d5cefab6ec412687167560304cbdf72977cfe162293aa4eec7da158"
     },
     {
+      "path": "tools/th14-frozen-delivery-evidence-nov04.py",
+      "bytes": 6725,
+      "sha256": "7df8849a936b7ee5002a8cf49aacd95eb2c9bec9683323eb441f98afc5b69527"
+    },
+    {
       "path": "tools/th14-frozen-ordinary-full-evidence-oct27.py",
       "bytes": 12822,
       "sha256": "9666c7d9d6e46163ab389c56dcb669a6e10c82e731a5c29af2b53f52e4d48f27"
@@ -22590,8 +22605,8 @@
     },
     {
       "path": "tools/th14-package-webgpu-candidate.py",
-      "bytes": 8272,
-      "sha256": "b5654fbd9c86b8e2bdc620b9252c91adf7ec05b7ca7d7f972d4fc27c416e4fd1"
+      "bytes": 9105,
+      "sha256": "b71ea6d51fd419079e5c289bb1671a34738cfae6fa9adc2053407042039862a5"
     },
     {
       "path": "tools/th14-particles-check.mjs",
@@ -28222,5 +28237,17 @@
       "docs/porting/th14-scene-word-read-nov04.json",
       "docs/github-publication-manifest.json"
     ]
+  },
+  "latestDelivery": {
+    "evidence": "docs/porting/th14-frozen-delivery-nov04.json",
+    "frozenPlatformCommit": "4ff66fd7b2e302c6878bb535d6d75554f09e8da8",
+    "coreCommit": "51fcb47992be0af65777d2ea87e9e409be6cc641",
+    "verifiedTransport": true,
+    "browserAcceptance": false,
+    "persistenceAccepted": false,
+    "completeGame": false,
+    "nativeEquivalent": false,
+    "gameAssetsIncluded": false,
+    "compiledRuntimeIncluded": false
   }
 }
