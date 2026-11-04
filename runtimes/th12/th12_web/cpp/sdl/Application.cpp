@@ -852,7 +852,20 @@ struct Application:StageResourceEffects
         )){error=fonts.error;return false;}
         mkdir("/save",0777);mkdir("/save/replay",0777);
         if(SDL_GetPathInfo(score_path,nullptr)){std::vector<u8> saved;if(!read_file(score_path,saved,4*1024*1024)||!session.load_scores(saved.data(),u32(saved.size()))){error=std::string("Invalid ")+score_path+": "+session.scores.error;return false;}}
-        if(SDL_GetPathInfo(config_path,nullptr)){std::vector<u8> saved;if(!read_file(config_path,saved,u32(session.config.bytes.size()))||!session.config.open(saved.data(),u32(saved.size()))){error=std::string("Invalid ")+config_path;return false;}saved_config_state=saved;}
+        if(SDL_GetPathInfo(config_path,nullptr)){
+            std::vector<u8> saved;
+            if(!read_file(config_path,saved,u32(session.config.bytes.size()))||!session.config.open(saved.data(),u32(saved.size()))){
+#if PORT_TITLE == 14
+                // Retail44552d logs a rejected config, calls4376e0 to reset
+                // it, then joins the ordinary startup path at445549.
+                // Keep import validation strict; only cold startup recovers.
+                session.config.reset();
+                std::printf("[config14] Invalid %s; using defaults\n",config_path);
+#else
+                error=std::string("Invalid ")+config_path;return false;
+#endif
+            }else saved_config_state=std::move(saved);
+        }
         audio.music_volume=session.config.music_volume();audio.effects.master_volume=session.config.sound_volume();audio.refresh_volume();
         session.recording_timestamp=u64(std::time(nullptr));
 #if PORT_TITLE == 14
