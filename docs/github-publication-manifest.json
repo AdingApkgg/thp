@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "51fcb47992be0af65777d2ea87e9e409be6cc641",
+  "sourceCommit": "ae284631c2ebaf4006eb8b17662bc5caeeb6da5c",
   "files": [
     {
       "path": ".gitignore",
@@ -197,6 +197,11 @@
       "path": "docs/porting/TH14_CLIP_AND_SCHEDULING_CONTROLS_OCT30.md",
       "bytes": 5169,
       "sha256": "e6fb2061e7c834988fb5e59f42bac5dd7434ec067637ec853bf83bb6582eb6fc"
+    },
+    {
+      "path": "docs/porting/TH14_CONFIG_STARTUP_FALLBACK_NOV04.md",
+      "bytes": 3392,
+      "sha256": "afad7f38a89101dede01553b89c6ef39861f2e88e49d91aedbb7dac5d2bc4eb0"
     },
     {
       "path": "docs/porting/TH14_CONSTRUCTOR_HIT_FIX_OCT15.md",
@@ -845,8 +850,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 102363,
-      "sha256": "17dc7332c1d221937c36c63f8bb58d8f8bc4524f1f093bab68ad0016462a8e44"
+      "bytes": 102922,
+      "sha256": "f23834fc37a9d824b167906de6394f196bd3dfcd1c75249fb5a73bac749ef302"
     },
     {
       "path": "docs/porting/TH14_REPLAY_ACTIVATION_RESET_NOV04.md",
@@ -2477,6 +2482,11 @@
       "path": "docs/porting/th14-config-session-verified.json",
       "bytes": 1396,
       "sha256": "60ed5a2299da3e45447c69d3fb9277343e46d65cda59417b7463a4cca2fe88db"
+    },
+    {
+      "path": "docs/porting/th14-config-startup-fallback-nov04.json",
+      "bytes": 169144,
+      "sha256": "d45ea6c4f27c2d92afa993420d0d4009d93d5d92145b52d22753967d85ed4007"
     },
     {
       "path": "docs/porting/th14-config-verified.json",
@@ -10455,8 +10465,8 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/sdl/Application.cpp",
-      "bytes": 88518,
-      "sha256": "53ecef0abf6d1759c85f7d8d7ca2f880f508d93f14d7d14b6593eb262bcdeadc"
+      "bytes": 88995,
+      "sha256": "c936a9ff4b0968c672c410adba3e49f8c35bbea67db47b2da08a289fc93eda62"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/sdl/ApplicationCaptureTh14.hpp",
@@ -17509,6 +17519,11 @@
       "sha256": "8c400204e301ef8a46e0ec5379f0a3c1b6ad14d10b763ee42cdcb3c8be43cd57"
     },
     {
+      "path": "tools/th14-build-config-startup-nov04.py",
+      "bytes": 4655,
+      "sha256": "c1fe316e3540f9b3a003491eade50eb8b5511877f9fd03a025e53103d72e68fc"
+    },
+    {
       "path": "tools/th14-build-frozen-native-application-nov04.py",
       "bytes": 12851,
       "sha256": "7d6cf6bf6291267fa8eaefd216554f31170b1a6a808e5b06d9661ceb218ac90f"
@@ -18387,6 +18402,21 @@
       "path": "tools/th14-config-session-check.mjs",
       "bytes": 4358,
       "sha256": "c865b81033b57937807272505a4367325e282176814baf4521109a52d9c8819b"
+    },
+    {
+      "path": "tools/th14-config-startup-application-nov04.py",
+      "bytes": 4697,
+      "sha256": "c0f6a25ca187c398be77ef24cebbb5141692399348360b56905bf83bb78b60d1"
+    },
+    {
+      "path": "tools/th14-config-startup-evidence-nov04.py",
+      "bytes": 8466,
+      "sha256": "2f631de8b6824e7253ddf75082ba703797b23f2740a7a25acc9a3ffca27f72c1"
+    },
+    {
+      "path": "tools/th14-config-startup-native-nov04.py",
+      "bytes": 4751,
+      "sha256": "17d11ccb7a3f5e2acbd12e165004039564a094dcd8a1fe2e92e7ebde9a2f2630"
     },
     {
       "path": "tools/th14-constructor-hit-core-build-oct15.mjs",
@@ -28239,6 +28269,60 @@
     ]
   },
   "latestDelivery": {
+    "evidence": "docs/porting/th14-config-startup-fallback-nov04.json",
+    "sourceCommit": "ae284631c2ebaf4006eb8b17662bc5caeeb6da5c",
+    "unchangedGameplayCoreCommit": "51fcb47992be0af65777d2ea87e9e409be6cc641",
+    "browserWasmSha256": "ea291b20a2efe340fd5925331906dc8f768df4e39f2208a3bdfeb4db553f1d2e",
+    "verifiedTransport": true,
+    "browserAcceptance": false,
+    "persistenceAccepted": false,
+    "completeGame": false,
+    "nativeEquivalent": false,
+    "gameAssetsIncluded": false,
+    "compiledRuntimeIncluded": false
+  },
+  "latestApplicationIncrement": {
+    "schema": "th14/config-startup-evidence/1",
+    "verifiedConfigStartupRecovery": true,
+    "parentPublishedCommit": "537a7f6e8e736c23f75bc7bd83c8f39631bfc591",
+    "unchangedGameplayCoreCommit": "51fcb47992be0af65777d2ea87e9e409be6cc641",
+    "applicationSourceSha256": "c936a9ff4b0968c672c410adba3e49f8c35bbea67db47b2da08a289fc93eda62",
+    "nativeComponentCases": 1568,
+    "nativeAcceptedCases": 21,
+    "nativeRejectedCases": 1547,
+    "nativeResetInstructionsExecuted": true,
+    "declaredControllerAndCrtBoundaries": true,
+    "originalFileSystemOrUiAccepted": false,
+    "actualApplicationCases": 13,
+    "actualApplicationFrames": 5772,
+    "oldBinaryMalformedConfigFailureRetained": true,
+    "validConfigPreserved": true,
+    "freshProcessFilesByteUnchanged": true,
+    "strictImportValidationSourceUnchanged": true,
+    "sharedSyntaxTitles": [
+      12,
+      13,
+      14,
+      16
+    ],
+    "browserCompiledUnits": 1,
+    "browserReusedUnits": 145,
+    "browserWasmSha256": "ea291b20a2efe340fd5925331906dc8f768df4e39f2208a3bdfeb4db553f1d2e",
+    "httpChecks": 27,
+    "routes": 139,
+    "generatedResourceBytesAliased": 414850582,
+    "physicalAudioDevicesOpened": 0,
+    "browserAcceptance": false,
+    "persistenceInIndexedDbAccepted": false,
+    "wholeApplicationReplayAccepted": false,
+    "completeGame": false,
+    "nativeEquivalent": false,
+    "publishedApplicationSourceCommit": "ae284631c2ebaf4006eb8b17662bc5caeeb6da5c",
+    "sourceAndEvidenceMetadataOnly": true,
+    "originalCaptureBytesIncluded": false,
+    "gameAssetsIncluded": false
+  },
+  "priorFrozenDeliveryNov04": {
     "evidence": "docs/porting/th14-frozen-delivery-nov04.json",
     "frozenPlatformCommit": "4ff66fd7b2e302c6878bb535d6d75554f09e8da8",
     "coreCommit": "51fcb47992be0af65777d2ea87e9e409be6cc641",
