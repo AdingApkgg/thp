@@ -1,0 +1,250 @@
+{
+  "schema": "th14/gles-async-startup-evidence/1",
+  "wasmSha256": "4a8e02cc5d27c6fe13c3948fe750f9050d2a941421056a3f5b12bf745eedeca9",
+  "backend": "gles",
+  "compiledApplicationUnits": 1,
+  "reusedObjects": 145,
+  "reusedGameplayObjects": 141,
+  "asyncCallbackTest": {
+    "passed": true,
+    "suspendedFrameWaited": true,
+    "workerAndInputSerialized": true,
+    "falseStopsLoop": true,
+    "failureReported": true,
+    "peakConcurrentWasmCalls": 1
+  },
+  "sharedSyntax": [
+    {
+      "title": 11,
+      "webgpu": false,
+      "returncode": 0
+    },
+    {
+      "title": 12,
+      "webgpu": false,
+      "returncode": 0
+    },
+    {
+      "title": 13,
+      "webgpu": false,
+      "returncode": 0
+    },
+    {
+      "title": 16,
+      "webgpu": false,
+      "returncode": 0
+    },
+    {
+      "title": 14,
+      "webgpu": true,
+      "returncode": 0
+    }
+  ],
+  "transport": {
+    "routes": 135,
+    "httpChecks": 28,
+    "quietByDefault": true
+  },
+  "oldFailure": {
+    "nativeFinalReturn": 1,
+    "rawRafReturn": 0,
+    "callbacks": 2,
+    "ticks": 4,
+    "phase": 6,
+    "retained": true
+  },
+  "withOutputProbe": {
+    "title": {
+      "stage": "frame-received",
+      "jsAnimationFrames": 4078,
+      "frameReceipts": 1244,
+      "gameTicks": 1258,
+      "phase": 0,
+      "gameFrame": 1070,
+      "lastResource": "musiccmt.txt",
+      "error": "",
+      "audioContext": "running",
+      "asyncCallbacks": {
+        "pending": 0,
+        "completed": 3836,
+        "failure": ""
+      },
+      "hidden": false,
+      "canvas": [
+        640,
+        480
+      ]
+    },
+    "normalFirstStage": {
+      "stage": "frame-received",
+      "jsAnimationFrames": 21711,
+      "frameReceipts": 7124,
+      "gameTicks": 7138,
+      "phase": 1,
+      "gameFrame": 1204,
+      "lastResource": "st01menm.anm",
+      "error": "",
+      "audioContext": "running",
+      "asyncCallbacks": {
+        "pending": 0,
+        "completed": 21511,
+        "failure": ""
+      },
+      "hidden": false,
+      "canvas": [
+        640,
+        480
+      ]
+    },
+    "pause": {
+      "stage": "frame-received",
+      "jsAnimationFrames": 24591,
+      "frameReceipts": 8084,
+      "gameTicks": 8098,
+      "phase": 2,
+      "gameFrame": 1327,
+      "lastResource": "st01menm.anm",
+      "error": "",
+      "audioContext": "running",
+      "asyncCallbacks": {
+        "pending": 0,
+        "completed": 24397,
+        "failure": ""
+      },
+      "hidden": false,
+      "canvas": [
+        640,
+        480
+      ]
+    },
+    "normalKeysUsed": true,
+    "normalMenuQuitReturnedToLauncher": true
+  },
+  "withoutOutputProbe": {
+    "actualStartupObserved": true,
+    "autoDemoRendered": true,
+    "normalOptionMenuRendered": true
+  },
+  "finiteConfigPersistence": {
+    "beforeBgmPercent": 100,
+    "changedBgmPercent": 95,
+    "afterNormalQuitAndFullPageReloadBgmPercent": 95,
+    "newRuntimeCreated": true,
+    "visibleReadbackAccepted": true,
+    "allSaveFilesByteEqualityAccepted": false,
+    "offlineAccepted": false
+  },
+  "previewSoundOutputZero": true,
+  "originalWholeGamePixelsOrPcmAccepted": false,
+  "ordinaryIndependentTimingAccepted": false,
+  "completeBrowserAcceptance": false,
+  "completeGame": false,
+  "imagesAssetsRawObservationsAndBinariesIncluded": false,
+  "evidencePathsAndHashes": {
+    "artifacts/th14/browser-ordinary-gles-nov05/async-build-retry1/build.json": {
+      "bytes": 102840,
+      "sha256": "50e806a7383fb8912db4e0399af1d9957baa2a3a235d01cb23b2d1ac9adcaf28"
+    },
+    "artifacts/th14/browser-ordinary-gles-nov05/async-clean-transport.json": {
+      "bytes": 14697,
+      "sha256": "01a71b9cb12292a3fda3e3371c35899a5f36a0687407a23f605a94ab44bd75da"
+    },
+    "artifacts/th14/browser-ordinary-gles-nov05/shared-application-syntax/report.json": {
+      "bytes": 684,
+      "sha256": "abc6a2a80d93313ffa6b8787e94f9837eecfba735e208881ceb478916e56ec53"
+    },
+    "artifacts/th14/browser-ordinary-gles-nov05/loop-audit-dom.json": {
+      "bytes": 1436,
+      "sha256": "85692296fbda259ad8826cb393d68599268d3b471f462d41bf62cb1f5507cf18"
+    },
+    "artifacts/th14/browser-ordinary-gles-nov05/async-startup-dom.json": {
+      "bytes": 360,
+      "sha256": "bd3ec00adec3e1fccc15a1fc957e1bc080032838d51d1a13c65dbfedd588c684"
+    },
+    "artifacts/th14/browser-ordinary-gles-nov05/async-normal-stage1-dom.json": {
+      "bytes": 362,
+      "sha256": "732a634b36aa3b8bfe58b733c2632d7bc6d548b8d45873792c47749cbe15cc45"
+    },
+    "artifacts/th14/browser-ordinary-gles-nov05/async-pause-dom.json": {
+      "bytes": 362,
+      "sha256": "728416f71053bd9fb6cbc4a41fcffd0d4a5b74ca4b2f29bed06f3620e5dd2e10"
+    },
+    "artifacts/th14/browser-ordinary-gles-nov05/clean-startup-dom.txt": {
+      "bytes": 2444,
+      "sha256": "c61d2c98d2fce10d97ae83bd24d94d2b3f92c5477271af4e67934972b24cc2f2"
+    },
+    "artifacts/th14/browser-ordinary-gles-nov05/async-quit-dom.txt": {
+      "bytes": 1566,
+      "sha256": "5ddfd4c86ec9ced329406c651da9bab3eedcddcc1aeb0a838a9231783cae4b8e"
+    },
+    "artifacts/th14/browser-ordinary-gles-nov05/clean-quit-dom.txt": {
+      "bytes": 1566,
+      "sha256": "5ddfd4c86ec9ced329406c651da9bab3eedcddcc1aeb0a838a9231783cae4b8e"
+    },
+    "artifacts/th14/browser-ordinary-gles-nov05/async-startup.jpg": {
+      "bytes": 245800,
+      "sha256": "fe1b139aa63e1328b2e95c0ddd4fcce56c68a14c3edd1b3fb4434cdfad8654d1"
+    },
+    "artifacts/th14/browser-ordinary-gles-nov05/async-normal-stage1.jpg": {
+      "bytes": 247777,
+      "sha256": "688b08887b4ea908f9ed4728a3e6d2b8191ceab59e10895d0723d563c6e486e0"
+    },
+    "artifacts/th14/browser-ordinary-gles-nov05/async-pause.jpg": {
+      "bytes": 226026,
+      "sha256": "228227a0cb7ab428e6430af23c199c413cdf1304f8c863f0f5986b0c5938d38f"
+    },
+    "artifacts/th14/browser-ordinary-gles-nov05/async-returned-title.jpg": {
+      "bytes": 211551,
+      "sha256": "153be69fd6649776af11b0a303d10ebcd487e3dce829864aec6ce46d37a81786"
+    },
+    "artifacts/th14/browser-ordinary-gles-nov05/async-quit.jpg": {
+      "bytes": 25848,
+      "sha256": "0e63a84ca52cc94d367e51ad5d53ac5b7798b110808bf8ca9706fc7695274af7"
+    },
+    "artifacts/th14/browser-ordinary-gles-nov05/clean-startup.jpg": {
+      "bytes": 216070,
+      "sha256": "b5b90c0cb016fc51fe3f976c53db518c9915598d679e6d3639137e9452b3ee0f"
+    },
+    "artifacts/th14/browser-ordinary-gles-nov05/clean-quit.jpg": {
+      "bytes": 25848,
+      "sha256": "0e63a84ca52cc94d367e51ad5d53ac5b7798b110808bf8ca9706fc7695274af7"
+    },
+    "artifacts/th14/browser-ordinary-gles-nov05/clean-config-before.jpg": {
+      "bytes": 225626,
+      "sha256": "9b81838a75e43df23edcf53dd57da1c8a29a9e75fc530757c502e899fe013a99"
+    },
+    "artifacts/th14/browser-ordinary-gles-nov05/clean-config-changed95.jpg": {
+      "bytes": 225430,
+      "sha256": "4d353e47c202fe94fce77278c32e19241db15bdb36f3b96b0de695a82ba7e58a"
+    },
+    "artifacts/th14/browser-ordinary-gles-nov05/clean-config-readback95.jpg": {
+      "bytes": 225777,
+      "sha256": "d41a96761b84aeb77896013942bf47ae28ae372021ed0b91706c28b12311eff5"
+    },
+    "runtimes/th12/th12_web/cpp/sdl/Application.cpp": {
+      "bytes": 89150,
+      "sha256": "74ec8edae213a169539f9c4336d132200bb1cfb2eb17d8d1b405a7a16c2be5bf"
+    },
+    "runtimes/th12/th12_web/sdl-runtime/shell.mjs": {
+      "bytes": 13841,
+      "sha256": "6334a07b57ecc11d1185ceef0cbf38edddd099cb2650726ba2feaed4e6f1cb94"
+    },
+    "runtimes/th12/portable/sdl/Th14AsyncCallbacks.hpp": {
+      "bytes": 1014,
+      "sha256": "988a0b22d7b9ff0a4999c4c08d8fb8bf597b62b2573d74eb38435d21cc9cca1e"
+    },
+    "runtimes/th12/portable/sdl/Th14AsyncRuntime.mjs": {
+      "bytes": 2546,
+      "sha256": "99c42e23826730784770a6b3b279bfe3b969d929829e36c244f09febe412a54b"
+    },
+    "tools/th14-test-async-runtime-nov05.mjs": {
+      "bytes": 2119,
+      "sha256": "202396143d87af0fb210b176b7fa28a00d46907a8efe5bb0697599cc495f8050"
+    },
+    "artifacts/th14/browser-ordinary-gles-nov05/async-runtime-test.json": {
+      "bytes": 149,
+      "sha256": "f3a8c72c814fb822443bcb02495816bac7fe628ed67a16679cba3a1eabc3246a"
+    }
+  },
+  "toolSha256": "36a9ae30ac83d8702a010d34d7496992d6b20c940e10944741d4ae0823ff253d"
+}

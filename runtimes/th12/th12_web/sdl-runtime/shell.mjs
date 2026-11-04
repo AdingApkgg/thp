@@ -27,7 +27,7 @@ const sync=(populate=false)=>{const current=storageSync.then(()=>new Promise((r,
 const coreError=()=>{const p=core.th11_error(),end=Module.HEAPU8.indexOf(0,p);return new TextDecoder().decode(Module.HEAPU8.subarray(p,end<0?p+256:end));};
 async function callCore(name,...args){
  const call=()=>Module.ccall?Module.ccall(name,'number',args.map(()=> 'number'),args,{async:true}):core[name](...args);
- const runtime=Module.th14WebGpuRuntime;return runtime?runtime.run(call):call();
+ const runtime=Module.th14AsyncRuntime??Module.th14WebGpuRuntime;return runtime?runtime.run(call):call();
 }
 const save=async()=>{if(launched&&!await callCore('th11_save_scores'))throw Error(coreError());return sync(false);};
 async function installResources(resources=[]){return installHostResources(Module,resources,{game,emit});}
@@ -77,14 +77,15 @@ async function closeAudio(){
  const close=()=>{const s=Module.SDL3,context=s?.audioContext,borrowed=parent!==window&&context===parent.__touhouAudioContext;
   if(borrowed)s.audioContext=undefined;
   try{core.th11_audio_close();}finally{if(borrowed)s.audioContext=context;}};
- const runtime=Module.th14WebGpuRuntime;if(runtime)await runtime.run(close);else close();
+ const runtime=Module.th14AsyncRuntime??Module.th14WebGpuRuntime;if(runtime)await runtime.run(close);else close();
 }
 async function stop(){if(stopping)return;stopping=true;clearKeyboard();try{core.th11_loop_stop();await save();await closeAudio();launched=false;emit('exit',{code:0,status:'success'});}finally{stopping=false;}}
 function path(value){const name=String(value).replaceAll('\\','/').toLowerCase().replace(/^\/savesth11\//,'').replace(/^\//,'');if(!/^(?:scoreth11\.dat|th11\.cfg|replay\/th11_(?:\d{2}|ud[a-z0-9]{4})\.rpyx?)$/.test(name))throw Error('存档路径无效');return name;}
 async function launch(){
  if(launched)return;clearKeyboard();
  if(!await callCore('th11_initialize'))throw Error(coreError());
- if(Module.th14WebGpuRuntime){core=Module.th14WebGpuRuntime.bindCore(core);window.core=core;}
+ const runtime=Module.th14AsyncRuntime??Module.th14WebGpuRuntime;
+ if(runtime){core=runtime.bindCore(core);window.core=core;}
  if(core.th11_phase()===4&&!await callCore('th11_return_title'))throw Error(coreError());
  launched=true;apply();first=false;lastPresented=0;lastHealth=performance.now();lastFrame=0;frames=0;maxGap=0;
  const loading=$('#loading');if(loading)loading.textContent='';
@@ -142,6 +143,11 @@ const initialized=(async()=>{
   instantiateWasm(imports,ready){return WebAssembly.instantiateStreaming(fetch('./th11-sdl.wasm'),imports).then(({instance,module})=>{core=instance.exports;ready(instance,module);return core;});}});
  window.Module=Module;window.FS=Module.FS;window.core=core;
  Module.onWebGpuError=error;
+ Module.onAsyncError=error;
+ if(typeof Module._th14_async_frame==='function'){
+  const {Th14AsyncRuntime}=await import('./Th14AsyncRuntime.mjs');
+  Module.th14AsyncRuntime=new Th14AsyncRuntime(Module);
+ }
  observeMusicWrites(Module,core,game);
  Module.FS.mkdirTree('/savesth11');Module.FS.mount(Module.IDBFS,{},'/savesth11');await sync(true);
  Module.FS.mkdirTree('/savesth11/replay');Module.FS.symlink('/savesth11','/save');

@@ -75,7 +75,10 @@ def main():
 
     assert build['backgroundArchiveIntegration']==(backend=='webgpu')
 
-    assert build['frameAndWorkerCallbacksSerialized']==(backend=='webgpu')
+    async_gles=backend=='gles' and 'th14_async_frame' in build['exports']
+    assert ('th14_async_invoke' in build['exports'])==async_gles
+    assert build['frameAndWorkerCallbacksSerialized']==(backend=='webgpu' or async_gles)
+    if async_gles:gpu_files+=['Th14AsyncRuntime.mjs']
 
     assert SHA((home/'th14-sdl.wasm').read_bytes())==build['wasmSha256']
 
@@ -122,6 +125,22 @@ def main():
     shared='runtimes/th12/th12_web/sdl-runtime/'
 
     shell=base_source(shared+'shell.mjs').decode()
+
+    if async_gles:
+        # Patch the frozen platform base only at the callback ownership boundary.
+        # Never mix unrelated mutable platform edits into a TH14 package.
+        assert shell.count('const runtime=Module.th14WebGpuRuntime;')==2
+        shell=shell.replace('const runtime=Module.th14WebGpuRuntime;','const runtime=Module.th14AsyncRuntime??Module.th14WebGpuRuntime;')
+        old='if(Module.th14WebGpuRuntime){core=Module.th14WebGpuRuntime.bindCore(core);window.core=core;}'
+        assert shell.count(old)==1
+        shell=shell.replace(old,'const runtime=Module.th14AsyncRuntime??Module.th14WebGpuRuntime;\n if(runtime){core=runtime.bindCore(core);window.core=core;}')
+        old='Module.onWebGpuError=error;';assert shell.count(old)==1
+        shell=shell.replace(old,"""Module.onWebGpuError=error;
+ Module.onAsyncError=error;
+ if(typeof Module._th14_async_frame==='function'){
+  const {Th14AsyncRuntime}=await import('./Th14AsyncRuntime.mjs');
+  Module.th14AsyncRuntime=new Th14AsyncRuntime(Module);
+ }""")
 
     replacements=[("game='th11'","game='th14'"),('th11-sdl.mjs','th14-sdl.mjs'),('th11-sdl.wasm','th14-sdl.wasm'),
 

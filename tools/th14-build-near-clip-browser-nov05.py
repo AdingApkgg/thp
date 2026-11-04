@@ -28,7 +28,8 @@ OVERLAYS = ['portable/sdl/Renderer.cpp','portable/sdl/Renderer.hpp','portable/sd
             'th12_web/cpp/game/StageEclTransferTh14.hpp','th12_web/cpp/game/ShtTransferTh14.hpp','th12_web/cpp/game/EclResource.cpp','th12_web/cpp/game/EclResource.hpp','th12_web/cpp/game/GameResources.hpp','portable/sdl/Th14WebGpuCallbacks.hpp',
             'portable/sdl/Th14ArchiveDecodeClient.mjs','portable/sdl/Th14ArchiveReadAhead.mjs','portable/sdl/Th14ArchiveDecodeEndpoint.mjs','portable/sdl/Th14ArchiveDecodeWorker.mjs',
             'portable/sdl/Th14WebGpuHost.mjs','portable/sdl/Th14WebGpuRuntime.mjs','portable/sdl/Th14WebGpuCore.mjs','portable/sdl/Th14WebGpuLibrary.js',
-            'portable/sdl/WebGpuRenderer.hpp','portable/sdl/Th14WebGpu.wgsl']
+            'portable/sdl/WebGpuRenderer.hpp','portable/sdl/Th14WebGpu.wgsl',
+            'portable/sdl/Th14AsyncCallbacks.hpp','portable/sdl/Th14AsyncRuntime.mjs']
 
 
 def main():
@@ -69,19 +70,20 @@ def main():
     # This build recompiles every translation unit against the four current
     # production renderer files; keep game sources/headers frozen separately.
     renderer_overlays={f'portable/sdl/{name}' for name in ['Renderer.cpp','Renderer.hpp','Shaders.hpp','Th14RenderMath.hpp']}
+    platform_overlays={'th12_web/cpp/sdl/Application.cpp'}
     for relative in OVERLAYS:
-        path = core_source/relative if relative in core_inventory and relative not in renderer_overlays else ROOT/'runtimes/th12'/relative; raw = path.read_bytes(); target = source/relative
+        path = core_source/relative if relative in core_inventory and relative not in renderer_overlays|platform_overlays else ROOT/'runtimes/th12'/relative; raw = path.read_bytes(); target = source/relative
         target.parent.mkdir(parents=True,exist_ok=True); target.write_bytes(raw)
         inventory[relative] = dict(bytes=len(raw),sha256=SHA(raw),origin='explicit-th14-overlay')
     for name,digest in core_inventory.items():
-        if name in renderer_overlays:
+        if name in renderer_overlays|platform_overlays:
             assert inventory[name]['sha256']==SHA((ROOT/'runtimes/th12'/name).read_bytes())
             continue
         assert name in inventory and inventory[name]['sha256']==digest,('browser/core mismatch',name)
     crypt = 'th12_web/cpp/game/ResourceCrypt.cpp'
     assert inventory[crypt]['sha256'] == 'd57118f1114f3909c42a2e99e7df30e625f6563247a8118cd14bb9f68a0f97ef'
     for name in ['Th14WebGpuHost.mjs','Th14WebGpuRuntime.mjs','Th14WebGpuCore.mjs','Th14WebGpu.wgsl','Th14WebGpuResample.wgsl',
-                 'Th14ArchiveDecodeClient.mjs','Th14ArchiveReadAhead.mjs','Th14ArchiveDecodeEndpoint.mjs','Th14ArchiveDecodeWorker.mjs']:
+                 'Th14ArchiveDecodeClient.mjs','Th14ArchiveReadAhead.mjs','Th14ArchiveDecodeEndpoint.mjs','Th14ArchiveDecodeWorker.mjs','Th14AsyncRuntime.mjs']:
         shutil.copyfile(source/'portable/sdl'/name, out/name)
     worker_home=out/'archive-worker'
     worker_tool=ROOT/'tools/th14-archive-worker-prototype-build-oct27.py'
@@ -109,8 +111,8 @@ def main():
     flags = ['-O2','-g0','--profiling-funcs','-std=c++17','-ffp-contract=off','-fno-strict-aliasing','-fno-exceptions','-fno-rtti',
              '-DPORT_TITLE=14','-DTH_NATIVE_PLATFORM=1','-DTH11_DEVELOPMENT_HARNESS=0','-DTH14_WEBGPU_BACKEND=1','-DTH14_ARCHIVE_WORKER=1','--use-port=sdl3']
     if args.backend=='gles':
-        # Compile the ordinary GLES/SDL callback path independently. Worker
-        # callback trampolines belong to the optional WebGPU host profile.
+        # GLES has its own Asyncify-owned callbacks, separate from WebGPU's
+        # optional host and background archive decoder.
         flags=[f for f in flags if f not in ['-DTH14_WEBGPU_BACKEND=1','-DTH14_ARCHIVE_WORKER=1']]
     (out/'build-tool.py').write_bytes(tool_raw)
     (out/'compile-inputs.json').write_text(json.dumps(dict(baseCommit=args.base_commit,sourceBindings=inventory,flags=flags,toolSha256=SHA(tool_raw),frozenCoreBuildSha256=SHA(core_bytes),frozenCoreWasmSha256=core['wasmSha256']),indent=2)+'\n')
@@ -159,7 +161,7 @@ def main():
             raise
     exports = ['malloc','free',*['th11_'+name for name in ['validate_file','save_scores','save_replay','initialize','last_resource','music_enabled','audio_statistics','return_title','restart','error','frame','phase','pause','resume','loop_start','loop_stop','loop_pause','key','keys_clear','touch','touch_cancel','touch_options','touch_controls','touch_stick']],
                'th14_webgpu_invoke','th14_webgpu_frame']
-    if args.backend=='gles':exports=[name for name in exports if not name.startswith('th14_webgpu_')]
+    if args.backend=='gles':exports=[name for name in exports if not name.startswith('th14_webgpu_')]+['th14_async_invoke','th14_async_frame']
     link_flags = ['--no-entry','-sDEFAULT_TO_CXX=1','-sMODULARIZE=1','-sEXPORT_ES6=1','-sENVIRONMENT=web,worker',
                   '-sALLOW_MEMORY_GROWTH=1','-sSTACK_SIZE=1048576','-sINITIAL_MEMORY=536870912','-sMAXIMUM_MEMORY=1073741824',
                   '-sFILESYSTEM=1','-lidbfs.js','-sEXIT_RUNTIME=0','-sINVOKE_RUN=0','-sASSERTIONS=1',
@@ -184,7 +186,7 @@ def main():
         objectHashes={unit.relative_to(source).as_posix():SHA(compiled[unit].read_bytes())for unit in units},
         archiveWorkerBuildSha256=SHA(worker_raw),archiveWorkerFiles=worker_files,backgroundArchiveIntegration=args.backend=='webgpu',
         toolSha256=SHA(tool_raw),storageToolSha256=SHA(storage_raw),rootUnrelatedResourceCryptExcluded=True,retailAssetsIncluded=False,
-        actualSdlPort=True,asyncify=True,frameAndWorkerCallbacksSerialized=args.backend=='webgpu',browserRun=False,browserAcceptance=False,
+        actualSdlPort=True,asyncify=True,frameAndWorkerCallbacksSerialized=True,browserRun=False,browserAcceptance=False,
         completeGame=False,nativeEquivalent=False,scope='Fresh compilation of the published independent C++ TH14 engine, real SDL3 port and explicit WebGPU overlays. Browser-targeted candidate only; compilation does not prove startup, presentation, browser scheduling, persistence, physical devices or whole-game fidelity.')
     (out/'build.json').write_text(json.dumps(report,indent=2)+'\n')
     (out/'progress.json').write_text(json.dumps(dict(phase='compiled',compiled=len(compiled),total=len(units)))+'\n')

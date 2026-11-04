@@ -20,6 +20,8 @@
 #ifdef TH14_WEBGPU_BACKEND
 #include "../../../portable/sdl/Th14WebGpuCallbacks.hpp"
 #include "../game/StageFiles.hpp"
+#elif PORT_TITLE == 14
+#include "../../../portable/sdl/Th14AsyncCallbacks.hpp"
 #endif
 #include <emscripten/heap.h>
 #include <malloc.h>
@@ -104,7 +106,7 @@ static void schedule_th14_work(void(*callback)(void*),void* data,int delay){
 #ifdef TH14_WEBGPU_BACKEND
     th14_webgpu_schedule(callback,data,delay);
 #else
-    emscripten_async_call(callback,data,delay);
+    th14_async_schedule(callback,data,delay);
 #endif
 }
 #endif
@@ -1398,6 +1400,8 @@ EMSCRIPTEN_KEEPALIVE void th11_loop_start(){
 #endif
 #ifdef TH14_WEBGPU_BACKEND
     auto request_frames=th14_webgpu_request_frames;
+#elif PORT_TITLE == 14
+    auto request_frames=th14_async_request_frames;
 #else
     auto request_frames=emscripten_request_animation_frame_loop;
 #endif

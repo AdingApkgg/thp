@@ -85,6 +85,7 @@ try {
     ['/runtime/th14/runtime-files.json','application/json; charset=utf-8'],
     [quietRoute,'text/javascript; charset=utf-8'],
   ];
+  if(state.proof.files['runtime/th14/Th14AsyncRuntime.mjs'])checks.push(['/runtime/th14/Th14AsyncRuntime.mjs','text/javascript; charset=utf-8']);
   for(const name of ['archive-decoder.mjs','archive-decoder.wasm','Th14ArchiveDecodeClient.mjs','Th14ArchiveReadAhead.mjs','Th14ArchiveDecodeEndpoint.mjs','Th14ArchiveDecodeWorker.mjs']) {
     if(state.proof.files['runtime/th14/'+name])checks.push(['/runtime/th14/'+name,name.endsWith('.wasm')?'application/wasm':'text/javascript; charset=utf-8']);
   }

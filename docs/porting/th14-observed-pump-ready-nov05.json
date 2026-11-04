@@ -1,0 +1,212 @@
+{
+  "schema": "th14/observed-pump-public-evidence/1",
+  "rotating": {
+    "callbacks": 35000,
+    "debugExceptions": 0,
+    "stage2Pumps": 50,
+    "stage3Pumps": 31,
+    "pairedVmEdges": 1021,
+    "instructionAccesses": 64,
+    "comparison": {
+      "verifiedFiniteUnanchoredComparison": true,
+      "comparisonDriverExitCode": 0,
+      "rawVerifierExitCode": 0,
+      "callbacks": 35000,
+      "all32StateFieldsEqual": true,
+      "comparedCameraWords": 2624925,
+      "cameraWordDifferences": 0,
+      "cursorWordDifferences": 0,
+      "nativeInstructionAccesses": 64,
+      "portableScriptRows": 68,
+      "extraPortableRowsNotAccepted": 4,
+      "instructionDifferences": {
+        "callback": 0,
+        "point": 0,
+        "actualLoadedOrStoredSeed": 0,
+        "sampledScriptCalls": 0
+      },
+      "vm303Rows": 727,
+      "combatCheckpoints": 339,
+      "nonemptyCombatCheckpoints": 50,
+      "originalRngValuesProvidedToEngine": false,
+      "inferredFrameEntryFallbackAdded": false,
+      "flags4000UsedToFilter": false,
+      "exactOriginalFrameEntryRecovered": false,
+      "ordinaryIndependentTimingAccepted": false,
+      "completeGame": false,
+      "verifierSha256": "7a3d2b5f556290e5aa9368e746c08d32c012a49f14dfbfb07d67926e6b605fdb"
+    }
+  },
+  "playerPump": {
+    "callbacks": 35000,
+    "debugExceptions": 0,
+    "muxEvents": 6,
+    "observerSha256": "f215b4fae98ac88c1cd94576f99ccb31484d157497cf14e7bfd89e22f79a8884",
+    "comparison": {
+      "verifiedFiniteUnanchoredComparison": true,
+      "comparisonDriverExitCode": 0,
+      "rawVerifierExitCode": 0,
+      "callbacks": 35000,
+      "all32StateFieldsEqual": true,
+      "comparedCameraWords": 2624925,
+      "cameraWordDifferences": 0,
+      "cursorWordDifferences": 0,
+      "nativeInstructionAccesses": 64,
+      "portableScriptRows": 90,
+      "extraPortableRowsNotAccepted": 26,
+      "instructionDifferences": {
+        "callback": 0,
+        "point": 0,
+        "actualLoadedOrStoredSeed": 0,
+        "sampledScriptCalls": 0
+      },
+      "vm303Rows": 728,
+      "combatCheckpoints": 347,
+      "nonemptyCombatCheckpoints": 50,
+      "originalRngValuesProvidedToEngine": false,
+      "inferredFrameEntryFallbackAdded": false,
+      "flags4000UsedToFilter": false,
+      "exactOriginalFrameEntryRecovered": false,
+      "ordinaryIndependentTimingAccepted": false,
+      "completeGame": false,
+      "verifierSha256": "123d65144ae532cf64b632f170cddea4a97085f3b6d69c1a47b3277c73acc907"
+    },
+    "timeline": {
+      "schema": "th14/rng-main-boundary-timeline/1",
+      "verifiedReceiptTimeline": true,
+      "callbacks": 35000,
+      "nativeDebugExceptions": 0,
+      "scriptInstructionAccesses": 64,
+      "watchedPumpPc": 4708128,
+      "watchedPlayerPc": 4512720,
+      "firstReadAfterInstructionPc": 4207417,
+      "firstReadPrecedingPlayerCallbacks": 30734,
+      "latestRecordedPumpPrecedingPlayerCallbacks": 30734,
+      "playerReceiptsBetweenLatestRecordedPumpAndFirstRead": 0,
+      "actualRecordedPumpsAfterLastPlayerAndBeforeFirstRead": 1,
+      "latestRecordedPumpBeforeLastPlayer": false,
+      "pumpToFirstReadReceiptNanoseconds": 4272500,
+      "muxBoundaryRows": 6,
+      "playerCountsUsedToInferPhysicalFrame": false,
+      "sameMainThreadInstructionOrderObserved": true,
+      "crossThreadInstructionOrderProven": false,
+      "originalInstructionExecutionTimestampsRecovered": false,
+      "latestRecordedPumpProvenLastActualPump": false,
+      "nativePhysicalFrameEntryRecovered": false,
+      "absenceOfPumpNotProofOfNoExecution": true,
+      "originalStateValuesProvidedToEngine": false,
+      "ordinaryIndependentTimingAccepted": false,
+      "completeGame": false,
+      "verifierSha256": "281ccd63542263a9aba8588e9e293f734d4bd84af38e8d88d73365dfb157bb76",
+      "bindings": {
+        "artifacts/th14/script-rng-read-generation-nov05/prefix-player-pump/native/report.json": {
+          "bytes": 176241,
+          "sha256": "812f744c441d76f1751b0a1a8a1273e856b2cf59fc44f6b94bfc2d8b2d41d277"
+        },
+        "artifacts/th14/script-rng-read-generation-nov05/prefix-player-pump/process-end.json": {
+          "bytes": 183,
+          "sha256": "4a89071cfa8368d19ccee918fe16d5493fc8a75ba8ba1def15aa8245f1db69de"
+        },
+        "artifacts/th14/script-rng-read-generation-nov05/prefix-player-pump/native/observer-source.py": {
+          "bytes": 90583,
+          "sha256": "f215b4fae98ac88c1cd94576f99ccb31484d157497cf14e7bfd89e22f79a8884"
+        },
+        "artifacts/th14/script-rng-read-generation-nov05/prefix-player-pump/native/script-rng-access-events.jsonl": {
+          "bytes": 77852,
+          "sha256": "b15905351e1d8957fe4c4b276505a1a188df479790115ee21f8d5eb8da8a2a8e"
+        },
+        "artifacts/th14/script-rng-read-generation-nov05/prefix-player-pump/native/debug-event-clock.jsonl": {
+          "bytes": 21101812,
+          "sha256": "29b2f1b3db59448c669f6e7558b323f78acf2522e1d7f680121d04ab8d275fb2"
+        },
+        "artifacts/th14/script-rng-read-generation-nov05/prefix-player-pump/native/player-host-monotonic.u64": {
+          "bytes": 280000,
+          "sha256": "55f1aa6de6c1e4d0e736118bcdbd1841c1c622eef5fcf5b0b5be79312ed35383"
+        },
+        "artifacts/th14/script-rng-read-generation-nov05/prefix-player-pump/native/player-pump-mux-events.jsonl": {
+          "bytes": 3375,
+          "sha256": "756820e9f684047d92a1f5bcada51ff8bf521d4ce9ac5948aa7931b0146c9374"
+        }
+      }
+    },
+    "readyAtObservedPump": [
+      {
+        "stage": 3,
+        "callback": 30734,
+        "pumpNs": 109144245079000,
+        "readyNs": 109144240557400,
+        "firstReadNs": 109144249351500,
+        "originalPumpObserved": true,
+        "firstReadGenerationObserved": true,
+        "firstReadWindowInstalled": false,
+        "nativeRngValuesProvidedToEngine": false,
+        "inferredFrameEntryClockAdded": false
+      }
+    ],
+    "firstReadWaitInstalled": false,
+    "previousPlayerClockSubstituted": false
+  },
+  "strictInitializeAccepted": true,
+  "strictSceneAccepted": false,
+  "strictWhitelistModified": false,
+  "oldDefaultFailureClosed": false,
+  "originalDispatchOrderAssumed": true,
+  "allPlayerOrPumpCallsProvenObserved": false,
+  "scenePublisherInterleavingStillInferred": true,
+  "originalStateValuesProvidedToEngine": false,
+  "ordinaryIndependentTimingAccepted": false,
+  "productionGameplayChanged": false,
+  "assetsRawRegistersSeedsMemoryReplaysAndBinariesIncluded": false,
+  "sourceSummaryBindings": {
+    "artifacts/th14/script-rng-read-generation-nov05/rotating-pump-summary-nov05.json": {
+      "bytes": 4481,
+      "sha256": "0493d3adcc733475d94e9ef340c0d3d6391af7e672f6f826475ea52fc742ac46"
+    },
+    "artifacts/th14/script-rng-read-generation-nov05/player-pump-ready-summary-nov05.json": {
+      "bytes": 5170,
+      "sha256": "854ebd326bb57048a6bd484f6d11b39ecb2dc3690cfa94e068a9fa614c3d38a2"
+    },
+    "artifacts/th14/script-rng-read-generation-nov05/prefix-rotating-pump/native/report.json": {
+      "bytes": 167271,
+      "sha256": "20712623bacb41d523ca55bef3b8867b497a870c49c5a4707fd41d0df97a678e"
+    },
+    "artifacts/th14/script-rng-read-generation-nov05/prefix-rotating-pump/process-end.json": {
+      "bytes": 183,
+      "sha256": "06b072fb538bc595de2c90303834a729d4ec0b5f4b55ee0c03daff53f3db8122"
+    },
+    "artifacts/th14/script-rng-read-generation-nov05/portable-rotating-pump-view-prefix/comparison-result.json": {
+      "bytes": 932,
+      "sha256": "f0fef9bbc69ce5f45e3762a067d2911b06a7f537af57d8623339be0813a4a875"
+    },
+    "artifacts/th14/script-rng-read-generation-nov05/portable-rotating-pump-view-prefix/native-register-proof.json": {
+      "bytes": 6859,
+      "sha256": "1d79c87078ca7ad4118d18059c3892b118f9a60c6a71f1aaad89e5a49516a5ef"
+    },
+    "artifacts/th14/script-rng-read-generation-nov05/portable-rotating-pump-view-prefix/raw-verified.json": {
+      "bytes": 8323,
+      "sha256": "83ca38f7f5c5d332a2fb61ecc30598229df1ac874795c8f50d3d9ad8d98ba758"
+    },
+    "artifacts/th14/script-rng-read-generation-nov05/portable-rotating-pump-view-prefix/model/report.json": {
+      "bytes": 9071,
+      "sha256": "7dfe24b6bd1d60020b3bc3890b32d097de4273fabf713de0431fe2aa2a083742"
+    },
+    "artifacts/th14/script-rng-read-generation-nov05/portable-rotating-pump-unanchored/comparison-result.json": {
+      "bytes": 219,
+      "sha256": "4eb6cc7644a75ad14f780be9cde8d38464c755671726d2d2b72b716e1a472f2d"
+    },
+    "artifacts/th14/script-rng-read-generation-nov05/strict-rotating-view-prefix/report.json": {
+      "bytes": 1138,
+      "sha256": "ffbcd0f0682b06ac2df04013c5673e0ca8251335b78a4c0926d4dffae930b73b"
+    },
+    "artifacts/th14/script-rng-read-generation-nov05/player-pump-component-retry1/static-control/report.json": {
+      "bytes": 176998,
+      "sha256": "71729052879c206cb0b3aa8c1c09af138c7b64784ad66102669efa467083fd36"
+    },
+    "artifacts/th14/script-rng-read-generation-nov05/player-pump-component-retry1/rotating/report.json": {
+      "bytes": 221287,
+      "sha256": "e8cf5f58039b17ef797381b9879efa8b43b71ec33305dff850ee1d5af3887b8a"
+    }
+  },
+  "toolSha256": "0c6e3fbfdbe681e78df83470b6b7b11a5586ed5c9c2680a7b614c0a48164ea08",
+  "completeGame": false
+}
