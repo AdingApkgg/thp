@@ -932,6 +932,15 @@ bool GameSession::draw(AnmRenderer& renderer,AsciiText* overlay) {
     const auto& fog=compositor.play_camera.fog;
     renderer.fog_channels={fog.channels[0],fog.channels[1],fog.channels[2]};renderer.fog_start=fog.near_distance;
 #if PORT_TITLE == 14
+    SceneCameraPerspectiveScopeTh14 perspective_scope(compositor.world_camera,this,
+        [](void* owner,const SceneCamera& camera,u32 point){
+            auto& session=*static_cast<GameSession*>(owner);
+            if(!session.battle||!session.battle->pending_stage)return true;
+            if(session.stage_load_perspective_boundary&&!session.stage_load_perspective_boundary(camera,point))return false;
+            // A draw borrows its Stage owner. Complete only an already-entered
+            // Scene copy; Timeline/retirement remain outside this scope.
+            return session.battle->poll_stage_scene(session.stage_load_clock());
+        });
     const std::function<bool()> camera_published=[this](){
         return !battle||!battle->pending_stage||battle->pump_stage_loading(stage_load_clock(),
             animations.first_deferred_capture_file_index(),stage_load_host_flags);
@@ -980,6 +989,9 @@ bool GameSession::draw(AnmRenderer& renderer,AsciiText* overlay) {
 #endif
 ))return fail(("battle draw failed: pass "+std::to_string(u32(pass.kind))+(battle->error.empty()?"":" "+battle->error)).c_str());
         }
+#if PORT_TITLE == 14
+        if(perspective_scope.failed)return fail("TH14 worker failed during perspective publication");
+#endif
         if(overlay&&pass.kind==SceneDrawKind::AsciiOuter&&!overlay->draw(renderer,0,compositor.full_camera,compositor.play_camera))return fail("frame statistics draw failed");
     }
     renderer.flush();

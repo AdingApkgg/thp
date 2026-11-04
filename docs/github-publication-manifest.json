@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
   "scope": "Source snapshot, not full game release; original local Git history preserved",
-  "sourceCommit": "e08d4630fabf5e72aa0071aea7f4116800e3438e",
+  "sourceCommit": "acc1b44e5ef3415d6b92790fe671b837a94ceb33",
   "files": [
     {
       "path": ".gitignore",
@@ -202,6 +202,11 @@
       "path": "docs/porting/TH14_CONSTRUCTOR_HIT_FULL_NATIVE_OCT16.md",
       "bytes": 2165,
       "sha256": "3d26858bb8f4b984eaa03c3a0faae8e19df994aa26b98d88715b3c6df2e7762a"
+    },
+    {
+      "path": "docs/porting/TH14_CONTROLLED_CLOCK_DIAGNOSTICS_NOV04.md",
+      "bytes": 2629,
+      "sha256": "a6c6524c02106ce2de28c48d5b7dc024c7a0a036de605006fc9063d5a5944f5b"
     },
     {
       "path": "docs/porting/TH14_CONTROLLER_APPLICATION_FULL_NOV01.md",
@@ -734,6 +739,11 @@
       "sha256": "33e5cea203ba170591b7380b337e93803348f67e73203c39fe9c5ced08ec1047"
     },
     {
+      "path": "docs/porting/TH14_PERSPECTIVE_PUBLICATION_NOV04.md",
+      "bytes": 2973,
+      "sha256": "90fa92512a81c9df005eddf21a9ea44e0d75bbf85b743917c5daa17835d5e18d"
+    },
+    {
       "path": "docs/porting/TH14_PHASED_SHAKE_STACK_APPLICATION_FULL_NOV02.md",
       "bytes": 1850,
       "sha256": "f1cde9429c26375d2fe5ee4dfde088d284a75a7c3f7bf6fa255c51d525f7da30"
@@ -820,8 +830,8 @@
     },
     {
       "path": "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
-      "bytes": 98236,
-      "sha256": "049a48a08cd3bfc6c97a80699ee83f7c6c244073547f6a0ff1d6c6dd2e3dd516"
+      "bytes": 99046,
+      "sha256": "2ef777b05906b473e86de146472b0faaf265753b2c78b338c59977cb086694f0"
     },
     {
       "path": "docs/porting/TH14_REPLAY_ACTIVATION_RESET_NOV04.md",
@@ -2507,6 +2517,11 @@
       "path": "docs/porting/th14-continuous-object-native-trace-zps-normal-full-objects-rotated-body-oct14-observed-oct13.json",
       "bytes": 20832094,
       "sha256": "85d3fa08ad5c58e94cd050efc490a751dbd21afa6a8b286a8b19e61b10c4e46a"
+    },
+    {
+      "path": "docs/porting/th14-controlled-clock-diagnostics-nov04.json",
+      "bytes": 68717,
+      "sha256": "87d03c26babfc05c540e7850a236405833dac65d0487faede92e9bacf1c27760"
     },
     {
       "path": "docs/porting/th14-controller-application-full-nov01.json",
@@ -5632,6 +5647,11 @@
       "path": "docs/porting/th14-paused-score-verified-oct24.json",
       "bytes": 973,
       "sha256": "1d2d80b81e10b0762bbe7a4f8b4d7d8389bf4d111805672d79b4a1ba0343df05"
+    },
+    {
+      "path": "docs/porting/th14-perspective-publication-nov04.json",
+      "bytes": 260817,
+      "sha256": "183345c32d976472e51a1d433d53ae3b3b0f7b2d6d23fce988e51e5da7f79202"
     },
     {
       "path": "docs/porting/th14-phased-shake-stack-application-full-nov02.json",
@@ -9545,13 +9565,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
-      "bytes": 59839,
-      "sha256": "4bdedc45bed7a8c34d9a09de0137faf9fedd53ed9b41cb08fe067e643a885786"
+      "bytes": 60635,
+      "sha256": "ae6d13152156222e7291c993650213d6be04a96df2052973c217290aa8a2fb18"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSession.hpp",
-      "bytes": 5851,
-      "sha256": "11502399222ec2c5e05dac7ef0759879108c0d8adcd77b20b137c0a61806f379"
+      "bytes": 5933,
+      "sha256": "4a88b0644133c32ea1e37664df51a23ce75789f3f52ee7b00e8bef9062da79c9"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/GameSessionResources.cpp",
@@ -9930,13 +9950,13 @@
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/SceneCamera.cpp",
-      "bytes": 2129,
-      "sha256": "4a4fd81759388239e9f063e87fcb4bce388618d546e4476178891e8c0e6c0eb4"
+      "bytes": 2733,
+      "sha256": "00702b1675fefe0cfc492d215338ca0a8b3b820a9448a79a1052ca11164acdaa"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/SceneCamera.hpp",
-      "bytes": 639,
-      "sha256": "9424135e0548ea6de3194ea4ba773241f3bce66b38de64ca2d438ac6e8b7c6a0"
+      "bytes": 1832,
+      "sha256": "c6dcfe980936aa5450b903826ebb034209899e9ce5bca5b11ff7e46ee2850418"
     },
     {
       "path": "runtimes/th12/th12_web/cpp/game/SceneCompositor.cpp",
@@ -13724,6 +13744,21 @@
       "sha256": "f38adcb6b6898ff89822e4da1bfe41134345b0d7e292d520aaff02689b78022e"
     },
     {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-perspective-publication-fixture-nov04.cpp",
+      "bytes": 2118,
+      "sha256": "20284cdcb8a16b0a51eef3f517f0674ea8b922a9e62fbf28dc6a9a1898ee1705"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-perspective-scope-fixture-nov04.cpp",
+      "bytes": 1884,
+      "sha256": "d160966784d7ed2da0dc43685e74c6dae6e1bac83169379b402a2816f17dd742"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-perspective-session-fixture-nov04.cpp",
+      "bytes": 6317,
+      "sha256": "ffacd4f79c919e7fa8f766057b36739d4776b51e6640648401ed30bee2f94935"
+    },
+    {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-phased-shake-stack-fixture-nov02.cpp",
       "bytes": 1088,
       "sha256": "8074ccbc7aa8794d90b0930a68d5a2e289217e5eb2800aacecff79d632740a5a"
@@ -13942,6 +13977,16 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-rng-initialization-clock-fixture-nov02.cpp",
       "bytes": 1077,
       "sha256": "74a0cb7332fabbfbfb386a58a54f14c8d7b97bc2002f58d17d281ef489532b11"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-rng-perspective-clock-experiment-fixture-nov04.cpp",
+      "bytes": 1511,
+      "sha256": "4f3d447620e45e023d9a4a4d8395dbf17f73e5cf0fbd888466a59b19cc7df56b"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-rng-perspective-full-camera-fixture-nov04.cpp",
+      "bytes": 1166,
+      "sha256": "740b10556c0a435049bb98d95f77271a5704a6c0b1e1cd980322ef39a5cac635"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-rng-store-boundary-fixture-nov02.cpp",
@@ -14297,6 +14342,11 @@
       "path": "runtimes/th12/th12_web/tests/cpp/th14-stage-resources-fixture.cpp",
       "bytes": 1419,
       "sha256": "ffa14ccb78a4475964b96bfcf95404b98f895119e9223c4b51698ca5896cce49"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-stage-rng-clock-experiment-fixture-nov04.cpp",
+      "bytes": 1655,
+      "sha256": "40f77d2123837f21d1ed6fca6f20524c0b7b98462d778da4b71a23d7dcc5fd9b"
     },
     {
       "path": "runtimes/th12/th12_web/tests/cpp/th14-stage-standalone-callback-fixture.cpp",
@@ -17304,6 +17354,11 @@
       "sha256": "7d6cf6bf6291267fa8eaefd216554f31170b1a6a808e5b06d9661ceb218ac90f"
     },
     {
+      "path": "tools/th14-build-frozen-perspective-browser-nov04.py",
+      "bytes": 15893,
+      "sha256": "d9c5b10e312256af134ec480de1ab9995cca8ce869f9195943be6ecf77304f09"
+    },
+    {
       "path": "tools/th14-build-frozen-stage-object-browser-nov04.py",
       "bytes": 15640,
       "sha256": "65133757b058c8335ccd2c337da2fda23960c280133cb4167b77d8aef257faf5"
@@ -17344,6 +17399,21 @@
       "sha256": "e47702b3c7cb2700014cf290175c987e2a8d4473c929386cc88862d2060b9e49"
     },
     {
+      "path": "tools/th14-build-perspective-publication-component-nov04.py",
+      "bytes": 3979,
+      "sha256": "285d6861d12b7fccc4b7e30a4be35aed211f6e76e8359e10775b532fe39aef60"
+    },
+    {
+      "path": "tools/th14-build-perspective-scope-component-nov04.py",
+      "bytes": 3973,
+      "sha256": "71967a2e68c540f6291f2b46f06da5b1ad8c60d0f8ce5f7e4e5985b8d278e61f"
+    },
+    {
+      "path": "tools/th14-build-perspective-session-nov04.py",
+      "bytes": 3999,
+      "sha256": "3e77bbcf2dbc54b007cf04f6af79817cbfcfdc4fe12718eea0455297118275c2"
+    },
+    {
       "path": "tools/th14-build-reimu-bomb-polar-nov01.py",
       "bytes": 1748,
       "sha256": "82c64e82efeca851e8d96d06b2d53229cc0933736f5445da05c339a6e1039890"
@@ -17369,6 +17439,16 @@
       "sha256": "70805286aeb915f96d50ca768d7b86ffc09e78ed97c024174e06d14265f47118"
     },
     {
+      "path": "tools/th14-build-rng-perspective-clock-experiment-nov04.py",
+      "bytes": 4057,
+      "sha256": "c4c27bb3a30849f545a857061a06724933069cc402c7d37b89db295e3fe5e0c7"
+    },
+    {
+      "path": "tools/th14-build-rng-perspective-full-camera-nov04.py",
+      "bytes": 4052,
+      "sha256": "c78b26c8519f19651ac9e1302153834df2f8cbd04e2202c1239c64dff32a5d0f"
+    },
+    {
       "path": "tools/th14-build-snapshot-core-oct29.py",
       "bytes": 4106,
       "sha256": "42ea9e82a3d49890a56f009b70c31e9bab97c74aa93d982cb4d590aedb1fab90"
@@ -17377,6 +17457,11 @@
       "path": "tools/th14-build-stage-object-boundary-fixture-nov04.py",
       "bytes": 3921,
       "sha256": "52a5775d4487234ca8850e193fff80ca95e05c9888e52310b77179c8f12b3931"
+    },
+    {
+      "path": "tools/th14-build-stage-rng-clock-experiment-nov04.py",
+      "bytes": 4051,
+      "sha256": "4b185e1d7ee099899bf31389d80767d416046fed7ee5040994ff3fa87eb18c64"
     },
     {
       "path": "tools/th14-build-webgpu-async-component.py",
@@ -17787,6 +17872,11 @@
       "path": "tools/th14-check-overlay-vm-boundary-protocol-nov04.py",
       "bytes": 4410,
       "sha256": "60daabd6f819ecc5a63f1ac2545a342be7ba1a107ffcbc523a47223510d9f821"
+    },
+    {
+      "path": "tools/th14-check-perspective-syntax-nov04.py",
+      "bytes": 1489,
+      "sha256": "918ee9a5c86749ab561f1438f5669ad83a606b4a413dd87df66dc79890d33585"
     },
     {
       "path": "tools/th14-check-stage-object-boundary-protocol-nov04.py",
@@ -22259,6 +22349,46 @@
       "sha256": "1f38a17c5abde97d41a2646f5ec96b7d318ef5f046931f2b261e99302541a2bb"
     },
     {
+      "path": "tools/th14-perspective-d3dx-worker-nov04.cs",
+      "bytes": 1955,
+      "sha256": "0d7c5acfe4bfc80f56a4fec7e7b88155dbe7138dae234e8c0562249e3c1bb87e"
+    },
+    {
+      "path": "tools/th14-perspective-publication-component-check-nov04.mjs",
+      "bytes": 2925,
+      "sha256": "9d392b7cdb6bc4e4e8aa85432885643d175f078c7db20ccfb81e9b85a91b3b4c"
+    },
+    {
+      "path": "tools/th14-perspective-publication-component-cpu-check-nov04.mjs",
+      "bytes": 3043,
+      "sha256": "5cdadbe0cca6c989f72685cb58674fb6fab605579c19b4b523d08933a0b1cc69"
+    },
+    {
+      "path": "tools/th14-perspective-publication-evidence-nov04.py",
+      "bytes": 13543,
+      "sha256": "ae89878d51d4b094c66e8c4e53342d0c7b0cb88fc15834466416535571fbf32b"
+    },
+    {
+      "path": "tools/th14-perspective-publication-native-cpu-nov04.py",
+      "bytes": 8318,
+      "sha256": "52cdc1576e7a385c3704a69e4aa8a170d6044e71e47a0e3bf5f572caa2ff6c1b"
+    },
+    {
+      "path": "tools/th14-perspective-publication-native-nov04.py",
+      "bytes": 5935,
+      "sha256": "235f0235f2227349355fed479177cf50102078fd5ea0ce8be5f254ef89a509c6"
+    },
+    {
+      "path": "tools/th14-perspective-scope-check-nov04.mjs",
+      "bytes": 1407,
+      "sha256": "e9b10c4dabee782b31e93eb70efe71e53292d972a1bdbcde4d562d7ef0958b76"
+    },
+    {
+      "path": "tools/th14-perspective-session-check-nov04.mjs",
+      "bytes": 29347,
+      "sha256": "a710227bdc18e013d18ec38b231bc7e09c76a13a3ad992eb1baf17c431852f2e"
+    },
+    {
       "path": "tools/th14-phased-shake-live-observer-nov02.py",
       "bytes": 61254,
       "sha256": "930f868fb48a91542037f28739afc46206fb986af890b3c4f9109f5547cf20fa"
@@ -22547,6 +22677,11 @@
       "path": "tools/th14-prepare-overlay-vm-boundaries-v2-nov04.py",
       "bytes": 4643,
       "sha256": "e048f94fe747811b34279c4bab3f872f5879aa60c2d970b21521b1e863a1c896"
+    },
+    {
+      "path": "tools/th14-prepare-perspective-publication-nov04.py",
+      "bytes": 5337,
+      "sha256": "1a3ec9d15ba0c6e94c614de28f1f4089336ac5b16207731698c7646c01d3c3fc"
     },
     {
       "path": "tools/th14-prepare-replay-rng-completion-stage-observer-nov04.py",
@@ -23252,6 +23387,21 @@
       "path": "tools/th14-rng-async-scope-check-nov02.py",
       "bytes": 4536,
       "sha256": "a0938e7934d975bf31445442ef994b9f3afb45fd08b8ce171926db261dca60b6"
+    },
+    {
+      "path": "tools/th14-rng-perspective-clock-evidence-nov04.py",
+      "bytes": 5751,
+      "sha256": "62a8907ee38f8359af6914109d4062f949235316880b09db2bca865a018d4264"
+    },
+    {
+      "path": "tools/th14-rng-perspective-clock-experiment-nov04.mjs",
+      "bytes": 50736,
+      "sha256": "e6d5778dd1e1eb7e10e8a54bcf0fcd4bcca98c5fb6de9e18c222048d4d247cef"
+    },
+    {
+      "path": "tools/th14-rng-perspective-full-camera-nov04.mjs",
+      "bytes": 51985,
+      "sha256": "0b6e12210e9f262d818a975e98ced569454ecf2d094138e95eba12504384de40"
     },
     {
       "path": "tools/th14-rng-store-boundary-application-full-evidence-nov02.py",
@@ -24952,6 +25102,16 @@
       "path": "tools/th14-stage-resources-check.mjs",
       "bytes": 4349,
       "sha256": "c529f0e7da0cb953055fd84593e4fd68913d027789d4d40882fc85520d71d1d5"
+    },
+    {
+      "path": "tools/th14-stage-rng-clock-experiment-evidence-nov04.py",
+      "bytes": 5456,
+      "sha256": "90b5e5ddfcbcbf501674a69291026b69c132fae5bbd117a4afa12e78d96f1824"
+    },
+    {
+      "path": "tools/th14-stage-rng-clock-experiment-nov04.mjs",
+      "bytes": 49739,
+      "sha256": "6448371b124480269888e8f427d63b653f62fdfe60506cc57574076fa4f81a45"
     },
     {
       "path": "tools/th14-stage-sampler-affine-build.mjs",
@@ -27430,45 +27590,38 @@
     }
   ],
   "latestIncrement": {
-    "verifiedNativeSemanticCameraOrder": true,
-    "coreWasmSha256": "46d95c5101ed44e5ca7af69bbad803055279d2d76a56ad174182794688c63a07",
+    "verifiedPerspectivePublication": true,
+    "coreWasmSha256": "fc24f408b1ea2bf5c0a054dd7b06d2e1e542d0145a2df7faacbed250b2288949",
     "freshCoreObjects": 141,
-    "nativeProgressCases": 76,
-    "mappedCameraDwords": 73,
-    "nativePublicationDwords": 75,
-    "unmappedNativeWordIndices": [
-      22,
-      23
-    ],
-    "opaqueWordsAreNotTrailing": true,
-    "opaqueWordsStillNotAccepted": true,
-    "nativeAnmReadBlockExecutions": 456,
-    "cppSemanticWordsCompared": 5548,
-    "candidateWrongSemanticWords": 0,
-    "priorPublishedCoreWrongSemanticWords": 557,
-    "priorPublishedCoreFailedPrefixes": 57,
-    "priorPublishedCoreWrongProgressCases": 76,
-    "componentPublicationFailureCases": 9,
+    "nativePerspectiveProfiles": 4,
+    "perspectiveBoundaries": 6,
+    "nativeWorkerCopies": 24,
+    "mappedCameraWordsCompared": 1752,
+    "wrongMappedWords": 0,
+    "unicornFloatingOracleRejectedWrongWords": 66,
+    "actualWindowsX86D3dxServicesUsed": true,
+    "scopeProtocolCases": 6,
+    "componentFailureCases": 24,
     "actualSessionCases": [
       {
         "mode": 0,
-        "callback": 14087,
-        "copiedWords": 13,
-        "nextWordConfirmed": true,
+        "callback": 14088,
+        "perspectivePoint": 4,
+        "nextPerspectivePointConfirmed": true,
         "loaderPhaseAtBoundary": 5
       },
       {
         "mode": 1,
-        "callback": 14087,
-        "copiedWords": 13,
-        "nextWordConfirmed": false,
+        "callback": 14088,
+        "perspectivePoint": 4,
+        "nextPerspectivePointConfirmed": false,
         "loaderPhaseAtBoundary": 4
       },
       {
         "mode": 2,
-        "callback": 14087,
-        "copiedWords": 13,
-        "nextWordConfirmed": false,
+        "callback": 14088,
+        "perspectivePoint": 4,
+        "nextPerspectivePointConfirmed": false,
         "loaderPhaseAtBoundary": 8
       }
     ],
@@ -27478,42 +27631,92 @@
     "witnessedVmRows": 1057,
     "witnessedCombatCheckpoints": 393,
     "additionalSourceReadCallbacks": 18000,
-    "sharedStageSyntaxChecks": 4,
+    "sharedCameraSessionSyntaxChecks": 8,
     "applicationFrames": 2289,
     "applicationChecks": 27,
     "identicalReferenceImages": 2,
     "offlinePcmFrames": 1526784,
     "physicalAudioDevicesOpened": 0,
     "browserCompiledUnits": 146,
-    "browserWasmSha256": "534dc723256ac536fc97b90cf1ba18999d437c7b7f513b844b09de2ed049d540",
+    "browserWasmSha256": "21d5afd93a5e2c4a01bbfda873d78cc38807f57f02dab13482a2afdd82ec12fd",
     "browserAcceptance": false,
-    "priorPrefixEvidenceHadNoSemanticLayoutValidation": true,
+    "controlledCombinedClockCases": [
+      {
+        "case": "clock-experiments/perspective-5",
+        "callbacks": 35000,
+        "vm303Rows": 1072,
+        "combatCheckpoints": 480
+      },
+      {
+        "case": "full-camera-experiment/perspective-5",
+        "callbacks": 35000,
+        "vm303Rows": 1072,
+        "combatCheckpoints": 480
+      }
+    ],
+    "controlledExpandedCameraWords": 2484929,
+    "controlledExpandedCameraFields": 71,
+    "controlledTimingIsNotOriginalSchedule": true,
+    "strictContractRejectedControlledDriver": true,
     "oldRngFailureDifferences": {
       "21": 4137,
       "22": 283,
       "26": 1
     },
+    "oldCameraFailureDifferences": {
+      "12": 16701
+    },
     "oldRngFailureClosed": false,
     "oldCameraFailureClosed": false,
     "originalOldThreadScheduleRecovered": false,
+    "matrixInternalStoresNotModeled": true,
+    "unmappedNativeWordIndices": [
+      22,
+      23
+    ],
+    "opaqueWordsStillNotAccepted": true,
     "completeGame": false,
     "nativeEquivalent": false,
     "productionIntegrated": true,
-    "title": "TH14 native semantic camera copy order and progress correction",
-    "basePublishedCommit": "e08d4630fabf5e72aa0071aea7f4116800e3438e",
+    "title": "TH14 perspective publication boundaries with native CPU validation",
+    "basePublishedCommit": "acc1b44e5ef3415d6b92790fe671b837a94ceb33",
     "changedSourceAndMetadataFiles": [
-      "runtimes/th12/th12_web/cpp/game/Stage.cpp",
-      "runtimes/th12/th12_web/tests/cpp/th14-camera-native-order-fixture-nov04.cpp",
-      "tools/th14-prepare-camera-native-order-nov04.py",
-      "tools/th14-camera-native-order-native-nov04.py",
-      "tools/th14-build-camera-native-order-component-nov04.py",
-      "tools/th14-camera-native-order-check-nov04.mjs",
-      "tools/th14-camera-native-order-evidence-nov04.py",
-      "docs/porting/TH14_CAMERA_NATIVE_ORDER_NOV04.md",
-      "docs/porting/th14-camera-native-order-nov04.json",
-      "docs/porting/th14-camera-native-layout-nov04.json",
-      "docs/porting/TH14_CAMERA_WORD_PUBLICATION_NOV04.md",
-      "docs/porting/TH14_CAMERA_SOURCE_READ_NOV04.md",
+      "runtimes/th12/th12_web/cpp/game/SceneCamera.hpp",
+      "runtimes/th12/th12_web/cpp/game/SceneCamera.cpp",
+      "runtimes/th12/th12_web/cpp/game/GameSession.hpp",
+      "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-perspective-publication-fixture-nov04.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-perspective-scope-fixture-nov04.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-perspective-session-fixture-nov04.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-stage-rng-clock-experiment-fixture-nov04.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-rng-perspective-clock-experiment-fixture-nov04.cpp",
+      "runtimes/th12/th12_web/tests/cpp/th14-rng-perspective-full-camera-fixture-nov04.cpp",
+      "tools/th14-prepare-perspective-publication-nov04.py",
+      "tools/th14-perspective-publication-native-nov04.py",
+      "tools/th14-perspective-publication-native-cpu-nov04.py",
+      "tools/th14-perspective-d3dx-worker-nov04.cs",
+      "tools/th14-build-perspective-publication-component-nov04.py",
+      "tools/th14-perspective-publication-component-check-nov04.mjs",
+      "tools/th14-perspective-publication-component-cpu-check-nov04.mjs",
+      "tools/th14-build-perspective-scope-component-nov04.py",
+      "tools/th14-perspective-scope-check-nov04.mjs",
+      "tools/th14-build-perspective-session-nov04.py",
+      "tools/th14-perspective-session-check-nov04.mjs",
+      "tools/th14-check-perspective-syntax-nov04.py",
+      "tools/th14-build-frozen-perspective-browser-nov04.py",
+      "tools/th14-perspective-publication-evidence-nov04.py",
+      "tools/th14-build-stage-rng-clock-experiment-nov04.py",
+      "tools/th14-stage-rng-clock-experiment-nov04.mjs",
+      "tools/th14-stage-rng-clock-experiment-evidence-nov04.py",
+      "tools/th14-build-rng-perspective-clock-experiment-nov04.py",
+      "tools/th14-rng-perspective-clock-experiment-nov04.mjs",
+      "tools/th14-build-rng-perspective-full-camera-nov04.py",
+      "tools/th14-rng-perspective-full-camera-nov04.mjs",
+      "tools/th14-rng-perspective-clock-evidence-nov04.py",
+      "docs/porting/TH14_PERSPECTIVE_PUBLICATION_NOV04.md",
+      "docs/porting/th14-perspective-publication-nov04.json",
+      "docs/porting/TH14_CONTROLLED_CLOCK_DIAGNOSTICS_NOV04.md",
+      "docs/porting/th14-controlled-clock-diagnostics-nov04.json",
       "docs/porting/TH14_REMAINING_ACCEPTANCE.md",
       "docs/github-publication-manifest.json"
     ],

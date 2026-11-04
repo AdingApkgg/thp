@@ -1,0 +1,7 @@
+import assert from'node:assert/strict';import{readFileSync as read,writeFileSync as write}from'node:fs';import{resolve}from'node:path';import{createHash}from'node:crypto';import{WASI}from'node:wasi';
+const root=resolve(import.meta.dirname,'..'),home=resolve(root,'artifacts/th14/perspective-publication-nov04'),sha=b=>createHash('sha256').update(b).digest('hex'),br=read(resolve(home,'scope-component/observer-build.json')),b=JSON.parse(br),wasm=read(resolve(home,'scope-component/observer.wasm'));
+assert.equal(sha(wasm),b.wasmSha256);for(const o of b.objectBindings)assert.equal(sha(read(o.path)),o.sha256);for(const[p,h]of Object.entries(b.fixtureDependencyHashes))assert.equal(sha(read(p)),h);
+const w=new WASI({version:'preview1',args:[],env:{},preopens:{}}),{instance}=await WebAssembly.instantiate(wasm,{wasi_snapshot_preview1:w.wasiImport});w.initialize(instance);
+for(let mode=1;mode<=6;mode++)assert.equal(instance.exports.perspective_scope_case(mode),1,'Scope case '+mode);
+const report={verifiedPerspectiveScopeProtocol:true,cases:6,cameraFiltering:true,nestedSameAndOtherCamera:true,reentryProtected:true,failureLatchesWithinScope:true,failureDoesNotEscapeScope:true,wasmSha256:b.wasmSha256,buildSha256:sha(br),checkerSha256:sha(read(import.meta.filename)),completeGame:false};
+write(resolve(home,'scope-verified.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));

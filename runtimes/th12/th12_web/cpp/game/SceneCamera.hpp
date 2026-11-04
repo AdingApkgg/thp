@@ -19,4 +19,29 @@ struct SceneCamera {
     void screen();
 };
 static_assert(sizeof(SceneCamera)==0x118+(kPortTitle==13||kPortTitle==14?12:0));
+#if PORT_TITLE == 14
+// Original446400 publication phases. This scope observes one camera without
+// changing SceneCamera's native-mapped layout or intercepting other cameras.
+struct SceneCameraPerspectiveScopeTh14 {
+ using Callback=bool(*)(void*,const SceneCamera&,u32);
+ SceneCamera* camera;void* owner;Callback callback;SceneCameraPerspectiveScopeTh14* previous;
+ bool running=false,failed=false;
+ static inline SceneCameraPerspectiveScopeTh14* active=nullptr;
+ SceneCameraPerspectiveScopeTh14(SceneCamera& c,void* o,Callback f):camera(&c),owner(o),callback(f),previous(active){active=this;}
+ ~SceneCameraPerspectiveScopeTh14(){active=previous;}
+ SceneCameraPerspectiveScopeTh14(const SceneCameraPerspectiveScopeTh14&)=delete;
+ SceneCameraPerspectiveScopeTh14& operator=(const SceneCameraPerspectiveScopeTh14&)=delete;
+ static bool checkpoint(const SceneCamera& c,u32 point){
+  for(auto* scope=active;scope;scope=scope->previous){
+   if(scope->camera!=&c)continue;
+   if(scope->failed)return false;
+   if(scope->running)return true;
+   scope->running=true;scope->failed=!scope->callback(scope->owner,c,point);scope->running=false;
+   return !scope->failed;
+  }
+  return true;
+ }
+};
+#endif
+
 }

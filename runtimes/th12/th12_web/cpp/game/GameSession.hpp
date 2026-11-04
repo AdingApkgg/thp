@@ -120,6 +120,7 @@ public:
     AnmManager::VmBoundaryCallbackTh14 stage_load_vm_boundary;
     StageObjectVmBoundaryTh14 stage_load_object_boundary;
     StageCameraWordBoundaryTh14 stage_load_camera_word_boundary;
+    std::function<bool(const SceneCamera&,u32)> stage_load_perspective_boundary;
     u32 stage_load_host_flags=0;
     void request_host_close(){stage_load_host_flags=(stage_load_host_flags&~0x100u)|0x80u;}
 #endif

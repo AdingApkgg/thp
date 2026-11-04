@@ -2,6 +2,9 @@
 #include <cmath>
 namespace th11 {
 void SceneCamera::perspective(){
+#if PORT_TITLE == 14
+    if(!SceneCameraPerspectiveScopeTh14::checkpoint(*this,0))return;
+#endif
     const auto add=[](Vec3 a,Vec3 b){return Vec3{float(double(a.x)+b.x),float(double(a.y)+b.y),float(double(a.z)+b.z)};};
 #if PORT_TITLE == 13 || PORT_TITLE == 14
     // 43ba20 uses the direction cached by the preceding Stage update.
@@ -10,13 +13,23 @@ void SceneCamera::perspective(){
 #else
     view=GraphicsMath::look_at(add(position,eye_offset),add(position,direction),up);
 #endif
+#if PORT_TITLE == 14
+    if(!SceneCameraPerspectiveScopeTh14::checkpoint(*this,1))return;
+#endif
     projection=GraphicsMath::perspective(fov,float(double(viewport.width)/viewport.height),30,kPortTitle==14?8000:1800);
 #if PORT_TITLE == 14
+    if(!SceneCameraPerspectiveScopeTh14::checkpoint(*this,2))return;
     // Retail446539..44659d rounds each SSE product before subtraction.
     const auto& d=reserved24;
     const Vec3 axis={float(float(d.y*up.z)-float(d.z*up.y)),
         float(float(d.z*up.x)-float(d.x*up.z)),float(float(d.x*up.y)-float(d.y*up.x))};
-    right=GraphicsMath::normalize(axis);
+    // Native446590 stores XY,44659d stores Z, then D3DX normalizes in place.
+    right.x=axis.x;right.y=axis.y;
+    if(!SceneCameraPerspectiveScopeTh14::checkpoint(*this,3))return;
+    right.z=axis.z;
+    if(!SceneCameraPerspectiveScopeTh14::checkpoint(*this,4))return;
+    right=GraphicsMath::normalize(right);
+    if(!SceneCameraPerspectiveScopeTh14::checkpoint(*this,5))return;
 #else
     right=GraphicsMath::normalize(GraphicsMath::cross(kPortTitle==13||kPortTitle==14?reserved24:direction,up));
 #endif
