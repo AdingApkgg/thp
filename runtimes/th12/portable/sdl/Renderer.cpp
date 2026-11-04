@@ -191,10 +191,22 @@ void Renderer::draw(Topology primitive,u32 count,const void* data,u32 stride,con
 }
 void Renderer::flush(){if(!batching)return;batching=false;if(instancing)issue(batchState,Topology::Strip,2,quad.data(),quad.size(),nullptr,IndexType::UInt16,worlds.size()>68?worlds.data():nullptr,worlds.size()>68?worlds.size():0);else issue(batchState,Topology::Triangles,batchCount,batchBytes.data(),batchBytes.size(),nullptr,IndexType::UInt16,nullptr,0);batchBytes.clear();worlds.clear();batchCount=0;instancing=false;}
 void Renderer::discard(){batching=instancing=false;batchBytes.clear();worlds.clear();batchCount=0;}
-void Renderer::issue(const State& d,Topology primitive,u32 count,const void* data,u32 size,const void* index,IndexType indexFormat,const void* instance,u32 instanceSize){
+void Renderer::issue(const State& d,Topology primitive,u32 count,const void* data,u32 size,const void* index,IndexType indexFormat,const void* instance,u32 instanceSize,bool clippedGeometry){
  stats.batches++;
 #ifdef TH14_WEBGPU_BACKEND
  if(webGpu){webGpu->issue(d,primitive,count,data,index,indexFormat,instance,instanceSize);return;}
+#endif
+#if defined(PORT_TITLE) && PORT_TITLE == 14
+ if(!clippedGeometry&&!index&&!d.layout.screen&&d.layout==attributes(VertexLayout::WorldUv)&&d.stride==20){
+  if(instance){
+   bool needsClip=false;const auto* records=static_cast<const u8*>(instance);
+   for(u32 i=0;i<instanceSize/68;i++){State one=d;std::memcpy(one.matrix[0].data(),records+i*68,64);std::vector<Th14ClipVertex> temp;if(th14_clip_world_uv(one,primitive,count,data,temp)==1){needsClip=true;break;}}
+   if(needsClip){for(u32 i=0;i<instanceSize/68;i++){State one=d;std::memcpy(one.matrix[0].data(),records+i*68,64);std::memcpy(&one.pipeline.textureFactor,records+i*68+64,4);std::vector<Th14ClipVertex> temp;if(th14_clip_world_uv(one,primitive,count,data,temp)==1)issue(one,primitive,count,data,size,nullptr,indexFormat,nullptr,0);else issue(d,primitive,count,data,size,nullptr,indexFormat,records+i*68,68);}return;}
+  }else{
+   std::vector<Th14ClipVertex> clipped;const int status=th14_clip_world_uv(d,primitive,count,data,clipped);
+   if(status==1){if(!clipped.empty()){State one=d;one.stride=88;one.layout.uv=44;issue(one,Topology::Triangles,u32(clipped.size()/3),clipped.data(),u32(clipped.size()*88),nullptr,indexFormat,nullptr,0,true);}return;}
+  }
+ }
 #endif
  const auto& p=d.pipeline;auto& cached=drawState.pipeline;const bool all=!drawState.valid;
  if(all||cached.dither!=p.dither)p.dither?glEnable(GL_DITHER):glDisable(GL_DITHER);
@@ -248,7 +260,8 @@ integer(13,!!texture);uniform(14,4,color(p.textureFactor).data());
  
 #if defined(PORT_TITLE) && PORT_TITLE == 14
  if(!instance){
-  if(!transformed&&!index&&primitive==Topology::Triangles){
+  if(clippedGeometry){glDisableVertexAttribArray(13);glVertexAttrib1f(13,-1.f);glVertexAttribDivisor(13,0);}
+  else if(!transformed&&!index&&primitive==Topology::Triangles){
    const u32 submitted=vertex_count(primitive,count);std::vector<float> eligibility(submitted,0.f);const auto clip=th14_clip(d.matrix[0],d.matrix[1],d.matrix[2]);
    for(u32 i=0;i+2<submitted;i+=3)if(th14_primitive_projectable(static_cast<const float*>(data),d.stride,i,3,clip,d.viewport))eligibility[i]=eligibility[i+1]=eligibility[i+2]=1.f;
    const u32 flagBase=upload(instances,GL_ARRAY_BUFFER,eligibility.data(),u32(eligibility.size()*4),65536);glEnableVertexAttribArray(13);glVertexAttribPointer(13,1,GL_FLOAT,false,4,reinterpret_cast<void*>(flagBase));glVertexAttribDivisor(13,0);
@@ -262,14 +275,19 @@ integer(13,!!texture);uniform(14,4,color(p.textureFactor).data());
  }
 #endif
 const u32 base=upload(vertices,GL_ARRAY_BUFFER,data,size,1048576);
+ if(clippedGeometry){
+  glEnableVertexAttribArray(13);glVertexAttribPointer(13,1,GL_FLOAT,false,88,reinterpret_cast<void*>(base+84));glVertexAttribDivisor(13,0);
+  glEnableVertexAttribArray(14);glVertexAttribPointer(14,4,GL_FLOAT,false,88,reinterpret_cast<void*>(base+56));glVertexAttribDivisor(14,0);
+  glEnableVertexAttribArray(15);glVertexAttribPointer(15,3,GL_FLOAT,false,88,reinterpret_cast<void*>(base+72));glVertexAttribDivisor(15,0);
+ }
 #ifdef __EMSCRIPTEN__
  if(setup){
 #else
  {
 #endif
  ++stats.layoutSetups;
-glEnableVertexAttribArray(0);glVertexAttribPointer(0,transformed?4:3,GL_FLOAT,false,d.stride,reinterpret_cast<void*>(base));
- for(int j=0;j<2;j++){const int loc=j?3:1;const u32 offset=j?d.layout.specular:d.layout.diffuse;if(offset!=VertexAttributes::absent){glEnableVertexAttribArray(loc);glVertexAttribPointer(loc,4,GL_UNSIGNED_BYTE,true,d.stride,reinterpret_cast<void*>(base+offset));}else{glDisableVertexAttribArray(loc);glVertexAttrib4f(loc,1,1,1,1);}}
+glEnableVertexAttribArray(0);glVertexAttribPointer(0,(transformed||clippedGeometry)?4:3,GL_FLOAT,false,d.stride,reinterpret_cast<void*>(base+(clippedGeometry?28:0)));
+ for(int j=0;j<2;j++){const int loc=j?3:1;const u32 offset=j?d.layout.specular:d.layout.diffuse;if(clippedGeometry&&j){glEnableVertexAttribArray(loc);glVertexAttribPointer(loc,1,GL_FLOAT,false,88,reinterpret_cast<void*>(base+52));}else if(offset!=VertexAttributes::absent){glEnableVertexAttribArray(loc);glVertexAttribPointer(loc,4,GL_UNSIGNED_BYTE,true,d.stride,reinterpret_cast<void*>(base+offset));}else{glDisableVertexAttribArray(loc);glVertexAttrib4f(loc,1,1,1,1);}}
  if(d.layout.uv!=VertexAttributes::absent){glEnableVertexAttribArray(2);glVertexAttribPointer(2,2,GL_FLOAT,false,d.stride,reinterpret_cast<void*>(base+d.layout.uv));}else{glDisableVertexAttribArray(2);glVertexAttrib2f(2,0,0);}
  }
  constexpr GLenum modes[]{GL_POINTS,GL_LINES,GL_LINE_STRIP,GL_TRIANGLES,GL_TRIANGLE_STRIP,GL_TRIANGLE_FAN};const GLenum mode=modes[u32(primitive)];const u32 n=vertex_count(primitive,count);
