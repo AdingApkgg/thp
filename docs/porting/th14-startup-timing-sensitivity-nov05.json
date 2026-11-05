@@ -1,0 +1,625 @@
+{
+  "schema": "th14/startup-timing-sensitivity-public-evidence/1",
+  "verifiedFiniteInputSensitivityControls": true,
+  "originalPair": {
+    "uniqueStageFramePairs": 34429,
+    "duplicateKeyRowsExcluded": [
+      415,
+      571
+    ],
+    "differences": {
+      "21": 34428,
+      "22": 34429,
+      "26": 9
+    },
+    "activeShotDifferences": [
+      {
+        "stage": 2,
+        "stageFrame": 2144,
+        "callbackA": 16386,
+        "callbackB": 16455,
+        "countA": 26,
+        "countB": 25
+      },
+      {
+        "stage": 2,
+        "stageFrame": 5511,
+        "callbackA": 19753,
+        "callbackB": 19822,
+        "countA": 65,
+        "countB": 64
+      },
+      {
+        "stage": 2,
+        "stageFrame": 5515,
+        "callbackA": 19757,
+        "callbackB": 19826,
+        "countA": 46,
+        "countB": 47
+      },
+      {
+        "stage": 2,
+        "stageFrame": 6286,
+        "callbackA": 20528,
+        "callbackB": 20597,
+        "countA": 86,
+        "countB": 87
+      },
+      {
+        "stage": 2,
+        "stageFrame": 6291,
+        "callbackA": 20533,
+        "callbackB": 20602,
+        "countA": 85,
+        "countB": 86
+      },
+      {
+        "stage": 2,
+        "stageFrame": 6298,
+        "callbackA": 20540,
+        "callbackB": 20609,
+        "countA": 89,
+        "countB": 88
+      },
+      {
+        "stage": 3,
+        "stageFrame": 1479,
+        "callbackA": 32361,
+        "callbackB": 32517,
+        "countA": 51,
+        "countB": 50
+      },
+      {
+        "stage": 3,
+        "stageFrame": 2085,
+        "callbackA": 32967,
+        "callbackB": 33123,
+        "countA": 49,
+        "countB": 48
+      },
+      {
+        "stage": 3,
+        "stageFrame": 2095,
+        "callbackA": 32977,
+        "callbackB": 33133,
+        "countA": 47,
+        "countB": 46
+      }
+    ],
+    "timeAndCookieBothDiffer": true,
+    "observerProfilesDiffer": true,
+    "ordinaryGuiNondeterminismProven": false
+  },
+  "controls": [
+    {
+      "kind": "controls-retry1",
+      "sameGeneratedDriverHashWithinGroup": true,
+      "driverSha256": "72f7cacf3af55d3a1af1e4e2d10a096e04ec5daccf24efffb5d7e5d18f60807d",
+      "cases": [
+        {
+          "case": "baseline",
+          "callbacks": 35000,
+          "selectedSha256": "851f64d43758ed80962e6ea7d8f58270482c24f5be0a3696414651d8cb2ab8a7",
+          "differences": {},
+          "firstDifferences": {},
+          "byteIdenticalToBaseline": true,
+          "alignedShotCountersAgainstOtherOriginal": {
+            "pairs": 34429,
+            "differenceCount": 9,
+            "correctedPriorDifferenceFrames": [],
+            "introducedDifferenceFrames": []
+          },
+          "timeInputChanged": false,
+          "cookieInputChanged": false
+        },
+        {
+          "case": "time-only",
+          "callbacks": 35000,
+          "selectedSha256": "5fa634284582ecc30fb145e409764832a466cbdfc76cbc253c29ed9454cd0cb3",
+          "differences": {
+            "21": 14130,
+            "22": 216
+          },
+          "firstDifferences": {
+            "21": {
+              "callback": 1,
+              "stage": 1,
+              "stageFrame": 1
+            },
+            "22": {
+              "callback": 2484,
+              "stage": 1,
+              "stageFrame": 2484
+            }
+          },
+          "byteIdenticalToBaseline": false,
+          "alignedShotCountersAgainstOtherOriginal": {
+            "pairs": 34429,
+            "differenceCount": 9,
+            "correctedPriorDifferenceFrames": [],
+            "introducedDifferenceFrames": []
+          },
+          "timeInputChanged": true,
+          "cookieInputChanged": false
+        },
+        {
+          "case": "cookie-only",
+          "callbacks": 35000,
+          "selectedSha256": "851f64d43758ed80962e6ea7d8f58270482c24f5be0a3696414651d8cb2ab8a7",
+          "differences": {},
+          "firstDifferences": {},
+          "byteIdenticalToBaseline": true,
+          "alignedShotCountersAgainstOtherOriginal": {
+            "pairs": 34429,
+            "differenceCount": 9,
+            "correctedPriorDifferenceFrames": [],
+            "introducedDifferenceFrames": []
+          },
+          "timeInputChanged": false,
+          "cookieInputChanged": true
+        },
+        {
+          "case": "both",
+          "callbacks": 35000,
+          "selectedSha256": "5fa634284582ecc30fb145e409764832a466cbdfc76cbc253c29ed9454cd0cb3",
+          "differences": {
+            "21": 14130,
+            "22": 216
+          },
+          "firstDifferences": {
+            "21": {
+              "callback": 1,
+              "stage": 1,
+              "stageFrame": 1
+            },
+            "22": {
+              "callback": 2484,
+              "stage": 1,
+              "stageFrame": 2484
+            }
+          },
+          "byteIdenticalToBaseline": false,
+          "alignedShotCountersAgainstOtherOriginal": {
+            "pairs": 34429,
+            "differenceCount": 9,
+            "correctedPriorDifferenceFrames": [],
+            "introducedDifferenceFrames": []
+          },
+          "timeInputChanged": true,
+          "cookieInputChanged": true
+        }
+      ]
+    },
+    {
+      "kind": "initialize-controls",
+      "sameGeneratedDriverHashWithinGroup": true,
+      "driverSha256": "ba00ca2726004956d7849204432999bcb3e543d8b1ecbb9ed6147bd1b24b7c81",
+      "cases": [
+        {
+          "case": "baseline",
+          "callbacks": 35000,
+          "selectedSha256": "851f64d43758ed80962e6ea7d8f58270482c24f5be0a3696414651d8cb2ab8a7",
+          "differences": {},
+          "firstDifferences": {},
+          "byteIdenticalToBaseline": true,
+          "alignedShotCountersAgainstOtherOriginal": {
+            "pairs": 34429,
+            "differenceCount": 9,
+            "correctedPriorDifferenceFrames": [],
+            "introducedDifferenceFrames": []
+          },
+          "controlledReadiness": []
+        },
+        {
+          "case": "stage2-late",
+          "callbacks": 35000,
+          "selectedSha256": "851f64d43758ed80962e6ea7d8f58270482c24f5be0a3696414651d8cb2ab8a7",
+          "differences": {},
+          "firstDifferences": {},
+          "byteIdenticalToBaseline": true,
+          "alignedShotCountersAgainstOtherOriginal": {
+            "pairs": 34429,
+            "differenceCount": 9,
+            "correctedPriorDifferenceFrames": [],
+            "introducedDifferenceFrames": []
+          },
+          "controlledReadiness": [
+            {
+              "stage": 2,
+              "delayNs": 3065401,
+              "followingPumpPrecedingCallbacks": 14130,
+              "stillBeforeAllLaterPhaseReadiness": true
+            }
+          ]
+        },
+        {
+          "case": "stage3-late",
+          "callbacks": 35000,
+          "selectedSha256": "41a0023c28d2e957e71f6eae06626053e98af5954c64f29e3fa8c8062cad4a61",
+          "differences": {
+            "21": 4145,
+            "22": 304,
+            "26": 2
+          },
+          "firstDifferences": {
+            "21": {
+              "callback": 30838,
+              "stage": 3,
+              "stageFrame": 0
+            },
+            "22": {
+              "callback": 32033,
+              "stage": 3,
+              "stageFrame": 995
+            },
+            "26": {
+              "callback": 33131,
+              "stage": 3,
+              "stageFrame": 2093
+            }
+          },
+          "byteIdenticalToBaseline": false,
+          "alignedShotCountersAgainstOtherOriginal": {
+            "pairs": 34429,
+            "differenceCount": 9,
+            "correctedPriorDifferenceFrames": [
+              {
+                "stage": 3,
+                "stageFrame": 2095
+              }
+            ],
+            "introducedDifferenceFrames": [
+              {
+                "stage": 3,
+                "stageFrame": 2093
+              }
+            ]
+          },
+          "controlledReadiness": [
+            {
+              "stage": 3,
+              "delayNs": 3232501,
+              "followingPumpPrecedingCallbacks": 30837,
+              "stillBeforeAllLaterPhaseReadiness": true
+            }
+          ]
+        },
+        {
+          "case": "stage2-player-late",
+          "callbacks": 35000,
+          "selectedSha256": "3f91a5171e58fd469a5084e3e276df5dafc162359d2014174bd751a5a77f58e0",
+          "differences": {
+            "21": 1,
+            "24": 1
+          },
+          "firstDifferences": {
+            "21": {
+              "callback": 14131,
+              "stage": 2,
+              "stageFrame": 0
+            },
+            "24": {
+              "callback": 14131,
+              "stage": 2,
+              "stageFrame": 0
+            }
+          },
+          "byteIdenticalToBaseline": false,
+          "alignedShotCountersAgainstOtherOriginal": {
+            "pairs": 34429,
+            "differenceCount": 9,
+            "correctedPriorDifferenceFrames": [],
+            "introducedDifferenceFrames": []
+          },
+          "controlledReadiness": [
+            {
+              "stage": 2,
+              "delayNs": 5034401,
+              "boundaryPc": "0x44dbd0",
+              "followingBoundaryPrecedingCallbacks": 14130,
+              "stillBeforeAllLaterPhaseReadiness": true
+            }
+          ]
+        },
+        {
+          "case": "stage3-player-late",
+          "callbacks": 35000,
+          "selectedSha256": "83066bdb5482e6c1564fd0aaa9628a9fb3efd8d7d3d4a731a95d1761a6b07c53",
+          "differences": {
+            "21": 4162,
+            "24": 1,
+            "22": 298,
+            "26": 2
+          },
+          "firstDifferences": {
+            "21": {
+              "callback": 30838,
+              "stage": 3,
+              "stageFrame": 0
+            },
+            "24": {
+              "callback": 30838,
+              "stage": 3,
+              "stageFrame": 0
+            },
+            "22": {
+              "callback": 32033,
+              "stage": 3,
+              "stageFrame": 995
+            },
+            "26": {
+              "callback": 32517,
+              "stage": 3,
+              "stageFrame": 1479
+            }
+          },
+          "byteIdenticalToBaseline": false,
+          "alignedShotCountersAgainstOtherOriginal": {
+            "pairs": 34429,
+            "differenceCount": 9,
+            "correctedPriorDifferenceFrames": [
+              {
+                "stage": 3,
+                "stageFrame": 1479
+              }
+            ],
+            "introducedDifferenceFrames": [
+              {
+                "stage": 3,
+                "stageFrame": 2093
+              }
+            ]
+          },
+          "controlledReadiness": [
+            {
+              "stage": 3,
+              "delayNs": 798548001,
+              "boundaryPc": "0x44dbd0",
+              "followingBoundaryPrecedingCallbacks": 30837,
+              "stillBeforeAllLaterPhaseReadiness": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sourceReplaySha256": "c48412a95f0fe9f685d97574e8ab0655d41e44ff9c41fda7bf788589b1b29c74",
+  "allSelectedWordsPerControl": 1120000,
+  "baselineCollectorByteIdenticalToPreviouslyAcceptedTrajectory": true,
+  "onlyDeclaredExternalInputsVaried": true,
+  "generatedDiagnosticDriversAreNotAcceptanceDrivers": true,
+  "originalStrictDriverAndGatesChanged": false,
+  "productionSourcesChanged": false,
+  "originalPairActiveShotDifferencesFullyExplained": false,
+  "oldDefaultFailureClosed": false,
+  "ordinaryIndependentTimingAccepted": false,
+  "wholePixelsOrPcmCompared": false,
+  "allModesAccepted": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "rawSeedsCookiesStatesOrBinariesUploaded": false,
+  "retainedInitialCollectorSyntaxFailure": true,
+  "evidenceBindings": {
+    "artifacts/th14/original-pair-audit-nov05/report.json": {
+      "bytes": 4774,
+      "sha256": "c3d297cf1fe04d04de7a0746addbce04c680627ec7aa8e7e562190d853e33f31"
+    },
+    "artifacts/th14/script-rng-read-generation-nov05/prefix-player-pump/native/report.json": {
+      "bytes": 176241,
+      "sha256": "812f744c441d76f1751b0a1a8a1273e856b2cf59fc44f6b94bfc2d8b2d41d277"
+    },
+    "artifacts/th14/script-rng-read-generation-nov05/prefix-player-pump/native/selected-state.u32": {
+      "bytes": 4480000,
+      "sha256": "0f795464436e65b806d492d49ac988f12f120f7fea0d16cf702bbe953f1f668c"
+    },
+    "artifacts/th14/script-rng-read-generation-nov05/prefix-player-pump/native/untouched-first-player.json": {
+      "bytes": 600,
+      "sha256": "ddab1da794a71785b8f55a7cd3d22585e509ea52c2d0998c58857c60465f8ae3"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/prefix-fixed-startup-retry1/native/report.json": {
+      "bytes": 230966,
+      "sha256": "5d08b1af19195329ce276d1a048fe5f3809cefe5e37bcb291dbae0eac3dae1f4"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/prefix-fixed-startup-retry1/native/selected-state.u32": {
+      "bytes": 4480000,
+      "sha256": "851f64d43758ed80962e6ea7d8f58270482c24f5be0a3696414651d8cb2ab8a7"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/prefix-fixed-startup-retry1/native/untouched-first-player.json": {
+      "bytes": 600,
+      "sha256": "690cf5cdd0ff1c803d149e3640fbf63b1eacafc52495b32455a2d2f28395ef98"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/comparison-pump-enabled/model/selected-state.u32": {
+      "bytes": 4480000,
+      "sha256": "851f64d43758ed80962e6ea7d8f58270482c24f5be0a3696414651d8cb2ab8a7"
+    },
+    "artifacts/th14/supervisor-pass-rng-nov05/comparison-driver-v6/driver.mjs": {
+      "bytes": 80804,
+      "sha256": "d9247f1c8889063065dfd3c8a895b9ea2e504f29902fe58f364e23e5970ce67c"
+    },
+    "artifacts/th14/original-pair-audit-nov05/controls/baseline/result.json": {
+      "bytes": 659,
+      "sha256": "f1cc049b703010132e77f73509089f7bf0b28c67b44da78e82e93679295082a9"
+    },
+    "artifacts/th14/original-pair-audit-nov05/controls/baseline/run.log": {
+      "bytes": 977,
+      "sha256": "d41e2ed16beef54be2984d69ad5efd1401960bc7654d3ad187f85318dbba15d2"
+    },
+    "artifacts/th14/original-pair-audit-nov05/controls-retry1/baseline/result.json": {
+      "bytes": 889,
+      "sha256": "472bcfc69913e7808fecdcfc31b5dc42579961b0220bec63cf936df26d3f814c"
+    },
+    "artifacts/th14/original-pair-audit-nov05/controls-retry1/baseline/model/diagnostic-state.u32": {
+      "bytes": 4480000,
+      "sha256": "851f64d43758ed80962e6ea7d8f58270482c24f5be0a3696414651d8cb2ab8a7"
+    },
+    "artifacts/th14/original-pair-audit-nov05/controls-retry1/baseline/driver.mjs": {
+      "bytes": 44916,
+      "sha256": "72f7cacf3af55d3a1af1e4e2d10a096e04ec5daccf24efffb5d7e5d18f60807d"
+    },
+    "artifacts/th14/original-pair-audit-nov05/controls-retry1/baseline/startup-inputs.json": {
+      "bytes": 49,
+      "sha256": "2e7af4e0108691f016bcb9dafa57c88396f5e8bc84fc5fbd5e99c447d687ca3b"
+    },
+    "artifacts/th14/original-pair-audit-nov05/controls-retry1/time-only/result.json": {
+      "bytes": 1106,
+      "sha256": "f4dbde9a10d5a79c6ab590f808fed7a358cebbdee0f9f50bf44fe5c9f44f55b0"
+    },
+    "artifacts/th14/original-pair-audit-nov05/controls-retry1/time-only/model/diagnostic-state.u32": {
+      "bytes": 4480000,
+      "sha256": "5fa634284582ecc30fb145e409764832a466cbdfc76cbc253c29ed9454cd0cb3"
+    },
+    "artifacts/th14/original-pair-audit-nov05/controls-retry1/time-only/driver.mjs": {
+      "bytes": 44916,
+      "sha256": "72f7cacf3af55d3a1af1e4e2d10a096e04ec5daccf24efffb5d7e5d18f60807d"
+    },
+    "artifacts/th14/original-pair-audit-nov05/controls-retry1/time-only/startup-inputs.json": {
+      "bytes": 49,
+      "sha256": "e581f088a8495ddc57d8bc56723198ad44f7b21d3fc53ba95a3b42ac639a9c0e"
+    },
+    "artifacts/th14/original-pair-audit-nov05/controls-retry1/cookie-only/result.json": {
+      "bytes": 891,
+      "sha256": "4f0263d2aabb93c59315fe0a771e54a04efbaf4a8876a9004304ad777d8e2d4c"
+    },
+    "artifacts/th14/original-pair-audit-nov05/controls-retry1/cookie-only/model/diagnostic-state.u32": {
+      "bytes": 4480000,
+      "sha256": "851f64d43758ed80962e6ea7d8f58270482c24f5be0a3696414651d8cb2ab8a7"
+    },
+    "artifacts/th14/original-pair-audit-nov05/controls-retry1/cookie-only/driver.mjs": {
+      "bytes": 44916,
+      "sha256": "72f7cacf3af55d3a1af1e4e2d10a096e04ec5daccf24efffb5d7e5d18f60807d"
+    },
+    "artifacts/th14/original-pair-audit-nov05/controls-retry1/cookie-only/startup-inputs.json": {
+      "bytes": 50,
+      "sha256": "73c2e1ada3c9928fd2dd6012cc93f4c29cab7eaaeabc289bbea63b525f293e41"
+    },
+    "artifacts/th14/original-pair-audit-nov05/controls-retry1/both/result.json": {
+      "bytes": 1100,
+      "sha256": "190482fc8f91867b9e25345661394bb6e1cfd190ae06cf78e5ae775aadd654d7"
+    },
+    "artifacts/th14/original-pair-audit-nov05/controls-retry1/both/model/diagnostic-state.u32": {
+      "bytes": 4480000,
+      "sha256": "5fa634284582ecc30fb145e409764832a466cbdfc76cbc253c29ed9454cd0cb3"
+    },
+    "artifacts/th14/original-pair-audit-nov05/controls-retry1/both/driver.mjs": {
+      "bytes": 44916,
+      "sha256": "72f7cacf3af55d3a1af1e4e2d10a096e04ec5daccf24efffb5d7e5d18f60807d"
+    },
+    "artifacts/th14/original-pair-audit-nov05/controls-retry1/both/startup-inputs.json": {
+      "bytes": 50,
+      "sha256": "af6ec25771ca18d16ad7f01a1fda1585197b5f40528ac4a67b115364c0a5fef1"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/baseline/result.json": {
+      "bytes": 974,
+      "sha256": "42279fb180045fceb4952c617b93db835eca1d9b13eda43d17b6cf3259833797"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/baseline/model/diagnostic-state.u32": {
+      "bytes": 4480000,
+      "sha256": "851f64d43758ed80962e6ea7d8f58270482c24f5be0a3696414651d8cb2ab8a7"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/baseline/driver.mjs": {
+      "bytes": 45059,
+      "sha256": "ba00ca2726004956d7849204432999bcb3e543d8b1ecbb9ed6147bd1b24b7c81"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/baseline/startup-inputs.json": {
+      "bytes": 49,
+      "sha256": "2e7af4e0108691f016bcb9dafa57c88396f5e8bc84fc5fbd5e99c447d687ca3b"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/baseline/initialize-deltas.json": {
+      "bytes": 4,
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/stage2-late/result.json": {
+      "bytes": 1139,
+      "sha256": "02c51dc8268b136803afb145fd499ee0c45074ddaeb779ba80290903ab724d67"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/stage2-late/model/diagnostic-state.u32": {
+      "bytes": 4480000,
+      "sha256": "851f64d43758ed80962e6ea7d8f58270482c24f5be0a3696414651d8cb2ab8a7"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/stage2-late/driver.mjs": {
+      "bytes": 45059,
+      "sha256": "ba00ca2726004956d7849204432999bcb3e543d8b1ecbb9ed6147bd1b24b7c81"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/stage2-late/startup-inputs.json": {
+      "bytes": 49,
+      "sha256": "2e7af4e0108691f016bcb9dafa57c88396f5e8bc84fc5fbd5e99c447d687ca3b"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/stage2-late/initialize-deltas.json": {
+      "bytes": 16,
+      "sha256": "592371a984905328cb49687b2aa4d70776b9c88b3533699edc957596ce7084f2"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/stage3-late/result.json": {
+      "bytes": 1465,
+      "sha256": "009c0edfc6e6ed94adc0cf0282413655c9b45526e0f7b3fdb47524fdba5b6476"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/stage3-late/model/diagnostic-state.u32": {
+      "bytes": 4480000,
+      "sha256": "41a0023c28d2e957e71f6eae06626053e98af5954c64f29e3fa8c8062cad4a61"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/stage3-late/driver.mjs": {
+      "bytes": 45059,
+      "sha256": "ba00ca2726004956d7849204432999bcb3e543d8b1ecbb9ed6147bd1b24b7c81"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/stage3-late/startup-inputs.json": {
+      "bytes": 49,
+      "sha256": "2e7af4e0108691f016bcb9dafa57c88396f5e8bc84fc5fbd5e99c447d687ca3b"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/stage3-late/initialize-deltas.json": {
+      "bytes": 16,
+      "sha256": "40a169232a118e07149e38ed2209f4fa8b4ecf413d25f438f49b2451e5c504d2"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/stage2-player-late/result.json": {
+      "bytes": 1396,
+      "sha256": "78fd9392dcfd498d8ad32d29fc47ae11d38a5fdff86dd56dc7c1d78258931bdd"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/stage2-player-late/model/diagnostic-state.u32": {
+      "bytes": 4480000,
+      "sha256": "3f91a5171e58fd469a5084e3e276df5dafc162359d2014174bd751a5a77f58e0"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/stage2-player-late/driver.mjs": {
+      "bytes": 45059,
+      "sha256": "ba00ca2726004956d7849204432999bcb3e543d8b1ecbb9ed6147bd1b24b7c81"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/stage2-player-late/startup-inputs.json": {
+      "bytes": 49,
+      "sha256": "2e7af4e0108691f016bcb9dafa57c88396f5e8bc84fc5fbd5e99c447d687ca3b"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/stage2-player-late/initialize-deltas.json": {
+      "bytes": 16,
+      "sha256": "3edbcc675ac24fd13553c05d171b483aa8522ab6c6386882b14360d0d384b8cf"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/stage3-player-late/result.json": {
+      "bytes": 1614,
+      "sha256": "de2a77160ea766a898f4199c2ead71d83231f174f67d502cef207aa84d9cb3c7"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/stage3-player-late/model/diagnostic-state.u32": {
+      "bytes": 4480000,
+      "sha256": "83066bdb5482e6c1564fd0aaa9628a9fb3efd8d7d3d4a731a95d1761a6b07c53"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/stage3-player-late/driver.mjs": {
+      "bytes": 45059,
+      "sha256": "ba00ca2726004956d7849204432999bcb3e543d8b1ecbb9ed6147bd1b24b7c81"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/stage3-player-late/startup-inputs.json": {
+      "bytes": 49,
+      "sha256": "2e7af4e0108691f016bcb9dafa57c88396f5e8bc84fc5fbd5e99c447d687ca3b"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/stage3-player-late/initialize-deltas.json": {
+      "bytes": 18,
+      "sha256": "4dc24dee79aad5609c3ba760d473ac8025455896d4bbb8ee7070af020765da05"
+    },
+    "tools/th14-retained-original-pair-audit-nov05.py": {
+      "bytes": 4649,
+      "sha256": "34d0495d1504e67d7b5c34b396a566252eef8c0a63d78682d548fc985ead0195"
+    },
+    "tools/th14-startup-input-controls-nov05.py": {
+      "bytes": 6210,
+      "sha256": "f6b73c523752afc66e25d883f073abcee7de1f337b57485d4a40bc3e4a332ea1"
+    },
+    "tools/th14-initialize-timing-controls-nov05.py": {
+      "bytes": 5547,
+      "sha256": "a1b63feae5a637334ecfcc78c65619b8df54aa3c8d1ae78afa73fcf3f04dfd11"
+    }
+  },
+  "toolSha256": "f6056193bad9294120fe4d3ade0c8720ff7e5fb67d81e38a12be466574658147"
+}
