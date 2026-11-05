@@ -23,6 +23,7 @@ def main(path):
             'runtimes/th12/th12_web/tests/cpp/th14-shot-lifetime-observer-nov05.cpp',
             'runtimes/th12/th12_web/tests/cpp/th14-natural-store-scheduler-nov05.cpp',
             'runtimes/th12/th12_web/tests/cpp/th14-independent-rng-delivery-nov05.cpp',
+            'runtimes/th12/th12_web/tests/cpp/th14-independent-session-nov05.cpp',
             'runtimes/th12/th12_web/cpp/game/GameSessionResources.cpp',
             'runtimes/th12/th12_web/cpp/game/GameSessionResources.hpp',
             'runtimes/th12/th12_web/cpp/game/GameSession.cpp',
