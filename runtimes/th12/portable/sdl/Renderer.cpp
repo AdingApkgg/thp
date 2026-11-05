@@ -57,7 +57,14 @@ bool Renderer::initialize(){
  SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE,0);SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE,0);SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE,0);SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,1);
  window=SDL_CreateWindow(version==8?"Touhou 08":"Touhou 10",640,480,SDL_WINDOW_OPENGL);if(!window){failure=SDL_GetError();return false;}
  SDL_SetWindowSize(window,640,480);
- context=SDL_GL_CreateContext(window);if(!context){failure=SDL_GetError();return false;}SDL_GL_SetSwapInterval(1);drawState=DrawStateCache{};
+ context=SDL_GL_CreateContext(window);if(!context){failure=SDL_GetError();return false;}
+#if !defined(__EMSCRIPTEN__) || !defined(PORT_TITLE) || PORT_TITLE != 14
+ SDL_GL_SetSwapInterval(1);
+#endif
+ // TH14's Asyncify-safe host owns requestAnimationFrame scheduling. SDL's
+ // Emscripten swap interval instead configures emscripten_set_main_loop,
+ // which this host never creates; its deferred first-pump call would fail.
+ drawState=DrawStateCache{};
  if(version==10&&!measure_alpha_boundaries(alphaBoundaries)){failure="RGBA8 alpha conversion measurement failed";return false;}
  std::string source=vertexSource;
 #if defined(PORT_TITLE) && PORT_TITLE == 14
