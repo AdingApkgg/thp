@@ -1,0 +1,724 @@
+{
+  "schema": "th14/original-shot-slots-public-evidence/1",
+  "verifiedFiniteOriginalShotSlots": true,
+  "failedFirstPrefix": {
+    "callbacks": 31064,
+    "error": "Win32 access denied during noncurrent Wow64SetThreadContext",
+    "debugExceptions": 0,
+    "retainedSnapshots": 33,
+    "accepted": false,
+    "retained": true
+  },
+  "contextGuard": {
+    "fullInstallComponentCases": 16,
+    "retailLookupComponentCases": 29,
+    "onlyEntirelyUnchangedNoncurrentContextsSkipped": true,
+    "actualSkippedWrites": 1,
+    "requiredContextWritesAndPendingExceptionGuardPreserved": true,
+    "otherApiErrorsFatal": true,
+    "previousFailureCauseProven": false
+  },
+  "preflights": [
+    {
+      "case": "preflight-slots",
+      "callbacks": 1200,
+      "vm303Rows": 230,
+      "combatCheckpoints": 3,
+      "nativeShotSnapshots": 2
+    },
+    {
+      "case": "preflight-slots-v2",
+      "callbacks": 1200,
+      "vm303Rows": 228,
+      "combatCheckpoints": 3,
+      "nativeShotSnapshots": 2
+    }
+  ],
+  "comparisons": [
+    {
+      "case": "off",
+      "callbacks": 35000,
+      "all32StateFieldsEqual": true,
+      "all75CameraWordsEqual": true,
+      "cameraWords": 2624925,
+      "vm303Rows": 710,
+      "combatCheckpoints": 584,
+      "strictDriverExitCode": 0,
+      "rawVerifierExitCode": 0
+    },
+    {
+      "case": "on",
+      "callbacks": 35000,
+      "all32StateFieldsEqual": true,
+      "all75CameraWordsEqual": true,
+      "cameraWords": 2624925,
+      "vm303Rows": 710,
+      "combatCheckpoints": 584,
+      "strictDriverExitCode": 0,
+      "rawVerifierExitCode": 0
+    }
+  ],
+  "nativeCallbacks": 35000,
+  "nativeDebugExceptions": 0,
+  "nativeSlotSnapshots": 59,
+  "matchedSlotSnapshots": 55,
+  "extraNativeSnapshotsNotAccepted": 4,
+  "activeShotObservations": 3141,
+  "comparedFields": {
+    "slotState": 14080,
+    "shotWords": 50256,
+    "specFields": 9423,
+    "vmPresent": 3141,
+    "vmWords": 96534,
+    "vmIdentity": 9342,
+    "quadWords": 37368,
+    "quadVisibility": 3114
+  },
+  "vmAvailability": {
+    "bothPresent": 3114,
+    "bothAbsent": 27
+  },
+  "quadsBitIdentical": 3114,
+  "quadWordsBitIdentical": 37368,
+  "quadVisibilityEqual": 3114,
+  "exactSlotsAndHandlesCompared": true,
+  "numericDifferencesNormalized": false,
+  "quadGeometryReconstructedUsingOriginalMachineCode": true,
+  "quadFpuControlWord": 895,
+  "completeVmMemoryCompared": false,
+  "observedRngInstructions": 64,
+  "pairedRngAccesses": 32,
+  "probeTransparentForStateCameraCursorAndHud": true,
+  "allOriginalFinalGatesUnchanged": true,
+  "productionChanged": false,
+  "originalNineDifferencesClosed": false,
+  "ordinaryIndependentTimingAccepted": false,
+  "allModesAccepted": false,
+  "wholePixelsOrPcmCompared": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "rawRegistersSeedsCookiesAssetsOrBinariesUploaded": false,
+  "evidenceBindings": {
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots/native/report.json": {
+      "bytes": 256564,
+      "sha256": "101026a711a722e157574a4c4888307f5363cf9a7faa4c6e8eab0d2480c630f0"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots/native/exception.txt": {
+      "bytes": 421,
+      "sha256": "38def88ec08a982800dc4a194b61a9f3343c4fa9fd843701ba3e6925c966cf30"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/report.json": {
+      "bytes": 272204,
+      "sha256": "2289b4475a6e4d9c9cf360cfc82f4446ee354ca0fc3086ed7ec106af40bd1b8e"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/process-end.json": {
+      "bytes": 183,
+      "sha256": "c04c4e7b8c174d13146e113d5d0031b231eee22a7b05cb01d70d55d38407d6b5"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/observer-slots-v2/prepared.json": {
+      "bytes": 745,
+      "sha256": "260fe90e80905ff0b0ae4bc4c16a04f6d62639f256b7aa460548e9302d065c25"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/observer-source.py": {
+      "bytes": 95472,
+      "sha256": "27bfd47328d76359b6ff3bfae5791960dfa987e3f41b420ffa55fba9c8b428c7"
+    },
+    "tools/th14-shot-lifetime-readonly-nov05.py": {
+      "bytes": 2960,
+      "sha256": "4fa5e34e24301811b0780e8ebb54305d2a34a3594270006e50c50a0d3305067e"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/lookup-component.json": {
+      "bytes": 4350,
+      "sha256": "e66e6e44c7cea8cdce2c173a23dba66618bdcea0caa754b0e2e36d6cd988c04b"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/context-noop-component/report.json": {
+      "bytes": 3574,
+      "sha256": "74cc847613e777d7745afc480d693a8b66a4c22010ff7995a20aa97a34f816a2"
+    },
+    "tools/th14-shot-lookup-component-nov05.py": {
+      "bytes": 3119,
+      "sha256": "d8bf2422a99a114293b63bec3ebcdae7d2713231e39fb9a67eabe1704599abb4"
+    },
+    "tools/th14-context-noop-component-nov05.py": {
+      "bytes": 4112,
+      "sha256": "58d32eeb4fed761fd434f8efed0796554f0fce9285b9d9bf3520a47510ffbc7a"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/preflight-slots/verified.json": {
+      "bytes": 986,
+      "sha256": "c84cb9fbfca124c302def43c4d14fd1faafa2e0d91c15cc6f3249e5c45257674"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/preflight-slots-v2/verified.json": {
+      "bytes": 986,
+      "sha256": "aa56d231f9c722842c1860f5e222e3961788b5678bffc7876118f85c6dab2466"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/selected-state.u32": {
+      "bytes": 4480000,
+      "sha256": "f186c9e48672f4f36a7eb8b9f9c6762a722a529ae841b63c950614e97bd3518c"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/world-camera.raw": {
+      "bytes": 10220000,
+      "sha256": "caf1ed0c94d1400e4bdf5a0cd3be11e2beb798fb274de8fda12449a41638f406"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/world-camera-tail.u32": {
+      "bytes": 280000,
+      "sha256": "956ae4d21826aee89ec408cce8920a2c4feb8e9bc4df327eae8c53aadb642cc5"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-off/result.json": {
+      "bytes": 192,
+      "sha256": "dedf6cba4f02ead093f91783604b460e6a1fa5eb19d2f6ee34e777e0cc3744b7"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-off/raw-verified.json": {
+      "bytes": 7937,
+      "sha256": "0841dfb6f407d7f0d8d8cb98ed634e72797838fb99db067fa7119a64b86856c8"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-off/model/selected-state.u32": {
+      "bytes": 4480000,
+      "sha256": "f186c9e48672f4f36a7eb8b9f9c6762a722a529ae841b63c950614e97bd3518c"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-off/model/full-camera.u32": {
+      "bytes": 10499700,
+      "sha256": "9c94f970a6e8a8ef987b44988ce74785e0f41a8d6e4edfaf132a9e2e03e54dbd"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-off/model/report.json": {
+      "bytes": 7345,
+      "sha256": "898dc268a3dd0a091eb07d374c2d043e8756e76c36a2d07c4174c9fadee843cf"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/result.json": {
+      "bytes": 874,
+      "sha256": "d0c7d9afd7ee3e753e7808d0f2bc63049b9c8b0188ccb807afb1a4c26a170a29"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/raw-verified.json": {
+      "bytes": 7928,
+      "sha256": "6569959b4340ca28996f70e1d91d39d34025abf9d59e5044869c2f4ea66e0d19"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/selected-state.u32": {
+      "bytes": 4480000,
+      "sha256": "f186c9e48672f4f36a7eb8b9f9c6762a722a529ae841b63c950614e97bd3518c"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/full-camera.u32": {
+      "bytes": 10499700,
+      "sha256": "9c94f970a6e8a8ef987b44988ce74785e0f41a8d6e4edfaf132a9e2e03e54dbd"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/report.json": {
+      "bytes": 7345,
+      "sha256": "8931526eca895c8f71edf973255be18a0106c89700e9eaae2c4f53a90492a45e"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-off/model/replay-cursor.u32": {
+      "bytes": 559984,
+      "sha256": "c533df8c6c91bd26a42b0e06d802eab5407ff6948a03032a73198c998b596464"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/replay-cursor.u32": {
+      "bytes": 559984,
+      "sha256": "c533df8c6c91bd26a42b0e06d802eab5407ff6948a03032a73198c998b596464"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-off/model/portable-hud.u32": {
+      "bytes": 280000,
+      "sha256": "02197c20d5bc0731da536e375971565f1b968a2eabdc340170d9aea8b04f7bd7"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/portable-hud.u32": {
+      "bytes": 280000,
+      "sha256": "02197c20d5bc0731da536e375971565f1b968a2eabdc340170d9aea8b04f7bd7"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/slot-audit.json": {
+      "bytes": 31687,
+      "sha256": "15d2b7b89200632e440451ea23ce2e1a39190a4f50c0658ab4a1c548717c95bb"
+    },
+    "tools/th14-audit-native-shot-slots-nov05.py": {
+      "bytes": 6633,
+      "sha256": "835473ad56cd297b1ccdeedab981d349735aa86b0e00a96ed1474c5d742b9c5a"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime-index.json": {
+      "bytes": 17111,
+      "sha256": "8664b0fbdb35a2dffa239b02ea56628486d6641ff900705aec4eb700f9ced71c"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-index.json": {
+      "bytes": 10741,
+      "sha256": "844da5370df9ff8a15bc1785670259973082ca0520b110c6a253b13b26d56d91"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-016510.json.gz": {
+      "bytes": 9533,
+      "sha256": "4be13578adf3a6c4697165840b6cbb785ec90944ea216825073084a15f16b716"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-16510.u32": {
+      "bytes": 98304,
+      "sha256": "7d398b8d582a53480ff8937bdd1ca6798339484c6a9733d55455a03d1e0f6157"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-016511.json.gz": {
+      "bytes": 9363,
+      "sha256": "8749d2459ae54645063f7292b3602dc53febc61614e83c2a6cfaa555cc964fc3"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-16511.u32": {
+      "bytes": 98304,
+      "sha256": "2bd3fccd7e1a9358f97b4096e6d0dfaccb634adc614a4a8f0f68a6973b18b431"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-016512.json.gz": {
+      "bytes": 9392,
+      "sha256": "d99aeba115471e161cd48db00f104982f7c0069c578e01bd0bd3f6843be029ad"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-16512.u32": {
+      "bytes": 98304,
+      "sha256": "c7b3c337ee6ef9555bc6337b6c4258a9c2ce40ba54fb99f6419934b2144cd916"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-016513.json.gz": {
+      "bytes": 9152,
+      "sha256": "90673b0aec81c6798d01550f9b0501ef130e55eaad3cbd5c5456e727e75c13dd"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-16513.u32": {
+      "bytes": 98304,
+      "sha256": "71bc93bfa4fa61648c9c6424cb052d9991abadc4a3724fcb78de80df7caec856"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-016514.json.gz": {
+      "bytes": 9143,
+      "sha256": "680df624bdd487bd0797723bd7b3c5b8217a409d0d7e986820971d27faf02b51"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-16514.u32": {
+      "bytes": 98304,
+      "sha256": "a5feebb6475b3e2ab9a16495f1d2a92b0ecf30aa0b340d035549e3b5471622a2"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019877.json.gz": {
+      "bytes": 14556,
+      "sha256": "35ea2edcdb7cfc2d500fdd52240cfb840a93b5f0fa4543dea785b607be682646"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-19877.u32": {
+      "bytes": 98304,
+      "sha256": "11af9bdac96f36726d96a72b5e058eb90cae966ac8b8093d4ae6adac95e79e8f"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019878.json.gz": {
+      "bytes": 14242,
+      "sha256": "da5c714b7ba7c9064c553ff3c584d35f9a8e26ea257f33d0c35624541a3d3cca"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-19878.u32": {
+      "bytes": 98304,
+      "sha256": "0dd3424a2bd7dc66373a59dfb133bf30e6950fa434c81acc37321237b82ed217"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019879.json.gz": {
+      "bytes": 15036,
+      "sha256": "e7f9acafc24d7405fb428d580708a534f5d3dc40bbe25ec09ca7b0a95cb19c1d"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-19879.u32": {
+      "bytes": 98304,
+      "sha256": "a0172ae284bdbe71fa9ee5d52bba04c97a80b7b6114af9069dc278da573fb581"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019880.json.gz": {
+      "bytes": 13379,
+      "sha256": "eb61438a6f2ab1f092ccf9f1d1567f74ffbea4b5bd71f7f5576c9a68e0d13c10"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-19880.u32": {
+      "bytes": 98304,
+      "sha256": "a33de2429525ed9fee5af6d88da0332bbf9401d2b118e10323208d4ba79bf725"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019881.json.gz": {
+      "bytes": 12866,
+      "sha256": "561db2a1d4678345d383c98ce675377d836af20ef03ead605dccf39ec71c473b"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-19881.u32": {
+      "bytes": 98304,
+      "sha256": "5d22b810961008bb254ebdab1a3f38c7c80c3ae3f03d68f8c6bfacbdd48fdfb0"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019882.json.gz": {
+      "bytes": 13753,
+      "sha256": "f70d97601c6af32c9f72bf9bf4ba74c766001d5951f1d437dacf8c72b1d478cb"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-19882.u32": {
+      "bytes": 98304,
+      "sha256": "d6ea6ac9190725db8d59377ae53456f48e0d2d9b9cf5fca0f31bdaeb29877c43"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019883.json.gz": {
+      "bytes": 12429,
+      "sha256": "b01d5118c5dd39ebf65b480a77d2bd06a42710f1312ad52567707e8819bdd9ef"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-19883.u32": {
+      "bytes": 98304,
+      "sha256": "69dd482686d75112416c7f9da756f916c4791f00d44fbaf5e1e38ca4fc740bf2"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019884.json.gz": {
+      "bytes": 12001,
+      "sha256": "255d3f003f1e4757135ec7f2cf7ecd7c59f0aad55ac671df0ac9ae447bf40706"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-19884.u32": {
+      "bytes": 98304,
+      "sha256": "e980bf6a1e88522f72e63619a53c6ce18eb271b90d85cd90958ad56cb21f3688"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019885.json.gz": {
+      "bytes": 12221,
+      "sha256": "0906cd34becb4f3d7ce364d2443de0504c16643244e656f2454425afaa567292"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-19885.u32": {
+      "bytes": 98304,
+      "sha256": "51896814fe83e79ca5564dba5cde057532a5667559080e61d5e1db1a41a885da"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020652.json.gz": {
+      "bytes": 18176,
+      "sha256": "0ee8c519ea82cf75704bafc2e86adef253619e76fc69c1d039bf9ec75b290fdb"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-20652.u32": {
+      "bytes": 98304,
+      "sha256": "fdf6c1a834c9b22045f41054aef4a4f39b5794dcdb6f8b08b12018b13dbe29dc"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020653.json.gz": {
+      "bytes": 18155,
+      "sha256": "659427db5887cdd2325112e37924e760687682845b1afab6f5d4a9d132fb355e"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-20653.u32": {
+      "bytes": 98304,
+      "sha256": "04af0412eefd566a635baffa251f418a264d04a4d4b88712416b4b8240967f26"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020654.json.gz": {
+      "bytes": 18934,
+      "sha256": "6af7be4637b8481893a58f14e0d7ce8048d1abd5b6ef1b48a9c30b56c2836602"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-20654.u32": {
+      "bytes": 98304,
+      "sha256": "60bedbbac26f7a7d1f29072af7192036a53f3a76ea3fd2ad9caf94375fee38f6"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020655.json.gz": {
+      "bytes": 18578,
+      "sha256": "196bbb8caead62e0a81782488de24897c4eabe440ad86cd3d1125c0c8fcfb6b5"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-20655.u32": {
+      "bytes": 98304,
+      "sha256": "4f6dc2c83098bfd8b8ab50c6f296da00908cf305e7ad07cb98b1f6837af4ddaf"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020656.json.gz": {
+      "bytes": 18719,
+      "sha256": "d29d7294d2b4f754b32e68bb189eb631abc399834d466ac30195fbfab532fb74"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-20656.u32": {
+      "bytes": 98304,
+      "sha256": "5cea873b13c65465f88765f33ee392b2b23acbb662acaabe72ba218587b8f783"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020657.json.gz": {
+      "bytes": 19863,
+      "sha256": "269bd4979541b56faa5fe50d89a48e7e3b0669e3c6b575eb25975542c7c9d992"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-20657.u32": {
+      "bytes": 98304,
+      "sha256": "0ac5bcaadbd13154c2f48af43ed328acd92c928ce5397f2382d9e907ccd0e678"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020658.json.gz": {
+      "bytes": 19435,
+      "sha256": "856c284b1102ff76235a786d34026787609de38cb838535d336f1942abc7281a"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-20658.u32": {
+      "bytes": 98304,
+      "sha256": "d72ff28466cd58d5e57d220e433f9d5adec3c7a1198703fc80f8c618d2254fc7"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020659.json.gz": {
+      "bytes": 19445,
+      "sha256": "146e5bd05f02aee999c685c20d299bc64e1fab19c82cbdd2fad4a8436e61abbb"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-20659.u32": {
+      "bytes": 98304,
+      "sha256": "f5bfde5b7eb3c5dbd1502ab083bdf11d6ea97a7c75b8de9f0326f5ac42de0aca"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020660.json.gz": {
+      "bytes": 19437,
+      "sha256": "c3dafe0a27f46f679e1c298224b1e242d8d50796aaa5ab500c7bd615c80a43a1"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-20660.u32": {
+      "bytes": 98304,
+      "sha256": "2b5aa741a3adbd4ba18a0bc1d5f70cad9fd48fd65ee12d7efcd6488dd59c30e5"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020661.json.gz": {
+      "bytes": 19464,
+      "sha256": "2c4efa6eaefaddeb3df7fd539abd215946c295b0b517b42283ce953a14002bd4"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-20661.u32": {
+      "bytes": 98304,
+      "sha256": "31a7864f154d1225a6f4c3cc346c113ce7fffcf8f0f77c15f911f9476022a7df"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020664.json.gz": {
+      "bytes": 19736,
+      "sha256": "f48e9abc47831f4b274f96a59f53a48eaafbe6c329b203757c7eed0f56739019"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-20664.u32": {
+      "bytes": 98304,
+      "sha256": "b95d855c9dda6e5d9a6efd33c4528db16182b2f7e1495eb6e50ab47755d08730"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020665.json.gz": {
+      "bytes": 18555,
+      "sha256": "a672d476a7b8900df6220dadf2c34a2556fc5de517fee175123a7528768f95bd"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-20665.u32": {
+      "bytes": 98304,
+      "sha256": "145473575564f56feffd8f5d5252ff40c42c58ffde21665df724b3ba4ff3c622"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020666.json.gz": {
+      "bytes": 19341,
+      "sha256": "55647e189fd3411ad69334afd369b291dbff6ae6afdf9a866e5bd9b8602a28d9"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-20666.u32": {
+      "bytes": 98304,
+      "sha256": "2aa0d28ed5fd391129f19ec58dfb3d8be969e63427d65ade0e9ecf8fcf5100a7"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020667.json.gz": {
+      "bytes": 19289,
+      "sha256": "cf20170e97f36eae78e442d855badce23a560180f378a5d71d18a0e5d71ff72a"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-20667.u32": {
+      "bytes": 98304,
+      "sha256": "8bf83d3e555296b6428fdf961ff4947359ca3ec7620404e775a2c05bed56c9f0"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020668.json.gz": {
+      "bytes": 17744,
+      "sha256": "6d002ddaa57fec6a8bb6ccce7716360233dcae7a5c9b88e304e9c0f70d20c2e4"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-20668.u32": {
+      "bytes": 98304,
+      "sha256": "2ec721e10cf3501219add2517d7428a445b1838c612b07c88e0559d8729460a8"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032595.json.gz": {
+      "bytes": 13594,
+      "sha256": "fb8e6ff70e98c96c00b4b819a9a848cbe6c038248cef7462a2d2a1dc90deb6db"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-32595.u32": {
+      "bytes": 98304,
+      "sha256": "c876786becd38616b47341601537348bc73880b03c95289e798cb568a36fc57e"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032596.json.gz": {
+      "bytes": 13602,
+      "sha256": "0045ae0df62fcea69477bc2944a266ede690b646ef23786e842d8b51117a5822"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-32596.u32": {
+      "bytes": 98304,
+      "sha256": "7cded35853a55837605b5793ae728303cff9990c0d89bebba7391b28611bda7b"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032597.json.gz": {
+      "bytes": 13499,
+      "sha256": "8a9dcbd3eed5ab548df4402dd0e8d53a23cadc8bbb6ea929c84aa0bedae775fd"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-32597.u32": {
+      "bytes": 98304,
+      "sha256": "c472ae0ee8f79dc99e7cbbc52403cc48fef072d52975124df1f2d1799289aca4"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032598.json.gz": {
+      "bytes": 13766,
+      "sha256": "bb9d5035febae5cbdf3597e6e45513fd74846ae39674f8ece3ce02d1ab62fd35"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-32598.u32": {
+      "bytes": 98304,
+      "sha256": "baaf36b971177b5e806344013f23a5885dc730c17ee820c8191cb41e89881bb2"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032599.json.gz": {
+      "bytes": 13178,
+      "sha256": "5ef8d390500029221c282a6fa575223b9563b2f8ca88f2adef2b549b6c7ad3dd"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-32599.u32": {
+      "bytes": 98304,
+      "sha256": "fc964336ddb6865c3e831454c82483af332c51e6e436d4ae6d4fecdd16eca805"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032600.json.gz": {
+      "bytes": 13368,
+      "sha256": "c6ae68a172f852a915d735e5083c795d29ffe7a58277c72e386e6e1ad3f56689"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-32600.u32": {
+      "bytes": 98304,
+      "sha256": "222d02e511ccc91e1f5509b54bc9dfc3e9d80097f0d377e2adf024e32d8bd2b0"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032601.json.gz": {
+      "bytes": 13353,
+      "sha256": "8127a3eba796a832ca5920445e2cf53c9520bd3f220d94c00a937edde04406f6"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-32601.u32": {
+      "bytes": 98304,
+      "sha256": "ceab1b9243b710fda1e41b124681e7eb7f3fb4d738384eca939b06175dd9091f"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032602.json.gz": {
+      "bytes": 13143,
+      "sha256": "9a4cb56cf517a59b171daeee0e597eb2c0560fdc658e6db392a17588292c1142"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-32602.u32": {
+      "bytes": 98304,
+      "sha256": "53a79514f0e05343a749e65fd412cc25af668050ee6708c068ea7b0dab2f4539"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033201.json.gz": {
+      "bytes": 12931,
+      "sha256": "5a14af6ba23b01d8c4c49a8d5727357b57f2282aec59016da01d99ff188cdfe6"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-33201.u32": {
+      "bytes": 98304,
+      "sha256": "10a5930b7c8506477df54251272b25fd7ececd334ef1fce99ed55ecbd8fbfc41"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033202.json.gz": {
+      "bytes": 13737,
+      "sha256": "a8459b0704cae420d5240aaef3d18eb09e2606938504c7a9f3fff5a946d38ce0"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-33202.u32": {
+      "bytes": 98304,
+      "sha256": "b53a708284cf9bc93bce3f04ff4ab8315a41f95ed73432864f710e50c2853a29"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033203.json.gz": {
+      "bytes": 13219,
+      "sha256": "a7111ea1260837889397cb6f348b9d810642413b27439143c68f17a9b9016638"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-33203.u32": {
+      "bytes": 98304,
+      "sha256": "55b7e1ef2e5e46b577b613205cbe8988621e17d6e8a653ffb797c9a22cf4beb1"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033204.json.gz": {
+      "bytes": 13061,
+      "sha256": "e49f00c7fefb61b8316531f37b5cd99eb8c167c75b69d912d597bded515e45c5"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-33204.u32": {
+      "bytes": 98304,
+      "sha256": "0b8b04565e3a23cb6627adc8fe7abdb7c9731dc191ab06698866429bddb4a70b"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033205.json.gz": {
+      "bytes": 13922,
+      "sha256": "482498f42ee379e3ae24acc1c4ce8205e035f3c18359225ad47f85f6f97cb6c0"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-33205.u32": {
+      "bytes": 98304,
+      "sha256": "af7080fd0311a0f34bffab428b20fb2b0a89abc09290d706ad1f25a8f38a482f"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033206.json.gz": {
+      "bytes": 13211,
+      "sha256": "9ce29cebff6d2527a6eaae6188c8d45f65692762fba6074f9413bb8ec37421e1"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-33206.u32": {
+      "bytes": 98304,
+      "sha256": "ee513031aea7537890837e501833276d88abd575ad2593bffa84015e6d03424e"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033207.json.gz": {
+      "bytes": 13190,
+      "sha256": "35632fd0d4b137ca1039819b265b11f3f69679cb5cbceb659f3df52477be1194"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-33207.u32": {
+      "bytes": 98304,
+      "sha256": "f28934460d952e531da7a4883dc988a6434dec9a2711f3998b27f2910de2ab8d"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033208.json.gz": {
+      "bytes": 13937,
+      "sha256": "851b6f4772af950b55a6b3bac421f9f017db1cfb5111b094344140167e4ef3ee"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-33208.u32": {
+      "bytes": 98304,
+      "sha256": "15dda20b2139d985ae1716e8c78a6f38aee274eb9682321b4957af1fe4a8cad9"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033209.json.gz": {
+      "bytes": 13389,
+      "sha256": "56e42f2e2fbba78c02f5dfbc3772e2e9bec6fb1e4383ec9ccf7eb6271d89a2fa"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-33209.u32": {
+      "bytes": 98304,
+      "sha256": "7423075c580de55af1279aa7c4845a3398df779bf25ce52467bb3414fefd756b"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033210.json.gz": {
+      "bytes": 13247,
+      "sha256": "f5273f6478e6726f6859d7976eb1304dcc17fa86d853d318beedd298667bac06"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-33210.u32": {
+      "bytes": 98304,
+      "sha256": "069f323efa7ae41045c78d56d2801630a4612ef54832b304dab33f97003f2c4d"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033211.json.gz": {
+      "bytes": 14073,
+      "sha256": "e5c6ef1f7a60126a81333f867496a6e69eba61c6ca1614c075f7d451795de10c"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-33211.u32": {
+      "bytes": 98304,
+      "sha256": "9767ae4b005536990f31b3ac38e47eb4e924247702c165345c52671d34a616ff"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033212.json.gz": {
+      "bytes": 13740,
+      "sha256": "0c3703a75920bc6866ead0bee9f0e49bb99ab57bfeae45420e76ec372b7a02a2"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-33212.u32": {
+      "bytes": 98304,
+      "sha256": "dd87bb448f5dbc2ac1e1178cdd80916f65f0d61b97a0e23d46fbb1527e3bc6d7"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033213.json.gz": {
+      "bytes": 13637,
+      "sha256": "e81081e71061435c30c468d4447eed7abd55fee6f84aa889b0560dde9ff69d43"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-33213.u32": {
+      "bytes": 98304,
+      "sha256": "7e98197572dc1733c4c45cabc471ca0948c849a181116f610f5747c733db99d6"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033214.json.gz": {
+      "bytes": 14374,
+      "sha256": "3db6fb6a6571cb8bf282b0af9e868405d2709ab4d947a7b0b0b9dbd0f58c5841"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-33214.u32": {
+      "bytes": 98304,
+      "sha256": "49dfefbfd92b398ef6ae4154c1594170f5b03afab11ec6af57723126a1632ad3"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033215.json.gz": {
+      "bytes": 13576,
+      "sha256": "48c55f943e28887354bea25300969e30a2ad75d9f55d7822f5200afd6dba8ef3"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-33215.u32": {
+      "bytes": 98304,
+      "sha256": "4bc2399391f1d64abc9bffecf6cd1d063f0aa654951fa1a1178eac1719bd0a5d"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033216.json.gz": {
+      "bytes": 13389,
+      "sha256": "db598f7ad60ff5be100dfecfe378a28e191c5d8369b24cc6f528ece39bd863ca"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-33216.u32": {
+      "bytes": 98304,
+      "sha256": "132d8c0aad92ad9323b880b87a58dfa728861fa52cfe66e6334b88640ef6e469"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033217.json.gz": {
+      "bytes": 13983,
+      "sha256": "59dc5309b5cdb3c688e0d009b47bf5468fe565d03ea4b503196354061f3ce321"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-33217.u32": {
+      "bytes": 98304,
+      "sha256": "f6d6cc3ad8380a601f73315bd2a827a0a51dd49600149892b1489d37c0e73959"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033218.json.gz": {
+      "bytes": 13119,
+      "sha256": "7778883a4f4eeb0644e1c24ff1539161472a8bf92fdecba9232daad1e51d33ab"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-on/model/shot-lifetime-33218.u32": {
+      "bytes": 98304,
+      "sha256": "d89c168cd710ae0a1bf97352d9ac71c3214af1b73ad8ad6fe5d1c1ea600abd6f"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/slot-audit-private-differences.json": {
+      "bytes": 4,
+      "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/native-register-proof.json": {
+      "bytes": 3177,
+      "sha256": "39f74fc0b935f3ff868838a5aa40058aecafc483fffdf316bcc09ba03f66069d"
+    },
+    "tools/th14-shot-lifetime-register-evidence-nov05.py": {
+      "bytes": 980,
+      "sha256": "8b1a0d09c15b421afd2e5feb55168c88532454beaab16681ce8f26525cbec664"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-driver-v2/prepared.json": {
+      "bytes": 642,
+      "sha256": "109aaa3300299a2571dcf086c2fa19d32090f90ecbaa9ee9c02d6dfa48c30a05"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-driver-v2/driver.mjs": {
+      "bytes": 81619,
+      "sha256": "2c07a4223be7efc4bafbf7fa827f7c247cec37cd8925b1323bc507cb3c9ae3f9"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/comparison-driver-v2/driver-off.mjs": {
+      "bytes": 81619,
+      "sha256": "700700cdd8a89e8231c432979cd7fd0752df577ba789d9a054d9ff2ad62a19f4"
+    },
+    "tools/th14-prepare-shot-lifetime-native-nov05.py": {
+      "bytes": 4520,
+      "sha256": "6a5c57e3180557327bb6b02e427c44f0efd192aa533540052a478b03d1bc5b45"
+    },
+    "tools/th14-run-shot-lifetime-native-nov05.py": {
+      "bytes": 1523,
+      "sha256": "792baaff95c06c3a71ccb2d16431d6bab3d87abab3432844df03ac54e22b16ed"
+    },
+    "tools/th14-check-shot-lifetime-preflight-nov05.py": {
+      "bytes": 2340,
+      "sha256": "79afca7025a5c421c30e9f9a261770ba4f5bb852c9529a0578e9533d51b1a912"
+    },
+    "tools/th14-prepare-shot-lifetime-comparison-nov05.py": {
+      "bytes": 3040,
+      "sha256": "48ac38d42547dfd22f0ae564dadf1d2bc62dff26e5250581bca7dddd7092ab87"
+    },
+    "tools/th14-compare-shot-lifetime-native-nov05.py": {
+      "bytes": 4344,
+      "sha256": "4add57f24d57b7edd20c4a84a680d1e8ff3546f2fe918fa1c3835173d4ac8aef"
+    }
+  },
+  "toolSha256": "493a2aeb36083c8879681af4d7fcde8e9f09db683dc289330673549a5998b9d6"
+}
