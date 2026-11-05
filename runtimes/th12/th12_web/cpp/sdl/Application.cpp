@@ -29,6 +29,7 @@
 #include "../../../portable/sdl/FrameCadence.hpp"
 #include "../../../portable/input/TouchController.hpp"
 #include <algorithm>
+#include <array>
 #if defined(TH12_DELETE_GUARD)
 // Diagnostic build only. The allocator reports a negative live-byte total just before the fault, with a free
 // total of exactly the same magnitude, which is the signature of releasing more than was ever handed out. The
@@ -114,6 +115,22 @@ EM_JS(int,th14_stage_restore_committed,(unsigned operation),{
 });
 EM_JS(void,th14_stage_restore_cancel,(),{
     (Module.th14AsyncRuntime??Module.th14WebGpuRuntime)?.stageRestore?.cancel();
+});
+#endif
+#if defined(TH14_SHARED_SCENE_COPY)
+EM_JS(int,th14_shared_scene_prepare,(),{
+    return (Module.th14AsyncRuntime??Module.th14WebGpuRuntime)?.sceneCopy?.prepare()?1:0;
+});
+EM_JS(int,th14_shared_scene_read,(unsigned source,unsigned layout,unsigned word,unsigned offset,unsigned destination),{
+    const reader=(Module.th14AsyncRuntime??Module.th14WebGpuRuntime)?.sceneCopy;
+    if(!reader)return 2;
+    const offsets=Array.from(HEAPU32.subarray(layout>>>2,(layout>>>2)+75));
+    const status=reader.read(HEAPU8.buffer,source,offsets,word,offset);
+    if(status===1)HEAPU32[destination>>>2]=reader.value(word);
+    return status;
+});
+EM_JS(void,th14_shared_scene_cancel,(),{
+    (Module.th14AsyncRuntime??Module.th14WebGpuRuntime)?.sceneCopy?.cancel();
 });
 #endif
 static void schedule_th14_work(void(*callback)(void*),void* data,int delay){
@@ -750,6 +767,10 @@ struct Application:StageResourceEffects
         th14_stage_restore_cancel();
 #endif
         stage_worker_wait.begin(initial);
+#if defined(TH14_SHARED_SCENE_COPY)
+        th14_shared_scene_cancel();
+        if(!initial&&!th14_shared_scene_prepare()){graphics.error="TH14 shared camera worker preparation failed";return false;}
+#endif
         if(stage_worker_wait.waiting){
             // Dispatch after this callback pass. No scene/resource pointer is
             // retained by either timer, and a newer generation cancels it.
@@ -830,13 +851,28 @@ struct Application:StageResourceEffects
         return true;
     }
     bool stage_phase_ready(StageResourceEffects::Phase phase)const override{return stage_uploads.ready(phase);}
+#if defined(TH14_SHARED_SCENE_COPY)
+    CameraReadResult read_stage_camera_word(const SceneCamera& source,u32 word,u32 offset,u32& value)override{
+        static const auto layout=[](){std::array<u32,75> result{};
+            for(u32 i=0;i<75;++i)result[i]=SceneCameraReadJobTh14::source_offset(i);return result;}();
+        const auto status=th14_shared_scene_read(u32(reinterpret_cast<uintptr_t>(&source)),
+            u32(reinterpret_cast<uintptr_t>(layout.data())),word,offset,u32(reinterpret_cast<uintptr_t>(&value)));
+        return status==0?CameraReadResult::Waiting:status==1?CameraReadResult::Ready:CameraReadResult::Failed;
+    }
+#endif
     void finish_stage_phases(StageResources& stage,u32)override{
+#if defined(TH14_SHARED_SCENE_COPY)
+        th14_shared_scene_cancel();
+#endif
 #if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
         stage_decode.finish(stage);
 #endif
         stage_uploads.finish(stage);
     }
     void cancel_stage_phases(StageResources& stage,u32)override{
+#if defined(TH14_SHARED_SCENE_COPY)
+        th14_shared_scene_cancel();
+#endif
         // Queued raw resource references must disappear before GPU teardown
         // or StageResources destruction. release also covers boot ownership.
         stage_worker_wait.cancel();

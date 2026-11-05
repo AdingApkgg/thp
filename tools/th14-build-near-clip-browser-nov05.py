@@ -30,7 +30,7 @@ OVERLAYS = ['portable/sdl/Renderer.cpp','portable/sdl/Renderer.hpp','portable/sd
             'portable/sdl/Th14WebGpuHost.mjs','portable/sdl/Th14WebGpuRuntime.mjs','portable/sdl/Th14WebGpuCore.mjs','portable/sdl/Th14WebGpuLibrary.js',
             'portable/sdl/WebGpuRenderer.hpp','portable/sdl/Th14WebGpu.wgsl',
             'portable/sdl/Th14AsyncCallbacks.hpp','portable/sdl/Th14AsyncRuntime.mjs',
-            'portable/sdl/Th14StageRestoreDelivery.mjs','portable/sdl/Th14StageRestoreProtocol.mjs','portable/sdl/Th14StageRestoreWorker.mjs']
+            'portable/sdl/Th14StageRestoreDelivery.mjs','portable/sdl/Th14StageRestoreProtocol.mjs','portable/sdl/Th14StageRestoreWorker.mjs','portable/sdl/Th14SharedSceneCopy.mjs','portable/sdl/Th14SharedSceneWorker.mjs']
 
 
 def main():
@@ -85,7 +85,7 @@ def main():
     assert inventory[crypt]['sha256'] == 'd57118f1114f3909c42a2e99e7df30e625f6563247a8118cd14bb9f68a0f97ef'
     for name in ['Th14WebGpuHost.mjs','Th14WebGpuRuntime.mjs','Th14WebGpuCore.mjs','Th14WebGpu.wgsl','Th14WebGpuResample.wgsl',
                  'Th14ArchiveDecodeClient.mjs','Th14ArchiveReadAhead.mjs','Th14ArchiveDecodeEndpoint.mjs','Th14ArchiveDecodeWorker.mjs','Th14AsyncRuntime.mjs',
-                 'Th14StageRestoreDelivery.mjs','Th14StageRestoreProtocol.mjs','Th14StageRestoreWorker.mjs']:
+                 'Th14StageRestoreDelivery.mjs','Th14StageRestoreProtocol.mjs','Th14StageRestoreWorker.mjs','Th14SharedSceneCopy.mjs','Th14SharedSceneWorker.mjs']:
         shutil.copyfile(source/'portable/sdl'/name, out/name)
     worker_home=out/'archive-worker'
     worker_tool=ROOT/'tools/th14-archive-worker-prototype-build-oct27.py'
@@ -190,7 +190,7 @@ def main():
         toolSha256=SHA(tool_raw),storageToolSha256=SHA(storage_raw),rootUnrelatedResourceCryptExcluded=True,retailAssetsIncluded=False,
         actualSdlPort=True,asyncify=True,frameAndWorkerCallbacksSerialized=True,browserRun=False,browserAcceptance=False,
         completeGame=False,nativeEquivalent=False,scope='Fresh compilation of the published independent C++ TH14 engine, real SDL3 port and explicit WebGPU overlays. Browser-targeted candidate only; compilation does not prove startup, presentation, browser scheduling, persistence, physical devices or whole-game fidelity.')
-    report['independentRestoreModuleFiles']={name:dict(bytes=(out/name).stat().st_size,sha256=SHA((out/name).read_bytes()))for name in ['Th14StageRestoreDelivery.mjs','Th14StageRestoreProtocol.mjs','Th14StageRestoreWorker.mjs']}
+    report['independentRestoreModuleFiles']={name:dict(bytes=(out/name).stat().st_size,sha256=SHA((out/name).read_bytes()))for name in ['Th14StageRestoreDelivery.mjs','Th14StageRestoreProtocol.mjs','Th14StageRestoreWorker.mjs','Th14SharedSceneCopy.mjs','Th14SharedSceneWorker.mjs']}
     (out/'build.json').write_text(json.dumps(report,indent=2)+'\n')
     (out/'progress.json').write_text(json.dumps(dict(phase='compiled',compiled=len(compiled),total=len(units)))+'\n')
     print(json.dumps(dict(compiled=True,units=len(units),wasmBytes=len(wasm),wasmSha256=report['wasmSha256'])),flush=True)

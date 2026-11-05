@@ -86,7 +86,7 @@ try {
     [quietRoute,'text/javascript; charset=utf-8'],
   ];
   if(state.proof.files['runtime/th14/Th14AsyncRuntime.mjs'])checks.push(['/runtime/th14/Th14AsyncRuntime.mjs','text/javascript; charset=utf-8']);
-  for(const name of ['Th14StageRestoreDelivery.mjs','Th14StageRestoreProtocol.mjs','Th14StageRestoreWorker.mjs']) {
+  for(const name of ['Th14StageRestoreDelivery.mjs','Th14StageRestoreProtocol.mjs','Th14StageRestoreWorker.mjs','Th14SharedSceneCopy.mjs','Th14SharedSceneWorker.mjs']) {
     if(state.proof.files['runtime/th14/'+name])checks.push(['/runtime/th14/'+name,'text/javascript; charset=utf-8']);
   }
   for(const name of ['archive-decoder.mjs','archive-decoder.wasm','Th14ArchiveDecodeClient.mjs','Th14ArchiveReadAhead.mjs','Th14ArchiveDecodeEndpoint.mjs','Th14ArchiveDecodeWorker.mjs']) {

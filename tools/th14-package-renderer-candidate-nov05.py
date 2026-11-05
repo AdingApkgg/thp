@@ -81,6 +81,7 @@ def main():
     if async_gles:gpu_files+=['Th14AsyncRuntime.mjs']
 
     gpu_files+=list(build.get('independentRestoreModuleFiles',{}))
+    gpu_files+=list(build.get('pthreadModuleFiles',{}))
 
     assert SHA((home/'th14-sdl.wasm').read_bytes())==build['wasmSha256']
 

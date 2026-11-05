@@ -305,8 +305,15 @@ prototype::Work GameBattle::prepare_stage_scene(){
         incoming_scene_owner=std::make_unique<Stage>(animations,incoming->background,resources.core.text,compositor.clear_color,u16((pending_stage&1)+3));
         incoming_scene_owner->active_camera=&compositor.world_camera;
     }
+    StageResourceEffects synchronous;
     const auto copied=stage_camera_read_job.advance(compositor.world_camera,[this](u32 word){
         return stage_camera_read_boundary?stage_camera_read_boundary(word):prototype::Work::Ready;
+    },[this,&synchronous](u32 word,u32 offset,u32& value){
+        auto& reader=resources.effects?*resources.effects:synchronous;
+        using Result=StageResourceEffects::CameraReadResult;
+        const auto result=reader.read_stage_camera_word(compositor.world_camera,word,offset,value);
+        return result==Result::Waiting?prototype::Work::Waiting:
+            result==Result::Ready?prototype::Work::Ready:prototype::Work::Failed;
     });
     if(copied!=prototype::Work::Ready){
         if(copied==prototype::Work::Failed)error="TH14 scene camera read failed";

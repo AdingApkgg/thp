@@ -12,7 +12,7 @@ OVERLAYS=['th12_web/cpp/game/GameSession.cpp','th12_web/cpp/game/GameSessionReso
  'th12_web/cpp/game/GameSessionResources.hpp','th12_web/cpp/game/ReplayRngRestoreTh14.hpp',
  'th12_web/cpp/sdl/Application.cpp','portable/sdl/Th14AsyncRuntime.mjs',
  'portable/sdl/Th14WebGpuRuntime.mjs','portable/sdl/Th14StageRestoreDelivery.mjs',
- 'portable/sdl/Th14StageRestoreProtocol.mjs','portable/sdl/Th14StageRestoreWorker.mjs']
+ 'portable/sdl/Th14StageRestoreProtocol.mjs','portable/sdl/Th14StageRestoreWorker.mjs','portable/sdl/Th14SharedSceneCopy.mjs','portable/sdl/Th14SharedSceneWorker.mjs']
 
 def main(out):
  out=out.resolve();assert out.is_relative_to(R/'artifacts/th14') and not out.exists()
@@ -65,7 +65,7 @@ def main(out):
  with(out/'link.log').open('wb') as log:
   result=subprocess.run(argv,cwd=source/'th12_web',env=env,stdout=log,stderr=subprocess.STDOUT,timeout=240)
  assert result.returncode==0,'Retain link.log'
- for filename in ['Th14AsyncRuntime.mjs','Th14StageRestoreDelivery.mjs','Th14StageRestoreProtocol.mjs','Th14StageRestoreWorker.mjs']:
+ for filename in ['Th14AsyncRuntime.mjs','Th14StageRestoreDelivery.mjs','Th14StageRestoreProtocol.mjs','Th14StageRestoreWorker.mjs','Th14SharedSceneCopy.mjs','Th14SharedSceneWorker.mjs']:
   (out/filename).write_bytes((source/'portable/sdl'/filename).read_bytes())
  for filename in before.get('archiveWorkerFiles',{}):
   if (BASE/filename).is_file():os.link(BASE/filename,out/filename)
@@ -75,7 +75,7 @@ def main(out):
   rendererOnlyChanged=False,sourceHeaderAndVtableChangeRebuilt=True,
   stageRestoreDeliveryCandidate=True,independentDeliveryFeatureEnabled=True,
   independentRestoreModuleFiles={name:dict(bytes=(out/name).stat().st_size,sha256=SHA((out/name).read_bytes()))
-   for name in ['Th14StageRestoreDelivery.mjs','Th14StageRestoreProtocol.mjs','Th14StageRestoreWorker.mjs']},
+   for name in ['Th14StageRestoreDelivery.mjs','Th14StageRestoreProtocol.mjs','Th14StageRestoreWorker.mjs','Th14SharedSceneCopy.mjs','Th14SharedSceneWorker.mjs']},
   wasmBytes=(out/'th14-sdl.wasm').stat().st_size,wasmSha256=SHA((out/'th14-sdl.wasm').read_bytes()),
   loaderSha256=SHA((out/'th14-sdl.mjs').read_bytes()),parentBuildReportSha256=SHA(before_raw),
   overlays=OVERLAYS,toolSha256=SHA(Path(__file__).read_bytes()),

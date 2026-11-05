@@ -24,6 +24,10 @@ def main(path):
             'runtimes/th12/th12_web/tests/cpp/th14-natural-store-scheduler-nov05.cpp',
             'runtimes/th12/th12_web/tests/cpp/th14-independent-rng-delivery-nov05.cpp',
             'runtimes/th12/th12_web/tests/cpp/th14-independent-session-nov05.cpp',
+            'runtimes/th12/th12_web/tests/cpp/th14-shared-scene-session-nov05.cpp',
+            'runtimes/th12/th12_web/tests/cpp/th14-shared-scene-capture-nov05.cpp',
+            'runtimes/th12/th12_web/cpp/game/GameBattle.cpp',
+            'runtimes/th12/th12_web/cpp/game/SceneCameraReadJobTh14.hpp',
             'runtimes/th12/th12_web/cpp/game/GameSessionResources.cpp',
             'runtimes/th12/th12_web/cpp/game/GameSessionResources.hpp',
             'runtimes/th12/th12_web/cpp/game/GameSession.cpp',
@@ -34,6 +38,8 @@ def main(path):
             'runtimes/th12/portable/sdl/Th14StageRestoreDelivery.mjs',
             'runtimes/th12/portable/sdl/Th14StageRestoreProtocol.mjs',
             'runtimes/th12/portable/sdl/Th14StageRestoreWorker.mjs',
+            'runtimes/th12/portable/sdl/Th14SharedSceneCopy.mjs',
+            'runtimes/th12/portable/sdl/Th14SharedSceneWorker.mjs',
         }
         assert reviewed_source or name.startswith(('tools/th14-','docs/porting/TH14_','docs/porting/th14-'))
         assert (reviewed_source and p.suffix in ['.cpp','.hpp','.mjs']) or p.suffix in ['.py','.mjs','.md','.json']

@@ -2,6 +2,8 @@
 #include "ShotFiles.hpp"
 #if PORT_TITLE == 14
 #include "AnmManager.hpp"
+#include "SceneCamera.hpp"
+#include <cstring>
 #endif
 
 namespace th11 {
@@ -168,6 +170,10 @@ StageResourceEffects::DecodeResult StageResourceEffects::decode_stage_phase(Game
     const bool decoded=phase==Phase::Hud?source.load_stage_hud(stage.stage_number,stage,selection):
         phase==Phase::Scene?source.load_stage_scene(stage.stage_number,stage):source.load_stage_timeline(stage.stage_number,stage);
     return decoded?DecodeResult::Ready:DecodeResult::Failed;
+}
+StageResourceEffects::CameraReadResult StageResourceEffects::read_stage_camera_word(const SceneCamera& source,u32 word,u32 offset,u32& value){
+    if(word>=75||offset>sizeof(SceneCamera)-4||(offset&3u))return CameraReadResult::Failed;
+    std::memcpy(&value,reinterpret_cast<const u8*>(&source)+offset,4);return CameraReadResult::Ready;
 }
 GameSessionResources::PhaseResult GameSessionResources::advance_stage_phase(GameResources& source,StageResourceEffects::Phase phase,u32 selection){
     if(!incoming_stage){error="TH14 incoming resource owner missing";return PhaseResult::Failed;}

@@ -16,7 +16,7 @@ def main(out):
     base_raw=(BASE/'build.json').read_bytes();base=json.loads(base_raw)
     assert base['wasmSha256']=='0a9750bfe24129ec6005b197fe599b49c2adb62652e175c85e8c0b479f616794'
     source=out/'source';app_name='th12_web/cpp/sdl/Application.cpp'
-    restore_modules=['Th14StageRestoreDelivery.mjs','Th14StageRestoreProtocol.mjs','Th14StageRestoreWorker.mjs']
+    restore_modules=['Th14StageRestoreDelivery.mjs','Th14StageRestoreProtocol.mjs','Th14StageRestoreWorker.mjs','Th14SharedSceneCopy.mjs','Th14SharedSceneWorker.mjs']
     overlays=[app_name,'portable/sdl/Th14AsyncCallbacks.hpp','portable/sdl/Th14AsyncRuntime.mjs',
               *['portable/sdl/'+name for name in restore_modules]]
     inventory=dict(base['sourceBindings'])

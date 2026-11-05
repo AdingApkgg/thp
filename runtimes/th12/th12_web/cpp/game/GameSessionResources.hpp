@@ -10,6 +10,7 @@ namespace th11 {
 #if PORT_TITLE == 14
 class AnmManager;
 struct DialogueEffects;
+struct SceneCamera;
 #endif
 
 struct CoreResources {
@@ -71,6 +72,8 @@ struct StageResourceEffects {
 #if PORT_TITLE == 14
     enum class Phase:u32 {Hud,Scene,Timeline};
     enum class DecodeResult:u32 {Waiting,Ready,Failed};
+    enum class CameraReadResult:u32 {Waiting,Ready,Failed};
+    virtual CameraReadResult read_stage_camera_word(const SceneCamera&,u32 word,u32 source_offset,u32& value);
     virtual ReplayRngRestoreResultTh14 stage_rng_store_readiness(ReplayRngRestorePointTh14)const{return ReplayRngRestoreResultTh14::Ready;}
     // Acknowledgement follows the real store; readiness alone cannot advance
     // an independent producer to the next instruction.

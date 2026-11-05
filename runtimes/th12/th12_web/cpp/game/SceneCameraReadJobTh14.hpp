@@ -21,7 +21,17 @@ public:
     u32 copied_words()const noexcept{return copied_;}
     bool failed()const noexcept{return failed_;}
     const SceneCamera& snapshot()const noexcept{return snapshot_;}
+    static u32 source_offset(u32 index)noexcept{return index<75?offset(index):~u32(0);}
     template<class BeforeRead> prototype::Work advance(const SceneCamera& source,BeforeRead&& before_read){
+        return advance(source,before_read,[&source](u32,u32 at,u32& word){
+            std::memcpy(&word,reinterpret_cast<const u8*>(&source)+at,4);
+            return prototype::Work::Ready;
+        });
+    }
+    // A host may physically capture the live source on an independent worker.
+    // The result stays private until all75 reads are available. The existing
+    // synchronous overload retains its original source and observer semantics.
+    template<class BeforeRead,class ReadWord> prototype::Work advance(const SceneCamera& source,BeforeRead&& before_read,ReadWord&& read_word){
         using Work=prototype::Work;
         if(failed_)return Work::Failed;
         if(copied_==75)return Work::Ready;
@@ -31,7 +41,8 @@ public:
             const auto permission=before_read(copied_);
             if(permission!=Work::Ready){if(permission==Work::Failed)failed_=true;return permission;}
             const auto at=offset(copied_);u32 word;
-            std::memcpy(&word,reinterpret_cast<const u8*>(&source)+at,4);
+            const auto result=read_word(copied_,at,word);
+            if(result!=Work::Ready){if(result==Work::Failed)failed_=true;return result;}
             std::memcpy(reinterpret_cast<u8*>(&snapshot_)+at,&word,4);++copied_;
         }
         return Work::Ready;
