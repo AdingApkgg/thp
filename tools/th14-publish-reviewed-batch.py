@@ -19,8 +19,9 @@ def main(path):
     entries=[]
     for row in plan['files']:
         name=row['path'];p=(R/name).resolve();assert p.is_relative_to(R)and not any(part.startswith('.')for part in Path(name).parts)
-        assert name.startswith(('tools/th14-','docs/porting/TH14_','docs/porting/th14-'))
-        assert p.suffix in ['.py','.mjs','.md','.json']
+        observer_cpp = name == 'runtimes/th12/th12_web/tests/cpp/th14-shot-lifetime-observer-nov05.cpp'
+        assert observer_cpp or name.startswith(('tools/th14-','docs/porting/TH14_','docs/porting/th14-'))
+        assert (observer_cpp and p.suffix == '.cpp') or p.suffix in ['.py','.mjs','.md','.json']
         data=p.read_bytes();assert len(data)==row['bytes']and SHA(data)==row['sha256']and len(data)<200000
         text=data.decode('utf8');assert '\0'not in text
         if p.suffix=='.py':ast.parse(text)

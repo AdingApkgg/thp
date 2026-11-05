@@ -1,0 +1,843 @@
+{
+  "schema": "th14/shot-lifetime-public-evidence/1",
+  "runs": [
+    {
+      "case": "off",
+      "callbacks": 35000,
+      "snapshots": 0,
+      "selectedSha256": "851f64d43758ed80962e6ea7d8f58270482c24f5be0a3696414651d8cb2ab8a7",
+      "unchangedFromPriorTrajectory": true
+    },
+    {
+      "case": "baseline",
+      "callbacks": 35000,
+      "snapshots": 55,
+      "selectedSha256": "851f64d43758ed80962e6ea7d8f58270482c24f5be0a3696414651d8cb2ab8a7",
+      "unchangedFromPriorTrajectory": true
+    },
+    {
+      "case": "late",
+      "callbacks": 35000,
+      "snapshots": 55,
+      "selectedSha256": "83066bdb5482e6c1564fd0aaa9628a9fb3efd8d7d3d4a731a95d1761a6b07c53",
+      "unchangedFromPriorTrajectory": true
+    }
+  ],
+  "fullSelectedTrajectoryTransparent": true,
+  "engineObjectsReused": 141,
+  "matchedSnapshotPairs": 55,
+  "slotsPerSnapshot": 256,
+  "wordsPerSlot": 96,
+  "countDifferences": [
+    {
+      "stage": 3,
+      "stageFrame": 1479,
+      "baseline": 50,
+      "late": 51,
+      "uniqueDifferingFamilyBirthGroup": true,
+      "family": [
+        0,
+        2,
+        0,
+        0,
+        2,
+        1
+      ],
+      "birthFrame": 1454
+    },
+    {
+      "stage": 3,
+      "stageFrame": 2093,
+      "baseline": 48,
+      "late": 47,
+      "uniqueDifferingFamilyBirthGroup": true,
+      "family": [
+        0,
+        3,
+        0,
+        0,
+        2,
+        1
+      ],
+      "birthFrame": 2075
+    }
+  ],
+  "retirements": [
+    {
+      "stage": 3,
+      "stageFrame": 1479,
+      "slot": 216,
+      "retainedCase": "late",
+      "retiredCase": "baseline",
+      "sameBirthAndFamilyAndMotion": true,
+      "bothVmsAliveBeforeRetirement": true,
+      "sameDimensionsAndScale": true,
+      "rotationEqualsShotAnglePlusVmFloat0": true,
+      "differentRotationAndAngularVelocityRegister": true,
+      "retiredCaseQuadEntirelyAboveTop": true,
+      "retainedCaseQuadCrossesTop": true,
+      "retainedShotRetiresNextPlayer": true,
+      "animationFile": 9,
+      "animationScript": 6,
+      "sprite": 29,
+      "drawingMode": 1,
+      "originalPerSlotObserved": false
+    },
+    {
+      "stage": 3,
+      "stageFrame": 2093,
+      "slot": 234,
+      "retainedCase": "baseline",
+      "retiredCase": "late",
+      "sameBirthAndFamilyAndMotion": true,
+      "bothVmsAliveBeforeRetirement": true,
+      "sameDimensionsAndScale": true,
+      "rotationEqualsShotAnglePlusVmFloat0": true,
+      "differentRotationAndAngularVelocityRegister": true,
+      "retiredCaseQuadEntirelyAboveTop": true,
+      "retainedCaseQuadCrossesTop": true,
+      "retainedShotRetiresNextPlayer": true,
+      "animationFile": 9,
+      "animationScript": 6,
+      "sprite": 29,
+      "drawingMode": 1,
+      "originalPerSlotObserved": false
+    }
+  ],
+  "poolReuse": {
+    "stage": 3,
+    "stageFrame": 1482,
+    "baselineSlot": 251,
+    "lateSlot": 216,
+    "matchingUniqueActiveFamilyBirthAndMotion": true,
+    "globallyUniqueIdentityClaimed": false
+  },
+  "script": {
+    "file": 9,
+    "slot": 6,
+    "randomDivisionOffset": 132,
+    "angularVelocityOffset": 152,
+    "randomReference": 10010,
+    "divisor": 10,
+    "wholeScriptUploaded": false
+  },
+  "retailComponent": {
+    "cases": [
+      {
+        "case": "baseline",
+        "stage": 3,
+        "stageFrame": 1478,
+        "slot": 216,
+        "rotationSwapped": false,
+        "retired": true,
+        "expectedRetirement": true,
+        "releaseCalled": true,
+        "quadMaxAbsError": 0.0,
+        "quadBitIdentical": true,
+        "retailWholeShotUpdateExecuted": true,
+        "retailQuadExecuted": true,
+        "originalGameplayCapture": false
+      },
+      {
+        "case": "baseline",
+        "stage": 3,
+        "stageFrame": 1478,
+        "slot": 216,
+        "rotationSwapped": true,
+        "retired": false,
+        "expectedRetirement": false,
+        "releaseCalled": false,
+        "quadMaxAbsError": null,
+        "quadBitIdentical": null,
+        "retailWholeShotUpdateExecuted": true,
+        "retailQuadExecuted": true,
+        "originalGameplayCapture": false
+      },
+      {
+        "case": "late",
+        "stage": 3,
+        "stageFrame": 1478,
+        "slot": 216,
+        "rotationSwapped": false,
+        "retired": false,
+        "expectedRetirement": false,
+        "releaseCalled": false,
+        "quadMaxAbsError": 0.0,
+        "quadBitIdentical": true,
+        "retailWholeShotUpdateExecuted": true,
+        "retailQuadExecuted": true,
+        "originalGameplayCapture": false
+      },
+      {
+        "case": "late",
+        "stage": 3,
+        "stageFrame": 1478,
+        "slot": 216,
+        "rotationSwapped": true,
+        "retired": true,
+        "expectedRetirement": true,
+        "releaseCalled": true,
+        "quadMaxAbsError": null,
+        "quadBitIdentical": null,
+        "retailWholeShotUpdateExecuted": true,
+        "retailQuadExecuted": true,
+        "originalGameplayCapture": false
+      },
+      {
+        "case": "late",
+        "stage": 3,
+        "stageFrame": 1479,
+        "slot": 216,
+        "rotationSwapped": false,
+        "retired": true,
+        "expectedRetirement": true,
+        "releaseCalled": true,
+        "quadMaxAbsError": 0.0,
+        "quadBitIdentical": true,
+        "retailWholeShotUpdateExecuted": true,
+        "retailQuadExecuted": true,
+        "originalGameplayCapture": false
+      },
+      {
+        "case": "baseline",
+        "stage": 3,
+        "stageFrame": 2092,
+        "slot": 234,
+        "rotationSwapped": false,
+        "retired": false,
+        "expectedRetirement": false,
+        "releaseCalled": false,
+        "quadMaxAbsError": 0.0,
+        "quadBitIdentical": true,
+        "retailWholeShotUpdateExecuted": true,
+        "retailQuadExecuted": true,
+        "originalGameplayCapture": false
+      },
+      {
+        "case": "baseline",
+        "stage": 3,
+        "stageFrame": 2092,
+        "slot": 234,
+        "rotationSwapped": true,
+        "retired": true,
+        "expectedRetirement": true,
+        "releaseCalled": true,
+        "quadMaxAbsError": null,
+        "quadBitIdentical": null,
+        "retailWholeShotUpdateExecuted": true,
+        "retailQuadExecuted": true,
+        "originalGameplayCapture": false
+      },
+      {
+        "case": "late",
+        "stage": 3,
+        "stageFrame": 2092,
+        "slot": 234,
+        "rotationSwapped": false,
+        "retired": true,
+        "expectedRetirement": true,
+        "releaseCalled": true,
+        "quadMaxAbsError": 0.0,
+        "quadBitIdentical": true,
+        "retailWholeShotUpdateExecuted": true,
+        "retailQuadExecuted": true,
+        "originalGameplayCapture": false
+      },
+      {
+        "case": "late",
+        "stage": 3,
+        "stageFrame": 2092,
+        "slot": 234,
+        "rotationSwapped": true,
+        "retired": false,
+        "expectedRetirement": false,
+        "releaseCalled": false,
+        "quadMaxAbsError": null,
+        "quadBitIdentical": null,
+        "retailWholeShotUpdateExecuted": true,
+        "retailQuadExecuted": true,
+        "originalGameplayCapture": false
+      },
+      {
+        "case": "baseline",
+        "stage": 3,
+        "stageFrame": 2093,
+        "slot": 234,
+        "rotationSwapped": false,
+        "retired": true,
+        "expectedRetirement": true,
+        "releaseCalled": true,
+        "quadMaxAbsError": 0.0,
+        "quadBitIdentical": true,
+        "retailWholeShotUpdateExecuted": true,
+        "retailQuadExecuted": true,
+        "originalGameplayCapture": false
+      }
+    ],
+    "rotationOnlyControls": 4,
+    "allSixUnswappedQuadsBitIdentical": true,
+    "wholeShotUpdateAndQuadExecuted": true,
+    "sinks": [
+      "ANM lookup",
+      "ANM release",
+      "security-cookie return"
+    ],
+    "executableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+    "originalGameplayCapture": false
+  },
+  "syntheticInitializeTimingControlOnly": true,
+  "originalPerSlotCompared": false,
+  "originalNineDifferencesClosed": false,
+  "productionChanged": false,
+  "ordinaryIndependentTimingAccepted": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "rawStatesAssetsSeedsOrBinariesUploaded": false,
+  "evidenceBindings": {
+    "artifacts/th14/shot-lifetime-nov05/build-retry1/observer-build.json": {
+      "bytes": 89109,
+      "sha256": "582d3d654d8f9c94a5dfefec8172573ea1430dc8ddaf478905f7fa244c3781a8"
+    },
+    "artifacts/th14/shot-lifetime-nov05/build-retry1/observer.wasm": {
+      "bytes": 1524793,
+      "sha256": "1fcd416817b86822182429e12431f97475180f6c41a3a8a24e0641636076ecc6"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-shot-lifetime-observer-nov05.cpp": {
+      "bytes": 4933,
+      "sha256": "3abbc6a6c2dc19ecbb38d7da90b1fd6888c7d526900b1d55f150a5dd3e22b312"
+    },
+    "artifacts/th14/shot-lifetime-nov05/off/result.json": {
+      "bytes": 553,
+      "sha256": "b0fd7fddf0e86a6ab5f8713de2ea8e889e77a91d69d987c5ac487c655f606a95"
+    },
+    "artifacts/th14/shot-lifetime-nov05/off/driver.mjs": {
+      "bytes": 45973,
+      "sha256": "2063f7212f3c366ecc6dd10442e6563e3b1ff50995ef42e024af2b8558385fa5"
+    },
+    "artifacts/th14/shot-lifetime-nov05/off/model/diagnostic-state.u32": {
+      "bytes": 4480000,
+      "sha256": "851f64d43758ed80962e6ea7d8f58270482c24f5be0a3696414651d8cb2ab8a7"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/baseline/model/diagnostic-state.u32": {
+      "bytes": 4480000,
+      "sha256": "851f64d43758ed80962e6ea7d8f58270482c24f5be0a3696414651d8cb2ab8a7"
+    },
+    "artifacts/th14/shot-lifetime-nov05/off/model/shot-lifetime-index.json": {
+      "bytes": 102,
+      "sha256": "dfd82501fddf6647945203ca715d05295a064c540afcc53de248f5ade25b6deb"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/result.json": {
+      "bytes": 560,
+      "sha256": "25b22c53b64269bd566ebf4c3b1b8387c3fbd62c29539d33fa226b857ddf31e1"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/driver.mjs": {
+      "bytes": 45972,
+      "sha256": "9ea17f90729ae2516650bfe3d551e4572884715138a09a2147230c50500838cf"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/diagnostic-state.u32": {
+      "bytes": 4480000,
+      "sha256": "851f64d43758ed80962e6ea7d8f58270482c24f5be0a3696414651d8cb2ab8a7"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-index.json": {
+      "bytes": 10770,
+      "sha256": "52e2fa4c8bb5a7e8abc2c9623065ea91afb4d06259ebf6126e47a5f841870cf2"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-16453.u32": {
+      "bytes": 98304,
+      "sha256": "30a0f995896196e4dcc5309389df05a1fa1a51b424bab53f70a3639ccaf9a3bf"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-16454.u32": {
+      "bytes": 98304,
+      "sha256": "170486ff2a08e0f6e1bf466abb21c4795091e1c8f0d4ad6b4372cc2bf03c92ec"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-16455.u32": {
+      "bytes": 98304,
+      "sha256": "4b615fc106f0a7e2be1b1bab581b8f8711802acd04eb748dfab0209a8804e34b"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-16456.u32": {
+      "bytes": 98304,
+      "sha256": "6b91c32822c8e04d50fda452f47e3d61a4ed3cc17a4828eae370ab5c9f46b3a6"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-16457.u32": {
+      "bytes": 98304,
+      "sha256": "053cb883526a0349e783489827164f4ac8d0c13b92716222ef6927da9c54af6e"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-19820.u32": {
+      "bytes": 98304,
+      "sha256": "dc6b47cdaaaad3cc306b60786f501ca45e27763a8273800c5e3357defc3dfd3a"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-19821.u32": {
+      "bytes": 98304,
+      "sha256": "88e051eaf4ad5def8cc2b1708e3e6e20cf7ee9fa7d8e454d6c2b4deb8da0fae3"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-19822.u32": {
+      "bytes": 98304,
+      "sha256": "729facf665e8b83defdef58ca36a1abcec1a104757f6e8024c1cc4644266f3f5"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-19823.u32": {
+      "bytes": 98304,
+      "sha256": "235e4d5972c94c071093bee12469b6690b5831fd718ac8cc402f057897b24c04"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-19824.u32": {
+      "bytes": 98304,
+      "sha256": "a7bea36f7d0a64bff7800a413f40ebd7b31d28b134a3ff868f5cd44501a99db6"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-19825.u32": {
+      "bytes": 98304,
+      "sha256": "fbcefa1d0ecc13d053608a6b58b1b181f5bd63352cc90762349ffb7d93c5ba8b"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-19826.u32": {
+      "bytes": 98304,
+      "sha256": "50045bbd8f79079433e64c8b44387ea50df8ce28d1364e796a80ae470daaed33"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-19827.u32": {
+      "bytes": 98304,
+      "sha256": "0612071b782e737b8e41b71ada2527a4803b72e3180ac9259f69fadf07dcf3e9"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-19828.u32": {
+      "bytes": 98304,
+      "sha256": "782f38bf43d6883dd665f20f360dfb1572832de00bf156b87a78567c4471ad54"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-20595.u32": {
+      "bytes": 98304,
+      "sha256": "77539662dedae2200b24c3a031233997b3a75b7d42fdea098cbaa359b77bf7c0"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-20596.u32": {
+      "bytes": 98304,
+      "sha256": "a935f9587bc7f62c5b0275b0072d362d4fe11660be4b95aa1eb357260327bf6a"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-20597.u32": {
+      "bytes": 98304,
+      "sha256": "4aa7bd8c9e9bdb4de5bcaab946a48afb4d0b3da36cec57c77406e5e21b40c47d"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-20598.u32": {
+      "bytes": 98304,
+      "sha256": "b46ffc95898fe1eed8c7fbd1fcedb1ee165f8eff1c3bc92e9930899fb0786d03"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-20599.u32": {
+      "bytes": 98304,
+      "sha256": "cd18e964ea1a9c1405b406a44a309fb4d83009d97da8282fa0809b283a04ad5b"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-20600.u32": {
+      "bytes": 98304,
+      "sha256": "0b6db2ef624c68af28fb4535c2f52087430613fb4d5febb0fca42379492b7bb1"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-20601.u32": {
+      "bytes": 98304,
+      "sha256": "d29c7072d16321a47b58bf97dcea129333dd9fd89f1528c5bcd3913c24fb8968"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-20602.u32": {
+      "bytes": 98304,
+      "sha256": "f57e4d8316f7c7cceb9aaf3a2008b8a2862b9decdf1566d344368f2fa017f37f"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-20603.u32": {
+      "bytes": 98304,
+      "sha256": "4bab11497091c0c16329f0bb66ef929949b51ea172d9134302cb20b23b15338d"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-20604.u32": {
+      "bytes": 98304,
+      "sha256": "61aec34253a61e67a847cf8c3a7da0b1206df1dc9b4b1cee6a705e8d99a4722b"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-20607.u32": {
+      "bytes": 98304,
+      "sha256": "45672f6776e5d56bbfe3196d16abccdf8709ee92a8abcbdafa566ca134790ce6"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-20608.u32": {
+      "bytes": 98304,
+      "sha256": "3f75c905a36cbf18148a8456d315034386cc7a133291e84110e355805ead837b"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-20609.u32": {
+      "bytes": 98304,
+      "sha256": "ed71e7ce81035a1f703caa2a335fea5e2198fafb450309c20f0cccf4e1a39ed9"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-20610.u32": {
+      "bytes": 98304,
+      "sha256": "5e1fbc43c53d42994b5ac19422979b22cdfcede55f9f0be53b25c85a97eefdbc"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-20611.u32": {
+      "bytes": 98304,
+      "sha256": "2530f695832c4ceb9094117f13628441b1a95750e65eac9488abe3aa243a9a06"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-32513.u32": {
+      "bytes": 98304,
+      "sha256": "d0b400a093e14e6a9ad445dea59827f762c590da8f22a65e0e62337a73640200"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-32514.u32": {
+      "bytes": 98304,
+      "sha256": "8e32d026ea60a71c71db3b6ff16315e3f1b96061897affa9f02c807656045516"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-32515.u32": {
+      "bytes": 98304,
+      "sha256": "5080e45a1f22a6d04d0af721d3216653150feb97ad9ca602d1e521a7eaaf0719"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-32516.u32": {
+      "bytes": 98304,
+      "sha256": "14aa4f251bdab1eec164a6900bd0a50799f45f11291fd0f2b6794a5a54a38a37"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-32517.u32": {
+      "bytes": 98304,
+      "sha256": "adfd90a7df6726295c334b3831e950cb85df31d05b1689680b1b9231a499c9f5"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-32518.u32": {
+      "bytes": 98304,
+      "sha256": "8c4c1fa59aec6820771e0c35a477d2ec090e8aa980139daa8efb523dbeef1510"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-32519.u32": {
+      "bytes": 98304,
+      "sha256": "d8c6b925b9fd2c6b8ecddb35bcb29d5b82b3d535be8ace15c35b5eec0e2a04d4"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-32520.u32": {
+      "bytes": 98304,
+      "sha256": "7148195d656f7dbc6835625b0fdc99109cb937c37a6e39565e78e58c39fec149"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-33119.u32": {
+      "bytes": 98304,
+      "sha256": "8fa2084aa6df089990d710af33720461fb8050dd0efa4207dded05b1d401ce5e"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-33120.u32": {
+      "bytes": 98304,
+      "sha256": "329e81b54286fb83b5188a3b78242a6ed08777956caa4fe0dd9a3aadf57268b4"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-33121.u32": {
+      "bytes": 98304,
+      "sha256": "30fa5837f837bae655edeba152d0fc4772434f60d7b6773c8530c5360ad00ef9"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-33122.u32": {
+      "bytes": 98304,
+      "sha256": "f70b9052bd5879b3866afbff37aacaf8048aa4ca94d7cbc835ca719d62e46d9b"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-33123.u32": {
+      "bytes": 98304,
+      "sha256": "10fa7692b94ad73ac11edf3cc65bff87e0c5afc4097521ddf2ccdd7f51657dd9"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-33124.u32": {
+      "bytes": 98304,
+      "sha256": "1b282b6a56371cbfb9495bb191f9408dfd0feb797aa982097ef03187e3fbc486"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-33125.u32": {
+      "bytes": 98304,
+      "sha256": "6fd9bf4b522809f7e27c1a624eb4912601d9d156798eb5eafdef829afbd18fa4"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-33126.u32": {
+      "bytes": 98304,
+      "sha256": "977aa01d975bc253dfd2e8e3a6dd33cfccc554ddf592d06ee5d02a3e50d84b3f"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-33127.u32": {
+      "bytes": 98304,
+      "sha256": "f2460ee973780fc4eed4770c2a28afb40dc80fdcebf101cedcd5588615e890f5"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-33128.u32": {
+      "bytes": 98304,
+      "sha256": "c1c499099c069254e832d5f2354ccadc119ddcd059bcb6eb0a54987322aab1ff"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-33129.u32": {
+      "bytes": 98304,
+      "sha256": "2e44a1e72e8bff91f5c52b915bce803bda7d26cfb53d85ca8c32fee1a5b1aea8"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-33130.u32": {
+      "bytes": 98304,
+      "sha256": "9cabf42ffd228cc0993497df5da95639e635d386beb66c941331156716d53f56"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-33131.u32": {
+      "bytes": 98304,
+      "sha256": "ddfc33e30c86ac226faad1d72479283e45f953b305e02bb5b5c5484ae99e018a"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-33132.u32": {
+      "bytes": 98304,
+      "sha256": "21785cd8ffc6afe3f74fdc127e85862095d8d781e1749973cb1258bab8522999"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-33133.u32": {
+      "bytes": 98304,
+      "sha256": "3a2eac92f9dc672dc49b1c44ce5c20cc2a3af1f49439908af6c53a41ad4ed7b6"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-33134.u32": {
+      "bytes": 98304,
+      "sha256": "6c60e17186de2357d18ecfa7c286e75f455c577f4b86257168fac50542550701"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-33135.u32": {
+      "bytes": 98304,
+      "sha256": "c01fb7433410c786505c0ab4a20648155c3e996f4a010b5494fca41bc4224287"
+    },
+    "artifacts/th14/shot-lifetime-nov05/baseline/model/shot-lifetime-33136.u32": {
+      "bytes": 98304,
+      "sha256": "3eb261a47bdb6e7781371754a6b329daea9ff8b94d6a94fd7144c53dbbe0cc63"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/result.json": {
+      "bytes": 566,
+      "sha256": "4339f48803ff7654becbd8ece209d8a86309c0e8145765e7935dd07e74a1d1f8"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/driver.mjs": {
+      "bytes": 45972,
+      "sha256": "9ea17f90729ae2516650bfe3d551e4572884715138a09a2147230c50500838cf"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/diagnostic-state.u32": {
+      "bytes": 4480000,
+      "sha256": "83066bdb5482e6c1564fd0aaa9628a9fb3efd8d7d3d4a731a95d1761a6b07c53"
+    },
+    "artifacts/th14/original-pair-audit-nov05/initialize-controls/stage3-player-late/model/diagnostic-state.u32": {
+      "bytes": 4480000,
+      "sha256": "83066bdb5482e6c1564fd0aaa9628a9fb3efd8d7d3d4a731a95d1761a6b07c53"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-index.json": {
+      "bytes": 10770,
+      "sha256": "7b285d9f4fbbe56a2b08f8050e5cac6278e2fe1b607972d57654a0fafaa654de"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-16453.u32": {
+      "bytes": 98304,
+      "sha256": "30a0f995896196e4dcc5309389df05a1fa1a51b424bab53f70a3639ccaf9a3bf"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-16454.u32": {
+      "bytes": 98304,
+      "sha256": "170486ff2a08e0f6e1bf466abb21c4795091e1c8f0d4ad6b4372cc2bf03c92ec"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-16455.u32": {
+      "bytes": 98304,
+      "sha256": "4b615fc106f0a7e2be1b1bab581b8f8711802acd04eb748dfab0209a8804e34b"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-16456.u32": {
+      "bytes": 98304,
+      "sha256": "6b91c32822c8e04d50fda452f47e3d61a4ed3cc17a4828eae370ab5c9f46b3a6"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-16457.u32": {
+      "bytes": 98304,
+      "sha256": "053cb883526a0349e783489827164f4ac8d0c13b92716222ef6927da9c54af6e"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-19820.u32": {
+      "bytes": 98304,
+      "sha256": "dc6b47cdaaaad3cc306b60786f501ca45e27763a8273800c5e3357defc3dfd3a"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-19821.u32": {
+      "bytes": 98304,
+      "sha256": "88e051eaf4ad5def8cc2b1708e3e6e20cf7ee9fa7d8e454d6c2b4deb8da0fae3"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-19822.u32": {
+      "bytes": 98304,
+      "sha256": "729facf665e8b83defdef58ca36a1abcec1a104757f6e8024c1cc4644266f3f5"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-19823.u32": {
+      "bytes": 98304,
+      "sha256": "235e4d5972c94c071093bee12469b6690b5831fd718ac8cc402f057897b24c04"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-19824.u32": {
+      "bytes": 98304,
+      "sha256": "a7bea36f7d0a64bff7800a413f40ebd7b31d28b134a3ff868f5cd44501a99db6"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-19825.u32": {
+      "bytes": 98304,
+      "sha256": "fbcefa1d0ecc13d053608a6b58b1b181f5bd63352cc90762349ffb7d93c5ba8b"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-19826.u32": {
+      "bytes": 98304,
+      "sha256": "50045bbd8f79079433e64c8b44387ea50df8ce28d1364e796a80ae470daaed33"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-19827.u32": {
+      "bytes": 98304,
+      "sha256": "0612071b782e737b8e41b71ada2527a4803b72e3180ac9259f69fadf07dcf3e9"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-19828.u32": {
+      "bytes": 98304,
+      "sha256": "782f38bf43d6883dd665f20f360dfb1572832de00bf156b87a78567c4471ad54"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-20595.u32": {
+      "bytes": 98304,
+      "sha256": "77539662dedae2200b24c3a031233997b3a75b7d42fdea098cbaa359b77bf7c0"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-20596.u32": {
+      "bytes": 98304,
+      "sha256": "a935f9587bc7f62c5b0275b0072d362d4fe11660be4b95aa1eb357260327bf6a"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-20597.u32": {
+      "bytes": 98304,
+      "sha256": "4aa7bd8c9e9bdb4de5bcaab946a48afb4d0b3da36cec57c77406e5e21b40c47d"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-20598.u32": {
+      "bytes": 98304,
+      "sha256": "b46ffc95898fe1eed8c7fbd1fcedb1ee165f8eff1c3bc92e9930899fb0786d03"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-20599.u32": {
+      "bytes": 98304,
+      "sha256": "cd18e964ea1a9c1405b406a44a309fb4d83009d97da8282fa0809b283a04ad5b"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-20600.u32": {
+      "bytes": 98304,
+      "sha256": "0b6db2ef624c68af28fb4535c2f52087430613fb4d5febb0fca42379492b7bb1"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-20601.u32": {
+      "bytes": 98304,
+      "sha256": "d29c7072d16321a47b58bf97dcea129333dd9fd89f1528c5bcd3913c24fb8968"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-20602.u32": {
+      "bytes": 98304,
+      "sha256": "f57e4d8316f7c7cceb9aaf3a2008b8a2862b9decdf1566d344368f2fa017f37f"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-20603.u32": {
+      "bytes": 98304,
+      "sha256": "4bab11497091c0c16329f0bb66ef929949b51ea172d9134302cb20b23b15338d"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-20604.u32": {
+      "bytes": 98304,
+      "sha256": "61aec34253a61e67a847cf8c3a7da0b1206df1dc9b4b1cee6a705e8d99a4722b"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-20607.u32": {
+      "bytes": 98304,
+      "sha256": "45672f6776e5d56bbfe3196d16abccdf8709ee92a8abcbdafa566ca134790ce6"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-20608.u32": {
+      "bytes": 98304,
+      "sha256": "3f75c905a36cbf18148a8456d315034386cc7a133291e84110e355805ead837b"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-20609.u32": {
+      "bytes": 98304,
+      "sha256": "ed71e7ce81035a1f703caa2a335fea5e2198fafb450309c20f0cccf4e1a39ed9"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-20610.u32": {
+      "bytes": 98304,
+      "sha256": "5e1fbc43c53d42994b5ac19422979b22cdfcede55f9f0be53b25c85a97eefdbc"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-20611.u32": {
+      "bytes": 98304,
+      "sha256": "2530f695832c4ceb9094117f13628441b1a95750e65eac9488abe3aa243a9a06"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-32513.u32": {
+      "bytes": 98304,
+      "sha256": "62d01f7cffefe73db1594c11005bccd3690ed2e1d58843e0472aa9be298db2a9"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-32514.u32": {
+      "bytes": 98304,
+      "sha256": "01885bc6da84663cfb396eb66c15abe9176df5ade5348b212fffafb446d4d771"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-32515.u32": {
+      "bytes": 98304,
+      "sha256": "71c4db26148a701a9f45d6355d03451a6ae8a6bdb6ba38ddd425eed3593e43e3"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-32516.u32": {
+      "bytes": 98304,
+      "sha256": "5c6075735d3839994ed4b16dc7f8e2715422698acb54eae54d72b09db1c49156"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-32517.u32": {
+      "bytes": 98304,
+      "sha256": "265f602aa371ee77a088d1ea84e0e6e3b4b53828b02957a711bb3908aeb83473"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-32518.u32": {
+      "bytes": 98304,
+      "sha256": "00afd4f115ffa5c1807000f2ae4af22e2265a58fad70cf08a719bf3285db4018"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-32519.u32": {
+      "bytes": 98304,
+      "sha256": "7efc64aab7157b6e4d8a86d2b10d4a23e41143751d31980111def39f96f22a99"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-32520.u32": {
+      "bytes": 98304,
+      "sha256": "c985cf088a1a8795a509abf71573b36c8a6a32eca8cc0af67fc39269afd5a0e5"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-33119.u32": {
+      "bytes": 98304,
+      "sha256": "6990008ea9227a7f4d6789ca0f365d08780ac320e1ffd2a5f7b6f7373b89eb1f"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-33120.u32": {
+      "bytes": 98304,
+      "sha256": "f87222e380e32fcf7a863e9d4df86c9afd1933afd340ab83d17e58cd81358adb"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-33121.u32": {
+      "bytes": 98304,
+      "sha256": "87425415e0b5d8dec3d2a81b45e264e1bf5d241a7772acc2daa9deeb707cc6a0"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-33122.u32": {
+      "bytes": 98304,
+      "sha256": "cac7b907582221076553e90e3622a384c83efd45a0d3f8bfa63414418fe178b8"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-33123.u32": {
+      "bytes": 98304,
+      "sha256": "274f496ee23e174a3f7b6dbe237b9a85299fb39cf8c95a72c05628998cfc1cc7"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-33124.u32": {
+      "bytes": 98304,
+      "sha256": "c5730d68a56050c636638920f8fea724fd9eb7c3662d7f926bf81efbe5a84b4a"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-33125.u32": {
+      "bytes": 98304,
+      "sha256": "5bda84294d9434bc8e37ff7950d55aadbe7be982a00478da062a88e40ddd322c"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-33126.u32": {
+      "bytes": 98304,
+      "sha256": "a8c9e7336cd0dd1334cead0ab9008dfce25f792a1eff7c6e203feede0196f26d"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-33127.u32": {
+      "bytes": 98304,
+      "sha256": "0a69eb2d869b7d71f369c005e92287bceafbde05441b2455be4264f1eee73ee9"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-33128.u32": {
+      "bytes": 98304,
+      "sha256": "28a42fddeb66309ac005595412390dbcdd1833dbd38c3ebcdc2061bb022376e4"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-33129.u32": {
+      "bytes": 98304,
+      "sha256": "bea70a13c21ed0d71bd7022af03a0c1eb07194e6c0f390e9b98558f6bcdbb0c7"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-33130.u32": {
+      "bytes": 98304,
+      "sha256": "c2878c38782ca2c73dc9d215337c694bd48240e4d58352f05169c02428546c8e"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-33131.u32": {
+      "bytes": 98304,
+      "sha256": "68266c07c13a98777098986105fe3f6e1e1ca4fbcdfa27378182ae03c3d33d87"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-33132.u32": {
+      "bytes": 98304,
+      "sha256": "ba6d70a4d8f4aa0437708e54c6c83beeaee7f33ee823e2f50739f78c6ea0411d"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-33133.u32": {
+      "bytes": 98304,
+      "sha256": "5ea5ec540d0fb33a6584464e5dbe3d63581e3229fe5b5fcf31e8c8129dc937a3"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-33134.u32": {
+      "bytes": 98304,
+      "sha256": "fa82276f605d02545853b3b0660ba0d695396728c2a191d74efb513440695aed"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-33135.u32": {
+      "bytes": 98304,
+      "sha256": "8e290c47bb4f0029c97b9235959f1455e0cbcebfecf52f8958c76af5f10ae62e"
+    },
+    "artifacts/th14/shot-lifetime-nov05/late/model/shot-lifetime-33136.u32": {
+      "bytes": 98304,
+      "sha256": "24fd14f47a6608f1580cd7e1f28e9ad1fcce804ac54c0dae5796ad0c672f5049"
+    },
+    "artifacts/th14/native-campaign-assets/57d84a5cbe82-c48412a95f0f/entries/pl00b.anm": {
+      "bytes": 3729388,
+      "sha256": "e4db28f3a55962a1c4532d7ae9dee2ce164e5c64baa6a2eb4ee8dfa39a549491"
+    },
+    "runtimes/th12/th12_web/cpp/game/ShotManager.cpp": {
+      "bytes": 23534,
+      "sha256": "ed94585ad7d7ffa8ea30a49ac2794257ab0e3a10b0fb88918f3f41a1ea607d64"
+    },
+    "runtimes/th12/th12_web/cpp/game/ShotTh14.cpp": {
+      "bytes": 18840,
+      "sha256": "f8f208a8c2b2282fe2533d7ef9da4bf28c70162e94b797df9c598112fc53d66b"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmInterpreter.cpp": {
+      "bytes": 40444,
+      "sha256": "8820770ac321b6ec5698556fafa92e5d844ada832e409bbae86dedec79d982e2"
+    },
+    "runtimes/th12/th12_web/cpp/game/AnmVm.cpp": {
+      "bytes": 10666,
+      "sha256": "9cb9853b9a235e96cd4458586458b62151563d46aacc710863985b49350bd974"
+    },
+    "tools/th14-build-shot-lifetime-observer-nov05.py": {
+      "bytes": 2919,
+      "sha256": "930b2ccced977bcdea4030cf53233527a5af3c7744cf7f3b39e04b4196cf02ac"
+    },
+    "tools/th14-run-shot-lifetime-nov05.py": {
+      "bytes": 4295,
+      "sha256": "07c25946d9741f05e695f1952ec0f396acaf9ec2b954006710077cc8f3a19b31"
+    },
+    "artifacts/th14/shot-lifetime-nov05/retail-component.json": {
+      "bytes": 6327,
+      "sha256": "35aa7464d528a00781f381d1ec144bc857f6546068e4c2b0e110ec81eff9069c"
+    },
+    "tools/th14-shot-lifetime-native-nov05.py": {
+      "bytes": 6113,
+      "sha256": "94f544476ccbcb2976e8b0fa13dc8285f9fbf8556b22bdc942aa5259a29dbefb"
+    }
+  },
+  "toolSha256": "9d50372214635e4bb50063c1db14e08037c8d738af51d2b8bc91abbb5fa43d03"
+}
