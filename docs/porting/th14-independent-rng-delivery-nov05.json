@@ -1,0 +1,207 @@
+{
+  "schema": "th14/independent-rng-delivery-public-evidence/1",
+  "verifiedIndependentProducerProtocolComponent": true,
+  "realProductionRestoreJobAndRng": true,
+  "syntheticInputsOnly": true,
+  "sourceRole": "Component experiment over unchanged production headers; not ordinary Application integration.",
+  "wasmSha256": "10cc53bf8351570294c45ab773ff21ec5ddca7ff9e712a01d04efe50fb1c136a",
+  "engineObjectsRecompiled": 0,
+  "sameThreadTimer": {
+    "storesBeforeSynchronousReturn": 0,
+    "blockingWindowUs": 120000,
+    "storesAfterYield": 3
+  },
+  "independentWorkers": [
+    {
+      "name": "worker-a",
+      "stores": 3,
+      "iterations": 456259,
+      "elapsedUs": 68702,
+      "observedBoundaries": [
+        "CounterCommitted",
+        "SeedRead",
+        "SeedRead"
+      ],
+      "observedScriptSeedBoundary": "SeedRead"
+    },
+    {
+      "name": "worker-b",
+      "stores": 3,
+      "iterations": 464440,
+      "elapsedUs": 68687,
+      "observedBoundaries": [
+        "CounterCommitted",
+        "BeforeRead",
+        "SeedWritten"
+      ],
+      "observedScriptSeedBoundary": "BeforeRead"
+    },
+    {
+      "name": "worker-c",
+      "stores": 3,
+      "iterations": 448925,
+      "elapsedUs": 67722,
+      "observedBoundaries": [
+        "SeedRead",
+        "BeforeRead",
+        "BeforeStore"
+      ],
+      "observedScriptSeedBoundary": "BeforeRead"
+    }
+  ],
+  "producerHasNoRngWordsOrFrameVmTargets": true,
+  "cancelledAfterScriptStore": {
+    "stores": 2,
+    "counterClearPrevented": true,
+    "failedJob": true
+  },
+  "staleGeneration": {
+    "stores": 0,
+    "failedJob": true
+  },
+  "nativeComponent": {
+    "capturedCalls": 12,
+    "capturedIndependentWorkerCalls": 9,
+    "wordsPerCall": 4,
+    "all48WordsEqual": true,
+    "retailArithmeticPackingAndScriptSeedStoreExecuted": true,
+    "alteredBoundaryControls": 5,
+    "alteredBoundaryControlsRejected": 5,
+    "comparison": "Packed return, ending seed, ending counter, retained input; same captured Wasm calls unchanged.",
+    "originalExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+    "controlledEmulatorCriticalSectionBoundary": true,
+    "realOriginalProcessOrSchedulerAccepted": false
+  },
+  "initialPrototypeRetained": true,
+  "ackWaitPredicateRaceCorrected": true,
+  "old100msPauseCauseUniquelyProven": false,
+  "initialNativeCheckerSignedI32FailureRetained": true,
+  "rawRowsUnchangedForU32Interpretation": true,
+  "currentDriverExportsUnsignedWords": true,
+  "frozenExecutedDriverUsedSignedI32Exports": true,
+  "sharedWasmMemoryOrPthreadRebuildRequiredForThisComponent": false,
+  "producerWaitsForMainStoreAcknowledgements": true,
+  "extraSynchronizationCostUncalibrated": true,
+  "ordinaryApplicationIntegrated": false,
+  "replayGlobalSnapshotDeliveryTested": false,
+  "originalIndependentSchedulingAccepted": false,
+  "wholeReplayCompared": false,
+  "formalGameplaySourcesChanged": false,
+  "modePassCountsChanged": false,
+  "originalWindowsProcessStarted": false,
+  "browserOrAudioDeviceOpened": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "rawAssetsOrObservationsUploaded": false,
+  "evidenceBindings": {
+    "artifacts/th14/independent-rng-delivery-nov05/component-retry1/build.json": {
+      "bytes": 977,
+      "sha256": "6744ea07a2c41d9ae07756d5525d9afbf8328654e48ac0eb699038e6f0421408"
+    },
+    "artifacts/th14/independent-rng-delivery-nov05/component-retry1/verified.json": {
+      "bytes": 8919,
+      "sha256": "b01b80916b7c51390550dce6bb39bd0edd3912dfb50fd19f296146967023c4b3"
+    },
+    "artifacts/th14/independent-rng-delivery-nov05/component-retry1/component.wasm": {
+      "bytes": 3169,
+      "sha256": "10cc53bf8351570294c45ab773ff21ec5ddca7ff9e712a01d04efe50fb1c136a"
+    },
+    "artifacts/th14/independent-rng-delivery-nov05/component-retry1/fixture.cpp": {
+      "bytes": 3718,
+      "sha256": "5dfe623940bfa5b523b5ef82b01eb95f8bfef8d0d9685f6ff8ad23979312607b"
+    },
+    "artifacts/th14/independent-rng-delivery-nov05/component-retry1/worker.mjs": {
+      "bytes": 1452,
+      "sha256": "ca373503ddef0139e93aad8634cbc71315e43083ee1b4e0ead0a56e905064061"
+    },
+    "artifacts/th14/independent-rng-delivery-nov05/component-retry1/driver.mjs": {
+      "bytes": 6241,
+      "sha256": "924422dc7c9b5bed5c98f8269100cb1972684e86c0676d0ba11d95deb7f79b64"
+    },
+    "artifacts/th14/independent-rng-delivery-nov05/component-retry1/build-tool.py": {
+      "bytes": 2499,
+      "sha256": "4ee4a41019c846adca82c349058d96a853622f658fa027de5bf48691402bec28"
+    },
+    "artifacts/th14/independent-rng-delivery-nov05/component-retry1/Types.hpp": {
+      "bytes": 613,
+      "sha256": "f79c1ed7cb200413ef0dea75bf0d58842745b6b47182a97e496733c1d7bb2669"
+    },
+    "runtimes/th12/th12_web/cpp/game/Types.hpp": {
+      "bytes": 613,
+      "sha256": "f79c1ed7cb200413ef0dea75bf0d58842745b6b47182a97e496733c1d7bb2669"
+    },
+    "artifacts/th14/independent-rng-delivery-nov05/component-retry1/PortTitle.hpp": {
+      "bytes": 741,
+      "sha256": "5531b9b0a2364098ec023e09eddbf66907c392fb58a24e1a84c5bf7a9a033d2f"
+    },
+    "runtimes/th12/th12_web/cpp/game/PortTitle.hpp": {
+      "bytes": 741,
+      "sha256": "5531b9b0a2364098ec023e09eddbf66907c392fb58a24e1a84c5bf7a9a033d2f"
+    },
+    "artifacts/th14/independent-rng-delivery-nov05/component-retry1/Rng.hpp": {
+      "bytes": 4057,
+      "sha256": "86d2c1bb9cadfd2f23723d036337e2d50c0a09dcbd5f80bd96f4ca6bfe6d6387"
+    },
+    "runtimes/th12/th12_web/cpp/game/Rng.hpp": {
+      "bytes": 4057,
+      "sha256": "86d2c1bb9cadfd2f23723d036337e2d50c0a09dcbd5f80bd96f4ca6bfe6d6387"
+    },
+    "artifacts/th14/independent-rng-delivery-nov05/component-retry1/ReplayRngRestoreTh14.hpp": {
+      "bytes": 4868,
+      "sha256": "091a1bccd45abcb7afba610fbc973166a82ddc90f7eaf795f389c3224e72849a"
+    },
+    "runtimes/th12/th12_web/cpp/game/ReplayRngRestoreTh14.hpp": {
+      "bytes": 4868,
+      "sha256": "091a1bccd45abcb7afba610fbc973166a82ddc90f7eaf795f389c3224e72849a"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-independent-rng-delivery-nov05.cpp": {
+      "bytes": 3718,
+      "sha256": "5dfe623940bfa5b523b5ef82b01eb95f8bfef8d0d9685f6ff8ad23979312607b"
+    },
+    "tools/th14-independent-rng-delivery-worker-nov05.mjs": {
+      "bytes": 1452,
+      "sha256": "ca373503ddef0139e93aad8634cbc71315e43083ee1b4e0ead0a56e905064061"
+    },
+    "artifacts/th14/independent-rng-delivery-nov05/native-check-retry1/verified.json": {
+      "bytes": 3964,
+      "sha256": "f3c89c59c7b9f2d1ad32482800b5d4c53a495ca60c479870d884da8198cc8837"
+    },
+    "artifacts/th14/independent-rng-delivery-nov05/native-check/failure.json": {
+      "bytes": 433,
+      "sha256": "2bf3eaca871029dffb13f72ea60ee04d194657d0082d7a4cad4bd1547d5dbc81"
+    },
+    "artifacts/th14/independent-rng-delivery-nov05/native-check/checker.py": {
+      "bytes": 6118,
+      "sha256": "ed0da00d3cd8038ed63fab6c108fbef5aec794b3adee4555ad6ef2515c657cf6"
+    },
+    "artifacts/th14/independent-rng-delivery-nov05/component/verified.json": {
+      "bytes": 7046,
+      "sha256": "ae1c2e549ff12aa7ee82785f978fac341dcd158fa97b1bdb10852425e4cbb73e"
+    },
+    "artifacts/th14/independent-rng-delivery-nov05/component/worker.mjs": {
+      "bytes": 1183,
+      "sha256": "f04ec360b71d1cab01d0ca99eb0fc04fd916691d3e3ec2cfa9338b91583142c2"
+    },
+    "artifacts/th14/independent-rng-delivery-nov05/component/driver.mjs": {
+      "bytes": 6201,
+      "sha256": "742ed2246c396a69f149ac5611e162040c267444b84d49f7f4d873d731ad8aeb"
+    },
+    "artifacts/th14/independent-rng-delivery-nov05/component/build-tool.py": {
+      "bytes": 2206,
+      "sha256": "4aa9643f2f08243089e74a2a4b5b38700b626383d71265aa45aa3d94089c8da7"
+    },
+    "tools/th14-independent-rng-delivery-build-nov05.py": {
+      "bytes": 2584,
+      "sha256": "deda523e166d9e98ef38be505846156975ffc99208e766e299d889e4884392cc"
+    },
+    "tools/th14-independent-rng-delivery-check-nov05.mjs": {
+      "bytes": 6245,
+      "sha256": "5a8df3c0b3a2af3ef5276b81e958c4459569adbfdf8286c3685281b613412c98"
+    },
+    "tools/th14-independent-rng-delivery-native-nov05.py": {
+      "bytes": 6368,
+      "sha256": "fd1faf839327ee30e07e5455d966375fb0564dc6820fd92d2b09aace56f41de4"
+    }
+  },
+  "toolSha256": "a70aff18f71e736f9ee6be53f10c00d7f9e935d51cb0d9875281af52f160a6f8"
+}
