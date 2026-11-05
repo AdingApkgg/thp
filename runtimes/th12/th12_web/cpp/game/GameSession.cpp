@@ -361,8 +361,9 @@ bool GameSession::update(const GameSessionInput& input) {
         auto initialize=[this,restore=ReplayRngRestoreJobTh14{}]()mutable->prototype::Work {
             auto& rng=animations.visual_rng;
             const auto ready=[this](ReplayRngRestorePointTh14 point){return resources.effects?resources.effects->stage_rng_store_readiness(point):ReplayRngRestoreResultTh14::Ready;};
-            const auto progress=state.replay?restore.playback(rng,&animations.script_rng,battle->replay_entry.seed,false,ready):
-                restore.record(rng,animations.script_rng,recording_seed,ready);
+            const auto committed=[this](ReplayRngRestorePointTh14 point){return !resources.effects||resources.effects->stage_rng_store_committed(point);};
+            const auto progress=state.replay?restore.playback(rng,&animations.script_rng,battle->replay_entry.seed,false,ready,committed):
+                restore.record(rng,animations.script_rng,recording_seed,ready,committed);
             if(progress==ReplayRngRestoreResultTh14::Waiting)return prototype::Work::Waiting;
             if(progress==ReplayRngRestoreResultTh14::Failed){error="TH14 stage RNG restore failed";return prototype::Work::Failed;}
             if(state.replay){
@@ -373,6 +374,9 @@ bool GameSession::update(const GameSessionInput& input) {
                 battle->enemy_environment.spell_practice_id=battle->replay_entry.th14_practice_mode;
                 battle->hud.score.continues=battle->replay_entry.continues;
                 battle->player->state.minimum_point_value=signed_bits(battle->replay_entry.th14_globals[10]);
+                if(resources.effects&&!resources.effects->stage_replay_snapshot_committed()){
+                    error="TH14 replay snapshot acknowledgement failed";return prototype::Work::Failed;
+                }
             }
             return prototype::Work::Ready;
         };

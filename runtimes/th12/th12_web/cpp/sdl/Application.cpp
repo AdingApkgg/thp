@@ -102,6 +102,20 @@ EM_JS(int, th11_browser_keyboard, (), { return typeof Module["resetBrowserKeyboa
 // Browser has no Windows boot-time clock. Preserve native integer wrapping
 // using this environment's actual monotonic millisecond input.
 EM_JS(unsigned, th14_clock_ticks, (), { return performance.now() >>> 0; });
+#if defined(TH14_STAGE_RESTORE_DELIVERY)
+EM_JS(int,th14_stage_restore_begin,(int playback),{
+    return (Module.th14AsyncRuntime??Module.th14WebGpuRuntime)?.stageRestore?.begin(playback!==0)?1:0;
+});
+EM_JS(int,th14_stage_restore_ready,(unsigned operation),{
+    return (Module.th14AsyncRuntime??Module.th14WebGpuRuntime)?.stageRestore?.ready(operation)??2;
+});
+EM_JS(int,th14_stage_restore_committed,(unsigned operation),{
+    return (Module.th14AsyncRuntime??Module.th14WebGpuRuntime)?.stageRestore?.committed(operation)?1:0;
+});
+EM_JS(void,th14_stage_restore_cancel,(),{
+    (Module.th14AsyncRuntime??Module.th14WebGpuRuntime)?.stageRestore?.cancel();
+});
+#endif
 static void schedule_th14_work(void(*callback)(void*),void* data,int delay){
 #ifdef TH14_WEBGPU_BACKEND
     th14_webgpu_schedule(callback,data,delay);
@@ -715,11 +729,26 @@ struct Application:StageResourceEffects
     static void start_stage_worker_wait(void* raw){
         std::unique_ptr<StageWorkerWaitToken> token(static_cast<StageWorkerWaitToken*>(raw));
         auto& app=*token->owner;
+        if(!app.stage_worker_wait.owns(token->generation))return;
+#if defined(TH14_STAGE_RESTORE_DELIVERY)
+        if(!app.session.battle||!app.session.battle->pending_stage||!app.session.resources.loading_bundle()){
+            app.stage_worker_wait.cancel();th14_stage_restore_cancel();return;
+        }
+#endif
         if(!app.stage_worker_wait.start(token->generation,u64(SDL_GetTicksNS())))return;
+#if defined(TH14_STAGE_RESTORE_DELIVERY)
+        if(!th14_stage_restore_begin(app.session.state.replay?1:0)){
+            app.error="TH14 independent stage restore could not start";
+            app.stage_worker_wait.cancel();return;
+        }
+#endif
         std::printf("[loading14] worker wait dispatched; minimum60ms\n");
         schedule_th14_work(finish_stage_worker_wait,token.release(),60);
     }
     bool begin_stage_worker_wait(bool initial)override{
+#if defined(TH14_STAGE_RESTORE_DELIVERY)
+        th14_stage_restore_cancel();
+#endif
         stage_worker_wait.begin(initial);
         if(stage_worker_wait.waiting){
             // Dispatch after this callback pass. No scene/resource pointer is
@@ -729,6 +758,25 @@ struct Application:StageResourceEffects
         return true;
     }
     bool stage_worker_wait_ready()const override{return stage_worker_wait.ready(u64(SDL_GetTicksNS()));}
+#if defined(TH14_STAGE_RESTORE_DELIVERY)
+    static u32 stage_restore_operation(ReplayRngRestorePointTh14 point){
+        using P=ReplayRngRestorePointTh14;
+        return point==P::GameplaySeedStored||point==P::StageSeedRecorded?0:
+            point==P::ScriptSeedStored?1:point==P::GameplayCounterCleared?2:~0u;
+    }
+    ReplayRngRestoreResultTh14 stage_rng_store_readiness(ReplayRngRestorePointTh14 point)const override{
+        const auto status=th14_stage_restore_ready(stage_restore_operation(point));
+        return status==1?ReplayRngRestoreResultTh14::Ready:status==0?ReplayRngRestoreResultTh14::Waiting:ReplayRngRestoreResultTh14::Failed;
+    }
+    bool stage_rng_store_committed(ReplayRngRestorePointTh14 point)override{
+        return th14_stage_restore_committed(stage_restore_operation(point))!=0;
+    }
+    ReplayRngRestoreResultTh14 stage_replay_snapshot_readiness()const override{
+        const auto status=th14_stage_restore_ready(3);
+        return status==1?ReplayRngRestoreResultTh14::Ready:status==0?ReplayRngRestoreResultTh14::Waiting:ReplayRngRestoreResultTh14::Failed;
+    }
+    bool stage_replay_snapshot_committed()override{return th14_stage_restore_committed(3)!=0;}
+#endif
     bool draw_startup_loading()override{
         if(!boot_signature_active||!boot_signature_uploaded)return true;
         if(boot_signature_pending){
@@ -792,6 +840,9 @@ struct Application:StageResourceEffects
         // Queued raw resource references must disappear before GPU teardown
         // or StageResources destruction. release also covers boot ownership.
         stage_worker_wait.cancel();
+#if defined(TH14_STAGE_RESTORE_DELIVERY)
+        th14_stage_restore_cancel();
+#endif
         stage_uploads.cancel(stage);release(stage);
     }
     bool defer_ending_loading()const override{return true;}

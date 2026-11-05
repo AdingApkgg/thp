@@ -39,8 +39,8 @@ class ReplayRngRestoreJobTh14 {
     Kind kind=Kind::Unset;Rng* owner=nullptr;Rng* other=nullptr;const u32* entry=nullptr;
     u32 step=0,store_count=0;u16 captured=0;bool running=false,failed=false;
     ReplayRngRestorePointTh14 last=ReplayRngRestorePointTh14::GameplaySeedStored;
-    template<class Ready>
-    ReplayRngRestoreResultTh14 advance(Kind requested,Rng& gameplay,Rng* script,const u32& seed,u32* recording,Ready&& readiness)noexcept{
+    template<class Ready,class Committed>
+    ReplayRngRestoreResultTh14 advance(Kind requested,Rng& gameplay,Rng* script,const u32& seed,u32* recording,Ready&& readiness,Committed&& committed)noexcept{
         using Result=ReplayRngRestoreResultTh14;using Point=ReplayRngRestorePointTh14;
         if(failed)return Result::Failed;
         if(running)return Result::Waiting;
@@ -63,6 +63,7 @@ class ReplayRngRestoreJobTh14 {
             }else gameplay.calls=0;
             ++step;++store_count;last=point;
             ReplayRngRestoreScopeTh14::checkpoint(point,gameplay,script);
+            if(!committed(point)){failed=true;return Result::Failed;}
         }
         return Result::Ready;
     }
@@ -72,11 +73,19 @@ public:
     ReplayRngRestorePointTh14 last_point()const noexcept{return last;}
     template<class Ready>
     ReplayRngRestoreResultTh14 playback(Rng& gameplay,Rng* script,const u32& seed,bool first,Ready&& readiness)noexcept{
-        return advance(first?Kind::Initial:Kind::Playback,gameplay,script,seed,nullptr,readiness);
+        return playback(gameplay,script,seed,first,readiness,[](ReplayRngRestorePointTh14){return true;});
+    }
+    template<class Ready,class Committed>
+    ReplayRngRestoreResultTh14 playback(Rng& gameplay,Rng* script,const u32& seed,bool first,Ready&& readiness,Committed&& committed)noexcept{
+        return advance(first?Kind::Initial:Kind::Playback,gameplay,script,seed,nullptr,readiness,committed);
     }
     template<class Ready>
     ReplayRngRestoreResultTh14 record(Rng& gameplay,Rng& script,u32& seed,Ready&& readiness)noexcept{
-        return advance(Kind::Record,gameplay,&script,seed,&seed,readiness);
+        return record(gameplay,script,seed,readiness,[](ReplayRngRestorePointTh14){return true;});
+    }
+    template<class Ready,class Committed>
+    ReplayRngRestoreResultTh14 record(Rng& gameplay,Rng& script,u32& seed,Ready&& readiness,Committed&& committed)noexcept{
+        return advance(Kind::Record,gameplay,&script,seed,&seed,readiness,committed);
     }
 };
 

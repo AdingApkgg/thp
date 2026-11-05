@@ -72,6 +72,9 @@ struct StageResourceEffects {
     enum class Phase:u32 {Hud,Scene,Timeline};
     enum class DecodeResult:u32 {Waiting,Ready,Failed};
     virtual ReplayRngRestoreResultTh14 stage_rng_store_readiness(ReplayRngRestorePointTh14)const{return ReplayRngRestoreResultTh14::Ready;}
+    // Acknowledgement follows the real store; readiness alone cannot advance
+    // an independent producer to the next instruction.
+    virtual bool stage_rng_store_committed(ReplayRngRestorePointTh14){return true;}
     virtual DecodeResult decode_stage_phase(GameResources&,StageResources&,Phase,u32);
     // CPU work can already hold this owner before the first GPU request.
     virtual void cancel_stage_decode(StageResources&){}
@@ -88,6 +91,7 @@ struct StageResourceEffects {
     virtual void finish_stage_phases(StageResources&,u32){}
     // Retail456133 begins the replay globals copy after the three RNG stores.
     virtual ReplayRngRestoreResultTh14 stage_replay_snapshot_readiness()const{return ReplayRngRestoreResultTh14::Ready;}
+    virtual bool stage_replay_snapshot_committed(){return true;}
 #endif
 };
 class GameSessionResources {

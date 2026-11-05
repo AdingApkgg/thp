@@ -2,6 +2,7 @@ import {Th14WebGpuHost} from './Th14WebGpuHost.mjs';
 import {bindTh14WebGpuCore} from './Th14WebGpuCore.mjs';
 import {ArchiveDecodeClient} from './Th14ArchiveDecodeClient.mjs';
 import {ArchiveReadAhead} from './Th14ArchiveReadAhead.mjs';
+import {Th14StageRestoreDelivery} from './Th14StageRestoreDelivery.mjs';
 
 // Only one suspended Wasm stack may exist. Frame and loading callbacks share
 // this queue; the next RAF is requested after the preceding callback returns.
@@ -11,6 +12,7 @@ export class Th14WebGpuRuntime {
     this.requestFrame=requestFrame;this.setTimer=setTimer;this.tail=Promise.resolve();this.failure=null;this.host=null;this.opening=null;
     this.completedCallbacks=0;this.pendingCallbacks=0;
     this.createArchiveWorker=createArchiveWorker;this.archive=null;this.archiveOpening=null;
+    this.stageRestore=new Th14StageRestoreDelivery({onError:error=>this.fail(error)});
   }
   fail(error) {if (!this.failure) {this.failure=error;this.module.onWebGpuError?.(error);}}
   run(action) {

@@ -1,6 +1,7 @@
 // SDL's WebGL swap can suspend through Asyncify. A raw RAF callback sees the
 // unwind return, not the eventual C++ result. Own every callback stack with an
 // async ccall and serialize mutations until that stack has finished.
+import {Th14StageRestoreDelivery} from './Th14StageRestoreDelivery.mjs';
 const queuedVoid=new Set(['th11_key','th11_keys_clear','th11_music_enabled',
   'th11_loop_start','th11_loop_stop','th11_loop_pause','th11_touch','th11_touch_cancel',
   'th11_touch_options','th11_touch_controls','th11_touch_stick','sdl_loop_pause',
@@ -11,6 +12,7 @@ export class Th14AsyncRuntime {
     this.module=module;this.requestFrame=requestFrame;this.setTimer=setTimer;this.onError=onError;
     this.tail=Promise.resolve();this.failure=null;this.pendingCallbacks=0;this.completedCallbacks=0;
     this.boundCores=new WeakSet();
+    this.stageRestore=new Th14StageRestoreDelivery({onError:error=>this.fail(error)});
   }
   fail(error) {if(!this.failure){this.failure=error;this.onError(error);}}
   run(action) {

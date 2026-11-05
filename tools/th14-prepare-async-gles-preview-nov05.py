@@ -32,6 +32,8 @@ def main(home,out):
     for name,key in [('th14-sdl.mjs','loaderSha256'),('th14-sdl.wasm','wasmSha256')]:
         assert SHA((home/name).read_bytes())==build[key];route('runtime/th14/'+name,home/name)
     route('runtime/th14/Th14AsyncRuntime.mjs',home/'Th14AsyncRuntime.mjs')
+    for name,row in build.get('independentRestoreModuleFiles',{}).items():
+        assert SHA((home/name).read_bytes())==row['sha256'];route('runtime/th14/'+name,home/name)
     proof['roots']+=[out.relative_to(R).as_posix(),home.relative_to(R).as_posix()]
     proof.update(wasmSha256=build['wasmSha256'],parentLauncherSha256=SHA(parent.read_bytes()),
         diagnosticBuildReportSha256=SHA((home/'build.json').read_bytes()),callbackSchedulingChanged=True,

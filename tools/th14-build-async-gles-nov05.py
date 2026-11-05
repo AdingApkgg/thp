@@ -16,7 +16,9 @@ def main(out):
     base_raw=(BASE/'build.json').read_bytes();base=json.loads(base_raw)
     assert base['wasmSha256']=='0a9750bfe24129ec6005b197fe599b49c2adb62652e175c85e8c0b479f616794'
     source=out/'source';app_name='th12_web/cpp/sdl/Application.cpp'
-    overlays=[app_name,'portable/sdl/Th14AsyncCallbacks.hpp','portable/sdl/Th14AsyncRuntime.mjs']
+    restore_modules=['Th14StageRestoreDelivery.mjs','Th14StageRestoreProtocol.mjs','Th14StageRestoreWorker.mjs']
+    overlays=[app_name,'portable/sdl/Th14AsyncCallbacks.hpp','portable/sdl/Th14AsyncRuntime.mjs',
+              *['portable/sdl/'+name for name in restore_modules]]
     inventory=dict(base['sourceBindings'])
     for name,row in base['sourceBindings'].items():assert SHA((BASE/'source'/name).read_bytes())==row['sha256'],name
     for path in (BASE/'source').rglob('*'):
@@ -50,6 +52,7 @@ def main(out):
         with(out/(label+'.log')).open('wb')as f:p=subprocess.run(argv,cwd=source/'th12_web',env=env,stdout=f,stderr=subprocess.STDOUT,timeout=240)
         assert p.returncode==0,(label,p.returncode,(out/(label+'.log')).read_text()[-4000:])
     (out/'Th14AsyncRuntime.mjs').write_bytes((source/'portable/sdl/Th14AsyncRuntime.mjs').read_bytes())
+    for name in restore_modules:(out/name).write_bytes((source/'portable/sdl'/name).read_bytes())
     for name in base.get('archiveWorkerFiles',{}):
         old=BASE/name
         if old.exists():os.link(old,out/name)
@@ -59,6 +62,7 @@ def main(out):
         wasmBytes=(out/'th14-sdl.wasm').stat().st_size,wasmSha256=SHA((out/'th14-sdl.wasm').read_bytes()),loaderSha256=SHA((out/'th14-sdl.mjs').read_bytes()),
         toolSha256=SHA(Path(__file__).read_bytes()),sourceFileHardLinksImmutable=True,gameCoreObjectsReused=141,
         callbackSchedulingChanged=True,browserRun=False,browserAcceptance=False,completeGame=False)
+    build['independentRestoreModuleFiles']={name:dict(bytes=(out/name).stat().st_size,sha256=SHA((out/name).read_bytes()))for name in restore_modules}
     (out/'build.json').write_text(json.dumps(build,indent=2)+'\n')
     print(json.dumps({k:build[k]for k in ['compiledUnits','reusedObjectCount','wasmSha256','completeGame']}))
 

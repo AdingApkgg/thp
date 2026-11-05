@@ -80,6 +80,8 @@ def main():
     assert build['frameAndWorkerCallbacksSerialized']==(backend=='webgpu' or async_gles)
     if async_gles:gpu_files+=['Th14AsyncRuntime.mjs']
 
+    gpu_files+=list(build.get('independentRestoreModuleFiles',{}))
+
     assert SHA((home/'th14-sdl.wasm').read_bytes())==build['wasmSha256']
 
     assert SHA((home/'th14-sdl.mjs').read_bytes())==build['loaderSha256']
