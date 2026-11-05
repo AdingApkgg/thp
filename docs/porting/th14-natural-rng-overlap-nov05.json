@@ -1,0 +1,1283 @@
+{
+  "schema": "th14/natural-rng-overlap-public/1",
+  "verifiedOneActualOriginalSeedOverlap": true,
+  "nativeCallbacks": 35000,
+  "nativeDebugExceptions": 0,
+  "nativeShotSnapshots": 59,
+  "preflightCallbacks": 1200,
+  "nativeThreadScheduleExplicitlyControlled": false,
+  "additionalGameMemoryWrites": 0,
+  "originalAttractFlagClearWrites": 1,
+  "instructionBytesPatched": 0,
+  "quiet": true,
+  "overlap": {
+    "stage": 3,
+    "precedingPlayerCallbacks": 30744,
+    "mainLoadPc": "0x403336",
+    "mainStorePc": "0x403373",
+    "workerScriptStorePc": "0x456123",
+    "mainOldSeedReadRetainedByInstruction": true,
+    "workerReplacementRecoveredFromAx": true,
+    "laterWorkerMemoryAlreadyContainsMainStore": true,
+    "globalSnapshotMismatchCounts": {
+      "mix32": 1
+    },
+    "mainStaleStoreWins": true,
+    "nextReadLoadsThatMainStore": true,
+    "accessEvents": 66,
+    "pairedNext32Calls": 33,
+    "exactCrossThreadExecutionTimesRecovered": false
+  },
+  "retainedAtomicDeliveryFailure": {
+    "strictDriverExitCode": 1,
+    "rawVerifierExitCode": 1,
+    "firstDifferenceCallback": 30745,
+    "stage": 3,
+    "stageFrame": 0,
+    "word": 21,
+    "differenceCounts": {
+      "21": 4256,
+      "22": 344,
+      "26": 2
+    },
+    "failureDiscarded": false
+  },
+  "logicalDeliveryRuns": [
+    {
+      "case": "overlap-off",
+      "callbacks": 35000,
+      "all32StateFieldsEqual": true,
+      "comparedCameraWords": 2624925,
+      "all75CameraWordsEqual": true,
+      "all4CursorFieldsEqual": true,
+      "all2HudFieldsEqual": true,
+      "actualOriginalInstructionAccesses": 66,
+      "pairedNext32Calls": 33,
+      "extraPortableRowsNotAccepted": 24,
+      "vm303Rows": 753,
+      "combatCheckpoints": 354,
+      "orderedPublications": 3275
+    },
+    {
+      "case": "overlap-on",
+      "callbacks": 35000,
+      "all32StateFieldsEqual": true,
+      "comparedCameraWords": 2624925,
+      "all75CameraWordsEqual": true,
+      "all4CursorFieldsEqual": true,
+      "all2HudFieldsEqual": true,
+      "actualOriginalInstructionAccesses": 66,
+      "pairedNext32Calls": 33,
+      "extraPortableRowsNotAccepted": 24,
+      "vm303Rows": 753,
+      "combatCheckpoints": 354,
+      "orderedPublications": 3275
+    }
+  ],
+  "readonlyProbeTransparentForCapturedState": true,
+  "actualOriginalSlotComparison": {
+    "snapshotPairs": 55,
+    "comparedFields": {
+      "slotState": 14080,
+      "shotWords": 50288,
+      "specFields": 9429,
+      "vmPresent": 3143,
+      "vmWords": 96627,
+      "vmIdentity": 9351,
+      "quadWords": 37404,
+      "quadVisibility": 3117
+    },
+    "geometryVms": 3117,
+    "vmAvailability": {
+      "bothPresent": 3117,
+      "bothAbsent": 26
+    },
+    "extraNativeSnapshotsNotAccepted": 4,
+    "completeVmMemoryCompared": false,
+    "quadExecutionIsComponentReconstruction": true
+  },
+  "actualOriginalPair": {
+    "pairedStageFrames": 59,
+    "countDifferenceFrames": 6,
+    "differingRetirementPairs": [
+      {
+        "stage": 2,
+        "stageFrame": 5511,
+        "previousStageFrame": 5510,
+        "slots": [
+          183,
+          183
+        ],
+        "birthFrame": 5486,
+        "retired": [
+          false,
+          true
+        ],
+        "sameUniqueBirthSpecAndMotion": true,
+        "originalGameplayVmBytes": true,
+        "geometryAccepted": true,
+        "visibilityPredictsObservedRetirement": true,
+        "rotationOnlySwapReversesVisibility": true,
+        "rotationOnlySwapReproducesOtherFullQuad": true,
+        "differentRotation": true,
+        "differentAngularVelocityRegister": true,
+        "bothShotStates": [
+          2,
+          2
+        ],
+        "bothAnimationFile": [
+          9,
+          9
+        ],
+        "bothAnimationScript": [
+          6,
+          6
+        ],
+        "bothQuadsEntirelyAboveTop": [
+          false,
+          true
+        ]
+      },
+      {
+        "stage": 2,
+        "stageFrame": 5515,
+        "previousStageFrame": 5514,
+        "slots": [
+          228,
+          228
+        ],
+        "birthFrame": 5489,
+        "retired": [
+          true,
+          false
+        ],
+        "sameUniqueBirthSpecAndMotion": true,
+        "originalGameplayVmBytes": true,
+        "geometryAccepted": true,
+        "visibilityPredictsObservedRetirement": true,
+        "rotationOnlySwapReversesVisibility": true,
+        "rotationOnlySwapReproducesOtherFullQuad": true,
+        "differentRotation": true,
+        "differentAngularVelocityRegister": true,
+        "bothShotStates": [
+          2,
+          2
+        ],
+        "bothAnimationFile": [
+          9,
+          9
+        ],
+        "bothAnimationScript": [
+          6,
+          6
+        ],
+        "bothQuadsEntirelyAboveTop": [
+          true,
+          false
+        ]
+      },
+      {
+        "stage": 2,
+        "stageFrame": 6292,
+        "previousStageFrame": 6291,
+        "slots": [
+          159,
+          159
+        ],
+        "birthFrame": 6264,
+        "retired": [
+          true,
+          false
+        ],
+        "sameUniqueBirthSpecAndMotion": true,
+        "originalGameplayVmBytes": true,
+        "geometryAccepted": true,
+        "visibilityPredictsObservedRetirement": true,
+        "rotationOnlySwapReversesVisibility": true,
+        "rotationOnlySwapReproducesOtherFullQuad": true,
+        "differentRotation": true,
+        "differentAngularVelocityRegister": true,
+        "bothShotStates": [
+          2,
+          2
+        ],
+        "bothAnimationFile": [
+          9,
+          9
+        ],
+        "bothAnimationScript": [
+          6,
+          6
+        ],
+        "bothQuadsEntirelyAboveTop": [
+          true,
+          false
+        ]
+      },
+      {
+        "stage": 2,
+        "stageFrame": 6298,
+        "previousStageFrame": 6297,
+        "slots": [
+          236,
+          236
+        ],
+        "birthFrame": 6273,
+        "retired": [
+          false,
+          true
+        ],
+        "sameUniqueBirthSpecAndMotion": true,
+        "originalGameplayVmBytes": true,
+        "geometryAccepted": true,
+        "visibilityPredictsObservedRetirement": true,
+        "rotationOnlySwapReversesVisibility": true,
+        "rotationOnlySwapReproducesOtherFullQuad": true,
+        "differentRotation": true,
+        "differentAngularVelocityRegister": true,
+        "bothShotStates": [
+          2,
+          2
+        ],
+        "bothAnimationFile": [
+          9,
+          9
+        ],
+        "bothAnimationScript": [
+          6,
+          6
+        ],
+        "bothQuadsEntirelyAboveTop": [
+          false,
+          true
+        ]
+      },
+      {
+        "stage": 3,
+        "stageFrame": 1479,
+        "previousStageFrame": 1478,
+        "slots": [
+          216,
+          216
+        ],
+        "birthFrame": 1454,
+        "retired": [
+          false,
+          true
+        ],
+        "sameUniqueBirthSpecAndMotion": true,
+        "originalGameplayVmBytes": true,
+        "geometryAccepted": true,
+        "visibilityPredictsObservedRetirement": true,
+        "rotationOnlySwapReversesVisibility": true,
+        "rotationOnlySwapReproducesOtherFullQuad": true,
+        "differentRotation": true,
+        "differentAngularVelocityRegister": true,
+        "bothShotStates": [
+          2,
+          2
+        ],
+        "bothAnimationFile": [
+          9,
+          9
+        ],
+        "bothAnimationScript": [
+          6,
+          6
+        ],
+        "bothQuadsEntirelyAboveTop": [
+          false,
+          true
+        ]
+      },
+      {
+        "stage": 3,
+        "stageFrame": 2093,
+        "previousStageFrame": 2092,
+        "slots": [
+          234,
+          234
+        ],
+        "birthFrame": 2075,
+        "retired": [
+          false,
+          true
+        ],
+        "sameUniqueBirthSpecAndMotion": true,
+        "originalGameplayVmBytes": true,
+        "geometryAccepted": true,
+        "visibilityPredictsObservedRetirement": true,
+        "rotationOnlySwapReversesVisibility": true,
+        "rotationOnlySwapReproducesOtherFullQuad": true,
+        "differentRotation": true,
+        "differentAngularVelocityRegister": true,
+        "bothShotStates": [
+          2,
+          2
+        ],
+        "bothAnimationFile": [
+          9,
+          9
+        ],
+        "bothAnimationScript": [
+          6,
+          6
+        ],
+        "bothQuadsEntirelyAboveTop": [
+          false,
+          true
+        ]
+      }
+    ],
+    "allComparedRetirementPairsExplained": true,
+    "noPortableVmValuesUsed": true,
+    "bootInputsAndSchedulesNotControlled": true,
+    "wholeOriginalGpuPixelsCompared": false
+  },
+  "productionChanged": false,
+  "logicalOrderDiagnosticOnly": true,
+  "counterClearAndGlobalsCopyAtExactNativeMainInstructionAccepted": false,
+  "independentTimingAccepted": false,
+  "ordinaryOriginalGuiAccepted": false,
+  "oldHistoricalAVmGeometryRecovered": false,
+  "oldNineDifferencesClosed": false,
+  "strictNaturalModePassCountIncreased": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "rawAssetsOrObservationContentsUploaded": false,
+  "evidenceBindings": {
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/report.json": {
+      "bytes": 176678,
+      "sha256": "3859f0735274ade9a4fe6303f7a8e69eaa876e121c690799ce34a6127ffc0bc8"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/process-end.json": {
+      "bytes": 183,
+      "sha256": "6144979c7f59017aa3e34ab5a70822fccd82381d0a6253dd0b3d7c30fe4345ea"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/preflight-slots-v2/verified.json": {
+      "bytes": 986,
+      "sha256": "ecd43cbbeab79fb3f1fbe3847d4f0ce58766fb738de3fdd56a553d88fbff634b"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/natural-overlap.json": {
+      "bytes": 8249,
+      "sha256": "b06ba3475f5fcaa948b03895d83fa6061d783fd8c4ca27a81cca9aa632a05d14"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/slot-audit.json": {
+      "bytes": 32081,
+      "sha256": "be37367f0020852f094149c591b7c9b510231aa492a86220229deaa9e8d04845"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/original-pair.json": {
+      "bytes": 36271,
+      "sha256": "3b943733f29d486fb65573edcb2784f7767c4069231f10e804b9fafd4d2818c5"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/comparison-off/result.json": {
+      "bytes": 149,
+      "sha256": "3eea2800a95626c91f2439ce64caf391ff19a4e5364fa13f22e82f3d9ba5ee67"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/comparison-off/model/report.json": {
+      "bytes": 7880,
+      "sha256": "336aef73c2c1bf1169bfec870e696a108928463707bd1054fc2cd2aa29465753"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/native-register-proof.json": {
+      "bytes": 8235,
+      "sha256": "c1c3ae9abf061f6aab9b5a123e4a31ec8d3b5a157edbecfd750622e31d053d27"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/observer-source.py": {
+      "bytes": 92379,
+      "sha256": "b9ecbcc089ee738d5fda9aa5bc453b3912f6d4b683a5626acf7785275c71d2f4"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/observer-slots-v2/observer.py": {
+      "bytes": 92379,
+      "sha256": "b9ecbcc089ee738d5fda9aa5bc453b3912f6d4b683a5626acf7785275c71d2f4"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/selected-state.u32": {
+      "bytes": 4480000,
+      "sha256": "2ff266fd0d30e2d2089cdc598e9bb78ceeba20d73bca8d5086ddf134f528529d"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/player-host-monotonic.u64": {
+      "bytes": 280000,
+      "sha256": "31d5b80273048f91b21f0a14e7622475e0c0ae77d79504396d36ab4ff408736c"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/world-camera.raw": {
+      "bytes": 10220000,
+      "sha256": "a8297b3adc1f9d74f7b1bb3a42204248423476fabe6e83268e41ed1cfb9b9dc3"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/world-camera-tail.u32": {
+      "bytes": 280000,
+      "sha256": "44c9ed01ab6871bbfc5335656fae74d0ce3f7ecd38363a22221313f320843a6d"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/replay-cursor.u32": {
+      "bytes": 1960000,
+      "sha256": "8857b29be64f9bece25d0fac06c6f25ece83f87efe58f29629d3ee99d7c2dded"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/hud-score.u32": {
+      "bytes": 280000,
+      "sha256": "335aaeb7012b918ca175119a0e9a81bb10b490681a07673d951a7f506a623154"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/script-rng-access-events.jsonl": {
+      "bytes": 80305,
+      "sha256": "338cd2e22e5b248b1ad48748683af777a62f2ec377dbc081494eaa6e0c2a813e"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/script-rng-watch-arm.json": {
+      "bytes": 475,
+      "sha256": "fb425631b8636f6c0680dc9107c36a65738667cb27853ce5b855da6971d8bc92"
+    },
+    "artifacts/th14/script-rng-read-generation-nov05/component/report.json": {
+      "bytes": 63408,
+      "sha256": "9ee67a2b37c32e038816e3889f05ff3152d8716451904bbb5bf8e03de298eeef"
+    },
+    "tools/th14-rng-register-generation-component-nov05.py": {
+      "bytes": 5531,
+      "sha256": "b0e2fb558c6bfbed0bca6ba516023333f90055d3825e8af19e15b34fe3a47956"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/debug-event-clock.jsonl": {
+      "bytes": 21223446,
+      "sha256": "62181f9c1643fe99dacb77a49af09956761ae5203d58f4faa2f071c2e23c2efb"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/pending-debug-context-deferrals.jsonl": {
+      "bytes": 543,
+      "sha256": "9c97a0be36d9e80539d08bb28c608add565367b5c4766bac0cd3df5499c240f8"
+    },
+    "tools/th14-rng-register-trace-evidence-nov05.py": {
+      "bytes": 9207,
+      "sha256": "1b4d904ca8e93b1b6bf6158639139426ea3297182006b9ec57fe6308085237dd"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/observer-slots-v2/prepared.json": {
+      "bytes": 745,
+      "sha256": "7ece1a9c3a6fcb292de0133554339f32ca2423d7cf86cbd5d41a0779bc6fce80"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/rotating-watch-pump-events.jsonl": {
+      "bytes": 35948,
+      "sha256": "ad2f6a22ec8b432288dc8971ffc628503e46122c79daae7bb4d8eab7a29e5868"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/stage-object-vm-window-events.jsonl": {
+      "bytes": 7758708,
+      "sha256": "a7a2dfcafea7b161050817e4ef6ecb7ec37b6b662905efcdb910b4bc30b3a700"
+    },
+    "artifacts/th14/script-rng-read-generation-nov05/rotating-edge-component-retry3/static-control/report.json": {
+      "bytes": 178531,
+      "sha256": "60b6853f8b1f48bc8602bc269ba30aa2e8d1e6bf50e7e36e21cfdd7f99879eb9"
+    },
+    "tools/th14-rotating-edge-watch-component-nov05.py": {
+      "bytes": 10218,
+      "sha256": "58158c1b64f8a00a8c66045372fd7f8e72803d1ab916d5163e1cb13529acb2d1"
+    },
+    "artifacts/th14/script-rng-read-generation-nov05/rotating-edge-component-retry3/rotating/report.json": {
+      "bytes": 222565,
+      "sha256": "4c1b02548f5f692eeb6bb7af5a1ee29ae8fc3b5ff048a3b8e9f8d4ff4510b2d6"
+    },
+    "tools/th14-rng-pump-trace-evidence-nov05.py": {
+      "bytes": 5922,
+      "sha256": "bebd84d7e0bae59eec80a30e2183bcebcd164b94277f053105d56f996afbe73b"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/player-pump-mux-events.jsonl": {
+      "bytes": 2815,
+      "sha256": "7d7b4c82ff97d7de7feb9f74b49dff7a86df072293b56fbe076182ead07c5d35"
+    },
+    "tools/th14-original-nine-shot-read-evidence-nov05.py": {
+      "bytes": 5339,
+      "sha256": "0893d9f85800ebed668469c4ecc778c0881c7f623e020491704766e0b3d2b5eb"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/replay-rng-store-events.jsonl": {
+      "bytes": 44972,
+      "sha256": "0fdf7fcb9eedbfe066e2565856c1df6397430598ebb4c4f1244fa5e6f942e838"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/result.json": {
+      "bytes": 401,
+      "sha256": "469d54b3e2bce4930196300355c61b129cb8da9997d955364dc8d0b5e7d753c3"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime-index.json": {
+      "bytes": 17111,
+      "sha256": "acfaa8659284de9ea1429e1d2163a09932d42f6a812d20f5be17873a321b6da0"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-index.json": {
+      "bytes": 10741,
+      "sha256": "c894d72098dd49174e905bdd4d73ee95db6e97f6f2f95a530b6bc9cf237d71ee"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-016394.json.gz": {
+      "bytes": 9489,
+      "sha256": "72a0640225d659a20a9d13f1ac070ba2e21d5d0330d8433225ba3e38527c9ec0"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-16394.u32": {
+      "bytes": 98304,
+      "sha256": "0647a6761d6d7f8fd6d010c4d0f83aa3b14470fb6fa29ed7ba863709220773db"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-016395.json.gz": {
+      "bytes": 9312,
+      "sha256": "6a5428d334afc8dd417737f4099bf92ad647e21b04db86029092c6da1bcc3cb9"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-16395.u32": {
+      "bytes": 98304,
+      "sha256": "5eca62f071beb0a789978a4bdc22bf0aab99cedab2cc92122fa89696a4d81e98"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-016396.json.gz": {
+      "bytes": 9348,
+      "sha256": "83a9e545726c5f2d7fa0eec3ace9990c093c06ef61a4b973cadf561bd1d85bbf"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-16396.u32": {
+      "bytes": 98304,
+      "sha256": "76e5382941da2c11781e5ffebce1dc5c08986b98542b75cd3609ab296f1cdbc8"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-016397.json.gz": {
+      "bytes": 9139,
+      "sha256": "70da742158e399044f94a1cc78c4b01d1223994b4d3db94f293d432f41e50330"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-16397.u32": {
+      "bytes": 98304,
+      "sha256": "13e14193dd348dabb9f350fd292c5cdfafd6593388e51ab1861f48f03c46fdc4"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-016398.json.gz": {
+      "bytes": 9117,
+      "sha256": "d920872672434e634d26109ee68b2c662dc7ddf1e9a14ad48b7db8e7aa24efc4"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-16398.u32": {
+      "bytes": 98304,
+      "sha256": "8f9c0c7220c6e79b6608c296615bde652158b99d063135463e49b29adcbf7f25"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019761.json.gz": {
+      "bytes": 14571,
+      "sha256": "bc33a68b97f029b85cda4b98ff27e8c34bb455f36a397f4666573534ee6250ef"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-19761.u32": {
+      "bytes": 98304,
+      "sha256": "e6f18422994db7169921df233fbb3b1c318605d4928d60399787150db1f0fef4"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019762.json.gz": {
+      "bytes": 14259,
+      "sha256": "cade10257c2cb3a68312d6e466315c12d75f5f3915ad71250d2bf540f02190c7"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-19762.u32": {
+      "bytes": 98304,
+      "sha256": "e29ccf74ac3de48bef727633df33c767ddd63ffd9b21cdd8c3058491d8a75cb6"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019763.json.gz": {
+      "bytes": 15237,
+      "sha256": "3a372a2f1301e82e5c01dacaf7c498e49e79c77209b15472435ca31a927869f8"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-19763.u32": {
+      "bytes": 98304,
+      "sha256": "d5e286f2547f0c89bd38b169901673772862888afaa670454c1f9dd8ebeaf0cb"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019764.json.gz": {
+      "bytes": 13405,
+      "sha256": "cdfe981462b6a0d18172001997a08a587ad4413da65d69524140d9b99ed4cf00"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-19764.u32": {
+      "bytes": 98304,
+      "sha256": "cf4425c52c753d211a59653ce82bd603c8bb881526c4726d86df7fc8e3a35a20"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019765.json.gz": {
+      "bytes": 12868,
+      "sha256": "e54f0b9f1fe368805618e4df1faf7c8f157aadaa26dd16d9c33cf8554c72f7bf"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-19765.u32": {
+      "bytes": 98304,
+      "sha256": "b747c4027d7eb70139f83dfa46c68e7e49e0c5f4af658570b3c7b7840a52a744"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019766.json.gz": {
+      "bytes": 13875,
+      "sha256": "b7a43adf359dc659f2dbf7660393ed0bec1cb97e9366f8207530dbbbc1cbaa01"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-19766.u32": {
+      "bytes": 98304,
+      "sha256": "e18c80f400f7f2210c1504b284505b5204991645aa2e287293a0ca384c3dd408"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019767.json.gz": {
+      "bytes": 12289,
+      "sha256": "fda5e0754dc171b700c72c016a151108632c8ad1a770b6c6185883d1ba351a3e"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-19767.u32": {
+      "bytes": 98304,
+      "sha256": "0d71963826b6970e53ec1ed098ecca24f7d396b032dd5d203eb1fa0cb7531426"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019768.json.gz": {
+      "bytes": 12006,
+      "sha256": "d156aef3c5eef0a3cb2d1dc499292793b32f0bc3ff2dd8b37bc39dbe81e26ec4"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-19768.u32": {
+      "bytes": 98304,
+      "sha256": "32cffa717b27255c171e25f39e500776b32c15014e9ffba802b01e15fd8b3639"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019769.json.gz": {
+      "bytes": 12222,
+      "sha256": "6f613b03059f0b198e2b156d47a335d29aca8c371fbb71b73b1d7d68378ce006"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-19769.u32": {
+      "bytes": 98304,
+      "sha256": "93d2ee59e802ada391325ade772a4209670d5b8f3f15950f1a49a6b6805cf8a7"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020536.json.gz": {
+      "bytes": 18166,
+      "sha256": "0a15982f3b31ae5e297e6afaf1da7cfa9f3f83129b529b61ddaef500aaa88771"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-20536.u32": {
+      "bytes": 98304,
+      "sha256": "23bdf3852b9d68f9b4246b15bdb733255a2213e4015e35d5e453a6dfa54618d8"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020537.json.gz": {
+      "bytes": 18141,
+      "sha256": "292c793be69cb9a170b0df682620079bc22347b225b8793b565700fc2104a7ed"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-20537.u32": {
+      "bytes": 98304,
+      "sha256": "3a4fcb9dcd78573bf2f1324457976c7d7033482abca18ed281793d8eb234b517"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020538.json.gz": {
+      "bytes": 18963,
+      "sha256": "0358f4dd61fa860753aa0eeca24396bb48b46d63275b14d395c212766eb2e2df"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-20538.u32": {
+      "bytes": 98304,
+      "sha256": "6401ecca7663c9630273e80fbbc3a7b3ebb67b6cfa4e97c4ec8726b4fa8c8111"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020539.json.gz": {
+      "bytes": 18578,
+      "sha256": "7534f61f6870b023f4c41c996fe0d667749702af7325cc721a6bc48d979a15a9"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-20539.u32": {
+      "bytes": 98304,
+      "sha256": "fb61d813797517d3a26b1045ceb661f5faa3fc44f519b8412aa188b0e4d8b29d"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020540.json.gz": {
+      "bytes": 18728,
+      "sha256": "a1c96b5647e708ba0d5c0f9f7deab8a20591e4eea57868cbdfd0955b725a0154"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-20540.u32": {
+      "bytes": 98304,
+      "sha256": "3bcf76a6b8c13b3c6096dae25914c661c079536bb9fe7dff0a072aada8bf5bd9"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020541.json.gz": {
+      "bytes": 19873,
+      "sha256": "c750d1ac75262b19e85f696d8919bc5aa7d0c318578e682074efe420a9b52eac"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-20541.u32": {
+      "bytes": 98304,
+      "sha256": "333c548f7fff42bee3d63fe32af393f4f918e2a22473cc14069d352f55ef5e42"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020542.json.gz": {
+      "bytes": 19429,
+      "sha256": "7be3f67ef19474027d0c24b0d985c4433e99bafa5c9ecda6ebdacc5c14c5543a"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-20542.u32": {
+      "bytes": 98304,
+      "sha256": "52bcb7f95c4c85690a85e40201e35b003c92a5ed6414bdf73a4f8eb77ac4c987"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020543.json.gz": {
+      "bytes": 19473,
+      "sha256": "03cb17c57795a30f91a31f3abf745280303637d96582ddb0bc7c1262678ada74"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-20543.u32": {
+      "bytes": 98304,
+      "sha256": "dc7467ad90b21944dca910f0d7b552cd34465a184652cd14f0483de5d93befad"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020544.json.gz": {
+      "bytes": 19411,
+      "sha256": "59a72038f6ebbe762deaa6394b3eff0b15f1bde8df1e9339945823f892bda493"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-20544.u32": {
+      "bytes": 98304,
+      "sha256": "43bb0ceb365f6d317aee7a17abfd4080b5b2cbe3d416bde246772a2dd84e9e0a"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020545.json.gz": {
+      "bytes": 19444,
+      "sha256": "6b4c000b57d3269dcb3fbae1115b7d2e0c82f5a0feac9a7cc3f5eb3f9cc64324"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-20545.u32": {
+      "bytes": 98304,
+      "sha256": "7b1e728d586a3cc0793942a17f68134e2750c1ea786ff1e384d346b8ba9c9170"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020548.json.gz": {
+      "bytes": 19684,
+      "sha256": "90968877600abd3b571e3dcf42b7d4805cc80185e9259a512087ee32e0c3d7a7"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-20548.u32": {
+      "bytes": 98304,
+      "sha256": "9d6030cfbc90108a521e962d45023b0884d4fdc40354edcba5395900f79d6e5a"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020549.json.gz": {
+      "bytes": 18541,
+      "sha256": "672c06c295620aa9d8efb2ddff490ec71e9616b1e6deddf330cd9f811d5c03db"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-20549.u32": {
+      "bytes": 98304,
+      "sha256": "90144741e68b4e45afff24d90354b4bfe58231350b3c4cee907512be12ba90a6"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020550.json.gz": {
+      "bytes": 19482,
+      "sha256": "d1edc5bf2e5b838fae10a1e0d0d2f1d0628c9a2a2affe55fa84889f254007e46"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-20550.u32": {
+      "bytes": 98304,
+      "sha256": "e3ea9c822df796db4eddc95c95c53c78d976d0d3d7c5e4bd5a279c590d0d8b1c"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020551.json.gz": {
+      "bytes": 19353,
+      "sha256": "e04891bf74b7e5c285e63e9935c838b52f94d57de1d40cf4fdc539eac6d8321f"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-20551.u32": {
+      "bytes": 98304,
+      "sha256": "fceff9c5582869c76810ad4132007da405eb6bcff8425a52701b0779ca6a9fe0"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020552.json.gz": {
+      "bytes": 17784,
+      "sha256": "5fc947bbdd1425a6595a195a1b49f05dd7b0ea8f5a0718c40cd67872eba605d3"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-20552.u32": {
+      "bytes": 98304,
+      "sha256": "7db7235fb53e1dbae754c7596e85eaa093d5107fdc4fcf740adbad126635c0aa"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032364.json.gz": {
+      "bytes": 13640,
+      "sha256": "06aad75145b1859a6ea3cd688f9be5eb161ce75963be277c3b050c365d130d6c"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32364.u32": {
+      "bytes": 98304,
+      "sha256": "d99261cebe3dbe9354bdf1d4e2d9a2b1c6933322f32246c125542e820ffd72e8"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032365.json.gz": {
+      "bytes": 13675,
+      "sha256": "ffba3b9cc7331445755ac9c8453ef6aaa3ac15755665d3e535223f8217a73b4f"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32365.u32": {
+      "bytes": 98304,
+      "sha256": "7d6a6113d0c8a7a3ab44a8fdd0337c7bc353545cd42b815097952d26a3c564f4"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032366.json.gz": {
+      "bytes": 13568,
+      "sha256": "2c74f928faf272bd169d6bb49e5fed617973439afdd240dcbb250cb081dcb980"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32366.u32": {
+      "bytes": 98304,
+      "sha256": "9c09a68e6930e85411f35fcae51bbf10228cde33957a43f248e15bef6137b513"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032367.json.gz": {
+      "bytes": 13860,
+      "sha256": "73d5023dd58290daf43c0eedf50dd1423c008fb8f2a731a0c8959acbe82090b9"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32367.u32": {
+      "bytes": 98304,
+      "sha256": "583e6666f0d272d4ae57861e3a084ce7328da9d93aac5871cd0bd7d424d1da4f"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032368.json.gz": {
+      "bytes": 13476,
+      "sha256": "ec02616c0c08a4b2eafee98b9eed28b7637398d682ae85a3ee066bfdbc2b5cac"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32368.u32": {
+      "bytes": 98304,
+      "sha256": "200a3143461f3e8d4b57a65377004e0b24c5d4c3b939fcf19a1455f207b3a70f"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032369.json.gz": {
+      "bytes": 13441,
+      "sha256": "80dad5ad3242e9d82162b2f64197fca364d284b03241e6010ffe525307612785"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32369.u32": {
+      "bytes": 98304,
+      "sha256": "db54fcf88088afdf962997f02c18fae5c39538bd198136b578fc1ff492e02daa"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032370.json.gz": {
+      "bytes": 13419,
+      "sha256": "a53a4fb059c70dc268b34a2440b65711c43648c5630f6ed50940f737d750a94b"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32370.u32": {
+      "bytes": 98304,
+      "sha256": "44778c421f106b148306567ff18e5e17b420aa33636d829c127099766b52d28f"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032371.json.gz": {
+      "bytes": 13237,
+      "sha256": "5e37f21461b008ee5f62719a2203049dab4c4dddc8cd77928ae97d042adb0681"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32371.u32": {
+      "bytes": 98304,
+      "sha256": "9a4c60b8485a4161e8694f97910c5ea2560023318b4445caabd4293273210f18"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032970.json.gz": {
+      "bytes": 12866,
+      "sha256": "e838decf156d7a24f7a25c298c03ed8268df315f8a7a626d2be11e393ab1b080"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32970.u32": {
+      "bytes": 98304,
+      "sha256": "6a70431406672babbe49d60c84b181fd128cef311c5f16551b6ea13ecf1e40a2"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032971.json.gz": {
+      "bytes": 13730,
+      "sha256": "56d3c74fc85a93d2af42895f295117b51ed226df0ba2c156a3bdb12ea8dbcbe2"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32971.u32": {
+      "bytes": 98304,
+      "sha256": "ae371bd7bb03e66ca9784304957570401fcfab734691ead03d06cc5afba4723e"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032972.json.gz": {
+      "bytes": 13177,
+      "sha256": "84dfabdf16854b0f41c0a3181c3ff4c8f2d1497722568a10693776e063137f32"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32972.u32": {
+      "bytes": 98304,
+      "sha256": "9b3024b29a134acca07560b23f072a1d4ad5f5f2e12245d11607b7ac264c2935"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032973.json.gz": {
+      "bytes": 13060,
+      "sha256": "ba94435dfc9b9454a5e3fc525aa82aecd6f405ae506dcc88cb1192b683353fcd"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32973.u32": {
+      "bytes": 98304,
+      "sha256": "9c92f8a6cb06517dd22fd4c344e16932fb536845f4483505fedcc24f6407bed6"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032974.json.gz": {
+      "bytes": 13878,
+      "sha256": "d26934888cf151d3dcc4436b5687599302fd24acc2dd585a535531376221d043"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32974.u32": {
+      "bytes": 98304,
+      "sha256": "0628992a5b7c774bd6b3f94b14fd9a4966753d01081a5a559142f6e22df8aa7f"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032975.json.gz": {
+      "bytes": 13191,
+      "sha256": "395f0f96618284a4d854945de3e66d9c74410f9ecabd7e600363e498cc4e0c69"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32975.u32": {
+      "bytes": 98304,
+      "sha256": "6b173ff3e01947ca7961da95478d4780438c85a8ab833dd143f38eae5bd6a02f"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032976.json.gz": {
+      "bytes": 13167,
+      "sha256": "803e2b4397bbb4435a820b8317156a81c4f0997027d7be4112e831dbe62de129"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32976.u32": {
+      "bytes": 98304,
+      "sha256": "fa7c422fdb9cfac9085d6fd86bbacc44fd743e8f342664b5cf36026ed8bd6e3f"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032977.json.gz": {
+      "bytes": 13974,
+      "sha256": "058e6a09e722bc1ad60d984d88435f122dbceb59117e96680107fe87594957c1"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32977.u32": {
+      "bytes": 98304,
+      "sha256": "1d7cc7f72c6c3b86ebf68e961566037291afd6123b42de886e02f1d873ad629b"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032978.json.gz": {
+      "bytes": 13370,
+      "sha256": "f4e18bc6a17144903f2f84a515270c1605345198c0f2d3997ed4ae8e263b880b"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32978.u32": {
+      "bytes": 98304,
+      "sha256": "98d7e5d5ee3d5a105ba1c4e653044392c7ef8cb4f55217a87e2b67185bb137fd"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032979.json.gz": {
+      "bytes": 13267,
+      "sha256": "a23113811f1317e7d259f416321b01c4dd70910d2f4ed801f246fb0ccfe8a9db"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32979.u32": {
+      "bytes": 98304,
+      "sha256": "0dee13679cdf5e88a501cf2ad5f0aad30a91f36e1381648601e74c738482882a"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032980.json.gz": {
+      "bytes": 14126,
+      "sha256": "8484e4a8e211dda8ff89bb9ba9c9a73b862163d78ff4af500f32dab7508c152b"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32980.u32": {
+      "bytes": 98304,
+      "sha256": "e6f505c9906a597161a1cf6ad6255a65c081ed1b82c93b297c5f0460d2022ea3"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032981.json.gz": {
+      "bytes": 13828,
+      "sha256": "f17d408e314e74934e6ecc4a09e501b82ade9311593957f854e9c8d350fc65c5"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32981.u32": {
+      "bytes": 98304,
+      "sha256": "bb49e955ffd815700c018cdf7e19fd57c02484f89460e62c02baacb9ce933aca"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032982.json.gz": {
+      "bytes": 13884,
+      "sha256": "7e83b321539e0f8a0ee3eeeb41e49a65c72a1705c00e2408277df4a018cbfc23"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32982.u32": {
+      "bytes": 98304,
+      "sha256": "20a25ed3c2b200179276e692cda2f6d4f37344d41521e6bfddbf8e7722377ab0"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032983.json.gz": {
+      "bytes": 14428,
+      "sha256": "c7988d781db5589f39f0629bff921fe76c8bfa4cb7c7d98ce774f90b2b31114b"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32983.u32": {
+      "bytes": 98304,
+      "sha256": "3131fff881d201d3ebaf4bc8cfaa7f801a8ab0d8c8e97ccd22407bd8ea20043f"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032984.json.gz": {
+      "bytes": 13716,
+      "sha256": "3976250bd02208af2d71e362ccd6f6a7e96b6400a2b081448e0c99490c3658a1"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32984.u32": {
+      "bytes": 98304,
+      "sha256": "2617b59c98f86aca1460946718b48cf1e50f20700f6692f3981bda2e90875678"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032985.json.gz": {
+      "bytes": 13527,
+      "sha256": "6f60d29b992fd8187c58f99231ccc9cb4d34eea4052821c4f19402cbc251a6ee"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32985.u32": {
+      "bytes": 98304,
+      "sha256": "876327602a1f4b0d8d229e0bc3d376d81a3bc08e87363f6744e0ba23953fcdee"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032986.json.gz": {
+      "bytes": 14093,
+      "sha256": "aa5f8b45b75726fa3c5b31d8f55cf34dd4fd5f28108332080a36f745c5583ea8"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32986.u32": {
+      "bytes": 98304,
+      "sha256": "364deb0940d2704e0d2abc5f67ba72f8734e9d49170bdd6bcfb65e9d590873c5"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032987.json.gz": {
+      "bytes": 13250,
+      "sha256": "a4bef18573eac3b1d682d607b9e6a36f4dacce9b4bb84f108d128912eec9a59d"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/shot-lifetime-32987.u32": {
+      "bytes": 98304,
+      "sha256": "e7d9a5d2bc1ba5eb085793fc9f0f45da223d5348daa382ff76dd6ad715de3b0f"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-000001.json.gz": {
+      "bytes": 2947,
+      "sha256": "8b05ab6314536f66561335d0f91b0d5db47c64dfd34965efaa9b741b4b6992c6"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-001000.json.gz": {
+      "bytes": 7632,
+      "sha256": "3a285a48018a1dee80d8249cfc06cec9ddbc755c22a370d7880f4ea260d3596c"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020546.json.gz": {
+      "bytes": 18658,
+      "sha256": "e1a73127d0b10b98da9cb04d199aa1211314d789f271789f5ce33419af087c7a"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020547.json.gz": {
+      "bytes": 19489,
+      "sha256": "b76bc4cfacffa773e1b3193d64c88db5b846da39649b08593a942434abf56ed6"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/report.json": {
+      "bytes": 272204,
+      "sha256": "2289b4475a6e4d9c9cf360cfc82f4446ee354ca0fc3086ed7ec106af40bd1b8e"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/process-end.json": {
+      "bytes": 183,
+      "sha256": "c04c4e7b8c174d13146e113d5d0031b231eee22a7b05cb01d70d55d38407d6b5"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/observer-source.py": {
+      "bytes": 95472,
+      "sha256": "27bfd47328d76359b6ff3bfae5791960dfa987e3f41b420ffa55fba9c8b428c7"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/selected-state.u32": {
+      "bytes": 4480000,
+      "sha256": "f186c9e48672f4f36a7eb8b9f9c6762a722a529ae841b63c950614e97bd3518c"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime-index.json": {
+      "bytes": 17111,
+      "sha256": "8664b0fbdb35a2dffa239b02ea56628486d6641ff900705aec4eb700f9ced71c"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-000001.json.gz": {
+      "bytes": 2956,
+      "sha256": "a92c470382ef813edbc1dd2ae4b35c4123b4bb7df14e85215b24489bcbe51074"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-001000.json.gz": {
+      "bytes": 7621,
+      "sha256": "54ab3a99faef73befe9b185ef8247d60521c255eb5f0af70b4524d4a2dca37ae"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-016510.json.gz": {
+      "bytes": 9533,
+      "sha256": "4be13578adf3a6c4697165840b6cbb785ec90944ea216825073084a15f16b716"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-016511.json.gz": {
+      "bytes": 9363,
+      "sha256": "8749d2459ae54645063f7292b3602dc53febc61614e83c2a6cfaa555cc964fc3"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-016512.json.gz": {
+      "bytes": 9392,
+      "sha256": "d99aeba115471e161cd48db00f104982f7c0069c578e01bd0bd3f6843be029ad"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-016513.json.gz": {
+      "bytes": 9152,
+      "sha256": "90673b0aec81c6798d01550f9b0501ef130e55eaad3cbd5c5456e727e75c13dd"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-016514.json.gz": {
+      "bytes": 9143,
+      "sha256": "680df624bdd487bd0797723bd7b3c5b8217a409d0d7e986820971d27faf02b51"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019877.json.gz": {
+      "bytes": 14556,
+      "sha256": "35ea2edcdb7cfc2d500fdd52240cfb840a93b5f0fa4543dea785b607be682646"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019878.json.gz": {
+      "bytes": 14242,
+      "sha256": "da5c714b7ba7c9064c553ff3c584d35f9a8e26ea257f33d0c35624541a3d3cca"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019879.json.gz": {
+      "bytes": 15036,
+      "sha256": "e7f9acafc24d7405fb428d580708a534f5d3dc40bbe25ec09ca7b0a95cb19c1d"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019880.json.gz": {
+      "bytes": 13379,
+      "sha256": "eb61438a6f2ab1f092ccf9f1d1567f74ffbea4b5bd71f7f5576c9a68e0d13c10"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019881.json.gz": {
+      "bytes": 12866,
+      "sha256": "561db2a1d4678345d383c98ce675377d836af20ef03ead605dccf39ec71c473b"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019882.json.gz": {
+      "bytes": 13753,
+      "sha256": "f70d97601c6af32c9f72bf9bf4ba74c766001d5951f1d437dacf8c72b1d478cb"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019883.json.gz": {
+      "bytes": 12429,
+      "sha256": "b01d5118c5dd39ebf65b480a77d2bd06a42710f1312ad52567707e8819bdd9ef"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019884.json.gz": {
+      "bytes": 12001,
+      "sha256": "255d3f003f1e4757135ec7f2cf7ecd7c59f0aad55ac671df0ac9ae447bf40706"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-019885.json.gz": {
+      "bytes": 12221,
+      "sha256": "0906cd34becb4f3d7ce364d2443de0504c16643244e656f2454425afaa567292"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020652.json.gz": {
+      "bytes": 18176,
+      "sha256": "0ee8c519ea82cf75704bafc2e86adef253619e76fc69c1d039bf9ec75b290fdb"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020653.json.gz": {
+      "bytes": 18155,
+      "sha256": "659427db5887cdd2325112e37924e760687682845b1afab6f5d4a9d132fb355e"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020654.json.gz": {
+      "bytes": 18934,
+      "sha256": "6af7be4637b8481893a58f14e0d7ce8048d1abd5b6ef1b48a9c30b56c2836602"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020655.json.gz": {
+      "bytes": 18578,
+      "sha256": "196bbb8caead62e0a81782488de24897c4eabe440ad86cd3d1125c0c8fcfb6b5"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020656.json.gz": {
+      "bytes": 18719,
+      "sha256": "d29d7294d2b4f754b32e68bb189eb631abc399834d466ac30195fbfab532fb74"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020657.json.gz": {
+      "bytes": 19863,
+      "sha256": "269bd4979541b56faa5fe50d89a48e7e3b0669e3c6b575eb25975542c7c9d992"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020658.json.gz": {
+      "bytes": 19435,
+      "sha256": "856c284b1102ff76235a786d34026787609de38cb838535d336f1942abc7281a"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020659.json.gz": {
+      "bytes": 19445,
+      "sha256": "146e5bd05f02aee999c685c20d299bc64e1fab19c82cbdd2fad4a8436e61abbb"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020660.json.gz": {
+      "bytes": 19437,
+      "sha256": "c3dafe0a27f46f679e1c298224b1e242d8d50796aaa5ab500c7bd615c80a43a1"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020661.json.gz": {
+      "bytes": 19464,
+      "sha256": "2c4efa6eaefaddeb3df7fd539abd215946c295b0b517b42283ce953a14002bd4"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020662.json.gz": {
+      "bytes": 18643,
+      "sha256": "69726ba597406996645671b078ac70be3712844bf3778d57cc84e046ec13bfdd"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020663.json.gz": {
+      "bytes": 19538,
+      "sha256": "34dfcd9755d64b86cb484a898941d4f70fb444aa1a6d2a0555beb0eeea055c13"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020664.json.gz": {
+      "bytes": 19736,
+      "sha256": "f48e9abc47831f4b274f96a59f53a48eaafbe6c329b203757c7eed0f56739019"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020665.json.gz": {
+      "bytes": 18555,
+      "sha256": "a672d476a7b8900df6220dadf2c34a2556fc5de517fee175123a7528768f95bd"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020666.json.gz": {
+      "bytes": 19341,
+      "sha256": "55647e189fd3411ad69334afd369b291dbff6ae6afdf9a866e5bd9b8602a28d9"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020667.json.gz": {
+      "bytes": 19289,
+      "sha256": "cf20170e97f36eae78e442d855badce23a560180f378a5d71d18a0e5d71ff72a"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-020668.json.gz": {
+      "bytes": 17744,
+      "sha256": "6d002ddaa57fec6a8bb6ccce7716360233dcae7a5c9b88e304e9c0f70d20c2e4"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032595.json.gz": {
+      "bytes": 13594,
+      "sha256": "fb8e6ff70e98c96c00b4b819a9a848cbe6c038248cef7462a2d2a1dc90deb6db"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032596.json.gz": {
+      "bytes": 13602,
+      "sha256": "0045ae0df62fcea69477bc2944a266ede690b646ef23786e842d8b51117a5822"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032597.json.gz": {
+      "bytes": 13499,
+      "sha256": "8a9dcbd3eed5ab548df4402dd0e8d53a23cadc8bbb6ea929c84aa0bedae775fd"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032598.json.gz": {
+      "bytes": 13766,
+      "sha256": "bb9d5035febae5cbdf3597e6e45513fd74846ae39674f8ece3ce02d1ab62fd35"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032599.json.gz": {
+      "bytes": 13178,
+      "sha256": "5ef8d390500029221c282a6fa575223b9563b2f8ca88f2adef2b549b6c7ad3dd"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032600.json.gz": {
+      "bytes": 13368,
+      "sha256": "c6ae68a172f852a915d735e5083c795d29ffe7a58277c72e386e6e1ad3f56689"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032601.json.gz": {
+      "bytes": 13353,
+      "sha256": "8127a3eba796a832ca5920445e2cf53c9520bd3f220d94c00a937edde04406f6"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-032602.json.gz": {
+      "bytes": 13143,
+      "sha256": "9a4cb56cf517a59b171daeee0e597eb2c0560fdc658e6db392a17588292c1142"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033201.json.gz": {
+      "bytes": 12931,
+      "sha256": "5a14af6ba23b01d8c4c49a8d5727357b57f2282aec59016da01d99ff188cdfe6"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033202.json.gz": {
+      "bytes": 13737,
+      "sha256": "a8459b0704cae420d5240aaef3d18eb09e2606938504c7a9f3fff5a946d38ce0"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033203.json.gz": {
+      "bytes": 13219,
+      "sha256": "a7111ea1260837889397cb6f348b9d810642413b27439143c68f17a9b9016638"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033204.json.gz": {
+      "bytes": 13061,
+      "sha256": "e49f00c7fefb61b8316531f37b5cd99eb8c167c75b69d912d597bded515e45c5"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033205.json.gz": {
+      "bytes": 13922,
+      "sha256": "482498f42ee379e3ae24acc1c4ce8205e035f3c18359225ad47f85f6f97cb6c0"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033206.json.gz": {
+      "bytes": 13211,
+      "sha256": "9ce29cebff6d2527a6eaae6188c8d45f65692762fba6074f9413bb8ec37421e1"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033207.json.gz": {
+      "bytes": 13190,
+      "sha256": "35632fd0d4b137ca1039819b265b11f3f69679cb5cbceb659f3df52477be1194"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033208.json.gz": {
+      "bytes": 13937,
+      "sha256": "851b6f4772af950b55a6b3bac421f9f017db1cfb5111b094344140167e4ef3ee"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033209.json.gz": {
+      "bytes": 13389,
+      "sha256": "56e42f2e2fbba78c02f5dfbc3772e2e9bec6fb1e4383ec9ccf7eb6271d89a2fa"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033210.json.gz": {
+      "bytes": 13247,
+      "sha256": "f5273f6478e6726f6859d7976eb1304dcc17fa86d853d318beedd298667bac06"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033211.json.gz": {
+      "bytes": 14073,
+      "sha256": "e5c6ef1f7a60126a81333f867496a6e69eba61c6ca1614c075f7d451795de10c"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033212.json.gz": {
+      "bytes": 13740,
+      "sha256": "0c3703a75920bc6866ead0bee9f0e49bb99ab57bfeae45420e76ec372b7a02a2"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033213.json.gz": {
+      "bytes": 13637,
+      "sha256": "e81081e71061435c30c468d4447eed7abd55fee6f84aa889b0560dde9ff69d43"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033214.json.gz": {
+      "bytes": 14374,
+      "sha256": "3db6fb6a6571cb8bf282b0af9e868405d2709ab4d947a7b0b0b9dbd0f58c5841"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033215.json.gz": {
+      "bytes": 13576,
+      "sha256": "48c55f943e28887354bea25300969e30a2ad75d9f55d7822f5200afd6dba8ef3"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033216.json.gz": {
+      "bytes": 13389,
+      "sha256": "db598f7ad60ff5be100dfecfe378a28e191c5d8369b24cc6f528ece39bd863ca"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033217.json.gz": {
+      "bytes": 13983,
+      "sha256": "59dc5309b5cdb3c688e0d009b47bf5468fe565d03ea4b503196354061f3ce321"
+    },
+    "artifacts/th14/shot-lifetime-native-nov05/prefix-slots-v2/native/shot-lifetime/callback-033218.json.gz": {
+      "bytes": 13119,
+      "sha256": "7778883a4f4eeb0644e1c24ff1539161472a8bf92fdecba9232daad1e51d33ab"
+    },
+    "tools/th14-natural-rng-overlap-nov05.py": {
+      "bytes": 6965,
+      "sha256": "4935c30f54675ffc9d6170261a62dbfc0c20d885fe0b9b79dd8dec9ad3a3f8e6"
+    },
+    "tools/th14-audit-original-nine-shot-slots-nov05.py": {
+      "bytes": 1000,
+      "sha256": "ad7d4070d1f14f840b9c1328b3c1bce941d0829bbc0b8c5b313a3ed04bdda2e2"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-off/result.json": {
+      "bytes": 349,
+      "sha256": "12a0432f3d0aff49ae53abcfd04230d242ef2abd72b9c9fb74b5e3ac067e3727"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-off/expanded-verified.json": {
+      "bytes": 1116,
+      "sha256": "2e755620c6fc9f03ea909d49bad194ecd114d2550178c519e0f64befa8681093"
+    },
+    "tools/th14-verify-original-nine-shot-native-nov05.py": {
+      "bytes": 4174,
+      "sha256": "f31615047c539b2e8d98551b99759a9c0094ab999375abcf7322d7777691c396"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/expanded-verified.json": {
+      "bytes": 1115,
+      "sha256": "cbc5fec7de5cb44e1ad628569c0582914d99f2135e326089b3511ebf4ade85d3"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-off/model/selected-state.u32": {
+      "bytes": 4480000,
+      "sha256": "2ff266fd0d30e2d2089cdc598e9bb78ceeba20d73bca8d5086ddf134f528529d"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/selected-state.u32": {
+      "bytes": 4480000,
+      "sha256": "2ff266fd0d30e2d2089cdc598e9bb78ceeba20d73bca8d5086ddf134f528529d"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-off/model/full-camera.u32": {
+      "bytes": 10499700,
+      "sha256": "480c5c11cdd1a5a1894f3ad3050669506b449fe0cbb7c43e5dabe0139e8839c7"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/full-camera.u32": {
+      "bytes": 10499700,
+      "sha256": "480c5c11cdd1a5a1894f3ad3050669506b449fe0cbb7c43e5dabe0139e8839c7"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-off/model/replay-cursor.u32": {
+      "bytes": 559984,
+      "sha256": "d3d1cb9187413f8d9e72ca708490292d8dddd2fc346f3e831e1dceef5e434f67"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/replay-cursor.u32": {
+      "bytes": 559984,
+      "sha256": "d3d1cb9187413f8d9e72ca708490292d8dddd2fc346f3e831e1dceef5e434f67"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-off/model/portable-hud.u32": {
+      "bytes": 280000,
+      "sha256": "335aaeb7012b918ca175119a0e9a81bb10b490681a07673d951a7f506a623154"
+    },
+    "artifacts/th14/original-nine-shot-native-nov05/overlap-on/model/portable-hud.u32": {
+      "bytes": 280000,
+      "sha256": "335aaeb7012b918ca175119a0e9a81bb10b490681a07673d951a7f506a623154"
+    },
+    "tools/th14-original-nine-shot-native-nov05.py": {
+      "bytes": 3696,
+      "sha256": "a05f23dea32e697f6ee5d9fc396f10ef890bca56ece63c92f759454f218ae2fd"
+    },
+    "tools/th14-compare-original-nine-shot-native-nov05.py": {
+      "bytes": 6279,
+      "sha256": "a742d768f1e9c4f9cb0d123e04938ff89b1241562f361ae3e88d1ec46364b62d"
+    },
+    "tools/th14-original-shot-pair-nov05.py": {
+      "bytes": 11671,
+      "sha256": "6e2a23b69650a69f7b2a5d556561c47a115210b8fc1c07f840a4e6e3a5f3858a"
+    },
+    "tools/th14-compare-natural-rng-overlap-nov05.py": {
+      "bytes": 6595,
+      "sha256": "54a7d3e70cbbf39ca6388cf310285773519f79d510e86da9cdc79886479f85a6"
+    }
+  },
+  "toolSha256": "d686aa4de316fc0ff3cdc8885e354ba453ba258c4ac32f9372d7ec305e4f07d0"
+}
