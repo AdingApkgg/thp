@@ -1,0 +1,123 @@
+{
+  "schema": "th14/stage-wait-cancel-public-evidence/1",
+  "productionSourceFix": true,
+  "productionHostWaitNowCancelledAtZeroRequestedPhaseMask": true,
+  "actualOwnerBeginAndCancellationMethodsCompiled": true,
+  "actualSdlAdapterCancelBodyCompiled": true,
+  "realWaitGenerationAndUploadQueueHelpers": true,
+  "declaredRecordingDependencies": [
+    "decode callback",
+    "graphics release callback"
+  ],
+  "before": {
+    "failedChecks": 7,
+    "totalChecks": 26,
+    "hostCancellations": 0,
+    "waitStillActive": true,
+    "pendingUploadHelperReferences": 1
+  },
+  "after": {
+    "failedChecks": 0,
+    "totalChecks": 35,
+    "hostCancellations": 3,
+    "waitStillActive": false,
+    "pendingUploadHelperReferences": 0
+  },
+  "staleBeforeDispatchRejected": true,
+  "staleAfterDispatchRejected": true,
+  "newGenerationProtected": true,
+  "repeatedCancelIsNoOp": true,
+  "uploadControlScope": "Unit directly enqueues a helper reference before cancellation; not an observed ordinary GPU request.",
+  "firstCheckerAssertionCountFailureRetained": true,
+  "correctedExtraRecordingChecks": 9,
+  "ownerSourceSha256": "1f924b0d13c356099e82061b19738e0fcc0dd46bbdf071596106c97fd1ba1791",
+  "applicationSourceSha256": "74ec8edae213a169539f9c4336d132200bb1cfb2eb17d8d1b405a7a16c2be5bf",
+  "conservativeHeaderInventoryCount": 139,
+  "headerInventorySha256": "52934e1995476bbc144237dd03a1010a4e7c4b3af2313f176aeffdf686064dbd",
+  "ordinaryApplicationExecuted": false,
+  "previewWasmReplaced": false,
+  "fullGameplayRegressionRun": false,
+  "independentReadinessIntegrated": false,
+  "fourthReplayGlobalsDeliveryTested": false,
+  "ordinaryApplicationLifetimeFullyAccepted": false,
+  "modePassCountsChanged": false,
+  "gameAssetsCopied": false,
+  "originalProcessBrowserOrAudioStarted": false,
+  "completeGame": false,
+  "nativeEquivalent": false,
+  "evidenceBindings": {
+    "artifacts/th14/stage-wait-cancel-nov05/component/build.json": {
+      "bytes": 18708,
+      "sha256": "bdaddc28b90f643a9504f181942fd0e46a463d9c92c461d1dcf644a16940b9fd"
+    },
+    "artifacts/th14/stage-wait-cancel-nov05/component/verified.json": {
+      "bytes": 1098,
+      "sha256": "a0e53e49d78bdfd3b5986be19d74be84aa6492a16622ba10569d57a4d0ad2f8c"
+    },
+    "artifacts/th14/stage-wait-cancel-nov05/component/before/component.wasm": {
+      "bytes": 628548,
+      "sha256": "51694d2fa3f038486b3fe6fb99354550ccefd146e0061bc47730286687f063ed"
+    },
+    "artifacts/th14/stage-wait-cancel-nov05/component/before/fixture.cpp": {
+      "bytes": 5260,
+      "sha256": "9a8869836cce63decba4eb4a9b71855d70300915bc774c68788f93ce875571c2"
+    },
+    "artifacts/th14/stage-wait-cancel-nov05/component/after/component.wasm": {
+      "bytes": 628520,
+      "sha256": "81915a39f860aab1b150c181ba3264d1ed6f317d7dcf64d284e7f9350327ceb5"
+    },
+    "artifacts/th14/stage-wait-cancel-nov05/component/after/fixture.cpp": {
+      "bytes": 5242,
+      "sha256": "6fa171ee7806bd16760d3942cf82cc243e06307923a03b60b6467edfca2c736e"
+    },
+    "artifacts/th14/stage-wait-cancel-nov05/root-fixed/build.json": {
+      "bytes": 18707,
+      "sha256": "430dd293ab5090560c13e08dae75e75eef96be124472dcc7c39e4c47749800bd"
+    },
+    "artifacts/th14/stage-wait-cancel-nov05/root-fixed/verified.json": {
+      "bytes": 1098,
+      "sha256": "9839c3d9f0d744a8b570178ba686c18773b6095fe018669e98880f6b9c662ccd"
+    },
+    "artifacts/th14/stage-wait-cancel-nov05/root-fixed/before/component.wasm": {
+      "bytes": 628548,
+      "sha256": "51694d2fa3f038486b3fe6fb99354550ccefd146e0061bc47730286687f063ed"
+    },
+    "artifacts/th14/stage-wait-cancel-nov05/root-fixed/before/fixture.cpp": {
+      "bytes": 5417,
+      "sha256": "945a751d068c2e7aadd995107094404df6f296909e6f6a07a1f34043123ee959"
+    },
+    "artifacts/th14/stage-wait-cancel-nov05/root-fixed/after/component.wasm": {
+      "bytes": 628520,
+      "sha256": "81915a39f860aab1b150c181ba3264d1ed6f317d7dcf64d284e7f9350327ceb5"
+    },
+    "artifacts/th14/stage-wait-cancel-nov05/root-fixed/after/fixture.cpp": {
+      "bytes": 5399,
+      "sha256": "f0ccea99785136309887116eb89fec77274da69f14e9c193e384f0a1771b7f14"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameSessionResources.cpp": {
+      "bytes": 14365,
+      "sha256": "1f924b0d13c356099e82061b19738e0fcc0dd46bbdf071596106c97fd1ba1791"
+    },
+    "runtimes/th12/th12_web/cpp/sdl/Application.cpp": {
+      "bytes": 89150,
+      "sha256": "74ec8edae213a169539f9c4336d132200bb1cfb2eb17d8d1b405a7a16c2be5bf"
+    },
+    "tools/th14-stage-wait-cancel-check-nov05.py": {
+      "bytes": 8559,
+      "sha256": "2625d83c34c2e876511d9833c99c863611355a02d025388ff0931a73a3f29be5"
+    },
+    "tools/th14-stage-wait-cancel-run-nov05.mjs": {
+      "bytes": 2862,
+      "sha256": "9104095137c38c116f5922be1b868679574a2fb62171aa4ef82ae6505c42a3ee"
+    },
+    "artifacts/th14/stage-wait-cancel-nov05/checker-initial/failure.json": {
+      "bytes": 191,
+      "sha256": "57287856f682a7e960e0026fffd48b6d65dabc96be69858cb43fbadfad4ff450"
+    },
+    "artifacts/th14/stage-wait-cancel-nov05/checker-initial/checker.mjs": {
+      "bytes": 2784,
+      "sha256": "1d8c03a034cfd4f390a4278fc64d96d5be917076cbe04da4b15cb14f2879d6c5"
+    }
+  },
+  "toolSha256": "7daf918e94854f6aec8191d98ad1d30e66ffcf4908661936b3a8c3cec69e590a"
+}

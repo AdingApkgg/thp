@@ -212,7 +212,9 @@ void GameSessionResources::finish_stage_parts(){
 void GameSessionResources::cancel_stage_loading(){
     if(!incoming_stage)return;
     if(effects)effects->cancel_stage_decode(*incoming_stage);
-    if(effects&&requested_phases)effects->cancel_stage_phases(*incoming_stage,requested_phases);
+    // The host wait already owns a generation before any graphics phase is
+    // requested. A zero mask must still cancel that work before owner teardown.
+    if(effects)effects->cancel_stage_phases(*incoming_stage,requested_phases);
     incoming_stage=nullptr;pending_stage.reset();pending_number=0;
     decoded_phases=requested_phases=ready_phases=0;
 }
