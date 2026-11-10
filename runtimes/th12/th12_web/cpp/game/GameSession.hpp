@@ -18,9 +18,16 @@
 #include <memory>
 #if PORT_TITLE == 14
 #include <chrono>
+#include "SessionFailureScopeTh14.hpp"
 #endif
 
 namespace th11 {
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_WORKER)
+class StageCppWorkerTh14;
+#if defined(TH14_CPP_STAGE_DECODE)
+class StageCppDecodeTh14;
+#endif
+#endif
 
 // High-level lifetime and frame boundary shared by the native and WebAssembly
 // front ends.  Managers that implement bullets, enemies and players are
@@ -65,12 +72,42 @@ class GameSession final {
 public:
 #if PORT_TITLE == 14
     explicit GameSession(u32 initial_ticks=0);
+    // The platform's cold loader constructs the score owner after file8.
+    // Direct stage/session callers retain the ordinary eager defaults.
+    GameSession(u32 initial_ticks,bool initialize_score_defaults);
+    void initialize_score_defaults();
+    ~GameSession();
+    void stop_stage_workers()noexcept;
+#if defined(TH14_CPP_STAGE_WORKER)
+    void stop_cpp_stage_worker()noexcept;
+    bool start_cpp_stage_worker();
+    ReplayRngRestoreResultTh14 stage_cpp_worker_result()const noexcept;
+    bool stage_cpp_worker_joined()const noexcept;
+    // Presence is distinct from a Failed result, including an absent worker.
+    bool has_cpp_stage_worker()const noexcept{return bool(stage_cpp_worker);}
+#if defined(TH14_CPP_STAGE_DECODE)
+    bool stage_loading_callback_busy()const noexcept;
+    u32 stage_loading_finished_word()const noexcept;
+    bool stage_loading_callback_allows_close()const noexcept;
+#if defined(TH14_WORKER_RETURN_OBSERVER)
+    bool observes_stage_worker(const StageCppWorkerTh14* value)const noexcept{return value==stage_cpp_worker.get();}
+#endif
+    StageResourceEffects::DecodeResult cpp_stage_decode(StageResources&,StageResourceEffects::Phase,u32);
+#if defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
+    bool cpp_stage_pending_file(AnmResource*&,u16&)const noexcept;
+    StageResourceEffects::DecodeResult cpp_stage_upload_offer(StageResources*&,StageResourceEffects::Phase&,AnmResource*&,u16&)const noexcept;
+    bool cpp_stage_complete_file(AnmResource&,u16)noexcept;
+#endif
+#endif
+#endif
+    void shutdown()noexcept;
 #else
     GameSession();
 #endif
     GameSessionResources resources;
     AnmManager animations;
 #if PORT_TITLE==14
+    LoadingTh14 shared_loading;
     FontBitmapTh14 font_bitmap;
 #endif
     SceneCompositor compositor{animations};
@@ -84,6 +121,9 @@ public:
     GameInput game_input;
     u64 recording_timestamp=0;
     std::unique_ptr<GameBattle> battle;
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    std::unique_ptr<ControlStateTh14> th14_control_owner;
+#endif
     std::unique_ptr<TitleMenu> title;
     std::unique_ptr<PauseMenu> pause_menu;
 #if PORT_TITLE == 14
@@ -122,7 +162,7 @@ public:
     StageCameraWordBoundaryTh14 stage_load_camera_word_boundary;
     std::function<bool(const SceneCamera&,u32)> stage_load_perspective_boundary;
     u32 stage_load_host_flags=0;
-    void request_host_close(){stage_load_host_flags=(stage_load_host_flags&~0x100u)|0x80u;}
+    void request_host_close(){__atomic_store_n(&stage_load_host_flags,(__atomic_load_n(&stage_load_host_flags,__ATOMIC_RELAXED)&~0x100u)|0x80u,__ATOMIC_RELEASE);}
 #endif
     bool pause();
     bool resume();
@@ -130,7 +170,8 @@ public:
     bool start_stage(GameResources& source, u32 stage);
 #if PORT_TITLE == 14
     bool prepare_initial_player();
-    bool finish_loading();
+    bool prepare_initial_scene(bool complete);
+    bool finish_loading(bool defer_initial_control=false);
 #endif
     bool draw(AnmRenderer& renderer,AsciiText* overlay=nullptr);
     bool ready() const noexcept { return error.empty() && state.stage!=0
@@ -139,15 +180,33 @@ public:
 #endif
         ; }
     bool battle_callbacks_attached() const noexcept { return battle_attached; }
+#if PORT_TITLE == 14
+    // Main may observe Loading and this Main-owned attachment flag while
+    // an initial worker constructs the private battle. Do not inspect its
+    // unique_ptr, replay cursor, events, or initialization fields until join.
+    bool initial_battle_private()const noexcept{
+        return state.phase==GameSessionPhase::loading&&!battle_attached;
+    }
+#endif
     const char* phase_name() const noexcept;
 private:
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_WORKER)
+    std::shared_ptr<StageCppWorkerTh14> stage_cpp_worker;
+#if defined(TH14_CPP_STAGE_DECODE)
+    std::shared_ptr<StageCppDecodeTh14> stage_cpp_decode;
+    StageResources* stage_cpp_decode_owner=nullptr;
+#endif
+#endif
     bool battle_attached=false;
 #if PORT_TITLE == 14
+    u32 transition_type0=0;
     bool demo_title_pending=false;
+    bool pending_initial_control_activation=false;
     bool pending_core_title=false,pending_core_first=false;
     TitleScreen pending_core_screen=TitleScreen::Main;
     bool activate_title(GameResources&,bool,TitleScreen);
     bool activate_stage();
+    bool prepare_initial_entry(ReplayStageState&);
     std::unique_ptr<GameConfig> replay_user_config;
 #endif
     u32 last_held=0;
@@ -171,8 +230,13 @@ private:
     u32 title_idle=0,demo_index=0;
     i32 last_replay_file=0;
     GameResources* source=nullptr;
-    bool fail(const char* message) { error=message?message:"session error"; return false; }
-    void reset_state() noexcept;
+    bool fail(const char* message) {
+#if PORT_TITLE == 14
+        if(SessionFailureScopeTh14::report(this,message))return false;
+#endif
+        error=message?message:"session error";return false;
+    }
+    void reset_state(bool retain_transition=false) noexcept;
 };
 
 }

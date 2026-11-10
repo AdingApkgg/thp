@@ -21,7 +21,8 @@ const CryptParams* archive_crypt_table(u32 version) noexcept {
         case 95: case 10: case 103: case 11: return archive_crypt_th95;
         case 12: case 125: case 128: return archive_crypt_th12;
         case 13: return archive_crypt_th13;
-        case 14: return archive_crypt_th14;
+        // TH143 1.00a: all 319 entries independently compared with thtk 143.
+        case 14: case 143: return archive_crypt_th14;
         // Measurement (section 292): the pbg archives of TH16, TH17, TH18 and TH19 decode to the very
         // bytes an independent thtk extraction produces with this table, sampled per entry, and with the
         // TH13 rows as well; the two tables agree on those entries, and the suite checks every entry.

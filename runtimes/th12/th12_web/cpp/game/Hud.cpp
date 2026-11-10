@@ -8,7 +8,30 @@
 #include <cstring>
 
 namespace th11 {
-void HudScore::update(i32 current) noexcept {
+void HudScore::update(const i32& current) noexcept {
+#if PORT_TITLE==14
+    th14_hud_score_update([&](HudScoreAccessTh14,HudScoreWordTh14 word)->i32{
+        switch(word){
+        case HudScoreWordTh14::Current:return th14_hud_load(current);
+        case HudScoreWordTh14::Displayed:return displayed_value();
+        case HudScoreWordTh14::Speed:return th14_hud_load(speed);
+        case HudScoreWordTh14::High:return high_value();
+        case HudScoreWordTh14::Continues:return continues_value();
+        case HudScoreWordTh14::HighContinues:return th14_hud_load(high_continues);
+        case HudScoreWordTh14::Flags:return signed_bits(th14_hud_load(flags));
+        }
+        return 0;
+    },[&](HudScoreAccessTh14,HudScoreWordTh14 word,i32 value){
+        switch(word){
+        case HudScoreWordTh14::Displayed:th14_hud_store(displayed,value);break;
+        case HudScoreWordTh14::Speed:th14_hud_store(speed,value);break;
+        case HudScoreWordTh14::High:th14_hud_store(high,value);break;
+        case HudScoreWordTh14::HighContinues:th14_hud_store(high_continues,value);break;
+        case HudScoreWordTh14::Flags:th14_hud_store(flags,u32(value));break;
+        default:break;
+        }
+    });
+#else
     // 41ef00. Both extend tables start at 1,000,000,000 stored units;
     // add_score caps valid gameplay at 999,999,999, so neither is reachable.
     if(current!=displayed){
@@ -19,6 +42,7 @@ void HudScore::update(i32 current) noexcept {
         if(displayed>=current)speed=0;
     }
     if(high<displayed){high=displayed;high_continues=continues;flags|=4;}
+#endif
 }
 Hud::Hud(AnmManager& a,AnmResource& f,AnmResource& t,GameEconomy& e,EnemyCommandEnvironment& n,StageCompletionState& c,HudEffects& fx)
     :animations(a),front(f),text(t),economy(e),enemies(n),completion(c),effects(fx){prepare_stage();}
@@ -41,7 +65,16 @@ bool Hud::bind(AnmVm& vm,AnmResource& resource,i32 script,u16 file){animations.r
 }
 u32 Hud::create(AnmResource& resource,i32 script,u16 file){auto* vm=animations.create(resource,script,file,22);return vm?vm->id:0;}
 void Hud::interrupt(u32 id,i16 label){auto* vm=animations.find(id);if(!vm)return;vm->interrupt(label);if(!vm->child.previous)for(auto* n=vm->child.next;n;n=n->next)n->value->interrupt(label);}
-void Hud::prepare_stage(){elapsed.set(0,&animations.rate);previous_seconds=-1;score.displayed=economy.score_units;}
+void Hud::prepare_stage(i32* current_seconds){
+#if PORT_TITLE==14
+    th14_prepare_hud_fields(elapsed,&animations.rate,score.displayed,current_seconds,previous_seconds,
+        [this](){return th14_hud_load(economy.score_units);},
+        [](HudPrepareWordTh14,auto& field,auto value){th14_hud_store(field,value);});
+#else
+    elapsed.set(0,&animations.rate);previous_seconds=-1;score.displayed=economy.score_units;
+    if(current_seconds)*current_seconds=-1;
+#endif
+}
 #if PORT_TITLE == 16
 bool Hud::bind_icons_th16(){
     // 426df0/426e27 call full42c920: scripts30-45, managed stock VMs.
@@ -217,7 +250,12 @@ void Hud::display_bombs(i32 count,i32 fragments){
     for(;i<8;++i)signal(i,3);
 }
 #endif
-bool Hud::boss_visible(const HudInput& input)const{return enemies.bosses[0]&&!(enemies.manager_flags&1)&&!input.dialogue;}
+bool Hud::boss_visible(const HudInput& input)const{
+#if PORT_TITLE == 14
+    if(!enemies.th14_owner())return false;
+#endif
+    return enemies.bosses[0]&&!(enemies.manager_flags&1)&&!input.dialogue;
+}
 bool Hud::notice(i32 type,i32 value){
 #if PORT_TITLE == 16
     if(type==2||type==4){
@@ -309,7 +347,7 @@ bool Hud::update(const HudInput& input){
 }
 bool Hud::finish_update(const HudInput& input){
 #if PORT_TITLE == 14
-    if(!indicator_th14(input))return false;elapsed.tick();return true;
+    if(!indicator_th14(input))return false;th14_hud_elapsed_tick(elapsed);return true;
 #else
     const auto* boss=enemies.bosses[0];
     if(boss&&!(boss->flags&0x21)){
@@ -384,9 +422,13 @@ bool Hud::queue_text(AsciiText& output,const HudInput& input){
     }
 #endif
 #if PORT_TITLE == 14
-    {auto counters=score;if(input.practice){counters.high=std::max(input.practice_high,score.displayed);counters.high_continues=0;}
-    const auto* first=icon_th14(0);
-    if(!th14_hud_counters(output,economy,counters,first?u8(first->color>>24):0))return false;}
+    {const auto* first=icon_th14(0);const u8 alpha=first?u8(first->color>>24):0;
+    if(input.practice){
+        HudScore counters;counters.displayed=score.displayed_value();
+        counters.high=std::max(input.practice_high,counters.displayed);counters.high_continues=0;
+        counters.continues=score.continues_value();
+        if(!th14_hud_counters(output,economy,counters,alpha))return false;
+    }else if(!th14_hud_counters(output,economy,score,alpha))return false;}
 #else
     style.scale={1,1};style.pass=0;style.color=0xffffff|(lives[0].color&0xff000000);
     const i32 high=input.practice?std::max(input.practice_high,score.displayed):score.high;

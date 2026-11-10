@@ -35,7 +35,7 @@ Vec2 sample_vec2_stack(Vec2Interpolator& interpolation,AnmEnvironment& env){
     // and floating-RNG FNINIT PC64 are already tracked by the ANM environment.
     const i32 mode=i32(interpolation.mode);
     if(interpolation.duration&&mode>=18&&mode<=21)
-        env.th14_interpolation_scratch(env.texture_high_precision?0x037fu:0x007fu,0xffffu);
+        env.th14_interpolation_scratch(env.th14_execution_precision()?0x037fu:0x007fu,0xffffu);
 #endif
     return value;
 }
@@ -56,10 +56,23 @@ void alpha_start(AlphaInterpolator& v,i32 duration,u8 mode,u8 from,u8 to,const f
     if(clear)v.initial_tangent[0]=v.final_tangent[0]=0;v.timer.set(0,rate);
 }
 u32 rgb_bits(Rgb v){return (u32(v.blue)&255)|((u32(v.green)&255)<<8)|((u32(v.red)&255)<<16);}
-bool dispatch_interrupt(AnmVm& vm,const float* rate){
+bool dispatch_interrupt(AnmVm& vm,const float* rate
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    ,const i32* captured_interrupt=nullptr
+#endif
+){
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    const i32 observed_interrupt=captured_interrupt?*captured_interrupt:i32(vm.pending_interrupt);
+#endif
     auto* marker=vm.script_begin;AnmInstruction* fallback=nullptr;
     for(;marker->opcode!=-1;marker=reinterpret_cast<AnmInstruction*>(reinterpret_cast<u8*>(marker)+marker->length)){
-        if(marker->opcode==64){const i32 id=marker->argument<i32>(0);if(id==vm.pending_interrupt)break;if(id==-1)fallback=marker;}
+        if(marker->opcode==64){const i32 id=marker->argument<i32>(0);if(id==
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+            observed_interrupt
+#else
+            vm.pending_interrupt
+#endif
+        )break;if(id==-1)fallback=marker;}
     }
     vm.pending_interrupt=0;vm.flags&=~0x1000u;if(marker->opcode!=64)marker=fallback;if(!marker)return false;
     // TH14 47002f calls4752f0: timer assignment keeps the integer frame,
@@ -139,7 +152,7 @@ int AnmVm::update(AnmEnvironment& env){
 #endif
     // TH13 0x46249b returns zero when opcode 2 has stopped the script. Keeping
     // the VM registered preserves its last visible frame (TH12 returns one).
-    struct RateScope{float& value;float previous;~RateScope(){value=previous;}} guard{env.rate,env.rate};
+    struct RateScope{decltype(env.rate)& value;float previous;~RateScope(){value=previous;}} guard{env.rate,env.rate};
     if(kPortTitle==16?(flags2&0x200):(kPortTitle==13||kPortTitle==14)?(flags2&0x100):(flags&0x20000000))env.rate=1;
 #if PORT_TITLE == 16
     // 45f9ad..45fa55: parent slowdown uses the saved incoming rate, then the
@@ -150,12 +163,18 @@ int AnmVm::update(AnmEnvironment& env){
 #if PORT_TITLE == 14
     if(const float slowdown=inherited_slowdown();slowdown>0){env.rate=float(guard.previous-float(guard.previous*slowdown));if(env.rate<0)env.rate=0;}
     // 46ff13 runs pre-update with the effective rate, even after opcode 2.
+    if(th13_effect==1&&geometry){const int status=static_cast<TransitionType0Th14*>(geometry)->update(env);if(status)return status;}
     if(th13_effect==8)anm_th14_ribbon_update(*this,env);
     if(th13_effect==7){const int status=anm_th14_particles_update(*this,env);if(status)return status;}
 #endif
     if(!instruction)return (kPortTitle==13||kPortTitle==14||kPortTitle==16)?0:1;if(flags&0x20000)return 0;
 #if PORT_TITLE == 14
     if(!age.rate)age.set(0,&env.rate);age.tick();
+#if defined(TH14_CPP_STAGE_DECODE)
+    //46ffa5 loads pending exactly once, before46ffc2 reads Control.
+    const i32 pending_on_entry=pending_interrupt;
+    if(!pending_on_entry&&(u32(flags2)&0x6000u)==0x2000u&&env.th14_control_vm_blocked())return 0;
+#endif
 #endif
     auto finish=[&](){
 #if PORT_TITLE == 14
@@ -166,7 +185,11 @@ int AnmVm::update(AnmEnvironment& env){
         if(rng_scope.failed)return -1;
 #endif
         if(after_update&&after_update(*this))return 1;timer.tick();return 0;};
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    if(pending_on_entry&&!dispatch_interrupt(*this,&env.rate,&pending_on_entry)){timer.advance(-1);return finish();}
+#else
     if(pending_interrupt&&!dispatch_interrupt(*this,&env.rate)){timer.advance(-1);return finish();}
+#endif
     for(u32 budget=0;instruction->time<=timer.current;++budget){
         if(budget==100000)return -1;
 #if PORT_TITLE == 14
@@ -379,7 +402,7 @@ int AnmVm::update(AnmEnvironment& env){
         }
         case anm_th13_random_polar:{
 #if PORT_TITLE == 14
-            env.texture_high_precision=true;
+            env.th14_execution_precision()=true;
 #endif
             // TH13 0x463497: both draws use the global script RNG, even when
             // the VM selects the visual RNG. The second draw is signed too.
@@ -431,7 +454,7 @@ int AnmVm::update(AnmEnvironment& env){
         case 40:{const u32 bound=u32(integer(1));auto& rng=(kPortTitle==14||kPortTitle==16)?env.script_rng:env.random(*this);const i32 v=bound?signed_bits(rng.next32()%bound):0;*int_dest(0)=v;break;}
         case 41:{const float max=float(floating(1));
 #if PORT_TITLE == 14
-            env.texture_high_precision=true;
+            env.th14_execution_precision()=true;
 #endif
             auto& rng=(kPortTitle==14||kPortTitle==16)?env.script_rng:env.random(*this);const float value=float(double(rng.unit())*max);*float_dest(0)=value;break;}
         case 42:case 43:case 44:case 45:case 46:{const double v=float(floating(1));double result=op==42?std::sin(v):op==43?std::cos(v):op==44?std::tan(v):op==45?std::acos(v):std::atan(v);*float_dest(0)=float(result);break;}

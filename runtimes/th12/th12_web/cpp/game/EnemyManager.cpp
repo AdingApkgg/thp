@@ -6,16 +6,21 @@
 #include "SpellController.hpp"
 #include "ScreenShake.hpp"
 namespace th11 {
-EnemyManager::EnemyManager(EclProgram& p,EnemyEnvironment& e,EnemyCommandEnvironment& c,EnemyFrameWorld& w):program(&p),environment(e),commands(c),world(w){timer.set(0,&environment.rate);commands.manager=this;
+EnemyManager::EnemyManager(EclProgram& p,EnemyEnvironment& e,EnemyCommandEnvironment& c,EnemyFrameWorld& w):program(&p),environment(e),commands(c),world(w){timer.set(0,&environment.rate);
 #if PORT_TITLE == 14
     environment.th14_enemy_list=&first;
+    commands.th14_publish_owner(this);
+#else
+    commands.manager=this;
 #endif
 }
 EnemyManager::~EnemyManager(){
     for(auto& [key,entry]:entries)entry->enemy.script.release_threads(entry->script);
-    if(commands.manager==this)commands.manager=nullptr;
 #if PORT_TITLE == 14
+    if(commands.th14_owner()==this)commands.th14_publish_owner(nullptr);
     if(environment.th14_enemy_list==&first)environment.th14_enemy_list=nullptr;
+#else
+    if(commands.manager==this)commands.manager=nullptr;
 #endif
 }
 Enemy* EnemyManager::spawn(const char* name,const EnemySpawn& parameters){
@@ -140,15 +145,32 @@ bool EnemyManager::retire(){
     first=last=nullptr;count=0;total_created=0;program=nullptr;
     environment.enemy_count=0;environment.boss=nullptr;
     for(auto& boss:commands.bosses)boss=nullptr;
-    if(commands.manager==this)commands.manager=nullptr;
+    if(commands.th14_owner()==this)commands.th14_publish_owner(nullptr);
     if(environment.th14_enemy_list==&first)environment.th14_enemy_list=nullptr;
     return true;
 }
 bool EnemyManager::initialize_empty(EclProgram& next){
-    if(owner_present()||count||first||last)return false;
-    if(!reset(next))return false;
-    commands.manager=this;environment.th14_enemy_list=&first;
+    if(owner_present()||count||first||last||!entries.empty())return false;
+    // These projections were retired on Main before starting the worker.
+    // Other Main callbacks may still read them with no owner. Do not issue
+    // redundant same-value writes while constructing the private replacement.
+    if(environment.enemy_count||environment.boss)return false;
+    for(const auto* boss:commands.bosses)if(boss)return false;
+    // Retail4228b7..4228ed clears the private manager, publishes its pointer,
+    // then reserves ID zero. HUD+158 and HUD+1b8 are different owners: this
+    // constructor must not clear remaining phases or the health marks.
+    program=&next;total_created=0;last_error=0;script_error={};spawn_depth=0;
+    timer.previous=timer.current=0;timer.fractional=0;timer.rate=nullptr;timer.flags=0;
+    spawn_capacity=0;commands.manager_flags=0;
+    environment.th14_enemy_list=&first;
+    commands.th14_publish_owner(this);total_created=1;
     return true;
+}
+bool EnemyManager::finish_stage_owner(){
+    if(!owner_present()||(timer.flags&1))return false;
+    // Retail42244f..4224a8 follows the ECL loader and callback registration.
+    // ECL/player activation remains disabled until Timeline Ready is acquired.
+    timer.set(0,&environment.rate);spawn_capacity=99999;return true;
 }
 #endif
 bool EnemyManager::update(){

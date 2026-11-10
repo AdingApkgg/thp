@@ -1,5 +1,8 @@
 #pragma once
 #include "Rng.hpp"
+#if PORT_TITLE == 14
+#include "StageRestoreMemoryTh14.hpp"
+#endif
 
 namespace th11 {
 #if PORT_TITLE == 14
@@ -14,7 +17,11 @@ struct ReplayRngRestoreScopeTh14 {
     using Callback=void(*)(void*,ReplayRngRestorePointTh14,Rng&,Rng*);
     Rng* gameplay;void* owner;Callback callback;
     ReplayRngRestoreScopeTh14* previous;bool running=false;
+#if defined(TH14_CPP_STAGE_WORKER)
+    static inline thread_local ReplayRngRestoreScopeTh14* active=nullptr;
+#else
     static inline ReplayRngRestoreScopeTh14* active=nullptr;
+#endif
     ReplayRngRestoreScopeTh14(Rng& rng,void* context,Callback function)noexcept:
         gameplay(&rng),owner(context),callback(function),previous(active){active=this;}
     ~ReplayRngRestoreScopeTh14(){active=previous;}
@@ -54,13 +61,14 @@ class ReplayRngRestoreJobTh14 {
             const auto ready=readiness(point);
             if(ready!=Result::Ready){if(ready==Result::Failed)failed=true;return ready;}
             if(step==0){
-                if(kind==Kind::Record){captured=gameplay.seed;*recording=captured;}
-                else gameplay.seed=u16(seed);
+                if(kind==Kind::Record)captured=th14_record_gameplay_seed(gameplay,*recording);
+                else th14_playback_gameplay_seed(gameplay,seed);
             }else if(step==1){
                 // Playback456115 reloads the immutable replay word. Record
                 //4560a7 keeps its captured AX even if gameplay advances.
-                script->seed=kind==Kind::Record?captured:u16(seed);
-            }else gameplay.calls=0;
+                if(kind==Kind::Record)th14_record_script_seed(*script,captured);
+                else th14_playback_script_seed(*script,seed);
+            }else th14_clear_gameplay_calls(gameplay);
             ++step;++store_count;last=point;
             ReplayRngRestoreScopeTh14::checkpoint(point,gameplay,script);
             if(!committed(point)){failed=true;return Result::Failed;}

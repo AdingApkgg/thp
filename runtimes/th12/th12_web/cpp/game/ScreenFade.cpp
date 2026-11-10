@@ -3,7 +3,11 @@
 #include "PortTitle.hpp"
 #include <algorithm>
 namespace th11 {
-i32 ScreenFade::update(bool stopped,bool frozen) noexcept {
+i32 ScreenFade::update(bool stopped,bool frozen
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    ,const ControlPublicationTh14* live_control
+#endif
+) noexcept {
     if(stopped)return 7;
     if(type==3||(kPortTitle==14&&type==0)){
 #if PORT_TITLE == 14
@@ -22,6 +26,10 @@ i32 ScreenFade::update(bool stopped,bool frozen) noexcept {
     if(duration)alpha=std::max(0,timer.current<duration?truncate_int(double(timer.fractional)*255./duration):255);
 #endif
     if(timer.current>=wrapping_add(duration,2))return 7;
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    //46c9ca: the live word is read after alpha and the termination check.
+    if(live_control)frozen=live_control->frozen();
+#endif
     if(!frozen)timer.tick();return 1;
 }
 void ScreenFade::draw(AnmRenderer& renderer) const {

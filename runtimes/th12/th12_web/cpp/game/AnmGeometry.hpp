@@ -1,10 +1,16 @@
 #pragma once
 #include "AnmVm.hpp"
+#if PORT_TITLE == 14
+#include "TransitionType0Th14.hpp"
+#endif
 namespace th11 {
 struct AnmVertex {Vec3 position;float reciprocal_w;u32 color;Vec2 uv;};
 static_assert(sizeof(AnmVertex)==28);
 // Original logical 640x480 coordinates, before backend viewport conversion.
 bool anm_quad_positions(const AnmVm& vm,Vec3 (&out)[4],const AnmRenderSpace& space={}) noexcept;
+#if PORT_TITLE == 14
+bool anm_th14_draw_quad_positions(const AnmVm&,Vec3 (&out)[4],const AnmRenderSpace& space={}) noexcept;
+#endif
 Vec2 anm_vertex_uv(const AnmVm& vm,u32 vertex) noexcept;
 Vec2 anm_screen_uv(Vec3 position) noexcept;
 bool anm_ring_vertices(const AnmVm& vm,AnmVertex* out,u32 capacity,const AnmRenderSpace& space={}) noexcept;

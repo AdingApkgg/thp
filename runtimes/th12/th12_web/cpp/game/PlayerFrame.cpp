@@ -2,6 +2,8 @@
 #include "PlayerFrame.hpp"
 #include "AnmRenderer.hpp"
 #include "Replay.hpp"
+#include "PowerAddWordsTh14.hpp"
+#include "HudScalarTh14.hpp"
 #if PORT_TITLE == 16
 #include "PlayerTh16Life.hpp"
 #endif
@@ -25,7 +27,7 @@ float PlayerTh14Scale::update(i32 frame,const float* rate)noexcept{
     if(!(flags&0x10))return 1;
     auto& v=interpolation;
     if(v.duration){
-        auto& t=v.timer;const float speed=t.rate?*t.rate:1.f;t.previous=t.current;
+        auto& t=v.timer;const float speed=t.rate?th14_rate_load(t.rate):1.f;t.previous=t.current;
         if(speed>.99f&&speed<1.01f){t.current=wrapping_add(t.current,1);t.fractional+=1.f;}
         else{t.fractional+=speed;t.current=truncate_int(t.fractional);}
         if(t.current>=v.duration){t.set(v.duration,rate);v.duration=0;factor=v.end[0];}
@@ -58,7 +60,9 @@ bool player_th14_tick_clocks(PlayerFrameState& state,const PlayerFrameInput& inp
 bool player_th14_death_drops(GameEconomy& economy,Vec3 p,PlayerFrameWorld& world){
     // Retail 44dda3..44de94: lose half a power step, then emit seven
     // ordinary small-power items. Each angle operation is an SSE float.
-    economy.power=std::max(wrapping_sub(economy.power,economy.power_step/2),economy.power_step);
+    th14_death_power_words([&](DeathPowerAccessTh14 access){
+        return access==DeathPowerAccessTh14::Step?th14_hud_load(economy.power_step):th14_hud_load(economy.power);
+    },[&](DeathPowerAccessTh14,i32 value){th14_hud_store(economy.power,value);});
     const float target_y=p.y-224.f,dy=target_y-p.y,dx=0.f-p.x;
     const float angle=dx==0&&dy==0?1.5707963705062866f:float(std::atan2(double(dy),double(dx)));
     for(i32 i=0;i<7;++i){

@@ -5,6 +5,7 @@
 #include "Trace.hpp"
 #include "Localization.hpp"
 #include "GameSession.hpp"
+#include "StagePreRngTh14.hpp"
 #include "SpellTh14Visuals.hpp"
 #include "SpellTh16Visuals.hpp"
 #include "BulletTh16.hpp"
@@ -62,6 +63,33 @@ GameBattle::GameBattle(GameSessionResources& r,AnmManager& a,GameEconomy& e,Spel
 GameBattle::~GameBattle(){for(auto* node=enemies.first;node;node=node->next)release_deformation(node->value->state);if(dialogue)dialogue->clear();for(auto& vm:spell_backgrounds)animations.release_geometry(vm);}
 bool GameBattle::create_deformation(EnemyState& e){auto effect=std::make_unique<ScreenDeformation>(animations);if(!effect->initialize(resources.core.text))return false;e.deformation=effect.release();return true;}
 #if PORT_TITLE == 14
+bool GameBattle::prepare_initial_scene(bool complete){
+    if(initialized||!player||stage||!resources.stage)return unavailable("invalid initial scene owner");
+    if(!complete){
+        if(incoming_scene_owner||!stage_camera_read_job.reset())return unavailable("initial scene already prepared");
+        incoming_scene_owner=std::make_unique<Stage>(animations,resources.stage->background,resources.core.text,
+            compositor.clear_color,u16((resources.stage_number&1)+3));
+        incoming_scene_owner->active_camera=&compositor.world_camera;return true;
+    }
+    if(!incoming_scene_owner||stage_camera_read_job.copied_words())return unavailable("initial scene completion owner changed");
+    // Match the existing C++ loading-thread camera reader. This hosted
+    // initial path still has no independent thread; do not dispatch another
+    // shared-scene host job or convert an asynchronous wait into failure.
+    if(!incoming_scene_owner->prepare_object_storage(resources.stage->scene.animation_count))return unavailable("initial scene VM storage preparation");
+    const auto copied=stage_camera_read_job.advance(compositor.world_camera,[](u32){return prototype::Work::Ready;},
+        [this](u32,u32 offset,u32& value){
+            const auto* address=reinterpret_cast<const u8*>(&compositor.world_camera)+offset;
+            if(reinterpret_cast<uintptr_t>(address)&3u)return prototype::Work::Failed;
+            const auto* aligned=static_cast<const u32*>(__builtin_assume_aligned(address,4));
+            value=__atomic_load_n(aligned,__ATOMIC_RELAXED);
+            return prototype::Work::Ready;
+        });
+    if(copied!=prototype::Work::Ready)return unavailable("initial scene camera read failed");
+    if(!incoming_scene_owner->initialize(resources.stage->scene,resources.stage_number,stage_camera_read_job.snapshot(),false)){
+        error=incoming_scene_owner->error;return false;
+    }
+    return true;
+}
 bool GameBattle::prepare_initial_player(i32 character,i32 subtype){
     if(initialized||player||!player_selection_valid(character,subtype))return unavailable("invalid initial player preparation");
     player_input={};player_input.movement.character=character;player_input.movement.subtype=subtype;
@@ -74,12 +102,37 @@ bool GameBattle::prepare_initial_player(i32 character,i32 subtype){
     if(!player->rebuild_th14_options()){last_error=-601;error="initial player option preparation";return false;}
     return true;
 }
+bool GameBattle::prepare_initial_tail_owners(i32 character,i32 subtype){
+    if(initialized||!player||bomb||stage||!incoming_scene_owner||stage_camera_read_job.copied_words()!=75||
+       !player_selection_valid(character,subtype)||player->input.movement.character!=character||
+       player->input.movement.subtype!=subtype||enemies.first||enemies.last||enemies.count)
+        return unavailable("invalid private initial tail owner preparation");
+    // 435fb4->435a00 resets the already-empty initial enemy owner.
+    // Existing list storage is private and remains empty until Main's ECL.
+    enemies.timer.set(0,&enemy_environment.rate);
+    // 411bc0 constructs Bomb (Main20/Draw38 bit2 enabled). No VM,
+    // RNG or stage reset belongs to this constructor.
+    bomb=std::make_unique<BombController>(animations,resources.core.players[character],*player,*this,9,&resources.core.text);
+    bomb->selection=character*2+subtype;
+    // 41c510 is Spell, not Dialogue. The by-value inert storage already
+    // exists privately; establish its constructor timer at this boundary.
+    // Native inactive Main26/Draw12 do not change their owner state.
+    spells.timer.set(0,&animations.rate);
+    return true;
+}
 #endif
 bool GameBattle::initialize(i32 character,i32 subtype,i32 difficulty) {
     if(!player_selection_valid(character,subtype)||difficulty<0||difficulty>4)return unavailable("invalid battle selection");
+#if PORT_TITLE == 14
+    const bool prepared_bomb=!initialized&&player&&bomb&&incoming_scene_owner&&stage_camera_read_job.copied_words()==75;
+    if(prepared_bomb&&bomb->selection!=character*2+subtype)return unavailable("prepared initial Bomb selection changed");
+#endif
     initialized=false;last_error=0;frame=0;error.clear();events.clear();
 #if PORT_TITLE == 14
-    th14_control_clock.set(0,&animations.rate);
+    // A joined initial worker already performed436015. Do not repeat its
+    // reset during Main activation. Direct/unprepared callers retain the
+    // ordinary initialization; flags1 is Timer's existing initialized bit.
+    if(!prepared_bomb||!(th14_control_clock.flags&1))th14_control_clock.set(0,&animations.rate);
     // Initial Player construction can precede scene/HUD/ECL decoding. Bind
     // the actual incoming ANIM owners when the worker has completed them.
     for(u32 i=0;i<resources.stage->ecl_animations.size();++i)
@@ -107,9 +160,18 @@ bool GameBattle::initialize(i32 character,i32 subtype,i32 difficulty) {
     animations.reference_positions[1]=compositor.world_camera.reserved24;
     animations.camera_delta=compositor.world_camera.animation_delta;
     trace_point=12;
-    stage=std::make_unique<Stage>(animations,resources.stage->background,resources.core.text,compositor.clear_color,u16((resources.stage_number&1)+3));
-    stage->active_camera=&compositor.world_camera;
-    if(!stage->initialize(resources.stage->scene,resources.stage_number,compositor.world_camera)){last_error=-1008;error=stage->error;return false;}
+#if PORT_TITLE == 14
+    if(incoming_scene_owner){
+        if(stage_camera_read_job.copied_words()!=75)return unavailable("initial scene camera incomplete");
+        stage=std::move(incoming_scene_owner);
+        if(!stage->start_objects()){last_error=-1008;error=stage->error;return false;}
+    }else
+#endif
+    {
+        stage=std::make_unique<Stage>(animations,resources.stage->background,resources.core.text,compositor.clear_color,u16((resources.stage_number&1)+3));
+        stage->active_camera=&compositor.world_camera;
+        if(!stage->initialize(resources.stage->scene,resources.stage_number,compositor.world_camera)){last_error=-1008;error=stage->error;return false;}
+    }
     trace_point=13;
     enemy_commands.stage=stage.get();
     spells.selection=kPortTitle==16?character+subtype:character*2+subtype;spells.stage=resources.stage_number;spells.replay=replaying;
@@ -117,7 +179,11 @@ bool GameBattle::initialize(i32 character,i32 subtype,i32 difficulty) {
     trace_point=14;
     player_input={};player_input.movement.character=character;player_input.movement.subtype=subtype;
     player_input.movement.enemy_manager=true;
+#if PORT_TITLE == 14
+    if(!prepared_bomb)bomb.reset();
+#else
     bomb.reset();
+#endif
 #if PORT_TITLE == 14
     if(!player){if(!prepare_initial_player(character,subtype))return false;}
     else if(player->input.movement.character!=character||player->input.movement.subtype!=subtype)return unavailable("prepared player selection changed");
@@ -141,13 +207,20 @@ bool GameBattle::initialize(i32 character,i32 subtype,i32 difficulty) {
     if(!player->start_stage()){last_error=-601;error="initial player stage reset ("+std::to_string(player->last_error)+")";return false;}
     trace_point=17;
     if(replaying&&!player->restore_replay_position(replay_entry)){error="replay player entry";return false;}
+#if PORT_TITLE == 14
+    if(!prepared_bomb){
+#endif
     bomb=std::make_unique<BombController>(animations,resources.core.players[character],*player,*this,kPortTitle==14?9:7,&resources.core.text);
     bomb->selection=character*2+subtype;
+#if PORT_TITLE == 14
+    spells.timer.set(0,&animations.rate);
+    }
+#endif
     synchronize_player();
     trace_point=18;
     if(!spawn_root()){last_error=-1001;error="stage main: ECL opcode "+std::to_string(enemies.script_error.opcode);return false;}
     trace_point=19;
-    countdown_seconds=-1;
+    th14_hud_store(countdown_seconds,i32(-1));
     if(!hud.start_stage(resources.stage->logo,hud_input(),demo,true,completion.mode.control_mode,hud.score.continues)){error="HUD initialization";return false;}
 #if PORT_TITLE == 14
     // 4368aa refreshes max-power auxiliaries after the ECL/HUD entry work.
@@ -182,6 +255,13 @@ struct BattleStageActions final:prototype::StageActions {
     GameBattle& battle;explicit BattleStageActions(GameBattle& b):battle(b){}
     bool retire_owner()override{return battle.retire_stage_owner();}
     bool begin_worker_wait(bool initial)override{return !battle.resources.effects||battle.resources.effects->begin_stage_worker_wait(initial);}
+    bool worker_owns_capture_wait()const override{
+#if defined(TH14_CPP_STAGE_WORKER)
+        return battle.resources.effects&&battle.resources.effects->stage_cpp_worker_enabled();
+#else
+        return false;
+#endif
+    }
     bool worker_wait_ready()const override{return !battle.resources.effects||battle.resources.effects->stage_worker_wait_ready();}
     bool enter_work_and_initialize()override{return battle.initialize_stage_work();}
     prototype::Work advance_work_and_initialize()override{return battle.advance_stage_work();}
@@ -216,6 +296,10 @@ bool GameBattle::next_stage(GameResources& source,u32 number,std::function<bool(
     // Starting the loader must not send label3 again after ANM29 has run.
     outgoing_stage=std::move(stage);
     if(!stage_loading.begin(animations,resources.core.ascii)){error="TH14 next-stage loading animation creation failed";return false;}
+#if defined(TH14_CPP_STAGE_DECODE)
+    animations.th14_effect_stop=1; // Native43654d, after loading17 creation.
+    if(auto* control=animations.th14_control.get())control->callbacks_enabled=0;
+#endif
     return true;
 }
 bool GameBattle::pump_stage_loading(u64 now,i32 first_capture_index,u32 supervisor_flags){
@@ -241,6 +325,10 @@ bool GameBattle::poll_stage_scene(u64 now){
     return false;
 }
 bool GameBattle::retire_stage_owner(){
+    // Retail436100 resets the shared speed before retiring pools, creating
+    // loading17, or dispatching the replacement worker.
+    th14_stage_float_bits(animations.rate,0x3f800000u);
+    enemy_environment.rate=1;
     // Retail4363ea clears the item pools before retiring the enemy owner.
     // Items must not remain collectible during the incoming worker wait.
     items.reset();
@@ -258,6 +346,9 @@ bool GameBattle::retire_stage_owner(){
     // Retail43642a calls411f40/411980 before the worker wait. Returning
     // Bomb slots after that wait changes loading's LIFO allocation order.
     bomb.reset();
+#if defined(TH14_CPP_STAGE_DECODE)
+    th14_next_tail_prepared.store(false,std::memory_order_release);
+#endif
     if(dialogue)dialogue->clear();dialogue.reset();
     return true;
 }
@@ -265,7 +356,17 @@ bool GameBattle::initialize_stage_work(){return advance_stage_work()==prototype:
 prototype::Work GameBattle::advance_stage_work(){
     if(stage_initialization_finished)return prototype::Work::Ready;
     if(!stage_initialization_started){
-        if(!compositor.stage_start()){error="TH14 worker copy0 reset failed";return prototype::Work::Failed;}
+        bool deferred=false;
+#if defined(TH14_CPP_STAGE_WORKER)
+        deferred=resources.effects&&resources.effects->stage_cpp_worker_enabled();
+#endif
+        if(!deferred){
+            if(!compositor.stage_start()){
+                error="TH14 worker copy0 reset failed";return prototype::Work::Failed;
+            }
+            // Retail435b44 follows copy0 and precedes456050.
+            th14_stage_pre_rng(animations.rate,completion.state.ending_active,hud.score.high,economy.score_units);
+        }
         stage_initialization_started=true;
     }
     if(next_stage_initializer_step){
@@ -285,20 +386,37 @@ prototype::Work GameBattle::advance_stage_work(){
     for(auto& vm:spell_backgrounds){animations.release_geometry(vm);vm.initialize();}
     spell_flags=0;spell_elapsed=spell_bonus=spell_id=0;
     spell_timing={};if(replaying)spell_timing.records=replay_entry.spell_times;
-    enemy_commands.stage_section=0;enemy_commands.section_frame=0;
+#if defined(TH14_CPP_STAGE_DECODE)
+    // The real decode worker performs435b62 early and436044 late. Main must
+    // retain the outgoing section while it waits for that worker's tail.
+    if(!(resources.effects&&resources.effects->stage_cpp_decode_enabled()))
+#endif
+    {enemy_commands.stage_section=0;enemy_commands.section_frame=0;}
     for(auto& value:enemy_environment.shared_integers)value=0;
-    shakes.effects.clear();shakes.offset={};items.reset();animations.rate=enemy_environment.rate=1;
+    shakes.effects.clear();shakes.offset={};items.reset();enemy_environment.rate=animations.rate;
     economy.communication=0;communication.reset(&animations.rate);stage_initialization_finished=true;return prototype::Work::Ready;
 }
 prototype::Work GameBattle::prepare_stage_hud(){
     const auto result=resources.advance_stage_phase(*next_stage_source,StageResourceEffects::Phase::Hud,u32(enemy_environment.character*2+enemy_environment.subtype));
-    if(result==GameSessionResources::PhaseResult::Ready){hud.prepare_stage();countdown_seconds=-1;}
+    if(result==GameSessionResources::PhaseResult::Ready){
+#if defined(TH14_CPP_STAGE_DECODE)
+        // The C++ resource worker already prepared the HUD before its release
+        // of phase Ready. Repeating it here adds a second score read on Main.
+        if(!(resources.effects&&resources.effects->stage_cpp_decode_enabled()))
+#endif
+        {hud.prepare_stage(&countdown_seconds);}
+    }
     return phase_work(result);
 }
 prototype::Work GameBattle::prepare_stage_scene(){
     const auto result=resources.advance_stage_phase(*next_stage_source,StageResourceEffects::Phase::Scene,0);
     if(result!=GameSessionResources::PhaseResult::Ready)return phase_work(result);
     auto* incoming=resources.loading_bundle();if(!incoming){error="TH14 incoming scene bundle missing";return prototype::Work::Failed;}
+    bool worker_initialized=false;
+#if defined(TH14_CPP_STAGE_DECODE)
+    worker_initialized=resources.effects&&resources.effects->stage_cpp_decode_enabled();
+    if(worker_initialized&&!incoming_scene_owner){error="TH14 C++ scene owner missing";return prototype::Work::Failed;}
+#endif
     // Native40d445 reads75 words while the main publisher may be active.
     // Keep the incoming owner private until all reads and initialization finish.
     if(!incoming_scene_owner){
@@ -319,21 +437,58 @@ prototype::Work GameBattle::prepare_stage_scene(){
         if(copied==prototype::Work::Failed)error="TH14 scene camera read failed";
         return copied;
     }
-    if(!incoming_scene_owner->initialize(incoming->scene,pending_stage,stage_camera_read_job.snapshot(),false)){error=incoming_scene_owner->error;return prototype::Work::Failed;}
+    if(!worker_initialized&&!incoming_scene_owner->initialize(incoming->scene,pending_stage,stage_camera_read_job.snapshot(),false)){error=incoming_scene_owner->error;return prototype::Work::Failed;}
     stage=std::move(incoming_scene_owner);
     if(!resources.publish_stage_scene()){error=resources.error;return prototype::Work::Failed;}
     enemy_commands.stage=stage.get();return prototype::Work::Ready;
 }
-bool GameBattle::publish_stage_owner(){return enemies.initialize_empty(resources.stage->timeline);}
+bool GameBattle::publish_stage_owner(){
+#if defined(TH14_CPP_STAGE_DECODE)
+    if(resources.effects&&resources.effects->stage_cpp_decode_enabled())return enemies.owner_present();
+#endif
+    return enemies.initialize_empty(resources.stage->timeline);
+}
+#if defined(TH14_CPP_STAGE_DECODE)
+bool GameBattle::prepare_next_tail_owners(i32 character,i32 subtype){
+    if(!pending_stage||!player||bomb||!player_selection_valid(character,subtype)||
+       th14_next_tail_prepared.load(std::memory_order_acquire))return false;
+    // 435fba follows4228a0 on the same loading thread. Complete selection
+    // before publishing so Main never observes the default Reimu-A choice.
+    auto incoming=std::make_unique<BombController>(animations,resources.core.players[character],*player,*this,9,&resources.core.text);
+    incoming->selection=character*2+subtype;
+    bomb=std::move(incoming);
+    // 435fc3/41c510 follows Bomb publication. Inactive Spell callbacks do not
+    // read this timer; phase Ready publishes it before Main activates ECL.
+    spells.timer.set(0,&animations.rate);
+    th14_next_tail_prepared.store(true,std::memory_order_release);
+    return true;
+}
+#endif
 prototype::Work GameBattle::prepare_stage_timeline(){
     const auto result=resources.advance_stage_phase(*next_stage_source,StageResourceEffects::Phase::Timeline,0);
     if(result!=GameSessionResources::PhaseResult::Ready)return phase_work(result);
+#if defined(TH14_CPP_STAGE_DECODE)
+    if(!(resources.effects&&resources.effects->stage_cpp_decode_enabled()))
+#endif
+    if(!enemies.finish_stage_owner()){error="TH14 enemy owner initialization";return prototype::Work::Failed;}
     for(u32 i=0;i<resources.stage->ecl_animations.size();++i)
         enemy_animations.resources[i+2]={resources.stage->ecl_animation_names[i].empty()?nullptr:&resources.stage->ecl_animations[i],u16(10+i)};
     enemy_animations.stage_logo_resource={&resources.stage->logo,6};
     create_dialogue();spells.stage=pending_stage;
-    bomb=std::make_unique<BombController>(animations,resources.core.players[enemy_environment.character],*player,*this,kPortTitle==14?9:7,&resources.core.text);
-    bomb->selection=enemy_environment.character*2+enemy_environment.subtype;
+#if defined(TH14_CPP_STAGE_DECODE)
+    const bool worker_owners=resources.effects&&resources.effects->stage_cpp_decode_enabled();
+    if(worker_owners){
+        if(!th14_next_tail_prepared.load(std::memory_order_acquire)||!bomb||
+           bomb->selection!=enemy_environment.character*2+enemy_environment.subtype){
+            error="TH14 worker tail owner publication missing";return prototype::Work::Failed;
+        }
+    }else
+#endif
+    {
+        bomb=std::make_unique<BombController>(animations,resources.core.players[enemy_environment.character],*player,*this,kPortTitle==14?9:7,&resources.core.text);
+        bomb->selection=enemy_environment.character*2+enemy_environment.subtype;
+        if constexpr(kPortTitle==14)spells.timer.set(0,&animations.rate);
+    }
     resources.finish_stage_parts();pending_stage=0;next_stage_source=nullptr;return prototype::Work::Ready;
 }
 bool GameBattle::finish_stage_loading(){
@@ -396,8 +551,9 @@ bool GameBattle::enter_stage_transition(u32 number){
     create_dialogue();spells.stage=number;
     bomb=std::make_unique<BombController>(animations,resources.core.players[enemy_environment.character],*player,*this,kPortTitle==14?9:7,&resources.core.text);
     bomb->selection=enemy_environment.character*2+enemy_environment.subtype;
+    if constexpr(kPortTitle==14)spells.timer.set(0,&animations.rate);
     completion.mode.stage=i32(number);completion.state.exit=StageExit::None;
-    hud.prepare_stage();countdown_seconds=-1;
+    hud.prepare_stage(&countdown_seconds);
     transition_timer.set(0,&animations.rate);frame=0;
 #if PORT_TITLE == 14
     th14_control_clock.set(0,&animations.rate);
@@ -551,23 +707,35 @@ bool GameBattle::update(const std::function<bool()>& sample_input
 #else
     if(!animations.update(true)){last_error=-1005;if(error.empty())error="overlay animation update: "+animations.last_error_text();return false;}
 #endif
-    if(!stage_control()){last_error=-1009;return false;}
-    const bool control_running=!transitioning||transition_started;
+#if PORT_TITLE == 14
+    if(initial_control_activation){auto activate=std::move(initial_control_activation);initial_control_activation=nullptr;activate();}
+#endif
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    const bool control_enabled=animations.th14_control.callbacks_enabled();
+#else
+    constexpr bool control_enabled=true;
+#endif
+    if(control_enabled&&!stage_control()){last_error=-1009;return false;}
+    const bool control_running=control_enabled&&(!transitioning||transition_started);
     // Legacy420752 holds stage-six music for300 ticks. TH14's complete436620
     // callback plays at activation and has no clock300 music-resume branch.
     if(kPortTitle!=14&&control_running&&!demo&&resources.stage_number==6&&frame==300)events.push_back({BattleEventKind::MusicResume});
     if(control_running)hud.score.update(economy.score_units);
     const i32 elapsed_control_frame=
 #if PORT_TITLE == 14
-        th14_control_clock.current;
+        control_frame();
 #else
         i32(frame);
 #endif
     if(control_running&&elapsed_control_frame>=90&&player&&!(dialogue&&dialogue->active))communication.update(economy,player->motion.state.position.y);
     if(control_running)enemy_commands.section_frame=wrapping_add(enemy_commands.section_frame,1);
-    // 436cd7..436cfe advances all four detached screen-copy VMs at
-    // game-control priority 11 in TH14. Enemy callback 2 interrupts VM4 later.
-    if(!compositor.update()){last_error=-1005;error="screen compositor animation update";return false;}
+    // Retail removes Control11 during loading and re-enables its replacement
+    // only at4360c1. The HUD result gate436769..43678a then returns before
+    //436cd7..436cfe while its120 ticks remain. Detached copies must not advance
+    // on a pass where that controller body does not run.
+    if((kPortTitle!=14||control_running)&&!compositor.update()){
+        last_error=-1005;error="screen compositor animation update";return false;
+    }
 #if PORT_TITLE == 14
     // Native436d10 ticks controller+10 before Replay/player callbacks.
     if(control_running)th14_control_clock.tick();
@@ -590,12 +758,20 @@ bool GameBattle::update(const std::function<bool()>& sample_input
     enemy_environment.camera_delta=compositor.play_camera.animation_delta;
     shakes.offset=compositor.world_camera.offset;
     #if PORT_TITLE == 14
+#if defined(TH14_CPP_STAGE_DECODE)
+    shakes.update(animations.script_rng,false,&animations.visual_rng,&animations.th14_native_stack,&animations.th14_effect_stop,&animations.th14_control);
+#else
     shakes.update(animations.script_rng,false,&animations.visual_rng,&animations.th14_native_stack);
+#endif
 #else
     shakes.update(animations.script_rng,false,kPortTitle==14?&animations.visual_rng:nullptr);
 #endif
     compositor.world_camera.offset=shakes.offset;
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    fades.update(false,false,&animations.th14_effect_stop,&animations.th14_control);
+#else
     fades.update();
+#endif
     // TH14 4577bf registers score at 17; 44c52f registers player at 18.
     // The previous frame's item pickups advance before this player snapshot.
     popups.update(animations.rate);
@@ -614,13 +790,31 @@ bool GameBattle::update(const std::function<bool()>& sample_input
     }
     synchronize_player();
     target_locked=false;
-    if(stage_active&&!enemies.update()){last_error=-1001;if(error.empty())error="ECL opcode "+std::to_string(enemies.script_error.opcode)+" at time "+std::to_string(enemies.script_error.time)+(g_th14_fire_stage?" (fire stage "+std::to_string(g_th14_fire_stage)+" bullet error "+std::to_string(g_th14_fire_bullet_error)+" sprite "+std::to_string(g_th14_bullet_sprite)+" transform "+std::to_string(g_th14_bullet_transform_index)+" opcode "+std::to_string(g_th14_bullet_transform_opcode)+" program ["+([&]{std::string s;for(u32 n=0;n<18;++n){if(n)s+=",";s+=std::to_string(g_th14_bullet_program[2*n])+":"+std::to_string(g_th14_bullet_program[2*n+1]);}return s;})()+"] skipped "+std::to_string(g_th14_bullet_unhandled):"");return false;}
+    if(stage_active&&
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+       !animations.th14_control.enemy_updates_blocked()&&
+#endif
+       !enemies.update()){last_error=-1001;if(error.empty())error="ECL opcode "+std::to_string(enemies.script_error.opcode)+" at time "+std::to_string(enemies.script_error.time)+(g_th14_fire_stage?" (fire stage "+std::to_string(g_th14_fire_stage)+" bullet error "+std::to_string(g_th14_fire_bullet_error)+" sprite "+std::to_string(g_th14_bullet_sprite)+" transform "+std::to_string(g_th14_bullet_transform_index)+" opcode "+std::to_string(g_th14_bullet_transform_opcode)+" program ["+([&]{std::string s;for(u32 n=0;n<18;++n){if(n)s+=",";s+=std::to_string(g_th14_bullet_program[2*n])+":"+std::to_string(g_th14_bullet_program[2*n+1]);}return s;})()+"] skipped "+std::to_string(g_th14_bullet_unhandled):"");return false;}
     animations.rate=enemy_environment.rate;
     synchronize_player();
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    const u32 laser_control_flags=animations.th14_control.callback_flags();
+    //One native43a6a9 word drives both the skip and zero-rate branches.
+    if(!(laser_control_flags&0x405u)&&!lasers.update(false,(laser_control_flags&2u)!=0)){last_error=-1003;return false;}
+#else
     if(!lasers.update(false,false)){last_error=-1003;return false;}
-    if(stage_active&&!bullets.update(false)){last_error=-1000-bullets.last_error;return false;}
+#endif
+    if(stage_active&&
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+       !animations.th14_control.frozen()&&
+#endif
+       !bullets.update(false)){last_error=-1000-bullets.last_error;return false;}
     synchronize_player();
-    if(!items.update()){last_error=-1004;error="item update failed: "+std::to_string(items.last_error);return false;}
+    if(
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+       !animations.th14_control.item_updates_blocked()&&
+#endif
+       !items.update()){last_error=-1004;error="item update failed: "+std::to_string(items.last_error);return false;}
     if(spell_flags&1){Vec3 boss;if(!boss_position(boss)||!spells.update(player->motion.state.position.y,boss,kPortTitle==14?special_active==1:special_active!=0)){last_error=-1006;if(error.empty())error="spell update";return false;}}
     completion.update();
     // TH14 boss rings/stars precede the MSG update at430d7b. The indicator
@@ -728,10 +922,21 @@ bool GameBattle::draw(AnmRenderer& renderer,SceneDrawKind kind
         }
         return true;
     case SceneDrawKind::Player:return player&&player->draw(renderer);
-    case SceneDrawKind::Items:return items.draw(renderer);
-    case SceneDrawKind::Lasers:return lasers.draw(renderer,false);
+    case SceneDrawKind::Items:
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+        if(animations.th14_control.combat_draw_blocked())return true;
+#endif
+        return items.draw(renderer);
+    case SceneDrawKind::Lasers:
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+        if(animations.th14_control.combat_draw_blocked())return true;
+#endif
+        return lasers.draw(renderer,false);
     case SceneDrawKind::Bullets:
         if(!stage_active)return true;
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+        if(animations.th14_control.combat_draw_blocked())return true;
+#endif
         for(u32 group=0;group<6;++group)if(!bullets.draw_group(group,renderer))return false;
         return true;
     default:return false;
@@ -747,7 +952,7 @@ HudInput GameBattle::hud_input()const{
     if(player)input.player_position=player->motion.state.position;
     input.dialogue=dialogue&&dialogue->active;input.spell=(spell_flags&1)!=0;
     input.stage=i32(resources.stage_number);input.section=enemy_commands.stage_section;
-    input.seconds=countdown_seconds;input.hundredths=countdown_hundredths;
+    input.seconds=th14_hud_load(countdown_seconds);input.hundredths=countdown_hundredths;
     input.practice=completion.mode.practice;input.practice_high=practice_high;input.result_animation=result_animation;
     input.spell_frames=spell_timing.last_frames;input.spell_time=spell_timing.encoded;return input;
 }

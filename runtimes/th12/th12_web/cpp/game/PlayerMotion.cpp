@@ -1,5 +1,7 @@
 #include "ShotFiles.hpp"
 #include "PlayerMotion.hpp"
+#include "PowerPointWordsTh14.hpp"
+#include "HudScalarTh14.hpp"
 #include <algorithm>
 #include <cmath>
 namespace th11 {
@@ -128,7 +130,7 @@ bool PlayerMotion::update_th16(const PlayerMotionInput& input){
     if(timer.current>0){
         if(!animations.find(s.th16_charge_animation)){s.th16_charge_animation=world.create_movement_effect(27);if(!s.th16_charge_animation){last_error=2;return false;}}
         if(auto* vm=animations.find(s.th16_charge_animation))vm->position=s.position;
-        const float rate=timer.rate?*timer.rate:1.f;timer.previous=timer.current;
+        const float rate=timer.rate?th14_rate_load(timer.rate):1.f;timer.previous=timer.current;
         timer.fractional-=rate>.99f&&rate<1.01f?1.f:rate;timer.current=truncate_int(timer.fractional);
         if(timer.current<=0){interrupt(s.th16_charge_animation,1);timer.set(0,&animations.rate);s.th16_charge_animation=0;}
     }return true;
@@ -214,15 +216,32 @@ bool PlayerMotion::rebuild_options(const ShtHeader& sht,const GameEconomy& econo
         // All six formation index tables are identical (4d9d60 + slot*40).
         constexpr i32 offsets[8]={0,1,3,6,10,11,13,16};
         constexpr i32 scripts[3]={10,12,12},auxiliary[3]={11,14,13};
-        if(combination<0||combination>=6||economy.power_step<=0){last_error=9;return false;}
+        if(combination<0||combination>=6){last_error=9;return false;}
+#if PORT_TITLE==14
+        const auto power=th14_option_power_words([&](OptionPowerAccessTh14 access){
+            switch(access){
+            case OptionPowerAccessTh14::Power:return th14_hud_load(economy.power);
+            case OptionPowerAccessTh14::Step:return th14_hud_load(economy.power_step);
+            default:return th14_hud_load(economy.max_power);
+            }
+        });
+        if(!power.valid){last_error=9;return false;}
+        const i32 count=power.count,character=combination/2;
+#else
+        if(economy.power_step<=0){last_error=9;return false;}
         const i32 count=economy.power/economy.power_step,character=combination/2;
+#endif
         if(count<0||count>8){last_error=10;return false;}
         auto create=[&](i32 script,bool prepend){
             auto* a=animations.create(player_resource,script,player_file,14,false,prepend,nullptr,nullptr,nullptr,true);
             if(a)a->position.y=-32;
             return a;
         };
+#if PORT_TITLE==14
+        if(power.full){
+#else
         if(economy.power>=economy.max_power){
+#endif
             for(i32 i=0;i<count;++i){auto& o=options[i];erase(o.auxiliary);o.auxiliary=0;
                 auto* a=create(auxiliary[character],true);if(!a){last_error=2;return false;}o.auxiliary=a->id;}
         }else for(auto& o:options)interrupt(o.auxiliary,1);

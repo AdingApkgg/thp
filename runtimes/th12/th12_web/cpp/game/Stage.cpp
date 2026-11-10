@@ -3,10 +3,41 @@
 #include "Movement.hpp"
 #include <cmath>
 #include <type_traits>
+#if PORT_TITLE == 14
+#include "SceneCameraReadJobTh14.hpp"
+#endif
+#include <algorithm>
+#include <type_traits>
 namespace th11 {
+#if PORT_TITLE == 14
+bool Stage::prepare_object_storage(u32 count){
+    if(th14_object_storage_prepared||!object_animations.empty())return false;
+    // Native40f132..157 allocates and zeroes detached VM storage BEFORE
+    // 40d445 copies the live camera. These VMs are private and unregistered.
+    object_animations.resize(count);
+    static_assert(std::is_standard_layout_v<AnmVm> && std::is_trivially_destructible_v<AnmVm>);
+    static_assert(offsetof(AnmVm,flags2)==offsetof(AnmVm,flags)+4);
+    static_assert(offsetof(AnmVm,th13_native_flags)==offsetof(AnmVm,flags)+8);
+    for(auto& vm:object_animations){
+        auto* bytes=reinterpret_cast<u8*>(&vm);
+        // Clear private scalar representation around the three flag words;
+        // keep their regular typed stores, including atomic worker builds.
+        std::fill(bytes,bytes+offsetof(AnmVm,flags),u8(0));
+        std::fill(bytes+offsetof(AnmVm,th13_native_flags)+4,bytes+sizeof(vm),u8(0));
+        vm.flags=0;vm.flags2=0;vm.th13_native_flags=0;
+    }
+    th14_object_storage_prepared=true;return true;
+}
+#endif
 Stage::~Stage(){for(auto& vm:object_animations)manager.release_geometry(vm);for(auto& vm:state.script_animations)manager.release_geometry(vm);for(auto& vm:state.effect_animations)manager.release_geometry(vm);}
 bool Stage::initialize(const StageResource& file,i32 number,const SceneCamera& camera,bool start){
+#if PORT_TITLE == 14
+    if(file.instructions.empty())return false;
+    if(!th14_object_storage_prepared&&!prepare_object_storage(file.animation_count))return false;
+    if(object_animations.size()!=file.animation_count)return false;
+#else
     if(!object_animations.empty()||file.instructions.empty())return false;
+#endif
     resource=file;std::memset(&state,0,sizeof state);state.flags=2;state.stage_number=number;state.camera=camera;
     state.camera.position={0,0,-600};state.camera.direction={0,300,600};state.camera.up={0,1,0};state.camera.eye_offset={};
 #if PORT_TITLE == 14
@@ -17,8 +48,14 @@ bool Stage::initialize(const StageResource& file,i32 number,const SceneCamera& c
     return !start||start_objects();
 }
 bool Stage::start_objects(){
+#if PORT_TITLE == 14
+    if(!th14_object_storage_prepared&&!prepare_object_storage(resource.animation_count))return false;
+    if(object_animations.size()!=resource.animation_count)return false;
+    th14_object_storage_prepared=false;
+#else
     if(!object_animations.empty())return false;
     object_animations.resize(resource.animation_count);
+#endif
     for(auto& object:resource.objects){object.flags=1;for(const auto& primitive:object.primitives)if(!stage_animation(object_animations[primitive.animation],primitive.script))return false;}
     return true;
 }
@@ -117,9 +154,19 @@ bool Stage::publish_camera(
     static_assert(sizeof(SceneCamera)%sizeof(u32)==0);
     // Retail40dae7 publishes with REP MOVSD. Only the mapped camera words
     // are modeled here, including the original render width and height.
-    if(camera_word_boundary){
-        refresh_camera_references();
-        if(!camera_word_boundary(*this,0)){error="loading before camera publication";return false;}
+    // An independent worker may read between retail REP MOVSD iterations
+    // even with no observation callback installed. Never aggregate those
+    // shared stores into a whole-structure copy in the worker configuration.
+#if defined(TH14_CPP_STAGE_WORKER)
+    constexpr bool shared_word_copy=true;
+#else
+    constexpr bool shared_word_copy=false;
+#endif
+    if(shared_word_copy||camera_word_boundary){
+        if(camera_word_boundary){
+            refresh_camera_references();
+            if(!camera_word_boundary(*this,0)){error="loading before camera publication";return false;}
+        }
         // Native target_offset and render dimensions precede view. C++
         // retains them at the end; publish every one of the 75 native words.
         static_assert(sizeof(SceneCamera)==300);
@@ -127,17 +174,17 @@ bool Stage::publish_camera(
         static_assert(offsetof(SceneCamera,fov)==72);
         static_assert(offsetof(SceneCamera,view)==76);
         for(u32 i=0;i<75;++i){
-            u32 offset=0;
-            if(i<18)offset=i*4;
-            else if(i<21)offset=offsetof(SceneCamera,target_offset)+(i-18)*4;
-            else if(i==21)offset=offsetof(SceneCamera,fov);
-            else if(i==22)offset=offsetof(SceneCamera,render_width);
-            else if(i==23)offset=offsetof(SceneCamera,render_height);
-            else if(i>=24)offset=offsetof(SceneCamera,view)+(i-24)*4;
-            std::memcpy(reinterpret_cast<u8*>(active_camera)+offset,
-                reinterpret_cast<const u8*>(&state.camera)+offset,sizeof(u32));
-            refresh_camera_references();
-            if(!camera_word_boundary(*this,i+1)){error="loading during camera publication";return false;}
+            const u32 offset=SceneCameraReadJobTh14::source_offset(i);
+            u32 word;std::memcpy(&word,reinterpret_cast<const u8*>(&state.camera)+offset,4);
+#if defined(TH14_CPP_STAGE_WORKER)
+            __atomic_store_n(reinterpret_cast<u32*>(reinterpret_cast<u8*>(active_camera)+offset),word,__ATOMIC_SEQ_CST);
+#else
+            std::memcpy(reinterpret_cast<u8*>(active_camera)+offset,&word,4);
+#endif
+            if(camera_word_boundary){
+                refresh_camera_references();
+                if(!camera_word_boundary(*this,i+1)){error="loading during camera publication";return false;}
+            }
         }
     }else *active_camera=state.camera;
 #else

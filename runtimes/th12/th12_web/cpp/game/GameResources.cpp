@@ -21,7 +21,11 @@ int th14_webgpu_resource_copy(unsigned kind,const char* name,void* destination,u
 
 namespace th11 {
 
+#if PORT_TITLE==14 && defined(TH14_CPP_STAGE_DECODE)
+thread_local std::string last_resource;
+#else
 std::string last_resource;
+#endif
 
 namespace {
 // The archive's generation is the title's own. `archive_crypt_table` maps 12/125/128 to TH12's ciphers, 13 to
@@ -324,6 +328,97 @@ bool GameResources::load_stage_timeline(u32 stage,StageResources& output) {
     }
     return true;
 }
+#if defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
+bool GameResources::load_stage_hud_files(u32 stage,StageResources& output,u32 selection,const StageFileCompletion& complete){
+    if(stage<1||stage>7||selection>=output.messages.size())return fail("TH14 HUD file selection outside range");
+    last_error.clear();output.stage_number=stage;
+    char name[64];std::snprintf(name,sizeof name,stage_files.logo,stage);
+    if(!open_anm(name,output.logo)||!complete(output.logo,6))return false;
+    for(auto& message:output.messages)message.clear();
+    stage_dialogue_name(name,sizeof name,stage,selection);return read(name,output.messages[selection]);
+}
+bool GameResources::load_stage_scene_files(u32 stage,StageResources& output,const StageFileCompletion& complete){
+    if(!load_stage_scene(stage,output))return false;
+    return complete(output.background,u16((stage&1)+3));
+}
+namespace {
+class StageEclFiles final : public EclResourceProvider {
+public:
+    StageEclFiles(GameResources& archive, StageResources& stage,
+                  const GameResources::StageFileCompletion& complete, const char* enemy_name)
+        : archive(archive), stage(stage), complete(complete), enemy_name(enemy_name) {}
+
+    int parsed_ecl(const std::string& name, std::unique_ptr<EclResource>& file) override {
+        // The shared parser visits sibling includes even after a bad child.
+        // Preserve that child's error and stop scheduling reads or uploads.
+        if (error.empty()) error = stage.timeline.error;
+        if (!error.empty()) return -1;
+        const int result = archive.parsed_ecl(name, file);
+        if (result < 0) error = name + ": " + archive.error();
+        return result;
+    }
+
+    bool read(const std::string& name, std::vector<u8>& bytes) override {
+        if (archive.read(name, bytes)) return true;
+        error = name + ": " + archive.error();
+        return false;
+    }
+
+    bool animation(u32 file, const std::string& name) override {
+        if (file < 10 || file - 10 >= stage.ecl_animations.size()) {
+            error = "ECL animation slot limit";
+            return false;
+        }
+        const u32 slot = file - 10;
+        // Retail 422546 reuses the first owner of an occupied file slot.
+        if (!stage.ecl_animation_names[slot].empty()) return true;
+        auto& owner = stage.ecl_animations[slot];
+        if (!archive.animation(file, name) || !archive.open_anm(name, owner)) {
+            error = name + ": " + archive.error();
+            return false;
+        }
+        stage.ecl_animation_names[slot] = name;
+        if (!has_default_enemy && name == enemy_name) {
+            // Main can build templates as soon as the file is offered. Copy
+            // the independent default enemy while the worker still owns it.
+            stage.enemies = owner;
+            has_default_enemy = true;
+        }
+        if (complete(owner, u16(file))) return true;
+        error = "ECL animation handoff cancelled: " + name;
+        return false;
+    }
+
+    std::string error;
+    bool has_default_enemy = false;
+private:
+    GameResources& archive;
+    StageResources& stage;
+    const GameResources::StageFileCompletion& complete;
+    const char* enemy_name;
+};
+}
+
+bool GameResources::load_stage_timeline_files(u32 stage,StageResources& output,const StageFileCompletion& complete){
+    if (stage < 1 || stage > 7) return fail("stage outside TH14 range");
+    last_error.clear();
+    output.stage_number = stage;
+    output.timeline = {};
+    output.ecl_animation_names = {};
+    output.ecl_animations = {};
+    output.enemies = {};
+    output.boss_programs.clear();
+
+    char timeline[64], enemies[64];
+    std::snprintf(timeline, sizeof timeline, stage_files.timeline, stage);
+    std::snprintf(enemies, sizeof enemies, stage_files.enemies, stage);
+    StageEclFiles files(*this, output, complete, enemies);
+    const bool loaded = output.timeline.load(timeline, files);
+    if (!files.error.empty()) return fail(files.error.c_str());
+    if (!loaded || !output.timeline.error.empty()) return fail(output.timeline.error.c_str());
+    return files.has_default_enemy || open_anm(enemies, output.enemies);
+}
+#endif
 #endif
 
 bool GameResources::animation(u32 slot, const std::string& name) {

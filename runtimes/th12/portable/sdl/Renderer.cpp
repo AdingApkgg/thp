@@ -255,9 +255,15 @@ integer(13,!!texture);uniform(14,4,color(p.textureFactor).data());
  // Set blend parameters even while blending is disabled, so the cache always
  // describes actual GL state when a subsequent batch enables it.
  constexpr GLenum blend[]{GL_ZERO,GL_ONE,GL_SRC_COLOR,GL_ONE_MINUS_SRC_COLOR,GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA,GL_DST_ALPHA,GL_ONE_MINUS_DST_ALPHA,GL_DST_COLOR,GL_ONE_MINUS_DST_COLOR,GL_SRC_ALPHA_SATURATE};
- if(all||cached.sourceBlend!=p.sourceBlend||cached.destinationBlend!=p.destinationBlend)glBlendFunc(blend[u32(p.sourceBlend)],blend[u32(p.destinationBlend)]);
+ if(all||cached.sourceBlend!=p.sourceBlend||cached.destinationBlend!=p.destinationBlend||cached.separateAlphaBlend!=p.separateAlphaBlend||cached.sourceAlphaBlend!=p.sourceAlphaBlend||cached.destinationAlphaBlend!=p.destinationAlphaBlend){
+  if(p.separateAlphaBlend)glBlendFuncSeparate(blend[u32(p.sourceBlend)],blend[u32(p.destinationBlend)],blend[u32(p.sourceAlphaBlend)],blend[u32(p.destinationAlphaBlend)]);
+  else glBlendFunc(blend[u32(p.sourceBlend)],blend[u32(p.destinationBlend)]);
+ }
  constexpr GLenum equation[]{GL_FUNC_ADD,GL_FUNC_SUBTRACT,GL_FUNC_REVERSE_SUBTRACT,GL_MIN,GL_MAX};
- if(all||cached.blendEquation!=p.blendEquation)glBlendEquation(equation[u32(p.blendEquation)]);
+ if(all||cached.blendEquation!=p.blendEquation||cached.separateAlphaBlend!=p.separateAlphaBlend||cached.alphaBlendEquation!=p.alphaBlendEquation){
+  if(p.separateAlphaBlend)glBlendEquationSeparate(equation[u32(p.blendEquation)],equation[u32(p.alphaBlendEquation)]);
+  else glBlendEquation(equation[u32(p.blendEquation)]);
+ }
  if(all||cached.cull!=p.cull){if(p.cull!=Cull::None){glEnable(GL_CULL_FACE);glFrontFace(GL_CW);glCullFace(p.cull==Cull::Back?GL_BACK:GL_FRONT);}else glDisable(GL_CULL_FACE);}
  if(all||cached.colorMask!=p.colorMask)glColorMask(!!(p.colorMask&1),!!(p.colorMask&2),!!(p.colorMask&4),!!(p.colorMask&8));
  cached=p;drawState.valid=true;

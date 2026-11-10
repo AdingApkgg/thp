@@ -1,6 +1,8 @@
 #include "ItemRewards.hpp"
 #include "ItemManager.hpp"
 #include "Th14LifeFragments.hpp"
+#include "PowerAddWordsTh14.hpp"
+#include "HudScalarTh14.hpp"
 #include <algorithm>
 namespace th11 {
 #if PORT_TITLE == 16
@@ -148,12 +150,23 @@ bool ItemRewards::th14_combo_settle(bool dialogue){
 }
 #endif
 bool ItemRewards::add_power(i32 amount,bool& changed){
+#if PORT_TITLE==14
+    return th14_add_power_words(amount,changed,[&](PowerAddAccessTh14 access){
+        switch(access){
+        case PowerAddAccessTh14::Initial:case PowerAddAccessTh14::Final:return th14_hud_load(state.power);
+        case PowerAddAccessTh14::Maximum:return th14_hud_load(state.max_power);
+        default:return th14_hud_load(state.power_step);
+        }
+    },[&](PowerAddAccessTh14,i32 value){th14_hud_store(state.power,value);},
+    [&](PowerAddAccessTh14){return effects.notify(2);});
+#else
     changed=false;if(state.power>=state.max_power)return true;
     if(state.power_step<=0)return false;
     state.power=wrapping_add(state.power,amount);
     if(state.power>state.max_power){state.power=state.max_power;if(!effects.notify(2))return false;}
     // The original subtracts the award from the clamped value here.
     changed=wrapping_sub(state.power,amount)/state.power_step!=state.power/state.power_step;return true;
+#endif
 }
 bool ItemRewards::add_life(){
     state.lives=wrapping_add(state.lives,1);

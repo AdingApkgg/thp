@@ -37,6 +37,9 @@ struct PipelineState {
     Compare depthCompare=Compare::LessEqual, alphaCompare=Compare::Always;
     BlendFactor sourceBlend=BlendFactor::One, destinationBlend=BlendFactor::Zero;
     BlendEquation blendEquation=BlendEquation::Add;
+    bool separateAlphaBlend=false;
+    BlendFactor sourceAlphaBlend=BlendFactor::One,destinationAlphaBlend=BlendFactor::Zero;
+    BlendEquation alphaBlendEquation=BlendEquation::Add;
     Cull cull=Cull::None;
     u32 colorMask=15, alphaReference=0, fogColor=0, textureFactor=0xffffffff;
     FogMode fogMode=FogMode::None;
@@ -47,7 +50,7 @@ struct PipelineState {
     Address addressU=Address::Repeat, addressV=Address::Repeat;
     // Texture factor and world matrix can vary per instance; all other state
     // must match before preserving draw order in an instanced batch.
-    auto key() const { return std::tie(depthTest,depthWrite,blend,alphaTest,fog,rangeFog,dither,depthCompare,alphaCompare,sourceBlend,destinationBlend,blendEquation,cull,colorMask,alphaReference,fogColor,fogMode,fogNear,fogFar,fogDensity,textureTransform,minFilter,magFilter,addressU,addressV); }
+    auto key() const { return std::tie(depthTest,depthWrite,blend,alphaTest,fog,rangeFog,dither,depthCompare,alphaCompare,sourceBlend,destinationBlend,blendEquation,separateAlphaBlend,sourceAlphaBlend,destinationAlphaBlend,alphaBlendEquation,cull,colorMask,alphaReference,fogColor,fogMode,fogNear,fogFar,fogDensity,textureTransform,minFilter,magFilter,addressU,addressV); }
     bool compatible(const PipelineState& b, bool instances=false) const { return key()==b.key() && color==b.color && alpha==b.alpha && (instances || textureFactor==b.textureFactor); }
 };
 

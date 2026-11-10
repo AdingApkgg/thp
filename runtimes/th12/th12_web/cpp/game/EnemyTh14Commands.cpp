@@ -546,7 +546,7 @@ i32 enemy_th14_state_command(EnemyState& e,EclContext& c,EnemyGlobals& g,EnemyCo
         {const i32 value=i(0);if(value<0||value>6)return -2;
         e.tick_callback=EnemyTick(value);e.callbacks[0]=0;return 0;}
     case 633:{const i32 value=i(0);if(u32(value)>1)return -2;e.damage_callback=EnemyDamage(value);return 0;}
-    case 547:{const float value=f(0);g.environment.rate=value;if(world.th14_rate_target)*world.th14_rate_target=value;return 0;}
+    case 547:{const float value=f(0);g.environment.rate=value;if(world.th14_rate_target)th14_rate_store(world.th14_rate_target,value);return 0;}
     case 637:{const i32 value=i(0);i32 out=0;return world.callbacks&&world.callbacks->invoke_th14(e,value,out)?0:-2;}
     case 535:{
         const i32 values[]={i(1),i(2),i(3),i(4)};

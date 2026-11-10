@@ -1,5 +1,6 @@
 #pragma once
 #include "Types.hpp"
+#include "RateScalarTh14.hpp"
 #include <cmath>
 namespace th11 {
 inline i32 truncate_int(double value) noexcept {
@@ -16,12 +17,12 @@ struct Timer {
         previous=wrapping_add(frame,-1);current=frame;fractional=float(frame);
     }
     void tick() noexcept {
-        previous=current;const float speed=*rate;
+        previous=current;const float speed=th14_rate_load(rate);
         if(speed>0.99f&&speed<1.01f){current=wrapping_add(current,1);fractional=float(double(fractional)+1);}
         else {fractional=float(double(fractional)+speed);current=truncate_int(fractional);}
     }
     void advance(float frames) noexcept {
-        previous=current;const float speed=*rate;
+        previous=current;const float speed=th14_rate_load(rate);
         const float delta=speed>0.99f&&speed<1.01f?frames:float(double(speed)*frames);
         fractional=float(double(fractional)+delta);current=truncate_int(fractional);
     }

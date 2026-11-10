@@ -4,6 +4,9 @@
 #include "PortTitle.hpp"
 #if PORT_TITLE == 14
 #include "DeferredCaptureQueueTh14.hpp"
+#if defined(TH14_CPP_STAGE_DECODE)
+#include "ControlStateTh14.hpp"
+#endif
 #include "NativeStackTh14.hpp"
 #include <functional>
 #endif
@@ -16,6 +19,15 @@ namespace th11 {
 class AnmManager final:public AnmEnvironment {
 public:
     ~AnmManager() override;
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    // Native4f56c8 spans stage, title and ending owners. Generic ANM clear
+    // must retain it; only the actual native producer sites reset this word.
+    LoadingWordTh14<u32> th14_effect_stop=0;
+    ControlPublicationTh14 th14_control;
+    bool th14_control_vm_blocked()const noexcept override{
+        const auto* control=th14_control.get();return control&&(u32(control->flags)&2u);
+    }
+#endif
 #if PORT_TITLE == 14
     bool prepare_resource(AnmResource&,u16 file_id);
     std::function<bool(const AnmVm&)> before_initial_update;
@@ -28,6 +40,10 @@ public:
     // One reference process context; clearing a scene does not clear its stack.
     NativeStackTh14 th14_native_stack;
     void th14_interpolation_scratch(u32 word,u32 mask=~u32(0))noexcept override{
+        // This retained word models Main's ECL animation-factory stack.
+        // Loading callbacks do not execute that Main factory; do not inspect
+        // or mutate its counters/word from their separate native call stack.
+        if(AnmExecutionContextTh14::owns(static_cast<AnmEnvironment*>(this)))return;
         if(th14_native_stack.ecl_animation_factory_depth&&th14_native_stack.enemy_spawn_depth==0&&depth()==1)
             th14_native_stack.ecl_factory_interpolation(word,mask);
     }
@@ -37,7 +53,7 @@ public:
     AnmVm* find(u32 id) noexcept override;
     AnmVm* spawn_effect(AnmVm& source,i32 script) override;
     void destroy(AnmVm& vm);
-    void clear();
+    void clear(u32 keep_handle=0,u32 keep_family=0);
     void retire_resource(const AnmResource&);
     bool references(const AnmResource&)const noexcept;
     bool update(bool overlay);
@@ -51,9 +67,17 @@ public:
     bool allocate_geometry(AnmVm& vm,u32 bytes) override;
     bool update_geometry(AnmVm& vm) override;
     void release_geometry(AnmVm& vm);
-    u32 geometry_bytes(AnmVm& vm)const noexcept {const auto it=geometry_sizes.find(&vm);return it==geometry_sizes.end()?0:it->second;}
+    u32 geometry_bytes(AnmVm& vm)const noexcept {
+#if defined(TH14_NATIVE_CRITICAL_SECTIONS)
+    th14_critical_sections::ContainerGuard guard(th14_critical_sections::containers);
+#endif
+const auto it=geometry_sizes.find(&vm);return it==geometry_sizes.end()?0:it->second;}
     AnmVm* layer_first(u32 layer)const noexcept {return layer<layers.size()?layers[layer]:nullptr;}
-    u32 active_count()const noexcept {return active.size();}
+    u32 active_count()const noexcept {
+#if defined(TH14_NATIVE_CRITICAL_SECTIONS)
+    th14_critical_sections::ContainerGuard guard(th14_critical_sections::containers);
+#endif
+return active.size();}
     u32 depth()const noexcept {return spawn_depth;}
     u32 last_error=0;
     // Where inside its own script the failing instruction sat, for a report that has to

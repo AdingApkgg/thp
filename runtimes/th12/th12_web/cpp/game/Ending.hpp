@@ -12,8 +12,19 @@ struct GameInput;
 // Ending MSG and staff.msg use their own timed interpreter (TH14:4202d0),
 // independent of the stage dialogue VM.
 class Ending {
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    // First member is destroyed last, matching41fe9e after owner cleanup.
+    struct EffectStopAfterDestruction {
+        AnmManager& manager;
+        ~EffectStopAfterDestruction(){manager.th14_effect_stop=0;}
+    } effect_stop_cleanup;
+#endif
 public:
-    Ending(AnmManager& a,AnmResource& text,ScoreFile& score):animations(a),text(text),scores(score),families(a){}
+    Ending(AnmManager& a,AnmResource& text,ScoreFile& score):
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+        effect_stop_cleanup{a},
+#endif
+        animations(a),text(text),scores(score),families(a){}
     Timer elapsed,time,wait;
     u32 flags=1,color=0xffffff,seen=0,frames=0;
     i32 line=0,index=0,difficulty=0,music_request=-1,music_fade=-1;

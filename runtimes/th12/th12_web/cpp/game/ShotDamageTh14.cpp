@@ -1,4 +1,5 @@
 #include "ShotDamageTh14.hpp"
+#include "ScoreScalarTh14.hpp"
 #include <algorithm>
 #include <cmath>
 #include "Movement.hpp"
@@ -13,7 +14,7 @@ bool th14_damage_circle(std::array<Th14DamageArea,256>& pool,u32& cursor,Vec3 p,
 void th14_damage_tick(Th14DamageArea& a)noexcept{
     if(!(a.flags&1))return;
     if(a.moving){
-        auto& m=a.movement;const float rate=a.timer.rate?*a.timer.rate:1;
+        auto& m=a.movement;const float rate=a.timer.rate?th14_rate_load(a.timer.rate):1;
         const auto v=polar(m.angle,m.speed*rate);m.velocity.x=v.x;m.velocity.y=v.y;
         m.position.x+=m.velocity.x;m.position.y+=m.velocity.y;m.position.z+=m.velocity.z;
         m.position.x=float(std::floor(double(m.position.x*100.f)))/100.f;m.position.y=float(std::floor(double(m.position.y*100.f)))/100.f;a.position=m.position;
@@ -23,7 +24,7 @@ void th14_damage_tick(Th14DamageArea& a)noexcept{
         Movement stationary;stationary.position=a.position;stationary.update();a.position=stationary.position;
     }
     a.radius+=a.growth;a.angle=normalize_angle(a.angle+a.angular_velocity);a.stamp=0;
-    auto& t=a.timer;t.previous=t.current;const float rate=t.rate?*t.rate:1.f;
+    auto& t=a.timer;t.previous=t.current;const float rate=t.rate?th14_rate_load(t.rate):1.f;
     t.fractional-=rate>.99f&&rate<1.01f?1.f:rate;t.current=truncate_int(t.fractional);
     if(t.current<=0)a.flags&=~1u;
 }
@@ -96,8 +97,8 @@ bool th14_damage_collect(std::array<Th14DamageArea,256>& areas,Th14DamageWorld& 
     if(damage>cap)damage=cap;
     if(!probe&&damage){
         // Native score is in ten-point units and applies two signed divisions.
-        const i32 points=wrapping_add(damage/10,10)/10;
-        const u32 score=u32(economy.score_units)+u32(points);economy.score_units=i32(score>=1000000000u?999999999u:score);
+        th14_damage_score_words(damage,[&](){return th14_hud_load(economy.score_units);},
+            [&](i32 value){th14_hud_store(economy.score_units,value);});
     }
     return true;
 }

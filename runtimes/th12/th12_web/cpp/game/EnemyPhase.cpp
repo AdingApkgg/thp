@@ -1,4 +1,5 @@
 #include "EnemyState.hpp"
+#include "HudScalarTh14.hpp"
 namespace th11 {
 #if PORT_TITLE == 16
 // Retail424f00 and425010 are separate consumers. The frame checks time before
@@ -22,7 +23,7 @@ const char* EnemyState::check_timed_interrupt16(EnemyPhaseState& world)noexcept{
         if(interrupt.health<0||interrupt.time<=0)continue;
         if(flags&0x800000){
             const i32 remaining=wrapping_sub(interrupt.time,th16_phase_timer.current),seconds=remaining/60,hundredths=(remaining%60)*100/60;
-            *world.countdown_seconds=seconds>99?99:seconds;*world.countdown_hundredths=seconds>99?99:hundredths;
+            th14_hud_store(*world.countdown_seconds,seconds>99?99:seconds);*world.countdown_hundredths=seconds>99?99:hundredths;
         }
         if(th16_phase_timer.current<interrupt.time)return nullptr;
         health=interrupt.health;interrupt.health=-1;th16_phase_timer.set(0,world.rate);flags|=0x1000000;
@@ -73,7 +74,7 @@ const char* EnemyState::check_interrupts(EnemyPhaseState& world)noexcept{
         if(interrupt.health<0||interrupt.time<1)continue;
         if(kPortTitle!=14||(flags&0x800000)){
             const i32 remaining=wrapping_sub(interrupt.time,clock.current),seconds=remaining/60,hundredths=(remaining%60)*100/60;
-            *world.countdown_seconds=seconds>99?99:seconds;*world.countdown_hundredths=seconds>99?99:hundredths;
+            th14_hud_store(*world.countdown_seconds,seconds>99?99:seconds);*world.countdown_hundredths=seconds>99?99:hundredths;
         }
         if(clock.current<interrupt.time)return nullptr;
         health=interrupt.health;interrupt.health=-1;clock.set(0,world.rate);flags|=timeout_flag;

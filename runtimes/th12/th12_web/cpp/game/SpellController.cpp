@@ -2,6 +2,7 @@
 #include "EnemyFrame.hpp"
 #include "AsciiText.hpp"
 #include "PortTitle.hpp"
+#include "ScoreScalarTh14.hpp"
 #include <algorithm>
 #include <cstdio>
 #include <cstring>
@@ -84,8 +85,12 @@ bool SpellController::end(){
         if(!effects.spell_result(false,0))return false;
         return !(world.spell_flags&0x80)||effects.spell_sound(69);
     }
-    if constexpr(kPortTitle==16)effects.spell_award_score(world.spell_bonus,economy);
-    else{const u32 total=u32(economy.score_units)+u32(world.spell_bonus/10);economy.score_units=signed_bits(std::min(total,999999999u));}
+#if PORT_TITLE == 16
+    effects.spell_award_score(world.spell_bonus,economy);
+#else
+    th14_spell_score_words([&](){return th14_hud_load(economy.score_units);},[&](){return world.spell_bonus;},
+        [&](i32 value){th14_hud_store(economy.score_units,value);});
+#endif
 #else
     world.spell_flags&=~0x21u;effects.spell_circle_end();
     if(!(world.spell_flags&2))return effects.spell_result(false,0);

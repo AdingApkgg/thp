@@ -18,6 +18,8 @@ inline void render(PipelineState& p,u32 key,u32 v){
     case 25:p.alphaCompare=Compare(v-1);break;case 26:p.dither=v;break;case 27:p.blend=v;break;case 28:p.fog=v;break;
     case 34:p.fogColor=v;break;case 36:p.fogNear=floating(v);break;case 37:p.fogFar=floating(v);break;case 38:p.fogDensity=floating(v);break;
     case 48:p.rangeFog=v;break;case 60:p.textureFactor=v;break;case 140:p.fogMode=FogMode(v);break;case 168:p.colorMask=v;break;case 171:p.blendEquation=BlendEquation(v-1);break;
+    case 206:p.separateAlphaBlend=v!=0;break;case 207:p.sourceAlphaBlend=BlendFactor(v-1);break;
+    case 208:p.destinationAlphaBlend=BlendFactor(v-1);break;case 209:p.alphaBlendEquation=BlendEquation(v-1);break;
     }
 }
 inline void stage(PipelineState& p,u32 key,u32 v){

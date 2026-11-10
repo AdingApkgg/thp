@@ -237,7 +237,7 @@ double EnemyGlobals::floating(i32 id){
     if constexpr(kPortTitle==14||kPortTitle==16)if(id==-9907)return float(environment.spell_practice_id);
     if(auto* p=integer_reference(id))return *p;if(auto* p=float_reference(id))return *p;
 #if PORT_TITLE == 14
-    if(environment.th14_random_read&&(id==-10000||id==-9999||id==-9998||id==-9987))environment.th14_random_read(id,enemy.instance_id,environment.rng().calls);
+    if(environment.th14_random_read&&(id==-10000||id==-9999||id==-9998||id==-9987))environment.th14_random_read(id,enemy.instance_id,environment.rng().call_count());
 #endif
     switch(id){
     case -10000:{const u32 value=environment.rng().next32();return kPortTitle==14?value&0x7fffffffu:value;}
@@ -281,7 +281,7 @@ i32 EnemyGlobals::integer(i32 id){
     switch(id){
     case -10000:
 #if PORT_TITLE == 14
-        if(environment.th14_random_read)environment.th14_random_read(id,enemy.instance_id,environment.rng().calls);
+        if(environment.th14_random_read)environment.th14_random_read(id,enemy.instance_id,environment.rng().call_count());
 #endif
         {const u32 value=environment.rng().next32();return signed_bits(kPortTitle==14?value&0x7fffffffu:value);}
     case -9998:case -9989:case -9956:case -9955:return 0;

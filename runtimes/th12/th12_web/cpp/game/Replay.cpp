@@ -53,7 +53,7 @@ void ReplayStageState::restore(GameEconomy& e,Rng& rng,bool first,Rng* visual)co
     // 45610b..456129. Both paths reset only the gameplay call counter.
     restore_economy_th14(e);return;
 #endif
-    rng.seed=u16(seed);rng.calls=0;
+    rng.set_seed(u16(seed));rng.set_call_count(0);
     (void)visual;
     // The title's own restore writes the entry pair and the float copy of it; the economy it
     // leaves as the stage start built it (th13.exe 0x047850..0x0478bd).
@@ -65,13 +65,7 @@ void ReplayStageState::restore(GameEconomy& e,Rng& rng,bool first,Rng* visual)co
 }
 #if PORT_TITLE == 14
 void ReplayStageState::restore_economy_th14(GameEconomy& e)const{
-    const auto value=[&](u32 n){return signed_bits(th14_globals[n]);};
-    e.score_units=score;e.power=power;e.point_value=points;e.graze=graze;e.rank=rank;e.difficulty=value(3);
-    e.th14_point_items=value(8);e.max_point_value=value(11);e.max_power=value(13);e.power_step=value(14);
-    e.lives=lives;e.life_fragments=fragments;e.th14_life_awards=extends;
-    e.th14_bombs=value(18);e.th14_bomb_fragments=value(19);e.th14_reserved_54=value(21);e.th14_special_drop_count=value(27);
-    e.th14_combo.total=value(20);e.th14_combo.count=value(22);e.th14_combo.timer=value(23);
-    std::memcpy(&e.th14_combo.position,th14_globals.data()+24,12);
+    th14_project_stage_globals(*this,e);
 }
 #endif
 void ReplayStageState::restore_position(PlayerMotionState& s)const{

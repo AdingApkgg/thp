@@ -10,6 +10,9 @@ struct AnmCamera {
     AnmCamera(){view.identity();projection.identity();}
 };
 Matrix4 anm_world_matrix(AnmVm& vm,bool anchor_translation) noexcept;
+#if PORT_TITLE == 14
+Matrix4 anm_legacy_world_matrix_th14(AnmVm&,u32 render_width=640,u32 render_height=480) noexcept;
+#endif
 bool anm_projected_quad(AnmVm& vm,const AnmCamera&,Vec3 (&out)[4],Matrix4* world=nullptr) noexcept;
 bool anm_billboard_quad(const AnmVm& vm,const AnmCamera&,Vec3 (&out)[4]) noexcept;
 }

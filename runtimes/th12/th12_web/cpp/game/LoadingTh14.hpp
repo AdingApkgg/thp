@@ -2,7 +2,7 @@
 #include "AnmManager.hpp"
 namespace th11 {
 #if PORT_TITLE == 14
-// Supervisor +191ec: 420d20 creates ascii script17 once. 420ca0 and
+// ASCII manager +191ec: 420d20 creates ascii script17 once. 420ca0 and
 // 4369b3 broadcast interrupt1, then clear the handle without an extra tick.
 struct LoadingTh14 {
     u32 handle=0;

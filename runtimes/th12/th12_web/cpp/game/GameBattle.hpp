@@ -32,6 +32,9 @@
 #if PORT_TITLE == 16
 #include "EffectTh16Slots.hpp"
 #endif
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+#include "PublishedOwnerTh14.hpp"
+#endif
 #include <memory>
 #include <vector>
 #include <functional>
@@ -87,7 +90,13 @@ public:
     ItemManager items;
     ItemRewards item_rewards;
     std::unique_ptr<PlayerFrame> player;
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    PublishedOwnerTh14<BombController> bomb;
+    std::atomic<bool> th14_next_tail_prepared{false};
+    bool prepare_next_tail_owners(i32 character,i32 subtype);
+#else
     std::unique_ptr<BombController> bomb;
+#endif
     PlayerFrameInput player_input;
     BulletCancelContext cancellation;
     std::vector<BattleEvent> events;
@@ -118,7 +127,11 @@ public:
 #endif
     i32 control_frame()const noexcept{
 #if PORT_TITLE == 14
+#if defined(TH14_CPP_STAGE_DECODE)
+        return __atomic_load_n(&th14_control_clock.current,__ATOMIC_SEQ_CST);
+#else
         return th14_control_clock.current;
+#endif
 #else
         return wrapping_add(i32(frame),1);
 #endif
@@ -141,12 +154,16 @@ public:
     bool initialize(i32 character,i32 subtype,i32 difficulty);
 #if PORT_TITLE == 14
     bool prepare_initial_player(i32 character,i32 subtype);
+    bool prepare_initial_scene(bool complete);
+    bool prepare_initial_tail_owners(i32 character,i32 subtype);
 #endif
     bool next_stage(GameResources&,u32);
 #if PORT_TITLE == 14
     u32 pending_stage=0;
     prototype::StagedLoader stage_loader;
-    LoadingTh14 stage_loading;
+    LoadingTh14 local_stage_loading;
+    LoadingTh14& stage_loading=resources.loading_owner?*resources.loading_owner:local_stage_loading;
+    std::function<void()> initial_control_activation;
     GameResources* next_stage_source=nullptr;
     std::function<bool()> next_stage_initializer;
     std::function<prototype::Work()> next_stage_initializer_step;
@@ -220,6 +237,11 @@ public:
         return completion.complete();
     }
     bool stage_result_animation()override;
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    void start_ending_control()override{
+        if(auto* control=animations.th14_control.get())control->flags|=0x4000u;
+    }
+#endif
     void recall_player_options()override{if(player){
 #if PORT_TITLE == 14
         // Retail4358e5 changes this flag in the same call that sends label3.

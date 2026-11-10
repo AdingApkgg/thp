@@ -13,7 +13,19 @@
 #include "../game/MusicCatalog.hpp"
 #include "../game/GameSession.hpp"
 #include "../game/FrameStatistics.hpp"
+#if defined(TH14_CPP_STAGE_DECODE)
+#include "../game/StageWorkerTailTh14.hpp"
+#endif
 #include "../game/LoadingTh14.hpp"
+#if PORT_TITLE == 14 && defined(TH14_CPP_BOOT_WORKER)
+#include "../game/BootCppResourcesTh14.hpp"
+#include "../game/TitleCppResourcesTh14.hpp"
+#if defined(TH14_CPP_STAGE_WORKER) && defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE) && !(defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER))
+#define TH14_CPP_INITIAL_LOADING 1
+#include "../game/InitialCppResourcesTh14.hpp"
+#endif
+#include "AudioCppBootTh14.hpp"
+#endif
 #include "../game/AnmRenderer.hpp"
 #include <SDL3/SDL.h>
 #include <emscripten.h>
@@ -140,6 +152,22 @@ static void schedule_th14_work(void(*callback)(void*),void* data,int delay){
     th14_async_schedule(callback,data,delay);
 #endif
 }
+#if defined(TH14_PHYSICAL_STAGE_MEMORY)
+EM_ASYNC_JS(int,th14_stage_memory_open,(unsigned signature),{
+    const runtime=Module.th14AsyncRuntime??Module.th14WebGpuRuntime;
+    try{if(!runtime?.stageMemory)return 0;await runtime.stageMemory.open(signature);return 1;}
+    catch(error){runtime?.fail(error);return 0;}
+});
+EM_JS(int,th14_stage_memory_prepare,(unsigned signature),{
+    return (Module.th14AsyncRuntime??Module.th14WebGpuRuntime)?.stageMemory?.prepare(wasmMemory,signature)?1:0;
+});
+EM_JS(int,th14_stage_memory_poll,(unsigned packet,unsigned stack,int playback),{
+    return (Module.th14AsyncRuntime??Module.th14WebGpuRuntime)?.stageMemory?.poll(packet,stack,playback!==0)??2;
+});
+EM_ASYNC_JS(void,th14_stage_memory_cancel_join,(),{
+    await (Module.th14AsyncRuntime??Module.th14WebGpuRuntime)?.stageMemory?.cancelAndJoin();
+});
+#endif
 #endif
 EM_JS(void, th11_reset_browser_keyboard, (), { Module["resetBrowserKeyboard"]?.(); });
 EM_JS(void, th11_browser_frame, (int ok,double milliseconds,unsigned ticks), { Module["onGameFrame"]?.(ok,milliseconds,ticks); });
@@ -181,11 +209,26 @@ struct Application:StageResourceEffects
     }
     u32 process_cookie=reference_process_cookie();
     u32 initial_ticks=th14_clock_ticks();
-    GameSession session{initial_ticks};
+    GameSession session{initial_ticks,false};
 #else
     GameSession session;
 #endif
     FrameStatistics frame_statistics;
+    void reset_entry_frame_statistics(){
+#if defined(TH14_CPP_INITIAL_LOADING)
+        // Direct-start can reach this while the real loader is still live.
+        // Adoption consumes its published reset without another Main store.
+        if(initial_cpp_resources){
+#if defined(TH14_CPP_STAGE_DECODE)
+            if(initial_cpp_resources->control_ready())initial_statistics_reset=false;
+#endif
+            return;
+        }
+        if(initial_statistics_reset){initial_statistics_reset=false;return;}
+#endif
+        frame_statistics.reset_run();
+    }
+
     AsciiText frame_text{session.resources.core.ascii};
     AnmRenderer renderer;
     std::vector<u8> archive;
@@ -193,15 +236,33 @@ struct Application:StageResourceEffects
     bool initialized=false;
 #if PORT_TITLE == 14
     bool repeat_update=false;
-    LoadingTh14 boot_loading;
+    bool boot_scores_initialized=false;
+#if defined(TH14_CPP_BOOT_WORKER)
+    std::unique_ptr<BootCppResourcesTh14> boot_cpp_resources;
+    std::unique_ptr<AudioCppBootTh14> audio_cpp_boot;
+    std::unique_ptr<TitleCppResourcesTh14> title_cpp_resources;
+#if defined(TH14_CPP_INITIAL_LOADING)
+    std::unique_ptr<InitialCppResourcesTh14> initial_cpp_resources;
+    bool initial_statistics_reset=false; // Main-only, set after loader join.
+#endif
+    bool title_cpp_signature_retired=false;
+    bool cpp_menu_close_started=false,cpp_menu_close_done=false;
+    bool boot_score_defaults_initialized=false,boot_common_resources_ready=false,boot_compositor_initialized=false;
+#endif
+    LoadingTh14& boot_loading=session.shared_loading;
     AnmResource boot_signature;
     u32 boot_signature_handle=0;
     bool boot_signature_pending=false;
     bool boot_signature_active=false;
     bool boot_signature_uploaded=false;
+    bool boot_draw_callback_enabled=false;
     bool boot_ascii_uploaded=false;
     bool boot_ascii_pending=false;
+#if defined(TH14_CPP_BOOT_WORKER)
+    std::atomic<u32> boot_signature_draws{0};
+#else
     u32 boot_signature_draws=0;
+#endif
     struct ResourceUpload {AnmResource* resource;u16 file;u32 chunk=0;};
     std::vector<ResourceUpload> boot_uploads;
     u32 boot_upload_index=0;
@@ -235,7 +296,45 @@ struct Application:StageResourceEffects
         session.stage_load_clock=[](){return u64(SDL_GetTicksNS());};
 #endif
     }
+#if PORT_TITLE == 14
+    ~Application(){
+        cancel_boot_worker();session.shutdown();stage_uploads.cancel_all();
+        // GameSession is declared before the host wait/upload members. Detach
+        // only after shutdown, while all host members and controllers live.
+        session.resources.effects=nullptr;
+    }
+#endif
+#if PORT_TITLE == 14
+    bool frame_statistics_sampled=false;
+    u8 frame_skip_counter=0;
+    bool present_this_update(){
+        // Retail46a833 increments a byte, then compares its signed value.
+        ++frame_skip_counter;
+        const i32 count=frame_skip_counter<128?frame_skip_counter:i32(frame_skip_counter)-256;
+        if(count<i32(u32(session.persistent_config().bytes[0x20])+1))return false;
+        frame_skip_counter=0;return true;
+    }
+    double frame_statistics_time()const{
+        // Retail42e4d0 samples46ac20, whose normal clock uses QPC precision.
+        return double(SDL_GetTicksNS())/1000000000.;
+    }
+    void sample_frame_statistics(){
+        frame_statistics_sampled=true;
+#if defined(TH14_CPP_STAGE_DECODE)
+        frame_statistics.sample_configured(frame_statistics_time(),session.animations.th14_control,session.persistent_config().bytes[0x20]);
+#else
+        frame_statistics.sample(frame_statistics_time(),session.state.phase==GameSessionPhase::stage&&session.battle&&session.battle->stage_active,u32(session.persistent_config().bytes[0x20])+1);
+#endif
+    }
+    void reset_frame_window(){
+        // Retail FPS starts with a zero window and includes initialization.
+        // Host setup can pause/start before the first physical Main draw.
+        if(!frame_statistics_sampled)return;
+        frame_statistics.window_start=frame_statistics_time();frame_statistics.frames=0;
+    }
+#else
     void reset_frame_window(){frame_statistics.window_start=double(SDL_GetTicks())*.001;frame_statistics.frames=0;}
+#endif
     bool read_file(const char* path,std::vector<u8>& data,u32 limit){
         SDL_IOStream* io=SDL_IOFromFile(path,"rb");if(!io)return false;const auto size=SDL_GetIOSize(io);
         if(size<0||u64(size)>limit){SDL_CloseIO(io);return false;}data.resize(size_t(size));
@@ -247,8 +346,28 @@ struct Application:StageResourceEffects
         const bool written=SDL_WriteIO(io,data.data(),data.size())==data.size();const bool closed=SDL_CloseIO(io);
         if(!written||!closed||std::rename(temporary.c_str(),path.c_str())!=0){error="Unable to finish save file";return false;}return true;
     }
+#if PORT_TITLE == 14
+    bool initialize_boot_scores(){
+        if(boot_scores_initialized)return true;
+        // Retail4442af follows the resource worker's file8/EffectManager.
+        // Always construct defaults before reading an existing score file.
+#if defined(TH14_CPP_BOOT_WORKER)
+        if(!boot_score_defaults_initialized){session.initialize_score_defaults();boot_score_defaults_initialized=true;}
+#else
+        session.initialize_score_defaults();
+#endif
+        if(SDL_GetPathInfo(score_path,nullptr)){std::vector<u8> saved;if(!read_file(score_path,saved,4*1024*1024)||!session.load_scores(saved.data(),u32(saved.size()))){error=std::string("Invalid ")+score_path+": "+session.scores.error;return false;}}
+        boot_scores_initialized=true;
+        std::printf("[score14] score owner initialized after boot resources\n");
+        return true;
+    }
+#endif
     bool save_scores(){
         if(!initialized)return true;
+#if PORT_TITLE == 14
+        // Closing an incomplete cold load must not persist zero-filled records.
+        if(!boot_scores_initialized)return true;
+#endif
         if(!session.title)session.scores.write_records(session.spell_records,session.clear_records);
         std::vector<u8> state;state.reserve(7*ScoreFile::character_size+ScoreFile::settings_size);
         for(const auto& character:session.scores.characters)state.insert(state.end(),character.begin(),character.end());
@@ -259,6 +378,22 @@ struct Application:StageResourceEffects
         if(config!=saved_config_state){if(!write_file(config_path,config))return false;saved_config_state=std::move(config);}
         return true;
     }
+#if PORT_TITLE == 14
+    bool write_stage_score(const std::vector<u8>& data)override{
+        // This boundary is unconditional and synchronous, like456f60. The
+        // caller continues after I/O failure; do not poison Application::error.
+        // Invalidate the ordinary save cache even after a partial write.
+        saved_score_state.clear();
+        if(data.size()<24)return false;
+        SDL_IOStream* io=SDL_IOFromFile(score_path,"wb");
+        if(!io)return false;
+        const bool header=SDL_WriteIO(io,data.data(),24)==24;
+        if(!header){SDL_CloseIO(io);return false;}
+        const bool payload=SDL_WriteIO(io,data.data()+24,data.size()-24)==data.size()-24;
+        const bool closed=SDL_CloseIO(io);
+        return header&&payload&&closed;
+    }
+#endif
     bool save_replay(u32 slot,const char* name){
         if(slot>99||!name||std::strlen(name)>8)return false;std::vector<u8> data;
         if(!session.save_replay(name,data,true,frame_statistics.slowdown())){error="No active recording to save";return false;}
@@ -315,6 +450,11 @@ struct Application:StageResourceEffects
     }
 #endif
     bool audio_events(bool result_entry=false){
+#if PORT_TITLE == 14 && defined(TH14_CPP_BOOT_WORKER)
+        // Preserve startup music/events until the separate prepared owner is
+        // adopted on Main; the loading title is not yet an active title.
+        if(audio_cpp_boot&&!audio.statistics()[0])return true;
+#endif
         if(session.ending){auto& ending=*session.ending;for(const auto sound:ending.sounds)audio.effects.enqueue(sound);
             if(ending.music_request>=0){audio.pause_music(false);if(!audio.music(ending.music_request)){error=audio.error;return false;}}
             if(ending.music_fade>=0)audio.fade_music(ending.music_fade);
@@ -332,6 +472,9 @@ struct Application:StageResourceEffects
             if(session.title->volume_changed){audio.music_volume=session.config.music_volume();audio.effects.master_volume=session.config.sound_volume();audio.refresh_volume();}
             session.title->sounds.clear();
         }
+#if PORT_TITLE == 14
+        if(session.initial_battle_private()){menu_sounds();return true;}
+#endif
         if(!session.battle){
 #if PORT_TITLE == 14
             menu_sounds();
@@ -387,6 +530,9 @@ struct Application:StageResourceEffects
     bool text_events(){
         if(session.ending){renderer.flush();for(const auto& request:session.ending->text_requests){auto* vm=session.animations.find(request.animation);if(vm&&!fonts.text(*vm,request)){error=fonts.error;return false;}}session.ending->text_requests.clear();}
         if(session.title){renderer.flush();for(const auto& request:session.title->text_requests){auto* vm=session.animations.find(request.animation);if(vm&&!fonts.text(*vm,request)){error=fonts.error;return false;}}session.title->text_requests.clear();}
+#if PORT_TITLE == 14
+        if(session.initial_battle_private())return true;
+#endif
         if(!session.battle)return true;
         renderer.flush();
         // A dialogue plate binds its own sprite with its own walk, and the generation's line arrives
@@ -434,7 +580,13 @@ struct Application:StageResourceEffects
             // The same worker then reads scene, HUD and each ECL ANIM only
             // after the preceding upload returns; those reads are not boot IO.
             initial_decode_complete=false;
+#if defined(TH14_CPP_INITIAL_LOADING)
+            initial_statistics_reset=false;
+            initial_cpp_resources=std::make_unique<InitialCppResourcesTh14>(session,resources,stage,frame_statistics,audio.music_requests());
+            initial_upload_waiting=true;
+#else
             dispatch_initial_stage_work(BootWork::InitialPlayer,u32(session.state.character*2+session.state.subtype),0);
+#endif
             // The initial controller's44c4bf resource requests do not
             // enter420d20. Its loading family belonged to cold startup;
             // later-stage workers create their own family separately.
@@ -451,12 +603,331 @@ struct Application:StageResourceEffects
 #if PORT_TITLE == 14
     bool core_ready()const override{return core_loading_done;}
     bool defer_initial_stage_decode()const override{return true;}
-    void cancel_boot_worker(){
+#if defined(TH14_CPP_BOOT_WORKER)
+    void read_cpp_boot_publications(){
+        if(!boot_cpp_resources)return;
+        boot_draw_callback_enabled=boot_cpp_resources->publication(0)!=0;
+        boot_signature_uploaded=boot_cpp_resources->publication(1)!=0;
+        boot_ascii_uploaded=boot_cpp_resources->publication(2)!=0;
+    }
+    bool initialize_cpp_boot_compositor(){
+        if(boot_compositor_initialized||!boot_cpp_resources||!boot_cpp_resources->publication(3))return true;
+        if(!session.compositor.initialize(session.resources.core.text)){
+            error="TH14 common-resource compositor: "+session.compositor.last_error;return false;
+        }
+        session.compositor.reset_cameras(false);boot_compositor_initialized=true;
+        std::printf("[loading14] Main compositor ready after common resources\n");return true;
+    }
+    void publish_cpp_title_loading(){
+        if(title_cpp_resources)title_cpp_resources->publish_loading_state(boot_signature_active,boot_signature_draws,
+            __atomic_load_n(&session.stage_load_host_flags,__ATOMIC_ACQUIRE));
+    }
+    void cancel_cpp_title_resources(){
+        if(!title_cpp_resources)return;
+        title_cpp_resources->cancel_and_join();
+        if(title_cpp_resources->publication(0)&&!boot_title_ready)session.resources.complete_cpp_title_resources();
+        title_cpp_resources.reset();
+    }
+    bool poll_cpp_title_resources(){
+        if(!title_cpp_resources)return true;
+        publish_cpp_title_loading();
+        const auto status=title_cpp_resources->poll();
+        // Retail459607 enables Title6 before the worker returns. Acquire that
+        // publication independently of the thread's terminal/return state.
+        const bool ready=title_cpp_resources->publication(2)!=0;
+        if(title_cpp_resources->publication(1)&&!title_cpp_signature_retired){
+            session.animations.retire_resource(boot_signature);title_cpp_signature_retired=true;
+        }
+        if(ready&&!boot_title_ready){
+            if(boot_upload_index!=8||(boot_signature_active&&!title_cpp_signature_retired)||!session.resources.complete_cpp_title_resources()){
+                error="TH14 C++ title owner completion mismatch";return false;
+            }
+            boot_title_ready=true;
+            std::printf("[loading14] real C++ title worker ready at draw%u\n",u32(boot_signature_draws));
+        }
+        if(status==0)return true;
+        title_cpp_resources->join();
+        if(status!=1){error="TH14 C++ title decode: "+title_cpp_resources->last_error();title_cpp_resources.reset();return false;}
+        if(!boot_title_ready){error="TH14 C++ title worker returned without Title enable";title_cpp_resources.reset();return false;}
+        // Main may already have activated Title and cleared the upload list.
+        // Joining the retained callback must not adopt those owners again.
+        title_cpp_resources.reset();return true;
+    }
+#if defined(TH14_CPP_INITIAL_LOADING)
+    bool initial_cpp_worker_enabled()const override{return true;}
+    bool begin_initial_cpp_loading()override{
+        if(!initial_cpp_resources||!initial_cpp_resources->begin()){
+            error="TH14 initial C++ resource worker could not start";graphics.error=error;return false;
+        }
+        std::printf("[loading14] real C++ initial Player/Scene resource worker started\n");return true;
+    }
+    bool pump_cpp_initial_upload_chunk(){
+        if(!initial_cpp_resources)return true;
+        AnmResource* resource=nullptr;u16 file=0;
+        if(initial_cpp_resources->pending(resource,file)){
+            // Close bits let47d0f0 return with earlier offers unacknowledged.
+            // Main47d720 still rescans ascending slots on every chunk: the
+            // completed count cannot identify a now-lower pending file.
+            auto found=std::find_if(boot_uploads.begin(),boot_uploads.end(),[&](const auto& job){return job.resource==resource&&job.file==file;});
+            if(found==boot_uploads.end()){boot_uploads.push_back({resource,file});found=boot_uploads.end()-1;}
+            auto& job=*found;
+            if(!graphics.preload_chunk(*resource,job.chunk)){error=graphics.error;return false;}
+            if(++job.chunk>=resource->textures.size()){
+                if(!session.animations.prepare_resource(*resource,file)){error=session.animations.last_error_text();return false;}
+                if(!initial_cpp_resources->complete(*resource,file)){error="TH14 initial C++ file ACK rejected";return false;}
+                std::printf("[loading14] initial C++ file %u ready after %u chunk callbacks\n",u32(file),job.chunk);
+                ++boot_upload_index;
+            }
+        }
+        return true;
+    }
+    bool pump_cpp_initial_upload(){
+        if(!initial_cpp_resources)return true;
+        if(!pump_cpp_initial_upload_chunk())return false;
+        const auto status=initial_cpp_resources->poll();
+#if defined(TH14_CPP_STAGE_DECODE)
+        if(!initial_cpp_resources->control_ready()){
+            if(status==ReplayRngRestoreResultTh14::Waiting)return true;
+            initial_cpp_resources->join();
+            error="TH14 initial worker returned without Control enable: "+initial_cpp_resources->error_after_join();return false;
+        }
+        if(status!=ReplayRngRestoreResultTh14::Waiting){
+            initial_cpp_resources->join();
+            if(status!=ReplayRngRestoreResultTh14::Ready){error="TH14 initial worker failed after data publication";return false;}
+        }
+#else
+        if(status==ReplayRngRestoreResultTh14::Waiting)return true;
+        initial_cpp_resources->join();
+#endif
+        // Callback return publishes its final offers, but does not ACK any
+        // unuploaded template. Drain every retained slot before Main activates.
+        // This guard retains the existing incomplete-native-tail boundary.
+#if defined(TH14_CPP_STAGE_DECODE)
+        AnmResource* pending_resource=nullptr;u16 pending_file=0;
+        if(initial_cpp_resources->pending(pending_resource,pending_file)){
+            error="TH14 Control enabled before final file completion";return false;
+        }
+#else
+        if(status==ReplayRngRestoreResultTh14::Ready){
+            AnmResource* pending_resource=nullptr;u16 pending_file=0;
+            if(initial_cpp_resources->pending(pending_resource,pending_file))return true;
+        }
+        if(status!=ReplayRngRestoreResultTh14::Ready){
+            error="TH14 initial C++ resource worker: "+initial_cpp_resources->error_after_join();return false;
+        }
+#endif
+        // Control enable publishes completed loading data. Retain the actor
+        // until its independent return/reap boundary; activation needs no join.
+        initial_statistics_reset=true;
+        initial_decode_complete=true;initial_upload_waiting=false;return true;
+    }
+#endif
+    void cancel_cpp_boot_resources(){
+        if(!boot_cpp_resources)return;
+        boot_cpp_resources->cancel_and_join();read_cpp_boot_publications();
+        if(boot_cpp_resources->scores_initialized_after_join())boot_score_defaults_initialized=true;
+        if(boot_cpp_resources->publication(3)&&session.resources.complete_cpp_core_bootstrap())boot_common_resources_ready=true;
+        boot_cpp_resources.reset();
+    }
+    bool pump_cpp_boot_upload(){
+        if(!boot_cpp_resources&&!title_cpp_resources)return true;
+        AnmResource* offered=nullptr;u16 file=0;
+        const bool pending=boot_cpp_resources?boot_cpp_resources->pending(offered,file):title_cpp_resources->pending(offered,file);
+        if(!pending)return true;
+        // Retail47d720 selects the smallest live slot again each chunk. A
+        // completed-count cursor cannot identify a partially uploaded owner.
+        auto found=std::find_if(boot_uploads.begin(),boot_uploads.end(),[&](const auto& job){return job.resource==offered&&job.file==file;});
+        if(found==boot_uploads.end()){error="TH14 C++ bootstrap file owner changed";return false;}
+        auto& job=*found;
+        if(!graphics.preload_chunk(*job.resource,job.chunk)){error=graphics.error;return false;}
+        const bool resource_ready=++job.chunk>=job.resource->textures.size();
+        if(!resource_ready)return true;
+        if(file==2)session.animations.fallback_sprites=job.resource;
+        if(!session.animations.prepare_resource(*job.resource,file)){error=session.animations.last_error_text();return false;}
+        std::printf("[loading14] file %u ready after %u chunk callbacks\n",u32(file),job.chunk);
+        const bool accepted=boot_cpp_resources?boot_cpp_resources->complete(*job.resource,file):title_cpp_resources->complete(*job.resource,file);
+        if(!accepted){error="TH14 C++ bootstrap/title file ACK rejected";return false;}
+        // This is a completed-file count. The chosen vector entry retains
+        // its own chunk progress when a lower file number arrives next.
+        ++boot_upload_index;return true;
+    }
+    bool pump_cpp_stage_close_upload(){
+#if defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE) && !(defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER))
+        // Retail47d720 services a published resource independently of the
+        // controller's phase polling. Admit the worker's immutable offer
+        // before this pump, retaining its actual stage owner and phase.
+        StageResources* upload_owner=nullptr;AnmResource* upload_resource=nullptr;u16 upload_file=0;
+        StageResourceEffects::Phase upload_phase;
+        const auto offered=session.cpp_stage_upload_offer(upload_owner,upload_phase,upload_resource,upload_file);
+        if(offered==StageResourceEffects::DecodeResult::Failed||
+           (offered==StageResourceEffects::DecodeResult::Ready&&!stage_uploads.begin_file(*upload_owner,upload_phase,*upload_resource,upload_file))){
+            error="TH14 worker upload offer owner changed";return false;
+        }
+#endif
+        if(stage_uploads.pending()){
+            renderer.flush();graphics.error.clear();
+            if(!stage_uploads.advance([&](const auto& job){return graphics.preload_chunk(*job.resource,job.chunk);},[&](const auto& job){
+                if(session.animations.prepare_resource(*job.resource,job.file)){
+#if defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE) && !(defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER))
+                    if(!session.cpp_stage_complete_file(*job.resource,job.file)){graphics.error="TH14 ANM file completion owner changed";return false;}
+#endif
+                    return true;
+                }
+                graphics.error=session.animations.last_error_text();return false;
+            })){
+                error=graphics.error.empty()?"TH14 staged resource upload failed":graphics.error;return false;
+            }
+            // A successful stage upload continues through the normal session,
+            // Player/HUD/old Stage callbacks and draw below, without a second
+            // ANM update or a loading-frame return.
+        }
+        return true;
+    }
+    enum class CppMenuCloseState {Inactive,Waiting,Closed,Failed};
+    CppMenuCloseState poll_cpp_menu_close(){
+        if(cpp_menu_close_done)return CppMenuCloseState::Closed;
+        const bool first=!cpp_menu_close_started;
+        if(first){
+            // Native444890 requests3 only for masked80, with no stage loader.
+            // The stage number stays nonzero during ordinary gameplay;
+            // Supervisor+99c instead guards a loading callback's lifetime.
+            // Retain owners while their actual callback is still running.
+            const auto flags=__atomic_load_n(&session.stage_load_host_flags,__ATOMIC_ACQUIRE);
+            if((flags&0x180u)!=0x80u)return CppMenuCloseState::Inactive;
+            bool returned_stage_loader=false;
+#if defined(TH14_CPP_STAGE_WORKER)
+            // Retail435f6f clears Supervisor+99c even when the loader returns
+            // -1. A retained owner is not a running callback after that point.
+            // Both Ready and Failed have left the callback body; join remains
+            // inside retirement. Idle/Running must retain their owner guards.
+#if defined(TH14_CPP_STAGE_DECODE)
+            // Native Main4448a5 observes busy0 before the copy-interrupt
+            // and thread-return tail. Retirement below still cancels/joins.
+            returned_stage_loader=session.has_cpp_stage_worker()&&session.stage_loading_callback_allows_close();
+#else
+            returned_stage_loader=session.has_cpp_stage_worker()&&
+                session.stage_cpp_worker_result()!=ReplayRngRestoreResultTh14::Waiting;
+#endif
+            if(session.has_cpp_stage_worker()&&!returned_stage_loader)
+                return CppMenuCloseState::Inactive;
+#endif
+            bool returned_initial_loader=false;
+#if defined(TH14_CPP_INITIAL_LOADING)
+            // Callback return is independent of Main resource adoption and
+            // battle activation. Both Ready and Failed have left the body;
+            // retirement below joins before destroying any referenced owner.
+#if defined(TH14_CPP_STAGE_DECODE)
+            returned_initial_loader=initial_cpp_resources&&initial_cpp_resources->loading_callback_allows_close();
+#else
+            returned_initial_loader=initial_cpp_resources&&initial_cpp_resources->has_started()&&
+                initial_cpp_resources->poll()!=ReplayRngRestoreResultTh14::Waiting;
+#endif
+            if(initial_cpp_resources&&!returned_initial_loader)return CppMenuCloseState::Inactive;
+#endif
+            if((boot_stage_owner||initial_upload_waiting||session.resources.loading_bundle()
+                ||(session.battle&&session.battle->pending_stage))&&!returned_stage_loader&&!returned_initial_loader)
+                return CppMenuCloseState::Inactive;
+            cpp_menu_close_started=true;
+        }
+        // SDL adoption belongs to Main. The resource worker may be waiting
+        // for it after its actual audio-loader join, even during shutdown.
+        if(audio_cpp_boot)audio_cpp_boot->poll_main(audio);
+        if(first){
+            if(!pump_cpp_boot_upload()||!pump_cpp_stage_close_upload())return CppMenuCloseState::Failed;
+#if defined(TH14_CPP_INITIAL_LOADING)
+            // Ordinary Main47d720 services one pending resource chunk before
+            // transition3. This does not drain/adopt or activate the battle.
+            if(!pump_cpp_initial_upload_chunk())return CppMenuCloseState::Failed;
+#endif
+        }
+        // Retail still pumps one resource chunk before its transition3.
+        // Subsequent hosted opportunities service only the required audio
+        // handshake; never manufacture more upload ACKs or advance ANMs.
+        if((boot_cpp_resources&&boot_cpp_resources->poll()==0)
+            ||(title_cpp_resources&&title_cpp_resources->poll()==0))return CppMenuCloseState::Waiting;
+        if(title_cpp_resources){
+            title_cpp_resources->join();
+            if(title_cpp_resources->publication(1)&&!title_cpp_signature_retired){
+                session.animations.retire_resource(boot_signature);title_cpp_signature_retired=true;
+            }
+            title_cpp_resources.reset();
+        }
+        if(boot_cpp_resources){
+            boot_cpp_resources->join();
+            if(boot_cpp_resources->scores_initialized_after_join())boot_score_defaults_initialized=true;
+            boot_cpp_resources.reset();
+        }
+        // Retire the audio owner only after its sole resource-worker joiner.
+        // Do not call complete_cpp_* on CPU-ready but unuploaded resources.
+        cancel_boot_worker();session.stop_stage_workers();
+        // No queued ANM reference may survive the joined loading owner.
+        stage_uploads.cancel_all();boot_stage_owner=nullptr;audio.close();
+        boot_signature_active=false;boot_signature_pending=false;
+        session.state.phase=GameSessionPhase::finished;cpp_menu_close_done=true;
+        return CppMenuCloseState::Closed;
+    }
+    bool poll_cpp_boot_resources(){
+        if(audio_cpp_boot)audio_cpp_boot->poll_main(audio);
+        if(!boot_cpp_resources)return true;
+        read_cpp_boot_publications();
+        if(!initialize_cpp_boot_compositor())return false;
+        const auto status=boot_cpp_resources->poll();if(status==0)return true;
+        boot_cpp_resources->join();read_cpp_boot_publications();
+        if(boot_cpp_resources->scores_initialized_after_join())boot_score_defaults_initialized=true;
+        if(status!=1){error="TH14 C++ bootstrap decode: "+boot_cpp_resources->last_error();boot_cpp_resources.reset();boot_worker_failed=true;return false;}
+        if(boot_upload_index!=6||!session.resources.complete_cpp_core_bootstrap()){
+            error="TH14 C++ bootstrap owner completion mismatch";boot_cpp_resources.reset();return false;
+        }
+        boot_common_resources_ready=true;
+        if(!initialize_cpp_boot_compositor()||!initialize_boot_scores())return false;
+        boot_cpp_resources.reset();
+        audio_cpp_boot.reset();
+        title_cpp_signature_retired=false;
+        auto& core=session.resources.core;
+#if defined(TH14_CPP_STAGE_DECODE)
+        title_cpp_resources=std::make_unique<TitleCppResourcesTh14>(std::array<AnmResource*,2>{&core.title,&core.title_variant},&session.stage_load_host_flags,&session.animations.th14_effect_stop,&boot_signature_draws);
+#else
+        title_cpp_resources=std::make_unique<TitleCppResourcesTh14>(std::array<AnmResource*,2>{&core.title,&core.title_variant},&session.stage_load_host_flags,&boot_signature_draws);
+#endif
+        publish_cpp_title_loading();
+        if(!title_cpp_resources->begin(archive.data(),u32(archive.size()))){error="Unable to start TH14 C++ title worker";return false;}
+        std::printf("[loading14] real C++ title worker started\n");return true;
+    }
+#endif
+    void cancel_boot_worker(
+#if defined(TH14_CPP_INITIAL_LOADING) && defined(TH14_CPP_STAGE_DECODE)
+        bool retain_initial_tail=false
+#if defined(TH14_CPP_BOOT_WORKER)
+        ,
+#endif
+#endif
+#if defined(TH14_CPP_BOOT_WORKER)
+        bool retain_title_tail=false
+#endif
+    ){
+#if defined(TH14_CPP_INITIAL_LOADING)
+        if(initial_cpp_resources
+#if defined(TH14_CPP_STAGE_DECODE)
+           &&!retain_initial_tail
+#endif
+        ){initial_cpp_resources->cancel_and_join();initial_cpp_resources.reset();}
+#endif
+#if defined(TH14_CPP_BOOT_WORKER)
+        if(audio_cpp_boot)audio_cpp_boot->signal_cancel();
+        if(!retain_title_tail)cancel_cpp_title_resources();
+        cancel_cpp_boot_resources();
+        audio_cpp_boot.reset();
+#endif
 #if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
         th14_webgpu_archive_cancel();
 #endif
         ++boot_worker_generation;boot_worker_active=boot_worker_suspended=false;
+#if defined(TH14_CPP_BOOT_WORKER)
+        boot_job_published=boot_worker_failed=false;
+        if(!retain_title_tail)boot_title_ready=false;
+#else
         boot_job_published=boot_title_ready=boot_worker_failed=false;
+#endif
         boot_worker_work=BootWork::Idle;
         initial_upload_waiting=false;initial_decode_complete=true;
     }
@@ -553,6 +1024,11 @@ struct Application:StageResourceEffects
             if(file==9&&!app.session.prepare_initial_player()){
                 app.error=app.session.error;app.boot_worker_failed=true;return;
             }
+            // The background wait returns into the scene camera copy, before
+            // HUD and Timeline decoding. No object VM starts at this point.
+            if(file==u16((stage.stage_number&1)+3)&&!app.session.prepare_initial_scene(true)){
+                app.error=app.session.error;app.boot_worker_failed=true;return;
+            }
             const u32 step=file==9?0:file==u16((stage.stage_number&1)+3)?1:file==6?2:u32(file-10)+4;
             std::printf("[loading14] initial worker resumed after file%u\n",u32(file));
             app.dispatch_initial_stage_work(BootWork::InitialDecode,step,0);return;
@@ -566,6 +1042,8 @@ struct Application:StageResourceEffects
         auto fail=[&](){app.error="TH14 initial resource "+last_resource+": "+app.resources.error();app.boot_worker_failed=true;};
         u32 step=token->index;
         if(step==0){
+            // Retain the same private owner across scene CPU decode and upload.
+            if(!app.session.prepare_initial_scene(false)){app.error=app.session.error;app.boot_worker_failed=true;return;}
             if(!app.resources.load_stage_scene(stage.stage_number,stage)){fail();return;}
             app.boot_uploads.push_back({&stage.background,u16((stage.stage_number&1)+3)});
         }else if(step==1){
@@ -670,7 +1148,7 @@ struct Application:StageResourceEffects
         }
         if(token->work==BootWork::TitlePublish){
             app.boot_title_ready=true;
-            std::printf("[loading14] title worker ready at draw%u\n",app.boot_signature_draws);return;
+            std::printf("[loading14] title worker ready at draw%u\n",u32(app.boot_signature_draws));return;
         }
         if(token->work==BootWork::Decode){
             if(token->index!=app.boot_upload_index||token->index>=app.boot_uploads.size()||app.boot_job_published){
@@ -712,7 +1190,7 @@ struct Application:StageResourceEffects
         const auto file=app.boot_uploads[token->index].file;
         // Retail47d090 waits for the main upload pump, then the worker
         // publishes604/608. GPU completion alone does not enable draw60.
-        if(file==1)app.boot_signature_uploaded=true;
+        if(file==1){app.boot_draw_callback_enabled=true;app.boot_signature_uploaded=true;}
         if(file==2)app.boot_ascii_uploaded=true;
         if(file==0){
             if(!app.session.compositor.initialize(app.session.resources.core.text)){
@@ -720,6 +1198,7 @@ struct Application:StageResourceEffects
             }
             app.session.compositor.reset_cameras(false);
         }
+        if(file==8&&!app.initialize_boot_scores()){app.boot_worker_failed=true;return;}
         std::printf("[loading14] worker resumed after file%u\n",u32(file));
         if(app.boot_upload_index<app.boot_uploads.size())app.dispatch_boot_work(BootWork::Decode,app.boot_upload_index,0);
         else{
@@ -753,32 +1232,84 @@ struct Application:StageResourceEffects
         }
 #endif
         if(!app.stage_worker_wait.start(token->generation,u64(SDL_GetTicksNS())))return;
+#if defined(TH14_CPP_STAGE_WORKER)
+        if(!app.session.start_cpp_stage_worker()){
+            app.error=app.session.error;app.stage_worker_wait.cancel();return;
+        }
+#endif
 #if defined(TH14_STAGE_RESTORE_DELIVERY)
+#if !defined(TH14_PHYSICAL_STAGE_MEMORY) && !defined(TH14_CPP_STAGE_WORKER)
         if(!th14_stage_restore_begin(app.session.state.replay?1:0)){
             app.error="TH14 independent stage restore could not start";
             app.stage_worker_wait.cancel();return;
         }
 #endif
+#endif
         std::printf("[loading14] worker wait dispatched; minimum60ms\n");
         schedule_th14_work(finish_stage_worker_wait,token.release(),60);
     }
     bool begin_stage_worker_wait(bool initial)override{
-#if defined(TH14_STAGE_RESTORE_DELIVERY)
-        th14_stage_restore_cancel();
-#endif
+        stop_stage_wait_channels();
         stage_worker_wait.begin(initial);
 #if defined(TH14_SHARED_SCENE_COPY)
         th14_shared_scene_cancel();
+#if !defined(TH14_CPP_STAGE_DECODE)
         if(!initial&&!th14_shared_scene_prepare()){graphics.error="TH14 shared camera worker preparation failed";return false;}
 #endif
+#endif
+#if defined(TH14_PHYSICAL_STAGE_MEMORY)
+        if(!initial&&!th14_stage_memory_prepare(th14_stage_memory_layout())){graphics.error="TH14 physical stage worker preparation failed";return false;}
+#endif
         if(stage_worker_wait.waiting){
+#if defined(TH14_CPP_STAGE_WORKER)
+            // The preloaded language worker can start inside Supervisor1,
+            // before this pass reaches ANM29 or the next Player callback.
+            auto token=std::make_unique<StageWorkerWaitToken>(StageWorkerWaitToken{this,stage_worker_wait.generation});
+            if(!stage_worker_wait.start(token->generation,u64(SDL_GetTicksNS()))||!session.start_cpp_stage_worker()){
+                error=session.error.empty()?"TH14 C++ worker dispatch failed":session.error;
+                stage_worker_wait.cancel();return false;
+            }
+            schedule_th14_work(finish_stage_worker_wait,token.release(),60);
+#else
             // Dispatch after this callback pass. No scene/resource pointer is
             // retained by either timer, and a newer generation cancels it.
             schedule_th14_work(start_stage_worker_wait,new StageWorkerWaitToken{this,stage_worker_wait.generation},0);
+#endif
         }
         return true;
     }
     bool stage_worker_wait_ready()const override{return stage_worker_wait.ready(u64(SDL_GetTicksNS()));}
+    void stop_stage_workers()noexcept override{
+#if defined(TH14_CPP_INITIAL_LOADING)
+        if(initial_cpp_resources){initial_cpp_resources->cancel_and_join();initial_cpp_resources.reset();}
+#endif
+#if defined(TH14_CPP_STAGE_WORKER)
+        session.stop_cpp_stage_worker();
+#endif
+        stop_stage_wait_channels();
+    }
+    void stop_stage_wait_channels()noexcept{
+        stage_worker_wait.cancel();
+#if defined(TH14_STAGE_RESTORE_DELIVERY)
+        th14_stage_restore_cancel();
+#endif
+#if defined(TH14_SHARED_SCENE_COPY)
+        th14_shared_scene_cancel();
+#endif
+#if defined(TH14_PHYSICAL_STAGE_MEMORY)
+        th14_stage_memory_cancel_join();
+#endif
+    }
+#if defined(TH14_CPP_STAGE_WORKER)
+    bool stage_cpp_worker_enabled()const override{return true;}
+#endif
+#if defined(TH14_PHYSICAL_STAGE_MEMORY)
+    bool stage_memory_worker_enabled()const override{return true;}
+    ReplayRngRestoreResultTh14 stage_memory_worker(const StageRestoreMemoryTh14& packet,u32 stack,bool playback)override{
+        const auto status=th14_stage_memory_poll(u32(reinterpret_cast<uintptr_t>(&packet)),stack,playback?1:0);
+        return status==0?ReplayRngRestoreResultTh14::Waiting:status==1?ReplayRngRestoreResultTh14::Ready:ReplayRngRestoreResultTh14::Failed;
+    }
+#endif
 #if defined(TH14_STAGE_RESTORE_DELIVERY)
     static u32 stage_restore_operation(ReplayRngRestorePointTh14 point){
         using P=ReplayRngRestorePointTh14;
@@ -799,8 +1330,14 @@ struct Application:StageResourceEffects
     bool stage_replay_snapshot_committed()override{return th14_stage_restore_committed(3)!=0;}
 #endif
     bool draw_startup_loading()override{
-        if(!boot_signature_active||!boot_signature_uploaded)return true;
-        if(boot_signature_pending){
+#if defined(TH14_CPP_BOOT_WORKER)
+        read_cpp_boot_publications();
+#endif
+        // 4442f0 registers draw60 disabled. Only44419a enables its bit2
+        // after47d090 returned the prepared Sig file. The body444660 counts
+        // unconditionally, but a disabled callback must never reach it.
+        if(!boot_draw_callback_enabled)return true;
+        if(boot_signature_uploaded&&boot_signature_pending){
             if(!boot_signature_handle){
                 auto* vm=session.animations.create(boot_signature,0,1,0xffffffffu);
                 if(!vm){graphics.error=session.animations.last_error_text();return false;}
@@ -809,6 +1346,10 @@ struct Application:StageResourceEffects
             boot_signature_pending=false;
             std::printf("[loading14] sig script0 created at draw priority60 after sig upload\n");
         }
+#if defined(TH14_CPP_BOOT_WORKER)
+        // Retail44472a reads ASCII readiness after Sig construction/update.
+        if(boot_cpp_resources)boot_ascii_uploaded=boot_cpp_resources->publication(2)!=0;
+#endif
         if(boot_ascii_uploaded&&boot_ascii_pending){
             if(!boot_loading.begin(session.animations,session.resources.core.ascii)){
                 graphics.error=session.animations.last_error_text();return false;
@@ -816,7 +1357,14 @@ struct Application:StageResourceEffects
             boot_ascii_pending=false;
             std::printf("[loading14] ascii script17 created at draw priority60 after ascii upload\n");
         }
+#if defined(TH14_CPP_BOOT_WORKER)
+        boot_signature_draws=u32(boot_signature_draws)+1;
+#else
         ++boot_signature_draws;
+#endif
+#if defined(TH14_CPP_BOOT_WORKER)
+        publish_cpp_title_loading();
+#endif
         return true;
     }
     bool stage_ready()const override{return boot_uploads.empty()&&initial_decode_complete;}
@@ -845,9 +1393,33 @@ struct Application:StageResourceEffects
         if(stage_decode.owns(stage)){stage_decode.cancel(stage);th14_webgpu_archive_cancel();}
     }
 #endif
+#if defined(TH14_CPP_STAGE_DECODE) && !(defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER))
+    bool stage_cpp_decode_enabled()const override{return true;}
+    bool finish_cpp_stage_tail(u32 number,u32 mode_flags,Timer& clock,const float* rate,StageCppWorkerTh14& worker)override{
+        if(!StageCppWorkerScopeTh14::owns(&session))return false;
+        return th14_finish_stage_audio_tail(number,mode_flags,(session.persistent_config().bytes[0x38]&0x10)!=0,
+            audio.music_requests(),frame_statistics,clock,rate,worker);
+    }
+    StageResourceEffects::DecodeResult decode_stage_phase(GameResources&,StageResources& stage,StageResourceEffects::Phase phase,u32 selection)override{
+        const auto result=session.cpp_stage_decode(stage,phase,selection);
+#if defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
+        StageResources* offered_owner=nullptr;AnmResource* resource=nullptr;u16 file=0;Phase offered_phase;
+        const auto offered=session.cpp_stage_upload_offer(offered_owner,offered_phase,resource,file);
+        if(offered==DecodeResult::Failed||(offered==DecodeResult::Ready&&
+           (offered_owner!=&stage||!stage_uploads.begin_file(stage,offered_phase,*resource,file)))){
+            graphics.error="TH14 pending ANM file upload owner changed";return DecodeResult::Failed;
+        }
+#endif
+        return result;
+    }
+#endif
     bool prepare_stage_phase(StageResources& stage,StageResourceEffects::Phase phase)override{
         renderer.flush();graphics.error.clear();
+#if defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE) && !(defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER))
+        if(!stage_uploads.complete_phase(stage,phase)){graphics.error="TH14 stage file upload still pending";return false;}
+#else
         if(!stage_uploads.begin(stage,phase)){graphics.error="TH14 stage upload owner still pending";return false;}
+#endif
         return true;
     }
     bool stage_phase_ready(StageResourceEffects::Phase phase)const override{return stage_uploads.ready(phase);}
@@ -870,15 +1442,9 @@ struct Application:StageResourceEffects
         stage_uploads.finish(stage);
     }
     void cancel_stage_phases(StageResources& stage,u32)override{
-#if defined(TH14_SHARED_SCENE_COPY)
-        th14_shared_scene_cancel();
-#endif
         // Queued raw resource references must disappear before GPU teardown
         // or StageResources destruction. release also covers boot ownership.
-        stage_worker_wait.cancel();
-#if defined(TH14_STAGE_RESTORE_DELIVERY)
-        th14_stage_restore_cancel();
-#endif
+        stop_stage_workers();
         stage_uploads.cancel(stage);release(stage);
     }
     bool defer_ending_loading()const override{return true;}
@@ -921,8 +1487,27 @@ struct Application:StageResourceEffects
     }
 
     bool initialize() {
-        if(initialized){if(!audio.initialize(resources)){error=audio.error;return false;}return true;}
+        if(initialized){
+#if PORT_TITLE == 14 && defined(TH14_CPP_BOOT_WORKER)
+            if(audio_cpp_boot)return true;
+#endif
+            if(!audio.initialize(resources)){error=audio.error;return false;}return true;
+        }
+#if PORT_TITLE == 14 && defined(TH14_CPP_BOOT_WORKER)
+        cpp_menu_close_started=cpp_menu_close_done=false;
+        // Native469520 clears only the two host-close bits at cold startup.
+        __atomic_fetch_and(&session.stage_load_host_flags,~u32(0x180),__ATOMIC_ACQ_REL);
+        struct IncompleteBootGuard {Application& owner;~IncompleteBootGuard(){if(!owner.initialized)owner.cancel_boot_worker();}} guard{*this};
+#endif
+#if PORT_TITLE == 14 && defined(__EMSCRIPTEN__) && defined(TH14_CPP_BOOT_WORKER)
+        // Compile/hot-tier the pure codec before any loading frames/workers.
+        // This local blank record is discarded; live scores and RNG stay untouched.
+        {ScoreFile warm_scores;std::vector<u8> discarded;(void)warm_scores.save(discarded);}
+#endif
         if(!graphics.initialize()){error=graphics.error;return false;}
+#if PORT_TITLE == 14 && defined(TH14_PHYSICAL_STAGE_MEMORY)
+        if(!th14_stage_memory_open(th14_stage_memory_layout())){error="Unable to open TH14 physical stage kernel";return false;}
+#endif
 #if PORT_TITLE == 14
         session.animations.th14_native_stack.configure(process_cookie);
         session.animations.texture_high_precision=false;
@@ -933,14 +1518,23 @@ struct Application:StageResourceEffects
 #if PORT_TITLE == 14 && defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
         if(!th14_webgpu_archive_open(archive.data(),u32(archive.size()))){error="Unable to start TH14 background archive decoder";return false;}
 #endif
+#if PORT_TITLE == 14 && defined(TH14_CPP_BOOT_WORKER)
+        cancel_boot_worker();
+        if(!audio.initialize_device()){error=audio.error;return false;}
+        audio_cpp_boot=std::make_unique<AudioCppBootTh14>();
+        if(!audio_cpp_boot->begin(archive.data(),u32(archive.size()))){error="Unable to start TH14 audio sample worker";cancel_boot_worker();return false;}
+#else
         if(!audio.initialize(resources)){error=audio.error;return false;}
+#endif
         if(!fonts.initialize(
 #if PORT_TITLE==14
             &session.font_bitmap
 #endif
         )){error=fonts.error;return false;}
         mkdir("/save",0777);mkdir("/save/replay",0777);
+#if PORT_TITLE != 14
         if(SDL_GetPathInfo(score_path,nullptr)){std::vector<u8> saved;if(!read_file(score_path,saved,4*1024*1024)||!session.load_scores(saved.data(),u32(saved.size()))){error=std::string("Invalid ")+score_path+": "+session.scores.error;return false;}}
+#endif
         if(SDL_GetPathInfo(config_path,nullptr)){
             std::vector<u8> saved;
             if(!read_file(config_path,saved,u32(session.config.bytes.size()))||!session.config.open(saved.data(),u32(saved.size()))){
@@ -958,7 +1552,7 @@ struct Application:StageResourceEffects
         audio.music_volume=session.config.music_volume();audio.effects.master_volume=session.config.sound_volume();audio.refresh_volume();
         session.recording_timestamp=u64(std::time(nullptr));
 #if PORT_TITLE == 14
-#if !defined(TH14_WEBGPU_BACKEND) || !defined(TH14_ARCHIVE_WORKER)
+#if (!defined(TH14_WEBGPU_BACKEND) || !defined(TH14_ARCHIVE_WORKER)) && !defined(TH14_CPP_BOOT_WORKER)
         if(!resources.open_anm("sig.anm",boot_signature)){error="sig ANM: "+boot_signature.detail;return false;}
         if(!session.animations.prepare_resource(boot_signature,1)){error=session.animations.last_error_text();return false;}
 #endif
@@ -970,16 +1564,27 @@ struct Application:StageResourceEffects
         // ANM can update and draw while GPU work remains. Its random children
         // follow script17's own clock, never a captured RNG count.
         boot_signature_pending=true;boot_signature_active=true;boot_signature_draws=0;
-        boot_signature_uploaded=false;boot_ascii_uploaded=false;boot_ascii_pending=true;
+        boot_signature_uploaded=false;boot_draw_callback_enabled=false;boot_ascii_uploaded=false;boot_ascii_pending=true;
         // These uploads also belong to the original main resource pump. Draw
         // Sig and ASCII only after their own file's GPU preparation completes.
         boot_uploads={{&boot_signature,1},{&core.ascii,2},{&core.text,0},{&core.front,5},{&core.bullet,7},{&core.effect,8},{&core.title,16},{&core.title_variant,17}};
         boot_upload_index=0;std::printf("[loading14] sig/ascii/text queued before common resources; %u resource uploads pending\n",u32(boot_uploads.size()));
-        cancel_boot_worker();boot_worker_active=true;
+#if !defined(TH14_CPP_BOOT_WORKER)
+        cancel_boot_worker();
+#endif
+        boot_worker_active=true;
 #if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
         boot_core_decoded=0;
 #endif
+#if defined(TH14_CPP_BOOT_WORKER)
+        boot_cpp_resources=std::make_unique<BootCppResourcesTh14>(session,std::array<AnmResource*,6>{
+            &boot_signature,&core.ascii,&core.text,&core.front,&core.bullet,&core.effect},
+            [this](GameResources& source,std::string& failure){return audio_cpp_boot->finish_after_text(source,failure);});
+        if(!boot_cpp_resources->begin(archive.data(),u32(archive.size()))){error="Unable to start TH14 C++ bootstrap";cancel_boot_worker();return false;}
+        std::printf("[loading14] real C++ bootstrap worker started\n");
+#else
         dispatch_boot_work(BootWork::Decode,0,0);
+#endif
         boot_stage_owner=nullptr;
 #else
 #if PORT_TITLE == 16
@@ -994,7 +1599,9 @@ struct Application:StageResourceEffects
 #endif
         renderer.viewport={0,0,640,480,0,1};
         // GameBattle's STD owner creates backdrop VMs and publishes its camera.
+#if PORT_TITLE != 14
         frame_statistics.window_start=double(SDL_GetTicks())*.001;
+#endif
         initialized=true;return audio_events()&&text_events();
     }
 
@@ -1004,9 +1611,19 @@ struct Application:StageResourceEffects
 #endif
         if(!initialize())return false;
 #if PORT_TITLE == 14
+        // Join the old writer before reading or constructing its score owner.
         cancel_boot_worker();
+        if(!initialize_boot_scores())return false;
+#if defined(TH14_CPP_BOOT_WORKER)
+        if(!boot_common_resources_ready){
+            // Explicit replacement retires all old loading VMs before a
+            // synchronous bootstrap fallback can replace their resource data.
+            session.shutdown();
+            if(!session.resources.load_core_bootstrap()){error=session.resources.error;return false;}
+        }
+#endif
         boot_signature_pending=false;boot_signature_active=false;boot_signature_handle=0;boot_signature_draws=0;
-        boot_signature_uploaded=false;boot_ascii_uploaded=false;boot_ascii_pending=false;
+        boot_signature_uploaded=false;boot_draw_callback_enabled=false;boot_ascii_uploaded=false;boot_ascii_pending=false;
         if(!core_loading_done){if(!session.resources.prepare_core()){error=session.resources.error;return false;}core_loading_done=true;}
         boot_loading.finish(session.animations);boot_uploads.clear();boot_upload_index=0;
         boot_stage_owner=nullptr;stage_uploads.cancel_all();
@@ -1033,7 +1650,7 @@ struct Application:StageResourceEffects
         if(session.animations.references(boot_signature)){error="TH14 sig still referenced after session replacement";return false;}
         graphics.unload(boot_signature);boot_signature={};
 #endif
-        frame_statistics.reset_run();
+        reset_entry_frame_statistics();
 #if PORT_TITLE == 14 || PORT_TITLE == 16
         if(!graphics.preload(core.effect)){error=graphics.error;return false;}
 #endif
@@ -1051,16 +1668,74 @@ struct Application:StageResourceEffects
         return audio_events()&&text_events();
     }
 
+#if PORT_TITLE == 14 && defined(TH14_CPP_BOOT_WORKER)
     bool tick_once(u32 held,bool pause_key=false) {
+        // A failed frame can leave the independent sample loader waiting at
+        // startup0, or a resource worker waiting for a Main upload. Retire all
+        // bootstrap writers before returning the original failure to the host.
+        if(cpp_menu_close_done)return false;
+        if(boot_worker_failed)return false;
+        const bool result=tick_once_unchecked(held,pause_key);
+        if(!result&&(boot_worker_active||boot_cpp_resources||title_cpp_resources||audio_cpp_boot
+#if defined(TH14_CPP_INITIAL_LOADING)
+            ||initial_cpp_resources
+#endif
+            )){
+            cancel_boot_worker();boot_worker_failed=true;
+        }
+        return result;
+    }
+    bool tick_once_unchecked(u32 held,bool pause_key=false) {
+#else
+    bool tick_once(u32 held,bool pause_key=false) {
+#endif
 #if PORT_TITLE == 14
         repeat_update=false;
 #endif
         if(!initialize())return false;
 #if PORT_TITLE == 14
         if(boot_worker_failed)return false;
+        audio.update();
+        // Retail4448be consumes one music request before config/input and
+        // the47d720 upload pump, including every initial loading callback.
+        if(!audio.consume_initial_music_request((session.persistent_config().bytes[0x38]&0x10)!=0)){error=audio.error;return false;}
+#if defined(TH14_CPP_BOOT_WORKER)
+        const auto menu_close=poll_cpp_menu_close();
+        if(menu_close!=CppMenuCloseState::Inactive)return menu_close==CppMenuCloseState::Waiting;
+        if(!poll_cpp_boot_resources()||!poll_cpp_title_resources())return false;
+#if defined(TH14_CPP_INITIAL_LOADING) && defined(TH14_CPP_STAGE_DECODE)
+        // A retained initial actor has no data writes after Control enable.
+        // Reap only after return; shutdown still joins before owner teardown.
+        if(initial_cpp_resources&&!boot_stage_owner&&initial_cpp_resources->poll()!=ReplayRngRestoreResultTh14::Waiting){
+            const auto status=initial_cpp_resources->poll();initial_cpp_resources->join();
+            if(status!=ReplayRngRestoreResultTh14::Ready){error="TH14 retained initial worker failed";return false;}
+            initial_cpp_resources.reset();
+        }
+#endif
+#endif
+#if defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE) && !(defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER))
+        // Retail47d720 services a published resource independently of the
+        // controller's phase polling. Admit the worker's immutable offer
+        // before this pump, retaining its actual stage owner and phase.
+        StageResources* upload_owner=nullptr;AnmResource* upload_resource=nullptr;u16 upload_file=0;
+        StageResourceEffects::Phase upload_phase;
+        const auto offered=session.cpp_stage_upload_offer(upload_owner,upload_phase,upload_resource,upload_file);
+        if(offered==StageResourceEffects::DecodeResult::Failed||
+           (offered==StageResourceEffects::DecodeResult::Ready&&!stage_uploads.begin_file(*upload_owner,upload_phase,*upload_resource,upload_file))){
+            error="TH14 worker upload offer owner changed";return false;
+        }
+#endif
         if(stage_uploads.pending()){
             renderer.flush();graphics.error.clear();
-            if(!stage_uploads.advance([&](const auto& job){return graphics.preload_chunk(*job.resource,job.chunk);})){ 
+            if(!stage_uploads.advance([&](const auto& job){return graphics.preload_chunk(*job.resource,job.chunk);},[&](const auto& job){
+                if(session.animations.prepare_resource(*job.resource,job.file)){
+#if defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE) && !(defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER))
+                    if(!session.cpp_stage_complete_file(*job.resource,job.file)){graphics.error="TH14 ANM file completion owner changed";return false;}
+#endif
+                    return true;
+                }
+                graphics.error=session.animations.last_error_text();return false;
+            })){
                 error=graphics.error.empty()?"TH14 staged resource upload failed":graphics.error;return false;
             }
             // A successful stage upload continues through the normal session,
@@ -1068,7 +1743,28 @@ struct Application:StageResourceEffects
             // ANM update or a loading-frame return.
         }
         if(boot_upload_index<boot_uploads.size()||boot_signature_active||boot_stage_owner){
-            if(boot_upload_index<boot_uploads.size()&&!initial_upload_waiting&&(!boot_worker_active||boot_job_published)){
+#if defined(TH14_CPP_INITIAL_LOADING)
+            if(initial_cpp_resources){
+                if(!pump_cpp_initial_upload())return false;
+            }else
+#endif
+#if defined(TH14_CPP_BOOT_WORKER)
+            if(boot_cpp_resources||title_cpp_resources){
+                if(!pump_cpp_boot_upload())return false;
+            }else
+#endif
+            {
+            bool cpp_boot_file_ready=false;
+#if defined(TH14_CPP_BOOT_WORKER)
+            if(boot_cpp_resources||title_cpp_resources){
+                AnmResource* offered=nullptr;u16 file=0;
+                if(boot_cpp_resources?boot_cpp_resources->pending(offered,file):title_cpp_resources->pending(offered,file)){
+                    if(boot_upload_index>=boot_uploads.size()||boot_uploads[boot_upload_index].resource!=offered||boot_uploads[boot_upload_index].file!=file){error="TH14 C++ bootstrap file owner changed";return false;}
+                    cpp_boot_file_ready=true;
+                }
+            }
+#endif
+            if(boot_upload_index<boot_uploads.size()&&!initial_upload_waiting&&(!boot_worker_active||boot_job_published||cpp_boot_file_ready)){
                 auto& job=boot_uploads[boot_upload_index];
                 if(!boot_worker_active&&!core_loading_done&&boot_upload_index>=3){
                     constexpr u32 title_jobs[]={0,1,2,4,5};
@@ -1078,9 +1774,12 @@ struct Application:StageResourceEffects
                 // prepares templates before the priority29/30 ANM callbacks.
                 if(!graphics.preload_chunk(*job.resource,job.chunk)){error=graphics.error;return false;}
                 const bool resource_ready=++job.chunk>=job.resource->textures.size();
+#if defined(TH14_CPP_BOOT_WORKER)
+                if(resource_ready&&cpp_boot_file_ready&&job.file==2)session.animations.fallback_sprites=job.resource;
+#endif
                 if(resource_ready&&!session.animations.prepare_resource(*job.resource,job.file)){error=session.animations.last_error_text();return false;}
                 if(resource_ready){
-                    if(!boot_worker_active&&job.resource==&boot_signature)boot_signature_uploaded=true;
+                    if(!boot_worker_active&&job.resource==&boot_signature){boot_draw_callback_enabled=true;boot_signature_uploaded=true;}
                     if(!boot_worker_active&&job.resource==&session.resources.core.ascii)boot_ascii_uploaded=true;
                     if(!boot_worker_active&&!core_loading_done&&job.resource==&session.resources.core.text){
                         if(!session.compositor.initialize(*job.resource)){error="TH14 startup compositor: "+session.compositor.last_error;return false;}
@@ -1088,13 +1787,33 @@ struct Application:StageResourceEffects
                     }
                     std::printf("[loading14] file %u ready after %u chunk callbacks\n",u32(job.file),job.chunk);
                     const u32 completed=boot_upload_index++;
+#if defined(TH14_CPP_BOOT_WORKER)
+                    if(cpp_boot_file_ready){
+                        const bool accepted=boot_cpp_resources?boot_cpp_resources->complete(*job.resource,job.file):title_cpp_resources->complete(*job.resource,job.file);
+                        if(!accepted){error="TH14 C++ bootstrap/title file ACK rejected";return false;}
+                    }else
+#endif
                     if(boot_worker_active){boot_job_published=false;dispatch_boot_work(BootWork::Resume,completed,1);}
                     else if(boot_stage_owner)dispatch_initial_upload_resume(completed);
                 }
             }
+            }
+#if defined(TH14_CPP_BOOT_WORKER)
+            // Main3 reads the common-resource enable after Main47d720 too.
+            if(!initialize_cpp_boot_compositor())return false;
+            // Main47d720 may release the title worker in this same pass.
+            // Read its live Title6 enable after the pump, before ANM29/30.
+            if(!poll_cpp_title_resources())return false;
+#endif
             // 45959a waits for actual priority60 callbacks to reach180. Only
             // after both upload readiness and that count does 4595e1 unload sig.
+#if defined(TH14_CPP_BOOT_WORKER)
+            // The real title thread owns Sleep16 and the live host-bit bypass.
+            const bool signature_ready=boot_signature_active&&!boot_signature_pending&&boot_upload_index==boot_uploads.size()
+                &&(boot_title_ready||(!boot_worker_active&&boot_signature_draws>=180));
+#else
             const bool signature_ready=boot_signature_active&&!boot_signature_pending&&boot_signature_draws>=180&&boot_upload_index==boot_uploads.size()&&(!boot_worker_active||boot_title_ready);
+#endif
             bool title_entry_advanced=false;
             if(signature_ready){
                 session.animations.retire_resource(boot_signature);
@@ -1119,16 +1838,21 @@ struct Application:StageResourceEffects
                 // The worker clears Control+80 bit4 after its final upload.
                 // Control11 then attaches the world before Player/ANM in the
                 // next pass; do not create HUD after that pass's ANM update.
-                cancel_boot_worker();boot_loading.finish(session.animations);
+#if defined(TH14_CPP_INITIAL_LOADING) && defined(TH14_CPP_STAGE_DECODE)
+                cancel_boot_worker(true);
+#else
+                cancel_boot_worker();
+#endif
+                // Control11 finishes the shared loading family after overlay8.
                 boot_uploads.clear();boot_upload_index=0;boot_stage_owner=nullptr;
-                if(!session.finish_loading()){error=session.error;return false;}
-                frame_statistics.reset_run();audio.effects.reset();
+                if(!session.finish_loading(true)){error=session.error;return false;}
+                reset_entry_frame_statistics();audio.effects.reset();
                 if(!play_stage_music(session.state.stage,true))return false;
-                session.battle->th14_current_music=audio.current_music();
                 const GameSessionInput input{held,0,0,pause_key,bool(held&0x100),bool(held&0x2),frame_statistics.fps};
                 if(!session.update(input)){error=session.error;return false;}
+                session.battle->th14_current_music=audio.current_music();
                 if(!audio_events()||!text_events())return false;
-                initial_stage_entry_advanced=true;reset_frame_window();
+                initial_stage_entry_advanced=true;
                 std::printf("[loading14] initial worker ready; control callbacks attached\n");
             }
             if(!title_entry_advanced&&!initial_stage_entry_advanced&&(!session.animations.update(true)||!session.animations.update(false))){error="TH14 loading ANM update failed";return false;}
@@ -1136,27 +1860,39 @@ struct Application:StageResourceEffects
                 if(session.animations.references(boot_signature)){error="TH14 sig still referenced after ANM retirement";return false;}
                 graphics.unload(boot_signature);renderer.invalidate();boot_signature={};
                 boot_signature_active=false;boot_signature_handle=0;
-                std::printf("[loading14] sig retired after %u draw callbacks\n",boot_signature_draws);
+                std::printf("[loading14] sig retired after %u draw callbacks\n",u32(boot_signature_draws));
             }
             if(!initial_stage_entry_advanced&&boot_upload_index==boot_uploads.size()&&!boot_signature_active&&!initial_upload_waiting){
+#if defined(TH14_CPP_BOOT_WORKER)
+                // Title6 is already live. Its callback has no resource writes
+                // after Ready; retain that owner until a later terminal poll.
+                cancel_boot_worker(
+#if defined(TH14_CPP_INITIAL_LOADING) && defined(TH14_CPP_STAGE_DECODE)
+                    false,
+#endif
+                    boot_title_ready&&bool(title_cpp_resources));
+#else
                 cancel_boot_worker();
+#endif
                 core_loading_done=true;
                 boot_loading.finish(session.animations);boot_uploads.clear();boot_upload_index=0;
                 boot_stage_owner=nullptr;
-                std::printf("[loading14] resource uploads complete; interrupt1 delivered\n");reset_frame_window();
+                std::printf("[loading14] resource uploads complete; interrupt1 delivered\n");
                 if(session.state.phase==GameSessionPhase::loading){
                     const bool existing_battle=session.battle_callbacks_attached();
                     if(!session.finish_loading()){error=session.error;return false;}
-                    if(!existing_battle){frame_statistics.reset_run();audio.effects.reset();
+                    if(!existing_battle){reset_entry_frame_statistics();audio.effects.reset();
                         if(session.state.phase==GameSessionPhase::stage&&!play_stage_music(session.state.stage,true))return false;}
                     if(!audio_events()||!text_events())return false;
                 }
             }
-            // Resource work still owns a physical draw/present callback.
-            // Keep session/input advancement held while its loading ANM draws.
+            // Main resource work and ANM updates run on skipped draws too.
+            // Retail46a833 gates the draw60 signature callback with presentation.
+            if(!present_this_update())return true;
             if(!session.draw(renderer,&frame_text)){error=session.error;return false;}
             th14_consume_deferred_captures(session.animations.deferred_captures,session,graphics,renderer);
             graphics.present();
+            sample_frame_statistics();
             if(!session.sample_spell_clock(double(SDL_GetTicksNS())*1e-9)){error="Invalid spell timing state";return false;}
             return true;
         }
@@ -1186,7 +1922,7 @@ struct Application:StageResourceEffects
         if(was_menu&&!is_menu&&!resume_event)audio.discard_paused_sounds();
         if(!was_menu&&after==GameSessionPhase::paused&&!death_event)audio.pause_sounds(true);
 #endif
-        if(before!=GameSessionPhase::stage&&after==GameSessionPhase::stage&&session.state.frame==0)frame_statistics.reset_run();
+        if(before!=GameSessionPhase::stage&&after==GameSessionPhase::stage&&session.state.frame==0)reset_entry_frame_statistics();
         if(session.pause_menu)session.pause_menu->slowdown=frame_statistics.slowdown();
         if(session.title&&session.title->screen==TitleScreen::Results)session.title->result_slowdown=frame_statistics.slowdown();
         if(before!=GameSessionPhase::stage&&after==GameSessionPhase::stage
@@ -1250,19 +1986,32 @@ struct Application:StageResourceEffects
             before!=GameSessionPhase::game_over&&after==GameSessionPhase::game_over&&!death_event
 #endif
         )||!text_events())return false;
-        audio.update();audio.pump();
+#if PORT_TITLE != 14
+        audio.update();
+#endif
+        audio.pump();
 #if PORT_TITLE == 14
         // Registered Replay30 restarts the update list before any draw pass.
         // Keep sound/text delivery for each update, and spell-clock sampling,
         // deferred copies and GPU presentation for the completed list only.
+#if defined(TH14_CPP_STAGE_DECODE)
+        const u32 replay_control_flags=session.animations.th14_control.callback_flags();
+#else
         const u32 replay_control_flags=after==GameSessionPhase::loading||
             (session.battle&&session.battle->pending_stage)?4u:0u;
+#endif
         repeat_update=th14_replay_repeat(after==GameSessionPhase::stage&&
-            session.battle_callbacks_attached()&&session.battle,
+            // Replay30 stays disabled until455ed0, even after Control clears4.
+            session.battle_callbacks_attached()&&session.battle&&session.battle->stage_active,
             session.state.replay?1u:0u,replay_control_flags,held,session.playback.callback_frame());
         if(repeat_update)return true;
 #endif
+#if PORT_TITLE != 14
         frame_statistics.sample(double(SDL_GetTicks())*.001,after==GameSessionPhase::stage&&session.battle&&session.battle->stage_active&&!session.state.replay);
+#endif
+#if PORT_TITLE == 14
+        if(!present_this_update())return true;
+#endif
         frame_text.clear();
 #if PORT_TITLE == 14
         // Retail42e5c3..42e5d7 skips the FPS callback in Supervisor4 (title).
@@ -1277,6 +2026,8 @@ struct Application:StageResourceEffects
 #endif
         graphics.present();
 #if PORT_TITLE == 14
+        // Retail Main draws FPS65 before Present, then samples42e4d0.
+        sample_frame_statistics();
         // 46a6d7/46a933 call41c800 whenever the spell manager is alive,
         // including the frame that opens the spell-result menu.
         if(!session.sample_spell_clock(double(SDL_GetTicksNS())*1e-9)){error="Invalid spell timing state";return false;}
@@ -1334,7 +2085,11 @@ u32 sample_controller(){
     const auto axis=[&](int index){const int value=index<SDL_GetNumJoystickAxes(controller)?SDL_GetJoystickAxis(controller,index):0;return i32(std::floor((value<0?value/32768.:value/32767.)*1000+.5));};
     i32 x=axis(0),y=axis(1);const auto hat=SDL_GetNumJoystickHats(controller)?SDL_GetJoystickHat(controller,0):0;
     if(hat&SDL_HAT_LEFT)x=-1000;if(hat&SDL_HAT_RIGHT)x=1000;if(hat&SDL_HAT_UP)y=-1000;if(hat&SDL_HAT_DOWN)y=1000;
+#if PORT_TITLE == 14
+    return controller_keys(0,buttons.data(),u32(buttons.size()),x,y,app.session.persistent_config().bytes.data());
+#else
     return controller_keys(0,buttons.data(),u32(buttons.size()),x,y,app.session.config.bytes.data());
+#endif
 }
 touhou::input::TouchState touch_state(){
     touhou::input::TouchState s;auto& session=app.session;

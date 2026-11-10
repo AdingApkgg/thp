@@ -29,11 +29,18 @@ bool StageCompletion::complete(){
         if(mode.control_mode==0)records.stages[mode.selection][economy.difficulty*8+mode.stage][0]=1;
         request(mode.force_title?StageExit::Title:StageExit::NextStage);state.next_stage=mode.stage+1;return true;
     }
+#if defined(TH14_CPP_STAGE_DECODE)
+    //4370a7/+98 precede HUD+17c and the final score award, not just the
+    //later GameSession ending/menu transition.
+    if(mode.stage==6){effects.start_ending_control();state.ending_active=true;state.ending_frames=0;}
+#endif
     const i32 bonus=mode.stage==6?(economy.difficulty<4?wrapping_add(multiply(economy.lives,10000000),multiply(economy.th14_bombs,3000000)):0):
         multiply(wrapping_add(multiply(economy.lives,10),economy.th14_bombs),4000000);
     economy.add_score(bonus);state.displayed_bonus=wrapping_add(state.displayed_bonus,bonus);
     state.hud_flags|=0x10;
+#if !defined(TH14_CPP_STAGE_DECODE)
     if(mode.stage==6){state.ending_active=true;state.ending_frames=0;}
+#endif
     if(mode.control_mode!=0){request(StageExit::ReplayEnd);return true;}
     if(mode.stage!=6)request(StageExit::Results);
     count_clear();return true;

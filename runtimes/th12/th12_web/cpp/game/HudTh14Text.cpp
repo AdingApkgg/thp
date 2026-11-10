@@ -1,5 +1,6 @@
 #include "HudTh14Text.hpp"
 #include "Th14LifeFragments.hpp"
+#include "HudCounterWordsTh14.hpp"
 #include "SpellTiming.hpp"
 #include <cstdio>
 #include <algorithm>
@@ -43,23 +44,48 @@ bool th14_hud_counters(AsciiText& output,const GameEconomy& e,const HudScore& sc
     // the original per-character float subtraction, including narrow commas.
     AsciiStyle style;style.font=4;style.color=u32(alpha)<<24|0x808080;char text[64];
     auto put=[&](float x,float y,bool right=false){if(right)for(const char* p=text;*p;++p)x-=style.scale.x*float(*p==','?4:12);return output.add(text,{x,y,0},style);};
-    score_text(text,u32(score.high),score.high_continues);if(!put(620,44,true))return false;
-    style.color=u32(alpha)<<24|0xffffff;score_text(text,u32(score.displayed),score.continues);if(!put(620,66,true))return false;
-    style.scale={.6f,.6f};const i32 required=th14_life_fragment_requirement(e.th14_life_awards);
-    if(required>=999999){std::snprintf(text,sizeof text,"---/---");if(!put(569,122)||!put(576,160))return false;}
-    else{
-        std::snprintf(text,sizeof text,"%3d",e.life_fragments);if(!put(576,122))return false;
-        std::snprintf(text,sizeof text,"/%d",required);if(!put(597,122))return false;
-        std::snprintf(text,sizeof text,"%3d",e.th14_bomb_fragments);if(!put(576,160))return false;
-        std::snprintf(text,sizeof text,"/8");if(!put(597,160))return false;
-    }
-    if(!e.power_step)return false;
-    style.color=u32(alpha)<<24|0xff8030;style.scale={1,1};std::snprintf(text,sizeof text,"%d.",e.power/e.power_step);if(!put(540,216))return false;
-    style.scale={.6f,.6f};std::snprintf(text,sizeof text,"%.2d",signed_bits(u32(e.power%e.power_step)*100u)/e.power_step);if(!put(560,223))return false;
-    style.scale={1,1};std::snprintf(text,sizeof text,"/%d.",e.max_power/e.power_step);if(!put(574,216))return false;
-    style.scale={.6f,.6f};std::snprintf(text,sizeof text,"00");if(!put(606,223))return false;
-    style.scale={1,1};style.color=u32(alpha)<<24|0x40c0ff;const i32 points=e.point_value/100;grouped(text,u32(points-points%10));if(!put(620,238,true))return false;
-    style.color=u32(alpha)<<24|0x808080;grouped(text,u32(e.graze));return put(620,260,true);
+    return th14_hud_counter_words([&](HudCounterReadTh14 word)->i32{
+        using R=HudCounterReadTh14;
+        switch(word){
+        case R::HighContinues:return th14_hud_load(score.high_continues);
+        case R::High:return score.high_value();
+        case R::Continues:return score.continues_value();
+        case R::Displayed:return score.displayed_value();
+        case R::AwardsWidth:case R::AwardsLife:case R::AwardsRequirement:case R::AwardsBomb:return th14_hud_load(e.th14_life_awards);
+        case R::LifeFragments:return th14_hud_load(e.life_fragments);
+        case R::BombFragments:return th14_hud_load(e.th14_bomb_fragments);
+        case R::PowerInteger:case R::PowerFraction:return th14_hud_load(e.power);
+        case R::StepInteger:case R::StepModulo:case R::StepFraction:case R::StepMaximum:return th14_hud_load(e.power_step);
+        case R::MaxPower:return th14_hud_load(e.max_power);
+        case R::PointValue:return th14_hud_load(e.point_value);
+        case R::Graze:return th14_hud_load(e.graze);
+        }return 0;
+    },[&](HudCounterTextTh14 kind,i32 value,i32 suffix,float x){
+        using T=HudCounterTextTh14;
+        style.scale={.6f,.6f};style.color=u32(alpha)<<24|0xffffff;
+        switch(kind){
+        case T::High:case T::Score:
+            style.scale={1,1};if(kind==T::High)style.color=u32(alpha)<<24|0x808080;
+            score_text(text,u32(value),suffix);return put(x,kind==T::High?44.f:66.f,true);
+        case T::Life:case T::Bombs:
+            std::snprintf(text,sizeof text,"%3d",value);return put(x,kind==T::Life?122.f:160.f);
+        case T::LifeRequirement:case T::BombRequirement:
+            std::snprintf(text,sizeof text,"/%d",value);return put(x,kind==T::LifeRequirement?122.f:160.f);
+        case T::LifeUnavailable:case T::BombUnavailable:
+            std::snprintf(text,sizeof text,"---/---");return put(x,kind==T::LifeUnavailable?122.f:160.f);
+        case T::PowerInteger:case T::PowerFraction:case T::PowerMaximum:case T::PowerZeros:
+            style.color=u32(alpha)<<24|0xff8030;
+            if(kind==T::PowerInteger||kind==T::PowerMaximum)style.scale={1,1};
+            if(kind==T::PowerInteger)std::snprintf(text,sizeof text,"%d.",value);
+            else if(kind==T::PowerFraction)std::snprintf(text,sizeof text,"%.2d",value);
+            else if(kind==T::PowerMaximum)std::snprintf(text,sizeof text,"/%d.",value);
+            else std::snprintf(text,sizeof text,"00");
+            return put(x,kind==T::PowerInteger||kind==T::PowerMaximum?216.f:223.f);
+        case T::Points:case T::Graze:
+            style.scale={1,1};style.color=u32(alpha)<<24|(kind==T::Points?0x40c0ff:0x808080);
+            grouped(text,u32(value));return put(x,kind==T::Points?238.f:260.f,true);
+        }return false;
+    });
 }
 #endif
 }

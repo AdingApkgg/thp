@@ -53,6 +53,14 @@ bool PauseMenu::begin_end(bool is_practice,bool cleared){
     practice=is_practice;completed=cleared;transition(practice||completed?21:13);elapsed.set(0,&animations.rate);
     sounds.clear();action=PauseAction::None;
 #if PORT_TITLE == 14
+#if defined(TH14_CPP_STAGE_DECODE)
+    //449e0a always for death;449f8a for normal/SpellPr completion.
+    //StagePr (including30) defers this until44b22a after capture enqueue.
+    const u32 run_flags=th14_live_run_flags?u32(*th14_live_run_flags):
+        spell_practice_id>=0?0x20u:practice?0x10u:0u;
+    if(!completed||(run_flags&0x30u)==0||(run_flags&0x30u)==0x20u)
+        if(auto* control=animations.th14_control.get())control->flags|=0x10u;
+#endif
     if(!completed)sounds.push_back(14);
     // Retail449f20 leaves capture absent for a completed SpellPr attempt;
     // 44b16c creates only the compact choices after its ten-frame delay.
@@ -102,6 +110,9 @@ void PauseMenu::end_menu(u32 pressed,u32 repeat){
         if(practice&&completed&&spell_practice_id<0){
             if(timer.current<80)break;
             if(!create_deferred_backdrop_th14())return;
+#if defined(TH14_CPP_STAGE_DECODE)
+            if(auto* control=animations.th14_control.get())control->flags|=0x10u; //44b22a, after enqueue.
+#endif
         }else
 #endif
         if(timer.current<10)break;

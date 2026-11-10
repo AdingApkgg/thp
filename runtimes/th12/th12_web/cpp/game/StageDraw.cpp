@@ -1,6 +1,9 @@
 #include "Stage.hpp"
 #include "AnmRenderer.hpp"
 #include "ScreenFade.hpp"
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_WORKER)
+#include "StageDrawCameraWordsTh14.hpp"
+#endif
 namespace th11 {
 namespace {
 void camera_fog(AnmRenderer& renderer,const SceneCamera& camera){auto& p=renderer.pipeline();p.fogColor=camera.fog.color;p.fogNear=camera.fog.near_distance;p.fogFar=camera.fog.far_distance;}
@@ -15,7 +18,12 @@ bool Stage::draw_background(AnmRenderer& renderer,SceneCamera& camera,ScreenFade
     using touhou::graphics::Compare;
     if(state.draw_flags&8)return true;
     if(!(state.draw_flags&4)||state.fade_timer.current<60){
-        state.camera.offset=camera.offset;camera=state.camera;
+        state.camera.offset=camera.offset;
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_WORKER)
+        th14_publish_draw_camera_words(camera,state.camera);
+#else
+        camera=state.camera;
+#endif
 #if PORT_TITLE == 14
         // Retail40e365/40e7f1: the worker can copy the newly published
         // saved camera before446400 replaces its perspective-derived right.
@@ -57,7 +65,12 @@ bool Stage::draw_foreground(AnmRenderer& renderer,SceneCamera& camera
     using touhou::graphics::Compare;
     if(state.draw_flags&8)return true;
     if(!(state.draw_flags&4)||state.fade_timer.current<60){
-        state.camera.offset=camera.offset;camera=state.camera;
+        state.camera.offset=camera.offset;
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_WORKER)
+        th14_publish_draw_camera_words(camera,state.camera);
+#else
+        camera=state.camera;
+#endif
 #if PORT_TITLE == 14
         // Retail40e365/40e7f1: the worker can copy the newly published
         // saved camera before446400 replaces its perspective-derived right.
@@ -105,7 +118,17 @@ bool stage_visible(const StageObject& object,Vec3 instance,const SceneCamera& ca
         {object.position.x,hi.y,float(double(object.position.z)+double(half.z)*.5)}
     };
     Matrix4 world;world.identity();world.m[12]=instance.x;world.m[13]=instance.y;world.m[14]=instance.z;
+#if PORT_TITLE == 14
+    // Retail46aebb..46aee6 centers the fixed384x448 intermediate playfield;
+    // 40ef1e..40eff6 culls in that space before its final screen copy.
+    const float origin_x=kPortTitle==14?float((i32(camera.render_width)-384)/2):32.f;
+    const float origin_y=kPortTitle==14?float((i32(camera.render_height)-448)/2):16.f;
+    float min_x=kPortTitle==14?origin_x+392:kPortTitle==13?520:424;
+    float max_x=kPortTitle==14?origin_x-8:kPortTitle==13?120:24;
+    float min_y=kPortTitle==14?origin_y+456:472,max_y=kPortTitle==14?origin_y-8:8;
+#else
     float min_x=kPortTitle==13?520:424,max_x=kPortTitle==13?120:24,min_y=472,max_y=8;
+#endif
     // TH14 40eeeb projects all sixteen points; 40ef97..40efbd updates both bounds.
     for(u32 i=0;i<(kPortTitle==13||kPortTitle==14?16:12);++i){const auto p=GraphicsMath::project(points[i],camera.viewport,camera.projection,camera.view,world);
         if((kPortTitle==14?p.z>=0:p.z>0)&&p.z<=1){
@@ -120,7 +143,11 @@ bool stage_visible(const StageObject& object,Vec3 instance,const SceneCamera& ca
             }
         }
     }
+#if PORT_TITLE == 14
+    return max_x>=origin_x&&min_x<=origin_x+384&&max_y>=origin_y&&min_y<=origin_y+448;
+#else
     return max_x>=(kPortTitle==13?128:32)&&min_x<=(kPortTitle==13?512:416)&&max_y>=16&&min_y<=464;
+#endif
 }
 bool Stage::draw_layer(AnmRenderer& renderer,SceneCamera& camera,u32 layer){
     bool depth_write=true;
@@ -134,7 +161,7 @@ bool Stage::draw_layer(AnmRenderer& renderer,SceneCamera& camera,u32 layer){
     // 4107b0 runs before the object traversal on every layer, including 8..11.
     for(u32 i=0;i<8;++i){auto& vm=state.script_animations[i];
         if(!vm.sprite||state.script_animation_layers[i]!=i32(layer))continue;
-        if(layer==0){renderer.set_camera(camera,true);renderer.pipeline().fog=false;renderer.set_stage_depth_write(false);}
+        if(layer==0){renderer.upload_camera(camera);renderer.pipeline().fog=false;renderer.set_stage_depth_write(false);}
         if(renderer.draw(vm)==-2){error="stage standalone draw failed";return false;}
         if(layer==0){renderer.set_stage_depth_write(true);renderer.set_camera(camera,false);}
     }

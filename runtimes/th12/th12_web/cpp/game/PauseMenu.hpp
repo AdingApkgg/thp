@@ -37,6 +37,10 @@ public:
 #endif
 #if PORT_TITLE == 14
     i32 spell_practice_id=-1;
+#if defined(TH14_CPP_STAGE_DECODE)
+    // Borrowed from the live Battle, which outlives this menu's updates.
+    const LoadingWordTh14<u32>* th14_live_run_flags=nullptr;
+#endif
     std::unique_ptr<AnmResource> manual_resource;
     Timer manual_timer;
     MenuCursor manual_cursor;

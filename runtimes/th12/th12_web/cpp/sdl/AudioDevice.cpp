@@ -43,9 +43,55 @@ struct AudioDevice::Impl {
         return (suspended?suspend_started:now)-suspended_time;
     }
 #endif
+#if PORT_TITLE == 14
+    struct MusicPcm {std::string filename;const u8* format=nullptr;std::vector<u8> wave;};
+    std::array<std::shared_ptr<MusicPcm>,2> preloaded_music{};
+    std::array<std::string,2> preloaded_names{};
+    Th14MusicQueue music_requests;
+    bool native_direct_sound=false;
+    u32 preload_calls=0,preload_cache_hits=0,initial_request_calls=0;
+#endif
+#if PORT_TITLE == 14
+    // DirectSound SetPan keeps one channel at unity and attenuates the other
+    // by the supplied hundredths of a dB. Keep that gain directly: mapping it
+    // through miniaudio's normalized pan loses precision in 1-(1-gain).
+    struct Balance {
+        ma_node_base base{};
+        float left=1,right=1;
+        bool initialized=false;
+        static void process(ma_node* node,const float** input,ma_uint32* in_count,
+                            float** output,ma_uint32* out_count){
+            auto& self=*static_cast<Balance*>(node);
+            const ma_uint32 count=std::min(*in_count,*out_count);
+            for(ma_uint32 i=0;i<count;++i){
+                output[0][i*2]=float(input[0][i*2]*self.left);
+                output[0][i*2+1]=float(input[0][i*2+1]*self.right);
+            }
+            *in_count=*out_count=count;
+        }
+        bool initialize(ma_engine& engine){
+            static const ma_node_vtable table{process,nullptr,1,1,0};
+            const ma_uint32 channels=2;
+            auto config=ma_node_config_init();config.vtable=&table;
+            config.pInputChannels=&channels;config.pOutputChannels=&channels;
+            auto* graph=ma_engine_get_node_graph(&engine);
+            if(ma_node_init(graph,&config,nullptr,&base)!=MA_SUCCESS)return false;
+            initialized=true;
+            return ma_node_attach_output_bus(&base,0,ma_node_graph_get_endpoint(graph),0)==MA_SUCCESS;
+        }
+        void pan(i32 value){
+            if(value<-10000||value>10000)return;
+            const float gain=volume(value>0?-value:value);
+            left=value>0?gain:1.f;right=value<0?gain:1.f;
+        }
+        ~Balance(){if(initialized)ma_node_uninit(&base,nullptr);}
+    };
+#endif
     struct Voice {
 #if PORT_TITLE == 14
         MusicTime time;
+        Balance balance;bool use_balance=false;
+        std::shared_ptr<MusicPcm> cached_pcm;
         std::unique_ptr<Th14MusicStream> music_stream;
 #endif
         ma_decoder decoder{};ma_sound sound{};bool decoded=false,attached=false;~Voice(){if(attached)ma_sound_uninit(&sound);
@@ -71,7 +117,13 @@ struct AudioDevice::Impl {
 #if PORT_TITLE == 14
         if(v.music_stream)source=&v.music_stream->base;
 #endif
-        if(ma_sound_init_from_data_source(&engine,source,flags,nullptr,&v.sound)!=MA_SUCCESS)return false;v.attached=true;return true;
+        if(ma_sound_init_from_data_source(&engine,source,flags,nullptr,&v.sound)!=MA_SUCCESS)return false;v.attached=true;
+#if PORT_TITLE == 14
+        if(v.use_balance){
+            if(!v.balance.initialize(engine)||ma_node_attach_output_bus(&v.sound,0,&v.balance.base,0)!=MA_SUCCESS)return false;
+        }
+#endif
+        return true;
     }
 #if PORT_TITLE == 14
     bool seek_music(Voice& v,ma_uint64 frame,bool subframe=false){
@@ -99,6 +151,9 @@ bool AudioDevice::initialize(GameResources& resources){
     for(u32 n=0;n<sound_sample_count;++n)if(!resources.read(sound_samples[n],a.samples[n])){error=std::string("Missing sound: ")+sound_samples[n];return false;}
     for(u32 n=0;n<a.sounds.size();++n){auto voice=std::make_unique<Impl::Voice>();const auto& bytes=a.samples[sound_definitions[n].sample];auto config=ma_decoder_config_init(ma_format_f32,2,44100);
         if(ma_decoder_init_memory(bytes.data(),bytes.size(),&config,&voice->decoder)!=MA_SUCCESS){error="Invalid TH11 WAV sample";return false;}voice->decoded=true;
+#if PORT_TITLE == 14
+        voice->use_balance=true;
+#endif
         if(!a.attach(*voice)){error="Unable to attach sound voice";return false;}
 #if PORT_TITLE == 14
         ma_sound_set_looping(&voice->sound,(sound_definitions[n].play_flags&1)!=0);
@@ -107,12 +162,111 @@ bool AudioDevice::initialize(GameResources& resources){
     }
     if(!resources.read("thbgm.fmt",a.formats)){error="Missing TH11 music layout";return false;}SDL_ResumeAudioStreamDevice(a.stream);a.ready=true;error.clear();return true;
 }
+#if PORT_TITLE == 14
+bool AudioDevice::initialize_device(){
+    if(impl->stream)return true;
+    SDL_SetHint(SDL_HINT_AUDIO_DEVICE_SAMPLE_FRAMES,"2048");const SDL_AudioSpec spec{SDL_AUDIO_F32,2,44100};
+    if(SDL_InitSubSystem(SDL_INIT_AUDIO))impl->stream=SDL_OpenAudioDeviceStream(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK,&spec,nullptr,nullptr);
+    if(!impl->stream){error=SDL_GetError();return false;}error.clear();return true;
+}
+bool AudioDevice::prepare_cpu(GameResources& resources,const std::function<bool()>& cancelled){
+    // This private object has never owned an SDL stream. No live Main mixer,
+    // queue, decoder, statistics or volume field is written by this worker.
+    if(impl->stream||impl->engine_ready){error="Audio preparation owner already initialized";return false;}
+    auto& a=*impl;auto engine=ma_engine_config_init();engine.noDevice=MA_TRUE;engine.channels=2;engine.sampleRate=44100;engine.defaultVolumeSmoothTimeInPCMFrames=0;
+    if(ma_engine_init(&engine,&a.engine)!=MA_SUCCESS){error="Unable to initialize audio mixer";return false;}a.engine_ready=true;
+    for(u32 n=0;n<sound_sample_count;++n){
+        if(cancelled())return false;
+        if(!resources.read(sound_samples[n],a.samples[n])){error=std::string("Missing sound: ")+sound_samples[n];return false;}
+    }
+    for(u32 n=0;n<a.sounds.size();++n){
+        if(cancelled())return false;
+        auto voice=std::make_unique<Impl::Voice>();const auto& bytes=a.samples[sound_definitions[n].sample];auto config=ma_decoder_config_init(ma_format_f32,2,44100);
+        if(ma_decoder_init_memory(bytes.data(),bytes.size(),&config,&voice->decoder)!=MA_SUCCESS){error="Invalid TH11 WAV sample";return false;}voice->decoded=true;
+#if PORT_TITLE == 14
+        voice->use_balance=true;
+#endif
+        if(!a.attach(*voice)){error="Unable to attach sound voice";return false;}
+        ma_sound_set_looping(&voice->sound,(sound_definitions[n].play_flags&1)!=0);
+        effects.buffers[n]=n+1;a.sounds[n]=std::move(voice);
+    }
+    error.clear();return true;
+}
+void AudioDevice::prepare_formats(std::vector<u8> formats){impl->formats=std::move(formats);}
+bool AudioDevice::adopt_prepared(AudioDevice& prepared){
+    if(this==&prepared||!prepared.impl->engine_ready||prepared.impl->stream||prepared.impl->ready||prepared.impl->formats.empty()){
+        error="Invalid prepared audio owner";return false;
+    }
+    if(!initialize_device())return false;
+    // The heap-resident engine and its voice nodes keep their addresses.
+    // Only Main's stream crosses into the completed private owner.
+    auto& next=*prepared.impl;next.stream=impl->stream;impl->stream=nullptr;
+    next.suspended=impl->suspended;next.suspend_started=impl->suspend_started;next.suspended_time=impl->suspended_time;
+    impl.swap(prepared.impl);
+    std::copy(std::begin(prepared.effects.buffers),std::end(prepared.effects.buffers),std::begin(effects.buffers));
+    if(!impl->suspended)SDL_ResumeAudioStreamDevice(impl->stream);
+    impl->ready=true;error.clear();return true;
+}
+#endif
+#if PORT_TITLE == 14
+Th14MusicQueue& AudioDevice::music_requests()noexcept{return impl->music_requests;}
+bool AudioDevice::consume_initial_music_request(bool native_direct_sound){
+    auto& a=*impl;a.native_direct_sound=native_direct_sound;if(!a.ready)return true; // 46e60b leaves the queue intact.
+    using Result=Th14MusicQueue::Result;
+    return a.music_requests.consume_one([&](const Th14MusicQueue::Request& request){
+        ++a.initial_request_calls;
+        if(request.command==3||request.command==4){
+            if(!a.music)return Result::Done;
+            if(!request.progress){ma_sound_stop(&a.music->sound);return Result::Advance;}
+            // This backend has no Win32 music-thread handle. Preserve the
+            // original no-handle stop phase; device streaming stays on Main.
+            return Result::Done;
+        }
+        if(request.command!=1||request.argument>=2||request.progress){error="Unsupported initial music request";return Result::Failed;}
+        const u32 slot=request.argument;
+        // 46de40 retains an existing identical slot. With bit10 clear the
+        // original stores its filename but does not read the PCM file.
+        if(native_direct_sound){a.music.reset();a.track=-1;a.music_paused=false;a.music_fade={};}
+        if(a.preloaded_music[slot]&&a.preloaded_names[slot]==request.file)return Result::Done;
+        a.preloaded_names[slot]=request.file;++a.preload_calls;
+        if(!native_direct_sound)return Result::Done;
+        a.preloaded_music[slot].reset();
+        const u8* format=nullptr;
+        for(u32 n=0;n+52<=a.formats.size();n+=52)if(std::strncmp(reinterpret_cast<const char*>(a.formats.data()+n),request.file,16)==0){format=a.formats.data()+n;break;}
+        if(!format){error="Initial music layout entry not found";return Result::Failed;}
+        const u32 rate=word(format+36),align=short_word(format+44),channels=short_word(format+34),bits=short_word(format+46);
+        const u32 bytes=word(format+20),total=word(format+28);
+        if(!align||!rate||!channels||bits!=16||bytes%align||bytes!=total){error="Unsupported initial music PCM layout";return Result::Failed;}
+        std::string stem=request.file;const auto dot=stem.find_last_of('.');if(dot!=std::string::npos)stem.erase(dot);
+        const auto path=std::string("/music/")+stem+".flac";
+        ma_decoder decoder{};const auto config=ma_decoder_config_init(ma_format_s16,channels,rate);
+        if(ma_decoder_init_file(path.c_str(),&config,&decoder)!=MA_SUCCESS){error="Unable to preload "+path;return Result::Failed;}
+        auto pcm=std::make_shared<Impl::MusicPcm>();pcm->filename=request.file;pcm->format=format;pcm->wave.resize(44+bytes);
+        ma_uint64 length=0,read=0;const bool ok=ma_decoder_get_length_in_pcm_frames(&decoder,&length)==MA_SUCCESS&&length==total/align&&
+            ma_decoder_read_pcm_frames(&decoder,pcm->wave.data()+44,bytes/align,&read)==MA_SUCCESS&&read==bytes/align;
+        ma_decoder_uninit(&decoder);
+        if(!ok){error="Initial music PCM length differs from original: "+path;return Result::Failed;}
+        // A 44-byte WAV view lets the existing streaming/Continue decoder
+        // read this exact s16 PCM without keeping a second payload copy.
+        auto* w=pcm->wave.data();const auto put32=[&](u32 offset,u32 value){std::memcpy(w+offset,&value,4);};
+        const auto put16=[&](u32 offset,u16 value){std::memcpy(w+offset,&value,2);};
+        std::memcpy(w,"RIFF",4);put32(4,36+bytes);std::memcpy(w+8,"WAVEfmt ",8);put32(16,16);put16(20,1);put16(22,u16(channels));
+        put32(24,rate);put32(28,rate*align);put16(32,u16(align));put16(34,u16(bits));std::memcpy(w+36,"data",4);put32(40,bytes);
+        a.preloaded_music[slot]=std::move(pcm);return Result::Done;
+    });
+}
+#endif
 bool AudioDevice::music(i32 track){
     auto& a=*impl;if(!a.ready)return false;if(track<0){if(a.music)ma_sound_stop(&a.music->sound);a.track=-1;return true;}
     const char* stem=nullptr;for(const auto& t:music_tracks)if(t.cue==track){stem=t.file;break;}if(!stem){error="Unknown TH11 music cue";return false;}
     const auto filename=std::string(stem)+".wav";const u8* format=nullptr;
     for(u32 n=0;n+52<=a.formats.size();n+=52)if(std::strncmp(reinterpret_cast<const char*>(a.formats.data()+n),filename.c_str(),16)==0){format=a.formats.data()+n;break;}
     if(!format){error="Music layout entry not found";return false;}
+#if PORT_TITLE == 14
+    std::shared_ptr<Impl::MusicPcm> cached_music;
+    if(a.native_direct_sound)for(u32 slot=0;slot<2;++slot)if(a.preloaded_music[slot]&&a.preloaded_names[slot]==filename){cached_music=a.preloaded_music[slot];format=cached_music->format;break;}
+#endif
+
     if(a.track==track&&a.music){a.fade=0;a.music_paused=false;
 #if PORT_TITLE == 14
         a.music_fade={};
@@ -135,7 +289,14 @@ bool AudioDevice::music(i32 track){
     const u32 rate=word(format+36),align=short_word(format+44),channels=short_word(format+34),total=word(format+28),intro=word(format+24);
     if(!align||!rate||!channels||intro>=total){error="Invalid music loop";return false;}
     auto config=ma_decoder_config_init(ma_format_f32,channels,rate);
+#if PORT_TITLE == 14
+    next->cached_pcm=std::move(cached_music);
+    const auto decoded=next->cached_pcm?ma_decoder_init_memory(next->cached_pcm->wave.data(),next->cached_pcm->wave.size(),&config,&next->decoder):ma_decoder_init_file(path.c_str(),&config,&next->decoder);
+    if(decoded!=MA_SUCCESS){error="Unable to decode "+path;return false;}next->decoded=true;
+    if(next->cached_pcm)++a.preload_cache_hits;
+#else
     if(ma_decoder_init_file(path.c_str(),&config,&next->decoder)!=MA_SUCCESS){error="Unable to decode "+path;return false;}next->decoded=true;
+#endif
     ma_uint64 length=0;if(ma_decoder_get_length_in_pcm_frames(&next->decoder,&length)!=MA_SUCCESS||length!=total/align){error="Music PCM frame count differs from original: "+path;return false;}
     ma_data_source_set_loop_point_in_pcm_frames(&next->decoder,intro/align,total/align);
 #if PORT_TITLE == 14
@@ -257,8 +418,19 @@ void AudioDevice::suspend(bool paused){auto& a=*impl;
     a.suspended=paused;if(a.stream){if(paused)SDL_PauseAudioStreamDevice(a.stream);else SDL_ResumeAudioStreamDevice(a.stream);}}
 void AudioDevice::sound_stop(u32 n){if(auto* v=impl->voice(n))ma_sound_stop(&v->sound);}
 void AudioDevice::sound_position(u32 n,u32 frame){if(auto* v=impl->voice(n))ma_sound_seek_to_pcm_frame(&v->sound,frame);}
-void AudioDevice::sound_pan(u32 n,i32 value){if(auto* v=impl->voice(n)){ma_sound_set_pan_mode(&v->sound,ma_pan_mode_balance);ma_sound_set_pan(&v->sound,value>=0?1.f-std::pow(10.f,-float(value)/2000.f):std::pow(10.f,float(value)/2000.f)-1.f);}}
-void AudioDevice::sound_volume(u32 n,i32 value){if(auto* v=impl->voice(n))ma_sound_set_volume(&v->sound,volume(value));}
+void AudioDevice::sound_pan(u32 n,i32 value){if(auto* v=impl->voice(n)){
+#if PORT_TITLE == 14
+    v->balance.pan(value);
+#else
+    ma_sound_set_pan_mode(&v->sound,ma_pan_mode_balance);ma_sound_set_pan(&v->sound,value>=0?1.f-std::pow(10.f,-float(value)/2000.f):std::pow(10.f,float(value)/2000.f)-1.f);
+#endif
+}}
+void AudioDevice::sound_volume(u32 n,i32 value){
+#if PORT_TITLE == 14
+    if(value<-10000||value>0)return;
+#endif
+    if(auto* v=impl->voice(n))ma_sound_set_volume(&v->sound,volume(value));
+}
 void AudioDevice::sound_play(u32 n){if(auto* v=impl->voice(n))ma_sound_start(&v->sound);}
 const u32* AudioDevice::statistics()const{auto& a=*impl;a.stats[0]=a.ready;a.stats[4]=a.stream?std::max(0,SDL_GetAudioStreamQueued(a.stream))/8:0;a.stats[5]=u32(a.track);a.stats[6]=
 #if PORT_TITLE == 14

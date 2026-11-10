@@ -82,16 +82,18 @@ bool SceneCompositor::draw_animation(AnmRenderer& renderer,u32 layer){
         if(layer==28||layer==39)renderer.set_camera(full_camera,true);
         return result;
     }
+#if PORT_TITLE == 14
     if constexpr(kPortTitle==14){
         if(layer==3){renderer.set_camera(world_camera,true);renderer.pipeline().fog=false;}
-        if(layer==20){renderer.set_camera(scaled_play_camera,true);renderer.pipeline().depthWrite=false;renderer.pipeline().depthCompare=touhou::graphics::Compare::Always;}
-        if(layer==24){renderer.set_camera(full_camera,true);renderer.pipeline().depthWrite=false;renderer.pipeline().depthCompare=touhou::graphics::Compare::Always;renderer.offset={};}
-        if(layer==34)renderer.set_camera(full_camera,true);
-        if(layer==27||layer==35)renderer.set_camera(play_camera,true);
+        if(layer==20){renderer.upload_camera(scaled_play_camera);renderer.pipeline().depthWrite=false;renderer.pipeline().depthCompare=touhou::graphics::Compare::Always;}
+        if(layer==24){renderer.upload_camera(full_camera);renderer.pipeline().depthWrite=false;renderer.pipeline().depthCompare=touhou::graphics::Compare::Always;renderer.offset={};}
+        if(layer==34)renderer.upload_camera(full_camera);
+        if(layer==27||layer==35)renderer.upload_camera(play_camera);
         const bool result=renderer.draw_layer(manager.layer_first(layer))!=-2;
-        if(layer==27||layer==35)renderer.set_camera(full_camera,true);
+        if(layer==27||layer==35)renderer.upload_camera(full_camera);
         return result;
     }
+#endif
     if(layer==(kPortTitle==13?4:3)){renderer.set_camera(world_camera,true);renderer.pipeline().fog=false;}
     if(layer==(kPortTitle==13?20:19)){world_camera.offset={};renderer.offset={};}
     if(layer==(kPortTitle==13?21:20)||layer==(kPortTitle==13?31:29))renderer.set_camera(full_camera,true);
@@ -107,7 +109,13 @@ bool SceneCompositor::draw(AnmRenderer& renderer,SceneDrawKind kind){
         if(!renderer.clear_target(resource?0xffffffff:clear_color))return false;
         if(resource&&(!renderer.select_target(resource,2)||!renderer.clear_target(clear_color,&region)))return false;
         renderer.offset={};renderer.tint_enabled=false;renderer.tint=0x80808080;
-        renderer.set_camera(full_camera,kPortTitle==14||kPortTitle==16);return true;
+        
+#if PORT_TITLE == 14
+        renderer.upload_camera(full_camera);
+#else
+        renderer.set_camera(full_camera,kPortTitle==16);
+#endif
+        return true;
     }
     if(!resource)return true;
     switch(kind){
@@ -117,7 +125,13 @@ bool SceneCompositor::draw(AnmRenderer& renderer,SceneDrawKind kind){
     case SceneDrawKind::CompositeA:case SceneDrawKind::CompositeB:{
         const bool second=kind==SceneDrawKind::CompositeB;
         auto& copy=copies[second?1:0];
-        if constexpr(kPortTitle==14||kPortTitle==16){renderer.flush();renderer.pipeline().blendEquation=touhou::graphics::BlendEquation::Add;renderer.pipeline().alphaTest=false;renderer.pipeline().depthWrite=false;renderer.set_camera(world_camera,true);}
+        if constexpr(kPortTitle==14||kPortTitle==16){renderer.flush();renderer.pipeline().blendEquation=touhou::graphics::BlendEquation::Add;renderer.pipeline().alphaTest=false;renderer.pipeline().depthWrite=false;
+#if PORT_TITLE == 14
+            renderer.upload_camera(world_camera);
+#else
+            renderer.set_camera(world_camera,true);
+#endif
+        }
         if(renderer.draw(copy)==-2)return false;
         if constexpr(kPortTitle==13)copy.color=0xffffffff;
         if constexpr(kPortTitle==14||kPortTitle==16){if(!second&&renderer.draw_layer(manager.layer_first(kPortTitle==16?34:32))==-2)return false;}

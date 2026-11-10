@@ -4,6 +4,9 @@
 #include "PortTitle.hpp"
 #include "Interpolation.hpp"
 #include "Rng.hpp"
+#include "AnmExecutionContextTh14.hpp"
+#include "AnmFlagWordTh14.hpp"
+#include "LoadingWordTh14.hpp"
 namespace th11 {
 struct AnmEnvironment;
 // Native TH14 display globals, expressed in the backend's logical space.
@@ -32,7 +35,7 @@ struct AnmVm {
     Matrix4 sprite_matrix,transform_matrix,uv_matrix;
     u32 color,secondary_color;
 #if PORT_TITLE == 14
-    i32 pending_interrupt;
+    LoadingWordTh14<i32> pending_interrupt;
 #else
     i16 pending_interrupt;u16 reserved_37e;
 #endif
@@ -46,7 +49,7 @@ struct AnmVm {
     Vec3 script_position,position,child_position;
     void* geometry;
     // Native TH13 flags that have no matching bit in the older canonical VM.
-    u32 flags,flags2,th13_native_flags;
+    AnmFlagWordTh14 flags,flags2,th13_native_flags;
     void (*before_update)(AnmVm&);
     void (*draw_callback)(AnmVm&);
     u32 reserved_418;
@@ -88,6 +91,8 @@ struct AnmVm {
     float slowdown_factor;
     Timer age;
     u32 inherited_color;
+    // Retail +4f8..524: last quad submitted, written before visibility clipping.
+    Vec3 screen_quad_positions[4];
     void* dialogue_owner;
 #endif
     void initialize() noexcept;
@@ -135,7 +140,7 @@ struct AnmVm {
 };
 // Layout assertions apply to the 32-bit comparison/WebAssembly target only.
 #if UINTPTR_MAX == UINT32_MAX
-inline constexpr u32 kAnmVmExtensionBytes=((kPortTitle==13||kPortTitle==14)?3*sizeof(Vec2)+2*sizeof(Vec2Interpolator)+sizeof(Vec3):0)+(kPortTitle==16?3*sizeof(Vec2)+sizeof(Vec2Interpolator)+12*sizeof(u32)+sizeof(float)+sizeof(AnmVm*):0)+((kPortTitle==14||kPortTitle==16)?sizeof(AnmResource*):0)+(kPortTitle==14?sizeof(Vec3)+sizeof(Vec2)+sizeof(i32)+sizeof(float)+sizeof(Timer)+sizeof(u32)+sizeof(void*):0)+sizeof(AnmTraceEntry)*anm_trace_size+sizeof(u32);
+inline constexpr u32 kAnmVmExtensionBytes=((kPortTitle==13||kPortTitle==14)?3*sizeof(Vec2)+2*sizeof(Vec2Interpolator)+sizeof(Vec3):0)+(kPortTitle==16?3*sizeof(Vec2)+sizeof(Vec2Interpolator)+12*sizeof(u32)+sizeof(float)+sizeof(AnmVm*):0)+((kPortTitle==14||kPortTitle==16)?sizeof(AnmResource*):0)+(kPortTitle==14?sizeof(Vec3)+sizeof(Vec2)+sizeof(i32)+sizeof(float)+sizeof(Timer)+sizeof(u32)+sizeof(void*)+4*sizeof(Vec3):0)+sizeof(AnmTraceEntry)*anm_trace_size+sizeof(u32);
 static_assert(sizeof(AnmVm)==0x434+kAnmVmExtensionBytes);
 static_assert(offsetof(AnmVm,uv)==0x70);
 static_assert(offsetof(AnmVm,position_interpolation)==0x90);
@@ -147,12 +152,15 @@ static_assert(offsetof(AnmVm,flags)==0x404);
 struct AnmTemplatesTh14 {std::vector<AnmVm> scripts;};
 #endif
 struct AnmEnvironment {
-    float rate=1;
+    AnmRateTh14 rate=1;
     Rng script_rng,visual_rng;
 #if PORT_TITLE == 14
     // Main ANM thread: device creation selects PC24, floating RNG helpers
     // 403470/4034b0 execute FNINIT to PC64. Integer draws leave it unchanged.
     bool texture_high_precision=false;
+    bool& th14_execution_precision()noexcept{
+        return AnmExecutionContextTh14::precision(this,texture_high_precision);
+    }
 #endif
     Vec3 reference_positions[2]{},camera_delta{},default_tangent{};
     AnmResource* fallback_sprites=nullptr;
@@ -182,5 +190,8 @@ struct AnmEnvironment {
     virtual bool allocate_geometry(AnmVm&,u32){return false;}
     virtual bool update_geometry(AnmVm&){return false;}
     virtual bool screen_uv(AnmVm&);
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    virtual bool th14_control_vm_blocked()const noexcept{return false;}
+#endif
 };
 }

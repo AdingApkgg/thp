@@ -1,4 +1,5 @@
 #include "AnmGeometry.hpp"
+#include <new>
 #include "GraphicsMath.hpp"
 #include "PortTitle.hpp"
 #include <cmath>
@@ -30,8 +31,13 @@ Vec2 anm_vertex_uv(const AnmVm& vm,u32 i) noexcept {
     return {float(double(vm.uv[i].x)+vm.uv_offset.x),float(double(vm.uv[i].y)+vm.uv_offset.y)};
 #endif
 }
+#if PORT_TITLE == 14
+static bool anm_quad_positions_impl(const AnmVm& vm,Vec3 (&out)[4],const AnmRenderSpace& space,u32 mode) noexcept {
+    const u32 anchor_x=(vm.flags>>18)&3,anchor_y=(vm.flags>>20)&3;
+#else
 bool anm_quad_positions(const AnmVm& vm,Vec3 (&out)[4],const AnmRenderSpace& space) noexcept {
     const u32 mode=vm.drawing_mode(),anchor_x=(vm.flags>>18)&3,anchor_y=(vm.flags>>20)&3;
+#endif
     if(mode>3||anchor_x==3||anchor_y==3)return false;
 #if PORT_TITLE == 16
     // Own465c40/4660b0: pivot and resolution precede inherited sprite scale.
@@ -119,6 +125,16 @@ bool anm_quad_positions(const AnmVm& vm,Vec3 (&out)[4],const AnmRenderSpace& spa
     return true;
 #endif
 }
+#if PORT_TITLE == 14
+bool anm_quad_positions(const AnmVm& vm,Vec3 (&out)[4],const AnmRenderSpace& space) noexcept {
+    return anm_quad_positions_impl(vm,out,space,vm.drawing_mode());
+}
+bool anm_th14_draw_quad_positions(const AnmVm& vm,Vec3 (&out)[4],const AnmRenderSpace& space) noexcept {
+    // 468170 selects rotated geometry for draw mode3 without a VM store.
+    const u32 mode=vm.drawing_mode();
+    return anm_quad_positions_impl(vm,out,space,mode==3?1:mode);
+}
+#endif
 Vec2 anm_screen_uv(Vec3 p) noexcept {Vec2 uv{float(double(p.x)/640),float(double(p.y)/480)};if(uv.x<0)uv.x=0;if(uv.y<0)uv.y=0;return uv;}
 bool anm_ring_vertices(const AnmVm& vm,AnmVertex* out,u32 capacity,const AnmRenderSpace& space) noexcept {
     const u32 mode=vm.drawing_mode();const i32 count=vm.integers[0];
@@ -151,6 +167,12 @@ bool anm_ring_vertices(const AnmVm& vm,AnmVertex* out,u32 capacity,const AnmRend
 }
 #if PORT_TITLE == 14
 bool anm_th14_install_effect(AnmVm& vm,i32 type,AnmEnvironment& env){
+    if(type==0){
+        if(!vm.resource||!env.allocate_geometry(vm,sizeof(TransitionType0Th14)))return false;
+        auto* transition=new(vm.geometry)TransitionType0Th14();
+        if(!transition->initialize(vm,*vm.resource,env))return false;
+        vm.th13_effect=1;return true;
+    }
     if(type==7){
         if(!env.allocate_geometry(vm,sizeof(AnmTh14Particles)))return false;
         auto& p=*static_cast<AnmTh14Particles*>(vm.geometry);std::memset(&p,0,sizeof p);p.timer.set(0,&env.rate);vm.th13_effect=7;return true;

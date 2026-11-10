@@ -8,10 +8,17 @@ bool AsciiText::add(const char* text,Vec3 position,const AsciiStyle& style){
     requests.push_back({std::string(text,std::min(std::strlen(text),size_t(255))),position,style});return true;
 }
 bool AsciiText::draw(AnmRenderer& renderer,i32 pass,SceneCamera& full,SceneCamera& play){
+#if PORT_TITLE == 14
+    // Retail40b920 selects playfield for pass2;40be30/40c770 inherit
+    // the current camera for the other passes. Glyphs do not reset cameras.
+    if(pass==2)renderer.upload_camera(play);
+#endif
     AnmVm vm;vm.initialize();vm.resource=&resource;
     for(const auto& request:requests){
         const auto& style=request.style;if(style.pass!=pass)continue;
+#if PORT_TITLE != 14
         renderer.set_camera(style.playfield?play:full,true);
+#endif
         const bool filtered=(style.font==0&&style.scale.x!=1)||
             ((kPortTitle==13||kPortTitle==14)&&(style.font==3||style.font==5||(kPortTitle==13&&style.font==7)));
         vm.flags=0x140003u|(filtered?0x80000000u:0);
@@ -63,6 +70,14 @@ bool AsciiText::draw(AnmRenderer& renderer,i32 pass,SceneCamera& full,SceneCamer
             vm.script_position.x=float(double(advance)+vm.script_position.x);
         }
     }
-    renderer.set_camera(full,true);return true;
+#if PORT_TITLE == 14
+    // 40be30's core restores full transforms directly after every pass.
+    renderer.upload_camera(full);
+    // The playfield wrapper40b920 then performs its own40b976 restore.
+    if(pass==2)renderer.upload_camera(full);
+#else
+    renderer.set_camera(full,true);
+#endif
+    return true;
 }
 }

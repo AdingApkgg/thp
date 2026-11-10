@@ -26,7 +26,8 @@ public:
 #if PORT_TITLE == 14
     bool retire();
     bool initialize_empty(EclProgram&);
-    bool owner_present()const noexcept{return commands.manager==this;}
+    bool finish_stage_owner();
+    bool owner_present()const noexcept{return commands.th14_owner()==this;}
     const EclProgram* bound_timeline()const noexcept{return program;}
 #endif
     bool update();

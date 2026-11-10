@@ -108,7 +108,11 @@ bool Ending::update(u32 held,u32 pressed,u32 shoot_frames){
             if(op==5&&read<i32>(p+4)<0)wait.set(999,&animations.rate);
             if(!(pressed&0x80001)&&wait.current>0){if((seen&1)||!skip||wait.current%6){blocked=true;break;}}
             else sounds.push_back(0);
-            wait.set(0,&animations.rate);if(op==6)line=0;break;
+            wait.set(0,&animations.rate);if(op==6)line=0;
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+            animations.th14_effect_stop=0; // Native4205d3 only when wait completes.
+#endif
+            break;
         case 7:{
 #if PORT_TITLE == 14
             if(n<5||!source)return fail("invalid ending resource command");const i32 slot=read<i32>(p+4);
@@ -166,7 +170,11 @@ bool Ending::dispatch(GameInput& input,u32 raw){
         // stays fixed within dispatch, while pressed and hold counters advance.
         input.update_normalized(raw);
         if(!animations.update(true))return fail("ending overlay ANM update failed");
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+        fades.update(false,false,&animations.th14_effect_stop,&animations.th14_control);
+#else
         fades.update();
+#endif
         if(!animations.update(false))return fail("ending normal ANM update failed");
         if(!update(input.held,input.pressed,input.held_frames[0]))return false;
         text.insert(text.end(),text_requests.begin(),text_requests.end());
@@ -189,6 +197,11 @@ bool Ending::tick(u32 held,u32 pressed,u32 shoot_frames){
         if(music_request>=0)music=music_request;if(music_fade>=0)fade=music_fade;
     }while(active&&!(flags&4)&&!(seen&2)&&(flags&2)&&((held&512)||(kPortTitle==14&&(held&1)&&shoot_frames>=20))&&(kPortTitle==14?i32(frames)%12:frames%12));
     text_requests=std::move(text);sounds=std::move(audio);music_request=music;music_fade=fade;
-    fades.update();return true;
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    fades.update(false,false,&animations.th14_effect_stop,&animations.th14_control);
+#else
+    fades.update();
+#endif
+    return true;
 }
 }

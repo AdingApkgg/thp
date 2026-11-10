@@ -8,13 +8,20 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#if PORT_TITLE==14 && defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
+#include <functional>
+#endif
 
 namespace th11 {
 
 // The last archive entry a loader asked for. It exists so that a stall during load can be attributed to a resource
 // from outside the module: the browser harness reads it out of the running page, which turns "initialization never
 // returned" into "the last thing it asked for was this file". It is an observation of load order, not a result.
+#if PORT_TITLE==14 && defined(TH14_CPP_STAGE_DECODE)
+extern thread_local std::string last_resource;
+#else
 extern std::string last_resource;
+#endif
 
 struct StageResources {
 #if PORT_TITLE == 14
@@ -54,6 +61,12 @@ public:
     bool load_stage_timeline_plan(u32 stage,StageResources& output);
     bool load_stage_animation(StageResources& output,u32 slot);
     bool complete_stage_timeline(u32 stage,StageResources& output);
+#if defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
+    using StageFileCompletion=std::function<bool(AnmResource&,u16)>;
+    bool load_stage_hud_files(u32,StageResources&,u32,const StageFileCompletion&);
+    bool load_stage_scene_files(u32,StageResources&,const StageFileCompletion&);
+    bool load_stage_timeline_files(u32,StageResources&,const StageFileCompletion&);
+#endif
 #endif
     bool animation(u32 slot, const std::string& name) override;
     const std::string& error() const noexcept { return last_error; }

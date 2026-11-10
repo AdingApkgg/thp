@@ -7,6 +7,7 @@ struct StageActions {
  virtual ~StageActions()=default;
  virtual bool retire_owner()=0;
  virtual bool begin_worker_wait(bool){return true;}
+ virtual bool worker_owns_capture_wait()const{return false;}
  virtual bool worker_wait_ready()const{return true;}
  virtual bool enter_work_and_initialize()=0;
  virtual Work advance_work_and_initialize(){return enter_work_and_initialize()?Work::Ready:Work::Failed;}
@@ -62,11 +63,12 @@ struct StagedLoader {
   has_sample=true;last_sample=now;
   for(;;){
    if(phase==LoadPhase::WaitCapture){
-    if(first_capture_index>=0){
+    const bool worker_wait=!initial_stage&&actions.worker_owns_capture_wait();
+    if(!worker_wait&&first_capture_index>=0){
      if(supervisor_flags&0x180){phase=LoadPhase::Aborted;return false;}
      return true;
     }
-    const u64 minimum=initial_stage?0:60000000;
+    const u64 minimum=initial_stage||worker_wait?0:60000000;
     if(now>~u64(0)-minimum){phase=LoadPhase::Failed;return false;}
     if(!actions.begin_worker_wait(initial_stage)){phase=LoadPhase::Failed;return false;}
     deadline=now+minimum;phase=LoadPhase::WaitMinimum;

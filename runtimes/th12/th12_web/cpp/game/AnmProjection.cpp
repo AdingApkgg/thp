@@ -1,6 +1,32 @@
 #include "AnmProjection.hpp"
 #include <cmath>
 namespace th11 {
+#if PORT_TITLE == 14
+// Retail477730: distinct from477bf0's pivot/resolution transform producer.
+Matrix4 anm_legacy_world_matrix_th14(AnmVm& vm,u32 width,u32 height)noexcept{
+    if(!(vm.flags&0x4000)&&(vm.flags&12)){
+        vm.transform_matrix=vm.sprite_matrix;
+        vm.transform_matrix.m[0]=float(float(vm.extra_scale.x*vm.scale.x)*vm.transform_matrix.m[0]);
+        vm.transform_matrix.m[5]=float(float(vm.extra_scale.y*vm.scale.y)*vm.transform_matrix.m[5]);vm.flags&=~8u;
+        const float rotations[]={vm.rotation.x,vm.rotation.y,vm.rotation.z};
+        for(u32 axis=0;axis<3;++axis)if(rotations[axis]!=0)vm.transform_matrix=GraphicsMath::multiply(vm.transform_matrix,GraphicsMath::rotation(axis,rotations[axis]));
+        vm.flags&=~4u;
+    }
+    Matrix4 world=vm.transform_matrix;
+    float x=float(float(float(vm.position.x+vm.script_position.x)+vm.child_position.x)+world.m[12]);
+    float ybase=world.m[13];
+    if((vm.flags2&0x60000)&&!vm.parent){x=float(x+float(float(width)*.5f));ybase=float(ybase+float(float(float(height)-448.f)*.5f));}
+    float y=float(float(float(vm.position.y+vm.script_position.y)+vm.child_position.y)+ybase);
+    float z=float(float(vm.position.z+vm.script_position.z)+vm.child_position.z);
+    if(vm.parent&&!(vm.flags2&0x8000)){
+        const auto& p=*vm.parent;x=float(float(float(p.position.x+p.script_position.x)+p.child_position.x)+x);
+        y=float(float(float(p.position.y+p.script_position.y)+p.child_position.y)+y);
+        z=float(float(float(p.position.z+p.script_position.z)+p.child_position.z)+z);
+    }
+    world.m[12]=x;world.m[13]=y;world.m[14]=z;return world;
+}
+#endif
+
 Matrix4 anm_world_matrix(AnmVm& vm,bool anchor_translation)noexcept{
     if(!(vm.flags&0x4000)&&(vm.flags&12)){
         vm.transform_matrix=vm.sprite_matrix;

@@ -11,6 +11,7 @@ public:
     void initialize_game_pipeline(){configure_game(1);}
     virtual u32 texture(const AnmResource& file,u32 index)=0;
     virtual void bind_texture(u32 handle)=0;
+    virtual bool backbuffer_has_alpha()const noexcept{return true;}
     virtual void set_layout(touhou::graphics::VertexLayout layout)=0;
     virtual void set_matrix(touhou::graphics::MatrixKind kind,const Matrix4& matrix)=0;
     virtual void triangles(u32 count,const void* vertices,u32 stride)=0;

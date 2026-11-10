@@ -4,6 +4,7 @@ import {ArchiveDecodeClient} from './Th14ArchiveDecodeClient.mjs';
 import {ArchiveReadAhead} from './Th14ArchiveReadAhead.mjs';
 import {Th14StageRestoreDelivery} from './Th14StageRestoreDelivery.mjs';
 import {Th14SharedSceneCopy} from './Th14SharedSceneCopy.mjs';
+import {Th14StageMemoryClient} from './Th14StageMemoryClient.mjs';
 
 // Only one suspended Wasm stack may exist. Frame and loading callbacks share
 // this queue; the next RAF is requested after the preceding callback returns.
@@ -15,6 +16,7 @@ export class Th14WebGpuRuntime {
     this.createArchiveWorker=createArchiveWorker;this.archive=null;this.archiveOpening=null;
     this.stageRestore=new Th14StageRestoreDelivery({onError:error=>this.fail(error)});
     this.sceneCopy=new Th14SharedSceneCopy({onError:error=>this.fail(error)});
+    this.stageMemory=new Th14StageMemoryClient({onError:error=>this.fail(error)});
   }
   fail(error) {if (!this.failure) {this.failure=error;this.module.onWebGpuError?.(error);}}
   run(action) {

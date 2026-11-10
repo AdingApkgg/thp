@@ -5,6 +5,9 @@
 namespace th11 {
 void AnmVm::interrupt(i32 label) noexcept{
 #if PORT_TITLE == 14
+    if(th13_effect==1&&geometry){auto& transition=*static_cast<TransitionType0Th14*>(geometry);
+        if(!transition.environment||!transition.resource_owner||!transition.interrupt(*this,label,*transition.resource_owner,*transition.environment))transition.failed=true;
+    }
     if(th13_effect==7&&label==1&&geometry)static_cast<AnmTh14Particles*>(geometry)->timer.advance(300);
 #endif
     pending_interrupt=label;
@@ -145,7 +148,7 @@ i32 AnmVm::integer_value(i32 value,AnmEnvironment& env){
 double AnmVm::float_value(float value,AnmEnvironment& env){
     const i32 id=truncate_int(value);
 #if PORT_TITLE == 14
-    if((id>=10010&&id<=10012)||(id>=10030&&id<=10032))env.texture_high_precision=true;
+    if((id>=10010&&id<=10012)||(id>=10030&&id<=10032))env.th14_execution_precision()=true;
     if(id==10010||id==10030)return float((id==10010?env.script_rng:env.visual_rng).signed_unit()*random_scale.y);
     if(id==10011||id==10031)return float((id==10011?env.script_rng:env.visual_rng).unit()*random_scale.x);
     if(id==10012||id==10032)return float((id==10012?env.script_rng:env.visual_rng).signed_unit()*random_scale.x);

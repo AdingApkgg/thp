@@ -135,6 +135,9 @@ bool PauseMenu::begin_replay_end(){
     // Retail448ef0 enters the forced replay menu before enabling pause rate1.
     replay=true;transition(2);elapsed.set(0,&animations.rate);forced_exit=0;
     sounds.clear();action=PauseAction::None;cursor.disabled_count=0;
+#if defined(TH14_CPP_STAGE_DECODE)
+    if(auto* control=animations.th14_control.get())control->flags|=0x10u; //448f8d, before capture.
+#endif
     if(!create_backdrop())return false;
     auto* menu=animations.create(front,131,5,0,true);
     if(!menu){error="replay end menu creation failed";return false;}
@@ -150,6 +153,9 @@ bool PauseMenu::begin(bool playback){
     menu_animation=menu->id;family(menu_animation,3);sounds.push_back(14);return create_backdrop();
 #else
     replay=playback;transition(1);elapsed.set(0,&animations.rate);sounds.clear();action=PauseAction::None;
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    if(auto* control=animations.th14_control.get())control->flags|=0x10u; //448e24, before menu129/130.
+#endif
     if constexpr(kPortTitle!=14)if(!create_backdrop())return false;
     auto* menu=animations.create(front,kPortTitle==14?(replay?130:129):(replay?90:89),5,kPortTitle==14?0:29,true);if(!menu){error="pause menu creation failed";return false;}
     if constexpr(kPortTitle==14)menu->flags2&=~0x6000u;

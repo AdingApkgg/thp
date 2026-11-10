@@ -54,12 +54,12 @@ i32 enemy_frame(EnemyScriptServices& script,EnemyFrameWorld& world){
     struct KnifeRateScope {
         EnemyState& enemy;float& rate;float* anm_rate;
         float saved_rate,saved_anm_rate;bool slowed;
-        ~KnifeRateScope(){if(slowed){rate=saved_rate;if(anm_rate)*anm_rate=saved_anm_rate;enemy.th14_knife_clock_applied=true;}}
+        ~KnifeRateScope(){if(slowed){rate=saved_rate;if(anm_rate)th14_rate_store(anm_rate,saved_anm_rate);enemy.th14_knife_clock_applied=true;}}
     } knife_rate{e,environment.rate,script.commands.th14_rate_target,environment.rate,
-        script.commands.th14_rate_target?*script.commands.th14_rate_target:environment.rate,e.th14_knife_slowdown>0};
+        script.commands.th14_rate_target?th14_rate_load(script.commands.th14_rate_target):environment.rate,e.th14_knife_slowdown>0};
     if(auto* anm=script.commands.animations)if(knife_rate.slowed||e.th14_knife_clock_applied)
         for(u32 i=0;i<16;++i)if(auto* vm=anm->lookup(e.animation_handle(i)))vm->slowdown_factor=knife_rate.slowed?e.th14_knife_slowdown:0;
-    if(knife_rate.slowed){environment.rate=enemy_th14_knife_rate(knife_rate.saved_rate,e.th14_knife_slowdown);if(knife_rate.anm_rate)*knife_rate.anm_rate=environment.rate;}
+    if(knife_rate.slowed){environment.rate=enemy_th14_knife_rate(knife_rate.saved_rate,e.th14_knife_slowdown);if(knife_rate.anm_rate)th14_rate_store(knife_rate.anm_rate,environment.rate);}
 #endif
     if constexpr(kPortTitle==16){
         // Retail41d2eb..41d301 guards and marks this frame before movement.
@@ -80,7 +80,7 @@ i32 enemy_frame(EnemyScriptServices& script,EnemyFrameWorld& world){
             e.base_animation=e.saved_animation;if(!animations->rebind(e.animations[0],e.saved_animation))return -2;e.flags&=0xfdfffffe;
         }
     }
-    float elapsed=*e.lifetime.rate;
+    float elapsed=th14_rate_load(e.lifetime.rate);
     i32 result=script.update(elapsed);
     ++enemy_frame_script_steps;if(result)return result==-2?-2:-1;
     if constexpr(kPortTitle==16)trace_point=9012;

@@ -81,6 +81,9 @@ public:
     ~Stage();
     bool initialize(const StageResource&,i32,const SceneCamera&,bool start=true);
     bool start_objects();
+#if PORT_TITLE == 14
+    bool prepare_object_storage(u32 count);
+#endif
     bool update_script(){return stage_script(state,resource,&manager.rate,*this);}
     bool interrupt(i32 id){return stage_interrupt(state,resource,id,&manager.rate);}
     bool update(
@@ -116,6 +119,9 @@ public:
     bool stage_deformation(i32)override;
     void stage_color(u32 color)override{background_color=color;}
 private:
+#if PORT_TITLE == 14
+    bool th14_object_storage_prepared=false;
+#endif
     bool update_deformation();
 };
 }

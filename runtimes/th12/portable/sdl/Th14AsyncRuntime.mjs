@@ -3,6 +3,7 @@
 // async ccall and serialize mutations until that stack has finished.
 import {Th14StageRestoreDelivery} from './Th14StageRestoreDelivery.mjs';
 import {Th14SharedSceneCopy} from './Th14SharedSceneCopy.mjs';
+import {Th14StageMemoryClient} from './Th14StageMemoryClient.mjs';
 const queuedVoid=new Set(['th11_key','th11_keys_clear','th11_music_enabled',
   'th11_loop_start','th11_loop_stop','th11_loop_pause','th11_touch','th11_touch_cancel',
   'th11_touch_options','th11_touch_controls','th11_touch_stick','sdl_loop_pause',
@@ -15,6 +16,7 @@ export class Th14AsyncRuntime {
     this.boundCores=new WeakSet();
     this.stageRestore=new Th14StageRestoreDelivery({onError:error=>this.fail(error)});
     this.sceneCopy=new Th14SharedSceneCopy({onError:error=>this.fail(error)});
+    this.stageMemory=new Th14StageMemoryClient({onError:error=>this.fail(error)});
   }
   fail(error) {if(!this.failure){this.failure=error;this.onError(error);}}
   run(action) {

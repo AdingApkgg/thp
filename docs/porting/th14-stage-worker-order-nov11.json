@@ -1,0 +1,209 @@
+{
+  "version": "TH14 v1.00b",
+  "stockArchiveSha256": "57d84a5cbe82460931cca26f090a0fde7aef180889ce5bfe8315851fc97b0233",
+  "gameResourcesSha256": "b8338d6f7f40be62d91bd20bc5665368fc6ad10f18e22a6032243a91dbdbe817",
+  "stage1": {
+    "observedRetail": [
+      "st01.ecl",
+      "enemy.anm",
+      "st01enm.anm",
+      "st01menm.anm",
+      "default.ecl",
+      "st01bs.ecl",
+      "st01mbs.ecl"
+    ],
+    "before": [
+      "st01.ecl",
+      "default.ecl",
+      "st01bs.ecl",
+      "st01mbs.ecl",
+      "st01bs.ecl",
+      "st01mbs.ecl",
+      "enemy.anm",
+      "st01enm.anm",
+      "st01menm.anm"
+    ],
+    "after": [
+      "st01.ecl",
+      "enemy.anm",
+      "st01enm.anm",
+      "st01menm.anm",
+      "default.ecl",
+      "st01bs.ecl",
+      "st01mbs.ecl"
+    ]
+  },
+  "stageRegression": [
+    {
+      "stage": 1,
+      "reads": 7,
+      "completions": 3,
+      "separateBossOwnersSaved": 2,
+      "programAndAnmRowsMatch": true
+    },
+    {
+      "stage": 2,
+      "reads": 6,
+      "completions": 2,
+      "separateBossOwnersSaved": 2,
+      "programAndAnmRowsMatch": true
+    },
+    {
+      "stage": 3,
+      "reads": 6,
+      "completions": 2,
+      "separateBossOwnersSaved": 2,
+      "programAndAnmRowsMatch": true
+    },
+    {
+      "stage": 4,
+      "reads": 9,
+      "completions": 3,
+      "separateBossOwnersSaved": 2,
+      "programAndAnmRowsMatch": true
+    },
+    {
+      "stage": 5,
+      "reads": 6,
+      "completions": 2,
+      "separateBossOwnersSaved": 2,
+      "programAndAnmRowsMatch": true
+    },
+    {
+      "stage": 6,
+      "reads": 7,
+      "completions": 3,
+      "separateBossOwnersSaved": 2,
+      "programAndAnmRowsMatch": true
+    },
+    {
+      "stage": 7,
+      "reads": 8,
+      "completions": 4,
+      "separateBossOwnersSaved": 2,
+      "programAndAnmRowsMatch": true
+    }
+  ],
+  "testCases": [
+    {
+      "case": "reject",
+      "stage": 1,
+      "loaded": false
+    },
+    {
+      "case": "load",
+      "stage": 1,
+      "loaded": true
+    },
+    {
+      "case": "load",
+      "stage": 2,
+      "loaded": true
+    },
+    {
+      "case": "load",
+      "stage": 3,
+      "loaded": true
+    },
+    {
+      "case": "load",
+      "stage": 4,
+      "loaded": true
+    },
+    {
+      "case": "load",
+      "stage": 5,
+      "loaded": true
+    },
+    {
+      "case": "load",
+      "stage": 6,
+      "loaded": true
+    },
+    {
+      "case": "load",
+      "stage": 7,
+      "loaded": true
+    },
+    {
+      "case": "reuse-slots",
+      "stage": 1,
+      "loaded": true
+    },
+    {
+      "case": "invalid-child",
+      "stage": 1,
+      "loaded": false
+    },
+    {
+      "case": "retry-stock",
+      "stage": 1,
+      "loaded": true
+    }
+  ],
+  "stageTestScope": "Stock stages 1–7, synchronous completion callback; original process file trace for stage 1 only.",
+  "firstPresent": {
+    "frames": 508,
+    "callbacks": 1,
+    "workerCount": 4,
+    "physicalWorkers": 2,
+    "sourceSha256": "b8338d6f7f40be62d91bd20bc5665368fc6ad10f18e22a6032243a91dbdbe817",
+    "wasmSha256": "ce5ab52cf9fccc6493bc1baec77869ab61b108b6deaa0391151eb89fcad0ce60",
+    "beforePlayerWords": 114,
+    "beforePlayerExactToPrevious": true,
+    "previousFrames": 509,
+    "previousRng": [
+      39319,
+      2588,
+      4607,
+      0
+    ],
+    "afterFrameRng": [
+      39319,
+      2588,
+      4607,
+      0
+    ],
+    "nativePresentRng": [
+      20713,
+      2612,
+      4607,
+      0
+    ],
+    "differentPixelsVsPrevious": 263015,
+    "previousDifferentPixelsVsNative": 267462,
+    "differentPixelsVsNative": 197624,
+    "strictPixelsExact": false,
+    "perFileTimingsMeasured": false,
+    "completeGame": false
+  },
+  "browser": {
+    "wasmSha256": "fb4e6b9c1ce8d2e12fecfd0bea932c4628400f456c8cd93ac411c8d5b52385a6",
+    "backend": "GLES",
+    "mode": "quiet",
+    "observed": "launcher -> running, Normal demo, visible shooting, 60 presentations/sec at observation"
+  },
+  "previousCorePreload": {
+    "sixNormalSelections": true,
+    "playerCallbacksPerSelection": 120,
+    "actualShotsObservedAllSix": true,
+    "ordinaryRestartReturnTitleObserved": true,
+    "quitToLauncherObserved": true
+  },
+  "fullGameAcceptance": false,
+  "evidenceSha256": {
+    "stageBaseline": "d3ceb3e0825aff9ddeff0886a69bc48da26f5ed18be81de9b76160640067df2d",
+    "stageCandidate": "4b44b529836854a4381287aff85dd2e3757da42cb18d33acfb7f2002fb63dd75",
+    "stockReadChronology": "ecc6a7ecee03b2a157ecc428a3f6eec86ee540327500b21406f864da705541df",
+    "firstPresentReceipt": "c551ee566cca7c7f649252d514bc47fb908e533e4775c7e8f0576e2b5e826139",
+    "stagePixels": "5acd712e29af11d22706658a9f896301c4c4dda12ea3e01fd701a0858c06d13b",
+    "launcherRegression": "ea2e7ece0c297bc7d88bbb31a603eaa6ed3521391a3fe776cc4e85fbeca1f478"
+  },
+  "cleanSourceBuild": {
+    "compiledUnits": 146,
+    "wasmSha256": "a6f5729d1c3cc03bb24a5a6eeaa5180605106ba14745a2a525ec7e99deb3dd13",
+    "observed": "Normal demo rendered, launcher status running, output muted",
+    "sdk": "6.0.10-git",
+    "fullGameAcceptance": false
+  }
+}

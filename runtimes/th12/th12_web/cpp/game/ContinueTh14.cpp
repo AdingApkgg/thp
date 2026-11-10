@@ -1,19 +1,27 @@
 #include "ContinueTh14.hpp"
-#include <algorithm>
+#include "ContinueWordsTh14.hpp"
+#include "HudScalarTh14.hpp"
 namespace th11 {
 #if PORT_TITLE == 14
+bool th14_continue_apply(GameEconomy& e,i32& continues,ContinueActionsTh14& actions)noexcept{
+    i32* words[]={&e.score_units,&continues,&e.power,&e.max_power,&e.power_step,
+        &e.lives,&e.life_fragments,&e.th14_bombs,&e.th14_bomb_fragments};
+    return th14_continue_words([&](ContinueAccessTh14,ContinueWordTh14 word){return th14_hud_load(*words[u32(word)]);},
+        [&](ContinueAccessTh14,ContinueWordTh14 word,i32 value){th14_hud_store(*words[u32(word)],value);},
+        [&](ContinueAccessTh14 access,i32 first,i32 second){
+            switch(access){
+            case ContinueAccessTh14::InitialBombs:case ContinueAccessTh14::DisplayBombs:return actions.bombs(first,second);
+            case ContinueAccessTh14::PowerNotice:return actions.power_notice();
+            case ContinueAccessTh14::Options:return actions.options();
+            default:return actions.lives(first,second);
+            }
+        });
+}
 bool th14_continue_economy(GameEconomy& e,i32& continues)noexcept{
-    // Retail 44ae10..44aee9, including the original 447a80 power add.
-    // Its return value is unused; a clamp still posts the full-power notice.
-    e.lives=2;e.life_fragments=0;e.th14_bombs=2;e.th14_bomb_fragments=0;
-    e.power=e.max_power<0?e.max_power:std::max(e.power_step,0);
-    bool capped=false;
-    if(e.power<e.max_power){
-        e.power=wrapping_add(e.power,signed_bits(u32(e.power_step)*4u));
-        if(e.power>e.max_power){e.power=e.max_power;capped=true;}
-    }
-    continues=std::min(wrapping_add(continues,1),9);e.score_units=0;
-    return capped;
+    // Compatibility entry for counter-only consumers. Live GameSession uses
+    // th14_continue_apply so its real callbacks run at the original boundaries.
+    struct Counters:ContinueActionsTh14 {bool capped=false;bool power_notice()noexcept override{capped=true;return true;}} actions;
+    (void)th14_continue_apply(e,continues,actions);return actions.capped;
 }
 #endif
 }

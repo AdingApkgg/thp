@@ -10,8 +10,16 @@ constexpr u32 kCreationCapacity=4096;
 CreationRecord g_creations[kCreationCapacity]{};
 u32 g_creation_count=0;
 }
-u32 anm_creation_count()noexcept{return g_creation_count;}
+u32 anm_creation_count()noexcept{
+#if defined(TH14_NATIVE_CRITICAL_SECTIONS)
+    th14_critical_sections::ContainerGuard guard(th14_critical_sections::containers);
+#endif
+return g_creation_count;}
 i32 anm_creation_value(u32 index,u32 kind){
+#if defined(TH14_NATIVE_CRITICAL_SECTIONS)
+    th14_critical_sections::ContainerGuard guard(th14_critical_sections::containers);
+#endif
+
     if(index>=g_creation_count||g_creation_count-index>kCreationCapacity)return -1;
     const auto& r=g_creations[index%kCreationCapacity];
     switch(kind){
@@ -24,7 +32,11 @@ i32 anm_creation_value(u32 index,u32 kind){
     default:return -1;
     }
 }
-AnmManager::~AnmManager(){for(auto& [vm,size]:geometry_sizes){std::free(vm->geometry);vm->geometry=nullptr;}}
+AnmManager::~AnmManager(){
+#if defined(TH14_NATIVE_CRITICAL_SECTIONS)
+    th14_critical_sections::ContainerGuard guard(th14_critical_sections::containers);
+#endif
+for(auto& [vm,size]:geometry_sizes){std::free(vm->geometry);vm->geometry=nullptr;}}
 #if PORT_TITLE == 14
 bool AnmManager::prepare_resource(AnmResource& file,u16 file_id){
     if(file.templates)return true;
@@ -43,6 +55,10 @@ bool AnmManager::prepare_resource(AnmResource& file,u16 file_id){
 // The newest record carrying this id is the one the live animation came from; the ring is walked
 // backwards because an id is never reused while its animation lives.
 bool anm_creation_of(u32 id,i32& script,u32& layer,u32& file){
+#if defined(TH14_NATIVE_CRITICAL_SECTIONS)
+    th14_critical_sections::ContainerGuard guard(th14_critical_sections::containers);
+#endif
+
     const u32 count=anm_creation_count()<kCreationCapacity?anm_creation_count():kCreationCapacity;
     for(u32 back=0;back<count;++back){
         const u32 index=anm_creation_count()-1-back;
@@ -52,7 +68,11 @@ bool anm_creation_of(u32 id,i32& script,u32& layer,u32& file){
     }
     return false;
 }
-AnmVm* AnmManager::find(u32 id)noexcept{auto it=active.find(id);return it==active.end()?nullptr:it->second;}
+AnmVm* AnmManager::find(u32 id)noexcept{
+#if defined(TH14_NATIVE_CRITICAL_SECTIONS)
+    th14_critical_sections::ContainerGuard guard(th14_critical_sections::containers);
+#endif
+auto it=active.find(id);return it==active.end()?nullptr:it->second;}
 // What the interpreter left behind at a failure: the command, how far into the script it was, the
 // commands that led there, and which animation it was. Both the creation walk and the per-frame
 // overlay walk reach it, and a report from either names the same fields.
@@ -122,6 +142,10 @@ std::string AnmManager::last_error_text()const{
 }
 AnmVm* AnmManager::spawn_effect(AnmVm& source,i32 script){return source.resource?create(*source.resource,script,source.file_index,0):nullptr;}
 AnmVm* AnmManager::create(AnmResource& file,i32 script,u16 file_id,u32 layer,bool overlay,bool prepend,const Vec3* initial_position,const AnmVm* detached_source,AnmVm* attached_parent,bool th14_playfield_layer,const float* initial_rotation,u32 th16_initial_flags2){
+#if defined(TH14_NATIVE_CRITICAL_SECTIONS)
+    th14_critical_sections::AnmGuard guard(th14_critical_sections::anm);
+#endif
+
     // The failure fields describe *this* creation: a range or depth failure returns before the update,
     // and without this the report would carry the opcode and position of whatever failed before it.
     last_error=0;last_error_offset=0;last_path_count=0;last_error_vm=0;last_error_layer=0;
@@ -133,12 +157,19 @@ AnmVm* AnmManager::create(AnmResource& file,i32 script,u16 file_id,u32 layer,boo
     // The record of this call, kept by index: the update below runs this animation's own script, and
     // a command in it may create a child, which writes a record of its own and moves the counter.
     // Stamping the newest record at the end would then put this creation's id on the child.
-    const u32 record_index=g_creation_count%kCreationCapacity;
+    u32 record_index;
+    AnmVm* vm;
+    {
+#if defined(TH14_NATIVE_CRITICAL_SECTIONS)
+    th14_critical_sections::ContainerGuard guard(th14_critical_sections::containers);
+#endif
+    record_index=g_creation_count%kCreationCapacity;
     {auto& r=g_creations[record_index];r={script,layer,file_id,&file,spawn_depth,0u};++g_creation_count;}
-    AnmVm* vm;if(available.empty()){storage.push_back(std::make_unique<AnmVm>());vm=storage.back().get();if constexpr(kPortTitle==16)vm->layer=14;vm->initialize();}else{vm=available.back();available.pop_back();}
+    if(available.empty()){storage.push_back(std::make_unique<AnmVm>());vm=storage.back().get();if constexpr(kPortTitle==16)vm->layer=14;vm->initialize();}else{vm=available.back();available.pop_back();}
 #if PORT_TITLE == 14
     if(th14_native_slots.find(vm)==th14_native_slots.end())th14_native_slots.emplace(vm,th14_unused_slots?--th14_unused_slots:8191);
 #endif
+    }
     // Retail TH16 4063dc skips the layer override for negative arguments.
     // The resource's default layer is retained; -1 is not a draw-list index.
     if constexpr(kPortTitle==16){if(signed_bits(layer)>=0)vm->layer=layer;}
@@ -185,6 +216,10 @@ AnmVm* AnmManager::create(AnmResource& file,i32 script,u16 file_id,u32 layer,boo
 #endif
     ++spawn_depth;const int status=vm->update(*this);--spawn_depth;
     if(status<0){record_failure(*vm);destroy(*vm);return nullptr;}
+    {
+#if defined(TH14_NATIVE_CRITICAL_SECTIONS)
+    th14_critical_sections::ContainerGuard guard(th14_critical_sections::containers);
+#endif
     auto& node=vm->registry;node.value=vm;node.next=node.previous=nullptr;const u32 list=overlay?1:0;
     if(prepend){node.next=heads[list];if(heads[list])heads[list]->previous=&node;else tails[list]=&node;heads[list]=&node;}
     else{node.previous=tails[list];if(tails[list])tails[list]->next=&node;else heads[list]=&node;tails[list]=&node;}
@@ -198,10 +233,15 @@ AnmVm* AnmManager::create(AnmResource& file,i32 script,u16 file_id,u32 layer,boo
 #endif
     active.emplace(vm->id,vm);
     g_creations[record_index].id=vm->id;
+    }
     return vm;
 }
 AnmVm* AnmManager::spawn(AnmVm& parent,i32 script,u32 op){if(!parent.resource)return nullptr;const bool detached=op==95||op==97;return create(*parent.resource,script,parent.file_index,parent.layer,op==90||op==92,op==91||op==92,nullptr,(kPortTitle==13||kPortTitle==14||kPortTitle==16)&&detached?&parent:nullptr,(kPortTitle==14||kPortTitle==16)&&!detached?&parent:nullptr);}
 void AnmManager::destroy(AnmVm& vm){
+#if defined(TH14_NATIVE_CRITICAL_SECTIONS)
+    th14_critical_sections::ContainerGuard guard(th14_critical_sections::containers);
+#endif
+
 #if PORT_TITLE == 14
     if(vm.th13_effect==7&&vm.geometry)anm_th14_particles_destroy(vm,*this);
 #endif
@@ -226,19 +266,38 @@ void AnmManager::destroy(AnmVm& vm){
 #endif
     vm.initialize();available.push_back(&vm);
 }
-void AnmManager::clear(){
+void AnmManager::clear(u32 keep_handle,u32 keep_family){
+#if defined(TH14_NATIVE_CRITICAL_SECTIONS)
+    th14_critical_sections::ContainerGuard guard(th14_critical_sections::containers);
+#endif
+
     // Walk ownership, not draw layers: newly created VMs are not on a draw
     // layer until update() has run, and deleted layer heads are not owners.
+    std::vector<u32> retained;
+    if(keep_family){
+        retained.push_back(keep_family);
+        if(auto* root=find(keep_family))
+            for(auto* node=root->child.next;node;node=node->next)retained.push_back(node->value->id);
+    }
+    const auto keep=[&](u32 id){
+        if(id==keep_handle)return true;
+        for(u32 retained_id:retained)if(id==retained_id)return true;
+        return false;
+    };
     layers.fill(nullptr);
 #if PORT_TITLE == 14
     // Preserve registry order when returning slots; hash iteration would
     // make the next allocation history depend on the host container.
-    for(u32 list=0;list<2;++list)while(heads[list])destroy(*heads[list]->value);
+    for(u32 list=0;list<2;++list){auto* node=heads[list];while(node){auto* next=node->next;if(!keep(node->value->id))destroy(*node->value);node=next;}}
 #endif
-    while(!active.empty())destroy(*active.begin()->second);
+    for(auto i=active.begin();i!=active.end();){auto* vm=i->second;++i;if(!keep(vm->id))destroy(*vm);}
     last_error=0;
 }
 void AnmManager::retire_resource(const AnmResource& resource){
+#if defined(TH14_NATIVE_CRITICAL_SECTIONS)
+    th14_critical_sections::ContainerGuard guard(th14_critical_sections::containers);
+#endif
+
     // Deferred deletion matches 4564c0: an overlay callback and its children
     // may still occur later in the current tick. Keep the resource alive until
     // both ANM registries have consumed the deletion markers.
@@ -248,6 +307,10 @@ void AnmManager::retire_resource(const AnmResource& resource){
     }
 }
 bool AnmManager::references(const AnmResource& resource)const noexcept{
+#if defined(TH14_NATIVE_CRITICAL_SECTIONS)
+    th14_critical_sections::ContainerGuard guard(th14_critical_sections::containers);
+#endif
+
     for(const auto& entry:active)if(entry.second->resource==&resource)return true;
     return false;
 }
@@ -261,6 +324,13 @@ bool AnmManager::update(bool overlay,const std::function<bool()>& after_vm){
     return update(overlay,boundary);
 }
 bool AnmManager::update(bool overlay,const VmBoundaryCallbackTh14& boundary){
+#if defined(TH14_CPP_STAGE_DECODE)
+    if(!overlay&&th14_control.normal_anm_blocked())return true;
+#endif
+#if defined(TH14_NATIVE_CRITICAL_SECTIONS)
+    th14_critical_sections::AnmGuard guard(th14_critical_sections::anm);
+#endif
+
 #endif
     constexpr u32 overlay_first=kPortTitle==16?36:kPortTitle==14?34:kPortTitle==13?31:29;
     const u32 first=overlay?overlay_first:0,last=overlay?overlay_first+(kPortTitle==16?7:2):overlay_first;decltype(layers) end{};for(u32 i=first;i<last;++i)layers[i]=nullptr;
@@ -296,16 +366,32 @@ bool AnmManager::update(bool overlay,const VmBoundaryCallbackTh14& boundary){
     return true;
 }
 bool AnmManager::allocate_geometry(AnmVm& vm,u32 bytes){
+#if defined(TH14_NATIVE_CRITICAL_SECTIONS)
+    th14_critical_sections::ContainerGuard guard(th14_critical_sections::containers);
+#endif
+
     if(!bytes||bytes>16*1024*1024)return false;void* p=std::calloc(1,bytes);if(!p)return false;
     if(geometry_sizes.find(&vm)!=geometry_sizes.end())std::free(vm.geometry);vm.geometry=p;geometry_sizes[&vm]=bytes;return true;
 }
-void AnmManager::release_geometry(AnmVm& vm){auto it=geometry_sizes.find(&vm);if(it!=geometry_sizes.end()){std::free(vm.geometry);vm.geometry=nullptr;geometry_sizes.erase(it);}}
+void AnmManager::release_geometry(AnmVm& vm){
+#if defined(TH14_NATIVE_CRITICAL_SECTIONS)
+    th14_critical_sections::ContainerGuard guard(th14_critical_sections::containers);
+#endif
+auto it=geometry_sizes.find(&vm);if(it!=geometry_sizes.end()){std::free(vm.geometry);vm.geometry=nullptr;geometry_sizes.erase(it);}}
 bool AnmManager::update_geometry(AnmVm& vm){
+#if defined(TH14_NATIVE_CRITICAL_SECTIONS)
+    const u32 bytes=geometry_bytes(vm);if(!bytes)return false;
+#if PORT_TITLE == 14
+    if(vm.drawing_mode()==23||vm.drawing_mode()==24)return anm_world_ring_vertices(vm,static_cast<AnmWorldVertex*>(vm.geometry),bytes/sizeof(AnmWorldVertex));
+#endif
+    return anm_ring_vertices(vm,static_cast<AnmVertex*>(vm.geometry),bytes/sizeof(AnmVertex),render_space);
+#else
     auto it=geometry_sizes.find(&vm);if(it==geometry_sizes.end())return false;
 #if PORT_TITLE == 14
     if(vm.drawing_mode()==23||vm.drawing_mode()==24)return anm_world_ring_vertices(vm,static_cast<AnmWorldVertex*>(vm.geometry),it->second/sizeof(AnmWorldVertex));
 #endif
     return anm_ring_vertices(vm,static_cast<AnmVertex*>(vm.geometry),it->second/sizeof(AnmVertex),render_space);
+#endif
 }
 bool AnmManager::change_draw_mode(AnmVm& vm){if(!allocate_geometry(vm,sizeof(AnmRipple)))return false;anm_ripple_initialize(vm,*static_cast<AnmRipple*>(vm.geometry),script_rng);return true;}
 }

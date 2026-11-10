@@ -1939,6 +1939,7 @@ let guideShotTimer: ReturnType<typeof setInterval> | null = null;
 const gameDataStartFallbackMs = 10_000;
 const gameDataCompleteFallbackMs = 20_000;
 const firstFrameFallbackMs = 12_000;
+const firstFrameLateStatus = "运行组件已启动，但 12 秒内没有出现首帧";
 let gameDataAttemptSerial = 0;
 interface GameDataAttempt {
   id: number;
@@ -2133,7 +2134,7 @@ function armFirstFrameWatchdog() {
       `source=${state.sourceIdentity || state.source || "-"}`,
       `ua=${String(navigator.userAgent || "-").slice(0, 320)}`
     ].join("\n");
-    setPlayerStatus("运行组件已启动，但 12 秒内没有出现首帧");
+    setPlayerStatus(firstFrameLateStatus);
     showStartupError(new Error(`游戏运行组件已经就绪并进入启动阶段，但 12 秒内没有收到首帧回执。\n这已经越过游戏资源、语言包、字体和音乐等下载阶段，优先检查浏览器 WebGL/WASM、图形驱动、内存或运行组件异常，而不是继续把它归类为 CDN 下载失败。\n\n${diagnostic}`), `${gameId.toUpperCase()} / 首帧`, true);
   }, firstFrameFallbackMs);
 }
@@ -2144,7 +2145,10 @@ function noteFirstFrame() {
   firstFrameWatchdog = null;
   firstFrameExpected = false;
   firstFrameWatchdogSerial++;
-  if (firstFrameTimedOut) clearStartupError();
+  if (firstFrameTimedOut) {
+    clearStartupError();
+    if ($("#playerStatus").textContent === firstFrameLateStatus) setPlayerStatus("运行中");
+  }
   firstFrameTimedOut = false;
 }
 function isResourceLoadFailure(error: unknown) {

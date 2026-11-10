@@ -39,6 +39,7 @@ float angle(float value){constexpr float pi=3.1415927410125732f,tau=6.2831854820
 }
 bool Hud::bosses_th14(const HudInput& input){
     // Retail43014e..430c55 has two boss rows, seven ring/marker VMs each.
+    if(!enemies.th14_owner())return true;
     if(enemies.manager_flags&1)return true;
     for(u32 slot=0;slot<2;++slot){
         auto& row=th14_boss[slot];const auto* boss=enemies.bosses[slot];
@@ -67,6 +68,7 @@ bool Hud::bosses_th14(const HudInput& input){
 }
 bool Hud::indicator_th14(const HudInput& input){
     // Retail430dfe..4310bd updates the retained front111 root, not ASCII0.
+    if(!enemies.th14_owner())return true;
     const auto* boss=enemies.bosses[0];auto* vm=animations.find(th14_overlay);
     if(!vm){th14_overlay=0;return true;}
     if(!boss||(boss->flags&0x21)){vm->flags&=~2u;if(!vm->child.previous)for(auto* n=vm->child.next;n;n=n->next)n->value->flags&=~2u;return true;}
@@ -91,11 +93,11 @@ bool Hud::timer_th14(const HudInput& input){
     if(mode==0){if((!flipped&&input.player_position.y<128.f)||(flipped&&input.player_position.y>320.f)){flags=(flags&~0x400u)|0x200;if(!signal(5,false))return false;}}
     else if(mode==1){if((!flipped&&input.player_position.y<160.f)||(flipped&&input.player_position.y>288.f)){if(!signal(4,false))return false;flags&=~0x600u;}}
     else {if(!signal(input.spell?2:3,true)||!signal(4,true))return false;flags&=~0x600u;}
-    i32 label=0,sound=-1;if(input.seconds<previous_seconds){if(input.seconds<5){label=9;sound=12;}else if(input.seconds<10){label=8;sound=11;}}
-    else if(input.seconds>previous_seconds)label=7;
+    i32 label=0,sound=-1;if(input.seconds<th14_hud_load(previous_seconds)){if(input.seconds<5){label=9;sound=12;}else if(input.seconds<10){label=8;sound=11;}}
+    else if(input.seconds>th14_hud_load(previous_seconds))label=7;
     if(label&&!signal(label,false))return false;if(sound>=0&&!effects.hud_sound(sound))return false;
-    if(input.seconds!=previous_seconds){if(first->resource&&!first->bind_sprite(239+input.seconds/10))return false;if(second->resource&&!second->bind_sprite(239+input.seconds%10))return false;}
-    previous_seconds=input.seconds;return true;
+    if(input.seconds!=th14_hud_load(previous_seconds)){if(first->resource&&!first->bind_sprite(239+input.seconds/10))return false;if(second->resource&&!second->bind_sprite(239+input.seconds%10))return false;}
+    th14_hud_store(previous_seconds,input.seconds);return true;
 }
 }
 #endif

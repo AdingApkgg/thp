@@ -30,7 +30,7 @@ bool GameSessionResources::load_core(GameResources& source) {
         // Only the original loading screen's resources are needed now. Each
         // remaining decode is a real frame job before its upload/templates.
         core={};
-#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+#if (defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)) || defined(TH14_CPP_BOOT_WORKER)
         if(effects&&effects->defer_initial_stage_decode()){
             core_source=&source;return true;
         }
@@ -74,7 +74,7 @@ bool GameSessionResources::load_core(GameResources& source) {
     core_source=&source;return true;
 }
 #if PORT_TITLE == 14
-#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+#if (defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)) || defined(TH14_CPP_BOOT_WORKER)
 bool GameSessionResources::load_core_bootstrap(){
     if(!core_deferred||(core_loaded_jobs&(1u<<9)))return true;
     if(!core_source)return core_error(error,"TH14 bootstrap resource source missing");
@@ -85,16 +85,40 @@ bool GameSessionResources::load_core_bootstrap(){
     core_loaded_jobs|=u16(1u<<9);return true;
 }
 #endif
+#if defined(TH14_CPP_BOOT_WORKER)
+bool GameSessionResources::complete_cpp_core_bootstrap(){
+    if(!core_deferred||!core_source||!core.ascii.templates||!core.text.templates
+       ||!core.front.templates||!core.bullet.templates||!core.effect.templates)
+        return core_error(error,"TH14 C++ bootstrap owners not prepared");
+    // Jobs0..2 are the exact front/bullet/effect owners already completed.
+    core_loaded_jobs|=u16((1u<<9)|7u);
+    if(animation_manager)animation_manager->fallback_sprites=&core.ascii;
+    return true;
+}
+bool GameSessionResources::complete_cpp_title_resources(){
+    if(!core_deferred||!core_source||!core.title.templates||!core.title_variant.templates)
+        return core_error(error,"TH14 C++ title owners not prepared");
+    core_loaded_jobs|=u16((1u<<4)|(1u<<5));return true;
+}
+#endif
 bool GameSessionResources::load_core_job(u32 index){
     if(index>=9)return core_error(error,"TH14 core resource job outside 0..8");
     if(!core_deferred||(core_loaded_jobs&(1u<<index)))return true;
     if(!core_source)return core_error(error,"TH14 core resource source missing");
+    // The actual TH14 boot/title workers already own common/title files.
+    // Player file9 belongs to the selected initial worker. Generic enemy
+    // and the legacy all-player/default-ECL preloads have no live TH14 owner.
+    if(effects&&effects->initial_cpp_worker_enabled()&&(index==3||index>=6)){
+        core_loaded_jobs|=u16(1u<<index);return true;
+    }
     // Original 444050 prepares front, bullet, then effect before constructing
     // their users. Keep the deferred path in the same order as prepare_core.
     AnmResource* files[]={&core.front,&core.bullet,&core.effect,&core.enemy,&core.title,&core.title_variant,&core.players[0],&core.players[1],&core.players[2]};
     const char* names[]={"front.anm","bullet.anm","effect.anm","enemy.anm","title.anm","title_v.anm","pl00.anm","pl01.anm","pl02.anm"};
     if(!core_source->open_anm(names[index],*files[index]))return core_error(error,(std::string(names[index])+": "+files[index]->detail).c_str());
-    if(index>=6){const u32 character=index-6;
+    // The actual initial worker reads only its selected SHT after file9 ACK.
+    // Keep the synchronous/legacy core path unchanged.
+    if(index>=6&&!(effects&&effects->initial_cpp_worker_enabled())){const u32 character=index-6;
         for(u32 loadout=0;loadout<shot_loadout_count;++loadout){const u32 slot=shot_file_slot(character,loadout);
             if(!core_source->open_sht(shot_file_name(slot),core.shots[slot]))return core_error(error,(std::string("SHT resource ")+shot_file_name(slot)+": "+core_source->error()).c_str());}
     }
@@ -102,7 +126,8 @@ bool GameSessionResources::load_core_job(u32 index){
     core_loaded_jobs|=u16(1u<<index);return true;
 }
 bool GameSessionResources::prepare_core(){
-#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+    const bool selected_worker=effects&&effects->initial_cpp_worker_enabled();
+#if (defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)) || defined(TH14_CPP_BOOT_WORKER)
     if(core_deferred&&effects&&effects->defer_initial_stage_decode()&&!(core_loaded_jobs&(1u<<9)))
         return core_error(error,"TH14 bootstrap resources still pending");
 #endif
@@ -110,9 +135,10 @@ bool GameSessionResources::prepare_core(){
     if(animation_manager){
         auto& a=*animation_manager;a.fallback_sprites=&core.ascii;
         if(!a.prepare_resource(core.ascii,2)||!a.prepare_resource(core.text,0)||!a.prepare_resource(core.front,5)
-           ||!a.prepare_resource(core.bullet,7)||!a.prepare_resource(core.effect,8)||!a.prepare_resource(core.enemy,9)
+           ||!a.prepare_resource(core.bullet,7)||!a.prepare_resource(core.effect,8)
+           ||(!selected_worker&&!a.prepare_resource(core.enemy,9))
            ||!a.prepare_resource(core.title,16)||!a.prepare_resource(core.title_variant,17))return core_error(error,a.last_error_text().c_str());
-        for(u32 i=0;i<player_file_count;++i)if(!a.prepare_resource(core.players[i],9))return core_error(error,a.last_error_text().c_str());
+        if(!selected_worker)for(u32 i=0;i<player_file_count;++i)if(!a.prepare_resource(core.players[i],9))return core_error(error,a.last_error_text().c_str());
     }
     return true;
 }
@@ -129,11 +155,15 @@ bool GameSessionResources::select_player(u32 character,u32 subtype){
     return load_selected_player(character,subtype);
 }
 bool GameSessionResources::load_selected_player(u32 character,u32 subtype){
+    if(!core_source)return core_error(error,"TH14 pending player resource owner changed");
+    return load_selected_player_from(*core_source,character,subtype);
+}
+bool GameSessionResources::load_selected_player_from(GameResources& reader,u32 character,u32 subtype){
     if(!core_source||!player_selection_valid(i32(character),i32(subtype))||selected_player_pending!=i32(character*2+subtype))
         return core_error(error,"TH14 pending player resource owner changed");
     auto& file=core.players[character];
     if(animation_manager&&animation_manager->references(file))return core_error(error,"TH14 pending player resource still referenced");
-    if(!core_source->open_anm(player_file_name(character,subtype),file))return core_error(error,(std::string("player ANM: ")+file.detail).c_str());
+    if(!reader.open_anm(player_file_name(character,subtype),file))return core_error(error,(std::string("player ANM: ")+file.detail).c_str());
     if(animation_manager&&(!effects||!effects->defer_initial_stage_decode())&&!animation_manager->prepare_resource(file,9))return core_error(error,animation_manager->last_error_text().c_str());
     selected_player_pending=-1;return true;
 }

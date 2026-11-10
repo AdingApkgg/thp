@@ -38,6 +38,9 @@ struct StageCompletionEffects {
     virtual void recall_player_options(){}
     virtual void request_stage_exit(StageExit){}
     virtual void start_ending_fade(){}
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    virtual void start_ending_control(){}
+#endif
 };
 // MSG 21 (41eb15), the common award (41f2b0) and HUD ending clock (41b380).
 // No platform or original-address dispatch is part of the live controller.

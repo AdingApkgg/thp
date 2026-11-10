@@ -38,7 +38,7 @@ void th14_reimu_orb_tick(Th14ReimuOrb& o,Vec3 player,EnemyLink* enemies,bool man
             }else if(o.position.x< -160||o.position.x>160||o.position.y<32||o.position.y>416)o.speed*=.8999999761581421f;
         }
     }
-    const Vec3 before=o.position;const float speed=*rate;
+    const Vec3 before=o.position;const float speed=th14_rate_load(rate);
     if((o.flags&15)==0){
         const auto v=polar(o.angle,o.speed*speed);o.anchor.x=v.x;o.anchor.y=v.y;
         o.position.x+=o.anchor.x;o.position.y+=o.anchor.y;o.position.z+=o.anchor.z;

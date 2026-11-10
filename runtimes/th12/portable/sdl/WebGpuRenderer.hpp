@@ -97,6 +97,8 @@ public:
             if(instances){const auto* record=static_cast<const u8*>(instances)+repetition*68;std::memcpy(world.data(),record,64);std::memcpy(&factor,record+64,4);}
             const auto eye=th14_multiply(state.matrix[1],world),clip=th14_multiply(state.matrix[2],eye);
             Packet packet;packet.pipeline={state.target,state.depth,state.texture,u32(topology),u32(p.depthTest),u32(p.depthWrite),u32(p.blend),u32(p.sourceBlend),u32(p.destinationBlend),u32(p.blendEquation),u32(p.depthCompare),u32(p.cull),p.colorMask,u32(p.minFilter),u32(p.magFilter),u32(p.addressU),u32(p.addressV),word(vp.min),word(vp.max),0};
+            // Keep the packet ABI; the reserved word carries separate alpha state.
+            packet.pipeline[19]=p.separateAlphaBlend?(1u|(u32(p.sourceAlphaBlend)<<1)|(u32(p.destinationAlphaBlend)<<5)|(u32(p.alphaBlendEquation)<<9)):0u;
             // X8 samples and destination-alpha factors see one. Preserve the
             // uploaded/cleared opaque alpha through every draw and mask.
             if(renderer.resolve(renderer.owner,state.target).format==PixelFormat::Bgrx8)packet.pipeline[12]&=7u;

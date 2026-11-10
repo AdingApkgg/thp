@@ -1,5 +1,6 @@
 #pragma once
 #include "EnemyState.hpp"
+#include "LoadingWordTh14.hpp"
 namespace th11 {
 struct EnemyCommandEnvironment;
 i32 enemy_th16_spell_command(EnemyState&,EclContext&,EnemyGlobals&,EnemyCommandEnvironment&);
@@ -81,11 +82,36 @@ struct EnemyCommandEnvironment {
     BulletManager* bullets=nullptr;
     EnemyAnimations* animations=nullptr;
     EnemyManager* manager=nullptr;
+#if PORT_TITLE == 14
+    EnemyManager* th14_owner()const noexcept{
+#if defined(TH14_CPP_STAGE_WORKER)
+        return __atomic_load_n(&manager,__ATOMIC_ACQUIRE);
+#else
+        return manager;
+#endif
+    }
+    void th14_publish_owner(EnemyManager* owner)noexcept{
+#if defined(TH14_CPP_STAGE_WORKER)
+        __atomic_store_n(&manager,owner,__ATOMIC_RELEASE);
+#else
+        manager=owner;
+#endif
+    }
+#endif
     LaserManager* lasers=nullptr;
     const BulletCancelContext* cancellation=nullptr;
     // 0x4a5730 / 0x4a5738: stage section and its elapsed frames. Original
     // replay checkpoints use the same section selected by ECL 0x158.
-    i32 stage_section=0,section_frame=0;
+    LoadingWordTh14<i32> stage_section=0,section_frame=0;
+#if PORT_TITLE == 14
+    // Native42de20: selecting the same section preserves its elapsed word.
+    // This also runs in the private initial worker after the audio-head wait.
+    void th14_reset_section_frame()noexcept{section_frame=0;} // Retail435b62 before replay restore.
+    void th14_set_stage_section(i32 next)noexcept{
+        if(stage_section!=next)section_frame=0;
+        stage_section=next;
+    }
+#endif
     SpellController* spells=nullptr;
     ScreenShakes* shakes=nullptr;
     DialogueControl* dialogue=nullptr;
@@ -95,7 +121,9 @@ struct EnemyCommandEnvironment {
 #if PORT_TITLE == 14
     // Native Supervisor mode (4d964c) and run flags (4f58b8). Ordinary play
     // starts at zero; alternate front ends must supply their native values.
-    i32 th14_runtime_mode=0;u32 th14_run_flags=0;
+    i32 th14_runtime_mode=0;LoadingWordTh14<u32> th14_run_flags=0;
+    // 436060 clears only transient bits0/1/3; preserve the other mode bits.
+    void th14_complete_loading_flags()noexcept{th14_run_flags&=~0xbu;}
     // ECL 547 writes 4d8f58 immediately; ANM and enemy timers share it.
     float* th14_rate_target=nullptr;
     // Native game +1b8, three 0x54-stride boss rows; 430195 clears four marks.

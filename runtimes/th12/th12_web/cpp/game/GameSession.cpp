@@ -6,36 +6,62 @@
 #if PORT_TITLE == 14
 #include "ReplayTextTh14.hpp"
 #include "ReplayRngRestoreTh14.hpp"
+#include "StageCppWorkerTh14.hpp"
+#include "StageCppDecodeTh14.hpp"
+#include "StagePreRngTh14.hpp"
+#include "StageScoreSaveTh14.hpp"
+#include "StageCopyTailTh14.hpp"
 #endif
 
 namespace th11 {
+#if defined(TH14_SECTION_TAIL_OBSERVER)
+extern "C" void th14_observer_section_tail(u32,const GameSession*);
+#endif
 
 #if PORT_TITLE==14
-GameSession::GameSession(u32 initial_ticks){
+GameSession::GameSession(u32 initial_ticks):GameSession(initial_ticks,true){}
+GameSession::GameSession(u32 initial_ticks,bool eager_scores){
     resources.animation_manager=&animations;
+    resources.loading_owner=&shared_loading;
     animations.before_initial_update=[this](const AnmVm&){
+#if defined(TH14_CPP_STAGE_WORKER)
+        if(StageCppWorkerScopeTh14::owns(this))return true;
+#endif
+        if(initial_battle_private())return true;
         return !battle||!battle->pending_stage||battle->poll_stage_initialization(stage_load_clock());
     };
     th14_seed_clock(initial_ticks,animations.script_rng,animations.visual_rng);
     font_bitmap.initialize(animations.script_rng);
+    if(eager_scores)initialize_score_defaults();
+}
+void GameSession::initialize_score_defaults(){
+    scores.initialize(animations.visual_rng);scores.read_records(spell_records,clear_records);
+}
 #else
 GameSession::GameSession(){
-#endif
-    scores.initialize(kPortTitle==14?animations.visual_rng:animations.script_rng);scores.read_records(spell_records,clear_records);
+    scores.initialize(animations.script_rng);scores.read_records(spell_records,clear_records);
 }
+#endif
 bool GameSession::load_scores(const u8* data,u32 size){if(!scores.open(data,size))return false;scores.read_records(spell_records,clear_records);return true;}
 bool GameSession::save_scores(std::vector<u8>& out){if(!title)scores.write_records(spell_records,clear_records);return scores.save(out);}
 
 namespace {
-bool clear_animations(AnmManager& manager) {
+bool clear_animations(AnmManager& manager,u32 keep_handle=0,u32 keep_family=0) {
 #if PORT_TITLE == 14
     // Whole-session/direct-stage replacement cancels old copy requests.
     // Ordinary VM clear and overlapping NextStage retain the queue.
     manager.retire_deferred_captures_without_target();
 #endif
-    manager.clear();
+    manager.clear(keep_handle,keep_family);
     return true;
 }
+#if PORT_TITLE == 14
+struct StageMemoryTaskTh14 {
+    StageRestoreMemoryTh14 bindings;
+    std::unique_ptr<u8[]> stack=std::make_unique<u8[]>(65536+16);
+    u32 stack_end()const noexcept{return u32(reinterpret_cast<uintptr_t>(stack.get()+65536+16))&~u32(15);}
+};
+#endif
 
 // The attract playlist is data each title ships, not a name built on the fly: an executable holds a
 // list of replay names, and its title-screen code steps an index over that list once the idle counter
@@ -61,8 +87,230 @@ inline DemoPlaylist demo_playlist() {
 }
 }
 
-void GameSession::reset_state() noexcept {
+#if PORT_TITLE == 14
+#if defined(TH14_CPP_STAGE_WORKER)
+void GameSession::stop_cpp_stage_worker()noexcept{
+#if defined(TH14_CPP_STAGE_DECODE)
+    if(stage_cpp_decode)stage_cpp_decode->cancel();
+#endif
+    if(stage_cpp_worker){stage_cpp_worker->cancel_and_join();stage_cpp_worker.reset();}
+#if defined(TH14_CPP_STAGE_DECODE)
+    stage_cpp_decode.reset();stage_cpp_decode_owner=nullptr;
+#endif
+}
+#if defined(TH14_CPP_STAGE_DECODE)
+bool GameSession::stage_loading_callback_busy()const noexcept{return stage_cpp_worker&&stage_cpp_worker->loading_callback_busy();}
+u32 GameSession::stage_loading_finished_word()const noexcept{return stage_cpp_worker?stage_cpp_worker->loading_finished_word():0;}
+bool GameSession::stage_loading_callback_allows_close()const noexcept{return stage_cpp_worker&&stage_cpp_worker->loading_callback_allows_close();}
+StageResourceEffects::DecodeResult GameSession::cpp_stage_decode(StageResources& owner,StageResourceEffects::Phase phase,u32 selection){
+    using Result=StageResourceEffects::DecodeResult;
+    if(!stage_cpp_decode||stage_cpp_decode_owner!=&owner||!stage_cpp_worker)return Result::Failed;
+    const auto result=Result(stage_cpp_decode->request(u32(phase),selection));
+    if(result==Result::Ready&&phase==StageResourceEffects::Phase::Scene){
+        // The loading worker has already read the camera, after its last
+        // background-file ACK. Main consumes that private published result.
+        const auto copied=battle->stage_camera_read_job.advance(compositor.world_camera,
+            [](u32){return prototype::Work::Ready;},[this](u32 word,u32 offset,u32& value){
+                return stage_cpp_decode->scene_camera_word(word,offset,value)?
+                    prototype::Work::Ready:prototype::Work::Failed;
+            });
+        if(copied!=prototype::Work::Ready)return Result::Failed;
+        if(!battle->incoming_scene_owner){
+            battle->incoming_scene_owner=stage_cpp_decode->take_scene_owner();
+            if(!battle->incoming_scene_owner)return Result::Failed;
+        }
+    }
+    if(result==Result::Ready&&phase==StageResourceEffects::Phase::Timeline){
+        // Ready3 is published before the Control-enable release. No decoder
+        // data is written afterward, but the thread may still own its stack.
+        const auto* control=animations.th14_control.get();
+        if(!control||u32(control->callbacks_enabled)==0)return Result::Waiting;
+        const auto status=stage_cpp_worker->poll();
+        if(status!=ReplayRngRestoreResultTh14::Waiting){
+            stage_cpp_worker->join();
+            if(status!=ReplayRngRestoreResultTh14::Ready)return Result::Failed;
+        }
+    }
+    return result;
+}
+#if defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
+bool GameSession::cpp_stage_pending_file(AnmResource*& resource,u16& file)const noexcept{
+    return stage_cpp_decode&&stage_cpp_decode->pending_file(resource,file);
+}
+StageResourceEffects::DecodeResult GameSession::cpp_stage_upload_offer(StageResources*& owner,StageResourceEffects::Phase& phase,AnmResource*& resource,u16& file)const noexcept{
+    using Result=StageResourceEffects::DecodeResult;
+    owner=nullptr;resource=nullptr;file=0;phase=StageResourceEffects::Phase::Hud;
+    if(!cpp_stage_pending_file(resource,file))return Result::Waiting;
+    owner=stage_cpp_decode_owner;
+    if(!owner||owner!=resources.loading_bundle())return Result::Failed;
+    if(resource==&owner->logo&&file==6)return Result::Ready;
+    if(resource==&owner->background&&file==u16((owner->stage_number&1)+3)){
+        phase=StageResourceEffects::Phase::Scene;return Result::Ready;
+    }
+    for(u32 i=0;i<owner->ecl_animations.size();++i)
+        if(resource==&owner->ecl_animations[i]&&file==u16(10+i)){
+            phase=StageResourceEffects::Phase::Timeline;return Result::Ready;
+        }
+    return Result::Failed;
+}
+bool GameSession::cpp_stage_complete_file(AnmResource& resource,u16 file)noexcept{
+    return stage_cpp_decode&&stage_cpp_decode->complete_file(resource,file);
+}
+#endif
+#endif
+ReplayRngRestoreResultTh14 GameSession::stage_cpp_worker_result()const noexcept{
+    return stage_cpp_worker?stage_cpp_worker->poll():ReplayRngRestoreResultTh14::Failed;
+}
+bool GameSession::stage_cpp_worker_joined()const noexcept{return stage_cpp_worker&&stage_cpp_worker->joined();}
+bool GameSession::start_cpp_stage_worker(){
+    if(!stage_cpp_worker){error="TH14 C++ stage job was not prepared";return false;}
+#if defined(TH14_CPP_STAGE_DECODE)
+    std::shared_ptr<GameResources> reader;
+    if(resources.effects&&resources.effects->stage_cpp_decode_enabled()){
+        if(!source||!resources.loading_bundle()){error="TH14 C++ decode owner missing";return false;}
+        // Clone lookup, archive index, LZSS dictionary and error/animation
+        // scratch. Immutable archive bytes remain borrowed until joined.
+        reader=std::make_shared<GameResources>(*source);
+        stage_cpp_decode=std::make_shared<StageCppDecodeTh14>();stage_cpp_decode_owner=resources.loading_bundle();
+    }
+    const bool started=stage_cpp_worker->start([this,reader](){
+#else
+    const bool started=stage_cpp_worker->start([this](){
+#endif
+        StageCppWorkerScopeTh14 scope(this);
+        AnmExecutionContextTh14 execution(static_cast<AnmEnvironment*>(&animations));
+        if(!compositor.stage_start())return false;
+#if defined(TH14_CPP_STAGE_DECODE)
+        //435b44 then435b4e, after the copy0 update435b3a. Retain the
+        // original helper's remaining stores after this intervening word.
+        th14_stage_float_bits(animations.rate,0x3f800000u);
+        if(auto* control=animations.th14_control.get())control->flags&=~0x4000u;
+        th14_stage_store(battle->completion.state.ending_active,false);
+        th14_stage_high_score(battle->hud.score.high,economy.score_units);
+#else
+        th14_stage_pre_rng(animations.rate,battle->completion.state.ending_active,battle->hud.score.high,economy.score_units);
+#endif
+#if defined(TH14_CPP_STAGE_DECODE)
+        if(stage_cpp_decode){
+#if defined(TH14_SECTION_TAIL_OBSERVER)
+            th14_observer_section_tail(0,this);
+#endif
+            battle->enemy_commands.th14_reset_section_frame();
+#if defined(TH14_SECTION_TAIL_OBSERVER)
+            th14_observer_section_tail(1,this);
+#endif
+        }
+#endif
+        // Retail435b11..435b3a precedes456050 on the same worker.
+        if(state.replay){
+            th14_playback_gameplay_seed(animations.visual_rng,battle->replay_entry.seed);
+            th14_playback_script_seed(animations.script_rng,battle->replay_entry.seed);
+            th14_clear_gameplay_calls(animations.visual_rng);
+            th14_project_stage_globals(battle->replay_entry,economy,&battle->enemy_environment.spell_practice_id,
+                &battle->hud.score.continues,&battle->player->state.minimum_point_value,&state.character,&state.subtype);
+        }else{
+            const auto captured=th14_record_gameplay_seed(animations.visual_rng,recording_seed);
+            th14_record_script_seed(animations.script_rng,captured);th14_clear_gameplay_calls(animations.visual_rng);
+        }
+#if defined(TH14_CPP_STAGE_DECODE)
+        if(stage_cpp_decode){
+            const auto character=state.character,subtype=state.subtype;
+            if(!player_selection_valid(character,subtype)||
+               !stage_cpp_decode->begin_hud_before_initialized(u32(character)*2u+u32(subtype)))return false;
+            stage_cpp_decode->initialized();
+            const bool decoded=stage_cpp_decode->run([this,&reader](u32 phase,u32 choice){
+                auto& owner=*stage_cpp_decode_owner;
+                if(phase==1&&!stage_cpp_decode->create_scene_owner(animations,owner.background,resources.core.text,
+                        compositor.clear_color,owner.stage_number,compositor.world_camera))return false;
+#if defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
+                const auto complete=[this](AnmResource& resource,u16 file){return stage_cpp_decode->publish_file(resource,file);};
+                const bool loaded=phase==0?reader->load_stage_hud_files(owner.stage_number,owner,choice,complete):
+                    phase==1?reader->load_stage_scene_files(owner.stage_number,owner,complete):reader->load_stage_timeline_files(owner.stage_number,owner,complete);
+#else
+                const bool loaded=phase==0?reader->load_stage_hud(owner.stage_number,owner,choice):
+                    phase==1?reader->load_stage_scene(owner.stage_number,owner):reader->load_stage_timeline(owner.stage_number,owner);
+#endif
+                if(!loaded)return false;
+                if(phase==0){
+                    // Retail42eb30 loads logo then dialogue, then42ec42..75
+                    // prepares the HUD on this loading thread before return.
+                    battle->hud.prepare_stage(&battle->countdown_seconds);
+                }
+                if(phase==1){
+                    if(!stage_cpp_decode->prepare_scene_storage(owner.scene.animation_count)||
+                       !stage_cpp_decode->capture_scene_camera(compositor.world_camera)||
+                       !stage_cpp_decode->initialize_scene_owner(owner.scene,owner.stage_number))return false;
+                    // Retail435f4b returns directly into4228a0 on this thread.
+                    // Publish the zeroed owner before loading its timeline.
+                    return battle->enemies.initialize_empty(owner.timeline);
+                }
+                if(phase!=2)return true;
+                if(!battle->enemies.finish_stage_owner())return false;
+                if(!battle->prepare_next_tail_owners(state.character,state.subtype))return false;
+                if(!resources.effects||!resources.effects->finish_cpp_stage_tail(
+                    owner.stage_number,battle->enemy_commands.th14_run_flags,
+                    battle->th14_control_clock,&animations.rate,*stage_cpp_worker))return false;
+#if defined(TH14_SECTION_TAIL_OBSERVER)
+                th14_observer_section_tail(2,this);
+#endif
+                // Retail436044 precedes Supervisor cleanup and436060's mask.
+                // Supervisor/global/callback completion remains separate work.
+                battle->enemy_commands.th14_set_stage_section(0);
+                if(auto* control=animations.th14_control.get())control->flags&=~4u; //436053.
+                battle->enemy_commands.th14_complete_loading_flags();
+                stage_cpp_worker->publish_loading_completion();
+                animations.th14_effect_stop=0; // Native43607b before copy interrupts.
+                // Complete all four deferred copy labels before Ready can
+                // enable Control. Main ANM updates may consume each word.
+                th14_defer_stage_copy_tail(compositor.copies);
+#if defined(TH14_SECTION_TAIL_OBSERVER)
+                // A reused Control may already be enabled. Complete these
+                // detailed reads before decoder ready3 permits Main adoption.
+                th14_observer_section_tail(3,this);
+#endif
+                return true;
+            });
+            if(decoded){
+                // Complete decoder ready3 bookkeeping before publishing
+                //41d720. Main may adopt immediately after this release.
+                if(auto* control=animations.th14_control.get())control->callbacks_enabled=1;
+            }
+            return decoded;
+        }
+#endif
+        return true;
+    },60000000,[this](){
+        // Native tests close flags only while the first capture is pending.
+        if(animations.first_deferred_capture_file_index()<0)return ReplayRngRestoreResultTh14::Ready;
+        return (__atomic_load_n(&stage_load_host_flags,__ATOMIC_ACQUIRE)&0x180u)?
+            ReplayRngRestoreResultTh14::Failed:ReplayRngRestoreResultTh14::Waiting;
+    }
+#if defined(TH14_CPP_STAGE_DECODE)
+        ,[this](){if(auto* control=animations.th14_control.get())control->flags|=4u;}
+#endif
+);
+    if(!started)error="TH14 C++ stage worker could not start";
+    return started;
+}
+#endif
+void GameSession::stop_stage_workers()noexcept{
+#if defined(TH14_CPP_STAGE_WORKER)
+    stop_cpp_stage_worker();
+#endif
+    if(resources.effects)resources.effects->stop_stage_workers();
+}
+void GameSession::shutdown()noexcept{reset_state();}
+GameSession::~GameSession(){reset_state();}
+#endif
+void GameSession::reset_state(bool retain_transition) noexcept {
+#if PORT_TITLE == 14
+    const bool retain_title_animations=retain_transition&&bool(title)&&resources.effects&&resources.effects->initial_cpp_worker_enabled();
+    stop_stage_workers();
+#endif
     battle.reset();
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    if(th14_control_owner){animations.th14_control.retire(*th14_control_owner);th14_control_owner.reset();}
+#endif
     if(ending&&resources.effects)for(auto& entry:ending->resources)resources.effects->release_animation(entry.second);
     ending.reset();
 #if PORT_TITLE == 14
@@ -71,9 +319,30 @@ void GameSession::reset_state() noexcept {
     title_manual.reset();
 #endif
     pause_menu.reset();menu_input={};
+#if PORT_TITLE == 14
+    if(title&&retain_title_animations){
+        // Title45982f calls47f140(handle[261],1): its ASCII19 root and
+        // flattened ASCII18 children exit through their own ANM scripts.
+        if(auto* root=animations.find(title->handles[261])){
+            root->interrupt(1);
+            if(!root->child.previous)for(auto* node=root->child.next;node;node=node->next)node->value->interrupt(1);
+        }
+    }
+#endif
     title.reset();title_ascii.reset();title_fades.effects.clear();
     compositor.reset();
+#if PORT_TITLE == 14
+    if(retain_title_animations){
+        // Retail Title destruction4597ae..459807 unloads only slots16/17.
+        // 47d830 marks their VMs for the next ANM callback. ASCII title
+        // effects keep executing their own scripts across Control creation.
+        animations.retire_resource(resources.core.title);
+        animations.retire_resource(resources.core.title_variant);
+    }else clear_animations(animations,retain_transition?transition_type0:0,retain_transition?shared_loading.handle:0);
+    if(!retain_transition){transition_type0=0;shared_loading.handle=0;}
+#else
     clear_animations(animations);
+#endif
 #if PORT_TITLE == 14
     resources.cancel_stage_loading();
     resources.cancel_selected_player();
@@ -84,7 +353,7 @@ void GameSession::reset_state() noexcept {
     economy={};
     battle_attached=false;
 #if PORT_TITLE == 14
-    demo_title_pending=false;
+    demo_title_pending=false;pending_initial_control_activation=false;
     pending_core_title=false;
 #endif
     last_held=0;
@@ -112,7 +381,7 @@ bool GameSession::begin(GameResources& source, u32 stage, i32 character,
         std::memcpy(config.bytes.data(),playback.decoded().data()+0x18,config.bytes.size());
     }else if(replay_user_config){config=*replay_user_config;replay_user_config.reset();}
 #endif
-    reset_state();
+    reset_state(true);
     completed_run=false;
     this->source=&source;
     if(!player_selection_valid(character,subtype)||difficulty<0||difficulty>4)
@@ -159,7 +428,10 @@ bool GameSession::begin(GameResources& source, u32 stage, i32 character,
     economy.point_value=minimum[difficulty];economy.max_point_value=maximum[difficulty];
 #if PORT_TITLE == 14
     // 435da5..435e17, after the player has installed its live step.
-    if(!replay){const auto& shot=resources.core.shots[shot_file_slot(u32(character),u32(subtype))].header;economy.power=std::min(stage==1&&state.spell_practice_id<0?100:400,shot.max_power_level*100);}
+    if(!replay&&!(resources.effects&&resources.effects->initial_cpp_worker_enabled())){
+        const auto& shot=resources.core.shots[shot_file_slot(u32(character),u32(subtype))].header;
+        economy.power=std::min(stage==1&&state.spell_practice_id<0?100:400,shot.max_power_level*100);
+    }
 #else
     if(!replay&&stage>=2&&stage<=6){const auto& shot=resources.core.shots[shot_file_slot(u32(character),u32(subtype))].header;economy.power=shot.max_power_level*(kPortTitle==16?100:shot.power_step);}
 #endif
@@ -168,14 +440,33 @@ bool GameSession::begin(GameResources& source, u32 stage, i32 character,
 
 bool GameSession::start_stage(GameResources& source, u32 stage) {
     if(stage<1||stage>7) return fail("TH11 stage outside 1..7");
+#if PORT_TITLE == 14
+    stop_stage_workers();
+#endif
     battle.reset();
-    if(!clear_animations(animations)) return fail("ANM stage transition failed");
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    if(th14_control_owner){animations.th14_control.retire(*th14_control_owner);th14_control_owner.reset();}
+    th14_control_owner=std::make_unique<ControlStateTh14>();
+    animations.th14_control.publish(*th14_control_owner); // Native4365ac/4365b9, before Player.
+#endif
+#if PORT_TITLE == 14
+    // The native initial435c80 worker does not clear the animation manager.
+    // Resource retirement and each VM's terminal script own their lifetimes.
+    if(!(resources.effects&&resources.effects->initial_cpp_worker_enabled()))
+        if(!clear_animations(animations,transition_type0,shared_loading.handle))return fail("ANM stage transition failed");
+#else
+    if(!clear_animations(animations))return fail("ANM stage transition failed");
+#endif
 #if PORT_TITLE == 14
     resources.cancel_stage_loading();
 #endif
     if(!resources.load_stage(source,stage)) return fail(resources.error.c_str());
     resources.retire_previous();
+#if PORT_TITLE == 14
+    if((!resources.effects||!resources.effects->initial_cpp_worker_enabled())&&!compositor.stage_start())return fail("screen compositor stage reset failed");
+#else
     if(!compositor.stage_start())return fail("screen compositor stage reset failed");
+#endif
     // The direct stage-selection path replaces the resource bundle after
     // releasing its VMs. Native overlapping outgoing/incoming backgrounds
     // still require the game-control transition state machine.
@@ -184,22 +475,59 @@ bool GameSession::start_stage(GameResources& source, u32 stage) {
     state.phase=GameSessionPhase::stage;
     battle_attached=false;
 #if PORT_TITLE == 14
-    if(resources.effects&&!resources.effects->stage_ready()){state.phase=GameSessionPhase::loading;return true;}
+    if(resources.effects&&!resources.effects->stage_ready()){
+        state.phase=GameSessionPhase::loading;
+        // prepare() ran before GameSessionResources adopted its stable owner.
+        // Dispatch now, in the same Main callback, after Loading publication.
+        if(resources.effects->initial_cpp_worker_enabled()&&!resources.effects->begin_initial_cpp_loading())
+            return fail(resources.effects->last_error().c_str());
+        return true;
+    }
     return activate_stage();
 }
 bool GameSession::prepare_initial_player(){
     if(state.phase!=GameSessionPhase::loading||pending_core_title||battle_attached||battle)return fail("no pending TH14 initial player load");
-    if(state.replay){
-        // 435da5 initializes starting power before the first replay manager
+    {
+        // 435da5 initializes starting power after the selected SHT has loaded,
+        // for ordinary play as well as before the first replay manager
         // copies the selected entry at 454a51 later in the worker.
         const auto& shot=resources.core.shots[shot_file_slot(u32(state.character),u32(state.subtype))].header;
         economy.power=std::min(state.stage==1&&state.spell_practice_id<0?100:400,shot.max_power_level*100);
     }
     battle=std::make_unique<GameBattle>(resources,animations,economy,spell_records,compositor,clear_records);
+    // Keep the selected mode with the private owner before loader return.
+    // The worker clears the transient bits; Main must not rebuild this word.
+    battle->enemy_commands.th14_run_flags=state.demo?0x40u:
+        (state.spell_practice_id>=0?0x20u:state.practice&&!state.replay?0x10u:0u);
     if(!battle->prepare_initial_player(state.character,state.subtype))return fail(battle->error.c_str());
+    // 435e1d finishes Player options before 435edf creates the replay
+    // manager. Its seed/counter/globals setup precedes Scene/HUD/Timeline.
+    // Keep the entry with the existing private battle owner for activation.
+    return prepare_initial_entry(battle->replay_entry);
+}
+bool GameSession::prepare_initial_entry(ReplayStageState& entry){
+    auto& gameplay_rng=animations.visual_rng;
+    recording_seed=gameplay_rng.seed_value();
+    if(!state.replay)gameplay_rng.set_call_count(0);
+    if(state.replay){
+        if(!playback.select(state.stage))return fail("stage absent from replay");
+        entry.read(playback.header(state.stage));
+        const auto& shot=resources.core.shots[shot_file_slot(u32(state.character),u32(state.subtype))].header;
+        economy.max_power=shot.max_power_level*shot.power_step;economy.power_step=shot.power_step;
+        // This retains the existing first-manager seed semantics. Selected
+        // replay UI mode routing is a separate, still unqualified contract.
+        th14_restore_replay_rng(gameplay_rng,&animations.script_rng,entry.seed,true);
+        th14_project_stage_globals(entry,economy,nullptr,nullptr,nullptr,&state.character,&state.subtype);
+        state.difficulty=economy.difficulty;
+    }
     return true;
 }
-bool GameSession::finish_loading(){
+bool GameSession::prepare_initial_scene(bool complete){
+    if(state.phase!=GameSessionPhase::loading||pending_core_title||battle_attached||!battle)
+        return fail("no pending TH14 initial scene load");
+    return battle->prepare_initial_scene(complete)||fail(battle->error.c_str());
+}
+bool GameSession::finish_loading(bool defer_initial_control){
     if(state.phase!=GameSessionPhase::loading)return fail("no pending TH14 resource load");
     if(pending_core_title){
         if(resources.effects&&!resources.effects->core_ready())return fail("TH14 core resources still pending");
@@ -217,15 +545,21 @@ bool GameSession::finish_loading(){
         // Match the synchronous transition's completed session boundary.
         state.frame=1;state.phase=GameSessionPhase::stage;return true;
     }
+    if(defer_initial_control){pending_initial_control_activation=true;return true;}
     return activate_stage();
 }
 bool GameSession::activate_stage(){
     const u32 stage=state.stage;state.phase=GameSessionPhase::stage;
 #endif
     ReplayStageState entry;
+#if PORT_TITLE == 14
+    const bool initial_worker_owner=battle&&battle->player;
+    if(initial_worker_owner)entry=battle->replay_entry;
+    else if(!prepare_initial_entry(entry))return false;
+#else
     auto& gameplay_rng=kPortTitle==14?animations.visual_rng:animations.script_rng;
-    recording_seed=gameplay_rng.seed;
-    if(!state.replay)gameplay_rng.calls=0;
+    recording_seed=gameplay_rng.seed_value();
+    if(!state.replay)gameplay_rng.set_call_count(0);
     if(state.replay){
         if(!playback.select(stage))return fail("stage absent from replay");
         entry.read(playback.header(stage));
@@ -234,20 +568,40 @@ bool GameSession::activate_stage(){
         // Both ordinary and attract startup create the replay manager here.
         // 454a41..454a51 restores gameplay RNG and globals but retains script
         // RNG. Only existing-controller stage entry uses 456050 (first=false).
-        entry.restore(economy,gameplay_rng,true,kPortTitle==14?&animations.script_rng:nullptr);
+#if PORT_TITLE == 14
+        th14_restore_replay_rng(gameplay_rng,&animations.script_rng,entry.seed,true);
+        th14_project_stage_globals(entry,economy,nullptr,nullptr,nullptr,&state.character,&state.subtype);
+        state.difficulty=economy.difficulty;
+#else
+        entry.restore(economy,gameplay_rng,true,nullptr);
+#endif
     }
+#endif
 #if PORT_TITLE == 14
     if(!battle)
 #endif
     battle=std::make_unique<GameBattle>(resources,animations,economy,spell_records,compositor,clear_records);
 #if PORT_TITLE == 14
     battle->enemy_environment.spell_practice_id=state.replay?entry.th14_practice_mode:state.spell_practice_id;
-    // 436060 clears the transient worker bits 0/1/3 before gameplay. Replay
-    // identity lives in the controller; bit 1 only selects existing-stage
-    // restoration during loading. Attract retains its own mode bit.
-    battle->enemy_commands.th14_run_flags=state.demo?0x40u:
-        (state.spell_practice_id>=0?0x20u:state.practice&&!state.replay?0x10u:0u);
-    battle->th14_audio_flags=config.bytes[0x38];battle->th14_scores=&scores;
+    // A joined initial worker already applied436060. Preserve its word,
+    // including modes the frontend supplied to the existing private owner.
+    // Direct/unprepared entry retains the existing mode selection fallback.
+    if(!initial_worker_owner){
+        battle->enemy_commands.th14_run_flags=state.demo?0x40u:
+            (state.spell_practice_id>=0?0x20u:state.practice&&!state.replay?0x10u:0u);
+        battle->enemy_commands.th14_complete_loading_flags();
+    }else if(!(resources.effects&&resources.effects->initial_cpp_worker_enabled())){
+        // Hosted/private Player preparation also retains the replay entry,
+        // but has no C++ initial worker to execute436060. Clear only here.
+        battle->enemy_commands.th14_complete_loading_flags();
+    }
+#if defined(TH14_CPP_STAGE_DECODE)
+    // Direct entry has no loading worker; establish its completed Control.
+    if(!(resources.effects&&resources.effects->initial_cpp_worker_enabled()))if(auto* control=animations.th14_control.get()){
+        control->flags&=~4u;control->callbacks_enabled=1;
+    }
+#endif
+    battle->th14_audio_flags=persistent_config().bytes[0x38];battle->th14_scores=&scores;
 #endif
     battle->replaying=state.replay;battle->demo=state.demo;battle->replay_entry=entry;
 #if PORT_TITLE == 14
@@ -285,6 +639,13 @@ bool GameSession::activate_stage(){
     battle->player_input.replay=state.replay;
     battle->completion.mode.control_mode=state.replay||state.demo;
     battle->completion.mode.replay_mode=state.replay?1:0;
+#if PORT_TITLE == 14
+    // Initial Control11 activation follows overlay ANM8, as in 4369b3/4369d8.
+    battle->initial_control_activation=[this](){
+        shared_loading.finish(animations);
+        if(auto* transition=animations.find(transition_type0))transition->interrupt(1);
+    };
+#endif
     battle_attached=true;
     if(!state.demo)scores.settings[0x26+stage_music(stage)]=1;
     if(!state.replay&&!record_stage_entry(true))return false;
@@ -294,12 +655,12 @@ bool GameSession::activate_stage(){
 bool GameSession::record_stage_entry(bool initial){
     if(!battle||!battle->player)return fail("recording requires a live player");
     auto& e=economy;const auto& p=battle->player->motion.state;
-    ReplayStageState s;s.seed=recording_seed;s.score=e.score_units;s.power=e.power;s.points=e.point_value;
+    ReplayStageState s;s.seed=recording_seed;s.score=th14_hud_load(e.score_units);s.power=e.power;s.points=e.point_value;
     s.lives=e.lives;s.fragments=e.life_fragments;s.rank=e.rank;s.x=p.x;s.y=p.y;s.continues=battle->hud.score.continues;
     s.focused=p.focused;s.graze=e.graze;s.weapon=p.weapon_mode;
 #if PORT_TITLE == 14
     s.th14_practice_mode=battle->enemy_environment.spell_practice_id;
-    s.th14_globals={u32(state.character),u32(state.subtype),u32(e.score_units),u32(state.difficulty),u32(s.continues),u32(e.rank),u32(e.graze),u32(s.th14_practice_mode),
+    s.th14_globals={u32(state.character),u32(state.subtype),u32(th14_hud_load(e.score_units)),u32(state.difficulty),u32(s.continues),u32(e.rank),u32(e.graze),u32(s.th14_practice_mode),
         u32(e.th14_point_items),u32(e.point_value),u32(battle->player->state.minimum_point_value),u32(e.max_point_value),u32(e.power),u32(e.max_power),u32(e.power_step),
         u32(e.lives),u32(e.life_fragments),u32(e.th14_life_awards),u32(e.th14_bombs),u32(e.th14_bomb_fragments),u32(e.th14_combo.total),u32(e.th14_reserved_54),
         u32(e.th14_combo.count),u32(e.th14_combo.timer),float_bits(e.th14_combo.position.x),float_bits(e.th14_combo.position.y),float_bits(e.th14_combo.position.z),u32(e.th14_special_drop_count)};
@@ -317,7 +678,7 @@ bool GameSession::save_replay(const char* name,std::vector<u8>& output,bool term
     // Saving must not append multiple end markers or mutate an active run.
     auto snapshot=recording;if(terminal&&!snapshot.finish_stage(true))return false;
     const i32 reached=pause_menu&&pause_menu->completed&&!state.practice?8:i32(state.stage);
-    return snapshot.save(name,economy.score_units,reached,battle->hud.score.continues,slowdown,output);
+    return snapshot.save(name,th14_hud_load(economy.score_units),reached,battle->hud.score.continues,slowdown,output);
 }
 
 bool GameSession::update(const GameSessionInput& input) {
@@ -332,19 +693,32 @@ bool GameSession::update(const GameSessionInput& input) {
     if(state.phase==GameSessionPhase::ending&&ending&&!ending->active){
         if(!open_results())return false;
     }
+    bool initial_overlay_already_updated=false;
+    if(state.phase==GameSessionPhase::loading&&pending_initial_control_activation){
+        // The ready worker enables Control11; overlay ANM8 still precedes it.
+        if(!animations.update(true))return fail("TH14 initial activation overlay update failed");
+        pending_initial_control_activation=false;
+        if(!activate_stage())return false;
+        initial_overlay_already_updated=true;
+    }
     // Supervisor1 consumes requests posted by Title6 on the preceding pass.
     // Keep that request pass alive through overlay8 and normal ANM29.
     if(state.phase==GameSessionPhase::title&&title){
+        const auto finish_scene_switch=[this](bool ok){
+            if(!ok||state.phase!=GameSessionPhase::loading)return ok;
+            if(!animations.update(true)||!animations.update(false))return fail("TH14 scene-switch ANM update failed");
+            return true;
+        };
         if(!source)return fail("title lifetime missing");
-        if(title->start_requested){const auto choice=title->selection;return begin(*source,choice.stage,choice.character,choice.partner,choice.difficulty,false,false,(choice.flags&16)!=0);}
+        if(title->start_requested){const auto choice=title->selection;return finish_scene_switch(begin(*source,choice.stage,choice.character,choice.partner,choice.difficulty,false,false,(choice.flags&16)!=0));}
         if(title->replay_start_requested){auto entry=title->replay_files[title->replay_file];last_replay_file=title->replay_file;const u32 stage=title->replay_stage+1;
             if(entry->file.empty()&&(!resources.effects||!resources.effects->read_replay(entry->path,entry->file)))return fail("selected replay could not be loaded");
-            return begin_replay(*source,entry->file.data(),u32(entry->file.size()),stage);}
+            return finish_scene_switch(begin_replay(*source,entry->file.data(),u32(entry->file.size()),stage));}
         if(title_idle>=1800){
             const DemoPlaylist playlist=demo_playlist();const auto path=std::string(playlist.names[demo_index<playlist.step?demo_index:0]);
             demo_index=(demo_index+1)%playlist.step;title_idle=0;std::vector<u8> bytes;
             if(!source->read(path,bytes))return fail("original demo resource missing");
-            return begin_replay(*source,bytes.data(),u32(bytes.size()),0,true);
+            return finish_scene_switch(begin_replay(*source,bytes.data(),u32(bytes.size()),0,true));
         }
     }
     if(state.phase==GameSessionPhase::loading)return true;
@@ -352,13 +726,60 @@ bool GameSession::update(const GameSessionInput& input) {
     // Consume the preceding dialogue/HUD request at Supervisor1, before the
     // incoming callback pass. The loader is launched here, not at ANM29's tail.
     if(state.phase==GameSessionPhase::stage&&battle&&battle->completion.state.exit==StageExit::NextStage){
+        th14_stage_score_save(scores,spell_records,clear_records,[this](const std::vector<u8>& bytes){
+            return !resources.effects||resources.effects->write_stage_score(bytes);
+        });
         const u32 next=u32(battle->completion.state.next_stage);
         if(!state.replay){recording.spell_times(battle->spell_timing.records);recording_active=false;}
         if(state.replay){
             if(!playback.stage(next)){state.phase=GameSessionPhase::finished;return true;}
             battle->replay_entry.read(playback.header(next));
         }
-        auto initialize=[this,restore=ReplayRngRestoreJobTh14{}]()mutable->prototype::Work {
+#if defined(TH14_CPP_STAGE_WORKER)
+        if(resources.effects&&resources.effects->stage_cpp_worker_enabled()){
+            stop_cpp_stage_worker();stage_cpp_worker=std::make_shared<StageCppWorkerTh14>();
+        }
+#endif
+        auto initialize=[this,restore=ReplayRngRestoreJobTh14{},worker=std::shared_ptr<StageMemoryTaskTh14>{}
+        ]()mutable->prototype::Work {
+#if defined(TH14_CPP_STAGE_WORKER)
+            if(resources.effects&&resources.effects->stage_cpp_worker_enabled()){
+                if(!stage_cpp_worker){error="TH14 C++ stage worker owner missing";return prototype::Work::Failed;}
+                auto result=stage_cpp_worker->poll();
+#if defined(TH14_CPP_STAGE_DECODE)
+                if(stage_cpp_decode&&result!=ReplayRngRestoreResultTh14::Failed){
+                    if(stage_cpp_decode->failure()){error="TH14 C++ resource decode failed";return prototype::Work::Failed;}
+                    result=stage_cpp_decode->initialization_ready()?ReplayRngRestoreResultTh14::Ready:ReplayRngRestoreResultTh14::Waiting;
+                }
+#endif
+                if(result==ReplayRngRestoreResultTh14::Waiting)return prototype::Work::Waiting;
+#if defined(TH14_CPP_STAGE_DECODE)
+                if(!stage_cpp_decode)
+#endif
+                stage_cpp_worker->join();
+                if(result==ReplayRngRestoreResultTh14::Failed){error="TH14 C++ stage initialization failed";return prototype::Work::Failed;}
+                if(state.replay){
+                    battle->enemy_environment.character=state.character;battle->enemy_environment.subtype=state.subtype;
+                    battle->enemy_environment.difficulty=state.difficulty=economy.difficulty;
+                }
+                return prototype::Work::Ready;
+            }
+#endif
+            if(resources.effects&&resources.effects->stage_memory_worker_enabled()){
+                if(!worker){
+                    worker=std::make_shared<StageMemoryTaskTh14>();
+                    worker->bindings={&animations.visual_rng,&animations.script_rng,&battle->replay_entry,&recording_seed,&economy,
+                        &battle->enemy_environment.spell_practice_id,&battle->hud.score.continues,&battle->player->state.minimum_point_value,
+                        &state.character,&state.subtype};
+                }
+                const auto result=resources.effects->stage_memory_worker(worker->bindings,worker->stack_end(),state.replay);
+                if(result==ReplayRngRestoreResultTh14::Failed){error="TH14 physical stage restore failed";return prototype::Work::Failed;}
+                if(result==ReplayRngRestoreResultTh14::Ready&&state.replay){
+                    battle->enemy_environment.character=state.character;battle->enemy_environment.subtype=state.subtype;
+                    battle->enemy_environment.difficulty=state.difficulty=economy.difficulty;
+                }
+                return result==ReplayRngRestoreResultTh14::Ready?prototype::Work::Ready:prototype::Work::Waiting;
+            }
             auto& rng=animations.visual_rng;
             const auto ready=[this](ReplayRngRestorePointTh14 point){return resources.effects?resources.effects->stage_rng_store_readiness(point):ReplayRngRestoreResultTh14::Ready;};
             const auto committed=[this](ReplayRngRestorePointTh14 point){return !resources.effects||resources.effects->stage_rng_store_committed(point);};
@@ -370,10 +791,10 @@ bool GameSession::update(const GameSessionInput& input) {
                 const auto snapshot=resources.effects?resources.effects->stage_replay_snapshot_readiness():ReplayRngRestoreResultTh14::Ready;
                 if(snapshot==ReplayRngRestoreResultTh14::Waiting)return prototype::Work::Waiting;
                 if(snapshot==ReplayRngRestoreResultTh14::Failed){error="TH14 replay snapshot restore failed";return prototype::Work::Failed;}
-                battle->replay_entry.restore_economy_th14(economy);
-                battle->enemy_environment.spell_practice_id=battle->replay_entry.th14_practice_mode;
-                battle->hud.score.continues=battle->replay_entry.continues;
-                battle->player->state.minimum_point_value=signed_bits(battle->replay_entry.th14_globals[10]);
+                th14_project_stage_globals(battle->replay_entry,economy,&battle->enemy_environment.spell_practice_id,
+                    &battle->hud.score.continues,&battle->player->state.minimum_point_value,&state.character,&state.subtype);
+                battle->enemy_environment.character=state.character;battle->enemy_environment.subtype=state.subtype;
+                battle->enemy_environment.difficulty=state.difficulty=economy.difficulty;
                 if(resources.effects&&!resources.effects->stage_replay_snapshot_committed()){
                     error="TH14 replay snapshot acknowledgement failed";return prototype::Work::Failed;
                 }
@@ -394,7 +815,7 @@ bool GameSession::update(const GameSessionInput& input) {
     edges.pressed|=input.held&~last_held;
     edges.released|=last_held&~input.held;
 #if PORT_TITLE == 14
-    bool overlay_already_updated=false;
+    bool overlay_already_updated=initial_overlay_already_updated;
 #endif
     const bool pause_edge=input.pause&&!last_pause;
     const bool confirm_edge=(edges.pressed&0x101u)!=0;
@@ -535,8 +956,21 @@ bool GameSession::update(const GameSessionInput& input) {
         if(title->manual_release_requested&&title_manual&&title_manual->manual_resource)animations.retire_resource(*title_manual->manual_resource);
 #endif
         config=title->config;
-        if(title->fade_requested)title_fades.start(5,32,0,61,&animations.rate);
+        if(title->fade_requested){
+#if PORT_TITLE == 14
+            auto* transition=animations.create(resources.core.effect,0,8,u32(-1));
+            if(!transition||!anm_th14_install_effect(*transition,0,animations))return fail("title transition initialization failed");
+            transition_type0=transition->id;transition->interrupt(7);
+            if(!shared_loading.begin(animations,resources.core.ascii))return fail("TH14 title loading animation creation failed");
+#else
+            title_fades.start(5,32,0,61,&animations.rate);
+#endif
+        }
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+        title_fades.update(false,false,&animations.th14_effect_stop,&animations.th14_control);
+#else
         title_fades.update();
+#endif
 #if PORT_TITLE != 14
         if(title->start_requested){const auto choice=title->selection;return begin(*source,choice.stage,choice.character,choice.partner,choice.difficulty,false,false,(choice.flags&16)!=0);}
         if(title->replay_start_requested){auto entry=title->replay_files[title->replay_file];last_replay_file=title->replay_file;const u32 stage=title->replay_stage+1;
@@ -729,9 +1163,9 @@ bool GameSession::update(const GameSessionInput& input) {
             state.stage=next;state.frame=0;
             if(!battle->pump_stage_loading(stage_load_clock(),animations.first_deferred_capture_file_index(),stage_load_host_flags))return fail(battle->error.c_str());
 #else
-            if(!state.replay){recording.spell_times(battle->spell_timing.records);recording_active=false;recording_seed=gameplay_rng.seed;gameplay_rng.calls=0;}
+            if(!state.replay){recording.spell_times(battle->spell_timing.records);recording_active=false;recording_seed=gameplay_rng.seed_value();gameplay_rng.set_call_count(0);}
 #if PORT_TITLE == 14
-            if(!state.replay)animations.script_rng.seed=u16(recording_seed);
+            if(!state.replay)animations.script_rng.set_seed(u16(recording_seed));
 #endif
             if(state.replay){
                 if(!playback.stage(next)){state.phase=GameSessionPhase::finished;return true;}
@@ -764,6 +1198,9 @@ bool GameSession::pause() {
     pause_menu->selection=state.character*2+state.subtype;pause_menu->difficulty=state.difficulty;pause_menu->stage=state.stage;pause_menu->practice=state.practice;
 #if PORT_TITLE == 14
     pause_menu->spell_practice_id=state.spell_practice_id;
+#if defined(TH14_CPP_STAGE_DECODE)
+    pause_menu->th14_live_run_flags=battle?&battle->enemy_commands.th14_run_flags:nullptr;
+#endif
     // Retail4490c0 reads the live4f5838 counter before disabling replay save.
     pause_menu->continues=battle?battle->hud.score.continues:0;
 #endif
@@ -789,13 +1226,16 @@ bool GameSession::pause() {
 bool GameSession::open_result(bool completed){
     pause_menu=std::make_unique<PauseMenu>(animations,resources.core.text,resources.core.front,scores);
     pause_menu->selection=state.character*2+state.subtype;pause_menu->difficulty=state.difficulty;pause_menu->stage=state.stage;
-    pause_menu->result_score=economy.score_units;pause_menu->continues=battle->hud.score.continues;pause_menu->timestamp=recording_timestamp;
+    pause_menu->result_score=th14_hud_load(economy.score_units);pause_menu->continues=battle->hud.score.continues;pause_menu->timestamp=recording_timestamp;
 #if PORT_TITLE == 14
     pause_menu->spell_practice_id=state.spell_practice_id;
+#if defined(TH14_CPP_STAGE_DECODE)
+    pause_menu->th14_live_run_flags=battle?&battle->enemy_commands.th14_run_flags:nullptr;
+#endif
     if(completed&&state.spell_practice_id>=0){
         // Retail437005 rounds the unsigned stored score down to tens, then
         // compares the existing practice high score as a signed word.
-        const i32 value=signed_bits(u32(economy.score_units)/10*10);auto* record=scores.characters[state.character*2+state.subtype].data()+ScoreFile::spell_offset+state.spell_practice_id*ScoreFile::spell_stride+0x98;
+        const i32 value=signed_bits(u32(th14_hud_load(economy.score_units))/10*10);auto* record=scores.characters[state.character*2+state.subtype].data()+ScoreFile::spell_offset+state.spell_practice_id*ScoreFile::spell_stride+0x98;
         i32 best;std::memcpy(&best,record,4);if(best<value)std::memcpy(record,&value,4);
     }
 #endif
@@ -814,7 +1254,7 @@ bool GameSession::open_result(bool completed){
 
 bool GameSession::open_ending(){
     if(!source||!battle||state.replay)return fail("ending requires a completed live game");
-    completed_score=economy.score_units;completed_continues=battle->hud.score.continues;
+    completed_score=th14_hud_load(economy.score_units);completed_continues=battle->hud.score.continues;
     recording.spell_times(battle->spell_timing.records);if(!recording.finish_stage(true))return fail("completed recording finalization failed");
     menu_selection.character=state.character;menu_selection.partner=state.subtype;menu_selection.difficulty=state.difficulty;
     scores.write_records(spell_records,clear_records);reset_state();completed_run=true;
@@ -850,11 +1290,18 @@ bool GameSession::continue_run_th14(){
     animations.rate=paused_rate;battle->events.push_back({BattleEventKind::PauseResume,1});
     // 44ae10 restores counters in place. Keep the dead player's lifecycle,
     // stage scripts, enemies, bullets and recording at the same frame.
-    battle->hud.display_bombs(2,economy.th14_bomb_fragments);
-    if(th14_continue_economy(economy,battle->hud.score.continues)&&!battle->hud.notice(2,0))return fail("TH14 continue power notice failed");
-    if(!battle->power_changed())return fail("TH14 continue option refresh failed");
-    battle->hud.display_lives(economy.lives,economy.life_fragments);
-    battle->hud.display_bombs(economy.th14_bombs,economy.th14_bomb_fragments);
+    struct LiveContinue:ContinueActionsTh14 {
+        GameBattle& battle;
+        explicit LiveContinue(GameBattle& b):battle(b){}
+        bool bombs(i32 count,i32 fragments)noexcept override{battle.hud.display_bombs(count,fragments);return true;}
+        bool power_notice()noexcept override{return battle.hud.notice(2,0);}
+        bool options()noexcept override{return battle.power_changed();}
+        bool lives(i32 count,i32 fragments)noexcept override{battle.hud.display_lives(count,fragments);return true;}
+    } actions(*battle);
+    if(!th14_continue_apply(economy,battle->hud.score.continues,actions))return fail("TH14 continue HUD/option refresh failed");
+#if defined(TH14_CPP_STAGE_DECODE)
+    if(auto* control=animations.th14_control.get())control->flags&=~0x10u; //44aee9, after continue counters/options.
+#endif
     battle->game_over_requested=false;
     // PauseEnd already interrupts the capture and choice families with 1.
     pause_menu.reset();state.phase=GameSessionPhase::stage;
@@ -864,6 +1311,9 @@ bool GameSession::continue_run_th14(){
 
 bool GameSession::resume() {
     if(state.phase!=GameSessionPhase::paused) return false;
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    if(auto* control=animations.th14_control.get())control->flags&=~0x10u; //449043, before resume delivery.
+#endif
 #if PORT_TITLE == 14
     // Preserve an intervening resume even if this frame immediately pauses again.
     if(battle)battle->events.push_back({BattleEventKind::PauseResume,0});
@@ -923,6 +1373,7 @@ bool GameSession::activate_title(GameResources& data,bool first,TitleScreen scre
 
 #if PORT_TITLE == 14
 bool GameSession::sample_spell_clock(double now){
+    if(initial_battle_private())return true;
     return !battle||!battle->initialized||battle->spell_timing.update(battle->spell_flags,battle->spells.frame_count,now,state.replay);
 }
 #endif
@@ -939,6 +1390,7 @@ bool GameSession::draw(AnmRenderer& renderer,AsciiText* overlay) {
     SceneCameraPerspectiveScopeTh14 perspective_scope(compositor.world_camera,this,
         [](void* owner,const SceneCamera& camera,u32 point){
             auto& session=*static_cast<GameSession*>(owner);
+            if(session.initial_battle_private())return true;
             if(!session.battle||!session.battle->pending_stage)return true;
             if(session.stage_load_perspective_boundary&&!session.stage_load_perspective_boundary(camera,point))return false;
             // A draw borrows its Stage owner. Complete only an already-entered
@@ -946,8 +1398,18 @@ bool GameSession::draw(AnmRenderer& renderer,AsciiText* overlay) {
             return session.battle->poll_stage_scene(session.stage_load_clock());
         });
     const std::function<bool()> camera_published=[this](){
-        return !battle||!battle->pending_stage||battle->pump_stage_loading(stage_load_clock(),
+        return initial_battle_private()||!battle||!battle->pending_stage||battle->pump_stage_loading(stage_load_clock(),
             animations.first_deferred_capture_file_index(),stage_load_host_flags);
+    };
+#endif
+#if PORT_TITLE == 14
+    const auto append_overlay=[overlay](AsciiText& target){
+        if(!overlay||overlay==&target)return true;
+        // Native uses one320-request ASCII owner. Keep outer glyph order and
+        // the shared limit instead of issuing another complete ASCII pass.
+        for(const auto& request:overlay->requests)if(request.style.pass==0&&
+            !target.add(request.text.c_str(),request.position,request.style))return false;
+        return true;
     };
 #endif
     u32 next_fade_priority=0;
@@ -961,8 +1423,14 @@ bool GameSession::draw(AnmRenderer& renderer,AsciiText* overlay) {
             // Queue after inner HUD/text, preserving the ASCII queue limit.
             if(next_fade_priority==62){
                 AsciiRequest replay_fps;
+#if defined(TH14_CPP_STAGE_DECODE)
+                const u32 controller_flags=animations.th14_control.callback_flags();
+#else
                 const u32 controller_flags=state.phase==GameSessionPhase::loading?4u:0u;
-                if(th14_replay_fps_request(battle_attached&&battle,state.replay?1u:0u,u8(playback.current().fps),replay_fps,controller_flags)&&
+#endif
+                // Native4363d5/4363e0 and437410 disable Replay30/62 until
+                //455ed0 at stage activation. Replay12 input remains separate.
+                if(battle_attached&&battle&&battle->stage_active&&th14_replay_fps_request(true,state.replay?1u:0u,u8(playback.current().fps),replay_fps,controller_flags)&&
                    !battle->ascii.add(replay_fps.text.c_str(),replay_fps.position,replay_fps.style))return fail("replay FPS text queue failed");
             }
             if(next_fade_priority==60&&resources.effects&&!resources.effects->draw_startup_loading())
@@ -977,6 +1445,12 @@ bool GameSession::draw(AnmRenderer& renderer,AsciiText* overlay) {
         if(pass.kind==SceneDrawKind::End&&battle_attached&&battle)battle->fades.draw(renderer,67);
         if(battle_attached&&battle)battle->fades.draw(renderer,pass.priority);
 #endif
+#if PORT_TITLE == 14
+        // Native40b5d9 registers ASCII50 with enabled bit2 cleared. This
+        // traversal runs enabled callbacks; keep its direct draw method
+        // available, but do not execute the disabled registration here.
+        if(pass.kind==SceneDrawKind::AsciiInner)continue;
+#endif
         if(pass.kind==SceneDrawKind::Animation){
             // Naming the pass matters: several animation passes run per frame, so a bare
             // "ANM draw failed" cannot tell a stage layer from a HUD, effect or text layer.
@@ -984,9 +1458,15 @@ bool GameSession::draw(AnmRenderer& renderer,AsciiText* overlay) {
         }else if(scene_compositor_pass(pass.kind)){
             if(!compositor.draw(renderer,pass.kind))return fail("screen compositor draw failed");
         }else if(title&&pass.kind==SceneDrawKind::AsciiOuter){
+#if PORT_TITLE == 14
+            if(!append_overlay(*title_ascii))return fail("title overlay queue failed");
+#endif
             if(!title_ascii->draw(renderer,0,compositor.full_camera,compositor.play_camera))return fail("title text draw failed");
         }else if(battle_attached&&battle){
             if(pass.kind==SceneDrawKind::AsciiOuter&&pause_menu)pause_menu->queue_ascii(battle->ascii);
+#if PORT_TITLE == 14
+            if(pass.kind==SceneDrawKind::AsciiOuter&&!append_overlay(battle->ascii))return fail("battle overlay queue failed");
+#endif
             if(!battle->draw(renderer,pass.kind
 #if PORT_TITLE == 14
             ,camera_published
@@ -996,8 +1476,17 @@ bool GameSession::draw(AnmRenderer& renderer,AsciiText* overlay) {
 #if PORT_TITLE == 14
         if(perspective_scope.failed)return fail("TH14 worker failed during perspective publication");
 #endif
+#if PORT_TITLE == 14
+        if(overlay&&pass.kind==SceneDrawKind::AsciiOuter&&!title&&!(battle_attached&&battle)&&
+           !overlay->draw(renderer,0,compositor.full_camera,compositor.play_camera))return fail("frame statistics draw failed");
+#else
         if(overlay&&pass.kind==SceneDrawKind::AsciiOuter&&!overlay->draw(renderer,0,compositor.full_camera,compositor.play_camera))return fail("frame statistics draw failed");
+#endif
     }
+#if PORT_TITLE == 14
+    // Native Main46a3c4/46a7d4/46a96f restores full after callback traversal.
+    renderer.upload_camera(compositor.full_camera);
+#endif
     renderer.flush();
     return true;
 }

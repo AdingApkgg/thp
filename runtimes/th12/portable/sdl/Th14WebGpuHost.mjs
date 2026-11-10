@@ -117,7 +117,7 @@ struct Output{@location(0) color:vec4f,@builtin(frag_depth) depth:f32};
 
   pipeline(p,instanced=false) {
     const format = p[1]?this.depths.get(p[1]).format:null;
-    const key = JSON.stringify([p[3],...p.slice(4,13),format,instanced]);
+    const key = JSON.stringify([p[3],...p.slice(4,13),p[19],format,instanced]);
     if (this.pipelines.has(key)) return this.pipelines.get(key);
     const factors = ['zero','one','src','one-minus-src','src-alpha','one-minus-src-alpha','dst-alpha','one-minus-dst-alpha','dst','one-minus-dst','src-alpha-saturated'];
     const operations = ['add','subtract','reverse-subtract','min','max'];
@@ -126,7 +126,10 @@ struct Output{@location(0) color:vec4f,@builtin(frag_depth) depth:f32};
     if (p[6]) {
       const factor = (value,alpha) => alpha && (value===2||value===3)?factors[value+2]:
         alpha&&(value===8||value===9)?factors[value-2]:alpha&&value===10?'one':factors[value];
-      const component = alpha => ({srcFactor:p[9]>=3?'one':factor(p[7],alpha),dstFactor:p[9]>=3?'one':factor(p[8],alpha),operation:operations[p[9]]});
+      const component = alpha => {
+        const separate=alpha&&!!(p[19]&1),src=separate?(p[19]>>>1)&15:p[7],dst=separate?(p[19]>>>5)&15:p[8],op=separate?(p[19]>>>9)&7:p[9];
+        return {srcFactor:op>=3?'one':factor(src,alpha),dstFactor:op>=3?'one':factor(dst,alpha),operation:operations[op]};
+      };
       target.blend={color:component(false),alpha:component(true)};
     }
     const descriptor = {layout:'auto',

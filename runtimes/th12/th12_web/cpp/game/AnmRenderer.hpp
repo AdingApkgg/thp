@@ -16,6 +16,10 @@ public:
     Vec3 fog_origin{},fog_channels{160,160,160};float fog_start=1000;
     bool tint_enabled=false;u32 tint=0x80808080;
     int draw(AnmVm& vm);
+#if PORT_TITLE == 14
+    u32 render_width=640,render_height=480;
+    int draw_transition_type0(AnmVm& vm);
+#endif
     int draw_ascii_sprite(AnmVm& vm);
     int draw_ripple(AnmVm& vm);
     int draw_layer(AnmVm* first);
@@ -27,6 +31,9 @@ public:
     bool clear_target(u32 color,const GraphicsViewport* rect=nullptr,u32 flags=3){flush();return graphics.clear_target(color,rect,flags);}
     void set_viewport(const GraphicsViewport& value){flush();viewport=value;graphics.set_viewport(value);}
     void set_camera(SceneCamera&,bool screen);
+#if PORT_TITLE == 14
+    void upload_camera(const SceneCamera&);
+#endif
 private:
     ZunGraphics& graphics;
     std::vector<AnmVertex> vertices;
@@ -50,6 +57,10 @@ public:
     int draw_th14_screen_strip(AnmVm&,const AnmVertex*,u32 count);
 private:
     bool* stage_depth_cache=nullptr;
+    friend struct AnmQuadProbeTh14;
+    Matrix4 th14_world{};
+    // Native shared screen quad. Other producers/lifetime remain candidate-only.
+    AnmVertex th14_quad[4]={{{},1,0,{0,0}},{{},1,0,{1,0}},{{},1,0,{0,1}},{{},1,0,{1,1}}};
     int draw_world_strip(AnmVm& vm,const AnmWorldVertex* data,u32 count,int depth_override=-1);
 #endif
 };

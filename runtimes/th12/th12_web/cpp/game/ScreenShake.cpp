@@ -1,7 +1,15 @@
 #include "ScreenShake.hpp"
 namespace th11 {
-i32 ScreenShake::update(Rng& rng,Vec2& offset,bool stopped,u32* last_rng_return,bool* used_rng) noexcept {
+i32 ScreenShake::update(Rng& rng,Vec2& offset,bool stopped,u32* last_rng_return,bool* used_rng
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    ,const ControlPublicationTh14* live_control
+#endif
+) noexcept {
     if(stopped)return 7;
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    //46cf7a..46cfa0: only the phased callback has this Control predicate.
+    if(phased&&live_control&&live_control->phased_shake_blocked())return 1;
+#endif
     timer.tick();
     if(phased){
         const i32 middle=wrapping_add(ramp,hold),last=wrapping_add(middle,fall);float fraction=1;

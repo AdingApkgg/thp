@@ -40,6 +40,7 @@ public:
     void set_viewport(const GraphicsViewport& v)override{viewport(v);}
     void viewport(const GraphicsViewport& v){backend.viewport({v.x,v.y,v.width,v.height,v.near_depth,v.far_depth});}
     void clear(u32 color,bool clear_depth=true){backend.clear(clear_depth?3:1,color,1,0);}
+    bool backbuffer_has_alpha()const noexcept override{auto i=textures.find(screen);return i!=textures.end()&&i->second.image.format==touhou::graphics::PixelFormat::Bgra8;}
     void present(){backend.present(screen);}
 };
 }

@@ -46,7 +46,16 @@ bool LaserManager::change_appearance(LaserLine& l,i32 script){return laser_line_
 bool LaserManager::cut(LaserLine& l,Vec3 p,Vec3 size,bool reward,bool skip){return laser_line_cut_rectangle(l,p,size,reward,skip,*this)>=0;}
 bool LaserManager::cut_infinite(LaserInfinite& l,Vec3 p,Vec3 size,bool reward,bool skip){return laser_infinite_cut_rectangle(l,p,size,reward,skip,*this)>=0;}
 bool LaserManager::update(bool paused,bool frozen){
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
+    if(paused)return true;
+    //43a6dd zeros the global before entering43a570. sync copies port
+    //world fields; preserve that separate cached rate on return.
+    const float saved_anm_rate=animations.rate;if(frozen)animations.rate=0;
+    sync();last_error=0;updating=true;const float saved_rate=rate;
+    if(frozen)rate=0;
+#else
     if(paused)return true;sync();last_error=0;updating=true;const float saved_rate=rate,saved_anm_rate=animations.rate;if(frozen){rate=0;animations.rate=0;}
+#endif
     for(auto* b=first();b;){
         auto* next=b->next;
 #if PORT_TITLE == 16

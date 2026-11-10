@@ -5,6 +5,7 @@
 #include "GameEconomy.hpp"
 #include "StageCompletion.hpp"
 #include "AsciiText.hpp"
+#include "HudScalarTh14.hpp"
 
 namespace th11 {
 struct HudInput {
@@ -27,7 +28,10 @@ struct HudEffects {
 struct HudScore {
     i32 displayed=0,speed=0,high=0,continues=0,high_continues=0;
     u32 flags=0;
-    void update(i32 score) noexcept;
+    i32 displayed_value()const noexcept{return th14_hud_load(displayed);}
+    i32 high_value()const noexcept{return th14_hud_load(high);}
+    i32 continues_value()const noexcept{return th14_hud_load(continues);}
+    void update(const i32& score) noexcept;
 };
 // Native HUD callbacks 41b380, 41c5f0 and 41c660. Owned VMs update at
 // priority 24; manager-owned labels update later at priority 26.
@@ -73,7 +77,7 @@ public:
 #endif
     bool show_spell_time=false;
     bool notice(i32 type,i32 value=0);
-    void prepare_stage();
+    void prepare_stage(i32* current_seconds=nullptr);
     bool start_stage(AnmResource& logo,const HudInput&,bool demo=false,bool initial=true,i32 control_mode=0,i32 continues=0);
     void display_lives(i32 count,i32 fragments);
     bool update(const HudInput&);

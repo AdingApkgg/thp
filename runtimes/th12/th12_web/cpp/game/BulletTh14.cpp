@@ -21,7 +21,7 @@ void move_th14(BulletState& b,float rate,bool half){
     b.position.x+=step(b.velocity.x);b.position.y+=step(b.velocity.y);b.position.z+=step(b.velocity.z);
 }
 void countdown(Timer& timer){
-    timer.previous=timer.current;const float rate=timer.rate?*timer.rate:1.f;
+    timer.previous=timer.current;const float rate=timer.rate?th14_rate_load(timer.rate):1.f;
     const float delta=rate>.99f&&rate<1.01f?1.f:rate;
     timer.fractional-=delta;timer.current=truncate_int(timer.fractional);
 }

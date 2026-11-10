@@ -9,8 +9,12 @@
 namespace th11 {
 #if PORT_TITLE == 14
 class AnmManager;
+struct LoadingTh14;
 struct DialogueEffects;
 struct SceneCamera;
+#if defined(TH14_CPP_STAGE_DECODE)
+struct Timer;class StageCppWorkerTh14;
+#endif
 #endif
 
 struct CoreResources {
@@ -51,6 +55,15 @@ struct StageResourceEffects {
     // are host events, independent of the frame that requested this worker.
     virtual bool begin_stage_worker_wait(bool){return true;}
     virtual bool stage_worker_wait_ready()const{return true;}
+    // Quiesce writers while battle, RNG, replay entry and scratch owners are
+    // still alive. Resource cancellation/retirement happens separately later.
+    virtual void stop_stage_workers()noexcept{}
+    virtual bool stage_cpp_worker_enabled()const{return false;}
+#if defined(TH14_CPP_STAGE_DECODE)
+    virtual bool stage_cpp_decode_enabled()const{return false;}
+#endif
+    virtual bool stage_memory_worker_enabled()const{return false;}
+    virtual ReplayRngRestoreResultTh14 stage_memory_worker(const StageRestoreMemoryTh14&,u32,bool){return ReplayRngRestoreResultTh14::Failed;}
     // Cold-start VM creation belongs to the original priority60 callback.
     virtual bool draw_startup_loading(){return true;}
     virtual bool defer_ending_loading()const{return false;}
@@ -95,6 +108,18 @@ struct StageResourceEffects {
     // Retail456133 begins the replay globals copy after the three RNG stores.
     virtual ReplayRngRestoreResultTh14 stage_replay_snapshot_readiness()const{return ReplayRngRestoreResultTh14::Ready;}
     virtual bool stage_replay_snapshot_committed(){return true;}
+    // Retail controller retirement writes scores before dispatching its
+    // replacement worker. A headless consumer may declare file I/O absent.
+    // Appended to retain all existing virtual method slots and object sizes.
+    virtual bool write_stage_score(const std::vector<u8>&){return true;}
+    // Appended: retain all previous StageResourceEffects virtual slots.
+    virtual bool initial_cpp_worker_enabled()const{return false;}
+    virtual bool begin_initial_cpp_loading(){return true;}
+#if defined(TH14_CPP_STAGE_DECODE)
+    // Appended. Called on the actual resource worker after Bomb/Spell;
+    // providers must perform the music/FPS/clock tail, not report ready early.
+    virtual bool finish_cpp_stage_tail(u32,u32,Timer&,const float*,StageCppWorkerTh14&){return false;}
+#endif
 #endif
 };
 class GameSessionResources {
@@ -107,6 +132,7 @@ public:
     StageResourceEffects* effects=nullptr;
 #if PORT_TITLE == 14
     AnmManager* animation_manager=nullptr;
+    LoadingTh14* loading_owner=nullptr;
 #endif
     u32 stage_number=0;
     std::string error;
@@ -115,11 +141,16 @@ public:
 #if PORT_TITLE == 14
     bool prepare_core();
     bool load_core_job(u32 index);
-#if defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)
+#if (defined(TH14_WEBGPU_BACKEND) && defined(TH14_ARCHIVE_WORKER)) || defined(TH14_CPP_BOOT_WORKER)
     bool load_core_bootstrap();
+#endif
+#if defined(TH14_CPP_BOOT_WORKER)
+    bool complete_cpp_core_bootstrap();
+    bool complete_cpp_title_resources();
 #endif
     bool select_player(u32 character,u32 subtype);
     bool load_selected_player(u32 character,u32 subtype);
+    bool load_selected_player_from(GameResources&,u32 character,u32 subtype);
     void cancel_selected_player()noexcept{selected_player_pending=-1;}
     bool prepare_stage();
     using PhaseResult=StageResourceEffects::DecodeResult;
