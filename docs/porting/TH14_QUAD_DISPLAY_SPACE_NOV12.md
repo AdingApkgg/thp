@@ -25,3 +25,9 @@ Local evidence: `artifacts/th14/quad-display-space-nov12/`, with declared inputs
 The dated quad-display tools cover native geometry/query/submit generation, baseline/candidate normal-provider links, checking, shared-title qualification/adoption and incremental browser construction. They require the retained previous current-core / clean browser build and original game files; start with the parent source. Failed fixture boundaries, old sources and the failed-link directory remain local. Public records contain code, counts and hashes, not assets, VM arrays, binaries or screenshots.
 
 [Summary](th14-quad-display-space-nov12.json)
+
+## Deployment
+
+The corrected game source `28d36fe8f5a75988f22e8f02bcdfc06ef9492493` now serves generation `d7d2156837804bebbae1f2cc47026e4c4a91ec61e9f718b743904bf1274b4a4d` at https://wth.saop.cc/. All39 origin Runtime files match the manifest. Public HTTPS bodies for the new Wasm, loader, shell, manifest and immutable HTML match their hashes and retain COOP/COEP/no-transform. Other unchanged public bodies were not downloaded again; their prior full public check belongs to the preceding generation. Rollback is retained. Browser UI and original-game fidelity remain separately unaccepted.
+
+[Release receipt](th14-quad-display-release-nov12.json)
