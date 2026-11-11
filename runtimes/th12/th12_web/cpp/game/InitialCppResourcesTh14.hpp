@@ -54,6 +54,9 @@ public:
             if(!reader.load_stage_hud_files(stage.stage_number,stage,choice,complete))return failed(reader.error().c_str());
             session.battle->hud.prepare_stage(&session.battle->countdown_seconds);
             session.battle->initialize_initial_pools();
+            // Retail435f22 creates the persistent Pause owner after the empty
+            // bullet/item/laser managers, before435f66 initializes ECL.
+            if(!session.prepare_initial_pause())return false;
             if(!reader.load_stage_timeline_files(stage.stage_number,stage,complete))return failed(reader.error().c_str());
             if(stopping.load(std::memory_order_acquire))return false;
             if(!session.battle->prepare_initial_tail_owners(character,subtype))return failed(session.battle->error.c_str());

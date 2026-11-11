@@ -153,6 +153,9 @@ bool PauseMenu::begin(bool playback){
     menu_animation=menu->id;family(menu_animation,3);sounds.push_back(14);return create_backdrop();
 #else
     replay=playback;transition(1);elapsed.set(0,&animations.rate);sounds.clear();action=PauseAction::None;
+#if PORT_TITLE == 14
+    cursor.disabled_count=0; //448e1a, on every reuse of the persistent owner.
+#endif
 #if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_DECODE)
     if(auto* control=animations.th14_control.get())control->flags|=0x10u; //448e24, before menu129/130.
 #endif

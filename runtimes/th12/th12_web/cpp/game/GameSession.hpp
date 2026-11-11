@@ -171,6 +171,7 @@ public:
 #if PORT_TITLE == 14
 #if defined(TH14_CPP_STAGE_WORKER) && defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
     bool construct_initial_player();
+    bool prepare_initial_pause();
 #endif
     bool prepare_initial_player();
     bool prepare_initial_scene(bool complete);
@@ -228,6 +229,11 @@ private:
     i32 completed_score=0,completed_continues=0;
     u32 initial_stage=1;
     i32 next_continues=0;
+#if PORT_TITLE == 14
+    // Initial loader constructs this owner before ECL. Main borrows it while
+    // paused and returns it here on resume; stage handoffs retain its lifetime.
+    std::unique_ptr<PauseMenu> idle_pause_menu;
+#endif
     float paused_rate=1;
     GameInput menu_input;
     u32 title_idle=0,demo_index=0;

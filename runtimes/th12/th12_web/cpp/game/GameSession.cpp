@@ -314,7 +314,8 @@ void GameSession::reset_state(bool retain_transition) noexcept {
     if(ending&&resources.effects)for(auto& entry:ending->resources)resources.effects->release_animation(entry.second);
     ending.reset();
 #if PORT_TITLE == 14
-    if(pause_menu&&pause_menu->manual_resource){animations.retire_resource(*pause_menu->manual_resource);if(resources.effects)resources.effects->release_animation(*pause_menu->manual_resource);}
+    for(auto* menu:{pause_menu.get(),idle_pause_menu.get()})if(menu&&menu->manual_resource){animations.retire_resource(*menu->manual_resource);if(resources.effects)resources.effects->release_animation(*menu->manual_resource);}
+    idle_pause_menu.reset();
     if(title_manual&&title_manual->manual_resource){animations.retire_resource(*title_manual->manual_resource);if(resources.effects)resources.effects->release_animation(*title_manual->manual_resource);}
     title_manual.reset();
 #endif
@@ -486,6 +487,12 @@ bool GameSession::start_stage(GameResources& source, u32 stage) {
     return activate_stage();
 }
 #if defined(TH14_CPP_STAGE_WORKER) && defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
+bool GameSession::prepare_initial_pause(){
+    if(!StageCppWorkerScopeTh14::owns(this)||!initial_battle_private()||!battle||pause_menu||idle_pause_menu)
+        return fail("invalid private TH14 pause construction");
+    idle_pause_menu=std::make_unique<PauseMenu>(animations,resources.core.text,resources.core.front,scores);
+    return true;
+}
 bool GameSession::construct_initial_player(){
     if(!StageCppWorkerScopeTh14::owns(this)||!initial_battle_private()||pending_core_title||battle||
        !player_selection_valid(state.character,state.subtype))
@@ -1219,6 +1226,10 @@ bool GameSession::update(const GameSessionInput& input) {
 
 bool GameSession::pause() {
     if(state.phase!=GameSessionPhase::stage) return false;
+#if PORT_TITLE == 14
+    if(!pause_menu)pause_menu=std::move(idle_pause_menu);
+    if(!pause_menu)
+#endif
     pause_menu=std::make_unique<PauseMenu>(animations,resources.core.text,resources.core.front,scores);
     pause_menu->selection=state.character*2+state.subtype;pause_menu->difficulty=state.difficulty;pause_menu->stage=state.stage;pause_menu->practice=state.practice;
 #if PORT_TITLE == 14
@@ -1249,6 +1260,10 @@ bool GameSession::pause() {
 }
 
 bool GameSession::open_result(bool completed){
+#if PORT_TITLE == 14
+    if(!pause_menu)pause_menu=std::move(idle_pause_menu);
+    if(!pause_menu)
+#endif
     pause_menu=std::make_unique<PauseMenu>(animations,resources.core.text,resources.core.front,scores);
     pause_menu->selection=state.character*2+state.subtype;pause_menu->difficulty=state.difficulty;pause_menu->stage=state.stage;
     pause_menu->result_score=th14_hud_load(economy.score_units);pause_menu->continues=battle->hud.score.continues;pause_menu->timestamp=recording_timestamp;
@@ -1329,7 +1344,8 @@ bool GameSession::continue_run_th14(){
 #endif
     battle->game_over_requested=false;
     // PauseEnd already interrupts the capture and choice families with 1.
-    pause_menu.reset();state.phase=GameSessionPhase::stage;
+    if(pause_menu)pause_menu->state=0;
+    idle_pause_menu=std::move(pause_menu);state.phase=GameSessionPhase::stage;
     return true;
 }
 #endif
@@ -1346,7 +1362,12 @@ bool GameSession::resume() {
     if(pause_menu){for(const auto id:{pause_menu->background_animation,pause_menu->menu_animation})if(auto* vm=animations.find(id)){
         vm->interrupt(1);if(!vm->child.previous)for(auto* n=vm->child.next;n;n=n->next)n->value->interrupt(1);
     }}
+#if PORT_TITLE == 14
+    if(pause_menu)pause_menu->state=0;
+    idle_pause_menu=std::move(pause_menu);animations.rate=paused_rate;
+#else
     pause_menu.reset();animations.rate=paused_rate;
+#endif
     state.phase=GameSessionPhase::stage;
     return true;
 }
