@@ -153,7 +153,9 @@ const initialized=(async()=>{
  Module.FS.mkdirTree('/savesth11/replay');Module.FS.symlink('/savesth11','/save');
  await mountData();
  let last=performance.now(),ticks=0;
- Module.onGameFrame=(ok,ms,count)=>{if(!ok){error(Error(coreError()));return;}ticks+=count;if(!first){first=true;last=performance.now();ticks=0;emit('first-frame');}const now=performance.now();if(now-last>=1000){emit('frame-health',{fps:ticks*1000/(now-last),maxGapMs:ms});const a=u32(core.th11_audio_statistics(),9);emit('audio-health',{queuedMs:a[4]*1000/44100,minQueuedMs:0,backend:'script',underruns:a[3]});last=now;ticks=0;}if(core.th11_phase()===4)void stop().catch(error);};
+ // TH14 normal menu retirement stops tick_once with phase=finished.
+ // Complete host persistence/cleanup before classifying other false frames.
+ Module.onGameFrame=(ok,ms,count)=>{if(!ok){if(game==='th14'&&core.th11_phase()===4){void stop().catch(error);return;}error(Error(coreError()));return;}ticks+=count;if(!first){first=true;last=performance.now();ticks=0;emit('first-frame');}const now=performance.now();if(now-last>=1000){emit('frame-health',{fps:ticks*1000/(now-last),maxGapMs:ms});const a=u32(core.th11_audio_statistics(),9);emit('audio-health',{queuedMs:a[4]*1000/44100,minQueuedMs:0,backend:'script',underruns:a[3]});last=now;ticks=0;}if(core.th11_phase()===4)void stop().catch(error);};
  emit('ready');
 })().catch(e=>{if((game==='th14'&&th14PageLeaving)||isSupersededRuntimeError(e)){console.debug('Runtime navigation superseded');return false;}error(e);throw e;});
 async function mountData(){
