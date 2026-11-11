@@ -40,3 +40,9 @@ The browser runtime recompiles its sole changed translation unit and relinks145 
 Local evidence: `artifacts/th14/first-present-alpha-localization-nov12/`, including rejected particle-only coverage, embedded quad component, `batch-state/native-v2`, baseline/candidate `checked-v2.json`, `qualified.json`, `gpu-qualified.json`, real Application receipts and browser build. Public files contain source, counts, paths and hashes; assets, raw VM/pixel arrays and binaries stay local.
 
 [Summary](th14-type0-batch-state-nov12.json)
+
+## Deployment
+
+The corrected game source `506b9da9aa7f01bc92dceb105464b60c11d33454` now serves generation `585a338ece4b0d9aaec63f2e90ac83a2a1e4141765baf2df221e7e213d9377bc` at https://wth.saop.cc/. All 39 origin Runtime files match the manifest. The five public HTTPS bodies checked are the new Wasm, loader, shell, manifest and immutable HTML; their hashes and COOP/COEP/no-transform headers match. Unchanged public bodies were not downloaded again. The earlier full public receipt is identified separately. Rollback remains available. The one actual Application/GLES check described above is bounded first-Present evidence; current browser UI and whole-game fidelity remain unaccepted.
+
+[Release receipt](th14-type0-batch-release-nov12.json)
