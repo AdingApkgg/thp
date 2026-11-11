@@ -303,12 +303,16 @@ int AnmRenderer::draw_transition_type0(AnmVm& vm){
         p.alphaTest=true;p.alpha.operation=p.color.operation=ColorOperation::Multiply;p.alpha.first=p.color.first={ArgumentSource::Texture};
 
         p.sourceAlphaBlend=BlendFactor::SourceAlpha;p.destinationAlphaBlend=BlendFactor::One;p.alphaBlendEquation=BlendEquation::Add;
+        blend_mode=10; // Native40ac01 force the next material selection.
 
     }
 
     for(u32 i=0;i<4;++i)if(draw(transition.embedded[i])==-2)return -2;
 
-    if(alpha_pass){flush();p.separateAlphaBlend=false;if(draw(transition.embedded[4])==-2)return -2;flush();}
+    if(alpha_pass){
+        // Retail40ac7f disables separate alpha before material's pending flush.
+        p.separateAlphaBlend=false;if(draw(transition.embedded[4])==-2)return -2;flush();
+    }
 
     return 0;
 
