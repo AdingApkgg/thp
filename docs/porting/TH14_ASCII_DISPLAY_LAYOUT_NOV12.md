@@ -18,3 +18,9 @@ The browser build recompiles only the changed text unit and rehashes/reuses145 o
 Local evidence: `artifacts/th14/ascii-display-layout-nov12/`. Public Git includes source and summary counts/paths/hashes; private observations, assets and binaries stay local. Run builders against their declared pre-change source/provider bindings; they reject overwritten evidence directories.
 
 [Summary](th14-ascii-display-layout-nov12.json)
+
+## Deployment
+
+The corrected game source `9dd1ae4e2c9a4196c9bcd25f6cead5dddd9e6744` now serves generation `68c177851ed75ca0425d8ee77f401524c635ad27c51faedcebb59171c9097b0d` at https://wth.saop.cc/. All 39 origin Runtime files match the manifest. The five public HTTPS bodies checked are the new Wasm, loader, shell, manifest and immutable HTML; their hashes and COOP/COEP/no-transform headers match. Unchanged public bodies were not downloaded again. The earlier full public receipt is identified separately. Rollback remains available. This change adds no actual Application/GLES or browser UI run. The parent rendering evidence remains separately bounded; browser UI and whole-game fidelity remain unaccepted.
+
+[Release receipt](th14-ascii-display-release-nov12.json)
