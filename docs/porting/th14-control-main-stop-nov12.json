@@ -1,0 +1,127 @@
+{
+  "recordedAt": "2026-11-11T17:20:01.960174+00:00",
+  "sourceAdopted": true,
+  "nativeCases": 96,
+  "nativeSnapshots": 192,
+  "cppComparedPasses": 183,
+  "cppNextSupervisorTitleChecks": 9,
+  "oldImplementationMismatches": 360,
+  "candidateMismatches": 0,
+  "baselineDifferenceKinds": {
+    "ordinary-play-time": 90,
+    "timer": 75,
+    "flags": 48,
+    "compositor-updates": 75,
+    "later-player-dispatch": 36,
+    "normal-player-anm-instructions": 18,
+    "replay-cursor": 9,
+    "phase": 9
+  },
+  "controlFlags": [
+    0,
+    4,
+    16,
+    32,
+    64,
+    20,
+    36,
+    68
+  ],
+  "rates": [
+    0,
+    0.5,
+    1.5
+  ],
+  "controlEnabled": [
+    false,
+    true
+  ],
+  "modes": [
+    "ordinary ReimuB Normal Stage1",
+    "original demo0 replay"
+  ],
+  "originalExeSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "nativeActualNodeConstructionAndTraversal": true,
+  "nativeActualWholeControlAndTimer": true,
+  "nativeLaterPlayerAndAnmCallbacksAreDeclaredServices": true,
+  "nativeScoreAndCopyServicesDeclared": true,
+  "cppActualSessionBattleAndCopyUpdates": true,
+  "linkOnlyCopyUpdateObserverForwardsActualBody": true,
+  "normalEngineAccessControl": true,
+  "freshCoreUnits": 141,
+  "browserUnits": 146,
+  "browserWasmSha256": "3adc82472741fe33fdfbc00fc5d28cb94d7cd91972726c643a5770b1ac6d7c27",
+  "legacyPreprocessExactUnits": 6,
+  "demoClockRegressionCases": 14,
+  "overlayRegressionCases": 5,
+  "actualApplication": {
+    "hostFrames": 510,
+    "playerCallbacks": 1,
+    "scriptRng": [
+      39319,
+      2588,
+      4607,
+      0
+    ],
+    "nativeScriptRng": [
+      20713,
+      2612,
+      4607,
+      0
+    ],
+    "differentPixels": 267510,
+    "all32BeforePlayerWordsExactToPrior": true,
+    "canonicalApplicationAndInitialWorkerByteIdenticalBeforeExistingObservers": true,
+    "normalEngineObjects": 145,
+    "fixtureOnlyRelaxedAccessForExistingObserver": true,
+    "workersReturned": 4,
+    "physicalHostsClosed": true,
+    "gpuAndPlatformRetired": true,
+    "audibleOutput": false,
+    "fullReplayAccepted": false
+  },
+  "retainedFirstPresentScriptGap": 24,
+  "retainedOlderFirstPresentDifferentPixels": 282468,
+  "newPrefixDifferentPixels": 267510,
+  "pixelCountChangeNotAcceptedAsCausalImprovement": true,
+  "originalOsRunsAdded": 0,
+  "newFullCampaignRuns": 0,
+  "browserBuildOnly": true,
+  "newBrowserRuntimeExecuted": false,
+  "retainedFixtureFailure": "before_update is dispatched by AnmManager, not direct detached-copy AnmVm::update; first observer counted zero incorrectly. Rejected fixture and297 comparison failures retained; v2 observes actual VM function calls with forwarding link wrapper before engine baseline/candidate comparison.",
+  "sourceChanges": [
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
+      "beforeSha256": "f65f515ba244d632234f4c9fae48849e9dab3af49d2b98c29f9f0be6ee672e5e",
+      "afterSha256": "2019fe983d52f942481b766fc37718592d17f93760d74efe0951b0e1654bec1f"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
+      "beforeSha256": "29b910c40a15a85fd3e49283547a6728e007ea5fdad959120a92654557e5fd6e",
+      "afterSha256": "9aa6afe0b221e0eaadedb3b2b531c0e05d458130f4d342fda2d3fa978e67ea4b"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
+      "beforeSha256": "7e2fe9d69b63fb7a9a671da9b6bed4cda2f938c3c30a202196b3eaac6f224d2c",
+      "afterSha256": "9e2b0093a4a08fe608c55780c1310d83c860e28a6c786836bb435abc81a2e7ab"
+    }
+  ],
+  "completeGame": false,
+  "bindings": {
+    "artifacts/th14/control-main-stop-nov12/native/native.json": "e4a5b1977a2634748f29b60419779ec754c5d0afc5b11ceb67ef8642f84c6b44",
+    "artifacts/th14/control-main-stop-nov12/baseline-v2-result/result.json": "1de5ca53911c6a90c91b1af4dec7dfc8f424204cba2374c3319ce444ae39e1a9",
+    "artifacts/th14/control-main-stop-nov12/candidate-result/result.json": "7b6715a1ff205c67d4018fe94654b05e17717642a8aceed9c53b447a0d43df0e",
+    "artifacts/th14/control-main-stop-nov12/current-core/build.json": "07527c8e73007d43e19158b765666c39248fa2a8f304ed3250b5d31dcaab6b6a",
+    "artifacts/th14/control-main-stop-nov12/candidate/build.json": "07ad3c392144022b90f4b19bbcea7cd0f738cfe3b9b868a7939507e55f49edb8",
+    "artifacts/th14/control-main-stop-nov12/first-present/probe-v2/candidate/build.json": "3aba56746bb50203e4bd1c24a9fd7ba9bd42d746e0f2e9712c0fca243d0916ae",
+    "artifacts/th14/control-main-stop-nov12/first-present/candidate-owner-replay/report.json": "6c28ebfa62253ec6eb7466fb15c689e406bb25e22e395b080f0abac580c5e0c8",
+    "artifacts/th14/control-main-stop-nov12/browser/build.json": "a9161f1adb1359b1a4c84a8edb09330e0b0faa9c4e44e0444a58d5540f4d9467",
+    "artifacts/th14/control-main-stop-nov12/legacy-preprocess/verified.json": "fa28193fd03f2d9280f5ff162745354bb4cdc960f34817250c250c0254c88171",
+    "artifacts/th14/control-main-stop-nov12/demo-regression-result/result.json": "8df68eb768414fe70b3d610b8397526b400160f9339df80a9c201f818d47a261",
+    "artifacts/th14/control-main-stop-nov12/overlay-regression/component-results.json": "d3241d402291df4ee3ab27ff8e39ca4a18c4db0f62ea40f5c66b030e734e5b18",
+    "artifacts/th14/control-main-stop-nov12/natural-result/result.json": "06e434fc6ea25c2f8340e0af225fa8b7be1a72e3f6eda6830772150353ffebfc"
+  },
+  "naturalRegressionCases": 6,
+  "naturalPlayerCallbacks": 23523,
+  "naturalBoundariesExactToPrior": true
+}

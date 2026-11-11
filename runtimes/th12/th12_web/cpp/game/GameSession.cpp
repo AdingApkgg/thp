@@ -1153,7 +1153,11 @@ bool GameSession::update(const GameSessionInput& input) {
         }
         if(!updated) { if(error.empty())error="battle update failed: "+std::to_string(battle->last_error)+" "+battle->error; return false; }
         for(const auto& event:battle->events)if(event.kind==BattleEventKind::BossMusic||(event.kind==BattleEventKind::StageMusic&&!state.demo))scores.settings[0x26+stage_music(event.value,event.kind==BattleEventKind::BossMusic)]=1;
+#if PORT_TITLE == 14
+        if(!state.replay&&battle->stage_active&&battle->th14_control_counted){auto* counter=scores.characters[state.character*2+state.subtype].data()+ScoreFile::play_time_offset;i32 n;std::memcpy(&n,counter,4);if(n<215999999){++n;std::memcpy(counter,&n,4);}}
+#else
         if(!state.replay&&battle->stage_active){auto* counter=scores.characters[state.character*2+state.subtype].data()+ScoreFile::play_time_offset;i32 n;std::memcpy(&n,counter,4);if(n<215999999){++n;std::memcpy(counter,&n,4);}}
+#endif
         if(battle->game_over_requested){
             if(state.phase==GameSessionPhase::paused||state.phase==GameSessionPhase::game_over)return true;
             if(state.replay){

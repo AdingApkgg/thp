@@ -10,6 +10,7 @@ def main():
     p.add_argument('--providers', type=Path, required=True)
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--fixture', type=Path, default=ROOT / 'tools/th14-demo-clock-component-nov12.cpp')
+    p.add_argument('--wrap', action='append', default=[], help='Declared link-only observer; forwards actual engine body')
     args = p.parse_args()
     out = args.out.resolve()
     out.mkdir(parents=True, exist_ok=False)
@@ -31,7 +32,7 @@ def main():
     command = [str(cc), *build['flags'], '-mexec-model=reactor', '-Wl,--no-entry',
                '-Wl,--import-memory', '-Wl,--export-memory', '-Wl,--allow-undefined',
                '-Wl,--initial-memory=67108864', '-Wl,--max-memory=1073741824',
-               '-Wl,-z,stack-size=1048576', str(fixture),
+               '-Wl,-z,stack-size=1048576', *['-Wl,--wrap=' + name for name in args.wrap], str(fixture),
                *[row['object'] for row in build['currentProviders']], '-o', str(out / 'probe.wasm')]
     with (out / 'build.log').open('wb') as log:
         subprocess.run(command, cwd=ROOT, env=dict(os.environ, TEMP=str(out), TMP=str(out), TMPDIR=str(out)),
@@ -40,7 +41,7 @@ def main():
                   flags=build['flags'], fixtureSha256=sha(fixture), fixturePath=fixture.relative_to(ROOT).as_posix(),
                   parentSha256=sha(parent), compilerSha256=sha(cc), wasmSha256=sha(out / 'probe.wasm'),
                   fixtureNormalAccessControl=True, gameObjectsReused=len(build['currentProviders']), command=command,
-                  completeGame=False, toolSha256=sha(Path(__file__)))
+                  linkOnlyObserverSymbols=args.wrap, completeGame=False, toolSha256=sha(Path(__file__)))
     (out / 'build.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf8')
     (out / 'fixture.cpp').write_bytes(fixture.read_bytes())
     print(json.dumps(dict(compiled=True, reused=report['gameObjectsReused'], wasmSha256=report['wasmSha256'])))

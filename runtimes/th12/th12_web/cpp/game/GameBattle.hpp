@@ -124,6 +124,9 @@ public:
     // Native controller+10 is rate-scaled; frame counts physical updates
     // for Replay recording and remains independent of global slowdown.
     Timer th14_control_clock;
+    // Main-only outcome of this update, independent of rate-scaled time.
+    // Native436cc3 counts play time only after the Control early-return gates.
+    bool th14_control_counted=false;
 #endif
     i32 control_frame()const noexcept{
 #if PORT_TITLE == 14
