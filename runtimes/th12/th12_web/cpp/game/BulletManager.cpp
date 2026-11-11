@@ -23,6 +23,21 @@ void move(BulletState& b,float rate,bool half){
     b.position.x=float(double(b.position.x)+step(b.velocity.x));b.position.y=float(double(b.position.y)+step(b.velocity.y));b.position.z=float(double(b.position.z)+step(b.velocity.z));
 }
 }
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
+BulletManager::BulletManager(AnmResource& r,AnmEnvironment& a,BulletWorld& w,u16 id)
+    :BulletManager(r,a,w,id,false){}
+BulletManager::BulletManager(AnmResource& r,AnmEnvironment& a,BulletWorld& w,u16 id,bool defer_storage)
+    :resource(r),animations(a),world(w),file_id(id){
+    rate=animations.rate;
+    th14_visual_rng=&animations.visual_rng;
+    if(!defer_storage)initialize_storage();
+}
+void BulletManager::initialize_storage(){
+    if(storage)return;
+    storage.reset(new BulletState[capacity]);
+    reset();
+}
+#else
 BulletManager::BulletManager(AnmResource& r,AnmEnvironment& a,BulletWorld& w,u16 id):storage(new BulletState[capacity]),resource(r),animations(a),world(w),file_id(id){
     std::memset(storage.get(),0,sizeof(BulletState)*capacity);rate=animations.rate;
 #if PORT_TITLE == 14
@@ -33,6 +48,7 @@ BulletManager::BulletManager(AnmResource& r,AnmEnvironment& a,BulletWorld& w,u16
     reset();
 #endif
 }
+#endif
 bool BulletManager::appearance(BulletState& b,i32 type,i32 color,bool interrupt){
 #if PORT_TITLE == 14
     return appearance_th14(b,type,color,interrupt);

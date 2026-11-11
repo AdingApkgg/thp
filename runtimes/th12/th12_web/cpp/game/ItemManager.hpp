@@ -103,6 +103,11 @@ public:
     i32 th14_ordinary_slot()const noexcept{return th14_ordinary_free?i32(th14_ordinary_free-storage.get()):-1;}
 #endif
 private:
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
+    friend class GameBattle;
+    ItemManager(AnmResource&,AnmEnvironment&,ItemWorld&,u16 file_id,bool defer_storage);
+    void initialize_storage();
+#endif
     std::unique_ptr<ItemState[]> storage;
     AnmResource& resource;AnmEnvironment& animations;ItemWorld& world;u16 file_id;
     bool bind(ItemState&,i32 script);

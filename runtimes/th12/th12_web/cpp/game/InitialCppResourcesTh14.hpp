@@ -35,6 +35,7 @@ public:
             if(auto* control=session.animations.th14_control.get())control->flags&=~0x4000u;
 #endif
             const auto character=u32(session.state.character),subtype=u32(session.state.subtype);
+            if(!session.construct_initial_player())return false;
             if(!session.resources.load_selected_player_from(reader,character,subtype))return failed(session.resources.error.c_str());
             if(!mailbox.publish_file(session.resources.core.players[character],9))return failed("initial player file wait cancelled");
             if(stopping.load(std::memory_order_acquire))return false;
@@ -52,6 +53,7 @@ public:
             const auto choice=u32(session.state.character*2+session.state.subtype);
             if(!reader.load_stage_hud_files(stage.stage_number,stage,choice,complete))return failed(reader.error().c_str());
             session.battle->hud.prepare_stage(&session.battle->countdown_seconds);
+            session.battle->initialize_initial_pools();
             if(!reader.load_stage_timeline_files(stage.stage_number,stage,complete))return failed(reader.error().c_str());
             if(stopping.load(std::memory_order_acquire))return false;
             if(!session.battle->prepare_initial_tail_owners(character,subtype))return failed(session.battle->error.c_str());

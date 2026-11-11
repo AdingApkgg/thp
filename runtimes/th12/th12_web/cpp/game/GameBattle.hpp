@@ -150,6 +150,12 @@ public:
     void (*before_player_update)(const GameBattle&)=nullptr;
 
     GameBattle(GameSessionResources&,AnmManager&,GameEconomy&,SpellRecords&,SceneCompositor&,ClearRecords&);
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
+    GameBattle(GameSessionResources&,AnmManager&,GameEconomy&,SpellRecords&,SceneCompositor&,ClearRecords&,bool defer_initial_pools);
+    void initialize_initial_pools();
+    bool construct_initial_player(i32 character,i32 subtype);
+    bool initial_player_waiting_for_resources=false;
+#endif
     ~GameBattle()override;
     bool initialize(i32 character,i32 subtype,i32 difficulty);
 #if PORT_TITLE == 14

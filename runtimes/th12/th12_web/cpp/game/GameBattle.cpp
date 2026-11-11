@@ -13,12 +13,27 @@
 
 namespace th11 {
 GameBattle::GameBattle(GameSessionResources& r,AnmManager& a,GameEconomy& e,SpellRecords& records,SceneCompositor& scene,ClearRecords& clears)
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
+    :GameBattle(r,a,e,records,scene,clears,false){}
+void GameBattle::initialize_initial_pools(){
+    // First-entry worker 435f07 and 435f10 construct these pools in order.
+    bullets.initialize_storage();
+    items.initialize_storage();
+}
+GameBattle::GameBattle(GameSessionResources& r,AnmManager& a,GameEconomy& e,SpellRecords& records,SceneCompositor& scene,ClearRecords& clears,bool defer_initial_pools)
+#endif
     :resources(r),animations(a),economy(e),compositor(scene),completion(e,clears,*this,&a.rate),
      hud(a,r.core.front,r.core.ascii,e,enemy_commands,completion.state,*this),ascii(r.core.ascii),enemy_animations(a),
      enemies(resources.stage->timeline,enemy_environment,enemy_commands,*this),
      enemy_callbacks(enemy_environment,enemy_commands,*this),
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
+     bullets(resources.core.bullet,a,*this,7,defer_initial_pools),lasers(resources.core.bullet,a,*this,7),
+     items(resources.core.bullet,a,*this,7,defer_initial_pools),
+#else
      bullets(resources.core.bullet,a,*this,(kPortTitle==14||kPortTitle==16)?7:6),lasers(resources.core.bullet,a,*this,(kPortTitle==14||kPortTitle==16)?7:6),
-     items(resources.core.bullet,a,*this,(kPortTitle==14||kPortTitle==16)?7:6),item_rewards(e,*this),spells(*this,e,*this,records,&a.rate) {
+     items(resources.core.bullet,a,*this,(kPortTitle==14||kPortTitle==16)?7:6),
+#endif
+     item_rewards(e,*this),spells(*this,e,*this,records,&a.rate) {
     enemy_commands.animations=&enemy_animations;
     enemy_commands.bullets=&bullets;enemy_commands.lasers=&lasers;
     enemy_commands.manager=&enemies;enemy_commands.cancellation=&cancellation;
@@ -90,12 +105,31 @@ bool GameBattle::prepare_initial_scene(bool complete){
     }
     return true;
 }
+#if defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
+bool GameBattle::construct_initial_player(i32 character,i32 subtype){
+    if(initialized||player||!player_selection_valid(character,subtype))return unavailable("invalid initial player construction");
+    player_input={};player_input.movement.character=character;player_input.movement.subtype=subtype;
+    player_input.movement.enemy_manager=true;
+    player=std::make_unique<PlayerFrame>(resources.core.shots[shot_file_slot(u32(character),u32(subtype))],resources.core.players[character],resources.core.bullet,animations,economy,*this,9,6);
+    player->input=player_input;
+    initial_player_waiting_for_resources=true;
+    return true;
+}
+#endif
 bool GameBattle::prepare_initial_player(i32 character,i32 subtype){
+#if defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
+    if(initialized||!player_selection_valid(character,subtype)||
+       (player&&(!initial_player_waiting_for_resources||player->input.movement.character!=character||player->input.movement.subtype!=subtype)))
+        return unavailable("invalid initial player preparation");
+    if(!player&&!construct_initial_player(character,subtype))return false;
+    initial_player_waiting_for_resources=false;
+#else
     if(initialized||player||!player_selection_valid(character,subtype))return unavailable("invalid initial player preparation");
     player_input={};player_input.movement.character=character;player_input.movement.subtype=subtype;
     player_input.movement.enemy_manager=true;
     player=std::make_unique<PlayerFrame>(resources.core.shots[shot_file_slot(u32(character),u32(subtype))],resources.core.players[character],resources.core.bullet,animations,economy,*this,9,6);
     player->input=player_input;
+#endif
     // Retail44c4c6 resumes after the selected file9 upload; 435e1d then
     // creates options while background/HUD uploads still remain pending.
     if(!player->initialize()){last_error=-601;error="player initialization";return false;}

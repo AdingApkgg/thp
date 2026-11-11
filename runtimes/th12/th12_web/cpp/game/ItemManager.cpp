@@ -3,7 +3,21 @@
 #include "AnmRenderer.hpp"
 #include <cmath>
 namespace th11 {
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
+ItemManager::ItemManager(AnmResource& r,AnmEnvironment& a,ItemWorld& w,u16 id)
+    :ItemManager(r,a,w,id,false){}
+ItemManager::ItemManager(AnmResource& r,AnmEnvironment& a,ItemWorld& w,u16 id,bool defer_storage)
+    :resource(r),animations(a),world(w),file_id(id){
+    if(!defer_storage)initialize_storage();
+}
+void ItemManager::initialize_storage(){
+    if(storage)return;
+    storage.reset(new ItemState[capacity]);
+    reset();
+}
+#else
 ItemManager::ItemManager(AnmResource& r,AnmEnvironment& a,ItemWorld& w,u16 id):storage(new ItemState[capacity]),resource(r),animations(a),world(w),file_id(id){reset();}
+#endif
 void ItemManager::reset()noexcept{std::memset(storage.get(),0,sizeof(ItemState)*capacity);active_count=0;last_error=0;
 #if PORT_TITLE == 16
     th16_spawn_count=th16_cancel_count=th16_generation=0;th16_cancel_free=th16_ordinary_free=nullptr;th16_slowdown=1;th16_attract_timer=0;

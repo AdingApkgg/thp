@@ -82,6 +82,11 @@ public:
     void release(BulletState&)noexcept;
     void reset()noexcept;
 private:
+#if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
+    friend class GameBattle;
+    BulletManager(AnmResource&,AnmEnvironment&,BulletWorld&,u16 file_id,bool defer_storage);
+    void initialize_storage();
+#endif
     std::unique_ptr<BulletState[]> storage;
     AnmResource& resource;AnmEnvironment& animations;BulletWorld& world;u16 file_id;
     std::array<BulletState*,6> heads{},tails{};u32 fire_depth=0;

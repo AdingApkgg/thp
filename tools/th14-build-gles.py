@@ -34,6 +34,13 @@ def main():
     profile = json.loads((repo / 'tools/th14-gles-profile.json').read_bytes())
     sources = [portable / 'Renderer.cpp', *sorted((cpp / 'game').glob('*.cpp'), key=lambda p: p.name),
                *sorted((cpp / 'sdl').glob('*.cpp'), key=lambda p: p.name)]
+    tracked = set(sources)
+    for directory in (cpp, runtime / 'portable'):
+        tracked.update(p for p in directory.rglob('*')
+                       if p.is_file() and p.suffix in {'.hpp', '.h', '.inc', '.js', '.mjs'})
+    tracked.update((Path(__file__).resolve(), repo / 'tools/th14-gles-profile.json'))
+    source_bindings = {p.relative_to(repo).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+                       for p in sorted(tracked)}
 
     def run(flags):
         subprocess.run([sys.executable, str(compiler), *flags], check=True, cwd=runtime, env=env)
@@ -53,9 +60,17 @@ def main():
         run([*profile['flags'], *compiled, *link_flags, '-o', str(output / 'th14-sdl.mjs')])
     for helper in profile['helpers']:
         shutil.copyfile(portable / helper, output / helper)
+    for name, expected in source_bindings.items():
+        if hashlib.sha256((repo / name).read_bytes()).hexdigest() != expected:
+            raise RuntimeError('Source changed during build: ' + name)
     wasm = output / 'th14-sdl.wasm'
-    print(json.dumps(dict(module=str(wasm), units=len(compiled),
-                          sha256=hashlib.sha256(wasm.read_bytes()).hexdigest())))
+    report = dict(module=str(wasm), units=len(compiled), sourceBindings=source_bindings,
+                  objects={str(Path(p).relative_to(output)): hashlib.sha256(Path(p).read_bytes()).hexdigest()
+                           for p in compiled}, flags=profile['flags'], linkFlags=link_flags,
+                  sha256=hashlib.sha256(wasm.read_bytes()).hexdigest(),
+                  loaderSha256=hashlib.sha256((output / 'th14-sdl.mjs').read_bytes()).hexdigest())
+    (output / 'build.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+    print(json.dumps(dict(module=str(wasm), units=len(compiled), sha256=report['sha256'])))
 
 
 if __name__ == '__main__':

@@ -169,6 +169,9 @@ public:
     bool return_to_title();
     bool start_stage(GameResources& source, u32 stage);
 #if PORT_TITLE == 14
+#if defined(TH14_CPP_STAGE_WORKER) && defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
+    bool construct_initial_player();
+#endif
     bool prepare_initial_player();
     bool prepare_initial_scene(bool complete);
     bool finish_loading(bool defer_initial_control=false);

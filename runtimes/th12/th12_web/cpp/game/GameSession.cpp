@@ -485,8 +485,23 @@ bool GameSession::start_stage(GameResources& source, u32 stage) {
     }
     return activate_stage();
 }
+#if defined(TH14_CPP_STAGE_WORKER) && defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
+bool GameSession::construct_initial_player(){
+    if(!StageCppWorkerScopeTh14::owns(this)||!initial_battle_private()||pending_core_title||battle||
+       !player_selection_valid(state.character,state.subtype))
+        return fail("no private TH14 initial player construction");
+    battle=std::make_unique<GameBattle>(resources,animations,economy,spell_records,compositor,clear_records,true);
+    return battle->construct_initial_player(state.character,state.subtype)||fail(battle->error.c_str());
+}
+#endif
 bool GameSession::prepare_initial_player(){
+#if defined(TH14_CPP_STAGE_WORKER) && defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
+    if(state.phase!=GameSessionPhase::loading||pending_core_title||battle_attached||
+       (battle&&(!StageCppWorkerScopeTh14::owns(this)||!battle->initial_player_waiting_for_resources)))
+        return fail("no pending TH14 initial player load");
+#else
     if(state.phase!=GameSessionPhase::loading||pending_core_title||battle_attached||battle)return fail("no pending TH14 initial player load");
+#endif
     {
         // 435da5 initializes starting power after the selected SHT has loaded,
         // for ordinary play as well as before the first replay manager
@@ -494,7 +509,12 @@ bool GameSession::prepare_initial_player(){
         const auto& shot=resources.core.shots[shot_file_slot(u32(state.character),u32(state.subtype))].header;
         economy.power=std::min(state.stage==1&&state.spell_practice_id<0?100:400,shot.max_power_level*100);
     }
+#if defined(TH14_CPP_STAGE_WORKER) && defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
+    if(!battle)battle=std::make_unique<GameBattle>(resources,animations,economy,spell_records,compositor,clear_records,
+        StageCppWorkerScopeTh14::owns(this));
+#else
     battle=std::make_unique<GameBattle>(resources,animations,economy,spell_records,compositor,clear_records);
+#endif
     // Keep the selected mode with the private owner before loader return.
     // The worker clears the transient bits; Main must not rebuild this word.
     battle->enemy_commands.th14_run_flags=state.demo?0x40u:

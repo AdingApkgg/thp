@@ -1,0 +1,140 @@
+{
+  "sourceFiles": [
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
+      "before": "5e00e7d76bd9edba6ad4f7da114f785d9d67b45d4ca289e3bfdb00cc49f54ac6",
+      "after": "c269fb8dea6651ab36d0c059f978d44e3f20e8e5e4169dd1177f3caa1b6bcbad"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
+      "before": "d844d95c2fe06fee1075c53b4747c72c95e542acc715edd63603db54181b6ca1",
+      "after": "b50f85071d972f00be944e46615dccf772d60c1ed43b30998ca72fde3a37a4e1"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
+      "before": "57232e37a563829832ee4a6ae150a3d9ae5c497d71ab7663fed09f9b3a2bbc6e",
+      "after": "a48002fd1bf42a329c913aa372976fff876b1b38ccab4410f682adcdb1dd992d"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/GameSession.hpp",
+      "before": "c51b1fb20d06be797b25b51942db54e018c3694ec1e1bfcad66cd56e033ddb15",
+      "after": "148c754697b90f10346f9e58e6cea46df9bb3b7f51b3f553829a840f81b7fd9a"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/InitialCppResourcesTh14.hpp",
+      "before": "facef753540ee0d0325e6c764c778e97d84be6b1f16667ff3e24a82422daa855",
+      "after": "232a8e74b038bd6461da3734e05273b13a2dccc593bb9c954a9c7828c92fa9fa"
+    }
+  ],
+  "sixSelectionComponent": {
+    "passed": true,
+    "selections": 6,
+    "variantsPerSelection": 2,
+    "wasmSha256": "16c6885710cb6e333660267a91cf301d852ea4741262a4b277bca5753611d947",
+    "platformCalls": 0,
+    "playbackRuns": 0,
+    "scope": "Real Player and shot constructors, stock SHT/ANM parsing, ANM templates and initial Player setup. Early versus late allocation, stable resource references and repeated-prepare rejection.",
+    "originalFullGameAcceptance": false
+  },
+  "otherTitles": [
+    {
+      "title": 12,
+      "source": "GameBattle.cpp",
+      "handshakeEnabled": false,
+      "exact": true,
+      "sha256": "7e48f42f5a2ccc87dde9b5674c35bbcf5aed1e2f8b0db988e87bacf17b27732a"
+    },
+    {
+      "title": 12,
+      "source": "GameSession.cpp",
+      "handshakeEnabled": false,
+      "exact": true,
+      "sha256": "9509ace270ac49fa2fa018fd3fad0c9cd923b0fb0775c4beff8b18dcd543685a"
+    },
+    {
+      "title": 13,
+      "source": "GameBattle.cpp",
+      "handshakeEnabled": false,
+      "exact": true,
+      "sha256": "982f6b8e02f84c89396f543bbf79414450be8f06b0ddd9a4f939cde316a6fb0f"
+    },
+    {
+      "title": 13,
+      "source": "GameSession.cpp",
+      "handshakeEnabled": false,
+      "exact": true,
+      "sha256": "dcccd9b46cb1e095b683e52a81bba72b68c0275765d869aec0cc34c15d08aad8"
+    },
+    {
+      "title": 16,
+      "source": "GameBattle.cpp",
+      "handshakeEnabled": false,
+      "exact": true,
+      "sha256": "d63f41953f1fe8b7e9c84311b351205228f9ca277bcbc89be45eca5a3b6aa9cf"
+    },
+    {
+      "title": 16,
+      "source": "GameSession.cpp",
+      "handshakeEnabled": false,
+      "exact": true,
+      "sha256": "1b94715f8f00d8a4a328dbece815d4f57634efdae1bbaccc08780895800fea06"
+    },
+    {
+      "title": 14,
+      "source": "GameBattle.cpp",
+      "handshakeEnabled": false,
+      "exact": true,
+      "sha256": "16ef4a861eb234ed824fb2e09a6c6e8994501a30a7e23c6feba4f03c4c2a4b68"
+    },
+    {
+      "title": 14,
+      "source": "GameSession.cpp",
+      "handshakeEnabled": false,
+      "exact": true,
+      "sha256": "800be5c26eb80ff385b5135a7f6a1429e22bfef2f3c71e3d19ab1f16a71f7d69"
+    }
+  ],
+  "browser": {
+    "wasmSha256": "32e62384f7c9b3443905068c9e6a7121b1b499309bc107c745d5749cf70f96f7",
+    "url": "http://localhost:8208/?game=th14",
+    "quiet": true,
+    "browser": "Chrome157",
+    "steps": [
+      "launcher start",
+      "demo rendered",
+      "Z cancel demo",
+      "Game Start",
+      "Normal",
+      "Reimu A",
+      "weapon confirmation",
+      "stage1 held-Z shots, enemies and dropped items observed"
+    ],
+    "powerDisplayedAtFinalObservation": "1.04/4.00",
+    "ordinaryInitialPowerMeasured": false,
+    "originalFrameRngMeasured": false,
+    "completeGame": false
+  },
+  "poolLifetimeCases": {
+    "passed": true,
+    "cases": [
+      "destroy deferred pools",
+      "destroy partially constructed pools",
+      "initialize twice preserves owners and live slots, then reset",
+      "ordinary constructor and empty updates"
+    ],
+    "wasmSha256": "db0dc7b446f37c5f3d127b1f9e5ce4e9574f993dd1f1b9780f6c555842842171",
+    "platformFunctionsInvoked": 0,
+    "playbackRuns": 0,
+    "scope": "Actual candidate GameBattle, BulletManager and ItemManager constructor/destructor/reset code. Synchronous component execution."
+  },
+  "nativeCalls": [
+    "44d279 allocate Player",
+    "44d291 constructor44c350",
+    "44d2a5 resource init44c4a0",
+    "435efe HUD",
+    "435f07 bullet manager",
+    "435f10 item manager"
+  ],
+  "originalLoadingRngAccepted": false,
+  "wholeGameAccepted": false
+}
