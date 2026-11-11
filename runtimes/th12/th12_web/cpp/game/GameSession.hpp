@@ -153,6 +153,10 @@ public:
     }
     bool update(const GameSessionInput& input);
 #if PORT_TITLE == 14
+    // Main has already dispatched Overlay8 and acquired initial Control data.
+    bool update_after_initial_overlay(const GameSessionInput& input);
+#endif
+#if PORT_TITLE == 14
     // Retail Supervisor samples41c800 after rendering while SpellManager lives.
     bool sample_spell_clock(double now);
     std::function<u64()> stage_load_clock=[](){return u64(std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now().time_since_epoch()).count());};
@@ -194,6 +198,9 @@ public:
 #endif
     const char* phase_name() const noexcept;
 private:
+#if PORT_TITLE == 14
+    bool update_impl(const GameSessionInput&,bool overlay_updated_by_host);
+#endif
 #if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_WORKER)
     std::shared_ptr<StageCppWorkerTh14> stage_cpp_worker;
 #if defined(TH14_CPP_STAGE_DECODE)

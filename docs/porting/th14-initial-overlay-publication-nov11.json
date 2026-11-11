@@ -1,0 +1,90 @@
+{
+  "updatedAt": "2026-11-11T14:05:37.119363+00:00",
+  "productionSourceAdopted": true,
+  "files": [
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/GameSession.hpp",
+      "beforeSha256": "c8d51e856288ce7d50d779262e8b1107373101cf0a32eb6d288d1b14c158d33a",
+      "afterSha256": "9952f26fe911177cb4343239d253e3edfa39b91bbac29edca33e1732b54bddd6"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
+      "beforeSha256": "bab4471d47d444b171418dc490e4208e4598941669a6cb08c9f560078950ff6c",
+      "afterSha256": "f78c06682159b882451cc9e20036de3191e8e9f2f0bef88ac82e90cef8c586a3"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/sdl/Application.cpp",
+      "beforeSha256": "66a4b9b1da8b2540a4708e0af3a50dcbe7b8af658032649f11baefb443f924fb",
+      "afterSha256": "3891524dd327364005ac6749822649e6df92f2b2f0f31b75f71917bd97407c3a"
+    }
+  ],
+  "nativeRegistryCases": 4,
+  "actualCppControlledCases": 5,
+  "oldCppMissesMidOverlayEnable": true,
+  "newCppMatchesAllDeclaredPublicationCases": true,
+  "noDuplicateOverlay": true,
+  "noDuplicateNormal": true,
+  "noSecondMainUploadPump": true,
+  "noSuccessfulPostOverlayJoin": true,
+  "workerReturnIndependentOfActivation": true,
+  "testFixtureNormalAccessControl": true,
+  "legacyTranslationUnitsExact": 6,
+  "oneActualApplicationFirstPresent": true,
+  "hostFrames": 507,
+  "playerCallbacks": 1,
+  "firstPlayerNonScript112WordsExactToPrior": true,
+  "firstPlayerDifferences": [
+    {
+      "word": 22,
+      "previous": 3459,
+      "current": 39319
+    },
+    {
+      "word": 23,
+      "previous": 2564,
+      "current": 2588
+    }
+  ],
+  "firstPresentRng": [
+    39319,
+    2588,
+    4607,
+    0
+  ],
+  "nativePresentRng": [
+    20713,
+    2612,
+    4607,
+    0
+  ],
+  "scriptCounterGap": 24,
+  "differentPixels": 282468,
+  "allWorkersGpuClockRetired": true,
+  "audibleOutput": false,
+  "fullNativeControlBodyAccepted": false,
+  "allPhysicalInterleavingsAccepted": false,
+  "rngGapClosed": false,
+  "completeGame": false,
+  "bindings": {
+    "artifacts/th14/initial-overlay-publication-nov11/other-titles.json": "b8ff7867cd1155a2e6170e5805328bee5768ab99fd2cb8e0a1fe5f995f86395f",
+    "artifacts/th14/initial-overlay-publication-nov11/first-present/candidate-owner-replay/report.json": "51377e772f38828983968b6ffccf6cc755be8ce6efaef86a0e9d956bbb50ca04",
+    "artifacts/th14/initial-overlay-publication-nov11/first-present/candidate-owner-replay/observations.u32": "873febf6da8060174b16ff63f180c65d14a5c74b59a79d8c4ccb5ccf8fc59c1a",
+    "artifacts/th14/initial-overlay-publication-nov11/fresh-component-v2/build.json": "eb66379ce418a86a2248e30b3fae25ab43391412fb658d119952ead2df7c9d9a",
+    "artifacts/th14/initial-overlay-publication-nov11/fresh-component-v2/component-results.json": "26bb49c8e43154025cc05820d35a1c861e015422dcb9f61283de5e1eeed4a313",
+    "artifacts/th14/initial-overlay-publication-nov11/fresh-component-v2/raw-results.json": "cf56216fa8107e8cc8bf473b760a62dbd2d55c0ce2006a90634421c294ee4182",
+    "artifacts/th14/initial-overlay-publication-nov11/fresh-native.json": "95ff46116d22259ee00e36d3c618bd87d402e55a68535871db9e66fbe9742458",
+    "artifacts/th14/initial-overlay-publication-nov11/browser/build.json": "f67ec3ccede7110962b00c7ec7ed55389ab8a192c71a69784a43d407849d6e10"
+  },
+  "freshSourceOnlyRegression": true,
+  "freshGameUnitsCompiled": 141,
+  "priorArtifactObjectsUsed": false,
+  "gameSessionBytes": 342984,
+  "testedApplicationMethodsByteMatch": true,
+  "testedLoadingBranchByteMatch": true,
+  "browserCompiledUnits": 146,
+  "browserWasmSha256": "132df01b355727155d6c50309f6a9d02955d5df4702cce4b66456c3d1a2add73",
+  "unverifiedPublicationWindows": [
+    "After Control11 before later gameplay callbacks",
+    "After normal ANM29 before Draw callbacks"
+  ]
+}

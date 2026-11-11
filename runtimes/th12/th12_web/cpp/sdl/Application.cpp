@@ -681,9 +681,8 @@ struct Application:StageResourceEffects
         }
         return true;
     }
-    bool pump_cpp_initial_upload(){
+    bool poll_cpp_initial_completion(bool reap_terminal=true){
         if(!initial_cpp_resources)return true;
-        if(!pump_cpp_initial_upload_chunk())return false;
         const auto status=initial_cpp_resources->poll();
 #if defined(TH14_CPP_STAGE_DECODE)
         if(!initial_cpp_resources->control_ready()){
@@ -692,8 +691,10 @@ struct Application:StageResourceEffects
             error="TH14 initial worker returned without Control enable: "+initial_cpp_resources->error_after_join();return false;
         }
         if(status!=ReplayRngRestoreResultTh14::Waiting){
-            initial_cpp_resources->join();
-            if(status!=ReplayRngRestoreResultTh14::Ready){error="TH14 initial worker failed after data publication";return false;}
+            if(status!=ReplayRngRestoreResultTh14::Ready){initial_cpp_resources->join();error="TH14 initial worker failed after data publication";return false;}
+            // Reaping remains a Main resource-poll job. The Control11 data
+            // handoff after Overlay8 must not add a thread wait to this pass.
+            if(reap_terminal)initial_cpp_resources->join();
         }
 #else
         if(status==ReplayRngRestoreResultTh14::Waiting)return true;
@@ -720,6 +721,11 @@ struct Application:StageResourceEffects
         // until its independent return/reap boundary; activation needs no join.
         initial_statistics_reset=true;
         initial_decode_complete=true;initial_upload_waiting=false;return true;
+    }
+    bool pump_cpp_initial_upload(){
+        if(!initial_cpp_resources)return true;
+        if(!pump_cpp_initial_upload_chunk())return false;
+        return poll_cpp_initial_completion();
     }
 #endif
     void cancel_cpp_boot_resources(){
@@ -1833,6 +1839,17 @@ struct Application:StageResourceEffects
                     title_entry_advanced=true;
                 }
             }
+            bool initial_stage_overlay_updated=false;
+#if defined(TH14_CPP_INITIAL_LOADING) && defined(TH14_CPP_STAGE_DECODE)
+            if(!title_entry_advanced&&boot_stage_owner&&initial_cpp_resources){
+                // Overlay8 may overlap the worker's Control11 enable store.
+                // Read completion again at this callback boundary, without
+                // running Main's resource pump or an ANM update twice.
+                if(!session.animations.update(true)){error=session.animations.last_error_text();return false;}
+                initial_stage_overlay_updated=true;
+                if(!poll_cpp_initial_completion(false))return false;
+            }
+#endif
             bool initial_stage_entry_advanced=false;
             if(boot_stage_owner&&boot_upload_index==boot_uploads.size()&&!initial_upload_waiting){
                 // The worker clears Control+80 bit4 after its final upload.
@@ -1849,13 +1866,15 @@ struct Application:StageResourceEffects
                 reset_entry_frame_statistics();audio.effects.reset();
                 if(!play_stage_music(session.state.stage,true))return false;
                 const GameSessionInput input{held,0,0,pause_key,bool(held&0x100),bool(held&0x2),frame_statistics.fps};
-                if(!session.update(input)){error=session.error;return false;}
+                const bool updated=initial_stage_overlay_updated?session.update_after_initial_overlay(input):session.update(input);
+                if(!updated){error=session.error;return false;}
                 session.battle->th14_current_music=audio.current_music();
                 if(!audio_events()||!text_events())return false;
                 initial_stage_entry_advanced=true;
                 std::printf("[loading14] initial worker ready; control callbacks attached\n");
             }
-            if(!title_entry_advanced&&!initial_stage_entry_advanced&&(!session.animations.update(true)||!session.animations.update(false))){error="TH14 loading ANM update failed";return false;}
+            if(!title_entry_advanced&&!initial_stage_entry_advanced&&
+               ((!initial_stage_overlay_updated&&!session.animations.update(true))||!session.animations.update(false))){error="TH14 loading ANM update failed";return false;}
             if(signature_ready){
                 if(session.animations.references(boot_signature)){error="TH14 sig still referenced after ANM retirement";return false;}
                 graphics.unload(boot_signature);renderer.invalidate();boot_signature={};

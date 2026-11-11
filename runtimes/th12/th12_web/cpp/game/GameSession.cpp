@@ -708,7 +708,17 @@ bool GameSession::save_replay(const char* name,std::vector<u8>& output,bool term
     return snapshot.save(name,th14_hud_load(economy.score_units),reached,battle->hud.score.continues,slowdown,output);
 }
 
+#if PORT_TITLE == 14
+bool GameSession::update(const GameSessionInput& input){return update_impl(input,false);}
+bool GameSession::update_after_initial_overlay(const GameSessionInput& input){
+    if(state.phase!=GameSessionPhase::loading||!pending_initial_control_activation)
+        return fail("TH14 initial overlay handoff without pending Control");
+    return update_impl(input,true);
+}
+bool GameSession::update_impl(const GameSessionInput& input,bool overlay_updated_by_host) {
+#else
 bool GameSession::update(const GameSessionInput& input) {
+#endif
     if(!error.empty()) return false;
     if(state.phase==GameSessionPhase::finished) return true;
 #if PORT_TITLE == 14
@@ -720,10 +730,10 @@ bool GameSession::update(const GameSessionInput& input) {
     if(state.phase==GameSessionPhase::ending&&ending&&!ending->active){
         if(!open_results())return false;
     }
-    bool initial_overlay_already_updated=false;
+    bool initial_overlay_already_updated=overlay_updated_by_host;
     if(state.phase==GameSessionPhase::loading&&pending_initial_control_activation){
         // The ready worker enables Control11; overlay ANM8 still precedes it.
-        if(!animations.update(true))return fail("TH14 initial activation overlay update failed");
+        if(!initial_overlay_already_updated&&!animations.update(true))return fail("TH14 initial activation overlay update failed");
         pending_initial_control_activation=false;
         if(!activate_stage())return false;
         initial_overlay_already_updated=true;
