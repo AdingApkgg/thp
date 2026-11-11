@@ -1,0 +1,284 @@
+{
+  "passed": true,
+  "gameSourceCommit": "b7281bca84cd9619b3f789cf012124fad313377d",
+  "cases": [
+    {
+      "name": "rate1-open",
+      "rate": 1,
+      "frozenFlags": 0,
+      "finishBeforeUpdate": 40,
+      "frames": 161,
+      "comparedWords": 140346,
+      "mismatchedFrames": 0,
+      "mismatchedWords": 0,
+      "differences": []
+    },
+    {
+      "name": "rate1-bit2",
+      "rate": 1,
+      "frozenFlags": 2,
+      "finishBeforeUpdate": 40,
+      "frames": 161,
+      "comparedWords": 140346,
+      "mismatchedFrames": 0,
+      "mismatchedWords": 0,
+      "differences": []
+    },
+    {
+      "name": "rate1-bits3",
+      "rate": 1,
+      "frozenFlags": 3,
+      "finishBeforeUpdate": 40,
+      "frames": 161,
+      "comparedWords": 126105,
+      "mismatchedFrames": 0,
+      "mismatchedWords": 0,
+      "differences": []
+    },
+    {
+      "name": "rate1-bits7",
+      "rate": 1,
+      "frozenFlags": 7,
+      "finishBeforeUpdate": 40,
+      "frames": 161,
+      "comparedWords": 126105,
+      "mismatchedFrames": 0,
+      "mismatchedWords": 0,
+      "differences": []
+    },
+    {
+      "name": "rate-half-bits3",
+      "rate": 0.5,
+      "frozenFlags": 3,
+      "finishBeforeUpdate": 40,
+      "frames": 161,
+      "comparedWords": 118530,
+      "mismatchedFrames": 0,
+      "mismatchedWords": 0,
+      "differences": []
+    },
+    {
+      "name": "rate-onehalf-bit2",
+      "rate": 1.5,
+      "frozenFlags": 2,
+      "finishBeforeUpdate": 40,
+      "frames": 161,
+      "comparedWords": 153981,
+      "mismatchedFrames": 0,
+      "mismatchedWords": 0,
+      "differences": []
+    },
+    {
+      "name": "rate-zero-open",
+      "rate": 0,
+      "frozenFlags": 0,
+      "finishBeforeUpdate": 40,
+      "frames": 161,
+      "comparedWords": 49749,
+      "mismatchedFrames": 0,
+      "mismatchedWords": 0,
+      "differences": []
+    }
+  ],
+  "snapshotFrames": 1127,
+  "comparedWords": 855162,
+  "wordsPerVm": 303,
+  "native": {
+    "cases": [
+      {
+        "name": "rate1-open",
+        "rate": 1.0,
+        "frozenFlags": 0,
+        "finishBeforeUpdate": 40,
+        "frames": 160,
+        "freezeBegin": 20,
+        "freezeEnd": 60,
+        "byteOffset": 0,
+        "rootHandle": 16382,
+        "byteLength": 561384,
+        "remainingVms": 0
+      },
+      {
+        "name": "rate1-bit2",
+        "rate": 1.0,
+        "frozenFlags": 2,
+        "finishBeforeUpdate": 40,
+        "frames": 160,
+        "freezeBegin": 20,
+        "freezeEnd": 60,
+        "byteOffset": 561384,
+        "rootHandle": 16382,
+        "byteLength": 561384,
+        "remainingVms": 0
+      },
+      {
+        "name": "rate1-bits3",
+        "rate": 1.0,
+        "frozenFlags": 3,
+        "finishBeforeUpdate": 40,
+        "frames": 160,
+        "freezeBegin": 20,
+        "freezeEnd": 60,
+        "byteOffset": 1122768,
+        "rootHandle": 16382,
+        "byteLength": 504420,
+        "remainingVms": 0
+      },
+      {
+        "name": "rate1-bits7",
+        "rate": 1.0,
+        "frozenFlags": 7,
+        "finishBeforeUpdate": 40,
+        "frames": 160,
+        "freezeBegin": 20,
+        "freezeEnd": 60,
+        "byteOffset": 1627188,
+        "rootHandle": 16382,
+        "byteLength": 504420,
+        "remainingVms": 0
+      },
+      {
+        "name": "rate-half-bits3",
+        "rate": 0.5,
+        "frozenFlags": 3,
+        "finishBeforeUpdate": 40,
+        "frames": 160,
+        "freezeBegin": 20,
+        "freezeEnd": 60,
+        "byteOffset": 2131608,
+        "rootHandle": 16382,
+        "byteLength": 474120,
+        "remainingVms": 0
+      },
+      {
+        "name": "rate-onehalf-bit2",
+        "rate": 1.5,
+        "frozenFlags": 2,
+        "finishBeforeUpdate": 40,
+        "frames": 160,
+        "freezeBegin": 20,
+        "freezeEnd": 60,
+        "byteOffset": 2605728,
+        "rootHandle": 16382,
+        "byteLength": 615924,
+        "remainingVms": 0
+      },
+      {
+        "name": "rate-zero-open",
+        "rate": 0.0,
+        "frozenFlags": 0,
+        "finishBeforeUpdate": 40,
+        "frames": 160,
+        "freezeBegin": 20,
+        "freezeEnd": 60,
+        "byteOffset": 3221652,
+        "rootHandle": 16382,
+        "byteLength": 198996,
+        "remainingVms": 1
+      }
+    ],
+    "wordsPerVm": 303,
+    "actualNativeFactory": true,
+    "actualNativeRegistryUpdates": true,
+    "actualNativeDeferredInterrupt": true,
+    "actualNativePooledRetirement": true,
+    "declaredInitialPoolCapacity": 64,
+    "callbackOrder": [
+      "Overlay8:47e7f0->47e6c0",
+      "Normal29:47e7c0->47e5e0"
+    ],
+    "originalCallbackRegistrationsAndMainTraversal": true,
+    "initialRng": [
+      12345,
+      0,
+      54321,
+      0
+    ],
+    "controlOwnerPresent": true,
+    "controlFlagsOffset": 128,
+    "controlFlagProducerDeclared": true,
+    "finishWhileFrozen": true,
+    "rateValues": [
+      0.0,
+      0.5,
+      1.0,
+      1.5
+    ],
+    "poolExhaustionAllowed": false,
+    "physicalSchedulingAccepted": false,
+    "graphicsOrAudioDevicesOpened": 0,
+    "completeGame": false,
+    "originalSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+    "asciiSha256": "fc1c2295fda07140b475b2ddd45d221920534e4a011c529e76578609d69a9284",
+    "snapshotsSha256": "3f02fe8b884bcc2ae04bc95b9d6835a0bb4c9ff1c361f1a9916a612241ec317b",
+    "toolSha256": "a7b3f353c8b5ee32032f90d9e65abc4efc22bc72d9276b53b7ca2bb368c1f7eb",
+    "loaderSha256": "3400cd62591f77c552e07fffe438db344ccb7fcfceffca4fef61441ea3d4cbbe",
+    "serializerSha256": "c7866f2c3d6e030bae1e4c5153b196f7500436b43e710fc181730bf087a3f9cc"
+  },
+  "negativeControl": {
+    "kind": "Ignore declared Control flags on C++ side",
+    "accepted": false,
+    "cases": [
+      {
+        "name": "rate1-open",
+        "mismatchedFrames": 0,
+        "mismatchedWords": 0
+      },
+      {
+        "name": "rate1-bit2",
+        "mismatchedFrames": 0,
+        "mismatchedWords": 0
+      },
+      {
+        "name": "rate1-bits3",
+        "mismatchedFrames": 141,
+        "mismatchedWords": 9875
+      },
+      {
+        "name": "rate1-bits7",
+        "mismatchedFrames": 141,
+        "mismatchedWords": 9875
+      },
+      {
+        "name": "rate-half-bits3",
+        "mismatchedFrames": 141,
+        "mismatchedWords": 8660
+      },
+      {
+        "name": "rate-onehalf-bit2",
+        "mismatchedFrames": 0,
+        "mismatchedWords": 0
+      },
+      {
+        "name": "rate-zero-open",
+        "mismatchedFrames": 0,
+        "mismatchedWords": 0
+      }
+    ]
+  },
+  "currentGameObjects": 141,
+  "normalAccessControl": true,
+  "rateZeroRemainingVm": 1,
+  "originalHandlesRegistryAndBothRngCompared": true,
+  "controlFlagProducerDeclared": true,
+  "physicalWorkerOrBrowserSlowdownAccepted": false,
+  "audioGraphicsDevicesOpened": 0,
+  "fullReplayRuns": 0,
+  "gameCodeChanged": false,
+  "completeGame": false,
+  "retainedFirstPresentDifferences": {
+    "scriptCalls": 24,
+    "pixels": 282468
+  },
+  "bindings": {
+    "artifacts/th14/loading-control-lifecycle-nov11/native/native.json": "3c2f7ab7b1e0eae3efcaae5a7bd85beb896b7cc47e1103a46555f061998b1d4c",
+    "artifacts/th14/loading-control-lifecycle-nov11/native/snapshots.u32": "3f02fe8b884bcc2ae04bc95b9d6835a0bb4c9ff1c361f1a9916a612241ec317b",
+    "artifacts/th14/loading-control-lifecycle-nov11/cpp/build.json": "50877934a4fabddf03801f7f4b7dd8f671a6533666cefad5482c64b86c2ad310",
+    "artifacts/th14/loading-control-lifecycle-nov11/cpp/probe.wasm": "67784e8ae0ec35ffd13d1364bfdd663901edb80ea0d770e23e387d924a677e77",
+    "artifacts/th14/loading-control-lifecycle-nov11/final/result.json": "f337737ce7cf337fc658c4bcc072abcac3539e2da7a6e591a1bfa4411a447145",
+    "artifacts/th14/loading-control-lifecycle-nov11/rejected-ignore-control/result.json": "1ec895b4dfb9daa13b61bc8c8a775d79d584925ad8a5587ddebb01687cc238bd",
+    "tools/th14-loading-control-native-nov11.py": "a7b3f353c8b5ee32032f90d9e65abc4efc22bc72d9276b53b7ca2bb368c1f7eb",
+    "tools/th14-build-loading-control-nov11.py": "be2f2cb74da8cba56cd70625d3da81b022adf84d766d9330f0c3dde117ee32b5",
+    "tools/th14-run-loading-control-nov11.mjs": "6493f5797c12e5262129ffe229fa86f8a2bd2bd8203f7196f2531536481e72aa"
+  }
+}
