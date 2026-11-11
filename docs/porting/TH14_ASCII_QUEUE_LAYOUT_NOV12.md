@@ -29,3 +29,9 @@ Native/C++ particle inventories21/20 are consistent with one extra24-call partic
 Local evidence: `artifacts/th14/ascii-queue-layout-nov12/`, including fresh providers, rejected oracle/shared-guard attempts, comparisons, Application terminal receipt and browser build. Public Git contains source and counts/paths/hashes; assets, raw VM/pixel observations, saves and binaries stay local. Builders use declared pre-change/provider inputs and preserve existing evidence directories.
 
 [Summary](th14-ascii-queue-layout-nov12.json) · [Loading boundary](th14-loading-enable-boundary-nov12.json)
+
+## Deployment
+
+Source `6e8dcbb4ce667718d9af3971080728d7a7739498` now serves generation `d9bc19bba2c1423e845dd84f5f59f90f4311d908259868966f59bd3bbb5aad52` at https://wth.saop.cc/. All367 build-source blobs on GitHub match the exact local bytes. All39 origin Runtime files match the manifest. The new Wasm, loader, shell, manifest and immutable HTML have matching public HTTPS body hashes and COOP/COEP/no-transform headers. Other unchanged public bodies were not downloaded again; the earlier full public receipt remains separately scoped. Rollback is retained. This does not add browser UI, all-mode or image acceptance.
+
+[Release receipt](th14-ascii-queue-release-nov12.json)
