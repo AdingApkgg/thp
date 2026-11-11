@@ -9,6 +9,10 @@ struct AsciiStyle {
     i32 font=0;
     bool shadow=false,playfield=false;
     i32 pass=0;
+#if PORT_TITLE == 14
+    // Native request+130/+134: 0 center, 1 leading, 2 trailing.
+    i32 horizontal=1,vertical=1;
+#endif
 };
 struct AsciiRequest {std::string text;Vec3 position;AsciiStyle style;};
 // Original ASCII supervisor 4014e0 / 401670, using the shipped sprite atlas.

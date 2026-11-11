@@ -1,0 +1,22 @@
+"""Verify the fresh-provider ordinary Quit and saved-file regression, without UI overclaims."""
+from pathlib import Path
+import hashlib,importlib,json,struct,sys
+R=Path(__file__).resolve().parents[1];H=R/'artifacts/th14/ascii-queue-layout-nov12';T=H/'title-quit';A=T/'run';OUT=T/'qualified.json';assert not OUT.exists();bindings={}
+def read(p):
+ raw=p.read_bytes();bindings[p.relative_to(R).as_posix()]=hashlib.sha256(raw).hexdigest();return raw
+load=lambda p:json.loads(read(p))
+r=load(A/'report.json');receipt=load(T/'terminal-receipt.json');assert receipt['reaped'] and receipt['exitCode']==0 and receipt['pid']==r['pid'];assert r['terminal'] and r['closed'] and r['stage']=='finished' and r['exitSaveExecuted'] and not r['exception'] and not r['errors'];assert r['ordinaryInputOnly'] and r['actualGles'] and r['quiet'];assert all(w['returned'] and not w['error'] for w in r['workers']);assert all(w['closed'] and w['exitCode']==0 for w in r['physicalWorkers']);assert not r['processClockResolution']['active'] and r['processClockResolution']['beginCalls']==r['processClockResolution']['endCalls']==1
+p=load(A/'platform.json');assert p['gpuContextClosed'] and p['hardwarePixels'] and not p['audibleOutput'];assert not any(p[k] for k in ['stream','window','context','pendingTimers','openFiles']);assert not any(p['liveObjects'].values()) and not any(p['actualNativeGles']['liveObjects'].values());assert all(row['result']==1 for row in p['gpuContextCleanup'])
+b=load(T/'component/build.json');assert b['freshlyCompiledGameUnits']==141 and b['freshlyCompiledHostUnits']==4 and b['normalAccessFor145LinkedProviders'];assert hashlib.sha256(read(T/'component/candidate.wasm')).hexdigest()==r['wasmSha256']==b['wasmSha256'];assert hashlib.sha256(read(T/'component/fixture.cpp')).hexdigest()==b['fixtureSha256'];assert hashlib.sha256(read(R/'tools/th14-run-ascii-queue-title-quit-nov12.mjs')).hexdigest()==r['driverSha256']
+for path,digest in {**b['sourceBindingsByMode']['candidate'],**b['objectBindings']}.items():assert hashlib.sha256(read(R/path)).hexdigest()==digest,path
+actions=load(A/'actions.json');assert [x['held'] for x in actions]==[2,0,2,0];assert [x['label'] for x in actions]==['escape-select-Quit','release-first-Escape','escape-confirm-Quit','release-second-Escape'];assert actions[0]['state'][:5]==[0,1,1,2,0] and actions[2]['state'][:5]==[0,1,1,2,9];states=load(A/'states.json');assert states[-1]['words'][0]==4 and all(s['words'][8]==0 for s in states)
+sys.path.insert(0,str(R/'tools'));codec=importlib.import_module('th-replay-container');encoded=read(A/'save/scoreth14.dat');magic,total,version,flags,packed,unpacked=struct.unpack_from('<6I',encoded);assert magic==0x31344854 and version==5 and total==len(encoded)==packed+24 and unpacked==149076;plain=codec.Lzss(codec.crypt(encoded[24:],0xac,0x35,0x10,packed)).decode(unpacked);assert plain is not None and len(plain)==unpacked
+offset=0
+for i in range(8):
+ kind,checksum,size=struct.unpack_from('<3I',plain,offset);assert (kind,size)==((0x15243,0x5298) if i<7 else (0x15453,0x42c));record=plain[offset:offset+size];assert len(record)==size and sum(record[8:])&0xffffffff==checksum;offset+=size
+assert offset==len(plain);cfg=read(A/'save/th14.cfg');assert len(cfg)==92 and struct.unpack_from('<I',cfg)[0]==0x140002 and cfg[0x22:0x24]==b'\0\0'
+parent=R/'artifacts/th14/current-title-quit-nov12/run';comparison=[]
+for name in ['scoreth14.dat','th14.cfg']:
+ actual=read(A/'save'/name);previous=read(parent/'save'/name);assert actual==previous,name;comparison.append(dict(file=name,bytes=len(actual),sha256=hashlib.sha256(actual).hexdigest(),exactToPriorSameInputCppTitleQuit=True))
+read(Path(__file__));out=dict(actualCurrentCppOrdinaryTitleQuitPassed=True,gameplayCallbacks=0,hostFrames=r['frames'],elapsedSeconds=r['elapsedSeconds'],scoreEncodedBytes=len(encoded),scoreDecodedBytes=len(plain),allEightScoreRecordChecksumsValid=True,configBytes=len(cfg),configVolumesZero=True,savedFiles=comparison,freshGameUnits=141,freshHostUnits=4,allOwnedWorkersGpuTimersAndClockRetired=True,actualApplicationRuns=1,newOriginalGameProcesses=0,normalProviderAccess=True,fixtureOnlyRelaxedAccess=True,browserUiAcceptance=False,nativeOrdinaryTitleQuitAccepted=False,wholeImageAcceptance=False,finalPcmAcceptance=False,completeGame=False,bindings=bindings)
+OUT.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({k:v for k,v in out.items() if k!='bindings'}))

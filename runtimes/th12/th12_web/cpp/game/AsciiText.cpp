@@ -27,10 +27,41 @@ bool AsciiText::draw(AnmRenderer& renderer,i32 pass,SceneCamera& full,SceneCamer
         const bool filtered=(style.font==0&&style.scale.x!=1)||
             ((kPortTitle==13||kPortTitle==14)&&(style.font==3||style.font==5||(kPortTitle==13&&style.font==7)));
         vm.flags=0x140003u|(filtered?0x80000000u:0);
-        vm.scale=style.scale;vm.script_position=request.position;
+        vm.scale=style.scale;
+#if PORT_TITLE == 14
+        Vec3 position=request.position;
+        // Retail40b9b0 stores display-scaled request coordinates. This queue
+        // keeps logical coordinates until draw; device size is fixed per pass.
+        position={float(position.x*display_scale),float(position.y*display_scale),float(position.z*display_scale)};
+        if(style.pass==1){position.x=float(position.x+float(i32(renderer.render_width)/2));position.y=float(position.y+float(i32(float(display_scale*16.f))));}
+        vm.script_position=position;
+#else
+        const Vec3& position=request.position; // Name needed in discarded TH14 branch.
+        vm.script_position=request.position;
+#endif
         const i32 width=style.font==0?spacing:kPortTitle==14?(style.font==1?6:style.font<4?7:12):kPortTitle==13?(style.font<4?7:style.font<6?12:30):style.font==3?12:7;
         float advance=float(double(style.scale.x)*width);
         const i32 height=style.font==0?14:style.font==1?9:kPortTitle==14?(style.font<4?10:16):kPortTitle==13?(style.font<4?10:style.font<6?16:80):style.font==2?10:16;
+#if PORT_TITLE == 14
+        if(style.horizontal==0||style.horizontal==2){
+            if(style.font>=2){
+                for(u8 ch:request.text){
+                    const bool narrow=style.font<4?ch=='.':ch==',';
+                    float step=narrow?float(style.scale.x*4.f):advance;
+                    if(style.horizontal==0)step=float(step*.5f);
+                    vm.script_position.x=float(vm.script_position.x-float(step*display_scale));
+                }
+            }else{
+                float step=float(float(request.text.size())*advance);
+                if(style.horizontal==0)step=float(step*.5f);
+                vm.script_position.x=float(vm.script_position.x-float(step*display_scale));
+            }
+        }
+        if(style.vertical==0||style.vertical==2){
+            float step=float(height);if(style.vertical==0)step=float(step*.5f);
+            vm.script_position.y=float(vm.script_position.y-float(step*display_scale));
+        }
+#endif
         for(u8 ch:request.text){
             if(ch=='\n'){
 #if PORT_TITLE == 14
@@ -39,7 +70,12 @@ bool AsciiText::draw(AnmRenderer& renderer,i32 pass,SceneCamera& full,SceneCamer
 #else
                 vm.script_position.y=float(double(style.scale.y)*height+vm.script_position.y);
 #endif
-                vm.script_position.x=request.position.x;continue;}
+#if PORT_TITLE == 14
+                vm.script_position.x=position.x;
+#else
+                vm.script_position.x=request.position.x;
+#endif
+                continue;}
             if(ch==' '){
 #if PORT_TITLE == 14
                 vm.script_position.x=float(float(display_scale*advance)+vm.script_position.x);
@@ -70,8 +106,8 @@ bool AsciiText::draw(AnmRenderer& renderer,i32 pass,SceneCamera& full,SceneCamer
                 if(style.font<4){
                     switch(ch){case '/':sprite=206;break;case ':':sprite=207;break;case '-':sprite=208;break;case '*':sprite=209;break;case '%':sprite=210;break;case '$':sprite=257;break;case '+':sprite=212;break;case '.':sprite=211;advance=style.scale.x*4.f;break;default:sprite=i32(ch)+(ch>='a'&&ch<='z'?116:148);break;}
                 }else{
-                    vm.script_position.y=request.position.y;
-                    switch(ch){case '/':sprite=249;break;case '.':sprite=250;break;case 's':sprite=251;break;case '*':sprite=252;break;case ',':sprite=253;advance=style.scale.x*4.f;vm.script_position.y=float(float(display_scale*3.f)+request.position.y);break;default:sprite=i32(ch)+191;break;}
+                    vm.script_position.y=position.y;
+                    switch(ch){case '/':sprite=249;break;case '.':sprite=250;break;case 's':sprite=251;break;case '*':sprite=252;break;case ',':sprite=253;advance=style.scale.x*4.f;vm.script_position.y=float(float(display_scale*3.f)+position.y);break;default:sprite=i32(ch)+191;break;}
                 }
             }else if(style.font==2){
                 advance=float(double(style.scale.x)*7);

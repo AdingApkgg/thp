@@ -25,10 +25,11 @@ bool th14_hud_awards(AsciiText& output,const Th14HudAwards& data){
     AsciiStyle style;style.font=4;style.pass=2;char text[64];
     if(data.result){
         grouped(text,u32(data.bonus));style.color=u32(data.result_alpha)<<24|0xffffff;
-        float x=224;for(const char* p=text;*p;++p)x-=float(*p==','?4:12)*.5f;
-        if(!output.add(text,{x,200,0},style))return false;
+        style.horizontal=0;
+        if(!output.add(text,{224,200,0},style))return false;
     }
     if(data.time){
+        style.horizontal=1;
         const auto best=decode_spell_time(data.encoded);
         for(u32 row=0;row<2;++row){
             style.scale={1,1};style.color=u32(data.time_alpha)<<24|(row?0x808080:0xffffff);
@@ -40,10 +41,10 @@ bool th14_hud_awards(AsciiText& output,const Th14HudAwards& data){
 }
 bool th14_hud_counters(AsciiText& output,const GameEconomy& e,const HudScore& score,u8 alpha){
     // Retail 43144a..4318b6 and the grouping helpers 40bb60/40bc70.
-    // Convert native right alignment to the shared queue's left origin using
-    // the original per-character float subtraction, including narrow commas.
+    // Keep the native alignment until display scaling has rounded the origin.
+    // AsciiText then performs the original per-character float subtraction.
     AsciiStyle style;style.font=4;style.color=u32(alpha)<<24|0x808080;char text[64];
-    auto put=[&](float x,float y,bool right=false){if(right)for(const char* p=text;*p;++p)x-=style.scale.x*float(*p==','?4:12);return output.add(text,{x,y,0},style);};
+    auto put=[&](float x,float y,bool right=false){style.horizontal=right?2:1;return output.add(text,{x,y,0},style);};
     return th14_hud_counter_words([&](HudCounterReadTh14 word)->i32{
         using R=HudCounterReadTh14;
         switch(word){
