@@ -24,7 +24,7 @@ const cancelTouches=bindOutsideTouches(document,canvas,()=>core,()=>launched&&op
 const error=reason=>{const message=reason?.stack||String(reason);const node=$('#error');if(node)node.textContent=message;emit('error',{message,error:message});console.error(reason);};
 const u32=(ptr,count)=>new Int32Array(Module.HEAPU8.buffer,ptr,count);
 const sync=(populate=false)=>{const current=storageSync.then(()=>new Promise((r,j)=>Module.FS.syncfs(populate,e=>e?j(e):r())));storageSync=current.catch(()=>{});return current;};
-const coreError=()=>{const p=core.th11_error(),end=Module.HEAPU8.indexOf(0,p);return new TextDecoder().decode(Module.HEAPU8.subarray(p,end<0?p+256:end));};
+const coreError=()=>{const p=core.th11_error(),end=Module.HEAPU8.indexOf(0,p);return new TextDecoder().decode(Module.HEAPU8.slice(p,end<0?p+256:end));};
 async function callCore(name,...args){
  const call=()=>Module.ccall?Module.ccall(name,'number',args.map(()=> 'number'),args,{async:true}):core[name](...args);
  const runtime=Module.th14AsyncRuntime??Module.th14WebGpuRuntime;return runtime?runtime.run(call):call();
