@@ -13,6 +13,11 @@ bool AsciiText::draw(AnmRenderer& renderer,i32 pass,SceneCamera& full,SceneCamer
     // the current camera for the other passes. Glyphs do not reset cameras.
     if(pass==2)renderer.upload_camera(play);
 #endif
+#if PORT_TITLE == 14
+    const float display_scale=float(renderer.render_width)/640.f;
+#else
+    constexpr float display_scale=1.f;
+#endif
     AnmVm vm;vm.initialize();vm.resource=&resource;
     for(const auto& request:requests){
         const auto& style=request.style;if(style.pass!=pass)continue;
@@ -27,8 +32,21 @@ bool AsciiText::draw(AnmRenderer& renderer,i32 pass,SceneCamera& full,SceneCamer
         float advance=float(double(style.scale.x)*width);
         const i32 height=style.font==0?14:style.font==1?9:kPortTitle==14?(style.font<4?10:16):kPortTitle==13?(style.font<4?10:style.font<6?16:80):style.font==2?10:16;
         for(u8 ch:request.text){
-            if(ch=='\n'){vm.script_position.y=float(double(style.scale.y)*height+vm.script_position.y);vm.script_position.x=request.position.x;continue;}
-            if(ch==' '){vm.script_position.x=float(double(advance)+vm.script_position.x);continue;}
+            if(ch=='\n'){
+#if PORT_TITLE == 14
+                // Retail40c2b6 rounds both products before adding the line step.
+                vm.script_position.y=float(float(float(style.scale.y*float(height))*display_scale)+vm.script_position.y);
+#else
+                vm.script_position.y=float(double(style.scale.y)*height+vm.script_position.y);
+#endif
+                vm.script_position.x=request.position.x;continue;}
+            if(ch==' '){
+#if PORT_TITLE == 14
+                vm.script_position.x=float(float(display_scale*advance)+vm.script_position.x);
+#else
+                vm.script_position.x=float(double(advance)+vm.script_position.x);
+#endif
+                continue;}
             i32 sprite=0;
             if(style.font==0)sprite=i32(ch)-32;
             else if(style.font==1)sprite=i32(ch)+0x42;
@@ -53,7 +71,7 @@ bool AsciiText::draw(AnmRenderer& renderer,i32 pass,SceneCamera& full,SceneCamer
                     switch(ch){case '/':sprite=206;break;case ':':sprite=207;break;case '-':sprite=208;break;case '*':sprite=209;break;case '%':sprite=210;break;case '$':sprite=257;break;case '+':sprite=212;break;case '.':sprite=211;advance=style.scale.x*4.f;break;default:sprite=i32(ch)+(ch>='a'&&ch<='z'?116:148);break;}
                 }else{
                     vm.script_position.y=request.position.y;
-                    switch(ch){case '/':sprite=249;break;case '.':sprite=250;break;case 's':sprite=251;break;case '*':sprite=252;break;case ',':sprite=253;advance=style.scale.x*4.f;vm.script_position.y=request.position.y+3.f;break;default:sprite=i32(ch)+191;break;}
+                    switch(ch){case '/':sprite=249;break;case '.':sprite=250;break;case 's':sprite=251;break;case '*':sprite=252;break;case ',':sprite=253;advance=style.scale.x*4.f;vm.script_position.y=float(float(display_scale*3.f)+request.position.y);break;default:sprite=i32(ch)+191;break;}
                 }
             }else if(style.font==2){
                 advance=float(double(style.scale.x)*7);
@@ -62,12 +80,25 @@ bool AsciiText::draw(AnmRenderer& renderer,i32 pass,SceneCamera& full,SceneCamer
             if(!vm.bind_sprite(sprite))return false;
             if(style.shadow){
                 vm.color=(style.color>>25)<<24;
+                #if PORT_TITLE == 14
+                const float shadow_step=float(display_scale*2.f);
+                vm.script_position.x=float(vm.script_position.x+shadow_step);vm.script_position.y=float(vm.script_position.y+shadow_step);
+#else
                 vm.script_position.x=float(double(vm.script_position.x)+2);vm.script_position.y=float(double(vm.script_position.y)+2);
+#endif
                 if(renderer.draw_ascii_sprite(vm)==-2)return false;
+                #if PORT_TITLE == 14
+                vm.script_position.x=float(vm.script_position.x-shadow_step);vm.script_position.y=float(vm.script_position.y-shadow_step);
+#else
                 vm.script_position.x=float(double(vm.script_position.x)-2);vm.script_position.y=float(double(vm.script_position.y)-2);
+#endif
             }
             vm.color=style.color;if(renderer.draw_ascii_sprite(vm)==-2)return false;
+            #if PORT_TITLE == 14
+            vm.script_position.x=float(float(display_scale*advance)+vm.script_position.x);
+#else
             vm.script_position.x=float(double(advance)+vm.script_position.x);
+#endif
         }
     }
 #if PORT_TITLE == 14
