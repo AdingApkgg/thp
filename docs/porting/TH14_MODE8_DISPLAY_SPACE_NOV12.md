@@ -28,3 +28,9 @@ The browser interface timed out twice while connecting to its existing tab. No n
 ## Reproduction and retained evidence
 
 The dated `tools/th14-*-mode8-display-*nov12*` sources and `tools/th14-qualify-mode8-display-space-nov12.py` describe the oracle, independent builds and audits. Local results are under `artifacts/th14/mode8-display-space-nov12/`, including `native.json`, both checked routes, the rejected candidate, source adoption receipt, clean build receipts, and `qualified.json`. The accompanying public JSON contains counts, hashes and limitations only. Game assets, raw VM arrays, executables, Wasm and screenshots are excluded from the public source commit.
+
+## Deployment
+
+The corrected runtime is now served at https://wth.saop.cc/ from game source `33155d334f7c39d9dc433b2b478f846a385a21bc`, generation `ff5314f67f77f15c24f70358f85771dbd6a5e059faf8a59e8d03d3380fddc2f3`. All39 origin files match their manifest. Public HTTPS validation checked34 complete files from Windows, three remaining complete fonts from Arch, and two large fonts through50 exact HTTP206 ranges assembled in order and hashed. Initial timeouts/connection reset remain recorded; no raw downloads were retained. All39 public identities and COOP/COEP/no-transform headers pass. The previous hosted release is retained for rollback. This updates the runtime without changing the website frontend source. Browser UI acceptance remains pending separately.
+
+[Release receipt](th14-mode8-display-release-nov12.json)
