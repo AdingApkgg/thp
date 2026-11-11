@@ -14,7 +14,7 @@
 
 ## 原版解释器验证三个更新的局部转换
 
-在私有 Unicorn 中加载真实 `effect.anm` 与 ASCII fallback，执行原版加载器、脚本拷贝及 `46fe50` 解释器。以真实捕获的第五个 VM 为克隆输入，保留未测 opaque 字，仅将脚本／sprite 指针重新绑定到相同已加载资源，并替换 C++ 观察中不同的五个物理字段。克隆在执行前的全部 303 项均与对应 C++ 观察值相同；这不是恢复完整原版线程前史。
+在私有 Unicorn 中加载真实 `effect.anm` 与 ASCII fallback，执行原版加载器、脚本拷贝及 `46fe50` 解释器。以真实捕获的第五个 VM 为克隆输入，保留未测 opaque 字，仅将脚本与资源指针重新绑定到相同已加载资源；捕获的 sprite 指针保持原值，并替换 C++ 观察中不同的五个物理字段。克隆在执行前的全部 303 项均与对应 C++ 观察值相同；这不是恢复完整原版线程前史。
 
 原版实际执行三次更新后，全部 303 项与原版捕获值相同。两次、四次，以及三次但速率为 0、0.5、1.5、2 的控制均不相同；八例均正常返回，RNG 保持不变。它证明此局部解释器转换足以产生旧病例的年龄／UV 差异，不证明实际缺少的线程调用唯一来自某个函数，也不授权给运行引擎补三帧。
 
@@ -46,3 +46,7 @@
 证据：`artifacts/th14/current-first-present-vm303-nov12/` 与 `artifacts/th14/current-first-present-uv-repaint-nov12/`。默认目录拒绝覆盖已有证据；复核依赖本人原版资产及保留的私有采集。只发布诊断源码、摘要和路径／哈希，不上传原始 VM、游戏资产或截图。
 
 [结果与文件绑定](th14-first-present-uv-causality-nov12.json)
+
+## 指针来源标签更正
+
+旧组件报告将 `+0x30` 的资源指针误称为 sprite 指针。原始报告与工具保留不改写。新增的 `th14-first-present-embedded195-pointer-audit-nov12.py` 在独立目录重新执行八个相同声明序列，并观察原版内存读取：sprite 位于 `+0x2c`，克隆中未重新绑定，八例均没有读取该字段。三次更新仍全部303项相同，其他控制仍失败，RNG 不变。这更正指针来源描述，没有扩展原有局部数学／GPU因果结论，也没有修复实际加载交接。证据：`artifacts/th14/current-first-present-vm303-nov12/embedded195-native-v3-pointer-provenance/qualified.json`。

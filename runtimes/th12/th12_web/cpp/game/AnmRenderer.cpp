@@ -192,7 +192,16 @@ int AnmRenderer::submit_quad(AnmVm& vm,Vec3 (&positions)[4],bool pixel,const u32
 
     for(auto& p:positions){p.x=float(double(p.x)+offset.x);p.y=float(double(p.y)+offset.y);}
 
-    if(pixel)for(auto& p:positions){p.x=float(std::nearbyint(double(p.x))-.5);p.y=float(std::nearbyint(double(p.y))-.5);}
+    if(pixel){
+#if PORT_TITLE == 14
+        // Retail4757b4..475816 rounds four coordinates, then broadcasts.
+        const float left=float(std::nearbyint(double(positions[0].x))-.5),right=float(std::nearbyint(double(positions[1].x))-.5);
+        const float top=float(std::nearbyint(double(positions[0].y))-.5),bottom=float(std::nearbyint(double(positions[2].y))-.5);
+        for(u32 i=0;i<4;++i){positions[i].x=(i&1)?right:left;positions[i].y=(i&2)?bottom:top;}
+#else
+        for(auto& p:positions){p.x=float(std::nearbyint(double(p.x))-.5);p.y=float(std::nearbyint(double(p.y))-.5);}
+#endif
+    }
 
 #if PORT_TITLE == 14
 
@@ -248,7 +257,12 @@ int AnmRenderer::draw_ascii_sprite(AnmVm& vm){
 
     if(!vm.sprite||!vm.resource)return -2;
 
+    #if PORT_TITLE == 14
+    const float display_scale=float(render_width)/640.f;const AnmRenderSpace space{display_scale,{float(i32(render_width)/2),float((i32(render_height)-448)/2)},{float(i32(render_width)/2),float(i32(float(display_scale*16.f)))}};
+    Vec3 positions[4];if(!anm_quad_positions(vm,positions,space))return -2;
+#else
     Vec3 positions[4];if(!anm_quad_positions(vm,positions))return -2;
+#endif
 
     return submit_quad(vm,positions,true);
 
@@ -474,7 +488,8 @@ int AnmRenderer::draw(AnmVm& vm){
 
 #if PORT_TITLE == 14
 
-        Vec3 positions[4];if(!anm_th14_draw_quad_positions(vm,positions))return -2;
+        const float display_scale=float(render_width)/640.f;const AnmRenderSpace space{display_scale,{float(i32(render_width)/2),float((i32(render_height)-448)/2)},{float(i32(render_width)/2),float(i32(float(display_scale*16.f)))}};
+        Vec3 positions[4];if(!anm_th14_draw_quad_positions(vm,positions,space))return -2;
 
         return submit_quad(vm,positions,mode==0);
 
