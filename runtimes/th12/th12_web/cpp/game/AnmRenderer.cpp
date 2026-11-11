@@ -596,7 +596,18 @@ int AnmRenderer::draw(AnmVm& vm){
 
         if constexpr(kPortTitle==14)if(!(vm.color>>24))return -1;
 
-        flush();const auto world=anm_world_matrix(vm,kPortTitle!=13&&kPortTitle!=14);material(vm);auto& p=graphics.pipeline();p.textureTransform=true;p.textureFactor=kPortTitle==14?tinted_color((vm.th13_native_flags&0x60000)?vm.secondary_color:vm.color):color(vm);p.color.second=p.alpha.second={ArgumentSource::Factor};
+        flush();
+#if PORT_TITLE == 14
+        const float display_scale=float(render_width)/640.f;
+        // Native446905/446910 and446c8f/446cb1 use distinct origins.
+        const AnmRenderSpace space{display_scale,
+            {float(i32(render_width)/2),float((i32(render_height)-448)/2)},
+            {float(i32(render_width)/2),float(i32(float(display_scale*16.f)))}};
+        const auto world=anm_world_matrix_th14(vm,false,space);
+#else
+        const auto world=anm_world_matrix(vm,kPortTitle!=13&&kPortTitle!=14);
+#endif
+        material(vm);auto& p=graphics.pipeline();p.textureTransform=true;p.textureFactor=kPortTitle==14?tinted_color((vm.th13_native_flags&0x60000)?vm.secondary_color:vm.color):color(vm);p.color.second=p.alpha.second={ArgumentSource::Factor};
 
 #if PORT_TITLE == 13 || PORT_TITLE == 14
 

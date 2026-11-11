@@ -27,13 +27,21 @@ Matrix4 anm_legacy_world_matrix_th14(AnmVm& vm,u32 width,u32 height)noexcept{
 }
 #endif
 
+#if PORT_TITLE == 14
+Matrix4 anm_world_matrix_th14(AnmVm& vm,bool anchor_translation,const AnmRenderSpace& space)noexcept{
+#else
 Matrix4 anm_world_matrix(AnmVm& vm,bool anchor_translation)noexcept{
+#endif
     if(!(vm.flags&0x4000)&&(vm.flags&12)){
         vm.transform_matrix=vm.sprite_matrix;
 #if PORT_TITLE == 14
         vm.transform_matrix.m[0]=float(float(vm.extra_scale.x*vm.scale.x)*vm.transform_matrix.m[0]);
         vm.transform_matrix.m[5]=float(float(vm.extra_scale.y*vm.scale.y)*vm.transform_matrix.m[5]);vm.flags&=~8u;
-        if(((vm.flags2>>19)&7)==2){vm.transform_matrix.m[0]=float(vm.transform_matrix.m[0]*.5f);vm.transform_matrix.m[5]=float(vm.transform_matrix.m[5]*.5f);}
+        const u32 resolution=(vm.flags2>>19)&7;
+        if(resolution==1||resolution==2){
+            const float factor=resolution==2?float(space.scale*.5f):space.scale;
+            vm.transform_matrix.m[0]=float(vm.transform_matrix.m[0]*factor);vm.transform_matrix.m[5]=float(vm.transform_matrix.m[5]*factor);
+        }
 #elif PORT_TITLE == 13
         vm.transform_matrix.m[0]=float(double(vm.extra_scale.x)*vm.scale.x*vm.transform_matrix.m[0]);
         vm.transform_matrix.m[5]=float(double(vm.extra_scale.y)*vm.scale.y*vm.transform_matrix.m[5]);vm.flags&=~8u;
@@ -74,11 +82,14 @@ Matrix4 anm_world_matrix(AnmVm& vm,bool anchor_translation)noexcept{
     // 477bf0 transforms the pivot-adjusted local XY through 4352b0, then
     // overwrites Z with the unscaled local position at 4781af.
     const float local_x=float(float(vm.position.x+vm.script_position.x)+vm.child_position.x),local_y=float(float(vm.position.y+vm.script_position.y)+vm.child_position.y);
-    const auto translated=vm.transform_position({float(local_x-float(float(vm.pivot.x*vm.scale.x)*vm.extra_scale.x)),float(local_y-float(float(vm.pivot.y*vm.scale.y)*vm.extra_scale.y)),0});
+    const auto translated=vm.transform_position({float(local_x-float(float(vm.pivot.x*vm.scale.x)*vm.extra_scale.x)),float(local_y-float(float(vm.pivot.y*vm.scale.y)*vm.extra_scale.y)),0},space);
     world.m[12]=translated.x;world.m[13]=translated.y;world.m[14]=float(float(vm.position.z+vm.script_position.z)+vm.child_position.z);
 #endif
     return world;
 }
+#if PORT_TITLE == 14
+Matrix4 anm_world_matrix(AnmVm& vm,bool anchor_translation)noexcept{return anm_world_matrix_th14(vm,anchor_translation,{});}
+#endif
 bool anm_projected_quad(AnmVm& vm,const AnmCamera& camera,Vec3 (&out)[4],Matrix4* result)noexcept{
     const u32 ax=(vm.flags>>18)&3,ay=(vm.flags>>20)&3;if(ax==3||ay==3)return false;
     const Matrix4 world=anm_world_matrix(vm,false);if(result)*result=world;
