@@ -11,9 +11,12 @@ API(demo_fade) i32 demo_fade(u32 n){
 API(control_tick) i32 control_tick(u32 held,i32 pause){return session.update({held,0,0,bool(pause)});}
 API(stage_frame) u32 stage_frame(){return session.state.frame;}
 API(demo_flag) i32 demo_flag(){return session.state.demo;}
-// Only the controller decision clock is selected for local native rows.
-// Complete unmodified replay timelines are exercised separately.
-API(control_frame) void control_frame(u32 frame){session.state.frame=frame;}
+// Select both declared clocks for the legacy nominal-rate decision cases.
+// Independent physical/Control clocks and rates are covered by demo-clock-nov12.
+API(control_frame) void control_frame(u32 frame){
+ session.state.frame=frame;
+ if(session.battle)session.battle->th14_control_clock.set(i32(frame),&session.animations.rate);
+}
 API(fade_draw_count) u32 fade_draw_count(u32 alpha,u32 target){
  u32 count=0;
  for(const auto& s:graphics.submissions){

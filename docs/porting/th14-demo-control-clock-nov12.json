@@ -1,0 +1,190 @@
+{
+  "recordedAt": "2026-11-11T16:50:10.385285+00:00",
+  "gameCodeChanged": true,
+  "sourceAdopted": true,
+  "nativeLogicalCases": 14,
+  "nativeSnapshots": 39,
+  "cppComparedControlPasses": 36,
+  "cppNextSupervisorReturnChecks": 5,
+  "oldImplementationMismatches": 16,
+  "candidateMismatches": 0,
+  "exactOriginalTimerWords": 144,
+  "normalAccessControl": true,
+  "freshGameObjects": 141,
+  "browserUnits": 146,
+  "browserWasmSha256": "010d514f4e7ff2ad088d035a73a5cf2b8d3c614de83806802ef1a2a1954fdda3",
+  "originalExeSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "nativeFullControlAndMainAndTimer": true,
+  "nativeDeclaredServices": [
+    "CRT allocation",
+    "fade factory output",
+    "score service",
+    "detached compositor copy updates"
+  ],
+  "naturalCases": [
+    {
+      "demo": 0,
+      "initialRate": 0.5,
+      "firstFade": {
+        "ticks": 4170,
+        "playerCalls": 4170,
+        "clockBefore": 3840,
+        "clockAfter": 3841,
+        "fields": [
+          60,
+          0,
+          48
+        ]
+      },
+      "terminal": {
+        "ticks": 4231,
+        "playerCalls": 4230
+      }
+    },
+    {
+      "demo": 0,
+      "initialRate": 1,
+      "firstFade": {
+        "ticks": 3841,
+        "playerCalls": 3841,
+        "clockBefore": 3840,
+        "clockAfter": 3841,
+        "fields": [
+          60,
+          0,
+          48
+        ]
+      },
+      "terminal": {
+        "ticks": 3902,
+        "playerCalls": 3901
+      }
+    },
+    {
+      "demo": 0,
+      "initialRate": 1.5,
+      "firstFade": {
+        "ticks": 3763,
+        "playerCalls": 3763,
+        "clockBefore": 3840,
+        "clockAfter": 3841,
+        "fields": [
+          60,
+          0,
+          48
+        ]
+      },
+      "terminal": {
+        "ticks": 3824,
+        "playerCalls": 3823
+      }
+    },
+    {
+      "demo": 0,
+      "initialRate": 2,
+      "firstFade": {
+        "ticks": 3707,
+        "playerCalls": 3707,
+        "clockBefore": 3840,
+        "clockAfter": 3841,
+        "fields": [
+          60,
+          0,
+          48
+        ]
+      },
+      "terminal": {
+        "ticks": 3768,
+        "playerCalls": 3767
+      }
+    },
+    {
+      "demo": 1,
+      "initialRate": 1,
+      "firstFade": {
+        "ticks": 3841,
+        "playerCalls": 3841,
+        "clockBefore": 3840,
+        "clockAfter": 3841,
+        "fields": [
+          60,
+          0,
+          48
+        ]
+      },
+      "terminal": {
+        "ticks": 3902,
+        "playerCalls": 3901
+      }
+    },
+    {
+      "demo": 2,
+      "initialRate": 1,
+      "firstFade": {
+        "ticks": 3841,
+        "playerCalls": 3841,
+        "clockBefore": 3840,
+        "clockAfter": 3841,
+        "fields": [
+          60,
+          0,
+          48
+        ]
+      },
+      "terminal": {
+        "ticks": 3902,
+        "playerCalls": 3901
+      }
+    }
+  ],
+  "naturalPlayerCallbacks": 23523,
+  "naturalRatesAreInitialOnly": true,
+  "naturalRateCanChangeThroughUnmodifiedGameCode": true,
+  "naturalNoClockSelections": true,
+  "naturalNoInvincibilityOrPowerInjection": true,
+  "sourceChanges": [
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/GameBattle.hpp",
+      "beforeSha256": "b50f85071d972f00be944e46615dccf772d60c1ed43b30998ca72fde3a37a4e1",
+      "afterSha256": "f65f515ba244d632234f4c9fae48849e9dab3af49d2b98c29f9f0be6ee672e5e"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
+      "beforeSha256": "c269fb8dea6651ab36d0c059f978d44e3f20e8e5e4169dd1177f3caa1b6bcbad",
+      "afterSha256": "29b910c40a15a85fd3e49283547a6728e007ea5fdad959120a92654557e5fd6e"
+    },
+    {
+      "path": "runtimes/th12/th12_web/cpp/game/GameSession.cpp",
+      "beforeSha256": "f78c06682159b882451cc9e20036de3191e8e9f2f0bef88ac82e90cef8c586a3",
+      "afterSha256": "7e2fe9d69b63fb7a9a671da9b6bed4cda2f938c3c30a202196b3eaac6f224d2c"
+    },
+    {
+      "path": "runtimes/th12/th12_web/tests/cpp/th14-demo-control-fixture.cpp",
+      "beforeSha256": "5cefbe877b822cd9c9b7df2acd8e8c45e6c780daf71ffe0b73ac46b1bdc661ac",
+      "afterSha256": "2b137ada793a14b015a7483d174d3467674e51e199fbb9f48f0a41e09c41632f"
+    }
+  ],
+  "legacyPreprocessExactUnits": 6,
+  "overlayCasesPassed": 5,
+  "noAudioOrGraphicsDeviceOpened": true,
+  "newBrowserRuntimeExecuted": false,
+  "browserBuildOnly": true,
+  "retainedFirstPresentScriptCallGap": 24,
+  "retainedDifferentPixels": 282468,
+  "retainedFixtureFailure": "First fixture used open/close C symbols conflicting with WASI libc; original fixture/build logs retained. Fixed exported function names before collecting engine comparison.",
+  "bindings": {
+    "artifacts/th14/demo-control-clock-nov12/native/native.json": "9ab20b6f544bad74fe86e0b377fa4abd8005a7a95f9a618dfe74dbba0a3e0676",
+    "artifacts/th14/demo-control-clock-nov12/baseline-v2-result/result.json": "dee6421eb067636aa24f178556a39bd95d6afd42bdee5b0e5026bb56fd3daaf1",
+    "artifacts/th14/demo-control-clock-nov12/candidate-result/result.json": "ff9c7cb46f9ab54430e46a650f915086601bc02c03b938631ba06bda93193cbe",
+    "artifacts/th14/demo-control-clock-nov12/natural-result/result.json": "bd5036af7a6b0e53220960a25b03ef8b8a65129efd99f64de6903e42a3be1dff",
+    "artifacts/th14/demo-control-clock-nov12/current-core/build.json": "03091e756eb5b601e64abc3e1bcef3760d69199883227b2f7a8a0bd664548dfb",
+    "artifacts/th14/demo-control-clock-nov12/candidate/build.json": "fcefc6315eaf353c25bd6e748533f976663799bdb7de7f37f34ba3b87ad7a243",
+    "artifacts/th14/demo-control-clock-nov12/natural/build.json": "05e1473267d69160a9ad4161db129ad864d7ff261e264f8a35fede736d05bb0d",
+    "artifacts/th14/demo-control-clock-nov12/browser/build.json": "29504bb83927242f5ed676e194e359620c2bd070da86d0d635aa66300cd792d6",
+    "artifacts/th14/demo-control-clock-nov12/legacy-preprocess/verified.json": "80a499faaf4523d80b90a2982c2f37e3dbfcf22509a89705237d10fd26973e6a",
+    "artifacts/th14/demo-control-clock-nov12/overlay-regression/component-results.json": "1eb5ba6cffa393312000ec9371ad13b5d2f613ad4a6cb9585200e7dd2eaeb083",
+    "artifacts/th14/demo-control-clock-nov12/source-change.json": "cdac99346791f2e3d6bde5726b79e511d5b8f1fd2dc6191e5f791c0eddad41b2"
+  },
+  "scope": "Attract decision clock and Control callback placement, bounded rate/enable sequences, and C++ natural demo lifecycle. No current full-replay native state, GPU pixels, final PCM, or browser acceptance inferred.",
+  "completeGame": false
+}

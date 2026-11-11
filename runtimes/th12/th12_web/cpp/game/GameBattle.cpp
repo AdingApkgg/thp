@@ -711,6 +711,7 @@ bool GameBattle::update(const std::function<bool()>& sample_input
     ,const AnmManager::VmBoundaryCallbackTh14& normal_vm_boundary
     ,const StageObjectVmBoundaryTh14& stage_object_boundary
     ,const StageCameraWordBoundaryTh14& camera_word_boundary
+    ,const std::function<void()>& control_update
 #endif
 ) {
     if(!initialized||last_error)return false;
@@ -751,6 +752,11 @@ bool GameBattle::update(const std::function<bool()>& sample_input
 #endif
     if(control_enabled&&!stage_control()){last_error=-1009;return false;}
     const bool control_running=control_enabled&&(!transitioning||transition_started);
+#if PORT_TITLE == 14
+    // The attract decision belongs to Control11, after Overlay8 and stage
+    // activation, before the rate-scaled Control timer advances.
+    if(control_running&&control_update)control_update();
+#endif
     // Legacy420752 holds stage-six music for300 ticks. TH14's complete436620
     // callback plays at activation and has no clock300 music-resume branch.
     if(kPortTitle!=14&&control_running&&!demo&&resources.stage_number==6&&frame==300)events.push_back({BattleEventKind::MusicResume});

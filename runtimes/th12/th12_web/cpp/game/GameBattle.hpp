@@ -199,6 +199,7 @@ public:
         ,const AnmManager::VmBoundaryCallbackTh14& normal_vm_boundary={}
         ,const StageObjectVmBoundaryTh14& stage_object_boundary={}
         ,const StageCameraWordBoundaryTh14& camera_word_boundary={}
+        ,const std::function<void()>& control_update={}
 #endif
     );
     bool draw(AnmRenderer&,SceneDrawKind

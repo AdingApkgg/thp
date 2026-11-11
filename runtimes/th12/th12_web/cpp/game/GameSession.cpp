@@ -1046,8 +1046,6 @@ bool GameSession::update(const GameSessionInput& input) {
             // Seed the new menu's edges so it cannot also activate Game Start.
             game_input.update(raw);return true;
         }
-        if((raw&0x80103)||state.frame==3900)demo_title_pending=true;
-        if(state.frame==3840&&battle)battle->fades.start(5,60,0,48,&animations.rate);
 #else
         if((raw&0x80103)||state.frame==3600)return return_to_title();
         if(state.frame==3540&&battle)battle->fades.start(5,60,0,67,&animations.rate);
@@ -1133,6 +1131,17 @@ bool GameSession::update(const GameSessionInput& input) {
             // Only Scene may progress while the publisher is borrowed. Do not
             // run Timeline or the controller's later Stage retirement here.
             return battle->poll_stage_scene(stage_load_clock());
+        }
+        ,[this,&input](){
+            if(!interactive||!state.demo)return;
+            // Native436c08 reads Control+14 at priority11, not the physical
+            // Session/Replay update count. A held rate may visit3840 more
+            // than once; a faster rate may skip it. Preserve exact equality.
+            const u32 raw=(input.held&~256u)|((input.held&256)?0x80000u:0u)|(input.pause?256u:0u);
+            const i32 clock=battle->control_frame();
+            if((raw&0x80103u)||(animations.th14_control.callback_flags()&0x70u)||clock==3900)
+                demo_title_pending=true;
+            if(clock==3840)battle->fades.start(5,60,0,48,&animations.rate);
         }
 #endif
         );
