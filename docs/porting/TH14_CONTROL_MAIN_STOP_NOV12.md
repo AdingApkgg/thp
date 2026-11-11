@@ -29,4 +29,6 @@ python tools/th14-build-demo-clock-nov12.py --providers build/control-stop/core 
 node tools/th14-run-control-main-stop-nov12.mjs --build=build/control-stop/cpp --native=build/control-stop/native/native.json --stock=H:/Games/th/14 --out=build/control-stop/compare
 ```
 
-以上入口复核 96 个逻辑序列。实际 Application 首帧另使用保留的本地观察夹具和物理线程／GPU，不由这些组件命令冒充复现。所有 Control 标志、全部线程交错、完整录像、最终 PCM 及浏览器实际运行仍需分别验收。[结果与绑定](th14-control-main-stop-nov12.json)。
+当前模块已部署到 [测试站](https://wth.saop.cc/)，源站和公网的全部 39 个 Runtime 文件哈希均与清单相符。实际 Arch 服务经 SSH 转发的浏览器入口已观察版本更新提示、校验后重启、Normal 灵梦 B 开局／射击／Bomb、暂停恢复后再次暂停、返回标题与正常 Quit；音乐和音效均为 0。这是该生产服务的普通短流程验证，公网源直接浏览器运行及完整模式仍需验收。[发布记录](th14-control-stop-release-nov12.json)。
+
+以上入口复核 96 个逻辑序列。实际 Application 首帧另使用保留的本地观察夹具和物理线程／GPU，不由这些组件命令冒充复现。所有 Control 标志、全部线程交错、完整录像、最终 PCM 及其余浏览器流程仍需分别验收。[结果与绑定](th14-control-main-stop-nov12.json)。
