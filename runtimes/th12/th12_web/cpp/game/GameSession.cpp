@@ -854,7 +854,12 @@ bool GameSession::update(const GameSessionInput& input) {
 #endif
         ++state.frame;return true;
     }
+#if PORT_TITLE == 14
+    // PauseMenu9 reads Control+14 before Control11 advances its rate-scaled clock.
+    if(pause_edge&&state.phase==GameSessionPhase::stage&&!state.demo&&battle&&battle->control_frame()>=30) {
+#else
     if(pause_edge&&state.phase==GameSessionPhase::stage&&!state.demo&&state.frame>29) {
+#endif
 #if PORT_TITLE == 14
         // Overlay registry8 precedes the PauseMenu9 callback even on entry.
         if(!animations.update(true))return fail("pause entry overlay update failed");
