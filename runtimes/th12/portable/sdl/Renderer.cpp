@@ -314,6 +314,11 @@ integer(13,!!texture);uniform(14,4,color(p.textureFactor).data());
   constexpr GLenum names[]{GL_TEXTURE_WRAP_S,GL_TEXTURE_WRAP_T,GL_TEXTURE_MIN_FILTER,GL_TEXTURE_MAG_FILTER};
   for(int i=0;i<4;i++)if(texture->sampler[i]!=sampler[i]){glTexParameteri(GL_TEXTURE_2D,names[i],sampler[i]);texture->sampler[i]=sampler[i];}
  }
+#if defined(PORT_TITLE) && PORT_TITLE == 14
+ // The generic shader retains an active sampler even when hasTexture is false.
+ // Do not leave the current render target bound through that sampler.
+ else {glActiveTexture(GL_TEXTURE0);bind_texture(0);}
+#endif
  constexpr GLenum compare[]{GL_NEVER,GL_LESS,GL_EQUAL,GL_LEQUAL,GL_GREATER,GL_NOTEQUAL,GL_GEQUAL,GL_ALWAYS};
  if(all||cached.depthTest!=p.depthTest)p.depthTest?glEnable(GL_DEPTH_TEST):glDisable(GL_DEPTH_TEST);
  if(all||cached.depthWrite!=p.depthWrite)glDepthMask(p.depthWrite);
