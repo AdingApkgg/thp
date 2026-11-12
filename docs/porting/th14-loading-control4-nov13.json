@@ -1,0 +1,258 @@
+{
+  "schema": "thp/th14-loading-control4/1",
+  "terminal": true,
+  "gameSourceCommit": "84b8741af5b7ca617cc4046fe697d3cbfebbf4ad",
+  "gameCodeChanged": false,
+  "fixtureOwnerLifetimeCorrected": true,
+  "invalidOwnerLifetimeFailureRetained": {
+    "frames": 90,
+    "words": 441
+  },
+  "staleRatePointerObservations": [
+    {
+      "case": "flags4-clear-before-finish",
+      "frame": 1,
+      "handle": 32764,
+      "managerRate": 1595988,
+      "scriptTimerRate": 1595988,
+      "alphaTimerRate": 1587204
+    },
+    {
+      "case": "flags4-clear-before-finish",
+      "frame": 2,
+      "handle": 32764,
+      "managerRate": 1595988,
+      "scriptTimerRate": 1595988,
+      "alphaTimerRate": 1587204
+    },
+    {
+      "case": "flags4-finish-before-clear",
+      "frame": 1,
+      "handle": 32764,
+      "managerRate": 1595988,
+      "scriptTimerRate": 1595988,
+      "alphaTimerRate": 1587204
+    },
+    {
+      "case": "flags4-finish-before-clear",
+      "frame": 2,
+      "handle": 32764,
+      "managerRate": 1595988,
+      "scriptTimerRate": 1595988,
+      "alphaTimerRate": 1587204
+    },
+    {
+      "case": "flags4-late-publication",
+      "frame": 1,
+      "handle": 32764,
+      "managerRate": 1595988,
+      "scriptTimerRate": 1595988,
+      "alphaTimerRate": 1587204
+    },
+    {
+      "case": "flags4-late-publication",
+      "frame": 2,
+      "handle": 32764,
+      "managerRate": 1595988,
+      "scriptTimerRate": 1595988,
+      "alphaTimerRate": 1587204
+    },
+    {
+      "case": "flags4-half-rate",
+      "frame": 2,
+      "handle": 32764,
+      "managerRate": 1595988,
+      "scriptTimerRate": 1595988,
+      "alphaTimerRate": 1587204
+    }
+  ],
+  "liveTwoManagerRateDifferenceRetained": {
+    "frames": 75,
+    "words": 302
+  },
+  "productionCrossManagerTemplateReuseNotObserved": true,
+  "templatePreparationRate": 1,
+  "scopedTemplateDestroyedBeforeManager": true,
+  "flags4ActualCaseRates": [
+    0.5,
+    1.0
+  ],
+  "inheritedNativeRateValuesAreNotActualCaseCoverage": true,
+  "loadingCases": {
+    "scoped-owner-run": {
+      "cases": 6,
+      "frames": 966,
+      "words": 2072862
+    },
+    "legacy-control-run": {
+      "cases": 7,
+      "frames": 1127,
+      "words": 855162
+    }
+  },
+  "negativeControlFailures": [
+    {
+      "case": "rate1-bits3",
+      "frames": 141,
+      "words": 9875
+    },
+    {
+      "case": "rate1-bits7",
+      "frames": 141,
+      "words": 9875
+    },
+    {
+      "case": "rate-half-bits3",
+      "frames": 141,
+      "words": 8660
+    }
+  ],
+  "actualSlotPreparation": {
+    "resources": 7,
+    "rates": 6,
+    "routes": 42,
+    "templates": 1452,
+    "expandedTemplateWords": 439956,
+    "templateAndRngWords": 74220,
+    "descriptorWords": 59058,
+    "scriptBytes": 313680,
+    "differences": 0
+  },
+  "normalGameObjectsVerifiedReused": 141,
+  "graphicsOrAudioDevicesOpened": 0,
+  "newFullReplayRuns": 0,
+  "loading24CallDifferenceClosed": false,
+  "physicalSchedulingAccepted": false,
+  "browserUiAccepted": false,
+  "completeGame": false,
+  "bindings": {
+    "artifacts/th14/loading-control4-nov13/cpp/result.json": {
+      "bytes": 13264,
+      "sha256": "4b97e4c468ed10c5c8046e4156ae702b2db9c6f6f470630d2ba72114d48fa921"
+    },
+    "artifacts/th14/loading-control4-nov13/rate-run-v2/rate-bindings.json": {
+      "bytes": 6698,
+      "sha256": "db9e9fce06f207995c17438b95f8eb3634096c6fa0480f050c07dc5b63bb362e"
+    },
+    "artifacts/th14/loading-control4-nov13/rate-diagnostic-v2/build.json": {
+      "bytes": 62763,
+      "sha256": "ed39e34f8301ff4f1d4d6e8ecea619649d25ad42a0270fe89b074448b93233e3"
+    },
+    "artifacts/th14/loading-control4-nov13/live-preparer-run/result.json": {
+      "bytes": 13273,
+      "sha256": "65421ead124786297291d93e3798ca3fff6757fad9d5c3fa5f8244d2a1d26554"
+    },
+    "artifacts/th14/loading-control4-nov13/scoped-owner-run/result.json": {
+      "bytes": 2378,
+      "sha256": "731dc72dcc07bbcfb3dc02fec14975088995b490b4a860b378ce46c15ace5ff7"
+    },
+    "artifacts/th14/loading-control4-nov13/legacy-control-run/result.json": {
+      "bytes": 2567,
+      "sha256": "39dd389cd3dc57ab8f7c11f000e124b997a046536283f435ab9bd0a5f2a5e903"
+    },
+    "artifacts/th14/loading-control4-nov13/legacy-negative-run/result.json": {
+      "bytes": 35384,
+      "sha256": "2c6cf6ac16da48692530c5353aacb714c0dacfb014eb38fc41b6cac957cb583b"
+    },
+    "artifacts/th14/loading-control4-nov13/provider/build.json": {
+      "bytes": 102266,
+      "sha256": "352d62c54e2be04cf929a64586d6203ee3465ce08b30c7cea20ceca9b44bcc9b"
+    },
+    "artifacts/th14/loading-control4-nov13/rate-diagnostic-v2/probe.wasm": {
+      "bytes": 1216053,
+      "sha256": "f299fbe44d704bfe8fc9c1a0bb1ce3a3bfff0ba90d51e39c6d212cd3339a8eb2"
+    },
+    "runtimes/th12/th12_web/tests/cpp/th14-native-title-live-observer.hpp": {
+      "bytes": 4980,
+      "sha256": "b5c5147abd6cfda2324790f8cc9717b66883d32d16c903132a6b4d1b42e040fb"
+    },
+    "tools/th14-build-loading-control4-nov13.py": {
+      "bytes": 752,
+      "sha256": "e23e458b06cfdf27e0346cef36c9634e4f3c8f9b55c785967dc105e275646838"
+    },
+    "artifacts/th14/loading-control4-nov13/component/fixture.cpp": {
+      "bytes": 6842,
+      "sha256": "969f2a974164045c22aa6dde2d6f4be69371b238b13bcb6f9cb689de4286db39"
+    },
+    "artifacts/th14/loading-control4-nov13/rate-diagnostic-v2/fixture.cpp": {
+      "bytes": 7451,
+      "sha256": "c358c38eb9f01574555a1213ff57b23846fdd6da6908b167ae514d15534b25e7"
+    },
+    "artifacts/th14/loading-control4-nov13/live-preparer/build.json": {
+      "bytes": 63075,
+      "sha256": "858fc8e93064b3564404cc079e24561679007f5364848c4bec6087acbce8a9b7"
+    },
+    "artifacts/th14/loading-control4-nov13/live-preparer/probe.wasm": {
+      "bytes": 1216649,
+      "sha256": "98bbe0f26bc3decec5584069d5bdd4341c26c0b86433d4abb9df0dfd45d98a2b"
+    },
+    "tools/th14-build-loading-control4-lifetime-nov13.py": {
+      "bytes": 3923,
+      "sha256": "e4301ea1adb23d3654086f7c743d2aa6f6373273688e34d9227db203620e4494"
+    },
+    "artifacts/th14/loading-control4-nov13/live-preparer/fixture.cpp": {
+      "bytes": 7559,
+      "sha256": "86af16d2c3e79c7a007452bba3914251344d551313537c8cd4975148cdc11f76"
+    },
+    "artifacts/th14/loading-control4-nov13/scoped-owner/build.json": {
+      "bytes": 63071,
+      "sha256": "d0d1e87448e405ed1fa78ae2218403066e1ad221ea5a1dbc9ea880aad2ee6545"
+    },
+    "artifacts/th14/loading-control4-nov13/scoped-owner/probe.wasm": {
+      "bytes": 1216120,
+      "sha256": "fcadff8c206c64a38ef2093efefce2a534b00e61525549cda503eb8ae561e88c"
+    },
+    "artifacts/th14/loading-control4-nov13/scoped-owner/fixture.cpp": {
+      "bytes": 7377,
+      "sha256": "d67a39263b2710ae6f557708f6f31a5b144dd76a2769c2058f3ff373c29987f3"
+    },
+    "artifacts/th14/loading-control4-nov13/native/native.json": {
+      "bytes": 3377,
+      "sha256": "8a1474a4c503195b55592d46a6dbac83cead52bddf25602beedb369ff10394be"
+    },
+    "artifacts/th14/loading-control4-nov13/native/snapshots.u32": {
+      "bytes": 8291448,
+      "sha256": "b17d73317d3ffc6b657fbb6372713a008a3701df2f66cbe965f13ff68f1ff4bd"
+    },
+    "artifacts/th14/loading-control4-nov13/actual-slot-preparation/cpp-qualified.json": {
+      "bytes": 79788,
+      "sha256": "f6c591bd99008478f109253a0fe5e97ff8d25161bd1e0f4b40e4dcb653ac67a6"
+    },
+    "artifacts/th14/actual-slot-anm-preparation-v4-expanded-nov10/native.json": {
+      "bytes": 14732563,
+      "sha256": "f97284723686e3c2428fa19871a57cccf01ee7d075077348c0daf0d366323146"
+    },
+    "artifacts/th14/loading-control4-nov13/actual-slot-preparation/build.json": {
+      "bytes": 85821,
+      "sha256": "a51050c89cafb503929f8b815d2a8373eb70bb651a7177f5ab5d4da2f331dcc3"
+    },
+    "artifacts/th14/loading-control4-nov13/actual-slot-preparation/loader.wasm": {
+      "bytes": 1220206,
+      "sha256": "58fcf8178ce06e7f6db57d6cd614745bc2cf1b5567dc0409e7aa923fb6c10c13"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameSession.cpp": {
+      "bytes": 90945,
+      "sha256": "b9bb524bc509a435fbae773f5686eaf34a1c66f0eb03e088aaa10f37cc35ffe1"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameSessionResources.cpp": {
+      "bytes": 16729,
+      "sha256": "320951d8e561b78b9f519c7cba7a7a6a12d25eba54205b86e3529a92fb7d78bb"
+    },
+    "runtimes/th12/th12_web/cpp/game/GameSession.hpp": {
+      "bytes": 9961,
+      "sha256": "0097872f5403c0a1e386fb91df0ef471cd7fa7c5015efa031433069a9e67a228"
+    },
+    "runtimes/th12/th12_web/cpp/sdl/Application.cpp": {
+      "bytes": 138674,
+      "sha256": "5abaf68f11c0c11ff6c8b4d72cecc2bbed84b8e3e2535176d5c5d423cb94617d"
+    },
+    "runtimes/th12/th12_web/cpp/game/ResourceCrypt.cpp": {
+      "bytes": 3316,
+      "sha256": "a291010053963e25dadef2be15ddb3c217110cd2377fc495402ef375150f8c45"
+    },
+    "tools/th14-qualify-loading-control4-nov13.py": {
+      "bytes": 6968,
+      "sha256": "bc832ad136586705252571323c2c10e53c78f2be2058467cf3009d7279b66cb0"
+    }
+  }
+}
