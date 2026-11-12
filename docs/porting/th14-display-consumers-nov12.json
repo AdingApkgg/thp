@@ -392,8 +392,8 @@
   "updateConsumerWords": 194496,
   "consumerDifferences": 0,
   "oldCodeControlRejected": true,
-  "wavePositionDifferences": 178,
-  "fullWavePositionsAccepted": false,
+  "wavePositionDifferences": 0,
+  "fullWavePositionsAccepted": true,
   "legacyObjectPairs": 6,
   "allLegacyObjectPairsByteIdentical": true,
   "realD3dxDllUnderUnicorn": true,
@@ -440,5 +440,30 @@
     "originalUiOrPixelsAccepted": false,
     "reportSha256": "18e10f48b7dcf304d48d7f3bc49e847b44658fd199d0815d008a13eae69e32c1",
     "platformSha256": "ef3d76091070bc9ea66ca4acf12b85df2eb57a7f6f4ee8202a5e1afaf8dda684"
-  }
+  },
+  "realCpuDeformationSupplement": {
+    "passed": true,
+    "rectangleCases": 12,
+    "rectangleWords": 34680,
+    "updateTimelines": 48,
+    "updateFrames": 96,
+    "updateWords": 277728,
+    "differentWords": 0,
+    "differences": [],
+    "fullWavePositionsAcceptedForThisComponent": true,
+    "normalizationCalls": 8928,
+    "normalizationService": "actual Windows x86 D3DXVec3Normalize",
+    "originalGameInheritedFloatingPointEnvironmentMeasured": false,
+    "originalDeformationCodeUnmodified": true,
+    "realCpuMathServiceDeclared": true,
+    "normalizationValuesSuppliedToCpp": false,
+    "retainedUnicornNormalizeComparisonDifferentWords": 178,
+    "nativeReportSha256": "42a7c62b54ba893f43cfa7c9b2692e93dcd06488fc31cf57c3325d21adc8b5c6",
+    "candidateWasmSha256": "109fd4d23259bbbf9df57be8b122a79a1fd950271cefe0a174059428e83c7a74",
+    "checkerSha256": "2d2eec168d5b427a3d0178284ad4b070fb09a0533901028bbd23f3c5386ae177",
+    "fullGameOrPixelsAccepted": false,
+    "completeGame": false
+  },
+  "fullWavePositionAcceptanceScope": "12 rectangle cases and 48 two-frame component timelines using actual Windows x86 D3DX normalization service; original game inherited environment and GPU pixels unmeasured",
+  "retainedUnicornNormalizeWavePositionDifferences": 178
 }
