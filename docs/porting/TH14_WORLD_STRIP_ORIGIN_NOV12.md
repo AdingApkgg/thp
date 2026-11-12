@@ -11,3 +11,5 @@
 [结果与绑定](th14-world-strip-origin-nov12.json)。加载 RNG、弹状态／相机缓存、整帧、音频、所有机体／难度和完整普通流程继续开放，`completeGame=false`。工具依赖保留的父版对象与本地原版。原版资源、矩阵原始观测和编译二进制不随 Git 发布。
 
 正式浏览器构建重编一单元、核验另 145 单元，Wasm 为 `53717dda236689eb9f7252cfdb81882768ba77d6ed33e620489ffca5db050cd3`。此版本尚无新的浏览器 UI 或实际游戏像素验收；交付状态另记收据。
+
+已部署至 [wth.saop.cc](https://wth.saop.cc/)，游戏源码 `022a6aaa`、Wasm `53717dda…`、生成号 `96dc230e…`。原点 39 个文件及 经公开 Cloudflare URL 下载的同代 39 个完整响应体（36 项复用 TS Arch 成功结果，3 项超时路径由 Windows 直连重试）均与清单相符，含 `th14.html`；368 个构建源码 blob 与公开提交逐项相等。仅传 3,138,822 字节运行代码，无零售资产，保留上一包回退。此次没有新增实际 Application 游戏运行或浏览器 UI／像素验收。[交付收据](th14-world-strip-origin-release-nov12.json)。
