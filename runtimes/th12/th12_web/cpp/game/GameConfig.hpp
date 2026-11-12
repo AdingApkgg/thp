@@ -14,5 +14,13 @@ struct GameConfig {
     i32 music_volume()const noexcept{return bytes[volume_offset];}
     i32 sound_volume()const noexcept{return bytes[volume_offset+1];}
     bool auto_focus()const noexcept{return bytes[volume_offset+2]!=0;}
+#if PORT_TITLE == 14
+    // Retail46af64 selects the mode;46ae40 supplies the internal pixel size.
+    u32 render_width()const noexcept{
+        const u32 mode=bytes[0x1f];
+        return mode==1||mode==4?960:mode==2||mode==5?1280:640;
+    }
+    u32 render_height()const noexcept{return render_width()*3/4;}
+#endif
 };
 }

@@ -392,7 +392,7 @@ bool GameSession::begin(GameResources& source, u32 stage, i32 character,
     if(!resources.select_player(u32(character),u32(subtype)))return fail(resources.error.c_str());
 #endif
     if constexpr(kPortTitle==14||kPortTitle==16)animations.fallback_sprites=&resources.core.ascii;
-    if(!compositor.initialize(resources.core.text))return fail("screen compositor initialization failed");
+    if(!initialize_compositor())return fail("screen compositor initialization failed");
     state.character=character;
     state.subtype=subtype;
     state.difficulty=difficulty;
@@ -560,8 +560,8 @@ bool GameSession::finish_loading(bool defer_initial_control){
         if(resources.effects&&!resources.effects->core_ready())return fail("TH14 core resources still pending");
         if(!resources.prepare_core())return fail(resources.error.c_str());
         if(compositor.copies[0].resource!=&resources.core.text){
-            if(!compositor.initialize(resources.core.text))return fail(("title compositor initialization failed: "+compositor.last_error).c_str());
-            compositor.reset_cameras(false);
+            if(!initialize_compositor())return fail(("title compositor initialization failed: "+compositor.last_error).c_str());
+            reset_compositor_cameras(false);
         }
         pending_core_title=false;return activate_title(*source,pending_core_first,pending_core_screen);
     }
@@ -1321,8 +1321,8 @@ bool GameSession::open_ending(){
     recording.spell_times(battle->spell_timing.records);if(!recording.finish_stage(true))return fail("completed recording finalization failed");
     menu_selection.character=state.character;menu_selection.partner=state.subtype;menu_selection.difficulty=state.difficulty;
     scores.write_records(spell_records,clear_records);reset_state();completed_run=true;
-    if(!compositor.initialize(resources.core.text))return fail("ending compositor initialization failed");
-    compositor.reset_cameras(false);animations.rate=1;
+    if(!initialize_compositor())return fail("ending compositor initialization failed");
+    reset_compositor_cameras(false);animations.rate=1;
     ending=std::make_unique<Ending>(animations,resources.core.text,scores);
 #if PORT_TITLE == 14
     ending->effects=resources.effects;
@@ -1413,12 +1413,12 @@ bool GameSession::open_title(GameResources& data,bool first,TitleScreen screen){
     if constexpr(kPortTitle==14||kPortTitle==16)animations.fallback_sprites=&resources.core.ascii;
 #if PORT_TITLE == 14
     if(resources.effects&&!resources.effects->core_ready()){
-        compositor.reset_cameras(false);
+        reset_compositor_cameras(false);
         pending_core_title=true;pending_core_first=first;pending_core_screen=screen;state.phase=GameSessionPhase::loading;return true;
     }
 #endif
-    if(!compositor.initialize(resources.core.text))return fail(("title compositor initialization failed: "+compositor.last_error).c_str());
-    compositor.reset_cameras(false);
+    if(!initialize_compositor())return fail(("title compositor initialization failed: "+compositor.last_error).c_str());
+    reset_compositor_cameras(false);
 #if PORT_TITLE == 14
     return activate_title(data,first,screen);
 }

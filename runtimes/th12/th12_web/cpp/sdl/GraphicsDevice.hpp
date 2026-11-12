@@ -18,7 +18,11 @@ public:
     touhou::sdl::Renderer backend{10,resolve,this};
     static constexpr u32 screen=1,depth=2;
     std::string error;
+#if PORT_TITLE == 14
+    bool initialize(u32 width=640,u32 height=480);
+#else
     bool initialize();
+#endif
     bool preload(AnmResource&,bool low_color=false);
 #if PORT_TITLE == 14
     const bool* texture_high_precision=nullptr;

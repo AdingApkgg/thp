@@ -151,6 +151,22 @@ public:
 #endif
         return config;
     }
+    bool initialize_compositor(){
+#if PORT_TITLE == 14
+        const auto& display=persistent_config();
+        return compositor.initialize(resources.core.text,display.render_width(),display.render_height());
+#else
+        return compositor.initialize(resources.core.text);
+#endif
+    }
+    void reset_compositor_cameras(bool restricted){
+#if PORT_TITLE == 14
+        const auto& display=persistent_config();
+        compositor.reset_cameras(restricted,display.render_width(),display.render_height());
+#else
+        compositor.reset_cameras(restricted);
+#endif
+    }
     bool update(const GameSessionInput& input);
 #if PORT_TITLE == 14
     // Main has already dispatched Overlay8 and acquired initial Control data.

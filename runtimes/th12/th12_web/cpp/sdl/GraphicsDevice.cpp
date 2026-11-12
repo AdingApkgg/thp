@@ -96,14 +96,41 @@ touhou::sdl::Surface GraphicsDevice::resolve(void* owner,u32 id){
     auto& device=*static_cast<GraphicsDevice*>(owner);auto it=device.textures.find(id);if(it==device.textures.end())return {};
     auto& t=it->second;auto& image=t.image;return {id,image.width,image.height,image.format,image.pitch,image.pixels.data(),u32(image.pixels.size()),t.revision};
 }
+#if PORT_TITLE == 14
+bool GraphicsDevice::initialize(u32 width,u32 height){
+#else
 bool GraphicsDevice::initialize(){
+    constexpr u32 width=640,height=480;
+#endif
     using namespace touhou::graphics;
-    for(u32 id:{screen,depth}){auto& image=textures[id].image;image.width=640;image.height=480;image.pitch=640*(id==screen?4:2);image.format=id==screen?PixelFormat::Bgra8:PixelFormat::Depth16;if(id==screen)image.pixels.resize(image.pitch*image.height);}
+    for(u32 id:{screen,depth}){auto& image=textures[id].image;image.width=width;image.height=height;image.pitch=width*(id==screen?4:2);image.format=id==screen?PixelFormat::Bgra8:PixelFormat::Depth16;if(id==screen)image.pixels.resize(image.pitch*image.height);}
     SDL_SetHint(SDL_HINT_EMSCRIPTEN_KEYBOARD_ELEMENT,"#canvas");
-    if(!backend.initialize()){error=backend.error();return false;}SDL_SetWindowTitle(backend.native_window(),kPortTitle==16?"东方天空璋":kPortTitle==14?"东方辉针城 · 移植验证":"Touhou 11");backend.state.target=screen;backend.state.depth=depth;initialize_game_pipeline();return true;
+    if(!backend.initialize()){error=backend.error();return false;}
+#if PORT_TITLE == 14
+    if(width!=640||height!=480)SDL_SetWindowSize(backend.native_window(),int(width),int(height));
+#endif
+    SDL_SetWindowTitle(backend.native_window(),kPortTitle==16?"东方天空璋":kPortTitle==14?"东方辉针城 · 移植验证":"Touhou 11");backend.state.target=screen;backend.state.depth=depth;initialize_game_pipeline();return true;
 }
 bool GraphicsDevice::prepare_texture(AnmResource& file,u32 index,u32& handle,bool low_color){
-    const auto& source=file.textures[index];Texture texture;
+#if PORT_TITLE == 14
+    auto& source=file.textures[index];
+    if(source.kind==AnmTexture::Kind::RenderTarget){
+        // Retail47d4b1..47d4dc replaces the chunk dimensions before
+        //47d9e0 derives sprite UVs from the resulting surface descriptor.
+        const auto& display=textures.at(screen).image;
+        if(source.width!=display.width||source.height!=display.height){
+            source.width=u16(display.width);source.height=u16(display.height);
+            for(auto& sprite:file.sprites)if(sprite.texture==index){
+                sprite.u0=float(double(sprite.x)/source.width);sprite.v0=float(double(sprite.y)/source.height);
+                const float right=float(double(sprite.x)+sprite.width),bottom=float(double(sprite.y)+sprite.height);
+                sprite.u1=float(double(right)/source.width);sprite.v1=float(double(bottom)/source.height);
+            }
+        }
+    }
+#else
+    const auto& source=file.textures[index];
+#endif
+    Texture texture;
 #if defined(TH_ENABLE_THCRAP)
     AnmTexture override_texture;
     const AnmTexture& selected=patched_texture(file,source,index,override_texture)?override_texture:source;

@@ -4,6 +4,9 @@ void SceneCompositor::reset_cameras(bool restricted,u32 width,u32 height){
     if constexpr(kPortTitle==14||kPortTitle==16){
         // Both native reset entries (4465e0 / 446920) use the same four cameras.
         const float scale=float(width)/640.f;
+#if PORT_TITLE == 14
+        manager.render_space.scale=scale;
+#endif
         full_camera={};full_camera.mode=2;full_camera.viewport={0,0,width,height,0,1};
         play_camera={};play_camera.viewport={u32(32*scale),u32(16*scale),u32(384*scale),u32(448*scale),0,1};
         scaled_play_camera=play_camera;scaled_play_camera.mode=1;scaled_play_camera.viewport.x=u32(128*scale);
@@ -12,7 +15,12 @@ void SceneCompositor::reset_cameras(bool restricted,u32 width,u32 height){
 #if PORT_TITLE == 14
         for(auto* camera:{&full_camera,&play_camera,&scaled_play_camera,&world_camera}){camera->render_width=width;camera->render_height=height;}
 #endif
-        full_camera.screen();play_camera.screen();scaled_play_camera.screen();world_camera.screen();return;
+        full_camera.screen();play_camera.screen();scaled_play_camera.screen();world_camera.screen();
+#if PORT_TITLE == 14
+        // Retail4468eb..44690e follows the four screen-camera calculations.
+        manager.render_space.scaled_origin={float(i32(width)/2),float(i32(float(scale*16.f)))};
+#endif
+        return;
     }
     full_camera={};full_camera.mode=1;play_camera={};play_camera.position.z=1000;world_camera=play_camera;
     play_camera.viewport=restricted?GraphicsViewport{32,16,384,448,0,1}:GraphicsViewport{};
@@ -108,6 +116,11 @@ bool SceneCompositor::draw(AnmRenderer& renderer,SceneDrawKind kind){
         renderer.invalidate();
         if(!renderer.clear_target(resource?0xffffffff:clear_color))return false;
         if(resource&&(!renderer.select_target(resource,2)||!renderer.clear_target(clear_color,&region)))return false;
+#if PORT_TITLE == 14
+        // Retail446c72..446cb1 writes play origin after target/clear only
+        // when the intermediate render target exists. Reset retains it.
+        if(resource)manager.render_space.play_origin={float(i32(world_camera.render_width)/2),float((i32(world_camera.render_height)-448)/2)};
+#endif
         renderer.offset={};renderer.tint_enabled=false;renderer.tint=0x80808080;
         
 #if PORT_TITLE == 14

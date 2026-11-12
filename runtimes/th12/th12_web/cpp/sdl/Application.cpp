@@ -612,10 +612,10 @@ struct Application:StageResourceEffects
     }
     bool initialize_cpp_boot_compositor(){
         if(boot_compositor_initialized||!boot_cpp_resources||!boot_cpp_resources->publication(3))return true;
-        if(!session.compositor.initialize(session.resources.core.text)){
+        if(!session.initialize_compositor()){
             error="TH14 common-resource compositor: "+session.compositor.last_error;return false;
         }
-        session.compositor.reset_cameras(false);boot_compositor_initialized=true;
+        session.reset_compositor_cameras(false);boot_compositor_initialized=true;
         std::printf("[loading14] Main compositor ready after common resources\n");return true;
     }
     void publish_cpp_title_loading(){
@@ -1199,10 +1199,10 @@ struct Application:StageResourceEffects
         if(file==1){app.boot_draw_callback_enabled=true;app.boot_signature_uploaded=true;}
         if(file==2)app.boot_ascii_uploaded=true;
         if(file==0){
-            if(!app.session.compositor.initialize(app.session.resources.core.text)){
+            if(!app.session.initialize_compositor()){
                 app.error="TH14 startup compositor: "+app.session.compositor.last_error;app.boot_worker_failed=true;return;
             }
-            app.session.compositor.reset_cameras(false);
+            app.session.reset_compositor_cameras(false);
         }
         if(file==8&&!app.initialize_boot_scores()){app.boot_worker_failed=true;return;}
         std::printf("[loading14] worker resumed after file%u\n",u32(file));
@@ -1510,7 +1510,26 @@ struct Application:StageResourceEffects
         // This local blank record is discarded; live scores and RNG stay untouched.
         {ScoreFile warm_scores;std::vector<u8> discarded;(void)warm_scores.save(discarded);}
 #endif
+#if PORT_TITLE == 14
+        mkdir("/save",0777);mkdir("/save/replay",0777);
+        if(SDL_GetPathInfo(config_path,nullptr)){
+            std::vector<u8> saved;
+            if(!read_file(config_path,saved,u32(session.config.bytes.size()))||!session.config.open(saved.data(),u32(saved.size()))){
+#if PORT_TITLE == 14
+                // Retail44552d logs a rejected config, calls4376e0 to reset
+                // it, then joins the ordinary startup path at445549.
+                // Keep import validation strict; only cold startup recovers.
+                session.config.reset();
+                std::printf("[config14] Invalid %s; using defaults\n",config_path);
+#else
+                error=std::string("Invalid ")+config_path;return false;
+#endif
+            }else saved_config_state=std::move(saved);
+        }
+        if(!graphics.initialize(session.config.render_width(),session.config.render_height())){error=graphics.error;return false;}
+#else
         if(!graphics.initialize()){error=graphics.error;return false;}
+#endif
 #if PORT_TITLE == 14 && defined(TH14_PHYSICAL_STAGE_MEMORY)
         if(!th14_stage_memory_open(th14_stage_memory_layout())){error="Unable to open TH14 physical stage kernel";return false;}
 #endif
@@ -1537,6 +1556,7 @@ struct Application:StageResourceEffects
             &session.font_bitmap
 #endif
         )){error=fonts.error;return false;}
+#if PORT_TITLE != 14
         mkdir("/save",0777);mkdir("/save/replay",0777);
 #if PORT_TITLE != 14
         if(SDL_GetPathInfo(score_path,nullptr)){std::vector<u8> saved;if(!read_file(score_path,saved,4*1024*1024)||!session.load_scores(saved.data(),u32(saved.size()))){error=std::string("Invalid ")+score_path+": "+session.scores.error;return false;}}
@@ -1555,6 +1575,7 @@ struct Application:StageResourceEffects
 #endif
             }else saved_config_state=std::move(saved);
         }
+#endif
         audio.music_volume=session.config.music_volume();audio.effects.master_volume=session.config.sound_volume();audio.refresh_volume();
         session.recording_timestamp=u64(std::time(nullptr));
 #if PORT_TITLE == 14
@@ -1603,7 +1624,11 @@ struct Application:StageResourceEffects
         for(auto& file:core.season_players)if(!graphics.preload(file)){error=graphics.error;return false;}
 #endif
 #endif
+#if PORT_TITLE == 14
+        renderer.viewport={0,0,session.config.render_width(),session.config.render_height(),0,1};
+#else
         renderer.viewport={0,0,640,480,0,1};
+#endif
         // GameBattle's STD owner creates backdrop VMs and publishes its camera.
 #if PORT_TITLE != 14
         frame_statistics.window_start=double(SDL_GetTicks())*.001;
@@ -1788,8 +1813,8 @@ struct Application:StageResourceEffects
                     if(!boot_worker_active&&job.resource==&boot_signature){boot_draw_callback_enabled=true;boot_signature_uploaded=true;}
                     if(!boot_worker_active&&job.resource==&session.resources.core.ascii)boot_ascii_uploaded=true;
                     if(!boot_worker_active&&!core_loading_done&&job.resource==&session.resources.core.text){
-                        if(!session.compositor.initialize(*job.resource)){error="TH14 startup compositor: "+session.compositor.last_error;return false;}
-                        session.compositor.reset_cameras(false);
+                        if(!session.initialize_compositor()){error="TH14 startup compositor: "+session.compositor.last_error;return false;}
+                        session.reset_compositor_cameras(false);
                     }
                     std::printf("[loading14] file %u ready after %u chunk callbacks\n",u32(job.file),job.chunk);
                     const u32 completed=boot_upload_index++;
