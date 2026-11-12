@@ -694,8 +694,9 @@ bool GameSession::record_stage_entry(bool initial){
         u32(e.th14_point_items),u32(e.point_value),u32(battle->player->state.minimum_point_value),u32(e.max_point_value),u32(e.power),u32(e.max_power),u32(e.power_step),
         u32(e.lives),u32(e.life_fragments),u32(e.th14_life_awards),u32(e.th14_bombs),u32(e.th14_bomb_fragments),u32(e.th14_combo.total),u32(e.th14_reserved_54),
         u32(e.th14_combo.count),u32(e.th14_combo.timer),float_bits(e.th14_combo.position.x),float_bits(e.th14_combo.position.y),float_bits(e.th14_combo.position.z),u32(e.th14_special_drop_count)};
-    // Native D8 carries 4d9658 bit 0; the ordinary port session uses 0.
-    s.th14_stage_flags=0;
+    // 446a4c sets new-entry=1; 446a99 clears it for the next stage.
+    // Replay4547b7 copies that bit to stage-header D8.
+    s.th14_stage_flags=initial?1u:0u;
 #endif
     if(!recording.start_stage(state.stage,s,initial))return fail("replay stage recording failed");
     if(initial)for(u32 i=0;i<20;++i)battle->spell_timing.records[i]=i*0xdeaddeadu;
