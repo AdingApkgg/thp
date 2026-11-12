@@ -107,7 +107,14 @@ bool PlayerFrame::initialize(){
     state.hit=bounds(s.position,state.hit_half);state.pickup=bounds(s.position,state.pickup_size);
     state.focused_attract=bounds(s.position,state.focused_half);state.unfocused_attract=state.focused_attract;
     state.state_timer.set(0,&animations.rate);state.invincibility.set(kPortTitle==14?0:120,&animations.rate);
-    s.option_count=0;s.option_lerp=30;return true;
+    s.option_count=0;s.option_lerp=30;
+#if PORT_TITLE == 14
+    //44cb80 fills the complete movement history before options are published.
+    for(auto& p:s.th14_history)p={s.x,s.y};
+    //44cb97..44cbdd initialize even inactive options to this fixed Y sentinel.
+    for(auto& option:motion.options)option.y=-0xc800;
+#endif
+    return true;
 }
 bool PlayerFrame::rebuild_options(){
 #if PORT_TITLE == 16
