@@ -14,7 +14,7 @@ def edit(relative,old,new):
 edit('SceneCompositor.hpp','    SceneCamera full_camera,play_camera,world_camera,scaled_play_camera;',
 '''    SceneCamera full_camera,play_camera;
 #if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_WORKER)
-    // Retail's shared world camera and its right XY qword are 8-byte aligned.
+    // Keep shared right XY naturally aligned for Wasm's qword atomic access.
     alignas(8) SceneCamera world_camera;
 #else
     SceneCamera world_camera;

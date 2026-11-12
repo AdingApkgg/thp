@@ -1,0 +1,175 @@
+{
+  "schema": "thp/th14-native-camera-roles/1",
+  "roles": {
+    "full_camera": {
+      "address": "0x4d93e8",
+      "mode": 2,
+      "returnPc": "0x446753",
+      "viewport": [
+        0,
+        0,
+        640,
+        480,
+        0.0,
+        1.0
+      ],
+      "renderSize": [
+        640,
+        480
+      ]
+    },
+    "play_camera": {
+      "address": "0x4d9190",
+      "mode": 0,
+      "returnPc": "0x4467dd",
+      "viewport": [
+        32,
+        16,
+        384,
+        448,
+        0.0,
+        1.0
+      ],
+      "renderSize": [
+        640,
+        480
+      ]
+    },
+    "scaled_play_camera": {
+      "address": "0x4d92bc",
+      "mode": 1,
+      "returnPc": "0x446869",
+      "viewport": [
+        128,
+        16,
+        384,
+        448,
+        0.0,
+        1.0
+      ],
+      "renderSize": [
+        640,
+        480
+      ]
+    },
+    "world_camera": {
+      "address": "0x4d9514",
+      "mode": 3,
+      "returnPc": "0x4468eb",
+      "viewport": [
+        116,
+        4,
+        408,
+        472,
+        0.0,
+        1.0
+      ],
+      "renderSize": [
+        640,
+        480
+      ]
+    }
+  },
+  "worldProducerAndConsumerInstructionBindings": [
+    {
+      "pc": "0x40d43a",
+      "role": "world_camera",
+      "instructionSha256": "b366b5eb4ca9cf284a9418e479de8e146c0cd1ab16227caf7a0ae62e3b091076"
+    },
+    {
+      "pc": "0x40e35e",
+      "role": "world_camera",
+      "instructionSha256": "ec99c02ae9e5a61b92193009db0ca91e7f41ed3024b192d4c86e4071c90c6d92"
+    },
+    {
+      "pc": "0x40e365",
+      "role": "world_camera",
+      "instructionSha256": "bf85cb5617d61073d19e1f17b81cd3b2215cf503e4a760a614bc5c94105c52a8"
+    },
+    {
+      "pc": "0x47e132",
+      "role": "world_camera",
+      "instructionSha256": "bf85cb5617d61073d19e1f17b81cd3b2215cf503e4a760a614bc5c94105c52a8"
+    }
+  ],
+  "originalWorldRightAddress": "0x4d9544",
+  "originalWorldRightQwordNaturallyAligned": false,
+  "originalWorldRightQwordWithinMeasuredCacheLine": true,
+  "measuredCacheLineBytes": [
+    64
+  ],
+  "originalWorldImageSection": {
+    "name": ".data",
+    "flags": "0xc0000040",
+    "notCachedFlag": false
+  },
+  "ordinaryCachedImageMappingAssumptionExplicit": true,
+  "liveHistoricalPageProtectionNotMeasured": true,
+  "correctAtomicityBasis": "P6-or-newer unaligned cached 16/32/64-bit access contained within one cache line; not an aligned-qword claim about 0x4d9190",
+  "intelReference": "https://www.intel.com/content/dam/support/us/en/documents/processors/pentium4/sb/25366821.pdf",
+  "intelSection": "7.1.1, PDF page272 (zero-based)",
+  "resetScreenMathDeclaredService": true,
+  "resetInstructionStreamUnmodified": true,
+  "rawMathAndWholeThreadSchedulingAccepted": false,
+  "previousWrongRoleClaim": "camera-right-pair-nov12 used 0x4d9190 as world and called its pair naturally aligned; this address is play_camera",
+  "runtimeBehaviorChanged": false,
+  "newGameRuns": 0,
+  "newGpuRuns": 0,
+  "audibleOutput": false,
+  "completeGame": false,
+  "executableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "toolSha256": "ee0bbdda4caf7e937156b0ad37e25880164a4dec77aaa88e2dad1f1cd3ef1a2e",
+  "commentOnlySourceCorrection": {
+    "sourceCommentCorrection": {
+      "path": "runtimes/th12/th12_web/cpp/game/SceneCompositor.hpp",
+      "beforeSha256": "3271481a5d31e4aa5dd8fea987e4821d9964c169811c0077ba14156c18f9bd54",
+      "afterSha256": "75326da4e2d8859b4391c64a60a800fbbb4e107cc5e804fb4324112458a05dbd",
+      "onlyOneLineCommentChanged": true,
+      "lineCountUnchanged": true,
+      "cppTokensAndLayoutUnchanged": true,
+      "oldCommentIncorrectNativeAlignmentClaim": true,
+      "sourceBehaviorChanged": false,
+      "runtimeRebuildRequired": false,
+      "completeGame": false
+    },
+    "checks": [
+      {
+        "backend": "sdk",
+        "objectByteIdentical": true,
+        "sha256": "946a438c4e76889720268e9e95a3aa653b33d14e8d4735366601fa709d6819bd"
+      },
+      {
+        "backend": "browser",
+        "objectByteIdentical": true,
+        "sha256": "f98913cb74cd32bdfd9ed3d3dab7c3b81778eb949256ddc6197ce1c594b3ae64"
+      }
+    ],
+    "preprocessorTokensAndLinePositionsUnchangedBySingleCommentReplacement": true,
+    "allOtherSourceBytesIdentical": true,
+    "currentSourceFiles": 368,
+    "alreadyCompiledOtherProvidersNotRecompiled": true,
+    "productionRuntimeSourceCommit": "572751a813eb58c874c901e20040b7674b1b8dcd",
+    "productionWasmSha256": "9b17c2e2bfe2e19a63af3b6d2c7d0ba6082ca05f24bef858ab51f85d65e022b4",
+    "runtimeRebuilt": false,
+    "runtimeRedeployed": false,
+    "newGameRuns": 0,
+    "newGpuRuns": 0,
+    "wholeGameAccepted": false,
+    "completeGame": false
+  },
+  "earlierRoleClaimsRejected": true,
+  "earlierInstructionObjectMathEvidenceNotRewrittenAsNewRuns": true,
+  "oldObjectAuditReportSha256": "12bad58677cbef2e1ef1d1aa439cc3ffc59a95a610b0462c11a67d2331fc11e9",
+  "rawOldReportRetained": true,
+  "currentBrowserUiAcceptance": false,
+  "browserAttempt": {
+    "browser": "Chrome3",
+    "createdTab": "1078318734",
+    "createTimedOut": true,
+    "inventoryConfirmedCreated": true,
+    "getTabResult": "Debugger unattached",
+    "gameUiInput": false,
+    "userManualRecoveryRequested": false
+  },
+  "earlierOriginal2588MatchedSampleIsNotUniversalScheduleAcceptance": true
+}
