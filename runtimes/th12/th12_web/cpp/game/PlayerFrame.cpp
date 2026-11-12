@@ -73,7 +73,11 @@ bool player_th14_death_drops(GameEconomy& economy,Vec3 p,PlayerFrameWorld& world
     return true;
 }
 #endif
-PlayerFrame::PlayerFrame(ShtResource& s,AnmResource& p,AnmResource& b,AnmManager& a,GameEconomy& e,PlayerFrameWorld& w,u16 pf,u16 bf):motion(p,b,a,*this,pf,bf),shots(s,p,a,w,pf),resource(s),bullet_resource(b),animations(a),economy(e),world(w),bullet_file(bf){state.state_timer.set(0,&a.rate);state.transition_timer.set(0,&a.rate);state.invincibility.set(0,&a.rate);}
+PlayerFrame::PlayerFrame(ShtResource& s,AnmResource& p,AnmResource& b,AnmManager& a,GameEconomy& e,PlayerFrameWorld& w,u16 pf,u16 bf):motion(p,b,a,*this,pf,bf),shots(s,p,a,w,pf),resource(s),bullet_resource(b),animations(a),economy(e),world(w),bullet_file(bf){state.state_timer.set(0,&a.rate);
+    //44c350/44c4a0 leave+6a0 zeroed;44cc10 binds it at stage activation.
+    if constexpr(kPortTitle==14)state.transition_timer={0,0,0,nullptr,0};
+    else state.transition_timer.set(0,&a.rate);
+    state.invincibility.set(0,&a.rate);}
 bool PlayerFrame::initialize(){
     const i32 character=input.movement.character;
     if(!player_selection_valid(character,input.movement.subtype)){last_error=4;return false;}
