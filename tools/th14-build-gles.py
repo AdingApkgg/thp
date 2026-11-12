@@ -38,7 +38,8 @@ def main():
     for directory in (cpp, runtime / 'portable'):
         tracked.update(p for p in directory.rglob('*')
                        if p.is_file() and p.suffix in {'.hpp', '.h', '.inc', '.js', '.mjs'})
-    tracked.update((Path(__file__).resolve(), repo / 'tools/th14-gles-profile.json'))
+    host = runtime / 'th12_web/sdl-runtime/eagler-host.mjs'
+    tracked.update((Path(__file__).resolve(), repo / 'tools/th14-gles-profile.json', host))
     source_bindings = {p.relative_to(repo).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
                        for p in sorted(tracked)}
 
@@ -60,15 +61,20 @@ def main():
         run([*profile['flags'], *compiled, *link_flags, '-o', str(output / 'th14-sdl.mjs')])
     for helper in profile['helpers']:
         shutil.copyfile(portable / helper, output / helper)
+    shutil.copyfile(host, output / host.name)
     for name, expected in source_bindings.items():
         if hashlib.sha256((repo / name).read_bytes()).hexdigest() != expected:
             raise RuntimeError('Source changed during build: ' + name)
     wasm = output / 'th14-sdl.wasm'
+    runtime_files = {}
+    for name in ['th14-sdl.mjs', 'th14-sdl.wasm', host.name, *profile['helpers']]:
+        data = (output / name).read_bytes()
+        runtime_files[name] = dict(bytes=len(data), sha256=hashlib.sha256(data).hexdigest())
     report = dict(module=str(wasm), units=len(compiled), sourceBindings=source_bindings,
                   objects={str(Path(p).relative_to(output)): hashlib.sha256(Path(p).read_bytes()).hexdigest()
                            for p in compiled}, flags=profile['flags'], linkFlags=link_flags,
-                  sha256=hashlib.sha256(wasm.read_bytes()).hexdigest(),
-                  loaderSha256=hashlib.sha256((output / 'th14-sdl.mjs').read_bytes()).hexdigest())
+                  runtimeFiles=runtime_files, sha256=runtime_files[wasm.name]['sha256'],
+                  loaderSha256=runtime_files['th14-sdl.mjs']['sha256'])
     (output / 'build.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
     print(json.dumps(dict(module=str(wasm), units=len(compiled), sha256=report['sha256'])))
 

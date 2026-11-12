@@ -88,6 +88,16 @@ bool Renderer::initialize(){
    warm.texture=texture;auto& p=warm.pipeline;p.alphaTest=alpha;p.fog=fog;p.alphaCompare=Compare::GreaterEqual;
    p.color.operation=p.alpha.operation=op;p.color.first=p.alpha.first={op==ColorOperation::First?ArgumentSource::Diffuse:ArgumentSource::Texture};p.color.second=p.alpha.second={second};select(warm);
  }
+#if defined(PORT_TITLE) && PORT_TITLE == 14
+ // The fogged world and ordinary textured sprites use the depth variants.
+ // Other uncommon combinations can still use the prelinked generic shader.
+ warm.depth=1;warm.texture=1;
+ for(bool fog:{false,true})for(bool alpha:{false,true})for(auto second:{ArgumentSource::Diffuse,ArgumentSource::Factor}){
+   auto& p=warm.pipeline;p.fog=fog;p.alphaTest=alpha;
+   p.color.operation=p.alpha.operation=ColorOperation::Multiply;p.color.first=p.alpha.first={ArgumentSource::Texture};
+   p.color.second=p.alpha.second={second};select(warm);
+ }
+#endif
  resampleProgram=glCreateProgram();const auto rv=shader(GL_VERTEX_SHADER,resampleVertex),rf=shader(GL_FRAGMENT_SHADER,resampleFragment);
  glAttachShader(resampleProgram,rv);glAttachShader(resampleProgram,rf);glLinkProgram(resampleProgram);glDeleteShader(rv);glDeleteShader(rf);
  GLint linked=0;glGetProgramiv(resampleProgram,GL_LINK_STATUS,&linked);if(!linked){failure="Resample program link failed";return false;}
@@ -97,6 +107,10 @@ bool Renderer::initialize(){
 Renderer::~Renderer(){discard();
 #ifdef TH14_WEBGPU_BACKEND
  if(webGpu){delete webGpu;if(window)SDL_DestroyWindow(window);if(active==this)active=nullptr;SDL_Quit();return;}
+#endif
+#if defined(__EMSCRIPTEN__) && defined(PORT_TITLE) && PORT_TITLE == 14
+ if(previousBrowserFrame)glDeleteSync(previousBrowserFrame);
+ if(latestBrowserFrame)glDeleteSync(latestBrowserFrame);
 #endif
 for(auto& [id,g]:surfaces){glDeleteTextures(1,&g.texture);glDeleteFramebuffers(1,&g.framebuffer);}for(auto& [id,d]:depths)glDeleteRenderbuffers(1,&d.buffer);for(auto& [k,p]:programs)glDeleteProgram(p.id);glDeleteProgram(resampleProgram);glDeleteVertexArrays(1,&resampleVao);glDeleteTextures(1,&weightTexture);glDeleteProgram(generic.id);for(auto& entry:layouts)glDeleteVertexArrays(1,&entry.second);glDeleteShader(vertex);glDeleteBuffers(1,&vertices.id);glDeleteBuffers(1,&indices.id);glDeleteBuffers(1,&instances.id);if(context)SDL_GL_DestroyContext(context);if(window)SDL_DestroyWindow(window);if(active==this)active=nullptr;SDL_Quit();}
 void Renderer::bind_texture(GLuint id){if(boundTexture!=id){glBindTexture(GL_TEXTURE_2D,id);boundTexture=id;++stats.textureBinds;}}
@@ -114,13 +128,29 @@ void Renderer::transform(MatrixKind kind,const void* p){auto& m=state.matrix[u32
 void Renderer::viewport(const Viewport& v){state.viewport=v;}
 void Renderer::select(const State& s){
  const auto& p=s.pipeline;auto arg=[](Argument a){return u32(a.source)|(a.complement?16u:0u)|(a.alphaOnly?32u:0u);};
+#if defined(PORT_TITLE) && PORT_TITLE == 14
+ u32 textureAndDepth=u32(!!s.texture);
+#if defined(PORT_TITLE) && PORT_TITLE == 14
+ // If the depth comparison always passes and writes are off, the depth
+ // output is unused. The colour-only variant never exports gl_FragDepth.
+ const bool depthOutput=version==10&&(warming?bool(s.depth):
+   p.depthTest&&s.depth&&(p.depthWrite||p.depthCompare!=Compare::Always)&&resolve(owner,s.depth).format==PixelFormat::Depth16);
+ textureAndDepth|=u32(depthOutput)<<1;
+#endif
+ std::array<u32,10> key{textureAndDepth,u32(p.alphaTest),u32(p.fog),u32(p.color.operation),u32(p.alpha.operation),arg(p.color.first),arg(p.color.second),arg(p.alpha.first),arg(p.alpha.second),u32(p.alphaCompare)};auto it=programs.find(key);
+#else
  std::array<u32,10> key{u32(!!s.texture),u32(p.alphaTest),u32(p.fog),u32(p.color.operation),u32(p.alpha.operation),arg(p.color.first),arg(p.color.second),arg(p.alpha.first),arg(p.alpha.second),u32(p.alphaCompare)};auto it=programs.find(key);
+#endif
  if(it==programs.end()&&!warming){program=&generic;++stats.genericBatches;if(currentProgram!=program->id){glUseProgram(program->id);currentProgram=program->id;}return;}
  if(it==programs.end()){
   ++stats.programCompiles;
   static const char* constants[]{"hasTexture","alphaTest","fogEnabled","colorOp","alphaOp","colorArg1","colorArg2","alphaArg1","alphaArg2","alphaFunc"};
   std::string source=fragmentSource,defs;if(!buildingGeneric){replace(source,"uniform bool hasTexture,alphaTest,fogEnabled;","");replace(source,"uniform int colorOp,alphaOp,colorArg1,colorArg2,alphaArg1,alphaArg2,alphaFunc;","");
+#if defined(PORT_TITLE) && PORT_TITLE == 14
+  for(int i=0;i<10;i++)defs+="const "+std::string(i<3?"bool ":"int ")+constants[i]+"="+(i<3?((i==0?(key[i]&1u):key[i])?"true":"false"):std::to_string(key[i]))+";\n";
+#else
   for(int i=0;i<10;i++)defs+="const "+std::string(i<3?"bool ":"int ")+constants[i]+"="+(i<3?(key[i]?"true":"false"):std::to_string(key[i]))+";\n";
+#endif
   replace(source,"precision highp float;","precision highp float;\n"+defs);}
   // Match byte alpha after the measured RGBA8 conversion. Float32 arithmetic
   // alone differs at rounding boundaries on some devices.
@@ -128,6 +158,8 @@ void Renderer::select(const State& s){
   if(version==8)replace(source,"float a=c.a*255.0","float a=floor(c.a*255.0+.5)");
   if(version==8)replace(source,"gl_FragDepth=depth16?(floor(scaled)+floor(fract(scaled)-gl_FragCoord.z+0.5))/65535.0:gl_FragCoord.z;","");
 #if defined(PORT_TITLE) && PORT_TITLE == 14
+  if(version==10&&!buildingGeneric&&!depthOutput)
+    replace(source,"gl_FragDepth=depth16?(floor(scaled)+floor(fract(scaled)-gl_FragCoord.z+0.5))/65535.0:gl_FragCoord.z;","");
   // Installed D3D9 D16 conversion: truncate to twenty fractional bits,
   // then round the sixteen-bit result to nearest with ties downward.
   if(version==10){replace(source,"float scaled=gl_FragCoord.z*65536.0;","float quantized=floor(gl_FragCoord.z*1048576.0)/1048576.0;float scaled=quantized*65536.0;");replace(source,"floor(fract(scaled)-gl_FragCoord.z+0.5)","ceil(fract(scaled)-quantized-0.5)");}
@@ -204,15 +236,47 @@ void Renderer::issue(const State& d,Topology primitive,u32 count,const void* dat
  if(webGpu){webGpu->issue(d,primitive,count,data,index,indexFormat,instance,instanceSize);return;}
 #endif
 #if defined(PORT_TITLE) && PORT_TITLE == 14
- if(!clippedGeometry&&!index&&!d.layout.screen&&d.layout==attributes(VertexLayout::WorldUv)&&d.stride==20){
-  if(instance){
-   bool needsClip=false;const auto* records=static_cast<const u8*>(instance);
-   for(u32 i=0;i<instanceSize/68;i++){State one=d;std::memcpy(one.matrix[0].data(),records+i*68,64);std::vector<Th14ClipVertex> temp;if(th14_clip_world_uv(one,primitive,count,data,temp)==1){needsClip=true;break;}}
+ const auto& p14=d.pipeline;
+ const bool nativeFog=version==10&&p14.fog&&!p14.rangeFog&&p14.fogMode==FogMode::Linear&&std::isfinite(p14.fogNear)&&std::isfinite(p14.fogFar)&&p14.fogNear!=p14.fogFar;
+ const bool worldClip=!clippedGeometry&&!index&&!d.layout.screen&&d.layout==attributes(VertexLayout::WorldUv)&&d.stride==20;
+ auto may_cross_w=[&](const std::array<float,16>& clip){
+   // The exact CPU clipper can only take ownership when at least one
+   // vertex has non-positive W. Do not build its UV/fog scratch for
+   // the ordinary in-front world quads.
+   if(!count)return false;
+   if(!data||count>65536||
+      (primitive!=Topology::Triangles&&primitive!=Topology::Strip&&primitive!=Topology::Fan))return true;
+   for(u32 i=0,n=vertex_count(primitive,count);i<n;++i){
+    float position[3];std::memcpy(position,static_cast<const u8*>(data)+i*d.stride,12);
+    if(!(th14_dot(clip,3,position)>0))return true;
+   }
+   return false;
+ };
+ std::array<float,16> eye{},clip{};
+ if(!d.layout.screen&&!instance){eye=th14_multiply(d.matrix[1],d.matrix[0]);clip=th14_multiply(d.matrix[2],eye);}
+ std::vector<u8> expanded;
+ if(instance){
+   const auto* records=static_cast<const u8*>(instance);
+   const u32 total=instanceSize/68;expanded.resize(total*136);
+   bool needsClip=false;
+   for(u32 i=0;i<total;++i){
+    std::array<float,16> model;std::memcpy(model.data(),records+i*68,64);
+    const auto view=th14_multiply(d.matrix[1],model), projected=th14_multiply(d.matrix[2],view);
+    if(worldClip&&may_cross_w(projected)){
+     State one=d;one.matrix[0]=model;std::vector<Th14ClipVertex> temp;
+     if(th14_clip_world_uv(one,primitive,count,data,temp)==1){needsClip=true;break;}
+    }
+    auto* destination=expanded.data()+i*136;
+    std::memcpy(destination,records+i*68,68);
+    if(nativeFog)std::memcpy(destination,view.data(),64);
+    std::memcpy(destination+68,projected.data(),64);
+    const float eligible=th14_primitive_projectable(static_cast<const float*>(data),d.stride,0,4,projected,d.viewport)?1.f:0.f;
+    std::memcpy(destination+132,&eligible,4);
+   }
    if(needsClip){for(u32 i=0;i<instanceSize/68;i++){State one=d;std::memcpy(one.matrix[0].data(),records+i*68,64);std::memcpy(&one.pipeline.textureFactor,records+i*68+64,4);std::vector<Th14ClipVertex> temp;if(th14_clip_world_uv(one,primitive,count,data,temp)==1)issue(one,primitive,count,data,size,nullptr,indexFormat,nullptr,0);else issue(d,primitive,count,data,size,nullptr,indexFormat,records+i*68,68);}return;}
-  }else{
+ }else if(worldClip&&may_cross_w(clip)){
    std::vector<Th14ClipVertex> clipped;const int status=th14_clip_world_uv(d,primitive,count,data,clipped);
    if(status==1){if(!clipped.empty()){State one=d;one.stride=88;one.layout.uv=44;issue(one,Topology::Triangles,u32(clipped.size()/3),clipped.data(),u32(clipped.size()*88),nullptr,indexFormat,nullptr,0,true);}return;}
-  }
  }
 #endif
  const auto& p=d.pipeline;auto& cached=drawState.pipeline;const bool all=!drawState.valid;
@@ -221,12 +285,15 @@ void Renderer::issue(const State& d,Topology primitive,u32 count,const void* dat
  if(!drawState.has_viewport||std::memcmp(&drawState.viewport,&v,sizeof(v))){glViewport(v.x,v.y,v.width,v.height);glDepthRangef(v.min,v.max);drawState.viewport=v;drawState.has_viewport=true;}select(d);
  float vp[]{float(v.x),float(v.y),float(v.width),float(v.height)};uniform(0,4,vp);const bool transformed=d.layout.screen;
 #if defined(PORT_TITLE) && PORT_TITLE == 14
- if(!transformed&&!instance){auto clip=th14_clip(d.matrix[0],d.matrix[1],d.matrix[2]);uniform(26,16,clip.data());}
+ if(!transformed&&!instance)uniform(26,16,clip.data());
 #endif
  integer(1,transformed);integer(2,p.textureTransform);integer(3,!!instance);
 #if defined(PORT_TITLE) && PORT_TITLE == 14
- const bool nativeFog=version==10&&p.fog&&!p.rangeFog&&p.fogMode==FogMode::Linear&&std::isfinite(p.fogNear)&&std::isfinite(p.fogFar)&&p.fogNear!=p.fogFar;
- if(nativeFog){const auto eye=th14_multiply(d.matrix[1],d.matrix[0]);uniform(4,16,eye.data());uniform(5,16,identity.data());uniform(6,16,d.matrix[2].data());uniform(7,16,d.matrix[3].data());}
+ if(nativeFog){
+  // The uniform model is unused for instancing; preserve the old model
+  // for transformed vertices, including the CPU-clipped layout.
+  if(transformed||instance)eye=th14_multiply(d.matrix[1],d.matrix[0]);
+  uniform(4,16,eye.data());uniform(5,16,identity.data());uniform(6,16,d.matrix[2].data());uniform(7,16,d.matrix[3].data());}
  else {for(int i=0;i<4;i++)uniform(4+i,16,d.matrix[i].data());}
  float fogLinear[3]{};if(nativeFog){volatile float range=p.fogFar-p.fogNear;volatile float scale=1.f/range;volatile float bias=p.fogFar*scale;fogLinear[0]=bias;fogLinear[1]=scale;fogLinear[2]=1.f;}uniform(27,3,fogLinear);
 #else
@@ -275,14 +342,14 @@ integer(13,!!texture);uniform(14,4,color(p.textureFactor).data());
  if(!instance){
   if(clippedGeometry){glDisableVertexAttribArray(13);glVertexAttrib1f(13,-1.f);glVertexAttribDivisor(13,0);}
   else if(!transformed&&!index&&primitive==Topology::Triangles){
-   const u32 submitted=vertex_count(primitive,count);std::vector<float> eligibility(submitted,0.f);const auto clip=th14_clip(d.matrix[0],d.matrix[1],d.matrix[2]);
+   const u32 submitted=vertex_count(primitive,count);std::vector<float> eligibility(submitted,0.f);
    for(u32 i=0;i+2<submitted;i+=3)if(th14_primitive_projectable(static_cast<const float*>(data),d.stride,i,3,clip,d.viewport))eligibility[i]=eligibility[i+1]=eligibility[i+2]=1.f;
    const u32 flagBase=upload(instances,GL_ARRAY_BUFFER,eligibility.data(),u32(eligibility.size()*4),65536);glEnableVertexAttribArray(13);glVertexAttribPointer(13,1,GL_FLOAT,false,4,reinterpret_cast<void*>(flagBase));glVertexAttribDivisor(13,0);
   }else{
    glDisableVertexAttribArray(13);float eligible=0.f;
    // A non-instanced four-vertex strip is the same complete quad tested by
    // the instanced path. Preserve its projection rounding as well.
-   if(!transformed&&!index&&primitive==Topology::Strip&&count==2){const auto clip=th14_clip(d.matrix[0],d.matrix[1],d.matrix[2]);eligible=th14_primitive_projectable(static_cast<const float*>(data),d.stride,0,4,clip,d.viewport)?1.f:0.f;}
+   if(!transformed&&!index&&primitive==Topology::Strip&&count==2)eligible=th14_primitive_projectable(static_cast<const float*>(data),d.stride,0,4,clip,d.viewport)?1.f:0.f;
    glVertexAttrib1f(13,eligible);glVertexAttribDivisor(13,0);
   }
  }
@@ -308,16 +375,6 @@ glEnableVertexAttribArray(0);glVertexAttribPointer(0,(transformed||clippedGeomet
 #if defined(PORT_TITLE) && PORT_TITLE == 14
  // Keep each original world/factor record and append its derived clip matrix.
  // The queue remains 68B; only the submitted instance buffer gains the matrix.
- const u32 records=instanceSize/68;std::vector<u8> expanded(records*136);
- const auto* input=static_cast<const u8*>(instance);
- for(u32 record=0;record<records;++record){
-  std::array<float,16> model{};std::memcpy(model.data(),input+record*68,64);
-  auto clip=th14_clip(model,d.matrix[1],d.matrix[2]);
-  std::memcpy(expanded.data()+record*136,input+record*68,68);
-  if(nativeFog){const auto eye=th14_multiply(d.matrix[1],model);std::memcpy(expanded.data()+record*136,eye.data(),64);}
-  std::memcpy(expanded.data()+record*136+68,clip.data(),64);
-  const float eligible=th14_primitive_projectable(static_cast<const float*>(data),d.stride,0,4,clip,d.viewport)?1.f:0.f;std::memcpy(expanded.data()+record*136+132,&eligible,4);
- }
  u32 b=upload(instances,GL_ARRAY_BUFFER,expanded.data(),u32(expanded.size()),65536);
 #else
  u32 b=upload(instances,GL_ARRAY_BUFFER,instance,instanceSize,65536);
@@ -387,6 +444,24 @@ void Renderer::release(u32 id){flush();
 #endif
 auto d=depths.find(id);if(d!=depths.end()){glDeleteRenderbuffers(1,&d->second.buffer);depths.erase(d);}auto it=surfaces.find(id);if(it==surfaces.end())return;glDeleteTextures(1,&it->second.texture);glDeleteFramebuffers(1,&it->second.framebuffer);surfaces.erase(it);boundTexture=readFramebuffer=drawFramebuffer=~0u;}
 void Renderer::present(u32 id){flush();pending=id;stats.frames++;if(!defer)commit();}
+#if defined(__EMSCRIPTEN__) && defined(PORT_TITLE) && PORT_TITLE == 14
+bool Renderer::browser_draw_backpressured(){
+ // Keep one frame of overlap between RAF and the GPU. If both recent
+ // frames are still queued, keep ticking and skip only the stale draw.
+ return previousBrowserFrame&&latestBrowserFrame&&
+        glClientWaitSync(previousBrowserFrame,0,0)==GL_TIMEOUT_EXPIRED;
+}
+void Renderer::fence_browser_frame(){
+ // A later fence also covers preceding draws, including mandatory
+ // menu, transition and capture frames that can bypass the gate.
+ if(previousBrowserFrame)glDeleteSync(previousBrowserFrame);
+ previousBrowserFrame=latestBrowserFrame;
+ latestBrowserFrame=glFenceSync(GL_SYNC_GPU_COMMANDS_COMPLETE,0);
+ // Send the final blit and its fence now. This does not wait for the GPU
+ // or use SDL's browser swap (which sleeps through Asyncify).
+ glFlush();
+}
+#endif
 bool Renderer::commit(){if(!pending)return false;
 #ifdef TH14_WEBGPU_BACKEND
  if(webGpu){const auto id=pending;pending=0;webGpu->present(id);++stats.presentations;return true;}
@@ -397,7 +472,15 @@ glBlitFramebuffer(0,0,s.width,s.height,0,s.height,s.width,0,GL_COLOR_BUFFER_BIT,
 #else
 glBlitFramebuffer(0,0,s.width,s.height,0,480,640,0,GL_COLOR_BUFFER_BIT,GL_NEAREST);
 #endif
-SDL_GL_SwapWindow(window);stats.presentations++;return true;}
+#if defined(__EMSCRIPTEN__) && defined(PORT_TITLE) && PORT_TITLE == 14
+fence_browser_frame();
+#else
+SDL_GL_SwapWindow(window);
+#endif
+// SDL's browser GLES swap has no buffer swap: it sleeps through Asyncify.
+// TH14 uses an implicitly presented WebGL canvas, so returning to its RAF
+// host after the blit is enough. Sleeping here can miss the next refresh.
+stats.presentations++;return true;}
 }
 extern "C" {
 const touhou::sdl::Statistics* sdl_stats(){static touhou::sdl::Statistics zero{};return touhou::sdl::current()?&touhou::sdl::current()->stats:&zero;}

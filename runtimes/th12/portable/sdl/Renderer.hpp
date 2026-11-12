@@ -29,6 +29,9 @@ public:
     Statistics stats{};State state{};bool defer=false;
     Renderer(int version,Resolve,void*);~Renderer();
     bool initialize();void flush();void discard();bool commit();
+#if defined(__EMSCRIPTEN__) && defined(PORT_TITLE) && PORT_TITLE == 14
+    bool browser_draw_backpressured();
+#endif
     PipelineState& pipeline() override { return state.pipeline; }
     void transform(MatrixKind,const void*);void viewport(const Viewport&);
     void draw(Topology primitive,u32 count,const void*,u32 stride,const void* indices=nullptr,IndexType indexFormat=IndexType::UInt16);
@@ -60,6 +63,10 @@ private:
     Stream vertices{},indices{},instances{};State batchState{};
     std::vector<u8> batchBytes,quad,worlds,pixels;bool batching=false,instancing=false;
     u32 batchCount=0,pending=0;std::string failure;
+#if defined(__EMSCRIPTEN__) && defined(PORT_TITLE) && PORT_TITLE == 14
+    GLsync previousBrowserFrame=nullptr,latestBrowserFrame=nullptr;
+    void fence_browser_frame();
+#endif
     GPU& surface(u32);GPU& target(u32,u32);void issue(const State&,Topology,u32,const void*,u32,const void*,IndexType,const void*,u32,bool clippedGeometry=false);
     void bind_texture(GLuint);void bind_framebuffer(GLenum,GLuint);
     void select(const State&);void uniform(int,int,const float*);void integer(int,int);

@@ -387,6 +387,9 @@ bool GameSession::begin(GameResources& source, u32 stage, i32 character,
     this->source=&source;
     if(!player_selection_valid(character,subtype)||difficulty<0||difficulty>4)
         return fail("invalid TH11 session selection");
+#if PORT_TITLE == 14
+    resources.ascii_display_width=persistent_config().render_width();
+#endif
     if(!resources.load_core(source)) return fail(resources.error.c_str());
 #if PORT_TITLE == 14
     if(!resources.select_player(u32(character),u32(subtype)))return fail(resources.error.c_str());
@@ -1409,6 +1412,9 @@ bool GameSession::open_title(GameResources& data,bool first,TitleScreen screen){
 #endif
     if(!title)scores.write_records(spell_records,clear_records);
     reset_state();source=&data;interactive=true;
+#if PORT_TITLE == 14
+    resources.ascii_display_width=persistent_config().render_width();
+#endif
     if(!resources.load_core(data))return fail(resources.error.c_str());
     if constexpr(kPortTitle==14||kPortTitle==16)animations.fallback_sprites=&resources.core.ascii;
 #if PORT_TITLE == 14

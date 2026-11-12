@@ -238,16 +238,16 @@ bool AudioDevice::consume_initial_music_request(bool native_direct_sound){
         const u32 bytes=word(format+20),total=word(format+28);
         if(!align||!rate||!channels||bits!=16||bytes%align||bytes!=total){error="Unsupported initial music PCM layout";return Result::Failed;}
         std::string stem=request.file;const auto dot=stem.find_last_of('.');if(dot!=std::string::npos)stem.erase(dot);
-        const auto path=std::string("/music/")+stem+".flac";
+        auto path=std::string("/music/")+stem+".ogg";
         ma_decoder decoder{};const auto config=ma_decoder_config_init(ma_format_s16,channels,rate);
-        if(ma_decoder_init_file(path.c_str(),&config,&decoder)!=MA_SUCCESS){error="Unable to preload "+path;return Result::Failed;}
+        if(open_th14_music(path,config,decoder)!=MA_SUCCESS){error="Unable to preload "+path;return Result::Failed;}
         auto pcm=std::make_shared<Impl::MusicPcm>();pcm->filename=request.file;pcm->format=format;pcm->wave.resize(44+bytes);
         ma_uint64 length=0,read=0;const bool ok=ma_decoder_get_length_in_pcm_frames(&decoder,&length)==MA_SUCCESS&&length==total/align&&
             ma_decoder_read_pcm_frames(&decoder,pcm->wave.data()+44,bytes/align,&read)==MA_SUCCESS&&read==bytes/align;
         ma_decoder_uninit(&decoder);
         if(!ok){error="Initial music PCM length differs from original: "+path;return Result::Failed;}
         // A 44-byte WAV view lets the existing streaming/Continue decoder
-        // read this exact s16 PCM without keeping a second payload copy.
+        // read the decoded s16 PCM without keeping a second payload copy.
         auto* w=pcm->wave.data();const auto put32=[&](u32 offset,u32 value){std::memcpy(w+offset,&value,4);};
         const auto put16=[&](u32 offset,u16 value){std::memcpy(w+offset,&value,2);};
         std::memcpy(w,"RIFF",4);put32(4,36+bytes);std::memcpy(w+8,"WAVEfmt ",8);put32(16,16);put16(20,1);put16(22,u16(channels));
@@ -281,17 +281,13 @@ bool AudioDevice::music(i32 track){
 #endif
         ma_sound_set_volume(&a.music->sound,music_enabled?volume(SoundEffects::adjusted_volume(0,music_volume,true)):0.f);ma_sound_start(&a.music->sound);return true;}
     auto next=std::make_unique<Impl::Voice>();
-#if PORT_TITLE == 14
-    const auto path=std::string("/music/")+stem+".flac";
-#else
-    const auto path=std::string("/music/")+stem+".ogg";
-#endif
+    auto path=std::string("/music/")+stem+".ogg";
     const u32 rate=word(format+36),align=short_word(format+44),channels=short_word(format+34),total=word(format+28),intro=word(format+24);
     if(!align||!rate||!channels||intro>=total){error="Invalid music loop";return false;}
     auto config=ma_decoder_config_init(ma_format_f32,channels,rate);
 #if PORT_TITLE == 14
     next->cached_pcm=std::move(cached_music);
-    const auto decoded=next->cached_pcm?ma_decoder_init_memory(next->cached_pcm->wave.data(),next->cached_pcm->wave.size(),&config,&next->decoder):ma_decoder_init_file(path.c_str(),&config,&next->decoder);
+    const auto decoded=next->cached_pcm?ma_decoder_init_memory(next->cached_pcm->wave.data(),next->cached_pcm->wave.size(),&config,&next->decoder):open_th14_music(path,config,next->decoder);
     if(decoded!=MA_SUCCESS){error="Unable to decode "+path;return false;}next->decoded=true;
     if(next->cached_pcm)++a.preload_cache_hits;
 #else

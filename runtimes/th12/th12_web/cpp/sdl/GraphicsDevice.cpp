@@ -139,7 +139,7 @@ bool GraphicsDevice::prepare_texture(AnmResource& file,u32 index,u32& handle,boo
 #endif
     const bool loaded=texture.image.load(selected,low_color
 #if PORT_TITLE == 14
-            ,texture_high_precision&&*texture_high_precision
+            ,texture_high_precision&&*texture_high_precision,textures.at(screen).image.width
 #endif
     );
     if(!loaded){error="Unable to prepare ANM texture: "+source.name+" ("+texture.image.failure+")";return false;}

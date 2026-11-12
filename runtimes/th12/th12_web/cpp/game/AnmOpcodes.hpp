@@ -104,6 +104,7 @@ constexpr u16 anm_th16_field2_bit7 = 0x7134;
 constexpr u16 anm_th16_field2_bit8 = 0x7135;
 constexpr u16 anm_th16_field2_bit9 = 0x7136;
 constexpr u16 anm_th16_visible = 0x7137;
+constexpr u16 anm_th14_rotation_z_interpolate = 0x7138;
 constexpr AnmOpcodeRow th13_anm_opcodes[] = {
 
 // >>> th13 rows
@@ -299,8 +300,10 @@ constexpr AnmOpcodeRow th14_anm_opcodes[] = {
     {400,48,0,"native"}, {401,49,0,"native"}, {402,50,0,"native"},
     {404,52,0,"native"}, {406,76,0,"native"},
     {407,56,0,"native"}, {408,57,0,"native"}, {409,58,0,"native"},
-    {410,59,0,"native"}, {412,60,0,"native"}, {413,78,0,"native"}, {414,79,0,"native"},
-    {415,53,0,"native"}, {416,54,0,"native"}, {417,55,0,"native"}, {422,83,0,"native"},
+    {410,59,0,"native"}, {411,anm_th14_rotation_z_interpolate,0,"native"},
+    {412,60,0,"native"}, {413,78,0,"native"}, {414,79,0,"native"},
+    {415,53,0,"native"}, {416,54,0,"native"}, {417,55,0,"native"},
+    {418,98,0,"native"}, {419,99,0,"native"}, {422,83,0,"native"},
     {425,70,0,"native"}, {426,71,0,"native"}, {427,93,0,"native"}, {428,94,0,"native"},
     {429,anm_th13_texture_scale,0,"native"}, {430,anm_th13_texture_scale_interpolate,0,"native"},
     {433,anm_th13_polar_interpolate,0,"native"}, {434,anm_th13_extra_scale,0,"native"},

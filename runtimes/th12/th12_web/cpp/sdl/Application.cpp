@@ -306,7 +306,18 @@ struct Application:StageResourceEffects
 #endif
 #if PORT_TITLE == 14
     bool frame_statistics_sampled=false;
+    bool coalesce_browser_draw=false;
     u8 frame_skip_counter=0;
+    bool can_coalesce_browser_draw()const noexcept{
+        const auto* b=session.battle.get();
+        if(session.state.phase!=GameSessionPhase::stage||session.state.replay||session.state.demo||
+           !b||!session.battle_callbacks_attached()||!b->stage_active||!b->stage||b->pending_stage||
+           b->transitioning||b->completion.state.exit!=StageExit::None||
+           (b->dialogue&&b->dialogue->active)||session.persistent_config().bytes[0x20])return false;
+        for(const auto& slot:session.animations.deferred_captures.slots)
+            if(__atomic_load_n(&slot.file_index,__ATOMIC_ACQUIRE)>=0)return false;
+        return true;
+    }
     bool present_this_update(){
         // Retail46a833 increments a byte, then compares its signed value.
         ++frame_skip_counter;
@@ -1103,7 +1114,7 @@ struct Application:StageResourceEffects
             // Bootstrap all three before the first upload, preserving Sig,
             // ASCII and text template order without holding an Asyncify stack
             // open while their CPU decoding runs in the independent worker.
-            const char* names[]={"sig.anm","ascii.anm","text.anm"};
+            const char* names[]={"sig.anm",session.resources.ascii_anm_name(),"text.anm"};
             th14_webgpu_archive_schedule(run_boot_work,new BootWorkToken{this,boot_worker_generation,work,index},names,3);
             return;
         }
@@ -1526,6 +1537,8 @@ struct Application:StageResourceEffects
 #endif
             }else saved_config_state=std::move(saved);
         }
+        // Retail40b530 selects ASCII before the boot worker starts loading it.
+        session.resources.ascii_display_width=session.config.render_width();
         if(!graphics.initialize(session.config.render_width(),session.config.render_height())){error=graphics.error;return false;}
 #else
         if(!graphics.initialize()){error=graphics.error;return false;}
@@ -2010,7 +2023,7 @@ struct Application:StageResourceEffects
                 const auto& sprite=*vm->sprite;const u32 target=graphics.texture(*vm->resource,sprite.texture);renderer.flush();
                 i32 from[]={32,16,416,464};u32 source=GraphicsDevice::screen;
 #if PORT_TITLE == 14
-                const auto capture=th14_immediate_capture_source(session);
+                const auto capture=th14_immediate_capture_source(session,float(session.config.render_width())/640.f);
                 std::copy(capture.rectangle,capture.rectangle+4,from);
                 if(capture.text_intermediate){source=graphics.texture(session.resources.core.text,3);if(!source){error="Pause capture source texture missing";return false;}}
 #endif
@@ -2055,6 +2068,13 @@ struct Application:StageResourceEffects
 #endif
 #if PORT_TITLE == 14
         if(!present_this_update())return true;
+        // Under a slow browser refresh the next update will submit the
+        // current scene. Keep this update's input, effects, audio and clock.
+        if(coalesce_browser_draw&&before==GameSessionPhase::stage&&can_coalesce_browser_draw()){
+            sample_frame_statistics();
+            if(!session.sample_spell_clock(double(SDL_GetTicksNS())*1e-9)){error="Invalid spell timing state";return false;}
+            return true;
+        }
 #endif
         frame_text.clear();
 #if PORT_TITLE == 14
@@ -2107,7 +2127,38 @@ struct Application:StageResourceEffects
     }
 };
 Application app;
+#if PORT_TITLE == 14
+struct Key {
+    const char* code;const char* sdl;u32 scan,vk;bool hosted=false;SDL_Scancode native=SDL_SCANCODE_UNKNOWN;
+#if PORT_TITLE == 14
+    bool pending_press=false;
+#endif
+    void event(bool down) noexcept {
+#if PORT_TITLE == 14
+        // Keydown and keyup can both arrive between two browser updates.
+        if(down&&!hosted)pending_press=true;
+#endif
+        hosted=down;
+    }
+    bool sample() noexcept {
+#if PORT_TITLE == 14
+        const bool value=hosted||pending_press;
+        pending_press=false;
+        return value;
+#else
+        return hosted;
+#endif
+    }
+    void clear() noexcept {
+        hosted=false;
+#if PORT_TITLE == 14
+        pending_press=false;
+#endif
+    }
+};
+#else
 struct Key {const char* code;const char* sdl;u32 scan,vk;bool hosted=false;SDL_Scancode native=SDL_SCANCODE_UNKNOWN;};
+#endif
 #include "../../../portable/input/KeyboardMap.inc"
 touhou::input::TouchController gestures;
 touhou::sdl::FrameCadence cadence;
@@ -2145,7 +2196,11 @@ touhou::input::TouchState touch_state(){
     s.x=p.position.x;s.y=p.position.y;s.fast=float(p.normal_speed)/128;s.slow=float(p.focus_speed)/128;
     s.min_x=-184;s.max_x=184;s.min_y=32;s.max_y=432;return s;
 }
+#if PORT_TITLE == 14
+void clear_inputs(){th11_reset_browser_keyboard();SDL_ResetKeyboard();for(auto& k:keyboard_map)k.clear();previous_scans.fill(0);gestures.reset();if(app.session.battle)app.session.battle->player_input.movement.touch_mode=0;}
+#else
 void clear_inputs(){th11_reset_browser_keyboard();SDL_ResetKeyboard();for(auto& k:keyboard_map)k.hosted=false;previous_scans.fill(0);gestures.reset();if(app.session.battle)app.session.battle->player_input.movement.touch_mode=0;}
+#endif
 void touch_event(unsigned type,int id,float x,float y){
     if(std::isfinite(x)&&std::isfinite(y))gestures.pointer(type,id,x,y,SDL_GetTicks(),touch_state(),false);
 }
@@ -2169,7 +2224,11 @@ bool sample_and_tick_once(){
         else if(event.type==SDL_EVENT_JOYSTICK_REMOVED&&controller&&SDL_GetJoystickID(controller)==event.jdevice.which){SDL_CloseJoystick(controller);controller=nullptr;int count=0;auto* ids=SDL_GetJoysticks(&count);for(int i=0;i<count;++i)add_controller(ids[i]);SDL_free(ids);}
     }
     bool keys[256]{};std::array<u8,256> scans{};const auto* physical=th11_browser_keyboard()?nullptr:SDL_GetKeyboardState(nullptr);
+#if PORT_TITLE == 14
+    for(auto& k:keyboard_map)if(k.sample()||(physical&&k.native!=SDL_SCANCODE_UNKNOWN&&physical[k.native])){if(k.scan<256)scans[k.scan]=128;if(k.vk<256)keys[k.vk]=true;if(k.vk>=160&&k.vk<=165)keys[16+(k.vk-160)/2]=true;if(k.scan==28||k.scan==156)keys[13]=true;}
+#else
     for(const auto& k:keyboard_map)if(k.hosted||(physical&&k.native!=SDL_SCANCODE_UNKNOWN&&physical[k.native])){if(k.scan<256)scans[k.scan]=128;if(k.vk<256)keys[k.vk]=true;if(k.vk>=160&&k.vk<=165)keys[16+(k.vk-160)/2]=true;if(k.scan==28||k.scan==156)keys[13]=true;}
+#endif
     if(app.session.title){auto& title=*app.session.title;for(u32 i=0;i<256;++i)title.key_edges[i]=scans[i]&~previous_scans[i];title.number_keys=0;for(u32 i=0;i<9;++i)if(keys[49+i])title.number_keys|=1u<<i;}
     previous_scans=scans;
     const auto sample=gestures.sample(touch_state(),SDL_GetTicks(),keys[16],keys[37]||keys[38]||keys[39]||keys[40]);
@@ -2266,7 +2325,11 @@ EMSCRIPTEN_KEEPALIVE unsigned th11_heap_bytes(){return unsigned(emscripten_get_h
 EMSCRIPTEN_KEEPALIVE unsigned th11_dynamic_allocs(){return unsigned(mallinfo().uordblks);}
 EMSCRIPTEN_KEEPALIVE int th11_pause(){return th11::sdl::app.pause()?1:0;}
 EMSCRIPTEN_KEEPALIVE int th11_resume(){return th11::sdl::app.resume()?1:0;}
+#if PORT_TITLE == 14
+EMSCRIPTEN_KEEPALIVE void th11_key(unsigned scan,unsigned down){for(auto& k:th11::sdl::keyboard_map)if(k.scan==scan)k.event(down!=0);}
+#else
 EMSCRIPTEN_KEEPALIVE void th11_key(unsigned scan,unsigned down){for(auto& k:th11::sdl::keyboard_map)if(k.scan==scan)k.hosted=down!=0;}
+#endif
 EMSCRIPTEN_KEEPALIVE void th11_keys_clear(){th11::sdl::clear_inputs();}
 EMSCRIPTEN_KEEPALIVE void th11_music_enabled(unsigned on){using namespace th11::sdl;app.audio.music_enabled=on!=0;app.audio.refresh_volume();}
 EMSCRIPTEN_KEEPALIVE const unsigned* th11_audio_statistics(){return th11::sdl::app.audio.statistics();}
@@ -2295,8 +2358,30 @@ EMSCRIPTEN_KEEPALIVE void th11_loop_start(){
         if(!running||uintptr_t(epoch)!=loop_epoch)return EM_FALSE;
         const double begin=emscripten_get_now(),delta=previous_frame<0?0:(time-previous_frame)/1000.;previous_frame=time;
         if(suspended){cadence.reset();return EM_TRUE;}
+#if PORT_TITLE == 14
+#if PORT_TITLE == 14
+        const bool can_coalesce=app.can_coalesce_browser_draw();
+        const auto limit=cadence.advance_display(delta,can_coalesce);
+        const bool backpressured=limit&&can_coalesce&&app.graphics.backend.browser_draw_backpressured();
+#else
+        const auto limit=cadence.advance(delta);
+#endif
+        bool ok=true;app.graphics.backend.defer=true;
+        unsigned ticks=0;
+        for(;ticks<limit&&ok;++ticks){
+#if PORT_TITLE == 14
+            if(ticks&&!app.can_coalesce_browser_draw())break;
+            app.coalesce_browser_draw=backpressured||ticks+1<limit;
+#endif
+            ok=sample_and_tick();
+        }
+#if PORT_TITLE == 14
+        app.coalesce_browser_draw=false;
+#endif
+#else
         const auto ticks=cadence.advance(delta);bool ok=true;app.graphics.backend.defer=true;
         for(unsigned n=0;n<ticks&&ok;++n)ok=sample_and_tick();
+#endif
         app.graphics.backend.commit();app.graphics.backend.defer=false;
         app.audio.pump();
         if(ticks)th11_browser_frame(ok?1:0,emscripten_get_now()-begin,ticks);
