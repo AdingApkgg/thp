@@ -15,3 +15,9 @@ One quiet real C++ Application/GLES cold start reaches the first Reimu B Normal 
 The strict comparison still fails **194,896 BGRA pixels /3,092 Alpha bytes**, and SCRIPT still has a 24-call offset: C++ `[39319,2588]` versus the retained original `[20713,2612]`. These counts must not be interpreted as an image improvement caused by this change; loading timelines differ between physical captures. Loading Control-enable chronology, complete-frame/camera-cache agreement, all modes/full replay, complete ordinary play/save, browser UI/persistence and final PCM remain open. Browser build and deployment identity are recorded separately. The protected ResourceCrypt source is unchanged.
 
 Local evidence: `artifacts/th14/camera-right-pair-nov12/`. Public Git contains source, tools and the [bounded summary](th14-camera-right-publication-nov12.json); assets, raw observations, pixels and binaries remain local.
+
+## Deployment
+
+Source `572751a813eb58c874c901e20040b7674b1b8dcd` now serves generation `4df167f1d7279ce829ac1ff6636e6540948a92731aad0429d57b24d53d564ac7` at https://wth.saop.cc/. Wasm SHA-256: `9b17c2e2bfe2e19a63af3b6d2c7d0ba6082ca05f24bef858ab51f85d65e022b4`. All 368 published build-source blobs match the exact local bytes; all 39 origin Runtime identities and five public HTTPS bodies (Wasm, loader, shell, manifest and immutable HTML) match. COOP/COEP/no-transform and integrity verification remain enabled. Other unchanged public bodies were not redownloaded this generation. The normal browser build recompiles all 146 units without fixture macros or a VFS. Rollback is retained. This adds no browser UI or full-game acceptance.
+
+[Release receipt](th14-camera-right-release-nov12.json)
