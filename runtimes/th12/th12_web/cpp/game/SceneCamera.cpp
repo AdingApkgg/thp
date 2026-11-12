@@ -2,6 +2,7 @@
 #include <cmath>
 #if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_WORKER)
 #include "SceneCameraMatrixWordsTh14.hpp"
+#include "SceneCameraRightWordsTh14.hpp"
 #endif
 namespace th11 {
 void SceneCamera::perspective(){
@@ -39,18 +40,38 @@ void SceneCamera::perspective(){
     const Vec3 axis={float(float(d.y*up.z)-float(d.z*up.y)),
         float(float(d.z*up.x)-float(d.x*up.z)),float(float(d.x*up.y)-float(d.y*up.x))};
     // Native446590 stores XY,44659d stores Z, then D3DX normalizes in place.
+#if defined(TH14_CPP_STAGE_WORKER)
+    th14_publish_camera_right_xy(right,axis);
+#else
     right.x=axis.x;right.y=axis.y;
+#endif
     if(!SceneCameraPerspectiveScopeTh14::checkpoint(*this,3))return;
+#if defined(TH14_CPP_STAGE_WORKER)
+    th14_publish_camera_right_word(right.z,axis.z);
+#else
     right.z=axis.z;
+#endif
     if(!SceneCameraPerspectiveScopeTh14::checkpoint(*this,4))return;
     // Native D3DX SSE stores normalized X, Y, Z separately. Preserve the
     // already-computed local result while the worker may read between stores.
     const auto normalized=GraphicsMath::normalize(right);
+#if defined(TH14_CPP_STAGE_WORKER)
+    th14_publish_camera_right_word(right.x,normalized.x);
+#else
     right.x=normalized.x;
+#endif
     if(!SceneCameraPerspectiveScopeTh14::checkpoint(*this,6))return;
+#if defined(TH14_CPP_STAGE_WORKER)
+    th14_publish_camera_right_word(right.y,normalized.y);
+#else
     right.y=normalized.y;
+#endif
     if(!SceneCameraPerspectiveScopeTh14::checkpoint(*this,7))return;
+#if defined(TH14_CPP_STAGE_WORKER)
+    th14_publish_camera_right_word(right.z,normalized.z);
+#else
     right.z=normalized.z;
+#endif
     if(!SceneCameraPerspectiveScopeTh14::checkpoint(*this,5))return;
 #else
     right=GraphicsMath::normalize(GraphicsMath::cross(kPortTitle==13||kPortTitle==14?reserved24:direction,up));
