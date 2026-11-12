@@ -750,7 +750,8 @@ int AnmRenderer::draw_world_strip(AnmVm& vm,const AnmWorldVertex* data,u32 count
 
     world.m[12]=float(float(vm.position.x+vm.script_position.x)+vm.child_position.x);
 
-    if((vm.flags2&0x60000)&&!vm.parent)world.m[12]=float(world.m[12]+320.f);
+    // Retail4785ed reads the play origin; resource-present Begin sets it to width/2.
+    if((vm.flags2&0x60000)&&!vm.parent)world.m[12]=float(world.m[12]+float(i32(render_width)/2));
 
     world.m[13]=float(float(vm.position.y+vm.script_position.y)+vm.child_position.y);world.m[14]=float(float(vm.position.z+vm.script_position.z)+vm.child_position.z);
 
