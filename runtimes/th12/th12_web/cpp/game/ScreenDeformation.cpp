@@ -48,7 +48,7 @@ void ScreenDeformation::rectangle(float x,float y,float width,float height){
     float px=kPortTitle==14?float(x+manager.render_space.play_origin.x):float(double(x)+192+32);
     const float top=kPortTitle==14?float(y+manager.render_space.play_origin.y):float(double(y)+16),dx=float(double(width)/(columns-1)),dy=float(double(height)/(rows-1));
     for(u32 col=0;col<columns;++col){float py=top;for(u32 row=0;row<rows;++row){const u32 n=col*rows+row;
-        positions[n]={px,py,0};const float u=float(double(px)/640),v=float(double(py)/480);
+        positions[n]={px,py,0};const float u=kPortTitle==14?px/(manager.render_space.scale*640.f):float(double(px)/640),v=kPortTitle==14?py/(manager.render_space.scale*480.f):float(double(py)/480);
         vertices[n]={{px,py,0},1,0xffffffff,{u<0?0:u,v<0?0:v}};py=float(double(py)+dy);
     }px=float(double(px)+dx);}copy_strips();
 #endif
@@ -61,7 +61,7 @@ void ScreenDeformation::update(EnemyState& e,i32 spell_id){
     if(e.deformation_target>radius)e.deformation_radius=radius+manager.rate*2.f;
     const float extent=radius*2.f+40.f;
     rectangle((e.current.position.x-radius)-20.f,(e.current.position.y-radius)-20.f,extent,extent);
-    const Vec3 center{e.current.position.x+(kPortTitle==16?manager.render_space.play_origin.x:320.f),e.current.position.y+manager.render_space.play_origin.y,e.current.position.z};
+    const Vec3 center{e.current.position.x+(kPortTitle==16?manager.render_space.play_origin.x:(manager.render_space.scale*640.f)*.5f),e.current.position.y+manager.render_space.play_origin.y,e.current.position.z};
     const float squared=radius*radius,left=manager.render_space.play_origin.x-192.f,top=manager.render_space.play_origin.y;
     for(u32 n=0;n<vertices.size();++n){auto& v=vertices[n];auto& p=positions[n];
         const Vec3 delta{p.x-center.x,p.y-center.y,p.z-center.z};
@@ -77,7 +77,8 @@ void ScreenDeformation::update(EnemyState& e,i32 spell_id){
         phase_x=normalize_angle(phase_x+0.09817477315664291f);phase_y=normalize_angle(phase_y-0.04908738657832146f);
         if(p.x<=left)v.position.x=p.x=left+1.f;else if(p.x>=left+384.f)v.position.x=p.x=(left+384.f)-1.f;
         if(p.y<=top)v.position.y=p.y=top+1.f;else if(p.y>=top+448.f)v.position.y=p.y=(top+448.f)-1.f;
-        v.uv={p.x/640.f,p.y/480.f};if(v.uv.x<0)v.uv.x=0;if(v.uv.y<0)v.uv.y=0;
+        // Retail4245d5/4245ed divide by the current display width/height.
+        v.uv={p.x/(kPortTitle==14?manager.render_space.scale*640.f:640.f),p.y/(kPortTitle==14?manager.render_space.scale*480.f:480.f)};if(v.uv.x<0)v.uv.x=0;if(v.uv.y<0)v.uv.y=0;
     }
     e.deformation_phase_x=normalize_angle(e.deformation_phase_x+manager.rate*0.19634954631328583f);
     e.deformation_phase_y=normalize_angle(e.deformation_phase_y+manager.rate*0.09817477315664291f);

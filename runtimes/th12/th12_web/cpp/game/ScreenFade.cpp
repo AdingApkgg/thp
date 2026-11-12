@@ -33,11 +33,17 @@ i32 ScreenFade::update(bool stopped,bool frozen
     if(!frozen)timer.tick();return 1;
 }
 void ScreenFade::draw(AnmRenderer& renderer) const {
-    // TH14 Stage type2/3 uses 46ca40: full virtual-window vertices, retaining
-    // the active viewport. The compositor clips it to the current target.
-    if(kPortTitle==14&&(type==2||type==3))renderer.solid_rectangle(0,0,640,480,(u32(alpha)<<24)|color);
-    else if(type==5||(kPortTitle==14&&type==0)){renderer.set_viewport({0,0,640,480,0,1});renderer.solid_rectangle(0,0,640,480,(u32(alpha)<<24)|color);}
+#if PORT_TITLE == 14
+    // Retail46c8d0 and46ca40 read the current internal display dimensions.
+    // Type2/3 retain the active viewport; type0/5 first select the full window.
+    if(type==0||type==2||type==3||type==5){
+        if(type==0||type==5)renderer.set_viewport({0,0,renderer.render_width,renderer.render_height,0,1});
+        renderer.solid_rectangle(0,0,float(renderer.render_width),float(renderer.render_height),(u32(alpha)<<24)|color);
+    }else renderer.solid_rectangle(32,16,416,464,(u32(alpha)<<24)|color);
+#else
+    if(type==5){renderer.set_viewport({0,0,640,480,0,1});renderer.solid_rectangle(0,0,640,480,(u32(alpha)<<24)|color);}
     else renderer.solid_rectangle(32,16,416,464,(u32(alpha)<<24)|color);
+#endif
 }
 void ScreenFades::draw(AnmRenderer& renderer,u32 priority) const {for(const auto& effect:effects)if(effect.priority==priority)effect.draw(renderer);}
 }
