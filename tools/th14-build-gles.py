@@ -11,6 +11,26 @@ import sys
 import tempfile
 
 
+def prepare_host_shell(source, identity):
+    """Specialize host paths without renaming the shared native C exports."""
+    for before, after in [('./th11-sdl.', './th14-sdl.'), ("game='th11'", "game='th14'"),
+                          ('/savesth11', '/savesth14'), ('/thcrap/th11/', '/thcrap/th14/'),
+                          ('scoreth11', 'scoreth14'), ('th11.cfg', 'th14.cfg'),
+                          (r'th11\.cfg', r'th14\.cfg'), ('th11_(?:', 'th14_(?:'),
+                          ('TH11', 'TH14'), ('地灵殿', '辉针城')]:
+        source = source.replace(before, after)
+    anchor = 'const runtimeBuild=/*TH14_BUILD_INFO*/'
+    assert source.count(anchor) == 1
+    start = source.index(anchor) + len(anchor)
+    end = source.index(';', start)
+    source = source[:start] + json.dumps(identity, ensure_ascii=False) + source[end:]
+    anchor = ' await mountData();'
+    assert source.count(anchor) == 1
+    source = source.replace(anchor, anchor + "\n Module.FS.symlink('/th14.dat','/th11.dat');", 1)
+    assert "game='th14'" in source and "core?.th11_key(" in source
+    return source
+
+
 def main():
     repo = Path(__file__).resolve().parents[1]
     parser = argparse.ArgumentParser(description=__doc__)
@@ -39,7 +59,8 @@ def main():
         tracked.update(p for p in directory.rglob('*')
                        if p.is_file() and p.suffix in {'.hpp', '.h', '.inc', '.js', '.mjs'})
     host = runtime / 'th12_web/sdl-runtime/eagler-host.mjs'
-    tracked.update((Path(__file__).resolve(), repo / 'tools/th14-gles-profile.json', host))
+    host_shell = host.with_name('shell.mjs')
+    tracked.update((Path(__file__).resolve(), repo / 'tools/th14-gles-profile.json', host, host_shell))
     source_bindings = {p.relative_to(repo).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
                        for p in sorted(tracked)}
 
@@ -62,12 +83,15 @@ def main():
     for helper in profile['helpers']:
         shutil.copyfile(portable / helper, output / helper)
     shutil.copyfile(host, output / host.name)
+    wasm_hash = hashlib.sha256((output / 'th14-sdl.wasm').read_bytes()).hexdigest()
+    shell = prepare_host_shell(host_shell.read_text(encoding='utf8'), dict(version='1.00b-thp-' + wasm_hash[:12], completeGame=False, nativeEquivalent=False, sha256=wasm_hash))
+    (output / 'shell.mjs').write_text(shell, encoding='utf8', newline='\n')
     for name, expected in source_bindings.items():
         if hashlib.sha256((repo / name).read_bytes()).hexdigest() != expected:
             raise RuntimeError('Source changed during build: ' + name)
     wasm = output / 'th14-sdl.wasm'
     runtime_files = {}
-    for name in ['th14-sdl.mjs', 'th14-sdl.wasm', host.name, *profile['helpers']]:
+    for name in ['th14-sdl.mjs', 'th14-sdl.wasm', host.name, 'shell.mjs', *profile['helpers']]:
         data = (output / name).read_bytes()
         runtime_files[name] = dict(bytes=len(data), sha256=hashlib.sha256(data).hexdigest())
     report = dict(module=str(wasm), units=len(compiled), sourceBindings=source_bindings,
