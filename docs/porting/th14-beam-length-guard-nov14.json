@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "sourceChange": {
+    "source": "runtimes/th12/th12_web/cpp/game/ShotCallbacksTh14.cpp",
+    "beforeSha256": "d45da075afa7b7d94b8ba9590cfe98639581d2baddcc02dc9cb9fb7cba3c3183",
+    "afterSha256": "7995a29572d562cab27cd94f69428ff7c912904ca1b930ed24a11d74664d42e5",
+    "candidateOnly": true,
+    "deployed": false,
+    "completeGame": false
+  },
+  "nativeValidHitCases": 4032,
+  "nativeNegativeEdges": 48,
+  "invalidFallbackCases": 30,
+  "ordinaryIntersectionControls": 5,
+  "oldCodeNegativeControlRejected": true,
+  "recompiledGameProviders": 1,
+  "verifiedReusedProviders": 144,
+  "otherTitleObjectsUnchanged": [
+    12,
+    13,
+    16
+  ],
+  "affectedNormalClears": 2,
+  "freshApplicationReads": 2,
+  "callbacks": 230885,
+  "nativeScoreDecoderVerified": true,
+  "nativeDecodedBytes": 298152,
+  "cases": [
+    {
+      "key": "marisaa-normal",
+      "selection": 2,
+      "writer": "artifacts/th14/ordinary-difficulties-nov14/marisaa-normal-beam-guard-v1",
+      "freshReader": "artifacts/th14/ordinary-difficulties-nov14/marisaa-normal-beam-guard-fresh-v1",
+      "finalScore": 775709810,
+      "callbacks": 107461,
+      "encodedSha256": "82f3e146152e1b485908af9a97ccafef4d3d5535bbcdaa694e38d1153e2759fe",
+      "decodedSha256": "a8f84b92d9b36fa115b34abd9c7fcbdf1afa3fee5a01077a90ee4a012ce06907",
+      "encodedBytes": 22388,
+      "decodedBytes": 149076,
+      "scoreAndCountersPreserved": true,
+      "nativeCodecVerified": true
+    },
+    {
+      "key": "marisab-normal",
+      "selection": 3,
+      "writer": "artifacts/th14/ordinary-difficulties-nov14/marisab-normal-beam-guard-v1",
+      "freshReader": "artifacts/th14/ordinary-difficulties-nov14/marisab-normal-beam-guard-fresh-v1",
+      "finalScore": 1019280950,
+      "callbacks": 123424,
+      "encodedSha256": "4a10c182ef3b4e44d101cdb339c0e258a4fc4d4af30cfa0e511841a13f3fc0b3",
+      "decodedSha256": "a60803f486631212ce4d25fca5173af26455d1849f6e4eb910052962e80d3ffc",
+      "encodedBytes": 22375,
+      "decodedBytes": 149076,
+      "scoreAndCountersPreserved": true,
+      "nativeCodecVerified": true
+    }
+  ],
+  "hardStillEndedEarly": true,
+  "originalUndefinedStackBugPreservedExactly": false,
+  "coreSourceChanged": true,
+  "browserModuleBuilt": false,
+  "deployed": false,
+  "actualGpuAccepted": false,
+  "silent": true,
+  "completeGame": false,
+  "wasmSha256": "8d093721009c5f594ea14724d0ab6ba37c204884ae2f131eb060b51386ce53d0",
+  "evidence": {
+    "artifacts/th14/ordinary-difficulties-nov14/marisaa-normal-beam-guard-v1/report.json": "fab76ca831eec7b28510d76abf8d26cb130ceb2da290aeb39837e5de8e7cb6cf",
+    "artifacts/th14/ordinary-difficulties-nov14/marisaa-normal-beam-guard-fresh-v1/report.json": "17ef0c235bff60ac048d15123542d0a8f017c9564c0bc36f8e4646b221447e81",
+    "artifacts/th14/ordinary-difficulties-nov14/marisab-normal-beam-guard-v1/report.json": "4407cfbc2babcb86a0a11663148337c000233e801d3479d6f900953635752ff6",
+    "artifacts/th14/ordinary-difficulties-nov14/marisab-normal-beam-guard-fresh-v1/report.json": "230ce65869161a0d9181fc8412ffae94620143394d0736ad79ad70b7f10735b0",
+    "artifacts/th14/beam-length-guard-nov14/score-qualified/marisaa-normal-native-codec.json": "8c8ba12c6ba6aac37ea4bbdf2317988ba24664dcf71531146ad8674cc03c495a",
+    "artifacts/th14/beam-length-guard-nov14/score-qualified/marisab-normal-native-codec.json": "4f89fe8c7d49c94bd25c1cfd3f4f0030e460fb512cee1333c1972d4423199d8c"
+  }
+}

@@ -105,7 +105,15 @@ bool shot_th14_beam_hit(ShotState& shot,ShotPlayer& player,Th14DamageArea& area,
         if(r==0)return false;
         if(std::abs(y)>r||x<-r||(x<0&&x*x+y*y>r*r)){
             const u32 bits=NativeStackTh14::fallback_bits(player.th14_native_stack->beam_fallback_scratch());
-            std::memcpy(&shot.th14_beam_length,&bits,4);
+            float fallback;std::memcpy(&fallback,&bits,4);
+            // The growth branch admits at most 512+18 units. A stale Win32
+            // temporary can instead contain an ANM handle or a NaN; treating
+            // it as geometry poisons later hit queries and depends on drawing.
+            // Keep the last bounded length when that fallback is not physical.
+            constexpr float maximum_length=512.f+18.f;
+            if(!std::isfinite(fallback)||fallback>maximum_length)
+                fallback=std::isfinite(shot.th14_beam_length)?std::clamp(shot.th14_beam_length,0.f,maximum_length):0.f;
+            shot.th14_beam_length=fallback;
         }else{
             const float t=y/r;shot.th14_beam_length=std::max(0.f,x-float(std::sqrt(double(1.f-t*t)))*r+8.f);
         }
