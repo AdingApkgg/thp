@@ -68,8 +68,8 @@ bool SceneCompositor::initialize(AnmResource& text,u32 width,u32 height){
             reset();return false;
         }
     }
-    // 4476e5 keeps the point filter only at the native 960-pixel mode.
-    if constexpr(kPortTitle==14)if(width!=960)copies[2].flags&=~0x80000000u;
+    // 4476e5..447701 clears point sampling only when scale equals 1.5.
+    if constexpr(kPortTitle==14)if(width==960)copies[2].flags&=~0x80000000u;
     // TH16 43dbe7 clears native flags2 bit11 in the 960-pixel mode.
     if constexpr(kPortTitle==16)if(width==960)copies[2].flags2&=~0x800u;
     resource=&text;return true;

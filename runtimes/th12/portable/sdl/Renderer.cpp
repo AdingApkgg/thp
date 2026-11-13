@@ -152,9 +152,19 @@ void Renderer::select(const State& s){
   for(int i=0;i<10;i++)defs+="const "+std::string(i<3?"bool ":"int ")+constants[i]+"="+(i<3?(key[i]?"true":"false"):std::to_string(key[i]))+";\n";
 #endif
   replace(source,"precision highp float;","precision highp float;\n"+defs);}
-  // Match byte alpha after the measured RGBA8 conversion. Float32 arithmetic
-  // alone differs at rounding boundaries on some devices.
+  // Byte alpha is monotonic after clamping. TH14 compares against the two
+  // measured transitions surrounding the reference byte instead of rebuilding
+  // the byte and looking up its neighbours for every fragment.
+#if defined(PORT_TITLE) && PORT_TITLE == 14
+  if(version==10){
+   replace(source,"uniform float alphaRef;","uniform vec2 alphaRange;");
+   replace(source,"float a=c.a*255.0,ref=floor(alphaRef*255.0+.5);","float a=c.a,lo=alphaRange.x,hi=alphaRange.y;");
+   replace(source,"(alphaFunc==1&&a<ref)||(alphaFunc==2&&a==ref)||(alphaFunc==3&&a<=ref)||(alphaFunc==4&&a>ref)||(alphaFunc==5&&a!=ref)||(alphaFunc==6&&a>=ref)",
+    "(alphaFunc==1&&a<lo)||(alphaFunc==2&&a>=lo&&a<hi)||(alphaFunc==3&&a<hi)||(alphaFunc==4&&a>=hi)||(alphaFunc==5&&(a<lo||a>=hi))||(alphaFunc==6&&a>=lo)");
+  }
+#else
   if(version==10){replace(source,"uniform float alphaRef;","uniform float alphaRef;\nuniform vec4 alphaBoundary[64];\nfloat alpha_boundary(int n){return alphaBoundary[n/4][n%4];}");replace(source,"float a=c.a*255.0,ref=floor(alphaRef*255.0+.5);","int byteAlpha=clamp(int(floor(c.a*255.0+.5)),0,255);if(c.a<alpha_boundary(byteAlpha))--byteAlpha;else if(byteAlpha<255&&c.a>=alpha_boundary(byteAlpha+1))++byteAlpha;float a=float(byteAlpha),ref=floor(alphaRef*255.0+.5);");}
+#endif
   if(version==8)replace(source,"float a=c.a*255.0","float a=floor(c.a*255.0+.5)");
   if(version==8)replace(source,"gl_FragDepth=depth16?(floor(scaled)+floor(fract(scaled)-gl_FragCoord.z+0.5))/65535.0:gl_FragCoord.z;","");
 #if defined(PORT_TITLE) && PORT_TITLE == 14
@@ -168,9 +178,12 @@ void Renderer::select(const State& s){
   if(version==10)replace(source,"c.rgb=mix(fogColor.rgb,c.rgb,clamp(vFog,0.0,1.0));","{float f=clamp(vFog,0.0,1.0);vec3 rest=fogColor.rgb-fogColor.rgb*f;c.rgb=c.rgb*f+rest;}");
 #endif
   Program p;p.id=glCreateProgram();GLuint fs=shader(GL_FRAGMENT_SHADER,source);glAttachShader(p.id,vertex);glAttachShader(p.id,fs);glLinkProgram(p.id);glDeleteShader(fs);GLint linked=0;glGetProgramiv(p.id,GL_LINK_STATUS,&linked);if(!linked){char log[2048];glGetProgramInfoLog(p.id,sizeof(log),nullptr,log);std::fprintf(stderr,"SDL program: %s\n",log);std::abort();}
+#if !defined(PORT_TITLE) || PORT_TITLE != 14
   if(version==10){glUseProgram(p.id);glUniform4fv(glGetUniformLocation(p.id,"alphaBoundary[0]"),64,alphaBoundaries.data());glUseProgram(currentProgram);}
+#endif
 #if defined(PORT_TITLE) && PORT_TITLE == 14
   const char* names[]{"viewport","transformed","textureTransform","instanced","world","view","projection","textureMatrix","fogEnabled","rangeFog","fogMode","fogParams","fogColor","hasTexture","factor","colorOp","colorArg1","colorArg2","alphaOp","alphaArg1","alphaArg2","alphaTest","alphaRef","alphaFunc","depth16","tex","clipMatrix","fogLinear"};
+  if(version==10)names[22]="alphaRange";
   for(int i=0;i<28;i++)p.uniforms[i].location=glGetUniformLocation(p.id,names[i]);it=programs.emplace(key,p).first;
 #else
   const char* names[]{"viewport","transformed","textureTransform","instanced","world","view","projection","textureMatrix","fogEnabled","rangeFog","fogMode","fogParams","fogColor","hasTexture","factor","colorOp","colorArg1","colorArg2","alphaOp","alphaArg1","alphaArg2","alphaTest","alphaRef","alphaFunc","depth16","tex"};
@@ -179,7 +192,11 @@ void Renderer::select(const State& s){
  }
  program=&it->second;if(currentProgram!=program->id){glUseProgram(program->id);currentProgram=program->id;}
 }
+#if defined(PORT_TITLE) && PORT_TITLE == 14
+void Renderer::uniform(int i,int n,const float* p){auto& u=program->uniforms[i];if(u.location<0)return;if(u.count==n&&!std::memcmp(u.value.data(),p,n*4))return;std::memcpy(u.value.data(),p,n*4);u.count=n;if(n==16)glUniformMatrix4fv(u.location,1,false,p);else if(n==4)glUniform4fv(u.location,1,p);else if(n==3)glUniform3fv(u.location,1,p);else if(n==2)glUniform2fv(u.location,1,p);else glUniform1f(u.location,*p);}
+#else
 void Renderer::uniform(int i,int n,const float* p){auto& u=program->uniforms[i];if(u.location<0)return;if(u.count==n&&!std::memcmp(u.value.data(),p,n*4))return;std::memcpy(u.value.data(),p,n*4);u.count=n;if(n==16)glUniformMatrix4fv(u.location,1,false,p);else if(n==4)glUniform4fv(u.location,1,p);else if(n==3)glUniform3fv(u.location,1,p);else glUniform1f(u.location,*p);}
+#endif
 void Renderer::integer(int i,int n){auto& u=program->uniforms[i];if(u.location<0)return;float f=float(n);if(u.count==1&&u.value[0]==f)return;u.count=1;u.value[0]=f;glUniform1i(u.location,n);}
 u32 Renderer::upload(Stream& s,GLenum target,const void* bytes,u32 count,u32 minimum){
  glBindBuffer(target,s.id);stats.vertexUploadBytes+=count;
@@ -307,7 +324,19 @@ void Renderer::issue(const State& d,Topology primitive,u32 count,const void* dat
 #endif
 integer(13,!!texture);uniform(14,4,color(p.textureFactor).data());
  auto arg=[](Argument a){return int(u32(a.source)|(a.complement?16u:0u)|(a.alphaOnly?32u:0u));};
- integer(15,u32(p.color.operation));integer(16,arg(p.color.first));integer(17,arg(p.color.second));integer(18,u32(p.alpha.operation));integer(19,arg(p.alpha.first));integer(20,arg(p.alpha.second));integer(21,p.alphaTest);float alpha=float(p.alphaReference)/255;uniform(22,1,&alpha);integer(23,u32(p.alphaCompare));integer(24,version==10&&p.depthTest&&d.depth&&resolve(owner,d.depth).format==PixelFormat::Depth16);
+ integer(15,u32(p.color.operation));integer(16,arg(p.color.first));integer(17,arg(p.color.second));integer(18,u32(p.alpha.operation));integer(19,arg(p.alpha.first));integer(20,arg(p.alpha.second));integer(21,p.alphaTest);
+#if defined(PORT_TITLE) && PORT_TITLE == 14
+ if(version==10){
+  const auto threshold=[&](u32 n){return n<256?alphaBoundaries[n]:2.f;};
+  const u32 ref=std::min(p.alphaReference,256u);
+  const float range[]{threshold(ref),threshold(ref+1)};
+  uniform(22,2,range);
+ }else
+ {const float alpha=float(p.alphaReference)/255;uniform(22,1,&alpha);}
+#else
+ float alpha=float(p.alphaReference)/255;uniform(22,1,&alpha);
+#endif
+ integer(23,u32(p.alphaCompare));integer(24,version==10&&p.depthTest&&d.depth&&resolve(owner,d.depth).format==PixelFormat::Depth16);
  if(texture){
   glActiveTexture(GL_TEXTURE0);bind_texture(texture->texture);
   constexpr GLint address[]{GL_REPEAT,GL_MIRRORED_REPEAT,GL_CLAMP_TO_EDGE};GLint sampler[]{address[u32(p.addressU)],address[u32(p.addressV)],p.minFilter==Filter::Nearest?GL_NEAREST:GL_LINEAR,p.magFilter==Filter::Nearest?GL_NEAREST:GL_LINEAR};
