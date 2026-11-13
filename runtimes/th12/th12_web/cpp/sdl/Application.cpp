@@ -12,6 +12,9 @@
 #include "FontDevice.hpp"
 #include "../game/MusicCatalog.hpp"
 #include "../game/GameSession.hpp"
+#if PORT_TITLE == 14
+#include "../game/ReplayDescriptionTh14.hpp"
+#endif
 #include "../game/FrameStatistics.hpp"
 #if defined(TH14_CPP_STAGE_DECODE)
 #include "../game/StageWorkerTailTh14.hpp"
@@ -2257,6 +2260,13 @@ EMSCRIPTEN_KEEPALIVE int th11_validate_file(unsigned kind,const unsigned char* d
     if(kind==2){th11::GameConfig config;return config.open(data,size);}
     return 0;
 }
+#if PORT_TITLE == 14
+EMSCRIPTEN_KEEPALIVE const char* th14_replay_description(const unsigned char* data,unsigned size){
+    static std::string description,error;
+    if(!th11::describe_replay_th14(data,size,description,error))return nullptr;
+    return description.c_str();
+}
+#endif
 EMSCRIPTEN_KEEPALIVE int th11_save_scores(){return th11::sdl::app.save_scores();}
 EMSCRIPTEN_KEEPALIVE int th11_save_replay(unsigned slot,const char* name){return th11::sdl::app.save_replay(slot,name);}
 EMSCRIPTEN_KEEPALIVE int th11_initialize(){if(!th11::sdl::app.initialize())return 0;for(auto& k:th11::sdl::keyboard_map)k.native=SDL_GetScancodeFromName(k.sdl);th11::sdl::initialize_controller();return 1;}

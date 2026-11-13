@@ -101,6 +101,19 @@ async function command(m){switch(m.command){
  case 'direct-touch':directTouch(core,canvas,m,{width:innerWidth,height:innerHeight});return {};
  case 'touch-controls':touchControls(core,options,m);return {};
  case 'launch':await launch();return {};
+ case 'playback':{
+  if(game!=='th14'||m.action!=='inspect')throw Error('不支持的录像操作');
+  const target=path(m.path);if(!target.startsWith('replay/'))throw Error('录像路径无效');
+  const bytes=Module.FS.readFile('/savesth11/'+target);
+  if(!bytes.length||bytes.length>64*1024*1024)throw Error('录像大小无效');
+  const p=core.malloc(bytes.length);if(!p)throw Error('录像解析内存不足');
+  try{
+   Module.HEAPU8.set(bytes,p);const result=await callCore('th14_replay_description',p,bytes.length);
+   if(!result)throw Error('录像数据无效');
+   const end=Module.HEAPU8.indexOf(0,result);if(end<result)throw Error('录像信息无效');
+   return {description:JSON.parse(new TextDecoder().decode(Module.HEAPU8.subarray(result,end)))};
+  }finally{core.free(p);}
+ }
  case 'sync':await save();return {};
  case 'list':{const files=[];for(const dir of ['','/replay'])for(const name of Module.FS.readdir('/savesth11'+dir)){const n=(dir+'/'+name).replace(/^\//,'');try{path(n);}catch{continue;}const s=Module.FS.stat('/savesth11/'+n);if(Module.FS.isFile(s.mode)){files.push({path:n,size:s.size});}}return {files};}
  case 'read':return {bytes:Array.from(Module.FS.readFile('/savesth11/'+path(m.path)))};
