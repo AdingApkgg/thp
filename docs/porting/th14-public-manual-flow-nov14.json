@@ -1,0 +1,61 @@
+{
+  "schema": "th14/public-manual-flow/1",
+  "acceptanceStandard": "observable-behavior-alignment",
+  "url": "https://wth.saop.cc/?game=th14",
+  "runtimeGeneration": "fd54b8473646f6cbd1b10017594fb003dc69c7013f13c5383c5bc8b56c77b341",
+  "musicVolume": 0,
+  "sfxVolume": 0,
+  "inputMethod": "normal keyboard input to iframe canvas through documented browser interface",
+  "observed": {
+    "normalRankSelect": true,
+    "reimuSelect": true,
+    "reimuAWeaponSelect": true,
+    "ordinaryStage1GameOver": true,
+    "rankingEntryScore": 116961,
+    "rankingEntryStage": 1,
+    "rankingEntryEndedToGameOverMenu": true,
+    "creditsBeforeRetry": 3,
+    "creditsAfterRetryAndNextGameOver": 2,
+    "afterReturnToTitleAction": "automatic Demo Play"
+  },
+  "screenshots": {
+    "normal-rank.jpg": {
+      "bytes": 262288,
+      "sha256": "7c8558a198dda75faed375b9030dd122cdaebbfe0a180932cbf31e329f7d3483"
+    },
+    "reimu-select.jpg": {
+      "bytes": 288608,
+      "sha256": "983ae00d5d372f2b743a20a8fa9d30520d1ffdc3ff3ce395a566bbd7cf65d35f"
+    },
+    "reimu-a-weapon.jpg": {
+      "bytes": 260931,
+      "sha256": "3f08e32f70bcab2c6c827109cf0435cfe42516951ab96a979e6d7483009459c4"
+    },
+    "ordinary-game-over.jpg": {
+      "bytes": 289135,
+      "sha256": "b4caf6ba0264fdbc4b5dd7d54c7279ad89cde12ba425586d1e54a0ba745474e1"
+    },
+    "ordinary-ranking-entry.jpg": {
+      "bytes": 352959,
+      "sha256": "4799932bea59fd54870546a32128c70a562db7db9ca7b129c5f01ac5d2e6c94f"
+    },
+    "game-over-credit-two.jpg": {
+      "bytes": 293739,
+      "sha256": "f8abe62f8bb2846f60570d438eea3e88eb889cbdb15bbff1b9782ff2ac762a0a"
+    }
+  },
+  "pauseAccepted": false,
+  "resumeAccepted": false,
+  "staticTitleAfterReturnCaptured": false,
+  "crossLaunchSavePersistenceAccepted": false,
+  "fullPublicBrowserAcceptance": false,
+  "completeGame": false,
+  "gameLogicChanged": false,
+  "newRuntimeDeployed": false,
+  "limits": [
+    "roughly 21 seconds per DOM input/read or screenshot; roughly 43 seconds per native AX read",
+    "one final combined input/screenshot timeout; no successful screenshot claimed for it",
+    "private saved screenshots cover six listed observations only",
+    "pause attempt reached ranking entry, not a verified pause menu"
+  ]
+}
