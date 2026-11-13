@@ -1,0 +1,367 @@
+{
+  "passed": true,
+  "sourceSha256": "0aecfa10ee5d95a66194112919bd4f30a0d5920fccad976a31197ed3e7ca8613",
+  "beforeSourceSha256": "223c78f724d69c58c7c2a072f9e1f9785f1faa6df0db56c56b9219a52c7fa25e",
+  "actualSharedShellCases": {
+    "passed": true,
+    "cases": 12,
+    "rows": [
+      {
+        "name": "live-th14-viewer-new-file",
+        "passed": true,
+        "error": null,
+        "calls": [
+          [
+            "malloc",
+            8
+          ],
+          [
+            "validate",
+            1
+          ],
+          [
+            "free",
+            32
+          ],
+          [
+            "write",
+            "/savesth11/replay/th11_ud0001.rpy"
+          ],
+          [
+            "sync"
+          ]
+        ]
+      },
+      {
+        "name": "live-th14-viewer-existing-file",
+        "passed": true,
+        "error": "Error: \u5f55\u50cf\u6587\u4ef6\u5df2\u5b58\u5728\uff0c\u8bf7\u4f7f\u7528\u5176\u4ed6\u6587\u4ef6\u540d",
+        "calls": []
+      },
+      {
+        "name": "live-normal-game",
+        "passed": true,
+        "error": "Error: \u8bf7\u5148\u9000\u51fa\u6e38\u620f",
+        "calls": []
+      },
+      {
+        "name": "live-truthy-viewer-is-not-capability",
+        "passed": true,
+        "error": "Error: \u8bf7\u5148\u9000\u51fa\u6e38\u620f",
+        "calls": []
+      },
+      {
+        "name": "live-other-title",
+        "passed": true,
+        "error": "Error: \u8bf7\u5148\u9000\u51fa\u6e38\u620f",
+        "calls": []
+      },
+      {
+        "name": "live-score-import-remains-blocked",
+        "passed": true,
+        "error": "Error: \u8bf7\u5148\u9000\u51fa\u6e38\u620f",
+        "calls": []
+      },
+      {
+        "name": "live-config-import-remains-blocked",
+        "passed": true,
+        "error": "Error: \u8bf7\u5148\u9000\u51fa\u6e38\u620f",
+        "calls": []
+      },
+      {
+        "name": "live-invalid-native-replay",
+        "passed": true,
+        "error": "Error: \u6587\u4ef6\u4e0d\u662f\u6709\u6548\u7684\u5730\u7075\u6bbf\u5b58\u6863\u6216\u5f55\u50cf",
+        "calls": [
+          [
+            "malloc",
+            8
+          ],
+          [
+            "validate",
+            1
+          ],
+          [
+            "free",
+            32
+          ]
+        ]
+      },
+      {
+        "name": "live-invalid-motion-data",
+        "passed": true,
+        "error": "Error: \u5f55\u50cf\u6570\u636e\u65e0\u6548",
+        "calls": [
+          [
+            "malloc",
+            8
+          ],
+          [
+            "validate",
+            1
+          ],
+          [
+            "free",
+            32
+          ]
+        ]
+      },
+      {
+        "name": "live-empty-file",
+        "passed": true,
+        "error": "Error: \u6587\u4ef6\u5927\u5c0f\u65e0\u6548",
+        "calls": []
+      },
+      {
+        "name": "live-traversal-rejected",
+        "passed": true,
+        "error": "Error: \u5b58\u6863\u8def\u5f84\u65e0\u6548",
+        "calls": []
+      },
+      {
+        "name": "not-started-import-preserved",
+        "passed": true,
+        "error": null,
+        "calls": [
+          [
+            "malloc",
+            8
+          ],
+          [
+            "validate",
+            1
+          ],
+          [
+            "free",
+            32
+          ],
+          [
+            "write",
+            "/savesth11/replay/th11_ud0001.rpy"
+          ],
+          [
+            "sync"
+          ]
+        ]
+      }
+    ],
+    "input": "runtimes/th12/th12_web/sdl-runtime/shell.mjs",
+    "sourceSha256": "0aecfa10ee5d95a66194112919bd4f30a0d5920fccad976a31197ed3e7ca8613",
+    "actualShellCommandAndPathExecuted": true,
+    "declaredBoundaries": [
+      "FS",
+      "malloc/free",
+      "native validation result",
+      "motion validation result",
+      "syncfs"
+    ],
+    "fullNativeReplayValidationAccepted": false,
+    "browserImportAccepted": false,
+    "completeGame": false
+  },
+  "actualSpecializedShellCases": {
+    "passed": true,
+    "cases": 12,
+    "rows": [
+      {
+        "name": "live-th14-viewer-new-file",
+        "passed": true,
+        "error": null,
+        "calls": [
+          [
+            "malloc",
+            8
+          ],
+          [
+            "validate",
+            1
+          ],
+          [
+            "free",
+            32
+          ],
+          [
+            "write",
+            "/savesth14/replay/th14_ud0001.rpy"
+          ],
+          [
+            "sync"
+          ]
+        ]
+      },
+      {
+        "name": "live-th14-viewer-existing-file",
+        "passed": true,
+        "error": "Error: \u5f55\u50cf\u6587\u4ef6\u5df2\u5b58\u5728\uff0c\u8bf7\u4f7f\u7528\u5176\u4ed6\u6587\u4ef6\u540d",
+        "calls": []
+      },
+      {
+        "name": "live-normal-game",
+        "passed": true,
+        "error": "Error: \u8bf7\u5148\u9000\u51fa\u6e38\u620f",
+        "calls": []
+      },
+      {
+        "name": "live-truthy-viewer-is-not-capability",
+        "passed": true,
+        "error": "Error: \u8bf7\u5148\u9000\u51fa\u6e38\u620f",
+        "calls": []
+      },
+      {
+        "name": "live-other-title",
+        "passed": true,
+        "error": "Error: \u8bf7\u5148\u9000\u51fa\u6e38\u620f",
+        "calls": []
+      },
+      {
+        "name": "live-score-import-remains-blocked",
+        "passed": true,
+        "error": "Error: \u8bf7\u5148\u9000\u51fa\u6e38\u620f",
+        "calls": []
+      },
+      {
+        "name": "live-config-import-remains-blocked",
+        "passed": true,
+        "error": "Error: \u8bf7\u5148\u9000\u51fa\u6e38\u620f",
+        "calls": []
+      },
+      {
+        "name": "live-invalid-native-replay",
+        "passed": true,
+        "error": "Error: \u6587\u4ef6\u4e0d\u662f\u6709\u6548\u7684\u8f89\u9488\u57ce\u5b58\u6863\u6216\u5f55\u50cf",
+        "calls": [
+          [
+            "malloc",
+            8
+          ],
+          [
+            "validate",
+            1
+          ],
+          [
+            "free",
+            32
+          ]
+        ]
+      },
+      {
+        "name": "live-invalid-motion-data",
+        "passed": true,
+        "error": "Error: \u5f55\u50cf\u6570\u636e\u65e0\u6548",
+        "calls": [
+          [
+            "malloc",
+            8
+          ],
+          [
+            "validate",
+            1
+          ],
+          [
+            "free",
+            32
+          ]
+        ]
+      },
+      {
+        "name": "live-empty-file",
+        "passed": true,
+        "error": "Error: \u6587\u4ef6\u5927\u5c0f\u65e0\u6548",
+        "calls": []
+      },
+      {
+        "name": "live-traversal-rejected",
+        "passed": true,
+        "error": "Error: \u5b58\u6863\u8def\u5f84\u65e0\u6548",
+        "calls": []
+      },
+      {
+        "name": "not-started-import-preserved",
+        "passed": true,
+        "error": null,
+        "calls": [
+          [
+            "malloc",
+            8
+          ],
+          [
+            "validate",
+            1
+          ],
+          [
+            "free",
+            32
+          ],
+          [
+            "write",
+            "/savesth14/replay/th14_ud0001.rpy"
+          ],
+          [
+            "sync"
+          ]
+        ]
+      }
+    ],
+    "input": "artifacts/th14/shield-state-nov13/replay-import-browser/shell.mjs",
+    "sourceSha256": "58111709642bdec2453d1fbf85987109c991bc310acf2d5a5de5c2e4598691f4",
+    "actualShellCommandAndPathExecuted": true,
+    "declaredBoundaries": [
+      "FS",
+      "malloc/free",
+      "native validation result",
+      "motion validation result",
+      "syncfs"
+    ],
+    "fullNativeReplayValidationAccepted": false,
+    "browserImportAccepted": false,
+    "completeGame": false
+  },
+  "previouslyBlockedImportObserved": true,
+  "browserImportAccepted": false,
+  "candidateShellOnly": true,
+  "reusedCompiledUnitsVerified": 146,
+  "wasmSha256": "2f884dea89e3caccc9a0353a244ffd9db6297caa5052a3af07fead2808bdb4ca",
+  "nativeCodecShieldReplay": {
+    "passed": true,
+    "inputBytes": 1098,
+    "inputSha256": "17f9aee4d6d92df6aa20429b2144719acc6b24f8b75e7329c0778032388c20e0",
+    "packedBytes": 1062,
+    "decodedBytes": 5798,
+    "decodedSha256": "df3d22b7d77e3649278224b025f3916fd1ae6801b7d347870d01b671b84f92bc",
+    "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+    "nativeEntryPoints": [
+      "0x4028e0",
+      "0x4028e0",
+      "0x465840"
+    ],
+    "actualRetailInstructionBodies": true,
+    "controlledCrtBoundaries": true,
+    "freshZeroDictionary": true,
+    "allDecodedBytesEqualIndependentPythonMirror": true,
+    "nameHex": "534849454c442020",
+    "stageCount": 1,
+    "character": 2,
+    "subtype": 0,
+    "difficulty": 1,
+    "stages": [
+      {
+        "stage": 1,
+        "seed": 16822,
+        "frames": 900,
+        "payloadBytes": 5430,
+        "headerSha256": "90255a32bbecf8e16593fa08e5446326ec67c14e3afd9cf833b4d69bcd9fd131",
+        "payloadSha256": "9fb66f289a0cb43633ae7bf1798a57487e72416947ff2595b04b443ee97991d6"
+      }
+    ],
+    "trailingBytes": 0,
+    "trailingSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mirrorSha256": "b96b655447c3cae140062c2023beb6a98cbb6052cd0fd54707fc8150ebaa90d9",
+    "toolSha256": "717673b12060f02261c2e1af04b68de63227db65fd6f2cc96f98ccfc5cbecd8e",
+    "elapsedSeconds": 0.00966889993287623,
+    "nativeFilesystemOrPlaybackAcceptance": false,
+    "completeGame": false,
+    "nativeEquivalent": false
+  },
+  "productionDeployed": false,
+  "completeGame": false
+}
