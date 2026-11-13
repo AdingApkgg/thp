@@ -157,5 +157,50 @@
   "fullBombBehaviorAccepted": false,
   "allSakuyaShootingPatternsAccepted": false,
   "fullReplayAccepted": false,
-  "completeGame": false
+  "completeGame": false,
+  "productionDeployment": {
+    "coreSource": "521494c89d91ce0b4b1c17a4dde508ea2041f7bc",
+    "frontendSource": "c7468a29f7f4da2616c0166eea05dd8012f72d80",
+    "runtimeGeneration": "06fb9cfbe2c6aa60ec79ff31a1cd4a6e97ff4a8ac9746834512c15617dcf78b7",
+    "previousGeneration": "e572a0391029e10198e1332a66f6b7abe78b7dd5901c93dab5f1737e0f860fcb",
+    "previousGenerationPreserved": true,
+    "runtimeFiles": 39,
+    "realOggTracks": 18,
+    "wasmSha256": "2f884dea89e3caccc9a0353a244ffd9db6297caa5052a3af07fead2808bdb4ca",
+    "service": "active",
+    "rollback": "/home/i/Code/th14-release/hosted-before-shield-521494c8",
+    "productionDeployed": true,
+    "productionBrowserAccepted": false,
+    "completeGame": false
+  },
+  "productionHttpVerification": {
+    "passed": true,
+    "site": "https://wth.saop.cc/",
+    "generation": "06fb9cfbe2c6aa60ec79ff31a1cd4a6e97ff4a8ac9746834512c15617dcf78b7",
+    "allWholeFileHashesVerified": true,
+    "coiAndNoTransformAccepted": true,
+    "cacheCleared": false,
+    "integrityChecksBypassed": false,
+    "productionBrowserAccepted": false,
+    "completeGame": false
+  },
+  "productionBrowserFiniteAcceptance": {
+    "site": "https://wth.saop.cc/?game=th14",
+    "runtimeGeneration": "06fb9cfbe2c6aa60ec79ff31a1cd4a6e97ff4a8ac9746834512c15617dcf78b7",
+    "actualBrowserDocumentUrlGenerationVerified": true,
+    "browser": "Chrome 157",
+    "renderer": "SDL3/WebGL2/C++",
+    "musicMode": "ogg-streaming",
+    "musicVolumePercent": 0,
+    "soundVolumePercent": 0,
+    "readyObserved": true,
+    "attractDemoGameplayObserved": true,
+    "screenshot": "artifacts/th14/shield-state-nov13/production-ogg-running.png",
+    "screenshotSha256": "b4e289185e79dbbe9122de54feb95dfee2225ef7aefb3f632093c48fde36fd5a",
+    "ordinaryInputAccepted": false,
+    "allTrackPlaybackAccepted": false,
+    "consoleLogCheckPerformed": false,
+    "completeGame": false
+  },
+  "productionHttpInitialFailure": "First curl verification received HTTP 502. Origin was then confirmed 200 with active service; a separate urllib request received 403. A later complete curl verification passed all 39 files. These failures are not relabeled as passes."
 }
