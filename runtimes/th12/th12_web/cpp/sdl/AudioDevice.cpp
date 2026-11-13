@@ -229,7 +229,7 @@ bool AudioDevice::consume_initial_music_request(bool native_direct_sound){
         if(native_direct_sound){a.music.reset();a.track=-1;a.music_paused=false;a.music_fade={};}
         if(a.preloaded_music[slot]&&a.preloaded_names[slot]==request.file)return Result::Done;
         a.preloaded_names[slot]=request.file;++a.preload_calls;
-        if(!native_direct_sound)return Result::Done;
+        if(!native_direct_sound||!music_enabled)return Result::Done;
         a.preloaded_music[slot].reset();
         const u8* format=nullptr;
         for(u32 n=0;n+52<=a.formats.size();n+=52)if(std::strncmp(reinterpret_cast<const char*>(a.formats.data()+n),request.file,16)==0){format=a.formats.data()+n;break;}
@@ -267,6 +267,14 @@ bool AudioDevice::music(i32 track){
     if(a.native_direct_sound)for(u32 slot=0;slot<2;++slot)if(a.preloaded_music[slot]&&a.preloaded_names[slot]==filename){cached_music=a.preloaded_music[slot];format=cached_music->format;break;}
 #endif
 
+#if PORT_TITLE == 14
+    // The launcher can select no BGM while optional tracks are unavailable.
+    // Keep cue selection for Game Over/Continue without opening absent files.
+    if(!music_enabled&&!a.music){
+        a.track=track;a.music_paused=false;a.fade=a.fade_total=0;a.music_fade={};
+        return true;
+    }
+#endif
     if(a.track==track&&a.music){a.fade=0;a.music_paused=false;
 #if PORT_TITLE == 14
         a.music_fade={};
@@ -345,7 +353,11 @@ void AudioDevice::pause_music(bool paused){auto& a=*impl;if(!a.music||a.music_pa
 #endif
     if(paused)ma_sound_stop(&a.music->sound);else ma_sound_start(&a.music->sound);}
 bool AudioDevice::save_music(){
-    auto& a=*impl;discard_saved_music();if(!a.music||a.track<0)return false;
+    auto& a=*impl;discard_saved_music();
+#if PORT_TITLE == 14
+    if(!music_enabled&&!a.music){a.saved_track=a.track;a.track=-1;return a.saved_track>=0;}
+#endif
+    if(!a.music||a.track<0)return false;
 #if PORT_TITLE == 14
     // Retail449e98 obtains wrapped clock time, independently of decoder read-ahead.
     a.saved_position=a.music->time.position(a.clock());
@@ -358,7 +370,13 @@ bool AudioDevice::save_music(){
     return true;
 }
 bool AudioDevice::restore_music(){
-    auto& a=*impl;if(!a.saved_music)return false;
+    auto& a=*impl;
+#if PORT_TITLE == 14
+    if(!music_enabled&&!a.saved_music&&a.saved_track>=0){
+        a.track=a.saved_track;a.saved_track=-1;a.music_paused=false;return true;
+    }
+#endif
+    if(!a.saved_music)return false;
 #if PORT_TITLE == 14
     // Retail481f3c..481f55 truncates sample time and subtracts one PCM frame.
     const double sample_time=a.saved_position*double(a.saved_music->time.rate);

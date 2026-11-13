@@ -1,0 +1,11 @@
+# TH14 no-BGM startup and Continue · 2026-11-13
+
+When the launcher selects no music, including a fallback while optional music is unavailable, the TH14 core must not require an Ogg file. Previously the actual Application still attempted to open `/music/th14_01.ogg` and terminated with `Unable to decode`. This was reproduced with music explicitly disabled and an empty music directory. Setting the volume to zero is a separate operation and does not disable media validation.
+
+The TH14-only fix retains logical music cues without opening a decoder when music is disabled and no voice exists. Initial music preloading also skips decoding in this mode. Game Over can save the logical stage cue and Continue can restore it without a PCM voice. Existing voices and the enabled-music decoding path retain their normal handling. Other titles' branches are unchanged.
+
+An actual threaded Application now runs through title, ordinary Reimu B Normal entry, natural death, Game Over and Continue with no music files. Observed cues are 0 → 1 → 17 → 1; Continue restores two lives and three bombs. The case completes in 32.07 seconds. The before case failed at the title. A valid published Vorbis title case passes, while enabled music with missing or deliberately invalid media still fails. All measured workers, timers and declared graphics resources retire, with audio output silent.
+
+The normal browser build recompiles one AudioDevice unit and verifies/reuses 145 objects. Its Wasm SHA-256 is `9c77679f2627c46d72679e8b1ac1887cdf6e7d28bf7333730a72eb74f9f2b250`; the loader hash remains unchanged. This build receipt and command-recording integration do not by themselves establish browser acceptance or prove that the separate observed cold-start Ogg error has only this cause. No complete campaign is rerun solely for the disabled-music branch.
+
+Evidence: `th14-no-bgm-startup-nov13.json`; private artifacts: `artifacts/th14/no-music-startup-nov13/`. The baseline fixture and runner are `tools/th14-build-no-music-startup-nov13.py` and `tools/th14-run-no-music-startup-nov13.mjs`; the browser builder and qualifier use the same `no-music` prefix. Frozen before-source, provider hashes and compile commands are retained. No music, game data or binaries are published. Whole-game acceptance remains incomplete.
