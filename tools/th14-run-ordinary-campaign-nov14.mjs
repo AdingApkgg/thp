@@ -95,6 +95,13 @@ try{
 
 }catch(e){exception=String(e?.stack??e);}
 finally{
+ if(created&&process.env.TH14_FLOW_COLLISION_TRACE==='1')try{
+  assert.equal(typeof c.stage3_collision_words,'function');assert.equal(c.stage3_collision_overflow(),0);
+  const n=c.stage3_collision_words();assert.ok(n>0);assert.equal(n%42,0);
+  const capture=Buffer.from(new Uint8Array(memory.buffer,c.stage3_collision_data(),n*4));
+  assert.equal(capture.length,n*4);assert.equal(capture.readUInt32LE(0),0x47525a33);
+  writeFileSync(resolve(out,'stage3-collision-queries.u32'),capture);
+ }catch(e){exception??=String(e?.stack??e);}
  if(created&&process.env.TH14_FLOW_STAGE_HEADERS==='1')try{
   assert.equal(typeof c.recorded_stage_headers,'function');
   const p=c.recorded_stage_headers(),n=c.recorded_stage_header_bytes();assert.equal(n,8*0xdc);
