@@ -1,0 +1,161 @@
+{
+  "updatedUtc": "2026-11-13T11:39:57.713746+00:00",
+  "passed": true,
+  "acceptanceStandard": "observable-behavior-alignment",
+  "collaboratorCommit": "7fdabbfbccfcb26d2972f9287022861c1b938a32",
+  "before": {
+    "mode": "before",
+    "passed": false,
+    "cases": 812,
+    "state2Cases": 16,
+    "failures": 4,
+    "differences": [
+      {
+        "index": 288,
+        "args": [
+          5,
+          2,
+          2,
+          7,
+          100,
+          7,
+          0,
+          1,
+          2,
+          1,
+          0,
+          8,
+          1065353216
+        ],
+        "words": [
+          {
+            "index": 15,
+            "expected": 1,
+            "actual": 33
+          }
+        ],
+        "eventsEqual": true
+      },
+      {
+        "index": 289,
+        "args": [
+          5,
+          2,
+          2,
+          7,
+          100,
+          7,
+          0,
+          1,
+          2,
+          1,
+          59,
+          8,
+          1065353216
+        ],
+        "words": [
+          {
+            "index": 15,
+            "expected": 1,
+            "actual": 33
+          }
+        ],
+        "eventsEqual": true
+      },
+      {
+        "index": 296,
+        "args": [
+          6,
+          2,
+          2,
+          7,
+          100,
+          7,
+          0,
+          1,
+          2,
+          1,
+          0,
+          8,
+          1065353216
+        ],
+        "words": [
+          {
+            "index": 15,
+            "expected": 1,
+            "actual": 33
+          }
+        ],
+        "eventsEqual": true
+      },
+      {
+        "index": 297,
+        "args": [
+          6,
+          2,
+          2,
+          7,
+          100,
+          7,
+          0,
+          1,
+          2,
+          1,
+          59,
+          8,
+          1065353216
+        ],
+        "words": [
+          {
+            "index": 15,
+            "expected": 1,
+            "actual": 33
+          }
+        ],
+        "eventsEqual": true
+      }
+    ],
+    "wasmSha256": "30f362a77bff69b97cd5b40980575b151d0beccf836ee6a34437ce38ccf9b937",
+    "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+    "archiveSha256": "57d84a5cbe82460931cca26f090a0fde7aef180889ce5bfe8315851fc97b0233",
+    "silent": true,
+    "fullGameAccepted": false
+  },
+  "after": {
+    "mode": "after",
+    "passed": true,
+    "cases": 812,
+    "state2Cases": 16,
+    "failures": 0,
+    "differences": [],
+    "wasmSha256": "233f8932609ebc2b7dfbf7d0a7a32dc38536a00dabe7368c37af9a157f17e1df",
+    "nativeExecutableSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+    "archiveSha256": "57d84a5cbe82460931cca26f090a0fde7aef180889ce5bfe8315851fc97b0233",
+    "silent": true,
+    "fullGameAccepted": false
+  },
+  "sourceHashes": {
+    "runtimes/th12/th12_web/cpp/game/PlayerFrame.hpp": "659f0953224a41d9665e07ae5318f5ba9c55080bfb571b4917a9178d91f34db2",
+    "runtimes/th12/th12_web/cpp/game/PlayerFrame.cpp": "4c70326682e992a50d23f0d25bac4316bc8080110a9f4fb643c49939f5bc479e",
+    "runtimes/th12/th12_web/tests/cpp/core-exports.cpp": "f9207bb68fcddbb721b61e9229f3d67ad75b4c854ee0ac782c7568afdfc82049",
+    "tools/th14-player-lifecycle-native.py": "cd914a69da42961dc014e3871063f94b2824a3bbf389721e8602e1817b6a5ec5",
+    "runtimes/th13/th13_web/scripts/cpp/build-engine.mjs": "42cf27158921808b59ab0fb1aeb230bb9365fa6cbc7ab52284260c64779c719c",
+    "tools/th14-player-lifecycle-check.mjs": "876be2a29103393bc0509c4ddd3f52164b4521c3024ff2d7fb209288f2d4718c"
+  },
+  "testExportSyntaxCheckPassed": true,
+  "browserBuild": {
+    "passed": true,
+    "units": 146,
+    "sourceBindingsVerified": 372,
+    "runtimeFilesVerified": 18,
+    "wasmSha256": "2f884dea89e3caccc9a0353a244ffd9db6297caa5052a3af07fead2808bdb4ca",
+    "browserBehaviorAccepted": false,
+    "productionDeployed": false
+  },
+  "silent": true,
+  "scope": "Retail hit/death and existing lifecycle dispatcher component checks, including 16 armed-shield state-2 cases. See lifecycle report for manager boundaries and common-tail clock accounting.",
+  "fullBombBehaviorAccepted": false,
+  "allSakuyaShootingPatternsAccepted": false,
+  "fullReplayAccepted": false,
+  "completeGame": false
+}

@@ -31,7 +31,7 @@ mkdirSync(objects,{recursive:true});
 // 256 KiB. The engine's own text is far larger than this; the threshold exists to reject a module that was
 // stripped down to nothing, not to measure the engine.
 const MIN_BYTES=256*1024;
-const compileFlags=['--target=wasm32-wasip1','-std=c++17','-O2','-g0','-ffp-contract=off','-fno-strict-aliasing','-fno-exceptions','-fno-rtti',`-DPORT_TITLE=${title}`,'-c'];
+const compileFlags=['--target=wasm32-wasip1','-std=c++17','-O2','-g0','-ffp-contract=off','-fno-strict-aliasing','-fno-exceptions','-fno-rtti',`-DPORT_TITLE=${title}`,...(title===14?['-DTH14_CPP_STAGE_DECODE=1']:[]),'-c'];
 // --no-gc-sections: keep every function, because there is no entry point and nothing is exported.
 const linkFlags=['--target=wasm32-wasip1','-O2','-g0','-fno-exceptions','-fno-rtti','-mexec-model=reactor','-Wl,--no-entry','-Wl,-z,stack-size=1048576','-Wl,--export-memory','-Wl,--no-gc-sections'];
 const hash=b=>createHash('sha256').update(b).digest('hex');

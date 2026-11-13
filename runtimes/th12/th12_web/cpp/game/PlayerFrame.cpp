@@ -182,9 +182,11 @@ bool PlayerFrame::draw(AnmRenderer& renderer){
     return true;
 }
 bool PlayerFrame::cancel_all(bool spawning){return world.cancel_bullets(nullptr,0,spawning)&&world.cancel_lasers(nullptr,0,!spawning,spawning);}
-void PlayerFrame::fail_spell(){if(!(spell.flags&1))return;if(spell.elapsed>=60){spell.bonus=0;spell.flags&=~0x22u;}else if(input.special_active
-#if PORT_TITLE != 14
-    &&input.movement.character*2+input.movement.subtype!=5
+void PlayerFrame::fail_spell(){if(!(spell.flags&1))return;if(spell.elapsed>=60){spell.bonus=0;spell.flags&=~0x22u;}else if(
+#if PORT_TITLE == 14
+    input.special_active==1 // 44f807: the armed Sakuya A shield is state 2.
+#else
+    input.special_active&&input.movement.character*2+input.movement.subtype!=5
 #endif
     )spell.flags|=0x20;}
 bool PlayerFrame::hit(){

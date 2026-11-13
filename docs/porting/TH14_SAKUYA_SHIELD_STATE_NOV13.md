@@ -1,0 +1,11 @@
+# TH14 Sakuya armed-shield state · 2026-11-13
+
+The TH14 core now retains Sakuya A's armed shield as controller state 2, distinct from active Bomb state 1. Previously `PlayerFrameInput::special_active` was Boolean, so the assignment from `GameBattle` collapsed state 2 to 1. The player spell-failure path also treated every nonzero controller state as an active Bomb. This could set the spell-failure bit during the first 60 frames when retail preserves it.
+
+The correction follows the collaborator's [shield fix](https://github.com/AdingApkgg/eagler-touhou/commit/7fdabbfbccfcb26d2972f9287022861c1b938a32): retain an integer for TH14 and test state 1 explicitly in `fail_spell`. Other titles retain their existing Boolean branch. The shared test export converts its Boolean flag bit to 0/1 explicitly, preserving that API's prior meaning. The TH14 engine builder and lifecycle fixture also use the current stage-decode definition consistently.
+
+The retail instruction oracle and actual C++/Wasm lifecycle fixture cover 812 cases, including 16 new state-2 hit/death cases. The frozen before fixture differs in four cases: spell flags become 33 instead of retail's 1, with effect/manager events otherwise equal. The corrected fixture passes all 812 cases and all 16 state-2 cases. The shared test exports compile with the corrected TH14 input type. Source identities, the original executable/archive hashes and both comparison results are retained in [the evidence JSON](th14-shield-state-nov13.json).
+
+These are silent lifecycle component checks using original ANM resources. The oracle retains its declared manager/effect boundaries, and the comparator retains its existing common-tail clock accounting. The result does not establish complete Bomb behavior, all Sakuya shooting patterns, a full replay, GPU output, audio playback or whole-game acceptance. Browser build and deployment status are recorded separately in the JSON; generated modules and original game data are not published.
+
+Private evidence: `artifacts/th14/shield-state-nov13/`. Reproduce the component check with `node tools/th14-player-lifecycle-check.mjs` and an available native Python/Unicorn installation (or `TH_NATIVE_PYTHON`). The frozen baseline still reports four failures; it is not relabeled as passing.
