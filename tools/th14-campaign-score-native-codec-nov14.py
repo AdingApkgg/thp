@@ -30,7 +30,8 @@ def main():
   assert m.reg_read(UC_X86_REG_EIP)==base
 
 
- directory=ROOT/'artifacts/th14/ordinary-difficulties-nov14/score-qualified'
+ directory=(ROOT/(sys.argv[2] if len(sys.argv)>2 else 'artifacts/th14/ordinary-difficulties-nov14/score-qualified')).resolve()
+ assert directory.is_relative_to(ROOT/'artifacts/th14')
  rows=json.loads((directory/'scores.json').read_bytes());key=sys.argv[1];row=next(r for r in rows if r['key']==key)
  assert hashlib.sha256(img.data).hexdigest()=='f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353'
  data=(ROOT/row['writer']/'save/scoreth14.dat').read_bytes();expected=(directory/(key+'-decoded.bin')).read_bytes()
