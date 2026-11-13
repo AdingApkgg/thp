@@ -5,7 +5,7 @@
 ## 当前基线 · 2026-11-14
 
 - 六种自机在声明开局条件下的 Normal 普通六关、结局／staff／结果保存和六个新进程的单机体 Extra 解锁读取已验证；不是任意种子或其他难度全部通过。
-- 生产核心来源 85a60542，Runtime generation fd54b8473646f6cbd1b10017594fb003dc69c7013f13c5383c5bc8b56c77b341；39 个公网运行文件校验通过，见[交付证据](docs/porting/TH14_BEAM_RELEASE_NOV14.md)。
+- 生产核心来源 85a60542，Runtime generation fd54b8473646f6cbd1b10017594fb003dc69c7013f13c5383c5bc8b56c77b341；39 个公网运行文件校验通过，见[交付证据](docs/porting/TH14_BEAM_RELEASE_NOV14.md)。 公网已确认零音量启动、标题及自动演示的实际 WebGL2 画面，手动操作复验仍开放，见[启动复验](docs/porting/TH14_PUBLIC_BROWSER_START_NOV14.md)。
 - [行为验收口径](docs/porting/TH14_BEHAVIOR_ACCEPTANCE_NOV13.md)和[六自机 Normal 证据](docs/porting/TH14_ORDINARY_NORMAL_LOADOUTS_NOV14.md)。
 - 六自机使用实际 Normal 存档完成 Extra 普通通关、署名、返回标题和六个新进程的成绩读回；Normal 排名和原有解锁保持，详见[Extra 流程证据](docs/porting/TH14_ORDINARY_EXTRA_LOADOUTS_NOV14.md)。
 - Easy 已新增五自机普通通关与新进程成绩读取；魔理沙 A 两份输入提前结束，终态所测玩法与既有原版记录一致，但不计通关，详见[Easy 流程证据](docs/porting/TH14_ORDINARY_EASY_LOADOUTS_NOV14.md)。
@@ -15,8 +15,10 @@
 
 ## 接续顺序
 
-1. 完成已部署版本的公网浏览器操作复验，补可选工具剩余验收并对照新记录的最高分／结束帧显示差异；保留普通版与可选版已通过的具体证据。
+1. 完成已部署版本的公网浏览器操作复验，补可选工具剩余验收并核对录像结束帧的计时显示；保留普通版与可选版已通过的具体证据。练习与练习录像读取不同最高分来源已由原版初始化和 600 组成绩选择分支确认，不要求两处显示相同，见[最高分分支核对](docs/porting/TH14_PRACTICE_HIGH_SCORE_NOV14.md)。
 2. 修复魔理沙 A Hard、魔理沙 B Lunatic 未通过样本中影响玩法或录像的差异，补测受影响流程。
 3. 补齐剩余普通流程、完整录像、画面、音频、存档和公开入口验收，按功能记录通过范围与缺口。
 
 目标保持进行中。阶段性定位、有限样本或单个模式通过均不代表整作完成。
+
+本文件是当前执行口径：行为级对齐替代旧的内部 1:1 要求。旧目标中灵梦 B 的 RNG／内存逐字一致不再单独阻断；优先修复能够复现的玩法、录像、音画和稳定性问题。验收复用已有有效证据，只在修改影响已有结果或出现新反例时重跑相关测试，避免重复全量回放和额外资产副本。
