@@ -151,3 +151,98 @@ export async function mountManagedData(Module,{game,parentWindow,query,fetcher=g
  const manifest=await response.json();if(manifest.game!==game||manifest.schema!=='eagler-sdl-resources/1')throw Error('Invalid Runtime resource manifest');
  await installResources(Module,manifest.resources,{game,emit,base,fetcher});
 }
+
+// Host ownership and transport only. C++ validates files, creates the real
+// Application replay, consumes recorded inputs and advances every game tick.
+export function createReplayViewerHostTh14({read,describe,open,status,step,rate,pause,close,emit,
+ schedule=(f,ms)=>setTimeout(f,ms),cancel=id=>clearTimeout(id),visible=()=>true,onError=()=>{}}) {
+ let active=null,revision=0,pollTimer=null,seekTimer=null;
+ const rates=[0,.5,1,2,4,8];
+ const publish=()=>{if(active)emit({...active.state});};
+ const stopTimer=name=>{if(name==='poll'&&pollTimer!==null){cancel(pollTimer);pollTimer=null;}
+  if(name==='seek'&&seekTimer!==null){cancel(seekTimer);seekTimer=null;}};
+ const stopSeek=()=>{++revision;stopTimer('seek');if(active){active.state.seeking=false;active.state.target=null;}};
+ const readValidated=async path=>{
+  const file=await read(path);if(!(file.bytes instanceof Uint8Array)||!file.bytes.length||file.bytes.length>64*1024*1024)throw Error('录像大小无效');
+  const bytes=new Uint8Array(file.bytes),description=await describe(bytes);
+  if(!description?.stages?.length)throw Error('录像信息无效');return {path:file.path,bytes,description};
+ };
+ const timeline=description=>{
+  let total=0;return description.stages.map(stage=>{const item={...stage,start:total};total+=stage.frames;return item;});
+ };
+ async function update(owner=active){
+  if(!owner||owner!==active)return;
+  const native=await status();if(owner!==active)return;
+  const entry=owner.timeline.find(s=>s.id===native.stage);
+  if(!entry||!native.active)return;
+  owner.state.stage=native.stage;owner.state.frame=entry.start+Math.min(native.frame,entry.frames);owner.state.ended=!!native.ended;
+  if(native.ended){owner.state.frame=entry.start+entry.frames;owner.state.paused=true;await pause(true);}
+  if(owner===active)publish();
+ }
+ function poll(){
+  pollTimer=schedule(async()=>{pollTimer=null;const owner=active;
+   try{if(owner&&!owner.state.seeking)await update(owner);}catch(e){onError(e);}
+   if(active)poll();
+  },250);
+ }
+ async function begin(file,stage,paused=false,playRate=1){
+  const entries=timeline(file.description),selected=entries.find(s=>s.id===stage);
+  if(!selected)throw Error('录像中没有该关卡');
+  stopSeek();stopTimer('poll');const ticket=revision;
+  await pause(true);await open(file.bytes,stage);await rate(playRate);
+  if(ticket!==revision)return null;
+  const owner={...file,timeline:entries,selectedStage:stage,state:{kind:'replay',path:file.path,description:file.description,
+   left:file.description.character,right:file.description.shot??0,difficulty:file.description.difficulty,stage,
+   frame:selected.start,startFrame:selected.start,total:entries.reduce((n,s)=>n+s.frames,0),
+   paused,rate:playRate,seeking:false,target:null,ended:false}};
+  active=owner;await pause(paused||!visible());publish();poll();return owner;
+ }
+ async function seek(value){
+  const owner=active;if(!owner)throw Error('没有正在播放的录像');
+  if(!Number.isSafeInteger(value)||value<owner.state.startFrame||value>owner.state.total)throw Error('录像位置无效');
+  const entry=[...owner.timeline].reverse().find(s=>s.start<=value);
+  stopSeek();const ticket=revision;await pause(true);await open(owner.bytes,entry.id);await rate(owner.state.rate);
+  if(owner!==active||ticket!==revision)return;
+  owner.state.seeking=true;owner.state.target=value;owner.state.ended=false;publish();
+  const pump=async()=>{
+   seekTimer=null;if(owner!==active||ticket!==revision)return;
+   if(!visible()){seekTimer=schedule(pump,250);return;}
+   try{
+    const result=await step(value-entry.start,16);
+    if(owner!==active||ticket!==revision)return;
+    if(result<0)throw Error('录像跳转失败');
+    await update(owner);if(owner!==active||ticket!==revision)return;
+    if(result){owner.state.seeking=false;owner.state.target=null;await pause(owner.state.paused||owner.state.ended||!visible());publish();}
+    else seekTimer=schedule(pump,0);
+   }catch(e){if(owner===active&&ticket===revision){owner.state.seeking=false;owner.state.target=null;owner.state.paused=true;publish();onError(e);}}
+  };
+  seekTimer=schedule(pump,0);
+ }
+ return {
+  get state(){return active?{...active.state}:null;},
+  async foreground(){if(active)await pause(active.state.paused||active.state.seeking||active.state.ended||!visible());},
+  async close(){stopSeek();stopTimer('poll');active=null;await close();},
+  async command(message){
+   const action=message.action;
+   if(action==='inspect'){const file=await readValidated(message.path);return {description:file.description};}
+   if(action==='open'){
+    const file=await readValidated(message.path),stage=message.stage??file.description.stages[0].id;
+    if(!Number.isSafeInteger(stage))throw Error('录像关卡无效');await begin(file,stage);return {playback:this.state};
+   }
+   const owner=active;if(!owner)throw Error('没有正在播放的录像');
+   if(action==='pause'){stopSeek();owner.state.paused=true;await pause(true);await update(owner);}
+   else if(action==='play'){
+    if(owner.state.ended)await begin(owner,owner.selectedStage,false,owner.state.rate);
+    else{owner.state.paused=false;await pause(owner.state.seeking||!visible());publish();}
+   }else if(action==='rate'){
+    if(!rates.includes(message.value))throw Error('录像倍率无效');await rate(message.value);owner.state.rate=message.value;publish();
+   }else if(action==='seek')await seek(message.value);
+   else if(action==='relocate'){
+    if(message.path!==owner.path)throw Error('录像路径已变化');const next=await readValidated(message.target);
+    if(next.bytes.length!==owner.bytes.length||!next.bytes.every((b,i)=>b===owner.bytes[i]))throw Error('目标不是同一份录像');
+    owner.path=next.path;owner.state.path=next.path;publish();
+   }else throw Error('不支持的录像操作');
+   return {playback:this.state};
+  }
+ };
+}

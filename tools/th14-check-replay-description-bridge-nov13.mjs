@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import {readFileSync,writeFileSync} from 'node:fs';
 import {resolve} from 'node:path';
 import {createHash} from 'node:crypto';
+import {createReplayViewerHostTh14} from '../runtimes/th12/th12_web/sdl-runtime/eagler-host.mjs';
 import {runInNewContext} from 'node:vm';
 import {WASI} from 'node:wasi';
 const R=resolve(import.meta.dirname,'..'),H=resolve(R,'artifacts/th14/replay-description-bridge-nov13');
@@ -33,15 +34,16 @@ for(const data of invalid)assert.equal(native(data),null);
 // Exercise the actual canonical command body, with only its per-title path
 // substitution (the normal runtime packaging step) and the native Wasm decoder.
 let source=readFileSync(resolve(R,'runtimes/th12/th12_web/sdl-runtime/shell.mjs'),'utf8');
-source=source.replaceAll('/savesth11','/savesth14').replaceAll('th11_','th14_');
-const pathSource=source.match(/^function path\(value\).*$/m)[0];
+source=source.replaceAll('/savesth11','/savesth14');
+const pathSource=source.match(/^function path\(value\).*$/m)[0].replaceAll('th11','th14');
 const start=source.indexOf('async function command(m){'),end=source.indexOf('\nlet queue=',start);assert(start>=0&&end>start);
 let allocations=0,frees=0;
-const context={game:'th14',TextDecoder,Uint8Array,JSON,Error,coreError:()=>string(c.error_data()),
+const context={game:'th14',TextDecoder,Uint8Array,JSON,Error,createReplayViewerHostTh14,error:()=>{},coreError:()=>string(c.error_data()),
  Module:{get HEAPU8(){return new Uint8Array(memory.buffer);},FS:{readFile:path=>{assert.equal(path,'/savesth14/replay/th14_01.rpy');return saved;}}},
  core:{malloc:n=>{++allocations;return c.allocate(n);},free:p=>{++frees;c.release(p);}},
  callCore:async(name,...args)=>{assert.equal(name,'th14_replay_description');return c.describe(...args);}};
-const command=runInNewContext(`(()=>{${pathSource}\n${source.slice(start,end)}\nreturn command;})()`,context);
+const factorySource=source.slice(source.indexOf('function replayPlayback(){'),start);
+const command=runInNewContext(`(()=>{let replayViewer=null;${pathSource}\n${factorySource}\n${source.slice(start,end)}\nreturn command;})()`,context);
 const response=await command({command:'playback',action:'inspect',path:'replay/th14_01.rpy'});assert.deepEqual(JSON.parse(JSON.stringify(response.description)),d);
 await assert.rejects(command({command:'playback',action:'inspect',path:'../th14_01.rpy'}));
 await assert.rejects(command({command:'playback',action:'inspect',path:'scoreth14.dat'}));
@@ -49,5 +51,5 @@ assert.equal(allocations,frees);assert.equal(allocations,1);
 const report={passed:true,validNativeMetadataCases:rows.length,ordinaryMenuSavedFile:true,malformedNativeFilesRejected:invalid.length,
  actualShellPlaybackInspectCommandExecuted:true,actualNativeDecoderUsed:true,pathTraversalAndNonReplayPathsRejected:true,
  allocatedPayloadsFreed:true,description:d,rows,fixtureWasmSha256:build.wasmSha256,
- browserRetestAccepted:false,playbackOpenPauseSeekRateImplemented:false,productionDeployed:false,completeGame:false};
+ browserRetestAccepted:false,playbackControlsCoveredBySeparateApplicationTest:true,productionDeployed:false,completeGame:false};
 writeFileSync(resolve(H,'qualified.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({...report,rows:undefined}));

@@ -14,6 +14,7 @@
 #include "../game/GameSession.hpp"
 #if PORT_TITLE == 14
 #include "../game/ReplayDescriptionTh14.hpp"
+#include "../../../portable/sdl/ReplayViewerClockTh14.hpp"
 #endif
 #include "../game/FrameStatistics.hpp"
 #if defined(TH14_CPP_STAGE_DECODE)
@@ -308,6 +309,7 @@ struct Application:StageResourceEffects
     }
 #endif
 #if PORT_TITLE == 14
+    bool hosted_replay=false;double hosted_replay_rate=1;touhou::sdl::ReplayViewerClockTh14 hosted_cadence;
     bool frame_statistics_sampled=false;
     bool coalesce_browser_draw=false;
     u8 frame_skip_counter=0;
@@ -1652,7 +1654,11 @@ struct Application:StageResourceEffects
         initialized=true;return audio_events()&&text_events();
     }
 
+#if PORT_TITLE == 14
+    bool restart(u32 stage=1,i32 character=0,i32 subtype=0,i32 difficulty=1,const u8* replay_data=nullptr,u32 replay_size=0) {
+#else
     bool restart(u32 stage=1,i32 character=0,i32 subtype=0,i32 difficulty=1) {
+#endif
 #if PORT_TITLE == 14
         audio.discard_paused_sounds();
 #endif
@@ -1689,7 +1695,12 @@ struct Application:StageResourceEffects
 #if PORT_TITLE == 14 || PORT_TITLE == 16
         if(session.resources.stage)for(auto& file:session.resources.stage->ecl_animations)graphics.unload(file);
 #endif
+#if PORT_TITLE == 14
+        hosted_replay=replay_data!=nullptr;
+        if(!(replay_data?session.begin_replay(resources,replay_data,replay_size,stage,false):session.begin(resources,stage,character,subtype,difficulty,false))){error=session.error;return false;}
+#else
         if(!session.begin(resources,stage,character,subtype,difficulty,false)){error=session.error;return false;}
+#endif
 #if PORT_TITLE == 14
         // begin() clears the previous session's VMs. An interrupted cold boot
         // can still own sig textures; release them only after those references
@@ -2109,8 +2120,49 @@ struct Application:StageResourceEffects
         return tick_once(held,pause_key);
 #endif
     }
+#if PORT_TITLE == 14
+    bool set_hosted_replay_rate(double rate){
+        if(!touhou::sdl::ReplayViewerClockTh14::valid_rate(rate))return false;
+        hosted_replay_rate=rate;hosted_cadence.reset();return true;
+    }
+    void close_hosted_replay(){hosted_replay=false;hosted_replay_rate=1;hosted_cadence.reset();}
+    bool hosted_replay_open_ready()const{
+        if(!initialized||!core_loading_done||boot_signature_active||boot_stage_owner||session.state.phase==GameSessionPhase::loading)return false;
+#if defined(TH14_CPP_STAGE_WORKER)
+        if(session.has_cpp_stage_worker()&&!session.stage_cpp_worker_joined())return false;
+#endif
+        return true;
+    }
+    bool open_hosted_replay(const u8* data,u32 size,u32 stage){
+        Replay check;
+        if(!check.open(data,size)){error=check.error();return false;}
+        if(check.character()>2||check.subtype()>1||check.difficulty()>4){error="invalid TH14 replay selection";return false;}
+        if(!stage)for(u32 n=1;n<=7;++n)if(check.stage(n)){stage=n;break;}
+        if(!check.stage(stage)){error="stage absent from replay";return false;}
+        hosted_cadence.reset();return restart(stage,check.character(),check.subtype(),check.difficulty(),data,size);
+    }
+    const u32* hosted_replay_status()const{
+        static u32 words[6];const auto& s=session;const auto* entry=s.playback.stage(s.state.stage);
+        const bool ended=hosted_replay&&s.state.replay&&s.state.phase==GameSessionPhase::paused&&s.pause_menu&&s.pause_menu->forced_exit;
+        words[0]=s.state.stage;words[1]=ended&&entry?entry->frames:s.playback.frame();words[2]=entry?entry->frames:0;
+        words[3]=ended;words[4]=u32(s.state.phase);words[5]=hosted_replay&&s.state.replay;return words;
+    }
+    int hosted_replay_seek_step(u32 target,u32 budget){
+        if(!hosted_replay||!session.state.replay){error="no hosted replay";return -1;}
+        budget=std::min(budget,16u);
+        for(u32 n=0;n<budget;++n){
+            const auto* status=hosted_replay_status();
+            if(status[3])return 1;
+            if(status[1]>=target&&session.state.phase==GameSessionPhase::stage&&session.battle_callbacks_attached())return 1;
+            if(!tick_once(0))return -1;
+        }
+        const auto* status=hosted_replay_status();
+        return status[3]||(status[1]>=target&&session.state.phase==GameSessionPhase::stage&&session.battle_callbacks_attached())?1:0;
+    }
+#endif
     bool return_to_title(){
 #if PORT_TITLE == 14
+        close_hosted_replay();
         audio.discard_paused_sounds();
 #endif
         if(!save_scores())return false;
@@ -2212,6 +2264,9 @@ void cancel_touch(){
     if(app.session.battle)app.session.battle->player_input.movement.touch_mode=0;
 }
 bool sample_and_tick_once(){
+#if PORT_TITLE == 14
+    if(app.hosted_replay&&app.session.state.replay)return app.tick_once(0);
+#endif
     SDL_Event event;while(SDL_PollEvent(&event)){
 #if PORT_TITLE == 14
         if(event.type==SDL_EVENT_WINDOW_CLOSE_REQUESTED||event.type==SDL_EVENT_QUIT)app.session.request_host_close();
@@ -2266,6 +2321,18 @@ EMSCRIPTEN_KEEPALIVE const char* th14_replay_description(const unsigned char* da
     if(!th11::describe_replay_th14(data,size,description,error))return nullptr;
     return description.c_str();
 }
+#endif
+#if PORT_TITLE == 14
+EMSCRIPTEN_KEEPALIVE int th14_replay_open_ready(){return th11::sdl::app.hosted_replay_open_ready();}
+EMSCRIPTEN_KEEPALIVE int th14_open_replay(const unsigned char* data,unsigned size,unsigned stage){
+    return th11::sdl::app.open_hosted_replay(data,size,stage);
+}
+EMSCRIPTEN_KEEPALIVE const unsigned* th14_replay_status(){return th11::sdl::app.hosted_replay_status();}
+EMSCRIPTEN_KEEPALIVE int th14_replay_seek_step(unsigned target,unsigned budget){return th11::sdl::app.hosted_replay_seek_step(target,budget);}
+EMSCRIPTEN_KEEPALIVE int th14_replay_rate(double rate){
+    return th11::sdl::app.set_hosted_replay_rate(rate);
+}
+EMSCRIPTEN_KEEPALIVE void th14_replay_close(){th11::sdl::app.close_hosted_replay();}
 #endif
 EMSCRIPTEN_KEEPALIVE int th11_save_scores(){return th11::sdl::app.save_scores();}
 EMSCRIPTEN_KEEPALIVE int th11_save_replay(unsigned slot,const char* name){return th11::sdl::app.save_replay(slot,name);}
@@ -2367,11 +2434,17 @@ EMSCRIPTEN_KEEPALIVE void th11_loop_start(){
     request_frames([](double time,void* epoch)->EM_BOOL{
         if(!running||uintptr_t(epoch)!=loop_epoch)return EM_FALSE;
         const double begin=emscripten_get_now(),delta=previous_frame<0?0:(time-previous_frame)/1000.;previous_frame=time;
-        if(suspended){cadence.reset();return EM_TRUE;}
+        if(suspended){cadence.reset();
+#if PORT_TITLE == 14
+            app.hosted_cadence.reset();
+#endif
+            return EM_TRUE;}
 #if PORT_TITLE == 14
 #if PORT_TITLE == 14
         const bool can_coalesce=app.can_coalesce_browser_draw();
-        const auto limit=cadence.advance_display(delta,can_coalesce);
+        const bool viewer=app.hosted_replay&&app.session.state.replay&&app.session.state.phase==th11::GameSessionPhase::stage;
+        if(!viewer)app.hosted_cadence.reset();
+        const auto limit=viewer?app.hosted_cadence.advance(delta,app.hosted_replay_rate):cadence.advance_display(delta,can_coalesce);
         const bool backpressured=limit&&can_coalesce&&app.graphics.backend.browser_draw_backpressured();
 #else
         const auto limit=cadence.advance(delta);
@@ -2380,8 +2453,8 @@ EMSCRIPTEN_KEEPALIVE void th11_loop_start(){
         unsigned ticks=0;
         for(;ticks<limit&&ok;++ticks){
 #if PORT_TITLE == 14
-            if(ticks&&!app.can_coalesce_browser_draw())break;
-            app.coalesce_browser_draw=backpressured||ticks+1<limit;
+            if(ticks&&!(viewer&&app.hosted_replay&&app.session.state.replay&&app.session.state.phase==th11::GameSessionPhase::stage)&&!app.can_coalesce_browser_draw())break;
+            app.coalesce_browser_draw=!viewer&&(backpressured||ticks+1<limit);
 #endif
             ok=sample_and_tick();
         }

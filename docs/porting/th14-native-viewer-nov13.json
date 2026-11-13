@@ -1,0 +1,73 @@
+{
+  "acceptanceStandard": "observable-behavior-alignment",
+  "actualApplicationAndCppThreads": true,
+  "nativeControlsImplemented": [
+    "inspect",
+    "open",
+    "pause",
+    "play",
+    "seek",
+    "rate",
+    "relocate"
+  ],
+  "testedClockRates": [
+    0.5,
+    1,
+    2,
+    4,
+    8,
+    0
+  ],
+  "testedSameReplayRelocation": true,
+  "selectedStageAndCrossStageSeeking": true,
+  "selectedStageRestartFirstPresentedFrame": 1,
+  "syntheticCounterOrRngWrites": false,
+  "silent": true,
+  "graphicsRecordingOnly": true,
+  "browserUiAccepted": false,
+  "deployed": false,
+  "completeGame": false,
+  "browserWasmSha256": "e4cb2ed3a78763a44d57b632d3946110d456624e83f9d4bda4fefe2484e9e4a1",
+  "browserLoaderSha256": "ced19bc6c9ba35bff37a0a237b8f2e36f6462a6ddd0b863270eb3d92416e701f",
+  "normalSdkUnitsRecompiled": 1,
+  "verifiedReusedObjects": 145,
+  "sourceBindings": 372,
+  "reports": {
+    "transport-v2": {
+      "reportSha256": "9563be14e5e3c8862cd4c58dc9a5f9727b27392745ced24e4bdcb1450b18c7f6",
+      "driverSha256": "114df5310c892f760f81fb66278b58f81646fc39beac66b0435a533b3db6b04c",
+      "checkpoints": [
+        "opened-cold",
+        "seek150",
+        "seek30",
+        "seek150-repeat",
+        "playing",
+        "paused",
+        "ended",
+        "restarted-after-end"
+      ],
+      "actualThreadsRetired": true
+    },
+    "multistage-v1": {
+      "reportSha256": "f7f8f378919eac91b8bf8567b5cf484d18a3b8f2f5196ac219a7578cb2bea404",
+      "driverSha256": "2be9d0fb31af252efdc06ebc911ce58dfa6840b06a863ae32bc71f0d5f99cd40",
+      "checkpoints": [
+        "selected-stage2",
+        "stage2-frame60",
+        "stage2-restart-first-presentation",
+        "stage3-frame30",
+        "back-to-stage2"
+      ],
+      "actualThreadsRetired": true
+    }
+  },
+  "retainedFailures": [
+    "component (missing enum namespace)",
+    "transport-v1 (cold loader handoff not ready)"
+  ],
+  "pending": [
+    "Actual browser workspace controls",
+    "All ordinary flow and mode coverage",
+    "Nested replay-folder semantics"
+  ]
+}
