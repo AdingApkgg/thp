@@ -33,6 +33,7 @@ assert script.count('option-init-nov13-59a8cc4c')==1
 script=script.replace('option-init-nov13-59a8cc4c','behavior-nov13-336a1ff0')
 script=script.replace("site/'vendor/country-flag-icons/LICENSE',site/'vendor/tinysynth/LICENSE'","site/'launcher/public/vendor/country-flag-icons.LICENSE',site/'launcher/public/vendor/webaudio-tinysynth.LICENSE'")
 script=script.replace("assert not subprocess.check_output", "assert len(license_hashes)==2\nassert not subprocess.check_output",1)
+script=script.replace('node scripts/prepare-th14-runtime.mjs', 'bun run build:ui-rewrite > \"$release/frontend-build.log\" 2>&1\nnode scripts/prepare-th14-runtime.mjs',1)
 (H/'prepare-arch.sh').write_text(script.replace('RELEASE',release),encoding='utf8',newline='\n')
 activate=(R/'artifacts/th14/behavior-release-nov13/activate-arch.sh').read_text()
 activate=activate.replace('behavior-nov13-336a1ff0','viewer-nov13-'+core[:8]).replace('hosted-before-336a1ff0','hosted-before-'+core[:8])
