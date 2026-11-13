@@ -405,7 +405,309 @@
     "earlyGameOverFrameAfter": 34783,
     "earlyGameOverScoreMatchesExistingOriginal": true,
     "normalSakuyaAFullFlowAndScorePreserved": true,
-    "productionDeployed": false
+    "productionDeployed": true,
+    "candidateBrowser": {
+      "candidateBrowserAccepted": true,
+      "site": "http://localhost:8222/?game=th14",
+      "generation": "47743edb2c1865d0c4f14f4f3b0104efb83ddb66c02b1ce14f669ffc06ebe888",
+      "coreSource": "c407a1693cce55fa9f4ffea6f687ea2ac61c137e",
+      "wasmSha256": "a76eb4f7033432255f66cd455a1b0eca0711639509d72ba2f5d78b221cff616c",
+      "earlyEndFrame": 34783,
+      "earlyEndStage": 3,
+      "earlyEndScore": 82434130,
+      "earlyInputFromStage1Continuous": true,
+      "earlyPlaybackRate": 8,
+      "normalMarkerFrame": 900,
+      "normalPlaybackRate": 1,
+      "normalScore": 9130,
+      "normalLives": 2,
+      "normalBombs": 2,
+      "normalBombFragments": 3,
+      "normalPower": 118,
+      "normalGraze": 7,
+      "musicVolume": 0,
+      "sfxVolume": 0,
+      "sameGenerationGpuHudObserved": true,
+      "exitAndReopenManagerPersistedFilesVisible": true,
+      "consoleWarningsAndErrorsAtFirstReturn": [],
+      "consoleScope": "Captured up to 12 warnings/errors after first two cases, before manager reopen; not an all-time console assertion.",
+      "screenshots": {
+        "browser-early-end-34783.png": "cea66f50b57c8e43caaaf62e2b2c04965f35242b9f6c8baf6146e879dd24566b",
+        "browser-marker-end-900.png": "a548e1553c5a162cbaf36361f57becb4928746c84d052a6a2dc29a6e7755374b",
+        "browser-marker-inventory-fullscreen.png": "d087e87d910d360bc8c194d57f7227efd4cc738eedc9a4421038dafea79b0051"
+      },
+      "productionDeployed": false,
+      "publicOriginBrowserAccepted": false,
+      "allModeGpuAccepted": false,
+      "completeGame": false
+    },
+    "production": {
+      "coreSource": "c407a1693cce55fa9f4ffea6f687ea2ac61c137e",
+      "frontendSource": "c7468a29f7f4da2616c0166eea05dd8012f72d80",
+      "runtimeGeneration": "47743edb2c1865d0c4f14f4f3b0104efb83ddb66c02b1ce14f669ffc06ebe888",
+      "previousGeneration": "d9332084253c9ca5dbdab8d64d86313c1ee432e37bdd7c4c310e90542e521538",
+      "previousGenerationPreserved": true,
+      "runtimeFiles": 39,
+      "realOggTracks": 18,
+      "wasmSha256": "a76eb4f7033432255f66cd455a1b0eca0711639509d72ba2f5d78b221cff616c",
+      "service": "active",
+      "rollback": "/home/i/Code/th14-release/hosted-before-progress-c407a169",
+      "atomicDirectoryExchange": true,
+      "serviceRestartRequested": false,
+      "servicePidPreserved": true,
+      "mainPid": 443019,
+      "productionDeployed": true,
+      "productionBrowserAccepted": false,
+      "completeGame": false
+    },
+    "publicHttpVerification": {
+      "passed": true,
+      "site": "https://wth.saop.cc/",
+      "generation": "47743edb2c1865d0c4f14f4f3b0104efb83ddb66c02b1ce14f669ffc06ebe888",
+      "files": [
+        {
+          "path": "Th14ArchiveDecodeEndpoint.mjs",
+          "bytes": 5322,
+          "sha256": "940f0277f4418cd231fda388c5c4a39c84969e26552923971f2006c256a1569f",
+          "headersAccepted": true
+        },
+        {
+          "path": "Th14ArchiveDecodeClient.mjs",
+          "bytes": 3920,
+          "sha256": "a696dd2daaf079cf989aebca69d493144e2f66db509107a919e8e38f70f3d450",
+          "headersAccepted": true
+        },
+        {
+          "path": "Th14ArchiveReadAhead.mjs",
+          "bytes": 3637,
+          "sha256": "f08632bf558312b725b2b271a0fdb5ea3ed9ff95078bdd57c985dcf1caf37dee",
+          "headersAccepted": true
+        },
+        {
+          "path": "Th14ArchiveDecodeWorker.mjs",
+          "bytes": 302,
+          "sha256": "a4c0c8983b03705d31cc7cec77e15205226aa2e1888181d338fb35d19bcd1239",
+          "headersAccepted": true
+        },
+        {
+          "path": "Th14AsyncRuntime.mjs",
+          "bytes": 3289,
+          "sha256": "18ebef86aa52af711e250c6fcd7a068decb0f32048050978e573829b999c03e9",
+          "headersAccepted": true
+        },
+        {
+          "path": "Th14SharedSceneWorker.mjs",
+          "bytes": 369,
+          "sha256": "423ce2d8734b973726dfb2251a8d3cdd2fce777771c13be9b4889f0766e4d444",
+          "headersAccepted": true
+        },
+        {
+          "path": "Th14StageMemoryClient.mjs",
+          "bytes": 10352,
+          "sha256": "8a3c0fc627fa88d79cd2427b6e54a91d320ed7529f0988163849907704224698",
+          "headersAccepted": true
+        },
+        {
+          "path": "Th14SharedSceneCopy.mjs",
+          "bytes": 4985,
+          "sha256": "d00125f52b38ad642cc3f97be1513450bcd8f5a975e86f2854ac2062d06d86e0",
+          "headersAccepted": true
+        },
+        {
+          "path": "Th14StageMemoryWorker.mjs",
+          "bytes": 689,
+          "sha256": "05b7415ae808c5d5f05129890f3a9b2ac16a498ce7b5920cadb76f9c9a14cbde",
+          "headersAccepted": true
+        },
+        {
+          "path": "Th14StageRestoreDelivery.mjs",
+          "bytes": 2997,
+          "sha256": "56a8b4e7acd5ccf2f6900c707751d66e91de9b524febf9b41e825df3b1845697",
+          "headersAccepted": true
+        },
+        {
+          "path": "Th14StageRestoreProtocol.mjs",
+          "bytes": 1701,
+          "sha256": "a451e36b430ec5c3ca80557eda7e48300b8dbfe504e9b4eba63efcdce52d9870",
+          "headersAccepted": true
+        },
+        {
+          "path": "Th14StageRestoreWorker.mjs",
+          "bytes": 257,
+          "sha256": "416f723b2503471d7f4b3be154e172200e8575a9d807fb3cc67634ba6ce62909",
+          "headersAccepted": true
+        },
+        {
+          "path": "Th14WebGpuCore.mjs",
+          "bytes": 967,
+          "sha256": "27ccd40844379579cbf5ac2c5b906aa9e10e96e9d46ca2fe97b2a37cd77a93ae",
+          "headersAccepted": true
+        },
+        {
+          "path": "Th14WebGpuHost.mjs",
+          "bytes": 20267,
+          "sha256": "4a4bde2eafd6e4de651d7dc489f622c176a2bef9a3889e9492e65fe0efe12bed",
+          "headersAccepted": true
+        },
+        {
+          "path": "archive-decoder.mjs",
+          "bytes": 11199,
+          "sha256": "88ad1781faf24be04002cb36d39f70998d2c17ecfc8e208ea951050859920a5e",
+          "headersAccepted": true
+        },
+        {
+          "path": "archive-decoder.wasm",
+          "bytes": 96991,
+          "sha256": "b1967b96e9d8c5e484c9f008fb3b31b81889dec33a6e48876e7373f4541cae28",
+          "headersAccepted": true
+        },
+        {
+          "path": "Th14StageMemoryWorker.wasm",
+          "bytes": 1027,
+          "sha256": "050f8025cbc84be9447be48775ac8bacda98487355acb4b20e3d9986879f77f1",
+          "headersAccepted": true
+        },
+        {
+          "path": "directory-keyboard.mjs",
+          "bytes": 6345,
+          "sha256": "77394cea8730d203f95ba4c38daaf542a78a4219985ce4f1cee65a4351250243",
+          "headersAccepted": true
+        },
+        {
+          "path": "fonts/blend4444.bin",
+          "bytes": 28672,
+          "sha256": "5a36218f839854a02391f8bf0b6b8bb0414074e4d8f577ed09a8c796a9ee7e92",
+          "headersAccepted": true
+        },
+        {
+          "path": "fonts/cp932.bin",
+          "bytes": 131072,
+          "sha256": "57f4b3b047547cf44daa2186cca164b326ce064b137895bf417966f1053d1dc6",
+          "headersAccepted": true
+        },
+        {
+          "path": "eagler-host.mjs",
+          "bytes": 15151,
+          "sha256": "94deaef6657b4ba2a88c5878003478e71552049d9ea0767996d914efce555732",
+          "headersAccepted": true
+        },
+        {
+          "path": "fonts/font1.bin",
+          "bytes": 20558695,
+          "sha256": "c4ff2c2964cda41ee210bd634ad285d46cd898e86147d65306c18768e3cd2e5a",
+          "headersAccepted": true
+        },
+        {
+          "path": "fonts/font2.bin",
+          "bytes": 4269142,
+          "sha256": "01141cc6a8d992ff37d15b3c8853c5ae506fda6b1a31005bf3193351f96a200e",
+          "headersAccepted": true
+        },
+        {
+          "path": "fonts/font3.bin",
+          "bytes": 4269142,
+          "sha256": "94b6e1b3b6a1a100151ec9c2297700b304e447ec4a0941eeed11292af3b86ead",
+          "headersAccepted": true
+        },
+        {
+          "path": "fonts/font4.bin",
+          "bytes": 30524029,
+          "sha256": "d602fd630548432ae6ab6d3170e01e2a47bea37bbe61145dcc146cab4614dc6b",
+          "headersAccepted": true
+        },
+        {
+          "path": "fonts/font5.bin",
+          "bytes": 31432054,
+          "sha256": "2bfdfcc0627bd4fbde47ac306879a05885b40a4f399c58493ce65a79b580f7f6",
+          "headersAccepted": true
+        },
+        {
+          "path": "fonts/font6.bin",
+          "bytes": 4269142,
+          "sha256": "10c6d98fc944d6293629e29a8497f41e9f567e4031d26f6c1f622c08d08893bb",
+          "headersAccepted": true
+        },
+        {
+          "path": "fonts/font7.bin",
+          "bytes": 4269142,
+          "sha256": "135e9d5e09f278c0acfc901d8ebe70c6875a9e18f402ee6cff206f4c80989a98",
+          "headersAccepted": true
+        },
+        {
+          "path": "keyboard.mjs",
+          "bytes": 1297,
+          "sha256": "df5ff6e6ed6bd2921a09d50c236741a05a73d39c9ac906428c10bc8043e87334",
+          "headersAccepted": true
+        },
+        {
+          "path": "managed.css",
+          "bytes": 733,
+          "sha256": "de937f099fb554673b3d5602482e9d753097a3d8b78b267baa59d25080db95da",
+          "headersAccepted": true
+        },
+        {
+          "path": "manifest.json",
+          "bytes": 638,
+          "sha256": "2645e1b9c51a192ca64c9e78b33f96285f3d426f0a82f70949b2cd1e83ea39b7",
+          "headersAccepted": true
+        },
+        {
+          "path": "motion-replay.mjs",
+          "bytes": 815,
+          "sha256": "3643a3cf65aa7e2340a498a6da03b976875b63570b74c583c13169d57fd8dc5d",
+          "headersAccepted": true
+        },
+        {
+          "path": "resources.json",
+          "bytes": 2035,
+          "sha256": "5ae41eb559975f6dfbcb2c1dd43988e4efec1f07f2d14a94621e7bc4794e91f2",
+          "headersAccepted": true
+        },
+        {
+          "path": "runtime-epoch.mjs",
+          "bytes": 340,
+          "sha256": "e82fecd59b600c3978a516389c159b1a0a2c6b551b949dca3a82de5d5c505b4f",
+          "headersAccepted": true
+        },
+        {
+          "path": "shell.mjs",
+          "bytes": 17044,
+          "sha256": "fce4d24cb03cf929b12c3a038c1d93e37b2df4d99a873944674fac6f478f39ba",
+          "headersAccepted": true
+        },
+        {
+          "path": "th14-sdl.mjs",
+          "bytes": 332486,
+          "sha256": "ced19bc6c9ba35bff37a0a237b8f2e36f6462a6ddd0b863270eb3d92416e701f",
+          "headersAccepted": true
+        },
+        {
+          "path": "th14-sdl.wasm",
+          "bytes": 3143490,
+          "sha256": "a76eb4f7033432255f66cd455a1b0eca0711639509d72ba2f5d78b221cff616c",
+          "headersAccepted": true
+        },
+        {
+          "path": "th14.html",
+          "bytes": 507,
+          "sha256": "68c187a4359d43f874e5062d483cab4925b68cdfc69680fe4533ea49ed019053",
+          "headersAccepted": true
+        },
+        {
+          "path": "fonts/font0.bin",
+          "bytes": 19826527,
+          "sha256": "72a2c233e6ab8bad4fe408540c6f37151aa8a992e48b5d840200e33e4827e669",
+          "headersAccepted": true
+        }
+      ],
+      "failed": [],
+      "allWholeFileHashesVerified": true,
+      "coiAndNoTransformAccepted": true,
+      "cacheCleared": false,
+      "integrityChecksBypassed": false,
+      "productionBrowserAccepted": false,
+      "completeGame": false
+    }
   },
   "existingNativeEasyComparison": {
     "inputSha256": "aec3b3045be9a0ddd4e7e4005182a9561e97f9d3f66f7f93a81397a1b614ec92",
@@ -536,5 +838,378 @@
   "graphicsRecordingBoundary": true,
   "actualGpuOrBrowserAccepted": false,
   "silent": true,
-  "completeGame": false
+  "completeGame": false,
+  "remainingEarlyNativeComparisons": [
+    {
+      "key": "marisab-normal",
+      "inputSha256": "2f3a61e72e1bd14a1cecc934d805106f31f6b55a830ae4a9f1d94207098d2bf0",
+      "nativeRecord": "artifacts/th14/retail-marisab-normal-campaign-hardware-oct25",
+      "nativeReportSha256": "584e6a1dcd443c23f1ec52d2e897d32c2adfa05ce85d10943c2c892717151378",
+      "nativeSelectedHashVerified": true,
+      "currentSelectedSha256": "c6b4724ade44184f8a801304a076a75b1f690d62c679c6938436e6d4f3abb48a",
+      "nativeCallbacks": 27751,
+      "currentCallbacks": 27952,
+      "matchedControlKeys": 27631,
+      "behaviorFieldsCompared": [
+        3,
+        4,
+        5,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        25,
+        26
+      ],
+      "differenceCountsByField": {
+        "3": 60,
+        "4": 60,
+        "25": 30
+      },
+      "firstDifferenceByField": {
+        "3": {
+          "stage": 2,
+          "controlFrame": 1,
+          "nativeCallback": 12674,
+          "currentCallback": 12875,
+          "native": 4294966400,
+          "current": 4294962332
+        },
+        "4": {
+          "stage": 2,
+          "controlFrame": 1,
+          "nativeCallback": 12674,
+          "currentCallback": 12875,
+          "native": 53788,
+          "current": 49080
+        },
+        "25": {
+          "stage": 2,
+          "controlFrame": 1,
+          "nativeCallback": 12674,
+          "currentCallback": 12905,
+          "native": 0,
+          "current": 2
+        }
+      },
+      "entryEnemyDifferenceExamples": [
+        [
+          2,
+          1,
+          0,
+          2
+        ],
+        [
+          2,
+          2,
+          0,
+          2
+        ],
+        [
+          2,
+          3,
+          0,
+          2
+        ],
+        [
+          2,
+          4,
+          0,
+          2
+        ],
+        [
+          2,
+          5,
+          0,
+          2
+        ],
+        [
+          2,
+          6,
+          0,
+          2
+        ]
+      ],
+      "terminalGameplayAndInventoryEqual": true,
+      "nativeTerminalStage": 2,
+      "nativeTerminalControlFrame": 15048,
+      "nativeTerminalScore": 48407120,
+      "currentTerminalScore": 48407120,
+      "nativeAlsoEndedEarly": true,
+      "fullReplayCompleted": false,
+      "sameClockCookieAndThreadTimeline": false,
+      "silent": true,
+      "completeGame": false,
+      "lastOccurrenceProjection": {
+        "description": "Diagnostic alignment of last recorded occurrence per (stage, positive Control frame); preserves raw rows and earlier first-occurrence differences. Does not establish full transition timing equality.",
+        "commonKeys": 27601,
+        "differencesByField": {},
+        "firstDifferenceByField": {},
+        "rawRecordsUnchanged": true
+      }
+    },
+    {
+      "key": "marisab-lunatic",
+      "inputSha256": "77e7192d52bb2d76113a1c3a3686a0c919d3e12a3b7f42dc18697ce820d93b07",
+      "nativeRecord": "artifacts/th14/retail-marisab-lunatic-exit-boundary-hardware-oct26",
+      "nativeReportSha256": "5b5792fcecbab5c3fca8e94fb0b1ec7752e0122ce9e53404bb7a9ebaaa0ff9fb",
+      "nativeSelectedHashVerified": true,
+      "currentSelectedSha256": "749cb411e02ebd47d13e19782bab085d87f89f75765c1baaa5d9b1b08b4e61ae",
+      "nativeCallbacks": 89235,
+      "currentCallbacks": 89906,
+      "matchedControlKeys": 88755,
+      "behaviorFieldsCompared": [
+        3,
+        4,
+        5,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        25,
+        26
+      ],
+      "differenceCountsByField": {
+        "25": 120,
+        "3": 60,
+        "11": 50,
+        "26": 10
+      },
+      "firstDifferenceByField": {
+        "25": {
+          "stage": 2,
+          "controlFrame": 1,
+          "nativeCallback": 13974,
+          "currentCallback": 14229,
+          "native": 0,
+          "current": 2
+        },
+        "3": {
+          "stage": 3,
+          "controlFrame": 1,
+          "nativeCallback": 31809,
+          "currentCallback": 32167,
+          "native": 4294966940,
+          "current": 1564
+        },
+        "11": {
+          "stage": 3,
+          "controlFrame": 6,
+          "nativeCallback": 31814,
+          "currentCallback": 32202,
+          "native": 0,
+          "current": 1
+        },
+        "26": {
+          "stage": 4,
+          "controlFrame": 21,
+          "nativeCallback": 52320,
+          "currentCallback": 52857,
+          "native": 0,
+          "current": 3
+        }
+      },
+      "entryEnemyDifferenceExamples": [
+        [
+          2,
+          1,
+          0,
+          2
+        ],
+        [
+          2,
+          2,
+          0,
+          2
+        ],
+        [
+          2,
+          3,
+          0,
+          2
+        ],
+        [
+          2,
+          4,
+          0,
+          2
+        ],
+        [
+          2,
+          5,
+          0,
+          2
+        ],
+        [
+          2,
+          6,
+          0,
+          2
+        ]
+      ],
+      "terminalGameplayAndInventoryEqual": true,
+      "nativeTerminalStage": 5,
+      "nativeTerminalControlFrame": 13748,
+      "nativeTerminalScore": 933117890,
+      "currentTerminalScore": 933117890,
+      "nativeAlsoEndedEarly": true,
+      "fullReplayCompleted": false,
+      "sameClockCookieAndThreadTimeline": false,
+      "silent": true,
+      "completeGame": false,
+      "lastOccurrenceProjection": {
+        "description": "Diagnostic alignment of last recorded occurrence per (stage, positive Control frame); preserves raw rows and earlier first-occurrence differences. Does not establish full transition timing equality.",
+        "commonKeys": 88635,
+        "differencesByField": {},
+        "firstDifferenceByField": {},
+        "rawRecordsUnchanged": true
+      }
+    },
+    {
+      "key": "marisaa-normal",
+      "inputSha256": "724c78a013ab8334f14fc7ddd995b01308e16dd20ef19a2c8fd73a20fb02258c",
+      "nativeRecord": "artifacts/th14/retail-marisaa-campaign-resource-phases-hardware-oct24",
+      "nativeReportSha256": "5fea800ec1c8a6985114e212e73324d68605f4e5867bbd9d808312eeb1d87f8d",
+      "nativeSelectedHashVerified": true,
+      "currentSelectedSha256": "1335b92aec9aebcf6fb6712ac2a7b84ba5d5f239d63c5ee1e0d6d7df8d15391c",
+      "nativeCallbacks": 66737,
+      "currentCallbacks": 67445,
+      "matchedControlKeys": 66257,
+      "behaviorFieldsCompared": [
+        3,
+        4,
+        5,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        25,
+        26
+      ],
+      "differenceCountsByField": {
+        "3": 61,
+        "4": 81,
+        "25": 120,
+        "11": 25,
+        "26": 20
+      },
+      "firstDifferenceByField": {
+        "3": {
+          "stage": 2,
+          "controlFrame": 1,
+          "nativeCallback": 10984,
+          "currentCallback": 11249,
+          "native": 4294959936,
+          "current": 4294956772
+        },
+        "4": {
+          "stage": 2,
+          "controlFrame": 1,
+          "nativeCallback": 10984,
+          "currentCallback": 11249,
+          "native": 28760,
+          "current": 24956
+        },
+        "25": {
+          "stage": 2,
+          "controlFrame": 1,
+          "nativeCallback": 10984,
+          "currentCallback": 11279,
+          "native": 0,
+          "current": 2
+        },
+        "11": {
+          "stage": 2,
+          "controlFrame": 6,
+          "nativeCallback": 10989,
+          "currentCallback": 11284,
+          "native": 0,
+          "current": 1
+        },
+        "26": {
+          "stage": 4,
+          "controlFrame": 21,
+          "nativeCallback": 41681,
+          "currentCallback": 42243,
+          "native": 0,
+          "current": 4
+        }
+      },
+      "entryEnemyDifferenceExamples": [
+        [
+          2,
+          1,
+          0,
+          2
+        ],
+        [
+          2,
+          2,
+          0,
+          2
+        ],
+        [
+          2,
+          3,
+          0,
+          2
+        ],
+        [
+          2,
+          4,
+          0,
+          2
+        ],
+        [
+          2,
+          5,
+          0,
+          2
+        ],
+        [
+          2,
+          6,
+          0,
+          2
+        ]
+      ],
+      "terminalGameplayAndInventoryEqual": true,
+      "nativeTerminalStage": 5,
+      "nativeTerminalControlFrame": 5735,
+      "nativeTerminalScore": 239487570,
+      "currentTerminalScore": 239487570,
+      "nativeAlsoEndedEarly": true,
+      "fullReplayCompleted": false,
+      "sameClockCookieAndThreadTimeline": false,
+      "silent": true,
+      "completeGame": false,
+      "lastOccurrenceProjection": {
+        "description": "Diagnostic alignment of last recorded occurrence per (stage, positive Control frame); preserves raw rows and earlier first-occurrence differences. Does not establish full transition timing equality.",
+        "commonKeys": 66137,
+        "differencesByField": {},
+        "firstDifferenceByField": {},
+        "rawRecordsUnchanged": true
+      }
+    }
+  ],
+  "allFourEarlySamplesHaveSameFileOriginalEarlyEndRecords": true,
+  "fourEarlySamplesAcceptedAsCompleteSixStageRuns": false
 }
