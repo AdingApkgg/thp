@@ -5,17 +5,17 @@
 ## 当前基线 · 2026-11-14
 
 - 六种自机在声明开局条件下的 Normal 普通六关、结局／staff／结果保存和六个新进程的单机体 Extra 解锁读取已验证；不是任意种子或其他难度全部通过。
-- 生产核心来源 c407a169，Runtime generation 47743edb2c1865d0c4f14f4f3b0104efb83ddb66c02b1ce14f669ffc06ebe888；39 个公网运行文件校验通过。
+- 生产核心来源 85a60542，Runtime generation fd54b8473646f6cbd1b10017594fb003dc69c7013f13c5383c5bc8b56c77b341；39 个公网运行文件校验通过，见[交付证据](docs/porting/TH14_BEAM_RELEASE_NOV14.md)。
 - [行为验收口径](docs/porting/TH14_BEHAVIOR_ACCEPTANCE_NOV13.md)和[六自机 Normal 证据](docs/porting/TH14_ORDINARY_NORMAL_LOADOUTS_NOV14.md)。
 - 六自机使用实际 Normal 存档完成 Extra 普通通关、署名、返回标题和六个新进程的成绩读回；Normal 排名和原有解锁保持，详见[Extra 流程证据](docs/porting/TH14_ORDINARY_EXTRA_LOADOUTS_NOV14.md)。
 - Easy 已新增五自机普通通关与新进程成绩读取；魔理沙 A 两份输入提前结束，终态所测玩法与既有原版记录一致，但不计通关，详见[Easy 流程证据](docs/porting/TH14_ORDINARY_EASY_LOADOUTS_NOV14.md)。
 - Hard／Lunatic 各五自机通关与读回；另有高分疮痍署名、续关、返回标题与读回通过，详见[高难度与续关](docs/porting/TH14_ORDINARY_HIGHER_AND_CONTINUE_NOV14.md)。两份高难度提前结束仍有终态差异，未计通关。
 - 下一步定位未通过样本的实际玩法差异，补齐尚缺的通关／存档分支及全程图形、音频和浏览器验收。
-- 已增加魔理沙激光异常回退长度保护候选：4,032 组原版有效输入和 48 组边缘保持，异常值检查及魔理沙 A／B Normal 通关读回通过；浏览器模块已构建并核验 18 个运行文件、372 个源码绑定；实际 WebGL2 魔理沙 A Normal 短流程、静音 OGG 启动与 39 个预览响应已通过，见[浏览器证据](docs/porting/TH14_BEAM_BROWSER_PREVIEW_NOV14.md)；完整 GPU 流程、可选补丁和部署继续推进。见[长度保护](docs/porting/TH14_BEAM_LENGTH_GUARD_NOV14.md)。
+- 已增加魔理沙激光异常回退长度保护候选：4,032 组原版有效输入和 48 组边缘保持，异常值检查及魔理沙 A／B Normal 通关读回通过；浏览器模块已构建并核验 18 个运行文件、372 个源码绑定；实际 WebGL2 魔理沙 A Normal 短流程、静音 OGG 启动与 39 个预览响应已通过，见[浏览器证据](docs/porting/TH14_BEAM_BROWSER_PREVIEW_NOV14.md)；生产已部署；可选补丁已同步并通过组件及 Linux 应用检查，完整可选运行包和剩余 GPU 流程继续验收。见[长度保护](docs/porting/TH14_BEAM_LENGTH_GUARD_NOV14.md)。
 
 ## 接续顺序
 
-1. 验收 85a60542 候选的浏览器普通开局、激光显示、暂停／返回和静音 OGG 入口；通过后同步可选补丁并部署。
+1. 完成已部署版本的公网浏览器操作复验和可选补丁完整运行包验收；保留已有静音预览及 39 个公网文件检查证据。
 2. 修复魔理沙 A Hard、魔理沙 B Lunatic 未通过样本中影响玩法或录像的差异，补测受影响流程。
 3. 补齐剩余普通流程、完整录像、画面、音频、存档和公开入口验收，按功能记录通过范围与缺口。
 
