@@ -7,9 +7,11 @@ import {runInNewContext} from 'node:vm';
 import {WASI} from 'node:wasi';
 const R=resolve(import.meta.dirname,'..'),H=resolve(R,'artifacts/th14/replay-description-bridge-nov13');
 const sha=b=>createHash('sha256').update(b).digest('hex');
+const output=process.argv[2]??resolve(H,'qualified.json');
 const build=JSON.parse(readFileSync(resolve(H,'build.json'))),bytes=readFileSync(resolve(H,'probe.wasm'));
 assert.equal(sha(bytes),build.wasmSha256);
-for(const [n,h]of Object.entries({...build.sources,...build.objectBindings}))assert.equal(sha(readFileSync(resolve(R,n))),h,n);
+const hostBuild=JSON.parse(readFileSync(resolve(R,'artifacts/th14/native-viewer-application-nov13/browser-v2/build.json')));
+for(const [n,h]of Object.entries({...build.sources,...build.objectBindings}))assert.equal(sha(readFileSync(resolve(R,n))),n.endsWith('/shell.mjs')?hostBuild.sourceBindings[n]:h,n);
 const module=new WebAssembly.Module(bytes),memory=new WebAssembly.Memory({initial:1024,maximum:16384,shared:true});
 const wasi=new WASI({version:'preview1',args:[],env:{},preopens:{}}),imports={env:{memory},wasi_snapshot_preview1:wasi.wasiImport};
 for(const i of WebAssembly.Module.imports(module)){imports[i.module]??={};if(i.kind==='function'&&!imports[i.module][i.name])imports[i.module][i.name]=()=>{throw Error('unexpected boundary '+i.module+'.'+i.name);};}
@@ -38,7 +40,9 @@ source=source.replaceAll('/savesth11','/savesth14');
 const pathSource=source.match(/^function path\(value\).*$/m)[0].replaceAll('th11','th14');
 const start=source.indexOf('async function command(m){'),end=source.indexOf('\nlet queue=',start);assert(start>=0&&end>start);
 let allocations=0,frees=0;
-const context={game:'th14',TextDecoder,Uint8Array,JSON,Error,createReplayViewerHostTh14,error:()=>{},coreError:()=>string(c.error_data()),
+class BrowserTextDecoder extends TextDecoder{decode(view,...args){if(view?.buffer instanceof SharedArrayBuffer)throw TypeError('Browser TextDecoder rejects shared views');return super.decode(view,...args);}}
+assert.throws(()=>new BrowserTextDecoder().decode(new Uint8Array(memory.buffer)),TypeError);
+const context={game:'th14',TextDecoder:BrowserTextDecoder,Uint8Array,JSON,Error,createReplayViewerHostTh14,error:()=>{},coreError:()=>string(c.error_data()),
  Module:{get HEAPU8(){return new Uint8Array(memory.buffer);},FS:{readFile:path=>{assert.equal(path,'/savesth14/replay/th14_01.rpy');return saved;}}},
  core:{malloc:n=>{++allocations;return c.allocate(n);},free:p=>{++frees;c.release(p);}},
  callCore:async(name,...args)=>{assert.equal(name,'th14_replay_description');return c.describe(...args);}};
@@ -49,7 +53,7 @@ await assert.rejects(command({command:'playback',action:'inspect',path:'../th14_
 await assert.rejects(command({command:'playback',action:'inspect',path:'scoreth14.dat'}));
 assert.equal(allocations,frees);assert.equal(allocations,1);
 const report={passed:true,validNativeMetadataCases:rows.length,ordinaryMenuSavedFile:true,malformedNativeFilesRejected:invalid.length,
- actualShellPlaybackInspectCommandExecuted:true,actualNativeDecoderUsed:true,pathTraversalAndNonReplayPathsRejected:true,
+ actualShellPlaybackInspectCommandExecuted:true,browserSharedTextDecoderBoundaryTested:true,actualNativeDecoderUsed:true,pathTraversalAndNonReplayPathsRejected:true,
  allocatedPayloadsFreed:true,description:d,rows,fixtureWasmSha256:build.wasmSha256,
  browserRetestAccepted:false,playbackControlsCoveredBySeparateApplicationTest:true,productionDeployed:false,completeGame:false};
-writeFileSync(resolve(H,'qualified.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({...report,rows:undefined}));
+writeFileSync(output,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({...report,rows:undefined}));

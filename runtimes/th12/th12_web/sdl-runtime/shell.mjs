@@ -105,7 +105,7 @@ function replayPlayback(){
   describe:async bytes=>{
    const result=await withBytes(bytes,'th14_replay_description');if(!result)throw Error('录像数据无效');
    const end=Module.HEAPU8.indexOf(0,result);if(end<result)throw Error('录像信息无效');
-   return JSON.parse(new TextDecoder().decode(Module.HEAPU8.subarray(result,end)));
+   return JSON.parse(new TextDecoder().decode(new Uint8Array(Module.HEAPU8.subarray(result,end))));
   },
   open:async(bytes,stage)=>{
    await launch();const until=performance.now()+60000;
