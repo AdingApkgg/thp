@@ -8,6 +8,7 @@
 - 生产核心来源 c407a169，Runtime generation 47743edb2c1865d0c4f14f4f3b0104efb83ddb66c02b1ce14f669ffc06ebe888；39 个公网运行文件校验通过。
 - [行为验收口径](docs/porting/TH14_BEHAVIOR_ACCEPTANCE_NOV13.md)和[六自机 Normal 证据](docs/porting/TH14_ORDINARY_NORMAL_LOADOUTS_NOV14.md)。
 - 六自机使用实际 Normal 存档完成 Extra 普通通关、署名、返回标题和六个新进程的成绩读回；Normal 排名和原有解锁保持，详见[Extra 流程证据](docs/porting/TH14_ORDINARY_EXTRA_LOADOUTS_NOV14.md)。
+- Easy 已新增五自机普通通关与新进程成绩读取；魔理沙 A 两份输入提前结束，终态所测玩法与既有原版记录一致，但不计通关，详见[Easy 流程证据](docs/porting/TH14_ORDINARY_EASY_LOADOUTS_NOV14.md)。
 - 下一步补齐 Easy／Hard／Lunatic 的普通完整流程和存档分支，再继续全程图形、音频和浏览器验收。
 
 目标保持进行中。阶段性定位、有限样本或单个模式通过均不代表整作完成。
