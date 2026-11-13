@@ -8,15 +8,15 @@
 - 生产核心来源 85a60542，Runtime generation fd54b8473646f6cbd1b10017594fb003dc69c7013f13c5383c5bc8b56c77b341；39 个公网运行文件校验通过，见[交付证据](docs/porting/TH14_BEAM_RELEASE_NOV14.md)。 公网已确认零音量启动、标题及自动演示的实际 WebGL2 画面，手动操作复验仍开放，见[启动复验](docs/porting/TH14_PUBLIC_BROWSER_START_NOV14.md)。
 - [行为验收口径](docs/porting/TH14_BEHAVIOR_ACCEPTANCE_NOV13.md)和[六自机 Normal 证据](docs/porting/TH14_ORDINARY_NORMAL_LOADOUTS_NOV14.md)。
 - 六自机使用实际 Normal 存档完成 Extra 普通通关、署名、返回标题和六个新进程的成绩读回；Normal 排名和原有解锁保持，详见[Extra 流程证据](docs/porting/TH14_ORDINARY_EXTRA_LOADOUTS_NOV14.md)。
-- Easy 已新增五自机普通通关与新进程成绩读取；魔理沙 A 两份输入提前结束，终态所测玩法与既有原版记录一致，但不计通关，详见[Easy 流程证据](docs/porting/TH14_ORDINARY_EASY_LOADOUTS_NOV14.md)。
-- Hard／Lunatic 各五自机通关与读回；另有高分疮痍署名、续关、返回标题与读回通过，详见[高难度与续关](docs/porting/TH14_ORDINARY_HIGHER_AND_CONTINUE_NOV14.md)。两份高难度提前结束仍有终态差异，未计通关。
+- Easy／Hard／Lunatic 已各有六自机普通通关与新进程成绩读取；新增魔理沙 A Easy／Hard 两份输入的最终成绩与来源登记一致。魔理沙 B Lunatic 新输入通关，但成绩比来源高 4,360 分，计分差异继续定位。加上 Normal／Extra，跨声明构建的 30 个完整普通流程样本已重新核对报告和存档身份，见[流程汇总](docs/porting/TH14_ORDINARY_FLOW_MATRIX_NOV14.md)。不是当前单一构建的全部行为或全程音画验收。
+- 先前提前结束记录与差异保留；高分疮痍署名、续关、返回标题和读回已通过，详见[高难度与续关](docs/porting/TH14_ORDINARY_HIGHER_AND_CONTINUE_NOV14.md)。新输入通关不覆盖旧失败。
 - 下一步定位未通过样本的实际玩法差异，补齐尚缺的通关／存档分支及全程图形、音频和浏览器验收。
 - 已增加魔理沙激光异常回退长度保护候选：4,032 组原版有效输入和 48 组边缘保持，异常值检查及魔理沙 A／B Normal 通关读回通过；浏览器模块已构建并核验 18 个运行文件、372 个源码绑定；实际 WebGL2 魔理沙 A Normal 短流程、静音 OGG 启动与 39 个预览响应已通过，见[浏览器证据](docs/porting/TH14_BEAM_BROWSER_PREVIEW_NOV14.md)；生产已部署；可选补丁已同步并通过组件及 Linux 应用检查，完整可选运行包已构建并通过所选练习／存档读回及 1,435 帧录像的实际浏览器短流程，见[可选运行包](docs/porting/TH14_OPTIONAL_RUNTIME_NOV14.md)；剩余工具、显示差异和完整 GPU 流程继续验收。见[长度保护](docs/porting/TH14_BEAM_LENGTH_GUARD_NOV14.md)。
 
 ## 接续顺序
 
 1. 完成已部署版本的公网浏览器操作复验，补可选工具剩余验收并核对录像结束帧的计时显示；保留普通版与可选版已通过的具体证据。练习与练习录像读取不同最高分来源已由原版初始化和 600 组成绩选择分支确认，不要求两处显示相同，见[最高分分支核对](docs/porting/TH14_PRACTICE_HIGH_SCORE_NOV14.md)。
-2. 修复魔理沙 A Hard、魔理沙 B Lunatic 未通过样本中影响玩法或录像的差异，补测受影响流程。
+2. 定位魔理沙 B Lunatic 新样本的 4,360 分差异及先前样本中影响实际玩法／录像的差异；复用已补齐的通关／读回证据，只补测受影响流程。
 3. 补齐剩余普通流程、完整录像、画面、音频、存档和公开入口验收，按功能记录通过范围与缺口。
 
 目标保持进行中。阶段性定位、有限样本或单个模式通过均不代表整作完成。

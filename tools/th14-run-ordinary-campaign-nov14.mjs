@@ -95,6 +95,11 @@ try{
 
 }catch(e){exception=String(e?.stack??e);}
 finally{
+ if(created&&process.env.TH14_FLOW_STAGE_HEADERS==='1')try{
+  assert.equal(typeof c.recorded_stage_headers,'function');
+  const p=c.recorded_stage_headers(),n=c.recorded_stage_header_bytes();assert.equal(n,8*0xdc);
+  writeFileSync(resolve(out,'recorded-stage-headers.bin'),Buffer.from(new Uint8Array(memory.buffer,p,n)));
+ }catch(e){exception??=String(e?.stack??e);}
  try{if(created){put('before-close.json',{phase,state:state(),timing:words('ordinary_timing_state',8),stageSeeds:words('recorded_stage_seeds',32)});const n=c.observation_words();const tape=Buffer.from(new Uint32Array(memory.buffer,c.observation_data(),n).slice().buffer);put('observations-summary.json',{callbacks:c.observation_count(),words:n,bytes:tape.length,sha256:sha(tape),first:Array.from(new Uint32Array(tape.buffer,tape.byteOffset,Math.min(n,114))),last:Array.from(new Uint32Array(tape.buffer,tape.byteOffset+Math.max(0,n-114)*4,Math.min(n,114))),fullTapePersisted:false});c.close();closed=true;
   const until=performance.now()+65000;while(platform.timers.size&&performance.now()<until)await new Promise(r=>setTimeout(r,5));assert.equal(platform.timers.size,0);}}
  catch(e){exception??=String(e?.stack??e);}
