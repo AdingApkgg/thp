@@ -1,6 +1,12 @@
 # TH14 当前目标
 
-## 本轮执行目标 · 2026-11-14 更新
+## 当前执行目标 · 2026-11-14 再确认
+
+持续完成 TH14 独立 C++/Wasm 的行为级对齐：以原作可观察的玩法、录像、普通流程、图形、音频、存档和浏览器表现为验收标准，覆盖各自机及难度的适用流程。内部 RNG、内存布局、地址和逐像素一致不作为独立完成门槛。仅推进 TH14，测试与预览始终静音；复用未受修改影响的有效证据，不重复全量回放或复制大份游戏资产。所需实现与行为验收全部完成后才标记目标完成。
+
+本轮已将上述修复更新至 Arch／wth.saop.cc：网站 51da32f6，Wasm 811dc8cb，运行代 7a459b6c。候选静音实际浏览器普通短流程通过，生产原点与公网各 32 个运行响应完整性通过，公网实际静音启动及 WebGL2 自动演示通过。采用上游允许的测试配置，练习器保持关闭，旧目录与旧服务配置均有回滚备份。接续补可选统计界面的跨关显示、真实触屏和其余整作行为缺口，不将自动演示或短流程作为整作通过。见[本次发布](docs/porting/TH14_BEHAVIOR_RELEASE_NOV14.md)。
+
+目标保持 active。目标管理接口仅支持变更状态，无法改写已有目标文字；以下旧阶段记录保留，本段是最新执行口径。
 
 仅推进 TH14 独立 C++/Wasm 移植，以原作可观察行为级对齐为标准，不再要求内部 RNG、内存或逐像素 1:1。完成已知玩法、各自机／难度适用流程、完整录像、普通游戏、图形、音频、存档与浏览器发布入口的实现和验收后，才标记整作完成。测试与预览始终静音；复用未受改动影响的有效证据，不以重复回放代替修复。
 
@@ -11,7 +17,7 @@
 ## 当前基线 · 2026-11-14
 
 - 六种自机在声明开局条件下的 Normal 普通六关、结局／staff／结果保存和六个新进程的单机体 Extra 解锁读取已验证；不是任意种子或其他难度全部通过。
-- 生产核心来源 85a60542，Runtime generation fd54b8473646f6cbd1b10017594fb003dc69c7013f13c5383c5bc8b56c77b341；39 个公网运行文件校验通过，见[交付证据](docs/porting/TH14_BEAM_RELEASE_NOV14.md)。 公网已确认零音量启动、标题及自动演示的实际 WebGL2 画面，手动操作复验仍开放，见[启动复验](docs/porting/TH14_PUBLIC_BROWSER_START_NOV14.md)。
+- 当前生产网站来源 51da32f6，Wasm 811dc8cb，Runtime generation 7a459b6cb44ea023f15551de7afa380dae5e1db0f8fc076692d7deeeea1f29d6；32 个原点及公网运行文件校验、候选静音普通短流程和公网实际 WebGL2 启动通过，见[当前交付](docs/porting/TH14_BEHAVIOR_RELEASE_NOV14.md)。旧 85a60542／fd54b847 的运行代与回滚目录保留。
 - [行为验收口径](docs/porting/TH14_BEHAVIOR_ACCEPTANCE_NOV13.md)和[六自机 Normal 证据](docs/porting/TH14_ORDINARY_NORMAL_LOADOUTS_NOV14.md)。
 - 六自机使用实际 Normal 存档完成 Extra 普通通关、署名、返回标题和六个新进程的成绩读回；Normal 排名和原有解锁保持，详见[Extra 流程证据](docs/porting/TH14_ORDINARY_EXTRA_LOADOUTS_NOV14.md)。
 - Easy／Hard／Lunatic 已各有六自机普通通关与新进程成绩读取；新增魔理沙 A Easy／Hard 两份输入的最终成绩与来源登记一致。魔理沙 B Lunatic 新输入通关，但成绩比来源高 4,360 分，计分差异继续定位。加上 Normal／Extra，跨声明构建的 30 个完整普通流程样本已重新核对报告和存档身份，见[流程汇总](docs/porting/TH14_ORDINARY_FLOW_MATRIX_NOV14.md)。不是当前单一构建的全部行为或全程音画验收。
