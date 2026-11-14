@@ -8,7 +8,7 @@ node tools/th14-annotate-replay-beam-rule.mjs --input OLD.rpy --output NEW.rpy -
 
 `native` 用于显式声明原版规则。命令要求原文件完整 SHA-256，只创建此前不存在的新路径；同路径、已有目标、哈希不符、已有规则、截断或无法识别的尾部均拒绝。它只在文件末尾追加 20 字节 `USER/T14B`，原始头、加密按键及已有扩展逐字节保留。共享的 `t13r` 标记本身不能区分 TH13／TH14，因此使用者需确认这是 TH14 录像。工具做容器检查，不将格式成功等同于游戏内容或播放行为通过。
 
-规则标记实现在 `runtimes/th12/portable/browser/th14-replay-beam-rules.mjs`，可供后续网页显式选择流程复用；当前尚未接入网页菜单。
+规则标记实现在 `runtimes/th12/portable/browser/th14-replay-beam-rules.mjs`，可供后续网页显式选择流程复用；现已接入 TH14 录像菜单，实际下载、重新导入、完整播放和重复转换拒绝均已验证，见[网页入口](TH14_REPLAY_BEAM_WEB_MENU_NOV14.md)。
 
 ## 验证范围
 
