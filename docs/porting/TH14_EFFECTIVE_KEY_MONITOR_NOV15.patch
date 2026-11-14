@@ -1,0 +1,70 @@
+--- a/ports/th14/runtimes/th12/th12_web/cpp/game/GameSession.hpp
++++ b/ports/th14/runtimes/th12/th12_web/cpp/game/GameSession.hpp
+@@ -120,6 +120,7 @@
+     bool purple_show_history=false,purple_fast_retry=false;
+     u32 purple_retry_misses=0;
+     bool practice_enabled=false,practice_input_captured=false;
++    void (*practice_key_sample)(u32)=nullptr;
+     u32 practice_tools=0;
+     size_t practice_event=0;
+ #endif
+--- a/ports/th14/runtimes/th12/th12_web/cpp/game/GameSession.cpp
++++ b/ports/th14/runtimes/th12/th12_web/cpp/game/GameSession.cpp
+@@ -1187,6 +1187,9 @@
+         edges.dialogue_skip_frames=game_input.held_frames[9];
+         edges.dialogue_fire_frames=game_input.held_frames[0];
+ #endif
++#if PORT_TITLE == 14
++        battle->practice_key_sample=practice_key_sample;
++#endif
+         battle->set_input(edges);return true;
+         }
+ #if PORT_TITLE == 14
+--- a/ports/th14/runtimes/th12/th12_web/cpp/game/GameBattle.hpp
++++ b/ports/th14/runtimes/th12/th12_web/cpp/game/GameBattle.hpp
+@@ -151,6 +151,10 @@
+     // Optional state observer at native priority 16, before the player callback.
+     // Aligns whole-session traces without changing gameplay.
+     void (*before_player_update)(const GameBattle&)=nullptr;
++#if PORT_TITLE == 14
++    // Observe effective game input only on an actual player update.
++    void (*practice_key_sample)(u32)=nullptr;
++#endif
+ 
+     GameBattle(GameSessionResources&,AnmManager&,GameEconomy&,SpellRecords&,SceneCompositor&,ClearRecords&);
+ #if PORT_TITLE == 14 && defined(TH14_CPP_STAGE_RESOURCE_HANDSHAKE)
+--- a/ports/th14/runtimes/th12/th12_web/cpp/game/GameBattle.cpp
++++ b/ports/th14/runtimes/th12/th12_web/cpp/game/GameBattle.cpp
+@@ -838,6 +838,9 @@
+     if(player_live&&player){
+         player->spell={spell_flags,spell_elapsed,spell_bonus};
+         if(before_player_update)before_player_update(*this);
++#if PORT_TITLE == 14
++        if(practice_key_sample)practice_key_sample(player_input.movement.held);
++#endif
+         if(!player->update()){if(!last_error)last_error=-601;const std::string inner="player update failed: "+std::to_string(player->last_error)+" motion="+std::to_string(player->motion.last_error)+" shots="+std::to_string(player->shots.last_error)+" state="+std::to_string(player->state.life_state)+" timer="+std::to_string(player->state.state_timer.current);error=error.empty()?inner:inner+" ("+error+")";return false;}
+         spell_flags=player->spell.flags;spell_bonus=player->spell.bonus;
+     }
+--- a/ports/th14/runtimes/th12/th12_web/cpp/sdl/PracticeUiTh14.cpp
++++ b/ports/th14/runtimes/th12/th12_web/cpp/sdl/PracticeUiTh14.cpp
+@@ -162,6 +162,9 @@
+     params={};params.stage=1;rank=1;shot=0;
+     speed={};reset_speed_ui=true;reaction_test.Reset();everlasting_bgm=false;
+     key_monitor={};key_monitor_on=show_lock_timer=show_items=show_bonus=show_hitboxes=show_drop_bar=show_license=false;
++    s.practice_key_sample=[](u32 bits){
++        if(game&&game->practice_enabled&&key_monitor_on)key_monitor.record(14,bits);
++    };
+     s.purple_show_history=s.purple_fast_retry=false;s.purple_laser={};boss_range=.5f;
+     for(bool& open:opt_open)open=true;
+     lock_running=false;lock_frames=last_sample_stage=last_sample_frame=0;
+@@ -177,9 +180,8 @@
+         !game->state.demo&&!modal()?
+         std::min(8.,(1./60.)/speed.interval(game->state.replay,held[17],held[16],held[32])):1.;
+ }
+-void sample_keys(u32 bits){
++void sample_keys(u32){
+     if(!game||!game->practice_enabled||game->state.phase!=GameSessionPhase::stage)return;
+-    if(key_monitor_on)key_monitor.record(14,bits);
+     if(game->state.stage!=last_sample_stage||game->state.frame<last_sample_frame)lock_running=false;
+     last_sample_stage=game->state.stage;last_sample_frame=game->state.frame;
+     if(game->practice_tools&PrTime){if(!lock_running)lock_frames=0;++lock_frames;lock_running=true;}
