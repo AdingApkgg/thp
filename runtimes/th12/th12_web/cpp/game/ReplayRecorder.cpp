@@ -77,6 +77,13 @@ bool ReplayRecorder::save(const char* name,i32 score,i32 reached,i32 continues,f
     if(touch_count){const u32 start=u32(out.size()),length=32+touch_count*16;out.resize(start+length);auto* p=out.data()+start;dword(p,0x52455355);dword(p+4,length);dword(p+8,0x11);dword(p+12,0x54313154);dword(p+16,1);dword(p+20,touch_count);p+=32;
         for(u32 stage=1;stage<8;++stage)for(const auto& t:stages[stage].touches){word(p,stage);word(p+2,u32(t.mode));dword(p+4,t.frame);std::memcpy(p+8,&t.x,4);std::memcpy(p+12,&t.y,4);p+=16;}
     }
+#if PORT_TITLE == 14
+    // Ordinary TH14 recording uses bounded beam fallbacks. Keep that rule
+    // with the file so playback does not silently switch to retail semantics.
+    const u32 rules_offset=u32(out.size());out.resize(rules_offset+20);
+    auto* rules=out.data()+rules_offset;dword(rules,0x52455355);dword(rules+4,20);
+    dword(rules+8,0x42343154);dword(rules+12,1);dword(rules+16,1);
+#endif
     return true;
 }
 }
