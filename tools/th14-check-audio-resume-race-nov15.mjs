@@ -16,8 +16,10 @@ const pauseStart = shell.indexOf('  pause:async on=>{');
 const pauseEnd = shell.indexOf('\n  },\n  close:', pauseStart);
 assert(pauseStart >= 0 && pauseEnd > pauseStart);
 const pauseBody = shell.slice(pauseStart + '  pause:async on=>{'.length, pauseEnd);
-const stopLine = shell.split('\n').find(line => line.startsWith('async function stop(){'));
-assert(stopLine);
+const stopStart = shell.indexOf('async function stop(){');
+const stopEnd = shell.indexOf('\nfunction path(value)', stopStart);
+assert(stopStart >= 0 && stopEnd > stopStart);
+const stopFunction = shell.slice(stopStart, stopEnd);
 function fixture(state = 'suspended') {
   const calls = [], audio = [], pending = [];
   const context = {state, destination: {}, resume() {
@@ -34,9 +36,10 @@ function shellCallbacks(f, hidden = false) {
   const document = {hidden};
   const build = new Function('Module', 'core', 'document', 'suspendRuntimeAudio', 'resumeRuntimeAudio', `
     let launched=true,stopping=false,replayViewer=null;
+    const roomOwned=false,roomRuntime=false,options={replayViewer:true};
     const clearKeyboard=()=>{},save=async()=>{},closeAudio=async()=>{},emit=()=>{};
     const callCore=async(name,value)=>{if(name!=='th11_loop_pause')throw Error(name);core.sdl_loop_pause(value);};
-    ${stopLine}
+    ${stopFunction}
     return {pause:async on=>{${pauseBody}\n},stop};
   `);
   return {...build(f.Module, f.core, document, suspend, resume), document};
