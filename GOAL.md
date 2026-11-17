@@ -6,7 +6,7 @@
 
 ## 当前交付 · 2026-11-18
 
-- [换关进度与完整录像](docs/porting/TH14_REPLAY_PROGRESS_CONTEXT_NOV18.md)：修复普通／多人状态游标归属；各六项回归通过。新普通 Wasm 6b5e86f9 的六关 120,193 帧、312 条进度事件无回退，同文件最终得分／擦弹匹配；原版解码确认七份角色记录未改，仅新增听过音乐标记。候选与公网交付身份分开记录，整作 active。
+- [换关进度与完整录像](docs/porting/TH14_REPLAY_PROGRESS_CONTEXT_NOV18.md)：普通／多人／独立核心各八项状态回归通过；当前构建的新自录六关、原始灵梦 B Normal 六关及咲夜 B Extra 完整结束，魔理沙 A Easy 提前疮痍停在真实位置。四例进度无回退，角色存档记录未改；wth 已交付 08759279／f040f56b，72 个公网响应及实际静音普通流程通过。整作 active。
 
 - [旁观资源重载恢复](docs/porting/TH14_SPECTATOR_SETTINGS_RECOVERY_NOV18.md)：旧实现新增反例失败，修复后 118 项服务检查通过。合并上游 main 3006a0bf，保留双父历史；实际冷启动中途加入、资源重载、暂停和自然结束尾段通过。保留整站 `/api/ready` 的原始失败。
 - [原生安装离开与真实失焦](docs/porting/TH14_NATIVE_LEAVE_RECOVERY_NOV18.md)：实际 iframe 字体安装时离开／重试通过；关闭测试框架焦点模拟后，真实失焦将方向输入 128 释放为 0，返回后正常推进。最小化窗口仍 visible，不计 hidden 暂停，不重复无效方法。
