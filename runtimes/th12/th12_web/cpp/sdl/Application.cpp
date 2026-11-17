@@ -2147,7 +2147,8 @@ struct Application:StageResourceEffects
         // A forced menu can be an early replay GameOver. Preserve its real
         // cursor; successful stage clears still include the recorded ending tail.
         const bool early_game_over=ended&&s.battle&&s.battle->game_over_requested;
-        words[0]=s.state.stage;words[1]=ended&&entry&&!early_game_over?entry->frames:s.playback.frame();words[2]=entry?entry->frames:0;
+        const u32 frame=s.playback.selected_stage()==s.state.stage?s.playback.frame():0;
+        words[0]=s.state.stage;words[1]=ended&&entry&&!early_game_over?entry->frames:frame;words[2]=entry?entry->frames:0;
         words[3]=ended;words[4]=u32(s.state.phase);words[5]=hosted_replay&&s.state.replay;return words;
     }
     int hosted_replay_seek_step(u32 target,u32 budget){

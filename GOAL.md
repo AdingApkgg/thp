@@ -6,6 +6,8 @@
 
 ## 当前交付 · 2026-11-18
 
+- [换关进度与完整录像](docs/porting/TH14_REPLAY_PROGRESS_CONTEXT_NOV18.md)：修复普通／多人状态游标归属；各六项回归通过。新普通 Wasm 6b5e86f9 的六关 120,193 帧、312 条进度事件无回退，同文件最终得分／擦弹匹配；原版解码确认七份角色记录未改，仅新增听过音乐标记。候选与公网交付身份分开记录，整作 active。
+
 - [旁观资源重载恢复](docs/porting/TH14_SPECTATOR_SETTINGS_RECOVERY_NOV18.md)：旧实现新增反例失败，修复后 118 项服务检查通过。合并上游 main 3006a0bf，保留双父历史；实际冷启动中途加入、资源重载、暂停和自然结束尾段通过。保留整站 `/api/ready` 的原始失败。
 - [原生安装离开与真实失焦](docs/porting/TH14_NATIVE_LEAVE_RECOVERY_NOV18.md)：实际 iframe 字体安装时离开／重试通过；关闭测试框架焦点模拟后，真实失焦将方向输入 128 释放为 0，返回后正常推进。最小化窗口仍 visible，不计 hidden 暂停，不重复无效方法。
 - [音乐取消与公网交付](docs/porting/TH14_MUSIC_CANCEL_DEV_RELEASE_NOV18.md)：真实 OGG 哈希完成挂起时原生 Quit，迟到结果没有写入旧 FS，重试通过。4f99e4da／普通 fdb227a6／多人 4bad52bc 已交付 wth 开发站；72 个公网响应匹配，激活后实际普通开局、暂停恢复、返回标题和 Quit 通过。游戏服务 PID／配置保持，完整旧目录可回滚。
