@@ -2149,7 +2149,12 @@ struct Application:StageResourceEffects
         const bool early_game_over=ended&&s.battle&&s.battle->game_over_requested;
         const u32 frame=s.playback.selected_stage()==s.state.stage?s.playback.frame():0;
         words[0]=s.state.stage;words[1]=ended&&entry&&!early_game_over?entry->frames:frame;words[2]=entry?entry->frames:0;
-        words[3]=ended;words[4]=u32(s.state.phase);words[5]=hosted_replay&&s.state.replay;return words;
+        // Menu9 stops combat, but the native priority17 HUD callback still
+        // animates the final award. Do not let the web host freeze that roll
+        // partway through. Normal ending control already stops that callback.
+        const bool presentation_ready=!s.battle||s.battle->completion.state.ending_active||
+            s.battle->hud.score.displayed_value()==th14_hud_load(s.economy.score_units);
+        words[3]=ended&&presentation_ready;words[4]=u32(s.state.phase);words[5]=hosted_replay&&s.state.replay;return words;
     }
     int hosted_replay_seek_step(u32 target,u32 budget){
         if(!hosted_replay||!session.state.replay){error="no hosted replay";return -1;}
