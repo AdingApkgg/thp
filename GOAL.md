@@ -6,9 +6,11 @@
 
 ## 当前交付 · 2026-11-18
 
+- [自然普通游戏的完整浏览器流程](docs/porting/TH14_NATURAL_BROWSER_FLOWS_NOV18.md)：Normal 六关→结局／Staff、Extra 和原生练习自然完成，实际菜单保存及整页重启通过。三份新录像由干净当前构建完整播放、终分一致，18 幅新画面已看；原版格式与保存保护通过。未部署私有输入钩子，不把三例外推为同构建全量 30 格；发布和总审计继续。
+
 - [当前六装备结局／Staff 图形接线](docs/porting/TH14_CURRENT_ENDING_GPU_NOV18.md)：18 幅稳定画面已看，59 个实际代码响应匹配；使用显式生产完成事件的私有测试构建，不算自然六关通关，不替换公开包。
 
-- [八类行为完成审计](docs/porting/TH14_BEHAVIOR_COMPLETION_AUDIT_NOV18.md)：重新核对 30 写入／30 新进程报告与保存身份；旧符卡源迁移及当前成功符卡结束已补，当前自然普通流程的完整 GPU 接线仍待闭环。只补缺失分支，整作 active。
+- [八类行为完成审计](docs/porting/TH14_BEHAVIOR_COMPLETION_AUDIT_NOV18.md)：重新核对 30 写入／30 新进程报告与保存身份；旧符卡源迁移、当前成功符卡和自然普通完整 GPU 接线已补。逐项核对发布与残留范围，整作 active。
 
 - [实际玩家缩放碰撞](docs/porting/TH14_PLAYER_SCALE_INTEGRATION_NOV18.md)：16,122 碰撞＋1,080 边界通过，补上旧语料无法检出漏乘缩放的盲区，两种负控制有效，无游戏改动。
 

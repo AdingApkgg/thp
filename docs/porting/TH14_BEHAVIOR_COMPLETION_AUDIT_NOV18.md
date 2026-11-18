@@ -9,11 +9,11 @@
 | 各关敌机、Boss、掉落、经济和特殊规则 | [原版完整录像行为](TH14_FULL_REPLAY_BEHAVIOR_NOV13.md)、[当前核心流程](TH14_CURRENT_CORE_FLOWS_NOV18.md)；灵梦 B Normal 所选状态原版对照、反转／缩放画面及原版指令组件 | 复用明确范围，不把帧数或有限状态相同外推为逐对象全历史相同 |
 | 异常激光规则与旧录像 | [真实原版调用及规则分界](TH14_NATIVE_BEAM_RULE_BOUNDARY_NOV18.md)；真实 NaN 原版保持、普通新规则有限保护，录像显式记规则 | 4,360 分差异继续登记；不能把新规则样本标为原版同分，不补分数／RNG |
 | 六自机×五难度的入口和普通推进 | [30 格普通流程](TH14_ORDINARY_FLOW_MATRIX_NOV14.md) 与 [当前七格补验／源码复用](TH14_CURRENT_CORE_FLOWS_NOV18.md)；本次重新核对 30 写入／30 新进程报告和保存哈希 | 声明开局输入范围通过，跨构建，不声称当前单二进制重跑 30 格 |
-| 死亡、续关、疮痍、署名、重开和返回 | [高难度／续关](TH14_ORDINARY_HIGHER_AND_CONTINUE_NOV14.md)、[浏览器普通保存](TH14_BROWSER_NORMAL_PERSISTENCE_NOV14.md)、[当前完整流程](TH14_CURRENT_CORE_FLOWS_NOV18.md) | 核心流程和浏览器短流程已有；全程 GPU 普通流程仍须独立接通验收 |
-| 自然通关、结局、Staff 与实际图形 | SDK 六 Normal 自然结局和 Extra 自然结束已有；[当前私有 GPU 六结局边界](TH14_CURRENT_ENDING_GPU_NOV18.md)已通过 | **未完成**：强制调用生产通关边界仅验证图形接线，不能代替当前普通六关自然进入结局的端到端 GPU 验收 |
-| 关卡／符卡练习、解锁与成绩 | [当前核心进入标志](TH14_CORE_PRACTICE_ENTRY_NOV18.md)、[符卡浏览器保存](TH14_SPELL_BROWSER_PERSISTENCE_NOV14.md)、[成功符卡播放](TH14_PUBLIC_SPELL_BROWSER_NOV14.md) | 原生 315 文件差异逐项核对：304 相同、5 换行、6 为进入标志／可选观察及 hitbox；当前真实浏览器成功符卡 1,737 帧／3,179,620 分／39 擦弹自然结束，78 个实际代码响应匹配。旧统计写入实现按哈希复用，不声称当前重跑所有符卡 |
+| 死亡、续关、疮痍、署名、重开和返回 | [高难度／续关](TH14_ORDINARY_HIGHER_AND_CONTINUE_NOV14.md)、[浏览器普通保存](TH14_BROWSER_NORMAL_PERSISTENCE_NOV14.md)、[当前完整流程](TH14_CURRENT_CORE_FLOWS_NOV18.md)、[自然 GPU 完整流程](TH14_NATURAL_BROWSER_FLOWS_NOV18.md) | 核心与浏览器流程已有；本次 Normal／Extra／练习的实际完成菜单、保存、标题和重启接通 |
+| 自然通关、结局、Staff 与实际图形 | SDK 六 Normal 自然结局和 Extra 自然结束、[六结局边界](TH14_CURRENT_ENDING_GPU_NOV18.md)、[当前自然 GPU 普通流程](TH14_NATURAL_BROWSER_FLOWS_NOV18.md) | 原缺口关闭：灵梦 B Normal 自然六关进入结局／Staff／成绩，Extra 独立自然完成，不调用完成事件；其余五装备结局图形仍按独立边界测试声明 |
+| 关卡／符卡练习、解锁与成绩 | [当前核心进入标志](TH14_CORE_PRACTICE_ENTRY_NOV18.md)、[符卡浏览器保存](TH14_SPELL_BROWSER_PERSISTENCE_NOV14.md)、[成功符卡播放](TH14_PUBLIC_SPELL_BROWSER_NOV14.md)、[原生练习自然完成](TH14_NATURAL_BROWSER_FLOWS_NOV18.md) | 原生 315 文件差异逐项核对：304 相同、5 换行、6 为进入标志／可选观察及 hitbox；当前成功符卡自然结束已有。新增实际 Normal 解锁后的原生关卡练习完成／保存／重载，10,074,140 分、3,548 擦弹；旧统计按哈希复用，不声称当前重跑所有符卡 |
 | 原作录像读取、完整播放与结束 | 30 份原始输入中 26 完成声明流程、4 与同文件原版提前结束；当前灵梦 B Normal、咲夜 B Extra 等实际连续播放与交付身份通过 | 保留四例提前结束及各自范围，不算四次六关通关；不反复播放同一长录像替代缺失分支 |
-| 自录、原版格式、重开和跨宿主读回 | [当前普通新录像](TH14_CURRENT_CORE_FLOWS_NOV18.md)、[当前 Extra 新录像](TH14_CORE_EXTRA_RECORDING_NOV18.md)、[咲夜短录像原版终点](TH14_SAKUYAA_SHORT_TERMINAL_NOV18.md) | Normal／Extra 完整读回及短文件终点疑问关闭；未声明原版完整游戏能播放扩展规则文件 |
+| 自录、原版格式、重开和跨宿主读回 | [当前普通新录像](TH14_CURRENT_CORE_FLOWS_NOV18.md)、[当前 Extra 新录像](TH14_CORE_EXTRA_RECORDING_NOV18.md)、[咲夜短录像原版终点](TH14_SAKUYAA_SHORT_TERMINAL_NOV18.md)、[实际 GPU 录制的三种流程](TH14_NATURAL_BROWSER_FLOWS_NOV18.md) | 三份实际 GPU 新录制由干净当前构建完整读完，终分一致、进度无回退、各 78 个响应匹配；原版格式通过，不声明原版完整游戏播放扩展规则 |
 | 查看器选关、定位、终点与取消 | [准备预算与当前四处 GPU 点检](TH14_REPLAY_SEEK_BUDGET_NOV18.md)、[当前换关进度](TH14_REPLAY_PROGRESS_CONTEXT_NOV18.md) | 当前实际入口通过；选关截图不算连续完整播放 |
 | 主要画面、文本、反转、缩放、六种 Bomb | 当前四处特殊画面＋六种 Bomb／长尾已看图，代码响应绑定当前包 | 已有分项通过；六结局／Staff／成绩页已补稳定画面 18 幅；强制完成事件与自然完整流程分开 |
 | 音乐、音效、循环、切换、暂停与音量 | [当前混音器](TH14_CURRENT_AUDIO_MIXER_NOV14.md)、[当前网页 OGG 队列](TH14_CURRENT_BROWSER_AUDIO_NOV18.md)，真实 hidden／恢复及设置保存 | 声明软件静音采集与浏览器交付范围通过，不要求有损 PCM 字节等同或出声播放 |
@@ -24,9 +24,9 @@
 ## 下一步执行顺序
 
 1. 六结局 GPU 边界测试及 18 幅稳定画面已补齐，保留最初截取过早的报告。该项关闭渲染接线范围。
-2. 把当前普通自然游玩的真实按键输入与实际 GPU 完整流程连接，覆盖自然通关→结局／Staff→成绩／录像保存→新启动读取。使用既有输入和资产缓存，不重跑 30 格、不写完成标志。
+2. 当前普通自然按键与实际 GPU 完整流程已接通，Normal／Extra／练习均保存、新启动读取，并由干净当前构建完整消费新录像。18 幅新画面已看；输入钩子和只读观察边界单独登记，不写完成标志。证据和可复跑源码随本次发布。
 3. 旧练习／符卡原生源迁移已逐项核对，当前成功符卡实际播放及终态画面已补齐。若端到端普通 GPU 流程出现新的实际失败，再按对应源变化定位，不重复已关闭矩阵。
-4. 以上必要范围均有证据后才审议完成；此清单本身不构成通过。
+4. 按八类行为目标复核所引证据、源码复用边界与公开交付；不能把本次三个流程当作全部自机难度的唯一证明。完成发布和总审计前仍保持 active；此清单本身不构成通过。
 
 原始素材、录像、存档、截图、二进制和原始内存保留在私有 artifacts。公开只有源代码、可复跑工具与语义／哈希摘要。
 
