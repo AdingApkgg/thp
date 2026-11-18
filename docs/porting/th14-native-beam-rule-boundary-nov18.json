@@ -1,0 +1,308 @@
+{
+  "schema": "th14/native-first-beam-rule-divergence/1",
+  "date": "2026-11-18",
+  "investigationProgress": true,
+  "completeGame": false,
+  "silent": true,
+  "runtimeGameLogicChanged": false,
+  "sourceReference": "current public core CPP including independent practice-entry fix",
+  "originalInputSha256": "e452a97814aecdb9480540761dfaed979c865be62d57a32a616720a6114913af",
+  "selfRecordedBoundedInputSha256": "bc84805037acd036f478231353a006e3da4669dd7aec6f4840c44604fb1728b3",
+  "nativeProcess": {
+    "passed": true,
+    "actualOriginalExeSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+    "elapsedSeconds": 610.685950900006,
+    "breakpointHits": 2,
+    "noPerFrameDebugBreakpointsAfterFirstPlayer": true,
+    "capturedStage": 3,
+    "capturedControlFrame": 2157,
+    "actualStackScratchBits": 2147483646,
+    "actualStackScratchIsNaN": true,
+    "mappedInputFieldsMatched": 18,
+    "pairing": {
+      "fields": [
+        "frame",
+        "timerCurrent",
+        "timerPrevious",
+        "originX",
+        "originY",
+        "originZ",
+        "angle",
+        "targetX",
+        "targetY",
+        "targetZ",
+        "hasRectangle"
+      ],
+      "matchingRows": 1,
+      "pairingRequiresEveryKeyFieldEqual": true,
+      "noNearestOrMaximumMatchUsed": true
+    },
+    "independentlyVerifiedNonKeyFields": [
+      "priorLength",
+      "areaLength",
+      "areaWidth",
+      "radius",
+      "rectAngle",
+      "scratch",
+      "areaDamage"
+    ],
+    "actualInputs": {
+      "frame": {
+        "native": 2157,
+        "port": 2157,
+        "equal": true
+      },
+      "timerCurrent": {
+        "native": 38,
+        "port": 38,
+        "equal": true
+      },
+      "timerPrevious": {
+        "native": 37,
+        "port": 37,
+        "equal": true
+      },
+      "originX": {
+        "native": 3272574239,
+        "port": 3272574239,
+        "equal": true
+      },
+      "originY": {
+        "native": 1132782223,
+        "port": 1132782223,
+        "equal": true
+      },
+      "originZ": {
+        "native": 0,
+        "port": 0,
+        "equal": true
+      },
+      "angle": {
+        "native": 3217625051,
+        "port": 3217625051,
+        "equal": true
+      },
+      "priorLength": {
+        "native": 1133726584,
+        "port": 1133726584,
+        "equal": true
+      },
+      "areaLength": {
+        "native": 1133726584,
+        "port": 1133726584,
+        "equal": true
+      },
+      "areaWidth": {
+        "native": 1098907648,
+        "port": 1098907648,
+        "equal": true
+      },
+      "targetX": {
+        "native": 3270969917,
+        "port": 3270969917,
+        "equal": true
+      },
+      "targetY": {
+        "native": 1118603837,
+        "port": 1118603837,
+        "equal": true
+      },
+      "targetZ": {
+        "native": 0,
+        "port": 0,
+        "equal": true
+      },
+      "radius": {
+        "native": 1094713344,
+        "port": 1094713344,
+        "equal": true
+      },
+      "rectAngle": {
+        "native": 0,
+        "port": 0,
+        "equal": true
+      },
+      "hasRectangle": {
+        "native": 0,
+        "port": 0,
+        "equal": true
+      },
+      "scratch": {
+        "native": 2147483646,
+        "port": 2147483646,
+        "equal": true
+      },
+      "areaDamage": {
+        "native": 12,
+        "port": 12,
+        "equal": true
+      }
+    },
+    "instructionBytesPatched": 0,
+    "rngScoreHealthOrInputWrites": 0,
+    "declaredAttractBitClear": [
+      {
+        "address": 5200056,
+        "before": 64,
+        "after": 0,
+        "attractBitClearOnly": true
+      }
+    ],
+    "privateArchiveOnlyDemo0Changed": true,
+    "otherArchiveEntriesUnchanged": 226,
+    "diagnosticStopNotNaturalEnding": true,
+    "childExited": true,
+    "newAssetBytesCopied": 0,
+    "sourceSha256": "fe983a936797bf848816995215c5165aeaf666d8d61780f3a5d49221123bbce4",
+    "reportSha256": "92dba7fd9b7d7f597a51c87f91ca0c2ffd9525c8d098d94bc077df212abe572e",
+    "callerFileSha256": "6455ddc0ed9597313c71845fcd181b8f54ca1f989dfe68254557759ca1ea70d2"
+  },
+  "portCapture": {
+    "actualBeamCalls": 899,
+    "capturedBytes": 143840,
+    "captureFrameWindow": [
+      1,
+      2182
+    ],
+    "comparedPlayerCallbacks": 2192,
+    "selectedWordsPerCallback": 32,
+    "allCommonPrefixWordsEqualWithAndWithoutObserver": true,
+    "stopBatchCallbackCounts": [
+      2192,
+      2207
+    ],
+    "rawTapesNeverTruncatedOrRewritten": true,
+    "baselineSha256": "1f636cb801632f60a5192109217e54e2e8b071579ca10e205df848d8917189fe",
+    "observerSha256": "9b9312da3a5948918b3cff44f4b31f2b2d6e428ed579dbefa4254473055112bc",
+    "observerWasmSha256": "c762b6ea44bfd19c5ab24bc86b893bc1d68d27cefbf454b6e8dd7adf5481dba7"
+  },
+  "nativeInstructionOracle": {
+    "auditCompleted": true,
+    "declaredProtectionOnly": true,
+    "cases": 899,
+    "exactMatches": 898,
+    "allNativeFieldsIdentical": false,
+    "protectedDifferences": [
+      {
+        "index": 877,
+        "frame": 2157,
+        "matched": false,
+        "native": [
+          2147483646,
+          2147483646,
+          461,
+          0
+        ],
+        "bounded": [
+          1133726584,
+          1133726584,
+          461,
+          0
+        ],
+        "scratchHex": "0x7ffffffe",
+        "hasRectangle": false
+      }
+    ],
+    "unexplainedDifferences": [],
+    "instructionBytesPatched": 0,
+    "originalNativeBeamBody": true,
+    "anmAndCookieBoundaryControlled": true,
+    "hitLastFrameDeclaredOne": true,
+    "comparedFields": [
+      "beamLength",
+      "areaLength",
+      "ordinaryHitCounter",
+      "returnDamage"
+    ],
+    "actualCallerStackValidated": false,
+    "nativeValuesFedBack": false,
+    "inputSha256": "d6ece2abd30b291ebd4b186e0c5c4d381bb682a9e802adb158f34c9eb6558078",
+    "originalExeSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+    "toolSha256": "2dfaa01f8527f1ef8e340acd421f49e605c5b52443cf7937b11346c8ee5d1353",
+    "completeGame": false
+  },
+  "sameBinaryMetadataControl": {
+    "sameWasm": true,
+    "pairedFrames": 2192,
+    "firstByField": {
+      "23": {
+        "frame": 2171,
+        "bounded": 64502,
+        "rule0": 2011
+      },
+      "24": {
+        "frame": 2171,
+        "bounded": 3972,
+        "rule0": 3970
+      },
+      "12": {
+        "frame": 2172,
+        "bounded": 17248778,
+        "rule0": 17248777
+      },
+      "21": {
+        "frame": 2180,
+        "bounded": 57083,
+        "rule0": 1710
+      },
+      "22": {
+        "frame": 2180,
+        "bounded": 95676,
+        "rule0": 95406
+      },
+      "25": {
+        "frame": 2180,
+        "bounded": 4,
+        "rule0": 5
+      },
+      "26": {
+        "frame": 2188,
+        "bounded": 21,
+        "rule0": 22
+      }
+    },
+    "counts": {
+      "23": 12,
+      "24": 12,
+      "12": 18,
+      "21": 13,
+      "22": 13,
+      "25": 9,
+      "26": 5
+    },
+    "inputDifference": "one explicit metadata rule byte; startup title draw counts180 and181 recorded separately",
+    "noStateWritesToForceAlignment": true
+  },
+  "classification": {
+    "firstDifferenceIsExplicitFiniteLengthProtection": true,
+    "stackModelErrorExcludedForThisActualCall": true,
+    "unknownCollisionPredicateErrorNotSupportedByTheseObservations": true,
+    "originalAuthorScoreNowMatched": false,
+    "fourOriginalEarlyReplayInputsAcceptedAsFullClear": false,
+    "historicalFinalScoreDifferenceRetained": 4360,
+    "newSelfReplayDeterminismEvidenceRetained": true
+  },
+  "failureBoundariesRetained": [
+    "First native runner did not recognize WOW64 single-step event code, then was corrected without game changes.",
+    "Second native runner mixed new global stage3 with previous stage2 clock during loading; stage-clock ownership was corrected.",
+    "Expanded observer raw-equality assertion initially compared different stop-batch lengths; all32 words of the common2192-callback prefix are exactly equal and raw tapes remain intact."
+  ],
+  "limitations": [
+    "One actual original call validates its18 mapped inputs and stack value, not every call stack in every game mode.",
+    "Native instruction comparisons use declared ANM/cookie and hit-last-frame boundaries.",
+    "One-byte explicit metadata change is a synthetic policy control, not an original author replay or valid recorded game under rule0.",
+    "Startup title draw counts180/181 differ in that control; all observed32 player words nevertheless match before frame2171.",
+    "Finite protection is a deliberate difference from native NaN propagation, not proof of original author score parity.",
+    "No original assets, replays, saves, raw memory dumps, screenshots or Wasm published."
+  ],
+  "publicTools": [
+    {
+      "path": "tools/th14-native-beam-caller-window-nov18.py",
+      "sha256": "a2913e5fe797374e5abfe58053fe8abe3f736c5462af8f8329b1badc4854f01f"
+    },
+    {
+      "path": "tools/th14-oracle-beam-window-nov18.py",
+      "sha256": "2dfaa01f8527f1ef8e340acd421f49e605c5b52443cf7937b11346c8ee5d1353"
+    }
+  ]
+}
