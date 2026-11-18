@@ -6,6 +6,14 @@
 
 ## 当前交付 · 2026-11-18
 
+- [当前六装备结局／Staff 图形接线](docs/porting/TH14_CURRENT_ENDING_GPU_NOV18.md)：18 幅稳定画面已看，59 个实际代码响应匹配；使用显式生产完成事件的私有测试构建，不算自然六关通关，不替换公开包。
+
+- [八类行为完成审计](docs/porting/TH14_BEHAVIOR_COMPLETION_AUDIT_NOV18.md)：重新核对 30 写入／30 新进程报告与保存身份；旧符卡源迁移及当前成功符卡结束已补，当前自然普通流程的完整 GPU 接线仍待闭环。只补缺失分支，整作 active。
+
+- [实际玩家缩放碰撞](docs/porting/TH14_PLAYER_SCALE_INTEGRATION_NOV18.md)：16,122 碰撞＋1,080 边界通过，补上旧语料无法检出漏乘缩放的盲区，两种负控制有效，无游戏改动。
+
+- [咲夜 A 短录像原版终点](docs/porting/TH14_SAKUYAA_SHORT_TERMINAL_NOV18.md)：原版与当前浏览器终点均 3,700，元数据 3,690 保持；原观察器谓词失败保留，78 个代码响应匹配，不截断末帧回调。
+
 - [当前六种 Bomb 及长尾画面](docs/porting/TH14_CURRENT_SIX_BOMB_GRAPHICS_NOV18.md)：正常菜单六种 Normal 装备实际施放，三种长尾补至约 1,000 帧，15 幅图像已看；两组各 59 个实际代码响应匹配。护盾暗色正常恢复，没有重编游戏或重跑完整录像。
 
 - [独立核心 Extra 新录制与完整读回](docs/porting/TH14_CORE_EXTRA_RECORDING_NOV18.md)：真正 Normal 存档解锁后自然通关并保存，新浏览器连续 46,392 帧结束，744,413,340 分／12,053 擦弹一致；原版格式全字节与 78 个代码响应通过。145 对象复用，无游戏代码改动，未重复六种 Extra 通关矩阵。

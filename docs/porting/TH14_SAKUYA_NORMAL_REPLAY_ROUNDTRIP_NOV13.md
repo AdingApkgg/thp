@@ -13,3 +13,7 @@ See [the evidence JSON](th14-sakuya-normal-replay-roundtrip-nov13.json). Private
 A targeted [retail dispatcher component](th14-replay-terminal-dispatch-nov13.json) executes original callback insertion, the complete Main update traversal, Replay wrapper/reader, and the complete replay-end menu entry. Twelve cases cover terminal and ordinary records, three initial control-flag combinations, and enabled/disabled later callbacks. With ANM capture/factory/interrupt and audio request as controlled boundaries, the terminal branch preserves cursor 743, opens menu state 2, sets control bit 0x10 and still invokes both enabled later callbacks. No original instruction bytes are patched. Disabled later callbacks remain skipped. Initial failed attempts used the start-of-stream pointer with cursor 743; the corrected fixture supplies the actual current record pointer, and both failed sources remain private.
 
 This verifies that continuing the callback pass is original behavior. It rejects an unconditional terminal early-return as a justified score fix. The later callback bodies are declared sentinels; actual original enemy/player rewards and this replay's final score are still unverified. Production gameplay is unchanged by this component test.
+
+## 2026-11-18 原版终点后续核验
+
+同一文件的原版进程稳定终点与当前浏览器均为 3,700 分，元数据 3,690 保持；原主观察器的菜单状态谓词超时失败仍保留。详见[终点核验及边界](TH14_SAKUYAA_SHORT_TERMINAL_NOV18.md)。

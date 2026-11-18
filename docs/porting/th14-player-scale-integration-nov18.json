@@ -1,0 +1,95 @@
+{
+  "passed": true,
+  "completeGame": false,
+  "silent": true,
+  "source": "Current verified PlayerFrame::collision and update_bounds adapters plus actual PlayerCollision circle/rectangle; synthetic SHT hitbox, player shape/state and native input cases are declared controlled boundaries. No Application/gameplay progression or native whole-game claim.",
+  "cases": 16122,
+  "pinnedPriorModuleCases": 16122,
+  "legacyCases": 10800,
+  "newNativeEdgeCases": 5322,
+  "scaledCircularCases": 5622,
+  "currentBoundsCases": 1080,
+  "currentBoundsWords": 25920,
+  "legacyCorpusFaultDetection": {
+    "missingScale": 0,
+    "doubleScale": 45
+  },
+  "negativeControlMismatches": {
+    "missingScale": 729,
+    "doubleScale": 589
+  },
+  "priorWeakCorpusFailurePreserved": true,
+  "nativeExeSha256": "f08e885e28d2e0fc8c579e88034dd7de8f2a648d8f08ce781cf08eadc9ffe353",
+  "newNativeInstructionReferencesExecuted": true,
+  "nativeInstructionsPatched": 0,
+  "nativeHitApplicationBoundary": "0x44f7a0 recorded sink, no code patch",
+  "newNativeGameProcessRun": false,
+  "newGameAssetCopies": 0,
+  "newGameProvidersCompiled": 0,
+  "providerObjectsVerified": 145,
+  "legacyReferenceSha256": "0ab5604e3edb652c74c2898b34d9f077ad5d425dfc367ebe3276b6493cfdb3ca",
+  "boundsNativeReferenceSha256": "4f7fd2dffb350354814ad784ff73640d37d5a089d69882e852e87c5765c3009e",
+  "focusedNativeReferenceSha256": "7ae812ddbe91b78d8c1bf5c79fee4c9129406064d6feb602a55262361da79f6e",
+  "focusedNativeGeneratorSha256": "c7dbd23448887093199cc7d6a888148528e320b57985ef0e5777f17b1ce03ea6",
+  "priorModuleSha256": "55b6b0fabe88b9638afd36d199b25446ba3c70a87d86e5c9b3b71fae47274608",
+  "currentWasmSha256": "89642abcba3469d9666aa39e332db4264fb8fb588d79e475c881accdd9bac168",
+  "fixtureSha256": "a48d3446c71323db9b5b98b0591b75bfa9a1d92365f00623f809e0dd9b5e9bd2",
+  "unexpectedHostCalls": [],
+  "publicGeneratorSha256": "5e38a57521ad93e6666674e6c02852d1ae2f6f0c24d005d7045c393fa0584d1f",
+  "publicFixture": "runtimes/th12/th12_web/tests/cpp/th14-player-scale-collision-integration-nov18.cpp",
+  "siteSourceQualification": {
+    "allFunctionsRawEqual": false,
+    "allNormalTools0FunctionsEquivalent": true,
+    "functions": [
+      {
+        "file": "runtimes/th12/th12_web/cpp/game/PlayerFrame.cpp",
+        "function": "PlayerFrame::collision()const noexcept",
+        "currentSdkFunctionSha256": "5a15dff5a50366d85f550c660e0d403211bc7e2d33d37f5ad6bb28f17be43751",
+        "currentWebsiteFunctionSha256": "d075499158b346e6fdfe1a09764480d69b78b046208f09ead4c0f08477bada96",
+        "rawFunctionEqualIgnoringCrlfOnly": false,
+        "normalTools0FunctionEquivalent": true,
+        "websiteFileMatchesDeliveredBuildBinding": true
+      },
+      {
+        "file": "runtimes/th12/th12_web/cpp/game/PlayerFrame.cpp",
+        "function": "PlayerFrame::update_bounds()",
+        "currentSdkFunctionSha256": "79dd48b0df366e91c4e03e70a79a938b03e295164ba7a87e469d72b22ed1376f",
+        "currentWebsiteFunctionSha256": "79dd48b0df366e91c4e03e70a79a938b03e295164ba7a87e469d72b22ed1376f",
+        "rawFunctionEqualIgnoringCrlfOnly": true,
+        "normalTools0FunctionEquivalent": true,
+        "websiteFileMatchesDeliveredBuildBinding": true
+      },
+      {
+        "file": "runtimes/th12/th12_web/cpp/game/PlayerCollision.cpp",
+        "function": "PlayerCollision::circle(",
+        "currentSdkFunctionSha256": "4754c0ff8d17b8a3ddd17910b765a54366317cbd71ecd5695d40b28ad57bb7d1",
+        "currentWebsiteFunctionSha256": "4754c0ff8d17b8a3ddd17910b765a54366317cbd71ecd5695d40b28ad57bb7d1",
+        "rawFunctionEqualIgnoringCrlfOnly": true,
+        "normalTools0FunctionEquivalent": true,
+        "websiteFileMatchesDeliveredBuildBinding": true
+      },
+      {
+        "file": "runtimes/th12/th12_web/cpp/game/PlayerCollision.cpp",
+        "function": "PlayerCollision::rectangle(",
+        "currentSdkFunctionSha256": "b0575d11f5f0e6282b1c16de632ca2dafd38e9d705b58d413b16e077c0db6368",
+        "currentWebsiteFunctionSha256": "b0575d11f5f0e6282b1c16de632ca2dafd38e9d705b58d413b16e077c0db6368",
+        "rawFunctionEqualIgnoringCrlfOnly": true,
+        "normalTools0FunctionEquivalent": true,
+        "websiteFileMatchesDeliveredBuildBinding": true
+      },
+      {
+        "file": "runtimes/th12/th12_web/cpp/game/GameBattle.cpp",
+        "function": "GameBattle::collision(const BulletState& b)",
+        "currentSdkFunctionSha256": "a4d0ef6576496d12c1d69edaffa29a350cbbae22b56d3223fd4a000dd9bc7102",
+        "currentWebsiteFunctionSha256": "a4d0ef6576496d12c1d69edaffa29a350cbbae22b56d3223fd4a000dd9bc7102",
+        "rawFunctionEqualIgnoringCrlfOnly": true,
+        "normalTools0FunctionEquivalent": true,
+        "websiteFileMatchesDeliveredBuildBinding": true
+      }
+    ],
+    "optionalWebsiteDifference": "Exact PrInvincible guard can raise invincibility_frames; normal tools0 skips it. No other text normalization thanCRLF and exact known block removal for that conditional scope. Optional invincible mode is not claimed identical to retail.",
+    "runtimeWasmSha256": "6b5e86f99a7e9749b6a31cce6e2ff2aa6c6029d504ff7c68f11faa0d93bfac43",
+    "websiteSourceReceiptSha256": "34f246c146dd994410a8e1cbfb42ac062c5652eecc5601259706691652e8d31f",
+    "arbitraryDiffIgnoreRules": false
+  }
+}
