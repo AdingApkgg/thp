@@ -31,7 +31,7 @@ async function callCore(name,...args){
  const runtime=Module.th14AsyncRuntime??Module.th14WebGpuRuntime;return runtime?runtime.run(call):call();
 }
 const save=async()=>{if(launched&&!await callCore('th11_save_scores'))throw Error(coreError());return sync(false);};
-async function installResources(resources=[]){return installHostResources(Module,resources,{game,emit});}
+async function installResources(resources=[]){return installHostResources(Module,resources,{game,emit,signal:startupSignal()});}
 // The Launcher has already verified the ZIP identity. Match TH10's Runtime
 // manifest/path/size checks before exposing any file to the native game.
 let runtimePackFiles=[];
@@ -181,10 +181,14 @@ for(const name of ['keydown','keyup'])window.addEventListener(name,event=>{
 // A mobile browser may terminate a hidden page before pagehide's IDB callback.
 // Persist during play as well, with writes serialized by the sync chain.
 setInterval(()=>{if(launched&&!document.hidden&&core)try{queue=queue.then(()=>save()).catch(error);}catch(e){error(e);}},30000);
+const startupAbort=new AbortController();
+// Keep listening through bfcache round trips; only departure cancels TH14.
+window.addEventListener('pagehide',event=>{if(!event.persisted)startupAbort.abort();});
+const startupSignal=()=>game==='th14'?startupAbort.signal:undefined;
 const initialized=(async()=>{
  let audioContext;try{audioContext=parent.__touhouAudioContext;}catch{}
  Module=await createModule({canvas,noInitialRun:true,resetBrowserKeyboard:()=>keyboard.clear(),...(audioContext?{SDL3:{audioContext}}:{}),print:console.log,printErr:console.error,
-  instantiateWasm(imports,ready){return WebAssembly.instantiateStreaming(fetch('./th11-sdl.wasm'),imports).then(({instance,module})=>{core=instance.exports;ready(instance,module);return core;});}});
+  instantiateWasm(imports,ready){return WebAssembly.instantiateStreaming(fetch('./th11-sdl.wasm',{signal:startupSignal()}),imports).then(({instance,module})=>{core=instance.exports;ready(instance,module);return core;});}});
  window.Module=Module;window.FS=Module.FS;window.core=core;
  Module.onWebGpuError=error;
  Module.onAsyncError=error;
@@ -206,5 +210,5 @@ async function mountData(){
  // eagler-touhou managed package: the retail archive arrives through the parent
  // (written to /th11.dat, which the C++ archive layer opens) and the baked font
  // tables through the sibling resources.json.
- await mountManagedData(Module,{game,parentWindow:parent,query,emit});
+ await mountManagedData(Module,{game,parentWindow:parent,query,emit,signal:startupSignal()});
 }
