@@ -1,0 +1,27 @@
+// Real MSG programs: recorded logical updates versus accelerated replay chain.
+import {readFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+import {runReplayFrame} from '../shared/th06nc/replay-frame.mjs';
+import {ReplayPlayback} from '../shared/th06nc/replay-playback.mjs';
+import {ReplayRecorder} from '../shared/th06nc/replay-recorder.mjs';
+import {assembleRecordedReplay} from '../shared/th06nc/replay-assemble.mjs';
+import {decodeReplayFile} from '../shared/th06nc/replay-file.mjs';
+import {NativeRng} from '../shared/th06nc/rng.mjs';
+import {MessageState} from '../shared/th06nc/message-state.mjs';
+import {readMessage} from '../shared/th06nc/message.mjs';
+import {messageAssetPlan} from '../shared/th06nc/message-layout.mjs';
+import {AnmBank} from '../shared/th06nc/anm-bank.mjs';
+import {readAnm} from '../shared/th06nc/anm.mjs';
+import {readStageMusic} from '../shared/th06nc/stage-music.mjs';
+const sha=b=>createHash('sha256').update(b).digest('hex'),names=['replay-frame','task-update-chain','replay-playback','replay-recorder','replay-assemble','replay-file','rng','message-state','message','message-open','message-update','message-command','message-music','message-progress','message-layout','stage-music','music-state','anm-bank','anm-rebind','anm-vm'],sourceSha256=Object.fromEntries(names.map(p=>['shared/th06nc/'+p+'.mjs',sha(readFileSync('shared/th06nc/'+p+'.mjs'))])),scenes=[];
+for(const file of [1,2,3,4,5,6])for(const character of [0,1])for(const mode of ['passive','skip','advance']){
+ const program=readMessage(readFileSync(`runtimes/th06nc/artifacts/scripts/th06ST.dat/msg${file}.dat`)),musicTracks=readStageMusic(readFileSync(`runtimes/th06nc/artifacts/scripts/th06ST.dat/stage${file}.std`)),resources=messageAssetPlan(file,character).map(r=>({...r,resource:readAnm(readFileSync(`runtimes/th06nc/artifacts/scripts/${r.archive}/${r.file}`))}));
+ const environment=replay=>({character,shot:0,stageIndex:file,difficulty:1,rng:new NativeRng(0xbeef),replaySeed:0xbeef,score:0n,displayScore:0n,playerPower:0,lives:2,bombs:3,powerItemChain:1,deathCount:0,timingNumerator:1,timingDenominator:1,replay,replayPlayback:replay});
+ const open=e=>{const bank=new AnmBank();for(const r of resources)bank.load(r.resource,r.base,{slot:r.slot});const state=new MessageState(program,{anmBank:bank,environment:e});state.rebind(0x3b60,0x785);state.open(character*10,{cancelProjectiles:()=>{},loadAnm:()=>{}});return state;},events=[],services={musicTracks,publishText:r=>events.push({kind:'text',...r}),playMusic:r=>events.push({kind:'music',...r})},baselineEnvironment=environment(false),record=new ReplayRecorder();assert.equal(record.initializeStage(baselineEnvironment),0);const baseline=open(baselineEnvironment),expected=[];let previous=0;
+ for(let frame=1;frame<=30000;frame++){const held=mode==='skip'?8:mode==='advance'&&frame%16===0?1:0;events.length=0;const result=baseline.tick(held,{previousInput:previous,...services});record.advance(held,previous);previous=held;expected.push({sha256:sha(baseline.bytes),events:JSON.stringify(events),result});if(result<0)break;}assert.equal(expected.at(-1).result,-1);
+ const decoded=decodeReplayFile(assembleRecordedReplay(record,{environment:baselineEnvironment,name:'MSGCHAIN',date:'11/15/26'})),playback=new ReplayPlayback(decoded),e=environment(true);assert.equal(playback.initializeStage(e),0);const repeated=open(e),input={held:0,previous:0,repeat:0,repeatClock:0};let logical=0,display=0,flushes=0,restarts=0,maxUpdates=0;
+ while(logical<expected.length){const updates=runReplayFrame(playback,{update:()=>{playback.advance(input);events.length=0;const result=repeated.tick(input.held,{previousInput:input.previous,...services}),wanted=expected[logical];assert.ok(wanted);assert.equal(sha(repeated.bytes),wanted.sha256,JSON.stringify({file,character,mode,logical}));assert.equal(JSON.stringify(events),wanted.events);assert.equal(result,wanted.result);logical++;},message:()=>repeated.v,consumeSounds:()=>flushes++});display++;restarts+=updates-1;maxUpdates=Math.max(maxUpdates,updates);}
+ assert.equal(flushes,display);assert.ok(display<=logical);assert.equal(playback.v.getInt32(0x30,true),logical);scenes.push({file,character,mode,logicalFrames:logical,displayFrames:display,restarts,maxUpdates,soundFlushes:flushes,finalSha256:sha(repeated.bytes)});
+}
+assert.deepEqual(Object.fromEntries(Object.keys(sourceSha256).map(p=>[p,sha(readFileSync(p))])),sourceSha256);const report={scope:'Host composition check using 36 real stage 1..6 opening MSG programs for both characters and passive/skip/advance input. Record each logical input into a native-format file, restore with ReplayPlayback, then run the actual replay-frame/update-chain adapter. Complete MSG buffers and text/music service requests compare at every logical update; one sound flush per outer frame. This is host integration evidence, not a new combined native MSG/dispatcher execution. Full world, browser, task registration, fonts/audio transport and pixels excluded.',sourceSha256,scenes,passed:true,completeGame:false,nativeEquivalent:false};writeFileSync('docs/porting/th06nc-replay-message-verified.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:true,scenes:scenes.length,logicalFrames:scenes.reduce((n,s)=>n+s.logicalFrames,0),displayFrames:scenes.reduce((n,s)=>n+s.displayFrames,0),restarts:scenes.reduce((n,s)=>n+s.restarts,0)}));

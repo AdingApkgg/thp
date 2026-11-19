@@ -1,0 +1,28 @@
+"""State-9 name input 70dca..71435 and 6d190 cursor initialization.
+
+Full bb48-byte owner and sound slots, all 96 cells, lengths 0/1/7/8,
+combined/held/repeated input and the frame-30 gate. Achievement/config-save
+calls are observed services. ANM/common tick, UI drawing and disk excluded.
+"""
+import hashlib,json,struct,subprocess
+from th06nc_native import Native,ROOT
+from unicorn import UC_HOOK_CODE
+from unicorn.x86_const import *
+
+def main():
+    sources=['shared/th06nc/'+s+'.mjs'for s in ['score-name-input','sound-queue']];hashes={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest()for p in sources};script="""
+import{createHash}from'node:crypto';import{scoreNameCharacters,initializeScoreNameCursor,advanceScoreNameInput}from'./shared/th06nc/score-name-input.mjs';const sha=b=>createHash('sha256').update(b).digest('hex'),cases=[],initializers=[],masks=[0,16,32,64,128,256,512,1024,48,192,272,288,768,1280,1536,2032];let serial=0;for(const selection of Array.from({length:96},(_,i)=>i))for(const length of [0,1,7,8])for(const held of masks)for(const repeat of [0,1])for(const previous of [0,held]){const bytes=new Uint8Array(0xbb48).fill(0xa5),v=new DataView(bytes.buffer);v.setInt32(0,selection,true);v.setInt32(0x4450,serial%7===0?29:30,true);v.setInt32(0x9e94,9,true);v.setInt32(0x9e7c,length,true);bytes.fill(32,0x9e70,0x9e78);bytes[0x9e78]=0;for(let i=0;i<length;i++)bytes[0x9e70+i]=65+i;bytes.fill(77,0x9e88,0x9e90);bytes[0x9e90]=0;const soundDisabled=serial%5===0,soundSlots=serial%3===0?[12,10,11]:[-1,-1,-1],beforeSounds=[...soundSlots],events=[],event=advanceScoreNameInput({bytes,v},{held,previous,repeat,soundSlots,soundDisabled,achievement:id=>events.push({kind:'achievement',id}),saveName:name=>events.push({kind:'saveName',bytes:[...name]})});cases.push({selection,length,held,previous,repeat,clock:serial%7===0?29:30,soundDisabled,beforeSounds,soundSlots,events,event,sha256:sha(bytes)});serial++;}
+for(const name of ['', 'A','ABCDEFGH','A   ','        ','ABCDEFG ','  Z  ','A\\0BCD']){const bytes=new Uint8Array(0xbb48).fill(0xa5),v=new DataView(bytes.buffer),input=Buffer.alloc(9);Buffer.from(name).copy(input,0,0,8);bytes.set(input,0x9e70);initializeScoreNameCursor({bytes,v});initializers.push({input:[...input],sha256:sha(bytes)});}console.log(JSON.stringify({grid:scoreNameCharacters,cases,initializers}));
+"""
+    data=json.loads(subprocess.check_output(['node','--input-type=module','-e',script],cwd=ROOT));n=Native();m=n.m;events=[];digest=hashlib.sha256();assert bytes(m.mem_read(0x14030c250,96)).decode()==data['grid'];completed=0
+    def hook(m,a,size,u):
+        if a==0x140067cb0:events.append(dict(kind='achievement',id=bytes(m.mem_read(m.reg_read(UC_X86_REG_RCX),40)).split(b'\0')[0].decode()))
+        else:events.append(dict(kind='saveName',bytes=list(m.mem_read(m.reg_read(UC_X86_REG_RDX),9))))
+        sp=m.reg_read(UC_X86_REG_RSP);m.reg_write(UC_X86_REG_RIP,struct.unpack('<Q',m.mem_read(sp,8))[0]);m.reg_write(UC_X86_REG_RSP,sp+8)
+    for a in [0x140067cb0,0x14007bc00]:m.hook_add(UC_HOOK_CODE,hook,begin=a,end=a)
+    for index,c in enumerate(data['cases']):
+        raw=bytearray([0xa5])*0xbb48;struct.pack_into('<i',raw,0,c['selection']);struct.pack_into('<i',raw,0x4450,c['clock']);struct.pack_into('<i',raw,0x9e94,9);struct.pack_into('<i',raw,0x9e7c,c['length']);raw[0x9e70:0x9e79]=b' '*8+b'\0';raw[0x9e70:0x9e70+c['length']]=bytes(range(65,65+c['length']));raw[0x9e88:0x9e91]=b'M'*8+b'\0';m.mem_write(n.owner,bytes(raw));m.mem_write(0x140a6ec60,struct.pack('<2I',c['held'],c['previous']));m.mem_write(0x140a6ec48,struct.pack('<i',c['repeat']));m.mem_write(0x140509694,bytes([c['soundDisabled']]));m.mem_write(0x140509670,struct.pack('<3i',*c['beforeSounds']));m.reg_write(UC_X86_REG_RSI,n.owner);m.reg_write(UC_X86_REG_R14,0);m.reg_write(UC_X86_REG_R12,4);m.reg_write(UC_X86_REG_R15,1);m.reg_write(UC_X86_REG_RSP,n.stack+0x8000);m.reg_write(UC_X86_REG_RBP,n.stack+0x8200);events.clear();m.emu_start(0x140070dca,0x140072743,count=100000);actual=bytes(m.mem_read(n.owner,0xbb48));assert hashlib.sha256(actual).hexdigest()==c['sha256'],(index,'owner',c);assert list(struct.unpack('<3i',m.mem_read(0x140509670,12)))==c['soundSlots'],(index,'sounds');assert events==c['events'],(index,'services',events,c['events']);completed+=int(c['event']is not None);digest.update(actual)
+    for index,c in enumerate(data['initializers']):
+        raw=bytearray([0xa5])*0xbb48;raw[0x9e70:0x9e79]=bytes(c['input']);m.mem_write(n.owner,bytes(raw));sp=n.stack+0x8000;m.mem_write(sp,struct.pack('<Q',n.stack+0xf000));m.reg_write(UC_X86_REG_RSP,sp);m.reg_write(UC_X86_REG_RCX,n.owner);m.reg_write(UC_X86_REG_RDX,n.owner+0x9e70);m.emu_start(0x14006d190,n.stack+0xf000,count=100000);actual=bytes(m.mem_read(n.owner,0xbb48));assert hashlib.sha256(actual).hexdigest()==c['sha256'],(index,'initializer');digest.update(actual)
+    assert all(hashlib.sha256((ROOT/p).read_bytes()).hexdigest()==h for p,h in hashes.items());report=dict(scope=__doc__,cases=len(data['cases']),initializers=len(data['initializers']),finishRequests=completed,stateSha256=digest.hexdigest(),sourceSha256=hashes,executableSha256=n.target['sha256'],passed=True,completeGame=False,nativeEquivalent=False);(ROOT/'docs/porting/th06nc-score-name-input-native-verified.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8');print(json.dumps(report))
+if __name__=='__main__':main()

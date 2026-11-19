@@ -1,0 +1,31 @@
+import {GameAssets} from '/runtimes/th06nc/game-assets.mjs';
+import {GameRenderer} from '/runtimes/th06nc/game-renderer.mjs';
+import {FontTextureGl} from '/shared/th06nc/font-texture-gl.mjs';
+import {TitleScene} from '/shared/th06nc/title-scene.mjs';
+import {titleResources} from '/shared/th06nc/title-layout.mjs';
+import {selectionResources} from '/shared/th06nc/title-selection-layout.mjs';
+import {spellMenuAsset} from '/shared/th06nc/spell-practice-layout.mjs';
+import {spellInfoTextAsset} from '/shared/th06nc/spell-practice-info-text.mjs';
+import {spellDifficultyAsset} from '/shared/th06nc/spell-practice-presentation.mjs';
+import {readSpellPracticeTable} from '/shared/th06nc/spell-practice-table.mjs';
+import {createSpellRecord} from '/shared/th06nc/spell-record.mjs';
+import {publishAnmText} from '/shared/th06nc/font-publish.mjs';
+import {readFontAtlas} from '/shared/th06nc/font-atlas.mjs';
+import {readDds} from '/shared/th06nc/dds.mjs';
+import {SpellPracticeResultMenu} from '/shared/th06nc/spell-practice-result-menu.mjs';
+import {pauseAsset} from '/shared/th06nc/pause-menu.mjs';
+import {AnmBank} from '/shared/th06nc/anm-bank.mjs';
+import {NativeFade} from '/shared/th06nc/fade.mjs';
+try{
+ const canvas=document.querySelector('canvas'),gl=canvas.getContext('webgl2',{preserveDrawingBuffer:true,alpha:false}),painter=new FontTextureGl(gl),assets=new GameAssets(gl,painter),renderer=new GameRenderer(gl,assets),resources=new Map();
+ for(const ref of [...titleResources,...selectionResources,spellMenuAsset,spellInfoTextAsset,spellDifficultyAsset,pauseAsset])resources.set(ref.file,await assets.animation({...ref,archive:ref.archive??'th06TL.dat'}));
+ await assets.texture('select00e');await assets.prepareFonts();
+ const key='15_0x00E0FFFF_0x00000000_0x00010101_0x00040202_zh-CN',meta=await assets.load('./artifacts/fonts/'+key+'.json'),fontAdvance=await assets.load('./artifacts/fonts/advance_'+key+'.txt');painter.register(key,readFontAtlas(new TextDecoder().decode(meta),new TextDecoder().decode(fontAdvance)),readDds(await assets.load('./artifacts/fonts/'+key+'.dds')));
+ const table=readSpellPracticeTable(await assets.load('./artifacts/scripts/th06IN.dat/spellpractice.msgpack')),records=new Map(Array.from({length:134},(_,id)=>[id,createSpellRecord()])),environment={character:0,shot:0,configuredSpellStage:0};let scene,mask=0,event=null,resultMenu=null,resultPrevious=0;
+ const codes={ArrowUp:16,ArrowDown:32,ArrowLeft:64,ArrowRight:128,KeyZ:256,KeyX:512,KeyR:16384};document.addEventListener('keydown',e=>{mask|=codes[e.code]??0;e.preventDefault();});document.addEventListener('keyup',e=>{mask&=~(codes[e.code]??0);e.preventDefault();});
+ const report=()=>resultMenu?{state:resultMenu.state,selection:resultMenu.selection,clock:resultMenu.clock,captured:resultMenu.captured,active:resultMenu.active,environment:{...resultMenu.environment},drawCalls:renderer.pauseDrawRequests,paintCount:painter.paintCount,glyphCount:painter.glyphCount,glError:gl.getError(),event}:({state:scene.state.state,selection:scene.state.selection,stage:scene.state.spellStage,order:scene.state.spellOrder,scroll:scene.state.spellScroll,difficulty:scene.state.spellDifficulty,profile:environment.character*2+environment.shot,clock:scene.state.frame,drawCalls:renderer.drawCalls,paintCount:painter.paintCount,glyphCount:painter.glyphCount,glError:gl.getError(),event});
+ const advance=(frames,override)=>{for(let i=0;i<frames;i++){if(resultMenu){const input=override??mask;resultMenu.fade.tick();event=resultMenu.tick({held:input,previous:resultPrevious});resultPrevious=input;renderer.clear();renderer.pause(resultMenu);if(resultMenu.fade.mode)renderer.cover(((resultMenu.fade.alpha&255)<<24)|resultMenu.fade.color);}else{event=scene.tick(override??mask);renderer.title(scene);}if(event)break;}return report();};
+ const reset=(unlocked=false)=>{resultMenu=null;painter.clearTargets();for(const r of records.values()){r.attempts=unlocked?1:0;r.practiceCaptures.fill(unlocked?1:0);}Object.assign(environment,{character:0,shot:0,configuredSpellStage:0});scene=new TitleScene(resources,{spellServices:{table,records,environment,localization:assets.localization,publishText:(vm,r)=>publishAnmText(vm,{...r,language:'zh-CN',fonts:painter.atlases,paint:plan=>painter.paint(plan)})}});mask=0;event=null;return advance(360,0);};
+ const openResult=(captured,recordingAvailable)=>{const bank=new AnmBank();for(const ref of [pauseAsset,spellInfoTextAsset])bank.load(resources.get(ref.file),ref.base,{slot:ref.slot});resultPrevious=0;mask=0;event=null;resultMenu=new SpellPracticeResultMenu(bank,{captured,fade:new NativeFade(),environment:{spellResultVisible:true,resumeSpell:false,spellRestartRequested:false,gameState:3,replayPlayback:false},replayServices:{recordingAvailable},resultServices:{present:()=>false,open:()=>false},localization:assets.localization,publishText:(vm,r)=>publishAnmText(vm,{...r,language:'zh-CN',fonts:painter.atlases,paint:plan=>painter.paint(plan)})});return advance(30,0);};
+ globalThis.spellMenuFixture={advance,reset,report,openResult};reset();
+}catch(error){globalThis.fixtureError=String(error.stack??error);throw error;}

@@ -1,5 +1,7 @@
 # thp — 东方原作 Web 移植工作区
 
+2026-11-20：TH06nc 浏览器功能版完成普通、Challenge、练习、符卡练习、Extra、菜单、输入音画、存档与录像的对应验收，累计 2,159 个完整回放检查点。当前为浏览器功能范围，原版逐像素及系统设备等价性另列限制。[运行入口](https://wth.saop.cc/th06nc/) · [范围与验收](docs/porting/TH06NC_BROWSER_RELEASE_NOV20.md)。
+
 2026-11-11：TH14 已对齐首关七项关卡文件读取顺序，七关资源回归通过。灵梦 B Normal 首帧仍有 24 次脚本 RNG 差异，整作继续施工。[验证与构建说明](docs/porting/TH14_STAGE_WORKER_ORDER_NOV11.md)
 
 TH14 当前核心完整录像复核（2026-10-23）：灵梦 B Normal 原始输入自然播放 122,005 次回调，3,904,160 个所选状态字与旧移植基线零差；原版记录中的 93 次射击计数差异仍保留，尚不构成整作 1:1。[本次复核与差异范围](docs/porting/TH14_CURRENT_REIMUB_REPLAY_CHECK_OCT23.md)、[验证摘要](docs/porting/th14-current-reimub-replay-verified-oct23.json)。

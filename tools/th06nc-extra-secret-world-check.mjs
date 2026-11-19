@@ -1,0 +1,45 @@
+import {readFileSync,writeFileSync,readdirSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+import {StageWorld} from '../shared/th06nc/stage-world.mjs';
+import {AnmBank} from '../shared/th06nc/anm-bank.mjs';
+import {readAnm} from '../shared/th06nc/anm.mjs';
+import {readEcl} from '../shared/th06nc/ecl.mjs';
+import {readStd} from '../shared/th06nc/std.mjs';
+import {readMessage} from '../shared/th06nc/message.mjs';
+import {stageAssetPlan} from '../shared/th06nc/stage-layout.mjs';
+import {commonProjectileAssetPlan,stageEffectAssetPlan} from '../shared/th06nc/common-layout.mjs';
+import {messageAssetPlan} from '../shared/th06nc/message-layout.mjs';
+import {messageProgressAssetPlan} from '../shared/th06nc/message-progress.mjs';
+import {stdAssetPlan} from '../shared/th06nc/std-state.mjs';
+import {PlayerState} from '../shared/th06nc/player-state.mjs';
+import {playerAssetPlan} from '../shared/th06nc/player-init.mjs';
+import {NativeRng} from '../shared/th06nc/rng.mjs';
+import {ScoreStats} from '../shared/th06nc/score-stats.mjs';
+import {initializeStageRng} from '../shared/th06nc/stage-rng.mjs';
+import {gameplayPlayerBounds} from '../shared/th06nc/gameplay-start-settings.mjs';
+import {bindGameClearFlag} from '../shared/th06nc/game-clear-flag.mjs';
+import {advanceScore} from '../shared/th06nc/score-update.mjs';
+import {createMusicState} from '../shared/th06nc/music-state.mjs';
+import {readStageMusic} from '../shared/th06nc/stage-music.mjs';
+const lowCapture=process.argv.includes('--low-capture'),hiddenBombs=process.argv.includes('--hidden-bombs');assert.ok(!(lowCapture&&hiddenBombs));
+const sha=bytes=>createHash('sha256').update(bytes).digest('hex'),sources=readdirSync('shared/th06nc').filter(name=>name.endsWith('.mjs')).map(name=>'shared/th06nc/'+name),snapshot=()=>Object.fromEntries(sources.map(path=>[path,sha(readFileSync(path))])),sourceSha256=snapshot();
+const scripts='runtimes/th06nc/artifacts/scripts/',assets=new Map(),read=(archive,file)=>{const path=scripts+archive+'/'+file,bytes=readFileSync(path);assets.set(path,sha(bytes));return bytes;},bank=new AnmBank();
+const refs=[...stageAssetPlan(7).enemyAnimations,...commonProjectileAssetPlan(),stageEffectAssetPlan(7),stdAssetPlan(7),playerAssetPlan(0),...messageAssetPlan(7,0),...messageProgressAssetPlan(7)];
+const load=ref=>bank.load(readAnm(read(ref.archive,ref.file)),ref.base,{slot:ref.slot});for(const ref of refs)load(ref);
+const rng=new NativeRng(9909),stats=new ScoreStats();stats.loadRun([],rng);
+const environment=bindGameClearFlag({atan2:Math.atan2,stageIndex:7,difficulty:4,character:0,shot:0,rank:18,playerPower:128,lives:2,bombs:lowCapture?8:3,defaultLives:2,defaultBombs:3,deathCount:0,continuesUsed:0,lifeProtection:false,practice:0,spellPractice:false,replayPlayback:false,score:0n,displayScore:0n,scoreDisplayStep:0n,highScore:1000000n,powerItemChain:1,stageGraze:0,totalGraze:0,pointStageCount:0,pointTotalCount:0,inputFlags:0,enemyDeathCount:0,itemDropIndex:0,aimTarget:[0,-1000,0],messageField36b0:-1,musicState:createMusicState(),rng});initializeStageRng(environment);
+const player=new PlayerState({anmBank:bank,environment}),rawStd=read('th06ST.dat','stage7.std'),events=[],spellIds=new Set(),dynamicLoads=[];let currentFrame=0,musicHandle=0;
+const world=new StageWorld(readEcl(read('th06ST.dat','ecldata7.ecl')),{anmBank:bank,environment,player,sin:Math.sin,cos:Math.cos,atan2:Math.atan2,playerBounds:gameplayPlayerBounds,stdProgram:readStd(rawStd),messageProgram:readMessage(read('th06ST.dat','msg7.dat')),musicTracks:readStageMusic(rawStd),loadMessageAnm:ref=>{dynamicLoads.push({frame:currentFrame,...ref});load(ref);},publishMessageText:()=>{},playMusic:()=>++musicHandle,stopMusic:()=>{},releaseMusic:()=>{},awardAchievement:key=>events.push({frame:currentFrame,kind:'award',key}),commitAchievements:()=>events.push({frame:currentFrame,kind:'commit'}),bodyCollision:()=>false,bulletCollision:()=>false,laserCollision:()=>false});world.enemies.spellState.records=stats.spellRecords;
+let secretFrame=null;const bombedSpells=new Set();
+for(currentFrame=1;currentFrame<=180000;currentFrame++){
+ const id=environment.spellId,beforeBombs=environment.bombCount??0,wantsBomb=environment.spellActive&&((lowCapture&&id>=125&&id<=129)||(hiddenBombs&&[131,133].includes(id)))&&!bombedSpells.has(id)&&environment.bombs>0&&!player.v.getUint8(0x9ec8);
+ world.tick(lowCapture&&id===130?8:wantsBomb?15:13);if((environment.bombCount??0)>beforeBombs)bombedSpells.add(id);advanceScore(environment,{soundSlots:world.enemies.services.soundSlots});world.enemies.services.soundSlots.fill(-1);
+ if(environment.spellActive)spellIds.add(environment.spellId);
+ if(secretFrame===null&&world.message.v.getUint8(0x715)){secretFrame=currentFrame;console.log(JSON.stringify({secretFrame,captures:world.enemies.spellState.extraCaptures}));}
+ if(currentFrame%10000===0)console.log(JSON.stringify({frame:currentFrame,spell:environment.spellId,extraCaptures:world.enemies.spellState.extraCaptures,secret:Boolean(secretFrame)}));
+ assert.equal(environment.gameOverRequested??false,false);
+ if(environment.gameState!==undefined)break;
+}
+assert.equal(environment.gameState,7);assert.equal(environment.cleared,true);assert.equal(environment.deathCount,0);if(lowCapture){assert.equal(secretFrame,null);for(const id of [131,132,133])assert.ok(!spellIds.has(id),'Low capture route must end before hidden spell '+id);assert.ok(!events.some(event=>event.key==='Achievement24'));}else{assert.ok(secretFrame);for(const id of [131,132,133])assert.ok(spellIds.has(id),'Missing hidden spell '+id);assert.ok(events.some(event=>event.key==='Achievement24'));}if(hiddenBombs)for(const id of [131,133])assert.ok(bombedSpells.has(id),'Actual Bomb not started on hidden spell '+id);assert.deepEqual(snapshot(),sourceSha256);
+const report={scope:'Controlled CPU full-power Standard Extra world with player body/bullet/laser collision disabled. Actual player shots/damage, original complete ECL/STD/MSG and unmodified enemy HP/timers drive all captures, actual opcode14 capture gate and MSG11 completion. High capture count selects special-frame and hidden cards131..133 before achievement24. Low-capture fixture starts with eight Bombs and spends Bombs via ordinary inputs on spells125..129 and releases shot through the final130 timer to end normally without the gate or hidden cards. No capture-counter, boss/completion or progression injection. This is not a natural player clear or full browser/native/GPU/audio/task equivalence.'+(hiddenBombs?' Actual ordinary Bomb inputs on hidden cards131/133 additionally exercise the composed Bomb-sensitive script callbacks.':''),lowCapture,hiddenBombs,bombedSpells:[...bombedSpells],frames:currentFrame,secretFrame,score:String(environment.score),spellIds:[...spellIds],captures:world.enemies.spellState.captures,extraCaptures:world.enemies.spellState.extraCaptures,events,dynamicLoads,assetSha256:Object.fromEntries(assets),sourceSha256,passed:true,completeGame:false,nativeEquivalent:false};writeFileSync('docs/porting/'+(lowCapture?'th06nc-extra-low-capture-world-verified.json':hiddenBombs?'th06nc-extra-hidden-bombs-world-verified.json':'th06nc-extra-capture-gate-world-verified.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:true,frames:currentFrame,secretFrame,spellIds:report.spellIds}));

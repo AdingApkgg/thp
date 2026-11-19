@@ -1,0 +1,13 @@
+{
+  "scope": "Original timeline resume and boss-spawn inhibition are independent globals.\n\nCompare actual 363c2..36ec7 with synthetic timeline markers and message gates.\nThe original shipped Extra timeline has no opcode13 checkpoint; its resume\nrequest remains set while its independent boss flag permits the hidden spawn.\n",
+  "cases": 8,
+  "stateSha256": "93d4a2f42904bc350111269c40dd38667f3455dfa268615f443b6e2895f04808",
+  "sourceSha256": {
+    "shared/th06nc/ecl-timeline.mjs": "c2454ae42511807bba43228d98be83903c45c100b79bfb3030a60b2f129c55be",
+    "shared/th06nc/message-progress.mjs": "58a99f02d006faadfa8925b01b8ab0a043ee19c3fa501ac60c2a9ddba0564d03"
+  },
+  "executableSha256": "07850c8c6e469c0e82c13423e6d0d096a88d693455bdacacbb44c0aa3bcce473",
+  "passed": true,
+  "completeGame": false,
+  "nativeEquivalent": false
+}

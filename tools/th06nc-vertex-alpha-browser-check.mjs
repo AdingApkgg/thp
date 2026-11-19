@@ -1,0 +1,24 @@
+import {spawn} from 'node:child_process';
+import {existsSync,mkdirSync,mkdtempSync,readFileSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+
+const sources=['shared/th06nc/anm-renderer-gl.mjs','shared/th06nc/anm-vertex-alpha.mjs'],sha=b=>createHash('sha256').update(b).digest('hex'),snapshot=()=>Object.fromEntries(sources.map(p=>[p,sha(readFileSync(p))])),sourceSha256=snapshot();
+mkdirSync('tools/tmp',{recursive:true});writeFileSync('tools/tmp/th06nc-vertex-alpha-test.html','<!doctype html><meta charset="utf-8"><title>TH06nc renderer verification</title>');
+const chrome=['C:/Program Files/Google/Chrome/Application/chrome.exe','C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'].find(existsSync),child=spawn(chrome,['--headless=new','--no-sandbox','--enable-unsafe-swiftshader','--no-first-run','--remote-debugging-port=9499','--user-data-dir='+mkdtempSync(resolve('tools/tmp/th06nc-alpha-')),'about:blank'],{stdio:'ignore'}),sleep=ms=>new Promise(r=>setTimeout(r,ms));let socket;
+try{
+ let tab;for(let i=0;i<100;i++){try{tab=(await(await fetch('http://127.0.0.1:9499/json/list')).json()).find(t=>t.type==='page');if(tab)break;}catch{}await sleep(100);}assert.ok(tab);socket=new WebSocket(tab.webSocketDebuggerUrl);await new Promise((ok,bad)=>{socket.onopen=ok;socket.onerror=bad;});let serial=0;const pending=new Map();socket.onmessage=e=>{const m=JSON.parse(e.data);if(m.id){const p=pending.get(m.id);pending.delete(m.id);m.error?p.reject(Error(m.error.message)):p.resolve(m.result);}};const send=(method,params={})=>new Promise((resolve,reject)=>{const id=++serial;pending.set(id,{resolve,reject});socket.send(JSON.stringify({id,method,params}));}),evaluate=async expression=>{const r=await send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true});if(r.exceptionDetails)throw Error(r.exceptionDetails.exception?.description??r.exceptionDetails.text);return r.result.value;};
+ await send('Page.enable');await send('Page.navigate',{url:'http://127.0.0.1:8268/tools/tmp/th06nc-vertex-alpha-test.html'});for(let i=0;i<100;i++){if(await evaluate('location.pathname.endsWith("th06nc-vertex-alpha-test.html")&&document.readyState==="complete"'))break;await sleep(100);}
+ const rows=await evaluate(`(async()=>{
+  const {AnmRendererGl}=await import('/shared/th06nc/anm-renderer-gl.mjs'),{anmVertexAlphas}=await import('/shared/th06nc/anm-vertex-alpha.mjs');
+  const canvas=document.createElement('canvas');canvas.width=canvas.height=32;document.body.append(canvas);const gl=canvas.getContext('webgl2',{preserveDrawingBuffer:true,premultipliedAlpha:false});if(!gl)throw Error('WebGL2 required');
+  const renderer=new AnmRendererGl(gl),texture=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,texture);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,1,1,0,gl.RGBA,gl.UNSIGNED_BYTE,new Uint8Array([255,255,255,255]));gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.NEAREST);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.NEAREST);
+  const quad=new Float32Array([0,0,0,0,32,0,1,0,0,32,0,1,32,32,1,1]),rows=[];
+  for(const baseAlpha of [0,1,127,255])for(const [topAlpha,bottomAlpha]of [[255,255],[255,0],[64,192],[0,255]]){
+   gl.viewport(0,0,32,32);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);renderer.drawQuad(quad,texture,((baseAlpha<<24)|0xffffff)>>>0,{topAlpha,bottomAlpha});const pixels=new Uint8Array(32*32*4);gl.readPixels(0,0,32,32,gl.RGBA,gl.UNSIGNED_BYTE,pixels);rows.push({baseAlpha,topAlpha,bottomAlpha,alpha:anmVertexAlphas(((baseAlpha<<24)|0xffffff)>>>0,topAlpha,bottomAlpha),samples:Array.from({length:32},(_,y)=>[...pixels.subarray((y*32+16)*4,(y*32+16)*4+4)]),glError:gl.getError()});
+  }renderer.dispose();gl.deleteTexture(texture);return rows;
+ })()`);
+ let checked=0,maxError=0;for(const row of rows){assert.equal(row.glError,0);for(let y=0;y<32;y++){const t=1-(y+.5)/32,expected=Math.round(row.alpha[0]*(1-t)+row.alpha[1]*t);for(const actual of row.samples[y].slice(0,3)){const error=Math.abs(actual-expected);maxError=Math.max(maxError,error);assert.ok(error<=1,JSON.stringify({row,y,expected,actual}));}checked++;}}
+ assert.deepEqual(snapshot(),sourceSha256);const report={scope:'Actual WebGL2 shader compile/link and rendered RGB gradient over black for native-rounded top/bottom vertex alpha. 16 quads, 32 sampled rows each; byte interpolation tolerance <=1. Native byte rounding is separately exhaustively checked; this is not native GPU pixel, game-scene or audio equivalence.',quads:rows.length,sampledRows:checked,maxError,sourceSha256,rows,passed:true,completeGame:false,nativeEquivalent:false};writeFileSync('docs/porting/th06nc-vertex-alpha-browser-verified.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:true,quads:rows.length,sampledRows:checked,maxError}));
+}finally{socket?.close();child.kill();}

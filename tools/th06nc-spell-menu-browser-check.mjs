@@ -1,0 +1,37 @@
+import {spawn} from 'node:child_process';
+import {existsSync,mkdirSync,mkdtempSync,readFileSync,writeFileSync,readdirSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+const resultMode=process.argv.includes('--result');
+const sources=[...readdirSync('shared/th06nc').filter(n=>n.endsWith('.mjs')).map(n=>'shared/th06nc/'+n),'runtimes/th06nc/game-assets.mjs','runtimes/th06nc/game-renderer.mjs','tools/th06nc-spell-menu-browser-fixture.mjs'],sha=b=>createHash('sha256').update(b).digest('hex'),snapshot=()=>Object.fromEntries(sources.map(p=>[p,sha(readFileSync(p))])),sourceSha256=snapshot(),home=resolve('artifacts/th06nc/'+(resultMode?'spell-result-browser':'spell-menu-browser'));mkdirSync(home,{recursive:true});mkdirSync('tools/tmp',{recursive:true});
+writeFileSync('tools/tmp/th06nc-spell-menu-test.html','<!doctype html><meta charset="utf-8"><base href="/runtimes/th06nc/"><style>body{margin:0;background:black;overflow:hidden}canvas{display:block;width:100vw;height:auto}</style><canvas width="1926" height="1080"></canvas><script type="module" src="/tools/th06nc-spell-menu-browser-fixture.mjs"></script>');
+const chrome=['C:/Program Files/Google/Chrome/Application/chrome.exe','C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'].find(existsSync),child=spawn(chrome,['--headless=new','--no-sandbox','--enable-unsafe-swiftshader','--no-first-run','--remote-debugging-port=9499','--user-data-dir='+mkdtempSync(resolve('tools/tmp/th06nc-spell-menu-')),'about:blank'],{stdio:'ignore'}),sleep=ms=>new Promise(r=>setTimeout(r,ms));let socket;
+try{
+ let tab;for(let i=0;i<100;i++){try{tab=(await(await fetch('http://127.0.0.1:9499/json/list')).json()).find(t=>t.type==='page');if(tab)break;}catch{}await sleep(100);}assert.ok(tab);socket=new WebSocket(tab.webSocketDebuggerUrl);await new Promise((ok,bad)=>{socket.onopen=ok;socket.onerror=bad;});let serial=0;const pending=new Map();socket.onmessage=e=>{const m=JSON.parse(e.data);if(m.id){const p=pending.get(m.id);pending.delete(m.id);m.error?p.reject(Error(m.error.message)):p.resolve(m.result);}};
+ const send=(method,params={})=>new Promise((resolve,reject)=>{const id=++serial;pending.set(id,{resolve,reject});socket.send(JSON.stringify({id,method,params}));}),evaluate=async expression=>{const r=await send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true});if(r.exceptionDetails)throw Error(r.exceptionDetails.exception?.description??r.exceptionDetails.text);return r.result.value;},picture=async name=>{const r=await send('Page.captureScreenshot',{format:'png'});writeFileSync(resolve(home,name+'.png'),Buffer.from(r.data,'base64'));};
+ await send('Page.enable');await send('Emulation.setDeviceMetricsOverride',{width:1284,height:720,deviceScaleFactor:1,mobile:false});await send('Page.navigate',{url:'http://127.0.0.1:8268/tools/tmp/th06nc-spell-menu-test.html'});
+ for(let i=0;i<900;i++){const status=await evaluate('({ready:!!globalThis.spellMenuFixture,error:globalThis.fixtureError})');if(status.error)throw Error(status.error);if(status.ready)break;await sleep(100);}assert.ok(await evaluate('!!globalThis.spellMenuFixture'));
+ const codes={up:['ArrowUp',38],r:['KeyR',82],down:['ArrowDown',40],right:['ArrowRight',39],left:['ArrowLeft',37],z:['KeyZ',90],x:['KeyX',88]},tap=async(key,frames=30)=>{const [code,n]=codes[key],event={key:code.startsWith('Key')?code.slice(3).toLowerCase():code,code,windowsVirtualKeyCode:n,nativeVirtualKeyCode:n};await send('Input.dispatchKeyEvent',{type:'keyDown',...event});await evaluate('spellMenuFixture.advance(1)');await send('Input.dispatchKeyEvent',{type:'keyUp',...event});const result=await evaluate('spellMenuFixture.advance('+frames+',0)');assert.equal(result.glError,0);if(!resultMode)assert.equal(result.event,null);if(!resultMode||result.active)assert.ok(result.drawCalls>0);return result;},evidence=[];
+ if(resultMode){
+  for(const captured of [false,true])for(const recording of [false,true]){
+   let r=await evaluate('spellMenuFixture.openResult('+captured+','+recording+')');assert.equal(r.state,1);assert.equal(r.selection,captured?0:2);assert.ok(r.drawCalls>0);evidence.push(r);await picture('result-'+(captured?'captured':'failed')+'-recording-'+recording);
+   await tap(captured?'down':'up');r=await tap('z');assert.equal(r.state,1);evidence.push(r);await picture('replay-choice-'+captured+'-'+recording);
+   r=await tap('r',65);assert.equal(r.event?.kind,'restartSpellPractice');assert.equal(r.active,false);assert.equal(r.environment.gameState,12);evidence.push(r);
+   await evaluate('spellMenuFixture.openResult('+captured+','+recording+')');if(!captured)await tap('down');r=await tap('z',65);assert.equal(r.event?.kind,'returnSpellSelection');assert.equal(r.environment.resumeSpell,true);assert.equal(r.environment.gameState,1);evidence.push(r);
+  }
+ }else for(const unlocked of [false,true]){
+  await evaluate('spellMenuFixture.reset('+unlocked+')');await tap('down');await tap('down');let r=await tap('z',110);assert.equal(r.state,28);evidence.push(r);await picture(unlocked?'stages-unlocked':'stages-locked');
+  r=await tap('z');assert.equal(r.state,unlocked?29:28);evidence.push(r);
+  if(unlocked){
+   for(let profile=0;profile<4;profile++){
+    if(profile){r=await tap('right');assert.equal(r.profile,profile);}
+    await picture('cards-profile-'+profile);r=await tap('z');assert.equal(r.state,30);assert.equal(r.profile,profile);evidence.push(r);await picture('difficulty-profile-'+profile);r=await tap('x');assert.equal(r.state,29);
+   }
+   await tap('x');for(let i=0;i<3;i++)await tap('down');await tap('z');for(let i=0;i<12;i++)r=await tap('down',1);assert.ok(r.scroll>0);evidence.push(r);await picture('cards-scrolled');
+   await tap('x');for(let i=0;i<3;i++)await tap('down');await tap('z');r=await tap('z');assert.equal(r.state,30);assert.equal(r.stage,6);assert.equal(r.difficulty,0);evidence.push(r);await picture('extra-difficulty');await tap('x');await tap('x');
+  }
+  r=await tap('x',100);assert.equal(r.state,3);assert.equal(r.selection,3);evidence.push(r);
+ }
+ assert.deepEqual(snapshot(),sourceSha256);const report={scope:resultMode?'Dedicated spell-result browser fixture with actual ANM/DDS/font resources, GameRenderer.pause and physical keys. Capture/failure default choices, available/unavailable recording label, declined replay-result creation recovery, R retry and return-to-spell-selection requests. Black background; replay result allocation is a controlled rejecting service, no actual replay list/save, gameplay handoff or native GPU equivalence.':'Dedicated browser fixture using actual TitleScene/SpellPracticePresentation, GameAssets, FontTextureGl, GameRenderer, original ANM/DDS/font/localization resources and physical CDP key events. Locked/unlocked controlled CATK records; all four profiles, stage/card/difficulty pages, scrolling, Extra and cancellation to main. No application boot/save/gameplay integration or native GPU pixel equivalence claim.',checkpoints:evidence.length,evidence,sourceSha256,passed:true,completeGame:false,nativeEquivalent:false};writeFileSync(resultMode?'docs/porting/th06nc-spell-result-browser-verified.json':'docs/porting/th06nc-spell-menu-browser-verified.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:true,checkpoints:evidence.length,home}));
+}finally{socket?.close();child.kill();}
