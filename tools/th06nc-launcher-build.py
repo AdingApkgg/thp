@@ -34,7 +34,7 @@ for path,name in sources.items():
   text=text.replace("addEventListener('keydown',event=>{if(keys.has", "addEventListener('keydown',event=>{if(globalThis.th06ncHost)return;if(keys.has")
   text=text.replace("addEventListener('keyup',event=>{held.delete", "addEventListener('keyup',event=>{if(globalThis.th06ncHost)return;held.delete")
   text=text.replace("function render(){", "function render(){if(phase==='title'||stage)globalThis.th06ncHost.firstFrame();")
-  text=text.replace("pending=boot().catch(fail);", "pending=boot().catch(reason=>{fail(reason);throw reason;});globalThis.th06ncHost.attach({saves,audio,held,pause:enterPause,player:()=>stage?.player,flush:async()=>{await saves.configurationQueue;await saves.achievements.queue;if(['replay-saving','score-saving'].includes(phase))await pending;},boot:pending});")
+  text=text.replace("pending=boot().catch(fail);", "pending=boot().catch(reason=>{fail(reason);throw reason;});globalThis.th06ncHost.attach({saves,audio,held,pause:enterPause,player:()=>stage?.player,flush:async()=>{if(['replay-saving','score-saving'].includes(phase))await pending;await saves.achievements.commit();await saves.writeConfiguration('game');await saves.writeConfiguration('environment');},boot:pending});")
   text=text.replace('\n}\nfunction report(){','\n globalThis.th06ncHost.draw(stage,phase);\n}\nfunction report(){',1)
  if name=='game-save.mjs':
   text=text.replace('this.db=await new Promise(', 'this.db=globalThis.th06ncHost?await globalThis.th06ncHost.openSaveDatabase():await new Promise(')
