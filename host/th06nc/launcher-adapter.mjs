@@ -1,4 +1,4 @@
-import {createKeyboardInputBridge} from './host-keyboard-input-bridge.mjs';
+import {createKeyboardInputBridge} from './directory-keyboard.mjs';
 import {createDirectInputBridge} from './host-direct-input-bridge.mjs';
 
 const protocol='eagler-touhou/1',game='th06nc',origin=location.origin;
@@ -53,13 +53,14 @@ async function load(path){
  const stream=new Blob([archive.subarray(entry.offset,entry.offset+entry.bytes)]).stream().pipeThrough(new DecompressionStream('gzip'));
  const bytes=new Uint8Array(await new Response(stream).arrayBuffer());if(bytes.length!==entry.decodedBytes)throw Error('Damaged installed asset: '+path);return bytes;
 }
-const keyboard=createKeyboardInputBridge({protocol,game,epoch,origin,ready:()=>launched,dispatch:(event,down)=>down?held.add(event.code):held.delete(event.code),reset:clear});
+const keyboard=createKeyboardInputBridge({protocol,game,epoch,origin,ready:()=>launched,dispatch:(event,down)=>{if(down){held.add(event.code);core?.held.add(event.code);}else{held.delete(event.code);core?.held.delete(event.code);}},reset:clear});
 function clearTouch(){pulses.clear();contacts.clear();targetDelta=[0,0];touch={fireEnabled:false,focusEnabled:false,joystickX:0,joystickY:0};}
-function clear(){held.clear();clearTouch();}
+function clear(){held.clear();core?.held.clear();clearTouch();}
 function input(message){
  if(message.command==='keyboard')return keyboard.submit(message)||false;
- if(message.command==='keyboard-clear'){keyboard.clear();held.clear();return true;}
+ if(message.command==='keyboard-clear'){keyboard.clear();held.clear();core?.held.clear();return true;}
  if(message.command==='touch-cancel'){clearTouch();return true;}
+ if(['touch-controls','direct-touch'].includes(message.command)&&configuration?.options?.touchEnabled!==true){clearTouch();return true;}
  if(message.command==='direct-touch'){
   if(!Number.isInteger(message.id)||!Number.isFinite(message.x)||!Number.isFinite(message.y)||!['down','move','up'].includes(message.type))return false;
   const previous=contacts.get(message.id);
@@ -76,10 +77,11 @@ function input(message){
 }
 globalThis.__eaglerDirectInputBridge=createDirectInputBridge({protocol,game,epoch,origin,ready:()=>launched,dispatch:input});
 globalThis.th06ncHost={load,openSaveDatabase:async()=>{await openDatabase();return saveDatabase();},
+ configureAudio(audio){for(const [name,option]of [['musicOutput','bgmVolume'],['sfxOutput','sfxVolume']]){const gain=audio.context.createGain();gain.gain.value=Math.max(0,Math.min(100,configuration?.options?.[option]??100))/100;gain.connect(audio.context.destination);audio[name]=gain;}},
  attach(value){core=value;},sample(){
   const keys=new Set(held),bits=globalThis.__eaglerGamepadInputBridge.sample(0);
   ['KeyZ','KeyX','ShiftLeft','Escape','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ControlLeft','Enter','KeyZ','KeyR'].forEach((code,i)=>{if(bits>=0&&(bits&(1<<i)))keys.add(code);});
-  if(touch.fireEnabled)keys.add('KeyZ');if(touch.focusEnabled)keys.add('ShiftLeft');
+  if(touch.fireEnabled&&core?.player())keys.add('KeyZ');if(touch.focusEnabled)keys.add('ShiftLeft');
   if(contacts.size>=2&&configuration?.options?.touchFocusMode==='two-finger')keys.add('ShiftLeft');
   if(touch.joystickX>6553)keys.add('ArrowRight');if(touch.joystickX< -6553)keys.add('ArrowLeft');if(touch.joystickY>6553)keys.add('ArrowDown');if(touch.joystickY< -6553)keys.add('ArrowUp');
   const player=core?.player();if(player&&[0,3].includes(player.state)){
@@ -91,6 +93,7 @@ globalThis.th06ncHost={load,openSaveDatabase:async()=>{await openDatabase();retu
  },draw(stage,phase){marker.clearRect(0,0,1926,1080);if(!stage||!['game','paused','game-over','game-result-transition'].includes(phase)||![0,3].includes(stage.player.state))return;const player=stage.player,[x,y]=player.position,scale=1080/480;marker.beginPath();marker.arc((236+x)*scale,(16+y)*scale,Math.max(1.5,player.hitRadius)*scale,0,Math.PI*2);marker.fillStyle='#e92842';marker.fill();marker.lineWidth=scale*.65;marker.strokeStyle='#fff';marker.stroke();},
  firstFrame(){const now=performance.now();maxGap=Math.max(maxGap,now-previousFrame);previousFrame=now;frames++;if(!firstFrame){firstFrame=true;emit('first-frame');emit('runtime-info',{renderer:'WebGL2',architecture:'JavaScript',version:'TH06nc browser'});}},exit(){clear();emit('exit',{code:0});},error(error){emit('error',{message:String(error?.message??error)});},music:()=>configuration?.music??'none'};
 async function files(message){
+ if(message.command==='sync'&&core)await core.flush();
  await openDatabase();const tx=database.transaction('FILE_DATA',['write','remove'].includes(message.command)?'readwrite':'readonly'),store=tx.objectStore('FILE_DATA');let request;
  if(message.command==='list'){request=store.getAll();var paths=store.getAllKeys();}else if(message.command==='read')request=store.get(filePath(message.path));
  else if(message.command==='write'){
