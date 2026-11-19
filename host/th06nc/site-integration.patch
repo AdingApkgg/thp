@@ -236,6 +236,24 @@ index 000000000..ba7d4b522
 +      releaseCatalog: value.releaseCatalog ? validateReleaseCatalog(value.releaseCatalog) : null}));
 +  } catch { /* Storage availability never blocks online or installed launch. */ }
 +}
+diff --git a/launcher/app/session/browser-session.ts b/launcher/app/session/browser-session.ts
+index 60d14377b..4ec33a856 100644
+--- a/launcher/app/session/browser-session.ts
++++ b/launcher/app/session/browser-session.ts
+@@ -308,10 +308,12 @@ export function createBrowserSession({document, window, baseUrl: configuredBaseU
+   primaryTouchPointer.addEventListener('change', syncTouchSettingsOrder);
+   const unsubscribeMetadata = metadata.subscribe(() => {
+     const current = metadata.getSnapshot();
+-    if (current.siteManifest && !current.siteManifestError && current.siteManifest !== appliedHost) {
++    if (current.siteManifest && current.siteManifest !== appliedHost) {
+       const firstHost = appliedHost === null, host = current.siteManifest;
+       const previousProduct = settings.getSnapshot()!.context.productId;
+       let product = previousProduct;
++      if (firstHost && previousProduct === DEFAULT_PRODUCT_ID && rawInitialProduct &&
++          current.products.includes(rawInitialProduct) && !runtime?.getSnapshot().launched) product = rawInitialProduct;
+       if (!Object.hasOwn(host.games, gameIdForProduct(product))) {
+         const fallback = Object.keys(PRODUCT_GAMES).find(game => Object.hasOwn(host.games, game)) as ProductId | undefined;
+         if (!fallback) throw new Error('Site Manifest 没有可用游戏');
 diff --git a/launcher/config/workspace.json b/launcher/config/workspace.json
 index 911eb6205..7e5962208 100644
 --- a/launcher/config/workspace.json
