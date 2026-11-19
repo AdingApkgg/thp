@@ -6,7 +6,7 @@ const args=Object.fromEntries(process.argv.slice(2).map(x=>{const i=x.indexOf('=
 const chrome=['C:/Program Files/Google/Chrome/Application/chrome.exe','C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'].find(existsSync);
 const port=Number(args.port??9507),dir=resolve(args.output??'artifacts/th06nc/launcher-browser');mkdirSync(dir,{recursive:true});
 const profile=args.profile??mkdtempSync(resolve('tools/tmp/th06nc-launcher-chrome-'));writeFileSync(resolve(dir,'profile.txt'),profile);
-const child=spawn(chrome,['--headless=new','--no-sandbox','--enable-unsafe-swiftshader','--autoplay-policy=no-user-gesture-required','--no-first-run',`--remote-debugging-port=${port}`,'--user-data-dir='+profile,'about:blank'],{stdio:'ignore'});
+const child=spawn(chrome,['--headless=new','--mute-audio','--no-sandbox','--enable-unsafe-swiftshader','--autoplay-policy=no-user-gesture-required','--no-first-run',`--remote-debugging-port=${port}`,'--user-data-dir='+profile,'about:blank'],{stdio:'ignore'});
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));let socket;
 try{
  let tab;for(let n=0;n<100;n++){try{tab=(await(await fetch(`http://127.0.0.1:${port}/json/list`)).json()).find(t=>t.type==='page');if(tab)break;}catch{}await sleep(100);}
