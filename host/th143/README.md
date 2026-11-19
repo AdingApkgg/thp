@@ -1,5 +1,37 @@
-# TH143 自托管发布包
+# TH143 production runtime
 
-入口：https://wth.saop.cc/th143/ 。源码与独立构建说明见 ../../runtimes/th143/README.md。
+TH143 V154 uses the standard Launcher product, managed Package Store, immutable
+Runtime generation and IDBFS save contracts. The native WebAssembly core is
+byte-identical to the accepted behavioral build.
 
-runtime-manifest.json 记录验收生产包882个文件的大小与SHA256。资源独立自托管；Git不包含原版资源、Wasm二进制、私有存档或开发测试页面。部署时先在新目录核对全部文件，将完整th143目录原子移动到站点；已有目录应保留备份。现有其他游戏和服务配置保持。正式部署结果在docs/porting/th143-production-release-nov20.json记录。
+The standard entry is `https://wth.saop.cc/?game=th143`.
+
+`launcher-adapter.mjs` owns the navigation epoch, input mapping, resource
+ownership, lifecycle and file protocol. `launcher-file-store.mjs` implements the
+accepted transactional file API on `/savesth143`, database version 21,
+`FILE_DATA`. Score, configuration, replays and scene previews use that store.
+Launcher save transfer includes `scoreth143.dat` and `th143.cfg`; scene preview
+files remain in local IDBFS. File mutations require a closed game or a file-only
+Runtime, preserving native in-memory replay and save ownership.
+
+The managed content package contains the verified build plan, 802 resource
+blobs and Noto Sans JP. The original PCM soundtrack is embedded in DATA and uses
+the Launcher's existing embedded soundtrack policy. BGM and sound-effect volume
+controls scale the corresponding ordered mixer inputs. The font license is
+published as `font-license.json` beside the Runtime.
+
+Build with `tools/th143-launcher-build.py`, using the accepted static content as
+`--accepted` and a Launcher source checkout as `--site-source`. Register the
+product with `tools/th143-register-launcher.py`. That registration uses the
+existing `retail-memory` directory adapter contract; `package-server.mjs`
+publishes the managed package and immutable generation, and
+`verify-server-build.mjs` validates the resulting complete site.
+
+`tools/th143-launcher-contract-check.mjs` checks the shared save namespace,
+batch snapshots, transaction aborts, replay operations, path boundaries, epoch
+isolation and touch input. It uses `fake-indexeddb` from the Launcher test
+dependencies.
+
+Native source publication: `runtimes/th143/production/source-manifest.json`.
+Game content, fonts, compiled WASM and personal saves are deployed separately
+from Git source publication.

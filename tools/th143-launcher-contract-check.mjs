@@ -1,0 +1,33 @@
+import assert from 'node:assert/strict';
+import {readFile,writeFile} from 'node:fs/promises';
+import {pathToFileURL} from 'node:url';
+import vm from 'node:vm';
+import {createRequire} from 'node:module';
+const [runtime,launcher,report]=process.argv.slice(2),require=createRequire(pathToFileURL(launcher+'/package.json'));
+const {indexedDB}=require('fake-indexeddb');globalThis.indexedDB=indexedDB;
+const {BinaryGameFileStoreV2,filePath}=await import(pathToFileURL(runtime+'/BinaryGameFileStoreV2.mjs'));
+const store=await new BinaryGameFileStoreV2().open();
+for(const path of ['../scoreth143.dat','/savesth143/replay/../../bad','replay/x.rpy','savedata/sc00_01.dat','th143.cfg\0'])assert.throws(()=>filePath(path));
+const cfg=Uint8Array.of(1,2,3),score=Uint8Array.of(4,5),pending=store.write(new Map([['th143.cfg',cfg],['scoreth143.dat',score]]));cfg.fill(9);score.fill(9);await pending;
+assert.deepEqual([...(await store.readAll()).get('th143.cfg').bytes],[1,2,3]);assert.deepEqual([...(await store.readAll()).get('scoreth143.dat').bytes],[4,5]);
+const db=store.database;store.database={transaction(...args){const tx=db.transaction(...args),objectStore=tx.objectStore.bind(tx);tx.objectStore=(...names)=>{const s=objectStore(...names),put=s.put.bind(s);let count=0;s.put=(...v)=>{if(++count===2)throw Error('controlled enqueue fault');return put(...v);};return s;};return tx;}};
+await assert.rejects(store.write(new Map([['th143.cfg',Uint8Array.of(7)],['scoreth143.dat',Uint8Array.of(8)]])),/controlled enqueue fault/);
+store.database=db;assert.deepEqual([...(await store.readAll()).get('th143.cfg').bytes],[1,2,3]);
+await store.write(new Map([['replay/th143_01.rpy',Uint8Array.of(10,11)]]));store.close();await store.open();assert.deepEqual([...(await store.readAll()).get('replay/th143_01.rpy').bytes],[10,11]);await store.remove('replay/th143_01.rpy');assert.equal((await store.readAll()).has('replay/th143_01.rpy'),false);store.close();
+const messages=[],listeners=new Map(),origin='https://wth.saop.cc',parent={postMessage:m=>messages.push(m)};
+const context=vm.createContext({indexedDB,crypto,console,URL,URLSearchParams,TextDecoder,TextEncoder,ArrayBuffer,Uint8Array,DataView,Blob,Response,DecompressionStream,performance,location:{origin,search:'?runtimeEpoch=17&gameGeneration=test'},parent,window:{},setInterval:()=>0,addEventListener:(name,fn)=>listeners.set(name,fn)});
+const modules=new Map();async function module(name){if(modules.has(name))return modules.get(name);const m=new vm.SourceTextModule(await readFile(runtime+'/'+name,'utf8'),{context,identifier:name,initializeImportMeta:meta=>meta.url=pathToFileURL(runtime+'/'+name).href});modules.set(name,m);await m.link(spec=>module(spec.slice(2)));return m;}
+await (await module('launcher-adapter.mjs')).evaluate();assert.equal(messages.at(-1).event,'ready');assert.equal(messages.at(-1).saveRoot,'/savesth143');
+const send=async(m,extra={})=>listeners.get('message')({source:parent,origin,data:{protocol:'eagler-touhou/1',game:'th143',epoch:17,request:'test',...m},...extra});
+const before=messages.length;await send({command:'list'},{origin:'https://evil.invalid'});await send({command:'list',epoch:18});await send({command:'list'},{source:{}});assert.equal(messages.length,before);
+await send({command:'list'});assert.equal(messages.at(-1).ok,true);assert(messages.at(-1).files.some(x=>x.path==='th143.cfg'));
+await send({command:'write',path:'replay/th143_udABCD.rpy',bytes:[20,21]});assert.equal(messages.at(-1).ok,true);await send({command:'read',path:'replay/th143_udABCD.rpy'});assert.deepEqual(Array.from(messages.at(-1).bytes),[20,21]);await send({command:'remove',path:'replay/th143_udABCD.rpy'});await send({command:'read',path:'replay/th143_udABCD.rpy'});assert.equal(messages.at(-1).errno,44);
+await send({command:'write',path:'../escape',bytes:[1]});assert.equal(messages.at(-1).ok,false);await send({command:'write',path:'th143.cfg',bytes:[256]});assert.equal(messages.at(-1).ok,false);
+// Exercise input before a native core exists; no gameplay state is synthesized.
+await send({command:'configure',music:'ogg',options:{touchEnabled:false}});await send({command:'touch-controls',joystickX:0,joystickY:0,touchSensitivity:150,bombSerial:0,escapeSerial:0,fireEnabled:true});assert.equal(context.th143Host.sample().size,0);
+await send({command:'configure',music:'ogg',options:{touchEnabled:true,touchSensitivity:150}});
+await send({command:'touch-controls',joystickX:5000,joystickY:0,touchSensitivity:150,bombSerial:1,escapeSerial:0,fireEnabled:true});let keys=context.th143Host.sample();assert(keys.has('KeyX'));assert(keys.has('KeyZ'));assert(!keys.has('ArrowRight'));assert(!context.th143Host.sample().has('KeyX'));
+await send({command:'touch-controls',joystickX:20000,joystickY:-20000,touchSensitivity:150,bombSerial:1,escapeSerial:0});keys=context.th143Host.sample();assert(keys.has('ArrowRight'));assert(keys.has('ArrowUp'));
+await send({command:'touch-cancel'});assert.equal(context.th143Host.sample().size,0);
+await send({command:'direct-touch',type:'down',id:1,x:.2,y:.2});await send({command:'direct-touch',type:'move',id:1,x:.3,y:.2});assert(context.th143Host.sample().has('ArrowRight'));await send({command:'direct-touch',type:'up',id:1,x:.3,y:.2});assert.equal(context.th143Host.sample().size,0);
+const result={passed:true,checks:['IDBFS namespace and reopen','batch snapshot before await','atomic abort on second enqueue fault','replay import/read/remove','path traversal and invalid byte rejection','parent origin/source/epoch isolation','touch dead zone and pulse consumption','direct touch translation and cancellation']};await writeFile(report,JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));
