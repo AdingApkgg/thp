@@ -1,0 +1,10 @@
+--- a/common/contracts/product-catalog.mjs
++++ b/common/contracts/product-catalog.mjs
+@@ -663,6 +663,7 @@
+             configFiles: Object.freeze(["th14.cfg"]),
+         }),
+         runtime: "./runtime/th14/th14.html",
++        multiplayerRuntime: "./runtime/th14/multiplayer/th14.html",
+         musicCapabilities: Object.freeze({midi: false}),
+         musicRuntime: Object.freeze({localOggConfigureMode: "runtime-selection"}),
+         touchFire: TOGGLE_TOUCH_FIRE,
