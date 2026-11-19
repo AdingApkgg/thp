@@ -13,7 +13,7 @@ sources.update({p:'nc-'+p.name for p in (ROOT/'shared/th06nc').glob('*.mjs')if n
 sources[ROOT/'shared/vendor/fzstd/index.mjs']='fzstd.mjs'
 sources[ROOT/'host/th06nc/launcher-adapter.mjs']='launcher-adapter.mjs'
 for name in ['keyboard-input-bridge','direct-input-bridge']:
- sources[args.site_source/'common/browser'/f'{name}.mjs']='host-'+name+'.mjs'
+ sources[args.site_source/'common/browser'/f'{name}.mjs']='directory-keyboard.mjs'if name=='keyboard-input-bridge'else'host-'+name+'.mjs'
 def rewrite(path,text):
  def replace(match):
   spec=match[2]
@@ -34,7 +34,7 @@ for path,name in sources.items():
   text=text.replace("addEventListener('keydown',event=>{if(keys.has", "addEventListener('keydown',event=>{if(globalThis.th06ncHost)return;if(keys.has")
   text=text.replace("addEventListener('keyup',event=>{held.delete", "addEventListener('keyup',event=>{if(globalThis.th06ncHost)return;held.delete")
   text=text.replace("function render(){", "function render(){if(phase==='title'||stage)globalThis.th06ncHost.firstFrame();")
-  text=text.replace("pending=boot().catch(fail);", "pending=boot().catch(reason=>{fail(reason);throw reason;});globalThis.th06ncHost.attach({saves,audio,pause:enterPause,player:()=>stage?.player,boot:pending});")
+  text=text.replace("pending=boot().catch(fail);", "pending=boot().catch(reason=>{fail(reason);throw reason;});globalThis.th06ncHost.attach({saves,audio,held,pause:enterPause,player:()=>stage?.player,flush:async()=>{await saves.configurationQueue;await saves.achievements.queue;if(['replay-saving','score-saving'].includes(phase))await pending;},boot:pending});")
   text=text.replace('\n}\nfunction report(){','\n globalThis.th06ncHost.draw(stage,phase);\n}\nfunction report(){',1)
  if name=='game-save.mjs':
   text=text.replace('this.db=await new Promise(', 'this.db=globalThis.th06ncHost?await globalThis.th06ncHost.openSaveDatabase():await new Promise(')
@@ -42,6 +42,8 @@ for path,name in sources.items():
  if name=='game-assets.mjs':
   text=text.replace('async fetchBytes(path){', 'async fetchBytes(path){if(globalThis.th06ncHost)return globalThis.th06ncHost.load(path);')
  if name=='game-audio.mjs':
+  text=text.replace('this.context=context;','this.context=context;globalThis.th06ncHost.configureAudio(this);',1)
+  text=text.replace('gain.connect(this.context.destination)','gain.connect(this.musicOutput)',1).replace('gain.connect(this.context.destination)','gain.connect(this.sfxOutput)')
   text=text.replace('async prepareMusic(files,load){', "async prepareMusic(files,load){if(globalThis.th06ncHost.music()==='none')return;")
   text=text.replace('playMusic(file,state){', "playMusic(file,state){if(globalThis.th06ncHost.music()==='none'){Object.assign(state,{handle:-1,playing:false});return -1;}")
  (out/name).write_text(rewrite(path,text),encoding='utf-8',newline='\n')
