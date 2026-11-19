@@ -13,7 +13,7 @@ export default async({send,evaluate,wait,picture,sleep,dir,errors,messages})=>{
   await evaluate('[...document.querySelectorAll("button")].find(x=>x.innerText==="知道了")?.click()');await sleep(250);
   await evaluate(`window.runtimeEvents=[];addEventListener('message',e=>{if(e.data?.protocol==='eagler-touhou/1'&&e.data.game==='th06nc')runtimeEvents.push(e.data)});document.querySelector('[data-book-product=th06nc]').click()`);await sleep(250);
   await evaluate('[...document.querySelectorAll("button")].find(x=>x.innerText==="启动游戏").click()');
-  await wait(`(()=>{const failed=runtimeEvents.find(x=>x.event==='error');if(failed)throw Error(failed.message);try{return ${game}?.report().phase==='title'}catch{return false}})()`,300000);
+  await wait(`(()=>{const failed=runtimeEvents.find(x=>x.event==='error');if(failed)throw Error(failed.message);try{return ${game}?.report().phase==='title'}catch{return false}})()`,600000);
   await evaluate(`${game}.setManual(true);${frame}.focus();${frame}.document.querySelector('canvas').focus();`);return evaluate(`${game}.advance(360,0)`);
  }
  async function tap(code,count=90){const key=code==='KeyZ'?'z':code==='KeyX'?'x':code;

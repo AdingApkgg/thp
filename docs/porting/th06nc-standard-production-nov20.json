@@ -1,0 +1,144 @@
+{
+  "schema": "th06nc/standard-production/1",
+  "entry": "https://wth.saop.cc/",
+  "repository": "https://github.com/AdingApkgg/thp",
+  "releaseId": "sha256-6bde17ccc8b1d088174c7d4e5c2473d83325bff7f90090fe055c62ca4c5e83cb",
+  "previousReleaseId": "sha256-ce02cfd2efffaca485e1ded38e852c56890167f6a6f9999ea17eb962f90fa31c",
+  "activatedAtUnixSeconds": 1795129678.8452997,
+  "siteSourceCommit": "543f1af2cf3546a1eba419d515bde2ec1029f7f1",
+  "sitePatchHeadRevision": "54513ae34d2f60374c7dd95ec4c6cd1b5b32bcec",
+  "sitePatchBase": "4ad1867ed6e825bb2f91b71ad73536ec106c608c",
+  "sitePatchSha256": "50038af43bc88184d6f6fc47b9f306ca249b1f87daf39787704a0c8a19a9eab2",
+  "engineSourceCommit": "f9bf3a1fe9b5ae9699c672645f839d7097718ca0",
+  "products": [
+    "th06nc",
+    "th14",
+    "th143"
+  ],
+  "retainedProductEntriesExact": [
+    "th06nc",
+    "th14",
+    "th143"
+  ],
+  "retainedLegacyTH143Files": 883,
+  "retiredStandalonePrefixes": [
+    "th06nc/",
+    "shared/th06nc/"
+  ],
+  "canonicalBuildVerifiedFiles": 3331,
+  "publicDeployment": {
+    "valid": true,
+    "method": "Composite: completed full inventory/publication verification plus targeted rerun of the sole failed HTML-reference check. No game bytes or deployment changed between these runs.",
+    "base": "https://wth.saop.cc/",
+    "releaseId": "sha256-6bde17ccc8b1d088174c7d4e5c2473d83325bff7f90090fe055c62ca4c5e83cb",
+    "files": 3331,
+    "bytes": 4890755863,
+    "deploymentSha256": "68ee557f6eb5250af250ac535425967b828b3207060b0e19bb8604152bbc4140",
+    "fullRun": {
+      "checkerExitCode": 1,
+      "reportedFailures": [
+        "index.html: reference missing from manifest: ./",
+        "index.html: reference missing from manifest: ./",
+        "index.html: reference missing from manifest: ./",
+        "index.html: reference missing from manifest: ./",
+        "index.html: reference missing from manifest: ./",
+        "about.html: reference missing from manifest: /./",
+        "about.html: reference missing from manifest: /./"
+      ],
+      "inventoryBytesAndSha256Matched": true,
+      "otherPublicationContractsPassed": true,
+      "stderrSha256": "4b0fe187e5ee142cfa859ca90087c212b85a2f9571019f2aafe98fd07eb221ef",
+      "checkerBundleSha256": "db921b68024d8b265f9cb37e06fd7e931a8269d07b39d148cec23a2ed0b85db9"
+    },
+    "targetedRerun": {
+      "valid": true,
+      "scope": "Complete index/about DOM references and directory routes; targeted rerun after full inventory verification",
+      "referencesChecked": 159,
+      "uniqueRequests": 95,
+      "failures": []
+    },
+    "referenceEvidenceSha256": "c65722514211dd177bb2ab5b5f44d1f2380126a030b610a1ceb5b9f73c0e0ace",
+    "referenceVerifierBundleSha256": "3f21a31d7ba0182ccbdb56c498a094d8494f7c1c712ef44d4ecd25036b49b3a7",
+    "checkerFixSourceCommit": "54513ae34d2f60374c7dd95ec4c6cd1b5b32bcec"
+  },
+  "publicAcceptance": {
+    "passed": true,
+    "runtime": "https://wth.saop.cc/runtime/th06nc/6a726c693b597a3dd32a8550644e968104f60592f30fcc68eb39b4d8ddc521c9/th06nc.html?hosted=1&managedData=1&gameGeneration=gen-mwo5zb7y-c93026977323&runtimeVariant=normal&runtimeEpoch=1",
+    "checkpoints": [
+      "root library, standard installation, ready/configure/launch/first-frame and native Options save",
+      "second native-save enqueue fault aborts the entire IDBFS transaction",
+      "native selection, first-stage movement and actual shots through Launcher keyboard mapping",
+      "file commands, genuine replay byte roundtrip, current-run statistics retained, invalid path/bytes and stale epoch rejection",
+      "native pause, return to title, Quit and successful exit with durable configuration",
+      "offline root reload, installed Runtime/DATA/music launch, same IDBFS configuration and no private runtime installation database"
+    ],
+    "gameplay": {
+      "stage": 1,
+      "frame": 215,
+      "position": [
+        196,
+        384,
+        0.49000000953674316
+      ],
+      "activeShots": 3,
+      "score": "0",
+      "glError": 0
+    },
+    "transactionRollback": true,
+    "replay": {
+      "bytes": 154724,
+      "sha256": "b57ac32c4b79e4fb44399fca781ff957b14cb8335943189340fb49252d9b5b5f"
+    },
+    "exit": {
+      "protocol": "eagler-touhou/1",
+      "game": "th06nc",
+      "epoch": 1,
+      "event": "exit",
+      "code": 0,
+      "status": "success"
+    },
+    "offline": true,
+    "savedStock": 1,
+    "errors": []
+  },
+  "warmCacheRoot": {
+    "passed": true,
+    "products": [
+      "th14",
+      "th143",
+      "th06nc"
+    ],
+    "expectedEntry": "assets/root-MYyqnu_t.js",
+    "failedAssets": []
+  },
+  "deepLinks": {
+    "passed": true,
+    "deepLinks": [
+      "th143",
+      "th14",
+      "th06nc"
+    ]
+  },
+  "metadataAndHtmlReferenceTests": 15,
+  "uiTypecheck": true,
+  "deployedVerifierBundleSha256": "db921b68024d8b265f9cb37e06fd7e931a8269d07b39d148cec23a2ed0b85db9",
+  "service": "ActiveState=active\nDropInPaths=/home/i/.config/systemd/user/th14-site.service.d/standard-products.conf\nMainPID=3541689\n",
+  "nativeEquivalent": false,
+  "scope": "standard Launcher integration; previous browser functional acceptance remains separately scoped",
+  "privateGameAssetsInGit": false,
+  "originalRetainedReleaseId": "sha256-847bd0b601c2ca0e55454b038455ad572877c990cf2bdc1cb111b3d9f11be074",
+  "initialVerification": {
+    "status": "failed; retained for audit",
+    "reportedFailures": [
+      "th06: invalid runtime entry",
+      "th07: invalid runtime entry",
+      "index.html: reference missing from manifest: assets/pwa/apple-touch-icon.png",
+      "index.html: reference missing from manifest: source;",
+      "index.html: reference missing from manifest: assets/th17-card.webp",
+      "about.html: reference missing from manifest: base-ui-disable-scrollbar",
+      "about.html: reference missing from manifest: /docs/multiplayer?lang=zh-CN"
+    ],
+    "logSha256": "2657b1c871b883a3083559a7dd0add121358ea1868d84839d1726326fb31af58",
+    "resolution": "Restrict preload requirements to published products, parse actual DOM references, resolve declared directory documents, defer host artwork until metadata, and prepare global branding through the standard artwork tool."
+  }
+}

@@ -1,6 +1,6 @@
 # thp — 东方原作 Web 移植工作区
 
-2026-11-20：TH06nc 浏览器功能版完成普通、Challenge、练习、符卡练习、Extra、菜单、输入音画、存档与录像的对应验收，累计 2,159 个完整回放检查点。当前为浏览器功能范围，原版逐像素及系统设备等价性另列限制。[运行入口](https://wth.saop.cc/th06nc/) · [范围与验收](docs/porting/TH06NC_BROWSER_RELEASE_NOV20.md)。
+2026-11-20：TH06nc 浏览器功能版完成普通、Challenge、练习、符卡练习、Extra、菜单、输入音画、存档与录像的对应验收，累计 2,159 个完整回放检查点。当前为浏览器功能范围，原版逐像素及系统设备等价性另列限制。[首页标准安装入口](https://wth.saop.cc/) · [范围与验收](docs/porting/TH06NC_BROWSER_RELEASE_NOV20.md)。
 
 2026-11-11：TH14 已对齐首关七项关卡文件读取顺序，七关资源回归通过。灵梦 B Normal 首帧仍有 24 次脚本 RNG 差异，整作继续施工。[验证与构建说明](docs/porting/TH14_STAGE_WORKER_ORDER_NOV11.md)
 
