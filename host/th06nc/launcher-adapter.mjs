@@ -25,10 +25,10 @@ function configBytes(key,value){return key==='achievements'?new TextEncoder().en
 function configValue(key,entry){if(!entry)return undefined;const bytes=entry.contents;return key==='achievements'?JSON.parse(new TextDecoder().decode(bytes)):key==='lastName'?new TextDecoder().decode(bytes):bytes.slice().buffer;}
 // The original save codec uses this small store interface. Its only backing
 // store is the same IDBFS FILE_DATA database read by Launcher file/cloud tools.
-function saveDatabase(){return {transaction(names,mode){const tx=database.transaction('FILE_DATA',mode),store=tx.objectStore('FILE_DATA');return new Proxy(tx,{get(target,key){if(key==='objectStore')return name=>name==='config'?{
+function saveDatabase(){return {transaction(names,mode){const tx=database.transaction('FILE_DATA',mode),store=tx.objectStore('FILE_DATA'),enqueue=operation=>{try{return operation();}catch(error){try{tx.abort();}catch{}throw error;}};return new Proxy(tx,{get(target,key){if(key==='objectStore')return name=>name==='config'?{
  get:key=>requestView(store.get(filePath(configFiles[key])),entry=>configValue(key,entry)),
- put:(value,key)=>store.put({mode:33188,timestamp:new Date(),contents:configBytes(key,value)},filePath(configFiles[key]))
- }:{getAll:()=>{const keys=store.getAllKeys();return requestView(store.getAll(),entries=>entries.map((entry,i)=>({...entry,path:keys.result[i].slice(root.length+1)})).filter(entry=>entry.path.startsWith('replay/')).map(entry=>({path:entry.path,data:entry.contents.slice().buffer})));},put:file=>store.put({mode:33188,timestamp:new Date(),contents:new Uint8Array(file.data),path:file.path},filePath(file.path))};const value=Reflect.get(target,key,target);return typeof value==='function'?value.bind(target):value;},set(target,key,value){return Reflect.set(target,key,value,target);}});}};}
+ put:(value,key)=>enqueue(()=>store.put({mode:33188,timestamp:new Date(),contents:configBytes(key,value)},filePath(configFiles[key])))
+ }:{getAll:()=>{const keys=store.getAllKeys();return requestView(store.getAll(),entries=>entries.map((entry,i)=>({...entry,path:keys.result[i].slice(root.length+1)})).filter(entry=>entry.path.startsWith('replay/')).map(entry=>({path:entry.path,data:entry.contents.slice().buffer})));},put:file=>enqueue(()=>store.put({mode:33188,timestamp:new Date(),contents:new Uint8Array(file.data),path:file.path},filePath(file.path)))};const value=Reflect.get(target,key,target);return typeof value==='function'?value.bind(target):value;},set(target,key,value){return Reflect.set(target,key,value,target);}});}};}
 async function loadResource(resource){
  if(!resource||typeof resource.path!=='string'||typeof resource.url!=='string')throw Error('Invalid managed resource');
  const url=new URL(resource.url,location.href);if(url.origin!==origin)throw Error('Foreign resource');
@@ -91,19 +91,23 @@ globalThis.th06ncHost={load,openSaveDatabase:async()=>{await openDatabase();retu
   }
   for(const code of pulses)keys.add(code);pulses.clear();return keys;
  },draw(stage,phase){marker.clearRect(0,0,1926,1080);if(!stage||!['game','paused','game-over','game-result-transition'].includes(phase)||![0,3].includes(stage.player.state))return;const player=stage.player,[x,y]=player.position,scale=1080/480;marker.beginPath();marker.arc((236+x)*scale,(16+y)*scale,Math.max(1.5,player.hitRadius)*scale,0,Math.PI*2);marker.fillStyle='#e92842';marker.fill();marker.lineWidth=scale*.65;marker.strokeStyle='#fff';marker.stroke();},
- firstFrame(){const now=performance.now();maxGap=Math.max(maxGap,now-previousFrame);previousFrame=now;frames++;if(!firstFrame){firstFrame=true;emit('first-frame');emit('runtime-info',{renderer:'WebGL2',architecture:'JavaScript',version:'TH06nc browser'});}},exit(){clear();emit('exit',{code:0});},error(error){emit('error',{message:String(error?.message??error)});},music:()=>configuration?.music??'none'};
+ firstFrame(){const now=performance.now();maxGap=Math.max(maxGap,now-previousFrame);previousFrame=now;frames++;if(!firstFrame){firstFrame=true;emit('first-frame');emit('runtime-info',{renderer:'WebGL2',architecture:'JavaScript',version:'TH06nc browser'});}},exit(){clear();emit('exit',{code:0,status:'success'});},error(error){emit('error',{message:String(error?.message??error)});},music:()=>configuration?.music??'none'};
 async function files(message){
- if(message.command==='sync'&&core)await core.flush();
+ const path=['read','write','remove'].includes(message.command)?filePath(message.path):null;let bytes;
+ if(message.command==='write'){
+  const input=message.bytes;if(!Array.isArray(input)||input.length>4*1024*1024)throw Error('Invalid file bytes');
+  for(let i=0;i<input.length;i++)if(!Object.hasOwn(input,i)||!Number.isInteger(input[i])||input[i]<0||input[i]>255)throw Error('Invalid file bytes');bytes=Uint8Array.from(input);
+ }
+ if(['sync','write','remove'].includes(message.command)&&core)await core.flush();
  await openDatabase();const tx=database.transaction('FILE_DATA',['write','remove'].includes(message.command)?'readwrite':'readonly'),store=tx.objectStore('FILE_DATA');let request;
- if(message.command==='list'){request=store.getAll();var paths=store.getAllKeys();}else if(message.command==='read')request=store.get(filePath(message.path));
+ if(message.command==='list'){request=store.getAll();var paths=store.getAllKeys();}else if(message.command==='read')request=store.get(path);
  else if(message.command==='write'){
-  if(!Array.isArray(message.bytes)||message.bytes.length>4*1024*1024||message.bytes.some(x=>!Number.isInteger(x)||x<0||x>255))throw Error('Invalid file bytes');
-  const path=filePath(message.path);request=store.put({mode:33188,timestamp:new Date(),contents:Uint8Array.from(message.bytes),...(path.includes('/replay/')?{path:path.slice(root.length+1)}:{})},path);
- }else if(message.command==='remove')request=store.delete(filePath(message.path));
+  request=store.put({mode:33188,timestamp:new Date(),contents:bytes,...(path.includes('/replay/')?{path:path.slice(root.length+1)}:{})},path);
+ }else if(message.command==='remove')request=store.delete(path);
  await complete(tx);
  if(message.command==='list')return {files:request.result.map((entry,i)=>({path:paths.result[i].slice(root.length+1),size:entry.contents?.length??0,modifiedAt:Number(entry.timestamp),mode:entry.mode})).filter(entry=>(entry.mode&0xf000)===0x8000)};
  if(message.command==='read'){if(!request.result)throw Object.assign(Error('File not found'),{errno:44});return {bytes:[...request.result.contents]};}
- if(core&&['write','remove'].includes(message.command)){const fresh=new core.saves.constructor();await fresh.open();const rng=core.saves.saveRng;Object.assign(core.saves,fresh);core.saves.saveRng=rng;}return {};
+ if(core&&['write','remove'].includes(message.command)){const fresh=new core.saves.constructor();await fresh.open();if(filePath(message.path).startsWith(root+'/replay/')){core.saves.replays=fresh.replays;core.saves.invalid=[...core.saves.invalid.filter(entry=>!entry.path.startsWith('replay/')),...fresh.invalid.filter(entry=>entry.path.startsWith('replay/'))];}else{const rng=core.saves.saveRng;Object.assign(core.saves,fresh);core.saves.saveRng=rng;}}return {};
 }
 addEventListener('message',async event=>{
  const message=event.data;if(event.source!==parent||event.origin!==origin||!message||message.protocol!==protocol||message.game!==game||message.epoch!==epoch)return;
