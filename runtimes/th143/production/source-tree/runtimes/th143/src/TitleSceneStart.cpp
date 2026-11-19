@@ -1,0 +1,18 @@
+#include "TitleSceneStart.hpp"
+namespace th143 {
+namespace {
+void gear(TitleSceneStartBindings& b,u32 i,u32 value){b.equipment[i]=b.saved_equipment[i]=value;b.game_state.put(0x20+i*4,value);b.game_state.put(0x3c+i*4,value);}
+bool stop_preview(TitleSceneStartBindings& b){auto title=b.title.view();title.put(0xe000,title.get(0xe000)|0x10u);auto w=title.sub(0xe0f8);if(w.get(4)){w.put(12,1);w.put(16,0);u32 result,budget=100000;if(!b.worker.wait_worker(w.get(4),200,result))return false;while(result==0x102){if(!budget--)return false;w.put(12,1);w.put(16,0);if(!b.worker.sleep_worker(1)||!b.worker.wait_worker(w.get(4),200,result))return false;}if(!b.worker.close_worker(w.get(4)))return false;w.put(4,0);w.put(24,0);}auto data=title.sub(0xe330);while(data.get(0x200)){u32 token=0;if(signed_word(data.get(0x200))>0){token=data.get(0);data.put(0x200,data.get(0x200)-1);std::memmove(data.data,data.data+4,127*4);}if(!b.world.release_enemy_storage(token,true))return false;}return true;}
+}
+bool start_selected_title_scene(TitleSceneStartBindings& b,u32& result){
+    auto title=b.title.view(),save=b.save.view();const u32 day=title.get(0x1d8),selection=title.get(0x28);if(!b.title.global_owner||!b.application.data||!b.audio.data||!b.game_state.data||title.get(0x1c)!=11||title.get(0x24)!=4||signed_word(title.get(0x2b8))<38||day>=10||!selection||selection>10||title.get(0xed50)||title.get(0xe530)>128||title.get(0xe940)||title.get(0xef58)||(title.get(0xe000)&1)||(!b.responses&&(title.get(0xe000)&0x20)&&!title.get(0xe328)))return false;
+    if(!select_title_state(b.title,2)||!stop_preview(b))return false;auto game=b.game_state;game.put(0xc0,game.get(0xc0)&~0xc00u);bool special=!day&&selection==1&&!b.saved_equipment[0];
+    if(day==2&&selection==1){if(!save.data[0xf088]){gear(b,0,4);special=true;}else if(b.saved_equipment[0]==4)special=true;}
+    if(day==4&&selection==1){if(!save.data[0xf089]){gear(b,0,6);special=true;}else if(b.saved_equipment[0]==6)special=true;}
+    if(day==5&&selection==1){if(!save.data[0xf08a]){save.data[0xefad]=1;gear(b,1,4);special=true;}else if(b.saved_equipment[1]==4)special=true;}
+    if(day==7&&selection==1)special=true;if(special)game.put(0xc0,game.get(0xc0)|0x400u);
+    float rate;if(!b.world.timer_rate(b.world.global_rate_token(),rate))return false;float duration=2.f;if(rate>0.f&&rate<=1.f)duration/=rate;const u32 parameter=duration>=-2147483648.f&&duration<2147483648.f?u32(i32(duration)):0x80000000;MusicCommandQueue queue;std::memcpy(queue.data.data(),b.audio.data+0x24f8,queue.data.size());if(!queue.enqueue(5,parameter,""))return false;std::memcpy(b.audio.data+0x24f8,queue.data.data(),queue.data.size());
+    gear(b,2,day);gear(b,3,selection-1);static constexpr u32 starts[]={1,7,13,20,27,35,43,51,58,66};const u32 scene=starts[day]+selection-1;game.put(0,0);game.put(4,0);game.put(12,0);game.put(0xac,scene);game.put(0xb0,scene);b.scene_descriptor=0x4ddec0+scene*0xac;game.put(0xc0,game.get(0xc0)&~0x60u);game.put(0x1c,0xffffffff);b.application.put(0x6ec,7);b.menu_selection=6;
+    if(!write_save_file(b.save,b.saved_equipment,b.world,b.files,b.loaded)||(b.responses&&!consume_title_scene_responses(b.title,b.world,b.responses->png,b.responses->saved)))return false;auto timer=title.sub(0x2b4);const u32 previous=timer.get(4),token=timer.get(12);float elapsed=1;if(token&&!b.world.timer_rate(token,elapsed))return false;timer.put(0,previous);const bool unit=!token||(elapsed>real(0x3f7d70a4)&&elapsed<real(0x3f8147ae));const float value=timer.floating(8)+(unit?1.f:elapsed);timer.put(8,word(value));timer.put(4,unit?previous+1:value>=-2147483648.f&&value<2147483648.f?u32(i32(value)):0x80000000);result=1;return b.world.synchronize_resources();
+}
+}

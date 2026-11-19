@@ -1,0 +1,11 @@
+import{InteractivePersistentCpuSessionV88}from'./InteractivePersistentCpuSessionV88.mjs';
+export class InteractivePersistentCpuSessionV95 extends InteractivePersistentCpuSessionV88 {
+ async loadReplayRoot(){
+  this.phase='loading';const c=this.runtime,needed=new Map;for(const a of this.rootActions)for(const b of a.args)if(b?.blob&&!this.blobs.has(b.blob))needed.set(b.blob,b.bytes);
+  for(const[hash,n]of needed){const response=await fetch('/blobs/'+hash+'.bin');if(!response.ok)throw Error('Replay Root resource HTTP '+response.status);const bytes=new Uint8Array(await response.arrayBuffer());if(bytes.length!==n||await this.sha(bytes)!==hash)throw Error('Replay Root resource fingerprint changed');this.blobs.set(hash,bytes);}
+  this.replayRootResults=[];for(const action of this.rootActions){c.boot_clear_device();const allocated=[],method=action.method==='title_root_prepare'?'campaign_replay_root_prepare':action.method==='title_root_run'?'campaign_replay_root_run':action.method,args=action.args.map(arg=>{if(!arg?.blob)return arg;const bytes=this.blobs.get(arg.blob),p=c.allocate(bytes.length);this.bytes(p,bytes.length).set(bytes);allocated.push(p);return p;});let result;try{result=c[method](...args);}finally{for(const p of allocated.reverse())c.release(p);}this.replayRootResults.push({method,result});if('expectedReturn'in action&&result!==action.expectedReturn)throw Error('Replay '+method+' returned '+result+' at '+c.campaign_replay_playback_diagnostic(0).toString(16));this.mirrorBackbuffer();this.mirrorImages();this.consumeCalls();if(method.endsWith('_run'))this.device.present();if(this.replayRootResults.length%8===0)await new Promise(r=>setTimeout(r,0));}
+  this.blobs.clear();this.phase='game';
+ }
+ async step(){const result=await super.step();if(this.phase!=='closed'){const c=this.runtime,p=c.boot_region(0x4e47d0,0xa34),desired=new DataView(c.memory.buffer).getUint32(p+0x6ec,true);if(desired===13&&this.phase==='title')await this.loadReplayRoot();}return result;}
+ stateSnapshot(){const s=super.stateSnapshot();s.replayPlayback=Array.from({length:17},(_,i)=>this.runtime.campaign_replay_playback_diagnostic(i)>>>0);s.replayRootResults=this.replayRootResults;return s;}
+}

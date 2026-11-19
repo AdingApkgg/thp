@@ -1,0 +1,6 @@
+export class OrderedAudioMixV3 {
+  static async create(context,slots=104,signal){await context.audioWorklet.addModule(new URL('./OrderedAudioMixerProcessor.mjs',import.meta.url));if(signal?.aborted)throw new DOMException('Audio initialization closed','AbortError');const node=new AudioWorkletNode(context,'th143-ordered-audio-mixer-v1',{numberOfInputs:slots,numberOfOutputs:1,outputChannelCount:[2],processorOptions:{slots}});node.connect(context.destination);return new OrderedAudioMixV3(context,node,slots);}
+  constructor(context,node,slots){this.context=context;this.node=node;this.slots=slots;this.inputs=new Map;this.state=null;this.error=null;node.onprocessorerror=()=>{this.error=Error('Ordered audio mixer failed');};node.port.onmessage=event=>{this.state=event.data;};}
+  slot(index){if(!Number.isInteger(index)||index<0||index>=this.slots)throw Error('Invalid audio slot');if(!this.inputs.has(index)){const input=this.context.createGain();input.gain.value=1;input.connect(this.node,0,index);this.inputs.set(index,input);}return this.inputs.get(index);}
+  dispose(){for(const input of this.inputs.values())input.disconnect();this.inputs.clear();this.node.disconnect();this.node.port.close();}
+}

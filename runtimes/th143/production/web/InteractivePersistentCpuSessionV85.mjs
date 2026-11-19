@@ -1,0 +1,2 @@
+import{InteractivePersistentCpuSessionV84}from'./InteractivePersistentCpuSessionV84.mjs';
+export class InteractivePersistentCpuSessionV85 extends InteractivePersistentCpuSessionV84 {}

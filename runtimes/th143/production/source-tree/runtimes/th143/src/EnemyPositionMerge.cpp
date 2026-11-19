@@ -1,0 +1,11 @@
+#include "EnemyPositionMerge.hpp"
+namespace th143 {
+void merge_enemy_position(AnmView s,const std::array<u32,3>& neutral){
+ s.put(0x88,word(s.floating(0x88)+s.floating(0xcc)));
+ s.put(0x8c,word(s.floating(0xd0)+s.floating(0x8c)));
+ s.put(0x90,word(s.floating(0xd4)+s.floating(0x90)));
+ for(u32 base:{0xccu,0x100u,0xbcu})for(u32 i=0;i<3;++i)s.put(base+i*4,neutral[i]);
+ s.put(0xe4,0);s.put(0xa0,0);s.put(0x10c,s.get(0x10c)&~15u);s.put(0xc8,s.get(0xc8)&~15u);
+ for(u32 at:{0x3ecu,0x454u,0x494u,0x4f4u,0x4c4u,0x524u,0x568u,0x5acu,0x5f0u,0x634u})s.put(at,0);
+}
+}
