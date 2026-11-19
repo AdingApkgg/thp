@@ -9,7 +9,7 @@ product='''    th143: Object.freeze({
         cardArtwork: "th143-card.webp",
         storage: Object.freeze({saveRoot: "/savesth143", scoreFile: "scoreth143.dat", configFiles: Object.freeze(["th143.cfg"])}),
         runtime: "./runtime/th143/th143.html", runtimeFileLayout: "directory",
-        runtimeAssets: Object.freeze(["th143.html", "manifest.json", "launcher-adapter.mjs", "interactive-v124.mjs", "play.wasm"]), requiredShared: Object.freeze([]),
+        runtimeAssets: Object.freeze(["th143.html", "manifest.json", "launcher-adapter.mjs", "interactive-v124.mjs", "play.wasm", "host-keyboard-input-bridge.mjs"]), requiredShared: Object.freeze([]),
         runtimeResourceTransport: "resources", dataProvider: "retail-memory",
         musicCapabilities: Object.freeze({midi: false}), musicRuntime: Object.freeze({localOggConfigureMode: "runtime-selection", embeddedOgg: true}),
         touchFire: TOGGLE_TOUCH_FIRE,
