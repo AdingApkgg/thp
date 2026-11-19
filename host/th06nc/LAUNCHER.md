@@ -23,6 +23,10 @@ Runtime and content identities.
    with the standard `launcher/scripts/package-server.mjs` entry, supplying
    `--th06nc-build`, `--th06nc-assets`, `--th06nc-ogg`, normalized artwork, shared
    fonts, a feature configuration and the previous verified site.
+   Include the global favicon and all `pwa/` icons in the normalized artwork
+   directory. The site's `prepare-host-artwork.py` derives these from its brand
+   portrait; they are required by the published document independently of the
+   selected games.
 5. Run `verify-server-build.mjs` against the candidate, then exercise the root
    library, package installation, first frame, input and user files in a browser.
 

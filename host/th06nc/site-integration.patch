@@ -143,6 +143,28 @@ index 6b0062f79..5411dd4d3 100644
      th15: Object.freeze({
          number: "15",
          title: "東方紺珠伝",
+diff --git a/launcher/app/BrowserLauncher.tsx b/launcher/app/BrowserLauncher.tsx
+index 650660450..c1183e82d 100644
+--- a/launcher/app/BrowserLauncher.tsx
++++ b/launcher/app/BrowserLauncher.tsx
+@@ -63,14 +63,15 @@ function BrowserWorkspace({session}: {session: BrowserSession}) {
+   const hasRoom = useStoreSelector(session.room.service, value => !!value.room);
+   const roomWorkspace = hasRoom && !replayWorkspace && (state.th09NetworkOverlayOpen || !state.roomPlayerExpanded && !state.fullscreen);
+   const metadataProducts = useStoreSelector(session.metadata, value => value.products);
++  const hostArtworkReady = useStoreSelector(session.metadata, value => Boolean(value.siteManifest));
+   const lessMotion = useStoreSelector(session.preferences, value => value.lessMotion);
+   const firstUse = useRef<FirstUseNoticeHandle>(null), network = useRef<NetworkDiagnosticsHandle>(null);
+   const [networkRunning, setNetworkRunning] = useState(false);
+   const [donationAvailable, setDonationAvailable] = useState(true);
+   const [settingsClosing, setSettingsClosing] = useState(false);
+   const assetUrl = useMemo(() => (path: string) => new URL(path, session.baseUrl).href, [session]);
+-  const products = useMemo(() => createLibraryProducts(metadataProducts, assetUrl, id => `?game=${id}`), [metadataProducts, assetUrl]);
+-  const catalogProducts = useMemo(() => createLibraryProducts(PRODUCT_IDS, assetUrl, id => `?game=${id}`), [assetUrl]);
++  const products = useMemo(() => createLibraryProducts(metadataProducts, assetUrl, id => `?game=${id}`).map(product => hostArtworkReady ? product : {...product, artwork:null}), [metadataProducts, assetUrl, hostArtworkReady]);
++  const catalogProducts = useMemo(() => createLibraryProducts(PRODUCT_IDS, assetUrl, id => `?game=${id}`).map(product => hostArtworkReady ? product : {...product, artwork:null}), [assetUrl, hostArtworkReady]);
+   const masthead = <Header session={session} firstUse={firstUse} donationAvailable={donationAvailable}/>;
+   const host: LauncherHost = {
+     locale: state.locale, lessMotion, products, catalogProducts, productAvailable: session.productAvailable, onProductSelected: session.reportProductSelection, onRouteSelection: session.selectRouteProduct, settings: session.settings, preferences: session.preferences, touchLayout: session.touchLayout,
 diff --git a/launcher/app/components/launcher/book-preferences.ts b/launcher/app/components/launcher/book-preferences.ts
 index 7d229ea0c..7968b19d2 100644
 --- a/launcher/app/components/launcher/book-preferences.ts
@@ -167,6 +189,19 @@ index d562244ee..5b4bce9ee 100644
  export const bookGameShortTitle=(game:GameId)=>shortTitles[game];
  
  /** Host/publication decides membership and URLs before constructing this view data. */
+diff --git a/launcher/app/components/startup/InitialLauncher.tsx b/launcher/app/components/startup/InitialLauncher.tsx
+index 21dd4cc07..1411f8c4b 100644
+--- a/launcher/app/components/startup/InitialLauncher.tsx
++++ b/launcher/app/components/startup/InitialLauncher.tsx
+@@ -28,6 +28,8 @@ const inactive = () => {};
+ // Main's static compiler uses the default catalog gate, before Host/query policy.
+ const products = createLibraryProducts(PRODUCT_IDS, assetUrl, (id) => `?game=${id}`).map((product) => ({
+   ...product,
++  // Host-generated cards are unknown until publication metadata is attached.
++  artwork: null,
+   hidden: !productEnabledForBuild(product.id),
+ }));
+ 
 diff --git a/launcher/app/services/metadata.ts b/launcher/app/services/metadata.ts
 index 68f25d042..57becc92b 100644
 --- a/launcher/app/services/metadata.ts
@@ -288,6 +323,28 @@ index 3b68434cc..9dedff23a 100644
    th15: Object.freeze({
      original: Object.freeze({
        files: Object.freeze(["th15.dat"]),
+diff --git a/launcher/lib/deployed-html-references.mjs b/launcher/lib/deployed-html-references.mjs
+new file mode 100644
+index 000000000..0df143a8d
+--- /dev/null
++++ b/launcher/lib/deployed-html-references.mjs
+@@ -0,0 +1,16 @@
++import {parse} from 'parse5';
++/** Parse rendered DOM attributes; script/style text is never markup. */
++export function deployedHtmlReferences(html) {
++ const references=[];
++ function visit(node){
++  for(const attribute of node.attrs??[])if(attribute.name==='src'||attribute.name==='href')references.push(attribute.value);
++  for(const child of node.childNodes??[])visit(child);
++ }
++ visit(parse(html));return references;
++}
++/** Resolve canonical directory documents without accepting missing assets. */
++export function deploymentReferencePath(path, inventory){
++ if(inventory.has(path))return path;
++ const directory=path.replace(/\/?$/,'/')+'index.html';
++ return inventory.has(directory)?directory:null;
++}
 diff --git a/launcher/scripts/package-server.mjs b/launcher/scripts/package-server.mjs
 index bd2aae029..fc3147f3c 100644
 --- a/launcher/scripts/package-server.mjs
@@ -301,6 +358,78 @@ index bd2aae029..fc3147f3c 100644
        const pack = entry.music?.ogg;
        if (!pack?.files?.length) throw new Error(`${game}: OGG content declaration is missing`);
        const sourceBase = musicSourceBase(game, "ogg");
+diff --git a/launcher/scripts/verify-deployed-site.mjs b/launcher/scripts/verify-deployed-site.mjs
+index 50bb1ddc9..df9c9da58 100644
+--- a/launcher/scripts/verify-deployed-site.mjs
++++ b/launcher/scripts/verify-deployed-site.mjs
+@@ -1,3 +1,4 @@
++import {deployedHtmlReferences, deploymentReferencePath} from '../lib/deployed-html-references.mjs';
+ import { RUNTIME_MANIFEST_FILE, RUNTIME_GENERATION_FILE, RUNTIME_GENERATION_SCHEMA, RUNTIME_PROTOCOL,
+   validateRuntimeManifest, canonicalRuntimePayload, parseRuntimeGenerationPath, runtimeGenerationBase } from "../lib/contracts/runtime-generations.mjs";
+ import { createHash } from "node:crypto";
+@@ -14,7 +15,13 @@ if (!process.argv[2]) throw new Error("usage: node scripts/verify-deployed-site.
+ const base = new URL(process.argv[2]);
+ if (!base.pathname.endsWith("/")) base.pathname += "/";
+ 
+-async function download(url, purpose) {
++const downloads = new Map();
++function download(url, purpose) {
++ const key=url.href;
++ if(!downloads.has(key))downloads.set(key,fetchDownload(url,purpose));
++ return downloads.get(key);
++}
++async function fetchDownload(url, purpose) {
+   let lastError;
+   for (let attempt = 1; attempt <= 3; attempt++) {
+     try {
+@@ -325,7 +332,7 @@ else {
+     if (!entry) failures.push(`shared ${key} missing from manifest: ${path}`);
+     else await verifyExactReference(url, entry);
+   }
+-  const preloadGames = Object.keys(PRODUCT_GAMES).filter(game => PRODUCT_GAMES[game].dataProvider === "emscripten-preload");
++  const preloadGames = Object.keys(games.games || {}).filter(game => PRODUCT_GAMES[game]?.dataProvider === "emscripten-preload");
+   for (const game of preloadGames) {
+     const runtime = games.games?.[game]?.runtime;
+     const runtimeUrl = typeof runtime === "string" ? new URL(runtime, base) : null;
+@@ -388,20 +395,24 @@ for (const htmlPath of ["index.html", "about.html"]) {
+   const htmlResult = results.get(htmlPath);
+   if (!htmlResult) continue;
+   const html = new TextDecoder().decode(htmlResult.bytes);
+-  for (const tagMatch of html.matchAll(/<[^>]+>/g)) {
+-    for (const match of tagMatch[0].matchAll(/\b(?:src|href)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/gi)) {
+-      const value = match[1] ?? match[2] ?? match[3];
+-      if (!value || /^(?:data:|https?:|mailto:|#)/i.test(value)) continue;
+-      const url = new URL(value, new URL(htmlPath, base));
+-      const path = url.pathname.slice(base.pathname.length).replace(/^\//, "");
+-      const entry = inventory.get(path);
+-      if (!entry) {
+-        // Directory navigation links are not deployment files.
+-        if (!url.pathname.endsWith("/")) failures.push(`${htmlPath}: reference missing from manifest: ${value}`);
+-        continue;
+-      }
+-      await verifyExactReference(url, entry, !!parseRuntimeGenerationPath(path) || /[a-f0-9]{24}\.zip$/.test(path));
+-    }
++  for (const value of deployedHtmlReferences(html)) {
++    if (!value || /^(?:data:|https?:|mailto:|#)/i.test(value)) continue;
++    const url = new URL(value, new URL(htmlPath, base));
++    if(url.origin!==base.origin)continue;
++    const path = url.pathname.slice(base.pathname.length).replace(/^\//, "");
++    const referencePath = deploymentReferencePath(path, inventory);
++    if(!referencePath){failures.push(`${htmlPath}: reference missing from manifest: ${value}`);continue;}
++    const entry=inventory.get(referencePath);
++    if(referencePath!==path){
++      try{
++        const response=await fetch(url,{method:'HEAD',redirect:'manual',cache:'no-store'});
++        const expected=new URL(url);expected.pathname=expected.pathname.replace(/\/?$/,'/');
++        if(!url.pathname.endsWith('/')){
++          if(![301,302,307,308].includes(response.status)||new URL(response.headers.get('location')||'',url).href!==expected.href)throw Error('invalid directory redirect');
++        }else if(!response.ok)throw Error(`HTTP ${response.status}`);
++        await verifyExactReference(new URL(referencePath,base),entry);
++      }catch(error){failures.push(`${htmlPath}: ${value}: ${error.message}`);}
++    }else await verifyExactReference(url,entry,!!parseRuntimeGenerationPath(path)||/[a-f0-9]{24}\.zip$/.test(path));
+   }
+ }
+ 
 diff --git a/launcher/server/static-content-policy.mjs b/launcher/server/static-content-policy.mjs
 index 9cbb302ae..2ac6621ac 100644
 --- a/launcher/server/static-content-policy.mjs
@@ -317,6 +446,24 @@ index 9cbb302ae..2ac6621ac 100644
    return immutableRuntime || contentAddressedPack
      ? "public, max-age=31536000, immutable"
      : "public, max-age=0, must-revalidate";
+diff --git a/launcher/tests/react-main/deployed-html-references.test.mjs b/launcher/tests/react-main/deployed-html-references.test.mjs
+new file mode 100644
+index 000000000..532d7b616
+--- /dev/null
++++ b/launcher/tests/react-main/deployed-html-references.test.mjs
+@@ -0,0 +1,12 @@
++import {test,expect} from 'vitest';
++import {deployedHtmlReferences,deploymentReferencePath} from '../../lib/deployed-html-references.mjs';
++test('reads actual HTML attributes and excludes embedded script and style strings',()=>{
++ const html=`<script>const markup='<a href="source;">';</script><style>.a{content:'<img src="fake.png">'}</style><a href="/docs/multiplayer?lang=zh-CN">Docs</a><img src="assets/card.webp"/><a href="?a=1&amp;b=2">query</a>`;
++ expect(deployedHtmlReferences(html)).toEqual(['/docs/multiplayer?lang=zh-CN','assets/card.webp','?a=1&b=2']);
++});
++test('resolves declared directory routes and rejects absent image files',()=>{
++ const inventory=new Map([['docs/multiplayer/index.html',{}],['index.html',{}]]);
++ expect(deploymentReferencePath('docs/multiplayer',inventory)).toBe('docs/multiplayer/index.html');
++ expect(deploymentReferencePath('docs/multiplayer/',inventory)).toBe('docs/multiplayer/index.html');
++ expect(deploymentReferencePath('assets/missing.png',inventory)).toBe(null);
++});
 diff --git a/launcher/tests/react-main/metadata-service.test.mjs b/launcher/tests/react-main/metadata-service.test.mjs
 index 5a776f22e..47a132cce 100644
 --- a/launcher/tests/react-main/metadata-service.test.mjs
