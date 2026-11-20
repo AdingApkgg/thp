@@ -401,6 +401,9 @@ bool GameSession::begin(GameResources& source, u32 stage, i32 character,
     state.difficulty=difficulty;
     state.demo=demo;
     state.replay=replay;
+#if PORT_TITLE == 14
+    animations.th14_native_stack.bounded_beam_fallback=!replay||playback.uses_bounded_th14_beams();
+#endif
     state.practice=practice;
 #if PORT_TITLE == 14
     if(replay){if(playback.decoded()[10]&2){u32 id;std::memcpy(&id,playback.decoded().data()+0x90,4);state.spell_practice_id=signed_bits(id);}}
@@ -645,6 +648,12 @@ bool GameSession::activate_stage(){
     battle->completion.mode.practice=state.practice&&!state.replay;battle->completion.mode.replay_practice=state.practice&&state.replay;
     if(state.practice){const auto* row=scores.characters[state.character*2+state.subtype].data()+ScoreFile::practice_score_offset+(i32(stage)+state.difficulty*ScoreFile::practice_stage_stride)*8;std::memcpy(&battle->practice_high,row,4);}
     const i32 score_selection=kPortTitle==16?state.character:state.character*2+state.subtype;
+#if PORT_TITLE == 14
+    // Retail435b6c..435b9c records the entered stage for practice selection.
+    // The separate stage-completed byte is written by StageCompletion only.
+    if(!state.replay&&!state.demo&&score_selection>=0&&score_selection<6&&state.difficulty>=0&&state.difficulty<5&&stage>=1&&stage<=7)
+        clear_records.stages[score_selection][state.difficulty*8+stage][1]=1;
+#endif
     battle->hud.score.high=scores.high_score(score_selection,state.difficulty);
     battle->hud.score.high_continues=scores.high_continues(score_selection,state.difficulty);
 #if PORT_TITLE == 14

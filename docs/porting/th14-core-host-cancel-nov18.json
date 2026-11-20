@@ -1,0 +1,695 @@
+{
+  "schema": "th14/independent-core-legacy-host-cancel/1",
+  "date": "2026-11-18",
+  "passed": true,
+  "completeGame": false,
+  "silent": true,
+  "actualHostAndCompleteShell": true,
+  "syntheticResourcesOnly": true,
+  "unchangedNativeArchiveOwnership": true,
+  "noCppChangesOrRecompile": true,
+  "noRuntimeDeployed": true,
+  "sources": [
+    {
+      "path": "runtimes/th12/th12_web/sdl-runtime/shell.mjs",
+      "beforeSha256": "582a15319fbfa0bd480ee0adcad1106b3863ecf1ee9f26375df91c946ae8a4ef",
+      "afterSha256": "0aa1fec4b52e0de5736cf057013be0f83ef6cbe1310e6285fa87763ba1f46e73"
+    },
+    {
+      "path": "runtimes/th12/th12_web/sdl-runtime/eagler-host.mjs",
+      "beforeSha256": "94deaef6657b4ba2a88c5878003478e71552049d9ea0767996d914efce555732",
+      "afterSha256": "8c3130af75bad346f77eedc4106bf6c093db1849ba8cc805e44ff3a85223cc9c"
+    }
+  ],
+  "resourceTests": {
+    "passed": true,
+    "cases": 11,
+    "failedCases": 0,
+    "rows": [
+      {
+        "name": "install-already-aborted",
+        "passed": true,
+        "failures": [],
+        "calls": {
+          "fetch": 0,
+          "parents": 0,
+          "malloc": 0,
+          "free": 0,
+          "adopt": 0,
+          "writes": [],
+          "signals": []
+        },
+        "error": {
+          "name": "AbortError",
+          "message": "This operation was aborted"
+        }
+      },
+      {
+        "name": "install-abort-after-fetch",
+        "passed": true,
+        "failures": [],
+        "calls": {
+          "fetch": 1,
+          "parents": 0,
+          "malloc": 0,
+          "free": 0,
+          "adopt": 0,
+          "writes": [],
+          "signals": [
+            true
+          ]
+        },
+        "error": {
+          "name": "AbortError",
+          "message": "This operation was aborted"
+        }
+      },
+      {
+        "name": "install-abort-after-body",
+        "passed": true,
+        "failures": [],
+        "calls": {
+          "fetch": 1,
+          "parents": 0,
+          "malloc": 0,
+          "free": 0,
+          "adopt": 0,
+          "writes": [],
+          "signals": [
+            true
+          ]
+        },
+        "error": {
+          "name": "AbortError",
+          "message": "This operation was aborted"
+        }
+      },
+      {
+        "name": "install-abort-between-resources",
+        "passed": true,
+        "failures": [],
+        "calls": {
+          "fetch": 1,
+          "parents": 0,
+          "malloc": 0,
+          "free": 0,
+          "adopt": 0,
+          "writes": [
+            "/fonts/test0.bin"
+          ],
+          "signals": [
+            true
+          ]
+        },
+        "error": {
+          "name": "AbortError",
+          "message": "This operation was aborted"
+        }
+      },
+      {
+        "name": "install-completes",
+        "passed": true,
+        "failures": [],
+        "calls": {
+          "fetch": 2,
+          "parents": 0,
+          "malloc": 0,
+          "free": 0,
+          "adopt": 0,
+          "writes": [
+            "/fonts/test0.bin",
+            "/fonts/test1.bin"
+          ],
+          "signals": [
+            true,
+            true
+          ]
+        },
+        "error": null
+      },
+      {
+        "name": "mount-aborted-before-parent",
+        "passed": true,
+        "failures": [],
+        "calls": {
+          "fetch": 0,
+          "parents": 0,
+          "malloc": 0,
+          "free": 0,
+          "adopt": 0,
+          "writes": [],
+          "signals": []
+        },
+        "error": {
+          "name": "AbortError",
+          "message": "This operation was aborted"
+        }
+      },
+      {
+        "name": "mount-abort-after-parent",
+        "passed": true,
+        "failures": [],
+        "calls": {
+          "fetch": 0,
+          "parents": 1,
+          "malloc": 0,
+          "free": 0,
+          "adopt": 0,
+          "writes": [],
+          "signals": []
+        },
+        "error": {
+          "name": "AbortError",
+          "message": "This operation was aborted"
+        }
+      },
+      {
+        "name": "mount-abort-after-archive-write",
+        "passed": true,
+        "failures": [],
+        "calls": {
+          "fetch": 0,
+          "parents": 1,
+          "malloc": 0,
+          "free": 0,
+          "adopt": 0,
+          "writes": [
+            "/th14.dat"
+          ],
+          "signals": []
+        },
+        "error": {
+          "name": "AbortError",
+          "message": "This operation was aborted"
+        }
+      },
+      {
+        "name": "mount-abort-during-manifest-body",
+        "passed": true,
+        "failures": [],
+        "calls": {
+          "fetch": 1,
+          "parents": 1,
+          "malloc": 0,
+          "free": 0,
+          "adopt": 0,
+          "writes": [
+            "/th14.dat"
+          ],
+          "signals": [
+            true
+          ]
+        },
+        "error": {
+          "name": "AbortError",
+          "message": "This operation was aborted"
+        }
+      },
+      {
+        "name": "mount-abort-during-font-fetch",
+        "passed": true,
+        "failures": [],
+        "calls": {
+          "fetch": 2,
+          "parents": 1,
+          "malloc": 0,
+          "free": 0,
+          "adopt": 0,
+          "writes": [
+            "/th14.dat"
+          ],
+          "signals": [
+            true,
+            true
+          ]
+        },
+        "error": {
+          "name": "AbortError",
+          "message": "This operation was aborted"
+        }
+      },
+      {
+        "name": "mount-completes",
+        "passed": true,
+        "failures": [],
+        "calls": {
+          "fetch": 2,
+          "parents": 1,
+          "malloc": 0,
+          "free": 0,
+          "adopt": 0,
+          "writes": [
+            "/th14.dat",
+            "/fonts/test0.bin"
+          ],
+          "signals": [
+            true,
+            true
+          ]
+        },
+        "error": null
+      }
+    ],
+    "sourceSha256": "8c3130af75bad346f77eedc4106bf6c093db1849ba8cc805e44ff3a85223cc9c",
+    "actualHostModule": true,
+    "syntheticAssets": true,
+    "fetchAndFilesystemBoundariesControlled": true,
+    "legacyArrayBufferTransferRetained": true,
+    "nativeAdoptionClaimed": false,
+    "actualBrowserCancelAccepted": false,
+    "completeGame": false
+  },
+  "shellSignalWiringTests": {
+    "passed": true,
+    "cases": 5,
+    "failedCases": 0,
+    "rows": [
+      {
+        "name": "normal",
+        "game": "th14",
+        "passed": true,
+        "actual": {
+          "writes": 1,
+          "aborted": false
+        },
+        "expected": {
+          "writes": 1,
+          "aborted": false
+        },
+        "fetches": 1,
+        "signalProvided": [
+          true
+        ],
+        "error": null
+      },
+      {
+        "name": "departed",
+        "game": "th14",
+        "passed": true,
+        "actual": {
+          "writes": 0,
+          "aborted": true
+        },
+        "expected": {
+          "writes": 0,
+          "aborted": true
+        },
+        "fetches": 0,
+        "signalProvided": [],
+        "error": {
+          "name": "AbortError",
+          "message": "This operation was aborted"
+        }
+      },
+      {
+        "name": "body-finishes-after-departure",
+        "game": "th14",
+        "passed": true,
+        "actual": {
+          "writes": 0,
+          "aborted": true
+        },
+        "expected": {
+          "writes": 0,
+          "aborted": true
+        },
+        "fetches": 1,
+        "signalProvided": [
+          true
+        ],
+        "error": {
+          "name": "AbortError",
+          "message": "This operation was aborted"
+        }
+      },
+      {
+        "name": "bfcache-return-then-departure",
+        "game": "th14",
+        "passed": true,
+        "actual": {
+          "writes": 1,
+          "aborted": true
+        },
+        "expected": {
+          "writes": 1,
+          "aborted": true
+        },
+        "fetches": 1,
+        "signalProvided": [
+          true
+        ],
+        "error": {
+          "name": "AbortError",
+          "message": "This operation was aborted"
+        }
+      },
+      {
+        "name": "other-title-unchanged",
+        "game": "th11",
+        "passed": true,
+        "actual": {
+          "writes": 1,
+          "aborted": false
+        },
+        "expected": {
+          "writes": 1,
+          "aborted": false
+        },
+        "fetches": 1,
+        "signalProvided": [
+          false
+        ],
+        "error": null
+      }
+    ],
+    "completeShellEvaluated": true,
+    "actualInstallWrapperAndHostModule": true,
+    "moduleFactoryPending": true,
+    "controlledModuleFetchAndFilesystem": true,
+    "actualBrowserAccepted": false,
+    "completeGame": false,
+    "shellSha256": "0aa1fec4b52e0de5736cf057013be0f83ef6cbe1310e6285fa87763ba1f46e73",
+    "hostSha256": "8c3130af75bad346f77eedc4106bf6c093db1849ba8cc805e44ff3a85223cc9c"
+  },
+  "shellLifecycleTests": {
+    "passed": true,
+    "rows": [
+      {
+        "name": "ordinary-departure",
+        "observations": [
+          true
+        ],
+        "expected": [
+          true
+        ],
+        "passed": true
+      },
+      {
+        "name": "cache-entry",
+        "observations": [
+          false
+        ],
+        "expected": [
+          false
+        ],
+        "passed": true
+      },
+      {
+        "name": "cache-return-and-departure",
+        "observations": [
+          false,
+          false,
+          true
+        ],
+        "expected": [
+          false,
+          false,
+          true
+        ],
+        "passed": true
+      },
+      {
+        "name": "two-cache-returns-and-departure",
+        "observations": [
+          false,
+          false,
+          false,
+          false,
+          true
+        ],
+        "expected": [
+          false,
+          false,
+          false,
+          false,
+          true
+        ],
+        "passed": true
+      },
+      {
+        "name": "ordinary-departure-is-terminal",
+        "observations": [
+          true,
+          true
+        ],
+        "expected": [
+          true,
+          true
+        ],
+        "passed": true
+      },
+      {
+        "name": "unspecified-persisted",
+        "observations": [
+          true
+        ],
+        "expected": [
+          true
+        ],
+        "passed": true
+      }
+    ],
+    "sourceSha256": "0aa1fec4b52e0de5736cf057013be0f83ef6cbe1310e6285fa87763ba1f46e73",
+    "actualCompleteShellEvaluated": true,
+    "moduleFactoryIntentionallyPending": true,
+    "moduleLoadIntentionallyPending": false,
+    "eventTargetFixture": true,
+    "actualBrowserHiddenAccepted": false,
+    "actualBrowserBfcacheAccepted": false,
+    "completeGame": false
+  },
+  "negativeControls": {
+    "resourceCases": 11,
+    "resourceFailures": 9,
+    "completeShellCases": 5,
+    "completeShellFailures": 3,
+    "resourceReceiptSha256": "031354aa26860a0ed4a5b1e40bf9a63cb10386fc0c18bcffdc19bfbbf8c5f526",
+    "shellReceiptSha256": "f0313f3f74375f4022b36dbfa70a419d282f5758b8fecd063b50def59f6e11ae"
+  },
+  "tools": [
+    {
+      "path": "tools/th14-legacy-resource-cancel-check.mjs",
+      "sha256": "a51f691f595108173e6f66140524083f9a5d1f5fae2b5a3ed54717b8e83641c8"
+    },
+    {
+      "path": "tools/th14-core-startup-resource-cancel-check.mjs",
+      "sha256": "e7bbf16a49b8eb185ec6f71c783dba00f778cc3322cf54f057ffdd50a650a2ad"
+    },
+    {
+      "path": "tools/th14-startup-abort-lifecycle-nov17.mjs",
+      "sha256": "f355afb4edbfcc755f7baba36ef1042419e95e54c6a9e85181bf8ea7ab520025"
+    }
+  ],
+  "limits": [
+    "Legacy core uses parent ArrayBuffer transport and direct FS write; no Blob adoption API introduced.",
+    "This legacy resource installer does not support compressed-font decoding; tests use its actual uncompressed route.",
+    "Initial transplanted compressed control was inapplicable and failed, retained privately; test scope corrected without adding decompression code.",
+    "VM complete-shell tests use pending module factory and declared Module/fetch/FS/message ports; not actual browser departure/bfcache proof.",
+    "No device output, original assets, large replay run, C++ rebuild or website deployment.",
+    "Website normal/MP already have their own newer cancellation/ownership implementation; not replaced by this legacy adapter."
+  ],
+  "generatedShellChecks": {
+    "productionGenerator": "tools/th14-build-gles.py:prepare_host_shell",
+    "generatedShellSha256": "06fd2fdd0052cf35789a57177ce12a4278ee21b60ce1835fb663746470a13dff",
+    "wiring": {
+      "passed": true,
+      "cases": 5,
+      "failedCases": 0,
+      "rows": [
+        {
+          "name": "normal",
+          "game": "th14",
+          "passed": true,
+          "actual": {
+            "writes": 1,
+            "aborted": false
+          },
+          "expected": {
+            "writes": 1,
+            "aborted": false
+          },
+          "fetches": 1,
+          "signalProvided": [
+            true
+          ],
+          "error": null
+        },
+        {
+          "name": "departed",
+          "game": "th14",
+          "passed": true,
+          "actual": {
+            "writes": 0,
+            "aborted": true
+          },
+          "expected": {
+            "writes": 0,
+            "aborted": true
+          },
+          "fetches": 0,
+          "signalProvided": [],
+          "error": {
+            "name": "AbortError",
+            "message": "This operation was aborted"
+          }
+        },
+        {
+          "name": "body-finishes-after-departure",
+          "game": "th14",
+          "passed": true,
+          "actual": {
+            "writes": 0,
+            "aborted": true
+          },
+          "expected": {
+            "writes": 0,
+            "aborted": true
+          },
+          "fetches": 1,
+          "signalProvided": [
+            true
+          ],
+          "error": {
+            "name": "AbortError",
+            "message": "This operation was aborted"
+          }
+        },
+        {
+          "name": "bfcache-return-then-departure",
+          "game": "th14",
+          "passed": true,
+          "actual": {
+            "writes": 1,
+            "aborted": true
+          },
+          "expected": {
+            "writes": 1,
+            "aborted": true
+          },
+          "fetches": 1,
+          "signalProvided": [
+            true
+          ],
+          "error": {
+            "name": "AbortError",
+            "message": "This operation was aborted"
+          }
+        },
+        {
+          "name": "other-title-unchanged",
+          "game": "th11",
+          "passed": true,
+          "actual": {
+            "writes": 1,
+            "aborted": false
+          },
+          "expected": {
+            "writes": 1,
+            "aborted": false
+          },
+          "fetches": 1,
+          "signalProvided": [
+            false
+          ],
+          "error": null
+        }
+      ],
+      "completeShellEvaluated": true,
+      "actualInstallWrapperAndHostModule": true,
+      "moduleFactoryPending": true,
+      "controlledModuleFetchAndFilesystem": true,
+      "actualBrowserAccepted": false,
+      "completeGame": false,
+      "shellSha256": "06fd2fdd0052cf35789a57177ce12a4278ee21b60ce1835fb663746470a13dff",
+      "hostSha256": "8c3130af75bad346f77eedc4106bf6c093db1849ba8cc805e44ff3a85223cc9c"
+    },
+    "lifecycle": {
+      "passed": true,
+      "rows": [
+        {
+          "name": "ordinary-departure",
+          "observations": [
+            true
+          ],
+          "expected": [
+            true
+          ],
+          "passed": true
+        },
+        {
+          "name": "cache-entry",
+          "observations": [
+            false
+          ],
+          "expected": [
+            false
+          ],
+          "passed": true
+        },
+        {
+          "name": "cache-return-and-departure",
+          "observations": [
+            false,
+            false,
+            true
+          ],
+          "expected": [
+            false,
+            false,
+            true
+          ],
+          "passed": true
+        },
+        {
+          "name": "two-cache-returns-and-departure",
+          "observations": [
+            false,
+            false,
+            false,
+            false,
+            true
+          ],
+          "expected": [
+            false,
+            false,
+            false,
+            false,
+            true
+          ],
+          "passed": true
+        },
+        {
+          "name": "ordinary-departure-is-terminal",
+          "observations": [
+            true,
+            true
+          ],
+          "expected": [
+            true,
+            true
+          ],
+          "passed": true
+        },
+        {
+          "name": "unspecified-persisted",
+          "observations": [
+            true
+          ],
+          "expected": [
+            true
+          ],
+          "passed": true
+        }
+      ],
+      "sourceSha256": "06fd2fdd0052cf35789a57177ce12a4278ee21b60ce1835fb663746470a13dff",
+      "actualCompleteShellEvaluated": true,
+      "moduleFactoryIntentionallyPending": true,
+      "moduleLoadIntentionallyPending": false,
+      "eventTargetFixture": true,
+      "actualBrowserHiddenAccepted": false,
+      "actualBrowserBfcacheAccepted": false,
+      "completeGame": false
+    },
+    "compiledRuntimeClaimed": false
+  }
+}

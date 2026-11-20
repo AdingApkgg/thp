@@ -15,6 +15,9 @@ struct NativeStackTh14 {
     // stack word later read by a constructor's first-frame 45286f call.
     Word spawn_scratch=0,spawn_scratch_mask=0,enemy_spawn_depth=0,ecl_animation_factory_depth=0;
     bool spawn_scratch_known=false;
+    // Ordinary games use the bounded correction. Replay::open selects the
+    // rule recorded in a TH14 USER extension; untagged retail files stay native.
+    bool bounded_beam_fallback=true;
     struct CounterScope {
         Word* counter;
         explicit CounterScope(Word* value)noexcept:counter(value){if(counter)++*counter;}

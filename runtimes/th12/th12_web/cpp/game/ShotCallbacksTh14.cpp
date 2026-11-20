@@ -111,7 +111,7 @@ bool shot_th14_beam_hit(ShotState& shot,ShotPlayer& player,Th14DamageArea& area,
             // it as geometry poisons later hit queries and depends on drawing.
             // Keep the last bounded length when that fallback is not physical.
             constexpr float maximum_length=512.f+18.f;
-            if(!std::isfinite(fallback)||fallback>maximum_length)
+            if(player.th14_native_stack->bounded_beam_fallback&&(!std::isfinite(fallback)||fallback>maximum_length))
                 fallback=std::isfinite(shot.th14_beam_length)?std::clamp(shot.th14_beam_length,0.f,maximum_length):0.f;
             shot.th14_beam_length=fallback;
         }else{

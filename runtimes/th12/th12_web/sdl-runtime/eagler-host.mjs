@@ -110,15 +110,19 @@ export function ensureSharedFontAlias(Module,language){
  Module.FS.symlink(source,target);
  return {source,target};
 }
-export async function installResources(Module,resources=[],{game,emit=()=>{},base=globalThis.location?.href,fetcher=globalThis.fetch}={}) {
+export async function installResources(Module,resources=[],{game,emit=()=>{},base=globalThis.location?.href,fetcher=globalThis.fetch,signal}={}) {
+ signal?.throwIfAborted();
  if(!Array.isArray(resources)||resources.length>128)throw Error('Invalid resource list');
  for(const resource of resources){
+  signal?.throwIfAborted();
   if(!resourcePath(resource.path,game))throw Error('Invalid runtime resource path');
   const url=new URL(resource.url,base);if(url.origin!==new URL(base).origin||!['http:','https:','blob:'].includes(url.protocol))throw Error('Resource must be same-origin');
-  const response=await fetcher(url);if(!response.ok)throw Error('Resource download failed: '+resource.path);
+  const response=await fetcher(url,{signal});signal?.throwIfAborted();if(!response.ok)throw Error('Resource download failed: '+resource.path);
   const bytes=new Uint8Array(await response.arrayBuffer());
   const expected=resource.bytes??resource.size;
   if(bytes.length>64*1024*1024||(expected!=null&&bytes.length!==Number(expected)))throw Error('Resource size mismatch: '+resource.path);
+  // A response body may finish after this page has left.
+  signal?.throwIfAborted();
   Module.FS.mkdirTree(resource.path.slice(0,resource.path.lastIndexOf('/')));
   Module.FS.writeFile(resource.path,bytes,{canOwn:true});
   // Native FLAC assets are part of Runtime preparation. Only the optional
@@ -138,18 +142,21 @@ export function observeMusicWrites(Module,core,game) {
 export function isSupersededRuntimeError(error){
  return error?.name==='AbortError'&&error?.message==='EAGLER_RUNTIME_SESSION_SUPERSEDED';
 }
-export async function mountManagedData(Module,{game,parentWindow,query,fetcher=globalThis.fetch,base=globalThis.location?.href,emit}){
+export async function mountManagedData(Module,{game,parentWindow,query,fetcher=globalThis.fetch,base=globalThis.location?.href,emit,signal}){
+ signal?.throwIfAborted();
  if(query.get('managedData')!=='1'||typeof parentWindow?.__eaglerPrepareManagedRuntimeDataV1!=='function')throw Error('请从 eagler-touhou 启动此运行时');
  const epoch=Number(query.get('runtimeEpoch'));if(!Number.isSafeInteger(epoch)||epoch<=0)throw Error('Runtime navigation epoch unavailable');
  const result=await parentWindow.__eaglerPrepareManagedRuntimeDataV1({game,generation:query.get('gameGeneration'),epoch});
+ signal?.throwIfAborted();
  // Cross-frame ArrayBuffers need not pass this realm's instanceof check.
  const bytes=new Uint8Array(result.buffer);
  if(bytes.byteLength<16||bytes.byteLength>512*1024*1024)throw Error('Invalid game DATA size');
  // The TH11 C++ archive layer opens /th11.dat directly.
  Module.FS.writeFile('/'+game+'.dat',bytes,{canOwn:true});
- const response=await fetcher(new URL('./resources.json',base));if(!response.ok)throw Error('Runtime resource manifest unavailable');
- const manifest=await response.json();if(manifest.game!==game||manifest.schema!=='eagler-sdl-resources/1')throw Error('Invalid Runtime resource manifest');
- await installResources(Module,manifest.resources,{game,emit,base,fetcher});
+ signal?.throwIfAborted();
+ const response=await fetcher(new URL('./resources.json',base),{signal});signal?.throwIfAborted();if(!response.ok)throw Error('Runtime resource manifest unavailable');
+ const manifest=await response.json();signal?.throwIfAborted();if(manifest.game!==game||manifest.schema!=='eagler-sdl-resources/1')throw Error('Invalid Runtime resource manifest');
+ await installResources(Module,manifest.resources,{game,emit,base,fetcher,signal});
 }
 
 // Host ownership and transport only. C++ validates files, creates the real
